@@ -1,0 +1,30 @@
+diff --git a/node_modules/lit-element-router/lit-element-router.js b/node_modules/lit-element-router/lit-element-router.js
+index 3e839ef..c4e8ce0 100644
+--- a/node_modules/lit-element-router/lit-element-router.js
++++ b/node_modules/lit-element-router/lit-element-router.js
+@@ -5,13 +5,14 @@ export function router(base) {
+         static get properties() {
+             return {
+                 route: { type: String, reflect: true, attribute: 'route' },
+-                canceled: { type: Boolean }
++                canceled: { type: Boolean },
++                basePath: { type: String, attribute: "base-path"}
+             };
+         }
+ 
+         constructor(...args) {
+             super(...args);
+-
++            this.basePath = document.baseURI.substring(0, document.baseURI.lastIndexOf('/')) + '/';
+             this.route = '';
+             this.canceled = false;
+         }
+@@ -39,7 +40,7 @@ export function router(base) {
+         routing(routes, callback) {
+             this.canceled = true;
+ 
+-            const uri = decodeURI(window.location.pathname);
++            const uri = decodeURI((window.location.origin + window.location.pathname).replace(this.basePath, ''));
+             const querystring = decodeURI(window.location.search);
+ 
+             let notFoundRoute = routes.filter(route => route.pattern === '*')[0];

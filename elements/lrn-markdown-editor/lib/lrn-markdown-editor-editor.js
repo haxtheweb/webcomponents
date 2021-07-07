@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";

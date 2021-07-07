@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import "./elmsln-studio-link.js";
@@ -292,7 +292,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           </accent-card>
           <nav-card accent-color="green" class="card primary due">
             <span slot="heading">Upcoming Assignments</span>
-            <elmsln-studio-link slot="subheading" href="/assignments"
+            <elmsln-studio-link slot="subheading" href="assignments"
               >All assignments</elmsln-studio-link
             >
             ${!this.profile || Object.keys(this.profile).length < 1
@@ -314,7 +314,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"
                             slot="label"
-                            href="/assignments/${a.id}"
+                            href="assignments/${a.id}"
                           >
                             ${a.assignment}
                           </elmsln-studio-link>
@@ -345,7 +345,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <span slot="heading">My Submissions</span>
             <elmsln-studio-link
               slot="subheading"
-              href="/submissions${!this.profile
+              href="submissions${!this.profile
                 ? ""
                 : `?student=${this.profile.id}`}"
               >All my submissions</elmsln-studio-link
@@ -370,7 +370,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           id="sub-${s.id}"
                           aria-describedby="sub-${s.id}-desc"
                           slot="label"
-                          href="/project/${s.portfolioId}?submission=${s.id}"
+                          href="project/${s.portfolioId}?submission=${s.id}"
                         >
                           ${s.assignment}
                         </elmsln-studio-link>
@@ -413,7 +413,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           id="feed-${f.id}"
                           aria-describedby="feed-${f.id}-desc"
                           slot="label"
-                          href="/project/${f.portfolioId}?submission=${f.submissionId}&comment=${f.id}"
+                          href="project/${f.portfolioId}?submission=${f.submissionId}&comment=${f.id}"
                         >
                           ${[f.firstName, f.lastName].join(" ")}'s feedback on
                           ${f.assignment}
@@ -437,7 +437,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         <accent-card accent-color="pink" class="card feed secondary">
           <nav-card flat no-border slot="content">
             <span slot="heading">Recent Submissions</span>
-            <elmsln-studio-link slot="subheading" href="/submissions"
+            <elmsln-studio-link slot="subheading" href="submissions"
               >All submissions</elmsln-studio-link
             >
             ${!this.submissions
@@ -533,7 +533,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.profile = {};
-    this.tag = ElmslnStudioDashboard.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -545,12 +544,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
       ? `${this.profile.firstName} ${this.profile.lastName}`
       : ``;
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("elmsln-studio-dashboard", ElmslnStudioDashboard);
+customElements.define(ElmslnStudioDashboard.tag, ElmslnStudioDashboard);
 export { ElmslnStudioDashboard };

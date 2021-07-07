@@ -46,7 +46,7 @@
         },
         {
           "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
           "valueSet": "v"
         }
       ]

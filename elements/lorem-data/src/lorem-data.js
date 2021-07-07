@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { LoremDataBehaviors } from "./lib/lorem-data-behaviors.js";
 /**
  * `lorem-data`

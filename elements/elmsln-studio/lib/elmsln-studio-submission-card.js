@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/accent-card/accent-card.js";
 
 /**
@@ -186,7 +186,6 @@ class ElmslnStudioSubmissionCard extends LitElement {
   constructor() {
     super();
     this.horizontal = false;
-    this.tag = ElmslnStudioSubmissionCard.tag;
   }
 }
 customElements.define(

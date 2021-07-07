@@ -4,7 +4,7 @@
  *
  * Based on https://github.com/TherapyChat/rss-items
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";

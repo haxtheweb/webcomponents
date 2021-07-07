@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/hax-body/lib/hax-text-context.js";
 import "@lrnwebcomponents/hax-body/lib/hax-ce-context.js";
 import "@lrnwebcomponents/hax-body/lib/hax-plate-context.js";

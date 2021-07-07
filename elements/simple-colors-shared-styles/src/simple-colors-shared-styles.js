@@ -10,7 +10,7 @@
 
  * @demo ./demo/index.html
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 
 window.SimpleColorsSharedStyles = {};
 window.SimpleColorsSharedStyles.instance = null;

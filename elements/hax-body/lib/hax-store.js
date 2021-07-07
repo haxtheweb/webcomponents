@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
   winEventsElement,
@@ -3103,22 +3103,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
       if (!this.elementList[e.detail.tag]) {
-        // @see haxHook: gizmoRegistration - allow elements to define their own
-        // custom functionality to run when a gizmo is registered
-        //console.warn(e.detail.tag);
-        if (
-          window.customElements.get(e.detail.tag) &&
-          this.testHook(
-            document.createElement(e.detail.tag),
-            "gizmoRegistration"
-          )
-        ) {
-          await this.runHook(
-            document.createElement(e.detail.tag),
-            "gizmoRegistration",
-            [this]
-          );
-        }
         let detail = e.detail;
         detail.properties = await this.attemptGizmoTranslation(
           detail.tag,
@@ -3151,6 +3135,22 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           })
         ) {
           this.validGridTagList.push(detail.tag);
+        }
+        // @see haxHook: gizmoRegistration - allow elements to define their own
+        // custom functionality to run when a gizmo is registered
+        //console.warn(e.detail.tag);
+        if (
+          window.customElements.get(e.detail.tag) &&
+          this.testHook(
+            document.createElement(e.detail.tag),
+            "gizmoRegistration"
+          )
+        ) {
+          await this.runHook(
+            document.createElement(e.detail.tag),
+            "gizmoRegistration",
+            [this]
+          );
         }
       }
       // delete this tag if it was in the autoloader as it has served it's purpose.

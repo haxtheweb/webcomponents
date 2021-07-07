@@ -2,13 +2,14 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import { router } from "lit-element-router";
 import { ElmslnStudioUtilities } from "./lib/elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./lib/elmsln-studio-styles.js";
 import "./lib/elmsln-studio-main.js";
 import "./lib/elmsln-studio-link.js";
 import "./lib/elmsln-studio-button.js";
+import "./lib/elmsln-studio-dashboard.js";
 /**
  * `elmsln-studio`
  * Studio App for ELMS:LN
@@ -35,23 +36,25 @@ class ElmslnStudio extends router(
   render() {
     return html`
       <div id="studio-nav">
-        <elmsln-studio-link ?active="${this.route === "dashboard"}" href="/"
+        <elmsln-studio-link
+          ?active="${this.route === "dashboard"}"
+          href="${this.basePath}"
           >Dashboard</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "submissions" || this.route === "project"}"
-          href="/submissions"
+          href="${this.basePath}submissions"
           >Submissions</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "assignments" ||
           this.route === "assignment"}"
-          href="/assignments"
+          href="${this.basePath}assignments"
           >Assignments</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "activity"}"
-          href="/activity"
+          href="${this.basePath}activity"
           >Activity Index</elmsln-studio-link
         >
       </div>
@@ -206,8 +209,6 @@ class ElmslnStudio extends router(
 
   constructor() {
     super();
-    window.ElmslnStudioPath = "";
-    this.baseUrl = "/";
     this.route = "";
     this.params = {};
     this.query = {};
@@ -216,7 +217,7 @@ class ElmslnStudio extends router(
   }
 
   router(route, params, query, data) {
-    console.log("ElmslnStudioPath router", route);
+    console.log(route, params, query, data);
     this.route = route;
     this.params = params;
     this.query = query;
@@ -224,16 +225,24 @@ class ElmslnStudio extends router(
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    import("./lib/elmsln-studio-dashboard.js");
-    import("./lib/elmsln-studio-submissions.js");
-    import("./lib/elmsln-studio-assignments.js");
-    import("./lib/elmsln-studio-assignment.js");
     import("./lib/elmsln-studio-portfolio.js");
     this.fetchData(this.usersSource, "users");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "route") {
+        switch (this[propName]) {
+          case "assignments":
+            import("./lib/elmsln-studio-assignments.js");
+            import("./lib/elmsln-studio-assignment.js");
+            break;
+          case "submissions":
+            import("./lib/elmsln-studio-submissions.js");
+            break;
+        }
+        console.log(this[propName]);
+      }
       //if (propName === "params") console.log("params", this.params);
       //if (propName === "query") console.log("query", this.query);
     });
@@ -437,8 +446,8 @@ class ElmslnStudio extends router(
         return false;
       })
       .then((data) => {
-        if (data) {
-          this[propName] = data;
+        if (data.status === 200) {
+          this[propName] = data.data;
           this.refreshDates[propName] = new Date();
           console.log(
             `${propName} Loaded`,

@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit-element/lit-element.js";
+import { html, css, LitElement } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
 import { autorun, toJS } from "mobx";
 class LetterGrade extends LitElement {

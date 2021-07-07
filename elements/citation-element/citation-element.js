@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";

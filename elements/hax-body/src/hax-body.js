@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";

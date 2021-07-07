@@ -1,6 +1,6 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { css, html, LitElement } from "lit-element/lit-element.js";
+import { css, html, LitElement } from "lit";
 import { autorun, toJS } from "mobx/dist/mobx.esm.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 

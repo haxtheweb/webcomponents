@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit-element/lit-element.js";
+import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";

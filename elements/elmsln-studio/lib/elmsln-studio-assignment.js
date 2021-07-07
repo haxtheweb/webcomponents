@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -414,7 +414,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         ],
       },
     ];
-    this.tag = ElmslnStudioAssignment.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -554,7 +553,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   get breadcrumb() {
     return html`
       <div id="breadcrumb">
-        <elmsln-studio-link href="/assignments">Assignments</elmsln-studio-link>
+        <elmsln-studio-link href="assignments">Assignments</elmsln-studio-link>
         <span> > </span>
         <span>
           ${!this.assignment
@@ -639,10 +638,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
     let prevLabel = (this.prevAssign || {}).assignment || "",
       nextLabel = (this.nextAssign || {}).assignment || "",
       prevHref = (this.prevAssign || {}).id
-        ? `./${this.prevAssign.id}`
+        ? `assignments/${this.prevAssign.id}`
         : undefined,
       nextHref = (this.nextAssign || {}).id
-        ? `./${this.nextAssign.id}`
+        ? `assignments/${this.nextAssign.id}`
         : undefined;
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }

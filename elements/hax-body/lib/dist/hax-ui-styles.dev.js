@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxUiStyles = exports.HaxTrayDetailHeadings = exports.HaxTrayDetail = exports.HaxComponentStyles = exports.HaxFields = exports.HaxButton = exports.HaxHexagon = exports.HaxUiBaseStyles = exports.HaxUiSingletons = exports.HaxUiFields = exports.HaxUiTooltip = exports.HaxUiColors = exports.HaxUiSpacing = exports.HaxUiText = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {

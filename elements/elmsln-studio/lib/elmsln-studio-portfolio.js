@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
@@ -267,7 +267,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   render() {
     return html`
       <div id="breadcrumb">
-        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+        <elmsln-studio-link href="submissions">Submissions</elmsln-studio-link>
         <span> > </span>
         ${!this.portfolio
           ? ``
@@ -276,7 +276,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                 ? ``
                 : html`
                     <elmsln-studio-link
-                      href="${`/submissions?project=${this.portfolio.projectId}`}"
+                      href="${`submissions?project=${this.portfolio.projectId}`}"
                       >${this.portfolio.project ||
                       "Project"}</elmsln-studio-link
                     >
@@ -287,7 +287,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           ? html`<em>Assignment</em>`
           : html`
               <elmsln-studio-link
-                href="${`/submissions?${
+                href="${`submissions?${
                   !this.portfolio.projectId || !this.portfolio.project
                     ? ``
                     : `project=${this.portfolio.projectId}&`
@@ -544,7 +544,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     super();
     this.feedback = {};
     this.comment = "";
-    this.tag = ElmslnStudioPortfolio.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

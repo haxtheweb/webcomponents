@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit";
 /**
  * `undo-manager`
  * `an undo history manager element`

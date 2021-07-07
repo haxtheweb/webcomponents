@@ -1,4 +1,4 @@
-import { html, css } from "lit-element";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 class SimpleToastEl extends SimpleColors {

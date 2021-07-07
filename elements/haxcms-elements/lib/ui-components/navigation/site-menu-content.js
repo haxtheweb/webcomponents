@@ -2,7 +2,7 @@ import { PageContentsMenu } from "@lrnwebcomponents/page-contents-menu/page-cont
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { css, html } from "lit-element/lit-element.js";
+import { css, html } from "lit";
 
 class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   static get tag() {

@@ -1,5 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { nothing } from "lit-html/lit-html.js";
+import { LitElement, html, css, nothing } from "lit";
 class LoadingIndicator extends LitElement {
   static get styles() {
     return css`

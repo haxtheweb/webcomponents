@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./lrndesign-mapmenu-item.js";

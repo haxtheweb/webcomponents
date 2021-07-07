@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "./elmsln-studio-submission-card.js";
@@ -350,7 +350,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       </elmsln-studio-link>
                       <elmsln-studio-link
                         id="student-${s.id}"
-                        href="/submissions${!s.userId
+                        href="submissions${!s.userId
                           ? ""
                           : `?student=${s.userId}`}"
                         slot="subheading"
@@ -508,7 +508,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     super();
     this.list = false;
     this.commentLoad = 15;
-    this.tag = ElmslnStudioSubmissions.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";

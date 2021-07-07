@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 /**

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxToolbarMenuItem = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _simpleToolbarMenuItem = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 

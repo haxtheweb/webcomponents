@@ -1,6 +1,5 @@
-import { html, LitElement } from "lit-element/lit-element.js";
-import { render } from "lit-html/lib/render.js";
-import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
+import { html, LitElement, render } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./simple-popover-manager.js";
 
 class SimplePopoverSelection extends LitElement {

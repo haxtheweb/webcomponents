@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./responsive-grid-col.js";
 import "./responsive-grid-clear.js";

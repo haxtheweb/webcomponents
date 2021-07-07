@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxTextEditor = void 0;
 
-var _litElement = require("lit-element");
+var _litElement = require("lit");
 
 var _richTextEditor = require("@lrnwebcomponents/rich-text-editor/rich-text-editor.js");
 

@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, svg, css, LitElement } from "lit-element/lit-element.js";
+import { html, svg, css, LitElement } from "lit";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
 import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";

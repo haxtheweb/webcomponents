@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 /**
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map

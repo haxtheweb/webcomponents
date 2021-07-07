@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html } from "lit-element/lit-element.js";
+import { css, html } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
