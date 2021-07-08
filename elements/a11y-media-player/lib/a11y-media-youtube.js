@@ -262,7 +262,7 @@ class A11yMediaYoutube extends LitElement {
       if (propName === "volume") this.setVolume(this.volume);
 
       /* reload one batch of changes at a time */
-      if (propName === "videoId" && this.videoId && !this.__yt) this.init();
+      if (propName === "videoId" && !!this.videoId && !this.__yt) this.init();
       if (["id", "height", "width", "preload"].includes(propName) && this.__yt)
         iframeChanged = true;
 
@@ -288,7 +288,15 @@ class A11yMediaYoutube extends LitElement {
    */
   play() {
     if (!this.__yt) this.__yt = this._preloadVideo(false);
-    if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
+    if (this.__yt && this.__yt.playVideo) {
+      this.__playQueued = true;
+      var yt = this.__yt,
+        fn = function () {
+          yt.playVideo();
+          this.__playQueued = false;
+        };
+      setTimeout(fn, 1000);
+    }
   }
 
   /**
@@ -421,7 +429,7 @@ class A11yMediaYoutube extends LitElement {
    * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
   _loadVideo(preload = this.preload) {
-    if (this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
+    if (!!this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
   }
 
   /**
