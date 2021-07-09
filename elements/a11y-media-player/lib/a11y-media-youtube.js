@@ -256,13 +256,15 @@ class A11yMediaYoutube extends LitElement {
       autoChanged = false;
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "muted") this.setMute(this.muted);
+      if (propName === "duration" && this.duration > 0)
+        this._handleMediaLoaded();
       if (propName === "loop") this.setLoop(this.loop);
       if (propName === "currentTime") this.seek(this.currentTime);
       if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
       if (propName === "volume") this.setVolume(this.volume);
 
       /* reload one batch of changes at a time */
-      if (propName === "videoId" && this.videoId && !this.__yt) this.init();
+      if (propName === "videoId" && !!this.videoId && !this.__yt) this.init();
       if (["id", "height", "width", "preload"].includes(propName) && this.__yt)
         iframeChanged = true;
 
@@ -288,7 +290,20 @@ class A11yMediaYoutube extends LitElement {
    */
   play() {
     if (!this.__yt) this.__yt = this._preloadVideo(false);
-    if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
+    if (
+      !!this.__yt &&
+      !!this.__yt.playVideo &&
+      !!this.__video &&
+      !!this.videoId
+    ) {
+      this.__playQueued = true;
+      var yt = this.__yt,
+        fn = function () {
+          yt.playVideo();
+          this.__playQueued = false;
+        };
+      setTimeout(fn, 1000);
+    }
   }
 
   /**
@@ -364,6 +379,20 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
+   * Fires as YouTube after video src is loaded
+   * @event mediastatechange
+   */
+  _handleMediaStateChange(e) {
+    this.dispatchEvent(
+      new CustomEvent("mediastatechange", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e,
+      })
+    );
+  }
+  /**
    * Fires as YouTube video time changes
    * @event timeupdate
    */
@@ -421,7 +450,7 @@ class A11yMediaYoutube extends LitElement {
    * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
   _loadVideo(preload = this.preload) {
-    if (this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
+    if (!!this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
   }
 
   /**
@@ -463,12 +492,13 @@ class A11yMediaYoutube extends LitElement {
         },
       });
       youtube.timeupdate;
-      youtube.addEventListener("onStateChange", () => {
+      youtube.addEventListener("onStateChange", (e) => {
         if (root.paused) {
           clearInterval(youtube.timeupdate);
         } else {
           youtube.timeupdate = setInterval(() => root._handleTimeupdate(), 1);
         }
+        this._handleMediaStateChange(e);
       });
       this.appendChild(youtube.getIframe());
       div.remove();
