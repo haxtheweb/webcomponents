@@ -76,7 +76,6 @@ class RichTextEditorClipboard extends LitElement {
    */
   constructor() {
     super();
-    this.__textarea = this.shadowRoot.querySelector("textarea");
   }
 }
 window.customElements.define(
