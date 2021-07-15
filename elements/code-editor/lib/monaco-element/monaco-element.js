@@ -331,7 +331,7 @@ class MonacoElement extends LitElement {
         },
       });
     }
-    if (this.autofocus) this.iframe.focus();
+    if (this.autofocus && this.iframe) this.iframe.focus();
   }
 
   handleMessage(message) {
