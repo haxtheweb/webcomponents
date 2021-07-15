@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { A11yTabs } from "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import {

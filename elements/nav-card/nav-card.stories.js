@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { NavCard } from "@lrnwebcomponents/nav-card/nav-card.js";
 import { NavCardItem } from "@lrnwebcomponents/nav-card/lib/nav-card-item.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";

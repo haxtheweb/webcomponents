@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import { RichTextEditorToolbarFull } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";

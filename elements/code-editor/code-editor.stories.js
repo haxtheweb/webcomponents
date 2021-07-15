@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { CodeEditor } from "@lrnwebcomponents/code-editor/code-editor.js";
 import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
 import "@lrnwebcomponents/code-editor/lib/code-pen-button.js";

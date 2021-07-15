@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit-element/lit-element.js";
+import { html, LitElement } from "lit";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";

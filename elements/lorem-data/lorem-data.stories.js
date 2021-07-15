@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { LoremData } from "@lrnwebcomponents/lorem-data/lorem-data.js";
 import {
   withKnobs,
