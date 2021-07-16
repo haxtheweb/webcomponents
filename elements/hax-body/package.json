@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/hax-body",
   "wcfactory": {
     "className": "HaxBody",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hax-body",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
@@ -27,7 +27,7 @@
     "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/hax-body/demo/index.html --compile=never",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
@@ -38,6 +38,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/accent-card": "^3.0.7",
     "@lrnwebcomponents/absolute-position-behavior": "^3.0.7",
     "@lrnwebcomponents/code-editor": "^3.0.7",
     "@lrnwebcomponents/dl-behavior": "^3.0.7",
@@ -57,8 +58,8 @@
     "@lrnwebcomponents/simple-icon-picker": "^3.0.7",
     "@lrnwebcomponents/simple-modal": "^3.0.7",
     "@lrnwebcomponents/simple-popover": "^3.0.7",
-    "@lrnwebcomponents/simple-toolbar": "^3.0.7",
     "@lrnwebcomponents/simple-toast": "^3.0.7",
+    "@lrnwebcomponents/simple-toolbar": "^3.0.7",
     "@lrnwebcomponents/simple-tooltip": "^3.0.7",
     "@lrnwebcomponents/undo-manager": "^3.0.7",
     "@lrnwebcomponents/utils": "^3.0.0",
@@ -70,7 +71,6 @@
     "@lrnwebcomponents/a11y-collapse": "^3.0.7",
     "@lrnwebcomponents/a11y-gif-player": "^3.0.7",
     "@lrnwebcomponents/a11y-menu-button": "^3.0.7",
-    "@lrnwebcomponents/accent-card": "^3.0.7",
     "@lrnwebcomponents/citation-element": "^3.0.7",
     "@lrnwebcomponents/code-sample": "^3.0.7",
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
@@ -107,7 +107,10 @@
     "@web/test-runner": "0.13.5",
     "@web/test-runner-commands": "0.4.5",
     "@web/test-runner-playwright": "0.8.6",
-    "@web/test-runner-puppeteer": "0.10.0"
+    "@web/test-runner-puppeteer": "0.10.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
