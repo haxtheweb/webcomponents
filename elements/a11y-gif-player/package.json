@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",

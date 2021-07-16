@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",

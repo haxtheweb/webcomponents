@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "A full width alert that has an important message for the website viewer",
   "repository": {
     "type": "git",

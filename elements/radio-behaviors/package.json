@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Provides state management when only one child can be selected at a time.",
   "repository": {
     "type": "git",
