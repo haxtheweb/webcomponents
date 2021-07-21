@@ -32,7 +32,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -68,7 +68,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.4",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.6",
       "polymer-build": "3.1.1",
       "wct-browser-legacy": "1.0.2"
@@ -102,7 +102,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -141,7 +141,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -180,7 +180,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -221,7 +221,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -260,7 +260,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"
@@ -299,7 +299,7 @@
       "concurrently": "4.1.0",
       "gulp-babel": "8.0.0",
       "gulp-sourcemaps": "2.6.5",
-      "lodash": "4.17.11",
+      "lodash": "^4.17.21",
       "polymer-cli": "1.9.7",
       "polymer-build": "3.1.2",
       "wct-browser-legacy": "1.0.2"

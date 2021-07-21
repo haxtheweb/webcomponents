@@ -54,7 +54,7 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.19",
+    "lodash": "^4.17.21",
     "polymer-cli": "1.9.11",
     "es-dev-server": "2.1.0",
     "concurrently": "5.0.2",
