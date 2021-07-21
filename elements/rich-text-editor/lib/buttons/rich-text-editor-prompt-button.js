@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 /**
@@ -56,13 +55,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           type: Object,
         },
         /**
-         * prompt that pops up when button is pressed
-         */
-        prompt: {
-          name: "prompt",
-          type: Object,
-        },
-        /**
          * contents node inside selected range
          */
         __wrap: {
@@ -90,7 +82,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       ];
       this.tagsList = "span";
       this.value = { innerHTML: undefined };
-      this.prompt = window.RichTextEditorPrompt.requestAvailability();
     }
 
     firstUpdated(changedProperties) {
@@ -126,6 +117,11 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       );
       return innerHTML && innerHTML.length > 0;
     }
+
+    get targetedNode() {
+      let firstMatch = this.__highlight.querySelectorAll(this.tagsList);
+      return firstMatch.length === 1 ? firstMatch[0] : this.__highlight;
+    }
     /**
      * override this custom function to perform a
      * custom operation when an element that matches the tags list is clicked
@@ -133,10 +129,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @param {event} e click event
      */
     tagClickCallback(e = {}) {
-      if (e.detail) {
-        this.selectNode(e.detail);
-        this.open(e.detail);
-      }
+      if (e.detail) this.open(e.detail);
     }
 
     /**
@@ -151,61 +144,19 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      *
      */
     close() {
-      this.dispatchEvent(
-        new CustomEvent("rich-text-editor-prompt-closed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
+      this.__highlight.unwrap(this.range);
+      if (this.range) this.range.collapse();
     }
 
     /**
      * updates insertion based on fields
      */
     confirm(val) {
-      this.close();
       this.value = val;
-      this.update();
+      //this.update();
       this.setToggled();
-      this.promptCommandVal;
       this.updateSelection();
-    }
-    /**
-     * expands selection to include this.tags
-     *
-     */
-    expandSelection() {
-      let element = this.rangeQuery();
-      if (!!element) {
-        this.highlightNode(element);
-        this.selectedNode = element;
-      }
-    }
-    /**
-     * if selection is a node, gets node innerHTML
-     *
-     * @returns {string}
-     */
-    getInnerHTML() {
-      let target =
-          this.range && this.range.cloneContents
-            ? this.range.cloneContents()
-            : undefined,
-        root = this.rangeElement() ? this.rangeElement() : undefined,
-        temp,
-        html;
-
-      if (this.rangeIsElement()) {
-        html = root ? root.innerHTML : undefined;
-      } else {
-        temp = document.createElement("span");
-        if (target) temp.appendChild(target);
-        html = temp.innerHTML;
-        temp.remove();
-      }
-      return html;
+      this.close();
     }
 
     /**
@@ -216,13 +167,14 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @memberof RichTextEditorPrompt
      */
     getPropValue(prop) {
-      let val = !!this.value ? this.value : false,
+      let val = !!this.value ? { ...this.value } : false,
         rawVal =
           !val || !val[prop]
             ? false
             : val[prop].trim
             ? val[prop].trim()
             : val[prop];
+
       return rawVal && rawVal !== "" ? rawVal : false;
     }
 
@@ -230,8 +182,8 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * gets value for prompt based on current selection
      * (can be overriden for custom prompt field values)
      */
-    getValue(node) {
-      return { innerHTML: this.getInnerHTML() || "" };
+    getValue() {
+      return { innerHTML: this.targetedNode.innerHTML || "" };
     }
 
     /**
@@ -239,9 +191,8 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @param {object} node optional node to select instead of range
      * @event rich-text-editor-prompt-open
      */
-    open() {
-      this.expandSelection();
-      this.highlight();
+    open(node) {
+      this.highlightNode(node);
       this.value = this.getValue();
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
@@ -258,12 +209,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @param {string} html
      */
     setInnerHTML(html) {
-      let target = this.rangeElement();
-      if (target && this.rangeIsElement()) {
-        target.innerHTML = html;
-      } else if (this.range) {
-        this.sendCommand("insertHTML", html);
-      }
+      if (this.setsInnerHTML) this.targetedNode.innerHTML = html;
     }
     /**
      * updates toggled based on values passed from prompt
@@ -276,18 +222,15 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * updates selection based on values passed from prompt
      */
     updateSelection() {
-      let parent = this.range.commonAncestorContainer;
-      if (this.rangeIsElement()) {
-        if (this.setsInnerHTML)
-          this.setInnerHTML(this.getPropValue("innerHTML"));
-        this.sendCommand(this.promptCommand, this.promptCommandVal);
+      let command = this.promptCommand,
+        commandVal = this.promptCommandVal;
+      this.setInnerHTML(this.getPropValue("innerHTML"));
+      if (this.targetedNode === this.__highlight) {
+        this.selectNodeContents(this.targetedNode);
       } else {
-        this.sendCommand(this.promptCommand, this.promptCommandVal);
-        if (this.setsInnerHTML)
-          this.setInnerHTML(this.getPropValue("innerHTML"));
+        this.selectNode(this.targetedNode);
       }
-      this.range.collapse();
-      parent.normalize();
+      this._handleCommand(command, commandVal, this.range);
     }
 
     /**

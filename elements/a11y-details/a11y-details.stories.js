@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";

@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { A11yCollapseGroup } from "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import { A11yCollapse } from "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import {

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Uses simple-picker to create an icon picker",
   "repository": {
     "type": "git",

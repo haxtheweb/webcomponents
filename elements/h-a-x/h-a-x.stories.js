@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { HAX } from "@lrnwebcomponents/h-a-x/h-a-x.js";
 import {
   withKnobs,

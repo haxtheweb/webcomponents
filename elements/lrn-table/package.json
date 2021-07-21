@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { LrndesignAvatar } from "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import * as md5 from "@lrnwebcomponents/paper-avatar/lib/md5.min.js";
 //import * as jdenticon from "@lrnwebcomponents/paper-avatar/lib/jdenticon-1.4.0.min.js";

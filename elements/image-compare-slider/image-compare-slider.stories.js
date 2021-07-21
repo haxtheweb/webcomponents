@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { ImageCompareSlider } from "@lrnwebcomponents/image-compare-slider/image-compare-slider.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";

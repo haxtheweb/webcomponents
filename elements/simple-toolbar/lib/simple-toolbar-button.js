@@ -393,7 +393,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @returns
      */
     _uniqueText(string1 = "", string2 = "") {
-      return string1.trim() !== string2.trim();
+      return (string1 || "").trim() !== (string2 || "").trim();
     }
     /**
      * template for button icon

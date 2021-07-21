@@ -321,7 +321,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: event,
+            detail: this,
           })
         );
       }
@@ -342,7 +342,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: event,
+          detail: this,
         })
       );
     }

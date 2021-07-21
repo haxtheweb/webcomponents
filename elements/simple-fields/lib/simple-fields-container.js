@@ -135,7 +135,6 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           }
           ::slotted(fieldset[slot="field"]:hover),
           ::slotted(fieldset[slot="field"]:focus),
-          ,
           ::slotted(fieldset[slot="field"]:focus-within) {
             color: var(--simple-fields-accent-color, #3f51b5);
           }

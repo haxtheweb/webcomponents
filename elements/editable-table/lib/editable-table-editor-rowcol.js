@@ -90,8 +90,7 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
     return html`
       <a11y-menu-button
         id="menubutton" 
-        position="${this.row ? "right" : "bottom"}"
-        @open="${this._onOpen}">
+        position="${this.row ? "right" : "bottom"}">
         <span class="sr-only" slot="button">${this.type}</span>
         <span id="label" slot="button">${this.label || ""} </span>
         <span class="sr-only" slot="button">Menu</span>
@@ -161,6 +160,13 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   get type() {
     return this.row ? "Row" : "Column";
   }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "expanded") this.menuToggle();
+    });
+  }
   /**
    * Fires when  selection is made from menu button
    * @event delete-rowcol
@@ -194,17 +200,13 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
       ${this.labelInfo}
     </a11y-menu-button-item>`;
   }
-  _onOpen(e) {
+  menuToggle(e) {
     this.dispatchEvent(
-      new CustomEvent("rowcol-menuopen", {
+      new CustomEvent("rowcol-menu-toggle", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: {
-          insert: true,
-          row: this.row,
-          index: this.index,
-        },
+        detail: this,
       })
     );
   }

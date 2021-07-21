@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { A11yMenuButtonGroup } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-group.js";
 import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import {
