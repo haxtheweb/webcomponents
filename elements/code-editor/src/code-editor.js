@@ -342,7 +342,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editorValue") {
-        this._editorValueChanged(this[propName], oldValue);
+        this._editorValueChanged(this[propName]);
       }
       if (propName == "mode") {
         this._modeChanged(this[propName], oldValue);
@@ -454,7 +454,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   }
   _editorValueChanged(newValue) {
     if (newValue) {
-      this.shadowRoot.querySelector("#codeeditor").value = newValue;
+      this.innerHTML = `<template>${newValue}</template>`;
+      this.updateEditorValue();
     }
   }
   /**

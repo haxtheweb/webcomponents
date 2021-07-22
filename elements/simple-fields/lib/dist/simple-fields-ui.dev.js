@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SimpleFieldsFieldsetStyles = exports.SimpleFieldsDescriptionStyles = exports.SimpleFieldsButtonStyles = exports.SimpleFieldsTooltipStyles = exports.SimpleFieldsLabelStyles = exports.SimpleFieldsBaseStyles = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 function _templateObject6() {
   var data = _taggedTemplateLiteral([

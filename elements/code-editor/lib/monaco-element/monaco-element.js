@@ -138,7 +138,7 @@ class MonacoElement extends LitElement {
       .substring(1);
   }
   get document() {
-    if (this.iframe.contentWindow) {
+    if (this.iframe && this.iframe.contentWindow) {
       return this.iframe.contentWindow.document;
     }
   }
@@ -165,6 +165,7 @@ class MonacoElement extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
+    if (!this.__init) this.initIFrame();
     window.addEventListener("message", (message) => {
       this.handleMessage(message);
     });
@@ -330,7 +331,7 @@ class MonacoElement extends LitElement {
         },
       });
     }
-    if (this.autofocus) this.iframe.focus();
+    if (this.autofocus && this.iframe) this.iframe.focus();
   }
 
   handleMessage(message) {

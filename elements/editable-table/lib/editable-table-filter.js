@@ -27,6 +27,9 @@ class EditableTableFilter extends LitElement {
         #filter-off {
           opacity: 0.25;
         }
+        #button {
+          text-align: unset;
+        }
         :host(:not([filtered])) .filtered,
         :host(:not([filtered]):not(:focus):not(:hover)) #filter,
         :host(:not([filtered]):focus) #filter-off,

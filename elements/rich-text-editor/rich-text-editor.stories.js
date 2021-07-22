@@ -397,7 +397,7 @@ const editor = (id, config) =>
 const rawProps = (toolbarProps) => {
   delete toolbarProps.canceled;
   delete toolbarProps.controls;
-  delete toolbarProps.editor;
+  delete toolbarProps.target;
   delete toolbarProps.responsiveSize;
   delete toolbarProps.savedSelection;
   delete toolbarProps.range;

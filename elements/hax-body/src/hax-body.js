@@ -1020,7 +1020,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // this avoids empty elements however we don't want it to trigger
                 // active to change
                 if (!this.___moveLock && !mutFind) {
-                  console.log("not movelock", target);
+                  console.log("not movelock", node);
                   mutFind = true;
                   HAXStore.activeNode = node;
                   if (node.tagName === "BR") {

@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextToolbarStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
@@ -21,9 +22,11 @@ simple-toolbar/simple-toolbar-button variables.
  * @lit-element
  *  @element rich-text-editor-breadcrumbs
  */
-class RichTextEditorBreadcrumbs extends LitElement {
+class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
+  LitElement
+) {
   /**
-   * Store tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to )obtain directly.
    */
   static get tag() {
     return "rich-text-editor-breadcrumbs";
@@ -64,6 +67,12 @@ class RichTextEditorBreadcrumbs extends LitElement {
       selectionAncestors: {
         type: Array,
       },
+      /**
+       * active rict-text-editor.
+       */
+      __target: {
+        type: Object,
+      },
     };
   }
 
@@ -78,16 +87,15 @@ class RichTextEditorBreadcrumbs extends LitElement {
    * @param {event} e the button tab event
    * @returns {void}
    */
-  _handleClick(ancestor) {
-    this.dispatchEvent(
-      new CustomEvent("breadcrumb-click", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: ancestor,
-      })
-    );
+  _handleClick(breadcrumb) {
+    if (breadcrumb.selectAll) {
+      this.selectNodeContents(breadcrumb.selectAll);
+    } else {
+      this.selectNode(breadcrumb);
+    }
+    if (this.__target) this.__target.focus();
   }
+
   render() {
     return html`
       ${this.label}:
@@ -96,7 +104,7 @@ class RichTextEditorBreadcrumbs extends LitElement {
         : (this.selectionAncestors || []).map(
             (ancestor, i) => html`
               <button
-                class="${ancestor.selectAll ? "" : "selectnode"}"
+                class="${!!ancestor.selectAll ? "" : "selectnode"}"
                 controls="${this.controls}"
                 @click="${(e) => this._handleClick(ancestor)}"
                 tabindex="0"

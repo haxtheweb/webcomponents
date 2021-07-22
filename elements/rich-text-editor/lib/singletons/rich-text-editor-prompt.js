@@ -6,7 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextToolbarStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-selection.js";
+import "./rich-text-editor-highlight.js";
+import { RichTextEditorRangeBehaviors } from "./rich-text-editor-range-behaviors.js";
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages state of multiple rich-text-prompts on one page.`
@@ -16,7 +17,7 @@ import "./rich-text-editor-selection.js";
  * @lit-element
  * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends LitElement {
+class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
   static get styles() {
     return [
       ...RichTextToolbarStyles,
@@ -85,12 +86,12 @@ class RichTextEditorPrompt extends LitElement {
     return html`
       <simple-popover
         id="prompt"
-        ?auto="${!this.hidden}"
-        for="${this.selection ? this.selection.id : ""}"
-        ?hidden="${this.hidden}"
+        ?auto="${!this.hidden || !this.__highlight.hidden}"
+        for="${this.__highlight ? this.__highlight.id : ""}"
+        ?hidden="${this.hidden || this.__highlight.hidden}"
         position="bottom"
         position-align="center"
-        .target="${this.selection}"
+        .target="${this.__highlight}"
       >
         <form
           id="form"
@@ -105,24 +106,24 @@ class RichTextEditorPrompt extends LitElement {
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            <rich-text-editor-button
+            <simple-toolbar-button
               id="cancel"
-              controls="${this.selection ? this.selection.id : ""}"
+              controls="${this.__highlight ? this.__highlight.id : ""}"
               label="Cancel"
               icon="clear"
               @click="${this._cancel}"
               tabindex="0"
             >
-            </rich-text-editor-button>
-            <rich-text-editor-button
+            </simple-toolbar-button>
+            <simple-toolbar-button
               id="confirm"
-              controls="${this.selection ? this.selection.id : ""}"
+              controls="${this.__highlight ? this.__highlight.id : ""}"
               @click="${this._confirm}"
               icon="check"
               label="OK"
               tabindex="0"
             >
-            </rich-text-editor-button>
+            </simple-toolbar-button>
           </div>
         </form>
       </simple-popover>
@@ -202,17 +203,9 @@ class RichTextEditorPrompt extends LitElement {
   get hidden() {
     return !this.__opened;
   }
-  /**
-   * gets RichTextEditorSelection singleton for range management
-   *
-   * @readonly
-   * @memberof RichTextEditorPrompt
-   */
-  get selection() {
-    return window.RichTextEditorSelection.requestAvailability();
-  }
   firstUpdated(changedProperties) {
-    this.selection.addEventListener("change", (e) =>
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.__highlight.addEventListener("change", (e) =>
       setTimeout(this._handleChange(e), 300)
     );
     this.addEventListener("focus", this._handleFocus);
@@ -220,7 +213,7 @@ class RichTextEditorPrompt extends LitElement {
     this.addEventListener("blur", this._handleBlur);
   }
   updated(changedProperties) {
-    super.updated(changedProperties);
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (["__focused", "__hovered", "__opened"].includes(propName))
         setTimeout(this._handleChange.bind(this), 300);
@@ -263,7 +256,9 @@ class RichTextEditorPrompt extends LitElement {
    * @memberof RichTextEditorPrompt
    */
   _handleChange(e) {
-    if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
+    setTimeout(() => {
+      if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
+    }, 500);
   }
   /**
    * opens prompt and generates for fields
@@ -272,14 +267,13 @@ class RichTextEditorPrompt extends LitElement {
    * @memberof RichTextEditorPrompt
    */
   open(e) {
-    if (e) {
+    if (e && e.detail) {
       this.__opened = true;
-      this.shadowRoot.querySelector("#cancel").focus();
+      this.__focused = true;
       this.button = e.detail;
       this.fields = [...e.detail.fields];
-      this.__selection = e.detail.__selection;
-      this.selectedNode = e.detail.selectedNode;
       this.value = { ...e.detail.value };
+      this.shadowRoot.querySelector("#cancel").focus();
     }
   }
   /**
