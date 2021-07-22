@@ -411,11 +411,6 @@ class CleanTwo extends HAXCMSRememberRoute(
             width: 48vw;
           }
         }
-        @media screen and (min-width: 1514px) {
-          .body-wrapper .content-wrapper .content {
-            padding: 32px 0 16px 32px;
-          }
-        }
         .right-col {
           margin: 0;
           padding: 0;

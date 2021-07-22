@@ -24,7 +24,7 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "./lib/letter-grade.js";
 import "./lib/letter-grade-picker.js";
-import "@github/time-elements/dist/time-elements.js";
+import "@github/time-elements";
 import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
 import { GradeBookStore } from "./lib/grade-book-store.js";
 import "./lib/grade-book-pop-up.js";
