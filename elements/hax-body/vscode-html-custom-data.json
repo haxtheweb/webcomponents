@@ -1066,7 +1066,7 @@
     },
     {
       "name": "hax-text-editor-button",
-      "description": "`hax-text-editor-button`\na custom-element button for hax text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-closed` {`CustomEvent<this>`} - \n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; button: this; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `element` - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `element` - \n\n  * `tag` {`string`} - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` - overriden from RichTextEditorPromptButtonBehaviors:\nto determin if gizmo will be inserted\n\n  * `setsInnerHTML` {`boolean`} - determines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `tagsArray` {`string[]`} - tagslist as an array\n\n  * `__selection` - highlight surrounding selected range\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "description": "`hax-text-editor-button`\na custom-element button for hax text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: any; commandVal: any; range: any; button: this; }>`} - \n\n  * `paste` {`CustomEvent<any>`} - \n\n  * `rangechange` {`CustomEvent<{ element: this; range: any; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `element` - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__toolbar` - \n\n  * `__source` - \n\n  * `__highlight` - \n\n  * `__clipboard` - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `element` - \n\n  * `tag` {`string`} - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` - overriden from RichTextEditorPromptButtonBehaviors:\nto determin if gizmo will be inserted\n\n  * `setsInnerHTML` {`boolean`} - determines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `targetedNode` - \n\n  * `editableSelection` {`boolean`} - \n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `tagsArray` {`string[]`} - tagslist as an array\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__toolbar` - \n\n  * `__source` - \n\n  * `commandIsToggled` {`boolean`} - \n\n  * `hasBreadcrumbs` {`boolean`} - whether or not toolbar breadcrumbs\n(override to force a toolbar to always use or not use them)\n\n  * `toggledCommands` {`any[]`} - an array of all the valid commands that are toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `highlighted` {`boolean`} - determines if range is being preserved by highlight\n\n  * `__highlight` - \n\n  * `__clipboard` - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "element",
@@ -1093,20 +1093,12 @@
           "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "prompt",
-          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
-        },
-        {
           "name": "command",
           "description": "`command` {`string`} - The command used for document.execCommand.\n\nProperty: command\n\nDefault: insertHTML"
         },
         {
           "name": "command-val",
           "description": "`command-val` - Optional parameter for the command.\n\nProperty: commandVal"
-        },
-        {
-          "name": "range",
-          "description": "`range` - The active selected range, inherited from the toolbar\n\nProperty: range"
         },
         {
           "name": "toggled-command",
@@ -1125,12 +1117,28 @@
           "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
         },
         {
-          "name": "__selection",
-          "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
-        },
-        {
           "name": "tagsList",
           "description": "`tagsList` {`string`} - tags edited by this button\n\nProperty: tagsList\n\nDefault: span"
+        },
+        {
+          "name": "range",
+          "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
+        },
+        {
+          "name": "__toolbar",
+          "description": "`__toolbar` - \n\nProperty: __toolbar"
+        },
+        {
+          "name": "__source",
+          "description": "`__source` - \n\nProperty: __source"
+        },
+        {
+          "name": "__highlight",
+          "description": "`__highlight` - \n\nProperty: __highlight"
+        },
+        {
+          "name": "__clipboard",
+          "description": "`__clipboard` - \n\nProperty: __clipboard"
         },
         {
           "name": "controls",
@@ -1185,32 +1193,8 @@
           "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
-          "name": "onrich-text-editor-prompt-closed",
-          "description": "`rich-text-editor-prompt-closed` {`CustomEvent<this>`} - "
-        },
-        {
           "name": "onrich-text-editor-prompt-open",
           "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onhighlight",
-          "description": "`highlight` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onhighlightnode",
-          "description": "`highlightnode` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onselectrange",
-          "description": "`selectrange` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onselectnode",
-          "description": "`selectnode` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onselectnodeccontents",
-          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
         },
         {
           "name": "onwrapselection",
@@ -1218,7 +1202,15 @@
         },
         {
           "name": "oncommand",
-          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; button: this; }>`} - "
+          "description": "`command` {`CustomEvent<{ command: any; commandVal: any; range: any; button: this; }>`} - "
+        },
+        {
+          "name": "onpaste",
+          "description": "`paste` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onrangechange",
+          "description": "`rangechange` {`CustomEvent<{ element: this; range: any; }>`} - "
         },
         {
           "name": "onregister-button",
@@ -1236,7 +1228,7 @@
     },
     {
       "name": "hax-text-editor-toolbar",
-      "description": "`hax-text-editor-toolbar`\na customized toolbar (with buttons) for HAX\n\nEvents:\n\n  * `cancel` {`CustomEvent<this>`} - \n\n  * `disableediting` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `rich-text-editor-register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - \n\n  * `setrange` {`CustomEvent<{ editor: any; range: any; }>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodecontents` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `pastefromclipboard` {`CustomEvent<any>`} - \n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `editor` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `paste-disabled` {`boolean`} - hides paste button in Firefox\n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `__selection` - selection singleton\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbs-select-all-label` {`string`} - The label for the breadcrums area.\n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `tag` - \n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `hasBreadcrumbs` {`boolean`} - whether or not toolbar breadcrumbs\n(override to force a toolbar to always use or not use them)\n\n  * `undoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an undo button\n\n  * `redoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a redo button\n\n  * `historyButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a history button group: undo + redo\n\n  * `formatButton` {`{ label: string; type: string; }`} - default config for a format button\n\n  * `boldButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for a bold button\n\n  * `italicButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for an italic button\n\n  * `underlineButton` {`{ type: string; }`} - default config for an underline button\n\n  * `removeFormatButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a remove format button\n\n  * `basicInlineButtonGroup` {`{ type: string; buttons: { label: string; type: string; }[]; }`} - default config for a style button group: format, bold, italic, and remove format\n\n  * `linkButton` {`{ icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a link button\n\n  * `linkButtonGroup` {`{ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a link button group: link\n\n  * `cutButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a cut button\n\n  * `copyButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a copy button\n\n  * `pasteButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a paste button\n\n  * `clipboardButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a clipboard button group: cut, copy, and paste\n\n  * `subscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a subscript button\n\n  * `superscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a superscript button\n\n  * `scriptButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; toggles: boolean; type: string; }[]; }`} - default config for a script button group: subscript & superscript\n\n  * `symbolButton` {`{ symbolTypes: string[]; type: string; }`} - default config for a symbol button\n\n  * `emojiButton` {`{ type: string; }`} - default config for an emoji button\n\n  * `imageButton` {`{ type: string; }`} - default config for an image button\n\n  * `insertButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for an insert button group: image\n\n  * `orderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an ordered list button\n\n  * `unorderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an unordered list button\n\n  * `blockquoteButton` {`{ command: string; commandVal: string; label: string; icon: string; shortcutKeys: string; type: string; }`} - default config for a blockquote button\n\n  * `indentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an indent button\n\n  * `outdentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an outdent button\n\n  * `listIndentButtonGroup` {`{ type: string; buttons: ({ command: string; icon: string; label: string; toggles: boolean; type: string; } | { command: string; icon: string; label: string; shortcutKeys: string; type: string; })[]; }`} - default config for a list and indent button group:\nordered, unordered, blockquote, indent, outdent\n\n  * `saveButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for an save button\n\n  * `closeButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a close button\n\n  * `saveCloseButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; }`} - default config for a save and close button group: save and close\n\n  * `sourceButton` {`{ type: string; }`} - default config for a view source button\n\n  * `sourceButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for a source button group: view source\n\n  * `defaultConfig` {`any[]`} - default config for toolbar with\ndefault history, style, link, clipboard, script, insert, and list button groups\n\n  * `miniConfig` {`({ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; } | { type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; })[]`} - default config for toolbar with\ndefault a custom group of style buttons,\ndefault link button group,\ndefault script button group,\nand a custom list button groups\n\n  * `miniTemplate` {`TemplateResult<1>`} - a template that places toolbar in a container\nso that it can be positioned absolutely\n\n  * `editor` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `__pasteDisabled` {`boolean`} - hides paste button in Firefox\n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `__selection` - selection singleton\n\n  * `controls` {`string`} - id of editor currently being controlled\n\n  * `disconnected` {`boolean`} - determines if the toolbar is hidden\n\n  * `noSelection` {`boolean`} - determines if the toolbar has an extive selection\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbsLabel` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbsSelectAllLabel` {`string`} - The label for the breadcrums area.\n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult<1>`} - more button's template\n\n  * `toolbarTemplate` - default toolbar template uses simple-toolbar\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+      "description": "`hax-text-editor-toolbar`\na customized toolbar (with buttons) for HAX\n\nEvents:\n\n  * `cancel` {`CustomEvent<this>`} - \n\n  * `close` {`CustomEvent<this>`} - \n\n  * `editor-change` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `enabled` {`CustomEvent<any>`} - \n\n  * `disabled` {`CustomEvent<any>`} - \n\n  * `paste` {`CustomEvent<any>`} - \n\n  * `rangechange` {`CustomEvent<{ element: this; range: any; }>`} - \n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `target` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `paste-disabled` {`boolean`} - hides paste button in Firefox\n\n  * `__prompt` - \n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbs-select-all-label` {`string`} - The label for the breadcrums area.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__toolbar` - \n\n  * `__source` - \n\n  * `__highlight` - \n\n  * `__clipboard` - \n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `tag` - \n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `undoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an undo button\n\n  * `redoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a redo button\n\n  * `historyButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a history button group: undo + redo\n\n  * `formatButton` {`{ label: string; type: string; }`} - default config for a format button\n\n  * `boldButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for a bold button\n\n  * `italicButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for an italic button\n\n  * `underlineButton` {`{ type: string; }`} - default config for an underline button\n\n  * `removeFormatButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a remove format button\n\n  * `basicInlineButtonGroup` {`{ type: string; buttons: { label: string; type: string; }[]; }`} - default config for a style button group: format, bold, italic, and remove format\n\n  * `linkButton` {`{ icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a link button\n\n  * `linkButtonGroup` {`{ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a link button group: link\n\n  * `cutButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a cut button\n\n  * `copyButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a copy button\n\n  * `pasteButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a paste button\n\n  * `clipboardButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a clipboard button group: cut, copy, and paste\n\n  * `subscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a subscript button\n\n  * `superscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a superscript button\n\n  * `scriptButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; toggles: boolean; type: string; }[]; }`} - default config for a script button group: subscript & superscript\n\n  * `symbolButton` {`{ symbolTypes: string[]; type: string; }`} - default config for a symbol button\n\n  * `emojiButton` {`{ type: string; }`} - default config for an emoji button\n\n  * `imageButton` {`{ type: string; }`} - default config for an image button\n\n  * `insertButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for an insert button group: image\n\n  * `orderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an ordered list button\n\n  * `unorderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an unordered list button\n\n  * `blockquoteButton` {`{ command: string; commandVal: string; label: string; icon: string; shortcutKeys: string; type: string; }`} - default config for a blockquote button\n\n  * `indentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an indent button\n\n  * `outdentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an outdent button\n\n  * `listIndentButtonGroup` {`{ type: string; buttons: ({ command: string; icon: string; label: string; toggles: boolean; type: string; } | { command: string; icon: string; label: string; shortcutKeys: string; type: string; })[]; }`} - default config for a list and indent button group:\nordered, unordered, blockquote, indent, outdent\n\n  * `saveButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for an save button\n\n  * `closeButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a close button\n\n  * `saveCloseButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; }`} - default config for a save and close button group: save and close\n\n  * `sourceButton` {`{ type: string; }`} - default config for a view source button\n\n  * `sourceButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for a source button group: view source\n\n  * `defaultConfig` {`any[]`} - default config for toolbar with\ndefault history, style, link, clipboard, script, insert, and list button groups\n\n  * `miniConfig` {`({ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; } | { type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; })[]`} - default config for toolbar with\ndefault a custom group of style buttons,\ndefault link button group,\ndefault script button group,\nand a custom list button groups\n\n  * `miniTemplate` {`TemplateResult<1>`} - a template that places toolbar in a container\nso that it can be positioned absolutely\n\n  * `target` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__pasteDisabled` {`boolean`} - hides paste button in Firefox\n\n  * `__prompt` - \n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `controls` {`string`} - id of editor currently being controlled\n\n  * `disconnected` {`boolean`} - determines if the toolbar is hidden\n\n  * `noSelection` {`boolean`} - determines if the toolbar has an extive selection\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `enabledTargetHandlers` {`{ keydown: any; keypress: any; mousedown: any; }`} - \n\n  * `targetHTML` {`string`} - gets cleaned HTML from the target\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbsLabel` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbsSelectAllLabel` {`string`} - The label for the breadcrums area.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__toolbar` - \n\n  * `__source` - \n\n  * `commandIsToggled` {`boolean`} - \n\n  * `hasBreadcrumbs` {`boolean`} - whether or not toolbar breadcrumbs\n(override to force a toolbar to always use or not use them)\n\n  * `toggledCommands` {`any[]`} - an array of all the valid commands that are toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `highlighted` {`boolean`} - determines if range is being preserved by highlight\n\n  * `__highlight` - \n\n  * `__clipboard` - \n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult<1>`} - more button's template\n\n  * `toolbarTemplate` - default toolbar template uses simple-toolbar\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
         {
           "name": "__registeredElements",
@@ -1248,16 +1240,12 @@
           "valueSet": "v"
         },
         {
-          "name": "editor",
-          "description": "`editor` - `rich-text-editor` element that is currently in `editing` mode\n\nProperty: editor"
+          "name": "target",
+          "description": "`target` - `rich-text-editor` element that is currently in `editing` mode\n\nProperty: target"
         },
         {
           "name": "savedSelection",
           "description": "`savedSelection` - current text selected range.\n\nProperty: savedSelection"
-        },
-        {
-          "name": "range",
-          "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
         },
         {
           "name": "registered",
@@ -1277,18 +1265,22 @@
           "description": "`show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\nProperty: show"
         },
         {
+          "name": "__canceledEdits",
+          "description": "`__canceledEdits` - contains cancelled edits\n\nProperty: __canceledEdits"
+        },
+        {
           "name": "paste-disabled",
           "description": "`paste-disabled` {`boolean`} - hides paste button in Firefox\n\nProperty: __pasteDisabled",
           "valueSet": "v"
         },
         {
+          "name": "__prompt",
+          "description": "`__prompt` - \n\nProperty: __prompt"
+        },
+        {
           "name": "__promptOpen",
           "description": "`__promptOpen` {`boolean`} - whether prompt is open\n\nProperty: __promptOpen",
           "valueSet": "v"
-        },
-        {
-          "name": "__selection",
-          "description": "`__selection` - selection singleton\n\nProperty: __selection"
         },
         {
           "name": "clickableElements",
@@ -1301,6 +1293,26 @@
         {
           "name": "breadcrumbs-select-all-label",
           "description": "`breadcrumbs-select-all-label` {`string`} - The label for the breadcrums area.\n\nProperty: breadcrumbsSelectAllLabel\n\nDefault: All"
+        },
+        {
+          "name": "range",
+          "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
+        },
+        {
+          "name": "__toolbar",
+          "description": "`__toolbar` - \n\nProperty: __toolbar"
+        },
+        {
+          "name": "__source",
+          "description": "`__source` - \n\nProperty: __source"
+        },
+        {
+          "name": "__highlight",
+          "description": "`__highlight` - \n\nProperty: __highlight"
+        },
+        {
+          "name": "__clipboard",
+          "description": "`__clipboard` - \n\nProperty: __clipboard"
         },
         {
           "name": "always-expanded",
@@ -1357,36 +1369,32 @@
           "description": "`cancel` {`CustomEvent<this>`} - "
         },
         {
-          "name": "ondisableediting",
-          "description": "`disableediting` {`CustomEvent<this>`} - "
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onhighlight",
-          "description": "`highlight` {`CustomEvent<boolean>`} - "
+          "name": "oneditor-change",
+          "description": "`editor-change` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onrich-text-editor-register",
-          "description": "`rich-text-editor-register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - "
+          "name": "onrange-changed",
+          "description": "`range-changed` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onsetrange",
-          "description": "`setrange` {`CustomEvent<{ editor: any; range: any; }>`} - "
+          "name": "onenabled",
+          "description": "`enabled` {`CustomEvent<any>`} - "
         },
         {
-          "name": "onselectnode",
-          "description": "`selectnode` {`CustomEvent<any>`} - "
+          "name": "ondisabled",
+          "description": "`disabled` {`CustomEvent<any>`} - "
         },
         {
-          "name": "onselectnodecontents",
-          "description": "`selectnodecontents` {`CustomEvent<any>`} - "
+          "name": "onpaste",
+          "description": "`paste` {`CustomEvent<any>`} - "
         },
         {
-          "name": "onselectrange",
-          "description": "`selectrange` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onpastefromclipboard",
-          "description": "`pastefromclipboard` {`CustomEvent<any>`} - "
+          "name": "onrangechange",
+          "description": "`rangechange` {`CustomEvent<{ element: this; range: any; }>`} - "
         },
         {
           "name": "onshortcut-key-pressed",
@@ -1396,7 +1404,7 @@
     },
     {
       "name": "hax-text-editor",
-      "description": "`hax-text-editor`\nHAX-specific implementation of rich-text-editor\n\nEvents:\n\n  * `editing-disabled` {`CustomEvent<any>`} - \n\n  * `editing-enabled` {`CustomEvent<any>`} - \n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `rich-text-editor-register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `view-source` {`boolean`} - whether editor is view source code mode\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - Maps to editing attribute\n\n  * `__selection` - selection management\n\nProperties:\n\n  * `haxUIElement` {`boolean`} - \n\n  * `tag` - \n\n  * `disableHover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `viewSource` {`boolean`} - whether editor is view source code mode\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - Maps to editing attribute\n\n  * `__selection` - selection management",
+      "description": "`hax-text-editor`\nHAX-specific implementation of rich-text-editor\n\nEvents:\n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `contenteditable-change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `view-source` {`boolean`} - whether editor is view source code mode\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `aria-placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar-id` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `contenteditable` {`boolean`} - Maps to editing attribute\n\nProperties:\n\n  * `haxUIElement` {`boolean`} - \n\n  * `tag` - \n\n  * `disableHover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `viewSource` {`boolean`} - whether editor is view source code mode\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `isEmpty` {`boolean`} - \n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbarId` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - \n\n  * `contenteditable` {`boolean`} - Maps to editing attribute",
       "attributes": [
         {
           "name": "disable-hover",
@@ -1408,22 +1416,9 @@
           "description": "`rawhtml` {`string`} - raw html\n\nProperty: rawhtml"
         },
         {
-          "name": "updateRange",
-          "description": "`updateRange` {`boolean`} - whether to update range\n\nProperty: updateRange",
-          "valueSet": "v"
-        },
-        {
           "name": "view-source",
           "description": "`view-source` {`boolean`} - whether editor is view source code mode\n\nProperty: viewSource",
           "valueSet": "v"
-        },
-        {
-          "name": "__canceledEdits",
-          "description": "`__canceledEdits` - contains cancelled edits\n\nProperty: __canceledEdits"
-        },
-        {
-          "name": "__connectedToolbar",
-          "description": "`__connectedToolbar` - connected toolbar\n\nProperty: __connectedToolbar"
         },
         {
           "name": "__codeEditorValue",
@@ -1435,12 +1430,12 @@
           "valueSet": "v"
         },
         {
-          "name": "placeholder",
-          "description": "`placeholder` {`string`} - Placeholder text for empty editable regions\n\nProperty: placeholder\n\nDefault: Click to edit"
+          "name": "aria-placeholder",
+          "description": "`aria-placeholder` {`string`} - Placeholder text for empty editable regions\n\nProperty: placeholder\n\nDefault: Click to edit"
         },
         {
-          "name": "toolbar",
-          "description": "`toolbar` {`string`} - id for toolbar\n\nProperty: toolbar\n\nDefault: "
+          "name": "toolbar-id",
+          "description": "`toolbar-id` {`string`} - id for toolbar\n\nProperty: toolbarId\n\nDefault: "
         },
         {
           "name": "type",
@@ -1470,37 +1465,17 @@
           "valueSet": "v"
         },
         {
-          "name": "editing",
-          "description": "`editing` {`boolean`} - Maps to editing attribute\n\nProperty: editing\n\nDefault: false",
+          "name": "contenteditable",
+          "description": "`contenteditable` {`boolean`} - Maps to editing attribute\n\nProperty: contenteditable\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "__selection",
-          "description": "`__selection` - selection management\n\nProperty: __selection"
-        },
-        {
-          "name": "onediting-disabled",
-          "description": "`editing-disabled` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onediting-enabled",
-          "description": "`editing-enabled` {`CustomEvent<any>`} - "
         },
         {
           "name": "onfocus",
           "description": "`focus` {`CustomEvent<any>`} - "
         },
         {
-          "name": "onrich-text-editor-register",
-          "description": "`rich-text-editor-register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "
-        },
-        {
-          "name": "ongetrange",
-          "description": "`getrange` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onpastefromclipboard",
-          "description": "`pastefromclipboard` {`CustomEvent<this>`} - "
+          "name": "oncontenteditable-change",
+          "description": "`contenteditable-change` {`CustomEvent<this>`} - "
         }
       ]
     },
@@ -1594,7 +1569,7 @@
     },
     {
       "name": "hax-toolbar-menu",
-      "description": "`hax-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `close` {`CustomEvent<Event>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<Event>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "description": "`hax-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "event-name",
@@ -1699,11 +1674,11 @@
         },
         {
           "name": "onclose",
-          "description": "`close` {`CustomEvent<Event>`} - Fires when menu is closed"
+          "description": "`close` {`CustomEvent<this>`} - Fires when menu is closed"
         },
         {
           "name": "onopen",
-          "description": "`open` {`CustomEvent<Event>`} - Fires when menu is opened"
+          "description": "`open` {`CustomEvent<this>`} - Fires when menu is opened"
         },
         {
           "name": "onitem-click",
