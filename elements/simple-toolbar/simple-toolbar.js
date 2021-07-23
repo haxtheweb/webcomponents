@@ -252,6 +252,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         aria-controls="buttons"
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
+        ?disabled=${this.collapseDisabled}
         @toggle="${(e) => (this.collapsed = !this.collapsed)}"
         ?hidden=${this.collapseDisabled}
         .icon="${this.icon}"
@@ -438,7 +439,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           item.setAttribute("collapse-hide", true);
         }
       });
-      this.collapseDisabled = shown;
+      this.collapseDisabled = !!shown;
     }
     /**
      * updates registered button, it needed

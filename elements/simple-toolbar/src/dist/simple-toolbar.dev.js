@@ -148,7 +148,8 @@ function _templateObject() {
     ' <simple-toolbar-more-button\n        id="morebutton"\n        .align-horizontal="',
     '"\n        .align-vertical="',
     '"\n        aria-controls="buttons"\n        class="button"\n        @click="',
-    '"\n        @toggle="',
+    '"\n        ?disabled=',
+    '\n        @toggle="',
     '"\n        ?hidden=',
     '\n        .icon="',
     '"\n        .icon-position="',
@@ -356,6 +357,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 function (e) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
+                this.collapseDisabled,
                 function (e) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
@@ -791,7 +793,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 item.setAttribute("collapse-hide", true);
               }
             });
-            this.collapseDisabled = shown;
+            this.collapseDisabled = !!shown;
           },
           /**
            * updates registered button, it needed

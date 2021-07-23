@@ -41,6 +41,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
     this.tooltipDirection = "left";
+    this.disabled = false;
   }
   /**
    * toggles button if shortcutKey is pressed
