@@ -250,7 +250,6 @@ var HaxTextEditorButton =
       );
       _this.tag = HaxTextEditorButton.tag;
       _this.toggles = true;
-      _this.value = {};
       _this.command = "insertHTML";
       return _this;
     }
@@ -308,17 +307,9 @@ var HaxTextEditorButton =
           this.tagsList = gizmo.tag || "span";
           this.icon = gizmo.icon || "add";
           this.label = gizmo.title || "Add ".concat(gizmo.tag);
+          this.value = this.getValue(undefined);
           this.updateButton();
         },
-        /**
-         * overriden from RichTextEditorPromptButtonBehaviors:
-         * to determin if gizmo will be inserted
-         * @memberof HaxTextEditorButton
-         */
-      },
-      {
-        key: "getValue",
-
         /**
          * overrides RichTextEditorPromptButtonBehaviors
          * to get custom gizmo property and slot values
@@ -326,27 +317,36 @@ var HaxTextEditorButton =
          * @param {object} node selected node
          * @memberof HaxTextEditorButton
          */
-        value: function getValue(node) {
-          var el = node || this.rangeElement(),
-            val = _get(
-              _getPrototypeOf(HaxTextEditorButton.prototype),
-              "getValue",
-              this
-            ).call(this);
+      },
+      {
+        key: "getValue",
+        value: function getValue() {
+          var _this3 = this;
 
-          if (el) {
-            this.fields.forEach(function (field) {
-              if (field.property && field.property !== "innerHTML")
-                val[field.property] = el[field.property];
+          var val = _get(
+            _getPrototypeOf(HaxTextEditorButton.prototype),
+            "getValue",
+            this
+          ).call(this);
 
-              if (field.slot && field.slot !== "") {
-                var slot = el.querySelector("[slot=".concat(field.slot, "]"));
-                val[field.slot] = !slot ? undefined : slot.innerHTML;
-              }
-            });
-          }
-
-          return !el ? undefined : val;
+          this.fields.forEach(function (field) {
+            if (field.property && field.property !== "innerHTML")
+              val[field.property] =
+                _this3.targetedNode && _this3.targetedNode.getAttribute
+                  ? _this3.targetedNode.getAttribute(field.property)
+                  : undefined;
+            if (field.slot && field.slot !== "")
+              _this3.targetedNode &&
+              _this3.targetedNode.querySelector &&
+              _this3.targetedNode.querySelector(
+                "[slot=".concat(field.slot, "]")
+              )
+                ? _this3.targetedNode.querySelector(
+                    "[slot=".concat(field.slot, "]")
+                  ).innerHTML
+                : undefined;
+          });
+          return val;
         },
       },
       {
@@ -355,65 +355,61 @@ var HaxTextEditorButton =
           this.toggled = !!this.value;
         },
         /**
-         * overrides RichTextEditorPromptButtonBehaviors
-         * to perform a custom gizmo insert
+         * override this custom function to perform a
+         * custom operation when an element that matches the tags list is clicked
          *
-         * @param {string} [command=this.operationCommand]
-         * @param {string} [commandVal=this.operationCommandVal]
-         * @param {object} [range=this.range]
-         * @memberof HaxTextEditorButton
+         * @param {event} e click event
          */
       },
       {
-        key: "sendCommand",
-        value: function sendCommand() {
-          var _this3 = this;
-
-          var command =
+        key: "tagClickCallback",
+        value: function tagClickCallback() {
+          var e =
             arguments.length > 0 && arguments[0] !== undefined
               ? arguments[0]
-              : this.operationCommand;
-          var commandVal =
-            arguments.length > 1 && arguments[1] !== undefined
-              ? arguments[1]
-              : this.operationCommandVal;
-          var range =
-            arguments.length > 2 && arguments[2] !== undefined
-              ? arguments[2]
-              : this.range;
-          var node = document.createElement(this.tagsList);
-          this.fields.forEach(function (field) {
-            if (!!field.property)
-              node[field.property] = _this3.value[field.property];
-            node.innerHTML = _this3.value.innerHTML;
-
-            if (!!field.slot && field.slot !== "") {
-              var div = document.createElement("div");
-              div.slot = field.slot;
-              div.innerHTML = _this3.value[field.slot];
-              node.append(div);
-            }
-          });
-
-          if (!!this.selectedNode) {
-            //make sure old inline widgets are clear
-            this.selectedNode.remove();
-          } else {
-            //empties inline text nodes
-            _get(
-              _getPrototypeOf(HaxTextEditorButton.prototype),
-              "sendCommand",
-              this
-            ).call(this, command, "", range);
-          } //inserts new updated widget
-
-          range.insertNode(node);
+              : {};
+          if (e.detail) this.open(e.detail);
+          var tag = this.__highlight.innerHTML;
+          this.__highlight.innerHTML = "";
+          this.__highlight.innerHTML = tag;
         },
+        /**
+         * updates selection based on values passed from prompt
+         * this overrides nthe default button behavior so that the gizmo's content doen't get doubled
+         */
       },
       {
-        key: "promptCommandVal",
-        get: function get() {
-          return this.value;
+        key: "updateSelection",
+        value: function updateSelection() {
+          var _this4 = this;
+
+          var tag = document.createElement(this.tagsList),
+            html = "";
+          this.fields.forEach(function (field) {
+            if (!!field.property && field.property !== "innerHTML")
+              tag[field.property] = _this4.value[field.property];
+            if (!!field.slot && !!_this4.value[field.slot])
+              html += "<"
+                .concat(field.slotWrapper || "span")
+                .concat(
+                  Object.keys(field.slotAttributes || {}).map(function (attr) {
+                    return " "
+                      .concat(attr, '="')
+                      .concat(field.slotAttributes[attr], '"');
+                  }),
+                  ">\n            "
+                )
+                .concat(_this4.value[slot], "\n          </")
+                .concat(field.slotWrapper || "span", ">");
+          });
+          html += this.value.innerHTML || "";
+          this.__highlight.innerHTML = "";
+
+          this.__highlight.parentNode.insertBefore(tag, this.__highlight);
+
+          this.__highlight.unwrap();
+
+          tag.innerHTML = html;
         },
       },
     ]);

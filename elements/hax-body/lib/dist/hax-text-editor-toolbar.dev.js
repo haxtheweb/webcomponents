@@ -31,33 +31,6 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -105,6 +78,33 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -222,7 +222,7 @@ var HaxTextEditorToolbar =
           value: function render() {
             return _get(
               _getPrototypeOf(HaxTextEditorToolbar.prototype),
-              "miniTemplate",
+              "toolbarTemplate",
               this
             );
           }, // properties available to the custom element for data binding
@@ -244,10 +244,18 @@ var HaxTextEditorToolbar =
           key: "styles",
           //styles function
           get: function get() {
-            return [
-              _get(_getPrototypeOf(HaxTextEditorToolbar), "baseStyles", this),
-              _get(_getPrototypeOf(HaxTextEditorToolbar), "miniStyles", this),
-            ];
+            return [].concat(
+              _toConsumableArray(
+                _get(_getPrototypeOf(HaxTextEditorToolbar), "baseStyles", this)
+              ),
+              _toConsumableArray(
+                _get(
+                  _getPrototypeOf(HaxTextEditorToolbar),
+                  "stickyStyles",
+                  this
+                )
+              )
+            );
           },
         },
         {
@@ -257,7 +265,7 @@ var HaxTextEditorToolbar =
               {},
               _get(_getPrototypeOf(HaxTextEditorToolbar), "properties", this),
               {
-                __registeredElements: {
+                activeNode: {
                   type: Object,
                 },
                 __updated: {
@@ -280,14 +288,71 @@ var HaxTextEditorToolbar =
         _getPrototypeOf(HaxTextEditorToolbar).call(this)
       );
       _this.tag = HaxTextEditorToolbar.tag;
+      window.HaxTextEditorToolbarConfig =
+        window.HaxTextEditorToolbarConfig || {};
+      window.HaxTextEditorToolbarConfig.inlineGizmos =
+        window.HaxTextEditorToolbarConfig.inlineGizmos || {};
+      window.HaxTextEditorToolbarConfig["default"] =
+        window.HaxTextEditorToolbarConfig["default"] ||
+        [].concat(_toConsumableArray(_this.defaultConfig), [
+          _this.sourceButtonGroup,
+        ]);
+      _this.config = window.HaxTextEditorToolbarConfig["default"];
       _this.sticky = false;
-      _this.config = _this.defaultConfig;
-      _this.__registeredElements = [];
       _this.__updated = false;
+
+      _this.setTarget(undefined);
+
       return _this;
     }
 
     _createClass(HaxTextEditorToolbar, [
+      {
+        key: "updated",
+        value: function updated(changedProperties) {
+          var _this2 = this;
+
+          if (
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "updated",
+              this
+            )
+          )
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "updated",
+              this
+            ).call(this, changedProperties);
+          changedProperties.forEach(function (oldValue, propName) {
+            if (propName === "activeNode" && _this2.activeNode !== oldValue)
+              _this2.setTarget(_this2.activeNode);
+          });
+        },
+        /**
+         * moves toolbar into position before the target
+         * (can be overriden for custom positioning)
+         * @param {object} target
+         */
+      },
+      {
+        key: "positionByTarget",
+        value: function positionByTarget(target) {
+          return;
+        },
+      },
+      {
+        key: "getRange",
+        value: function getRange() {
+          return _haxStore.HAXStore.getRange();
+        },
+      },
+      {
+        key: "getSelection",
+        value: function getSelection() {
+          return _haxStore.HAXStore.getSelection();
+        },
+      },
       {
         key: "firstUpdated",
         value: function firstUpdated(changedProperties) {
@@ -341,12 +406,12 @@ var HaxTextEditorToolbar =
       {
         key: "_handleHaxStoreReady",
         value: function _handleHaxStoreReady(e) {
-          var _this2 = this;
+          var _this3 = this;
 
           var elements = _haxStore.HAXStore.elementList || {},
             keys = Object.keys(elements);
           keys.forEach(function (key) {
-            return _this2._setInlineElement(key, elemets[key]);
+            return _this3._setInlineElement(key, elemets[key]);
           });
         },
         /**
@@ -362,10 +427,11 @@ var HaxTextEditorToolbar =
       {
         key: "_setInlineElement",
         value: function _setInlineElement(tag, props) {
+          //skip if tag is already registered
           if (
             !tag ||
             !props ||
-            !!this.__registeredElements[tag] ||
+            !!window.HaxTextEditorToolbarConfig.inlineGizmos[tag] ||
             tag.indexOf("-") < 0
           )
             return;
@@ -376,7 +442,7 @@ var HaxTextEditorToolbar =
             });
 
           if (inline.length > 0) {
-            this.__registeredElements[tag] = {
+            window.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
               element: props,
               type: "hax-text-editor-button",
             };
@@ -395,15 +461,13 @@ var HaxTextEditorToolbar =
       {
         key: "updateToolbarElements",
         value: function updateToolbarElements() {
-          var _this3 = this;
-
           if (this.__updated) return;
           this.__updated = true;
-          var buttons = Object.keys(this.__registeredElements || {}).map(
-            function (key) {
-              return _this3.__registeredElements[key];
-            }
-          );
+          var buttons = Object.keys(
+            window.HaxTextEditorToolbarConfig.inlineGizmos || {}
+          ).map(function (key) {
+            return window.HaxTextEditorToolbarConfig.inlineGizmos[key];
+          });
           this.config = [].concat(_toConsumableArray(this.defaultConfig), [
             {
               type: "button-group",

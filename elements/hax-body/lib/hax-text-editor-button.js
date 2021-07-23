@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButtonBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+
 /**
  * `hax-text-editor-button`
  * a custom-element button for hax text editor (custom buttons can extend this)
@@ -40,22 +41,21 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     super();
     this.tag = HaxTextEditorButton.tag;
     this.toggles = true;
-    this.value = {};
     this.command = "insertHTML";
   }
-  /* updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "element" && this.element) this.updateElement();
     });
-  }*/
+  }
 
   /**
    * overrides RichTextEditorPromptButtonBehaviors
    * to set custom gizmo property and slot values
    *
    * @memberof HaxTextEditorButton
-   * /
+   */
   updateElement() {
     let el = this.element || {},
       settings = el.settings || {},
@@ -72,16 +72,8 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.tagsList = gizmo.tag || "span";
     this.icon = gizmo.icon || "add";
     this.label = gizmo.title || `Add ${gizmo.tag}`;
+    this.value = this.getValue(undefined);
     this.updateButton();
-  }
-
-  /**
-   * overriden from RichTextEditorPromptButtonBehaviors:
-   * to determin if gizmo will be inserted
-   * @memberof HaxTextEditorButton
-   * /
-  get promptCommandVal() {
-    return this.value;
   }
 
   /**
@@ -90,60 +82,64 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    *
    * @param {object} node selected node
    * @memberof HaxTextEditorButton
-   * /
-  getValue(node) {
-    let el = node || this.rangeElement(),
-      val = super.getValue();
-    if (el) {
-      this.fields.forEach((field) => {
-        if (field.property && field.property !== "innerHTML")
-          val[field.property] = el[field.property];
-        if (field.slot && field.slot !== "") {
-          let slot = el.querySelector(`[slot=${field.slot}]`);
-          val[field.slot] = !slot ? undefined : slot.innerHTML;
-        }
-      });
-    }
-    return !el ? undefined : val;
+   */
+  getValue() {
+    let val = super.getValue();
+    this.fields.forEach((field) => {
+      if (field.property && field.property !== "innerHTML")
+        val[field.property] =
+          this.targetedNode && this.targetedNode.getAttribute
+            ? this.targetedNode.getAttribute(field.property)
+            : undefined;
+      if (field.slot && field.slot !== "")
+        this.targetedNode &&
+        this.targetedNode.querySelector &&
+        this.targetedNode.querySelector(`[slot=${field.slot}]`)
+          ? this.targetedNode.querySelector(`[slot=${field.slot}]`).innerHTML
+          : undefined;
+    });
+    return val;
   }
+
   setToggled() {
     this.toggled = !!this.value;
   }
   /**
-   * overrides RichTextEditorPromptButtonBehaviors
-   * to perform a custom gizmo insert
+   * override this custom function to perform a
+   * custom operation when an element that matches the tags list is clicked
    *
-   * @param {string} [command=this.operationCommand]
-   * @param {string} [commandVal=this.operationCommandVal]
-   * @param {object} [range=this.range]
-   * @memberof HaxTextEditorButton
-   * /
-  sendCommand(
-    command = this.operationCommand,
-    commandVal = this.operationCommandVal,
-    range = this.range
-  ) {
-    let node = document.createElement(this.tagsList);
+   * @param {event} e click event
+   */
+  tagClickCallback(e = {}) {
+    if (e.detail) this.open(e.detail);
+    let tag = this.__highlight.innerHTML;
+    this.__highlight.innerHTML = "";
+    this.__highlight.innerHTML = tag;
+  }
+  /**
+   * updates selection based on values passed from prompt
+   * this overrides nthe default button behavior so that the gizmo's content doen't get doubled
+   */
+  updateSelection() {
+    let tag = document.createElement(this.tagsList),
+      html = "";
     this.fields.forEach((field) => {
-      if (!!field.property) node[field.property] = this.value[field.property];
-      node.innerHTML = this.value.innerHTML;
-      if (!!field.slot && field.slot !== "") {
-        let div = document.createElement("div");
-        div.slot = field.slot;
-        div.innerHTML = this.value[field.slot];
-        node.append(div);
-      }
+      if (!!field.property && field.property !== "innerHTML")
+        tag[field.property] = this.value[field.property];
+      if (!!field.slot && !!this.value[field.slot])
+        html += `<${field.slotWrapper || "span"}${Object.keys(
+          field.slotAttributes || {}
+        ).map((attr) => ` ${attr}="${field.slotAttributes[attr]}"`)}>
+            ${this.value[slot]}
+          </${field.slotWrapper || "span"}>`;
     });
-    if (!!this.selectedNode) {
-      //make sure old inline widgets are clear
-      this.selectedNode.remove();
-    } else {
-      //empties inline text nodes
-      super.sendCommand(command, "", range);
-    }
-    //inserts new updated widget
-    range.insertNode(node);
-  }*/
+    html += this.value.innerHTML || "";
+
+    this.__highlight.innerHTML = "";
+    this.__highlight.parentNode.insertBefore(tag, this.__highlight);
+    this.__highlight.unwrap();
+    tag.innerHTML = html;
+  }
 }
 
 window.customElements.define(HaxTextEditorButton.tag, HaxTextEditorButton);

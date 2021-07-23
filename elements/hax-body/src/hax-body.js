@@ -2767,9 +2767,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return ["span", "b", "strong", "i", "em"].includes(
-      node.tagName.toLowerCase()
-    );
+    return [
+      "span",
+      "b",
+      "strong",
+      "i",
+      "em",
+      ...Object.keys(window.HaxTextEditorToolbarConfig.inlineGizmos || {}),
+    ].includes(node.tagName.toLowerCase());
   }
   /**
    * Test if this is an HTML primative

@@ -19,12 +19,12 @@ import { HAXStore } from "./hax-store.js";
 class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   //styles function
   static get styles() {
-    return [super.baseStyles, super.miniStyles];
+    return [...super.baseStyles, ...super.stickyStyles];
   }
 
   // render function
   render() {
-    return super.miniTemplate;
+    return super.toolbarTemplate;
   }
 
   // properties available to the custom element for data binding
@@ -32,9 +32,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
     return {
       ...super.properties,
       activeNode: {
-        type: Object,
-      },
-      __registeredElements: {
         type: Object,
       },
       __updated: {
@@ -55,9 +52,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   constructor() {
     super();
     this.tag = HaxTextEditorToolbar.tag;
+    window.HaxTextEditorToolbarConfig = window.HaxTextEditorToolbarConfig || {};
+    window.HaxTextEditorToolbarConfig.inlineGizmos =
+      window.HaxTextEditorToolbarConfig.inlineGizmos || {};
+    window.HaxTextEditorToolbarConfig.default = window
+      .HaxTextEditorToolbarConfig.default || [
+      ...this.defaultConfig,
+      this.sourceButtonGroup,
+    ];
+    this.config = window.HaxTextEditorToolbarConfig.default;
     this.sticky = false;
-    this.config = this.defaultConfig;
-    this.__registeredElements = [];
     this.__updated = false;
     this.setTarget(undefined);
   }
@@ -139,10 +143,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
    * @memberof HaxTextEditorToolbar
    */
   _setInlineElement(tag, props) {
+    //skip if tag is already registered
     if (
       !tag ||
       !props ||
-      !!this.__registeredElements[tag] ||
+      !!window.HaxTextEditorToolbarConfig.inlineGizmos[tag] ||
       tag.indexOf("-") < 0
     )
       return;
@@ -150,7 +155,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
       handles = gizmo.handles || [],
       inline = handles.filter((handle) => handle.type === "inline");
     if (inline.length > 0) {
-      this.__registeredElements[tag] = {
+      window.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
         element: props,
         type: "hax-text-editor-button",
       };
@@ -168,9 +173,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   updateToolbarElements() {
     if (this.__updated) return;
     this.__updated = true;
-    let buttons = Object.keys(this.__registeredElements || {}).map(
-      (key) => this.__registeredElements[key]
-    );
+    let buttons = Object.keys(
+      window.HaxTextEditorToolbarConfig.inlineGizmos || {}
+    ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
     this.config = [
       ...this.defaultConfig,
       {
