@@ -3,6 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
 import { autorun, toJS } from "mobx";
+import "./lib/hax-text-editor-toolbar.js";
 import {
   encapScript,
   wipeSlot,
@@ -683,7 +684,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           : this.activeNode}"
         ?hidden="${!this.activeNode}"
       >
-        <div id="topcontextmenu">
+        <hax-text-editor-toolbar
+          id="textcontextmenu"
+          class="hax-context-menu ignore-activation"
+          .activeNode="${this.activeNode}"
+        >
+        </hax-text-editor-toolbar>
+        <div id="topcontextmenus" hidden>
           <hax-text-context
             id="textcontextmenu"
             class="hax-context-menu ignore-activation"
@@ -863,9 +870,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
             for (var node of mutation.addedNodes) {
-              console.log("mutation", node);
               if (this._validElementTest(node)) {
-                console.log("valid element", node);
                 // no empty HTML primative tags w/ just a BR in it for spacing purposes
                 if (
                   !this.__delHit &&
@@ -929,7 +934,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.activeNode === node.children[0] ||
                     this.activeNode === node
                   ) {
-                    console.log("mutation", node);
                     this.activeNode = node;
                   }
                   unwrap(node.children[0]);
@@ -1020,7 +1024,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // this avoids empty elements however we don't want it to trigger
                 // active to change
                 if (!this.___moveLock && !mutFind) {
-                  console.log("not movelock", node);
                   mutFind = true;
                   HAXStore.activeNode = node;
                   if (node.tagName === "BR") {
@@ -1035,7 +1038,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                         rng.commonAncestorContainer &&
                       this.activeNode.innerText === ""
                     ) {
-                      console.log("collapsed", this.activeNode.parentNode);
                       HAXStore.activeNode = this.activeNode.parentNode;
                     }
                   }
@@ -1362,7 +1364,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       e.key === "Enter" &&
       HAXStore.isTextElement(this.activeNode)
     ) {
-      console.log("keypress", e);
       this.activeNode = this.activeNode.nextElementSibling;
       // If the user has paused for awhile, show the menu
       clearTimeout(this.__positionContextTimer);
@@ -1756,7 +1757,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     HAXStore.activeNode = __active;
     // oh one last thing. escape all script/style tags
     content = encapScript(content);
-    console.log("hax2content");
     return content;
   }
   /**
@@ -2492,7 +2492,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param autoFocus boolean - whether to auto focus / place cursor
    */
   __focusLogic(target, autoFocus = true) {
-    console.log("focus", target, this.activeNode);
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
@@ -2598,7 +2597,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       this.__tabTrap = false;
     }
-    console.log("focus return", target, this.activeNode);
     return stopProp;
   }
   /**
@@ -2745,6 +2743,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ![
         "TEMPLATE",
         "HAX-BODY",
+        "RICH-TEXT-EDITOR-CLIPBOARD",
+        "RICH-TEXT-EDITOR-PROMPT",
+        "RICH-TEXT-EDITOR-HIGHLIGHT",
         "HAX-APP-SEARCH-RESULT",
         "FAKE-HAX-BODY-END",
       ].includes(node.tagName)
@@ -3492,7 +3493,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
-    console.log("_activeNodeChanged", newValue, oldValue);
     // close any open popover items
     window.SimplePopoverManager.requestAvailability().opened = false;
     // remove anything currently with the active class

@@ -43,19 +43,19 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.value = {};
     this.command = "insertHTML";
   }
-  updated(changedProperties) {
+  /* updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "element" && this.element) this.updateElement();
     });
-  }
+  }*/
 
   /**
    * overrides RichTextEditorPromptButtonBehaviors
    * to set custom gizmo property and slot values
    *
    * @memberof HaxTextEditorButton
-   */
+   * /
   updateElement() {
     let el = this.element || {},
       settings = el.settings || {},
@@ -79,7 +79,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    * overriden from RichTextEditorPromptButtonBehaviors:
    * to determin if gizmo will be inserted
    * @memberof HaxTextEditorButton
-   */
+   * /
   get promptCommandVal() {
     return this.value;
   }
@@ -90,7 +90,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    *
    * @param {object} node selected node
    * @memberof HaxTextEditorButton
-   */
+   * /
   getValue(node) {
     let el = node || this.rangeElement(),
       val = super.getValue();
@@ -117,7 +117,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    * @param {string} [commandVal=this.operationCommandVal]
    * @param {object} [range=this.range]
    * @memberof HaxTextEditorButton
-   */
+   * /
   sendCommand(
     command = this.operationCommand,
     commandVal = this.operationCommandVal,
@@ -143,7 +143,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     }
     //inserts new updated widget
     range.insertNode(node);
-  }
+  }*/
 }
 
 window.customElements.define(HaxTextEditorButton.tag, HaxTextEditorButton);

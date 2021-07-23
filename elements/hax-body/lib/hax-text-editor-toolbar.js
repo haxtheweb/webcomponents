@@ -31,6 +31,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      activeNode: {
+        type: Object,
+      },
       __registeredElements: {
         type: Object,
       },
@@ -56,6 +59,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
     this.config = this.defaultConfig;
     this.__registeredElements = [];
     this.__updated = false;
+    this.setTarget(undefined);
   }
   get defaultConfig() {
     return [
@@ -64,6 +68,29 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
       this.scriptButtonGroup,
       this.listIndentButtonGroup,
     ];
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "activeNode" && this.activeNode !== oldValue)
+        this.setTarget(this.activeNode);
+    });
+  }
+  /**
+   * moves toolbar into position before the target
+   * (can be overriden for custom positioning)
+   * @param {object} target
+   */
+  positionByTarget(target) {
+    return;
+  }
+
+  getRange() {
+    return HAXStore.getRange();
+  }
+
+  getSelection() {
+    return HAXStore.getSelection();
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
