@@ -717,6 +717,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar)
       );
+      //stops mousedown from bubbling up and triggering HAX focus logic
+      this.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
     }
 
     connectedCallback() {
@@ -830,7 +832,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     close() {
       //if (editor) this.disableEditing(editor);
       this.target = undefined;
-      document.body.append(this);
+      this.positionByTarget(false);
       this.dispatchEvent(
         new CustomEvent("close", {
           bubbles: true,
@@ -1043,6 +1045,31 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         mousedown: this._removeHighlight.bind(this),
       };
     }
+    /**
+     * moves toolbar into position before the target
+     * (can be overriden for custom positioning)
+     * @param {object} target
+     */
+    positionByTarget(target) {
+      if (!!target) {
+        target.parentNode.insertBefore(this, target);
+        this.slot = target.slot;
+        if (this.breadcrumbs) {
+          this.target.parentNode.insertBefore(
+            this.breadcrumbs,
+            this.target.nextSibling
+          );
+          this.breadcrumbs.slot = target.slot;
+        }
+      } else {
+        document.body.append(this);
+        this.slot = undefined;
+        if (this.breadcrumbs) {
+          document.body.append(this.breadcrumbs);
+          this.breadcrumbs.slot = undefined;
+        }
+      }
+    }
 
     /**
      * disables editing
@@ -1053,8 +1080,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     enableEditing(target = this.target) {
       let handlers = this.enabledTargetHandlers;
       if (!!target && !target.hidden && !target.disabled) {
-        target.makeSticky(this.sticky);
-        target.parentNode.insertBefore(this, target);
+        if (target.makeSticky) target.makeSticky(this.sticky);
+        this.positionByTarget(target);
         target.setAttribute("contenteditable", "true");
 
         Object.keys(handlers).forEach((handler) =>
@@ -1097,7 +1124,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           target.removeEventListener(handler, handlers[handler])
         );
 
-        target.makeSticky(false);
+        if (target.makeSticky) target.makeSticky(false);
         this.dispatchEvent(
           new CustomEvent("disabled", {
             bubbles: true,
@@ -1194,14 +1221,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
       }
       this.updateRange(this.target);
-      if (this.breadcrumbs) {
-        this.breadcrumbs.controls = this.controls;
-        if (!!this.target)
-          this.target.parentNode.insertBefore(
-            this.breadcrumbs,
-            this.target.nextSibling
-          );
-      }
+      if (this.breadcrumbs) this.breadcrumbs.controls = this.controls;
       this.buttons.forEach((button) => {
         if (button.command !== "close") button.disabled = !this.target;
       });
@@ -1250,12 +1270,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @returns {string}
      * @memberof RichTextEditor
-     * /
-    targetHTML() {
-      return this.targetEmpty()
-        ? ""
-        : (this.target.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
-    }*/
+     */
 
     get targetHTML() {
       return !!this.target
