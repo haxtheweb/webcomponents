@@ -13,7 +13,7 @@ class LetterGradePicker extends LitElement {
     super();
     this.value = null;
     this.label = null;
-    this.tooltip = false;
+    this.reveal = false;
     this.arrow = false;
     this.input = false;
     this.possible = 0;
@@ -23,7 +23,7 @@ class LetterGradePicker extends LitElement {
     return {
       value: { type: String },
       label: { type: String },
-      tooltip: { type: Boolean },
+      reveal: { type: Boolean },
       arrow: { type: Boolean },
       input: { type: Boolean },
       possible: { type: Number },
@@ -84,13 +84,6 @@ class LetterGradePicker extends LitElement {
           margin: 0px -8px 0px 16px;
           --simple-fields-font-size: 28px;
         }
-        simple-tooltip {
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
-        }
       `,
     ];
   }
@@ -118,15 +111,6 @@ class LetterGradePicker extends LitElement {
                 mini
               ></letter-grade>
             </button>
-            ${this.tooltip
-              ? html` <simple-tooltip
-                  for="btn${index}"
-                  position="top"
-                  animation-delay="0"
-                >
-                  ${scale.lowRange}% - ${scale.highRange}%
-                </simple-tooltip>`
-              : nothing}
           `
         )}
         ${this.input
@@ -185,8 +169,7 @@ class LetterGradePicker extends LitElement {
       if (propName === "input" && this[propName]) {
         import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       }
-      if (propName === "tooltip" && this[propName]) {
-        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      if (propName === "reveal" && this[propName]) {
       }
       if (["value", "score"].includes(propName)) {
         this.dispatchEvent(
