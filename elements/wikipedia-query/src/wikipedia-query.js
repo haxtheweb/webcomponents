@@ -203,6 +203,15 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
    * @see haxHooks: gizmoRegistration
    */
   haxgizmoRegistration(store) {
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `${this.tag}.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+          locales: ["es", "fr"],
+        },
+      })
+    );
     // ensure that this is a valid type of gizmo for endpoints
     // this is nessecary because wikipedia-query wants to be the sole
     // provider of display for things coming off the API

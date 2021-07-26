@@ -394,8 +394,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath:
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../locales",
+      localesPath: new URL("./locales", import.meta.url).href,
       locales: ["es"],
     });
     this.__disposer = [];
@@ -592,9 +591,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             varExists(this.manifest, "metadata.node.dynamicElementLoader")
           ) {
             let tagsFound = findTagsInHTML(html);
-            const basePath = this.pathFromUrl(
-              decodeURIComponent(import.meta.url)
-            );
+            const basePath = new URL("./locales", import.meta.url).href;
             for (var i in tagsFound) {
               const tagName = tagsFound[i];
               if (

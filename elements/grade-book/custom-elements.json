@@ -402,7 +402,7 @@
           "type": "string"
         },
         {
-          "name": "tooltip",
+          "name": "reveal",
           "type": "boolean",
           "default": "false"
         },
@@ -439,8 +439,8 @@
           "type": "string"
         },
         {
-          "name": "tooltip",
-          "attribute": "tooltip",
+          "name": "reveal",
+          "attribute": "reveal",
           "type": "boolean",
           "default": "false"
         },

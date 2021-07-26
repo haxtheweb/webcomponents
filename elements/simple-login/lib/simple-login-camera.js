@@ -29,9 +29,7 @@ class SimpleLoginCamera extends HTMLElement {
         detail: {
           context: this,
           namespace: "simple-login",
-          localesPath:
-            this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../locales",
+          localesPath: new URL("./locales", import.meta.url).href,
           updateCallback: "render",
           locales: ["es"],
         },

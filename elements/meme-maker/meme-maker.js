@@ -93,10 +93,6 @@ class MemeMaker extends LitElement {
     super();
     this.alt = "";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   static get properties() {
     return {
       /**
@@ -155,7 +151,7 @@ class MemeMaker extends LitElement {
     window.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
-          namespace: "meme-maker.haxProperties",
+          namespace: `${this.tag}.haxProperties`,
           localesPath: new URL(`./locales`, import.meta.url).href,
           locales: ["es", "fr"],
         },

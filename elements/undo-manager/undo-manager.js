@@ -80,12 +80,6 @@ const UndoManagerBehaviors = function (SuperClass) {
       this.undoStackPrevValue = this.undoStackInitialValue;
     }
     /**
-     * Simple path resolution from URL
-     */
-    pathFromUrl(url) {
-      return url.substring(0, url.lastIndexOf("/") + 1);
-    }
-    /**
      * HTMLElement
      */
     connectedCallback() {
