@@ -191,6 +191,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @readonly
      */
+    get strikethroughButton() {
+      return {
+        command: "strikeThrough",
+        icon: "editor:format-strikethrough",
+        label: "Strike Through",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for a remove format button
+     *
+     * @readonly
+     */
     get removeFormatButton() {
       return {
         command: "removeFormat",

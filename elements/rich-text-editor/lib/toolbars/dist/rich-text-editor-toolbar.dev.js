@@ -445,6 +445,22 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
              */
           },
           {
+            key: "strikethroughButton",
+            get: function get() {
+              return {
+                command: "strikeThrough",
+                icon: "editor:format-strikethrough",
+                label: "Strike Through",
+                type: "rich-text-editor-button",
+              };
+            },
+            /**
+             * default config for a remove format button
+             *
+             * @readonly
+             */
+          },
+          {
             key: "removeFormatButton",
             get: function get() {
               return {
