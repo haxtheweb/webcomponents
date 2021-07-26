@@ -74,14 +74,18 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
     __HAXCMSMobileMenuToggle(e) {
       if (this.menuOpen) {
         this.menuOpen = false;
-        this.shadowRoot
-          .querySelector("#haxcmsmobilemenunav")
-          .setAttribute("tabindex", "-1");
+        if (this.shadowRoot.querySelector("#haxcmsmobilemenunav")) {
+          this.shadowRoot
+            .querySelector("#haxcmsmobilemenunav")
+            .setAttribute("tabindex", "-1");
+        }
       } else {
         this.menuOpen = true;
-        this.shadowRoot
-          .querySelector("#haxcmsmobilemenunav")
-          .removeAttribute("tabindex");
+        if (this.shadowRoot.querySelector("#haxcmsmobilemenunav")) {
+          this.shadowRoot
+            .querySelector("#haxcmsmobilemenunav")
+            .removeAttribute("tabindex");
+        }
       }
     }
     HAXCMSMobileMenu(e) {

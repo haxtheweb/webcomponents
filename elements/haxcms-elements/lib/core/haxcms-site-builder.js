@@ -422,7 +422,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this.__ready = true;
-    this.dispatchEvent(
+    window.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,
         composed: true,
@@ -478,6 +478,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
       autorun((reaction) => {
         this.themeData = toJS(store.themeData);
+        if (this.themeData) {
+          // special support for "format" in the URL dictating the possible output format
+          // this is for a11y, mobile, print and other possible output modes
+          const urlParams = new URLSearchParams(window.location.search);
+          const format = urlParams.get("format");
+          if (format != null) {
+            switch (format) {
+              case "print-page":
+                this.themeData.element = "haxcms-blank-theme";
+                break;
+            }
+          }
+        }
         if (this.themeData && this.themeData.element !== this.themeName) {
           this.themeName = this.themeData.element;
         }

@@ -90,6 +90,10 @@ body, html, :root {
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
 }
 
+@media print {
+  body {-webkit-print-color-adjust: exact;}
+}
+
 @media screen and (max-width: 800px) {
   body, html, :root {
     --hax-panel-padding: 8px 0 8px 50px;

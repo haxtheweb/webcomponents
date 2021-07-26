@@ -56,6 +56,7 @@
     "@lrnwebcomponents/magazine-cover": "^3.0.6",
     "@lrnwebcomponents/map-menu": "^3.0.6",
     "@lrnwebcomponents/portal-launcher": "^3.0.5",
+    "@lrnwebcomponents/clean-two": "^3.0.6",
     "@lrnwebcomponents/schema-behaviors": "^3.0.6",
     "@lrnwebcomponents/simple-colors": "^3.0.6",
     "@lrnwebcomponents/simple-datetime": "^3.0.6",
