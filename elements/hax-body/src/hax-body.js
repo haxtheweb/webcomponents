@@ -3620,10 +3620,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ) {
         // support having to import the definition; this is typical
         if (newSchema.editingElement.import) {
-          let basePath = HAXStore.pathFromUrl(
-            decodeURIComponent(import.meta.url)
-          );
-          await import(`${basePath}../../${newSchema.editingElement.import}`);
+          let basePath = new URL("./../../", import.meta.url).href;
+          await import(`${basePath}${newSchema.editingElement.import}`);
         }
         HAXStore.activeEditingElement = document.createElement(
           newSchema.editingElement.tag

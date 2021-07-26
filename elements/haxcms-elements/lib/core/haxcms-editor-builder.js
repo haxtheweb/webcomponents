@@ -81,10 +81,6 @@ class HAXCMSEditorBuilder extends HTMLElement {
       }, 5);
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   applyContext(context = null) {
     if (!this.__appliedContext) {
       this.__appliedContext = true;
@@ -111,7 +107,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
       if (!["published", "11ty"].includes(context)) {
-        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+        const basePath = new URL("./", import.meta.url).href;
         // import and set the tag based on the context
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there

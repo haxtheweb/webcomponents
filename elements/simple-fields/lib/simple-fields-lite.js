@@ -328,8 +328,7 @@ class SimpleFieldsLite extends LitElement {
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+      this.basePath = new URL("./../../../", import.meta.url).href;
     }
     this.disableAutofocus = false;
     this.language = "en";
@@ -589,10 +588,6 @@ class SimpleFieldsLite extends LitElement {
    * @param {string} [prefix=""] prefix for nest fields
    * @param {*} config schemaConversion configuration for property
    */
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   _addToForm(schema = this.schema, target = this, prefix = "", config) {
     let schemaProps = schema.properties,
       required = schema.required,

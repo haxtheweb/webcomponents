@@ -450,10 +450,6 @@ class LrnsysProgressCircle extends PolymerElement {
       },
     };
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * Ready state
    */
@@ -518,11 +514,9 @@ class LrnsysProgressCircle extends PolymerElement {
   constructor() {
     super();
     this.completeSound =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-      "lib/assets/complete.mp3";
+      new URL("./", import.meta.url).href + "lib/assets/complete.mp3";
     this.finishedSound =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-      "lib/assets/finished.mp3";
+      new URL("./", import.meta.url).href + "lib/assets/finished.mp3";
     setTimeout(() => {
       this.addEventListener("click", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.focusOn.bind(this));

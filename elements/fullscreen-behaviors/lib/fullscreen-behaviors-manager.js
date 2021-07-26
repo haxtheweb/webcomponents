@@ -32,7 +32,7 @@ class FullscreenBehaviorsManager extends LitElement {
     if (typeof screenfull === "object") {
       this._setLoaded();
     } else {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      const basePath = new URL("./", import.meta.url).href;
       const location = `${basePath}screenfull/dist/screenfull.js`;
       window.ESGlobalBridge.requestAvailability().load(
         "screenfullLib",
@@ -43,11 +43,6 @@ class FullscreenBehaviorsManager extends LitElement {
         this._setLoaded.bind(this)
       );
     }
-  }
-
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 
   /**

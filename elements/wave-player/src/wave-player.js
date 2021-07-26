@@ -291,7 +291,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     setTimeout(() => {
       import("@polymer/paper-material/paper-material.js");
     }, 0);
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     const location = `${basePath}lib/wavesurferjs/dist/wavesurfer.js`;
     window.addEventListener(
       "es-bridge-wavesurfer-loaded",
@@ -322,13 +322,9 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     }
     // basic default for coverart if none
     if (this.coverart === "") {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      const basePath = new URL("./", import.meta.url).href;
       this.coverart = `${basePath}lib/art.jpg`;
     }
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * invoke wavesurfer once we know it's globally scoped

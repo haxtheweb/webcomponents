@@ -107,16 +107,6 @@ class SimpleIconset extends HTMLElement {
     return null;
   }
 }
-/**
- * helper function for iconset developers to resolve relative paths
- */
-function pathResolver(base, path = "") {
-  return pathFromUrl(decodeURIComponent(base)) + path;
-}
-// simple path from url
-function pathFromUrl(url) {
-  return url.substring(0, url.lastIndexOf("/") + 1);
-}
 
 customElements.define(SimpleIconset.tag, SimpleIconset);
 
@@ -133,4 +123,4 @@ window.SimpleIconset.requestAvailability = () => {
 };
 // self request so that when this file is referenced it exists in the dom
 const SimpleIconsetStore = window.SimpleIconset.requestAvailability();
-export { SimpleIconset, SimpleIconsetStore, pathResolver, pathFromUrl };
+export { SimpleIconset, SimpleIconsetStore };

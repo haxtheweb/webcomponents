@@ -148,8 +148,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (window.WCGlobalBasePath) {
       this.libPath = window.WCGlobalBasePath;
     } else {
-      this.libPath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+      this.libPath = new URL("./../../", import.meta.url).href;
     }
     this.libPath += "monaco-editor/min/vs";
     setTimeout(() => {
@@ -158,9 +157,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.editorReady.bind(this)
       );
     }, 0);
-  }
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * LitElement render

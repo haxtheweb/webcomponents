@@ -125,10 +125,6 @@ class RssItems extends LitElement {
         : text;
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = ["items"];
@@ -167,7 +163,7 @@ class RssItems extends LitElement {
     this.readMoreImageAlt = "";
     this.showReadMore = false;
     const name = "x2js";
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     const location = `${basePath}lib/x2js.js`;
     window.ESGlobalBridge.requestAvailability().load(name, location);
     window.addEventListener(

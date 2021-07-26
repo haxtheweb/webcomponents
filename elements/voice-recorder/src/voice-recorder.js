@@ -94,8 +94,8 @@ class VoiceRecorder extends LitElement {
       record(
         {
           wasmURL:
-            this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../../node_modules/vmsg/vmsg.wasm",
+            new URL("./../../", import.meta.url).href +
+            "node_modules/vmsg/vmsg.wasm",
         },
         this
       ).then((blob) => {
@@ -106,9 +106,6 @@ class VoiceRecorder extends LitElement {
         );
       });
     }
-  }
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 }
 customElements.define(VoiceRecorder.tag, VoiceRecorder);

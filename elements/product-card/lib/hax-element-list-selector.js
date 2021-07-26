@@ -46,14 +46,12 @@ class HaxElementListSelector extends LitElement {
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
     // default fields json blob, most implementations should provide their own though obviously
-    this.fieldsEndpoint =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json";
+    this.fieldsEndpoint = new URL("./", import.meta.url).href + "fields.json";
     // allow flobal base path focibly set
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+      this.basePath = new URL("./../../../", import.meta.url).href;
     }
     // allow global definition of wc-registry for custom ones
     if (window.WCGlobalRegistryFileName) {
@@ -140,10 +138,6 @@ class HaxElementListSelector extends LitElement {
         reflect: true,
       },
     };
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   render() {
     return html`

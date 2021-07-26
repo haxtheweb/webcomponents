@@ -26,8 +26,7 @@ class LunrSearch extends LitElement {
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+      this.basePath = new URL("./../../", import.meta.url).href;
     }
     const location = `${this.basePath}lunr/lunr.js`;
     window.addEventListener(
@@ -99,10 +98,6 @@ class LunrSearch extends LitElement {
         );
       }
     });
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   disconnectedCallback() {
     window.removeEventListener(

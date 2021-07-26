@@ -1,4 +1,4 @@
-import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
+import { SimpleIconsetStore } from "./simple-iconset.js";
 import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 [
   "av",
@@ -17,6 +17,6 @@ import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 ].forEach((i) => {
   SimpleIconsetStore.registerIconset(
     i,
-    `${pathResolver(import.meta.url)}svgs/${i}/`
+    `${new URL("./", import.meta.url).href}svgs/${i}/`
   );
 });

@@ -678,10 +678,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.appStoreLoaded = true;
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * Handle all the dynamic imports of things told to autoload
    * This ensures we get the definitions quickly as far as
@@ -690,7 +686,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     for (var i in items) {
       // try to skip an import
       if (window.customElements.get(i)) {

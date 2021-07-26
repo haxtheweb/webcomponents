@@ -33,10 +33,6 @@ class HaxAutoloader extends HAXElement(LitElement) {
   static get tag() {
     return "hax-autoloader";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   static get properties() {
     return {
       ...super.properties,
@@ -132,9 +128,6 @@ class HaxAutoloader extends HAXElement(LitElement) {
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
-            const basePath = this.pathFromUrl(
-              decodeURIComponent(import.meta.url)
-            );
             if (!window.customElements.get(name)) {
               // fallback support since we now support import / a complex object
               let nameLocation = varGet(
@@ -146,7 +139,9 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   `@lrnwebcomponents/${name}/${name}.js`
                 )
               );
-              import(`${basePath}../../../${nameLocation}`)
+              import(
+                `${new URL("./../../../", import.meta.url).href}${nameLocation}`
+              )
                 .then((response) => {
                   // get the custom element definition we used to add that file
                   let CEClass = window.customElements.get(name);

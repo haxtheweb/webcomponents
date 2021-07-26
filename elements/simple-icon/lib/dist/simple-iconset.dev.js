@@ -3,8 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.pathResolver = pathResolver;
-exports.pathFromUrl = pathFromUrl;
 exports.SimpleIconsetStore = exports.SimpleIconset = void 0;
 
 function ownKeys(object, enumerableOnly) {
@@ -359,16 +357,6 @@ var SimpleIconset =
  */
 
 exports.SimpleIconset = SimpleIconset;
-
-function pathResolver(base) {
-  var path =
-    arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  return pathFromUrl(decodeURIComponent(base)) + path;
-} // simple path from url
-
-function pathFromUrl(url) {
-  return url.substring(0, url.lastIndexOf("/") + 1);
-}
 
 customElements.define(SimpleIconset.tag, SimpleIconset);
 window.SimpleIconset = window.SimpleIconset || {};

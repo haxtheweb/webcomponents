@@ -22,10 +22,6 @@ class Hal9000 extends LitElement {
   static get tag() {
     return "hal-9000";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * Establish the element
    */
@@ -40,8 +36,9 @@ class Hal9000 extends LitElement {
     // ensure singleton is set
     window.Hal9000 = window.Hal9000 || {};
     window.Hal9000.instance = this;
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/annyang/annyang.min.js`;
+    const location = `${
+      new URL("./", import.meta.url).href
+    }lib/annyang/annyang.min.js`;
     window.addEventListener(
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this)

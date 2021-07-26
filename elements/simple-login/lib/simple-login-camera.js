@@ -6,17 +6,12 @@ class SimpleLoginCamera extends HTMLElement {
   static get tag() {
     return "simple-login-camera";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   constructor() {
     super();
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+      this.basePath = new URL("./../../../", import.meta.url).href;
     }
     this.t = {
       record: "Record",

@@ -674,10 +674,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.loadManifest(newValue, this);
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
@@ -702,11 +698,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // import the reference to the item dynamically, if we can
           try {
             // prettier-ignore
-            import(
-              this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-                "../../../../" +
-                newValue.path
-            ).then((e) => {
+            import(new URL("./../../../../" + newValue.path, import.meta.url).href).then((e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;
