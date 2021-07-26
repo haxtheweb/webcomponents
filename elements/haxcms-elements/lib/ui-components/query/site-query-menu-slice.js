@@ -114,7 +114,7 @@ class SiteQueryMenuSlice extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("result-changed", {
-            detail: result,
+            detail: this.result,
           })
         );
       }

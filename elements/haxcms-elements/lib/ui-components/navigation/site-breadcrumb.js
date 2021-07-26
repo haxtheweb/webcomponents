@@ -104,7 +104,11 @@ class SiteBreadcrumb extends LitElement {
    */
   _activeItemChanged(active) {
     const activeItem = active;
-    if (activeItem && this.shadowRoot.querySelector("#space")) {
+    if (
+      activeItem &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#space")
+    ) {
       // wipe out the slot and rebuild it
       while (this.shadowRoot.querySelector("#space").firstChild !== null) {
         this.shadowRoot

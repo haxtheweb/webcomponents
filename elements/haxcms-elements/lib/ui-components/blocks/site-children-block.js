@@ -2,35 +2,89 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-
 /**
  * `site-children-block`
  * `Child pages of whatever is active`
- *
-
- * @polymer
  * @demo demo/index.html
  */
-class SiteChildrenBlock extends PolymerElement {
+class SiteChildrenBlock extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "site-children-block";
   }
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      gizmo: {
+        title: "HAXcms: child block",
+        description: "Dynamic block to show child of the current page",
+        icon: "av:call-to-action",
+        color: "grey",
+        groups: ["haxcms"],
+        handles: [],
+        meta: {
+          author: "elmsln",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [],
+        advanced: [
+          {
+            property: "dynamicMethodology",
+            title: "Dynamic method",
+            description:
+              "How to calculate the children relative to this element",
+            inputMethod: "select",
+            options: {
+              active: "Active children",
+              parent: "Parent's children",
+              ancestor: "All children from the highest ancestor",
+            },
+          },
+          {
+            property: "start",
+            title: "Start level",
+            inputMethod: "number",
+          },
+          {
+            property: "end",
+            title: "End level",
+            inputMethod: "number",
+          },
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "site-children-block",
+          properties: {},
+          content: "",
+        },
+      ],
+    };
+  }
   constructor() {
     super();
     this.__disposer = [];
+    this.dynamicMethodology = "active";
+    this.start = 1;
+    this.end = 1000;
+    this.fixedId = false;
+    this.noink = false;
+    this.__items = [];
   }
-  // render function
-  static get template() {
-    return html`
-      <style>
+
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           --site-children-block-indent: 16px;
@@ -42,16 +96,9 @@ class SiteChildrenBlock extends PolymerElement {
           opacity: 0.2;
           pointer-events: none;
         }
-        .wrapper {
-          @apply --site-children-block-wrapper;
-        }
-        .spacing {
-          @apply --site-children-block-spacing;
-        }
         .link {
           display: block;
           color: var(--site-children-block-link-color, #444444);
-          @apply --site-children-block-link;
         }
         button {
           text-transform: unset;
@@ -60,88 +107,83 @@ class SiteChildrenBlock extends PolymerElement {
           margin: 0;
           border-radius: 0;
           justify-content: flex-start;
-          @apply --site-children-block-button;
+          background-color: transparent;
+          border: none;
+          color: inherit;
         }
-        button:hover,
-        button:focus,
-        button:active {
-          @apply --site-children-block-button-active;
-        }
+
         .active {
           color: var(--site-children-block-link-active-color, #000000);
           background-color: var(--site-children-block-link-active-bg);
-          @apply --site-children-block-link-active;
         }
         .spacing .indent {
           display: inline-flex;
         }
         .indent-1 {
           margin-left: calc(var(--site-children-block-indent) * 1);
-          @apply --site-children-block-indent-1;
         }
         .indent-2 {
           margin-left: calc(var(--site-children-block-indent) * 2);
-          @apply --site-children-block-indent-1;
         }
         .indent-3 {
           margin-left: calc(var(--site-children-block-indent) * 3);
-          @apply --site-children-block-indent-1;
         }
         .indent-4 {
           margin-left: calc(var(--site-children-block-indent) * 4);
-          @apply --site-children-block-indent-1;
         }
         .indent-5 {
           margin-left: calc(var(--site-children-block-indent) * 5);
-          @apply --site-children-block-indent-1;
         }
         .indent-6 {
           margin-left: calc(var(--site-children-block-indent) * 6);
-          @apply --site-children-block-indent-1;
         }
         .indent-7 {
           margin-left: calc(var(--site-children-block-indent) * 7);
-          @apply --site-children-block-indent-1;
         }
         .indent-8 {
           margin-left: calc(var(--site-children-block-indent) * 8);
-          @apply --site-children-block-indent-1;
         }
         .indent-9 {
           margin-left: calc(var(--site-children-block-indent) * 9);
-          @apply --site-children-block-indent-1;
         }
         .indent-10 {
           margin-left: calc(var(--site-children-block-indent) * 10);
-          @apply --site-children-block-indent-1;
         }
-      </style>
+      `,
+    ];
+  }
+  resultChanged(e) {
+    this.__items = [...e.detail];
+  }
+  // render function
+  render() {
+    return html`
       <div class="wrapper">
         <site-query-menu-slice
-          result="{{__items}}"
-          dynamic-methodology="[[dynamicMethodology]]"
-          start="[[start]]"
-          end="[[end]]"
-          parent="[[parent]]"
-          fixed-id="[[fixedId]]"
+          @result-changed="${this.resultChanged}"
+          dynamic-methodology="${this.dynamicMethodology}"
+          start="${this.start}"
+          end="${this.end}"
+          parent="${this.parent}"
+          ?fixed-id="${this.fixedId}"
         ></site-query-menu-slice>
-        <dom-repeat items="[[__items]]">
-          <template>
+        ${this.__items.map(
+          (item) => html`
             <div class="spacing">
               <a
-                data-id$="[[item.id]]"
+                data-id="${item.id}"
                 class="link"
                 tabindex="-1"
-                href$="[[item.slug]]"
+                href="${item.slug}"
               >
-                <button noink="[[noink]]">
-                  <div class$="indent indent-[[item.indent]]"></div>
-                  [[item.title]]
+                <button noink="${this.noink}">
+                  <div class="indent indent-${item.indent}"></div>
+                  ${item.title}
                 </button>
               </a>
             </div>
-          </template>
-        </dom-repeat>
+          `
+        )}
       </div>
     `;
   }
@@ -153,21 +195,19 @@ class SiteChildrenBlock extends PolymerElement {
        */
       dynamicMethodology: {
         type: String,
-        value: "direct",
+        attribute: "dynamic-methodology",
       },
       /**
        * starting level for the menu items
        */
       start: {
         type: Number,
-        value: 1,
       },
       /**
        * ending level for the menu items
        */
       end: {
         type: Number,
-        value: 1000,
       },
       /**
        * parent for the menu id
@@ -181,32 +221,31 @@ class SiteChildrenBlock extends PolymerElement {
        */
       fixedId: {
         type: Boolean,
-        value: false,
+        attribute: "fixed-id",
       },
       /**
        * to control ink on the buttons
        */
       noink: {
         type: Boolean,
-        value: false,
       },
       /**
        * just to bind data between things
        */
       __items: {
         type: Array,
-        notify: true,
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged",
+        attribute: "active-id",
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
+        attribute: "edit-mode",
       },
     };
   }
@@ -250,6 +289,23 @@ class SiteChildrenBlock extends PolymerElement {
       }
     }
   }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "__items") {
+        this.dispatchEvent(
+          new CustomEvent(`${this[propName]}-changed`, {
+            detail: this[propName],
+          })
+        );
+      }
+      if (propName === "_activeId" && this.shadowRoot) {
+        this._activeIdChanged(this[(propName, oldValue)]);
+      }
+    });
+  }
+
   connectedCallback() {
     super.connectedCallback();
     autorun((reaction) => {
