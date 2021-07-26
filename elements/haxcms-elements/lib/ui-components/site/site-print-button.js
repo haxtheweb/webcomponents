@@ -152,11 +152,6 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
    * Print the type in question
    */
   async print(e) {
-    // now dynamic import the footer so we don't bloat all other page loads
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js"
-    );
     const type = this.type;
     let content = "";
     if (type === "page") {
@@ -257,7 +252,6 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
 </style>
 <h1>${store.siteTitle}</h1>
-<site-footer></site-footer>
 <p>${datetime}</p>
 ${content}`;
     // From https://stackoverflow.com/questions/1071962/how-do-i-print-part-of-a-rendered-html-page-in-javascript#answer-1072151
@@ -274,11 +268,18 @@ ${content}`;
         .getAttribute("href");
       print.document.head.appendChild(base);
     }
-    print.document.body.appendChild(element);
+    try {
+      print.document.body.appendChild(element);
+    } catch (e) {
+      console.log(element);
+      console.warn(e);
+    }
     print.document.close();
     print.focus();
     print.print();
-    print.close();
+    print.addEventListener("afterprint", (event) => {
+      print.close();
+    });
   }
 }
 window.customElements.define(SitePrintButton.tag, SitePrintButton);

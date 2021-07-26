@@ -730,7 +730,9 @@ export const displayBehaviors = function (SuperClass) {
         print.document.close();
         print.focus();
         print.print();
-        print.close();
+        print.addEventListener("afterprint", (event) => {
+          print.close();
+        });
       }
 
       /**

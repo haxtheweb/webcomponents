@@ -1032,7 +1032,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     print.document.close();
     print.focus();
     print.print();
-    print.close();
+    print.addEventListener("afterprint", (event) => {
+      print.close();
+    });
 
     /**
      * Fires when transcript is printed
