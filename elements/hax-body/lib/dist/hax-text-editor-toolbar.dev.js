@@ -13,6 +13,12 @@ var _haxTextEditorButton = require("./hax-text-editor-button.js");
 
 var _haxStore = require("./hax-store.js");
 
+var _mobx = require("mobx");
+
+var _haxContextBehaviors = require("./hax-context-behaviors.js");
+
+var _I18NMixin = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -80,6 +86,18 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    "\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          flex: 1 1 auto;\n        }\n      ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -105,6 +123,28 @@ function _arrayWithoutHoles(arr) {
     }
     return arr2;
   }
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n    <div slot="tour" data-stop-content>\n      ',
+    "\n    </div>",
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -238,6 +278,15 @@ var HaxTextEditorToolbar =
             return "hax-text-editor-toolbar";
           }, // life cycle
         },
+        {
+          key: "tourTemplate",
+          get: function get() {
+            return (0, _litElement.html)(
+              _templateObject(),
+              this.t.textEditorToolbarTour
+            );
+          },
+        },
       ],
       [
         {
@@ -254,25 +303,28 @@ var HaxTextEditorToolbar =
                   "stickyStyles",
                   this
                 )
-              )
+              ),
+              [(0, _litElement.css)(_templateObject2())]
             );
           },
         },
         {
           key: "properties",
           get: function get() {
-            return _objectSpread(
-              {},
-              _get(_getPrototypeOf(HaxTextEditorToolbar), "properties", this),
-              {
-                activeNode: {
-                  type: Object,
-                },
-                __updated: {
-                  type: Boolean,
-                },
-              }
-            );
+            return {
+              activeNode: {
+                type: Object,
+              },
+              realSelectedValue: {
+                type: String,
+              },
+              sourceView: {
+                type: Boolean,
+              },
+              __updated: {
+                type: Boolean,
+              },
+            };
           },
         },
       ]
@@ -288,6 +340,49 @@ var HaxTextEditorToolbar =
         _getPrototypeOf(HaxTextEditorToolbar).call(this)
       );
       _this.tag = HaxTextEditorToolbar.tag;
+      _this.t = {
+        undoButton: "Undo",
+        redoButton: "Redo",
+        formatButton: "Format",
+        blockP: "Paragraph",
+        blockH1: "Heading 1",
+        blockH2: "Heading 2",
+        blockH3: "Heading 3",
+        blockH4: "Heading 4",
+        blockH5: "Heading 5",
+        blockH6: "Heading 6",
+        blockPre: "Preformatted",
+        italicButton: "Italic",
+        boldButton: "Bold",
+        underlineButton: "Underline",
+        strikethroughButton: "Cross out",
+        removeFormatButton: "Remove format",
+        linkButton: "Link",
+        cutButton: "Cut",
+        copyButton: "Copy",
+        pasteButton: "Paste",
+        subscriptButton: "Subscript",
+        superscriptButton: "Superscript",
+        symbolButton: "Insert Symbol",
+        emojiButton: "Insert Emoticon",
+        imageButton: "Insert Image",
+        orderedListButton: "Bulleted list",
+        unorderedListButton: "Numbered list",
+        blockquoteButton: "Blockquote",
+        indentButton: "Indent",
+        outdentButton: "Outdent",
+        textEditorToolbarTour:
+          "Change how the text is structured and visualized in the page.",
+      };
+
+      _this.registerLocalization({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
+      _this.sourceView = false;
+      _this.haxUIElement = true;
+      _this.tourName = "hax";
       window.HaxTextEditorToolbarConfig =
         window.HaxTextEditorToolbarConfig || {};
       window.HaxTextEditorToolbarConfig.inlineGizmos =
@@ -303,8 +398,26 @@ var HaxTextEditorToolbar =
 
       _this.setTarget(undefined);
 
+      (0, _mobx.autorun)(function () {
+        _this.hasSelectedText =
+          (0, _mobx.toJS)(_haxStore.HAXStore.haxSelectedText).length > 0;
+      });
+      (0, _mobx.autorun)(function () {
+        // this just forces this block to run when editMode is modified
+        var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
+        var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode); //this.viewSource = false;
+
+        if (activeNode && activeNode.tagName) {
+          var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName); //this.sourceView = schema.canEditSource;
+        }
+      });
       return _this;
     }
+    /**
+     * default config for a format button
+     *
+     * @readonly
+     */
 
     _createClass(HaxTextEditorToolbar, [
       {
@@ -327,6 +440,8 @@ var HaxTextEditorToolbar =
           changedProperties.forEach(function (oldValue, propName) {
             if (propName === "activeNode" && _this2.activeNode !== oldValue)
               _this2.setTarget(_this2.activeNode);
+            if (propName === "t" && _this2.t !== oldValue)
+              _this2.updateToolbarElements();
           });
         },
         /**
@@ -435,15 +550,23 @@ var HaxTextEditorToolbar =
             tag.indexOf("-") < 0
           )
             return;
-          var gizmo = props.gizmo || {},
+          var element = props,
+            gizmo = props.gizmo || {},
             handles = gizmo.handles || [],
+            title =
+              gizmo.title ||
+              gizmo.tag.replace(/-./g, function (x) {
+                return x.toUpperCase()[1];
+              }),
             inline = handles.filter(function (handle) {
               return handle.type === "inline";
             });
+          element.gizmo = element.gizmo || {};
+          element.gizmo.title = "Add ".concat(title);
 
           if (inline.length > 0) {
             window.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
-              element: props,
+              element: element,
               type: "hax-text-editor-button",
             };
             this.__updated = false;
@@ -477,6 +600,560 @@ var HaxTextEditorToolbar =
           ]);
           this.updateToolbar();
         },
+        /**
+         * Implements haxHooks to tie into life-cycle if hax exists.
+         */
+      },
+      {
+        key: "haxHooks",
+        value: function haxHooks() {
+          return {
+            activeElementChanged: "haxactiveElementChanged",
+          };
+        },
+        /**
+         * allow HAX to toggle edit state when activated
+         */
+      },
+      {
+        key: "haxactiveElementChanged",
+        value: function haxactiveElementChanged(el, val) {
+          // overwrite the HAX dom w/ what our editor is supplying
+          if (!val && el) {
+            el.innerHTML = this.getValue();
+          }
+
+          return el;
+        },
+      },
+      {
+        key: "undoButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "undoButton",
+              this
+            ),
+            {
+              label: this.t.undoButton,
+            }
+          );
+        },
+        /**
+         * default config for a format button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "redoButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "redoButton",
+              this
+            ),
+            {
+              label: this.t.redoButton,
+            }
+          );
+        },
+        /**
+         * default config for a format button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "formatButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "formatButton",
+              this
+            ),
+            {
+              label: this.t.formatButton,
+              blocks: this.formatBlocks,
+            }
+          );
+        },
+      },
+      {
+        key: "formatBlocks",
+        get: function get() {
+          return [
+            {
+              label: this.t.blockP,
+              tag: "p",
+            },
+            {
+              label: this.t.blockH1,
+              tag: "h1",
+            },
+            {
+              label: this.t.blockH2,
+              tag: "h2",
+            },
+            {
+              label: this.t.blockH3,
+              tag: "h3",
+            },
+            {
+              label: this.t.blockH4,
+              tag: "h4",
+            },
+            {
+              label: this.t.blockH5,
+              tag: "h5",
+            },
+            {
+              label: this.t.blockH6,
+              tag: "h6",
+            },
+            {
+              label: this.t.blockPre,
+              tag: "pre",
+            },
+          ];
+        },
+        /**
+         * default config for a bold button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "boldButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "boldButton",
+              this
+            ),
+            {
+              label: this.t.boldButton,
+            }
+          );
+        },
+        /**
+         * default config for an italic button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "italicButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "italicButton",
+              this
+            ),
+            {
+              label: this.t.italicButton,
+            }
+          );
+        },
+        /**
+         * default config for an underline button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "underlineButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "underlineButton",
+              this
+            ),
+            {
+              label: this.t.underlineButton,
+            }
+          );
+        },
+        /**
+         * default config for an underline button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "strikethroughButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "strikethroughButton",
+              this
+            ),
+            {
+              label: this.t.strikethroughButton,
+            }
+          );
+        },
+        /**
+         * default config for a remove format button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "removeFormatButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "removeFormatButton",
+              this
+            ),
+            {
+              label: this.t.removeFormatButton,
+            }
+          );
+        },
+        /**
+         * default config for a style button group: format, bold, italic, and remove format
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "advancedInlineButtonGroup",
+        get: function get() {
+          return {
+            type: "button-group",
+            buttons: [this.underlineButton, this.strikethroughButton],
+          };
+        },
+        /**
+         * default config for a link button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "linkButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "linkButton",
+              this
+            ),
+            {
+              label: this.t.linkButton,
+            }
+          );
+        },
+        /**
+         * default config for a cut button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "cutButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "cutButton",
+              this
+            ),
+            {
+              label: this.t.cutButton,
+            }
+          );
+        },
+        /**
+         * default config for a copy button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "copyButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "copyButton",
+              this
+            ),
+            {
+              label: this.t.copyButton,
+            }
+          );
+        },
+        /**
+         * default config for a paste button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "pasteButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "pasteButton",
+              this
+            ),
+            {
+              label: this.t.pasteButton,
+            }
+          );
+        },
+        /**
+         * default config for a subscript button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "subscriptButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "subscriptButton",
+              this
+            ),
+            {
+              label: this.t.subscriptButton,
+            }
+          );
+        },
+        /**
+         * default config for a superscript button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "superscriptButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "superscriptButton",
+              this
+            ),
+            {
+              label: this.t.superscriptButton,
+            }
+          );
+        },
+        /**
+         * default config for a symbol button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "symbolButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "symbolButton",
+              this
+            ),
+            {
+              label: this.t.symbolButton,
+            }
+          );
+        },
+        /**
+         * default config for an emoji button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "emojiButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "emojiButton",
+              this
+            ),
+            {
+              label: this.t.emojiButton,
+            }
+          );
+        },
+        /**
+         * default config for an image button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "imageButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "imageButton",
+              this
+            ),
+            {
+              label: this.t.imageButton,
+            }
+          );
+        },
+        /**
+         * default config for an ordered list button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "orderedListButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "orderedListButton",
+              this
+            ),
+            {
+              label: this.t.orderedListButton,
+            }
+          );
+        },
+        /**
+         * default config for an unordered list button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "unorderedListButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "unorderedListButton",
+              this
+            ),
+            {
+              label: this.t.unorderedListButton,
+            }
+          );
+        },
+        /**
+         * default config for a blockquote button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "blockquoteButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "blockquoteButton",
+              this
+            ),
+            {
+              label: this.t.blockquoteButton,
+            }
+          );
+        },
+        /**
+         * default config for an indent button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "indentButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "indentButton",
+              this
+            ),
+            {
+              label: this.t.indentButton,
+            }
+          );
+        },
+        /**
+         * default config for an outdent button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "outdentButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "outdentButton",
+              this
+            ),
+            {
+              label: this.t.outdentButton,
+            }
+          );
+        },
+        /**
+         * default config for a view source button
+         *
+         * @readonly
+         */
+      },
+      {
+        key: "sourceButton",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(HaxTextEditorToolbar.prototype),
+              "sourceButton",
+              this
+            )
+          );
+        },
       },
       {
         key: "defaultConfig",
@@ -486,6 +1163,7 @@ var HaxTextEditorToolbar =
             this.linkButtonGroup,
             this.scriptButtonGroup,
             this.listIndentButtonGroup,
+            this.advancedInlineButtonGroup,
           ];
         },
       },
@@ -494,7 +1172,9 @@ var HaxTextEditorToolbar =
     return HaxTextEditorToolbar;
   })(
     (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
-      _litElement.LitElement
+      (0, _I18NMixin.I18NMixin)(
+        (0, _haxContextBehaviors.HaxContextBehaviors)(_litElement.LitElement)
+      )
     )
   );
 

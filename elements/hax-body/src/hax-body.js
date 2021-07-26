@@ -201,7 +201,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         .hax-context-visible,
         .hax-context-menu-active {
-          display: block;
+          display: flex;
         }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
@@ -688,6 +688,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           id="textcontextmenu"
           class="hax-context-menu ignore-activation"
           .activeNode="${this.activeNode}"
+          show="always"
         >
         </hax-text-editor-toolbar>
         <div id="topcontextmenus" hidden>
