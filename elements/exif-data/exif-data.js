@@ -17,10 +17,6 @@ class ExifData extends HTMLElement {
   static get tag() {
     return "exif-data";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   get html() {
     return `
     <style>
@@ -62,7 +58,7 @@ class ExifData extends HTMLElement {
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      this.basePath = new URL("./", import.meta.url).href;
     }
     // see if we already have it imported
     if (ESGlobalBridgeStore.imports["exif-js"]) {

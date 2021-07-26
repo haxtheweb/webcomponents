@@ -49,10 +49,6 @@ class MomentElement extends LitElement {
       },
     };
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   constructor() {
     super();
     this.datetime = new Date();
@@ -60,7 +56,7 @@ class MomentElement extends LitElement {
     this.outputFormat = "";
     this.from = "";
     this.to = "";
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     const location = `${basePath}lib/moment/moment.js`;
     window.addEventListener(
       "es-bridge-moment-loaded",

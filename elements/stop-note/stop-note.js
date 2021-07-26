@@ -1,15 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import {
-  pathResolver,
-  SimpleIconsetStore,
-} from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
-  `${pathResolver(import.meta.url)}lib/svgs/stopnoteicons/`
+  `${new URL("./", import.meta.url).href}lib/svgs/stopnoteicons/`
 );
 
 const iconObj = {

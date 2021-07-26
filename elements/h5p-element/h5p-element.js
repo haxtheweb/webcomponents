@@ -118,16 +118,11 @@ class H5PElement extends LitElement {
     }
     return super.createRenderRoot();
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
-    const basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/";
+    const basePath = new URL("./lib/", import.meta.url).href;
     this.h5pJSDeps = [
       basePath + "h5p-resizer.js",
       basePath + "h5p/js/jquery.js",
@@ -204,9 +199,7 @@ class H5PElement extends LitElement {
       icon: (displayOptions.icon = false),
       export: (displayOptions.export = false),
     });
-    const basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/";
-
+    const basePath = new URL("./lib/", import.meta.url).href;
     H5PIntegration.core = {
       styles: [
         basePath + "h5p/styles/h5p.css",

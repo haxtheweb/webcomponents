@@ -260,15 +260,11 @@ class PaperAvatar extends LitElement {
         );
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * LitElement life cycle - shadowDom / properties mapped
    */
   firstUpdated(changedProperties) {
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     const location = `${basePath}lib/jdenticon-1.4.0.min.js`;
     window.addEventListener(
       "es-bridge-jdenticon-loaded",
