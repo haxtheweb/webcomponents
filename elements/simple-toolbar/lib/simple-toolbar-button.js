@@ -607,6 +607,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 var(--simple-toolbar-button-height, 24px)
               )
             );
+            z-index: 1;
+          }
+          :host(:hover),
+          :host(:focus),
+          :host(:focus-within) {
+            z-index: 2;
           }
           button[part="button"] {
             font-family: inherit;

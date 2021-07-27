@@ -49,6 +49,15 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
             );
             --simple-picker-icon-size: 16px;
             --simple-picker-options-border-width: 1px;
+            --simple-picker-options-border: var(
+                --simple-picker-options-border-width,
+                1px
+              )
+              solid
+              var(
+                --simple-toolbar-border-color,
+                var(--rich-text-editor-border-color, #ddd)
+              );
           }
           #button {
             margin-top: 0;

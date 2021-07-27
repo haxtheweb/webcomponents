@@ -88,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          flex: 1 1 auto;\n        }\n      ",
+    "\n        ::slotted(.group) {\n          flex: 1 0 auto;\n          justify-content: center;\n          border-width: 0.5px 0.5px 0.5px 0.5px;\n          margin: -1px;\n          padding: 1px;\n        }\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          z-index: 1;\n        }\n        ::slotted([icon-position]),\n        :host([collapsed]) ::slotted(.group) {\n          flex: 0 0 auto;\n        }\n        :host ::slotted(.group:hover),\n        :host ::slotted(.group:focus),\n        :host ::slotted(.group:focus-within),\n        :host ::slotted([icon-position]:hover),\n        :host ::slotted([icon-position]:focus),\n        :host ::slotted([icon-position]:focus-within) {\n          z-index: 2;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -127,7 +127,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n    <div slot="tour" data-stop-content>\n      ',
+    ' <div slot="tour" data-stop-content>\n      ',
     "\n    </div>",
   ]);
 

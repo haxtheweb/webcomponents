@@ -188,6 +188,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           max-width: 280px;
           flex: 1 1 auto;
         }
+        #textcontextmenu {
+          position: absolute;
+          bottom: 0;
+        }
         #platecontextmenu {
           flex: 0 0 auto;
         }

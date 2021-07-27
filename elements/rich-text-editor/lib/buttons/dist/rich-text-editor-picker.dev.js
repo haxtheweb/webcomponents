@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n        ",
+    "\n          :host {\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n            --simple-picker-options-border: var(--simple-picker-options-border-width, 1px) solid var(--simple-toolbar-border-color, var(--rich-text-editor-border-color, #ddd));\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n        ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -119,7 +119,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '<label\n            id="label"\n            class="offscreen"\n            part="label"\n            >',
+    '<label id="label" class="offscreen" part="label"\n            >',
     "</label\n          >",
   ]);
 

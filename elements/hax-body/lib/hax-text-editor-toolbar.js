@@ -29,9 +29,28 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.baseStyles,
       ...super.stickyStyles,
       css`
+        ::slotted(.group) {
+          flex: 1 0 auto;
+          justify-content: center;
+          border-width: 0.5px 0.5px 0.5px 0.5px;
+          margin: -1px;
+          padding: 1px;
+        }
         ::slotted(.group),
         ::slotted([icon-position]) {
-          flex: 1 1 auto;
+          z-index: 1;
+        }
+        ::slotted([icon-position]),
+        :host([collapsed]) ::slotted(.group) {
+          flex: 0 0 auto;
+        }
+        :host ::slotted(.group:hover),
+        :host ::slotted(.group:focus),
+        :host ::slotted(.group:focus-within),
+        :host ::slotted([icon-position]:hover),
+        :host ::slotted([icon-position]:focus),
+        :host ::slotted([icon-position]:focus-within) {
+          z-index: 2;
         }
       `,
     ];
