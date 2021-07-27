@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RichTextToolbarStyles = exports.RichTextStyles = exports.RichTextEditorButtonBehaviors = exports.RichTextEditorButton = void 0;
 
-var _litElement = require("lit");
+var _litElement = require("lit-element/lit-element.js");
 
 var _simpleToolbarButton = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
 
-require("@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js");
+var _richTextEditorRangeBehaviors = require("@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
@@ -18,6 +18,8 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
 require("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
 
 require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
+
+var _simpleToolbar = require("@lrnwebcomponents/simple-toolbar/simple-toolbar");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -207,7 +209,7 @@ function _getPrototypeOf(o) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n    :host {\n      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);\n      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);\n      --simple-toolbar-button-opacity: var(--rich-text-editor-button-opacity, 1);\n      --simple-toolbar-button-color: var(--rich-text-editor-button-color, #444);\n      --simple-toolbar-button-bg: var(--rich-text-editor-button-bg, #ffffff);\n      --simple-toolbar-button-border-color: var(--rich-text-editor-button-border-color, transparent);\n      --simple-toolbar-button-toggled-opacity: var(--rich-text-editor-button-toggled-opacity, 1);\n      --simple-toolbar-button-toggled-color: var(--rich-text-editor-button-toggled-color, #222);\n      --simple-toolbar-button-toggled-bg: var(--rich-text-editor-button-toggled-bg, #ddd);\n      --simple-toolbar-button-toggled-border-color: var(--rich-text-editor-button-toggled-border-color, transparent);\n      --simple-toolbar-button-hover-opacity: var(--rich-text-editor-button-hover-opacity, 1);\n      --simple-toolbar-button-hover-color: var(--rich-text-editor-button-hover-color, #000);\n      --simple-toolbar-button-hover-bg: var(--rich-text-editor-button-hover-bg, #f0f0f0);\n      --simple-toolbar-button-hover-border-color: var(--rich-text-editor-button-hover-border-color, unset);\n      --simple-toolbar-button-disabled-opacity: var(--rich-text-editor-button-disabled-opacity, 1);\n      --simple-toolbar-button-disabled-color: var(--rich-text-editor-button-disabled-color, #666);\n      --simple-toolbar-button-disabled-bg: var(--rich-text-editor-button-disabled-bg, transparent);\n      --simple-toolbar-button-disabled-border-color: var(--rich-text-editor-button-disabled-border-color, transparent);\n    }\n  ",
+    "\n    :host {\n      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);\n      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);\n      --simple-toolbar-button-opacity: var(\n        --rich-text-editor-button-opacity,\n        1\n      );\n      --simple-toolbar-button-color: var(--rich-text-editor-button-color, #444);\n      --simple-toolbar-button-bg: var(--rich-text-editor-button-bg, #ffffff);\n      --simple-toolbar-button-border-color: var(\n        --rich-text-editor-button-border-color,\n        transparent\n      );\n      --simple-toolbar-button-toggled-opacity: var(\n        --rich-text-editor-button-toggled-opacity,\n        1\n      );\n      --simple-toolbar-button-toggled-color: var(\n        --rich-text-editor-button-toggled-color,\n        #222\n      );\n      --simple-toolbar-button-toggled-bg: var(\n        --rich-text-editor-button-toggled-bg,\n        #ddd\n      );\n      --simple-toolbar-button-toggled-border-color: var(\n        --rich-text-editor-button-toggled-border-color,\n        transparent\n      );\n      --simple-toolbar-button-hover-opacity: var(\n        --rich-text-editor-button-hover-opacity,\n        1\n      );\n      --simple-toolbar-button-hover-color: var(\n        --rich-text-editor-button-hover-color,\n        #000\n      );\n      --simple-toolbar-button-hover-bg: var(\n        --rich-text-editor-button-hover-bg,\n        #f0f0f0\n      );\n      --simple-toolbar-button-hover-border-color: var(\n        --rich-text-editor-button-hover-border-color,\n        unset\n      );\n      --simple-toolbar-button-disabled-opacity: var(\n        --rich-text-editor-button-disabled-opacity,\n        1\n      );\n      --simple-toolbar-button-disabled-color: var(\n        --rich-text-editor-button-disabled-color,\n        #666\n      );\n      --simple-toolbar-button-disabled-bg: var(\n        --rich-text-editor-button-disabled-bg,\n        transparent\n      );\n      --simple-toolbar-button-disabled-border-color: var(\n        --rich-text-editor-button-disabled-border-color,\n        transparent\n      );\n    }\n  ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -280,8 +282,8 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
 ) {
   return (
     /*#__PURE__*/
-    (function (_SimpleToolbarButtonB) {
-      _inherits(_class, _SimpleToolbarButtonB);
+    (function (_RichTextEditorRangeB) {
+      _inherits(_class, _RichTextEditorRangeB);
 
       _createClass(
         _class,
@@ -344,13 +346,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                   },
 
                   /**
-                   * The active selected range, inherited from the toolbar
-                   */
-                  range: {
-                    type: Object,
-                  },
-
-                  /**
                    * tags edited by this button
                    */
                   tagsList: {
@@ -394,13 +389,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                   selectionAncestors: {
                     type: Array,
                   },
-
-                  /**
-                   * highlight surrounding selected range
-                   */
-                  __selection: {
-                    type: Object,
-                  },
                 }
               );
             },
@@ -417,7 +405,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
           this,
           _getPrototypeOf(_class).call(this)
         );
-        _this.__selection = window.RichTextEditorSelection.requestAvailability();
         _this.tagsList = "";
         return _this;
       }
@@ -465,6 +452,21 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
             });
           },
           /**
+           * Called every time the element is inserted into the DOM. Useful for
+           * running setup code, such as fetching resources or rendering.
+           * Generally, you should try to delay work until this time.
+           */
+        },
+        {
+          key: "connectedCallback",
+          value: function connectedCallback() {
+            _get(
+              _getPrototypeOf(_class.prototype),
+              "connectedCallback",
+              this
+            ).call(this);
+          },
+          /**
            * life cycle, element is detatched
            */
         },
@@ -489,100 +491,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         {
           key: "commandCallback",
           value: function commandCallback(editor, toolbar, selection) {},
-          /**
-           * indicates how highlight should be toggled
-           * @event highlight
-           * @param {boolean} [on=true] whether to turn highlight on
-           */
-        },
-        {
-          key: "highlight",
-          value: function highlight() {
-            var on =
-              arguments.length > 0 && arguments[0] !== undefined
-                ? arguments[0]
-                : true;
-            this.dispatchEvent(
-              new CustomEvent("highlight", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: on,
-              })
-            );
-          },
-          /**
-           * indicates node that should be highlighted
-           * @event highlightnode
-           * @param {object} node
-           */
-        },
-        {
-          key: "highlightNode",
-          value: function highlightNode(node) {
-            this.dispatchEvent(
-              new CustomEvent("highlightnode", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: node,
-              })
-            );
-          },
-          /**
-           * indicates range to be set
-           * @event selectrange
-           * @param {object} range
-           */
-        },
-        {
-          key: "selectRange",
-          value: function selectRange(range) {
-            this.dispatchEvent(
-              new CustomEvent("selectrange", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: range,
-              })
-            );
-          },
-          /**
-           * indicates range should be a given node
-           * @event selectnode
-           * @param {object} node
-           */
-        },
-        {
-          key: "selectNode",
-          value: function selectNode(node) {
-            this.dispatchEvent(
-              new CustomEvent("selectnode", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: node,
-              })
-            );
-          },
-          /**
-           * indicates range should be the contents of a given node
-           * @event selectnodeccontents
-           * @param {object} node
-           */
-        },
-        {
-          key: "selectNodeContents",
-          value: function selectNodeContents(node) {
-            this.dispatchEvent(
-              new CustomEvent("selectnodeccontents", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: node,
-              })
-            );
-          },
           /**
            * override this custom function to perform a
            * custom operation when an element that matches the tags list is clicked
@@ -612,135 +520,32 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
             );
           },
           /**
-           * gets node where range starts
-           *
-           * @returns node
-           */
-        },
-        {
-          key: "startNode",
-          value: function startNode() {
-            var startContainer = !this.range
-                ? undefined
-                : this.range.startContainer,
-              startOffset = !this.range ? undefined : this.range.startOffset;
-            return !startContainer
-              ? undefined
-              : startContainer.children
-              ? startContainer.children[startOffset - 1]
-              : startContainer.childNodes
-              ? startContainer.childNodes[startOffset - 1]
-              : undefined;
-          },
-          /**
-           * gets closest element to range
-           *
-           * @returns node
-           */
-        },
-        {
-          key: "rangeElement",
-          value: function rangeElement() {
-            return this.rangeIsElement()
-              ? this.startNode()
-              : this.rangeParent();
-          },
-          /**
-           * determines if selection is a element node
-           *
-           * @returns node
-           */
-        },
-        {
-          key: "rangeIsElement",
-          value: function rangeIsElement() {
-            var startContainer = !this.range
-                ? undefined
-                : this.range.startContainer,
-              startOffset = !this.range ? undefined : this.range.startOffset,
-              endContainer = !this.range ? undefined : this.range.endContainer,
-              endOffset = !this.range ? undefined : this.range.endOffset;
-            return (
-              startContainer === endContainer && endOffset - startOffset === 1
-            );
-          },
-          /**
-           * gets parent element of range
-           *
-           * @returns node
-           */
-        },
-        {
-          key: "rangeParent",
-          value: function rangeParent() {
-            var common = !this.range
-              ? undefined
-              : this.range.commonAncestorContainer;
-            return !common
-              ? undefined
-              : common.nodeType == 1
-              ? common
-              : common.parentElement;
-          },
-          /**
-           * gets closest node to range that matches selectors
-           *
-           * @param {string} [selectors=this.tagsList || this.tag]
-           * @returns node
-           */
-        },
-        {
-          key: "rangeQuery",
-          value: function rangeQuery() {
-            var selectors =
-              arguments.length > 0 && arguments[0] !== undefined
-                ? arguments[0]
-                : this.tagsList;
-            selectors = selectors.toLowerCase().replace(/\s*/g, "");
-            var start = this.rangeElement(),
-              startTag =
-                !start || !start.tagName
-                  ? undefined
-                  : start.tagName.toLowerCase(),
-              tags = selectors.split(",");
-            return !start
-              ? undefined
-              : startTag && tags.includes(startTag)
-              ? start
-              : start.closest(selectors);
-          },
-          /**
            * sends a command to the selection manager
            *
-           * @param {string} [command=this.operationCommand]
-           * @param {string} [commandVal=this.operationCommandVal]
-           * @param {object} [range=this.range]
+           * @param {object} event
            */
         },
         {
           key: "sendCommand",
-          value: function sendCommand() {
-            var command =
-              arguments.length > 0 && arguments[0] !== undefined
-                ? arguments[0]
-                : this.operationCommand;
-            var commandVal =
-              arguments.length > 1 && arguments[1] !== undefined
-                ? arguments[1]
-                : this.operationCommandVal;
-            var range =
-              arguments.length > 2 && arguments[2] !== undefined
-                ? arguments[2]
-                : this.range;
+          value: function sendCommand(event) {
+            this._handleCommand(
+              this.operationCommand,
+              this.operationCommandVal,
+              this.range
+            ); // optional callback so that custom buttons can perform
+            // custom toolbar and/or editor opperations
+
+            if (this.commandCallback)
+              this.commandCallback(this.target, this.__toolbar, this);
             this.dispatchEvent(
               new CustomEvent("command", {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
                 detail: {
-                  command: command,
-                  commandVal: commandVal,
-                  range: range,
+                  command: this.operationCommand,
+                  commandVal: this.operationCommandVal,
+                  range: this.range,
                   button: this,
                 },
               })
@@ -753,8 +558,10 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         {
           key: "setRange",
           value: function setRange() {
+            if (!this.tagsList || this.tagsList === "") return;
             /* if command is formatBlock expand selection to entire block */
-            var block = this.rangeQuery();
+
+            var block = this.rangeOrMatchingAncestor();
             if (block) this.selectNode(block);
           },
           /**
@@ -765,7 +572,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
           key: "_handleClick",
           value: function _handleClick(e) {
             e.preventDefault();
-            this.sendCommand();
+            this.sendCommand(e);
           },
           /**
            * handles range change
@@ -786,7 +593,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
           key: "_getSelection",
           value: function _getSelection() {
             return this.command === "formatBlock"
-              ? this.rangeQuery()
+              ? this.rangeOrMatchingAncestor()
               : this._getSelectedHtml();
           },
           /**
@@ -818,7 +625,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         {
           key: "_getSelectedTag",
           value: function _getSelectedTag() {
-            var block = this.rangeQuery(),
+            var block = this.rangeOrMatchingAncestor(),
               tag =
                 !!block && !!block.tagName
                   ? block.tagName.toLowerCase()
@@ -851,14 +658,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         {
           key: "isToggled",
           get: function get() {
-            var command =
-                !!this.range && !!this.command
-                  ? document.queryCommandState(this.command)
-                  : false,
-              /* workaround because queryCommandState("underline") returns true on links */
-              block =
-                this.command === "underline" ? !!this.rangeQuery("u") : command;
-            return this.toggles && !!block ? true : false;
+            return this.commandIsToggled;
           },
           /**
            * gets command param for document.execCommand
@@ -902,7 +702,11 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
       ]);
 
       return _class;
-    })((0, _simpleToolbarButton.SimpleToolbarButtonBehaviors)(SuperClass))
+    })(
+      (0, _richTextEditorRangeBehaviors.RichTextEditorRangeBehaviors)(
+        (0, _simpleToolbarButton.SimpleToolbarButtonBehaviors)(SuperClass)
+      )
+    )
   );
 };
 /**

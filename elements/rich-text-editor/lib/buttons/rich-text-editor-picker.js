@@ -57,9 +57,22 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         `,
       ];
     }
+    /**
+     * template for button label
+     *
+     * @readonly
+     */
+    get labelTemplate() {
+      return !this.hasLabel
+        ? ""
+        : html`<label id="label" class="offscreen" part="label"
+            >${this.currentLabel}</label
+          >`;
+    }
 
     render() {
       return html`
+        ${this.labelTemplate}
         <simple-picker
           id="button"
           ?allow-null="${this.allowNull}"
@@ -72,8 +85,8 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           @value-changed="${this._pickerChange}"
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
+          .value="${this.value}"
         >
-          ${super.labelTemplate}
         </simple-picker>
         ${super.tooltopTemplate}
       `;
@@ -155,15 +168,22 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * handles range changes by getting
      */
     _rangeChanged() {
+      this._setRangeValue();
+      super._rangeChanged();
+    }
+
+    /**
+     * sets picker's value based ion current selected range
+     */
+    _setRangeValue() {
       let val = this._getSelection();
       if (this.shadowRoot) {
         if (this.tagsArray.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
         } else if (!this.range || this.range.collapsed) {
-          this.shadowRoot.querySelector("#button").value = null;
+          this.shadowRoot.querySelector("#button").value = undefined;
         }
       }
-      super._rangeChanged();
     }
 
     /**

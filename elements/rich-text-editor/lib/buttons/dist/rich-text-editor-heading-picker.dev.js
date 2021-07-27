@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RichTextEditorHeadingPicker = void 0;
 
-var _litElement = require("lit");
+var _litElement = require("lit-element/lit-element.js");
 
 var _richTextEditorPicker = require("./rich-text-editor-picker.js");
 
@@ -298,11 +298,30 @@ var RichTextEditorHeadingPicker =
       _this.label = "Block format";
       _this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
       return _this;
-    } // properties available to the custom element for data binding
+    }
+    /**
+     * sets picker's value based ion current selected range
+     */
 
     _createClass(
       RichTextEditorHeadingPicker,
       [
+        {
+          key: "_setRangeValue",
+          value: function _setRangeValue() {
+            var ancestor = this.rangeOrMatchingAncestor(),
+              tag = ancestor.tagName,
+              val = tag.toLowerCase();
+
+            if (this.shadowRoot) {
+              if (this.tagsArray.includes(val)) {
+                this.shadowRoot.querySelector("#button").value = val;
+              } else if (!this.range || this.range.collapsed) {
+                this.shadowRoot.querySelector("#button").value = undefined;
+              }
+            }
+          }, // properties available to the custom element for data binding
+        },
         {
           key: "_setOptions",
 
