@@ -54,6 +54,22 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
   }
 
+  /**
+   * sets picker's value based ion current selected range
+   */
+  _setRangeValue() {
+    let ancestor = this.rangeOrMatchingAncestor(),
+      tag = ancestor.tagName,
+      val = tag.toLowerCase();
+    if (this.shadowRoot) {
+      if (this.tagsArray.includes(val)) {
+        this.shadowRoot.querySelector("#button").value = val;
+      } else if (!this.range || this.range.collapsed) {
+        this.shadowRoot.querySelector("#button").value = undefined;
+      }
+    }
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     let props = super.properties;
