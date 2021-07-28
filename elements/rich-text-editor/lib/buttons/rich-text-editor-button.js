@@ -106,6 +106,9 @@ const RichTextToolbarStyles = [
         transparent
       );
     }
+    button[part="button"] {
+      border-radius: var(--rich-text-editor-button-disabled-border-radius, 0px);
+    }
   `,
 ];
 /**

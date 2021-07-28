@@ -137,7 +137,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            border: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-border-color, #ddd);\n            background-color: var(--rich-text-editor-bg, #ffffff);\n          }\n        ",
+    "\n          :host {\n            border: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-border-color, #ddd);\n            background-color: var(--rich-text-editor-bg, #ffffff);\n          }\n          #morebutton::part(button) {\n            border-radius: var(--rich-text-editor-button-disabled-border-radius, 0px);\n          }\n        ",
   ]);
 
   _templateObject3 = function _templateObject3() {

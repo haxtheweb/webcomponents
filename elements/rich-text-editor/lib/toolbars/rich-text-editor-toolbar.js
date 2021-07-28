@@ -85,6 +85,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               var(--rich-text-editor-border-color, #ddd);
             background-color: var(--rich-text-editor-bg, #ffffff);
           }
+          #morebutton::part(button) {
+            border-radius: var(
+              --rich-text-editor-button-disabled-border-radius,
+              0px
+            );
+          }
         `,
       ];
     }
