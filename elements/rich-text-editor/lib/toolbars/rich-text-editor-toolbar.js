@@ -134,6 +134,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get historyButtonGroup() {
       return {
         type: "button-group",
+        subtype: "history-button-group",
         buttons: [this.undoButton, this.redoButton],
       };
     }
@@ -220,6 +221,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get basicInlineButtonGroup() {
       return {
         type: "button-group",
+        subtype: "basic-inline-button-group",
         buttons: [
           this.formatButton,
           this.boldButton,
@@ -249,6 +251,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get linkButtonGroup() {
       return {
         type: "button-group",
+        subtype: "link-button-group",
         buttons: [this.linkButton],
       };
     }
@@ -302,6 +305,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get clipboardButtonGroup() {
       return {
         type: "button-group",
+        subtype: "clipboard-button-group",
         buttons: [this.cutButton, this.copyButton, this.pasteButton],
       };
     }
@@ -341,6 +345,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get scriptButtonGroup() {
       return {
         type: "button-group",
+        subtype: "script-button-group",
         buttons: [this.subscriptButton, this.superscriptButton],
       };
     }
@@ -383,6 +388,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get insertButtonGroup() {
       return {
         type: "button-group",
+        subtype: "insert-button-group",
         buttons: [this.imageButton, this.symbolButton],
       };
     }
@@ -466,6 +472,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get listIndentButtonGroup() {
       return {
         type: "button-group",
+        subtype: "list-indent-button-group",
         buttons: [
           this.orderedListButton,
           this.unorderedListButton,
@@ -509,6 +516,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get saveCloseButtonGroup() {
       return {
         type: "button-group",
+        subtype: "save-close-button-group",
         buttons: [this.saveButton],
       };
     }
@@ -528,6 +536,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get sourceButtonGroup() {
       return {
         type: "button-group",
+        subtype: "source-button-group",
         buttons: [this.sourceButton],
       };
     }
@@ -998,6 +1007,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
+    }
+    /**
+     * creates a div element to contain/group buttons based on config object
+     *
+     * @param {object} config object containing configuration for a group of buttons
+     * @returns {object} div element as a button group
+     * @memberof SimpleToolbar
+     */
+    _renderButtonGroup(config) {
+      let group = super._renderButtonGroup(config);
+      if (config.subtype) group.classList.add(config.subtype);
+      return group;
     }
 
     /**

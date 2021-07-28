@@ -839,6 +839,7 @@ var HaxTextEditorToolbar =
         get: function get() {
           return {
             type: "button-group",
+            subtype: "advanced-inline-button-group",
             buttons: [this.underlineButton, this.strikethroughButton],
           };
         },

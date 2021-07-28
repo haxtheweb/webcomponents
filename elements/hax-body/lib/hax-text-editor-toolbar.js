@@ -274,6 +274,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get advancedInlineButtonGroup() {
     return {
       type: "button-group",
+      subtype: "advanced-inline-button-group",
       buttons: [this.underlineButton, this.strikethroughButton],
     };
   }

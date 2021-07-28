@@ -372,6 +372,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "history-button-group",
                 buttons: [this.undoButton, this.redoButton],
               };
             },
@@ -481,6 +482,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "basic-inline-button-group",
                 buttons: [
                   this.formatButton,
                   this.boldButton,
@@ -516,6 +518,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "link-button-group",
                 buttons: [this.linkButton],
               };
             },
@@ -581,6 +584,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "clipboard-button-group",
                 buttons: [this.cutButton, this.copyButton, this.pasteButton],
               };
             },
@@ -629,6 +633,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "script-button-group",
                 buttons: [this.subscriptButton, this.superscriptButton],
               };
             },
@@ -683,6 +688,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "insert-button-group",
                 buttons: [this.imageButton, this.symbolButton],
               };
             },
@@ -784,6 +790,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "list-indent-button-group",
                 buttons: [
                   this.orderedListButton,
                   this.unorderedListButton,
@@ -836,6 +843,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "save-close-button-group",
                 buttons: [this.saveButton],
               };
             },
@@ -863,6 +871,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 type: "button-group",
+                subtype: "source-button-group",
                 buttons: [this.sourceButton],
               };
             },
@@ -1535,6 +1544,26 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 "_handleButtonUpdate",
                 this
               ).call(this, e);
+          },
+          /**
+           * creates a div element to contain/group buttons based on config object
+           *
+           * @param {object} config object containing configuration for a group of buttons
+           * @returns {object} div element as a button group
+           * @memberof SimpleToolbar
+           */
+        },
+        {
+          key: "_renderButtonGroup",
+          value: function _renderButtonGroup(config) {
+            var group = _get(
+              _getPrototypeOf(_class.prototype),
+              "_renderButtonGroup",
+              this
+            ).call(this, config);
+
+            if (config.subtype) group.classList.add(config.subtype);
+            return group;
           },
           /**
            * updates buttons with selected range
