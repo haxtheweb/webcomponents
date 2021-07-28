@@ -337,15 +337,18 @@ export const HaxButton = [
       padding: 1px;
       border-color: transparent;
     }
-    :host(:hover) button[part="button"],
-    :host(:focus-within) button[part="button"] {
+    :host(:hover) button[part="button"] {
+      background-color: var(--hax-ui-background-color-secondary);
       color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
     }
+    :host([toggled]) button[part="button"],
     button[part="button"][aria-pressed="true"] {
       color: var(--hax-ui-color-accent);
       border-color: var(--hax-ui-color-accent);
+    }
+    button[part="button"][aria-pressed="true"]:hover,
+    :host([toggled]:hover) button[part="button"] {
+      background-color: var(--hax-ui-background-color-accent);
     }
     :host([feature]) button[part="button"],
     :host([danger]) button[part="button"] {

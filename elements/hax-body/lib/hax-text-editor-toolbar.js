@@ -29,12 +29,35 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.baseStyles,
       ...super.stickyStyles,
       css`
+        :host {
+          --rich-text-editor-button-color: var(--hax-ui-color);
+          --rich-text-editor-button-bg: var(--hax-ui-background-color);
+          --rich-text-editor-button-border-color: transparent;
+          --rich-text-editor-button-hover-color: var(--hax-ui-color);
+          --rich-text-editor-button-hover-bg: var(
+            --hax-ui-background-color-secondary
+          );
+          --rich-text-editor-button-toggled-color: var(--hax-ui-color-accent);
+          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color);
+          --rich-text-editor-button-toggled-border-color: var(
+            --hax-ui-color-accent
+          );
+          --rich-text-editor-button-disabled-opacity: 0.5;
+          --rich-text-editor-button-disabled-color: var(--hax-ui-color);
+          --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);
+          --rich-text-editor-button-disabled-border-color: transparent;
+        }
+        ::slotted([icon-position]:hover) {
+          --rich-text-editor-button-toggled-bg: var(
+            --hax-ui-background-color-accent
+          );
+        }
         ::slotted(.group) {
           flex: 1 0 auto;
           justify-content: center;
-          border-width: 0.5px 0.5px 0.5px 0.5px;
+          border-width: 1px;
           margin: -1px;
-          padding: 1px;
+          padding: 0px;
         }
         ::slotted(.group),
         ::slotted([icon-position]) {
@@ -44,13 +67,15 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         :host([collapsed]) ::slotted(.group) {
           flex: 0 0 auto;
         }
-        :host ::slotted(.group:hover),
-        :host ::slotted(.group:focus),
-        :host ::slotted(.group:focus-within),
-        :host ::slotted([icon-position]:hover),
-        :host ::slotted([icon-position]:focus),
-        :host ::slotted([icon-position]:focus-within) {
+        :host .group:focus,
+        :host .group:focus-within,
+        :host .group > *:focus,
+        :host .group > *:focus-within {
           z-index: 2;
+        }
+        :host .group:hover,
+        :host .group > *:hover {
+          z-index: 3;
         }
       `,
     ];

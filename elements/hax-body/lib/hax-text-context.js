@@ -117,7 +117,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
     ];
     this.realSelectedValue = "p";
-    this.formatIcon = "hax:paragraph";
     this.isSafari = this._isSafari();
     autorun(() => {
       this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;

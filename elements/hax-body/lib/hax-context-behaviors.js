@@ -24,9 +24,6 @@ export const HaxContextBehaviors = function (SuperClass) {
           :host [hidden] {
             display: none;
           }
-          :host > * {
-            margin: 0 auto;
-          }
           .selected-buttons {
             transition: 0.1s all ease-in-out;
             width: 0;

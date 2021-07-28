@@ -175,33 +175,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           z-index: var(--hax-ui-focus-z-index);
         }
         #topcontextmenu {
-          display: flex;
           width: 100%;
-          align-items: flex-end;
-          justify-content: space-between;
           z-index: var(--hax-ui-focus-z-index);
           position: absolute;
           bottom: 0;
-        }
-        #textcontextmenu,
-        #cecontextmenu {
-          max-width: 280px;
-          flex: 1 1 auto;
-        }
-        #textcontextmenu {
-          position: absolute;
-          bottom: 0;
-        }
-        #platecontextmenu {
-          flex: 0 0 auto;
         }
         .hax-context-menu {
           display: none;
-          z-index: 1000;
+          z-index: 1;
         }
-        .hax-context-menu:hover,
-        .hax-context-menu:focus-within {
-          z-index: var(--hax-ui-focus-z-index);
+        .hax-context-menu:hover {
+          z-index: calc(1 + var(--hax-ui-focus-z-index));
         }
         .hax-context-visible,
         .hax-context-menu-active {
@@ -681,6 +665,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         justify
         position="top"
         fit-to-visible-bounds
+        data-node-type="${!this.activeNode
+          ? ""
+          : this.viewSourceToggle
+          ? this.activeNode.parentNode.tagName
+          : this.activeNode.tagName}"
         .target="${!this.activeNode
           ? document.body
           : this.viewSourceToggle
@@ -688,25 +677,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           : this.activeNode}"
         ?hidden="${!this.activeNode}"
       >
-        <hax-text-editor-toolbar
-          id="textcontextmenu"
-          class="hax-context-menu ignore-activation"
-          .activeNode="${this.activeNode}"
-          show="always"
-        >
-        </hax-text-editor-toolbar>
-        <div id="topcontextmenus" hidden>
-          <hax-text-context
-            id="textcontextmenu"
-            class="hax-context-menu ignore-activation"
-            .activeNode="${this.activeNode}"
-            ?viewSource="${this.viewSourceToggle}"
-          ></hax-text-context>
+        <div id="topcontextmenu">
           <hax-ce-context
             id="cecontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
             ?viewSource="${this.viewSourceToggle}"
+            hidden
           ></hax-ce-context>
           <hax-plate-context
             id="platecontextmenu"
@@ -716,6 +693,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .trayStatus="${this.trayStatus}"
             ?viewSource="${this.viewSourceToggle}"
           ></hax-plate-context>
+          <hax-text-editor-toolbar
+            id="textcontextmenu"
+            class="hax-context-menu ignore-activation"
+            .activeNode="${this.activeNode}"
+            show="always"
+          >
+          </hax-text-editor-toolbar>
         </div>
       </absolute-position-behavior>
     `;
