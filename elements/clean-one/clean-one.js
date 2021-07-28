@@ -670,12 +670,17 @@ class CleanOne extends HAXCMSRememberRoute(
                 <div class="pull-right link-actions">
                   <site-print-button
                     class="btn js-toolbar-action"
+                    part="print-btn"
                   ></site-print-button>
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"
+                    part="rss-btn"
                   ></site-rss-button>
-                  <site-git-corner size="small"></site-git-corner>
+                  <site-git-corner
+                    size="small"
+                    part="git-corner-btn"
+                  ></site-git-corner>
                 </div>
               </div>
               <site-active-title></site-active-title>
@@ -685,6 +690,7 @@ class CleanOne extends HAXCMSRememberRoute(
                 <div class="normal main-section">
                   <site-search
                     hide-input
+                    part="search-btn"
                     search="${this.searchTerm}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>

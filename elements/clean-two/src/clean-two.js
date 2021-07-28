@@ -559,6 +559,7 @@ class CleanTwo extends HAXCMSRememberRoute(
             </header>
             <site-search
               hide-input
+              part="search-btn"
               search="${this.searchTerm}"
               @search-item-selected="${this.searchItemSelected}"
               ?hidden="${this.searchTerm != "" ? false : true}"
@@ -606,8 +607,8 @@ class CleanTwo extends HAXCMSRememberRoute(
                   </site-menu-button>
                 </div>
               </div>
-              <div class="footer">
-                <div class="footer-left">
+              <div class="footer" part="footer">
+                <div class="footer-left" part="footer-left">
                   Last updated
                   <replace-tag with="simple-datetime" import-only></replace-tag>
                   <simple-datetime
@@ -615,22 +616,25 @@ class CleanTwo extends HAXCMSRememberRoute(
                     .timestamp="${this.pageTimestamp}"
                   ></simple-datetime>
                 </div>
-                <div class="footer-right">
+                <div class="footer-right" part="footer-right">
                   <replace-tag
                     with="site-print-button"
                     class="btn js-toolbar-action"
                     import-method="view"
+                    part="print-btn"
                   ></replace-tag>
                   <replace-tag
                     with="site-rss-button"
                     type="rss"
                     import-method="view"
+                    part="rss-btn"
                   ></replace-tag>
                   <replace-tag
                     with="site-git-corner"
                     size="small"
                     circle
                     import-method="view"
+                    part="git-corner-btn"
                   ></replace-tag>
                 </div>
               </div>
