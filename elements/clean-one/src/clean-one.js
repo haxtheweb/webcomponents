@@ -5,7 +5,7 @@
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute";
+import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -762,10 +762,16 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
-    this.t = {
-      searchSiteContent: "Search site content",
-      typeToSearch: "Type to search",
-    };
+    if (this.t) {
+      this.t.searchSiteContent = "Search site content";
+      this.t.typeToSearch = "Type to search";
+    } else {
+      this.t = {
+        searchSiteContent: "Search site content",
+        typeToSearch: "Type to search",
+      };
+    }
+
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,

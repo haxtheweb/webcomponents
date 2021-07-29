@@ -33,6 +33,9 @@ const HAXCMSRememberRoute = function (SuperClass) {
       }
       setTimeout(() => {
         if (
+          store &&
+          store.location &&
+          store.location.pathname &&
           window.localStorage.getItem(
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) &&
