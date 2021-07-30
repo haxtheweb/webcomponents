@@ -166,6 +166,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
             --bootstrap-theme-light-secondary-background-color
           );
         }
+        replace-tag[with="site-print-button"],
+        site-print-button {
+          color: black;
+          --haxcms-tooltip-color: #f5f5f5;
+          --haxcms-tooltip-background-color: #252737;
+        }
         .site-body {
           position: absolute;
           top: 0;
@@ -521,6 +527,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
               <div class="btn-container">
                 <div class="pull-right link-actions">
                   <bootstrap-search
+                    part="search-btn"
                     color-theme="${this.colorTheme}"
                     @search-changed=${this.searchChanged}
                   ></bootstrap-search>
@@ -532,9 +539,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </bootstrap-breadcrumb>
               <div class="container p-0 site-options">
                 ${this.HAXCMSMobileMenuButton()}
-                <site-print-button
+                <replace-tag
+                  with="site-print-button"
                   class="btn js-toolbar-action"
-                ></site-print-button>
+                  import-method="view"
+                  part="print-btn"
+                ></replace-tag>
                 ${this.BootstrapUserStylesMenu()}
                 <h3 class="display-6 page-title">${this.__pageTitle}</h3>
               </div>
@@ -561,7 +571,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </article>
             </main>
             <footer>
-              <bootstrap-footer color-theme="${this.colorTheme}">
+              <bootstrap-footer color-theme="${this.colorTheme}" part="footer">
               </bootstrap-footer>
             </footer>
           </div>

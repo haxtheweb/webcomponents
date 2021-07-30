@@ -12,26 +12,18 @@ class MapMenuItem extends LitElement {
           display: block;
           transition: 0.1s all ease-in-out;
           font-size: var(--map-menu-item-font-size);
-          --map-menu-item-height: 24px;
+          --map-menu-item-height: 42px;
+          --map-menu-item-icon-height: 24px;
+          overflow: var(--map-menu-item-overflow, hidden);
         }
         :host([active]) {
           background: var(--map-menu-active-color);
           color: var(--map-menu-item-active-item-color, #000000);
         }
-        button {
-          width: 100%;
-          background-color: transparent;
-          justify-content: left;
-          text-align: left;
-          margin: 0;
-          padding: 4px;
-          border: none;
-          border-radius: 0;
-        }
         simple-icon-lite {
           display: inline-block;
-          --simple-icon-height: var(--map-menu-item-height);
-          --simple-icon-width: var(--map-menu-item-height);
+          --simple-icon-height: var(--map-menu-item-icon-height);
+          --simple-icon-width: var(--map-menu-item-icon-height);
         }
         .title {
           text-transform: none;
@@ -42,9 +34,9 @@ class MapMenuItem extends LitElement {
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
-        a:hover,
-        a:active,
-        a:focus {
+        a:hover button,
+        a:active button,
+        a:focus button {
           color: var(
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color, inherit)
@@ -73,6 +65,7 @@ class MapMenuItem extends LitElement {
           opacity: 1;
         }
         button {
+          cursor: pointer;
           color: inherit;
           background-color: transparent;
           text-transform: none;
@@ -80,7 +73,10 @@ class MapMenuItem extends LitElement {
           justify-content: left;
           margin: 0px;
           border: 0;
-          height: var(--map-menu-button-height, 40px);
+          height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height)
+          );
           padding: 4px;
           text-align: left;
           border-radius: 0;
@@ -133,6 +129,7 @@ class MapMenuItem extends LitElement {
     return {
       icon: {
         type: String,
+        reflect: true,
       },
       __icon: {
         type: String,
@@ -170,14 +167,15 @@ class MapMenuItem extends LitElement {
       if (propName == "trackIcon") {
         this._trackIconChanged(this[propName], oldValue);
       }
+      if (propName == "icon") {
+        this.__icon = this[propName];
+      }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
       }
-      if (propName == "published") {
+      if (propName == "published" && this[propName]) {
         if (this.published === false) {
           this.__icon = "visibility-off";
-        } else {
-          this.__icon = null;
         }
       }
     });

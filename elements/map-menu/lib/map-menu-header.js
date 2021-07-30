@@ -36,9 +36,9 @@ class MapMenuHeader extends LitElement {
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
         }
-        a:hover,
-        a:active,
-        a:focus {
+        a:hover button,
+        a:active button,
+        a:focus button {
           color: var(
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color, inherit)
@@ -79,6 +79,7 @@ class MapMenuHeader extends LitElement {
         }
 
         button {
+          cursor: pointer;
           color: inherit;
           background-color: transparent;
           text-transform: none;
