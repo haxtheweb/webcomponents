@@ -54,14 +54,19 @@ const HAXCMSRememberRoute = function (SuperClass) {
             );
             slot.addEventListener("click", this.resumeLastRoute.bind(this));
             slot.innerHTML = `<button>${this.t.resume}</button>`;
-            store.toast(
-              this.t.resumeMessage,
-              4000,
-              "capsule",
-              null,
-              null,
-              slot
-            );
+            const urlParams = new URLSearchParams(window.location.search);
+            const format = urlParams.get("format");
+            // ensure we don't show this if we have an alternate format request
+            if (!format) {
+              store.toast(
+                this.t.resumeMessage,
+                4000,
+                "capsule",
+                null,
+                null,
+                slot
+              );
+            }
           });
         }
         this.__evaluateRoute = true;
