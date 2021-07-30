@@ -49,9 +49,14 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
       { label: "Preformatted", tag: "pre" },
     ];
     this.command = "formatBlock";
-    this.icon = null;
+    this.icon = undefined;
     this.label = "Block format";
     this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
+    this.titleAsHtml = undefined;
+  }
+
+  get labelVisibleClass() {
+    return "hide";
   }
 
   /**

@@ -78,12 +78,12 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
+function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n            --simple-picker-options-border: var(--simple-picker-options-border-width, 1px) solid var(--simple-toolbar-border-color, var(--rich-text-editor-border-color, #ddd));\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n        ",
+    "\n          :host {\n            align-items: center;\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n            --simple-picker-options-border: var(\n                --simple-picker-options-border-width,\n                1px\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--rich-text-editor-border-color, #ddd)\n              );\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n          #button.hide-label::part(label) {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            width: 0px;\n            height: 0px;\n            overflow: hidden;\n          }\n        ",
   ]);
 
-  _templateObject3 = function _templateObject3() {
+  _templateObject2 = function _templateObject2() {
     return data;
   };
 
@@ -117,29 +117,17 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    '<label id="label" class="offscreen" part="label"\n            >',
-    "</label\n          >",
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        ",
     '\n        <simple-picker\n          id="button"\n          ?allow-null="',
     '"\n          class="rtebutton ',
+    "-label ",
     '"\n          ?disabled="',
-    '"\n          controls="',
+    '"\n          .controls="',
     '"\n          .options="',
     '"\n          @mouseover="',
     '"\n          @keydown="',
+    '"\n          .label="',
     '"\n          @value-changed="',
     '"\n          tabindex="0"\n          ?title-as-html="',
     '"\n          .value="',
@@ -280,33 +268,20 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
             value: function render() {
               return (0, _litElement.html)(
                 _templateObject(),
-                this.labelTemplate,
                 this.allowNull,
+                this.labelVisibleClass,
                 this.toggled ? "toggled" : "",
                 this.disabled,
                 _get(_getPrototypeOf(_class.prototype), "controls", this),
                 this.options,
                 this._pickerFocus,
                 this._pickerFocus,
+                this.currentLabel,
                 this._pickerChange,
                 this.titleAsHtml,
                 this.value,
-                _get(_getPrototypeOf(_class.prototype), "tooltopTemplate", this)
+                _get(_getPrototypeOf(_class.prototype), "tooltipTemplate", this)
               );
-            },
-          },
-          {
-            key: "labelTemplate",
-
-            /**
-             * template for button label
-             *
-             * @readonly
-             */
-            get: function get() {
-              return !this.hasLabel
-                ? ""
-                : (0, _litElement.html)(_templateObject2(), this.currentLabel);
             },
           },
         ],
@@ -328,7 +303,7 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                 _toConsumableArray(
                   _get(_getPrototypeOf(_class), "styles", this)
                 ),
-                [(0, _litElement.css)(_templateObject3())]
+                [(0, _litElement.css)(_templateObject2())]
               );
             },
           },
@@ -358,6 +333,7 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                    */
                   icon: {
                     type: String,
+                    reflect: true,
                   },
 
                   /**
@@ -516,6 +492,12 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
           key: "isToggled",
           get: function get() {
             return false;
+          },
+        },
+        {
+          key: "labelVisibleClass",
+          get: function get() {
+            return !!this.icon ? "hide" : "show";
           },
         },
       ]);

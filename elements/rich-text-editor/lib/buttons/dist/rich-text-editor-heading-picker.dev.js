@@ -294,20 +294,22 @@ var RichTextEditorHeadingPicker =
         },
       ];
       _this.command = "formatBlock";
-      _this.icon = null;
+      _this.icon = undefined;
       _this.label = "Block format";
       _this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
+      _this.titleAsHtml = undefined;
       return _this;
     }
-    /**
-     * sets picker's value based ion current selected range
-     */
 
     _createClass(
       RichTextEditorHeadingPicker,
       [
         {
           key: "_setRangeValue",
+
+          /**
+           * sets picker's value based ion current selected range
+           */
           value: function _setRangeValue() {
             var ancestor = this.rangeOrMatchingAncestor(),
               tag = ancestor.tagName,
@@ -356,6 +358,12 @@ var RichTextEditorHeadingPicker =
                 })
               )
             );
+          },
+        },
+        {
+          key: "labelVisibleClass",
+          get: function get() {
+            return "hide";
           },
         },
       ],

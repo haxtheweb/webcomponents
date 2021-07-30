@@ -29,6 +29,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
+            align-items: center;
             --simple-picker-background-color: var(--simple-toolbar-button-bg);
             --simple-picker-color-active: var(
               --simple-toolbar-button-hover-color
@@ -63,41 +64,39 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
             margin-top: 0;
             margin-bottom: 0;
           }
+          #button.hide-label::part(label) {
+            position: absolute;
+            left: -999999px;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+          }
         `,
       ];
-    }
-    /**
-     * template for button label
-     *
-     * @readonly
-     */
-    get labelTemplate() {
-      return !this.hasLabel
-        ? ""
-        : html`<label id="label" class="offscreen" part="label"
-            >${this.currentLabel}</label
-          >`;
     }
 
     render() {
       return html`
-        ${this.labelTemplate}
         <simple-picker
           id="button"
           ?allow-null="${this.allowNull}"
-          class="rtebutton ${this.toggled ? "toggled" : ""}"
+          class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
+            ? "toggled"
+            : ""}"
           ?disabled="${this.disabled}"
-          controls="${super.controls}"
+          .controls="${super.controls}"
           .options="${this.options}"
           @mouseover="${this._pickerFocus}"
           @keydown="${this._pickerFocus}"
+          .label="${this.currentLabel}"
           @value-changed="${this._pickerChange}"
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
           .value="${this.value}"
         >
         </simple-picker>
-        ${super.tooltopTemplate}
+        ${super.tooltipTemplate}
       `;
     }
 
@@ -121,6 +120,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
          */
         icon: {
           type: String,
+          reflect: true,
         },
 
         /**
@@ -163,6 +163,10 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      */
     get isToggled() {
       return false;
+    }
+
+    get labelVisibleClass() {
+      return !!this.icon ? "hide" : "show";
     }
 
     /**

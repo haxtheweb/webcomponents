@@ -225,24 +225,15 @@ class SimplePicker extends LitElement {
         }
 
         #icon {
-          width: var(
-            --simple-picker-icon-size,
-            var(--simple-picker-option-size, 24px)
-          );
-          height: var(
-            --simple-picker-icon-size,
-            var(--simple-picker-option-size, 24px)
-          );
-          --simple-icon-width: var(
-            --simple-picker-icon-size,
-            var(--simple-picker-option-size, 24px)
-          );
-          --simple-icon-height: var(
-            --simple-picker-icon-size,
-            var(--simple-picker-option-size, 24px)
-          );
+          width: var(--simple-picker-icon-size, 16px);
+          height: var(--simple-picker-icon-size, 16px);
+          --simple-icon-width: var(--simple-picker-icon-size, 16px);
+          --simple-icon-height: var(--simple-picker-icon-size, 16px);
           transform: var(--simple-picker-icon-transform, rotate(0deg));
           transition: transform 0.25s;
+        }
+        :host([hide-option-labels]) #icon {
+          margin-left: calc(-0.125 * var(--simple-picker-icon-size, 16px));
         }
 
         :host([expanded]) #icon {
@@ -421,7 +412,7 @@ class SimplePicker extends LitElement {
         id="listbox"
         .aria-activedescendant="${this.__activeDesc}"
         .aria-labelledby="${this.ariaLabelledby}"
-        .disabled="${this.disabled}"
+        .disabled="${this.disabled || !this.__options}"
         part="input"
         role="option-input"
         tabindex="0"
@@ -446,12 +437,11 @@ class SimplePicker extends LitElement {
             aria-hidden="true"
           >
           </simple-picker-option>
-          <span id="icon"
-            ><simple-icon-lite
-              aria-hidden="true"
-              icon="arrow-drop-down"
-            ></simple-icon-lite
-          ></span>
+          <simple-icon-lite
+            id="icon"
+            aria-hidden="true"
+            icon="arrow-drop-down"
+          ></simple-icon-lite>
         </div>
         <div id="collapse" part="listbox">
           <div class="rows" part="listbox-rows">

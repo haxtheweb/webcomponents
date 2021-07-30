@@ -137,7 +137,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            border: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-border-color, #ddd);\n            background-color: var(--rich-text-editor-bg, #ffffff);\n          }\n          #morebutton::part(button) {\n            border-radius: var(--rich-text-editor-button-disabled-border-radius, 0px);\n          }\n        ",
+    "\n          :host {\n            border: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-border-color, #ddd);\n            background-color: var(--rich-text-editor-bg, #ffffff);\n          }\n          #morebutton::part(button) {\n            border-radius: var(\n              --rich-text-editor-button-disabled-border-radius,\n              0px\n            );\n          }\n        ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -652,6 +652,19 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               };
             },
             /**
+             * default config for a symbol button
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "iconButton",
+            get: function get() {
+              return {
+                type: "rich-text-editor-icon-picker",
+              };
+            },
+            /**
              * default config for an emoji button
              *
              * @readonly
@@ -690,6 +703,21 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 type: "button-group",
                 subtype: "insert-button-group",
                 buttons: [this.imageButton, this.symbolButton],
+              };
+            },
+            /**
+             * default config for an insert button group: image
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "advancedInsertButtonGroup",
+            get: function get() {
+              return {
+                type: "button-group",
+                subtype: "advanced-insert-button-group",
+                buttons: [this.emojiButton],
               };
             },
             /**

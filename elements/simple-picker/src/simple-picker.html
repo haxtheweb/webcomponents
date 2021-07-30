@@ -8,7 +8,7 @@
 <div id="listbox"
   .aria-activedescendant="${this.__activeDesc}" 
   .aria-labelledby="${this.ariaLabelledby}" 
-  .disabled="${this.disabled}"
+  .disabled="${this.disabled || !this.__options}"
   part="input"
   role="option-input" 
   tabindex="0"
@@ -25,7 +25,7 @@
       .style=${this.__selectedOption ? this.__selectedOption.style : false}
       aria-hidden="true">
     </simple-picker-option>
-    <span id="icon"><simple-icon-lite aria-hidden="true" icon="arrow-drop-down"></simple-icon-lite></span>
+    <simple-icon-lite id="icon" aria-hidden="true" icon="arrow-drop-down"></simple-icon-lite>
   </div>
   <div id="collapse" part="listbox">
     <div class="rows" part="listbox-rows">

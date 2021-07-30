@@ -367,6 +367,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a symbol button
+     *
+     * @readonly
+     */
+    get iconButton() {
+      return {
+        type: "rich-text-editor-icon-picker",
+      };
+    }
+    /**
      * default config for an emoji button
      *
      * @readonly
@@ -396,6 +406,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "button-group",
         subtype: "insert-button-group",
         buttons: [this.imageButton, this.symbolButton],
+      };
+    }
+    /**
+     * default config for an insert button group: image
+     *
+     * @readonly
+     */
+    get advancedInsertButtonGroup() {
+      return {
+        type: "button-group",
+        subtype: "advanced-insert-button-group",
+        buttons: [this.emojiButton],
       };
     }
     /**

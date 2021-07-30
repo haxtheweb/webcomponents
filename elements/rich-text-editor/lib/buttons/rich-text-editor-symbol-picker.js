@@ -31,15 +31,16 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
   // render function for template
   render() {
     return html`
-      <label id="listLabel" for="button"> ${this.labelTemplate} </label>
       <simple-symbol-picker
         id="button"
         ?allow-null="${this.allowNull}"
-        aria-labeledby="listlabel"
-        controls="${super.controls}"
+        class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
+          ? "toggled"
+          : ""}"
+        .controls="${super.controls}"
         ?disabled="${this.disabled}"
         @keydown="${this._pickerFocus}"
-        label=""
+        .label="${this.currentLabel}"
         @mouseover="${this._pickerFocus}"
         .symbol-types="${this.symbolTypes}"
         tabindex="0"
