@@ -391,6 +391,45 @@ function generateResourceID(base = "#") {
     idPart()
   );
 }
+export function utf2Html(str) {
+  let result = "",
+    //converts unicode decimal value into an HTML entity
+    decimal2Html = (num) => `&#${num};`,
+    //converts a character into an HTML entity
+    char2Html = (char) => {
+      //spread operator can detect emoji surrogate pairs
+      if ([...char].length > 1) {
+        //handle and convert utf surrogate pairs
+        let concat = "";
+        //for each part of the pair
+        for (let i = 0; i < 2; i++) {
+          //get the character code value
+          let dec = char[i].charCodeAt(),
+            //convert to binary
+            bin = dec.toString(2),
+            //take the last 10 bits
+            last10 = bin.slice(-10);
+          //concatenate into 20 bit binary
+          (concat = concat + last10),
+            //add 0x10000 to get unicode value
+            (unicode = parseInt(concat, 2) + 0x10000);
+        }
+
+        //html entity from unicode value
+        return decimal2Html(unicode);
+      }
+
+      //ASCII character or html entity from character code
+      return char.charCodeAt() > 127 ? decimal2Html(char.charCodeAt()) : char;
+    };
+
+  //check each character
+  [...str].forEach((char) => {
+    result += char2Html(char);
+  });
+
+  return result;
+}
 export function htmlEntities(s) {
   return s.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
     return "&#" + i.charCodeAt(0) + ";";
