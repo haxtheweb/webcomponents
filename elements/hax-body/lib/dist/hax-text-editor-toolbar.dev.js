@@ -88,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --rich-text-editor-button-color: var(--hax-ui-color);\n          --rich-text-editor-button-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-border-color: transparent;\n          --rich-text-editor-button-hover-color: var(--hax-ui-color);\n          --rich-text-editor-button-hover-bg: var(--hax-ui-background-color-secondary);\n          --rich-text-editor-button-toggled-color: var(--hax-ui-color-accent);\n          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-toggled-border-color: var(--hax-ui-color-accent);\n          --rich-text-editor-button-disabled-opacity: 0.5;\n          --rich-text-editor-button-disabled-color: var(--hax-ui-color);\n          --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-disabled-border-color: transparent;\n        }\n        ::slotted([icon-position]:hover) {\n          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color-accent);\n        }\n        ::slotted(.group) {\n          flex: 1 0 auto;\n          justify-content: center;\n          border-width: 1px;\n          margin: -1px;\n          padding: 0px;\n        }\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          z-index: 1;\n        }\n        ::slotted([icon-position]),\n        :host([collapsed]) ::slotted(.group) {\n          flex: 0 0 auto;\n        }\n        :host .group:focus,\n        :host .group:focus-within,\n        :host .group > *:focus,\n        :host .group > *:focus-within {\n          z-index: 2;\n        }\n        :host .group:hover,\n        :host .group > *:hover {\n          z-index: 3;\n        }\n      ",
+    "\n        :host {\n          --rich-text-editor-button-color: var(--hax-ui-color);\n          --rich-text-editor-button-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-border-color: transparent;\n          --rich-text-editor-button-hover-color: var(--hax-ui-color);\n          --rich-text-editor-button-hover-bg: var(\n            --hax-ui-background-color-secondary\n          );\n          --rich-text-editor-button-toggled-color: var(--hax-ui-color-accent);\n          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-toggled-border-color: var(\n            --hax-ui-color-accent\n          );\n          --rich-text-editor-button-disabled-opacity: 0.5;\n          --rich-text-editor-button-disabled-color: var(--hax-ui-color);\n          --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-disabled-border-color: transparent;\n        }\n        ::slotted([icon-position]:hover) {\n          --rich-text-editor-button-toggled-bg: var(\n            --hax-ui-background-color-accent\n          );\n        }\n        ::slotted(.group) {\n          flex: 1 0 auto;\n          justify-content: center;\n          border-width: 1px;\n          margin: -1px;\n          padding: 0px;\n        }\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          z-index: 1;\n        }\n        ::slotted([icon-position]),\n        :host([collapsed]) ::slotted(.group) {\n          flex: 0 0 auto;\n        }\n        :host .group:focus,\n        :host .group:focus-within,\n        :host .group > *:focus,\n        :host .group > *:focus-within {\n          z-index: 2;\n        }\n        :host .group:hover,\n        :host .group > *:hover {\n          z-index: 3;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -315,6 +315,9 @@ var HaxTextEditorToolbar =
               activeNode: {
                 type: Object,
               },
+              parentSchema: {
+                type: Object,
+              },
               realSelectedValue: {
                 type: String,
               },
@@ -408,16 +411,18 @@ var HaxTextEditorToolbar =
         var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode); //this.viewSource = false;
 
         if (activeNode && activeNode.tagName) {
-          var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName); //this.sourceView = schema.canEditSource;
+          var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName);
+
+          _this.parentSchema =
+            activeNode && activeNode.parentNode
+              ? _haxStore.HAXStore.haxSchemaFromTag(
+                  activeNode.parentNode.tagName
+                )
+              : undefined; //this.sourceView = schema.canEditSource;
         }
       });
       return _this;
     }
-    /**
-     * default config for a format button
-     *
-     * @readonly
-     */
 
     _createClass(HaxTextEditorToolbar, [
       {
@@ -438,34 +443,13 @@ var HaxTextEditorToolbar =
               this
             ).call(this, changedProperties);
           changedProperties.forEach(function (oldValue, propName) {
+            if (propName === "parentSchema" && _this2.parentSchema !== oldValue)
+              console.log("updated parent schema");
             if (propName === "activeNode" && _this2.activeNode !== oldValue)
               _this2.setTarget(_this2.activeNode);
             if (propName === "t" && _this2.t !== oldValue)
               _this2.updateToolbarElements();
           });
-        },
-        /**
-         * moves toolbar into position before the target
-         * (can be overriden for custom positioning)
-         * @param {object} target
-         */
-      },
-      {
-        key: "positionByTarget",
-        value: function positionByTarget(target) {
-          return;
-        },
-      },
-      {
-        key: "getRange",
-        value: function getRange() {
-          return _haxStore.HAXStore.getRange();
-        },
-      },
-      {
-        key: "getSelection",
-        value: function getSelection() {
-          return _haxStore.HAXStore.getSelection();
         },
       },
       {
@@ -492,6 +476,58 @@ var HaxTextEditorToolbar =
             "hax-register-properties",
             this._handleElementRegister.bind(this)
           );
+        },
+      },
+      {
+        key: "getRange",
+        value: function getRange() {
+          return _haxStore.HAXStore.getRange();
+        },
+      },
+      {
+        key: "getSelection",
+        value: function getSelection() {
+          return _haxStore.HAXStore.getSelection();
+        },
+        /**
+         * moves toolbar into position before the target
+         * (can be overriden for custom positioning)
+         * @param {object} target
+         */
+      },
+      {
+        key: "positionByTarget",
+        value: function positionByTarget(target) {
+          return;
+        },
+      },
+      {
+        key: "setTarget",
+        value: function setTarget() {
+          var node =
+            arguments.length > 0 && arguments[0] !== undefined
+              ? arguments[0]
+              : this.activeNode;
+
+          _get(
+            _getPrototypeOf(HaxTextEditorToolbar.prototype),
+            "setTarget",
+            this
+          ).call(this, node);
+
+          this.parentSchema =
+            node && node.parentNode
+              ? _haxStore.HAXStore.haxSchemaFromTag(node.parentNode.tagName)
+              : undefined;
+          console.log(this.formatButton, this.filteredBlocks);
+          if (
+            this.shadowRoot &&
+            this.formatButton.type &&
+            this.shadowRoot.querySelector(this.formatButton.type)
+          )
+            this.shadowRoot.querySelector(
+              this.formatButton.type
+            ).blocks = this.filteredBlocks;
         },
         /**
          * when an element is registered,
@@ -625,6 +661,34 @@ var HaxTextEditorToolbar =
 
           return el;
         },
+      },
+      {
+        key: "slotSchema",
+        get: function get() {
+          var _this4 = this;
+
+          var schema;
+
+          if (this.activeNode && this.parentSchema) {
+            var slot = this.activeNode.slot || "";
+            Object.keys(this.parentSchema.settings || {}).forEach(function (
+              type
+            ) {
+              (_this4.parentSchema.settings[type] || []).forEach(function (
+                setting
+              ) {
+                if (setting.slot && setting.slot === slot) schema = setting;
+              });
+            });
+          }
+
+          return schema;
+        },
+        /**
+         * default config for a format button
+         *
+         * @readonly
+         */
       },
       {
         key: "undoButton",
@@ -1157,15 +1221,63 @@ var HaxTextEditorToolbar =
         },
       },
       {
+        key: "haxInsertButtonGroup",
+        get: function get() {
+          return {
+            type: "button-group",
+            subtype: "hax-insert-button-group",
+            blocks: [this.symbolButton, this.emojiButton],
+          };
+        },
+      },
+      {
+        key: "iconButton",
+        get: function get() {
+          return {};
+        },
+      },
+      {
         key: "defaultConfig",
         get: function get() {
           return [
             this.basicInlineButtonGroup,
             this.linkButtonGroup,
-            this.scriptButtonGroup,
             this.listIndentButtonGroup,
+            this.haxInsertButtonGroup,
+            this.scriptButtonGroup,
             this.advancedInlineButtonGroup,
           ];
+        },
+      },
+      {
+        key: "filteredBlocks",
+        get: function get() {
+          var _this5 = this;
+
+          return this.formatBlocks.filter(function (block) {
+            var tag = block.tag || "",
+              excluded =
+                _this5.slotSchema &&
+                _this5.slotSchema.excludedSlotWrappers &&
+                _this5.slotSchema.excludedSlotWrappers.includes(tag),
+              included =
+                _this5.slotSchema &&
+                _this5.slotSchema.allowedSlotWrappers &&
+                _this5.slotSchema.allowedSlotWrappers.includes(tag),
+              specified =
+                _this5.slotSchema &&
+                _this5.slotSchema.slotWrapper &&
+                _this5.slotSchema.slotWrapper === tag;
+
+            console.log(
+              tag,
+              _this5.slotSchema,
+              specified,
+              !!included,
+              !!excluded
+            );
+            return specified || !!included || !excluded;
+          });
         },
       },
     ]);

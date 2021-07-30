@@ -390,7 +390,7 @@ var HaxTextEditorButton =
               tag[field.property] = _this4.value[field.property];
             if (!!field.slot && !!_this4.value[field.slot])
               html += "<"
-                .concat(field.slotWrapper || "span")
+                .concat(getSlotWrapper(field))
                 .concat(
                   Object.keys(field.slotAttributes || {}).map(function (attr) {
                     return " "
@@ -400,7 +400,7 @@ var HaxTextEditorButton =
                   ">\n            "
                 )
                 .concat(_this4.value[slot], "\n          </")
-                .concat(field.slotWrapper || "span", ">");
+                .concat(getSlotWrapper(field), ">");
           });
           html += this.value.innerHTML || "";
           this.__highlight.innerHTML = "";
@@ -410,6 +410,27 @@ var HaxTextEditorButton =
           this.__highlight.unwrap();
 
           tag.innerHTML = html;
+        },
+        /**
+         * gets a slot wrapper tag that meets field requirements
+         * @param {object} field
+         * @returns {string}
+         */
+      },
+      {
+        key: "getSlotWrapper",
+        value: function getSlotWrapper(field) {
+          var fallback = field.slotWrapper,
+            allowed = field.allowedSlotWrappers,
+            excluded = field.excludedSlotWrappers || [],
+            filter = ["span", "div", "p"].filter(function (wrapper) {
+              return !excluded.includes(wrapper);
+            });
+          return fallback
+            ? fallback
+            : allowed && allowed[0]
+            ? allowed[0]
+            : filter;
         },
       },
     ]);

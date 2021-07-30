@@ -127,11 +127,11 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
       if (!!field.property && field.property !== "innerHTML")
         tag[field.property] = this.value[field.property];
       if (!!field.slot && !!this.value[field.slot])
-        html += `<${field.slotWrapper || "span"}${Object.keys(
+        html += `<${getSlotWrapper(field)}${Object.keys(
           field.slotAttributes || {}
         ).map((attr) => ` ${attr}="${field.slotAttributes[attr]}"`)}>
             ${this.value[slot]}
-          </${field.slotWrapper || "span"}>`;
+          </${getSlotWrapper(field)}>`;
     });
     html += this.value.innerHTML || "";
 
@@ -139,6 +139,20 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.__highlight.parentNode.insertBefore(tag, this.__highlight);
     this.__highlight.unwrap();
     tag.innerHTML = html;
+  }
+  /**
+   * gets a slot wrapper tag that meets field requirements
+   * @param {object} field
+   * @returns {string}
+   */
+  getSlotWrapper(field) {
+    let fallback = field.slotWrapper,
+      allowed = field.allowedSlotWrappers,
+      excluded = field.excludedSlotWrappers || [],
+      filter = ["span", "div", "p"].filter(
+        (wrapper) => !excluded.includes(wrapper)
+      );
+    return fallback ? fallback : allowed && allowed[0] ? allowed[0] : filter;
   }
 }
 

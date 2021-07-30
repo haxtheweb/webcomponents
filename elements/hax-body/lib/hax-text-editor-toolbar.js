@@ -98,6 +98,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       activeNode: {
         type: Object,
       },
+      parentSchema: {
+        type: Object,
+      },
       realSelectedValue: {
         type: String,
       },
@@ -185,9 +188,26 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       //this.viewSource = false;
       if (activeNode && activeNode.tagName) {
         let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
+        this.parentSchema =
+          activeNode && activeNode.parentNode
+            ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
+            : undefined;
         //this.sourceView = schema.canEditSource;
       }
     });
+  }
+
+  get slotSchema() {
+    let schema;
+    if (this.activeNode && this.parentSchema) {
+      let slot = this.activeNode.slot || "";
+      Object.keys(this.parentSchema.settings || {}).forEach((type) => {
+        (this.parentSchema.settings[type] || []).forEach((setting) => {
+          if (setting.slot && setting.slot === slot) schema = setting;
+        });
+      });
+    }
+    return schema;
   }
   /**
    * default config for a format button
@@ -467,38 +487,37 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.sourceButton,
     };
   }
+  get haxInsertButtonGroup() {
+    return {
+      type: "button-group",
+      subtype: "hax-insert-button-group",
+      blocks: [this.symbolButton, this.emojiButton],
+    };
+  }
+
+  get iconButton() {
+    return {};
+  }
+
   get defaultConfig() {
     return [
       this.basicInlineButtonGroup,
       this.linkButtonGroup,
-      this.scriptButtonGroup,
       this.listIndentButtonGroup,
+      this.haxInsertButtonGroup,
+      this.scriptButtonGroup,
       this.advancedInlineButtonGroup,
     ];
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "parentSchema" && this.parentSchema !== oldValue)
+        console.log("updated parent schema");
       if (propName === "activeNode" && this.activeNode !== oldValue)
         this.setTarget(this.activeNode);
       if (propName === "t" && this.t !== oldValue) this.updateToolbarElements();
     });
-  }
-  /**
-   * moves toolbar into position before the target
-   * (can be overriden for custom positioning)
-   * @param {object} target
-   */
-  positionByTarget(target) {
-    return;
-  }
-
-  getRange() {
-    return HAXStore.getRange();
-  }
-
-  getSelection() {
-    return HAXStore.getSelection();
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -511,6 +530,59 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       "hax-register-properties",
       this._handleElementRegister.bind(this)
     );
+  }
+
+  getRange() {
+    return HAXStore.getRange();
+  }
+
+  getSelection() {
+    return HAXStore.getSelection();
+  }
+  /**
+   * moves toolbar into position before the target
+   * (can be overriden for custom positioning)
+   * @param {object} target
+   */
+  positionByTarget(target) {
+    return;
+  }
+
+  get filteredBlocks() {
+    return this.formatBlocks.filter((block) => {
+      let tag = block.tag || "",
+        excluded =
+          this.slotSchema &&
+          this.slotSchema.excludedSlotWrappers &&
+          this.slotSchema.excludedSlotWrappers.includes(tag),
+        included =
+          this.slotSchema &&
+          this.slotSchema.allowedSlotWrappers &&
+          this.slotSchema.allowedSlotWrappers.includes(tag),
+        specified =
+          this.slotSchema &&
+          this.slotSchema.slotWrapper &&
+          this.slotSchema.slotWrapper === tag;
+      console.log(tag, this.slotSchema, specified, !!included, !!excluded);
+      return specified || !!included || !excluded;
+    });
+  }
+
+  setTarget(node = this.activeNode) {
+    super.setTarget(node);
+    this.parentSchema =
+      node && node.parentNode
+        ? HAXStore.haxSchemaFromTag(node.parentNode.tagName)
+        : undefined;
+    console.log(this.formatButton, this.filteredBlocks);
+    if (
+      this.shadowRoot &&
+      this.formatButton.type &&
+      this.shadowRoot.querySelector(this.formatButton.type)
+    )
+      this.shadowRoot.querySelector(
+        this.formatButton.type
+      ).blocks = this.filteredBlocks;
   }
   /**
    * when an element is registered,

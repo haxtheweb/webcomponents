@@ -1619,9 +1619,28 @@ class HaxTray extends I18NMixin(
                       slotTag = this.__activePropSchema.settings[key][propTmp]
                         .slotWrapper;
                     } else if (
+                      //selects first wrapper from allowed list
+                      this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers &&
+                      this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers[0]
+                    ) {
+                      slotTag = this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers[0];
+                    } else if (
                       this.activeNode.tagName.toLowerCase() === "code-editor"
                     ) {
                       slotTag = "template";
+                    } else {
+                      //selects wrapper that is not excluded
+                      let wrappers = ["span", "div", "p"],
+                        exclusions =
+                          this.__activePropSchema.settings[key][propTmp]
+                            .excludedSlotWrappers || [];
+                      if (exclusions)
+                        wrappers = wrappers.filter(
+                          (wrapper) => !exclusions.includes(wrapper)
+                        );
                     }
                     var tmpel = document.createElement(slotTag);
                     if (
