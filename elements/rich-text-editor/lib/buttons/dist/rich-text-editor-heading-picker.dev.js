@@ -305,14 +305,29 @@ var RichTextEditorHeadingPicker =
       RichTextEditorHeadingPicker,
       [
         {
-          key: "_setRangeValue",
+          key: "updated",
+          value: function updated(changedProperties) {
+            var _this2 = this;
 
+            _get(
+              _getPrototypeOf(RichTextEditorHeadingPicker.prototype),
+              "updated",
+              this
+            ).call(this, changedProperties);
+
+            changedProperties.forEach(function (oldValue, propName) {
+              if (propName === "blocks") _this2._setOptions();
+            });
+          },
           /**
            * sets picker's value based ion current selected range
            */
+        },
+        {
+          key: "_setRangeValue",
           value: function _setRangeValue() {
             var ancestor = this.rangeOrMatchingAncestor(),
-              tag = ancestor.tagName,
+              tag = ancestor ? ancestor.tagName : "",
               val = tag.toLowerCase();
 
             if (this.shadowRoot) {

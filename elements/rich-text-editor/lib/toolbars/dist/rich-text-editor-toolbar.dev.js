@@ -1748,7 +1748,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               range = this.getRange();
 
             if (!!target) {
-              if (!!range) range.collapse();
+              if (!!range) range.collapse(false);
 
               this.__highlight.emptyContents();
 

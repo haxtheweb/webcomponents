@@ -1175,7 +1175,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.enabledTargetHandlers,
         range = this.getRange();
       if (!!target) {
-        if (!!range) range.collapse();
+        if (!!range) range.collapse(false);
         this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
         this.observeChanges(false);

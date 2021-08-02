@@ -59,12 +59,19 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     return "hide";
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "blocks") this._setOptions();
+    });
+  }
+
   /**
    * sets picker's value based ion current selected range
    */
   _setRangeValue() {
     let ancestor = this.rangeOrMatchingAncestor(),
-      tag = ancestor.tagName,
+      tag = ancestor ? ancestor.tagName : "",
       val = tag.toLowerCase();
     if (this.shadowRoot) {
       if (this.tagsArray.includes(val)) {
