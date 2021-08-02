@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _SimpleTourFinder2 = require("@lrnwebcomponents/simple-popover/lib/SimpleTourFinder");
 
+var _mobx = require("mobx");
+
+var _haxStore = require("./hax-store.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -236,6 +240,28 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
           _getPrototypeOf(_class).call(this)
         );
         _this.viewSource = false;
+        (0, _mobx.autorun)(function () {
+          _this.hasSelectedText =
+            (0, _mobx.toJS)(_haxStore.HAXStore.haxSelectedText).length > 0;
+        });
+        (0, _mobx.autorun)(function () {
+          // this just forces this block to run when editMode is modified
+          var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
+          var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode); //this.viewSource = false;
+
+          if (activeNode && activeNode.tagName) {
+            var schema = _haxStore.HAXStore.haxSchemaFromTag(
+              activeNode.tagName
+            );
+
+            _this.parentSchema =
+              activeNode && activeNode.parentNode
+                ? _haxStore.HAXStore.haxSchemaFromTag(
+                    activeNode.parentNode.tagName
+                  )
+                : undefined; //this.sourceView = schema.canEditSource;
+          }
+        });
         return _this;
       }
 
@@ -246,6 +272,63 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
             key: "render",
             value: function render() {
               return (0, _litElement.html)(_templateObject2());
+            },
+          },
+          {
+            key: "updated",
+            value: function updated(changedProperties) {
+              var _this2 = this;
+
+              if (_get(_getPrototypeOf(_class.prototype), "updated", this))
+                _get(_getPrototypeOf(_class.prototype), "updated", this).call(
+                  this,
+                  changedProperties
+                );
+              changedProperties.forEach(function (oldValue, propName) {
+                if (propName === "activeNode" && _this2.activeNode !== oldValue)
+                  _this2.setTarget(_this2.activeNode);
+              });
+            },
+          },
+          {
+            key: "setTarget",
+            value: function setTarget() {
+              var node =
+                arguments.length > 0 && arguments[0] !== undefined
+                  ? arguments[0]
+                  : this.activeNode;
+              if (_get(_getPrototypeOf(_class.prototype), "setTarget", this))
+                _get(_getPrototypeOf(_class.prototype), "setTarget", this).call(
+                  this,
+                  node
+                );
+              this.parentSchema =
+                node && node.parentNode
+                  ? _haxStore.HAXStore.haxSchemaFromTag(node.parentNode.tagName)
+                  : undefined;
+            },
+          },
+          {
+            key: "slotSchema",
+            get: function get() {
+              var _this3 = this;
+
+              var schema;
+
+              if (this.activeNode && this.parentSchema) {
+                var slot = this.activeNode.slot || "";
+                Object.keys(this.parentSchema.settings || {}).forEach(function (
+                  type
+                ) {
+                  (_this3.parentSchema.settings[type] || []).forEach(function (
+                    setting
+                  ) {
+                    if (setting.slot && setting.slot === slot) schema = setting;
+                  });
+                });
+              }
+
+              return schema;
             },
           },
         ],
@@ -263,6 +346,18 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
                 {},
                 _get(_getPrototypeOf(_class), "properties", this),
                 {
+                  activeNode: {
+                    type: Object,
+                  },
+                  parentSchema: {
+                    type: Object,
+                  },
+                  realSelectedValue: {
+                    type: String,
+                  },
+                  sourceView: {
+                    type: Boolean,
+                  },
                   viewSource: {
                     type: Boolean,
                     reflect: true,

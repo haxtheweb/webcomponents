@@ -1146,7 +1146,6 @@ var HaxTray =
                                         _this3.trayDetail !== "content-edit") &&
                                       _this3.trayDetail !== "content-map"
                                     ) {
-                                      console.log("activeGizmo");
                                       _this3.trayDetail = "content-edit";
                                     }
                                   } else {
@@ -1159,7 +1158,6 @@ var HaxTray =
                                         _this3.trayDetail
                                       )
                                     ) {
-                                      console.log("else");
                                       _this3.trayDetail = "content-add";
                                     }
                                   }

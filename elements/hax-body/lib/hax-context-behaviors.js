@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { autorun, toJS } from "mobx";
+import { HAXStore } from "./hax-store.js";
 /**
  *
  * @customElement
@@ -63,6 +65,23 @@ export const HaxContextBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.viewSource = false;
+      autorun(() => {
+        this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
+      });
+      autorun(() => {
+        // this just forces this block to run when editMode is modified
+        const editMode = toJS(HAXStore.editMode);
+        const activeNode = toJS(HAXStore.activeNode);
+        //this.viewSource = false;
+        if (activeNode && activeNode.tagName) {
+          let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
+          this.parentSchema =
+            activeNode && activeNode.parentNode
+              ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
+              : undefined;
+          //this.sourceView = schema.canEditSource;
+        }
+      });
     }
     render() {
       return html`<slot></slot> `;
@@ -73,12 +92,52 @@ export const HaxContextBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        activeNode: {
+          type: Object,
+        },
+        parentSchema: {
+          type: Object,
+        },
+        realSelectedValue: {
+          type: String,
+        },
+        sourceView: {
+          type: Boolean,
+        },
         viewSource: {
           type: Boolean,
           reflect: true,
           attribute: "view-source",
         },
       };
+    }
+
+    get slotSchema() {
+      let schema;
+      if (this.activeNode && this.parentSchema) {
+        let slot = this.activeNode.slot || "";
+        Object.keys(this.parentSchema.settings || {}).forEach((type) => {
+          (this.parentSchema.settings[type] || []).forEach((setting) => {
+            if (setting.slot && setting.slot === slot) schema = setting;
+          });
+        });
+      }
+      return schema;
+    }
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "activeNode" && this.activeNode !== oldValue)
+          this.setTarget(this.activeNode);
+      });
+    }
+
+    setTarget(node = this.activeNode) {
+      if (super.setTarget) super.setTarget(node);
+      this.parentSchema =
+        node && node.parentNode
+          ? HAXStore.haxSchemaFromTag(node.parentNode.tagName)
+          : undefined;
     }
   };
 };

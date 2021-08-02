@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element";
 import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
-import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
@@ -95,18 +94,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      activeNode: {
-        type: Object,
-      },
-      parentSchema: {
-        type: Object,
-      },
-      realSelectedValue: {
-        type: String,
-      },
-      sourceView: {
-        type: Boolean,
-      },
       __updated: {
         type: Boolean,
       },
@@ -170,44 +157,19 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     window.HaxTextEditorToolbarConfig.inlineGizmos =
       window.HaxTextEditorToolbarConfig.inlineGizmos || {};
     window.HaxTextEditorToolbarConfig.default = window
-      .HaxTextEditorToolbarConfig.default || [
-      ...this.defaultConfig,
-      this.sourceButtonGroup,
-    ];
+      .HaxTextEditorToolbarConfig.default || [...this.defaultConfig];
     this.config = window.HaxTextEditorToolbarConfig.default;
     this.sticky = false;
     this.__updated = false;
     this.setTarget(undefined);
-    autorun(() => {
-      this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
-    });
-    autorun(() => {
-      // this just forces this block to run when editMode is modified
-      const editMode = toJS(HAXStore.editMode);
-      const activeNode = toJS(HAXStore.activeNode);
-      //this.viewSource = false;
-      if (activeNode && activeNode.tagName) {
-        let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
-        this.parentSchema =
-          activeNode && activeNode.parentNode
-            ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
-            : undefined;
-        //this.sourceView = schema.canEditSource;
-      }
-    });
-  }
-
-  get slotSchema() {
-    let schema;
-    if (this.activeNode && this.parentSchema) {
-      let slot = this.activeNode.slot || "";
-      Object.keys(this.parentSchema.settings || {}).forEach((type) => {
-        (this.parentSchema.settings[type] || []).forEach((setting) => {
-          if (setting.slot && setting.slot === slot) schema = setting;
-        });
-      });
-    }
-    return schema;
+    window.addEventListener(
+      "hax-store-ready",
+      this._handleHaxStoreReady.bind(this)
+    );
+    window.addEventListener(
+      "hax-register-properties",
+      this._handleElementRegister.bind(this)
+    );
   }
   /**
    * default config for a format button
@@ -512,8 +474,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "parentSchema" && this.parentSchema !== oldValue)
-        console.log("updated parent schema");
+      if (propName === "parentSchema") this.updateBlocks();
       if (propName === "activeNode" && this.activeNode !== oldValue)
         this.setTarget(this.activeNode);
       if (propName === "t" && this.t !== oldValue) this.updateToolbarElements();
@@ -522,18 +483,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.config = this.updateToolbarElements();
-    window.addEventListener(
-      "hax-store-ready",
-      this._handleHaxStoreReady.bind(this)
-    );
-    window.addEventListener(
-      "hax-register-properties",
-      this._handleElementRegister.bind(this)
-    );
+  }
+
+  updateBlocks() {
+    if (this.formatButton.type && this.querySelector(this.formatButton.type))
+      this.querySelector(this.formatButton.type).blocks = this.filteredBlocks;
   }
 
   getRange() {
-    return HAXStore.getRange();
+    let range = HAXStore.getRange();
+    return !range || range.rangeCount < 1 ? undefined : HAXStore.getRange();
   }
 
   getSelection() {
@@ -550,39 +509,34 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
 
   get filteredBlocks() {
     return this.formatBlocks.filter((block) => {
+      if (!block.tag) return;
       let tag = block.tag || "",
+        wrapper =
+          !!this.slotSchema &&
+          !!this.slotSchema.slotWrapper &&
+          !!this.slotSchema.slotWrapper
+            ? this.slotSchema.slotWrapper
+            : undefined,
+        allowed =
+          !!this.slotSchema &&
+          !!this.slotSchema.slotWrapper &&
+          !!this.slotSchema.allowedSlotWrappers
+            ? this.slotSchema.allowedSlotWrappers
+            : undefined,
         excluded =
-          this.slotSchema &&
-          this.slotSchema.excludedSlotWrappers &&
-          this.slotSchema.excludedSlotWrappers.includes(tag),
-        included =
-          this.slotSchema &&
-          this.slotSchema.allowedSlotWrappers &&
-          this.slotSchema.allowedSlotWrappers.includes(tag),
-        specified =
-          this.slotSchema &&
-          this.slotSchema.slotWrapper &&
-          this.slotSchema.slotWrapper === tag;
-      console.log(tag, this.slotSchema, specified, !!included, !!excluded);
-      return specified || !!included || !excluded;
+          !!this.slotSchema &&
+          !!this.slotSchema.slotWrapper &&
+          !!this.slotSchema.excludedSlotWrappers
+            ? this.slotSchema.excludedSlotWrappers
+            : undefined,
+        allowAny = !this.slotSchema || (!wrapper && !allowed),
+        allowOnly =
+          (!!wrapper && wrapper === tag) ||
+          (!!allowed && allowed.includes(tag)),
+        allowExcept = !!excluded && excluded.includes(tag),
+        show = !allowExcept && (allowAny || allowOnly);
+      return show;
     });
-  }
-
-  setTarget(node = this.activeNode) {
-    super.setTarget(node);
-    this.parentSchema =
-      node && node.parentNode
-        ? HAXStore.haxSchemaFromTag(node.parentNode.tagName)
-        : undefined;
-    console.log(this.formatButton, this.filteredBlocks);
-    if (
-      this.shadowRoot &&
-      this.formatButton.type &&
-      this.shadowRoot.querySelector(this.formatButton.type)
-    )
-      this.shadowRoot.querySelector(
-        this.formatButton.type
-      ).blocks = this.filteredBlocks;
   }
   /**
    * when an element is registered,
@@ -657,33 +611,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     let buttons = Object.keys(
       window.HaxTextEditorToolbarConfig.inlineGizmos || {}
     ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
-    this.config = [
-      ...this.defaultConfig,
-      {
-        type: "button-group",
-        buttons: buttons,
-      },
-      this.sourceButtonGroup,
-    ];
+    this.config =
+      buttons.length === 0
+        ? [...this.defaultConfig]
+        : [
+            ...this.defaultConfig,
+            {
+              type: "button-group",
+              buttons: buttons,
+            },
+          ];
     this.updateToolbar();
-  }
-  /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-  /**
-   * allow HAX to toggle edit state when activated
-   */
-  haxactiveElementChanged(el, val) {
-    // overwrite the HAX dom w/ what our editor is supplying
-    if (!val && el) {
-      el.innerHTML = this.getValue();
-    }
-    return el;
   }
 }
 customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);

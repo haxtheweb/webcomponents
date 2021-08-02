@@ -27,6 +27,8 @@ var _utils2 = require("@lrnwebcomponents/utils/utils.js");
 
 var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
 
+var _simpleToast = require("@lrnwebcomponents/simple-toast/simple-toast");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -94,12 +96,12 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
+function _templateObject6() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          width: 100%;\n        }\n        #remove {\n          max-width: 44px;\n          overflow: visible;\n        }\n        hax-toolbar {\n          justify-content: flex-start;\n          margin-bottom: -1px;\n          margin-left: 1px;\n        }\n        .group {\n          flex: 1 0 auto;\n          justify-content: center;\n          border: 1px solid var(--rich-text-editor-border-color, #ddd);\n          padding: 0;\n        }\n        .group,\n        .group > * {\n          z-index: 1;\n        }\n        .group:empty {\n          display:none;\n        }\n        .group > *,\n        :host([collapsed]) .group {\n          flex: 0 0 auto;\n        }\n        .group *:not([toggled])::part(button){\n          border-color: transparent;\n        }\n        :host .group:focus,\n        :host .group:focus-within,\n        :host .group > *:focus,\n        :host .group > *:focus-within {\n          z-index: 2;\n        }\n        :host .group:hover,\n        :host .group > *:hover {\n          z-index: 3;\n        }\n      ",
+    "\n        :host {\n          width: 100%;\n        }\n        #remove {\n          max-width: 44px;\n          overflow: visible;\n        }\n        hax-toolbar {\n          justify-content: flex-start;\n          margin-bottom: -1px;\n          margin-left: 1px;\n        }\n        .group {\n          flex: 1 0 auto;\n          justify-content: center;\n          border: 1px solid var(--rich-text-editor-border-color, #ddd);\n          padding: 0;\n        }\n        .group,\n        .group > * {\n          z-index: 1;\n        }\n        .group:empty {\n          display: none;\n        }\n        .group > *,\n        :host([collapsed]) .group {\n          flex: 0 0 auto;\n        }\n        .group *:not([toggled])::part(button) {\n          border-color: transparent;\n        }\n        :host .group:focus,\n        :host .group:focus-within,\n        :host .group > *:focus,\n        :host .group > *:focus-within {\n          z-index: 2;\n        }\n        :host .group:hover,\n        :host .group > *:hover {\n          z-index: 3;\n        }\n        .first-slot {\n          border-top: 1px solid black;\n        }\n      ",
   ]);
 
-  _templateObject3 = function _templateObject3() {
+  _templateObject6 = function _templateObject6() {
     return data;
   };
 
@@ -133,13 +135,58 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
+function _templateObject5() {
+  var data = _taggedTemplateLiteral([
+    ' <hax-context-item\n              action\n              icon="',
+    '"\n              label="',
+    '"\n              event-name="hax-ce-custom-button"\n              value="',
+    '"\n              ?disabled="',
+    '"\n            ></hax-context-item>',
+  ]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral([
+    '\n                <simple-toolbar-menu-item slot="menuitem">\n                  <hax-context-item\n                    action\n                    align-horizontal="left"\n                    show-text-label\n                    role="menuitem"\n                    icon="icons:check-box"\n                    event-name="insert-slot"\n                    data-slot="',
+    '"\n                    @click="',
+    '"\n                    label="',
+    '"\n                    toggles\n                    toggled\n                  ></hax-context-item>\n                </simple-toolbar-menu-item>\n              ',
+  ]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([
+    '\n          <div class="group">\n            <hax-toolbar-menu icon="icons:view-quilt" label="',
+    '">\n              ',
+    "\n            </hax-toolbar-menu>\n          </div>\n\n        ",
+  ]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <hax-context-item\n                action\n                icon="',
-    '"\n                label="',
-    '"\n                event-name="hax-ce-custom-button"\n                value="',
-    '"\n                ?disabled="',
-    '"\n              ></hax-context-item>',
+    '\n              <simple-toolbar-menu-item slot="menuitem" class="move-to-slot ',
+    '">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  event-name="insert-slot"\n                  data-slot="',
+    '"\n                  @click="',
+    '"\n                  label="',
+    '"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -151,42 +198,33 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        <hax-toolbar>\n          <div class="group">\n            <hax-toolbar-menu\n              ?disabled="',
-    '"\n              id="drag"\n              action\n              icon="hax:arrow-all"\n              label="',
-    '"\n              draggable="true"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  ?disabled="',
-    '"\n                  show-text-label\n                  role="menuitem"\n                  icon="hax:keyboard-arrow-up"\n                  label="',
-    '"\n                  event-name="hax-plate-up"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  ?disabled="',
-    '"\n                  role="menuitem"\n                  show-text-label\n                  icon="hax:keyboard-arrow-down"\n                  label="',
-    '"\n                  event-name="hax-plate-down"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Click the drag handle once to show a menu to just move up or\n                down one item in the content OR click and drag to place the item\n                exactly where you want it to go.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              more\n              .icon="',
-    '"\n              label="',
-    '.."\n              tooltip="',
+    '\n      <hax-toolbar>\n        <div class="group">\n          <hax-toolbar-menu\n            ?disabled="',
+    '"\n            id="drag"\n            action\n            icon="hax:arrow-all"\n            label="',
+    '"\n            draggable="true"\n            reset-on-select\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
+    '"\n                show-text-label\n                role="menuitem"\n                icon="hax:keyboard-arrow-up"\n                label="',
+    '"\n                event-name="hax-plate-up"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
+    '"\n                role="menuitem"\n                show-text-label\n                icon="hax:keyboard-arrow-down"\n                label="',
+    '"\n                event-name="hax-plate-down"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            ',
+    '\n            <div slot="tour" data-stop-content>\n              Click the drag handle once to show a menu to just move up or down\n              one item in the content OR click and drag to place the item\n              exactly where you want it to go.\n            </div>\n          </hax-toolbar-menu>\n        </div>\n        ',
+    "\n        ",
+    '\n        <div class="group">\n          ',
+    '\n          <hax-context-item\n            action\n            id="right"\n            class="paddle"\n            icon="hax:table-column-remove"\n            label="',
+    '"\n            ?disabled="',
+    '"\n            event-name="hax-plate-create-right"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Add a column to split the current column into two pieces. This can\n              be done up to six pieces columns. For differnet layouts see Grid\n              settings panel.\n            </div>\n          </hax-context-item>\n          <hax-context-item\n            action\n            class="paddle"\n            icon="hax:table-column-plus-after"\n            label="',
+    '"\n            ?disabled="',
+    '"\n            event-name="hax-plate-remove-right"\n            id="rightremove"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Remove a column from the split column layout. If at two columns\n              and removing it will remove the layout split and make it 100%\n              width.\n            </div>\n          </hax-context-item>\n          <slot name="secondary"></slot>\n        </div>\n        <div class="group">\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="',
+    '"\n            ?disabled="',
+    '"\n            event-name="hax-source-view-toggle"\n            toggles\n            ?toggled="',
+    '"\n            @click="',
+    '"\n          ></hax-context-item>\n          <slot name="more"></slot>\n          <hax-context-item\n            icon="build"\n            action\n            align-horizontal="left"\n            ?disabled="',
+    '"\n            label="',
+    '"\n            data-simple-tour-stop\n            data-stop-title="label"\n            event-name="content-edit"\n            toggles\n            ?toggled="',
+    '"\n          >\n            <div slot="tour" data-stop-content>\n              Opens the Edit panel for more advanced settings.\n            </div>\n          </hax-context-item>\n        </div>\n        <div class="group">\n          <hax-context-item\n            action\n            more\n            .icon="',
+    '"\n            label="',
+    '.."\n            tooltip="',
     ", ",
-    '"\n              ?disabled="',
-    '"\n              event-name="hax-transform-node"\n              show-text-label\n            ></hax-context-item>\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu\n              icon="add"\n              label="',
-    '"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="',
-    '"\n                  ?disabled="',
-    '"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="',
-    '"\n                  ?disabled="',
-    '"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n            <hax-context-item\n              action\n              ?disabled="',
-    '"\n              label="',
-    '"\n              icon="icons:content-copy"\n              event-name="hax-plate-duplicate"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Duplicate the active piece of content and place it below the\n                current item.\n              </div>\n            </hax-context-item>\n            <hax-toolbar-menu\n              id="remove"\n              action\n              ?disabled="',
-    '"\n              icon="delete"\n              label="',
-    '"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n              @dblclick=',
-    '\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  danger\n                  align-horizontal="left"\n                  ?disabled="',
-    '"\n                  show-text-label\n                  role="menuitem"\n                  icon="delete"\n                  label="',
-    '"\n                  event-name="hax-plate-delete"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Delete the current item. You can always use the undo arrow to\n                bring this back.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n          <div class="group">\n            ',
-    '\n            <hax-context-item\n              action\n              id="right"\n              class="paddle"\n              icon="hax:table-column-remove"\n              label="',
-    '"\n              ?disabled="',
-    '"\n              event-name="hax-plate-create-right"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Add a column to split the current column into two pieces. This\n                can be done up to six pieces columns. For differnet layouts see\n                Grid settings panel.\n              </div>\n            </hax-context-item>\n            <hax-context-item\n              action\n              class="paddle"\n              icon="hax:table-column-plus-after"\n              label="',
-    '"\n              ?disabled="',
-    '"\n              event-name="hax-plate-remove-right"\n              id="rightremove"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Remove a column from the split column layout. If at two columns\n                and removing it will remove the layout split and make it 100%\n                width.\n              </div>\n            </hax-context-item>\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="',
-    '"\n              ?disabled="',
-    '"\n              event-name="hax-source-view-toggle"\n              toggles\n              ?toggled="',
-    '"\n              @click="',
-    '"\n            ></hax-context-item>\n            <slot name="more"></slot>\n            <hax-context-item\n              icon="build"\n              action\n              align-horizontal="left"\n              ?disabled="',
-    '"\n              label="',
-    '"\n              data-simple-tour-stop\n              data-stop-title="label"\n              event-name="content-edit"\n              toggles\n              ?toggled="',
-    '"\n            >\n              <div slot="tour" data-stop-content>\n                Opens the Edit panel for more advanced settings.\n              </div>\n            </hax-context-item>\n          </div>\n        </hax-toolbar>\n    ',
+    '"\n            ?disabled="',
+    '"\n            event-name="hax-transform-node"\n            show-text-label\n          ></hax-context-item>\n          <slot name="primary"></slot>\n        </div>\n      </hax-toolbar>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -339,6 +377,7 @@ var HaxPlateContext =
         changeTo: "Change to",
         modifyHTMLSource: "Modify HTML source",
         clickToChange: "Click to change",
+        regions: "Available regions",
         insertItemAbove: "Insert item above",
         insertItemAboveOrBelow: "Insert item above or below",
         insertItemBelow: "Insert item below",
@@ -377,26 +416,37 @@ var HaxPlateContext =
               this.t.moveUp,
               this.hasActiveEditingElement,
               this.t.moveDown,
-              this.activeTagIcon,
-              this.t.changeTo,
-              this.activeTagName,
-              this.t.clickToChange,
-              this.disableTransform || this.viewSource,
-              this.t.insertItemAboveOrBelow,
-              this.t.insertItemAbove,
-              this.viewSource,
-              this.t.insertItemBelow,
-              this.viewSource,
-              this.hasActiveEditingElement,
-              this.t.duplicate,
-              this.hasActiveEditingElement,
-              this.t.remove,
-              this.__dblClickFire,
-              this.hasActiveEditingElement,
-              this.t.confirmDelete,
+              (this.siblingSlots || []).map(function (slot, i) {
+                return (0, _litElement.html)(
+                  _templateObject2(),
+                  i < 1 ? "first-slot" : "",
+                  slot,
+                  function (e) {
+                    return _this2._handleMoveSlot(slot);
+                  },
+                  slot.title || slot.slot
+                );
+              }),
+              console.log(this.childSlots),
+              !this.childSlots || this.childSlots.length < 1
+                ? ""
+                : (0, _litElement.html)(
+                    _templateObject3(),
+                    this.t.regions,
+                    (this.childSlots || []).map(function (slot) {
+                      return (0, _litElement.html)(
+                        _templateObject4(),
+                        slot,
+                        function (e) {
+                          return _this2._handleSlotToggle(slot);
+                        },
+                        slot.title || slot.slot
+                      );
+                    })
+                  ),
               this.ceButtons.map(function (el) {
                 return (0,
-                _litElement.html)(_templateObject2(), el.icon, el.label, el.callback, _this2.viewSource);
+                _litElement.html)(_templateObject5(), el.icon, el.label, el.callback, _this2.viewSource);
               }),
               this.t.addColumn,
               this.hasActiveEditingElement,
@@ -411,8 +461,47 @@ var HaxPlateContext =
               this.hasActiveEditingElement,
               this.t.edit,
               this.trayDetail === "content-edit" &&
-                this.trayStatus !== "collapsed"
+                this.trayStatus !== "collapsed",
+              this.activeTagIcon,
+              this.t.changeTo,
+              this.activeTagName,
+              this.t.clickToChange,
+              this.disableTransform || this.viewSource
             );
+          },
+        },
+        {
+          key: "getSlotsFromSettings",
+          value: function getSlotsFromSettings() {
+            var settings =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : {};
+            var optionalOnly =
+              arguments.length > 1 && arguments[1] !== undefined
+                ? arguments[1]
+                : false;
+            var slotsList = [];
+            return Object.keys(settings || {})
+              .map(function (setting) {
+                return (settings[setting] || []).filter(function (prop) {
+                  var show = !optionalOnly || !prop.required;
+
+                  if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
+                    slotsList.push(prop.slot);
+                    return true;
+                  } else {
+                    return false;
+                  }
+                });
+              })
+              .flat();
+          },
+        },
+        {
+          key: "_handleMoveSlot",
+          value: function _handleMoveSlot(slot) {
+            this.activeNode.slot = slot.slot;
           },
         },
         {
@@ -505,6 +594,7 @@ var HaxPlateContext =
                 _this3._resetCEMenu();
               }
             });
+            console.log(this.parentSchema, this.slotSchema);
           },
         },
         {
@@ -679,6 +769,31 @@ var HaxPlateContext =
            * LitElement / popular convention
            */
         },
+        {
+          key: "childSlots",
+          get: function get() {
+            return _haxStore.HAXStore.isGridPlateElement(this.activeNode)
+              ? this.getSlotsFromSettings(
+                  this.slotSchema && this.slotSchema.type === "grid"
+                    ? this.slotSchema.settings
+                    : {},
+                  true
+                )
+              : [];
+          },
+        },
+        {
+          key: "siblingSlots",
+          get: function get() {
+            return _haxStore.HAXStore.isGridPlateElement(this.parentNode)
+              ? this.getSlotsFromSettings(
+                  this.parentSchema && this.parentSchema.type === "grid"
+                    ? this.parentSchema.settings
+                    : {}
+                )
+              : [];
+          },
+        },
       ],
       [
         {
@@ -694,7 +809,7 @@ var HaxPlateContext =
               _toConsumableArray(
                 _get(_getPrototypeOf(HaxPlateContext), "styles", this)
               ),
-              [(0, _litElement.css)(_templateObject3())]
+              [(0, _litElement.css)(_templateObject6())]
             );
           },
         },

@@ -13,8 +13,6 @@ var _haxTextEditorButton = require("./hax-text-editor-button.js");
 
 var _haxStore = require("./hax-store.js");
 
-var _mobx = require("mobx");
-
 var _haxContextBehaviors = require("./hax-context-behaviors.js");
 
 var _I18NMixin = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
@@ -312,18 +310,6 @@ var HaxTextEditorToolbar =
           key: "properties",
           get: function get() {
             return {
-              activeNode: {
-                type: Object,
-              },
-              parentSchema: {
-                type: Object,
-              },
-              realSelectedValue: {
-                type: String,
-              },
-              sourceView: {
-                type: Boolean,
-              },
               __updated: {
                 type: Boolean,
               },
@@ -392,37 +378,28 @@ var HaxTextEditorToolbar =
         window.HaxTextEditorToolbarConfig.inlineGizmos || {};
       window.HaxTextEditorToolbarConfig["default"] =
         window.HaxTextEditorToolbarConfig["default"] ||
-        [].concat(_toConsumableArray(_this.defaultConfig), [
-          _this.sourceButtonGroup,
-        ]);
+        _toConsumableArray(_this.defaultConfig);
       _this.config = window.HaxTextEditorToolbarConfig["default"];
       _this.sticky = false;
       _this.__updated = false;
 
       _this.setTarget(undefined);
 
-      (0, _mobx.autorun)(function () {
-        _this.hasSelectedText =
-          (0, _mobx.toJS)(_haxStore.HAXStore.haxSelectedText).length > 0;
-      });
-      (0, _mobx.autorun)(function () {
-        // this just forces this block to run when editMode is modified
-        var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
-        var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode); //this.viewSource = false;
-
-        if (activeNode && activeNode.tagName) {
-          var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName);
-
-          _this.parentSchema =
-            activeNode && activeNode.parentNode
-              ? _haxStore.HAXStore.haxSchemaFromTag(
-                  activeNode.parentNode.tagName
-                )
-              : undefined; //this.sourceView = schema.canEditSource;
-        }
-      });
+      window.addEventListener(
+        "hax-store-ready",
+        _this._handleHaxStoreReady.bind(_assertThisInitialized(_this))
+      );
+      window.addEventListener(
+        "hax-register-properties",
+        _this._handleElementRegister.bind(_assertThisInitialized(_this))
+      );
       return _this;
     }
+    /**
+     * default config for a format button
+     *
+     * @readonly
+     */
 
     _createClass(HaxTextEditorToolbar, [
       {
@@ -443,8 +420,7 @@ var HaxTextEditorToolbar =
               this
             ).call(this, changedProperties);
           changedProperties.forEach(function (oldValue, propName) {
-            if (propName === "parentSchema" && _this2.parentSchema !== oldValue)
-              console.log("updated parent schema");
+            if (propName === "parentSchema") _this2.updateBlocks();
             if (propName === "activeNode" && _this2.activeNode !== oldValue)
               _this2.setTarget(_this2.activeNode);
             if (propName === "t" && _this2.t !== oldValue)
@@ -468,20 +444,28 @@ var HaxTextEditorToolbar =
               this
             ).call(this, changedProperties);
           this.config = this.updateToolbarElements();
-          window.addEventListener(
-            "hax-store-ready",
-            this._handleHaxStoreReady.bind(this)
-          );
-          window.addEventListener(
-            "hax-register-properties",
-            this._handleElementRegister.bind(this)
-          );
+        },
+      },
+      {
+        key: "updateBlocks",
+        value: function updateBlocks() {
+          if (
+            this.formatButton.type &&
+            this.querySelector(this.formatButton.type)
+          )
+            this.querySelector(
+              this.formatButton.type
+            ).blocks = this.filteredBlocks;
         },
       },
       {
         key: "getRange",
         value: function getRange() {
-          return _haxStore.HAXStore.getRange();
+          var range = _haxStore.HAXStore.getRange();
+
+          return !range || range.rangeCount < 1
+            ? undefined
+            : _haxStore.HAXStore.getRange();
         },
       },
       {
@@ -502,33 +486,8 @@ var HaxTextEditorToolbar =
         },
       },
       {
-        key: "setTarget",
-        value: function setTarget() {
-          var node =
-            arguments.length > 0 && arguments[0] !== undefined
-              ? arguments[0]
-              : this.activeNode;
+        key: "_handleElementRegister",
 
-          _get(
-            _getPrototypeOf(HaxTextEditorToolbar.prototype),
-            "setTarget",
-            this
-          ).call(this, node);
-
-          this.parentSchema =
-            node && node.parentNode
-              ? _haxStore.HAXStore.haxSchemaFromTag(node.parentNode.tagName)
-              : undefined;
-          console.log(this.formatButton, this.filteredBlocks);
-          if (
-            this.shadowRoot &&
-            this.formatButton.type &&
-            this.shadowRoot.querySelector(this.formatButton.type)
-          )
-            this.shadowRoot.querySelector(
-              this.formatButton.type
-            ).blocks = this.filteredBlocks;
-        },
         /**
          * when an element is registered,
          * check its properties
@@ -536,9 +495,6 @@ var HaxTextEditorToolbar =
          * @param {event} e
          * @memberof HaxTextEditorToolbar
          */
-      },
-      {
-        key: "_handleElementRegister",
         value: function _handleElementRegister(e) {
           var detail = e.detail || {},
             tag = detail.tag || {},
@@ -627,68 +583,17 @@ var HaxTextEditorToolbar =
           ).map(function (key) {
             return window.HaxTextEditorToolbarConfig.inlineGizmos[key];
           });
-          this.config = [].concat(_toConsumableArray(this.defaultConfig), [
-            {
-              type: "button-group",
-              buttons: buttons,
-            },
-            this.sourceButtonGroup,
-          ]);
+          this.config =
+            buttons.length === 0
+              ? _toConsumableArray(this.defaultConfig)
+              : [].concat(_toConsumableArray(this.defaultConfig), [
+                  {
+                    type: "button-group",
+                    buttons: buttons,
+                  },
+                ]);
           this.updateToolbar();
         },
-        /**
-         * Implements haxHooks to tie into life-cycle if hax exists.
-         */
-      },
-      {
-        key: "haxHooks",
-        value: function haxHooks() {
-          return {
-            activeElementChanged: "haxactiveElementChanged",
-          };
-        },
-        /**
-         * allow HAX to toggle edit state when activated
-         */
-      },
-      {
-        key: "haxactiveElementChanged",
-        value: function haxactiveElementChanged(el, val) {
-          // overwrite the HAX dom w/ what our editor is supplying
-          if (!val && el) {
-            el.innerHTML = this.getValue();
-          }
-
-          return el;
-        },
-      },
-      {
-        key: "slotSchema",
-        get: function get() {
-          var _this4 = this;
-
-          var schema;
-
-          if (this.activeNode && this.parentSchema) {
-            var slot = this.activeNode.slot || "";
-            Object.keys(this.parentSchema.settings || {}).forEach(function (
-              type
-            ) {
-              (_this4.parentSchema.settings[type] || []).forEach(function (
-                setting
-              ) {
-                if (setting.slot && setting.slot === slot) schema = setting;
-              });
-            });
-          }
-
-          return schema;
-        },
-        /**
-         * default config for a format button
-         *
-         * @readonly
-         */
       },
       {
         key: "undoButton",
@@ -1252,31 +1157,36 @@ var HaxTextEditorToolbar =
       {
         key: "filteredBlocks",
         get: function get() {
-          var _this5 = this;
+          var _this4 = this;
 
           return this.formatBlocks.filter(function (block) {
+            if (!block.tag) return;
             var tag = block.tag || "",
+              wrapper =
+                !!_this4.slotSchema &&
+                !!_this4.slotSchema.slotWrapper &&
+                !!_this4.slotSchema.slotWrapper
+                  ? _this4.slotSchema.slotWrapper
+                  : undefined,
+              allowed =
+                !!_this4.slotSchema &&
+                !!_this4.slotSchema.slotWrapper &&
+                !!_this4.slotSchema.allowedSlotWrappers
+                  ? _this4.slotSchema.allowedSlotWrappers
+                  : undefined,
               excluded =
-                _this5.slotSchema &&
-                _this5.slotSchema.excludedSlotWrappers &&
-                _this5.slotSchema.excludedSlotWrappers.includes(tag),
-              included =
-                _this5.slotSchema &&
-                _this5.slotSchema.allowedSlotWrappers &&
-                _this5.slotSchema.allowedSlotWrappers.includes(tag),
-              specified =
-                _this5.slotSchema &&
-                _this5.slotSchema.slotWrapper &&
-                _this5.slotSchema.slotWrapper === tag;
-
-            console.log(
-              tag,
-              _this5.slotSchema,
-              specified,
-              !!included,
-              !!excluded
-            );
-            return specified || !!included || !excluded;
+                !!_this4.slotSchema &&
+                !!_this4.slotSchema.slotWrapper &&
+                !!_this4.slotSchema.excludedSlotWrappers
+                  ? _this4.slotSchema.excludedSlotWrappers
+                  : undefined,
+              allowAny = !_this4.slotSchema || (!wrapper && !allowed),
+              allowOnly =
+                (!!wrapper && wrapper === tag) ||
+                (!!allowed && allowed.includes(tag)),
+              allowExcept = !!excluded && excluded.includes(tag),
+              show = !allowExcept && (allowAny || allowOnly);
+            return show;
           });
         },
       },

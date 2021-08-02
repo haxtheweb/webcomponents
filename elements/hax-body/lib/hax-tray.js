@@ -1196,7 +1196,6 @@ class HaxTray extends I18NMixin(
             (!oldValue || this.trayDetail !== "content-edit") &&
             this.trayDetail !== "content-map"
           ) {
-            console.log("activeGizmo");
             this.trayDetail = "content-edit";
           }
         } else {
@@ -1205,7 +1204,6 @@ class HaxTray extends I18NMixin(
           // to select the edit tab if we just added something into the page
           // from our two content adding panes
           if (!["content-add", "content-map"].includes(this.trayDetail)) {
-            console.log("else");
             this.trayDetail = "content-add";
           }
         }
