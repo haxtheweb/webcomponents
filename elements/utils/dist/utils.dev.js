@@ -645,46 +645,16 @@ function generateResourceID() {
     idPart() +
     idPart()
   );
-}
+} //converts unicode to HTML entity
 
 function utf2Html(str) {
-  var result = "",
-    //converts unicode decimal value into an HTML entity
-    decimal2Html = function decimal2Html(num) {
-      return "&#".concat(num, ";");
-    },
-    //converts a character into an HTML entity
-    char2Html = function char2Html(_char) {
-      //spread operator can detect emoji surrogate pairs
-      if (_toConsumableArray(_char).length > 1) {
-        //handle and convert utf surrogate pairs
-        var concat = ""; //for each part of the pair
-
-        for (var i = 0; i < 2; i++) {
-          //get the character code value
-          var dec = _char[i].charCodeAt(),
-            //convert to binary
-            bin = dec.toString(2),
-            //take the last 10 bits
-            last10 = bin.slice(-10); //concatenate into 20 bit binary
-
-          (concat = concat + last10), //add 0x10000 to get unicode value
-            (unicode = parseInt(concat, 2) + 0x10000);
-        } //html entity from unicode value
-
-        return decimal2Html(unicode);
-      } //ASCII character or html entity from character code
-
-      return _char.charCodeAt() > 127
-        ? decimal2Html(_char.charCodeAt())
+  return _toConsumableArray(str)
+    .map(function (_char) {
+      return _char.codePointAt() > 127
+        ? "&#".concat(_char.codePointAt(), ";")
         : _char;
-    }; //check each character
-
-  _toConsumableArray(str).forEach(function (_char2) {
-    result += char2Html(_char2);
-  });
-
-  return result;
+    })
+    .join("");
 }
 
 function htmlEntities(s) {
