@@ -110,7 +110,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       await fetch(url)
         .then((response) => {
-          return response.text();
+          if (response.ok) {
+            return response.text();
+          } else {
+            this.lastErrorChanged(err);
+          }
         })
         .then((data) => {
           this._updateActiveItemContent(data);
@@ -147,7 +151,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         var headers = { cache: "no-cache" };
         await fetch(url, headers)
           .then((response) => {
-            return response.json();
+            if (response.ok) {
+              return response.json();
+            } else {
+              this.lastErrorChanged(err);
+            }
           })
           .then((data) => {
             this._updateManifest(data);
@@ -353,7 +361,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (e) {
       console.error(e);
       // not every error has a value if it just failed
-      if (e.detail.value) {
+      if (e.detail && e.detail.value) {
         // if we force reloads then let's do it now
         if (
           window &&

@@ -626,7 +626,7 @@ class CleanOne extends HAXCMSRememberRoute(
     return html`
       <div class="site">
         <div class="menu-outline">
-          <div id="site-search-input" role="search">
+          <div id="site-search-input" role="search" part="search-btn">
             <input
               type="text"
               aria-label="${this.t.searchSiteContent}"
