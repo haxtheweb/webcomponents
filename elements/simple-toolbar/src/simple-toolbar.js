@@ -377,7 +377,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @returns {object} div element as a button group
      * @memberof SimpleToolbar
      */
-    addButtonGroup(config, parent) {
+    addButtonGroup(config = {}, parent) {
+      if (!config.buttons || config.buttons.length < 1) return;
       let group = this._renderButtonGroup(config);
       (parent || this).appendChild(group);
       config.buttons.forEach((buttonConfig) =>

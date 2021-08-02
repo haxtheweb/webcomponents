@@ -707,8 +707,15 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
         },
         {
           key: "addButtonGroup",
-          value: function addButtonGroup(config, parent) {
+          value: function addButtonGroup() {
             var _this5 = this;
+
+            var config =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : {};
+            var parent = arguments.length > 1 ? arguments[1] : undefined;
+            if (!config.buttons || config.buttons.length < 1) return;
 
             var group = this._renderButtonGroup(config);
 
