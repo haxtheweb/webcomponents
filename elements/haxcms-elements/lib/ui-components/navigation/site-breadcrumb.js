@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-breadcrumb`
@@ -26,21 +27,26 @@ class SiteBreadcrumb extends LitElement {
         }
         a {
           height: 24px;
+          font-size: 16px;
           color: var(--site-breadcrumb-color, #383f45);
           display: inline-flex;
           line-height: 24px;
           padding: 0 8px 0 0;
+          vertical-align: text-top;
           text-decoration: var(--site-breadcrumb-text-decoration, underline);
         }
         button {
           margin: 0;
           padding: 0;
+          font-size: 16px;
+          font-family: inherit;
           height: 24px;
           min-width: unset;
           display: inline-flex;
           text-transform: unset;
           background-color: transparent;
           border: none;
+          letter-spacing: inherit;
         }
         button:hover,
         button:focus,
@@ -50,6 +56,7 @@ class SiteBreadcrumb extends LitElement {
         }
         span {
           margin: 0;
+          font-size: 16px;
           padding: 0 8px 0 0;
           height: 24px;
           display: inline-flex;
@@ -73,8 +80,23 @@ class SiteBreadcrumb extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+  }
+  // render function
+  render() {
+    return html`
+      <div
+        id="space"
+        itemscope
+        itemtype="http://data-vocabulary.org/Breadcrumb"
+      ></div>
+    `;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // keep editMode in sync globally
     autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
@@ -88,16 +110,6 @@ class SiteBreadcrumb extends LitElement {
       this._activeItemChanged(toJS(store.activeItem));
       this.__disposer.push(reaction);
     });
-  }
-  // render function
-  render() {
-    return html`
-      <div
-        id="space"
-        itemscope
-        itemtype="http://data-vocabulary.org/Breadcrumb"
-      ></div>
-    `;
   }
   /**
    * Notice the change and build

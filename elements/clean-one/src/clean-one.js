@@ -13,6 +13,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 
 /**
  * `clean-one`
@@ -184,9 +186,6 @@ class CleanOne extends HAXCMSRememberRoute(
           transition: left 250ms ease;
         }
         /* content */
-        .main-content>:first-child {
-          margin-top: 0!important;
-        }
         .main-section h1 {
           font-size: 2em;
         }
@@ -215,7 +214,6 @@ class CleanOne extends HAXCMSRememberRoute(
           #site-search-input,
           .site-body,
           .navigation,
-          .site-header site-active-title h1,
           .menu-outline {
             transition: none !important;
           }
@@ -302,8 +300,11 @@ class CleanOne extends HAXCMSRememberRoute(
           orphans: 3;
           widows: 3;
         }
-        article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+        article, aside, details, figcaption, figure, header, hgroup, main, nav, section, summary {
           display: block;
+        }
+        footer {
+          display: flex;
         }
         .site-header {
           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -315,36 +316,10 @@ class CleanOne extends HAXCMSRememberRoute(
           color: #7e888b;
           background: 0 0;
         }
-        .site-header site-active-title h1 {
-          color: inherit;
-          text-decoration: none;
-          position: absolute;
-          z-index: 1;
-          top: 0;
-          left: 0;
-          right: 0;
-          margin: 10px 200px;
-          font-size: 20px;
-          font-weight: 200;
-          text-align: center;
-          line-height: 50px;
-          opacity: 0;
-          transition: opacity .2s ease;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .site-header site-active-title h1:hover {
-          opacity: 1;
-        }
+
         @media (max-width: 700px){
           .link-actions {
             display: none;
-          }
-        }
-        @media (max-width: 1000px){
-          .site-header site-active-title {
-              display: none;
           }
         }
         @media (max-width: 1240px){
@@ -378,7 +353,7 @@ class CleanOne extends HAXCMSRememberRoute(
         }
         .page-inner {
           position: relative;
-          max-width: 800px;
+          max-width: 840px;
           margin: 0 auto;
           min-height: 90vh;
           padding: 20px 15px 40px 15px;
@@ -413,6 +388,14 @@ class CleanOne extends HAXCMSRememberRoute(
         site-menu-button[type="next"] {
           right: 0;
         }
+        .main-content site-breadcrumb {
+          margin-top: -64px;
+        }
+        .main-content site-active-title h1 {
+          font-size: 36px;
+          margin: 0px 0px 12px;
+          text-rendering: optimizeLegibility;
+        }
         .navigation {
           position: fixed;
           top: 50px;
@@ -432,11 +415,8 @@ class CleanOne extends HAXCMSRememberRoute(
         @media (max-width: 1240px) {
           .navigation {
             position: static;
-            top: auto;
-            max-width: calc(50vw - 70px);
-            width: calc(50vw - 70px);
-            display: inline-block;
-            float: left;
+            margin: 0 auto;
+            display: inline-flex;
           }
         }
         /* color,font,size switchers */
@@ -455,6 +435,7 @@ class CleanOne extends HAXCMSRememberRoute(
           }
 
           .site-body {
+            overflow-y: scroll;
             color: var(--haxcms-user-styles-color-theme-color-color);
             background: var(--haxcms-user-styles-color-theme-color-background);
           }
@@ -471,7 +452,7 @@ class CleanOne extends HAXCMSRememberRoute(
             color: #eee8e0;
             background: none;
           }
-          :host([color-theme="1"]) .site-header site-active-title {
+          :host([color-theme="1"]) site-active-title {
             color: #704214;
           }
           :host([color-theme="2"]) .site-header {
@@ -487,7 +468,7 @@ class CleanOne extends HAXCMSRememberRoute(
             color: #fffff5;
             background: none;
           }
-          :host([color-theme="2"]) .site-header site-active-title {
+          :host([color-theme="2"]) site-active-title {
             color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
           :host([color-theme="1"]) .site-body .navigation {
@@ -683,10 +664,11 @@ class CleanOne extends HAXCMSRememberRoute(
                   ></site-git-corner>
                 </div>
               </div>
-              <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
                 <div class="normal main-section">
                   <site-search
                     hide-input
@@ -778,10 +760,6 @@ class CleanOne extends HAXCMSRememberRoute(
       locales: ["es", "fr", "de", "ja"],
     });
     this.HAXCMSThemeSettings.autoScroll = true;
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
