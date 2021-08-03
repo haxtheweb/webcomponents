@@ -1,6 +1,6 @@
 {
   /**
-   * llow a null value?
+   * allow a null value?
    * Default behavior/false will select first option and set value accordingly.
    */
   "allowNull": {
@@ -41,7 +41,8 @@
    */
   "disabled": {
     "type": "Boolean",
-    "reflect": true
+    "reflect": true,
+    "attribute": "disabled"
   },
 
   /**
@@ -61,6 +62,15 @@
     "type": "Boolean",
     "reflect": true,
     "attribute": "hide-option-labels"
+  },
+  /**
+   * hide the null option
+   * Default behavior/false will select first option and set value accordingly.
+   */
+  "hideNullOption": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "hide-null-option"
   },
 
   /**
