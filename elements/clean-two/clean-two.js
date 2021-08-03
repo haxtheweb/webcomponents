@@ -179,7 +179,8 @@ class CleanTwo extends HAXCMSRememberRoute(
          text-align: right; 
         }
         site-active-title {
-          padding: 8px 0px;
+          display: block;
+          padding: 0;
           flex-wrap: wrap;
           align-items: baseline;
           flex-direction: row;
@@ -189,7 +190,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           -webkit-box-direction: normal;
           flex: auto;
           margin: 0;
-          display: flex;
           background-color: white;
           --site-active-title-font-size: 22px;
           --site-active-title-line-height: 22px;
