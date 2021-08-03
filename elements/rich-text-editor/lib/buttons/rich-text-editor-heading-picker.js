@@ -38,6 +38,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
   constructor() {
     super();
     this.allowNull = true;
+    this.hideNullOption = true;
     this.blocks = [
       { label: "Paragraph", tag: "p" },
       { label: "Heading 1", tag: "h1" },

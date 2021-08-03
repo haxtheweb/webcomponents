@@ -259,6 +259,7 @@ var RichTextEditorHeadingPicker =
         _getPrototypeOf(RichTextEditorHeadingPicker).call(this)
       );
       _this.allowNull = true;
+      _this.hideNullOption = true;
       _this.blocks = [
         {
           label: "Paragraph",

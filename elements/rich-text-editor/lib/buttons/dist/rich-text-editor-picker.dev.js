@@ -123,6 +123,7 @@ function _templateObject() {
     '"\n          class="rtebutton ',
     "-label ",
     '"\n          ?disabled="',
+    '"\n          ?hide-null-option="',
     '"\n          .controls="',
     '"\n          .options="',
     '"\n          @mouseover="',
@@ -272,6 +273,7 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                 this.labelVisibleClass,
                 this.toggled ? "toggled" : "",
                 this.disabled,
+                this.hideNullOption,
                 _get(_getPrototypeOf(_class.prototype), "controls", this),
                 this.options,
                 this._pickerFocus,
@@ -326,6 +328,20 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                    */
                   command: {
                     type: String,
+                  },
+
+                  /**
+                   * Hide the null option
+                   */
+                  disabled: {
+                    type: Boolean,
+                  },
+
+                  /**
+                   * Hide the null option
+                   */
+                  hideNullOption: {
+                    type: Boolean,
                   },
 
                   /**

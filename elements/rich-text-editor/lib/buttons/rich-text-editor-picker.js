@@ -85,6 +85,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
             ? "toggled"
             : ""}"
           ?disabled="${this.disabled}"
+          ?hide-null-option="${this.hideNullOption}"
           .controls="${super.controls}"
           .options="${this.options}"
           @mouseover="${this._pickerFocus}"
@@ -114,6 +115,18 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
          */
         command: {
           type: String,
+        },
+        /**
+         * Hide the null option
+         */
+        disabled: {
+          type: Boolean,
+        },
+        /**
+         * Hide the null option
+         */
+        hideNullOption: {
+          type: Boolean,
         },
         /**
          * Optional icon for null value
