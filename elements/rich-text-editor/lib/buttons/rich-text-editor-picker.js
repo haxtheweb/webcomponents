@@ -111,16 +111,18 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
-         * command used for document.execCommand.
-         */
-        command: {
-          type: String,
-        },
-        /**
          * Hide the null option
          */
         disabled: {
           type: Boolean,
+          reflect: true,
+          attribute: "disabled",
+        },
+        /**
+         * command used for document.execCommand.
+         */
+        command: {
+          type: String,
         },
         /**
          * Hide the null option

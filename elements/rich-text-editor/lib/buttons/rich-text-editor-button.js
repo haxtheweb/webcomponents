@@ -143,6 +143,14 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         ...super.properties,
 
         /**
+         * Hide the null option
+         */
+        disabled: {
+          type: Boolean,
+          reflect: true,
+          attribute: "disabled",
+        },
+        /**
          * The command used for document.execCommand.
          */
         command: {
@@ -258,6 +266,8 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (["shortcutKeys", "tagsList", "tagClickCallback"].includes(propName))
           this.updateButtonRegistry();
       });
+      if (this.tag === "rich-text-editor-heading-picker")
+        console.log("disabled", this, this.disabled);
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for

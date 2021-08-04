@@ -329,6 +329,15 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                 _get(_getPrototypeOf(_class), "properties", this),
                 {
                   /**
+                   * Hide the null option
+                   */
+                  disabled: {
+                    type: Boolean,
+                    reflect: true,
+                    attribute: "disabled",
+                  },
+
+                  /**
                    * The command used for document.execCommand.
                    */
                   command: {
@@ -450,6 +459,8 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               )
                 _this2.updateButtonRegistry();
             });
+            if (this.tag === "rich-text-editor-heading-picker")
+              console.log("disabled", this, this.disabled);
           },
           /**
            * Called every time the element is inserted into the DOM. Useful for
