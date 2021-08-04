@@ -31,15 +31,32 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function _templateObject4() {
+  var data = _taggedTemplateLiteral([
+    '\n                <hax-tray-button\n                  show-text-label\n                  id="picker-item-',
+    '"\n                  @click="',
+    '"\n                  data-selected="',
+    '"\n                  ?disabled="',
+    '"\n                  label="',
+    '"\n                  icon="',
+    '"\n                  icon-position="top"\n                ></hax-tray-button>\n              ',
+  ]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n            <hax-tray-button\n              show-text-label\n              id="picker-item-',
-    '"\n              @click="',
-    '"\n              data-selected="',
-    '"\n              ?disabled="',
-    '"\n              label="',
-    '"\n              icon="',
-    '"\n              icon-position="top"\n            ></hax-tray-button>\n          ',
+    ' <div id="filters">\n            <simple-icon-button-lite\n              icon="editable-table:filter',
+    '"\n              label="Toggle Filters"\n              tooltip-position="right"\n              @click="',
+    '"\n            >\n            </simple-icon-button-lite>\n            <simple-fields-field\n              ?hidden="',
+    '"\n              id="hax-gizmo-filters"\n              label="Filters"\n              type="checkbox"\n              .options="',
+    '"\n              @value-changed="',
+    '"\n            >\n            </simple-fields-field>\n          </div>',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -51,6 +68,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
+    "\n      ",
     '\n      <simple-button-grid cols="100px">\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
@@ -64,7 +82,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-ui-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n      ",
+    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-ui-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n        #filters {\n          min-height: 24px;\n        }\n        simple-icon-button-lite {\n          float: right;\n          margin-left: -24px;\n        }\n        simple-fields-field::part(fieldset-legend) {\n          line-height: 24px;\n        }\n        simple-fields-field::part(fieldset-options) {\n          display: grid;\n          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n        }\n        simple-fields-field::part(option) {\n          display: flex;\n          flex-wrap: no-wrap;\n          align-items: center;\n          justify-content: space-between;\n          margin: 0 var(--simple-fields-margin-small, 8px);\n          flex-direction: row-reverse;\n        }\n        simple-fields-field::part(option-inner) {\n          flex: 0 0 auto;\n          margin: 0 calc(var(--simple-fields-margin-small, 8px) * 0.5) 0 0;\n        }\n        simple-fields-field::part(option-label) {\n          flex: 1 1 auto;\n          margin: 0;\n          font-size: var(--hax-ui-font-size-sm, 13px);\n        }\n        :host([filter-on]) simple-button-grid {\n          margin-bottom: var(--simple-fields-margin-small, 8px);\n        }\n        :host([filter-on]) #hax-gizmo-filters {\n          margin-bottom: 0;\n        }\n        :host([filter-on]) ::part(fieldset-options) {\n          padding-bottom: var(--simple-fields-margin-small, 8px);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -231,9 +249,31 @@ var HaxPicker =
 
             return (0, _litElement.html)(
               _templateObject2(),
+              !!this.keywords
+                ? (0, _litElement.html)(
+                    _templateObject3(),
+                    !this.filterOn ? "" : "-off",
+                    function (e) {
+                      return (_this2.filterOn = !_this2.filterOn);
+                    },
+                    !this.filterOn,
+                    this.keywords,
+                    this._handleFilters
+                  )
+                : "",
               this.selectionList.map(function (element, index) {
-                return (0,
-                _litElement.html)(_templateObject3(), index, _this2._selected, index, _haxStore.HAXStore.activeGizmo && _haxStore.HAXStore.activeGizmo.tag == element.tag, element.title, element.icon);
+                return !_this2._isFiltered(element.keywords)
+                  ? ""
+                  : (0, _litElement.html)(
+                      _templateObject4(),
+                      index,
+                      _this2._selected,
+                      index,
+                      _haxStore.HAXStore.activeGizmo &&
+                        _haxStore.HAXStore.activeGizmo.tag == element.tag,
+                      element.title,
+                      element.icon
+                    );
               })
             );
           },
@@ -264,7 +304,17 @@ var HaxPicker =
                 : "gizmo";
             // wipe existing
             this.pickerType = pickerType;
-            var tmp = [];
+
+            var tmp = [],
+              addKeywords = function addKeywords(i) {
+                elements[i].gizmo.keywords.forEach(function (keyword) {
+                  keyword = (keyword || "").toLowerCase();
+                  var sanitized = keyword.replace(/[\s\W]*/, "");
+                  if (sanitized.length > 0) _this3.keywords[keyword] = keyword;
+                });
+              };
+
+            this.keywords = {};
 
             switch (pickerType) {
               // hax gizmo selector
@@ -276,7 +326,9 @@ var HaxPicker =
                     title: elements[i].gizmo.title,
                     color: elements[i].gizmo.color,
                     tag: elements[i].gizmo.tag,
+                    keywords: elements[i].gizmo.keywords,
                   });
+                  addKeywords(i);
                 }
 
                 break;
@@ -289,7 +341,9 @@ var HaxPicker =
                     title: elements[i].details.title,
                     color: elements[i].details.color,
                     tag: elements[i].gizmo.tag,
+                    keywords: elements[i].gizmo.keywords,
                   });
+                  addKeywords(i);
                 }
 
                 break;
@@ -306,6 +360,32 @@ var HaxPicker =
             setTimeout(function () {
               _this3.shadowRoot.querySelector("#picker-item-0").focus();
             }, 50);
+          },
+        },
+        {
+          key: "_handleFilters",
+          value: function _handleFilters(e) {
+            var filters =
+              this.shadowRoot &&
+              this.shadowRoot.querySelector("#hax-gizmo-filters")
+                ? this.shadowRoot.querySelector("#hax-gizmo-filters")
+                : undefined;
+            if (filters) this.filters = filters.value;
+          },
+        },
+        {
+          key: "_isFiltered",
+          value: function _isFiltered(keywords) {
+            var i = 0,
+              filtered =
+                !this.filterOn || !this.filters || this.filters.length < 1;
+
+            while (!filtered && i < this.filters.length) {
+              if (keywords.includes(this.filters[i])) filtered = true;
+              i++;
+            }
+
+            return filtered;
           },
           /**
            * Handle the user selecting an app.
@@ -381,6 +461,9 @@ var HaxPicker =
               _elements: {
                 type: Array,
               },
+              keywords: {
+                type: Object,
+              },
 
               /**
                * Refactored list for selection purposes
@@ -395,6 +478,14 @@ var HaxPicker =
               pickerType: {
                 type: String,
                 attribute: "picker-type",
+              },
+              filters: {
+                type: Array,
+              },
+              filterOn: {
+                type: Boolean,
+                attribute: "filter-on",
+                reflect: true,
               },
             };
           },
