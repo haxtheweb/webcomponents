@@ -242,7 +242,7 @@ class CleanOne extends HAXCMSRememberRoute(
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {
           overflow-x: hidden;
-          position: fixed;
+          position: var(--clean-one-sm-site-body-position, fixed);
         }
         :host([responsive-size="xs"]) .main-content,
         :host([responsive-size="sm"]) .main-content {
@@ -640,7 +640,7 @@ class CleanOne extends HAXCMSRememberRoute(
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>
-        <div id="body" class="site-body">
+        <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
             <header
