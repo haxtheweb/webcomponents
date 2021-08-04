@@ -36,6 +36,7 @@ export const HaxUiColors = [
       --hax-ui-color: #222;
       --hax-ui-color-focus: #000;
       --hax-ui-color-faded: #444;
+      --hax-ui-disabled-color: #bbb;
 
       --hax-ui-background-color: #fff;
       --hax-ui-background-color-secondary: #e8e8e8;
@@ -55,6 +56,7 @@ export const HaxUiColors = [
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
+      --hax-ui-disabled-color: #555;
 
       --hax-ui-background-color: #333;
       --hax-ui-background-color-secondary: #111;
@@ -396,7 +398,8 @@ export const HaxButton = [
       border-width: 2px;
     }
     :host([disabled]) button[part="button"][disabled] {
-      opacity: 0.5;
+      opacity: 1;
+      color: var(--hax-ui-disabled-color);
       border: 1px solid var(--hax-ui-border-color);
     }
 
