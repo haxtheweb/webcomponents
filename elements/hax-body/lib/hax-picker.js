@@ -36,7 +36,7 @@ class HaxPicker extends LitElement {
         }
         simple-fields-field::part(fieldset-options) {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
         simple-fields-field::part(option) {
           display: flex;
@@ -48,11 +48,21 @@ class HaxPicker extends LitElement {
         }
         simple-fields-field::part(option-inner) {
           flex: 0 0 auto;
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+          margin: 0 calc(var(--simple-fields-margin-small, 8px) * 0.5) 0 0;
         }
         simple-fields-field::part(option-label) {
           flex: 1 1 auto;
           margin: 0;
+          font-size: var(--hax-ui-font-size-sm, 13px);
+        }
+        :host([filter-on]) simple-button-grid {
+          margin-bottom: var(--simple-fields-margin-small, 8px);
+        }
+        :host([filter-on]) #hax-gizmo-filters {
+          margin-bottom: 0;
+        }
+        :host([filter-on]) ::part(fieldset-options) {
+          padding-bottom: var(--simple-fields-margin-small, 8px);
         }
       `,
     ];
@@ -139,6 +149,7 @@ class HaxPicker extends LitElement {
       filterOn: {
         type: Boolean,
         attribute: "filter-on",
+        reflect: true,
       },
     };
   }
