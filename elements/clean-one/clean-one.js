@@ -389,17 +389,14 @@ class CleanOne extends HAXCMSRememberRoute(
         site-menu-button[type="next"] {
           right: 0;
         }
-        .main-content site-breadcrumb {
-          margin-top: -24px;
-        }
         .main-content site-active-title h1 {
           font-size: 36px;
-          margin: 0px 0px 12px;
+          margin: 20px 0;
           text-rendering: optimizeLegibility;
         }
         .navigation {
           position: fixed;
-          top: 20vh;
+          top: 40vh;
           bottom: 20vh;
           margin: 0 20px;
           max-width: 150px;
