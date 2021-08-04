@@ -275,9 +275,63 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
             },
           },
           {
+            key: "getFilteredBlocks",
+            value: function getFilteredBlocks() {
+              var _this2 = this;
+
+              var blocks =
+                arguments.length > 0 && arguments[0] !== undefined
+                  ? arguments[0]
+                  : [];
+              return blocks.filter(function (block) {
+                if (!block.tag) return;
+                var tag = block.tag || "",
+                  wrapper =
+                    !!_this2.slotSchema &&
+                    !!_this2.slotSchema.slotWrapper &&
+                    !!_this2.slotSchema.slotWrapper
+                      ? _this2.slotSchema.slotWrapper
+                      : undefined,
+                  allowed =
+                    !!_this2.slotSchema &&
+                    !!_this2.slotSchema.slotWrapper &&
+                    !!_this2.slotSchema.allowedSlotWrappers
+                      ? _this2.slotSchema.allowedSlotWrappers
+                      : undefined,
+                  excluded =
+                    !!_this2.slotSchema &&
+                    !!_this2.slotSchema.slotWrapper &&
+                    !!_this2.slotSchema.excludedSlotWrappers
+                      ? _this2.slotSchema.excludedSlotWrappers
+                      : undefined,
+                  //allow any tag since there is no allowed list specified
+                  allowAny = !_this2.slotSchema || !allowed,
+                  //only allow that are the default wrapper or part of the allowed list
+                  allowOnly =
+                    (!!wrapper && wrapper === tag) ||
+                    (!!allowed && allowed.includes(tag)),
+                  //don't allow tags on the excluded list
+                  allowExcept = !!excluded && excluded.includes(tag),
+                  //show only if tag is not excluded and is either part of allow any or allow only
+                  show = !allowExcept && (allowAny || allowOnly);
+                if (_this2.tag == "hax-plate-context")
+                  console.log(
+                    tag,
+                    wrapper,
+                    excluded,
+                    allowAny,
+                    allowOnly,
+                    allowExcept,
+                    show
+                  );
+                return show;
+              });
+            },
+          },
+          {
             key: "updated",
             value: function updated(changedProperties) {
-              var _this2 = this;
+              var _this3 = this;
 
               if (_get(_getPrototypeOf(_class.prototype), "updated", this))
                 _get(_getPrototypeOf(_class.prototype), "updated", this).call(
@@ -285,8 +339,8 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
                   changedProperties
                 );
               changedProperties.forEach(function (oldValue, propName) {
-                if (propName === "activeNode" && _this2.activeNode !== oldValue)
-                  _this2.setTarget(_this2.activeNode);
+                if (propName === "activeNode" && _this3.activeNode !== oldValue)
+                  _this3.setTarget(_this3.activeNode);
               });
             },
           },
@@ -311,7 +365,7 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
           {
             key: "slotSchema",
             get: function get() {
-              var _this3 = this;
+              var _this4 = this;
 
               var schema;
 
@@ -320,7 +374,7 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
                 Object.keys(this.parentSchema.settings || {}).forEach(function (
                   type
                 ) {
-                  (_this3.parentSchema.settings[type] || []).forEach(function (
+                  (_this4.parentSchema.settings[type] || []).forEach(function (
                     setting
                   ) {
                     if (setting.slot && setting.slot === slot) schema = setting;

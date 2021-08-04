@@ -86,7 +86,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --rich-text-editor-button-color: var(--hax-ui-color);\n          --rich-text-editor-button-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-border-color: transparent;\n          --rich-text-editor-button-hover-color: var(--hax-ui-color);\n          --rich-text-editor-button-hover-bg: var(\n            --hax-ui-background-color-secondary\n          );\n          --rich-text-editor-button-toggled-color: var(--hax-ui-color-accent);\n          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-toggled-border-color: var(\n            --hax-ui-color-accent\n          );\n          --rich-text-editor-button-disabled-opacity: 0.5;\n          --rich-text-editor-button-disabled-color: var(--hax-ui-color);\n          --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-disabled-border-color: transparent;\n        }\n        ::slotted([icon-position]:hover) {\n          --rich-text-editor-button-toggled-bg: var(\n            --hax-ui-background-color-accent\n          );\n        }\n        ::slotted(.group) {\n          flex: 1 0 auto;\n          justify-content: center;\n          border-width: 1px;\n          margin: -1px;\n          padding: 0px;\n        }\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          z-index: 1;\n        }\n        ::slotted([icon-position]),\n        :host([collapsed]) ::slotted(.group) {\n          flex: 0 0 auto;\n        }\n        :host .group:focus,\n        :host .group:focus-within,\n        :host .group > *:focus,\n        :host .group > *:focus-within {\n          z-index: 2;\n        }\n        :host .group:hover,\n        :host .group > *:hover {\n          z-index: 3;\n        }\n      ",
+    "\n        :host {\n          --rich-text-editor-button-color: var(--hax-ui-color);\n          --rich-text-editor-button-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-border-color: transparent;\n          --rich-text-editor-button-hover-color: var(--hax-ui-color);\n          --rich-text-editor-button-hover-bg: var(\n            --hax-ui-background-color-secondary\n          );\n          --rich-text-editor-button-toggled-color: var(--hax-ui-color-accent);\n          --rich-text-editor-button-toggled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-toggled-border-color: var(\n            --hax-ui-color-accent\n          );\n          --rich-text-editor-button-disabled-opacity: 1;\n          --rich-text-editor-button-disabled-color: var(--hax-ui-disabled-color);\n          --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);\n          --rich-text-editor-button-disabled-border-color: transparent;\n        }\n        #morebutton {\n          align-self: flex-end;\n        }\n        ::slotted([icon-position]:hover) {\n          --rich-text-editor-button-toggled-bg: var(\n            --hax-ui-background-color-accent\n          );\n        }\n        ::slotted(.group) {\n          flex: 0 0 auto;\n          justify-content: center;\n          border-width: 1px;\n          margin: -1px;\n          padding: 0px;\n        }\n        ::slotted(.group),\n        ::slotted([icon-position]) {\n          z-index: 1;\n        }\n        ::slotted([icon-position]),\n        :host([collapsed]) ::slotted(.group) {\n          flex: 0 0 auto;\n        }\n        :host ::slotted(*:focus),\n        :host ::slotted(*:focus-within) {\n          z-index: 2!important;\n        }\n        :host ::slotted(*:hover) {\n          z-index: 3!important;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -420,7 +420,8 @@ var HaxTextEditorToolbar =
               this
             ).call(this, changedProperties);
           changedProperties.forEach(function (oldValue, propName) {
-            if (propName === "parentSchema") _this2.updateBlocks();
+            if (propName === "parentSchema" || propName === "range")
+              _this2.updateBlocks();
             if (propName === "activeNode" && _this2.activeNode !== oldValue)
               _this2.setTarget(_this2.activeNode);
             if (propName === "t" && _this2.t !== oldValue)
@@ -449,13 +450,22 @@ var HaxTextEditorToolbar =
       {
         key: "updateBlocks",
         value: function updateBlocks() {
-          if (
-            this.formatButton.type &&
-            this.querySelector(this.formatButton.type)
-          )
-            this.querySelector(
-              this.formatButton.type
-            ).blocks = this.filteredBlocks;
+          var currentTag =
+            !!this.formatButtonElement &&
+            !!this.formatButtonElement.rangeOrMatchingAncestor()
+              ? this.formatButtonElement.rangeOrMatchingAncestor().tagName
+              : undefined;
+
+          if (this.formatButtonElement) {
+            this.formatButtonElement.blocks = this.filteredBlocks;
+            this.formatButtonElement.value = (currentTag || "").toLowerCase();
+
+            if (this.filteredBlocks.length < 2) {
+              this.formatButtonElement.setAttribute("disabled", "disabled");
+            } else {
+              this.formatButtonElement.removeAttribute("disabled");
+            }
+          }
         },
       },
       {
@@ -484,10 +494,6 @@ var HaxTextEditorToolbar =
         value: function positionByTarget(target) {
           return;
         },
-      },
-      {
-        key: "_handleElementRegister",
-
         /**
          * when an element is registered,
          * check its properties
@@ -495,6 +501,9 @@ var HaxTextEditorToolbar =
          * @param {event} e
          * @memberof HaxTextEditorToolbar
          */
+      },
+      {
+        key: "_handleElementRegister",
         value: function _handleElementRegister(e) {
           var detail = e.detail || {},
             tag = detail.tag || {},
@@ -1157,37 +1166,15 @@ var HaxTextEditorToolbar =
       {
         key: "filteredBlocks",
         get: function get() {
-          var _this4 = this;
-
-          return this.formatBlocks.filter(function (block) {
-            if (!block.tag) return;
-            var tag = block.tag || "",
-              wrapper =
-                !!_this4.slotSchema &&
-                !!_this4.slotSchema.slotWrapper &&
-                !!_this4.slotSchema.slotWrapper
-                  ? _this4.slotSchema.slotWrapper
-                  : undefined,
-              allowed =
-                !!_this4.slotSchema &&
-                !!_this4.slotSchema.slotWrapper &&
-                !!_this4.slotSchema.allowedSlotWrappers
-                  ? _this4.slotSchema.allowedSlotWrappers
-                  : undefined,
-              excluded =
-                !!_this4.slotSchema &&
-                !!_this4.slotSchema.slotWrapper &&
-                !!_this4.slotSchema.excludedSlotWrappers
-                  ? _this4.slotSchema.excludedSlotWrappers
-                  : undefined,
-              allowAny = !_this4.slotSchema || (!wrapper && !allowed),
-              allowOnly =
-                (!!wrapper && wrapper === tag) ||
-                (!!allowed && allowed.includes(tag)),
-              allowExcept = !!excluded && excluded.includes(tag),
-              show = !allowExcept && (allowAny || allowOnly);
-            return show;
-          });
+          return this.getFilteredBlocks(this.formatBlocks);
+        },
+      },
+      {
+        key: "formatButtonElement",
+        get: function get() {
+          return this.formatButton.type
+            ? this.querySelector(this.formatButton.type)
+            : undefined;
         },
       },
     ]);

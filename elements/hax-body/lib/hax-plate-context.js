@@ -69,17 +69,22 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       css`
         :host {
           width: 100%;
+          align-items: stretch;
         }
         #remove {
           max-width: 44px;
           overflow: visible;
         }
         hax-toolbar {
+          display: flex;
+          align-items: stretch;
           justify-content: flex-start;
           margin-bottom: -1px;
           margin-left: 1px;
         }
         .group {
+          display: flex;
+          align-items: stretch;
           flex: 1 0 auto;
           justify-content: center;
           border: 1px solid var(--rich-text-editor-border-color, #ddd);
@@ -163,6 +168,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                   <hax-context-item
                     action
                     align-horizontal="left"
+                    ?disabled="${this.activeNode &&
+                    slot.slot === this.activeNode.slot}"
                     show-text-label
                     role="menuitem"
                     event-name="insert-slot"
@@ -179,39 +186,64 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               exactly where you want it to go.
             </div>
           </hax-toolbar-menu>
-        </div>
-        ${console.log(this.childSlots)}
-        ${!this.childSlots || this.childSlots.length < 1
-          ? ""
-          : html`
-              <div class="group">
-                <hax-toolbar-menu
-                  icon="icons:view-quilt"
-                  label="${this.t.regions}"
+          <hax-context-item
+            action
+            more
+            .icon="${this.activeTagIcon}"
+            label="${this.t.changeTo}"
+            tooltip="${this.activeTagName}, ${this.t.clickToChange}"
+            ?disabled="${this.disableTransform || this.viewSource}"
+            event-name="hax-transform-node"
+            show-text-label
+          ></hax-context-item>
+          <slot name="primary"></slot>
+          <hax-toolbar-menu icon="add" label="${this.t.insertItemAboveOrBelow}">
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                align-horizontal="left"
+                show-text-label
+                role="menuitem"
+                icon="hardware:keyboard-arrow-up"
+                event-name="insert-above-active"
+                label="${this.t.insertItemAbove}"
+                ?disabled="${this.viewSource}"
+              ></hax-context-item>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                align-horizontal="left"
+                show-text-label
+                role="menuitem"
+                icon="hardware:keyboard-arrow-down"
+                event-name="insert-below-active"
+                label="${this.t.insertItemBelow}"
+                ?disabled="${this.viewSource}"
+              ></hax-context-item>
+            </simple-toolbar-menu-item>
+            ${(this.childSlots || []).map(
+              (slot, i) => html`
+                <simple-toolbar-menu-item
+                  slot="menuitem"
+                  class="move-to-slot ${i < 1 ? "first-slot" : ""}"
                 >
-                  ${(this.childSlots || []).map(
-                    (slot) => html`
-                      <simple-toolbar-menu-item slot="menuitem">
-                        <hax-context-item
-                          action
-                          align-horizontal="left"
-                          show-text-label
-                          role="menuitem"
-                          icon="icons:check-box"
-                          event-name="insert-slot"
-                          data-slot="${slot}"
-                          @click="${(e) => this._handleSlotToggle(slot)}"
-                          label="${slot.title || slot.slot}"
-                          toggles
-                          toggled
-                        ></hax-context-item>
-                      </simple-toolbar-menu-item>
-                    `
-                  )}
-                </hax-toolbar-menu>
-              </div>
-            `}
-        <div class="group">
+                  <hax-context-item
+                    action
+                    align-horizontal="left"
+                    ?disabled="${this.activeNode &&
+                    slot.slot === this.activeNode.slot}"
+                    show-text-label
+                    role="menuitem"
+                    event-name="insert-slot"
+                    data-slot="${slot}"
+                    @click="${(e) => this._handleMoveSlot(slot)}"
+                    label="${slot.title || slot.slot}"
+                  ></hax-context-item>
+                </simple-toolbar-menu-item>
+              `
+            )}
+          </hax-toolbar-menu>
           ${this.ceButtons.map((el) => {
             return html` <hax-context-item
               action
@@ -288,19 +320,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             </div>
           </hax-context-item>
         </div>
-        <div class="group">
-          <hax-context-item
-            action
-            more
-            .icon="${this.activeTagIcon}"
-            label="${this.t.changeTo}.."
-            tooltip="${this.activeTagName}, ${this.t.clickToChange}"
-            ?disabled="${this.disableTransform || this.viewSource}"
-            event-name="hax-transform-node"
-            show-text-label
-          ></hax-context-item>
-          <slot name="primary"></slot>
-        </div>
       </hax-toolbar>
     `;
   }
@@ -325,6 +344,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         )
       : [];
   }
+
+  get filteredBlocks() {
+    return this.getFilteredBlocks(this.formatBlocks);
+  }
+
   getSlotsFromSettings(settings = {}, optionalOnly = false) {
     let slotsList = [];
     return Object.keys(settings || {})
@@ -409,8 +433,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (propName === "onScreen" && this.onScreen) {
         this._resetCEMenu();
       }
+      if (propName === "formatBlocks")
+        this.disableTransform = this.filteredBlocks.length < 1;
     });
-    console.log(this.parentSchema, this.slotSchema);
+    console.log(this.formatBlocks, this.filteredBlocks, this.disableTransform);
   }
 
   firstUpdated(changedProperties) {
@@ -481,18 +507,37 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
-      if (!HAXStore.isTextElement(this.activeNode)) {
+      if (this.activeNode) {
         // detect if this can be transformed into anything else
-        let list = await HAXStore.activeHaxBody.replaceElementWorkflow(
-          this.activeNode,
-          true
+        let elements =
+            (await HAXStore.activeHaxBody.replaceElementWorkflow(
+              this.activeNode,
+              true
+            )) || [],
+          tag =
+            !!this.activeNode && !!this.activeNode.tagName
+              ? this.activeNode.tagName.toLowerCase()
+              : undefined,
+          primTag = HAXStore.activeHaxBody.primitiveTextBlocks.includes(tag)
+            ? "p"
+            : undefined;
+        this.formatBlocks = !!tag
+          ? elements.filter((el) => el.tag && ![tag, primTag].includes(el.tag))
+          : elements;
+        this.disableTransform = this.filteredBlocks.length === 0 ? true : false;
+        console.log(
+          this.formatBlocks,
+          this.filteredBlocks,
+          this.disableTransform
         );
-        this.disableTransform = list.length === 0 ? true : false;
-        if (HAXStore.activeGizmo) {
-          this.activeTagName = HAXStore.activeGizmo.title;
-          this.activeTagIcon = HAXStore.activeGizmo.icon;
-        }
       }
+      if (HAXStore.activeGizmo) {
+        this.activeTagName = HAXStore.activeGizmo.title;
+        this.activeTagIcon = HAXStore.activeGizmo.icon;
+      }
+    } else if (HAXStore.activeGizmo) {
+      this.activeTagName = HAXStore.activeGizmo.title;
+      this.activeTagIcon = HAXStore.activeGizmo.icon;
     } else {
       this.activeTagName = "";
       this.activeTagIcon = "";
@@ -528,6 +573,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       sourceView: {
         type: Boolean,
+      },
+      formatBlocks: {
+        type: Array,
       },
       /**
        * is hax tray collapsed, side-panel, or full-panel

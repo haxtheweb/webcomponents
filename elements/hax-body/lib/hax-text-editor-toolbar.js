@@ -41,10 +41,15 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           --rich-text-editor-button-toggled-border-color: var(
             --hax-ui-color-accent
           );
-          --rich-text-editor-button-disabled-opacity: 0.5;
-          --rich-text-editor-button-disabled-color: var(--hax-ui-color);
+          --rich-text-editor-button-disabled-opacity: 1;
+          --rich-text-editor-button-disabled-color: var(
+            --hax-ui-disabled-color
+          );
           --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);
           --rich-text-editor-button-disabled-border-color: transparent;
+        }
+        #morebutton {
+          align-self: flex-end;
         }
         ::slotted([icon-position]:hover) {
           --rich-text-editor-button-toggled-bg: var(
@@ -52,7 +57,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           );
         }
         ::slotted(.group) {
-          flex: 1 0 auto;
+          flex: 0 0 auto;
           justify-content: center;
           border-width: 1px;
           margin: -1px;
@@ -66,15 +71,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         :host([collapsed]) ::slotted(.group) {
           flex: 0 0 auto;
         }
-        :host .group:focus,
-        :host .group:focus-within,
-        :host .group > *:focus,
-        :host .group > *:focus-within {
-          z-index: 2;
+        :host ::slotted(*:focus),
+        :host ::slotted(*:focus-within) {
+          z-index: 2 !important;
         }
-        :host .group:hover,
-        :host .group > *:hover {
-          z-index: 3;
+        :host ::slotted(*:hover) {
+          z-index: 3 !important;
         }
       `,
     ];
@@ -471,10 +473,21 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.advancedInlineButtonGroup,
     ];
   }
+
+  get filteredBlocks() {
+    return this.getFilteredBlocks(this.formatBlocks);
+  }
+
+  get formatButtonElement() {
+    return this.formatButton.type
+      ? this.querySelector(this.formatButton.type)
+      : undefined;
+  }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "parentSchema") this.updateBlocks();
+      if (propName === "parentSchema" || propName === "range")
+        this.updateBlocks();
       if (propName === "activeNode" && this.activeNode !== oldValue)
         this.setTarget(this.activeNode);
       if (propName === "t" && this.t !== oldValue) this.updateToolbarElements();
@@ -486,8 +499,21 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   updateBlocks() {
-    if (this.formatButton.type && this.querySelector(this.formatButton.type))
-      this.querySelector(this.formatButton.type).blocks = this.filteredBlocks;
+    let currentTag =
+      !!this.formatButtonElement &&
+      !!this.formatButtonElement.rangeOrMatchingAncestor()
+        ? this.formatButtonElement.rangeOrMatchingAncestor().tagName
+        : undefined;
+
+    if (this.formatButtonElement) {
+      this.formatButtonElement.blocks = this.filteredBlocks;
+      this.formatButtonElement.value = (currentTag || "").toLowerCase();
+      if (this.filteredBlocks.length < 2) {
+        this.formatButtonElement.setAttribute("disabled", "disabled");
+      } else {
+        this.formatButtonElement.removeAttribute("disabled");
+      }
+    }
   }
 
   getRange() {
@@ -505,38 +531,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    */
   positionByTarget(target) {
     return;
-  }
-
-  get filteredBlocks() {
-    return this.formatBlocks.filter((block) => {
-      if (!block.tag) return;
-      let tag = block.tag || "",
-        wrapper =
-          !!this.slotSchema &&
-          !!this.slotSchema.slotWrapper &&
-          !!this.slotSchema.slotWrapper
-            ? this.slotSchema.slotWrapper
-            : undefined,
-        allowed =
-          !!this.slotSchema &&
-          !!this.slotSchema.slotWrapper &&
-          !!this.slotSchema.allowedSlotWrappers
-            ? this.slotSchema.allowedSlotWrappers
-            : undefined,
-        excluded =
-          !!this.slotSchema &&
-          !!this.slotSchema.slotWrapper &&
-          !!this.slotSchema.excludedSlotWrappers
-            ? this.slotSchema.excludedSlotWrappers
-            : undefined,
-        allowAny = !this.slotSchema || (!wrapper && !allowed),
-        allowOnly =
-          (!!wrapper && wrapper === tag) ||
-          (!!allowed && allowed.includes(tag)),
-        allowExcept = !!excluded && excluded.includes(tag),
-        show = !allowExcept && (allowAny || allowOnly);
-      return show;
-    });
   }
   /**
    * when an element is registered,

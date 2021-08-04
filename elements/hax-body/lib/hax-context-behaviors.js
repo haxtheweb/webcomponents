@@ -124,6 +124,52 @@ export const HaxContextBehaviors = function (SuperClass) {
       }
       return schema;
     }
+
+    getFilteredBlocks(blocks = []) {
+      return blocks.filter((block) => {
+        if (!block.tag) return;
+        let tag = block.tag || "",
+          wrapper =
+            !!this.slotSchema &&
+            !!this.slotSchema.slotWrapper &&
+            !!this.slotSchema.slotWrapper
+              ? this.slotSchema.slotWrapper
+              : undefined,
+          allowed =
+            !!this.slotSchema &&
+            !!this.slotSchema.slotWrapper &&
+            !!this.slotSchema.allowedSlotWrappers
+              ? this.slotSchema.allowedSlotWrappers
+              : undefined,
+          excluded =
+            !!this.slotSchema &&
+            !!this.slotSchema.slotWrapper &&
+            !!this.slotSchema.excludedSlotWrappers
+              ? this.slotSchema.excludedSlotWrappers
+              : undefined,
+          //allow any tag since there is no allowed list specified
+          allowAny = !this.slotSchema || !allowed,
+          //only allow that are the default wrapper or part of the allowed list
+          allowOnly =
+            (!!wrapper && wrapper === tag) ||
+            (!!allowed && allowed.includes(tag)),
+          //don't allow tags on the excluded list
+          allowExcept = !!excluded && excluded.includes(tag),
+          //show only if tag is not excluded and is either part of allow any or allow only
+          show = !allowExcept && (allowAny || allowOnly);
+        if (this.tag == "hax-plate-context")
+          console.log(
+            tag,
+            wrapper,
+            excluded,
+            allowAny,
+            allowOnly,
+            allowExcept,
+            show
+          );
+        return show;
+      });
+    }
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {

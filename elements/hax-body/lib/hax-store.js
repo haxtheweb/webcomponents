@@ -80,11 +80,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return sel;
     } else false;
   }
+
   /**
    * Try and guess the Gizmo based on what we were just handed
    */
   guessGizmo(guess, values, skipPropMatch = false, preferExclusive = false) {
-    var matches = [];
+    var matches = [],
+      matchedTags = [];
     if (typeof guess !== typeof undefined) {
       // verify type
       if (this.validGizmoTypes.includes(guess)) {
@@ -139,7 +141,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       if (!!i && i != "") keywords[i.toLowerCase()] = true;
                     });
                     gizmo.keywords = Object.keys(keywords);
-                    matches.push(this.haxElementPrototype(gizmo, props, ""));
+                    //prevent duplicates
+                    if (!matchedTags.includes(gizmo.tag)) {
+                      matches.push(this.haxElementPrototype(gizmo, props, ""));
+                      matchedTags.push(gizmo.tag);
+                    }
                   }
                 }
               }
@@ -2054,6 +2060,45 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ],
     };
     this.setHaxProperties(img, "img");
+    let figure = {
+      canScale: {
+        min: 10,
+        step: 5,
+      },
+      type: "grid",
+      editingElement: "core",
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Figure",
+        description: "A basic figure tag",
+        icon: "image:image",
+        color: "blue-grey",
+        groups: ["Image", "Media"],
+        handles: [],
+        meta: {
+          author: "W3C",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            slot: "",
+            title: "Figure Content",
+            description: "The content of the figure",
+            inputMethod: "code-editor",
+          },
+          {
+            slot: "figcaption",
+            title: "Figure Caption",
+            description: "The caption for the figure",
+            inputMethod: "code-editor",
+            wrapper: "figcaption",
+          },
+        ],
+      },
+    };
+    this.setHaxProperties(figure, "figure");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2160,6 +2205,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           {
             type: "content",
             content: "",
+          },
+          {
+            type: "text",
+            title: "title",
           },
         ],
         meta: {

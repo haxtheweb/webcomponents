@@ -1404,14 +1404,72 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * This can fire for things like events needing this workflow to
    * invoke whether it's a "convert" event or a "replace placeholder" event
    */
+
+  get primitiveTextBlocks() {
+    return ["p", "div", "pre", "h1", "h2", "h3", "h4", "h5", "h6"];
+  }
+  /**
+   *
+   * gets configuration for all of given grid's slots
+   *
+   * @param {object} grid
+   * @returns {array}
+   */
+  getAllSlotConfig(grid) {
+    if (!grid) grid = this.getParentGrid(node);
+    return !!grid && !!grid.tag
+      ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
+      : undefined;
+  }
+  /**
+   *
+   * gets parent grid if given note is slotted content
+   *
+   * @param {object} node
+   * @returns {object}
+   */
+  getParentGrid(node) {
+    node = node || this.activeNode;
+    let slot = !!node ? node.slot : undefined;
+    return !!slot ? nodeToHaxElement(node.parentNode) : undefined;
+  }
+  /**
+   *
+   * gets slot configuration for a given slot from haxProperties given
+   *
+   * @param {string} slotName
+   * @param {object} props
+   * @returns {object}
+   */
+  getSlotConfig(slotName = "", props = {}) {
+    let settings = props.settings,
+      matchingSlots = !!settings
+        ? Object.keys(settings || {})
+            .map((group) =>
+              settings[group].filter(
+                (setting) =>
+                  !!setting.slot && (!slotName || setting.slot === slotName)
+              )
+            )
+            .flat()
+        : undefined;
+    return matchingSlots && matchingSlots.length > 0
+      ? matchingSlots[0]
+      : undefined;
+  }
+
   async replaceElementWorkflow(activeNode = null, testOnly = false) {
     // support for tests with things other than activeNode
     if (activeNode == null) {
       activeNode = this.activeNode;
     }
     let element = await nodeToHaxElement(activeNode, null);
+    if (!element) return;
     let type = "*";
     let skipPropMatch = false;
+    let slot = (activeNode || {}).slot;
+    let grid = this.getParentGrid(activeNode);
+
     // special support for place holder which defines exactly
     // what the user wants this replaced with
     if (
@@ -1419,6 +1477,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       typeof element.properties["type"] !== typeof undefined
     ) {
       type = element.properties["type"];
+      skipPropMatch = true;
+    } else if (this.primitiveTextBlocks.includes(element.tag)) {
       skipPropMatch = true;
     }
     var props = {};
@@ -1462,7 +1522,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     }
+    // if element is slotted in a grid, restrict to grid's settings for the slot
     let haxElements = HAXStore.guessGizmo(type, props, skipPropMatch);
+    let slots = !!grid
+      ? this.getSlotConfig(slot, HAXStore.elementList[grid.tag])
+      : undefined;
+    let exclusions =
+      !!grid && grid.tag === "grid-plate"
+        ? ["grid-plate"]
+        : !!slots
+        ? slots.excludedSlotWrappers
+        : undefined;
+    let inclusions = !!slots ? slots.allowedSlotWrappers : undefined;
+    if (!!exclusions || !!inclusions)
+      haxElements = haxElements.filter(
+        (el) =>
+          !exclusions.includes(el.tag) &&
+          (!inclusions || inclusions.includes(el.tag))
+      );
+
     // see if we got anything
     if (haxElements.length > 0) {
       // hand off to hax-app-picker to deal with the rest of this
