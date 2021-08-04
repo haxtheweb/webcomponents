@@ -139,6 +139,7 @@ class CleanOne extends HAXCMSRememberRoute(
           --site-menu-button-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
           --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+          --site-menu-button-button-hover-background-color: rgba(0,0,0,.1);
         }
         * {
           -webkit-box-sizing: border-box;
@@ -389,7 +390,7 @@ class CleanOne extends HAXCMSRememberRoute(
           right: 0;
         }
         .main-content site-breadcrumb {
-          margin-top: -64px;
+          margin-top: -24px;
         }
         .main-content site-active-title h1 {
           font-size: 36px;
@@ -398,8 +399,8 @@ class CleanOne extends HAXCMSRememberRoute(
         }
         .navigation {
           position: fixed;
-          top: 50px;
-          bottom: 0;
+          top: 20vh;
+          bottom: 20vh;
           margin: 0 20px;
           max-width: 150px;
           min-width: 90px;
@@ -412,6 +413,7 @@ class CleanOne extends HAXCMSRememberRoute(
           text-align: center;
           transition: all .35s ease;
         }
+        
         @media (max-width: 1240px) {
           .navigation {
             position: static;
