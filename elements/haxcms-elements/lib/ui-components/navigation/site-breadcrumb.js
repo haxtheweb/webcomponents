@@ -47,7 +47,11 @@ class SiteBreadcrumb extends LitElement {
           background-color: transparent;
           border: none;
           letter-spacing: inherit;
+          cursor: pointer;
         }
+        a:hover,
+        a:focus,
+        a:active,
         button:hover,
         button:focus,
         button:active {
