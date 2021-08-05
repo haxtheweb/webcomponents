@@ -436,7 +436,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (propName === "formatBlocks")
         this.disableTransform = this.filteredBlocks.length < 1;
     });
-    console.log(this.formatBlocks, this.filteredBlocks, this.disableTransform);
   }
 
   firstUpdated(changedProperties) {
@@ -525,11 +524,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           ? elements.filter((el) => el.tag && ![tag, primTag].includes(el.tag))
           : elements;
         this.disableTransform = this.filteredBlocks.length === 0 ? true : false;
-        console.log(
-          this.formatBlocks,
-          this.filteredBlocks,
-          this.disableTransform
-        );
       }
       if (HAXStore.activeGizmo) {
         this.activeTagName = HAXStore.activeGizmo.title;

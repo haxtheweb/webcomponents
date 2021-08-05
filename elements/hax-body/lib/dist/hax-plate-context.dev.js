@@ -199,8 +199,8 @@ function _templateObject() {
     '"\n            tooltip="',
     ", ",
     '"\n            ?disabled="',
-    '"\n            event-name="hax-transform-node"\n            show-text-label\n          ></hax-context-item>\n          <slot name="primary"></slot>\n          <hax-toolbar-menu\n            icon="add"\n            label="',
-    '"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="',
+    '"\n            event-name="hax-transform-node"\n            show-text-label\n          ></hax-context-item>\n          <slot name="primary"></slot>\n          <hax-toolbar-menu icon="add" label="',
+    '">\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="',
     '"\n                ?disabled="',
     '"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="',
     '"\n                ?disabled="',
@@ -591,11 +591,6 @@ var HaxPlateContext =
               if (propName === "formatBlocks")
                 _this3.disableTransform = _this3.filteredBlocks.length < 1;
             });
-            console.log(
-              this.formatBlocks,
-              this.filteredBlocks,
-              this.disableTransform
-            );
           },
         },
         {
@@ -705,7 +700,7 @@ var HaxPlateContext =
                           this.activeNode != null
                         )
                       ) {
-                        _context.next = 21;
+                        _context.next = 20;
                         break;
                       }
 
@@ -715,7 +710,7 @@ var HaxPlateContext =
                       this.sourceView = schema.canEditSource;
 
                       if (!this.activeNode) {
-                        _context.next = 18;
+                        _context.next = 17;
                         break;
                       }
 
@@ -755,13 +750,8 @@ var HaxPlateContext =
                         : elements;
                       this.disableTransform =
                         this.filteredBlocks.length === 0 ? true : false;
-                      console.log(
-                        this.formatBlocks,
-                        this.filteredBlocks,
-                        this.disableTransform
-                      );
 
-                    case 18:
+                    case 17:
                       if (_haxStore.HAXStore.activeGizmo) {
                         this.activeTagName =
                           _haxStore.HAXStore.activeGizmo.title;
@@ -769,10 +759,10 @@ var HaxPlateContext =
                           _haxStore.HAXStore.activeGizmo.icon;
                       }
 
-                      _context.next = 22;
+                      _context.next = 21;
                       break;
 
-                    case 21:
+                    case 20:
                       if (_haxStore.HAXStore.activeGizmo) {
                         this.activeTagName =
                           _haxStore.HAXStore.activeGizmo.title;
@@ -783,8 +773,8 @@ var HaxPlateContext =
                         this.activeTagIcon = "";
                       }
 
-                    case 22:
-                      _context.next = 24;
+                    case 21:
+                      _context.next = 23;
                       return regeneratorRuntime.awrap(
                         _haxStore.HAXStore.runHook(
                           this.activeNode,
@@ -793,7 +783,7 @@ var HaxPlateContext =
                         )
                       );
 
-                    case 24:
+                    case 23:
                     case "end":
                       return _context.stop();
                   }

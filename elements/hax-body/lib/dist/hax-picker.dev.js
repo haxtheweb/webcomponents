@@ -397,6 +397,7 @@ var HaxPicker =
             var key = e.target.getAttribute("data-selected");
             e.preventDefault();
             e.stopPropagation();
+            console.log(this._elements[key], this.pickerType);
 
             if (
               _typeof(this._elements[key]) !==

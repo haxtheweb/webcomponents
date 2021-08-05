@@ -95,7 +95,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         for (var gizmoposition in this.gizmoList) {
           let gizmo = this.gizmoList[gizmoposition],
             tags = [];
-          let props = {};
+          let props = { innerHTML: values.innerHTML };
           // reset match per gizmo
           let match = false;
           // ensure this gizmo can handle things
@@ -2204,11 +2204,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [
           {
             type: "content",
-            content: "",
-          },
-          {
-            type: "text",
-            title: "title",
+            source: "",
+            title: "innerHTML",
+            alt: "title",
           },
         ],
         meta: {
