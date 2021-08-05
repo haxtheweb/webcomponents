@@ -4,7 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-breadcrumb`
@@ -28,7 +29,7 @@ class SiteBreadcrumb extends LitElement {
         a {
           height: 24px;
           font-size: 16px;
-          color: var(--site-breadcrumb-color, #383f45);
+          color: inherit;
           display: inline-flex;
           line-height: 24px;
           padding: 0 8px 0 0;
@@ -48,6 +49,7 @@ class SiteBreadcrumb extends LitElement {
           border: none;
           letter-spacing: inherit;
           cursor: pointer;
+          color: inherit;
         }
         a:hover,
         a:focus,
@@ -65,12 +67,12 @@ class SiteBreadcrumb extends LitElement {
           height: 24px;
           display: inline-flex;
         }
-        simple-icon {
+        simple-icon-lite {
           display: inline-flex;
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
           padding: 0 8px 0 0;
-          color: var(--site-breadcrumb-color, #383f45);
+          color: inherit;
         }
       `,
     ];
@@ -84,7 +86,6 @@ class SiteBreadcrumb extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
   }
   // render function
   render() {
@@ -152,7 +153,7 @@ class SiteBreadcrumb extends LitElement {
         }
       }
       for (var i in items) {
-        let icon = document.createElement("simple-icon");
+        let icon = document.createElement("simple-icon-lite");
         icon.icon = "icons:chevron-right";
         if (items[i].slug != null) {
           let button = document.createElement("button");

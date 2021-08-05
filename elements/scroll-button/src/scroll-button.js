@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */

@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -31,7 +31,7 @@ class ScrollButton extends LitElement {
           display: none;
         }
 
-        simple-icon-button {
+        simple-icon-button-lite {
           background-color: var(
             --scroll-button-background-color,
             rgba(0, 0, 0, 0.6)
@@ -39,9 +39,9 @@ class ScrollButton extends LitElement {
           color: var(--scroll-button-color, white);
         }
 
-        simple-icon-button:hover,
-        simple-icon-button:active,
-        simple-icon-button:focus {
+        simple-icon-button-lite:hover,
+        simple-icon-button-lite:active,
+        simple-icon-button-lite:focus {
           color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
           background-color: var(--scroll-button-color, white);
         }
@@ -67,12 +67,12 @@ class ScrollButton extends LitElement {
   render() {
     return html` <custom-style>
         <style>
-          simple-icon-button {
+          simple-icon-button-lite {
             @apply --scroll-button-button;
           }
-          simple-icon-button:hover,
-          simple-icon-button:active,
-          simple-icon-button:focus {
+          simple-icon-button-lite:hover,
+          simple-icon-button-lite:active,
+          simple-icon-button-lite:focus {
             @apply --scroll-button-button-active;
           }
           simple-tooltip {
@@ -80,12 +80,12 @@ class ScrollButton extends LitElement {
           }
         </style>
       </custom-style>
-      <simple-icon-button
+      <simple-icon-button-lite
         @click="${this.scrollEvent}"
         id="btn"
         icon="${this.icon}"
         aria-label="${this.label}"
-      ></simple-icon-button>
+      ></simple-icon-button-lite>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}
       </simple-tooltip>`;

@@ -1,11 +1,11 @@
 <custom-style>
   <style>
-    simple-icon-button {
+    simple-icon-button-lite {
       @apply --scroll-button-button;
     }
-    simple-icon-button:hover,
-    simple-icon-button:active,
-    simple-icon-button:focus {
+    simple-icon-button-lite:hover,
+    simple-icon-button-lite:active,
+    simple-icon-button-lite:focus {
       @apply --scroll-button-button-active;
     }
     simple-tooltip {
@@ -13,10 +13,10 @@
     }
   </style>
 </custom-style>
-<simple-icon-button
+<simple-icon-button-lite
 @click="${this.scrollEvent}"
 id="btn" icon="${this.icon}"
-aria-label="${this.label}"></simple-icon-button>
+aria-label="${this.label}"></simple-icon-button-lite>
 <simple-tooltip
   for="btn"
   position="${this.position}"

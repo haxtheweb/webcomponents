@@ -141,6 +141,10 @@ class CleanOne extends HAXCMSRememberRoute(
           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
           --site-menu-button-button-hover-background-color: rgba(0,0,0,.1);
         }
+        scroll-button,
+        site-breadcrumb {
+          color: var(--haxcms-user-styles-color-theme-color-1);
+        }
         * {
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
