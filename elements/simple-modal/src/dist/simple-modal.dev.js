@@ -102,8 +102,8 @@ function _templateObject() {
     '"\n      @open="',
     '"\n      @close="',
     '"\n    >\n      <div id="titlebar" part="titlebar">\n        <h2 id="simple-modal-title" ?hidden="',
-    '" part="title">',
-    '</h2>\n        <div></div>\n        <simple-icon-button-lite\n          id="close"\n          dark\n          icon="',
+    '" part="title">\n          ',
+    '\n        </h2>\n        <div></div>\n        <simple-icon-button-lite\n          id="close"\n          dark\n          icon="',
     '"\n          @click="',
     '"\n          label="',
     '"\n          part="close"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="headerbar" part="headerbar"><slot name="header"></slot></div>\n      <div id="simple-modal-content" part="content">\n        <slot name="content"></slot>\n      </div>\n      <slot name="custom" part="custom"></slot>\n      <div class="buttons" part="buttons">\n        <slot name="buttons"></slot>\n      </div>\n    </web-dialog>',
@@ -678,11 +678,37 @@ var SimpleModal =
             this.dispatchEvent(evt);
           } else if (newValue) {
             // p dialog backport; a nice, simple solution for close buttons
-            var children = this.querySelectorAll(
-              "[dialog-dismiss],[dialog-confirm]"
-            );
-            children.forEach(function (el) {
+            var dismiss = this.querySelectorAll("[dialog-dismiss]");
+            dismiss.forEach(function (el) {
               el.addEventListener("click", function (e) {
+                var evt = new CustomEvent("simple-modal-dismissed", {
+                  bubbles: true,
+                  cancelable: true,
+                  detail: {
+                    opened: false,
+                    invokedBy: _this6.invokedBy,
+                  },
+                });
+
+                _this6.dispatchEvent(evt);
+
+                _this6.close();
+              });
+            });
+            var confirm = this.querySelectorAll("[dialog-confirm]");
+            confirm.forEach(function (el) {
+              el.addEventListener("click", function (e) {
+                var evt = new CustomEvent("simple-modal-confirmed", {
+                  bubbles: true,
+                  cancelable: true,
+                  detail: {
+                    opened: false,
+                    invokedBy: _this6.invokedBy,
+                  },
+                });
+
+                _this6.dispatchEvent(evt);
+
                 _this6.close();
               });
             });
