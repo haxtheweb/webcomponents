@@ -210,7 +210,9 @@ class CleanOne extends HAXCMSRememberRoute(
           page-break-after: avoid;
         }
         .pull-right {
-          float: right;
+          top: 0px;
+          right: 16px;
+          position: fixed;
         }
         .main-content *,
         .main-content ::slotted(*) {
@@ -250,6 +252,10 @@ class CleanOne extends HAXCMSRememberRoute(
         :host([responsive-size="sm"]) .site-body {
           overflow-x: hidden;
           position: var(--clean-one-sm-site-body-position, fixed);
+        }
+        :host([responsive-size="md"]) .page-inner,
+        :host([responsive-size="lg"]) .page-inner {
+          padding: 40px 15px;
         }
         :host([responsive-size="xs"]) .main-content,
         :host([responsive-size="sm"]) .main-content {
@@ -321,6 +327,12 @@ class CleanOne extends HAXCMSRememberRoute(
           position: fixed;
           display: block;
           padding: 0 16px;
+        }
+
+        @media (max-width: 900px) {
+          .site-header {
+            position: relative;
+          }
         }
 
         @media (max-width: 700px){
@@ -565,10 +577,6 @@ class CleanOne extends HAXCMSRememberRoute(
             bottom: 0;
             right: 16px;
           }
-          .link-actions {
-            top: 0;
-            right: 16px;
-          }
           #site-search-input {
             padding: 6px;
             background: 0 0;
@@ -651,12 +659,15 @@ class CleanOne extends HAXCMSRememberRoute(
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">
-                ${this.HAXCMSMobileMenuButton()} ${this.HAXCMSUserStylesMenu()}
-                <div class="pull-right link-actions">
+                <div class="pull-left">
+                  ${this.HAXCMSMobileMenuButton()}
+                  ${this.HAXCMSUserStylesMenu()}
                   <site-print-button
                     class="btn js-toolbar-action"
                     part="print-btn"
                   ></site-print-button>
+                </div>
+                <div class="pull-right">
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"
