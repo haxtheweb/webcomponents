@@ -482,6 +482,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       const activeEditingElement = toJS(HAXStore.activeEditingElement);
     });
   }
+
+  get isGridActive() {
+    return HAXStore.isGridPlateElement(activeNode);
+  }
+
   /**
    * When we end dragging ensure we remove the mover class.
    */
@@ -678,13 +683,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         ?hidden="${!this.activeNode}"
       >
         <div id="topcontextmenu">
-          <hax-ce-context
-            id="cecontextmenu"
-            class="hax-context-menu ignore-activation"
-            .activeNode="${this.activeNode}"
-            ?viewSource="${this.viewSourceToggle}"
-            hidden
-          ></hax-ce-context>
           <hax-plate-context
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
@@ -692,6 +690,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .trayDetail="${this.trayDetail}"
             .trayStatus="${this.trayStatus}"
             ?viewSource="${this.viewSourceToggle}"
+            ?canMoveElement="${this.canMoveElement}"
           ></hax-plate-context>
           <hax-text-editor-toolbar
             id="textcontextmenu"
@@ -754,6 +753,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         type: Object,
       },
       /**
+       * activeNode can be moved
+       */
+      canMoveElement: {
+        type: Boolean,
+      },
+      /**
        *Is active node in view source mode?
        */
       viewSourceToggle: {
@@ -784,7 +789,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.contextMenus = {
       text: this.shadowRoot.querySelector("#textcontextmenu"),
       plate: this.shadowRoot.querySelector("#platecontextmenu"),
-      ce: this.shadowRoot.querySelector("#cecontextmenu"),
     };
     // track and store range on mouse up. this helps w/ Safari focus selection
     // issues as well as any "tap" event from a phone knowing what text
@@ -1150,10 +1154,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let el = false;
         if (this.contextMenus.text.classList.contains("hax-context-visible")) {
           el = this.contextMenus.text;
-        } else if (
-          this.contextMenus.ce.classList.contains("hax-context-visible")
-        ) {
-          el = this.contextMenus.ce;
         }
         // if we see it, ensure we don't have the pin
         if (el) {
@@ -1877,9 +1877,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     clearTimeout(this.__positionContextTimer);
     // primary context menus
     this._hideContextMenu(this.contextMenus.text);
-    this._hideContextMenu(this.contextMenus.ce);
+
+    //TODO
     this.__activeHover = null;
     // secondary menus and clean up areas
+    //TODO
     if (hidePlate) {
       this._hideContextMenu(this.contextMenus.plate);
     }
@@ -1911,6 +1913,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             tag = "iframe";
           }
           let props = HAXStore.elementList[tag];
+          if (!!node) {
+            this._showContextMenu(this.contextMenus.plate);
+          } else {
+            this._hideContextMenu(this.contextMenus.plate);
+          }
           // try and work against anything NOT a P tag
           if (
             typeof props !== typeof undefined &&
@@ -1919,19 +1926,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             //TODO hide text
             this._hideContextMenu(this.contextMenus.text);
             props.element = node;
-            // check for core editing element OR it providing it's own experience entirely
-            // otherwise we'll pick it up in the specific element via activeNode change hooks
-            if (props.editingElement == "core") {
-              this._showContextMenu(this.contextMenus.ce);
-            } else {
-              this._hideContextMenu(this.contextMenus.ce);
-            }
           } else {
-            //TODO hide text
-            this._hideContextMenu(this.contextMenus.ce);
             this._showContextMenu(this.contextMenus.text);
             // text menu can expand based on selection
           }
+          let gizmo = (props || {}).gizmo || {},
+            inlineGizmo =
+              props &&
+              props.gizmo &&
+              (props.gizmo.handles || []).filter(
+                (handle) => (handle || {}).type === "inline"
+              ).length > 0;
           if (!props || props.editingElement == "core") {
             // hide menu if we have active on a list item
             // special case because it should not be moved anywhere or have these
@@ -1942,14 +1947,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               (this.activeNode.tagName === "LI" ||
                 this._HTMLInlineTextDecorationTest(this.activeNode))
             ) {
-              this._hideContextMenu(this.contextMenus.plate);
+              this.canMoveElement = false;
             } else {
-              this._showContextMenu(this.contextMenus.plate);
+              this.canMoveElement = true;
             }
           } else {
             setTimeout(() => {
-              if (node && node.parentNode) {
-                this._showContextMenu(this.contextMenus.plate);
+              if ((node && node.parentNode) || !inlineGizmo) {
+                this.canMoveElement = true;
               }
             }, 250);
           }
@@ -2090,6 +2095,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
+        //TODO
         let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
         let rightremove = this.contextMenus.plate.shadowRoot.querySelector(
           "#rightremove"
@@ -2325,6 +2331,24 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
       case "insert-below-active":
         this.haxInsert("p", "", {});
+        break;
+      case "insert-into-active":
+        let eventPath = normalizeEventPath(e),
+          slot =
+            !eventPath || !eventPath[0]
+              ? undefined
+              : eventPath[0].getAttribute("data-slot");
+        if (
+          slot &&
+          this.activeNode &&
+          HAXStore.isGridPlateElement(this.activeNode)
+        ) {
+          let p = document.createElement("p");
+          p.slot = slot;
+          this.activeNode.append(p);
+          this.haxInsert("p", "", { slot: slot }, p);
+          p.remove();
+        }
         break;
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {

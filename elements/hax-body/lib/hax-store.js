@@ -1678,6 +1678,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "blockquote",
       "code",
       "figure",
+      "figcaption",
       "img",
       "iframe",
       "video",
@@ -2074,7 +2075,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic figure tag",
         icon: "image:image",
         color: "blue-grey",
-        groups: ["Image", "Media"],
+        groups: ["Image", "Media", "Layout"],
         handles: [],
         meta: {
           author: "W3C",
@@ -2087,18 +2088,58 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             title: "Figure Content",
             description: "The content of the figure",
             inputMethod: "code-editor",
-          },
-          {
-            slot: "figcaption",
-            title: "Figure Caption",
-            description: "The caption for the figure",
-            inputMethod: "code-editor",
-            wrapper: "figcaption",
+            slotWrapper: "figcaption",
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "figure",
+          properties: {},
+          content: "<img>\n<figcaption>Image Caption Here</figcaption>",
+        },
+      ],
     };
     this.setHaxProperties(figure, "figure");
+    let figcaption = {
+      canScale: {
+        min: 10,
+        step: 5,
+      },
+      type: "element",
+      editingElement: "core",
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Figurecaption",
+        description: "Used inside of a figure tag",
+        icon: "image:image",
+        color: "blue-grey",
+        groups: ["Image", "Media"],
+        handles: [],
+        meta: {
+          author: "W3C",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            slot: "",
+            title: "Figure Caption",
+            description: "Caption for the figure",
+            inputMethod: "code-editor",
+          },
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "figcaption",
+          properties: {},
+          content: "Image Caption Here",
+        },
+      ],
+    };
+    this.setHaxProperties(figcaption, "figcaption");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2220,7 +2261,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       demoSchema: [
         {
           tag: "p",
-          content: "Text",
+          content: "Paragraph",
           properties: {},
         },
       ],

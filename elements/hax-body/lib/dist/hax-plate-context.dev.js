@@ -155,8 +155,7 @@ function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '\n                <simple-toolbar-menu-item\n                  slot="menuitem"\n                  class="move-to-slot ',
     '"\n                >\n                  <hax-context-item\n                    action\n                    align-horizontal="left"\n                    ?disabled="',
-    '"\n                    show-text-label\n                    role="menuitem"\n                    event-name="insert-slot"\n                    data-slot="',
-    '"\n                    @click="',
+    '"\n                    icon="icons:arrow-forward"\n                    show-text-label\n                    role="menuitem"\n                    event-name="insert-into-active"\n                    data-slot="',
     '"\n                    label="',
     '"\n                  ></hax-context-item>\n                </simple-toolbar-menu-item>\n              ',
   ]);
@@ -172,7 +171,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n                <simple-toolbar-menu-item\n                  slot="menuitem"\n                  class="move-to-slot ',
     '"\n                >\n                  <hax-context-item\n                    action\n                    align-horizontal="left"\n                    ?disabled="',
-    '"\n                    show-text-label\n                    role="menuitem"\n                    event-name="insert-slot"\n                    data-slot="',
+    '"\n                    icon="icons:arrow-forward"\n                    show-text-label\n                    role="menuitem"\n                    data-slot="',
     '"\n                    @click="',
     '"\n                    label="',
     '"\n                  ></hax-context-item>\n                </simple-toolbar-menu-item>\n              ',
@@ -189,7 +188,8 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <hax-toolbar>\n        <div class="group">\n          <hax-toolbar-menu\n            ?disabled="',
     '"\n            id="drag"\n            action\n            icon="hax:arrow-all"\n            label="',
-    '"\n            draggable="true"\n            reset-on-select\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
+    '"\n            draggable="true"\n            reset-on-select\n            data-simple-tour-stop\n            data-stop-title="label"\n            ?hidden="',
+    '"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
     '"\n                show-text-label\n                role="menuitem"\n                icon="hax:keyboard-arrow-up"\n                label="',
     '"\n                event-name="hax-plate-up"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
     '"\n                role="menuitem"\n                show-text-label\n                icon="hax:keyboard-arrow-down"\n                label="',
@@ -208,9 +208,11 @@ function _templateObject() {
     "\n          </hax-toolbar-menu>\n          ",
     '\n          <hax-context-item\n            action\n            id="right"\n            class="paddle"\n            icon="hax:table-column-remove"\n            label="',
     '"\n            ?disabled="',
-    '"\n            event-name="hax-plate-create-right"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Add a column to split the current column into two pieces. This can\n              be done up to six pieces columns. For differnet layouts see Grid\n              settings panel.\n            </div>\n          </hax-context-item>\n          <hax-context-item\n            action\n            class="paddle"\n            icon="hax:table-column-plus-after"\n            label="',
+    '"\n            event-name="hax-plate-create-right"\n            ?hidden="',
+    '"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Add a column to split the current column into two pieces. This can\n              be done up to six pieces columns. For differnet layouts see Grid\n              settings panel.\n            </div>\n          </hax-context-item>\n          <hax-context-item\n            action\n            class="paddle"\n            icon="hax:table-column-plus-after"\n            label="',
     '"\n            ?disabled="',
-    '"\n            event-name="hax-plate-remove-right"\n            id="rightremove"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Remove a column from the split column layout. If at two columns\n              and removing it will remove the layout split and make it 100%\n              width.\n            </div>\n          </hax-context-item>\n          <slot name="secondary"></slot>\n        </div>\n        <div class="group">\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="',
+    '"\n            event-name="hax-plate-remove-right"\n            ?hidden="',
+    '"\n            id="rightremove"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Remove a column from the split column layout. If at two columns\n              and removing it will remove the layout split and make it 100%\n              width.\n            </div>\n          </hax-context-item>\n          <slot name="secondary"></slot>\n        </div>\n        <div class="group">\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="',
     '"\n            ?disabled="',
     '"\n            event-name="hax-source-view-toggle"\n            toggles\n            ?toggled="',
     '"\n            @click="',
@@ -403,8 +405,9 @@ var HaxPlateContext =
 
             return (0, _litElement.html)(
               _templateObject(),
-              this.hasActiveEditingElement,
+              this.hasActiveEditingElement || !this.canMoveElement,
               this.t.dragHandle,
+              !this.canMoveElement,
               this.hasActiveEditingElement,
               this.t.moveUp,
               this.hasActiveEditingElement,
@@ -432,16 +435,8 @@ var HaxPlateContext =
               this.t.insertItemBelow,
               this.viewSource,
               (this.childSlots || []).map(function (slot, i) {
-                return (0, _litElement.html)(
-                  _templateObject3(),
-                  i < 1 ? "first-slot" : "",
-                  _this2.activeNode && slot.slot === _this2.activeNode.slot,
-                  slot,
-                  function (e) {
-                    return _this2._handleMoveSlot(slot);
-                  },
-                  slot.title || slot.slot
-                );
+                return (0,
+                _litElement.html)(_templateObject3(), i < 1 ? "first-slot" : "", _this2.activeNode && slot.slot === _this2.activeNode.slot, slot.slot, slot.title || slot.slot);
               }),
               this.ceButtons.map(function (el) {
                 return (0,
@@ -449,8 +444,10 @@ var HaxPlateContext =
               }),
               this.t.addColumn,
               this.hasActiveEditingElement,
+              !this.isGridPlate(),
               this.t.removeColumn,
               this.hasActiveEditingElement,
+              !this.isGridPlate(),
               this.t.modifyHTMLSource,
               !this.sourceView,
               this.viewSource,
@@ -462,6 +459,16 @@ var HaxPlateContext =
               this.trayDetail === "content-edit" &&
                 this.trayStatus !== "collapsed"
             );
+          },
+        },
+        {
+          key: "isGridPlate",
+          value: function isGridPlate() {
+            var node =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : this.activeNode;
+            return node && node.tagName && node.tagName === "GRID-PLATE";
           },
         },
         {
@@ -490,6 +497,32 @@ var HaxPlateContext =
                 });
               })
               .flat();
+          },
+        },
+        {
+          key: "gridPlateSlots",
+          value: function gridPlateSlots() {
+            var layout =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : "1-1-1-1-1-1";
+
+            var slotConfig = function slotConfig(num) {
+                var slot = "col-".concat(num),
+                  label = "Column ".concat(num),
+                  config = {
+                    slot: slot,
+                    title: label,
+                    excludedSlotWrappers: ["grid-plate"],
+                  };
+                return config;
+              },
+              slots = layout.split("-");
+
+            slots = slots.map(function (col, num) {
+              return slotConfig(num + 1);
+            });
+            return slots;
           },
         },
         {
@@ -800,7 +833,10 @@ var HaxPlateContext =
         {
           key: "childSlots",
           get: function get() {
-            return _haxStore.HAXStore.isGridPlateElement(this.activeNode)
+            var oldGrid = this.isGridPlate();
+            return oldGrid
+              ? this.gridPlateSlots(this.activeNode.layout)
+              : _haxStore.HAXStore.isGridPlateElement(this.activeNode)
               ? this.getSlotsFromSettings(
                   this.slotSchema && this.slotSchema.type === "grid"
                     ? this.slotSchema.settings
@@ -813,7 +849,12 @@ var HaxPlateContext =
         {
           key: "siblingSlots",
           get: function get() {
-            return _haxStore.HAXStore.isGridPlateElement(this.parentNode)
+            var oldGrid = this.isGridPlate(this.activeNode.parentNode);
+            return oldGrid
+              ? this.gridPlateSlots(this.activeNode.parentNode.layout)
+              : _haxStore.HAXStore.isGridPlateElement(
+                  this.activeNode.parentNode
+                )
               ? this.getSlotsFromSettings(
                   this.parentSchema && this.parentSchema.type === "grid"
                     ? this.parentSchema.settings
@@ -859,6 +900,9 @@ var HaxPlateContext =
                 },
                 activeTagName: {
                   type: String,
+                },
+                canMoveElement: {
+                  type: Boolean,
                 },
                 ceButtons: {
                   type: Array,

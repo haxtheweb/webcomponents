@@ -125,7 +125,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       <hax-toolbar>
         <div class="group">
           <hax-toolbar-menu
-            ?disabled="${this.hasActiveEditingElement}"
+            ?disabled="${this.hasActiveEditingElement || !this.canMoveElement}"
             id="drag"
             action
             icon="hax:arrow-all"
@@ -134,6 +134,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             reset-on-select
             data-simple-tour-stop
             data-stop-title="label"
+            ?hidden="${!this.canMoveElement}"
           >
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
@@ -170,9 +171,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     align-horizontal="left"
                     ?disabled="${this.activeNode &&
                     slot.slot === this.activeNode.slot}"
+                    icon="icons:arrow-forward"
                     show-text-label
                     role="menuitem"
-                    event-name="insert-slot"
                     data-slot="${slot}"
                     @click="${(e) => this._handleMoveSlot(slot)}"
                     label="${slot.title || slot.slot}"
@@ -233,11 +234,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     align-horizontal="left"
                     ?disabled="${this.activeNode &&
                     slot.slot === this.activeNode.slot}"
+                    icon="icons:arrow-forward"
                     show-text-label
                     role="menuitem"
-                    event-name="insert-slot"
-                    data-slot="${slot}"
-                    @click="${(e) => this._handleMoveSlot(slot)}"
+                    event-name="insert-into-active"
+                    data-slot="${slot.slot}"
                     label="${slot.title || slot.slot}"
                   ></hax-context-item>
                 </simple-toolbar-menu-item>
@@ -262,6 +263,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             label="${this.t.addColumn}"
             ?disabled="${this.hasActiveEditingElement}"
             event-name="hax-plate-create-right"
+            ?hidden="${!this.isGridPlate()}"
             data-simple-tour-stop
             data-stop-title="label"
           >
@@ -278,6 +280,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             label="${this.t.removeColumn}"
             ?disabled="${this.hasActiveEditingElement}"
             event-name="hax-plate-remove-right"
+            ?hidden="${!this.isGridPlate()}"
             id="rightremove"
             data-simple-tour-stop
             data-stop-title="label"
@@ -325,7 +328,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get childSlots() {
-    return HAXStore.isGridPlateElement(this.activeNode)
+    let oldGrid = this.isGridPlate();
+    return oldGrid
+      ? this.gridPlateSlots(this.activeNode.layout)
+      : HAXStore.isGridPlateElement(this.activeNode)
       ? this.getSlotsFromSettings(
           this.slotSchema && this.slotSchema.type === "grid"
             ? this.slotSchema.settings
@@ -334,9 +340,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         )
       : [];
   }
-
   get siblingSlots() {
-    return HAXStore.isGridPlateElement(this.parentNode)
+    let oldGrid = this.isGridPlate(this.activeNode.parentNode);
+    return oldGrid
+      ? this.gridPlateSlots(this.activeNode.parentNode.layout)
+      : HAXStore.isGridPlateElement(this.activeNode.parentNode)
       ? this.getSlotsFromSettings(
           this.parentSchema && this.parentSchema.type === "grid"
             ? this.parentSchema.settings
@@ -347,6 +355,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
 
   get filteredBlocks() {
     return this.getFilteredBlocks(this.formatBlocks);
+  }
+
+  isGridPlate(node = this.activeNode) {
+    return node && node.tagName && node.tagName === "GRID-PLATE";
   }
 
   getSlotsFromSettings(settings = {}, optionalOnly = false) {
@@ -364,6 +376,22 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         })
       )
       .flat();
+  }
+
+  gridPlateSlots(layout = "1-1-1-1-1-1") {
+    let slotConfig = (num) => {
+        let slot = `col-${num}`,
+          label = `Column ${num}`,
+          config = {
+            slot: slot,
+            title: label,
+            excludedSlotWrappers: ["grid-plate"],
+          };
+        return config;
+      },
+      slots = layout.split("-");
+    slots = slots.map((col, num) => slotConfig(num + 1));
+    return slots;
   }
   _handleMoveSlot(slot) {
     this.activeNode.slot = slot.slot;
@@ -550,6 +578,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       activeTagName: {
         type: String,
+      },
+      canMoveElement: {
+        type: Boolean,
       },
       ceButtons: {
         type: Array,
