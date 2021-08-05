@@ -107,6 +107,9 @@ class CleanOne extends HAXCMSRememberRoute(
           height: 50px;
           padding: 6px;
         }
+        .btn-container .btn {
+          padding: 8px;
+        }
         simple-tooltip {
           --simple-tooltip-background: var(--haxcms-user-styles-color-theme-color-1);
           --simple-tooltip-text-color: var(--haxcms-user-styles-color-theme-color-2);
@@ -312,14 +315,12 @@ class CleanOne extends HAXCMSRememberRoute(
           display: flex;
         }
         .site-header {
-          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
           overflow: visible;
-          height: 50px;
-          padding: 0 8px;
           z-index: 2;
-          font-size: .85em;
-          color: #7e888b;
-          background: 0 0;
+          background: transparent;
+          position: fixed;
+          display: block;
+          padding: 0 16px;
         }
 
         @media (max-width: 700px){
