@@ -150,11 +150,9 @@ class SimpleDrawer extends SimpleColors {
       this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
-      async.microTask.run(() => {
-        setTimeout(() => {
-          this.invokedBy.focus();
-        }, 500);
-      });
+      setTimeout(() => {
+        this.invokedBy.focus();
+      }, 500);
     }
   }
   /**

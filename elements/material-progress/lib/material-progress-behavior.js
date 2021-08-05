@@ -245,7 +245,7 @@ window.MaterialProgressBehaviorImpl = {
   _playFirstAnimation(node, index, animationDelay) {
     this.toggleClass("entry", true, node);
     (node, index, animationDelay) => {
-      async.microTask.run(() => {
+      setTimeout(() => {
         this.toggleClass("entry", false, node);
       }, 500 + animationDelay * index);
     };
