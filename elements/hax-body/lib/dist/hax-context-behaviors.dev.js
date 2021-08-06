@@ -247,7 +247,8 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
         (0, _mobx.autorun)(function () {
           // this just forces this block to run when editMode is modified
           var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
-          var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode); //this.viewSource = false;
+          var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+          _this.sourceView = false;
 
           if (activeNode && activeNode.tagName) {
             var schema = _haxStore.HAXStore.haxSchemaFromTag(
@@ -259,7 +260,8 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
                 ? _haxStore.HAXStore.haxSchemaFromTag(
                     activeNode.parentNode.tagName
                   )
-                : undefined; //this.sourceView = schema.canEditSource;
+                : undefined;
+            _this.sourceView = schema.canEditSource;
           }
         });
         return _this;
@@ -414,8 +416,6 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
                   },
                   viewSource: {
                     type: Boolean,
-                    reflect: true,
-                    attribute: "view-source",
                   },
                 }
               );

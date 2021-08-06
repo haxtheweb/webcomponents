@@ -194,18 +194,28 @@ function _templateObject() {
     '"\n                event-name="hax-plate-up"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                ?disabled="',
     '"\n                role="menuitem"\n                show-text-label\n                icon="hax:keyboard-arrow-down"\n                label="',
     '"\n                event-name="hax-plate-down"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            ',
-    '\n            <div slot="tour" data-stop-content>\n              Click the drag handle once to show a menu to just move up or down\n              one item in the content OR click and drag to place the item\n              exactly where you want it to go.\n            </div>\n          </hax-toolbar-menu>\n          <hax-context-item\n            action\n            more\n            .icon="',
+    '\n            <div slot="tour" data-stop-content>\n              Click the drag handle once to show a menu to just move up or down\n              one item in the content OR click and drag to place the item\n              exactly where you want it to go.\n            </div>\n          </hax-toolbar-menu>\n          <hax-context-item\n            action\n            align-horizontal="left"\n            ?disabled="',
+    '"\n            ?hidden="',
+    '"\n            .icon="',
+    '"\n            label="',
+    " ",
+    '"\n            data-simple-tour-stop\n            data-stop-title="label"\n            event-name="select-parent-grid"\n          >\n            <div slot="tour" data-stop-content>\n              Selects the element\'s parent label.\n            </div>\n          </hax-context-item>\n          <hax-context-item\n            action\n            more\n            .icon="',
     '"\n            label="',
     '"\n            tooltip="',
     ", ",
     '"\n            ?disabled="',
-    '"\n            event-name="hax-transform-node"\n            show-text-label\n          ></hax-context-item>\n          <slot name="primary"></slot>\n          <hax-toolbar-menu icon="add" label="',
+    '"\n            event-name="hax-transform-node"\n            show-text-label\n          ></hax-context-item>\n          <slot name="primary"></slot>\n          <hax-toolbar-menu \n            icon="add" \n            label="',
+    '"\n            ?disabled="',
     '">\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="',
-    '"\n                ?disabled="',
-    '"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="',
+    '"\n                \n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="',
     '"\n                ?disabled="',
     '"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            ',
-    "\n          </hax-toolbar-menu>\n          ",
+    '\n          </hax-toolbar-menu>\n          <hax-context-item\n            action\n            ?disabled="',
+    '"\n            label="',
+    '"\n            icon="icons:content-copy"\n            event-name="hax-plate-duplicate"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Duplicate the active piece of content and place it below the\n              current item.\n            </div>\n          </hax-context-item>\n        </div>\n        <div class="group">\n          <hax-toolbar-menu\n            id="remove"\n            action\n            ?disabled="',
+    '"\n            icon="delete"\n            label="',
+    '"\n            reset-on-select\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                danger\n                align-horizontal="left"\n                show-text-label\n                role="menuitem"\n                icon="delete"\n                label="',
+    '"\n                event-name="hax-plate-delete"\n              ></hax-context-item>\n            </simple-toolbar-menu-item>\n            <div slot="tour" data-stop-content>\n              Delete the current item. You can always use the undo arrow to\n              bring this back.\n            </div>\n          </hax-toolbar-menu>\n          ',
     '\n          <hax-context-item\n            action\n            id="right"\n            class="paddle"\n            icon="hax:table-column-remove"\n            label="',
     '"\n            ?disabled="',
     '"\n            event-name="hax-plate-create-right"\n            ?hidden="',
@@ -215,7 +225,6 @@ function _templateObject() {
     '"\n            id="rightremove"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Remove a column from the split column layout. If at two columns\n              and removing it will remove the layout split and make it 100%\n              width.\n            </div>\n          </hax-context-item>\n          <slot name="secondary"></slot>\n        </div>\n        <div class="group">\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="',
     '"\n            ?disabled="',
     '"\n            event-name="hax-source-view-toggle"\n            toggles\n            ?toggled="',
-    '"\n            @click="',
     '"\n          ></hax-context-item>\n          <slot name="more"></slot>\n          <hax-context-item\n            icon="build"\n            action\n            align-horizontal="left"\n            ?disabled="',
     '"\n            label="',
     '"\n            data-simple-tour-stop\n            data-stop-title="label"\n            event-name="content-edit"\n            toggles\n            ?toggled="',
@@ -376,6 +385,7 @@ var HaxPlateContext =
         insertItemAbove: "Insert item above",
         insertItemAboveOrBelow: "Insert item above or below",
         insertItemBelow: "Insert item below",
+        selectLayout: "Select",
       };
 
       _this.registerLocalization({
@@ -405,7 +415,9 @@ var HaxPlateContext =
 
             return (0, _litElement.html)(
               _templateObject(),
-              this.hasActiveEditingElement || !this.canMoveElement,
+              this.hasActiveEditingElement ||
+                !this.canMoveElement ||
+                this.viewSource,
               this.t.dragHandle,
               !this.canMoveElement,
               this.hasActiveEditingElement,
@@ -424,37 +436,44 @@ var HaxPlateContext =
                   slot.title || slot.slot
                 );
               }),
+              this.viewSource,
+              !this.isGridLayoutSlot,
+              this.gridIcon,
+              this.t.selectLayout,
+              this.gridLabel,
               this.activeTagIcon,
               this.t.changeTo,
               this.activeTagName,
               this.t.clickToChange,
               this.disableTransform || this.viewSource,
               this.t.insertItemAboveOrBelow,
-              this.t.insertItemAbove,
               this.viewSource,
+              this.t.insertItemAbove,
               this.t.insertItemBelow,
               this.viewSource,
               (this.childSlots || []).map(function (slot, i) {
                 return (0,
                 _litElement.html)(_templateObject3(), i < 1 ? "first-slot" : "", _this2.activeNode && slot.slot === _this2.activeNode.slot, slot.slot, slot.title || slot.slot);
               }),
+              this.hasActiveEditingElement || this.viewSource,
+              this.t.duplicate,
+              this.hasActiveEditingElement || this.viewSource,
+              this.t.remove,
+              this.t.confirmDelete,
               this.ceButtons.map(function (el) {
                 return (0,
                 _litElement.html)(_templateObject4(), el.icon, el.label, el.callback, _this2.viewSource);
               }),
               this.t.addColumn,
-              this.hasActiveEditingElement,
+              this.hasActiveEditingElement || this.viewSource,
               !this.isGridPlate(),
               this.t.removeColumn,
-              this.hasActiveEditingElement,
+              this.hasActiveEditingElement || this.viewSource,
               !this.isGridPlate(),
               this.t.modifyHTMLSource,
               !this.sourceView,
               this.viewSource,
-              function (e) {
-                return (_this2.viewSource = !_this2.viewSource);
-              },
-              this.hasActiveEditingElement,
+              this.hasActiveEditingElement || this.viewSource,
               this.t.edit,
               this.trayDetail === "content-edit" &&
                 this.trayStatus !== "collapsed"
@@ -469,34 +488,6 @@ var HaxPlateContext =
                 ? arguments[0]
                 : this.activeNode;
             return node && node.tagName && node.tagName === "GRID-PLATE";
-          },
-        },
-        {
-          key: "getSlotsFromSettings",
-          value: function getSlotsFromSettings() {
-            var settings =
-              arguments.length > 0 && arguments[0] !== undefined
-                ? arguments[0]
-                : {};
-            var optionalOnly =
-              arguments.length > 1 && arguments[1] !== undefined
-                ? arguments[1]
-                : false;
-            var slotsList = [];
-            return Object.keys(settings || {})
-              .map(function (setting) {
-                return (settings[setting] || []).filter(function (prop) {
-                  var show = !optionalOnly || !prop.required;
-
-                  if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
-                    slotsList.push(prop.slot);
-                    return true;
-                  } else {
-                    return false;
-                  }
-                });
-              })
-              .flat();
           },
         },
         {
@@ -725,7 +716,6 @@ var HaxPlateContext =
                       } // reset buttons in-case this element has new ones
 
                       this.ceButtons = [];
-                      this.viewSource = false;
 
                       if (
                         !(
@@ -733,7 +723,7 @@ var HaxPlateContext =
                           this.activeNode != null
                         )
                       ) {
-                        _context.next = 20;
+                        _context.next = 19;
                         break;
                       }
 
@@ -743,11 +733,11 @@ var HaxPlateContext =
                       this.sourceView = schema.canEditSource;
 
                       if (!this.activeNode) {
-                        _context.next = 17;
+                        _context.next = 16;
                         break;
                       }
 
-                      _context.next = 9;
+                      _context.next = 8;
                       return regeneratorRuntime.awrap(
                         _haxStore.HAXStore.activeHaxBody.replaceElementWorkflow(
                           this.activeNode,
@@ -755,17 +745,17 @@ var HaxPlateContext =
                         )
                       );
 
-                    case 9:
+                    case 8:
                       _context.t0 = _context.sent;
 
                       if (_context.t0) {
-                        _context.next = 12;
+                        _context.next = 11;
                         break;
                       }
 
                       _context.t0 = [];
 
-                    case 12:
+                    case 11:
                       elements = _context.t0;
                       tag =
                         !!this.activeNode && !!this.activeNode.tagName
@@ -784,7 +774,7 @@ var HaxPlateContext =
                       this.disableTransform =
                         this.filteredBlocks.length === 0 ? true : false;
 
-                    case 17:
+                    case 16:
                       if (_haxStore.HAXStore.activeGizmo) {
                         this.activeTagName =
                           _haxStore.HAXStore.activeGizmo.title;
@@ -792,10 +782,10 @@ var HaxPlateContext =
                           _haxStore.HAXStore.activeGizmo.icon;
                       }
 
-                      _context.next = 21;
+                      _context.next = 20;
                       break;
 
-                    case 20:
+                    case 19:
                       if (_haxStore.HAXStore.activeGizmo) {
                         this.activeTagName =
                           _haxStore.HAXStore.activeGizmo.title;
@@ -806,8 +796,8 @@ var HaxPlateContext =
                         this.activeTagIcon = "";
                       }
 
-                    case 21:
-                      _context.next = 23;
+                    case 20:
+                      _context.next = 22;
                       return regeneratorRuntime.awrap(
                         _haxStore.HAXStore.runHook(
                           this.activeNode,
@@ -816,7 +806,7 @@ var HaxPlateContext =
                         )
                       );
 
-                    case 23:
+                    case 22:
                     case "end":
                       return _context.stop();
                   }
@@ -833,16 +823,14 @@ var HaxPlateContext =
         {
           key: "childSlots",
           get: function get() {
-            var oldGrid = this.isGridPlate();
+            var oldGrid = this.isGridPlate(),
+              selfSchema = this.activeNode
+                ? _haxStore.HAXStore.haxSchemaFromTag(this.activeNode.tagName)
+                : undefined;
             return oldGrid
               ? this.gridPlateSlots(this.activeNode.layout)
               : _haxStore.HAXStore.isGridPlateElement(this.activeNode)
-              ? this.getSlotsFromSettings(
-                  this.slotSchema && this.slotSchema.type === "grid"
-                    ? this.slotSchema.settings
-                    : {},
-                  true
-                )
+              ? _haxStore.HAXStore.slotsFromSchema(selfSchema || {})
               : [];
           },
         },
@@ -855,18 +843,44 @@ var HaxPlateContext =
               : _haxStore.HAXStore.isGridPlateElement(
                   this.activeNode.parentNode
                 )
-              ? this.getSlotsFromSettings(
-                  this.parentSchema && this.parentSchema.type === "grid"
-                    ? this.parentSchema.settings
-                    : {}
-                )
+              ? _haxStore.HAXStore.slotsFromSchema(this.parentSchema || {})
               : [];
+          },
+        },
+        {
+          key: "gridIcon",
+          get: function get() {
+            return this.gridProperties ? this.gridProperties.icon : undefined;
+          },
+        },
+        {
+          key: "gridLabel",
+          get: function get() {
+            return this.gridProperties
+              ? this.gridProperties.title || this.gridProperties.tag
+              : "";
+          },
+        },
+        {
+          key: "gridProperties",
+          get: function get() {
+            return this.isGridLayoutSlot && this.parentSchema.gizmo
+              ? this.parentSchema.gizmo
+              : undefined;
           },
         },
         {
           key: "filteredBlocks",
           get: function get() {
             return this.getFilteredBlocks(this.formatBlocks);
+          },
+        },
+        {
+          key: "isGridLayoutSlot",
+          get: function get() {
+            return _haxStore.HAXStore.isGridPlateElement(
+              this.activeNode.parentNode
+            );
           },
         },
       ],

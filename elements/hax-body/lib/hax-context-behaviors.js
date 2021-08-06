@@ -72,14 +72,14 @@ export const HaxContextBehaviors = function (SuperClass) {
         // this just forces this block to run when editMode is modified
         const editMode = toJS(HAXStore.editMode);
         const activeNode = toJS(HAXStore.activeNode);
-        //this.viewSource = false;
+        this.sourceView = false;
         if (activeNode && activeNode.tagName) {
           let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
           this.parentSchema =
             activeNode && activeNode.parentNode
               ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
               : undefined;
-          //this.sourceView = schema.canEditSource;
+          this.sourceView = schema.canEditSource;
         }
       });
     }
@@ -106,8 +106,6 @@ export const HaxContextBehaviors = function (SuperClass) {
         },
         viewSource: {
           type: Boolean,
-          reflect: true,
-          attribute: "view-source",
         },
       };
     }

@@ -2619,6 +2619,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
   }
   /**
+   * if given a schema, returns slots as array
+   *
+   * @param {object} schema
+   * @param {boolean} [optionalOnly=false]
+   * @returns {array}
+   * @memberof HaxStore
+   */
+  slotsFromSchema(schema, optionalOnly = false) {
+    let settings = schema ? schema.settings : {},
+      slotsList = [];
+    return Object.keys(settings || {})
+      .map((setting) =>
+        (settings[setting] || []).filter((prop) => {
+          let show = !optionalOnly || !prop.required;
+          if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
+            slotsList.push(prop.slot);
+            return true;
+          } else {
+            return false;
+          }
+        })
+      )
+      .flat();
+  }
+  /**
    * get the schema from a tag
    */
   haxSchemaFromTag(tag) {

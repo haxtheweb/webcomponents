@@ -1347,13 +1347,35 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _onKeyPress(e) {
+    let next = this.activeNode.nextElementSibling;
+    if (e.key === "Enter")
+      this.setActiveNode(this.activeNode.nextElementSibling);
+    //needed so that you can add new paragraphs before and element
+    setTimeout(() => {
+      if (
+        this.activeNode &&
+        this.activeNode === next &&
+        this.editMode &&
+        this.activeNode.previousElementSibling
+      ) {
+        this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+      }
+    }, 1);
+  }
+  /**
+   * sets active node
+   *
+   * @param {*} node
+   * @memberof HaxBody
+   */
+  setActiveNode(node) {
     if (
+      node &&
       this.editMode &&
       this.activeNode &&
-      e.key === "Enter" &&
       HAXStore.isTextElement(this.activeNode)
     ) {
-      this.activeNode = this.activeNode.nextElementSibling;
+      this.activeNode = node;
       // If the user has paused for awhile, show the menu
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
@@ -2317,7 +2339,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Respond to hax operations.
    */
   async _haxContextOperation(e) {
-    let detail = e.detail;
+    let detail = e.detail,
+      eventPath = normalizeEventPath(e);
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
@@ -2333,11 +2356,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.haxInsert("p", "", {});
         break;
       case "insert-into-active":
-        let eventPath = normalizeEventPath(e),
-          slot =
-            !eventPath || !eventPath[0]
-              ? undefined
-              : eventPath[0].getAttribute("data-slot");
+        let slot =
+          !eventPath || !eventPath[0]
+            ? undefined
+            : eventPath[0].getAttribute("data-slot");
         if (
           slot &&
           this.activeNode &&
@@ -2348,6 +2370,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode.append(p);
           this.haxInsert("p", "", { slot: slot }, p);
           p.remove();
+        }
+        break;
+      case "select-parent-grid":
+        if (
+          this.activeNode &&
+          this.activeNode.parentNode &&
+          HAXStore.isGridPlateElement(this.activeNode.parentNode)
+        ) {
+          let target = this.activeNode.parentNode;
+          this.setActiveNode(target);
+          this.positionContextMenus(target);
         }
         break;
       case "hax-source-view-toggle":
@@ -3061,6 +3094,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       slotchange: this.__layoutMonitor.bind(this),
     };
     layout.setAttribute("data-hax-layout", true);
+    if (HAXStore.isGridPlateElement(layout))
+      layout.setAttribute("data-hax-grid", true);
     if (haxRay) layout.setAttribute("data-hax-ray", haxRay);
     if (haxRay && layout.shadowRoot) {
       // apply handlers to the columns themselves
