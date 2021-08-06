@@ -389,6 +389,7 @@ var AccentCard =
                       "h5",
                       "h6",
                     ],
+                    excludedSlotWrappers: ["pre"],
                   },
                   {
                     slot: "subheading",
@@ -404,7 +405,6 @@ var AccentCard =
                     description: "Content for card.",
                     inputMethod: "textfield",
                     slotWrapper: "p",
-                    excludedSlotWrappers: [],
                   },
                   {
                     slot: "footer",

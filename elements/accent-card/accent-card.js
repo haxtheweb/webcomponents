@@ -453,6 +453,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
               "h5",
               "h6",
             ],
+            excludedSlotWrappers: ["pre"],
           },
           {
             slot: "subheading",
@@ -468,7 +469,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             description: "Content for card.",
             inputMethod: "textfield",
             slotWrapper: "p",
-            excludedSlotWrappers: [],
           },
           {
             slot: "footer",
