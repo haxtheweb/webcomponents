@@ -250,6 +250,19 @@ var AbsolutePositionStateManager =
          */
       },
       {
+        key: "_handleScroll",
+        value: function _handleScroll() {
+          if (this.__timeout) clearTimeout(this.__timeout);
+          this.__timeout = setTimeout(
+            window.AbsolutePositionStateManager.instance.updateStickyElements(),
+            250
+          );
+        },
+        /**
+         * handles resize event
+         */
+      },
+      {
         key: "_handleResize",
         value: function _handleResize() {
           if (this.__timeout) clearTimeout(this.__timeout);
@@ -334,6 +347,8 @@ var AbsolutePositionStateManager =
             this.__observer.disconnect();
           document.removeEventListener("load", this.updateElements);
           window.removeEventListener("resize", this._handleResize);
+          if (this.__watchSticky)
+            window.removeEventListener("scroll", this._handleScroll);
         },
         /**
          * Updates position for all elements on page.
@@ -348,6 +363,48 @@ var AbsolutePositionStateManager =
           this.elements.forEach(function (element) {
             return _this3.positionElement(element);
           });
+          this.loadSticky();
+        },
+        /**
+         * Updates position for all elements on page.
+         * @return {void}
+         */
+      },
+      {
+        key: "updateStickyElements",
+        value: function updateStickyElements() {
+          var _this4 = this;
+
+          this.elements.forEach(function (element) {
+            if (element.sticky) _this4.positionElement(element);
+          });
+        },
+        /**
+         * Only listen for scrolling if there is a sticky element
+         * @return {void}
+         */
+      },
+      {
+        key: "loadSticky",
+        value: function loadSticky() {
+          //only have event listeners when there are elements using manager
+          if (
+            !this.__watchSticky &&
+            this.elements.filter(function (el) {
+              return el.sticky;
+            }).length > 0
+          ) {
+            this.__watchSticky = true;
+            window.addEventListener("scroll", this._handleScroll);
+          } else if (
+            this.__watchSticky &&
+            this.elements.filter(function (el) {
+              return el.sticky;
+            }).length < 1
+          ) {
+            window.removeEventListener("scroll", this._handleScroll);
+            this.__watchSticky = false;
+          }
         },
       },
       {
@@ -378,6 +435,8 @@ var AbsolutePositionStateManager =
             el.position = "bottom";
           }
 
+          if (!el.style.top) el.style.top = "0px";
+          if (!el.style.left) el.style.left = "0px";
           var target = this.findTarget(el),
             parent = el.offsetParent,
             t = !target || target.getBoundingClientRect();
@@ -388,6 +447,8 @@ var AbsolutePositionStateManager =
             w = document.body.getBoundingClientRect(),
             p = parent.getBoundingClientRect(),
             e = el.getBoundingClientRect(),
+            maxH = window.innerHeight,
+            maxW = window.innerWidth,
             //place element before vertically?
             vertical = function vertical() {
               var pos =
@@ -426,7 +487,8 @@ var AbsolutePositionStateManager =
                   return v ? rect.width : rect.height;
                 },
                 max = min + distance(w) - distance(e),
-                align = min;
+                align = min,
+                bounds;
 
               if (el.positionAlign === "end") {
                 align += t[startAt] - distance(e) + distance(t);
@@ -436,9 +498,11 @@ var AbsolutePositionStateManager =
                 align += t[startAt] - distance(e) / 2 + distance(t) / 2;
               }
 
-              return el.fitToVisibleBounds
-                ? Math.max(min, Math.min(max, align)) + "px"
-                : align + "px"; //if element size > parent, align where parent begins
+              bounds = el.fitToVisibleBounds
+                ? Math.max(min, Math.min(max, align))
+                : align; //if element size > parent, align where parent begins
+
+              return bounds;
             },
             getCoord = function getCoord() {
               var pos =
@@ -446,7 +510,8 @@ var AbsolutePositionStateManager =
                   ? arguments[0]
                   : el.position;
 
-              var pxToNum = function pxToNum(px) {
+              var coord,
+                pxToNum = function pxToNum(px) {
                   return parseFloat(px.replace("px", ""));
                 },
                 adjust = vertical(pos)
@@ -461,11 +526,13 @@ var AbsolutePositionStateManager =
                     ? Math.max(e.width, el.scrollWidth)
                     : e.width;
 
-              return pos === "top"
-                ? t.top + adjust - eh - offset + "px"
-                : pos === "left"
-                ? t.left + adjust - ew - offset + "px"
-                : t[pos] + adjust + offset + "px";
+              coord =
+                pos === "top"
+                  ? t.top + adjust - eh - offset
+                  : pos === "left"
+                  ? t.left + adjust - ew - offset
+                  : t[pos] + adjust + offset;
+              return coord;
             },
             isFit = function isFit() {
               var pos =
@@ -502,16 +569,34 @@ var AbsolutePositionStateManager =
             el.position = flipData[el.position][1];
           } else if (flip && isFit(flipData[el.position][2])) {
             el.position = flipData[el.position][2];
-          } else {
-            el.style.top = vertical(el.position) ? getCoord() : setAlign();
-            el.style.left = vertical(el.position) ? setAlign() : getCoord(); //provide positions for element and target (in case furthor positioning adjustments are needed)
-
-            el.__positions = {
-              self: e,
-              parent: p,
-              target: t,
-            };
           }
+
+          var tt = vertical(el.position) ? getCoord() : setAlign(),
+            ll = vertical(el.position) ? setAlign() : getCoord();
+
+          if (el.sticky) {
+            var scrollTop =
+                window.pageYOffset ||
+                (
+                  document.documentElement ||
+                  document.body.parentNode ||
+                  document.body
+                ).scrollTop,
+              stickyT = t.top - e.height < 0 && t.top + t.height > 0,
+              stickyB = t.top + t.height + e.height > maxH && t.top < maxH;
+            if (el.position === "top" && stickyT) tt = scrollTop;
+            if (el.position === "bottom" && stickyB)
+              tt = scrollTop + maxH - e.height;
+          }
+
+          el.style.top = tt + "px";
+          el.style.left = ll + "px"; //provide positions for element and target (in case furthor positioning adjustments are needed)
+
+          el.__positions = {
+            self: e,
+            parent: p,
+            target: t,
+          };
         },
         /**
          * life cycle, element is removed from DOM

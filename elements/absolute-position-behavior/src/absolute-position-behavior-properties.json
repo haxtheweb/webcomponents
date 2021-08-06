@@ -41,6 +41,14 @@
     "attribute": "offset"
   },
   /**
+   * Stays on screen while target is on screen
+   */
+  "sticky": {
+    "type": "Boolean",
+    "attribute": "sticky",
+    "reflect": true
+  },
+  /**
    * Positions the tooltip to the top, right, bottom, left of its content.
    */
   "position": {

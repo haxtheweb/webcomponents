@@ -19,6 +19,7 @@
       <h3>Basic absolute-position-behavior demo</h3>
       <demo-snippet>
         <template>
+          <button id="button">Set p position.</button>
           <div contenteditable="true">
             <p id="p1">
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
@@ -44,10 +45,19 @@
               lacinia. Duis ut libero eget augue egestas suscipit. 
             </p>
             <absolute-position-behavior for="em" auto fit-to-visible-bounds>
-              <div class="box">I'm positioned below the &lt;em/&gt;</div>
+              <div class="box">I'm automatically positioned below the &lt;em/&gt;</div>
             </absolute-position-behavior>
-            <absolute-position-behavior for="strong" auto fit-to-visible-bounds position="top" sticky-top="0">
-              <div class="box">I'm positioned above the &lt;strong/&gt;</div>
+            <absolute-position-behavior for="strong" auto fit-to-visible-bounds position="left">
+              <div class="box">I'm automatically positioned next to &lt;strong/&gt;</div>
+            </absolute-position-behavior>
+            <absolute-position-behavior id="abs" for="p2" fit-to-visible-bounds position="top">
+              <div class="box">I can be manually positioned above the second &lt;p/&gt;</div>
+            </absolute-position-behavior>
+            <absolute-position-behavior auto for="p1" position="top" sticky>
+              <div class="box">I'm sticky and positioned above the first &lt;p/&gt;</div>
+            </absolute-position-behavior>
+            <absolute-position-behavior auto for="p2" position="bottom" sticky>
+              <div class="box">I'm sticky and positioned below the second &lt;p/&gt;</div>
             </absolute-position-behavior>
           </div>
           <style>
@@ -58,6 +68,11 @@
               box-shadow: 0px 1px 1px #444;
             }
           </style>
+          <script>
+            document.getElementById('button').onclick = () => {
+              document.getElementById('abs').updatePosition();
+            }
+          </script>
         </template>
       </demo-snippet>
     </div>

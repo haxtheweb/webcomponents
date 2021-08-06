@@ -104,6 +104,17 @@ class AbsolutePositionStateManager extends LitElement {
   /**
    * handles resize event
    */
+  _handleScroll() {
+    if (this.__timeout) clearTimeout(this.__timeout);
+    this.__timeout = setTimeout(
+      window.AbsolutePositionStateManager.instance.updateStickyElements(),
+      250
+    );
+  }
+
+  /**
+   * handles resize event
+   */
   _handleResize() {
     if (this.__timeout) clearTimeout(this.__timeout);
     this.__timeout = setTimeout(
@@ -178,6 +189,8 @@ class AbsolutePositionStateManager extends LitElement {
       this.__observer.disconnect();
     document.removeEventListener("load", this.updateElements);
     window.removeEventListener("resize", this._handleResize);
+    if (this.__watchSticky)
+      window.removeEventListener("scroll", this._handleScroll);
   }
 
   /**
@@ -186,6 +199,37 @@ class AbsolutePositionStateManager extends LitElement {
    */
   updateElements() {
     this.elements.forEach((element) => this.positionElement(element));
+    this.loadSticky();
+  }
+  /**
+   * Updates position for all elements on page.
+   * @return {void}
+   */
+  updateStickyElements() {
+    this.elements.forEach((element) => {
+      if (element.sticky) this.positionElement(element);
+    });
+  }
+
+  /**
+   * Only listen for scrolling if there is a sticky element
+   * @return {void}
+   */
+  loadSticky() {
+    //only have event listeners when there are elements using manager
+    if (
+      !this.__watchSticky &&
+      this.elements.filter((el) => el.sticky).length > 0
+    ) {
+      this.__watchSticky = true;
+      window.addEventListener("scroll", this._handleScroll);
+    } else if (
+      this.__watchSticky &&
+      this.elements.filter((el) => el.sticky).length < 1
+    ) {
+      window.removeEventListener("scroll", this._handleScroll);
+      this.__watchSticky = false;
+    }
   }
 
   _getParentNode(node) {
@@ -209,6 +253,8 @@ class AbsolutePositionStateManager extends LitElement {
     if (!el.position) {
       el.position = "bottom";
     }
+    if (!el.style.top) el.style.top = "0px";
+    if (!el.style.left) el.style.left = "0px";
     let target = this.findTarget(el),
       parent = el.offsetParent,
       t = !target || target.getBoundingClientRect();
@@ -218,6 +264,8 @@ class AbsolutePositionStateManager extends LitElement {
       w = document.body.getBoundingClientRect(),
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
+      maxH = window.innerHeight,
+      maxW = window.innerWidth,
       //place element before vertically?
       vertical = (pos = el.position) => pos !== "left" && pos !== "right",
       //place element before target?
@@ -235,7 +283,8 @@ class AbsolutePositionStateManager extends LitElement {
           startAt = v ? "left" : "top",
           distance = (rect) => (v ? rect.width : rect.height),
           max = min + distance(w) - distance(e),
-          align = min;
+          align = min,
+          bounds;
         if (el.positionAlign === "end") {
           align += t[startAt] - distance(e) + distance(t);
         } else if (el.positionAlign === "start") {
@@ -243,12 +292,15 @@ class AbsolutePositionStateManager extends LitElement {
         } else {
           align += t[startAt] - distance(e) / 2 + distance(t) / 2;
         }
-        return el.fitToVisibleBounds
-          ? Math.max(min, Math.min(max, align)) + "px"
-          : align + "px"; //if element size > parent, align where parent begins
+        bounds = el.fitToVisibleBounds
+          ? Math.max(min, Math.min(max, align))
+          : align; //if element size > parent, align where parent begins
+
+        return bounds;
       },
       getCoord = (pos = el.position) => {
-        let pxToNum = (px) => parseFloat(px.replace("px", "")),
+        let coord,
+          pxToNum = (px) => parseFloat(px.replace("px", "")),
           adjust = vertical(pos)
             ? pxToNum(el.style.top) - e.top
             : pxToNum(el.style.left) - e.left,
@@ -260,11 +312,13 @@ class AbsolutePositionStateManager extends LitElement {
             window.getComputedStyle(el, null).overflowX == "visible"
               ? Math.max(e.width, el.scrollWidth)
               : e.width;
-        return pos === "top"
-          ? t.top + adjust - eh - offset + "px"
-          : pos === "left"
-          ? t.left + adjust - ew - offset + "px"
-          : t[pos] + adjust + offset + "px";
+        coord =
+          pos === "top"
+            ? t.top + adjust - eh - offset
+            : pos === "left"
+            ? t.left + adjust - ew - offset
+            : t[pos] + adjust + offset;
+        return coord;
       },
       isFit = (pos = el.position) => {
         //determines if room for element between parent and target
@@ -292,16 +346,30 @@ class AbsolutePositionStateManager extends LitElement {
       el.position = flipData[el.position][1];
     } else if (flip && isFit(flipData[el.position][2])) {
       el.position = flipData[el.position][2];
-    } else {
-      el.style.top = vertical(el.position) ? getCoord() : setAlign();
-      el.style.left = vertical(el.position) ? setAlign() : getCoord();
-      //provide positions for element and target (in case furthor positioning adjustments are needed)
-      el.__positions = {
-        self: e,
-        parent: p,
-        target: t,
-      };
     }
+    let tt = vertical(el.position) ? getCoord() : setAlign(),
+      ll = vertical(el.position) ? setAlign() : getCoord();
+    if (el.sticky) {
+      let scrollTop =
+          window.pageYOffset ||
+          (
+            document.documentElement ||
+            document.body.parentNode ||
+            document.body
+          ).scrollTop,
+        stickyT = t.top - e.height < 0 && t.top + t.height > 0,
+        stickyB = t.top + t.height + e.height > maxH && t.top < maxH;
+      if (el.position === "top" && stickyT) tt = scrollTop;
+      if (el.position === "bottom" && stickyB) tt = scrollTop + maxH - e.height;
+    }
+    el.style.top = tt + "px";
+    el.style.left = ll + "px";
+    //provide positions for element and target (in case furthor positioning adjustments are needed)
+    el.__positions = {
+      self: e,
+      parent: p,
+      target: t,
+    };
   }
 
   /**

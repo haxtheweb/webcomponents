@@ -28,6 +28,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
       this.offset = 0;
       this.position = "bottom";
       this.target = null;
+      this.sticky = false;
       this.__positions = {};
       this.__observe = false;
       this.__manager = window.AbsolutePositionStateManager.requestAvailability();
@@ -45,6 +46,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
         if (propName === "positionAlign") this.updatePosition();
         if (propName === "target") this.updatePosition();
         if (propName === "hidden") this.updatePosition();
+        if (propName === "sticky") this.updatePosition();
       });
     }
 
@@ -71,7 +73,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
-      if (this.__observe === true) {
+      if (!this.auto || this.__observe === true) {
         this.__manager.positionElement(this);
       }
     }
