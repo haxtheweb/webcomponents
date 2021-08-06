@@ -52,6 +52,7 @@
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-modal": "^3.0.6",
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
+    "@lrnwebcomponents/simple-toast": "^3.0.6",
     "@lrnwebcomponents/word-count": "^3.0.6",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",

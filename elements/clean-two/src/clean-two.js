@@ -192,9 +192,11 @@ class CleanTwo extends HAXCMSRememberRoute(
           margin: 0;
           background-color: white;
           --site-active-title-font-size: 22px;
-          --site-active-title-line-height: 22px;
+          --site-active-title-line-height: 1em;
           font-size: 22px;
-          line-height: 22px;
+        }
+        site-active-title h1 {
+          line-height: 1em;
         }
 
         .body-wrapper {

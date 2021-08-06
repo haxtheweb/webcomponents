@@ -61,6 +61,7 @@
     "@lrnwebcomponents/simple-colors": "^3.0.6",
     "@lrnwebcomponents/simple-datetime": "^3.0.6",
     "@lrnwebcomponents/simple-fields": "^3.0.6",
+    "@lrnwebcomponents/simple-toast": "^3.0.6",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-icon-picker": "^3.0.6",
     "@lrnwebcomponents/simple-picker": "^3.0.6",
