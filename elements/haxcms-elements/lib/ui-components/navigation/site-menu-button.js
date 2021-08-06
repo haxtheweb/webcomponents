@@ -42,13 +42,18 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           cursor: pointer;
           transition: 0.2s color linear;
           min-width: unset;
-          background-color: transparent;
+          background-color: var(
+            --site-menu-button-button-background-color,
+            transparent
+          );
           border: 0;
-          border-radius: 0;
-          height: 100%;
-          width: 100%;
+          border-radius: var(--site-menu-button-button-border-radius, 0);
+          height: var(--site-menu-button-button-height, 100%);
+          width: var(--site-menu-button-button-width, 100%);
           justify-content: center;
           align-items: center;
+          padding: 0;
+          margin: 0;
         }
         button:hover,
         button:focus,
@@ -71,7 +76,6 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         }
         simple-icon-lite {
           display: block;
-          margin-top: 25px;
           font-size: 16px;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);

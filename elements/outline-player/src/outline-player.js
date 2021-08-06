@@ -3,6 +3,9 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -34,6 +37,17 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           background-color: var(--outline-player-light);
         }
 
+        simple-icon-button-lite:not(:defined),
+        site-breadcrumb:not(:defined),
+        site-rss-button:not(:defined),
+        site-print-button:not(:defined),
+        site-menu-button:not(:defined),
+        site-modal:not(:defined),
+        site-git-corner:not(:defined),
+        site-menu-button:not(:defined) {
+          display: none;
+        }
+
         :host([closed]) {
           --app-drawer-width: 0px;
         }
@@ -59,8 +73,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         }
 
         h1 {
-          font-size: 48px;
-          line-height: 16px;
+          font-size: 36px;
         }
 
         h2 {
@@ -119,16 +132,8 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           display: inline-block;
           word-break: break-word;
         }
-        app-drawer-layout[narrow] #contentcontainer {
-          padding-top: 64px;
-        }
         #content {
           padding: 8px 8px 8px 64px;
-        }
-        #menutoggle {
-          display: block;
-          float: left;
-          margin-right: 16px;
         }
 
         /* Required for HAX */
@@ -145,7 +150,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         #contentcontainer {
           max-width: 840px;
           display: block;
-          margin: 0;
+          margin: 40px;
           padding: 0 16px 16px 16px;
           flex: none;
           transition: 0.5s opacity ease-in-out;
@@ -153,22 +158,17 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         #contentcontainer h-a-x {
           margin: 0;
         }
-        #menubuttoncontainer {
-          display: flex;
-          justify-content: center;
-          padding: 8px 0 0 0;
-        }
         site-menu-button {
           display: inline-flex;
         }
         site-print-button {
           display: inline-flex;
-          margin-right: 20px;
         }
         site-active-title {
           --site-active-title-margin: 0px;
           --site-active-title-padding: 0px;
-          padding: 10px;
+          margin: 0 0 0 24px;
+          padding: 0;
           display: block;
         }
         @media screen and (max-width: 800px) {
@@ -181,6 +181,56 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           #content {
             padding: 8px 8px 8px 8px;
           }
+        }
+        app-drawer {
+          box-shadow: 0 0 6px -3px var(--outline-player-dark);
+          overflow: hidden;
+          --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+          z-index: 1000000;
+        }
+        .nav-btns {
+          display: flex;
+        }
+        .nav-btns site-menu-button,
+        .nav-btns site-print-button,
+        .nav-btns site-modal,
+        .nav-btns simple-icon-button-lite {
+          display: inline-flex;
+          height: 32px;
+          width: 32px;
+          margin: 0 16px;
+          padding: 0;
+        }
+        site-menu {
+          height: calc(100vh - 64px);
+          color: #000000;
+          padding: 0;
+          background-color: #ffffff;
+          --site-menu-active-color: rgba(0, 0, 0, 0.1);
+          --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
+          --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
+          --site-menu-bg-color: #fafafa;
+          --site-menu-padding: 0;
+          --site-menu-background-color: #ffffff;
+          --site-menu-color: #000000;
+          --site-menu-container-padding: 0;
+          --site-menu-container-background-color: #ffffff;
+          --site-menu-container-color: #000000;
+          --site-menu-item-active-item-color: #000000;
+        }
+        site-menu-button {
+          --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.2);
+        }
+        site-breadcrumb {
+          display: block;
+          margin: 24px 24px 0;
+        }
+        :host([responsive-size="xs"]) site-breadcrumb,
+        :host([responsive-size="sm"]) site-breadcrumb {
+          display: none;
+        }
+        :host([responsive-size="xs"]) site-git-corner {
+          display: none;
         }
       `,
     ];
@@ -201,6 +251,10 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     this.closed = false;
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+    );
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
@@ -225,51 +279,32 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
     );
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+    );
+  }
+  /**
+   * Delay importing site-search until we click to open it directly
+   */
+  siteModalClick(e) {
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    ).then((m) => {
+      // weird looking but forces focus when it opens the search form
+      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+    });
   }
   // render function
   render() {
     return html`
+      <site-git-corner part="git-corner-btn"></site-git-corner>
       <custom-style>
         <style>
           app-drawer {
-            box-shadow: 0 0 6px -3px var(--outline-player-dark);
-            overflow: hidden;
-            --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
             --app-drawer-content-container: {
               overflow: hidden;
-            }
-          }
-          site-menu {
-            height: calc(100vh - 64px);
-            color: #000000;
-            padding: 0;
-            background-color: #ffffff;
-            --site-menu-active-color: rgba(0, 0, 0, 0.1);
-            --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
-            --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
-            --site-menu-bg-color: #fafafa;
-            --site-menu-padding: 0;
-            --site-menu-background-color: #ffffff;
-            --site-menu-color: #000000;
-
-            --site-menu-container-padding: 0;
-            --site-menu-container-background-color: #ffffff;
-            --site-menu-container-color: #000000;
-
-            --site-menu-item-active-item-color: #000000;
-          }
-          site-menu-button {
-            --site-menu-button-button-hover-background-color: rgba(
-              0,
-              0,
-              0,
-              0.2
-            );
-            --site-menu-button-button: {
-              border-radius: 50%;
-              background-color: rgba(0, 0, 0, 0.1);
-              height: 40px;
-              width: 40px;
             }
           }
         </style>
@@ -286,31 +321,39 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             .opened="${this.opened}"
             @opened-changed="${this._openedChanged}"
           >
-            <div id="menubuttoncontainer">
-              <site-print-button></site-print-button>
-              <site-menu-button
-                type="prev"
-                position="bottom"
-                raised
-              ></site-menu-button>
-              <site-menu-button
-                type="next"
-                position="bottom"
-                raised
-              ></site-menu-button>
-            </div>
             <site-menu></site-menu>
           </app-drawer>
         </nav>
         <div id="content">
           <header>
-            <site-git-corner></site-git-corner>
-            <simple-icon-button
-              icon="menu"
-              id="menutoggle"
-              @click="${this._toggleMenu}"
-            ></simple-icon-button>
-            <site-active-title></site-active-title>
+            <div class="nav-btns">
+              <simple-icon-button-lite
+                icon="menu"
+                @click="${this._toggleMenu}"
+              ></simple-icon-button-lite>
+              <site-modal
+                @site-modal-click="${this.siteModalClick}"
+                ?disabled="${this.editMode}"
+                id="searchmodalbtn"
+                icon="icons:search"
+                title="Search site"
+                button-label="Search"
+                part="search-btn"
+              >
+                <site-search></site-search>
+              </site-modal>
+              <site-print-button part="print-btn"></site-print-button>
+              <site-menu-button
+                type="prev"
+                position="bottom"
+              ></site-menu-button>
+              <site-menu-button
+                type="next"
+                position="bottom"
+              ></site-menu-button>
+            </div>
+            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+            <site-active-title part="page-title"></site-active-title>
             <div><slot name="title"></slot></div>
           </header>
           <main>
@@ -404,6 +447,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+
     autorun((reaction) => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
@@ -416,6 +460,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+
     super.disconnectedCallback();
   }
 }

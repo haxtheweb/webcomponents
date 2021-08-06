@@ -24,8 +24,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     });
   }
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
-      ...super.properties,
+      ...props,
       /**
        * Class for the color
        */

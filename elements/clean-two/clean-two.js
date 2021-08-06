@@ -35,6 +35,7 @@ class CleanTwo extends HAXCMSRememberRoute(
         :host {
           display: block;
           font-size: 16px;
+          background-color: white;
           --haxcms-base-styles-body-font-size:16px;
           --hax-base-styles-a-font-size: 16px;
           --hax-base-styles-p-font-size: 16px;
@@ -127,12 +128,15 @@ class CleanTwo extends HAXCMSRememberRoute(
         site-git-corner {
           height: 40px;
           width: 40px;
-          margin:0;
+          margin-left: -66px;
           padding:0;
+          --github-corner-size: 40px;
           --site-git-corner-color: black;
           --site-git-corner-background: transparent;
           background-color: transparent;
           color: black;
+          padding: 8px;
+          display: block;
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
@@ -171,6 +175,8 @@ class CleanTwo extends HAXCMSRememberRoute(
           font-family: Content-font, Roboto, sans-serif;
           font-weight: 500;
           line-height: 1.5;
+          max-height: 50px;
+          overflow: hidden;
         }
         site-menu-button[type="next"] div {
          text-align: left; 
@@ -191,12 +197,9 @@ class CleanTwo extends HAXCMSRememberRoute(
           flex: auto;
           margin: 0;
           background-color: white;
-          --site-active-title-font-size: 22px;
-          --site-active-title-line-height: 22px;
-          font-size: 22px;
-          line-height: 22px;
+          --site-active-title-line-height: 1em;
         }
-
+        
         .body-wrapper {
           flex: 1;
           height: auto;
@@ -204,7 +207,7 @@ class CleanTwo extends HAXCMSRememberRoute(
           font-size: 16px;
           color: #3B454E;
           background-color: #ffffff;
-          width: auto;
+          width: 100%;
           margin: 0 auto;
           display: flex;
           padding: 0;
@@ -213,6 +216,10 @@ class CleanTwo extends HAXCMSRememberRoute(
           -moz-transition: margin-bottom 250ms ease;
           -webkit-box-align: stretch;
           -webkit-transition: margin-bottom 250ms ease;
+          overflow-x: hidden;
+        }
+        :host([is-logged-in]) .body-wrapper {
+          width: calc(100% - 48px);
         }
         :host([is-logged-in][menu-open]) .body-wrapper {
           margin-left: 48px;
@@ -224,10 +231,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           display: -webkit-flex;
           display: flex;
         }
-
-        :host([is-logged-in][menu-open]) .body-wrapper nav {
-          margin-left: 48px;
-        }
         :host([is-logged-in][menu-open]) .body-wrapper .content-wrapper {
           margin-left: 0;
         }
@@ -236,7 +239,7 @@ class CleanTwo extends HAXCMSRememberRoute(
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
-          padding: 32px 64px;
+          padding: 0 64px 32px;
         }
         
         nav {
@@ -245,7 +248,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           display: -ms-flexbox;
           display: -webkit-flex;
           flex: 0 0 auto;
-          padding-left: calc((100vw - 1448px) / 3);
           display: flex;
           z-index: 15;
           min-width: 300px;
@@ -264,7 +266,7 @@ class CleanTwo extends HAXCMSRememberRoute(
           display: none;
           background-color: #F5F7F9;
         }
-        @media screen and (min-width: 1024px){
+        @media screen and (min-width: 900px){
           .left-col {
             flex: 0 0 auto;
             width: auto;
@@ -291,7 +293,7 @@ class CleanTwo extends HAXCMSRememberRoute(
           margin: 32px 0 32px 0;
           display: block;
           padding: 0;
-          position: fixed;
+          position: sticky;
           font-size: 15px;
           overflow-x: hidden;
           -webkit-overflow-scrolling: touch;
@@ -303,7 +305,6 @@ class CleanTwo extends HAXCMSRememberRoute(
 
         .content-wrapper {
           max-width: 100%;
-          flex: 1 1 auto;
           margin: 0;
           display: flex;
           padding: 0;
@@ -322,7 +323,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           height: 40px;
         }
         .header #haxcmsmobilemenubutton {
-          float: left;
           margin-left: -52px;
           padding: 8px;
         }
@@ -338,7 +338,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           margin: 0px 16px;
           display: block;
           padding: 0;
-          max-width: 600px;
         }
         @media screen and (max-width: 400px) {
           .content {
@@ -404,9 +403,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           }
         }
         @media screen and (min-width: 1024px) {
-          .content-wrapper {
-            margin: 0px 88px;
-          }
           .content {
             width: 48vw;
           }
@@ -493,17 +489,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           font-size: 12px;
           color: #444444;
         }
-        .footer-right {
-          display: flex;
-          align-items: center;
-          flex-direction: row;
-          -webkit-box-align: center;
-          -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-          margin: 0px;
-          padding: 0px;
-          overflow: hidden;
-        }
         simple-icon-button,
         site-rss-button,
         replace-tag[with="site-rss-button"],
@@ -512,6 +497,15 @@ class CleanTwo extends HAXCMSRememberRoute(
           color: black;
           --haxcms-tooltip-color: #F5F5F5;
           --haxcms-tooltip-background-color: #252737;
+        }
+        site-rss-button,
+        site-print-button,
+        site-modal {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          padding: 8px;
+          display: block;
+          margin-left: -52px;
         }
       `,
     ];
@@ -541,21 +535,45 @@ class CleanTwo extends HAXCMSRememberRoute(
         <div class="content-wrapper">
           <div class="content">
             <header class="header">
-              ${this.HAXCMSMobileMenuButton()}
-              ${this.responsiveSize != "xl"
+              ${!["lg", "xl"].includes(this.responsiveSize)
                 ? html`
-                    <replace-tag
-                      with="site-menu-content"
-                      import-only
-                    ></replace-tag>
                     <site-menu-content
                       .part="${this.editMode ? `edit-mode-active` : ``}"
                       mobile
                     ></site-menu-content>
                   `
                 : ``}
-              <replace-tag with="site-active-title" import-only></replace-tag>
-              <site-active-title></site-active-title>
+              ${this.HAXCMSMobileMenuButton()}
+              <site-modal
+                @site-modal-click="${this.siteModalClick}"
+                ?disabled="${this.editMode}"
+                icon="icons:search"
+                title="Search site"
+                button-label="Search"
+                part="search-btn"
+              >
+                <site-search></site-search>
+              </site-modal>
+              <replace-tag
+                with="site-print-button"
+                class="btn js-toolbar-action"
+                import-method="view"
+                part="print-btn"
+              ></replace-tag>
+              <replace-tag
+                with="site-rss-button"
+                type="rss"
+                import-method="view"
+                part="rss-btn"
+              ></replace-tag>
+              <replace-tag
+                with="site-git-corner"
+                size="small"
+                circle
+                direction="left"
+                import-method="view"
+                part="git-corner-btn"
+              ></replace-tag>
             </header>
             <site-search
               hide-input
@@ -565,6 +583,8 @@ class CleanTwo extends HAXCMSRememberRoute(
               ?hidden="${this.searchTerm != "" ? false : true}"
             ></site-search>
             <main>
+              <replace-tag with="site-active-title" import-only></replace-tag>
+              <site-active-title></site-active-title>
               <article
                 id="contentcontainer"
                 ?hidden="${this.searchTerm != "" ? true : false}"
@@ -616,39 +636,14 @@ class CleanTwo extends HAXCMSRememberRoute(
                     .timestamp="${this.pageTimestamp}"
                   ></simple-datetime>
                 </div>
-                <div class="footer-right" part="footer-right">
-                  <replace-tag
-                    with="site-print-button"
-                    class="btn js-toolbar-action"
-                    import-method="view"
-                    part="print-btn"
-                  ></replace-tag>
-                  <replace-tag
-                    with="site-rss-button"
-                    type="rss"
-                    import-method="view"
-                    part="rss-btn"
-                  ></replace-tag>
-                  <replace-tag
-                    with="site-git-corner"
-                    size="small"
-                    circle
-                    import-method="view"
-                    part="git-corner-btn"
-                  ></replace-tag>
-                </div>
               </div>
             </footer>
           </div>
         </div>
-        ${this.responsiveSize == "xl"
+        ${["lg", "xl"].includes(this.responsiveSize)
           ? html`
               <div class="right-col">
                 <div class="site-menu-content-wrapper">
-                  <replace-tag
-                    with="site-menu-content"
-                    import-only
-                  ></replace-tag>
                   <site-menu-content
                     .part="${this.editMode ? `edit-mode-active` : ``}"
                   ></site-menu-content>
@@ -668,8 +663,12 @@ class CleanTwo extends HAXCMSRememberRoute(
   }
   // properties available to the custom element for data binding
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
-      ...super.properties,
+      ...props,
       searchTerm: {
         type: String,
       },
@@ -714,6 +713,25 @@ class CleanTwo extends HAXCMSRememberRoute(
         this.pageTimestamp = toJS(store.activeItem.metadata.updated);
       }
       this.__disposer.push(reaction);
+    });
+
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+    );
+    // prettier-ignore
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js");
+  }
+  /**
+   * Delay importing site-search until we click to open it directly
+   */
+  siteModalClick(e) {
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    ).then((m) => {
+      // weird looking but forces focus when it opens the search form
+      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });
   }
   /**

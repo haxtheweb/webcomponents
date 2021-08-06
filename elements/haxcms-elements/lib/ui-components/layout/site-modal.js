@@ -27,6 +27,12 @@ class SiteModal extends LitElement {
         simple-icon-button-lite {
           color: var(--site-modal-icon-color);
         }
+        simple-modal-template {
+          --simple-modal-width: 50vw;
+          --simple-modal-height: 50vh;
+          --simple-modal-min-width: 50vw;
+          --simple-modal-min-height: 50vh;
+        }
       `,
     ];
   }

@@ -60,7 +60,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
             if (!format) {
               store.toast(
                 this.t.resumeMessage,
-                4000,
+                8000,
                 "capsule",
                 null,
                 null,

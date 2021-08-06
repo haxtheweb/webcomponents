@@ -10,6 +10,19 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   }
   constructor() {
     super();
+    this.hierarchyTags = [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "relative-heading",
+      "video-player",
+    ];
+    this.fallbackText = {
+      "video-player": "Video",
+    };
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {

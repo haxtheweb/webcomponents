@@ -97,6 +97,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         >
           <replace-tag
             with="site-menu"
+            part="site-menu"
             id="sitemenu"
             import-method="view"
           ></replace-tag>

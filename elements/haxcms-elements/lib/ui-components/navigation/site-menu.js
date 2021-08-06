@@ -22,6 +22,9 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         :host {
           display: block;
           height: 100vh;
+          scrollbar-color: var(--site-menu-background-color)
+            var(--site-menu-background-color);
+          scrollbar-width: thin;
         }
         map-menu {
           padding: var(--site-menu-padding);
@@ -36,6 +39,10 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             --site-menu-item-active-item-color
           );
           --map-menu-font-size: var(--site-menu-font-size);
+
+          scrollbar-color: var(--site-menu-background-color)
+            var(--site-menu-background-color);
+          scrollbar-width: thin;
         }
         map-menu:not(:defined) {
           display: none;

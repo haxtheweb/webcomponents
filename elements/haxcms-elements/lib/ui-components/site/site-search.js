@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -84,6 +85,7 @@ class SiteSearch extends LitElement {
   }
   constructor() {
     super();
+    this.whileLoading = false;
     this.hideInput = false;
     this.search = "";
     this.showPath = false;
@@ -102,6 +104,7 @@ class SiteSearch extends LitElement {
         id="search"
         always-float-label
         label="Search"
+        placeholder="Type at least 3 letters to start search.."
         type="text"
         @value-changed="${this._searchValueChanged}"
       >
@@ -115,7 +118,10 @@ class SiteSearch extends LitElement {
           `
         : html``}
       <lunr-search id="lunr"></lunr-search>
-
+      <loading-indicator
+        full
+        ?loading="${this.whileLoading}"
+      ></loading-indicator>
       ${this.__results.map(
         (item) => html`
           <a
@@ -150,12 +156,23 @@ class SiteSearch extends LitElement {
         },
       })
     );
+    // hide modal if it's there
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
   }
   _searchValueChanged(e) {
     this.search = e.detail.value;
   }
   __resultsChanged(e) {
     if (e.detail.value) {
+      setTimeout(() => {
+        this.whileLoading = false;
+      }, 100);
       this.__results = [...e.detail.value];
     } else {
       this.__results = [];
@@ -169,6 +186,9 @@ class SiteSearch extends LitElement {
       dataSource: {
         type: String,
         attribute: "data-source",
+      },
+      whileLoading: {
+        type: Boolean,
       },
       showDate: {
         type: Boolean,
@@ -203,7 +223,7 @@ class SiteSearch extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "search") {
+      if (propName == "search" && this[propName]) {
         this._searchChanged(this[propName], oldValue);
         this.shadowRoot.querySelector("#lunr").search = this[propName];
       }
@@ -216,9 +236,12 @@ class SiteSearch extends LitElement {
    * Notice search term changed and let's fire up some results
    */
   _searchChanged(term, oldTerm) {
-    // only load up the lunr source data once they have 3 or more characters
-    if (term.length >= 3 && typeof this.dataSource === typeof undefined) {
-      this.dataSource = "lunrSearchIndex.json";
+    if (term.length >= 3) {
+      this.whileLoading = true;
+      // only load up the lunr source data once they have 3 or more characters
+      if (typeof this.dataSource === typeof undefined) {
+        this.dataSource = "lunrSearchIndex.json";
+      }
     }
   }
 }

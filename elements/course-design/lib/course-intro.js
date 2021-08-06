@@ -13,6 +13,7 @@ class CourseIntro extends LitElement {
           display: block;
           min-height: 100vh;
           padding-bottom: 30vh;
+          color: inherit;
           background-color: rgba(var(--course-intro-bg-color), 1);
         }
       `,
