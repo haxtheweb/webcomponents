@@ -505,7 +505,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         ? this.formatButtonElement.rangeOrMatchingAncestor().tagName
         : undefined;
 
-    if (this.formatButtonElement) {
+    if (
+      this.formatButtonElement &&
+      this.formatButtonElement.blocks !== this.filteredBlocks
+    ) {
       this.formatButtonElement.blocks = this.filteredBlocks;
       this.formatButtonElement.value = (currentTag || "").toLowerCase();
       if (this.filteredBlocks.length < 2) {
