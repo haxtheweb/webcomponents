@@ -72,11 +72,31 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           width: 100%;
           align-items: stretch;
         }
+        *::part(morebutton) {
+          --simple-toolbar-button-color: var(--hax-ui-color);
+          --simple-toolbar-button-bg: var(--hax-ui-background-color);
+          --simple-toolbar-button-border-color: transparent;
+          --simple-toolbar-button-hover-color: var(--hax-ui-color);
+          --simple-toolbar-button-hover-bg: var(
+            --hax-ui-background-color-secondary
+          );
+          --simple-toolbar-button-toggled-color: var(--hax-ui-color-accent);
+          --simple-toolbar-button-toggled-bg: var(--hax-ui-background-color);
+          --simple-toolbar-button-toggled-border-color: var(
+            --hax-ui-color-accent
+          );
+          --simple-toolbar-button-disabled-opacity: 1;
+          --simple-toolbar-button-disabled-color: var(--hax-ui-disabled-color);
+          --simple-toolbar-button-disabled-bg: var(--hax-ui-background-color);
+          --simple-toolbar-button-disabled-border-color: transparent;
+          align-self: flex-end;
+        }
         #remove {
           max-width: 44px;
           overflow: visible;
         }
         hax-toolbar {
+          max-width: 100%;
           display: flex;
           align-items: stretch;
           justify-content: flex-start;

@@ -180,6 +180,13 @@ var AbsolutePositionStateManager =
             __timeout: {
               type: Object,
             },
+
+            /**
+             * resize timeout
+             */
+            __timeout2: {
+              type: Object,
+            },
           };
         },
         /**
@@ -252,10 +259,10 @@ var AbsolutePositionStateManager =
       {
         key: "_handleScroll",
         value: function _handleScroll() {
-          if (this.__timeout) clearTimeout(this.__timeout);
-          this.__timeout = setTimeout(
+          if (this.__timeout2) clearTimeout(this.__timeout2);
+          this.__timeout2 = setTimeout(
             window.AbsolutePositionStateManager.instance.updateStickyElements(),
-            250
+            1000
           );
         },
         /**
@@ -447,8 +454,6 @@ var AbsolutePositionStateManager =
             w = document.body.getBoundingClientRect(),
             p = parent.getBoundingClientRect(),
             e = el.getBoundingClientRect(),
-            maxH = window.innerHeight,
-            maxW = window.innerWidth,
             //place element before vertically?
             vertical = function vertical() {
               var pos =
@@ -582,11 +587,18 @@ var AbsolutePositionStateManager =
                   document.body.parentNode ||
                   document.body
                 ).scrollTop,
-              stickyT = t.top - e.height < 0 && t.top + t.height > 0,
-              stickyB = t.top + t.height + e.height > maxH && t.top < maxH;
-            if (el.position === "top" && stickyT) tt = scrollTop;
+              maxH = window.innerHeight,
+              eheight =
+                e.height === 0 && el.children && el.children[0]
+                  ? el.children[0].offsetHeight
+                  : e.height,
+              stickyT = t.top - e.height < 0 && t.top + t.height > 20 + eheight,
+              stickyB =
+                t.top + t.height + e.height > maxH && t.top < maxH - eheight;
+            if (el.position === "top" && stickyT)
+              tt = scrollTop - parent.offsetTop + (eheight - e.height);
             if (el.position === "bottom" && stickyB)
-              tt = scrollTop + maxH - e.height;
+              tt = scrollTop + maxH - parent.offsetTop - eheight;
           }
 
           el.style.top = tt + "px";

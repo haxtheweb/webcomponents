@@ -175,19 +175,28 @@ var AbsolutePositionBehaviorClass = function AbsolutePositionBehaviorClass(
           value: function updated(changedProperties) {
             var _this2 = this;
 
+            var updatePosition = false;
             changedProperties.forEach(function (oldValue, propName) {
               if (propName === "auto" && _this2.auto) _this2.setPosition();
               if (propName === "auto" && !_this2.auto) _this2.unsetPosition();
-              if (propName === "fitToVisibleBounds") _this2.updatePosition();
-              if (propName === "for") _this2.updatePosition();
-              if (propName === "offset") _this2.updatePosition();
-              if (propName === "position") _this2.updatePosition();
-              if (propName === "justify") _this2.updatePosition();
-              if (propName === "positionAlign") _this2.updatePosition();
-              if (propName === "target") _this2.updatePosition();
-              if (propName === "hidden") _this2.updatePosition();
-              if (propName === "sticky") _this2.updatePosition();
+              if (
+                [
+                  "fitToVisibleBounds",
+                  "for",
+                  "offset",
+                  "position",
+                  "justify",
+                  "positionAlign",
+                  "target",
+                  "hidden",
+                  "sticky",
+                ].includes(propName) &&
+                _this2[propName] !== oldValue
+              )
+                updatePosition = true;
             });
+            if (updatePosition) console.log(changedProperties, this.target);
+            if (updatePosition) this.updatePosition();
           },
           /**
            * Registers element with AbsolutePositionStateManager

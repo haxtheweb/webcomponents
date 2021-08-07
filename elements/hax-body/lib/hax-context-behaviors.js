@@ -22,6 +22,7 @@ export const HaxContextBehaviors = function (SuperClass) {
             display: block;
             pointer-events: none;
             --hax-ui-spacing-sm: 1px;
+            max-width: 100%;
           }
           :host [hidden] {
             display: none;
@@ -47,7 +48,13 @@ export const HaxContextBehaviors = function (SuperClass) {
           }
           hax-toolbar {
             flex: 0 1 auto;
-            border: none !important;
+          }
+          hax-toolbar::part(morebutton) {
+            border: 1px solid
+              var(
+                --simple-toolbar-group-border-width,
+                var(--simple-toolbar-border-width, 1px)
+              ) !important;
           }
           hax-toolbar[collapse-disabled]::part(morebutton) {
             display: none !important;

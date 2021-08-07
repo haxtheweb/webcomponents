@@ -54,6 +54,12 @@ class AbsolutePositionStateManager extends LitElement {
       __timeout: {
         type: Object,
       },
+      /**
+       * resize timeout
+       */
+      __timeout2: {
+        type: Object,
+      },
     };
   }
 
@@ -105,10 +111,10 @@ class AbsolutePositionStateManager extends LitElement {
    * handles resize event
    */
   _handleScroll() {
-    if (this.__timeout) clearTimeout(this.__timeout);
-    this.__timeout = setTimeout(
+    if (this.__timeout2) clearTimeout(this.__timeout2);
+    this.__timeout2 = setTimeout(
       window.AbsolutePositionStateManager.instance.updateStickyElements(),
-      250
+      1000
     );
   }
 
@@ -264,8 +270,6 @@ class AbsolutePositionStateManager extends LitElement {
       w = document.body.getBoundingClientRect(),
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
-      maxH = window.innerHeight,
-      maxW = window.innerWidth,
       //place element before vertically?
       vertical = (pos = el.position) => pos !== "left" && pos !== "right",
       //place element before target?
@@ -357,10 +361,17 @@ class AbsolutePositionStateManager extends LitElement {
             document.body.parentNode ||
             document.body
           ).scrollTop,
-        stickyT = t.top - e.height < 0 && t.top + t.height > 0,
-        stickyB = t.top + t.height + e.height > maxH && t.top < maxH;
-      if (el.position === "top" && stickyT) tt = scrollTop;
-      if (el.position === "bottom" && stickyB) tt = scrollTop + maxH - e.height;
+        maxH = window.innerHeight,
+        eheight =
+          e.height === 0 && el.children && el.children[0]
+            ? el.children[0].offsetHeight
+            : e.height,
+        stickyT = t.top - e.height < 0 && t.top + t.height > 20 + eheight,
+        stickyB = t.top + t.height + e.height > maxH && t.top < maxH - eheight;
+      if (el.position === "top" && stickyT)
+        tt = scrollTop - parent.offsetTop + (eheight - e.height);
+      if (el.position === "bottom" && stickyB)
+        tt = scrollTop + maxH - parent.offsetTop - eheight;
     }
     el.style.top = tt + "px";
     el.style.left = ll + "px";

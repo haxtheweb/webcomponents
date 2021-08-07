@@ -145,19 +145,28 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     }
 
     updated(changedProperties) {
+      let updatePosition = false;
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "auto" && this.auto) this.setPosition();
         if (propName === "auto" && !this.auto) this.unsetPosition();
-        if (propName === "fitToVisibleBounds") this.updatePosition();
-        if (propName === "for") this.updatePosition();
-        if (propName === "offset") this.updatePosition();
-        if (propName === "position") this.updatePosition();
-        if (propName === "justify") this.updatePosition();
-        if (propName === "positionAlign") this.updatePosition();
-        if (propName === "target") this.updatePosition();
-        if (propName === "hidden") this.updatePosition();
-        if (propName === "sticky") this.updatePosition();
+        if (
+          [
+            "fitToVisibleBounds",
+            "for",
+            "offset",
+            "position",
+            "justify",
+            "positionAlign",
+            "target",
+            "hidden",
+            "sticky",
+          ].includes(propName) &&
+          this[propName] !== oldValue
+        )
+          updatePosition = true;
       });
+      if (updatePosition) console.log(changedProperties, this.target);
+      if (updatePosition) this.updatePosition();
     }
 
     /**

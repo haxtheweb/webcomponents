@@ -173,6 +173,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         #topcontext {
           z-index: var(--hax-ui-focus-z-index);
+          min-width: 280px;
         }
         #topcontextmenu {
           width: 100%;
@@ -369,9 +370,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
-          #topcontextmenu {
-            flex-wrap: wrap-reverse;
-          }
           .hax-context-menu {
             height: 0px;
           }
@@ -444,7 +442,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     setTimeout(() => {
       import("./lib/hax-context-behaviors.js");
-      import("./lib/hax-ce-context.js");
       import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
@@ -666,10 +663,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       </div>
       <absolute-position-behavior
         id="topcontext"
-        auto
+        fit-to-visible-bounds
         justify
         position="top"
-        fit-to-visible-bounds
+        auto
+        sticky
         data-node-type="${!this.activeNode
           ? ""
           : this.viewSourceToggle
@@ -1152,12 +1150,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
         let el = false;
-        if (this.contextMenus.text.classList.contains("hax-context-visible")) {
-          el = this.contextMenus.text;
+        if (this.contextMenus.plate.classList.contains("hax-context-visible")) {
+          el = this.contextMenus.plate;
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          this._setSticky(el);
           this.positionContextMenus();
         }
       }, 100);
@@ -1981,7 +1978,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 250);
           }
         }
-        this.shadowRoot.querySelector("#topcontext").updatePosition();
       }, 50);
     }
   }
@@ -3830,15 +3826,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     return container;
   }
   /**
-   * sets stickiness of container
-   */
-  _setSticky(el, on = true) {
-    if (!el || !this._getContextContainer(el)) return;
-    let container = this._getContextContainer(el),
-      sticky = on && this.activeNode && this.elementMidViewport();
-    container.menuSticky = sticky;
-  }
-  /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
@@ -3847,7 +3834,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     menu.removeAttribute("on-screen");
     menu.visible = false;
     menu.classList.remove("hax-context-visible", "hax-context-menu-active");
-    this._setSticky(menu);
     if (container) container.menusVisible = false;
   }
   /**
