@@ -101,14 +101,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         .menu-outline {
-          position: fixed;
+          position: absolute;
           top: 50px;
           left: -300px;
           bottom: 0;
           z-index: 1;
           width: 300px;
-          height: 100%;
-          overflow: auto;
           color: #364149;
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
@@ -508,7 +506,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site ">
         <div class="menu-outline">
-          <div class="site-title">
+          <div class="site-title" part="site-title">
             ${this.__siteImage
               ? html`<img class="site-img" src=${this.__siteImage} />`
               : ``}

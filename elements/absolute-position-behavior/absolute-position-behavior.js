@@ -10,109 +10,115 @@ import "./lib/absolute-position-state-manager.js";
  */
 const AbsolutePositionBehaviorClass = function (SuperClass) {
   return class extends SuperClass {
-    //styles function
-    static get styles() {
-      return [
-        css`
-          :host {
-            display: inline-block;
-            z-index: 99999999999;
-            position: absolute;
-          }
+    
+  //styles function
+  static get styles() {
+    return  [
+      
+      css`
+:host {
+  display: inline-block;
+  z-index: 99999999999;
+  position: absolute;
+}
 
-          :host([hidden]) {
-            display: none;
-          }
-        `,
-      ];
-    }
+:host([hidden]) {
+  display: none;
+}
+      `
+    ];
+  }
 
-    // render function
-    render() {
-      return html` <slot></slot>`;
-    }
+// render function
+  render() {
+    return html`
 
-    // properties available to the custom element for data binding
-    static get properties() {
-      return {
-        ...super.properties,
+<slot></slot>`;
+  }
 
-        /**
-         * Element is positioned from connected to disconnected?
-         * Otherwise setPosition and unsetPosition must be called manually.
-         */
-        auto: {
-          type: Boolean,
-          attribute: "auto",
-        },
-        /**
-         * If true, no parts of the tooltip will ever be shown offscreen.
-         */
-        fitToVisibleBounds: {
-          type: Boolean,
-          attribute: "fit-to-visible-bounds",
-        },
-        /**
-         * If true, no parts of the tooltip will ever be shown offscreen.
-         */
-        hidden: {
-          type: Boolean,
-          reflect: true,
-          attribute: "hidden",
-        },
-        /**
-         * The id of the element that the tooltip is anchored to. This element
-         * must be a sibling of the tooltip. If this property is not set,
-         * then the tooltip will be centered to the parent node containing it.
-         */
-        for: {
-          type: String,
-          attribute: "for",
-          reflect: true,
-        },
-        /**
-         * The spacing between the top of the tooltip and the element it is
-         * anchored to.
-         */
-        offset: {
-          type: Number,
-          attribute: "offset",
-        },
-        /**
-         * Positions the tooltip to the top, right, bottom, left of its content.
-         */
-        position: {
-          type: String,
-          attribute: "position",
-          reflect: true,
-        },
-        /**
-         * Aligns at the start, or end fo target. Default is centered.
-         */
-        positionAlign: {
-          type: String,
-          attribute: "position-align",
-          reflect: true,
-        },
-        justify: {
-          type: Boolean,
-          reflect: true,
-          attribute: "justify",
-        },
-        /**
-         * The actual target element
-         */
-        target: {
-          type: Object,
-        },
-        /**
-         * The element's style
-         */
-        __positions: {
-          type: Object,
-        },
-      };
-    }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+  
+  ...super.properties,
+  
+  /**
+   * Element is positioned from connected to disconnected?
+   * Otherwise setPosition and unsetPosition must be called manually.
+   */
+  "auto": {
+    "type": Boolean,
+    "attribute": "auto"
+  },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "fitToVisibleBounds": {
+    "type": Boolean,
+    "attribute": "fit-to-visible-bounds"
+  },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "hidden": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "hidden"
+  },
+  /**
+   * The id of the element that the tooltip is anchored to. This element
+   * must be a sibling of the tooltip. If this property is not set,
+   * then the tooltip will be centered to the parent node containing it.
+   */
+  "for": {
+    "type": String,
+    "attribute": "for",
+    "reflect": true
+  },
+  /**
+   * The spacing between the top of the tooltip and the element it is
+   * anchored to.
+   */
+  "offset": {
+    "type": Number,
+    "attribute": "offset"
+  },
+  /**
+   * Positions the tooltip to the top, right, bottom, left of its content.
+   */
+  "position": {
+    "type": String,
+    "attribute": "position",
+    "reflect": true
+  },
+  /**
+   * Aligns at the start, or end fo target. Default is centered.
+   */
+  "positionAlign": {
+    "type": String,
+    "attribute": "position-align",
+    "reflect": true
+  },
+  "justify": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "justify"
+  },
+  /**
+   * The actual target element
+   */
+  "target": {
+    "type": Object
+  },
+  /**
+   * The element's style
+   */
+  "__positions": {
+    "type": Object
+  }
+}
+;
+  }
 
     /**
      * Store tag name to make it easier to obtain directly.
@@ -130,24 +136,25 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
       this.offset = 0;
       this.position = "bottom";
       this.target = null;
+      this.hidden = false;
       this.__positions = {};
       this.__observe = false;
-      this.__manager = window.AbsolutePositionStateManager.requestAvailability();
     }
 
     updated(changedProperties) {
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "auto" && this.auto) this.setPosition();
-        if (propName === "auto" && !this.auto) this.unsetPosition();
-        if (propName === "fitToVisibleBounds") this.updatePosition();
-        if (propName === "for") this.updatePosition();
-        if (propName === "offset") this.updatePosition();
-        if (propName === "position") this.updatePosition();
-        if (propName === "justify") this.updatePosition();
-        if (propName === "positionAlign") this.updatePosition();
-        if (propName === "target") this.updatePosition();
-        if (propName === "hidden") this.updatePosition();
-      });
+      if (this.shadowRoot && !this.hidden) {
+        changedProperties.forEach((oldValue, propName) => {
+          if (propName === "auto" && this.auto) this.setPosition();
+          if (propName === "auto" && !this.auto) this.unsetPosition();
+          if (propName === "fitToVisibleBounds") this.updatePosition();
+          if (propName === "for") this.updatePosition();
+          if (propName === "offset") this.updatePosition();
+          if (propName === "position") this.updatePosition();
+          if (propName === "positionAlign") this.updatePosition();
+          if (propName === "target") this.updatePosition();
+          if (propName === "hidden") this.updatePosition();
+        });
+      }
     }
 
     /**
@@ -156,7 +163,9 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     setPosition() {
       this.__observe = true;
-      this.__manager.loadElement(this);
+      window.AbsolutePositionStateManager.requestAvailability().loadElement(
+        this
+      );
     }
 
     /**
@@ -165,7 +174,9 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     unsetPosition() {
       this.__observe = false;
-      this.__manager.unloadElement(this);
+      window.AbsolutePositionStateManager.requestAvailability().unloadElement(
+        this
+      );
     }
 
     /**
@@ -174,7 +185,9 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      */
     updatePosition() {
       if (this.__observe === true) {
-        this.__manager.positionElement(this);
+        window.AbsolutePositionStateManager.requestAvailability().positionElement(
+          this
+        );
       }
     }
     /**
