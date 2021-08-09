@@ -1,4 +1,4 @@
-import { LitElement, html, css, svg } from "lit-element/lit-element.js";
+import { LitElement, html, css, svg } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";

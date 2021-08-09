@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxUploadField = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _simpleFieldsUpload = require("@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js");
 

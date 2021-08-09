@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `fullscreen-behaviors-manager`
@@ -32,7 +32,7 @@ class FullscreenBehaviorsManager extends LitElement {
     if (typeof screenfull === "object") {
       this._setLoaded();
     } else {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      const basePath = new URL("./", import.meta.url).href;
       const location = `${basePath}screenfull/dist/screenfull.js`;
       window.ESGlobalBridge.requestAvailability().load(
         "screenfullLib",
@@ -43,11 +43,6 @@ class FullscreenBehaviorsManager extends LitElement {
         this._setLoaded.bind(this)
       );
     }
-  }
-
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 
   /**

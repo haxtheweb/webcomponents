@@ -13,7 +13,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+          "default": "{}"
         },
         {
           "name": "hideUserStylesMenu",
@@ -118,7 +118,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+          "default": "{}"
         },
         {
           "name": "hideUserStylesMenu",
@@ -280,7 +280,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+          "default": "{}"
         },
         {
           "name": "hideUserStylesMenu",
@@ -385,7 +385,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+          "default": "{}"
         },
         {
           "name": "hideUserStylesMenu",

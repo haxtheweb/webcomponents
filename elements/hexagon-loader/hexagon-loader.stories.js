@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { HexagonLoader } from "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import { Hexagon } from "@lrnwebcomponents/hexagon-loader/lib/hex-a-gon.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";

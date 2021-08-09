@@ -1,6 +1,6 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/dist/mobx.esm.js";
+import { autorun, toJS } from "mobx";
 import "./course-intro-lesson-plan.js";
 
 class CourseIntroLessonPlans extends LitElement {

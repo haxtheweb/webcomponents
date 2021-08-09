@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SimpleButtonGridBehaviors = exports.SimpleButtonGrid = void 0;
 
-var _litElement = require("lit-element");
+var _litElement = require("lit");
 
 var _simpleToolbar = require("../simple-toolbar.js");
 

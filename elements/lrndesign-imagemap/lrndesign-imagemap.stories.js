@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { LrndesignImagemap } from "@lrnwebcomponents/lrndesign-imagemap/lrndesign-imagemap.js";
 import {
   text,

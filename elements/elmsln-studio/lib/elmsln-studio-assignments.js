@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 
@@ -176,7 +176,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
               class="assignment-link"
               aria-describedby="act-${assignment.id}-desc act-${assignment.id}-item"
               slot="label"
-              href="/assignments/${assignment.id}"
+              href="assignments/${assignment.id}"
             >
               ${assignment.assignment}
             </elmsln-studio-link>
@@ -227,7 +227,6 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.tag = ElmslnStudioAssignments.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

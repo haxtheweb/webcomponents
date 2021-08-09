@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.5.1",
+    "lit": "2.0.0-rc.2",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-colors": "^3.0.6"
   },
@@ -57,15 +57,15 @@
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.21",
+    "lodash": "^4.17.21",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32",
-    "@web/test-runner": "0.12.19",
+    "@open-wc/testing": "2.5.33",
+    "@web/test-runner": "0.13.5",
     "@web/test-runner-commands": "0.4.2",
-    "@web/test-runner-playwright": "0.8.4",
+    "@web/test-runner-playwright": "0.8.6",
     "@web/test-runner-puppeteer": "0.9.3"
   },
   "private": false,

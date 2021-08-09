@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { ThreadedDiscussion } from "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
 import {
   withKnobs,

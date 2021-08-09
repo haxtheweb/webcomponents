@@ -1,4 +1,4 @@
-import { css, html } from "lit-element/lit-element.js";
+import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -74,14 +74,18 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
     __HAXCMSMobileMenuToggle(e) {
       if (this.menuOpen) {
         this.menuOpen = false;
-        this.shadowRoot
-          .querySelector("#haxcmsmobilemenunav")
-          .setAttribute("tabindex", "-1");
+        if (this.shadowRoot.querySelector("#haxcmsmobilemenunav")) {
+          this.shadowRoot
+            .querySelector("#haxcmsmobilemenunav")
+            .setAttribute("tabindex", "-1");
+        }
       } else {
         this.menuOpen = true;
-        this.shadowRoot
-          .querySelector("#haxcmsmobilemenunav")
-          .removeAttribute("tabindex");
+        if (this.shadowRoot.querySelector("#haxcmsmobilemenunav")) {
+          this.shadowRoot
+            .querySelector("#haxcmsmobilemenunav")
+            .removeAttribute("tabindex");
+        }
       }
     }
     HAXCMSMobileMenu(e) {
@@ -93,6 +97,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         >
           <replace-tag
             with="site-menu"
+            part="site-menu"
             id="sitemenu"
             import-method="view"
           ></replace-tag>

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";

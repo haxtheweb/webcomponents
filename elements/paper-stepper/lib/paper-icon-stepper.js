@@ -1,4 +1,4 @@
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement } from "lit";
 
 class PaperIconStepper extends LitElement {
   /**

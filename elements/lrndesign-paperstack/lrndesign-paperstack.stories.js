@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { LrndesignPaperstack } from "@lrnwebcomponents/lrndesign-paperstack/lrndesign-paperstack.js";
 import {
   withKnobs,

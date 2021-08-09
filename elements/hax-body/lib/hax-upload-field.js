@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SimpleFieldsUpload } from "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";

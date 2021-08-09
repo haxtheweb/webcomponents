@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Artículo de Wikipedia",
+    "description": "Esto puede mostrar un artículo de Wikipedia en contexto en una variedad de formatos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombre del artículo",
+        "description": "Palabra para buscar en wikipedia."
+      },
+      {
+        "title": "Ocultar título",
+        "description": "Si reproducir o no el título del artículo."
+      },
+      {
+        "title": "Idioma",
+        "description": "El idioma del artículo."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "search": "Internet"
+      }
+    }
+  ]
+}

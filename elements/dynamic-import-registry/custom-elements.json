@@ -13,7 +13,8 @@
         },
         {
           "name": "basePath",
-          "type": "string"
+          "type": "string",
+          "default": "\"href\""
         }
       ],
       "events": [
@@ -37,7 +38,8 @@
         },
         {
           "name": "basePath",
-          "type": "string"
+          "type": "string",
+          "default": "\"href\""
         }
       ],
       "events": [

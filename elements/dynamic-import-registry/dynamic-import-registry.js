@@ -31,8 +31,7 @@ class DynamicImportRegistry extends HTMLElement {
     // object for tracking what the registry is
     this.list = {};
     this.__loaded = {};
-    this.basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+    this.basePath = new URL("./../../", import.meta.url).href;
     if (window.WCAutoloadBasePath) {
       this.basePath = window.WCAutoloadBasePath;
     }
@@ -112,10 +111,6 @@ class DynamicImportRegistry extends HTMLElement {
         );
       }
     }
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 }
 window.customElements.define(DynamicImportRegistry.tag, DynamicImportRegistry);

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";

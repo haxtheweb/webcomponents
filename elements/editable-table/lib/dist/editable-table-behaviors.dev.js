@@ -658,7 +658,9 @@ var displayBehaviors = function displayBehaviors(SuperClass) {
               print.document.close();
               print.focus();
               print.print();
-              print.close();
+              print.addEventListener("afterprint", (event) => {
+                print.close();
+              });
             }
             /**
              * Fires when transcript is printed

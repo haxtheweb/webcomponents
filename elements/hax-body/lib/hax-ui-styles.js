@@ -1,4 +1,4 @@
-import { css, html, LitElement } from "lit-element/lit-element.js";
+import { css, html, LitElement } from "lit";
 
 export const HaxUiText = [
   css`

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SimpleToolbarMenuBehaviors = exports.SimpleToolbarMenu = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _a11yMenuButton = require("@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js");
 

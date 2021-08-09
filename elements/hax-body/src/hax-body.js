@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
@@ -1015,6 +1015,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // this avoids empty elements however we don't want it to trigger
                 // active to change
                 if (!this.___moveLock && !mutFind) {
+<<<<<<< HEAD
+=======
+                  console.log("not movelock", node);
+>>>>>>> master
                   mutFind = true;
                   HAXStore.activeNode = node;
                   if (node.tagName === "BR") {
@@ -3761,10 +3765,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ) {
         // support having to import the definition; this is typical
         if (newSchema.editingElement.import) {
-          let basePath = HAXStore.pathFromUrl(
-            decodeURIComponent(import.meta.url)
-          );
-          await import(`${basePath}../../${newSchema.editingElement.import}`);
+          let basePath = new URL("./../../", import.meta.url).href;
+          await import(`${basePath}${newSchema.editingElement.import}`);
         }
         HAXStore.activeEditingElement = document.createElement(
           newSchema.editingElement.tag

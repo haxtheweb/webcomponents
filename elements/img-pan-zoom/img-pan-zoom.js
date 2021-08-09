@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `img-pan-zoom` Image pan zoom element
@@ -378,10 +378,6 @@ class ImgPanZoom extends LitElement {
       fullScreenButton: { type: String },
     };
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * HTMLElement
    */
@@ -413,7 +409,7 @@ class ImgPanZoom extends LitElement {
     this.showReferenceStrip = false;
     this.referenceStripScroll = "horizontal";
 
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
@@ -524,9 +520,9 @@ class ImgPanZoom extends LitElement {
       if (!this.viewer)
         this.viewer = new OpenSeadragon({
           element: this.shadowRoot.querySelector("#viewer"),
-          prefixUrl: `${this.pathFromUrl(
-            decodeURIComponent(import.meta.url)
-          )}lib/openseadragon/images/`,
+          prefixUrl: `${
+            new URL("./", import.meta.url).href
+          }lib/openseadragon/images/`,
           visibilityRatio: this.visibilityRatio,
           constrainDuringPan: this.constrainDuringPan,
           showNavigationControl: this.showNavigationControl,

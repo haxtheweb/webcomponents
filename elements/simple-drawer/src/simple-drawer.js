@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -150,11 +150,9 @@ class SimpleDrawer extends SimpleColors {
       this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
-      async.microTask.run(() => {
-        setTimeout(() => {
-          this.invokedBy.focus();
-        }, 500);
-      });
+      setTimeout(() => {
+        this.invokedBy.focus();
+      }, 500);
     }
   }
   /**

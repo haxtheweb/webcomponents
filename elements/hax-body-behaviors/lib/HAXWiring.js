@@ -227,9 +227,6 @@ export class HAXWiring {
       },
       wipeSlot: {},
     };
-    this.pathFromUrl = (url) => {
-      return url.substring(0, url.lastIndexOf("/") + 1);
-    };
     /**
      * Setter to bridge private haxProperties setter.
      * This is to then be implemented by the ready state of whatever is supplying the
@@ -365,9 +362,7 @@ export class HAXWiring {
             if (window.WCGlobalBasePath) {
               basePath = window.WCGlobalBasePath;
             } else {
-              basePath =
-                this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-                "../../../";
+              basePath = new URL("./../../../", import.meta.url).href;
             }
             import(`${basePath}${props.gizmo.iconLib}`);
           }

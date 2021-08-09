@@ -71,6 +71,8 @@ class SiteTopMenu extends PolymerElement {
         button {
           text-transform: unset;
           min-width: unset;
+          background-color: transparent;
+          border: none;
           @apply --site-top-menu-button;
         }
         .active {

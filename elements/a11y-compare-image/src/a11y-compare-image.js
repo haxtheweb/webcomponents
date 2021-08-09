@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
@@ -97,7 +97,6 @@ class a11yCompareImage extends SimpleColors {
     this.position = 50;
     this.accentColor = "blue";
     this.__markers = [];
-    this._slide();
   }
   render() {
     return html`
@@ -177,6 +176,12 @@ class a11yCompareImage extends SimpleColors {
       },
     };
   }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this._slide();
+  }
+
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {

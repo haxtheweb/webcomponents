@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `page-contents-menu`
@@ -308,6 +308,7 @@ class PageContentsMenu extends LitElement {
     // is defined otherwise. This would imply usage of placing this at the TOP of
     // content area though next, pervious and none are valid
     this.relationship = null;
+    this.fallbackText = {};
     this.items = [];
     this.isEmpty = true;
     this.hideIfEmpty = false;
@@ -410,8 +411,15 @@ class PageContentsMenu extends LitElement {
         typeof item.tagName !== typeof undefined &&
         validTags.includes(item.tagName.toLowerCase())
       ) {
+        let title = item.innerText;
+        if (
+          item.innerText == "" &&
+          this.fallbackText[item.tagName.toLowerCase()]
+        ) {
+          title = this.fallbackText[item.tagName.toLowerCase()];
+        }
         let reference = {
-          title: item.innerText,
+          title: title,
           link: item.id ? "#" + item.id : null,
           object: item,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),

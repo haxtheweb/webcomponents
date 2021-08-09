@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -440,13 +440,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     }
   }
   /**
-   * Attached to the DOM, now fire.
+   * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return (
-      decodeURIComponent(import.meta.url) +
-      `/../lib/${this.tag}.haxProperties.json`
-    );
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

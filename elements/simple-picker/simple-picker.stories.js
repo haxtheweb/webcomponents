@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { SimpleSymbolPicker } from "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
 import { SimpleEmojiPicker } from "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";

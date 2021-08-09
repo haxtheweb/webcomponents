@@ -2,10 +2,10 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute";
+import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -13,6 +13,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 
 /**
  * `clean-one`
@@ -105,6 +107,9 @@ class CleanOne extends HAXCMSRememberRoute(
           height: 50px;
           padding: 6px;
         }
+        .btn-container .btn {
+          padding: 8px;
+        }
         simple-tooltip {
           --simple-tooltip-background: var(--haxcms-user-styles-color-theme-color-1);
           --simple-tooltip-text-color: var(--haxcms-user-styles-color-theme-color-2);
@@ -137,6 +142,11 @@ class CleanOne extends HAXCMSRememberRoute(
           --site-menu-button-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
           --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+          --site-menu-button-button-hover-background-color: rgba(0,0,0,.1);
+        }
+        scroll-button,
+        site-breadcrumb {
+          color: var(--haxcms-user-styles-color-theme-color-1);
         }
         * {
           -webkit-box-sizing: border-box;
@@ -184,9 +194,6 @@ class CleanOne extends HAXCMSRememberRoute(
           transition: left 250ms ease;
         }
         /* content */
-        .main-content>:first-child {
-          margin-top: 0!important;
-        }
         .main-section h1 {
           font-size: 2em;
         }
@@ -203,7 +210,9 @@ class CleanOne extends HAXCMSRememberRoute(
           page-break-after: avoid;
         }
         .pull-right {
-          float: right;
+          top: 0px;
+          right: 16px;
+          position: fixed;
         }
         .main-content *,
         .main-content ::slotted(*) {
@@ -215,7 +224,6 @@ class CleanOne extends HAXCMSRememberRoute(
           #site-search-input,
           .site-body,
           .navigation,
-          .site-header site-active-title h1,
           .menu-outline {
             transition: none !important;
           }
@@ -243,7 +251,11 @@ class CleanOne extends HAXCMSRememberRoute(
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {
           overflow-x: hidden;
-          position: fixed;
+          position: var(--clean-one-sm-site-body-position, fixed);
+        }
+        :host([responsive-size="md"]) .page-inner,
+        :host([responsive-size="lg"]) .page-inner {
+          padding: 40px 15px;
         }
         :host([responsive-size="xs"]) .main-content,
         :host([responsive-size="sm"]) .main-content {
@@ -302,49 +314,30 @@ class CleanOne extends HAXCMSRememberRoute(
           orphans: 3;
           widows: 3;
         }
-        article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+        article, aside, details, figcaption, figure, header, hgroup, main, nav, section, summary {
           display: block;
         }
+        footer {
+          display: flex;
+        }
         .site-header {
-          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
           overflow: visible;
-          height: 50px;
-          padding: 0 8px;
           z-index: 2;
-          font-size: .85em;
-          color: #7e888b;
-          background: 0 0;
+          background: transparent;
+          position: fixed;
+          display: block;
+          padding: 0 16px;
         }
-        .site-header site-active-title h1 {
-          color: inherit;
-          text-decoration: none;
-          position: absolute;
-          z-index: 1;
-          top: 0;
-          left: 0;
-          right: 0;
-          margin: 10px 200px;
-          font-size: 20px;
-          font-weight: 200;
-          text-align: center;
-          line-height: 50px;
-          opacity: 0;
-          transition: opacity .2s ease;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+
+        @media (max-width: 900px) {
+          .site-header {
+            position: relative;
+          }
         }
-        .site-header site-active-title h1:hover {
-          opacity: 1;
-        }
+
         @media (max-width: 700px){
           .link-actions {
             display: none;
-          }
-        }
-        @media (max-width: 1000px){
-          .site-header site-active-title {
-              display: none;
           }
         }
         @media (max-width: 1240px){
@@ -378,7 +371,7 @@ class CleanOne extends HAXCMSRememberRoute(
         }
         .page-inner {
           position: relative;
-          max-width: 800px;
+          max-width: 840px;
           margin: 0 auto;
           min-height: 90vh;
           padding: 20px 15px 40px 15px;
@@ -413,10 +406,15 @@ class CleanOne extends HAXCMSRememberRoute(
         site-menu-button[type="next"] {
           right: 0;
         }
+        .main-content site-active-title h1 {
+          font-size: 36px;
+          margin: 20px 0;
+          text-rendering: optimizeLegibility;
+        }
         .navigation {
           position: fixed;
-          top: 50px;
-          bottom: 0;
+          top: 40vh;
+          bottom: 20vh;
           margin: 0 20px;
           max-width: 150px;
           min-width: 90px;
@@ -429,14 +427,12 @@ class CleanOne extends HAXCMSRememberRoute(
           text-align: center;
           transition: all .35s ease;
         }
+        
         @media (max-width: 1240px) {
           .navigation {
             position: static;
-            top: auto;
-            max-width: calc(50vw - 70px);
-            width: calc(50vw - 70px);
-            display: inline-block;
-            float: left;
+            margin: 0 auto;
+            display: inline-flex;
           }
         }
         /* color,font,size switchers */
@@ -455,6 +451,7 @@ class CleanOne extends HAXCMSRememberRoute(
           }
 
           .site-body {
+            overflow-y: scroll;
             color: var(--haxcms-user-styles-color-theme-color-color);
             background: var(--haxcms-user-styles-color-theme-color-background);
           }
@@ -471,7 +468,7 @@ class CleanOne extends HAXCMSRememberRoute(
             color: #eee8e0;
             background: none;
           }
-          :host([color-theme="1"]) .site-header site-active-title {
+          :host([color-theme="1"]) site-active-title {
             color: #704214;
           }
           :host([color-theme="2"]) .site-header {
@@ -487,7 +484,7 @@ class CleanOne extends HAXCMSRememberRoute(
             color: #fffff5;
             background: none;
           }
-          :host([color-theme="2"]) .site-header site-active-title {
+          :host([color-theme="2"]) site-active-title {
             color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
           :host([color-theme="1"]) .site-body .navigation {
@@ -580,10 +577,6 @@ class CleanOne extends HAXCMSRememberRoute(
             bottom: 0;
             right: 16px;
           }
-          .link-actions {
-            top: 0;
-            right: 16px;
-          }
           #site-search-input {
             padding: 6px;
             background: 0 0;
@@ -645,7 +638,7 @@ class CleanOne extends HAXCMSRememberRoute(
     return html`
       <div class="site">
         <div class="menu-outline">
-          <div id="site-search-input" role="search">
+          <div id="site-search-input" role="search" part="search-btn">
             <input
               type="text"
               aria-label="${this.t.searchSiteContent}"
@@ -657,7 +650,7 @@ class CleanOne extends HAXCMSRememberRoute(
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>
-        <div id="body" class="site-body">
+        <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
             <header
@@ -666,25 +659,35 @@ class CleanOne extends HAXCMSRememberRoute(
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">
-                ${this.HAXCMSMobileMenuButton()} ${this.HAXCMSUserStylesMenu()}
-                <div class="pull-right link-actions">
+                <div class="pull-left">
+                  ${this.HAXCMSMobileMenuButton()}
+                  ${this.HAXCMSUserStylesMenu()}
                   <site-print-button
                     class="btn js-toolbar-action"
+                    part="print-btn"
                   ></site-print-button>
+                </div>
+                <div class="pull-right">
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"
+                    part="rss-btn"
                   ></site-rss-button>
-                  <site-git-corner size="small"></site-git-corner>
+                  <site-git-corner
+                    size="small"
+                    part="git-corner-btn"
+                  ></site-git-corner>
                 </div>
               </div>
-              <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
                 <div class="normal main-section">
                   <site-search
                     hide-input
+                    part="search-btn"
                     search="${this.searchTerm}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
@@ -756,20 +759,22 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
-    this.t = {
-      searchSiteContent: "Search site content",
-      typeToSearch: "Type to search",
-    };
+    if (this.t) {
+      this.t.searchSiteContent = "Search site content";
+      this.t.typeToSearch = "Type to search";
+    } else {
+      this.t = {
+        searchSiteContent: "Search site content",
+        typeToSearch: "Type to search",
+      };
+    }
+
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
       locales: ["es", "fr", "de", "ja"],
     });
     this.HAXCMSThemeSettings.autoScroll = true;
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"

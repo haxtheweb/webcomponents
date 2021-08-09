@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
@@ -149,11 +149,6 @@ const ChartistRenderSuper = function (SuperClass) {
     makeChart() {
       this._getChart();
       return this.chart;
-    }
-
-    // simple path from a url modifier
-    pathFromUrl(url) {
-      return url.substring(0, url.lastIndexOf("/") + 1);
     }
 
     disconnectedCallback() {
@@ -376,11 +371,11 @@ const ChartistRenderSuper = function (SuperClass) {
      *
      * @param {string} classname class to import from script
      * @param {string} path relative path of script
-     * @param {function} [fnc=this._updateData] function to reun when script is loaded
+     * @param {function} [fnc=this._updateData] function to rerun when script is loaded
      */
     _loadScripts(classname, path, fnc = this._getChart) {
-      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
-        location = `${basePath}${path}`;
+      let basePath = new URL("./", import.meta.url).href;
+      let location = `${basePath}${path}`;
       window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this));
       window.ESGlobalBridge.requestAvailability().load(classname, location);
     }

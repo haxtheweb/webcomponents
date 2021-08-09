@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SimpleTourManager = exports.TourStop = exports.SimpleTour = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
-var _render = require("lit-html/lib/render.js");
+var _render = require("lit");
 
-var _unsafeHtml = require("lit-html/directives/unsafe-html.js");
+var _unsafeHtml = require("lit/directives/unsafe-html.js");
 
 require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 

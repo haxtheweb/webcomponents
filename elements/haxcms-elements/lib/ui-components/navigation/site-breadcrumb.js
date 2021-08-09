@@ -2,8 +2,10 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-breadcrumb`
@@ -26,22 +28,32 @@ class SiteBreadcrumb extends LitElement {
         }
         a {
           height: 24px;
-          color: var(--site-breadcrumb-color, #383f45);
+          font-size: 16px;
+          color: inherit;
           display: inline-flex;
           line-height: 24px;
           padding: 0 8px 0 0;
+          vertical-align: text-top;
           text-decoration: var(--site-breadcrumb-text-decoration, underline);
         }
         button {
           margin: 0;
           padding: 0;
+          font-size: 16px;
+          font-family: inherit;
           height: 24px;
           min-width: unset;
           display: inline-flex;
           text-transform: unset;
           background-color: transparent;
           border: none;
+          letter-spacing: inherit;
+          cursor: pointer;
+          color: inherit;
         }
+        a:hover,
+        a:focus,
+        a:active,
         button:hover,
         button:focus,
         button:active {
@@ -50,16 +62,17 @@ class SiteBreadcrumb extends LitElement {
         }
         span {
           margin: 0;
+          font-size: 16px;
           padding: 0 8px 0 0;
           height: 24px;
           display: inline-flex;
         }
-        simple-icon {
+        simple-icon-lite {
           display: inline-flex;
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
           padding: 0 8px 0 0;
-          color: var(--site-breadcrumb-color, #383f45);
+          color: inherit;
         }
       `,
     ];
@@ -73,8 +86,22 @@ class SiteBreadcrumb extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+  }
+  // render function
+  render() {
+    return html`
+      <div
+        id="space"
+        itemscope
+        itemtype="http://data-vocabulary.org/Breadcrumb"
+      ></div>
+    `;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // keep editMode in sync globally
     autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
@@ -89,22 +116,16 @@ class SiteBreadcrumb extends LitElement {
       this.__disposer.push(reaction);
     });
   }
-  // render function
-  render() {
-    return html`
-      <div
-        id="space"
-        itemscope
-        itemtype="http://data-vocabulary.org/Breadcrumb"
-      ></div>
-    `;
-  }
   /**
    * Notice the change and build
    */
   _activeItemChanged(active) {
     const activeItem = active;
-    if (activeItem && this.shadowRoot.querySelector("#space")) {
+    if (
+      activeItem &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#space")
+    ) {
       // wipe out the slot and rebuild it
       while (this.shadowRoot.querySelector("#space").firstChild !== null) {
         this.shadowRoot
@@ -132,7 +153,7 @@ class SiteBreadcrumb extends LitElement {
         }
       }
       for (var i in items) {
-        let icon = document.createElement("simple-icon");
+        let icon = document.createElement("simple-icon-lite");
         icon.icon = "icons:chevron-right";
         if (items[i].slug != null) {
           let button = document.createElement("button");

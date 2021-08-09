@@ -173,12 +173,10 @@ class LrnsysOutline extends PolymerElement {
     this.notifyPath(`items.${spliceIndex}.indentLevel`);
     this.setData(this.items);
     if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-      async.microTask.run(() => {
-        setTimeout(() => {
-          this.__focusedItem = item.nextElementSibling;
-          this.__focusedItem.focus();
-        }, 50);
-      });
+      setTimeout(() => {
+        this.__focusedItem = item.nextElementSibling;
+        this.__focusedItem.focus();
+      }, 50);
     }
   }
   /**
@@ -231,11 +229,9 @@ class LrnsysOutline extends PolymerElement {
       this.activeItem.classList.remove("collapse-to-remove");
       this.splice("items", i, 1);
       if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-        async.microTask.run(() => {
-          setTimeout(() => {
-            this.__focusedItem.focus();
-          }, 50);
-        });
+        setTimeout(() => {
+          this.__focusedItem.focus();
+        }, 50);
       }
     }, 300);
   }
@@ -258,11 +254,9 @@ class LrnsysOutline extends PolymerElement {
           .querySelectorAll("lrnsys-outline-item")[target];
         this.setData(this.items);
         if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-          async.microTask.run(() => {
-            setTimeout(() => {
-              this.__focusedItem.focus();
-            }, 50);
-          });
+          setTimeout(() => {
+            this.__focusedItem.focus();
+          }, 50);
         }
       }
     }

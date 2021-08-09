@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import {
   winEventsElement,
   camelCaseToDash,
@@ -29,6 +29,7 @@ import "./hax-preferences-dialog.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -121,9 +122,6 @@ class HaxTray extends I18NMixin(
     setTimeout(() => {
       import("./hax-tray-button.js");
       import("./hax-toolbar-menu.js");
-      import(
-        "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js"
-      );
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)

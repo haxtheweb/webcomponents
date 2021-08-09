@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -27,15 +27,6 @@ class SiteActiveTitle extends LitElement {
       <style>
         :host {
           display: block;
-        }
-        h1 {
-          text-rendering: optimizelegibility;
-          font-family: sans-serif;
-          color: var(--site-active-title-color) !important;
-          margin: var(--site-active-title-margin) !important;
-          padding: var(--site-active-title-padding) !important;
-          font-size: var(--site-active-title-font-size, 18px) !important;
-          line-height: var(--site-active-title-line-height, 18px) !important;
         }
       </style>
       <h1>${this.__title}</h1>

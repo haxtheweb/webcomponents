@@ -1,4 +1,4 @@
-import { html, css } from "lit-element";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";

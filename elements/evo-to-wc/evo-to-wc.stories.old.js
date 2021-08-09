@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { EvoToWcGroup } from "@lrnwebcomponents/evo-to-wc/lib/evo-to-wc-group.js";
 import { EvoToWc } from "@lrnwebcomponents/evo-to-wc/evo-to-wc.js";
 import {

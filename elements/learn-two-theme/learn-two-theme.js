@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
@@ -16,17 +16,22 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
- * `learn-two-theme`
- * @element learn-two-theme
- * `Learn2 theme for HAXcms`
- *
-
- * @demo demo/index.html
- */
+  * `learn-two-theme`
+  * @element learn-two-theme
+  * `Learn2 theme for HAXcms`
+  *
+ 
+  * @demo demo/index.html
+  */
 class LearnTwoTheme extends HAXCMSLitElementTheme {
   //styles function
   static get styles() {
+    let styles = [];
+    if (super.styles) {
+      styles = super.styles;
+    }
     return [
+      ...styles,
       css`
         :host {
           --__learn-two-theme-default-font-family: var(
@@ -95,7 +100,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           background: #747474;
           color: #fafafa;
           text-align: center;
-          padding: 0rem 1rem 2rem 1rem;
+          padding: 0 8px 16px;
         }
 
         site-git-corner {
@@ -109,32 +114,43 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-breadcrumb:not(:defined),
         site-rss-button:not(:defined),
         site-print-button:not(:defined),
-        site-menu-button:not(:defined),
         site-modal:not(:defined),
         site-git-corner:not(:defined),
         site-menu-button:not(:defined) {
           display: none;
         }
-
+        site-breadcrumb {
+          display: block;
+        }
+        :host([responsive-size="xs"]) site-breadcrumb,
+        :host([responsive-size="sm"]) site-breadcrumb {
+          display: none;
+        }
         site-rss-button {
           color: white;
+        }
+
+        site-menu {
+          scrollbar-color: var(--learn-two-theme-menu-color, #383f45)
+            var(--learn-two-theme-menu-color, #383f45);
+          scrollbar-width: thin;
         }
 
         site-menu::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
           border-radius: 0;
-          background-color: #383f45;
+          background-color: var(--learn-two-theme-menu-color, #383f45);
         }
 
         site-menu::-webkit-scrollbar {
           width: 2px;
-          background-color: #383f45;
+          background-color: var(--learn-two-theme-menu-color, #383f45);
         }
 
         site-menu::-webkit-scrollbar-thumb {
           border-radius: 1px;
           -webkit-box-shadow: inset 0 0 4px #747474;
-          background-color: #383f45;
+          background-color: var(--learn-two-theme-menu-color, #383f45);
         }
 
         .rss-buttons {
@@ -199,17 +215,15 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         }
 
         app-drawer-layout[narrow] #menubutton {
-          display: block;
+          display: inline-flex;
+          margin: 12px;
         }
 
         app-drawer-layout[narrow] #menubutton2 {
-          display: block;
+          display: inline-flex;
           position: absolute;
           z-index: 1;
-        }
-
-        app-drawer-layout[narrow] .header {
-          padding: 0;
+          margin: 12px;
         }
 
         :host([is-logged-in]) site-menu-button[type="prev"] {
@@ -221,6 +235,26 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-menu-button:not([disabled]):focus {
           opacity: 1;
           background-color: rgba(0, 0, 0, 0.1);
+        }
+        site-menu-button {
+          --site-menu-button-icon-fill-color: var(
+            --haxcms-user-styles-color-theme-color-1
+          );
+          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
+          --haxcms-tooltip-background-color: var(
+            --haxcms-user-styles-color-theme-color-1
+          );
+          --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.1);
+        }
+        site-menu-button {
+          --site-menu-button-icon-width: 64px;
+          --site-menu-button-icon-height: 64px;
+        }
+        site-menu-button[type="prev"] {
+          left: 0;
+        }
+        site-menu-button[type="next"] {
+          right: 0;
         }
 
         app-drawer-layout[narrow] site-menu {
@@ -253,7 +287,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         }
 
         site-menu {
-          background-color: #383f45;
+          background-color: var(--learn-two-theme-menu-color, #383f45);
           color: #ffffff;
           padding: 0;
           overflow: scroll;
@@ -272,11 +306,20 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         }
 
         site-menu-button {
+          position: fixed;
+          top: 40vh;
+          bottom: 20vh;
+          margin: 0 20px;
+          max-width: 150px;
+          min-width: 90px;
+          justify-content: center;
+          align-content: center;
+          flex-direction: column;
+          font-size: 40px;
+          text-align: center;
+          transition: all 0.35s ease;
           display: flex;
           align-items: center;
-          position: fixed;
-          top: 0;
-          bottom: 0;
           left: 300px;
           z-index: 1;
           --site-menu-button-icon-width: 64px;
@@ -302,166 +345,67 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           --map-menu-container-flex-direction: column;
           --map-menu-container-flex: 1 1 auto;
         }
+        site-title {
+          color: #fafafa;
+          --site-title-link-display: inline-block;
+          --site-title-link-text-decoration: none;
+          --site-title-heading-font-family: var(
+            --__learn-two-theme-default-font-family
+          );
+          --site-title-heading-font-size: 28px;
+          --site-title-heading-margin: 0;
+          --site-title-heading-padding: 0;
+          --site-title-heading-text-align: center;
+          --site-title-heading-text-rendering: optimizelegibility;
+          --site-title-heading-font-weight: 100;
+        }
+        site-active-title {
+          --site-active-title-margin: 0px;
+          --site-active-title-padding: 0px;
+          margin: 0;
+          padding: 0;
+          display: block;
+        }
+        site-active-title h1 {
+          margin: 16px 0;
+          padding: 0;
+          font-size: 36px;
+        }
       `,
     ];
   }
 
-  // render function
-  render() {
-    return html` <custom-style>
-        <style>
-          site-title {
-            color: #fafafa;
-            --site-title-link-display: inline-block;
-            --site-title-link-text-decoration: none;
-            --site-title-heading-font-family: var(
-              --__learn-two-theme-default-font-family
-            );
-            --site-title-heading-font-size: 28px;
-            --site-title-heading-margin: 0;
-            --site-title-heading-padding: 0;
-            --site-title-heading-text-align: center;
-            --site-title-heading-text-rendering: optimizelegibility;
-            --site-title-heading-font-weight: 100;
-          }
-          site-menu {
-            --site-menu: {
-              background-color: #383f45;
-            }
-            --site-menu-container: {
-              padding: 0;
-              background-color: #2d3237;
-            }
-          }
-          app-drawer-layout {
-            --app-drawer-content-container: {
-              overflow: hidden;
-              background-color: #383f45;
-              position: relative;
-            }
-          }
-          site-menu-button {
-            --site-menu-button-button: {
-              background-color: rgba(0, 0, 0, 0);
-              width: 64px;
-              height: 100vh;
-              border-radius: 0;
-              transition: 0.4s all ease-in-out;
-              transition-delay: 0.2s;
-              margin: 0;
-              padding: 0;
-              opacity: 0.8;
-              -webkit-transition: 0.4s all ease-in-out;
-              -moz-transition: 0.4s all ease-in-out;
-              -ms-transition: 0.4s all ease-in-out;
-              -o-transition: 0.4s all ease-in-out;
-            }
-          }
-          app-drawer-layout[narrow] site-menu-button {
-            --site-menu-button-button: {
-              background-color: transparent !important;
-              width: 64px;
-              height: 64px;
-            }
-          }
-        </style>
-      </custom-style>
-      <app-drawer-layout responsive-width="900px">
-        <simple-icon-button
-          id="menubutton"
-          icon="menu"
-          @click="${this.toggleDrawer}"
-          title="Toggle site menu"
-        ></simple-icon-button>
-        <app-drawer
-          swipe-open
-          slot="drawer"
-          .opened="${this.opened}"
-          @opened="${this.__openedChanged}"
-        >
-          <simple-icon-button
-            id="menubutton2"
-            icon="menu"
-            @click="${this.toggleDrawer}"
-            title="Toggle site menu"
-          ></simple-icon-button>
-          <div class="header-wrapper">
-            <div class="header">
-              <site-title ?disabled="${this.editMode}"></site-title>
-              <site-modal
-                @site-modal-click="${this.siteModalClick}"
-                ?disabled="${this.editMode}"
-                icon="icons:search"
-                title="Search site"
-                button-label="Search"
-              >
-                <site-search></site-search>
-              </site-modal>
-            </div>
-          </div>
-          <site-menu></site-menu>
-          <div class="rss-buttons">
-            <site-rss-button
-              ?disabled="${this.editMode}"
-              type="atom"
-            ></site-rss-button>
-            <site-rss-button
-              ?disabled="${this.editMode}"
-              type="rss"
-            ></site-rss-button>
-            <site-print-button
-              ?disabled="${this.editMode}"
-              position="top"
-            ></site-print-button>
-          </div>
-        </app-drawer>
-        <div>
-          <site-menu-button type="prev"></site-menu-button>
-          <div id="contentcontainer">
-            <site-git-corner></site-git-corner>
-            <site-breadcrumb></site-breadcrumb>
-            <div id="slot">
-              <slot></slot>
-            </div>
-          </div>
-          <site-menu-button type="next"></site-menu-button>
-        </div>
-      </app-drawer-layout>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
-  }
   constructor() {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
-    setTimeout(() => {
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
-      // prettier-ignore
-      import(
+    // prettier-ignore
+    import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
       );
-    }, 0);
   }
   /**
    * Delay importing site-search until we click to open it directly
@@ -470,7 +414,10 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
-    );
+    ).then((m) => {
+      // weird looking but forces focus when it opens the search form
+      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+    });
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -482,128 +429,86 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
 
   // render function
   render() {
-    return html` <custom-style>
-        <style>
-          site-title {
-            color: #fafafa;
-            --site-title-link-display: inline-block;
-            --site-title-link-text-decoration: none;
-            --site-title-heading-font-family: var(
-              --__learn-two-theme-default-font-family
-            );
-            --site-title-heading-font-size: 28px;
-            --site-title-heading-margin: 0;
-            --site-title-heading-padding: 0;
-            --site-title-heading-text-align: center;
-            --site-title-heading-text-rendering: optimizelegibility;
-            --site-title-heading-font-weight: 100;
-          }
-          site-menu {
-            --site-menu: {
-              background-color: #383f45;
-            }
-            --site-menu-container: {
-              padding: 0;
-              background-color: #2d3237;
-            }
-          }
-          app-drawer-layout {
-            --app-drawer-content-container: {
-              overflow: hidden;
-              background-color: #383f45;
-              position: relative;
-            }
-          }
-          site-menu-button {
-            --site-menu-button-button: {
-              background-color: rgba(0, 0, 0, 0);
-              width: 64px;
-              height: 100vh;
-              border-radius: 0;
-              transition: 0.4s all ease-in-out;
-              transition-delay: 0.2s;
-              margin: 0;
-              padding: 0;
-              opacity: 0.8;
-              -webkit-transition: 0.4s all ease-in-out;
-              -moz-transition: 0.4s all ease-in-out;
-              -ms-transition: 0.4s all ease-in-out;
-              -o-transition: 0.4s all ease-in-out;
-            }
-          }
-          app-drawer-layout[narrow] site-menu-button {
-            --site-menu-button-button: {
-              background-color: transparent !important;
-              width: 64px;
-              height: 64px;
-            }
-          }
-        </style>
-      </custom-style>
-      <app-drawer-layout responsive-width="900px">
-        <simple-icon-button
-          id="menubutton"
-          icon="menu"
-          @click="${this.toggleDrawer}"
-          title="Toggle site menu"
-        ></simple-icon-button>
-          <app-drawer
-            swipe-open
-            slot="drawer"
-            .opened="${this.opened}"
-            @opened="${this.__openedChanged}"
-          >
-          <simple-icon-button
-            id="menubutton2"
-            icon="menu"
-            @click="${this.toggleDrawer}"
-            title="Toggle site menu"
-          ></simple-icon-button>
-          <header class="header-wrapper">
-            <div class="header">
-              <site-title ?disabled="${this.editMode}"></site-title>
-              <site-modal
-                @site-modal-click="${this.siteModalClick}"
-                ?disabled="${this.editMode}"
-                icon="icons:search"
-                title="Search site"
-                button-label="Search"
-              >
-                <site-search></site-search>
-              </site-modal>
-            </div>
-          </header>
-          <nav>
-            <site-menu></site-menu>
-          </nav>
-          <footer class="rss-buttons">
-            <site-rss-button
-              ?disabled="${this.editMode}"
-              type="atom"
-            ></site-rss-button>
-            <site-rss-button
-              ?disabled="${this.editMode}"
-              type="rss"
-            ></site-rss-button>
-            <site-print-button
-              ?disabled="${this.editMode}"
-              position="top"
-            ></site-print-button>
-          </footer>
-        </app-drawer>
-        </nav>
-        <main>
-          <site-menu-button type="prev"></site-menu-button>
-          <article id="contentcontainer">
-            <site-git-corner></site-git-corner>
-            <site-breadcrumb></site-breadcrumb>
-            <section id="slot">
-              <slot></slot>
-            </section>
-          </article>
-          <site-menu-button type="next"></site-menu-button>
-        </main>
-      </app-drawer-layout>`;
+    return html`<custom-style>
+         <style>
+           app-drawer-layout {
+             --app-drawer-content-container: {
+               overflow: hidden;
+               background-color: var(--learn-two-theme-menu-color, #383f45);
+               position: relative;
+             }
+           }
+         </style>
+       </custom-style>
+       <app-drawer-layout responsive-width="900px">
+         <simple-icon-button
+           id="menubutton"
+           icon="menu"
+           @click="${this.toggleDrawer}"
+           title="Toggle site menu"
+         ></simple-icon-button>
+           <app-drawer
+             swipe-open
+             slot="drawer"
+             .opened="${this.opened}"
+             @opened="${this.__openedChanged}"
+           >
+           <simple-icon-button
+             id="menubutton2"
+             icon="menu"
+             @click="${this.toggleDrawer}"
+             title="Toggle site menu"
+           ></simple-icon-button>
+           <header class="header-wrapper">
+             <div class="header">
+               <site-title ?disabled="${this.editMode}" part="site-title"></site-title>
+               <site-modal
+                 @site-modal-click="${this.siteModalClick}"
+                 ?disabled="${this.editMode}"
+                 icon="icons:search"
+                 title="Search site"
+                 button-label="Search"
+                 part="search-btn"
+               >
+                 <site-search></site-search>
+               </site-modal>
+             </div>
+           </header>
+           <nav>
+             <site-menu></site-menu>
+           </nav>
+           <footer class="rss-buttons">
+             <site-rss-button
+               ?disabled="${this.editMode}"
+               type="atom"
+               part="rss-btn"
+             ></site-rss-button>
+             <site-rss-button
+               ?disabled="${this.editMode}"
+               type="rss"
+               part="rss-btn"
+             ></site-rss-button>
+             <site-print-button
+               ?disabled="${this.editMode}"
+               position="top"
+               part="print-btn"
+             ></site-print-button>
+           </footer>
+         </app-drawer>
+         </nav>
+         <main>
+           <site-menu-button type="prev"></site-menu-button>
+           <article id="contentcontainer">
+             <site-git-corner part="git-corner-btn"></site-git-corner>
+             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+             <site-active-title part="page-title"></site-active-title>
+             <section id="slot">
+               <slot></slot>
+             </section>
+           </article>
+           <site-menu-button type="next"></site-menu-button>
+         </main>
+       </app-drawer-layout>`;
   }
 
   /**

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import {
   encapScript,
   findTagsInHTML,
@@ -110,7 +110,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       await fetch(url)
         .then((response) => {
-          return response.text();
+          if (response.ok) {
+            return response.text();
+          } else {
+            this.lastErrorChanged(err);
+          }
         })
         .then((data) => {
           this._updateActiveItemContent(data);
@@ -147,7 +151,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         var headers = { cache: "no-cache" };
         await fetch(url, headers)
           .then((response) => {
-            return response.json();
+            if (response.ok) {
+              return response.json();
+            } else {
+              this.lastErrorChanged(err);
+            }
           })
           .then((data) => {
             this._updateManifest(data);
@@ -343,6 +351,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // wipe out what we got
       wipeSlot(this, "*");
       store.themeElement = document.createElement(newValue);
+      // apply a class so that we can write generic CSS selectors in integrations
+      store.themeElement.classList.add("haxcms-theme-element");
       this.appendChild(store.themeElement);
     }
   }
@@ -353,7 +363,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (e) {
       console.error(e);
       // not every error has a value if it just failed
-      if (e.detail.value) {
+      if (e.detail && e.detail.value) {
         // if we force reloads then let's do it now
         if (
           window &&
@@ -394,8 +404,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath:
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../locales",
+      localesPath: new URL("./locales", import.meta.url).href,
       locales: ["es"],
     });
     this.__disposer = [];
@@ -423,7 +432,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this.__ready = true;
-    this.dispatchEvent(
+    window.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,
         composed: true,
@@ -479,6 +488,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
       autorun((reaction) => {
         this.themeData = toJS(store.themeData);
+        if (this.themeData) {
+          // special support for "format" in the URL dictating the possible output format
+          // this is for a11y, mobile, print and other possible output modes
+          const urlParams = new URLSearchParams(window.location.search);
+          const format = urlParams.get("format");
+          if (format != null) {
+            switch (format) {
+              case "print-page":
+                this.themeData.element = "haxcms-blank-theme";
+                break;
+            }
+          }
+        }
         if (this.themeData && this.themeData.element !== this.themeName) {
           this.themeName = this.themeData.element;
         }
@@ -592,9 +614,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             varExists(this.manifest, "metadata.node.dynamicElementLoader")
           ) {
             let tagsFound = findTagsInHTML(html);
-            const basePath = this.pathFromUrl(
-              decodeURIComponent(import.meta.url)
-            );
+            const basePath = new URL("./locales", import.meta.url).href;
             for (var i in tagsFound) {
               const tagName = tagsFound[i];
               if (
@@ -677,10 +697,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.loadManifest(newValue, this);
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
@@ -705,11 +721,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // import the reference to the item dynamically, if we can
           try {
             // prettier-ignore
-            import(
-              this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-                "../../../../" +
-                newValue.path
-            ).then((e) => {
+            import(new URL("./../../../../" + newValue.path, import.meta.url).href).then((e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;

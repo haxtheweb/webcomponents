@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -114,7 +114,7 @@ class SiteQueryMenuSlice extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("result-changed", {
-            detail: result,
+            detail: this.result,
           })
         );
       }

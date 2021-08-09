@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 const FALLBACK_LANG = "en";
 
 /**
@@ -91,8 +91,8 @@ class TwitterEmbed extends LitElement {
     window.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
-          namespace: "twitter-embed.haxProperties",
-          localesPath: decodeURIComponent(import.meta.url) + "/../locales",
+          namespace: `${this.tag}.haxProperties`,
+          localesPath: new URL("./locales", import.meta.url).href,
           locales: ["es"],
         },
       })

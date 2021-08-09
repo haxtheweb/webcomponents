@@ -108,11 +108,9 @@ class SortableList extends GestureEventListeners(PolymerElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    async.microTask.run(() => {
-      this._observeItems();
-      this._updateItems();
-      this._toggleListeners({ enable: true });
-    });
+    this._observeItems();
+    this._updateItems();
+    this._toggleListeners({ enable: true });
   }
   disconnectedCallback() {
     super.disconnectedCallback();

@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";

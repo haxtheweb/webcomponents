@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit";
 /**
  * `undo-manager`
  * `an undo history manager element`
@@ -78,12 +78,6 @@ const UndoManagerBehaviors = function (SuperClass) {
       this.undoStackInitialValue = this.innerHTML;
       // set previous value, to start
       this.undoStackPrevValue = this.undoStackInitialValue;
-    }
-    /**
-     * Simple path resolution from URL
-     */
-    pathFromUrl(url) {
-      return url.substring(0, url.lastIndexOf("/") + 1);
     }
     /**
      * HTMLElement

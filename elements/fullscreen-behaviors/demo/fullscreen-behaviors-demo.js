@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { FullscreenBehaviors } from "../fullscreen-behaviors.js";
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 /**
  * `fullscreen-behaviors-demo`
  *

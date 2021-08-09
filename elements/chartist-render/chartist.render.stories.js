@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import {
   withKnobs,

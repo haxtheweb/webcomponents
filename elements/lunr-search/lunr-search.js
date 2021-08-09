@@ -3,7 +3,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `lunr-search`
@@ -96,8 +96,7 @@ class LunrSearch extends LitElement {
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
-      this.basePath =
-        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+      this.basePath = new URL("./../../", import.meta.url).href;
     }
     const location = `${this.basePath}lunr/lunr.js`;
     window.addEventListener(
@@ -169,10 +168,6 @@ class LunrSearch extends LitElement {
         );
       }
     });
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   disconnectedCallback() {
     window.removeEventListener(

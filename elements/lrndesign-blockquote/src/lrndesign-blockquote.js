@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `lrndesign-blockquote`
@@ -665,10 +665,6 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
         "background: url(" + newValue + ") no-repeat center center";
     }
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   /**
    * Notice display mode change activated so load the font
    */
@@ -677,7 +673,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
       this.shadowRoot.querySelector("#wrap").style.cssText = "";
       this.shadowRoot.querySelector("#thumb").style.cssText = "";
       let style = document.createElement("style");
-      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      let basePath = new URL("./", import.meta.url).href;
       style.innerHTML = `@font-face {
         font-family: 'Chikarego';
         font-display: swap;

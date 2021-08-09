@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -268,6 +268,14 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       });
       if (this.tag === "rich-text-editor-heading-picker")
         console.log("disabled", this, this.disabled);
+    }
+    /**
+     * Called every time the element is inserted into the DOM. Useful for
+     * running setup code, such as fetching resources or rendering.
+     * Generally, you should try to delay work until this time.
+     */
+    connectedCallback() {
+      super.connectedCallback();
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for

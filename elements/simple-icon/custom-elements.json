@@ -473,7 +473,7 @@
       "properties": [
         {
           "name": "feFlood",
-          "type": "\"\" | SVGTemplateResult"
+          "type": "\"\" | TemplateResult<2>"
         },
         {
           "name": "src",
@@ -487,6 +487,14 @@
         },
         {
           "name": "documentDir",
+          "type": "string"
+        },
+        {
+          "name": "useSafariPolyfill",
+          "type": "boolean"
+        },
+        {
+          "name": "safariMask",
           "type": "string"
         },
         {
@@ -634,7 +642,7 @@
         },
         {
           "name": "feFlood",
-          "type": "\"\" | SVGTemplateResult"
+          "type": "\"\" | TemplateResult<2>"
         },
         {
           "name": "src",
@@ -648,6 +656,14 @@
         },
         {
           "name": "documentDir",
+          "type": "string"
+        },
+        {
+          "name": "useSafariPolyfill",
+          "type": "boolean"
+        },
+        {
+          "name": "safariMask",
           "type": "string"
         },
         {
@@ -708,7 +724,11 @@
       "properties": [
         {
           "name": "feFlood",
-          "type": "\"\" | SVGTemplateResult"
+          "type": "\"\" | TemplateResult<2>"
+        },
+        {
+          "name": "useSafariPolyfill",
+          "type": "boolean"
         },
         {
           "name": "contrast",

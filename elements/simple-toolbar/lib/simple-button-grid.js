@@ -2,7 +2,7 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import { SimpleToolbarBehaviors } from "../simple-toolbar.js";
 /**
  * @customElement

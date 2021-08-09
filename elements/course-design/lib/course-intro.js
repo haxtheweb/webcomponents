@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
 
@@ -13,6 +13,7 @@ class CourseIntro extends LitElement {
           display: block;
           min-height: 100vh;
           padding-bottom: 30vh;
+          color: inherit;
           background-color: rgba(var(--course-intro-bg-color), 1);
         }
       `,

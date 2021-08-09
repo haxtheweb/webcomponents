@@ -82,7 +82,6 @@ class HAXCMSSiteRouter extends HTMLElement {
    * @param {event} e
    */
   _routerLocationChanged(e) {
-    // store local state
     store.location = e.detail.location;
   }
 }

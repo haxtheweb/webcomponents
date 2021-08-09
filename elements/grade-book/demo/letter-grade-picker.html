@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>grade-book</title>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script type="module">
+      import "../lib/letter-grade-picker.js";
+      import { GradeBookStore } from "../lib/grade-book-store.js";
+      GradeBookStore.gradeScale = [
+        {
+          highRange: 100,
+          lowRange: 93,
+          letter: "A",
+        },
+        {
+          highRange: 92,
+          lowRange: 90,
+          letter: "A-",
+        },
+        {
+          highRange: 89,
+          lowRange: 87,
+          letter: "B+",
+        },
+        {
+          highRange: 86,
+          lowRange: 83,
+          letter: "B",
+        },
+        {
+          highRange: 82,
+          lowRange: 80,
+          letter: "B-",
+        },
+        {
+          highRange: 79,
+          lowRange: 77,
+          letter: "C+",
+        },
+        {
+          highRange: 76,
+          lowRange: 70,
+          letter: "C",
+        },
+        {
+          highRange: 69,
+          lowRange: 60,
+          letter: "D",
+        },
+        {
+          highRange: 59,
+          lowRange: 0,
+          letter: "F",
+        },
+      ];
+      window.onload = () => {
+        document.querySelectorAll("letter-grade-picker").forEach((el) => {
+          el.addEventListener("value-changed", (e) => {
+            console.log(e.detail.value);
+          });
+        });
+      };
+    </script>
+    <style>
+      html,body {
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <letter-grade-picker possible="100" input>
+      <span slot="prefix">Awareness</span>
+    </letter-grade-picker>
+    <letter-grade-picker label="Coolness" possible="50" input></letter-grade-picker>
+    <letter-grade-picker label="Creativity" possible="5" input></letter-grade-picker>
+    <letter-grade-picker possible="10" input><span slot="prefix">Wow factor</span></letter-grade-picker>
+
+    <letter-grade-picker label="reveal me" possible="50" input reveal></letter-grade-picker>
+
+  </body>
+</html>

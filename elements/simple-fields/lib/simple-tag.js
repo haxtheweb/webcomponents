@@ -1,4 +1,4 @@
-import { css } from "lit-element/lit-element.js";
+import { css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SimpleTagLiteSuper } from "./simple-tag-lite.js";
 import {

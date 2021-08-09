@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement } from "lit";
 
 // register globally so we can make sure there is only one
 window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};

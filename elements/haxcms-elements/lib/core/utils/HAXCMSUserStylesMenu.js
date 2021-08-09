@@ -1,4 +1,4 @@
-import { css, html } from "lit-element/lit-element.js";
+import { css, html } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
@@ -6,9 +6,20 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
     constructor() {
       super();
       this.hideUserStylesMenu = true;
-      this.fontSize = 1;
-      this.fontFamily = 0;
-      this.colorTheme = 0;
+      this.fontSize = window.localStorage.getItem("haxcms-userPref-fontSize")
+        ? window.localStorage.getItem("haxcms-userPref-fontSize")
+        : 1;
+      this.fontFamily = window.localStorage.getItem(
+        "haxcms-userPref-fontFamily"
+      )
+        ? window.localStorage.getItem("haxcms-userPref-fontFamily")
+        : 0;
+      this.colorTheme = window.localStorage.getItem(
+        "haxcms-userPref-colorTheme"
+      )
+        ? window.localStorage.getItem("haxcms-userPref-colorTheme")
+        : 0;
+
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
     }
     static get styles() {
@@ -447,20 +458,30 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
     UserStylesSizeDown(e) {
       if (this.fontSize > 0) {
         this.fontSize = this.fontSize - 1;
+        window.localStorage.setItem("haxcms-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesSizeUp(e) {
       if (this.fontSize < 4) {
         this.fontSize = this.fontSize + 1;
+        window.localStorage.setItem("haxcms-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesFontFamilyChange(e) {
       var target = normalizeEventPath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
+      window.localStorage.setItem(
+        "haxcms-userPref-fontFamily",
+        this.fontFamily
+      );
     }
     UserStylesColorThemeChange(e) {
       var target = normalizeEventPath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
+      window.localStorage.setItem(
+        "haxcms-userPref-colorTheme",
+        this.colorTheme
+      );
     }
   };
 };

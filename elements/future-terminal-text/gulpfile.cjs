@@ -165,7 +165,7 @@ gulp.task("iconset", (done) => {
  * @const ${exportName} 
  */
 export const ${exportName} = ${jsonContent};
-SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);`
+SimpleIconsetStore.registerManifest(${exportName});`
     fs.writeFile(`${manifestPath}/${manifestFilename}.js`, iconVar, 'utf8', function (err) {
         if (err) {
             console.log("An error occured while writing iconset manifest Object to File.");

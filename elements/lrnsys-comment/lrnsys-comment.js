@@ -496,7 +496,7 @@ class LrnsysComment extends PolymerElement {
   _editTrigger(e) {
     // bother checking if they can edit or not first
     if (typeof this.comment !== typeof undefined && this.comment.actions.edit) {
-      async.microTask.run(() => {
+      setTimeout(() => {
         // show / hide the edit vs display area
         this.shadowRoot.querySelector(
           "#renderedcomment"
@@ -534,7 +534,7 @@ class LrnsysComment extends PolymerElement {
           this.shadowRoot.querySelector("#edit").innerText = "Edit";
           this.shadowRoot.querySelector("#reply").disabled = false;
         }
-      });
+      }, 0);
     }
   }
   /**

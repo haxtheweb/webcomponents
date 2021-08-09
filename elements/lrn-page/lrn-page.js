@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 /**
 `lrn-page`
 A LRN element for a "page" of material. This ensures there's an OERSchema wrapper

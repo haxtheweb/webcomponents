@@ -1025,4 +1025,4 @@ export const SimpleIconsetManifest = [
     ],
   },
 ];
-SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);
+SimpleIconsetStore.registerManifest(SimpleIconsetManifest);

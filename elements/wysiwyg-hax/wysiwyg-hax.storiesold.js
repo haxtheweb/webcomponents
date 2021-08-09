@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { WysiwygHax } from "@lrnwebcomponents/wysiwyg-hax/wysiwyg-hax.js";
 import {
   withKnobs,

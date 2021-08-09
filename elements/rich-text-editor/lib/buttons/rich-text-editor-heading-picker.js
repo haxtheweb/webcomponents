@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
 /**
  * `rich-text-editor-heading-picker`

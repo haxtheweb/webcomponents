@@ -9,14 +9,10 @@ class QRCodeElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     const location = `${basePath}/qr.js`;
     window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this));
     window.ESGlobalBridge.requestAvailability().load("qr", location);
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   disconnectedCallback() {
     window.removeEventListener(

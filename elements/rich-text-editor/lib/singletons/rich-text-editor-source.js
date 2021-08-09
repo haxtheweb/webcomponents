@@ -2,7 +2,11 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+<<<<<<< HEAD
 import { LitElement, html, css } from "lit-element/lit-element.js";
+=======
+import { LitElement, html, css } from "lit";
+>>>>>>> master
 
 /**
  * `rich-text-editor-source`

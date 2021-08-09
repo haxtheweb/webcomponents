@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 
 /**
  * `simple-pages`
@@ -89,7 +89,7 @@ class SimplePages extends LitElement {
     ) {
       let el = this.children[e.detail.value];
       if (!window.customElements.get(el.tagName.toLowerCase())) {
-        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+        const basePath = new URL("./", import.meta.url).href;
         import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
           (response) => {
             setTimeout(() => {
@@ -99,10 +99,6 @@ class SimplePages extends LitElement {
         );
       }
     }
-  }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * LitElement ready

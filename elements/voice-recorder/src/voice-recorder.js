@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { record } from "./lib/vmsg-fork.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -94,8 +94,8 @@ class VoiceRecorder extends LitElement {
       record(
         {
           wasmURL:
-            this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../../node_modules/vmsg/vmsg.wasm",
+            new URL("./../../", import.meta.url).href +
+            "node_modules/vmsg/vmsg.wasm",
         },
         this
       ).then((blob) => {
@@ -106,9 +106,6 @@ class VoiceRecorder extends LitElement {
         );
       });
     }
-  }
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 }
 customElements.define(VoiceRecorder.tag, VoiceRecorder);

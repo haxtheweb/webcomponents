@@ -883,19 +883,17 @@ class OutlineDesigner extends PolymerElement {
       }
       // fire resize event if iron-list is visible
       if (this.selectedView === 0) {
-        async.microTask.run(() => {
-          setTimeout(() => {
-            this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-              new CustomEvent("iron-resize", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: true,
-              })
-            );
-            window.dispatchEvent(new Event("resize"));
-          }, 50);
-        });
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#ironlist").dispatchEvent(
+            new CustomEvent("iron-resize", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: true,
+            })
+          );
+          window.dispatchEvent(new Event("resize"));
+        }, 50);
       }
     }
   }
@@ -965,19 +963,17 @@ class OutlineDesigner extends PolymerElement {
           this.selectedView = 0;
           this.viewModeIcon = "icons:view-module";
           this.viewModeLabel = "Card view";
-          async.microTask.run(() => {
-            setTimeout(() => {
-              this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-                new CustomEvent("iron-resize", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: true,
-                })
-              );
-              window.dispatchEvent(new Event("resize"));
-            }, 100);
-          });
+          setTimeout(() => {
+            this.shadowRoot.querySelector("#ironlist").dispatchEvent(
+              new CustomEvent("iron-resize", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: true,
+              })
+            );
+            window.dispatchEvent(new Event("resize"));
+          }, 100);
           break;
         case "outline":
           this.shadowRoot
