@@ -25,11 +25,13 @@
     </style>
   </head>
   <body>
+    <h1>HAX Test</h1>
     <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
-      <h1>HAX Test</h1>
-      <h1>Heading 2</h1>
-      <grid-plate id="grid" layout="1-1-1-1" edit-mode>
+      <h2>Subheading</h2>
+      <grid-plate id="grid2" layout="1"></grid-plate>
+      <h2>Heading 2</h2>
+      <grid-plate id="grid" layout="1-1-1-1">
         <!--video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
           responsive="" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
           iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..."
@@ -48,6 +50,7 @@
         <p slot="col-2">Bird</p>
         <p slot="col-2">Cat</p>
         <p slot="col-3">Dog</p>
+        <p slot="col-3"><lrn-math>a+b=c</lrn-math></p>
           <!--img
             slot="col-3" 
             width="100%" 
@@ -67,7 +70,7 @@
           This content is not in the layout.
         </p-->
       </grid-plate>
-      <h1>Heading 3</h1>
+      <h3>Heading 3</h3>
       <stop-note title="Error Message" url="https://www.google.com">
         <p slot="message">You can write any error message you want here.</p>
       </stop-note>
@@ -100,6 +103,11 @@
             See documentation for more info. 
           </p>
         </accent-card>
+        <figure>
+          <img src="https://cdn.pixabay.com/photo/2015/08/24/12/54/banner-904887_960_720.jpg"/>
+          <figcaption>This is a nice <picture> of a cat.</picture>
+          </figcaption>
+        </figure>
         <!--h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>

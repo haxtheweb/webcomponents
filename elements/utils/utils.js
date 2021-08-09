@@ -391,6 +391,15 @@ function generateResourceID(base = "#") {
     idPart()
   );
 }
+//converts unicode to HTML entity
+export function utf2Html(str) {
+  return [...str]
+    .map((char) =>
+      char.codePointAt() > 127 ? `&#${char.codePointAt()};` : char
+    )
+    .join("");
+}
+
 export function htmlEntities(s) {
   return s.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
     return "&#" + i.charCodeAt(0) + ";";

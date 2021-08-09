@@ -78,7 +78,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host([hidden]) {\n          display: none!important;\n        }\n      ",
+    "\n        :host([hidden]) {\n          display: none !important;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -271,6 +271,7 @@ var SimpleToolbarMoreButton =
       _this.label = "More buttons";
       _this.labelToggled = "Fewer buttons";
       _this.tooltipDirection = "left";
+      _this.disabled = false;
       return _this;
     }
     /**

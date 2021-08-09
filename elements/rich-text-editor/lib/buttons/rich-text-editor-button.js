@@ -106,6 +106,9 @@ const RichTextToolbarStyles = [
         transparent
       );
     }
+    button[part="button"] {
+      border-radius: var(--rich-text-editor-button-disabled-border-radius, 0px);
+    }
   `,
 ];
 /**
@@ -139,6 +142,14 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       return {
         ...super.properties,
 
+        /**
+         * Hide the null option
+         */
+        disabled: {
+          type: Boolean,
+          reflect: true,
+          attribute: "disabled",
+        },
         /**
          * The command used for document.execCommand.
          */
@@ -255,6 +266,16 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (["shortcutKeys", "tagsList", "tagClickCallback"].includes(propName))
           this.updateButtonRegistry();
       });
+      if (this.tag === "rich-text-editor-heading-picker")
+        console.log("disabled", this, this.disabled);
+    }
+    /**
+     * Called every time the element is inserted into the DOM. Useful for
+     * running setup code, such as fetching resources or rendering.
+     * Generally, you should try to delay work until this time.
+     */
+    connectedCallback() {
+      super.connectedCallback();
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for

@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n        ",
+    "\n          :host {\n            align-items: center;\n            --simple-picker-background-color: var(--simple-toolbar-button-bg);\n            --simple-picker-color-active: var(\n              --simple-toolbar-button-hover-color\n            );\n            --simple-picker-background-color-active: var(\n              --simple-toolbar-button-hover-bg\n            );\n            --simple-picker-color-disabled: var(\n              --simple-toolbar-button-disabled-color\n            );\n            --simple-picker-background-color-disabled: var(\n              --simple-toolbar-button-disabled-bg\n            );\n            --simple-picker-border-radius: 0px;\n            --simple-picker-border-width: 0px;\n            --simple-picker-option-size: calc(\n              24px - 2 * var(--simple-picker-sample-padding, 2px)\n            );\n            --simple-picker-icon-size: 16px;\n            --simple-picker-options-border-width: 1px;\n            --simple-picker-options-border: var(\n                --simple-picker-options-border-width,\n                1px\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--rich-text-editor-border-color, #ddd)\n              );\n          }\n          #button {\n            margin-top: 0;\n            margin-bottom: 0;\n          }\n          #button.hide-label::part(label) {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            width: 0px;\n            height: 0px;\n            overflow: hidden;\n          }\n        ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -121,15 +121,18 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n        <simple-picker\n          id="button"\n          ?allow-null="',
     '"\n          class="rtebutton ',
+    "-label ",
     '"\n          ?disabled="',
-    '"\n          controls="',
+    '"\n          ?hide-null-option="',
+    '"\n          .controls="',
     '"\n          .options="',
     '"\n          @mouseover="',
     '"\n          @keydown="',
+    '"\n          .label="',
     '"\n          @value-changed="',
     '"\n          tabindex="0"\n          ?title-as-html="',
-    '"\n        >\n          ',
-    "\n        </simple-picker>\n        ",
+    '"\n          .value="',
+    '"\n        >\n        </simple-picker>\n        ',
     "\n      ",
   ]);
 
@@ -267,16 +270,19 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
               return (0, _litElement.html)(
                 _templateObject(),
                 this.allowNull,
+                this.labelVisibleClass,
                 this.toggled ? "toggled" : "",
                 this.disabled,
+                this.hideNullOption,
                 _get(_getPrototypeOf(_class.prototype), "controls", this),
                 this.options,
                 this._pickerFocus,
                 this._pickerFocus,
+                this.currentLabel,
                 this._pickerChange,
                 this.titleAsHtml,
-                _get(_getPrototypeOf(_class.prototype), "labelTemplate", this),
-                _get(_getPrototypeOf(_class.prototype), "tooltopTemplate", this)
+                this.value,
+                _get(_getPrototypeOf(_class.prototype), "tooltipTemplate", this)
               );
             },
           },
@@ -318,6 +324,15 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                   },
 
                   /**
+                   * Hide the null option
+                   */
+                  disabled: {
+                    type: Boolean,
+                    reflect: true,
+                    attribute: "disabled",
+                  },
+
+                  /**
                    * command used for document.execCommand.
                    */
                   command: {
@@ -325,10 +340,18 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
                   },
 
                   /**
+                   * Hide the null option
+                   */
+                  hideNullOption: {
+                    type: Boolean,
+                  },
+
+                  /**
                    * Optional icon for null value
                    */
                   icon: {
                     type: String,
+                    reflect: true,
                   },
 
                   /**
@@ -405,19 +428,28 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
         {
           key: "_rangeChanged",
           value: function _rangeChanged() {
+            this._setRangeValue();
+
+            _get(_getPrototypeOf(_class.prototype), "_rangeChanged", this).call(
+              this
+            );
+          },
+          /**
+           * sets picker's value based ion current selected range
+           */
+        },
+        {
+          key: "_setRangeValue",
+          value: function _setRangeValue() {
             var val = this._getSelection();
 
             if (this.shadowRoot) {
               if (this.tagsArray.includes(val)) {
                 this.shadowRoot.querySelector("#button").value = val;
               } else if (!this.range || this.range.collapsed) {
-                this.shadowRoot.querySelector("#button").value = null;
+                this.shadowRoot.querySelector("#button").value = undefined;
               }
             }
-
-            _get(_getPrototypeOf(_class.prototype), "_rangeChanged", this).call(
-              this
-            );
           },
           /**
            * override to handle custom options
@@ -464,7 +496,8 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
         {
           key: "_pickerChange",
           value: function _pickerChange(e) {
-            var val = this._getSelectionType() || "";
+            var val = this._getSelectionType() || "",
+              parent = this.__highlight.parentNode;
             this.commandVal = e.detail.value || "";
             /* only update when there is an actual change */
 
@@ -477,6 +510,12 @@ var RichTextEditorPickerBehaviors = function RichTextEditorPickerBehaviors(
           key: "isToggled",
           get: function get() {
             return false;
+          },
+        },
+        {
+          key: "labelVisibleClass",
+          get: function get() {
+            return !!this.icon ? "hide" : "show";
           },
         },
       ]);

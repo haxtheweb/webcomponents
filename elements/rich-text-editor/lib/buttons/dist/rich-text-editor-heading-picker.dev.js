@@ -259,6 +259,7 @@ var RichTextEditorHeadingPicker =
         _getPrototypeOf(RichTextEditorHeadingPicker).call(this)
       );
       _this.allowNull = true;
+      _this.hideNullOption = true;
       _this.blocks = [
         {
           label: "Paragraph",
@@ -294,15 +295,51 @@ var RichTextEditorHeadingPicker =
         },
       ];
       _this.command = "formatBlock";
-      _this.icon = null;
+      _this.icon = undefined;
       _this.label = "Block format";
       _this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
+      _this.titleAsHtml = undefined;
       return _this;
-    } // properties available to the custom element for data binding
+    }
 
     _createClass(
       RichTextEditorHeadingPicker,
       [
+        {
+          key: "updated",
+          value: function updated(changedProperties) {
+            var _this2 = this;
+
+            _get(
+              _getPrototypeOf(RichTextEditorHeadingPicker.prototype),
+              "updated",
+              this
+            ).call(this, changedProperties);
+
+            changedProperties.forEach(function (oldValue, propName) {
+              if (propName === "blocks") _this2._setOptions();
+            });
+          },
+          /**
+           * sets picker's value based ion current selected range
+           */
+        },
+        {
+          key: "_setRangeValue",
+          value: function _setRangeValue() {
+            var ancestor = this.rangeOrMatchingAncestor(),
+              tag = ancestor ? ancestor.tagName : "",
+              val = tag.toLowerCase();
+
+            if (this.shadowRoot) {
+              if (this.tagsArray.includes(val)) {
+                this.shadowRoot.querySelector("#button").value = val;
+              } else if (!this.range || this.range.collapsed) {
+                this.shadowRoot.querySelector("#button").value = undefined;
+              }
+            }
+          }, // properties available to the custom element for data binding
+        },
         {
           key: "_setOptions",
 
@@ -337,6 +374,12 @@ var RichTextEditorHeadingPicker =
                 })
               )
             );
+          },
+        },
+        {
+          key: "labelVisibleClass",
+          get: function get() {
+            return "hide";
           },
         },
       ],

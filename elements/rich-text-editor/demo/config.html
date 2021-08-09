@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../rich-text-editor.js';
       import '../lib/buttons/rich-text-editor-emoji-picker.js';
+      import '../lib/buttons/rich-text-editor-icon-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -23,6 +24,8 @@
         <template>
           <rich-text-editor-toolbar-full id="editor" show="always" sticky controls="content"></rich-text-editor-toolbar-full>
           <rich-text-editor id="content" toolbar="editor">
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               In nec tincidunt tortor, at varius leo. Mauris varius 
@@ -103,7 +106,8 @@
                     "icon": "image:tag-faces",
                     "label": "Insert Emoji", 
                     "type": "rich-text-editor-emoji-picker" 
-                  }
+                  },
+                  editor.iconButton
                 ]
               },
               editor.listIndentButtonGroup,

@@ -15,10 +15,16 @@
   max-height: unset;
 }
 
-:host([disabled]) {
+:host([disabled]){
   --simple-picker-color: var(--simple-picker-color-disabled, #888);
   --simple-picker-background-color: var(--simple-picker-background-color-disabled, #e8e8e8);
   cursor: not-allowed;
+  pointer-events: none;
+}
+
+*[disabled] {
+  cursor: not-allowed;
+  pointer-events: none!important;
 }
 
 :host([hidden]) {
@@ -87,31 +93,35 @@ label:not([hidden]) {
   overflow: visible;
 }
 
-:host(:focus-within) #sample {
+:host(:not([disabled]):focus-within) #sample {
   border-width: var(--simple-picker-focus-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
   transition: all 0.5s;
 }
 
-:host(:focus-within) #listbox{
+:host(:not([disabled]):focus-within) #listbox {
   border-width: var(--simple-picker-listbox-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-listbox-border-width, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-listbox-border-width, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
 }
 
-#listbox:focus-within,
-:host(:focus-within) #listbox{
+:host(:not([disabled])) #listbox:focus-within,
+:host(:not([disabled]):focus-within) #listbox {
   outline: var(--simple-picker-listbox-outline,unset);
 }
 
 #icon {
-  width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
-  height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
-  --simple-icon-width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
-  --simple-icon-height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  width: var(--simple-picker-icon-size, 16px);
+  height: var(--simple-picker-icon-size, 16px);
+  --simple-icon-width: var(--simple-picker-icon-size, 16px);
+  --simple-icon-height: var(--simple-picker-icon-size, 16px);
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
+}
+
+:host([hide-option-labels]) #icon {
+  margin-left: calc(-0.125 * var(--simple-picker-icon-size, 16px));
 }
 
 :host([expanded]) #icon {

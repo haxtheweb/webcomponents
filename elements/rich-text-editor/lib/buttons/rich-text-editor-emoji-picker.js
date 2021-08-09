@@ -37,17 +37,17 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
   // render function for template
   render() {
     return html`
-      <label id="listLabel" for="button"> ${this.labelTemplate} </label>
       <simple-emoji-picker
         id="button"
-        id="button"
         ?allow-null="${this.allowNull}"
-        aria-labeledby="listlabel"
-        controls="${super.controls}"
+        class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
+          ? "toggled"
+          : ""}"
+        .controls="${super.controls}"
         ?disabled="${this.disabled}"
         .emoji-types="${this.emojiTypes}"
         @keydown="${this._pickerFocus}"
-        label=""
+        .label="${this.currentLabel}"
         @mouseover="${this._pickerFocus}"
         tabindex="0"
         title-as-html

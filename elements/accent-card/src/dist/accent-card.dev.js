@@ -378,6 +378,18 @@ var AccentCard =
                     description: "A heading for card.",
                     inputMethod: "textfield",
                     slotWrapper: "h1",
+                    allowedSlotWrappers: [
+                      "span",
+                      "div",
+                      "p",
+                      "h1",
+                      "h2",
+                      "h3",
+                      "h4",
+                      "h5",
+                      "h6",
+                    ],
+                    excludedSlotWrappers: ["pre"],
                   },
                   {
                     slot: "subheading",
@@ -385,6 +397,7 @@ var AccentCard =
                     description: "An optional subheading for card.",
                     inputMethod: "textfield",
                     slotWrapper: "p",
+                    allowedSlotWrappers: ["div", "p"],
                   },
                   {
                     slot: "content",
@@ -399,6 +412,7 @@ var AccentCard =
                     description: "An optional footer for card.",
                     inputMethod: "textfield",
                     slotWrapper: "p",
+                    allowedSlotWrappers: ["div", "p"],
                   },
                   {
                     property: "imageSrc",
@@ -481,6 +495,7 @@ var AccentCard =
                     description: "Content for card corner.",
                     inputMethod: "textfield",
                     slotWrapper: "div",
+                    allowedSlotWrappers: ["div", "p"],
                   },
                 ],
               },

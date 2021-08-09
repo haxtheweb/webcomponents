@@ -36,6 +36,92 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
 <slot></slot>`;
   }
 
+<<<<<<< HEAD
+        /**
+         * Element is positioned from connected to disconnected?
+         * Otherwise setPosition and unsetPosition must be called manually.
+         */
+        auto: {
+          type: Boolean,
+          attribute: "auto",
+        },
+        /**
+         * If true, no parts of the tooltip will ever be shown offscreen.
+         */
+        fitToVisibleBounds: {
+          type: Boolean,
+          attribute: "fit-to-visible-bounds",
+        },
+        /**
+         * If true, no parts of the tooltip will ever be shown offscreen.
+         */
+        hidden: {
+          type: Boolean,
+          reflect: true,
+          attribute: "hidden",
+        },
+        /**
+         * The id of the element that the tooltip is anchored to. This element
+         * must be a sibling of the tooltip. If this property is not set,
+         * then the tooltip will be centered to the parent node containing it.
+         */
+        for: {
+          type: String,
+          attribute: "for",
+          reflect: true,
+        },
+        /**
+         * The spacing between the top of the tooltip and the element it is
+         * anchored to.
+         */
+        offset: {
+          type: Number,
+          attribute: "offset",
+        },
+        /**
+         * Stays on screen while target is on screen
+         */
+        sticky: {
+          type: Boolean,
+          attribute: "sticky",
+          reflect: true,
+        },
+        /**
+         * Positions the tooltip to the top, right, bottom, left of its content.
+         */
+        position: {
+          type: String,
+          attribute: "position",
+          reflect: true,
+        },
+        /**
+         * Aligns at the start, or end fo target. Default is centered.
+         */
+        positionAlign: {
+          type: String,
+          attribute: "position-align",
+          reflect: true,
+        },
+        justify: {
+          type: Boolean,
+          reflect: true,
+          attribute: "justify",
+        },
+        /**
+         * The actual target element
+         */
+        target: {
+          type: Object,
+        },
+        /**
+         * The element's style
+         */
+        __positions: {
+          type: Object,
+        },
+      };
+    }
+=======
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -119,6 +205,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
 }
 ;
   }
+>>>>>>> master
 
     /**
      * Store tag name to make it easier to obtain directly.
@@ -136,12 +223,40 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
       this.offset = 0;
       this.position = "bottom";
       this.target = null;
+<<<<<<< HEAD
+      this.sticky = false;
+=======
       this.hidden = false;
+>>>>>>> master
       this.__positions = {};
       this.__observe = false;
     }
 
     updated(changedProperties) {
+<<<<<<< HEAD
+      let updatePosition = false;
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "auto" && this.auto) this.setPosition();
+        if (propName === "auto" && !this.auto) this.unsetPosition();
+        if (
+          [
+            "fitToVisibleBounds",
+            "for",
+            "offset",
+            "position",
+            "justify",
+            "positionAlign",
+            "target",
+            "hidden",
+            "sticky",
+          ].includes(propName) &&
+          this[propName] !== oldValue
+        )
+          updatePosition = true;
+      });
+      if (updatePosition) console.log(changedProperties, this.target);
+      if (updatePosition) this.updatePosition();
+=======
       if (this.shadowRoot && !this.hidden) {
         changedProperties.forEach((oldValue, propName) => {
           if (propName === "auto" && this.auto) this.setPosition();
@@ -155,6 +270,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
           if (propName === "hidden") this.updatePosition();
         });
       }
+>>>>>>> master
     }
 
     /**
@@ -184,10 +300,15 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
+<<<<<<< HEAD
+      if (!this.auto || this.__observe === true) {
+        this.__manager.positionElement(this);
+=======
       if (this.__observe === true) {
         window.AbsolutePositionStateManager.requestAvailability().positionElement(
           this
         );
+>>>>>>> master
       }
     }
     /**

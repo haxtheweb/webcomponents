@@ -80,11 +80,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return sel;
     } else false;
   }
+
   /**
    * Try and guess the Gizmo based on what we were just handed
    */
   guessGizmo(guess, values, skipPropMatch = false, preferExclusive = false) {
-    var matches = [];
+    var matches = [],
+      matchedTags = [];
     if (typeof guess !== typeof undefined) {
       // verify type
       if (this.validGizmoTypes.includes(guess)) {
@@ -93,7 +95,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         for (var gizmoposition in this.gizmoList) {
           let gizmo = this.gizmoList[gizmoposition],
             tags = [];
-          let props = {};
+          let props = { innerHTML: values.innerHTML };
           // reset match per gizmo
           let match = false;
           // ensure this gizmo can handle things
@@ -139,7 +141,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       if (!!i && i != "") keywords[i.toLowerCase()] = true;
                     });
                     gizmo.keywords = Object.keys(keywords);
-                    matches.push(this.haxElementPrototype(gizmo, props, ""));
+                    //prevent duplicates
+                    if (!matchedTags.includes(gizmo.tag)) {
+                      matches.push(this.haxElementPrototype(gizmo, props, ""));
+                      matchedTags.push(gizmo.tag);
+                    }
                   }
                 }
               }
@@ -1668,6 +1674,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "blockquote",
       "code",
       "figure",
+      "figcaption",
       "img",
       "iframe",
       "video",
@@ -2050,6 +2057,85 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ],
     };
     this.setHaxProperties(img, "img");
+    let figure = {
+      canScale: {
+        min: 10,
+        step: 5,
+      },
+      type: "grid",
+      editingElement: "core",
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Figure",
+        description: "A basic figure tag",
+        icon: "image:image",
+        color: "blue-grey",
+        groups: ["Image", "Media", "Layout"],
+        handles: [],
+        meta: {
+          author: "W3C",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            slot: "",
+            title: "Figure Content",
+            description: "The content of the figure",
+            inputMethod: "code-editor",
+            slotWrapper: "figcaption",
+          },
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "figure",
+          properties: {},
+          content: "<img>\n<figcaption>Image Caption Here</figcaption>",
+        },
+      ],
+    };
+    this.setHaxProperties(figure, "figure");
+    let figcaption = {
+      canScale: {
+        min: 10,
+        step: 5,
+      },
+      type: "element",
+      editingElement: "core",
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Figurecaption",
+        description: "Used inside of a figure tag",
+        icon: "image:image",
+        color: "blue-grey",
+        groups: ["Image", "Media"],
+        handles: [],
+        meta: {
+          author: "W3C",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            slot: "",
+            title: "Figure Caption",
+            description: "Caption for the figure",
+            inputMethod: "code-editor",
+          },
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "figcaption",
+          properties: {},
+          content: "Image Caption Here",
+        },
+      ],
+    };
+    this.setHaxProperties(figcaption, "figcaption");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2155,7 +2241,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [
           {
             type: "content",
-            content: "",
+            source: "",
+            title: "innerHTML",
+            alt: "title",
           },
         ],
         meta: {
@@ -2169,7 +2257,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       demoSchema: [
         {
           tag: "p",
-          content: "Text",
+          content: "Paragraph",
           properties: {},
         },
       ],
@@ -2525,6 +2613,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
     }
+  }
+  /**
+   * if given a schema, returns slots as array
+   *
+   * @param {object} schema
+   * @param {boolean} [optionalOnly=false]
+   * @returns {array}
+   * @memberof HaxStore
+   */
+  slotsFromSchema(schema, optionalOnly = false) {
+    let settings = schema ? schema.settings : {},
+      slotsList = [];
+    return Object.keys(settings || {})
+      .map((setting) =>
+        (settings[setting] || []).filter((prop) => {
+          let show = !optionalOnly || !prop.required;
+          if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
+            slotsList.push(prop.slot);
+            return true;
+          } else {
+            return false;
+          }
+        })
+      )
+      .flat();
   }
   /**
    * get the schema from a tag

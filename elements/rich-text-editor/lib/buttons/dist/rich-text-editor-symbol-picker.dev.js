@@ -80,12 +80,14 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <label id="listLabel" for="button"> ',
-    ' </label>\n      <simple-symbol-picker\n        id="button"\n        ?allow-null="',
-    '"\n        aria-labeledby="listlabel"\n        controls="',
+    '\n      <simple-symbol-picker\n        id="button"\n        ?allow-null="',
+    '"\n        class="rtebutton ',
+    "-label ",
+    '"\n        .controls="',
     '"\n        ?disabled="',
     '"\n        @keydown="',
-    '"\n        label=""\n        @mouseover="',
+    '"\n        .label="',
+    '"\n        @mouseover="',
     '"\n        .symbol-types="',
     '"\n        tabindex="0"\n        title-as-html\n        ?toggled="',
     '"\n        @value-changed="',
@@ -227,8 +229,9 @@ var RichTextEditorSymbolPicker =
           value: function render() {
             return (0, _litElement.html)(
               _templateObject(),
-              this.labelTemplate,
               this.allowNull,
+              this.labelVisibleClass,
+              this.toggled ? "toggled" : "",
               _get(
                 _getPrototypeOf(RichTextEditorSymbolPicker.prototype),
                 "controls",
@@ -236,6 +239,7 @@ var RichTextEditorSymbolPicker =
               ),
               this.disabled,
               this._pickerFocus,
+              this.currentLabel,
               this._pickerFocus,
               this.symbolTypes,
               this.toggled,

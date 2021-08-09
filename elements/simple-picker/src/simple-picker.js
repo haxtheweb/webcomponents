@@ -117,15 +117,24 @@ class SimplePicker extends LitElement {
       }
     }
   }
+  get hideNull() {
+    return !this.allowNull || this.hideNullOption;
+  }
 
   _renderOptions(options) {
     return html`${options.map(
       (row, rownum) => html`
-        <div class="row">
+        <div class="row" ?hidden="${!this._isRowHidden(row)}">
           ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
         </div>
       `
     )}`;
+  }
+  _isRowHidden(row) {
+    return (
+      !Array.isArray(row) ||
+      row.filter((col) => !!col.value || !this.hideNull).length < 1
+    );
   }
   _renderRow(row, rownum) {
     return html`${row.map(
@@ -135,7 +144,7 @@ class SimplePicker extends LitElement {
           @set-selected-option="${this._handleSetSelectedOption}"
           ?active="${`${this.__activeDesc}` === `option-${rownum}-${colnum}`}"
           ?hide-option-labels="${this.hideOptionLabels}"
-          ?hidden="${!this.allowNull && !option.value}"
+          ?hidden="${this.hideNull && !option.value}"
           ?selected="${this.value === option.value}"
           ?title-as-html="${this.titleAsHtml}"
           .data="${this.data}"
@@ -207,6 +216,7 @@ class SimplePicker extends LitElement {
    * @returns {void}
    */
   _handleListboxClick(e) {
+    if (this.disabled) return;
     /**
      * handles listbox click event
      * @event click
@@ -221,6 +231,7 @@ class SimplePicker extends LitElement {
    * @returns {void}
    */
   _handleListboxMousedown(e) {
+    if (this.disabled) return;
     /**
      * fires with listbox mousedown event
      * @event mousedown
@@ -238,6 +249,7 @@ class SimplePicker extends LitElement {
      * fires with listbox keyboard events
      * @event keydown
      */
+    if (this.disabled) return;
     this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
     let coords = this.__activeDesc.split("-"),
       rownum = parseInt(coords[1]),

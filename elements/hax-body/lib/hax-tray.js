@@ -1194,7 +1194,6 @@ class HaxTray extends I18NMixin(
             (!oldValue || this.trayDetail !== "content-edit") &&
             this.trayDetail !== "content-map"
           ) {
-            console.log("activeGizmo");
             this.trayDetail = "content-edit";
           }
         } else {
@@ -1203,7 +1202,6 @@ class HaxTray extends I18NMixin(
           // to select the edit tab if we just added something into the page
           // from our two content adding panes
           if (!["content-add", "content-map"].includes(this.trayDetail)) {
-            console.log("else");
             this.trayDetail = "content-add";
           }
         }
@@ -1617,9 +1615,28 @@ class HaxTray extends I18NMixin(
                       slotTag = this.__activePropSchema.settings[key][propTmp]
                         .slotWrapper;
                     } else if (
+                      //selects first wrapper from allowed list
+                      this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers &&
+                      this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers[0]
+                    ) {
+                      slotTag = this.__activePropSchema.settings[key][propTmp]
+                        .allowedSlotWrappers[0];
+                    } else if (
                       this.activeNode.tagName.toLowerCase() === "code-editor"
                     ) {
                       slotTag = "template";
+                    } else {
+                      //selects wrapper that is not excluded
+                      let wrappers = ["span", "div", "p"],
+                        exclusions =
+                          this.__activePropSchema.settings[key][propTmp]
+                            .excludedSlotWrappers || [];
+                      if (exclusions)
+                        wrappers = wrappers.filter(
+                          (wrapper) => !exclusions.includes(wrapper)
+                        );
                     }
                     var tmpel = document.createElement(slotTag);
                     if (

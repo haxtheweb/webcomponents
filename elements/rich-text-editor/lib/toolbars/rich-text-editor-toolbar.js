@@ -85,6 +85,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               var(--rich-text-editor-border-color, #ddd);
             background-color: var(--rich-text-editor-bg, #ffffff);
           }
+          #morebutton::part(button) {
+            border-radius: var(
+              --rich-text-editor-button-disabled-border-radius,
+              0px
+            );
+          }
         `,
       ];
     }
@@ -134,6 +140,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get historyButtonGroup() {
       return {
         type: "button-group",
+        subtype: "history-button-group",
         buttons: [this.undoButton, this.redoButton],
       };
     }
@@ -191,6 +198,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @readonly
      */
+    get strikethroughButton() {
+      return {
+        command: "strikeThrough",
+        icon: "editor:format-strikethrough",
+        label: "Strike Through",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for a remove format button
+     *
+     * @readonly
+     */
     get removeFormatButton() {
       return {
         command: "removeFormat",
@@ -207,6 +227,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get basicInlineButtonGroup() {
       return {
         type: "button-group",
+        subtype: "basic-inline-button-group",
         buttons: [
           this.formatButton,
           this.boldButton,
@@ -236,6 +257,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get linkButtonGroup() {
       return {
         type: "button-group",
+        subtype: "link-button-group",
         buttons: [this.linkButton],
       };
     }
@@ -289,6 +311,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get clipboardButtonGroup() {
       return {
         type: "button-group",
+        subtype: "clipboard-button-group",
         buttons: [this.cutButton, this.copyButton, this.pasteButton],
       };
     }
@@ -328,6 +351,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get scriptButtonGroup() {
       return {
         type: "button-group",
+        subtype: "script-button-group",
         buttons: [this.subscriptButton, this.superscriptButton],
       };
     }
@@ -340,6 +364,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         symbolTypes: ["symbols"],
         type: "rich-text-editor-symbol-picker",
+      };
+    }
+    /**
+     * default config for a symbol button
+     *
+     * @readonly
+     */
+    get iconButton() {
+      return {
+        type: "rich-text-editor-icon-picker",
       };
     }
     /**
@@ -370,7 +404,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get insertButtonGroup() {
       return {
         type: "button-group",
+        subtype: "insert-button-group",
         buttons: [this.imageButton, this.symbolButton],
+      };
+    }
+    /**
+     * default config for an insert button group: image
+     *
+     * @readonly
+     */
+    get advancedInsertButtonGroup() {
+      return {
+        type: "button-group",
+        subtype: "advanced-insert-button-group",
+        buttons: [this.emojiButton],
       };
     }
     /**
@@ -453,6 +500,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get listIndentButtonGroup() {
       return {
         type: "button-group",
+        subtype: "list-indent-button-group",
         buttons: [
           this.orderedListButton,
           this.unorderedListButton,
@@ -496,6 +544,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get saveCloseButtonGroup() {
       return {
         type: "button-group",
+        subtype: "save-close-button-group",
         buttons: [this.saveButton],
       };
     }
@@ -515,6 +564,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get sourceButtonGroup() {
       return {
         type: "button-group",
+        subtype: "source-button-group",
         buttons: [this.sourceButton],
       };
     }
@@ -717,11 +767,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar)
       );
+<<<<<<< HEAD
+      //stops mousedown from bubbling up and triggering HAX focus logic
+      this.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
+=======
+>>>>>>> master
     }
 
     connectedCallback() {
       super.connectedCallback();
       window.RichTextEditorToolbars.push(this);
+<<<<<<< HEAD
     }
 
     /**
@@ -735,6 +791,21 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       );
     }
 
+=======
+    }
+
+    /**
+     * life cycle, element is disconnected
+     * @returns {void}
+     */
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
+        (toolbar) => toolbar !== this
+      );
+    }
+
+>>>>>>> master
     firstUpdated(changedProperties) {
       if (!this.id) this.id = this._generateUUID();
       super.firstUpdated(changedProperties);
@@ -830,7 +901,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     close() {
       //if (editor) this.disableEditing(editor);
       this.target = undefined;
+<<<<<<< HEAD
+      this.positionByTarget(false);
+=======
       document.body.append(this);
+>>>>>>> master
       this.dispatchEvent(
         new CustomEvent("close", {
           bubbles: true,
@@ -984,6 +1059,21 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
     }
+<<<<<<< HEAD
+    /**
+     * creates a div element to contain/group buttons based on config object
+     *
+     * @param {object} config object containing configuration for a group of buttons
+     * @returns {object} div element as a button group
+     * @memberof SimpleToolbar
+     */
+    _renderButtonGroup(config) {
+      let group = super._renderButtonGroup(config);
+      if (config.subtype) group.classList.add(config.subtype);
+      return group;
+    }
+=======
+>>>>>>> master
 
     /**
      * updates buttons with selected range
@@ -1043,6 +1133,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         mousedown: this._removeHighlight.bind(this),
       };
     }
+<<<<<<< HEAD
+    /**
+     * moves toolbar into position before the target
+     * (can be overriden for custom positioning)
+     * @param {object} target
+     */
+    positionByTarget(target) {
+      if (!!target) {
+        target.parentNode.insertBefore(this, target);
+        this.slot = target.slot;
+        if (this.breadcrumbs) {
+=======
 
     /**
      * disables editing
@@ -1197,10 +1299,21 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.breadcrumbs) {
         this.breadcrumbs.controls = this.controls;
         if (!!this.target)
+>>>>>>> master
           this.target.parentNode.insertBefore(
             this.breadcrumbs,
             this.target.nextSibling
           );
+<<<<<<< HEAD
+          this.breadcrumbs.slot = target.slot;
+        }
+      } else {
+        document.body.append(this);
+        this.slot = undefined;
+        if (this.breadcrumbs) {
+          document.body.append(this.breadcrumbs);
+          this.breadcrumbs.slot = undefined;
+=======
       }
       this.buttons.forEach((button) => {
         if (button.command !== "close") button.disabled = !this.target;
@@ -1256,6 +1369,310 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ? ""
         : (this.target.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
     }*/
+
+    get targetHTML() {
+      return !!this.target
+        ? this.outdentHTML(this.target.innerHTML)
+        : undefined;
+    }
+
+    htmlMatchesTarget(html) {
+      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined,
+        cleanHTML = outdentedHTML
+          ? outdentedHTML.replace(/\s+/gm, "")
+          : undefined,
+        cleanTarget = this.targetHTML
+          ? this.targetHTML.replace(/\s+/gm, "")
+          : undefined;
+      return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
+    }
+
+    _handleTargetDoubleClick(target, e) {
+      if (!target || target.disabled || this.target !== target) return;
+      let els = Object.keys(this.clickableElements || {}),
+        el = e.target || e.srcElement || { tagName: "" },
+        evt = { detail: el },
+        tagname = (el.tagName || "").toLowerCase();
+      if (tagname && els.includes(tagname)) {
+        e.preventDefault();
+        this.clickableElements[tagname](evt);
+        this.updateRange();
+      }
+    }
+
+    _handleTargetClick(target, e) {
+      if (!target || target.disabled) return;
+      if (this.target !== target) {
+        e.preventDefault();
+        this.setTarget(target);
+      } else {
+        let els = Object.keys(this.clickableElements || {}),
+          el = e.target || e.srcElement || { tagName: "" },
+          evt = { detail: el },
+          tagname = (el.tagName || "").toLowerCase();
+        if (tagname && els.includes(tagname)) {
+          e.preventDefault();
+          this.clickableElements[tagname](evt);
+>>>>>>> master
+        }
+      }
+      this.range = this.getRange();
+      this.updateRange();
+    }
+    _handleTargetFocus(target, e) {
+      if (!this.__promptOpen && !target.disabled) this.setTarget(target);
+    }
+
+    _handleTargetKeypress(e) {
+      if (this.targetEmpty() && e.key) {
+        this.innerHTML = e.key
+          .replace(">", "&gt;")
+          .replace("<", "&lt;")
+          .replace("&", "&amp;");
+        this.range = this.getRange();
+        this.range.selectNodeContents(this);
+        this.range.collapse();
+      }
+    }
+    _handleTargetMutation(mutations = []) {
+      this._handleTargetSelection();
+      (mutations || []).forEach((mutation) => {
+        if (mutation.type == "attributes") {
+          if ((target.disabled || target.hidden) && target.conteneditable) {
+            this.disableEditing(target);
+            target.tabindex = -1;
+          } else if (
+            !target.disabled &&
+            !target.hidden &&
+            target.conteneditable
+          ) {
+            this.enableEditing(target);
+            target.tabindex = 0;
+          }
+        }
+      });
+    }
+    _handleTargetSelection(e) {
+      if (!this.__promptOpen) this.range = this.getRange();
+    }
+    _handlePaste(e) {
+      e.stopImmediatePropagation();
+      this.pasteFromClipboard();
+    }
+    _addHighlight() {
+      if (!this.__highlight.hidden) return;
+      this.range = this.getRange();
+      if (
+        !this.target ||
+        !this.target.getAttribute("contenteditable") == "true"
+      )
+        return;
+      this.__highlight.wrap(this.range || this.getRange());
+    }
+    _removeHighlight() {
+      this.__highlight.unwrap(this.range || this.getRange());
+    }
+
+    /**
+     * disables editing
+     *
+     * @param {object} editor
+     * @memberof RichTextEditorManager
+     */
+    enableEditing(target = this.target) {
+      let handlers = this.enabledTargetHandlers;
+      if (!!target && !target.hidden && !target.disabled) {
+        if (target.makeSticky) target.makeSticky(this.sticky);
+        this.positionByTarget(target);
+        target.setAttribute("contenteditable", "true");
+
+        Object.keys(handlers).forEach((handler) =>
+          target.removeEventListener(handler, handlers[handler])
+        );
+
+        this.setCanceledEdits();
+        this.updateRange(target);
+        this.observeChanges(true);
+
+        this.getRoot(target).onselectionchange = (e) => {
+          if (!this.__promptOpen) this.updateRange(target);
+        };
+
+        this.dispatchEvent(
+          new CustomEvent("enabled", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: (this.target.innerHTML || "")
+              .replace(/<!--[^(-->)]*-->/g, "")
+              .trim(),
+          })
+        );
+      }
+    }
+
+    disableEditing(target = this.target) {
+      let handlers = this.enabledTargetHandlers,
+        range = this.getRange();
+      if (!!target) {
+        if (!!range) range.collapse(false);
+        this.__highlight.emptyContents();
+        this.getRoot(target).onselectionchange = undefined;
+        this.observeChanges(false);
+        if (this.__source) this.__source.toggle(false);
+        target.removeAttribute("contenteditable");
+
+        Object.keys(handlers).forEach((handler) =>
+          target.removeEventListener(handler, handlers[handler])
+        );
+
+        if (target.makeSticky) target.makeSticky(false);
+        this.dispatchEvent(
+          new CustomEvent("disabled", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: (this.target.innerHTML || "")
+              .replace(/<!--[^(-->)]*-->/g, "")
+              .trim(),
+          })
+        );
+      }
+    }
+
+    /**
+     * make an new editable element
+     *
+     * @param {object} editor an HTML object that can be edited
+     * @returns {void}
+     */
+    insertNew(target) {
+      let content = document.createElement("rich-text-editor");
+      target.parentNode.insertBefore(content, target);
+      content.appendChild(target);
+    }
+    /**
+     * set observer on or off
+     *
+     * @param {boolean} [on=true]
+     * @memberof RichTextEditor
+     */
+    observeChanges(on = true) {
+      if (on) {
+        this.observer.observe(this.target, {
+          attributes: false,
+          childList: true,
+          subtree: true,
+          characterData: false,
+        });
+      } else {
+        if (this.observer) this.observer.disconnect;
+      }
+    }
+    /**
+     * revert content to before editing=true
+     *
+     * @memberof RichTextEditor
+     */
+    revertTarget(target = this.target) {
+      if (this.target) this.target.innerHTML = this.__canceledEdits;
+    }
+
+    /**
+     * sanitizesHTML
+     * override this function to make your own filters
+     *
+     * @param {string} html html to be pasted
+     * @returns {string} filtered html as string
+     */
+    sanitizeHTML(html) {
+      if (!html) return;
+      let regex = "<body(.*\n)*>(.*\n)*</body>";
+      if (html.match(regex) && html.match(regex).length > 0)
+        html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+      return html;
+    }
+    /**
+     * holds on to edits so cancel willwork
+     *
+     * @param {string} [html=this.innerHTML]
+     * @memberof RichTextEditor
+     */
+    setCanceledEdits(html) {
+      this.__canceledEdits = html
+        ? html
+        : this.target && this.target.innerHTML
+        ? this.target.innerHTML
+        : "";
+    }
+    setTarget(target) {
+      let handlers = this.targetHandlers(target);
+      if (!!target) {
+        let oldTarget = this.target;
+        target.setAttribute("role", "textbox");
+        if (oldTarget !== target) {
+          if (!!oldTarget) this.unsetTarget(oldTarget);
+          Object.keys(handlers).forEach((handler) =>
+            target.addEventListener(handler, handlers[handler])
+          );
+          this.getRoot(target).onselectionchange = (e) => {
+            if (!this.__promptOpen) this.updateRange(target);
+          };
+          this.target = target;
+          this.enableEditing(target);
+        }
+      }
+      this.updateRange(this.target);
+      if (this.breadcrumbs) this.breadcrumbs.controls = this.controls;
+      this.buttons.forEach((button) => {
+        if (button.command !== "close") button.disabled = !this.target;
+      });
+      this.range = undefined;
+      this._rangeChanged();
+    }
+    unsetTarget(target = this.target) {
+      let handlers = this.targetHandlers(target);
+      this.disableEditing(target);
+      Object.keys(handlers).forEach((handler) =>
+        target.removeEventListener(handler, handlers[handler])
+      );
+      this.target = undefined;
+    }
+    /**
+     * determines if target is empty
+     *
+     * @returns {string}
+     * @memberof RichTextEditor
+     */
+    targetEmpty() {
+      return (
+        !this.target ||
+        !this.target.innerHTML ||
+        this.trimHTML(this.target) == ""
+      );
+    }
+
+    /**
+     * list of event handlers for a given target
+     *
+     * @param {*} target
+     * @returns
+     */
+    targetHandlers(target) {
+      return {
+        click: (e) => this._handleTargetClick(target, e),
+        dblclick: (e) => this._handleTargetDoubleClick(target, e),
+        focus: (e) => this._handleTargetFocus(target, e),
+        keydown: (e) => this._handleShortcutKeys(e),
+        paste: (e) => this._handlePaste(e),
+      };
+    }
+    /**
+     * gets cleaned HTML from the target
+     *
+     * @returns {string}
+     * @memberof RichTextEditor
+     */
 
     get targetHTML() {
       return !!this.target

@@ -22,6 +22,9 @@ class SimpleEmojiPicker extends SimplePicker {
         simple-picker-option {
           justify-content: space-around;
         }
+        #icon {
+          margin-left: calc(-0.125 * var(--simple-picker-icon-size, 16px));
+        }
       `,
     ];
   }

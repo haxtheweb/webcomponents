@@ -29,6 +29,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
+            align-items: center;
             --simple-picker-background-color: var(--simple-toolbar-button-bg);
             --simple-picker-color-active: var(
               --simple-toolbar-button-hover-color
@@ -49,10 +50,27 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
             );
             --simple-picker-icon-size: 16px;
             --simple-picker-options-border-width: 1px;
+            --simple-picker-options-border: var(
+                --simple-picker-options-border-width,
+                1px
+              )
+              solid
+              var(
+                --simple-toolbar-border-color,
+                var(--rich-text-editor-border-color, #ddd)
+              );
           }
           #button {
             margin-top: 0;
             margin-bottom: 0;
+          }
+          #button.hide-label::part(label) {
+            position: absolute;
+            left: -999999px;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
           }
         `,
       ];
@@ -63,19 +81,23 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         <simple-picker
           id="button"
           ?allow-null="${this.allowNull}"
-          class="rtebutton ${this.toggled ? "toggled" : ""}"
+          class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
+            ? "toggled"
+            : ""}"
           ?disabled="${this.disabled}"
-          controls="${super.controls}"
+          ?hide-null-option="${this.hideNullOption}"
+          .controls="${super.controls}"
           .options="${this.options}"
           @mouseover="${this._pickerFocus}"
           @keydown="${this._pickerFocus}"
+          .label="${this.currentLabel}"
           @value-changed="${this._pickerChange}"
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
+          .value="${this.value}"
         >
-          ${super.labelTemplate}
         </simple-picker>
-        ${super.tooltopTemplate}
+        ${super.tooltipTemplate}
       `;
     }
 
@@ -89,16 +111,31 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
+         * Hide the null option
+         */
+        disabled: {
+          type: Boolean,
+          reflect: true,
+          attribute: "disabled",
+        },
+        /**
          * command used for document.execCommand.
          */
         command: {
           type: String,
         },
         /**
+         * Hide the null option
+         */
+        hideNullOption: {
+          type: Boolean,
+        },
+        /**
          * Optional icon for null value
          */
         icon: {
           type: String,
+          reflect: true,
         },
 
         /**
@@ -143,6 +180,10 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
       return false;
     }
 
+    get labelVisibleClass() {
+      return !!this.icon ? "hide" : "show";
+    }
+
     /**
      * handles picker focus
      * @param {event} e the button tap event
@@ -155,15 +196,22 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * handles range changes by getting
      */
     _rangeChanged() {
+      this._setRangeValue();
+      super._rangeChanged();
+    }
+
+    /**
+     * sets picker's value based ion current selected range
+     */
+    _setRangeValue() {
       let val = this._getSelection();
       if (this.shadowRoot) {
         if (this.tagsArray.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
         } else if (!this.range || this.range.collapsed) {
-          this.shadowRoot.querySelector("#button").value = null;
+          this.shadowRoot.querySelector("#button").value = undefined;
         }
       }
-      super._rangeChanged();
     }
 
     /**

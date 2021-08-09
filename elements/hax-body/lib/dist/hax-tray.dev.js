@@ -29,7 +29,7 @@ require("./hax-tray-upload.js");
 
 require("./hax-gizmo-browser.js");
 
-require("./hax-app-browser.js");
+require("./hax-view-source.js");
 
 require("./hax-stax-browser.js");
 
@@ -43,9 +43,25 @@ var _undoManager = require("@lrnwebcomponents/undo-manager/undo-manager.js");
 
 require("@lrnwebcomponents/iframe-loader/lib/loading-indicator.js");
 
+function _templateObject17() {
+  var data = _taggedTemplateLiteral([
+    '\n        :host {\n          z-index: 1000;\n          top: 0;\n          font-family: var(--hax-ui-font-family);\n          font-size: var(--hax-ui-font-size);\n          color: var(--hax-ui-color);\n          transition: 0s color linear 0s;\n        }\n        :host(:focus-within),\n        :host(:hover) {\n          z-index: var(--hax-ui-focus-z-index);\n        }\n        .wrapper {\n          position: fixed;\n          display: flex;\n          align-items: stretch;\n          flex-direction: row-reverse;\n          opacity: 0;\n          visibility: visible;\n          pointer-events: none;\n          overflow: hidden;\n          right: -1000px;\n          top: 0;\n          bottom: 0;\n          width: var(--hax-tray-width);\n          height: 100vh;\n          max-height: 100vh;\n          transition: 0.2s opacity ease-in-out 0s;\n        }\n        :host([element-align="left"]) .wrapper {\n          left: -1000px;\n          flex-direction: row;\n        }\n        :host([edit-mode]) .wrapper {\n          opacity: 1;\n          visibility: visible;\n          pointer-events: all;\n        }\n        :host([edit-mode][element-align="left"]) .wrapper {\n          left: 0px;\n        }\n        :host([edit-mode][element-align="right"]) .wrapper {\n          right: 0px;\n        }\n        :host([edit-mode][collapsed]) .wrapper {\n          width: unset;\n        }\n        :host([edit-mode]) .wrapper.full-panel {\n          width: unset;\n          left: 0;\n          right: 0;\n        }\n        #menubar {\n          display: inline-flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: var(--hax-tray-menubar-min-width);\n          overflow: visible;\n          flex: 0 0 auto;\n          z-index: 6;\n          background-color: var(--hax-ui-background-color);\n        }\n        :host([collapsed]) #menubar {\n          width: unset;\n        }\n        #menubar > * {\n          background-color: var(--hax-ui-background-color);\n        }\n        #menubar > *::part(button) {\n          padding: var(--hax-ui-spacing-xs);\n        }\n        #menubar > *::part(label) {\n          opacity: 0;\n          margin: 0px;\n          width: 0%;\n          font-size: 10px;\n          padding: 0px;\n          visibility: hidden;\n          overflow: hidden;\n          display: inline-block;\n          text-align: left;\n          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,\n            0.2s padding ease-in-out 0s, 0s opacity linear 0.2s,\n            0s visibility linear 0.2s;\n        }\n        :host([collapsed]) #menubar > *::part(label) {\n          opacity: 1;\n          width: 100%;\n          visibility: visible;\n          padding: 0px var(--hax-ui-spacing-sm);\n          overflow: unset;\n          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,\n            0.2s padding ease-in-out 0s, 0s opacity linear 0s,\n            0s visibility linear 0s, 0s overflow linear 0.2s;\n        }\n        loading-indicator {\n          --loading-indicator-background-color: var(\n            --simple-colors-default-theme-accent-2,\n            grey\n          );\n          --loading-indicator-color: var(\n            --simple-colors-default-theme-accent-10,\n            black\n          );\n        }\n        .detail,\n        #tray-detail {\n          flex: 1 1 auto;\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n        }\n        .detail {\n          opacity: 1;\n          visibility: visible;\n          pointer-events: all;\n          transition: 0.2s opacity ease-in-out 0s, 0.2s width ease-in-out 0s,\n            0.2s visibility ease-in-out 0s, 0s border linear;\n          border: 1px solid var(--hax-ui-border-color);\n          background-color: var(--hax-ui-background-color);\n          transition: 0.2s width ease-in-out 0s;\n        }\n        :host([collapsed]) .detail {\n          width: 0px;\n          overflow: hidden;\n          opacity: 0;\n          visibility: hidden;\n          pointer-events: none;\n          max-height: 100vh;\n          overflow-y: auto;\n        }\n        #tray-detail {\n          width: auto;\n          padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);\n          overflow-y: auto;\n        }\n        #haxcancelbutton::part(dropdown-icon) {\n          display: none;\n        }\n        .tray-detail-titlebar {\n          background-color: var(--hax-ui-color-accent);\n          padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);\n          margin: 0 calc(0px - var(--hax-ui-spacing)) var(--hax-ui-spacing);\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          height: var(--simple-modal-titlebar-height, unset);\n          line-height: var(--simple-modal-titlebar-line-height, unset);\n          position: sticky;\n          z-index: 2;\n          top: 0;\n        }\n        .tray-detail-titlebar h4 {\n          flex: 1 1 auto;\n          font-size: var(--hax-ui-font-size);\n          font-family: var(--hax-ui-font-family);\n        }\n        #toggle-tray-size {\n          flex: 0 0 auto;\n        }\n        hax-tray-button,\n        hax-app-browser,\n        hax-gizmo-browser {\n          transition: 0.2s all ease-in-out;\n          transition: 0s color linear !important;\n          transition: 0s background-color linear !important;\n          transition: 0s border-color linear !important;\n          visibility: visible;\n        }\n        hax-tray-button:not(:defined),\n        hax-app-browser:not(:defined),\n        hax-gizmo-browser:not(:defined) {\n          visibility: hidden;\n        }\n        hax-tray-upload {\n          flex: 0 0 auto;\n        }\n        *[hidden] {\n          display: none;\n        }\n        :host([element-align="right"]) #button {\n          right: 0;\n        }\n        :host([element-align="left"]) #button {\n          left: 0;\n        }\n\n        #button {\n          position: fixed;\n          top: 0;\n          visibility: visible;\n          margin: var(--hax-ui-spacing-xs);\n        }\n        :host([edit-mode]) #button {\n          visibility: hidden;\n          opacity: 0;\n        }\n        #button:hover {\n          opacity: 1;\n        }\n        /** This is mobile layout for controls */\n        @media screen and (max-width: 800px) {\n          :host {\n            width: 100%;\n          }\n          .wrapper {\n            width: unset;\n            top: -1000px;\n            left: 0px;\n            right: 0px;\n            flex-direction: column;\n          }\n          :host([edit-mode]) .wrapper {\n            top: 0;\n          }\n          :host([collapsed]) .wrapper {\n            height: var(--hax-tray-menubar-min-height);\n            overflow-y: visible;\n          }\n          :host([element-align="left"]) .wrapper {\n            left: -1000px;\n            flex-direction: column;\n          }\n          #menubar {\n            position: sticky;\n            flex-direction: row;\n            left: 0;\n            top: 0;\n            height: auto;\n            flex: 0 0 auto;\n            width: 100%;\n          }\n          #menubar > * {\n            flex: 1 0 auto;\n            min-width: var(--hax-tray-menubar-min-width);\n          }\n          #menubar > *::part(button) {\n            min-width: var(--hax-tray-menubar-min-width);\n            justify-content: space-around;\n          }\n          #menubar > *::part(label) {\n            display: none;\n          }\n          #haxMenuAlign {\n            display: none;\n          }\n          .detail {\n            width: 100%;\n            position: relative;\n            flex: 1 1 100%;\n          }\n          :host([collapsed]) .detail {\n            flex: 0 0 0px;\n          }\n        }\n        @media screen and (max-width: 600px) {\n          :host([edit-mode]) .hide-small {\n            display: none;\n          }\n        }\n      ',
+  ]);
+
+  _templateObject17 = function _templateObject17() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject16() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          z-index: 1000;\n          position: fixed;\n          top: 0;\n          font-family: var(--hax-ui-font-family);\n          font-size: var(--hax-ui-font-size);\n          color: var(--hax-ui-color);\n          transition: 0s color linear 0s;\n        }\n        :host([edit-mode][element-align="custom"]) {\n          left: var(--hax-tray-custom-x);\n          left: clamp(\n            0px,\n            var(--hax-tray-custom-x),\n            calc(100vw - var(--hax-tray-width, 300px))\n          );\n        }\n        :host([element-align="left"]) {\n          left: 0;\n        }\n        :host([element-align="right"]) {\n          right: 0;\n        }\n        :host(:focus-within),\n        :host(:hover) {\n          z-index: var(--hax-ui-focus-z-index);\n        }\n        .wrapper {\n          display: flex;\n          align-items: stretch;\n          flex-direction: row-reverse;\n          opacity: 0;\n          visibility: visible;\n          pointer-events: none;\n          width: var(--hax-tray-width, 300px);\n          overflow-x: hidden;\n          overflow-y: auto;\n          background-color: var(--hax-ui-background-color);\n          transition: 0.2s width ease-in-out 0s, 0.5s left ease-in-out 0.3s,\n            0.5s right ease-in-out 0.3s, 0s background-color linear,\n            0s border linear;\n          height: 100vh;\n        }\n        :host([collapsed]) .wrapper {\n          overflow-x: visible;\n        }\n        :host([element-align="left"]) .wrapper,\n        :host([element-align="custom"]) .wrapper {\n          left: -1000px;\n          flex-direction: row;\n        }\n        :host([element-align="right"]) .wrapper {\n          right: -1000px;\n        }\n        :host([edit-mode][element-align="left"]) .wrapper,\n        :host([edit-mode][element-align="custom"]) .wrapper {\n          left: 0;\n        }\n        :host([edit-mode][element-align="right"]) .wrapper {\n          right: 0;\n        }\n        :host([edit-mode]) .wrapper {\n          opacity: 1;\n          visibility: visible;\n          pointer-events: all;\n        }\n        #menubar {\n          display: inline-flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: var(--hax-tray-menubar-min-width, 44px);\n          overflow: visible;\n          flex: 0 0 auto;\n          /*transition:0.3s width ease-in-out 0s;*/\n          z-index: 6;\n        }\n        :host([collapsed]) #menubar {\n          width: unset;\n        }\n        #menubar > * {\n          background-color: var(--hax-ui-background-color);\n        }\n        #menubar > *::part(button) {\n          padding: 2px;\n        }\n        #menubar > *::part(label) {\n          opacity: 0;\n          margin: 0px;\n          width: 0%;\n          font-size: 10px;\n          padding: 0px;\n          visibility: hidden;\n          overflow: hidden;\n          display: inline-block;\n          text-align: left;\n          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,\n            0.2s padding ease-in-out 0s, 0s opacity linear 0.2s,\n            0s visibility linear 0.2s;\n        }\n        :host([collapsed]) #menubar > *::part(label) {\n          opacity: 1;\n          width: 100%;\n          visibility: visible;\n          overflow: unset;\n          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,\n            0.2s padding ease-in-out 0s, 0s opacity linear 0s,\n            0s visibility linear 0s, 0s overflow linear 0.2s;\n        }\n        loading-indicator {\n          --loading-indicator-background-color: var(\n            --simple-colors-default-theme-accent-2,\n            grey\n          );\n          --loading-indicator-color: var(\n            --simple-colors-default-theme-accent-10,\n            black\n          );\n        }\n        .detail {\n          flex: 1 1 auto;\n          opacity: 1;\n          visibility: visible;\n          pointer-events: all;\n          transition: 0s opacity ease-in-out 0, 0s visibility ease-in-out 0s,\n            0s border linear;\n          border: 1px solid var(--hax-ui-border-color);\n        }\n        :host([collapsed]) .detail {\n          width: 0px;\n          overflow: hidden;\n          opacity: 0;\n          visibility: hidden;\n          pointer-events: none;\n          max-height: 100vh;\n          overflow-y: auto;\n          transition: 0s opacity ease-in-out 0.7s,\n            0s visibility ease-in-out 0.7s;\n        }\n        #tray-detail {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: calc(\n            var(--hax-tray-width) - var(--hax-tray-menubar-min-width, 44px) - 2 *\n              var(--hax-ui-spacing)\n          );\n          padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);\n          height: 100vh;\n          overflow-y: auto;\n        }\n        :host([element-align="left"]) #tray-detail,\n        :host([element-align="custom"]) #tray-detail {\n          left: unset;\n          right: 0;\n        }\n        :host([edit-mode]:not([collapsed])) #tray-detail {\n          display: block;\n        }\n        #haxcancelbutton::part(dropdown-icon) {\n          display: none;\n        }\n        .tray-detail-titlebar {\n          background-color: var(--hax-ui-color-accent);\n          padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);\n          margin: 0 calc(0px - var(--hax-ui-spacing)) var(--hax-ui-spacing);\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          height: var(--simple-modal-titlebar-height, unset);\n          line-height: var(--simple-modal-titlebar-line-height, unset);\n          position: sticky;\n          z-index: 2;\n          top: 0;\n        }\n        .tray-detail-titlebar h4 {\n          flex: 1 1 auto;\n          font-size: var(--hax-ui-font-size);\n          font-family: var(--hax-ui-font-family);\n        }\n        #toggle-tray-size {\n          flex: 0 0 auto;\n        }\n        hax-tray-button,\n        hax-app-browser,\n        hax-gizmo-browser {\n          transition: 0.2s all ease-in-out;\n          transition: 0s color linear !important;\n          transition: 0s background-color linear !important;\n          transition: 0s border-color linear !important;\n          visibility: visible;\n        }\n        hax-tray-button:not(:defined),\n        hax-app-browser:not(:defined),\n        hax-gizmo-browser:not(:defined) {\n          visibility: hidden;\n        }\n        hax-tray-upload {\n          flex: 0 0 auto;\n        }\n        *[hidden] {\n          display: none;\n        }\n        :host([element-align="right"]) #button {\n          right: 0;\n        }\n        :host([element-align="left"]) #button {\n          left: 0;\n        }\n\n        #button {\n          position: fixed;\n          top: 0;\n          visibility: visible;\n          margin: var(--hax-ui-spacing-xs);\n        }\n        :host([edit-mode]) #button {\n          visibility: hidden;\n          opacity: 0;\n        }\n        #button:hover {\n          opacity: 1;\n        }\n        /** This is mobile layout for controls */\n        @media screen and (max-width: 800px) {\n          :host {\n            --hax-tray-width: 100%;\n            --hax-tray-menubar-min-width: 32px;\n            width: 100%;\n          }\n          .wrapper {\n            width: 100%;\n            overflow-x: hidden;\n            overflow-y: hidden;\n            flex-direction: column;\n            align-items: stretch;\n            height: 100vh;\n            max-height: 100vh;\n            transition: background-color linear, 0s border linear;\n          }\n          :host([collapsed]) .wrapper {\n            height: auto;\n          }\n          #menubar {\n            position: sticky;\n            flex-direction: row;\n            left: 0;\n            top: 0;\n            height: auto;\n            flex: 0 0 auto;\n            width: 100%;\n          }\n          #menubar > * {\n            flex: 1 0 auto;\n            min-width: var(--hax-tray-menubar-min-width, 32px);\n          }\n          #menubar > *::part(button) {\n            min-width: var(--hax-tray-menubar-min-width, 32px);\n            justify-content: space-around;\n          }\n          #menubar > *::part(label) {\n            display: none;\n          }\n          .detail {\n            width: 100%;\n            position: relative;\n            flex: 1 1 100%;\n          }\n          :host([collapsed]) .detail {\n            flex: 0 0 0px;\n          }\n          #tray-detail {\n            top: 0;\n            width: 100%;\n          }\n        }\n        @media screen and (max-width: 600px) {\n          :host([edit-mode]) .hide-small {\n            display: none;\n          }\n        }\n      ',
+    ' <hax-tray-upload ?hidden="',
+    '"></hax-tray-upload>\n      <h5 ?hidden="',
+    '">',
+    '</h5>\n      <hax-app-browser id="appbrowser" ?hidden="',
+    '"></hax-app-browser>',
   ]);
 
   _templateObject16 = function _templateObject16() {
@@ -57,11 +73,8 @@ function _templateObject16() {
 
 function _templateObject15() {
   var data = _taggedTemplateLiteral([
-    ' <hax-tray-upload ?hidden="',
-    '"></hax-tray-upload>\n      <h5 ?hidden="',
-    '">',
-    '</h5>\n      <hax-app-browser id="appbrowser" ?hidden="',
-    '"></hax-app-browser>',
+    '<hax-map\n      controls="content-map"\n      ?hidden="',
+    '"\n    ></hax-map>',
   ]);
 
   _templateObject15 = function _templateObject15() {
@@ -73,8 +86,11 @@ function _templateObject15() {
 
 function _templateObject14() {
   var data = _taggedTemplateLiteral([
-    '<hax-map\n      controls="content-map"\n      ?hidden="',
-    '"\n    ></hax-map>',
+    ' <hax-gizmo-browser\n        id="gizmobrowser"\n        ?hidden="',
+    '"\n      ></hax-gizmo-browser>\n      <h5 ?hidden="',
+    '">',
+    '</h5>\n      <hax-stax-browser\n        id="staxbrowser"\n        ?hidden="',
+    '"\n      ></hax-stax-browser>',
   ]);
 
   _templateObject14 = function _templateObject14() {
@@ -86,11 +102,9 @@ function _templateObject14() {
 
 function _templateObject13() {
   var data = _taggedTemplateLiteral([
-    ' <hax-gizmo-browser\n        id="gizmobrowser"\n        ?hidden="',
-    '"\n      ></hax-gizmo-browser>\n      <h5 ?hidden="',
-    '">',
-    '</h5>\n      <hax-stax-browser\n        id="staxbrowser"\n        ?hidden="',
-    '"\n      ></hax-stax-browser>',
+    ' <simple-fields\n      id="settingsform"\n      disable-responsive\n      code-theme="',
+    '"\n      ?hidden="',
+    '"\n    ></simple-fields>',
   ]);
 
   _templateObject13 = function _templateObject13() {
@@ -102,9 +116,8 @@ function _templateObject13() {
 
 function _templateObject12() {
   var data = _taggedTemplateLiteral([
-    ' <simple-fields\n      id="settingsform"\n      disable-responsive\n      code-theme="',
-    '"\n      ?hidden="',
-    '"\n    ></simple-fields>',
+    ' <hax-preferences-dialog\n      id="advanced-settings"\n      ?hidden="',
+    '"\n    ></hax-preferences-dialog>',
   ]);
 
   _templateObject12 = function _templateObject12() {
@@ -116,8 +129,8 @@ function _templateObject12() {
 
 function _templateObject11() {
   var data = _taggedTemplateLiteral([
-    ' <hax-preferences-dialog\n      id="advanced-settings"\n      ?hidden="',
-    '"\n    ></hax-preferences-dialog>',
+    ' <hax-view-source\n      id="view-source"\n      ?hidden="',
+    '"\n    ></hax-view-source>',
   ]);
 
   _templateObject11 = function _templateObject11() {
@@ -138,6 +151,7 @@ function _templateObject10() {
     "\n      ",
     " ",
     "\n      ",
+    " ",
     "\n    </div>",
   ]);
 
@@ -151,7 +165,7 @@ function _templateObject10() {
 function _templateObject9() {
   var data = _taggedTemplateLiteral([
     '<hax-tray-button\n        id="exportbtn"\n        icon="code"\n        label="',
-    '"\n        voice-command="view (page) source"\n        data-simple-tour-stop\n        data-stop-title="label"\n        icon-position="left"\n        show-text-label\n        show-tooltip\n        align-horizontal="',
+    '"\n        event-name="view-source"\n        voice-command="view (page) source"\n        data-simple-tour-stop\n        data-stop-title="label"\n        icon-position="left"\n        show-text-label\n        show-tooltip\n        align-horizontal="',
     '"\n      >\n        <div data-stop-content>\n          Every change you make in HAX is ultimately writing HTML. Know HTML?\n          Awesome, pop open the source view and make any changes you like. HTML\n          is always behind the scenes ensuring that content is portable, well\n          formatted and easy to read.\n        </div>\n      </hax-tray-button>\n      <hax-tray-button\n        ?hidden="',
     '"\n        id="advanced-settings"\n        event-name="advanced-settings"\n        icon="settings"\n        label="',
     '"\n        voice-command="select settings (menu)"\n        data-simple-tour-stop\n        data-stop-title="label"\n        controls="tray-detail"\n        toggles\n        ?toggled="',
@@ -220,10 +234,9 @@ function _templateObject6() {
     '\n          <hax-tray-button\n            @click="',
     '"\n            icon="save"\n            icon-position="left"\n            id="haxsavebutton"\n            label="',
     '"\n            event-name="save"\n            voice-command="save page"\n            show-text-label\n            show-tooltip\n            align-horizontal="',
-    '"\n          ></hax-tray-button>\n          <hax-toolbar-menu\n            icon="cancel"\n            id="haxcancelbutton"\n            label="',
+    '"\n          ></hax-tray-button>\n          <hax-tray-button\n            icon="cancel"\n            id="haxcancelbutton"\n            label="',
     '"\n            icon-position="left"\n            show-text-label\n            show-tooltip\n            align-horizontal="',
-    '"\n          >\n            <simple-toolbar-menu-item slot="menuitem">\n              <hax-tray-button\n                role="menuitem"\n                danger\n                align-horizontal="left"\n                icon="warning"\n                id="haxcancelbutton"\n                label="',
-    '"\n                warning\n                event-name="cancel"\n                voice-command="cancel edit"\n                icon-position="left"\n                show-text-label\n                show-tooltip\n              ></hax-tray-button>\n            </simple-toolbar-menu-item>\n          </hax-toolbar-menu>\n        ',
+    '"\n          ></hax-tray-button>\n        ',
   ]);
 
   _templateObject6 = function _templateObject6() {
@@ -236,8 +249,7 @@ function _templateObject6() {
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
     '\n        <hax-tray-button\n          show-text-label\n          show-tooltip\n          align-horizontal="',
-    '"\n          id="',
-    '"\n          event-name="toggle-element-align"\n          icon="arrow-',
+    '"\n          id="haxMenuAlign"\n          event-name="toggle-element-align"\n          icon="arrow-',
     '"\n          label="',
     '"\n          index="',
     '"\n          tooltip="',
@@ -257,8 +269,8 @@ function _templateObject4() {
     ' <div id="menubar" class="collapse-menu">\n      ',
     " ",
     " ",
-    "\n      ",
     '\n      <slot name="tray-buttons-pre"></slot>\n      ',
+    "",
     "\n    </div>",
   ]);
 
@@ -329,6 +341,20 @@ function _objectSpread(target) {
   return target;
 }
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -377,7 +403,8 @@ function _arrayWithoutHoles(arr) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     "\n      ",
-    '\n      <div class="wrapper">\n        ',
+    '\n      <div class="wrapper ',
+    '">\n        ',
     '\n        <div class="detail">\n          <loading-indicator\n            ?loading="',
     '"\n          ></loading-indicator>\n          ',
     "\n        </div>\n      </div>\n    ",
@@ -442,20 +469,6 @@ function _interopRequireWildcard(obj) {
     cache.set(obj, newObj);
   }
   return newObj;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -577,8 +590,6 @@ var HaxTray =
     ]);
 
     function HaxTray() {
-      var _this$t;
-
       var _this;
 
       _classCallCheck(this, HaxTray);
@@ -593,48 +604,44 @@ var HaxTray =
         "can-undo-changed": "_undoChanged",
         "hax-drop-focus-event": "_expandSettingsPanel",
       };
-      _this.t =
-        ((_this$t = {
-          structure: "Outline",
-          structureTip: "View Page Structure",
-          editSelected: "Edit selected",
-          edit: "Edit",
-          save: "Save",
-          move: "Move",
-          moveMenu: "Move",
-          menuAlignment: "Menu Alignment",
-          left: "Top Left",
-          right: "Top Right",
-          bottomLeft: "Bottom Left",
-          bottomRight: "Bottom Right",
-          menuPosition: "Menu position",
-          changeSideVisually:
-            "Change which side of the screen the menu is affixed to visually.",
-          expand: "Expand",
-          collapse: "Collapse",
-          menuSize: "Menu size",
-          menuSizeDescription: "Expand or collapse the menu visually.",
-          takeATour: "Help",
-          settings: "Settings",
-          source: "Source",
-          undo: "Undo",
-          redo: "Redo",
-          media: "Media",
-          blocks: "Blocks",
-          cancel: "Cancel",
-          cancelWithoutSaving: "Cancel without saving",
-          configure: "Configure",
-          advanced: "Advanced",
-          layout: "Layout",
-          alignment: "Alignment",
-        }),
-        _defineProperty(_this$t, "left", "Left"),
-        _defineProperty(_this$t, "center", "Center"),
-        _defineProperty(_this$t, "right", "Right"),
-        _defineProperty(_this$t, "search", "Search"),
-        _defineProperty(_this$t, "templates", "Templates"),
-        _defineProperty(_this$t, "width", "Width"),
-        _this$t);
+      _this.t = {
+        structure: "Outline",
+        structureTip: "View Page Structure",
+        editSelected: "Edit selected",
+        edit: "Edit",
+        save: "Save",
+        move: "Move",
+        moveMenu: "Toggles Menu Aligmnent",
+        menuAlignment: "Menu Alignment",
+        menuLeft: "Move",
+        menuRight: "Move",
+        menuPosition: "Menu position",
+        changeSideVisually:
+          "Change which side of the screen the menu is affixed to visually.",
+        expand: "Expand",
+        collapse: "Collapse",
+        menuSize: "Menu size",
+        menuSizeDescription: "Expand or collapse the menu visually.",
+        takeATour: "Help",
+        settings: "Settings",
+        source: "Source",
+        undo: "Undo",
+        redo: "Redo",
+        media: "Media",
+        blocks: "Blocks",
+        cancel: "Cancel",
+        cancelWithoutSaving: "Cancel without saving",
+        configure: "Configure",
+        advanced: "Advanced",
+        layout: "Layout",
+        alignment: "Alignment",
+        left: "Left",
+        center: "Center",
+        right: "Right",
+        search: "Search",
+        templates: "Templates",
+        width: "Width",
+      };
 
       _this.registerLocalization({
         context: _assertThisInitialized(_this),
@@ -658,10 +665,10 @@ var HaxTray =
       _this.activeSchema = [];
       _this.canUndo = false;
       _this.canRedo = false;
-      _this.elementAlign = "right";
       _this.trayDetail = "content-edit";
       _this.activeTagName = "";
       _this.traySizeIcon = "hax:arrow-expand-right";
+      _this.elementAlign = "right";
       _this.__setup = false;
       setTimeout(function () {
         Promise.resolve().then(function () {
@@ -686,6 +693,9 @@ var HaxTray =
       });
       (0, _mobx.autorun)(function () {
         _this.activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+      });
+      (0, _mobx.autorun)(function () {
+        _this.elementAlign = (0, _mobx.toJS)(_haxStore.HAXStore.elementAlign);
       });
       (0, _mobx.autorun)(function () {
         _this.tourOpened = (0, _mobx.toJS)(_haxStore.HAXStore.tourOpened);
@@ -742,6 +752,7 @@ var HaxTray =
             return (0, _litElement.html)(
               _templateObject(),
               this.panelOpsTemplate,
+              this.trayStatus,
               this.menuToolbarTemplate,
               !this.appStoreLoaded,
               this.trayDetailTemplate
@@ -780,9 +791,14 @@ var HaxTray =
         {
           key: "_processTrayEvent",
           value: function _processTrayEvent(e) {
-            var target = (0, _utils.normalizeEventPath)(e)[0]; // support a simple insert event to bubble up or everything else
+            var target = (0, _utils.normalizeEventPath)(e)[0],
+              evt = e.detail.eventName;
 
-            switch (e.detail.eventName) {
+            if (!this.collapsed && this.trayDetail === evt) {
+              evt = "toggle-tray-size";
+            } // support a simple insert event to bubble up or everything else
+
+            switch (evt) {
               case "insert-stax":
                 this.dispatchEvent(
                   new CustomEvent("hax-insert-content-array", {
@@ -857,7 +873,7 @@ var HaxTray =
                 if (e.detail.index > 1) this.collapsed = true;
                 this.style.setProperty("--hax-tray-custom-y", null);
                 this.style.setProperty("--hax-tray-custom-x", null);
-                this.elementAlign = direction;
+                _haxStore.HAXStore.elementAlign = direction;
                 break;
 
               case "toggle-tray-size":
@@ -902,23 +918,12 @@ var HaxTray =
 
                 break;
 
-              case "cancel":
-                if (
-                  confirm(
-                    "Changes have not been saved, Click OK to close HAX or Cancel to continue editing."
-                  )
-                ) {
-                  _haxStore.HAXStore.editMode = false;
-                  this.dispatchEvent(
-                    new CustomEvent("hax-cancel", {
-                      bubbles: true,
-                      composed: true,
-                      cancelable: false,
-                      detail: e.detail,
-                    })
-                  );
-                }
+              case "view-source":
+                this.trayDetail = e.detail.eventName;
 
+                _haxStore.HAXStore.haxViewSource.openSource();
+
+                this.collapsed = false;
                 break;
             }
           },
@@ -1128,7 +1133,10 @@ var HaxTray =
                                   _this3._editModeChanged(_this3.editMode);
                                 } // active Gizmo changed
 
-                                if (propName == "activeGizmo") {
+                                if (
+                                  propName == "activeGizmo" &&
+                                  _this3.trayDetail !== "view-source"
+                                ) {
                                   if (_this3.activeGizmo) {
                                     _this3.activeTagName =
                                       _this3.activeGizmo.title;
@@ -1204,37 +1212,6 @@ var HaxTray =
               null,
               this
             );
-          },
-          /**
-           * When we end dragging ensure we remove the mover class.
-           */
-        },
-        {
-          key: "_dragEnd",
-          value: function _dragEnd(e) {
-            var menu = (0, _utils.normalizeEventPath)(e)
-              ? (0, _utils.normalizeEventPath)(e)[0]
-              : undefined;
-            if (menu) menu.close(true);
-            this.collapsed = true;
-            this.style.setProperty("--hax-tray-custom-y", e.clientY + "px");
-            this.style.setProperty("--hax-tray-custom-x", e.clientX + "px");
-            this.elementAlign = "custom";
-          },
-          /**
-           * Drag start so we know what target to set
-           */
-        },
-        {
-          key: "_dragStart",
-          value: function _dragStart(e) {
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            var menu = (0, _utils.normalizeEventPath)(e)
-              ? (0, _utils.normalizeEventPath)(e)[0]
-              : undefined;
-            this.collapsed = true;
-            if (menu) menu.close(true);
           },
           /**
            * When the preview node is updated, pull schema associated with it
@@ -1578,19 +1555,15 @@ var HaxTray =
             var _this5 = this;
 
             if (this.editMode && e.detail.value && e.detail.value.settings) {
+              var settings = e.detail.value.settings;
+              var settingsKeys = {
+                advanced: "advanced",
+                configure: "configure",
+                layout: "layout",
+              };
               var setAhead;
-              var propTmp;
-              var tmpel;
-              var attr;
-
-              (function () {
-                var settings = e.detail.value.settings;
-                var settingsKeys = {
-                  advanced: "advanced",
-                  configure: "configure",
-                  layout: "layout",
-                };
-
+              clearTimeout(this.__contextPropDebounce);
+              this.__contextPropDebounce = setTimeout(function () {
                 var _loop = function _loop(key) {
                   var _loop2 = function _loop2(prop) {
                     setAhead = false;
@@ -1668,6 +1641,7 @@ var HaxTray =
                         (settings[key][prop] != null &&
                           settings[key][prop].constructor === Object)
                       ) {
+                        // in case your typing quickly don't instantly hammer a prop
                         try {
                           if (settings[key][prop].constructor === Array) {
                             _this5.activeNode[prop] = _toConsumableArray(
@@ -1709,10 +1683,35 @@ var HaxTray =
                                 _this5.__activePropSchema.settings[key][propTmp]
                                   .slotWrapper;
                             } else if (
+                              //selects first wrapper from allowed list
+                              _this5.__activePropSchema.settings[key][propTmp]
+                                .allowedSlotWrappers &&
+                              _this5.__activePropSchema.settings[key][propTmp]
+                                .allowedSlotWrappers[0]
+                            ) {
+                              slotTag =
+                                _this5.__activePropSchema.settings[key][propTmp]
+                                  .allowedSlotWrappers[0];
+                            } else if (
                               _this5.activeNode.tagName.toLowerCase() ===
                               "code-editor"
                             ) {
                               slotTag = "template";
+                            } else {
+                              (function () {
+                                //selects wrapper that is not excluded
+                                var wrappers = ["span", "div", "p"],
+                                  exclusions =
+                                    _this5.__activePropSchema.settings[key][
+                                      propTmp
+                                    ].excludedSlotWrappers || [];
+                                if (exclusions)
+                                  wrappers = wrappers.filter(function (
+                                    wrapper
+                                  ) {
+                                    return !exclusions.includes(wrapper);
+                                  });
+                              })();
                             }
 
                             tmpel = document.createElement(slotTag);
@@ -1806,9 +1805,13 @@ var HaxTray =
                 };
 
                 for (var key in settingsKeys) {
+                  var propTmp;
+                  var tmpel;
+                  var attr;
+
                   _loop(key);
                 }
-              })();
+              }, 100);
             }
 
             setTimeout(function () {
@@ -1878,6 +1881,19 @@ var HaxTray =
           },
         },
         {
+          key: "trayStatus",
+          get: function get() {
+            var status = this.collapsed
+              ? "collapsed"
+              : this.trayDetail == "view-source"
+              ? "full-panel"
+              : "side-panel";
+            _haxStore.HAXStore.trayStatus = status;
+            _haxStore.HAXStore.trayDetail = this.trayDetail;
+            return status;
+          },
+        },
+        {
           key: "panelOpsTemplate",
           get: function get() {
             return this.hidePanelOps
@@ -1905,11 +1921,11 @@ var HaxTray =
           get: function get() {
             return (0, _litElement.html)(
               _templateObject4(),
-              this.menuButtons,
               this.saveButtons,
               this.doButtons,
               this.contentButtons,
-              this.moreButtons
+              this.moreButtons,
+              this.menuButtons
             );
           },
         },
@@ -1919,9 +1935,8 @@ var HaxTray =
             return (0, _litElement.html)(
               _templateObject5(),
               this.collapsed ? "left" : "center",
-              this.elementAlign == "left" ? "right" : "left",
               this.elementAlign == "left" ? "forward" : "back",
-              this.elementAlign == "left" ? this.t.right : this.t.left,
+              this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft,
               this.elementAlign == "left" ? "1" : "0",
               this.t.moveMenu,
               this.elementAlign == "left" ? this.t.right : this.t.left
@@ -1939,8 +1954,7 @@ var HaxTray =
                   this.editMode ? this.t.save : this.t.edit,
                   this.collapsed ? "left" : "center",
                   this.t.cancel,
-                  this.collapsed ? "left" : "center",
-                  this.t.cancelWithoutSaving
+                  this.collapsed ? "left" : "center"
                 );
           },
         },
@@ -1964,10 +1978,10 @@ var HaxTray =
             return (0, _litElement.html)(
               _templateObject8(),
               this.t.blocks,
-              this.trayDetail === "content-add",
+              !this.collapsed && this.trayDetail === "content-add",
               this.collapsed ? "left" : "center",
               this.t.media,
-              this.trayDetail === "media-add",
+              !this.collapsed && this.trayDetail === "media-add",
               this.collapsed ? "left" : "center",
               this.t.edit,
               !this.activeTagName ||
@@ -1976,10 +1990,10 @@ var HaxTray =
                 !this.activeNode.tagName,
               this.t.editSelected,
               this.activeTagName,
-              this.trayDetail === "content-edit",
+              !this.collapsed && this.trayDetail === "content-edit",
               this.collapsed ? "left" : "center",
               this.t.structure,
-              this.trayDetail === "content-map",
+              !this.collapsed && this.trayDetail === "content-map",
               this.collapsed ? "left" : "center"
             );
           },
@@ -1993,11 +2007,11 @@ var HaxTray =
               this.collapsed ? "left" : "center",
               this.hidePreferencesButton,
               this.t.settings,
-              this.trayDetail === "advanced-settings",
+              !this.collapsed && this.trayDetail === "advanced-settings",
               this.collapsed ? "left" : "center",
               this.tourOpened ? "stop-tour" : "start-tour",
               this.t.takeATour,
-              this.tourOpened,
+              !this.collapsed && this.tourOpened,
               this.collapsed ? "left" : "center"
             );
           },
@@ -2012,6 +2026,7 @@ var HaxTray =
               this.trayDetail,
               this.trayLabel ||
                 "".concat(this.t.editSelected, " ").concat(this.activeTagName),
+              this.viewSourceTemplate,
               this.advancedSettingsTemplate,
               this.contentMapTemplate,
               this.contentEditTemplate,
@@ -2021,10 +2036,19 @@ var HaxTray =
           },
         },
         {
-          key: "advancedSettingsTemplate",
+          key: "viewSourceTemplate",
           get: function get() {
             return (0, _litElement.html)(
               _templateObject11(),
+              this.trayDetail !== "view-source"
+            );
+          },
+        },
+        {
+          key: "advancedSettingsTemplate",
+          get: function get() {
+            return (0, _litElement.html)(
+              _templateObject12(),
               this.trayDetail !== "advanced-settings"
             );
           },
@@ -2033,7 +2057,7 @@ var HaxTray =
           key: "contentEditTemplate",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject12(),
+              _templateObject13(),
               this.haxUiTheme == "system"
                 ? "auto"
                 : this.haxUiTheme == "haxdark"
@@ -2048,7 +2072,7 @@ var HaxTray =
           get: function get() {
             var hidden = this.trayDetail !== "content-add";
             return (0, _litElement.html)(
-              _templateObject13(),
+              _templateObject14(),
               hidden,
               hidden,
               this.t.templates,
@@ -2060,7 +2084,7 @@ var HaxTray =
           key: "contentMapTemplate",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject14(),
+              _templateObject15(),
               this.trayDetail !== "content-map"
             );
           },
@@ -2070,7 +2094,7 @@ var HaxTray =
           get: function get() {
             var hidden = this.trayDetail !== "media-add";
             return (0, _litElement.html)(
-              _templateObject15(),
+              _templateObject16(),
               hidden,
               hidden,
               this.t.search,
@@ -2089,7 +2113,7 @@ var HaxTray =
               ),
               _toConsumableArray(_haxUiStyles.HaxTrayDetail),
               _toConsumableArray(_haxUiStyles.HaxComponentStyles),
-              [(0, _litElement.css)(_templateObject16())]
+              [(0, _litElement.css)(_templateObject17())]
             );
           },
         },
@@ -2222,6 +2246,8 @@ var HaxTray =
                  */
                 trayDetail: {
                   type: String,
+                  reflect: true,
+                  attribute: "tray-detail",
                 },
 
                 /**

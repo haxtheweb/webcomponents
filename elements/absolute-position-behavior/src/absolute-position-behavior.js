@@ -28,12 +28,40 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
       this.offset = 0;
       this.position = "bottom";
       this.target = null;
+<<<<<<< HEAD
+      this.sticky = false;
+=======
       this.hidden = false;
+>>>>>>> master
       this.__positions = {};
       this.__observe = false;
     }
 
     updated(changedProperties) {
+<<<<<<< HEAD
+      let updatePosition = false;
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "auto" && this.auto) this.setPosition();
+        if (propName === "auto" && !this.auto) this.unsetPosition();
+        if (
+          [
+            "fitToVisibleBounds",
+            "for",
+            "offset",
+            "position",
+            "justify",
+            "positionAlign",
+            "target",
+            "hidden",
+            "sticky",
+          ].includes(propName) &&
+          this[propName] !== oldValue
+        )
+          updatePosition = true;
+      });
+      if (updatePosition) console.log(changedProperties, this.target);
+      if (updatePosition) this.updatePosition();
+=======
       if (this.shadowRoot && !this.hidden) {
         changedProperties.forEach((oldValue, propName) => {
           if (propName === "auto" && this.auto) this.setPosition();
@@ -47,6 +75,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
           if (propName === "hidden") this.updatePosition();
         });
       }
+>>>>>>> master
     }
 
     /**
@@ -76,10 +105,15 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
+<<<<<<< HEAD
+      if (!this.auto || this.__observe === true) {
+        this.__manager.positionElement(this);
+=======
       if (this.__observe === true) {
         window.AbsolutePositionStateManager.requestAvailability().positionElement(
           this
         );
+>>>>>>> master
       }
     }
     /**
