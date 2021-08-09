@@ -57,6 +57,11 @@
           "type": "string"
         },
         {
+          "name": "fallbackText",
+          "type": "object",
+          "default": "{}"
+        },
+        {
           "name": "items",
           "attribute": "items",
           "type": "array",
@@ -169,6 +174,11 @@
           "name": "relationship",
           "attribute": "relationship",
           "type": "string"
+        },
+        {
+          "name": "fallbackText",
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "items",

@@ -22,18 +22,15 @@
         },
         {
           "name": "font-size",
-          "type": "number",
-          "default": "1"
+          "type": "number"
         },
         {
           "name": "font-family",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "color-theme",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "menu-open",
@@ -129,20 +126,17 @@
         {
           "name": "fontSize",
           "attribute": "font-size",
-          "type": "number",
-          "default": "1"
+          "type": "number"
         },
         {
           "name": "fontFamily",
           "attribute": "font-family",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "colorTheme",
           "attribute": "color-theme",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "menuOpen",
@@ -289,18 +283,15 @@
         },
         {
           "name": "font-size",
-          "type": "number",
-          "default": "1"
+          "type": "number"
         },
         {
           "name": "font-family",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "color-theme",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "menu-open",
@@ -396,20 +387,17 @@
         {
           "name": "fontSize",
           "attribute": "font-size",
-          "type": "number",
-          "default": "1"
+          "type": "number"
         },
         {
           "name": "fontFamily",
           "attribute": "font-family",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "colorTheme",
           "attribute": "color-theme",
-          "type": "number",
-          "default": "0"
+          "type": "number"
         },
         {
           "name": "menuOpen",

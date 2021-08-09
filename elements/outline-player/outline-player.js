@@ -290,11 +290,11 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   siteModalClick(e) {
     // prettier-ignore
     import(
-         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
-       ).then((m) => {
-         // weird looking but forces focus when it opens the search form
-         window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
-       });
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    ).then((m) => {
+      // weird looking but forces focus when it opens the search form
+      window.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
+    });
   }
   // render function
   render() {

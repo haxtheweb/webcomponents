@@ -3,13 +3,8 @@
   "tags": [
     {
       "name": "absolute-position-behavior",
-      "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements\n\nAttributes:\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `__positions` - The element's style\n\nProperties:\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `positionAlign` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fitToVisibleBounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `__positions` - The element's style\n\n  * `__observe` {`boolean`} - \n\n  * `__manager` - ",
+      "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements\n\nAttributes:\n\n  * `position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\nProperties:\n\n  * `positionAlign` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fitToVisibleBounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\n  * `__observe` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: hidden",
-          "valueSet": "v"
-        },
         {
           "name": "position-align",
           "description": "`position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\nProperty: positionAlign"
@@ -46,6 +41,16 @@
           "description": "`target` - The actual target element\n\nProperty: target\n\nDefault: null"
         },
         {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Stays on screen while target is on screen\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "__positions",
           "description": "`__positions` - The element's style\n\nProperty: __positions\n\nDefault: [object Object]"
         }
@@ -53,8 +58,12 @@
     },
     {
       "name": "absolute-position-state-manager",
-      "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page\n\nAttributes:\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer\n\nProperties:\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer",
+      "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page\n\nAttributes:\n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer\n\nProperties:\n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer",
       "attributes": [
+        {
+          "name": "__timeout2",
+          "description": "`__timeout2` - resize timeout\n\nProperty: __timeout2"
+        },
         {
           "name": "elements",
           "description": "`elements` {`any[]`} - Stores an array of all elements using manager.\n\nProperty: elements\n\nDefault: "
@@ -71,7 +80,7 @@
     },
     {
       "name": "absolute-position-behavior",
-      "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements\n\nProperties:\n\n  * `auto` {`boolean`} - \n\n  * `fitToVisibleBounds` {`boolean`} - \n\n  * `for` - \n\n  * `offset` {`number`} - \n\n  * `position` {`string`} - \n\n  * `target` - \n\n  * `__positions` - \n\n  * `__observe` {`boolean`} - \n\n  * `__manager` - ",
+      "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements\n\nProperties:\n\n  * `auto` {`boolean`} - \n\n  * `fitToVisibleBounds` {`boolean`} - \n\n  * `for` - \n\n  * `offset` {`number`} - \n\n  * `position` {`string`} - \n\n  * `target` - \n\n  * `sticky` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `__positions` - \n\n  * `__observe` {`boolean`} - ",
       "attributes": []
     }
   ],

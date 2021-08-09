@@ -28,54 +28,36 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
       this.offset = 0;
       this.position = "bottom";
       this.target = null;
-<<<<<<< HEAD
       this.sticky = false;
-=======
       this.hidden = false;
->>>>>>> master
       this.__positions = {};
       this.__observe = false;
     }
 
     updated(changedProperties) {
-<<<<<<< HEAD
       let updatePosition = false;
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "auto" && this.auto) this.setPosition();
-        if (propName === "auto" && !this.auto) this.unsetPosition();
-        if (
-          [
-            "fitToVisibleBounds",
-            "for",
-            "offset",
-            "position",
-            "justify",
-            "positionAlign",
-            "target",
-            "hidden",
-            "sticky",
-          ].includes(propName) &&
-          this[propName] !== oldValue
-        )
-          updatePosition = true;
-      });
-      if (updatePosition) console.log(changedProperties, this.target);
-      if (updatePosition) this.updatePosition();
-=======
       if (this.shadowRoot && !this.hidden) {
         changedProperties.forEach((oldValue, propName) => {
           if (propName === "auto" && this.auto) this.setPosition();
           if (propName === "auto" && !this.auto) this.unsetPosition();
-          if (propName === "fitToVisibleBounds") this.updatePosition();
-          if (propName === "for") this.updatePosition();
-          if (propName === "offset") this.updatePosition();
-          if (propName === "position") this.updatePosition();
-          if (propName === "positionAlign") this.updatePosition();
-          if (propName === "target") this.updatePosition();
-          if (propName === "hidden") this.updatePosition();
+          if (
+            [
+              "fitToVisibleBounds",
+              "for",
+              "offset",
+              "position",
+              "justify",
+              "positionAlign",
+              "target",
+              "hidden",
+              "sticky",
+            ].includes(propName) &&
+            this[propName] !== oldValue
+          )
+            updatePosition = true;
         });
+        if (updatePosition) this.updatePosition();
       }
->>>>>>> master
     }
 
     /**
@@ -105,15 +87,10 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
-<<<<<<< HEAD
       if (!this.auto || this.__observe === true) {
-        this.__manager.positionElement(this);
-=======
-      if (this.__observe === true) {
         window.AbsolutePositionStateManager.requestAvailability().positionElement(
           this
         );
->>>>>>> master
       }
     }
     /**

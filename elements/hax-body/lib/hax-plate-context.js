@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { LitElement, css, html } from "lit-element/lit-element.js";
-=======
 import { LitElement, css, html } from "lit";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
->>>>>>> master
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
@@ -427,6 +423,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       : [];
   }
   get siblingSlots() {
+    if (!this.activeNode || !this.activeNode.parentNode) return [];
     let oldGrid = this.isGridPlate(this.activeNode.parentNode);
     return oldGrid
       ? this.gridPlateSlots(this.activeNode.parentNode.layout)
@@ -456,6 +453,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get isGridLayoutSlot() {
+    if (!this.activeNode || !this.activeNode.parentNode) return false;
     return HAXStore.isGridPlateElement(this.activeNode.parentNode);
   }
 

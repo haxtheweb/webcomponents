@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import {
@@ -767,17 +767,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar)
       );
-<<<<<<< HEAD
       //stops mousedown from bubbling up and triggering HAX focus logic
       this.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
-=======
->>>>>>> master
     }
 
     connectedCallback() {
       super.connectedCallback();
       window.RichTextEditorToolbars.push(this);
-<<<<<<< HEAD
     }
 
     /**
@@ -791,21 +787,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       );
     }
 
-=======
-    }
-
-    /**
-     * life cycle, element is disconnected
-     * @returns {void}
-     */
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
-        (toolbar) => toolbar !== this
-      );
-    }
-
->>>>>>> master
     firstUpdated(changedProperties) {
       if (!this.id) this.id = this._generateUUID();
       super.firstUpdated(changedProperties);
@@ -901,11 +882,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     close() {
       //if (editor) this.disableEditing(editor);
       this.target = undefined;
-<<<<<<< HEAD
       this.positionByTarget(false);
-=======
-      document.body.append(this);
->>>>>>> master
       this.dispatchEvent(
         new CustomEvent("close", {
           bubbles: true,
@@ -1059,7 +1036,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
     }
-<<<<<<< HEAD
     /**
      * creates a div element to contain/group buttons based on config object
      *
@@ -1072,8 +1048,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (config.subtype) group.classList.add(config.subtype);
       return group;
     }
-=======
->>>>>>> master
 
     /**
      * updates buttons with selected range
@@ -1133,7 +1107,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         mousedown: this._removeHighlight.bind(this),
       };
     }
-<<<<<<< HEAD
     /**
      * moves toolbar into position before the target
      * (can be overriden for custom positioning)
@@ -1144,167 +1117,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         target.parentNode.insertBefore(this, target);
         this.slot = target.slot;
         if (this.breadcrumbs) {
-=======
-
-    /**
-     * disables editing
-     *
-     * @param {object} editor
-     * @memberof RichTextEditorManager
-     */
-    enableEditing(target = this.target) {
-      let handlers = this.enabledTargetHandlers;
-      if (!!target && !target.hidden && !target.disabled) {
-        target.makeSticky(this.sticky);
-        target.parentNode.insertBefore(this, target);
-        target.setAttribute("contenteditable", "true");
-
-        Object.keys(handlers).forEach((handler) =>
-          target.removeEventListener(handler, handlers[handler])
-        );
-
-        this.setCanceledEdits();
-        this.updateRange(target);
-        this.observeChanges(true);
-
-        this.getRoot(target).onselectionchange = (e) => {
-          if (!this.__promptOpen) this.updateRange(target);
-        };
-
-        this.dispatchEvent(
-          new CustomEvent("enabled", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: (this.target.innerHTML || "")
-              .replace(/<!--[^(-->)]*-->/g, "")
-              .trim(),
-          })
-        );
-      }
-    }
-
-    disableEditing(target = this.target) {
-      let handlers = this.enabledTargetHandlers,
-        range = this.getRange();
-      if (!!target) {
-        if (range) range.collapse();
-        this.__highlight.emptyContents();
-        this.getRoot(target).onselectionchange = undefined;
-        this.observeChanges(false);
-        if (this.__source) this.__source.toggle(false);
-        target.removeAttribute("contenteditable");
-
-        Object.keys(handlers).forEach((handler) =>
-          target.removeEventListener(handler, handlers[handler])
-        );
-
-        target.makeSticky(false);
-        this.dispatchEvent(
-          new CustomEvent("disabled", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: (this.target.innerHTML || "")
-              .replace(/<!--[^(-->)]*-->/g, "")
-              .trim(),
-          })
-        );
-      }
-    }
-
-    /**
-     * make an new editable element
-     *
-     * @param {object} editor an HTML object that can be edited
-     * @returns {void}
-     */
-    insertNew(target) {
-      let content = document.createElement("rich-text-editor");
-      target.parentNode.insertBefore(content, target);
-      content.appendChild(target);
-    }
-    /**
-     * set observer on or off
-     *
-     * @param {boolean} [on=true]
-     * @memberof RichTextEditor
-     */
-    observeChanges(on = true) {
-      if (on) {
-        this.observer.observe(this.target, {
-          attributes: false,
-          childList: true,
-          subtree: true,
-          characterData: false,
-        });
-      } else {
-        if (this.observer) this.observer.disconnect;
-      }
-    }
-    /**
-     * revert content to before editing=true
-     *
-     * @memberof RichTextEditor
-     */
-    revertTarget(target = this.target) {
-      if (this.target) this.target.innerHTML = this.__canceledEdits;
-    }
-
-    /**
-     * sanitizesHTML
-     * override this function to make your own filters
-     *
-     * @param {string} html html to be pasted
-     * @returns {string} filtered html as string
-     */
-    sanitizeHTML(html) {
-      if (!html) return;
-      let regex = "<body(.*\n)*>(.*\n)*</body>";
-      if (html.match(regex) && html.match(regex).length > 0)
-        html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
-      return html;
-    }
-    /**
-     * holds on to edits so cancel willwork
-     *
-     * @param {string} [html=this.innerHTML]
-     * @memberof RichTextEditor
-     */
-    setCanceledEdits(html) {
-      this.__canceledEdits = html
-        ? html
-        : this.target && this.target.innerHTML
-        ? this.target.innerHTML
-        : "";
-    }
-    setTarget(target) {
-      let handlers = this.targetHandlers(target);
-      if (!!target) {
-        let oldTarget = this.target;
-        target.setAttribute("role", "textbox");
-        if (oldTarget !== target) {
-          if (!!oldTarget) this.unsetTarget(oldTarget);
-          Object.keys(handlers).forEach((handler) =>
-            target.addEventListener(handler, handlers[handler])
-          );
-          this.getRoot(target).onselectionchange = (e) => {
-            if (!this.__promptOpen) this.updateRange(target);
-          };
-          this.target = target;
-          this.enableEditing(target);
-        }
-      }
-      this.updateRange(this.target);
-      if (this.breadcrumbs) {
-        this.breadcrumbs.controls = this.controls;
-        if (!!this.target)
->>>>>>> master
           this.target.parentNode.insertBefore(
             this.breadcrumbs,
             this.target.nextSibling
           );
-<<<<<<< HEAD
           this.breadcrumbs.slot = target.slot;
         }
       } else {
@@ -1313,164 +1129,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (this.breadcrumbs) {
           document.body.append(this.breadcrumbs);
           this.breadcrumbs.slot = undefined;
-=======
-      }
-      this.buttons.forEach((button) => {
-        if (button.command !== "close") button.disabled = !this.target;
-      });
-      this.range = undefined;
-      this._rangeChanged();
-    }
-    unsetTarget(target = this.target) {
-      let handlers = this.targetHandlers(target);
-      this.disableEditing(target);
-      Object.keys(handlers).forEach((handler) =>
-        target.removeEventListener(handler, handlers[handler])
-      );
-      this.target = undefined;
-    }
-    /**
-     * determines if target is empty
-     *
-     * @returns {string}
-     * @memberof RichTextEditor
-     */
-    targetEmpty() {
-      return (
-        !this.target ||
-        !this.target.innerHTML ||
-        this.trimHTML(this.target) == ""
-      );
-    }
-
-    /**
-     * list of event handlers for a given target
-     *
-     * @param {*} target
-     * @returns
-     */
-    targetHandlers(target) {
-      return {
-        click: (e) => this._handleTargetClick(target, e),
-        dblclick: (e) => this._handleTargetDoubleClick(target, e),
-        focus: (e) => this._handleTargetFocus(target, e),
-        keydown: (e) => this._handleShortcutKeys(e),
-        paste: (e) => this._handlePaste(e),
-      };
-    }
-    /**
-     * gets cleaned HTML from the target
-     *
-     * @returns {string}
-     * @memberof RichTextEditor
-     * /
-    targetHTML() {
-      return this.targetEmpty()
-        ? ""
-        : (this.target.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
-    }*/
-
-    get targetHTML() {
-      return !!this.target
-        ? this.outdentHTML(this.target.innerHTML)
-        : undefined;
-    }
-
-    htmlMatchesTarget(html) {
-      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined,
-        cleanHTML = outdentedHTML
-          ? outdentedHTML.replace(/\s+/gm, "")
-          : undefined,
-        cleanTarget = this.targetHTML
-          ? this.targetHTML.replace(/\s+/gm, "")
-          : undefined;
-      return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
-    }
-
-    _handleTargetDoubleClick(target, e) {
-      if (!target || target.disabled || this.target !== target) return;
-      let els = Object.keys(this.clickableElements || {}),
-        el = e.target || e.srcElement || { tagName: "" },
-        evt = { detail: el },
-        tagname = (el.tagName || "").toLowerCase();
-      if (tagname && els.includes(tagname)) {
-        e.preventDefault();
-        this.clickableElements[tagname](evt);
-        this.updateRange();
-      }
-    }
-
-    _handleTargetClick(target, e) {
-      if (!target || target.disabled) return;
-      if (this.target !== target) {
-        e.preventDefault();
-        this.setTarget(target);
-      } else {
-        let els = Object.keys(this.clickableElements || {}),
-          el = e.target || e.srcElement || { tagName: "" },
-          evt = { detail: el },
-          tagname = (el.tagName || "").toLowerCase();
-        if (tagname && els.includes(tagname)) {
-          e.preventDefault();
-          this.clickableElements[tagname](evt);
->>>>>>> master
         }
       }
-      this.range = this.getRange();
-      this.updateRange();
-    }
-    _handleTargetFocus(target, e) {
-      if (!this.__promptOpen && !target.disabled) this.setTarget(target);
-    }
-
-    _handleTargetKeypress(e) {
-      if (this.targetEmpty() && e.key) {
-        this.innerHTML = e.key
-          .replace(">", "&gt;")
-          .replace("<", "&lt;")
-          .replace("&", "&amp;");
-        this.range = this.getRange();
-        this.range.selectNodeContents(this);
-        this.range.collapse();
-      }
-    }
-    _handleTargetMutation(mutations = []) {
-      this._handleTargetSelection();
-      (mutations || []).forEach((mutation) => {
-        if (mutation.type == "attributes") {
-          if ((target.disabled || target.hidden) && target.conteneditable) {
-            this.disableEditing(target);
-            target.tabindex = -1;
-          } else if (
-            !target.disabled &&
-            !target.hidden &&
-            target.conteneditable
-          ) {
-            this.enableEditing(target);
-            target.tabindex = 0;
-          }
-        }
-      });
-    }
-    _handleTargetSelection(e) {
-      if (!this.__promptOpen) this.range = this.getRange();
-    }
-    _handlePaste(e) {
-      e.stopImmediatePropagation();
-      this.pasteFromClipboard();
-    }
-    _addHighlight() {
-      if (!this.__highlight.hidden) return;
-      this.range = this.getRange();
-      if (
-        !this.target ||
-        !this.target.getAttribute("contenteditable") == "true"
-      )
-        return;
-      this.__highlight.wrap(this.range || this.getRange());
-    }
-    _removeHighlight() {
-      this.__highlight.unwrap(this.range || this.getRange());
     }
 
     /**
@@ -1778,46 +1438,46 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
   };
 };
 /**
- * `rich-text-editor-toolbar`
- * is a default toolbar for rich text editor 
- * (can customize by extending RichTextEditorToolbarBehaviors)
- *
- * ### Styling
-`<rich-text-editor-toolbar>` uses RichTextToolbarStyles constant to set 
-SimpleToolbarBehaviors's simple-toolbar/simple-toolbar-button variables.
-
-To further customize a toolbar and its buttons:
-
-Custom property | Description | Default
-----------------|-------------|----------
---rich-text-editor-border-color | default border color | #ddd
---rich-text-editor-border-width | default border width | 1px
---rich-text-editor-bg | default toolbar background | #ffffff
---rich-text-editor-button-opacity | default button opacity | 1
---rich-text-editor-button-color | default button color | #444
---rich-text-editor-button-bg | default button background | #ffffff
---rich-text-editor-button-border-color | overrides default border-color for buttons | transparent
---rich-text-editor-button-toggled-opacity | overrides default opacity when button is toggled | 1
---rich-text-editor-button-toggled-color | overrides default text color when button is toggled | #222
---rich-text-editor-button-toggled-bg | overrides default background when button is toggled | #ddd
---rich-text-editor-button-toggled-border-color | overrides default border-color when button is toggled | transparent
---rich-text-editor-button-hover-opacity | overrides default opacity when button is hovered or focused | 1
---rich-text-editor-button-hover-color | overrides default text color when button is hovered or focused  | #000
---rich-text-editor-button-hover-bg | overrides default background when button is hovered or focused | #f0f0f0
---rich-text-editor-button-hover-border-color | overrides default border-color when button is hovered or focused | unset
---rich-text-editor-button-disabled-opacity | overrides default opacity when button is disabled | 1
---rich-text-editor-button-disabled-color | overrides default text color when button is disabled | #666
---rich-text-editor-button-disabled-bg | overrides default background when button is disabled | transparent
---rich-text-editor-button-disabled-border-color | overrides default border-color when button is toggled | transparent
- *
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
- * @customElement
- * @lit-html
- * @lit-element
- * @element rich-text-editor-toolbar
- * @demo ./demo/toolbar.html
- */
+  * `rich-text-editor-toolbar`
+  * is a default toolbar for rich text editor 
+  * (can customize by extending RichTextEditorToolbarBehaviors)
+  *
+  * ### Styling
+ `<rich-text-editor-toolbar>` uses RichTextToolbarStyles constant to set 
+ SimpleToolbarBehaviors's simple-toolbar/simple-toolbar-button variables.
+ 
+ To further customize a toolbar and its buttons:
+ 
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --rich-text-editor-border-color | default border color | #ddd
+ --rich-text-editor-border-width | default border width | 1px
+ --rich-text-editor-bg | default toolbar background | #ffffff
+ --rich-text-editor-button-opacity | default button opacity | 1
+ --rich-text-editor-button-color | default button color | #444
+ --rich-text-editor-button-bg | default button background | #ffffff
+ --rich-text-editor-button-border-color | overrides default border-color for buttons | transparent
+ --rich-text-editor-button-toggled-opacity | overrides default opacity when button is toggled | 1
+ --rich-text-editor-button-toggled-color | overrides default text color when button is toggled | #222
+ --rich-text-editor-button-toggled-bg | overrides default background when button is toggled | #ddd
+ --rich-text-editor-button-toggled-border-color | overrides default border-color when button is toggled | transparent
+ --rich-text-editor-button-hover-opacity | overrides default opacity when button is hovered or focused | 1
+ --rich-text-editor-button-hover-color | overrides default text color when button is hovered or focused  | #000
+ --rich-text-editor-button-hover-bg | overrides default background when button is hovered or focused | #f0f0f0
+ --rich-text-editor-button-hover-border-color | overrides default border-color when button is hovered or focused | unset
+ --rich-text-editor-button-disabled-opacity | overrides default opacity when button is disabled | 1
+ --rich-text-editor-button-disabled-color | overrides default text color when button is disabled | #666
+ --rich-text-editor-button-disabled-bg | overrides default background when button is disabled | transparent
+ --rich-text-editor-button-disabled-border-color | overrides default border-color when button is toggled | transparent
+  *
+  * @extends RichTextEditorToolbarBehaviors
+  * @extends LitElement
+  * @customElement
+  * @lit-html
+  * @lit-element
+  * @element rich-text-editor-toolbar
+  * @demo ./demo/toolbar.html
+  */
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   LitElement
 ) {}

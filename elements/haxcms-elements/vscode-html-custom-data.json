@@ -1584,7 +1584,7 @@
     },
     {
       "name": "site-menu-content",
-      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
+      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `relationship` {`string`} - \n\n  * `fallbackText` - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -1926,11 +1926,16 @@
     },
     {
       "name": "site-search",
-      "description": "`site-search`\n`Searching HAXcms content using the auto-generated lunr search configuration`\n\nEvents:\n\n  * `search-item-selected` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `show-path` {`boolean`} - \n\n  * `show-date` {`boolean`} - \n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `showPath` {`boolean`} - \n\n  * `showDate` {`boolean`} - \n\n  * `__results` {`any[]`} - ",
+      "description": "`site-search`\n`Searching HAXcms content using the auto-generated lunr search configuration`\n\nEvents:\n\n  * `search-item-selected` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `whileLoading` {`boolean`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `show-path` {`boolean`} - \n\n  * `show-date` {`boolean`} - \n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `whileLoading` {`boolean`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `showPath` {`boolean`} - \n\n  * `showDate` {`boolean`} - \n\n  * `__results` {`any[]`} - ",
       "attributes": [
         {
           "name": "data-source",
           "description": "`data-source` {`string`} - \n\nProperty: dataSource"
+        },
+        {
+          "name": "whileLoading",
+          "description": "`whileLoading` {`boolean`} - \n\nProperty: whileLoading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hide-input",
@@ -1958,6 +1963,10 @@
         {
           "name": "onsearch-item-selected",
           "description": "`search-item-selected` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
       ]
     },
