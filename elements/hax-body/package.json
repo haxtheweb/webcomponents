@@ -39,7 +39,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/accent-card": "^3.0.6",
-    "@lrnwebcomponents/absolute-position-behavior": "^3.0.6",
+    "@lrnwebcomponents/absolute-position-behavior": "^3.0.7",
     "@lrnwebcomponents/code-editor": "^3.0.6",
     "@lrnwebcomponents/dl-behavior": "^3.0.6",
     "@lrnwebcomponents/grid-plate": "^3.0.6",

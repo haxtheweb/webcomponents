@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^3.0.6",
+    "@lrnwebcomponents/absolute-position-behavior": "^3.0.7",
     "@lrnwebcomponents/code-editor": "^3.0.6",
     "@lrnwebcomponents/md-extra-icons": "^3.0.6",
     "@lrnwebcomponents/simple-fields": "^3.0.6",

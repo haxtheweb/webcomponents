@@ -45,9 +45,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^3.0.6",
+    "@lrnwebcomponents/absolute-position-behavior": "^3.0.7",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
-    "@lrnwebcomponents/simple-tooltip": "^3.0.6",
+    "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "lit": "2.0.0-rc.2"
   },
   "devDependencies": {

@@ -45,7 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-icon": "^3.0.6",
-    "@lrnwebcomponents/simple-tooltip": "^3.0.6",
+    "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "lit": "2.0.0-rc.2"
   },
   "devDependencies": {
