@@ -87,6 +87,11 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
+      if (!this.hidden && this.auto && this.__observe == false) {
+        window.AbsolutePositionStateManager.requestAvailability().loadElement(
+          this
+        );
+      }
       if (!this.auto || this.__observe === true) {
         window.AbsolutePositionStateManager.requestAvailability().positionElement(
           this

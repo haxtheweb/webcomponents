@@ -29,6 +29,8 @@ class VideoPlayer extends IntersectionObserverMixin(
         :host {
           display: block;
           margin: 0 0 15px;
+          line-height: 16px !important;
+          font-size: 16px !important;
         }
 
         .video-caption {
