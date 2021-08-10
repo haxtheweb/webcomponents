@@ -393,18 +393,19 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
 
   // render function
   render() {
-    return html`<custom-style>
-         <style>
-           app-drawer-layout {
-             --app-drawer-content-container: {
-               overflow: hidden;
-               background-color: var(--learn-two-theme-menu-color, #383f45);
-               position: relative;
-             }
-           }
-         </style>
-       </custom-style>
-       <app-drawer-layout responsive-width="900px">
+    return html`
+      <custom-style>
+        <style>
+          app-drawer-layout {
+            --app-drawer-content-container: {
+              overflow: hidden;
+              background-color: var(--learn-two-theme-menu-color, #383f45);
+              position: relative;
+            }
+          }
+        </style>
+      </custom-style>
+      <app-drawer-layout responsive-width="900px">
          <simple-icon-button
            id="menubutton"
            icon="menu"
@@ -413,6 +414,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
          ></simple-icon-button>
            <app-drawer
              swipe-open
+             part="app-drawer"
              slot="drawer"
              .opened="${this.opened}"
              @opened="${this.__openedChanged}"
@@ -470,7 +472,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
            </article>
            <site-menu-button type="next"></site-menu-button>
          </main>
-       </app-drawer-layout>`;
+      </app-drawer-layout>`;
   }
 
   /**
