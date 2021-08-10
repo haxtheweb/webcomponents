@@ -157,9 +157,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host([responsive-size="sm"]) .site-header {
           display: none;
         }
-
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
+        }
+        :host([responsive-size="xs"]) bootstrap-breadcrumb,
+        :host([responsive-size="sm"]) bootstrap-breadcrumb {
+          display: none;
         }
 
         /* main content */
@@ -520,7 +523,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         </div>
         <div id="body" class="site-body">
           <div id="top"></div>
-          <div class="site-inner">
+          <div class="site-inner" part="site-inner">
             <header
               class="site-header"
               role="navigation"

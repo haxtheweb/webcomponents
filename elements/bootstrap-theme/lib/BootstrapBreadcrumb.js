@@ -147,7 +147,6 @@ class BootstrapBreadcrumb extends LitElement {
     this.homeItem = {};
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
-    this._originUrl = window.location.origin + "/";
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       let manifestHomeItem = toJS(store.manifest.items[0]);
@@ -184,7 +183,7 @@ class BootstrapBreadcrumb extends LitElement {
               data-bs-placement="top"
               title="${this.homeItem.title}"
             >
-              <a href="${this._originUrl}${this.homeItem.title}">
+              <a href="${this.homeItem.slug}">
                 <simple-icon-lite accent-color="blue" icon="home">
                 </simple-icon-lite>
               </a>
@@ -198,7 +197,7 @@ class BootstrapBreadcrumb extends LitElement {
                     data-bs-placement="top"
                     title="${item.title}"
                   >
-                    <a href="${this._originUrl}${item.slug}"> ${item.title} </a>
+                    <a href="${item.slug}"> ${item.title} </a>
                   </li>
                 `
             )}

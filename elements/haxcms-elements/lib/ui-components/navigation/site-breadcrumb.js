@@ -22,16 +22,11 @@ class SiteBreadcrumb extends LitElement {
           font-size: 16px;
           color: var(--site-breadcrumb-color, #383f45);
         }
-        #space {
-          height: 24px;
-          line-height: 24px;
-        }
         a {
-          height: 24px;
+          display: inline-flex;
           font-size: 16px;
           color: inherit;
           display: inline-flex;
-          line-height: 24px;
           padding: 0 8px 0 0;
           vertical-align: text-top;
           text-decoration: var(--site-breadcrumb-text-decoration, underline);
@@ -41,7 +36,6 @@ class SiteBreadcrumb extends LitElement {
           padding: 0;
           font-size: 16px;
           font-family: inherit;
-          height: 24px;
           min-width: unset;
           display: inline-flex;
           text-transform: unset;

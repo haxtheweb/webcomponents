@@ -454,7 +454,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
              </div>
            </header>
            <nav>
-             <site-menu></site-menu>
+             <site-menu part="site-menu"></site-menu>
            </nav>
          </app-drawer>
          </nav>
