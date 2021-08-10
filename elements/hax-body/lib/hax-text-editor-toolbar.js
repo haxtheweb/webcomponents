@@ -485,13 +485,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "parentSchema" || propName === "range")
-        this.updateBlocks();
-      if (propName === "activeNode" && this.activeNode !== oldValue)
-        this.setTarget(this.activeNode);
-      if (propName === "t" && this.t !== oldValue) this.updateToolbarElements();
-    });
+    if (this.__ready) {
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "parentSchema" || propName === "range")
+          this.updateBlocks();
+        if (propName === "activeNode" && this.activeNode !== oldValue)
+          this.setTarget(this.activeNode);
+        if (propName === "t" && this.t !== oldValue)
+          this.updateToolbarElements();
+      });
+    }
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -501,6 +504,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   updateBlocks() {
     let currentTag =
       !!this.formatButtonElement &&
+      !!this.formatButtonElement.rangeOrMatchingAncestor &&
       !!this.formatButtonElement.rangeOrMatchingAncestor()
         ? this.formatButtonElement.rangeOrMatchingAncestor().tagName
         : undefined;
@@ -556,6 +560,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @memberof HaxTextEditorToolbar
    */
   _handleHaxStoreReady(e) {
+    this.__ready = true;
     let elements = HAXStore.elementList || {},
       keys = Object.keys(elements);
     keys.forEach((key) => this._setInlineElement(key, elemets[key]));

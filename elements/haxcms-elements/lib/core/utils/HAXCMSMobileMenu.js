@@ -38,8 +38,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           site-menu:not(:defined) {
             display: none;
           }
-          replace-tag[with="site-menu"],
-          site-menu {
+          replace-tag[with="site-menu"] {
             height: 100vh;
           }
           :host([responsive-size="xs"][menu-open]),

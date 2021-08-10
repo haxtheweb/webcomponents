@@ -100,7 +100,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           background: #747474;
           color: #fafafa;
           text-align: center;
-          padding: 0 8px 16px;
+          padding: 0 0 16px;
         }
 
         site-git-corner {
@@ -130,37 +130,13 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           color: white;
         }
 
-        site-menu {
-          scrollbar-color: var(--learn-two-theme-menu-color, #383f45)
-            var(--learn-two-theme-menu-color, #383f45);
-          scrollbar-width: thin;
-        }
-
-        site-menu::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
-          border-radius: 0;
-          background-color: var(--learn-two-theme-menu-color, #383f45);
-        }
-
-        site-menu::-webkit-scrollbar {
-          width: 2px;
-          background-color: var(--learn-two-theme-menu-color, #383f45);
-        }
-
-        site-menu::-webkit-scrollbar-thumb {
-          border-radius: 1px;
-          -webkit-box-shadow: inset 0 0 4px #747474;
-          background-color: var(--learn-two-theme-menu-color, #383f45);
-        }
-
-        .rss-buttons {
-          justify-content: space-evenly;
-          display: flex;
-          color: white;
-        }
-
         site-print-button {
           color: var(--site-print-button-color, white);
+          margin: 4px;
+        }
+        site-modal {
+          margin: 4px;
+          display: inline-flex;
         }
 
         simple-icon-button,
@@ -199,10 +175,13 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
 
         app-drawer {
           opacity: 1;
+          position: fixed;
+          top: 0;
           transition: 0.2s linear all;
           box-shadow: 0 0 6px -3px var(--haxcms-color, black);
           overflow: hidden;
           width: 300px;
+          --app-drawer-content-padding: 0;
         }
 
         app-drawer-layout[narrow] #contentcontainer {
@@ -258,7 +237,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         }
 
         app-drawer-layout[narrow] site-menu {
-          max-height: calc(100vh - 160px);
+          max-height: calc(100vh - 100px);
         }
 
         site-menu-button[type="next"] {
@@ -290,14 +269,12 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           background-color: var(--learn-two-theme-menu-color, #383f45);
           color: #ffffff;
           padding: 0;
-          overflow: scroll;
-          max-height: calc(100vh - 200px);
+          max-height: calc(100vh - 100px);
           --site-menu-active-color: #ffffff;
           --site-menu-item-active-item-color: goldenrod;
         }
 
         app-drawer-layout {
-          min-height: 100vh;
           min-height: -moz-available;
           min-height: -webkit-fill-available;
           min-height: fill-available;
@@ -332,19 +309,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           top: unset;
         }
 
-        site-menu,
-        map-menu,
-        map-menu * {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          --map-menu-items-list-display: flex;
-          --map-menu-items-list-flex-direction: column;
-          --map-menu-items-list-flex: 1 1 auto;
-          --map-menu-container-display: flex;
-          --map-menu-container-flex-direction: column;
-          --map-menu-container-flex: 1 1 auto;
-        }
         site-title {
           color: #fafafa;
           --site-title-link-display: inline-block;
@@ -472,12 +436,11 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
                >
                  <site-search></site-search>
                </site-modal>
-             </div>
-           </header>
-           <nav>
-             <site-menu></site-menu>
-           </nav>
-           <footer class="rss-buttons">
+               <site-print-button
+               ?disabled="${this.editMode}"
+               position="top"
+               part="print-btn"
+             ></site-print-button>
              <site-rss-button
                ?disabled="${this.editMode}"
                type="atom"
@@ -488,12 +451,11 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
                type="rss"
                part="rss-btn"
              ></site-rss-button>
-             <site-print-button
-               ?disabled="${this.editMode}"
-               position="top"
-               part="print-btn"
-             ></site-print-button>
-           </footer>
+             </div>
+           </header>
+           <nav>
+             <site-menu></site-menu>
+           </nav>
          </app-drawer>
          </nav>
          <main>

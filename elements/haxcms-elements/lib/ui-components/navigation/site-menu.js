@@ -22,9 +22,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         :host {
           display: block;
           height: 100vh;
-          scrollbar-color: var(--site-menu-background-color)
-            var(--site-menu-background-color);
-          scrollbar-width: thin;
         }
         map-menu {
           padding: var(--site-menu-padding);
@@ -39,23 +36,29 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             --site-menu-item-active-item-color
           );
           --map-menu-font-size: var(--site-menu-font-size);
-
-          scrollbar-color: var(--site-menu-background-color)
-            var(--site-menu-background-color);
-          scrollbar-width: thin;
+          overflow-y: auto;
+          overflow-x: hidden;
+          scrollbar-color: var(--site-menu-scrollbar-color, #252737);
+          scrollbar-width: thick;
         }
         map-menu:not(:defined) {
           display: none;
         }
-
         map-menu::-webkit-scrollbar-track {
           border-radius: 0;
+          background-color: var(--site-menu-scrollbar-color, #252737);
         }
+
         map-menu::-webkit-scrollbar {
-          width: 2px;
+          width: 8px;
+          background-color: var(--site-menu-scrollbar-color, #252737);
         }
+
         map-menu::-webkit-scrollbar-thumb {
-          border-radius: 1px;
+          border-radius: 2px;
+          -webkit-box-shadow: inset 0 0 4px
+            var(--site-menu-scrollbar-thumb-color, #999999);
+          background-color: var(--site-menu-scrollbar-thumb-color, #999999);
         }
       `,
     ];
@@ -86,7 +89,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
   render() {
     return html`
       <map-menu
-        .part="${this.editMode ? `edit-mode-active` : ``}"
+        .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         .manifest="${this.routerManifest}"
         ?active-indicator="${!this.hideActiveIndicator}"
         ?auto-scroll="${!this.preventAutoScroll}"
