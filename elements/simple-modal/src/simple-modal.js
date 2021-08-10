@@ -502,6 +502,7 @@ class SimpleModal extends LitElement {
         el.addEventListener("click", (e) => {
           const evt = new CustomEvent("simple-modal-dismissed", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               opened: false,
@@ -516,6 +517,7 @@ class SimpleModal extends LitElement {
       confirm.forEach((el) => {
         el.addEventListener("click", (e) => {
           const evt = new CustomEvent("simple-modal-confirmed", {
+            composed: true,
             bubbles: true,
             cancelable: true,
             detail: {
@@ -529,6 +531,7 @@ class SimpleModal extends LitElement {
       });
       const evt = new CustomEvent("simple-modal-opened", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           opened: true,

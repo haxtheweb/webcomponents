@@ -114,6 +114,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
           transition: left 250ms ease;
         }
 
+        site-menu::part(map-menu) {
+          height: var(--site-menu-map-menu-height, calc(100vh - 130px));
+        }
+
         #haxcmsmobilemenubutton {
           padding-left: 0;
         }

@@ -21,7 +21,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       css`
         :host {
           display: block;
-          height: 100vh;
         }
         map-menu {
           padding: var(--site-menu-padding);

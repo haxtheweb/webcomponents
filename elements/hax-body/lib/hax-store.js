@@ -1017,30 +1017,35 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         })
       );
       // associate the cancel button in the tray to the dialog
-      let modal = HAXStore.haxCancel.shadowRoot
+      HAXStore.haxCancel.shadowRoot
         .querySelector("#dialog")
         .associateEvents(haxTray.shadowRoot.querySelector("#haxcancelbutton"));
-      if (!!modal)
-        modal.addEventListener(
+      if (!!HAXStore.haxCancel.shadowRoot.querySelector("#dialog")) {
+        window.addEventListener(
           "simple-modal-confirmed",
-          this._handleConfirmCancel
+          this._handleConfirmCancel.bind(this)
         );
-
+      }
       this.ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
     }
   }
   _handleConfirmCancel(e) {
-    this.editMode = false;
-    this.dispatchEvent(
-      new CustomEvent("hax-cancel", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail,
-      })
-    );
+    if (
+      e.detail.invokedBy ===
+      this.haxTray.shadowRoot.querySelector("#haxcancelbutton")
+    ) {
+      this.editMode = false;
+      this.dispatchEvent(
+        new CustomEvent("hax-cancel", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: e.detail,
+        })
+      );
+    }
   }
   /**
    * Build a list of common voice commands
