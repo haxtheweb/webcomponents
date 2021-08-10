@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/simple-search.js";
+import "../simple-search.js";
 
 /*
  * Instantiation test

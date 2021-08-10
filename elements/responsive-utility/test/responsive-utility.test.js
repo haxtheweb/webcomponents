@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/responsive-utility.js";
+import "../responsive-utility.js";
 
 /*
  * Instantiation test

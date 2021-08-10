@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/beaker-broker.js";
+import "../beaker-broker.js";
 
 /*
  * Instantiation test

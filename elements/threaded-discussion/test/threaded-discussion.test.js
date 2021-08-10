@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/threaded-discussion.js";
+import "../threaded-discussion.js";
 
 /*
  * Instantiation test

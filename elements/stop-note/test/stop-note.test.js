@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/stop-note.js";
+import "../stop-note.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/mtz-marked-editor.js";
+import "../mtz-marked-editor.js";
 
 /*
  * Instantiation test

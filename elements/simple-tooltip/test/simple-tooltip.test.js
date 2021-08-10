@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/simple-tooltip.js";
+import "../simple-tooltip.js";
 
 /*
  * Instantiation test

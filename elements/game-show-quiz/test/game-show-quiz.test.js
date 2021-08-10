@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/game-show-quiz.js";
+import "../game-show-quiz.js";
 
 /*
  * Instantiation test

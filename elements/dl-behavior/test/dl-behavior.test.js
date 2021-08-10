@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/dl-behavior.js";
+import "../dl-behavior.js";
 
 /*
  * Instantiation test

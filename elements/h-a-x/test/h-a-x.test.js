@@ -7,8 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/h-a-x.js";
-
+import "../h-a-x.js";
 /*
  * Instantiation test
  * create element and see if an attribute binds to the element

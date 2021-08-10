@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/mutation-observer-import-mixin.js";
+import "../mutation-observer-import-mixin.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/material-progress.js";
+import "../material-progress.js";
 
 /*
  * Instantiation test

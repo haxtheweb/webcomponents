@@ -401,24 +401,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: Object,
       },
       /**
-       * element align
-       */
-      elementAlign: {
-        type: String,
-      },
-      /**
-       * is hax tray collapsed, side-panel, or full-panel
-       */
-      trayStatus: {
-        type: String,
-      },
-      /**
-       * which panel is active int he tray: content-edit, view-source, etc.
-       */
-      trayDetail: {
-        type: String,
-      },
-      /**
        * Hax tray
        */
       haxTray: {

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/barcode-reader.js";
+import "../barcode-reader.js";
 
 /*
  * Instantiation test

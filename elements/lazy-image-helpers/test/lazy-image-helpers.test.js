@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lazy-image-helpers.js";
+import "../lazy-image-helpers.js";
 
 /*
  * Instantiation test

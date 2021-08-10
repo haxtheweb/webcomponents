@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lrndesign-paperstack.js";
+import "../lrndesign-paperstack.js";
 
 /*
  * Instantiation test

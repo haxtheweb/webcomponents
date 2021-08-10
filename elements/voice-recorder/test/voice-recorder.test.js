@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/voice-recorder.js";
+import "../voice-recorder.js";
 
 /*
  * Instantiation test

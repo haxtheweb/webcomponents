@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/json-editor.js";
+import "../json-editor.js";
 
 /*
  * Instantiation test

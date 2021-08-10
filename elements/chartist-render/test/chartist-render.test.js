@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/chartist-render.js";
+import "../chartist-render.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/rich-text-editor.js";
+import "../rich-text-editor.js";
 
 /*
  * Instantiation test

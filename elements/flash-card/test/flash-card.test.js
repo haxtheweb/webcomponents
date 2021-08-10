@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/flash-card.js";
+import "../flash-card.js";
 
 /*
  * Instantiation test

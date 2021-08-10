@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/a11y-tabs.js";
+import "../a11y-tabs.js";
 
 /*
  * Instantiation test

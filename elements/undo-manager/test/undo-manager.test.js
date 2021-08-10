@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/undo-manager.js";
+import "../undo-manager.js";
 
 /*
  * Instantiation test

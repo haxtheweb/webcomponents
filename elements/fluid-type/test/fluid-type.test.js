@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/fluid-type.js";
+import "../fluid-type.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/type-writer.js";
+import "../type-writer.js";
 
 /*
  * Instantiation test

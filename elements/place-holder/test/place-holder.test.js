@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/place-holder.js";
+import "../place-holder.js";
 
 /*
  * Instantiation test

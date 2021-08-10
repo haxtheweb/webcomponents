@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/item-overlay-ops.js";
+import "../item-overlay-ops.js";
 
 /*
  * Instantiation test

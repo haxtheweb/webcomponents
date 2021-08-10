@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/citation-element.js";
+import "../citation-element.js";
 
 /*
  * Instantiation test

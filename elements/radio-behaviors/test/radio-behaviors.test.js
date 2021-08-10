@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/radio-behaviors.js";
+import "../radio-behaviors.js";
 
 /*
  * Instantiation test

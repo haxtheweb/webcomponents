@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/dropdown-select.js";
+import "../dropdown-select.js";
 
 /*
  * Instantiation test

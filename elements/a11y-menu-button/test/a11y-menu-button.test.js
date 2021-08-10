@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/a11y-menu-button.js";
+import "../a11y-menu-button.js";
 
 /*
  * Instantiation test

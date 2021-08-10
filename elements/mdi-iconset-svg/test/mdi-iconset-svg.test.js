@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/mdi-iconset-svg.js";
+import "../mdi-iconset-svg.js";
 
 /*
  * Instantiation test

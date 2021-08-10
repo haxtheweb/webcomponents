@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/a11y-behaviors.js";
+import "../a11y-behaviors.js";
 
 /*
  * Instantiation test

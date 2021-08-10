@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/circle-progress.js";
+import "../circle-progress.js";
 
 /*
  * Instantiation test

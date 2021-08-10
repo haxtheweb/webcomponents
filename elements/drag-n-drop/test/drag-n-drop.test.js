@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/drag-n-drop.js";
+import "../drag-n-drop.js";
 
 /*
  * Instantiation test

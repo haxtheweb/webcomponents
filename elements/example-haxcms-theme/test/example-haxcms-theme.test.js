@@ -13,7 +13,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-await import("../src/example-haxcms-theme.js");
+import "../example-haxcms-theme.js";
 
 /*
  * Instantiation test

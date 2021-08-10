@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/iframe-loader.js";
+import "../iframe-loader.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/h5p-element.js";
+import "../h5p-element.js";
 
 /*
  * Instantiation test

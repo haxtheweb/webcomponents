@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/relative-heading.js";
+import "../relative-heading.js";
 
 /*
  * Instantiation test

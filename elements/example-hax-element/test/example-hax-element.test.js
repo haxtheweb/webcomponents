@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/example-hax-element.js";
+import "../example-hax-element.js";
 
 /*
  * Instantiation test

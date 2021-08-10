@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/learn-two-theme.js";
+import "../learn-two-theme.js";
 
 /*
  * Instantiation test

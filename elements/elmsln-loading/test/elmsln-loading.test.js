@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/elmsln-loading.js";
+import "../elmsln-loading.js";
 
 /*
  * Instantiation test

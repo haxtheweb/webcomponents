@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/wave-player.js";
+import "../wave-player.js";
 
 /*
  * Instantiation test

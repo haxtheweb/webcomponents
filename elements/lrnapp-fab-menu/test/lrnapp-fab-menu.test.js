@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lrnapp-fab-menu.js";
+import "../lrnapp-fab-menu.js";
 
 /*
  * Instantiation test

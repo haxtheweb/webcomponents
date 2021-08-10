@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/git-corner.js";
+import "../git-corner.js";
 
 /*
  * Instantiation test

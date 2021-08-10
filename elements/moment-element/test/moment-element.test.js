@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/moment-element.js";
+import "../moment-element.js";
 
 /*
  * Instantiation test

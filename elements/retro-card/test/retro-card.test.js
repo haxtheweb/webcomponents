@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/retro-card.js";
+import "../retro-card.js";
 
 /*
  * Instantiation test

@@ -13,7 +13,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-await import("../src/hax-body.js");
+import "../hax-body.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lrnsys-layout.js";
+import "../lrnsys-layout.js";
 
 /*
  * Instantiation test

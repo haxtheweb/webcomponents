@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/q-r.js";
+import "../q-r.js";
 
 /*
  * Instantiation test

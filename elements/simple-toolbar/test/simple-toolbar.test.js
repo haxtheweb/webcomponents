@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/simple-toolbar.js";
+import "../simple-toolbar.js";
 
 /*
  * Instantiation test

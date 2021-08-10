@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/promo-tile.js";
+import "../promo-tile.js";
 
 /*
  * Instantiation test

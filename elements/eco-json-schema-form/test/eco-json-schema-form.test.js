@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/eco-json-schema-form.js";
+import "../eco-json-schema-form.js";
 
 /*
  * Instantiation test

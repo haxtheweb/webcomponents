@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/hero-banner.js";
+import "../hero-banner.js";
 
 /*
  * Instantiation test

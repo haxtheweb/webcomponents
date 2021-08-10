@@ -13,7 +13,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-await import("../src/clean-two.js");
+import "../clean-two.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/paper-fab-speed-dial.js";
+import "../paper-fab-speed-dial.js";
 
 /*
  * Instantiation test

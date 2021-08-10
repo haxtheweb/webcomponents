@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/exif-data.js";
+import "../exif-data.js";
 
 /*
  * Instantiation test

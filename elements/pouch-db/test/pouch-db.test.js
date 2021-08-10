@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/pouch-db.js";
+import "../pouch-db.js";
 
 /*
  * Instantiation test

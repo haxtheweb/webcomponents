@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/absolute-position-behavior.js";
+import "../absolute-position-behavior.js";
 
 /*
  * Instantiation test

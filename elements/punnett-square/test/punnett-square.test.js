@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/punnett-square.js";
+import "../punnett-square.js";
 
 /*
  * Instantiation test

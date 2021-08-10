@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lrndesign-mapmenu.js";
+import "../lrndesign-mapmenu.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/music-player.js";
+import "../music-player.js";
 
 /*
  * Instantiation test

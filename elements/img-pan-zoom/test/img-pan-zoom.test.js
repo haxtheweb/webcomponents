@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/img-pan-zoom.js";
+import "../img-pan-zoom.js";
 
 /*
  * Instantiation test

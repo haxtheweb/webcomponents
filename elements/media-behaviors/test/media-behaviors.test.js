@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/media-behaviors.js";
+import "../media-behaviors.js";
 
 /*
  * Instantiation test

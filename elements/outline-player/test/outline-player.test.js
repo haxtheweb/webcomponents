@@ -13,7 +13,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-await import("../src/outline-player.js");
+import "../outline-player.js";
 
 /*
  * Instantiation test

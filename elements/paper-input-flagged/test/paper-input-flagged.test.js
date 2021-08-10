@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/paper-input-flagged.js";
+import "../paper-input-flagged.js";
 
 /*
  * Instantiation test

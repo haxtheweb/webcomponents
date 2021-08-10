@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/social-share-link.js";
+import "../social-share-link.js";
 
 /*
  * Instantiation test

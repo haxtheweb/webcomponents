@@ -36,9 +36,9 @@
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
-    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit"
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
   },
   "author": {
     "name": "ckleest"

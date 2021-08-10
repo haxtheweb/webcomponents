@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/scroll-button.js";
+import "../scroll-button.js";
 
 /*
  * Instantiation test

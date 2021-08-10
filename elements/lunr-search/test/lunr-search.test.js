@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lunr-search.js";
+import "../lunr-search.js";
 
 /*
  * Instantiation test

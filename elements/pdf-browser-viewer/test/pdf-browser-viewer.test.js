@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/pdf-browser-viewer.js";
+import "../pdf-browser-viewer.js";
 
 /*
  * Instantiation test

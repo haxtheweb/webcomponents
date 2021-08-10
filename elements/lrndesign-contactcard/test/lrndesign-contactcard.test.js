@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lrndesign-contactcard.js";
+import "../lrndesign-contactcard.js";
 
 /*
  * Instantiation test

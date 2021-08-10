@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/wikipedia-query.js";
+import "../wikipedia-query.js";
 
 /*
  * Instantiation test

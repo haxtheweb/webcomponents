@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/shadow-style.js";
+import "../shadow-style.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/lorem-data.js";
+import "../lorem-data.js";
 
 /*
  * Instantiation test

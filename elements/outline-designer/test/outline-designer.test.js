@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/outline-designer.js";
+import "../outline-designer.js";
 
 /*
  * Instantiation test

@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/unity-webgl.js";
+import "../unity-webgl.js";
 
 /*
  * Instantiation test

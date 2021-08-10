@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/replace-tag.js";
+import "../replace-tag.js";
 
 /*
  * Instantiation test

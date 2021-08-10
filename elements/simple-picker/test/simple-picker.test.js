@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/simple-picker.js";
+import "../simple-picker.js";
 
 /*
  * Instantiation test

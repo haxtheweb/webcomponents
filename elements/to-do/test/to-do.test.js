@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/to-do.js";
+import "../to-do.js";
 
 /*
  * Instantiation test

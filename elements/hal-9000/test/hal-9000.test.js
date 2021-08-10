@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/hal-9000.js";
+import "../hal-9000.js";
 
 /*
  * Instantiation test

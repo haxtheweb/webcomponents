@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/haxschema-builder.js";
+import "../haxschema-builder.js";
 
 /*
  * Instantiation test

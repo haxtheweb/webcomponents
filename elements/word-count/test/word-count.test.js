@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/word-count.js";
+import "../word-count.js";
 
 /*
  * Instantiation test

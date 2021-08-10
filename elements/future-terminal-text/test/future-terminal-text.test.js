@@ -7,7 +7,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/future-terminal-text.js";
+import "../future-terminal-text.js";
 
 /*
  * Instantiation test

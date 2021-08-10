@@ -195,8 +195,13 @@ class WysiwygHax extends LitElement {
   createRenderRoot() {
     return this;
   }
-  firstUpdated() {
-    this.querySelector("cms-hax").appendChild(this.__importContent);
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    if (this.__importContent) {
+      this.querySelector("cms-hax").appendChild(this.__importContent);
+    }
   }
   /**
    * HTMLElement
