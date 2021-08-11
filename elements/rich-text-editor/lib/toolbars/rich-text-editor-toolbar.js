@@ -1062,7 +1062,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ) {
         let nodes = [],
           getParentNode = (node) => {
-            if (node.tagName.toLowerCase() !== "rich-text-editor-highlight")
+            if (
+              (node.tagName || "").toLowerCase() !==
+              "rich-text-editor-highlight"
+            )
               nodes.push(node);
             if (node.parentNode && node.parentNode !== this.target)
               getParentNode(node.parentNode);

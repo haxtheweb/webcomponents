@@ -927,7 +927,7 @@ class SimplePicker extends LitElement {
       this.__options =
         typeof this.options === "string"
           ? JSON.parse(this.options)
-          : this.options.slice();
+          : this.options;
       //if nulls are allowed, set active descendant to first not null option
       this.__activeDesc = this.allowNull ? "option-0-0" : null;
       for (var i = 0; i < this.__options.length; i++) {
