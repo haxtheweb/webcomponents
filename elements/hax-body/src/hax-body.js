@@ -1338,7 +1338,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _onKeyPress(e) {
-    let next = this.activeNode.nextElementSibling;
+    let next =
+      this.activeNode && this.activeNode.nextElementSibling
+        ? this.activeNode.nextElementSibling
+        : null;
     if (e.key === "Enter")
       this.setActiveNode(this.activeNode.nextElementSibling);
     //needed so that you can add new paragraphs before and element

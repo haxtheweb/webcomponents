@@ -900,11 +900,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this._loadAppStoreData(this.__appStoreData);
         }, 0);
       }
-      if (
-        ["haxAutoloader", "activeHaxBody", "haxTray", "haxCancel"].includes(
-          propName
-        )
-      ) {
+      if (["haxAutoloader", "haxTray", "haxCancel"].includes(propName)) {
         // allow this to verify if everything is here or not
         clearTimeout(this.__storeReady);
         this.__storeReady = setTimeout(() => {
@@ -1797,7 +1793,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
+    this.haxAutoloader = null;
     this.activeHaxBody = null;
+    this.haxTray = null;
+    this.haxCancel = null;
     this.staxList = [];
     this.globalPreferences = {};
     this.activeApp = {};
@@ -2683,6 +2682,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // needed so that higher order things can respond to us having a body
       this.write("activeHaxBody", this.activeHaxBody, this);
       this.write("editMode", this.editMode, this);
+      // allow this to verify if everything is here or not
+      clearTimeout(this.__storeReady);
+      this.__storeReady = setTimeout(() => {
+        this._storePiecesAllHere(
+          this.haxAutoloader,
+          this.activeHaxBody,
+          this.haxTray,
+          this.haxCancel
+        );
+      }, 0);
     }
   }
 
