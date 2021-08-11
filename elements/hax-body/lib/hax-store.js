@@ -407,6 +407,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: Object,
       },
       /**
+       * Hax cancel dialog
+       */
+      haxCancel: {
+        type: Object,
+      },
+      /**
        * Hax autoloader element.
        */
       haxAutoloader: {
@@ -894,7 +900,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this._loadAppStoreData(this.__appStoreData);
         }, 0);
       }
-      if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
+      if (
+        ["haxAutoloader", "activeHaxBody", "haxTray", "haxCancel"].includes(
+          propName
+        )
+      ) {
         // allow this to verify if everything is here or not
         clearTimeout(this.__storeReady);
         this.__storeReady = setTimeout(() => {
@@ -1016,15 +1026,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         })
       );
-      // associate the cancel button in the tray to the dialog
-      HAXStore.haxCancel.shadowRoot
-        .querySelector("#dialog")
-        .associateEvents(haxTray.shadowRoot.querySelector("#haxcancelbutton"));
-      if (!!HAXStore.haxCancel.shadowRoot.querySelector("#dialog")) {
-        window.addEventListener(
-          "simple-modal-confirmed",
-          this._handleConfirmCancel.bind(this)
-        );
+      // these operations can be hidden in CMS environments
+      if (haxTray.shadowRoot.querySelector("#haxcancelbutton")) {
+        // associate the cancel button in the tray to the dialog
+        haxCancel.shadowRoot
+          .querySelector("#dialog")
+          .associateEvents(
+            haxTray.shadowRoot.querySelector("#haxcancelbutton")
+          );
+        if (!!haxCancel.shadowRoot.querySelector("#dialog")) {
+          window.addEventListener(
+            "simple-modal-confirmed",
+            this._handleConfirmCancel.bind(this)
+          );
+        }
       }
       this.ready = true;
       // register built in primitive definitions

@@ -5,6 +5,7 @@ body, html, :root {
   --paper-toast-color: #FFFFFF;
   --paper-toast-background-color: var(--haxcms-system-bg, #000000);
   --simple-modal-titlebar-color: #FFFFFF;
+  --simple-modal-z-index: 10000000;
   --simple-modal-titlebar-background: var(--haxcms-system-bg);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
@@ -88,6 +89,10 @@ body, html, :root {
 
   /** placeholder **/
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
+}
+
+hax-tray {
+  position: absolute;
 }
 
 @media print {

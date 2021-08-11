@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
+
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
@@ -14,15 +16,20 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  *
  * @demo demo/index.html
  */
-class SiteModal extends LitElement {
+class SiteModal extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
+
       css`
         :host {
           display: block;
+        }
+        :host([disabled]) {
+          pointer-events: none;
         }
         simple-icon-button-lite {
           color: var(--site-modal-icon-color);
@@ -48,11 +55,13 @@ class SiteModal extends LitElement {
     this.icon = "icons:menu";
     this.buttonLabel = "Open dialog";
     this.position = "bottom";
+    this.disabled = false;
   }
   // render function
   render() {
     return html`
       <simple-icon-button-lite
+        .part="${this.editMode ? `edit-mode-active` : ``}"
         ?disabled="${this.editMode}"
         id="btn"
         @click="${this.fireEvent}"
@@ -79,6 +88,7 @@ class SiteModal extends LitElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       disabled: {
         type: Boolean,
         reflect: true,
@@ -106,6 +116,9 @@ class SiteModal extends LitElement {
     };
   }
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot
       .querySelector("#smt")
       .associateEvents(this.shadowRoot.querySelector("#btn"));

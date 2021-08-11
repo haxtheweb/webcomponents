@@ -190,7 +190,6 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           pointer-events: none;
           overflow: hidden;
-          right: -1000px;
           top: 0;
           bottom: 0;
           width: var(--hax-tray-width);
