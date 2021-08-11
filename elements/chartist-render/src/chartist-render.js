@@ -267,9 +267,11 @@ const ChartistRenderSuper = function (SuperClass) {
      */
     _getChart() {
       let chart = null,
-        target = this.shadowRoot.querySelector("#chart");
+        target = this.shadowRoot
+          ? this.shadowRoot.querySelector("#chart")
+          : undefined;
 
-      if (target !== null && typeof Chartist === "object" && this.chartData) {
+      if (!!target && typeof Chartist === "object" && this.chartData) {
         if (this.type == "bar") {
           if (
             this.responsiveOptions !== undefined &&

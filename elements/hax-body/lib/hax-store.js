@@ -2267,10 +2267,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // table tag which has a custom editing interface
     let table = {
       type: "element",
-      editingElement: {
-        tag: "editable-table",
-        import: "@lrnwebcomponents/editable-table/editable-table.js",
-      },
       canScale: true,
       canPosition: true,
       canEditSource: true,

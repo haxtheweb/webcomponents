@@ -265,8 +265,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (["shortcutKeys", "tagsList", "tagClickCallback"].includes(propName))
           this.updateButtonRegistry();
       });
-      if (this.tag === "rich-text-editor-heading-picker")
-        console.log("disabled", this, this.disabled);
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for

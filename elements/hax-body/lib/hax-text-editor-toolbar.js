@@ -483,6 +483,23 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ? this.querySelector(this.formatButton.type)
       : undefined;
   }
+
+  /**
+   * determines if current range is in scope of the target
+   * overrides default behavior so that the entire target can be selected
+   *
+   * @readonly
+   */
+  get isRangeInScope() {
+    return (
+      this.range &&
+      this.target &&
+      this.rangeNodeOrParentNode(this.range) &&
+      (this.range.commonAncestorContainer === this.target ||
+        this.target.contains(this.range.commonAncestorContainer))
+    );
+  }
+
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     if (this.__ready) {
