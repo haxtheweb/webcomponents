@@ -2109,7 +2109,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "Figurecaption",
+        title: "Figure caption",
         description: "Used inside of a figure tag",
         icon: "image:image",
         color: "blue-grey",

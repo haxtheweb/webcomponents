@@ -20,6 +20,7 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
+import "./hax-app-browser.js";
 import "./hax-gizmo-browser.js";
 import "./hax-gizmo-browser.js";
 import "./hax-view-source.js";
