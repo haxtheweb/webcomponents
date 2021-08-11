@@ -198,8 +198,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     icon="icons:arrow-forward"
                     show-text-label
                     role="menuitem"
-                    data-slot="${slot}"
-                    @click="${(e) => this._handleMoveSlot(slot)}"
+                    data-slot="${slot.slot}"
+                    event-name="move-to-slot"
                     label="${slot.title || slot.slot}"
                   ></hax-context-item>
                 </simple-toolbar-menu-item>
@@ -475,9 +475,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       slots = layout.split("-");
     slots = slots.map((col, num) => slotConfig(num + 1));
     return slots;
-  }
-  _handleMoveSlot(slot) {
-    this.activeNode.slot = slot.slot;
   }
   __updatePlatePosition(active) {
     let right = this.shadowRoot.querySelector("#right");

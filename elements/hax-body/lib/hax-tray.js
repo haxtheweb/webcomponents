@@ -1353,17 +1353,6 @@ class HaxTray extends I18NMixin(
       this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
-      if (isGrid) {
-        props.settings.configure = (props.settings.configure || []).filter(
-          (prop) => !prop.slot
-        );
-        props.settings.layout = (props.settings.layout || []).filter(
-          (prop) => !prop.slot
-        );
-        props.settings.advanced = (props.settings.advanced || []).filter(
-          (prop) => !prop.slot
-        );
-      }
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
           props.settings.configure[key].property =
@@ -1427,7 +1416,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "configure",
           title: this.t.configure,
-          properties: props.settings.configure,
+          properties: !isGrid
+            ? props.settings.configure
+            : props.settings.configure.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1441,7 +1432,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "layout",
           title: this.t.layout,
-          properties: props.settings.layout,
+          properties: !isGrid
+            ? props.settings.layout
+            : props.settings.layout.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1455,7 +1448,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "advanced",
           title: this.t.advanced,
-          properties: props.settings.advanced,
+          properties: !isGrid
+            ? props.settings.advanced
+            : props.settings.advanced.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
