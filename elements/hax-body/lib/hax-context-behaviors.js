@@ -20,7 +20,6 @@ export const HaxContextBehaviors = function (SuperClass) {
         css`
           :host {
             display: block;
-            pointer-events: none;
             --hax-ui-spacing-sm: 1px;
             max-width: 100%;
           }
