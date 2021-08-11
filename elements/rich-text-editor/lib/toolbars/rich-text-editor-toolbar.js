@@ -859,6 +859,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     /**
+     * determines if current range is in scope of the target
+     *
+     * @readonly
+     */
+    get isRangeInScope() {
+      return (
+        this.range &&
+        this.target &&
+        this.rangeNodeOrParentNode(this.range) &&
+        this.target.contains(this.rangeNodeOrParentNode(this.range))
+      );
+    }
+
+    /**
      * cancels edits to active editor
      * @returns {void}
      * @event cancel
@@ -1054,12 +1068,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _updateButtonRanges() {
-      if (
-        this.range &&
-        this.target &&
-        this.rangeNodeOrParentNode(this.range) &&
-        this.target.contains(this.rangeNodeOrParentNode(this.range))
-      ) {
+      if (this.isRangeInScope) {
         let nodes = [],
           getParentNode = (node) => {
             if (
