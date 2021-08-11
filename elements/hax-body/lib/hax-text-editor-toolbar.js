@@ -503,7 +503,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
 
   updateBlocks() {
     let filter = this.filteredBlocks;
-    console.log("updated", filter);
     if (
       this.formatButtonElement &&
       this.formatButtonElement.blocks !== filter
