@@ -363,6 +363,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
+      console.log("click", e);
       this.sendCommand(e);
     }
 

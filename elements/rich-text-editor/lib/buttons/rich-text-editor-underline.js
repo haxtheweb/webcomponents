@@ -42,7 +42,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.fields = [
       {
         property: "confirm",
-        title: "Underline (not recommended)",
+        title: "Apply underline (not recommended)",
         description:
           "Underlines can be confused with links. Use italics instead.",
         inputMethod: "boolean",
@@ -75,6 +75,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    * @memberof RichTextEditorUnderline
    */
   getValue() {
+    console.log("value", { confirm: !!this.toggled });
     return { confirm: !!this.toggled };
   }
   /**
@@ -84,6 +85,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    */
   setToggled() {
     this.toggled = !!this.getPropValue("confirm");
+    console.log("underline this?", this.toggled);
   }
 }
 window.customElements.define(
