@@ -184,6 +184,16 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
       return !!this.icon ? "hide" : "show";
     }
 
+    get picker() {
+      return this.shadowRoot && this.shadowRoot.querySelector("#button")
+        ? this.shadowRoot.querySelector("#button")
+        : undefined;
+    }
+
+    get expanded() {
+      return this.picker && this.picker.expanded;
+    }
+
     /**
      * handles picker focus
      * @param {event} e the button tap event
@@ -251,7 +261,6 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
       let val = this._getSelectionType() || "",
         parent = this.__highlight.parentNode;
       this.commandVal = e.detail.value || "";
-
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
         this.sendCommand();

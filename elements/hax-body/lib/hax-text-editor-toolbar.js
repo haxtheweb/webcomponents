@@ -487,7 +487,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (super.updated) super.updated(changedProperties);
     if (this.__ready) {
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "parentSchema" || propName === "range")
+        if (propName === "parentSchema" || propName === "target")
           this.updateBlocks();
         if (propName === "activeNode" && this.activeNode !== oldValue)
           this.setTarget(this.activeNode);
@@ -502,20 +502,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   updateBlocks() {
-    let currentTag =
-      !!this.formatButtonElement &&
-      !!this.formatButtonElement.rangeOrMatchingAncestor &&
-      !!this.formatButtonElement.rangeOrMatchingAncestor()
-        ? this.formatButtonElement.rangeOrMatchingAncestor().tagName
-        : undefined;
-
+    let filter = this.filteredBlocks;
     if (
       this.formatButtonElement &&
-      this.formatButtonElement.blocks !== this.filteredBlocks
+      this.formatButtonElement.blocks !== filter
     ) {
-      this.formatButtonElement.blocks = this.filteredBlocks;
-      this.formatButtonElement.value = (currentTag || "").toLowerCase();
-      if (this.filteredBlocks.length < 2) {
+      this.formatButtonElement.blocks = filter;
+      if (filter.length < 2) {
         this.formatButtonElement.setAttribute("disabled", "disabled");
       } else {
         this.formatButtonElement.removeAttribute("disabled");

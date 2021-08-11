@@ -2332,11 +2332,39 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }, 0);
   }
   /**
+   * ensures that all slots in a grid follow the expected order
+   * @param {object} grid
+   * @returns
+   */
+  sortGridSlots(grid = this.activeNode) {
+    let schema = HAXStore.haxSchemaFromTag(grid.tagName);
+    if (schema.type !== "grid") return;
+    let slots =
+      grid.tagName === "GRID-PLATE"
+        ? grid.layout.split("-").map((col, i) => `col-${i}`)
+        : HAXStore.slotsFromSchema(schema).map((slot) => slot.slot);
+    slots.reverse().forEach((slot, i) => {
+      if (i == 0) {
+        grid
+          .querySelectorAll(`[slot=${slot}]`)
+          .forEach((node) => grid.append(node));
+      } else {
+        [...grid.querySelectorAll(`[slot=${slot}]`)]
+          .reverse()
+          .forEach((node) => grid.insertBefore(node, grid.firstChild));
+      }
+    });
+  }
+  /**
    * Respond to hax operations.
    */
   async _haxContextOperation(e) {
     let detail = e.detail,
-      eventPath = normalizeEventPath(e);
+      eventPath = normalizeEventPath(e),
+      slot =
+        !eventPath || !eventPath[0]
+          ? undefined
+          : eventPath[0].getAttribute("data-slot");
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
@@ -2351,11 +2379,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "insert-below-active":
         this.haxInsert("p", "", {});
         break;
+      case "move-to-slot":
+        if (
+          slot &&
+          this.activeNode &&
+          HAXStore.isGridPlateElement(this.activeNode.parentNode)
+        ) {
+          this.activeNode.slot = slot;
+          this.sortGridSlots(this.activeNode.parentNode);
+        }
+        break;
       case "insert-into-active":
-        let slot =
-          !eventPath || !eventPath[0]
-            ? undefined
-            : eventPath[0].getAttribute("data-slot");
         if (
           slot &&
           this.activeNode &&
@@ -2366,6 +2400,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode.append(p);
           this.haxInsert("p", "", { slot: slot }, p);
           p.remove();
+          this.sortGridSlots();
         }
         break;
       case "select-parent-grid":

@@ -20,7 +20,6 @@ export const HaxContextBehaviors = function (SuperClass) {
         css`
           :host {
             display: block;
-            pointer-events: none;
             --hax-ui-spacing-sm: 1px;
             max-width: 100%;
           }
@@ -162,16 +161,6 @@ export const HaxContextBehaviors = function (SuperClass) {
           allowExcept = !!excluded && excluded.includes(tag),
           //show only if tag is not excluded and is either part of allow any or allow only
           show = !allowExcept && (allowAny || allowOnly);
-        if (this.tag == "hax-plate-context")
-          console.log(
-            tag,
-            wrapper,
-            excluded,
-            allowAny,
-            allowOnly,
-            allowExcept,
-            show
-          );
         return show;
       });
     }

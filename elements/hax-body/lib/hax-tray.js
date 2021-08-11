@@ -1352,6 +1352,7 @@ class HaxTray extends I18NMixin(
       this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
       this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
+      let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
           props.settings.configure[key].property =
@@ -1415,7 +1416,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "configure",
           title: this.t.configure,
-          properties: props.settings.configure,
+          properties: !isGrid
+            ? props.settings.configure
+            : props.settings.configure.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1429,7 +1432,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "layout",
           title: this.t.layout,
-          properties: props.settings.layout,
+          properties: !isGrid
+            ? props.settings.layout
+            : props.settings.layout.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1443,7 +1448,9 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "advanced",
           title: this.t.advanced,
-          properties: props.settings.advanced,
+          properties: !isGrid
+            ? props.settings.advanced
+            : props.settings.advanced.filter((prop) => !prop.slot),
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1514,6 +1521,7 @@ class HaxTray extends I18NMixin(
   __valueChangedEvent(e) {
     if (this.editMode && e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
+      let isGrid = e.detail.value.type && e.detail.value.type == "grid";
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",
@@ -1601,7 +1609,7 @@ class HaxTray extends I18NMixin(
                   console.warn(e);
                   setAhead = false;
                 }
-              } else {
+              } else if (!isGrid) {
                 // need to specifically walk through slots if there is anything
                 // that says it has to come from a slot
                 for (var propTmp in this.__activePropSchema.settings[key]) {

@@ -51,10 +51,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPromptButtonBehaviors
-   * to set custom gizmo property and slot values
-   *
-   * @memberof HaxTextEditorButton
+   * updates element based on hax properties of element
    */
   updateElement() {
     let el = this.element || {},
@@ -73,8 +70,6 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.icon = gizmo.icon || "add";
     this.label = gizmo.title || `Add ${gizmo.tag}`;
     this.value = this.getValue(undefined);
-    // @note - Nikki, this is non-operational and I'm not sure how to resolve
-    this.updateButton();
   }
 
   /**
