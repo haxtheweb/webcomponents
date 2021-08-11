@@ -20,6 +20,7 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
+import "./hax-app-browser.js";
 import "./hax-gizmo-browser.js";
 import "./hax-gizmo-browser.js";
 import "./hax-view-source.js";
@@ -190,7 +191,6 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           pointer-events: none;
           overflow: hidden;
-          right: -1000px;
           top: 0;
           bottom: 0;
           width: var(--hax-tray-width);

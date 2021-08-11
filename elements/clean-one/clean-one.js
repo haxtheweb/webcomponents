@@ -466,7 +466,7 @@ class CleanOne extends HAXCMSRememberRoute(
           :host([color-theme="1"]) .site-header .btn:hover,
           :host([color-theme="1"]) .site-header .btn:focus,
           :host([color-theme="1"]) .site-header .btn:active {
-            color: #eee8e0;
+            color: #704214;
             background: none;
           }
           :host([color-theme="1"]) site-active-title {
@@ -504,6 +504,11 @@ class CleanOne extends HAXCMSRememberRoute(
           :host([color-theme="2"]) .site-body .navigation:active {
             color: #fffff5;
           }
+          :host([color-theme="2"]) #site-search-input {
+            color: #fffff5;
+            background-color: #383f52;
+          }
+          
           /*
           * Theme 1
           */
@@ -532,6 +537,10 @@ class CleanOne extends HAXCMSRememberRoute(
             color: #704214;
             background: transparent;
             font-weight: normal;
+          }
+          :host([color-theme="1"]) #site-search-input {
+            color: #afa790;
+            background-color: #111111;
           }
           /*
           * Theme 2
@@ -602,6 +611,9 @@ class CleanOne extends HAXCMSRememberRoute(
             height: auto;
             width: auto;
             font-size: inherit;
+          }
+          :host([color-theme="0"]) #site-search-input {
+            color: #252737;
           }
           :host([color-theme="0"]) site-search {
             color: #252737;

@@ -142,12 +142,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
-        :host([edit-mode]) #bodycontainer {
-          margin: 100px var(--hax-tray-width) 0 0;
-        }
-        :host([edit-mode][element-align="left"]) #bodycontainer {
-          margin: 100px 0 0 var(--hax-tray-width);
-        }
         :host([edit-mode][tray-status="full-panel"]) #bodycontainer {
           display: none;
         }
@@ -1344,7 +1338,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _onKeyPress(e) {
-    let next = this.activeNode.nextElementSibling;
+    let next =
+      this.activeNode && this.activeNode.nextElementSibling
+        ? this.activeNode.nextElementSibling
+        : null;
     if (e.key === "Enter")
       this.setActiveNode(this.activeNode.nextElementSibling);
     //needed so that you can add new paragraphs before and element

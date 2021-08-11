@@ -107,7 +107,9 @@ const ReplaceTagSuper = function (SuperClass) {
         let ratio = Number(entry.intersectionRatio).toFixed(2);
         // ensure ratio is higher than our limit before trigger visibility
         if (ratio >= 0.25) {
-          this.intersectionObserver.disconnect();
+          if (this.intersectionObserver) {
+            this.intersectionObserver.disconnect();
+          }
           this.intersectionObserver = null;
           this.runReplacement();
         }

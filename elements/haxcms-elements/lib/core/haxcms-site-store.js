@@ -485,10 +485,33 @@ class Store {
         }
         return true;
       });
-    } else {
-      return null;
     }
+    return null;
   }
+  /**
+   * shortcut to find an item in the manifest based on id
+   */
+  async findItemAsObject(id, attrLookup = "id", scope = "item") {
+    if (this.manifest && id) {
+      const tmpItem = toJS(
+        await this.manifest.items.find((item) => {
+          if (item[attrLookup] !== id) {
+            return false;
+          }
+          return true;
+        })
+      );
+      if (scope == "item") {
+        return tmpItem;
+      } else if (scope == "parent" && tmpItem.parent) {
+        return toJS(
+          await this.manifest.items.find((d) => tmpItem.parent === d.id)
+        );
+      }
+    }
+    return null;
+  }
+
   /**
    * Spider children based on criteria and return what we found
    */

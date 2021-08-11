@@ -7,6 +7,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -32,8 +33,8 @@ class SiteSearch extends LitElement {
           display: block;
           background-color: var(--site-search-result-background-color, #eeeeee);
           color: var(--site-search-result-color, #222222);
-          margin-bottom: 1.5rem;
-          padding-bottom: 0.5rem;
+          padding: 12px;
+          margin: 4px 0;
         }
         .result:hover,
         .result:focus {
@@ -43,8 +44,7 @@ class SiteSearch extends LitElement {
           );
           color: var(--site-search-link-color-hover, #000000);
           text-decoration: none;
-          outline: 2px solid grey;
-          outline-offset: 4px;
+          outline: 4px solid grey;
         }
         .result .title {
           font-size: 28px;
@@ -57,6 +57,11 @@ class SiteSearch extends LitElement {
         }
         simple-datetime {
           color: var(--site-search-link-color, #444444);
+        }
+        simple-icon-lite {
+          --simple-icon-height: 12px;
+          --simple-icon-width: 12px;
+          vertical-align: baseline;
         }
         .result .link-text {
           font-size: 12px;
@@ -142,7 +147,19 @@ class SiteSearch extends LitElement {
                 >${item.created}</simple-datetime
               >
             </div>
-            <p>${item.description}..</p>
+            ${item.breadcrumb
+              ? html`<div>
+                  ${item.breadcrumb.map(
+                    (crumb, i) =>
+                      html`${i != 0
+                        ? html`<simple-icon-lite
+                            icon="icons:chevron-right"
+                          ></simple-icon-lite>`
+                        : ``}${crumb.title}`
+                  )}
+                </div>`
+              : ``}
+            <div>${item.description}..</div>
           </a>
         `
       )}
@@ -168,12 +185,40 @@ class SiteSearch extends LitElement {
   _searchValueChanged(e) {
     this.search = e.detail.value;
   }
-  __resultsChanged(e) {
+  async __resultsChanged(e) {
     if (e.detail.value) {
       setTimeout(() => {
         this.whileLoading = false;
       }, 100);
-      this.__results = [...e.detail.value];
+      let results = e.detail.value;
+      await results.map(async (item) => {
+        let fullItem = await store.findItemAsObject(
+          item.location,
+          "slug",
+          "item"
+        );
+        var breadcrumb = [
+          {
+            title: fullItem.title,
+          },
+        ];
+        let itemBuilder = fullItem;
+        // walk back through parent tree
+        while (itemBuilder && itemBuilder.parent != null) {
+          itemBuilder = await store.manifest.items.find(
+            (i) => i.id == itemBuilder.parent
+          );
+          // double check structure is sound
+          if (itemBuilder) {
+            breadcrumb.unshift({
+              title: itemBuilder.title,
+            });
+          }
+        }
+        item.breadcrumb = breadcrumb;
+      });
+
+      this.__results = [...results];
     } else {
       this.__results = [];
     }
