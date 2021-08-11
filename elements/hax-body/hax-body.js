@@ -142,12 +142,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
-        :host([edit-mode]) #bodycontainer {
-          margin: 100px var(--hax-tray-width) 0 0;
-        }
-        :host([edit-mode][element-align="left"]) #bodycontainer {
-          margin: 100px 0 0 var(--hax-tray-width);
-        }
         :host([edit-mode][tray-status="full-panel"]) #bodycontainer {
           display: none;
         }
