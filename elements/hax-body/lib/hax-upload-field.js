@@ -44,6 +44,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       var type = HAXStore.guessGizmoType(values);
       // find targets that support this type
       let targets = HAXStore.getHaxAppStoreTargets(type);
+      console.log(targets);
       // make sure we have targets
       if (targets.length === 1) {
         this._haxAppPickerSelection({ detail: targets[0] });
