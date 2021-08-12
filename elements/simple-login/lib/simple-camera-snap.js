@@ -53,20 +53,22 @@ class SimpleCameraSnap extends HTMLElement {
         margin: 0;
         display: flex;
         justify-content: center;
+        width: 100%;
+        overflow: hidden;
       }
       #snap {
         color: var(--simple-camera-snap-color, #36bed4);
         background-color: var(--simple-camera-snap-background, white);
         border-radius: var(--simple-camera-snap-button-border-radius);
         opacity: var(--simple-camera-snap-button-opacity);
-
       }
       .has-snap {
         z-index: 3;
       }
       #selfie img {
-        z-index: 2;
-        position: absolute;
+        z-index: 2;        
+        width: calc(177.77777777777% / var(--simple-login-camera-aspect, 1));
+        background-color: rgba(0, 0, 0, 0);
       }
       .buttons {
         display: flex;
