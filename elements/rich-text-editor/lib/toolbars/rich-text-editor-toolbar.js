@@ -250,6 +250,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a unlink button
+     *
+     * @readonly
+     */
+    get unlinkButton() {
+      return {
+        icon: "mdextra:unlink",
+        label: "Remove Link",
+        type: "rich-text-editor-unlink",
+      };
+    }
+    /**
      * default config for a link button group: link
      *
      * @readonly
@@ -258,7 +270,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         type: "button-group",
         subtype: "link-button-group",
-        buttons: [this.linkButton],
+        buttons: [this.linkButton, this.unlinkButton],
       };
     }
     /**
@@ -758,6 +770,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js");
       this.config = this.defaultConfig;
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";

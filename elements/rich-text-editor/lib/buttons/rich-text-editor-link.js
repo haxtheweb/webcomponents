@@ -58,7 +58,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.icon = "link";
     this.label = "Link";
     this.toggledCommand = "unlink";
-    this.toggledIcon = "link";
     this.toggledLabel = "Edit link";
     this.toggles = "true";
     this.tagsList = "a";

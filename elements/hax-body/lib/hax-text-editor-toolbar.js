@@ -132,6 +132,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       strikethroughButton: "Cross out",
       removeFormatButton: "Remove format",
       linkButton: "Link",
+      linkButton: "Remove Link",
       cutButton: "Cut",
       copyButton: "Copy",
       pasteButton: "Paste",
@@ -296,6 +297,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.linkButton,
       label: this.t.linkButton,
+    };
+  }
+  /**
+   * default config for a link button
+   *
+   * @readonly
+   */
+  get unlinkButton() {
+    return {
+      ...super.unlinkButton,
+      label: this.t.unlinkButton,
     };
   }
   /**
@@ -516,6 +528,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.config = this.updateToolbarElements();
+    this.__prompt.haxUIElement = true;
+    this.__prompt.classList.add("ignore-activation");
   }
 
   updateBlocks() {

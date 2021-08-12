@@ -105,10 +105,11 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         "redo",
         "removeFormat",
         "selectAll",
-        "strikethrough",
+        "strikeThrough",
         "styleWithCss",
         "subscript",
         "superscript",
+        "underline",
         "undo",
         "unlink",
         "useCSS",
@@ -573,7 +574,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       let toolbar = this.__toolbar,
         target = toolbar.target;
       if (this.validCommands.includes(command)) {
-        commandVal = toolbar ? toolbar.sanitizeHTML(commandVal) : commandVal;
+        commandVal =
+          toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
         if (this.__highlight.parentNode === document.body)
           this.__highlight.wrap(range);
         this.__highlight.unwrap(range);
