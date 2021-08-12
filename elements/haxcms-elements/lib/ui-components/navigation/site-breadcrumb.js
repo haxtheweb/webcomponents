@@ -19,12 +19,12 @@ class SiteBreadcrumb extends LitElement {
       css`
         :host {
           display: block;
-          font-size: 16px;
+          font-size: var(--site-breadcrumb-font-size, 16px);
           color: var(--site-breadcrumb-color, #383f45);
         }
         a {
           display: inline-flex;
-          font-size: 16px;
+          font-size: var(--site-breadcrumb-font-size, 16px);
           color: inherit;
           display: inline-flex;
           padding: 0 8px 0 0;
@@ -34,7 +34,7 @@ class SiteBreadcrumb extends LitElement {
         button {
           margin: 0;
           padding: 0;
-          font-size: 16px;
+          font-size: var(--site-breadcrumb-font-size, 16px);
           font-family: inherit;
           min-width: unset;
           display: inline-flex;
@@ -56,7 +56,7 @@ class SiteBreadcrumb extends LitElement {
         }
         span {
           margin: 0;
-          font-size: 16px;
+          font-size: var(--site-breadcrumb-font-size, 16px);
           padding: 0 8px 0 0;
           height: 24px;
           display: inline-flex;
