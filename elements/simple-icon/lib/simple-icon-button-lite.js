@@ -63,6 +63,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             padding: var(--simple-icon-button-padding, 0px);
             margin: 0px;
             width: 100%;
+            height: 100%;
           }
           button[aria-pressed] {
             opacity: var(--simple-icon-button-toggled-opacity, 1);

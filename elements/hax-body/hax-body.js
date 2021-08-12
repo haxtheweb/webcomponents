@@ -3064,7 +3064,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (slot) target.setAttribute("slot", slot);
   }
   async __sortLayoutChildren(layout) {
-    layout.setAttribute("hax-layour-sorting", true);
+    layout.setAttribute("hax-layout-sorting", true);
     try {
       // select all direct children w/ a slot attribute and convert to an Array
       let children = Array.prototype.reduce.call(
@@ -3094,7 +3094,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } catch (error) {
       console.warn(error);
     }
-    layout.removeAttribute("hax-layour-sorting");
+    layout.removeAttribute("hax-layout-sorting");
   }
   /**
    * Validate the slot name
@@ -3138,7 +3138,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         slot.addEventListener("slotchange", events.slotchange)
       );
       layout.haxLayoutObserver = new MutationObserver((mutations) => {
-        if (!layout.getAttribute("hax-layour-sorting")) {
+        if (!layout.getAttribute("hax-layout-sorting")) {
           mutations.forEach((mutation) => {
             // this implies something was added dynamically or drag and drop
             // from outside this element or dragging between grid plates
