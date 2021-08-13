@@ -168,7 +168,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         #topcontext {
           z-index: calc(var(--hax-ui-focus-z-index) - 2);
           min-width: 280px;
-          transition: z-index 0s;
         }
         #topcontextmenu {
           width: auto;
@@ -182,7 +181,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         .hax-context-menu:hover {
           z-index: calc(var(--hax-ui-focus-z-index) + 1);
-          transition: z-index 0s;
+          transition: 0s z-index ease-in-out;
         }
         .hax-context-visible,
         .hax-context-menu-active {
@@ -1345,7 +1344,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.activeNode && this.activeNode.nextElementSibling
         ? this.activeNode.nextElementSibling
         : null;
-    if (e.key === "Enter")
+    if (next && e.key === "Enter")
       this.setActiveNode(this.activeNode.nextElementSibling);
     //needed so that you can add new paragraphs before and element
     setTimeout(() => {
