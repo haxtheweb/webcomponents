@@ -112,7 +112,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
               label="Cancel"
               icon="clear"
               @click="${this._cancel}"
-              tabindex="0"
             >
             </simple-toolbar-button>
             <simple-toolbar-button
@@ -121,7 +120,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
               @click="${this._confirm}"
               icon="check"
               label="OK"
-              tabindex="0"
             >
             </simple-toolbar-button>
           </div>
