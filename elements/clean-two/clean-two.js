@@ -8,6 +8,8 @@ import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -197,7 +199,9 @@ class CleanTwo extends HAXCMSRememberRoute(
           flex: auto;
           margin: 0;
           background-color: white;
-          --site-active-title-line-height: 1em;
+        }
+        site-active-title h1 {
+          margin: 0;
         }
         
         .body-wrapper {
@@ -506,6 +510,10 @@ class CleanTwo extends HAXCMSRememberRoute(
           padding: 8px;
           display: block;
           margin-left: -52px;
+          width: 36px;
+        }
+        site-breadcrumb {
+          --site-breadcrumb-font-size: 12px;
         }
       `,
     ];
@@ -583,8 +591,8 @@ class CleanTwo extends HAXCMSRememberRoute(
               ?hidden="${this.searchTerm != "" ? false : true}"
             ></site-search>
             <main>
-              <replace-tag with="site-active-title" import-only></replace-tag>
-              <site-active-title></site-active-title>
+              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+              <site-active-title part="page-title"></site-active-title>
               <article
                 id="contentcontainer"
                 ?hidden="${this.searchTerm != "" ? true : false}"

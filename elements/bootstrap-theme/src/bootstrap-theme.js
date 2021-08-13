@@ -92,7 +92,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         /* menu styles */
         :host([menu-open]) .menu-outline {
           left: 0;
-          padding: 0 24px;
+          padding: 0 8px;
         }
 
         /* logged in responsiveness */
