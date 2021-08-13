@@ -23,15 +23,17 @@ class LrnappStudioDashboard extends PolymerElement {
         .dashboard-row {
           width: 100%;
           display: inline-flex;
-          margin-top: 16px;
+          justify-content: space-evenly;
         }
-        .dashboard-item {
-          width: 35%;
+        h2 {
+          font-size: 32px;
+          margin: 8px;
+          text-align: center;
         }
       </style>
       <h1 class="title">Welcome back [[username]]!</h1>
       <div class="dashboard-row">
-        <div heading="Your active project" class="dashboard-item card">
+        <div class="dashboard-item card">
           <h2>Recent project</h2>
           <div class="card-content">
             <lrnapp-block-recent-project
