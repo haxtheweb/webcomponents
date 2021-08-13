@@ -101,7 +101,6 @@ class HAX extends HTMLElement {
       padding-bottom: unset;
     }
     hax-body table {
-      width: 100%;
       min-width: 300px;
       border-collapse: collapse;
       margin: 0 0 15px;
