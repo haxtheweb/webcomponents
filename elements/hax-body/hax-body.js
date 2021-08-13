@@ -166,12 +166,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-body-possible-target-background-color: inherit;
         }
         #topcontext {
-          z-index: var(--hax-ui-focus-z-index);
+          z-index: calc(var(--hax-ui-focus-z-index) - 2);
           min-width: 280px;
+          transition: z-index 0s;
         }
         #topcontextmenu {
-          width: 100%;
-          z-index: var(--hax-ui-focus-z-index);
+          width: auto;
+          max-width: 100%;
           position: absolute;
           bottom: 0;
         }
@@ -180,7 +181,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           z-index: 1;
         }
         .hax-context-menu:hover {
-          z-index: calc(1 + var(--hax-ui-focus-z-index));
+          z-index: calc(var(--hax-ui-focus-z-index) + 1);
+          transition: z-index 0s;
         }
         .hax-context-visible,
         .hax-context-menu-active {
@@ -410,6 +412,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
     };
@@ -3116,7 +3119,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
   __applyDragDropState(layout, haxRay) {
     let events = {
-      drop: (e) => this.__layoutDropEvent(e, layout).bind(this),
+      drop: (e) => this.__layoutDropEvent.bind(this)(e, layout),
       dragenter: this.__layoutDragEnter.bind(this),
       dragleave: this.__layoutDragEnter.bind(this),
       slotchange: this.__layoutMonitor.bind(this),
