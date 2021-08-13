@@ -40,6 +40,7 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
               )
             );
             transition: all 0.5s;
+            transition: z-index 0s;
           }
           :host([hidden]) {
             z-index: -1;

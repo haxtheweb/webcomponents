@@ -7,6 +7,7 @@ import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-edit
 import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
+import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -132,9 +133,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       strikethroughButton: "Cross out",
       removeFormatButton: "Remove format",
       linkButton: "Link",
+      linkButton: "Remove Link",
       cutButton: "Cut",
       copyButton: "Copy",
-      pasteButton: "Paste",
+      pasteButton: "Paste Clipboard",
       subscriptButton: "Subscript",
       superscriptButton: "Superscript",
       symbolButton: "Insert Symbol",
@@ -299,6 +301,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     };
   }
   /**
+   * default config for a link button
+   *
+   * @readonly
+   */
+  get unlinkButton() {
+    return {
+      ...super.unlinkButton,
+      label: this.t.unlinkButton,
+    };
+  }
+  /**
    * default config for a cut button
    *
    * @readonly
@@ -329,6 +342,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.pasteButton,
       label: this.t.pasteButton,
+      shortcutKeys: undefined,
+      type: "hax-text-editor-paste-button",
     };
   }
   /**
@@ -500,6 +515,21 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     );
   }
 
+  /**
+   * list of event handlers for a given target
+   *
+   * @param {*} target
+   * @returns
+   */
+  targetHandlers(target) {
+    return {
+      click: (e) => this._handleTargetClick(target, e),
+      dblclick: (e) => this._handleTargetDoubleClick(target, e),
+      focus: (e) => this._handleTargetFocus(target, e),
+      keydown: (e) => this._handleShortcutKeys(e),
+    };
+  }
+
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     if (this.__ready) {
@@ -516,6 +546,19 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.config = this.updateToolbarElements();
+    this.__prompt.haxUIElement = true;
+    this.__prompt.classList.add("ignore-activation");
+    this.addEventListener("keypress", this.trapKays.bind(this));
+    this.__prompt.addEventListener("keypress", this.trapKays.bind(this));
+  }
+  /**
+   * keeps keys from HAX
+   *
+   * @param {*} e
+   * @memberof HaxTextEditorToolbar
+   */
+  trapKays(e) {
+    e.stopPropagation();
   }
 
   updateBlocks() {

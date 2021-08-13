@@ -112,7 +112,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
               label="Cancel"
               icon="clear"
               @click="${this._cancel}"
-              tabindex="0"
             >
             </simple-toolbar-button>
             <simple-toolbar-button
@@ -121,7 +120,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
               @click="${this._confirm}"
               icon="check"
               label="OK"
-              tabindex="0"
             >
             </simple-toolbar-button>
           </div>
@@ -208,7 +206,10 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
     this.__highlight.addEventListener("change", (e) =>
       setTimeout(this._handleChange(e), 300)
     );
-    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("mousedown", (e) => (this.__retainFocus = true));
+    this.addEventListener("mouseup", (e) => (this.__retainFocus = false));
+    this.addEventListener("focusin", (e) => (this.__retainFocusIn = true));
+    this.addEventListener("focusout", (e) => (this.__retainFocusIn = false));
     this.addEventListener("focus", this._handleFocus);
     this.addEventListener("blur", this._handleBlur);
   }
@@ -246,6 +247,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    * @memberof RichTextEditorPrompt
    */
   _handleBlur(e) {
+    if (this.__retainFocus || this.__retainFocusIn) return;
     this.__focused = false;
   }
   /**

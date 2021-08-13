@@ -95,7 +95,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         for (var gizmoposition in this.gizmoList) {
           let gizmo = this.gizmoList[gizmoposition],
             tags = [];
-          let props = { innerHTML: values.innerHTML };
+          let props = !!values.innerHTML ? { innerHTML: values.innerHTML } : {};
           // reset match per gizmo
           let match = false;
           // ensure this gizmo can handle things

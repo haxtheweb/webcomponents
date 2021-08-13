@@ -70,13 +70,15 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       ...super.styles,
       css`
         :host {
-          width: 100%;
+          width: calc(100% - 2px);
           align-items: stretch;
+          border: 1px solid var(--hax-ui-border-color);
         }
-        *::part(morebutton) {
+        hax-toolbar::part(morebutton) {
           --simple-toolbar-button-color: var(--hax-ui-color);
           --simple-toolbar-button-bg: var(--hax-ui-background-color);
-          --simple-toolbar-button-border-color: transparent;
+          --simple-toolbar-button-border-color: var(--hax-ui-border-color);
+          --simple-toolbar-button-border-width: 1px;
           --simple-toolbar-button-hover-color: var(--hax-ui-color);
           --simple-toolbar-button-hover-bg: var(
             --hax-ui-background-color-secondary
@@ -89,28 +91,31 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           --simple-toolbar-button-disabled-opacity: 1;
           --simple-toolbar-button-disabled-color: var(--hax-ui-disabled-color);
           --simple-toolbar-button-disabled-bg: var(--hax-ui-background-color);
-          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-border-color: unset;
+          --simple-toolbar-border-radius: 0;
           align-self: flex-end;
+          justify-self: stretch;
+          margin: 0px -2px 0px 2px;
         }
         #remove {
           max-width: 44px;
           overflow: visible;
         }
         hax-toolbar {
-          max-width: 100%;
+          max-width: calc(100% - 2px);
           display: flex;
           align-items: stretch;
           justify-content: flex-start;
-          margin-bottom: -1px;
-          margin-left: 1px;
         }
         .group {
           display: flex;
           align-items: stretch;
-          flex: 1 0 auto;
+          flex: 0 0 auto;
           justify-content: center;
           border: 1px solid var(--rich-text-editor-border-color, #ddd);
           padding: 0;
+          border-width: 1px;
+          margin: -1px;
         }
         .group,
         .group > * {

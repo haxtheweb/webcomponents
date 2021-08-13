@@ -189,6 +189,9 @@ export const HaxUiSingletons = [
       --simple-popover-border-color: var(--hax-ui-color);
       --simple-modal-border-color: var(--hax-ui-color);
     }
+    rich-text-editor-prompt {
+      z-index: calc(var(--hax-ui-focus-z-index) - 1);
+    }
     simple-modal[mode="hax-ui"]::part(dialog) {
       --simple-modal-z-index: 100000001 !important;
     }

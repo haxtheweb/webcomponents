@@ -166,12 +166,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-body-possible-target-background-color: inherit;
         }
         #topcontext {
-          z-index: var(--hax-ui-focus-z-index);
+          z-index: calc(var(--hax-ui-focus-z-index) - 2);
           min-width: 280px;
         }
         #topcontextmenu {
-          width: 100%;
-          z-index: var(--hax-ui-focus-z-index);
+          width: auto;
+          max-width: 100%;
           position: absolute;
           bottom: 0;
         }
@@ -180,7 +180,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           z-index: 1;
         }
         .hax-context-menu:hover {
-          z-index: calc(1 + var(--hax-ui-focus-z-index));
+          z-index: calc(var(--hax-ui-focus-z-index) + 1);
+          transition: 0s z-index ease-in-out;
         }
         .hax-context-visible,
         .hax-context-menu-active {
@@ -410,6 +411,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
     };
@@ -1342,7 +1344,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.activeNode && this.activeNode.nextElementSibling
         ? this.activeNode.nextElementSibling
         : null;
-    if (e.key === "Enter")
+    if (next && e.key === "Enter")
       this.setActiveNode(this.activeNode.nextElementSibling);
     //needed so that you can add new paragraphs before and element
     setTimeout(() => {
@@ -1497,7 +1499,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else if (this.primitiveTextBlocks.includes(element.tag)) {
       skipPropMatch = true;
     }
-    var props = { innerHTML: element.content };
+    var props = !!element.content ? { innerHTML: element.content } : {};
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
@@ -1518,7 +1520,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // "oh ya, but what could have handled this" so that we
         // can use that translation to offer up convertion to a
         // new element. This is insane.
-        props["innerHTML"] = element.properties.innerHTML;
+        if (!!element.properties.innerHTML)
+          props["innerHTML"] = element.properties.innerHTML;
         for (var prop in gizmo.handles[i]) {
           // type is a reserved handler but any other property
           // which we actually have in our element let's go for it
@@ -3116,7 +3119,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
   __applyDragDropState(layout, haxRay) {
     let events = {
-      drop: (e) => this.__layoutDropEvent(e, layout).bind(this),
+      drop: (e) => this.__layoutDropEvent.bind(this)(e, layout),
       dragenter: this.__layoutDragEnter.bind(this),
       dragleave: this.__layoutDragEnter.bind(this),
       slotchange: this.__layoutMonitor.bind(this),

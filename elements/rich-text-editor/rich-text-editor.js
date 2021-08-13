@@ -353,7 +353,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
     /**
      * Handles clicking to edit.
      *
-     * @param {event} e paste event
+     * @param {event} e click event
      * @returns {void}
      */
     _handleClick(e) {

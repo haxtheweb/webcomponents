@@ -100,6 +100,20 @@ class HAX extends HTMLElement {
     hax-body  ol ol {
       padding-bottom: unset;
     }
+    hax-body table {
+      min-width: 300px;
+      border-collapse: collapse;
+      margin: 0 0 15px;
+      display: table!important;
+    }
+    hax-body table caption,
+    hax-body table th,
+    hax-body table td {
+      border: 1px solid #888;
+      padding: 5px 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
     </style>
     <hax-body>
         <slot></slot>

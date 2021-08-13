@@ -105,10 +105,11 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         "redo",
         "removeFormat",
         "selectAll",
-        "strikethrough",
+        "strikeThrough",
         "styleWithCss",
         "subscript",
         "superscript",
+        "underline",
         "undo",
         "unlink",
         "useCSS",
@@ -192,6 +193,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @memberof RichTextEditorSelection
      */
     paste(pasteContent, range = this.range, sanitize = true) {
+      this.dispatchEvent(
+        new CustomEvent("paste", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.target,
+        })
+      );
       let target = this.__toolbar.target;
       if (target) {
         let range = this.range,
@@ -215,14 +224,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         }
         target.normalize();
       }
-      this.dispatchEvent(
-        new CustomEvent("paste", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this.target,
-        })
-      );
     }
 
     /* ------ GETS SELECTION / RANGE ------------------------- */
@@ -461,6 +462,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectNode(node, range = this.range) {
+      if (!node || !node.parentNode) return;
       if (!range) {
         let sel = this.getSelection();
         range = document.createRange();
@@ -573,7 +575,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       let toolbar = this.__toolbar,
         target = toolbar.target;
       if (this.validCommands.includes(command)) {
-        commandVal = toolbar ? toolbar.sanitizeHTML(commandVal) : commandVal;
+        commandVal =
+          toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
         if (this.__highlight.parentNode === document.body)
           this.__highlight.wrap(range);
         this.__highlight.unwrap(range);

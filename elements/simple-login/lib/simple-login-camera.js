@@ -273,8 +273,8 @@ class SimpleLoginCamera extends HTMLElement {
           background-color: var(--simple-login-camera-background, var(--background-color, #ccc));
         }
         video {
-          margin-left: calc(100% * var(--simple-login-camera-aspect, 1) / 2 - 177.77777777777% / 2);
-          height: 355px;
+          margin-left: calc(100% * var(--simple-login-camera-aspect, 1) / 2 - 177.77777777777% / 2);          
+          width: calc(177.77777777777% / var(--simple-login-camera-aspect, 1));
           background-color: rgba(0, 0, 0, 0);
         }
         .error {
