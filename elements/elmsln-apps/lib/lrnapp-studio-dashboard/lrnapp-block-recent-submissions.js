@@ -5,7 +5,6 @@ import "@polymer/iron-list/iron-list.js";
 import "../elmsln-base-deps.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import { setTimeout } from "core-js/shim";
 class LrnappBlockRecentSubmissions extends PolymerElement {
   static get template() {
     return html`

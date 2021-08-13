@@ -135,22 +135,24 @@ class ExifData extends HTMLElement {
    * Load exifData
    */
   getExifData(node, show) {
-    window.EXIF.getData(node, () => {
-      let data = window.EXIF.getAllTags(node);
-      // REALLY verbose field
-      delete data.MakerNote;
-      delete data.thumbnail;
-      this.nodeData.push({
-        node: node,
-        data: data,
+    if (window.EXIF) {
+      window.EXIF.getData(node, () => {
+        let data = window.EXIF.getAllTags(node);
+        // REALLY verbose field
+        delete data.MakerNote;
+        delete data.thumbnail;
+        this.nodeData.push({
+          node: node,
+          data: data,
+        });
+        // if we are told to show this and only 1 item exists, present details
+        // this has to happen after getExifData otherwise there's a timing
+        // issue because of the unknown length of execution time in getData above
+        if (show && this.children.length === 1) {
+          this.showDetails(this.nodeData[0]);
+        }
       });
-      // if we are told to show this and only 1 item exists, present details
-      // this has to happen after getExifData otherwise there's a timing
-      // issue because of the unknown length of execution time in getData above
-      if (show && this.children.length === 1) {
-        this.showDetails(this.nodeData[0]);
-      }
-    });
+    }
   }
   updateExif(show = false) {
     this.nodeData = [];

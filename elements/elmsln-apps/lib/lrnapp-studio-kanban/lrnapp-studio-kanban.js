@@ -65,7 +65,7 @@ class LrnappStudioKanban extends PolymerElement {
           padding-left: 16px;
         }
         .card-content {
-          scrollbar-face-color: #833900;
+          scrollbar-face-color: #aa5555;
           scrollbar-shadow-color: #ffc107;
           scrollbar-highlight-color: #ffc107;
           scrollbar-3dlight-color: #ffc107;
@@ -90,8 +90,8 @@ class LrnappStudioKanban extends PolymerElement {
         }
         /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner*/
         .card-content::-webkit-scrollbar {
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
         }
         /* this targets the default scrollbar (compulsory) */
         button {
@@ -120,33 +120,31 @@ class LrnappStudioKanban extends PolymerElement {
         }
         .project-card .card-content {
           height: 320px;
-          overflow-y: scroll;
+          overflow-y: auto;
           padding: 0;
+        }
+        .assignment-container {
+          height: 100%;
         }
         .project-container:hover .project-operations {
           display: block;
         }
         .project-operations {
           position: absolute;
-          top: 22px;
-          right: 0px;
+          top: 8px;
+          right: -20px;
           display: none;
+          transform: scale(0.6);
         }
         .project-operations .operation {
+          --lrnsys-button-height: 48px;
           display: inline-flex;
         }
         .project-operations .operation[hidden] {
           display: none;
         }
-        .project-operations lrnsys-button::part(lrnsys-button-button) {
-          border-radius: 50%;
-          height: 24px;
-          width: 24px;
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
-          padding: 4px;
-        }
         .assignment-row {
+          height: 32px;
           border: 1px solid #000000;
           background-color: #ffffff;
         }
@@ -157,7 +155,6 @@ class LrnappStudioKanban extends PolymerElement {
         .assignment-row:hover .assignment-operations {
           display: block;
           overflow: visible;
-          margin: 8px;
         }
         .assignment-row-button {
           width: 100%;
@@ -192,10 +189,12 @@ class LrnappStudioKanban extends PolymerElement {
         }
         .assignment-operations {
           position: absolute;
-          top: 0;
-          right: 0;
           padding: 0;
           display: none;
+          top: -14px;
+          right: -18px;
+          padding: 0;
+          transform: scale(0.6);
         }
         .assignment-operations.show {
           display: block;
@@ -205,7 +204,7 @@ class LrnappStudioKanban extends PolymerElement {
           display: inline-flex;
           width: 40px;
           height: 40px;
-          margin: -4px 4px 0 0;
+          margin: 10px 10px 0 0;
         }
         .assignment-operations .operation[hidden] {
           display: none;
@@ -279,7 +278,7 @@ class LrnappStudioKanban extends PolymerElement {
                   <lrnsys-button
                     icon-class="no-margin"
                     id$="project-[[project.id]]-edit"
-                    alt="Edit project"
+                    title="Edit project"
                     class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
@@ -291,7 +290,7 @@ class LrnappStudioKanban extends PolymerElement {
                     project-id="[[project.id]]"
                     icon-class="no-margin"
                     id$="project-[[project.id]]-add"
-                    alt="Add assignment"
+                    title="Add assignment"
                     class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
@@ -302,7 +301,7 @@ class LrnappStudioKanban extends PolymerElement {
                   </lrnapp-studio-assignment-button>
                   <lrnsys-button
                     id$="project-[[project.id]]-delete"
-                    alt="Delete project!"
+                    title="Delete project!"
                     class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
@@ -318,6 +317,7 @@ class LrnappStudioKanban extends PolymerElement {
                     items="[[_toArray(project.relationships.assignments)]]"
                     as="assignment"
                     mutable-data
+                    class="assignment-container"
                   >
                     <template>
                       <div class="assignment-row" id="assignment">
@@ -334,7 +334,7 @@ class LrnappStudioKanban extends PolymerElement {
                           <lrnsys-button
                             id$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
                             icon="editor:insert-comment"
-                            alt="Add critique"
+                            title="Add critique"
                             class="operation"
                             hover-class="green lighten-2"
                             hidden="[[!assignment.meta.canCritique]]"
@@ -344,19 +344,19 @@ class LrnappStudioKanban extends PolymerElement {
                           <lrnsys-button
                             id$="assignment-[[project.id]]-[[assignment.id]]-edit"
                             icon="editor:mode-edit"
-                            alt="Edit"
+                            title="Edit"
                             class="operation"
-                            hover-class="amber lighten-4"
+                            hover-class="amber lighten-2"
                             hidden="[[!assignment.meta.canUpdate]]"
                             on-click="_makeAssignmentEditLink"
                             icon-class="no-margin green-text text-darken-4"
                           ></lrnsys-button>
                           <lrnsys-button
                             id$="assignment-[[project.id]]-[[assignment.id]]-delete"
-                            icon="delete"
-                            alt="Delete"
+                            icon="delete-forever"
+                            title="Delete"
                             class="operation"
-                            hover-class="amber lighten-4"
+                            hover-class="red darken-2 white-text"
                             hidden="[[!assignment.meta.canDelete]]"
                             on-click="_deleteAssignmentDialog"
                             icon-class="no-margin red-text text-darken-4"
@@ -733,6 +733,7 @@ class LrnappStudioKanban extends PolymerElement {
   _handleProjectResponse(event) {
     this.$.loading.hidden = true;
     this._setToggle(true);
+    window.dispatchEvent(new Event("resize"));
     if (this.activeAssignment) {
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
@@ -740,6 +741,7 @@ class LrnappStudioKanban extends PolymerElement {
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
         ].relationships.assignments["assignment-" + parts[2]];
+        window.dispatchEvent(new Event("resize"));
       }, 100);
     }
   }
@@ -750,6 +752,10 @@ class LrnappStudioKanban extends PolymerElement {
   buildSubmissionPath(path) {
     return path + "lrnapp-studio-submission";
   }
+  ready() {
+    super.ready();
+    window.dispatchEvent(new Event("resize"));
+  }
 
   /**
    * Handle a response from updating an item
@@ -758,11 +764,13 @@ class LrnappStudioKanban extends PolymerElement {
     if (this.backendResponse.status == 200) {
       this.$.toast.text = "Updated successfully";
       this.$.toast.toggle();
+      window.dispatchEvent(new Event("resize"));
       // this will force a repaint of the UI pieces on reload
       this.set("projectResponse", {});
       this.$.projectbackend.generateRequest();
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
+        window.dispatchEvent(new Event("resize"));
         this.set("activeAssignmentNode", {});
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
