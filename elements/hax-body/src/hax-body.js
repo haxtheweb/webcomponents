@@ -1499,7 +1499,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else if (this.primitiveTextBlocks.includes(element.tag)) {
       skipPropMatch = true;
     }
-    var props = { innerHTML: element.content };
+    var props = !!element.content ? { innerHTML: element.content } : {};
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
@@ -1520,7 +1520,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // "oh ya, but what could have handled this" so that we
         // can use that translation to offer up convertion to a
         // new element. This is insane.
-        props["innerHTML"] = element.properties.innerHTML;
+        if (!!element.properties.innerHTML)
+          props["innerHTML"] = element.properties.innerHTML;
         for (var prop in gizmo.handles[i]) {
           // type is a reserved handler but any other property
           // which we actually have in our element let's go for it

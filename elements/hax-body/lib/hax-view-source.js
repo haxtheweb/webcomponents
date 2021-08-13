@@ -156,9 +156,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   importContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
-    HAXStore.toast("Content updated");
     HAXStore.activeHaxBody.importContent(htmlBody);
-    //this.close();
+    HAXStore.haxTray.trayDetail = "";
   }
 
   /**
