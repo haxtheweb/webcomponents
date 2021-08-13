@@ -20,24 +20,19 @@ class LrnappStudioDashboard extends PolymerElement {
           text-transform: none;
           text-align: left;
         }
-        p.para {
-          margin: 0;
-          padding: 0;
-          font-size: 20px;
-        }
         .dashboard-row {
           width: 100%;
           display: inline-flex;
           margin-top: 16px;
         }
         .dashboard-item {
-          width: 30%;
+          width: 35%;
         }
       </style>
       <h1 class="title">Welcome back [[username]]!</h1>
-      <p class="para">Here's what's been going on in the studio</p>
       <div class="dashboard-row">
         <div heading="Your active project" class="dashboard-item card">
+          <h2>Recent project</h2>
           <div class="card-content">
             <lrnapp-block-recent-project
               csrf-token="[[csrfToken]]"
@@ -48,18 +43,8 @@ class LrnappStudioDashboard extends PolymerElement {
             </lrnapp-block-recent-project>
           </div>
         </div>
-        <div heading="Classmates needing feedback" class="dashboard-item card">
-          <div class="card-content">
-            <lrnapp-block-need-feedback
-              csrf-token="[[csrfToken]]"
-              end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
-              source-path="[[_getDataSource(csrfToken, basePath,'need-feedback')]]"
-            >
-            </lrnapp-block-need-feedback>
-          </div>
-        </div>
-        <div heading="Recent Studio submissions" class="dashboard-item card">
+        <div class="dashboard-item card">
+          <h2>Recent submissions</h2>
           <div class="card-content">
             <lrnapp-block-recent-submissions
               csrf-token="[[csrfToken]]"
@@ -70,7 +55,8 @@ class LrnappStudioDashboard extends PolymerElement {
             </lrnapp-block-recent-submissions>
           </div>
         </div>
-        <div heading="Recent Studio comments" class="dashboard-item card">
+        <div class="dashboard-item card">
+          <h2>Recent comments</h2>
           <div class="card-content">
             <lrnapp-block-recent-comments
               csrf-token="[[csrfToken]]"

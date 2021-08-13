@@ -62,9 +62,10 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           font-size: 16px;
           font-weight: bold;
           text-align: center;
+          cursor: pointer;
         }
         .linkbtn {
-          display: block;
+          display: flex;
           width: 100%;
         }
         .linkbtn button:hover,
@@ -73,7 +74,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
         .linkbtn:hover,
         .linkbtn:active,
         .linkbtn:focus {
-          background-color: gray;
+          background-color: #eeeeee;
         }
       </style>
       <div class="card flex-wrap">
