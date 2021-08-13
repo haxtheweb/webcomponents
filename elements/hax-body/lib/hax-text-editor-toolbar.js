@@ -7,6 +7,7 @@ import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-edit
 import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
+import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -135,7 +136,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       linkButton: "Remove Link",
       cutButton: "Cut",
       copyButton: "Copy",
-      pasteButton: "Paste",
+      pasteButton: "Paste Clipboard",
       subscriptButton: "Subscript",
       superscriptButton: "Superscript",
       symbolButton: "Insert Symbol",
@@ -341,6 +342,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.pasteButton,
       label: this.t.pasteButton,
+      shortcutKeys: undefined,
+      type: "hax-text-editor-paste-button",
     };
   }
   /**
@@ -510,6 +513,21 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       (this.range.commonAncestorContainer === this.target ||
         this.target.contains(this.range.commonAncestorContainer))
     );
+  }
+
+  /**
+   * list of event handlers for a given target
+   *
+   * @param {*} target
+   * @returns
+   */
+  targetHandlers(target) {
+    return {
+      click: (e) => this._handleTargetClick(target, e),
+      dblclick: (e) => this._handleTargetDoubleClick(target, e),
+      focus: (e) => this._handleTargetFocus(target, e),
+      keydown: (e) => this._handleShortcutKeys(e),
+    };
   }
 
   updated(changedProperties) {

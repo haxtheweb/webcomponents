@@ -193,6 +193,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @memberof RichTextEditorSelection
      */
     paste(pasteContent, range = this.range, sanitize = true) {
+      this.dispatchEvent(
+        new CustomEvent("paste", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.target,
+        })
+      );
       let target = this.__toolbar.target;
       if (target) {
         let range = this.range,
@@ -216,14 +224,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         }
         target.normalize();
       }
-      this.dispatchEvent(
-        new CustomEvent("paste", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this.target,
-        })
-      );
     }
 
     /* ------ GETS SELECTION / RANGE ------------------------- */
