@@ -462,6 +462,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectNode(node, range = this.range) {
+      if (!node || !node.parentNode) return;
       if (!range) {
         let sel = this.getSelection();
         range = document.createRange();
