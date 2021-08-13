@@ -48,6 +48,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             margin: 0;
             padding: 0;
             transition: all 0.5s;
+            transition: z-index 0s;
           }
           :host([hidden]) {
             z-index: -1;
@@ -94,6 +95,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           ::slotted(*:hover),
           ::slotted(*:focus-wthin) {
             z-index: var(--simple-toolbar-focus-z-index, 100);
+            transition: z-index 0s;
           }
           :host([collapsed]:not([always-expanded]))
             ::slotted(*[collapse-hide]) {

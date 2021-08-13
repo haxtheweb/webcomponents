@@ -253,6 +253,7 @@ class SimplePicker extends LitElement {
           position: absolute;
           top: var(--simple-picker-options-top);
           z-index: 2;
+          transition: z-index 0s;
         }
 
         :host([expanded]:not([disabled])) #collapse {
@@ -288,6 +289,7 @@ class SimplePicker extends LitElement {
           max-height: var(--simple-picker-options-max-height, 250px);
           overflow-y: auto;
           border: var(--simple-picker-options-border);
+          transition: z-index 0s;
         }
 
         .rows:focus-within {
@@ -329,6 +331,7 @@ class SimplePicker extends LitElement {
           color: var(--simple-picker-color, currentColor);
           background-color: var(--simple-picker-options-background-color, #fff);
           transition: max-height 2s;
+          transition: z-index 0s;
         }
 
         simple-picker-option[selected] {

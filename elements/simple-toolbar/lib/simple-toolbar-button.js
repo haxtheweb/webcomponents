@@ -561,6 +561,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             white-space: nowrap;
             transition: all 0.5s;
             z-index: 1;
+            transition: z-index 0s;
           }
           :host(:hover),
           :host(:focus-wthin) {
