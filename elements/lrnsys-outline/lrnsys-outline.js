@@ -199,6 +199,7 @@ class LrnsysOutline extends PolymerElement {
         styles: {
           "--simple-modal-width": "75vw",
           "--simple-modal-max-width": "75vw",
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-min-height": "50vh",
         },
         invokedBy: item.shadowRoot.querySelector("#delete"),

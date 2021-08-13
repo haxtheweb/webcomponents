@@ -88,8 +88,8 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
           display: flex;
         }
         .submission-page-card {
-          width: 100%;
           margin: 0;
+          padding: 16px;
         }
         :host([edit-page]) .submission-page {
           width: 100%;

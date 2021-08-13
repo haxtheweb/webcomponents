@@ -50,6 +50,9 @@ class LrnappOpenStudio extends PolymerElement {
           margin: 0;
           padding: 0;
         }
+        .gallerycard-wrapper a {
+          text-decoration: none;
+        }
         lrndesign-gallerycard {
           padding: 0;
           margin: 16px;

@@ -10,29 +10,28 @@ class LrnappStudioDashboard extends PolymerElement {
       <style include="materializecss-styles">
         :host {
           display: block;
-          padding: 0 2em;
+          padding: 0 32px;
         }
         h1.title {
-          font-size: 2em;
+          font-size: 32px;
           color: black;
           margin: 0;
-          padding: 0.5em 0 0 0;
+          padding: 4px 0 0 0;
           text-transform: none;
           text-align: left;
         }
         p.para {
           margin: 0;
-          padding: 0.25em 0.5em;
+          padding: 0;
+          font-size: 20px;
         }
         .dashboard-row {
           width: 100%;
           display: inline-flex;
+          margin-top: 16px;
         }
         .dashboard-item {
           width: 30%;
-        }
-        div.card {
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
       </style>
       <h1 class="title">Welcome back [[username]]!</h1>
@@ -128,9 +127,7 @@ class LrnappStudioDashboard extends PolymerElement {
   }
   ready() {
     super.ready();
-    setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
-    }, 0);
+    window.dispatchEvent(new Event("resize"));
   }
   connectedCallback() {
     super.connectedCallback();

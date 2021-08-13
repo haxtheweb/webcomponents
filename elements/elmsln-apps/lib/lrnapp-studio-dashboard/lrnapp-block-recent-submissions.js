@@ -5,6 +5,7 @@ import "@polymer/iron-list/iron-list.js";
 import "../elmsln-base-deps.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import { setTimeout } from "core-js/shim";
 class LrnappBlockRecentSubmissions extends PolymerElement {
   static get template() {
     return html`
@@ -14,6 +15,14 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
         }
         button {
           width: 100%;
+          border: none;
+          background-color: transparent;
+        }
+        lrndesign-gallerycard {
+          width: 100%;
+        }
+        lrndesign-gallerycard[elevation="1"] {
+          box-shadow: none;
         }
       </style>
       <iron-ajax
@@ -89,6 +98,9 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   }
   handleResponse(e) {
     this.$.loading.hidden = true;
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

@@ -55,7 +55,6 @@ class LrnappStudioKanban extends PolymerElement {
           -ms-flex-align: start;
           align-items: flex-start;
           min-height: 23em;
-          width: 150vw;
         }
         @media screen and (max-width: 800px) {
           .projects-container {
@@ -65,10 +64,7 @@ class LrnappStudioKanban extends PolymerElement {
         #activetoggle {
           padding-left: 16px;
         }
-        .projects-window {
-          width: 100vw;
-          overflow-x: scroll;
-          overflow-y: hidden;
+        .card-content {
           scrollbar-face-color: #833900;
           scrollbar-shadow-color: #ffc107;
           scrollbar-highlight-color: #ffc107;
@@ -77,43 +73,44 @@ class LrnappStudioKanban extends PolymerElement {
           scrollbar-track-color: #ffc107;
           scrollbar-arrow-color: #ffc107;
         }
-        .projects-window::-webkit-scrollbar-track {
+        .card-content::-webkit-scrollbar-track {
           background-color: #833900;
         }
         /* the new scrollbar will have a flat appearance with the set background color */
-        .projects-window::-webkit-scrollbar-thumb {
+        .card-content::-webkit-scrollbar-thumb {
           background-color: #ffc107;
         }
         /* this will style the thumb, ignoring the track */
-        .projects-window::-webkit-scrollbar-button {
+        .card-content::-webkit-scrollbar-button {
           background-color: #833900;
         }
         /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
-        .projects-window::-webkit-scrollbar-corner {
+        .card-content::-webkit-scrollbar-corner {
           background-color: #833900;
         }
         /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner*/
-        .projects-window::-webkit-scrollbar {
-          width: 1rem;
-          height: 1rem;
+        .card-content::-webkit-scrollbar {
+          width: 12px;
+          height: 12px;
         }
         /* this targets the default scrollbar (compulsory) */
         button {
           padding: 0;
           margin: 0;
-          min-width: 1rem;
+          min-width: 12px;
         }
         .project-card {
-          width: 100%;
-          width: 400px;
+          width: 320px;
           margin: 0;
           height: 100%;
           min-height: 10em;
         }
         .project-card h3.header {
-          max-width: 60%;
           font-size: 16px;
           word-break: break-all;
+          padding: 8px;
+          overflow: hidden;
+          margin: 0;
         }
         div.card {
           box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
@@ -122,9 +119,9 @@ class LrnappStudioKanban extends PolymerElement {
           padding: 16px;
         }
         .project-card .card-content {
-          height: 400px;
-          overflow: scroll;
-          padding: 4px;
+          height: 320px;
+          overflow-y: scroll;
+          padding: 0;
         }
         .project-container:hover .project-operations {
           display: block;
@@ -140,6 +137,14 @@ class LrnappStudioKanban extends PolymerElement {
         }
         .project-operations .operation[hidden] {
           display: none;
+        }
+        .project-operations lrnsys-button::part(lrnsys-button-button) {
+          border-radius: 50%;
+          height: 24px;
+          width: 24px;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          padding: 4px;
         }
         .assignment-row {
           border: 1px solid #000000;
@@ -158,6 +163,18 @@ class LrnappStudioKanban extends PolymerElement {
           width: 100%;
           justify-content: flex-start;
           text-transform: none;
+        }
+        .assignment-row-button::part(lrnsys-button-inner-div) {
+          padding: 0;
+        }
+        .assignment-row-button[icon="assignment"]::part(lrnsys-button-icon) {
+          --simple-icon-color: black;
+        }
+        .assignment-row-button[icon="assignment-late"]::part(lrnsys-button-icon) {
+          --simple-icon-color: orangered;
+        }
+        .assignment-row-button[icon="done"]::part(lrnsys-button-icon) {
+          --simple-icon-color: green;
         }
         .status-indicator {
           border-right: 1px solid grey;
@@ -195,7 +212,10 @@ class LrnappStudioKanban extends PolymerElement {
         }
         lrnapp-studio-project-button {
           margin: 0em auto;
-          max-width: 20em;
+          max-width: 10em;
+        }
+        lrnsys-button {
+          --lrnsys-button-height: 32px;
         }
       </style>
       <iron-ajax

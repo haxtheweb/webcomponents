@@ -154,17 +154,20 @@ class LrnappStudioInstructor extends PolymerElement {
       }
 
       lrndesign-avatar {
-        display: inline-block;
+        display: inline-flex;
       }
       .avatar-label {
-        display: inline-block;
-        margin-left: .2em;
+        display: inline-flex;
+        margin-left: 12px;
+        margin-top: 12px;
+        font-size: 16px;
       }
       .assignment-button {
-        height: 1em;
+        height: 24px;
       }
       .project-button {
-        height: 1em;
+        height: 24px;
+        width: 24px;
       }
       paper-badge {
         top: 0 !important;
@@ -174,6 +177,9 @@ class LrnappStudioInstructor extends PolymerElement {
       }
       .avatar-link {
         color: black;
+        text-decoration: none;
+        display: inline-flex;
+        vertical-align: middle;
       }
       .avatar-link button {
         text-transform: unset;
@@ -242,7 +248,7 @@ class LrnappStudioInstructor extends PolymerElement {
     <paper-toggle-button id="datatype" checked="{{dataType}}" disabled>
       [[dataTypeText]]
     </paper-toggle-button>
-    <button id="statsdialogbutton" disabled><simple-icon icon="editor:show-chart"></simple-icon> Statistics (beta)</span></button>
+    <button id="statsdialogbutton" disabled><simple-icon icon="editor:show-chart"></simple-icon> Statistics</span></button>
     <paper-dialog id="statsdialog" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>
@@ -595,7 +601,7 @@ class LrnappStudioInstructor extends PolymerElement {
     // then we should execute the request for data after setting type
     if (typeof oldValue !== typeof undefined) {
       if (newValue) {
-        this.dataTypeText = "Comments (beta)";
+        this.dataTypeText = "Comments";
       } else {
         this.dataTypeText = "Submissions";
       }

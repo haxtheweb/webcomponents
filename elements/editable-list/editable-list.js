@@ -148,6 +148,7 @@ class EditableList extends LitElement {
         styles: {
           "--simple-modal-width": "20vw",
           "--simple-modal-max-width": "20vw",
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-height": "20vh",
           "--simple-modal-max-height": "20vh",
         },

@@ -29,11 +29,16 @@ class LrnappBlockRecentProject extends PolymerElement {
           justify-content: center;
           background-color: white;
         }
+        a {
+          display: block;
+        }
         button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
           text-transform: unset;
+          background-color: transparent;
+          border: none;
         }
         .project-card {
           width: 100%;
