@@ -133,7 +133,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       strikethroughButton: "Cross out",
       removeFormatButton: "Remove format",
       linkButton: "Link",
-      linkButton: "Remove Link",
+      unlinkButton: "Remove Link",
       cutButton: "Cut",
       copyButton: "Copy",
       pasteButton: "Paste Clipboard",
@@ -298,6 +298,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.linkButton,
       label: this.t.linkButton,
+      allowTarget:
+        !!HAXStore.activeHaxBody && !!HAXStore.activeHaxBody.allowLinkTarget,
     };
   }
   /**
