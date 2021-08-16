@@ -28,10 +28,10 @@ class LrnappOpenStudioAssignments extends PolymerElement {
         }
         h1.empty-title,
         h1.assignment-title {
-          font-size: 2em;
+          font-size: 32px;
         }
         .submission-title {
-          font-size: 1em;
+          font-size: 28px;
           font-weight: bold;
           width: 100%;
           margin-bottom: 2rem;

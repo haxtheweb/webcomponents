@@ -35,7 +35,10 @@ class LrnsysCommentList extends PolymerElement {
           font-size: 12px;
         }
         .comment-button {
-          min-width: 125px;
+          --lrnsys-button-height: 32px;
+        }
+        .comment-button::part(lrnsys-button-inner-div) {
+          padding: 0;
         }
       </style>
       <!-- Load all comments on load of element -->
@@ -312,6 +315,7 @@ class LrnsysCommentList extends PolymerElement {
         styles: {
           "--simple-modal-width": "15vw",
           "--simple-modal-max-width": "15vw",
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-min-height": "10vh",
         },
         invokedBy: e.detail.target,

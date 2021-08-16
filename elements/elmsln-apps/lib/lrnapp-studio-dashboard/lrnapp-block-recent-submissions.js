@@ -14,6 +14,14 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
         }
         button {
           width: 100%;
+          border: none;
+          background-color: transparent;
+        }
+        lrndesign-gallerycard {
+          width: 100%;
+        }
+        lrndesign-gallerycard[elevation="1"] {
+          box-shadow: none;
         }
       </style>
       <iron-ajax
@@ -89,6 +97,9 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   }
   handleResponse(e) {
     this.$.loading.hidden = true;
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

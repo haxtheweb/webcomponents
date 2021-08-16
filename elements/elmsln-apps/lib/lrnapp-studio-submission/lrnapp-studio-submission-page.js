@@ -113,9 +113,8 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         }
 
         .submission-page-card {
-          width: 100%;
           margin: 0;
-          padding: 0 0 2em 1em;
+          padding: 16px;
         }
 
         .submission-comments {
@@ -232,23 +231,6 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           ></lrnsys-button>
         </template>
         <div spacer="" main-title="">[[submission.attributes.title]]</div>
-        <div spacer="">
-          <lrnsys-dialog
-            raised
-            header="[[submission.relationships.assignment.attributes.title]]"
-          >
-            <span slot="button"
-              ><simple-icon icon="icons:assignment"></simple-icon>Assignment
-              Details</span
-            >
-            <div class="assignment-body">
-              <marked-element
-                id="assignment-body"
-                markdown="[[submission.relationships.assignment.attributes.body]]"
-              ></marked-element>
-            </div>
-          </lrnsys-dialog>
-        </div>
         <div>
           <simple-icon
             id="comment-count"

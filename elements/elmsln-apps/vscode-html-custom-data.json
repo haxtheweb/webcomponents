@@ -661,7 +661,7 @@
     },
     {
       "name": "lrnapp-block-recent-submissions",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -690,6 +690,10 @@
         {
           "name": "response",
           "description": "`response` {`any[]`} - \n\nProperty: response"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         }
       ]
     },

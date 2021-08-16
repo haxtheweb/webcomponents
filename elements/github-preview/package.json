@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "A simple element that displays information about a github repository.",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.6",
+    "@lrnwebcomponents/intersection-element": "^4.0.0",
+    "@lrnwebcomponents/simple-icon": "^4.0.0",
     "lit": "2.0.0-rc.2",
     "marked": "^2.0.3",
     "prism-es6": "1.2.0"

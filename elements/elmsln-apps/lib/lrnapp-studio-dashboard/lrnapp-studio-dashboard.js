@@ -10,35 +10,31 @@ class LrnappStudioDashboard extends PolymerElement {
       <style include="materializecss-styles">
         :host {
           display: block;
-          padding: 0 2em;
+          padding: 0 32px;
         }
         h1.title {
-          font-size: 2em;
+          font-size: 32px;
           color: black;
           margin: 0;
-          padding: 0.5em 0 0 0;
+          padding: 4px 0 0 0;
           text-transform: none;
           text-align: left;
-        }
-        p.para {
-          margin: 0;
-          padding: 0.25em 0.5em;
         }
         .dashboard-row {
           width: 100%;
           display: inline-flex;
+          justify-content: space-evenly;
         }
-        .dashboard-item {
-          width: 30%;
-        }
-        div.card {
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        h2 {
+          font-size: 32px;
+          margin: 8px;
+          text-align: center;
         }
       </style>
       <h1 class="title">Welcome back [[username]]!</h1>
-      <p class="para">Here's what's been going on in the studio</p>
       <div class="dashboard-row">
-        <div heading="Your active project" class="dashboard-item card">
+        <div class="dashboard-item card">
+          <h2>Recent project</h2>
           <div class="card-content">
             <lrnapp-block-recent-project
               csrf-token="[[csrfToken]]"
@@ -49,18 +45,8 @@ class LrnappStudioDashboard extends PolymerElement {
             </lrnapp-block-recent-project>
           </div>
         </div>
-        <div heading="Classmates needing feedback" class="dashboard-item card">
-          <div class="card-content">
-            <lrnapp-block-need-feedback
-              csrf-token="[[csrfToken]]"
-              end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
-              source-path="[[_getDataSource(csrfToken, basePath,'need-feedback')]]"
-            >
-            </lrnapp-block-need-feedback>
-          </div>
-        </div>
-        <div heading="Recent Studio submissions" class="dashboard-item card">
+        <div class="dashboard-item card">
+          <h2>Recent submissions</h2>
           <div class="card-content">
             <lrnapp-block-recent-submissions
               csrf-token="[[csrfToken]]"
@@ -71,7 +57,8 @@ class LrnappStudioDashboard extends PolymerElement {
             </lrnapp-block-recent-submissions>
           </div>
         </div>
-        <div heading="Recent Studio comments" class="dashboard-item card">
+        <div class="dashboard-item card">
+          <h2>Recent comments</h2>
           <div class="card-content">
             <lrnapp-block-recent-comments
               csrf-token="[[csrfToken]]"
@@ -128,9 +115,7 @@ class LrnappStudioDashboard extends PolymerElement {
   }
   ready() {
     super.ready();
-    setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
-    }, 0);
+    window.dispatchEvent(new Event("resize"));
   }
   connectedCallback() {
     super.connectedCallback();

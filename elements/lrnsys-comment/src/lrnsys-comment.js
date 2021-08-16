@@ -300,25 +300,12 @@ class LrnsysComment extends PolymerElement {
                   on-click="actionHandler"
                   id="reply"
                   no-padding
-                  raised
                   data-commentid="[[comment.id]]"
                   icon="reply"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.reply]]"
                   >Reply</lrnsys-button
-                >
-                <lrnsys-button
-                  on-click="actionHandler"
-                  id="like"
-                  no-padding
-                  raised
-                  data-commentid="[[comment.id]]"
-                  icon="thumb-up"
-                  hover-class="[[hoverClass]]"
-                  icon-class="grey-text no-margin"
-                  hidden$="[[!comment.actions.like]]"
-                  >Like</lrnsys-button
                 >
               </div>
               <div class="comment-actions-group right-actions">
@@ -327,7 +314,6 @@ class LrnsysComment extends PolymerElement {
                   id="edit"
                   data-commentid="[[comment.id]]"
                   icon="create"
-                  raised
                   no-padding
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
@@ -340,7 +326,6 @@ class LrnsysComment extends PolymerElement {
                   no-padding
                   data-commentid="[[comment.id]]"
                   icon="delete-forever"
-                  raised
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.delete]]"

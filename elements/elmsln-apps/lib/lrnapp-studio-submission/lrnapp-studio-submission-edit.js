@@ -37,6 +37,10 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
           top: 0;
           right: 0;
         }
+        label {
+          font-size: 16px;
+          font-weight: bold;
+        }
       </style>
       <template is="dom-if" if="{{submission}}">
         <div class="field">

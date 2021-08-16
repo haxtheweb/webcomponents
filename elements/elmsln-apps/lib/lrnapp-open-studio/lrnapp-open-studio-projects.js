@@ -27,10 +27,10 @@ class LrnappOpenStudioProjects extends PolymerElement {
         }
         h1.empty-title,
         h1.project-title {
-          font-size: 2em;
+          font-size: 32px;
         }
         h2.assignment-title {
-          font-size: 1.5em;
+          font-size: 28px;
           font-weight: bold;
           width: 100%;
           border-bottom: solid 1px grey;
@@ -44,6 +44,12 @@ class LrnappOpenStudioProjects extends PolymerElement {
           text-overflow: ellipsis;
           word-break: break-all;
           word-wrap: break-word;
+        }
+        .project-step::part(lrnsys-button-button) {
+          font-size: 11px;
+        }
+        .project-step::part(lrnsys-button-inner-div) {
+          padding: 0 4px;
         }
       </style>
       <template is="dom-if" if="[[!showSubmissions]]">
@@ -69,7 +75,6 @@ class LrnappOpenStudioProjects extends PolymerElement {
               data-assignment-id$="[[assignment.id]]"
               class="project-step"
               hover-class="blue white-text"
-              raised=""
               hidden$="[[!assignment.title]]"
             ></lrnsys-button>
           </template>

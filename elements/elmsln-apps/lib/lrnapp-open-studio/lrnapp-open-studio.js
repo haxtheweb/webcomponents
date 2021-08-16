@@ -50,14 +50,38 @@ class LrnappOpenStudio extends PolymerElement {
           margin: 0;
           padding: 0;
         }
+        .gallerycard-wrapper a {
+          text-decoration: none;
+        }
         lrndesign-gallerycard {
           padding: 0;
           margin: 16px;
-          width: 300px;
-          height: 300px;
+          width: 268px;
+          height: 268px;
         }
         app-toolbar {
           height: 64px;
+          position: sticky;
+          top: -1px;
+          z-index: 1000000;
+          background-color: white;
+        }
+        app-toolbar lrnsys-button::part(lrnsys-button-inner-div) {
+          padding: 0 4px;
+        }
+        app-toolbar lrnsys-button::part(lrnsys-button-label) {
+          font-size: 10px;
+        }
+        app-toolbar paper-dropdown-menu {
+          max-width: 12vw;
+        }
+        @media (max-width: 900px) {
+          app-toolbar lrnsys-button::part(lrnsys-button-label) {
+            display: none;
+          }
+          app-toolbar paper-dropdown-menu {
+            max-width: 15vw;
+          }
         }
         .gallery-grid {
           margin: 0 auto;

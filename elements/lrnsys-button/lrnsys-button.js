@@ -215,6 +215,7 @@ class LrnsysButton extends LitElement {
        */
       icon: {
         type: String,
+        reflect: true,
       },
       /**
        * Classes to add / subtract based on the item being hovered.

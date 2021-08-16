@@ -82,7 +82,7 @@ class LrndesignGallerycard extends LitElement {
         }
 
         .card-control-height {
-          height: 240px;
+          height: 216px;
         }
 
         :host([elevation="0"]) {
@@ -90,10 +90,10 @@ class LrndesignGallerycard extends LitElement {
         }
 
         :host([elevation="1"]) {
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
         }
         :host([elevation="2"]) {
-          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
         .text-right {

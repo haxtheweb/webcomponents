@@ -22,7 +22,6 @@ class LrnappStudioProjectButton extends PolymerElement {
       </style>
       <template is="dom-if" if="[[createProjectsUrl]]">
         <lrnsys-button
-          raised=""
           class$="[[classes]]"
           button-class$="[[classes]]"
           icon="[[icon]]"
