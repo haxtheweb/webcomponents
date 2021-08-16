@@ -58,7 +58,7 @@ class A11yMediaStateManager extends LitElement {
     this.players = [];
     this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
     this.__activeManager = (e) => this.setActivePlayer(e.detail);
-    this.__scrollChecker = (e) => this._checkScroll(e);
+    this.__scrollChecker = (e) => setTimeout(this._checkScroll(), 500);
     this.__playerLoader = (e) => this.players.push(e.detail);
 
     // sets the instance to the current instance
@@ -101,9 +101,6 @@ class A11yMediaStateManager extends LitElement {
    */
   setStickyPlayer(player) {
     let parent = this._getParentNode(player);
-    this.__playerTop = parent.offsetTop;
-    this.__playerUpperMiddle = this.__playerTop + parent.offsetHeight * 0.9;
-    this.__playerLowerMiddle = this.__playerTop + parent.offsetHeight * 0.1;
     if (
       player !== this.activePlayer &&
       this.activePlayer !== undefined &&
@@ -113,7 +110,7 @@ class A11yMediaStateManager extends LitElement {
     }
     parent.style.height = parent.offsetHeight + "px";
     this.setActivePlayer(player);
-    this._checkScroll();
+    setTimeout(this._checkScroll(), 500);
   }
 
   /**
@@ -122,6 +119,12 @@ class A11yMediaStateManager extends LitElement {
   _checkScroll() {
     let wintop = window.pageYOffset,
       winbottom = wintop + window.innerHeight;
+    if (this.activePlayer) {
+      let parent = this._getParentNode(this.activePlayer);
+      this.__playerTop = parent.offsetTop;
+      this.__playerUpperMiddle = this.__playerTop + parent.offsetHeight * 0.8;
+      this.__playerLowerMiddle = this.__playerTop + parent.offsetHeight * 0.2;
+    }
     if (this.activePlayer !== undefined && this.activePlayer !== null) {
       if (
         this.activePlayer.__playing &&
