@@ -114,6 +114,18 @@ class HAX extends HTMLElement {
       text-align: left;
       vertical-align: middle;
     }
+    figure {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    figure > *:first-child, 
+    figcaption > *:first-child{
+      margin-top: 0;
+    }
+    figure > *:last-child.
+    figcaption > *:last-child {
+      margin-bottom: 0;
+    }
     </style>
     <hax-body>
         <slot></slot>

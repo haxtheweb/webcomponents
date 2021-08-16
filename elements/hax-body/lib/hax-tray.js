@@ -1411,14 +1411,33 @@ class HaxTray extends I18NMixin(
       ];
       // array of things to forcibly disable
       let disable = [];
+      if (isGrid) {
+        props.settings.configure = (props.settings.configure || []).filter(
+          (prop) =>
+            prop.slot !== "" &&
+            !prop.slot &&
+            (!prop.attribute || prop.attribute != "slot")
+        );
+        props.settings.layout = (props.settings.layout || []).filter(
+          (prop) =>
+            prop.slot !== "" &&
+            !prop.slot &&
+            (!prop.attribute || prop.attribute != "slot")
+        );
+        props.settings.layout.advanced = (props.settings.advanced || []).filter(
+          (prop) =>
+            prop.slot !== "" &&
+            !prop.slot &&
+            (!prop.attribute || prop.attribute != "slot")
+        );
+      }
+
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
         this.activeSchema[0].properties.push({
           property: "configure",
           title: this.t.configure,
-          properties: !isGrid
-            ? props.settings.configure
-            : props.settings.configure.filter((prop) => !prop.slot),
+          properties: props.settings.configure,
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1432,9 +1451,7 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "layout",
           title: this.t.layout,
-          properties: !isGrid
-            ? props.settings.layout
-            : props.settings.layout.filter((prop) => !prop.slot),
+          properties: props.settings.layout,
         });
       } else {
         this.activeSchema[0].properties.push({
@@ -1448,9 +1465,7 @@ class HaxTray extends I18NMixin(
         this.activeSchema[0].properties.push({
           property: "advanced",
           title: this.t.advanced,
-          properties: !isGrid
-            ? props.settings.advanced
-            : props.settings.advanced.filter((prop) => !prop.slot),
+          properties: props.settings.advanced,
         });
       } else {
         this.activeSchema[0].properties.push({
