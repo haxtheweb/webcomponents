@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { RichTextEditorButtonBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 /**
- * `rich-text-editor-unlink`
+ * `hax-text-editor-paste-button`
  * a link button for rich text editor
  *
  * @customElement
@@ -14,15 +14,17 @@ import { RichTextEditorButtonBehaviors } from "@lrnwebcomponents/rich-text-edito
  * @lit-element
  * @extends RichTextEditorPromptButtonBehaviors
  * @extends LitElement
- * @element rich-text-editor-unlink
+ * @element hax-text-editor-paste-button
  * @demo ./demo/buttons.html
  */
-class RichTextEditorUnlink extends RichTextEditorButtonBehaviors(LitElement) {
+class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
-    return "rich-text-editor-unlink";
+    return "hax-text-editor-paste-button";
   }
 
   // render function for template
@@ -47,5 +49,8 @@ class RichTextEditorUnlink extends RichTextEditorButtonBehaviors(LitElement) {
       HAXStore._onPaste({ ...e, clipboardData: navigator.clipboard });
   }
 }
-window.customElements.define(RichTextEditorUnlink.tag, RichTextEditorUnlink);
-export { RichTextEditorUnlink };
+window.customElements.define(
+  HaxTextEditorPasteButton.tag,
+  HaxTextEditorPasteButton
+);
+export { HaxTextEditorPasteButton };

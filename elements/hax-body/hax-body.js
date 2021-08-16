@@ -703,6 +703,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get properties() {
     return {
       ...super.properties,
+      /** enabldes link targets */
+      allowLinkTarget: {
+        type: Boolean,
+      },
       haxMover: {
         type: Boolean,
         attribute: "hax-mover",

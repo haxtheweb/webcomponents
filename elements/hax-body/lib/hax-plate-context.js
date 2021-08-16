@@ -353,7 +353,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             label="${this.t.addColumn}"
             ?disabled="${this.hasActiveEditingElement || this.viewSource}"
             event-name="hax-plate-create-right"
-            ?hidden="${!this.isGridPlate()}"
             data-simple-tour-stop
             data-stop-title="label"
           >

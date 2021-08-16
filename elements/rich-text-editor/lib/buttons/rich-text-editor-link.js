@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { range } from "lodash-es";
 import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-link`
@@ -68,29 +69,32 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.shortcutKeys = "ctrl+k";
   }
 
+  get defaultFields() {
+    return [
+      ...super.fields,
+      {
+        property: "href",
+        title: "Link",
+        inputMethod: "url",
+        autoValidate: true,
+      },
+    ];
+  }
+
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "allowTarget") {
-        let fields = [
-          ...super.fields,
-          {
-            property: "href",
-            title: "Link",
-            inputMethod: "url",
-            autoValidate: true,
-          },
-        ];
-        this.fields = this.allowTarget
-          ? { ...fields }
-          : {
-              ...fields,
-              allowTarget: {
+        this.fields = !this.allowTarget
+          ? [...this.defaultFields]
+          : [
+              ...this.defaultFields,
+              {
                 property: "target",
                 title: "Target",
                 inputMethod: "textfield",
               },
-            };
+            ];
       }
     });
   }
@@ -129,11 +133,13 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     return {
       ...super.getValue(),
       target:
-        this.allowTarget && this.targetedNode.getAttribute
+        !!this.allowTarget &&
+        !!this.targetedNode &&
+        this.targetedNode.getAttribute
           ? this.targetedNode.getAttribute("target")
           : undefined,
       href:
-        this.targetedNode && this.targetedNode.getAttribute
+        !!this.targetedNode && this.targetedNode.getAttribute
           ? this.targetedNode.getAttribute("href")
           : undefined,
     };
@@ -146,6 +152,16 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   setToggled() {
     this.toggled = !!this.getPropValue("href");
+  }
+  updateSelection() {
+    let range = this.range,
+      target =
+        !this.value || !this.value.target || !this.value.href
+          ? undefined
+          : this.value.target;
+    super.updateSelection();
+    if (!target) return;
+    range.commonAncestorContainer.children[0].setAttribute("target", target);
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
