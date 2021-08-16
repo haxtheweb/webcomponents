@@ -1169,7 +1169,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof RichTextEditorManager
      */
     enableEditing(target = this.editor) {
-      console.log("enableEditing", target);
       let handlers = this.enabledTargetHandlers;
       if (!!target && !target.hidden && !target.disabled) {
         if (target.makeSticky) target.makeSticky(this.sticky);
