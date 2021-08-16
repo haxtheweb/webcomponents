@@ -651,12 +651,16 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         : "icons:radio-button-unchecked";
     }
     getInput(option) {
-      let checked = !option
-          ? !!this.value
-          : this.type === "radio"
-          ? this.value === (option || {}).value
-          : (this.value || []).includes((option || {}).value),
+      let checked =
+          this.type !== "radio" && this.type !== "checkbox"
+            ? false
+            : !option
+            ? !!this.value
+            : this.type === "radio"
+            ? this.value === (option || {}).value
+            : (this.value || []).includes((option || {}).value),
         icon = this.getOptionIcon(checked);
+      if (this.type == "url") console.log(this, checked);
       return html`
         <span class="input-option" part="option-inner">
           <input

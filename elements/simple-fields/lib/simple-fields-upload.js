@@ -183,9 +183,9 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
               type="url"
               auto-validate=""
               part="url"
-              @click="${(e) => e.preventDefault()}"
-              @mousedown="${(e) => e.preventDefault()}"
-              @focus="${(e) => e.preventDefault()}"
+              @click="${(e) => e.stopImmediatePropagation()}"
+              @mousedown="${(e) => e.stopImmediatePropagation()}"
+              @focus="${(e) => e.stopImmediatePropagation()}"
             >
             </simple-fields-field>
             <simple-toolbar-button
