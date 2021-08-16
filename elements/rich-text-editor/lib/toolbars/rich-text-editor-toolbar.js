@@ -1045,7 +1045,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         document.body.appendChild(this.breadcrumbs);
       }
       this.breadcrumbs.label = this.breadcrumbsLabel;
-      console.log(this.breadcrumbs);
       return this.breadcrumbs;
     }
 
@@ -1114,7 +1113,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.selectionAncestors = this.selectionAncestors;
           this.breadcrumbs.hidden = this.disconnected;
           this.breadcrumbs.editor = this.editor;
-          console.log(this.breadcrumbs.editor, this.editor);
         }
       }
     }
@@ -1148,7 +1146,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.slot = target.slot;
         if (this.hasBreadcrumbs) {
           this.breadcrumbs = this.breadcrumbs || this._addBreadcrumbs();
-          console.log(this.breadcrumbs, target);
           this.target.parentNode.insertBefore(
             this.breadcrumbs,
             this.target.nextSibling
