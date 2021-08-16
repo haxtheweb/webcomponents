@@ -133,12 +133,13 @@ class A11yFigure extends A11yDetails {
       canScale: true,
       canPosition: true,
       canEditSource: true,
+      type: "grid",
       gizmo: {
-        title: "Accessible Figure",
+        title: "Descriptive Figure",
         description: "Accessible figure with long description",
-        icon: "av:call-to-action",
+        icon: "hax:figure",
         color: "grey",
-        groups: ["11"],
+        groups: ["images"],
         handles: [
           {
             type: "image",
