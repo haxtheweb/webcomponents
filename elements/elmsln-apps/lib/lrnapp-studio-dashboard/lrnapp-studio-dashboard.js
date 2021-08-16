@@ -25,6 +25,9 @@ class LrnappStudioDashboard extends PolymerElement {
           display: inline-flex;
           justify-content: space-evenly;
         }
+        .dashboard-item {
+          min-width: 30%;
+        }
         h2 {
           font-size: 32px;
           margin: 8px;
