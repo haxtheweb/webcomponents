@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "a simple progress slider bar",
   "repository": {
     "type": "git",
@@ -44,9 +44,14 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^3.0.0",
+    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@open-wc/testing": "2.5.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/test-runner": "0.13.5",
+    "@web/test-runner-commands": "0.4.5",
+    "@web/test-runner-playwright": "0.8.6",
+    "@web/test-runner-puppeteer": "0.10.0",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "es-dev-server": "2.1.0",
@@ -55,12 +60,7 @@
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.33",
-    "@web/test-runner": "0.13.5",
-    "@web/test-runner-commands": "0.4.5",
-    "@web/test-runner-playwright": "0.8.6",
-    "@web/test-runner-puppeteer": "0.10.0"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
