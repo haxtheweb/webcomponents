@@ -248,7 +248,7 @@ class LrnappStudioInstructor extends PolymerElement {
     <paper-toggle-button id="datatype" checked="{{dataType}}" disabled>
       [[dataTypeText]]
     </paper-toggle-button>
-    <button id="statsdialogbutton" disabled><simple-icon icon="editor:show-chart"></simple-icon> Statistics</span></button>
+    <!-- <button id="statsdialogbutton" disabled><simple-icon icon="editor:show-chart"></simple-icon> Statistics</span></button> -->
     <paper-dialog id="statsdialog" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>

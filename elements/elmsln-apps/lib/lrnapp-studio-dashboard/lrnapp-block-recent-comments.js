@@ -11,6 +11,12 @@ class LrnappBlockRecentComments extends PolymerElement {
         :host {
           display: block;
         }
+        lrnapp-block-recent-comments-comment .comment-text {
+          height: 50px;
+          overflow: hidden;
+          font-size: 12px;
+          font-weight: normal;
+        }
       </style>
       <div id="loading">
         <h3>Loading..</h3>
@@ -35,7 +41,7 @@ class LrnappBlockRecentComments extends PolymerElement {
           date-updated="{{comment.attributes.changed}}"
           class="ferpa-protect"
         >
-          [[comment.attributes.body]]
+          <div class="comment-text">[[comment.attributes.body]]</div>
         </lrnapp-block-recent-comments-comment>
       </template>
     `;
