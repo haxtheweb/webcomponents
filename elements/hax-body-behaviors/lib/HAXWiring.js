@@ -717,6 +717,8 @@ export class HAXWiring {
           meta: {
             author: "auto",
           },
+          requiresChildren: false,
+          requiresParent: false,
         },
         settings: {
           configure: [

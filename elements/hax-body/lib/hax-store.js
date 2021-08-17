@@ -2064,15 +2064,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         step: 5,
       },
       type: "grid",
-      editingElement: "core",
       canPosition: true,
       canEditSource: true,
       gizmo: {
         title: "Figure",
         description: "A basic figure tag",
-        icon: "image:image",
+        icon: "hax:figure",
         color: "blue-grey",
         groups: ["Image", "Media", "Layout"],
+        requiresChildren: "figcaption",
         handles: [],
         meta: {
           author: "W3C",
@@ -2085,7 +2085,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             title: "Figure Content",
             description: "The content of the figure",
             inputMethod: "code-editor",
-            slotWrapper: "figcaption",
           },
         ],
       },
@@ -2093,7 +2092,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         {
           tag: "figure",
           properties: {},
-          content: "<img>\n<figcaption>Image Caption Here</figcaption>",
+          content:
+            '<img src="https://dummyimage.com/300x200/000/fff" alt="image other media here">\n<figcaption><p>Image Caption Here</p></figcaption>',
         },
       ],
     };
@@ -2103,7 +2103,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         min: 10,
         step: 5,
       },
-      type: "element",
+      type: "grid",
       editingElement: "core",
       canPosition: true,
       canEditSource: true,
@@ -2114,6 +2114,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         color: "blue-grey",
         groups: ["Image", "Media"],
         handles: [],
+        requiresParent: "figure",
         meta: {
           author: "W3C",
         },
@@ -2394,10 +2395,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       code: {
         title: "Code",
         icon: "icons:code",
-      },
-      figure: {
-        title: "Figure",
-        icon: "icons:label-outline",
       },
       embed: {
         title: "Embedded object",

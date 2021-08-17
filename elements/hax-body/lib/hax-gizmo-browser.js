@@ -165,7 +165,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           if (
             gizmo &&
             gizmo.meta &&
-            (gizmo.meta.inlineOnly || gizmo.meta.hidden)
+            (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
           ) {
             return false;
           }

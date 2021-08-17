@@ -29,7 +29,6 @@
     <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
       <h2>Subheading</h2>
-      <grid-plate id="grid2" layout="1"></grid-plate>
       <h2>Heading 2</h2>
       <grid-plate id="grid" layout="1-1-1-1">
         <!--video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
@@ -51,6 +50,25 @@
         <p slot="col-2">Cat</p>
         <p slot="col-3">Dog</p>
         <p slot="col-3"><lrn-math>a+b=c</lrn-math></p>
+
+        <a11y-figure close-text="Hide Aenean" open-text="Show Aenean" slot="col-4">
+          <figure>
+            <img src="//placekitten.com/400/300" alt="random kitten">
+            <figcaption>
+              <h4>Random Kitten</h4>
+              <details>
+                <summary>Aenean</summary>
+                Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
+                Pellentesque magna velit, tincidunt quis pharetra id, gravida 
+                placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
+                vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
+                purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
+                Nunc convallis justo sed nibh consectetur, at pharetra nulla 
+                accumsan.
+              </details>
+            </figcaption>
+          </figure>
+        </a11y-figure>
           <!--img
             slot="col-3" 
             width="100%" 
@@ -74,6 +92,10 @@
       <stop-note title="Error Message" url="https://www.google.com">
         <p slot="message">You can write any error message you want here.</p>
       </stop-note>
+      <figure>
+        <img src="https://picsum.photos/200/200" alt="random image"/>
+        <figcaption><p>This is an image.</p></figcaption>
+      </figure>
       <table>
         <caption>Table</caption>
         <tr><th>Test</th><td>123</td></tr>
@@ -124,6 +146,9 @@
         <1--<h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <h3 id="specific">With id</h3>
+        <a11y-media-player accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
+          <video><track label="English" kind="subtitles" srclang="en" src="./bueller.vtt"></video>
+        </a11y-media-player>
         <a11y-gif-player 
           alt="It's Always Sunny in Philadelphia GIF Meme" 
           src="https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif"

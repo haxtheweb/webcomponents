@@ -804,7 +804,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     firstUpdated(changedProperties) {
       if (!this.id) this.id = this._generateUUID();
       super.firstUpdated(changedProperties);
-      if (this.hasBreadcrumbs) this._addBreadcrumbs();
+      if (this.hasBreadcrumbs && this.editor)
+        this.positionByTarget(this.editor);
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
       this.__prompt.addEventListener("open", (e) => {
         this.__promptOpen = true;
@@ -1044,6 +1045,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         document.body.appendChild(this.breadcrumbs);
       }
       this.breadcrumbs.label = this.breadcrumbsLabel;
+      return this.breadcrumbs;
     }
 
     /**
@@ -1110,7 +1112,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (this.breadcrumbs) {
           this.breadcrumbs.selectionAncestors = this.selectionAncestors;
           this.breadcrumbs.hidden = this.disconnected;
-          this.breadcrumbs.__target = this.__target;
+          this.breadcrumbs.editor = this.editor;
         }
       }
     }
@@ -1142,7 +1144,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!!target) {
         target.parentNode.insertBefore(this, target);
         this.slot = target.slot;
-        if (this.breadcrumbs) {
+        if (this.hasBreadcrumbs) {
+          this.breadcrumbs = this.breadcrumbs || this._addBreadcrumbs();
           this.target.parentNode.insertBefore(
             this.breadcrumbs,
             this.target.nextSibling
@@ -1165,7 +1168,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} editor
      * @memberof RichTextEditorManager
      */
-    enableEditing(target = this.target) {
+    enableEditing(target = this.editor) {
       let handlers = this.enabledTargetHandlers;
       if (!!target && !target.hidden && !target.disabled) {
         if (target.makeSticky) target.makeSticky(this.sticky);
