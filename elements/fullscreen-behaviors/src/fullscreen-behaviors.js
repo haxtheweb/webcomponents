@@ -83,7 +83,7 @@ const FullscreenBehaviors = function (SuperClass) {
       this.__fullscreenEnabled =
         this.fullscreenManager && this.fullscreenManager.enabled;
       if (screenfull && screenfull.isEnabled) {
-        screenfull.on("change", this._updateFullscreen.bind(this));
+        screenfull.on("change", (e) => this._updateFullscreen.bind(this));
       }
     }
 
