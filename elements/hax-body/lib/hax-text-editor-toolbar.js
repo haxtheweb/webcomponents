@@ -653,7 +653,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       handles = gizmo.handles || [],
       title =
         gizmo.title || gizmo.tag.replace(/-./g, (x) => x.toUpperCase()[1]),
-      inline = handles.filter((handle) => handle.type === "inline");
+      inline = handles.filter(
+        (handle) =>
+          handle.type === "inline" && gizmo.tag && gizmo.tag.contains("-")
+      );
     element.gizmo = element.gizmo || {};
     element.gizmo.title = `Add ${title}`;
     if (inline.length > 0) {

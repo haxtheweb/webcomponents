@@ -13,6 +13,7 @@ import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import * as shadow from "shadow-selection-polyfill/shadow.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
 /**
@@ -1381,9 +1382,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetDoubleClick(target, e) {
+      let eventPath = normalizeEventPath(e);
       if (!target || target.disabled || this.target !== target) return;
       let els = Object.keys(this.clickableElements || {}),
-        el = e.target || e.srcElement || { tagName: "" },
+        el = eventPath[0] || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
       if (tagname && els.includes(tagname)) {
@@ -1394,13 +1396,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetClick(target, e) {
+      let eventPath = normalizeEventPath(e);
       if (!target || target.disabled) return;
       if (this.target !== target) {
         e.preventDefault();
         this.setTarget(target);
       } else {
         let els = Object.keys(this.clickableElements || {}),
-          el = e.target || e.srcElement || { tagName: "" },
+          el = eventPath[0] || { tagName: "" },
           evt = { detail: el },
           tagname = (el.tagName || "").toLowerCase();
         if (tagname && els.includes(tagname)) {
