@@ -144,13 +144,20 @@ class LrnappStudioKanban extends PolymerElement {
           display: none;
         }
         .assignment-row {
-          height: 32px;
+          height: 40px;
           border: 1px solid #000000;
           background-color: #ffffff;
         }
         .assignment-row .assignment-row-button.active {
           background-color: var(--paper-amber-50);
           font-weight: bold;
+        }
+        .assignment-row-title {
+          font-size: 16px;
+          text-align: left;
+          line-height: 16px;
+          margin-top: 8px;
+          overflow: hidden;
         }
         .assignment-row:hover .assignment-operations {
           display: block;
@@ -214,7 +221,7 @@ class LrnappStudioKanban extends PolymerElement {
           max-width: 10em;
         }
         lrnsys-button {
-          --lrnsys-button-height: 32px;
+          --lrnsys-button-height: 40px;
         }
       </style>
       <iron-ajax
@@ -273,7 +280,7 @@ class LrnappStudioKanban extends PolymerElement {
                 id$="project-[[project.id]]"
                 class="project-card grey lighten-3 card"
               >
-                <h3 class="header">[[project.attributes.title]]"</h3>
+                <h3 class="header">[[project.attributes.title]]</h3>
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
@@ -328,7 +335,9 @@ class LrnappStudioKanban extends PolymerElement {
                           on-click="assignmentClick"
                           icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
                         >
-                          [[assignment.attributes.title]]
+                          <span class="assignment-row-title"
+                            >[[assignment.attributes.title]]</span
+                          >
                         </lrnsys-button>
                         <span class="assignment-operations">
                           <lrnsys-button
