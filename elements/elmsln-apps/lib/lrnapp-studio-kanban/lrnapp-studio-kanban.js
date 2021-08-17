@@ -273,7 +273,7 @@ class LrnappStudioKanban extends PolymerElement {
                 id$="project-[[project.id]]"
                 class="project-card grey lighten-3 card"
               >
-                <h3 class="header">[[project.attributes.title]]"</h3>
+                <h3 class="header">[[project.attributes.title]]</h3>
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
