@@ -307,6 +307,26 @@ class GridPlate extends LitElement {
               var(--hax-layout-accent-color, #009dc7)
             );
         }
+        /* drag and drop */
+        :host .column ::slotted(*)::before {
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -12px 0 0 0;
+          z-index: 2;
+          height: 12px;
+          transition: 0.2s all ease-in-out;
+        }
+        :host .column ::slotted(*.hax-hovered)::before {
+          background-color: var(--hax-body-target-background-color) !important;
+        }
+        :host .column ::slotted(img.hax-hovered) {
+          outline: var(--hax-body-editable-outline);
+          border-top: 8px
+            var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
+          margin-top: -8px;
+        }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           :host([data-hax-ray]) ::slotted(*.active) {
@@ -320,6 +340,16 @@ class GridPlate extends LitElement {
                 --hax-layout-slotted-active-outline-color,
                 var(--hax-layout-accent-color, #009dc7)
               );
+          }
+          :host .column ::slotted(*) {
+            outline: var(--hax-body-editable-outline);
+            background-color: var(--hax-body-possible-target-background-color);
+          }
+          :host .column ::slotted(*.hax-hovered) {
+            background-color: var(
+              --hax-body-target-background-color
+            ) !important;
+            outline: var(--hax-body-active-outline);
           }
         }
       `,

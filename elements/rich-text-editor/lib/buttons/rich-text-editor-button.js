@@ -303,7 +303,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      *
      * @param {event} e click event
      */
-    tagClickCallback(e) {}
+    tagClickCallback(e) {
+      return false;
+    }
     /**
      * indicates range should be wrapped in given element
      * @event wrapselection
