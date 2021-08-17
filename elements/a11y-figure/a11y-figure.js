@@ -290,11 +290,6 @@ class A11yFigure extends A11yDetails {
     this.__hasDetail =
       !!this.querySelector("summary") ||
       !!this.querySelector("*[slot=summary]");
-    console.log(
-      this.querySelector("summary"),
-      this.querySelector("*[slot=summary]"),
-      !!this.querySelector("summary") || !!this.querySelector("*[slot=summary]")
-    );
     if (figcaption) {
       this._copyAndFilter(figcaption.cloneNode(true), [
         "figcaption",
