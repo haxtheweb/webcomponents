@@ -717,6 +717,9 @@ class LrnappStudioKanban extends PolymerElement {
   assignmentClick(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
+    if (local.tagName === "SPAN") {
+      local = local.parentNode;
+    }
     if (this.activeAssignment != null && this.activeAssignment != local.id) {
       this.shadowRoot
         .querySelector("#" + this.activeAssignment)

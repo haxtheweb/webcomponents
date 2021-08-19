@@ -19,3 +19,4 @@ import "./lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
 import "./lib/mooc-content/mooc-content.js";
 import "./lib/elmsln-base.js";
 import "./lib/elmsln-base-deps.js";
+import "@polymer/paper-input/paper-input.js";
