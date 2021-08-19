@@ -272,6 +272,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           max-height: calc(100vh - 100px);
           --site-menu-active-color: #ffffff;
           --site-menu-item-active-item-color: goldenrod;
+          overflow: auto;
         }
 
         app-drawer-layout {
