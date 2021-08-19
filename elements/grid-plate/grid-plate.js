@@ -237,62 +237,46 @@ class GridPlate extends LitElement {
         }
         /** this implies hax editing state is available **/
         :host([data-hax-ray]) ::slotted(*) {
-          outline: var(--hax-layout-slotted-outline-width, 0px)
-            var(--hax-layout-slotted-outline-style, solid)
-            var(
-              --hax-layout-slotted-outline-color,
-              var(--hax-layout-slotted-faded-color, #eeeeee)
-            );
-          outline-offset: var(--hax-layout-slotted-outline-offset, 0px);
+          border: var(
+            ---hax-body-editable-outline,
+            1px solid var(--hax-ui-disabled-color, #ddd)
+          );
         }
         :host([data-hax-ray]) ::slotted(*:hover) {
-          outline: var(--hax-layout-slotted-hover-outline-width, 0px)
-            var(--hax-layout-slotted-hover-outline-style, solid)
-            var(
-              --hax-layout-slotted-hover-outline-color,
-              var(--hax-layout-accent-color, #009dc7)
-            );
+          border: var(
+            --hax-body-active-outline-hover,
+            1px solid var(--hax-ui-color-faded, #444)
+          );
         }
         :host([data-hax-ray]) ::slotted(.hax-active) {
-          outline: var(--hax-layout-slotted-active-outline-width, 1px)
-            var(--hax-layout-slotted-active-outline-style, solid)
-            var(
-              --hax-layout-slotted-active-outline-color,
-              var(--hax-layout-slotted-faded-color, #eeeeee)
-            );
+          border: var(
+            --hax-body-active-outline,
+            1px solid var(--hax-ui-color-focus, #000)
+          );
+        }
+        :host([data-hax-ray]) ::slotted(.hax-active:hover) {
+          border: var(
+            --hax-body-active-drag-outline,
+            1px solid var(--hax-ui-color-accent, #009dc7)
+          );
         }
         :host([data-hax-ray]) [data-layout-slotname] {
-          outline: var(--hax-layout-container-outline-width, 0px)
-            var(--hax-layout-container-outline-style, solid)
-            var(
-              --hax-layout-container-outline-color,
-              var(--hax-layout-slotted-faded-color, #eeeeee)
-            );
-          outline-offset: var(--hax-layout-container-outline-offset, 2px);
+          outline: var(
+            ---hax-body-editable-outline,
+            1px solid var(--hax-ui-disabled-color, #ddd)
+          );
+          outline-style: dotted;
+          outline-offset: var(--hax-layout-container-outline-offset, 0px);
         }
         :host([data-hax-ray]) [data-layout-slotname]:hover {
-          outline: var(--hax-layout-container-hover-outline-width, 0px)
-            var(--hax-layout-container-hover-outline-style, solid)
-            var(
-              --hax-layout-container-hover-outline-color,
-              var(--hax-layout-slotted-faded-color, #eeeeee)
-            );
+          outline-style: solid;
         }
-        :host([data-hax-ray]) ::slotted(*.active):before {
-          outline: var(--hax-layout-slotted-active-outline-width, 1px)
-            var(--hax-layout-slotted-active-outline-style, solid)
-            var(
-              --hax-layout-slotted-active-outline-color,
-              var(--hax-layout-slotted-faded-color, #eeeeee)
-            );
-          background-color: inherit;
-          content: " ";
-          width: 100%;
-          display: block;
-          position: relative;
-          margin: -10px 0 0 0;
-          z-index: 2;
-          height: 10px;
+        :host([data-hax-ray].hax-hovered) [data-layout-slotname].active {
+          outline: var(
+            --hax-body-active-drag-outline,
+            1px solid var(--hax-ui-color-accent, #009dc7)
+          );
+          outline-width: 2px;
         }
         :host([data-hax-ray]) ::slotted(img.active),
         :host([data-hax-ray]) ::slotted(*.active):before {
@@ -300,29 +284,32 @@ class GridPlate extends LitElement {
             --hax-layout-slotted-active-outline-color,
             var(--hax-layout-accent-color, #009dc7)
           ) !important;
-          outline: var(--hax-layout-slotted-active-outline-width, 1px)
-            var(--hax-layout-slotted-active-outline-style, solid)
-            var(
-              --hax-layout-slotted-active-outline-color,
-              var(--hax-layout-accent-color, #009dc7)
-            );
+          outline: var(
+            --hax-body-active-outline,
+            1px solid var(--hax-ui-color-focus, #000)
+          );
+          outline-style: dotted;
         }
         /* drag and drop */
         :host .column ::slotted(*)::before {
           content: " ";
-          width: 100%;
+          width: calc(100% + 32px);
           display: block;
           position: relative;
-          margin: -12px 0 0 0;
+          margin: -28px -16px 12px;
           z-index: 2;
           height: 12px;
+          border: none !important;
           transition: 0.2s all ease-in-out;
         }
         :host .column ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
         }
         :host .column ::slotted(img.hax-hovered) {
-          outline: var(--hax-body-editable-outline);
+          outline: var(
+            ---hax-body-editable-outline,
+            1px solid var(--hax-ui-disabled-color, #ddd)
+          );
           border-top: 8px
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
@@ -386,6 +373,9 @@ class GridPlate extends LitElement {
               data-layout-slotname="col-${num}"
               part="layout-container"
               .style="${this._getColumnWidth(num - 1, this.__columnWidths)}"
+              @drop="${this._drop}"
+              @dragenter="${this._dragEnter}"
+              @dragleave="${this._dragleave}"
             >
               <slot name="col-${num}"></slot>
             </div>
@@ -393,6 +383,23 @@ class GridPlate extends LitElement {
         )}
       </div>
     `;
+  }
+  _drop(e) {
+    if (!this.dataHaxRay) return;
+    this.querySelectorAll(".active").forEach((el) => {
+      el.classList.remove("active");
+    });
+    this.shadowRoot.querySelectorAll(".active").forEach((el) => {
+      el.classList.remove("active");
+    });
+  }
+  _dragEnter(e) {
+    if (!this.dataHaxRay) return;
+    e.target.classList.add("active");
+  }
+  _dragleave(e) {
+    if (!this.dataHaxRay) return;
+    e.target.classList.remove("active");
   }
   static get tag() {
     return "grid-plate";
@@ -556,6 +563,11 @@ class GridPlate extends LitElement {
        */
       columns: {
         type: Number,
+        reflect: true,
+      },
+      dataHaxRay: {
+        type: String,
+        attribute: "data-hax-ray",
         reflect: true,
       },
       /**
