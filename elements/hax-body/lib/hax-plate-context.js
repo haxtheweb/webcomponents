@@ -152,9 +152,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       <hax-toolbar>
         <div class="group">
           <hax-toolbar-menu
-            ?disabled="${this.hasActiveEditingElement ||
-            !this.canMoveElement ||
-            this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement ||
+              !this.canMoveElement ||
+              this.viewSource
+            }"
             id="drag"
             action
             icon="hax:arrow-all"
@@ -307,34 +309,21 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             </div>
           </hax-context-item>
         </div>
-        <div class="group">
-          <hax-toolbar-menu
-            id="remove"
-            action
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
-            icon="delete"
-            label="${this.t.remove}"
-            reset-on-select
-            data-simple-tour-stop
-            data-stop-title="label"
-          >
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                danger
-                align-horizontal="left"
-                show-text-label
-                role="menuitem"
-                icon="delete"
-                label="${this.t.confirmDelete}"
-                event-name="hax-plate-delete"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            <div slot="tour" data-stop-content>
-              Delete the current item. You can always use the undo arrow to
-              bring this back.
-            </div>
-          </hax-toolbar-menu>
+        <hax-context-item
+          action
+          icon="delete"
+          ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+          icon="delete"
+          label="${this.t.remove}"
+          event-name="hax-plate-delete"
+          data-simple-tour-stop
+          data-stop-title="label"
+      >
+          <div slot="tour" data-stop-content>
+            Delete the current item. You can always use the undo arrow to
+            bring this back.
+          </div>
+        </hax-context-item>
           ${this.ceButtons.map((el) => {
             return html` <hax-context-item
               action
@@ -403,8 +392,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             data-stop-title="label"
             event-name="content-edit"
             toggles
-            ?toggled="${this.trayDetail === "content-edit" &&
-            this.trayStatus !== "collapsed"}"
+            ?toggled="${
+              this.trayDetail === "content-edit" &&
+              this.trayStatus !== "collapsed"
+            }"
           >
             <div slot="tour" data-stop-content>
               Opens the Edit panel for more advanced settings.
