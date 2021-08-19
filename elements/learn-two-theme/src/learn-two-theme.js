@@ -269,7 +269,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           background-color: var(--learn-two-theme-menu-color, #383f45);
           color: #ffffff;
           padding: 0;
-          max-height: calc(100vh - 100px);
+          min-height: calc(100vh - 100px);
           --site-menu-active-color: #ffffff;
           --site-menu-item-active-item-color: goldenrod;
         }
