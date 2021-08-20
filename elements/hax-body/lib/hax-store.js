@@ -3185,6 +3185,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
       for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
+        if (!slotnodes[j]) return;
         if (typeof slotnodes[j].tagName !== typeof undefined) {
           // if we're a custom element, keep digging, otherwise a simple
           // self append is fine.

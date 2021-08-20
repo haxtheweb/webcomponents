@@ -154,12 +154,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-contextual-action-text-color: var(--hax-ui-background-color);
           --hax-contextual-action-hover-color: var(--hax-ui-color-accent);
           --hax-contextual-action-color: var(--hax-ui-color-accent-secondary);
-          --hax-body-editable-outline: 0px solid
-            var(--hax-ui-background-color-secondary);
+          --hax-body-editable-outline: 1px solid
+            var(--hax-ui-disabled-color, #ddd);
           --hax-body-active-outline-hover: 1px solid
-            var(---hax-ui-background-color-faded);
-          --hax-body-active-outline: 0px solid var(---hax-ui-color-accent);
-          --hax-body-active-drag-outline: 1px solid var(--hax-ui-color-accent);
+            var(--hax-ui-color-faded, #444);
+          --hax-body-active-outline: 1px solid var(--hax-ui-color-focus, #000);
+          --hax-body-active-drag-outline: 1px solid
+            var(--hax-ui-color-accent, #009dc7);
           --hax-body-target-background-color: var(
             --hax-ui-background-color-accent
           );
@@ -3194,7 +3195,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   __isLayout(el) {
-    return el && HAXStore.isGridPlateElement(el);
+    return (
+      el &&
+      HAXStore.haxSchemaFromTag(el.tagName) &&
+      HAXStore.haxSchemaFromTag(el.tagName).type === "grid"
+    );
   }
   /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly
@@ -3287,6 +3292,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
       var eventPath = normalizeEventPath(e);
+      var dropSpot = eventPath[0];
+
       if (
         e.target.closest("[data-hax-layout]") &&
         e.target.parentNode != e.target.closest("[data-hax-layout]")
