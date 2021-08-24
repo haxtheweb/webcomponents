@@ -76,6 +76,7 @@ class RichTextEditorClipboard extends LitElement {
    */
   constructor() {
     super();
+    this.haxUIElement = true;
   }
 }
 window.customElements.define(

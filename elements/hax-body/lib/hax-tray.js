@@ -171,7 +171,7 @@ class HaxTray extends I18NMixin(
       ...HaxComponentStyles,
       css`
         :host {
-          z-index: 1000;
+          z-index: var(--hax-ui-focus-z-index - 1);
           top: 0;
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
@@ -290,6 +290,7 @@ class HaxTray extends I18NMixin(
           border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
           transition: 0.2s width ease-in-out 0s;
+          max-height: 100vh;
         }
         :host([collapsed]) .detail {
           width: 0px;
@@ -373,6 +374,7 @@ class HaxTray extends I18NMixin(
         @media screen and (max-width: 800px) {
           :host {
             width: 100%;
+            z-index: calc(var(--hax-ui-focus-z-index) + 3);
           }
           .wrapper {
             width: unset;

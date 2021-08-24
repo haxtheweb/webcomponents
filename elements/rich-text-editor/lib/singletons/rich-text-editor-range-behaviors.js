@@ -38,6 +38,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
 
     constructor() {
       super();
+      this.haxUIElement = true;
       this.__highlight = window.RichTextEditorHighlight.requestAvailability();
       this.__clipboard = window.RichTextEditorClipboard.requestAvailability();
     }
