@@ -1355,6 +1355,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       let newContent = "";
       // clear empty span tags that can pop up
       pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
+      //remove hax css variables
+      pasteContent = pasteContent.replace(
+        /(?:style="(\S+:\s*[^;"]+;\s*)*)(\S+:\s*var\(--hax[^;"]+(?:[;"]\s*))+/g,
+        ""
+      );
       // clean up div tags that can come in from contenteditable pastes
       // p tags make more sense in the content area
       pasteContent = pasteContent.replace(/<div/g, "<p");

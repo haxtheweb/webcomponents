@@ -455,12 +455,14 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       hideTimestamps: {
         type: Boolean,
+        attribute: "hide-timestamps",
       },
       /**
        * Hide transcript by default
        */
       hideTranscript: {
         type: Boolean,
+        attribute: "hide-transcript",
       },
       /**
        * Unique id

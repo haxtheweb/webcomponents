@@ -372,6 +372,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
+          :host(:not([tray-detail="collapsed"])) {
+            z-index: -1;
+          }
           :host([edit-mode]) #bodycontainer,
           :host([edit-mode]) #bodycontainer[element-align="left"],
           :host([edit-mode]) #bodycontainer[element-align="right"] {
@@ -675,6 +678,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           : this.viewSourceToggle
           ? this.activeNode.parentNode
           : this.activeNode}"
+        .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode}"
       >
         <div id="topcontextmenu">
