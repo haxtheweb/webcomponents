@@ -77,7 +77,19 @@ const FullscreenBehaviors = function (SuperClass) {
       return this.__fullscreenEnabled;
     }
     _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen) {
+      let delayedUpdate = (e) => {
+        setTimeout(this._updateFullscreen(), 500);
+      };
       this.__fullscreen = fullscreen;
+      if (this.__fullscreen) {
+        console.log("liusten");
+        document.addEventListener("fullscreenchange", delayedUpdate.bind(this));
+      } else {
+        document.removeEventListener(
+          "fullscreenchange",
+          delayedUpdate.bind(this)
+        );
+      }
     }
     _updateEnabled() {
       this.__fullscreenEnabled =
