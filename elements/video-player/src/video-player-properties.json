@@ -50,13 +50,15 @@
    * show cue's start and end time
    */
   "hideTimestamps": {
-    "type": "Boolean"
+    "type": "Boolean",
+    "attribute": "hide-timestamps"
   },
   /**
    * Hide transcript by default
    */
   "hideTranscript": {
-    "type": "Boolean"
+    "type": "Boolean",
+    "attribute": "hide-transcript"
   },
   /**
    * Unique id
