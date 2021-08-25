@@ -73,7 +73,8 @@ class A11yMediaStateManager extends LitElement {
   checkConcurrentPlayers() {
     let active = this.activePlayer;
     this.players.forEach((player) => {
-      if (player !== active) {
+      if (player.fullscreen) active = player;
+      if (!!active && player !== active) {
         player.toggleFullscreen(false);
         if (
           (!player.allowConcurrent && !active.allowConcurrent) ||
@@ -90,6 +91,7 @@ class A11yMediaStateManager extends LitElement {
    * @param {object} the player to set stickiness
    */
   setActivePlayer(player) {
+    console.log("active", this);
     this.activePlayer = player;
     this.checkConcurrentPlayers();
   }
