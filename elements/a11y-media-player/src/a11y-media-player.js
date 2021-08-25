@@ -1529,6 +1529,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   toggleTranscript(mode) {
     mode = mode === undefined ? this.hideTranscript : mode;
+    if (mode && !this.selectTranscriptByKey > -1) this.selectTranscriptByKey(0);
     this.hideTranscript = !mode;
     /**
      * Fires when transcript toggles
@@ -1569,7 +1570,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           );
         }) || 0;
     this.captionsTrack = media.textTracks[defaultTrack];
-    this.transcriptTrack = this.captionsTrack;
+    if (!this.hideTranscript) this.transcriptTrack = this.captionsTrack;
     this._handleTimeUpdate();
   }
 
