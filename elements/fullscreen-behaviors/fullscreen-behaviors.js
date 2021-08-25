@@ -76,13 +76,16 @@ const FullscreenBehaviors = function (SuperClass) {
     get fullscreenEnabled() {
       return this.__fullscreenEnabled;
     }
-    _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen) {
+    _updateFullscreen(fullscreen) {
+      if (typeof fullscreen === typeof undefined)
+        fullscreen = screenfull && screenfull.isFullscreen;
       let delayedUpdate = (e) => {
         setTimeout(this._updateFullscreen(), 500);
       };
       this.__fullscreen = fullscreen;
+
+      //needed for escape key detection
       if (this.__fullscreen) {
-        console.log("liusten");
         document.addEventListener("fullscreenchange", delayedUpdate.bind(this));
       } else {
         document.removeEventListener(
@@ -99,7 +102,8 @@ const FullscreenBehaviors = function (SuperClass) {
       }
     }
 
-    toggleFullscreen(mode = !screenfull.isFullscreen) {
+    toggleFullscreen(mode) {
+      if (typeof mode === typeof undefined) mode = !screenfull.isFullscreen;
       if (this.fullscreenEnabled && screenfull) {
         if (mode) {
           screenfull.request(this.fullscreenTarget);
