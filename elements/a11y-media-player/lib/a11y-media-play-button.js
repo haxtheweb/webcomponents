@@ -18,7 +18,10 @@ Custom styles:
  */
 class A11yMediaPlayButton extends A11yMediaButton {
   // properties available to the custom element for data binding
-
+  constructor() {
+    super();
+    this.youtubeId = null;
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
 
@@ -97,7 +100,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
       >
-        ${this.youtubeId != "undefined" && this.youtubeId != undefined
+        ${this.youtubeId != "undefined" && this.youtubeId
           ? html`
               <svg
                 id="svg"
