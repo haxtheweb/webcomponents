@@ -197,6 +197,7 @@ class HaxTray extends I18NMixin(
           height: 100vh;
           max-height: 100vh;
           transition: 0.2s opacity ease-in-out 0s;
+          z-index: var(--hax-ui-focus-z-index);
         }
         :host([element-align="left"]) .wrapper {
           left: -1000px;
@@ -291,6 +292,10 @@ class HaxTray extends I18NMixin(
           background-color: var(--hax-ui-background-color);
           transition: 0.2s width ease-in-out 0s;
           max-height: 100vh;
+          max-width: calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+          );
+          overflow-x: auto;
         }
         :host([collapsed]) .detail {
           width: 0px;

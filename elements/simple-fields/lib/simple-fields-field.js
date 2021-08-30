@@ -60,7 +60,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             display: block;
           }
           .box-input {
-            width: 100%;
+            width: calc(100% - 4px);
             padding: 2px;
           }
           .box-input:focus {
@@ -467,8 +467,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       this.hovered = false;
       this.wrap = false;
     }
-    firstUpdated() {
-      super.firstUpdated();
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) super.firstUpdated(changedProperties);
       // normalize state for interaction with checkbox / radio buttons
       if (["checkbox", "radio"].includes(this.type)) {
         this.addEventListener("click", this._selectionShortCut.bind(this));

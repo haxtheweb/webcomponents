@@ -209,10 +209,11 @@ class VideoPlayer extends IntersectionObserverMixin(
     let temp = this.sourceProperties.slice(),
       slotted = this.querySelectorAll("video source, audio source, iframe");
     slotted.forEach((slot) => {
-      this.sources.unshift({
-        src: slot.src,
-        type: slot.type || this._computeMediaType(slot.src),
-      });
+      if (this.sources.filter((source) => source.src === slot.src).length < 1)
+        this.sources.unshift({
+          src: slot.src,
+          type: slot.type || this._computeMediaType(slot.src),
+        });
     });
     return temp;
   }
@@ -261,12 +262,14 @@ class VideoPlayer extends IntersectionObserverMixin(
           : this.tracks.slice(),
       slotted = this.querySelectorAll("video track, audio track");
     slotted.forEach((slot) => {
-      let track = { src: slot.src };
-      if (slot.lang) track.lang = slot.lang;
-      if (slot.srclang) track.srclang = slot.srclang;
-      if (slot.label) track.label = slot.label;
-      if (slot.kind) track.kind = slot.kind;
-      this.tracks.unshift(track);
+      if (this.tracks.filter((track) => track.src === slot.src).length < 1) {
+        let track = { src: slot.src };
+        if (slot.lang) track.lang = slot.lang;
+        if (slot.srclang) track.srclang = slot.srclang;
+        if (slot.label) track.label = slot.label;
+        if (slot.kind) track.kind = slot.kind;
+        this.tracks.unshift(track);
+      }
       slot.remove();
     });
     if (this.track !== undefined && this.track !== null && this.track !== "")

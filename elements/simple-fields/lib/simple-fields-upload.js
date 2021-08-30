@@ -7,6 +7,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -43,6 +44,13 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           --lumo-error-color: var(--simple-fields-error-color, #b40000);
           --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
+        }
+        :host([responsive-size="xs"]) {
+          font-size: 10px;
+          --simple-fields-font-size: 10px;
+          --simple-fields-button-font-size: 11px;
+          --simple-fields-legend-font-size: 11px;
+          --simple-fields-detail-font-size: 10px;
         }
         fieldset {
           padding: 0px;
@@ -91,8 +99,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           top: 0;
           z-index: 2;
           --simple-fields-button-padding-sm: 0;
-        }
-        #cancel-camera::part(button) {
         }
         vaadin-upload {
           padding: var(--simple-fields-margin-small, 8px);
@@ -144,6 +150,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
+    this.responsiveSize = "sm";
   }
   render() {
     return html`
@@ -200,7 +207,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             <simple-toolbar-button
               icon="image:camera-alt"
               label="Take photo"
-              show-text-label
+              ?show-text-label="${this.responsiveSize !== "xs"}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
               @click="${this._handleCameraOption}"
@@ -212,7 +219,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             <simple-toolbar-button
               icon="image:camera-alt"
               label="Record Audio"
-              show-text-label
+              ?show-text-label="${this.responsiveSize !== "xs"}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
               @click="${this._handleAudioOption}"
@@ -226,7 +233,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
                 icon="file-upload"
                 part="drop-area-icon"
               ></simple-icon-lite>
-              or drop media here
+              <span part="drop-area-text-only">or drop media here</span>
             </span>
           </div>
           <simple-toolbar-button
@@ -375,6 +382,11 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
         type: Boolean,
         attribute: "no-voice-record",
       },
+      responsiveSize: {
+        type: String,
+        attribute: "responsive-size",
+        reflect: true,
+      },
     };
   }
   get field() {
@@ -446,6 +458,25 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
     } else {
       this.option = "fileupload";
     }
+    window.ResponsiveUtility.requestAvailability();
+
+    /**
+     * needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: this,
+          attribute: "responsive-size",
+          relativeToParent: true,
+          sm: 150,
+          md: 300,
+          lg: 600,
+          xl: 1200,
+        },
+      })
+    );
   }
   /**
    * We got a new photo
