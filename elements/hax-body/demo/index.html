@@ -21,7 +21,7 @@
       });
     </script>
     <style>
-        #bodydiv { margin: 20px; }
+        #bodydiv { margin: 20px 300px 20px 20px; }
     </style>
   </head>
   <body>
@@ -146,9 +146,10 @@
         <1--<h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <h3 id="specific">With id</h3>
-        <a11y-media-player accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
-          <video><track label="English" kind="subtitles" srclang="en" src="./bueller.vtt"></video>
-        </a11y-media-player>
+        <video-player accent-color="purple" preload="auto">
+          <iframe src="//www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
+          <video><track label="English" kind="subtitles" srclang="en" src="./bueller.vtt"default></video>
+        </video-player>
         <a11y-gif-player 
           alt="It's Always Sunny in Philadelphia GIF Meme" 
           src="https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif"
