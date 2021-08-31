@@ -14,6 +14,9 @@
 
 # Welcome to the lrnwebcomponents project!
 ELMS:LN produced web components for any project
+
+![Logo]()
+
 ## Quick-start
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
@@ -165,3 +168,17 @@ For example:
   "../node_modules/whatwg-fetch/fetch.js" // this is where it lives in node_modules
 )
 ```
+
+## Tech Stack
+
+**Client:** 
+
+**Server:** Node
+
+## Contributing
+
+Contributions are always welcome!
+
+## Authors
+
+- [@btopro](https://www.github.com/btopro)
