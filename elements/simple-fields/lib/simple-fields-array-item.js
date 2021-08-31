@@ -6,6 +6,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
  * `simple-fields-array-item`
  * an accessible expand collapse
@@ -236,6 +237,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         <simple-toolbar-button
           id="expand"
           controls="${this.id}"
+          ?hidden="${this.responsiveSize !== "xs"}"
           icon="more-vert"
           label="Toggle expand"
           @click="${this.toggle}"
@@ -336,6 +338,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         reflect: true,
         attribute: "preview-by",
       },
+      responsiveSize: {
+        type: String,
+        attribute: "responsive-size",
+        reflect: true,
+      },
       __dragging: {
         type: Boolean,
       },
@@ -357,6 +364,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.draggable = "truest";
     this.previewBy = [];
     this.expanded = true;
+    this.responsiveSize = "sm";
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);
     this.addEventListener("dragover", this._dragMoving);
@@ -479,6 +487,28 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         })
       );
     }, 0);
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    window.ResponsiveUtility.requestAvailability();
+
+    /**
+     * needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: this,
+          attribute: "responsive-size",
+          relativeToParent: true,
+          sm: 250,
+          md: 500,
+          lg: 1000,
+          xl: 2000,
+        },
+      })
+    );
   }
   updated(changedProperties) {
     if (super.updated) {

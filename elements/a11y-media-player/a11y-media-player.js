@@ -2036,14 +2036,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @returns {boolean}
    */
   get fullscreenButton() {
-    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
     return (
-      this.fullscreenEnabled &&
-      !mobile &&
-      !this.disableFullscreen &&
-      !this.audioNoThumb
+      this.fullscreenEnabled && !this.disableFullscreen && !this.audioNoThumb
     );
   }
 

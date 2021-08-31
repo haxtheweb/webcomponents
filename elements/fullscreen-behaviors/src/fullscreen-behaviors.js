@@ -22,7 +22,8 @@ const FullscreenBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.__fullscreen = false;
-      this.__fullscreenEnabled = false;
+      this.__fullscreenEnabled =
+        this.fullscreenManager && this.fullscreenManager.enabled;
       if (!this.fullscreenManager.__loaded) {
         let callback = () => {
           this._updateEnabled();

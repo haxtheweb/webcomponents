@@ -5,6 +5,7 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -58,6 +59,11 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
         type: Boolean,
         reflect: true,
       },
+      responsiveSize: {
+        type: String,
+        attribute: "responsive-size",
+        reflect: true,
+      },
       __dragging: {
         type: Boolean,
       },
@@ -79,7 +85,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           @click="${(e) => this.toggle()}"
           ?toggled="${this.expanded}"
           toggles
-          show-text-label
+          ?show-text-label="${this.responsiveSize !== "xs"}"
           label="${this.expanded ? "Collapse All" : "Expand All"}"
           part="expand"
         >
@@ -96,7 +102,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           icon="more-vert"
           ?toggled="${this.expanded}"
           toggles
-          show-text-label
+          ?show-text-label="${this.responsiveSize !== "xs"}"
           label="Add Item"
         >
         </simple-toolbar-button>
@@ -108,6 +114,29 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.count = 0;
     this.expanded = true;
     this.disableAdd = false;
+    this.responsiveSize = "sm";
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    window.ResponsiveUtility.requestAvailability();
+
+    /**
+     * needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: this,
+          attribute: "responsive-size",
+          relativeToParent: true,
+          sm: 250,
+          md: 500,
+          lg: 1000,
+          xl: 2000,
+        },
+      })
+    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
