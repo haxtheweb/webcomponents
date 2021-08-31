@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+	<msapplication>
+		<tile>
+			<square70x70logo src="files/haxcms-managed/70x70-3450183.png"/>
+			<square150x150logo src="files/haxcms-managed/150x150-3450183.png"/>
+			<square310x310logo src="files/haxcms-managed/310x310-3450183.png"/>
+			<TileColor>#009dc7</TileColor>
+		</tile>
+	</msapplication>
+</browserconfig>

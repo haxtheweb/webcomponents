@@ -1,0 +1,49 @@
+<p>Blox are the internal name of what a normal wysiwyg would call Layouts. The Layouts menu lists the blox / grid-plate tags that you can populate. There's no other way to generate a layout plate in HAX to ensure that decent defaults are produced.</p>
+<img src="files/2019-01-27_17-33-57.png" alt="blox off screen menu shown to match the schema in the page" style="width: 75%; margin: 0px auto; display: block;"/><p>The schema below will generate the Blox / Layout definition seen above.</p>
+<code-sample style="width: 100%;">  <template preserve-content="preserve-content">{
+"blox": [ {
+  // details for displaying this visually in the UI
+  "details": {
+  "title": "33 / 66 columns",
+  "author": "ELMS:LN",
+  "icon": "hax:4/8",
+  "status": "available",
+  "layout": "4/8"
+  },
+  // the definition of this layout piece which is a series of hax element schema definitions as an array
+  "blox": [
+  {
+  "tag": "place-holder",
+  "properties": {
+  "slot": "col-2",
+  "type": "text"
+  },
+  "content": ""
+  },
+  {
+  "tag": "place-holder",
+  "properties": {
+  "slot": "col-1",
+  "type": "image"
+  },
+  "content": ""
+  },
+  {
+  "tag": "place-holder",
+  "properties": {
+  "slot": "col-1",
+  "type": "image"
+  },
+  "content": ""
+  },
+  {
+  "tag": "place-holder",
+  "properties": {
+  "slot": "col-1",
+  "type": "image"
+  },
+  "content": ""
+  }
+}]
+},</template>
+</code-sample>

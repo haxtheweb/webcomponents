@@ -1,0 +1,46 @@
+{
+  "semantics": [
+    {
+      "label": "Beschrijving taak",
+      "description": "Beschrijf hoe de gebruiker de taak moet uitvoeren.",
+      "default": "Sleep de woorden naar de juiste vakjes."
+    },
+    {
+      "label": "Tekstveld",
+      "placeholder": "*Amsterdam* is de hoofdstad van Nederland, *Brussel* is de hoofdstad van België en *Luxemburg* is de hoofdstad van Luxemburg.",
+      "description": "Te slepen woorden worden aangegeven met een asterisk (*) voor en achter het juiste woord/zinsdeel. Je kunt een hint toevoegen door een dubbele punt (:) voor de hint te zetten. Voorbeeld: De H5P content kan worden bewerkt in een *browser:Iets wat je dagelijks gebruikt*."
+    },
+    {
+      "label": "Tekst voor de knop \"Controleer\"",
+      "default": "Controleer"
+    },
+    {
+      "label": "Tekst voor de knop \"Opnieuw\"",
+      "default": "Opnieuw"
+    },
+    {
+      "label": "Tekst voor de knop \"Toon oplossing\"",
+      "default": "Toon oplossing"
+    },
+    {
+      "label": "Tekst voor Feedback",
+      "default": "Je hebt @score van @total punten gescoord",
+      "description": "Tekst voor Feedback (Antwoorden), toegestane variabelen: @score @total. Voorbeeld: 'Je hebt @score van @total mogelijke punten gescoord.'"
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je instellen hoe de taak zich gedraagt.",
+      "fields": [
+        {
+          "label": "Schakel de knop \"Opnieuw\" in"
+        },
+        {
+          "label": "Schakel de knop \"Toon oplossing\" in"
+        },
+        {
+          "label": "Geef direct feedback (Antwoorden)"
+        }
+      ]
+    }
+  ]
+}

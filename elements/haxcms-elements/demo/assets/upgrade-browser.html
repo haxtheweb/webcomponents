@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Modern browser required</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+    }
+    .header--lg {
+      color: #444;
+      font-size: 1.75rem;
+      font-weight: bold;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .check-browser {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .check-browser .message--warning {
+      background-color: #BB0000;
+      color: #ffffff;
+      padding: 2rem;
+      font-size: 26px;
+    }
+
+    .check-browser__icon-container {
+      display: inline-block;
+      color: #000000;
+      text-align: center;
+    }
+
+    a {
+      float: left;
+      width: 150px;
+      height: 150px;
+      display: block;
+      text-decoration: none;
+      margin: 1rem .5rem;
+      padding: 0;
+      outline-width: 10px;
+      outline-color: blueviolet;
+      color: black;
+    }
+
+    a .check-browser__icon {
+      clear: both;
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+    }
+
+    .check-browser--chrome {
+      background-color: #ffb31a;
+    }
+
+    .check-browser--firefox {
+      background-color: #f78009;
+    }
+
+    .check-browser--edge {
+      background-color: #33ccff;
+    }
+
+    .check-browser--safari {
+      background-color: #0099ff;
+    }
+
+    .check-browser--opera {
+      background-color: #ff4d4d;
+    }
+
+    .icon--browser {
+      color: #fff;
+      font-size: 3rem;
+      padding-bottom: 1rem;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" crossorigin>
+</head>
+<body>
+  <div class="check-browser">
+    <h1 class="header--lg">Outdated browser detected</h1>
+    
+    <p class="message--warning">
+      This website requires a modern browser to give the best experience possible.
+    </p>
+    <p>
+      Upgrade your browser to the latest version or download one of these browsers:
+    </p>
+  
+    <div class="check-browser__icon-container">
+      <a href="http://www.mozilla.com/firefox" target="_blank" rel="noopener noreferrer">
+        <div class="check-browser__icon check-browser--firefox">
+            <span><i class="fa fa-firefox icon--browser"></i></span>
+          <br>Firefox
+          <br>(Mozilla)
+        </div>
+      </a>
+      <a href="https://www.google.com/chrome" target="_blank" rel="noopener noreferrer">
+        <div class="check-browser__icon check-browser--chrome">
+            <span><i class="fa fa-chrome icon--browser"></i></span>
+          <br>
+          Chrome
+          <br>(Google)
+        </div>
+      </a>
+      <a href="https://www.microsoftedgeinsider.com/en-us/" target="_blank" rel="noopener noreferrer">
+        <div class="check-browser__icon check-browser--edge">
+            <span><i class="fa fa-edge icon--browser"></i></span>
+          <br>Edge
+          <br>(Microsoft)
+        </div>
+      </a>
+      <a href="https://support.apple.com/downloads/safari" target="_blank" rel="noopener noreferrer">
+        <div class="check-browser__icon check-browser--safari">
+            <span><i class="fa fa-safari icon--browser"></i></span>
+          <br>Safari
+          <br>(Apple)
+        </div>
+      </a>
+      <a href="http://www.opera.com/download/">
+        <div class="check-browser__icon check-browser--opera" target="_blank" rel="noopener noreferrer">
+            <span><i class="fa fa-opera icon--browser"></i></span>
+          
+          <br> Opera
+          <br> &nbsp;
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

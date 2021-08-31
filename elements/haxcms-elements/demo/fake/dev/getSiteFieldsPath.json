@@ -1,0 +1,377 @@
+{
+  "status": 200,
+  "data": {
+    "fields": [{
+      "property": "manifest",
+      "inputMethod": "tabs",
+      "properties": [
+        {
+          "property": "site",
+          "title": "Site",
+          "description": "Settings directly related to the internals of the site",
+          "properties": [
+            {
+              "property": "manifest.title",
+              "title": "title",
+              "description": "Name of the site",
+              "inputMethod": "textfield",
+              "required": true,
+              "icon": "editor:title"
+            },
+            {
+              "property": "manifest.metadata.site.domain",
+              "title": "Domain",
+              "description": "Domain of this website",
+              "inputMethod": "textfield",
+              "required": false,
+              "icon": "icons:open-in-browser"
+            },
+            {
+              "property": "manifest.description",
+              "title": "Description",
+              "description": "Simple description of the site",
+              "inputMethod": "textfield",
+              "required": false,
+              "icon": "editor:short-text"
+            }
+          ]
+        },
+        {
+          "property": "author",
+          "title": "Author",
+          "description": "Author details",
+          "properties": [
+            {
+              "property": "manifest.license",
+              "title": "License",
+              "description": "The source url for the element this is citing.",
+              "inputMethod": "select",
+              "options": {
+                "by": "Attribution",
+                "by-nc": "Attribution non-commercial",
+                "by-nc-nd": "Attribution Non-commercial No derivatives",
+                "by-nc-sa": "Attribution non-commercial share a like",
+                "by-nd": "Attribution No derivatives",
+                "by-sa": "Attribution Share a like"
+              },
+              "icon": "link"
+            },
+            {
+              "property": "manifest.metadata.author.image",
+              "title": "Image",
+              "description": "Photo",
+              "inputMethod": "haxupload"
+            },
+            {
+              "property": "manifest.metadata.author.name",
+              "title": "Name",
+              "description": "Name",
+              "inputMethod": "textfield"
+            },
+            {
+              "property": "manifest.metadata.author.socialLink",
+              "title": "Social media link",
+              "description": "A primary social space \/ point of contact",
+              "inputMethod": "textfield"
+            }
+          ]
+        },
+        {
+          "property": "theme",
+          "title": "Theme",
+          "description": "Theme and design settings for the site",
+          "properties": [
+            {
+              "property": "manifest.metadata.theme.name",
+              "title": "Theme",
+              "description": "Page theme",
+              "inputMethod": "select",
+              "required": false,
+              "icon": "editor:format-paint",
+              "options": {
+                "learn-two-theme": "Learn",
+                "haxor-slevin": "Coder blog",
+                "outline-player": "Documentation",
+                "simple-blog": "Simple blog",
+                "haxcms-basic-theme": "Basic site",
+                "haxcms-user-theme": "User theme",
+                "haxcms-minimalist-theme": "Minimalist site",
+                "haxcms-slide-theme": "Slide deck",
+                "haxcms-dev-theme": "DEVELOPER: Test theme",
+                "haxcms-theme-developer": "EXPERIMENTAL: HAX Theme Maker"
+              }
+            },
+            {
+              "property": "manifest.metadata.theme.variables.image",
+              "title": "Banner",
+              "description": "Image for the site",
+              "inputMethod": "haxupload",
+              "required": false,
+              "icon": "image:image"
+            },
+            {
+              "property": "manifest.metadata.theme.variables.cssVariable",
+              "title": "Color",
+              "description": "A base accent color for the site",
+              "inputMethod": "colorpicker",
+              "required": true,
+              "icon": "editor:format-color-fill"
+            },
+            {
+              "property": "manifest.metadata.theme.variables.icon",
+              "title": "Icon",
+              "description": "Icon to represent the site",
+              "inputMethod": "iconpicker",
+              "required": false,
+              "icon": "icons:send"
+            }
+          ]
+        },
+        {
+          "property": "fields",
+          "title": "Fields",
+          "description": "Custom fields for nodes in the site",
+          "properties": [
+            {
+              "property": "manifest.metadata.node.fields",
+              "title": "Custom Fields",
+              "description": "Store relational data about nodes and other properties",
+              "required": false,
+              "icon": "icons:group-work",
+              "inputMethod": "array",
+              "properties": [
+                {
+                  "property": "formgroup",
+                  "title": "Form group",
+                  "description": "Which tab will users input values",
+                  "inputMethod": "select",
+                  "required": true,
+                  "options": {
+                    "configure": "Configure",
+                    "advanced": "Advanced"
+                  },
+                  "icon": "link"
+                },
+                {
+                  "property": "inputMethod",
+                  "title": "Input method",
+                  "description": "How users can enter data for this field",
+                  "inputMethod": "select",
+                  "options": {
+                    "textfield": "Textfield",
+                    "number": "Number",
+                    "boolean": "Checkbox",
+                    "haxupload": "File upload",
+                    "colorpicker": "Color picker",
+                    "iconpicker": "Icon picker",
+                    "code-editor": "Code editor",
+                    "alt": "Alt text",
+                    "datepicker": "Date picker",
+                    "textarea": "Text area",
+                    "flipboolean": "Checkbox (inverted)",
+                    "select": "Select list",
+                    "array": "Array"
+                  },
+                  "icon": "link"
+                },
+                {
+                  "property": "property",
+                  "title": "Machine name",
+                  "description": "Field machine name for storage",
+                  "inputMethod": "textfield",
+                  "required": true
+                },
+                {
+                  "property": "title",
+                  "title": "Name",
+                  "description": "Readable name of the field",
+                  "inputMethod": "textfield",
+                  "required": true
+                },
+                {
+                  "property": "description",
+                  "title": "Description",
+                  "description": "additional details about the field data",
+                  "inputMethod": "textfield",
+                  "required": false
+                },
+                {
+                  "property": "required",
+                  "title": "Required",
+                  "description": "Is this field required",
+                  "inputMethod": "boolean",
+                  "required": false
+                },
+                {
+                  "property": "icon",
+                  "title": "Icon",
+                  "description": "Optional icon to represent this field",
+                  "inputMethod": "iconpicker",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "property": "seo",
+          "title": "SEO",
+          "description": "Search engine and detailed internal path handling",
+          "properties": [
+            {
+              "property": "manifest.metadata.site.settings.pathauto",
+              "title": "Pathauto",
+              "description": "Automatically maintain and update page paths",
+              "inputMethod": "boolean",
+              "icon": "icons:link"
+            },
+            {
+              "property": "manifest.metadata.site.settings.publishPagesOn",
+              "title": "Show unpublished pages",
+              "description": "Whether to hide unpublished pages or not",
+              "inputMethod": "boolean",
+              "icon": "icons:link"
+            }
+          ]
+        },
+        {
+          "property": "static",
+          "title": "Publishing",
+          "description": "Publishing options",
+          "properties": [
+            {
+              "property": "manifest.metadata.site.static.cdn",
+              "title": "CDN",
+              "description": "CDN to use for published assets",
+              "inputMethod": "select",
+              "required": true,
+              "options": {
+                "https:\/\/webcomponents.psu.edu\/cdn\/": "Penn State CDN",
+                "https:\/\/cdn.waxam.io\/": "Waxam CDN",
+                "build\/": "Local (no CDN)"
+              },
+              "icon": "link"
+            },
+            {
+              "property": "manifest.metadata.site.static.offline",
+              "title": "Offline",
+              "description": "Published site will work when completely offline",
+              "inputMethod": "boolean",
+              "required": false
+            }
+          ]
+        },
+        {
+          "property": "git",
+          "title": "Version control",
+          "description": "Store relational data about fields",
+          "properties": [
+            {
+              "property": "manifest.metadata.site.git.branch",
+              "title": "Default branch",
+              "description": "Branch to publish on (master is common)",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "manifest.metadata.site.git.staticBranch",
+              "title": "Static branch",
+              "description": "Branch to publish on (gh-pages is common)",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "manifest.metadata.site.git.url",
+              "title": "Git url",
+              "description": "location of the git repository to sync up to",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "manifest.metadata.site.git.vendor",
+              "title": "Vendor",
+              "description": "Vendor used for internal publishing flexibility",
+              "inputMethod": "select",
+              "options": {
+                "github": "Github"
+              },
+              "required": true
+            },
+            {
+              "property": "dangerzone",
+              "title": "Dangerzone",
+              "description": "",
+              "inputMethod": "markup"
+            }
+          ]
+        }
+      ]
+    }],
+    "value": {
+      "manifest": {
+        "site": {
+          "manifest.title": "btopro",
+          "manifest.description": "Crazy, abrasive, caring, dreaming the future into existence.",
+          "manifest.metadata.site.domain": "https:\/\/btopro.com"
+        },
+        "author": {
+          "manifest.license": "by-sa",
+          "manifest.metadata.author.image": "files\/headshot.jpg",
+          "manifest.metadata.author.name": "Bryan Ollendyke",
+          "manifest.metadata.author.socialLink": "https:\/\/twitter.com\/btopro"
+        },
+        "theme": {
+          "manifest.metadata.theme.name": "Coder blog",
+          "manifest.metadata.theme.variables.image": "assets\/banner.jpg",
+          "manifest.metadata.theme.variables.hexCode": "#da004e",
+          "manifest.metadata.theme.variables.cssVariable": "pink",
+          "manifest.metadata.theme.variables.icon": "icons:record-voice-over"
+        },
+        "fields": {
+          "manifest.metadata.node.fields.configure": [
+            {
+              "inputMethod": "array",
+              "property": "images",
+              "title": "Other sources",
+              "description": "List of images",
+              "required": false,
+              "icon": "image:collections"
+            },
+            {
+              "inputMethod": "textfield",
+              "property": "subtitle",
+              "title": "Subtitle",
+              "description": "An additional subtitle",
+              "required": false,
+              "icon": "editor:text-fields"
+            },
+            {
+              "inputMethod": "array",
+              "property": "tags",
+              "title": "Tags",
+              "description": "Tags for the page",
+              "required": false,
+              "icon": "image:collections"
+            }
+          ],
+          "manifest.metadata.node.fields.advanced": null
+        },
+        "seo": {
+          "manifest.metadata.site.settings.pathauto": true,
+          "manifest.metadata.site.settings.publishPagesOn": true
+        },
+        "static": {
+          "manifest.metadata.site.static.cdn": "cdn.waxam.io",
+          "manifest.metadata.site.static.offline": true
+        },
+        "git": {
+          "manifest.metadata.site.git.vendor": "github",
+          "manifest.metadata.site.git.branch": "master",
+          "manifest.metadata.site.git.staticBranch": "gh-pages",
+          "manifest.metadata.site.git.url": "git@github.com:btopro\/blog.git",
+          "dangerzone": "<div style=\"background-color: rgb(255, 221, 221);\"><h3>Danger zone</h3><p>This will publish your site, overwriting the previous copy living in your \"published\" storage location.</p><user-action track=\"click\" every eventname=\"haxcms-publish-site\"><paper-button style=\"background-color:#FF5555;width:100%;\" raised role=\"button\" tabindex=\"0\" animated elevation=\"1\" aria-disabled=\"false\"><iron-icon icon=\"icons:cloud-upload\"></iron-icon> Publish</paper-button></user-action><p>This wil revert the git history powering the site by 1 commit. This is a destructive command, only use this if you just saved something you didn't mean to.</p><user-action track=\"click\" every eventname=\"haxcms-git-revert-last-commit\"><paper-button style=\"background-color: #FF5555;width:100%;\" raised role=\"button\" tabindex=\"0\" animated elevation=\"1\" aria-disabled=\"false\"><iron-icon icon=\"icons:cloud-upload\"></iron-icon> Revert last commit</paper-button></user-action></div>"
+        }
+      }
+    }
+  }
+}

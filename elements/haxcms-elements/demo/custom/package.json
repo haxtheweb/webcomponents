@@ -1,0 +1,30 @@
+{
+  "name": "haxcms-customizations",
+  "version": "0.0.0",
+  "description": "Custom HAXcms additions, either of a theme or other elements you want to use in this site",
+  "author": "elmsln",
+  "homepage": "https://github.com/elmsln/haxcms",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/elmsln/haxcms",
+  "scripts": {
+    "build": "rollup -c rollup.config.js && rollup -c rollup.amd.config.js && yarn run build:amd",
+    "build:amd": "gulp",
+    "start": "yarn run watch",
+    "watch": "rollup --watch -c rollup.config.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-amd": "^7.2.0",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-import-meta": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "gulp-terser": "^1.1.7",
+    "gulp": "^4.0.2",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-rewrite-imports": "^1.0.1",
+    "rollup": "^1.6.0"
+  }
+}

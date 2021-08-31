@@ -1,0 +1,97 @@
+[
+  {
+    "label": "Task description",
+    "importance": "high",
+    "name": "taskDescription",
+    "type": "text",
+    "widget": "html",
+    "description": "Describe how the user should solve the task.",
+    "default": "Drag the words into the correct boxes",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
+    "label": "Text",
+    "importance": "high",
+    "name": "textField",
+    "type": "text",
+    "widget": "textarea",
+    "placeholder": "*Oslo* is the capital of Norway, *Stockholm* is the capital of Sweden and *Copenhagen* is the capital of Denmark. All cities are located in the *Scandinavian:Northern Part of Europe* peninsula.",
+    "description": "Droppable words are added with an asterisk (*) in front and behind the correct word/phrase. You may add a textual tip, using a colon (:) in front of the tip. Example: H5P content may be edited using a *browser:Something you use every day*.<br>For every empty spot there is only one correct word."
+  },
+  {
+    "label": "Text for \"Check\" button",
+    "importance": "low",
+    "name": "checkAnswer",
+    "type": "text",
+    "default": "Check",
+    "common": true
+  },
+  {
+    "label": "Text for \"Retry\" button",
+    "importance": "low",
+    "name": "tryAgain",
+    "type": "text",
+    "default": "Retry",
+    "common": true
+  },
+  {
+    "label": "Text for \"Show Solution\" button",
+    "importance": "low",
+    "name": "showSolution",
+    "type": "text",
+    "default": "Show solution",
+    "common": true
+  },
+  {
+    "label": "Feedback text",
+    "importance": "low",
+    "name": "score",
+    "type": "text",
+    "default": "You got @score of @total points",
+    "description": "Feedback text, variables available: @score and @total. Example: 'You got @score of @total possible points'",
+    "common": true
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "importance": "low",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "label": "Enable \"Retry\"",
+        "importance": "low",
+        "name": "enableRetry",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "label": "Enable \"Show Solution\" button",
+        "importance": "low",
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "label": "Instant feedback",
+        "importance": "low",
+        "name": "instantFeedback",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      }
+    ]
+  }
+]

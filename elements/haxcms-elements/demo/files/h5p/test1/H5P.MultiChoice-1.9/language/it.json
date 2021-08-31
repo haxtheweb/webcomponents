@@ -1,0 +1,216 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        }
+      ]
+    },
+    {
+      "label": "Domanda"
+    },
+    {
+      "label": "Opzioni disponibili",
+      "entity": "opzione",
+      "field": {
+        "label": "Opzione",
+        "fields": [
+          {
+            "label": "Testo"
+          },
+          {
+            "label": "Corretto"
+          },
+          {
+            "label": "Suggerimento",
+            "fields": [
+              {
+                "label": "Testo del suggerimento"
+              },
+              {
+                "label": "Feedback scelto",
+                "description": "Viene visualizzato quando l'utente verifica la sua risposta."
+              },
+              {
+                "label": "Feedback non scelto",
+                "description": "Viene visualizzato quando la soluzione viene mostrata."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Traduzioni dell'interfaccia utente per scelta multipla",
+      "fields": [
+        {
+          "label": "Etichetta pulsante Verifica risposta"
+        },
+        {
+          "label": "Etichetta pulsante Mostra soluzione"
+        },
+        {
+          "label": "Etichetta pulsante Riprova"
+        },
+        {
+          "label": "Tip label",
+          "default": "Show tip"
+        },
+        {
+          "label": "Feedback risposta corretta"
+        },
+        {
+          "label": "Feedback risposta quasi corretta"
+        },
+        {
+          "label": "Feedback risposta non corretta"
+        },
+        {
+          "label": "Score Bar Label",
+          "default": "Score"
+        },
+        {
+          "label": "Tip Available",
+          "default": "Tip available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback Available",
+          "default": "Feedback available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Read Feedback",
+          "default": "Read feedback",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Wrong Answer",
+          "default": "Wrong answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Correct Answer",
+          "default": "Correct answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback text",
+          "default": "Feedback text"
+        },
+        {
+          "label": "Option should have been checked",
+          "default": "Should have been checked"
+        },
+        {
+          "label": "Option should not have been checked",
+          "default": "Should not have been checked"
+        },
+        {
+          "label": "Text for \"Requires answer\" message",
+          "default": "Please answer before viewing the solution"
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita pulsante \"Riprova\""
+        },
+        {
+          "label": "Abilita pulsante \"Mostra soluzione\""
+        },
+        {
+          "label": "Question Type",
+          "description": "Select the look and behaviour of the question.",
+          "options": [
+            {
+              "label": "Automatic"
+            },
+            {
+              "label": "Multiple Choice (Checkboxes)"
+            },
+            {
+              "label": "Single Choice (Radio Buttons)"
+            }
+          ]
+        },
+        {
+          "label": "Assegna un punto per il completamento del compito",
+          "description": "Abilitare per assegnare un totale di un punto per risposte multiple corrette. Non è opzionabile in modalità \"Risposta singola\"."
+        },
+        {
+          "label": "Risposte in ordine casuale",
+          "description": "Abilita per rendere casuale l'ordine delle domande visualizzate."
+        },
+        {
+          "label": "Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata"
+        },
+        {
+          "label": "Disable image zooming for question image."
+        },
+        {
+          "label": "Show confirmation dialog on \"Check\""
+        },
+        {
+          "label": "Show confirmation dialog on \"Retry\""
+        },
+        {
+          "label": "Automatically check answers",
+          "description": "Enabling this option will make accessibility suffer, make sure you know what you're doing."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Check confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Finish ?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to finish ?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Retry ?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to retry ?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+    "file": "\/var\/www\/html\/_sites\/neato\/site.json",
+    "id": "6048ae14-a9d7-4be2-b687-6cf460df67be",
+    "title": "neato",
+    "author": "",
+    "description": "cool beans",
+    "license": "by-sa",
+    "metadata": {
+        "siteName": "neato",
+        "domain": "https:\/\/btopro.github.io\/neato",
+        "created": 1554178142,
+        "updated": 1554206147,
+        "theme": {
+            "element": "learn-two-theme",
+            "path": "@lrnwebcomponents\/learn-two-theme\/learn-two-theme.js",
+            "name": "Learn"
+        },
+        "image": "assets\/banner.jpg",
+        "hexCode": "#aeff00",
+        "cssVariable": "purple",
+        "publishing": {
+            "git": {
+                "vendor": "github",
+                "branch": "gh-pages",
+                "url": "git@github.com:elmsln\/neato.git",
+                "cdn": "cdn.waxam.io"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    font-size: 22px;
+    line-height: 34px;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    display: block;
+    transition: .1s ease-in-out all;
+  }
+  a:hover,
+  a:focus,
+  a:active {
+    color: black;
+    background-color: orange;
+    outline: 2px solid black;
+  }

@@ -1,0 +1,13 @@
+/**
+ * This is a custom theme css file. You can write whatever you want here
+ * but realize you'll need to play by the rules of shadow dom. Meaning,
+ * that if something is in a shadow root you won't be able to style it.
+ *
+ * There is hope though. We leverage CSS variables heavily and most of the
+ * elements we have baked in do too.
+ *
+ * Also since our themes are built on Polymer, you can leverage what
+ * are called "apply blocks". The apply block loos like @apply --whatever-stuff;
+ * Think of it like a sass mixin, where you can apply any css you want
+ * inside of that block and it'll apply downstream. Two examples are given below
+ */

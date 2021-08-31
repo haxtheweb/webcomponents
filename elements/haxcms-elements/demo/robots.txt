@@ -1,0 +1,27 @@
+User-agent: *
+Crawl-delay: 10
+# CSS, JS, Images
+Allow: /assets/*.css$
+Allow: /assets/*.css?
+Allow: /assets/*.js$
+Allow: /assets/*.js?
+Allow: /assets/*.gif
+Allow: /assets/*.jpg
+Allow: /assets/*.jpeg
+Allow: /assets/*.png
+
+Allow: /theme/*.css$
+Allow: /theme/*.css?
+Allow: /theme/*.js$
+Allow: /theme/*.js?
+Allow: /theme/*.gif
+Allow: /theme/*.jpg
+Allow: /theme/*.jpeg
+Allow: /theme/*.png
+
+Disallow: /assets/
+Disallow: /build/
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /pages/
+Disallow: /theme/

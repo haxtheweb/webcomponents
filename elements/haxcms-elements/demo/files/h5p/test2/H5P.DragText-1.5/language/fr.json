@@ -1,0 +1,46 @@
+{
+  "semantics": [
+    {
+      "label": "Consigne",
+      "description": "Expliquez ce que doit faire l'utilisateur.",
+      "default": "Glissez les étiquettes dans les bonnes cases."
+    },
+    {
+      "label": "Champ de texte",
+      "placeholder": "Paris est la capitale de la *France*",
+      "description": "Les mots à placer sont identifiés par un astérisque (*) avant et après le mot/l'expression. Vous pouvez ajouter un indice à l'aide des deux points (:) placés devant l'indice. (Exemple: On peut créer des exercices h5p en utilisant un *navigateur:Quelque chose que vous utilisez tous les jours*."
+    },
+    {
+      "label": "Texte pour le bouton \"Vérifier\"",
+      "default": "Vérifier"
+    },
+    {
+      "label": "Texte pour le bouton \"Recommencer\"",
+      "default": "Recommencer"
+    },
+    {
+      "label": "Texte pour le bouton \"Voir la correction\"",
+      "default": "Voir la correction"
+    },
+    {
+      "label": "Commentaire final",
+      "default": "Vous avez obtenu @score point(s) sur @total",
+      "description": "Texte du commentaire, variables possibles: @score et @total. Exemple: 'Vous avez @score sur un total possible de @total points'"
+    },
+    {
+      "label": "Options générales.",
+      "description": "Ces options vous permettent de paramétrer le déroulement de l'exercice.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Voir la correction\""
+        },
+        {
+          "label": "Correction instantanée"
+        }
+      ]
+    }
+  ]
+}
