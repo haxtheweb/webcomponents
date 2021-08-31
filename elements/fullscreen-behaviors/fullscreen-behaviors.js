@@ -22,7 +22,8 @@ const FullscreenBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.__fullscreen = false;
-      this.__fullscreenEnabled = false;
+      this.__fullscreenEnabled =
+        this.fullscreenManager && this.fullscreenManager.enabled;
       if (!this.fullscreenManager.__loaded) {
         let callback = () => {
           this._updateEnabled();
@@ -76,14 +77,11 @@ const FullscreenBehaviors = function (SuperClass) {
     get fullscreenEnabled() {
       return this.__fullscreenEnabled;
     }
-    _updateFullscreen(fullscreen) {
-      if (typeof fullscreen === typeof undefined)
-        fullscreen = screenfull && screenfull.isFullscreen;
+    _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen) {
       let delayedUpdate = (e) => {
         setTimeout(this._updateFullscreen(), 500);
       };
       this.__fullscreen = fullscreen;
-
       //needed for escape key detection
       if (this.__fullscreen) {
         document.addEventListener("fullscreenchange", delayedUpdate.bind(this));
@@ -102,8 +100,7 @@ const FullscreenBehaviors = function (SuperClass) {
       }
     }
 
-    toggleFullscreen(mode) {
-      if (typeof mode === typeof undefined) mode = !screenfull.isFullscreen;
+    toggleFullscreen(mode = !screenfull.isFullscreen) {
       if (this.fullscreenEnabled && screenfull) {
         if (mode) {
           screenfull.request(this.fullscreenTarget);
