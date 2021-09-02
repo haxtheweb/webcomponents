@@ -137,6 +137,12 @@
         "inputMethod": "boolean"
       },
       {
+        "property": "hideYoutubeLink",
+        "title": "Remove open on YouTube button",
+        "description": "Removes the button for opening the video on YouTube.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "preload",
         "title": "Preload source(s).",
         "description": "How the sources should be preloaded, i.e. auto, metadata (default), or none.",

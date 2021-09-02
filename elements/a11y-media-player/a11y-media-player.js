@@ -1157,6 +1157,17 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               label="${this._getLocal(this.localization, "settings", "label")}"
               @click="${(e) => this.toggleSettings()}"
             ></a11y-media-button>
+            ${this.isYoutube
+              ? html` <a11y-media-button
+                  accent-color="${this.accentColor}"
+                  ?dark="${this.dark}"
+                  class="hide-sticky"
+                  icon="av:play-arrow"
+                  label="Open on YouTube"
+                  ?hidden="${this.learningMode || this.hideYoutubeLink}"
+                  @click="${(e) => this.goToYoutube()}"
+                ></a11y-media-button>`
+              : ``}
           </div>
           <absolute-position-behavior
             id="settings"
@@ -1643,6 +1654,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         type: Boolean,
       },
       /**
+       * Open on YouTube button
+       */
+      hideYoutubeLink: {
+        type: Boolean,
+        attribute: "hide-youtube-link",
+      },
+      /**
        * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
        */
       playbackRate: {
@@ -1841,6 +1859,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.mediaTitle = "";
     this.mediaLang = "en";
     this.muted = false;
+    this.hideYoutubeLink = false;
     this.preload = "metadata";
     this.playbackRate = 1;
     this.search = null;
@@ -2679,6 +2698,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         detail: this,
       })
     );
+  }
+
+  /**
+   * takes the user to YouTube
+   */
+  goToYoutube() {
+    window.open(`https://www.youtube.com/watch?v=${this.youtubeId}`);
   }
 
   /**
