@@ -15,7 +15,7 @@
 # Welcome to the lrnwebcomponents project!
 ELMS:LN produced web components for any project
 
-![Logo]()
+![Logo](https://github.com/elmsln/elmsln-logos/blob/master/haxtheweb/2019-08-14_13-05-52.png)
 
 ## Quick-start
 
@@ -171,9 +171,9 @@ For example:
 
 ## Tech Stack
 
-**Client:** 
+**Client:** JavaScript, LitElement, Lit(https://lit.dev/)
 
-**Server:** Node
+**Server:** Node.js
 
 ## Contributing
 
@@ -182,3 +182,5 @@ Contributions are always welcome!
 ## Authors
 
 - [@btopro](https://www.github.com/btopro)
+- [@heyMP](https://www.github.com/heyMP)
+- [@nikkimk](https://www/github.com/nikkimk)
