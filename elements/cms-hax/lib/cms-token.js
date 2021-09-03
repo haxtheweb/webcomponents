@@ -368,6 +368,7 @@ class CMSToken extends PolymerElement {
           "loading",
           "token-data",
           "body-data",
+          "hax-edit-mode",
           "token-end-point",
         ],
       },
