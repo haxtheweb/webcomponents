@@ -1,5 +1,4 @@
 H5P.Question = (function ($, EventDispatcher, JoubelUI) {
-
   /**
    * Extending this class make it alot easier to create tasks for other
    * content types.
@@ -15,7 +14,15 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
     EventDispatcher.call(self);
 
     // Register default section order
-    self.order = ['video', 'image', 'introduction', 'content', 'feedback', 'buttons', 'read'];
+    self.order = [
+      "video",
+      "image",
+      "introduction",
+      "content",
+      "feedback",
+      "buttons",
+      "read",
+    ];
 
     // Keep track of registered sections
     var sections = {};
@@ -53,7 +60,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      */
     var behaviour = {
       disableFeedback: false,
-      disableReadSpeaker: false
+      disableReadSpeaker: false,
     };
 
     // Keeps track of thumb state
@@ -83,11 +90,11 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      */
     var register = function (section, content) {
       sections[section] = {};
-      var $e = sections[section].$element = $('<div/>', {
-        'class': 'h5p-question-' + section,
-      });
+      var $e = (sections[section].$element = $("<div/>", {
+        class: "h5p-question-" + section,
+      }));
       if (content) {
-        $e[content instanceof $ ? 'append' : 'html'](content);
+        $e[content instanceof $ ? "append" : "html"](content);
       }
     };
 
@@ -100,9 +107,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      */
     var update = function (section, content) {
       if (content instanceof $) {
-        sections[section].$element.html('').append(content);
-      }
-      else {
+        sections[section].$element.html("").append(content);
+      } else {
         sections[section].$element.html(content);
       }
     };
@@ -125,16 +131,17 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       for (var i = 0; i < order.length; i++) {
         if (order[i] === id) {
           // Found our pos
-          while (i > 0 &&
-          (elements[order[i - 1]] === undefined ||
-          !elements[order[i - 1]].isVisible)) {
+          while (
+            i > 0 &&
+            (elements[order[i - 1]] === undefined ||
+              !elements[order[i - 1]].isVisible)
+          ) {
             i--;
           }
           if (i === 0) {
             // We are on top.
             elements[id].$element.prependTo($container);
-          }
-          else {
+          } else {
             // Add after element
             elements[id].$element.insertAfter(elements[order[i - 1]].$element);
           }
@@ -150,30 +157,31 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {H5P.jQuery} $element
      */
     var setElementHeight = function ($element) {
-      if (!$element.is(':visible')) {
+      if (!$element.is(":visible")) {
         // No animation
-        $element.css('max-height', 'none');
+        $element.css("max-height", "none");
         return;
       }
 
       // Get natural element height
-      var $tmp = $element.clone()
+      var $tmp = $element
+        .clone()
         .css({
-          'position': 'absolute',
-          'max-height': 'none'
-        }).appendTo($element.parent());
+          position: "absolute",
+          "max-height": "none",
+        })
+        .appendTo($element.parent());
 
       // Apply height to element
       var h = Math.round($tmp.get(0).getBoundingClientRect().height);
-      var fontSize = parseFloat($element.css('fontSize'));
+      var fontSize = parseFloat($element.css("fontSize"));
       var relativeH = h / fontSize;
-      $element.css('max-height', relativeH + 'em');
+      $element.css("max-height", relativeH + "em");
       $tmp.remove();
 
       if (h > 0 && sections.buttons && sections.buttons.$element === $element) {
-
         // Make sure buttons section is visible
-        sections.buttons.$element.addClass('h5p-question-visible');
+        sections.buttons.$element.addClass("h5p-question-visible");
 
         // Resize buttons after resizing button section
         setTimeout(function () {
@@ -218,13 +226,17 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @private
      */
     var toggleButtons = function () {
-
       // Clear transition timer, reevaluate if buttons will be detached
       clearTimeout(toggleButtonsTransitionTimer);
 
       // Show buttons
       for (var i = 0; i < buttonsToShow.length; i++) {
-        insert(buttonOrder, buttonsToShow[i].id, buttons, sections.buttons.$element);
+        insert(
+          buttonOrder,
+          buttonsToShow[i].id,
+          buttons,
+          sections.buttons.$element
+        );
         buttons[buttonsToShow[i].id].isVisible = true;
       }
       buttonsToShow = [];
@@ -237,16 +249,19 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         if (button.isVisible) {
           numToHide += 1;
         }
-        if (button.$element.is(':focus')) {
+        if (button.$element.is(":focus")) {
           // Move focus to the first visible button.
           relocateFocus = true;
         }
       }
 
-      if (sections.buttons && numToHide === sections.buttons.$element.children().length) {
+      if (
+        sections.buttons &&
+        numToHide === sections.buttons.$element.children().length
+      ) {
         // All buttons are going to be hidden. Hide container using transition.
-        sections.buttons.$element.removeClass('h5p-question-visible');
-        sections.buttons.$element.css('max-height', '');
+        sections.buttons.$element.removeClass("h5p-question-visible");
+        sections.buttons.$element.css("max-height", "");
         sectionsIsTransitioning = true;
 
         // Wait for animations before detaching buttons
@@ -254,18 +269,17 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           hideButtons(relocateFocus);
           sectionsIsTransitioning = false;
         }, 150);
-      }
-      else {
+      } else {
         hideButtons(relocateFocus);
 
         // Show button section
-        if (!sections.buttons.$element.is(':empty')) {
-          sections.buttons.$element.addClass('h5p-question-visible');
+        if (!sections.buttons.$element.is(":empty")) {
+          sections.buttons.$element.addClass("h5p-question-visible");
           setElementHeight(sections.buttons.$element);
 
           // Trigger resize after animation
           toggleButtonsTransitionTimer = setTimeout(function () {
-            self.trigger('resize');
+            self.trigger("resize");
           }, 150);
         }
       }
@@ -285,28 +299,25 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       // Add this here to avoid initial transition of the image making
       // content overflow. Alternatively we need to trigger a resize.
-      $imgSection.addClass('animatable');
+      $imgSection.addClass("animatable");
 
       if (imageThumb) {
-
         // Expand image
-        $(this).attr('aria-expanded', true);
-        $imgSection.addClass('h5p-question-image-fill-width');
+        $(this).attr("aria-expanded", true);
+        $imgSection.addClass("h5p-question-image-fill-width");
         imageThumb = false;
 
         imageTransitionTimer = setTimeout(function () {
-          self.trigger('resize');
+          self.trigger("resize");
         }, 600);
-      }
-      else {
-
+      } else {
         // Scale down image
-        $(this).attr('aria-expanded', false);
-        $imgSection.removeClass('h5p-question-image-fill-width');
+        $(this).attr("aria-expanded", false);
+        $imgSection.removeClass("h5p-question-image-fill-width");
         imageThumb = true;
 
         imageTransitionTimer = setTimeout(function () {
-          self.trigger('resize');
+          self.trigger("resize");
         }, 600);
       }
     };
@@ -328,15 +339,23 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         maxDepth = 5;
       }
       // Check validation of element or if we have reached document root
-      if (!$element || !($element instanceof $) || document === $element.get(0) || currDepth >= maxDepth) {
+      if (
+        !$element ||
+        !($element instanceof $) ||
+        document === $element.get(0) ||
+        currDepth >= maxDepth
+      ) {
         return;
       }
 
-      if ($element.css('overflow-y') === 'auto') {
+      if ($element.css("overflow-y") === "auto") {
         return $element;
-      }
-      else {
-        return findScrollableAncestor($element.parent(), currDepth + 1, maxDepth);
+      } else {
+        return findScrollableAncestor(
+          $element.parent(),
+          currDepth + 1,
+          maxDepth
+        );
       }
     };
 
@@ -346,7 +365,10 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @private
      */
     var scrollToBottom = function () {
-      if (!$wrapper || ($wrapper.hasClass('h5p-standalone') && !H5P.isFullscreen)) {
+      if (
+        !$wrapper ||
+        ($wrapper.hasClass("h5p-standalone") && !H5P.isFullscreen)
+      ) {
         return; // No scroll
       }
 
@@ -354,9 +376,12 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       // Scroll to bottom of scrollable ancestor
       if (scrollableAncestor) {
-        scrollableAncestor.animate({
-          scrollTop: $wrapper.css('height')
-        }, "slow");
+        scrollableAncestor.animate(
+          {
+            scrollTop: $wrapper.css("height"),
+          },
+          "slow"
+        );
       }
     };
 
@@ -377,30 +402,28 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       // Allow button section to attach before getting width
       buttonTruncationTimer = setTimeout(function () {
-
         // A static margin is added as buffer for smoother transitions
         var buttonsWidth = 0;
         for (var i in buttons) {
           var $element = buttons[i].$element;
           if (buttons[i].isVisible) {
-
             //Calculate exact button width
-            var buttonInstanceWidth = $element.get(0).offsetWidth +
-              parseFloat($element.css('margin-left')) +
-              parseFloat($element.css('margin-right'));
+            var buttonInstanceWidth =
+              $element.get(0).offsetWidth +
+              parseFloat($element.css("margin-left")) +
+              parseFloat($element.css("margin-right"));
             buttonsWidth += Math.ceil(buttonInstanceWidth) + 1;
           }
         }
 
-
         // Button section reduced by 1 pixel for cross-broswer consistency.
-        var buttonSectionWidth = Math.floor(sections.buttons.$element.get(0).offsetWidth) - 1;
+        var buttonSectionWidth =
+          Math.floor(sections.buttons.$element.get(0).offsetWidth) - 1;
 
         // Remove button labels if width of buttons are too wide
         if (buttonsWidth >= buttonSectionWidth) {
           removeButtonLabels(buttonsWidth, buttonSectionWidth);
-        }
-        else {
+        } else {
           restoreButtonLabels(buttonsWidth, buttonSectionWidth);
         }
         buttonTruncationTimer = undefined;
@@ -420,22 +443,24 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         var buttonId = buttonOrder[i];
         if (!buttons[buttonId].isTruncated && buttons[buttonId].isVisible) {
           var $button = buttons[buttonId].$element;
-          var $tmp = $button.clone()
+          var $tmp = $button
+            .clone()
             .css({
-              'position': 'absolute',
-              'white-space': 'nowrap',
-              'max-width': 'none'
+              position: "absolute",
+              "white-space": "nowrap",
+              "max-width": "none",
             })
-            .addClass('truncated')
-            .html('')
+            .addClass("truncated")
+            .html("")
             .appendTo($button.parent());
 
           // Calculate new total width of buttons
-          buttonsWidth = buttonsWidth - $button.outerWidth(true) + $tmp.outerWidth(true);
+          buttonsWidth =
+            buttonsWidth - $button.outerWidth(true) + $tmp.outerWidth(true);
 
           // Remove label
-          $button.html('');
-          $button.addClass('truncated');
+          $button.html("");
+          $button.addClass("truncated");
           buttons[buttonId].isTruncated = true;
           $tmp.remove();
           if (buttonsWidth < maxButtonsWidth) {
@@ -457,20 +482,21 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       for (var i = 0; i < buttonOrder.length; i++) {
         var buttonId = buttonOrder[i];
         if (buttons[buttonId].isTruncated && buttons[buttonId].isVisible) {
-
           // Check if adding label exceeds allowed width
           var $button = buttons[buttonId].$element;
-          var $tmp = $button.clone()
+          var $tmp = $button
+            .clone()
             .css({
-              'position': 'absolute',
-              'white-space': 'nowrap',
-              'max-width': 'none'
-            }).removeClass('truncated')
+              position: "absolute",
+              "white-space": "nowrap",
+              "max-width": "none",
+            })
+            .removeClass("truncated")
             .html(buttons[buttonId].text)
             .appendTo($button.parent());
 
           // Make sure clone was successfull
-          if(!$button.length || !$tmp.length) {
+          if (!$button.length || !$tmp.length) {
             return;
           }
 
@@ -478,7 +504,11 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           var newButtonSize = Math.ceil($tmp.get(0).offsetWidth) + 1;
 
           // Calculate new total width of buttons with a static pixel for consistency cross-browser
-          buttonsWidth = buttonsWidth - Math.floor(oldButtonSize) + Math.ceil(newButtonSize) + 1;
+          buttonsWidth =
+            buttonsWidth -
+            Math.floor(oldButtonSize) +
+            Math.ceil(newButtonSize) +
+            1;
 
           $tmp.remove();
           if (buttonsWidth >= maxButtonsWidth) {
@@ -486,7 +516,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           }
           // Restore label
           $button.html(buttons[buttonId].text);
-          $button.removeClass('truncated');
+          $button.removeClass("truncated");
           buttons[buttonId].isTruncated = false;
         }
       }
@@ -526,9 +556,9 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      */
     self.setVideo = function (params) {
       sections.video = {
-        $element: $('<div/>', {
-          'class': 'h5p-question-video'
-        })
+        $element: $("<div/>", {
+          class: "h5p-question-video",
+        }),
       };
 
       if (disableAutoPlay) {
@@ -537,16 +567,21 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       // Never fit to wrapper
       params.params.fit = false;
-      sections.video.instance = H5P.newRunnable(params, self.contentId, sections.video.$element, true);
+      sections.video.instance = H5P.newRunnable(
+        params,
+        self.contentId,
+        sections.video.$element,
+        true
+      );
       var fromVideo = false; // Hack to avoid never ending loop
-      sections.video.instance.on('resize', function () {
+      sections.video.instance.on("resize", function () {
         fromVideo = true;
-        self.trigger('resize');
+        self.trigger("resize");
         fromVideo = false;
       });
-      self.on('resize', function () {
+      self.on("resize", function () {
         if (!fromVideo) {
-          sections.video.instance.trigger('resize');
+          sections.video.instance.trigger("resize");
         }
       });
 
@@ -590,68 +625,72 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       options = options ? options : {};
       sections.image = {};
       // Image container
-      sections.image.$element = $('<div/>', {
-        'class': 'h5p-question-image h5p-question-image-fill-width'
+      sections.image.$element = $("<div/>", {
+        class: "h5p-question-image h5p-question-image-fill-width",
       });
 
       // Inner wrap
-      var $imgWrap = $('<div/>', {
-        'class': 'h5p-question-image-wrap',
-        appendTo: sections.image.$element
+      var $imgWrap = $("<div/>", {
+        class: "h5p-question-image-wrap",
+        appendTo: sections.image.$element,
       });
 
       // Image element
-      var $img = $('<img/>', {
+      var $img = $("<img/>", {
         src: H5P.getPath(path, self.contentId),
-        alt: (options.alt === undefined ? '' : options.alt),
+        alt: options.alt === undefined ? "" : options.alt,
         on: {
           load: function () {
-            self.trigger('imageLoaded', this);
-            self.trigger('resize');
-          }
+            self.trigger("imageLoaded", this);
+            self.trigger("resize");
+          },
         },
-        appendTo: $imgWrap
+        appendTo: $imgWrap,
       });
 
       // Disable image zooming
       if (options.disableImageZooming) {
-        $img.css('maxHeight', 'none');
+        $img.css("maxHeight", "none");
 
         // Make sure we are using the correct amount of width at all times
         var determineImgWidth = function () {
-
           // Remove margins if natural image width is bigger than section width
-          var imageSectionWidth = sections.image.$element.get(0).getBoundingClientRect().width;
+          var imageSectionWidth = sections.image.$element
+            .get(0)
+            .getBoundingClientRect().width;
 
           // Do not transition, for instant measurements
           $imgWrap.css({
-            '-webkit-transition': 'none',
-            'transition': 'none'
+            "-webkit-transition": "none",
+            transition: "none",
           });
 
           // Margin as translateX on both sides of image.
-          var diffX = 2 * ($imgWrap.get(0).getBoundingClientRect().left -
-            sections.image.$element.get(0).getBoundingClientRect().left);
+          var diffX =
+            2 *
+            ($imgWrap.get(0).getBoundingClientRect().left -
+              sections.image.$element.get(0).getBoundingClientRect().left);
 
           if ($img.get(0).naturalWidth >= imageSectionWidth - diffX) {
-            sections.image.$element.addClass('h5p-question-image-fill-width');
-          }
-          else { // Use margin for small res images
-            sections.image.$element.removeClass('h5p-question-image-fill-width');
+            sections.image.$element.addClass("h5p-question-image-fill-width");
+          } else {
+            // Use margin for small res images
+            sections.image.$element.removeClass(
+              "h5p-question-image-fill-width"
+            );
           }
 
           // Reset transition rules
           $imgWrap.css({
-            '-webkit-transition': '',
-            'transition': ''
+            "-webkit-transition": "",
+            transition: "",
           });
         };
 
         // Determine image width
-        if ($img.is(':visible')) {
+        if ($img.is(":visible")) {
           determineImgWidth();
-        }
-        else {
+        } else {
           $img.load(function () {
             determineImgWidth();
           });
@@ -663,30 +702,31 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       var sizeDetermined = false;
       var determineSize = function () {
-
-        if (sizeDetermined || !$img.is(':visible')) {
+        if (sizeDetermined || !$img.is(":visible")) {
           return; // Try again next time.
         }
 
-        $imgWrap.addClass('h5p-question-image-scalable')
-          .attr('aria-expanded', false)
-          .attr('role', 'button')
-          .attr('tabIndex', '0')
-          .on('click', function (event) {
+        $imgWrap
+          .addClass("h5p-question-image-scalable")
+          .attr("aria-expanded", false)
+          .attr("role", "button")
+          .attr("tabIndex", "0")
+          .on("click", function (event) {
             if (event.which === 1) {
               scaleImage.apply(this); // Left mouse button click
             }
-          }).on('keypress', function (event) {
-          if (event.which === 32) {
-            scaleImage.apply(this); // Space bar pressed
-          }
-        });
-        sections.image.$element.removeClass('h5p-question-image-fill-width');
+          })
+          .on("keypress", function (event) {
+            if (event.which === 32) {
+              scaleImage.apply(this); // Space bar pressed
+            }
+          });
+        sections.image.$element.removeClass("h5p-question-image-fill-width");
 
-        sizeDetermined  = true; // Prevent any futher events
+        sizeDetermined = true; // Prevent any futher events
       };
 
-      self.on('resize', determineSize);
+      self.on("resize", determineSize);
 
       return self;
     };
@@ -697,7 +737,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {(string|H5P.jQuery)} content
      */
     self.setIntroduction = function (content) {
-      register('introduction', content);
+      register("introduction", content);
 
       return self;
     };
@@ -710,7 +750,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {string} [options.class]
      */
     self.setContent = function (content, options) {
-      register('content', content);
+      register("content", content);
 
       if (options && options.class) {
         sections.content.$element.addClass(options.class);
@@ -730,9 +770,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       if (readText) {
         // Combine texts if called multiple times
-        readText += (readText.substr(-1, 1) === '.' ? ' ' : '. ') + content
-      }
-      else {
+        readText += (readText.substr(-1, 1) === "." ? " " : ". ") + content;
+      } else {
         readText = content;
       }
 
@@ -742,7 +781,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       setTimeout(function () {
         // Stop combining when done reading
         readText = null;
-        $read.html('');
+        $read.html("");
       }, 100);
     };
 
@@ -760,8 +799,15 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         return;
       }
 
-      var $feedbackText = $('.h5p-question-feedback-content-text', sections.feedback.$element);
-      if ($feedbackText && $feedbackText.html() && $feedbackText.html().length) {
+      var $feedbackText = $(
+        ".h5p-question-feedback-content-text",
+        sections.feedback.$element
+      );
+      if (
+        $feedbackText &&
+        $feedbackText.html() &&
+        $feedbackText.html().length
+      ) {
         self.read($feedbackText.html());
       }
     };
@@ -776,8 +822,13 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @param {string} [scoreBarLabel] Makes it easier for readspeakers to identify the scorebar
      * @param {string} [helpText] Help text that describes the score inside a tip icon
      */
-    self.setFeedback = function (content, score, maxScore, scoreBarLabel, helpText) {
-
+    self.setFeedback = function (
+      content,
+      score,
+      maxScore,
+      scoreBarLabel,
+      helpText
+    ) {
       // Feedback is disabled
       if (behaviour.disableFeedback) {
         return self;
@@ -785,8 +836,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       clearTimeout(feedbackTransitionTimer);
 
       if (content) {
-        var $feedback = $('<div>', {
-          'class': 'h5p-question-feedback-container'
+        var $feedback = $("<div>", {
+          class: "h5p-question-feedback-container",
         });
 
         if (scoreBar === undefined) {
@@ -794,19 +845,20 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         }
         scoreBar.appendTo($feedback);
         scoreBar.setScore(score);
-        var $feedbackContent = $('<div>', {
-          'class': 'h5p-question-feedback-content'
+        var $feedbackContent = $("<div>", {
+          class: "h5p-question-feedback-content",
         }).appendTo($feedback);
 
         // Feedback text
-        $('<div>', {
-          'class': 'h5p-question-feedback-content-text',
-          'html': content
+        $("<div>", {
+          class: "h5p-question-feedback-content-text",
+          html: content,
         }).appendTo($feedbackContent);
 
         if (helpText) {
-          JoubelUI.createTip(helpText, {helpIcon: true})
-            .appendTo($feedbackContent);
+          JoubelUI.createTip(helpText, { helpIcon: true }).appendTo(
+            $feedbackContent
+          );
         }
 
         // Feedback for readspeakers
@@ -817,19 +869,18 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         showFeedback = true;
         if (sections.feedback) {
           // Update section
-          update('feedback', $feedback);
-        }
-        else {
+          update("feedback", $feedback);
+        } else {
           // Create section
-          register('feedback', $feedback);
+          register("feedback", $feedback);
           if (initialized && $wrapper) {
-            insert(self.order, 'feedback', sections, $wrapper);
+            insert(self.order, "feedback", sections, $wrapper);
           }
         }
 
         // Show feedback section
         feedbackTransitionTimer = setTimeout(function () {
-          sections.feedback.$element.addClass('h5p-question-visible');
+          sections.feedback.$element.addClass("h5p-question-visible");
           setElementHeight(sections.feedback.$element);
           sectionsIsTransitioning = true;
 
@@ -839,17 +890,15 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           // Trigger resize after animation
           feedbackTransitionTimer = setTimeout(function () {
             sectionsIsTransitioning = false;
-            self.trigger('resize');
+            self.trigger("resize");
           }, 150);
         }, 0);
-
-      }
-      else if (sections.feedback && showFeedback) {
+      } else if (sections.feedback && showFeedback) {
         showFeedback = false;
 
         // Hide feedback section
-        sections.feedback.$element.removeClass('h5p-question-visible');
-        sections.feedback.$element.css('max-height', '');
+        sections.feedback.$element.removeClass("h5p-question-visible");
+        sections.feedback.$element.css("max-height", "");
         sectionsIsTransitioning = true;
 
         // Detach after transition
@@ -859,7 +908,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
             sections.feedback.$element.children().detach();
 
             // Trigger resize after animation
-            self.trigger('resize');
+            self.trigger("resize");
           }
           sectionsIsTransitioning = false;
           scoreBar.setScore(0);
@@ -877,13 +926,20 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      */
     self.updateFeedbackContent = function (content, extendContent) {
       if (sections.feedback && sections.feedback.$element) {
-
         if (extendContent) {
-          content = $('.h5p-question-feedback-content', sections.feedback.$element).html() + ' ' + content;
+          content =
+            $(
+              ".h5p-question-feedback-content",
+              sections.feedback.$element
+            ).html() +
+            " " +
+            content;
         }
 
         // Update feedback content html
-        $('.h5p-question-feedback-content', sections.feedback.$element).html(content);
+        $(".h5p-question-feedback-content", sections.feedback.$element).html(
+          content
+        );
       }
 
       return self;
@@ -896,7 +952,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
      * @returns {boolean}
      */
     self.hasButton = function (id) {
-      return (buttons[id] !== undefined);
+      return buttons[id] !== undefined;
     };
 
     /**
@@ -927,11 +983,11 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         return self; // Already registered
       }
 
-      if (sections.buttons === undefined)  {
+      if (sections.buttons === undefined) {
         // We have buttons, register wrapper
-        register('buttons');
+        register("buttons");
         if (initialized) {
-          insert(self.order, 'buttons', sections, $wrapper);
+          insert(self.order, "buttons", sections, $wrapper);
         }
       }
 
@@ -939,8 +995,10 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       extras.confirmationDialog = extras.confirmationDialog || {};
       options = options || {};
 
-      var confirmationDialog =
-        self.addConfirmationDialogToButton(extras.confirmationDialog, clicked);
+      var confirmationDialog = self.addConfirmationDialogToButton(
+        extras.confirmationDialog,
+        clicked
+      );
 
       /**
        * Handle button clicks through both mouse and keyboard
@@ -950,46 +1008,50 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         if (extras.confirmationDialog.enable && confirmationDialog) {
           // Show popups section if used
           if (!extras.confirmationDialog.$parentElement) {
-            sections.popups.$element.removeClass('hidden');
+            sections.popups.$element.removeClass("hidden");
           }
           confirmationDialog.show($e.position().top);
-        }
-        else {
+        } else {
           clicked();
         }
       };
 
       buttons[id] = {
         isTruncated: false,
-        text: text
+        text: text,
       };
-      var $e = buttons[id].$element = JoubelUI.createButton($.extend({
-        'class': 'h5p-question-' + id,
-        html: text,
-        on: {
-          click: function (event) {
-            handleButtonClick();
-            if (options.href !== undefined) {
-              event.preventDefault();
-            }
-          },
-          keydown: function (event) {
-            switch (event.which) {
-              case 13: // Enter
-              case 32: // Space
+      var $e = (buttons[id].$element = JoubelUI.createButton(
+        $.extend(
+          {
+            class: "h5p-question-" + id,
+            html: text,
+            on: {
+              click: function (event) {
                 handleButtonClick();
-                event.preventDefault();
-            }
-          }
-        }
-      }, options));
+                if (options.href !== undefined) {
+                  event.preventDefault();
+                }
+              },
+              keydown: function (event) {
+                switch (event.which) {
+                  case 13: // Enter
+                  case 32: // Space
+                    handleButtonClick();
+                    event.preventDefault();
+                }
+              },
+            },
+          },
+          options
+        )
+      ));
       buttonOrder.push(id);
 
       if (visible === undefined || visible) {
         // Button should be visible
         $e.appendTo(sections.buttons.$element);
         buttons[id].isVisible = true;
-        sections.buttons.$element.addClass('h5p-question-visible');
+        sections.buttons.$element.addClass("h5p-question-visible");
       }
 
       return self;
@@ -1018,44 +1080,42 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         headerText: options.l10n.header,
         dialogText: options.l10n.body,
         cancelText: options.l10n.cancelLabel,
-        confirmText: options.l10n.confirmLabel
+        confirmText: options.l10n.confirmLabel,
       });
 
       // Determine parent element
       if (options.$parentElement) {
         confirmationDialog.appendTo(options.$parentElement.get(0));
-      }
-      else {
-
+      } else {
         // Create popup section and append to that
         if (sections.popups === undefined) {
-          register('popups');
+          register("popups");
           if (initialized) {
-            insert(self.order, 'popups', sections, $wrapper);
+            insert(self.order, "popups", sections, $wrapper);
           }
-          sections.popups.$element.addClass('hidden');
-          self.order.push('popups');
+          sections.popups.$element.addClass("hidden");
+          self.order.push("popups");
         }
         confirmationDialog.appendTo(sections.popups.$element.get(0));
       }
 
       // Add event listeners
-      confirmationDialog.on('confirmed', function () {
+      confirmationDialog.on("confirmed", function () {
         if (!options.$parentElement) {
-          sections.popups.$element.addClass('hidden');
+          sections.popups.$element.addClass("hidden");
         }
         clicked();
 
         // Trigger to content type
-        self.trigger('confirmed');
+        self.trigger("confirmed");
       });
 
-      confirmationDialog.on('canceled', function () {
+      confirmationDialog.on("canceled", function () {
         if (!options.$parentElement) {
-          sections.popups.$element.addClass('hidden');
+          sections.popups.$element.addClass("hidden");
         }
         // Trigger to content type
-        self.trigger('canceled');
+        self.trigger("canceled");
       });
 
       return confirmationDialog;
@@ -1075,9 +1135,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       priority = priority || 0;
 
       // Skip if already being shown
-      var indexToShow = existsInArray(id, 'id', buttonsToShow);
+      var indexToShow = existsInArray(id, "id", buttonsToShow);
       if (indexToShow !== -1) {
-
         // Update priority
         if (buttonsToShow[indexToShow].priority < priority) {
           buttonsToShow[indexToShow].priority = priority;
@@ -1087,20 +1146,17 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       }
 
       // Check if button is going to be hidden on next tick
-      var exists = existsInArray(id, 'id', buttonsToHide);
+      var exists = existsInArray(id, "id", buttonsToHide);
       if (exists !== -1) {
-
         // Skip hiding if higher priority
         if (buttonsToHide[exists].priority <= priority) {
           buttonsToHide.splice(exists, 1);
-          buttonsToShow.push({id: id, priority: priority});
+          buttonsToShow.push({ id: id, priority: priority });
         }
-
       } // If button is not shown
-      else if (!buttons[id].$element.is(':visible')) {
-
+      else if (!buttons[id].$element.is(":visible")) {
         // Show button on next tick
-        buttonsToShow.push({id: id, priority: priority});
+        buttonsToShow.push({ id: id, priority: priority });
       }
 
       if (!toggleButtonsTimer) {
@@ -1124,9 +1180,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       priority = priority || 0;
 
       // Skip if already being hidden
-      var indexToHide = existsInArray(id, 'id', buttonsToHide);
+      var indexToHide = existsInArray(id, "id", buttonsToHide);
       if (indexToHide !== -1) {
-
         // Update priority
         if (buttonsToHide[indexToHide].priority < priority) {
           buttonsToHide[indexToHide].priority = priority;
@@ -1136,24 +1191,19 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       }
 
       // Check if buttons is going to be shown on next tick
-      var exists = existsInArray(id, 'id', buttonsToShow);
+      var exists = existsInArray(id, "id", buttonsToShow);
       if (exists !== -1) {
-
         // Skip showing if higher priority
         if (buttonsToShow[exists].priority <= priority) {
           buttonsToShow.splice(exists, 1);
-          buttonsToHide.push({id: id, priority: priority});
+          buttonsToHide.push({ id: id, priority: priority });
         }
-      }
-      else if (!buttons[id].$element.is(':visible')) {
-
+      } else if (!buttons[id].$element.is(":visible")) {
         // Make sure it is detached in case the container is hidden.
         hideButton(id);
-      }
-      else {
-
+      } else {
         // Hide button on next tick.
-        buttonsToHide.push({id: id, priority: priority});
+        buttonsToHide.push({ id: id, priority: priority });
       }
 
       if (!toggleButtonsTimer) {
@@ -1179,8 +1229,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
             break;
           }
         }
-      }
-      else if (buttons[id].$element.is(':visible')) {
+      } else if (buttons[id].$element.is(":visible")) {
         // Set focus to requested button
         buttons[id].$element.focus();
       }
@@ -1228,27 +1277,27 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
 
       // The first time we attach we also create our DOM elements.
       if ($wrapper === undefined) {
-        if (self.registerDomElements !== undefined &&
-           (self.registerDomElements instanceof Function ||
-           typeof self.registerDomElements === 'function')) {
-
-           // Give the question type a chance to register before attaching
+        if (
+          self.registerDomElements !== undefined &&
+          (self.registerDomElements instanceof Function ||
+            typeof self.registerDomElements === "function")
+        ) {
+          // Give the question type a chance to register before attaching
           self.registerDomElements();
         }
 
         // Create section for reading messages
-        $read = $('<div/>', {
-          'aria-live': 'polite',
-          'class': 'h5p-hidden-read'
+        $read = $("<div/>", {
+          "aria-live": "polite",
+          class: "h5p-hidden-read",
         });
-        register('read', $read);
-        self.trigger('registerDomElements');
+        register("read", $read);
+        self.trigger("registerDomElements");
       }
 
       // Prepare container
       $wrapper = $container;
-      $container.html('')
-        .addClass('h5p-question h5p-' + type);
+      $container.html("").addClass("h5p-question h5p-" + type);
 
       // Add sections in given order
       var $sections = [];
@@ -1258,8 +1307,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           if (sections[section].parent) {
             // Section has a different parent
             sections[section].$element.appendTo(sections[section].parent);
-          }
-          else {
+          } else {
             $sections.push(sections[section].$element);
           }
           sections[section].isVisible = true;
@@ -1270,12 +1318,16 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       $container.append($sections);
 
       // Let others react to dom changes
-      self.trigger('domChanged', {
-        '$target': $container,
-        'library': self.libraryInfo.machineName,
-        'contentId': self.contentId,
-        'key': 'newLibrary'
-      }, {'bubbles': true, 'external': true});
+      self.trigger(
+        "domChanged",
+        {
+          $target: $container,
+          library: self.libraryInfo.machineName,
+          contentId: self.contentId,
+          key: "newLibrary",
+        },
+        { bubbles: true, external: true }
+      );
 
       // ??
       initialized = true;
@@ -1299,7 +1351,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
     };
 
     // Listen for resize
-    self.on('resize', function () {
+    self.on("resize", function () {
       // Allow elements to attach and set their height before resizing
       if (!sectionsIsTransitioning && sections.feedback && showFeedback) {
         // Resize feedback to fit

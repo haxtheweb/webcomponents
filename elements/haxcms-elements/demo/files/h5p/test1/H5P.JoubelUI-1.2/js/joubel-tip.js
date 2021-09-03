@@ -1,7 +1,6 @@
 var H5P = H5P || {};
 
 H5P.JoubelTip = (function ($) {
-
   /**
    * Creates a new tip
    *
@@ -12,20 +11,24 @@ H5P.JoubelTip = (function ($) {
   function JoubelTip(text, params) {
     var speechBubble;
 
-    params = $.extend({
-      showSpeechBubble: true,
-      helpIcon: false
-    }, params);
+    params = $.extend(
+      {
+        showSpeechBubble: true,
+        helpIcon: false,
+      },
+      params
+    );
 
     var parsedTitle = text;
     if ($.parseHTML($.trim(text)).length) {
       parsedTitle = $.parseHTML($.trim(text))[0].textContent;
     }
 
-    var $tip = $('<div/>', {
-      class: 'joubel-tip-container' + (params.showSpeechBubble ? '' : ' be-quiet'),
+    var $tip = $("<div/>", {
+      class:
+        "joubel-tip-container" + (params.showSpeechBubble ? "" : " be-quiet"),
       title: parsedTitle,
-      role: 'button',
+      role: "button",
       tabindex: 0,
       click: function () {
         toggleSpeechBubble();
@@ -37,14 +40,15 @@ H5P.JoubelTip = (function ($) {
         if (e.which === 32) {
           toggleSpeechBubble();
           e.preventDefault();
-        }
-        else {
+        } else {
           toggleSpeechBubble(true);
         }
-      }
-    }).append($('<div/>', {
-      'class': 'joubel-tip-icon' + (params.helpIcon ? ' help-icon': '')
-    }));
+      },
+    }).append(
+      $("<div/>", {
+        class: "joubel-tip-icon" + (params.helpIcon ? " help-icon" : ""),
+      })
+    );
 
     /**
      * Add or remove a speech bubble
@@ -56,8 +60,7 @@ H5P.JoubelTip = (function ($) {
       if (speechBubble !== undefined && speechBubble.isCurrent($tip)) {
         speechBubble.remove();
         speechBubble = undefined;
-      }
-      else if (!close && params.showSpeechBubble) {
+      } else if (!close && params.showSpeechBubble) {
         speechBubble = H5P.JoubelSpeechBubble($tip, text);
       }
     }

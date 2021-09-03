@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "fullscreen-behaviors-demo",
-      "description": "`fullscreen-behaviors-demo`\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "description": "`fullscreen-behaviors-demo`\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "fullscreen",
@@ -12,14 +12,14 @@
         },
         {
           "name": "fullscreen-enabled",
-          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled",
           "valueSet": "v"
         }
       ]
     },
     {
       "name": "fullscreen-behaviors",
-      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "fullscreen",
@@ -28,7 +28,7 @@
         },
         {
           "name": "fullscreen-enabled",
-          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled",
           "valueSet": "v"
         }
       ]
@@ -55,7 +55,7 @@
     },
     {
       "name": "fullscreen-behaviors",
-      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "fullscreen",
@@ -64,7 +64,7 @@
         },
         {
           "name": "fullscreen-enabled",
-          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled",
           "valueSet": "v"
         }
       ]

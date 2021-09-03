@@ -8,7 +8,7 @@ import "./build-haxcms.js";
 import "./build-elmsln.js";
 // important in smaller builds
 import "@lrnwebcomponents/baseline-build-hax/baseline-build-hax.js";
-window.process = { env: { NODE_ENV: 'production' } };
+window.process = { env: { NODE_ENV: "production" } };
 // supported backends
 import "@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js";
 import "@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-demo.js";

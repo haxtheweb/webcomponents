@@ -1,7 +1,6 @@
 var H5P = H5P || {};
 
 H5P.JoubelSlider = (function ($) {
-
   /**
    * Creates a new Slider
    *
@@ -11,9 +10,15 @@ H5P.JoubelSlider = (function ($) {
     H5P.EventDispatcher.call(this);
     var self = this;
 
-    this.$slider = $('<div>', $.extend({
-      'class': 'h5p-joubel-ui-slider'
-    }, params));
+    this.$slider = $(
+      "<div>",
+      $.extend(
+        {
+          class: "h5p-joubel-ui-slider",
+        },
+        params
+      )
+    );
 
     this.$slides = [];
     this.currentIndex = 0;
@@ -23,16 +28,16 @@ H5P.JoubelSlider = (function ($) {
   JoubelSlider.prototype.constructor = JoubelSlider;
 
   JoubelSlider.prototype.addSlide = function ($content) {
-    $content.addClass('h5p-joubel-ui-slide').css({
-      'left': (this.numSlides*100) + '%'
+    $content.addClass("h5p-joubel-ui-slide").css({
+      left: this.numSlides * 100 + "%",
     });
     this.$slider.append($content);
     this.$slides.push($content);
 
     this.numSlides++;
 
-    if(this.numSlides === 1) {
-      $content.addClass('current');
+    if (this.numSlides === 1) {
+      $content.addClass("current");
     }
   };
 
@@ -43,27 +48,27 @@ H5P.JoubelSlider = (function ($) {
   JoubelSlider.prototype.move = function (index) {
     var self = this;
 
-    if(index === 0) {
-      self.trigger('first-slide');
+    if (index === 0) {
+      self.trigger("first-slide");
     }
-    if(index+1 === self.numSlides) {
-      self.trigger('last-slide');
+    if (index + 1 === self.numSlides) {
+      self.trigger("last-slide");
     }
-    self.trigger('move');
+    self.trigger("move");
 
     var $previousSlide = self.$slides[this.currentIndex];
     H5P.Transition.onTransitionEnd(this.$slider, function () {
-      $previousSlide.removeClass('current');
-      self.trigger('moved');
+      $previousSlide.removeClass("current");
+      self.trigger("moved");
     });
-    this.$slides[index].addClass('current');
+    this.$slides[index].addClass("current");
 
-    var translateX = 'translateX(' + (-index*100) + '%)';
+    var translateX = "translateX(" + -index * 100 + "%)";
     this.$slider.css({
-      '-webkit-transform': translateX,
-      '-moz-transform': translateX,
-      '-ms-transform': translateX,
-      'transform': translateX
+      "-webkit-transform": translateX,
+      "-moz-transform": translateX,
+      "-ms-transform": translateX,
+      transform: translateX,
     });
 
     this.currentIndex = index;
@@ -74,15 +79,15 @@ H5P.JoubelSlider = (function ($) {
   };
 
   JoubelSlider.prototype.next = function () {
-    if(this.currentIndex+1 >= this.numSlides) {
+    if (this.currentIndex + 1 >= this.numSlides) {
       return;
     }
 
-    this.move(this.currentIndex+1);
+    this.move(this.currentIndex + 1);
   };
 
   JoubelSlider.prototype.previous = function () {
-    this.move(this.currentIndex-1);
+    this.move(this.currentIndex - 1);
   };
 
   JoubelSlider.prototype.first = function () {
@@ -90,7 +95,7 @@ H5P.JoubelSlider = (function ($) {
   };
 
   JoubelSlider.prototype.last = function () {
-    this.move(this.numSlides-1);
+    this.move(this.numSlides - 1);
   };
 
   return JoubelSlider;

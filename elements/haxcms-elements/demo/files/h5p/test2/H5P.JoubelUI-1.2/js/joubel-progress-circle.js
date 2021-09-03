@@ -5,7 +5,6 @@ var H5P = H5P || {};
  */
 
 H5P.JoubelProgressCircle = (function ($) {
-
   /**
    * Constructor for the Progress Circle
    *
@@ -14,23 +13,23 @@ H5P.JoubelProgressCircle = (function ($) {
    * @param {string} backgroundColor Color behind the progress meter
    */
   function ProgressCircle(number, progressColor, fillColor, backgroundColor) {
-    progressColor = progressColor || '#096bcb';
-    fillColor = fillColor || '#f0f0f0';
-    backgroundColor = backgroundColor || '#ffffff';
+    progressColor = progressColor || "#096bcb";
+    fillColor = fillColor || "#f0f0f0";
+    backgroundColor = backgroundColor || "#ffffff";
     var progressColorRGB = this.hexToRgb(progressColor);
 
     //Verify number
     try {
       number = Number(number);
-      if (number === '') {
-        throw 'is empty';
+      if (number === "") {
+        throw "is empty";
       }
       if (isNaN(number)) {
-        throw 'is not a number';
+        throw "is not a number";
       }
     } catch (e) {
-      console.log('Progress circle input' + e);
-      number = 'err';
+      console.log("Progress circle input" + e);
+      number = "err";
     }
 
     //Draw circle
@@ -43,44 +42,67 @@ H5P.JoubelProgressCircle = (function ($) {
     // We can not use rgba, since they will stack on top of each other.
     // Instead we create the equivalent of the rgba color
     // and applies this to the activeborder and background color.
-    var progressColorString = 'rgb(' + parseInt(this.rgbFromAlpha(progressColorRGB.r, decimalNumber), 10) +
-      ',' + parseInt(this.rgbFromAlpha(progressColorRGB.g, decimalNumber), 10) +
-      ',' + parseInt(this.rgbFromAlpha(progressColorRGB.b, decimalNumber), 10) + ')';
+    var progressColorString =
+      "rgb(" +
+      parseInt(this.rgbFromAlpha(progressColorRGB.r, decimalNumber), 10) +
+      "," +
+      parseInt(this.rgbFromAlpha(progressColorRGB.g, decimalNumber), 10) +
+      "," +
+      parseInt(this.rgbFromAlpha(progressColorRGB.b, decimalNumber), 10) +
+      ")";
 
     // Circle wrapper
-    var $wrapper = $('<div/>', {
-      'class': "joubel-progress-circle-wrapper"
+    var $wrapper = $("<div/>", {
+      class: "joubel-progress-circle-wrapper",
     });
 
     //Active border indicates progress
-    var $activeBorder = $('<div/>', {
-      'class': "joubel-progress-circle-active-border"
+    var $activeBorder = $("<div/>", {
+      class: "joubel-progress-circle-active-border",
     }).appendTo($wrapper);
 
     //Background circle
-    var $backgroundCircle = $('<div/>', {
-      'class': "joubel-progress-circle-circle"
+    var $backgroundCircle = $("<div/>", {
+      class: "joubel-progress-circle-circle",
     }).appendTo($activeBorder);
 
     //Progress text/number
-    $('<span/>', {
-      'text': number,
-      'class': "joubel-progress-circle-percentage"
+    $("<span/>", {
+      text: number,
+      class: "joubel-progress-circle-percentage",
     }).appendTo($backgroundCircle);
 
     var deg = number * 3.6;
     if (deg <= 180) {
-      $activeBorder.css('background-image',
-        'linear-gradient(' + (90 + deg) + 'deg, transparent 50%, ' + fillColor + ' 50%),' +
-        'linear-gradient(90deg, ' + fillColor + ' 50%, transparent 50%)')
-        .css('border', '2px solid' + backgroundColor)
-        .css('background-color', progressColorString);
+      $activeBorder
+        .css(
+          "background-image",
+          "linear-gradient(" +
+            (90 + deg) +
+            "deg, transparent 50%, " +
+            fillColor +
+            " 50%)," +
+            "linear-gradient(90deg, " +
+            fillColor +
+            " 50%, transparent 50%)"
+        )
+        .css("border", "2px solid" + backgroundColor)
+        .css("background-color", progressColorString);
     } else {
-      $activeBorder.css('background-image',
-        'linear-gradient(' + (deg - 90) + 'deg, transparent 50%, ' + progressColorString + ' 50%),' +
-        'linear-gradient(90deg, ' + fillColor + ' 50%, transparent 50%)')
-        .css('border', '2px solid' + backgroundColor)
-        .css('background-color', progressColorString);
+      $activeBorder
+        .css(
+          "background-image",
+          "linear-gradient(" +
+            (deg - 90) +
+            "deg, transparent 50%, " +
+            progressColorString +
+            " 50%)," +
+            "linear-gradient(90deg, " +
+            fillColor +
+            " 50%, transparent 50%)"
+        )
+        .css("border", "2px solid" + backgroundColor)
+        .css("background-color", progressColorString);
     }
 
     this.$activeBorder = $activeBorder;
@@ -118,27 +140,29 @@ H5P.JoubelProgressCircle = (function ($) {
     var $parent = this.$wrapper.parent();
 
     if ($parent !== undefined && $parent) {
-
       // Measurements
-      var fontSize = parseInt($parent.css('font-size'), 10);
+      var fontSize = parseInt($parent.css("font-size"), 10);
 
       // Static sizes
       var fontSizeMultiplum = 3.75;
-      var progressCircleWidthPx = parseInt((fontSize / 4.5), 10) % 2 === 0 ? parseInt((fontSize / 4.5), 10) : parseInt((fontSize / 4.5), 10) + 1;
+      var progressCircleWidthPx =
+        parseInt(fontSize / 4.5, 10) % 2 === 0
+          ? parseInt(fontSize / 4.5, 10)
+          : parseInt(fontSize / 4.5, 10) + 1;
       var progressCircleOffset = progressCircleWidthPx / 2;
 
       var width = fontSize * fontSizeMultiplum;
       var height = fontSize * fontSizeMultiplum;
       this.$activeBorder.css({
-        'width': width,
-        'height': height
+        width: width,
+        height: height,
       });
 
       this.$backgroundCircle.css({
-        'width': width - progressCircleWidthPx,
-        'height': height - progressCircleWidthPx,
-        'top': progressCircleOffset,
-        'left': progressCircleOffset
+        width: width - progressCircleWidthPx,
+        height: height - progressCircleWidthPx,
+        top: progressCircleOffset,
+        left: progressCircleOffset,
       });
     }
   };
@@ -150,11 +174,13 @@ H5P.JoubelProgressCircle = (function ($) {
    */
   ProgressCircle.prototype.hexToRgb = function (hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
+      : null;
   };
 
   /**
@@ -164,9 +190,8 @@ H5P.JoubelProgressCircle = (function ($) {
    * @returns {number} blended colorValue
    */
   ProgressCircle.prototype.rgbFromAlpha = function (colorValue, opacity) {
-    return (opacity * colorValue) + (1 - opacity) * 255;
+    return opacity * colorValue + (1 - opacity) * 255;
   };
 
   return ProgressCircle;
-
-}(H5P.jQuery));
+})(H5P.jQuery);

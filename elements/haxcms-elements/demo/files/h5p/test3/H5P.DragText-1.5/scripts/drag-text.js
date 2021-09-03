@@ -15,17 +15,17 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
   var DROPZONE = "h5p-drag-dropzone";
   var DRAGGABLE = "h5p-drag-draggable";
   var SHOW_SOLUTION_CONTAINER = "h5p-drag-show-solution-container";
-  var DRAGGABLES_WIDE_SCREEN = 'h5p-drag-wide-screen';
-  var DRAGGABLE_ELEMENT_WIDE_SCREEN = 'h5p-drag-draggable-wide-screen';
+  var DRAGGABLES_WIDE_SCREEN = "h5p-drag-wide-screen";
+  var DRAGGABLE_ELEMENT_WIDE_SCREEN = "h5p-drag-draggable-wide-screen";
 
   //CSS Dropzone feedback:
-  var CORRECT_FEEDBACK = 'h5p-drag-correct-feedback';
-  var WRONG_FEEDBACK = 'h5p-drag-wrong-feedback';
+  var CORRECT_FEEDBACK = "h5p-drag-correct-feedback";
+  var WRONG_FEEDBACK = "h5p-drag-wrong-feedback";
 
   //CSS Draggable feedback:
-  var DRAGGABLE_DROPPED = 'h5p-drag-dropped';
-  var DRAGGABLE_FEEDBACK_CORRECT = 'h5p-drag-draggable-correct';
-  var DRAGGABLE_FEEDBACK_WRONG = 'h5p-drag-draggable-wrong';
+  var DRAGGABLE_DROPPED = "h5p-drag-dropped";
+  var DRAGGABLE_FEEDBACK_CORRECT = "h5p-drag-draggable-correct";
+  var DRAGGABLE_FEEDBACK_WRONG = "h5p-drag-draggable-wrong";
 
   /**
    * Initialize module.
@@ -41,26 +41,35 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
   function DragText(params, contentId, contentData) {
     this.$ = $(this);
     this.contentId = contentId;
-    Question.call(this, 'drag-text');
+    Question.call(this, "drag-text");
 
     // Set default behavior.
-    this.params = $.extend({}, {
-      taskDescription: "Set in adjectives in the following sentence",
-      textField: "This is a *nice*, *flexible* content type, which allows you to highlight all the *wonderful* words in this *exciting* sentence.\n" +
-        "This is another line of *fantastic* text.",
-      checkAnswer: "Check",
-      tryAgain: "Retry",
-      behaviour: {
-        enableRetry: true,
-        enableSolutionsButton: true,
-        instantFeedback: false
+    this.params = $.extend(
+      {},
+      {
+        taskDescription: "Set in adjectives in the following sentence",
+        textField:
+          "This is a *nice*, *flexible* content type, which allows you to highlight all the *wonderful* words in this *exciting* sentence.\n" +
+          "This is another line of *fantastic* text.",
+        checkAnswer: "Check",
+        tryAgain: "Retry",
+        behaviour: {
+          enableRetry: true,
+          enableSolutionsButton: true,
+          instantFeedback: false,
+        },
+        score: "You got @score of @total points",
+        showSolution: "Show solution",
       },
-      score: "You got @score of @total points",
-      showSolution : "Show solution"
-    }, params);
+      params
+    );
 
     this.contentData = contentData;
-    if (this.contentData !== undefined && this.contentData.previousState !== undefined && this.contentData.previousState.length !== undefined) {
+    if (
+      this.contentData !== undefined &&
+      this.contentData.previousState !== undefined &&
+      this.contentData.previousState.length !== undefined
+    ) {
       this.previousState = this.contentData.previousState;
     }
 
@@ -68,12 +77,15 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     this.answered = false;
 
     // Convert line breaks to HTML
-    this.textFieldHtml = this.params.textField.replace(/(\r\n|\n|\r)/gm, "<br/>");
+    this.textFieldHtml = this.params.textField.replace(
+      /(\r\n|\n|\r)/gm,
+      "<br/>"
+    );
 
     // Init drag text task
     this.initDragText();
 
-    this.on('resize', this.resize, this);
+    this.on("resize", this.resize, this);
   }
 
   DragText.prototype = Object.create(Question.prototype);
@@ -85,7 +97,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    */
   DragText.prototype.registerDomElements = function () {
     // Register task introduction text
-    this.setIntroduction('<p>' + this.params.taskDescription + '</p>');
+    this.setIntroduction("<p>" + this.params.taskDescription + "</p>");
 
     // Register task content area
     this.setContent(this.$inner);
@@ -98,8 +110,8 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    * Initialize drag text task
    */
   DragText.prototype.initDragText = function () {
-    this.$inner = $('<div/>', {
-      class: INNER_CONTAINER
+    this.$inner = $("<div/>", {
+      class: INNER_CONTAINER,
     });
 
     // Create task
@@ -120,32 +132,37 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
   };
 
   /**
-  * Adds the draggables on the right side of the screen if widescreen is detected.
-  * @public
-  */
+   * Adds the draggables on the right side of the screen if widescreen is detected.
+   * @public
+   */
   DragText.prototype.changeLayoutToFitWidth = function () {
     var self = this;
     self.addDropzoneWidth();
 
     //Find ratio of width to em, and make sure it is less than the predefined ratio, make sure widest draggable is less than a third of parent width.
-    if ((self.$inner.width() / parseFloat(self.$inner.css("font-size"), 10) > 43) && (self.widestDraggable <= (self.$inner.width() / 3))) {
+    if (
+      self.$inner.width() / parseFloat(self.$inner.css("font-size"), 10) > 43 &&
+      self.widestDraggable <= self.$inner.width() / 3
+    ) {
       // Adds a class that floats the draggables to the right.
       self.$draggables.addClass(DRAGGABLES_WIDE_SCREEN);
       // Detach and reappend the wordContainer so it will fill up the remaining space left by draggables.
       self.$wordContainer.detach().appendTo(self.$taskContainer);
       // Set margin so the wordContainer does not expand when there are no more draggables left.
-      self.$wordContainer.css({'margin-right': self.widestDraggable});
+      self.$wordContainer.css({ "margin-right": self.widestDraggable });
       // Set all draggables to be blocks
       self.draggables.forEach(function (draggable) {
         draggable.getDraggableElement().addClass(DRAGGABLE_ELEMENT_WIDE_SCREEN);
       });
     } else {
       // Remove the specific wide screen settings.
-      self.$wordContainer.css({'margin-right': 0});
+      self.$wordContainer.css({ "margin-right": 0 });
       self.$draggables.removeClass(DRAGGABLES_WIDE_SCREEN);
       self.$draggables.detach().appendTo(self.$taskContainer);
       self.draggables.forEach(function (draggable) {
-        draggable.getDraggableElement().removeClass(DRAGGABLE_ELEMENT_WIDE_SCREEN);
+        draggable
+          .getDraggableElement()
+          .removeClass(DRAGGABLE_ELEMENT_WIDE_SCREEN);
       });
     }
   };
@@ -158,55 +175,70 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var self = this;
 
     // Checking answer button
-    self.addButton('check-answer', self.params.checkAnswer, function () {
-      self.answered = true;
-      if (!self.showEvaluation()) {
-        if (self.params.behaviour.enableRetry) {
-          self.showButton('try-again');
+    self.addButton(
+      "check-answer",
+      self.params.checkAnswer,
+      function () {
+        self.answered = true;
+        if (!self.showEvaluation()) {
+          if (self.params.behaviour.enableRetry) {
+            self.showButton("try-again");
+          }
+          if (self.params.behaviour.enableSolutionsButton) {
+            self.showButton("show-solution");
+          }
+          self.hideButton("check-answer");
+          self.disableDraggables();
+        } else {
+          self.hideButton("show-solution");
+          self.hideButton("try-again");
+          self.hideButton("check-answer");
         }
-        if (self.params.behaviour.enableSolutionsButton) {
-          self.showButton('show-solution');
-        }
-        self.hideButton('check-answer');
-        self.disableDraggables();
-      } else {
-        self.hideButton('show-solution');
-        self.hideButton('try-again');
-        self.hideButton('check-answer');
-      }
-    }, !self.params.behaviour.instantFeedback);
+      },
+      !self.params.behaviour.instantFeedback
+    );
 
     //Retry button
-    self.addButton('try-again', self.params.tryAgain, function () {
-      // Reset and shuffle draggables if Question is answered
-      if (self.answered) {
-        self.resetDraggables();
-        self.addDraggablesRandomly(self.$draggables);
-      }
-      self.answered = false;
+    self.addButton(
+      "try-again",
+      self.params.tryAgain,
+      function () {
+        // Reset and shuffle draggables if Question is answered
+        if (self.answered) {
+          self.resetDraggables();
+          self.addDraggablesRandomly(self.$draggables);
+        }
+        self.answered = false;
 
-      self.hideEvaluation();
+        self.hideEvaluation();
 
-      self.hideButton('try-again');
-      self.hideButton('show-solution');
+        self.hideButton("try-again");
+        self.hideButton("show-solution");
 
-      if (self.params.behaviour.instantFeedback) {
-        self.enableAllDropzonesAndDraggables();
-      } else {
-        self.showButton('check-answer');
-        self.enableDraggables();
-      }
-      self.hideAllSolutions();
-    }, self.initShowTryAgainButton || false);
+        if (self.params.behaviour.instantFeedback) {
+          self.enableAllDropzonesAndDraggables();
+        } else {
+          self.showButton("check-answer");
+          self.enableDraggables();
+        }
+        self.hideAllSolutions();
+      },
+      self.initShowTryAgainButton || false
+    );
 
     //Show Solution button
-    self.addButton('show-solution', self.params.showSolution, function () {
-      self.droppables.forEach(function (droppable) {
-        droppable.showSolution();
-      });
-      self.disableDraggables();
-      self.hideButton('show-solution');
-    }, self.initShowShowSolutionButton || false);
+    self.addButton(
+      "show-solution",
+      self.params.showSolution,
+      function () {
+        self.droppables.forEach(function (droppable) {
+          droppable.showSolution();
+        });
+        self.disableDraggables();
+        self.hideButton("show-solution");
+      },
+      self.initShowShowSolutionButton || false
+    );
   };
 
   /**
@@ -234,23 +266,24 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var maxScore = this.droppables.length;
 
     if (!skipXapi) {
-      var xAPIEvent = this.createXAPIEventTemplate('answered');
+      var xAPIEvent = this.createXAPIEventTemplate("answered");
       this.addQuestionToXAPI(xAPIEvent);
       this.addResponseToXAPI(xAPIEvent);
       this.trigger(xAPIEvent);
     }
 
-    var scoreText = this.params.score.replace(/@score/g, score.toString())
+    var scoreText = this.params.score
+      .replace(/@score/g, score.toString())
       .replace(/@total/g, maxScore.toString());
 
     if (score === maxScore) {
       //Hide buttons and disable task
-      this.hideButton('check-answer');
-      this.hideButton('show-solution');
-      this.hideButton('try-again');
+      this.hideButton("check-answer");
+      this.hideButton("show-solution");
+      this.hideButton("try-again");
       this.disableDraggables();
     }
-    this.trigger('resize');
+    this.trigger("resize");
 
     // Set feedback score
     this.setFeedback(scoreText, score, maxScore);
@@ -277,7 +310,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    */
   DragText.prototype.hideEvaluation = function () {
     this.setFeedback();
-    this.trigger('resize');
+    this.trigger("resize");
   };
 
   /**
@@ -287,7 +320,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     this.droppables.forEach(function (droppable) {
       droppable.hideSolution();
     });
-    this.trigger('resize');
+    this.trigger("resize");
   };
 
   /**
@@ -302,15 +335,15 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     self.droppables = [];
     self.draggables = [];
 
-    self.$taskContainer = $('<div/>', {
-      'class': TASK_CONTAINER
+    self.$taskContainer = $("<div/>", {
+      class: TASK_CONTAINER,
     });
 
-    self.$draggables = $('<div/>', {
-      'class': DRAGGABLES_CONTAINER
+    self.$draggables = $("<div/>", {
+      class: DRAGGABLES_CONTAINER,
     });
 
-    self.$wordContainer = $('<div/>', {'class': WORDS_CONTAINER});
+    self.$wordContainer = $("<div/>", { class: WORDS_CONTAINER });
     self.handleText();
 
     self.addDraggablesRandomly(self.$draggables);
@@ -332,18 +365,20 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var textField = self.textFieldHtml;
 
     // Go through the text and replace all the asterisks with input fields
-    var dropStart = textField.indexOf('*');
+    var dropStart = textField.indexOf("*");
     var dropEnd = -1;
     var currentIndex = 0;
     //While the start of a dropbox is found
     while (dropStart !== -1) {
       dropStart += 1;
-      dropEnd = textField.indexOf('*', dropStart);
+      dropEnd = textField.indexOf("*", dropStart);
       if (dropEnd === -1) {
         dropStart = -1;
       } else {
         //Appends the text between each dropzone
-        self.$wordContainer.append(textField.slice(currentIndex, dropStart - 1));
+        self.$wordContainer.append(
+          textField.slice(currentIndex, dropStart - 1)
+        );
 
         //Adds the drag n drop functionality when an answer is found
         self.addDragNDrop(textField.substring(dropStart, dropEnd));
@@ -351,7 +386,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
         currentIndex = dropEnd;
 
         //Attempts to find the beginning of the next answer.
-        dropStart = textField.indexOf('*', dropEnd);
+        dropStart = textField.indexOf("*", dropEnd);
       }
     }
     //Appends the remaining part of the text.
@@ -366,7 +401,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var self = this;
     var widest = 0;
     var widestDragagble = 0;
-    var fontSize = parseInt(this.$inner.css('font-size'), 10);
+    var fontSize = parseInt(this.$inner.css("font-size"), 10);
     var staticMinimumWidth = 3 * fontSize;
     var staticPadding = fontSize; // Needed to make room for feedback icons
 
@@ -375,13 +410,16 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
       var $draggableElement = draggable.getDraggableElement();
 
       //Find the initial natural width of the draggable.
-      var $tmp = $draggableElement.clone().css({
-        'position': 'absolute',
-        'white-space': 'nowrap',
-        'width': 'auto',
-        'padding': 0,
-        'margin': 0
-      }).html(draggable.getAnswerText())
+      var $tmp = $draggableElement
+        .clone()
+        .css({
+          position: "absolute",
+          "white-space": "nowrap",
+          width: "auto",
+          padding: 0,
+          margin: 0,
+        })
+        .html(draggable.getAnswerText())
         .appendTo($draggableElement.parent());
       var width = $tmp.width();
 
@@ -420,7 +458,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var self = this;
     var tip;
     var answer = text;
-    var answersAndTip = answer.split(':');
+    var answersAndTip = answer.split(":");
 
     if (answersAndTip.length > 0) {
       answer = answersAndTip[0];
@@ -428,16 +466,16 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     }
 
     //Make the draggable
-    var $draggable = $('<div/>', {
+    var $draggable = $("<div/>", {
       html: answer,
-      'class': DRAGGABLE
+      class: DRAGGABLE,
     }).draggable({
       revert: function (isValidDrop) {
         var dropzone = droppable;
         if (!isValidDrop) {
           if (!self.$draggables.children().length) {
             // Show draggables container
-            self.$draggables.removeClass('hide');
+            self.$draggables.removeClass("hide");
           }
 
           self.moveDraggableToDroppable(draggable, null);
@@ -451,23 +489,24 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
         }
         return false;
       },
-      containment: self.$taskContainer
+      containment: self.$taskContainer,
     });
 
     var draggable = new Draggable(answer, $draggable);
-    draggable.on('addedToZone', function (event) {
-      self.triggerXAPI('interacted');
+    draggable.on("addedToZone", function (event) {
+      self.triggerXAPI("interacted");
     });
 
     //Make the dropzone
-    var $dropzoneContainer = $('<div/>', {
-      'class': DROPZONE_CONTAINER
+    var $dropzoneContainer = $("<div/>", {
+      class: DROPZONE_CONTAINER,
     });
-    var $dropzone = $('<div/>', {
-      'class': DROPZONE
-    }).appendTo($dropzoneContainer)
+    var $dropzone = $("<div/>", {
+      class: DROPZONE,
+    })
+      .appendTo($dropzoneContainer)
       .droppable({
-        tolerance: 'pointer',
+        tolerance: "pointer",
         drop: function (event, ui) {
           self.draggables.forEach(function (draggable) {
             if (draggable.getDraggableElement().is(ui.draggable)) {
@@ -485,8 +524,11 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
           }
 
           // Hide draggables container if it is empty
-          self.$draggables.toggleClass('hide', !self.$draggables.children().length);
-        }
+          self.$draggables.toggleClass(
+            "hide",
+            !self.$draggables.children().length
+          );
+        },
       });
 
     var droppable = new Droppable(answer, tip, $dropzone, $dropzoneContainer);
@@ -502,7 +544,10 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    * @param {Draggable} draggable Draggable instance.
    * @param {Droppable} droppable The droppable instance the draggable is put on.
    */
-  DragText.prototype.moveDraggableToDroppable = function (draggable, droppable) {
+  DragText.prototype.moveDraggableToDroppable = function (
+    draggable,
+    droppable
+  ) {
     draggable.removeFromZone();
     if (droppable !== null) {
       this.answered = true;
@@ -512,7 +557,7 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     } else {
       draggable.revertDraggableTo(this.$draggables);
     }
-    this.trigger('resize');
+    this.trigger("resize");
   };
 
   /**
@@ -540,18 +585,18 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     if (allFilled) {
       //Shows "retry" and "show solution" buttons.
       if (self.params.behaviour.enableSolutionsButton) {
-        self.showButton('show-solution');
+        self.showButton("show-solution");
       }
       if (self.params.behaviour.enableRetry) {
-        self.showButton('try-again');
+        self.showButton("try-again");
       }
 
       // Shows evaluation text
       self.showEvaluation();
     } else {
       //Hides "retry" and "show solution" buttons.
-      self.hideButton('try-again');
-      self.hideButton('show-solution');
+      self.hideButton("try-again");
+      self.hideButton("show-solution");
 
       //Hides evaluation text.
       self.hideEvaluation();
@@ -656,10 +701,10 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     });
     this.disableDraggables();
     //Remove all buttons in "show solution" mode.
-    this.hideButton('try-again');
-    this.hideButton('show-solution');
-    this.hideButton('check-answer');
-    this.trigger('resize');
+    this.hideButton("try-again");
+    this.hideButton("show-solution");
+    this.hideButton("check-answer");
+    this.trigger("resize");
   };
 
   /**
@@ -677,14 +722,14 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     self.hideEvaluation();
     self.enableAllDropzonesAndDraggables();
     //Show and hide buttons
-    self.hideButton('try-again');
-    self.hideButton('show-solution');
+    self.hideButton("try-again");
+    self.hideButton("show-solution");
 
     if (!self.params.behaviour.instantFeedback) {
-      self.showButton('check-answer');
+      self.showButton("check-answer");
     }
     self.hideAllSolutions();
-    this.trigger('resize');
+    this.trigger("resize");
   };
 
   /**
@@ -693,11 +738,11 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
   DragText.prototype.resetDraggables = function () {
     var self = this;
     // Show draggables container
-    self.$draggables.removeClass('hide');
+    self.$draggables.removeClass("hide");
     self.draggables.forEach(function (entry) {
       self.moveDraggableToDroppable(entry, null);
     });
-    this.trigger('resize');
+    this.trigger("resize");
   };
 
   /**
@@ -716,7 +761,10 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     // Find draggables that has been dropped
     this.draggables.forEach(function (draggable, draggableIndex) {
       if (draggable.getInsideDropzone() !== null) {
-        draggedDraggablesIndexes.push({draggable: draggableIndex, droppable: self.droppables.indexOf(draggable.getInsideDropzone())});
+        draggedDraggablesIndexes.push({
+          draggable: draggableIndex,
+          droppable: self.droppables.indexOf(draggable.getInsideDropzone()),
+        });
       }
     });
     return draggedDraggablesIndexes;
@@ -735,16 +783,18 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
 
     // Select words from user state
     this.previousState.forEach(function (draggedDraggableIndexes) {
-      var draggableIndexIsInvalid = isNaN(draggedDraggableIndexes.draggable) ||
+      var draggableIndexIsInvalid =
+        isNaN(draggedDraggableIndexes.draggable) ||
         draggedDraggableIndexes.draggable >= self.draggables.length ||
         draggedDraggableIndexes.draggable < 0;
 
-      var droppableIndexIsInvalid = isNaN(draggedDraggableIndexes.droppable) ||
+      var droppableIndexIsInvalid =
+        isNaN(draggedDraggableIndexes.droppable) ||
         draggedDraggableIndexes.droppable >= self.droppables.length ||
         draggedDraggableIndexes.droppable < 0;
 
       if (draggableIndexIsInvalid || droppableIndexIsInvalid) {
-        throw new Error('Stored user state is invalid');
+        throw new Error("Stored user state is invalid");
       }
 
       var moveDraggable = self.draggables[draggedDraggableIndexes.draggable];
@@ -766,10 +816,8 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
 
     // Show evaluation if task is finished
     if (self.params.behaviour.instantFeedback) {
-
       // Show buttons if not max score and all answers filled
       if (self.isAllAnswersFilled() && !self.showEvaluation()) {
-
         //Shows "retry" and "show solution" buttons.
         if (self.params.behaviour.enableSolutionsButton) {
           self.initShowShowSolutionButton = true;
@@ -786,15 +834,15 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    * Contract used by report rendering engine.
    *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
-	 *
+   *
    * @returns {Object} xAPI data
    */
   DragText.prototype.getXAPIData = function () {
-    var xAPIEvent = this.createXAPIEventTemplate('answered');
+    var xAPIEvent = this.createXAPIEventTemplate("answered");
     this.addQuestionToXAPI(xAPIEvent);
     this.addResponseToXAPI(xAPIEvent);
     return {
-      statement: xAPIEvent.data.statement
+      statement: xAPIEvent.data.statement,
     };
   };
 
@@ -805,7 +853,10 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    * @param xAPIEvent
    */
   DragText.prototype.addQuestionToXAPI = function (xAPIEvent) {
-    var definition = xAPIEvent.getVerifiedStatementValue(['object','definition']);
+    var definition = xAPIEvent.getVerifiedStatementValue([
+      "object",
+      "definition",
+    ]);
     $.extend(definition, this.getxAPIDefinition());
   };
 
@@ -815,19 +866,21 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    */
   DragText.prototype.getxAPIDefinition = function () {
     var definition = {};
-    definition.interactionType = 'fill-in';
-    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+    definition.interactionType = "fill-in";
+    definition.type = "http://adlnet.gov/expapi/activities/cmi.interaction";
 
     var question = this.textFieldHtml;
-    var taskDescription = this.params.taskDescription + '<br/>';
+    var taskDescription = this.params.taskDescription + "<br/>";
 
     // Create the description
     definition.description = {
-      'en-US': taskDescription + this.replaceSolutionsWithBlanks(question)
+      "en-US": taskDescription + this.replaceSolutionsWithBlanks(question),
     };
 
     //Create the correct responses pattern
-    definition.correctResponsesPattern = [this.getSolutionsFromQuestion(question)];
+    definition.correctResponsesPattern = [
+      this.getSolutionsFromQuestion(question),
+    ];
 
     return definition;
   };
@@ -849,12 +902,12 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
       min: 0,
       raw: currentScore,
       max: maxScore,
-      scaled: Math.round(currentScore / maxScore * 10000) / 10000
+      scaled: Math.round((currentScore / maxScore) * 10000) / 10000,
     };
 
     xAPIEvent.data.statement.result = {
       response: self.getXAPIResponse(),
-      score: score
+      score: score,
     };
   };
 
@@ -872,38 +925,38 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
     var droppable;
     var draggable;
     self.getCurrentState().forEach(function (stateObject) {
-        draggable = self.draggables[stateObject.draggable].text;
-        answers[stateObject.droppable] = draggable;
+      draggable = self.draggables[stateObject.draggable].text;
+      answers[stateObject.droppable] = draggable;
     });
 
-    return answers.join('[,]');
+    return answers.join("[,]");
   };
 
-	/**
-	 * replaceSolutionsWithBlanks
-	 *
-	 * @param question
-	 * @returns {string}
-	 */
+  /**
+   * replaceSolutionsWithBlanks
+   *
+   * @param question
+   * @returns {string}
+   */
   DragText.prototype.replaceSolutionsWithBlanks = function (question) {
-    return this.handleBlanks(question, function() {
-      return '__________';
+    return this.handleBlanks(question, function () {
+      return "__________";
     });
   };
 
-	/**
-	 * getSolutionsFromQuestion
-	 *
-	 * @param question
-	 * @returns {array} Array with a string containing solutions of a question
-	 */
+  /**
+   * getSolutionsFromQuestion
+   *
+   * @param question
+   * @returns {array} Array with a string containing solutions of a question
+   */
   DragText.prototype.getSolutionsFromQuestion = function (question) {
     var solutions = [];
-    this.handleBlanks(question, function(solution) {
+    this.handleBlanks(question, function (solution) {
       solutions.push(solution.solutions[0]);
-      return '__________';
+      return "__________";
     });
-    return solutions.join('[,]');
+    return solutions.join("[,]");
   };
 
   /**
@@ -916,34 +969,34 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
    * @returns {string}
    *   The question with blanks replaced by the given handler.
    */
-   DragText.prototype.handleBlanks = function (question, handler) {
+  DragText.prototype.handleBlanks = function (question, handler) {
     // Go through the text and run handler on all asterisk
-    var clozeEnd, clozeStart = question.indexOf('*');
+    var clozeEnd,
+      clozeStart = question.indexOf("*");
     var self = this;
     while (clozeStart !== -1 && clozeEnd !== -1) {
       clozeStart++;
-      clozeEnd = question.indexOf('*', clozeStart);
+      clozeEnd = question.indexOf("*", clozeStart);
       if (clozeEnd === -1) {
         continue; // No end
       }
       var clozeContent = question.substring(clozeStart, clozeEnd);
-      var replacer = '';
+      var replacer = "";
       if (clozeContent.length) {
         replacer = handler(self.parseSolution(clozeContent));
         clozeEnd++;
-      }
-      else {
+      } else {
         clozeStart += 1;
       }
-      question = question.slice(0, clozeStart - 1) + replacer + question.slice(clozeEnd);
+      question =
+        question.slice(0, clozeStart - 1) + replacer + question.slice(clozeEnd);
       clozeEnd -= clozeEnd - clozeStart - replacer.length;
 
       // Find the next cloze
-      clozeStart = question.indexOf('*', clozeEnd);
+      clozeStart = question.indexOf("*", clozeEnd);
     }
     return question;
   };
-
 
   /**
    * Parse the solution text (text between the asterisks)
@@ -956,35 +1009,33 @@ H5P.DragText = (function ($, Question, Draggable, Droppable) {
   DragText.prototype.parseSolution = function (solutionText) {
     var tip, solution;
 
-    var tipStart = solutionText.indexOf(':');
+    var tipStart = solutionText.indexOf(":");
     if (tipStart !== -1) {
       // Found tip, now extract
       tip = solutionText.slice(tipStart + 1);
       solution = solutionText.slice(0, tipStart);
-    }
-    else {
+    } else {
       solution = solutionText;
     }
 
     // Split up alternatives
-    var solutions = solution.split('/');
+    var solutions = solution.split("/");
 
     // Trim solutions
     for (var i = 0; i < solutions.length; i++) {
       solutions[i] = H5P.trim(solutions[i]);
 
       //decodes html entities
-      var elem = document.createElement('textarea');
+      var elem = document.createElement("textarea");
       elem.innerHTML = solutions[i];
       solutions[i] = elem.value;
     }
 
     return {
       tip: tip,
-      solutions: solutions
+      solutions: solutions,
     };
   };
 
   return DragText;
-
-}(H5P.jQuery, H5P.Question, H5P.TextDraggable, H5P.TextDroppable));
+})(H5P.jQuery, H5P.Question, H5P.TextDraggable, H5P.TextDroppable);

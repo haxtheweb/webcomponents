@@ -1,1 +1,20 @@
-{"title":"Knowledge Check: Parts of xAPI Statements","language":"und","mainLibrary":"H5P.DragText","embedTypes":["div"],"preloadedDependencies":[{"machineName":"H5P.DragText","majorVersion":"1","minorVersion":"5"},{"machineName":"FontAwesome","majorVersion":"4","minorVersion":"5"},{"machineName":"H5P.JoubelUI","majorVersion":"1","minorVersion":"2"},{"machineName":"Drop","majorVersion":"1","minorVersion":"0"},{"machineName":"Tether","majorVersion":"1","minorVersion":"0"},{"machineName":"H5P.Transition","majorVersion":"1","minorVersion":"0"},{"machineName":"H5P.Question","majorVersion":"1","minorVersion":"2"},{"machineName":"jQuery.ui","majorVersion":"1","minorVersion":"10"}]}
+{
+  "title": "Knowledge Check: Parts of xAPI Statements",
+  "language": "und",
+  "mainLibrary": "H5P.DragText",
+  "embedTypes": ["div"],
+  "preloadedDependencies": [
+    { "machineName": "H5P.DragText", "majorVersion": "1", "minorVersion": "5" },
+    { "machineName": "FontAwesome", "majorVersion": "4", "minorVersion": "5" },
+    { "machineName": "H5P.JoubelUI", "majorVersion": "1", "minorVersion": "2" },
+    { "machineName": "Drop", "majorVersion": "1", "minorVersion": "0" },
+    { "machineName": "Tether", "majorVersion": "1", "minorVersion": "0" },
+    {
+      "machineName": "H5P.Transition",
+      "majorVersion": "1",
+      "minorVersion": "0"
+    },
+    { "machineName": "H5P.Question", "majorVersion": "1", "minorVersion": "2" },
+    { "machineName": "jQuery.ui", "majorVersion": "1", "minorVersion": "10" }
+  ]
+}

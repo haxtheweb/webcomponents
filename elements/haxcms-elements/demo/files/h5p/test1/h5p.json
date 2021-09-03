@@ -1,1 +1,24 @@
-{"title":"Pretest item 1","language":"und","mainLibrary":"H5P.MultiChoice","embedTypes":["div"],"preloadedDependencies":[{"machineName":"H5P.MultiChoice","majorVersion":"1","minorVersion":"9"},{"machineName":"EmbeddedJS","majorVersion":"1","minorVersion":"0"},{"machineName":"FontAwesome","majorVersion":"4","minorVersion":"5"},{"machineName":"H5P.JoubelUI","majorVersion":"1","minorVersion":"2"},{"machineName":"Drop","majorVersion":"1","minorVersion":"0"},{"machineName":"Tether","majorVersion":"1","minorVersion":"0"},{"machineName":"H5P.Transition","majorVersion":"1","minorVersion":"0"},{"machineName":"H5P.Question","majorVersion":"1","minorVersion":"2"}]}
+{
+  "title": "Pretest item 1",
+  "language": "und",
+  "mainLibrary": "H5P.MultiChoice",
+  "embedTypes": ["div"],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.MultiChoice",
+      "majorVersion": "1",
+      "minorVersion": "9"
+    },
+    { "machineName": "EmbeddedJS", "majorVersion": "1", "minorVersion": "0" },
+    { "machineName": "FontAwesome", "majorVersion": "4", "minorVersion": "5" },
+    { "machineName": "H5P.JoubelUI", "majorVersion": "1", "minorVersion": "2" },
+    { "machineName": "Drop", "majorVersion": "1", "minorVersion": "0" },
+    { "machineName": "Tether", "majorVersion": "1", "minorVersion": "0" },
+    {
+      "machineName": "H5P.Transition",
+      "majorVersion": "1",
+      "minorVersion": "0"
+    },
+    { "machineName": "H5P.Question", "majorVersion": "1", "minorVersion": "2" }
+  ]
+}

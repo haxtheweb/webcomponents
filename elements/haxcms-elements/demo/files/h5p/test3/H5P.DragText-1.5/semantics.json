@@ -8,17 +8,7 @@
     "description": "Describe how the user should solve the task.",
     "default": "Drag the words into the correct boxes",
     "enterMode": "p",
-    "tags": [
-      "strong",
-      "em",
-      "u",
-      "a",
-      "ul",
-      "ol",
-      "h2",
-      "h3",
-      "hr"
-    ]
+    "tags": ["strong", "em", "u", "a", "ul", "ol", "h2", "h3", "hr"]
   },
   {
     "label": "Text",

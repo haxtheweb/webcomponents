@@ -1,7 +1,6 @@
 var H5P = H5P || {};
 
 H5P.JoubelProgressbar = (function ($) {
-
   /**
    * Joubel progressbar class
    * @method JoubelProgressbar
@@ -16,14 +15,17 @@ H5P.JoubelProgressbar = (function ($) {
   function JoubelProgressbar(steps, options) {
     H5P.EventDispatcher.call(this);
     var self = this;
-    this.options = $.extend({
-      progressText: 'Slide :num of :total'
-    }, options);
+    this.options = $.extend(
+      {
+        progressText: "Slide :num of :total",
+      },
+      options
+    );
     this.currentStep = 0;
     this.steps = steps;
 
-    this.$progressbar = $('<div>', {
-      'class': 'h5p-joubelui-progressbar',
+    this.$progressbar = $("<div>", {
+      class: "h5p-joubelui-progressbar",
       on: {
         click: function () {
           self.toggleTooltip();
@@ -35,15 +37,15 @@ H5P.JoubelProgressbar = (function ($) {
         mouseleave: function () {
           setTimeout(function () {
             self.hideTooltip();
-          }, 1500)
-        }
-      }
+          }, 1500);
+        },
+      },
     });
-    this.$background = $('<div>', {
-      'class': 'h5p-joubelui-progressbar-background'
+    this.$background = $("<div>", {
+      class: "h5p-joubelui-progressbar-background",
     }).appendTo(this.$progressbar);
 
-    $('body').click(function () {
+    $("body").click(function () {
       self.toggleTooltip(true);
     });
   }
@@ -62,30 +64,30 @@ H5P.JoubelProgressbar = (function ($) {
       return;
     }
 
-    var parentWidth = self.$progressbar.offset().left + self.$progressbar.width();
+    var parentWidth =
+      self.$progressbar.offset().left + self.$progressbar.width();
 
     this.tooltip = new H5P.Drop({
       target: this.$background.get(0),
-      content: this.currentStep + '/' + this.steps,
-      classes: 'drop-theme-arrows-bounce h5p-joubelui-drop',
-      position: 'top right',
-      openOn: 'always',
+      content: this.currentStep + "/" + this.steps,
+      classes: "drop-theme-arrows-bounce h5p-joubelui-drop",
+      position: "top right",
+      openOn: "always",
       tetherOptions: {
-        attachment: 'bottom center',
-        targetAttachment: 'top right'
-      }
+        attachment: "bottom center",
+        targetAttachment: "top right",
+      },
     });
-    this.tooltip.on('open', function () {
+    this.tooltip.on("open", function () {
       var $drop = $(self.tooltip.drop);
       var left = $drop.position().left;
       var dropWidth = $drop.width();
 
       // Need to handle drops getting outside of the progressbar:
       if (left < 0) {
-        $drop.css({marginLeft: (-left) + 'px'});
-      }
-      else if (left + dropWidth > parentWidth) {
-        $drop.css({marginLeft: (parentWidth - (left + dropWidth)) + 'px'});
+        $drop.css({ marginLeft: -left + "px" });
+      } else if (left + dropWidth > parentWidth) {
+        $drop.css({ marginLeft: parentWidth - (left + dropWidth) + "px" });
       }
     });
   };
@@ -97,14 +99,14 @@ H5P.JoubelProgressbar = (function ($) {
     }
 
     if (!this.$currentStatus) {
-      this.$currentStatus = $('<div>', {
-        'class': 'h5p-joubelui-progressbar-slide-status-text',
-        'aria-live': 'assertive'
+      this.$currentStatus = $("<div>", {
+        class: "h5p-joubelui-progressbar-slide-status-text",
+        "aria-live": "assertive",
       }).appendTo(this.$progressbar);
     }
     var interpolatedProgressText = self.options.progressText
-      .replace(':num', self.currentStep)
-      .replace(':total', self.steps);
+      .replace(":num", self.currentStep)
+      .replace(":total", self.steps);
     this.$currentStatus.html(interpolatedProgressText);
   };
 
@@ -128,8 +130,7 @@ H5P.JoubelProgressbar = (function ($) {
   JoubelProgressbar.prototype.toggleTooltip = function (closeOnly) {
     if (this.tooltip === undefined && !closeOnly) {
       this.showTooltip();
-    }
-    else if (this.tooltip !== undefined) {
+    } else if (this.tooltip !== undefined) {
       this.hideTooltip();
     }
   };
@@ -155,7 +156,7 @@ H5P.JoubelProgressbar = (function ($) {
     }
     this.currentStep = step;
     this.$background.css({
-      width: ((this.currentStep/this.steps)*100) + '%'
+      width: (this.currentStep / this.steps) * 100 + "%",
     });
 
     this.updateAria();
@@ -166,7 +167,7 @@ H5P.JoubelProgressbar = (function ($) {
    * @method next
    */
   JoubelProgressbar.prototype.next = function () {
-    this.setProgress(this.currentStep+1);
+    this.setProgress(this.currentStep + 1);
   };
 
   /**

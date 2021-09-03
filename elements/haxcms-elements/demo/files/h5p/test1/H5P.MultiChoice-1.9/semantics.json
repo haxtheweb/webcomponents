@@ -10,10 +10,7 @@
         "type": "library",
         "label": "Type",
         "importance": "medium",
-        "options": [
-          "H5P.Image 1.0",
-          "H5P.Video 1.3"
-        ],
+        "options": ["H5P.Image 1.0", "H5P.Video 1.3"],
         "optional": true,
         "description": "Optional media to display above the question."
       }
@@ -26,14 +23,7 @@
     "widget": "html",
     "label": "Question",
     "enterMode": "p",
-    "tags": [
-      "strong",
-      "em",
-      "sub",
-      "sup",
-      "h2",
-      "h3"
-    ]
+    "tags": ["strong", "em", "sub", "sup", "h2", "h3"]
   },
   {
     "name": "answers",
@@ -55,12 +45,7 @@
           "importance": "medium",
           "widget": "html",
           "label": "Text",
-          "tags": [
-            "strong",
-            "em",
-            "sub",
-            "sup"
-          ]
+          "tags": ["strong", "em", "sub", "sup"]
         },
         {
           "name": "correct",
@@ -83,13 +68,7 @@
               "importance": "low",
               "description": "Hint for the user. This will appear before user checks his answer/answers.",
               "optional": true,
-              "tags": [
-                "p",
-                "br",
-                "strong",
-                "em",
-                "a"
-              ]
+              "tags": ["p", "br", "strong", "em", "a"]
             },
             {
               "name": "chosenFeedback",
@@ -99,13 +78,7 @@
               "importance": "low",
               "description": "Message will appear below the answer on \"check\" if this answer is selected.",
               "optional": true,
-              "tags": [
-                "strong",
-                "em",
-                "sub",
-                "sup",
-                "a"
-              ]
+              "tags": ["strong", "em", "sub", "sup", "a"]
             },
             {
               "name": "notChosenFeedback",
@@ -115,13 +88,7 @@
               "importance": "low",
               "description": "Message will appear below the answer on \"check\" if this answer is not selected.",
               "optional": true,
-              "tags": [
-                "strong",
-                "em",
-                "sub",
-                "sup",
-                "a"
-              ]
+              "tags": ["strong", "em", "sub", "sup", "a"]
             }
           ]
         }
@@ -413,12 +380,7 @@
         "default": "Are you sure you wish to finish ?",
         "widget": "html",
         "enterMode": "p",
-        "tags": [
-          "strong",
-          "em",
-          "del",
-          "u"
-        ]
+        "tags": ["strong", "em", "del", "u"]
       },
       {
         "label": "Cancel button label",
@@ -458,12 +420,7 @@
         "default": "Are you sure you wish to retry ?",
         "widget": "html",
         "enterMode": "p",
-        "tags": [
-          "strong",
-          "em",
-          "del",
-          "u"
-        ]
+        "tags": ["strong", "em", "del", "u"]
       },
       {
         "label": "Cancel button label",

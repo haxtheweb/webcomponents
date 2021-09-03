@@ -3,7 +3,6 @@ var H5P = H5P || {};
  * Transition contains helper function relevant for transitioning
  */
 H5P.Transition = (function ($) {
-
   /**
    * @class
    * @namespace H5P
@@ -14,11 +13,11 @@ H5P.Transition = (function ($) {
    * @private
    */
   Transition.transitionEndEventNames = {
-    'WebkitTransition': 'webkitTransitionEnd',
-    'transition':       'transitionend',
-    'MozTransition':    'transitionend',
-    'OTransition':      'oTransitionEnd',
-    'msTransition':     'MSTransitionEnd'
+    WebkitTransition: "webkitTransitionEnd",
+    transition: "transitionend",
+    MozTransition: "transitionend",
+    OTransition: "oTransitionEnd",
+    msTransition: "MSTransitionEnd",
   };
 
   /**
@@ -36,25 +35,22 @@ H5P.Transition = (function ($) {
    * @return {string}      Vendor specific property name
    */
   Transition.getVendorPropertyName = function (prop) {
-
     if (Transition.cache[prop] !== undefined) {
       return Transition.cache[prop];
     }
 
-    var div = document.createElement('div');
+    var div = document.createElement("div");
 
     // Handle unprefixed versions (FF16+, for example)
     if (prop in div.style) {
       Transition.cache[prop] = prop;
-    }
-    else {
-      var prefixes = ['Moz', 'Webkit', 'O', 'ms'];
+    } else {
+      var prefixes = ["Moz", "Webkit", "O", "ms"];
       var prop_ = prop.charAt(0).toUpperCase() + prop.substr(1);
 
       if (prop in div.style) {
         Transition.cache[prop] = prop;
-      }
-      else {
+      } else {
         for (var i = 0; i < prefixes.length; ++i) {
           var vendorProp = prefixes[i] + prop_;
           if (vendorProp in div.style) {
@@ -76,7 +72,11 @@ H5P.Transition = (function ($) {
    * @return {string}  description
    */
   Transition.getTransitionEndEventName = function () {
-    return Transition.transitionEndEventNames[Transition.getVendorPropertyName('transition')] || undefined;
+    return (
+      Transition.transitionEndEventNames[
+        Transition.getVendorPropertyName("transition")
+      ] || undefined
+    );
   };
 
   /**
@@ -91,7 +91,9 @@ H5P.Transition = (function ($) {
   Transition.onTransitionEnd = function ($element, callback, timeout) {
     // Fallback on 1 second if transition event is not supported/triggered
     timeout = timeout || 1000;
-    Transition.transitionEndEventName = Transition.transitionEndEventName || Transition.getTransitionEndEventName();
+    Transition.transitionEndEventName =
+      Transition.transitionEndEventName ||
+      Transition.getTransitionEndEventName();
     var callbackCalled = false;
 
     var doCallback = function () {
@@ -130,14 +132,18 @@ H5P.Transition = (function ($) {
     }
 
     var transition = transitions[index];
-    H5P.Transition.onTransitionEnd(transition.$element, function () {
-      if (transition.end) {
-        transition.end();
-      }
-      if (transition.break !== true) {
-        runSequence(transitions, index+1);
-      }
-    }, transition.timeout || undefined);
+    H5P.Transition.onTransitionEnd(
+      transition.$element,
+      function () {
+        if (transition.end) {
+          transition.end();
+        }
+        if (transition.break !== true) {
+          runSequence(transitions, index + 1);
+        }
+      },
+      transition.timeout || undefined
+    );
   };
 
   /**

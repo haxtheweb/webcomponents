@@ -4,12 +4,12 @@ H5P.TextDroppable = (function ($) {
   var SHOW_SOLUTION_CONTAINER = "h5p-drag-show-solution-container";
 
   //CSS Dropzone feedback:
-  var CORRECT_FEEDBACK = 'h5p-drag-correct-feedback';
-  var WRONG_FEEDBACK = 'h5p-drag-wrong-feedback';
+  var CORRECT_FEEDBACK = "h5p-drag-correct-feedback";
+  var WRONG_FEEDBACK = "h5p-drag-wrong-feedback";
 
   //CSS Draggable feedback:
-  var DRAGGABLE_FEEDBACK_CORRECT = 'h5p-drag-draggable-correct';
-  var DRAGGABLE_FEEDBACK_WRONG = 'h5p-drag-draggable-wrong';
+  var DRAGGABLE_FEEDBACK_CORRECT = "h5p-drag-draggable-correct";
+  var DRAGGABLE_FEEDBACK_WRONG = "h5p-drag-draggable-wrong";
 
   /**
    * Private class for keeping track of droppable zones.
@@ -32,9 +32,11 @@ H5P.TextDroppable = (function ($) {
       self.$dropzone.append(H5P.JoubelUI.createTip(self.tip, self.$dropzone));
     }
 
-    self.$showSolution = $('<div/>', {
-      'class': SHOW_SOLUTION_CONTAINER
-    }).appendTo(self.$dropzoneContainer).hide();
+    self.$showSolution = $("<div/>", {
+      class: SHOW_SOLUTION_CONTAINER,
+    })
+      .appendTo(self.$dropzoneContainer)
+      .hide();
   }
 
   /**
@@ -42,7 +44,12 @@ H5P.TextDroppable = (function ($) {
    * @public
    */
   Droppable.prototype.showSolution = function () {
-    if (!((this.containedDraggable !== null) && (this.containedDraggable.getAnswerText() === this.text))) {
+    if (
+      !(
+        this.containedDraggable !== null &&
+        this.containedDraggable.getAnswerText() === this.text
+      )
+    ) {
       this.$showSolution.html(this.text);
       this.$showSolution.show();
     }
@@ -53,7 +60,7 @@ H5P.TextDroppable = (function ($) {
    * @public
    */
   Droppable.prototype.hideSolution = function () {
-    this.$showSolution.html('');
+    this.$showSolution.html("");
     this.$showSolution.hide();
   };
 
@@ -126,7 +133,10 @@ H5P.TextDroppable = (function ($) {
       this.$dropzone.removeClass(WRONG_FEEDBACK).addClass(CORRECT_FEEDBACK);
 
       //Draggable feedback
-      this.containedDraggable.getDraggableElement().removeClass(DRAGGABLE_FEEDBACK_WRONG).addClass(DRAGGABLE_FEEDBACK_CORRECT);
+      this.containedDraggable
+        .getDraggableElement()
+        .removeClass(DRAGGABLE_FEEDBACK_WRONG)
+        .addClass(DRAGGABLE_FEEDBACK_CORRECT);
     } else if (this.containedDraggable === null) {
       //Does not contain a draggable
       this.$dropzone.removeClass(WRONG_FEEDBACK).removeClass(CORRECT_FEEDBACK);
@@ -136,7 +146,10 @@ H5P.TextDroppable = (function ($) {
 
       //Draggable feedback
       if (this.containedDraggable !== null) {
-        this.containedDraggable.getDraggableElement().addClass(DRAGGABLE_FEEDBACK_WRONG).removeClass(DRAGGABLE_FEEDBACK_CORRECT);
+        this.containedDraggable
+          .getDraggableElement()
+          .addClass(DRAGGABLE_FEEDBACK_WRONG)
+          .removeClass(DRAGGABLE_FEEDBACK_CORRECT);
       }
     }
   };
@@ -150,7 +163,10 @@ H5P.TextDroppable = (function ($) {
 
     //Draggable feedback
     if (this.containedDraggable !== null) {
-      this.containedDraggable.getDraggableElement().removeClass(DRAGGABLE_FEEDBACK_WRONG).removeClass(DRAGGABLE_FEEDBACK_CORRECT);
+      this.containedDraggable
+        .getDraggableElement()
+        .removeClass(DRAGGABLE_FEEDBACK_WRONG)
+        .removeClass(DRAGGABLE_FEEDBACK_CORRECT);
     }
   };
 
@@ -171,14 +187,14 @@ H5P.TextDroppable = (function ($) {
     if (this.containedDraggable !== null) {
       this.containedDraggable.disableDraggable();
     }
-    this.$dropzone.droppable({ disabled: true});
+    this.$dropzone.droppable({ disabled: true });
   };
 
   /**
    * Enable dropzone.
    */
   Droppable.prototype.enableDropzone = function () {
-    this.$dropzone.droppable({ disabled: false});
+    this.$dropzone.droppable({ disabled: false });
   };
 
   /**

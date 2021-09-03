@@ -1,1 +1,13 @@
-{"taskDescription":"<p>Drag the parts of xAPI statements into the proper locations.&nbsp;</p>\n","checkAnswer":"Check","tryAgain":"Retry","showSolution":"Show solution","score":"You got @score of @total points","behaviour":{"enableRetry":true,"enableSolutionsButton":true,"instantFeedback":false},"textField":"*Sarah:actor* watched &quot;What is xAPI?&quot;\nJoey *attended:verb* seminar 12.\nAri completed *Quiz 1:object*."}
+{
+  "taskDescription": "<p>Drag the parts of xAPI statements into the proper locations.&nbsp;</p>\n",
+  "checkAnswer": "Check",
+  "tryAgain": "Retry",
+  "showSolution": "Show solution",
+  "score": "You got @score of @total points",
+  "behaviour": {
+    "enableRetry": true,
+    "enableSolutionsButton": true,
+    "instantFeedback": false
+  },
+  "textField": "*Sarah:actor* watched &quot;What is xAPI?&quot;\nJoey *attended:verb* seminar 12.\nAri completed *Quiz 1:object*."
+}

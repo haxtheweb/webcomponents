@@ -8,7 +8,6 @@ var H5P = H5P || {};
  * @module
  */
 H5P.JoubelUI = (function ($) {
-
   /**
    * The internal object to return
    * @class H5P.JoubelUI
@@ -60,8 +59,18 @@ H5P.JoubelUI = (function ($) {
    * @param  {string}             backgroundColor The background color in hex value
    * @return {H5P.JoubelProgressCircle}
    */
-  JoubelUI.createProgressCircle = function (number, progressColor, fillColor, backgroundColor) {
-    return new H5P.JoubelProgressCircle(number, progressColor, fillColor, backgroundColor);
+  JoubelUI.createProgressCircle = function (
+    number,
+    progressColor,
+    fillColor,
+    backgroundColor
+  ) {
+    return new H5P.JoubelProgressCircle(
+      number,
+      progressColor,
+      fillColor,
+      backgroundColor
+    );
   };
 
   /**
@@ -128,21 +137,19 @@ H5P.JoubelUI = (function ($) {
    *  is used, if not a button tag is used.
    * @return {H5P.jQuery} The jquery element created
    */
-  JoubelUI.createButton = function(params) {
-    var type = 'button';
+  JoubelUI.createButton = function (params) {
+    var type = "button";
     if (params.href) {
-      type = 'a';
-    }
-    else {
-      params.type = 'button';
+      type = "a";
+    } else {
+      params.type = "button";
     }
     if (params.class) {
-      params.class += ' h5p-joubelui-button';
+      params.class += " h5p-joubelui-button";
+    } else {
+      params.class = "h5p-joubelui-button";
     }
-    else {
-      params.class = 'h5p-joubelui-button';
-    }
-    return $('<' + type + '/>', params);
+    return $("<" + type + "/>", params);
   };
 
   return JoubelUI;

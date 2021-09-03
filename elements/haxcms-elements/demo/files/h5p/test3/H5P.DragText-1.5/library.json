@@ -9,9 +9,7 @@
     "minorVersion": 6
   },
   "runnable": 1,
-  "embedTypes": [
-    "iframe"
-  ],
+  "embedTypes": ["iframe"],
   "author": "Joubel AS",
   "license": "MIT",
   "machineName": "H5P.DragText",

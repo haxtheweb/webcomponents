@@ -12,8 +12,7 @@
     "start": "yarn run watch",
     "watch": "rollup --watch -c rollup.config.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/plugin-transform-modules-amd": "^7.2.0",
     "@babel/core": "^7.3.3",

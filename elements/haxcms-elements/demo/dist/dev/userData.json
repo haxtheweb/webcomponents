@@ -6,15 +6,15 @@
     "lName": "Ollendyke",
     "userPicture": "https://btopro.com/files/headshot.jpg",
     "social": {
-        "twitter": "https://twitter.com/btopro",
-        "website": "https://btopro"
+      "twitter": "https://twitter.com/btopro",
+      "website": "https://btopro"
     },
     "integrations": {
-        "github": {
-            "token": "....",
-            "name": "btopro",
-            "email": "btopro@outlook.com"
-        }
+      "github": {
+        "token": "....",
+        "name": "btopro",
+        "email": "btopro@outlook.com"
+      }
     }
   }
 }

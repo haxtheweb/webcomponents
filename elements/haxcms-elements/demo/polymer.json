@@ -37,10 +37,7 @@
   "builds": [
     {
       "name": "es6",
-      "browserCapabilities": [
-        "es2015",
-        "modules"
-      ],
+      "browserCapabilities": ["es2015", "modules"],
       "js": {
         "minify": false
       },
@@ -54,10 +51,7 @@
     },
     {
       "name": "es6-amd",
-      "browserCapabilities": [
-        "es2015",
-        "modules"
-      ],
+      "browserCapabilities": ["es2015", "modules"],
       "js": {
         "minify": false,
         "transformModulesToAmd": true
@@ -89,8 +83,6 @@
   "moduleResolution": "node",
   "npm": true,
   "lint": {
-    "rules": [
-      "polymer-3"
-    ]
+    "rules": ["polymer-3"]
   }
 }

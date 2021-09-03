@@ -1,6 +1,6 @@
 H5P.TextDraggable = (function ($, EventDispatcher) {
   //CSS Draggable feedback:
-  var DRAGGABLE_DROPPED = 'h5p-drag-dropped';
+  var DRAGGABLE_DROPPED = "h5p-drag-dropped";
   /**
    * Private class for keeping track of 0e text.
    * @private
@@ -17,7 +17,7 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
     self.shortFormat = self.text;
     //Shortens the draggable string if inside a dropbox.
     if (self.shortFormat.length > 20) {
-      self.shortFormat = self.shortFormat.slice(0, 17) + '...';
+      self.shortFormat = self.shortFormat.slice(0, 17) + "...";
     }
   }
 
@@ -30,7 +30,7 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
    * @param {jQuery} $container Container the draggable will append to.
    */
   Draggable.prototype.appendDraggableTo = function ($container) {
-    this.$draggable.detach().css({left: 0, top: 0}).appendTo($container);
+    this.$draggable.detach().css({ left: 0, top: 0 }).appendTo($container);
   };
 
   /**
@@ -45,10 +45,11 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
 
     // Prepend draggable to new container, but keep the offset,
     // then animate to new container's top:0, left:0
-    this.$draggable.detach()
+    this.$draggable
+      .detach()
       .prependTo($container)
-      .css({left: offLeft, top: offTop})
-      .animate({left: 0, top: 0});
+      .css({ left: offLeft, top: offTop })
+      .animate({ left: 0, top: 0 });
   };
 
   /**
@@ -69,7 +70,7 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
    * @public
    */
   Draggable.prototype.disableDraggable = function () {
-    this.$draggable.draggable({ disabled: true});
+    this.$draggable.draggable({ disabled: true });
   };
 
   /**
@@ -77,7 +78,7 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
    * @public
    */
   Draggable.prototype.enableDraggable = function () {
-    this.$draggable.draggable({ disabled: false});
+    this.$draggable.draggable({ disabled: false });
   };
 
   /**
@@ -110,7 +111,7 @@ H5P.TextDraggable = (function ($, EventDispatcher) {
    * @param {Droppable} droppable The droppable this draggable will be added to.
    */
   Draggable.prototype.addToZone = function (droppable) {
-    this.trigger('addedToZone');
+    this.trigger("addedToZone");
     if (this.insideDropzone !== null) {
       this.insideDropzone.removeDraggable();
     }
