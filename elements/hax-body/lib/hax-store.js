@@ -26,6 +26,22 @@ import {
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 const FALLBACK_LANG = "en";
 
+function localStorageGet(name){
+  try {
+      return localStorage.getItem(name);
+  } catch(e) {
+      return false;
+  }
+}
+
+function localStorageSet(name, newItem){
+  try {
+      return localStorage.setItem(name, newItem);
+  } catch(e) {
+      return false;
+  }
+}
+
 /**
  * @element hax-store
  */
@@ -510,8 +526,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _storageDataChanged(newValue) {
     if (newValue && this.ready && this.__storageDataProcessed) {
-      if (window.localStorage.getItem("haxConfirm")) {
-        window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
+      if (window.localStorageGet("haxConfirm")) {
+        window.localStorageSet("haxUserData", JSON.stringify(newValue));
       } else if (window.sessionStorage.getItem("haxConfirm")) {
         window.sessionStorage.setItem("haxUserData", JSON.stringify(newValue));
       }
@@ -873,9 +889,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _haxConsentTap(e) {
     // store for future local storage usage
-    window.localStorage.setItem("haxConfirm", true);
+    window.localStorageSet("haxConfirm", true);
     // most likely nothing but set it anyway
-    window.localStorage.setItem(
+    window.localStorageSet(
       "haxUserData",
       JSON.stringify(this.storageData)
     );
@@ -956,7 +972,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // has been consented to in the application this is utilized in
     if (this.skipHAXConfirmation) {
       window.sessionStorage.setItem("haxConfirm", true);
-      window.localStorage.setItem("haxConfirm", true);
+      window.localStorageSet("haxConfirm", true);
     }
     // check for local storage object
     // if not, then store it in sessionStorage so that all our checks
@@ -964,7 +980,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // settings on a server in theory
     let haxConfirm =
       window.sessionStorage.getItem("haxConfirm") ||
-      window.localStorage.getItem("haxConfirm");
+      window.localStorageGet("haxConfirm");
     if (!haxConfirm) {
       // this way it isn't shown EVERY reload, but if they didn't confirm
       // it will show up in the future
@@ -978,7 +994,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     } else {
       if (
         window.sessionStorage.getItem("haxConfirm") &&
-        !window.localStorage.getItem("haxConfirm")
+        !window.localStorageGet("haxConfirm")
       ) {
         // verify there is something there
         try {
@@ -990,8 +1006,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         } catch (e) {}
       } else {
         try {
-          let globalData = window.localStorage.getItem("haxUserData")
-            ? JSON.parse(window.localStorage.getItem("haxUserData"))
+          let globalData = window.localStorageGet("haxUserData")
+            ? JSON.parse(window.localStorageGet("haxUserData"))
             : {};
           this.storageData = globalData;
           this._storageDataChanged(this.storageData);

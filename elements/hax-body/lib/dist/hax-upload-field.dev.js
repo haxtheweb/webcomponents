@@ -1,3 +1,11 @@
+function localStorageGet(name){
+  try {
+      return localStorage.getItem(name);
+  } catch(e) {
+      return false;
+  }
+}
+
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -226,7 +234,7 @@ var HaxUploadField =
               "&" +
               _haxStore.HAXStore.connectionRewrites.appendJwt +
               "=" +
-              localStorage.getItem(
+              localStorageGet(
                 _haxStore.HAXStore.connectionRewrites.appendJwt
               );
           }

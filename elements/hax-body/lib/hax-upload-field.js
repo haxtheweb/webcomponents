@@ -4,6 +4,14 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
+function localStorageGet(name){
+  try {
+      return localStorage.getItem(name);
+  } catch(e) {
+      return false;
+  }
+}
+
 class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   /**
    * HTMLElement life cycle
@@ -91,7 +99,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         "&" +
         HAXStore.connectionRewrites.appendJwt +
         "=" +
-        localStorage.getItem(HAXStore.connectionRewrites.appendJwt);
+        localStorageGet(HAXStore.connectionRewrites.appendJwt);
     }
     this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
