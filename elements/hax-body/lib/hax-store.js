@@ -42,6 +42,22 @@ function localStorageSet(name, newItem){
   }
 }
 
+function sessionStorageGet(name){
+  try {
+      return sessionStorage.getItem(name);
+  } catch(e) {
+      return false;
+  }
+}
+
+function sessionStorageSet(name, newItem){
+  try {
+      return sessionStorage.setItem(name, newItem);
+  } catch(e) {
+      return false;
+  }
+}
+
 /**
  * @element hax-store
  */
@@ -526,10 +542,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _storageDataChanged(newValue) {
     if (newValue && this.ready && this.__storageDataProcessed) {
-      if (window.localStorageGet("haxConfirm")) {
-        window.localStorageSet("haxUserData", JSON.stringify(newValue));
-      } else if (window.sessionStorage.getItem("haxConfirm")) {
-        window.sessionStorage.setItem("haxUserData", JSON.stringify(newValue));
+      if (localStorageGet("haxConfirm")) {
+        localStorageSet("haxUserData", JSON.stringify(newValue));
+      } else if (sessionStorageGet("haxConfirm")) {
+        sessionStorageSet("haxUserData", JSON.stringify(newValue));
       }
     }
   }
@@ -889,9 +905,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _haxConsentTap(e) {
     // store for future local storage usage
-    window.localStorageSet("haxConfirm", true);
+    localStorageSet("haxConfirm", true);
     // most likely nothing but set it anyway
-    window.localStorageSet(
+    localStorageSet(
       "haxUserData",
       JSON.stringify(this.storageData)
     );
@@ -971,20 +987,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // this is useful when in trusted environments where the statement
     // has been consented to in the application this is utilized in
     if (this.skipHAXConfirmation) {
-      window.sessionStorage.setItem("haxConfirm", true);
-      window.localStorageSet("haxConfirm", true);
+      sessionStorageSet("haxConfirm", true);
+      localStorageSet("haxConfirm", true);
     }
     // check for local storage object
     // if not, then store it in sessionStorage so that all our checks
     // and balances are the same. This could allow for storing these
     // settings on a server in theory
     let haxConfirm =
-      window.sessionStorage.getItem("haxConfirm") ||
-      window.localStorageGet("haxConfirm");
+      sessionStorageGet("haxConfirm") ||
+      localStorageGet("haxConfirm");
     if (!haxConfirm) {
       // this way it isn't shown EVERY reload, but if they didn't confirm
       // it will show up in the future
-      window.sessionStorage.setItem("haxConfirm", true);
+      sessionStorageSet("haxConfirm", true);
       let msg = `
     The HAX content editor keeps preferences in order to improve your experience.
     This data is stored in your browser and is never sent anywhere.
@@ -993,21 +1009,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.toast(msg, "-1", "fit-bottom", "I Accept", "hax-consent-tap");
     } else {
       if (
-        window.sessionStorage.getItem("haxConfirm") &&
-        !window.localStorageGet("haxConfirm")
+        sessionStorageGet("haxConfirm") &&
+        !localStorageGet("haxConfirm")
       ) {
         // verify there is something there
         try {
-          let globalData = window.sessionStorage.getItem("haxUserData")
-            ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
+          let globalData = sessionStorageGet("haxUserData")
+            ? JSON.parse(sessionStorageGet("haxUserData"))
             : {};
           this.storageData = globalData;
           this._storageDataChanged(this.storageData);
         } catch (e) {}
       } else {
         try {
-          let globalData = window.localStorageGet("haxUserData")
-            ? JSON.parse(window.localStorageGet("haxUserData"))
+          let globalData = localStorageGet("haxUserData")
+            ? JSON.parse(localStorageGet("haxUserData"))
             : {};
           this.storageData = globalData;
           this._storageDataChanged(this.storageData);
