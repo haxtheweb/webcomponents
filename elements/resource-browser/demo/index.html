@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ResourceBrowser: resource-browser Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../resource-browser.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic resource-browser demo</h3>
+      <demo-snippet id="demo">
+        <template>
+          <resource-browser-item icon="icons:pets" value="#kitten"></resource-browser-item>
+          <resource-browser-item preview="//placekitten.com/200/300" name="kitten" value="http://placekitten.com/200/300"></resource-browser-item>
+          <resource-browser-item name="kitten" value="./images/image1.jpg"></resource-browser-item>
+          <resource-browser-item name="demo" value="#demo"></resource-browser-item>
+          <resource-browser-item name="Google" value="http://google.com"></resource-browser-item>
+          <resource-browser-item name="Sintel Short" value="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"></resource-browser-item>
+          <resource-browser-item name="Bueller" value="//personal.psu.edu/lnm105/stclair.mp3"></resource-browser-item>
+          <resource-browser-item preview="//placekitten.com/100/100" value="//placekitten.com/200/300"></resource-browser-item>
+          <resource-browser>
+            This is resource-browser
+          </resource-browser>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

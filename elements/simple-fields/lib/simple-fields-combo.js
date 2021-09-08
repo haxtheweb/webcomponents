@@ -255,7 +255,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               .aria-autocomplete="${this.autocomplete}"
               .aria-descrbedby="${this.describedBy}"
               .aria-expanded="${this.expanded}"
-              .aria-haspopup="true"
+              aria-haspopup="true"
               .aria-invalid="${this.error ? "true" : "false"}"
               .aria-owns="${this.id}-list"
               ?autofocus="${this.autofocus}"

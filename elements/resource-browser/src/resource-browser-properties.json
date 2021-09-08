@@ -1,0 +1,9 @@
+{
+  "displayAs": {
+    "name": "displayAs",
+    "type": String,
+    "value": "grid",
+    "reflectToAttribute": true,
+    "observer": "_displayAsChanged"
+  }
+}
