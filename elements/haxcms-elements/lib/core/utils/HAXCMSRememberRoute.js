@@ -1,7 +1,24 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
+function localStorageGet(name){
+  try {
+      return localStorage.getItem(name);
+  } catch(e) {
+      return false;
+  }
+}
+
+function localStorageSet(name, newItem){
+  try {
+      return localStorage.setItem(name, newItem);
+  } catch(e) {
+      return false;
+  }
+}
+
 const HAXCMSRememberRoute = function (SuperClass) {
+  
   return class extends SuperClass {
     constructor() {
       super();
@@ -20,7 +37,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
       autorun((reaction) => {
         const activePathName = toJS(store.location.pathname);
         if (activePathName && this.__evaluateRoute) {
-          window.localStorage.setItem(
+          window.localStorageSet(
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
             activePathName
           );
@@ -36,10 +53,10 @@ const HAXCMSRememberRoute = function (SuperClass) {
           store &&
           store.location &&
           store.location.pathname &&
-          window.localStorage.getItem(
+          window.localStorageGet(
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) &&
-          window.localStorage.getItem(
+          window.localStorageGet(
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) != toJS(store.location.pathname)
         ) {
@@ -48,7 +65,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
             let slot = document.createElement("a");
             slot.setAttribute(
               "href",
-              window.localStorage.getItem(
+              window.localStorageGet(
                 `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
               )
             );
