@@ -211,6 +211,9 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     return "wave-player";
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = [
         "src",
@@ -266,6 +269,9 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       progresscolor: {
         type: String,
       },
+      __ready: {
+        type: Boolean,
+      },
     };
   }
   /**
@@ -285,6 +291,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     this.title = "";
     this.subtitle = "";
     this.coverart = "";
+    this.__ready = false;
     this.lean = "left";
     this.wavecolor = "#ffffff";
     this.progresscolor = "#CFD8DC";
@@ -309,7 +316,10 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
   /**
    * Ready life cycle
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (this.lean === "right") {
       this.shadowRoot.querySelector("#playbutton").style.right = "25";
       this.shadowRoot.querySelector("#controls").style.right = "0";
@@ -325,6 +335,9 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       const basePath = new URL("./", import.meta.url).href;
       this.coverart = `${basePath}lib/art.jpg`;
     }
+    if (this.__ready) {
+      this.initWaveSurfer();
+    }
   }
   /**
    * invoke wavesurfer once we know it's globally scoped
@@ -335,7 +348,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       "es-bridge-wavesurfer-loaded",
       this._wavesurferLoaded.bind(this)
     );
-    this.initWaveSurfer();
+    this.__ready = true;
   }
   /**
    * Function to update classes (for activate)
