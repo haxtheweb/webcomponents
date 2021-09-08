@@ -8,19 +8,19 @@ import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 
-function localStorageGet(name){
+function localStorageGet(name) {
   try {
-      return localStorage.getItem(name);
-  } catch(e) {
-      return false;
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
   }
 }
 
-function localStorageSet(name, newItem){
+function localStorageSet(name, newItem) {
   try {
-      return localStorage.setItem(name, newItem);
-  } catch(e) {
-      return false;
+    return localStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
   }
 }
 
@@ -275,8 +275,8 @@ class HAXCMSThemeWiring {
     window.SimpleColorsSharedStyles.requestAvailability();
     if (load) {
       // @todo may want to set this to sessionStorage instead...
-      if (window.localStorageGet("HAXCMSSystemData") == null) {
-        window.localStorageSet("HAXCMSSystemData", JSON.stringify({}));
+      if (localStorageGet("HAXCMSSystemData") == null) {
+        localStorageSet("HAXCMSSystemData", JSON.stringify({}));
       }
     }
   }
