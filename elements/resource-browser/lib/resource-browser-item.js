@@ -82,6 +82,7 @@ class ResourceBrowserItem extends LitElement {
       mp3: "av:volume-up",
       wav: "av:volume-up",
       html: "icons:language",
+      email: "icons:mail",
     };
   }
   /**
@@ -105,6 +106,7 @@ class ResourceBrowserItem extends LitElement {
     let url = new URL(this.value || "./", this.currentLocation);
     return url;
   }
+
   /**
    * whether or not value is local to current site
    *
@@ -163,6 +165,7 @@ class ResourceBrowserItem extends LitElement {
           : !!this.type
           ? this.type
           : "";
+    console.log(this.resourceURL, extension);
     return (extension || "").toLowerCase();
   }
 
@@ -197,6 +200,17 @@ class ResourceBrowserItem extends LitElement {
    */
   get isPage() {
     return this.pageTypes.includes(this.fileExtension);
+  }
+
+  /**
+   * whether value is an email address
+   *
+   * @readonly
+   * @memberof ResourceBrowserItem
+   * @returns {boolean}
+   */
+  get isEmail() {
+    return !!this.resourceURL && this.resourceURL.protocol === "mailto:";
   }
 
   /**
@@ -241,6 +255,8 @@ class ResourceBrowserItem extends LitElement {
       ? this.iconTypes["page"]
       : this.isPage
       ? this.iconTypes["html"]
+      : this.isEmail
+      ? this.iconTypes["email"]
       : !!this.fileExtension && this.fileExtension !== ""
       ? this.iconTypes[this.fileExtension]
       : this.iconTypes["file"];
