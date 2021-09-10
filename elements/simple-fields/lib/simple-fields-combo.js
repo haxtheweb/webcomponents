@@ -43,7 +43,8 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           opacity: 0;
           position: absolute;
           list-style: none;
-          max-height: 12em;
+          max-height: var(--simple-fields-combo-max-height, 12em);
+          max-width: 100%;
           left: 0;
         }
         :host([align-right]) ul[role="listbox"] {
@@ -235,6 +236,108 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
   }
 
+  get inputTemplate() {
+    return html`
+      <input
+        .aria-activedescendant="${this.activeDescendant}"
+        .aria-autocomplete="${this.autocomplete}"
+        .aria-descrbedby="${this.describedBy}"
+        .aria-expanded="${this.expanded}"
+        aria-haspopup="true"
+        .aria-invalid="${this.error ? "true" : "false"}"
+        .aria-owns="${this.id}-list"
+        ?autofocus="${this.autofocus}"
+        @blur="${this._onInputBlur}"
+        class="field box-input ${this.inputFocus ? "focus" : ""}"
+        @click="${this._onInputClick}"
+        ?disabled="${this.disabled}"
+        @focus="${this._onInputFocus}"
+        id="${this.id}"
+        @keydown="${this._onInputKeydown}"
+        @keyup="${this._onInputKeyup}"
+        name="${this.id}"
+        .placeholder="${this.placeholder || ""}"
+        part="option-input"
+        ?readonly="${this.readonly}"
+        ?required="${this.required}"
+        tabindex="0"
+        type="text"
+        value="${this.value || ""}"
+      />
+    `;
+  }
+
+  get expandButtonTemplate() {
+    return html`
+      <simple-icon-button-lite
+        icon="arrow-drop-down"
+        ?hidden="${this.sortedOptions.length < 1}"
+        label="open"
+        @click="${this._onButtonClick}"
+        part="option-icon"
+        tabindex="-1"
+      >
+      </simple-icon-button-lite>
+    `;
+  }
+
+  get listboxTemplate() {
+    return html`
+      <ul
+        .aria-labelledBy="${this.fieldId}-label"
+        class="${this.listFocus ? "focus" : ""}"
+        data-items="${this.itemsList.join()}"
+        data-options="${this.filteredOptions
+          .map((option) => option.value)
+          .join()}"
+        ?hidden="${this.isListboxHidden}"
+        id="${this.id}-list"
+        @mouseout="${this._onListboxMouseout}"
+        @mouseover="${this._onListboxMouseover}"
+        role="listbox"
+        part="listbox"
+      >
+        ${this.listboxInnerTemplate}
+      </ul>
+    `;
+  }
+
+  get listboxInnerTemplate() {
+    return (this.filteredOptions || []).map((option) =>
+      this.getListItem(option)
+    );
+  }
+
+  /**
+   * determines if listbox is hidden
+   *
+   * @readonly
+   * @memberof SimpleFieldsCombo
+   */
+  get isListboxHidden() {
+    return this.hidden || !this.expanded || this.filteredOptions.length < 1;
+  }
+
+  getListItem(option) {
+    return html`
+      <li
+        aria-selected="${this._isSelected(option)}"
+        id="option${option.id}"
+        role="option"
+        part="listbox-li"
+        @click="${(e) => this._onOptionClick(e, option)}"
+        @mouseout="${(e) => this._onOptionMouseout(e, option)}"
+        @mouseover="${(e) => this._onOptionMouseover(e, option)}"
+      >
+        ${this.getListItemInner(option)}
+      </li>
+    `;
+  }
+
+  getListItemInner(option) {
+    return option.value;
+  }
+
   /**
    * template label and field
    *
@@ -250,76 +353,15 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         <div id="field-main-inner" part="field-main-inner">
           ${this.prefixTemplate}
           <span class="input-option" part="option-inner">
-            <input
-              .aria-activedescendant="${this.activeDescendant}"
-              .aria-autocomplete="${this.autocomplete}"
-              .aria-descrbedby="${this.describedBy}"
-              .aria-expanded="${this.expanded}"
-              aria-haspopup="true"
-              .aria-invalid="${this.error ? "true" : "false"}"
-              .aria-owns="${this.id}-list"
-              ?autofocus="${this.autofocus}"
-              @blur="${this._onInputBlur}"
-              class="field box-input ${this.inputFocus ? "focus" : ""}"
-              @click="${this._onInputClick}"
-              ?disabled="${this.disabled}"
-              @focus="${this._onInputFocus}"
-              id="${this.id}"
-              @keydown="${this._onInputKeydown}"
-              @keyup="${this._onInputKeyup}"
-              name="${this.id}"
-              .placeholder="${this.placeholder || ""}"
-              part="option-input"
-              ?readonly="${this.readonly}"
-              ?required="${this.required}"
-              tabindex="0"
-              type="text"
-              value="${this.value || ""}"
-            />
-            ${this.suffixTemplate}
-            <simple-icon-button-lite
-              label="open"
-              icon="arrow-drop-down"
-              @click="${this._onButtonClick}"
-              part="option-icon"
-              tabindex="-1"
-            >
-            </simple-icon-button-lite>
+            ${this.inputTemplate} ${this.suffixTemplate}
+            ${this.expandButtonTemplate}
           </span>
-          <ul
-            .aria-labelledBy="${this.fieldId}-label"
-            class="${this.listFocus ? "focus" : ""}"
-            data-items="${this.itemsList.join()}"
-            data-options="${this.filteredOptions
-              .map((option) => option.text)
-              .join()}"
-            ?hidden="${this.hidden ||
-            !this.expanded ||
-            this.filteredOptions.length < 1}"
-            id="${this.id}-list"
-            @mouseout="${this._onListboxMouseout}"
-            @mouseover="${this._onListboxMouseover}"
-            role="listbox"
-          >
-            ${(this.filteredOptions || []).map(
-              (option) => html`
-                <li
-                  aria-selected="${this._isSelected(option)}"
-                  id="${this.id}.${option.textComparison}"
-                  role="option"
-                  @click="${(e) => this._onOptionClick(e, option)}"
-                  @mouseout="${(e) => this._onOptionMouseout(e, option)}"
-                  @mouseover="${(e) => this._onOptionMouseover(e, option)}"
-                >
-                  ${option.text}
-                </li>
-              `
-            )}
-          </ul>
+          ${this.listboxTemplate}
         </div>
       </div>
     `;
   }
+
   get hasOptions() {
     return this.filteredOptions.length > 0;
   }
@@ -331,7 +373,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    */
   setActiveDescendant(option) {
     if (option && this.listFocus) {
-      this.activeDescendant = `${this.id}.${option.textComparison}`;
+      this.activeDescendant = `option${option.id}`;
     } else {
       this.activeDescendant = "";
     }
@@ -363,20 +405,20 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       this.setActiveDescendant(this.option);
 
       if (this.isBoth) {
-        this.value = this.option.text;
-        this.input.value = this.option.text;
+        this.value = this.option.value;
+        this.input.value = this.option.value;
         if (flag) {
           setTimeout(() => {
             this.input.setSelectionRange(
-              this.option.text.length,
-              this.option.text.length
+              option.value.length,
+              option.value.length
             );
           }, 0);
         } else {
           setTimeout(() => {
             this.input.setSelectionRange(
               this.filter.length,
-              this.option.text.length
+              option.value.length
             );
           }, 0);
         }
@@ -483,7 +525,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     switch (event.keyCode) {
       case this.keyCode.RETURN:
         if ((this.listFocus || this.isBoth) && this.option) {
-          this.setValue(this.option.text);
+          this.setValue(this.option.value);
         }
         this.close(true);
         flag = true;
@@ -531,7 +573,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         this.close(true);
         if (this.listFocus) {
           if (this.option) {
-            this.setValue(this.option.text);
+            this.setValue(this.option.value);
           }
         }
         break;
@@ -649,6 +691,23 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
   }
   /**
+   * gets a sorted list of option
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get sortedOptions() {
+    let sorted = (this.itemsList || []).map((item, i) =>
+      typeof item === "object" ? item : { id: i, value: item }
+    );
+    Object.keys(this.options || {})
+      .sort((a, b) => (a > b ? 1 : -1))
+      .forEach((key) =>
+        sorted.push({ id: sorted.length, value: this.options[key] })
+      );
+    return sorted;
+  }
+  /**
    * updates options list
    *
    * @param {event} event
@@ -672,10 +731,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
 
     for (i = 0; i < this.sortedOptions.length; i++) {
       option = this.sortedOptions[i];
-      option.textComparison = option.text.toLowerCase();
+      option.id = i;
+      option.textComparison = option.value.toLowerCase();
       if (filter.length === 0 || option.textComparison.indexOf(filter) === 0) {
         this.filteredOptions.push(option);
-        textContent = option.text.trim();
+        textContent = option.value.trim();
         this.firstChars.push(textContent.substring(0, 1).toLowerCase());
       }
     }
@@ -702,15 +762,17 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
     return option;
   }
+
   setCurrentOptionStyle(option) {
     this._selectedOption = option;
     if (
-      option &&
-      this.shadowRoot &&
-      this.shadowRoot.querySelector(`#${this.id}.${option.textComparison}`)
+      !!this.listbox &&
+      !!option &&
+      !!this.shadowRoot &&
+      !!this.shadowRoot.querySelector(`#option${option.id}`)
     )
       this.listbox.scrollTop = this.shadowRoot.querySelector(
-        `#${this.id}.${option.textComparison}`
+        `#option${option.id}`
       ).offsetTop;
   }
   _isSelected(option) {
@@ -746,7 +808,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   _onOptionClick(e, option) {
     if (option) {
       this.setOption(option);
-      this.setValue(option.text);
+      this.setValue(option.value);
     }
     this.close(true);
   }

@@ -139,6 +139,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     }
     // set the value of the url which will update our URL and notify
     this.shadowRoot.querySelector("#url").value = item.url;
+    //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
+    //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
   }
 }
 

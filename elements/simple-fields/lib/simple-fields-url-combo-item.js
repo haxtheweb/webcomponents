@@ -8,12 +8,12 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
- * `resource-browser-item`
+ * `simple-fields-url-combo-item`
  * `displays a selectable list of resources as a grid or combobox`
  * @demo demo/index.html
- * @element resource-browser-item
+ * @element simple-fields-url-combo-item
  */
-class ResourceBrowserItem extends LitElement {
+class SimpleFieldsUrlComboItem extends LitElement {
   //styles function
   static get styles() {
     return [
@@ -21,32 +21,47 @@ class ResourceBrowserItem extends LitElement {
         :host {
           display: flex;
           align-items: center;
-          padding: 5px;
+          padding: var(--simple-fields-button-padding, 2px);
+          font-size: var(--simple-fields-detail-font-size, 12px);
         }
 
         :host([hidden]) {
           display: none;
         }
         *[part="preview"] {
-          width: var(--resource-preview-size, 30px);
-          height: var(--resource-preview-size, 30px);
-          --simple-icon-height: var(--resource-preview-size, 30px);
-          --simple-icon-width: var(--resource-preview-size, 30px);
-          margin-right: 5px;
+          width: var(--simple-fields-url-combo-preview-size, 26px);
+          height: var(--simple-fields-url-combo-preview-size, 26px);
+          --simple-icon-height: var(
+            --simple-fields-url-combo-preview-size,
+            26px
+          );
+          --simple-icon-width: var(
+            --simple-fields-url-combo-preview-size,
+            26px
+          );
+          margin-right: var(--simple-fields-button-padding, 2px);
         }
         span[part="preview"] {
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          border-radius: 3px;
+          border-radius: var(--simple-fields-border-radius, 2px);
+        }
+        span[part="label"] {
+          max-width: 100%;
+          flex: 1 1 auto;
         }
         span[part="label"] span {
           display: block;
+          line-height: 100%;
+          margin: 0;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
         }
         span[part="label-secondary"] {
-          font-style: italic;
-          font-size: 80%;
-          opacity: 0.7;
+          font-size: var(--simple-fields-meta-font-size, 10px);
+          opacity: var(--simple-fields-meta-opacity, unset);
+          color: var(--simple-fields-meta-color);
         }
       `,
     ];
@@ -60,7 +75,7 @@ class ResourceBrowserItem extends LitElement {
    * default list of icons by file extension
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    */
   get iconTypes() {
     return {
@@ -89,7 +104,7 @@ class ResourceBrowserItem extends LitElement {
    * default site location
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get currentLocation() {
@@ -99,7 +114,7 @@ class ResourceBrowserItem extends LitElement {
    * URL object from value string
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get resourceURL() {
@@ -111,7 +126,7 @@ class ResourceBrowserItem extends LitElement {
    * whether or not value is local to current site
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isLocal() {
@@ -124,7 +139,7 @@ class ResourceBrowserItem extends LitElement {
    * whether or not value on same as current location
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isSamePage() {
@@ -139,7 +154,7 @@ class ResourceBrowserItem extends LitElement {
    * whether or not value is an anchor on current page
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isAnchor() {
@@ -150,7 +165,7 @@ class ResourceBrowserItem extends LitElement {
    * value's file extension
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {string}
    */
   get fileExtension() {
@@ -165,7 +180,6 @@ class ResourceBrowserItem extends LitElement {
           : !!this.type
           ? this.type
           : "";
-    console.log(this.resourceURL, extension);
     return (extension || "").toLowerCase();
   }
 
@@ -173,7 +187,7 @@ class ResourceBrowserItem extends LitElement {
    * file extensions of images that can be previewed on the web
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {string}
    */
   get imageTypes() {
@@ -184,7 +198,7 @@ class ResourceBrowserItem extends LitElement {
    * file extensions of web pages
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {string}
    */
   get pageTypes() {
@@ -195,7 +209,7 @@ class ResourceBrowserItem extends LitElement {
    * whether value is a web page
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isPage() {
@@ -206,7 +220,7 @@ class ResourceBrowserItem extends LitElement {
    * whether value is an email address
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isEmail() {
@@ -217,7 +231,7 @@ class ResourceBrowserItem extends LitElement {
    * whether value is an image
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {boolean}
    */
   get isImage() {
@@ -228,22 +242,23 @@ class ResourceBrowserItem extends LitElement {
    * gets url for preview thumbnail
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {string}
    */
   get previewSrc() {
     return !!this.preview && this.preview.trim() !== ""
       ? this.preview
-      : this.isImage && !!this.value && this.value !== ""
-      ? this.value
-      : undefined;
+      : // not sure we want images auto loading
+        //: this.isImage && !!this.value && this.value !== ""
+        //? this.value
+        undefined;
   }
 
   /**
    * icon name for item based
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {string}
    */
   get iconName() {
@@ -266,7 +281,7 @@ class ResourceBrowserItem extends LitElement {
    * icon template of item
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get iconTemplate() {
@@ -279,7 +294,7 @@ class ResourceBrowserItem extends LitElement {
    * preview image template of item
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get imageTemplate() {
@@ -294,7 +309,7 @@ class ResourceBrowserItem extends LitElement {
    * if none is provided, template based on previewSrc or iconName
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get previewTemplate() {
@@ -312,7 +327,7 @@ class ResourceBrowserItem extends LitElement {
    * label template for item
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get labelTemplate() {
@@ -327,7 +342,7 @@ class ResourceBrowserItem extends LitElement {
    * primary label template with item name or value
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get primaryLabelTemplate() {
@@ -342,7 +357,7 @@ class ResourceBrowserItem extends LitElement {
    * secondary label template with item value
    *
    * @readonly
-   * @memberof ResourceBrowserItem
+   * @memberof SimpleFieldsUrlComboItem
    * @returns {object}
    */
   get secondaryLabelTemplate() {
@@ -407,7 +422,7 @@ class ResourceBrowserItem extends LitElement {
    * Convention we use
    */
   static get tag() {
-    return "resource-browser-item";
+    return "simple-fields-url-combo-item";
   }
 
   /**
@@ -427,5 +442,5 @@ class ResourceBrowserItem extends LitElement {
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define(ResourceBrowserItem.tag, ResourceBrowserItem);
-export { ResourceBrowserItem };
+customElements.define(SimpleFieldsUrlComboItem.tag, SimpleFieldsUrlComboItem);
+export { SimpleFieldsUrlComboItem };
