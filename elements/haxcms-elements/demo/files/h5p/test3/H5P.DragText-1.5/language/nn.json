@@ -1,0 +1,45 @@
+{
+  "semantics": [
+    {
+      "label": "Oppgave beskriving",
+      "description": "Forklar hvordan brukeren skal løyse oppgåva."
+    },
+    {
+      "label": "Tekst",
+      "placeholder": "*Oslo* er hovudstaden i Noreg, *Stockholm* er hovudstaden i Sverige og *København* er hovudstaden i Danmark. Alle byane er lokalisert i *Skandinavia:Nordlege delen av europa*.",
+      "description": "Opne felt må merkast med ei stjerne * foran og bak det korrekte ordet/uttrykket. Tips får et kolon (:) foran seg: H5P innhald kan lages i ein *nettlesar:noko du bruker til å navigere internett med*.<br>For kvart opne felt er det bare eit rett ord."
+    },
+    {
+      "label": "Tekst for \"Sjekk svar\" knapp",
+      "default": "Sjekk"
+    },
+    {
+      "label": "Tekst for \"Prøv igjen\" knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Tekst for \"Fasit\" knapp",
+      "default": "Fasit"
+    },
+    {
+      "label": "Tilbakemelding",
+      "default": "@score av @total poeng",
+      "description": "Tekstleg tilbakemelding, tilgjengelige variabler: @score og @total. Eksempel: 'Du fikk @score av @total felt rett.'"
+    },
+    {
+      "label": "Innstillinger for oppgåve-åtferd",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Fasit\" knapp"
+        },
+        {
+          "label": "Krev inndata fra brukeren før fasit gis."
+        }
+      ]
+    }
+  ]
+}

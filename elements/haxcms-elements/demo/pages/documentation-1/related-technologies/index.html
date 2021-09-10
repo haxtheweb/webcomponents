@@ -1,0 +1,141 @@
+<p>There are several technologies you should learn about if your going to understand how HAX is built (and how to extend it)</p>
+<h2>JSON Schema</h2>
+<p>Learn more about <a href="http://json-schema.org/">JSON Schema</a>
+
+
+
+ on the official website for that standard. JSON Schema provides a way of describing the data contained in a JSON blob so that a form can be built to modify those values. HAX uses this extensively via a tag called <b>eco-json-schema-object</b>
+
+
+
+ and related tags, to turn any json schema definition into a fully two-way data binded form.</p>
+<h3>Example</h3>
+<code-sample>  <template preserve-content="preserve-content">// from https://www.tutorialspoint.com/json/json_schema.htm
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "title": "Product",
+   "description": "A product from Acme's catalog",
+   "type": "object",
+	
+   "properties": {
+	
+      "id": {
+         "description": "The unique identifier for a product",
+         "type": "integer"
+      },
+		
+      "name": {
+         "description": "Name of the product",
+         "type": "string"
+      },
+		
+      "price": {
+         "type": "number",
+         "minimum": 0,
+         "exclusiveMinimum": true
+      }
+   },
+	
+   "required": ["id", "name", "price"]
+}</template>
+</code-sample>
+<p><i><a href="hax-schema">HAX schema</a>
+</i>
+
+
+
+ is an abstraction that sits on top of JSON Schema in order to provide forms for updating values in your HAX wired elements. If you wanted to extend the types of input fields that HAX has access to then learning JSON Schema would be the best place to start!</p>
+<h2>JSON Outline Schema</h2>
+<p>
+<a href="https://github.com/elmsln/json-outline-schema">
+JSON Outline Schema</a>
+ is a standard way of expressing and storing the relation between objects. It gives you a simple way of linking data together to form an outline of related concepts / entities. Here is an example of a JSON Outline schema entity:</p>
+<code-sample copy-clipboard-button="copy-clipboard-button">  <template preserve-content="preserve-content">{
+  "id": "unique-id-of-the-item-1",
+  "indent": "1",
+  "location": "name-of-some-file-or-location.html",
+  "order": "0",
+  "parent": "unique-id-of-the-parent",
+  "title": "Name of some file or location",
+  "metadata": {}
+}</template>
+</code-sample>
+<p>This gives you enough data to visually represent this information in an outline form. Let's look at a larger example of 3 items related together which would express nested hierarchy in a consistent way:</p>
+<code-sample copy-clipboard-button="copy-clipboard-button">  <template preserve-content="preserve-content">{
+  "id": "123-ddc-d321d-d2e-dd2",
+  "title": "My outline",
+  "author": "LRNWebComponents",
+  "description": "A series of related material to teach you about the structure of content.",
+  "license": "by-sa",
+  "metadata": {},
+  "items": [
+    {
+      "id": "item-1",
+      "indent": "1",
+      "location": "outline.html",
+      "order": "0",
+      "parent": null,
+      "title": "Outline",
+      "description": "A description at a glance of this item potentially",
+      "metadata": {
+        "icon": "icons:view-quilt"
+      }
+    },
+    {
+      "id": "item-2",
+      "indent": "2",
+      "location": "introduction.html",
+      "order": "0",
+      "parent": "item-1",
+      "title": "Introduction to outlines",
+      "description": "A description at a glance of this item potentially",
+      "metadata": {}
+    },
+    {
+      "id": "item-3",
+      "indent": "2",
+      "location": "files/a-2nd-page-item.html",
+      "order": "1",
+      "parent": "item-1",
+      "title": "An item in an outline",
+      "description": "A description at a glance of this item potentially",
+      "metadata": {}
+    }
+  ]
+}</template>
+</code-sample>
+<p>Let's break down these properties and why we have them in the schema:</p>
+<h2>Higher order schema</h2>
+<ul><li>`<b>title</b>
+` - name of the work as a whole</li>
+<li>`<b>author</b>
+` - who created this work</li>
+<li>`<b>description</b>
+` - short description of the work to explain it</li>
+<li>`<b>license</b>
+` - a valid license short hard for the work as a whole</li>
+<li>`<b>metadata</b>
+` - area to storing any additional details about the work. This has no standard structure but could be used for relating work if needed.</li>
+<li>`<b>id</b>
+` - a unique identifier for this work in the universe of all works</li>
+<li>`<b>items</b>
+` - an array of schema elements which contain the pages / leaves of the structure of this outline</li>
+</ul>
+<h2>Leaf / page element within the structure</h2>
+<ul><li><span style="font-weight: normal;">`</span><b>id</b>
+<span style="font-weight: normal;">` - the UUID / unique ID of the element</span></li>
+<li><span style="font-weight: normal;">`</span><b>indent</b>
+<span style="font-weight: normal;">` - How far to visually position the item inward. You could have something be the parent as a page but visually only be indented 2 levels</span></li>
+<li><span style="font-weight: normal;">`</span><b>location</b>
+<span style="font-weight: normal;">` - a file or resource that references the related data to display here</span></li>
+<li><span style="font-weight: normal;">`</span><b>order</b>
+<span style="font-weight: normal;">` - a weighting as to the order relative to other items that match this parent level</span></li>
+<li><span style="font-weight: normal;">`</span><b>parent</b>
+<span style="font-weight: normal;">` - a UUID / unique ID of the element this is a child of</span></li>
+<li><span style="font-weight: normal;">`</span><b>title</b>
+<span style="font-weight: normal;">` - title of this item to display</span></li>
+<li><span style="font-weight: normal;">`</span><b>description</b>
+<span style="font-weight: normal;">` - short description of the item to explain it</span></li>
+<li><span style="font-weight: normal;">`</span><b>metadata</b>
+<span style="font-weight: normal;">` - a container for any additional details of information you need to ship. This has no standard structure</span></li>
+</ul>

@@ -1,0 +1,13 @@
+<p>These are some common issues / resolutions in HAXcms related to installation, publishing, etc.</p>
+<h2 class="hax-active">I installed HAXcms and forgot my password</h2>
+<p>Your username and password can be found in _config/config.php on the server (assuming local development)</p>
+<h2 class="hax-active">I clicked login and nothing happened and now I'm locked out.</h2>
+<ul><li>Clear your browser cache. A cookie is set that might be invalid.</li>
+
+<li>Open a new browser and try to login again</li>
+</ul>
+<h2 class="hax-active"><span style="caret-color: rgb(0, 0, 0);">I clicked publish and nothing happened</span></h2>
+<ul><li><span style="caret-color: rgb(0, 0, 0);">Publishing can take up to a minute or so at times since it's creating a commit, rewriting files and then the front end is waiting on the push to github before it triggers a successful response.</span></li>
+<li>If it did fail to publish, you might not have git setup. Click the gear icon on the dashboard (site listing) and ensure you've setup github / git integration correctly.</li>
+</ul>
+<p><span style="caret-color: rgb(0, 0, 0);">Realize that everything is just a file and that our json outline schema is very easy to read. So if there's an issue with something related to publishing, check _sites/mysite/site.json for publishing, then _config/config.json. All settings and variables cascade in this way. Settings are stored globally, then replicated locally to allow them to be pealed off and more easily imported / exported into other setups.</span></p>

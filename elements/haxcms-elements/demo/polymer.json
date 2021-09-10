@@ -1,0 +1,88 @@
+{
+  "entrypoint": "dist/build.html",
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@lrnwebcomponents/*/*.js",
+    "node_modules/@lrnwebcomponents/*/lib/*",
+    "node_modules/@lrnwebcomponents/*/lib/*/*",
+    "node_modules/lit-html/*.*.map",
+    "node_modules/lit-html/lib/*.*.map",
+    "node_modules/lit-element/lit-element.js",
+    "node_modules/lit-element/lib/*.*.map",
+    "node_modules/lit-element/*.*.map",
+    "node_modules/@polymer/app-layout/*/*.js",
+    "node_modules/@vaadin/**",
+    "node_modules/fetch-ie8/fetch.js",
+    "node_modules/promise-polyfill/dist/polyfill.min.js",
+    "node_modules/web-animations-js/*.map",
+    "node_modules/web-animations-js/*.js",
+    "node_modules/@polymer/marked-element/node_modules/marked/lib/marked.js",
+    "node_modules/@lrnwebcomponents/a11y-media-player/lib/screenfull/dist/screenfull.js",
+    "node_modules/@lrnwebcomponents/img-pan-zoom/lib/openseadragon/build/openseadragon/openseadragon.js",
+    "node_modules/@lrnwebcomponents/elmsln-apps/lib/*/*.js",
+    "node_modules/@webcomponents/webcomponentsjs/*.js",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js",
+    "node_modules/monaco-editor/min/**",
+    "node_modules/monaco-editor/min-maps/**",
+    "node_modules/lunr/lunr.js",
+    "!node_modules/@vaadin/*/test/*",
+    "node_modules/pdfjs-dist/build/pdf.js",
+    "node_modules/pdfjs-dist/build/pdf.worker.js",
+    "!node_modules/@lrnwebcomponents/*/*.story.js",
+    "node_modules/msr/MediaStreamRecorder.min.js",
+    "node_modules/@lrnwebcomponents/chartist-render/lib/chartist/dist/chartist.min.js",
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js"
+  ],
+  "sources": [],
+  "builds": [
+    {
+      "name": "es6",
+      "browserCapabilities": ["es2015", "modules"],
+      "js": {
+        "minify": false
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false
+    },
+    {
+      "name": "es6-amd",
+      "browserCapabilities": ["es2015", "modules"],
+      "js": {
+        "minify": false,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false
+    },
+    {
+      "name": "es5-amd",
+      "js": {
+        "minify": true,
+        "compile": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true,
+  "lint": {
+    "rules": ["polymer-3"]
+  }
+}

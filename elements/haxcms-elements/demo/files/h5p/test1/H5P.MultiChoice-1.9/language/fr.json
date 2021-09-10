@@ -1,0 +1,221 @@
+{
+  "semantics": [
+    {
+      "label": "Image ou vidéo",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Une image ou une vidéo peut être affichée en option au-dessus de la question."
+        }
+      ]
+    },
+    {
+      "label": "Question"
+    },
+    {
+      "label": "Options disponibles",
+      "entity": "option",
+      "field": {
+        "label": "Option",
+        "fields": [
+          {
+            "label": "Texte"
+          },
+          {
+            "label": "Correct"
+          },
+          {
+            "label": "Aides et commentaires",
+            "fields": [
+              {
+                "label": "Texte de l'aide",
+                "description": "Indication pour l'utilisateur. Cela sera affiché avant que l'utilisateur ne valide ses réponses."
+              },
+              {
+                "label": "Commentaire",
+                "description": "Ce commentaire sera affiché quand l'utilisateur vérifiera sa réponse."
+              },
+              {
+                "label": "Commentaire de la solution",
+                "description": "Ce commentaire sera affiché quand la solution sera affichée."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Traduction de l'interface utilisateur pour les questions à choix multiples",
+      "fields": [
+        {
+          "label": "Texte du bouton \"Vérifier\"",
+          "default": "Vérifier"
+        },
+        {
+          "label": "Texte du bouton \"Voir la solution\"",
+          "default": "Voir la solution"
+        },
+        {
+          "label": "Texte du bouton \"Recommencer\"",
+          "default": "Recommencer"
+        },
+        {
+          "label": "Texte de l'indice",
+          "default": "Montrer l'indice"
+        },
+        {
+          "label": "Commentaire pour une réponse correcte"
+        },
+        {
+          "label": "Commentaire pour une réponse presque correcte"
+        },
+        {
+          "label": "Commentaire pour une mauvaise réponse"
+        },
+        {
+          "label": "Texte de la barre de score",
+          "default": "Score"
+        },
+        {
+          "label": "Indice disponible",
+          "default": "Indice disponible",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Commentaire disponible",
+          "default": "Commentaire disponible",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Lire le commentaire",
+          "default": "Lire le commentaire",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Réponse incorrecte",
+          "default": "Réponse incorrecte",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Bonne réponse",
+          "default": "Bonne réponse",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback text",
+          "default": "Vous avez obtenu @score points sur un total de @total",
+          "description": "Le texte de feedback, variables disponibles: @score et @total. Exemple: 'Vous avez obtenu @score points sur un total de @total'"
+        },
+        {
+          "label": "L'option aurait dû être cochée",
+          "default": "Cette option aurait dû être cochée"
+        },
+        {
+          "label": "L'option n'aurait pas dû être cochée",
+          "default": "Cette option aurait dû être cochée"
+        },
+        {
+          "label": "Texte du message \"Réponse obligatoire\"",
+          "default": "Merci de répondre avant d'afficher la solution"
+        }
+      ]
+    },
+    {
+      "label": "Options générales.",
+      "description": "Ces options vous permettent de contrôler le déroulement de vos activités.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Voir la solution\""
+        },
+        {
+          "label": "Type de question",
+          "description": "Choisissez le type de question et ses paramètres.",
+          "options": [
+            {
+              "label": "Sélection automatique"
+            },
+            {
+              "label": "Question à choix multiples (cases à cocher)"
+            },
+            {
+              "label": "Question à choix unique (boutons radio)"
+            }
+          ]
+        },
+        {
+          "label": "Donner un point par activité",
+          "description": "Attribuer un point (en tout) pour toutes les réponses justes d'un QCM. Ce ne sera pas une option pour les \"Questions à choix unique\"."
+        },
+        {
+          "label": "Réponses aléatoires",
+          "description": "Les réponses possibles seront affichées dans l'ordre aléatoire."
+        },
+        {
+          "label": "Une réponse est obligatoire pour voir la solution"
+        },
+        {
+          "label": "Désactiver la possibilité d'agrandir l'image de la question."
+        },
+        {
+          "label": "Afficher la fenêtre de confirmation pour \"Vérifier\""
+        },
+        {
+          "label": "Afficher la fenêtre de confirmation pour \"Recommencer\""
+        },
+        {
+          "label": "Vérifier automatiquement la réponse cochée",
+          "description": "Note: cette option peut impacter l'ergonomie."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Fenêtre de confirmation pour \"Vérifier\"",
+      "fields": [
+        {
+          "label": "Texte du titre",
+          "default": "Terminer ?"
+        },
+        {
+          "label": "Texte du contenu",
+          "default": "Êtes-vous sûr de vouloir terminer ?"
+        },
+        {
+          "label": "Texte du bouton d'annulation",
+          "default": "Annuler"
+        },
+        {
+          "label": "Texte du bouton de confirmation",
+          "default": "Confirmer"
+        }
+      ]
+    },
+    {
+      "label": "Fenêtre de confirmation pour \"Recommencer\"",
+      "fields": [
+        {
+          "label": "Texte du titre",
+          "default": "Recommencer ?"
+        },
+        {
+          "label": "Texte du contenu",
+          "default": "Êtes-vous sûr de vouloir recommencer ?"
+        },
+        {
+          "label": "Texte du bouton d'annulation",
+          "default": "Annuler"
+        },
+        {
+          "label": "Texte du bouton de confirmation",
+          "default": "Confirmer"
+        }
+      ]
+    }
+  ]
+}

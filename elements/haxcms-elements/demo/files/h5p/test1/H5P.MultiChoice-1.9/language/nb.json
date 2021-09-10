@@ -1,0 +1,221 @@
+{
+  "semantics": [
+    {
+      "label": "Multimedia",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Et valgfritt multimediaelement som skal vises over spørsmålet."
+        }
+      ]
+    },
+    {
+      "label": "Spørsmål"
+    },
+    {
+      "label": "Svaralternativer",
+      "entity": "svaralternativ",
+      "field": {
+        "label": "Svaralternativ",
+        "fields": [
+          {
+            "label": "Tekst"
+          },
+          {
+            "label": "Riktig"
+          },
+          {
+            "label": "Tips",
+            "fields": [
+              {
+                "label": "Tipstekst",
+                "description": "Hint for brukeren. Dette vil vises før brukeren sjekker sine svar."
+              },
+              {
+                "label": "Melding som vises hvis svaret er valgt",
+                "description": "Melding som vises under svaret på \"check\" hvis svaret er valgt."
+              },
+              {
+                "label": "Melding som vises hvis svaret ikke er valgt",
+                "description": "Melding som vises under svaret på \"check\" hvis andre svar er valgt."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Oversettelser for ledetekster i flervalg",
+      "fields": [
+        {
+          "label": "Tekst for \"Sjekk svar\" knapp",
+          "default": "Sjekk"
+        },
+        {
+          "label": "Tekst for \"Fasit\" knapp",
+          "default": "Fasit"
+        },
+        {
+          "label": "Merkelapp for «Prøv igjen»-knappen.",
+          "default": "Prøv igjen"
+        },
+        {
+          "label": "Tips tekst",
+          "default": "Vis tips"
+        },
+        {
+          "label": "Tilbakemelding ved riktig svar"
+        },
+        {
+          "label": "Tilbakemelding ved nesten riktig svar"
+        },
+        {
+          "label": "Tilbakemelding ved galt svar"
+        },
+        {
+          "label": "Resultatsindikator",
+          "default": "Resultat"
+        },
+        {
+          "label": "Tips tilgjengelig (ikke synlig)",
+          "default": "Tips tilgjengelig",
+          "description": "Tekst for hjelpemiddel-teknologi"
+        },
+        {
+          "label": "Tilbakemelding tilgjengelig (ikke synlig)",
+          "default": "Tilbakemelding tilgjengelig",
+          "description": "Tekst for hjelpemiddel-teknologi"
+        },
+        {
+          "label": "Les tilbakemelding (ikke synlig)",
+          "default": "Les tilbakemelding",
+          "description": "Tekst for hjelpemiddel-teknologi"
+        },
+        {
+          "label": "Galt svar (ikke synlig)",
+          "default": "Galt svar",
+          "description": "Tekst for hjelpemiddel-teknologi"
+        },
+        {
+          "label": "Riktig svar (ikke synlig)",
+          "default": "Riktig svar",
+          "description": "Tekst for hjelpemiddel-teknologi"
+        },
+        {
+          "label": "Tilbakemelding",
+          "default": "@score av @total poeng",
+          "description": "Tekstlig tilbakemelding, tilgjengelige variabler: @score og @total. Eksempel: 'Du fikk @score av @total felt rett.'"
+        },
+        {
+          "label": "Skulle ha vært valgt",
+          "default": "Skulle ha vært valgt"
+        },
+        {
+          "label": "Skulle ikke ha vært valgt",
+          "default": "Skulle ikke ha vært valgt"
+        },
+        {
+          "label": "Tekst for \"krev svar\"-tilbakemelding",
+          "default": "Svar før du kan se fasit"
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for oppgave-oppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Fasit\" knapp"
+        },
+        {
+          "label": "Spørsmålstype",
+          "description": "Velg utseende og oppførsel for spørsmålet.",
+          "options": [
+            {
+              "label": "Automatisk"
+            },
+            {
+              "label": "Flervalg (avkrysningsbokser)"
+            },
+            {
+              "label": "Envalg (radioknapper)"
+            }
+          ]
+        },
+        {
+          "label": "Gi ett poeng for hele oppgaven",
+          "description": "Gir ett poeng totalt for flere rette alternativ. Kun valgbar hvis \"Bare ett svar\" er avslått."
+        },
+        {
+          "label": "Tilfeldige svaralternativ",
+          "description": "Slå på for å vise alternativene i tilfeldig rekkefølge."
+        },
+        {
+          "label": "Krev svar fra brukeren før fasit gis."
+        },
+        {
+          "label": "Slå av bilete zooming."
+        },
+        {
+          "label": "Slå på bruker-bekreftelse før \"Sjekk svar\""
+        },
+        {
+          "label": "Slå på bruker-bekreftelse før \"Prøv igjen\""
+        },
+        {
+          "label": "Umiddelbar tilbakemelding på avgitt svar",
+          "description": "Vær oppmerksom på at hjelpemiddelteknologi kan svekkes ved å bruke dette alternativet."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Bruker-bekreftelse før fasit-visning",
+      "fields": [
+        {
+          "label": "Tittel",
+          "default": "Ferdig ?"
+        },
+        {
+          "label": "Tekst",
+          "default": "Er du sikker på at du er ferdig ?"
+        },
+        {
+          "label": "Avbryt etikett",
+          "default": "Avbryt"
+        },
+        {
+          "label": "Bekreft etikett",
+          "default": "Bekreft"
+        }
+      ]
+    },
+    {
+      "label": "Prøv igjen bruker-bekreftelse",
+      "fields": [
+        {
+          "label": "Tittel",
+          "default": "Prøv igjen ?"
+        },
+        {
+          "label": "Tekst",
+          "default": "Er du sikker på at du vil prøve igjen?"
+        },
+        {
+          "label": "Avbryt etikett",
+          "default": "Avbrytt"
+        },
+        {
+          "label": "Bekreft etikett",
+          "default": "Bekreft"
+        }
+      ]
+    }
+  ]
+}

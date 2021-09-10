@@ -1,0 +1,13 @@
+{
+  "title": "hax-the-web",
+  "description": "Project home and documentation for all things HAX",
+  "type": ["website", "HAXcms"],
+  "links": {
+    "license": [
+      {
+        "href": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "title": "License: Creative Commons: Attribution Share a like"
+      }
+    ]
+  }
+}

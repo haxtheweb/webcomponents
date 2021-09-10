@@ -1,0 +1,209 @@
+<p>Stax are what most WYSIWYG systems would call Templates. Stax in HAX are a series of HAX element schema's in succession.</p>
+<image-compare-slider title="Slide to reveal what happens on click" top-src="files/2019-01-27_17-39-31.png" bottom-src="files/2019-01-27_17-39-01.png" sizing="contain" width="400" height="300" resource="#dfa7fe5b-11ab-6d9c-6d7a" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;" styles="[object Object]"></image-compare-slider>
+<p>Below is a definition for the "example lesson" seen above. This is a larger example, most templates will probably only be a few items. A stack template is like a blox / layout element except the pieces do NOT have to move as a group and they can be deleted. It's more of a shortcut for generating items. The details area describes the element visually in the UI while the subsequent <b>stax</b>
+
+
+ property is an array of HAX element schemas.</p>
+<code-sample copy-clipboard-button="copy-clipboard-button" style="width: 100%;">  <template preserve-content="preserve-content">"stax": [
+{
+"details": {
+"title": "Example Lesson",
+"image": "",
+"author": "ELMS:LN",
+"description": "An example of what HAX can do",
+"status": "available",
+"rating": "0",
+"tags": [
+"example"
+]
+},
+"stax": [
+{
+"tag": "h2",
+"properties": {},
+"content": "Introduction to ELMS: Learning Network"
+},
+{
+"tag": "p",
+"properties": {},
+"content": "What is ELMS: Learning Network? How is it fundamentally different from other learning technologies? Why is it your reading this when it's example text that you've just added to see how to make a really solid introduction to a new unit of instruction? Let's keep reading to find out!"
+},
+{
+"tag": "video-player",
+"properties": {
+"style": "width: 75%; margin: 0px auto; display: block;",
+"source": "https://www.youtube.com/watch?v=pKLPQ4ufo64",
+"src": "https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0",
+"iframed": true,
+"sandboxed": false,
+"width": "560",
+"height": "315",
+"responsive": true,
+"caption": "What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ...",
+"secondaryColor": "#fff9c4",
+"textColor": "#000000",
+"secondaryColorClass": "yellow lighten-4",
+"textColorClass": "black-text",
+"ytNocookie": true,
+"ytSuggested": false,
+"ytControls": true,
+"ytTitle": false,
+"vimeoTitle": false,
+"vimeoByline": false,
+"vimeoPortrait": false,
+"videoColor": "FF031D",
+"resource": "#86bfd28d-8b57-a3b9-b2e5",
+"prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+},
+"content": ""
+},
+{
+"tag": "h3",
+"properties": {},
+"content": "Pretest"
+},
+{
+"tag": "self-check",
+"properties": {
+"style": "width: 50%; float: right;",
+"title": "Self-Check",
+"image": "https://farm1.staticflickr.com/642/21641107852_3602f9c1a8_b.jpg",
+"alt": "A few stickers associated with ELMS:LN are shown presented on the back of a laptop.",
+"correct": false,
+"textColor": "#000000",
+"textColorClass": "black-text",
+"backgroundColor": "#b2dfdb",
+"backgroundColorClass": "teal lighten-4",
+"resource": "#08d09967-a7c9-3d02-8935",
+"prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+},
+"content": "    <span slot="\&quot;question\&quot;">True or False. ELMS:LN is a traditional learning management system.</span>\n\n    <span>FALSE. ELMS: Learning Network is considered to be a Next Generation Digital Learning Environment.\nLearn more about NGDLE in <a href="\&quot;https://er.educause.edu/blogs/2018/3/ngdle-is-really-just-enigma-misspelled\&quot;" target="\&quot;_blank\&quot;">this blog post on Educause</a>\n.</span>\n\n"
+},
+{
+"tag": "p",
+"properties": {},
+"content": "If you think you already know about ELMS:LN, let's find out ahead of time! Take the self-check on the right to find out if ELMS:LN is a traditional Learning Management system or something more"
+},
+{
+"tag": "hr",
+"properties": {
+"style": "width: 75%;"
+},
+"content": ""
+},
+{
+"tag": "h3",
+"properties": {},
+"content": "History Review"
+},
+{
+"tag": "p",
+"properties": {},
+"content": "Now that we've read about what ELMS:LN is (and is not). Let's take a different kind of self-check to illustrate the flexibility of the HAX authoring platform."
+},
+{
+"tag": "multiple-choice",
+"properties": {
+"style": "width: 75%; margin: 0px auto; display: block;",
+"checkLabel": "Check guess",
+"resetLabel": "Clear",
+"hideTitle": true,
+"question": "Who founded the ELMS:LN Platform?",
+"answers": [
+{
+"correct": true,
+"label": "Bryan Ollendyke"
+},
+{
+"correct": false,
+"label": "Mythic Elves"
+},
+{
+"correct": false,
+"label": "Michael Potter"
+},
+{
+"correct": false,
+"label": "Nikki Massaro Kauffman"
+},
+{
+"correct": false,
+"label": "Charles Lavera"
+}
+],
+"correctText": "Great job!",
+"incorrectText": "Try again",
+"randomize": true,
+"typeof": "oer:Assessment",
+"resource": "#97ffed48-c928-39ae-1bea",
+"prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+},
+"content": ""
+},
+{
+"tag": "multiple-choice",
+"properties": {
+"style": "width: 75%; margin: 0px auto; display: block;",
+"title": "ELMS Development team",
+"checkLabel": "Check your guess",
+"resetLabel": "Clear answers",
+"hideTitle": false,
+"question": "Who is responsible for ELMS:LN existing? Who improves it and wants it to be the best NGDLE solution to transform education and the world?",
+"answers": [
+{
+"correct": true,
+"label": "Nikki Massaro Kauffman"
+},
+{
+"correct": true,
+"label": "Michael Potter"
+},
+{
+"correct": true,
+"label": "Charles Lavera"
+},
+{
+"correct": true,
+"label": "Bryan Ollendyke"
+},
+{
+"correct": true,
+"label": "Anyone, ELMS:LN is an open community developed by multiple organizations!"
+}
+],
+"displayedAnswers": [
+{
+"correct": true,
+"label": "Nikki Massaro Kauffman"
+},
+{
+"correct": true,
+"label": "Michael Potter"
+},
+{
+"correct": true,
+"label": "Charles Lavera"
+},
+{
+"correct": true,
+"label": "Bryan Ollendyke"
+},
+{
+"correct": true,
+"label": "Anyone, ELMS:LN is an open community developed by multiple organizations!"
+}
+],
+"correctText": "Great job! You got our trick question!",
+"incorrectText": "Try again, there's some more answers...",
+"randomize": true,
+"typeof": "oer:Assessment",
+"resource": "#59426af4-ecf2-f49d-06a6",
+"prefix": "oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+},
+"content": ""
+}
+]
+}
+]
+}</template>
+</code-sample>

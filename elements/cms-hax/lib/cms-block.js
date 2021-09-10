@@ -292,6 +292,7 @@ class CMSBlock extends PolymerElement {
           "loading",
           "block-data",
           "body-data",
+          "hax-edit-mode",
           "block-end-point",
         ],
       },

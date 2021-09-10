@@ -1,23 +1,35 @@
 import { css, html } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
+function localStorageGet(name) {
+  try {
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
+  }
+}
+
+function localStorageSet(name, newItem) {
+  try {
+    return localStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
+  }
+}
+
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
       this.hideUserStylesMenu = true;
-      this.fontSize = window.localStorage.getItem("haxcms-userPref-fontSize")
-        ? window.localStorage.getItem("haxcms-userPref-fontSize")
+      this.fontSize = localStorageGet("haxcms-userPref-fontSize")
+        ? localStorageGet("haxcms-userPref-fontSize")
         : 1;
-      this.fontFamily = window.localStorage.getItem(
-        "haxcms-userPref-fontFamily"
-      )
-        ? window.localStorage.getItem("haxcms-userPref-fontFamily")
+      this.fontFamily = localStorageGet("haxcms-userPref-fontFamily")
+        ? localStorageGet("haxcms-userPref-fontFamily")
         : 0;
-      this.colorTheme = window.localStorage.getItem(
-        "haxcms-userPref-colorTheme"
-      )
-        ? window.localStorage.getItem("haxcms-userPref-colorTheme")
+      this.colorTheme = localStorageGet("haxcms-userPref-colorTheme")
+        ? localStorageGet("haxcms-userPref-colorTheme")
         : 0;
 
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
@@ -458,30 +470,24 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
     UserStylesSizeDown(e) {
       if (this.fontSize > 0) {
         this.fontSize = this.fontSize - 1;
-        window.localStorage.setItem("haxcms-userPref-fontSize", this.fontSize);
+        localStorageSet("haxcms-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesSizeUp(e) {
       if (this.fontSize < 4) {
         this.fontSize = this.fontSize + 1;
-        window.localStorage.setItem("haxcms-userPref-fontSize", this.fontSize);
+        localStorageSet("haxcms-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesFontFamilyChange(e) {
       var target = normalizeEventPath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
-      window.localStorage.setItem(
-        "haxcms-userPref-fontFamily",
-        this.fontFamily
-      );
+      localStorageSet("haxcms-userPref-fontFamily", this.fontFamily);
     }
     UserStylesColorThemeChange(e) {
       var target = normalizeEventPath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
-      window.localStorage.setItem(
-        "haxcms-userPref-colorTheme",
-        this.colorTheme
-      );
+      localStorageSet("haxcms-userPref-colorTheme", this.colorTheme);
     }
   };
 };

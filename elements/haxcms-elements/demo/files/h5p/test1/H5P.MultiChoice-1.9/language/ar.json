@@ -1,0 +1,216 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        }
+      ]
+    },
+    {
+      "label": "السؤال"
+    },
+    {
+      "label": "الخيارات المتوفرة",
+      "entity": "الخيار",
+      "field": {
+        "label": "الخيار",
+        "fields": [
+          {
+            "label": "النص"
+          },
+          {
+            "label": "صحيح"
+          },
+          {
+            "label": "تلميح",
+            "fields": [
+              {
+                "label": "نص التلميح"
+              },
+              {
+                "label": "ملاحظات المختار",
+                "description": "سوف يتم عرضها للمستخدمين بعد التتحقق من جوابه"
+              },
+              {
+                "label": "ملاحظات لغير المختار",
+                "description": "سوف يتم عرضها للمستخدمين بعد التتحقق من جوابه"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "ترجمة واجهة المستخدم للخيارات متعددة",
+      "fields": [
+        {
+          "label": "تسمية زر التحقق  من الجواب"
+        },
+        {
+          "label": "مشاهدة تسمية زر الحل"
+        },
+        {
+          "label": "تسمية زر إعادة المحاولة"
+        },
+        {
+          "label": "Tip label",
+          "default": "Show tip"
+        },
+        {
+          "label": "ملاحظات الجواب الصحيح"
+        },
+        {
+          "label": "ملاحظات الجواب الصحيح تقريبا"
+        },
+        {
+          "label": "ملاحظات الجواب غير الصحيح"
+        },
+        {
+          "label": "Score Bar Label",
+          "default": "Score"
+        },
+        {
+          "label": "Tip Available",
+          "default": "Tip available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback Available",
+          "default": "Feedback available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Read Feedback",
+          "default": "Read feedback",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Wrong Answer",
+          "default": "Wrong answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Correct Answer",
+          "default": "Correct answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback text",
+          "default": "Feedback text"
+        },
+        {
+          "label": "Option should have been checked",
+          "default": "Should have been checked"
+        },
+        {
+          "label": "Option should not have been checked",
+          "default": "Should not have been checked"
+        },
+        {
+          "label": "Text for \"Requires answer\" message",
+          "default": "Please answer before viewing the solution"
+        }
+      ]
+    },
+    {
+      "label": "إعدادت النشاط",
+      "description": "وهذه الخيارات تمكنك من التحكم في كيفية سلوك هذا النشاط",
+      "fields": [
+        {
+          "label": "تمكين \"إعادة المحاولة \""
+        },
+        {
+          "label": "تمكين \"مشاهدة الحل \" الزر"
+        },
+        {
+          "label": "Question Type",
+          "description": "Select the look and behaviour of the question.",
+          "options": [
+            {
+              "label": "Automatic"
+            },
+            {
+              "label": "Multiple Choice (Checkboxes)"
+            },
+            {
+              "label": "Single Choice (Radio Buttons)"
+            }
+          ]
+        },
+        {
+          "label": "إعطاء نقطة واحدة للقيام بهذه المهمة بأكملها",
+          "description": "تمكين لإعطاء مجموع نقطة واحدة للإجابات الصحيحة متعددة. هذا لن يكون خيارا في وضع \"إجابة واحدة \"."
+        },
+        {
+          "label": "الإجابات بطريقة عشوائية",
+          "description": "تمكين العرض بطريقة عشوائية وترتيب الأسئلة على الشاشة"
+        },
+        {
+          "label": "تطلب إدخال المستخدم اجابته قبل أن يتم عرضه الحل"
+        },
+        {
+          "label": "Disable image zooming for question image."
+        },
+        {
+          "label": "Show confirmation dialog on \"Check\""
+        },
+        {
+          "label": "Show confirmation dialog on \"Retry\""
+        },
+        {
+          "label": "Automatically check answers",
+          "description": "Enabling this option will make accessibility suffer, make sure you know what you're doing."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Check confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Finish ?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to finish ?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Retry ?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to retry ?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        }
+      ]
+    }
+  ]
+}

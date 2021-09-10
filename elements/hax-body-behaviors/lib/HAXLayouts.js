@@ -296,7 +296,6 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       };
     }
     _dragEnter(e) {
-      console.log(e.target);
       e.target.classList.add("hax-hovered");
     }
     _dragLeave(e) {

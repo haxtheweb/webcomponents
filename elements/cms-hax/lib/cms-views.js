@@ -287,6 +287,7 @@ class CMSViews extends PolymerElement {
           "loading",
           "views-data",
           "body-data",
+          "hax-edit-mode",
           "views-end-point",
         ],
       },

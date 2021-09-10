@@ -58,6 +58,7 @@ export const HaxIconsetManifest = [
       "calendar",
       "code-json",
       "expand-more",
+      "figure",
       "file-ai",
       "file-blank",
       "file-css",
@@ -254,6 +255,7 @@ export const HaxIconsetManifest = [
       "twitter-box",
       "twitter",
       "whatsapp",
+      "youtube",
     ],
   },
   {

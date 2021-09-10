@@ -312,6 +312,7 @@ class CMSEntity extends PolymerElement {
           "loading",
           "entity-data",
           "body-data",
+          "hax-edit-mode",
           "entity-end-point",
         ],
       },
