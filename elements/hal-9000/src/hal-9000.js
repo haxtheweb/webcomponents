@@ -56,14 +56,6 @@ class Hal9000 extends LitElement {
     }
   }
   /**
-   * Callback for clicking on whatever was just said
-   */
-  clickObject(phrase) {
-    this.__text = phrase;
-    this.commands[phrase].object.click();
-    this.commands[phrase].object.focus();
-  }
-  /**
    * Notice new voice commands added
    */
   _commandsChanged(newValue) {
