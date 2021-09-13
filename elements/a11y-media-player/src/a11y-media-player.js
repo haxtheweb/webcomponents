@@ -138,6 +138,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.mediaTitle = "";
     this.mediaLang = "en";
     this.muted = false;
+    this.hideYoutubeLink = false;
     this.preload = "metadata";
     this.playbackRate = 1;
     this.search = null;
@@ -976,6 +977,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         detail: this,
       })
     );
+  }
+
+  /**
+   * takes the user to YouTube
+   */
+  goToYoutube() {
+    window.open(`https://www.youtube.com/watch?v=${this.youtubeId}`);
   }
 
   /**

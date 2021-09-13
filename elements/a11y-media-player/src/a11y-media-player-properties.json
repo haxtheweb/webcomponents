@@ -201,6 +201,13 @@
     "type": "Boolean"
   },
   /**
+   * Open on YouTube button
+   */
+  "hideYoutubeLink": {
+    "type": "Boolean",
+    "attribute": "hide-youtube-link"
+  },
+  /**
    * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
    */
   "playbackRate": {

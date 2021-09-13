@@ -97,6 +97,7 @@ class VideoPlayer extends IntersectionObserverMixin(
               ?disable-interactive="${this.disableInteractive}"
               ?hide-timestamps="${this.hideTimestamps}"
               ?hide-transcript="${this.hideTranscript}"
+              ?hide-youtube-link="${this.hideYoutubeLink}"
               id="${this.playerId}"
               lang="${this.lang || "en"}"
               ?learning-mode="${this.learningMode}"
@@ -258,6 +259,12 @@ class VideoPlayer extends IntersectionObserverMixin(
             property: "linkable",
             title: "Include a share link?",
             description: "Provides a link to share the video.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "hideYoutubeLink",
+            title: "Remove open on YouTube button",
+            description: "Removes the button for opening the video on YouTube.",
             inputMethod: "boolean",
           },
           {
@@ -500,6 +507,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         reflect: true,
       },
       /**
+       * Open on YouTube button
+       */
+      hideYoutubeLink: {
+        type: Boolean,
+        attribute: "hide-youtube-link",
+      },
+      /**
        * What to preload for a11y-media-player: auto, metadata (default), or none.
        */
       preload: {
@@ -572,6 +586,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.disableInteractive = false;
     this.hideTimestamps = false;
     this.hideTranscript = false;
+    this.hideYoutubeLink = false;
     this.lang = "en";
     this.learningMode = false;
     this.linkable = false;
