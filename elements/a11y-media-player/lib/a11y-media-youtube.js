@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `a11y-media-youtube`
@@ -83,6 +84,7 @@ class A11yMediaYoutube extends LitElement {
        */
       playbackRate: {
         type: Number,
+        attribute: "playback-rate",
       },
       /**
        * youTube's unique identifier for the video
@@ -351,8 +353,9 @@ class A11yMediaYoutube extends LitElement {
    * @param {number} playback rate X normal speed
    */
   setPlaybackRate(value) {
-    if (this.__yt && this.__yt.setPlaybackRate)
-      this.__yt.setPlaybackRate(value);
+    if (this.__yt && this.__yt.setPlaybackRate) {
+      this.__yt.setPlaybackRate(Number(value));
+    }
   }
 
   /**

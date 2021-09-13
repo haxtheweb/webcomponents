@@ -955,6 +955,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                     preload="${this.t ? "auto" : this.preload}"
                     .t="${this.t}"
                     video-id="${this.videoId}"
+                    playback-rate="${this.playbackRate}"
                     @timeupdate="${this._handleTimeUpdate}"
                     ?hidden=${!this.isYoutube}
                   >
@@ -1162,10 +1163,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                   accent-color="${this.accentColor}"
                   ?dark="${this.dark}"
                   class="hide-sticky"
-                  icon="av:play-arrow"
+                  icon="mdi-social:youtube"
                   label="Open on YouTube"
                   ?hidden="${this.learningMode || this.hideYoutubeLink}"
-                  @click="${(e) => this.goToYoutube()}"
+                  @click="${this.goToYoutube}"
                 ></a11y-media-button>`
               : ``}
           </div>
