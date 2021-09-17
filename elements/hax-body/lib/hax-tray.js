@@ -152,7 +152,6 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.elementAlign = toJS(HAXStore.elementAlign);
-      console.log(this.elementAlign);
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);

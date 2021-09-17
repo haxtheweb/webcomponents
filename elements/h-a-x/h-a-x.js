@@ -226,7 +226,6 @@ class HAX extends HTMLElement {
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
-        console.log(this.elementAlign);
         HAXStore.haxTray.hidePanelOps = this.hidePanelOps;
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.elementAlign = this.elementAlign;
