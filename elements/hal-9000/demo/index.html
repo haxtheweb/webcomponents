@@ -10,11 +10,24 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
+      import '@lrnwebcomponents/simple-popover/simple-popover.js';
+      import '../lib/hal-9000-ui/hal-9000-ui.js';
       import('../hal-9000.js').then(() => {
         window.hal = document.getElementById('hal');
         // turn hal on
         window.hal.enabled = true;
         var commands = {};
+        document.querySelector('a11y-media-player').shadowRoot.querySelectorAll('a11y-media-button').forEach((button) => {
+          console.log(`${window.hal.respondsTo} ${button.label.toLowerCase()}`);
+          console.log(window.hal.commands);
+          let commands = window.hal.commands;
+          commands[`${window.hal.respondsTo} ${button.label.toLowerCase()}`] = button.click.bind(button);
+          window.hal.commands = {... commands};
+          let btn = document.createElement("li");
+          btn.innerText = button.label;
+          document.querySelector('#command-list').appendChild(btn);
+        });
         commands[`${window.hal.respondsTo} scroll up`] = () => {
           window.scrollBy({
             top: -(window.innerHeight * .5),
@@ -32,21 +45,33 @@
         commands[`hey ${window.hal.respondsTo}`] = () => {
           window.hal.speak('Yeah what do you want');
         };
-        window.hal.commands = commands;
+       
       });
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
+    <hal-9000-ui></hal-9000-ui>
+    <hal-9000 id="hal" debug="debug" responds-to="(jarvis)"></hal-9000>
     <div class="vertical-section-container centered">
       <h3>Basic hal-9000 demo</h3>
       <demo-snippet>
         <template>
-          <hal-9000 id="hal" debug="debug" responds-to="(jeff)"></hal-9000>
+          
         </template>
       </demo-snippet>
     </div>
-        <p>white space</p>
+    <a11y-media-player id="video" accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="St.Clair Interview">
+      <video crossorigin="anonymous" controls>
+        <source src="//personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
+        <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
+      </video>
+    </a11y-media-player>
+    <simple-popover for="video" auto>
+      Try these commands:
+      <ul id="command-list"></ul>
+    </simple-popover>
+    <p>white space</p>
     <p>white space</p>
     <p>white space</p>
     <p>white space</p>
