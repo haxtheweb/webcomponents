@@ -147,6 +147,44 @@ class A11yMediaYoutube extends LitElement {
     this.__yt = null;
   }
   /**
+   * inspired by https://github.com/paulirish/lite-youtube-embed/blob/master/src/lite-yt-embed.js
+   */
+  static warmConnections() {
+    if (A11yMediaYoutube.preconnected) return;
+
+    // The iframe document and most of its subresources come right off youtube.com
+    A11yMediaYoutube.addPrefetch(
+      "preconnect",
+      "https://www.youtube-nocookie.com"
+    );
+    // The botguard script is fetched off from google.com
+    A11yMediaYoutube.addPrefetch("preconnect", "https://www.google.com");
+
+    // Not certain if these ad related domains are in the critical path. Could verify with domain-specific throttling.
+    A11yMediaYoutube.addPrefetch(
+      "preconnect",
+      "https://googleads.g.doubleclick.net"
+    );
+    A11yMediaYoutube.addPrefetch(
+      "preconnect",
+      "https://static.doubleclick.net"
+    );
+
+    A11yMediaYoutube.preconnected = true;
+  }
+  /**
+   * Add a <link rel={preload | preconnect} ...> to the head
+   */
+  static addPrefetch(kind, url, as) {
+    const linkEl = document.createElement("link");
+    linkEl.rel = kind;
+    linkEl.href = url;
+    if (as) {
+      linkEl.as = as;
+    }
+    document.head.append(linkEl);
+  }
+  /**
    * single instance of YouTube iframe script
    * @readonly
    * @returns {object} script tag
@@ -471,8 +509,16 @@ class A11yMediaYoutube extends LitElement {
       youtube = null;
     document.body.appendChild(div);
     div.setAttribute("id", divid);
-
     if (load) {
+      // Warm the connection for the poster image
+      A11yMediaYoutube.addPrefetch(
+        "preload",
+        `https://img.youtube.com/vi/${this.videoId.replace(
+          /[\?&].*/,
+          ""
+        )}/hqdefault.jpg`,
+        "image"
+      );
       let setYT = (e) => (this.__video = e.target),
         port = window.location.port ? `:${window.location.port}` : ``,
         origin = `//${window.location.hostname}${port}`;
@@ -523,7 +569,10 @@ class A11yMediaYoutube extends LitElement {
     }
     this.innerHTML = "";
   }
-
+  connectedCallback() {
+    super.connectedCallback();
+    A11yMediaYoutube.warmConnections();
+  }
   disconnectedCallback() {
     this._removeIframe();
     super.disconnectedCallback();
