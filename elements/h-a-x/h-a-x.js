@@ -222,7 +222,7 @@ class HAX extends HTMLElement {
         }
         HAXStore.haxTray.hidePanelOps = this.hidePanelOps;
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
-        HAXStore.haxTray.elementAlign = this.elementAlign;
+        HAXStore.elementAlign = this.elementAlign;
       }, 0);
       window.removeEventListener(
         "hax-store-ready",
@@ -311,7 +311,7 @@ class HAX extends HTMLElement {
     if (this.__rendered) {
       this.setAttribute("element-align", newValue);
       // bind to the hax store global on change
-      HAXStore.haxTray.elementAlign = newValue;
+      HAXStore.elementAlign = newValue;
     }
   }
   get offsetMargin() {
