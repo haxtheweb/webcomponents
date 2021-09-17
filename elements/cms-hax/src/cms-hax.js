@@ -228,7 +228,7 @@ class CmsHax extends LitElement {
         HAXStore.haxTray.hidePanelOps = hidePanelOps;
         HAXStore.haxTray.offsetMargin = offsetMargin;
         HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
-        HAXStore.haxTray.elementAlign = elementAlign;
+        HAXStore.elementAlign = elementAlign;
         setTimeout(() => {
           // NOW we have the data imported
           if (this.openDefault) {
