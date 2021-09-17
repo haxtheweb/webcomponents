@@ -1819,7 +1819,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.appStoreLoaded = false;
     this.elementList = {};
     //if hax-tray-elementAlign exists use that other wise left
-    if (!(this.elementAlign = localStorageGet("hax-tray-elementAlign"))) {
+    this.elementAlign = localStorageGet("hax-tray-elementAlign");
+    if (!this.elementAlign || this.elementAlign == null) {
       this.elementAlign = "right";
     }
     this.trayStatus = "collapsed";

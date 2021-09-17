@@ -3,6 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+function localStorageGet(name) {
+  try {
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
+  }
+}
 /**
  * `h-a-x`
  * @element h-a-x
@@ -148,7 +155,6 @@ class HAX extends HTMLElement {
     // set tag for later use
     this.tag = HAX.tag;
     this.template = document.createElement("template");
-
     this.attachShadow({ mode: "open" });
     // if we shouldn't delay rendering
     if (!delayRender) {
@@ -220,6 +226,7 @@ class HAX extends HTMLElement {
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
+        console.log(this.elementAlign);
         HAXStore.haxTray.hidePanelOps = this.hidePanelOps;
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.elementAlign = this.elementAlign;
@@ -273,11 +280,15 @@ class HAX extends HTMLElement {
    */
   applyHAX() {
     // store needs to come before anyone else, use it's availability request mechanism
-    window.HaxStore.requestAvailability();
+    let store = window.HaxStore.requestAvailability();
     // now everyone else
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
-    tray.elementAlign = this.elementAlign;
+    this.elementAlign = localStorageGet("hax-tray-elementAlign");
+    if (!this.elementAlign || this.elementAlign == null) {
+      this.elementAlign = "right";
+    }
+    store.elementAlign = this.elementAlign;
     document.body.appendChild(tray);
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-export-dialog"));

@@ -135,8 +135,6 @@ class HaxTray extends I18NMixin(
     this.trayDetail = "content-edit";
     this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
-    //if hax-tray-elementAlign exists use that other wise left
-    //if (!(this.elementAlign = localStorageGet("hax-tray-elementAlign"))) {this.elementAlign = "right";}
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
@@ -154,6 +152,7 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.elementAlign = toJS(HAXStore.elementAlign);
+      console.log(this.elementAlign);
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
@@ -1787,7 +1786,6 @@ class HaxTray extends I18NMixin(
    * Edit clicked, activate
    */
   _clickEditButton(e) {
-    this.elementAlign = toJS(HAXStore.elementAlign);
     HAXStore.editMode = true;
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
