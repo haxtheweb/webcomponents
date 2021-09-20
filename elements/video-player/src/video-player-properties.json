@@ -96,6 +96,13 @@
     "reflect": true
   },
   /**
+   * Open on YouTube button
+   */
+  "hideYoutubeLink": {
+    "type": "Boolean",
+    "attribute": "hide-youtube-link"
+  },
+  /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
    */
   "preload": {

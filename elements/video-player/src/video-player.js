@@ -37,6 +37,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.disableInteractive = false;
     this.hideTimestamps = false;
     this.hideTranscript = false;
+    this.hideYoutubeLink = false;
     this.lang = "en";
     this.learningMode = false;
     this.linkable = false;

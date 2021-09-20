@@ -24,6 +24,7 @@
           preload="${this.t ? 'auto' : this.preload}"
           .t="${this.t}"
           video-id="${this.videoId}"
+          playback-rate="${this.playbackRate}"
           @timeupdate="${this._handleTimeUpdate}"
           ?hidden=${!this.isYoutube}>
         </a11y-media-youtube>
@@ -182,6 +183,19 @@
         label="${this._getLocal(this.localization,'settings','label')}"
         @click="${e => this.toggleSettings()}"
       ></a11y-media-button>
+      ${this.isYoutube
+        ? html`
+        <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
+          class="hide-sticky"
+          icon="mdi-social:youtube"
+          label="Open on YouTube"
+          ?hidden="${this.learningMode || this.hideYoutubeLink}"
+          @click="${this.goToYoutube}"
+        ></a11y-media-button>`
+        : ``
+      }
     </div>
     <absolute-position-behavior 
       id="settings" 

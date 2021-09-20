@@ -128,7 +128,7 @@
     "format": "prettier --write 'system/**/*.php' '*.{html,js,php,yml}'",
     "terser": "gulp",
     "start": "yarn run dev",
-    "dev": "polymer serve --open --entrypoint dist/dev.html --allow-origin --open-path=/",
+    "dev": "polymer serve --open --entrypoint index.html --allow-origin --open-path=/",
     "dev-theme": "cd custom && yarn start"
   }
 }

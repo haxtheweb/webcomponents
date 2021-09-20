@@ -32,7 +32,7 @@
     "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/haxcms-elements/demo/index.html --compile=never",
+    "serve": "cd demo && yarn start",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
