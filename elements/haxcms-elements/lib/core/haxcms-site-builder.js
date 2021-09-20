@@ -478,9 +478,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         /* Error handling */
         console.warn(error);
       });
-    var evt = document.createEvent("UIEvents");
-    evt.initUIEvent("resize", true, false, window, 0);
-    window.dispatchEvent(evt);
+    window.dispatchEvent(new Event("resize"));
     setTimeout(() => {
       autorun((reaction) => {
         this.dashboardOpened = toJS(store.dashboardOpened);

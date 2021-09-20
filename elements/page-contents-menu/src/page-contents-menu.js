@@ -220,6 +220,8 @@ class PageContentsMenu extends LitElement {
         block: "start",
         inline: "nearest",
       });
+      // keep state in history
+      window.history.pushState({}, null, target.getAttribute("href"));
       // close menu
       this.hideSettings = true;
     }
@@ -420,7 +422,7 @@ class PageContentsMenu extends LitElement {
         }
         let reference = {
           title: title,
-          link: item.id ? "#" + item.id : null,
+          link: item.id ? document.location.pathname + "#" + item.id : null,
           object: item,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
           active: "",
