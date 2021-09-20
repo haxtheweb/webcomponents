@@ -97,6 +97,7 @@ class SimpleFieldsUrlComboItem extends LitElement {
       mp3: "av:volume-up",
       wav: "av:volume-up",
       html: "icons:language",
+      tel: "communication:phone",
       email: "icons:mail",
     };
   }
@@ -228,6 +229,17 @@ class SimpleFieldsUrlComboItem extends LitElement {
   }
 
   /**
+   * whether value is a phone number
+   *
+   * @readonly
+   * @memberof SimpleFieldsUrlComboItem
+   * @returns {boolean}
+   */
+  get isPhone() {
+    return !!this.resourceURL && this.resourceURL.protocol === "tel:";
+  }
+
+  /**
    * whether value is an image
    *
    * @readonly
@@ -272,6 +284,8 @@ class SimpleFieldsUrlComboItem extends LitElement {
       ? this.iconTypes["html"]
       : this.isEmail
       ? this.iconTypes["email"]
+      : this.isPhone
+      ? this.iconTypes["tel"]
       : !!this.fileExtension && this.fileExtension !== ""
       ? this.iconTypes[this.fileExtension]
       : this.iconTypes["file"];

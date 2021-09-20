@@ -50,6 +50,7 @@
               ...window.photoList,
               { "value": "https://thenerdforge.com/", "name": "Nerdforge" },
               "./form-lite.html",
+              "#top",
               {"value": "mailto:noOne@houseOfBlackAndWhite.com", "name": "Email No One" }
             ];
             window.onload = () => {
@@ -101,6 +102,12 @@
                       "property": "color",
                       "title": "Your favorite  color.",
                       "inputMethod": "colorpicker"
+                    },
+                    {
+                      "property": "contact",
+                      "title": "Contact Link",
+                      "description": "Email, Website, or telephone",
+                      "inputMethod": "url"
                     },
                     {
                       "property": "link",

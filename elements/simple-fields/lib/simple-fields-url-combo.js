@@ -188,6 +188,60 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       );
     return sorted;
   }
+  /**
+   * is text an email address?
+   *
+   * @param {string} text
+   * @returns {boolean}
+   * @memberof SimpleFieldsUrlCombo
+   */
+  possibleEmail(text) {
+    return text.match(/^\S+@\S+.\S+$/);
+  }
+
+  /**
+   * is text a telephone number?
+   *
+   * @param {string} text
+   * @returns {boolean}
+   * @memberof SimpleFieldsUrlCombo
+   */
+  possiblePhone(text) {
+    return text.match(
+      /^(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e][X|x][T|t][\:|\.|]?)|x|X)(\s?\d+))?$/
+    );
+  }
+  /**
+   * updates options list
+   *
+   * @param {event} event
+   * @memberof SimpleFieldsCombo
+   */
+  filterOptions(filter, currentOption) {
+    super.filterOptions(filter, currentOption);
+    if (this.possibleEmail(filter)) {
+      this.filteredOptions = [
+        {
+          value: `mailto:${filter}`,
+          id: "mailto",
+        },
+        ...this.filteredOptions,
+      ];
+      this.open();
+    } else if (this.possiblePhone(filter)) {
+      this.filteredOptions = [
+        {
+          value: `tel:${filter
+            .replace(/[\(\)\-\s\:\.]/g, "")
+            .replace(/[a-zA-Z]+/, "p")}`,
+          id: "tel",
+        },
+        ...this.filteredOptions,
+      ];
+      this.open();
+    }
+    console.log(filter, this.filteredOptions);
+  }
 }
 window.customElements.define(SimpleFieldsUrlCombo.tag, SimpleFieldsUrlCombo);
 export { SimpleFieldsUrlCombo };

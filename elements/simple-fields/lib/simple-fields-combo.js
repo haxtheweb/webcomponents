@@ -515,11 +515,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeydown(event) {
-    var tgt = event.currentTarget,
-      flag = false,
-      char = event.key,
-      shiftKey = event.shiftKey,
-      ctrlKey = event.ctrlKey,
+    var flag = false,
       altKey = event.altKey;
 
     switch (event.keyCode) {
@@ -594,8 +590,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeyup(event) {
-    var tgt = event.currentTarget,
-      flag = false,
+    var flag = false,
       option = false,
       char = event.key || "";
 
