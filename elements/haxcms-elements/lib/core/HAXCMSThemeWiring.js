@@ -4,7 +4,11 @@
  */
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  varExists,
+  varGet,
+  generateResourceID,
+} from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 
@@ -162,7 +166,7 @@ const HAXCMSTheme = function (SuperClass) {
         }
         this.__styleReapply();
       }, 50);
-      // keep editMode in sync globally
+      // keep activeItemContent in sync globally
       autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
         setTimeout(() => {

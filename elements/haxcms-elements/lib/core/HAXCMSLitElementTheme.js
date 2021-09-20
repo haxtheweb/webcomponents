@@ -22,6 +22,73 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
+    // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
+    autorun((reaction) => {
+      let tmp = toJS(store.activeItemContent);
+      // delay bc this shouldn't block page load in any way
+      setTimeout(() => {
+        // headings only
+        let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        if (kidHeadings.length > 0) {
+          kidHeadings.forEach((node) => {
+            node.addEventListener("click", this.copyLink.bind(this));
+            node.addEventListener(
+              "pointerenter",
+              this.hoverIntentEnter.bind(this)
+            );
+            node.addEventListener(
+              "pointerout",
+              this.hoverIntentLeave.bind(this)
+            );
+          });
+        }
+      }, 100);
+      this.__disposer.push(reaction);
+    });
+  }
+  hoverIntentEnter(e) {
+    this.__styleTag = document.createElement("style");
+    this.__styleTag.innerHTML = `
+    #${e.target.getAttribute(
+      "id"
+    )} { cursor: copy; text-decoration: dotted underline}
+    #${e.target.getAttribute("id")}::after {
+      content: "🔗";
+      font-size: 20px;
+      display: inline-block;
+      position: relative;
+      right: -20px;
+      opacity: .5;
+    }`;
+    e.target.appendChild(this.__styleTag);
+  }
+  hoverIntentLeave(e) {
+    this.__styleTag.remove();
+  }
+  copyLink(e) {
+    let target = e.target;
+    if (!target) {
+      target = e.path[0];
+    }
+    let el = document.createElement("textarea");
+    el.value =
+      window.location.origin +
+      window.location.pathname +
+      "#" +
+      target.getAttribute("id");
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        cancelable: true,
+        detail: {
+          text: `Link copied to clipboard`,
+          duration: 3000,
+        },
+      })
+    );
   }
   static get properties() {
     let props = {};

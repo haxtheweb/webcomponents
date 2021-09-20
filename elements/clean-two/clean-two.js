@@ -730,6 +730,7 @@ class CleanTwo extends HAXCMSRememberRoute(
     // prettier-ignore
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js");
   }
+
   /**
    * Delay importing site-search until we click to open it directly
    */
