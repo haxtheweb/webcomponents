@@ -327,19 +327,6 @@ class PageContentsMenu extends LitElement {
     // default to all hierarchy tags to obtain mini-menu
     // opens the door for us adding OTHER tags in the future
     this.hierarchyTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
-    window.addEventListener("resize", this.__pageReady.bind(this));
-  }
-  // force a scroll to active
-  __pageReady(e) {
-    var id = null;
-    this.items.map((item, pos) => {
-      if (item.id == document.location.hash.replace("#", "")) {
-        id = pos;
-      }
-    });
-    if (id && this.items[id].link != null) {
-      this.items[id].object.scrollIntoView();
-    }
   }
 
   checkMenuOpen(e) {
@@ -354,10 +341,7 @@ class PageContentsMenu extends LitElement {
       this.hideSettings = true;
     }
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
+  firstUpdated() {
     // if we are told to use the parent and we're connected...
     if (this.relationship == "parent") {
       // which will kick that off
@@ -437,7 +421,6 @@ class PageContentsMenu extends LitElement {
           title = this.fallbackText[item.tagName.toLowerCase()];
         }
         let reference = {
-          id: item.id,
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
           object: item,
