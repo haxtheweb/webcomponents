@@ -118,7 +118,7 @@ export const HaxUiFields = [
       --simple-fields-font-family: var(--hax-ui-font-family);
       --simple-fields-font-size: var(--hax-ui-font-size);
       --simple-fields-line-height: 135%;
-      --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
+      --simple-fields-detail-font-size: var(--hax-ui-font-size-xs);
       --simple-fields-detail-line-height: 120%;
       --simple-fields-margin: var(--hax-ui-spacing);
       --simple-fields-background-color: var(--hax-ui-background-color);
@@ -315,9 +315,6 @@ export const HaxHexagon = [
 ];
 export const HaxButton = [
   css`
-    :host {
-      text-transform: capitalize;
-    }
     :host[aria-expanded="true"] {
       border: 1px solid var(--hax-ui-border-color);
     }
