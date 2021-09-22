@@ -352,7 +352,7 @@
     },
     {
       "name": "simple-fields-combo",
-      "description": "`simple-fields-combo`\n input tags and validate an array of input\n can return as a string or object based on\n requirements of the implementing element\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\n  * `error-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `align-right` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `items-list` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types\n\nProperties:\n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `alignRight` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `stateInfo` {`{ activeDescendant: string | undefined; filteredOptions: any[]; filter: string; option: boolean; _selectedOption: any; value: any; firstOption: any; lastOption: any; input: any; }`} - \n\n  * `hasOptions` {`boolean`} - \n\n  * `previousItem` - \n\n  * `nextItem` - \n\n  * `listbox` - \n\n  * `input` - \n\n  * `keyCode` {`{ BACKSPACE: number; TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `isNone` {`boolean`} - \n\n  * `isList` {`boolean`} - \n\n  * `isBoth` {`boolean`} - \n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `option` {`boolean`} - \n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `fieldElementTag` {`string`} - gets field element tag in shadow DOM\n\n  * `fieldsetTemplate` - template for `fieldset` in shadow DOM\n\n  * `inputTemplate` - template for `input` in shadow DOM\n\n  * `noOptions` {`boolean`} - gets whether or not the field has options\n\n  * `sortedOptions` {`any[]`} - gets a sorted list of option\n\n  * `selectTemplate` - template for `select` in shadow DOM\n\n  * `textareaTemplate` - template for `textarea` in shadow DOM\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `itemsList` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `descriptionTemplate` - template for slotted or shadow DOM description\n\n  * `errorTemplate` - template for slotted or shadow DOM error message\n\n  * `fieldBottom` - gets bottom (metadata, description, and error message) of a field\n\n  * `fieldId` {`string`} - gets field's id\n\n  * `fieldMainTemplate` - template label and field\n\n  * `fieldMeta` - gets field metadata\n\n  * `hasFieldset` {`boolean`} - \n\n  * `labelTemplate` - template for slotted or shadow DOM label\n\n  * `multicheck` {`boolean`} - \n\n  * `numberError` {`number | false`} - determines if number of items selected\nis not between min and max\n\n  * `numeric` {`boolean`} - determines if field is numeric\n\n  * `patternError` - determines if value does not match regex pattern\n\n  * `prefixTemplate` - template for slotted or shadow DOM prefix\n\n  * `requiredError` - determines if field is required and blank\n\n  * `slottedFieldObserver` {`void`} - overridden mutation observer\n\n  * `suffixTemplate` - template for slotted or shadow DOM suffix\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types",
+      "description": "`simple-fields-combo`\n input tags and validate an array of input\n can return as a string or object based on\n requirements of the implementing element\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\n  * `error-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `align-right` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `items-list` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types\n\nProperties:\n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `alignRight` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `stateInfo` {`{ activeDescendant: string | undefined; filteredOptions: any[]; filter: string; option: boolean; _selectedOption: any; value: any; firstOption: any; lastOption: any; input: any; }`} - \n\n  * `expandButtonTemplate` {`TemplateResult<1>`} - \n\n  * `listboxTemplate` {`TemplateResult<1>`} - \n\n  * `listboxInnerTemplate` {`TemplateResult<1>[]`} - \n\n  * `isListboxHidden` - determines if listbox is hidden\n\n  * `hasOptions` {`boolean`} - \n\n  * `previousItem` - \n\n  * `nextItem` - \n\n  * `listbox` - \n\n  * `input` - \n\n  * `keyCode` {`{ BACKSPACE: number; TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `isNone` {`boolean`} - \n\n  * `isList` {`boolean`} - \n\n  * `isBoth` {`boolean`} - \n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `option` {`boolean`} - \n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `fieldElementTag` {`string`} - gets field element tag in shadow DOM\n\n  * `fieldsetTemplate` - template for `fieldset` in shadow DOM\n\n  * `inputTemplate` {`TemplateResult<1>`} - template for `input` in shadow DOM\n\n  * `noOptions` {`boolean`} - gets whether or not the field has options\n\n  * `sortedOptions` - gets a sorted list of option\n\n  * `selectTemplate` - template for `select` in shadow DOM\n\n  * `textareaTemplate` - template for `textarea` in shadow DOM\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `itemsList` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `descriptionTemplate` - template for slotted or shadow DOM description\n\n  * `errorTemplate` - template for slotted or shadow DOM error message\n\n  * `fieldBottom` - gets bottom (metadata, description, and error message) of a field\n\n  * `fieldId` {`string`} - gets field's id\n\n  * `fieldMainTemplate` - template label and field\n\n  * `fieldMeta` - gets field metadata\n\n  * `hasFieldset` {`boolean`} - \n\n  * `labelTemplate` - template for slotted or shadow DOM label\n\n  * `multicheck` {`boolean`} - \n\n  * `numberError` {`number | false`} - determines if number of items selected\nis not between min and max\n\n  * `numeric` {`boolean`} - determines if field is numeric\n\n  * `patternError` - determines if value does not match regex pattern\n\n  * `prefixTemplate` - template for slotted or shadow DOM prefix\n\n  * `requiredError` - determines if field is required and blank\n\n  * `slottedFieldObserver` {`void`} - overridden mutation observer\n\n  * `suffixTemplate` - template for slotted or shadow DOM suffix\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types",
       "attributes": [
         {
           "name": "activeDescendant",
@@ -1732,7 +1732,7 @@
     },
     {
       "name": "simple-fields-upload",
-      "description": "`simple-fields-upload` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `click` {`CustomEvent<any>`} - \n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - needs the size of parent container to add responsive styling\n\nAttributes:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `responsive-size` {`string`} - \n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description\n\nProperties:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `field` - \n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `responsiveSize` {`string`} - \n\n  * `legend` {`TemplateResult<1>`} - \n\n  * `desc` {`TemplateResult<1>`} - \n\n  * `fields` {`TemplateResult<1>`} - LitElement life cycle - render callback\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description",
+      "description": "`simple-fields-upload` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `click` {`CustomEvent<any>`} - \n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - needs the size of parent container to add responsive styling\n\nAttributes:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `items-list` - \n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `responsive-size` {`string`} - \n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description\n\nProperties:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `field` - \n\n  * `itemsList` - \n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `responsiveSize` {`string`} - \n\n  * `legend` {`TemplateResult<1>`} - \n\n  * `desc` {`TemplateResult<1>`} - \n\n  * `fields` {`TemplateResult<1>`} - LitElement life cycle - render callback\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description",
       "attributes": [
         {
           "name": "accept",
@@ -1750,6 +1750,10 @@
         {
           "name": "option",
           "description": "`option` {`string`} - \n\nProperty: option"
+        },
+        {
+          "name": "items-list",
+          "description": "`items-list` - \n\nProperty: itemsList\n\nDefault: "
         },
         {
           "name": "autocomplete",
@@ -1820,6 +1824,310 @@
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - needs the size of parent container to add responsive styling"
+        }
+      ]
+    },
+    {
+      "name": "simple-fields-url-combo-item",
+      "description": "`simple-fields-url-combo-item`\n`displays a selectable list of resources as a grid or combobox`\n\nAttributes:\n\n  * `name` {`string`} - human readable name, label, text, or title of resource\n\n  * `icon` {`string`} - optional: preferred icon for resource\n\n  * `preview` {`string`} - optional: preferred url for thumbnail image preview of resource\n\n  * `type` {`string`} - optional: preferred resource file type\n\n  * `value` {`string`} - url, src, id, filename or other unique value for resource\n\nProperties:\n\n  * `iconTypes` {`{ anchor: string; page: string; pdf: string; doc: string; docx: string; ppt: string; pptx: string; csv: string; xls: string; xlsx: string; url: string; file: string; mp4: string; mov: string; webm: string; mp3: string; wav: string; html: string; tel: string; email: string; }`} - default list of icons by file extension\n\n  * `currentLocation` - default site location\n\n  * `resourceURL` - URL object from value string\n\n  * `isLocal` {`boolean`} - whether or not value is local to current site\n\n  * `isSamePage` {`boolean`} - whether or not value on same as current location\n\n  * `isAnchor` {`boolean`} - whether or not value is an anchor on current page\n\n  * `fileExtension` {`string`} - value's file extension\n\n  * `imageTypes` {`string`} - file extensions of images that can be previewed on the web\n\n  * `pageTypes` {`string`} - file extensions of web pages\n\n  * `isPage` {`boolean`} - whether value is a web page\n\n  * `isEmail` {`boolean`} - whether value is an email address\n\n  * `isPhone` {`boolean`} - whether value is a phone number\n\n  * `isImage` {`boolean`} - whether value is an image\n\n  * `previewSrc` {`string`} - gets url for preview thumbnail\n\n  * `iconName` {`string`} - icon name for item based\n\n  * `iconTemplate` - icon template of item\n\n  * `imageTemplate` - preview image template of item\n\n  * `previewTemplate` - preview template, based on preview or icon by default;\nif none is provided, template based on previewSrc or iconName\n\n  * `labelTemplate` - label template for item\n\n  * `primaryLabelTemplate` - primary label template with item name or value\n\n  * `secondaryLabelTemplate` - secondary label template with item value\n\n  * `name` {`string`} - human readable name, label, text, or title of resource\n\n  * `icon` {`string`} - optional: preferred icon for resource\n\n  * `preview` {`string`} - optional: preferred url for thumbnail image preview of resource\n\n  * `type` {`string`} - optional: preferred resource file type\n\n  * `value` {`string`} - url, src, id, filename or other unique value for resource",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "`name` {`string`} - human readable name, label, text, or title of resource\n\nProperty: name"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - optional: preferred icon for resource\n\nProperty: icon"
+        },
+        {
+          "name": "preview",
+          "description": "`preview` {`string`} - optional: preferred url for thumbnail image preview of resource\n\nProperty: preview"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - optional: preferred resource file type\n\nProperty: type"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - url, src, id, filename or other unique value for resource\n\nProperty: value"
+        }
+      ]
+    },
+    {
+      "name": "simple-fields-url-combo",
+      "description": "`simple-fields-url-combo`\n input tags and validate an array of input\n can return as a string or object based on\n requirements of the implementing element\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\n  * `error-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `grid` {`string`} - \n\n  * `always-expanded` {`boolean`} - \n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `align-right` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `items-list` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types\n\nProperties:\n\n  * `displayAs` {`string`} - \n\n  * `alwaysExpanded` {`boolean`} - \n\n  * `grid` {`boolean`} - \n\n  * `activeDescendant` {`string`} - id of active option\n\n  * `alignRight` {`boolean`} - whether listbox is aligned on the right edge\n\n  * `justify` {`boolean`} - whether listbox is full-width\n\n  * `hoveredOption` - \n\n  * `stateInfo` {`{ activeDescendant: string | undefined; filteredOptions: any[]; filter: string; option: boolean; _selectedOption: any; value: any; firstOption: any; lastOption: any; input: any; }`} - \n\n  * `expandButtonTemplate` {`TemplateResult<1>`} - \n\n  * `listboxTemplate` {`TemplateResult<1>`} - \n\n  * `listboxInnerTemplate` {`TemplateResult<1>[]`} - \n\n  * `isListboxHidden` - overrides hiding listbox in grid mode\n\n  * `hasOptions` {`boolean`} - \n\n  * `previousItem` - \n\n  * `nextItem` - \n\n  * `listbox` - \n\n  * `input` - \n\n  * `keyCode` {`{ BACKSPACE: number; TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - \n\n  * `expanded` {`boolean`} - whether listbox is expanded\n\n  * `filter` {`string`} - input text to filter listbox options\n\n  * `filteredOptions` {`any[]`} - aray of filtered listbox options\n\n  * `inputFocus` {`boolean`} - whether input has focus\n\n  * `inputHover` {`boolean`} - whether input is hovered\n\n  * `isNone` {`boolean`} - \n\n  * `isList` {`boolean`} - \n\n  * `isBoth` {`boolean`} - \n\n  * `listFocus` {`boolean`} - whether list has focus\n\n  * `listHover` {`boolean`} - whether list is hovered\n\n  * `option` {`boolean`} - \n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `capture` {`string`} - Media capture input method in file upload controls\n\n  * `dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\n  * `list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\n  * `max` {`number`} - Maximum value for numeric field types\n\n  * `maxlength` {`number`} - Maximum length (number of characters) of `value`\n\n  * `min` {`number`} - Minimum value for numeric field types\n\n  * `minlength` {`number`} - Minimum length (number of characters) of `value`\n\n  * `placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\n  * `size` {`number`} - Size of the control\n\n  * `step` {`number`} - Incremental values that are valid\n\n  * `fieldElementTag` {`string`} - gets field element tag in shadow DOM\n\n  * `fieldsetTemplate` - template for `fieldset` in shadow DOM\n\n  * `inputTemplate` {`TemplateResult<1>`} - template for `input` in shadow DOM\n\n  * `noOptions` {`boolean`} - gets whether or not the field has options\n\n  * `sortedOptions` - gets a sorted list of option\n\n  * `selectTemplate` - template for `select` in shadow DOM\n\n  * `textareaTemplate` - template for `textarea` in shadow DOM\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `multiple` {`boolean`} - Whether to allow multiple values\n\n  * `spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\n  * `itemsList` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\n  * `options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\n  * `hovered` {`boolean`} - hover state pegged to attribute\n\n  * `wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\n  * `description` {`string`} - Optional description of the field (or use slot=\"description\")\n\n  * `defaultErrorMessage` {`string`} - Optional validation error message to display\n\n  * `defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\n  * `errorMessage` {`string`} - Validation error message to display\n\n  * `field` - Field element\n\n  * `label` {`string`} - Label for the field (or use slot=\"label\")\n\n  * `minchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxchecked` {`number`} - Minimum number of checked items in fieldset\n\n  * `maxwords` {`number`} - Maximum number of words in textarea\n\n  * `name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\n  * `numberMessage` {`string`} - error message when number of items selected is not between min and max\n\n  * `pattern` {`string`} - regex pattern the value must match to be valid\n\n  * `patternMessage` {`string`} - error message when field does not match pattern\n\n  * `prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\n  * `readonly` {`boolean`} - Value is not editable\n\n  * `required` {`boolean`} - Whether field is required\n\n  * `requiredMessage` {`string`} - error message when field is required and has no value\n\n  * `suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\n  * `type` {`string`} - Type of input form control\n\n  * `value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\n  * `__delayedFocus` {`boolean`} - delays focus even until field is attached\n\n  * `descriptionTemplate` - template for slotted or shadow DOM description\n\n  * `errorTemplate` - template for slotted or shadow DOM error message\n\n  * `fieldBottom` - gets bottom (metadata, description, and error message) of a field\n\n  * `fieldId` {`string`} - gets field's id\n\n  * `fieldMainTemplate` - template label and field\n\n  * `fieldMeta` - gets field metadata\n\n  * `hasFieldset` {`boolean`} - \n\n  * `labelTemplate` - template for slotted or shadow DOM label\n\n  * `multicheck` {`boolean`} - \n\n  * `numberError` {`number | false`} - determines if number of items selected\nis not between min and max\n\n  * `numeric` {`boolean`} - determines if field is numeric\n\n  * `patternError` - determines if value does not match regex pattern\n\n  * `prefixTemplate` - template for slotted or shadow DOM prefix\n\n  * `requiredError` - determines if field is required and blank\n\n  * `slottedFieldObserver` {`void`} - overridden mutation observer\n\n  * `suffixTemplate` - template for slotted or shadow DOM suffix\n\n  * `counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\n  * `autovalidate` {`boolean`} - Automatically validate field\n\n  * `disabled` {`boolean`} - Whether the form control is disabled\n\n  * `hidden` {`boolean`} - Whether the field is hidden\n\n  * `error` {`boolean`} - Whether field has errors\n\n  * `id` {`string`} - Unique id\n\n  * `inline` {`boolean`} - Whether field and label should be inline\n\n  * `validTypes` {`any[]`} - List of valid field types",
+      "attributes": [
+        {
+          "name": "grid",
+          "description": "`grid` {`string`} - \n\nProperty: displayAs"
+        },
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - \n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeDescendant",
+          "description": "`activeDescendant` {`string`} - id of active option\n\nProperty: activeDescendant"
+        },
+        {
+          "name": "align-right",
+          "description": "`align-right` {`boolean`} - whether listbox is aligned on the right edge\n\nProperty: alignRight",
+          "valueSet": "v"
+        },
+        {
+          "name": "justify",
+          "description": "`justify` {`boolean`} - whether listbox is full-width\n\nProperty: justify",
+          "valueSet": "v"
+        },
+        {
+          "name": "hoveredOption",
+          "description": "`hoveredOption` - \n\nProperty: hoveredOption"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - whether listbox is expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "filter",
+          "description": "`filter` {`string`} - input text to filter listbox options\n\nProperty: filter\n\nDefault: "
+        },
+        {
+          "name": "filteredOptions",
+          "description": "`filteredOptions` {`any[]`} - aray of filtered listbox options\n\nProperty: filteredOptions\n\nDefault: "
+        },
+        {
+          "name": "inputFocus",
+          "description": "`inputFocus` {`boolean`} - whether input has focus\n\nProperty: inputFocus\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "inputHover",
+          "description": "`inputHover` {`boolean`} - whether input is hovered\n\nProperty: inputHover\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "listFocus",
+          "description": "`listFocus` {`boolean`} - whether list has focus\n\nProperty: listFocus\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "listHover",
+          "description": "`listHover` {`boolean`} - whether list is hovered\n\nProperty: listHover\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accept",
+          "description": "`accept` {`string`} - Hint for expected file type in file upload controls\n\nProperty: accept"
+        },
+        {
+          "name": "capture",
+          "description": "`capture` {`string`} - Media capture input method in file upload controls\n\nProperty: capture"
+        },
+        {
+          "name": "dirname",
+          "description": "`dirname` {`string`} - Name of form field to use for sending the element's directionality in form submission\n\nProperty: dirname"
+        },
+        {
+          "name": "list",
+          "description": "`list` {`string`} - Value of the id attribute of the `<datalist>` of autocomplete options\n\nProperty: list"
+        },
+        {
+          "name": "max",
+          "description": "`max` {`number`} - Maximum value for numeric field types\n\nProperty: max"
+        },
+        {
+          "name": "maxlength",
+          "description": "`maxlength` {`number`} - Maximum length (number of characters) of `value`\n\nProperty: maxlength"
+        },
+        {
+          "name": "min",
+          "description": "`min` {`number`} - Minimum value for numeric field types\n\nProperty: min"
+        },
+        {
+          "name": "minlength",
+          "description": "`minlength` {`number`} - Minimum length (number of characters) of `value`\n\nProperty: minlength"
+        },
+        {
+          "name": "placeholder",
+          "description": "`placeholder` {`string`} - Content to be appear in the form control when the form control is empty\n\nProperty: placeholder"
+        },
+        {
+          "name": "size",
+          "description": "`size` {`number`} - Size of the control\n\nProperty: size"
+        },
+        {
+          "name": "step",
+          "description": "`step` {`number`} - Incremental values that are valid\n\nProperty: step"
+        },
+        {
+          "name": "autocomplete",
+          "description": "`autocomplete` {`string`} - Hint for form autofill feature\n\nProperty: autocomplete\n\nDefault: none"
+        },
+        {
+          "name": "autofocus",
+          "description": "`autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\nProperty: autofocus\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "multiple",
+          "description": "`multiple` {`boolean`} - Whether to allow multiple values\n\nProperty: multiple\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "spellcheck",
+          "description": "`spellcheck` {`string`} - Whether input subject to spell checking by browser/OS as \"true\", \"default\", or \"false\"\n\nProperty: spellcheck\n\nDefault: false"
+        },
+        {
+          "name": "items-list",
+          "description": "`items-list` {`any[]`} - array of options [{value: \"key\", text: \"Text\"}] for select, radio options, and checkboxes,\nso that they can appear in a prescribed order,\neg. [{value: \"b\", text: \"Option B\"}, {value: \"a\", text: \"Option A\"}, {value: \"c\", text: \"Option C\"}]\n\nProperty: itemsList\n\nDefault: "
+        },
+        {
+          "name": "options",
+          "description": "`options` - options {value: \"Text\"}  for select, radio options, and checkboxes,\nwhich are sorted by key,\neg. {a: \"Option A\", b: \"Option B\", c: \"Option C\"}\n\nProperty: options\n\nDefault: [object Object]"
+        },
+        {
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - hover state pegged to attribute\n\nProperty: hovered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "wrap",
+          "description": "`wrap` {`boolean`} - text wrapping for textarea,\n\"hard\": automatically inserts line breaks (CR+LF)\n\"soft\": all line breaks as CR+LF pair\n\"off\" : no wrapping / <textarea> becomes horizontally scrollable\n\nProperty: wrap\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - Optional description of the field (or use slot=\"description\")\n\nProperty: description"
+        },
+        {
+          "name": "defaultErrorMessage",
+          "description": "`defaultErrorMessage` {`string`} - Optional validation error message to display\n\nProperty: defaultErrorMessage"
+        },
+        {
+          "name": "defaultRequiredMessage",
+          "description": "`defaultRequiredMessage` {`string`} - Optional required validation error message to display\n\nProperty: defaultRequiredMessage"
+        },
+        {
+          "name": "errorMessage",
+          "description": "`errorMessage` {`string`} - Validation error message to display\n\nProperty: errorMessage"
+        },
+        {
+          "name": "field",
+          "description": "`field` - Field element\n\nProperty: field"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the field (or use slot=\"label\")\n\nProperty: label"
+        },
+        {
+          "name": "minchecked",
+          "description": "`minchecked` {`number`} - Minimum number of checked items in fieldset\n\nProperty: minchecked"
+        },
+        {
+          "name": "maxchecked",
+          "description": "`maxchecked` {`number`} - Minimum number of checked items in fieldset\n\nProperty: maxchecked"
+        },
+        {
+          "name": "maxwords",
+          "description": "`maxwords` {`number`} - Maximum number of words in textarea\n\nProperty: maxwords"
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - Name of the input form control. Submitted with the form as part of a name/value pair.\n\nProperty: name"
+        },
+        {
+          "name": "numberMessage",
+          "description": "`numberMessage` {`string`} - error message when number of items selected is not between min and max\n\nProperty: numberMessage"
+        },
+        {
+          "name": "pattern",
+          "description": "`pattern` {`string`} - regex pattern the value must match to be valid\n\nProperty: pattern"
+        },
+        {
+          "name": "patternMessage",
+          "description": "`patternMessage` {`string`} - error message when field does not match pattern\n\nProperty: patternMessage"
+        },
+        {
+          "name": "prefix",
+          "description": "`prefix` {`string`} - Optional prefix string (or use slot=\"prefix\")\n\nProperty: prefix"
+        },
+        {
+          "name": "readonly",
+          "description": "`readonly` {`boolean`} - Value is not editable\n\nProperty: readonly\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "required",
+          "description": "`required` {`boolean`} - Whether field is required\n\nProperty: required",
+          "valueSet": "v"
+        },
+        {
+          "name": "requiredMessage",
+          "description": "`requiredMessage` {`string`} - error message when field is required and has no value\n\nProperty: requiredMessage"
+        },
+        {
+          "name": "suffix",
+          "description": "`suffix` {`string`} - Optional suffix string (or use slot=\"suffix\")\n\nProperty: suffix"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - Type of input form control\n\nProperty: type"
+        },
+        {
+          "name": "value",
+          "description": "`value` - Current value of the form control. Submitted with the form as part of a name/value pair.\n\nProperty: value"
+        },
+        {
+          "name": "__delayedFocus",
+          "description": "`__delayedFocus` {`boolean`} - delays focus even until field is attached\n\nProperty: __delayedFocus",
+          "valueSet": "v"
+        },
+        {
+          "name": "counter",
+          "description": "`counter` {`string`} - a counter text and textareas: \"character\", \"word\" or unset for none\n\nProperty: counter\n\nDefault: none"
+        },
+        {
+          "name": "autovalidate",
+          "description": "`autovalidate` {`boolean`} - Automatically validate field\n\nProperty: autovalidate\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether the form control is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - Whether the field is hidden\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "error",
+          "description": "`error` {`boolean`} - Whether field has errors\n\nProperty: error\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - Unique id\n\nProperty: id"
+        },
+        {
+          "name": "inline",
+          "description": "`inline` {`boolean`} - Whether field and label should be inline\n\nProperty: inline\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "validTypes",
+          "description": "`validTypes` {`any[]`} - List of valid field types\n\nProperty: validTypes\n\nDefault: checkbox,color,date,datetime-local,email,file,fieldset,hidden,month,number,password,radio,range,search,select,tel,text,textarea,time,url,week"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onerror-changed",
+          "description": "`error-changed` {`CustomEvent<this>`} - "
         }
       ]
     },

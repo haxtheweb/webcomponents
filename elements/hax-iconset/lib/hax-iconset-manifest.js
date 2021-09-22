@@ -49,6 +49,7 @@ export const HaxIconsetManifest = [
       "add-item",
       "add-page",
       "add",
+      "anchor",
       "arrow-all",
       "arrow-expand-left",
       "arrow-expand-right",
