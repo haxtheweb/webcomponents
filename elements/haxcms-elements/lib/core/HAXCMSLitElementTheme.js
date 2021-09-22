@@ -76,6 +76,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       window.location.pathname +
       "#" +
       target.getAttribute("id");
+    // alter URL state
+    window.history.pushState({}, null, el.value);
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
