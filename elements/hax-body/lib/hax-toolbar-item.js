@@ -73,7 +73,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               tabindex="0"
               part="button"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`
         : html` <button
@@ -87,7 +87,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               tabindex="0"
               part="button"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`;
     }
