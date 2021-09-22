@@ -49,7 +49,7 @@
     "chartist-plugin-axistitle": "^0.0.7",
     "chartist-plugin-fill-donut": "^0.1.4",
     "chartist-plugin-pointlabels": "0.0.6",
-    "lit": "2.0.0-rc.2"
+    "lit": "2.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
