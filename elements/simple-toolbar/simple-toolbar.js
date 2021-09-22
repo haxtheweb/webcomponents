@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import "./lib/simple-toolbar-more-button.js";
+import "./lib/simple-toolbar-field.js";
 import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
 /**
  * @customElement
@@ -310,6 +311,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
+      this.addEventListener("toggle-toolbar", this._handleToggleToolbar);
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for
@@ -530,6 +532,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           })
         );
       }
+    }
+    _handleToggleToolbar(e) {
+      this.collapsed =
+        typeof e.detail !== typeof undefined ? e.detail : !this.collapsed;
     }
     /**
      * creates a button element based on config object

@@ -24,8 +24,14 @@
         <template>
           <simple-toolbar style="width:200px;border:1px solid #ddd">
             <div class="group">
+              <simple-toolbar-field class="button" label="User Name" icon="icons:account-circle">
+                <input type="text" aria-label="User Name">
+              </simple-toolbar-field>
               <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s"></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="cancel" label="Cancel"></simple-toolbar-button>
+              <simple-toolbar-field class="button" label="volume" icon="av:volume-up">
+                <input type="range" min="0" step="10" max="100" value="50">
+              </simple-toolbar-field>
             </div>
             <div class="group">
               <simple-toolbar-button class="button" icon="undo" label="Undo" shortcut-keys="ctrl+z"></simple-toolbar-button>

@@ -93,7 +93,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           aria-expanded="${this.expanded ? "true" : "false"}"
           part="button"
         >
-          ${this.iconTemplate} ${this.labelTemplate}
+          ${this.buttonInnerTemplate}
           <simple-icon-lite
             id="dropdownicon"
             icon="arrow-drop-down"
