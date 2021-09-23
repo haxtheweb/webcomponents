@@ -105,6 +105,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * for radio-button behavior
+         */
+        radio: {
+          attribute: "radio",
+          type: Boolean,
+          reflect: true,
+        },
+
+        /**
          * Optional space-separated list of shortcut keys
          */
         shortcutKeys: {
@@ -184,6 +193,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
+      this.radio = false;
       this.shortcutKeys = "";
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
@@ -251,7 +261,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get isToggled() {
-      return !!this.toggles & !!this.toggled;
+      return (!!this.toggles || !!this.radio) & !!this.toggled;
     }
 
     updated(changedProperties) {
@@ -319,7 +329,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     _handleShortcutKeys(e, key) {}
 
     toggle() {
-      if (this.toggles) this.toggled = !this.toggled;
+      if (this.toggles || this.radio) this.toggled = !this.toggled;
+      this.dispatchEvent(
+        new CustomEvent("button-toggled", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
 
     click(e) {
@@ -442,6 +460,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             >${this.currentTooltip || this.currentLabel}</simple-tooltip
           >`;
     }
+    /**
+     * template for inner part of button (label and icon) in order specified
+     *
+     * @readonly
+     */
     get buttonInnerTemplate() {
       return this.iconPosition !== "right" || this.iconPosition !== "bottom"
         ? html`${this.labelTemplate} ${this.iconTemplate}`
@@ -453,7 +476,23 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get buttonTemplate() {
-      return this.toggles
+      return this.radio
+        ? html` <button
+              id="button"
+              aria-checked="${this.isToggled ? "true" : "false"}"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keypress="${this._handleKeys}"
+              tabindex="0"
+              part="button"
+              role="radio"
+            >
+              ${this.buttonInnerTemplate}
+            </button>
+            ${this.tooltipTemplate}`
+        : this.toggles
         ? html` <button
               id="button"
               aria-pressed="${this.isToggled ? "true" : "false"}"
@@ -619,10 +658,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             );
             z-index: 1;
           }
-          :host(:hover),
-          :host(:focus),
-          :host(:focus-within) {
+          :host(:hover) {
             z-index: 2;
+          }
+          :host(:focus-within),
+          :host(:focus) {
+            z-index: 3;
           }
           *[part="button"] {
             font-family: inherit;
@@ -708,6 +749,21 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             border-style: solid;
             text-transform: unset;
           }
+          :host([radio]) *[part="button"] {
+            border-radius: var(--simple-toolbar-radio-border-radius, 0px);
+          }
+          :host([radio]:last-child) *[part="button"] {
+            border-top-right-radius: var(--simple-toolbar-border-radius, 3px);
+            border-bottom-right-radius: var(
+              --simple-toolbar-border-radius,
+              3px
+            );
+          }
+          :host([radio]:first-child) *[part="button"] {
+            border-top-left-radius: var(--simple-toolbar-border-radius, 3px);
+            border-bottom-left-radius: var(--simple-toolbar-border-radius, 3px);
+          }
+          *[part="button"][aria-checked="true"],
           *[part="button"][aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
             border-color: var(--simple-toolbar-button-toggled-border-color);

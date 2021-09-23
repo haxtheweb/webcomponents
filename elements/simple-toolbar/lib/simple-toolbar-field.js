@@ -32,6 +32,12 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           align-self: stretch;
           flex: 1 1 auto;
         }
+        *[part="button"]:hover {
+          opacity: 1;
+        }
+        *[part="button"]:hover > *:not([part="field"]) {
+          opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
+        }
         *[part="field"] {
           width: 0;
           height: 0;
@@ -55,13 +61,13 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           width: 0px;
           opacity: 0;
           padding: 0;
-          transition: all 0.5s ease-in-out, opacity 0.25s ease-in-out;
+          transition: width ease-in-out 0.5s, opacity 0.5s ease-in-out 0s;
         }
-        ::slotted(*:focus),
-        :host(:hover) ::slotted(*) {
+        ::slotted(*:focus) {
           width: 100px;
           opacity: 1;
           padding: unset;
+          transition: width ease-in-out 0.5s;
         }
       `,
     ];
@@ -85,8 +91,9 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         id="button"
         class="simple-toolbar-button"
         ?disabled="${this.disabled}"
-        tabindex="0"
+        tabindex="-1"
         part="button"
+        @click=${this.toggleFocus}
       >
         ${this.buttonInnerTemplate}
         <span part="field">
@@ -94,6 +101,24 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         </span>
       </div>
       ${this.tooltipTemplate}`;
+  }
+  get input() {
+    return this.querySelector("*:not([disabled]):not([hidden])");
+  }
+  toggleFocus(e) {
+    if (this.input.clientWidth > 10) {
+      this.input.blur();
+    } else {
+      this.input.focus();
+    }
+  }
+  /**
+   * sets focus when button clicked
+   *
+   * @memberof SimpleToolbarField
+   */
+  focus() {
+    this.input.focus();
   }
 }
 window.customElements.define(SimpleToolbarField.tag, SimpleToolbarField);

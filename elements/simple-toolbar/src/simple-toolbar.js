@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "./lib/simple-toolbar-more-button.js";
 import "./lib/simple-toolbar-field.js";
+import "./lib/simple-toolbar-button-group.js";
 import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
 /**
  * @customElement
@@ -535,7 +536,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     }
     _handleToggleToolbar(e) {
       this.collapsed =
-        typeof e.detail !== typeof undefined ? e.detail : !this.collapsed;
+        e.detail && typeof e.detail !== typeof undefined
+          ? e.detail
+          : !this.collapsed;
     }
     /**
      * creates a button element based on config object

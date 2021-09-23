@@ -68,10 +68,10 @@ class figureCarousel extends RadioBehaviors(LitElement) {
    * query selector for slotted children, can be overridden
    * @readonly
    */
-  get _query() {
+  get __query() {
     return "figure";
   }
-  get _selected() {
+  get __selected() {
     return "active";
   }
 }

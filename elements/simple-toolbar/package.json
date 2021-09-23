@@ -44,6 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/radio-behaviors": "^4.0.0",
     "@lrnwebcomponents/simple-icon": "^4.0.0",
     "@lrnwebcomponents/simple-tooltip": "^4.0.0",
     "lit": "2.0.0-rc.2"
