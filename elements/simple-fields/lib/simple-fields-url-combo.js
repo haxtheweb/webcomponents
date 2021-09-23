@@ -103,7 +103,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       ...super.properties,
       displayAs: {
         type: String,
-        attribute: "grid",
+        attribute: "display-as",
         reflect: true,
       },
       alwaysExpanded: {
