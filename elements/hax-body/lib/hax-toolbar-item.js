@@ -60,7 +60,24 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
      * @readonly
      */
     get buttonTemplate() {
-      return this.toggles
+      return this.radio
+        ? html` <button
+              id="button"
+              aria-checked="${this.isToggled ? "true" : "false"}"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keydown="${this._handleKeys}"
+              @mousedown="${this._handleMousedown}"
+              role="radio"
+              tabindex="0"
+              part="button"
+            >
+              ${this.buttonInnerTemplate}
+            </button>
+            ${this.tooltipTemplate}`
+        : this.toggles
         ? html` <button
               id="button"
               aria-pressed="${this.isToggled ? "true" : "false"}"

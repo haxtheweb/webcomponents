@@ -386,9 +386,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (!config.buttons || config.buttons.length < 1) return;
       let group = this._renderButtonGroup(config);
       (parent || this).appendChild(group);
-      config.buttons.forEach((buttonConfig) =>
-        this.addButton(buttonConfig, group)
-      );
+      this._addConfigItems(config.buttons, group);
       return group;
     }
     /**
@@ -460,18 +458,29 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     /**
      * updates buttons based on change in config
      */
-    updateToolbar() {
+    updateToolbar(config) {
       if (!this || !this.config || this.config.length == 0) return;
       this.clearToolbar();
       if (typeof this.config != typeof []) this.config = JSON.parse(config);
-      this.config.forEach((config) => {
-        if (config.type === "button-group") {
-          this.addButtonGroup(config, this);
+      this._addConfigItems(this.config);
+      this.resizeToolbar();
+    }
+    /**
+     * loops through config to add items
+     *
+     * @param {array} items
+     */
+    _addConfigItems(items = this.config, parent = this) {
+      (items || []).forEach((config) => {
+        if (
+          config.type === "button-group" ||
+          config.type === "simple-toolbar-button-group"
+        ) {
+          this.addButtonGroup(config, parent);
         } else {
-          this.addButton(config, this);
+          this.addButton(config, parent);
         }
       });
-      this.resizeToolbar();
     }
     /**
      * handles appended button
@@ -561,7 +570,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     _renderButtonGroup(config) {
-      let group = document.createElement("div");
+      let type =
+        !!config.type && config.type === "simpletoolbar-button-group"
+          ? config.type
+          : "div";
+      let group = document.createElement(type);
       group.setAttribute("class", "group");
       Object.keys(config).forEach((key) => (group[key] = config[key]));
       return group;

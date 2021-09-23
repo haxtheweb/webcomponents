@@ -26,14 +26,6 @@ class SimpleToolbarButtonGroup extends RadioBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      /**
-       * The `id` of the `simple-toolbar` that the toolbar controls.
-       */
-      label: {
-        type: String,
-        attribute: "label",
-        reflect: true,
-      },
       required: {
         type: Boolean,
         attribute: "required",

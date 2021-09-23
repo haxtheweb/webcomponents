@@ -752,14 +752,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([radio]) *[part="button"] {
             border-radius: var(--simple-toolbar-radio-border-radius, 0px);
           }
-          :host([radio]:last-child) *[part="button"] {
+          :host([radio]:last-of-type) *[part="button"] {
             border-top-right-radius: var(--simple-toolbar-border-radius, 3px);
             border-bottom-right-radius: var(
               --simple-toolbar-border-radius,
               3px
             );
           }
-          :host([radio]:first-child) *[part="button"] {
+          :host([radio]:first-of-type) *[part="button"] {
             border-top-left-radius: var(--simple-toolbar-border-radius, 3px);
             border-bottom-left-radius: var(--simple-toolbar-border-radius, 3px);
           }

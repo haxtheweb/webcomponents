@@ -338,7 +338,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         command: "subscript",
         icon: "mdextra:subscript",
         label: "Subscript",
-        toggles: true,
+        radio: true,
         type: "rich-text-editor-button",
       };
     }
@@ -352,7 +352,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         command: "superscript",
         icon: "mdextra:superscript",
         label: "Superscript",
-        toggles: true,
+        radio: true,
         type: "rich-text-editor-button",
       };
     }
@@ -363,8 +363,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get scriptButtonGroup() {
       return {
-        type: "button-group",
+        type: "simple-toolbar-button-group",
         subtype: "script-button-group",
+        "aria-label": "Subscript and Superscript",
         buttons: [this.subscriptButton, this.superscriptButton],
       };
     }
@@ -434,6 +435,81 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a justify left button
+     *
+     * @readonly
+     */
+    get justifyLeftButton() {
+      return {
+        command: "justifyLeft",
+        icon: "editor:format-align-left",
+        label: "Align Left",
+        radio: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for a justify center button
+     *
+     * @readonly
+     */
+    get justifyCenterButton() {
+      return {
+        command: "justifyCenter",
+        icon: "editor:format-align-center",
+        label: "Align Center",
+        radio: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for a justify left button
+     *
+     * @readonly
+     */
+    get justifyRightButton() {
+      return {
+        command: "justifyRight",
+        icon: "editor:format-align-right",
+        label: "Align Right",
+        radio: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for a justify center button
+     *
+     * @readonly
+     */
+    get justifyFullButton() {
+      return {
+        command: "justifyFull",
+        icon: "editor:format-align-justify",
+        label: "Justify",
+        radio: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
+     * default config for an insert button group: image
+     *
+     * @readonly
+     */
+    get justifyButtonGroup() {
+      return {
+        type: "simple-toolbar-button-group",
+        subtype: "advanced-insert-button-group",
+        "aria-label": "Text Alignment",
+        required: true,
+        buttons: [
+          this.justifyLeftButton,
+          this.justifyCenterButton,
+          this.justifyRightButton,
+          this.justifyFullButton,
+        ],
+      };
+    }
+    /**
      * default config for an ordered list button
      *
      * @readonly
@@ -443,7 +519,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         command: "insertOrderedList",
         icon: "editor:format-list-numbered",
         label: "Ordered List",
-        toggles: true,
+        radio: true,
         type: "rich-text-editor-button",
       };
     }
@@ -457,7 +533,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         command: "insertUnorderedList",
         icon: "editor:format-list-bulleted",
         label: "Unordered List",
-        toggles: true,
+        radio: true,
         type: "rich-text-editor-button",
       };
     }
@@ -473,6 +549,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         label: "Blockquote",
         icon: "editor:format-quote",
         shortcutKeys: "ctrl+'",
+        toggles: true,
         type: "rich-text-editor-button",
       };
     }
@@ -510,13 +587,26 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @readonly
      */
+    get listButtonGroup() {
+      return {
+        type: "simple-toolbar-button-group",
+        subtype: "list-button-group",
+        "aria-label": "List Type",
+        buttons: [this.orderedListButton, this.unorderedListButton],
+      };
+    }
+    /**
+     * default config for a list and indent button group:
+     * ordered, unordered, blockquote, indent, outdent
+     *
+     * @readonly
+     */
     get listIndentButtonGroup() {
       return {
         type: "button-group",
         subtype: "list-indent-button-group",
         buttons: [
-          this.orderedListButton,
-          this.unorderedListButton,
+          this.listButtonGroup,
           this.blockquoteButton,
           this.indentButton,
           this.outdentButton,
