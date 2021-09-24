@@ -138,9 +138,10 @@
     "concurrently": "6.0.2",
     "promise-polyfill": "8.2.0",
     "rollup-plugin-cpy": "^2.0.1",
-    "@lit/reactive-element": "^1.0.0-rc.2",
-    "lit-element": "^3.0.0-rc.2",
-    "lit-html": "^2.0.0-rc.3"
+    "lit": "2.0.0",
+    "lit-element": "3.0.0",
+    "lit-html": "2.0.0",
+    "@lit/reactive-element": "1.0.0"
   },
   "resolutions": {
     "chokidar": "^3.0.0"

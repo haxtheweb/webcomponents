@@ -45,7 +45,7 @@
   "dependencies": {
     "@lrnwebcomponents/relative-heading": "^4.0.0",
     "@lrnwebcomponents/simple-icon": "^4.0.0",
-    "lit": "2.0.0-rc.2"
+    "lit": "2.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -231,6 +231,9 @@
       ],
       "events": [
         {
+          "name": "simple-toast-show"
+        },
+        {
           "name": "content-container-changed"
         },
         {
@@ -575,6 +578,9 @@
         }
       ],
       "events": [
+        {
+          "name": "simple-toast-show"
+        },
         {
           "name": "content-container-changed"
         },

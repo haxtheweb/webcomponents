@@ -33,6 +33,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
+      // forces a menu rebuild on content change
       let content = toJS(store.activeItemContent);
       setTimeout(() => {
         this.updateMenu();

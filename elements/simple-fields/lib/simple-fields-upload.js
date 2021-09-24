@@ -2,6 +2,7 @@ import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
+import "./simple-fields-url-combo.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
@@ -45,7 +46,8 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
         }
-        :host([responsive-size="xs"]) {
+        :host([responsive-size="xs"]),
+        div[part="description"] {
           font-size: 10px;
           --simple-fields-font-size: 10px;
           --simple-fields-button-font-size: 11px;
@@ -56,49 +58,54 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           padding: 0px;
           max-width: 100%;
         }
-        #url-browse {
-          width: 100%;
-          font-family: var(--simple-fields-button-font-family, sans-serif);
-          font-size: var(--simple-fields-button-font-size, 14px);
-        }
-        vaadin-upload::part(drop-label) {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
+        #upload,
         div[slot="drop-label"] {
           display: flex;
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
+          width: 100%;
         }
-        div[slot="drop-label"] > * {
-          flex: 0 1 auto;
+        #upload {
+          border-radius: var(--simple-fields-border-radius, 2px);
+          border: 1px dashed var(--simple-fields-border-color-light, #ccc);
         }
         #url {
           flex: 1 1 100%;
-          margin-bottom: var(--simple-fields-margin-small, 8px);
-        }
-        simple-toolbar-button {
-          font-family: var(--simple-fields-font-family, sans-serif);
-          color: var(--simple-fields-color, currentColor);
-          margin: calc(0.5 * var(--simple-fields-margin-small, 8px));
-        }
-        #drop,
-        #photo {
-          white-space: nowrap;
+          margin: var(--simple-fields-margin-small, 8px) 0;
+          background-color: transparent;
         }
         #upload-options {
           position: relative;
           transition: height 0.3s linear;
         }
-        #cancel-camera {
+        div[slot="drop-label"] > * {
+          flex: 0 1 auto;
+        }
+        simple-fields-url-combo[always-expanded]::part(listbox) {
+          background-color: transparent;
+        }
+        simple-toolbar-button {
+          font-family: var(--simple-fields-font-family, sans-serif);
+          color: var(--simple-fields-color, currentColor);
+          margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
+            calc(0.25 * var(--simple-fields-margin-small, 8px));
+        }
+        simple-toolbar-button[part="cancel-media"] {
           position: absolute;
           right: 0;
           top: 0;
           z-index: 2;
           --simple-fields-button-padding-sm: 0;
+          background-color: var(--simple-fields-background-color, white);
+          opacity: 0.7;
+        }
+        span[part="drop-area-text"] {
+          font-family: var(--simple-fields-button-font-family, sans-serif);
+          font-size: var(--simple-fields-button-font-size, 14px);
+          white-space: nowrap;
+          margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
+            calc(0.25 * var(--simple-fields-margin-small, 8px));
         }
         vaadin-upload {
           padding: var(--simple-fields-margin-small, 8px);
@@ -106,27 +113,28 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           overflow: visible;
           border: none !important;
         }
+        vaadin-upload[dragover] {
+          border-color: var(
+            --simple-fields-secondary-accent-color,
+            var(--simple-colors-default-theme-accent-3, #77e2ff)
+          );
+        }
         vaadin-upload::part(drop-label) {
           font-family: var(--simple-fields-font-family, sans-serif);
           color: var(--simple-fields-color, currentColor);
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-wrap: wrap;
           padding: 0;
           width: 100%;
           margin-top: -16px;
         }
-        vaadin-upload::part(drop-label-icon) {
-          display: none;
-        }
         vaadin-upload.option-selfie::part(drop-label) {
           display: block;
         }
-        vaadin-upload[dragover] {
-          border-color: var(
-            --simple-fields-secondary-accent-color,
-            var(--simple-colors-default-theme-accent-3, #77e2ff)
-          );
+        vaadin-upload::part(drop-label-icon) {
+          display: none;
         }
         vaadin-upload-file {
           --disabled-text-color: #var(--simple-fields-border-color, #999);
@@ -145,6 +153,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.itemsList = [];
     this.autocomplete = "off";
     this.noCamera = false;
     // @todo leave this off until we can do more testing
@@ -162,7 +171,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   get fields() {
     return html`
-      <div id="url-browse"></div>
       <div id="upload-options">
         <vaadin-upload
           capture
@@ -179,25 +187,34 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             part="browse-area"
             ?hidden="${this.option == "selfie" || this.option == "audio"}"
           >
-            <simple-fields-field
+            <simple-fields-url-combo
               id="url"
               ?autofocus="${this.autofocus}"
-              autocomplete="${this.autocomplete}"
+              autocomplete="both"
               value="${this.value || ""}"
-              @value-changed="${this.valueChanged}"
               label="URL"
-              .description="${this.description}"
               type="url"
               auto-validate=""
               part="url"
+              ?always-expanded="${this.responsiveSize.indexOf("s") < 0}"
+              display-as="${this.responsiveSize.indexOf("l") > -1
+                ? "grid"
+                : ""}"
+              .itemsList="${this.itemsList}"
               @click="${(e) => e.stopImmediatePropagation()}"
               @mousedown="${(e) => e.stopImmediatePropagation()}"
               @focus="${(e) => e.stopImmediatePropagation()}"
+              @value-changed="${this.valueChanged}"
             >
-            </simple-fields-field>
+            </simple-fields-url-combo>
+          </div>
+          <div id="upload">
+            <span part="drop-area-text">drop media here or</span>
             <simple-toolbar-button
               id="browse"
-              label="Browse..."
+              label="Upload..."
+              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+              icon="icons:file-upload"
               show-text-label
               @click="${this._handleBrowse}"
               controls="fieldset"
@@ -206,8 +223,8 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             </simple-toolbar-button>
             <simple-toolbar-button
               icon="image:camera-alt"
-              label="Take photo"
-              ?show-text-label="${this.responsiveSize !== "xs"}"
+              label="Take photo..."
+              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
               @click="${this._handleCameraOption}"
@@ -218,8 +235,8 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             </simple-toolbar-button>
             <simple-toolbar-button
               icon="image:camera-alt"
-              label="Record Audio"
-              ?show-text-label="${this.responsiveSize !== "xs"}"
+              label="Record Audio..."
+              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
               @click="${this._handleAudioOption}"
@@ -228,16 +245,9 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
               ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
             >
             </simple-toolbar-button>
-            <span id="drop" part="drop-area-text">
-              <simple-icon-lite
-                icon="file-upload"
-                part="drop-area-icon"
-              ></simple-icon-lite>
-              <span part="drop-area-text-only">or drop media here</span>
-            </span>
           </div>
           <simple-toolbar-button
-            id="cancel-camera"
+            id="cancel"
             icon="icons:clear"
             label="Cancel"
             @mousedown="${(e) => e.preventDefault()}"
@@ -262,6 +272,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             slot="drop-label"
             part="voice-preview"
           ></div>
+          ${this.desc}
         </vaadin-upload>
       </div>
     `;
@@ -387,6 +398,10 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
         attribute: "responsive-size",
         reflect: true,
       },
+      itemsList: {
+        type: Object,
+        attribute: "items-list",
+      },
     };
   }
   get field() {
@@ -434,7 +449,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   _fileUploadResponse(e) {
     // set the value of the url which will update our URL and notify
-    this.shadowRoot.querySelector("#url").value = item.url;
     this.dispatchEvent(
       new CustomEvent("upload-response", {
         bubbles: true,

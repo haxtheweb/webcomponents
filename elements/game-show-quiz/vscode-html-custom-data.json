@@ -73,11 +73,15 @@
     },
     {
       "name": "game-show-quiz-modal",
-      "description": "`game-show-quiz-modal`\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
+      "description": "`game-show-quiz-modal`\n\nEvents:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
       "attributes": [
         {
           "name": "title",
           "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         }
       ]
     },

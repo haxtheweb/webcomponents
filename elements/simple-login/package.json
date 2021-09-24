@@ -49,7 +49,7 @@
     "@lrnwebcomponents/simple-icon": "^4.0.0",
     "@lrnwebcomponents/simple-tooltip": "^4.0.0",
     "@polymer/paper-progress": "^3.0.1",
-    "lit": "2.0.0-rc.2",
+    "lit": "2.0.0",
     "msr": "^1.3.4"
   },
   "devDependencies": {

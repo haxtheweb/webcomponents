@@ -1,12 +1,12 @@
-function localStorageGet(name){
+function localStorageGet(name) {
   try {
-      return localStorage.getItem(name);
-  } catch(e) {
-      return false;
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
   }
 }
 
-"use strict";
+("use strict");
 
 Object.defineProperty(exports, "__esModule", {
   value: true,
