@@ -22,7 +22,14 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-      this.menuOpen = localStorageGet("hax-mobile-menu-menuOpen");
+      this.menuOpen = true;
+      if (localStorageGet("hax-mobile-menu-menuOpen") != null) {
+        if (localStorageGet("hax-mobile-menu-menuOpen") == "true") {
+          this.menuOpen = true;
+        } else if (localStorageGet("hax-mobile-menu-menuOpen") == "false") {
+          this.menuOpen = false;
+        }
+      }
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
@@ -160,7 +167,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
     static get properties() {
       let props = {};
       if (super.properties) {
-        props = super.props;
+        props = super.properties;
       }
       return {
         ...props,
