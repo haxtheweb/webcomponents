@@ -417,7 +417,6 @@ class CleanTwo extends HAXCMSRememberRoute(
           position: relative;
           margin-right: auto;
           max-width: 100%;
-          background-color: #ffffff;
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -456,6 +455,7 @@ class CleanTwo extends HAXCMSRememberRoute(
           margin: 0;
           display: flex;
           padding: 0;
+          background-color: #ffffff;
           overflow: hidden;
           position: fixed;
           min-width: 224px;

@@ -50,7 +50,7 @@
     "@lrnwebcomponents/deduping-fix": "2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.5.0",
+    "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.0.2",
     "es-dev-server": "2.1.0",
     "gulp-babel": "8.0.0",
