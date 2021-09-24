@@ -22,7 +22,6 @@ const HAXCMSRememberRoute = function (SuperClass) {
     constructor() {
       super();
       const resumeMessage = "Resume where you left off last session?";
-      this.menuOpen = true;
       this.__evaluateRoute = false;
       if (this.t) {
         this.t.resumeMessage = resumeMessage;
