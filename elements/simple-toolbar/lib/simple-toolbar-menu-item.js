@@ -41,6 +41,14 @@ class SimpleToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
   static get tag() {
     return "simple-toolbar-menu-item";
   }
+  /**
+   * gets item with role="menuitem"
+   *
+   * @readonly
+   */
+  get menuItem() {
+    return this.querySelector("[role=menuitem]") || super.menuItem;
+  }
 }
 window.customElements.define(SimpleToolbarMenuItem.tag, SimpleToolbarMenuItem);
 export { SimpleToolbarMenuItem };

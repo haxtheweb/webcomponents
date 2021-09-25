@@ -92,6 +92,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           aria-controls="menu"
           aria-expanded="${this.expanded ? "true" : "false"}"
           part="button"
+          tabindex="${this.isCurrentItem ? 1 : -1}"
         >
           ${this.buttonInnerTemplate}
           <simple-icon-lite
@@ -103,14 +104,6 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         </button>
       `;
     }
-    /**
-     * template for slotted list items
-     *
-     * @readonly
-     */
-    get listItemTemplate() {
-      return html`<slot></slot>`;
-    }
     static get tag() {
       return "simple-toolbar-menu";
     }
@@ -118,6 +111,48 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       return {
         ...super.properties,
       };
+    }
+    get focusableElement() {
+      return this.shadowRoot && this.shadowRoot.querySelector("#menubutton")
+        ? this.shadowRoot.querySelector("#menubutton")
+        : undefined;
+    }
+
+    /**
+     * handles when menu loses focus
+     *
+     * @param {event} event
+     * @memberof A11yMenuButton
+     */
+    _handleBlur(event) {
+      super.blur(event);
+      if (!this.isCurrentItem) setTimeout(this.close(), 300);
+    }
+    addItem(item) {
+      if (this.getItemIndex(item) < 0) {
+        let listeners = this.itemListeners;
+        this.__menuItems = this.__menuItems || [];
+        this.__menuItems.push(item);
+        Object.keys(listeners).forEach((evt) =>
+          (item.focusableElement || item).addEventListener(
+            evt,
+            listeners[evt].bind(this)
+          )
+        );
+      }
+    }
+    removeItem(item) {
+      if (this.getItemIndex(item) < 0) {
+        let listeners = this.itemListeners;
+        Object.keys(listeners).forEach((evt) =>
+          (item.focusableElement || item).removeEventListener(
+            evt,
+            listeners[evt].bind(this)
+          )
+        );
+        if (this.__menuItems)
+          this.__menuItems = [...this.menuItems.filter((i) => item !== i)];
+      }
     }
   };
 };

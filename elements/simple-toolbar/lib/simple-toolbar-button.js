@@ -97,6 +97,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           reflect: true,
         },
 
+        isCurrentItem: {
+          type: Boolean,
+          attribute: "is-current-item",
+          reflect: true,
+        },
+
         /**
          * Label for the icon.
          */
@@ -195,6 +201,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
+      this.isCurrentItem = true;
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
@@ -298,6 +305,23 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       );
       super.disconnectedCallback();
     }
+    /**
+     * sets focus to button
+     *
+     * @returns
+     */
+    focus() {
+      if (this.focusableElement) {
+        this.isCurrentItem = true;
+        this.focusableElement.focus();
+        console.log(
+          "focus",
+          this.label,
+          this.focusableElement,
+          document.activeElement
+        );
+      }
+    }
 
     /**
      * updates a button value based on whether or not button is toggled
@@ -321,6 +345,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     _handleClick(e) {
       this.toggle();
     }
+    /**
+     * handles keypress
+     *
+     * @param {event} e event
+     */
+    _handleKeys(e) {}
     /**
      * customizable event for when shortcut keys are pressed
      *
@@ -356,6 +386,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           detail: this,
         })
       );
+    }
+
+    get focusableElement() {
+      return this.shadowRoot && this.shadowRoot.querySelector("#button")
+        ? this.shadowRoot.querySelector("#button")
+        : undefined;
     }
 
     /**
@@ -485,9 +521,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
-              tabindex="0"
+              @keydown="${this._handleKeydown}"
+              @blur="${this._handleBlur}"
               part="button"
               role="radio"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -501,8 +539,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -514,8 +552,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>

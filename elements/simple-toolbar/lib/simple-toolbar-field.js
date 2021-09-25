@@ -38,6 +38,12 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         *[part="button"]:hover > *:not([part="field"]) {
           opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
         }
+        :host(:focus-within) *[part="button"] {
+          color: var(--simple-toolbar-button-hover-color);
+          background-color: var(--simple-toolbar-button-hover-bg);
+          border-color: var(--simple-toolbar-button-hover-border-color);
+          opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
+        }
         *[part="field"] {
           width: 0;
           height: 0;
@@ -63,7 +69,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           padding: 0;
           transition: width ease-in-out 0.5s, opacity 0.5s ease-in-out 0s;
         }
-        ::slotted(*:focus) {
+        :host([is-current-item]) ::slotted(:focus) {
           width: 100px;
           opacity: 1;
           padding: unset;
@@ -75,6 +81,8 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.addEventListener("click", this.toggleFocus);
+    this.observer.observe(this, { childList: true, subtree: true });
   }
   static get properties() {
     return {
@@ -91,9 +99,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         id="button"
         class="simple-toolbar-button"
         ?disabled="${this.disabled}"
-        tabindex="-1"
         part="button"
-        @click=${this.toggleFocus}
       >
         ${this.buttonInnerTemplate}
         <span part="field">
@@ -102,23 +108,45 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
       </div>
       ${this.tooltipTemplate}`;
   }
-  get input() {
+  get focusableElement() {
     return this.querySelector("*:not([disabled]):not([hidden])");
   }
   toggleFocus(e) {
-    if (this.input.clientWidth > 10) {
-      this.input.blur();
+    if (this.focusableElement.clientWidth > 10) {
+      this.focusableElement.blur();
     } else {
-      this.input.focus();
+      this.focus();
     }
   }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "isCurrentItem" && this.focusableElement) {
+        this.focusableElement.setAttribute(
+          "tabindex",
+          this.isCurrentItem ? 0 : -1
+        );
+      }
+    });
+    console.log(this.label, this.focusableElement, this.isCurrentItem);
+  }
+
   /**
-   * sets focus when button clicked
-   *
-   * @memberof SimpleToolbarField
+   * mutation observer for a11y-details
+   * @readonly
+   * @returns {object}
    */
-  focus() {
-    this.input.focus();
+  get observer() {
+    let callback = (mutationsList) => this._watchChildren(mutationsList);
+    return new MutationObserver(callback);
+  }
+
+  _watchChildren(mutationsList) {
+    if (this.focusableElement)
+      this.focusableElement.setAttribute(
+        "tabindex",
+        this.isCurrentItem ? 0 : -1
+      );
   }
 }
 window.customElements.define(SimpleToolbarField.tag, SimpleToolbarField);

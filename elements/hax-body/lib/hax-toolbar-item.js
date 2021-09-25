@@ -71,8 +71,8 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @keydown="${this._handleKeys}"
               @mousedown="${this._handleMousedown}"
               role="radio"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -87,8 +87,8 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keydown="${this._handleKeys}"
               @mousedown="${this._handleMousedown}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -103,6 +103,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @mousedown="${this._handleMousedown}"
               tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>

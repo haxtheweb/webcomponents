@@ -24,14 +24,6 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
     super();
     this._blockEvent = false;
   }
-  /**
-   * template for slotted list items
-   *
-   * @readonly
-   */
-  get listItemTemplate() {
-    return html`<slot name="menuitem"></slot>`;
-  }
 
   static get simpleButtonThemeStyles() {
     return HaxButton;
