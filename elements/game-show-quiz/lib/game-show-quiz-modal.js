@@ -114,9 +114,7 @@ class GameShowQuizModal extends LitElement {
   toggle() {
     this.shadowRoot.querySelector("paper-dialog").toggle();
     setTimeout(() => {
-      var evt = document.createEvent("UIEvents");
-      evt.initUIEvent("resize", true, false, window, 0);
-      window.dispatchEvent(evt);
+      window.dispatchEvent(new Event("resize"));
     }, 100);
   }
 }

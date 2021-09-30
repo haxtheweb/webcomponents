@@ -90,7 +90,36 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _updateLoading(e) {
     this.loading = e.detail.value;
   }
+  hashCode(s) {
+    return s.split("").reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
+      return a & a;
+    }, 0);
+  }
+  // normalize the application of IDs so that we can target parts
+  // of the page for scroll and referencing in general via URL hash
+  nodeNormalizeIDs(node) {
+    if (
+      node.tagName &&
+      node.getAttribute("id") == null &&
+      ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName)
+    ) {
+      if (node.getAttribute("resource")) {
+        node.setAttribute("id", node.getAttribute("resource"));
+      } else {
+        let id =
+          node.tagName.toLowerCase() + "-" + this.hashCode(node.innerText);
+        node.setAttribute("id", id);
+      }
+    }
+  }
   _updateActiveItemContent(data) {
+    let tmp = document.createElement("div");
+    tmp.innerHTML = data;
+    tmp.childNodes.forEach((node) => {
+      this.nodeNormalizeIDs(node);
+    });
+    data = tmp.innerHTML;
     this.activeItemContent = data;
   }
   /**
@@ -478,9 +507,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         /* Error handling */
         console.warn(error);
       });
-    var evt = document.createEvent("UIEvents");
-    evt.initUIEvent("resize", true, false, window, 0);
-    window.dispatchEvent(evt);
+    window.dispatchEvent(new Event("resize"));
     setTimeout(() => {
       autorun((reaction) => {
         this.dashboardOpened = toJS(store.dashboardOpened);

@@ -689,6 +689,8 @@ class HAXCMSSiteStore extends HTMLElement {
             detail: foundItem,
           })
         );
+        //change site title when page changes
+        document.title = store.activeTitle;
       }
     });
     /**

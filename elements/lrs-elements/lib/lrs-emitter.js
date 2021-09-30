@@ -3,13 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
-import { IntersectionObserver } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `lrs-emitter`
  * `Emit learning statements occuring in your app.`
  * @demo demo/index.html
  */
-class LrsEmitter extends IntersectionObserver(LitElement) {
+class LrsEmitter extends IntersectionObserverMixin(LitElement) {
   // haxProperty definition
   static get haxProperties() {
     return {

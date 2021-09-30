@@ -4,7 +4,11 @@
  */
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  varExists,
+  varGet,
+  generateResourceID,
+} from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 
@@ -135,16 +139,31 @@ const HAXCMSTheme = function (SuperClass) {
           store.activeId = firstItem.id;
         }
       }
-      if (this.HAXCMSThemeSettings.autoScroll) {
-        this.HAXCMSThemeSettings.scrollTarget.scrollTo({
-          top: 0,
-          left: 0,
-        });
-        // @todo hacky timing thing
-        setTimeout(() => {
-          // try scrolling to the target ID after content gets imported
-          window.AnchorBehaviors.getTarget(store.themeElement);
-        }, 1000);
+      if (this.HAXCMSThemeSettings.autoScroll && oldValue) {
+        if (newValue.hash != oldValue.hash && newValue.hash) {
+          const target = document.querySelector(newValue.hash);
+          // we have to delay here because the URL event of hash change hasn't executed
+          // this is our store telling us we are about to modify the href
+          if (target) {
+            setTimeout(() => {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+              });
+            }, 0);
+          }
+        } else {
+          this.HAXCMSThemeSettings.scrollTarget.scrollTo({
+            top: 0,
+            left: 0,
+          });
+          // @todo hacky timing thing
+          setTimeout(() => {
+            // try scrolling to the target ID after content gets imported
+            window.AnchorBehaviors.getTarget(store.themeElement);
+          }, 1000);
+        }
       }
     }
     /**
@@ -162,7 +181,7 @@ const HAXCMSTheme = function (SuperClass) {
         }
         this.__styleReapply();
       }, 50);
-      // keep editMode in sync globally
+      // keep activeItemContent in sync globally
       autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
         setTimeout(() => {
