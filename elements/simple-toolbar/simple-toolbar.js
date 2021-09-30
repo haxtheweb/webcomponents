@@ -562,23 +562,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     setCurrentItem(item) {
       if (this.currentItem) this.currentItem.isCurrentItem = false;
-      if (this.currentItem)
-        console.log(
-          "unset",
-          this.currentItem.label,
-          this.currentItem.focusableElement
-        );
-      if (item.closest("[collapse-hide=true]")) this.collapsed = false;
+      if (item && item.closest("[collapse-hide=true]")) this.collapsed = false;
       this.currentItem = item;
       if (this.currentItem) this.currentItem.isCurrentItem = true;
-      if (this.currentItem)
-        console.log(
-          "set",
-          this.currentItem.label,
-          this.currentItem.focusableElement,
-          item.closest("[collapse-hide=true]"),
-          this.collapsed
-        );
     }
     /**
      * focuses on an item

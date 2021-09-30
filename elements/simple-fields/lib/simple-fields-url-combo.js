@@ -240,7 +240,6 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       ];
       this.open();
     }
-    console.log(filter, this.filteredOptions);
   }
 }
 window.customElements.define(SimpleFieldsUrlCombo.tag, SimpleFieldsUrlCombo);
