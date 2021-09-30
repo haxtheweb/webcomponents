@@ -3032,12 +3032,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   __getLayoutOrder(target, layout) {
+    console.log(HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let slot = target.getAttribute("slot"),
       container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
       order = containers.indexOf(container) || -1;
     return order;
   }
@@ -3049,11 +3048,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @returns {boolean} if the item can move a set number of slots
    */
   __layoutCanMove(target, layout, before) {
+    console.log(HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1);
     return dest >= containers[0] && dest <= containers[containers.length - 1];
@@ -3065,11 +3063,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {number} -1 for left or +1 for right
    */
   __layoutMove(target, layout, before) {
+    console.log(layout.tagName, HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1),
       slot = containers[dest];
@@ -3120,9 +3117,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutSlots(layout) {
     return layout.shadowRoot
-      ? [
-          ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-        ].map((container) => container.getAttribute("data-layout-slotname"))
+      ? [...layout.shadowRoot.querySelectorAll("[slot]")].map((container) =>
+          container.getAttribute("name")
+        )
       : [];
   }
 
