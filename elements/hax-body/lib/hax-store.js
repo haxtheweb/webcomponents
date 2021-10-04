@@ -3168,20 +3168,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Filter app store apps to those that accept this file source.
    */
   getHaxAppStoreTargets(type) {
-    let targets = toJS(
-      this.appList.filter((app) => {
-        if (typeof app.connection.operations.add !== typeof undefined) {
-          let add = app.connection.operations.add;
-          if (
-            typeof add.acceptsGizmoTypes !== typeof undefined &&
-            add.acceptsGizmoTypes.includes(type)
-          ) {
-            return true;
-          }
+    const appList = toJS(this.appList);
+    let targets = appList.filter((app) => {
+      if (typeof app.connection.operations.add !== typeof undefined) {
+        let add = app.connection.operations.add;
+        if (
+          typeof add.acceptsGizmoTypes !== typeof undefined &&
+          add.acceptsGizmoTypes.includes(type)
+        ) {
+          return true;
         }
-        return false;
-      })
-    );
+      }
+      return false;
+    });
     return targets;
   }
   /**

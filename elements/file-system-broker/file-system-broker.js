@@ -9,6 +9,7 @@
  *
  * @demo demo/index.html Demo
  * @demo demo/xlsx.html XLSX loader
+ * @demo demo/docx.html DOCX loader
  * @element file-system-broker
  */
 class FileSystemBroker extends HTMLElement {

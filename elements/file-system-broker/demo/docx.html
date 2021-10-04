@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>FileSystemBroker: file-system-broker Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/docx-file-system-broker.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      textarea {
+        display: block;
+      }
+    </style>
+</head>
+<body>
+    <demo-snippet>
+      <template>
+        <button id="load">Load file</button>
+        <button id="save">Save file</button>
+        <button id="download">Download file</button>
+        <button id="loaddir">Load Directory</button>
+        <textarea id="textarea" rows="20" cols="40"></textarea>
+        <div id="demo"></div>
+        <script async defer>
+          document.getElementById('load').addEventListener('click', async (e) => {
+            const broker = window.FileSystemBroker.requestAvailability();
+            const file = await broker.loadFile('docx');
+            window.DOCXFileSystemBroker.requestAvailability().fileToHTML(file);
+          });
+          document.getElementById('loaddir').addEventListener('click', async (e) => {
+            const broker = window.FileSystemBroker.requestAvailability();
+            console.log(await broker.openDir(true));
+          });
+          document.getElementById('save').addEventListener('click', async (e) => {
+            // return as Blob based output
+            const output = window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(document.getElementById('textarea').value, 'download-name', false);
+            // treat as a Blob and then convert to a FileReader object
+            const blob = new Blob([output], {type:"application/vnd.ms-word"});
+            const file = new FileReader();
+            file.readAsDataURL(blob);
+            const broker = window.FileSystemBroker.requestAvailability();
+            // save to file format in question!
+            await broker.saveFile("docx", output);
+          });
+          document.getElementById('download').addEventListener('click', async (e) => {
+            // return as Blob based output
+            window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(document.getElementById('textarea').value, 'download-name');
+          });
+          // this runs when the file is read. This is a global call for the file being loaded
+          // as this is a promise and needs to run complex converters it might take some time
+          window.addEventListener("docx-file-system-data", (e) => {
+            document.getElementById('textarea').innerHTML = e.detail.value;
+            document.getElementById('demo').innerHTML = e.detail.value;
+          });
+        </script>
+      </template>
+    </demo-snippet>
+  </body>
+</html>

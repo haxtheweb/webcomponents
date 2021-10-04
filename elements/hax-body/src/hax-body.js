@@ -502,7 +502,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _mouseMove(e) {
-    return;
     if (this.editMode && HAXStore.ready) {
       var eventPath = normalizeEventPath(e);
       clearTimeout(this.__mouseQuickTimer);
