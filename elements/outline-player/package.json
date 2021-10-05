@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
@@ -43,12 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.0",
-    "@lrnwebcomponents/haxcms-elements": "^4.0.0",
-    "@lrnwebcomponents/map-menu": "^4.0.0",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.0",
-    "@lrnwebcomponents/simple-colors": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.0",
+    "@lrnwebcomponents/hax-iconset": "^4.0.1",
+    "@lrnwebcomponents/haxcms-elements": "^4.0.1",
+    "@lrnwebcomponents/map-menu": "^4.0.1",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.1",
+    "@lrnwebcomponents/simple-colors": "^4.0.1",
+    "@lrnwebcomponents/simple-icon": "^4.0.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.1",
     "@open-wc/testing": "2.5.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

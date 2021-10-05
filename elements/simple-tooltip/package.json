@@ -16,7 +16,7 @@
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "a simple tooltip forked from paper-tooltip with the same api",
   "repository": {
     "type": "git",
