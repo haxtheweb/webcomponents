@@ -46,6 +46,7 @@
   "dependencies": {
     "@lrnwebcomponents/simple-icon": "^4.0.0",
     "@lrnwebcomponents/simple-tooltip": "^4.0.0",
+    "@lrnwebcomponents/a11y-menu-button": "^4.0.0",
     "lit": "2.0.0"
   },
   "devDependencies": {

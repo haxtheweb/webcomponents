@@ -45,6 +45,7 @@
   "dependencies": {
     "@lrnwebcomponents/anchor-behaviors": "^4.0.0",
     "@lrnwebcomponents/beaker-broker": "^4.0.0",
+    "@lrnwebcomponents/simple-login": "^4.0.0",
     "@lrnwebcomponents/clean-two": "^4.0.0",
     "@lrnwebcomponents/editable-outline": "^4.0.0",
     "@lrnwebcomponents/git-corner": "^4.0.0",
