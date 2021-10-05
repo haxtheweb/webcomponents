@@ -49,6 +49,7 @@
     "@lrnwebcomponents/hexagon-loader": "^4.0.1",
     "@lrnwebcomponents/i18n-manager": "^4.0.1",
     "@lrnwebcomponents/iframe-loader": "^4.0.1",
+    "@lrnwebcomponents/file-system-broker": "^4.0.1",
     "@lrnwebcomponents/media-behaviors": "^4.0.1",
     "@lrnwebcomponents/rich-text-editor": "^4.0.1",
     "@lrnwebcomponents/simple-colors": "^4.0.1",
