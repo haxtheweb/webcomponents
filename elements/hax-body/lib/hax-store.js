@@ -1708,7 +1708,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "video",
       "audio",
       "section",
-      "grid-plate",
       "template",
       "webview",
     ];
