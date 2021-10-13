@@ -1,0 +1,22 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Page break",
+    "description": "Define a visual split between pages which CMSs can use to create pages.",
+    "icon": "editor:format-page-break",
+    "color": "grey",
+    "groups": ["Content", "CMS"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  }
+}

@@ -147,14 +147,14 @@ export const SimpleIconBehaviors = function (SuperClass) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
-        if (propName == "icon") {
+        if (propName === "icon") {
           if (this[propName]) {
             this.setSrcByIcon(this);
           } else {
             this.src = null;
           }
         }
-        if (propName == "src") {
+        if (propName === "src") {
           // look this up in the registry
           if (this[propName] && !this.useSafariPolyfill) {
             this.shadowRoot

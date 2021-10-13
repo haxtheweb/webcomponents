@@ -1,4 +1,5 @@
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+
 /**
  * @const SimpleIconIconsetsManifest
  */
@@ -261,6 +262,7 @@ export const SimpleIconIconsetsManifest = [
       "format-line-spacing",
       "format-list-bulleted",
       "format-list-numbered",
+      "format-page-break",
       "format-paint",
       "format-quote",
       "format-shapes",
@@ -299,6 +301,10 @@ export const SimpleIconIconsetsManifest = [
       "vertical-align-top",
       "wrap-text",
     ],
+  },
+  {
+    name: "elmsln-custom",
+    icons: [],
   },
   {
     name: "hardware",
@@ -826,6 +832,10 @@ export const SimpleIconIconsetsManifest = [
       "wb-iridescent",
       "wb-sunny",
     ],
+  },
+  {
+    name: "loading",
+    icons: ["bars"],
   },
   {
     name: "maps",

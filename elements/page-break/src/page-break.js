@@ -6,7 +6,7 @@ import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 //import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-
+import "./lib/page-break-manager.js";
 // might be optional / using hooks to check in or a manager that does this
 //import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 //import { toJS, autorun } from "mobx";
@@ -30,6 +30,9 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
     Make a static demo with content premocked up
 
+    Need to have 2 modes. 1 mode the page break injects a locked page-title tag in slot
+    Mode 2 the page break controls a heading after it
+
   * @demo demo/index.html
   * @element page-break
   */
@@ -42,7 +45,6 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.t = {
       newPage: "New page",
     };
-    this.editMode = false;
     this.title = this.t.newPage;
   }
   static get properties() {
@@ -59,6 +61,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
         this.nextElementSibling.tagName
       )
     ) {
+      this.title = this.nextElementSibling.innerText;
       this.titleTag = this.nextElementSibling;
     } else {
       console.log("else");
@@ -68,6 +71,29 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       this.titleTag.innerText = this.title;
       this.parentNode.insertBefore(this.titleTag, this.nextElementSibling);
     }
+    console.log(this.parentNode.children);
+    window.dispatchEvent(
+      new CustomEvent("page-break-registration", {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          node: this,
+          action: "add",
+        },
+      })
+    );
+  }
+  disconnectedCallback() {
+    window.dispatchEvent(
+      new CustomEvent("page-break-registration", {
+        detail: {
+          node: this,
+          action: "remove",
+        },
+      })
+    );
+    super.disconnectedCallback();
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -88,58 +114,50 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       css`
         :host {
           display: block;
-          margin: 40px 20px;
-        }
-        .wrap {
-        }
-        .top {
-          height: 30px;
-          border-style: solid;
-          border-color: black;
-          border-width: 1px 0 0 0;
-          border-radius: 20px;
-        }
-        .top:before {
-          display: block;
-          content: "";
-          height: 30px;
-          margin-top: -31px;
-          border-style: solid;
-          border-color: black;
-          border-width: 0 0 1px 0;
-          border-radius: 20px;
+          margin: 20px 0;
+          padding: 20px;
+          opacity: 0.6;
         }
         .mid {
-          border: 1px dotted blue;
+          border: none;
+          border-top: 3px dashed #2222ff;
+          overflow: visible;
+          margin: 0;
+          padding: 0;
+          height: 0;
         }
-        .bottom {
-          height: 30px;
-          border-style: solid;
-          border-color: black;
-          border-width: 1px 0 0 0;
-          border-radius: 20px;
+        :host(:hover) {
+          opacity: 1;
         }
-        .bottom:before {
-          display: block;
-          content: "";
-          height: 30px;
-          margin-top: -31px;
-          border-style: solid;
-          border-color: black;
-          border-width: 0 0 1px 0;
-          border-radius: 20px;
+        :host(:hover) .mid::before {
+          font-weight: bold;
+          content: "Page break";
+          color: #2222ff;
+          background-color: #ffffff;
+          font-size: 18px;
+          left: calc(50% - 2.5em);
+          top: -18px;
+        }
+        .mid::before {
+          content: "📃";
+          position: relative;
+          height: 0;
+          font-size: 36px;
+          line-height: 36px;
+          left: calc(50% - 0.5em);
+          top: -0.5em;
         }
       `,
     ];
   }
   render() {
-    return html`
-      <div class="wrap">
-        <hr class="top" />
-        <hr class="mid" />
-        <hr class="bottom" />
-      </div>
-    `;
+    return html` <hr class="mid" /> `;
+  }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/page-break.haxProperties.json`, import.meta.url).href;
   }
 }
 customElements.define(PageBreak.tag, PageBreak);

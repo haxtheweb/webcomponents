@@ -11,8 +11,8 @@
       "js": "src/simple-icon.js"
     },
     "iconset": {
-      "exportName": "SimpleIconsetManifest",
-      "manifestFilename": "simple-iconset-manifest.js",
+      "exportName": "SimpleIconIconsetsManifest",
+      "manifestFilename": "simple-iconset-manifest",
       "manifestPath": "./lib",
       "svgsPath": "./lib/svgs"
     },

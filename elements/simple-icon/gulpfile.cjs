@@ -160,6 +160,12 @@ function dirTree(filename) {
   else if (path.basename(filename).includes('.svg')) {
     info = path.basename(filename).replace('.svg','');
   }
+  else {
+    info = {
+      name: path.basename(filename),
+      icons: []
+    };
+  }
   return info;
 }
 
@@ -168,7 +174,7 @@ gulp.task("iconset", (done) => {
   const iconset = packageJson.wcfactory.iconset || {};
   if(iconset.svgsPath && iconset.svgsPath !== ''){
     const path = iconset.svgsPath;
-    const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest.js`
+    const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest`
     const manifestPath = iconset.manifestPath || `./lib`;
     const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
     const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
