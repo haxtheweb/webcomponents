@@ -19,12 +19,12 @@ export class PageBreakManager extends HTMLElement {
   registerPageBreak(e) {
     if (e.detail.action === "add") {
       // ensure this isn't already in there
-      if (!this.breaks.find((node) => node === e.detail.node)) {
-        this.breaks.push(e.detail.node);
+      if (!this.breaks.find((value) => value === e.detail.value)) {
+        this.breaks.push(e.detail.value);
       }
     } else {
-      this.breaks.map((node, index) => {
-        if (node === e.detail.node) {
+      this.breaks.map((value, index) => {
+        if (value === e.detail.value) {
           delete this.breaks[index];
         }
       });

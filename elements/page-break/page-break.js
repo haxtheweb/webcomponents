@@ -2,10 +2,11 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, LitElement } from "lit";
+import { css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 //import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "./lib/page-break-manager.js";
 // might be optional / using hooks to check in or a manager that does this
 //import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -46,10 +47,14 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       newPage: "New page",
     };
     this.title = this.t.newPage;
+    this.path = "#";
   }
   static get properties() {
     return {
+      ...super.properties,
       title: { type: String, reflect: true },
+      path: { type: String },
+      parent: { type: String, reflect: true },
     };
   }
   connectedCallback() {
@@ -62,24 +67,43 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       )
     ) {
       this.title = this.nextElementSibling.innerText;
-      this.titleTag = this.nextElementSibling;
+      this.target = this.nextElementSibling;
     } else {
-      console.log("else");
       // @todo need to have logic to figure out what headings proceed this one
       // HAX should be able to tell us this
-      this.titleTag = document.createElement("h2");
-      this.titleTag.innerText = this.title;
-      this.parentNode.insertBefore(this.titleTag, this.nextElementSibling);
+      this.target = document.createElement("h2");
+      this.target.innerText = this.title;
+      this.target.setAttribute("data-hax-lock", true);
+      this.parentNode.insertBefore(this.target, this.nextElementSibling);
     }
-    console.log(this.parentNode.children);
+    this.observer = new MutationObserver(() => {
+      if (this.title != this.target.innerText) {
+        this.title = this.target.innerText;
+      }
+    });
+    this.observer.observe(this.target, {
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         composed: true,
         bubbles: true,
         cancelable: true,
         detail: {
-          node: this,
+          value: this,
           action: "add",
+        },
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("page-break-change", {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          value: this,
         },
       })
     );
@@ -88,11 +112,22 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         detail: {
-          node: this,
+          value: this,
           action: "remove",
         },
       })
     );
+    window.dispatchEvent(
+      new CustomEvent("page-break-change", {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          value: this,
+        },
+      })
+    );
+    this.observer.disconnect();
     super.disconnectedCallback();
   }
   updated(changedProperties) {
@@ -100,12 +135,26 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (this.titleTag && propName === "title" && this[propName]) {
-        // change title text to match title if updated
-        // @todo we need to ensure that when the text of titleTag changes
-        // that we update the title to match
-        // mutationObserver on the tag monitoring just text changes
-        this.titleTag.innerText = this[propName];
+      if (this.target) {
+        if (propName === "title" && this[propName]) {
+          // change title text to match title if updated
+          // @todo we need to ensure that when the text of titleTag changes
+          // that we update the title to match
+          // mutationObserver on the tag monitoring just text changes
+          this.target.innerText = this[propName];
+        }
+        if (["title", "parent", "path"].includes(propName)) {
+          window.dispatchEvent(
+            new CustomEvent("page-break-change", {
+              composed: true,
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                value: this,
+              },
+            })
+          );
+        }
       }
     });
   }
@@ -150,8 +199,13 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       `,
     ];
   }
-  render() {
-    return html` <hr class="mid" /> `;
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    const hr = document.createElement("hr");
+    hr.classList.add("mid");
+    this.shadowRoot.appendChild(hr);
   }
   /**
    * haxProperties integration via file reference

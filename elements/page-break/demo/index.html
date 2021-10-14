@@ -11,30 +11,39 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../page-break.js';
+      import '../lib/page-break-outline.js';
+      import '@lrnwebcomponents/grid-plate/grid-plate.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic page-break demo</h3>
-      <demo-snippet>
-        <template>
+      <grid-plate>
+        <page-break-outline slot="col-1" selector="#container"></page-break-outline>
+        <div slot="col-2" id="container">
           <h2>This is a title for the heading 2</h2>
           <p>Stuff and things</p>
-          <page-break></page-break>
+          <page-break path="page-1" title="page 1"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <page-break path="page-2" parent="page-1" title="page 2 (p1 child)"></page-break>
+          <page-break path="page-2sdf" parent="page-2" title="page 2 (p1 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <page-break path="test/asd" parent="page-2sdf" title="page fds (p3 child)"></page-break>
+          <page-break path="test/page3" parent="page-2" title="page 3 (p2 child)"></page-break>
+          <page-break path="test/dfsfsffgf" parent="test/page3" title="page fds (p3 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <page-break path="test/page-4" parent="page-1" title="page 4 (p1 child)"></page-break>
+          <page-break path="test/page-4sdf" parent="page-1" title="page 4 (p1 child)"></page-break>
+          <page-break path="test/page-jhhgjghjgj4" parent="test/page-4sdf" title="page 4 (p1 child)"></page-break>
           <p>Cool and whatever p tag we have</p>
           <p>Cool and whatever p tag we have</p>
           <h3>Stuff</h3>
           <p>Stuff and things</p>
-          <page-break></page-break>
+          <page-break path="test/cool-5" title="top level child"></page-break>
           <h4>Less</h4>
-          <p>Stuff and things</p>
-          <p>Stuff and things</p>
-          <p>Stuff and things</p>
-          <p>Stuff and things</p>
-          <p>Stuff and things</p>
-        </template>
-      </demo-snippet>
+        </div>
+      </grid-plate>
     </div>
   </body>
 </html>
