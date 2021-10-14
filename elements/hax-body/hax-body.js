@@ -3032,11 +3032,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   __getLayoutOrder(target, layout) {
-    console.log(HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let slot = target.getAttribute("slot"),
       container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1;
     return order;
   }
@@ -3048,10 +3049,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @returns {boolean} if the item can move a set number of slots
    */
   __layoutCanMove(target, layout, before) {
-    console.log(HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1);
     return dest >= containers[0] && dest <= containers[containers.length - 1];
@@ -3063,10 +3065,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {number} -1 for left or +1 for right
    */
   __layoutMove(target, layout, before) {
-    console.log(layout.tagName, HAXStore.haxSchemaFromTag[layout.tagName]);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [...layout.shadowRoot.querySelectorAll("[slot]")],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1),
       slot = containers[dest];
