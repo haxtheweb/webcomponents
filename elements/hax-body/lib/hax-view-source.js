@@ -6,6 +6,7 @@ import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js";
 
 /**
  * `hax-eview-source`
@@ -115,6 +116,15 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         >
         </hax-tray-button>
         <hax-tray-button
+          label="${this.t.downloadDOCX}"
+          tooltip="${this.t.downloadDOCXTooltip}"
+          icon="editor:insert-drive-file"
+          @click="${this.downloadDOCX.bind(this)}"
+          show-text-label
+          icon-position="top"
+        >
+        </hax-tray-button>
+        <hax-tray-button
           @click="${this.htmlToHaxElements.bind(this)}"
           label="${this.t.schema}"
           tooltip="${this.t.schemaTooltip}"
@@ -138,6 +148,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     this.downloadFromData(data, "html", "my-new-code");
     HAXStore.toast("HTML content downloaded");
     //this.close();
+  }
+
+  /**
+   * Download DOCX.
+   */
+  async downloadDOCX(e) {
+    let body = await HAXStore.activeHaxBody.haxToContent();
+    window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+      body,
+      document.title
+    );
+    HAXStore.toast("docx file downloaded");
   }
 
   /**
@@ -302,6 +324,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       copyHTMLTooltip: "Copy HTML",
       downloadHTML: "Download",
       downloadHTMLTooltip: "Download HTML",
+      downloadDOCX: "Download (docx)",
+      downloadDOCXTooltip: "Download .docx format",
       cleanFormatting: "Clean",
       cleanFormattingTooltip: "Clean HTML Formatting",
       cleanFormatting: "Clean",

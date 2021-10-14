@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A simple twitter embed w/ singleton for performance / multiple embed",
   "repository": {
     "type": "git",

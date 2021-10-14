@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "displays images as a carousel or grid with the ability to zoom",
   "repository": {
     "type": "git",
@@ -44,11 +44,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/img-view-modal": "^4.0.0",
-    "@lrnwebcomponents/responsive-utility": "^4.0.0",
-    "@lrnwebcomponents/simple-colors": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.0",
+    "@lrnwebcomponents/img-view-modal": "^4.0.1",
+    "@lrnwebcomponents/responsive-utility": "^4.0.1",
+    "@lrnwebcomponents/simple-colors": "^4.0.1",
+    "@lrnwebcomponents/simple-icon": "^4.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.1",
     "lit": "2.0.0"
   },
   "devDependencies": {

@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -26,8 +27,10 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSRememberRoute(
-  HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+class CleanTwo extends HAXCMSOperationButtons(
+  HAXCMSRememberRoute(
+    HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+  )
 ) {
   //styles function
   static get styles() {

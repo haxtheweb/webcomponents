@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "vocab-term",
+      "path": "./src/vocab-term.js",
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`"
+    },
+    {
+      "name": "vocab-term",
+      "path": "./vocab-term.js",
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`"
+    }
+  ]
+}
