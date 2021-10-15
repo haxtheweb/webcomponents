@@ -7,7 +7,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 //import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "./lib/page-break-manager.js";
+import { pageBreakManager } from "./lib/page-break-manager.js";
 // might be optional / using hooks to check in or a manager that does this
 //import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 //import { toJS, autorun } from "mobx";
@@ -37,6 +37,9 @@ import "./lib/page-break-manager.js";
   * @demo demo/index.html
   * @element page-break
   */
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+const iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
 export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
   static get tag() {
     return "page-break";
@@ -48,6 +51,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     };
     this.title = this.t.newPage;
     this.path = "#";
+    this.published = true;
+    this.lock = false;
   }
   static get properties() {
     return {
@@ -55,6 +60,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       title: { type: String, reflect: true },
       path: { type: String },
       parent: { type: String, reflect: true },
+      published: { type: Boolean, reflect: true },
+      lock: { type: Boolean, reflect: true },
     };
   }
   connectedCallback() {
@@ -73,12 +80,19 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       // HAX should be able to tell us this
       this.target = document.createElement("h2");
       this.target.innerText = this.title;
-      this.target.setAttribute("data-hax-lock", true);
+      this.target.setAttribute("data-hax-lock", "data-hax-lock");
       this.parentNode.insertBefore(this.target, this.nextElementSibling);
     }
+    this.target.setAttribute("data-page-break-title", "data-page-break-title");
     this.observer = new MutationObserver(() => {
-      if (this.title != this.target.innerText) {
-        this.title = this.target.innerText;
+      if (!this.__lock) {
+        this.__lock = true;
+        setTimeout(() => {
+          if (this.title != this.target.innerText) {
+            this.title = this.target.innerText;
+          }
+          this.__lock = false;
+        }, 100);
       }
     });
     this.observer.observe(this.target, {
@@ -138,11 +152,12 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       if (this.target) {
         if (propName === "title" && this[propName]) {
           // change title text to match title if updated
-          // @todo we need to ensure that when the text of titleTag changes
-          // that we update the title to match
-          // mutationObserver on the tag monitoring just text changes
-          this.target.innerText = this[propName];
+          // but don't just set it as it would generate another change record
+          if (this.title != this.target.innerText) {
+            this.target.innerText = this.title;
+          }
         }
+        // fire event for reaction so we can update state elsewhere
         if (["title", "parent", "path"].includes(propName)) {
           window.dispatchEvent(
             new CustomEvent("page-break-change", {
@@ -155,6 +170,18 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
             })
           );
         }
+        // replicate lock status
+        if (this.lock && propName === "lock") {
+          pageBreakManager.elementsBetween(this).forEach((el) => {
+            el.setAttribute("data-hax-lock", "data-hax-lock");
+          });
+        }
+        // was true, not locked
+        else if (!this.lock && propName === "lock" && oldValue) {
+          pageBreakManager.elementsBetween(this).forEach((el) => {
+            el.removeAttribute("data-hax-lock");
+          });
+        }
       }
     });
   }
@@ -165,13 +192,16 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
           display: block;
           margin: 20px 0;
           padding: 20px;
-          opacity: 0.6;
+          opacity: 0.2;
+          background-position: center;
+          background-repeat: no-repeat;
+          transition: all 0.2s linear;
         }
         .mid {
           border: none;
-          border-top: 3px dashed #2222ff;
+          border-top: 2px solid #cccccc;
           overflow: visible;
-          margin: 0;
+          margin: 4px 0 0 0;
           padding: 0;
           height: 0;
         }
@@ -181,20 +211,14 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
         :host(:hover) .mid::before {
           font-weight: bold;
           content: "Page break";
-          color: #2222ff;
+          color: #000000;
           background-color: #ffffff;
-          font-size: 18px;
+          font-size: 16px;
           left: calc(50% - 2.5em);
-          top: -18px;
-        }
-        .mid::before {
-          content: "📃";
+          top: -16px;
           position: relative;
           height: 0;
-          font-size: 36px;
           line-height: 36px;
-          left: calc(50% - 0.5em);
-          top: -0.5em;
         }
       `,
     ];
@@ -203,6 +227,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.style.backgroundImage = `url("${iconPath}")`;
     const hr = document.createElement("hr");
     hr.classList.add("mid");
     this.shadowRoot.appendChild(hr);

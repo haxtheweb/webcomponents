@@ -17,8 +17,18 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
+    <button id="button">give me the headings</button>
+    <script>
+      document.getElementById('button').addEventListener('click', (e) => {
+        const manager = window.PageBreakManager.requestAvailability();
+        console.log('all', manager.betweenElementsQuery());
+        console.log('headings', manager.betweenElementsQuery('headings'));
+        console.log('not headings', manager.betweenElementsQuery('noheadings'));
+        console.log('titles', manager.betweenElementsQuery('titles'));
+        console.log('not titles', manager.betweenElementsQuery('notitles'));
+      });
+    </script>
     <div class="vertical-section-container centered">
-      <h3>Basic page-break demo</h3>
       <grid-plate>
         <page-break-outline slot="col-1" selector="#container"></page-break-outline>
         <div slot="col-2" id="container">

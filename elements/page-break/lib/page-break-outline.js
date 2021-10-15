@@ -41,7 +41,6 @@ export class PageBreakOutline extends HTMLElement {
     if (!this.__lock) {
       this.__lock = true;
       setTimeout(() => {
-        this.render(this.div);
         let tmp = this.div.cloneNode(false);
         this.render(tmp);
         this.replaceChild(tmp, this.div);
