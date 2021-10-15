@@ -492,7 +492,6 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    autocomplete: "both",
                     justify: true,
                   },
                 },
@@ -551,6 +550,9 @@ class SimpleFields extends SimpleFieldsLite {
                     autofocus: true,
                   },
                 },
+                properties: {
+                  autocomplete: "autocomplete",
+                },
               },
               iconpicker: {
                 defaultSettings: {
@@ -607,6 +609,24 @@ class SimpleFields extends SimpleFieldsLite {
                   attributes: {
                     autofocus: true,
                     type: "file",
+                  },
+                },
+              },
+              url: {
+                defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-url-combo.js",
+                  element: "simple-fields-url-combo",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    justify: true,
+                  },
+                  properties: {
+                    autocomplete: "autocomplete",
+                    alwaysExpanded: "alwaysExpanded",
+                    displayAs: "displayAs",
+                    options: "options",
                   },
                 },
               },
@@ -773,6 +793,12 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "string",
               format: "time",
+            },
+          },
+          url: {
+            defaultSettings: {
+              type: "string",
+              format: "url",
             },
           },
           weekpicker: {

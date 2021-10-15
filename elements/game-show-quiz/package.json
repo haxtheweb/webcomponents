@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.0",
+  "version": "4.0.3",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",
@@ -38,13 +38,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^4.0.0",
-    "@lrnwebcomponents/hax-body": "^4.0.0",
-    "@lrnwebcomponents/multiple-choice": "^4.0.0",
-    "@lrnwebcomponents/responsive-grid": "^4.0.0",
-    "@lrnwebcomponents/simple-colors": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.0",
-    "@lrnwebcomponents/simple-toast": "^4.0.0",
+    "@lrnwebcomponents/chartist-render": "^4.0.1",
+    "@lrnwebcomponents/hax-body": "^4.0.3",
+    "@lrnwebcomponents/multiple-choice": "^4.0.1",
+    "@lrnwebcomponents/responsive-grid": "^4.0.1",
+    "@lrnwebcomponents/simple-colors": "^4.0.1",
+    "@lrnwebcomponents/simple-icon": "^4.0.1",
+    "@lrnwebcomponents/simple-toast": "^4.0.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",
@@ -53,11 +53,11 @@
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "@vaadin/vaadin-split-layout": "^4.1.0",
-    "lit": "2.0.0-rc.2"
+    "lit": "2.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.1",
     "@open-wc/testing": "2.5.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -65,7 +65,7 @@
     "@web/test-runner-commands": "0.4.5",
     "@web/test-runner-playwright": "0.8.6",
     "@web/test-runner-puppeteer": "0.10.0",
-    "@webcomponents/webcomponentsjs": "2.5.0",
+    "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",

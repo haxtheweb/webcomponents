@@ -1,0 +1,35 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Page break",
+    "description": "Define a visual split between pages which CMSs can use to create pages.",
+    "icon": "editor:format-page-break",
+    "color": "grey",
+    "groups": ["Content", "CMS"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Page title",
+        "description": "Title seen in the theme / first heading",
+        "inputMethod": "text"
+      },
+      {
+        "property": "published",
+        "title": "Published",
+        "description": "Unpublished pages are not visible to end users",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "lock",
+        "title": "Lock page",
+        "description": "Lock / Unlock all elements in this page",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  }
+}

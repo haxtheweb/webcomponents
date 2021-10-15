@@ -35,6 +35,24 @@
           <p><label for="submission">Values</label></p>
           <textarea id="submission" rows="15"></textarea>
           <script>
+            window.photoList = [
+              {
+                "name": "Profile", 
+                "value": "https://static.wikia.nocookie.net/gameofthrones/images/b/be/AryaShipIronThrone.PNG",
+                "preview": "https://static.wikia.nocookie.net/gameofthrones/images/b/be/AryaShipIronThrone.PNG"
+              },
+              {
+                "value": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Arya_Stark-Maisie_Williams.jpg/220px-Arya_Stark-Maisie_Williams.jpg",
+                "preview": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Arya_Stark-Maisie_Williams.jpg/220px-Arya_Stark-Maisie_Williams.jpg"
+              }
+            ];
+            window.resourceList = [
+              ...window.photoList,
+              { "value": "https://thenerdforge.com/", "name": "Nerdforge" },
+              "./form-lite.html",
+              "#top",
+              {"value": "mailto:noOne@houseOfBlackAndWhite.com", "name": "Email No One" }
+            ];
             window.onload = () => {
               let focus = document.getElementById('focus'),
                 schema = document.getElementById('schema'),
@@ -61,7 +79,8 @@
                   "title": "Profile Image",
                   "description": "Maximum size 400px X 400px.",
                   "inputMethod": "haxupload",
-                  "validationType": "url"
+                  "validationType": "url",
+                  "itemsList": window.photoList
                 },
                 {
                   "property": "biographical",
@@ -85,31 +104,45 @@
                       "inputMethod": "colorpicker"
                     },
                     {
+                      "property": "contact",
+                      "title": "Contact Link",
+                      "description": "Email, Website, or telephone",
+                      "inputMethod": "url"
+                    },
+                    {
+                      "property": "link",
+                      "title": "Link URL",
+                      "description": "Link to one of your favorite resources.",
+                      "inputMethod": "url",
+                      "displayAs": "grid",
+                      "itemsList": window.resourceList
+                    },
+                    {
                       "property": "house",
                       "title": "Your noble house.",
                       "inputMethod": "combo",
                       "prefix": "House ",
-                      "options": {
-                        "Arryn": "Arryn",
-                        "Baratheon": "Baratheon",
-                        "Bolton": "Bolton",
-                        "Florent": "Florent",
-                        "Frey": "Frey",
-                        "Greyjoy": "Greyjoy",
-                        "Hightower": "Hightower",
-                        "Lannister": "Lannister",
-                        "Martell": "Martell",
-                        "Mormont": "Mormont",
-                        "Redwyne": "Redwyne",
-                        "Seaworth": "Seaworth",
-                        "Selmy": "Selmy",
-                        "Stark": "Stark",
-                        "Targaryen": "Targaryen",
-                        "Tarley": "Tarley",
-                        "Tully": "Tully",
-                        "Tyrell": "Tyrell",
-                        "Umber": "Umber",
-                      }
+                      "itemsList": [
+                        "Arryn",
+                        "Baratheon",
+                        "Bolton",
+                        "Florent",
+                        "Frey",
+                        "Greyjoy",
+                        "Hightower",
+                        "Lannister",
+                        "Martell",
+                        "Mormont",
+                        "Redwyne",
+                        "Seaworth",
+                        "Selmy",
+                        "Stark",
+                        "Targaryen",
+                        "Tarley",
+                        "Tully",
+                        "Tyrell",
+                        "Umber",
+                      ]
                     },
                     {
                       "property": "sword",
@@ -246,6 +279,7 @@
               schema.value = {
                 "name": "No One",
                 "alias": true,
+                "profileImage": window.photoList[0].value,
                 "biographical": {
                   "bio": "Once upon a time...",
                   "sword": "needle",

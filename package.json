@@ -58,7 +58,7 @@
     "@web/test-runner-commands": "0.4.5",
     "@web/test-runner-playwright": "0.8.6",
     "@web/test-runner-puppeteer": "0.10.0",
-    "@webcomponents/webcomponentsjs": "2.5.0",
+    "@webcomponents/webcomponentsjs": "2.6.0",
     "babel-loader": "8.2.2",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
@@ -138,9 +138,10 @@
     "concurrently": "6.0.2",
     "promise-polyfill": "8.2.0",
     "rollup-plugin-cpy": "^2.0.1",
-    "@lit/reactive-element": "^1.0.0-rc.2",
-    "lit-element": "^3.0.0-rc.2",
-    "lit-html": "^2.0.0-rc.3"
+    "lit": "2.0.0",
+    "lit-element": "3.0.0",
+    "lit-html": "2.0.0",
+    "@lit/reactive-element": "1.0.0"
   },
   "resolutions": {
     "chokidar": "^3.0.0"

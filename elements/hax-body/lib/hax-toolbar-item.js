@@ -60,7 +60,24 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
      * @readonly
      */
     get buttonTemplate() {
-      return this.toggles
+      return this.radio
+        ? html` <button
+              id="button"
+              aria-checked="${this.isToggled ? "true" : "false"}"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keydown="${this._handleKeys}"
+              @mousedown="${this._handleMousedown}"
+              role="radio"
+              part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
+            >
+              ${this.buttonInnerTemplate}
+            </button>
+            ${this.tooltipTemplate}`
+        : this.toggles
         ? html` <button
               id="button"
               aria-pressed="${this.isToggled ? "true" : "false"}"
@@ -70,10 +87,10 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keydown="${this._handleKeys}"
               @mousedown="${this._handleMousedown}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`
         : html` <button
@@ -86,8 +103,9 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @mousedown="${this._handleMousedown}"
               tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`;
     }

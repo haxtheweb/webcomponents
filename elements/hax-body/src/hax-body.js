@@ -502,7 +502,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _mouseMove(e) {
-    return;
     if (this.editMode && HAXStore.ready) {
       var eventPath = normalizeEventPath(e);
       clearTimeout(this.__mouseQuickTimer);
@@ -3035,9 +3034,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!layout.shadowRoot) return false;
     let slot = target.getAttribute("slot"),
       container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1;
     return order;
   }
@@ -3051,9 +3050,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   __layoutCanMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1);
     return dest >= containers[0] && dest <= containers[containers.length - 1];
@@ -3067,9 +3066,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   __layoutMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [
-        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-      ],
+      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
+        (node) => node.parentNode
+      ),
       order = containers.indexOf(container) || -1,
       dest = order + (before ? -1 : 1),
       slot = containers[dest];
@@ -3120,9 +3119,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutSlots(layout) {
     return layout.shadowRoot
-      ? [
-          ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
-        ].map((container) => container.getAttribute("data-layout-slotname"))
+      ? [...layout.shadowRoot.querySelectorAll("[slot]")].map((container) =>
+          container.getAttribute("name")
+        )
       : [];
   }
 

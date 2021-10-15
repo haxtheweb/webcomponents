@@ -734,9 +734,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       }, 1000);
     }
     setTimeout(() => {
-      var evt = document.createEvent("UIEvents");
-      evt.initUIEvent("resize", true, false, window, 0);
-      window.dispatchEvent(evt);
+      window.dispatchEvent(new Event("resize"));
     }, 50);
   }
   /**

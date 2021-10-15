@@ -214,7 +214,22 @@
       ],
       "events": [
         {
+          "name": "haxcms-save-node"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-load-node-fields"
+        },
+        {
+          "name": "hax-cancel"
+        },
+        {
           "name": "simple-toast-hide"
+        },
+        {
+          "name": "simple-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -455,7 +470,22 @@
       ],
       "events": [
         {
+          "name": "haxcms-save-node"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-load-node-fields"
+        },
+        {
+          "name": "hax-cancel"
+        },
+        {
           "name": "simple-toast-hide"
+        },
+        {
+          "name": "simple-toast-show"
         },
         {
           "name": "content-container-changed"

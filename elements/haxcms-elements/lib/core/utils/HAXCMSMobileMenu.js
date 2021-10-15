@@ -2,11 +2,34 @@ import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
+function localStorageGet(name) {
+  try {
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
+  }
+}
+
+function localStorageSet(name, newItem) {
+  try {
+    return localStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
+  }
+}
+
 const HAXCMSMobileMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
       this.menuOpen = true;
+      if (localStorageGet("hax-mobile-menu-menuOpen") != null) {
+        if (localStorageGet("hax-mobile-menu-menuOpen") == "true") {
+          this.menuOpen = true;
+        } else if (localStorageGet("hax-mobile-menu-menuOpen") == "false") {
+          this.menuOpen = false;
+        }
+      }
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
@@ -20,7 +43,8 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
           this.menuOpen &&
           toJS(store.activeId) &&
-          ["sm", "xs"].includes(this.responsiveSize)
+          ["sm", "xs"].includes(this.responsiveSize) &&
+          localStorageGet("hax-mobile-menu-menuOpen") == null
         ) {
           this.__HAXCMSMobileMenuToggle({});
         }
@@ -86,6 +110,8 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
             .removeAttribute("tabindex");
         }
       }
+      //set local storage
+      localStorageSet("hax-mobile-menu-menuOpen", this.menuOpen);
     }
     HAXCMSMobileMenu(e) {
       return html`
@@ -111,7 +137,10 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
-        if (propName == "responsiveSize") {
+        if (
+          propName == "responsiveSize" &&
+          localStorageGet("hax-mobile-menu-menuOpen") == null
+        ) {
           switch (this[propName]) {
             case "sm":
               // auto close for small layouts
@@ -138,7 +167,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
     static get properties() {
       let props = {};
       if (super.properties) {
-        props = super.props;
+        props = super.properties;
       }
       return {
         ...props,

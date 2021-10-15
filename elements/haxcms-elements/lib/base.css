@@ -1,4 +1,5 @@
 body, html, :root {
+  scroll-behavior: smooth;
   --haxcms-system-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
@@ -89,6 +90,16 @@ body, html, :root {
 
   /** placeholder **/
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
+}
+
+@keyframes blinkTargetHeading {
+  0%   { background-color: yellow; }
+
+  100% { background-color: transparent; }
+}
+
+:target {
+  animation: blinkTargetHeading 1s ease-in-out; 
 }
 
 hax-tray {

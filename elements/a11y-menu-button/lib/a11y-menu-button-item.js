@@ -134,13 +134,14 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
         },
         slot: {
           type: String,
-          attribute: "menuitem",
+          attribute: "slot",
           reflect: true,
         },
       };
     }
     constructor() {
       super();
+      this.slot = "menuitem";
     }
     /**
      * renders item as a link
@@ -179,13 +180,23 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
       `;
     }
     /**
+     * gets item with role="menuitem"
+     *
+     * @readonly
+     */
+    get menuItem() {
+      return this.shadowRoot && this.shadowRoot.querySelector("[role=menuitem]")
+        ? this.shadowRoot.querySelector("[role=menuitem]")
+        : undefined;
+    }
+    /**
      * allows link or button to get focus
      *
      * @memberof A11yMenuButtonItem
      */
     focus() {
-      if (this.shadowRoot && this.shadowRoot.querySelector("[role=menuitem]"))
-        this.shadowRoot.querySelector("[role=menuitem]").focus();
+      console.log("focusing", this.menuItem, this);
+      if (this.menuItem) this.menuItem.focus();
     }
     connectedCallback() {
       super.connectedCallback();

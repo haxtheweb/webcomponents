@@ -26,35 +26,35 @@ import {
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 const FALLBACK_LANG = "en";
 
-function localStorageGet(name){
+function localStorageGet(name) {
   try {
-      return localStorage.getItem(name);
-  } catch(e) {
-      return false;
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
   }
 }
 
-function localStorageSet(name, newItem){
+function localStorageSet(name, newItem) {
   try {
-      return localStorage.setItem(name, newItem);
-  } catch(e) {
-      return false;
+    return localStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
   }
 }
 
-function sessionStorageGet(name){
+function sessionStorageGet(name) {
   try {
-      return sessionStorage.getItem(name);
-  } catch(e) {
-      return false;
+    return sessionStorage.getItem(name);
+  } catch (e) {
+    return false;
   }
 }
 
-function sessionStorageSet(name, newItem){
+function sessionStorageSet(name, newItem) {
   try {
-      return sessionStorage.setItem(name, newItem);
-  } catch(e) {
-      return false;
+    return sessionStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
   }
 }
 
@@ -907,10 +907,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // store for future local storage usage
     localStorageSet("haxConfirm", true);
     // most likely nothing but set it anyway
-    localStorageSet(
-      "haxUserData",
-      JSON.stringify(this.storageData)
-    );
+    localStorageSet("haxUserData", JSON.stringify(this.storageData));
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -995,8 +992,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // and balances are the same. This could allow for storing these
     // settings on a server in theory
     let haxConfirm =
-      sessionStorageGet("haxConfirm") ||
-      localStorageGet("haxConfirm");
+      sessionStorageGet("haxConfirm") || localStorageGet("haxConfirm");
     if (!haxConfirm) {
       // this way it isn't shown EVERY reload, but if they didn't confirm
       // it will show up in the future
@@ -1008,10 +1004,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     `;
       this.toast(msg, "-1", "fit-bottom", "I Accept", "hax-consent-tap");
     } else {
-      if (
-        sessionStorageGet("haxConfirm") &&
-        !localStorageGet("haxConfirm")
-      ) {
+      if (sessionStorageGet("haxConfirm") && !localStorageGet("haxConfirm")) {
         // verify there is something there
         try {
           let globalData = sessionStorageGet("haxUserData")
@@ -1715,7 +1708,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "video",
       "audio",
       "section",
-      "grid-plate",
       "template",
       "webview",
     ];
@@ -1825,7 +1817,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.skipExitTrap = false;
     this.appStoreLoaded = false;
     this.elementList = {};
-    this.elementAlign = "right";
+    //if hax-tray-elementAlign exists use that other wise left
+    this.elementAlign = localStorageGet("hax-tray-elementAlign");
+    if (!this.elementAlign || this.elementAlign == null) {
+      this.elementAlign = "right";
+    }
     this.trayStatus = "collapsed";
     this.trayDetail = "content-edit";
     this.appList = [];
@@ -2656,7 +2652,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   slotsFromSchema(schema, optionalOnly = false) {
     let settings = schema ? schema.settings : {},
       slotsList = [];
-    return Object.keys(settings || {})
+    return Object.keys({ ...(settings || {}) })
       .map((setting) =>
         (settings[setting] || []).filter((prop) => {
           let show = !optionalOnly || !prop.required;
@@ -3171,20 +3167,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Filter app store apps to those that accept this file source.
    */
   getHaxAppStoreTargets(type) {
-    let targets = toJS(
-      this.appList.filter((app) => {
-        if (typeof app.connection.operations.add !== typeof undefined) {
-          let add = app.connection.operations.add;
-          if (
-            typeof add.acceptsGizmoTypes !== typeof undefined &&
-            add.acceptsGizmoTypes.includes(type)
-          ) {
-            return true;
-          }
+    const appList = toJS(this.appList);
+    let targets = appList.filter((app) => {
+      if (typeof app.connection.operations.add !== typeof undefined) {
+        let add = app.connection.operations.add;
+        if (
+          typeof add.acceptsGizmoTypes !== typeof undefined &&
+          add.acceptsGizmoTypes.includes(type)
+        ) {
+          return true;
         }
-        return false;
-      })
-    );
+      }
+      return false;
+    });
     return targets;
   }
   /**

@@ -31,6 +31,23 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+
+function localStorageGet(name) {
+  try {
+    return localStorage.getItem(name);
+  } catch (e) {
+    return false;
+  }
+}
+
+function localStorageSet(name, newItem) {
+  try {
+    return localStorage.setItem(name, newItem);
+  } catch (e) {
+    return false;
+  }
+}
+
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -118,7 +135,6 @@ class HaxTray extends I18NMixin(
     this.trayDetail = "content-edit";
     this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
-    this.elementAlign = "right";
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
@@ -221,6 +237,9 @@ class HaxTray extends I18NMixin(
           width: unset;
           left: 0;
           right: 0;
+        }
+        :host([edit-mode]) .wrapper.full-panel .detail {
+          max-width: unset;
         }
         #menubar {
           display: inline-flex;
@@ -900,6 +919,8 @@ class HaxTray extends I18NMixin(
         this.style.setProperty("--hax-tray-custom-y", null);
         this.style.setProperty("--hax-tray-custom-x", null);
         HAXStore.elementAlign = direction;
+        //set local storage
+        localStorage.setItem("hax-tray-elementAlign", direction);
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
@@ -1249,7 +1270,7 @@ class HaxTray extends I18NMixin(
       activeNode.tagName &&
       HAXStore.elementList[activeNode.tagName.toLowerCase()]
     ) {
-      let props = HAXStore.elementList[activeNode.tagName.toLowerCase()];
+      let props = { ...HAXStore.elementList[activeNode.tagName.toLowerCase()] };
       // generate a human name for this
       if (typeof props.gizmo.title === typeof undefined) {
         this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
@@ -1418,69 +1439,28 @@ class HaxTray extends I18NMixin(
       ];
       // array of things to forcibly disable
       let disable = [];
-      if (isGrid) {
-        props.settings.configure = (props.settings.configure || []).filter(
-          (prop) =>
-            prop.slot !== "" &&
-            !prop.slot &&
-            (!prop.attribute || prop.attribute != "slot")
-        );
-        props.settings.layout = (props.settings.layout || []).filter(
-          (prop) =>
-            prop.slot !== "" &&
-            !prop.slot &&
-            (!prop.attribute || prop.attribute != "slot")
-        );
-        props.settings.layout.advanced = (props.settings.advanced || []).filter(
-          (prop) =>
-            prop.slot !== "" &&
-            !prop.slot &&
-            (!prop.attribute || prop.attribute != "slot")
-        );
-      }
-
+      let setProps = (propName, propTitle, settings = []) => {
+        let filteredProps = !isGrid
+          ? settings
+          : settings.filter(
+              (prop) =>
+                prop.slot !== "" &&
+                !prop.slot &&
+                (!prop.attribute || prop.attribute != "slot")
+            );
+        this.activeSchema[0].properties.push({
+          property: propName,
+          title: propTitle,
+          properties: filteredProps.length > 0 ? filteredProps : undefined,
+          disabled: filteredProps.length < 1,
+        });
+      };
       // see if we have any configure settings or disable
-      if (props.settings.configure.length > 0) {
-        this.activeSchema[0].properties.push({
-          property: "configure",
-          title: this.t.configure,
-          properties: props.settings.configure,
-        });
-      } else {
-        this.activeSchema[0].properties.push({
-          property: "configure",
-          title: this.t.configure,
-          disabled: true,
-        });
-      }
+      setProps("configure", this.t.configure, props.settings.configure);
       // see if we have any layout settings or disable
-      if (props.settings.layout.length > 0) {
-        this.activeSchema[0].properties.push({
-          property: "layout",
-          title: this.t.layout,
-          properties: props.settings.layout,
-        });
-      } else {
-        this.activeSchema[0].properties.push({
-          property: "layout",
-          title: this.t.layout,
-          disabled: true,
-        });
-      }
+      setProps("layout", this.t.layout, props.settings.layout);
       // see if we have any configure settings or disable
-      if (props.settings.advanced.length > 0) {
-        this.activeSchema[0].properties.push({
-          property: "advanced",
-          title: this.t.advanced,
-          properties: props.settings.advanced,
-        });
-      } else {
-        this.activeSchema[0].properties.push({
-          property: "advanced",
-          title: this.t.advanced,
-          disabled: true,
-        });
-      }
+      setProps("advanced", this.t.advanced, props.settings.advanced);
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
       this.shadowRoot.querySelector("#settingsform").value = this.activeValue;

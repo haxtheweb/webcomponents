@@ -237,6 +237,9 @@
           "name": "simple-toast-hide"
         },
         {
+          "name": "simple-toast-show"
+        },
+        {
           "name": "content-container-changed"
         },
         {
@@ -496,6 +499,9 @@
       "events": [
         {
           "name": "simple-toast-hide"
+        },
+        {
+          "name": "simple-toast-show"
         },
         {
           "name": "content-container-changed"
