@@ -91,6 +91,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           aria-haspopup="true"
           aria-controls="menu"
           aria-expanded="${this.expanded ? "true" : "false"}"
+          @blur="${this._handleBlur}"
           part="button"
           tabindex="${this.isCurrentItem ? 1 : -1}"
         >
@@ -119,13 +120,29 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
     }
 
     /**
+     * handles when menu has focus
+     *
+     * @param {event} event
+     * @memberof A11yMenuButton
+     */
+    _handleFocus(event) {
+      if (SimpleToolbarButtonBehaviors._handleFocus)
+        SimpleToolbarButtonBehaviors._handleFocus(event);
+      if (A11yMenuButtonBehaviors._handleFocus)
+        A11yMenuButtonBehaviors._handleFocus(event);
+    }
+
+    /**
      * handles when menu loses focus
      *
      * @param {event} event
      * @memberof A11yMenuButton
      */
     _handleBlur(event) {
-      super.blur(event);
+      if (SimpleToolbarButtonBehaviors._handleBlur)
+        SimpleToolbarButtonBehaviors._handleBlur(event);
+      if (A11yMenuButtonBehaviors._handleBlur)
+        A11yMenuButtonBehaviors._handleBlur(event);
       if (!this.isCurrentItem) setTimeout(this.close(), 300);
     }
     addItem(item) {

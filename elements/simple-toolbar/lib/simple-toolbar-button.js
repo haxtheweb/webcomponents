@@ -314,12 +314,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       if (this.focusableElement) {
         this.isCurrentItem = true;
         this.focusableElement.focus();
-        console.log(
-          "focus",
-          this.label,
-          this.focusableElement,
-          document.activeElement
-        );
       }
     }
 
@@ -345,6 +339,24 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     _handleClick(e) {
       this.toggle();
     }
+    /**
+     * handles blur
+     *
+     * @param {event} e event
+     */
+    _handleBlur(e) {}
+    /**
+     * handles focus
+     *
+     * @param {event} e event
+     */
+    _handleFocus(e) {}
+    /**
+     * handles keydown
+     *
+     * @param {event} e event
+     */
+    _handleKeydown(e) {}
     /**
      * handles keypress
      *
@@ -523,6 +535,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @keypress="${this._handleKeys}"
               @keydown="${this._handleKeydown}"
               @blur="${this._handleBlur}"
+              @focus="${this._handleFocus}"
               part="button"
               role="radio"
               tabindex="${this.isCurrentItem ? 1 : -1}"
@@ -539,6 +552,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
+              @blur="${this._handleBlur}"
+              @focus="${this._handleFocus}"
               part="button"
               tabindex="${this.isCurrentItem ? 1 : -1}"
             >
@@ -552,6 +567,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
+              @blur="${this._handleBlur}"
+              @focus="${this._handleFocus}"
               part="button"
               tabindex="${this.isCurrentItem ? 1 : -1}"
             >

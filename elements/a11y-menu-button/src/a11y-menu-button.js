@@ -315,9 +315,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     close(force = false) {
-      console.log("close", force, this.focused);
       if (force || (!this.focused && !this.hovered)) {
-        console.log("close");
         this.expanded = false;
         /**
          * Fires when menu is closed
@@ -339,7 +337,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     open() {
-      console.log("open");
       this.expanded = true;
       /**
        * Fires when menu is opened
@@ -360,7 +357,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focus() {
-      console.log("focus menubutton");
       if (this.shadowRoot && this.shadowRoot.querySelector("#menubutton")) {
         this.shadowRoot.querySelector("#menubutton").focus();
       }
@@ -372,7 +368,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focusOn(item) {
-      console.log("fo", item);
       item = item || this.firstItem;
       if (item) {
         this.open();
@@ -388,7 +383,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focusByCharacter(char) {
-      console.log("fbc", char);
       var start,
         index,
         char = char.toLowerCase(),
