@@ -214,6 +214,18 @@
       ],
       "events": [
         {
+          "name": "haxcms-save-node"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-load-node-fields"
+        },
+        {
+          "name": "hax-cancel"
+        },
+        {
           "name": "simple-toast-hide"
         },
         {
@@ -457,6 +469,18 @@
         }
       ],
       "events": [
+        {
+          "name": "haxcms-save-node"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-load-node-fields"
+        },
+        {
+          "name": "hax-cancel"
+        },
         {
           "name": "simple-toast-hide"
         },

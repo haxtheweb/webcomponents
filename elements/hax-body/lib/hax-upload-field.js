@@ -62,12 +62,61 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           `${this.t.whereUpload} ${type}?`,
           "app"
         );
+      } else if (
+        type === "document" &&
+        e.detail.file.type ===
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      ) {
+        // not sure if this works anywhere else but let's try and trigger here..
+        import(
+          "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+        ).then(() => {
+          // this will kick off a promise
+          window.DOCXFileSystemBroker.requestAvailability().fileToHTML(
+            e.detail.file,
+            "hax-upload"
+          );
+        });
       } else {
         HAXStore.toast(`${this.t.cantHandle} ${type} ${this.t.uploads}!`, 5000);
       }
     } else {
       this.__allowUpload = false;
     }
+  }
+  insertDOCXFileContents(e) {
+    // sanity check for later on if we ever use this
+    if (e.detail.name === "hax-upload") {
+      let div = document.createElement("div");
+      div.innerHTML = e.detail.value;
+      let slot = false;
+      if (HAXStore.activeNode.hasAttribute("slot")) {
+        slot = HAXStore.activeNode.getAttribute("slot");
+      }
+      for (var i = div.children.length - 1; i > 0; i--) {
+        if (slot) {
+          div.children[i].setAttribute("slot", slot);
+        }
+        HAXStore.activeNode.parentNode.insertBefore(
+          div.children[i],
+          HAXStore.activeNode.nextSibling
+        );
+      }
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener(
+      "docx-file-system-data",
+      this.insertDOCXFileContents.bind(this)
+    );
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "docx-file-system-data",
+      this.insertDOCXFileContents.bind(this)
+    );
+    super.disconnectedCallback();
   }
   /**
    * Event for an app being selected from a picker

@@ -153,6 +153,24 @@ function formatHTMLInternals(node, level) {
   return node;
 }
 
+// with type, safely get data from local storage (assumes it was set using the setter below)
+export function localStorageGet(name) {
+  try {
+    return JSON.parse(localStorage.getItem(name));
+  } catch (e) {
+    return false;
+  }
+}
+
+// set type safe variables
+export function localStorageSet(name, newItem) {
+  try {
+    return localStorage.setItem(name, JSON.stringify(newItem));
+  } catch (e) {
+    return false;
+  }
+}
+
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
   var pattern = new RegExp(

@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A popover alertdialog that is positioned next to a target element",
   "repository": {
     "type": "git",
@@ -45,9 +45,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.0",
+    "@lrnwebcomponents/absolute-position-behavior": "^4.0.1",
+    "@lrnwebcomponents/simple-icon": "^4.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.1",
     "lit": "2.0.0"
   },
   "devDependencies": {

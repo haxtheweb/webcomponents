@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "page-break",
+      "path": "./page-break.js",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`"
+    },
+    {
+      "name": "page-break",
+      "path": "./src/page-break.js",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`"
+    }
+  ]
+}
