@@ -116,11 +116,7 @@ class StopNote extends remoteLinkBehavior(LitElement) {
         </div>
         <div class="message_wrap">
           <div class="main_message" id="title">${this.title}</div>
-          <div
-            class="secondary_message"
-            data-label="Secondary Message"
-            data-layout-slotname="message"
-          >
+          <div class="secondary_message">
             <slot name="message"></slot>
           </div>
           ${this.url

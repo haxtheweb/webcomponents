@@ -46,6 +46,16 @@ class SimpleFieldsFormLite extends LitElement {
     `;
   }
   /**
+   * gets form element that matches given form ID
+   *
+   * @param {*} id
+   * @returns
+   * @memberof SimpleFieldsLite
+   */
+  getFormElementById(id) {
+    return (this.__formElementsArray || []).filter((el) => el.id === id)[0];
+  }
+  /**
    * updates the form value when a field changes
    *
    * @param {*} e value-changed event

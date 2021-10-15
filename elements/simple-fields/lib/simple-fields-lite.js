@@ -538,6 +538,16 @@ class SimpleFieldsLite extends LitElement {
     this._formFieldsChanged();
   }
   /**
+   * gets form element that matches given form ID
+   *
+   * @param {*} id
+   * @returns
+   * @memberof SimpleFieldsLite
+   */
+  getFormElementById(id) {
+    return (this.__formElementsArray || []).filter((el) => el.id === id)[0];
+  }
+  /**
    * focus on first field
    */
   focus() {

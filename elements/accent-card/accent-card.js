@@ -377,24 +377,20 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         </div>
         <div class="body">
           <div id="heading">
-            <div data-label="Heading" data-layout-slotname="heading">
+            <div>
               <slot name="heading"></slot>
             </div>
-            <div data-label="Corner" data-layout-slotname="Corner">
+            <div data-label="Corner">
               <slot name="corner"></slot>
             </div>
           </div>
-          <div
-            id="subheading"
-            data-label="Subheading"
-            data-layout-slotname="subheading"
-          >
+          <div id="subheading">
             <slot name="subheading"></slot>
           </div>
-          <div id="content" data-label="Content" data-layout-slotname="content">
+          <div id="content">
             <slot name="content"></slot>
           </div>
-          <div id="footer" data-label="Footer" data-layout-slotname="footer">
+          <div id="footer">
             <slot name="footer"></slot>
           </div>
         </div>

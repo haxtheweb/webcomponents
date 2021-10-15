@@ -590,6 +590,15 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeyup(event) {
+    this.dispatchEvent(
+      new CustomEvent("combo-input-keyup", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e,
+      })
+    );
+
     var flag = false,
       option = false,
       char = event.key || "";
