@@ -53,6 +53,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.path = "#";
     this.published = true;
     this.lock = false;
+    this.depth = 0;
+    this._haxState = false;
   }
   static get properties() {
     return {
@@ -62,6 +64,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
       lock: { type: Boolean, reflect: true },
+      depth: { type: Number, reflect: true },
+      _haxState: { type: Boolean },
     };
   }
   connectedCallback() {
@@ -85,14 +89,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     }
     this.target.setAttribute("data-page-break-title", "data-page-break-title");
     this.observer = new MutationObserver(() => {
-      if (!this.__lock) {
-        this.__lock = true;
-        setTimeout(() => {
-          if (this.title != this.target.innerText) {
-            this.title = this.target.innerText;
-          }
-          this.__lock = false;
-        }, 100);
+      // lock ensures that title update, then updating hte innerText
+      // doesn't generate another mutation record
+      if (!this.__lock && this.title != this.target.innerText) {
+        this.title = this.target.innerText;
       }
     });
     this.observer.observe(this.target, {
@@ -151,10 +151,17 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     changedProperties.forEach((oldValue, propName) => {
       if (this.target) {
         if (propName === "title" && this[propName]) {
-          // change title text to match title if updated
+          // change title text to match title if updated but delay
+          // to avoid input spamming as this could generate a lot of change records
           // but don't just set it as it would generate another change record
-          if (this.title != this.target.innerText) {
-            this.target.innerText = this.title;
+          if (!this.__lock) {
+            this.__lock = true;
+            setTimeout(() => {
+              if (this.title != this.target.innerText) {
+                this.target.innerText = this.title;
+              }
+              this.__lock = false;
+            }, 100);
           }
         }
         // fire event for reaction so we can update state elsewhere
@@ -181,6 +188,77 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
           pageBreakManager.elementsBetween(this).forEach((el) => {
             el.removeAttribute("data-hax-lock");
           });
+        }
+        // the magic a11y rewriter
+        if (!this._haxState && propName === "depth" && this.depth >= 0) {
+          pageBreakManager
+            .elementsBetween(this, "page-break", "h1,h2,h3,h4,h5,h6")
+            .forEach((el) => {
+              let tagNumber =
+                (el.getAttribute("data-original-level")
+                  ? new Number(
+                      el.getAttribute("data-original-level").replace("H", "")
+                    )
+                  : new Number(el.tagName.replace("H", ""))) + this.depth;
+              console.log;
+              tagNumber = tagNumber > 6 ? 6 : tagNumber;
+              const newH = document.createElement(`h${tagNumber}`);
+              newH.setAttribute("data-original-level", el.tagName);
+              for (var i = 0, l = el.attributes.length; i < l; ++i) {
+                newH.setAttribute(
+                  el.attributes.item(i).nodeName,
+                  el.attributes.item(i).nodeValue
+                );
+              }
+              newH.innerHTML = el.innerHTML;
+              el.parentNode.replaceChild(newH, el);
+            });
+        }
+        // hax state is a special case bc we want to edit in whats saved
+        // not what's interpretted
+        if (propName === "_haxState" && oldValue !== undefined) {
+          if (this._haxState) {
+            pageBreakManager
+              .elementsBetween(this, "page-break", "h1,h2,h3,h4,h5,h6")
+              .forEach((el) => {
+                if (el.getAttribute("data-original-level")) {
+                  let tagNumber = new Number(
+                    el.getAttribute("data-original-level").replace("H", "")
+                  );
+                  const newH = document.createElement(`h${tagNumber}`);
+                  for (var i = 0, l = el.attributes.length; i < l; ++i) {
+                    newH.setAttribute(
+                      el.attributes.item(i).nodeName,
+                      el.attributes.item(i).nodeValue
+                    );
+                  }
+                  newH.innerHTML = el.innerHTML;
+                  el.parentNode.replaceChild(newH, el);
+                }
+              });
+          } else {
+            pageBreakManager
+              .elementsBetween(this, "page-break", "h1,h2,h3,h4,h5,h6")
+              .forEach((el) => {
+                let tagNumber =
+                  (el.getAttribute("data-original-level")
+                    ? new Number(
+                        el.getAttribute("data-original-level").replace("H", "")
+                      )
+                    : new Number(el.tagName.replace("H", ""))) + this.depth;
+                tagNumber = tagNumber > 6 ? 6 : tagNumber;
+                const newH = document.createElement(`h${tagNumber}`);
+                newH.setAttribute("data-original-level", el.tagName);
+                for (var i = 0, l = el.attributes.length; i < l; ++i) {
+                  newH.setAttribute(
+                    el.attributes.item(i).nodeName,
+                    el.attributes.item(i).nodeValue
+                  );
+                }
+                newH.innerHTML = el.innerHTML;
+                el.parentNode.replaceChild(newH, el);
+              });
+          }
         }
       }
     });
@@ -223,6 +301,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       `,
     ];
   }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -237,6 +316,20 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
    */
   static get haxProperties() {
     return new URL(`./lib/page-break.haxProperties.json`, import.meta.url).href;
+  }
+  /**
+   * haxHooks
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+    };
+  }
+  /**
+   * ensure that when we flip states here that we are actively switching the original level var
+   */
+  haxeditModeChanged(value) {
+    this._haxState = value;
   }
 }
 customElements.define(PageBreak.tag, PageBreak);

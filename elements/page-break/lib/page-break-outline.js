@@ -85,11 +85,24 @@ export class PageBreakOutline extends HTMLElement {
             html += "</ul></li>" + "\n";
           }
         }
+        let depth = 0;
+        if (
+          i !== 0 &&
+          el.parent &&
+          this.target.querySelector(`page-break[path="${el.parent}"]`)
+        ) {
+          depth =
+            this.target.querySelector(`page-break[path="${el.parent}"]`).depth +
+            1;
+        }
         html +=
           "<li>" +
           "\n" +
-          `<a href="${el.path}" data-parent="${el.parent}">${el.title}</a>` +
+          `<a href="${el.path}" data-path="${el.path}" data-parent="${el.parent}" data-depth="${depth}">${el.title}</a>` +
           "\n";
+        // set back into the element how deep it is; weird I know but the element doesn't
+        // know this, the tree builder would though
+        el.depth = depth;
         // see if WE have children
         if (i != kids.length && kids[i + 1] && kids[i + 1].parent === el.path) {
           html += "<ul>" + "\n";
