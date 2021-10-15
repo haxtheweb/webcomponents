@@ -123,6 +123,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     );
   }
   disconnectedCallback() {
+    console.log("here");
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         detail: {
