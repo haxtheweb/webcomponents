@@ -2652,7 +2652,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   slotsFromSchema(schema, optionalOnly = false) {
     let settings = schema ? schema.settings : {},
       slotsList = [];
-    return Object.keys(settings || {})
+    return Object.keys({ ...(settings || {}) })
       .map((setting) =>
         (settings[setting] || []).filter((prop) => {
           let show = !optionalOnly || !prop.required;

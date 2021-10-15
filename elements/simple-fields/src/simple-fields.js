@@ -412,7 +412,6 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    autocomplete: "both",
                     justify: true,
                   },
                 },
@@ -541,14 +540,14 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    autocomplete: "both",
                     justify: true,
                   },
-                },
-                properties: {
-                  autocomplete: "autocomplete",
-                  justify: "justify",
-                  options: "options",
+                  properties: {
+                    autocomplete: "autocomplete",
+                    alwaysExpanded: "alwaysExpanded",
+                    displayAs: "displayAs",
+                    options: "options",
+                  },
                 },
               },
             },

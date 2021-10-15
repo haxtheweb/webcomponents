@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import "./lib/simple-toolbar-more-button.js";
+import "./lib/simple-toolbar-field.js";
+import "./lib/simple-toolbar-button-group.js";
 import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
 /**
  * @customElement
@@ -43,7 +45,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             z-index: 2;
             margin: 0;
             justify-content: space-between;
-            background-color: var(--simple-toolbar-border-bg);
+            background-color: var(--simple-toolbar-bg);
             font-size: inherit;
             margin: 0;
             padding: 0;
@@ -59,6 +61,13 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           :host([disabled]) {
             opacity: 0.6;
             pointer-events: none;
+          }
+          :host(:focus-within) {
+            border: 1px solid
+              var(
+                --simple-toolbar-hover-border-color,
+                var(--simple-toolbar-button-hover-border-color)
+              );
           }
           #buttons {
             flex-wrap: wrap;
@@ -120,6 +129,24 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           name: "alwaysExpanded",
           type: Boolean,
           attribute: "always-expanded",
+          reflect: true,
+        },
+        /**
+         * id of element controlled by toolbar
+         */
+        ariaControls: {
+          name: "ariaControls",
+          type: String,
+          attribute: "aria-controls",
+          reflect: true,
+        },
+        /**
+         * label for the toolbar
+         */
+        ariaLabel: {
+          name: "ariaLabel",
+          type: String,
+          attribute: "aria-label",
           reflect: true,
         },
         /**
@@ -307,9 +334,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
+      this.setAttribute("role", "toolbar");
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
+      this.addEventListener("toggle-toolbar", this._handleToggleToolbar);
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for
@@ -338,6 +367,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.onblur = (e) => (this.__focused = false);
       this.onmouseover = (e) => (this.__hovered = true);
       this.onmouseout = (e) => (this.__hovered = false);
+      this.addEventListener("keydown", this._handleKeydown);
       if (super.firstUpdated) super.firstUpdated(changedProperties);
     }
     updated(changedProperties) {
@@ -355,6 +385,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "hidden")
           this.setAttribute("aria-hidden", this.hidden ? "true" : "false");
       });
+      if (!this.currentItem && this.buttons)
+        this.setCurrentItem(this.buttons[0]);
       this.resizeToolbar();
     }
     /**
@@ -383,9 +415,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (!config.buttons || config.buttons.length < 1) return;
       let group = this._renderButtonGroup(config);
       (parent || this).appendChild(group);
-      config.buttons.forEach((buttonConfig) =>
-        this.addButton(buttonConfig, group)
-      );
+      this._addConfigItems(config.buttons, group);
       return group;
     }
     /**
@@ -413,6 +443,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       (button.shortcutKeys || "")
         .split(" ")
         .forEach((key) => delete this.shortcutKeys[key]);
+      button.removeEventListener("blur", (e) =>
+        this._handleFocusChange(button)
+      );
+      button.removeEventListener("focus", (e) =>
+        this._handleFocusChange(button)
+      );
     }
     /**
      * registers button when appended
@@ -426,8 +462,15 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       (button.shortcutKeys || "")
         .split(" ")
         .forEach((key) => (this.shortcutKeys[key] = button));
+      if (button.role !== "menuitem") button.isCurrentItem = false;
+      button.addEventListener("blur", (e) => this._handleFocusChange(button));
+      button.addEventListener("focus", (e) => this._handleFocusChange(button));
+      if (!this.currentItem) this.setCurrentItem(button);
     }
-
+    /**
+     * resizes toolbar based on element positions
+     *
+     */
     resizeToolbar() {
       if (this.alwaysExpanded) return;
       if (!this.collapsed) return;
@@ -443,6 +486,100 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         }
       });
       this.collapseDisabled = !!shown;
+      if (!this.currentItem) this.setCurrentItem(this.firstItem);
+    }
+    /**
+     * gets first main menu item
+     *
+     * @readonly
+     */
+    get firstItem() {
+      return !this.mainItems ? undefined : this.mainItems[0];
+    }
+    /**
+     * gets next main menu item
+     *
+     * @readonly
+     */
+    get nextItem() {
+      return this.getItem();
+    }
+    /**
+     * gets next main menu item
+     *
+     * @readonly
+     */
+    get previousItem() {
+      return this.getItem(-1);
+    }
+    /**
+     * gets last main menu item
+     *
+     * @readonly
+     */
+    get lastItem() {
+      return !this.buttons
+        ? undefined
+        : this.mainItems[this.mainItems.length - 1];
+    }
+    /**
+     * gets main menu items
+     *
+     * @readonly
+     */
+    get mainItems() {
+      return this.buttons.filter((b) => b.role !== "menuitem");
+    }
+    /**
+     * gets button's index in main menu
+     *
+     * @param {object} [item=this.currentItem]
+     * @returns
+     */
+    getItemIndex(item = this.currentItem) {
+      let index = -1;
+      this.mainItems.forEach((b, i) => {
+        if (b === item) index = i;
+      });
+      return index;
+    }
+    /**
+     * gets previous or next item based on offset
+     *
+     * @param {number} [offset=1]
+     * @returns
+     */
+    getItem(offset = 1) {
+      let index = this.getItemIndex(this.currentItem) + offset;
+      return !this.mainItems || index < 0 || this.mainItems.length <= index
+        ? undefined
+        : this.mainItems[index];
+    }
+    /**
+     * sets current item
+     *
+     * @param {object} item
+     */
+    setCurrentItem(item) {
+      if (this.currentItem) this.currentItem.isCurrentItem = false;
+      if (item && item.closest("[collapse-hide=true]")) this.collapsed = false;
+      this.currentItem = item;
+      if (this.currentItem) this.currentItem.isCurrentItem = true;
+    }
+    /**
+     * focuses on an item
+     *
+     * @param {object} item
+     */
+    focusOn(item) {
+      this.setCurrentItem(item);
+      this.currentItem.focus();
+      if (this.currentItem)
+        console.log(
+          "focus",
+          this.currentItem.label,
+          this.currentItem.focusableElement
+        );
     }
     /**
      * updates registered button, it needed
@@ -457,18 +594,108 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     /**
      * updates buttons based on change in config
      */
-    updateToolbar() {
+    updateToolbar(config) {
       if (!this || !this.config || this.config.length == 0) return;
       this.clearToolbar();
       if (typeof this.config != typeof []) this.config = JSON.parse(config);
-      this.config.forEach((config) => {
-        if (config.type === "button-group") {
-          this.addButtonGroup(config, this);
+      this._addConfigItems(this.config);
+      this.resizeToolbar();
+    }
+    /**
+     * loops through config to add items
+     *
+     * @param {array} items
+     */
+    _addConfigItems(items = this.config, parent = this) {
+      (items || []).forEach((config) => {
+        if (
+          config.type === "button-group" ||
+          config.type === "simple-toolbar-button-group"
+        ) {
+          this.addButtonGroup(config, parent);
         } else {
-          this.addButton(config, this);
+          this.addButton(config, parent);
         }
       });
-      this.resizeToolbar();
+    }
+    /**
+     * key codes by key
+     *
+     * @readonly
+     */
+    get keyCode() {
+      return {
+        TAB: 9,
+        ENTER: 13,
+        ESC: 27,
+        SPACE: 32,
+        PAGEUP: 33,
+        PAGEDOWN: 34,
+        END: 35,
+        HOME: 36,
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40,
+      };
+    }
+    /**
+     * handles keydown events
+     *
+     * @param {event} e
+     * @returns
+     */
+    _handleKeydown(e) {
+      let finished = false;
+      let key = this._shortcutKeysMatch(e);
+      if (key) return;
+      switch (e.keyCode) {
+        case this.keyCode.RIGHT:
+          this.focusOn(this.nextItem || this.firstItem);
+          finished = true;
+          break;
+
+        case this.keyCode.LEFT:
+          this.focusOn(this.previousItem || this.lastItem);
+          finished = true;
+          break;
+
+        case this.keyCode.HOME:
+          this.focusOn(this.firstItem);
+          finished = true;
+          break;
+
+        case this.keyCode.END:
+          this.focusOn(this.lastItem);
+          finished = true;
+          break;
+
+        case this.keyCode.UP:
+          this.focusOn(this.previousItem || this.lastItem);
+          finished = true;
+          break;
+
+        case this.keyCode.DOWN:
+          this.focusOn(this.nextItem || this.firstItem);
+          finished = true;
+          break;
+
+        default:
+          break;
+      }
+
+      if (finished) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }
+    /**
+     * handles focus changes and determines if toolbar still has focus;
+     *
+     */
+    _handleFocusChange() {
+      this.__focused = this.contains(document.activeElement);
+      console.log(this.currentItem, this.currentItem.focusableElement);
     }
     /**
      * handles appended button
@@ -531,6 +758,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         );
       }
     }
+    _handleToggleToolbar(e) {
+      this.collapsed =
+        e.detail && typeof e.detail !== typeof undefined
+          ? e.detail
+          : !this.collapsed;
+    }
     /**
      * creates a button element based on config object
      *
@@ -552,7 +785,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     _renderButtonGroup(config) {
-      let group = document.createElement("div");
+      let type =
+        !!config.type && config.type === "simpletoolbar-button-group"
+          ? config.type
+          : "div";
+      let group = document.createElement(type);
       group.setAttribute("class", "group");
       Object.keys(config).forEach((key) => (group[key] = config[key]));
       return group;

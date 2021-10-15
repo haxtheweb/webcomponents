@@ -97,11 +97,26 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           reflect: true,
         },
 
+        isCurrentItem: {
+          type: Boolean,
+          attribute: "is-current-item",
+          reflect: true,
+        },
+
         /**
          * Label for the icon.
          */
         label: {
           type: String,
+        },
+
+        /**
+         * for radio-button behavior
+         */
+        radio: {
+          attribute: "radio",
+          type: Boolean,
+          reflect: true,
         },
 
         /**
@@ -184,7 +199,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
+      this.radio = false;
       this.shortcutKeys = "";
+      this.isCurrentItem = true;
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
@@ -251,7 +268,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get isToggled() {
-      return !!this.toggles & !!this.toggled;
+      return (!!this.toggles || !!this.radio) & !!this.toggled;
     }
 
     updated(changedProperties) {
@@ -288,6 +305,23 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       );
       super.disconnectedCallback();
     }
+    /**
+     * sets focus to button
+     *
+     * @returns
+     */
+    focus() {
+      if (this.focusableElement) {
+        this.isCurrentItem = true;
+        this.focusableElement.focus();
+        console.log(
+          "focus",
+          this.label,
+          this.focusableElement,
+          document.activeElement
+        );
+      }
+    }
 
     /**
      * updates a button value based on whether or not button is toggled
@@ -312,6 +346,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggle();
     }
     /**
+     * handles keypress
+     *
+     * @param {event} e event
+     */
+    _handleKeys(e) {}
+    /**
      * customizable event for when shortcut keys are pressed
      *
      * @param {string} key
@@ -319,7 +359,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     _handleShortcutKeys(e, key) {}
 
     toggle() {
-      if (this.toggles) this.toggled = !this.toggled;
+      if (this.toggles || this.radio) this.toggled = !this.toggled;
+      this.dispatchEvent(
+        new CustomEvent("button-toggled", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
 
     click(e) {
@@ -338,6 +386,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           detail: this,
         })
       );
+    }
+
+    get focusableElement() {
+      return this.shadowRoot && this.shadowRoot.querySelector("#button")
+        ? this.shadowRoot.querySelector("#button")
+        : undefined;
     }
 
     /**
@@ -443,12 +497,40 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           >`;
     }
     /**
+     * template for inner part of button (label and icon) in order specified
+     *
+     * @readonly
+     */
+    get buttonInnerTemplate() {
+      return this.iconPosition !== "right" || this.iconPosition !== "bottom"
+        ? html`${this.labelTemplate} ${this.iconTemplate}`
+        : html`${this.iconTemplate} ${this.labelTemplate}`;
+    }
+    /**
      * template for button, based on whether or not the button toggles
      *
      * @readonly
      */
     get buttonTemplate() {
-      return this.toggles
+      return this.radio
+        ? html` <button
+              id="button"
+              aria-checked="${this.isToggled ? "true" : "false"}"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keypress="${this._handleKeys}"
+              @keydown="${this._handleKeydown}"
+              @blur="${this._handleBlur}"
+              part="button"
+              role="radio"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
+            >
+              ${this.buttonInnerTemplate}
+            </button>
+            ${this.tooltipTemplate}`
+        : this.toggles
         ? html` <button
               id="button"
               aria-pressed="${this.isToggled ? "true" : "false"}"
@@ -457,10 +539,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`
         : html` <button
@@ -470,10 +552,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?controls="${this.controls}"
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
-              tabindex="0"
               part="button"
+              tabindex="${this.isCurrentItem ? 1 : -1}"
             >
-              ${this.iconTemplate} ${this.labelTemplate}
+              ${this.buttonInnerTemplate}
             </button>
             ${this.tooltipTemplate}`;
     }
@@ -539,6 +621,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           simple-tooltip {
             z-index: -1;
           }
+          :host(:hover),
+          :host(:focus-within) {
+            z-index: var(--simple-toolbar-button-z-index, 2);
+          }
           :host(:hover) simple-tooltip,
           :host(:focus-within) simple-tooltip {
             z-index: var(--simple-toolbar-button-z-index, 2);
@@ -577,7 +663,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([disabled]) {
             pointer-events: none;
           }
-          button[part="button"] {
+          *[part="button"] {
             display: flex;
             margin: 0;
             white-space: nowrap;
@@ -610,12 +696,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             );
             z-index: 1;
           }
-          :host(:hover),
-          :host(:focus),
-          :host(:focus-within) {
+          :host(:hover) {
             z-index: 2;
           }
-          button[part="button"] {
+          :host(:focus-within),
+          :host(:focus) {
+            z-index: 3;
+          }
+          *[part="button"] {
             font-family: inherit;
             font-size: inherit;
             min-width: var(
@@ -633,49 +721,41 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             justify-content: var(--simple-toolbar-button-justify, center);
           }
 
-          :host([icon-position="top"]) button[part="button"] {
+          :host([icon-position="top"]) *[part="button"],
+          :host([icon-position="bottom"]) *[part="button"] {
             flex-direction: column;
           }
-          :host([icon-position="bottom"]) button[part="button"] {
-            flex-direction: column-reverse;
-          }
-          :host([icon-position="right"]) button[part="button"] {
-            flex-direction: row-reverse;
-          }
-          :host([align-vertical="top"][icon-position="left"])
-            button[part="button"],
-          :host([align-vertical="top"][icon-position="right"])
-            button[part="button"],
+          :host([align-vertical="top"][icon-position="left"]) *[part="button"],
+          :host([align-vertical="top"][icon-position="right"]) *[part="button"],
           :host([align-horizontal="left"][icon-position="top"])
-            button[part="button"],
+            *[part="button"],
           :host([align-horizontal="left"][icon-position="bottom"])
-            button[part="button"] {
+            *[part="button"] {
             align-items: flex-start;
           }
           :host([align-vertical="bottom"][icon-position="left"])
-            button[part="button"],
+            *[part="button"],
           :host([align-vertical="bottom"][icon-position="right"])
-            button[part="button"],
+            *[part="button"],
           :host([align-horizontal="right"][icon-position="top"])
-            button[part="button"],
+            *[part="button"],
           :host([align-horizontal="right"][icon-position="bottom"]) {
             align-items: flex-end;
           }
           :host([align-horizontal="left"][icon-position="left"])
-            button[part="button"],
+            *[part="button"],
           :host([align-horizontal="left"][icon-position="right"])
-            button[part="button"],
-          :host([align-vertical="top"][icon-position="top"])
-            button[part="button"],
+            *[part="button"],
+          :host([align-vertical="top"][icon-position="top"]) *[part="button"],
           :host([align-vertical="top"][icon-position="bottom"]) {
             justify-content: flex-start;
           }
           :host([align-horizontal="right"][icon-position="left"])
-            button[part="button"],
+            *[part="button"],
           :host([align-horizontal="right"][icon-position="right"])
-            button[part="button"],
+            *[part="button"],
           :host([align-vertical="bottom"][icon-position="top"])
-            button[part="button"],
+            *[part="button"],
           :host([align-vertical="bottom"][icon-position="bottom"]) {
             justify-content: flex-end;
           }
@@ -691,7 +771,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     static get simpleButtonThemeStyles() {
       return [
         css`
-          button[part="button"] {
+          *[part="button"] {
             color: var(--simple-toolbar-button-color);
             border-color: var(
               --simple-toolbar-button-border-color,
@@ -707,20 +787,35 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             border-style: solid;
             text-transform: unset;
           }
-          button[part="button"][aria-pressed="true"] {
+          :host([radio]) *[part="button"] {
+            border-radius: var(--simple-toolbar-radio-border-radius, 0px);
+          }
+          :host([radio]:last-of-type) *[part="button"] {
+            border-top-right-radius: var(--simple-toolbar-border-radius, 3px);
+            border-bottom-right-radius: var(
+              --simple-toolbar-border-radius,
+              3px
+            );
+          }
+          :host([radio]:first-of-type) *[part="button"] {
+            border-top-left-radius: var(--simple-toolbar-border-radius, 3px);
+            border-bottom-left-radius: var(--simple-toolbar-border-radius, 3px);
+          }
+          *[part="button"][aria-checked="true"],
+          *[part="button"][aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
             border-color: var(--simple-toolbar-button-toggled-border-color);
             background-color: var(--simple-toolbar-button-toggled-bg);
             opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
-          button[part="button"]:focus,
-          button[part="button"]:hover {
+          *[part="button"]:focus,
+          *[part="button"]:hover {
             color: var(--simple-toolbar-button-hover-color);
             background-color: var(--simple-toolbar-button-hover-bg);
             border-color: var(--simple-toolbar-button-hover-border-color);
             opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
           }
-          button[part="button"][disabled] {
+          *[part="button"][disabled] {
             cursor: not-allowed;
             color: var(--simple-toolbar-button-disabled-color, unset);
             background-color: var(--simple-toolbar-button-disabled-bg, unset);

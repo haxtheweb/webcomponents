@@ -103,7 +103,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       ...super.properties,
       displayAs: {
         type: String,
-        attribute: "grid",
+        attribute: "display-as",
         reflect: true,
       },
       alwaysExpanded: {
@@ -240,7 +240,6 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       ];
       this.open();
     }
-    console.log(filter, this.filteredOptions);
   }
 }
 window.customElements.define(SimpleFieldsUrlCombo.tag, SimpleFieldsUrlCombo);

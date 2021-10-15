@@ -204,17 +204,20 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         /**
          * menu items in array form to move from prev to next
          */
-        __menuItems: {
+        menuItems: {
           type: Array,
         },
       };
     }
     constructor() {
       super();
-      this.__menuItems = [];
       this.position = "bottom";
       this.positionAlign = "start";
       this.offset = 0;
+      this.menuItems = [];
+      [...this.children]
+        .filter((n) => n.slot === "menuitem")
+        .forEach((item) => this.addItem(item));
       this.addEventListener("keydown", this._handleKeydown);
       this.addEventListener("click", this._handleClick);
       this.addEventListener("focus", this._handleFocus);
@@ -281,7 +284,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get listItemTemplate() {
-      return html`<slot></slot>`;
+      return html`<slot name="menuitem"></slot><slot></slot>`;
     }
     /**
      * key code translations as object
@@ -311,8 +314,10 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {boolean} force close even if other items have focus
      * @memberof A11yMenuButton
      */
-    close(force) {
+    close(force = false) {
+      console.log("close", force, this.focused);
       if (force || (!this.focused && !this.hovered)) {
+        console.log("close");
         this.expanded = false;
         /**
          * Fires when menu is closed
@@ -334,6 +339,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     open() {
+      console.log("open");
       this.expanded = true;
       /**
        * Fires when menu is opened
@@ -354,6 +360,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focus() {
+      console.log("focus menubutton");
       if (this.shadowRoot && this.shadowRoot.querySelector("#menubutton")) {
         this.shadowRoot.querySelector("#menubutton").focus();
       }
@@ -365,7 +372,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focusOn(item) {
-      item = item || this.firstItem();
+      console.log("fo", item);
+      item = item || this.firstItem;
       if (item) {
         this.open();
         this.focused = true;
@@ -380,6 +388,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focusByCharacter(char) {
+      console.log("fbc", char);
       var start,
         index,
         char = char.toLowerCase(),
@@ -393,8 +402,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         };
 
       // Get start index for search based on position of currentItem
-      start = this.__menuItems.indexOf(this.currentItem) + 1;
-      if (start === this.__menuItems.length) {
+      start = this.menuItems.indexOf(this.currentItem) + 1;
+      if (start === this.menuItems.length) {
         start = 0;
       }
 
@@ -408,7 +417,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
 
       // If match was found...
       if (index > -1) {
-        this.__menuItems[index].focus();
+        this.menuItems[index].focus();
       }
     }
     /**
@@ -417,8 +426,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @returns {object}
      * @memberof A11yMenuButton
      */
-    firstItem() {
-      return this.querySelector("a11y-menu-button-item");
+    get firstItem() {
+      return this.menuItems[0];
     }
     /**
      * gets previous menu item
@@ -426,10 +435,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @returns {object}
      * @memberof A11yMenuButton
      */
-    previousItem() {
-      return this.currentItem
-        ? this.currentItem.previousElementSibling
-        : undefined;
+    get previousItem() {
+      return this.getItem(-1);
     }
     /**
      * gets next menu item
@@ -437,8 +444,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @returns {object}
      * @memberof A11yMenuButton
      */
-    nextItem() {
-      return this.currentItem ? this.currentItem.nextElementSibling : undefined;
+    get nextItem() {
+      return this.getItem();
     }
     /**
      * gets last menu item
@@ -446,8 +453,47 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @returns {object}
      * @memberof A11yMenuButton
      */
-    lastItem() {
-      return this.querySelector("a11y-menu-button-item:last-child");
+    get lastItem() {
+      return this.menuItems[this.menuItems.length - 1];
+    }
+    getItemIndex() {
+      let index = -1;
+      this.menuItems.forEach((b, i) => {
+        if (b === this.currentItem) index = i;
+      });
+      return index;
+    }
+    getItem(offset = 1) {
+      let index = this.getItemIndex(this.currentItem) + offset;
+      return !this.menuItems || index < 0 || this.menuItems.length <= index
+        ? undefined
+        : this.menuItems[index];
+    }
+    get itemListeners() {
+      return {
+        click: this._handleItemClick,
+        focus: this._handleFocus,
+        blur: this._handleBlur,
+        mouseover: this._handleMouseover,
+        mouseout: this._handleMouseout,
+        keydown: this._handleItemKeydown,
+      };
+    }
+    addItem(item) {
+      let listeners = this.itemListeners;
+      this.menuItems = this.menuItems || [];
+      Object.keys(listeners).forEach((evt) =>
+        item.addEventListener(evt, listeners[evt].bind(this))
+      );
+      this.menuItems.push(item);
+    }
+    removeItem(item) {
+      let listeners = this.itemListeners;
+      if (this.menuItems)
+        this.menuItems = [...this.menuItems.filter((i) => item !== i)];
+      Object.keys(listeners).forEach((evt) =>
+        item.removeEventListener(evt, listeners[evt].bind(this))
+      );
     }
     /**
      * when a new menu item is added to slot,
@@ -457,27 +503,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleAddItem(event) {
-      event.stopPropagation();
-      this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
-      if (event.detail) {
-        event.detail.addEventListener("keydown", (e) =>
-          this._handleItemKeydown(e, event.detail)
-        );
-        event.detail.addEventListener(
-          "click",
-          this._handleItemClick.bind(this)
-        );
-        event.detail.addEventListener("focus", this._handleFocus.bind(this));
-        event.detail.addEventListener("blur", this._handleBlur.bind(this));
-        event.detail.addEventListener(
-          "mouseover",
-          this._handleMouseover.bind(this)
-        );
-        event.detail.addEventListener(
-          "mouseout",
-          this._handleMouseout.bind(this)
-        );
-      }
+      if (event.stopPropagation) event.stopPropagation();
+      if (event.detail) this.addItem(event.detail);
     }
     /**
      * when a new menu item is removed from slot,
@@ -488,29 +515,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleRemoveItem(event) {
       event.stopPropagation();
-      this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
-      if (event.detail) {
-        event.detail.removeEventListener("keydown", (e) =>
-          this._handleItemKeydown(e, event.detail)
-        );
-        event.detail.removeEventListener(
-          "click",
-          this._handleItemClick.bind(this)
-        );
-        event.detail.removeEventListener("focus", this._handleFocus.bind(this));
-        event.detail.removeEventListener(
-          "blur",
-          this._handleItemBlur.bind(this)
-        );
-        event.detail.removeEventListener(
-          "mouseover",
-          this._handleMouseover.bind(this)
-        );
-        event.detail.removeEventListener(
-          "mouseout",
-          this._handleMouseout.bind(this)
-        );
-      }
+      if (event.detail) this.addItem(event.detail);
     }
     /**
      * when menu item is clicked,
@@ -530,15 +535,15 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           detail: event,
         })
       );
+      event.stopPropagation();
     }
     /**
      * handles menu item keydown
      *
      * @param {event} event
-     * @param {object} item
      * @memberof A11yMenuButton
      */
-    _handleItemKeydown(event, item) {
+    _handleItemKeydown(event) {
       var flag = false,
         char = event.key,
         isPrintableCharacter = (str) => str.length === 1 && str.match(/\S/);
@@ -572,24 +577,24 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             break;
 
           case this.keyCode.UP:
-            this.focusOn(this.previousItem() || this.lastItem());
+            this.focusOn(this.previousItem || this.lastItem);
             flag = true;
             break;
 
           case this.keyCode.DOWN:
-            this.focusOn(this.nextItem() || this.firstItem());
+            this.focusOn(this.nextItem || this.firstItem);
             flag = true;
             break;
 
           case this.keyCode.HOME:
           case this.keyCode.PAGEUP:
-            this.currentItem = this.firstItem();
+            this.currentItem = this.firstItem;
             flag = true;
             break;
 
           case this.keyCode.END:
           case this.keyCode.PAGEDOWN:
-            this.currentItem = this.lastItem();
+            this.currentItem = this.lastItem;
             flag = true;
             break;
 
@@ -612,16 +617,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       }
     }
     /**
-     * handles when menu item loses focus
-     *
-     * @param {event} event
-     * @memberof A11yMenuButton
-     */
-    _handleItemBlur(event) {
-      this.focused = false;
-      setTimeout(this.close(), 300);
-    }
-    /**
      * handles menu button keydown
      *
      * @param {event} event
@@ -634,13 +629,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         case this.keyCode.SPACE:
         case this.keyCode.RETURN:
         case this.keyCode.DOWN:
-          this.focusOn(this.firstItem());
+          this.focusOn(this.firstItem);
           flag = true;
           break;
 
         case this.keyCode.UP:
           if (this.popupMenu) {
-            this.focusOn(this.lastItem());
+            this.focusOn(this.lastItem);
             flag = true;
           }
           break;
@@ -664,7 +659,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       if (this.expanded) {
         this.close(true);
       } else {
-        this.focusOn(this.firstItem());
+        this.focusOn(this.firstItem);
       }
     }
     /**
