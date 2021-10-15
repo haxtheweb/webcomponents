@@ -123,7 +123,6 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     );
   }
   disconnectedCallback() {
-    console.log("here");
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         detail: {
@@ -201,7 +200,6 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                       el.getAttribute("data-original-level").replace("H", "")
                     )
                   : new Number(el.tagName.replace("H", ""))) + this.depth;
-              console.log;
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
               const newH = document.createElement(`h${tagNumber}`);
               newH.setAttribute("data-original-level", el.tagName);
@@ -213,6 +211,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
               }
               newH.innerHTML = el.innerHTML;
               el.parentNode.replaceChild(newH, el);
+              this.target = newH;
             });
         }
         // hax state is a special case bc we want to edit in whats saved
@@ -235,6 +234,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                   }
                   newH.innerHTML = el.innerHTML;
                   el.parentNode.replaceChild(newH, el);
+                  this.target = newH;
                 }
               });
           } else {
@@ -258,6 +258,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                 }
                 newH.innerHTML = el.innerHTML;
                 el.parentNode.replaceChild(newH, el);
+                this.target = newH;
               });
           }
         }

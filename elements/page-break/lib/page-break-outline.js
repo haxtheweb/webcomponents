@@ -37,7 +37,6 @@ export class PageBreakOutline extends HTMLElement {
   // really early calls for changes in our page break hierarchy
   // and then as long as we do have a parent, we can perform the replacement
   rerender() {
-    console.log(">>>>");
     // very simple debounce
     if (!this.__lock) {
       this.__lock = true;
