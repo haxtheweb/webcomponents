@@ -2,14 +2,292 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "page-break-manager",
+      "path": "./lib/page-break-manager.js",
+      "properties": [
+        {
+          "name": "breaks",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "page-break-outline",
+      "path": "./lib/page-break-outline.js",
+      "attributes": [
+        {
+          "name": "selector"
+        }
+      ],
+      "properties": [
+        {
+          "name": "target"
+        },
+        {
+          "name": "selector",
+          "attribute": "selector"
+        },
+        {
+          "name": "div"
+        }
+      ]
+    },
+    {
       "name": "page-break",
       "path": "./page-break.js",
-      "description": "`page-break`\n`a visual break but also helps manage hierarchy`"
+      "attributes": [
+        {
+          "name": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"newPage\""
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "published",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "lock",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "depth",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "uuid",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"newPage\":\"New page\"}"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "schemaMap",
+          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+          "type": "object",
+          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"newPage\""
+        },
+        {
+          "name": "path",
+          "attribute": "path",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "published",
+          "attribute": "published",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "lock",
+          "attribute": "lock",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "depth",
+          "attribute": "depth",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "uuid",
+          "attribute": "uuid",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"newPage\":\"New page\"}"
+        },
+        {
+          "name": "schemaResourceID",
+          "attribute": "schema-resource-id",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "schemaMap",
+          "attribute": "schemaMap",
+          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+          "type": "object",
+          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
+        }
+      ],
+      "events": [
+        {
+          "name": "page-break-registration"
+        },
+        {
+          "name": "page-break-change"
+        }
+      ]
+    },
+    {
+      "name": "page-break-manager",
+      "path": "./page-break.umd.js"
     },
     {
       "name": "page-break",
       "path": "./src/page-break.js",
-      "description": "`page-break`\n`a visual break but also helps manage hierarchy`"
+      "attributes": [
+        {
+          "name": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"newPage\""
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "published",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "lock",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "depth",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "uuid",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"newPage\":\"New page\"}"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "schemaMap",
+          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+          "type": "object",
+          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"newPage\""
+        },
+        {
+          "name": "path",
+          "attribute": "path",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "published",
+          "attribute": "published",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "lock",
+          "attribute": "lock",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "depth",
+          "attribute": "depth",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "uuid",
+          "attribute": "uuid",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"newPage\":\"New page\"}"
+        },
+        {
+          "name": "schemaResourceID",
+          "attribute": "schema-resource-id",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "schemaMap",
+          "attribute": "schemaMap",
+          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+          "type": "object",
+          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
+        }
+      ],
+      "events": [
+        {
+          "name": "page-break-registration"
+        },
+        {
+          "name": "page-break-change"
+        }
+      ]
     }
   ]
 }

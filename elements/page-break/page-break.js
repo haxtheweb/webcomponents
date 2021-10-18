@@ -54,6 +54,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.published = true;
     this.lock = false;
     this.depth = 0;
+    this.uuid = null;
     this._haxState = false;
   }
   static get properties() {
@@ -65,6 +66,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       published: { type: Boolean, reflect: true },
       lock: { type: Boolean, reflect: true },
       depth: { type: Number, reflect: true },
+      uuid: { type: String, reflect: true },
       _haxState: { type: Boolean },
     };
   }
@@ -80,12 +82,26 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       this.title = this.nextElementSibling.innerText;
       this.target = this.nextElementSibling;
     } else {
-      // @todo need to have logic to figure out what headings proceed this one
-      // HAX should be able to tell us this
-      this.target = document.createElement("h2");
-      this.target.innerText = this.title;
-      this.target.setAttribute("data-hax-lock", "data-hax-lock");
-      this.parentNode.insertBefore(this.target, this.nextElementSibling);
+      // we are going to inject a title element possibly so pause
+      // to make sure there wasn't some timing in rendering before
+      // we accidentally inject an element
+      setTimeout(() => {
+        if (
+          this.nextElementSibling &&
+          this.nextElementSibling.tagName &&
+          ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+            this.nextElementSibling.tagName
+          )
+        ) {
+          this.title = this.nextElementSibling.innerText;
+          this.target = this.nextElementSibling;
+        } else {
+          this.target = document.createElement("h2");
+          this.target.innerText = this.title;
+          this.target.setAttribute("data-hax-lock", "data-hax-lock");
+          this.parentNode.insertBefore(this.target, this.nextElementSibling);
+        }
+      }, 100);
     }
     this.observer = new MutationObserver(() => {
       // lock ensures that title update, then updating hte innerText
@@ -275,6 +291,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     return [
       css`
         :host {
+          display: none;
+        }
+        :host([data-hax-layout]),
+        :host([data-hax-ray]) {
           display: block;
           margin: 20px 0;
           padding: 20px;

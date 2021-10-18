@@ -7,13 +7,17 @@
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
-    "groups": ["Content", "CMS"]
+    "groups": ["Content", "CMS"],
+    "handles": [],
+    "meta": {
+      "author": "ELMS:LN"
+    }
   },
   "settings": {
     "configure": [
       {
         "property": "title",
-        "title": "Page title",
+        "title": "Title",
         "description": "Title seen in the theme / first heading",
         "inputMethod": "text"
       },
@@ -36,6 +40,24 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
-  }
+    "advanced": [
+      {
+        "property": "uuid",
+        "title": "Uniuque ID",
+        "description": "Only set this manually if you have a reason to.",
+        "inputMethod": "text"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "page-break",
+      "content": "",
+      "properties": {
+        "published": true,
+        "lock": false,
+        "uuid": "new"
+      }
+    }
+  ]
 }
