@@ -112,31 +112,39 @@ export class PageBreakManagerEl extends HTMLElement {
         }
       });
     }
-    // breaks updated, so we need to recalculate all headings we find
-    this.breaks.forEach((element) => {
-      this.elementsBetween(element, "page-break", "h1,h2,h3,h4,h5,h6").forEach(
-        (el) => {
-          let tagNumber =
-            (el.getAttribute("data-original-level")
-              ? new Number(
-                  el.getAttribute("data-original-level").replace("H", "")
-                )
-              : new Number(el.tagName.replace("H", ""))) + element.depth;
-          tagNumber = tagNumber > 6 ? 6 : tagNumber;
-          const newH = document.createElement(`h${tagNumber}`);
-          newH.setAttribute("data-original-level", el.tagName);
-          for (var i = 0, l = el.attributes.length; i < l; ++i) {
-            newH.setAttribute(
-              el.attributes.item(i).nodeName,
-              el.attributes.item(i).nodeValue
-            );
-          }
-          newH.innerHTML = el.innerHTML;
-          el.parentNode.replaceChild(newH, el);
-          element.target = newH;
-        }
-      );
-    });
+    if (!this.__lock) {
+      this.__lock = true;
+      setTimeout(() => {
+        // breaks updated, so we need to recalculate all headings we find
+        this.breaks.forEach((element) => {
+          this.elementsBetween(
+            element,
+            "page-break",
+            "h1,h2,h3,h4,h5,h6"
+          ).forEach((el) => {
+            let tagNumber =
+              (el.getAttribute("data-original-level")
+                ? new Number(
+                    el.getAttribute("data-original-level").replace("H", "")
+                  )
+                : new Number(el.tagName.replace("H", ""))) + element.depth;
+            tagNumber = tagNumber > 6 ? 6 : tagNumber;
+            const newH = document.createElement(`h${tagNumber}`);
+            newH.setAttribute("data-original-level", el.tagName);
+            for (var i = 0, l = el.attributes.length; i < l; ++i) {
+              newH.setAttribute(
+                el.attributes.item(i).nodeName,
+                el.attributes.item(i).nodeValue
+              );
+            }
+            newH.innerHTML = el.innerHTML;
+            el.parentNode.replaceChild(newH, el);
+            element.target = newH;
+          });
+        });
+        this.__lock = false;
+      }, 10);
+    }
   }
 }
 

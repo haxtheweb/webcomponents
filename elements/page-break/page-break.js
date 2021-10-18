@@ -53,9 +53,18 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.path = "#";
     this.published = true;
     this.lock = false;
+    this.target = null;
     this.depth = 0;
     this.uuid = null;
     this._haxState = false;
+    this.observer = new MutationObserver(() => {
+      // lock ensures that title update, then updating hte innerText
+      // doesn't generate another mutation record
+      if (this.title != this.target.innerText) {
+        this.__moUpdate = true;
+        this.title = this.target.innerText;
+      }
+    });
   }
   static get properties() {
     return {
@@ -81,37 +90,34 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     ) {
       this.title = this.nextElementSibling.innerText;
       this.target = this.nextElementSibling;
+      this.setupTargetData(this.target);
     } else {
       // we are going to inject a title element possibly so pause
       // to make sure there wasn't some timing in rendering before
       // we accidentally inject an element
       setTimeout(() => {
-        if (
-          this.nextElementSibling &&
-          this.nextElementSibling.tagName &&
-          ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-            this.nextElementSibling.tagName
-          )
-        ) {
-          this.title = this.nextElementSibling.innerText;
-          this.target = this.nextElementSibling;
-        } else {
-          this.target = document.createElement("h2");
-          this.target.innerText = this.title;
-          this.target.setAttribute("data-hax-lock", "data-hax-lock");
-          this.parentNode.insertBefore(this.target, this.nextElementSibling);
+        if (this.target === null) {
+          if (
+            this.nextElementSibling &&
+            this.nextElementSibling.tagName &&
+            ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+              this.nextElementSibling.tagName
+            )
+          ) {
+            this.title = this.nextElementSibling.innerText;
+            this.target = this.nextElementSibling;
+            this.setupTargetData(this.target);
+          } else {
+            let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
+            let newH = document.createElement(tagName);
+            newH.setAttribute("data-original-level", "H2");
+            newH.innerText = this.title;
+            this.parentNode.insertBefore(newH, this.nextElementSibling);
+            this.setupTargetData(newH);
+          }
         }
-      }, 100);
+      }, 0);
     }
-    this.observer = new MutationObserver(() => {
-      // lock ensures that title update, then updating hte innerText
-      // doesn't generate another mutation record
-      if (this.title != this.target.innerText) {
-        this.__moUpdate = true;
-        this.title = this.target.innerText;
-      }
-    });
-    this.setupTargetData(this.target);
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         composed: true,
@@ -161,8 +167,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     if (this.target) {
       this.observer.disconnect();
     }
+    this.target = null;
     this.target = newTarget;
-    this.target.setAttribute("data-page-break-title", "data-page-break-title");
     this.observer.observe(this.target, {
       characterData: true,
       childList: true,
@@ -232,8 +238,8 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                 );
               }
               newH.innerHTML = el.innerHTML;
-              el.parentNode.replaceChild(newH, el);
               this.setupTargetData(newH);
+              el.parentNode.replaceChild(newH, el);
             });
         }
         // hax state is a special case bc we want to edit in whats saved
