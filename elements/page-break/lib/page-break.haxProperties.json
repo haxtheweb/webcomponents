@@ -18,6 +18,12 @@
         "inputMethod": "text"
       },
       {
+        "property": "parent",
+        "title": "Parent",
+        "description": "Path of the parent page this page should sit under",
+        "inputMethod": "text"
+      },
+      {
         "property": "published",
         "title": "Published",
         "description": "Unpublished pages are not visible to end users",
