@@ -87,19 +87,15 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       this.target.setAttribute("data-hax-lock", "data-hax-lock");
       this.parentNode.insertBefore(this.target, this.nextElementSibling);
     }
-    this.target.setAttribute("data-page-break-title", "data-page-break-title");
     this.observer = new MutationObserver(() => {
       // lock ensures that title update, then updating hte innerText
       // doesn't generate another mutation record
-      if (!this.__lock && this.title != this.target.innerText) {
+      if (this.title != this.target.innerText) {
+        this.__moUpdate = true;
         this.title = this.target.innerText;
       }
     });
-    this.observer.observe(this.target, {
-      characterData: true,
-      childList: true,
-      subtree: true,
-    });
+    this.setupTargetData(this.target);
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         composed: true,
@@ -144,6 +140,19 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.observer.disconnect();
     super.disconnectedCallback();
   }
+  // setup the target data
+  setupTargetData(newTarget) {
+    if (this.target) {
+      this.observer.disconnect();
+    }
+    this.target = newTarget;
+    this.target.setAttribute("data-page-break-title", "data-page-break-title");
+    this.observer.observe(this.target, {
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -154,14 +163,11 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
           // change title text to match title if updated but delay
           // to avoid input spamming as this could generate a lot of change records
           // but don't just set it as it would generate another change record
-          if (!this.__lock) {
-            this.__lock = true;
-            setTimeout(() => {
-              if (this.title != this.target.innerText) {
-                this.target.innerText = this.title;
-              }
-              this.__lock = false;
-            }, 100);
+          if (this.__moUpdate) {
+            // skips the update of innerText to match
+            this.__moUpdate = false;
+          } else if (this.title != this.target.innerText) {
+            this.target.innerText = this.title;
           }
         }
         // fire event for reaction so we can update state elsewhere
@@ -211,7 +217,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
               }
               newH.innerHTML = el.innerHTML;
               el.parentNode.replaceChild(newH, el);
-              this.target = newH;
+              this.setupTargetData(newH);
             });
         }
         // hax state is a special case bc we want to edit in whats saved
@@ -234,7 +240,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                   }
                   newH.innerHTML = el.innerHTML;
                   el.parentNode.replaceChild(newH, el);
-                  this.target = newH;
+                  this.setupTargetData(newH);
                 }
               });
           } else {
@@ -258,7 +264,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                 }
                 newH.innerHTML = el.innerHTML;
                 el.parentNode.replaceChild(newH, el);
-                this.target = newH;
+                this.setupTargetData(newH);
               });
           }
         }

@@ -30,8 +30,7 @@
     </script>
     <div class="vertical-section-container centered">
       <grid-plate>
-        <page-break-outline slot="col-1" selector="#container"></page-break-outline>
-        <div slot="col-2" id="container">
+        <div slot="col-1" id="container">
           <h2>This is a title for the heading 2</h2>
           <p>Stuff and things</p>
           <page-break path="page-1" title="page 1"></page-break>
@@ -48,15 +47,6 @@
           <p>Cool and whatever p tag we have</p>
           <h2>Some sub content</h2>
           <p>Cool and whatever p tag we have</p>
-          <h3>Other sub content</h3>
-          <p>Cool and whatever p tag we have</p>
-          <h3>Other sub content</h3>
-          <p>Cool and whatever p tag we have</p>
-          <h4>Other sub content</h4>
-          <p>Cool and whatever p tag we have</p>
-          <h5>Other sub content</h5>
-          <p>Cool and whatever p tag we have</p>
-          <h6>Other sub content</h6>
           <p>Cool and whatever p tag we have</p>
           <h4>Other sub content</h4>
           <p>Cool and whatever p tag we have</p>
@@ -84,6 +74,7 @@
           <page-break path="test/cool-5" title="top level child"></page-break>
           <h4>Less</h4>
         </div>
+        <page-break-outline slot="col-2" selector="#container"></page-break-outline>
       </grid-plate>
     </div>
   </body>
