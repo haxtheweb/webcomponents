@@ -37,6 +37,9 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             --simple-icon-width: 18px;
             margin-left: -2px;
           }
+          #icon + #dropdownicon {
+            margin-left: -6px;
+          }
         `,
       ];
     }
