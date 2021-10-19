@@ -2,6 +2,7 @@ export class PageBreakManagerEl extends HTMLElement {
   constructor() {
     super();
     this.breaks = [];
+    this._timer = 0;
   }
   /**
    * get all elements between a target and a selector; inspired by
@@ -88,6 +89,10 @@ export class PageBreakManagerEl extends HTMLElement {
 
   connectedCallback() {
     window.addEventListener(
+      "vaadin-router-location-changed",
+      this.routeChanged.bind(this)
+    );
+    window.addEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
     );
@@ -95,9 +100,32 @@ export class PageBreakManagerEl extends HTMLElement {
 
   disconnectedCallback() {
     window.removeEventListener(
+      "vaadin-router-location-changed",
+      this.routeChanged.bind(this)
+    );
+    window.removeEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
     );
+  }
+  // push an item into history from a page-break's path based on visibility
+  // the elements will self report their visibility status and then this callback
+  // will just pick the top most visible item and claim it is the route
+  updateVisibleAsActive() {
+    clearTimeout(this._timer);
+    this._timer = setTimeout(() => {
+      if (document.querySelector("page-break[element-visible]")) {
+        window.history.pushState(
+          {},
+          null,
+          document.querySelector("page-break[element-visible]").path
+        );
+      }
+    }, 500);
+  }
+  // vaadin route changed
+  routeChanged(e) {
+    console.log(e.detail);
   }
   registerPageBreak(e) {
     if (e.detail.action === "add") {

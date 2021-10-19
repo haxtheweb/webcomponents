@@ -26,6 +26,8 @@ const IntersectionObserverMixin = function (SuperClass) {
       this.IORemoveOnVisible = true;
       // delay in observing, performance reasons for minimum at 100
       this.IODelay = 100;
+      // root element of the viewport; null means the screen
+      this.IORoot = null;
     }
     /**
      * Properties, LitElement format
@@ -56,7 +58,7 @@ const IntersectionObserverMixin = function (SuperClass) {
         this.intersectionObserver = new IntersectionObserver(
           this.handleIntersectionCallback.bind(this),
           {
-            root: document.rootElement,
+            root: this.IORoot,
             rootMargin: this.IORootMargin,
             threshold: this.IOThresholds,
             delay: this.IODelay,
@@ -72,6 +74,9 @@ const IntersectionObserverMixin = function (SuperClass) {
       // if we have an intersection observer, disconnect it
       if (this.intersectionObserver) {
         this.intersectionObserver.disconnect();
+        // edge case where element is moved in the DOM so that
+        // connnected will set the event back up accurately
+        this.elementVisible = false;
       }
       if (super.disconnectedCallback) {
         super.disconnectedCallback();
@@ -90,6 +95,8 @@ const IntersectionObserverMixin = function (SuperClass) {
           if (this.IORemoveOnVisible) {
             this.intersectionObserver.disconnect();
           }
+        } else {
+          this.elementVisible = false;
         }
       }
     }

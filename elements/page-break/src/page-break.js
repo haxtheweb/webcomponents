@@ -2,19 +2,16 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, LitElement } from "lit";
+import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-//import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
-// might be optional / using hooks to check in or a manager that does this
-//import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 //import { toJS, autorun } from "mobx";
 /**
   * `page-break`
   * `a visual break but also helps manage hierarchy`
-  * Needs a uuid
     Path/node / it's actually the route!
 
     Could have intersection observer of visibility or test on scroll / resize
@@ -40,7 +37,9 @@ import { pageBreakManager } from "./lib/page-break-manager.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 const iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
-export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
+export class PageBreak extends IntersectionObserverMixin(
+  I18NMixin(SchemaBehaviors(LitElement))
+) {
   static get tag() {
     return "page-break";
   }
@@ -55,8 +54,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.lock = false;
     this.target = null;
     this.depth = 0;
-    this.uuid = null;
+    this.itemId = null;
     this._haxState = false;
+    this.IORemoveOnVisible = false;
+    this.IODelay = 250;
     this.observer = new MutationObserver(() => {
       // lock ensures that title update, then updating hte innerText
       // doesn't generate another mutation record
@@ -67,15 +68,19 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     });
   }
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
-      ...super.properties,
+      ...props,
       title: { type: String, reflect: true },
       path: { type: String },
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
       lock: { type: Boolean, reflect: true },
       depth: { type: Number, reflect: true },
-      uuid: { type: String, reflect: true },
+      itemId: { type: String, attribute: "item-id", reflect: true },
       _haxState: { type: Boolean },
     };
   }
@@ -180,6 +185,17 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // when visible, "click" the thing so that it's activated
+      if (
+        propName === "elementVisible" &&
+        this.elementVisible &&
+        this.itemId &&
+        this.shadowRoot
+      ) {
+        setTimeout(() => {
+          pageBreakManager.updateVisibleAsActive();
+        }, 0);
+      }
       if (this.target) {
         if (propName === "title" && this[propName]) {
           // change title text to match title if updated but delay
@@ -297,9 +313,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     return [
       css`
         :host {
-          display: none;
+          display: block;
+          opacity: 0;
+          height: 1px;
         }
-        :host([data-hax-layout]),
         :host([data-hax-ray]) {
           display: block;
           margin: 20px 0;
@@ -317,10 +334,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
           padding: 0;
           height: 0;
         }
-        :host(:hover) {
+        :host([data-hax-ray]:hover) {
           opacity: 1;
         }
-        :host(:hover) .mid::before {
+        :host([data-hax-ray]:hover) .mid::before {
           font-weight: bold;
           content: "Page break";
           color: #000000;
@@ -341,9 +358,12 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     this.style.backgroundImage = `url("${iconPath}")`;
-    const hr = document.createElement("hr");
-    hr.classList.add("mid");
-    this.shadowRoot.appendChild(hr);
+  }
+  render() {
+    return html`
+      <a .href="${this.path}" .name="#${this.itemId}" aria-hidden="true"></a>
+      <hr class="mid" />
+    `;
   }
   /**
    * haxProperties integration via file reference
