@@ -40,6 +40,10 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         `,
       ];
     }
+    constructor() {
+      super();
+      this.tooltipDirection = "top";
+    }
     static get simpleButtonLayoutStyles() {
       return [
         ...super.simpleButtonLayoutStyles,
@@ -103,8 +107,27 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             part="dropdown-icon"
           ></simple-icon-lite>
         </button>
+        ${this.tooltipTemplate}
       `;
     }
+    /**
+     * template for button tooltip
+     *
+     * @readonly
+     */
+    get tooltipTemplate() {
+      return !this.tooltipVisible
+        ? ""
+        : html`<simple-tooltip
+            id="tooltip"
+            for="menubutton"
+            position="${this.tooltipDirection || "top"}"
+            part="tooltip"
+            fit-to-visible-bounds
+            >${this.currentTooltip || this.currentLabel}</simple-tooltip
+          >`;
+    }
+
     static get tag() {
       return "simple-toolbar-menu";
     }
