@@ -58,7 +58,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this._haxState = false;
     this.IORemoveOnVisible = false;
     this.IODelay = 250;
-    this.observer = new MutationObserver(() => {
+    this.remoteHeadingobserver = new MutationObserver(() => {
       // lock ensures that title update, then updating hte innerText
       // doesn't generate another mutation record
       if (this.title != this.target.innerText) {
@@ -118,7 +118,10 @@ export class PageBreak extends IntersectionObserverMixin(
             newH.setAttribute("data-original-level", "H2");
             newH.innerText = this.title;
             this.parentNode.insertBefore(newH, this.nextElementSibling);
-            this.setupTargetData(newH);
+            // account for HAX which might mess w/ the tag on insert
+            setTimeout(() => {
+              this.setupTargetData(this.nextElementSibling);
+            }, 100);
           }
         }
       }, 0);
@@ -164,17 +167,21 @@ export class PageBreak extends IntersectionObserverMixin(
         },
       })
     );
-    this.observer.disconnect();
+    this.remoteHeadingobserver.disconnect();
     super.disconnectedCallback();
   }
   // setup the target data
   setupTargetData(newTarget) {
     if (this.target) {
-      this.observer.disconnect();
+      this.remoteHeadingobserver.disconnect();
     }
-    this.target = null;
     this.target = newTarget;
-    this.observer.observe(this.target, {
+    // add a backdoor for hax to have a hook into this
+    this._haxSibling = this;
+    // @todo need to add some kind of "if this gets deleted let me know"
+    // or a hook that basically blocks this being deleted because it
+    // is under control of the page-break tag
+    this.remoteHeadingobserver.observe(this.target, {
       characterData: true,
       childList: true,
       subtree: true,
