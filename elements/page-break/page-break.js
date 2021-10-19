@@ -2,19 +2,16 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, LitElement } from "lit";
+import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-//import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
-// might be optional / using hooks to check in or a manager that does this
-//import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 //import { toJS, autorun } from "mobx";
 /**
   * `page-break`
   * `a visual break but also helps manage hierarchy`
-  * Needs a uuid
     Path/node / it's actually the route!
 
     Could have intersection observer of visibility or test on scroll / resize
@@ -40,7 +37,9 @@ import { pageBreakManager } from "./lib/page-break-manager.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 const iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
-export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
+export class PageBreak extends IntersectionObserverMixin(
+  I18NMixin(SchemaBehaviors(LitElement))
+) {
   static get tag() {
     return "page-break";
   }
@@ -53,18 +52,35 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.path = "#";
     this.published = true;
     this.lock = false;
+    this.target = null;
     this.depth = 0;
+    this.itemId = null;
     this._haxState = false;
+    this.IORemoveOnVisible = false;
+    this.IODelay = 250;
+    this.observer = new MutationObserver(() => {
+      // lock ensures that title update, then updating hte innerText
+      // doesn't generate another mutation record
+      if (this.title != this.target.innerText) {
+        this.__moUpdate = true;
+        this.title = this.target.innerText;
+      }
+    });
   }
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
-      ...super.properties,
+      ...props,
       title: { type: String, reflect: true },
       path: { type: String },
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
       lock: { type: Boolean, reflect: true },
       depth: { type: Number, reflect: true },
+      itemId: { type: String, attribute: "item-id", reflect: true },
       _haxState: { type: Boolean },
     };
   }
@@ -79,27 +95,34 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     ) {
       this.title = this.nextElementSibling.innerText;
       this.target = this.nextElementSibling;
+      this.setupTargetData(this.target);
     } else {
-      // @todo need to have logic to figure out what headings proceed this one
-      // HAX should be able to tell us this
-      this.target = document.createElement("h2");
-      this.target.innerText = this.title;
-      this.target.setAttribute("data-hax-lock", "data-hax-lock");
-      this.parentNode.insertBefore(this.target, this.nextElementSibling);
+      // we are going to inject a title element possibly so pause
+      // to make sure there wasn't some timing in rendering before
+      // we accidentally inject an element
+      setTimeout(() => {
+        if (this.target === null) {
+          if (
+            this.nextElementSibling &&
+            this.nextElementSibling.tagName &&
+            ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+              this.nextElementSibling.tagName
+            )
+          ) {
+            this.title = this.nextElementSibling.innerText;
+            this.target = this.nextElementSibling;
+            this.setupTargetData(this.target);
+          } else {
+            let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
+            let newH = document.createElement(tagName);
+            newH.setAttribute("data-original-level", "H2");
+            newH.innerText = this.title;
+            this.parentNode.insertBefore(newH, this.nextElementSibling);
+            this.setupTargetData(newH);
+          }
+        }
+      }, 0);
     }
-    this.target.setAttribute("data-page-break-title", "data-page-break-title");
-    this.observer = new MutationObserver(() => {
-      // lock ensures that title update, then updating hte innerText
-      // doesn't generate another mutation record
-      if (!this.__lock && this.title != this.target.innerText) {
-        this.title = this.target.innerText;
-      }
-    });
-    this.observer.observe(this.target, {
-      characterData: true,
-      childList: true,
-      subtree: true,
-    });
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
         composed: true,
@@ -144,24 +167,45 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.observer.disconnect();
     super.disconnectedCallback();
   }
+  // setup the target data
+  setupTargetData(newTarget) {
+    if (this.target) {
+      this.observer.disconnect();
+    }
+    this.target = null;
+    this.target = newTarget;
+    this.observer.observe(this.target, {
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // when visible, "click" the thing so that it's activated
+      if (
+        propName === "elementVisible" &&
+        this.elementVisible &&
+        this.itemId &&
+        this.shadowRoot
+      ) {
+        setTimeout(() => {
+          pageBreakManager.updateVisibleAsActive();
+        }, 0);
+      }
       if (this.target) {
         if (propName === "title" && this[propName]) {
           // change title text to match title if updated but delay
           // to avoid input spamming as this could generate a lot of change records
           // but don't just set it as it would generate another change record
-          if (!this.__lock) {
-            this.__lock = true;
-            setTimeout(() => {
-              if (this.title != this.target.innerText) {
-                this.target.innerText = this.title;
-              }
-              this.__lock = false;
-            }, 100);
+          if (this.__moUpdate) {
+            // skips the update of innerText to match
+            this.__moUpdate = false;
+          } else if (this.title != this.target.innerText) {
+            this.target.innerText = this.title;
           }
         }
         // fire event for reaction so we can update state elsewhere
@@ -200,7 +244,6 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                       el.getAttribute("data-original-level").replace("H", "")
                     )
                   : new Number(el.tagName.replace("H", ""))) + this.depth;
-              console.log;
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
               const newH = document.createElement(`h${tagNumber}`);
               newH.setAttribute("data-original-level", el.tagName);
@@ -211,6 +254,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                 );
               }
               newH.innerHTML = el.innerHTML;
+              this.setupTargetData(newH);
               el.parentNode.replaceChild(newH, el);
             });
         }
@@ -234,6 +278,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                   }
                   newH.innerHTML = el.innerHTML;
                   el.parentNode.replaceChild(newH, el);
+                  this.setupTargetData(newH);
                 }
               });
           } else {
@@ -257,6 +302,7 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
                 }
                 newH.innerHTML = el.innerHTML;
                 el.parentNode.replaceChild(newH, el);
+                this.setupTargetData(newH);
               });
           }
         }
@@ -267,6 +313,11 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
     return [
       css`
         :host {
+          display: block;
+          opacity: 0;
+          height: 1px;
+        }
+        :host([data-hax-ray]) {
           display: block;
           margin: 20px 0;
           padding: 20px;
@@ -283,10 +334,10 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
           padding: 0;
           height: 0;
         }
-        :host(:hover) {
+        :host([data-hax-ray]:hover) {
           opacity: 1;
         }
-        :host(:hover) .mid::before {
+        :host([data-hax-ray]:hover) .mid::before {
           font-weight: bold;
           content: "Page break";
           color: #000000;
@@ -307,9 +358,12 @@ export class PageBreak extends I18NMixin(SchemaBehaviors(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     this.style.backgroundImage = `url("${iconPath}")`;
-    const hr = document.createElement("hr");
-    hr.classList.add("mid");
-    this.shadowRoot.appendChild(hr);
+  }
+  render() {
+    return html`
+      <a .href="${this.path}" .name="#${this.itemId}" aria-hidden="true"></a>
+      <hr class="mid" />
+    `;
   }
   /**
    * haxProperties integration via file reference

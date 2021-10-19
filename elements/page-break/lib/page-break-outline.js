@@ -1,3 +1,6 @@
+import { pageBreakManager } from "./page-break-manager.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 export class PageBreakOutline extends HTMLElement {
   constructor() {
     super();
@@ -5,14 +8,19 @@ export class PageBreakOutline extends HTMLElement {
     this.selector = null;
     this.div = document.createElement("div");
     this.appendChild(this.div);
+    this.basePath = "";
+    this.addEventListener("click", this.clickHandler.bind(this));
   }
   static get tag() {
     return "page-break-outline";
   }
   static get observedAttributes() {
-    return ["selector"];
+    return ["selector", "base-path"];
   }
   attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "base-path" && newValue) {
+      this.basePath = newValue;
+    }
     if (name === "selector" && newValue) {
       this.selector = newValue;
       this.target = document.querySelector(this.selector);
@@ -29,6 +37,24 @@ export class PageBreakOutline extends HTMLElement {
 
   disconnectedCallback() {
     window.removeEventListener("page-break-change", this.rerender.bind(this));
+  }
+  clickHandler(e) {
+    var target = normalizeEventPath(e)[0];
+    if (target.tagName === "A") {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      for (var i = 0; i < pageBreakManager.breaks.length; i++) {
+        if (pageBreakManager.breaks[i].path === target.getAttribute("href")) {
+          pageBreakManager.breaks[i].scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest",
+          });
+          break;
+        }
+      }
+    }
   }
   // oh.. you are a clever boy aren't you
   // well.. someone is clever, I'm just good at repurposing
@@ -98,7 +124,9 @@ export class PageBreakOutline extends HTMLElement {
         html +=
           "<li>" +
           "\n" +
-          `<a href="${el.path}" data-path="${el.path}" data-parent="${el.parent}" data-depth="${depth}">${el.title}</a>` +
+          `<a href="${this.basePath + el.path}" data-path="${
+            el.path
+          }" data-parent="${el.parent}" data-depth="${depth}">${el.title}</a>` +
           "\n";
         // set back into the element how deep it is; weird I know but the element doesn't
         // know this, the tree builder would though

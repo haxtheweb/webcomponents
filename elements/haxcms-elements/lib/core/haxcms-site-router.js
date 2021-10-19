@@ -39,24 +39,36 @@ class HAXCMSSiteRouter extends HTMLElement {
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
+    window.addEventListener(
+      "haxcms-site-router-add",
+      this.addRoutesEvent.bind(this)
+    );
   }
-
   /**
    * Detached life cycle
    */
   disconnectedCallback() {
-    this.__disposer();
+    this.__disposer.dispose();
     window.removeEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
+    window.removeEventListener(
+      "haxcms-site-router-add",
+      this.addRoutesEvent.bind(this)
+    );
     super.disconnectedCallback();
+  }
+  addRoutesEvent(e) {
+    this.addRoutes(e.detail);
+  }
+  addRoutes(pathAry) {
+    this.router.addRoutes(pathAry);
   }
 
   /**
    * Update the router based on a manifest.
-   * This should not be called directly. Use the
-   * 'haxcms-router-manifest-changed' event
+   * This should not be called directly. Use the store to change store.routerManifest
    *
    * @param {object} routerManifest
    */

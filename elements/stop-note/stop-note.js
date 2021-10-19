@@ -117,6 +117,7 @@ class StopNote extends remoteLinkBehavior(LitElement) {
         <div class="message_wrap">
           <div class="main_message" id="title">${this.title}</div>
           <div class="secondary_message">
+            <slot></slot>
             <slot name="message"></slot>
           </div>
           ${this.url
@@ -288,13 +289,6 @@ class StopNote extends remoteLinkBehavior(LitElement) {
             description: "Icon used for stop-note",
             inputMethod: "select",
             options: iconObj,
-          },
-          {
-            slot: "message",
-            title: "Message",
-            description: "Additional details about note",
-            inputMethod: "textfield",
-            slotWrapper: "p",
           },
         ],
         advanced: [],

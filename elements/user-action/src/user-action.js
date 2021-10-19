@@ -61,7 +61,6 @@ class UserAction extends HTMLElement {
           this.observer = new IntersectionObserver(
             this.handleIntersectionCallback.bind(this),
             {
-              root: document.rootElement,
               rootMargin: "0px",
               threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
             }
