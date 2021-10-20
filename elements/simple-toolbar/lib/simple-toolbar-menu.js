@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "./simple-toolbar-menu-item.js";
 /**
  * `simple-toolbar-menu`
@@ -47,6 +48,12 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       super();
       this.tooltipDirection = "top";
     }
+    /**
+     * styles that control layout of button
+     *
+     * @readonly
+     * @static
+     */
     static get simpleButtonLayoutStyles() {
       return [
         ...super.simpleButtonLayoutStyles,
@@ -58,7 +65,12 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         `,
       ];
     }
-
+    /**
+     * styles that provide theming button
+     *
+     * @readonly
+     * @static
+     */
     static get simpleButtonThemeStyles() {
       return [
         ...super.simpleButtonThemeStyles,
@@ -91,6 +103,11 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       ];
     }
 
+    /**
+     * template menu button
+     *
+     * @readonly
+     */
     get buttonTemplate() {
       return html`
         <button
@@ -139,10 +156,34 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         ...super.properties,
       };
     }
+    /**
+     * gets focusable button element
+     *
+     * @readonly {object}
+     * @memberof A11yMenuButton
+     */
     get focusableElement() {
       return this.shadowRoot && this.shadowRoot.querySelector("#menubutton")
         ? this.shadowRoot.querySelector("#menubutton")
         : undefined;
+    }
+    /**
+     * can be overridden when extending this button,
+     * so that certain elements in menuitems are excluded from keyboard handling
+     *
+     * @param {event} event
+     * @returns {boolean}
+     * @memberof A11yMenuButton
+     */
+    _excludeEvent(event) {
+      let path = normalizeEventPath(event) || [],
+        target = path[0];
+
+      //don't handle form field keystrokes for fields
+      return target.closest("simple-toolbar-field") &&
+        target.tagName === "BUTTON"
+        ? true
+        : false;
     }
 
     /**
@@ -171,6 +212,12 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         A11yMenuButtonBehaviors._handleBlur(event);
       if (!this.isCurrentItem) setTimeout(this.close(), 300);
     }
+
+    /**
+     * adds a menuitem to lists and sets up its listeners
+     *
+     * @param {ibject} item menu item element
+     */
     addItem(item) {
       if (this.getItemIndex(item) < 0) {
         let listeners = this.itemListeners;
@@ -184,6 +231,11 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         );
       }
     }
+    /**
+     * removes a menuitem's listners and menuitem istelf from list
+     *
+     * @param {ibject} item menu item element
+     */
     removeItem(item) {
       if (this.getItemIndex(item) < 0) {
         let listeners = this.itemListeners;

@@ -640,7 +640,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
-     * handles keydown events
+     * handles keydown events, as prescribed in
+     * {@link https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html}
      *
      * @param {event} e
      * @returns
