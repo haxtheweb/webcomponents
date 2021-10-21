@@ -102,7 +102,6 @@ class ActiveWhenVisible extends LitElement {
     this.observer = new IntersectionObserver(
       this.handleIntersectionCallback.bind(this),
       {
-        root: document.rootElement,
         rootMargin: this.rootMargin,
         threshold: this.thresholds,
       }

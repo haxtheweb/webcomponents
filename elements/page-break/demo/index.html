@@ -1,24 +1,132 @@
-<!doctype html>
+v<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>PageBreak: page-break Demo</title>
+    <base href="/elements/page-break/demo/"/>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../page-break.js';
       import '../lib/page-break-outline.js';
       import '@lrnwebcomponents/grid-plate/grid-plate.js';
+      import '@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      page-break-outline {
+        display: block;
+        position: fixed;
+      }
+      page-break {
+        opacity: 1;
+        height: 20px;
+        outline: 2px blue solid;
+      }
+      @keyframes blinkTargetHeading {
+        0%   { background-color: yellow; }
+
+        100% { background-color: transparent; }
+      }
+
+      :target {
+        animation: blinkTargetHeading 1s ease-in-out; 
+      }
+      </style>
   </head>
   <body>
     <button id="button">give me the headings</button>
-    <script>
+    <haxcms-site-router id="router"></haxcms-site-router>
+    <div class="vertical-section-container centered">
+      <grid-plate>
+        <div slot="col-1" id="container">
+          <h2>This is a title for the heading 2</h2>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Stuff and things</p>
+          <page-break item-id="bbvcs3w23" path="page-1" title="page 1" data-hax-ray></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="g66h77" path="page-2" parent="page-1" title="page 2 (p1 child)" data-hax-ray></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="f44ff44f" path="page-2sdf" parent="page-2" title="NOT TARGETTING" data-hax-ray></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <h2>Some sub content</h2>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <h4>Other sub content</h4>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="d1d1d1" path="test/asd" parent="page-2sdf" title="page fds (p3 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="dsaasdasd" path="test/page3" parent="page-2" title="page 3 (p2 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="hjujty"  path="test/dfsfsffgf" parent="test/page3" title="page fds (p3 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="4g34g3"  path="test/page-4" parent="page-1" title="page 4 (p1 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="fgd"  path="test/page-4sdf" parent="page-1" title="page 4 (p1 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <page-break item-id="jhhgjghjgj4" path="test/page-jhhgjghjgj4" parent="test/page-4sdf" title="page 4 (p1 child)"></page-break>
+          <p>Cool and whatever p tag we have</p>
+          <p>Cool and whatever p tag we have</p>
+          <h3>Stuff</h3>
+          <p>Stuff and things</p>
+          <page-break item-id="cool" path="cool" title="top level child"></page-break>
+          <h4>Less</h4>
+        </div>
+        <page-break-outline slot="col-2" selector="#container"></page-break-outline>
+      </grid-plate>
+    </div>
+    <script defer async>
+    window.process = window.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
       document.getElementById('button').addEventListener('click', (e) => {
         const manager = window.PageBreakManager.requestAvailability();
         console.log('all', manager.betweenElementsQuery());
@@ -27,64 +135,17 @@
         console.log('titles', manager.betweenElementsQuery('titles'));
         console.log('not titles', manager.betweenElementsQuery('notitles'));
       });
+      setTimeout(() => {
+        document.querySelectorAll("page-break").forEach((node) => {
+          if (node.path && node.itemId) {
+            document.getElementById("router").addRoutes([{
+              path: node.path,
+              name: node.itemId,
+              component: `fake-${node.itemId}-e`,
+            }]);
+          }
+        });        
+      }, 300);
     </script>
-    <div class="vertical-section-container centered">
-      <grid-plate>
-        <page-break-outline slot="col-1" selector="#container"></page-break-outline>
-        <div slot="col-2" id="container">
-          <h2>This is a title for the heading 2</h2>
-          <p>Stuff and things</p>
-          <page-break path="page-1" title="page 1"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="page-2" parent="page-1" title="page 2 (p1 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="page-2sdf" parent="page-2" title="page 2 (p1 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <h2>Some sub content</h2>
-          <p>Cool and whatever p tag we have</p>
-          <h3>Other sub content</h3>
-          <p>Cool and whatever p tag we have</p>
-          <h3>Other sub content</h3>
-          <p>Cool and whatever p tag we have</p>
-          <h4>Other sub content</h4>
-          <p>Cool and whatever p tag we have</p>
-          <h5>Other sub content</h5>
-          <p>Cool and whatever p tag we have</p>
-          <h6>Other sub content</h6>
-          <p>Cool and whatever p tag we have</p>
-          <h4>Other sub content</h4>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/asd" parent="page-2sdf" title="page fds (p3 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/page3" parent="page-2" title="page 3 (p2 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/dfsfsffgf" parent="test/page3" title="page fds (p3 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/page-4" parent="page-1" title="page 4 (p1 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/page-4sdf" parent="page-1" title="page 4 (p1 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <page-break path="test/page-jhhgjghjgj4" parent="test/page-4sdf" title="page 4 (p1 child)"></page-break>
-          <p>Cool and whatever p tag we have</p>
-          <p>Cool and whatever p tag we have</p>
-          <h3>Stuff</h3>
-          <p>Stuff and things</p>
-          <page-break path="test/cool-5" title="top level child"></page-break>
-          <h4>Less</h4>
-        </div>
-      </grid-plate>
-    </div>
   </body>
 </html>
