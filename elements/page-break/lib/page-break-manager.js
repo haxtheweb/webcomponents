@@ -1,8 +1,52 @@
 export class PageBreakManagerEl extends HTMLElement {
   constructor() {
     super();
+    this.target = null;
     this.breaks = [];
     this._timer = 0;
+  }
+  // return current parent node, or the node that would happen
+  // on indent or outdent
+  getParent(el, rel = null) {
+    var prevNode = null,
+      targetNode = null;
+    if (rel === "indent") {
+      // get prev sibling
+      this.target.querySelectorAll("page-break").forEach((node) => {
+        if (node === el) {
+          targetNode = prevNode;
+        }
+        prevNode = node;
+      });
+    }
+    // @todo this detection is wrong
+    else if (rel === "outdent") {
+      // get parent
+      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
+        targetNode = this.target.querySelector(
+          `page-break[path="${el.parent}"]`
+        );
+        // get parent of parent
+        if (
+          this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
+        ) {
+          targetNode = this.target.querySelector(
+            `page-break[path="${targetNode.parent}"]`
+          );
+        }
+        {
+          targetNode = null;
+        }
+      }
+    } else {
+      // get parent
+      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
+        targetNode = this.target.querySelector(
+          `page-break[path="${el.parent}"]`
+        );
+      }
+    }
+    return targetNode;
   }
   /**
    * get all elements between a target and a selector; inspired by
@@ -140,6 +184,11 @@ export class PageBreakManagerEl extends HTMLElement {
         }
       });
     }
+    if (this.breaks.length === 1) {
+      this.target = e.detail.value.parentNode;
+    } else if (this.breaks.length === 0) {
+      this.target = null;
+    }
     if (!this.__lock) {
       this.__lock = true;
       setTimeout(() => {
@@ -170,6 +219,61 @@ export class PageBreakManagerEl extends HTMLElement {
             element.target = newH;
           });
         });
+        // update the depth values based on building a "tree"
+        if (
+          this.target &&
+          this.target.children &&
+          this.target.children.length > 0
+        ) {
+          // wipe inner
+          var parents = [];
+          // loop children
+          const kids = this.target.querySelectorAll("page-break");
+          for (let i = 0; i < kids.length; i++) {
+            let el = kids[i];
+            // see if our parent is the active parent
+            if (parents.length > 0) {
+              if (el.parent && parents.indexOf(el.parent) !== -1) {
+                while (parents.indexOf(el.parent) !== -1) {
+                  parents.shift();
+                }
+              }
+              // missing parent in the hierarchy
+              else if (el.parent && parents.indexOf(el.parent) === -1) {
+                // do nothing; something messed up so let's act like it
+                // didn't happen and just render as we have been
+              } else {
+                // no parent, shift all the way down to nothing
+                while (parents.length > 0) {
+                  parents.shift();
+                }
+              }
+              let depth = 0;
+              if (
+                i !== 0 &&
+                el.parent &&
+                this.target.querySelector(`page-break[path="${el.parent}"]`)
+              ) {
+                depth =
+                  this.target.querySelector(`page-break[path="${el.parent}"]`)
+                    .depth + 1;
+              }
+              // set back into the element how deep it is; weird I know but the element doesn't
+              // know this, the tree builder would though
+              el.depth = depth;
+              // see if WE have children
+              if (
+                i != kids.length &&
+                kids[i + 1] &&
+                kids[i + 1].parent === el.path
+              ) {
+                if (el.parent) {
+                  parents.unshift(el.parent);
+                }
+              }
+            }
+          }
+        }
         this.__lock = false;
       }, 10);
     }

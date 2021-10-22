@@ -78,7 +78,7 @@ export class PageBreak extends IntersectionObserverMixin(
       path: { type: String },
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
-      lock: { type: Boolean, reflect: true },
+      locked: { type: Boolean, reflect: true },
       depth: { type: Number, reflect: true },
       itemId: { type: String, attribute: "item-id", reflect: true },
       _haxState: { type: Boolean },
@@ -192,6 +192,12 @@ export class PageBreak extends IntersectionObserverMixin(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // align schema ID w/ the ID from itemId
+      if (propName === "itemId" && this[propName] != null) {
+        this.schemaResourceID = this.itemId;
+      } else if (propName === "schemaResourceID" && this.itemId == null) {
+        this.itemId = this.schemaResourceID;
+      }
       // when visible, "click" the thing so that it's activated
       if (
         propName === "elementVisible" &&
@@ -384,6 +390,7 @@ export class PageBreak extends IntersectionObserverMixin(
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
+      inlineContextMenu: "haxinlineContextMenu",
     };
   }
   /**
@@ -391,6 +398,60 @@ export class PageBreak extends IntersectionObserverMixin(
    */
   haxeditModeChanged(value) {
     this._haxState = value;
+  }
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:lock",
+        callback: "haxClickInlineLock",
+        label: "Toggle Lock",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlinePublished",
+        label: "Toggle published",
+      },
+      {
+        icon: "editor:format-indent-increase",
+        callback: "haxIndentParent",
+        label: "Move under parent page break",
+        disabled: !pageBreakManager.getParent(this, "indent"),
+      },
+      {
+        icon: "editor:format-indent-decrease",
+        callback: "haxOutdentParent",
+        label: "Move out of parent page break",
+        disabled: !pageBreakManager.getParent(this, "outdent"),
+      },
+    ];
+  }
+  haxClickInlineLock(e) {
+    this.locked = !this.locked;
+    return true;
+  }
+  haxClickInlinePublished(e) {
+    this.published = !this.published;
+    return true;
+  }
+  haxIndentParent(e) {
+    if (pageBreakManager.getParent(this, "indent")) {
+      this.parent = pageBreakManager.getParent(this, "indent").path;
+    }
+    return true;
+  }
+  haxOutdentItem(e) {
+    if (pageBreakManager.getParent(this, "outdent")) {
+      this.parent = pageBreakManager.getParent(this, "outdent").path;
+    } else if (
+      this.parent &&
+      pageBreakManager.getParent(this, "outdent") === null
+    ) {
+      this.parent = null;
+    }
+    return true;
   }
 }
 customElements.define(PageBreak.tag, PageBreak);

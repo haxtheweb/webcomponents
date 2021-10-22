@@ -331,7 +331,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${el.label}"
               event-name="hax-ce-custom-button"
               value="${el.callback}"
-              ?disabled="${this.viewSource}"
+              ?disabled="${el.disabled}"
             ></hax-context-item>`;
           })}
           <hax-context-item
