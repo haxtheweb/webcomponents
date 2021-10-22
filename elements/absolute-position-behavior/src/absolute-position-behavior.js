@@ -42,6 +42,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
           if (propName === "auto" && !this.auto) this.unsetPosition();
           if (
             [
+              "allowOverlap",
               "fitToVisibleBounds",
               "for",
               "offset",

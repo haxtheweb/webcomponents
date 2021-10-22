@@ -81,7 +81,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           }
           ::slotted(.group) {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: space-evenly;
             align-items: stretch;
             margin: 0;
@@ -572,14 +572,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {object} item
      */
     focusOn(item) {
+      let delay = item && item.closest("[collapse-hide=true]");
+      if (this.currentItem.close) this.currentItem.close(true);
       this.setCurrentItem(item);
-      this.currentItem.focus();
-      if (this.currentItem)
-        console.log(
-          "focus",
-          this.currentItem.label,
-          this.currentItem.focusableElement
-        );
+      if (delay) {
+        setTimeout(() => this.currentItem.focus(), 300);
+      } else {
+        this.currentItem.focus();
+      }
     }
     /**
      * updates registered button, it needed
@@ -640,7 +640,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
-     * handles keydown events
+     * handles keydown events, as prescribed in
+     * {@link https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html}
      *
      * @param {event} e
      * @returns
@@ -695,7 +696,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _handleFocusChange() {
       this.__focused = this.contains(document.activeElement);
-      console.log(this.currentItem, this.currentItem.focusableElement);
     }
     /**
      * handles appended button
