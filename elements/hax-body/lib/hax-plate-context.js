@@ -47,7 +47,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       insertItemAbove: "Insert item above",
       insertItemAboveOrBelow: "Insert item above or below",
       insertItemBelow: "Insert item below",
-      selectLayout: "Select",
+      selectLayout: "Select Layout Element",
     };
     this.registerLocalization({
       context: this,
@@ -202,7 +202,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     align-horizontal="left"
                     ?disabled="${this.activeNode &&
                     slot.slot === this.activeNode.slot}"
-                    icon="icons:arrow-forward"
                     show-text-label
                     role="menuitem"
                     data-slot="${slot.slot}"
@@ -218,34 +217,61 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               exactly where you want it to go.
             </div>
           </hax-toolbar-menu>
-          <hax-context-item
+          <hax-toolbar-menu
             action
             align-horizontal="left"
             ?disabled="${this.viewSource}"
-            ?hidden="${!this.isGridLayoutSlot}"
-            .icon="${this.gridIcon}"
-            label="${this.t.selectLayout} ${this.gridLabel}"
-            data-simple-tour-stop
-            data-stop-title="label"
-            event-name="select-parent-grid"
+            ?hidden="${!this.isGridLayoutSlot && this.childSlots.length < 1}"
+            icon="hax:select-element"
+            label="${this.t.selectLayout}"
           >
-            <div slot="tour" data-stop-content>
-              Selects the element's parent label.
-            </div>
-          </hax-context-item>
-          <hax-context-item
-            action
-            more
-            .icon="${this.activeTagIcon}"
-            label="${this.t.changeTo}"
-            tooltip="${this.activeTagName}, ${this.t.clickToChange}"
-            ?disabled="${this.disableTransform || this.viewSource}"
-            event-name="hax-transform-node"
-            show-text-label
-          ></hax-context-item>
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                align-horizontal="left"
+                ?disabled="${this.viewSource}"
+                ?hidden="${!this.isGridLayoutSlot}"
+                .icon="${this.gridIcon}"
+                label="${this.gridLabel}"
+                event-name="hax-select-grid-item"
+                .eventData="${
+                  !this.isGridLayoutSlot
+                    ? undefined
+                    : this.activeNode.parentNode
+                }"
+                role="menuitem"
+                show-text-label
+              >
+              </hax-context-item>
+            </simple-toolbar-menu-item>
+            ${(this.slottedItems || []).map((slot, i) =>
+              slot.items.map(
+                (item, j) =>
+                  html`
+                    <simple-toolbar-menu-item slot="menuitem">
+                      <hax-context-item
+                        action
+                        align-horizontal="left"
+                        ?disabled="${this.viewSource ||
+                        this.activeNode === item}"
+                        label="${slot.label}${slot.items.length > 1
+                          ? ` (${j + 1})`
+                          : ""}"
+                        event-name="hax-select-grid-item"
+                        .eventData="${item}"
+                        role="menuitem"
+                        show-text-label
+                      >
+                      </hax-context-item>
+                    </simple-toolbar-menu-item>
+                  `
+              )
+            )}
+            
+          </hax-toolbar-menu>
           <slot name="primary"></slot>
           <hax-toolbar-menu
-            icon="add"
+            icon="add-box"
             label="${this.t.insertItemAboveOrBelow}"
             ?disabled="${this.viewSource}"
           >
@@ -283,7 +309,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     align-horizontal="left"
                     ?disabled="${this.activeNode &&
                     slot.slot === this.activeNode.slot}"
-                    icon="icons:arrow-forward"
                     show-text-label
                     role="menuitem"
                     event-name="insert-into-active"
@@ -374,6 +399,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         <div class="group">
           <hax-context-item
             action
+            more
+            label="${this.t.changeTo}..."
+            tooltip="${this.activeTagName}, ${this.t.clickToChange}"
+            ?disabled="${this.disableTransform || this.viewSource}"
+            event-name="hax-transform-node"
+          ></hax-context-item>
+          <hax-context-item
+            action
             icon="icons:code"
             label="${this.t.modifyHTMLSource}"
             ?disabled="${!this.sourceView}"
@@ -425,6 +458,25 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       : HAXStore.isGridPlateElement(this.activeNode.parentNode)
       ? HAXStore.slotsFromSchema(this.parentSchema || {})
       : [];
+  }
+
+  getSlottedItems(parentNode, slots = []) {
+    return !parentNode
+      ? []
+      : slots.map((slot) => {
+          return {
+            slot: slot.slot,
+            label: slot.title || slot.slot,
+            items: [...parentNode.querySelectorAll(`[slot=${slot.slot}]`)],
+          };
+        });
+  }
+
+  get slottedItems() {
+    if (!this.activeNode) return [];
+    return this.isGridPlate()
+      ? this.getSlottedItems(this.activeNode, this.childSlots)
+      : this.getSlottedItems(this.activeNode.parentNode, this.siblingSlots);
   }
 
   get gridIcon() {
@@ -504,7 +556,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   _handleOpen(e) {
     this.dispatchEvent(
-      new CustomEvent("ax-transform-node", {
+      new CustomEvent("hax-transform-node", {
         bubbles: true,
         cancelable: true,
         composed: true,
