@@ -200,7 +200,7 @@ class HaxTray extends I18NMixin(
         }
         .wrapper {
           position: fixed;
-          display: flex;
+          display: none;
           align-items: stretch;
           flex-direction: row-reverse;
           opacity: 0;
@@ -223,6 +223,7 @@ class HaxTray extends I18NMixin(
           opacity: 1;
           visibility: visible;
           pointer-events: all;
+          display: flex;
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           left: 0px;
