@@ -7,6 +7,9 @@ export class PageBreakManagerEl extends HTMLElement {
   }
   // return current parent node, or the node that would happen
   // on indent or outdent
+  // @todo these detections need audited in the context of real material
+  // in order to figure out which states are incorrect
+  // indent and outdent are inconsistent at best
   getParent(el, rel = null) {
     var prevNode = null,
       targetNode = null;
@@ -18,9 +21,7 @@ export class PageBreakManagerEl extends HTMLElement {
         }
         prevNode = node;
       });
-    }
-    // @todo this detection is wrong
-    else if (rel === "outdent") {
+    } else if (rel === "outdent") {
       // get parent
       if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
         targetNode = this.target.querySelector(

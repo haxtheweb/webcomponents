@@ -8,35 +8,15 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
-//import { toJS, autorun } from "mobx";
 /**
-  * `page-break`
-  * `a visual break but also helps manage hierarchy`
-    Path/node / it's actually the route!
-
-    Could have intersection observer of visibility or test on scroll / resize
-
-    Maybe intersection while NOT scrolling/resizing and denounce it
-
-    Need a attribute for new or create it delete. Delete doesn't happen immediate IF it already existed. This way we can parse out and remove on backend.
-
-    If brand new we can delete immediately
-
-    It has a title Dom node AFTER itself in the tree
-
-    Maybe an attribute for subpage or break type
-
-    Make a static demo with content premocked up
-
-    Need to have 2 modes. 1 mode the page break injects a locked page-title tag in slot
-    Mode 2 the page break controls a heading after it
-
-  * @demo demo/index.html
-  * @element page-break
-  */
+ * `page-break`
+ * `a visual break but also helps manage hierarchy`
+ *
+ * @demo demo/index.html
+ * @element page-break
+ */
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-const iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
 export class PageBreak extends IntersectionObserverMixin(
   I18NMixin(SchemaBehaviors(LitElement))
 ) {
@@ -47,6 +27,8 @@ export class PageBreak extends IntersectionObserverMixin(
     super();
     this.t = {
       newPage: "New page",
+      pageBreak: "Page break",
+      pageDetails: "Page details",
     };
     this.title = this.t.newPage;
     this.path = "#";
@@ -66,6 +48,8 @@ export class PageBreak extends IntersectionObserverMixin(
         this.title = this.target.innerText;
       }
     });
+    // default break type for the vast majority of situations
+    this.breakType = "node";
   }
   static get properties() {
     let props = {};
@@ -81,50 +65,53 @@ export class PageBreak extends IntersectionObserverMixin(
       locked: { type: Boolean, reflect: true },
       depth: { type: Number, reflect: true },
       itemId: { type: String, attribute: "item-id", reflect: true },
+      breakType: { type: String, attribute: "break-type" },
       _haxState: { type: Boolean },
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    if (
-      this.nextElementSibling &&
-      this.nextElementSibling.tagName &&
-      ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-        this.nextElementSibling.tagName
-      )
-    ) {
-      this.title = this.nextElementSibling.innerText;
-      this.target = this.nextElementSibling;
-      this.setupTargetData(this.target);
-    } else {
-      // we are going to inject a title element possibly so pause
-      // to make sure there wasn't some timing in rendering before
-      // we accidentally inject an element
-      setTimeout(() => {
-        if (this.target === null) {
-          if (
-            this.nextElementSibling &&
-            this.nextElementSibling.tagName &&
-            ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
-              this.nextElementSibling.tagName
-            )
-          ) {
-            this.title = this.nextElementSibling.innerText;
-            this.target = this.nextElementSibling;
-            this.setupTargetData(this.target);
-          } else {
-            let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
-            let newH = document.createElement(tagName);
-            newH.setAttribute("data-original-level", "H2");
-            newH.innerText = this.title;
-            this.parentNode.insertBefore(newH, this.nextElementSibling);
-            // account for HAX which might mess w/ the tag on insert
-            setTimeout(() => {
-              this.setupTargetData(this.nextElementSibling);
-            }, 100);
+    if (this.breakType === "node") {
+      if (
+        this.nextElementSibling &&
+        this.nextElementSibling.tagName &&
+        ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+          this.nextElementSibling.tagName
+        )
+      ) {
+        this.title = this.nextElementSibling.innerText;
+        this.target = this.nextElementSibling;
+        this.setupTargetData(this.target);
+      } else {
+        // we are going to inject a title element possibly so pause
+        // to make sure there wasn't some timing in rendering before
+        // we accidentally inject an element
+        setTimeout(() => {
+          if (this.target === null) {
+            if (
+              this.nextElementSibling &&
+              this.nextElementSibling.tagName &&
+              ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+                this.nextElementSibling.tagName
+              )
+            ) {
+              this.title = this.nextElementSibling.innerText;
+              this.target = this.nextElementSibling;
+              this.setupTargetData(this.target);
+            } else {
+              let tagName = this.depth === 0 ? `h2` : `h${this.depth + 2}`;
+              let newH = document.createElement(tagName);
+              newH.setAttribute("data-original-level", "H2");
+              newH.innerText = this.title;
+              this.parentNode.insertBefore(newH, this.nextElementSibling);
+              // account for HAX which might mess w/ the tag on insert
+              setTimeout(() => {
+                this.setupTargetData(this.nextElementSibling);
+              }, 100);
+            }
           }
-        }
-      }, 0);
+        }, 0);
+      }
     }
     window.dispatchEvent(
       new CustomEvent("page-break-registration", {
@@ -196,7 +183,7 @@ export class PageBreak extends IntersectionObserverMixin(
       if (propName === "itemId" && this[propName] != null) {
         this.schemaResourceID = this.itemId;
       } else if (propName === "schemaResourceID" && this.itemId == null) {
-        this.itemId = this.schemaResourceID;
+        this.itemId = this.schemaResourceID.replace("#", "");
       }
       // when visible, "click" the thing so that it's activated
       if (
@@ -209,7 +196,40 @@ export class PageBreak extends IntersectionObserverMixin(
           pageBreakManager.updateVisibleAsActive();
         }, 0);
       }
-      if (this.target) {
+      // replicate lock status
+      if (this.lock && propName === "lock") {
+        pageBreakManager.elementsBetween(this).forEach((el) => {
+          el.setAttribute("data-hax-lock", "data-hax-lock");
+        });
+      }
+      // was true, not locked
+      else if (!this.lock && propName === "lock" && oldValue) {
+        pageBreakManager.elementsBetween(this).forEach((el) => {
+          el.removeAttribute("data-hax-lock");
+        });
+      }
+      // update CE menu when these change if it is around
+      if (
+        this._ceMenu &&
+        ["locked", "parent", "published"].includes(propName)
+      ) {
+        this._updateHAXCEMenu();
+      }
+      // fire event for reaction so we can update state elsewhere
+      if (["title", "parent", "path"].includes(propName)) {
+        window.dispatchEvent(
+          new CustomEvent("page-break-change", {
+            composed: true,
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              value: this,
+            },
+          })
+        );
+      }
+      // while the most common, only do these when we have a target
+      if (this.breakType === "node" && this.target) {
         if (propName === "title" && this[propName]) {
           // change title text to match title if updated but delay
           // to avoid input spamming as this could generate a lot of change records
@@ -220,31 +240,6 @@ export class PageBreak extends IntersectionObserverMixin(
           } else if (this.title != this.target.innerText) {
             this.target.innerText = this.title;
           }
-        }
-        // fire event for reaction so we can update state elsewhere
-        if (["title", "parent", "path"].includes(propName)) {
-          window.dispatchEvent(
-            new CustomEvent("page-break-change", {
-              composed: true,
-              bubbles: true,
-              cancelable: true,
-              detail: {
-                value: this,
-              },
-            })
-          );
-        }
-        // replicate lock status
-        if (this.lock && propName === "lock") {
-          pageBreakManager.elementsBetween(this).forEach((el) => {
-            el.setAttribute("data-hax-lock", "data-hax-lock");
-          });
-        }
-        // was true, not locked
-        else if (!this.lock && propName === "lock" && oldValue) {
-          pageBreakManager.elementsBetween(this).forEach((el) => {
-            el.removeAttribute("data-hax-lock");
-          });
         }
         // the magic a11y rewriter
         if (!this._haxState && propName === "depth" && this.depth >= 0) {
@@ -320,6 +315,40 @@ export class PageBreak extends IntersectionObserverMixin(
           }
         }
       }
+      // we only support haxcms break types when using haxcms
+      // this setting will be enforced by the system itself and no human
+      // will have the option of doing this setting
+      if (
+        this.breakType === "haxcms" &&
+        propName === "title" &&
+        this[propName] &&
+        window.HAXCMS
+      ) {
+        // set the title directly in the activeItem in the store
+        // while not permanent, this will allow us to update things
+        // on the fly and see them reflected
+        window.HAXCMS.requestAvailability().store.activeItem.title = this.title;
+      }
+      // allow for haxcms page style association to allow users to edit the
+      // current page's details
+      if (propName === "breakType") {
+        var iconPath;
+        if (this[propName] === "node") {
+          iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
+          this._stateStyle.innerHTML = `
+          :host([data-hax-ray]:hover) .mid::before {
+            content: "${this.t.pageBreak}";
+          }`;
+        } else {
+          iconPath = SimpleIconsetStore.getIcon("hax:page-details");
+          this._stateStyle.innerHTML = `
+          :host([data-hax-ray]:hover) .mid::before {
+            content: "${this.t.pageDetails}";
+          }`;
+        }
+        // set background of the tag itself to the icon based on mode
+        this.style.backgroundImage = `url("${iconPath}")`;
+      }
     });
   }
   static get styles() {
@@ -352,7 +381,6 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         :host([data-hax-ray]:hover) .mid::before {
           font-weight: bold;
-          content: "Page break";
           color: #000000;
           background-color: #ffffff;
           font-size: 16px;
@@ -365,12 +393,12 @@ export class PageBreak extends IntersectionObserverMixin(
       `,
     ];
   }
-
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.style.backgroundImage = `url("${iconPath}")`;
+    this._stateStyle = document.createElement("style");
+    this.shadowRoot.appendChild(this._stateStyle);
   }
   render() {
     return html`
@@ -391,7 +419,18 @@ export class PageBreak extends IntersectionObserverMixin(
     return {
       editModeChanged: "haxeditModeChanged",
       inlineContextMenu: "haxinlineContextMenu",
+      activeElementChanged: "haxactiveElementChanged",
     };
+  }
+  /**
+   * Ensure that if we WERE active and now are not
+   * and have a reference to the custom element menu in hax
+   * and are the right break type, that we reset these items
+   */
+  haxactiveElementChanged(element, value) {
+    if (this.breakType === "haxcms" && !value && this._ceMenu) {
+      this._ceMenu.disableOps = false;
+    }
   }
   /**
    * ensure that when we flip states here that we are actively switching the original level var
@@ -403,14 +442,23 @@ export class PageBreak extends IntersectionObserverMixin(
    * add buttons when it is in context
    */
   haxinlineContextMenu(ceMenu) {
-    ceMenu.ceButtons = [
+    this._ceMenu = ceMenu;
+    this._updateHAXCEMenu();
+    // forcibly prevent duplication and deleting of the node controlling the page itself
+    if (this.breakType === "haxcms") {
+      this._ceMenu.disableOps = true;
+    }
+  }
+  // update custom element buttons so we can do live status changes
+  _updateHAXCEMenu() {
+    this._ceMenu.ceButtons = [
       {
-        icon: "icons:lock",
+        icon: this.locked ? "icons:lock" : "icons:lock-open",
         callback: "haxClickInlineLock",
         label: "Toggle Lock",
       },
       {
-        icon: "icons:remove",
+        icon: this.published ? "lrn:view" : "lrn:view-off",
         callback: "haxClickInlinePublished",
         label: "Toggle published",
       },
