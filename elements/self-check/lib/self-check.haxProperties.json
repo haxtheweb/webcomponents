@@ -52,8 +52,7 @@
         "property": "link",
         "title": "More link",
         "description": "Link to additional information",
-        "inputMethod": "haxupload",
-        "validationType": "url"
+        "inputMethod": "textfield"
       },
       {
         "property": "alt",
@@ -72,7 +71,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["colors", "image-loaded"]
+    "unsetAttributes": ["colors", "image-loaded", "t"]
   },
   "demoSchema": [
     {
