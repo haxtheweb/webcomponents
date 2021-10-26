@@ -618,7 +618,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         wipeSlot(store.themeElement, "*");
         // force a page break w/ the relevant details in code
         // this allows the UI to be modified
-        newValue = `<page-break
+        /*newValue = `<page-break
         title="${store.activeItem.title}"
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
@@ -626,7 +626,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         break-type="haxcms"
         ${store.activeItem.metadata.locked ? "locked" : ""}
         ${store.activeItem.metadata.published ? "published" : ""}
-        ></page-break>${newValue}`;
+        ></page-break>${newValue}`;*/
         html = encapScript(newValue);
         // set in the store
         store.activeItemContent = html;
