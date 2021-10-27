@@ -3,6 +3,7 @@
   "canPosition": true,
   "canEditSource": true,
   "contentEditable": true,
+  "type": "grid",
   "gizmo": {
     "title": "Self-Check",
     "description": "The user will be able to complete a self-check.",
@@ -24,12 +25,6 @@
   },
   "settings": {
     "configure": [
-      {
-        "property": "title",
-        "title": "Title",
-        "description": "The title of the element",
-        "inputMethod": "textfield"
-      },
       {
         "property": "accentColor",
         "title": "Accent Color",
@@ -59,6 +54,21 @@
         "title": "Alt Text",
         "description": "Add alt text to the image",
         "inputMethod": "alt"
+      },
+      {
+        "slot": "heading",
+        "title": "Title",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "question",
+        "title": "Question",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Answer",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [
@@ -66,6 +76,12 @@
         "property": "describedBy",
         "title": "aria-describedby",
         "description": "Space-separated list of IDs for elements that describe the image.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "title",
+        "title": "Title (Deprecated)",
+        "description": "The title of the element",
         "inputMethod": "textfield"
       }
     ]
