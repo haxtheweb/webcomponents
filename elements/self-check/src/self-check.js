@@ -232,6 +232,15 @@ class SelfCheck extends I18NMixin(
           max-height: 400px;
           overflow: hidden;
         }
+        ::slotted([slot="heading"]) {
+          margin: 0;
+        }
+        ::slotted(p:first-child) {
+          margin-top: 0;
+        }
+        ::slotted(p:last-child) {
+          margin-top: 0;
+        }
       `,
     ];
   }
@@ -255,7 +264,9 @@ class SelfCheck extends I18NMixin(
             ?dark="${!this.dark}"
             contrast="4"
           ></simple-icon>
-          <div class="heading" id="title">${this.title}</div>
+          <div class="heading" id="title">
+            <slot name="heading">${this.title}</slot>
+          </div>
         </div>
         <div id="question_wrap">
           <div class="question" aria-hidden="${this.correct}">
