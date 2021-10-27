@@ -11826,7 +11826,7 @@ function make_xlsx_lib(XLSX) {
       z.r = utf8read(x);
       if (html) z.h = escapehtml(z.t);
     } else if (/*y = */ x.match(sirregex)) {
-    /* 18.4.4 r CT_RElt (Rich Text Run) */
+      /* 18.4.4 r CT_RElt (Rich Text Run) */
       z.r = utf8read(x);
       z.t = unescapexml(
         utf8read(
