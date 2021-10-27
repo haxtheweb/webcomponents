@@ -1510,6 +1510,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   toggleSticky(mode) {
     mode = mode === undefined ? !this.sticky : mode;
+    //only toggle if not already in correct mode
+    if (this.sticky === mode) return;
     this.sticky = mode;
     /**
      * Fires when video's sticky behavior is toggled
