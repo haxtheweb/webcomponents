@@ -163,7 +163,7 @@ class SelfCheck extends I18NMixin(
           );
           background-color: var(
             --self-check-answer-color,
-            var(--simple-colors-default-theme-light-green-8, #00762e)
+            var(--simple-colors-default-theme-light-green-11, #00762e)
           );
           border-top: 2px solid
             var(
@@ -269,7 +269,10 @@ class SelfCheck extends I18NMixin(
           </div>
         </div>
         <div id="question_wrap">
-          <div class="question" aria-hidden="${this.correct}">
+          <div
+            class="question"
+            aria-hidden="${this.correct ? "true" : "false"}"
+          >
             <slot name="question"></slot>
             <div class="check_button">
               <simple-icon-button
@@ -299,7 +302,7 @@ class SelfCheck extends I18NMixin(
                 ? html`
                     <div class="more_info">
                       <user-action track="click" every="every"
-                        ><a href="${this.link}" target="_blank"
+                        ><a href="${this.link}" target="_blank" rel="noopener"
                           >${this.t.moreInformation}...</a
                         ></user-action
                       >
@@ -310,7 +313,7 @@ class SelfCheck extends I18NMixin(
                 <simple-icon-button
                   aria-label="${this.t.close}"
                   id="closeBtn"
-                  dark
+                  ?dark="${!this.dark}"
                   icon="icons:close"
                   @click="${this.openAnswer}"
                 >
@@ -387,7 +390,6 @@ class SelfCheck extends I18NMixin(
        */
       link: {
         type: String,
-        reflect: true,
       },
       /**
        * Property for toggling "checkbtn".

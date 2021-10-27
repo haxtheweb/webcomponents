@@ -13,6 +13,8 @@ test/.wct-kludge
 analysis.json
 yarn-error.log
 .cache
+.yarn
+yarn.lock
 test/index.html
 elements/grade-book/demo/psu/
 elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
