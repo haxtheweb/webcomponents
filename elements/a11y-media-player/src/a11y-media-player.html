@@ -169,7 +169,7 @@
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
         ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-        ?toggle="${this.fullscreenEnabled}"
+        ?toggle="${this.fullscreen}"
         @click="${e => this.toggleFullscreen()}"
       >
       </a11y-media-button>
