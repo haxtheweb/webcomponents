@@ -1144,7 +1144,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 "label"
               )}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-              ?toggle="${this.fullscreen}"
+              ?toggle="${this.fullscreenEnabled}"
               @click="${(e) => this.toggleFullscreen()}"
             >
             </a11y-media-button>
