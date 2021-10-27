@@ -1144,7 +1144,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 "label"
               )}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-              ?toggle="${this.fullscreenEnabled}"
+              ?toggle="${this.fullscreen}"
               @click="${(e) => this.toggleFullscreen()}"
             >
             </a11y-media-button>
@@ -2040,15 +2040,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
-  }
-
-  get fullscreen() {
-    if (this.__fullscreen) {
-      this.setAttribute("fullscreen", true);
-    } else {
-      this.removeAttribute("fullscreen");
-    }
-    return this.__fullscreen;
   }
 
   /**

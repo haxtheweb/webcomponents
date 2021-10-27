@@ -320,15 +320,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     );
   }
 
-  get fullscreen() {
-    if (this.__fullscreen) {
-      this.setAttribute("fullscreen", true);
-    } else {
-      this.removeAttribute("fullscreen");
-    }
-    return this.__fullscreen;
-  }
-
   /**
    * whether or not the fullscreen mode is be disabled
    * @returns {boolean}
