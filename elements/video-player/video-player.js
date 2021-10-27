@@ -88,34 +88,35 @@ class VideoPlayer extends IntersectionObserverMixin(
                   <span class="media-type print-only">(embedded media)</span>
                 </p>
                 <slot name="caption"></slot>
-              </div>`
+              </div>
+              <slot hidden></slot>`
           : html` <a11y-media-player
-              accent-color="${this.accentColor}"
-              ?audio-only="${this.audioOnly}"
-              ?dark="${this.dark}"
-              ?dark-transcript="${this.darkTranscript}"
-              ?disable-interactive="${this.disableInteractive}"
-              ?hide-timestamps="${this.hideTimestamps}"
-              ?hide-transcript="${this.hideTranscript}"
-              ?hide-youtube-link="${this.hideYoutubeLink}"
-              id="${this.playerId}"
-              lang="${this.lang || "en"}"
-              ?learning-mode="${this.learningMode}"
-              ?linkable="${this.linkable}"
-              preload="${this.preload || "metadata"}"
-              media-title="${this.mediaTitle || ""}"
-              .sources="${this.sourceProperties}"
-              ?stand-alone="${this.standAlone}"
-              sticky-corner="${this.stickyCorner || "top-right"}"
-              .thumbnail-src="${this.thumbnailSrc}"
-              .tracks="${this.trackProperties}"
-              .crossorigin="${this.crossorigin || "anonymous"}"
-              .width="${this.width}"
-              .height="${this.height}"
-              .youtubeId="${this.youtubeId || undefined}"
-            >
-              <slot></slot>
-            </a11y-media-player>`}`
+                accent-color="${this.accentColor}"
+                ?audio-only="${this.audioOnly}"
+                ?dark="${this.dark}"
+                ?dark-transcript="${this.darkTranscript}"
+                ?disable-interactive="${this.disableInteractive}"
+                ?hide-timestamps="${this.hideTimestamps}"
+                ?hide-transcript="${this.hideTranscript}"
+                ?hide-youtube-link="${this.hideYoutubeLink}"
+                id="${this.playerId}"
+                lang="${this.lang || "en"}"
+                ?learning-mode="${this.learningMode}"
+                ?linkable="${this.linkable}"
+                preload="${this.preload || "metadata"}"
+                media-title="${this.mediaTitle || ""}"
+                .sources="${this.sourceProperties}"
+                ?stand-alone="${this.standAlone}"
+                sticky-corner="${this.stickyCorner || "top-right"}"
+                .thumbnail-src="${this.thumbnailSrc}"
+                .tracks="${this.trackProperties}"
+                .crossorigin="${this.crossorigin || "anonymous"}"
+                .width="${this.width}"
+                .height="${this.height}"
+                .youtubeId="${this.youtubeId || undefined}"
+              >
+              </a11y-media-player
+              ><slot hidden></slot>`}`
       : ``}`;
   }
 
