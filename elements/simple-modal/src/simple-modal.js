@@ -37,34 +37,38 @@ const SimpleModalCssVars = [
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
- * CSS Variables: ```
  * 
+ * ### Styling
+`<simple-fields>` provides following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|--------
+--simple-modal-resize | whether modal can be resized by user (see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/resize}) | unset
+--simple-modal-titlebar-color | height for modal's titlebar | #444
+--simple-modal-titlebar-background | background color for modal's titlebar | #ddd
+--simple-modal-titlebar-padding | padding for modal's titlebar | 0px 16px
+--simple-modal-titlebar-height | height for modal's titlebar | unset
+--simple-modal-titlebar-line-height | text's line height for modal's titlebar | unset
+--simple-modal-header-color | text color for modal's header | #222
+--simple-modal-header-background | background color for modal's header | #ccc
+--simple-modal-header-padding | padding for modal's header | 0px 16px
+--simple-modal-content-container-color | text color for modal's content | #222;
+--simple-modal-content-container-background | text color for modal's content | #fff 
+--simple-modal-content-padding | text color for modal's content | 8px 16px
+--simple-modal-buttons-color | text color for modal's buttons | unset
+--simple-modal-buttons-background | background color for modal's buttons | unset
+--simple-modal-buttons-padding | padding for modal's buttons | 0
+--simple-modal-button-color | text color for modal's buttons | var(--simple-modal-buttons-color)
+--simple-modal-button-background | background color for modal's buttons | var(--simple-modal-buttons-background-color)
+--simple-modal-z-index | z-index for modal | 1000
+--simple-modal-width | width of modal | 75vw
+--simple-modal-height | height of modal | auto;
+--simple-modal-min-width | min-width of modal | unset
+--simple-modal-min-height | min-height of modal | unset
+--simple-modal-max-width | max-width of modal | unset
+--simple-modal-max-height | max-height of modal | unset
  * 
---simple-modal-resize: unset;
---simple-modal-titlebar-color: #444;
---simple-modal-titlebar-background: #ddd;
---simple-modal-titlebar-padding: 0px 16px;
---simple-modal-titlebar-height: unset;
---simple-modal-titlebar-line-height: unset;
---simple-modal-header-color: #222;
---simple-modal-header-background: #ccc;
---simple-modal-header-padding: 0px 16px;
---simple-modal-content-container-color: #222;
---simple-modal-content-container-background: #fff;
---simple-modal-content-padding: 8px 16px;
---simple-modal-buttons-color: unset;
---simple-modal-buttons-background: unset;
---simple-modal-buttons-padding: 0;
---simple-modal-button-color: var(--simple-modal-buttons-color);
---simple-modal-button-background: var(--simple-modal-buttons-background-color);
---simple-modal-z-index: 1000;
---simple-modal-width: 75vw;
---simple-modal-height: auto;
---simple-modal-min-width: unset;
---simple-modal-min-height: unset;
---simple-modal-max-width: unset;
---simple-modal-max-height: unset;
-```
  * @demo ./demo/index.html demo
  * @demo ./demo/css.html styling simple-modal via CSS
  * @demo ./demo/details.html styling simple-modal via event details
