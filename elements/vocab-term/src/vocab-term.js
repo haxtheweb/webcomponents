@@ -179,8 +179,22 @@ class VocabTerm extends LitElement {
       this.shadowRoot
         .querySelector(`simple-modal-template`)
         .associateEvents(this.shadowRoot.querySelector(`summary`));
+      this.shadowRoot
+        .querySelector("summary")
+        .addEventListener("focus", this.detailsFocusOut.bind(this));
     }
   }
+
+  /**
+   *
+   */
+  detailsFocusOut() {
+    this.shadowRoot.querySelector("details").removeAttribute("open");
+    this.shadowRoot
+      .querySelector("summary")
+      .removeEventListener("focus", this.detailsFocusOut.bind(this));
+  }
+
   /**
    * LitElement life cycle - property changed
    */
