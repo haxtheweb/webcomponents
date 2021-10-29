@@ -71,7 +71,9 @@ class VocabTerm extends LitElement {
       ? html`
           <div>
             ${this.links.length > 0
-              ? html`
+              ? html` <details>
+                  <summary id="summary">${this.term}</summary>
+                  <p>${this.information}</p>
                   <ul>
                     ${this.links.map(
                       (el) => html`
@@ -79,7 +81,7 @@ class VocabTerm extends LitElement {
                       `
                     )}
                   </ul>
-                `
+                </details>`
               : ``}
           </div>
         `
