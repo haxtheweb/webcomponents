@@ -665,6 +665,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         fit-to-visible-bounds
         justify
         position="top"
+        allow-overlap
         auto
         sticky
         data-node-type="${!this.activeNode
@@ -694,6 +695,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             id="textcontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
+            ?hidden=${HAXStore.isGridPlateElement(this.activeNode)}
             show="always"
           >
           </hax-text-editor-toolbar>
@@ -791,6 +793,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.contextMenus = {
       text: this.shadowRoot.querySelector("#textcontextmenu"),
       plate: this.shadowRoot.querySelector("#platecontextmenu"),
+      parent: this.shadowRoot.querySelector("#topcontext"),
     };
     // track and store range on mouse up. this helps w/ Safari focus selection
     // issues as well as any "tap" event from a phone knowing what text
@@ -1372,12 +1375,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {*} node
    * @memberof HaxBody
    */
-  setActiveNode(node) {
+  setActiveNode(node, force = false) {
     if (
       node &&
       this.editMode &&
       this.activeNode &&
-      HAXStore.isTextElement(this.activeNode)
+      (HAXStore.isTextElement(this.activeNode) || force)
     ) {
       this.activeNode = node;
       // If the user has paused for awhile, show the menu
@@ -1986,6 +1989,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 250);
           }
         }
+        this.contextMenus.parent.setPosition();
       }, 50);
     }
   }
@@ -2411,17 +2415,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.sortGridSlots();
         }
         break;
-      case "select-parent-grid":
-        if (
-          this.activeNode &&
-          this.activeNode.parentNode &&
-          HAXStore.isGridPlateElement(this.activeNode.parentNode)
-        ) {
-          let target = this.activeNode.parentNode;
-          this.setActiveNode(target);
+
+      case "hax-select-grid-item":
+        if (eventPath[0] && eventPath[0].eventData) {
+          let target = eventPath[0].eventData;
+          this.setActiveNode(target, true);
           this.positionContextMenus(target);
         }
         break;
+
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;

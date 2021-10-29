@@ -195,7 +195,6 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
      * @memberof A11yMenuButtonItem
      */
     focus() {
-      console.log("focusing", this.menuItem, this);
       if (this.menuItem) this.menuItem.focus();
     }
     connectedCallback() {

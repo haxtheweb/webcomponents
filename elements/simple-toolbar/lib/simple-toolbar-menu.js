@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "./simple-toolbar-menu-item.js";
 /**
  * `simple-toolbar-menu`
@@ -37,9 +38,22 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             --simple-icon-width: 18px;
             margin-left: -2px;
           }
+          #icon + #dropdownicon {
+            margin-left: -6px;
+          }
         `,
       ];
     }
+    constructor() {
+      super();
+      this.tooltipDirection = "top";
+    }
+    /**
+     * styles that control layout of button
+     *
+     * @readonly
+     * @static
+     */
     static get simpleButtonLayoutStyles() {
       return [
         ...super.simpleButtonLayoutStyles,
@@ -51,7 +65,12 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         `,
       ];
     }
-
+    /**
+     * styles that provide theming button
+     *
+     * @readonly
+     * @static
+     */
     static get simpleButtonThemeStyles() {
       return [
         ...super.simpleButtonThemeStyles,
@@ -84,6 +103,11 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       ];
     }
 
+    /**
+     * template menu button
+     *
+     * @readonly
+     */
     get buttonTemplate() {
       return html`
         <button
@@ -91,6 +115,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           aria-haspopup="true"
           aria-controls="menu"
           aria-expanded="${this.expanded ? "true" : "false"}"
+          @blur="${this._handleBlur}"
           part="button"
           tabindex="${this.isCurrentItem ? 1 : -1}"
         >
@@ -102,8 +127,27 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             part="dropdown-icon"
           ></simple-icon-lite>
         </button>
+        ${this.tooltipTemplate}
       `;
     }
+    /**
+     * template for button tooltip
+     *
+     * @readonly
+     */
+    get tooltipTemplate() {
+      return !this.tooltipVisible
+        ? ""
+        : html`<simple-tooltip
+            id="tooltip"
+            for="menubutton"
+            position="${this.tooltipDirection || "top"}"
+            part="tooltip"
+            fit-to-visible-bounds
+            >${this.currentTooltip || this.currentLabel}</simple-tooltip
+          >`;
+    }
+
     static get tag() {
       return "simple-toolbar-menu";
     }
@@ -112,10 +156,47 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         ...super.properties,
       };
     }
+    /**
+     * gets focusable button element
+     *
+     * @readonly {object}
+     * @memberof A11yMenuButton
+     */
     get focusableElement() {
       return this.shadowRoot && this.shadowRoot.querySelector("#menubutton")
         ? this.shadowRoot.querySelector("#menubutton")
         : undefined;
+    }
+    /**
+     * can be overridden when extending this button,
+     * so that certain elements in menuitems are excluded from keyboard handling
+     *
+     * @param {event} event
+     * @returns {boolean}
+     * @memberof A11yMenuButton
+     */
+    _excludeEvent(event) {
+      let path = normalizeEventPath(event) || [],
+        target = path[0];
+
+      //don't handle form field keystrokes for fields
+      return target.closest("simple-toolbar-field") &&
+        target.tagName === "BUTTON"
+        ? true
+        : false;
+    }
+
+    /**
+     * handles when menu has focus
+     *
+     * @param {event} event
+     * @memberof A11yMenuButton
+     */
+    _handleFocus(event) {
+      if (SimpleToolbarButtonBehaviors._handleFocus)
+        SimpleToolbarButtonBehaviors._handleFocus(event);
+      if (A11yMenuButtonBehaviors._handleFocus)
+        A11yMenuButtonBehaviors._handleFocus(event);
     }
 
     /**
@@ -125,9 +206,18 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleBlur(event) {
-      super.blur(event);
+      if (SimpleToolbarButtonBehaviors._handleBlur)
+        SimpleToolbarButtonBehaviors._handleBlur(event);
+      if (A11yMenuButtonBehaviors._handleBlur)
+        A11yMenuButtonBehaviors._handleBlur(event);
       if (!this.isCurrentItem) setTimeout(this.close(), 300);
     }
+
+    /**
+     * adds a menuitem to lists and sets up its listeners
+     *
+     * @param {ibject} item menu item element
+     */
     addItem(item) {
       if (this.getItemIndex(item) < 0) {
         let listeners = this.itemListeners;
@@ -141,6 +231,11 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         );
       }
     }
+    /**
+     * removes a menuitem's listners and menuitem istelf from list
+     *
+     * @param {ibject} item menu item element
+     */
     removeItem(item) {
       if (this.getItemIndex(item) < 0) {
         let listeners = this.itemListeners;

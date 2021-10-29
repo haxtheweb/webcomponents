@@ -26,6 +26,12 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
     return [
       ...super.styles,
       css`
+        :host([full-display]) {
+          min-width: 100px;
+          display: block;
+          padding-right: 3px;
+          overflow: visible;
+        }
         *[part="button"] {
           height: auto;
           width: auto;
@@ -37,6 +43,9 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         }
         *[part="button"]:hover > *:not([part="field"]) {
           opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
+        }
+        :host([full-display]) *[part="button"] {
+          border-width: 0;
         }
         :host(:focus-within) *[part="button"] {
           color: var(--simple-toolbar-button-hover-color);
@@ -63,13 +72,17 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           align-items: flex-end;
         }
         ::slotted(*) {
+          width: 10px;
+          flex: 1 1 auto;
+        }
+        :host(:not([full-display])) ::slotted(*) {
           flex: 0 0 auto;
           width: 0px;
           opacity: 0;
           padding: 0;
           transition: width ease-in-out 0.5s, opacity 0.5s ease-in-out 0s;
         }
-        :host([is-current-item]) ::slotted(:focus) {
+        :host([is-current-item]:not([full-display])) ::slotted(:focus) {
           width: 100px;
           opacity: 1;
           padding: unset;
@@ -81,12 +94,18 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.fullDisplay = false;
     this.addEventListener("click", this.toggleFocus);
     this.observer.observe(this, { childList: true, subtree: true });
   }
   static get properties() {
     return {
       ...super.properties,
+      fullDisplay: {
+        type: Boolean,
+        attribute: "full-display",
+        reflect: true,
+      },
     };
   }
   /**
@@ -95,18 +114,47 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
    * @readonly
    */
   get buttonTemplate() {
-    return html` <div
-        id="button"
-        class="simple-toolbar-button"
-        ?disabled="${this.disabled}"
-        part="button"
-      >
-        ${this.buttonInnerTemplate}
-        <span part="field">
-          <slot></slot>
-        </span>
-      </div>
-      ${this.tooltipTemplate}`;
+    return this.fullDisplay
+      ? html` <div
+            id="button"
+            class="simple-toolbar-button"
+            ?disabled="${this.disabled}"
+            part="button"
+          >
+            ${this.buttonInnerTemplate}
+            <slot></slot>
+          </div>
+          ${this.tooltipFullDisplayTemplate}`
+      : html` <div
+            id="button"
+            class="simple-toolbar-button"
+            ?disabled="${this.disabled}"
+            part="button"
+          >
+            ${this.buttonInnerTemplate}
+            <span part="field">
+              <slot></slot>
+            </span>
+          </div>
+          ${this.tooltipTemplate}`;
+  }
+  /**
+   * template for button tooltip
+   *
+   * @readonly
+   */
+  get tooltipFullDisplayTemplate() {
+    return !this.tooltipVisible
+      ? ""
+      : html`<simple-tooltip
+          id="tooltip"
+          for="${!this.hasIcon ? "label" : "icon"}"
+          offset="5"
+          position="right"
+          part="tooltip"
+          fit-to-visible-bounds
+          >${this.currentTooltip || this.currentLabel}</simple-tooltip
+        >`;
   }
   get focusableElement() {
     return this.querySelector("*:not([disabled]):not([hidden])");
@@ -128,7 +176,6 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
         );
       }
     });
-    console.log(this.label, this.focusableElement, this.isCurrentItem);
   }
 
   /**

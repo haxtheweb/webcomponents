@@ -29,7 +29,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
           <span class="media-type print-only">(embedded media)</span>
         </p>
         <slot name="caption"></slot>
-      </div>` 
+      </div><slot hidden></slot>` 
     : html`
       <a11y-media-player
         accent-color="${this.accentColor}"
@@ -56,6 +56,5 @@ ${this.elementVisible ? html`${!this.isA11yMedia
         .height="${this.height}"
         .youtubeId="${this.youtubeId || undefined}"
         >
-        <slot></slot>
-      </a11y-media-player>`
+      </a11y-media-player><slot hidden></slot>`
 }` : ``}

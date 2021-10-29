@@ -92,9 +92,11 @@ class AbsolutePositionStateManager extends LitElement {
       document.addEventListener("load", this.updateElements);
       window.addEventListener("resize", this._handleResize);
     }
-    this.elements.push(el);
-    el.style.top = 0;
-    el.style.left = 0;
+    if (this.elements.filter((element) => element === el).length < 1) {
+      this.elements.push(el);
+      el.style.top = 0;
+      el.style.left = 0;
+    }
     this.positionElement(el);
   }
 
@@ -103,7 +105,7 @@ class AbsolutePositionStateManager extends LitElement {
    * @param {object} element to be removed
    */
   unloadElement(el) {
-    this.elements.filter((element) => element === el);
+    this.elements = this.elements.filter((element) => element !== el);
     if (this.elements.length < 1) this.removeEventListeners();
   }
 
@@ -130,8 +132,8 @@ class AbsolutePositionStateManager extends LitElement {
   }
 
   /**
-   * Checks if there are any chances other than to
-   * element's position and updates accordioning.
+   * Checks if there are any changes other than to
+   * element's position and update accordioningly.
    * This is needed so that positioning elements
    * doesn't trigger an infinite loop of updates.
    *
@@ -151,7 +153,13 @@ class AbsolutePositionStateManager extends LitElement {
           this.elements.includes(mutation.target)
         );
     });
-    if (update) this.updateElements();
+    if (update) {
+      if (this.__timeout) clearTimeout(this.__timeout);
+      this.__timeout = setTimeout(
+        window.AbsolutePositionStateManager.instance.updateElements(),
+        250
+      );
+    }
   }
 
   /**
@@ -256,20 +264,30 @@ class AbsolutePositionStateManager extends LitElement {
    * @return {void}
    */
   positionElement(el) {
+    //set up element's default position
     if (!el.position) {
       el.position = "bottom";
     }
+    el.style.position = "absolute";
     if (!el.style.top) el.style.top = "0px";
     if (!el.style.left) el.style.left = "0px";
+
+    //continue only if there is a target and a parent
     let target = this.findTarget(el),
       parent = el.offsetParent,
       t = !target || target.getBoundingClientRect();
     if (!target || !parent) return;
+    //if justify is set, re-adjust element to
+    //target width before getting other dimensions
     if (el.justify) el.style.width = `${t.width}px`;
-    let offset = parseFloat(el.offset),
-      w = document.body.getBoundingClientRect(),
+    //get body, parent, and element dimensions
+    let w = document.body.getBoundingClientRect(),
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
+      //optional offset property
+      offset = parseFloat(el.offset),
+      //converts a value in px to a float
+      pxToNum = (px) => parseFloat(px.replace("px", "")),
       //place element before vertically?
       vertical = (pos = el.position) => pos !== "left" && pos !== "right",
       //place element before target?
@@ -280,8 +298,7 @@ class AbsolutePositionStateManager extends LitElement {
        */
       setAlign = (v = vertical(el.position)) => {
         //fits element within parent's boundaries
-        let pxToNum = (px) => parseFloat(px.replace("px", "")),
-          min = v
+        let min = v
             ? pxToNum(el.style.left) - e.left
             : pxToNum(el.style.top) - e.top,
           startAt = v ? "left" : "top",
@@ -302,20 +319,25 @@ class AbsolutePositionStateManager extends LitElement {
 
         return bounds;
       },
+      //gets coordinate for top ot left position
       getCoord = (pos = el.position) => {
         let coord,
-          pxToNum = (px) => parseFloat(px.replace("px", "")),
           adjust = vertical(pos)
             ? pxToNum(el.style.top) - e.top
             : pxToNum(el.style.left) - e.left,
+          //determine whether overflowed content should be part of height/width calculations
           eh =
+            !el.allowOverlap &&
             window.getComputedStyle(el, null).overflowY == "visible"
               ? Math.max(e.height, el.scrollHeight)
               : e.height,
           ew =
+            !el.allowOverlap &&
             window.getComputedStyle(el, null).overflowX == "visible"
               ? Math.max(e.width, el.scrollWidth)
               : e.width;
+        //calculate coordinate based on position property,
+        // offset property, and whether overflowed conent should overlap the target
         coord =
           pos === "top"
             ? t.top + adjust - eh - offset
@@ -324,6 +346,7 @@ class AbsolutePositionStateManager extends LitElement {
             : t[pos] + adjust + offset;
         return coord;
       },
+      //determines if element fits on screen in the desired position
       isFit = (pos = el.position) => {
         //determines if room for element between parent and target
         let distance = (rect) =>
@@ -332,14 +355,15 @@ class AbsolutePositionStateManager extends LitElement {
           ? t[pos] - w[pos] > distance
           : w[pos] - t[pos] > distance; //if no room, return original position
       },
+      //should element's position flip to fit element within bounds
       flip = el.fitToVisibleBounds !== false && !isFit(el.position),
+      //if position needs to be flipped, order of preference for new position
       flipData = {
         top: ["bottom", "left", "right"],
         left: ["right", "top", "bottom"],
         bottom: ["top", "right", "left"],
         right: ["left", "bottom", "top"],
       };
-    el.style.position = "absolute";
     /*
      * fits element according to specified postion,
      * or finds an alternative position that fits
@@ -351,8 +375,10 @@ class AbsolutePositionStateManager extends LitElement {
     } else if (flip && isFit(flipData[el.position][2])) {
       el.position = flipData[el.position][2];
     }
+    //get top and left positions
     let tt = vertical(el.position) ? getCoord() : setAlign(),
       ll = vertical(el.position) ? setAlign() : getCoord();
+    //if element is sticky, adjust top posiiton accordingly
     if (el.sticky) {
       let scrollTop =
           window.pageYOffset ||
@@ -373,6 +399,7 @@ class AbsolutePositionStateManager extends LitElement {
       if (el.position === "bottom" && stickyB)
         tt = scrollTop + maxH - parent.offsetTop - eheight;
     }
+    //set top and left positions
     el.style.top = tt + "px";
     el.style.left = ll + "px";
     //provide positions for element and target (in case furthor positioning adjustments are needed)

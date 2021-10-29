@@ -10,6 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-toolbar-field.js';
       import '../lib/simple-toolbar-menu.js';
       import '../lib/simple-toolbar-menu-item.js';
       import '../lib/simple-toolbar-button.js';
@@ -39,6 +40,23 @@
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <simple-toolbar-button role="menuitem" icon="editor:format-italic" label="Italics" show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
+        </template>
+      </demo-snippet>
+      <h3>Settings Pabel Menu</h3>
+      <demo-snippet>
+        <template>
+          <simple-toolbar-menu icon="settings" label="Settings" show-text-label align-horizontal="left" keep-open-on-click no-open-on-hover>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-field class="button" label="User Name" icon="icons:account-circle" full-display>
+                <input type="text" aria-label="User Name">
+              </simple-toolbar-field>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-field class="button" label="volume" icon="av:volume-up" role="menuitem" full-display tooltip-direction="right">
+                <input type="range" min="0" step="10" max="100" value="50">
+              </simple-toolbar-field>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
         </template>
