@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimplePopover } from "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+
 /**
  * `vocab-term`
  * `a vocabulary term visualized in the page`
@@ -60,6 +62,13 @@ class VocabTerm extends LitElement {
         :host {
           display: block;
         }
+        simple-modal-template[modal-id="smt1"] {
+          --simple-modal-resize: both;
+          --simple-modal-width: 300px;
+          --simple-modal-height: 300px;
+          --simple-modal-min-width: 300px;
+          --simple-modal-min-height: 300px;
+        }
       `,
     ];
   }
@@ -70,19 +79,30 @@ class VocabTerm extends LitElement {
     return html` ${!this.popoverMode
       ? html`
           <div>
-            ${this.links.length > 0
-              ? html` <details>
-                  <summary id="summary">${this.term}</summary>
-                  <p>${this.information}</p>
-                  <ul>
-                    ${this.links.map(
-                      (el) => html`
-                        <li><a href="${el.href}">${el.title}</a></li>
-                      `
-                    )}
-                  </ul>
-                </details>`
-              : ``}
+            ${
+              this.links.length > 0
+                ? html`
+                    <details>
+                      <summary id="summary">${this.term}</summary>
+                      <simple-modal-template>
+                        <div slot="header">${this.term}</div>
+                        <p slot="content">${this.information}</p>
+                        <ul>
+                          ${this.links.map(
+                            (el) => html`
+                              <li><a href="${el.href}">${el.title}</a></li>
+                            `
+                          )}
+                        </ul>
+                        <div slot="buttons">
+                          <button dialog-dismiss>Close Modal</button>
+                        </div>
+                      </simple-modal-template>
+                    </details>
+                  `
+                : ``
+            }
+              </details>
           </div>
         `
       : html`
@@ -154,6 +174,11 @@ class VocabTerm extends LitElement {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
+    }
+    if (this.popoverMode == false) {
+      this.shadowRoot
+        .querySelector(`simple-modal-template`)
+        .associateEvents(this.shadowRoot.querySelector(`summary`));
     }
   }
   /**
