@@ -20,7 +20,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
     if (window.WCGlobalBasePath) {
       this.libPath = window.WCGlobalBasePath;
     } else {
-      this.libPath = new URL(`/../../../node_modules/`, import.meta.url).href;
+      this.libPath = new URL(`./`, import.meta.url).href;
     }
     this.libPath += "mammoth/";
     ESGlobalBridgeStore.load(

@@ -111,6 +111,7 @@ export const HaxIconsetManifest = [
       "qr-code",
       "remix",
       "search-clear",
+      "select-element",
       "settings",
       "site-map",
       "site-settings",

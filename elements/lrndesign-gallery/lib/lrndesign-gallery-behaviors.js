@@ -242,6 +242,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        */
       selected: {
         type: Object,
+        reflect: true,
       },
       /*
        * array of gallery items

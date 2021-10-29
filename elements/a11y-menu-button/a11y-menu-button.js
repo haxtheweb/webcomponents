@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "./lib/a11y-menu-button-item.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const A11yMenuButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -179,6 +180,27 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
+         * overrides default behavior of closing
+         * menu after an item is clicked
+         */
+        keepOpenOnClick: {
+          attribute: "keep-open-on-click",
+          type: Boolean,
+        },
+        /**
+         * menu items in array form to move from prev to next
+         */
+        menuItems: {
+          type: Array,
+        },
+        /**
+         * disables menu i=opening on hover
+         */
+        noOpenOnHover: {
+          attribute: "no-open-on-hover",
+          type: Boolean,
+        },
+        /**
          * spacing between top of list and menu button
          */
         offset: {
@@ -201,12 +223,6 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           attribute: "position-align",
           reflect: true,
         },
-        /**
-         * menu items in array form to move from prev to next
-         */
-        menuItems: {
-          type: Array,
-        },
       };
     }
     constructor() {
@@ -215,6 +231,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.positionAlign = "start";
       this.offset = 0;
       this.menuItems = [];
+      this.keepOpenOnClick = false;
+      this.noOpenOnHover = false;
       [...this.children]
         .filter((n) => n.slot === "menuitem")
         .forEach((item) => this.addItem(item));
@@ -450,6 +468,22 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     get lastItem() {
       return this.menuItems[this.menuItems.length - 1];
     }
+    /**
+     * gets list of menu item first characters
+     *
+     * @readonly
+     */
+    get firstChars() {
+      return this.menuItems.map((item) => {
+        let textContent = (item.textContent || "").trim();
+        return (textContent || " ").substring(0, 1).toLowerCase();
+      });
+    }
+    /**
+     * gets index of a menuitem
+     *
+     * @returns {number}
+     */
     getItemIndex() {
       let index = -1;
       this.menuItems.forEach((b, i) => {
@@ -457,12 +491,23 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       });
       return index;
     }
+    /**
+     * gets a menuitem relative to the current item
+     *
+     * @param {number} [offset=1] number of items after current menuitem in order, -1 for item before
+     * @returns
+     */
     getItem(offset = 1) {
       let index = this.getItemIndex(this.currentItem) + offset;
       return !this.menuItems || index < 0 || this.menuItems.length <= index
         ? undefined
         : this.menuItems[index];
     }
+    /**
+     * menuitem event listeners and their handlers
+     *
+     * @readonly {object}
+     */
     get itemListeners() {
       return {
         click: this._handleItemClick,
@@ -473,6 +518,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         keydown: this._handleItemKeydown,
       };
     }
+    /**
+     * adds a menuitem to lists and sets up its listeners
+     *
+     * @param {ibject} item menu item element
+     */
     addItem(item) {
       let listeners = this.itemListeners;
       this.menuItems = this.menuItems || [];
@@ -481,6 +531,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       );
       this.menuItems.push(item);
     }
+    /**
+     * removes a menuitem's listners and menuitem istelf from list
+     *
+     * @param {ibject} item menu item element
+     */
     removeItem(item) {
       let listeners = this.itemListeners;
       if (this.menuItems)
@@ -519,8 +574,10 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleItemClick(event) {
-      this.focus();
-      this.close(true);
+      if (!this.keepOpenOnClick) {
+        this.focus();
+        this.close(true);
+      }
       this.dispatchEvent(
         new CustomEvent("item-click", {
           bubbles: true,
@@ -532,16 +589,37 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       event.stopPropagation();
     }
     /**
-     * handles menu item keydown
+     * can be overridden when extending this button,
+     * so that certain elements in menuitems are excluded from keyboard handling
+     *
+     * @param {event} event
+     * @returns
+     */
+    _excludeEvent(event) {
+      return false;
+    }
+    /**
+     * handles menu item keydown, as prescribed in
+     * {@link https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html} and
+     * {@link https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions-active-descendant.html}
      *
      * @param {event} event
      * @memberof A11yMenuButton
      */
     _handleItemKeydown(event) {
-      var flag = false,
+      let flag = false,
         char = event.key,
-        isPrintableCharacter = (str) => str.length === 1 && str.match(/\S/);
+        isPrintableCharacter = (str) => str.length === 1 && str.match(/\S/),
+        path = normalizeEventPath(event) || [],
+        target = path[0];
 
+      //don't handle form field keystrokes
+      if (
+        !isPrintableCharacter(char) &&
+        (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName) ||
+          this._excludeEvent(event))
+      )
+        return;
       if (
         event.ctrlKey ||
         event.altKey ||
@@ -554,7 +632,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
 
       if (event.shiftKey) {
         if (isPrintableCharacter(char)) {
-          this.menu.setFocusByFirstCharacter(this, char);
+          this.focusByCharacter(char);
           flag = true;
         }
 
@@ -599,7 +677,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
 
           default:
             if (isPrintableCharacter(char)) {
-              this.menu.setFocusByFirstCharacter(this, char);
+              this.focusByCharacter(char);
             }
             break;
         }
@@ -683,7 +761,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleMouseover(event) {
       this.hovered = true;
-      this.open();
+      if (!this.noOpenOnHover) this.open();
     }
 
     /**

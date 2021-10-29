@@ -57,7 +57,7 @@ class A11yMediaStateManager extends LitElement {
     super();
     this.players = [];
     this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
-    this.__activeManager = (e) => this.setActivePlayer(e.detail);
+    this.__fullscreenManager = (e) => this._handleFullscreen(e.detail);
     this.__scrollChecker = (e) => setTimeout(this._checkScroll(), 500);
     this.__playerLoader = (e) => this.players.push(e.detail);
 
@@ -73,11 +73,11 @@ class A11yMediaStateManager extends LitElement {
   checkConcurrentPlayers() {
     let active = this.activePlayer;
     this.players.forEach((player) => {
-      if (player.fullscreen) active = player;
       if (!!active && player !== active) {
-        player.toggleFullscreen(false);
+        if (player.fullscreen) player.toggleFullscreen(false);
         if (
-          (!player.allowConcurrent && !active.allowConcurrent) ||
+          !player.allowConcurrent ||
+          !active.allowConcurrent ||
           active.fullscreen
         )
           player.pause();
@@ -91,7 +91,6 @@ class A11yMediaStateManager extends LitElement {
    * @param {object} the player to set stickiness
    */
   setActivePlayer(player) {
-    console.log("active", this);
     this.activePlayer = player;
     this.checkConcurrentPlayers();
   }
@@ -110,34 +109,38 @@ class A11yMediaStateManager extends LitElement {
     ) {
       this.activePlayer.toggleSticky(false);
     }
-    parent.style.height = parent.offsetHeight + "px";
     this.setActivePlayer(player);
     setTimeout(this._checkScroll(), 500);
+  }
+  _handleFullscreen(player) {
+    if (player && player.fullscreen) this.setActivePlayer(player);
   }
 
   /**
    * checks the wondow's scroll position and compares it to active player to set sticky attribute
    */
   _checkScroll() {
+    if (this.__wait) return;
+    this.__wait = true;
     let wintop = window.pageYOffset,
       winbottom = wintop + window.innerHeight;
-    if (this.activePlayer) {
-      let parent = this._getParentNode(this.activePlayer);
-      this.__playerTop = parent.offsetTop;
-      this.__playerUpperMiddle = this.__playerTop + parent.offsetHeight * 0.8;
-      this.__playerLowerMiddle = this.__playerTop + parent.offsetHeight * 0.2;
-    }
-    if (this.activePlayer !== undefined && this.activePlayer !== null) {
-      if (
-        this.activePlayer.__playing &&
-        (this.__playerLowerMiddle > winbottom ||
-          this.__playerUpperMiddle < wintop)
-      ) {
+    //no need to handle player if it isn't playing or if in fullscreen mode
+    if (!this.activePlayer || this.activePlayer.fullscreen) {
+    } else if (!this.activePlayer.__playing) {
+      this.activePlayer.toggleSticky(false);
+    } else {
+      let parent = this._getParentNode(this.activePlayer),
+        top = parent.offsetTop,
+        height = parent.offsetHeight,
+        upper = top + height * 0.8,
+        lower = top + height * 0.2;
+      if (lower > winbottom || upper < wintop) {
         this.activePlayer.toggleSticky(true);
       } else {
         this.activePlayer.toggleSticky(false);
       }
     }
+    setTimeout((e) => (this.__wait = false), 500);
   }
 
   /**
@@ -162,8 +165,8 @@ class A11yMediaStateManager extends LitElement {
     // listen for a player that starts playing
     window.addEventListener("a11y-player-playing", this.__stickyManager);
 
-    // listen for a player toggles fullscreen mode
-    window.addEventListener("a11y-player-fullscreen", this.__activeManager);
+    // listen for a player toggling fullscreen mode
+    window.addEventListener("fullscreen-toggle", this._handleFullscreen);
 
     // listen for scrolling and find out if a player is off-screen
     window.addEventListener("scroll", this.__scrollChecker);
@@ -178,7 +181,7 @@ class A11yMediaStateManager extends LitElement {
     let root = this;
     window.removeEventListener("a11y-player", root.__playerLoader);
     window.removeEventListener("a11y-player-playing", root.__stickyManager);
-    window.removeEventListener("a11y-player-fullscreen", root.__activeManager);
+    window.removeEventListener("fullscreen-toggle", root.__fullscreenManager);
     window.removeEventListener("scroll", root.__scrollChecker);
     super.disconnectedCallback();
   }

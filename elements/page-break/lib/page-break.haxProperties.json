@@ -22,6 +22,12 @@
         "inputMethod": "text"
       },
       {
+        "property": "path",
+        "title": "Path",
+        "description": "Path of the page",
+        "inputMethod": "text"
+      },
+      {
         "property": "parent",
         "title": "Parent",
         "description": "Path of the parent page this page should sit under",
@@ -34,7 +40,7 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "lock",
+        "property": "locked",
         "title": "Lock page",
         "description": "Lock / Unlock all elements in this page",
         "inputMethod": "boolean"
@@ -42,9 +48,9 @@
     ],
     "advanced": [
       {
-        "property": "uuid",
-        "title": "Uniuque ID",
-        "description": "Only set this manually if you have a reason to.",
+        "property": "itemId",
+        "title": "Unique item ID",
+        "description": "Only set this manually if you have a reason to as it is for internal purposes.",
         "inputMethod": "text"
       }
     ]
@@ -55,8 +61,7 @@
       "content": "",
       "properties": {
         "published": true,
-        "lock": false,
-        "uuid": "new"
+        "locked": false
       }
     }
   ]

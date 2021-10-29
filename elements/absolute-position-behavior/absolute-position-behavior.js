@@ -38,6 +38,14 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
         ...super.properties,
 
         /**
+         * Element has absolututely positioned children, such as menus
+         * and tooltips that are allowed to overlap the target
+         */
+        allowOverlap: {
+          type: Boolean,
+          attribute: "allow-overlap",
+        },
+        /**
          * Element is positioned from connected to disconnected?
          * Otherwise setPosition and unsetPosition must be called manually.
          */
@@ -152,6 +160,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
           if (propName === "auto" && !this.auto) this.unsetPosition();
           if (
             [
+              "allowOverlap",
               "fitToVisibleBounds",
               "for",
               "offset",
