@@ -32,9 +32,10 @@ export class PageBreak extends IntersectionObserverMixin(
     };
     this.title = this.t.newPage;
     this.path = "#";
-    this.published = true;
-    this.lock = false;
+    this.published = false;
     this.target = null;
+    this.locked = false;
+    this.order = null;
     this.depth = 0;
     this.itemId = null;
     this._haxState = false;
@@ -58,6 +59,7 @@ export class PageBreak extends IntersectionObserverMixin(
     }
     return {
       ...props,
+      order: { type: Number },
       title: { type: String, reflect: true },
       path: { type: String },
       parent: { type: String, reflect: true },
@@ -197,13 +199,13 @@ export class PageBreak extends IntersectionObserverMixin(
         }, 0);
       }
       // replicate lock status
-      if (this.lock && propName === "lock") {
+      if (this.locked && propName === "locked") {
         pageBreakManager.elementsBetween(this).forEach((el) => {
           el.setAttribute("data-hax-lock", "data-hax-lock");
         });
       }
       // was true, not locked
-      else if (!this.lock && propName === "lock" && oldValue) {
+      else if (!this.locked && propName === "locked" && oldValue) {
         pageBreakManager.elementsBetween(this).forEach((el) => {
           el.removeAttribute("data-hax-lock");
         });
@@ -320,14 +322,13 @@ export class PageBreak extends IntersectionObserverMixin(
       // will have the option of doing this setting
       if (
         this.breakType === "haxcms" &&
-        propName === "title" &&
-        this[propName] &&
-        window.HAXCMS
+        window.HAXCMS &&
+        oldValue !== undefined &&
+        ["title", "published", "locked", "parent", "path", "order"].includes(
+          propName
+        )
       ) {
-        // set the title directly in the activeItem in the store
-        // while not permanent, this will allow us to update things
-        // on the fly and see them reflected
-        window.HAXCMS.requestAvailability().store.activeItem.title = this.title;
+        this.syncBreakWithHAXCMSStore();
       }
       // allow for haxcms page style association to allow users to edit the
       // current page's details
@@ -350,6 +351,45 @@ export class PageBreak extends IntersectionObserverMixin(
         this.style.backgroundImage = `url("${iconPath}")`;
       }
     });
+  }
+  async syncBreakWithHAXCMSStore() {
+    // @todo need to clone the activeItem before any modifications
+    // this way we can detect if the object has the same original values or
+    // was changed back to original values
+    const store = window.HAXCMS.requestAvailability().store;
+    if (!this.__originalActive) {
+      this.__originalActive = {
+        title: store.activeItem.title,
+        parent: store.activeItem.parent,
+        slug: store.activeItem.slug,
+        order: store.activeItem.order,
+        locked: store.activeItem.metadata.locked,
+        published: store.activeItem.metadata.published,
+      };
+    }
+    store.activeItem.metadata.locked = this.locked;
+    // this implies we should style to show that we have a change
+    store.activeItem.metadata.published = this.published;
+    store.activeItem.slug = this.path;
+    store.activeItem.order = this.order;
+    // verify the parentID exists first
+    store.activeItem.parent = this.parent;
+    if (
+      this.__originalActive.title === this.title &&
+      this.__originalActive.parent === store.activeItem.parent &&
+      this.__originalActive.slug === store.activeItem.slug &&
+      this.__originalActive.order === store.activeItem.order &&
+      this.__originalActive.locked === store.activeItem.metadata.locked &&
+      this.__originalActive.published === store.activeItem.metadata.published
+    ) {
+      store.activeItem.metadata.status = "";
+    } else {
+      store.activeItem.metadata.status = "modified";
+    }
+    // @note very 'dirty' way of achieving the appropriate updates in the store
+    // talking to lit for re-rendering
+    store.activeItem.title = "";
+    store.activeItem.title = this.title;
   }
   static get styles() {
     return [
@@ -420,7 +460,43 @@ export class PageBreak extends IntersectionObserverMixin(
       editModeChanged: "haxeditModeChanged",
       inlineContextMenu: "haxinlineContextMenu",
       activeElementChanged: "haxactiveElementChanged",
+      setupActiveElementForm: "haxsetupActiveElementForm",
     };
+  }
+  /**
+   * Allow for dynamic setting of the parent field if we have the store around
+   * with values to do so
+   */
+  haxsetupActiveElementForm(props) {
+    if (window.HAXCMS) {
+      const itemManifest = window.HAXCMS.requestAvailability().store.getManifestItems();
+      var items = [];
+      itemManifest.forEach((el) => {
+        if (el.id != this.itemId) {
+          // calculate -- depth so it looks like a tree
+          let itemBuilder = el;
+          // walk back through parent tree
+          let distance = "- ";
+          while (itemBuilder && itemBuilder.parent != null) {
+            itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+            // double check structure is sound
+            if (itemBuilder) {
+              distance = "--" + distance;
+            }
+          }
+          items.push({
+            text: distance + el.title,
+            value: el.id,
+          });
+        }
+      });
+      props.settings.configure.forEach((attr, index) => {
+        if (attr.property === "parent") {
+          props.settings.configure[index].inputMethod = "select";
+          props.settings.configure[index].itemsList = items;
+        }
+      });
+    }
   }
   /**
    * Ensure that if we WERE active and now are not

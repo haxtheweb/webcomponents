@@ -65,7 +65,9 @@ class MapMenuBuilder extends LitElement {
                         : ""}"
                       active-path="${this.activePath}"
                       selected="${this.selected}"
-                      .published="${item.metadata.published}"
+                      ?published="${item.metadata.published}"
+                      ?locked="${item.metadata.locked}"
+                      status="${item.metadata.status}"
                     ></map-menu-item>
                   `}
             `

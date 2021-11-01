@@ -124,10 +124,26 @@ class Store {
     }
     // repair slug not being in earlier builds of json schema
     manifest.items.forEach((item, index, array) => {
+      // if we did not have a slug, generate one off location
       if (!item.slug) {
         array[index].slug = item.location
           .replace("pages/", "")
           .replace("/index.html", "");
+      }
+      // we default published to true if not set
+      // this avoids constantly checking downstream
+      if (!item.metadata.hasOwnProperty("published")) {
+        array[index].metadata.published = true;
+      }
+      // fix order typing
+      array[index].order = Number(array[index].order);
+      // we default locked to false if not set
+      if (!item.metadata.hasOwnProperty("locked")) {
+        array[index].metadata.locked = false;
+      }
+      // we default locked to false if not set
+      if (!item.metadata.hasOwnProperty("status")) {
+        array[index].metadata.status = "";
       }
     });
     var site = new JsonOutlineSchema();
@@ -489,18 +505,30 @@ class Store {
     return null;
   }
   /**
+   * Return a clone of the manifest items list
+   */
+  getManifestItems() {
+    return toJS(this.manifest.items);
+  }
+  /**
    * shortcut to find an item in the manifest based on id
    */
-  async findItemAsObject(id, attrLookup = "id", scope = "item") {
+  async findItemAsObject(
+    id,
+    attrLookup = "id",
+    scope = "item",
+    useToJS = true
+  ) {
     if (this.manifest && id) {
-      const tmpItem = toJS(
-        await this.manifest.items.find((item) => {
-          if (item[attrLookup] !== id) {
-            return false;
-          }
-          return true;
-        })
-      );
+      var tmpItem = await this.manifest.items.find((item) => {
+        if (item[attrLookup] !== id) {
+          return false;
+        }
+        return true;
+      });
+      if (useToJS) {
+        tmpItem = toJS(tmpItem);
+      }
       if (scope == "item") {
         return tmpItem;
       } else if (scope == "parent" && tmpItem.parent) {

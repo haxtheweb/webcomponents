@@ -34,6 +34,12 @@
         "inputMethod": "text"
       },
       {
+        "property": "order",
+        "title": "Order",
+        "description": "Order relative to other sibling pages",
+        "inputMethod": "number"
+      },
+      {
         "property": "published",
         "title": "Published",
         "description": "Unpublished pages are not visible to end users",
@@ -44,14 +50,6 @@
         "title": "Lock page",
         "description": "Lock / Unlock all elements in this page",
         "inputMethod": "boolean"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "itemId",
-        "title": "Unique item ID",
-        "description": "Only set this manually if you have a reason to as it is for internal purposes.",
-        "inputMethod": "text"
       }
     ]
   },

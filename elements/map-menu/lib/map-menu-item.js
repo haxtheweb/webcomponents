@@ -1,7 +1,8 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-class MapMenuItem extends LitElement {
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+class MapMenuItem extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -81,6 +82,31 @@ class MapMenuItem extends LitElement {
           text-align: left;
           border-radius: 0;
         }
+        :host([status="new"]) a::after {
+          border-right: 8px solid green;
+          content: "";
+          margin-left: -8px;
+        }
+        :host([status="modified"]) a::after {
+          border-right: 8px solid orange;
+          content: "";
+          margin-left: -8px;
+        }
+        :host([status="delete"]) a::after {
+          border-right: 8px solid red;
+          content: "";
+          margin-left: -8px;
+        }
+        #unpublished {
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          color: orange;
+          float: right;
+          margin: -4px 32px 0px 0px;
+          vertical-align: top;
+          height: 0px;
+          width: 0px;
+        }
       `,
     ];
   }
@@ -91,10 +117,8 @@ class MapMenuItem extends LitElement {
     return html`
       <a tabindex="-1" href="${this.url}">
         <button id="wrapper" role="link" noink>
-          ${this.__icon
-            ? html`
-                <simple-icon-lite icon="${this.__icon}"></simple-icon-lite>
-              `
+          ${this.icon
+            ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
             : ``}
           <span class="title">${this.title}</span>
           ${this.trackIcon
@@ -104,6 +128,13 @@ class MapMenuItem extends LitElement {
                   icon="${this.trackIcon}"
                 ></simple-icon-lite>
               `
+            : ``}
+          ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
             : ``}
         </button>
       </a>
@@ -115,24 +146,32 @@ class MapMenuItem extends LitElement {
   constructor() {
     super();
     this.icon = null;
-    this.__icon = null;
     this.trackIcon = null;
     this.title = "";
     this.url = "";
     this.active = false;
     this.published = true;
+    this.locked = false;
+    this.status = "";
+    this.t = {
+      pageIsUnpublished: "Page is unpublished",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "map-menu",
+      basePath: import.meta.url,
+      locales: ["es"],
+    });
   }
   /**
    * LitElement life cycle - properties definition
    */
   static get properties() {
     return {
+      ...super.properties,
       icon: {
         type: String,
         reflect: true,
-      },
-      __icon: {
-        type: String,
       },
       trackIcon: {
         type: String,
@@ -157,6 +196,13 @@ class MapMenuItem extends LitElement {
       published: {
         type: Boolean,
       },
+      locked: {
+        type: Boolean,
+      },
+      status: {
+        type: String,
+        reflect: true,
+      },
     };
   }
   /**
@@ -167,16 +213,8 @@ class MapMenuItem extends LitElement {
       if (propName == "trackIcon") {
         this._trackIconChanged(this[propName], oldValue);
       }
-      if (propName == "icon") {
-        this.__icon = this[propName];
-      }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
-      }
-      if (propName == "published" && this[propName]) {
-        if (this.published === false) {
-          this.__icon = "visibility-off";
-        }
       }
     });
   }

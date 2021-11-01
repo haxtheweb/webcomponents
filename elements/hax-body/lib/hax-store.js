@@ -3190,7 +3190,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.haxTray.activeNode,
       null
     );
-    this.haxTray._setupForm();
+    await this.haxTray._setupForm();
   }
   /**
    * Generate Hax Element prototype.

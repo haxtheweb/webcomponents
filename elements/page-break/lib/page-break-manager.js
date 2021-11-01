@@ -13,38 +13,40 @@ export class PageBreakManagerEl extends HTMLElement {
   getParent(el, rel = null) {
     var prevNode = null,
       targetNode = null;
-    if (rel === "indent") {
-      // get prev sibling
-      this.target.querySelectorAll("page-break").forEach((node) => {
-        if (node === el) {
-          targetNode = prevNode;
-        }
-        prevNode = node;
-      });
-    } else if (rel === "outdent") {
-      // get parent
-      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
-        targetNode = this.target.querySelector(
-          `page-break[path="${el.parent}"]`
-        );
-        // get parent of parent
-        if (
-          this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
-        ) {
+    if (this.target) {
+      if (rel === "indent") {
+        // get prev sibling
+        this.target.querySelectorAll("page-break").forEach((node) => {
+          if (node === el) {
+            targetNode = prevNode;
+          }
+          prevNode = node;
+        });
+      } else if (rel === "outdent") {
+        // get parent
+        if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
           targetNode = this.target.querySelector(
-            `page-break[path="${targetNode.parent}"]`
+            `page-break[path="${el.parent}"]`
+          );
+          // get parent of parent
+          if (
+            this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
+          ) {
+            targetNode = this.target.querySelector(
+              `page-break[path="${targetNode.parent}"]`
+            );
+          }
+          {
+            targetNode = null;
+          }
+        }
+      } else {
+        // get parent
+        if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
+          targetNode = this.target.querySelector(
+            `page-break[path="${el.parent}"]`
           );
         }
-        {
-          targetNode = null;
-        }
-      }
-    } else {
-      // get parent
-      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
-        targetNode = this.target.querySelector(
-          `page-break[path="${el.parent}"]`
-        );
       }
     }
     return targetNode;
