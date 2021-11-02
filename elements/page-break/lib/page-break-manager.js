@@ -87,13 +87,13 @@ export class PageBreakManagerEl extends HTMLElement {
    */
   associatedPageBreak(elem) {
     // Get the next sibling element
-    elem = elem.previousSiblingElement;
+    elem = elem.previousElementSibling;
     // As long as a sibling exists
     while (elem) {
       // If we've reached our match, bail
       if (elem.matches("page-break")) break;
       // Get the prev sibling element
-      elem = elem.previousSiblingElement;
+      elem = elem.previousElementSibling;
     }
     return elem;
   }

@@ -1863,7 +1863,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   async haxDuplicateNode(node) {
     // convert the node to a hax element
     let haxElement = await nodeToHaxElement(node, null);
-    var props = HAXStore.elementList[node.tagName.toLowerCase()];
     // @see haxHooks: preProcessInsertContent
     if (HAXStore.testHook(node, "preProcessInsertContent")) {
       haxElement = await HAXStore.runHook(node, "preProcessInsertContent", [
@@ -3297,8 +3296,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
       var eventPath = normalizeEventPath(e);
-      var dropSpot = eventPath[0];
-
       if (
         e.target.closest("[data-hax-layout]") &&
         e.target.parentNode != e.target.closest("[data-hax-layout]")
@@ -3469,6 +3466,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             typeof target.focus === "function"
           ) {
             HAXStore.activeNode = target;
+            // @see haxHooks: trayDragNDropToNode
+            if (HAXStore.testHook(HAXStore.activeNode, "trayDragNDropToNode")) {
+              HAXStore.runHook(HAXStore.activeNode, "trayDragNDropToNode", [
+                HAXStore.activeNode,
+              ]);
+            }
             // fire event saying that we dropped an item and gained
             // focus which should prioritize certain actions over a
             // normal focus shift

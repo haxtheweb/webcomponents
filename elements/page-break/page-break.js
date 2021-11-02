@@ -462,20 +462,27 @@ export class PageBreak extends IntersectionObserverMixin(
       activeElementChanged: "haxactiveElementChanged",
       setupActiveElementForm: "haxsetupActiveElementForm",
       preProcessInsertContent: "haxpreProcessInsertContent",
+      trayDragNDropToNode: "haxtrayDragNDropToNode",
     };
   }
   /**
    * on insert, test for other page-break tags via manager to see
    * if we're able to steal sane defaults from there
    */
-  haxpreProcessInsertContent(details, activeNode) {
+  async haxpreProcessInsertContent(details, activeNode) {
     // look up the current page breaks from manager
     // if a haxcms one exists then use that for defaults
     // if activeNode would have us be at a different page-break, use this
     // as the target for drawing the following settings:
     // for parent (same parent), order (+1 from it), published (mirror), locked (mirror)
-    const closestPB = pageBreakManager.associatedPageBreak(activeNode);
-    console.log(closestPB);
+
+    // this ensures we look at the level just below the body container level
+    let testNode = activeNode;
+    while (testNode.parentNode.tagName !== "HAX-BODY") {
+      testNode = testNode.parentNode;
+    }
+    const closestPB = await pageBreakManager.associatedPageBreak(testNode);
+
     if (closestPB) {
       details.properties.parent = closestPB.parent;
       details.properties.order = closestPB.order + 1;
@@ -483,6 +490,31 @@ export class PageBreak extends IntersectionObserverMixin(
       details.properties.locked = closestPB.locked;
     }
     return details;
+  }
+  /**
+   * Same as the above hook in capability however because of the interim state
+   * of a drag event, we need a specialized hook that is for when the new
+   * element has been dropped into the page
+   */
+  async haxtrayDragNDropToNode(activeNode) {
+    // look up the current page breaks from manager
+    // if a haxcms one exists then use that for defaults
+    // if activeNode would have us be at a different page-break, use this
+    // as the target for drawing the following settings:
+    // for parent (same parent), order (+1 from it), published (mirror), locked (mirror)
+
+    // this ensures we look at the level just below the body container level
+    let testNode = activeNode;
+    while (testNode.parentNode.tagName !== "HAX-BODY") {
+      testNode = testNode.parentNode;
+    }
+    const closestPB = await pageBreakManager.associatedPageBreak(testNode);
+    if (closestPB) {
+      activeNode.parent = closestPB.parent;
+      activeNode.order = closestPB.order + 1;
+      activeNode.published = closestPB.published;
+      activeNode.locked = closestPB.locked;
+    }
   }
   /**
    * Allow for dynamic setting of the parent field if we have the store around
