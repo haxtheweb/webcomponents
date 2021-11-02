@@ -563,12 +563,14 @@ class Store {
     newItem.metadata = item.metadata;
     // all items rebuilt
     schema.items = toJS(this.manifest.items);
-    let safeItem = schema.validateItem(item);
+    let safeItem = schema.validateItem(newItem);
     schema.items.push(safeItem);
     // we already have our items, pass them in
     var nodes = schema.itemsToNodes(schema.items);
+    console.log(nodes);
     // smash outline into flat to get the correct order
     var correctOrder = schema.nodesToItems(nodes);
+    console.log(correctOrder);
     var newItems = [];
     // build a new array in the correct order by pushing the old items around
     for (var key in correctOrder) {
@@ -578,6 +580,8 @@ class Store {
         })
       );
     }
+    console.log(schema.items);
+    console.log(newItems);
     this.manifest.items = newItems;
     window.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {

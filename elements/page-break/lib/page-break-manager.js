@@ -191,7 +191,9 @@ export class PageBreakManagerEl extends HTMLElement {
         // tap into HAXCMS store if it's there
         if (window.HAXCMS && e.detail.value.breakType !== "haxcms") {
           const store = window.HAXCMS.requestAvailability().store;
-          store.addItem(e.detail.value);
+          setTimeout(() => {
+            store.addItem(e.detail.value);
+          }, 0);
         }
       }
     } else {
