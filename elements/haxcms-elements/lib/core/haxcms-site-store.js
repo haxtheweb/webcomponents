@@ -505,12 +505,6 @@ class Store {
     return null;
   }
   /**
-   * Return a clone of the manifest items list
-   */
-  getManifestItems() {
-    return toJS(this.manifest.items);
-  }
-  /**
    * shortcut to find an item in the manifest based on id
    */
   async findItemAsObject(
@@ -539,7 +533,79 @@ class Store {
     }
     return null;
   }
-
+  /**
+   * Return a clone of the manifest items list
+   */
+  getManifestItems(cloneIt = true) {
+    if (cloneIt) {
+      return toJS(this.manifest.items);
+    }
+    return this.manifest.items;
+  }
+  /**
+   * Add an item
+   */
+  addItem(item) {
+    var schema = new JsonOutlineSchema();
+    let newItem = schema.newItem();
+    if (item.id) {
+      newItem.id = item.id;
+    }
+    if (item.indent) {
+      newItem.indent = item.indent;
+    }
+    newItem.location = item.location;
+    newItem.slug = item.slug;
+    newItem.order = item.order;
+    newItem.parent = item.parent;
+    newItem.title = item.title;
+    // metadata can be anything so whatever
+    newItem.metadata = item.metadata;
+    // all items rebuilt
+    schema.items = toJS(this.manifest.items);
+    let safeItem = schema.validateItem(item);
+    schema.items.push(safeItem);
+    // we already have our items, pass them in
+    var nodes = schema.itemsToNodes(schema.items);
+    // smash outline into flat to get the correct order
+    var correctOrder = schema.nodesToItems(nodes);
+    var newItems = [];
+    // build a new array in the correct order by pushing the old items around
+    for (var key in correctOrder) {
+      newItems.push(
+        schema.items.find((element) => {
+          return element.id === correctOrder[key].id;
+        })
+      );
+    }
+    this.manifest.items = newItems;
+    window.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest,
+      })
+    );
+  }
+  /**
+   * Remove an item
+   */
+  removeItem(id) {
+    const item = this.findItem(id);
+    // "new" items have not yet been added
+    if (item) {
+      if (item.metadata.status === "new") {
+        const index = this.manifest.items.indexOf(item);
+        if (index > -1) {
+          this.manifest.items.splice(index, 1);
+        }
+      } else {
+        // implies it's going to get deleted on next run
+        item.metadata.status = "delete";
+      }
+    }
+  }
   /**
    * Spider children based on criteria and return what we found
    */

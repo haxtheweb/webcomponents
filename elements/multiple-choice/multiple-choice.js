@@ -529,7 +529,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   /**
    * HAX preprocess insert content hook
    */
-  haxpreProcessInsertContent(detail) {
+  haxpreProcessInsertContent(detail, activeNode) {
     // ensure we dont accidently have the answer displayed!
     if (detail.properties.answers) {
       detail.properties.answers = detail.properties.answers.map(function (val) {

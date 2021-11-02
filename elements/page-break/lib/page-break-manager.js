@@ -55,26 +55,47 @@ export class PageBreakManagerEl extends HTMLElement {
    * get all elements between a target and a selector; inspired by
    * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
    */
-  elementsBetween(elem, selector = "page-break", filter) {
+  elementsBetween(
+    elem,
+    selector = "page-break",
+    filter,
+    direction = "nextElementSibling"
+  ) {
     // Setup siblings array
     var siblings = [];
     // Get the next sibling element
-    elem = elem.nextElementSibling;
+    elem = elem[direction];
     // As long as a sibling exists
     while (elem) {
       // If we've reached our match, bail
       if (elem.matches(selector)) break;
       // If filtering by a selector, check if the sibling matches
       if (filter && !elem.matches(filter)) {
-        elem = elem.nextElementSibling;
+        elem = elem[direction];
         continue;
       }
       // Otherwise, push it to the siblings array
       siblings.push(elem);
-      // Get the next sibling element
-      elem = elem.nextElementSibling;
+      // Get the sibling element
+      elem = elem[direction];
     }
     return siblings;
+  }
+  /**
+   * Return the previous page-break relative to a target element.
+   * This is useful for finding the page-break associated with an element in the page
+   */
+  associatedPageBreak(elem) {
+    // Get the next sibling element
+    elem = elem.previousSiblingElement;
+    // As long as a sibling exists
+    while (elem) {
+      // If we've reached our match, bail
+      if (elem.matches("page-break")) break;
+      // Get the prev sibling element
+      elem = elem.previousSiblingElement;
+    }
+    return elem;
   }
 
   // common between element queries
@@ -136,20 +157,12 @@ export class PageBreakManagerEl extends HTMLElement {
 
   connectedCallback() {
     window.addEventListener(
-      "vaadin-router-location-changed",
-      this.routeChanged.bind(this)
-    );
-    window.addEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "vaadin-router-location-changed",
-      this.routeChanged.bind(this)
-    );
     window.removeEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
@@ -170,20 +183,26 @@ export class PageBreakManagerEl extends HTMLElement {
       }
     }, 500);
   }
-  // vaadin route changed
-  routeChanged(e) {
-    console.log(e.detail);
-  }
   registerPageBreak(e) {
     if (e.detail.action === "add") {
       // ensure this isn't already in there
       if (!this.breaks.find((value) => value === e.detail.value)) {
         this.breaks.push(e.detail.value);
+        // tap into HAXCMS store if it's there
+        if (window.HAXCMS && e.detail.value.breakType !== "haxcms") {
+          const store = window.HAXCMS.requestAvailability().store;
+          store.addItem(e.detail.value);
+        }
       }
     } else {
       this.breaks.map((value, index) => {
         if (value === e.detail.value) {
           this.breaks.splice(index, 1);
+          // tap into HAXCMS store if it's there
+          if (window.HAXCMS && e.detail.value.breakType !== "haxcms") {
+            const store = window.HAXCMS.requestAvailability().store;
+            store.removeItem(e.detail.value.id);
+          }
         }
       });
     }

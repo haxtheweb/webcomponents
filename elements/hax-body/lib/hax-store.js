@@ -2546,7 +2546,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           details = await this.runHook(
             prototypeNode,
             "preProcessInsertContent",
-            [details]
+            [details, this.activeNode]
           );
         }
       }

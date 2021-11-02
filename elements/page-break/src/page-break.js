@@ -461,7 +461,28 @@ export class PageBreak extends IntersectionObserverMixin(
       inlineContextMenu: "haxinlineContextMenu",
       activeElementChanged: "haxactiveElementChanged",
       setupActiveElementForm: "haxsetupActiveElementForm",
+      preProcessInsertContent: "haxpreProcessInsertContent",
     };
+  }
+  /**
+   * on insert, test for other page-break tags via manager to see
+   * if we're able to steal sane defaults from there
+   */
+  haxpreProcessInsertContent(details, activeNode) {
+    // look up the current page breaks from manager
+    // if a haxcms one exists then use that for defaults
+    // if activeNode would have us be at a different page-break, use this
+    // as the target for drawing the following settings:
+    // for parent (same parent), order (+1 from it), published (mirror), locked (mirror)
+    const closestPB = pageBreakManager.associatedPageBreak(activeNode);
+    console.log(closestPB);
+    if (closestPB) {
+      details.properties.parent = closestPB.parent;
+      details.properties.order = closestPB.order + 1;
+      details.properties.published = closestPB.published;
+      details.properties.locked = closestPB.locked;
+    }
+    return details;
   }
   /**
    * Allow for dynamic setting of the parent field if we have the store around
@@ -469,7 +490,9 @@ export class PageBreak extends IntersectionObserverMixin(
    */
   haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
-      const itemManifest = window.HAXCMS.requestAvailability().store.getManifestItems();
+      const itemManifest = window.HAXCMS.requestAvailability().store.getManifestItems(
+        true
+      );
       var items = [];
       itemManifest.forEach((el) => {
         if (el.id != this.itemId) {

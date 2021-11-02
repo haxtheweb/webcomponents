@@ -1868,6 +1868,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (HAXStore.testHook(node, "preProcessInsertContent")) {
       haxElement = await HAXStore.runHook(node, "preProcessInsertContent", [
         haxElement,
+        this.activeNode,
       ]);
     }
     if (haxElement.content == haxElement.properties.innerHTML) {
