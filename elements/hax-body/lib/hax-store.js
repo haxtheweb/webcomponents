@@ -1766,6 +1766,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
+      "hax-refresh-tray-form": "refreshActiveNodeForm",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {

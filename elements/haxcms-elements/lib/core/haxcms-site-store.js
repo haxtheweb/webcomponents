@@ -55,6 +55,56 @@ class Store {
     });
   }
   /**
+   * Get a unique slug name / path based on existing slug, page data and if we are to automatically generate
+   * @param {*} slug
+   * @param {*} page
+   * @param {*} pathAuto
+   * @returns
+   */
+  getUniqueSlugName(slug, page = null, pathAuto = false) {
+    let rSlug = slug;
+    // check for pathauto setting and this having a parent
+    if (page != null && page.parent != null && page.parent != "" && pathAuto) {
+      let item = page;
+      let pieces = [slug];
+      while ((item = this.findItem(item.parent))) {
+        let tmp = item.slug.split("/");
+        pieces.unshift(tmp.pop());
+      }
+      slug = pieces.join("/");
+      rSlug = slug;
+    }
+    let loop = 0;
+    let ready = false;
+    // while not ready, keep checking
+    while (!ready) {
+      ready = true;
+      // loop through items
+      for (var key in this.manifest.items) {
+        let item = this.manifest.items[key];
+        // if our slug matches an existing
+        if (rSlug == item.slug) {
+          // if we have a page, and it matches that, bail out cause we have it already
+          if (page != null && item.id == page.id) {
+            return rSlug;
+          } else {
+            // increment the number
+            loop++;
+            // append to the new slug
+            rSlug = slug + "-" + loop;
+            // force a new test
+            ready = false;
+          }
+        }
+      }
+    }
+    return rSlug
+      .toLowerCase()
+      .split(" ")
+      .join("-")
+      .replace(/[^0-9\-\/a-z]/gi, "");
+  }
+  /**
    * Global toast bridge so we don't have to keep writing custom event
    */
   toast(
@@ -86,7 +136,7 @@ class Store {
    * Load a manifest / site.json / JSON outline schema
    * and prep it for usage in HAXcms
    */
-  loadManifest(manifest, target = null) {
+  async loadManifest(manifest, target = null) {
     // support a custom target or ensure event fires off window
     if (target == null && window) {
       target = window;
@@ -123,7 +173,7 @@ class Store {
       delete manifest.metadata.fields;
     }
     // repair slug not being in earlier builds of json schema
-    manifest.items.forEach((item, index, array) => {
+    await manifest.items.forEach((item, index, array) => {
       // if we did not have a slug, generate one off location
       if (!item.slug) {
         array[index].slug = item.location
@@ -168,6 +218,14 @@ class Store {
         composed: true,
         cancelable: false,
         detail: manifest,
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-item-rebuild", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
       })
     );
   }
@@ -320,9 +378,8 @@ class Store {
    * Return the site title
    */
   get siteTitle() {
-    const manifest = this.manifest;
-    if (manifest && manifest.title) {
-      return manifest.title;
+    if (this.manifest && this.manifest.title) {
+      return this.manifest.title;
     }
     return "";
   }
@@ -545,7 +602,7 @@ class Store {
   /**
    * Add an item
    */
-  addItem(item) {
+  async addItem(item) {
     var schema = new JsonOutlineSchema();
     let newItem = schema.newItem();
     if (item.id) {
@@ -563,14 +620,12 @@ class Store {
     newItem.metadata = item.metadata;
     // all items rebuilt
     schema.items = toJS(this.manifest.items);
-    let safeItem = schema.validateItem(newItem);
+    let safeItem = { ...schema.validateItem(newItem) };
     schema.items.push(safeItem);
     // we already have our items, pass them in
     var nodes = schema.itemsToNodes(schema.items);
-    console.log(nodes);
     // smash outline into flat to get the correct order
     var correctOrder = schema.nodesToItems(nodes);
-    console.log(correctOrder);
     var newItems = [];
     // build a new array in the correct order by pushing the old items around
     for (var key in correctOrder) {
@@ -580,9 +635,7 @@ class Store {
         })
       );
     }
-    console.log(schema.items);
-    console.log(newItems);
-    this.manifest.items = newItems;
+    this.manifest.items.replace(newItems);
     window.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
@@ -591,6 +644,15 @@ class Store {
         detail: this.manifest,
       })
     );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-item-rebuild", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      })
+    );
+    return this.findItem(newItem.id);
   }
   /**
    * Remove an item

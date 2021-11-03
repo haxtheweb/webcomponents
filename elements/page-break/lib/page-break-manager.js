@@ -188,23 +188,11 @@ export class PageBreakManagerEl extends HTMLElement {
       // ensure this isn't already in there
       if (!this.breaks.find((value) => value === e.detail.value)) {
         this.breaks.push(e.detail.value);
-        // tap into HAXCMS store if it's there
-        if (window.HAXCMS && e.detail.value.breakType !== "haxcms") {
-          const store = window.HAXCMS.requestAvailability().store;
-          setTimeout(() => {
-            store.addItem(e.detail.value);
-          }, 0);
-        }
       }
     } else {
       this.breaks.map((value, index) => {
         if (value === e.detail.value) {
           this.breaks.splice(index, 1);
-          // tap into HAXCMS store if it's there
-          if (window.HAXCMS && e.detail.value.breakType !== "haxcms") {
-            const store = window.HAXCMS.requestAvailability().store;
-            store.removeItem(e.detail.value.id);
-          }
         }
       });
     }

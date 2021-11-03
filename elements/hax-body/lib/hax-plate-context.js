@@ -26,6 +26,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   constructor() {
     super();
     this.disableOps = false;
+    this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
@@ -323,7 +324,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-context-item
             action
             ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
+              this.hasActiveEditingElement ||
+              this.viewSource ||
+              this.disableOps ||
+              this.disableDuplicate
             }"
             label="${this.t.duplicate}"
             icon="icons:content-copy"
@@ -717,6 +721,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         type: String,
       },
       disableOps: {
+        type: Boolean,
+      },
+      disableDuplicate: {
         type: Boolean,
       },
       canMoveElement: {

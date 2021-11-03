@@ -622,9 +622,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         title="${store.activeItem.title}"
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
-        path="${store.activeItem.slug}"
+        slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
-        break-type="haxcms"
+        break-type="site"
+        path-auto
         ${store.activeItem.metadata.locked ? "locked" : ""}
         ${store.activeItem.metadata.published === false ? "" : "published"}
         ></page-break>${newValue}`;

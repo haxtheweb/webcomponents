@@ -22,9 +22,15 @@
         "inputMethod": "text"
       },
       {
-        "property": "path",
+        "property": "pathAuto",
+        "title": "Path auto",
+        "description": "Automatically set path based on parents and title",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "slug",
         "title": "Path",
-        "description": "Path of the page",
+        "description": "URL slug related to this page",
         "inputMethod": "text"
       },
       {
@@ -59,7 +65,9 @@
       "content": "",
       "properties": {
         "published": true,
-        "locked": false
+        "locked": false,
+        "status": "new",
+        "pathAuto": true
       }
     }
   ]
