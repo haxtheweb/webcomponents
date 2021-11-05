@@ -695,7 +695,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             id="textcontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
-            ?hidden=${HAXStore.isGridPlateElement(this.activeNode)}
+            ?hidden=${!HAXStore.isTextElement(this.activeNode)}
             show="always"
           >
           </hax-text-editor-toolbar>
