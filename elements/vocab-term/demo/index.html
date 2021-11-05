@@ -19,87 +19,45 @@
       <h3>Basic vocab-term demo</h3>
       <demo-snippet>
         <template>
+          <!-- modal -->
           <vocab-term>
             <details>
               <summary>Coffee</summary>
-              <p slot="information">Bean juice made into warm beverage</p>
+              <p slot="information">Bean juice made into warm beverage.</p>
               <ul class="links">
-                <li><a href="https://www.starbucks.com/">Starbucks link</a></li>
+                <li><a href="https://www.starbucks.com/">Link to starbucks information</a></li>
               </ul>
             </details>
           </vocab-term>
+          <br>
           <!-- popover -->
           <vocab-term popover-mode>
             <details>
               <summary>Lightbulb</summary>
               <p slot="information">Lightbulbs use electricity to provide light.</p>
-              <links>Click here for more info</links>
               <ul class="links">
-                <li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb">Lightbulb link</a></li>
-              </ul>
-            </details>
-          </vocab-term>
-          <!-- list -->
-          <vocab-term>
-            <details>
-              <summary>JavaScript</summary>
-              <p slot="information">JavaScript is a high-level, often just-in-time compiled, and multi-paradigm programming language.</p>
-              <p class="links"><a href="https://en.wikipedia.org/wiki/JavaScript">More Information on JS</a></p>
-            </details>
-          </vocab-term>
-          <!-- popover with image -->
-          <vocab-term popover-mode position=bottom>
-            <details>
-              <summary>Lamp</summary>
-              <p slot="information">A lamp sits on a table and light up a room</p>
-              <ul class="links">
-                <li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb"><img src="https://www.w3schools.com/images/lamp.jpg" alt="lamp">Lamp Picture for link</a></li>
-              </ul>
-            </details>
-          </vocab-term>
-          <!-- image as link -->
-          <vocab-term>
-            <details>
-              <summary>Light</summary>
-              <ul class="links">
-                <li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb"><img
-                      src="https://www.w3schools.com/images/lamp.jpg" alt="lamp">Light picture for link</a></li>
-              </ul>
-            </details>
-          </vocab-term>
-          <!-- no title, still links -->
-          <vocab-term>
-            <details>
-              <summary></summary>
-              <p slot="information">No title</p>
-              <ul class="links">
-                <li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb"><img
-                      src="https://www.w3schools.com/images/lamp.jpg" alt="lamp">No title picture for link</a></li>
-              </ul>
-            </details>
-          </vocab-term>
-          <!-- link under class-->
-          <vocab-term>
-            <details>
-              <summary>Yellow</summary>
-              <p slot="information">A color</p>
-              <ul class="links">
-                <li><a href="https://en.wikipedia.org/wiki/Yellow"><img
-                      src="https://www.w3schools.com/images/lamp.jpg" alt="lamp">yellow picture for link</a></li>
-              </ul>
-            </details>
-          </vocab-term>
-          <!-- no links -->
-          <vocab-term>
-            <details>
-              <summary>Green</summary>
-              <p slot="information">The color of grass</p>
-              <ul class="links">
+                <li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb">Link to information on lightbulb</a></li>
               </ul>
             </details>
           </vocab-term>
         </template>
       </demo-snippet>
+      <span>Chemistry is the study of
+      <vocab-term>
+        <details>
+          <summary>matter</summary>
+          <p slot="information">In classical physics and general chemistry, matter is any substance that has mass and takes up
+            space by having volume.</p>
+          <ul class="links">
+            <li><a href="https://en.wikipedia.org/wiki/Matter">Link to information on matter</a></li>
+          </ul>
+        </details>
+      </vocab-term>
+      and the ways in which different forms of matter combine with each other. You study
+        chemistry because it helps you to understand the world around you. Everything you touch or taste or smell is a
+        chemical,
+        and the interactions of these chemicals with each other define our universe. Chemistry forms the fundamental basis for
+        biology and medicine.</span>
     </div>
   </body>
 </html>

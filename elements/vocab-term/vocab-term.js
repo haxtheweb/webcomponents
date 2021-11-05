@@ -60,14 +60,18 @@ class VocabTerm extends LitElement {
       ...styles,
       css`
         :host {
-          display: block;
+          display: inline-flex;
         }
-        simple-modal-template[modal-id="smt1"] {
+        simple-modal-template {
           --simple-modal-resize: both;
           --simple-modal-width: 300px;
           --simple-modal-height: 300px;
           --simple-modal-min-width: 300px;
           --simple-modal-min-height: 300px;
+        }
+        summary {
+          list-style: none;
+          border-bottom: 1px dashed gray;
         }
       `,
     ];
@@ -79,36 +83,29 @@ class VocabTerm extends LitElement {
     return html` ${!this.popoverMode
       ? html`
           <div>
-            ${
-              this.links.length > 0
-                ? html`
-                    <details>
-                      <summary id="summary">${this.term}</summary>
-                      <simple-modal-template>
-                        <div slot="header">${this.term}</div>
-                        <p slot="content">${this.information}</p>
-                        <ul>
-                          ${this.links.map(
-                            (el) => html`
-                              <li><a href="${el.href}">${el.title}</a></li>
-                            `
-                          )}
-                        </ul>
-                        <div slot="buttons">
-                          <button dialog-dismiss>Close Modal</button>
-                        </div>
-                      </simple-modal-template>
-                    </details>
-                  `
-                : ``
-            }
-              </details>
+            <summary id="summary">${this.term}</summary>
+            <simple-modal-template>
+              <div slot="header">${this.term}</div>
+              <p slot="content">${this.information}</p>
+              ${this.links.length > 0
+                ? html` <ul slot="content">
+                    ${this.links.map(
+                      (el) => html`
+                        <li><a href="${el.href}">${el.title}</a></li>
+                      `
+                    )}
+                  </ul>`
+                : ``}
+              <div slot="buttons">
+                <button dialog-dismiss>Close Modal</button>
+              </div>
+            </simple-modal-template>
           </div>
         `
       : html`
           <details>
             <summary id="summary">${this.term}</summary>
-            <simple-popover for="summary" auto position="top">
+            <simple-popover for="summary" position="top">
               <p>${this.information}</p>
               ${this.links.length > 0
                 ? html`
