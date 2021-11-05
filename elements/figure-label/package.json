@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@open-wc/testing": "2.5.33",

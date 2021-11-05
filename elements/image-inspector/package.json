@@ -47,7 +47,7 @@
     "@lrnwebcomponents/img-pan-zoom": "^4.0.1",
     "@lrnwebcomponents/materializecss-styles": "^4.0.1",
     "@lrnwebcomponents/simple-icon": "^4.0.1",
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

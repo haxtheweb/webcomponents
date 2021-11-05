@@ -56,7 +56,7 @@
     "@lrnwebcomponents/simple-fields": "^4.0.1",
     "@lrnwebcomponents/utils": "^4.0.0",
     "idb-keyval": "5.0.6",
-    "lit": "2.0.0",
+    "lit": "2.0.2",
     "mobx": "6.3.2"
   },
   "devDependencies": {

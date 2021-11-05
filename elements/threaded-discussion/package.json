@@ -46,7 +46,7 @@
     "@lrnwebcomponents/hax-iconset": "^4.0.1",
     "@lrnwebcomponents/lrndesign-avatar": "^4.0.1",
     "@lrnwebcomponents/simple-icon": "^4.0.1",
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@github/time-elements": "3.1.2",

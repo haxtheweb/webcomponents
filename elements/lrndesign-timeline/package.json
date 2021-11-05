@@ -50,7 +50,7 @@
     "@lrnwebcomponents/responsive-utility": "^4.0.1",
     "@lrnwebcomponents/schema-behaviors": "^4.0.1",
     "@lrnwebcomponents/simple-colors": "^4.0.1",
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

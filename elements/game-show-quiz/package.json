@@ -53,7 +53,7 @@
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "@vaadin/vaadin-split-layout": "^4.1.0",
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

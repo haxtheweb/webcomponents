@@ -44,7 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^4.0.0",
-    "lit": "2.0.0",
+    "lit": "2.0.2",
     "lunr": "2.3.6"
   },
   "devDependencies": {

@@ -45,7 +45,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",

@@ -45,7 +45,7 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^4.0.1",
     "@lrnwebcomponents/utils": "^4.0.0",
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
