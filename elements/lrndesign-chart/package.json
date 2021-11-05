@@ -20,7 +20,7 @@
       "...SimpleColors.styles"
     ]
   },
-  "version": "4.0.1",
+  "version": "4.0.4",
   "description": "Automated conversion of lrndesign-chart/",
   "repository": {
     "type": "git",
@@ -46,13 +46,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^4.0.1",
-    "@lrnwebcomponents/simple-colors": "^4.0.1",
+    "@lrnwebcomponents/chartist-render": "^4.0.4",
+    "@lrnwebcomponents/simple-colors": "^4.0.4",
     "lit": "2.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.1",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.4",
     "@open-wc/testing": "2.5.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
