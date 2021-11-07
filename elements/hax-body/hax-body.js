@@ -364,6 +364,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
+        [hidden],
+        :host([hidden]),
+        #textcontextmenu.not-text {
+          display: none !important;
+        }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
           .hax-context-menu {
@@ -693,9 +698,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
           <hax-text-editor-toolbar
             id="textcontextmenu"
-            class="hax-context-menu ignore-activation"
+            class="hax-context-menu ignore-activation ${!this.activeNode ||
+            !HAXStore.isTextElement(this.activeNode)
+              ? "not-text"
+              : "is-text"}"
             .activeNode="${this.activeNode}"
-            ?hidden=${HAXStore.isGridPlateElement(this.activeNode)}
             show="always"
           >
           </hax-text-editor-toolbar>
@@ -3879,11 +3886,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _hideContextMenu(menu) {
     if (!menu) return;
-    let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
-    menu.visible = false;
-    menu.classList.remove("hax-context-visible", "hax-context-menu-active");
-    if (container) container.menusVisible = false;
+    menu.classList.remove("hax-context-visible");
+    menu.classList.remove("hax-context-menu-active");
   }
   /**
    * Find the next thing to tab forward to.
