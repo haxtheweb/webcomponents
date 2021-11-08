@@ -63,12 +63,18 @@
       {
         "slot": "question",
         "title": "Question",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "editMode": {
+          "correct": false
+        }
       },
       {
         "slot": "",
         "title": "Answer",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "editMode": {
+          "correct": true
+        }
       }
     ],
     "advanced": [

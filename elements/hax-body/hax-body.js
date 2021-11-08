@@ -1451,15 +1451,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {object} grid
    * @returns {array}
    */
-  getAllSlotConfig(grid) {
-    if (!grid) grid = this.getParentGrid(node);
+  getAllSlotConfig(node) {
+    if (!node) return;
+    let grid = this.getParentGrid(node);
     return !!grid && !!grid.tag
       ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
       : undefined;
   }
   /**
    *
-   * gets parent grid if given note is slotted content
+   * gets parent grid if given node is slotted content
    *
    * @param {object} node
    * @returns {object}
@@ -2423,11 +2424,38 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
 
-      case "hax-select-grid-item":
+      case "hax-select-grid":
         if (eventPath[0] && eventPath[0].eventData) {
           let target = eventPath[0].eventData;
           this.setActiveNode(target, true);
           this.positionContextMenus(target);
+        }
+        break;
+
+      case "hax-select-grid-item":
+        if (eventPath[0] && eventPath[0].eventData) {
+          let data = eventPath[0].eventData,
+            target = data.target,
+            grid = data.grid,
+            editMode = data.editMode,
+            nodePosition = () => {
+              this.setActiveNode(target, true);
+              this.positionContextMenus(target);
+            };
+          if (grid && editMode) {
+            let settings = {};
+            Object.keys(editMode || {}).forEach((key) => {
+              settings[key] = grid[key];
+              grid[key] = editMode[key];
+            });
+            grid.setAttribute(
+              "data-grid-saved-settings",
+              JSON.stringify(settings)
+            );
+            setTimeout(nodePosition, 200);
+          } else {
+            nodePosition();
+          }
         }
         break;
 
@@ -3683,6 +3711,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
+    if (!!newValue) console.log("_activeNodeChanged", newValue, oldValue);
+
     // close any open popover items
     window.SimplePopoverManager.requestAvailability().opened = false;
     // remove anything currently with the active class
