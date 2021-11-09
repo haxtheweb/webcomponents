@@ -262,6 +262,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                         .eventData="${{
                           target: item,
                           grid: slot.grid,
+                          slot: slot.slot,
+                          index: j,
                           editMode: slot.editMode,
                         }}"
                         role="menuitem"

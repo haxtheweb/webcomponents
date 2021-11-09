@@ -164,8 +164,51 @@
           src-without-animation="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
           longdesc="Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.".>
         </a11y-gif-player>
-        <lrndesign-gallery id="gallery2" accent-color="green" dark title="Dark Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of a food&quot;, &quot;details&quot;: &quot;This is a picture of <em>raspberries</em>.&quot;, &quot;id&quot;: &quot;berry&quot;, &quot;src&quot;: &quot;//picsum.photos/id/102/367/267&quot;, &quot;title&quot;: &quot;Berries&quot; }, { &quot;alt&quot;: &quot;A picture of a laptop&quot;, &quot;details&quot;: &quot;This is a picture of a <em>laptop</em>.&quot;, &quot;id&quot;: &quot;laptop&quot;, &quot;src&quot;: &quot;//picsum.photos/id/0/367/267&quot;, &quot;title&quot;: &quot;Laptop&quot; }, { &quot;alt&quot;: &quot;A picture of a nature&quot;, &quot;details&quot;: &quot;This is a picture of <em>nature</em>.&quot;, &quot;id&quot;: &quot;nature&quot;, &quot;src&quot;: &quot;https://picsum.photos/id/10/367/267&quot;, &quot;title&quot;: &quot;Nature&quot; } ]">
-          <div slot="description">This is a <strong>carousel</strong> of game consoles with the <em>dark</em> theme.</div>
+        <lrndesign-gallery id="gallery2" accent-color="green" dark>
+          <figure>
+            <img 
+              srcset="./images/thumbnails/cat.jpeg 480w, ./images/cat.jpeg 800w"
+              sizes="(max-width: 600px) 480px, 800px"
+              src="./images/cat.jpeg"
+              alt="A picture of a cat.">
+            <figcaption>
+              <h3>Cat</h3>
+              <p>This is a <em>cat</em> picture that is in <strong>landscape</strong>.</p>
+            </figcaption>
+          </figure>
+          <figure sizing="contain">
+            <img 
+              srcset="./images/thumbnails/dog.jpg 480w, ./images/dog.jpg 800w"
+              sizes="(max-width: 600px) 480px, 800px"
+              src="./images/dog.jpg"
+              alt="A picture of a dog.">
+            <figcaption>
+              <h3>Dog</h3>
+              <p>This is a <em>dog</em> picture that is in <strong>portrait</strong>.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img 
+              srcset="./images/thumbnails/bird.jpg 480w, ./images/bird.jpg 800w"
+              sizes="(max-width: 600px) 480px, 800px"
+              src="./images/bird.jpg"
+              alt="A picture of a bird.">
+            <figcaption>
+              <h3>Bird</h3>
+              <p>This is a <em>bird</em> picture that is almost a <strong>square</strong>.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img 
+              srcset="./images/thumbnails/fish.jpg 480w, ./images/fish.jpg 800w"
+              sizes="(max-width: 600px) 480px, 800px"
+              src="./images/fish.jpg"
+              alt="A picture of a fish.">
+            <figcaption>
+              <h3>Fish</h3>
+              <p>This is a <em>fish</em> picture in <strong>landscape</strong> orientation.</p>
+            </figcaption>
+          </figure>
         </lrndesign-gallery>
       <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
       <p>stuff and things2</p>
