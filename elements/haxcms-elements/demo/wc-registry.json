@@ -160,7 +160,6 @@
   "full-screen-image": "@lrnwebcomponents/full-screen-image/full-screen-image.js",
   "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
   "fullscreen-behaviors": "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js",
-  "fullscreen-behaviors-manager": "@lrnwebcomponents/fullscreen-behaviors/lib/fullscreen-behaviors-manager.js",
   "future-terminal-text": "@lrnwebcomponents/future-terminal-text/future-terminal-text.js",
   "future-terminal-text-lite": "@lrnwebcomponents/future-terminal-text/lib/future-terminal-text-lite.js",
   "game-show-quiz": "@lrnwebcomponents/game-show-quiz/game-show-quiz.js",

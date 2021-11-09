@@ -43,11 +43,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^4.0.1",
-    "@lrnwebcomponents/lrn-vocab": "^4.0.1",
-    "@lrnwebcomponents/oer-schema": "^4.0.1",
-    "@lrnwebcomponents/rich-text-editor": "^4.0.1",
-    "lit": "2.0.2"
+    "@lrnwebcomponents/lrn-math": "^4.0.4",
+    "@lrnwebcomponents/lrn-vocab": "^4.0.4",
+    "@lrnwebcomponents/oer-schema": "^4.0.4",
+    "@lrnwebcomponents/rich-text-editor": "^4.0.4",
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

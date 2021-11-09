@@ -44,9 +44,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.1",
-    "lit": "2.0.2",
+    "@lrnwebcomponents/intersection-element": "^4.0.4",
+    "@lrnwebcomponents/simple-icon": "^4.0.4",
+    "lit": "^2.0.2",
     "marked": "^2.0.3",
     "prism-es6": "1.2.0"
   },

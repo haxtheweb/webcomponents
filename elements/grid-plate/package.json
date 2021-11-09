@@ -38,10 +38,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^4.0.1",
-    "@lrnwebcomponents/responsive-grid": "^4.0.1",
-    "@lrnwebcomponents/utils": "^4.0.0",
-    "lit": "2.0.2"
+    "@lrnwebcomponents/hax-body-behaviors": "^4.0.4",
+    "@lrnwebcomponents/responsive-grid": "^4.0.4",
+    "@lrnwebcomponents/utils": "^4.0.4",
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -44,9 +44,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^4.0.3",
-    "@lrnwebcomponents/intersection-element": "^4.0.0",
-    "lit": "2.0.2",
+    "@lrnwebcomponents/haxcms-elements": "^4.0.4",
+    "@lrnwebcomponents/intersection-element": "^4.0.4",
+    "lit": "^2.0.2",
     "mobx": "6.3.2"
   },
   "devDependencies": {

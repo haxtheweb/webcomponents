@@ -65,7 +65,7 @@
     "@lrnwebcomponents/undo-manager": "^4.0.1",
     "@lrnwebcomponents/utils": "^4.0.0",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "2.0.2",
+    "lit": "^2.0.2",
     "mobx": "6.3.2"
   },
   "devDependencies": {

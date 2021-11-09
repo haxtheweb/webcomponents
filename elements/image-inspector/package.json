@@ -44,10 +44,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/exif-data": "^4.0.1",
-    "@lrnwebcomponents/img-pan-zoom": "^4.0.1",
-    "@lrnwebcomponents/materializecss-styles": "^4.0.1",
-    "@lrnwebcomponents/simple-icon": "^4.0.1",
-    "lit": "2.0.2"
+    "@lrnwebcomponents/img-pan-zoom": "^4.0.4",
+    "@lrnwebcomponents/materializecss-styles": "^4.0.4",
+    "@lrnwebcomponents/simple-icon": "^4.0.4",
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

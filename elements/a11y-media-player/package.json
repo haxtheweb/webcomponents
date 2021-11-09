@@ -56,8 +56,8 @@
     "@lrnwebcomponents/simple-search": "^4.0.1",
     "@lrnwebcomponents/simple-toast": "^4.0.1",
     "@lrnwebcomponents/simple-tooltip": "^4.0.1",
-    "@lrnwebcomponents/utils": "^4.0.0",
-    "lit": "2.0.2"
+    "@lrnwebcomponents/utils": "^4.0.4",
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/storybook-utilities": "^4.0.1",

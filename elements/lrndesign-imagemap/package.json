@@ -50,7 +50,7 @@
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/prism-element": "^3.0.0",
-    "lit": "2.0.2"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
