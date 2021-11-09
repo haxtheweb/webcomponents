@@ -20,10 +20,10 @@
     "@babel/plugin-syntax-import-meta": "^7.2.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "gulp-terser": "^1.1.7",
+    "gulp-terser": "^2.0.0",
     "gulp": "^4.0.2",
     "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-rewrite-imports": "^1.0.1",
-    "rollup": "^1.6.0"
+    "rollup-plugin-rewrite-imports": "^2.0.0",
+    "rollup": "^2.0.0"
   }
 }

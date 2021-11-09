@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "2.0.0",
+    "lit": "2.0.2",
     "modern-css-reset": "*"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "5.0.2",
+    "concurrently": "6.3.0",
     "es-dev-server": "2.1.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
