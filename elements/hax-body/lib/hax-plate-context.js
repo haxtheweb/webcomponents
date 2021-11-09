@@ -358,16 +358,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             bring this back.
           </div>
         </hax-context-item>
-          ${this.ceButtons.map((el) => {
-            return html` <hax-context-item
-              action
-              icon="${el.icon}"
-              label="${el.label}"
-              event-name="hax-ce-custom-button"
-              value="${el.callback}"
-              ?disabled="${el.disabled}"
-            ></hax-context-item>`;
-          })}
           <hax-context-item
             action
             id="right"
@@ -407,6 +397,16 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               width.
             </div>
           </hax-context-item>
+          ${this.ceButtons.map((el) => {
+            return html` <hax-context-item
+              action
+              icon="${el.icon}"
+              label="${el.label}"
+              event-name="hax-ce-custom-button"
+              value="${el.callback}"
+              ?disabled="${el.disabled}"
+            ></hax-context-item>`;
+          })}
           <slot name="secondary"></slot>
         </div>
         <div class="group">

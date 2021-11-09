@@ -202,7 +202,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.radio = false;
       this.shortcutKeys = "";
       this.isCurrentItem = true;
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
      * gets button element
