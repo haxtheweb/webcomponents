@@ -142,10 +142,6 @@ export class PageBreak extends IntersectionObserverMixin(
         },
       })
     );
-    window.addEventListener(
-      "haxcms-item-rebuild",
-      this.rebuildItemById.bind(this)
-    );
   }
   disconnectedCallback() {
     window.dispatchEvent(
@@ -165,10 +161,6 @@ export class PageBreak extends IntersectionObserverMixin(
           value: this,
         },
       })
-    );
-    window.removeEventListener(
-      "haxcms-item-rebuild",
-      this.rebuildItemById.bind(this)
     );
     this.remoteHeadingobserver.disconnect();
     super.disconnectedCallback();
@@ -230,20 +222,6 @@ export class PageBreak extends IntersectionObserverMixin(
         ["locked", "parent", "published"].includes(propName)
       ) {
         this._updateHAXCEMenu();
-      }
-      // support slug being automatically generated
-      if (
-        window.HAXCMS &&
-        this.pathAuto &&
-        ["title", "parent"].includes(propName) &&
-        oldValue !== undefined
-      ) {
-        const store = window.HAXCMS.requestAvailability().store;
-        this.slug = store.getUniqueSlugName(
-          this.title,
-          this._HAXcmsStoreItem,
-          true
-        );
       }
       // fire event for reaction so we can update sgtate elsewhere
       if (["title", "parent", "slug"].includes(propName)) {
@@ -345,65 +323,17 @@ export class PageBreak extends IntersectionObserverMixin(
           }
         }
       }
-      // we only support haxcms break types when using haxcms
-      // this setting will be enforced by the system itself and no human
-      // will have the option of doing this setting
-      if (
-        window.HAXCMS &&
-        oldValue !== undefined &&
-        this._HAXcmsStoreItem &&
-        ["title", "published", "locked", "parent", "slug", "order"].includes(
-          propName
-        )
-      ) {
-        this.syncBreakWithHAXCMSStore();
-      }
       // allow for haxcms page style association to allow users to edit the
       // current page's details
       if (propName === "breakType") {
         var iconPath;
         if (this[propName] === "node") {
-          if (this.status === "new") {
-            const store = window.HAXCMS.requestAvailability().store;
-            if ((this._HAXcmsStoreItem = store.findItem(this.itemId))) {
-              // we found it's ID already
-              this.syncBreakWithHAXCMSStore();
-            } else {
-              setTimeout(async () => {
-                this.slug = store.getUniqueSlugName(
-                  this.title,
-                  store.activeItem,
-                  true
-                );
-                this.order = store.activeItem.order + 1;
-                this.parent = store.activeItem.parent;
-                const addItem = {
-                  id: this.itemId,
-                  title: this.title,
-                  slug: this.slug,
-                  order: this.order,
-                  parent: this.parent,
-                  metadata: {
-                    published: this.published,
-                    locked: this.locked,
-                    status: this.status,
-                  },
-                };
-                this._HAXcmsStoreItem = await store.addItem(addItem);
-                this.syncBreakWithHAXCMSStore();
-              }, 0);
-            }
-          }
           iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
           this.shadowRoot.querySelector("style").innerHTML = `
           :host([data-hax-ray]:hover) .mid::before {
             content: "${this.t.pageBreak}";
           }`;
         } else {
-          if (window.HAXCMS) {
-            const store = window.HAXCMS.requestAvailability().store;
-            this._HAXcmsStoreItem = store.activeItem;
-          }
           iconPath = SimpleIconsetStore.getIcon("hax:page-details");
           this.shadowRoot.querySelector("style").innerHTML = `
           :host([data-hax-ray]:hover) .mid::before {
@@ -414,68 +344,6 @@ export class PageBreak extends IntersectionObserverMixin(
         this.style.backgroundImage = `url("${iconPath}")`;
       }
     });
-  }
-  async syncBreakWithHAXCMSStore() {
-    // @todo need to clone the activeItem before any modifications
-    // this way we can detect if the object has the same original values or
-    // was changed back to original values
-    if (!this.__originalActive) {
-      this.__originalActive = {
-        title: this._HAXcmsStoreItem.title,
-        parent: this._HAXcmsStoreItem.parent,
-        slug: this._HAXcmsStoreItem.slug,
-        order: this._HAXcmsStoreItem.order,
-        locked: this._HAXcmsStoreItem.metadata.locked,
-        published: this._HAXcmsStoreItem.metadata.published,
-      };
-    }
-    this._HAXcmsStoreItem.metadata.locked = this.locked;
-    // this implies we should style to show that we have a change
-    this._HAXcmsStoreItem.metadata.published = this.published;
-    // this is going to mess with the internal routing unless we have a way of
-    // intercepting it
-    //this._HAXcmsStoreItem.slug = this.slug;
-    this._HAXcmsStoreItem.order = this.order;
-    // verify the parentID exists first
-    this._HAXcmsStoreItem.parent = this.parent;
-    if (
-      this.__originalActive.title === this.title &&
-      this.__originalActive.parent === this.parent &&
-      this.__originalActive.slug === this.slug &&
-      this.__originalActive.order === this.order &&
-      this.__originalActive.locked === this.locked &&
-      this.__originalActive.published === this.published
-    ) {
-      //@todo need to make sure status is set on adding to the page
-      // via HAX schema injection or if it already existed then "delete"
-      // being a soft value (might be the most difficult part)
-      if (this.status === "modified") {
-        this.status = "";
-      }
-    } else if (this.status === "") {
-      this.status = "modified";
-    }
-    this._HAXcmsStoreItem.metadata.status = this.status;
-    // @note very 'dirty' way of achieving the appropriate updates in the store
-    // talking to lit for re-rendering
-    this._HAXcmsStoreItem.title = "";
-    this._HAXcmsStoreItem.title = this.title;
-  }
-  /**
-   * need to look the item back up if we have a report of a full registry rebuild
-   * which is what this event is indicating
-   */
-  async rebuildItemById(e) {
-    const store = window.HAXCMS.requestAvailability().store;
-    if (
-      this.itemId &&
-      this._HAXcmsStoreItem &&
-      this._HAXcmsStoreItem !== store.findItem(this.itemId)
-    ) {
-      this._HAXcmsStoreItem = await store.findItem(this.itemId);
-      // we found it's ID so ensure it is actually in sync
-      this.syncBreakWithHAXCMSStore();
-    }
   }
   static get styles() {
     return [
