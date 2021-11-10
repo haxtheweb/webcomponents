@@ -1,6 +1,6 @@
-import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+
 /**
  * `a11y-compare-image`
  * Layers images over each other with a slider interface to compare them
@@ -18,7 +18,7 @@ class a11yCompareImage extends SimpleColors {
         :host {
           display: inline-flex;
           margin: 15px 0;
-          --simple-range-input-track-height: 4px;
+          --simple-range-input-track-height: 4pxsnow;
           --simple-range-input-pin-height: 20px;
           --simple-range-offet: calc(
             var(--simple-range-input-pin-height, 20px) / 2
@@ -71,6 +71,7 @@ class a11yCompareImage extends SimpleColors {
           margin: 0;
         }
         .marker {
+          z-index: 1;
           top: calc(0px - var(--simple-range-input-pin-height, 20px) / 2);
           position: absolute;
           width: 1px;
@@ -85,7 +86,7 @@ class a11yCompareImage extends SimpleColors {
           );
           padding-top: var(--simple-range-input-pin-height, 20px);
         }
-        ::slotted([slot="bottom"]) {
+        #placeholder ::slotted([slot="bottom"]) {
           max-width: 100%;
         }
       `,
@@ -97,48 +98,47 @@ class a11yCompareImage extends SimpleColors {
     this.position = 50;
     this.accentColor = "blue";
     this.__markers = [];
+    this.label = "Compare images";
+    import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
   }
   render() {
-    return html`
-      <figure>
-        <figcaption>
-          <slot name="heading"></slot>
-          <div id="description"><slot name="description"></slot></div>
-        </figcaption>
-        <div id="container" style="background-image: url(${this.__lower})">
-          <div>
-            <div id="placeholder">
-              <slot id="bottom" name="bottom"></slot>
-            </div>
-            <slot name="top" hidden></slot>
-            <div
-              id="layer"
-              style="background-image: url(${this.__upper})"
-            ></div>
-            <slot></slot>
+    return html` <figure>
+      <figcaption>
+        <slot name="heading"></slot>
+        <div id="description"><slot name="description"></slot></div>
+      </figcaption>
+      <div id="container" style="background-image: url(${this.__lower})">
+        <div>
+          <div id="placeholder">
+            <slot id="bottom" name="bottom"></slot>
           </div>
+          <slot name="top" hidden></slot>
+          <div id="layer" style="background-image: url(${this.__upper})"></div>
+          <slot></slot>
         </div>
-        <div id="input">
-          ${this.__markers.map(
-            (marker) =>
-              html`
-                <div
-                  class="marker"
-                  style="left: ${marker}%;"
-                  ?hidden="${marker == 100}"
-                ></div>
-              `
-          )}
-          <simple-range-input
-            accent-color="${this.accentColor}"
-            ?dark="${this.dark}"
-            id="slider"
-            @immediate-value-changed="${this._valueChanged}"
-            .value="${this.position}"
-          ></simple-range-input>
-        </div>
-      </figure>
-    `;
+      </div>
+      <div id="input">
+        ${this.__markers.map(
+          (marker) =>
+            html`
+              <div
+                class="marker"
+                .style="left: ${marker}%;"
+                ?hidden="${marker == 100}"
+              ></div>
+            `
+        )}
+        <simple-range-input
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
+          id="slider"
+          label="${this.label}"
+          @immediate-value-changed="${this._valueChanged}"
+          value="${this.position}"
+          immediate-value="${this.position}"
+        ></simple-range-input>
+      </div>
+    </figure>`;
   }
   _valueChanged(e) {
     this.position = e.detail.value;
@@ -160,9 +160,11 @@ class a11yCompareImage extends SimpleColors {
       opacity: {
         type: Boolean,
       },
+      label: {
+        type: String,
+      },
       position: {
         type: Number,
-        attribute: "position",
         reflect: true,
       },
       __lower: {
