@@ -6,6 +6,9 @@
       "path": "./lib/page-break-manager.js",
       "properties": [
         {
+          "name": "target"
+        },
+        {
           "name": "breaks",
           "type": "never[]",
           "default": "[]"
@@ -18,6 +21,9 @@
       "attributes": [
         {
           "name": "selector"
+        },
+        {
+          "name": "base-path"
         }
       ],
       "properties": [
@@ -30,16 +36,32 @@
         },
         {
           "name": "div"
+        },
+        {
+          "name": "basePath",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },
     {
       "name": "page-break",
       "path": "./page-break.js",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`",
       "attributes": [
         {
           "name": "parent",
           "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "path-auto",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "title",
@@ -47,19 +69,23 @@
           "default": "\"newPage\""
         },
         {
-          "name": "path",
+          "name": "slug",
           "type": "string",
           "default": "\"#\""
         },
         {
           "name": "published",
           "type": "boolean",
-          "default": "true"
+          "default": "false"
         },
         {
-          "name": "lock",
+          "name": "locked",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "order",
+          "type": "number"
         },
         {
           "name": "depth",
@@ -67,13 +93,23 @@
           "default": "0"
         },
         {
-          "name": "uuid",
+          "name": "item-id",
           "type": "string"
+        },
+        {
+          "name": "break-type",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
         },
         {
           "name": "schema-resource-id",
@@ -95,14 +131,26 @@
           "type": "string"
         },
         {
+          "name": "status",
+          "attribute": "status",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "pathAuto",
+          "attribute": "path-auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "title",
           "attribute": "title",
           "type": "string",
           "default": "\"newPage\""
         },
         {
-          "name": "path",
-          "attribute": "path",
+          "name": "slug",
+          "attribute": "slug",
           "type": "string",
           "default": "\"#\""
         },
@@ -110,13 +158,21 @@
           "name": "published",
           "attribute": "published",
           "type": "boolean",
-          "default": "true"
+          "default": "false"
         },
         {
-          "name": "lock",
-          "attribute": "lock",
+          "name": "target"
+        },
+        {
+          "name": "locked",
+          "attribute": "locked",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "order",
+          "attribute": "order",
+          "type": "number"
         },
         {
           "name": "depth",
@@ -125,15 +181,58 @@
           "default": "0"
         },
         {
-          "name": "uuid",
-          "attribute": "uuid",
+          "name": "itemId",
+          "attribute": "item-id",
           "type": "string"
+        },
+        {
+          "name": "remoteHeadingobserver"
+        },
+        {
+          "name": "breakType",
+          "attribute": "break-type",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "250"
+        },
+        {
+          "name": "IORoot"
         },
         {
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
         },
         {
           "name": "schemaResourceID",
@@ -156,6 +255,9 @@
         },
         {
           "name": "page-break-change"
+        },
+        {
+          "name": "hax-refresh-tray-form"
         }
       ]
     },
@@ -166,10 +268,21 @@
     {
       "name": "page-break",
       "path": "./src/page-break.js",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`",
       "attributes": [
         {
           "name": "parent",
           "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "path-auto",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "title",
@@ -177,19 +290,23 @@
           "default": "\"newPage\""
         },
         {
-          "name": "path",
+          "name": "slug",
           "type": "string",
           "default": "\"#\""
         },
         {
           "name": "published",
           "type": "boolean",
-          "default": "true"
+          "default": "false"
         },
         {
-          "name": "lock",
+          "name": "locked",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "order",
+          "type": "number"
         },
         {
           "name": "depth",
@@ -197,13 +314,23 @@
           "default": "0"
         },
         {
-          "name": "uuid",
+          "name": "item-id",
           "type": "string"
+        },
+        {
+          "name": "break-type",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
         },
         {
           "name": "schema-resource-id",
@@ -225,14 +352,26 @@
           "type": "string"
         },
         {
+          "name": "status",
+          "attribute": "status",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "pathAuto",
+          "attribute": "path-auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "title",
           "attribute": "title",
           "type": "string",
           "default": "\"newPage\""
         },
         {
-          "name": "path",
-          "attribute": "path",
+          "name": "slug",
+          "attribute": "slug",
           "type": "string",
           "default": "\"#\""
         },
@@ -240,13 +379,21 @@
           "name": "published",
           "attribute": "published",
           "type": "boolean",
-          "default": "true"
+          "default": "false"
         },
         {
-          "name": "lock",
-          "attribute": "lock",
+          "name": "target"
+        },
+        {
+          "name": "locked",
+          "attribute": "locked",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "order",
+          "attribute": "order",
+          "type": "number"
         },
         {
           "name": "depth",
@@ -255,15 +402,58 @@
           "default": "0"
         },
         {
-          "name": "uuid",
-          "attribute": "uuid",
+          "name": "itemId",
+          "attribute": "item-id",
           "type": "string"
+        },
+        {
+          "name": "remoteHeadingobserver"
+        },
+        {
+          "name": "breakType",
+          "attribute": "break-type",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "250"
+        },
+        {
+          "name": "IORoot"
         },
         {
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
         },
         {
           "name": "schemaResourceID",
@@ -286,6 +476,9 @@
         },
         {
           "name": "page-break-change"
+        },
+        {
+          "name": "hax-refresh-tray-form"
         }
       ]
     }
