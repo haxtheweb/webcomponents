@@ -97,7 +97,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["colors", "image-loaded", "t"]
+    "unsetAttributes": ["colors", "image-loaded", "t", "correct"]
   },
   "demoSchema": [
     {
