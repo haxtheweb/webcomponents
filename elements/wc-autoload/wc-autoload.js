@@ -64,6 +64,8 @@ window.WCAutoload.process = (e) => {
         // set the basePath if it exists
         if (window.WCAutoloadBasePath) {
           loader.registry.basePath = window.WCAutoloadBasePath;
+        } else if (window.WCGlobalBasePath) {
+          loader.registry.basePath = window.WCGlobalBasePath;
         }
         if (
           window.WCAutoloadRegistryFile &&

@@ -34,6 +34,8 @@ class DynamicImportRegistry extends HTMLElement {
     this.basePath = new URL("./../../", import.meta.url).href;
     if (window.WCAutoloadBasePath) {
       this.basePath = window.WCAutoloadBasePath;
+    } else if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
     }
   }
   connectedCallback() {
@@ -98,6 +100,7 @@ class DynamicImportRegistry extends HTMLElement {
           );
         });
       } catch (e) {
+        console.warn(`${this.basePath}${this.list[tag]}`);
         console.warn(e);
         // fire on error too
         this.dispatchEvent(

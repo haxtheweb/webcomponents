@@ -100,6 +100,7 @@ class DynamicImportRegistry extends HTMLElement {
           );
         });
       } catch (e) {
+        console.warn(`${this.basePath}${this.list[tag]}`);
         console.warn(e);
         // fire on error too
         this.dispatchEvent(
