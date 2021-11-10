@@ -32,7 +32,7 @@
     "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "serve": "web-dev-server -c ../../web-dev-server.config.js",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
@@ -59,7 +59,7 @@
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "polymer-build": "3.1.4",
-    "polymer-cli": "1.9.11",
+    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

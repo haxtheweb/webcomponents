@@ -20,7 +20,7 @@
     "format": "prettier --write 'system/**/*.php' '*.{html,js,php,yml}'",
     "terser": "gulp",
     "start": "yarn run dev",
-    "dev": "polymer serve --open --entrypoint index.html --allow-origin --open-path=/",
+    "dev": "web-dev-server -c ../../../web-dev-server.haxcms.config.js",
     "dev-theme": "cd custom && yarn start"
   }
 }

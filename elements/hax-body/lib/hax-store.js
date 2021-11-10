@@ -712,7 +712,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    const basePath = new URL("./", import.meta.url).href;
+    let basePath = new URL("./../../../", import.meta.url).href;
+    if (window.WCGlobalBasePath) {
+      basePath = window.WCGlobalBasePath;
+    }
     for (var i in items) {
       // try to skip an import
       if (window.customElements.get(i)) {
@@ -726,7 +729,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           } catch (e) {}
         }
       } else {
-        let importPath = `${basePath}../../../${items[i]}`;
+        let importPath = `${basePath}${items[i]}`;
         // account for external app store reference on import
         if (this.isExternalURLImport(items[i])) {
           importPath = items[i];

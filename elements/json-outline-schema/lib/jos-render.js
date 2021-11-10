@@ -10,8 +10,8 @@ class JosRender extends LitElement {
   constructor() {
     super();
     this.registry = window.DynamicImportRegistry.requestAvailability();
-    if (window.WCAutoloadBasePath) {
-      this.registry.basePath = window.WCAutoloadBasePath;
+    if (window.WCGlobalBasePath) {
+      this.registry.basePath = window.WCGlobalBasePath;
     }
     this.items = [];
   }
