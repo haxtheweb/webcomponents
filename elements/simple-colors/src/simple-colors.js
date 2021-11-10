@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { screenreaderOnlyCSS } from "@lrnwebcomponents/a11y-utils/a11y-utils.js";
 const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     /* REQUIRED FOR TOOLING DO NOT TOUCH */

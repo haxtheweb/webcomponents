@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "a11y-utils",
+      "path": "./a11y-utils.js",
+      "description": "`a11y-utils`\n`a collection of accessibility patterns and styles`"
+    },
+    {
+      "name": "a11y-utils",
+      "path": "./src/a11y-utils.js",
+      "description": "`a11y-utils`\n`a collection of accessibility patterns and styles`"
+    }
+  ]
+}

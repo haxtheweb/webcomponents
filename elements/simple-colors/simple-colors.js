@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { screenreaderOnlyCSS } from "@lrnwebcomponents/a11y-utils/a11y-utils.js";
 const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     //styles function
@@ -14,7 +15,7 @@ const SimpleColorsSuper = function (SuperClass) {
       }
       return [
         styles,
-
+        screenreaderOnlyCSS,
         css`
           :host([dark]) {
             --simple-colors-default-theme-accent-1: #000000;

@@ -1451,15 +1451,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {object} grid
    * @returns {array}
    */
-  getAllSlotConfig(grid) {
-    if (!grid) grid = this.getParentGrid(node);
+  getAllSlotConfig(node) {
+    if (!node) return;
+    let grid = this.getParentGrid(node);
     return !!grid && !!grid.tag
       ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
       : undefined;
   }
   /**
    *
-   * gets parent grid if given note is slotted content
+   * gets parent grid if given node is slotted content
    *
    * @param {object} node
    * @returns {object}
@@ -2423,11 +2424,47 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
 
-      case "hax-select-grid-item":
+      case "hax-select-grid":
         if (eventPath[0] && eventPath[0].eventData) {
           let target = eventPath[0].eventData;
           this.setActiveNode(target, true);
           this.positionContextMenus(target);
+        }
+        break;
+
+      case "hax-select-grid-item":
+        if (eventPath[0] && eventPath[0].eventData) {
+          let data = eventPath[0].eventData,
+            target = data.target,
+            slot = data.slot,
+            i = data.index,
+            grid = data.grid,
+            editMode = data.editMode,
+            //sets active node and positions accordingly
+            nodePosition = (node = target) => {
+              this.setActiveNode(node, true);
+              this.positionContextMenus(node);
+            },
+            //queries grid in edit mode to find targeted slot
+            targetItem = () => {
+              let matches = [...grid.children].filter((child) =>
+                  !slot || slot === ""
+                    ? !child.slot || child.slot === ""
+                    : child.slot === slot
+                ),
+                newTarget = matches.length > i ? matches[i] : target;
+              nodePosition(newTarget);
+            };
+          //some slots may not always be visible and
+          //require temporary changes to parent grid's properties
+          //so they can be visible and editable
+          if (grid && editMode) {
+            this.setGridEditMode(grid, editMode);
+            //make sure we target correct slot after dom changes
+            setTimeout(targetItem(), 500);
+          } else {
+            nodePosition();
+          }
         }
         break;
 
@@ -2846,6 +2883,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             console.warn(e);
           }
         }
+      } else {
+        //make sure ective node is not still in edit mode
+        if (!!this.activeNode) this.unsetGridEditMode(this.activeNode);
       }
       // force a reset when we start editing
       // the delay gives HAX / HAX endpoints some room to manipulate the DOM first
@@ -3680,6 +3720,37 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   /**
+   * removes edit mode from grid by reverting to properties saved before editing
+   *
+   * @param {object} node node that could be a grid
+   * @memberof HaxBody
+   */
+  unsetGridEditMode(node) {
+    let settings = !node.getAttribute("data-grid-saved-settings")
+      ? undefined
+      : JSON.parse(node.getAttribute("data-grid-saved-settings"));
+    Object.keys(settings || {}).forEach((key) => (node[key] = settings[key]));
+    node.removeAttribute("data-grid-saved-settings");
+  }
+  /**
+   * saves grid settings before applying edit mode settings
+   *
+   * @param {object} node node that could be a grid
+   * @memberof HaxBody
+   */
+  setGridEditMode(node, settings) {
+    let saved = !node.getAttribute("data-grid-saved-settings")
+        ? {}
+        : JSON.parse(node.getAttribute("data-grid-saved-settings")),
+      keys = Object.keys(saved);
+    Object.keys(settings || {}).forEach((key) => {
+      //only save a setting if it hasn't alreay been saved by a sibling slot
+      if (!keys.includes(key)) saved[key] = node[key];
+      node[key] = settings[key];
+    });
+    node.setAttribute("data-grid-saved-settings", JSON.stringify(saved));
+  }
+  /**
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
@@ -3689,6 +3760,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     await this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");
     });
+
     //prevent mutation
     if (
       !!newValue &&
@@ -3847,6 +3919,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         );
       }
     }
+    if (
+      oldValue &&
+      oldValue.parentNode &&
+      (!newValue ||
+        !newValue.parentNode ||
+        newValue.parentNode !== oldValue.parentNode)
+    )
+      this.unsetGridEditMode(oldValue.parentNode);
   }
   /**
    * Get position from top and left of the page based on position:relative; being
