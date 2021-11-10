@@ -395,7 +395,7 @@ export class PageBreak extends IntersectionObserverMixin(
             }
           }
           iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
-          this._stateStyle.innerHTML = `
+          this.shadowRoot.querySelector("style").innerHTML = `
           :host([data-hax-ray]:hover) .mid::before {
             content: "${this.t.pageBreak}";
           }`;
@@ -405,7 +405,7 @@ export class PageBreak extends IntersectionObserverMixin(
             this._HAXcmsStoreItem = store.activeItem;
           }
           iconPath = SimpleIconsetStore.getIcon("hax:page-details");
-          this._stateStyle.innerHTML = `
+          this.shadowRoot.querySelector("style").innerHTML = `
           :host([data-hax-ray]:hover) .mid::before {
             content: "${this.t.pageDetails}";
           }`;
@@ -531,11 +531,14 @@ export class PageBreak extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this._stateStyle = document.createElement("style");
-    this.shadowRoot.appendChild(this._stateStyle);
   }
   render() {
     return html`
+      <style>
+        :host([data-hax-ray]:hover) .mid::before {
+          content: "${this.t.pageBreak}";
+        }
+      </style>
       <a .href="${this.slug}" .name="#${this.itemId}" aria-hidden="true"></a>
       <hr class="mid" />
       ${this.locked
