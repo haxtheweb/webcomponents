@@ -1383,11 +1383,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @memberof HaxBody
    */
   setActiveNode(node, force = false) {
-    console.log(
-      "setActiveNode",
-      node,
-      !node || !node.parentNode || node.parentNode.innerHTML
-    );
     if (
       node &&
       this.editMode &&
@@ -1933,11 +1928,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
-    console.log(
-      "positionContextMenus",
-      node,
-      !node || !node.parentNode || node.parentNode.innerHTML
-    );
     //console.warn(node);
     // special case for node not matching container yet it being editable
     if (node && node.tagName && this.ready) {
@@ -2007,11 +1997,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 250);
           }
         }
-        console.log(
-          "positionContextMenus 2",
-          node,
-          !node || !node.parentNode || node.parentNode.innerHTML
-        );
         this.contextMenus.parent.setPosition();
       }, 50);
     }
@@ -3769,12 +3754,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
-    console.log(
-      "_activeNodeChanged",
-      newValue,
-      !newValue || !newValue.parentNode || newValue.parentNode.innerHTML
-    );
-
     // close any open popover items
     window.SimplePopoverManager.requestAvailability().opened = false;
     // remove anything currently with the active class
