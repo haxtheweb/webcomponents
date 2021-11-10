@@ -876,7 +876,8 @@ class HAXCMSSiteStore extends HTMLElement {
         // @todo hack to keep voice controls active if enabled
         if (
           window.HaxStore.requestAvailability().globalPreferences
-            .haxVoiceCommands
+            .haxVoiceCommands &&
+          window.HaxStore.requestAvailability().__hal
         ) {
           setTimeout(() => {
             window.HaxStore.requestAvailability().__hal.auto = true;

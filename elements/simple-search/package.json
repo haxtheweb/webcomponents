@@ -15,7 +15,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.1",
+  "version": "4.0.4",
   "description": "Automated conversion of simple-search",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-fields": "^4.0.1",
-    "@lrnwebcomponents/simple-icon": "^4.0.1",
+    "@lrnwebcomponents/simple-fields": "^4.0.4",
+    "@lrnwebcomponents/simple-icon": "^4.0.4",
     "@lrnwebcomponents/simple-tooltip": "^4.0.1",
     "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.1",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.4",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

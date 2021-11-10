@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.1",
+  "version": "4.0.4",
   "description": "auto complete either from an endpoint or local json array",
   "repository": {
     "type": "git",

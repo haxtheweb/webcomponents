@@ -2660,7 +2660,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       .map((setting) =>
         (settings[setting] || []).filter((prop) => {
           let show = !optionalOnly || !prop.required;
-          if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
+          if (
+            (!!prop.slot || prop.slot === "") &&
+            !slotsList.includes(prop.slot) &&
+            show
+          ) {
             slotsList.push(prop.slot);
             return true;
           } else {

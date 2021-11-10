@@ -22,7 +22,7 @@
       "...super.properties"
     ]
   },
-  "version": "4.0.1",
+  "version": "4.0.4",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",

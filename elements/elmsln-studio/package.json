@@ -11,7 +11,7 @@
       "js": "src/elmsln-studio.js"
     }
   },
-  "version": "4.0.1",
+  "version": "4.0.4",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
