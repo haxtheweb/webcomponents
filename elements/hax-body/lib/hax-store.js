@@ -712,7 +712,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    const basePath = new URL("./", import.meta.url).href;
+    let basePath = new URL("./../../../", import.meta.url).href;
+    if (window.WCGlobalBasePath) {
+      basePath = window.WCGlobalBasePath;
+    }
     for (var i in items) {
       // try to skip an import
       if (window.customElements.get(i)) {
@@ -726,7 +729,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           } catch (e) {}
         }
       } else {
-        let importPath = `${basePath}../../../${items[i]}`;
+        let importPath = `${basePath}${items[i]}`;
         // account for external app store reference on import
         if (this.isExternalURLImport(items[i])) {
           importPath = items[i];
@@ -1766,6 +1769,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
+      "hax-refresh-tray-form": "refreshActiveNodeForm",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2546,7 +2550,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           details = await this.runHook(
             prototypeNode,
             "preProcessInsertContent",
-            [details]
+            [details, this.activeNode]
           );
         }
       }
@@ -3194,7 +3198,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.haxTray.activeNode,
       null
     );
-    this.haxTray._setupForm();
+    await this.haxTray._setupForm();
   }
   /**
    * Generate Hax Element prototype.

@@ -34,7 +34,7 @@
     "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
+    "serve": "../../node_modules/.bin/web-dev-server -c ../../web-dev-server.config.js",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs",
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
@@ -43,26 +43,26 @@
   "author": {
     "name": "ckleest"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
-    "lit": "2.0.0"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",
-    "@open-wc/testing": "2.5.33",
+    "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/test-runner": "0.13.5",
-    "@web/test-runner-commands": "0.4.5",
-    "@web/test-runner-playwright": "0.8.6",
-    "@web/test-runner-puppeteer": "0.10.0",
+    "@web/dev-server": "0.1.28",
+    "@web/test-runner": "0.13.21",
+    "@web/test-runner-commands": "0.5.13",
+    "@web/test-runner-playwright": "0.8.8",
+    "@web/test-runner-puppeteer": "0.10.3",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.0.2",
-    "es-dev-server": "2.1.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "polymer-build": "3.1.4",
-    "polymer-cli": "1.9.11",
+    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

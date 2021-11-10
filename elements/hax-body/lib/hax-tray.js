@@ -1250,7 +1250,7 @@ class HaxTray extends I18NMixin(
   /**
    * When the preview node is updated, pull schema associated with it
    */
-  _setupForm() {
+  async _setupForm() {
     let activeNode = this.activeNode;
     this._initial = true;
     this.activeValue = {
@@ -1439,7 +1439,6 @@ class HaxTray extends I18NMixin(
         },
       ];
       // array of things to forcibly disable
-      let disable = [];
       let setProps = (propName, propTitle, settings = []) => {
         let filteredProps = !isGrid
           ? settings
@@ -1456,6 +1455,10 @@ class HaxTray extends I18NMixin(
           disabled: filteredProps.length < 1,
         });
       };
+      // @see haxHook: setupActiveElementForm - allow elements to modify the properties to be rendered
+      if (HAXStore.testHook(activeNode, "setupActiveElementForm")) {
+        await HAXStore.runHook(activeNode, "setupActiveElementForm", [props]);
+      }
       // see if we have any configure settings or disable
       setProps("configure", this.t.configure, props.settings.configure);
       // see if we have any layout settings or disable

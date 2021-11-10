@@ -4,7 +4,6 @@
  */
 import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-
 /**
  * `simple-range-input`
  * `simple styling on a range input`
@@ -13,6 +12,56 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @element simple-range-input
  */
 class SimpleRangeInput extends SimpleColors {
+  /**
+   * object life cycle
+   */
+  constructor() {
+    super();
+    this.dragging = false;
+    this.label = "Range input";
+    this.min = 0;
+    this.max = 100;
+    this.step = 1;
+    this.value = 0;
+    this.immediateValue = 0;
+    this.disabled = false;
+    this.addEventListener("mousedown", () => {
+      this.dragging = true;
+    });
+    this.addEventListener("mouseup", () => {
+      this.dragging = false;
+      this.value = this.immediateValue;
+    });
+    this.addEventListener("keydown", () => {
+      this.dragging = true;
+      setTimeout(() => {
+        this.value = this.immediateValue;
+      }, 0);
+    });
+    this.addEventListener("keyup", () => {
+      this.dragging = false;
+      this.value = this.immediateValue;
+    });
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      dragging: { type: Boolean, reflect: true },
+      immediateValue: { type: Number, attribute: "immediate-value" },
+      value: { type: Number, reflect: true },
+      min: { type: Number },
+      step: { type: Number },
+      max: { type: Number },
+      label: { type: String },
+      disabled: { type: Boolean, reflect: true },
+    };
+  }
+  /**
+   * This is a convention, not the standard
+   */
+  static get tag() {
+    return "simple-range-input";
+  }
   // Template return function
   static get styles() {
     return [
@@ -92,7 +141,6 @@ class SimpleRangeInput extends SimpleColors {
           width: 100%;
           height: var(--simple-range-input-track-height, 10px);
           cursor: pointer;
-          animate: 0.2s;
           box-shadow: var(
             --simple-range-input-box-shadow,
             0px 0px 0px #000000,
@@ -136,7 +184,6 @@ class SimpleRangeInput extends SimpleColors {
           width: 100%;
           height: var(--simple-range-input-track-height, 10px);
           cursor: pointer;
-          animate: 0.2s;
           background: transparent;
           border-color: transparent;
           border-width: var(--simple-range-input-pin-height, 20px) 0;
@@ -207,20 +254,30 @@ class SimpleRangeInput extends SimpleColors {
             var(--simple-colors-default-theme-accent-2, black)
           );
         }
+        #label {
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
       `,
     ];
   }
   render() {
     return html`<input
-      @input="${this._inputChanged}"
-      @changed="${this._valueChanged}"
-      ?disabled="${this.disabled}"
-      type="range"
-      .min="${this.min}"
-      .step="${this.step}"
-      .max="${this.max}"
-      .value="${this.value}"
-    /> `;
+        @input="${this._inputChanged}"
+        @changed="${this._valueChanged}"
+        ?disabled="${this.disabled}"
+        type="range"
+        min="${this.min}"
+        step="${this.step}"
+        max="${this.max}"
+        value="${this.value}"
+        aria-labelledby="label"
+        title="${this.label}"
+      /><label id="label">${this.label}</label>`;
   }
   _inputChanged(e) {
     this.immediateValue = e.target.value;
@@ -237,69 +294,35 @@ class SimpleRangeInput extends SimpleColors {
     }, 0);
   }
   updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "immediateValue" && this.__ready) {
-        if (this.dragging) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (this.shadowRoot && this.__ready) {
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "immediateValue") {
+          if (this.dragging) {
+            this.dispatchEvent(
+              new CustomEvent("immediate-value-changed", {
+                detail: {
+                  value: this.immediateValue,
+                },
+              })
+            );
+          } else {
+            this.value = this.immediateValue;
+          }
+        }
+        if (propName === "value") {
           this.dispatchEvent(
-            new CustomEvent("immediate-value-changed", {
+            new CustomEvent("value-changed", {
               detail: {
-                value: this.immediateValue,
+                value: this.value,
               },
             })
           );
-        } else {
-          this.value = this.immediateValue;
         }
-      }
-      if (propName === "value" && this.__ready) {
-        this.dispatchEvent(
-          new CustomEvent("value-changed", {
-            detail: {
-              value: this.value,
-            },
-          })
-        );
-      }
-    });
-  }
-  static get properties() {
-    return {
-      ...super.properties,
-      dragging: { type: Boolean, reflect: true },
-      immediateValue: { type: Number, attribute: "immediate-value" },
-      value: { type: Number, reflect: true },
-      min: { type: Number },
-      step: { type: Number },
-      max: { type: Number },
-      disabled: { type: Boolean, reflect: true },
-    };
-  }
-  /**
-   * This is a convention, not the standard
-   */
-  static get tag() {
-    return "simple-range-input";
-  }
-  /**
-   * object life cycle
-   */
-  constructor() {
-    super();
-    this.dragging = false;
-    this.min = 0;
-    this.max = 100;
-    this.step = 1;
-    this.value = 0;
-    this.immediateValue = 0;
-    this.disabled = false;
-    this.addEventListener("mousedown", () => {
-      this.dragging = true;
-    });
-    this.addEventListener("mouseup", () => {
-      this.dragging = false;
-      this.value = this.immediateValue;
-    });
+      });
+    }
   }
 }
 customElements.define(SimpleRangeInput.tag, SimpleRangeInput);

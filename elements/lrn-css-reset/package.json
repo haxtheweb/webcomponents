@@ -30,20 +30,22 @@
   "module": "lrn-css-reset.js",
   "umd": "lrn-css-reset.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-css-reset/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
-    "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
   },
   "author": {
     "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "2.0.0",
+    "lit": "^2.0.2",
     "modern-css-reset": "*"
   },
   "devDependencies": {
@@ -52,11 +54,11 @@
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.0.2",
-    "es-dev-server": "2.1.0",
+    "@web/dev-server": "0.1.28",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "polymer-build": "3.1.4",
-    "polymer-cli": "1.9.11",
+    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

@@ -64,7 +64,10 @@ class SimpleIconset extends HTMLElement {
       this.needsHydrated.forEach((item, index) => {
         // set the src from interns of the icon, returns if it matched
         // which will then push it into the list to be removed from processing
-        if (item.setSrcByIcon(this)) {
+        if (
+          typeof item.setSrcByIcon === "function" &&
+          item.setSrcByIcon(this)
+        ) {
           list.push(index);
         }
       });
@@ -101,7 +104,7 @@ class SimpleIconset extends HTMLElement {
     // location will import AFTER (possible microtiming early on)
     // also weird looking by context is either the element asking about
     // itself OR the the iconset state manager checking for hydration
-    if (context != this) {
+    if (context !== this && context) {
       this.needsHydrated.push(context);
     }
     return null;

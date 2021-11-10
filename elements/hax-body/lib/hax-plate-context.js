@@ -25,6 +25,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
    */
   constructor() {
     super();
+    this.disableOps = false;
+    this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
@@ -329,7 +331,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           </hax-toolbar-menu>
           <hax-context-item
             action
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement ||
+              this.viewSource ||
+              this.disableOps ||
+              this.disableDuplicate
+            }"
             label="${this.t.duplicate}"
             icon="icons:content-copy"
             event-name="hax-plate-duplicate"
@@ -357,16 +364,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             bring this back.
           </div>
         </hax-context-item>
-          ${this.ceButtons.map((el) => {
-            return html` <hax-context-item
-              action
-              icon="${el.icon}"
-              label="${el.label}"
-              event-name="hax-ce-custom-button"
-              value="${el.callback}"
-              ?disabled="${this.viewSource}"
-            ></hax-context-item>`;
-          })}
           <hax-context-item
             action
             id="right"
@@ -402,6 +399,16 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               width.
             </div>
           </hax-context-item>
+          ${this.ceButtons.map((el) => {
+            return html` <hax-context-item
+              action
+              icon="${el.icon}"
+              label="${el.label}"
+              event-name="hax-ce-custom-button"
+              value="${el.callback}"
+              ?disabled="${el.disabled}"
+            ></hax-context-item>`;
+          })}
           <slot name="secondary"></slot>
         </div>
         <div class="group">
@@ -742,6 +749,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       activeTagName: {
         type: String,
+      },
+      disableOps: {
+        type: Boolean,
+      },
+      disableDuplicate: {
+        type: Boolean,
       },
       canMoveElement: {
         type: Boolean,

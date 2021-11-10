@@ -25,6 +25,9 @@ for project in */ ; do
     if [ -f "${p}.js" ]; then
       symlink-dir ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
     fi
+    if [ -f "package.json" ]; then
+      symlink-dir ../../../elements/${p}/package.json ../../node_modules/@lrnwebcomponents/${p}/package.json
+    fi
     if [ -d "lib" ]; then
       symlink-dir ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
     fi
@@ -46,6 +49,9 @@ for project in */ ; do
   else
     if [ -f "${p}.js" ]; then
      ln -s ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+    fi
+    if [ -f "package.json" ]; then
+      ln -s ../../../elements/${p}/package.json ../../node_modules/@lrnwebcomponents/${p}/package.json
     fi
     if [ -d "lib" ]; then
        ln -s ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib

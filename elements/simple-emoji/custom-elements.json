@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-emoji",
+      "path": "./simple-emoji.js",
+      "description": "`simple-emoji`\n`simplify emoji creation and management`"
+    },
+    {
+      "name": "simple-emoji",
+      "path": "./src/simple-emoji.js",
+      "description": "`simple-emoji`\n`simplify emoji creation and management`"
+    }
+  ]
+}

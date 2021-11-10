@@ -50,14 +50,15 @@
     "@open-wc/building-utils": "2.18.4",
     "@open-wc/demoing-storybook": "2.4.7",
     "@open-wc/storybook": "0.2.8",
-    "@open-wc/testing": "2.5.33",
+    "@open-wc/testing": "3.0.3",
     "@open-wc/webpack-import-meta-loader": "0.4.7",
     "@rollup/plugin-commonjs": "18.0.0",
     "@rollup/plugin-node-resolve": "13.0.0",
-    "@web/test-runner": "0.13.5",
-    "@web/test-runner-commands": "0.4.5",
-    "@web/test-runner-playwright": "0.8.6",
-    "@web/test-runner-puppeteer": "0.10.0",
+    "@web/dev-server": "0.1.28",
+    "@web/test-runner": "0.13.21",
+    "@web/test-runner-commands": "0.5.13",
+    "@web/test-runner-playwright": "0.8.8",
+    "@web/test-runner-puppeteer": "0.10.3",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "babel-loader": "8.2.2",
     "babel-plugin-external-helpers": "6.22.0",
@@ -73,7 +74,6 @@
     "decomment": "0.9.4",
     "del": "3.0.0",
     "dialog-polyfill": "0.5.6",
-    "es-dev-server": "2.1.0",
     "file-loader": "6.1.0",
     "global": "4.4.0",
     "gulp": "4.0.2",
@@ -132,19 +132,18 @@
     "@wcfactory/rollup-umd-build": "^0.12.1"
   },
   "dependencies": {
-    "@open-wc/storybook-prebuilt": "^1.2.0",
+    "@open-wc/storybook-prebuilt": "1.2.0",
     "fetch-ie8": "1.5.0",
     "lunr": "2.3.9",
     "concurrently": "6.0.2",
     "promise-polyfill": "8.2.0",
     "rollup-plugin-cpy": "^2.0.1",
-    "lit": "^2.0.2",
-    "lit-element": "^3.0.1",
-    "lit-html": "^2.0.1",
-    "@lit/reactive-element": "^1.0.1"
+    "lit": "^2.0.2"
   },
   "resolutions": {
-    "chokidar": "^3.0.0"
+    "chokidar": "^3.0.0",
+    "lit-element": "3.0.0",
+    "lit-html": "2.0.0"
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",
