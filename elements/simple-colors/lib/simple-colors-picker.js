@@ -70,14 +70,13 @@ class SimpleColorsPicker extends SimpleColors {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "colors")
+      if (
+        ["colors", "shades", "dark"].includes(propName) &&
+        oldValue !== typeof undefined
+      ) {
         this.options = this._getOptions(this.colors, this.shades, this.dark);
-      if (propName === "shades")
-        this.options = this._getOptions(this.colors, this.shades, this.dark);
-      if (propName === "dark")
-        this.options = this._getOptions(this.colors, this.shades, this.dark);
+      }
       if (propName === "value") this._fireValueChangedEvent();
-
       this._fireChangeEvent();
     });
   }
@@ -164,12 +163,6 @@ class SimpleColorsPicker extends SimpleColors {
         type: String,
         reflect: true, //,notify: true
       },
-      /**
-       *
-       */
-      __ready: {
-        type: Boolean,
-      },
     };
   }
 
@@ -178,6 +171,13 @@ class SimpleColorsPicker extends SimpleColors {
    */
   static get tag() {
     return "simple-colors-picker";
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.__ready = true;
   }
 
   /**
@@ -246,7 +246,7 @@ class SimpleColorsPicker extends SimpleColors {
    */
   _handleChange(e) {
     this.value = e.detail.value;
-    if (this.__ready !== undefined) this._fireChangeEvent();
+    if (this.__ready) this._fireChangeEvent();
   }
 
   /**
@@ -255,7 +255,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @event collapse
    */
   _handleCollapse() {
-    if (this.__ready !== undefined)
+    if (this.__ready)
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
   }
 
@@ -265,7 +265,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @event expand
    */
   _handleExpand() {
-    if (this.__ready !== undefined)
+    if (this.__ready)
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
   }
 
@@ -275,7 +275,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @event option-focus
    */
   _handleOptionFocus(e) {
-    if (this.__ready !== undefined)
+    if (this.__ready)
       this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 }

@@ -59,6 +59,9 @@
       }
     ]
   },
+  "saveOptions": {
+    "unsetAttributes": ["t", "_hax-state", "element-visible"]
+  },
   "demoSchema": [
     {
       "tag": "page-break",
