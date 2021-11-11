@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -29,7 +30,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  */
 class CleanTwo extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
-    HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+    QRCodeMixin(HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)))
   )
 ) {
   //styles function
@@ -142,6 +143,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           color: black;
           padding: 8px;
           display: block;
+          float: unset;
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
@@ -308,6 +310,13 @@ class CleanTwo extends HAXCMSOperationButtons(
 
         :host([is-logged-in][menu-open]) site-menu {
           left: 48px;
+        }
+
+        .qr-code-btn {
+          padding: 8px;
+          display: block;
+          margin-left: -60px;
+          width: 36px;
         }
 
         .content-wrapper {
@@ -538,6 +547,7 @@ class CleanTwo extends HAXCMSOperationButtons(
       this.searchTerm = "";
     }
   }
+
   // render function
   render() {
     return html`
@@ -585,6 +595,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                 import-method="view"
                 part="git-corner-btn"
               ></replace-tag>
+              ${this.QRCodeButton()}
             </header>
             <site-search
               hide-input

@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/simple-modal": "^4.0.1",
+    "@lrnwebcomponents/simple-modal": "^4.0.4",
     "@lrnwebcomponents/storybook-utilities": "^4.0.4",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

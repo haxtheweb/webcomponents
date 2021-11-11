@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -29,8 +30,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-brea
  */
 class CleanOne extends HAXCMSRememberRoute(
   I18NMixin(
-    HAXCMSThemeParts(
-      HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+    QRCodeMixin(
+      HAXCMSThemeParts(
+        HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+      )
     )
   )
 ) {
@@ -679,6 +682,7 @@ class CleanOne extends HAXCMSRememberRoute(
                     class="btn js-toolbar-action"
                     part="print-btn"
                   ></site-print-button>
+                  ${this.QRCodeButton()}
                 </div>
                 <div class="pull-right">
                   <site-rss-button
@@ -772,16 +776,16 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    if (!this.t) {
+      this.t = {};
+    }
     if (this.t) {
-      this.t.searchSiteContent = "Search site content";
-      this.t.typeToSearch = "Type to search";
-    } else {
       this.t = {
+        ...this.t,
         searchSiteContent: "Search site content",
         typeToSearch: "Type to search",
       };
     }
-
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
