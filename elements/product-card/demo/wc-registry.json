@@ -215,7 +215,6 @@
   "hexagon-loader": "@lrnwebcomponents/hexagon-loader/hexagon-loader.js",
   "hex-a-gon": "@lrnwebcomponents/hexagon-loader/lib/hex-a-gon.js",
   "html-block": "@lrnwebcomponents/html-block/html-block.js",
-  "iconset-demo": "@lrnwebcomponents/iconset-demo/iconset-demo.js",
   "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
   "image-inspector": "@lrnwebcomponents/image-inspector/image-inspector.js",
   "img-pan-zoom": "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js",

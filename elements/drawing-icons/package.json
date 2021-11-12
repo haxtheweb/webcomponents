@@ -48,7 +48,6 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/iconset-demo": "^2.8.0",
     "@lrnwebcomponents/storybook-utilities": "^4.0.4",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

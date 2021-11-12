@@ -11,8 +11,6 @@ esac
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 cd ..
-rm -rf node_modules/@lrnwebcomponents
-mkdir node_modules/@lrnwebcomponents
 # go back a level so we can snag everything
 cd elements/
 # walk each directory and update it's demo automatically
@@ -20,6 +18,9 @@ for project in */ ; do
   cd ${project}
   p="$(basename -- $project)"
   rm -rf node_modules
+  # drop symlink but NOT actual directories
+  unlink ../../node_modules/@lrnwebcomponents/${p}
+  # if it was a folder, then this will just fail without an issue
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ "${machine}" == "MinGw" ]; then
     if [ -f "${p}.js" ]; then

@@ -1,6 +1,31 @@
 {
   "name": "deprecated-elements",
   "description": "Elements our team has deprecated",
+  "wcfactory": {},
+  "version": "4.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "type": "module",
+  "main": "a11y-carousel.js",
+  "module": "a11y-carousel.js",
+  "umd": "a11y-carousel.umd.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrndesign-blockquote": "4.0.4",
     "@lrnwebcomponents/lrndesign-panelcard": "4.0.4",
@@ -13,7 +38,17 @@
     "@lrnwebcomponents/random-item": "4.0.1",
     "@lrnwebcomponents/rss-items": "4.0.4",
     "@lrnwebcomponents/service-card": "4.0.1",
-    "@lrnwebcomponents/simple-concept-network": "4.0.4"
+    "@lrnwebcomponents/simple-concept-network": "4.0.4",
+    "@lrnwebcomponents/iconset-demo": "2.8.0",
+    "@lrnwebcomponents/lrn-calendar": "2.3.1"
   },
-  "private": true
+  "devDependencies": {},
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
 }
