@@ -1562,7 +1562,6 @@
     "html-block": "@lrnwebcomponents/html-block/html-block.js",
     "user-action": "@lrnwebcomponents/user-action/user-action.js",
     "date-card": "@lrnwebcomponents/date-card/date-card.js",
-    "service-card": "@lrnwebcomponents/service-card/service-card.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "music-player": "@lrnwebcomponents/music-player/music-player.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js"

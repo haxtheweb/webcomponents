@@ -12,6 +12,7 @@
     "@lrnwebcomponents/material-word": "4.0.4",
     "@lrnwebcomponents/random-item": "4.0.1",
     "@lrnwebcomponents/rss-items": "4.0.4",
+    "@lrnwebcomponents/service-card": "4.0.1",
     "@lrnwebcomponents/simple-concept-network": "4.0.4"
   },
   "private": true

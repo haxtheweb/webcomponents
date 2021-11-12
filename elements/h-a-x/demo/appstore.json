@@ -1508,7 +1508,6 @@
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
     "html-block": "@lrnwebcomponents/html-block/html-block.js",
     "user-action": "@lrnwebcomponents/user-action/user-action.js",
-    "date-card": "@lrnwebcomponents/date-card/date-card.js",
-    "service-card": "@lrnwebcomponents/service-card/service-card.js"
+    "date-card": "@lrnwebcomponents/date-card/date-card.js"
   }
 }
