@@ -9,8 +9,7 @@ describe("barcode-reader test", () => {
     ></barcode-reader> `);
   });
 
-  it("basic setup for testing the link case", async () => {
-    // case 1 of the menu item
-    expect(element).to.exist;
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });

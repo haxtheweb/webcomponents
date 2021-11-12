@@ -6,8 +6,7 @@ describe("bootstrap-theme test", () => {
     element = await fixture(html`<bootstrap-theme></bootstrap-theme> `);
   });
 
-  it("basic setup for testing the link case", async () => {
-    // case 1 of the menu item
-    expect(element).to.exist;
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });

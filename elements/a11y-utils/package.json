@@ -25,7 +25,6 @@
   "module": "a11y-utils.js",
   "umd": "a11y-utils.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-utils/test/",
     "start": "yarn run dev",
     "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -38,7 +37,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.3.1"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "web-animations-js": "2.3.2",

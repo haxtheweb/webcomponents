@@ -1,30 +1,21 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../full-width-image.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("full-width-image instantiates", async () => {
-    const el = await fixture(
+describe("full-width-image test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html` <full-width-image title="test-title"></full-width-image> `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("full-width-image passes accessibility test", async () => {
     const el = await fixture(html` <full-width-image></full-width-image> `);
@@ -80,8 +71,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

@@ -1,28 +1,19 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../count-up.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("count-up instantiates", async () => {
-    const el = await fixture(html` <count-up title="test-title"></count-up> `);
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("count-up test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <count-up title="test-title"></count-up> `);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("count-up passes accessibility test", async () => {
     const el = await fixture(html` <count-up></count-up> `);
@@ -76,8 +67,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

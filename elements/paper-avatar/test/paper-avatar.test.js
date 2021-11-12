@@ -1,30 +1,21 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../paper-avatar.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("paper-avatar instantiates", async () => {
-    const el = await fixture(
+describe("paper-avatar test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html` <paper-avatar title="test-title"></paper-avatar> `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("paper-avatar passes accessibility test", async () => {
     const el = await fixture(html` <paper-avatar></paper-avatar> `);
@@ -78,8 +69,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

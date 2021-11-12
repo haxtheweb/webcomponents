@@ -1,28 +1,19 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../nav-card.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("nav-card instantiates", async () => {
-    const el = await fixture(html` <nav-card title="test-title"></nav-card> `);
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("nav-card test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <nav-card title="test-title"></nav-card> `);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("nav-card passes accessibility test", async () => {
     const el = await fixture(html` <nav-card></nav-card> `);
@@ -76,8 +67,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

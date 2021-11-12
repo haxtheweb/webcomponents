@@ -4,33 +4,24 @@ window.process = window.process || {
     NODE_ENV: "development",
   },
 };
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../haxor-slevin.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("haxor-slevin instantiates", async () => {
-    const el = await fixture(
+describe("haxor-slevin test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html` <haxor-slevin title="test-title"></haxor-slevin> `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("haxor-slevin passes accessibility test", async () => {
     const el = await fixture(html` <haxor-slevin></haxor-slevin> `);
@@ -84,8 +75,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});
