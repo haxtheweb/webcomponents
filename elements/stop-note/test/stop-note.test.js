@@ -14,7 +14,7 @@ describe("stop-note test", () => {
     </stop-note>`);
   });
 
-  it("passes the a11y audit", async () => {
+  it("message slot correct", async () => {
     expect(
       element.shadowRoot
         .querySelector("slot[name='message']")
