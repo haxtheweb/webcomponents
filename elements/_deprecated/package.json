@@ -18,9 +18,8 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.js",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
-    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
   },
   "author": {
     "name": "btopro"

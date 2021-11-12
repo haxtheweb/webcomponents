@@ -34,9 +34,8 @@
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.js",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --watch",
-    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox webkit"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium firefox"
   },
   "author": {
     "name": "btopro"
@@ -54,10 +53,6 @@
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-input": "^3.0.2",
-    "@web/test-runner": "0.13.21",
-    "@web/test-runner-commands": "0.5.13",
-    "@web/test-runner-playwright": "0.8.8",
-    "@web/test-runner-puppeteer": "0.10.3",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",

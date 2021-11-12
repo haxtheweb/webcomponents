@@ -21,6 +21,7 @@ clone_and_install () {
 	yarn global add symlink-dir
   yarn global add @wcfactory/cli
   yarn global add polymer-cli
+  yarn global add @web/test-runner
   yarn global add lerna
   yarn global add web-component-analyzer
   yarn install
