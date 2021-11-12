@@ -7,11 +7,6 @@
  * `fluid-type`
  * @element fluid-type
  * `A simple fluid-type sizing wrapper element to apply to anything`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
  * @demo demo/index.html
  */
 class FluidType extends HTMLElement {
@@ -32,11 +27,6 @@ class FluidType extends HTMLElement {
 }
         </style>
 <slot></slot>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
   }
 
   /**

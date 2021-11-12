@@ -35,8 +35,10 @@
         "property": "data",
         "title": "QR data",
         "description": "Source of the data for the QR code.",
-        "inputMethod": "haxupload",
-        "icon": "hardware:developer-board"
+        "inputMethod": "textfield",
+        "icon": "link",
+        "validationType": "url",
+        "required": true
       },
       {
         "property": "title",
@@ -58,7 +60,9 @@
         "description": "Wrapper to the code.",
         "inputMethod": "number",
         "icon": "icons:settings-overscan"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "format",
         "title": "Output format",
@@ -71,7 +75,6 @@
         },
         "icon": "editor:bubble-chart"
       }
-    ],
-    "advanced": []
+    ]
   }
 }

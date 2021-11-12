@@ -1,0 +1,18 @@
+{
+  "name": "deprecated-elements",
+  "description": "Elements our team has deprecated",
+  "dependencies": {
+    "@lrnwebcomponents/lrndesign-blockquote": "4.0.4",
+    "@lrnwebcomponents/lrndesign-panelcard": "4.0.4",
+    "@lrnwebcomponents/lrn-aside": "4.0.4",
+    "@lrnwebcomponents/task-list": "4.0.4",
+    "@lrnwebcomponents/tab-list": "4.0.4",
+    "@lrnwebcomponents/hero-banner": "4.0.4",
+    "@lrnwebcomponents/magazine-cover": "4.0.4",
+    "@lrnwebcomponents/material-word": "4.0.4",
+    "@lrnwebcomponents/random-item": "4.0.1",
+    "@lrnwebcomponents/rss-items": "4.0.4",
+    "@lrnwebcomponents/simple-concept-network": "4.0.4"
+  },
+  "private": true
+}

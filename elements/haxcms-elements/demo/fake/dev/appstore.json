@@ -1523,16 +1523,12 @@
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-    "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
-    "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
     "oer-schema": "@lrnwebcomponents/oer-schema/oer-schema.js",
-    "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-    "task-list": "@lrnwebcomponents/task-list/task-list.js",
     "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
@@ -1551,8 +1547,6 @@
     "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
     "html-block": "@lrnwebcomponents/html-block/html-block.js",
-    "user-action": "@lrnwebcomponents/user-action/user-action.js",
-    "rss-items": "@lrnwebcomponents/rss-items/rss-items.js",
-    "random-item": "@lrnwebcomponents/random-item/random-item.js"
+    "user-action": "@lrnwebcomponents/user-action/user-action.js"
   }
 }

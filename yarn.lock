@@ -2599,6 +2599,15 @@
     "@polymer/paper-menu-button" "^3.0.0"
     "@polymer/polymer" "^3.2.0"
 
+"@lrnwebcomponents/lrndesign-blockquote@^4.0.1", "@lrnwebcomponents/lrndesign-blockquote@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrndesign-blockquote/-/lrndesign-blockquote-4.0.4.tgz#cebd62073207a01b01b2c5103ac07655c03fd843"
+  integrity sha512-ccQLbUduwx58XOt893UvNhd7ZdOJy3uTuv+7awnFYg5vdxeYBHFpKVqB2vNMCdz9gUENcj659TZnoPkQHS4QzA==
+  dependencies:
+    "@lrnwebcomponents/schema-behaviors" "^4.0.4"
+    "@polymer/paper-styles" "^3.0.0"
+    "@polymer/polymer" "^3.3.1"
+
 "@lrnwebcomponents/lrnsys-layout@^2.3.1":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrnsys-layout/-/lrnsys-layout-2.8.0.tgz#6a35b6234451ee50f390e6e8d97daaf7ab42b99e"

@@ -19,7 +19,7 @@
         "property": "title",
         "title": "Title",
         "description": "Title seen in the theme / first heading",
-        "inputMethod": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "pathAuto",
@@ -31,13 +31,13 @@
         "property": "slug",
         "title": "Path",
         "description": "URL slug related to this page",
-        "inputMethod": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "parent",
         "title": "Parent",
         "description": "Path of the parent page this page should sit under",
-        "inputMethod": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "order",

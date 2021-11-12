@@ -60,7 +60,6 @@
         "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
         "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
         "license-element": "@lrnwebcomponents/license-element/license-element.js",
-        "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
         "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
         "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
         "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",

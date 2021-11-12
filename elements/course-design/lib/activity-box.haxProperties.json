@@ -1,0 +1,49 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Activity Box",
+    "description": "A small designed heading",
+    "icon": "editor:format-quote",
+    "color": "blue",
+    "groups": ["content", "education"],
+    "meta": {
+      "author": "Buttercups Training Ltd"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "The icon to be displayed alongside the activity box",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "tag",
+        "title": "Activity box tag",
+        "description": "The tag to be displayed within the activity box",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "nocolourize",
+        "title": "No Colorize",
+        "description": "Check to stop any colors being applied to the icon",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "activity-box",
+      "properties": {
+        "icon": "settings"
+      },
+      "content": "<p>Drag &amp; drop - drag the icons to the matching descriptions.</p>"
+    }
+  ]
+}
