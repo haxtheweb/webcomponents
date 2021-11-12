@@ -22,6 +22,9 @@ clone_and_install () {
   yarn global add @wcfactory/cli
   yarn global add polymer-cli
   yarn global add @web/test-runner
+  yarn global add @web/test-runner-commands
+  yarn global add @web/test-runner-puppeteer
+  yarn global add @web/test-runner-playwright
   yarn global add lerna
   yarn global add web-component-analyzer
   yarn install
