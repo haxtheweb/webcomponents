@@ -37,6 +37,7 @@
     "@lrnwebcomponents/random-item": "4.0.1",
     "@lrnwebcomponents/rss-items": "4.0.4",
     "@lrnwebcomponents/service-card": "4.0.1",
+    "@lrnwebcomponents/to-do": "4.0.4",
     "@lrnwebcomponents/simple-concept-network": "4.0.4",
     "@lrnwebcomponents/iconset-demo": "2.8.0",
     "@lrnwebcomponents/lrn-calendar": "2.3.1"

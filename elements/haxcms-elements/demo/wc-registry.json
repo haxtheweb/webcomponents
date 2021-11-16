@@ -331,7 +331,6 @@
   "lrndesign-mapmenu-item": "@lrnwebcomponents/lrndesign-mapmenu/lib/lrndesign-mapmenu-item.js",
   "lrndesign-mapmenu-submenu": "@lrnwebcomponents/lrndesign-mapmenu/lib/lrndesign-mapmenu-submenu.js",
   "lrndesign-mapmenu": "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js",
-  "lrndesign-panelcard": "@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js",
   "lrndesign-paperstack": "@lrnwebcomponents/lrndesign-paperstack/lrndesign-paperstack.js",
   "lrndesign-sidenote": "@lrnwebcomponents/lrndesign-sidenote/lrndesign-sidenote.js",
   "lrndesign-stepper-button": "@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js",

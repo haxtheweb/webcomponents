@@ -2813,6 +2813,17 @@
     "@lrnwebcomponents/utils" "^4.0.4"
     lit "2.0.0"
 
+"@lrnwebcomponents/to-do@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/to-do/-/to-do-4.0.4.tgz#cbef7d1db9cff1585d44d24ed7b8087e523d87e7"
+  integrity sha512-hlJiVL/5cPRVmaaDJVMnbuFZXFnSJILgiM73qx8TF037CBbBgwtuLmBBO3vhq4Vq28V+xgGzEVOfyJM8QdDMNQ==
+  dependencies:
+    "@lrnwebcomponents/hax-iconset" "^4.0.4"
+    "@lrnwebcomponents/schema-behaviors" "^4.0.4"
+    "@lrnwebcomponents/simple-fields" "^4.0.4"
+    "@lrnwebcomponents/simple-icon" "^4.0.4"
+    "@polymer/polymer" "^3.3.1"
+
 "@mdjs/core@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@mdjs/core/-/core-0.4.1.tgz#7c6a0383a75aa7c2268b284a962ebffcd648fc94"
@@ -4834,7 +4845,7 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.22.tgz#47020d7e4cf19194d43b5202f35f75bd2ad35ce7"
   integrity sha512-tFfcE+DSTzWAgifkjik9AySNqIyNoYwmR+uecPwwD/XRNfvOjmC/FjCxpiUGDkDVDphPfCUecSQVFw+lN3M3kQ==
 
-"@types/chalk@^0.4.30", "@types/chalk@^0.4.31":
+"@types/chalk@^0.4.30":
   version "0.4.31"
   resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
   integrity sha1-ox10JBprHtu5c8822XooloNKUfk=
@@ -8566,7 +8577,7 @@ bower-logger@^0.2.2:
   resolved "https://registry.yarnpkg.com/bower-logger/-/bower-logger-0.2.2.tgz#39be07e979b2fc8e03a94634205ed9422373d381"
   integrity sha1-Ob4H6Xmy/I4DqUY0IF7ZQiNz04E=
 
-bower@^1.8.2, bower@^1.8.8:
+bower@^1.8.8:
   version "1.8.12"
   resolved "https://registry.yarnpkg.com/bower/-/bower-1.8.12.tgz#44cfca2a5e04b8d9a066621e24c8b179d8ac321e"
   integrity sha512-u1xy9SrwwoPlgjuHNjhV+YUPVdqyBj2ALBxuzeIUKXaPI2i2xypGgxqXkuHcITGdi5yBj5JuXgyMvgiWiS1S3Q==
@@ -21456,7 +21467,7 @@ polymer-build@3.1.2:
     vinyl "^1.2.0"
     vinyl-fs "^2.4.4"
 
-polymer-build@3.1.4, polymer-build@^3.1.0, polymer-build@^3.1.2, polymer-build@^3.1.4:
+polymer-build@3.1.4, polymer-build@^3.1.0, polymer-build@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/polymer-build/-/polymer-build-3.1.4.tgz#ab539f1a13d803518b13b73ffd09198431d98142"
   integrity sha512-OhTOPG5Y/tK2HqGZ5XA/CVDh+TuOaDv7wTZWXDCg6hxeMgNKuljDMn2coyGU5NLM0pLbS+gwFAc2ZJ5cWHCHNg==
@@ -21590,63 +21601,6 @@ polymer-cli@1.9.11:
     plylog "^1.0.0"
     polymer-analyzer "^3.2.2"
     polymer-build "^3.1.4"
-    polymer-bundler "^4.0.9"
-    polymer-linter "^3.0.0"
-    polymer-project-config "^4.0.3"
-    polyserve "^0.27.15"
-    request "^2.72.0"
-    rimraf "^2.6.1"
-    semver "^5.3.0"
-    tar-fs "^1.12.0"
-    temp "^0.8.3"
-    update-notifier "^1.0.0"
-    validate-element-name "^2.1.1"
-    vinyl "^1.1.1"
-    vinyl-fs "^2.4.3"
-    web-component-tester "^6.9.0"
-    yeoman-environment "^1.5.2"
-    yeoman-generator "^3.1.1"
-
-polymer-cli@1.9.7:
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/polymer-cli/-/polymer-cli-1.9.7.tgz#3cc3a86ed85f904beebc9871dae749bfc017a95e"
-  integrity sha512-hGurrixgEDPt2HaJIfodcS50oIc3aFvRVUQb9NB0oSYRufhoJMfj7E4lzDwZxlCbaRWIlh0gRn/KHjqIZ+fJGg==
-  dependencies:
-    "@octokit/rest" "^16.2.0"
-    "@types/chalk" "^0.4.31"
-    "@types/del" "^3.0.0"
-    "@types/findup-sync" "^0.3.29"
-    "@types/globby" "^6.1.0"
-    "@types/inquirer" "0.0.32"
-    "@types/merge-stream" "^1.0.28"
-    "@types/mz" "^0.0.31"
-    "@types/request" "2.0.3"
-    "@types/resolve" "0.0.4"
-    "@types/rimraf" "^0.0.28"
-    "@types/semver" "^5.3.30"
-    "@types/temp" "^0.8.28"
-    "@types/update-notifier" "^1.0.0"
-    "@types/vinyl" "^2.0.0"
-    "@types/vinyl-fs" "0.0.28"
-    "@types/yeoman-generator" "^2.0.3"
-    bower "^1.8.2"
-    bower-json "^0.8.1"
-    bower-logger "^0.2.2"
-    chalk "^1.1.3"
-    chokidar "^1.7.0"
-    command-line-args "^5.0.2"
-    command-line-commands "^2.0.1"
-    command-line-usage "^5.0.5"
-    del "^3.0.0"
-    findup-sync "^0.4.2"
-    globby "^8.0.1"
-    gunzip-maybe "^1.3.1"
-    inquirer "^1.0.2"
-    merge-stream "^1.0.1"
-    mz "^2.6.0"
-    plylog "^1.0.0"
-    polymer-analyzer "^3.2.2"
-    polymer-build "^3.1.2"
     polymer-bundler "^4.0.9"
     polymer-linter "^3.0.0"
     polymer-project-config "^4.0.3"
