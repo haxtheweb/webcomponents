@@ -47,10 +47,8 @@
     "@webcomponents/webcomponentsjs": "2.4.4",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
-    "polymer-cli": "1.9.11",
     "es-dev-server": "1.57.4",
     "concurrently": "5.0.2",
-    "polymer-build": "3.1.4",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

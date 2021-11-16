@@ -50,7 +50,6 @@
     "@web/dev-server": "0.1.28",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
-    "polymer-build": "3.1.4",
     "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
