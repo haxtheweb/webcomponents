@@ -206,7 +206,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     window.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
-          namespace: `${this.tag}.haxProperties`,
+          namespace: `wikipedia-query.haxProperties`,
           localesPath: new URL(`./locales`, import.meta.url).href,
           locales: ["es", "fr"],
         },

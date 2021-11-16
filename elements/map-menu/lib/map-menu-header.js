@@ -181,7 +181,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "map-menu",
-      basePath: import.meta.url,
+      localesPath: new URL("../locales", import.meta.url).href,
       locales: ["es"],
     });
     setTimeout(() => {

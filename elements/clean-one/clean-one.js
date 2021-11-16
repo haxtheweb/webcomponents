@@ -669,11 +669,7 @@ class CleanOne extends HAXCMSRememberRoute(
         <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <header
-              class="site-header"
-              role="navigation"
-              .part="${this.editMode ? `edit-mode-active` : ``}"
-            >
+            <header class="site-header" role="navigation">
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
@@ -682,9 +678,9 @@ class CleanOne extends HAXCMSRememberRoute(
                     class="btn js-toolbar-action"
                     part="print-btn"
                   ></site-print-button>
-                  ${this.QRCodeButton()}
                 </div>
                 <div class="pull-right">
+                  ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"

@@ -1828,6 +1828,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\sdraggable/g, "");
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
+    // hax-grid marker as well
+    content = content.replace(/\sdata-hax-grid/g, "");
     // remove HAX specific classes / scoping classes
     if (this.parentNode.tagName) {
       let parentTag = this.parentNode.tagName.toLowerCase();

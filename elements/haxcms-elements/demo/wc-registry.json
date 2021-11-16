@@ -579,6 +579,7 @@
   "iron-icon": "@polymer/iron-icon/iron-icon.js",
   "iron-iconset-svg": "@polymer/iron-iconset-svg/iron-iconset-svg.js",
   "iron-image": "@polymer/iron-image/iron-image.js",
+  "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
   "iron-input": "@polymer/iron-input/iron-input.js",
   "iron-list": "@polymer/iron-list/iron-list.js",
   "iron-location": "@polymer/iron-location/iron-location.js",

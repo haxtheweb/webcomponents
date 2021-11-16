@@ -46,17 +46,23 @@ const QRCodeMixin = function (SuperClass) {
             --simple-icon-height: 24px;
             --simple-icon-width: 24px;
           }
+          #qrcodebtnwrapper {
+            display: inline-flex;
+          }
         `,
       ];
     }
 
-    QRCodeButton() {
+    QRCodeButton(direction = "left") {
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
+      <div id="qrcodebtnwrapper" part="${
+        this.editMode ? `edit-mode-active` : ``
+      }">
         <simple-icon-button-lite
-          .part="qr-code-btn ${this.editMode ? `edit-mode-active` : ``}"
+          part="qr-code-btn"
           class="qr-code-btn"
           aria-label="${this.t.currentPage}"
           icon="hax:qr-code"
@@ -67,18 +73,27 @@ const QRCodeMixin = function (SuperClass) {
         <simple-popover
           ?hidden="${!this.showQRCode}"
           id="qrcodepopover"
-          position="right"
+          position="${direction}"
+          fit-to-visible-bounds
           auto
         >
-          ${this.showQRCode
-            ? html`<q-r
-                modulesize="5"
-                margin="2"
-                title="${store.activeTitle}"
-                data="${window.location.href}"
-              ></q-r>`
-            : ``}
+        ${
+          this.showQRCode
+            ? html`
+                <div style="width:190px;height:190px;">
+                  <q-r
+                    modulesize="4"
+                    margin="0"
+                    title="${store.activeTitle}"
+                    data="${window.location.href}"
+                  ></q-r>
+                </div>
+              `
+            : ``
+        }
+          </div>
         </simple-popover>
+    </div>
       `;
     }
     QRCodeButtonToggle(e) {

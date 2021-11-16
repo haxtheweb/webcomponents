@@ -27,7 +27,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           position: relative;
         }
         :host #slot {
-          background-color: var(--haxcms-color, white);
           opacity: 0.2;
           visibility: hidden;
         }
@@ -433,7 +432,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("./locales", import.meta.url).href,
+      localesPath: new URL("../../locales", import.meta.url).href,
       locales: ["es"],
     });
     this.__disposer = [];
