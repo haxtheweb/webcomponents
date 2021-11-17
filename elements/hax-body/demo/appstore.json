@@ -1542,7 +1542,7 @@
     "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
-    "a11y-colapse-group": "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+    "a11y-collapse-group": "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
     "a11y-tabs": "@lrnwebcomponents/a11y-tabs/a11y-tabs.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",

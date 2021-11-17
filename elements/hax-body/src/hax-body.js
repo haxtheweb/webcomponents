@@ -1474,18 +1474,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    *
    * gets slot configuration for a given slot from haxProperties given
    *
-   * @param {string} slotName
+   * @param {string} slotId
    * @param {object} props
    * @returns {object}
    */
-  getSlotConfig(slotName = "", props = {}) {
+  getSlotConfig(slotId = "", props = {}) {
     let settings = props.settings,
       matchingSlots = !!settings
         ? Object.keys(settings || {})
             .map((group) =>
               settings[group].filter(
                 (setting) =>
-                  !!setting.slot && (!slotName || setting.slot === slotName)
+                  !!setting.slot && (!slotId || setting.slot === slotId)
               )
             )
             .flat()
@@ -2761,7 +2761,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // we only allow disconnected node from container when
           // the container is a grid plate
           else if (!HAXStore.isGridPlateElement(containerNode)) {
-            activeNode = containerNode;
+            /*activeNode = containerNode;*/
           }
         }
         // ensure this is a tag we care about / have support for and
