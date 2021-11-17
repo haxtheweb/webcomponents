@@ -91,12 +91,6 @@
     ],
     "advanced": [
       {
-        "property": "title",
-        "title": "Title (Deprecated)",
-        "description": "Use heading instead",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "topDescriptionId",
         "title": "Top aria-decsribedby",
         "description": "Space-separated id list for long descriptions that appear elsewhere",
@@ -117,14 +111,12 @@
         "accentColor": "indigo",
         "dark": true,
         "opacity": true,
-        "topSrc": "./demo/images/Matterhorn02.png",
-        "topAlt": "Matterhorn no snow.",
-        "topDescriptionId": "cloudy",
-        "bottomSrc": "./demo/images/Matterhorn01.png",
-        "bottomAlt": "Matterhorn with snow.",
-        "bottomDescriptionId": "snowy"
+        "topSrc": "//placekitten.com/400/200",
+        "topAlt": "",
+        "bottomSrc": "//placekitten.com/400/200",
+        "bottomAlt": ""
       },
-      "content": "<h2 slot=\"heading\">Image Compare Slider Opacity</h2><div slot=\"description\">The slider will fade away the top image<span id=\"cloudy\">(Matterhorn on a cloudy day without snow)</span> to reveal the bottom image<span id=\"snowy\">(Matterhorn on a clear day with snow)</span>.</div>"
+      "content": ""
     }
   ]
 }

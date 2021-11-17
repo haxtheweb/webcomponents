@@ -25,18 +25,27 @@
     "configure": [
       {
         "property": "source",
-        "description": "",
+        "description": "Image to render as the full width background",
         "inputMethod": "haxupload",
         "required": true,
-        "icon": "icons:link",
         "validationType": "url"
       },
       {
         "property": "caption",
-        "description": "",
+        "description": "Text to overlay on the background on hover",
         "inputMethod": "textfield"
       }
     ],
     "advanced": []
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "full-width-image",
+      "properties": {
+        "source": "//placekitten.com/800/800",
+        "caption": "Kitten, being kittens"
+      },
+      "content": ""
+    }
+  ]
 }

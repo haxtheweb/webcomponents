@@ -8,12 +8,7 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/full-width-image.css",
-      "scss": "src/full-width-image.scss",
-      "html": "src/full-width-image.html",
-      "js": "src/full-width-image.js",
-      "properties": "src/full-width-image-properties.json",
-      "hax": "src/full-width-image-hax.json"
+      "js": "src/full-width-image.js"
     },
     "sharedStyles": []
   },

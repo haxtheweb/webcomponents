@@ -14,7 +14,99 @@ import { LitElement, html, css } from "lit";
  * @element full-width-image
  */
 class FullWidthImage extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          background-color: #000000;
+          height: 300px;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        #image {
+          left: 0;
+          right: 0;
+          position: absolute;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 100%;
+          text-align: center;
+        }
+
+        :host([hax-preview-mode]) #image {
+          left: unset;
+          right: unset;
+          position: unset;
+        }
+
+        .wrapper {
+          opacity: 1;
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 100px;
+          height: 100px;
+          transition: 0.5s all ease-in-out;
+          -webkit-transition: 0.5s all ease-in-out;
+          -moz-transition: 0.5s all ease-in-out;
+          -ms-transition: 0.5s all ease-in-out;
+          -o-transition: 0.5s all ease-in-out;
+        }
+
+        .wrapper:hover {
+          opacity: 0;
+          background-color: transparent;
+        }
+
+        .caption {
+          padding: 35px 0;
+          font-size: 25px;
+          line-height: 40px;
+          color: #fff;
+          font-style: italic;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <div id="image">
+      <div class="wrapper">
+        <div class="caption">
+          ${this.caption}
+          <slot></slot>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      source: {
+        type: String,
+        reflect: true,
+      },
+      caption: {
+        type: String,
+        reflect: true,
+      },
+    };
+  }
 
   /**
    * convention

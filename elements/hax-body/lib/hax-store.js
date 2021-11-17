@@ -2115,16 +2115,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           author: "W3C",
         },
       },
-      settings: {
-        configure: [
-          {
-            slot: "",
-            title: "Figure Content",
-            description: "The content of the figure",
-            inputMethod: "code-editor",
-          },
-        ],
-      },
+      settings: {},
       demoSchema: [
         {
           tag: "figure",
@@ -2331,7 +2322,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         },
       ],
     };
-    this.setHaxProperties(table, "table");
+    // @todo bring back when table editor is supported
+    //this.setHaxProperties(table, "table");
     let prims = {
       caption: {
         title: "Caption",
