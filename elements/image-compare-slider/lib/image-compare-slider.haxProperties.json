@@ -84,7 +84,7 @@
         "property": "position",
         "title": "Slider's Initial Position",
         "description": "Number from 0 to 100",
-        "inputMethod": "Number",
+        "inputMethod": "number",
         "min": 0,
         "max": 100
       }
