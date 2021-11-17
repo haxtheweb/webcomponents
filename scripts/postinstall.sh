@@ -10,9 +10,15 @@ esac
 # where am i? move to where I am. This ensures source is properly sourced
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-cd ..
+cd ../node_modules/@lrnwebcomponents/
+# ensure our node modules are not nested in _deprecated dependencies
+for project in */ ; do
+  cd ${project}
+  rm -rf node_modules
+  cd ../
+done
 # go back a level so we can snag everything
-cd elements/
+cd ../../elements/
 # walk each directory and update it's demo automatically
 for project in */ ; do
   cd ${project}

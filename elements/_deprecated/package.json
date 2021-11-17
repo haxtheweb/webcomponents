@@ -17,6 +17,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "lit": "^2.0.2",
     "@lrnwebcomponents/lrndesign-blockquote": "4.0.4",
     "@lrnwebcomponents/lrndesign-panelcard": "4.0.4",
     "@lrnwebcomponents/lrn-aside": "4.0.4",
@@ -35,6 +36,9 @@
     "@lrnwebcomponents/lrnsys-layout": "4.0.4"
   },
   "devDependencies": {},
+  "resolutions": {
+    "lit": "2.0.2"
+  },
   "private": true,
   "publishConfig": {
     "access": "public"
