@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "sorting-question",
+      "path": "./sorting-question.js",
+      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`"
+    },
+    {
+      "name": "sorting-question",
+      "path": "./src/sorting-question.js",
+      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`"
+    }
+  ]
+}

@@ -32,7 +32,7 @@ class QR extends LitElement {
   }
   constructor() {
     super();
-    this.modulesize = 4;
+    _onInputKeyup.modulesize = 4;
     this.margin = 2;
     this.format = "png";
     import("@lrnwebcomponents/q-r/lib/qr-code.js");

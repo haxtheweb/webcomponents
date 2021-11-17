@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "mark-the-words",
+      "path": "./mark-the-words.js",
+      "description": "`mark-the-words`\n`Mark desired words in a sentence`"
+    },
+    {
+      "name": "mark-the-words",
+      "path": "./src/mark-the-words.js",
+      "description": "`mark-the-words`\n`Mark desired words in a sentence`"
+    }
+  ]
+}

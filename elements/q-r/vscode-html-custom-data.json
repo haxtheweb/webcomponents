@@ -20,7 +20,7 @@
         },
         {
           "name": "modulesize",
-          "description": "`modulesize` {`number`} - module size of the square\n\nProperty: modulesize\n\nDefault: 4"
+          "description": "`modulesize` {`number`} - module size of the square\n\nProperty: modulesize"
         },
         {
           "name": "margin",
@@ -46,7 +46,7 @@
         },
         {
           "name": "modulesize",
-          "description": "`modulesize` {`number`} - module size of the square\n\nProperty: modulesize\n\nDefault: 4"
+          "description": "`modulesize` {`number`} - module size of the square\n\nProperty: modulesize"
         },
         {
           "name": "margin",

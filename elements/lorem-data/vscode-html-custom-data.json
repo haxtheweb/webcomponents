@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lorem-data",
-      "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px\n\nAttributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
+      "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px\n\nAttributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`(string | null)[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
       "attributes": [
         {
           "name": "schemas",

@@ -670,7 +670,7 @@
     },
     {
       "name": "hax-map",
-      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `activeNodeIndex` {`number`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - \n\nProperties:\n\n  * `indentedElements` {`any[]`} - \n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `activeNodeIndex` {`number`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - ",
+      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `bCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `activeNodeIndex` {`number`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - \n\nProperties:\n\n  * `indentedElements` {`any[]`} - \n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `bCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `activeNodeIndex` {`number`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "opened",
@@ -684,6 +684,10 @@
         {
           "name": "wCount",
           "description": "`wCount` {`string`} - \n\nProperty: wCount"
+        },
+        {
+          "name": "bCount",
+          "description": "`bCount` {`string`} - \n\nProperty: bCount"
         },
         {
           "name": "hCount",
@@ -756,7 +760,7 @@
     },
     {
       "name": "hax-plate-context",
-      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: any; eventName: string; value: any; }>`} - \n\n  * `hax-transform-node` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `canMoveElement` {`boolean`} - \n\n  * `disableTransform` {`boolean`} - \n\n  * `on-screen` {`boolean`} - \n\n  * `formatBlocks` {`any[]`} - \n\n  * `disableOps` {`boolean`} - \n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `tray-detail` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `tray-status` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\n  * `activeNode` - \n\n  * `parentSchema` - \n\n  * `realSelectedValue` {`string`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `viewSource` {`boolean`} - \n\nProperties:\n\n  * `childSlots` - \n\n  * `siblingSlots` - \n\n  * `slottedItems` {`{ slot: any; label: any; items: any[]; }[]`} - \n\n  * `gridIcon` - \n\n  * `gridLabel` - \n\n  * `gridProperties` - \n\n  * `filteredBlocks` - \n\n  * `isGridLayoutSlot` - \n\n  * `canMoveElement` {`boolean`} - \n\n  * `disableTransform` {`boolean`} - \n\n  * `onScreen` {`boolean`} - \n\n  * `formatBlocks` {`any[]`} - \n\n  * `disableOps` {`boolean`} - \n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `trayDetail` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `trayStatus` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\n  * `activeNode` - \n\n  * `parentSchema` - \n\n  * `realSelectedValue` {`string`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `slotSchema` {`undefined`} - \n\n  * `viewSource` {`boolean`} - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: any; eventName: string; value: any; }>`} - \n\n  * `hax-transform-node` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `canMoveElement` {`boolean`} - \n\n  * `disableTransform` {`boolean`} - \n\n  * `on-screen` {`boolean`} - \n\n  * `formatBlocks` {`any[]`} - \n\n  * `disableOps` {`boolean`} - \n\n  * `disableDuplicate` {`boolean`} - \n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `tray-detail` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `tray-status` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\n  * `activeNode` - \n\n  * `parentSchema` - \n\n  * `realSelectedValue` {`string`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `viewSource` {`boolean`} - \n\nProperties:\n\n  * `gridEventData` {`{ target: any; }`} - \n\n  * `childSlots` - \n\n  * `siblingSlots` - \n\n  * `slottedItems` {`{ slot: any; editMode: any; grid: any; label: any; items: any[]; }[]`} - \n\n  * `gridIcon` - \n\n  * `gridLabel` - \n\n  * `gridProperties` - \n\n  * `filteredBlocks` - \n\n  * `isGridLayoutSlot` - \n\n  * `canMoveElement` {`boolean`} - \n\n  * `disableTransform` {`boolean`} - \n\n  * `onScreen` {`boolean`} - \n\n  * `formatBlocks` {`any[]`} - \n\n  * `disableOps` {`boolean`} - \n\n  * `disableDuplicate` {`boolean`} - \n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `trayDetail` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `trayStatus` {`string`} - is hax tray collapsed, side-panel, or full-panel\n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\n  * `activeNode` - \n\n  * `parentSchema` - \n\n  * `realSelectedValue` {`string`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `slotSchema` {`undefined`} - \n\n  * `viewSource` {`boolean`} - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "canMoveElement",
@@ -780,6 +784,11 @@
         {
           "name": "disableOps",
           "description": "`disableOps` {`boolean`} - \n\nProperty: disableOps\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disableDuplicate",
+          "description": "`disableDuplicate` {`boolean`} - \n\nProperty: disableDuplicate\n\nDefault: false",
           "valueSet": "v"
         },
         {
