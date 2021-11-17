@@ -522,7 +522,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           if (format != null) {
             switch (format) {
               case "print-page":
-                this.themeData.element = "haxcms-blank-theme";
+                this.themeData.element = "haxcms-print-theme";
                 break;
             }
           }
