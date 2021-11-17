@@ -2494,15 +2494,6 @@
   resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.0.0.tgz#7b6e6a85709cda0370c47e425ac2f3b553696a4b"
   integrity sha512-Kpgenb8UNFsKCsFhggiVvUkCbcFQSd6N8hffYEEGjz27/4rw3cTSsmP9t3q1EHOAsdum60Wo64HvuZDFpEwexA==
 
-"@lrnwebcomponents/a11y-collapse@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/a11y-collapse/-/a11y-collapse-2.8.0.tgz#8ec40eef447b9cdb1c84aafd51e0a5fabcf178ab"
-  integrity sha512-7xdSLFRvATA7f/fg2uuFgFVyBVvO+R4FncMNzKa0GhuZdWGU3TYr0y0NKKsuLKoupVrz5bWNWjvY607HsALiVw==
-  dependencies:
-    "@lrnwebcomponents/simple-icon" "^2.8.0"
-    "@lrnwebcomponents/simple-tooltip" "^2.8.0"
-    lit-element "2.4.0"
-
 "@lrnwebcomponents/a11y-tabs@^2.7.7":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/a11y-tabs/-/a11y-tabs-2.8.0.tgz#281e7d6fdedd5109ea809201fc61730041194a2b"
@@ -2543,12 +2534,12 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/deduping-fix/-/deduping-fix-3.0.0.tgz#c2341672c364d59405d7f3e4c63e2b58008c0bb0"
   integrity sha512-nhgzz/1qlWclHL7c8GjPoSHtUo1kgITtzFt8mXZQRhJN/mNDN3hl5xx6OzXsNUZvCmonARcV9/lAp4QZ5ONWpQ==
 
-"@lrnwebcomponents/es-global-bridge@^2.1.1", "@lrnwebcomponents/es-global-bridge@^2.8.0":
+"@lrnwebcomponents/es-global-bridge@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/es-global-bridge/-/es-global-bridge-2.8.0.tgz#9a7292acd4e2e691d5f2b96d08f4b7b987b4e348"
   integrity sha512-HO+QrFiAaMhH1v9PXr6QLBjb56UVmJusaZO256B/FY6RlYEOkfutPHtyK4w2xo3ViswpEIapygwlhM0Bh8XetQ==
 
-"@lrnwebcomponents/hax-iconset@^2.7.7", "@lrnwebcomponents/hax-iconset@^2.8.0":
+"@lrnwebcomponents/hax-iconset@^2.7.7":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/hax-iconset/-/hax-iconset-2.8.0.tgz#dd0a9c047bfb4ecb65c1fbb66ca9f077e9e1bce6"
   integrity sha512-h0aWPv8RT8bLPXP633FVRK0g6D6CgPp8dQDdlonnSp4Z6ZNhrZIvwp6gJlaypVDloghqFbhu+tO6mCFLzeSMHA==
@@ -2589,23 +2580,6 @@
     "@lrnwebcomponents/lrndesign-panelcard" "^4.0.4"
     "@polymer/polymer" "^3.3.1"
 
-"@lrnwebcomponents/lrn-calendar@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrn-calendar/-/lrn-calendar-2.3.1.tgz#7cb060f4d79851ba726e3d549b6fa13c80711365"
-  integrity sha512-31rm7aRCXQerSvtLUEuA1xDU13dEqlDeBcvYNAy5kjzuXs+1W7xmaagOfSV9q108kdWPffty3rLryVyCl1wMNA==
-  dependencies:
-    "@lrnwebcomponents/es-global-bridge" "^2.1.1"
-    "@lrnwebcomponents/lrnsys-layout" "^2.3.1"
-    "@lrnwebcomponents/materializecss-styles" "^2.3.1"
-    "@polymer/iron-ajax" "^3.0.1"
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-icons" "^3.0.1"
-    "@polymer/paper-button" "^3.0.1"
-    "@polymer/paper-card" "^3.0.0"
-    "@polymer/paper-dropdown-menu" "^3.0.1"
-    "@polymer/paper-menu-button" "^3.0.0"
-    "@polymer/polymer" "^3.2.0"
-
 "@lrnwebcomponents/lrndesign-blockquote@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrndesign-blockquote/-/lrndesign-blockquote-4.0.4.tgz#cebd62073207a01b01b2c5103ac07655c03fd843"
@@ -2625,19 +2599,19 @@
     "@polymer/paper-styles" "^3.0.0"
     "@polymer/polymer" "^3.3.1"
 
-"@lrnwebcomponents/lrnsys-layout@^2.3.1":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrnsys-layout/-/lrnsys-layout-2.8.0.tgz#6a35b6234451ee50f390e6e8d97daaf7ab42b99e"
-  integrity sha512-IP+WH2mFJ/uX5x/7A4q25MU91MzsvJM6lAKZ3A6cfCT/cmZZXQzhqjobjzxu8E0OteA0otHerco9OV3f6ujBUw==
+"@lrnwebcomponents/lrnsys-layout@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrnsys-layout/-/lrnsys-layout-4.0.4.tgz#c907b393eda994da203f85f984d992de334873dd"
+  integrity sha512-MR3RKSI54aLy8yr4iHkygRlK4HZRFNLP2FgMzqn8hbTDyoFyBRKC5TTGbtyfdKmI8K8KSN20wQZFgrJUhUOxlA==
   dependencies:
-    "@lrnwebcomponents/a11y-collapse" "^2.8.0"
-    "@lrnwebcomponents/hax-iconset" "^2.8.0"
-    "@lrnwebcomponents/paper-avatar" "^2.8.0"
-    "@lrnwebcomponents/simple-colors" "^2.8.0"
-    "@lrnwebcomponents/simple-drawer" "^2.8.0"
-    "@lrnwebcomponents/simple-icon" "^2.8.0"
-    "@lrnwebcomponents/simple-modal" "^2.8.0"
-    "@lrnwebcomponents/simple-tooltip" "^2.8.0"
+    "@lrnwebcomponents/a11y-collapse" "^4.0.4"
+    "@lrnwebcomponents/hax-iconset" "^4.0.4"
+    "@lrnwebcomponents/paper-avatar" "^4.0.4"
+    "@lrnwebcomponents/simple-colors" "^4.0.4"
+    "@lrnwebcomponents/simple-drawer" "^4.0.4"
+    "@lrnwebcomponents/simple-icon" "^4.0.4"
+    "@lrnwebcomponents/simple-modal" "^4.0.4"
+    "@lrnwebcomponents/simple-tooltip" "^4.0.1"
     "@polymer/app-layout" "^3.0.2"
     "@polymer/neon-animation" "^3.0.0"
     "@polymer/paper-drawer-panel" "^3.0.0"
@@ -2659,22 +2633,6 @@
   integrity sha512-85RvBDEnXTSo26hMc9fHmoFkB/kHf2bU9kzrKjEERPOSNBM0XY/7XHAq/HxPOeWMs9QaB+zItwO0y9jIFyz6eA==
   dependencies:
     "@polymer/polymer" "^3.3.1"
-
-"@lrnwebcomponents/materializecss-styles@^2.3.1":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/materializecss-styles/-/materializecss-styles-2.8.0.tgz#67c31b2a74ba5dff65bea39b728737d871ee9e03"
-  integrity sha512-ssRAKVFbdQW8xUn1k0ZjMdrfDnuUaU/R1OFdsokjRlOx0pErHk731HohEFrOqskajTXlkxYdBKnxVSOh1QVCUw==
-  dependencies:
-    "@polymer/polymer" "^3.3.1"
-
-"@lrnwebcomponents/paper-avatar@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/paper-avatar/-/paper-avatar-2.8.0.tgz#c13fc9d2a44d33ceced02fce8c9eaeb7c5794cc3"
-  integrity sha512-c8L9sTXrJXSrVXH1K+xKGyX14gSMJnsYs2KXtjRtFQeKEg9l4bRAaLCL/wg2FmvmFZ3Hc6cRgOEiCc6U1+Ir6w==
-  dependencies:
-    "@lrnwebcomponents/es-global-bridge" "^2.8.0"
-    "@lrnwebcomponents/simple-icon" "^2.8.0"
-    lit-element "2.4.0"
 
 "@lrnwebcomponents/random-item@4.0.1":
   version "4.0.1"
@@ -2741,18 +2699,6 @@
     "@lrnwebcomponents/simple-tooltip" "^4.0.1"
     "@polymer/polymer" "^3.3.1"
 
-"@lrnwebcomponents/simple-drawer@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-drawer/-/simple-drawer-2.8.0.tgz#f516a476603f92b79e8bd527790fc8b1cbf8ee68"
-  integrity sha512-GBOBexjQAHh2w+zlXLBo/njUkVDxvKO1OvTNcqPDOotQ140fyTdYJ8AMgAnXNhd9Xh6DmIjnltiukyjLcfMwQw==
-  dependencies:
-    "@lrnwebcomponents/hax-iconset" "^2.8.0"
-    "@lrnwebcomponents/simple-colors" "^2.8.0"
-    "@lrnwebcomponents/simple-icon" "^2.8.0"
-    "@polymer/app-layout" "^3.0.2"
-    "@polymer/neon-animation" "^3.0.1"
-    "@polymer/polymer" "^3.3.1"
-
 "@lrnwebcomponents/simple-icon@^2.7.7", "@lrnwebcomponents/simple-icon@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-icon/-/simple-icon-2.8.0.tgz#ccb8055b32070e9e1ac5fe2d57bb1f9db362ff61"
@@ -2760,15 +2706,6 @@
   dependencies:
     "@lrnwebcomponents/simple-colors" "^2.8.0"
     lit-element "2.4.0"
-
-"@lrnwebcomponents/simple-modal@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-modal/-/simple-modal-2.8.0.tgz#42fa68870e61e6e6a0d4feb1a7f730e3186d5eff"
-  integrity sha512-db8MUf2GGzdSPExOgsr62tgZ07bRrVla9IUyyAi15PROsofMuB8y9IxsTnN/iSwXC/Lk238gc1LiE/R1RqmK+Q==
-  dependencies:
-    "@lrnwebcomponents/simple-icon" "^2.8.0"
-    lit-element "2.4.0"
-    web-dialog "0.0.11"
 
 "@lrnwebcomponents/simple-picker@^2.8.0":
   version "2.8.0"
@@ -3776,7 +3713,7 @@
     "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/paper-input@^3.0.0", "@polymer/paper-input@^3.0.2", "@polymer/paper-input@^3.1.0":
+"@polymer/paper-input@^3.0.0", "@polymer/paper-input@^3.0.0-pre.26", "@polymer/paper-input@^3.0.2", "@polymer/paper-input@^3.1.0":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@polymer/paper-input/-/paper-input-3.2.1.tgz#0fd0d30de3b43ba7d2c8d5d76f870d257b667ebf"
   integrity sha512-6ghgwQKM6mS0hAQxQqj+tkeEY1VUBqAsrasAm8V5RpNcfSWQC/hhRFxU0beGuKTAhndzezDzWYP6Zz4b8fExGg==
@@ -3830,7 +3767,7 @@
     "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/paper-progress@^3.0.0", "@polymer/paper-progress@^3.0.1":
+"@polymer/paper-progress@^3.0.0", "@polymer/paper-progress@^3.0.0-pre.26", "@polymer/paper-progress@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/paper-progress/-/paper-progress-3.0.1.tgz#2943054a909ad381236b3c7aecee078123bba839"
   integrity sha512-5nguG+tmnyoaWKVNG8Smtno2uLSPBgEsT3f20JY8yJTjUBYWaqa8E3l5RLkTRXgA4x9OnvLb8/CdlQWXQIogBg==
@@ -3846,6 +3783,21 @@
   integrity sha512-DnLNvYIMsiayeICroYxx6Q6Hg1cUU8HN2sbutXazlemAlGqdq80qz3TIaVdbpbt/pvjcFGX2HtntMlPstCge8Q==
   dependencies:
     "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/paper-slider@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-slider/-/paper-slider-3.0.1.tgz#f252af4b41f7ce72bd4fb761e6b1efd55ca75550"
+  integrity sha512-TNA8nEQci1fe3vTQQaFwkPj9p9yTLSr9Mhe8xQSTHpFNKun1rsp91LlKJmiKJDO7xU9RGZmA2mRlQwaj6kgR3g==
+  dependencies:
+    "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
+    "@polymer/iron-behaviors" "^3.0.0-pre.26"
+    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
+    "@polymer/iron-form-element-behavior" "^3.0.0-pre.26"
+    "@polymer/paper-behaviors" "^3.0.0-pre.27"
+    "@polymer/paper-input" "^3.0.0-pre.26"
+    "@polymer/paper-progress" "^3.0.0-pre.26"
+    "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
 "@polymer/paper-spinner@3.0.2", "@polymer/paper-spinner@^3.0.0":
@@ -3901,7 +3853,7 @@
     "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.2.0", "@polymer/polymer@^3.3.1", "@polymer/polymer@^3.4.1":
+"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.3.1", "@polymer/polymer@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.4.1.tgz#333bef25711f8411bb5624fb3eba8212ef8bee96"
   integrity sha512-KPWnhDZibtqKrUz7enIPOiO4ZQoJNOuLwqrhV2MXzIt3VVnUVJVG5ORz4Z2sgO+UZ+/UZnPD0jqY+jmw/+a9mQ==
