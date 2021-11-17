@@ -677,13 +677,14 @@ class CleanOne extends HAXCMSRememberRoute(
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
-                  ${this.HAXCMSUserStylesMenu()} ${this.QRCodeButton()}
-                </div>
-                <div class="pull-right">
+                  ${this.HAXCMSUserStylesMenu()}
                   <site-print-button
                     class="btn js-toolbar-action"
                     part="print-btn"
                   ></site-print-button>
+                </div>
+                <div class="pull-right">
+                  ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"
