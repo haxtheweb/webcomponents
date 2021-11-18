@@ -377,7 +377,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
-          :host(:not([tray-detail="collapsed"])) {
+          :host(:not([tray-status="collapsed"])) {
             z-index: -1;
           }
           :host([edit-mode]) #bodycontainer,
