@@ -729,7 +729,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * @memberof HaxStore
    */
   schemaBySlotId(node, slotId) {
-    return (this.activeSlotSchema(node) || {})[slotId];
+    return (this.slotsSchemaFromNode(node) || {})[slotId];
   }
 
   /**

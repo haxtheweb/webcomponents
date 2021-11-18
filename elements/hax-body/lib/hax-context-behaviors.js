@@ -117,14 +117,11 @@ export const HaxContextBehaviors = function (SuperClass) {
     }
 
     get slotSchema() {
-      let schema;
+      let schema = {};
       if (this.activeNode && this.parentSchema) {
-        let slot = this.activeNode.slot || "",
-          parentSlots =
-            !this.activeNode || !this.activeNode.parentNode
-              ? {}
-              : HAXStore.slotsSchemaFromNode(this.activeNode.parentNode);
-        schema = parentSlots[slot];
+        let slot = this.activeNode.slot || "";
+        if (!this.activeNode || !this.activeNode.parentNode)
+          schema = HAXStore.schemaBySlotId(this.activeNode.parentNode, slot);
       }
       return schema;
     }
