@@ -951,6 +951,7 @@ const SimplePickerBehaviors = function (SuperClass) {
         //if nulls are allowed, set active descendant to first not null option
         this.__activeDesc = this.allowNull ? "option-0-0" : null;
         for (var i = 0; i < this.__options.length; i++) {
+          let found = false;
           for (var j = 0; j < this.__options[i].length; j++) {
             //if unset, set active descendant to first not null option
             if (this.value !== null && this.__activeDesc === null)
@@ -959,9 +960,11 @@ const SimplePickerBehaviors = function (SuperClass) {
               //set active descendant to option that matches value
               this.__activeDesc = `option-${i}-${j}`;
               sel = this.__options[i][j];
-              return;
+              j = this.__options[i].length;
+              found = true;
             }
           }
+          if (found) i = (this.__options || []).length;
         }
         if (sel === null) this.value = null;
         this.__selectedOption = sel;
