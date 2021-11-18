@@ -28,8 +28,7 @@
     <h1>HAX Test</h1>
     <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' >
-      <h2>Subheading</h2>
-      <br><br>
+      <h2>Self-Check</h2>
       <self-check accent-color="red" image="https://media.defense.gov/2016/Mar/01/2001470412/1088/820/0/160301-F-UU298-014.jpg" alt="Blood Drive bus and sign">
         <p slot="heading">Blood Type Quiz</p>
         <p slot="question">Which blood type is the universal <em>plasma</em> donor?</p>
@@ -37,6 +36,35 @@
         If you guessed Type O, you were probably thinking about the universal 
         <em>red cell</em> donor.)</p>
       </self-check>
+
+      <h2>Collapse</h2>
+      <a11y-collapse>
+        <p slot="heading">What rhymes with orange?</p>
+        <div>Nothing rhymes with orange.</div>
+      </a11y-collapse>
+
+      <h2>Collapse Group</h2>
+      <a11y-collapse-group>
+        <a11y-collapse>
+          <p slot="heading">Purple</p>
+          <div slot="content">Blue and red make purple.</div>
+        </a11y-collapse>
+        <a11y-collapse >
+          <p slot="heading">Green</p>
+          <div slot="content">Blue and yellow make purple.</div>
+        </a11y-collapse>
+        <a11y-collapse disabled>
+          <p slot="heading">Orange</p>
+          <div slot="content">Yellow and red make purple.</div>
+        </a11y-collapse>
+      </a11y-collapse-group>
+      <p>Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
+        Pellentesque magna velit, tincidunt quis pharetra id, gravida 
+        placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
+        vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
+        purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
+        Nunc convallis justo sed nibh consectetur, at pharetra nulla 
+        accumsan.</p>
       <h2>Heading 2</h2>
       <grid-plate id="grid" layout="1-1-1-1">
         <!--video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
@@ -47,7 +75,6 @@
 
         <wikipedia-query slot="col-2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
           show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query-->
-
         <p slot="col-1">
           Praesent a luctus nibh. 
           Vestibulum purus quam, tincidunt eget consequat ut, 
