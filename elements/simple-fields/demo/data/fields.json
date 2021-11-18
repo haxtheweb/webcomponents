@@ -309,7 +309,7 @@
           "manifest-metadata-theme-name": "simple-blog",
           "manifest-metadata-theme-variables-image": "assets/banner.jpg",
           "manifest-metadata-theme-variables-hexCode": "#ffffff",
-          "manifest-metadata-theme-variables-cssVariable": "--simple-colors-default-theme-light-blue-7",
+          "manifest-metadata-theme-variables-cssVariable": "red",
           "manifest-metadata-theme-variables-icon": "icons:add-circle-outline"
         },
         "seo": {

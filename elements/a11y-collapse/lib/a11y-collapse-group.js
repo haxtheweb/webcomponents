@@ -107,60 +107,7 @@ class A11yCollapseGroup extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: true,
-      type: "grid",
-      gizmo: {
-        title: "Expand Collapse Group",
-        description: "A group of expand collapse elements.",
-        icon: "icons:view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Collapse"],
-      },
-      settings: {
-        configure: [
-          {
-            property: "radio",
-            title: "Expand only one",
-            description: "Only one item can be expanded.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable items.",
-            inputMethod: "boolean",
-          },
-          {
-            slot: "",
-            title: "Collapse Items",
-            description: "The collapse items.",
-            inputMethod: "code-editor",
-            slotWrapper: "a11y-collapse",
-          },
-        ],
-        advanced: [
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-        ],
-      },
-      saveOptions: {
-        unsetAttributes: ["expanded"],
-      },
-      demoSchema: [
-        {
-          tag: "a11y-collapse-group",
-          properties: {},
-          content:
-            '<p>Optional info</p><a11y-collapse><p slot="heading">Collapsible 1</p><p slot="content">Hidden content 1.</p></a11y-collapse><a11y-collapse><p slot="heading">Collapsible 2</p><p slot="content">Hidden content 2.</p></a11y-collapse>',
-        },
-      ],
-    };
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
   get items() {

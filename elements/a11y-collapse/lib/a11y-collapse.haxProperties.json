@@ -17,7 +17,10 @@
         "title": "Heading",
         "description": "The heading for the collapse.",
         "inputMethod": "textfield",
-        "slotWrapper": "p"
+        "slotWrapper": "p",
+        "editMode": {
+          "disabled": false
+        }
       },
       {
         "slot": "",
@@ -26,7 +29,8 @@
         "inputMethod": "code-editor",
         "slotWrapper": "p",
         "editMode": {
-          "expanded": true
+          "expanded": true,
+          "disabled": false
         }
       },
       {
@@ -84,16 +88,6 @@
       }
     ],
     "advanced": [
-      {
-        "slot": "content",
-        "title": "Content (Deprecated)",
-        "description": "The content for the collapse.",
-        "inputMethod": "code-editor",
-        "slotWrapper": "p",
-        "editMode": {
-          "expanded": true
-        }
-      },
       {
         "property": "hidden",
         "title": "Hidden",

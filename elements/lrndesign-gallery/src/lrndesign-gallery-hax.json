@@ -2,6 +2,9 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
+  "contentEditable": true,
+  "type": "grid",
+  "editMode": "editMode",
   "gizmo": {
     "title": "Image Gallery",
     "description": "An image gallery displayed as a carousel or a grid",
@@ -24,13 +27,17 @@
         "slot": "title",
         "title": "Optional Gallery Title",
         "description": "Am optional title for the gallery.",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "h1",
+        "allowedSlotWrappers": ["h1", "h2", "h3", "h4", "h5", "h5"]
       },
       {
         "slot": "description",
         "title": "OptionalGallery Description",
         "description": "An optional description for the gallery.",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p", "div"]
       },
       {
         "property": "accentColor",
@@ -52,43 +59,11 @@
         "itemsList": ["carousel", "grid", "masonry"]
       },
       {
-        "property": "sources",
-        "title": "Gallery Images",
-        "description": "The images for the gallery.",
-        "inputMethod": "array",
-        "itemLabel": "title",
-        "properties": [
-          {
-            "property": "title",
-            "title": "Image Title",
-            "description": "The heading for the image.",
-            "inputMethod": "textfield"
-          },
-          {
-            "property": "details",
-            "title": "Image Details",
-            "description": "The body text with details for the image.",
-            "inputMethod": "textfield"
-          },
-          {
-            "property": "src",
-            "title": "Image",
-            "description": "Default Image",
-            "inputMethod": "haxupload"
-          },
-          {
-            "property": "thumbnail",
-            "title": "Optional Thumbnail Image",
-            "description": "Optional smaller thumbnail version of the image.",
-            "inputMethod": "haxupload"
-          },
-          {
-            "property": "large",
-            "title": "Optional Full Image",
-            "description": "Optional larger full-sized version of the image for zooming.",
-            "inputMethod": "haxupload"
-          }
-        ]
+        "slot": "",
+        "title": "Gallery Figures",
+        "description": "The figures for the gallery.",
+        "inputMethod": "textfield",
+        "slotWrapper": "figure"
       }
     ],
     "advanced": [

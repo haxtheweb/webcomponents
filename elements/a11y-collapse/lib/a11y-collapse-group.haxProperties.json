@@ -29,7 +29,10 @@
         "title": "Collapse Items",
         "description": "The collapse items.",
         "inputMethod": "code-editor",
-        "slotWrapper": "a11y-collapse"
+        "slotWrapper": "a11y-collapse",
+        "editMode": {
+          "disabled": false
+        }
       }
     ],
     "advanced": [

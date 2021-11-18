@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { SimpleColors } from "../simple-colors.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { LitElement, html, css } from "lit";
+import { SimpleColorsSuper } from "../simple-colors.js";
+import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `simple-colors-picker`
@@ -19,7 +19,9 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
  * @see "./demo/simple-colors-picker-demo.js"
  * @element simple-colors-picker
  */
-class SimpleColorsPicker extends SimpleColors {
+class SimpleColorsPicker extends SimplePickerBehaviors(
+  SimpleColorsSuper(LitElement)
+) {
   static get styles() {
     return [
       ...super.styles,
@@ -33,135 +35,37 @@ class SimpleColorsPicker extends SimpleColors {
       `,
     ];
   }
-  // render function
-  render() {
-    return html`
-      <simple-picker
-        id="picker"
-        ?block-label="${this.blockLabel}"
-        ?disabled="${this.disabled}"
-        ?expanded="${this.expanded}"
-        ?hide-option-labels="${this.shades}"
-        @change="${this._handleChange}"
-        @collapse="${this._handleCollapse}"
-        @expand="${this._handleExpand}"
-        ?justify="${this.justify}"
-        @option-focus="${this._handleOptionFocus}"
-        aria-labelledby="${this.ariaLabelledby}"
-        .label="${this.label}"
-        .options="${this.options}"
-        .value="${this.value}"
-      >
-      </simple-picker>
-    `;
-  }
   constructor() {
     super();
-    this.ariaLabelledby = null;
-    this.blockLabel = false;
-    this.disabled = false;
-    this.expanded = false;
-    this.label = null;
     this.shades = false;
-    this.value = null;
-    this.__ready = false;
     this.options = this._getOptions(this.colors, this.shades, this.dark);
   }
 
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (
-        ["colors", "shades", "dark"].includes(propName) &&
-        oldValue !== typeof undefined
-      ) {
+      if (propName === "colors")
         this.options = this._getOptions(this.colors, this.shades, this.dark);
+      if (propName === "shades") {
+        this.options = this._getOptions(this.colors, this.shades, this.dark);
+        this.hideOptionLabels = this.shades;
       }
-      if (propName === "value") this._fireValueChangedEvent();
-      this._fireChangeEvent();
+      if (propName === "dark")
+        this.options = this._getOptions(this.colors, this.shades, this.dark);
     });
+    if (this.__ready !== undefined) this._fireChangeEvent();
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-
-      /**
-       * Optional. Sets the aria-labelledby attribute
-       */
-      ariaLabelledby: {
-        type: String,
-        attribute: "aria-labelledby",
-      },
-
-      /**
-       * Display as a block
-       */
-      blockLabel: {
-        type: Boolean,
-        attribute: "block-label",
-      },
-
-      /**
-       * Is the picker disabled?
-       */
-      disabled: {
-        type: Boolean,
-      },
-
-      /**
-       * Is it expanded?
-       */
-      expanded: {
-        type: Boolean,
-        reflect: true,
-      },
-
-      /**
-       * Is it expanded?
-       */
-      justify: {
-        type: Boolean,
-        reflect: true,
-        attribute: "justify",
-      },
-
-      /**
-       * Optional. The label for the picker input
-       */
-      label: {
-        type: String,
-      },
-
-      /**
-       * An array of options for the picker, eg.: `
-[
-  {
-    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
-    "style": "background-color: blue;", //Optional. Used to set an option's style.
-    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
-  },...
-]`
-        */
-      options: {
-        type: Array,
-        reflect: false, //,observer: false
-      },
       /**
        * Show all shades instead of just main accent-colors
        */
       shades: {
         type: Boolean,
         reflect: true,
-      },
-
-      /**
-       * The value of the option.
-       */
-      value: {
-        type: String,
-        reflect: true, //,notify: true
       },
     };
   }
@@ -186,7 +90,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @param {object} the options object to convert
    */
   _getOptions(colors, shades, dark) {
-    let options = [[]],
+    let options = [],
       theme = dark !== false ? "dark" : "default";
     if (shades === false) {
       options = Object.keys(this.colors).map((key) => {
@@ -224,59 +128,12 @@ class SimpleColorsPicker extends SimpleColors {
   /**
    * Fires with any property change.
    *
-   * @event value-changed
-   */
-  _fireValueChangedEvent() {
-    this.dispatchEvent(new CustomEvent("value-changed", { detail: this }));
-  }
-
-  /**
-   * Fires with any property change.
-   *
    * @event change
    */
   _fireChangeEvent() {
     this.dispatchEvent(
       new CustomEvent("change", { bubbles: true, detail: this })
     );
-  }
-
-  /**
-   * handles when the picker's value changes
-   */
-  _handleChange(e) {
-    this.value = e.detail.value;
-    if (this.__ready) this._fireChangeEvent();
-  }
-
-  /**
-   * Fires when the picker collapses.
-   *
-   * @event collapse
-   */
-  _handleCollapse() {
-    if (this.__ready)
-      this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
-  }
-
-  /**
-   * Fires when the picker expands.
-   *
-   * @event expand
-   */
-  _handleExpand() {
-    if (this.__ready)
-      this.dispatchEvent(new CustomEvent("expand", { detail: this }));
-  }
-
-  /**
-   * Fires when the picker's focus changes
-   *
-   * @event option-focus
-   */
-  _handleOptionFocus(e) {
-    if (this.__ready)
-      this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 }
 

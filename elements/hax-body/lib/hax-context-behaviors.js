@@ -117,16 +117,102 @@ export const HaxContextBehaviors = function (SuperClass) {
     }
 
     get slotSchema() {
-      let schema;
+      let schema = {};
       if (this.activeNode && this.parentSchema) {
         let slot = this.activeNode.slot || "";
-        Object.keys(this.parentSchema.settings || {}).forEach((type) => {
-          (this.parentSchema.settings[type] || []).forEach((setting) => {
-            if (setting.slot && setting.slot === slot) schema = setting;
-          });
-        });
+        if (!this.activeNode || !this.activeNode.parentNode)
+          schema = HAXStore.schemaBySlotId(this.activeNode.parentNode, slot);
       }
       return schema;
+    }
+
+    /**
+     * closest layout element, self or parent
+     *
+     * @readonly
+     * @memberof HaxPlateContext
+     */
+    get layoutElement() {
+      return this.activeNode && HAXStore.isLayoutElement(this.activeNode)
+        ? this.activeNode
+        : this.activeNode &&
+          this.activeNode.parentNode &&
+          HAXStore.isLayoutElement(this.activeNode.parentNode)
+        ? this.activeNode.parentNode
+        : undefined;
+    }
+    /**
+     * if layout element is itself a slot, get its layout element
+     *
+     * @readonly
+     * @memberof HaxPlateContext
+     */
+    get layoutParent() {
+      return this.layoutElement &&
+        this.layoutElement.parentNode &&
+        HAXStore.isLayoutElement(this.layoutElement.parentNode) &&
+        this.layoutElement.parentNode.tagName &&
+        this.layoutElement.parentNode.tagName !== "HAX-BODY"
+        ? this.layoutElement.parentNode
+        : undefined;
+    }
+    /**
+     * gets slotted items of closest layout element
+     *
+     * @readonly
+     * @memberof HaxPlateContext
+     */
+    get slottedItems() {
+      if (!this.activeNode) return [];
+      let slots = HAXStore.slottedContentByNode(this.layoutElement) || {},
+        items = Object.keys(slots).map((key) => slots[key]);
+      return items;
+    }
+
+    /**
+     * given an element get its icon from HAX properties gizmo
+     *
+     * @param {object} node
+     * @returns {string}
+     * @memberof HaxPlateContext
+     */
+    elementIcon(node) {
+      let gizmo =
+        node && this.elementGizmo(node) ? this.elementGizmo(node) : undefined;
+      return gizmo ? gizmo.icon : undefined;
+    }
+
+    /**
+     * given an element get its label from HAX properties gizmo
+     *
+     * @param {object} node
+     * @returns {string}
+     * @memberof HaxPlateContext
+     */
+    elementLabel(node) {
+      let gizmo =
+        node && this.elementGizmo(node) ? this.elementGizmo(node) : undefined;
+      return gizmo
+        ? gizmo.title || gizmo.tag
+        : node && node.tagName
+        ? node.tagName.toLowerCase()
+        : "";
+    }
+
+    /**
+     * given an element get its gizmo data from HAX properties
+     *
+     * @param {object} node
+     * @returns {object}
+     * @memberof HaxPlateContext
+     */
+    elementGizmo(node) {
+      let schema =
+        node && node.tagName
+          ? HAXStore.haxSchemaFromTag(node.tagName)
+          : undefined;
+
+      return schema && schema.gizmo ? schema.gizmo : undefined;
     }
 
     getFilteredBlocks(blocks = []) {
