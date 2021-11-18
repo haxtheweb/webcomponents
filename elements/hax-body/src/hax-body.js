@@ -447,7 +447,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     setTimeout(() => {
       import("./lib/hax-context-behaviors.js");
-      import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
