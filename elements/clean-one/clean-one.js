@@ -669,11 +669,7 @@ class CleanOne extends HAXCMSRememberRoute(
         <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <header
-              class="site-header"
-              role="navigation"
-              .part="${this.editMode ? `edit-mode-active` : ``}"
-            >
+            <header class="site-header" role="navigation">
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
@@ -699,7 +695,11 @@ class CleanOne extends HAXCMSRememberRoute(
             </header>
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
-                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-breadcrumb
+                  part="page-breadcrumb ${this.editMode
+                    ? `edit-mode-active`
+                    : ``}"
+                ></site-breadcrumb>
                 <site-active-title part="page-title"></site-active-title>
                 <div class="normal main-section">
                   <site-search

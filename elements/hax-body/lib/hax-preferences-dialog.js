@@ -6,6 +6,7 @@ import {
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/hax-logo/hax-logo.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
@@ -41,7 +42,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     super();
     this.hideLink = false;
     this.t = {
-      learnMoreAboutHAX: "Learn more about HAX",
+      learnAboutHAXTheWeb: "Learn about HAXTheWeb",
       voiceCommands: "Voice commands",
       haxUITheme: "HAX UI Theme",
       language: "Language",
@@ -140,7 +141,6 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
       </div>
       <hr />
       <br />
-      <br />
       ${!this.hideLink
         ? html`<a
             href="https://haxtheweb.org/"
@@ -148,7 +148,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
             id="link"
             target="_blank"
             part="haxlink"
-            >${this.t.learnMoreAboutHAX}</a
+            >${this.t.learnAboutHAXTheWeb}</a
           >`
         : ``}
     `;
