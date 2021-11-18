@@ -7,18 +7,33 @@
 }
 
 ::slotted(figure){
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 15px;
+  padding: 5px;
   max-width: 400px;
-  max-height: 400px;
-  display: block;
   border: 1px solid #ddd;
   page-break-inside: avoid;
 }
 
+:host([edit-mode]) #figures {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+
+}
+
+:host([edit-mode]) ::slotted(figure){
+  padding: 5px;
+  margin: 0;
+  width: calc(100% - 10px);
+}
+
 @media screen {
-  ::slotted(figure){
+  :host(:not([edit-mode])) ::slotted(figure){
     display: none;
   }
 }

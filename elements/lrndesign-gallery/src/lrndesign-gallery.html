@@ -1,21 +1,23 @@
 <div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
   <div slot="title"><slot name="title"></slot></div>
   <div slot="description"><slot name="description"></slot></div>
-  ${this.layout === 'masonry'
-    ? html`
-        <lrndesign-gallery-masonry
-          accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspect}"
-          .extra-wide="${this.extra}"
-          ?dark="${this.dark}"
-          .gallery-id="${this.id}"
-          @item-changed="${e=>this.goToItem(e.detail)}"
-          responsive-size="${this.responsiveSize}"
-          .selected="${this.selected}"
-          .sources="${this.items}"
-        >
-      </lrndesign-gallery-masonry>
-      `
+  ${this.editMode 
+    ? html`<div id="figures"><slot></slot></div>` 
+    : this.layout === 'masonry'
+      ? html`
+          <lrndesign-gallery-masonry
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            .sources="${this.items}"
+          >
+        </lrndesign-gallery-masonry>
+        `
     : this.grid || this.layout === 'grid'
       ? html`
           <lrndesign-gallery-grid
@@ -48,4 +50,4 @@
           </lrndesign-gallery-carousel>`
       }
 </div>
-<slot hidden></slot>
+${this.editMode ? '' :  html`<slot hidden></slot>`}
