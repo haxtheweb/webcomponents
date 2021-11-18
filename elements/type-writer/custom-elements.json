@@ -68,6 +68,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ],
       "events": [
@@ -182,6 +185,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ],
       "events": [

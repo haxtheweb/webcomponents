@@ -12,6 +12,11 @@
           "default": "false"
         },
         {
+          "name": "label",
+          "type": "string",
+          "default": "\"Range input\""
+        },
+        {
           "name": "min",
           "type": "number",
           "default": "0"
@@ -60,6 +65,12 @@
           "attribute": "dragging",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Range input\""
         },
         {
           "name": "min",
@@ -136,6 +147,11 @@
           "default": "false"
         },
         {
+          "name": "label",
+          "type": "string",
+          "default": "\"Range input\""
+        },
+        {
           "name": "min",
           "type": "number",
           "default": "0"
@@ -184,6 +200,12 @@
           "attribute": "dragging",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Range input\""
         },
         {
           "name": "min",

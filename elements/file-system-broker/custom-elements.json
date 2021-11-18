@@ -20,6 +20,37 @@
       ]
     },
     {
+      "name": "docx-file-system-broker",
+      "path": "./lib/docx-file-system-broker.js",
+      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the DOCX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from DOCX",
+      "properties": [
+        {
+          "name": "libPath",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "dirHandler"
+        },
+        {
+          "name": "fileHandler"
+        },
+        {
+          "name": "files",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "docx-reader-ready"
+        },
+        {
+          "name": "docx-file-system-data"
+        }
+      ]
+    },
+    {
       "name": "xlsx-file-system-broker",
       "path": "./lib/xlsx-file-system-broker.js",
       "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos",
@@ -30,7 +61,7 @@
         {
           "name": "libPath",
           "type": "string",
-          "default": "\"xlsx/\""
+          "default": "\"href\""
         },
         {
           "name": "XW",

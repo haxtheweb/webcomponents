@@ -27,7 +27,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           position: relative;
         }
         :host #slot {
-          background-color: var(--haxcms-color, white);
           opacity: 0.2;
           visibility: hidden;
         }
@@ -433,7 +432,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("./locales", import.meta.url).href,
+      localesPath: new URL("../../locales", import.meta.url).href,
       locales: ["es"],
     });
     this.__disposer = [];
@@ -523,7 +522,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           if (format != null) {
             switch (format) {
               case "print-page":
-                this.themeData.element = "haxcms-blank-theme";
+                this.themeData.element = "haxcms-print-theme";
                 break;
             }
           }
@@ -622,10 +621,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         title="${store.activeItem.title}"
         parent="${store.activeItem.parent}"
         item-id="${store.activeItem.id}"
-        path="${store.activeItem.slug}"
-        break-type="haxcms"
+        slug="${store.activeItem.slug}"
+        order="${store.activeItem.order}"
+        break-type="site"
+        path-auto
         ${store.activeItem.metadata.locked ? "locked" : ""}
-        ${store.activeItem.metadata.published ? "published" : ""}
+        ${store.activeItem.metadata.published === false ? "" : "published"}
         ></page-break>${newValue}`;*/
         html = encapScript(newValue);
         // set in the store

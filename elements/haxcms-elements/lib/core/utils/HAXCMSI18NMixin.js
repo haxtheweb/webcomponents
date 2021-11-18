@@ -11,6 +11,7 @@ export const HAXCMSI18NMixin = function (SuperClass) {
       // can leverage the same localization bucket
       this.registerLocalization({
         context: this,
+        localesPath: new URL("../../../locales", import.meta.url).href,
         namespace: "haxcms",
       });
     }

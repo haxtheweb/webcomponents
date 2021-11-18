@@ -29,7 +29,7 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
     return html`
       <button
         ?autofocus="${this.autofocus}"
-        aria-labelledby="${this.ariaLabelledby}"
+        .aria-labelledby="${this.ariaLabelledby}"
         .aria-pressed="${this.toggles || this.toggled
           ? "true"
           : this.toggles

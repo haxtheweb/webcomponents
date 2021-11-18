@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="/" />
+  <base href="/elements/haxcms-elements/demo/" />
   <script>
 // polyfill for forEach
 if ('NodeList' in window && !NodeList.prototype.forEach) {
@@ -1322,14 +1322,16 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
         view our website correctly. <a href="http://outdatedbrowser.com/">Update my browser now</a></div>
     </div>
   </div>
-  <script>document.body.removeAttribute('no-js');window.__appCDN="./";window.__appForceUpgrade=false;</script>
+  <script>document.body.removeAttribute('no-js');window.__appCDN="./node_modules/";window.__appForceUpgrade=false;</script>
   <!-- Reverse engineer of build.js based on what's needed to test locally -->
   <script type="module">
     import "@lrnwebcomponents/wc-autoload/wc-autoload.js";
     import "./custom/src/custom.js";
   </script>
   <script>
-    window.WCAutoloadRegistryFile = window.__appCDN + "wc-registry.json";
+    window.WCAutoloadRegistryFile = "./wc-registry.json";
+    window.WCAutoloadBasePath = "/node_modules/";
+    window.WCGlobalBasePath = "/node_modules/";
     // set this in order to simulate the published form of the site
     //window.HAXCMSContext="published";
     // set the below to simulate running a demo / end points to load data

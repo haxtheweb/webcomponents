@@ -89,48 +89,8 @@ class FullWidthImage extends LitElement {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      gizmo: {
-        title: "Full width-image",
-        description: "full width image that flows beyond boundaries",
-        icon: "image:image",
-        color: "green",
-        groups: ["Width"],
-        handles: [
-          {
-            type: "image",
-            source: "source",
-            caption: "caption",
-            title: "caption",
-          },
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            description: "",
-            inputMethod: "haxupload",
-            required: true,
-            icon: "icons:link",
-            validationType: "url",
-          },
-          {
-            property: "caption",
-            description: "",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   // properties available to the custom element for data binding
   static get properties() {

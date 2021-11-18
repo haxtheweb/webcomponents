@@ -86,11 +86,6 @@ class StopNote extends remoteLinkBehavior(LitElement) {
           float: left;
           clear: left;
           text-decoration: none;
-          color: #2196f3;
-        }
-
-        .link a:hover {
-          color: #1976d2;
         }
 
         .svg {

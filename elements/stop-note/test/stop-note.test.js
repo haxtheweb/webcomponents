@@ -1,85 +1,28 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../stop-note.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("stop-note instantiates", async () => {
-    const el = await fixture(
-      html` <stop-note title="test-title"></stop-note> `
-    );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("stop-note test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html`<stop-note
+      title="Confirmation Message"
+      url="https://www.google.com"
+      icon="stopnoteicons:confirm-icon"
+    >
+      <span slot="message">You can write any confirmation</span>
+    </stop-note>`);
   });
-});
 
-/*
- * A11y Accessibility tests
- */
-describe("A11y/chai axe tests", () => {
-  it("stop-note passes accessibility test", async () => {
-    const el = await fixture(html` <stop-note></stop-note> `);
-    await expect(el).to.be.accessible();
+  it("message slot correct", async () => {
+    expect(
+      element.shadowRoot
+        .querySelector("slot[name='message']")
+        .assignedNodes({ flatten: true })[0].textContent
+    ).to.equal("You can write any confirmation");
   });
-  it("stop-note passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<stop-note aria-labelledby="stop-note"></stop-note>`
-    );
-    await assert.isNotAccessible(el);
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
-});
-
-/*
-// Custom properties test
-describe("Custom Property Test", () => {
-  it("stop-note can instantiate a element with custom properties", async () => {
-    const el = await fixture(html`<stop-note .foo=${'bar'}></stop-note>`);
-    expect(el.foo).to.equal('bar');
-  })
-})
-*/
-
-/*
-// Test if element is mobile responsive
-describe('Test Mobile Responsiveness', () => {
-    before(async () => {z   
-      await setViewport({width: 375, height: 750});
-    })
-    it('sizes down to 360px', async () => {
-      const el = await fixture(html`<stop-note ></stop-note>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('360px');
-    })
-}) */
-
-/*
-// Test if element sizes up for desktop behavior
-describe('Test Desktop Responsiveness', () => {
-    before(async () => {
-      await setViewport({width: 1000, height: 1000});
-    })
-    it('sizes up to 410px', async () => {
-      const el = await fixture(html`<stop-note></stop-note>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('410px');
-    })
-    it('hides mobile menu', async () => {
-      const el await fixture(html`<stop-note></stop-note>`);
-      const hidden = el.getAttribute('hidden');
-      expect(hidden).to.equal(true);
-    })
-}) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
 });

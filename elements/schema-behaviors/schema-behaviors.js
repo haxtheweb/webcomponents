@@ -29,13 +29,6 @@ export const SchemaBehaviors = function (SuperClass) {
       return {
         ...super.properties,
         /**
-         * Unique Resource ID, generated when schemaMap processes.
-         */
-        schemaResourceID: {
-          type: String,
-          attribute: "schema-resource-id",
-        },
-        /**
          * Schema Map for the element, used to generate a valid prefix on the fly
          * Props set for Polymer compatibility
          */

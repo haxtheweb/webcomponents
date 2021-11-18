@@ -97,13 +97,19 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["colors", "image-loaded", "t", "correct"]
+    "unsetAttributes": [
+      "colors",
+      "image-loaded",
+      "t",
+      "correct",
+      "element-visible"
+    ]
   },
   "demoSchema": [
     {
       "tag": "self-check",
       "properties": {
-        "accent-color": "light-blue",
+        "accentColor": "light-blue",
         "title": "Sharks Self Check",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/480px-White_shark.jpg",
         "alt": "Great White Shark"

@@ -40,6 +40,8 @@ class MapMenuSubmenu extends LitElement {
     this.expandChildren = false;
     this.avatarLabel = "";
     this.label = "";
+    this.status = "";
+    this.locked = false;
     this.published = true;
     this.icon = "";
     this.__icon = "";
@@ -70,8 +72,11 @@ class MapMenuSubmenu extends LitElement {
           ?opened="${this.opened}"
           url="${this.url}"
           selected="${this.selected}"
-          icon="${this.__icon}"
+          icon="${this.icon}"
           slot="heading"
+          ?published="${this.published}"
+          ?locked="${this.locked}"
+          status="${this.status}"
         ></map-menu-header>
         <slot></slot>
       </a11y-collapse>
@@ -102,9 +107,6 @@ class MapMenuSubmenu extends LitElement {
       icon: {
         type: String,
       },
-      __icon: {
-        type: String,
-      },
       url: {
         type: String,
       },
@@ -124,22 +126,14 @@ class MapMenuSubmenu extends LitElement {
       published: {
         type: Boolean,
       },
+      locked: {
+        type: Boolean,
+      },
+      status: {
+        type: String,
+        reflect: true,
+      },
     };
-  }
-  /**
-   * LitElement life cycle - properties changed callback
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "published") {
-        if (this.published === false) {
-          this.__icon = "visibility-off";
-        } else {
-          this.__icon = null;
-          this.__icon = "";
-        }
-      }
-    });
   }
 
   _headerClickHandler(e) {

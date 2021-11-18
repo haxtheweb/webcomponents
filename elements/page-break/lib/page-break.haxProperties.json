@@ -19,19 +19,31 @@
         "property": "title",
         "title": "Title",
         "description": "Title seen in the theme / first heading",
-        "inputMethod": "text"
+        "inputMethod": "textfield"
       },
       {
-        "property": "path",
+        "property": "pathAuto",
+        "title": "Path auto",
+        "description": "Automatically set path based on parents and title",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "slug",
         "title": "Path",
-        "description": "Path of the page",
-        "inputMethod": "text"
+        "description": "URL slug related to this page",
+        "inputMethod": "textfield"
       },
       {
         "property": "parent",
         "title": "Parent",
         "description": "Path of the parent page this page should sit under",
-        "inputMethod": "text"
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "order",
+        "title": "Order",
+        "description": "Order relative to other sibling pages",
+        "inputMethod": "number"
       },
       {
         "property": "published",
@@ -45,15 +57,10 @@
         "description": "Lock / Unlock all elements in this page",
         "inputMethod": "boolean"
       }
-    ],
-    "advanced": [
-      {
-        "property": "itemId",
-        "title": "Unique item ID",
-        "description": "Only set this manually if you have a reason to as it is for internal purposes.",
-        "inputMethod": "text"
-      }
     ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["t", "_hax-state", "element-visible"]
   },
   "demoSchema": [
     {
@@ -61,7 +68,9 @@
       "content": "",
       "properties": {
         "published": true,
-        "locked": false
+        "locked": false,
+        "status": "new",
+        "pathAuto": true
       }
     }
   ]

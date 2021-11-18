@@ -16,9 +16,16 @@ class QR extends LitElement {
         :host {
           display: block;
         }
+        qr-code {
+          display: block;
+        }
         #link {
-          visibility: hidden;
-          opacity: 0;
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
         }
       `,
     ];
@@ -84,84 +91,7 @@ class QR extends LitElement {
    */
   static get haxProperties() {
     // Establish hax property binding
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "QR Code",
-        description: "A code to scan from a smartphone.",
-        icon: "hax:qr-code",
-        color: "grey",
-        groups: ["QR"],
-        handles: [
-          {
-            type: "video",
-            source: "data",
-            title: "title",
-          },
-          {
-            type: "image",
-            source: "data",
-            title: "title",
-          },
-          {
-            type: "link",
-            source: "data",
-            title: "title",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "data",
-            title: "QR data",
-            description: "Source of the data for the QR code.",
-            inputMethod: "haxupload",
-            icon: "hardware:developer-board",
-          },
-          {
-            property: "title",
-            title: "Alternate title",
-            description:
-              "An alternate title to go to the source of the QR code.",
-            inputMethod: "alt",
-            icon: "editor:title",
-          },
-          {
-            property: "modulesize",
-            title: "Size",
-            description: "Size of the QR code",
-            inputMethod: "number",
-            icon: "image:photo-size-select-small",
-          },
-          {
-            property: "margin",
-            title: "Margin",
-            description: "Wrapper to the code.",
-            inputMethod: "number",
-            icon: "icons:settings-overscan",
-          },
-          {
-            property: "format",
-            title: "Output format",
-            description: "Format to put it out.",
-            inputMethod: "select",
-            options: {
-              png: "PNG",
-              html: "HTML",
-              svg: "SVG",
-            },
-            icon: "editor:bubble-chart",
-          },
-        ],
-        advanced: [],
-      },
-    };
+    return new URL("./lib/q-r.haxProperties.json", import.meta.url).href;
   }
 }
 window.customElements.define(QR.tag, QR);

@@ -1,0 +1,54 @@
+{
+  "name": "deprecated-elements",
+  "description": "Elements our team has deprecated",
+  "wcfactory": {},
+  "version": "4.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "type": "module",
+  "main": "a11y-carousel.js",
+  "module": "a11y-carousel.js",
+  "umd": "a11y-carousel.umd.js",
+  "scripts": {},
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit": "^2.0.2",
+    "@lrnwebcomponents/lrndesign-blockquote": "4.0.4",
+    "@lrnwebcomponents/lrndesign-panelcard": "4.0.4",
+    "@lrnwebcomponents/lrn-aside": "4.0.4",
+    "@lrnwebcomponents/task-list": "4.0.4",
+    "@lrnwebcomponents/tab-list": "4.0.4",
+    "@lrnwebcomponents/hero-banner": "4.0.4",
+    "@lrnwebcomponents/magazine-cover": "4.0.4",
+    "@lrnwebcomponents/material-word": "4.0.4",
+    "@lrnwebcomponents/random-item": "4.0.1",
+    "@lrnwebcomponents/rss-items": "4.0.4",
+    "@lrnwebcomponents/service-card": "4.0.1",
+    "@lrnwebcomponents/to-do": "4.0.4",
+    "@lrnwebcomponents/simple-concept-network": "4.0.4",
+    "@lrnwebcomponents/iconset-demo": "2.8.0",
+    "@lrnwebcomponents/wave-player": "4.0.4",
+    "@lrnwebcomponents/random-image": "4.0.4",
+    "@lrnwebcomponents/top-alert": "4.0.1",
+    "@lrnwebcomponents/promo-tile": "4.0.4",
+    "@polymer/paper-slider": "3.0.1",
+    "@lrnwebcomponents/lrnsys-layout": "4.0.4"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "lit": "2.0.2"
+  },
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

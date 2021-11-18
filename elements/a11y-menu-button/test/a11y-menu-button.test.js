@@ -1,87 +1,50 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+import "../lib/a11y-menu-button-item.js";
 import "../a11y-menu-button.js";
+describe("a11y-menu-button test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html`
+      <a11y-menu-button>
+        <span slot="button">Menu</span>
+        <a11y-menu-button-item href="#top">Anchor</a11y-menu-button-item>
+        <a11y-menu-button-item id="button" disabled
+          >Button</a11y-menu-button-item
+        >
+        <a11y-menu-button-item href="../">Link</a11y-menu-button-item>
+      </a11y-menu-button>
+    `);
+  });
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("a11y-menu-button instantiates", async () => {
-    const el = await fixture(
-      html` <a11y-menu-button title="test-title"></a11y-menu-button> `
+  it("basic setup for testing the link case", async () => {
+    // case 1 of the menu item
+    const item = element.querySelector(
+      "a11y-menu-button a11y-menu-button-item[href='../']"
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+    expect(element).to.exist;
+    expect(item.shadowRoot.querySelector("a[role='menuitem']")).to.exist;
+    expect(
+      item.shadowRoot.querySelector("slot").assignedNodes({ flatten: true })[0]
+        .textContent
+    ).to.equal("Link");
+    expect(item.href).to.equal("../");
   });
-});
-
-/*
- * A11y Accessibility tests
- */
-describe("A11y/chai axe tests", () => {
-  it("a11y-menu-button passes accessibility test", async () => {
-    const el = await fixture(html` <a11y-menu-button></a11y-menu-button> `);
-    await expect(el).to.be.accessible();
-  });
-  it("a11y-menu-button passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<a11y-menu-button
-        aria-labelledby="a11y-menu-button"
-      ></a11y-menu-button>`
+  it("basic setup for testing the button case", async () => {
+    // case 2 with a button
+    const button = element.querySelector(
+      "a11y-menu-button a11y-menu-button-item#button"
     );
-    await assert.isNotAccessible(el);
+    expect(element).to.exist;
+    expect(button.shadowRoot.querySelector("button[role='menuitem']")).to.exist;
+    expect(
+      button.shadowRoot
+        .querySelector("slot")
+        .assignedNodes({ flatten: true })[0].textContent
+    ).to.equal("Button");
+    expect(button.disabled).to.equal(true);
   });
-});
 
-/*
-// Custom properties test
-describe("Custom Property Test", () => {
-  it("a11y-menu-button can instantiate a element with custom properties", async () => {
-    const el = await fixture(html`<a11y-menu-button .foo=${'bar'}></a11y-menu-button>`);
-    expect(el.foo).to.equal('bar');
-  })
-})
-*/
-
-/*
-// Test if element is mobile responsive
-describe('Test Mobile Responsiveness', () => {
-    before(async () => {z   
-      await setViewport({width: 375, height: 750});
-    })
-    it('sizes down to 360px', async () => {
-      const el = await fixture(html`<a11y-menu-button ></a11y-menu-button>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('360px');
-    })
-}) */
-
-/*
-// Test if element sizes up for desktop behavior
-describe('Test Desktop Responsiveness', () => {
-    before(async () => {
-      await setViewport({width: 1000, height: 1000});
-    })
-    it('sizes up to 410px', async () => {
-      const el = await fixture(html`<a11y-menu-button></a11y-menu-button>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('410px');
-    })
-    it('hides mobile menu', async () => {
-      const el await fixture(html`<a11y-menu-button></a11y-menu-button>`);
-      const hidden = el.getAttribute('hidden');
-      expect(hidden).to.equal(true);
-    })
-}) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
+  });
 });

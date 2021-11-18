@@ -1,0 +1,84 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Testimonial",
+    "description": "A person saying a nice thing about us",
+    "icon": "editor:format-quote",
+    "color": "orange",
+    "groups": ["Content", "Presentation"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image",
+        "title": "name",
+        "caption": "position",
+        "ariaDescribedby": "describedBy"
+      }
+    ],
+    "meta": {
+      "author": "EberlyODL / LRNWebComponents"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Adds image to testimonial",
+        "inputMethod": "haxupload",
+        "icon": "editor:insert-photo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Select the accent color use",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Use dark theme",
+        "inputMethod": "boolean",
+        "icon": "invert-colors"
+      },
+      {
+        "property": "name",
+        "title": "Full Name",
+        "description": "Credit the person making the testimonial",
+        "inputMethod": "textfield",
+        "icon": "account-circle"
+      },
+      {
+        "property": "position",
+        "title": "Position or Job Title",
+        "description": "List the position and job title",
+        "inputMethod": "textfield",
+        "icon": "icons:work"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "describedBy",
+        "title": "aria-describedby",
+        "description": "Space-separated list of IDs for elements that describe the image.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "person-testimonial",
+      "properties": {
+        "accentColor": "blue",
+        "dark": true,
+        "position": "Coffee drinker",
+        "name": "bto-pro",
+        "image": "https://github.com/btopro.png"
+      },
+      "content": "<span>I at times, enjoy coffee. Those times, are all times.</span>"
+    }
+  ]
+}

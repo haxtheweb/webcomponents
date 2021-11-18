@@ -80,53 +80,7 @@ class LrnTable extends SchemaBehaviors(LitElement) {
    * Hax properties
    */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "CSV table",
-        description:
-          "This can generate a table from a CSV file no matter where it is located.",
-        icon: "editor:border-all",
-        color: "green",
-        groups: ["Presentation", "Table", "Data"],
-        handles: [
-          {
-            type: "csv",
-            source: "csvFile",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "csvFile",
-            title: "Source",
-            description: "The URL for this csv file.",
-            inputMethod: "haxupload",
-            required: true,
-          },
-          {
-            property: "title",
-            title: "Title",
-            description: "Title for the table to be generated.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "description",
-            title: "Description",
-            description:
-              "More detailed description for improved accessibility of the table data.",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-    };
+    return new URL("./lib/lrn-table.haxProperties.json", import.meta.url).href;
   }
 }
 window.customElements.define(LrnTable.tag, LrnTable);

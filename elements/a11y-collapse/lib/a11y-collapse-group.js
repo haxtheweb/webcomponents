@@ -173,22 +173,6 @@ class A11yCollapseGroup extends LitElement {
       }
     }
   }
-
-  disconnectedCallback() {
-    this.removeEventListener("a11y-collapse-click", (e) => {
-      e.stopPropagation();
-      this.radioToggle(e.detail);
-    });
-    this.removeEventListener("a11y-collapse-attached", (e) => {
-      e.stopPropagation();
-      this.push("__items", e.detail);
-    });
-    this.removeEventListener("a11y-collapse-detached", (e) => {
-      e.stopPropagation();
-      this._detachItem(e.detail);
-    });
-    super.disconnectedCallback();
-  }
 }
 window.customElements.define(A11yCollapseGroup.tag, A11yCollapseGroup);
 export { A11yCollapseGroup };

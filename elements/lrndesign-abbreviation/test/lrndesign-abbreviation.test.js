@@ -1,32 +1,23 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../lrndesign-abbreviation.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("lrndesign-abbreviation instantiates", async () => {
-    const el = await fixture(
+describe("lrndesign-abbreviation test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html`
         <lrndesign-abbreviation title="test-title"></lrndesign-abbreviation>
       `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("lrndesign-abbreviation passes accessibility test", async () => {
     const el = await fixture(
@@ -84,8 +75,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

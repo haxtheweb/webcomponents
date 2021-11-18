@@ -41,6 +41,7 @@ class SelfCheck extends I18NMixin(
     this.alt = "";
     this.image = "";
     this.question = "";
+    this.accentColor = "blue";
     this.title = "Self-Check";
     this.t = {
       revealAnswer: "Reveal Answer",

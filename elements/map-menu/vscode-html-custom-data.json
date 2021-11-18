@@ -22,7 +22,7 @@
     },
     {
       "name": "map-menu-header",
-      "description": "Events:\n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\n  * `active-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - ",
+      "description": "Events:\n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\n  * `active-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "title",
@@ -61,6 +61,10 @@
           "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
         },
         {
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
+        },
+        {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
           "valueSet": "v"
@@ -69,6 +73,20 @@
           "name": "active",
           "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "published",
+          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "locked",
+          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "ontoggle-header",
@@ -82,7 +100,7 @@
     },
     {
       "name": "map-menu-item",
-      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: string; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - \n\n  * `track-icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - \n\n  * `trackIcon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - ",
+      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `track-icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `trackIcon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "id",
@@ -95,10 +113,6 @@
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "__icon",
-          "description": "`__icon` {`string`} - \n\nProperty: __icon\n\nDefault: null"
         },
         {
           "name": "track-icon",
@@ -123,18 +137,31 @@
           "valueSet": "v"
         },
         {
+          "name": "locked",
+          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
           "name": "onactive-item",
           "description": "`active-item` {`CustomEvent<this>`} - "
         },
         {
           "name": "onlink-clicked",
-          "description": "`link-clicked` {`CustomEvent<{ id: string; }>`} - "
+          "description": "`link-clicked` {`CustomEvent<{ id: any; }>`} - "
         }
       ]
     },
     {
       "name": "map-menu-submenu",
-      "description": "Events:\n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `avatar-label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `label` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
+      "description": "Events:\n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `avatar-label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
       "attributes": [
         {
           "name": "id",
@@ -176,6 +203,15 @@
           "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
         },
         {
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
+        },
+        {
+          "name": "locked",
+          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "published",
           "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: true",
           "valueSet": "v"
@@ -183,10 +219,6 @@
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "__icon",
-          "description": "`__icon` {`string`} - \n\nProperty: __icon\n\nDefault: "
         },
         {
           "name": "onmap-meu-item-hidden-check",

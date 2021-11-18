@@ -5,6 +5,9 @@ export const HAXCMSOperationButtons = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      if (!this.t) {
+        this.t = {};
+      }
       if (this.t) {
         this.t = {
           ...this.t,

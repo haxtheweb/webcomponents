@@ -77,6 +77,13 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
     return "simple-colors-picker";
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.__ready = true;
+  }
+
   /**
    * gets options for the selectors
    *

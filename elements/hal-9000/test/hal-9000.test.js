@@ -1,28 +1,19 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../hal-9000.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("hal-9000 instantiates", async () => {
-    const el = await fixture(html` <hal-9000 title="test-title"></hal-9000> `);
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("hal-9000 test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <hal-9000 title="test-title"></hal-9000> `);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("hal-9000 passes accessibility test", async () => {
     const el = await fixture(html` <hal-9000></hal-9000> `);
@@ -76,8 +67,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

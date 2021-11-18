@@ -3,7 +3,10 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import {
+  normalizeEventPath,
+  nodeToHaxElement,
+} from "@lrnwebcomponents/utils/utils.js";
 import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
@@ -66,6 +69,7 @@ class HaxMap extends I18NMixin(LitElement) {
           border-color: var(--hax-ui-color-accent);
         }
         li > hax-toolbar-item::part(button),
+        li > hax-toolbar-item.heading-level-page-break::part(button),
         li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
           width: 100%;
           margin-left: 0px;
@@ -104,6 +108,7 @@ class HaxMap extends I18NMixin(LitElement) {
       contentStatistics: "Content Statistics",
       words: "Words",
       headings: "Headings",
+      pageBreaks: "Page breaks",
       paragraphs: "Paragraphs",
       widgets: "Widgets",
       characters: "Characters",
@@ -118,26 +123,31 @@ class HaxMap extends I18NMixin(LitElement) {
     });
   }
   async updateHAXMap(e) {
-    let list = await HAXStore.htmlToHaxElements(
-      await HAXStore.activeHaxBody.haxToContent()
-    );
+    let list = [];
+    for (var i = 0; i < HAXStore.activeHaxBody.childNodes.length; i++) {
+      const node = HAXStore.activeHaxBody.childNodes[i];
+      list.push(await nodeToHaxElement(node, null));
+    }
     this.calcStats(list);
     let elements = [];
     for (var i = 0; i < list.length; i++) {
       let def = HAXStore.haxSchemaFromTag(list[i].tag);
       if (def.gizmo) {
         elements.push({
+          tag: list[i].tag,
           icon: def.gizmo.icon,
           name: def.gizmo.title,
         });
       } else {
         if (list[i].tag && list[i].tag.includes("-")) {
           elements.push({
+            tag: list[i].tag,
             icon: "hax:templates",
             name: "Widget",
           });
         } else {
           elements.push({
+            tag: list[i].tag,
             icon: "hax:paragraph",
             name: "HTML block",
           });
@@ -155,6 +165,7 @@ class HaxMap extends I18NMixin(LitElement) {
         c: HAXStore.activeHaxBody.innerText.length,
         w: parseInt(HAXStore.activeHaxBody.innerText.split(/\s+/g).length - 1),
         h: 0,
+        b: 0,
         p: 0,
         e: 0,
       };
@@ -164,6 +175,10 @@ class HaxMap extends I18NMixin(LitElement) {
           case "div":
           case "span":
           case "p":
+          case "ul":
+          case "ol":
+          case "strong":
+          case "em":
             counts.p++;
             break;
           case "h1":
@@ -172,8 +187,10 @@ class HaxMap extends I18NMixin(LitElement) {
           case "h4":
           case "h5":
           case "h6":
-          case "relative-heading": // special support for our own heading tag
             counts.h++;
+            break;
+          case "page-break":
+            counts.b++;
             break;
           default:
             counts.e++;
@@ -198,12 +215,20 @@ class HaxMap extends I18NMixin(LitElement) {
           <span>${this.t.paragraphs}</span>
         </div>
         <div class="stat">
-          <span>${this.eCount}</span>
-          <span>${this.t.widgets}</span>
-        </div>
-        <div class="stat">
           <span>${this.cCount}</span>
           <span>${this.t.characters}</span>
+        </div>
+        <div class="stat">
+          <span>${this.bCount}</span>
+          <span>${this.t.pageBreaks}</span>
+        </div>
+        <div class="stat">
+          <span>${this.hCount}</span>
+          <span>${this.t.headings}</span>
+        </div>
+        <div class="stat">
+          <span>${this.eCount}</span>
+          <span>${this.t.widgets}</span>
         </div>
       </div>
       <h5>${this.t.listView}</h5>
@@ -233,10 +258,12 @@ class HaxMap extends I18NMixin(LitElement) {
     return this.elementList.map((element) => {
       let el = element;
       el.parent = prev;
-      if (el.name == "Heading") {
-        let h = el.icon.replace("hax:", "").trim();
-        el.parent = h;
-        prev = h;
+      if (el.tag === "page-break") {
+        el.parent = "page-break";
+        prev = "page-break";
+      } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(el.tag)) {
+        el.parent = el.tag;
+        prev = el.tag;
       }
       return el;
     });
@@ -282,6 +309,9 @@ class HaxMap extends I18NMixin(LitElement) {
         type: String,
       },
       wCount: {
+        type: String,
+      },
+      bCount: {
         type: String,
       },
       hCount: {

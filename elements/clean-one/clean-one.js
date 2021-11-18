@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
+import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -29,8 +30,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-brea
  */
 class CleanOne extends HAXCMSRememberRoute(
   I18NMixin(
-    HAXCMSThemeParts(
-      HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+    QRCodeMixin(
+      HAXCMSThemeParts(
+        HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+      )
     )
   )
 ) {
@@ -666,11 +669,7 @@ class CleanOne extends HAXCMSRememberRoute(
         <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <header
-              class="site-header"
-              role="navigation"
-              .part="${this.editMode ? `edit-mode-active` : ``}"
-            >
+            <header class="site-header" role="navigation">
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
@@ -681,6 +680,7 @@ class CleanOne extends HAXCMSRememberRoute(
                   ></site-print-button>
                 </div>
                 <div class="pull-right">
+                  ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"
@@ -695,7 +695,11 @@ class CleanOne extends HAXCMSRememberRoute(
             </header>
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
-                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-breadcrumb
+                  part="page-breadcrumb ${this.editMode
+                    ? `edit-mode-active`
+                    : ``}"
+                ></site-breadcrumb>
                 <site-active-title part="page-title"></site-active-title>
                 <div class="normal main-section">
                   <site-search
@@ -772,16 +776,16 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    if (!this.t) {
+      this.t = {};
+    }
     if (this.t) {
-      this.t.searchSiteContent = "Search site content";
-      this.t.typeToSearch = "Type to search";
-    } else {
       this.t = {
+        ...this.t,
         searchSiteContent: "Search site content",
         typeToSearch: "Type to search",
       };
     }
-
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,

@@ -40,7 +40,7 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "clean-two",
+      "element": "clean-one",
       "path": "@lrnwebcomponents/clean-two/clean-two.js",
       "name": "Course theme 2",
       "variables": {
@@ -60,7 +60,6 @@
         "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
         "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
         "license-element": "@lrnwebcomponents/license-element/license-element.js",
-        "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
         "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
         "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
         "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
@@ -830,7 +829,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
-        "published": true,
+        "published": false,
         "files": [
           {
             "path": "/var/www/html/sites/haxtheweb/files/Screenshot from 2020-08-17 14-36-15.png",
@@ -1496,6 +1495,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
+        "published": false,
         "readtime": 1,
         "contentDetails": {
           "headings": 0,

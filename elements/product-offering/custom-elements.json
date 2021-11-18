@@ -104,6 +104,9 @@
           "default": "100"
         },
         {
+          "name": "IORoot"
+        },
+        {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
@@ -224,6 +227,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         },
         {
           "name": "accentColor",
