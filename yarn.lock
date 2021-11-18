@@ -2642,6 +2642,23 @@
   dependencies:
     "@polymer/polymer" "^3.3.1"
 
+"@lrnwebcomponents/promo-tile@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/promo-tile/-/promo-tile-4.0.4.tgz#92e69c3e555b3d607e3afdfd5f3ef6d034ee12bc"
+  integrity sha512-egeiYaoK8AnFX+/Hvx785ehl95LYAWoOGM44yHaB/obyrV/nkIC3EqbBEHAIvqGHLdhsYDUzczxJNZozGz5ZnA==
+  dependencies:
+    "@lrnwebcomponents/hax-iconset" "^4.0.4"
+    "@lrnwebcomponents/schema-behaviors" "^4.0.4"
+    "@lrnwebcomponents/simple-icon" "^4.0.4"
+    "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/random-image@4.0.4", "@lrnwebcomponents/random-image@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/random-image/-/random-image-4.0.4.tgz#7350bad290ce23c77e3abead9e133844edd91cb1"
+  integrity sha512-N2GRX4qFDdeTLYLQmJ/Oid5XN1fVXHwKEGNr1+qjG82TPmxb4RX+oJRrm/E5uLj5mUZHajQBFCR66BEwmm2abA==
+  dependencies:
+    lit "2.0.0"
+
 "@lrnwebcomponents/random-item@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/random-item/-/random-item-4.0.1.tgz#46cedfa00fadde68c50b57214679ec2c7349484c"
@@ -2768,6 +2785,25 @@
     "@lrnwebcomponents/simple-fields" "^4.0.4"
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/top-alert@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/top-alert/-/top-alert-4.0.1.tgz#0479372b5cd555a43f6c0185229134b5211aa901"
+  integrity sha512-yr2Suz0ZOGMrBrdVw0uLvIb19wZ1kvpRtExO18YI9OnKvqgpJDNxwyTJM7YRKR6eTcwVxXlMGhIK/eAvP+nAnQ==
+  dependencies:
+    lit "2.0.0"
+
+"@lrnwebcomponents/wave-player@4.0.4", "@lrnwebcomponents/wave-player@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/wave-player/-/wave-player-4.0.4.tgz#030b9bca57709b6dfdc350319122ad0d71f52406"
+  integrity sha512-X60r6tELSIQQd9mRlyVv9/djowx8uGhV64ed2qZ5YSAGrjPVs4N7qrHTZKz9V8GT4dfmkU6fnq+2QifDvC4Dlw==
+  dependencies:
+    "@lrnwebcomponents/es-global-bridge" "^4.0.0"
+    "@lrnwebcomponents/hax-iconset" "^4.0.4"
+    "@lrnwebcomponents/schema-behaviors" "^4.0.4"
+    "@lrnwebcomponents/simple-icon" "^4.0.4"
+    "@polymer/paper-material" "^3.0.1"
+    load-script "^1.0.0"
 
 "@mdjs/core@^0.4.1":
   version "0.4.1"
