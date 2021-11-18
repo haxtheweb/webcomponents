@@ -3767,12 +3767,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     });
 
     //prevent mutation
-    if (
-      !!newValue &&
-      !!oldValue &&
-      oldValue.parentNode === newValue &&
-      HAXStore.isGridPlateElement(newValue)
-    ) {
+    if (!!newValue && !!oldValue && HAXStore.isGridPlateElement(newValue)) {
       this.__ignoreActive = true;
     }
     if (
