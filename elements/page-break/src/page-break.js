@@ -534,6 +534,8 @@ export class PageBreak extends IntersectionObserverMixin(
     if (!value && this._ceMenu) {
       if (this.breakType === "site") {
         this._ceMenu.disableOps = false;
+        this._ceMenu.canMoveElement = true;
+        this._ceMenu.insertAbove = true;
       } else {
         this._ceMenu.disableDuplicate = false;
       }
@@ -554,6 +556,8 @@ export class PageBreak extends IntersectionObserverMixin(
     // forcibly prevent duplication and deleting of the node controlling the page itself
     if (this.breakType === "site") {
       this._ceMenu.disableOps = true;
+      this._ceMenu.canMoveElement = false;
+      this._ceMenu.insertAbove = false;
     } else {
       this._ceMenu.disableDuplicate = true;
     }

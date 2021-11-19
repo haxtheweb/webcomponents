@@ -26,6 +26,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   constructor() {
     super();
     this.disableOps = false;
+    this.disableItemOps = false;
+    this.insertAbove = true;
     this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
@@ -310,6 +312,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 align-horizontal="left"
                 show-text-label
                 role="menuitem"
+                ?disabled="${!this.insertAbove}"
                 icon="hardware:keyboard-arrow-up"
                 event-name="insert-above-active"
                 label="${this.t.insertItemAbove}"
@@ -440,7 +443,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${el.label}"
               event-name="hax-ce-custom-button"
               value="${el.callback}"
-              ?disabled="${el.disabled || this.disableOps}"
+              ?disabled="${el.disabled || this.disableItemOps}"
             ></hax-context-item>`;
           })}
           <slot name="secondary"></slot>
@@ -688,6 +691,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         type: String,
       },
       disableOps: {
+        type: Boolean,
+      },
+      disableItemOps: {
+        type: Boolean,
+      },
+      insertAbove: {
         type: Boolean,
       },
       disableDuplicate: {

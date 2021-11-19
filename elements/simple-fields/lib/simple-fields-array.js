@@ -52,6 +52,10 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
       count: {
         type: Number,
       },
+      disableAdd: {
+        type: Boolean,
+        attribute: "disable-add",
+      },
       /*
        * icon when expanded
        */
@@ -82,6 +86,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           id="expand"
           controls="item-fields"
           icon="more-vert"
+          ?disabled="${this.disabled}"
           @click="${(e) => this.toggle()}"
           ?toggled="${this.expanded}"
           toggles
@@ -96,6 +101,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
         <simple-toolbar-button
           id="add"
           icon="add"
+          ?disabled="${this.disabled || this.disableAdd}"
           controls="item-fields"
           @click="${(e) => this._handleAdd()}"
           part="add"
@@ -139,6 +145,8 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     );
   }
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "expanded")
         this.querySelectorAll("simple-fields-array-item").forEach((item) =>

@@ -24,6 +24,7 @@
   "scripts": {
     "start": "bash scripts/preinstall.sh && yarn run storybook",
     "lerna": "lerna",
+    "hax": "code . && code elements/hax-body/lib/hax-store.js && cd elements/haxcms-elements && yarn start",
     "preinstall": "bash scripts/preinstall.sh",
     "postinstall": "bash scripts/postinstall.sh && ./node_modules/.bin/patch-package",
     "init": "lerna init",

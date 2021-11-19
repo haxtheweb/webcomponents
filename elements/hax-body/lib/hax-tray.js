@@ -1763,20 +1763,13 @@ class HaxTray extends I18NMixin(
    * Lock / unlock all settings on the tray for the active node form
    */
   __lockAllSettings(status) {
-    let disableList = [
-      ...this.shadowRoot.querySelectorAll(
-        "simple-fields-tab[name='settings.advanced'] simple-fields-field:not([name='settings.advanced.data-hax-lock'])"
-      ),
-      ...this.shadowRoot.querySelectorAll(
-        "simple-fields-tab[name='settings.configure'] simple-fields-field,simple-fields-tab[name='settings.configure'] hax-upload-field"
-      ),
-      ...this.shadowRoot.querySelectorAll(
-        "simple-fields-tab[name='settings.layout'] simple-fields-field"
-      ),
-    ];
-    disableList.forEach((node) => {
-      node.disabled = status;
-    });
+    this.shadowRoot
+      .querySelectorAll(
+        "simple-fields-tab *[is-simple-field-type]:not([name='settings.advanced.data-hax-lock'])"
+      )
+      .forEach((node) => {
+        node.disabled = status;
+      });
   }
   /**
    * _editModeChanged

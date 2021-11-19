@@ -240,6 +240,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           ?hidden="${this.responsiveSize !== "xs"}"
           icon="more-vert"
           label="Toggle expand"
+          ?disabled="${this.disabled}"
           @click="${this.toggle}"
           toggles
           ?toggled="${this.expanded}"
