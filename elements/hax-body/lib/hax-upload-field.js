@@ -32,6 +32,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       namespace: "hax",
     });
   }
+  static get tag() {
+    return "hax-upload-field";
+  }
   _canUpload() {
     return !this.__allowUpload && HAXStore;
   }
@@ -200,5 +203,5 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
 }
 
-window.customElements.define("hax-upload-field", HaxUploadField);
+customElements.define(HaxUploadField.tag, HaxUploadField);
 export { HaxUploadField };

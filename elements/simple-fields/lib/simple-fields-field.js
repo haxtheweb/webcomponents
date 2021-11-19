@@ -627,18 +627,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       `;
     }
     _handleIconClick(checked, option) {
-      this.value = !option
-        ? !checked
-        : this.type === "radio" && checked
-        ? undefined
-        : this.type === "radio"
-        ? (option || {}).value
-        : checked
-        ? (this.value || []).filter((i) => i !== option.value)
-        : [...(this.value || []), (option || {}).value];
-      if (this.multicheck && this.autovalidate) {
-        this.error = false;
-        this.validate();
+      if (!this.disabled && !this.readonly) {
+        this.value = !option
+          ? !checked
+          : this.type === "radio" && checked
+          ? undefined
+          : this.type === "radio"
+          ? (option || {}).value
+          : checked
+          ? (this.value || []).filter((i) => i !== option.value)
+          : [...(this.value || []), (option || {}).value];
+        if (this.multicheck && this.autovalidate) {
+          this.error = false;
+          this.validate();
+        }
       }
     }
     getOptionIcon(checked) {

@@ -698,6 +698,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           <hax-text-editor-toolbar
             id="textcontextmenu"
             class="hax-context-menu ignore-activation ${!this.activeNode ||
+            this.activeNode.getAttribute("data-hax-lock") ||
             !HAXStore.isTextElement(this.activeNode)
               ? "not-text"
               : "is-text"}"
@@ -1118,6 +1119,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       "hax-context-item-selected",
       this._haxContextOperation.bind(this)
     );
+    window.addEventListener(
+      "hax-toggle-active-node-lock",
+      this._toggleNodeLocking.bind(this)
+    );
     window.addEventListener("click", this.clickEvent.bind(this));
     window.addEventListener("blur", this.blurEvent.bind(this));
     window.addEventListener("keydown", this._onKeyDown.bind(this));
@@ -1137,6 +1142,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * HTMLElement
    */
   disconnectedCallback() {
+    window.removeEventListener(
+      "hax-toggle-active-node-lock",
+      this._toggleNodeLocking.bind(this)
+    );
     window.removeEventListener("click", this.clickEvent.bind(this));
     window.removeEventListener("blur", this.blurEvent.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
@@ -1153,6 +1162,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     );
     this._observer.disconnect();
     super.disconnectedCallback();
+  }
+  // we were told node was locked or unlocked, toggle to ensure we rerender
+  // since it's an attribute setting
+  _toggleNodeLocking() {
+    this.requestUpdate();
   }
   /**
    * Keep the context menu visible if needed

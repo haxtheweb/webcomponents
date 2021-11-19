@@ -193,6 +193,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               ></hax-context-item>
             </simple-toolbar-menu-item>
             ${
+              !this.activeNode ||
               !this.activeNode.parentNode ||
               !HAXStore.isLayoutElement(this.activeNode.parentNode)
                 ? ""

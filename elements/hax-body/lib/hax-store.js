@@ -620,7 +620,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * @returns {boolean} whether custom element is layout
    */
   isLayoutElement(node) {
-    let schema = this.haxSchemaFromTag(node.tagName) || {};
+    let schema =
+      node && node.tagName ? this.haxSchemaFromTag(node.tagName) : {};
     return schema.type && schema.type === "grid";
   }
 

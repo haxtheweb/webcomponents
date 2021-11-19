@@ -173,15 +173,21 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
     return html`
       <div id="upload-options">
         <vaadin-upload
-          capture
+          capture=""
           class="option-${this.option}"
           form-data-name="file-upload"
           id="fileupload"
           @upload-before="${this._fileAboutToUpload}"
           @upload-response="${this._fileUploadResponse}"
           part="upload"
+          ?nodrop="${this.disabled}"
         >
-          <button id="add-hidden" slot="add-button" hidden></button>
+          <button
+            ?disabled="${this.disabled}"
+            id="add-hidden"
+            slot="add-button"
+            hidden
+          ></button>
           <div
             slot="drop-label"
             part="browse-area"
@@ -196,6 +202,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
               type="url"
               auto-validate=""
               part="url"
+              ?disabled="${this.disabled}"
               ?always-expanded="${this.responsiveSize.indexOf("s") < 0}"
               display-as="${this.responsiveSize.indexOf("l") > -1
                 ? "grid"
@@ -212,6 +219,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             <span part="drop-area-text">drop media here or</span>
             <simple-toolbar-button
               id="browse"
+              ?disabled="${this.disabled}"
               label="Upload..."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               icon="icons:file-upload"
@@ -223,6 +231,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             </simple-toolbar-button>
             <simple-toolbar-button
               icon="image:camera-alt"
+              ?disabled="${this.disabled}"
               label="Take photo..."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
@@ -235,6 +244,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             </simple-toolbar-button>
             <simple-toolbar-button
               icon="image:camera-alt"
+              ?disabled="${this.disabled}"
               label="Record Audio..."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
@@ -249,6 +259,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           <simple-toolbar-button
             id="cancel"
             icon="icons:clear"
+            ?disabled="${this.disabled}"
             label="Cancel"
             @mousedown="${(e) => e.preventDefault()}"
             @focus="${(e) => e.preventDefault()}"
