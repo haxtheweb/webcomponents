@@ -1544,7 +1544,6 @@ class HaxTray extends I18NMixin(
               }
               // prefix is a special attribute and must be handled this way
               else if (prop === "data-hax-lock") {
-                console.log(settings[key][prop]);
                 // broadcast that we just LOCKED it
                 this.dispatchEvent(
                   new CustomEvent("hax-toggle-active-node-lock", {

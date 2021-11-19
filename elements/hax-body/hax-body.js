@@ -1165,7 +1165,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
   // we were told node was locked or unlocked, toggle to ensure we rerender
   // since it's an attribute setting
-  _toggleNodeLocking() {
+  _toggleNodeLocking(e) {
+    if (!e.detail.lock) {
+      this.contextMenus.plate.disableDuplicate = false;
+      this.contextMenus.plate.disableOps = false;
+      this.contextMenus.plate.canMoveElement = this.canMoveElement;
+      e.detail.node.setAttribute("contenteditable", true);
+      this.setAttribute("contenteditable", true);
+    } else {
+      this.contextMenus.plate.disableDuplicate = true;
+      this.contextMenus.plate.disableOps = true;
+      this.contextMenus.plate.canMoveElement = false;
+      e.detail.node.removeAttribute("contenteditable");
+      this.removeAttribute("contenteditable");
+    }
     this.requestUpdate();
   }
   /**
@@ -1950,7 +1963,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (
         HAXStore.elementList &&
         HAXStore.elementList[tag] &&
-        HAXStore.elementList[tag].contentEditable
+        HAXStore.elementList[tag].contentEditable &&
+        node.getAttribute("data-hax-lock") === null
       ) {
         node.setAttribute("contenteditable", true);
       } else {
@@ -3797,9 +3811,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // only hide if we change containers
       newValue.classList.add("hax-active");
       if (
-        HAXStore.isTextElement(newValue) ||
-        newValue.tagName === "HR" ||
-        HAXStore.isGridPlateElement(newValue)
+        (HAXStore.isTextElement(newValue) ||
+          newValue.tagName === "HR" ||
+          HAXStore.isGridPlateElement(newValue)) &&
+        newValue.getAttribute("data-hax-lock") === null
       ) {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
