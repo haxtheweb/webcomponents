@@ -84,16 +84,22 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             height: 0;
           }
           :host([disabled]) .border-bottom {
-            border-bottom: 1px dashed var(--simple-fields-border-color, #999);
+            border-bottom: var(
+                --simple-fields-border-bottom-disabled-size,
+                var(--simple-fields-border-bottom-size, 1px)
+              )
+              dashed var(--simple-fields-border-color, #999);
           }
           .border-bottom.blur {
-            border-bottom: 1px solid var(--simple-fields-border-color, #999);
+            border-bottom: var(--simple-fields-border-bottom-size, 1px) solid
+              var(--simple-fields-border-color, #999);
             width: 100%;
           }
           .border-bottom.focus {
             margin: -1px auto 0;
             width: 0;
-            border-bottom: 2px solid var(--simple-fields-accent-color, #3f51b5);
+            border-bottom: var(--simple-fields-border-bottom-focus-size, 2px)
+              solid var(--simple-fields-accent-color, #3f51b5);
             transition: width 0.5s ease-in-out;
           }
           :host(:focus-within) .border-bottom.focus {
@@ -339,6 +345,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       this.error = false;
       this.id = this._generateUUID();
       this.inline = false;
+      this.blockList = false;
       this.validTypes = [
         "checkbox",
         "color",

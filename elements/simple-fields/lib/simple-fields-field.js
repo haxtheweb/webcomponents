@@ -42,12 +42,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             display: var(--simple-fields-radio-option-display, flex);
             flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           }
+          fieldset.block-options #options {
+            display: block;
+          }
           .option {
+            flex-direction: row;
             display: flex;
             flex-wrap: wrap;
             align-items: stretch;
             justify-content: space-between;
             margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+          }
+          fieldset.block-options .option {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
           }
           .option:last-of-type {
             margin: 0;
@@ -115,6 +123,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             flex: 1 0 auto;
             display: flex;
             align-items: center;
+          }
+          :host([type="checkbox"]) fieldset.block-options span,
+          :host([type="radio"]) fieldset.block-options span {
+            flex: 0 0 auto;
           }
           :host([hovered][type="checkbox"]) .field-main-single,
           :host([hovered][type="radio"]) .field-main-single,
@@ -342,6 +354,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
          */
         autofocus: {
           type: Boolean,
+        },
+        /**
+         * if element is a a list of radio or checkbox options,
+         * will to display each item as a block instead of inline
+         */
+        blockOptions: {
+          type: Boolean,
+          attribute: "block-options",
         },
         /**
          * Media capture input method in file upload controls
@@ -600,7 +620,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      */
     get fieldsetTemplate() {
       return html`
-        <fieldset part="fieldset">
+        <fieldset
+          part="fieldset"
+          class="${!!this.blockOptions ? "block-options" : "inline-options"}"
+        >
           <legend
             class="label-main"
             ?hidden="${!this.label}"
@@ -611,7 +634,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           <div id="options" part="fieldset-options">
             ${(this.sortedOptions || []).map(
               (option) => html`
-                <div class="option inline" part="option">
+                <div class="option" part="option">
                   <label
                     for="${this.id}.${option.value}"
                     class="radio-label"
@@ -681,7 +704,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ?disabled="${this.disabled}"
             @focus="${this._onFocusin}"
             ?hidden="${this.hidden}"
-            id="${!option ? this.id : option.value}"
+            id="${this.id}.${!option ? "" : option.value}"
             @input="${this._handleFieldChange}"
             name="${this.id}"
             .placeholder="${this.placeholder || ""}"
