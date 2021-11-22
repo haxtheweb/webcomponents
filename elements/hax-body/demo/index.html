@@ -23,6 +23,9 @@
     </script>
     <style>
         #bodydiv { margin: 20px 300px 20px 20px; }
+        @media screen and (max-width: 800px) {
+          #bodydiv { margin: 60px 20px 20px 20px; }
+        }
     </style>
   </head>
   <body>
@@ -30,6 +33,34 @@
     <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' >
       <h2>Self-Check</h2>
+      <multiple-choice
+      id="basic"
+      name="basic"
+      title="Which are ducks?"
+      randomize>
+      <h4 slot="question">Which are ducks?</h4>
+        <p slot="correct-answer">Huey</p>
+        <p slot="correct-answer">Duey</p>
+        <p slot="correct-answer">Daffy</p>
+        <p slot="correct-answer">Donald</p>
+        <p slot="incorrect-answer">Mickey</p>
+        <p slot="correct-feedback">Yay! Let's jump in the money pit.</p>
+        <p slot="incorrect-feedback">You're despicable. What a quack!</p>
+      </multiple-choice>
+      <multiple-choice
+      id="single"
+      name="single"
+      single-option
+      randomize>
+        <h4 slot="question">Which is <strong><em>NOT</em></strong> a duck?</h4>
+        <p slot="incorrect-answer">Huey</p>
+        <p slot="incorrect-answer">Duey</p>
+        <p slot="incorrect-answer">Daffy</p>
+        <p slot="incorrect-answer">Donald</p>
+        <p slot="correct-answer">Mickey</p>
+        <p slot="correct-feedback">Yippee!!</p>
+        <p slot="incorrect-feedback">Aw shucks!!</p>
+      </multiple-choice>
       <self-check accent-color="red" image="https://media.defense.gov/2016/Mar/01/2001470412/1088/820/0/160301-F-UU298-014.jpg" alt="Blood Drive bus and sign">
         <p slot="heading">Blood Type Quiz</p>
         <p slot="question">Which blood type is the universal <em>plasma</em> donor?</p>
@@ -195,46 +226,35 @@
         <lrndesign-gallery id="gallery2" accent-color="green" dark>
           <figure>
             <img 
-              srcset="./images/thumbnails/cat.jpeg 480w, ./images/cat.jpeg 800w"
-              sizes="(max-width: 600px) 480px, 800px"
-              src="./images/cat.jpeg"
-              alt="A picture of a cat.">
+              srcset="https://picsum.photos/id/1/200/200 200w, https://picsum.photos/id/1/600/800 800w, https://picsum.photos/id/1/1200/1900 800w"
+              sizes="(max-width: 200px) 200px, (max-width: 800px) 800px, 1900px"
+              src="https://picsum.photos/id/1/600/800"
+              alt="A laptop">
             <figcaption>
-              <h3>Cat</h3>
-              <p>This is a <em>cat</em> picture that is in <strong>landscape</strong>.</p>
+              <h3>Laptop</h3>
+              <p>This is a <em>laptop</em> picture that is in <strong>portrait</strong>.</p>
             </figcaption>
           </figure>
           <figure sizing="contain">
             <img 
-              srcset="./images/thumbnails/dog.jpg 480w, ./images/dog.jpg 800w"
-              sizes="(max-width: 600px) 480px, 800px"
-              src="./images/dog.jpg"
+              srcset="https://picsum.photos/id/102/200/200 200w, https://picsum.photos/id/102/800/600 800w, https://picsum.photos/id/102/1900/1200 800w"
+              sizes="(max-width: 200px) 200px, (max-width: 800px) 800px, 1900px"
+              src="https://picsum.photos/id/102/800/600"
+              alt="A picture of fruit.">
+            <figcaption>
+              <h3>Fruit</h3>
+              <p>This is a <em>fruit</em> picture that is in <strong>landscape</strong>.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <img 
+            srcset="https://picsum.photos/id/1025/200/200 200w, https://picsum.photos/id/1025/600/600 800w, https://picsum.photos/id/1025/1200/1200 800w"
+            sizes="(max-width: 200px) 200px, (max-width: 800px) 800px, 1900px"
+            src="https://picsum.photos/id/1025/600/600"
               alt="A picture of a dog.">
             <figcaption>
               <h3>Dog</h3>
-              <p>This is a <em>dog</em> picture that is in <strong>portrait</strong>.</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <img 
-              srcset="./images/thumbnails/bird.jpg 480w, ./images/bird.jpg 800w"
-              sizes="(max-width: 600px) 480px, 800px"
-              src="./images/bird.jpg"
-              alt="A picture of a bird.">
-            <figcaption>
-              <h3>Bird</h3>
-              <p>This is a <em>bird</em> picture that is almost a <strong>square</strong>.</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <img 
-              srcset="./images/thumbnails/fish.jpg 480w, ./images/fish.jpg 800w"
-              sizes="(max-width: 600px) 480px, 800px"
-              src="./images/fish.jpg"
-              alt="A picture of a fish.">
-            <figcaption>
-              <h3>Fish</h3>
-              <p>This is a <em>fish</em> picture in <strong>landscape</strong> orientation.</p>
+              <p>This is a <em>dop</em> picture that is almost a <strong>square</strong>.</p>
             </figcaption>
           </figure>
         </lrndesign-gallery>
