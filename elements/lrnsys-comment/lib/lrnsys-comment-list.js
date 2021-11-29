@@ -35,7 +35,7 @@ class LrnsysCommentList extends PolymerElement {
           font-size: 12px;
         }
         .comment-button {
-          --lrnsys-button-height: 32px;
+          --lrnsys-button-height: unset;
         }
         .comment-button::part(lrnsys-button-inner-div) {
           padding: 0;
