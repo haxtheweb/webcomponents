@@ -142,6 +142,40 @@ class LrnsysComment extends PolymerElement {
           width: 108px;
           border-right: 3px solid #ccc;
         }
+        @media (max-width: 1000px) {
+          .comment-depth-3,
+          .comment-depth-4,
+          .comment-depth-5,
+          .comment-depth-6,
+          .comment-depth-7,
+          .comment-depth-8,
+          .comment-depth-9 {
+            width: 54px;
+          }
+        }
+        @media (max-width: 800px) {
+          .comment-depth-3,
+          .comment-depth-4,
+          .comment-depth-5,
+          .comment-depth-6,
+          .comment-depth-7,
+          .comment-depth-8,
+          .comment-depth-9 {
+            width: 27px;
+          }
+        }
+        @media (max-width: 700px) {
+          .comment-depth-3,
+          .comment-depth-4,
+          .comment-depth-5,
+          .comment-depth-6,
+          .comment-depth-7,
+          .comment-depth-8,
+          .comment-depth-9 {
+            width: 8px;
+            border-right: none;
+          }
+        }
         .center {
           padding: 0;
         }
