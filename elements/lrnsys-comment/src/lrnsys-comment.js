@@ -69,6 +69,14 @@ class LrnsysComment extends PolymerElement {
           padding: 0 7px;
           width: 40px;
         }
+
+        @media (max-width: 800px) {
+          .comment-depth,
+          .comment-avatar,
+          .comment-content {
+            padding: 0;
+          }
+        }
         .comment-depth,
         .comment-avatar,
         .comment-content {
@@ -94,6 +102,7 @@ class LrnsysComment extends PolymerElement {
         h3.comment-heading,
         h4.comment-heading {
           margin-top: 7px;
+          position: sticky;
         }
         p {
           font-size: 14px;
@@ -107,6 +116,8 @@ class LrnsysComment extends PolymerElement {
         marked-element {
           line-height: 16px;
           font-size: 14.4px;
+          max-height: 500px;
+          overflow-y: auto;
         }
         .nowrap-me marked-element:hover {
           box-shadow: -1px 0 0 0 black inset;
@@ -143,6 +154,7 @@ class LrnsysComment extends PolymerElement {
           border-right: 3px solid #ccc;
         }
         @media (max-width: 1000px) {
+          .comment-depth-2,
           .comment-depth-3,
           .comment-depth-4,
           .comment-depth-5,
@@ -154,6 +166,7 @@ class LrnsysComment extends PolymerElement {
           }
         }
         @media (max-width: 800px) {
+          .comment-depth-2,
           .comment-depth-3,
           .comment-depth-4,
           .comment-depth-5,
@@ -165,6 +178,7 @@ class LrnsysComment extends PolymerElement {
           }
         }
         @media (max-width: 700px) {
+          .comment-depth-2,
           .comment-depth-3,
           .comment-depth-4,
           .comment-depth-5,
@@ -173,7 +187,6 @@ class LrnsysComment extends PolymerElement {
           .comment-depth-8,
           .comment-depth-9 {
             width: 8px;
-            border-right: none;
           }
         }
         .center {
@@ -192,6 +205,11 @@ class LrnsysComment extends PolymerElement {
           display: inline-flex;
           --lrnsys-button-height: 30px;
           padding: 1px;
+        }
+        @media (max-width: 800px) {
+          .comment-actions lrnsys-button span {
+            display: none;
+          }
         }
         .comment-actions .comment-actions-group {
           margin: 0;
@@ -339,7 +357,7 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.reply]]"
-                  >Reply</lrnsys-button
+                  ><span>Reply</span></lrnsys-button
                 >
               </div>
               <div class="comment-actions-group right-actions">
@@ -352,7 +370,8 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.edit]]"
-                  >Edit</lrnsys-button
+                >
+                  <span>Edit</span></lrnsys-button
                 >
                 <lrnsys-button
                   on-click="actionHandler"
@@ -363,7 +382,7 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.delete]]"
-                  >Delete</lrnsys-button
+                  ><span>Delete</span></lrnsys-button
                 >
               </div>
             </div>
@@ -524,7 +543,8 @@ class LrnsysComment extends PolymerElement {
         // simple icon toggle
         if (this.editform) {
           this.shadowRoot.querySelector("#edit").icon = "save";
-          this.shadowRoot.querySelector("#edit").innerText = "Save";
+          this.shadowRoot.querySelector("#edit").innerHTML =
+            "<span>Save</span>";
           this.shadowRoot.querySelector("#reply").disabled = true;
           this.shadowRoot.querySelector("#editcomment").focus();
           this.dispatchEvent(
@@ -550,7 +570,8 @@ class LrnsysComment extends PolymerElement {
             this.blockFirstState = false;
           }
           this.shadowRoot.querySelector("#edit").icon = "create";
-          this.shadowRoot.querySelector("#edit").innerText = "Edit";
+          this.shadowRoot.querySelector("#edit").innerHTML =
+            "<span>Edit</span>";
           this.shadowRoot.querySelector("#reply").disabled = false;
         }
       }, 0);
