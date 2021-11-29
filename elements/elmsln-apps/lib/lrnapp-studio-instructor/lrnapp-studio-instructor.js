@@ -331,7 +331,7 @@ class LrnappStudioInstructor extends PolymerElement {
         </vaadin-grid-column>
       </template>
     </vaadin-grid>
-    <paper-dialog id="dialog" style="overflow: visible;" no-cancel-on-outside-click no-cancel-on-esc-key>
+    <paper-dialog id="dialog" style="overflow: scroll;" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>
           <span style="width:35vw;">
@@ -346,7 +346,7 @@ class LrnappStudioInstructor extends PolymerElement {
           <button dialog-dismiss><simple-icon icon="close"></simple-icon> Close</button>
         </app-toolbar>
       </app-header>
-      <div style="min-height:50vh;max-width:100%;overflow-y:scroll;">
+      <div style="min-height:50vh;max-width:100%;">
         <div hidden$="[[!activeData.submission]]">
           <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar modaled></lrnapp-studio-submission-page>
         </div>
