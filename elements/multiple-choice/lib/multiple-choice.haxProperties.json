@@ -25,11 +25,11 @@
         "slotWrapper": "h3"
       },
       {
-        "slot": "correct-answer",
-        "title": "Correct Answer",
-        "description": "Any answer that is correct",
+        "slot": "responses",
+        "title": "Responses",
+        "description": "Possible Responses",
         "inputMethod": "textfield",
-        "slotWrapper": "p"
+        "allowedSlotWrappers": ["multiple-choice-response"]
       },
       {
         "slot": "incorrect-answer",

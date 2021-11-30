@@ -1,6 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./lib/multiple-choice-response.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -105,20 +106,13 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           margin: 0;
         }
         .feedback,
-        ::slotted([slot="correct-answer"]),
-        ::slotted([slot="incorrect-answer"]),
+        ::slotted(multiple-choice-response),
         ::slotted([slot="correct-feedback"]),
         ::slotted([slot="incorrect-feedback"]) {
           font-size: var(--simple-fields-font-size, 16px);
           text-align: var(--simple-fields-text-align);
           font-family: var(--simple-fields-font-family, sans-serif);
           line-height: var(--simple-fields-line-height, 22px);
-        }
-        ::slotted([slot="correct-answer"]):before {
-          content: "\u2714 ";
-        }
-        ::slotted([slot="incorrect-answer"]):before {
-          content: "\u2718 ";
         }
       `,
     ];
@@ -143,6 +137,24 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
+    this.addEventListener("value-changed", this._handleChange);
+  }
+  _handleChange(e) {
+    if (!this.editMode || !this.singleOption || !e.detail || !e.detail.value)
+      return;
+    let parentNode =
+      !!e.detail &&
+      !!e.detail.parentNode &&
+      !!e.detail.parentNode.host &&
+      e.detail.parentNode.host.tagName === "MULTIPLE-CHOICE-RESPONSE"
+        ? e.detail.parentNode.host
+        : undefined;
+    if (!!parentNode)
+      Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
+        (response) => {
+          if (response !== parentNode) response.correct = false;
+        }
+      );
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
@@ -162,11 +174,24 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         );
       }
       if (propName == "answers" && this.answers && this.answers.length > 0) {
+        this.answers.forEach((answer) => {
+          return {
+            ...answer,
+            text: answer.text || answer.value || answer.label,
+            value: answer.value || answer.label,
+          };
+        });
         this._setSlottedAnswers();
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
       }
+      if (
+        propName == "singleOption" &&
+        !!this.singleOption &&
+        JSON.parse(this.correctAnswers || "[]").length > 1
+      )
+        this.answers = [...this.answers[0]];
       if (propName == "correctText")
         this._setSlottedText(this.correctText, "correct-feedback");
       if (propName == "incorrectText")
@@ -184,8 +209,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         ${this.editMode
           ? html` <div id="editMode">
               <slot name="question"></slot>
-              <slot name="correct-answer"></slot>
-              <slot name="incorrect-answer"></slot>
+              <slot name="responses"></slot>
               <p class="feedback">
                 <simple-icon
                   icon="${this.correctIcon}"
@@ -209,9 +233,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                 block-options
                 ?disabled="${this.disabled}"
                 ?inline="${false}"
-                property="oer:answer"
-                type="${this.singleOption ? "radio" : "checkbox"}"
-                .itemsList="${this.itemsList}"
+                type="${this.inputType}"
+                .itemsList="${this.displayedAnswers}"
                 .value="${this.userGuess}"
                 name="answers"
                 @value-changed="${this.checkedEvent}"
@@ -372,6 +395,15 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     this.answers = [...answers];
   }
 
+  get inputType() {
+    let correct = this.correctAnswers.split(),
+      type = correct.length < 2 && this.singleOption ? "radio" : "checkbox";
+    Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
+      (field) => (field.type = type)
+    );
+    return type;
+  }
+
   /**
    * if the current answers are correct
    * @returns {boolean}
@@ -394,20 +426,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     return JSON.stringify(
       this.displayedAnswers
         .filter((answer) => !!answer.correct)
-        .map((answer) => answer.label)
+        .map((answer) => answer.value || answer.label)
         .sort()
     );
-  }
-  /**
-   * converts displayed answers into an array that the field accepts
-   * @returns {array}
-   * @readonly
-   * @memberof MultipleChoice
-   */
-  get itemsList() {
-    return this.displayedAnswers.map((answer) => {
-      return { value: answer.label, text: answer.label };
-    });
   }
 
   /**
@@ -504,31 +525,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
       .href;
   }
   /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      inlineContextMenu: "haxinlineContextMenu",
-    };
-  }
-  /**
-   * add buttons when it is in context
-   */
-  haxinlineContextMenu(ceMenu) {
-    ceMenu.ceButtons = [
-      {
-        icon: "icons:add",
-        callback: "haxClickInlineAdd",
-        label: "Add answer",
-      },
-      {
-        icon: "icons:remove",
-        callback: "haxClickInlineRemove",
-        label: "Remove answer",
-      },
-    ];
-  }
-  /**
    * converts answers in slots to an array
    *
    * @returns {array}
@@ -536,9 +532,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    */
   _getSlottedAnswers() {
     let slots = Array.from(
-      this.querySelectorAll(
-        '[slot="correct-answer"],[slot="incorrect-answer"],input'
-      )
+      this.querySelectorAll("multiple-choice-response,input")
     );
     let answers = [];
     slots.forEach((slot) => answers.push(this._getSlottedAnswer(slot)));
@@ -552,9 +546,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    */
   _getSlottedAnswer(slot) {
     let answer = {
-      label: (slot.value || slot.innerHTML).trim(),
+      value: (slot.value || slot.innerHTML).trim(),
+      text: (slot.value || slot.innerHTML).trim(),
       correct:
-        slot.slot == "incorrect-answer" || !!slot.getAttribute("correct")
+        slot.tagName !== "INPUT"
+          ? !!slot.correct
+          : slot.getAttribute("correct") === null
           ? false
           : true,
     };
@@ -574,10 +571,22 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    * @memberof MultipleChoice
    */
   _setSlottedAnswer(answer) {
-    this._setSlottedText(
-      answer.label,
-      answer.correct ? "correct-answer" : "incorrect-answer"
-    );
+    let inputs = Array.from(
+        this.querySelectorAll("multiple-choice-response")
+      ).filter((response) => {
+        return (
+          (answer.label || answer.value || "").trim ===
+          (response.innerHTML || "").trim()
+        );
+      }),
+      input = inputs[0];
+    if (!input) {
+      input = document.createElement("multiple-choice-response");
+      input.innerHTML = answer.label || answer.value;
+      this.appendChild(input);
+    }
+    input.correct = answer.correct;
+    input.type = this.inputType;
   }
 
   /**
@@ -587,18 +596,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    * @memberof MultipleChoice
    */
   _setSlottedAnswers() {
-    let answers =
-      typeof this.answers === "string"
-        ? JSON.parse(this.answers)
-        : this.answers;
-    if (answers.length > 0) {
+    if (this.answers.length > 0) {
       Array.from(
-        this.querySelectorAll(
-          '[slot="correct-answer"],[slot="incorrect-answer"],input'
-        )
+        this.querySelectorAll("multiple-choice-response,input")
       ).map((slot) => slot.remove());
-      answers.forEach((answer) => this._setSlottedAnswer(answer));
-      this.answers = answers;
+      this.answers.forEach((answer) => this._setSlottedAnswer(answer));
     }
   }
   /**
@@ -663,11 +665,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     };
     Object.keys(others).forEach((key) => {
       //when first updating if a property is already set, just add a slot
-      if (!!this[key] && init) {
+      if (!this.querySelector(`[slot=${others[key]}]`) && init) {
         this._setSlottedText(this[key], others[key], key == "question");
 
         //otherwise set property based on what's in slot
-      } else if (!init || !this[key]) {
+      } else {
         this._getSlottedText(key, others[key]);
       }
     });
