@@ -736,9 +736,7 @@ class HaxTray extends I18NMixin(
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div data-stop-content>
-          Some advanced options for developers and experimental purposes.
-        </div>
+        <div data-stop-content>User preferences for customizing HAX</div>
       </hax-tray-button>
       <hax-tray-button
         event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
@@ -787,7 +785,6 @@ class HaxTray extends I18NMixin(
   }
   get advancedSettingsTemplate() {
     return html` <hax-preferences-dialog
-      id="advanced-settings"
       ?hidden="${this.trayDetail !== "advanced-settings"}"
     ></hax-preferences-dialog>`;
   }

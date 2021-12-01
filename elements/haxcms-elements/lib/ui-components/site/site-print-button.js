@@ -68,7 +68,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
-        .aria-label="${this.makeLabel(this.type, this.t)}"
+        label="${this.makeLabel(this.type, this.t)}"
         ?disabled="${this.disabled}"
       ></simple-icon-button-lite>
       <simple-tooltip
@@ -136,13 +136,13 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   makeLabel(type, t) {
     switch (type) {
       case "page":
-        return html`${t.printPage}`;
+        return `${t.printPage}`;
         break;
       case "site":
-        return html`${t.printSite}`;
+        return `${t.printSite}`;
         break;
       default:
-        return html`${t.printOutline}`;
+        return `${t.printOutline}`;
         break;
     }
   }

@@ -21,6 +21,8 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.t = this.t || {};
+      this.t.textSettings = "Text Settings";
       this.hideUserStylesMenu = true;
       this.fontSize = localStorageGet("haxcms-userPref-fontSize")
         ? localStorageGet("haxcms-userPref-fontSize")
@@ -322,13 +324,13 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
-          aria-label="Text settings"
+          label="${this.t.textSettings}"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"
         ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsuserstylesmenupopover">
-          Text settings
+          ${this.t.textSettings}
         </simple-tooltip>
         <simple-popover
           class="hcusm pull-left font-settings js-toolbar-action hcusm-settings-container"

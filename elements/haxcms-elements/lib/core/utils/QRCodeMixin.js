@@ -65,7 +65,7 @@ const QRCodeMixin = function (SuperClass) {
           <simple-icon-button-lite
             part="qr-code-btn"
             class="qr-code-btn"
-            aria-label="${this.t.currentPage}"
+            label="${this.t.currentPage}"
             icon="hax:qr-code"
             @click="${this.QRCodeButtonToggle}"
             id="qrcodebtn"

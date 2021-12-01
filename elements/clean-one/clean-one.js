@@ -675,7 +675,7 @@ class CleanOne extends HAXCMSRememberRoute(
         <div id="body" class="site-body" part="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <header class="site-header" role="navigation">
+            <header class="site-header">
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}

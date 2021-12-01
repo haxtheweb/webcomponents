@@ -526,7 +526,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           <div class="site-inner" part="site-inner">
             <header
               class="site-header"
-              role="navigation"
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">

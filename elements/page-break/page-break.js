@@ -392,6 +392,14 @@ export class PageBreak extends IntersectionObserverMixin(
           margin-top: -28px;
           margin-right: -46px;
         }
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
       `,
     ];
   }
@@ -407,7 +415,9 @@ export class PageBreak extends IntersectionObserverMixin(
           content: "${this.t.pageBreak}";
         }
       </style>
-      <a .href="${this.slug}" .name="#${this.itemId}" aria-hidden="true"></a>
+      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only"
+        >${this.title}</a
+      >
       <hr class="mid" />
       ${this.locked
         ? html`<simple-icon-lite

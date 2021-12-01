@@ -196,7 +196,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="editbutton"
         icon="${this.__editIcon}"
         @click="${this._editButtonTap}"
-        title="${this.__editText}"
+        label="${this.__editText}"
         voice-command="edit (this) page"
       ></simple-icon-button>
       <simple-icon-button
@@ -205,7 +205,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         icon="icons:cancel"
         @click="${this._cancelButtonTap}"
         .hidden="${!this.editMode}"
-        title="Cancel editing"
+        label="Cancel editing"
         voice-command="cancel (editing)"
       ></simple-icon-button>
       <simple-icon-button
@@ -214,7 +214,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="editdetails"
         icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
-        title="Edit details"
+        label="Edit details"
         voice-command="edit (page) details"
       ></simple-icon-button>
       <simple-icon-button
@@ -223,7 +223,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
-        title="Add page"
+        label="Add page"
         voice-command="add page"
       ></simple-icon-button>
       <simple-icon-button
@@ -232,7 +232,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
-        title="Delete page"
+        label="Delete page"
         voice-command="delete page"
       ></simple-icon-button>
       <simple-icon-button
@@ -241,7 +241,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="outlinebutton"
         icon="hax:site-map"
         @click="${this._outlineButtonTap}"
-        title="Edit site outline"
+        label="Edit site outline"
         voice-command="edit site outline"
       ></simple-icon-button>
       <simple-icon-button
@@ -250,7 +250,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="manifestbutton"
         icon="${this.icon}"
         @click="${this._manifestButtonTap}"
-        title="${this.__settingsText}"
+        label="${this.__settingsText}"
         voice-command="edit site settings"
       ></simple-icon-button>
       <simple-tooltip for="username" position="right" offset="14"

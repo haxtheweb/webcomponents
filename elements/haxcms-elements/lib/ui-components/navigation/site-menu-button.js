@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
+import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
@@ -14,7 +15,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  *
  * @demo demo/index.html
  */
-class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
+class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -102,6 +103,10 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
+    this.t = {
+      noPreviousPage: "no previous page",
+      noNextPage: "no next page",
+    };
     this.hideLabel = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
@@ -338,7 +343,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         activeRouterManifestIndex === -1 ||
         !items[activeRouterManifestIndex - 1]
       ) {
-        return "";
+        return this.t.noPreviousPage;
       } else {
         return items[activeRouterManifestIndex - 1].title;
       }
@@ -347,7 +352,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         activeRouterManifestIndex >= items.length - 1 ||
         !items[activeRouterManifestIndex + 1]
       ) {
-        return "";
+        return this.t.noNextPage;
       } else {
         return items[activeRouterManifestIndex + 1].title;
       }
