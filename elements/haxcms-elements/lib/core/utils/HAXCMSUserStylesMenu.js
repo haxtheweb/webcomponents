@@ -3,7 +3,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 function localStorageGet(name) {
   try {
-    return localStorage.getItem(name);
+    return JSON.parse(localStorage.getItem(name));
   } catch (e) {
     return false;
   }
@@ -11,7 +11,7 @@ function localStorageGet(name) {
 
 function localStorageSet(name, newItem) {
   try {
-    return localStorage.setItem(name, newItem);
+    return localStorage.setItem(name, JSON.stringify(newItem));
   } catch (e) {
     return false;
   }
