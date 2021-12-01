@@ -9,6 +9,22 @@
   "resume": "Reanudar",
   "toggleMenu": "Alternar menú",
   "textSettings": "Configuración de texto",
+  "A": "A",
+  "increaseFontSize": "Aumentar el tamaño de la fuente",
+  "decreaseFontSize": "Disminuir el tamaño de la fuente",
+  "setFontToSerif": "Establecer fuente en serif",
+  "setFontToSansSerif": "Establecer fuente en sans serif",
+  "serif": "Serif",
+  "sansSerif": "Sans serif",
+  "day": "Día",
+  "sepia": "Sepia",
+  "night": "Noche",
   "noPreviousPage": "sin página anterior",
-  "noNextPage": "no hay página siguiente"
+  "noNextPage": "no hay página siguiente",
+  "currentPage": "página actual",
+  "seePageSource": "Ver fuente de la página",
+  "search": "Buscar",
+  "results": "resultados",
+  "found": "Fundar",
+  "typeAtLeast3LettersToStartSearch": "Escriba al menos 3 letras para iniciar la búsqueda"
 }

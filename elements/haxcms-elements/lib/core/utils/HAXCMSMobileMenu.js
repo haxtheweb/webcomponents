@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
 
 function localStorageGet(name) {
@@ -19,7 +20,7 @@ function localStorageSet(name, newItem) {
 }
 
 const HAXCMSMobileMenuMixin = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
       this.menuOpen = true;

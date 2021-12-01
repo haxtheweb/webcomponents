@@ -36,10 +36,7 @@ const HAXCMSThemeParts = function (SuperClass) {
       ];
     }
     static get properties() {
-      let props = {};
-      if (super.properties) {
-        props = super.props;
-      }
+      let props = super.properties || {};
       return {
         ...props,
         editMode: {

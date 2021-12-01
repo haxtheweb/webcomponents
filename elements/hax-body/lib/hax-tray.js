@@ -80,6 +80,7 @@ class HaxTray extends I18NMixin(
       edit: "Edit",
       save: "Save",
       move: "Move",
+      close: "Close",
       moveMenu: "Toggles Menu Aligmnent",
       menuAlignment: "Menu Alignment",
       menuLeft: "Move",
@@ -768,7 +769,7 @@ class HaxTray extends I18NMixin(
           id="toggle-tray-size"
           event-name="toggle-tray-size"
           icon="close"
-          label="Close"
+          label="${this.t.close}"
         >
         </hax-tray-button>
       </div>

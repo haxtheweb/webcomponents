@@ -12,11 +12,9 @@ import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-
+import "./lib/clean-one-search-box.js";
 /**
  * `clean-one`
  * `Clean HAXcms theme, one.`
@@ -29,11 +27,9 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-brea
  * @element clean-one
  */
 class CleanOne extends HAXCMSRememberRoute(
-  I18NMixin(
-    QRCodeMixin(
-      HAXCMSThemeParts(
-        HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
-      )
+  QRCodeMixin(
+    HAXCMSThemeParts(
+      HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
     )
   )
 ) {
@@ -661,14 +657,10 @@ class CleanOne extends HAXCMSRememberRoute(
       <div class="site">
         <div class="menu-outline">
           <div id="site-search-input" role="search" part="search-btn">
-            <input
-              type="text"
-              aria-label="${this.t.searchSiteContent}"
-              placeholder="${this.t.typeToSearch}"
-              .value="${this.searchTerm}"
-              id="search"
-              @input="${this.searchChanged}"
-            />
+            <clean-one-search-box
+              @input-changed="${this.searchChanged}"
+              value="${this.searchTerm}"
+            ></clean-one-search-box>
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>
@@ -748,13 +740,12 @@ class CleanOne extends HAXCMSRememberRoute(
   }
 
   searchChanged(e) {
-    var target = normalizeEventPath(e)[0];
-    if (target.value) {
+    if (e.detail.value) {
       // prettier-ignore
       import(
          "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
-         this.searchTerm = target.value;
+         this.searchTerm = e.detail.value;
        });
     } else {
       this.searchTerm = "";
@@ -782,21 +773,6 @@ class CleanOne extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
-    if (!this.t) {
-      this.t = {};
-    }
-    if (this.t) {
-      this.t = {
-        ...this.t,
-        searchSiteContent: "Search site content",
-        typeToSearch: "Type to search",
-      };
-    }
-    this.registerLocalization({
-      context: this,
-      basePath: import.meta.url,
-      locales: ["es", "fr", "de", "ja"],
-    });
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(

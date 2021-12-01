@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 function localStorageGet(name) {
   try {
@@ -18,11 +19,24 @@ function localStorageSet(name, newItem) {
 }
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
       this.t = this.t || {};
-      this.t.textSettings = "Text Settings";
+      this.t = {
+        ...this.t,
+        A: "A",
+        increaseFontSize: "Increase font size",
+        decreaseFontSize: "Decrease font size",
+        setFontToSerif: "Set font to serif",
+        setFontToSansSerif: "Set font to sans serif",
+        serif: "Serif",
+        sansSerif: "Sans serif",
+        day: "Day",
+        sepia: "Sepia",
+        night: "Night",
+        textSettings: "Text settings",
+      };
       this.hideUserStylesMenu = true;
       this.fontSize = localStorageGet("haxcms-userPref-fontSize")
         ? localStorageGet("haxcms-userPref-fontSize")
@@ -347,30 +361,34 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
               <button
                 class="hcusm-button size-2 font-reduce"
                 @click="${this.UserStylesSizeDown}"
+                title="${this.t.decreaseFontSize}"
               >
-                A
+                ${this.t.A}
               </button>
               <button
                 class="hcusm-button size-2 font-enlarge"
                 @click="${this.UserStylesSizeUp}"
+                title="${this.t.increaseFontSize}"
               >
-                A
+                ${this.t.A}
               </button>
             </div>
             <div class="hcusm-buttons">
               <button
                 class="hcusm-button size-2"
                 data-font="0"
+                title="${this.t.setFontToSerif}"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Serif
+                ${this.t.serif}
               </button>
               <button
                 class="hcusm-button size-2"
+                title="${this.t.setFontToSansSerif}"
                 data-font="1"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Sans
+                ${this.t.sansSerif}
               </button>
             </div>
             <div class="hcusm-buttons">
@@ -379,21 +397,21 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
                 data-theme="0"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Day
+                ${this.t.day}
               </button>
               <button
                 class="hcusm-button size-3"
                 data-theme="1"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Sepia
+                ${this.t.sepia}
               </button>
               <button
                 class="hcusm-button size-3"
                 data-theme="2"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Night
+                ${this.t.night}
               </button>
             </div>
           </div>
@@ -401,10 +419,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       `;
     }
     static get properties() {
-      let props = {};
-      if (super.properties) {
-        props = super.props;
-      }
+      let props = super.properties || {};
       return {
         ...props,
         hideUserStylesMenu: {
