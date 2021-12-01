@@ -4,5 +4,8 @@
   "printOutline": "Esquema de impresión",
   "rssFeed": "Fuente RSS",
   "atomFeed": "Fuente ATOM",
-  "home": "Hogar"
+  "home": "Hogar",
+  "resumeMessage": "¿Reanudar donde lo dejaste la última sesión?",
+  "resume": "Reanudar",
+  "toggleMenu": "Alternar menú"
 }
