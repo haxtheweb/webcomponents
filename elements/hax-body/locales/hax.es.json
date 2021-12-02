@@ -43,6 +43,7 @@
   "left": "Izquierda",
   "center": "Centrar",
   "right": "derecha",
+  "uploadMedia": "Subir medios",
   "updatePage": "Página de actualización",
   "updatePageTooltip": "Actualizar HTML de página",
   "copyHTML": "Copiar HTML",

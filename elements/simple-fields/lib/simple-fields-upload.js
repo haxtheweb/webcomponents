@@ -9,6 +9,7 @@ import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -21,7 +22,9 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
  * @class SimpleFieldsUpload
  * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
+class SimpleFieldsUpload extends I18NMixin(
+  SimpleFieldsFieldsetBehaviors(LitElement)
+) {
   static get tag() {
     return "simple-fields-upload";
   }
@@ -153,6 +156,22 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      dropMediaHereOr: "drop media here or",
+      upload: "Upload",
+      takePhoto: "Take photo",
+      recordAudio: "Record audio",
+      cancel: "Cancel",
+      uploadMedia: "Upload media",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "simple-fields",
+      localesPath: new URL("../locales", import.meta.url).href,
+      locales: ["es"],
+    });
     this.itemsList = [];
     this.autocomplete = "off";
     this.noCamera = false;
@@ -216,11 +235,11 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             </simple-fields-url-combo>
           </div>
           <div id="upload">
-            <span part="drop-area-text">drop media here or</span>
+            <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
             <simple-toolbar-button
               id="browse"
               ?disabled="${this.disabled}"
-              label="Upload..."
+              label="${this.t.upload}.."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               icon="icons:file-upload"
               show-text-label
@@ -232,7 +251,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             <simple-toolbar-button
               icon="image:camera-alt"
               ?disabled="${this.disabled}"
-              label="Take photo..."
+              label="${this.t.takePhoto}.."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
@@ -245,7 +264,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             <simple-toolbar-button
               icon="image:camera-alt"
               ?disabled="${this.disabled}"
-              label="Record Audio..."
+              label="${this.t.recordAudio}.."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
               @mousedown="${(e) => e.preventDefault()}"
               @focus="${(e) => e.preventDefault()}"
@@ -260,7 +279,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
             id="cancel"
             icon="icons:clear"
             ?disabled="${this.disabled}"
-            label="Cancel"
+            label="${this.t.cancel}"
             @mousedown="${(e) => e.preventDefault()}"
             @focus="${(e) => e.preventDefault()}"
             @click="${this._handleCancel}"

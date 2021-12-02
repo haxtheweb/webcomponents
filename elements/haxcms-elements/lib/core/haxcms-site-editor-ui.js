@@ -4,6 +4,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
+
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -11,7 +13,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends LitElement {
+class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -155,7 +157,21 @@ class HAXCMSSiteEditorUI extends LitElement {
   }
   constructor() {
     super();
-    this.__disposer = [];
+    this.__disposer = this.__disposer || [];
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      backToSiteList: "Back to site list",
+      cancelEditing: "Cancel editing",
+      editDetails: "Edit details",
+      addPage: "Add page",
+      deletePage: "Delete page",
+      editSiteOutline: "Edit site outline",
+      closeSiteSettings: "Close site settings",
+      editSiteSettings: "Edit site settings",
+      savePageContent: "Guardar contenido de la página",
+      editPageContent: "Editar el contenido de la página",
+    };
     this.backText = "Back to site list";
     this.painting = true;
     this.pageAllowed = false;
@@ -205,7 +221,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         icon="icons:cancel"
         @click="${this._cancelButtonTap}"
         .hidden="${!this.editMode}"
-        label="Cancel editing"
+        label="${this.t.cancelEditing}"
         voice-command="cancel (editing)"
       ></simple-icon-button>
       <simple-icon-button
@@ -214,7 +230,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="editdetails"
         icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
-        label="Edit details"
+        label="${this.t.editDetails}"
         voice-command="edit (page) details"
       ></simple-icon-button>
       <simple-icon-button
@@ -223,7 +239,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
-        label="Add page"
+        label="${this.t.addPage}"
         voice-command="add page"
       ></simple-icon-button>
       <simple-icon-button
@@ -232,7 +248,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
-        label="Delete page"
+        label="${this.t.deletePage}"
         voice-command="delete page"
       ></simple-icon-button>
       <simple-icon-button
@@ -241,7 +257,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="outlinebutton"
         icon="hax:site-map"
         @click="${this._outlineButtonTap}"
-        label="Edit site outline"
+        label="${this.t.editSiteOutline}"
         voice-command="edit site outline"
       ></simple-icon-button>
       <simple-icon-button
@@ -257,22 +273,22 @@ class HAXCMSSiteEditorUI extends LitElement {
         >${this.backText}</simple-tooltip
       >
       <simple-tooltip for="cancelbutton" position="right" offset="14"
-        >Cancel editing</simple-tooltip
+        >${this.t.cancelEditing}</simple-tooltip
       >
       <simple-tooltip for="editbutton" position="right" offset="14"
         >${this.__editText}</simple-tooltip
       >
       <simple-tooltip for="editdetails" position="right" offset="14"
-        >Edit details</simple-tooltip
+        >${this.t.editDetails}</simple-tooltip
       >
       <simple-tooltip for="deletebutton" position="right" offset="14"
-        >Delete page</simple-tooltip
+        >${this.t.deletePage}</simple-tooltip
       >
       <simple-tooltip for="addbutton" position="right" offset="14"
-        >Add page</simple-tooltip
+        >${this.t.addPage}</simple-tooltip
       >
       <simple-tooltip for="outlinebutton" position="right" offset="14"
-        >Edit site outline</simple-tooltip
+        >${this.t.editSiteOutline}</simple-tooltip
       >
       <simple-tooltip for="manifestbutton" position="right" offset="14"
         >${this.__settingsText}</simple-tooltip
@@ -456,9 +472,17 @@ class HAXCMSSiteEditorUI extends LitElement {
           })
         );
       }
-      if (propName == "dashboardOpened") {
+      if (propName == "dashboardOpened" || propName == "t") {
         // observer
-        this._dashboardOpenedChanged(this[propName], oldValue);
+        this._dashboardOpenedChanged(this.dashboardOpened);
+      }
+      // make sure edit matches but state doesnt shift
+      if (propName === "t") {
+        if (this.editMode) {
+          this.__editText = this.t.savePageContent;
+        } else {
+          this.__editText = this.t.editPageContent;
+        }
       }
     });
   }
@@ -578,12 +602,12 @@ class HAXCMSSiteEditorUI extends LitElement {
     }
     super.disconnectedCallback();
   }
-  _dashboardOpenedChanged(newValue, oldValue) {
+  _dashboardOpenedChanged(newValue) {
     if (newValue) {
-      this.__settingsText = "Close site settings";
+      this.__settingsText = this.t.closeSiteSettings;
       this.icon = "icons:cancel";
     } else if (!newValue) {
-      this.__settingsText = "Edit site settings";
+      this.__settingsText = this.t.editSiteSettings;
       this.icon = "hax:site-settings";
     }
   }
@@ -828,7 +852,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       composed: true,
       cancelable: false,
       detail: {
-        title: "Edit site outline",
+        title: this.t.editSiteOutline,
         styles: {
           "--simple-modal-width": "70vw",
           "--simple-modal-max-width": "70vw",
@@ -873,11 +897,11 @@ class HAXCMSSiteEditorUI extends LitElement {
     if (newValue) {
       // enable it some how
       this.__editIcon = "icons:save";
-      this.__editText = "Save page content";
+      this.__editText = this.t.savePageContent;
     } else {
       // disable it some how
       this.__editIcon = "hax:page-edit";
-      this.__editText = "Edit page content";
+      this.__editText = this.t.editPageContent;
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

@@ -26,5 +26,13 @@
   "search": "Buscar",
   "results": "resultados",
   "found": "Fundar",
-  "typeAtLeast3LettersToStartSearch": "Escriba al menos 3 letras para iniciar la búsqueda"
+  "typeAtLeast3LettersToStartSearch": "Escriba al menos 3 letras para iniciar la búsqueda",
+  "backToSiteList": "Volver a la lista de sitios",
+  "cancelEditing": "Cancelar edición",
+  "editDetails": "Editar detalles",
+  "addPage": "Añadir página",
+  "deletePage": "Eliminar página",
+  "editSiteOutline": "Editar esquema del sitio",
+  "closeSiteSettings": "Cerrar la configuración del sitio",
+  "editSiteSettings": "Editar la configuración del sitio"
 }
