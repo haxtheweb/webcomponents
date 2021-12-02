@@ -681,7 +681,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ? !!this.value
             : this.type === "radio"
             ? this.value === (option || {}).value
-            : (this.value || []).includes((option || {}).value),
+            : (this.value || []).includes &&
+              (this.value || []).includes((option || {}).value),
         icon = this.getOptionIcon(checked);
       return html`
         <span class="input-option" part="option-inner">
