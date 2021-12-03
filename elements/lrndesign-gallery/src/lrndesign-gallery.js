@@ -16,7 +16,9 @@ import "./lib/lrndesign-gallery-masonry.js";
  * @element lrndesign-gallery
  * @lit-html
  * @lit-element
- * @demo demo/index.html
+ * @demo demo/index.html Carousel Layout
+ * @demo demo/grid.html Grid Layout
+ * @demo demo/masonry.html Masonry Layout
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -205,6 +207,9 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             ? details.querySelector(query)
             : undefined,
         title = figheading ? figheading.innerHTML : "";
+      [...figure.querySelectorAll("figcaption,img")].forEach((el) =>
+        el.setAttribute("style", "flex:1 1 auto")
+      );
       if (figheading) figheading.remove();
       sources.push({
         alt: alt,

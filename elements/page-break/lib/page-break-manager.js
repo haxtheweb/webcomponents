@@ -13,38 +13,40 @@ export class PageBreakManagerEl extends HTMLElement {
   getParent(el, rel = null) {
     var prevNode = null,
       targetNode = null;
-    if (rel === "indent") {
-      // get prev sibling
-      this.target.querySelectorAll("page-break").forEach((node) => {
-        if (node === el) {
-          targetNode = prevNode;
-        }
-        prevNode = node;
-      });
-    } else if (rel === "outdent") {
-      // get parent
-      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
-        targetNode = this.target.querySelector(
-          `page-break[path="${el.parent}"]`
-        );
-        // get parent of parent
-        if (
-          this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
-        ) {
+    if (this.target) {
+      if (rel === "indent") {
+        // get prev sibling
+        this.target.querySelectorAll("page-break").forEach((node) => {
+          if (node === el) {
+            targetNode = prevNode;
+          }
+          prevNode = node;
+        });
+      } else if (rel === "outdent") {
+        // get parent
+        if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
           targetNode = this.target.querySelector(
-            `page-break[path="${targetNode.parent}"]`
+            `page-break[path="${el.parent}"]`
+          );
+          // get parent of parent
+          if (
+            this.target.querySelector(`page-break[path="${targetNode.parent}"]`)
+          ) {
+            targetNode = this.target.querySelector(
+              `page-break[path="${targetNode.parent}"]`
+            );
+          }
+          {
+            targetNode = null;
+          }
+        }
+      } else {
+        // get parent
+        if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
+          targetNode = this.target.querySelector(
+            `page-break[path="${el.parent}"]`
           );
         }
-        {
-          targetNode = null;
-        }
-      }
-    } else {
-      // get parent
-      if (this.target.querySelector(`page-break[path="${el.parent}"]`)) {
-        targetNode = this.target.querySelector(
-          `page-break[path="${el.parent}"]`
-        );
       }
     }
     return targetNode;
@@ -53,26 +55,47 @@ export class PageBreakManagerEl extends HTMLElement {
    * get all elements between a target and a selector; inspired by
    * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
    */
-  elementsBetween(elem, selector = "page-break", filter) {
+  elementsBetween(
+    elem,
+    selector = "page-break",
+    filter,
+    direction = "nextElementSibling"
+  ) {
     // Setup siblings array
     var siblings = [];
     // Get the next sibling element
-    elem = elem.nextElementSibling;
+    elem = elem[direction];
     // As long as a sibling exists
     while (elem) {
       // If we've reached our match, bail
       if (elem.matches(selector)) break;
       // If filtering by a selector, check if the sibling matches
       if (filter && !elem.matches(filter)) {
-        elem = elem.nextElementSibling;
+        elem = elem[direction];
         continue;
       }
       // Otherwise, push it to the siblings array
       siblings.push(elem);
-      // Get the next sibling element
-      elem = elem.nextElementSibling;
+      // Get the sibling element
+      elem = elem[direction];
     }
     return siblings;
+  }
+  /**
+   * Return the previous page-break relative to a target element.
+   * This is useful for finding the page-break associated with an element in the page
+   */
+  associatedPageBreak(elem) {
+    // Get the next sibling element
+    elem = elem.previousElementSibling;
+    // As long as a sibling exists
+    while (elem) {
+      // If we've reached our match, bail
+      if (elem.matches("page-break")) break;
+      // Get the prev sibling element
+      elem = elem.previousElementSibling;
+    }
+    return elem;
   }
 
   // common between element queries
@@ -134,20 +157,12 @@ export class PageBreakManagerEl extends HTMLElement {
 
   connectedCallback() {
     window.addEventListener(
-      "vaadin-router-location-changed",
-      this.routeChanged.bind(this)
-    );
-    window.addEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "vaadin-router-location-changed",
-      this.routeChanged.bind(this)
-    );
     window.removeEventListener(
       "page-break-registration",
       this.registerPageBreak.bind(this)
@@ -167,10 +182,6 @@ export class PageBreakManagerEl extends HTMLElement {
         );
       }
     }, 500);
-  }
-  // vaadin route changed
-  routeChanged(e) {
-    console.log(e.detail);
   }
   registerPageBreak(e) {
     if (e.detail.action === "add") {

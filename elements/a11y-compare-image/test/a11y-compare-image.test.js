@@ -1,87 +1,59 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
 import "../a11y-compare-image.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("a11y-compare-image instantiates", async () => {
-    const el = await fixture(
-      html` <a11y-compare-image title="test-title"></a11y-compare-image> `
+describe("Image comparison", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <a11y-compare-image opacity>
+      <h2 slot="heading">Matterhorn comparison</h2>
+      <p slot="description">
+        The image on the top or when slider is moved all the way to the right is
+        the <span id="cloudy">Matterhorn on a cloudy day without snow</span>. As
+        you move the slider to the left, the image below it reveals the
+        <span id="snowy">Matterhorn on a clear day with snow</span>.
+      </p>
+      <img
+        slot="top"
+        aria-describedBy="cloudy"
+        .src="${new URL("../demo/images/Matterhorn01.png", import.meta.url)
+          .href}"
+        alt="Matterhorn without snow"
+      />
+      <img
+        slot="bottom"
+        aria-describedBy="snowy"
+        .src="${new URL("../demo/images/Matterhorn02.png", import.meta.url)
+          .href}"
+        alt="Matterhorn with snow"
+      />
+    </a11y-compare-image>`);
+  });
+  it("slotted in text", () => {
+    const slot = element.shadowRoot.querySelector('slot[name="heading"]');
+    expect(slot).to.exist;
+    expect(slot.assignedNodes({ flatten: true })[0].textContent).to.equal(
+      "Matterhorn comparison"
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
   });
-});
-
-/*
- * A11y Accessibility tests
- */
-describe("A11y/chai axe tests", () => {
-  it("a11y-compare-image passes accessibility test", async () => {
-    const el = await fixture(html` <a11y-compare-image></a11y-compare-image> `);
-    await expect(el).to.be.accessible();
+  it("slot for description exists", () => {
+    const slot = element.shadowRoot.querySelector('slot[name="description"]');
+    expect(slot).to.exist;
+    expect(slot.assignedNodes({ flatten: true })[0]).to.exist;
   });
-  it("a11y-compare-image passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<a11y-compare-image
-        aria-labelledby="a11y-compare-image"
-      ></a11y-compare-image>`
+  it("renders top image", () => {
+    const container = element.shadowRoot.querySelector("#container");
+    expect(container).to.exist;
+    expect(container.style.backgroundImage).to.contain(
+      "images/Matterhorn01.png"
     );
-    await assert.isNotAccessible(el);
   });
-});
+  it("renders bottom image", () => {
+    const layer = element.shadowRoot.querySelector("#layer");
+    expect(layer).to.exist;
+    expect(layer.style.backgroundImage).to.contain("images/Matterhorn02.png");
+  });
 
-/*
-// Custom properties test
-describe("Custom Property Test", () => {
-  it("a11y-compare-image can instantiate a element with custom properties", async () => {
-    const el = await fixture(html`<a11y-compare-image .foo=${'bar'}></a11y-compare-image>`);
-    expect(el.foo).to.equal('bar');
-  })
-})
-*/
-
-/*
-// Test if element is mobile responsive
-describe('Test Mobile Responsiveness', () => {
-    before(async () => {z   
-      await setViewport({width: 375, height: 750});
-    })
-    it('sizes down to 360px', async () => {
-      const el = await fixture(html`<a11y-compare-image ></a11y-compare-image>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('360px');
-    })
-}) */
-
-/*
-// Test if element sizes up for desktop behavior
-describe('Test Desktop Responsiveness', () => {
-    before(async () => {
-      await setViewport({width: 1000, height: 1000});
-    })
-    it('sizes up to 410px', async () => {
-      const el = await fixture(html`<a11y-compare-image></a11y-compare-image>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('410px');
-    })
-    it('hides mobile menu', async () => {
-      const el await fixture(html`<a11y-compare-image></a11y-compare-image>`);
-      const hidden = el.getAttribute('hidden');
-      expect(hidden).to.equal(true);
-    })
-}) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
+  });
 });

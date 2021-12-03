@@ -1,30 +1,21 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../simple-picker.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("simple-picker instantiates", async () => {
-    const el = await fixture(
+describe("simple-picker test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html` <simple-picker title="test-title"></simple-picker> `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("simple-picker passes accessibility test", async () => {
     const el = await fixture(html` <simple-picker></simple-picker> `);
@@ -78,8 +69,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

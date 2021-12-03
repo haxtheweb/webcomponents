@@ -439,7 +439,6 @@ export const HaxFields = [
       color: var(--hax-ui-color-accent);
     }
     hax-preferences-dialog::part(haxlink) {
-      font-size: var(--hax-ui-font-size-xl);
       display: block;
       padding: var(--hax-ui-spacing-lg);
     }

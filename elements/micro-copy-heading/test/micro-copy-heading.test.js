@@ -1,30 +1,21 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../micro-copy-heading.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("micro-copy-heading instantiates", async () => {
-    const el = await fixture(
+describe("micro-copy-heading test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(
       html` <micro-copy-heading title="test-title"></micro-copy-heading> `
     );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("micro-copy-heading passes accessibility test", async () => {
     const el = await fixture(html` <micro-copy-heading></micro-copy-heading> `);
@@ -80,8 +71,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

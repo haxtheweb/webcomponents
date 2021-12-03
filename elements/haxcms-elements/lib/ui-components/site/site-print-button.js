@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -69,9 +68,8 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
-        .aria-label="${this.makeLabel(this.type, this.t)}"
+        label="${this.makeLabel(this.type, this.t)}"
         ?disabled="${this.disabled}"
-        .part="${this.editMode ? `edit-mode-active` : ``}"
       ></simple-icon-button-lite>
       <simple-tooltip
         .for="btn${this.type}"
@@ -138,13 +136,13 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   makeLabel(type, t) {
     switch (type) {
       case "page":
-        return html`${t.printPage}`;
+        return `${t.printPage}`;
         break;
       case "site":
-        return html`${t.printSite}`;
+        return `${t.printSite}`;
         break;
       default:
-        return html`${t.printOutline}`;
+        return `${t.printOutline}`;
         break;
     }
   }

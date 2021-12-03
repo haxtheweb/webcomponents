@@ -61,7 +61,6 @@ class UserAction extends HTMLElement {
           this.observer = new IntersectionObserver(
             this.handleIntersectionCallback.bind(this),
             {
-              root: document.rootElement,
               rootMargin: "0px",
               threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
             }
@@ -125,7 +124,7 @@ class UserAction extends HTMLElement {
     window.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
-          namespace: `${this.tag}.haxProperties`,
+          namespace: `user-action.haxProperties`,
           localesPath: new URL("./locales", import.meta.url).href,
           locales: ["es"],
         },

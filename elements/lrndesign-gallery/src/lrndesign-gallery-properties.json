@@ -8,5 +8,10 @@
     "type": "String",
     "reflect": true,
     "attribute": "responsive-size"
+  },
+  "editMode": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "edit-mode"
   }
 }

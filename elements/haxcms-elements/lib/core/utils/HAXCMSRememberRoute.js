@@ -1,4 +1,5 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
 
 function localStorageGet(name) {
@@ -18,20 +19,17 @@ function localStorageSet(name, newItem) {
 }
 
 const HAXCMSRememberRoute = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
       const resumeMessage = "Resume where you left off last session?";
       this.__evaluateRoute = false;
-      if (this.t) {
-        this.t.resumeMessage = resumeMessage;
-        this.t.resume = "Resume";
-      } else {
-        this.t = {
-          resumeMessage: resumeMessage,
-          resume: "Resume",
-        };
-      }
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        resumeMessage: resumeMessage,
+        resume: "Resume",
+      };
       autorun((reaction) => {
         const activePathName = toJS(store.location.pathname);
         if (activePathName && this.__evaluateRoute) {

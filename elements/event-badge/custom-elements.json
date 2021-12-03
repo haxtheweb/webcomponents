@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "event-badge",
+      "path": "./event-badge.js",
+      "description": "`event-badge`\n`a conference style badge`"
+    },
+    {
+      "name": "event-badge",
+      "path": "./src/event-badge.js",
+      "description": "`event-badge`\n`a conference style badge`"
+    }
+  ]
+}

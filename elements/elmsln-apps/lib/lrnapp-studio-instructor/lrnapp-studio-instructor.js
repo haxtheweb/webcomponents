@@ -47,17 +47,21 @@ class LrnappStudioInstructor extends PolymerElement {
         padding: .8em;
       }
       paper-dialog {
-        width: 70vw;
-        min-height:50vh;
+        width: 90vw;
+        min-height:90vh;
         z-index: 1 !important;
       }
       vaadin-grid-table-body > vaadin-grid-cell-content {
         height: unset !important;
       }
+      app-header {
+        padding: 0;
+        margin: 0;
+      }
       app-toolbar {
         background-color: #4285f4;
         color: #fff;
-        margin: 20px 0;
+        margin:0;
       }
       #loading {
         width: 100%;
@@ -156,11 +160,24 @@ class LrnappStudioInstructor extends PolymerElement {
       lrndesign-avatar {
         display: inline-flex;
       }
+      @media (max-width: 700px) {
+        lrndesign-avatar {
+          display: none !important;
+        }
+        [main-title] {
+          font-size: 12px;
+        }
+      }
+      [main-title] {
+        font-size:14px;
+        max-width: 30vw;
+        overflow: hidden;
+      }
       .avatar-label {
         display: inline-flex;
         margin-left: 12px;
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 14px;
       }
       .assignment-button {
         height: 24px;
@@ -314,10 +331,10 @@ class LrnappStudioInstructor extends PolymerElement {
         </vaadin-grid-column>
       </template>
     </vaadin-grid>
-    <paper-dialog id="dialog" style="overflow: visible;" no-cancel-on-outside-click no-cancel-on-esc-key>
+    <paper-dialog id="dialog" style="overflow: scroll;" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>
-          <span style="width:15em;">
+          <span style="width:35vw;">
             <simple-icon-button on-click="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></simple-icon-button>
             <simple-icon-button on-click="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></simple-icon-button>
             <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
@@ -325,13 +342,13 @@ class LrnappStudioInstructor extends PolymerElement {
           </span>
           <simple-icon-button on-click="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></simple-icon-button>
           <simple-icon-button on-click="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></simple-icon-button>
-          <span style="font-weight:bold;" main-title>Assignment: [[activeData.assignment.title]]</span>
+          <span main-title>Assignment: [[activeData.assignment.title]]</span>
           <button dialog-dismiss><simple-icon icon="close"></simple-icon> Close</button>
         </app-toolbar>
       </app-header>
-      <div style="height:50vh;max-width:100%;overflow-y:scroll;">
+      <div style="min-height:50vh;max-width:100%;">
         <div hidden$="[[!activeData.submission]]">
-          <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar></lrnapp-studio-submission-page>
+          <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar modaled></lrnapp-studio-submission-page>
         </div>
         <div hidden$="[[activeData.submission]]">
           <div>
@@ -605,6 +622,10 @@ class LrnappStudioInstructor extends PolymerElement {
       } else {
         this.dataTypeText = "Submissions";
       }
+      // ensure we resize grid appropriately after data change
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 0);
     }
   }
   /**
@@ -838,11 +859,11 @@ class LrnappStudioInstructor extends PolymerElement {
             typeof this.activeData.student.assignments[newassignment.id].id !==
             typeof undefined
           ) {
+            this.set("activeData.submission", {});
             this.set(
               "activeData.submission",
               this.activeData.student.assignments[newassignment.id]
             );
-            this.set("activeData.submission", {});
             this.set(
               "route.path",
               this.endPoint +

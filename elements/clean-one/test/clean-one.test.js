@@ -4,33 +4,22 @@ window.process = window.process || {
     NODE_ENV: "development",
   },
 };
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../clean-one.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("clean-one instantiates", async () => {
-    const el = await fixture(
-      html` <clean-one title="test-title"></clean-one> `
-    );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("clean-one test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <clean-one title="test-title"></clean-one> `);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("clean-one passes accessibility test", async () => {
     const el = await fixture(html` <clean-one></clean-one> `);
@@ -84,8 +73,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

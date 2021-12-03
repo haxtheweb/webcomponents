@@ -1,0 +1,122 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Image comparison",
+    "description": "Simple element to allow one image to swipe over top of the other.",
+    "icon": "image:compare",
+    "color": "orange",
+    "groups": ["Image", "Media"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "bottomSrc",
+        "source2": "topSrc",
+        "title": "title"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "opacity",
+        "title": "Slider Behavior",
+        "description": "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
+        "inputMethod": "boolean",
+        "icon": "image:compare"
+      },
+      {
+        "property": "accentColor",
+        "title": "Slider Accent Color",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Slider Accent Color, Dark",
+        "inputMethod": "boolean"
+      },
+      {
+        "slot": "heading",
+        "title": "Title",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "description",
+        "title": "Description",
+        "description": "Recommended description for accessibility.",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "topSrc",
+        "title": "Top image",
+        "description": "The base image to swipe over",
+        "inputMethod": "haxupload",
+        "validationType": "url",
+        "required": true
+      },
+      {
+        "property": "topAlt",
+        "title": "Top image alt text",
+        "description": "Required alternate text for accessibility",
+        "inputMethod": "alt",
+        "required": true
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Bottom image",
+        "description": "The base image to swipe over",
+        "inputMethod": "haxupload",
+        "validationType": "url",
+        "required": true
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Bottom image alt text",
+        "description": "Required alternate text for accessibility",
+        "inputMethod": "alt",
+        "required": true
+      },
+      {
+        "property": "position",
+        "title": "Slider's Initial Position",
+        "description": "Number from 0 to 100",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 100
+      }
+    ],
+    "advanced": [
+      {
+        "property": "topDescriptionId",
+        "title": "Top aria-decsribedby",
+        "description": "Space-separated id list for long descriptions that appear elsewhere",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "bottomDescriptionId",
+        "title": "Bottom aria-decsribedby",
+        "description": "Space-separated id list for long descriptions that appear elsewhere",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "image-compare-slider",
+      "properties": {
+        "accentColor": "indigo",
+        "dark": true,
+        "opacity": true,
+        "topSrc": "//placekitten.com/400/200",
+        "topAlt": "",
+        "bottomSrc": "//placekitten.com/400/200",
+        "bottomAlt": ""
+      },
+      "content": ""
+    }
+  ]
+}

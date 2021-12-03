@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -8,26 +8,21 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '@polymer/paper-icon-button/paper-icon-button.js';
-      import '@polymer/iron-icons/iron-icons.js';
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+      import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
       import '../simple-tooltip.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        margin: 50px;
+      }
+    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic simple-tooltip demo</h3>
-      <demo-snippet>
-        <template>
-          <paper-icon-button
-          id="edit"
-          icon="icons:create"
-        ></paper-icon-button>
-        <simple-tooltip for="edit" animation-delay="0">Some tip you</simple-tooltip>
-        </template>
-      </demo-snippet>
-    </div>
+    <simple-icon-button-lite
+    id="edit"
+    icon="icons:create"
+  >Edit</simple-icon-button-lite>
+  <simple-tooltip for="edit" animation-delay="0">Some tip you</simple-tooltip>
   </body>
 </html>

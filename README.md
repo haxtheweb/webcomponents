@@ -23,26 +23,30 @@ ELMS:LN produced web components for any project
 
 ### Quick Install
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/elmsln/lrnwebcomponents/master/scripts/lrnwebcomponentsme.sh -o lrnwebcomponentsme.sh && sh lrnwebcomponentsme.sh
+curl -fsSL https://raw.githubusercontent.com/elmsln/lrnwebcomponents/master/scripts/lrnwebcomponentsme.sh -o lrnwebcomponentsme.sh && sh lrnwebcomponentsme.sh
 ```
 
 ### Manual Install
 
 ```bash
-$ git clone https://github.com/elmsln/lrnwebcomponents.git
-$ cd lrnwebcomponents
-$ yarn global add @wcfactory/cli
-$ yarn global add polymer-cli
-$ yarn global add lerna
-$ yarn global add web-component-analyzer
-$ yarn install
+git clone https://github.com/elmsln/lrnwebcomponents.git
+cd lrnwebcomponents
+yarn global add @wcfactory/cli
+yarn global add polymer-cli
+yarn global add @web/test-runner
+yarn global add @web/test-runner-commands
+yarn global add @web/test-runner-puppeteer
+yarn global add @web/test-runner-playwright
+yarn global add lerna
+yarn global add web-component-analyzer
+yarn install
 ```
 
 ### Syncing Your Fork
 ```
-$ git remote add upstream https://github.com/elmsln/lrnwebcomponents.git
-$ git fetch upstream
-$ git pull
+git remote add upstream https://github.com/elmsln/lrnwebcomponents.git
+git fetch upstream
+git pull
 ```
 
 ## Windows
@@ -54,46 +58,49 @@ $ git pull
 
 To properly configure git endlines for Windows, run this configuration
 ```bash
-$ git config --global core.autocrlf true
+git config --global core.autocrlf true
 ```
 
 ```bash
-$ git clone https://github.com/elmsln/lrnwebcomponents.git
-$ cd lrnwebcomponents
-$ yarn global add symlink-dir
-$ yarn global add @wcfactory/cli
-$ yarn global add polymer-cli
-$ yarn global add lerna
-$ yarn global add web-component-analyzer
-$ yarn install
+git clone https://github.com/elmsln/lrnwebcomponents.git
+cd lrnwebcomponents
+yarn global add @wcfactory/cli
+yarn global add polymer-cli
+yarn global add @web/test-runner
+yarn global add @web/test-runner-commands
+yarn global add @web/test-runner-puppeteer
+yarn global add @web/test-runner-playwright
+yarn global add lerna
+yarn global add web-component-analyzer
+yarn install
 ```
 
 
 ## To work on any element in our repo
 ```bash
-$ cd elements/ELEMENTNAME
-$ yarn start
+cd elements/ELEMENTNAME
+yarn start
 ```
 Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR.
 ## Scripts
 
-- `$ wcf element`
+- `wcf element`
     -  Create a new component.
     -  Needs to be within the WCFactory (https://github.com/elmsln/WCFactory) to use.
-- `$ yarn run rebuild-wcfcache`
+- `yarn run rebuild-wcfcache`
     - Rebuild caches as to what web component libraries can be used
-- `$ yarn test`
+- `yarn test`
     -  Run tests on ALL lrnwebcomponents.
-- `$ yarn run build`
+- `yarn run build`
     -  Run build on ALL lrnwebcomponents.
-- `$ yarn run storybook`
+- `yarn run storybook`
     - Run storybook
-- `$ yarn run build-storybook`
+- `yarn run build-storybook`
     - Build storybook for deployment
-- `$ lerna publish`
+- `lerna publish`
     - Publish ALL lrnwebcomponents' elements to npmjs.com
 
-- `$ lerna run build --no-bail`
+- `lerna run build --no-bail`
     - Run `build` command in all projects in the repo, don't bail if there's an issue
 
 ## Web Component development
@@ -108,13 +115,13 @@ Run `wcf element` to make a new element. Go to the new element following the dir
 ### Example development on a web component
 
 ```bash
-$ cd /Sites/lrnwebcomponents
-$ yarn start
+cd /Sites/lrnwebcomponents
+yarn start
 
 # SHIFT + CTRL + T to open a new tab in Terminal
 
-$ cd elements your-card  # or any other web component
-$ yarn run dev
+cd elements your-card  # or any other web component
+yarn run dev
 ```
 
 Make a change to the web component and save. The gulpfile will handle transpiling the element down to ES5 and will bring in the HTML and Sass into the template in the web component.
@@ -124,14 +131,14 @@ Make a change to the web component and save. The gulpfile will handle transpilin
 To test all lrnwebcomponents, run `yarn test` from the root of the repo. If you only want to test the web component you're working on:
 
 ```bash
-$ cd elements/your-card
-$ yarn test
+cd elements/your-card
+yarn test
 ```
 
 Also, if your tests are failing and you want access to a live browser to investigate why, the following flag will keep the browser open.
 
 ```bash
-$ yarn test -- -p
+yarn test -- -p
 ```
 
 Then open the URL that will be printed in the terminal. It looks something like this: `http://localhost:8081/components/@@lrnwebcomponents/lrnwebcomponents/generated-index.html?cli_browser_id=0`.
@@ -143,7 +150,7 @@ We've added [Storybook](https://storybook.js.org/) to lrnwebcomponents as a way 
 To run storybook
 
 ```bash
-$ yarn run storybook
+yarn run storybook
 ```
 
 This will start a web server on port 9001. Navigate in your browser to `http://localhost:9001` to see Storybook in action. Storybook will watch for file changes and reload the browser automatically for you. This is a little slow at the moment, but we'll look into speeding this up.
@@ -151,7 +158,7 @@ This will start a web server on port 9001. Navigate in your browser to `http://l
 To export the storybook static site
 
 ```bash
-$ yarn run build-storybook
+yarn run build-storybook
 ```
 
 This places a build of the storybook site in the .storybook_out directory.

@@ -55,6 +55,56 @@ class Store {
     });
   }
   /**
+   * Get a unique slug name / path based on existing slug, page data and if we are to automatically generate
+   * @param {*} slug
+   * @param {*} page
+   * @param {*} pathAuto
+   * @returns
+   */
+  getUniqueSlugName(slug, page = null, pathAuto = false) {
+    let rSlug = slug;
+    // check for pathauto setting and this having a parent
+    if (page != null && page.parent != null && page.parent != "" && pathAuto) {
+      let item = page;
+      let pieces = [slug];
+      while ((item = this.findItem(item.parent))) {
+        let tmp = item.slug.split("/");
+        pieces.unshift(tmp.pop());
+      }
+      slug = pieces.join("/");
+      rSlug = slug;
+    }
+    let loop = 0;
+    let ready = false;
+    // while not ready, keep checking
+    while (!ready) {
+      ready = true;
+      // loop through items
+      for (var key in this.manifest.items) {
+        let item = this.manifest.items[key];
+        // if our slug matches an existing
+        if (rSlug == item.slug) {
+          // if we have a page, and it matches that, bail out cause we have it already
+          if (page != null && item.id == page.id) {
+            return rSlug;
+          } else {
+            // increment the number
+            loop++;
+            // append to the new slug
+            rSlug = slug + "-" + loop;
+            // force a new test
+            ready = false;
+          }
+        }
+      }
+    }
+    return rSlug
+      .toLowerCase()
+      .split(" ")
+      .join("-")
+      .replace(/[^0-9\-\/a-z]/gi, "");
+  }
+  /**
    * Global toast bridge so we don't have to keep writing custom event
    */
   toast(
@@ -86,7 +136,7 @@ class Store {
    * Load a manifest / site.json / JSON outline schema
    * and prep it for usage in HAXcms
    */
-  loadManifest(manifest, target = null) {
+  async loadManifest(manifest, target = null) {
     // support a custom target or ensure event fires off window
     if (target == null && window) {
       target = window;
@@ -123,11 +173,27 @@ class Store {
       delete manifest.metadata.fields;
     }
     // repair slug not being in earlier builds of json schema
-    manifest.items.forEach((item, index, array) => {
+    await manifest.items.forEach((item, index, array) => {
+      // if we did not have a slug, generate one off location
       if (!item.slug) {
         array[index].slug = item.location
           .replace("pages/", "")
           .replace("/index.html", "");
+      }
+      // we default published to true if not set
+      // this avoids constantly checking downstream
+      if (!item.metadata.hasOwnProperty("published")) {
+        array[index].metadata.published = true;
+      }
+      // fix order typing
+      array[index].order = Number(array[index].order);
+      // we default locked to false if not set
+      if (!item.metadata.hasOwnProperty("locked")) {
+        array[index].metadata.locked = false;
+      }
+      // we default locked to false if not set
+      if (!item.metadata.hasOwnProperty("status")) {
+        array[index].metadata.status = "";
       }
     });
     var site = new JsonOutlineSchema();
@@ -152,6 +218,14 @@ class Store {
         composed: true,
         cancelable: false,
         detail: manifest,
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-item-rebuild", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
       })
     );
   }
@@ -304,9 +378,8 @@ class Store {
    * Return the site title
    */
   get siteTitle() {
-    const manifest = this.manifest;
-    if (manifest && manifest.title) {
-      return manifest.title;
+    if (this.manifest && this.manifest.title) {
+      return this.manifest.title;
     }
     return "";
   }
@@ -491,16 +564,22 @@ class Store {
   /**
    * shortcut to find an item in the manifest based on id
    */
-  async findItemAsObject(id, attrLookup = "id", scope = "item") {
+  async findItemAsObject(
+    id,
+    attrLookup = "id",
+    scope = "item",
+    useToJS = true
+  ) {
     if (this.manifest && id) {
-      const tmpItem = toJS(
-        await this.manifest.items.find((item) => {
-          if (item[attrLookup] !== id) {
-            return false;
-          }
-          return true;
-        })
-      );
+      var tmpItem = await this.manifest.items.find((item) => {
+        if (item[attrLookup] !== id) {
+          return false;
+        }
+        return true;
+      });
+      if (useToJS) {
+        tmpItem = toJS(tmpItem);
+      }
       if (scope == "item") {
         return tmpItem;
       } else if (scope == "parent" && tmpItem.parent) {
@@ -511,7 +590,88 @@ class Store {
     }
     return null;
   }
-
+  /**
+   * Return a clone of the manifest items list
+   */
+  getManifestItems(cloneIt = true) {
+    if (cloneIt) {
+      return toJS(this.manifest.items);
+    }
+    return this.manifest.items;
+  }
+  /**
+   * Add an item
+   */
+  async addItem(item) {
+    var schema = new JsonOutlineSchema();
+    let newItem = schema.newItem();
+    if (item.id) {
+      newItem.id = item.id;
+    }
+    if (item.indent) {
+      newItem.indent = item.indent;
+    }
+    newItem.location = item.location;
+    newItem.slug = item.slug;
+    newItem.order = item.order;
+    newItem.parent = item.parent;
+    newItem.title = item.title;
+    // metadata can be anything so whatever
+    newItem.metadata = item.metadata;
+    // all items rebuilt
+    schema.items = toJS(this.manifest.items);
+    let safeItem = { ...schema.validateItem(newItem) };
+    schema.items.push(safeItem);
+    // we already have our items, pass them in
+    var nodes = schema.itemsToNodes(schema.items);
+    // smash outline into flat to get the correct order
+    var correctOrder = schema.nodesToItems(nodes);
+    var newItems = [];
+    // build a new array in the correct order by pushing the old items around
+    for (var key in correctOrder) {
+      newItems.push(
+        schema.items.find((element) => {
+          return element.id === correctOrder[key].id;
+        })
+      );
+    }
+    this.manifest.items.replace(newItems);
+    window.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest,
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-item-rebuild", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      })
+    );
+    return this.findItem(newItem.id);
+  }
+  /**
+   * Remove an item
+   */
+  removeItem(id) {
+    const item = this.findItem(id);
+    // "new" items have not yet been added
+    if (item) {
+      if (item.metadata.status === "new") {
+        const index = this.manifest.items.indexOf(item);
+        if (index > -1) {
+          this.manifest.items.splice(index, 1);
+        }
+      } else {
+        // implies it's going to get deleted on next run
+        item.metadata.status = "delete";
+      }
+    }
+  }
   /**
    * Spider children based on criteria and return what we found
    */

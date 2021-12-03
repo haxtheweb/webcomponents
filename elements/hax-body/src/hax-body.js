@@ -19,6 +19,8 @@ import {
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -264,7 +266,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           caret-color: auto;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
-          outline: 4px solid var(--hax-contextual-action-hover-color);
+          outline: 2px solid var(--hax-contextual-action-hover-color);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
+          background-color: #eeeeee;
+          opacity: 0.8;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
+          width: 28px;
+          height: 28px;
+          content: "";
+          display: flex;
+          float: right;
+          z-index: 1;
+          position: relative;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: #eeeeee;
         }
         :host([edit-mode])
           #bodycontainer
@@ -364,6 +382,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
+        [hidden],
+        :host([hidden]),
+        #textcontextmenu.not-text {
+          display: none !important;
+        }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
           .hax-context-menu {
@@ -372,7 +395,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
-          :host(:not([tray-detail="collapsed"])) {
+          :host(:not([tray-status="collapsed"])) {
             z-index: -1;
           }
           :host([edit-mode]) #bodycontainer,
@@ -415,6 +438,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.__lockIconPath = SimpleIconsetStore.getIcon("icons:lock");
     this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
@@ -442,7 +466,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     setTimeout(() => {
       import("./lib/hax-context-behaviors.js");
-      import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
@@ -653,6 +676,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   render() {
     return html`
+      <style>
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
+          background-image: url("${this.__lockIconPath}");
+        }
+      </style>
       <div
         id="bodycontainer"
         class="ignore-activation"
@@ -693,9 +721,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
           <hax-text-editor-toolbar
             id="textcontextmenu"
-            class="hax-context-menu ignore-activation"
+            class="hax-context-menu ignore-activation ${!this.activeNode ||
+            this.activeNode.getAttribute("data-hax-lock") ||
+            (this.activeNode.parentNode &&
+              this.activeNode.parentNode.getAttribute("data-hax-lock")) ||
+            !HAXStore.isTextElement(this.activeNode)
+              ? "not-text"
+              : "is-text"}"
             .activeNode="${this.activeNode}"
-            ?hidden=${HAXStore.isGridPlateElement(this.activeNode)}
             show="always"
           >
           </hax-text-editor-toolbar>
@@ -1112,6 +1145,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       "hax-context-item-selected",
       this._haxContextOperation.bind(this)
     );
+    window.addEventListener(
+      "hax-toggle-active-node-lock",
+      this._toggleNodeLocking.bind(this)
+    );
     window.addEventListener("click", this.clickEvent.bind(this));
     window.addEventListener("blur", this.blurEvent.bind(this));
     window.addEventListener("keydown", this._onKeyDown.bind(this));
@@ -1131,6 +1168,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * HTMLElement
    */
   disconnectedCallback() {
+    window.removeEventListener(
+      "hax-toggle-active-node-lock",
+      this._toggleNodeLocking.bind(this)
+    );
     window.removeEventListener("click", this.clickEvent.bind(this));
     window.removeEventListener("blur", this.blurEvent.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
@@ -1147,6 +1188,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     );
     this._observer.disconnect();
     super.disconnectedCallback();
+  }
+  // we were told node was locked or unlocked, toggle to ensure we rerender
+  // since it's an attribute setting
+  _toggleNodeLocking(e) {
+    if (!e.detail.lock) {
+      this.contextMenus.plate.disableDuplicate = false;
+      this.contextMenus.plate.disableOps = false;
+      this.contextMenus.plate.disableItemOps = false;
+      this.contextMenus.plate.canMoveElement = this.canMoveElement;
+      e.detail.node.setAttribute("contenteditable", true);
+      this.setAttribute("contenteditable", true);
+    } else {
+      this.contextMenus.plate.disableDuplicate = true;
+      this.contextMenus.plate.disableOps = true;
+      this.contextMenus.plate.disableItemOps = true;
+      this.contextMenus.plate.canMoveElement = false;
+      e.detail.node.removeAttribute("contenteditable");
+      this.removeAttribute("contenteditable");
+    }
+    this.requestUpdate();
   }
   /**
    * Keep the context menu visible if needed
@@ -1444,15 +1505,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {object} grid
    * @returns {array}
    */
-  getAllSlotConfig(grid) {
-    if (!grid) grid = this.getParentGrid(node);
+  getAllSlotConfig(node) {
+    if (!node) return;
+    let grid = this.getParentGrid(node);
     return !!grid && !!grid.tag
       ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
       : undefined;
   }
   /**
    *
-   * gets parent grid if given note is slotted content
+   * gets parent grid if given node is slotted content
    *
    * @param {object} node
    * @returns {object}
@@ -1466,18 +1528,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    *
    * gets slot configuration for a given slot from haxProperties given
    *
-   * @param {string} slotName
+   * @param {string} slotId
    * @param {object} props
    * @returns {object}
    */
-  getSlotConfig(slotName = "", props = {}) {
+  getSlotConfig(slotId = "", props = {}) {
     let settings = props.settings,
       matchingSlots = !!settings
         ? Object.keys(settings || {})
             .map((group) =>
               settings[group].filter(
                 (setting) =>
-                  !!setting.slot && (!slotName || setting.slot === slotName)
+                  !!setting.slot && (!slotId || setting.slot === slotId)
               )
             )
             .flat()
@@ -1820,6 +1882,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\sdraggable/g, "");
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
+    // hax-grid marker as well
+    content = content.replace(/\sdata-hax-grid/g, "");
     // remove HAX specific classes / scoping classes
     if (this.parentNode.tagName) {
       let parentTag = this.parentNode.tagName.toLowerCase();
@@ -1864,11 +1928,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   async haxDuplicateNode(node) {
     // convert the node to a hax element
     let haxElement = await nodeToHaxElement(node, null);
-    var props = HAXStore.elementList[node.tagName.toLowerCase()];
     // @see haxHooks: preProcessInsertContent
     if (HAXStore.testHook(node, "preProcessInsertContent")) {
       haxElement = await HAXStore.runHook(node, "preProcessInsertContent", [
         haxElement,
+        this.activeNode,
       ]);
     }
     if (haxElement.content == haxElement.properties.innerHTML) {
@@ -1927,7 +1991,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (
         HAXStore.elementList &&
         HAXStore.elementList[tag] &&
-        HAXStore.elementList[tag].contentEditable
+        HAXStore.elementList[tag].contentEditable &&
+        node.getAttribute("data-hax-lock") === null &&
+        node.parentNode &&
+        node.parentNode.getAttribute("data-hax-lock") === null
       ) {
         node.setAttribute("contenteditable", true);
       } else {
@@ -2416,11 +2483,47 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
 
-      case "hax-select-grid-item":
+      case "hax-select-grid":
         if (eventPath[0] && eventPath[0].eventData) {
           let target = eventPath[0].eventData;
           this.setActiveNode(target, true);
           this.positionContextMenus(target);
+        }
+        break;
+
+      case "hax-select-grid-item":
+        if (eventPath[0] && eventPath[0].eventData) {
+          let data = eventPath[0].eventData,
+            target = data.target,
+            slot = data.slot,
+            i = data.index,
+            grid = data.grid,
+            editMode = data.editMode,
+            //sets active node and positions accordingly
+            nodePosition = (node = target) => {
+              this.setActiveNode(node, true);
+              this.positionContextMenus(node);
+            },
+            //queries grid in edit mode to find targeted slot
+            targetItem = () => {
+              let matches = [...grid.children].filter((child) =>
+                  !slot || slot === ""
+                    ? !child.slot || child.slot === ""
+                    : child.slot === slot
+                ),
+                newTarget = matches.length > i ? matches[i] : target;
+              nodePosition(newTarget);
+            };
+          //some slots may not always be visible and
+          //require temporary changes to parent grid's properties
+          //so they can be visible and editable
+          if (grid && editMode) {
+            this.setGridEditMode(grid, editMode);
+            //make sure we target correct slot after dom changes
+            setTimeout(targetItem(), 500);
+          } else {
+            nodePosition();
+          }
         }
         break;
 
@@ -2717,7 +2820,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // we only allow disconnected node from container when
           // the container is a grid plate
           else if (!HAXStore.isGridPlateElement(containerNode)) {
-            activeNode = containerNode;
+            /*activeNode = containerNode;*/
           }
         }
         // ensure this is a tag we care about / have support for and
@@ -2839,6 +2942,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             console.warn(e);
           }
         }
+      } else {
+        //make sure ective node is not still in edit mode
+        if (!!this.activeNode) this.unsetGridEditMode(this.activeNode);
       }
       // force a reset when we start editing
       // the delay gives HAX / HAX endpoints some room to manipulate the DOM first
@@ -3297,8 +3403,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
       var eventPath = normalizeEventPath(e);
-      var dropSpot = eventPath[0];
-
       if (
         e.target.closest("[data-hax-layout]") &&
         e.target.parentNode != e.target.closest("[data-hax-layout]")
@@ -3310,6 +3414,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = e.originalTarget;
       } else {
         target = e.target;
+      }
+      // account for a possibly locked drop target
+      if (target.getAttribute("data-hax-lock") !== null) {
+        // exit early
+        return false;
       }
       // account for slot drop on a place holder
       if (eventPath[0].classList.contains("column")) {
@@ -3469,6 +3578,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             typeof target.focus === "function"
           ) {
             HAXStore.activeNode = target;
+            // @see haxHooks: trayDragNDropToNode
+            if (HAXStore.testHook(HAXStore.activeNode, "trayDragNDropToNode")) {
+              HAXStore.runHook(HAXStore.activeNode, "trayDragNDropToNode", [
+                HAXStore.activeNode,
+              ]);
+            }
             // fire event saying that we dropped an item and gained
             // focus which should prioritize certain actions over a
             // normal focus shift
@@ -3673,22 +3788,53 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   /**
+   * removes edit mode from grid by reverting to properties saved before editing
+   *
+   * @param {object} node node that could be a grid
+   * @memberof HaxBody
+   */
+  unsetGridEditMode(node) {
+    let settings = !node.getAttribute("data-grid-saved-settings")
+      ? undefined
+      : JSON.parse(node.getAttribute("data-grid-saved-settings"));
+    Object.keys(settings || {}).forEach((key) => (node[key] = settings[key]));
+    node.removeAttribute("data-grid-saved-settings");
+  }
+  /**
+   * saves grid settings before applying edit mode settings
+   *
+   * @param {object} node node that could be a grid
+   * @memberof HaxBody
+   */
+  setGridEditMode(node, settings) {
+    let saved = !node.getAttribute("data-grid-saved-settings")
+        ? {}
+        : JSON.parse(node.getAttribute("data-grid-saved-settings")),
+      keys = Object.keys(saved);
+    Object.keys(settings || {}).forEach((key) => {
+      //only save a setting if it hasn't alreay been saved by a sibling slot
+      if (!keys.includes(key)) saved[key] = node[key];
+      node[key] = settings[key];
+    });
+    node.setAttribute("data-grid-saved-settings", JSON.stringify(saved));
+  }
+  /**
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
     // close any open popover items
     window.SimplePopoverManager.requestAvailability().opened = false;
+    this.contextMenus.plate.disableDuplicate = false;
+    this.contextMenus.plate.disableOps = false;
+    this.contextMenus.plate.disableItemOps = false;
+    this.contextMenus.plate.canMoveElement = this.canMoveElement;
     // remove anything currently with the active class
     await this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");
     });
+
     //prevent mutation
-    if (
-      !!newValue &&
-      !!oldValue &&
-      oldValue.parentNode === newValue &&
-      HAXStore.isGridPlateElement(newValue)
-    ) {
+    if (!!newValue && !!oldValue && HAXStore.isGridPlateElement(newValue)) {
       this.__ignoreActive = true;
     }
     if (
@@ -3704,9 +3850,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // only hide if we change containers
       newValue.classList.add("hax-active");
       if (
-        HAXStore.isTextElement(newValue) ||
-        newValue.tagName === "HR" ||
-        HAXStore.isGridPlateElement(newValue)
+        (HAXStore.isTextElement(newValue) ||
+          newValue.tagName === "HR" ||
+          HAXStore.isGridPlateElement(newValue)) &&
+        newValue.getAttribute("data-hax-lock") === null &&
+        newValue.parentNode.getAttribute("data-hax-lock") === null
       ) {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
@@ -3840,6 +3988,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         );
       }
     }
+    if (
+      oldValue &&
+      oldValue.parentNode &&
+      (!newValue ||
+        !newValue.parentNode ||
+        newValue.parentNode !== oldValue.parentNode)
+    )
+      this.unsetGridEditMode(oldValue.parentNode);
   }
   /**
    * Get position from top and left of the page based on position:relative; being
@@ -3879,11 +4035,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _hideContextMenu(menu) {
     if (!menu) return;
-    let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
-    menu.visible = false;
-    menu.classList.remove("hax-context-visible", "hax-context-menu-active");
-    if (container) container.menusVisible = false;
+    menu.classList.remove("hax-context-visible");
+    menu.classList.remove("hax-context-menu-active");
   }
   /**
    * Find the next thing to tab forward to.

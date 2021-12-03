@@ -63,12 +63,22 @@
       {
         "slot": "question",
         "title": "Question",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p", "div"],
+        "editMode": {
+          "correct": false
+        }
       },
       {
         "slot": "",
         "title": "Answer",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p", "div"],
+        "editMode": {
+          "correct": true
+        }
       }
     ],
     "advanced": [
@@ -87,18 +97,24 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["colors", "image-loaded", "t"]
+    "unsetAttributes": [
+      "colors",
+      "image-loaded",
+      "t",
+      "correct",
+      "element-visible"
+    ]
   },
   "demoSchema": [
     {
       "tag": "self-check",
       "properties": {
-        "accent-color": "light-blue",
+        "accentColor": "light-blue",
         "title": "Sharks Self Check",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/480px-White_shark.jpg",
         "alt": "Great White Shark"
       },
-      "content": "<span slot=\"question\">How large can the average great white shark grow to be?</span>The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more."
+      "content": "<p slot=\"question\">How large can the average great white shark grow to be?</p><p>The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.</p>"
     }
   ]
 }

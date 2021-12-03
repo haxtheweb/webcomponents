@@ -1,10 +1,11 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
 
 function localStorageGet(name) {
   try {
-    return localStorage.getItem(name);
+    return JSON.parse(localStorage.getItem(name));
   } catch (e) {
     return false;
   }
@@ -12,41 +13,40 @@ function localStorageGet(name) {
 
 function localStorageSet(name, newItem) {
   try {
-    return localStorage.setItem(name, newItem);
+    return localStorage.setItem(name, JSON.stringify(newItem));
   } catch (e) {
     return false;
   }
 }
 
 const HAXCMSMobileMenuMixin = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
       this.menuOpen = true;
-      if (localStorageGet("hax-mobile-menu-menuOpen") != null) {
-        if (localStorageGet("hax-mobile-menu-menuOpen") == "true") {
+      this.t = this.t || {};
+      this.t.toggleMenu = "Toggle menu";
+      let status = localStorageGet("hax-mobile-menu-menuOpen");
+      if (status !== null) {
+        if (status === true) {
           this.menuOpen = true;
-        } else if (localStorageGet("hax-mobile-menu-menuOpen") == "false") {
+        } else if (status === false) {
           this.menuOpen = false;
         }
-      }
-    }
-    firstUpdated(changedProperties) {
-      if (super.firstUpdated) {
-        super.firstUpdated(changedProperties);
       }
       this.__disposer = this.__disposer ? this.__disposer : [];
       autorun((reaction) => {
         // if menu is open, and the active item changes AND we're on mobile...
         // close the menu
         if (
+          this.shadowRoot &&
           this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
           this.menuOpen &&
           toJS(store.activeId) &&
           ["sm", "xs"].includes(this.responsiveSize) &&
-          localStorageGet("hax-mobile-menu-menuOpen") == null
+          localStorageGet("hax-mobile-menu-menuOpen") === null
         ) {
-          this.__HAXCMSMobileMenuToggle({});
+          this.__HAXCMSMobileMenuToggle();
         }
         this.__disposer.push(reaction);
       });
@@ -84,17 +84,22 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           class="btn"
           icon="icons:menu"
-          label="Toggle menu"
+          label="${this.t.toggleMenu}"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
-          @click="${this.__HAXCMSMobileMenuToggle}"
+          @click="${this.__HAXCMSMobileMenuClickToggle}"
         ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsmobilemenubutton">
-          Toggle menu
+          ${this.t.toggleMenu}
         </simple-tooltip>
       `;
     }
-    __HAXCMSMobileMenuToggle(e) {
+    __HAXCMSMobileMenuClickToggle() {
+      this.__HAXCMSMobileMenuToggle();
+      //set local storage when clicking by the user
+      localStorageSet("hax-mobile-menu-menuOpen", this.menuOpen);
+    }
+    __HAXCMSMobileMenuToggle() {
       if (this.menuOpen) {
         this.menuOpen = false;
         if (this.shadowRoot.querySelector("#haxcmsmobilemenunav")) {
@@ -110,8 +115,6 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
             .removeAttribute("tabindex");
         }
       }
-      //set local storage
-      localStorageSet("hax-mobile-menu-menuOpen", this.menuOpen);
     }
     HAXCMSMobileMenu(e) {
       return html`
@@ -137,27 +140,30 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
+        // these cases only fire if the user has not changed the state themselves
+        // when the menuOpen setting is placed in local storage we no longer
+        // abide by these things
         if (
           propName == "responsiveSize" &&
-          localStorageGet("hax-mobile-menu-menuOpen") == null
+          localStorageGet("hax-mobile-menu-menuOpen") === null
         ) {
           switch (this[propName]) {
             case "sm":
               // auto close for small layouts
               if (this.menuOpen && oldValue != "xs") {
-                this.__HAXCMSMobileMenuToggle({});
+                this.__HAXCMSMobileMenuToggle();
               }
               break;
             case "xs":
               // auto close for small layouts
               if (this.menuOpen && oldValue != "sm") {
-                this.__HAXCMSMobileMenuToggle({});
+                this.__HAXCMSMobileMenuToggle();
               }
               break;
             default: {
               // auto open for larger layouts
               if (!this.menuOpen) {
-                this.__HAXCMSMobileMenuToggle({});
+                this.__HAXCMSMobileMenuToggle();
               }
             }
           }

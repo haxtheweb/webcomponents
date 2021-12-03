@@ -8,7 +8,7 @@ root = true
 # Rules for JavaScript files:
 
 [*.{js,py,json,sh,html}]
-# 4 space indentation
+# 2 space indentation
 indent_style = space
 indent_size = 2
 # No trailing spaces
@@ -19,6 +19,7 @@ end_of_line = lf
 insert_final_newline = true
 # set charset
 charset = utf-8
+
 # skip trailing whitespace on markdown files
 [*.md]
 trim_trailing_whitespace = false

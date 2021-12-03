@@ -1542,98 +1542,25 @@
     "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+    "a11y-collapse-group": "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
     "a11y-tabs": "@lrnwebcomponents/a11y-tabs/a11y-tabs.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
-    "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
     "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-    "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
     "oer-schema": "@lrnwebcomponents/oer-schema/oer-schema.js",
-    "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-    "task-list": "@lrnwebcomponents/task-list/task-list.js",
     "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
-    "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
     "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
     "meme-maker": {
       "import": "@lrnwebcomponents/meme-maker/meme-maker.js"
-    },
-    "vaadin-upload": {
-      "import": "@vaadin/vaadin-upload/vaadin-upload.js",
-      "haxProperties": {
-        "canScale": true,
-        "canPosition": true,
-        "canEditSource": true,
-        "gizmo": {
-          "title": "Vaadin upload test",
-          "icon": "hax:meme",
-          "color": "orange",
-          "groups": ["Media", "Funny"],
-          "handles": [
-            {
-              "type": "image",
-              "source": "imageUrl",
-              "title": "topText",
-              "author": "bottomText",
-              "alt": "alt",
-              "ariaDescribedby": "describedBy"
-            }
-          ],
-          "meta": {
-            "author": "ELMS:LN"
-          }
-        },
-        "settings": {
-          "configure": [
-            {
-              "property": "imageUrl",
-              "title": "Source",
-              "description": "The source url for the element this is citing.",
-              "inputMethod": "haxupload"
-            },
-            {
-              "property": "topText",
-              "title": "Top text",
-              "description": "Top text of the meme.",
-              "inputMethod": "textfield"
-            },
-            {
-              "property": "bottomText",
-              "title": "Bottom text",
-              "description": "The date this was accessed.",
-              "inputMethod": "textfield"
-            }
-          ],
-          "advanced": [
-            {
-              "property": "describedBy",
-              "title": "aria-describedby",
-              "description": "Space-separated list of IDs for elements that describe the image.",
-              "inputMethod": "textfield"
-            }
-          ]
-        },
-        "saveOptions": {
-          "wipeSlot": true
-        },
-        "demoSchema": [
-          {
-            "tag": "vaadin-upload",
-            "content": "",
-            "properties": {
-              "capture": true
-            }
-          }
-        ]
-      }
     },
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
@@ -1641,7 +1568,6 @@
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
     "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
     "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-    "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",

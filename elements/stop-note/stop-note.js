@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 
 // register the iconset
@@ -8,20 +9,13 @@ SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${new URL("./", import.meta.url).href}lib/svgs/stopnoteicons/`
 );
-
-const iconObj = {
-  "stopnoteicons:stop-icon": "Stop",
-  "stopnoteicons:warning-icon": "Warning",
-  "stopnoteicons:confirm-icon": "Confirmation",
-  "stopnoteicons:book-icon": "Notice",
-};
 /**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends remoteLinkBehavior(LitElement) {
+class StopNote extends I18NMixin(remoteLinkBehavior(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -86,11 +80,6 @@ class StopNote extends remoteLinkBehavior(LitElement) {
           float: left;
           clear: left;
           text-decoration: none;
-          color: #2196f3;
-        }
-
-        .link a:hover {
-          color: #1976d2;
         }
 
         .svg {
@@ -123,7 +112,9 @@ class StopNote extends remoteLinkBehavior(LitElement) {
           ${this.url
             ? html`
                 <div class="link">
-                  <a href="${this.url}" id="link"> More Information &gt; </a>
+                  <a href="${this.url}" id="link">
+                    ${this.t.moreInformation} &gt;
+                  </a>
                 </div>
               `
             : ``}
@@ -139,7 +130,14 @@ class StopNote extends remoteLinkBehavior(LitElement) {
     this.url = null;
     this.title = "";
     this.icon = "stopnoteicons:stop-icon";
-    this.ready = false;
+    this.t = {
+      moreInformation: "More Information",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["es"],
+    });
   }
   static get properties() {
     return {
@@ -164,10 +162,6 @@ class StopNote extends remoteLinkBehavior(LitElement) {
         type: String,
         reflect: true,
       },
-      ready: {
-        type: Boolean,
-        reflect: true,
-      },
     };
   }
   updated(changedProperties) {
@@ -185,9 +179,6 @@ class StopNote extends remoteLinkBehavior(LitElement) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    setTimeout(() => {
-      this.ready = true;
-    }, 100);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
   }
   /**
@@ -214,14 +205,11 @@ class StopNote extends remoteLinkBehavior(LitElement) {
    */
   haxactiveElementChanged(el, val) {
     if (super.haxactiveElementChanged) super.haxactiveElementChanged(el, val);
-    // flag for HAX to not trigger active on changes
+    // flag for HAX to not trigger active on changes but only when not locked
     let container = this.shadowRoot.querySelector("#title");
-    let svgWrap = this.shadowRoot.querySelector(".svg_wrap");
-    if (val) {
-      svgWrap.addEventListener("click", this.haxtoggleIcon.bind(this));
+    if (val && this.getAttribute("data-hax-lock") === null) {
       container.setAttribute("contenteditable", true);
     } else {
-      svgWrap.removeEventListener("click", this.haxtoggleIcon.bind(this));
       container.removeAttribute("contenteditable");
       this.title = container.innerText;
     }
@@ -237,7 +225,12 @@ class StopNote extends remoteLinkBehavior(LitElement) {
     ];
   }
   haxtoggleIcon(e) {
-    const iconAry = Object.keys(iconObj);
+    const iconAry = [
+      "stopnoteicons:stop-icon",
+      "stopnoteicons:warning-icon",
+      "stopnoteicons:confirm-icon",
+      "stopnoteicons:book-icon",
+    ];
     let icon = iconAry[0];
     if (iconAry.lastIndexOf(this.icon) != iconAry.length - 1) {
       icon = iconAry[iconAry.lastIndexOf(this.icon) + 1];
@@ -246,76 +239,8 @@ class StopNote extends remoteLinkBehavior(LitElement) {
     return true;
   }
   static get haxProperties() {
-    return {
-      type: "grid",
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Stop Note",
-        description: "A message to alert readers to specific directions.",
-        icon: "icons:report",
-        color: "orange",
-        groups: ["Education", "Content"],
-        handles: [
-          {
-            type: "text",
-            title: "label",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "Enter title for stop-note.",
-            inputMethod: "textfield",
-            required: true,
-          },
-          {
-            property: "url",
-            title: "URL",
-            description: "Enter an external url.",
-            inputMethod: "haxupload",
-            required: true,
-          },
-          {
-            property: "icon",
-            title: "Action Icon",
-            description: "Icon used for stop-note",
-            inputMethod: "select",
-            options: iconObj,
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: ["colors"],
-      },
-      demoSchema: [
-        {
-          tag: "stop-note",
-          properties: {
-            title: "Hold up there",
-          },
-          content:
-            '<p slot="message"><strong>Read these important things!</strong>\n</p>\n',
-        },
-        {
-          tag: "stop-note",
-          properties: {
-            title: "Warning",
-            icon: "stopnoteicons:warning-icon",
-          },
-          content:
-            '<p slot="message">You can write any warning message you want here.</p>\n',
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 window.customElements.define(StopNote.tag, StopNote);

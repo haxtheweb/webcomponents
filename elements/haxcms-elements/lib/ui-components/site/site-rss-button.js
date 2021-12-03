@@ -76,13 +76,12 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         .id="btn${this.type}"
         target="_blank"
         rel="noopener noreferrer"
-        .aria-label="${this._link.title}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <simple-icon-button-lite
           icon="${this.icon}"
+          label="${this._link.title}"
           @click="${this.print}"
-          aria-labelledby="btn${this.type}"
           ?disabled="${this.disabled}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
         ></simple-icon-button-lite>

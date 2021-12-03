@@ -9,6 +9,10 @@ import {
  */
 const SimpleFieldsFieldsetBehaviors = function (SuperClass) {
   return class extends SuperClass {
+    constructor() {
+      super();
+      this.isSimpleFieldType = true;
+    }
     static get tag() {
       return "simple-fields-fieldset";
     }
@@ -60,6 +64,16 @@ const SimpleFieldsFieldsetBehaviors = function (SuperClass) {
         disabled: {
           type: Boolean,
           reflect: true,
+        },
+        /**
+         * a simple boolean so that we can easily select ALL
+         * things derived from simple fields regardless of
+         * their eventual tag name
+         */
+        isSimpleFieldType: {
+          type: Boolean,
+          reflect: true,
+          attribute: "is-simple-field-type",
         },
         /**
          * whether fieldset has fields with errors

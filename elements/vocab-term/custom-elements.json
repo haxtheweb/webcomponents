@@ -4,12 +4,104 @@
     {
       "name": "vocab-term",
       "path": "./src/vocab-term.js",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`"
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`",
+      "attributes": [
+        {
+          "name": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "links",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "closeText",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "openText",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "popoverMode",
+          "attribute": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "term",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "information",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "links",
+          "attribute": "links",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
     },
     {
       "name": "vocab-term",
       "path": "./vocab-term.js",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`"
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`",
+      "attributes": [
+        {
+          "name": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "links",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "closeText",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "openText",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "popoverMode",
+          "attribute": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "term",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "information",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "links",
+          "attribute": "links",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
     }
   ]
 }

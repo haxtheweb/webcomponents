@@ -1,0 +1,51 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Full width-image",
+    "description": "full width image that flows beyond boundaries",
+    "icon": "image:image",
+    "color": "green",
+    "groups": ["Width"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "source",
+        "caption": "caption",
+        "title": "caption"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Image to render as the full width background",
+        "inputMethod": "haxupload",
+        "required": true,
+        "validationType": "url"
+      },
+      {
+        "property": "caption",
+        "description": "Text to overlay on the background on hover",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "full-width-image",
+      "properties": {
+        "source": "//placekitten.com/800/800",
+        "caption": "Kitten, being kittens"
+      },
+      "content": ""
+    }
+  ]
+}

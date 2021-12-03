@@ -2,8 +2,8 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { LitElement, html, css } from "lit";
+import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `simple-emoji-picker`
@@ -13,7 +13,7 @@ import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 
  * @demo ./demo/index.html
  */
-class SimpleEmojiPicker extends SimplePicker {
+class SimpleEmojiPicker extends SimplePickerBehaviors(LitElement) {
   //styles function
   static get styles() {
     return [

@@ -16,12 +16,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
   }
   constructor() {
     super();
-    // support global path value we use for resolving these on CDNs
-    if (window.WCGlobalBasePath) {
-      this.libPath = window.WCGlobalBasePath;
-    } else {
-      this.libPath = new URL(`./`, import.meta.url).href;
-    }
+    this.libPath = new URL(`./`, import.meta.url).href;
     this.libPath += "mammoth/";
     ESGlobalBridgeStore.load(
       "mammoth",

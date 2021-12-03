@@ -99,63 +99,7 @@ class ActivityBox extends LitElement {
     return false;
   }
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      contentEditable: true,
-      gizmo: {
-        title: "Activity Box",
-        description: "A small designed heading",
-        icon: "editor:format-quote",
-        color: "blue",
-        groups: ["text", "education"],
-        meta: {
-          author: "Buttercups Training Ltd",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "icon",
-            title: "Icon",
-            description: "The icon to be displayed alongside the activity box",
-            inputMethod: "textfield",
-          },
-          {
-            property: "tag",
-            title: "Activity box tag",
-            description: "The tag to be displayed within the activity box",
-            inputMethod: "textfield",
-          },
-          {
-            property: "nocolourize",
-            title: "No Colorize",
-            description: "Check to stop any colors being applied to the icon",
-            inputMethod: "boolean",
-          },
-          {
-            slot: "",
-            title: "Activity Box content:",
-            description:
-              "This is where you enter the content for the activity box.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "activity-box",
-          properties: {
-            icon: "settings",
-          },
-          content:
-            "<p>Drag &amp; drop - drag the icons to the matching descriptions.</p>",
-        },
-      ],
-    };
+    return new URL("./activity-box.haxProperties.json", import.meta.url).href;
   }
   static get properties() {
     return {

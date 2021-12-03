@@ -615,6 +615,125 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
 
   /**
+   * test for being a valid layout based on `type: grid` in HAXProperties
+   * @param {object} node custom element
+   * @returns {boolean} whether custom element is layout
+   */
+  isLayoutElement(node) {
+    let schema =
+      node && node.tagName ? this.haxSchemaFromTag(node.tagName) : {};
+    return schema.type && schema.type === "grid";
+  }
+
+  /**
+   * test for being a slot in a valid layout based on `type: grid` in parent's HAXProperties
+   * @param {object} node custom element
+   * @returns {boolean} whether custom element is slot in a layout
+   */
+  isLayoutSlot(node) {
+    if (!node || !node.parentNode) return false;
+    return this.isLayoutElement(node.parentNode);
+  }
+
+  /**
+   * test for being thhe original <grid-plate> element
+   * @param {object} node custom element
+   * @returns {boolean} whether custom element is grid-plate
+   */
+  isOriginalGridPlate(node) {
+    return !!node && node.tagName === "GRID-PLATE";
+  }
+  /**
+   * gets schema for activeNode
+   *
+   * @returns {object} haxSchema for node
+   * @memberof HaxStore
+   */
+  activeSchema() {
+    return this.activeNode
+      ? this.haxSchemaFromTag(this.activeNode.tagName)
+      : undefined;
+  }
+
+  /**
+   * gets schema for activeNode's parent
+   *
+   * @returns {object} haxSchema for parent node
+   * @memberof HaxStore
+   */
+  activeParentSchema() {
+    return this.activeNode && this.activeNode.parentNode
+      ? this.haxSchemaFromTag(this.activeNode.parentNode.tagName)
+      : undefined;
+  }
+  /**
+   * provides metadata for slotted content of a given custom element
+   *
+   * @param {object} node ustom element with slots
+   * @returns {object} Ex: {slotId: {...slotsSchemaFromNode, items: [slottedChild, slottedChild, etc.]}}
+   * @memberof HaxStore
+   */
+  slottedContentByNode(node) {
+    let slots = { ...(this.slotsSchemaFromNode(node) || {}) };
+    if (!node) return slots;
+    [...(node.children || [])].forEach((child) => {
+      if (child.slot && child.slot !== "" && slots[child.slot]) {
+        slots[child.slot].items = slots[child.slot].items || [];
+        slots[child.slot].items.push(child);
+      } else if ((!child.slot || child.slot === "") && slots[""]) {
+        slots[""].items = slots[""].items || [];
+        slots[""].items.push(child);
+      }
+    });
+    return slots;
+  }
+
+  /**
+   * provides metadata for slotted content of a given custom element
+   *
+   * @param {object} node custom element with slots
+   * @returns {object} Ex: {slotId: {...node's haxSchema for slot, label: slot's title or id, editMode: properties to set slot in editMode, grid: parent node}
+   * @memberof HaxStore
+   */
+  slotsSchemaFromNode(node) {
+    if (!node || !node.tagName) return {};
+    let slotsSchema = {},
+      schema = this.haxSchemaFromTag(node.tagName || {}),
+      slots = this.slotsFromSchema(schema);
+
+    if (this.isOriginalGridPlate(node)) {
+      let layout = node.layout || "1-1-1-1";
+      layout.split("-").map((item, num) => {
+        slots.push({
+          slot: `col-${num + 1}`,
+          title: `Column ${num + 1}`,
+          excludedSlotWrappers: ["grid-plate"],
+        });
+      });
+    }
+    slots.forEach((slot) => {
+      //need to empty this
+      slot.items = undefined;
+      slot.label = slot.title || slot.slot;
+      slot.editMode = { ...schema.editMode, ...slot.editMode };
+      slot.grid = node;
+      if (!!slot.slot || slot.slot === "") slotsSchema[slot.slot] = slot;
+    });
+    return slotsSchema;
+  }
+  /**
+   * gets a single slot's schema
+   *
+   * @param {object} node custom element with slots
+   * @param {string} slotId unique id for slot
+   * @returns
+   * @memberof HaxStore
+   */
+  schemaBySlotId(node, slotId) {
+    return (this.slotsSchemaFromNode(node) || {})[slotId];
+  }
+
+  /**
    * Notice _appStore changed.
    */
   _appStoreChanged(newValue, oldValue) {
@@ -712,7 +831,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    const basePath = new URL("./", import.meta.url).href;
+    let basePath = new URL("./../../../", import.meta.url).href;
+    if (window.WCGlobalBasePath) {
+      basePath = window.WCGlobalBasePath;
+    }
     for (var i in items) {
       // try to skip an import
       if (window.customElements.get(i)) {
@@ -726,7 +848,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           } catch (e) {}
         }
       } else {
-        let importPath = `${basePath}../../../${items[i]}`;
+        let importPath = `${basePath}${items[i]}`;
         // account for external app store reference on import
         if (this.isExternalURLImport(items[i])) {
           importPath = items[i];
@@ -1766,6 +1888,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
+      "hax-refresh-tray-form": "refreshActiveNodeForm",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2111,16 +2234,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           author: "W3C",
         },
       },
-      settings: {
-        configure: [
-          {
-            slot: "",
-            title: "Figure Content",
-            description: "The content of the figure",
-            inputMethod: "code-editor",
-          },
-        ],
-      },
+      settings: {},
       demoSchema: [
         {
           tag: "figure",
@@ -2327,7 +2441,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         },
       ],
     };
-    this.setHaxProperties(table, "table");
+    // @todo bring back when table editor is supported
+    //this.setHaxProperties(table, "table");
     let prims = {
       caption: {
         title: "Caption",
@@ -2546,7 +2661,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           details = await this.runHook(
             prototypeNode,
             "preProcessInsertContent",
-            [details]
+            [details, this.activeNode]
           );
         }
       }
@@ -2656,7 +2771,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       .map((setting) =>
         (settings[setting] || []).filter((prop) => {
           let show = !optionalOnly || !prop.required;
-          if (!!prop.slot && !slotsList.includes(prop.slot) && show) {
+          if (
+            (!!prop.slot || prop.slot === "") &&
+            !slotsList.includes(prop.slot) &&
+            show
+          ) {
             slotsList.push(prop.slot);
             return true;
           } else {
@@ -3190,7 +3309,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.haxTray.activeNode,
       null
     );
-    this.haxTray._setupForm();
+    await this.haxTray._setupForm();
   }
   /**
    * Generate Hax Element prototype.

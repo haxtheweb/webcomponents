@@ -7,6 +7,8 @@ import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 /**
  * LitElement Version of HAXCMSTheme
  */
@@ -48,17 +50,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
   hoverIntentEnter(e) {
     this.__styleTag = document.createElement("style");
+    let iconPath = SimpleIconsetStore.getIcon("icons:link");
     this.__styleTag.innerHTML = `
     #${e.target.getAttribute(
       "id"
     )} { cursor: copy; text-decoration: dotted underline}
-    #${e.target.getAttribute("id")}::after {
-      content: "🔗";
-      font-size: 20px;
-      display: inline-block;
-      position: relative;
-      right: -20px;
-      opacity: .5;
+    #${e.target.getAttribute("id")} {
+      background-image: url("${iconPath}");
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: 36px;
     }`;
     e.target.appendChild(this.__styleTag);
   }

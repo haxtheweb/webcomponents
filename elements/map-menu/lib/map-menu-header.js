@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-
-class MapMenuHeader extends LitElement {
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+class MapMenuHeader extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -92,6 +92,31 @@ class MapMenuHeader extends LitElement {
           text-align: left;
           border-radius: 0;
         }
+        :host([status="new"]) a::after {
+          border-right: 8px solid green;
+          content: "";
+          margin-left: -8px;
+        }
+        :host([status="modified"]) a::after {
+          border-right: 8px solid orange;
+          content: "";
+          margin-left: -8px;
+        }
+        :host([status="delete"]) a::after {
+          border-right: 8px solid red;
+          content: "";
+          margin-left: -8px;
+        }
+        #unpublished {
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          color: orange;
+          float: right;
+          margin: -4px 32px 0px 0px;
+          vertical-align: top;
+          height: 0px;
+          width: 0px;
+        }
       `,
     ];
   }
@@ -110,15 +135,23 @@ class MapMenuHeader extends LitElement {
               </div>
             `
           : ``}
-        ${this.icon
-          ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
-          : ``}
-
         <div id="center">
           <a tabindex="-1" href="${this.url}">
             <button class="title">
+              ${this.icon
+                ? html`
+                    <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+                  `
+                : ``}
               <div id="label">${this.label}</div>
               <div class="title">${this.title}</div>
+              ${!this.published
+                ? html`<simple-icon-lite
+                    id="unpublished"
+                    title="${this.t.pageIsUnpublished}"
+                    icon="icons:visibility-off"
+                  ></simple-icon-lite>`
+                : ``}
             </button>
           </a>
         </div>
@@ -137,8 +170,20 @@ class MapMenuHeader extends LitElement {
     this.avatarLabel = "";
     this.icon = null;
     this.url = "";
+    this.status = "";
     this.opened = false;
     this.active = false;
+    this.published = true;
+    this.locked = false;
+    this.t = {
+      pageIsUnpublished: "Page is unpublished",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "map-menu",
+      localesPath: new URL("../locales", import.meta.url).href,
+      locales: ["es"],
+    });
     setTimeout(() => {
       this.addEventListener("click", this.__tap.bind(this));
       this.addEventListener("keypress", this.__keypress.bind(this));
@@ -191,6 +236,16 @@ class MapMenuHeader extends LitElement {
       },
       active: {
         type: Boolean,
+        reflect: true,
+      },
+      published: {
+        type: Boolean,
+      },
+      locked: {
+        type: Boolean,
+      },
+      status: {
+        type: String,
         reflect: true,
       },
       selected: {

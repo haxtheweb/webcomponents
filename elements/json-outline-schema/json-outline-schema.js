@@ -168,8 +168,8 @@ class JsonOutlineSchema extends HTMLElement {
    */
   addItem(item) {
     let safeItem = this.validateItem(item);
-    count = array_push(this.items, safeItem);
-    return count;
+    this.items.push(safeItem);
+    return this.items.length;
   }
   /**
    * Validate that an item matches JSONOutlineSchemaItem format

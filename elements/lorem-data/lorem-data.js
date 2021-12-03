@@ -70,7 +70,11 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       <button @click="${this.saveAll}">Save All</button>
     `;
   }
-
+  /**
+   * downloads all generated schema JSON files
+   *
+   * @memberof LoremData
+   */
   saveAll() {
     if (
       this.shadowRoot &&
@@ -81,10 +85,23 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     }
   }
 
+  /**
+   * converts generated schema to JSON
+   *
+   * @memberof LoremData
+   * @param {object} schema
+   * @returns {string}
+   */
   getJson(schema) {
     return JSON.stringify(this.randomType(schema));
   }
-
+  /**
+   * genertates a url to download schema JSON
+   *
+   * @param {object} schema
+   * @returns {string}
+   * @memberof LoremData
+   */
   saveDataUrl(schema) {
     let json = this.getJson(schema),
       blob = new Blob([json], { type: "octet/stream" });
@@ -99,8 +116,8 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   }
   /**
    * colors from Simple Colors
-   * @returns {array}
-   * @memberof StorybookUtilities
+   * @returns {array} color names
+   * @memberof LoremData
    */
   get colors() {
     let simple = window.SimpleColorsSharedStyles.requestAvailability();
@@ -195,7 +212,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    * @param {array} arr array
    * @param {number} min minimum number of items
    * @param {number} max max number of items
-   * @returns {arr} shuffled array of x items
+   * @returns {array} shuffled array of x items
    */
   draw(arr = [], min = 0, max = min) {
     let range = max - min,
@@ -205,6 +222,15 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       slice = Math.max(0, len);
     return this.shuffle(arr).slice(0, slice);
   }
+  /**
+   * generates an array based on a schema and nim/max number of items
+   *
+   * @param {object} [children={}] schema each generated array item should follow
+   * @param {number} [min=1] minimum number of array items
+   * @param {number} [max=4] maximum number of array items
+   * @returns {array}
+   * @memberof LoremData
+   */
   randomArray(children = {}, min = 1, max = 4) {
     let arr = [];
     for (let i = this.randomNumber(min, max, 1); i > 0; i--) {
@@ -212,7 +238,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     }
     return arr;
   }
-
+  /**
+   * generates a string representing a random aspect ratio
+   *
+   * @param {number} [minwidth=200] minimum aspect height
+   * @param {number} [maxwidth=1000] minimum aspect width
+   * @param {number} [minheight=200] maximum aspect height
+   * @param {number} [maxheight=1000] maximum aspect width
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomAspect(
     minwidth = 200,
     maxwidth = 1000,
@@ -282,7 +317,15 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     let random = this.randomOption(this.icons);
     return includeNull ? this.randomOption([...random, ""]) : random;
   }
-
+  /**
+   * generates URL for random image from placeimg.com
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {string} filter optional 'greyscale' or 'sepia' filter
+   * @param {string} [topic="any"] optional topic image, as in 'places'
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomPlaceImg(aspect, filter, topic = "any") {
     filter =
       filter ||
@@ -297,6 +340,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     }`;
   }
 
+  /**
+   * generates URL for random image from picsum.photos
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {boolean} greyscale whether image should be greyscale
+   * @param {number} [blur=0] level of blurring filter to apply
+   * @param {string} id specific image identifier
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomPicsum(aspect, greyscale, blur = 0, id) {
     let params =
       greyscale ||
@@ -313,6 +366,14 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     }`;
   }
 
+  /**
+   * generates URL for random image from placekitten.com
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {boolean} greyscale whether image should be greyscale
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomKitten(aspect, greyscale) {
     if (typeof greyscale === typeof undefined)
       greyscale = this.randomWeightedOption([
@@ -323,6 +384,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     return `//placekitten.com${greyscale ? "/g" : ""}/${aspect}`;
   }
 
+  /**
+   *
+   * generates URL for random image from loremflickr.com
+   * @param {string} aspect aspect ration as w/h
+   * @param {*} [searchTerms=[]] array of search terms for finding image
+   * @param {boolean} [searchAll=false] whether results must meet all search terms
+   * @param {*} [multiple=-1] gives image a unique URL so that image isn't cached everywhere
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomFlickr(aspect, searchTerms = [], searchAll = false, multiple = -1) {
     aspect = aspect || this.randomAspect();
     return `https://loremflickr.com/${aspect}${
@@ -331,7 +402,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
         : `/${searchTerms.join(",")}${searchAll ? `/all` : ""}`
     }${multiple > -1 ? `?random=${multiple}` : ""}`;
   }
-
+  /**
+   * selects a url from an image generator based on params and the generator APIs
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {boolean} greyscale whether image should be greyscale
+   * @param {string} [topic="any"] optional topic image, as in 'places'
+   * @param {*} [multiple=-1] gives image a unique URL so that image isn't cached everywhere
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomImage(aspect, greyscale, topic, multiple) {
     return topic && ["man", "woman", "person"].includes(topic)
       ? this.randomProfileImage(aspect, topic)
@@ -341,7 +421,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       ? this.randomPicsum(aspect, greyscale, undefined, multiple)
       : this.randomFlickr(aspect, [topic], false, multiple);
   }
-
+  /**
+   * generates object with randome image src, alt, and longdesc
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {boolean} greyscale whether image should be greyscale
+   * @param {string} [topic="any"] optional topic image, as in 'places'
+   * @param {*} [multiple=-1] gives image a unique URL so that image isn't cached everywhere
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomImageData(aspect, greyscale, topic, multiple) {
     return {
       src: this.randomImage(aspect, greyscale, topic, multiple),
@@ -353,7 +442,15 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       }. ${this.randomParagraph(1, 5)}`,
     };
   }
-
+  /**
+   * generates a random profile image
+   *
+   * @param {string} aspect aspect ration as w/h
+   * @param {string} topic "man", "woman", etc
+   * @param {*} [multiple=-1] gives image a unique URL so that image isn't cached everywhere
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomProfileImage(aspect, topic, multiple) {
     let aspects = aspect.split("/"),
       area = parseInt(aspects[0]) * parseInt(aspects[1]),
@@ -395,7 +492,13 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step
     );
   }
-
+  /**
+   * generates a random data object based oin a schema for that object
+   *
+   * @param {object} [schema={}] schema for object data
+   * @returns {object}
+   * @memberof LoremData
+   */
   randomObject(schema = {}) {
     let obj = {};
     Object.keys(schema).forEach(
@@ -414,6 +517,16 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       ? options[Math.floor(Math.random() * Math.floor(options.length))]
       : undefined;
   }
+  /**
+   * generates a random paragraph
+   *
+   * @param {number} [min=3] minimum number of sentences
+   * @param {number} [max=7] maximum number of sentences
+   * @param {number} wordMinPerSent minimum number of words per sentence
+   * @param {number} wordMaxPerSent maximum number of words per sentence
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomParagraph(min = 3, max = 7, wordMinPerSent, wordMaxPerSent) {
     let paragraph = [];
     for (let i = this.randomNumber(min, max); i > 0; i--) {
@@ -422,6 +535,14 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     return `${paragraph.join(" ")}`;
   }
 
+  /**
+   * generates a random paragraph
+   *
+   * @param {number} [min=3] minimum number of words
+   * @param {number} [max=15] maximum number of words
+   * @returns {string}
+   * @memberof LoremData
+   */
   randomSentence(min = 3, max = 15) {
     let sentence = [],
       punctuation = this.randomWeightedOption([
@@ -435,6 +556,14 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     if (sentence[0]) sentence[0] = this.titleCase(sentence[0]);
     return `${sentence.join(" ")}${punctuation}`;
   }
+
+  /**
+   * generates random data based on schema
+   *
+   * @param {object} schema
+   * @returns
+   * @memberof LoremData
+   */
   randomType(schema) {
     let val;
     if (schema.type)
@@ -522,7 +651,13 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       }
     return val;
   }
-
+  /**
+   * given array of objects with weight and value, selects random value based on its weight
+   *
+   * @param {array} [arr=[]] array of objects with weight and value, eg. [{value: true, weight: 80%},{value: false, weight: 20%}]
+   * @returns
+   * @memberof LoremData
+   */
   randomWeightedOption(arr = []) {
     return this.randomOption(
       arr
@@ -536,7 +671,12 @@ class LoremData extends LoremDataBehaviors(LitElement) {
         .flat()
     );
   }
-
+  /**
+   * returns a random word
+   *
+   * @returns
+   * @memberof LoremData
+   */
   randomWord() {
     return this.randomOption(this.words);
   }
@@ -563,7 +703,13 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       return !oldest ? bb - aa : aa - bb;
     });
   }
-
+  /**
+   * converts text to title case
+   *
+   * @param {string} str
+   * @returns {string}
+   * @memberof LoremData
+   */
   titleCase(str) {
     return str
       .toLowerCase()

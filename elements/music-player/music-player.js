@@ -108,66 +108,8 @@ class MusicPlayer extends LitElement {
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Music player",
-        description: "Play music in context with a data visualization",
-        icon: "image:music-note",
-        color: "blue",
-        groups: ["Media", "Music"],
-        handles: [
-          {
-            type: "audio",
-            source: "source",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            title: "Source",
-            description: "Source of the file to play",
-            inputMethod: "haxupload",
-          },
-          {
-            property: "visualizer",
-            title: "Visualization",
-            description: "How to visualize the music file",
-            inputMethod: "select",
-            options: {
-              staff: "Staff",
-              "piano-roll": "Piano roll",
-              waterfall: "Piano + waterfall",
-            },
-          },
-          {
-            property: "noWaterfall",
-            title: "Hide waterfall",
-            description:
-              "Disable the waterfall of notes when visualized as a piano",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "music-player",
-          content: "",
-          properties: {
-            source:
-              "https://magenta.github.io/magenta-js/music/demos/melody.mid",
-          },
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(MusicPlayer.tag, MusicPlayer);

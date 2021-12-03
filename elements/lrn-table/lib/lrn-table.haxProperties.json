@@ -1,0 +1,56 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "CSV table",
+    "description": "This can generate a table from a CSV file no matter where it is located.",
+    "icon": "editor:border-all",
+    "color": "green",
+    "groups": ["Presentation", "Table", "Data"],
+    "handles": [
+      {
+        "type": "csv",
+        "source": "csvFile"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Source",
+        "description": "The URL for this csv file.",
+        "inputMethod": "haxupload",
+        "required": true
+      },
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Title for the table to be generated.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "description",
+        "title": "Description",
+        "description": "More detailed description for improved accessibility of the table data.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "lrn-table",
+      "content": "",
+      "properties": {
+        "csvFile": "https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD",
+        "description": "Public records for accountability as to who recieved funding via the NYC Capital Grant Award process in 2016",
+        "title": "NYC Capital Grant Awards 2016"
+      }
+    }
+  ]
+}

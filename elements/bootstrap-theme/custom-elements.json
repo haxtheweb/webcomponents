@@ -142,6 +142,9 @@
           "default": "true"
         },
         {
+          "name": "t"
+        },
+        {
           "name": "hexColor",
           "attribute": "hex-color",
           "description": "Class for the color",
@@ -488,6 +491,9 @@
           "attribute": "menu-open",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "t"
         },
         {
           "name": "hexColor",

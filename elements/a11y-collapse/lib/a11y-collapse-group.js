@@ -35,6 +35,7 @@ class A11yCollapseGroup extends LitElement {
         }
         .wrapper {
           border-radius: 0;
+          display: block;
           --a11y-collapse-margin: 0 0;
           --a11y-collapse-border-between: none;
         }
@@ -102,48 +103,11 @@ class A11yCollapseGroup extends LitElement {
       },
     };
   }
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Expand Collapse Group",
-        description: "A group of expand collapse elements.",
-        icon: "view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Collapse"],
-      },
-      settings: {
-        configure: [
-          {
-            property: "radio",
-            title: "Expand only one",
-            description: "Only one item can be expanded.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable items.",
-            inputMethod: "boolean",
-          },
-          {
-            slot: "",
-            title: "Collapse Items",
-            description: "The collapse items.",
-            inputMethod: "code-editor",
-          },
-        ],
-        advanced: [
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-        ],
-      },
-    };
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 
   get items() {
@@ -208,22 +172,6 @@ class A11yCollapseGroup extends LitElement {
         if (this.__items[i] !== item) this.__items[i].toggle(false);
       }
     }
-  }
-
-  disconnectedCallback() {
-    this.removeEventListener("a11y-collapse-click", (e) => {
-      e.stopPropagation();
-      this.radioToggle(e.detail);
-    });
-    this.removeEventListener("a11y-collapse-attached", (e) => {
-      e.stopPropagation();
-      this.push("__items", e.detail);
-    });
-    this.removeEventListener("a11y-collapse-detached", (e) => {
-      e.stopPropagation();
-      this._detachItem(e.detail);
-    });
-    super.disconnectedCallback();
   }
 }
 window.customElements.define(A11yCollapseGroup.tag, A11yCollapseGroup);

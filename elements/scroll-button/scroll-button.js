@@ -3,13 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `scroll-button`
  * `button to scroll to an area or back to top`
@@ -17,6 +12,35 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @element scroll-button
  */
 class ScrollButton extends LitElement {
+  constructor() {
+    super();
+    this.icon = "icons:expand-less";
+    this.t = {
+      backToTop: "Back to top",
+    };
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          context: this,
+          namespace: "scroll-button",
+          localesPath: new URL("./locales", import.meta.url).href,
+          updateCallback: "render",
+          locales: ["es"],
+        },
+      })
+    );
+    this._label = this.t.backToTop;
+    this.label = "";
+    this.position = "top";
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "scroll-button";
+  }
   //styles function
   static get styles() {
     return [
@@ -62,90 +86,35 @@ class ScrollButton extends LitElement {
       `,
     ];
   }
-
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldvalue, propName) => {
+      // if other developer defined label, don't translate it
+      if (propName === "t" && this.label === "") {
+        this._label = this.t.backToTop;
+      }
+      if (propName === "label" && this.label !== "") {
+        this._label = this.label;
+      }
+    });
+  }
   // render function
   render() {
-    return html` <custom-style>
-        <style>
-          simple-icon-button-lite {
-            @apply --scroll-button-button;
-          }
-          simple-icon-button-lite:hover,
-          simple-icon-button-lite:active,
-          simple-icon-button-lite:focus {
-            @apply --scroll-button-button-active;
-          }
-          simple-tooltip {
-            @apply --scroll-button-tooltip;
-          }
-        </style>
-      </custom-style>
-      <simple-icon-button-lite
+    return html` <simple-icon-button-lite
         @click="${this.scrollEvent}"
         id="btn"
         icon="${this.icon}"
-        aria-label="${this.label}"
+        label="${this._label}"
       ></simple-icon-button-lite>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
-        ${this.label}
+        ${this._label}
       </simple-tooltip>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Scroll button",
-        description: "button to scroll to an area or back to top",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Button"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "target",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android",
-          },
-          {
-            property: "icon",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-          {
-            property: "label",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
-        advanced: [],
-      },
-    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
       target: {
         type: Object,
       },
@@ -155,24 +124,16 @@ class ScrollButton extends LitElement {
       label: {
         type: String,
       },
+      _label: {
+        type: String,
+      },
       position: {
         type: String,
       },
+      t: {
+        type: Object,
+      },
     };
-  }
-  constructor() {
-    super();
-    this.icon = "icons:expand-less";
-    this.label = "Backt to top";
-    this.position = "top";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-  }
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "scroll-button";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -193,5 +154,5 @@ class ScrollButton extends LitElement {
     }
   }
 }
-window.customElements.define(ScrollButton.tag, ScrollButton);
+customElements.define(ScrollButton.tag, ScrollButton);
 export { ScrollButton };

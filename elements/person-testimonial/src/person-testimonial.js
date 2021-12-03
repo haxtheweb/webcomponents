@@ -185,86 +185,11 @@ class PersonTestimonial extends SimpleColors {
     };
   }
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Testimonial",
-        description: "A person saying a nice thing about us",
-        icon: "editor:format-quote",
-        color: "orange",
-        groups: ["Content", "Presentation"],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-            title: "name",
-            caption: "position",
-            ariaDescribedby: "describedBy",
-          },
-        ],
-        meta: {
-          author: "EberlyODL / LRNWebComponents",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "image",
-            title: "Image",
-            description: "Adds image to testimonial",
-            inputMethod: "haxupload",
-            icon: "editor:insert-photo",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-          {
-            property: "name",
-            title: "Full Name",
-            description: "Credit the person making the testimonial",
-            inputMethod: "textfield",
-            icon: "account-circle",
-          },
-          {
-            property: "position",
-            title: "Position or Job Title",
-            description: "List the position and job title",
-            inputMethod: "textfield",
-            icon: "icons:work",
-          },
-          {
-            slot: "",
-            title: "User's testimonial:",
-            description: "This is where you enter your testimonial.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-        ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-    };
+    return new URL(
+      "./lib/person-testimonial.haxProperties.json",
+      import.meta.url
+    ).href;
   }
 }
-window.customElements.define(PersonTestimonial.tag, PersonTestimonial);
+customElements.define(PersonTestimonial.tag, PersonTestimonial);
 export { PersonTestimonial };

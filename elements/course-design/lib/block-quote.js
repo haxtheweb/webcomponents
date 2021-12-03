@@ -12,64 +12,7 @@ class BlockQuote extends LitElement {
   }
 
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Blockquote",
-        description: "Designed Quote",
-        icon: "editor:format-quote",
-        color: "blue",
-        groups: ["text", "education"],
-        meta: {
-          author: "LRNWebComponents",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "citation",
-            title: "Citation",
-            description: "The citation of the element",
-            inputMethod: "textfield",
-            icon: "icons:book",
-          },
-          {
-            property: "alt",
-            title: "Alt",
-            description: "The alt text for the image",
-            inputMethod: "textfield",
-            icon: "editor:text-fields",
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "The image of the element",
-            inputMethod: "haxupload",
-            validationType: "url",
-            icon: "editor:insert-photo",
-          },
-          {
-            slot: "",
-            title: "Quote",
-            description: "This is where you enter a quote.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "block-quote",
-          properties: {
-            citation: "",
-          },
-          content: "<p></p>",
-        },
-      ],
-    };
+    return new URL("./block-quote.haxProperties.json", import.meta.url).href;
   }
 
   constructor() {
@@ -98,8 +41,8 @@ class BlockQuote extends LitElement {
                 id="iconflip"
                 icon="editor:format-quote"
               ></simple-icon-lite>
-              <slot></slot>
-              <slot name="quote"></slot>
+              <div><slot></slot></div>
+              <div><slot name="quote"></slot></div>
               <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
             </div>
             <div id="citation">

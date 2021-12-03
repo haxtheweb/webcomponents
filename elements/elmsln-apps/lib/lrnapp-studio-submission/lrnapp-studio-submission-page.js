@@ -267,7 +267,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         <div
           id="commentcolumn"
           class="submission-comments"
-          style="min-width: 25%; max-width: 40%; width:30%;"
+          style="min-width: 30%; max-width: 70%; width:40%;"
         >
           <template is="dom-if" if="[[showComments]]">
             <lrnsys-comment-list
@@ -278,7 +278,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             ></lrnsys-comment-list>
           </template>
         </div>
-        <div id="submissioncolumn" style="width:70%;">
+        <div id="submissioncolumn" style="width:60%;">
           <lrnapp-studio-submission-object
             submission="{{submission}}"
             edit="[[editPage]]"
@@ -329,6 +329,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       hideMenuBar: {
         type: Boolean,
         value: false,
+        reflectToAttribute: true,
       },
       elmslnCourse: {
         type: String,

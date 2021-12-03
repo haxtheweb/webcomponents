@@ -24,6 +24,11 @@
           "default": "\"\""
         },
         {
+          "name": "showQRCode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
@@ -117,6 +122,12 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "showQRCode",
+          "attribute": "showQRCode",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "menuOpen",
@@ -280,6 +291,11 @@
           "default": "\"\""
         },
         {
+          "name": "showQRCode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
@@ -373,6 +389,12 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "showQRCode",
+          "attribute": "showQRCode",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "menuOpen",

@@ -595,7 +595,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e,
+        detail: event,
       })
     );
 

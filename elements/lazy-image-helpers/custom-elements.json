@@ -106,6 +106,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ]
     },
@@ -214,6 +217,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ]
     },
@@ -322,6 +328,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ]
     },
@@ -430,6 +439,9 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ]
     }

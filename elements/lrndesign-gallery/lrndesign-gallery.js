@@ -16,7 +16,9 @@ import "./lib/lrndesign-gallery-masonry.js";
  * @element lrndesign-gallery
  * @lit-html
  * @lit-element
- * @demo demo/index.html
+ * @demo demo/index.html Carousel Layout
+ * @demo demo/grid.html Grid Layout
+ * @demo demo/masonry.html Masonry Layout
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
   //styles function
@@ -33,18 +35,30 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         }
 
         ::slotted(figure) {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: space-between;
           margin-top: 15px;
           margin-bottom: 15px;
+          padding: 5px;
           max-width: 400px;
-          max-height: 400px;
-          display: block;
           border: 1px solid #ddd;
           page-break-inside: avoid;
         }
+        :host([edit-mode]) #figures {
+          display: grid;
+          grid-gap: 5px;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        :host([edit-mode]) ::slotted(figure) {
+          padding: 5px;
+          margin: 0;
+          width: calc(100% - 10px);
+        }
 
         @media screen {
-          ::slotted(figure) {
+          :host(:not([edit-mode])) ::slotted(figure) {
             display: none;
           }
         }
@@ -62,7 +76,9 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       >
         <div slot="title"><slot name="title"></slot></div>
         <div slot="description"><slot name="description"></slot></div>
-        ${this.layout === "masonry"
+        ${this.editMode
+          ? html`<div id="figures"><slot></slot></div>`
+          : this.layout === "masonry"
           ? html`
               <lrndesign-gallery-masonry
                 accent-color="${this.accentColor}"
@@ -107,7 +123,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             >
             </lrndesign-gallery-carousel>`}
       </div>
-      <slot hidden></slot>`;
+      ${this.editMode ? "" : html`<slot hidden></slot>`}`;
   }
 
   // haxProperty definition
@@ -116,6 +132,9 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
+      type: "grid",
+      editMode: "editMode",
       gizmo: {
         title: "Image Gallery",
         description: "An image gallery displayed as a carousel or a grid",
@@ -139,12 +158,16 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             title: "Optional Gallery Title",
             description: "Am optional title for the gallery.",
             inputMethod: "textfield",
+            slotWrapper: "h1",
+            allowedSlotWrappers: ["h1", "h2", "h3", "h4", "h5", "h5"],
           },
           {
             slot: "description",
             title: "OptionalGallery Description",
             description: "An optional description for the gallery.",
             inputMethod: "textfield",
+            slotWrapper: "p",
+            allowedSlotWrappers: ["p", "div"],
           },
           {
             property: "accentColor",
@@ -166,44 +189,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             itemsList: ["carousel", "grid", "masonry"],
           },
           {
-            property: "sources",
-            title: "Gallery Images",
-            description: "The images for the gallery.",
-            inputMethod: "array",
-            itemLabel: "title",
-            properties: [
-              {
-                property: "title",
-                title: "Image Title",
-                description: "The heading for the image.",
-                inputMethod: "textfield",
-              },
-              {
-                property: "details",
-                title: "Image Details",
-                description: "The body text with details for the image.",
-                inputMethod: "textfield",
-              },
-              {
-                property: "src",
-                title: "Image",
-                description: "Default Image",
-                inputMethod: "haxupload",
-              },
-              {
-                property: "thumbnail",
-                title: "Optional Thumbnail Image",
-                description: "Optional smaller thumbnail version of the image.",
-                inputMethod: "haxupload",
-              },
-              {
-                property: "large",
-                title: "Optional Full Image",
-                description:
-                  "Optional larger full-sized version of the image for zooming.",
-                inputMethod: "haxupload",
-              },
-            ],
+            slot: "",
+            title: "Gallery Figures",
+            description: "The figures for the gallery.",
+            inputMethod: "textfield",
+            slotWrapper: "figure",
           },
         ],
         advanced: [
@@ -242,6 +232,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         type: String,
         reflect: true,
         attribute: "responsive-size",
+      },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
       },
     };
   }
@@ -430,6 +425,9 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             ? details.querySelector(query)
             : undefined,
         title = figheading ? figheading.innerHTML : "";
+      [...figure.querySelectorAll("figcaption,img")].forEach((el) =>
+        el.setAttribute("style", "flex:1 1 auto")
+      );
       if (figheading) figheading.remove();
       sources.push({
         alt: alt,

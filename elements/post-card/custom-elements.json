@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "post-card",
+      "path": "./post-card.js",
+      "description": "`post-card`\n`sending you mail from afar, or the browser.`"
+    },
+    {
+      "name": "post-card",
+      "path": "./src/post-card.js",
+      "description": "`post-card`\n`sending you mail from afar, or the browser.`"
+    }
+  ]
+}

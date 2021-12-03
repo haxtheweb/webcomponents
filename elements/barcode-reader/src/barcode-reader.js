@@ -57,14 +57,14 @@ class BarcodeReader extends LitElement {
           <video
             muted
             autoplay
-            playsinline="true"
+            playsinline
             width="${this.scale}%"
             height="${this.scale}%"
           ></video>
           <canvas style="display: none; float: bottom;"></canvas>
         </div>
       </div>
-      <div class="input" hidden="${this.hideinput}">
+      <div class="input" ?hidden="${this.hideinput}">
         Result: <span><input type="text" .value="${this.value}" /> </span>
       </div>
       <span>
@@ -75,10 +75,13 @@ class BarcodeReader extends LitElement {
           </div>
           <button class="go">Scan</button>
         </div>
-        <simple-icon-button icon="image:camera-alt" class="render"
-          >Initialize</simple-icon-button
-        ></span
-      >
+        <simple-icon-button
+          aria-labelledby="label"
+          icon="image:camera-alt"
+          class="render"
+        ></simple-icon-button>
+        <label id="label">Initialize</label>
+      </span>
     `;
   }
 

@@ -317,6 +317,16 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
+         * a simple boolean so that we can easily select ALL
+         * things derived from simple fields regardless of
+         * their eventual tag name
+         */
+        isSimpleFieldType: {
+          type: Boolean,
+          reflect: true,
+          attribute: "is-simple-field-type",
+        },
+        /**
          * Value of field
          */
         value: {
@@ -332,6 +342,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     }
     constructor() {
       super();
+      this.isSimpleFieldType = true;
       this.counter = "none";
       this.autovalidate = false;
       this.disabled = false;

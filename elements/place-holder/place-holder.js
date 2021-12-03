@@ -31,8 +31,11 @@ class PlaceHolder extends SimpleColors {
         .wrapper {
           text-align: center;
           padding: 16px;
-          color: var(--simple-colors-default-theme-grey-11, #222222);
-          background-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+          color: var(--simple-colors-default-theme-accent-12, #222222);
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            #eeeeee
+          );
         }
         simple-icon {
           margin: 0 auto;
@@ -58,7 +61,11 @@ class PlaceHolder extends SimpleColors {
   render() {
     return html`
       <div class="wrapper">
-        <simple-icon icon="${this.iconFromType}"></simple-icon>
+        <simple-icon
+          ?dark="${this.dark}"
+          icon="${this.iconFromType}"
+          accent-color="${this.accentColor}"
+        ></simple-icon>
         <div class="text">${this.calcText}</div>
         <div class="directions">${this.directions}</div>
       </div>
@@ -71,6 +78,7 @@ class PlaceHolder extends SimpleColors {
 
   static get properties() {
     return {
+      ...super.properties,
       /**
        * calculate an icon based on the type that was used
        */
@@ -112,7 +120,13 @@ class PlaceHolder extends SimpleColors {
    * LitElement properties changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
+      if (["type"].includes(propName)) {
+        this.accentColor = this._getColorFromType(this.type);
+      }
       if (["type", "dragOver"].includes(propName)) {
         this.iconFromType = this._getIconFromType(this.type, this.dragOver);
       }
@@ -148,10 +162,31 @@ class PlaceHolder extends SimpleColors {
       return text;
     }
   }
-
+  /**
+   * Generate an color based on the media type selected
+   */
+  _getColorFromType(type) {
+    switch (type) {
+      case "document":
+        return "green";
+        break;
+      case "audio":
+        return "purple";
+        break;
+      case "video":
+        return "red";
+        break;
+      case "image":
+        return "orange";
+        break;
+      case "math":
+        return "light-blue";
+        break;
+    }
+    return "indigo";
+  }
   /**
    * Generate an icon based on the media type selected
-   * for the place holder.
    */
   _getIconFromType(type, dragOver) {
     if (!dragOver) {
@@ -272,7 +307,18 @@ class PlaceHolder extends SimpleColors {
             title: "Text",
             description: "Identify the place holder desired in greater detail",
             inputMethod: "textfield",
-            required: false,
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Useful if used for communicating with team members",
+            inputMethod: "colorpicker",
+          },
+          {
+            property: "dark",
+            title: "Invert colors",
+            description: "Useful if used for communicating with team members",
+            inputMethod: "boolean",
           },
         ],
         advanced: [],

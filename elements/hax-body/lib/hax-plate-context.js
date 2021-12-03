@@ -26,6 +26,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   constructor() {
     super();
     this.disableOps = false;
+    this.disableItemOps = false;
+    this.insertAbove = true;
+    this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
@@ -73,7 +76,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         :host {
           width: calc(100% - 2px);
           align-items: stretch;
-          border: 1px solid var(--hax-ui-border-color);
         }
         hax-toolbar::part(morebutton) {
           --simple-toolbar-button-color: var(--hax-ui-color);
@@ -142,7 +144,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         :host .group > *:hover {
           z-index: 3;
         }
-        .first-slot {
+        .first-slot:not(:first-child) {
           border-top: 1px solid black;
         }
       `,
@@ -166,7 +168,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             reset-on-select
             data-simple-tour-stop
             data-stop-title="label"
-            ?hidden="${!this.canMoveElement || this.disableOps}"
+            ?hidden="${!this.canMoveElement}"
           >
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
@@ -192,26 +194,33 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 event-name="hax-plate-down"
               ></hax-context-item>
             </simple-toolbar-menu-item>
-            ${(this.siblingSlots || []).map(
-              (slot, i) => html`
-                <simple-toolbar-menu-item
-                  slot="menuitem"
-                  class="move-to-slot ${i < 1 ? "first-slot" : ""}"
-                >
-                  <hax-context-item
-                    action
-                    align-horizontal="left"
-                    ?disabled="${this.activeNode &&
-                    slot.slot === this.activeNode.slot}"
-                    show-text-label
-                    role="menuitem"
-                    data-slot="${slot.slot}"
-                    event-name="move-to-slot"
-                    label="${slot.title || slot.slot}"
-                  ></hax-context-item>
-                </simple-toolbar-menu-item>
-              `
-            )}
+            ${
+              !this.activeNode ||
+              !this.activeNode.parentNode ||
+              !HAXStore.isLayoutElement(this.activeNode.parentNode)
+                ? ""
+                : (this.slottedItems || []).map(
+                    (slot, i) =>
+                      html`
+                        <simple-toolbar-menu-item
+                          slot="menuitem"
+                          class="move-to-slot ${i < 1 ? "first-slot" : ""}"
+                        >
+                          <hax-context-item
+                            action
+                            align-horizontal="left"
+                            ?disabled="${this.viewSource}"
+                            label="${slot.label}"
+                            event-name="move-to-slot"
+                            data-slot="${slot.slot}"
+                            role="menuitem"
+                            show-text-label
+                          >
+                          </hax-context-item>
+                        </simple-toolbar-menu-item>
+                      `
+                  )
+            }
             <div slot="tour" data-stop-content>
               Click the drag handle once to show a menu to just move up or down
               one item in the content OR click and drag to place the item
@@ -221,8 +230,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             action
             align-horizontal="left"
-            ?disabled="${this.viewSource}"
-            ?hidden="${!this.isGridLayoutSlot && this.childSlots.length < 1}"
+            ?disabled="${this.viewSource || this.disableOps}"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >
@@ -230,38 +238,60 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               <hax-context-item
                 action
                 align-horizontal="left"
-                ?disabled="${this.viewSource}"
-                ?hidden="${!this.isGridLayoutSlot}"
-                .icon="${this.gridIcon}"
-                label="${this.gridLabel}"
-                event-name="hax-select-grid-item"
-                .eventData="${
-                  !this.isGridLayoutSlot
-                    ? undefined
-                    : this.activeNode.parentNode
+                ?hidden="${
+                  !this.layoutParent || this.activeNode !== this.layoutElement
                 }"
+                .icon="${this.elementIcon(this.layoutParent)}"
+                label="${this.elementLabel(this.layoutParent)}"
+                event-name="hax-select-grid"
+                .eventData="${this.layoutParent}"
+                role="menuitem"
+                show-text-label
+              >
+              </hax-context-item>
+              <hax-context-item
+                action
+                align-horizontal="left"
+                ?disabled="${this.activeNode === this.layoutElement}"
+                ?hidden="${!this.layoutElement}"
+                .icon="${this.elementIcon(this.layoutElement)}"
+                label="${this.elementLabel(this.layoutElement)}"
+                event-name="hax-select-grid"
+                .eventData="${this.layoutElement}"
                 role="menuitem"
                 show-text-label
               >
               </hax-context-item>
             </simple-toolbar-menu-item>
             ${(this.slottedItems || []).map((slot, i) =>
-              slot.items.map(
+              (slot.items || []).map(
                 (item, j) =>
                   html`
-                    <simple-toolbar-menu-item slot="menuitem">
+                    <simple-toolbar-menu-item
+                      slot="menuitem"
+                      class="hax-select-grid-item ${i < 1 && j < 1
+                        ? "first-slot"
+                        : ""}"
+                    >
                       <hax-context-item
                         action
                         align-horizontal="left"
                         ?disabled="${this.viewSource ||
                         this.activeNode === item}"
-                        label="${slot.label}${slot.items.length > 1
+                        label="${slot.title || slot.id}${slot.items.length > 1
                           ? ` (${j + 1})`
                           : ""}"
                         event-name="hax-select-grid-item"
-                        .eventData="${item}"
+                        .eventData="${{
+                          target: item,
+                          grid: slot.grid,
+                          slot: slot.slot,
+                          index: j,
+                          editMode: slot.editMode,
+                        }}"
                         role="menuitem"
                         show-text-label
+                        @click="${this.checkEditMode}"
                       >
                       </hax-context-item>
                     </simple-toolbar-menu-item>
@@ -274,7 +304,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             icon="add-box"
             label="${this.t.insertItemAboveOrBelow}"
-            ?disabled="${this.viewSource || this.disableOps}"
+            ?disabled="${this.viewSource}"
           >
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
@@ -282,6 +312,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 align-horizontal="left"
                 show-text-label
                 role="menuitem"
+                ?disabled="${!this.insertAbove}"
                 icon="hardware:keyboard-arrow-up"
                 event-name="insert-above-active"
                 label="${this.t.insertItemAbove}"
@@ -299,31 +330,41 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 ?disabled="${this.viewSource}"
               ></hax-context-item>
             </simple-toolbar-menu-item>
-            ${(this.childSlots || []).map(
-              (slot, i) => html`
-                <simple-toolbar-menu-item
-                  slot="menuitem"
-                  class="move-to-slot ${i < 1 ? "first-slot" : ""}"
-                >
-                  <hax-context-item
-                    action
-                    align-horizontal="left"
-                    ?disabled="${this.activeNode &&
-                    slot.slot === this.activeNode.slot}"
-                    show-text-label
-                    role="menuitem"
-                    event-name="insert-into-active"
-                    data-slot="${slot.slot}"
-                    label="${slot.title || slot.slot}"
-                  ></hax-context-item>
-                </simple-toolbar-menu-item>
-              `
-            )}
+            ${
+              !HAXStore.isLayoutElement(this.activeNode)
+                ? ""
+                : (this.slottedItems || []).map(
+                    (slot, i) =>
+                      html`
+                        <simple-toolbar-menu-item
+                          slot="menuitem"
+                          class="insert-into-active ${i < 1
+                            ? "first-slot"
+                            : ""}"
+                        >
+                          <hax-context-item
+                            action
+                            align-horizontal="left"
+                            ?disabled="${this.viewSource}"
+                            label="${slot.label}"
+                            event-name="insert-into-active"
+                            data-slot="${slot.slot}"
+                            role="menuitem"
+                            show-text-label
+                          >
+                          </hax-context-item>
+                        </simple-toolbar-menu-item>
+                      `
+                  )
+            }
           </hax-toolbar-menu>
           <hax-context-item
             action
             ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
+              this.hasActiveEditingElement ||
+              this.viewSource ||
+              this.disableOps ||
+              this.disableDuplicate
             }"
             label="${this.t.duplicate}"
             icon="icons:content-copy"
@@ -354,16 +395,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             bring this back.
           </div>
         </hax-context-item>
-          ${this.ceButtons.map((el) => {
-            return html` <hax-context-item
-              action
-              icon="${el.icon}"
-              label="${el.label}"
-              event-name="hax-ce-custom-button"
-              value="${el.callback}"
-              ?disabled="${el.disabled}"
-            ></hax-context-item>`;
-          })}
           <hax-context-item
             action
             id="right"
@@ -392,7 +423,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
             event-name="hax-plate-remove-right"
-            ?hidden="${!this.isGridPlate()}"
+            ?hidden="${
+              !this.activeNode || HAXStore.isOriginalGridPlate(this.activeNode)
+            }"
             id="rightremove"
             data-simple-tour-stop
             data-stop-title="label"
@@ -403,6 +436,16 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               width.
             </div>
           </hax-context-item>
+          ${this.ceButtons.map((el) => {
+            return html` <hax-context-item
+              action
+              icon="${el.icon}"
+              label="${el.label}"
+              event-name="hax-ce-custom-button"
+              value="${el.callback}"
+              ?disabled="${el.disabled || this.disableItemOps}"
+            ></hax-context-item>`;
+          })}
           <slot name="secondary"></slot>
         </div>
         <div class="group">
@@ -420,7 +463,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             action
             icon="icons:code"
             label="${this.t.modifyHTMLSource}"
-            ?disabled="${!this.sourceView}"
+            ?disabled="${!this.sourceView || this.disableOps}"
             event-name="hax-source-view-toggle"
             toggles
             ?toggled="${this.viewSource}"
@@ -430,7 +473,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             icon="build"
             action
             align-horizontal="left"
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement || this.viewSource || this.disableOps
+            }"
             label="${this.t.edit}"
             data-simple-tour-stop
             data-stop-title="label"
@@ -450,90 +495,22 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     `;
   }
 
-  get childSlots() {
-    let oldGrid = this.isGridPlate(),
-      selfSchema = this.activeNode
-        ? HAXStore.haxSchemaFromTag(this.activeNode.tagName)
-        : undefined;
-    return oldGrid
-      ? this.gridPlateSlots(this.activeNode.layout)
-      : HAXStore.isGridPlateElement(this.activeNode)
-      ? HAXStore.slotsFromSchema(selfSchema || {})
-      : [];
-  }
-  get siblingSlots() {
-    if (!this.activeNode || !this.activeNode.parentNode) return [];
-    let oldGrid = this.isGridPlate(this.activeNode.parentNode);
-    return oldGrid
-      ? this.gridPlateSlots(this.activeNode.parentNode.layout)
-      : HAXStore.isGridPlateElement(this.activeNode.parentNode)
-      ? HAXStore.slotsFromSchema(this.parentSchema || {})
-      : [];
+  get disableTransform() {
+    return !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
-  getSlottedItems(parentNode, slots = []) {
-    return !parentNode
-      ? []
-      : slots.map((slot) => {
-          return {
-            slot: slot.slot,
-            label: slot.title || slot.slot,
-            items: [...parentNode.querySelectorAll(`[slot=${slot.slot}]`)],
-          };
-        });
-  }
-
-  get slottedItems() {
-    if (!this.activeNode) return [];
-    return this.isGridPlate()
-      ? this.getSlottedItems(this.activeNode, this.childSlots)
-      : this.getSlottedItems(this.activeNode.parentNode, this.siblingSlots);
-  }
-
-  get gridIcon() {
-    return this.gridProperties ? this.gridProperties.icon : undefined;
-  }
-
-  get gridLabel() {
-    return this.gridProperties
-      ? this.gridProperties.title || this.gridProperties.tag
-      : "";
-  }
-
-  get gridProperties() {
-    return this.isGridLayoutSlot && this.parentSchema.gizmo
-      ? this.parentSchema.gizmo
-      : undefined;
-  }
-
+  /**
+   * get a list of valid blocks for active node
+   * (if active node is a slot, some blockes may not be permitted)
+   *
+   * @readonly
+   * @returns {array}
+   * @memberof HaxPlateContext
+   */
   get filteredBlocks() {
     return this.getFilteredBlocks(this.formatBlocks);
   }
 
-  get isGridLayoutSlot() {
-    if (!this.activeNode || !this.activeNode.parentNode) return false;
-    return HAXStore.isGridPlateElement(this.activeNode.parentNode);
-  }
-
-  isGridPlate(node = this.activeNode) {
-    return node && node.tagName && node.tagName === "GRID-PLATE";
-  }
-
-  gridPlateSlots(layout = "1-1-1-1-1-1") {
-    let slotConfig = (num) => {
-        let slot = `col-${num}`,
-          label = `Column ${num}`,
-          config = {
-            slot: slot,
-            title: label,
-            excludedSlotWrappers: ["grid-plate"],
-          };
-        return config;
-      },
-      slots = layout.split("-");
-    slots = slots.map((col, num) => slotConfig(num + 1));
-    return slots;
-  }
   __updatePlatePosition(active) {
     let right = this.shadowRoot.querySelector("#right");
     let rightremove = this.shadowRoot.querySelector("#rightremove");
@@ -599,8 +576,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (propName === "onScreen" && this.onScreen) {
         this._resetCEMenu();
       }
-      if (propName === "formatBlocks")
-        this.disableTransform = this.filteredBlocks.length < 1;
     });
   }
 
@@ -688,7 +663,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         this.formatBlocks = !!tag
           ? elements.filter((el) => el.tag && ![tag, primTag].includes(el.tag))
           : elements;
-        this.disableTransform = this.filteredBlocks.length === 0 ? true : false;
       }
       if (HAXStore.activeGizmo) {
         this.activeTagName = HAXStore.activeGizmo.title;
@@ -719,14 +693,23 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       disableOps: {
         type: Boolean,
       },
+      disableItemOps: {
+        type: Boolean,
+      },
+      insertAbove: {
+        type: Boolean,
+      },
+      disableDuplicate: {
+        type: Boolean,
+      },
       canMoveElement: {
         type: Boolean,
       },
       ceButtons: {
         type: Array,
       },
-      disableTransform: {
-        type: Boolean,
+      formatBlocks: {
+        type: Object,
       },
       hasActiveEditingElement: {
         type: Boolean,
@@ -738,9 +721,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       sourceView: {
         type: Boolean,
-      },
-      formatBlocks: {
-        type: Array,
       },
       /**
        * is hax tray collapsed, side-panel, or full-panel

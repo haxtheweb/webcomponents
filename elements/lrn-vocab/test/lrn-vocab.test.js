@@ -1,30 +1,19 @@
-import {
-  expect,
-  fixture,
-  html,
-  assert,
-  elementUpdated,
-  fixtureCleanup,
-} from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { fixture, expect, html } from "@open-wc/testing";
+
 import "../lrn-vocab.js";
 
-/*
- * Instantiation test
- * create element and see if an attribute binds to the element
- */
-describe("Instantiation Test", () => {
-  it("lrn-vocab instantiates", async () => {
-    const el = await fixture(
-      html` <lrn-vocab title="test-title"></lrn-vocab> `
-    );
-    await expect(el.getAttribute("title")).to.equal("test-title");
+describe("lrn-vocab test", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <lrn-vocab title="test-title"></lrn-vocab> `);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
   });
 });
 
 /*
- * A11y Accessibility tests
- */
 describe("A11y/chai axe tests", () => {
   it("lrn-vocab passes accessibility test", async () => {
     const el = await fixture(html` <lrn-vocab></lrn-vocab> `);
@@ -78,8 +67,3 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
-
-// clean up fixtures after all tests are complete
-afterEach(() => {
-  fixtureCleanup();
-});

@@ -60,6 +60,11 @@
           "name": "object",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -80,6 +85,40 @@
           "attribute": "object",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "IORoot"
         }
       ],
       "events": [

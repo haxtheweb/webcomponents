@@ -1,0 +1,52 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Blockquote",
+    "description": "Designed Quote",
+    "icon": "editor:format-quote",
+    "color": "blue",
+    "groups": ["content", "education"],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Citation",
+        "description": "The citation of the element",
+        "inputMethod": "textfield",
+        "icon": "icons:book"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "The alt text for the image",
+        "inputMethod": "textfield",
+        "icon": "editor:text-fields"
+      },
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "The image of the element",
+        "inputMethod": "haxupload",
+        "validationType": "url",
+        "icon": "editor:insert-photo"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "block-quote",
+      "properties": {
+        "citation": "Padmé Amidala: Star wars, Episode II"
+      },
+      "content": "<p>So this is how liberty dies... with thunderous applause</p>"
+    }
+  ]
+}

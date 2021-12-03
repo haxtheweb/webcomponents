@@ -20,7 +20,8 @@ const HAXCMSThemeParts = function (SuperClass) {
       return [
         ...styles,
         css`
-          [part="edit-mode-active"] {
+          [part="edit-mode-active"],
+          [part*="edit-mode-active"] {
             pointer-events: var(
               --haxcms-theme-parts-edit-mode-active-pointer-events,
               none
@@ -35,10 +36,7 @@ const HAXCMSThemeParts = function (SuperClass) {
       ];
     }
     static get properties() {
-      let props = {};
-      if (super.properties) {
-        props = super.props;
-      }
+      let props = super.properties || {};
       return {
         ...props,
         editMode: {

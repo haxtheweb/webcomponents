@@ -9,6 +9,20 @@ class SimpleCameraSnap extends HTMLElement {
   constructor(delayRender = false) {
     super();
     this.tag = SimpleCameraSnap.tag;
+    this.t = {
+      takePhoto: "Take Photo",
+    };
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          context: this,
+          namespace: "simple-login",
+          localesPath: new URL("../locales", import.meta.url).href,
+          updateCallback: "render",
+          locales: ["es"],
+        },
+      })
+    );
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
     if (!delayRender) {
@@ -85,7 +99,7 @@ class SimpleCameraSnap extends HTMLElement {
     </simple-login-avatar>
     <div class="buttons">
       <simple-icon-button-lite id="snap" icon="image:camera-alt" part="snap-button"></simple-icon-button-lite>
-      <simple-tooltip for="snap" part="snap-tooltip">Take Photo</simple-tooltip>
+      <simple-tooltip for="snap" part="snap-tooltip">${this.t.takePhoto}</simple-tooltip>
       <slot></slot>
     </div>
     `;
@@ -99,6 +113,7 @@ class SimpleCameraSnap extends HTMLElement {
     this.shadowRoot
       .querySelector("#snap")
       .addEventListener("click", this.snapPhoto.bind(this));
+    this._t = { ...this.t };
   }
   disconnectedCallback() {
     this.shadowRoot

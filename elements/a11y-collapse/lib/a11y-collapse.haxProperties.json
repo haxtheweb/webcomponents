@@ -2,10 +2,11 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
+  "type": "grid",
   "gizmo": {
     "title": "Single Expand Collapse",
     "description": "A single instance of an expand collapse.",
-    "icon": "view-day",
+    "icon": "icons:view-day",
     "color": "grey",
     "groups": ["Content", "Presentation", "Collapse"]
   },
@@ -15,13 +16,22 @@
         "slot": "heading",
         "title": "Heading",
         "description": "The heading for the collapse.",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "editMode": {
+          "disabled": false
+        }
       },
       {
-        "slot": "content",
+        "slot": "",
         "title": "Content",
         "description": "The content for the collapse.",
-        "inputMethod": "code-editor"
+        "inputMethod": "code-editor",
+        "slotWrapper": "p",
+        "editMode": {
+          "expanded": true,
+          "disabled": false
+        }
       },
       {
         "property": "headingButton",
@@ -84,5 +94,15 @@
         "inputMethod": "boolean"
       }
     ]
-  }
+  },
+  "saveOptions": {
+    "unsetAttributes": ["expanded"]
+  },
+  "demoSchema": [
+    {
+      "tag": "a11y-collapse",
+      "properties": {},
+      "content": "<p slot=\"heading\">Heading</p><p>Content goes here.</p></a11y-collapse>"
+    }
+  ]
 }
