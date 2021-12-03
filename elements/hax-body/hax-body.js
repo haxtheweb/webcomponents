@@ -687,6 +687,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       >
         <div id="topcontextmenu">
           <hax-plate-context
+            always-expanded
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
