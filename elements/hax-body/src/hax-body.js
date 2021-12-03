@@ -699,7 +699,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           <hax-text-editor-toolbar
             id="textcontextmenu"
             class="hax-context-menu ignore-activation ${!this.activeNode ||
-            !HAXStore.isTextElement(this.activeNode)
+            (!HAXStore.isTextElement(this.activeNode) &&
+              !HAXStore.isSingleSlotElement(this.activeNode))
               ? "not-text"
               : "is-text"}"
             .activeNode="${this.activeNode}"
@@ -3073,7 +3074,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       eventPath[0] &&
       eventPath[0].assignedNodes &&
-      eventPath[0].assignedNodes().length
+      eventPath[0].assignedNodes().length &&
+      eventPath[0].parentNode
     ) {
       // has nodes so we can make sure to track this elsewhere
       eventPath[0].parentNode.classList.add("has-nodes");

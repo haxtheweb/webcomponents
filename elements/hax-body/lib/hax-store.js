@@ -549,6 +549,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
+
+  isSingleSlotElement(node) {
+    let slots = Object.keys(this.slotsSchemaFromNode(node));
+    return slots.length == 1 && slots[0].length === 0;
+  }
   /**
    * If this is a text node or not so we know if the inline context
    * operations are valid.

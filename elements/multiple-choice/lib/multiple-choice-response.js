@@ -36,11 +36,24 @@ class MultipleChoiceResponse extends LitElement {
   static get tag() {
     return "multiple-choice-response";
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+
   constructor() {
     super();
     this.correct = false;
     this.type = "checkbox";
   }
+  /**
+   * handles clicking for indicating response as correct
+   *
+   * @param {event} e
+   * @memberof MultipleChoiceResponse
+   */
   _handleClick(e) {
     this.correct = e.detail.value;
   }
@@ -57,25 +70,25 @@ class MultipleChoiceResponse extends LitElement {
     return {
       ...super.properties,
       /**
-       * whether the answer is correct
+       * whether the response is correct
        */
       correct: {
         type: Boolean,
       },
       /**
-       * whether the answer is correct
+       * whether the response is correct
        */
       disabled: {
         type: Boolean,
       },
       /**
-       * type of answer
+       * text of response
        */
-      type: {
+      text: {
         type: String,
       },
       /**
-       * unique identifier for answer
+       * unique identifier for response
        */
       answerId: {
         type: String,
