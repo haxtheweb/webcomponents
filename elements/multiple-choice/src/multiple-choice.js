@@ -122,6 +122,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   constructor() {
     super();
+    this.__ctr = 0;
     this.randomize = false;
     this.hideButtons = false;
     this.disabled = false;
@@ -138,23 +139,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
     this.addEventListener("value-changed", this._handleChange);
-  }
-  _handleChange(e) {
-    if (!this.editMode || !this.singleOption || !e.detail || !e.detail.value)
-      return;
-    let parentNode =
-      !!e.detail &&
-      !!e.detail.parentNode &&
-      !!e.detail.parentNode.host &&
-      e.detail.parentNode.host.tagName === "MULTIPLE-CHOICE-RESPONSE"
-        ? e.detail.parentNode.host
-        : undefined;
-    if (!!parentNode)
-      Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
-        (response) => {
-          if (response !== parentNode) response.correct = false;
-        }
-      );
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
@@ -177,6 +161,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         this.answers.forEach((answer) => {
           return {
             ...answer,
+            answerId: answer.answerId || this._getSlotanswerId(),
             text: answer.text || answer.value || answer.label,
             value: answer.value || answer.label,
           };
@@ -209,7 +194,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         ${this.editMode
           ? html` <div id="editMode">
               <slot name="question"></slot>
-              <slot name="responses"></slot>
+              <slot></slot>
               <p class="feedback">
                 <simple-icon
                   icon="${this.correctIcon}"
@@ -229,13 +214,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
             </div>`
           : html`
               <simple-fields-field
+                id="multiple-choice-question"
                 aria-labelledby="question"
                 block-options
                 ?disabled="${this.disabled}"
                 ?inline="${false}"
                 type="${this.inputType}"
                 .itemsList="${this.displayedAnswers}"
-                .value="${this.userGuess}"
+                .value="${this.userGuess || []}"
                 name="answers"
                 @value-changed="${this.checkedEvent}"
               ></simple-fields-field>
@@ -264,7 +250,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     `;
   }
   checkedEvent(e) {
-    this.userGuess = e.detail.value;
+    this.userGuess = e.detail.value || [];
   }
   static get properties() {
     return {
@@ -390,7 +376,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   resetAnswers(e) {
     SimpleToastStore.hide();
     this.displayedAnswers = [];
-    this.userGuess = undefined;
+    this.userGuess = [];
     const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];
   }
@@ -429,6 +415,28 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         .map((answer) => answer.value || answer.label)
         .sort()
     );
+  }
+  /**
+   * handles single option radio behavior when a response is checked as correct in edit mode
+   * @param {event} e
+   * @returns
+   */
+  _handleChange(e) {
+    if (!this.editMode || !this.singleOption || !e.detail || !e.detail.value)
+      return;
+    let parentNode =
+      !!e.detail &&
+      !!e.detail.parentNode &&
+      !!e.detail.parentNode.host &&
+      e.detail.parentNode.host.tagName === "MULTIPLE-CHOICE-RESPONSE"
+        ? e.detail.parentNode.host
+        : undefined;
+    if (!!parentNode)
+      Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
+        (response) => {
+          if (response !== parentNode) response.correct = false;
+        }
+      );
   }
 
   /**
@@ -546,6 +554,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    */
   _getSlottedAnswer(slot) {
     let answer = {
+      answerId: this._getSlotanswerId(slot),
       value: (slot.value || slot.innerHTML).trim(),
       text: (slot.value || slot.innerHTML).trim(),
       correct:
@@ -564,6 +573,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     return answer;
   }
 
+  _getSlotanswerId(slot) {
+    let id = `mc-${Date.now()}-${this.__ctr++}`;
+    if (!!slot && !slot.answerId) slot.answerId = id;
+    return !!slot ? slot.answerId : id;
+  }
+
   /**
    * makes sure each answer object is represented by slotted content
    *
@@ -571,7 +586,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    * @memberof MultipleChoice
    */
   _setSlottedAnswer(answer) {
-    let inputs = Array.from(
+    let slots = Array.from(
         this.querySelectorAll("multiple-choice-response")
       ).filter((response) => {
         return (
@@ -579,14 +594,17 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           (response.innerHTML || "").trim()
         );
       }),
-      input = inputs[0];
-    if (!input) {
-      input = document.createElement("multiple-choice-response");
-      input.innerHTML = answer.label || answer.value;
-      this.appendChild(input);
+      slot = slots[0];
+    //if no slotted response matches query, make one
+    if (!slot) {
+      slot = document.createElement("multiple-choice-response");
+      slot.innerHTML = answer.label || answer.value;
+      this.appendChild(slot);
     }
-    input.correct = answer.correct;
-    input.type = this.inputType;
+    //update reposnse with answer data
+    slot.answerId = this._getSlotanswerId(slot);
+    slot.correct = answer.correct;
+    slot.type = this.inputType;
   }
 
   /**
@@ -597,10 +615,25 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    */
   _setSlottedAnswers() {
     if (this.answers.length > 0) {
-      Array.from(
-        this.querySelectorAll("multiple-choice-response,input")
-      ).map((slot) => slot.remove());
-      this.answers.forEach((answer) => this._setSlottedAnswer(answer));
+      let answers = this.answers.map((answer) => answer.answerId),
+        slots = {};
+      //remove any slotted responses that are no longer in answers array
+      Array.from(this.querySelectorAll("multiple-choice-response,input")).map(
+        (slot) => {
+          let id = this._getSlotanswerId(slot);
+          slots[id] = slot;
+          if (!answers.includes(id)) slot.remove();
+        }
+      );
+      //update slotted reponses from answers array
+      this.answers.forEach((answer) => {
+        let slot = slots[answer.answerId];
+        if (!slot) {
+          this._setSlottedAnswer(answer);
+        } else {
+          slot.innerHTML = answer.text;
+        }
+      });
     }
   }
   /**

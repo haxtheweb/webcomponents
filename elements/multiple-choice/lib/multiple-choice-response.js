@@ -41,11 +41,6 @@ class MultipleChoiceResponse extends LitElement {
     this.correct = false;
     this.type = "checkbox";
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-    this.slot = "responses";
-  }
   _handleClick(e) {
     this.correct = e.detail.value;
   }
@@ -78,6 +73,14 @@ class MultipleChoiceResponse extends LitElement {
        */
       type: {
         type: String,
+      },
+      /**
+       * unique identifier for answer
+       */
+      answerId: {
+        type: String,
+        attribute: "answer-id",
+        reflect: true,
       },
     };
   }

@@ -37,7 +37,7 @@
   },
   "demoSchema": [
     {
-      "tag": "multiple-choice",
+      "tag": "multiple-choice-answer",
       "properties": {
         "randomize": true
       },

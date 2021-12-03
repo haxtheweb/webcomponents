@@ -74,6 +74,13 @@
             <p slot="correct-feedback">Yippee!!</p>
             <p slot="incorrect-feedback">Aw shucks!!</p>
           </multiple-choice>
+          <button id="toggle-edit-mode" onclick="toggleEditMode()">Toggle Edit Mode</button>
+          <script>
+            toggleEditMode = function(){
+              let mc = document.getElementById('editmode');
+              if(!!mc) mc.editMode = !mc.editMode;
+            }
+          </script>
         </template>
       </demo-snippet>
     </div>

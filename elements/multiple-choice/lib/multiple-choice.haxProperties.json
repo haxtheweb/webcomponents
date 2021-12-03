@@ -16,6 +16,14 @@
     }
   },
   "settings": {
+    "layout": [
+      {
+        "property": "singleOption",
+        "title": "Single Response",
+        "description": "Only allow one response (uses radio buttons)",
+        "inputMethod": "boolean"
+      }
+    ],
     "configure": [
       {
         "slot": "question",
@@ -25,10 +33,11 @@
         "slotWrapper": "h3"
       },
       {
-        "slot": "responses",
+        "slot": "",
         "title": "Responses",
         "description": "Possible Responses",
         "inputMethod": "textfield",
+        "slotWrapper": "multiple-choice-response",
         "allowedSlotWrappers": ["multiple-choice-response"]
       },
       {
