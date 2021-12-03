@@ -114,7 +114,7 @@ class VocabTerm extends LitElement {
           <details>
             <summary id="summary">${this.term}</summary>
             <div part="information">
-              <simple-popover for="summary">
+              <simple-popover for="summary" position="top">
                 <p>${this.information}</p>
                 <div part="links">
                   ${this.links.length > 0
