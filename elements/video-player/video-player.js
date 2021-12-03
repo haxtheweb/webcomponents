@@ -8,6 +8,8 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -19,7 +21,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * @element video-player
  */
 class VideoPlayer extends IntersectionObserverMixin(
-  MediaBehaviorsVideo(SchemaBehaviors(SimpleColors))
+  MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(SimpleColors)))
 ) {
   //styles function
   static get styles() {
@@ -85,7 +87,9 @@ class VideoPlayer extends IntersectionObserverMixin(
               <div id="videocaption" class="video-caption">
                 <p>
                   ${this.mediaTitle}
-                  <span class="media-type print-only">(embedded media)</span>
+                  <span class="media-type print-only"
+                    >(${this.t.embeddedMedia})</span
+                  >
                 </p>
                 <slot name="caption"></slot>
               </div>
@@ -599,6 +603,16 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.observer.observe(this, {
       childList: true,
       subtree: false,
+    });
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      embeddedMedia: "embedded media",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales", import.meta.url).href,
+      locales: ["es"],
     });
   }
   /**

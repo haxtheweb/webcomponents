@@ -45,6 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-media-player": "^4.0.4",
+    "@lrnwebcomponents/i18n-manager": "^4.0.1",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
     "@lrnwebcomponents/media-behaviors": "^4.0.4",
     "@lrnwebcomponents/schema-behaviors": "^4.0.4",
