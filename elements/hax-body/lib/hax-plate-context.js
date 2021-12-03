@@ -288,7 +288,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                         }}"
                         role="menuitem"
                         show-text-label
-                        @click="${this.checkEditMode}"
                       >
                       </hax-context-item>
                     </simple-toolbar-menu-item>
