@@ -10,8 +10,7 @@
     "color": "purple",
     "groups": ["Instructional"],
     "meta": {
-      "author": "ELMS:LN",
-      "inlineOnly": true
+      "author": "ELMS:LN"
     },
     "allowedParents": ["multiple-choice"]
   },

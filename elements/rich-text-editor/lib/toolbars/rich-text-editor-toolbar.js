@@ -912,6 +912,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChanged();
+        if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();
         if (["editor", "show", "range"].includes(propName))
           this.hidden = this.disconnected;
