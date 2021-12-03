@@ -107,7 +107,7 @@ class CleanOne extends HAXCMSRememberRoute(
            padding: 6px;
          }
          .btn-container .btn {
-           padding: 8px;
+           padding: 8px 4px;
          }
          simple-tooltip {
            --simple-tooltip-background: var(--haxcms-user-styles-color-theme-color-1);
@@ -579,7 +579,7 @@ class CleanOne extends HAXCMSRememberRoute(
            button, select {
              text-transform: none;
            }
-            button, input {
+           button, input {
              line-height: normal;
            }
            button, input, select, textarea {
@@ -601,16 +601,6 @@ class CleanOne extends HAXCMSRememberRoute(
              border-top: 1px solid rgba(0,0,0,.07);
              margin-bottom: 10px;
              margin-top: -1px;
-           }
-           #site-search-input input, #site-search-input input:focus, #site-search-input input:hover {
-             width: 100%;
-             background: 0 0;
-             border: 1px solid transparent;
-             box-shadow: none;
-             outline: 0;
-             line-height: 22px;
-             padding: 7px 7px;
-             color: inherit;
            }
            site-search {
              height: auto;
