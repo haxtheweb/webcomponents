@@ -1527,7 +1527,10 @@ class HaxTray extends I18NMixin(
   __valueChangedEvent(e) {
     if (this.editMode && e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
-      let isGrid = e.detail.value.type && e.detail.value.type == "grid";
+      let props = {
+        ...HAXStore.elementList[this.activeNode.tagName.toLowerCase()],
+      };
+      let isGrid = props.type == "grid";
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",
