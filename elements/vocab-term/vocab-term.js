@@ -11,6 +11,11 @@ import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
  * `a vocabulary term visualized in the page`
  * @demo demo/index.html
  * @element vocab-term
+ * #### Styling
+Custom property | Description | Default
+----------------|-------------|----------
+`--vocab-term-bottom-border` | Underline of the vocab term. | 1px dashed gray
+`--vocab-term-color` | Color of the vocab term. | black
  */
 class VocabTerm extends LitElement {
   static get properties() {
@@ -71,7 +76,8 @@ class VocabTerm extends LitElement {
         }
         summary {
           list-style: none;
-          border-bottom: 1px dashed gray;
+          border-bottom: var(--vocab-term-border-bottom, 1px dashed gray);
+          color: var(--vocab-term-color, black);
         }
       `,
     ];
@@ -83,7 +89,9 @@ class VocabTerm extends LitElement {
     return html` ${!this.popoverMode
       ? html`
           <div>
-            <summary id="summary">${this.term}</summary>
+            <div part="term">
+              <summary id="summary">${this.term}</summary>
+            </div>
             <simple-modal-template>
               <div slot="header">${this.term}</div>
               <p slot="content">${this.information}</p>
@@ -105,20 +113,24 @@ class VocabTerm extends LitElement {
       : html`
           <details>
             <summary id="summary">${this.term}</summary>
-            <simple-popover for="summary" position="top">
-              <p>${this.information}</p>
-              ${this.links.length > 0
-                ? html`
-                    <ul>
-                      ${this.links.map(
-                        (el) => html`
-                          <li><a href="${el.href}">${el.title}</a></li>
-                        `
-                      )}
-                    </ul>
-                  `
-                : ``}
-            </simple-popover>
+            <div part="information">
+              <simple-popover for="summary" position="top">
+                <p>${this.information}</p>
+                <div part="links">
+                  ${this.links.length > 0
+                    ? html`
+                        <ul>
+                          ${this.links.map(
+                            (el) => html`
+                              <li><a href="${el.href}">${el.title}</a></li>
+                            `
+                          )}
+                        </ul>
+                      `
+                    : ``}
+                </div>
+              </simple-popover>
+            </div>
           </details>
         `}`;
   }
