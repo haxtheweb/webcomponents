@@ -3,8 +3,6 @@
   "canPosition": false,
   "canEditSource": true,
   "contentEditable": true,
-  "type": "grid",
-  "editMode": "editMode",
   "gizmo": {
     "title": "Image Gallery",
     "description": "An image gallery displayed as a carousel or a grid",
