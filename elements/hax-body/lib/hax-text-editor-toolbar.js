@@ -524,12 +524,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @returns
    */
   targetHandlers(target) {
-    return {
-      click: (e) => this._handleTargetClick(target, e),
-      dblclick: (e) => this._handleTargetDoubleClick(target, e),
-      focus: (e) => this._handleTargetFocus(target, e),
-      keydown: (e) => this._handleShortcutKeys(e),
-    };
+    let handlers = super.targetHandlers(target);
+    delete handlers.paste;
+    return handlers;
   }
 
   updated(changedProperties) {
@@ -664,12 +661,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         element: element,
         type: "hax-text-editor-button",
       };
-      console.log(
-        tag,
-        props,
-        element,
-        window.HaxTextEditorToolbarConfig.inlineGizmos
-      );
       this.__updated = false;
       setTimeout((e) => (this.config = this.updateToolbarElements()), 500);
     }

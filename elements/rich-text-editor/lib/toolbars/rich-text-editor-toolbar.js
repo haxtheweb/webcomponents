@@ -1120,10 +1120,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
       button.__toolbar = this;
       button.disabled = !this.target;
-      (button.tagsArray || []).forEach(
-        (tag) =>
-          (this.clickableElements[tag] = (e) => button.tagClickCallback(e))
-      );
+      (button.tagsArray || []).forEach((tag) => {
+        if (!!button.tagClickCallback) this.clickableElements[tag] = button;
+      });
     }
     /**
      * adds breadcrumbfeature
@@ -1441,8 +1440,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     targetHandlers(target) {
       return {
-        click: (e) => this._handleTargetClick(target, e),
-        dblclick: (e) => this._handleTargetDoubleClick(target, e),
+        dblclick: (e) => this._handleTargetClick(target, e),
         focus: (e) => this._handleTargetFocus(target, e),
         keydown: (e) => this._handleShortcutKeys(e),
         paste: (e) => this._handlePaste(e),
@@ -1472,20 +1470,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
     }
 
-    _handleTargetDoubleClick(target, e) {
-      let eventPath = normalizeEventPath(e);
-      if (!target || target.disabled || this.target !== target) return;
-      let els = Object.keys(this.clickableElements || {}),
-        el = eventPath[0] || { tagName: "" },
-        evt = { detail: el },
-        tagname = (el.tagName || "").toLowerCase();
-      if (tagname && els.includes(tagname)) {
-        e.preventDefault();
-        this.clickableElements[tagname](evt);
-        this.updateRange();
-      }
-    }
-
     _handleTargetClick(target, e) {
       let eventPath = normalizeEventPath(e);
       if (!target || target.disabled) return;
@@ -1494,13 +1478,28 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.setTarget(target);
       } else {
         let els = Object.keys(this.clickableElements || {}),
-          el = eventPath[0] || { tagName: "" },
-          evt = { detail: el },
-          tagname = (el.tagName || "").toLowerCase();
-        if (tagname && els.includes(tagname)) {
-          e.preventDefault();
-          this.clickableElements[tagname](evt);
-        }
+          matched = false;
+        eventPath.forEach((target) => {
+          if (matched) return;
+          let tagname = (target.tagName || "").toLowerCase();
+          if (tagname && els.includes(tagname)) {
+            console.log(
+              "!!!!!",
+              tagname,
+              target,
+              { ...e, detail: target, eventPath: eventPath },
+              els,
+              this.clickableElements[tagname]
+            );
+            matched = true;
+            e.preventDefault();
+            this.clickableElements[tagname].tagClickCallback({
+              ...e,
+              detail: target,
+              eventPath: eventPath,
+            });
+          }
+        });
       }
       this.range = this.getRange();
       this.updateRange();

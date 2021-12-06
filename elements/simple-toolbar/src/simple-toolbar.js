@@ -594,7 +594,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     /**
      * updates buttons based on change in config
      */
-    updateToolbar(config) {
+    updateToolbar(config = this.config) {
       if (!this || !this.config || this.config.length == 0) return;
       this.clearToolbar();
       if (typeof this.config != typeof []) this.config = JSON.parse(config);
