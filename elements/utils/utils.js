@@ -662,7 +662,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes[attribute].value != "" &&
         !tmpProps.hasOwnProperty(dashToCamel(node.attributes[attribute].name))
       ) {
-        props[dashToCamel(node.attributes[attribute].name)] =
+        props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
       } else {
         // note: debug here if experiencing attributes that won't bind
@@ -682,7 +682,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != ""
       ) {
-        props[dashToCamel(node.attributes[attribute].name)] =
+        props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
       }
     }

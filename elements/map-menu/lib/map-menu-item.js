@@ -116,7 +116,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   render() {
     return html`
       <a tabindex="-1" href="${this.url}">
-        <button id="wrapper" role="link" noink>
+        <button id="wrapper" noink>
           ${this.icon
             ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
             : ``}

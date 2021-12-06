@@ -487,6 +487,13 @@ export class HAXWiring {
      * Standard advanced properties we support for all forms
      */
     this.standardAdvancedProps = (props) => {
+      // specialized attribute to allow locking in hax of anything
+      props.settings.advanced.push({
+        attribute: "data-hax-lock",
+        title: "Lock editing",
+        description: "Prevent changes to this element and all its content",
+        inputMethod: "boolean",
+      });
       // allow classes to be modified this way
       props.settings.advanced.push({
         attribute: "class",

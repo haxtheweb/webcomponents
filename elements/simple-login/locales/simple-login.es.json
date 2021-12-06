@@ -1,5 +1,7 @@
 {
   "record": "Registro",
   "pause": "Pausar registro",
-  "stopSave": "Detener y guardar"
+  "stopSave": "Detener y guardar",
+  "clickToTakePhoto": "Haga clic para tomar la foto",
+  "takePhoto": "Toma fotos"
 }

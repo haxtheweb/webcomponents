@@ -192,7 +192,12 @@ class SimpleTooltip extends LitElement {
         }
 
         .hidden {
-          display: none !important;
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
         }
       `,
     ];

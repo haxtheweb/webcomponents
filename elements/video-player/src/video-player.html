@@ -26,7 +26,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
       <div id="videocaption" class="video-caption">
         <p>
           ${this.mediaTitle}
-          <span class="media-type print-only">(embedded media)</span>
+          <span class="media-type print-only">(${this.t.embeddedMedia})</span>
         </p>
         <slot name="caption"></slot>
       </div><slot hidden></slot>` 

@@ -44,6 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/i18n-manager": "^4.0.1",
     "@lrnwebcomponents/a11y-tabs": "^4.0.4",
     "@lrnwebcomponents/code-editor": "^4.0.4",
     "@lrnwebcomponents/hax-iconset": "^4.0.4",

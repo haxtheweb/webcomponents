@@ -80,6 +80,7 @@ class HaxTray extends I18NMixin(
       edit: "Edit",
       save: "Save",
       move: "Move",
+      close: "Close",
       moveMenu: "Toggles Menu Aligmnent",
       menuAlignment: "Menu Alignment",
       menuLeft: "Move",
@@ -736,9 +737,7 @@ class HaxTray extends I18NMixin(
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div data-stop-content>
-          Some advanced options for developers and experimental purposes.
-        </div>
+        <div data-stop-content>User preferences for customizing HAX</div>
       </hax-tray-button>
       <hax-tray-button
         event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
@@ -770,7 +769,7 @@ class HaxTray extends I18NMixin(
           id="toggle-tray-size"
           event-name="toggle-tray-size"
           icon="close"
-          label="Close"
+          label="${this.t.close}"
         >
         </hax-tray-button>
       </div>
@@ -787,7 +786,6 @@ class HaxTray extends I18NMixin(
   }
   get advancedSettingsTemplate() {
     return html` <hax-preferences-dialog
-      id="advanced-settings"
       ?hidden="${this.trayDetail !== "advanced-settings"}"
     ></hax-preferences-dialog>`;
   }
@@ -1226,7 +1224,6 @@ class HaxTray extends I18NMixin(
             this.trayDetail = "content-edit";
           }
         } else {
-          this.activeTagName = "";
           // force a gizmo change (which then implies adding to the page)
           // to select the edit tab if we just added something into the page
           // from our two content adding panes
@@ -1241,8 +1238,6 @@ class HaxTray extends I18NMixin(
           if (this.editMode) {
             await HAXStore.refreshActiveNodeForm();
           }
-        } else {
-          this.activeTagName = "";
         }
       }
     });
@@ -1548,6 +1543,23 @@ class HaxTray extends I18NMixin(
                 this.activeNode.setAttribute("prefix", settings[key][prop]);
                 setAhead = true;
               }
+              // prefix is a special attribute and must be handled this way
+              else if (prop === "data-hax-lock") {
+                // broadcast that we just LOCKED it
+                this.dispatchEvent(
+                  new CustomEvent("hax-toggle-active-node-lock", {
+                    bubbles: true,
+                    composed: true,
+                    cancelable: true,
+                    detail: {
+                      lock: settings[key][prop],
+                      node: this.activeNode,
+                    },
+                  })
+                );
+                // also lock all fields except us
+                this.__lockAllSettings(settings[key][prop]);
+              }
               // innerText is another special case since it cheats on slot content
               // that is only a text node (like a link)
               else if (prop === "innerText") {
@@ -1721,6 +1733,21 @@ class HaxTray extends I18NMixin(
                 }
               }
             } else {
+              if (prop === "data-hax-lock") {
+                // broadcast that we just UNLOCKED it
+                this.dispatchEvent(
+                  new CustomEvent("hax-toggle-active-node-lock", {
+                    bubbles: true,
+                    composed: true,
+                    cancelable: true,
+                    detail: {
+                      lock: false,
+                      node: this.activeNode,
+                    },
+                  })
+                );
+                this.__lockAllSettings(false);
+              }
               this.activeNode.removeAttribute(camelCaseToDash(prop));
             }
           }
@@ -1733,7 +1760,18 @@ class HaxTray extends I18NMixin(
       }
     }, 51);
   }
-
+  /**
+   * Lock / unlock all settings on the tray for the active node form
+   */
+  __lockAllSettings(status) {
+    this.shadowRoot
+      .querySelectorAll(
+        "simple-fields-tab *[is-simple-field-type]:not([name='settings.advanced.data-hax-lock'])"
+      )
+      .forEach((node) => {
+        node.disabled = status;
+      });
+  }
   /**
    * _editModeChanged
    */

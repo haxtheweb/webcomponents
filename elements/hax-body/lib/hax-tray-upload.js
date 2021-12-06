@@ -15,14 +15,6 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
-    this.t = {
-      ...super.t,
-      uploadMedia: "Upload Media",
-    };
-    this.registerLocalization({
-      context: this,
-      namespace: "hax",
-    });
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop",
@@ -31,7 +23,7 @@ class HaxTrayUpload extends HaxUploadField {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "t") this.label = this.t.uploadMedia;
+      if (propName === "t") this.label = this.t.uploadMedia;
     });
   }
   /**

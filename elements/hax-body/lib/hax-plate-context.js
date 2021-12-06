@@ -26,6 +26,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   constructor() {
     super();
     this.disableOps = false;
+    this.disableItemOps = false;
+    this.insertAbove = true;
     this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
@@ -228,7 +230,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             action
             align-horizontal="left"
-            ?disabled="${this.viewSource}"
+            ?disabled="${this.viewSource || this.disableOps}"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >
@@ -309,6 +311,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 align-horizontal="left"
                 show-text-label
                 role="menuitem"
+                ?disabled="${!this.insertAbove}"
                 icon="hardware:keyboard-arrow-up"
                 event-name="insert-above-active"
                 label="${this.t.insertItemAbove}"
@@ -377,7 +380,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         <hax-context-item
           action
           icon="delete"
-          ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+          ?disabled="${
+            this.hasActiveEditingElement || this.viewSource || this.disableOps
+          }"
           icon="delete"
           label="${this.t.remove}"
           event-name="hax-plate-delete"
@@ -395,7 +400,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             class="paddle"
             icon="hax:table-column-remove"
             label="${this.t.addColumn}"
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement || this.viewSource || this.disableOps
+            }"
             event-name="hax-plate-create-right"
             data-simple-tour-stop
             data-stop-title="label"
@@ -411,7 +418,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             class="paddle"
             icon="hax:table-column-plus-after"
             label="${this.t.removeColumn}"
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement || this.viewSource || this.disableOps
+            }"
             event-name="hax-plate-remove-right"
             ?hidden="${
               !this.activeNode || HAXStore.isOriginalGridPlate(this.activeNode)
@@ -433,7 +442,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${el.label}"
               event-name="hax-ce-custom-button"
               value="${el.callback}"
-              ?disabled="${el.disabled}"
+              ?disabled="${el.disabled || this.disableItemOps}"
             ></hax-context-item>`;
           })}
           <slot name="secondary"></slot>
@@ -444,14 +453,16 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             more
             label="${this.t.changeTo}..."
             tooltip="${this.activeTagName}, ${this.t.clickToChange}"
-            ?disabled="${this.disableTransform || this.viewSource}"
+            ?disabled="${
+              this.disableTransform || this.viewSource || this.disableOps
+            }"
             event-name="hax-transform-node"
           ></hax-context-item>
           <hax-context-item
             action
             icon="icons:code"
             label="${this.t.modifyHTMLSource}"
-            ?disabled="${!this.sourceView}"
+            ?disabled="${!this.sourceView || this.disableOps}"
             event-name="hax-source-view-toggle"
             toggles
             ?toggled="${this.viewSource}"
@@ -461,7 +472,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             icon="build"
             action
             align-horizontal="left"
-            ?disabled="${this.hasActiveEditingElement || this.viewSource}"
+            ?disabled="${
+              this.hasActiveEditingElement || this.viewSource || this.disableOps
+            }"
             label="${this.t.edit}"
             data-simple-tour-stop
             data-stop-title="label"
@@ -677,6 +690,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         type: String,
       },
       disableOps: {
+        type: Boolean,
+      },
+      disableItemOps: {
+        type: Boolean,
+      },
+      insertAbove: {
         type: Boolean,
       },
       disableDuplicate: {

@@ -8,13 +8,15 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
  *
  * @demo demo/index.html
  */
-class SiteSearch extends LitElement {
+class SiteSearch extends HAXCMSI18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -90,6 +92,15 @@ class SiteSearch extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      search: "Search",
+      results: "results",
+      found: "Found",
+      typeAtLeast3LettersToStartSearch:
+        "Type at least 3 letters to start search",
+    };
     this.whileLoading = false;
     this.hideInput = false;
     this.search = "";
@@ -108,8 +119,8 @@ class SiteSearch extends LitElement {
         ?hidden="${this.hideInput}"
         id="search"
         always-float-label
-        label="Search"
-        placeholder="Type at least 3 letters to start search.."
+        label="${this.t.search}"
+        placeholder="${this.t.typeAtLeast3LettersToStartSearch}.."
         type="text"
         @value-changed="${this._searchValueChanged}"
       >
@@ -118,7 +129,7 @@ class SiteSearch extends LitElement {
       ${this.search.length > 0
         ? html`
             <h1 class="results-found-text">
-              Found ${this.__results.length} results.
+              ${this.t.found} ${this.__results.length} ${this.t.results}.
             </h1>
           `
         : html``}
@@ -199,7 +210,7 @@ class SiteSearch extends LitElement {
         );
         var breadcrumb = [
           {
-            title: fullItem.title,
+            title: fullItem ? fullItem.title : "",
           },
         ];
         let itemBuilder = fullItem;
@@ -252,6 +263,9 @@ class SiteSearch extends LitElement {
       },
       __results: {
         type: Array,
+      },
+      t: {
+        type: Object,
       },
     };
   }

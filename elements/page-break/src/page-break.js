@@ -392,6 +392,14 @@ export class PageBreak extends IntersectionObserverMixin(
           margin-top: -28px;
           margin-right: -46px;
         }
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
       `,
     ];
   }
@@ -407,7 +415,9 @@ export class PageBreak extends IntersectionObserverMixin(
           content: "${this.t.pageBreak}";
         }
       </style>
-      <a .href="${this.slug}" .name="#${this.itemId}" aria-hidden="true"></a>
+      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only"
+        >${this.title}</a
+      >
       <hr class="mid" />
       ${this.locked
         ? html`<simple-icon-lite
@@ -534,6 +544,8 @@ export class PageBreak extends IntersectionObserverMixin(
     if (!value && this._ceMenu) {
       if (this.breakType === "site") {
         this._ceMenu.disableOps = false;
+        this._ceMenu.canMoveElement = true;
+        this._ceMenu.insertAbove = true;
       } else {
         this._ceMenu.disableDuplicate = false;
       }
@@ -554,6 +566,8 @@ export class PageBreak extends IntersectionObserverMixin(
     // forcibly prevent duplication and deleting of the node controlling the page itself
     if (this.breakType === "site") {
       this._ceMenu.disableOps = true;
+      this._ceMenu.canMoveElement = false;
+      this._ceMenu.insertAbove = false;
     } else {
       this._ceMenu.disableDuplicate = true;
     }

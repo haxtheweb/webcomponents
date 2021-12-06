@@ -3,13 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `scroll-button`
  * `button to scroll to an area or back to top`
@@ -17,11 +12,25 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @element scroll-button
  */
 class ScrollButton extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
     this.icon = "icons:expand-less";
-    this.label = "Backt to top";
+    this.t = {
+      backToTop: "Back to top",
+    };
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          context: this,
+          namespace: "scroll-button",
+          localesPath: new URL("./locales", import.meta.url).href,
+          updateCallback: "render",
+          locales: ["es"],
+        },
+      })
+    );
+    this._label = this.t.backToTop;
+    this.label = "";
     this.position = "top";
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
@@ -31,6 +40,100 @@ class ScrollButton extends LitElement {
    */
   static get tag() {
     return "scroll-button";
+  }
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          --scroll-button-z-index: 99;
+          z-index: var(--scroll-button-z-index);
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        simple-icon-button-lite {
+          background-color: var(
+            --scroll-button-background-color,
+            rgba(0, 0, 0, 0.6)
+          );
+          color: var(--scroll-button-color, white);
+        }
+
+        simple-icon-button-lite:hover,
+        simple-icon-button-lite:active,
+        simple-icon-button-lite:focus {
+          color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
+          background-color: var(--scroll-button-color, white);
+        }
+
+        simple-tooltip {
+          --simple-tooltip-background: var(
+            --scroll-button-tooltip-background-color,
+            #000000
+          );
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: var(
+            --scroll-button-tooltip-color,
+            #ffffff
+          );
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
+        }
+      `,
+    ];
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldvalue, propName) => {
+      // if other developer defined label, don't translate it
+      if (propName === "t" && this.label === "") {
+        this._label = this.t.backToTop;
+      }
+      if (propName === "label" && this.label !== "") {
+        this._label = this.label;
+      }
+    });
+  }
+  // render function
+  render() {
+    return html` <simple-icon-button-lite
+        @click="${this.scrollEvent}"
+        id="btn"
+        icon="${this.icon}"
+        label="${this._label}"
+      ></simple-icon-button-lite>
+      <simple-tooltip for="btn" position="${this.position}" offset="14">
+        ${this._label}
+      </simple-tooltip>`;
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      target: {
+        type: Object,
+      },
+      icon: {
+        type: String,
+      },
+      label: {
+        type: String,
+      },
+      _label: {
+        type: String,
+      },
+      position: {
+        type: String,
+      },
+      t: {
+        type: Object,
+      },
+    };
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -51,5 +154,5 @@ class ScrollButton extends LitElement {
     }
   }
 }
-window.customElements.define(ScrollButton.tag, ScrollButton);
+customElements.define(ScrollButton.tag, ScrollButton);
 export { ScrollButton };

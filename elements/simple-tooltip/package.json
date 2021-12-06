@@ -43,10 +43,9 @@
     "lit": "^2.0.2"
   },
   "devDependencies": {
+    "@lrnwebcomponents/simple-icon": "^4.0.4",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
     "@open-wc/testing": "3.0.3",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",

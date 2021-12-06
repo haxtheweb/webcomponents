@@ -3,8 +3,9 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 
-class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
+class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   static get tag() {
     return "site-git-corner";
   }
@@ -34,7 +35,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
       <git-corner
         .part="${this.editMode ? `edit-mode-active` : ``}"
         size="${this.size}"
-        alt="${this.alt}"
+        alt="${this.t.seePageSource}"
         ?circle="${this.circle}"
         source="${this.activeGitFileLink}"
       ></git-corner>
@@ -42,8 +43,9 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t.seePageSource = "See page source";
     this.circle = false;
-    this.alt = "See page source";
     this.direction = "right";
     this.activeGitFileLink = "";
     this.__disposer = [];
@@ -83,7 +85,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
       size: { type: String },
       activeGitFileLink: { type: String, attribute: "active-git-file-link" },
       direction: { type: String, reflect: true },
-      alt: { type: String },
+      t: { type: Object },
     };
   }
 }

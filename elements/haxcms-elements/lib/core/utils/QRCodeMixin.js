@@ -1,20 +1,17 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 const QRCodeMixin = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
       this.showQRCode = false;
-      if (!this.t) {
-        this.t = {};
-      }
-      if (this.t) {
-        this.t = {
-          ...this.t,
-          currentPage: "Current page",
-        };
-      }
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        currentPage: "Current page",
+      };
     }
     /**
      * life cycle, element is afixed to the DOM
@@ -43,6 +40,7 @@ const QRCodeMixin = function (SuperClass) {
             padding: 2px;
           }
           .qr-code-btn {
+            color: inherit;
             --simple-icon-height: 24px;
             --simple-icon-width: 24px;
           }
@@ -64,8 +62,8 @@ const QRCodeMixin = function (SuperClass) {
         >
           <simple-icon-button-lite
             part="qr-code-btn"
-            class="qr-code-btn"
-            aria-label="${this.t.currentPage}"
+            class="qr-code-btn btn"
+            label="${this.t.currentPage}"
             icon="hax:qr-code"
             @click="${this.QRCodeButtonToggle}"
             id="qrcodebtn"

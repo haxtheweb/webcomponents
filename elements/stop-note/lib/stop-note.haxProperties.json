@@ -1,0 +1,81 @@
+{
+  "type": "grid",
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Stop Note",
+    "description": "A message to alert readers to specific directions.",
+    "icon": "icons:report",
+    "color": "orange",
+    "groups": ["Education", "Content"],
+    "handles": [
+      {
+        "type": "text",
+        "title": "label"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Enter title for stop-note.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Enter an external url.",
+        "inputMethod": "haxupload",
+        "required": true
+      },
+      {
+        "property": "icon",
+        "title": "Action Icon",
+        "description": "Icon used for stop-note",
+        "inputMethod": "select",
+        "options": {
+          "stopnoteicons:stop-icon": "Stop",
+          "stopnoteicons:warning-icon": "Warning",
+          "stopnoteicons:confirm-icon": "Confirmation",
+          "stopnoteicons:book-icon": "Notice"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Note Text",
+        "description": "IText for the stop-note.",
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p", "div"]
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors", "t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "stop-note",
+      "properties": {
+        "title": "Hold up there"
+      },
+      "content": "<p slot=\"message\"><strong>Read these important things!</strong>\n</p>\n"
+    },
+    {
+      "tag": "stop-note",
+      "properties": {
+        "title": "Warning",
+        "icon": "stopnoteicons:warning-icon"
+      },
+      "content": "<p slot=\"message\">You can write any warning message you want here.</p>\n"
+    }
+  ]
+}

@@ -65,6 +65,15 @@ class LrnappStudioSubmissionComment extends PolymerElement {
         .comment-depth-6 {
           margin: 16px;
         }
+        @media (max-width: 800px) {
+          .comment-depth-2,
+          .comment-depth-3,
+          .comment-depth-4,
+          .comment-depth-5,
+          .comment-depth-6 {
+            margin: 0;
+          }
+        }
         .center {
           padding: 0;
         }
