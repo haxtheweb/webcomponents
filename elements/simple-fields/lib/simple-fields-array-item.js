@@ -373,6 +373,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.addEventListener("dragend", this._dragEnd);
     this.addEventListener("drop", this._dragDrop);
   }
+  /**
+   * ensure we can indentify this and an element extending it as an array item
+   *
+   * @readonly
+   * @memberof SimpleFieldsArrayItem
+   */
+  get isArrayItem() {
+    return true;
+  }
+
   _dragMoving(e) {
     this.__dragMoving = true;
     e.preventDefault();
@@ -381,7 +391,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
-    [...this.parentNode.childNodes].forEach((item) => item._setDropzone(false));
+    [...this.parentNode.childNodes].forEach((item) => {
+      if (item.isArrayItem) item._setDropzone(false);
+    });
     this._setDragging(false);
   }
   /**
@@ -431,8 +443,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         this.parentNode.append(target);
       }
       [...this.parentNode.childNodes].forEach((item) => {
-        item._setDragging(false);
-        item._setDragging(false);
+        if (item.isArrayItem) item._setDragging(false);
       });
       this.dispatchEvent(
         new CustomEvent("reorder", {
@@ -448,7 +459,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     if (!this.parentNode.disabled) this.__dragging = show;
     if (show) {
       [...this.parentNode.childNodes].forEach((item) => {
-        if (item !== this) {
+        if (item !== this && item.isArrayItem) {
           item.__dropAccepts = this;
           item.classList.add("droppable");
         }
@@ -456,7 +467,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       this.classList.add("dragging");
     } else {
       [...this.parentNode.childNodes].forEach((item) => {
-        if (item !== this) {
+        if (item !== this && item.isArrayItem) {
           item.__dropAccepts = undefined;
           item.classList.remove("droppable");
         }
