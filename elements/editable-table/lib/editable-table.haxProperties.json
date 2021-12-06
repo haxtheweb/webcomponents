@@ -1,0 +1,124 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "type": "grid",
+  "editMode": { "editMode": true },
+  "gizmo": {
+    "title": "Multiple choice",
+    "description": "Multiple choice self check",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "groups": ["Instructional"],
+    "handles": [],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Table",
+        "description": "Possible Responses",
+        "inputMethod": "textfield",
+        "slotWrapper": "table",
+        "allowedSlotWrappers": ["table"]
+      },
+      {
+        "property": "bordered",
+        "title": "Bordered",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "condensed",
+        "title": "Condense Rows",
+        "description": "Condenses row height",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "rowHeader",
+        "title": "Row Header",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "striped",
+        "title": "Striped Rows",
+        "description": "Add shading to every other row",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "columnHeader",
+        "title": "Column Header",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "columnStriped",
+        "title": "Striped Columns",
+        "description": "Add shading to every other column",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "footer",
+        "title": "Footer",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Automatically adjusts table when viewed on small screens",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Download Button",
+        "description": "Adds a button to download the table",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "printable",
+        "title": "Print Button",
+        "description": "Adds a button to print just the table",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "condensed",
+        "title": "Condense Rows",
+        "description": "Condenses row height",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeric Styling",
+        "description": "Styling for numeric columns",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "sort",
+        "title": "Sortable",
+        "description": "Allows rows to be sorted by a column value",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "filter",
+        "title": "Allow Filter",
+        "description": "Allows data to be filtered by a column value",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "editMode"]
+  },
+  "demoSchema": [
+    {
+      "tag": "multiple-choice",
+      "properties": {
+        "randomize": true
+      },
+      "content": "\n<table>\n<caption>\nIs it a sandwich? Food classification chart.\n</caption>\n<tbody>\n<tr>\n<td>Food</td>\n<td>Enclosure</td>\n<td>Contents</td>\n<td>Orientation</td>\n</tr>\n<tr>\n<td>Hamburger</td>\n<td>one bun, split into two</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>horizontal</td>\n</tr>\n<tr>\n<td>Hoagie</td>\n<td>one bun</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>vertical</td>\n</tr>\n<tr>\n<td>Hot Dog</td>\n<td>one bun</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>vertical</td>\n</tr>\n<tr>\n<td>Hot Pocket</td>\n<td>two crusts sealed together</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>horizontal</td>\n</tr>\n<tr>\n<td>Pie</td>\n<td>two crusts sealed together</td>\n<td>fruit or meat, vegetables, and/or cheese</td>\n<td>horizontal</td>\n</tr>\n</tbody>\n</table>"
+    }
+  ]
+}

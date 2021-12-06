@@ -151,6 +151,13 @@ class EditableTable extends editBehaviors(LitElement) {
   static get tag() {
     return "editable-table";
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
   constructor() {
     super();
     this.editMode = false;
