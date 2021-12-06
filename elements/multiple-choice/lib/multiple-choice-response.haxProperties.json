@@ -26,7 +26,7 @@
       {
         "property": "correct",
         "title": "Correct",
-        "description": "Is answer correct?",
+        "description": "Is this response correct?",
         "inputMethod": "boolean"
       }
     ]

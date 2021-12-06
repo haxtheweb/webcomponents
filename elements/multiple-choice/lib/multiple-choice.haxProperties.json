@@ -34,18 +34,11 @@
       },
       {
         "slot": "",
-        "title": "Responses",
+        "title": "Response",
         "description": "Possible Responses",
         "inputMethod": "textfield",
         "slotWrapper": "multiple-choice-response",
         "allowedSlotWrappers": ["multiple-choice-response"]
-      },
-      {
-        "slot": "incorrect-answer",
-        "title": "incorrect Answer",
-        "description": "Any answer that is correct",
-        "inputMethod": "textfield",
-        "slotWrapper": "p"
       },
       {
         "slot": "correct-feedback",

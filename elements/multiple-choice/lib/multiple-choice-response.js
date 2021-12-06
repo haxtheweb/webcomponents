@@ -16,9 +16,16 @@ class MultipleChoiceResponse extends LitElement {
         :host {
           display: flex;
           width: 100%;
+          justify-content: space-between;
+          opacity: 0.6;
+        }
+        :host(:hover),
+        :host(:focus-within) {
+          opacity: 1;
+          outline: 1px solid;
         }
         #slot {
-          flex: 1 0 auto;
+          flex: 0 0 auto;
         }
         simple-fields-field {
           flex: 0 0 auto;
@@ -47,6 +54,16 @@ class MultipleChoiceResponse extends LitElement {
     super();
     this.correct = false;
     this.type = "checkbox";
+    if (!this.__fieldLabel)
+      fetch(MultipleChoiceResponse.haxProperties)
+        .then((response) => response.json())
+        .then((data) => {
+          let settings = data.settings || {},
+            config = settings.configure || [],
+            filter = config.filter((prop) => prop.property === "correct"),
+            correct = filter[0] || {};
+          this.__fieldLabel = correct.description || correct.title;
+        });
   }
   /**
    * handles clicking for indicating response as correct
@@ -57,14 +74,16 @@ class MultipleChoiceResponse extends LitElement {
   _handleClick(e) {
     this.correct = e.detail.value;
   }
+
   render() {
-    return html` <simple-fields-field
-        aria-labelledby="slot"
+    return html` <slot id="slot" property="oer:answer"></slot>
+      <simple-fields-field
+        label="${this.__fieldLabel || "Is this response correct?"}"
+        aria-describedby="slot"
         type="${this.type}"
         @value-changed="${this._handleClick}"
         .value="${!!this.correct}"
-      ></simple-fields-field>
-      <slot id="slot" property="oer:answer"></slot>`;
+      ></simple-fields-field>`;
   }
   static get properties() {
     return {
@@ -94,6 +113,9 @@ class MultipleChoiceResponse extends LitElement {
         type: String,
         attribute: "answer-id",
         reflect: true,
+      },
+      __fieldLabel: {
+        type: String,
       },
     };
   }
