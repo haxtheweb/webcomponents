@@ -539,11 +539,16 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    * @memberof MultipleChoice
    */
   _getSlottedAnswers() {
-    let slots = Array.from(
-      this.querySelectorAll("multiple-choice-response,input")
-    );
+    let others =
+        "[slot=correct-feedback][slot=incorrect-feedback],[slot=question]",
+      slots = Array.from(
+        this.querySelectorAll("multiple-choice-response,input,ul>li,ol>li")
+      ).filter((node) => !node.closest(others));
     let answers = [];
     slots.forEach((slot) => answers.push(this._getSlottedAnswer(slot)));
+    Array.from(this.querySelectorAll("ul")).forEach((node) => {
+      if (!node.closest(others)) node.remove();
+    });
     return answers;
   }
   /**
@@ -558,7 +563,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
       value: (slot.value || slot.innerHTML).trim(),
       text: (slot.value || slot.innerHTML).trim(),
       correct:
-        slot.tagName !== "INPUT"
+        slot.tagName !== "INPUT" && slot.tagName !== "LI"
           ? !!slot.correct
           : slot.getAttribute("correct") === null
           ? false
@@ -566,7 +571,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     };
 
     //handle legacy slottes content
-    if (slot.tagName === "INPUT") {
+    if (slot.tagName === "INPUT" || slot.tagName === "LI") {
       slot.remove();
       this._setSlottedAnswer(answer);
     }
