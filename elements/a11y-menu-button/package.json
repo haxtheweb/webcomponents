@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Accessible menu button",
   "repository": {
     "type": "git",
@@ -42,10 +42,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^4.0.4",
-    "@lrnwebcomponents/lrn-vocab": "^4.0.4",
-    "@lrnwebcomponents/oer-schema": "^4.0.4",
-    "@lrnwebcomponents/rich-text-editor": "^4.0.4",
+    "@lrnwebcomponents/lrn-math": "^4.0.5",
+    "@lrnwebcomponents/lrn-vocab": "^4.0.5",
+    "@lrnwebcomponents/oer-schema": "^4.0.5",
+    "@lrnwebcomponents/rich-text-editor": "^4.0.5",
     "lit": "^2.0.2"
   },
   "devDependencies": {
@@ -53,11 +53,11 @@
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "a singleton drawer element",
   "repository": {
     "type": "git",
@@ -44,24 +44,24 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.4",
-    "@lrnwebcomponents/simple-colors": "^4.0.4",
-    "@lrnwebcomponents/simple-icon": "^4.0.4",
+    "@lrnwebcomponents/hax-iconset": "^4.0.5",
+    "@lrnwebcomponents/simple-colors": "^4.0.5",
+    "@lrnwebcomponents/simple-icon": "^4.0.5",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/neon-animation": "^3.0.1",
     "@polymer/polymer": "^3.4.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.4",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.5",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },
