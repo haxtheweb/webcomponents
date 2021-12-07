@@ -37,6 +37,9 @@
           "default": "true"
         },
         {
+          "name": "t"
+        },
+        {
           "name": "hex-color",
           "description": "Class for the color",
           "type": "string"
@@ -142,7 +145,8 @@
           "default": "true"
         },
         {
-          "name": "t"
+          "name": "t",
+          "attribute": "t"
         },
         {
           "name": "hexColor",
@@ -388,6 +392,9 @@
           "default": "true"
         },
         {
+          "name": "t"
+        },
+        {
           "name": "hex-color",
           "description": "Class for the color",
           "type": "string"
@@ -493,7 +500,8 @@
           "default": "true"
         },
         {
-          "name": "t"
+          "name": "t",
+          "attribute": "t"
         },
         {
           "name": "hexColor",
