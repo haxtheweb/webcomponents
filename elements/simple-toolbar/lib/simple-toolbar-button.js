@@ -89,6 +89,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * Optional to set aria-describedby.
+         */
+        describedby: {
+          type: String,
+          attribute: "describedby",
+        },
+
+        /**
          * Optional iron icon name for the button.
          */
         icon: {
@@ -458,7 +466,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @returns
      */
     _uniqueText(string1 = "", string2 = "") {
-      return (string1 || "").trim() !== (string2 || "").trim();
+      return String(string1 || "").trim() !== String(string2 || "").trim();
     }
     /**
      * template for button icon
@@ -527,6 +535,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         ? html` <button
               id="button"
               aria-checked="${this.isToggled ? "true" : "false"}"
+              aria-describedby="${!!this.describedby && this.describedby !== ""
+                ? this.describedby
+                : undefined}"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
               ?controls="${this.controls}"
@@ -546,6 +557,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         ? html` <button
               id="button"
               aria-pressed="${this.isToggled ? "true" : "false"}"
+              aria-describedby="${!!this.describedby && this.describedby !== ""
+                ? this.describedby
+                : undefined}"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
               ?controls="${this.controls}"
@@ -561,6 +575,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             ${this.tooltipTemplate}`
         : html` <button
               id="button"
+              aria-describedby="${!!this.describedby && this.describedby !== ""
+                ? this.describedby
+                : undefined}"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
               ?controls="${this.controls}"
