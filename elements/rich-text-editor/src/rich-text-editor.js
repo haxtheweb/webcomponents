@@ -145,7 +145,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
          */
         contenteditable: {
           name: "contenteditable",
-          type: Boolean,
+          type: String,
           reflect: true,
           attribute: "contenteditable",
         },
@@ -272,9 +272,11 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.__focused = false;
       this.__hovered = false;
       this.editing = false;
-      this.contenteditable = false;
       this.setAttribute("tabindex", 1);
       this.addEventListener("click", this._handleClick);
+    }
+    get editable() {
+      return !!this.contenteditable && this.contenteditable !== "false";
     }
 
     get isEmpty() {
@@ -310,7 +312,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
      * @memberof RichTextEditor
      */
     focus() {
-      if (!this.disabled) this.__focused = true;
+      if (!this.disabled) {
+        this.contenteditable = "true";
+        this.__focused = true;
+      }
       this.dispatchEvent(
         new CustomEvent("focus", {
           bubbles: true,
@@ -358,7 +363,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
-      if (!this.disabled && !this.contenteditable && !this.__toolbar) {
+      if (!this.disabled && !this.editable && !this.__toolbar) {
         //get toolbar by id
         let toolbar,
           filter = !this.toolbarId
@@ -385,7 +390,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           );
         }
         this.__toolbar = toolbar;
-        if (!this.disabled) this.__toolbar.setTarget(this);
+        if (!this.disabled && this.__toolbar) this.__toolbar.setTarget(this);
       }
     }
   };
