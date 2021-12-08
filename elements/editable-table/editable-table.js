@@ -195,6 +195,23 @@ class EditableTable extends editBehaviors(LitElement) {
   sync(property) {
     if (this.editor && property) this[property] = this.editor[property];
   }
+
+  /**
+   * makes toggle focusable
+   */
+  focus() {
+    let query = this.editMode
+        ? "editable-table-edit"
+        : "editable-table-display",
+      target =
+        this.shadowRoot && this.shadowRoot.querySelector(query)
+          ? this.shadowRoot.querySelector(query)
+          : undefined;
+    if (target)
+      setTimeout(function () {
+        target.focus();
+      }, 1);
+  }
   /**
    * Toggles between edit-mode and display mode.
    * @event toggle-edit-mode
@@ -202,6 +219,8 @@ class EditableTable extends editBehaviors(LitElement) {
    */
   toggleEditMode(edit) {
     this.editMode = edit !== undefined ? edit : !this.editMode;
+    this.focus();
+
     this.dispatchEvent(
       new CustomEvent("toggle-edit-mode", {
         bubbles: true,

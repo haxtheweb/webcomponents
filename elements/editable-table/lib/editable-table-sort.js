@@ -7,6 +7,7 @@ import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 
 /**
  * `editable-table-editor-sort`
@@ -17,26 +18,33 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @extends LitElement
  * @extends editableTableCellStyles
  */
-class EditableTableSort extends LitElement {
+class EditableTableSort extends SimpleToolbarButtonBehaviors(LitElement) {
   static get styles() {
-    return [...(super.styles || []), ...editableTableCellStyles, css``];
-  }
-  render() {
-    return html`
-      <button id="button" class="cell-button" @click="${this._onSortClicked}">
-        <slot></slot>
-        <span class="sr-only asc">(ascending)</span>
-        <span class="sr-only desc">(descending)</span>
-        <span class="sr-only"> Toggle sort mode.</span>
-        <simple-icon-lite
-          icon="${this.sortMode == "asc"
-            ? "arrow-drop-up"
-            : this.sortMode == "desc"
-            ? "arrow-drop-down"
-            : "editable-table:sortable"}"
-        ></simple-icon-lite>
-      </button>
-    `;
+    return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
+      css`
+        :host {
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
+        }
+        :host > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+        button {
+          flex: 0 0 auto !important;
+          width: auto !important;
+        }
+        #cell {
+          flex: 1 1 auto !important;
+          display: inline-block;
+        }
+      `,
+    ];
   }
 
   static get tag() {
@@ -45,6 +53,7 @@ class EditableTableSort extends LitElement {
 
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Sort ascending, descending or none
        */
@@ -71,26 +80,49 @@ class EditableTableSort extends LitElement {
       },
     };
   }
+  render() {
+    return html`
+      <div>
+        <slot id="cell"></slot>
+        <span class="offscreen asc">(ascending)</span>
+        <span class="offscreen desc">(descending)</span>
+        ${super.render()}
+      </div>
+    `;
+  }
   constructor() {
     super();
     this.sortMode = "none";
     this.sortColumn = -1;
+    this.toggles = true;
+    this.icon = "editable-table:sortable";
+    this.label = "Toggle sort mode.";
+    this.tooltip = "Toggles sorting by this column.";
+    this.describedby = "cell";
   }
-  /**
-   *
-   * Whether column is being sorted
-   * @readonly
-   * @memberof EditableTableSort
-   */
-  get sorting() {
-    return this.columnIndex === this.sortColumn;
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "columnIndex") {
+        this.toggled = this.columnIndex === this.sortColumn;
+      }
+      if (propName == "sortMode" || propName == "columnIndex") {
+        this.icon =
+          this.sortMode == "asc"
+            ? "arrow-drop-up"
+            : this.sortMode == "desc"
+            ? "arrow-drop-down"
+            : "editable-table:sortable";
+      }
+    });
   }
 
   /**
    * Fires when sort button is clicked
    * @event change-sort-mode
    */
-  _onSortClicked() {
+  _handleClick() {
     this.dispatchEvent(
       new CustomEvent("change-sort-mode", {
         bubbles: true,
@@ -99,15 +131,6 @@ class EditableTableSort extends LitElement {
         detail: this,
       })
     );
-  }
-
-  /**
-   * Changes sort mode
-   * @param {string} mode sort mode: `asc` for ascending or `desc` for descending;
-   */
-  setSortMode(mode) {
-    this.sortMode = mode;
-    this.__checked = mode === "asc" ? true : mode === "desc" ? mode : false;
   }
 }
 window.customElements.define(EditableTableSort.tag, EditableTableSort);

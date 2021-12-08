@@ -16,8 +16,10 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./editable-table-editor-rowcol.js";
-import "./editable-table-editor-toggle.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button-group.js";
 import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
+
 if (!Element.prototype.replaceWith) {
   Element.prototype.replaceWith = ReplaceWithPolyfill;
 }
@@ -100,9 +102,28 @@ class EditableTableEdit extends editBehaviors(LitElement) {
             "Noto",
             sans-serif
           );
+          margin-right: 0.5em;
         }
         simple-toolbar {
           width: 100%;
+          --simple-toolbar-button-bg: var(--editable-table-bg-color, #fff);
+          --simple-toolbar-button-toggled-bg: var(
+            --editable-table-stripe-bg-color,
+            #f0f0f0
+          );
+          --simple-toolbar-button-hover-bg: var(
+            --editable-table-bg-color,
+            #fff
+          );
+          --simple-toolbar-button-border-color: var(
+            --editable-table-border-color,
+            #999
+          );
+          --simple-toolbar-button-toggled-border-color: var(
+            --editable-table-color,
+            #222
+          );
+          --simple-toolbar-button-hover-border-color: unset;
         }
         simple-toolbar::part(buttons) {
           align-items: stretch;
@@ -175,13 +196,6 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         td:focus-within {
           outline: 1px dotted currentColor;
         }
-        th:hover,
-        th:focus-within {
-          background-color: var(
-            --editable-table-rowcol-hover-bg-color,
-            var(--editable-table-heading-bg-color, #e8e8e8)
-          );
-        }
         .th:first-child {
           width: 96px;
         }
@@ -189,6 +203,14 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         :host([responsive]) .tr td:nth-of-type(2) {
           border-right-width: calc(var(--editable-table-border-width) + 5px);
           border-right-style: double;
+        }
+        :host(:hover),
+        *:hover {
+          z-index: 3;
+        }
+        :host(:focus-within),
+        *:focus-within {
+          z-index: 4;
         }
       `,
     ];
@@ -199,219 +221,262 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         id="toolbar"
         .config="${this.config}"
         show="selection"
+        part="text-editor-toolbar"
       ></rich-text-editor-toolbar-mini>
     `;
   }
   get columnHeaderButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="columnHeader"
         icon="editable-table:column-headers"
         label="First row has column headers."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.columnHeader}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get rowHeaderButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="rowHeader"
         icon="editable-table:row-headers"
-        @change="${this._onTableSettingChange}"
         label="First column has row headers."
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.rowHeader}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get footerButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="footer"
         icon="editable-table:footer"
         label="Last row is a footer."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.footer}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get footerButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="footer"
         icon="editable-table:footer"
         label="Last row is a footer."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.footer}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get headersFootersGroup() {
     return html`
-      <div class="group">
-        <div class="label">Headers and footers</div>
+      <div class="group" part="simple-toolbar-section">
+        <div class="label" part="simple-toolbar-section-label">
+          Headers and footers
+        </div>
         ${this.columnHeaderButton} ${this.rowHeaderButton} ${this.footerButton}
       </div>
     `;
   }
   get borderButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="bordered"
         ?disabled="${this.hideBordered}"
         ?hidden="${this.hideBordered}"
         icon="image:grid-on"
         label="Borders."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.bordered}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get stripeButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="striped"
         ?disabled="${this.hideStriped}"
         ?hidden="${this.hideStriped}"
         icon="editable-table:row-striped"
         label="Alternating rows."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.striped}"
+        toggles
+        radio
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get columnStripeButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="columnStriped"
         ?disabled="${this.hideStriped}"
         ?hidden="${this.hideStriped}"
         icon="editable-table:col-striped"
         label="Alternating columns."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.columnStriped}"
+        toggles
+        radio
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get condenseButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="condensed"
         ?disabled="${this.hideCondensed}"
         ?hidden="${this.hideCondensed}"
         icon="editable-table:row-condensed"
         label="Condensed rows."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.condensed}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get numericStylesButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="numericStyles"
         ?disabled="${this.hideNumericStyles}"
         ?hidden="${this.hideNumericStyles}"
         icon="editable-table:numbers"
         label="Style numeric cells."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.numericStyles}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get responsiveButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="responsive"
         ?disabled="${this.hideResponsive}"
         ?hidden="${this.hideResponsive}"
         icon="device:devices"
         label="Adjust width to screen size."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.responsive}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get displayGroup() {
     return html`
-      <div class="group" ?hidden="${this.hideDisplay}">
-        <div class="label">Display</div>
-        ${this.borderButton} ${this.stripeButton} ${this.columnStripeButton}
-        ${this.condenseButton} ${this.numericStylesButton}
-        ${this.responsiveButton}
+      <div
+        class="group"
+        ?hidden="${this.hideDisplay}"
+        part="simple-toolbar-section"
+      >
+        <div class="label" part="simple-toolbar-section-label">Display</div>
+        ${this.borderButton} ${this.condenseButton}
+        <simple-toolbar-button-group>
+          ${this.stripeButton} ${this.columnStripeButton}
+        </simple-toolbar-button-group>
+        ${this.numericStylesButton} ${this.responsiveButton}
       </div>
     `;
   }
   get sortButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="sort"
         ?disabled="${this._isSortDisabled(this.hideSort, this.columnHeader)}"
         ?hidden="${this._isSortDisabled(this.hideSort, this.columnHeader)}"
         label="Column sorting (for tables with column headers)."
         icon="editable-table:sortable"
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.sort}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get filterButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="filter"
         ?disabled="${this.hideFilter}"
         ?hidden="${this.hideFilter}"
         icon="editable-table:filter"
         label="Column filtering."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.filter}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get downloadButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="downloadable"
         ?disabled="${this.hideDownloadable}"
         ?hidden="${this.hideDownloadable}"
         icon="file-download"
         label="Allow downloading as CSV."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.downloadable}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get printButton() {
     return html`
-      <editable-table-editor-toggle
+      <simple-toolbar-button
         id="printable"
         ?disabled="${this.hidePrintable}"
         ?hidden="${this.hidePrintable}"
         icon="print"
         label="Allow printing."
-        @change="${this._onTableSettingChange}"
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
         ?toggled="${this.printable}"
+        toggles
       >
-      </editable-table-editor-toggle>
+      </simple-toolbar-button>
     `;
   }
   get dataGroup() {
     return html`
-      <div class="group" ?hidden="${this.hideSortFilter}">
-        <div class="label">Data</div>
+      <div
+        class="group"
+        ?hidden="${this.hideSortFilter}"
+        part="simple-toolbar-section"
+      >
+        <div class="label" part="simple-toolbar-section-label">Data</div>
         ${this.sortButton} ${this.filterButton} ${this.downloadButton}
         ${this.printButton}
       </div>
@@ -419,7 +484,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
   }
   get settingsToolbar() {
     return html`
-      <simple-toolbar>
+      <simple-toolbar part="simple-toolbar">
         ${this.headersFootersGroup} ${this.displayGroup} ${this.dataGroup}
       </simple-toolbar>
     `;
@@ -428,7 +493,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
   get editableCaption() {
     return html`
       <caption>
-        <p class="sr-only">Edit Mode for</p>
+        <p class="offscreen">Edit Mode for</p>
         <rich-text-editor
           autofocus
           @blur="${this._captionChanged}"
@@ -451,6 +516,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         index="${colIndex}"
         @rowcol-action="${this._handleRowColumnMenu}"
         @rowcol-menu-toggle="${this._handleMenuToggle}"
+        part="rowcol-menu-button"
       >
       </editable-table-editor-rowcol>
     `;
@@ -474,6 +540,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         index="${rowIndex}"
         row
         @rowcol-action="${this._handleRowColumnMenu}"
+        part="rowcol-menu-button"
       >
       </editable-table-editor-rowcol>
     `;
@@ -541,7 +608,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
       <thead>
         <tr class="tr">
           <th scope="row">
-            <span class="sr-only">Insert/Delete Controls</span>
+            <span class="offscreen">Insert/Delete Controls</span>
           </th>
           ${(this.data[0] || []).map((cellData, th) => this.editableColumn(th))}
         </tr>
@@ -558,7 +625,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
   render() {
     return html`
       ${this.textEditorToolbar}
-      <p class="sr-only">Table Editor</p>
+      <p class="offscreen">Table Editor</p>
       <table
         id="table-editmode"
         ?bordered="${this.bordered}"
@@ -574,6 +641,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
         ?striped="${this.striped}"
+        part="table"
       >
         ${this.editableCaption} ${this.editableColumns} ${this.editableRows}
       </table>
@@ -649,9 +717,6 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         },
       })
     );
-  }
-  focus() {
-    this.shadowRoot.querySelector("#inner").focus();
   }
 
   /**

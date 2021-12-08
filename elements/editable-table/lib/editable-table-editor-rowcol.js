@@ -7,9 +7,8 @@ import {
   cellBehaviors,
   editableTableCellStyles,
 } from "./editable-table-behaviors.js";
-import "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
-import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
@@ -23,7 +22,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @extends cellBehaviors
  * @extends A11yMenuButton
  */
-class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
+class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
+  cellBehaviors(LitElement)
+) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -31,76 +32,30 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
       css`
         :host {
           display: block;
-          height: 100%;
-          width: 100%;
-          --paper-item-min-height: 24px;
-          --a11y-menu-button-border: none;
-          --a11y-menu-button-list-border: 1px solid
-            var(--editable-table-border-color, #999);
-          --a11y-menu-button-vertical-padding: var(
-            --editable-table-cell-vertical-padding,
-            10px
-          );
-          --a11y-menu-button-horizontal-padding: var(
-            --editable-table-cell-horizontal-padding,
-            6px
-          );
-          --a11y-menu-button-item-focus-bg-color: var(
-            --editable-table-heading-bg-color,
-            #e8e8e8
-          );
-          --a11y-menu-button-list-bg-color: var(
-            --editable-table-bg-color,
-            #fff
-          );
         }
-        a11y-menu-button {
-          display: block;
-          height: 100%;
-          width: 100%;
+        :host [part="button"],
+        :host [part="button"]:focus,
+        :host(:focus-within) [part="button"],
+        :host(:hover) [part="button"],
+        :host [part="button"]:hover {
+          border-radius: 0;
+          background-color: transparent;
+          border: none;
         }
-        a11y-menu-button::part(button) {
-          font-family: var(
-            --editable-table-secondary-font-family,
-            "Roboto",
-            "Noto",
-            sans-serif
+        [role="menuitem"] {
+          --simple-toolbar-button-hover-border-color: transparent;
+        }
+        [role="menuitem"]::part(button):hover,
+        [role="menuitem"]::part(button):focus,
+        [role="menuitem"]::part(button):focus-within {
+          border: none;
+          background-color: var(
+            --editable-table-rowcol-hover-bg-color,
+            var(--editable-table-stripe-bg-color, #f0f0f0)
           );
-          height: 100%;
-          width: 100%;
-        }
-        a11y-menu-button::part(menu-outer) {
-          min-width: 150px;
-        }
-        a11y-menu-button-item::part(button) {
-          font-family: var(
-            --editable-table-secondary-font-family,
-            "Roboto",
-            "Noto",
-            sans-serif
-          );
-          color: var(--editable-table-color, #222);
-          font-size: var(--editable-table-secondary-font-size, 12px);
-          line-height: 150%;
         }
       `,
     ];
-  }
-  render() {
-    return html`
-      <a11y-menu-button
-        id="menubutton" 
-        position="${this.row ? "right" : "bottom"}">
-        <span class="sr-only" slot="button">${this.type}</span>
-        <span id="label" slot="button">${this.label || ""} </span>
-        <span class="sr-only" slot="button">Menu</span>
-        <simple-icon-lite icon="arrow-drop-down" slot="button"></simple-icon-lite>
-          ${this._getItem()} 
-          ${this._getItem(false, true)}
-          ${this._getItem(true)}
-        </ul>
-      </a11y-menu-button>
-    `;
   }
   static get tag() {
     return "editable-table-editor-rowcol";
@@ -124,35 +79,6 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   }
   /**
    *
-   * Gets first cell that menu controls
-   * @readonly
-   * @memberof EditableTableEditorRowcol
-   */
-  get controls() {
-    return this.row ? `cell-0-${this.index}` : `cell-${this.index}-0`;
-  }
-  /**
-   *
-   * Gets row or column label based on type
-   * @readonly
-   * @memberof EditableTableEditorRowcol
-   */
-  get label() {
-    return this.row
-      ? this._getLabel(this.index, true)
-      : this._getLabel(this.index, false);
-  }
-  /**
-   *
-   * get cell label
-   * @readonly
-   * @memberof EditableTableEditorRowcol
-   */
-  get labelInfo() {
-    return html`<span class="sr-only">${this.label}</span>`;
-  }
-  /**
-   *
    * Gets row or column type
    * @readonly
    * @memberof EditableTableEditorRowcol
@@ -164,8 +90,29 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "expanded") this.menuToggle();
+      if (propName === "index") {
+        this.controls = this.row
+          ? `cell-0-${this.index}`
+          : `cell-${this.index}-0`;
+      }
+      if (propName === "index" || propName === "row") {
+        this.label = this.row
+          ? this._getLabel(this.index, true)
+          : this._getLabel(this.index, false);
+      }
+      if (propName === "row") {
+        this.position = this.row ? "right" : "bottom";
+      }
     });
+  }
+
+  get listItemTemplate() {
+    return html`
+      <slot name="menuitem">
+        ${this._getItem()} ${this._getItem(false, true)} ${this._getItem(true)}
+      </slot>
+      <slot></slot>
+    `;
   }
   /**
    * Fires when  selection is made from menu button
@@ -188,27 +135,23 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
     );
   }
   _getItem(deleteItem = false, after = false) {
-    return html`<a11y-menu-button-item
-      @click="${deleteItem
-        ? this._onDelete
-        : after
-        ? this._onInsertAfter
-        : this._onInsertBefore}"
-    >
-      ${deleteItem ? "Delete" : "Insert"}
-      ${this.type}${deleteItem ? " " : after ? " After " : " Before "}
-      ${this.labelInfo}
-    </a11y-menu-button-item>`;
-  }
-  menuToggle(e) {
-    this.dispatchEvent(
-      new CustomEvent("rowcol-menu-toggle", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
+    let label = `${deleteItem ? "Delete " : "Insert "}${this.type}${
+      deleteItem ? "" : after ? " After " : " Before "
+    }`;
+    return html` <simple-toolbar-menu-item slot="menuitem">
+      <simple-toolbar-button
+        role="menuitem"
+        label="${label}"
+        show-text-label
+        align-horizontal="left"
+        @button-toggled="${deleteItem
+          ? this._onDelete
+          : after
+          ? this._onInsertAfter
+          : this._onInsertBefore}"
+      >
+      </simple-toolbar-button>
+    </simple-toolbar-menu-item>`;
   }
   /**
    * Handles when Delete Row/Column is clicked

@@ -73,7 +73,7 @@ function _arrayWithoutHoles(arr) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <button id="button" class="cell-button" @click="',
-    '">\n        <slot></slot>\n        <span class="sr-only asc">(ascending)</span>\n        <span class="sr-only desc">(descending)</span>\n        <span class="sr-only"> Toggle sort mode.</span>\n        <simple-icon-lite\n          icon="',
+    '">\n        <slot></slot>\n        <span class="offscreen asc">(ascending)</span>\n        <span class="offscreen desc">(descending)</span>\n        <span class="offscreen"> Toggle sort mode.</span>\n        <simple-icon-lite\n          icon="',
     '"\n        ></simple-icon-lite>\n      </button>\n    ',
   ]);
 

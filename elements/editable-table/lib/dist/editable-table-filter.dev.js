@@ -79,8 +79,8 @@ function _arrayWithoutHoles(arr) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <button id="button" class="cell-button" @click="',
-    '">\n        <span><slot></slot></span>\n        <span class="sr-only" .hidden="',
-    '"> (filtered)</span>\n        <span class="sr-only"> Toggle filter.</span>\n        <simple-icon-lite\n          id="filter"\n          icon="editable-table:filter"\n        ></simple-icon-lite>\n        <simple-icon-lite\n          id="filter-off"\n          icon="editable-table:filter-off"\n        ></simple-icon-lite>\n      </button>\n      <simple-tooltip for="button"\n        >Toggle Column ',
+    '">\n        <span><slot></slot></span>\n        <span class="offscreen" .hidden="',
+    '"> (filtered)</span>\n        <span class="offscreen"> Toggle filter.</span>\n        <simple-icon-lite\n          id="filter"\n          icon="editable-table:filter"\n        ></simple-icon-lite>\n        <simple-icon-lite\n          id="filter-off"\n          icon="editable-table:filter-off"\n        ></simple-icon-lite>\n      </button>\n      <simple-tooltip for="button"\n        >Toggle Column ',
     ' filter for "<slot\n        ></slot>"</simple-tooltip\n      >\n    ',
   ]);
 
