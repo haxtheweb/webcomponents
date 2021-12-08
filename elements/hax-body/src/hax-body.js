@@ -269,8 +269,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: 2px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
-          background-color: #eeeeee;
-          opacity: 0.8;
+          background-color: #fffafa;
+          opacity: 0.5;
+          transition: 0.2s all ease-in-out;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
+          opacity: 0.9;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
           width: 28px;
@@ -282,7 +286,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           position: relative;
           background-position: center;
           background-repeat: no-repeat;
-          background-color: #eeeeee;
+          background-color: #fffafa;
         }
         :host([edit-mode])
           #bodycontainer

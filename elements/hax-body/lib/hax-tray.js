@@ -17,6 +17,7 @@ import {
   HaxTrayDetail,
 } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
