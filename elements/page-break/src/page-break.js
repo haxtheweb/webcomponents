@@ -190,7 +190,11 @@ export class PageBreak extends IntersectionObserverMixin(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "schemaResourceID" && this.itemId == null) {
+      if (
+        propName === "schemaResourceID" &&
+        this.itemId == null &&
+        oldValue !== undefined
+      ) {
         this.itemId = this.schemaResourceID.replace("#", "item-");
       }
       // when visible, "click" the thing so that it's activated
