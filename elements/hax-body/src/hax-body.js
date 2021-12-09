@@ -3451,6 +3451,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       try {
         // see if we are dropping a file
         if (
+          HAXStore.__dragTarget === null &&
           e.dataTransfer &&
           e.dataTransfer.items &&
           e.dataTransfer.items.length > 0 &&

@@ -1871,6 +1871,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    this.__dragTarget = null;
     this.registerLocalization({
       context: this,
       namespace: "hax",

@@ -111,16 +111,8 @@ class HaxAppSearchResult extends LitElement {
     let target = this.cloneNode(true);
     HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
-      this.crt = target;
-      this.crt.style.position = "absolute";
-      this.crt.style.top = "-1000px";
-      this.crt.style.right = "-1000px";
-      this.crt.style.transform = "scale(0.25)";
-      this.crt.style.opacity = ".8";
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
-      document.body.appendChild(this.crt);
-      e.dataTransfer.setDragImage(this.crt, 0, 0);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
@@ -129,7 +121,6 @@ class HaxAppSearchResult extends LitElement {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
-    this.crt.remove();
     setTimeout(() => {
       this._itemSelected(e);
     }, 0);
