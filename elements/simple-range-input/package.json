@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "simple styling on a range input",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^4.0.5",
+    "@lrnwebcomponents/simple-colors": "^4.0.6",
     "lit": "^2.0.2"
   },
   "devDependencies": {
