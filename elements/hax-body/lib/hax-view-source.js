@@ -80,6 +80,15 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       </div>
       <hax-toolbar always-expanded>
         <hax-tray-button
+          label="${this.t.refresh}"
+          tooltip="${this.t.refreshTooltip}"
+          icon="icons:refresh"
+          @click="${this.refreshHTMLEditor.bind(this)}"
+          show-text-label
+          icon-position="top"
+        >
+        </hax-tray-button>
+        <hax-tray-button
           label="${this.t.updatePage}"
           tooltip="${this.t.updatePageTooltip}"
           icon="editor:insert-drive-file"
@@ -125,6 +134,15 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         >
         </hax-tray-button>
         <hax-tray-button
+          @click="${this.importDOCX.bind(this)}"
+          label="${this.t.importDOCX}"
+          tooltip="${this.t.importDOCXTooltip}"
+          icon="icons:file-upload"
+          show-text-label
+          icon-position="top"
+        >
+        </hax-tray-button>
+        <hax-tray-button
           @click="${this.htmlToHaxElements.bind(this)}"
           label="${this.t.schema}"
           tooltip="${this.t.schemaTooltip}"
@@ -138,6 +156,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   static get tag() {
     return "hax-view-source";
+  }
+  // ability to refresh source view; possible something else in the system updated it
+  // after we loaded
+  refreshHTMLEditor(e) {
+    setTimeout(() => {
+      this.updateEditor();
+    }, 100);
+  }
+
+  importDOCX(e) {
+    // @todo implement import docx file
   }
 
   /**
@@ -331,6 +360,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       cleanFormatting: "Clean",
       schema: "Schema",
       schemaTooltip: "HAX Schema",
+      refresh: "Refresh",
+      refreshTooltip: "Refresh HTML source",
+      importDOCX: "Import DOCX",
+      importDOCXTooltip: "Import .docx content into body",
     };
     this.registerLocalization({
       context: this,

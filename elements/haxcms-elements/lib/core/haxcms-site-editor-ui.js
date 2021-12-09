@@ -169,8 +169,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       editSiteOutline: "Edit site outline",
       closeSiteSettings: "Close site settings",
       editSiteSettings: "Edit site settings",
-      savePageContent: "Guardar contenido de la página",
-      editPageContent: "Editar el contenido de la página",
+      savePageContent: "Save page content",
+      editPageContent: "Edit page content",
     };
     this.backText = "Back to site list";
     this.painting = true;

@@ -34,5 +34,7 @@
   "deletePage": "Eliminar página",
   "editSiteOutline": "Editar esquema del sitio",
   "closeSiteSettings": "Cerrar la configuración del sitio",
-  "editSiteSettings": "Editar la configuración del sitio"
+  "editSiteSettings": "Editar la configuración del sitio",
+  "savePageContent": "Guardar contenido de la página",
+  "editPageContent": "Editar el contenido de la página"
 }
