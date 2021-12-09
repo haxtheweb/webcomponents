@@ -25,16 +25,10 @@ import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 // via https://flagicons.lipis.dev/
 SimpleIconsetStore.registerIconset(
   "flags",
-  `${
-    new URL("../../../node_modules/flag-icon-css/flags/4x3", import.meta.url)
-      .href
-  }/`
+  `${new URL("../../../flag-icon-css/flags/4x3", import.meta.url).href}/`
 );
 // square flag less common but needed ratio
 SimpleIconsetStore.registerIconset(
   "flags1x1",
-  `${
-    new URL("../../../node_modules/flag-icon-css/flags/1x1", import.meta.url)
-      .href
-  }/`
+  `${new URL("../../../flag-icon-css/flags/1x1", import.meta.url).href}/`
 );
