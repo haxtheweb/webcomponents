@@ -10,24 +10,157 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
+      import '@lrnwebcomponents/multiple-choice/multiple-choice.js';
+      import '@lrnwebcomponents/video-player/video-player.js';
       import '@lrnwebcomponents/simple-popover/simple-popover.js';
       import '../lib/hal-9000-ui/hal-9000-ui.js';
       import('../hal-9000.js').then(() => {
         window.hal = document.getElementById('hal');
         // turn hal on
         window.hal.enabled = true;
-        var commands = {};
-        document.querySelector('a11y-media-player').shadowRoot.querySelectorAll('a11y-media-button').forEach((button) => {
-          console.log(`${window.hal.respondsTo} ${button.label.toLowerCase()}`);
-          console.log(window.hal.commands);
-          let commands = window.hal.commands;
-          commands[`${window.hal.respondsTo} ${button.label.toLowerCase()}`] = button.click.bind(button);
-          window.hal.commands = {... commands};
-          let btn = document.createElement("li");
-          btn.innerText = button.label;
-          document.querySelector('#command-list').appendChild(btn);
-        });
+        var commands = window.hal.commands;
+        var name = document.querySelector('hal-9000').getAttribute('responds-to');
+        name = name.slice(1, -1);
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+
+        var styleTags = [];
+        var selectElements = [];
+
+        function getOuterElements() {
+          removeTags();
+          var styleTag = document.createElement("style");
+          var element = null;
+          var elementRect = null;
+          for (var i = 0; i < document.querySelector('#demo-content').children.length; i++) {
+            element = document.querySelector('#demo-content').children[i];
+            elementRect = element.getBoundingClientRect();
+            if (element != undefined) {
+              styleTag.innerHTML += `
+                #${element.getAttribute(
+                  "id"
+                )}::before {
+                  content: "${i + 1}";
+                  z-index: 9999;
+                  position: relative;
+                  top: 43px;
+                  padding: 5px 15px;
+                  font-size: 38px;
+                  background-color: #3c89d0;
+                }
+              `;
+              styleTags.push(styleTag);
+              selectElements.push(element);
+              document.querySelector(`#demo-content`).appendChild(styleTag);
+            }
+          }
+        }
+        
+        getOuterElements();
+
+        const findAllDeep = (parent, selectors, depth = null) => {
+          let nodes = [];
+          let currentDepth = 1;
+          const recursiveSeek = parent => {
+            // record the nodes
+            let ary = [...parent.querySelectorAll('*')];
+            ary = parent.shadowRoot ? [...ary,...parent.shadowRoot.querySelectorAll('*')] : ary;
+            for (let child of ary) {
+              // check if the current node matches the selector
+              if (child.matches) {
+                if (child.matches(selectors)) {
+                  nodes.push(child);
+                }
+              }
+              // if it has a shadowRoot step down
+              if (child.shadowRoot) {
+                recursiveSeek(child.shadowRoot);
+              }
+            }
+          };
+          recursiveSeek(parent);
+          return nodes;
+        };
+
+        function removeTags() {
+          styleTags.forEach((tag) => {
+            tag.remove();
+          });
+          styleTags = [];
+          selectElements = [];
+        }
+
+        const findSubNodes = (parentNode) => {
+          removeTags();
+          let tabbableSelectors = 'input, select, textarea, a[href], [tabindex="-1"]:not(simple-tooltip), audio[controls], button, video, [contenteditable]:not([contenteditable="false"]), details>summary:first-of-type, details';
+          let nodes = findAllDeep(parentNode, tabbableSelectors);
+          let elementRect = null;
+          let count = 0;
+          nodes.forEach((node) => {
+            if (!(node.hasAttribute('hidden') && node.hasAttribute('disabled'))) {
+              node.setAttribute('data-voice-ui-number', count);
+              elementRect = node.getBoundingClientRect();
+              let styleTag = document.createElement("style");
+              styleTag.innerHTML = `
+                ${node.tagName.toLowerCase()}[data-voice-ui-number="${count}"]:not([disabled]):not([hidden])::before {
+                  content: "${count + 1}";
+                  z-index: 9999;
+                  display: block;
+                  position: absolute;
+                  height: ${elementRect.height}px;
+                  width: ${elementRect.width}px;
+                  background-color: #3c89d0;
+                  line-height: ${elementRect.height}px;
+                  text-align: center;
+                  opacity: 1;
+                  animation: fade 4s infinite;
+                }
+                @keyframes fade {
+                  0%,100% { opacity: 0 }
+                  50% { opacity: 1 }
+                }
+              `;
+              node.parentNode.appendChild(styleTag);
+              selectElements.push(node);
+              styleTags.push(styleTag);
+              count++;
+            }
+          });
+        }
+
+        commands[`${window.hal.respondsTo} (select) :element`] = function(element) {
+          if (element === "won" || element === "one") {
+            element = 1;
+          }
+          if (element === "to" || element === "too" || element === "two") {
+            element = 2;
+          }
+          if (element === "three") {
+            element = 3;
+          }
+          if (element === "for" || element === "four") {
+            element = 4;
+          }
+          if (element === "six") {
+            element = 6;
+          }
+          console.log(element);
+          let mainDiv = document.querySelector('#demo-content');
+          if (selectElements[0].parentNode === mainDiv) {
+            findSubNodes(selectElements[element - 1]);
+          } else {
+            selectElements[element - 1].click();
+          }
+        }
+        commands[`${window.hal.respondsTo} go back`] = () => {
+          getOuterElements();
+        }
+        commands[`${window.hal.respondsTo} what can I do`] = () => {
+          document.body.querySelectorAll("*").forEach((element) => {
+            let cmd = document.createElement("li");
+            cmd.innerText = `${name} edit the ${element.tagName.toLowerCase()}`;
+            document.querySelector('#command-list').appendChild(cmd);
+          });
+        };
         commands[`${window.hal.respondsTo} scroll up`] = () => {
           window.scrollBy({
             top: -(window.innerHeight * .5),
@@ -45,13 +178,22 @@
         commands[`hey ${window.hal.respondsTo}`] = () => {
           window.hal.speak('Yeah what do you want');
         };
-       
+        commands[`${window.hal.respondsTo} go small`] = () => {
+          document.querySelector('hal-9000-ui').setAttribute('mini', '');
+        };
+        document.querySelector('video-player').shadowRoot.querySelector('a11y-media-player').shadowRoot.querySelectorAll('a11y-media-button').forEach((button) => {
+          console.log(`${window.hal.respondsTo} ${button.label.toLowerCase()}`);
+          console.log(window.hal.commands);
+          commands[`${window.hal.respondsTo} ${button.label.toLowerCase()}`] = button.click.bind(button);
+          window.hal.commands = {... commands};
+        });
+        
       });
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <hal-9000-ui></hal-9000-ui>
+    <hal-9000-ui accent-color='blue'></hal-9000-ui>
     <hal-9000 id="hal" debug="debug" responds-to="(jarvis)"></hal-9000>
     <div class="vertical-section-container centered">
       <h3>Basic hal-9000 demo</h3>
@@ -61,13 +203,37 @@
         </template>
       </demo-snippet>
     </div>
-    <a11y-media-player id="video" accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="St.Clair Interview">
-      <video crossorigin="anonymous" controls>
-        <source src="//personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
-        <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
-      </video>
-    </a11y-media-player>
-    <simple-popover for="video" auto>
+    <div id="demo-content">
+      <multiple-choice
+        name="ducks"
+        question="Which are ducks?"
+        correct-text="You got a meal deal"
+        incorrect-text="You did not get a meal deal...."
+        randomize
+        id="mc"
+      >
+        <input data-voice-click type="checkbox" value="Huey" />
+        <input data-voice-click type="checkbox" value="Duey" correct />
+        <input data-voice-click type="checkbox" value="Daffy" correct />
+        <input data-voice-click type="checkbox" value="Donald" correct />
+      </multiple-choice>
+      <video-player id="vid1" accent-color="yellow" dark>
+        <iframe width="560" height="315" src="//www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
+        <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default></video>
+      </video-player>
+      <video-player id="vid2" accent-color="amber" linkable>
+        <video>
+          <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+          <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+          <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
+          <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+          <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
+        </video>
+      </video-player>
+      
+    </div>
+    
+    <simple-popover for="hal-9000-ui" auto>
       Try these commands:
       <ul id="command-list"></ul>
     </simple-popover>

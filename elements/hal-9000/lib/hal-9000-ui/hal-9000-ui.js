@@ -6,6 +6,21 @@ export class Hal9000UI extends SimpleColors {
     return [
       ...super.styles,
       css`
+        :host([mini]) #container {
+          width: 50px;
+          height: 50px;
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          left: auto;
+          border-radius: 5px;
+        }
+
+        :host([mini]) .circle {
+          width: 15px;
+          height: 15px;
+        }
+
         #container {
           width: 150px;
           height: 150px;
@@ -14,9 +29,11 @@ export class Hal9000UI extends SimpleColors {
           justify-content: center;
           overflow: hidden;
           position: fixed;
+          left: 20px;
           bottom: 20px;
           z-index: 10000;
           background-color: var(--simple-colors-default-theme-grey-12);
+          border-radius: 15px;
         }
 
         .circle {
@@ -46,6 +63,7 @@ export class Hal9000UI extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      mini: { type: Boolean, reflect: true },
     };
   }
 
@@ -55,16 +73,15 @@ export class Hal9000UI extends SimpleColors {
 
   constructor() {
     super();
+    this.mini = false;
   }
 
   render() {
     return html`
-      <div id="outerContainer">
-        <div id="container">
-          <div class="circle" style="animation-delay: 0s"></div>
-          <div class="circle" style="animation-delay: 1s"></div>
-          <div class="circle" style="animation-delay: 2s"></div>
-        </div>
+      <div id="container">
+        <div class="circle" style="animation-delay: 0s"></div>
+        <div class="circle" style="animation-delay: 1s"></div>
+        <div class="circle" style="animation-delay: 2s"></div>
       </div>
     `;
   }
