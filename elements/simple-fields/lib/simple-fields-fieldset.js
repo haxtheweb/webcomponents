@@ -51,7 +51,11 @@ const SimpleFieldsFieldsetBehaviors = function (SuperClass) {
     }
     get fields() {
       return html`
-        <div id="item-fields" part="fields">
+        <div
+          id="item-fields"
+          part="fields"
+          exportparts="option, option-inner, option-label, option-input"
+        >
           <slot></slot>
         </div>
       `;
@@ -86,6 +90,13 @@ const SimpleFieldsFieldsetBehaviors = function (SuperClass) {
          * whether the tabbed interface is hidden
          */
         hidden: {
+          type: Boolean,
+          reflect: true,
+        },
+        /**
+         * Whether field and label should be inline
+         */
+        inline: {
           type: Boolean,
           reflect: true,
         },

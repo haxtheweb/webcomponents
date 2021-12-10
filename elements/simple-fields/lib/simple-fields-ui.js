@@ -25,7 +25,7 @@ export const SimpleFieldsBaseStyles = [
       --simple-picker-options-focus-border: 1px solid
         var(--simple-fields-accent-color, #3f51b5);
     }
-    ::slotted([slot=field]]) {
+    ::slotted([slot="field"]) {
       --simple-picker-options-left: 0;
       --simple-picker-options-right: 0;
       --simple-picker-options-border: 1px
@@ -64,6 +64,10 @@ export const SimpleFieldsBaseStyles = [
     ul[role="listbox"]:focus-within {
       border-color: var(--simple-fields-accent-color, #3f51b5);
     }
+    :host([disabled]),
+    *[disabled] {
+      pointer-events: none !important;
+    }
   `,
 ];
 export const SimpleFieldsLabelStyles = [
@@ -83,11 +87,13 @@ export const SimpleFieldsLabelStyles = [
     label {
       margin: 0 0 0 0;
     }
-    .inline label {
+    .inline label,
+    .option label {
       margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
       flex: 0 1 var(--simple-fields-label-width, auto);
     }
     .inline label,
+    .option label,
     .field-main > div,
     .field,
     ::slotted([slot="field"]) {

@@ -1554,6 +1554,7 @@
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+    "multiple-choice-response": "@lrnwebcomponents/multiple-choice/lib/multiple-choice-response.js",
     "oer-schema": "@lrnwebcomponents/oer-schema/oer-schema.js",
     "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",

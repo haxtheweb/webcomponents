@@ -11,10 +11,6 @@
           "type": "string"
         },
         {
-          "name": "t",
-          "type": "object"
-        },
-        {
           "name": "showQRCode",
           "type": "boolean",
           "default": "false"
@@ -40,6 +36,10 @@
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
           "name": "hex-color",
@@ -116,11 +116,6 @@
           "type": "string"
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
           "name": "showQRCode",
           "attribute": "showQRCode",
           "type": "boolean",
@@ -152,6 +147,11 @@
           "attribute": "menu-open",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
           "name": "hexColor",
@@ -275,6 +275,41 @@
       ]
     },
     {
+      "name": "clean-one-search-box",
+      "path": "./lib/clean-one-search-box.js",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+        }
+      ],
+      "events": [
+        {
+          "name": "input-changed"
+        }
+      ]
+    },
+    {
       "name": "clean-one",
       "path": "./src/clean-one.js",
       "description": "`clean-one`\n`Clean HAXcms theme, one.`",
@@ -282,10 +317,6 @@
         {
           "name": "searchTerm",
           "type": "string"
-        },
-        {
-          "name": "t",
-          "type": "object"
         },
         {
           "name": "showQRCode",
@@ -313,6 +344,10 @@
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
           "name": "hex-color",
@@ -389,11 +424,6 @@
           "type": "string"
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
           "name": "showQRCode",
           "attribute": "showQRCode",
           "type": "boolean",
@@ -425,6 +455,11 @@
           "attribute": "menu-open",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
           "name": "hexColor",

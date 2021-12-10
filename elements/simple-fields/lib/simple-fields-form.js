@@ -76,6 +76,15 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
       },
     };
   }
+  /**
+   * forces form rebuild
+   *
+   * @memberof SimpleFieldsFormLite
+   */
+  rebuildForm() {
+    if (this.shadowRoot.querySelector("#sf"))
+      this.shadowRoot.querySelector("#sf").rebuidForm();
+  }
 
   /**
    * gets default schemaConversion so parts of it can be overridden easily

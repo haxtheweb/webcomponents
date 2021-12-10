@@ -371,6 +371,18 @@ class SimpleFields extends SimpleFieldsLite {
               },
             },
           },
+          "html-block": {
+            defaultSettings: {
+              import:
+                "@lrnwebcomponents/simple-fields/lib/simple-fields-html-block.js",
+              element: "simple-fields-html-block",
+              noWrap: true,
+              attributes: {
+                autofocus: false,
+                required: false,
+              },
+            },
+          },
           markup: {
             defaultSettings: {
               import:
@@ -731,6 +743,11 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "string",
               format: "fileupload",
+            },
+          },
+          "html-block": {
+            defaultSettings: {
+              type: "html-block",
             },
           },
           iconpicker: {

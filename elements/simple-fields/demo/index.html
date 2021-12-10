@@ -60,7 +60,14 @@
                   "settings.basic-input.name": "That's not your real name.",
                   "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
                 };
-              schema.fields = [
+              schema.addEventListener("name-value-changed",(e) => {
+                schema.formElements["welcome"].element.value = `<h1>Hello, ${e.detail.value}</h1>`;
+              });
+            schema.fields = [
+                {
+                  "property": "welcome",
+                  "inputMethod": "html-block"
+                },
                 {
                   "property": "name",
                   "title": "What is your name?",
@@ -277,6 +284,7 @@
                 }
               ];
               schema.value = {
+                "welcome": "<h1>Hello, No One</h1>",
                 "name": "No One",
                 "alias": true,
                 "profileImage": window.photoList[0].value,

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "stop-note",
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `ready` {`boolean`} - \n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `ready` {`boolean`} - ",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `t` - \n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `t` - ",
       "attributes": [
         {
           "name": "url",
@@ -18,15 +18,14 @@
           "description": "`icon` {`string`} - Icon selected\n\nProperty: icon\n\nDefault: stopnoteicons:stop-icon"
         },
         {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "stop-note",
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `ready` {`boolean`} - \n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `ready` {`boolean`} - ",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `t` - \n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `t` - ",
       "attributes": [
         {
           "name": "url",
@@ -41,9 +40,8 @@
           "description": "`icon` {`string`} - Icon selected\n\nProperty: icon\n\nDefault: stopnoteicons:stop-icon"
         },
         {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     }

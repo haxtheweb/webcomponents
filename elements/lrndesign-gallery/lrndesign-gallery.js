@@ -46,11 +46,13 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           border: 1px solid #ddd;
           page-break-inside: avoid;
         }
+
         :host([edit-mode]) #figures {
           display: grid;
           grid-gap: 5px;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
+
         :host([edit-mode]) ::slotted(figure) {
           padding: 5px;
           margin: 0;
@@ -133,8 +135,6 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       canPosition: false,
       canEditSource: true,
       contentEditable: true,
-      type: "grid",
-      editMode: "editMode",
       gizmo: {
         title: "Image Gallery",
         description: "An image gallery displayed as a carousel or a grid",

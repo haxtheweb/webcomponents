@@ -107,7 +107,7 @@ class CleanOne extends HAXCMSRememberRoute(
            padding: 6px;
          }
          .btn-container .btn {
-           padding: 8px;
+           padding: 8px 4px;
          }
          simple-tooltip {
            --simple-tooltip-background: var(--haxcms-user-styles-color-theme-color-1);

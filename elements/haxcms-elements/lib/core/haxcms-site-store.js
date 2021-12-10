@@ -210,6 +210,15 @@ class Store {
         })
       );
     }
+    // support for language being defined in the manifest of the site
+    if (document.documentElement && manifest.metadata.site.lang) {
+      document.documentElement.lang = manifest.metadata.site.lang;
+      window.dispatchEvent(
+        new CustomEvent("languagechange", {
+          detail: manifest.metadata.site.lang,
+        })
+      );
+    }
     manifest.items = newItems;
     this.manifest = manifest;
     target.dispatchEvent(

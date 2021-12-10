@@ -168,7 +168,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
           },
           {
             slot: "",
-            title: "Contents",
+            title: "Definition",
             description:
               "The definitition to display when the term is clicked.",
             inputMethod: "code-editor",

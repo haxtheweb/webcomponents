@@ -524,12 +524,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @returns
    */
   targetHandlers(target) {
-    return {
-      click: (e) => this._handleTargetClick(target, e),
-      dblclick: (e) => this._handleTargetDoubleClick(target, e),
-      focus: (e) => this._handleTargetFocus(target, e),
-      keydown: (e) => this._handleShortcutKeys(e),
-    };
+    let handlers = super.targetHandlers(target);
+    delete handlers.paste;
+    return handlers;
   }
 
   updated(changedProperties) {
@@ -648,24 +645,24 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       tag.indexOf("-") < 0
     )
       return;
-    let element = props,
+    let element = { ...props },
       gizmo = props.gizmo || {},
+      title = tag.replace(/-./g, (x) => x.toUpperCase()[1]),
+      custom = tag.split("-").length > 1,
+      meta = gizmo.meta || {},
+      inlineOnly = meta.inlineOnly,
       handles = gizmo.handles || [],
-      title =
-        gizmo.title || gizmo.tag.replace(/-./g, (x) => x.toUpperCase()[1]),
-      inline = handles.filter(
-        (handle) =>
-          handle.type === "inline" && gizmo.tag && gizmo.tag.contains("-")
-      );
-    element.gizmo = element.gizmo || {};
-    element.gizmo.title = `Add ${title}`;
-    if (inline.length > 0) {
+      handlesInline =
+        handles.filter((handle) => handle.type === "inline").length > 1,
+      inline = custom && (inlineOnly || handlesInline);
+    if (!element.gizmo.title) element.gizmo.title = title;
+    if (inline) {
       window.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
         element: element,
         type: "hax-text-editor-button",
       };
       this.__updated = false;
-      setTimeout(this.updateToolbarElements.bind(this), 500);
+      setTimeout((e) => (this.config = this.updateToolbarElements()), 500);
     }
   }
   /**
@@ -681,17 +678,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     let buttons = Object.keys(
       window.HaxTextEditorToolbarConfig.inlineGizmos || {}
     ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
-    this.config =
-      buttons.length === 0
-        ? [...this.defaultConfig]
-        : [
-            ...this.defaultConfig,
-            {
-              type: "button-group",
-              buttons: buttons,
-            },
-          ];
-    this.updateToolbar();
+    return buttons.length === 0
+      ? [...(this.defaultConfig || [])]
+      : [
+          ...(this.defaultConfig || []),
+          {
+            type: "button-group",
+            subtype: "hax-insert-button-group",
+            buttons: buttons,
+          },
+        ];
   }
 }
 customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);

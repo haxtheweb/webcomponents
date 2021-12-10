@@ -882,6 +882,8 @@ class SimpleFieldsLite extends LitElement {
       newVals = [];
     //update item IDs to match new order
     order.forEach((item, index) => {
+      //need to ingnore slotted content that is not an array item
+      if (!item.isArrayItem) return;
       let base = item.id.replace(/\.\d+$/, ``),
         i = parseInt(item.id.replace(/.*\./g, ""));
       updateIndex(item, item.id, `${base}.${index}`);

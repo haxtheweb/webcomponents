@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.1",
+  "version": "4.0.5",
   "description": "Provide a laugh and a good example of VanillaJS for demos",
   "repository": {
     "type": "git",
@@ -47,12 +47,11 @@
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.3.0",
-    "@web/dev-server": "0.1.28",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

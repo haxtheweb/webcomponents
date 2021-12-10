@@ -275,7 +275,13 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
       this.button = e.detail;
       this.fields = [...e.detail.fields];
       this.value = { ...e.detail.value };
-      this.shadowRoot.querySelector("#cancel").focus();
+      if (
+        this.shadowRoot.querySelector("#formfields") &&
+        this.shadowRoot.querySelector("#formfields").rebuildForm
+      )
+        this.shadowRoot.querySelector("#formfields").rebuildForm();
+      if (this.shadowRoot.querySelector("#cancel"))
+        this.shadowRoot.querySelector("#cancel").focus();
     }
   }
   /**

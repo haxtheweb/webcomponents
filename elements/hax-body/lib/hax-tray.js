@@ -17,6 +17,7 @@ import {
   HaxTrayDetail,
 } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
@@ -1522,7 +1523,10 @@ class HaxTray extends I18NMixin(
   __valueChangedEvent(e) {
     if (this.editMode && e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
-      let isGrid = e.detail.value.type && e.detail.value.type == "grid";
+      let props = {
+        ...HAXStore.elementList[this.activeNode.tagName.toLowerCase()],
+      };
+      let isGrid = props.type == "grid";
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",

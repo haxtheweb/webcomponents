@@ -73,7 +73,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
               voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
-              @dragend="${this._dragEnd}"
               index="${i}"
               label="${gizmo.title}"
               event-name="insert-tag"
@@ -105,31 +104,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     }
     HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
-      this.crt = target.cloneNode(true);
-      if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
-        this.crt.style.width = "200px";
-        this.crt.style.height = "200px";
-      } else {
-        this.crt.style.position = "absolute";
-        this.crt.style.top = "-1000px";
-        this.crt.style.right = "-1000px";
-        this.crt.style.transform = "scale(0.25)";
-      }
-      this.crt.style.opacity = ".8";
-      this.crt.style.backgroundColor = e.target.getAttribute("drag-color");
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
-      //document.body.appendChild(this.crt);
-      e.dataTransfer.setDragImage(this.crt, 0, 0);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-  }
-  /**
-   * When we end dragging ensure we remove the mover class.
-   */
-  _dragEnd(e) {
-    this.crt.remove();
   }
   inputfilterChanged(e) {
     this.like = e.target.value;
