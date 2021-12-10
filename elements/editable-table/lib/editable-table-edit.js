@@ -230,7 +230,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
   get textEditorToolbar() {
     return html`
       <rich-text-editor-toolbar-mini
-        id="toolbar"
+        id="editable-table-toolbar"
         .config="${this.config}"
         show="selection"
         part="text-editor-toolbar"
@@ -507,45 +507,41 @@ class EditableTableEdit extends editBehaviors(LitElement) {
       <caption>
         <p class="offscreen">Edit Mode for</p>
         <div class="caption-flex">
-            <rich-text-editor
-              autofocus
-              @blur="${this._captionChanged}"
-              id="caption"
-              label="Caption"
-              placeholder="Name your table by adding a caption here."
-              rawhtml="${this.caption}"
-              toolbar="toolbar"
-              type="rich-text-editor-toolbar-mini"
-            >
-            </rich-text-editor>
-            <div class="icons">
-              ${
-                !this.downloadable
-                  ? ""
-                  : html`
-                      <simple-icon-lite
-                        class="downloadable-icon"
-                        icon="file-download"
-                        aria-hidden="true"
-                      >
-                      </simple-icon-lite>
-                    `
-              }
-              ${
-                !this.printable
-                  ? ""
-                  : html`
-                      <simple-icon-lite
-                        calss="printable-icon"
-                        icon="print"
-                        aria-hidden="true"
-                      >
-                      </simple-icon-lite>
-                    `
-              }
-            </div>
-          </caption>
+          <rich-text-editor
+            autofocus
+            @blur="${this._captionChanged}"
+            id="caption"
+            label="Caption"
+            placeholder="Name your table by adding a caption here."
+            rawhtml="${this.caption}"
+            toolbar="editable-table-toolbar"
+            type="rich-text-editor-toolbar-mini"
+          >
+          </rich-text-editor>
+          <div class="icons">
+            ${!this.downloadable
+              ? ""
+              : html`
+                  <simple-icon-lite
+                    class="downloadable-icon"
+                    icon="file-download"
+                    aria-hidden="true"
+                  >
+                  </simple-icon-lite>
+                `}
+            ${!this.printable
+              ? ""
+              : html`
+                  <simple-icon-lite
+                    calss="printable-icon"
+                    icon="print"
+                    aria-hidden="true"
+                  >
+                  </simple-icon-lite>
+                `}
+          </div>
         </div>
+      </caption>
     `;
   }
 
@@ -608,7 +604,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         @blur="${(e) => this._onCellValueChange(e, rowIndex, colIndex)}"
         class="cell"
         disable-mouseover
-        toolbar="toolbar"
+        toolbar="editable-table-toolbar"
         id="cell-${rowIndex}-${colIndex}"
         label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
         rawhtml="${contents}"
