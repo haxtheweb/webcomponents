@@ -43,8 +43,6 @@ class VocabTerm extends LitElement {
     this.links = [];
     if (this.querySelector(".links a")) {
       this.querySelectorAll(".links a").forEach((el) => {
-        console.log(el);
-        console.log(el.innerText);
         this.links.push({
           title: el.innerText,
           href: el.getAttribute("href"),
@@ -110,7 +108,7 @@ class VocabTerm extends LitElement {
           <details>
             <summary id="summary">${this.term}</summary>
             <div part="information">
-              <simple-popover for="summary" position="top">
+              <simple-popover for="summary" position="top" auto>
                 <p>${this.information}</p>
                 <div part="links">
                   ${this.links.length > 0
