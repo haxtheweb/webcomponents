@@ -2,6 +2,8 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
+  "type": "grid",
+  "editMode": { "editMode": true },
   "gizmo": {
     "title": "Multiple choice",
     "description": "Multiple choice self check",
@@ -14,46 +16,36 @@
     }
   },
   "settings": {
+    "layout": [
+      {
+        "property": "singleOption",
+        "title": "Single Response",
+        "description": "Only allow one response (uses radio buttons)",
+        "inputMethod": "boolean"
+      }
+    ],
     "configure": [
       {
-        "property": "question",
+        "slot": "question",
         "title": "Question",
         "description": "Question for users to respond to.",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "h3"
       },
       {
-        "property": "randomize",
-        "title": "Randomize",
-        "description": "Randomize the answers dynamically",
-        "inputMethod": "boolean"
+        "slot": "",
+        "title": "Response",
+        "description": "Possible Responses",
+        "inputMethod": "textfield",
+        "slotWrapper": "multiple-choice-response",
+        "allowedSlotWrappers": ["multiple-choice-response"]
       },
       {
-        "property": "answers",
-        "title": "Answer set",
-        "description": "Answers in a multiple choice",
-        "inputMethod": "array",
-        "itemLabel": "label",
-        "properties": [
-          {
-            "property": "correct",
-            "title": "Correct",
-            "description": "If this is correct or not",
-            "inputMethod": "boolean"
-          },
-          {
-            "property": "label",
-            "title": "Answer",
-            "description": "Possible answer to the question",
-            "inputMethod": "textfield",
-            "required": true
-          }
-        ]
-      },
-      {
-        "property": "correctText",
+        "slot": "correct-feedback",
         "title": "Correct feedback",
         "description": "Feedback when they get it right",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p"
       },
       {
         "property": "correctIcon",
@@ -73,10 +65,11 @@
         ]
       },
       {
-        "property": "incorrectText",
+        "slot": "incorrect-feedback",
         "title": "Incorrect feedback",
         "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield"
+        "inputMethod": "textfield",
+        "slotWrapper": "p"
       },
       {
         "property": "incorrectIcon",
@@ -118,7 +111,13 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
+    "unsetAttributes": [
+      "__utils",
+      "displayed-answers",
+      "colors",
+      "answers",
+      "editMode"
+    ]
   },
   "demoSchema": [
     {
@@ -126,7 +125,7 @@
       "properties": {
         "randomize": true
       },
-      "content": "<input type=\"checkbox\" value=\"Option 1 - Correct answer\" correct>\n<input type=\"checkbox\" value=\"Option 2\">"
+      "content": "<h3 slot=\"question\">What is the answer?</p>\n<p slot=\"correct-answer\">True</p>\n<p slot=\"incorrect-answer\">False</p>"
     }
   ]
 }

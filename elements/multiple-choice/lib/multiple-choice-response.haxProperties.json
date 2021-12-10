@@ -1,0 +1,46 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Multiple choice answer",
+    "description": "An answer for multiple choice self check",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "groups": ["Instructional"],
+    "meta": {
+      "author": "ELMS:LN"
+    },
+    "allowedParents": ["multiple-choice"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Response text",
+        "description": "Text of the response",
+        "inputMethod": "code-editor",
+        "required": true
+      },
+      {
+        "property": "correct",
+        "title": "Correct",
+        "description": "Is this response correct?",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils"]
+  },
+  "demoSchema": [
+    {
+      "tag": "multiple-choice-answer",
+      "properties": {
+        "randomize": true
+      },
+      "content": "<p>True</p>"
+    }
+  ]
+}
