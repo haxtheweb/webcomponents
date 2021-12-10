@@ -32,7 +32,7 @@ class Hal9000 extends LitElement {
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
-    this.language = "en-US";
+    this.language = navigator.language;
     // ensure singleton is set
     window.Hal9000 = window.Hal9000 || {};
     window.Hal9000.instance = this;
@@ -199,6 +199,24 @@ class Hal9000 extends LitElement {
     super.disconnectedCallback();
   }
 }
+
+// haxHooks() {
+//   return {
+//     haleditModeChanged: "haxeditModeChanged",
+//     halActiveElementChanged: "halActiveElementChanged",
+//   };
+// }
+
+// halActiveElementChanged(element, value) {
+//   if (value) {
+//     this._haxstate = value;
+//   }
+// }
+
+// haxeditModeChanged(value) {
+//   this._haxstate = value;
+// }
+
 // ensure we can generate a singleton
 window.customElements.define(Hal9000.tag, Hal9000);
 export { Hal9000 };
