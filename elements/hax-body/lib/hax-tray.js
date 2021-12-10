@@ -28,6 +28,8 @@ import "./hax-view-source.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
+import "./hax-tray-button.js";
+import "./hax-toolbar-menu.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -139,8 +141,6 @@ class HaxTray extends I18NMixin(
     this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
     setTimeout(() => {
-      import("./hax-tray-button.js");
-      import("./hax-toolbar-menu.js");
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)

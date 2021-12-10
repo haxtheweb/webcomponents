@@ -21,6 +21,9 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import "./lib/hax-context-behaviors.js";
+import "./lib/hax-plate-context.js";
+import "@lrnwebcomponents/grid-plate/grid-plate.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -469,9 +472,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.getElementsByTagName("head")[0].appendChild(s);
     }
     setTimeout(() => {
-      import("./lib/hax-context-behaviors.js");
-      import("./lib/hax-plate-context.js");
-      import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
       this.addEventListener(
         "place-holder-replace",
