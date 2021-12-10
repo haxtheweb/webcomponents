@@ -2500,35 +2500,43 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             slot = data.slot,
             i = data.index,
             grid = data.grid,
+            //object with parent's settings to make slot editable
             editMode = data.editMode,
+            //if slot is not visible in editode
+            invisible = data.invisible,
+            //where to set focus
+            focusTarget = invisible
+              ? grid
+              : [...grid.children].filter((child) =>
+                  !slot || slot === ""
+                    ? !child.slot || child.slot === ""
+                    : child.slot === slot
+                )[i] || target,
             //sets active node and positions accordingly
             nodePosition = (node = target) => {
               this.setActiveNode(node, true);
               this.positionContextMenus(node);
-            },
-            //queries grid in edit mode to find targeted slot
-            targetItem = () => {
-              let matches = [...grid.children].filter((child) =>
-                  !slot || slot === ""
-                    ? !child.slot || child.slot === ""
-                    : child.slot === slot
-                ),
-                newTarget = matches.length > i ? matches[i] : target;
-              nodePosition(newTarget);
             };
           //some slots may not always be visible and
           //require temporary changes to parent grid's properties
           //so they can be visible and editable
           if (grid && editMode) {
-            this.setGridEditMode(grid, editMode);
+            this.setSlotEditMode(grid, editMode, focusTarget);
             //make sure we target correct slot after dom changes
-            setTimeout(targetItem(), 500);
+            //setTimeout(targetItem(), 500);
           } else {
-            nodePosition();
+            this.setActiveNode(node, true);
+            this.positionContextMenus(node);
           }
         }
         break;
-
+      case "hax-edit-element-toggle":
+        if (eventPath[0] && eventPath[0].eventData) {
+          let data = eventPath[0].eventData;
+          if (data && data.target && data.editMode)
+            this.toggleElementEditMode(data.target, data.editMode);
+        }
+        break;
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
@@ -2747,6 +2755,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
     }
   }
+
   /**
    * Item has gained focus, change active element to match
    */
@@ -2946,7 +2955,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       } else {
         //make sure ective node is not still in edit mode
-        if (!!this.activeNode) this.unsetGridEditMode(this.activeNode);
+        if (!!this.activeNode) {
+          this.unsetSlotEditMode(this.activeNode);
+          this.unsetElementEditMode(this.activeNode);
+        }
       }
       // force a reset when we start editing
       // the delay gives HAX / HAX endpoints some room to manipulate the DOM first
@@ -3790,13 +3802,42 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       e.target.classList.remove("hax-hovered");
     }
   }
+
+  toggleElementEditMode(node, editProp) {
+    if (!!node[editProp]) {
+      this.unsetElementEditMode(node, editProp);
+    } else {
+      this.setElementEditMode(node, editProp);
+    }
+  }
+
+  unsetElementEditMode(node) {
+    let editProp = node.getAttribute("data-element-edit-mode");
+    node[editProp] = false;
+    this.__applyNodeEditableState(node, this.editMode);
+    HAXStore.activeEditingElement = null;
+    this.editElementToggled = false;
+    this.__ignoreActive = false;
+  }
+
+  setElementEditMode(node, editProp) {
+    node.setAttribute("data-element-edit-mode", editProp);
+    node[editProp] = true;
+    HAXStore.activeEditingElement = node;
+    this.editElementToggled = false;
+    this.__ignoreActive = true;
+    this.activeNode.removeAttribute("contenteditable");
+    this.activeNode.classList.remove("hax-active");
+    this.__applyDragDropState(this.activeNode, false);
+    HAXStore.activeEditingElement.focus();
+  }
   /**
    * removes edit mode from grid by reverting to properties saved before editing
    *
    * @param {object} node node that could be a grid
    * @memberof HaxBody
    */
-  unsetGridEditMode(node) {
+  unsetSlotEditMode(node) {
     let settings = !node.getAttribute("data-grid-saved-settings")
       ? undefined
       : JSON.parse(node.getAttribute("data-grid-saved-settings"));
@@ -3809,7 +3850,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {object} node node that could be a grid
    * @memberof HaxBody
    */
-  setGridEditMode(node, settings) {
+  setSlotEditMode(node, settings, focusTarget) {
     let saved = !node.getAttribute("data-grid-saved-settings")
         ? {}
         : JSON.parse(node.getAttribute("data-grid-saved-settings")),
@@ -3998,7 +4039,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         !newValue.parentNode ||
         newValue.parentNode !== oldValue.parentNode)
     )
-      this.unsetGridEditMode(oldValue.parentNode);
+      this.unsetSlotEditMode(oldValue.parentNode);
+    this.unsetElementEditMode(oldValue);
   }
   /**
    * Get position from top and left of the page based on position:relative; being
