@@ -151,6 +151,18 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         caption > * {
           margin: 0 2.5px;
         }
+        #caption {
+          flex: 1 1 auto;
+        }
+        .caption-flex {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .icons {
+          flex: 0 0 auto;
+          opacity: 0.25;
+        }
         th {
           padding: 0;
           border-width: var(--editable-table-border-width, 1px);
@@ -494,18 +506,46 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     return html`
       <caption>
         <p class="offscreen">Edit Mode for</p>
-        <rich-text-editor
-          autofocus
-          @blur="${this._captionChanged}"
-          id="caption"
-          label="Caption"
-          placeholder="Name your table by adding a caption here."
-          rawhtml="${this.caption}"
-          toolbar="toolbar"
-          type="rich-text-editor-toolbar-mini"
-        >
-        </rich-text-editor>
-      </caption>
+        <div class="caption-flex">
+            <rich-text-editor
+              autofocus
+              @blur="${this._captionChanged}"
+              id="caption"
+              label="Caption"
+              placeholder="Name your table by adding a caption here."
+              rawhtml="${this.caption}"
+              toolbar="toolbar"
+              type="rich-text-editor-toolbar-mini"
+            >
+            </rich-text-editor>
+            <div class="icons">
+              ${
+                !this.downloadable
+                  ? ""
+                  : html`
+                      <simple-icon-lite
+                        class="downloadable-icon"
+                        icon="file-download"
+                        aria-hidden="true"
+                      >
+                      </simple-icon-lite>
+                    `
+              }
+              ${
+                !this.printable
+                  ? ""
+                  : html`
+                      <simple-icon-lite
+                        calss="printable-icon"
+                        icon="print"
+                        aria-hidden="true"
+                      >
+                      </simple-icon-lite>
+                    `
+              }
+            </div>
+          </caption>
+        </div>
     `;
   }
 
@@ -598,6 +638,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
           <simple-icon-lite
             class="filter-icon"
             icon="editable-table:filter-off"
+            aria-hidden="true"
           ></simple-icon-lite>
         </div>
       </td>
