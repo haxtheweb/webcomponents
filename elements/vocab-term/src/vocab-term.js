@@ -92,8 +92,7 @@ class VocabTerm extends LitElement {
             <div part="term">
               <summary id="summary">${this.term}</summary>
             </div>
-            <simple-modal-template>
-              <div slot="header">${this.term}</div>
+            <simple-modal-template title=${this.term}>
               <p slot="content">${this.information}</p>
               ${this.links.length > 0
                 ? html` <ul slot="content">
@@ -104,9 +103,6 @@ class VocabTerm extends LitElement {
                     )}
                   </ul>`
                 : ``}
-              <div slot="buttons">
-                <button dialog-dismiss>Close Modal</button>
-              </div>
             </simple-modal-template>
           </div>
         `
