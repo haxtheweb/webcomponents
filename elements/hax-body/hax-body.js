@@ -3811,8 +3811,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
 
-  unsetElementEditMode(node) {
-    let editProp = node.getAttribute("data-element-edit-mode");
+  unsetElementEditMode(node = this.activeNode) {
+    if (!node) return;
+    let editProp = node.getAttribute("data-element-edit-mode") || "editMode";
     node[editProp] = false;
     this.__applyNodeEditableState(node, this.editMode);
     HAXStore.activeEditingElement = null;
@@ -3820,7 +3821,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.__ignoreActive = false;
   }
 
-  setElementEditMode(node, editProp) {
+  setElementEditMode(node, editProp = "editMode") {
     node.setAttribute("data-element-edit-mode", editProp);
     node[editProp] = true;
     HAXStore.activeEditingElement = node;
