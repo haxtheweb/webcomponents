@@ -64,6 +64,13 @@
     ],
     "advanced": [
       {
+        "property": "dataCsv",
+        "title": "CSV Data",
+        "description": "Make a table from an uploaded CSV file",
+        "inputMethod": "fileupload",
+        "accepts": "csv"
+      },
+      {
         "property": "downloadable",
         "title": "Download Button",
         "description": "Adds a button to download the table",
