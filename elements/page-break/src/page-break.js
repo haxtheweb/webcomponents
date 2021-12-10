@@ -6,7 +6,7 @@ import { html, css, LitElement } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
@@ -32,10 +32,17 @@ export class PageBreak extends IntersectionObserverMixin(
       pageBreak: "Page break",
       pageDetails: "Page details",
       clickToUnlock: "Click to unlock",
+      noParent: "No parent",
+      toggleLock: "Toggle lock",
+      togglePublished: "Toggle published",
     };
-    this.pathAuto = false;
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales", import.meta.url).href,
+      locales: ["es"],
+    });
     this.title = this.t.newPage;
-    this.slug = "#";
+    this.slug = "";
     this.published = false;
     this.target = null;
     this.locked = false;
@@ -57,13 +64,9 @@ export class PageBreak extends IntersectionObserverMixin(
     this.breakType = "node";
   }
   static get properties() {
-    let props = {};
-    if (super.properties) {
-      props = super.properties;
-    }
+    let props = super.properties || {};
     return {
       ...props,
-      pathAuto: { type: Boolean, reflect: true, attribute: "path-auto" },
       order: { type: Number },
       title: { type: String, reflect: true },
       slug: { type: String },
@@ -187,11 +190,12 @@ export class PageBreak extends IntersectionObserverMixin(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      // align schema ID w/ the ID from itemId
-      if (propName === "itemId" && this[propName] != null) {
-        this.schemaResourceID = this.itemId;
-      } else if (propName === "schemaResourceID" && this.itemId == null) {
-        this.itemId = this.schemaResourceID.replace("#", "");
+      if (
+        propName === "schemaResourceID" &&
+        this.itemId == null &&
+        oldValue !== undefined
+      ) {
+        this.itemId = this.schemaResourceID.replace("#", "item-");
       }
       // when visible, "click" the thing so that it's activated
       if (
@@ -325,7 +329,7 @@ export class PageBreak extends IntersectionObserverMixin(
       }
       // allow for haxcms page style association to allow users to edit the
       // current page's details
-      if (propName === "breakType") {
+      if (propName === "breakType" || propName === "t") {
         var iconPath;
         if (this[propName] === "node") {
           iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
@@ -384,9 +388,9 @@ export class PageBreak extends IntersectionObserverMixin(
           height: 0;
           line-height: 36px;
         }
-        simple-icon-lite {
+        simple-icon-button-lite {
           float: right;
-          color: red;
+          color: #000000;
           --simple-icon-width: 36px;
           --simple-icon-height: 36px;
           margin-top: -28px;
@@ -407,24 +411,24 @@ export class PageBreak extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // align schema ID w/ the ID from itemId on load
+    if (this.itemId != null) {
+      this.schemaResourceID = this.itemId;
+    }
   }
   render() {
     return html`
-      <style>
-        :host([data-hax-ray]:hover) .mid::before {
-          content: "${this.t.pageBreak}";
-        }
-      </style>
+      <style></style>
       <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only"
         >${this.title}</a
       >
       <hr class="mid" />
       ${this.locked
-        ? html`<simple-icon-lite
+        ? html`<simple-icon-button-lite
             @click="${this.haxClickLockInPage}"
             icon="icons:lock"
             title="${this.t.clickToUnlock}"
-          ></simple-icon-lite>`
+          ></simple-icon-button-lite>`
         : ``}
     `;
   }
@@ -460,16 +464,18 @@ export class PageBreak extends IntersectionObserverMixin(
 
     // this ensures we look at the level just below the body container level
     let testNode = activeNode;
-    while (testNode.parentNode.tagName !== "HAX-BODY") {
-      testNode = testNode.parentNode;
-    }
-    const closestPB = await pageBreakManager.associatedPageBreak(testNode);
+    if (testNode && testNode.parentNode) {
+      while (testNode.parentNode.tagName !== "HAX-BODY") {
+        testNode = testNode.parentNode;
+      }
+      const closestPB = await pageBreakManager.associatedPageBreak(testNode);
 
-    if (closestPB) {
-      details.properties.parent = closestPB.parent;
-      details.properties.order = closestPB.order + 1;
-      details.properties.published = closestPB.published;
-      details.properties.locked = closestPB.locked;
+      if (closestPB) {
+        details.properties.parent = closestPB.parent;
+        details.properties.order = closestPB.order + 1;
+        details.properties.published = closestPB.published;
+        details.properties.locked = closestPB.locked;
+      }
     }
     return details;
   }
@@ -507,7 +513,13 @@ export class PageBreak extends IntersectionObserverMixin(
       const itemManifest = window.HAXCMS.requestAvailability().store.getManifestItems(
         true
       );
-      var items = [];
+      // default to null parent as the whole site
+      var items = [
+        {
+          text: `-- ${this.t.noParent} --`,
+          value: null,
+        },
+      ];
       itemManifest.forEach((el) => {
         if (el.id != this.itemId) {
           // calculate -- depth so it looks like a tree
@@ -578,29 +590,12 @@ export class PageBreak extends IntersectionObserverMixin(
       {
         icon: this.locked ? "icons:lock" : "icons:lock-open",
         callback: "haxClickInlineLock",
-        label: "Toggle Lock",
+        label: this.t.toggleLock,
       },
       {
         icon: this.published ? "lrn:view" : "lrn:view-off",
         callback: "haxClickInlinePublished",
-        label: "Toggle published",
-      },
-      // @todo these are both not the correct test to be performing at this time
-      // these should be coming from the store for haxcms and all we have to do
-      // is either
-      // assign the parent of our parent (so an outdent) while taking parent's order + 1 (so next to it)
-      // assign the parent of our sibling (so an indent) while resetting order to be 0 (1st thing indented)
-      {
-        icon: "editor:format-indent-increase",
-        callback: "haxIndentParent",
-        label: "Move under parent page break",
-        disabled: !pageBreakManager.getParent(this, "indent"),
-      },
-      {
-        icon: "editor:format-indent-decrease",
-        callback: "haxOutdentParent",
-        label: "Move out of parent page break",
-        disabled: !pageBreakManager.getParent(this, "outdent"),
+        label: this.t.togglePublished,
       },
     ];
   }
@@ -614,23 +609,6 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   haxClickInlinePublished(e) {
     this.published = !this.published;
-    return true;
-  }
-  haxIndentParent(e) {
-    if (pageBreakManager.getParent(this, "indent")) {
-      this.parent = pageBreakManager.getParent(this, "indent").slug;
-    }
-    return true;
-  }
-  haxOutdentItem(e) {
-    if (pageBreakManager.getParent(this, "outdent")) {
-      this.parent = pageBreakManager.getParent(this, "outdent").slug;
-    } else if (
-      this.parent &&
-      pageBreakManager.getParent(this, "outdent") === null
-    ) {
-      this.parent = null;
-    }
     return true;
   }
 }

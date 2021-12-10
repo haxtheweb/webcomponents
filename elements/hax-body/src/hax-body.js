@@ -269,8 +269,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: 2px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
-          background-color: #eeeeee;
-          opacity: 0.8;
+          background-color: #fffafa;
+          opacity: 0.5;
+          transition: 0.2s all ease-in-out;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
+          opacity: 0.9;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
           width: 28px;
@@ -282,7 +286,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           position: relative;
           background-position: center;
           background-repeat: no-repeat;
-          background-color: #eeeeee;
+          background-color: #fffafa;
         }
         :host([edit-mode])
           #bodycontainer
@@ -711,6 +715,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       >
         <div id="topcontextmenu">
           <hax-plate-context
+            always-expanded
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
@@ -725,7 +730,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.activeNode.getAttribute("data-hax-lock") ||
             (this.activeNode.parentNode &&
               this.activeNode.parentNode.getAttribute("data-hax-lock")) ||
-            !HAXStore.isTextElement(this.activeNode)
+            (!HAXStore.isTextElement(this.activeNode) &&
+              !HAXStore.isSingleSlotElement(this.activeNode))
               ? "not-text"
               : "is-text"}"
             .activeNode="${this.activeNode}"
@@ -3130,11 +3136,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       eventPath[0] &&
       eventPath[0].assignedNodes &&
-      eventPath[0].assignedNodes().length
+      eventPath[0].assignedNodes().length &&
+      eventPath[0].parentNode
     ) {
       // has nodes so we can make sure to track this elsewhere
       eventPath[0].parentNode.classList.add("has-nodes");
-    } else {
+    } else if (eventPath[0].parentNode) {
       eventPath[0].parentNode.classList.remove("has-nodes");
     }
   }
@@ -3444,6 +3451,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       try {
         // see if we are dropping a file
         if (
+          HAXStore.__dragTarget === null &&
           e.dataTransfer &&
           e.dataTransfer.items &&
           e.dataTransfer.items.length > 0 &&

@@ -18,26 +18,80 @@
       <demo-snippet>
         <template>
           <multiple-choice
-          name="ducks"
-          title="Which are ducks?"
-          correct-text="You got a meal deal"
-          incorrect-text="You did not get a meal deal...."
+          id="basic"
+          name="basic"
+          title="Which are ducks????"
           randomize>
-            <input type="checkbox" value="Huey" />
-            <input type="checkbox" value="Duey" correct />
-            <input type="checkbox" value="Daffy" correct />
-            <input type="checkbox" value="Donald" correct />
+          <h4 slot="question">Which are ducks?</h4>
+            <multiple-choice-response correct>Huey</multiple-choice-response>
+            <multiple-choice-response correct>Duey</multiple-choice-response>
+            <multiple-choice-response correct>Daffy</multiple-choice-response>
+            <multiple-choice-response correct>Donald</multiple-choice-response>
+            <multiple-choice-response>Mickey</multiple-choice-response>
+            <p slot="correct-feedback">Yay! Let's jump in the money pit.</p>
+            <p slot="incorrect-feedback">You're despicable. What a quack!</p>
           </multiple-choice>
         </template>
       </demo-snippet>
     </div>
     <div class="vertical-section-container centered">
-      <h3>Basic multiple-choice data demo</h3>
+      <h3>Basic multiple-choice progressive enhancement with single-option</h3>
       <demo-snippet>
         <template>
-          <multiple-choice correct-text="You got a meal deal" incorrect-text="You did not get a meal deal...." hide-title="" answers="[{&quot;label&quot;: &quot;Option 1&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 4 is not right&quot;, &quot;correct&quot;: false}]"></multiple-choice>
-          <multiple-choice correct-text="You got a meal deal" incorrect-text="You did not get a meal deal...." hide-title="" answers="[{&quot;label&quot;: &quot;Option 1&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 4 is not right&quot;, &quot;correct&quot;: false}]"></multiple-choice>
-          <multiple-choice correct-text="You got a meal deal" incorrect-text="You did not get a meal deal...." hide-title="" answers="[{&quot;label&quot;: &quot;Option 1&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 4 is not right&quot;, &quot;correct&quot;: false}]"></multiple-choice>
+          <multiple-choice
+          id="single"
+          name="single"
+          single-option
+          randomize>
+            <h4 slot="question">Which is <strong><em>NOT</em></strong> a duck?</h4>
+            <multiple-choice-response>Huey</multiple-choice-response>
+            <multiple-choice-response>Duey</multiple-choice-response>
+            <multiple-choice-response>Daffy</multiple-choice-response>
+            <multiple-choice-response>Donald</multiple-choice-response>
+            <multiple-choice-response correct>Mickey</multiple-choice-response>
+            <p slot="correct-feedback">Yippee!!</p>
+            <p slot="incorrect-feedback">Aw shucks!!</p>
+          </multiple-choice>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Basic multiple-choice progressive enhancement in edit mode</h3>
+      <demo-snippet>
+        <template>
+          <multiple-choice
+          id="editmode"
+          name="editmode"
+          single-option
+          edit-mode
+          randomize>
+            <h4 slot="question">Which is <strong><em>NOT</em></strong> a duck?</h4>
+            <multiple-choice-response>Huey</multiple-choice-response>
+            <multiple-choice-response>Duey</multiple-choice-response>
+            <multiple-choice-response>Daffy</multiple-choice-response>
+            <multiple-choice-response>Donald</multiple-choice-response>
+            <multiple-choice-response correct>Mickey</multiple-choice-response>
+            <p slot="correct-feedback">Yippee!!</p>
+            <p slot="incorrect-feedback">Aw shucks!!</p>
+          </multiple-choice>
+          <button id="toggle-edit-mode" onclick="toggleEditMode()">Toggle Edit Mode</button>
+          <script>
+            toggleEditMode = function(){
+              let mc = document.getElementById('editmode');
+              if(!!mc) mc.editMode = !mc.editMode;
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Basic multiple-choice demos</h3>
+      <demo-snippet>
+        <template>
+          <multiple-choice id="basic-data" correct-text="Yay!" single-option incorrect-text="Booooo" show-data
+            answers="[{&quot;label&quot;: &quot;Option 1 is not right&quot;},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3 is not right&quot;},{&quot;label&quot;: &quot;Option 4 is not right&quot;}]"></multiple-choice>
+            <multiple-choice id="basic-data" correct-text="Yay!" single-option incorrect-text="Booooo" disabled edit-mode
+              answers="[{&quot;label&quot;: &quot;Option 1 is not right&quot;},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3 is not right&quot;},{&quot;label&quot;: &quot;Option 4 is not right&quot;}]"></multiple-choice>
         </template>
       </demo-snippet>
     </div>
@@ -45,18 +99,62 @@
       <h3>Basic multiple-choice demo</h3>
       <demo-snippet>
         <template>
-          <multiple-choice show-data disabled="" correct-text="You got a meal deal" incorrect-text="You did not get a meal deal...." hide-title=""
-            answers="[{&quot;label&quot;: &quot;Option 1&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 4 is not right&quot;, &quot;correct&quot;: false}]"></multiple-choice>
-        </template>
-      </demo-snippet>
-    </div>
-    <div class="vertical-section-container centered">
-      <h3>Basic multiple-choice demo</h3>
-      <demo-snippet>
-        <template>
-          <multiple-choice single-option show-data disabled="" correct-text="You got a meal deal"
-            incorrect-text="You did not get a meal deal...." hide-title=""
+          <multiple-choice id="basic-data2" correct-text="Yay!" incorrect-text="Booooo"
             answers="[{&quot;label&quot;: &quot;Option 1&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 2&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 3&quot;, &quot;correct&quot;: true},{&quot;label&quot;: &quot;Option 4 is not right&quot;, &quot;correct&quot;: false}]">
+          </multiple-choice>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Deprecated multiple-choice with input</h3>
+      <demo-snippet>
+        <template>
+          <multiple-choice
+          id="deprecated"
+          title="Which are ducks?"
+          correct-text="Yay! Let's jump in the money pit."
+          incorrect-text="You're despicable. What a quack!"
+          randomize>
+            <input type="checkbox" value="Huey" correct/>
+            <input type="checkbox" value="Duey" correct />
+            <input type="checkbox" value="Daffy" correct />
+            <input type="checkbox" value="Donald" correct />
+            <input type="checkbox" value="Mickey" />
+          </multiple-choice>
+          <multiple-choice
+          id="deprecated2"
+          edit-mode
+          title="Which are ducks?"
+          correct-text="Yay! Let's jump in the money pit."
+          incorrect-text="You're despicable. What a quack!"
+          randomize>
+            <input type="checkbox" value="Huey" correct/>
+            <input type="checkbox" value="Duey" correct />
+            <input type="checkbox" value="Daffy" correct />
+            <input type="checkbox" value="Donald" correct />
+            <input type="checkbox" value="Mickey" />
+          </multiple-choice>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Importing from a list</h3>
+      <demo-snippet>
+        <template>
+          <multiple-choice
+          id="deprecated3"
+          edit-mode
+          title="Which are ducks?"
+          correct-text="Yay! Let's jump in the money pit."
+          incorrect-text="You're despicable. What a quack!"
+          randomize>
+          <ul>
+            <li correct>Huey</li>
+            <li correct>Duey</li>
+            <li correct>Daffy</li>
+            <li correct>Donald</li>
+            <li>Mickey</li>
+          </ul>
           </multiple-choice>
         </template>
       </demo-snippet>

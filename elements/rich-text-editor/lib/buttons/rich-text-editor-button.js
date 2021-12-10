@@ -298,15 +298,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     commandCallback(editor, toolbar, selection) {}
     /**
-     * override this custom function to perform a
-     * custom operation when an element that matches the tags list is clicked
-     *
-     * @param {event} e click event
-     */
-    tagClickCallback(e) {
-      return false;
-    }
-    /**
      * indicates range should be wrapped in given element
      * @event wrapselection
      * @param {object} element html element

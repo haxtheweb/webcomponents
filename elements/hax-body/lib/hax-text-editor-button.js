@@ -43,6 +43,17 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.toggles = true;
     this.command = "insertHTML";
   }
+
+  get targetedNode() {
+    let firstMatch = this.__highlight.querySelectorAll(this.tagsList);
+    return firstMatch.length === 1 ? firstMatch[0] : this.__highlight;
+  }
+
+  firstUpdated(changedProperties) {
+    this.updateElement();
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+  }
+
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
@@ -54,22 +65,35 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    * updates element based on hax properties of element
    */
   updateElement() {
+    this.dispatchEvent(
+      new CustomEvent("deregister-button", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
     let el = this.element || {},
       settings = el.settings || {},
       gizmo = el.gizmo || {};
     this.fields = [
-      ...super.fields,
-      ...(settings.configure || [])
-        .map((f) => {
-          if (f.inputMethod === "code-editor") f.inputMethod = "textfield";
-          return f;
-        })
-        .filter((f) => f.slot !== ""),
+      ...(settings.configure || []).map((f) => {
+        if (f.slot === "") f.property = "innerHTML";
+        return f;
+      }),
     ];
     this.tagsList = gizmo.tag || "span";
     this.icon = gizmo.icon || "add";
-    this.label = gizmo.title || `Add ${gizmo.tag}`;
+    this.label = gizmo.title || gizmo.tag;
     this.value = this.getValue(undefined);
+    this.dispatchEvent(
+      new CustomEvent("deregister-button", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
 
   /**
@@ -92,6 +116,15 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         this.targetedNode.querySelector &&
         this.targetedNode.querySelector(`[slot=${field.slot}]`)
           ? this.targetedNode.querySelector(`[slot=${field.slot}]`).innerHTML
+          : undefined;
+      if (field.slot && field.slot === "")
+        this.targetedNode &&
+        [...(this.targetedNode.children || [])].filter(`:not([slot])`) &&
+        [...(this.targetedNode.children || [])].filter(`:not([slot])`).length >
+          0
+          ? `${[...(this.targetedNode.children || [])]
+              .filter(`:not([slot])`)
+              .join("\n")}`
           : undefined;
     });
     return val;
@@ -123,11 +156,11 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
       if (!!field.property && field.property !== "innerHTML")
         tag[field.property] = this.value[field.property];
       if (!!field.slot && !!this.value[field.slot])
-        html += `<${getSlotWrapper(field)}${Object.keys(
+        html += `<${this.getSlotWrapper(field)}${Object.keys(
           field.slotAttributes || {}
         ).map((attr) => ` ${attr}="${field.slotAttributes[attr]}"`)}>
             ${this.value[slot]}
-          </${getSlotWrapper(field)}>`;
+          </${this.getSlotWrapper(field)}>`;
     });
     html += this.value.innerHTML || "";
 

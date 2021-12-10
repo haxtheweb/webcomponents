@@ -624,9 +624,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
         break-type="site"
-        path-auto
-        ${store.activeItem.metadata.locked ? "locked" : ""}
-        ${store.activeItem.metadata.published === false ? "" : "published"}
+        ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
+        ${
+          store.activeItem.metadata.published === false
+            ? ""
+            : 'published="published"'
+        }
         ></page-break>${newValue}`;
         html = encapScript(newValue);
         // set in the store

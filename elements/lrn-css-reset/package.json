@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.1",
+  "version": "4.0.5",
   "description": "CSS reset and additional base styles for lrnwebcomponents and apps",
   "repository": {
     "type": "git",
@@ -51,12 +51,11 @@
     "@lrnwebcomponents/deduping-fix": "2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "5.0.2",
-    "@web/dev-server": "0.1.28",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },

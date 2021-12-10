@@ -71,6 +71,15 @@ class SimpleFieldsFormLite extends LitElement {
     this.value = value;
   }
   /**
+   * forces form rebuild
+   *
+   * @memberof SimpleFieldsFormLite
+   */
+  rebuildForm() {
+    if (this.shadowRoot.querySelector("#sf"))
+      this.shadowRoot.querySelector("#sf").rebuidForm();
+  }
+  /**
    * first update hook; also implies default settings
    */
   firstUpdated(changedProperties) {
