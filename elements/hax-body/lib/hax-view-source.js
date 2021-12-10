@@ -160,13 +160,59 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   // ability to refresh source view; possible something else in the system updated it
   // after we loaded
   refreshHTMLEditor(e) {
-    setTimeout(() => {
-      this.updateEditor();
-    }, 100);
+    this.updateEditor();
   }
 
   importDOCX(e) {
-    // @todo implement import docx file
+    // import and then go for it
+    import(
+      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+    ).then(async (e) => {
+      const broker = window.FileSystemBroker.requestAvailability();
+      const file = await broker.loadFile("docx");
+      // returns a Promise via event call when it's ready
+      window.DOCXFileSystemBroker.requestAvailability().fileToHTML(
+        file,
+        "hax-view-source"
+      );
+    });
+  }
+  // this will get called at a later time bc of the Promise involved
+  insertDOCXFileContents(e) {
+    // sanity check
+    if (e.detail.name === "hax-view-source") {
+      let div = document.createElement("div");
+      div.innerHTML = e.detail.value;
+      let slot = false;
+      if (HAXStore.activeNode.hasAttribute("slot")) {
+        slot = HAXStore.activeNode.getAttribute("slot");
+      }
+      for (var i = div.children.length - 1; i > 0; i--) {
+        if (slot) {
+          div.children[i].setAttribute("slot", slot);
+        }
+        HAXStore.activeNode.parentNode.insertBefore(
+          div.children[i],
+          HAXStore.activeNode.nextSibling
+        );
+      }
+      HAXStore.toast(this.t.fileImported);
+      this.close();
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener(
+      "docx-file-system-data",
+      this.insertDOCXFileContents.bind(this)
+    );
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "docx-file-system-data",
+      this.insertDOCXFileContents.bind(this)
+    );
+    super.disconnectedCallback();
   }
 
   /**
@@ -176,7 +222,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     const data = this.contentToFile(false);
     this.downloadFromData(data, "html", "my-new-code");
     HAXStore.toast("HTML content downloaded");
-    //this.close();
+    this.close();
   }
 
   /**
@@ -189,6 +235,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       document.title
     );
     HAXStore.toast("docx file downloaded");
+    this.close();
   }
 
   /**
@@ -198,7 +245,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     const data = this.contentToFile(true);
     this.downloadFromData(data, "html", "my-new-webpage");
     HAXStore.toast("Working offline copy downloaded");
-    //this.close();
+    this.close();
   }
 
   /**
@@ -219,7 +266,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
     HAXStore.toast("Scrubbed, Content updated");
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
-    //this.close();
+    this.close();
   }
   /**
    * update content of the editor area
@@ -227,8 +274,9 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   openSource() {
     // import at this time so we can delay as long as possible
     // from needing to pull in monaco
-    import("@lrnwebcomponents/code-editor/code-editor.js");
-    this.updateEditor();
+    import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
+      this.updateEditor();
+    });
   }
   /**
    * selectBody
@@ -263,6 +311,11 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     hiddenarea.value = val;
     hiddenarea.setAttribute("hidden", "hidden");
     HAXStore.toast(this.t.copiedToClipboard);
+    this.close();
+  }
+
+  close() {
+    HAXStore.haxTray.trayDetail = "";
   }
 
   async firstUpdated(changedProperties) {
@@ -281,17 +334,19 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         })
       );
     }
-    await this.updateEditor();
   }
-  async updateEditor() {
+  updateEditor() {
     if (
       HAXStore.activeHaxBody &&
       this.shadowRoot &&
       this.shadowRoot.querySelector("#textarea")
     ) {
-      this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
-        await HAXStore.activeHaxBody.haxToContent()
-      );
+      this.shadowRoot.querySelector("#textarea").editorValue = "";
+      setTimeout(async () => {
+        this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
+          await HAXStore.activeHaxBody.haxToContent()
+        );
+      }, 0);
     }
   }
 
@@ -364,6 +419,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       refreshTooltip: "Refresh HTML source",
       importDOCX: "Import DOCX",
       importDOCXTooltip: "Import .docx content into body",
+      fileImported: "File imported",
     };
     this.registerLocalization({
       context: this,

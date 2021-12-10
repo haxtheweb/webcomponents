@@ -3141,7 +3141,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     ) {
       // has nodes so we can make sure to track this elsewhere
       eventPath[0].parentNode.classList.add("has-nodes");
-    } else {
+    } else if (eventPath[0].parentNode) {
       eventPath[0].parentNode.classList.remove("has-nodes");
     }
   }
