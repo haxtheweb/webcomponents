@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
+import "./course-intro-footer.js";
 
 class CourseIntro extends LitElement {
   static get tag() {
@@ -10,12 +11,10 @@ class CourseIntro extends LitElement {
     return [
       css`
         :host {
-          display: block;
-          min-height: 100vh;
-          padding-bottom: 30vh;
-          color: inherit;
-          background-color: rgba(var(--course-intro-bg-color), 1);
+          display: flex;
+          flex-direction: column;
         }
+
       `,
     ];
   }
@@ -32,29 +31,10 @@ class CourseIntro extends LitElement {
   }
   render() {
     return html`
-      <course-intro-header></course-intro-header>
-      <course-intro-lesson-plans></course-intro-lesson-plans>
+        <course-intro-header></course-intro-header>
+        <course-intro-lesson-plans></course-intro-lesson-plans>
+        <course-intro-footer></course-intro-footer>
     `;
-  }
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Lesson plan",
-        description: "Display a listing of top page headings",
-        icon: "editor:format-list-bulleted",
-        color: "blue",
-        meta: {
-          author: "LRNWebComponents",
-        },
-      },
-      settings: {
-        configure: [],
-        advanced: [],
-      },
-    };
   }
 }
 customElements.define(CourseIntro.tag, CourseIntro);

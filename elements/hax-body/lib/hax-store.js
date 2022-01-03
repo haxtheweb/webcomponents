@@ -24,6 +24,10 @@ import {
   I18NMixin,
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "./hax-app.js";
+
 const FALLBACK_LANG = "en";
 
 function localStorageGet(name) {
@@ -1871,6 +1875,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    this.__dragTarget = null;
     this.registerLocalization({
       context: this,
       namespace: "hax",
@@ -1983,13 +1988,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // imports app, stax definitions
-    import("./hax-app.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-      window.SimpleToast.requestAvailability();
-    });
-
-    import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
+    window.SimpleToast.requestAvailability();
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     // mobx
     makeObservable(this, {

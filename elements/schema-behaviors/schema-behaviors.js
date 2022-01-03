@@ -37,6 +37,9 @@ export const SchemaBehaviors = function (SuperClass) {
           readOnly: true,
           observer: "_schemaMapChanged",
         },
+        schemaResourceID: {
+          type: String,
+        },
       };
     }
     /**

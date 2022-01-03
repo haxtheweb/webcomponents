@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "./lib/h-a-x-dependencies.js";
 function localStorageGet(name) {
   try {
     return localStorage.getItem(name);
@@ -170,8 +171,6 @@ class HAX extends HTMLElement {
       this.appStoreReady.bind(this),
       { once: true, passive: true }
     );
-    // dynamically import definitions for all needed tags
-    import("./lib/h-a-x-dependencies.js");
     // map events from tray
     window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
     window.addEventListener("hax-save", this.saveEvent.bind(this));
