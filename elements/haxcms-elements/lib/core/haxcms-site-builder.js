@@ -115,10 +115,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _updateActiveItemContent(data) {
     let tmp = document.createElement("div");
     tmp.innerHTML = data;
-    tmp.childNodes.forEach((node) => {
+    for (const node of tmp.childNodes) {
       this.nodeNormalizeIDs(node);
-    });
+    }
     data = tmp.innerHTML;
+    // cheat to ensure we get a rebuild of the content in case
+    // they only modified page title / other page-break based details
+    this.activeItemContent = "";
     this.activeItemContent = data;
   }
   /**
