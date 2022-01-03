@@ -45,6 +45,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       duplicate: "Duplicate",
       confirmDelete: "Confirm delete",
       changeTo: "Change to",
+      editElement: "Edit Mode",
       modifyHTMLSource: "Modify HTML source",
       clickToChange: "Click to change",
       regions: "Available regions",
@@ -152,7 +153,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar>
+      <hax-toolbar always-expanded>
         <div class="group">
           <hax-toolbar-menu
             ?disabled="${
@@ -458,11 +459,26 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             }"
             event-name="hax-transform-node"
           ></hax-context-item>
+            <hax-context-item
+              action
+              label="${this.t.editElement}"
+              ?disabled="${this.viewSource || this.disableOps}"
+              ?hidden="${!this.editElementProperty}"
+              event-name="hax-edit-element-toggle"
+              .eventData="${{
+                target: this.activeNode,
+                editMode: this.editElementProperty,
+              }}"
+              toggles
+              ?toggled="${this.editElementToggled}"
+            ></hax-context-item>
           <hax-context-item
             action
             icon="icons:code"
             label="${this.t.modifyHTMLSource}"
-            ?disabled="${!this.sourceView || this.disableOps}"
+            ?disabled="${
+              !this.sourceView || this.disableOps || this.editElementToggled
+            }"
             event-name="hax-source-view-toggle"
             toggles
             ?toggled="${this.viewSource}"
@@ -575,6 +591,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (propName === "onScreen" && this.onScreen) {
         this._resetCEMenu();
       }
+      if (propName === "activeNode" || propName === "activeEditingElement") {
+        this.activeSchema = HAXStore.activeSchema();
+        this.editElementProperty = this.activeSchema.editElement;
+        this.editElementToggled =
+          this.activeNode &&
+          this.editElementProperty &&
+          !!this.activeNode[this.editElementProperty];
+      }
     });
   }
 
@@ -685,6 +709,15 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       ...super.properties,
       activeTagIcon: {
         type: String,
+      },
+      activeSchema: {
+        type: Object,
+      },
+      editElementProperty: {
+        type: String,
+      },
+      editElementToggled: {
+        type: Boolean,
       },
       activeTagName: {
         type: String,

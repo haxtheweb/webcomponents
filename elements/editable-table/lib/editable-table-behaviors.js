@@ -16,39 +16,7 @@ import { html, css } from "lit";
  * @type {array}
  *
  */
-export const editableTableCellStyles = [
-  css`
-    .cell-button {
-      padding-top: var(--editable-table-cell-vertical-padding, 10px);
-      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
-      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
-      margin: 0;
-      width: 100%;
-      display: flex;
-      justify-content: var(--editable-table-cell-justify, space-between);
-      align-items: center;
-      align-content: stretch;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
-      color: var(--editable-table-cell-color);
-    }
-    .sr-only {
-      position: absolute;
-      left: -9999px;
-      font-size: 0;
-      height: 0;
-      width: 0;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-  `,
-];
+export const editableTableCellStyles = [css``];
 
 /**
  * styling for table
@@ -68,32 +36,11 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-medium-weight, 300);
       color: var(--editable-table-color, #222);
       background-color: var(--editable-table-bg-color, #fff);
-
-      --simple-picker-font-family: var(
-        --editable-table-secondary-font-family,
-        "Roboto",
-        "Noto",
-        sans-serif
-      );
-      --simple-picker-font-size: var(
-        --editable-table-secondary-font-size,
-        12px
-      );
-      --simple-picker-color: var(--editable-table-color, #222);
-      --simple-picker-background-color: var(--editable-table-bg-color, #fff);
-      --paper-font-caption: {
-        font-family: var(
-          --editable-table-secondary-font-family,
-          "Roboto",
-          "Noto",
-          sans-serif
-        );
-      }
     }
     :host([hidden]) {
       display: none;
     }
-    .sr-only {
+    .offscreen {
       position: absolute;
       left: -9999px;
       font-size: 0;
@@ -203,14 +150,6 @@ export const editableTableStyles = [
       color: var(--editable-table-negative-color, red);
       --editable-table-cell-color: var(--editable-table-negative-color, red);
     }
-    editable-table-sort {
-      width: 100%;
-    }
-    button {
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
-    }
     ::slotted(table) {
       display: none;
     }
@@ -236,14 +175,6 @@ export const editableTableStyles = [
 export const editableTableDisplayStyles = [
   ...editableTableStyles,
   css`
-    table[sort] .thead .th,
-    table[filter] .tbody .td,
-    table[filter] .tfoot .td {
-      padding-left: 0;
-      padding-right: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
     caption {
       padding-top: var(--editable-table-cell-vertical-padding, 10px);
       padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
@@ -284,12 +215,6 @@ export const editableTableDisplayStyles = [
       display: block;
     }
     @media screen {
-      :host([responsive][responsive-size="xs"])
-        th:not([cell-index="0"])
-        editable-table-sort {
-        width: calc(100% - 30px);
-        float: left;
-      }
       :host([responsive][responsive-size="xs"]) .column {
         display: inline-flex;
         width: 30px;
@@ -660,6 +585,21 @@ export const displayBehaviors = function (SuperClass) {
         p = l;
       }
       return ret;
+    }
+    /**
+     * makes toggle focusable
+     */
+    focus() {
+      let query =
+          "simple-toolbar-button,rich-text-editor,rich-text-editor-rowcol,editable-table-filter,editable-table-sort",
+        target =
+          this.shadowRoot && this.shadowRoot.querySelector(query)
+            ? this.shadowRoot.querySelector(query)
+            : undefined;
+      if (target)
+        setTimeout(function () {
+          target.focus();
+        }, 0);
     }
     /**
      * gets table CSV as download

@@ -126,7 +126,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(['<span class="sr-only">', "</span>"]);
+  var data = _taggedTemplateLiteral(['<span class="offscreen">', "</span>"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -156,9 +156,9 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <a11y-menu-button\n        id="menubutton" \n        position="',
     '"\n        @open="',
-    '">\n        <span class="sr-only" slot="button">',
+    '">\n        <span class="offscreen" slot="button">',
     '</span>\n        <span id="label" slot="button">',
-    ' </span>\n        <span class="sr-only" slot="button">Menu</span>\n        <simple-icon-lite icon="arrow-drop-down" slot="button"></simple-icon-lite>\n          ',
+    ' </span>\n        <span class="offscreen" slot="button">Menu</span>\n        <simple-icon-lite icon="arrow-drop-down" slot="button"></simple-icon-lite>\n          ',
     " \n          ",
     "\n          ",
     "\n        </ul>\n      </a11y-menu-button>\n    ",

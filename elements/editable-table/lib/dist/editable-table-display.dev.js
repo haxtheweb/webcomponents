@@ -274,7 +274,7 @@ function _templateObject4() {
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '\n                  <button id="print" @click="',
-    '">\n                    <span class="sr-only">Print table.</span>\n                    <simple-icon-lite icon="print"></simple-icon-lite>\n                  </button>\n                  <simple-tooltip\n                    id="print-tooltip"\n                    for="print"\n                    aria-hidden="true"\n                    >Print table.\n                  </simple-tooltip>\n                ',
+    '">\n                    <span class="offscreen">Print table.</span>\n                    <simple-icon-lite icon="print"></simple-icon-lite>\n                  </button>\n                  <simple-tooltip\n                    id="print-tooltip"\n                    for="print"\n                    aria-hidden="true"\n                    >Print table.\n                  </simple-tooltip>\n                ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -287,7 +287,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n                  <button id="download" @click="',
-    '">\n                    <span class="sr-only">Download as CSV.</span>\n                    <simple-icon-lite icon="file-download"></simple-icon-lite>\n                  </button>\n                  <simple-tooltip\n                    id="download-tooltip"\n                    for="download"\n                    aria-hidden="true"\n                    >Download as CSV.\n                  </simple-tooltip>\n                ',
+    '">\n                    <span class="offscreen">Download as CSV.</span>\n                    <simple-icon-lite icon="file-download"></simple-icon-lite>\n                  </button>\n                  <simple-tooltip\n                    id="download-tooltip"\n                    for="download"\n                    aria-hidden="true"\n                    >Download as CSV.\n                  </simple-tooltip>\n                ',
   ]);
 
   _templateObject2 = function _templateObject2() {

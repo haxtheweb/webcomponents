@@ -9,6 +9,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 
 /**
  * `editable-table-editor-filter`
@@ -18,50 +19,55 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @customElement
  * @extends LitElement
  */
-class EditableTableFilter extends LitElement {
+class EditableTableFilter extends SimpleToolbarButtonBehaviors(LitElement) {
   static get styles() {
     return [
       ...(super.styles || []),
       ...editableTableCellStyles,
       css`
-        #filter-off {
-          opacity: 0.25;
+        :host {
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
         }
-        #button {
-          text-align: unset;
+        :host > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
         }
-        :host(:not([filtered])) .filtered,
-        :host(:not([filtered]):not(:focus):not(:hover)) #filter,
-        :host(:not([filtered]):focus) #filter-off,
-        :host(:not([filtered]):hover) #filter-off,
-        :host([filtered]:not(:focus):not(:hover)) #filter-off,
-        :host([filtered]:focus) #filter,
-        :host([filtered]:hover) #filter {
-          display: none;
+        button {
+          flex: 0 0 auto !important;
+          width: auto !important;
+        }
+        #cell {
+          flex: 1 1 auto !important;
+          display: inline-block;
         }
       `,
     ];
   }
   render() {
-    return html`
-      <button id="button" class="cell-button" @click="${this._onFilterClicked}">
-        <span><slot></slot></span>
-        <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
-        <span class="sr-only"> Toggle filter.</span>
-        <simple-icon-lite
-          id="filter"
-          icon="editable-table:filter"
-        ></simple-icon-lite>
-        <simple-icon-lite
-          id="filter-off"
-          icon="editable-table:filter-off"
-        ></simple-icon-lite>
-      </button>
-      <simple-tooltip for="button"
-        >Toggle Column ${this.columnIndex} filter for "<slot
-        ></slot>"</simple-tooltip
-      >
-    `;
+    return html`<div><slot id="cell"></slot>${super.render()}</div> `;
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * Index of column
+       */
+      columnIndex: {
+        type: Number,
+        attribute: "column-index",
+      },
+      /**
+       * Index of column
+       */
+      text: {
+        type: String,
+        attribute: "text",
+      },
+    };
   }
 
   static get tag() {
@@ -72,44 +78,27 @@ class EditableTableFilter extends LitElement {
     this.columnIndex = null;
     this.filtered = false;
     this.text = "";
-  }
-  static get properties() {
-    return {
-      /**
-       * Index of column
-       */
-      columnIndex: {
-        type: Number,
-        attribute: "column-index",
-      },
-      /**
-       * Whether column is filtered
-       */
-      filtered: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Column header text
-       */
-      text: {
-        type: String,
-      },
-    };
+    this.toggles = true;
+    this.icon = "editable-table:filter";
+    this.label = "Toggle filter.";
+    this.tooltip = "Toggle filter for column.";
+    this.describedby = "cell";
   }
 
-  /**
-   * Listens for button click
-   */
-  _getPressed(filtered) {
-    return filtered ? "true" : "false";
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "columnIndex") {
+        this.tooltip = `Toggle Column ${this.columnIndex} filter.`;
+      }
+    });
   }
 
   /**
    * Fires when filter button is clicked
    * @event toggle-filter
    */
-  _onFilterClicked() {
+  _handleClick(e) {
     this.dispatchEvent(
       new CustomEvent("toggle-filter", {
         bubbles: true,

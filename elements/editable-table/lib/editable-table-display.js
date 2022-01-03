@@ -9,6 +9,7 @@ import {
 } from "./editable-table-behaviors.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 
 /**
  * `editable-table-display`
@@ -32,6 +33,26 @@ class EditableTableDisplay extends displayBehaviors(
         :host([hidden]),
         :host([disabled]) {
           display: none !important;
+        }
+        [part="caption"] simple-toolbar-button {
+          --simple-toolbar-button-bg: var(--editable-table-bg-color, #fff);
+          --simple-toolbar-button-toggled-bg: var(
+            --editable-table-stripe-bg-color,
+            #f0f0f0
+          );
+          --simple-toolbar-button-hover-bg: var(
+            --editable-table-bg-color,
+            #fff
+          );
+          --simple-toolbar-button-border-color: var(
+            --editable-table-border-color,
+            #999
+          );
+          --simple-toolbar-button-toggled-border-color: var(
+            --editable-table-color,
+            #222
+          );
+          --simple-toolbar-button-hover-border-color: unset;
         }
       `,
     ];
@@ -61,30 +82,24 @@ class EditableTableDisplay extends displayBehaviors(
               ${!this.downloadable
                 ? ""
                 : html`
-                    <button id="download" @click="${this.download}">
-                      <span class="sr-only">Download as CSV.</span>
-                      <simple-icon-lite icon="file-download"></simple-icon-lite>
-                    </button>
-                    <simple-tooltip
-                      id="download-tooltip"
-                      for="download"
-                      aria-hidden="true"
-                      >Download as CSV.
-                    </simple-tooltip>
+                    <simple-toolbar-button
+                      id="download"
+                      icon="file-download"
+                      label="Download as CSV."
+                      @click="${this.download}"
+                    >
+                    </simple-toolbar-button>
                   `}
               ${!this.printable
                 ? ""
                 : html`
-                    <button id="print" @click="${this.print}">
-                      <span class="sr-only">Print table.</span>
-                      <simple-icon-lite icon="print"></simple-icon-lite>
-                    </button>
-                    <simple-tooltip
-                      id="print-tooltip"
-                      for="print"
-                      aria-hidden="true"
-                      >Print table.
-                    </simple-tooltip>
+                    <simple-toolbar-button
+                      id="print"
+                      icon="print"
+                      label="Print Table"
+                      @click="${this.print}"
+                    >
+                    </simple-toolbar-button>
                   `}
             </div>
           </div>
@@ -252,7 +267,6 @@ class EditableTableDisplay extends displayBehaviors(
         !this.disabled
       ) {
         this.toggleFilter();
-        this.focus();
       }
     });
   }
@@ -317,7 +331,7 @@ class EditableTableDisplay extends displayBehaviors(
       this.filterText = undefined;
       this.filterColumn = undefined;
     } else {
-      this.filterText = e.detail.innerHTML;
+      this.filterText = e.detail.text;
       this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }
@@ -464,7 +478,8 @@ class EditableTableDisplay extends displayBehaviors(
             <editable-table-filter
               class="cell"
               column-index="${index}"
-              ?filtered="${this._isCellFiltered(
+              text="${this._replaceBlankCell(cell)}"
+              ?toggled="${this._isCellFiltered(
                 index,
                 this.filterColumn,
                 this.filtered
