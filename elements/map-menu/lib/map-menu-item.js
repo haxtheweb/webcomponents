@@ -189,15 +189,18 @@ class MapMenuItem extends I18NMixin(LitElement) {
       },
       active: {
         type: Boolean,
+        reflect: true,
       },
       selected: {
         type: String,
       },
       published: {
         type: Boolean,
+        reflect: true,
       },
       locked: {
         type: Boolean,
+        reflect: true,
       },
       status: {
         type: String,

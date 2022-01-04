@@ -879,24 +879,33 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _handleDeleteResponse(response) {
+    // this will force ID to update and avoid a page miss
+    // when we deleted the node
+    window.history.pushState({}, null, store.fallbackItemSlug());
+    // show message
+    let title = this.__deleteNodeResponse.title || "";
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       composed: true,
       cancelable: true,
       detail: {
-        text: `Deleted ${this.__deleteNodeResponse.title}`,
+        text: `Page deleted ${title}`,
         duration: 2000,
       },
     });
     this.dispatchEvent(evt);
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      })
-    );
+    // delay ensures the fallback has been moved to prior to
+    // rebuild of the manifest which should be lacking the deleted ID
+    setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        })
+      );
+    }, 0);
   }
   /**
    * Establish certain global settings in HAX once it claims to be ready to go

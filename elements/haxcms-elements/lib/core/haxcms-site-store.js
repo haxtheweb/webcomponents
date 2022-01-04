@@ -600,6 +600,26 @@ class Store {
     return null;
   }
   /**
+   * return a fallback item because we just got a miss.
+   * usually to avoid redirect loops
+   */
+  fallbackItemSlug() {
+    if (this.manifest && this.activeItem) {
+      if (
+        this.activeManifestIndex > 0 &&
+        this.manifest.items[this.activeManifestIndex - 1]
+      ) {
+        return this.manifest.items[this.activeManifestIndex - 1].slug;
+      } else if (
+        this.activeManifestIndex < this.manifest.items.length - 1 &&
+        this.manifest.items[this.activeManifestIndex + 1]
+      ) {
+        return this.manifest.items[this.activeManifestIndex + 1].slug;
+      }
+    }
+    return null;
+  }
+  /**
    * Return a clone of the manifest items list
    */
   getManifestItems(cloneIt = true) {
