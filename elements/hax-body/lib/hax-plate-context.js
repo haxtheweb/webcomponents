@@ -593,7 +593,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       }
       if (propName === "activeNode" || propName === "activeEditingElement") {
         this.activeSchema = HAXStore.activeSchema();
-        this.editElementProperty = this.activeSchema.editElement;
+        this.editElementProperty =
+          this.activeSchema && this.activeSchema.editElement
+            ? this.activeSchema.editElement
+            : false;
         this.editElementToggled =
           this.activeNode &&
           this.editElementProperty &&

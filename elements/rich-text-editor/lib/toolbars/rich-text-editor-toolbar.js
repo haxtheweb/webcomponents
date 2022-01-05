@@ -1389,7 +1389,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target);
       if (!!target) {
         let oldTarget = this.target;
-        if (oldTarget.getAttribute("role") == "textbox")
+        if (oldTarget && oldTarget.getAttribute("role") == "textbox")
           oldTarget.removeAttribute("role");
         target.setAttribute("role", "textbox");
         if (oldTarget !== target) {
