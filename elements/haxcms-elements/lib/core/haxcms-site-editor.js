@@ -368,33 +368,35 @@ class HAXCMSSiteEditor extends LitElement {
 
   __deleteNodeResponseChanged(e) {
     // show message
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: `Page deleted ${e.detail.value.data.title}, selecting another page`,
-        duration: 4000,
-      },
-    });
-    this.dispatchEvent(evt);
+    if (e.detail.value && e.detail.value.data && e.detail.value.data.title) {
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: `Page deleted ${e.detail.value.data.title}, selecting another page`,
+          duration: 4000,
+        },
+      });
+      this.dispatchEvent(evt);
+    }
   }
 
   __createNodeResponseChanged(e) {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       window.history.pushState({}, null, e.detail.value.data.slug);
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: `Created ${e.detail.value.data.title}!`,
+          duration: 3000,
+        },
+      });
+      window.dispatchEvent(evt);
     }
-
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: `Created ${e.detail.value.data.title}!`,
-        duration: 2000,
-      },
-    });
   }
 
   _handleUserDataResponse(e) {
@@ -855,7 +857,6 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   _handleCreateResponse(response) {
-    window.dispatchEvent(evt);
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
