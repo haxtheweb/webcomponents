@@ -34,7 +34,7 @@ class A11yMediaYoutube extends LitElement {
 
   //render function
   render() {
-    return html``;
+    return html`<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
