@@ -34,7 +34,7 @@ class A11yMediaYoutube extends LitElement {
 
   //render function
   render() {
-    return html` <slot></slot> `;
+    return html``;
   }
 
   // properties available to the custom element for data binding
@@ -549,6 +549,7 @@ class A11yMediaYoutube extends LitElement {
         }
         this._handleMediaStateChange(e);
       });
+      this.innerHTML = "";
       this.appendChild(youtube.getIframe());
       div.remove();
     }
