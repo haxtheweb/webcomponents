@@ -116,7 +116,7 @@ class HAXCMSSiteEditor extends LitElement {
         .method="${this.method}"
         content-type="application/json"
         handle-as="json"
-        @response="${this._handleNodeResponse}"
+        @last-response-changed="${this._handleNodeResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
@@ -367,11 +367,34 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   __deleteNodeResponseChanged(e) {
-    this.__deleteNodeResponse = e.detail.value;
+    // show message
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: `Page deleted ${e.detail.value.data.title}, selecting another page`,
+        duration: 4000,
+      },
+    });
+    this.dispatchEvent(evt);
   }
 
   __createNodeResponseChanged(e) {
-    this.__createNodeResponse = e.detail.value;
+    // sanity check we have a slug, move to this page that we just made
+    if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
+      window.history.pushState({}, null, e.detail.value.data.slug);
+    }
+
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: `Created ${e.detail.value.data.title}!`,
+        duration: 2000,
+      },
+    });
   }
 
   _handleUserDataResponse(e) {
@@ -832,15 +855,6 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   _handleCreateResponse(response) {
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: `Created ${this.__createNodeResponse.title}!`,
-        duration: 2000,
-      },
-    });
     window.dispatchEvent(evt);
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -881,19 +895,7 @@ class HAXCMSSiteEditor extends LitElement {
   _handleDeleteResponse(response) {
     // this will force ID to update and avoid a page miss
     // when we deleted the node
-    window.history.pushState({}, null, store.fallbackItemSlug());
-    // show message
-    let title = this.__deleteNodeResponse.title || "";
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: `Page deleted ${title}`,
-        duration: 2000,
-      },
-    });
-    this.dispatchEvent(evt);
+    window.history.replaceState({}, null, store.fallbackItemSlug());
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
@@ -905,7 +907,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         })
       );
-    }, 0);
+    }, 100);
   }
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -988,24 +990,12 @@ class HAXCMSSiteEditor extends LitElement {
     // node response may include the item that got updated
     // it also may be a new path so let's ensure that's reflected
     if (
-      typeof e.detail.slug !== "undefined" &&
-      this.activeItem.slug !== e.detail.slug
+      e.detail.value &&
+      e.detail.value.data &&
+      e.detail.value.data.slug &&
+      this.activeItem.slug !== e.detail.value.data.slug
     ) {
-      window.location(e.detail.slug);
-      window.history.pushState({}, null, e.detail.slug);
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      const active = this.manifest.items.find((i) => {
-        return i.id === e.detail.id;
-      });
-      this.activeItem = active;
-      this.dispatchEvent(
-        new CustomEvent("json-outline-schema-active-item-changed", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: active,
-        })
-      );
+      window.history.replaceState({}, null, e.detail.value.data.slug);
     }
 
     const evt = new CustomEvent("simple-toast-show", {
@@ -1014,7 +1004,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Page saved!",
-        duration: 2000,
+        duration: 3000,
       },
     });
     window.dispatchEvent(evt); // updates the manifest
@@ -1046,7 +1036,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Outline saved!",
-        duration: 2000,
+        duration: 3000,
       },
     });
     setTimeout(() => {
@@ -1071,7 +1061,7 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           text: "Site details saved, reloading to reflect changes!",
-          duration: 3000,
+          duration: 2000,
         },
       })
     );
