@@ -390,7 +390,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
           );
         }
         this.__toolbar = toolbar;
-        if (!this.disabled && this.__toolbar) this.__toolbar.setTarget(this);
+        if (!this.disabled && this.__toolbar && this.__toolbar.setTarget)
+          this.__toolbar.setTarget(this);
       }
     }
   };
