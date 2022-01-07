@@ -39,6 +39,7 @@ class CodeSample extends LitElement {
     this.theme = oneDark;
     this.type = "html";
     this.copyClipboardButton = false;
+    console.log(this.innerHTML);
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

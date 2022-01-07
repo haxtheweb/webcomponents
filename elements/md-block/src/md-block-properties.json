@@ -1,9 +1,0 @@
-{
-  "source": {
-    "type": String
-  },
-  "markdown": {
-    "type": String,
-    "attribute": false
-  }
-}
