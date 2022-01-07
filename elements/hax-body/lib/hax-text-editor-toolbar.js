@@ -131,6 +131,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       boldButton: "Bold",
       underlineButton: "Underline",
       strikethroughButton: "Cross out",
+      codeButton: "Code",
       removeFormatButton: "Remove format",
       linkButton: "Link",
       unlinkButton: "Remove Link",
@@ -267,6 +268,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     };
   }
   /**
+   * default config for a <code></code> button
+   *
+   * @readonly
+   */
+  get codeButton() {
+    return {
+      ...super.codeButton,
+      icon: "hax:html-code",
+      label: this.t.codeButton,
+    };
+  }
+  /**
    * default config for a remove format button
    *
    * @readonly
@@ -286,7 +299,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       type: "button-group",
       subtype: "advanced-inline-button-group",
-      buttons: [this.underlineButton, this.strikethroughButton],
+      buttons: [
+        this.underlineButton,
+        this.strikethroughButton,
+        this.codeButton,
+      ],
     };
   }
   /**

@@ -221,6 +221,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a remove format button
+     *
+     * @readonly
+     */
+    get codeButton() {
+      return {
+        command: "wrapRange",
+        commandVal: "CODE",
+        toggles: true,
+        label: "Code",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
      * default config for a style button group: format, bold, italic, and remove format
      *
      * @readonly
@@ -911,7 +925,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "range") this._rangeChanged();
+        if (propName === "range") this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();
         if (["editor", "show", "range"].includes(propName))
@@ -1062,14 +1076,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     updateRange(target, range = this.range) {
       if (!target) return;
       if (!target.range) target.range = range;
-      this.range = target.range;
     }
     /**
      * updates buttons and fires when rane changes
      * @event range-changed
      * @param {event} e
      */
-    _rangeChanged(e) {
+    _rangeChanged(newValue, oldValue) {
       this._updateButtonRanges();
       this.dispatchEvent(
         new CustomEvent("range-changed", {
@@ -1224,6 +1237,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         keydown: this._removeHighlight.bind(this),
         keypress: this._handleTargetKeypress.bind(this),
         mousedown: this._removeHighlight.bind(this),
+        mouseup: this._addHighlight.bind(this),
       };
     }
     /**
@@ -1275,7 +1289,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.observeChanges(true);
 
         this.getRoot(target).onselectionchange = (e) => {
-          if (!this.__promptOpen) this.updateRange(target);
+          if (!this.__promptOpen) this.updateRange(target, this.getRange());
         };
 
         this.dispatchEvent(
@@ -1386,9 +1400,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         : "";
     }
     setTarget(target) {
-      let handlers = this.targetHandlers(target);
+      let handlers = this.targetHandlers(target),
+        oldTarget = this.target;
       if (!!target) {
-        let oldTarget = this.target;
         if (oldTarget && oldTarget.getAttribute("role") == "textbox")
           oldTarget.removeAttribute("role");
         target.setAttribute("role", "textbox");
@@ -1398,7 +1412,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             target.addEventListener(handler, handlers[handler])
           );
           this.getRoot(target).onselectionchange = (e) => {
-            if (!this.__promptOpen) this.updateRange(target);
+            if (!this.__promptOpen) this.updateRange(target, this.getRange());
           };
           this.target = target;
           this.enableEditing(target);
@@ -1409,8 +1423,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.buttons.forEach((button) => {
         if (button.command !== "close") button.disabled = !this.target;
       });
-      this.range = undefined;
-      this._rangeChanged();
+      if (target !== oldTarget) {
+        this.range = undefined;
+        this._rangeChanged();
+      }
     }
     unsetTarget(target = this.target) {
       let handlers = this.targetHandlers(target);
@@ -1485,14 +1501,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           if (matched) return;
           let tagname = (target.tagName || "").toLowerCase();
           if (tagname && els.includes(tagname)) {
-            console.log(
-              "!!!!!",
-              tagname,
-              target,
-              { ...e, detail: target, eventPath: eventPath },
-              els,
-              this.clickableElements[tagname]
-            );
             matched = true;
             e.preventDefault();
             this.clickableElements[tagname].tagClickCallback({
