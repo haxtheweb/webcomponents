@@ -85,6 +85,27 @@ class HAX extends HTMLElement {
       line-height: var(--hax-base-styles-p-line-height);
       letter-spacing: var(--hax-base-styles-p-letter-spacing);
     }
+    hax-body p code {
+      padding: 0.2em 0.4em;
+      margin: 0;
+      font-size: 12px;
+      background-color: var(--hax-base-styles-code-background-color,rgba(175, 184, 193, 0.2));
+      border-radius: 6px;
+      font-family: var(--hax-base-styles-code-font-family, ui-monospace,monospace);
+    }
+    hax-body pre {
+      padding: 16px;
+      overflow: auto;
+      line-height: 1.45;
+      background-color: var(--hax-base-styles-pre-background-color,rgba(175, 184, 193, 0.2));
+      border-radius: 6px;
+      margin-bottom: 0;
+      word-break: normal;
+      word-wrap: normal;
+      margin-top: 0;
+      font-family: var(--hax-base-styles-pre-font-family, ui-monospace,monospace);
+      font-size: 12px;
+    }
 
     hax-body a,
     hax-body a:-webkit-any-link,

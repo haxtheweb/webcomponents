@@ -144,6 +144,41 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) ul {
           list-style-type: disc;
         }
+        :host([edit-mode]) code {
+          padding: 0.2em 0.4em;
+          margin: 0;
+          font-size: 12px;
+          background-color: var(
+            --hax-base-styles-code-background-color,
+            rgba(175, 184, 193, 0.2)
+          );
+          border-radius: 6px;
+          font-family: var(
+            --hax-base-styles-code-font-family,
+            ui-monospace,
+            monospace
+          );
+        }
+        :host([edit-mode]) pre {
+          padding: 16px;
+          overflow: auto;
+          line-height: 1.45;
+          background-color: var(
+            --hax-base-styles-pre-background-color,
+            rgba(175, 184, 193, 0.2)
+          );
+          border-radius: 6px;
+          margin-bottom: 0;
+          word-break: normal;
+          word-wrap: normal;
+          margin-top: 0;
+          font-family: var(
+            --hax-base-styles-pre-font-family,
+            ui-monospace,
+            monospace
+          );
+          font-size: 12px;
+        }
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
