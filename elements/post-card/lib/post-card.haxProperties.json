@@ -1,0 +1,65 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Post Card",
+    "description": "A playful media piece meant to look like a physical post card from somewhere",
+    "icon": "credit-card",
+    "color": "blue",
+    "groups": ["Content", "Fun"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "To",
+        "description": "Who is this going to?",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "from",
+        "title": "From",
+        "description": "Who are you?",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "message",
+        "title": "Message",
+        "description": "What do you want to say?",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "post-mark-locations",
+        "title": "Postmarked From",
+        "description": "Where did this card get sent from?",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Main Photo Source",
+        "description": "Where is your photo located?",
+        "inputMethod": "fileupload"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Stamp Photo Source",
+        "description": "Where is your photo located?",
+        "inputMethod": "fileupload"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "post-card",
+      "properties": {
+        "to": "the future",
+        "from": "the past",
+        "message": "How I met your mother",
+        "photoSrc": "http://media.liveauctiongroup.net/i/11189/11535427_1.jpg?v=8CE770C8F1EEC60",
+        "stampSrc": "https://gisuser.com/wp-content/uploads/2018/08/2000px-Amazon_Web_Services_Logo.svg_.png"
+      }
+    }
+  ]
+}
