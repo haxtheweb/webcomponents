@@ -1530,6 +1530,7 @@
   "autoloader": {
     "course-intro": "@lrnwebcomponents/course-design/lib/course-intro.js",
     "page-break": "@lrnwebcomponents/page-break/page-break.js",
+    "post-card": "@lrnwebcomponents/post-card/post-card.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
     "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",

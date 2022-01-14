@@ -17,6 +17,12 @@ import { LitElement, html, css } from "lit";
  * @demo demo/index.html
  * @element post-card
  */
+const postCardLines = new URL(
+  `./lib/assets/postcard-lines.png`,
+  import.meta.url
+).href;
+const entireCardBg = new URL(`./lib/assets/postcard-bg.jpg`, import.meta.url)
+  .href;
 export class PostCard extends LitElement {
   static get tag() {
     return "post-card";
@@ -30,11 +36,11 @@ export class PostCard extends LitElement {
       receive: "From",
     };
     this.photoSrc = new URL(
-      `./assets/postcard-photo-stock.jpg`,
+      `./lib/assets/postcard-photo-stock.jpg`,
       import.meta.url
     ).href;
     this.stampSrc = new URL(
-      `./assets/postcard-stamp-stock.jpg`,
+      `./lib/assets/postcard-stamp-stock.jpg`,
       import.meta.url
     ).href;
     this.postMarkLocations = "insert - locations - here";
@@ -95,7 +101,6 @@ export class PostCard extends LitElement {
       .entireCard {
         height: calc(var(--width-body) * (2 / 3));
         width: var(--width-body);
-        background-image: url(assets/postcard-bg.jpg);
         background-color: rgb(246, 240, 232);
         border: 1px solid lightgrey;
         box-shadow: grey 3px 3px 3px;
@@ -298,10 +303,10 @@ export class PostCard extends LitElement {
    */
   render() {
     return html`
-      <div class="entireCard">
+      <div class="entireCard" style="background-image: url(${entireCardBg});">
         <div class="backgroundLines">
           <h2 class="label">${this.t.label}</h2>
-          <img alt="" src="assets/postcard-lines.png" />
+          <img loading="lazy" alt="" src="${postCardLines}" />
         </div>
         <div class="foregroundElements">
           <div class="postage">
@@ -343,7 +348,7 @@ export class PostCard extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`../lib/post-card.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/post-card.haxProperties.json`, import.meta.url).href;
   }
 }
 

@@ -1,17 +1,14 @@
-/* eslint-disable no-unused-vars */
-import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
+import { LitElement, html, css } from "lit";
 
-export class PostCardPostmark extends SimpleColors {
+export class PostCardPostmark extends LitElement {
   constructor() {
     super();
-    this.accentColor = "grey";
     this.image = new URL(
-      "../assets/postcard-postmark.svg",
+      "./assets/postcard-postmark.svg",
       import.meta.url
     ).href;
-    this.alt = "Post Mark";
-    this.locations = "insert - locations - here";
+    this.alt = "";
+    this.locations = "";
   }
 
   static get tag() {
@@ -20,7 +17,6 @@ export class PostCardPostmark extends SimpleColors {
 
   static get properties() {
     return {
-      ...super.properties,
       image: { type: String },
       alt: { type: String },
       locations: { type: String },
@@ -29,15 +25,13 @@ export class PostCardPostmark extends SimpleColors {
 
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
-          --img-width: 250px;
+          --post-card-img-width: 250px;
           font-family: "Bebas Neue", sans-serif;
         }
         div {
-          width: var(--img-width);
-          /* border: 1px dashed black; */
+          width: var(--post-card-img-width);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -45,16 +39,16 @@ export class PostCardPostmark extends SimpleColors {
           opacity: 0.8;
         }
         img {
-          width: var(--img-width);
-          height: calc(var(--img-width) * (1 / 3));
+          width: var(--post-card-img-width);
+          height: calc(var(--post-card-img-width) * (1 / 3));
           filter: invert(62%) sepia(0%) saturate(329%) hue-rotate(162deg)
             brightness(98%) contrast(95%); /* created using: https://codepen.io/sosuke/pen/Pjoqqp */
         }
         p {
-          width: var(--img-width);
+          width: var(--post-card-img-width);
           text-transform: uppercase;
           text-align: center;
-          color: var(--simple-colors-default-theme-accent-6);
+          color: black;
           margin: 0px;
           font-size: 16px;
           letter-spacing: 2px;
@@ -68,7 +62,7 @@ export class PostCardPostmark extends SimpleColors {
   render() {
     return html`
       <div>
-        <img src="${this.image}" alt="${this.alt}" />
+        <img loading="lazy" src="${this.image}" alt="${this.alt}" />
         <p>${this.locations}</p>
       </div>
     `;

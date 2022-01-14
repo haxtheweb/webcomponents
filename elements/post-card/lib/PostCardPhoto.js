@@ -2,8 +2,11 @@
 import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 
-const tape = new URL("../assets/postcard-tape.png", import.meta.url).href;
-
+const tape = new URL("./assets/postcard-tape.png", import.meta.url).href;
+const PostCardPhotoShadow = new URL(
+  "./assets/postcard-photo-shadow.png",
+  import.meta.url
+).href;
 export class PostCardPhoto extends SimpleColors {
   constructor() {
     super();
@@ -29,7 +32,7 @@ export class PostCardPhoto extends SimpleColors {
       ...super.styles,
       css`
         :host {
-          --img-width: 340px;
+          --post-card-img-width: 340px;
         }
 
         div {
@@ -46,16 +49,16 @@ export class PostCardPhoto extends SimpleColors {
         }
 
         .cardShadow {
-          width: calc(var(--img-width) * 1.05);
-          height: calc(var(--img-width) * 0.78);
+          width: calc(var(--post-card-img-width) * 1.05);
+          height: calc(var(--post-card-img-width) * 0.78);
           z-index: 2;
           opacity: 0.5;
           transform: translate(1%, 1.5%) rotate(0.5deg);
         }
 
         .cardImage {
-          width: var(--img-width);
-          height: calc(var(--img-width) * 0.7);
+          width: var(--post-card-img-width);
+          height: calc(var(--post-card-img-width) * 0.7);
           z-index: 2;
           transform: rotate(-3deg);
           border-radius: 5px 5px 0px 5px;
@@ -63,7 +66,7 @@ export class PostCardPhoto extends SimpleColors {
 
         .cardTape {
           width: auto;
-          height: calc(var(--img-width) * 0.8);
+          height: calc(var(--post-card-img-width) * 0.8);
           z-index: 3;
         }
       `,
@@ -74,12 +77,18 @@ export class PostCardPhoto extends SimpleColors {
     return html`
       <div>
         <img
-          src="../assets/postcard-photo-shadow.png"
+          loading="lazy"
+          src="${PostCardPhotoShadow}"
           alt=""
           class="cardShadow"
         />
-        <img src="${this.image}" alt="${this.alt}" class="cardImage" />
-        <img src="${tape}" alt="" class="cardTape" />
+        <img
+          loading="lazy"
+          src="${this.image}"
+          alt="${this.alt}"
+          class="cardImage"
+        />
+        <img loading="lazy" src="${tape}" alt="" class="cardTape" />
       </div>
     `;
   }

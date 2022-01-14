@@ -2017,6 +2017,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
   /**
    * Build HAX property definitions for primitives that we support.
+   * @note if someone wants to MANUALLY inject definitions similar
+   * to how this is doing so they can with this hack from a global
+   * application context. This is going to inject a definition
+   * at run time that's for a theoretical tag defined with this
+   * but that hasn't been used yet.
+    window.addEventListener("hax-store-ready", function(e) {
+        setTimeout(() => {
+          window.HaxStore.requestAvailability().setHaxProperties(window.customElements.get('instruction-card').haxProperties, 'instruction-card');
+        }, 1000);
+      }); 
+    });
    */
   _buildPrimitiveDefinitions() {
     // sandboxes need a webview definition

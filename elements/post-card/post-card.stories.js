@@ -1,6 +1,6 @@
-import { html } from "lit";
+/*import { html } from "lit";
 
-import "../post-card.js";
+import "./post-card.js";
 
 export default {
   title: "Post Card",
@@ -47,3 +47,4 @@ ExampleCard.args = {
   location: "Philly",
   message: "Have you seen Grim recently?",
 };
+*/

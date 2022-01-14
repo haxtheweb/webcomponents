@@ -1,11 +1,11 @@
-/* eslint-disable no-unused-vars */
-import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
-
-export class PostCardStamp extends SimpleColors {
+import { LitElement, html, css } from "lit";
+const postCardStampBg = new URL(
+  "./assets/postcard-stamp-bg.png",
+  import.meta.url
+).href;
+export class PostCardStamp extends LitElement {
   constructor() {
     super();
-    this.accentColor = "grey";
     this.image = new URL(this.image, import.meta.url).href;
   }
 
@@ -15,17 +15,15 @@ export class PostCardStamp extends SimpleColors {
 
   static get properties() {
     return {
-      ...super.properties,
       image: { type: String, reflect: true },
     };
   }
 
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
-          --img-width: 100px;
+          --post-card-img-width: 100px;
         }
 
         div {
@@ -39,16 +37,16 @@ export class PostCardStamp extends SimpleColors {
           justify-content: center;
         }
         .stampImage {
-          width: var(--img-width);
-          height: calc(var(--img-width) * 1.25);
+          width: var(--post-card-img-width);
+          height: calc(var(--post-card-img-width) * 1.25);
           justify-self: center;
           padding-top: 10px;
           transform: rotate(1.5deg);
           z-index: 3;
         }
         .stampBackground {
-          width: calc(var(--img-width) + 20px);
-          height: calc(var(--img-width) * 1.25 + 20px);
+          width: calc(var(--post-card-img-width) + 20px);
+          height: calc(var(--post-card-img-width) * 1.25 + 20px);
           z-index: 2;
         }
       `,
@@ -59,11 +57,12 @@ export class PostCardStamp extends SimpleColors {
     return html`
       <div>
         <img
-          src="../assets/postcard-stamp-bg.png"
+          loading="lazy"
+          src="${postCardStampBg}"
           alt=""
           class="stampBackground"
         />
-        <img src="${this.image}" alt="" class="stampImage" />
+        <img loading="lazy" src="${this.image}" alt="" class="stampImage" />
       </div>
     `;
   }
