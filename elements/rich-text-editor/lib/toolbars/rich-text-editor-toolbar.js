@@ -1389,7 +1389,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target);
       if (!!target) {
         let oldTarget = this.target;
-        if (oldTarget.getAttribute("role") == "textbox")
+        if (oldTarget && oldTarget.getAttribute("role") == "textbox")
           oldTarget.removeAttribute("role");
         target.setAttribute("role", "textbox");
         if (oldTarget !== target) {
@@ -1445,6 +1445,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         dblclick: (e) => this._handleTargetClick(target, e),
         focus: (e) => this._handleTargetFocus(target, e),
         keydown: (e) => this._handleShortcutKeys(e),
+        keyup: (e) => this._handleMarkdown(e),
         paste: (e) => this._handlePaste(e),
       };
     }
@@ -1508,6 +1509,134 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _handleTargetFocus(target, e) {
       if (!this.__promptOpen && !target.disabled) this.setTarget(target);
+    }
+
+    get defaultRegexes() {
+      return [
+        {
+          match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
+          selectMatch: "0",
+          replaceWith: "2",
+          command: "bold",
+          excludeAncestors: ["b", "strong"],
+          lastKeys: ["*", "_"],
+        },
+        {
+          match: /([^\*]|^)((\*)([^\*]+|[^\*]*\*{2}[^\*]+\*{2}[^\*]*)(\*)(?!\*[^\*]))/,
+          selectMatch: "1",
+          replaceWith: "3",
+          command: "italic",
+          excludeAncestors: ["em", "i"],
+          lastKeys: ["*"],
+        },
+        {
+          match: /([^_]|^)((_)([^_]+|[^_]*_{2}[^_]+_{2}[^_]*)(_)(?!\*[^\*]))/,
+          selectMatch: "1",
+          replaceWith: "3",
+          command: "italic",
+          excludeAncestors: ["em", "i"],
+          lastKeys: ["*"],
+        },
+        {
+          match: /(`{3})((`(?!``))?([^`]|`(?!``))+`{0,2})\1/,
+          selectMatch: "0",
+          replaceWith: "2",
+          command: "formatBlock",
+          commandVal: "pre",
+          excludeAncestors: ["pre", "code"],
+          lastKeys: ["`"],
+        },
+        {
+          match: /([^`]|^)(`([^`\n]+)`[^`]*(?!`{3}))/,
+          selectMatch: "1",
+          replaceWith: "3",
+          command: "formatInline",
+          commandVal: "code",
+          excludeAncestors: ["pre", "code"],
+          lastKeys: ["`"],
+        },
+      ];
+    }
+
+    get regexesByLastKey() {
+      let regexes = {};
+      this.defaultRegexes.forEach((regex) => {
+        let keys =
+          !regex.lastKeys || regex.lastKeys.length == 0 ? [""] : regex.lastKeys;
+        keys.forEach((key) => {
+          regexes[key] = regexes[key] || [];
+          regexes[key].push(regex);
+        });
+      });
+      return regexes;
+    }
+
+    _handleMarkdown(e) {
+      let range = this.getRange(),
+        node = range ? range.commonAncestorContainer : false,
+        text = node && node.nodeType === 3 ? node.textContent : false,
+        keep =
+          text && text.substring
+            ? text.substring(this.range.startOffset)
+            : false,
+        snippet = text ? text.substring(0, this.range.startOffset) : false,
+        stub = document.createElement("div"),
+        found = false,
+        regexes = [
+          ...(this.regexesByLastKey[e.key] || []),
+          this.regexesByLastKey[""] || [],
+        ];
+
+      regexes.forEach((regex) => {
+        if (found) return;
+        let excluded = (regex.excludeAncestors || []).join(),
+          exclude =
+            node && excluded.length > 0
+              ? this.rangeOrMatchingAncestor(excluded, range)
+              : false,
+          match =
+            snippet && regex.match && !exclude
+              ? snippet.match(regex.match)
+              : false,
+          selection =
+            match && regex.selectMatch ? match[regex.selectMatch] : false,
+          replacement =
+            match && regex.replaceWith ? match[regex.replaceWith] : false;
+
+        if (match) {
+          let startContainer = range.startContainer,
+            startOffset = range.startOffset - selection.length;
+          range.setStart(startContainer, startOffset);
+          this._handleCommand("insertHTML", replacement, range);
+          console.log({
+            range: range,
+            node: node,
+            text: text,
+            keep: keep,
+            snippet: snippet,
+            found: found,
+            regexes: this.regexesByLastKey,
+            regex: regex,
+            excluded: excluded,
+            exclude: exclude,
+            match: match,
+            selection: selection,
+            replacement: replacement,
+          });
+          range.setStart(startContainer, startOffset);
+          console.log(range, this.debugRange(range));
+          if (regex.command)
+            this._handleCommand(regex.command, regex.commandVal, range);
+          range.collapse();
+          console.log(range, this.debugRange(range));
+          if (regex.command)
+            this._handleCommand(regex.command, regex.commandVal, range);
+          found = true;
+        } else {
+          this.__prevKey = e.key;
+        }
+        stub.remove();
+      });
     }
 
     _handleTargetKeypress(e) {
