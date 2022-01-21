@@ -264,13 +264,19 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     }
     debugRange(range = this.getRange()) {
       let contents =
-        !range || range.collapsed || !range.cloneContents
-          ? false
-          : range.cloneContents();
+          !range || range.collapsed || !range.cloneContents
+            ? false
+            : range.cloneContents(),
+        ancestor = !range ? false : range.commonAncestorContainer,
+        siblings = !ancestor ? [] : ancestor.children,
+        ancestorHTML = !ancestor ? "" : ancestor.innerHTML;
       return {
         range: range,
         contents: contents,
+        html: contents.innerHTML,
         text: !contents ? false : contents.textContent,
+        siblngs: siblings,
+        ancestorHTML: ancestorHTML,
       };
     }
     /**
