@@ -843,6 +843,8 @@ class HAXCMSSiteEditor extends LitElement {
       reqBody.site = {
         name: this.manifest.metadata.site.name,
       };
+      // store who sent this in-case of multiple instances
+      this._originalTarget = e.detail.originalTarget;
       this.querySelector("#createajax").body = reqBody;
       this.querySelector("#createajax").generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
@@ -869,7 +871,10 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true,
+        detail: {
+          value: true,
+          originalTarget: this._originalTarget,
+        },
       })
     );
   }
