@@ -838,13 +838,12 @@ class HAXCMSSiteEditor extends LitElement {
 
   createNode(e) {
     if (e.detail.values) {
-      this.querySelector("#createajax").body = {
-        jwt: this.jwt,
-        site: {
-          name: this.manifest.metadata.site.name,
-        },
-        node: e.detail.values,
+      var reqBody = e.detail.values;
+      reqBody.jwt = this.jwt;
+      reqBody.site = {
+        name: this.manifest.metadata.site.name,
       };
+      this.querySelector("#createajax").body = reqBody;
       this.querySelector("#createajax").generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -859,6 +858,14 @@ class HAXCMSSiteEditor extends LitElement {
   _handleCreateResponse(response) {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      })
+    );
+    this.dispatchEvent(
+      new CustomEvent("haxcms-create-node-success", {
         bubbles: true,
         composed: true,
         cancelable: false,
