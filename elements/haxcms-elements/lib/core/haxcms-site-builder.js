@@ -202,6 +202,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * life cycle updated
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     // track these so we can debounce if multiple values updated at once
     let loadOutline = false;
     let loadPage = false;

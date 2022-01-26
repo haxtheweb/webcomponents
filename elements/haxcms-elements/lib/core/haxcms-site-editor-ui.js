@@ -54,6 +54,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([dashboard-opened]) #deletebutton,
         :host([dashboard-opened]) #addbutton,
         :host([dashboard-opened]) #addbuttonchild,
+        :host([dashboard-opened]) #duplicatebutton,
         :host([dashboard-opened]) #outlinebutton {
           display: none !important;
         }
@@ -129,6 +130,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([edit-mode]) #deletebutton,
         :host([edit-mode]) #addbutton,
         :host([edit-mode]) #addbuttonchild,
+        :host([edit-mode]) #duplicatebutton,
         :host([edit-mode]) #outlinebutton {
           display: none !important;
         }
@@ -240,7 +242,13 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         hidden
         dark
         id="addbuttonchild"
-        parent-type="child"
+        type="child"
+      ></haxcms-button-add>
+      <haxcms-button-add
+        hidden
+        dark
+        type="duplicate"
+        id="duplicatebutton"
       ></haxcms-button-add>
       <simple-icon-button
         hidden
@@ -347,6 +355,10 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           {
             varPath: "createNodePath",
             selector: "#addbuttonchild",
+          },
+          {
+            varPath: "createNodePath",
+            selector: "#duplicatebutton",
           },
           {
             varPath: "saveOutlinePath",

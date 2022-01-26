@@ -19,9 +19,8 @@ export class HAXCMSButton extends HAXCMSThemeParts(
     this.dark = false;
   }
   static get properties() {
-    let props = super.properties || {};
     return {
-      ...props,
+      ...super.properties,
       icon: { type: String },
       label: { type: String },
       dark: { type: Boolean, reflect: true },
@@ -81,7 +80,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
     ];
   }
   // wrapper on CustomEvent so we include the payload as these are listened for on window
-  HAXCMSFireButtonEvent(name, target, payload, responseEventName) {
+  HAXCMSFireButtonEvent(name, target, payload) {
     // send message off so that the control board hands it off to the CMS
     const evt = new CustomEvent(name, {
       bubbles: true,
@@ -103,6 +102,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
   renderButton(label, tooltip) {
     return html`
       <simple-icon-button
+        .part="${this.editMode ? `edit-mode-active` : ``}"
         id="button"
         label="${label}"
         @click="${this.HAXCMSButtonClick}"
