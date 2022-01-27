@@ -77,6 +77,10 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
         order = parseInt(item.order) + 1;
       }
     }
+    // sanity fallback in case a translation system is bricked
+    if (title === "") {
+      title = "New";
+    }
     var payload = {
       node: {
         title: title,
