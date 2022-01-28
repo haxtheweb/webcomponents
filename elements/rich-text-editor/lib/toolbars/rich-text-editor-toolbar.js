@@ -870,6 +870,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
       // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js");
+      // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js");
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");

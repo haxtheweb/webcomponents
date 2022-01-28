@@ -1,4 +1,5 @@
 import { store } from "../haxcms-site-store.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
 import { toJS } from "mobx";
 export class HAXCMSButtonAdd extends HAXCMSButton {
@@ -101,9 +102,14 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
     // this helps avoid multiple instances of a button coliding
     if (this === e.detail.originalTarget) {
       if (this.autoEdit) {
+        // force hax tray to open
+        HAXStore.haxTray.collapsed = false;
+        // @todo this implies a timing issue on response and the wiping of material
+        // see https://github.com/elmsln/issues/issues/938
         setTimeout(() => {
+          // force into edit mode
           store.editMode = true;
-        }, 100);
+        }, 250);
       }
     }
   }

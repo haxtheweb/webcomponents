@@ -18,6 +18,8 @@ class Store {
     this.manifest = null;
     this.activeItemContent = "";
     this.themeElement = null;
+    this.themeStyleElement = document.createElement("style");
+    this.themeStyleElement.id = "haxcms-theme-global-style-element";
     this.t = {
       close: "Close",
     };
@@ -914,6 +916,13 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
+  }
+  connectedCallback() {
+    document.body.appendChild(this.store.themeStyleElement);
+  }
+  disconnectedCallback() {
+    this.store.themeStyleElement.remove();
+    this.store.themeStyleElement = document.createElement("style");
   }
   /**
    * Try to get context of what backend is powering this

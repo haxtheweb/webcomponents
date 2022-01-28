@@ -1,4 +1,4 @@
-import { html, css } from "lit";
+import { html, css, render, unsafeCSS } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
@@ -715,11 +715,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   render() {
     return html`
-      <style>
-        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
-          background-image: url("${this.__lockIconPath}");
-        }
-      </style>
+      <style id="hax-body-style-element"></style>
       <div
         id="bodycontainer"
         class="ignore-activation"
@@ -845,10 +841,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       },
     };
   }
+  HAXBODYStyleSheetContent() {
+    let styles = [];
+    styles.push(css`
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
+        background-image: url("${unsafeCSS(this.__lockIconPath)}");
+      }
+    `);
+    return styles;
+  }
   /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
+    render(
+      this.HAXBODYStyleSheetContent(),
+      this.shadowRoot.querySelector("#hax-body-style-element")
+    );
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,

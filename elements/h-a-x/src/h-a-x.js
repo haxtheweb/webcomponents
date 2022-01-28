@@ -26,8 +26,27 @@ function localStorageGet(name) {
 class HAX extends HTMLElement {
   // render function
   get html() {
+    let styles = ["red", "blue", "green", "orange", "purple"].map(
+      (item) =>
+        `
+        [data-style-decoration~="highlight"] {
+          color: var(--haxcms-style-element-color, white);
+          background-color: var(--haxcms-style-element-background-color, black);
+          font-weight: 400;
+          word-wrap: break-word;
+          padding: 4px 8px;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+        [data-style-decoration~="${item}"] {
+          --haxcms-style-element-background-color: var(--simple-colors-default-theme-${item}-7, ${item});
+        }
+        `
+    );
     return `
     <style>
+    ${styles.join("\n")}
+
     :host,h-a-x {
       display: block;
       font-size: var(--haxcms-base-styles-body-font-size);

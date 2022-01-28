@@ -485,11 +485,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.sourceButton,
     };
   }
-  get haxInsertButtonGroup() {
+  get haxSymbolInsertButtonGroup() {
     return {
       type: "button-group",
-      subtype: "hax-insert-button-group",
-      blocks: [this.symbolButton, this.emojiButton],
+      subtype: "hax-symbol-insert-button-group",
+      buttons: [this.symbolButton, this.emojiButton],
     };
   }
 
@@ -502,8 +502,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.basicInlineButtonGroup,
       this.linkButtonGroup,
       this.listIndentButtonGroup,
-      this.haxInsertButtonGroup,
       this.scriptButtonGroup,
+      this.haxSymbolInsertButtonGroup,
       this.advancedInlineButtonGroup,
     ];
   }

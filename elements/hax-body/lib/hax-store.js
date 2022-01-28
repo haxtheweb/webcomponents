@@ -62,6 +62,21 @@ function sessionStorageSet(name, newItem) {
   }
 }
 
+const DataStyleDecoration = {
+  attribute: "data-style-decoration",
+  title: "Decoration",
+  description: "Some built in styles to offset the material",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "highlight red": "Highlight (red)",
+    "highlight blue": "Highlight (blue)",
+    "highlight green": "Highlight (green)",
+    "highlight orange": "Highlight (orange)",
+    "highlight purple": "Highlight (purple)",
+  },
+};
+
 /**
  * @element hax-store
  */
@@ -2249,7 +2264,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           author: "W3C",
         },
       },
-      settings: {},
+      settings: {
+        advanced: [DataStyleDecoration],
+      },
       demoSchema: [
         {
           tag: "figure",
@@ -2289,6 +2306,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
+          DataStyleDecoration,
         ],
       },
       demoSchema: [
@@ -2353,6 +2371,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
           },
+          DataStyleDecoration,
         ],
         advanced: [
           {
@@ -2416,7 +2435,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       settings: {
         configure: [],
-        advanced: [],
+        advanced: [DataStyleDecoration],
       },
       demoSchema: [
         {
@@ -2534,6 +2553,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       span: {
         title: "SPAN",
         icon: "editor:short-text",
+        handles: [
+          {
+            type: "inline",
+            text: "text",
+          },
+        ],
       },
       i: {
         title: "Italic",
@@ -2579,10 +2604,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             meta: {
               hidden: tag == "h2" ? false : true,
             },
+            groups: ["Content"],
+            handles: prims[tag].handles || [],
+            meta: {
+              author: "ELMS:LN",
+              inlineOnly: true,
+            },
           },
           settings: {
             configure: [],
-            advanced: [],
+            advanced: [DataStyleDecoration],
           },
           demoSchema: [
             {
@@ -2614,7 +2645,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       settings: {
         configure: [],
-        advanced: [],
+        advanced: [DataStyleDecoration],
       },
       demoSchema: [
         {

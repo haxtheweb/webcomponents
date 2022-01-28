@@ -87,7 +87,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.manifest = { ...data };
   }
   _updateLoading(e) {
-    //this.loading = e.detail.value;
+    this.loading = e.detail.value;
   }
   hashCode(s) {
     return s.split("").reduce((a, b) => {
@@ -390,6 +390,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.appendChild(store.themeElement);
     }
   }
+
   /**
    * Alert there was an internal error in getting the file
    */

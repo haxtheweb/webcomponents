@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { store } from "./haxcms-site-store.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -837,6 +838,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;
+      // force tray status to be the opposite of the editMode
+      // to open when editing and close when not
+      HAXStore.haxTray.collapsed = !newValue;
     }
   }
   /**
