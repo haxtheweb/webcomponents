@@ -615,7 +615,17 @@ class SimpleFieldsLite extends LitElement {
             data.noWrap
               ? element
               : document.createElement("simple-fields-container"),
-          value = this._getValue(`${prefix}${key}`);
+          value = this._getValue(`${prefix}${key}`),
+          elementProperties =
+            !Object.getPrototypeOf(element) &&
+            !Object.getPrototypeOf(element).constructor
+              ? false
+              : Object.getPrototypeOf(element).constructor.properties;
+
+        //get any properties that haven't been specifically added to element data
+        Object.keys(elementProperties || {}).forEach((key) => {
+          if (!!schemaProp[key]) element[key] = schemaProp[key];
+        });
         // support for dynamic import of location of this field
         if (!window.customElements.get(data.element) && data.import) {
           import(`${this.basePath}${data.import}`);
@@ -678,11 +688,9 @@ class SimpleFieldsLite extends LitElement {
         if (required && required.includes(key))
           element.setAttribute("required", true);
         if (schemaProp.disabled) {
-          element.disabled = true;
           wrapper.disabled = true;
         }
         if (schemaProp.hidden) {
-          element.hidden = true;
           wrapper.hidden = true;
         }
         if (schemaProp.readonly) {
@@ -700,7 +708,7 @@ class SimpleFieldsLite extends LitElement {
         this._configElement(wrapper, fieldPrefix, undefined, data.prefixSlot);
         this._configElement(wrapper, fieldSuffix, undefined, data.suffixSlot);
 
-        //set elemenet attributes according to schema
+        //set element attributes according to schema
         Object.keys(data.attributes || {}).forEach((attr) => {
           if (
             typeof data.attributes[attr] !== undefined &&
@@ -710,14 +718,15 @@ class SimpleFieldsLite extends LitElement {
           }
         });
 
-        //set elemenet properties according to schema
+        //set element properties according to schema
         Object.keys(data.properties || {}).forEach((prop) => {
           if (data.properties[prop] && schemaProp[prop]) {
-            element[prop] = schemaProp[prop] || data.properties[prop];
+            if (!element[prop])
+              element[prop] = schemaProp[prop] || data.properties[prop];
           }
         });
 
-        //set elemenet slots according to schema
+        //set element slots according to schema
         Object.keys(data.slots || {}).forEach((slot) => {
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach((field) => {
