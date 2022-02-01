@@ -268,7 +268,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             ? false
             : range.cloneContents(),
         ancestor = !range ? false : range.commonAncestorContainer,
-        siblings = !ancestor ? [] : ancestor.children,
+        elementSiblings = !ancestor ? [] : ancestor.children,
+        siblings = !ancestor ? [] : ancestor.childNodes,
         ancestorHTML = !ancestor ? "" : ancestor.innerHTML;
       return {
         range: range,
@@ -276,6 +277,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         html: contents.innerHTML,
         text: !contents ? false : contents.textContent,
         siblngs: siblings,
+        elementSiblings: elementSiblings,
         ancestorHTML: ancestorHTML,
       };
     }

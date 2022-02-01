@@ -25,6 +25,8 @@ window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
  * @class
  * @lit-html
  * @lit-element
+ *
+ *
  */
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends RichTextEditorRangeBehaviors(
@@ -1515,58 +1517,46 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         {
           match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
-          selectMatch: "0",
-          replaceWith: "2",
           replace: "<b>$2</b>",
           command: "bold",
           excludeAncestors: ["b", "strong"],
-          lastKeys: ["*", "_"],
+          lastChars: ["*", "_"],
         },
         {
           match: /([^\*]|^)((\*)([^\*]+|[^\*]*\*{2}[^\*]+\*{2}[^\*]*)(\*)(?!\*[^\*]))/,
-          selectMatch: "1",
-          replaceWith: "3",
-          replace: "$1<i>$3</i>",
+          replace: "$1<i>$4</i>",
           command: "italic",
           excludeAncestors: ["em", "i"],
-          lastKeys: ["*"],
+          lastChars: ["*"],
         },
         {
-          match: /([^_]|^)((_)([^_]+|[^_]*_{2}[^_]+_{2}[^_]*)(_)(?!\*[^\*]))/,
-          selectMatch: "1",
-          replaceWith: "3",
-          replace: "$1<i>$3</i>",
+          match: /([^_]|^)((_)([^_]+|[^_]*_{2}[^_]+_{2}[^_]*)(_)(?!_[^_]))/,
+          replace: "$1<i>$4</i>",
           command: "italic",
           excludeAncestors: ["em", "i"],
-          lastKeys: ["*"],
+          lastChars: ["_"],
         },
         {
           match: /(`{3})((`(?!``))?([^`]|`(?!``))+`{0,2})\1/,
-          selectMatch: "0",
-          replaceWith: "2",
           replace: "<pre>$2</pre>",
           command: "formatBlock",
           commandVal: "pre",
           excludeAncestors: ["pre", "code"],
-          lastKeys: ["`"],
+          lastChars: ["`"],
         },
         {
           match: /([^`]|^)(`([^`\n]+)`[^`]*(?!`{3}))/,
-          selectMatch: "1",
-          replaceWith: "3",
           replace: "$1<code>$3</code>",
           command: "formatInline",
           commandVal: "code",
           excludeAncestors: ["pre", "code"],
-          lastKeys: ["`"],
+          lastChars: ["`"],
         },
         {
           match: /\\([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/,
-          selectMatch: "0",
-          replaceWith: "1",
           replace: "$1",
           excludeAncestors: ["pre", "code"],
-          lastKeys: "+*?^$.[]{}()|/".split(),
+          lastChars: "+*?^$.[]{}()|/".split(),
         },
       ];
     }
@@ -1575,7 +1565,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let regexes = {};
       this.defaultRegexes.forEach((regex) => {
         let keys =
-          !regex.lastKeys || regex.lastKeys.length == 0 ? [""] : regex.lastKeys;
+          !regex.lastChars || regex.lastChars.length == 0
+            ? [""]
+            : regex.lastChars;
         keys.forEach((key) => {
           regexes[key] = regexes[key] || [];
           regexes[key].push(regex);
@@ -1587,68 +1579,83 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleMarkdown(e) {
       let range = this.getRange(),
         node = range ? range.commonAncestorContainer : false,
-        text = node && node.nodeType === 3 ? node.textContent : false,
-        snippet = text ? text.substring(0, this.range.startOffset) : false,
-        snippet2 = text ? text.substring(this.range.startOffset) : false,
-        stub = document.createElement("div"),
+        textContent = node && node.nodeType === 3 ? node.textContent : false,
+        before = textContent
+          ? textContent
+              .substring(0, this.range.startOffset - 1)
+              .replace(/\s+/, " ")
+          : false,
+        after = textContent
+          ? textContent
+              .substring(this.range.startOffset - 1)
+              .replace(/\s+/, " ")
+          : false,
         found = false,
-        regexes = [
-          ...(this.regexesByLastKey[e.key] || []),
-          this.regexesByLastKey[""] || [],
-        ];
-
+        lastChar = textContent
+          ? textContent.charAt(this.range.startOffset - 2)
+          : "",
+        lastCharRegexes =
+          lastChar !== "" && this.regexesByLastKey[lastChar]
+            ? this.regexesByLastKey[lastChar]
+            : [],
+        noKeyRegexes = this.regexesByLastKey[""] || [],
+        regexes = [...lastCharRegexes, ...noKeyRegexes];
+      console.log({
+        range: this.debugRange(range),
+        1: before,
+        2: after,
+        lastChar: lastChar,
+        lastCharRegexes: lastCharRegexes,
+        allRegexes: this.regexesByLastKey,
+        regexes: regexes,
+      });
       regexes.forEach((regex) => {
         if (found) return;
-        let excluded = (regex.excludeAncestors || []).join(),
-          exclude =
-            node && excluded.length > 0
-              ? this.rangeOrMatchingAncestor(excluded, range)
+        let excludeAncestors = (regex.excludeAncestors || []).join(),
+          ignoreMatches =
+            node && excludeAncestors.length > 0
+              ? this.rangeOrMatchingAncestor(excludeAncestors, range)
               : false,
           match =
-            snippet && regex.match && !exclude
-              ? snippet.match(regex.match)
+            before && regex.match && !ignoreMatches
+              ? before.match(regex.match)
               : false;
-
+        console.log(before && regex.match && !ignoreMatches, {
+          excludeAncestors: excludeAncestors,
+          ignoreMatches: ignoreMatches,
+          match: match,
+        });
         if (match && regex.replace) {
-          let before = document.createTextNode(
-              snippet ? snippet.replace(match[0], "") : ""
-            ),
-            after = document.createTextNode(
-              text && text.substring ? snippet2 : ""
-            ),
-            replacement = match[0].replace(regex.match, regex.replace),
-            parent = node.parentNode;
+          let replacement = match[0].replace(regex.match, regex.replace),
+            parent = node.parentNode,
+            nextChar = after ? after.charAt(0).replace(/\s/, "&nbsp;") : "",
+            resetRange;
+
+          before = before
+            ? before
+                .replace(match[0], "")
+                .replace(/^\s/, "&nbsp;")
+                .replace(/\s$/, "&nbsp;")
+            : "";
+          after = after ? after.substring(1).replace(/\s$/, "&nbsp;") : "";
+
           console.log({
-            range: range,
-            node: node,
-            text: text,
-            snippet: snippet,
-            snippet2: snippet2,
-            rebuild: [before, replacement, after],
-            found: found,
-            regexes: this.regexesByLastKey,
-            regex: regex,
-            excluded: excluded,
-            exclude: exclude,
+            1: before,
+            2: replacement,
+            3: nextChar,
+            4: after,
+            excludeAncestors: excludeAncestors,
+            ignoreMatches: ignoreMatches,
             match: match,
           });
-          parent.insertBefore(after, node);
-          parent.insertBefore(before, after);
-          node.remove();
-          range.selectNode(before);
-          range.collapse();
-          if (snippet2.match(/^\s/)) this._handleCommand("insertHTML", " ");
-          this._handleCommand(
-            "insertHTML",
-            replacement + (snippet2.match(/^\s/) ? " " : "")
-          );
-          console.log(this.debugRange(this.getRange()));
-          if (parent && parent.normalize) parent.normalize();
+
+          range.selectNode(node);
+          this._handleCommand("insertHTML", before + replacement + nextChar);
+          resetRange = this.getRange();
+          this._handleCommand("insertHTML", after);
+          this.selectRange(resetRange);
           found = true;
-        } else {
-          this.__prevKey = e.key;
         }
-        stub.remove();
       });
     }
 
