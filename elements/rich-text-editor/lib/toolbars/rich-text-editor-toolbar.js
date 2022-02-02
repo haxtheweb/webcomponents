@@ -1577,86 +1577,91 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleMarkdown(e) {
+      //drop a placeholder into editor so we know where range is
       let range = this.getRange(),
         node = range ? range.commonAncestorContainer : false,
-        textContent = node && node.nodeType === 3 ? node.textContent : false,
-        before = textContent
-          ? textContent
-              .substring(0, this.range.startOffset - 1)
-              .replace(/\s+/, " ")
-          : false,
-        after = textContent
-          ? textContent
-              .substring(this.range.startOffset - 1)
-              .replace(/\s+/, " ")
-          : false,
+        id = "range-placeholder-" + Date.now(),
+        span = document.createElement("span"),
+        spanHTML = `<span id="${id}"></span>`,
+        placeholderSearch = new RegExp(spanHTML),
+        target = node,
         found = false,
-        lastChar = textContent
-          ? textContent.charAt(this.range.startOffset - 2)
-          : "",
+        rangeClone;
+      span.id = id;
+      range.insertNode(span);
+      rangeClone = range.cloneRange();
+      rangeClone.setStartBefore(rangeClone.startContainer);
+
+      let cloneContents = rangeClone.cloneContents(),
+        cloneText = cloneContents.textContent,
+        searchChar = cloneText.charAt(cloneText.length - 2),
+        rangeChar = cloneText.charAt(cloneText.length - 1),
         lastCharRegexes =
-          lastChar !== "" && this.regexesByLastKey[lastChar]
-            ? this.regexesByLastKey[lastChar]
+          rangeChar !== "" && this.regexesByLastKey[searchChar]
+            ? this.regexesByLastKey[searchChar]
             : [],
         noKeyRegexes = this.regexesByLastKey[""] || [],
-        regexes = [...lastCharRegexes, ...noKeyRegexes];
-      console.log({
-        range: this.debugRange(range),
-        1: before,
-        2: after,
-        lastChar: lastChar,
-        lastCharRegexes: lastCharRegexes,
-        allRegexes: this.regexesByLastKey,
-        regexes: regexes,
-      });
-      regexes.forEach((regex) => {
-        if (found) return;
-        let excludeAncestors = (regex.excludeAncestors || []).join(),
-          ignoreMatches =
-            node && excludeAncestors.length > 0
-              ? this.rangeOrMatchingAncestor(excludeAncestors, range)
-              : false,
-          match =
-            before && regex.match && !ignoreMatches
-              ? before.match(regex.match)
-              : false;
-        console.log(before && regex.match && !ignoreMatches, {
-          excludeAncestors: excludeAncestors,
-          ignoreMatches: ignoreMatches,
-          match: match,
-        });
-        if (match && regex.replace) {
-          let replacement = match[0].replace(regex.match, regex.replace),
-            parent = node.parentNode,
-            nextChar = after ? after.charAt(0).replace(/\s/, "&nbsp;") : "",
-            resetRange;
+        regexes = [...lastCharRegexes, ...noKeyRegexes],
+        searchRegexes = (searchNode) => {
+          if (found) return;
+          regexes.forEach((regex) => {
+            if (found || !searchNode || !searchNode.cloneNode) return;
+            let searchNodeClone = searchNode.cloneNode(true),
+              cloneHTML = searchNodeClone ? searchNodeClone.innerHTML : false,
+              cloneSplit = cloneHTML ? cloneHTML.split(placeholderSearch) : [],
+              cloneSearch = cloneSplit[0]
+                ? cloneSplit[0].replace(/&nbsp;$/, " ")
+                : false,
+              excludeAncestors = (regex.excludeAncestors || []).join(),
+              ignoreMatches =
+                searchNode && excludeAncestors.length > 0
+                  ? searchNode.closest && searchNode.closest(excludeAncestors)
+                  : false,
+              match;
 
-          before = before
-            ? before
-                .replace(match[0], "")
-                .replace(/^\s/, "&nbsp;")
-                .replace(/\s$/, "&nbsp;")
-            : "";
-          after = after ? after.substring(1).replace(/\s$/, "&nbsp;") : "";
+            match =
+              !!cloneSearch &&
+              cloneSearch.length > 2 &&
+              regex.match &&
+              !ignoreMatches
+                ? cloneSearch.match(regex.match)
+                : false;
 
-          console.log({
-            1: before,
-            2: replacement,
-            3: nextChar,
-            4: after,
-            excludeAncestors: excludeAncestors,
-            ignoreMatches: ignoreMatches,
-            match: match,
+            if (
+              match &&
+              match[0] &&
+              cloneSearch.length -
+                match[0].length -
+                cloneSearch.lastIndexOf(match[0]) ==
+                1 &&
+              regex.replace
+            ) {
+              found = true;
+              cloneSplit[0] = cloneSplit[0].replace(regex.match, regex.replace);
+              range.selectNode(searchNode);
+              console.log(this.debugRange(range));
+              range.setEndBefore(span);
+              console.log(this.debugRange(range));
+              this._handleCommand("insertHTML", cloneSplit[0]);
+              console.log(searchNode.innerHTML);
+              span.remove();
+            }
           });
+        };
 
-          range.selectNode(node);
-          this._handleCommand("insertHTML", before + replacement + nextChar);
-          resetRange = this.getRange();
-          this._handleCommand("insertHTML", after);
-          this.selectRange(resetRange);
-          found = true;
-        }
-      });
+      while (
+        !found &&
+        !!target &&
+        target !== this.target &&
+        !!target.parentNode
+      ) {
+        searchRegexes(target);
+        target = target.parentNode;
+      }
+      if (!found) searchRegexes(this.target);
+
+      //remove placeholder from editor
+      if (!found) span.remove();
     }
 
     _handleTargetKeypress(e) {
