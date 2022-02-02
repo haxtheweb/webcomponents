@@ -19,48 +19,58 @@ class CourseIntroLessonPlans extends LitElement {
   _itemsChanged(items) {
     this.items = [];
     this.items = items.filter((i) => {
-      return (
-        typeof i.metadata !== "undefined" &&
-        typeof i.metadata.courselist !== "undefined" &&
-        typeof i.metadata.courselist.show !== "undefined" &&
-        i.metadata.courselist.show === true
-      );
+      return i.slug !== "introduction" && i.parent === null;
     });
   }
+
   static get styles() {
     return [
       css`
         :host {
           display: block;
+          background-color: var(
+            --course-intro-header--header--background-color,
+            #1e1e1e
+          );
+          padding-bottom: 40px;
+          min-height: 60vh;
         }
-        #title {
-          color: white;
-          font-family: "Lato";
-          text-transform: uppercase;
-          font-weight: 400;
-          text-align: center;
-          letter-spacing: 4.48px;
-          font-size: 1.4em;
+
+        @media screen and (min-width: 320px) {
+          #plans-container {
+            background: white;
+            margin: 0 auto;
+            max-width: 400px;
+          }
         }
-        #plans-container {
-          background: white;
-          margin: 0 auto;
-          max-width: 900px;
+
+        @media screen and (min-width: 620px) {
+          #plans-container {
+            max-width: 500px;
+          }
+        }
+
+        @media screen and (min-width: 920px) {
+          #plans-container {
+            max-width: 700px;
+          }
+        }
+
+        @media screen and (min-width: 1220px) {
+          #plans-container {
+            max-width: 900px;
+          }
         }
       `,
     ];
   }
   render() {
     return html`
-      <h2 id="title">Lesson Plan</h2>
       <div id="plans-container">
         ${this.items.map(
           (plan) =>
             html`<course-intro-lesson-plan
               title="${plan.title}"
-              description=${plan.metadata.courselist.description
-                ? plan.metadata.courselist.description
-                : ""}
               link=${plan.slug}
             ></course-intro-lesson-plan>`
         )}

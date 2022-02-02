@@ -18,6 +18,8 @@ class Store {
     this.manifest = null;
     this.activeItemContent = "";
     this.themeElement = null;
+    this.themeStyleElement = document.createElement("style");
+    this.themeStyleElement.id = "haxcms-theme-global-style-element";
     this.t = {
       close: "Close",
     };
@@ -207,6 +209,15 @@ class Store {
       newItems.push(
         manifest.items.find((element) => {
           return element.id === correctOrder[key].id;
+        })
+      );
+    }
+    // support for language being defined in the manifest of the site
+    if (document.documentElement && manifest.metadata.site.lang) {
+      document.documentElement.lang = manifest.metadata.site.lang;
+      window.dispatchEvent(
+        new CustomEvent("languagechange", {
+          detail: manifest.metadata.site.lang,
         })
       );
     }
@@ -591,6 +602,26 @@ class Store {
     return null;
   }
   /**
+   * return a fallback item because we just got a miss.
+   * usually to avoid redirect loops
+   */
+  fallbackItemSlug() {
+    if (this.manifest && this.activeItem) {
+      if (
+        this.activeManifestIndex > 0 &&
+        this.manifest.items[this.activeManifestIndex - 1]
+      ) {
+        return this.manifest.items[this.activeManifestIndex - 1].slug;
+      } else if (
+        this.activeManifestIndex < this.manifest.items.length - 1 &&
+        this.manifest.items[this.activeManifestIndex + 1]
+      ) {
+        return this.manifest.items[this.activeManifestIndex + 1].slug;
+      }
+    }
+    return null;
+  }
+  /**
    * Return a clone of the manifest items list
    */
   getManifestItems(cloneIt = true) {
@@ -885,6 +916,13 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
+  }
+  connectedCallback() {
+    document.body.appendChild(this.store.themeStyleElement);
+  }
+  disconnectedCallback() {
+    this.store.themeStyleElement.remove();
+    this.store.themeStyleElement = document.createElement("style");
   }
   /**
    * Try to get context of what backend is powering this

@@ -39,7 +39,7 @@
       {
         "property": "bottomText",
         "title": "Bottom text",
-        "description": "The date this was accessed.",
+        "description": "Bottom text of the meme.",
         "inputMethod": "textfield"
       }
     ],

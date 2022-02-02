@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "./lib/h-a-x-dependencies.js";
 function localStorageGet(name) {
   try {
     return localStorage.getItem(name);
@@ -25,8 +26,27 @@ function localStorageGet(name) {
 class HAX extends HTMLElement {
   // render function
   get html() {
+    let styles = ["red", "blue", "green", "orange", "purple"].map(
+      (item) =>
+        `
+        [data-style-decoration~="highlight"] {
+          color: var(--haxcms-style-element-color, white);
+          background-color: var(--haxcms-style-element-background-color, black);
+          font-weight: 400;
+          word-wrap: break-word;
+          padding: 4px 8px;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+        [data-style-decoration~="${item}"] {
+          --haxcms-style-element-background-color: var(--simple-colors-default-theme-${item}-7, ${item});
+        }
+        `
+    );
     return `
     <style>
+    ${styles.join("\n")}
+
     :host,h-a-x {
       display: block;
       font-size: var(--haxcms-base-styles-body-font-size);
@@ -83,6 +103,27 @@ class HAX extends HTMLElement {
       font-size: var(--hax-base-styles-p-font-size);
       line-height: var(--hax-base-styles-p-line-height);
       letter-spacing: var(--hax-base-styles-p-letter-spacing);
+    }
+    hax-body p code {
+      padding: 0.2em 0.4em;
+      margin: 0;
+      font-size: 12px;
+      background-color: var(--hax-base-styles-code-background-color,rgba(175, 184, 193, 0.2));
+      border-radius: 6px;
+      font-family: var(--hax-base-styles-code-font-family, ui-monospace,monospace);
+    }
+    hax-body pre {
+      padding: 16px;
+      overflow: auto;
+      line-height: 1.45;
+      background-color: var(--hax-base-styles-pre-background-color,rgba(175, 184, 193, 0.2));
+      border-radius: 6px;
+      margin-bottom: 0;
+      word-break: normal;
+      word-wrap: normal;
+      margin-top: 0;
+      font-family: var(--hax-base-styles-pre-font-family, ui-monospace,monospace);
+      font-size: 12px;
     }
 
     hax-body a,
@@ -170,8 +211,6 @@ class HAX extends HTMLElement {
       this.appStoreReady.bind(this),
       { once: true, passive: true }
     );
-    // dynamically import definitions for all needed tags
-    import("./lib/h-a-x-dependencies.js");
     // map events from tray
     window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
     window.addEventListener("hax-save", this.saveEvent.bind(this));

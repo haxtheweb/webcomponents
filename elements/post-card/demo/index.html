@@ -12,6 +12,10 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../post-card.js';
     </script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
@@ -19,8 +23,15 @@
       <h3>Basic post-card demo</h3>
       <demo-snippet>
         <template>
-          <post-card>
-            This is post-card
+          <post-card post-mark-locations="TAIPEI - DELFT - TORONTO">
+            <div slot="message">I WANDERED LONELY AS A CLOUD - AND THEN BUMPED INTO A BUNCH OF OTHER CLOUDS!</div>
+            <div slot="to">OE Global Conference</div>
+            <div slot="from">ALL OF US AT CONFERENCE@OEGLOBAL.ORG</div>
+          </post-card>
+          <br>
+          <post-card photo-src="https://images.onwardstate.com/uploads/2019/10/IMG_9180.jpg" message="lEtZ gO pEnN sTaTe" post-mark-locations="We're - Pen - Stat">
+            <div slot="to">Alumni</div>
+            <div slot="from">Alumni Association</div>
           </post-card>
         </template>
       </demo-snippet>

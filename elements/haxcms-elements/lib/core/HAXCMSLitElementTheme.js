@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, LitElement } from "lit";
+import { css, LitElement, render, unsafeCSS } from "lit";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -65,6 +65,32 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
   hoverIntentLeave(e) {
     this.__styleTag.remove();
+  }
+  HAXCMSGlobalStyleSheetContent() {
+    let styles = ["red", "blue", "green", "orange", "purple"].map(
+      (item) =>
+        css`
+          .haxcms-theme-element [data-style-decoration~="highlight"] {
+            color: var(--haxcms-style-element-color, white);
+            background-color: var(
+              --haxcms-style-element-background-color,
+              black
+            );
+            font-weight: 400;
+            word-wrap: break-word;
+            padding: 4px 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+          .haxcms-theme-element [data-style-decoration~="${unsafeCSS(item)}"] {
+            --haxcms-style-element-background-color: var(
+              --simple-colors-default-theme-${unsafeCSS(item)}-7,
+              ${unsafeCSS(item)}
+            );
+          }
+        `
+    );
+    return styles;
   }
   copyLink(e) {
     let target = e.target;
@@ -190,6 +216,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         "#contentcontainer"
       );
     }
+    // update the global managed CSS styles so we can "theme" the content
+    // witout leaning on ::slotted which doesn't work always
+    render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
   }
   // LitElement life cycle
   updated(changedProperties) {

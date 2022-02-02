@@ -311,7 +311,7 @@ class I18NManager extends HTMLElement {
    */
   attributeChangedCallback(attr, oldValue, newValue) {
     // notify of attr change
-    if (attr == "lang" || attr == "dir") {
+    if (attr === "lang" || attr === "dir") {
       this.dispatchEvent(
         new CustomEvent(`${attr}-changed`, {
           detail: {
@@ -321,7 +321,7 @@ class I18NManager extends HTMLElement {
       );
     }
     // we are NOT moving to the default from something
-    if (attr == "lang" && newValue && this.__ready) {
+    if (attr === "lang" && newValue && this.__ready) {
       this.updateLanguage(newValue);
     }
   }

@@ -24,6 +24,10 @@ import {
   I18NMixin,
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "./hax-app.js";
+
 const FALLBACK_LANG = "en";
 
 function localStorageGet(name) {
@@ -57,6 +61,21 @@ function sessionStorageSet(name, newItem) {
     return false;
   }
 }
+
+const DataStyleDecoration = {
+  attribute: "data-style-decoration",
+  title: "Decoration",
+  description: "Some built in styles to offset the material",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "highlight red": "Highlight (red)",
+    "highlight blue": "Highlight (blue)",
+    "highlight green": "Highlight (green)",
+    "highlight orange": "Highlight (orange)",
+    "highlight purple": "Highlight (purple)",
+  },
+};
 
 /**
  * @element hax-store
@@ -1871,6 +1890,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    this.__dragTarget = null;
     this.registerLocalization({
       context: this,
       namespace: "hax",
@@ -1983,13 +2003,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // imports app, stax definitions
-    import("./hax-app.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-      window.SimpleToast.requestAvailability();
-    });
-
-    import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
+    window.SimpleToast.requestAvailability();
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     // mobx
     makeObservable(this, {
@@ -2018,6 +2032,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
   /**
    * Build HAX property definitions for primitives that we support.
+   * @note if someone wants to MANUALLY inject definitions similar
+   * to how this is doing so they can with this hack from a global
+   * application context. This is going to inject a definition
+   * at run time that's for a theoretical tag defined with this
+   * but that hasn't been used yet.
+    window.addEventListener("hax-store-ready", function(e) {
+        setTimeout(() => {
+          window.HaxStore.requestAvailability().setHaxProperties(window.customElements.get('instruction-card').haxProperties, 'instruction-card');
+        }, 1000);
+      }); 
+    });
    */
   _buildPrimitiveDefinitions() {
     // sandboxes need a webview definition
@@ -2239,7 +2264,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           author: "W3C",
         },
       },
-      settings: {},
+      settings: {
+        advanced: [DataStyleDecoration],
+      },
       demoSchema: [
         {
           tag: "figure",
@@ -2279,6 +2306,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
+          DataStyleDecoration,
         ],
       },
       demoSchema: [
@@ -2343,6 +2371,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
           },
+          DataStyleDecoration,
         ],
         advanced: [
           {
@@ -2406,7 +2435,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       settings: {
         configure: [],
-        advanced: [],
+        advanced: [DataStyleDecoration],
       },
       demoSchema: [
         {
@@ -2524,6 +2553,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       span: {
         title: "SPAN",
         icon: "editor:short-text",
+        handles: [
+          {
+            type: "inline",
+            text: "text",
+          },
+        ],
       },
       i: {
         title: "Italic",
@@ -2569,10 +2604,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             meta: {
               hidden: tag == "h2" ? false : true,
             },
+            groups: ["Content"],
+            handles: prims[tag].handles || [],
+            meta: {
+              author: "ELMS:LN",
+              inlineOnly: true,
+            },
           },
           settings: {
             configure: [],
-            advanced: [],
+            advanced: [DataStyleDecoration],
           },
           demoSchema: [
             {
@@ -2604,7 +2645,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       settings: {
         configure: [],
-        advanced: [],
+        advanced: [DataStyleDecoration],
       },
       demoSchema: [
         {

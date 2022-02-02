@@ -3,61 +3,83 @@ import { LitElement, html, css } from "lit";
 class CourseIntroLessonPlan extends LitElement {
   static get properties() {
     return {
-      position: { type: String },
       title: { type: String },
-      description: { type: String },
       link: { type: String },
     };
   }
   constructor() {
     super();
-    this.position = "";
     this.title = "";
-    this.description = "";
     this.link = "";
   }
-  shouldUpdate(properties) {
-    if (this.description === null) {
-      return false;
-    }
-    return true;
-  }
+
   static get styles() {
     return [
       css`
         :host {
           display: block;
         }
+
         a {
           color: inherit;
           text-decoration: inherit;
         }
+
+        a:hover {
+          background-color: #f5f5f5;
+        }
+
         #container {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
-          font-size: var(
-            --course-intro-lesson-plan--container--font-size,
-            28px
-          );
-          font-family: "Lato";
-          color: rgba(77, 87, 104, 0.4);
           font-weight: 100;
           cursor: pointer;
-        }
-        #title {
           font-family: "Lato";
-          color: rgb(77, 87, 104);
         }
-        #description {
-          color: rgba(77, 87, 104, 0.6);
-          font-size: 16px;
-        }
-        @media screen and (min-width: 550px) {
+
+        @media screen and (min-width: 320px) {
           #container {
-            flex-direction: row;
+            min-height: 40px;
+          }
+        }
+
+        @media screen and (min-width: 620px) {
+          #container {
+            min-height: 60px;
+          }
+        }
+
+        @media screen and (min-width: 920px) {
+          #container {
+            min-height: 80px;
+          }
+        }
+
+        @media screen and (min-width: 320px) {
+          #title {
+            font-size: 20px;
+            color: rgb(77, 87, 104);
+          }
+        }
+
+        @media screen and (min-width: 620px) {
+          #title {
+            font-size: 24px;
+          }
+        }
+
+        @media screen and (min-width: 920px) {
+          #title {
+            font-size: 26px;
+          }
+        }
+
+        @media screen and (min-width: 1220px) {
+          #title {
+            font-size: 28px;
           }
         }
       `,
@@ -67,7 +89,6 @@ class CourseIntroLessonPlan extends LitElement {
     return html`
       <a id="container" href="${this.link}">
         <div id="title">${this.title}</div>
-        <div id="description">${this.description}</div>
       </a>
     `;
   }

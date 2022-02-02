@@ -43,8 +43,6 @@ class VocabTerm extends LitElement {
     this.links = [];
     if (this.querySelector(".links a")) {
       this.querySelectorAll(".links a").forEach((el) => {
-        console.log(el);
-        console.log(el.innerText);
         this.links.push({
           title: el.innerText,
           href: el.getAttribute("href"),
@@ -92,8 +90,7 @@ class VocabTerm extends LitElement {
             <div part="term">
               <summary id="summary">${this.term}</summary>
             </div>
-            <simple-modal-template>
-              <div slot="header">${this.term}</div>
+            <simple-modal-template title=${this.term}>
               <p slot="content">${this.information}</p>
               ${this.links.length > 0
                 ? html` <ul slot="content">
@@ -104,9 +101,6 @@ class VocabTerm extends LitElement {
                     )}
                   </ul>`
                 : ``}
-              <div slot="buttons">
-                <button dialog-dismiss>Close Modal</button>
-              </div>
             </simple-modal-template>
           </div>
         `
@@ -114,7 +108,7 @@ class VocabTerm extends LitElement {
           <details>
             <summary id="summary">${this.term}</summary>
             <div part="information">
-              <simple-popover for="summary" position="top">
+              <simple-popover for="summary" position="top" auto>
                 <p>${this.information}</p>
                 <div part="links">
                   ${this.links.length > 0

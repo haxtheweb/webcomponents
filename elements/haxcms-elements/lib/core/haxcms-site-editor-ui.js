@@ -1,10 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { store } from "./haxcms-site-store.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
+import "./micros/haxcms-button-add.js";
 
 /**
  * `haxcms-site-editor-ui`
@@ -52,6 +54,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([dashboard-opened]) #editdetails,
         :host([dashboard-opened]) #deletebutton,
         :host([dashboard-opened]) #addbutton,
+        :host([dashboard-opened]) #addbuttonchild,
+        :host([dashboard-opened]) #duplicatebutton,
         :host([dashboard-opened]) #outlinebutton {
           display: none !important;
         }
@@ -126,6 +130,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([edit-mode]) #editdetails,
         :host([edit-mode]) #deletebutton,
         :host([edit-mode]) #addbutton,
+        :host([edit-mode]) #addbuttonchild,
+        :host([edit-mode]) #duplicatebutton,
         :host([edit-mode]) #outlinebutton {
           display: none !important;
         }
@@ -169,8 +175,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       editSiteOutline: "Edit site outline",
       closeSiteSettings: "Close site settings",
       editSiteSettings: "Edit site settings",
-      savePageContent: "Guardar contenido de la página",
-      editPageContent: "Editar el contenido de la página",
+      savePageContent: "Save page content",
+      editPageContent: "Edit page content",
     };
     this.backText = "Back to site list";
     this.painting = true;
@@ -188,7 +194,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
@@ -233,15 +238,19 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         label="${this.t.editDetails}"
         voice-command="edit (page) details"
       ></simple-icon-button>
-      <simple-icon-button
+      <haxcms-button-add hidden dark id="addbutton"></haxcms-button-add>
+      <haxcms-button-add
         hidden
         dark
-        id="addbutton"
-        icon="hax:add-page"
-        @click="${this._addButtonTap}"
-        label="${this.t.addPage}"
-        voice-command="add page"
-      ></simple-icon-button>
+        id="addbuttonchild"
+        type="child"
+      ></haxcms-button-add>
+      <haxcms-button-add
+        hidden
+        dark
+        type="duplicate"
+        id="duplicatebutton"
+      ></haxcms-button-add>
       <simple-icon-button
         hidden
         dark
@@ -283,9 +292,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       >
       <simple-tooltip for="deletebutton" position="right" offset="14"
         >${this.t.deletePage}</simple-tooltip
-      >
-      <simple-tooltip for="addbutton" position="right" offset="14"
-        >${this.t.addPage}</simple-tooltip
       >
       <simple-tooltip for="outlinebutton" position="right" offset="14"
         >${this.t.editSiteOutline}</simple-tooltip
@@ -346,6 +352,14 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           {
             varPath: "createNodePath",
             selector: "#addbutton",
+          },
+          {
+            varPath: "createNodePath",
+            selector: "#addbuttonchild",
+          },
+          {
+            varPath: "createNodePath",
+            selector: "#duplicatebutton",
           },
           {
             varPath: "saveOutlinePath",
@@ -663,87 +677,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     );
   }
   /**
-   * Add button hit
-   * @todo simplify this to just what's needed; no crazy options
-   */
-  _addButtonTap(e) {
-    this.__newForm = document.createElement("simple-fields-form");
-    // get a prototype schema for an item
-    this.__newForm.fields = [
-      {
-        property: "title",
-        title: "Title",
-        description: "Main title for this page in menus",
-        inputMethod: "textfield",
-        required: true,
-      },
-      {
-        property: "location",
-        title: "Location",
-        description:
-          "What is displayed in the browser bar after your site name / URL",
-        inputMethod: "textfield",
-        required: true,
-      },
-      {
-        property: "parentId",
-        title: "Parent ID",
-        description: "Parent id",
-        inputMethod: "textfield",
-        hidden: true,
-        required: true,
-      },
-    ];
-    // default values
-    this.__newForm.value = {
-      title: "New page",
-      location: "",
-      // parentId is the active page item or the site in general if none found
-      parentId:
-        store.activeItem && store.activeItem.id
-          ? store.activeItem.id
-          : store.manifest.id,
-    };
-    let b1 = document.createElement("button");
-    let icon = document.createElement("simple-icon");
-    icon.icon = "icons:add";
-    icon.dark = true;
-    b1.appendChild(icon);
-    b1.appendChild(document.createTextNode("Create page"));
-    b1.style.color = "white";
-    b1.style.backgroundColor = "#2196f3";
-    b1.addEventListener("click", this._createNewItem.bind(this));
-    let b2 = document.createElement("button");
-    let icon2 = document.createElement("simple-icon");
-    icon2.icon = "icons:cancel";
-    b2.appendChild(icon2);
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    let b = document.createElement("span");
-    b.appendChild(b1);
-    b.appendChild(b2);
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: "Add a new page",
-        styles: {
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-width": "50vw",
-          "--simple-modal-max-width": "50vw",
-          "--simple-modal-height": "40vh",
-          "--simple-modal-max-height": "40vh",
-        },
-        elements: { content: this.__newForm, buttons: b },
-        invokedBy: this.shadowRoot.querySelector("#addbutton"),
-        clone: false,
-        modal: true,
-      },
-    });
-    window.dispatchEvent(evt);
-  }
-  /**
    * create new item
    */
   _createNewItem(e) {
@@ -905,6 +838,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;
+      // force tray status to be the opposite of the editMode
+      // to open when editing and close when not
+      HAXStore.haxTray.collapsed = !newValue;
     }
   }
   /**

@@ -22,12 +22,6 @@
         "inputMethod": "textfield"
       },
       {
-        "property": "pathAuto",
-        "title": "Path auto",
-        "description": "Automatically set path based on parents and title",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "slug",
         "title": "Path",
         "description": "URL slug related to this page",
@@ -70,7 +64,7 @@
         "published": true,
         "locked": false,
         "status": "new",
-        "pathAuto": true
+        "data-hax-ray": "Page break"
       }
     }
   ]

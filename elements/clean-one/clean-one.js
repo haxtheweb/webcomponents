@@ -15,6 +15,7 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
+import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `clean-one`
  * `Clean HAXcms theme, one.`
@@ -29,7 +30,9 @@ import "./lib/clean-one-search-box.js";
 class CleanOne extends HAXCMSRememberRoute(
   QRCodeMixin(
     HAXCMSThemeParts(
-      HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+      HAXCMSUserStylesMenuMixin(
+        HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+      )
     )
   )
 ) {
@@ -704,6 +707,16 @@ class CleanOne extends HAXCMSRememberRoute(
                       <slot></slot>
                     </div>
                   </section>
+                  ${this.isLoggedIn
+                    ? html` <haxcms-button-add
+                          auto-edit
+                          type="child"
+                        ></haxcms-button-add>
+                        <haxcms-button-add
+                          auto-edit
+                          type="duplicate"
+                        ></haxcms-button-add>`
+                    : ``}
                 </div>
               </article>
             </main>
@@ -802,6 +815,16 @@ class CleanOne extends HAXCMSRememberRoute(
     this.shadowRoot.querySelector(
       "scroll-button"
     ).target = this.shadowRoot.querySelector("#top");
+  }
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        clean-one a {
+          text-decoration-thickness: 3px;
+        }
+      `,
+    ];
   }
   /**
    * life cycle, element is removed from the DOM

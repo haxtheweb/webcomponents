@@ -115,10 +115,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _updateActiveItemContent(data) {
     let tmp = document.createElement("div");
     tmp.innerHTML = data;
-    tmp.childNodes.forEach((node) => {
+    for (const node of tmp.childNodes) {
       this.nodeNormalizeIDs(node);
-    });
+    }
     data = tmp.innerHTML;
+    // cheat to ensure we get a rebuild of the content in case
+    // they only modified page title / other page-break based details
+    this.activeItemContent = "";
     this.activeItemContent = data;
   }
   /**
@@ -199,6 +202,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * life cycle updated
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     // track these so we can debounce if multiple values updated at once
     let loadOutline = false;
     let loadPage = false;
@@ -384,6 +390,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.appendChild(store.themeElement);
     }
   }
+
   /**
    * Alert there was an internal error in getting the file
    */
@@ -624,9 +631,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
         break-type="site"
-        path-auto
-        ${store.activeItem.metadata.locked ? "locked" : ""}
-        ${store.activeItem.metadata.published === false ? "" : "published"}
+        ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
+        ${
+          store.activeItem.metadata.published === false
+            ? ""
+            : 'published="published"'
+        }
         ></page-break>${newValue}`;
         html = encapScript(newValue);
         // set in the store

@@ -248,6 +248,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         .aria-owns="${this.id}-list"
         ?autofocus="${this.autofocus}"
         @blur="${this._onInputBlur}"
+        @change="${this._handleFieldChange}"
         class="field box-input ${this.inputFocus ? "focus" : ""}"
         @click="${this._onInputClick}"
         ?disabled="${this.disabled}"

@@ -1,26 +1,50 @@
-import { html } from "lit";
-import {
-  withKnobs,
-  withWebComponentsKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
-import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { PostCard } from "./post-card.js";
-// need to account for polymer goofiness when webpack rolls this up
+/*import { html } from "lit";
 
-/** 
- * Uncomment to add to Storybook
+import "./post-card.js";
+
 export default {
-  title: 'Card|PostCard',
-  component: 'post-card',
-  decorators: [withKnobs, withWebComponentsKnobs],
-  parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" },
+  title: "Post Card",
+  component: "post-card",
+  argTypes: {
+    location: { control: "text" },
+    photoSrc: { control: "file" },
+    stampSrc: { control: "file" },
+    to: { control: "text" },
+    from: { control: "text" },
+    message: { control: "text" },
+    slot: { control: "text" },
   },
 };
-const utils = new StorybookUtilities();
-export const PostCardStory = () => {
-  return utils.makeElementFromClass(PostCard);
-}; 
+
+function PostCardTemplate({
+  location,
+  photoSrc,
+  stampSrc,
+  to,
+  from,
+  message,
+  slot,
+}) {
+  return html`<post-card
+    post-mark-locations="${location}"
+    photoSrc="${photoSrc}"
+    stampSrc="${stampSrc}"
+    to="${to}"
+    from="${from}"
+    message="${message}"
+  >
+    ${slot}
+  </post-card>`;
+}
+export const BlankCard = PostCardTemplate.bind({});
+export const ExampleCard = PostCardTemplate.bind({});
+ExampleCard.args = {
+  photoSrc: "https://images.onwardstate.com/uploads/2019/10/IMG_9180.jpg",
+  stampSrc:
+    "https://www.bestcleaners.com/wp-content/uploads/2017/06/AmericanFlag.jpg",
+  to: "Billy",
+  from: "Mandy",
+  location: "Philly",
+  message: "Have you seen Grim recently?",
+};
 */
