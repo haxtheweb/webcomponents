@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Accessible menu button",
   "repository": {
     "type": "git",
@@ -42,10 +42,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^4.0.6",
-    "@lrnwebcomponents/lrn-vocab": "^4.0.6",
-    "@lrnwebcomponents/oer-schema": "^4.0.6",
-    "@lrnwebcomponents/rich-text-editor": "^4.0.6",
+    "@lrnwebcomponents/lrn-math": "^4.0.7",
+    "@lrnwebcomponents/lrn-vocab": "^4.0.7",
+    "@lrnwebcomponents/oer-schema": "^4.0.7",
+    "@lrnwebcomponents/rich-text-editor": "^4.0.7",
     "lit": "^2.0.2"
   },
   "devDependencies": {
