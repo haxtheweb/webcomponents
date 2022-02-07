@@ -225,6 +225,7 @@ export const HaxIconsetManifest = [
   {
     name: "mdextra",
     icons: [
+      "cursor-text",
       "hexagon-multiple",
       "hexagon-outline",
       "hexagon",
