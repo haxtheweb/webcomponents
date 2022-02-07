@@ -4,9 +4,9 @@ import {
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/hax-logo/hax-logo.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
@@ -32,12 +32,14 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
         .pref-container {
           text-align: left;
         }
-        simple-icon-button {
-          float: right;
+        simple-icon-lite {
+          --simple-icon-height: 36px;
+          --simple-icon-width: 36px;
         }
       `,
     ];
   }
+
   constructor() {
     super();
     this.hideLink = false;
@@ -148,7 +150,8 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
             id="link"
             target="_blank"
             part="haxlink"
-            >${this.t.learnAboutHAXTheWeb}</a
+            ><simple-icon-lite icon="hax:hax2022"></simple-icon-lite> ${this.t
+              .learnAboutHAXTheWeb}</a
           >`
         : ``}
     `;

@@ -1,3 +1,0 @@
-/**
- * @demo site.html
- */
