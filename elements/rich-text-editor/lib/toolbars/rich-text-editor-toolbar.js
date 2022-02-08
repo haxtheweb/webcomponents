@@ -1526,45 +1526,57 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get defaultRegexes() {
       return [
         {
+          match: /\[([^\]]+)\]\((#\S+(?=\)))\)/,
+          replace: '<a href="$2">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '<a href="$2">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
           match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
           replace: "<b>$2</b>",
-          excludeAncestors: ["b", "strong"],
+          excludeAncestors: ["b", "strong", "pre", "code"],
           lastChars: ["*", "_"],
         },
         {
           match: /([^\*]|^)\*(([^\*]*\*{2}[^\*]+\*{2}[^\*]*)+|[^\*]+)\*(?!\*)/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["*"],
         },
         {
           match: /([^_]|^)_(([^_]*_{2}[^_]+_{2}[^_]*)+|[^_]+)_(?!_)/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["*"],
         },
         {
           match: /([^\*]|^|\*{2})\*([^\*]+)\*(?=[^\*])/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["*"],
         },
         {
           match: /([^_]|^|_{2})_([^_]+)_(?=[^_])/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["_"],
         },
         {
           match: /(\*{2}[^\*]+)\*([^\*]+)\*(?=\*)/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["*"],
         },
         {
           match: /(_{2}[^_]+)_([^_]+)_(?=_)/,
           replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i"],
+          excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["_"],
         },
         {
