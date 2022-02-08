@@ -1526,16 +1526,40 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get defaultRegexes() {
       return [
         {
-          match: /\[([^\]]+)\]\((#\S+(?=\)))\)/,
-          replace: '<a href="$2">$1</a>',
+          match: /^#\s(.+)/,
+          replace: "<h1>$1</h1>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: [""],
+        },
+        {
+          match: /!\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '<img alt="$1" src="$2"/>',
+          excludeAncestors: ["pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /&lt;(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))&gt;/,
+          replace: '<a href="$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
+        },
+        {
+          match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '$1<a href="$3">$2</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [")"],
         },
         {
-          match: /\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
-          replace: '<a href="$2">$1</a>',
+          match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
+          replace: '<a href="mailto:$2">$1</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [")"],
+        },
+        {
+          match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
+          replace: '<a href="mailto:$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
         },
         {
           match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
