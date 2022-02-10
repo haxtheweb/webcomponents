@@ -20,11 +20,11 @@ import "@polymer/marked-element/marked-element.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@lrnwebcomponents/moment-element/moment-element.js";
 /**
-`lrnsys-comment`
-A well styled comment for a user with markdown support.
-
-* @demo demo/index.html
-*/
+ `lrnsys-comment`
+ A well styled comment for a user with markdown support.
+ 
+ * @demo demo/index.html
+ */
 class LrnsysComment extends PolymerElement {
   constructor() {
     super();
