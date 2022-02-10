@@ -385,9 +385,9 @@ const RichTextEditorBehaviors = function (SuperClass) {
           toolbar = filter[0];
         } else if (filter.length === 0) {
           //make toolbar
-          toolbar = document.createElement(
-            this.type || "rich-text-editor-toolbar"
-          );
+          let toolbarType = this.type || "rich-text-editor-toolbar";
+          console.log(toolbarType);
+          toolbar = document.createElement(toolbarType);
         }
         this.__toolbar = toolbar;
         if (!this.disabled && this.__toolbar && this.__toolbar.setTarget)

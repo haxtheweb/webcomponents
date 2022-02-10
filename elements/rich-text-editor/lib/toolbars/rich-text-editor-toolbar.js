@@ -837,6 +837,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         },
 
         /**
+         * Tracks history for undo/redo
+         */
+        __history: {
+          name: "history",
+          type: Array,
+        },
+
+        /**
          * contains cancelled edits
          */
         __canceledEdits: {
@@ -881,6 +889,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js");
+      this.__history = [];
       this.config = this.defaultConfig;
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";
@@ -1789,19 +1798,25 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _handleTargetMutation(mutations = []) {
       this._handleTargetSelection();
+      let target = this.target;
       (mutations || []).forEach((mutation) => {
+        console.log(mutation);
         if (mutation.type == "attributes") {
-          if ((target.disabled || target.hidden) && target.conteneditable) {
+          /*if ((target.disabled || target.hidden) && target.contenteditable) {
             this.disableEditing(target);
             target.tabindex = -1;
           } else if (
             !target.disabled &&
             !target.hidden &&
-            target.conteneditable
+            target.contenteditable
           ) {
             this.enableEditing(target);
             target.tabindex = 0;
-          }
+          }*/
+        } else {
+          if (target && target.contenteditable)
+            this.__history.push(this.targetHTML);
+          console.log(this.__history);
         }
       });
     }
