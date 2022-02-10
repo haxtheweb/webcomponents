@@ -94,7 +94,7 @@ const RichTextToolbarStyles = [
       );
       --simple-toolbar-button-disabled-color: var(
         --rich-text-editor-button-disabled-color,
-        #666
+        #bbb
       );
       --simple-toolbar-button-disabled-bg: var(
         --rich-text-editor-button-disabled-bg,
