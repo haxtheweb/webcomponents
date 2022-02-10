@@ -104,46 +104,7 @@ class HaxLogo extends HTMLElement {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Hax logo",
-        description:
-          "logo element for hax, obviously as a hax capable element.",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Logo"],
-        handles: [],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            attribute: "size",
-            description: "Size of the HAX logo to place",
-            inputMethod: "select",
-            options: {
-              mini: "Mini",
-              small: "Small",
-              normal: "Normal",
-              large: "Large",
-            },
-            required: false,
-          },
-          {
-            attribute: "toupper",
-            description: "Whether to transform logo to upper case",
-            inputMethod: "boolean",
-            required: false,
-          },
-        ],
-      },
-    };
+    return new URL("./lib/hax-logo.haxProperties.json", import.meta.url).href;
   }
 
   /**

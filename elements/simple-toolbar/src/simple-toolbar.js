@@ -334,7 +334,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
-      this.setAttribute("role", "toolbar");
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
@@ -363,6 +362,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     }
     firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
+      this.setAttribute("role", "toolbar");
       this.onfocus = (e) => (this.__focused = true);
       this.onblur = (e) => (this.__focused = false);
       this.onmouseover = (e) => (this.__hovered = true);

@@ -67,6 +67,7 @@ const DataStyleDecoration = {
   title: "Decoration",
   description: "Some built in styles to offset the material",
   inputMethod: "select",
+  //multiple: true,
   options: {
     "": "",
     "highlight red": "Highlight (red)",

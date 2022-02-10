@@ -82,6 +82,7 @@ export const HaxIconsetManifest = [
       "h3",
       "h4",
       "h5",
+      "hax2022",
       "hr",
       "html-code",
       "keyboard-arrow-down",
@@ -224,6 +225,7 @@ export const HaxIconsetManifest = [
   {
     name: "mdextra",
     icons: [
+      "cursor-text",
       "hexagon-multiple",
       "hexagon-outline",
       "hexagon",

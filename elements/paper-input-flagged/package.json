@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Automated conversion of paper-input-flagged/",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.6",
-    "@lrnwebcomponents/simple-fields": "^4.0.6",
-    "@lrnwebcomponents/simple-icon": "^4.0.6",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.6",
+    "@lrnwebcomponents/hax-iconset": "^4.0.7",
+    "@lrnwebcomponents/simple-fields": "^4.0.7",
+    "@lrnwebcomponents/simple-icon": "^4.0.7",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.7",
     "lit": "^2.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.6",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.7",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
