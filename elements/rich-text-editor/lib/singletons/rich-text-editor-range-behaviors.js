@@ -164,7 +164,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {string}
      */
     outdentHTML(str = "") {
-      str = this.sanitizeHTML(str)
+      str = (this.sanitizeHTML(str) || "")
         .replace(/[\s]*$/, "")
         .replace(/^[\n\r]*/, "")
         .replace(/[\n\r]+/gm, "\n");

@@ -944,7 +944,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get controls() {
       let controls = !this.target ? undefined : this.target.getAttribute("id");
-      this.setAttribute("controls", controls);
+      if (!!this.target) this.setAttribute("controls", controls);
       return controls;
     }
 
@@ -1381,8 +1381,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {string} html html to be pasted
      * @returns {string} filtered html as string
      */
-    sanitizeHTML(html) {
-      if (!html) return;
+    sanitizeHTML(html = "") {
       let regex = "<body(.*\n)*>(.*\n)*</body>";
       if (html.match(regex) && html.match(regex).length > 0)
         html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
