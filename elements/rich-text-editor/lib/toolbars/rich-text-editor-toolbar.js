@@ -837,11 +837,36 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         },
 
         /**
+         * sets a maximum amount of undo/redo steps in history
+         */
+        historyMax: {
+          name: "historyMax",
+          attribute: "history-max",
+          type: Number,
+        },
+
+        /**
          * Tracks history for undo/redo
          */
         __history: {
-          name: "history",
+          name: "__history",
           type: Array,
+        },
+
+        /**
+         * pauses history when multiple mutations must count as one change
+         */
+        historyPaused: {
+          name: "historyPaused",
+          type: Boolean,
+        },
+
+        /**
+         * location of undo in history
+         */
+        __historyLocation: {
+          name: "__historyLocation",
+          type: Number,
         },
 
         /**
@@ -889,12 +914,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js");
-      this.__history = [];
+      this.resetHistory();
       this.config = this.defaultConfig;
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";
       this.breadcrumbsSelectAllLabel = "All";
       this.__toolbar = this;
+      this.historyMax = 10;
       document.addEventListener(
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar)
@@ -938,6 +964,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
+        if (propName === "historyMax") console.log(this.historyMax);
         if (propName === "range") this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();
@@ -945,6 +972,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.hidden = this.disconnected;
         if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
           this.breadcrumbs.sticky = this.sticky;
+        if (["__history", "__historyLocation"].includes(propName))
+          this._updateUndoRedoButtons();
       });
     }
 
@@ -955,7 +984,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get controls() {
       let controls = !this.target ? undefined : this.target.getAttribute("id");
-      this.setAttribute("controls", controls);
+      if (!!this.target) this.setAttribute("controls", controls);
       return controls;
     }
 
@@ -998,20 +1027,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get isRangeInScope() {
-      return (
-        this.range &&
-        this.target &&
-        this.rangeNodeOrParentNode(this.range) &&
-        this.target.contains(this.rangeNodeOrParentNode(this.range))
-      );
+      return this._isRangeInScope();
     }
 
+    _isRangeInScope(range = this.range) {
+      let rangeParent = range ? this.rangeNodeOrParentNode(range) : false,
+        targetIsRangeParent = this.target && this.target == rangeParent,
+        targetIsRangeAncestor =
+          this.target && rangeParent && this.target.contains(rangeParent);
+      return targetIsRangeParent || targetIsRangeAncestor;
+    }
     /**
      * cancels edits to active editor
      * @returns {void}
      * @event cancel
      */
     cancel() {
+      this.resetHistory();
       this.dispatchEvent(
         new CustomEvent("cancel", {
           bubbles: true,
@@ -1028,7 +1060,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      */
     close() {
-      //if (editor) this.disableEditing(editor);
+      this.resetHistory();
       this.target = undefined;
       this.positionByTarget(false);
       this.dispatchEvent(
@@ -1046,6 +1078,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @event editor-change
      */
     _editorChanged() {
+      this.resetHistory();
       this.dispatchEvent(
         new CustomEvent("editor-change", {
           bubbles: true,
@@ -1096,7 +1129,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e
      */
     _rangeChanged(newValue, oldValue) {
-      this._updateButtonRanges();
+      if (newValue !== oldValue)
+        this._updateButtonRanges(this._isRangeInScope(oldValue));
       this.dispatchEvent(
         new CustomEvent("range-changed", {
           bubbles: true,
@@ -1149,7 +1183,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       (button.tagsArray || []).forEach((tag) => {
         if (!!button.tagClickCallback) this.clickableElements[tag] = button;
       });
+      this._updateUndoRedoButton(button);
     }
+
     /**
      * adds breadcrumbfeature
      *
@@ -1197,10 +1233,33 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     /**
+     * updates disabled property of undo and redo buttons based on history
+     */
+    _updateUndoRedoButtons() {
+      (this.buttons || []).forEach((button) =>
+        this._updateUndoRedoButton(button)
+      );
+    }
+    /**
+     *
+     * updates disabled property of an undo or redo button based on history
+     *
+     * @param {*} button
+     */
+    _updateUndoRedoButton(button) {
+      if (button.command == "undo") {
+        button.disabled = !this.__history || this.__historyLocation < 1;
+      } else if (button.command == "redo") {
+        button.disabled =
+          !this.__history || this.__historyLocation > this.__history.length - 2;
+      }
+    }
+
+    /**
      * updates buttons with selected range
      * @returns {void}
      */
-    _updateButtonRanges() {
+    _updateButtonRanges(clearEmptyRanges) {
       if (this.isRangeInScope) {
         let nodes = [],
           getParentNode = (node) => {
@@ -1220,17 +1279,24 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         });
         this.selectedNode = nodes[0];
         this.selectionAncestors = nodes.reverse();
+        if (this.breadcrumbs) {
+          this.breadcrumbs.selectionAncestors = this.selectionAncestors;
+          this.breadcrumbs.hidden = this.disconnected;
+          this.breadcrumbs.editor = this.editor;
+        }
         (this.buttons || []).forEach((button) => {
           button.range = undefined;
           button.range = this.range;
           button.selectedNode = this.selectedNode;
           button.selectionAncestors = this.selectionAncestors;
         });
+      } else if (clearEmptyRanges) {
         if (this.breadcrumbs) {
-          this.breadcrumbs.selectionAncestors = this.selectionAncestors;
-          this.breadcrumbs.hidden = this.disconnected;
-          this.breadcrumbs.editor = this.editor;
+          this.breadcrumbs.selectionAncestors = undefined;
         }
+        (this.buttons || []).forEach((button) => {
+          button.range = undefined;
+        });
       }
     }
     /* ------- TARGET -------- */
@@ -1247,7 +1313,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     get enabledTargetHandlers() {
       return {
-        keydown: this._removeHighlight.bind(this),
+        keydown: this._handleTargetKeyDown.bind(this),
+        keyup: this._handleTargetKeyUp.bind(this),
         keypress: this._handleTargetKeypress.bind(this),
         mousedown: this._removeHighlight.bind(this),
         mouseup: this._addHighlight.bind(this),
@@ -1291,7 +1358,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!!target && !target.hidden && !target.disabled) {
         if (target.makeSticky) target.makeSticky(this.sticky);
         this.positionByTarget(target);
-        target.setAttribute("contenteditable", "true");
+        if (
+          !target.getAttribute("contenteditable") ||
+          target.getAttribute("contenteditable") == true
+        )
+          target.setAttribute("contenteditable", "true");
 
         Object.keys(handlers).forEach((handler) =>
           target.removeEventListener(handler, handlers[handler])
@@ -1315,6 +1386,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               .trim(),
           })
         );
+        target.tabindex = 0;
+        this.updateHistory();
       }
     }
 
@@ -1327,7 +1400,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.getRoot(target).onselectionchange = undefined;
         this.observeChanges(false);
         if (this.__source) this.__source.toggle(false);
-        target.removeAttribute("contenteditable");
+        if (
+          !!target.getAttribute("contenteditable") ||
+          target.getAttribute("contenteditable") == true
+        )
+          target.removeAttribute("contenteditable");
 
         Object.keys(handlers).forEach((handler) =>
           target.removeEventListener(handler, handlers[handler])
@@ -1344,6 +1421,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               .trim(),
           })
         );
+        target.tabindex = -1;
       }
     }
 
@@ -1367,7 +1445,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     observeChanges(on = true) {
       if (on) {
         this.observer.observe(this.target, {
-          attributes: false,
+          attributes: true,
           childList: true,
           subtree: true,
           characterData: false,
@@ -1392,8 +1470,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {string} html html to be pasted
      * @returns {string} filtered html as string
      */
-    sanitizeHTML(html) {
-      if (!html) return;
+    sanitizeHTML(html = "") {
       let regex = "<body(.*\n)*>(.*\n)*</body>";
       if (html.match(regex) && html.match(regex).length > 0)
         html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
@@ -1671,8 +1748,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       });
       return regexes;
     }
-
+    /**
+     * checks for markdown and replaces
+     *
+     * @param {event} e keypress event
+     */
     _handleMarkdown(e) {
+      let keepPaused = this.historyPaused;
+      this.historyPaused = true;
       //drop a placeholder into editor so we know where range is
       let range = this.getRange(),
         node = range ? range.commonAncestorContainer : false,
@@ -1783,6 +1866,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
       //remove placeholder from editor
       if (!found) span.remove();
+      this.historyPaused = keepPaused;
+      if (found) this.updateHistory();
     }
 
     _handleTargetKeypress(e) {
@@ -1798,27 +1883,40 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _handleTargetMutation(mutations = []) {
       this._handleTargetSelection();
-      let target = this.target;
+      let target = this.target,
+        update = false;
       (mutations || []).forEach((mutation) => {
-        console.log(mutation);
-        if (mutation.type == "attributes") {
-          /*if ((target.disabled || target.hidden) && target.contenteditable) {
+        if (
+          mutation.type == "attributes" &&
+          ["disabled", "hidden", "contenteditable"].includes(
+            mutation.attributeName
+          )
+        ) {
+          if ((target.disabled || target.hidden) && target.contenteditable) {
             this.disableEditing(target);
-            target.tabindex = -1;
           } else if (
             !target.disabled &&
             !target.hidden &&
             target.contenteditable
           ) {
             this.enableEditing(target);
-            target.tabindex = 0;
-          }*/
-        } else {
-          if (target && target.contenteditable)
-            this.__history.push(this.targetHTML);
-          console.log(this.__history);
+          }
+        } else if (!this.historyPaused) {
+          let nodes = [
+              ...(mutation.addedNodes || []),
+              ...(mutation.removedNodes || []),
+            ],
+            filtered;
+          filtered = nodes.filter(
+            (node) =>
+              !node.getAttribute ||
+              !node.getAttribute("id") ||
+              node.getAttribute("id").indexOf("range-placeholder") < 0
+          );
+          if (filtered.length > 0) update = true;
         }
       });
+      if (target && target.contenteditable && update) this.updateHistory();
     }
     _handleTargetSelection(e) {
       if (!this.__promptOpen) this.range = this.getRange();
@@ -1828,6 +1926,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.pasteFromClipboard();
     }
     _addHighlight() {
+      let keepPaused = this.historyPaused;
+      this.historyPaused = true;
       if (!this.__highlight.hidden) return;
       this.range = this.getRange();
       if (
@@ -1836,9 +1936,146 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       )
         return;
       this.__highlight.wrap(this.range || this.getRange());
+      this.historyPaused = keepPaused;
     }
+
+    /**
+     * undo last action
+     *
+     */
+    undo() {
+      this._restoreFromHistory();
+    }
+
+    /**
+     * redo last action
+     *
+     */
+    redo() {
+      this._restoreFromHistory(1);
+    }
+
+    /**
+     * restores target HTML from history before or after the current point
+     *
+     * @param {number} [direction=-1] direction relative to current location of history, eg. -1 for undo
+     */
+    _restoreFromHistory(direction = -1) {
+      this.__historyLocation = this.__historyLocation + direction;
+      console.log(
+        "restore from history",
+        this.__history,
+        this.__historyLocation
+      );
+      if (-1 < this.__historyLocation < this.__history.length) {
+        let history = this.__history[this.__historyLocation],
+          inRange = this._isRangeInScope(this.range);
+
+        if (!history || !history.html || !history.range) return;
+        this.historyPaused = true;
+        this.target.innerHTML = history.html;
+        this.selectRange(history.range);
+        this.range = history.range;
+        this._updateButtonRanges(inRange);
+        this.historyPaused = false;
+      }
+    }
+
+    /**
+     * resets history, pausing, and location
+     *
+     */
+    resetHistory() {
+      this.__historyLocation = -1;
+      this.__history = [];
+      this.historyPaused = false;
+    }
+
+    /**
+     * adds new changes to history as long as history is not paused for complex changes
+     *
+     * @param {string} [description="change"] description of the type of change (to eventually allow for multi-step undo)
+     * @param {string} [changes=this.targetHTML] html to save as a change
+     * @param {object} [range=this.getRange()] current range
+     * @returns
+     */
+    updateHistory(
+      description = "change",
+      changes = this.targetHTML,
+      range = this.getRange()
+    ) {
+      //only update history if not paused
+      if (this.historyPaused) return;
+
+      //get start and end of history based on maximum amount saved
+      let end = this.__historyLocation + 1,
+        start = Math.max(end + 1 - this.historyMax, 0),
+        prev = this.__history[this.__historyLocation],
+        html = prev ? prev.html : false;
+
+      console.log(
+        "update history",
+        this.historyPaused,
+        end,
+        start,
+        this.__historyLocation,
+        html == changes
+      );
+
+      if (html == changes) return;
+      //clear history after current location and add changes
+      this.__history = [
+        ...this.__history.slice(start, end),
+        {
+          html: changes,
+          type: description,
+          range: range.cloneRange(),
+        },
+      ];
+
+      //set location to current changes
+      this.__historyLocation = this.__history.length - 1;
+      console.log("updated history", this.__historyLocation, this.__history);
+    }
+    /**
+     * tracks control key
+     *
+     * @param {event} e keyup event
+     */
+    _handleTargetKeyUp(e) {
+      if (e.keyCode == 17 || e.keyCode == 91) {
+        this.__ctrlDown = false;
+      }
+    }
+
+    /**
+     * handles keydown
+     *
+     * @param {event} e keydown event
+     */
+    _handleTargetKeyDown(e) {
+      //takes over undo and redo
+      if (e.keyCode == 17 || e.keyCode == 91) {
+        this.__ctrlDown = true;
+      }
+      if (this.__ctrlDown && e.key == "z") {
+        e.preventDefault();
+        this.undo();
+        return false;
+      } else if (this.__ctrlDown && e.key == "y") {
+        e.preventDefault();
+        this.redo();
+        return false;
+      }
+      //remove any highlight
+      this._removeHighlight();
+    }
+
     _removeHighlight() {
+      let keepPaused = this.historyPaused;
+      this.historyPaused = true;
       this.__highlight.unwrap(this.range || this.getRange());
+      this.historyPaused = keepPaused;
     }
   };
 };

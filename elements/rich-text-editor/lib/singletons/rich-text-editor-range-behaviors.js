@@ -164,7 +164,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {string}
      */
     outdentHTML(str = "") {
-      str = this.sanitizeHTML(str)
+      str = (this.sanitizeHTML(str) || "")
         .replace(/[\s]*$/, "")
         .replace(/^[\n\r]*/, "")
         .replace(/[\n\r]+/gm, "\n");
@@ -517,10 +517,13 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {object} range object
      */
     highlightNode(node, range = this.range) {
+      let keepPaused = this.__toolbar.historyPaused;
+      this.__toolbar.historyPaused = true;
       let element = node || this.rangeOrMatchingAncestor();
       if (!!element) this.selectNode(node, range);
       this.__toolbar.updateRange();
       this.__highlight.wrap(range);
+      this.__toolbar.historyPaused = keepPaused;
     }
     /**
      * selects or deselects(collapses) a range
@@ -589,11 +592,22 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     _handleCommand(command, commandVal, range = this.getRange()) {
       let toolbar = this.__toolbar,
-        target = toolbar.target;
+        target = toolbar.target,
+        keepPaused = toolbar && toolbar.historyPaused;
+
+      if (!toolbar) return;
+      toolbar.historyPaused = true;
+
       if (this.validCommands.includes(command)) {
         commandVal =
           toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
-        if (command == "wrapRange" && !!commandVal) {
+        if (command == "undo") {
+          toolbar.undo();
+          keepPaused = false;
+        } else if (command == "redo") {
+          toolbar.redo();
+          keepPaused = false;
+        } else if (command == "wrapRange" && !!commandVal) {
           // wrap or unwrapsa range with a commandVal element
           let toggled = this.commandToggledForRange(
               range,
@@ -634,13 +648,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           this.pasteFromClipboard();
         }
       } else if (command === "cancel") {
-        if (target) target.revert();
+        toolbar.revertTarget(target);
         toolbar.close(target);
       } else if (command === "close") {
         toolbar.close(target);
       } else if (command === "viewSource") {
         this.__source.toggle(toolbar);
       }
+      toolbar.historyPaused = keepPaused;
     }
   };
 };
