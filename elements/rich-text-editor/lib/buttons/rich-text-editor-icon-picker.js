@@ -101,14 +101,13 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
    * Picker change
    */
   _pickerChange(e) {
-    let val = this._getSelectionType() || "",
-      parent = this.__highlight.parentNode;
+    let val = this._getSelectionType() || "";
     this.commandVal = e.detail.value
       ? `<simple-icon-lite icon="${e.detail.value}"></simple-icon-lite>`
       : "";
 
     /* only update when there is an actual change */
-    if (this.range && val !== this.commandVal) {
+    if (val !== this.commandVal) {
       this.sendCommand();
     }
   }
