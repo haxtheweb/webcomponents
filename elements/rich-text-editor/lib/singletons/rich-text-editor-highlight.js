@@ -93,6 +93,7 @@ class RichTextEditorHighlight extends LitElement {
     if (!this.hidden && range !== this.range) this.emptyContents();
     this.range = range;
     let contents = range.extractContents();
+    this.innerHTML = "";
     this.append(contents);
     try {
       range.insertNode(this);
@@ -108,6 +109,7 @@ class RichTextEditorHighlight extends LitElement {
       if (range) range.insertNode(node);
     });
     document.body.append(this);
+    this.innerHTML = "";
     this.hidden = true;
     this.range = range;
   }
