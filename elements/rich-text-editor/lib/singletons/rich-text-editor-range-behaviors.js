@@ -478,7 +478,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     }
 
     getRangeFromCopy(target, rangeInfo) {
-      console.log(target, target.childNodes);
       if (!rangeInfo || !target) return;
       let range = new Range(),
         getContainer = (offsets) => {
@@ -491,7 +490,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         },
         startContainer = getContainer(rangeInfo.startLocation),
         endContainer = getContainer(rangeInfo.endLocation);
-      console.log(startContainer, endContainer);
       range.setStart(startContainer, rangeInfo.startOffset);
       range.setEnd(endContainer, rangeInfo.endOffset);
       return range;
@@ -648,7 +646,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         keepPaused = toolbar && toolbar.historyPaused;
 
       if (!toolbar) return;
-      toolbar.historyPaused = true;
 
       if (this.validCommands.includes(command)) {
         commandVal =
@@ -689,6 +686,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           }
           target.normalize();
         }
+        toolbar.historyPaused = true;
         if (this.__highlight.parentNode === document.body)
           this.__highlight.wrap(range);
         this.__highlight.unwrap(range);
@@ -700,6 +698,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         } else if (navigator.clipboard && command == "paste") {
           this.pasteFromClipboard();
         }
+        toolbar.historyPaused = keepPaused;
       } else if (command === "cancel") {
         toolbar.revertTarget(target);
         toolbar.close(target);
@@ -708,7 +707,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       } else if (command === "viewSource") {
         this.__source.toggle(toolbar);
       }
-      toolbar.historyPaused = keepPaused;
     }
   };
 };

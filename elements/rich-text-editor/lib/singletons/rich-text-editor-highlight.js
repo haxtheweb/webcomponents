@@ -70,6 +70,10 @@ class RichTextEditorHighlight extends LitElement {
     this.id = "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 
+  isActiveForEditor(editor) {
+    return editor.contains(this);
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
