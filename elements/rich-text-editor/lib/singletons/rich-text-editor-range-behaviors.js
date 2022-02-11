@@ -648,6 +648,8 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
 
       if (!toolbar) return;
 
+      console.log(command, commandVal, this.debugRange(range));
+
       //custom cancel source command
       if (command === "cancel") {
         toolbar.revertTarget(target);
@@ -710,7 +712,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         console.log(toolbar.historyPaused, toolbar);
 
         if (this.__highlight.isActiveForEditor(target)) {
-          range = range || this.__highlight.range || this.range;
+          range = this.__highlight.range || this.getRange();
           this.__highlight.unwrap();
         }
         this.selectRange(range);
@@ -726,6 +728,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         target.normalize();
         console.log("exec", target.innerHTML);
         toolbar.historyPaused = keepPaused;
+        toolbar.range = this.getRange();
       }
     }
   };

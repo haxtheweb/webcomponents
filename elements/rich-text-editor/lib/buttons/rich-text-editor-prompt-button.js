@@ -153,15 +153,10 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     confirm(val) {
       this.value = val;
-      //this.update();
       this.setToggled();
-
-      let keepPaused = this.__toolbar.historyPaused;
-      toolbar.historyPaused = true;
       this.updateSelection();
-      this.__toolbar.historyPaused = keepPaused;
-      this.__toolbar.updateHistory();
       this.close();
+      this.__toolbar.updateHistory();
     }
 
     /**

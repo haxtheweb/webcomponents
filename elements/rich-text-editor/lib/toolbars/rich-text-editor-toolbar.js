@@ -107,6 +107,236 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     static get styles() {
       return [...this.baseStyles, ...super.stickyStyles];
     }
+
+    // render function for template
+    render() {
+      return this.toolbarTemplate;
+    }
+
+    // properties available to custom element for data binding
+    static get properties() {
+      return {
+        ...super.properties,
+        /**
+         * The label for the breadcrums area.
+         */
+        breadcrumbsLabel: {
+          name: "breadcrumbsLabel",
+          type: String,
+          attribute: "breadcrumbs-label",
+        },
+        /**
+         * The label for the breadcrums area.
+         */
+        breadcrumbsSelectAllLabel: {
+          name: "breadcrumbsSelectAllLabel",
+          type: String,
+          attribute: "breadcrumbs-select-all-label",
+        },
+        /**
+         * `rich-text-editor` element that is currently in `editing` mode
+         */
+        target: {
+          name: "target",
+          type: Object,
+        },
+        /**
+         * `rich-text-editor` unique id
+         */
+        id: {
+          name: "id",
+          type: String,
+          attribute: "id",
+          reflect: true,
+        },
+        /**
+         * current text selected range.
+         */
+        savedSelection: {
+          name: "savedSelection",
+          type: Object,
+        },
+        /**
+         * selection singleton
+         */
+        registered: {
+          type: Boolean,
+        },
+        /**
+         * currently selected node
+         */
+        selectedNode: {
+          type: Object,
+        },
+        /**
+         * array of ancestors of currently selected node
+         */
+        selectionAncestors: {
+          type: Array,
+        },
+        /**
+         * when to make toolbar visible:
+         * "always" to keep it visible,
+         * "selection" when there is an active selection,
+         * or defaults to only when connected to a toolbar
+         */
+        show: {
+          type: String,
+          attribute: "show",
+          reflect: true,
+        },
+        /**
+         * Tracks inline widgets that require selection data
+         */
+        clickableElements: {
+          name: "clickableElements",
+          type: Object,
+        },
+
+        /**
+         * sets a maximum amount of undo/redo steps in history
+         */
+        historyMax: {
+          name: "historyMax",
+          attribute: "history-max",
+          type: Number,
+        },
+
+        /**
+         * Tracks history for undo/redo
+         */
+        history: {
+          name: "history",
+          type: Array,
+        },
+
+        /**
+         * pauses history when multiple mutations must count as one change
+         */
+        historyPaused: {
+          name: "historyPaused",
+          type: Boolean,
+        },
+
+        /**
+         * location of undo in history
+         */
+        historyLocation: {
+          name: "historyLocation",
+          type: Number,
+        },
+
+        /**
+         * contains cancelled edits
+         */
+        __canceledEdits: {
+          type: Object,
+        },
+        /**
+         * hides paste button in Firefox
+         */
+        __pasteDisabled: {
+          name: "__pasteDisabled",
+          type: Boolean,
+          attribute: "paste-disabled",
+          reflect: true,
+        },
+        __prompt: {
+          type: Object,
+        },
+        /**
+         * whether prompt is open
+         */
+        __promptOpen: {
+          name: "__promptOpen",
+          type: Boolean,
+        },
+      };
+    }
+    constructor() {
+      super();
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js");
+      this.resetHistory();
+      this.config = this.defaultConfig;
+      this.clickableElements = {};
+      this.breadcrumbsLabel = "Select";
+      this.breadcrumbsSelectAllLabel = "All";
+      this.__toolbar = this;
+      this.historyMax = 10;
+      document.addEventListener(
+        shadow.eventName,
+        this._handleTargetSelection.bind(this.__toolbar)
+      );
+      this.addEventListener("mousedown", this._handleToolbarMousedown);
+      this.addEventListener("focue", this._handleToolbarFocus);
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      window.RichTextEditorToolbars.push(this);
+    }
+
+    /**
+     * life cycle, element is disconnected
+     * @returns {void}
+     */
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
+        (toolbar) => toolbar !== this
+      );
+    }
+
+    firstUpdated(changedProperties) {
+      if (!this.id) this.id = this._generateUUID();
+      super.firstUpdated(changedProperties);
+      if (this.hasBreadcrumbs && this.editor)
+        this.positionByTarget(this.editor);
+      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
+      this.__prompt.addEventListener("open", (e) => {
+        this.__promptOpen = true;
+      });
+      this.__prompt.addEventListener("close", (e) => {
+        this.__promptOpen = false;
+      });
+    }
+
+    updated(changedProperties) {
+      super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "historyMax") {
+          let offset = this.history.length - this.historyLocation;
+          this.history = this.history.slice(0 - this.historyMax);
+          this.historyLocation = Math.min(0, this.history.length - offset);
+        }
+        if (propName === "range") this._rangeChanged(this.range, oldValue);
+        if (propName === "config") this.updateToolbar();
+        if (propName === "editor") this._editorChange();
+        if (["editor", "show", "range"].includes(propName))
+          this.hidden = this.disconnected;
+        if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
+          this.breadcrumbs.sticky = this.sticky;
+        if (["history", "historyLocation"].includes(propName))
+          this._updateUndoRedoButtons();
+        if (propName === "historyPaused")
+          console.log("historyPaused", this.historyPaused, this);
+      });
+    }
     /**
      * default config for an undo button
      *
@@ -751,238 +981,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return super.toolbarTemplate;
     }
 
-    // render function for template
-    render() {
-      return this.toolbarTemplate;
-    }
-
-    // properties available to custom element for data binding
-    static get properties() {
-      return {
-        ...super.properties,
-        /**
-         * The label for the breadcrums area.
-         */
-        breadcrumbsLabel: {
-          name: "breadcrumbsLabel",
-          type: String,
-          attribute: "breadcrumbs-label",
-        },
-        /**
-         * The label for the breadcrums area.
-         */
-        breadcrumbsSelectAllLabel: {
-          name: "breadcrumbsSelectAllLabel",
-          type: String,
-          attribute: "breadcrumbs-select-all-label",
-        },
-        /**
-         * `rich-text-editor` element that is currently in `editing` mode
-         */
-        target: {
-          name: "target",
-          type: Object,
-        },
-        /**
-         * `rich-text-editor` unique id
-         */
-        id: {
-          name: "id",
-          type: String,
-          attribute: "id",
-          reflect: true,
-        },
-        /**
-         * current text selected range.
-         */
-        savedSelection: {
-          name: "savedSelection",
-          type: Object,
-        },
-        /**
-         * selection singleton
-         */
-        registered: {
-          type: Boolean,
-        },
-        /**
-         * currently selected node
-         */
-        selectedNode: {
-          type: Object,
-        },
-        /**
-         * array of ancestors of currently selected node
-         */
-        selectionAncestors: {
-          type: Array,
-        },
-        /**
-         * when to make toolbar visible:
-         * "always" to keep it visible,
-         * "selection" when there is an active selection,
-         * or defaults to only when connected to a toolbar
-         */
-        show: {
-          type: String,
-          attribute: "show",
-          reflect: true,
-        },
-        /**
-         * Tracks inline widgets that require selection data
-         */
-        clickableElements: {
-          name: "clickableElements",
-          type: Object,
-        },
-
-        /**
-         * sets a maximum amount of undo/redo steps in history
-         */
-        historyMax: {
-          name: "historyMax",
-          attribute: "history-max",
-          type: Number,
-        },
-
-        /**
-         * Tracks history for undo/redo
-         */
-        history: {
-          name: "history",
-          type: Array,
-        },
-
-        /**
-         * pauses history when multiple mutations must count as one change
-         */
-        historyPaused: {
-          name: "historyPaused",
-          type: Boolean,
-        },
-
-        /**
-         * location of undo in history
-         */
-        historyLocation: {
-          name: "historyLocation",
-          type: Number,
-        },
-
-        /**
-         * contains cancelled edits
-         */
-        __canceledEdits: {
-          type: Object,
-        },
-        /**
-         * hides paste button in Firefox
-         */
-        __pasteDisabled: {
-          name: "__pasteDisabled",
-          type: Boolean,
-          attribute: "paste-disabled",
-          reflect: true,
-        },
-        __prompt: {
-          type: Object,
-        },
-        /**
-         * whether prompt is open
-         */
-        __promptOpen: {
-          name: "__promptOpen",
-          type: Boolean,
-        },
-      };
-    }
-    constructor() {
-      super();
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-unlink.js");
-      this.resetHistory();
-      this.config = this.defaultConfig;
-      this.clickableElements = {};
-      this.breadcrumbsLabel = "Select";
-      this.breadcrumbsSelectAllLabel = "All";
-      this.__toolbar = this;
-      this.historyMax = 10;
-      document.addEventListener(
-        shadow.eventName,
-        this._handleTargetSelection.bind(this.__toolbar)
-      );
-      //stops mousedown from bubbling up and triggering HAX focus logic
-      this.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
-    }
-
-    connectedCallback() {
-      super.connectedCallback();
-      window.RichTextEditorToolbars.push(this);
-    }
-
-    /**
-     * life cycle, element is disconnected
-     * @returns {void}
-     */
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
-        (toolbar) => toolbar !== this
-      );
-    }
-
-    firstUpdated(changedProperties) {
-      if (!this.id) this.id = this._generateUUID();
-      super.firstUpdated(changedProperties);
-      if (this.hasBreadcrumbs && this.editor)
-        this.positionByTarget(this.editor);
-      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
-      this.__prompt.addEventListener("open", (e) => {
-        this.__promptOpen = true;
-      });
-      this.__prompt.addEventListener("close", (e) => {
-        this.__promptOpen = false;
-      });
-      this.onmousedown = this._addHighlight;
-      this.onkeydown = this._addHighlight;
-    }
-
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "historyMax") {
-          let offset = this.history.length - this.historyLocation;
-          this.history = this.history.slice(0 - this.historyMax);
-          this.historyLocation = Math.min(0, this.history.length - offset);
-        }
-        if (propName === "range") this._rangeChanged(this.range, oldValue);
-        if (propName === "config") this.updateToolbar();
-        if (propName === "editor") this._editorChange();
-        if (["editor", "show", "range"].includes(propName))
-          this.hidden = this.disconnected;
-        if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
-          this.breadcrumbs.sticky = this.sticky;
-        if (["history", "historyLocation"].includes(propName))
-          this._updateUndoRedoButtons();
-        if (propName === "historyPaused")
-          console.log("historyPaused", this.historyPaused, this);
-      });
-    }
-
     /**
      * id of editor currently being controlled
      * @readonly
@@ -1035,7 +1033,165 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get isRangeInScope() {
       return this._isRangeInScope();
     }
-
+    /**
+     * default regexes for markdown support
+     *
+     * @readonly
+     */
+    get defaultRegexes() {
+      return [
+        {
+          match: /^#\s(.+)/,
+          replace: "<h1>$1</h1>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: [""],
+        },
+        {
+          match: /!\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '<img alt="$1" src="$2"/>',
+          excludeAncestors: ["pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /&lt;(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))&gt;/,
+          replace: '<a href="$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
+        },
+        {
+          match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '$1<a href="$3">$2</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
+          replace: '<a href="mailto:$2">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
+          replace: '<a href="mailto:$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
+        },
+        {
+          match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
+          replace: "<b>$2</b>",
+          excludeAncestors: ["b", "strong", "pre", "code"],
+          lastChars: ["*", "_"],
+        },
+        {
+          match: /([^\*]|^)\*(([^\*]*\*{2}[^\*]+\*{2}[^\*]*)+|[^\*]+)\*(?!\*)/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["*"],
+        },
+        {
+          match: /([^_]|^)_(([^_]*_{2}[^_]+_{2}[^_]*)+|[^_]+)_(?!_)/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["*"],
+        },
+        {
+          match: /([^\*]|^|\*{2})\*([^\*]+)\*(?=[^\*])/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["*"],
+        },
+        {
+          match: /([^_]|^|_{2})_([^_]+)_(?=[^_])/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["_"],
+        },
+        {
+          match: /(\*{2}[^\*]+)\*([^\*]+)\*(?=\*)/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["*"],
+        },
+        {
+          match: /(_{2}[^_]+)_([^_]+)_(?=_)/,
+          replace: "$1<i>$2</i>",
+          excludeAncestors: ["em", "i", "pre", "code"],
+          lastChars: ["_"],
+        },
+        {
+          match: /`{3}([^`]+)`{3}(?!`)/,
+          replace: "<pre>$1</pre>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["`"],
+        } /*
+        {
+          match: /`{3}(?=[^`])/,
+          command: "formatBlock",
+          commandVal: "pre",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["`"],
+        },*/,
+        {
+          match: /([^`])`([^`]+)`(?!`)/,
+          replace: "$1<code>$2</code>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["`"],
+        },
+        {
+          match: /\\([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/,
+          replace: "$1",
+          excludeAncestors: ["pre", "code"],
+          lastChars: "+*?^$.[]{}()|/".split(),
+        },
+      ];
+    }
+    /**
+     * object with lists of regexes by last key so only applicable regexes are checked
+     *
+     * @readonly
+     */
+    get replacementsByLastKey() {
+      let regexes = {};
+      this.defaultRegexes.forEach((regex) => {
+        let keys =
+          !regex.lastChars || regex.lastChars.length == 0
+            ? [""]
+            : regex.lastChars;
+        keys.forEach((key) => {
+          if (!regex.replace || !regex.match) return;
+          regexes[key] = regexes[key] || [];
+          regexes[key].push(regex);
+        });
+      });
+      return regexes;
+    }
+    /**
+     *
+     * object with lists of commands by last key so only applicable commands are checked
+     *
+     * @readonly
+     */
+    get commandsByLastKey() {
+      let regexes = {};
+      this.defaultRegexes.forEach((regex) => {
+        let keys =
+          !regex.lastChars || regex.lastChars.length == 0
+            ? [""]
+            : regex.lastChars;
+        keys.forEach((key) => {
+          if (!!regex.replace || !regex.match) return;
+          regexes[key] = regexes[key] || [];
+          regexes[key].push(regex);
+        });
+      });
+      return regexes;
+    }
+    /**
+     * determines if range is in scope of editor
+     *
+     * @param {object} [range=this.range] range object
+     * @returns {boolean}
+     */
     _isRangeInScope(range = this.range) {
       let rangeParent = range ? this.rangeNodeOrParentNode(range) : false,
         targetIsRangeParent = this.target && this.target == rangeParent,
@@ -1043,6 +1199,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.target && rangeParent && this.target.contains(rangeParent);
       return targetIsRangeParent || targetIsRangeAncestor;
     }
+
     /**
      * cancels edits to active editor
      * @returns {void}
@@ -1322,6 +1479,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get enabledTargetHandlers() {
       return {
         keydown: this._handleTargetKeyDown.bind(this),
+        //blur: this._addHighlight.bind(this),
+        //focus: this._removeHighlight.bind(this),
+        //keypress: this._handleTargetKeypress.bind(this),
       };
     }
     /**
@@ -1392,6 +1552,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         );
         target.tabindex = 0;
         if (this.history.length < 1) this.updateHistory();
+        console.log("enabled", target);
       }
     }
 
@@ -1426,6 +1587,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           })
         );
         target.tabindex = -1;
+        console.log("disabled", target);
       }
     }
 
@@ -1555,6 +1717,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         dblclick: (e) => this._handleTargetClick(target, e),
         focus: (e) => this._handleTargetFocus(target, e),
+        blur: (e) => this._handleTargetBlur(e),
         keydown: (e) => this._handleShortcutKeys(e),
         keyup: (e) => this._handleMarkdown(e),
         paste: (e) => this._handlePaste(e),
@@ -1610,147 +1773,34 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.range = this.getRange();
       this.updateRange();
     }
+
+    _handleTargetBlur(e) {
+      console.log(
+        this.target,
+        !this.target || !this.__highlight.isActiveForEditor(this.target),
+        this
+      );
+      if (this.target && !this.__highlight.isActiveForEditor(this.target)) {
+        console.log("highlight");
+        this._addHighlight();
+      }
+    }
     _handleTargetFocus(target, e) {
-      if (!this.__promptOpen && !target.disabled) this.setTarget(target);
+      console.log(this.__promptOpen, target.disabled);
+      if (!this.__promptOpen && !target.disabled) {
+        this.setTarget(target);
+      } else {
+        this._removeHighlight();
+      }
     }
-    get defaultRegexes() {
-      return [
-        {
-          match: /^#\s(.+)/,
-          replace: "<h1>$1</h1>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: [""],
-        },
-        {
-          match: /!\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
-          replace: '<img alt="$1" src="$2"/>',
-          excludeAncestors: ["pre", "code"],
-          lastChars: [")"],
-        },
-        {
-          match: /&lt;(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))&gt;/,
-          replace: '<a href="$1">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [">"],
-        },
-        {
-          match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
-          replace: '$1<a href="$3">$2</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [")"],
-        },
-        {
-          match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
-          replace: '<a href="mailto:$2">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [")"],
-        },
-        {
-          match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
-          replace: '<a href="mailto:$1">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [">"],
-        },
-        {
-          match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
-          replace: "<b>$2</b>",
-          excludeAncestors: ["b", "strong", "pre", "code"],
-          lastChars: ["*", "_"],
-        },
-        {
-          match: /([^\*]|^)\*(([^\*]*\*{2}[^\*]+\*{2}[^\*]*)+|[^\*]+)\*(?!\*)/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["*"],
-        },
-        {
-          match: /([^_]|^)_(([^_]*_{2}[^_]+_{2}[^_]*)+|[^_]+)_(?!_)/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["*"],
-        },
-        {
-          match: /([^\*]|^|\*{2})\*([^\*]+)\*(?=[^\*])/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["*"],
-        },
-        {
-          match: /([^_]|^|_{2})_([^_]+)_(?=[^_])/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["_"],
-        },
-        {
-          match: /(\*{2}[^\*]+)\*([^\*]+)\*(?=\*)/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["*"],
-        },
-        {
-          match: /(_{2}[^_]+)_([^_]+)_(?=_)/,
-          replace: "$1<i>$2</i>",
-          excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["_"],
-        },
-        {
-          match: /`{3}([^`]+)`{3}(?!`)/,
-          replace: "<pre>$1</pre>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["`"],
-        } /*
-        {
-          match: /`{3}(?=[^`])/,
-          command: "formatBlock",
-          commandVal: "pre",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["`"],
-        },*/,
-        {
-          match: /([^`])`([^`]+)`(?!`)/,
-          replace: "$1<code>$2</code>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["`"],
-        },
-        {
-          match: /\\([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/,
-          replace: "$1",
-          excludeAncestors: ["pre", "code"],
-          lastChars: "+*?^$.[]{}()|/".split(),
-        },
-      ];
+    _handleToolbarFocus(e) {
+      console.log("focus", this);
     }
 
-    get replacementsByLastKey() {
-      let regexes = {};
-      this.defaultRegexes.forEach((regex) => {
-        let keys =
-          !regex.lastChars || regex.lastChars.length == 0
-            ? [""]
-            : regex.lastChars;
-        keys.forEach((key) => {
-          if (!regex.replace || !regex.match) return;
-          regexes[key] = regexes[key] || [];
-          regexes[key].push(regex);
-        });
-      });
-      return regexes;
-    }
-
-    get commandsByLastKey() {
-      let regexes = {};
-      this.defaultRegexes.forEach((regex) => {
-        let keys =
-          !regex.lastChars || regex.lastChars.length == 0
-            ? [""]
-            : regex.lastChars;
-        keys.forEach((key) => {
-          if (!!regex.replace || !regex.match) return;
-          regexes[key] = regexes[key] || [];
-          regexes[key].push(regex);
-        });
-      });
-      return regexes;
+    _handleToolbarMousedown(e) {
+      console.log("mousedown", this);
+      //stops mousedown from bubbling up and triggering HAX focus logic
+      e.stopImmediatePropagation();
     }
     /**
      * checks for markdown and replaces
@@ -1931,16 +1981,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       e.stopImmediatePropagation();
       this.pasteFromClipboard();
     }
-    _addHighlight() {
-      if (!this.__highlight.hidden) return;
-      this.range = this.getRange();
-      if (
-        !this.target ||
-        !this.target.getAttribute("contenteditable") == "true"
-      )
-        return;
-      this.__highlight.wrap(this.range || this.getRange());
-    }
 
     /**
      * undo last action
@@ -2064,10 +2104,24 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.redo();
         return false;
       }
+      this._removeHighlight();
+    }
+
+    _addHighlight() {
+      this.range = this.getRange();
+      console.log("add highlight", this.debugRange(this.range));
+      if (
+        !this.target ||
+        !this.target.getAttribute("contenteditable") == "true"
+      )
+        return;
+      this.__highlight.wrap(this.range || this.getRange());
     }
 
     _removeHighlight() {
-      this.__highlight.unwrap(this.range || this.getRange());
+      if (!this.__highlight.hidden) return;
+      console.log("remove highlight");
+      this.__highlight.unwrap();
     }
   };
 };
