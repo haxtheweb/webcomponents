@@ -461,8 +461,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           return offsets;
         };
       if (
-        range.commonAncestorContainer === target ||
-        target.contains(range.commonAncestorContainer)
+        range &&
+        (range.commonAncestorContainer === target ||
+          target.contains(range.commonAncestorContainer))
       ) {
         startLocation = getOffsets(range.startContainer, range.startOffset);
         endLocation = getOffsets(range.endContainer, range.endOffset);
@@ -647,65 +648,84 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
 
       if (!toolbar) return;
 
-      if (this.validCommands.includes(command)) {
-        commandVal =
-          toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
-        if (command == "undo") {
-          console.log(target.innerHTML);
-          toolbar.undo();
-          return;
-        } else if (command == "redo") {
-          toolbar.redo();
-          return;
-        } else if (command == "wrapRange" && !!commandVal) {
-          // wrap or unwrapsa range with a commandVal element
-          let toggled = this.commandToggledForRange(
-              range,
-              "wrapRange",
-              commandVal
-            ),
-            node = this.rangeOrMatchingAncestor(commandVal);
-          if (!toggled) {
-            // if button is not toggled, wrap the range
-            this.__highlight.wrap(range);
-            let html = this.__highlight.innerHTML;
-            this.__highlight.innerHTML = `<${commandVal}>${html.trim()}</${commandVal}>`;
-            node = this.__highlight.querySelector(commandVal);
-            range.selectNode(node);
-            this.__highlight.unwrap(range);
-          } else if (toggled) {
-            //if button is toggled, unwrap the range
-            let nodes = node ? [...node.childNodes].reverse() : [];
-            if (range) range.setStartBefore(node);
-            nodes.forEach((node) => {
-              if (range) range.insertNode(node);
-            });
-            if (node) node.parentElement.normalize();
-            if (node) range.selectNodeContents(node);
-            if (node) node.remove();
-          }
-          target.normalize();
-        }
-        toolbar.historyPaused = true;
-        if (this.__highlight.parentNode === document.body)
-          this.__highlight.wrap(range);
-        this.__highlight.unwrap(range);
-        range = range || this.__highlight.range || this.range;
-        this.selectRange(range);
-        if (command != "paste" && command != "wrapRange") {
-          document.execCommand(command, false, commandVal);
-          target.normalize();
-        } else if (navigator.clipboard && command == "paste") {
-          this.pasteFromClipboard();
-        }
-        toolbar.historyPaused = keepPaused;
-      } else if (command === "cancel") {
+      //custom cancel source command
+      if (command === "cancel") {
         toolbar.revertTarget(target);
         toolbar.close(target);
+        //custom close source command
       } else if (command === "close") {
         toolbar.close(target);
+        //custom view source command
       } else if (command === "viewSource") {
         this.__source.toggle(toolbar);
+        //overrides default undo
+      } else if (command == "undo") {
+        console.log(target.innerHTML);
+        toolbar.undo();
+        return;
+        //overrides default redo
+      } else if (command == "redo") {
+        toolbar.redo();
+        return;
+        //custom command wraps a range in element specified by commandVal
+      } else if (command == "wrapRange" && !!commandVal) {
+        // wrap or unwrapsa range with a commandVal element
+        let toggled = this.commandToggledForRange(
+            range,
+            "wrapRange",
+            commandVal
+          ),
+          node = this.rangeOrMatchingAncestor(commandVal);
+        this.keepPaused = toolbar.historyPaused;
+        toolbar.historyPaused = true;
+
+        //if range not wrapped in specified element, nwrap it
+        if (!toggled) {
+          // if button is not toggled, wrap the range
+          this.__highlight.wrap(range);
+          let html = this.__highlight.innerHTML;
+          this.__highlight.innerHTML = `<${commandVal}>${html.trim()}</${commandVal}>`;
+          node = this.__highlight.querySelector(commandVal);
+          range.selectNode(node);
+          this.__highlight.unwrap(range);
+          //if range is already wrapped in specified element, unwrap it
+        } else if (toggled) {
+          //if button is toggled, unwrap the range
+          let nodes = node ? [...node.childNodes].reverse() : [];
+          if (range) range.setStartBefore(node);
+          nodes.forEach((node) => {
+            if (range) range.insertNode(node);
+          });
+          if (node) node.parentElement.normalize();
+          if (node) range.selectNodeContents(node);
+          if (node) node.remove();
+        }
+        toolbar.historyPaused = keepPaused;
+        target.normalize();
+      } else if (this.validCommands.includes(command)) {
+        commandVal =
+          toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
+        this.keepPaused = toolbar.historyPaused;
+        toolbar.historyPaused = true;
+        console.log(toolbar.historyPaused, toolbar);
+
+        if (this.__highlight.isActiveForEditor(target)) {
+          range = range || this.__highlight.range || this.range;
+          this.__highlight.unwrap();
+        }
+        this.selectRange(range);
+        console.log(this.debugRange(range), target.innerHTML);
+
+        //override default paste
+        if (command == "paste") {
+          if (navigator.clipboard) this.pasteFromClipboard();
+          //execute other commands as normal until I update deprecated execCommand
+        } else {
+          document.execCommand(command, false, commandVal);
+        }
+        target.normalize();
+        console.log("exec", target.innerHTML);
+        toolbar.historyPaused = keepPaused;
       }
     }
   };

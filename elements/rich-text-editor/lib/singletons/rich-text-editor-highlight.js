@@ -71,7 +71,7 @@ class RichTextEditorHighlight extends LitElement {
   }
 
   isActiveForEditor(editor) {
-    return editor.contains(this);
+    return !!editor && editor.contains(this);
   }
 
   firstUpdated(changedProperties) {
