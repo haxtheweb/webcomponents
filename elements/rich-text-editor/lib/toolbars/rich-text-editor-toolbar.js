@@ -1315,10 +1315,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get enabledTargetHandlers() {
       return {
         keydown: this._handleTargetKeyDown.bind(this),
-        keyup: this._handleTargetKeyUp.bind(this),
-        keypress: this._handleTargetKeypress.bind(this),
-        mousedown: this._removeHighlight.bind(this),
-        mouseup: this._addHighlight.bind(this),
       };
     }
     /**
@@ -2022,17 +2018,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       //set location to current changes
       this.__historyLocation = this.__history.length - 1;
     }
-    /**
-     * tracks control key
-     *
-     * @param {event} e keyup event
-     */
-    _handleTargetKeyUp(e) {
-      console.log("keyup", e, this._shortcutKeysMatch(e));
-      if (e.keyCode == 17 || e.keyCode == 91) {
-        this.__ctrlDown = false;
-      }
-    }
 
     /**
      * handles keydown
@@ -2040,24 +2025,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e keydown event
      */
     _handleTargetKeyDown(e) {
-      console.log("keydown", e, this._shortcutKeysMatch(e));
-      //takes over undo and redo
-      if (e.keyCode == 17 || e.keyCode == 91) {
-        this.__ctrlDown = true;
-      }
-      if (this.__ctrlDown && e.key == "z") {
+      let modifier =
+        window.navigator.platform === "MacIntel" ? e.metaKey : e.ctrlKey;
+      if (modifier && e.key == "z") {
         e.preventDefault();
-        console.log("undo");
         this.undo();
         return false;
-      } else if (this.__ctrlDown && e.key == "y") {
+      } else if (modifier && e.key == "y") {
         e.preventDefault();
-        console.log("redo");
         this.redo();
         return false;
       }
-      //remove any highlight
-      this._removeHighlight();
     }
 
     _removeHighlight() {
