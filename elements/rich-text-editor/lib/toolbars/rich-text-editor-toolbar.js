@@ -964,7 +964,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "historyMax") console.log(this.historyMax);
+        if (propName === "historyMax")
+          this.__history = this.__history.slice(0 - this.historyMax);
         if (propName === "range") this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();
@@ -1365,7 +1366,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           target.setAttribute("contenteditable", "true");
 
         Object.keys(handlers).forEach((handler) =>
-          target.removeEventListener(handler, handlers[handler])
+          target.addEventListener(handler, handlers[handler])
         );
 
         this.setCanceledEdits();
@@ -1871,6 +1872,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetKeypress(e) {
+      console.log("keypress", e, this._shortcutKeysMatch(e));
       if (this.targetEmpty() && e.key) {
         this.innerHTML = e.key
           .replace(">", "&gt;")
@@ -1962,11 +1964,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _restoreFromHistory(direction = -1) {
       this.__historyLocation = this.__historyLocation + direction;
-      console.log(
-        "restore from history",
-        this.__history,
-        this.__historyLocation
-      );
       if (-1 < this.__historyLocation < this.__history.length) {
         let history = this.__history[this.__historyLocation],
           inRange = this._isRangeInScope(this.range);
@@ -2008,24 +2005,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.historyPaused) return;
 
       //get start and end of history based on maximum amount saved
-      let end = this.__historyLocation + 1,
-        start = Math.max(end + 1 - this.historyMax, 0),
-        prev = this.__history[this.__historyLocation],
+      let prev = this.__history[this.__historyLocation],
         html = prev ? prev.html : false;
-
-      console.log(
-        "update history",
-        this.historyPaused,
-        end,
-        start,
-        this.__historyLocation,
-        html == changes
-      );
 
       if (html == changes) return;
       //clear history after current location and add changes
       this.__history = [
-        ...this.__history.slice(start, end),
+        ...this.__history.slice(-1 - this.historyMax),
         {
           html: changes,
           type: description,
@@ -2035,7 +2021,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
       //set location to current changes
       this.__historyLocation = this.__history.length - 1;
-      console.log("updated history", this.__historyLocation, this.__history);
     }
     /**
      * tracks control key
@@ -2043,6 +2028,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e keyup event
      */
     _handleTargetKeyUp(e) {
+      console.log("keyup", e, this._shortcutKeysMatch(e));
       if (e.keyCode == 17 || e.keyCode == 91) {
         this.__ctrlDown = false;
       }
@@ -2054,16 +2040,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e keydown event
      */
     _handleTargetKeyDown(e) {
+      console.log("keydown", e, this._shortcutKeysMatch(e));
       //takes over undo and redo
       if (e.keyCode == 17 || e.keyCode == 91) {
         this.__ctrlDown = true;
       }
       if (this.__ctrlDown && e.key == "z") {
         e.preventDefault();
+        console.log("undo");
         this.undo();
         return false;
       } else if (this.__ctrlDown && e.key == "y") {
         e.preventDefault();
+        console.log("redo");
         this.redo();
         return false;
       }
