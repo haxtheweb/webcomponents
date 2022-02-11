@@ -1954,27 +1954,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     /**
-     * restores target HTML from history before or after the current point
-     *
-     * @param {number} [direction=-1] direction relative to current location of history, eg. -1 for undo
-     */
-    _restoreFromHistory(direction = -1) {
-      this.__historyLocation = this.__historyLocation + direction;
-      if (-1 < this.__historyLocation < this.__history.length) {
-        let history = this.__history[this.__historyLocation],
-          inRange = this._isRangeInScope(this.range);
-
-        if (!history || !history.html || !history.range) return;
-        this.historyPaused = true;
-        this.target.innerHTML = history.html;
-        this.selectRange(history.range);
-        this.range = history.range;
-        this._updateButtonRanges(inRange);
-        this.historyPaused = false;
-      }
-    }
-
-    /**
      * resets history, pausing, and location
      *
      */
@@ -1992,31 +1971,60 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} [range=this.getRange()] current range
      * @returns
      */
-    updateHistory(
-      description = "change",
-      changes = this.targetHTML,
-      range = this.getRange()
-    ) {
+    updateHistory(description = "change") {
+      console.log("updateHistory", this.historyPaused);
       //only update history if not paused
       if (this.historyPaused) return;
 
+      //this.historyPaused = true;
+
+      //get range details
+      let range = this.getRangeForCopy(this.target);
+
       //get start and end of history based on maximum amount saved
       let prev = this.__history[this.__historyLocation],
-        html = prev ? prev.html : false;
+        html = this.target.innerHTML;
 
-      if (html == changes) return;
+      if (prev && prev.html == html) return;
+
       //clear history after current location and add changes
       this.__history = [
         ...this.__history.slice(-1 - this.historyMax),
         {
-          html: changes,
           type: description,
-          range: range.cloneRange(),
+          html: html,
+          range: range,
         },
       ];
+      console.log("saving", this.__history);
 
       //set location to current changes
       this.__historyLocation = this.__history.length - 1;
+    }
+
+    /**
+     * restores target HTML from history before or after the current point
+     *
+     * @param {number} [direction=-1] direction relative to current location of history, eg. -1 for undo
+     */
+    _restoreFromHistory(direction = -1) {
+      this.__historyLocation = this.__historyLocation + direction;
+      if (-1 < this.__historyLocation < this.__history.length) {
+        let history = this.__history[this.__historyLocation],
+          inRange = this._isRangeInScope(this.range);
+
+        console.log("restoring", history);
+        if (!history || !history.html) return;
+        this.historyPaused = true;
+        this.target.innerHTML = history.html;
+        console.log("restoring", this.target.innerHTML, history);
+        let range = this.getRangeFromCopy(this.target, history.range);
+        console.log("restored", this.target.innerHTML, this.debugRange(range));
+        this.__highlight.wrap(range);
+        this.__highlight.unwrap();
+        //this._updateButtonRanges(inRange);
+        this.historyPaused = false;
+      }
     }
 
     /**

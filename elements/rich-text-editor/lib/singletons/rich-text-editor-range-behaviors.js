@@ -445,6 +445,58 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       }
       return nodes;
     }
+    getRangeForCopy(target, range = this.getRange()) {
+      let startLocation,
+        endLocation,
+        getOffsets = (node) => {
+          let offsets = [];
+          while (
+            !!node &&
+            (!!node.parentNode || !!node.host) &&
+            node !== target
+          ) {
+            offsets.push([...node.parentNode.childNodes].indexOf(node));
+            node = node.parentNode || node.host;
+          }
+          return offsets;
+        };
+      if (
+        range.commonAncestorContainer === target ||
+        target.contains(range.commonAncestorContainer)
+      ) {
+        startLocation = getOffsets(range.startContainer, range.startOffset);
+        endLocation = getOffsets(range.endContainer, range.endOffset);
+      }
+      return !startLocation || !endLocation
+        ? undefined
+        : {
+            startOffset: range.startOffset,
+            startLocation: startLocation,
+            engOffset: range.endOffset,
+            endLocation: endLocation,
+          };
+    }
+
+    getRangeFromCopy(target, rangeInfo) {
+      console.log(target, target.childNodes);
+      if (!rangeInfo || !target) return;
+      let range = new Range(),
+        getContainer = (offsets) => {
+          let node = target;
+          offsets.reverse().forEach((i) => {
+            let childNodes = !node ? undefined : [...node.childNodes];
+            if (childNodes) node = childNodes[i];
+          });
+          return node;
+        },
+        startContainer = getContainer(rangeInfo.startLocation),
+        endContainer = getContainer(rangeInfo.endLocation);
+      console.log(startContainer, endContainer);
+      range.setStart(startContainer, rangeInfo.startOffset);
+      range.setEnd(endContainer, rangeInfo.endOffset);
+      return range;
+    }
+
     /**
      * gets first node of range
      *
@@ -602,11 +654,12 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         commandVal =
           toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
         if (command == "undo") {
+          console.log(target.innerHTML);
           toolbar.undo();
-          keepPaused = false;
+          return;
         } else if (command == "redo") {
           toolbar.redo();
-          keepPaused = false;
+          return;
         } else if (command == "wrapRange" && !!commandVal) {
           // wrap or unwrapsa range with a commandVal element
           let toggled = this.commandToggledForRange(
