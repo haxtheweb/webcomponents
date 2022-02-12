@@ -88,6 +88,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               var(--rich-text-editor-border-color, #ddd);
             background-color: var(--rich-text-editor-bg, #ffffff);
           }
+          :host(:focus-within) {
+            border-width: var(--rich-text-editor-border-width, 1px);
+          }
           #morebutton::part(button) {
             border-radius: var(
               --rich-text-editor-button-disabled-border-radius,
@@ -1183,6 +1186,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       });
       return regexes;
     }
+
+    get pauseHistoryUpdates() {
+      return (
+        this.historyPaused ||
+        !this.target ||
+        !this.target.getAttribute("contenteditable") ||
+        this.target.getAttribute("contenteditable") != "true" ||
+        !this.__prompt.hidden ||
+        !this.__highlight.hidden ||
+        this.__highlight.isActiveForEditor(this.target)
+      );
+    }
     /**
      * determines if range is in scope of editor
      *
@@ -1947,11 +1962,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               node.getAttribute("id").indexOf("range-placeholder") < 0
           );
           if (filtered.length > 0) update = true;
-          console.log(mutation);
+          if (filtered.length > 0 && !this.pauseHistoryUpdates)
+            console.log(mutation);
         }
       });
-      if (target && target.contenteditable && update && !this.historyPaused)
-        this.updateHistory();
+      if (update && !this.pauseHistoryUpdates) this.updateHistory();
     }
     _handleTargetSelection(e) {
       if (!this.__promptOpen) this.range = this.getRange();
@@ -1997,14 +2012,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     updateHistory(description = "change") {
       //only update history if not paused
-      if (
-        this.historyPaused ||
-        !this.target ||
-        !this.__prompt.hidden ||
-        !this.__highlight.hidden ||
-        this.__highlight.isActiveForEditor(this.target)
-      )
-        return;
+      if (this.pauseHistoryUpdates) return;
 
       //get range details
       this.getRange();
