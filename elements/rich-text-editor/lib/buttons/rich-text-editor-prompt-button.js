@@ -192,7 +192,10 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @event rich-text-editor-prompt-open
      */
     open(node) {
-      this.highlightNode(node);
+      if (node) {
+        this.__highlight.unwrap(this.range);
+        this.highlightNode(node);
+      }
       this.value = this.getValue();
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
@@ -238,8 +241,9 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @param {event} e button tap event
      */
     _handleClick(e) {
+      let block = this.rangeOrMatchingAncestor();
       e.preventDefault();
-      this.open();
+      this.open(block);
     }
 
     /**

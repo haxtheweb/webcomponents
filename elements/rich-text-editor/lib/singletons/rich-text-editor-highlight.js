@@ -88,7 +88,7 @@ class RichTextEditorHighlight extends LitElement {
     this.hidden = true;
     this.range = undefined;
   }
-  wrap(range) {
+  wrap(range = this.range) {
     if (!range) return;
     if (!this.hidden && range !== this.range) this.emptyContents();
     this.range = range;
@@ -101,15 +101,16 @@ class RichTextEditorHighlight extends LitElement {
     range.selectNodeContents(this);
     this.hidden = false;
   }
-  unwrap(range) {
+  unwrap(range = this.range) {
+    console.log("unwrap");
     let nodes = [...this.childNodes].reverse(),
       collapse = nodes.length < 1;
     if (range) range.setStartBefore(this);
     nodes.forEach((node, i) => {
       if (range) range.insertNode(node);
     });
+    console.log([...this.childNodes], this.innerHTML, nodes);
     document.body.append(this);
-    this.innerHTML = "";
     this.hidden = true;
     this.range = range;
   }

@@ -445,6 +445,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       }
       return nodes;
     }
+    /**
+     * captures information about a range so same range can be found
+     * if target HTML is same as saved HTML
+     *
+     * @param {object} target target element (usually an editor)
+     * @param {object} [range=this.getRange()] current range to save
+     * @returns {object} saved offsets and node traversal to start and end containers
+     */
     getRangeForCopy(target, range = this.getRange()) {
       let startLocation,
         endLocation,
@@ -477,7 +485,15 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             endLocation: endLocation,
           };
     }
-
+    /**
+     * given as saved range and target html,
+     * gets range when target html matches html
+     * from when range info was collected
+     *
+     * @param {object} target target element (usually an editor)
+     * @param {object} rangeInfo object containing saved offsets and node traversal to start and end containers
+     * @returns {object} range
+     */
     getRangeFromCopy(target, rangeInfo) {
       if (!rangeInfo || !target) return;
       let range = new Range(),
@@ -491,8 +507,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         },
         startContainer = getContainer(rangeInfo.startLocation),
         endContainer = getContainer(rangeInfo.endLocation);
-      range.setStart(startContainer, rangeInfo.startOffset);
-      range.setEnd(endContainer, rangeInfo.endOffset);
+      if (startContainer && endContainer) {
+        range.setStart(startContainer, rangeInfo.startOffset);
+        range.setEnd(endContainer, rangeInfo.endOffset);
+      }
       return range;
     }
 
@@ -650,12 +668,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         !toolbar ||
         !target ||
         target.disabled ||
-        !target.getAttribute("contenteditable") |
-          (!target.getAttribute("contenteditable") != "true")
+        !target.getAttribute("contenteditable") ||
+        target.getAttribute("contenteditable") != "true"
       )
         return;
-
-      console.log(command, commandVal, this.debugRange(range));
 
       //custom cancel source command
       if (command === "cancel") {
@@ -669,7 +685,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         this.__source.toggle(toolbar);
         //overrides default undo
       } else if (command == "undo") {
-        console.log(target.innerHTML);
         toolbar.undo();
         return;
         //overrides default redo
@@ -716,12 +731,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
         this.keepPaused = toolbar.historyPaused;
         toolbar.historyPaused = true;
-        console.log(
-          toolbar.historyPaused,
-          toolbar,
-          this.__highlight.isActiveForEditor(target),
-          range
-        );
 
         if (!this.__highlight.hidden) {
           range = this.__highlight.range || this.getRange();
@@ -737,7 +746,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         }
         this.__highlight.unwrap();
         target.normalize();
-        console.log("exec", target.innerHTML);
         toolbar.historyPaused = keepPaused;
         toolbar.range = this.getRange();
       }

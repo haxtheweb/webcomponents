@@ -166,6 +166,8 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this._setOptions();
+      this.removeAttribute("tabindex");
+      this.removeAttribute("role");
     }
 
     /**
@@ -193,6 +195,11 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     get expanded() {
       return this.picker && this.picker.expanded;
     }
+
+    /**
+     * Handles button tap
+     */
+    _handleClick(e) {}
 
     /**
      * handles picker focus

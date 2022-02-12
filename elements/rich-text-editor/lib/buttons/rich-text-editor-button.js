@@ -344,11 +344,11 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     /**
      * expands range to selection's parent block
      */
-    setRange() {
+    getMatchingParent() {
       if (!this.tagsList || this.tagsList === "") return;
       /* if command is formatBlock expand selection to entire block */
       let block = this.rangeOrMatchingAncestor();
-      if (block) this.selectNode(block);
+      return block;
     }
 
     /**
