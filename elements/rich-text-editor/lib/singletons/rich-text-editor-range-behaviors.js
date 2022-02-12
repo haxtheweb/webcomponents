@@ -473,7 +473,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         : {
             startOffset: range.startOffset,
             startLocation: startLocation,
-            engOffset: range.endOffset,
+            endOffset: range.endOffset,
             endLocation: endLocation,
           };
     }
@@ -646,7 +646,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         target = toolbar.target,
         keepPaused = toolbar && toolbar.historyPaused;
 
-      if (!toolbar) return;
+      if (
+        !toolbar ||
+        !target ||
+        target.disabled ||
+        !target.getAttribute("contenteditable") |
+          (!target.getAttribute("contenteditable") != "true")
+      )
+        return;
 
       console.log(command, commandVal, this.debugRange(range));
 
@@ -709,14 +716,17 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           toolbar && commandVal ? toolbar.sanitizeHTML(commandVal) : commandVal;
         this.keepPaused = toolbar.historyPaused;
         toolbar.historyPaused = true;
-        console.log(toolbar.historyPaused, toolbar);
+        console.log(
+          toolbar.historyPaused,
+          toolbar,
+          this.__highlight.isActiveForEditor(target),
+          range
+        );
 
-        if (this.__highlight.isActiveForEditor(target)) {
+        if (!this.__highlight.hidden) {
           range = this.__highlight.range || this.getRange();
-          this.__highlight.unwrap();
         }
         this.selectRange(range);
-        console.log(this.debugRange(range), target.innerHTML);
 
         //override default paste
         if (command == "paste") {
@@ -725,6 +735,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         } else {
           document.execCommand(command, false, commandVal);
         }
+        this.__highlight.unwrap();
         target.normalize();
         console.log("exec", target.innerHTML);
         toolbar.historyPaused = keepPaused;
