@@ -283,7 +283,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this._handleTargetSelection.bind(this.__toolbar)
       );
       this.addEventListener("mousedown", this._handleToolbarMousedown);
-      this.addEventListener("focue", this._handleToolbarFocus);
     }
 
     connectedCallback() {
@@ -333,8 +332,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.sticky = this.sticky;
         if (["history", "historyLocation"].includes(propName))
           this._updateUndoRedoButtons();
-        if (propName === "historyPaused")
-          console.log("historyPaused", this.historyPaused, this);
       });
     }
     /**
@@ -1241,7 +1238,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @event editor-change
      */
     _editorChanged() {
-      console.log("editorChange");
       this.resetHistory();
       this.updateHistory();
       this.dispatchEvent(
@@ -1326,9 +1322,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     deregisterButton(button) {
       if (super.deregisterButton) super.deregisterButton(button);
-      (button.tagsArray || []).forEach(
-        (tag) => delete this.clickableElements[tag]
-      );
     }
     /**
      * registers button when appended to toolbar
@@ -1346,7 +1339,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       button.__toolbar = this;
       button.disabled = !this.target;
       (button.tagsArray || []).forEach((tag) => {
-        if (!!button.tagClickCallback) this.clickableElements[tag] = button;
+        if (!!tag && !!button.tagClickCallback)
+          this.clickableElements[tag] = this.clickableElements[tag] || button;
       });
       this._updateUndoRedoButton(button);
     }
@@ -1479,9 +1473,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get enabledTargetHandlers() {
       return {
         keydown: this._handleTargetKeyDown.bind(this),
-        //blur: this._addHighlight.bind(this),
-        //focus: this._removeHighlight.bind(this),
-        //keypress: this._handleTargetKeypress.bind(this),
       };
     }
     /**
@@ -1552,7 +1543,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         );
         target.tabindex = 0;
         if (this.history.length < 1) this.updateHistory();
-        console.log("enabled", target);
       }
     }
 
@@ -1587,7 +1577,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           })
         );
         target.tabindex = -1;
-        console.log("disabled", target);
       }
     }
 
@@ -1762,11 +1751,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           if (tagname && els.includes(tagname)) {
             matched = true;
             e.preventDefault();
-            this.clickableElements[tagname].tagClickCallback({
+            let ee = {
               ...e,
               detail: target,
               eventPath: eventPath,
-            });
+            };
+            this.clickableElements[tagname].tagClickCallback(ee);
           }
         });
       }
@@ -1775,30 +1765,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetBlur(e) {
-      console.log(
-        this.target,
-        !this.target || !this.__highlight.isActiveForEditor(this.target),
-        this
-      );
       if (this.target && !this.__highlight.isActiveForEditor(this.target)) {
-        console.log("highlight");
         this._addHighlight();
       }
     }
     _handleTargetFocus(target, e) {
-      console.log(this.__promptOpen, target.disabled);
+      console.log("focus");
+      this._removeHighlight();
       if (!this.__promptOpen && !target.disabled) {
         this.setTarget(target);
-      } else {
-        this._removeHighlight();
       }
-    }
-    _handleToolbarFocus(e) {
-      console.log("focus", this);
     }
 
     _handleToolbarMousedown(e) {
-      console.log("mousedown", this);
       //stops mousedown from bubbling up and triggering HAX focus logic
       e.stopImmediatePropagation();
     }
@@ -1921,7 +1900,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       //remove placeholder from editor
       if (!found) span.remove();
       this.historyPaused = keepPaused;
-      if (found) console.log("markdown");
       if (found) this.updateHistory();
     }
 
@@ -1969,10 +1947,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               node.getAttribute("id").indexOf("range-placeholder") < 0
           );
           if (filtered.length > 0) update = true;
+          console.log(mutation);
         }
       });
-      if (target && target.contenteditable && update) console.log("mutations");
-      if (target && target.contenteditable && update) this.updateHistory();
+      if (target && target.contenteditable && update && !this.historyPaused)
+        this.updateHistory();
     }
     _handleTargetSelection(e) {
       if (!this.__promptOpen) this.range = this.getRange();
@@ -2005,7 +1984,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     resetHistory() {
       this.historyLocation = -1;
       this.history = [];
-      console.log("reset");
       this.historyPaused = false;
     }
 
@@ -2019,22 +1997,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     updateHistory(description = "change") {
       //only update history if not paused
-      console.log(
-        "don't update",
-        !this.__prompt.hidden,
-        this.historyPaused,
-        this.__highlight.isActiveForEditor(this.target),
-        this
-      );
       if (
+        this.historyPaused ||
         !this.target ||
         !this.__prompt.hidden ||
-        this.historyPaused ||
+        !this.__highlight.hidden ||
         this.__highlight.isActiveForEditor(this.target)
       )
         return;
 
       //get range details
+      this.getRange();
       let range = this.getRangeForCopy(this.target);
 
       //get start and end of history based on maximum amount saved
@@ -2076,13 +2049,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (!history || !history.html) return;
         this.historyPaused = true;
         this.target.innerHTML = history.html;
-        //console.log("restoring", this.target.innerHTML, history);
         let range = this.getRangeFromCopy(this.target, history.range);
-        //console.log("restored", this.target.innerHTML, this.debugRange(range));
-        this.__highlight.wrap(range);
-        this.__highlight.unwrap();
-        this._updateButtonRanges(inRange);
-        console.log("restoring", this.history, this.historyLocation);
+        if (range && this._isRangeInScope(range)) {
+          this._removeHighlight();
+          this.selectRange(range);
+          this.range = range;
+          this._updateButtonRanges(inRange);
+        }
+        console.log("restoring", this.historyLocation, this.history, history);
         this.historyPaused = false;
       }
     }
@@ -2109,7 +2083,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     _addHighlight() {
       this.range = this.getRange();
-      console.log("add highlight", this.debugRange(this.range));
       if (
         !this.target ||
         !this.target.getAttribute("contenteditable") == "true"
@@ -2119,8 +2092,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _removeHighlight() {
-      if (!this.__highlight.hidden) return;
-      console.log("remove highlight");
+      console.log(this.__highlight);
       this.__highlight.unwrap();
     }
   };
