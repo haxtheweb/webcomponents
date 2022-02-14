@@ -46,7 +46,7 @@
     "@lrnwebcomponents/lrn-vocab": "^4.0.7",
     "@lrnwebcomponents/oer-schema": "^4.0.7",
     "@lrnwebcomponents/rich-text-editor": "^4.0.7",
-    "lit": "^2.0.2"
+    "lit": "^2.1.3"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
