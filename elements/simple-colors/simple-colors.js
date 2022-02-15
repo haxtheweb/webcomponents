@@ -279,6 +279,10 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-default-theme-blue-grey-12: #e7eff1;
           }
 
+          :host {
+            accent-color: var(--simple-colors-default-theme-accent-7);
+          }
+
           :host([accent-color="grey"]) {
             --simple-colors-default-theme-accent-1: #ffffff;
             --simple-colors-default-theme-accent-2: #eeeeee;
@@ -304,7 +308,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #222222;
             --simple-colors-fixed-theme-accent-11: #111111;
             --simple-colors-fixed-theme-accent-12: #000000;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="grey"]) {
@@ -347,7 +350,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #670000;
             --simple-colors-fixed-theme-accent-11: #520000;
             --simple-colors-fixed-theme-accent-12: #3f0000;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="red"]) {
@@ -390,7 +392,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #78002b;
             --simple-colors-fixed-theme-accent-11: #5a0020;
             --simple-colors-fixed-theme-accent-12: #440019;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="pink"]) {
@@ -433,7 +434,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #490052;
             --simple-colors-fixed-theme-accent-11: #33003a;
             --simple-colors-fixed-theme-accent-12: #200025;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="purple"]) {
@@ -476,7 +476,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #3a0063;
             --simple-colors-fixed-theme-accent-11: #2a0049;
             --simple-colors-fixed-theme-accent-12: #1d0033;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="deep-purple"]) {
@@ -519,7 +518,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #160063;
             --simple-colors-fixed-theme-accent-11: #100049;
             --simple-colors-fixed-theme-accent-12: #0a0030;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="indigo"]) {
@@ -562,7 +560,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #002569;
             --simple-colors-fixed-theme-accent-11: #001947;
             --simple-colors-fixed-theme-accent-12: #001333;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="blue"]) {
@@ -605,7 +602,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #003f7d;
             --simple-colors-fixed-theme-accent-11: #002850;
             --simple-colors-fixed-theme-accent-12: #001b36;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="light-blue"]) {
@@ -648,7 +644,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #003f50;
             --simple-colors-fixed-theme-accent-11: #002c38;
             --simple-colors-fixed-theme-accent-12: #001a20;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="cyan"]) {
@@ -691,7 +686,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #003829;
             --simple-colors-fixed-theme-accent-11: #002a20;
             --simple-colors-fixed-theme-accent-12: #001b14;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="teal"]) {
@@ -734,7 +728,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #003d18;
             --simple-colors-fixed-theme-accent-11: #002a11;
             --simple-colors-fixed-theme-accent-12: #001d0c;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="green"]) {
@@ -777,7 +770,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #1b3f00;
             --simple-colors-fixed-theme-accent-11: #143000;
             --simple-colors-fixed-theme-accent-12: #0d2000;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="light-green"]) {
@@ -820,7 +812,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #293f00;
             --simple-colors-fixed-theme-accent-11: #223400;
             --simple-colors-fixed-theme-accent-12: #182400;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="lime"]) {
@@ -863,7 +854,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #454400;
             --simple-colors-fixed-theme-accent-11: #303000;
             --simple-colors-fixed-theme-accent-12: #242400;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="yellow"]) {
@@ -906,7 +896,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #413200;
             --simple-colors-fixed-theme-accent-11: #302500;
             --simple-colors-fixed-theme-accent-12: #221a00;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="amber"]) {
@@ -949,7 +938,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #612d00;
             --simple-colors-fixed-theme-accent-11: #3d1c00;
             --simple-colors-fixed-theme-accent-12: #2c1400;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="orange"]) {
@@ -992,7 +980,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #561100;
             --simple-colors-fixed-theme-accent-11: #3a0c00;
             --simple-colors-fixed-theme-accent-12: #240700;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="deep-orange"]) {
@@ -1035,7 +1022,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #3b1e15;
             --simple-colors-fixed-theme-accent-11: #2c140e;
             --simple-colors-fixed-theme-accent-12: #200e09;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="brown"]) {
@@ -1078,7 +1064,6 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-fixed-theme-accent-10: #1e282c;
             --simple-colors-fixed-theme-accent-11: #182023;
             --simple-colors-fixed-theme-accent-12: #0f1518;
-            accent-color: var(--simple-colors-default-theme-accent-7);
           }
 
           :host([dark][accent-color="blue-grey"]) {
