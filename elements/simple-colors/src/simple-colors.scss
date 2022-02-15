@@ -338,6 +338,7 @@ $colors:
   :host([accent-color=#{$name}]) {
     @include css-variables('default','accent',$color,$dark: false);
     @include css-variables('fixed','accent',$color,$dark: false);
+    accent-color: var(--simple-colors-default-theme-accent-7);
   }
   :host([dark][accent-color=#{$name}]) {
     @include css-variables('default','accent',$color,$dark: true);
