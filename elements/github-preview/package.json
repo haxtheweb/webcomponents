@@ -47,7 +47,7 @@
     "@lrnwebcomponents/intersection-element": "^4.0.4",
     "@lrnwebcomponents/simple-icon": "^4.0.8",
     "lit": "^2.1.4",
-    "marked": "^2.0.3",
+    "marked": "^4.0.10",
     "prism-es6": "1.2.0"
   },
   "devDependencies": {
