@@ -12,33 +12,38 @@
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../promise-progress.js';
+      import '../lib/promise-progress-lite.js';
     </script>
   </head>
   <body>
     <h1>This is a very simple usage</h1>
     <demo-snippet>
       <template>
-    <promise-progress id="progress2" accent-color="red" show-count></promise-progress>
-    <button id="b2">Click to load stuff</button>
-    <script type="module" async defer>
-      let ary = [
-        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
-        () => fetch("https://images-api.nasa.gov/search?q=apollo%2011&description=moon%20landing&media_type=image"),
-        () => fetch("https://images-api.nasa.gov/search?q=moon%2011&description=moon%20landing&media_type=image"),
-        () => fetch("https://images-api.nasa.gov/search?q=rockets%2011&description=moon%20landing&media_type=image"),
-        ];
-      document.querySelector("#progress2").list = ary;
-      document.querySelector("#b2").addEventListener("click", async (e) => {
-        document.querySelector("#progress2").process();
-      });
-      document.querySelector("#progress2").addEventListener("promise-progress-finished", (e) => {
-        if (e.detail.value) {
-          alert("Finished");
-        }
-      })
-    </script>
-    </template>
+<style>
+  promise-progress-lite {
+    accent-color: red;
+  }
+</style>
+<promise-progress-lite id="progress2" accent-color="red" show-count></promise-progress-lite>
+<button id="b2">Click to load stuff</button>
+<script type="module" async defer>
+  let ary = [
+    () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+    () => fetch("https://images-api.nasa.gov/search?q=apollo%2011&description=moon%20landing&media_type=image"),
+    () => fetch("https://images-api.nasa.gov/search?q=moon%2011&description=moon%20landing&media_type=image"),
+    () => fetch("https://images-api.nasa.gov/search?q=rockets%2011&description=moon%20landing&media_type=image"),
+    ];
+  document.querySelector("#progress2").list = ary;
+  document.querySelector("#b2").addEventListener("click", async (e) => {
+    document.querySelector("#progress2").process();
+  });
+  document.querySelector("#progress2").addEventListener("promise-progress-finished", (e) => {
+    if (e.detail.value) {
+      alert("Finished");
+    }
+  })
+</script>
+      </template>
     </demo-snippet>
   </body>
 </html>
