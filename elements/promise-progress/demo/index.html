@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PromiseProgress: promise-progress Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../promise-progress.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <script>
+      // local development and mobx
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "development"
+        }
+      };
+    </script>
+    <div class="vertical-section-container centered">
+    <promise-progress accent-color="purple"></promise-progress>
+    <button>Click to load stuff</button>
+    <script type="module" async defer>
+      document.querySelector("button").addEventListener("click", (e) => {
+        document.querySelector("promise-progress").list = [
+        () => import("@lrnwebcomponents/simple-colors/simple-colors.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/hax-body/hax-body.js"),
+        () => import("@lrnwebcomponents/haxcms-elements/haxcms-elements.js"),
+        () => import("@lrnwebcomponents/simple-icon/simple-icon.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+        ];
+      });
+    </script>
+  </body>
+</html>

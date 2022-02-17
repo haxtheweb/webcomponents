@@ -17890,6 +17890,15 @@ lit@^2.0.0, lit@^2.1.3:
     lit-element "^3.1.0"
     lit-html "^2.1.0"
 
+lit@^2.0.2:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/lit/-/lit-2.1.4.tgz#2945cbdd002723d4e2c1384e31a66d985a636e81"
+  integrity sha512-m1tHAZdXQhiBe0ReAjyVIUeKnHZpBfx+A5R5dkia8dtvIBwOR6KhD+RxaDnCwrEavRqkZAy5ntLv7chiOZCdNg==
+  dependencies:
+    "@lit/reactive-element" "^1.1.0"
+    lit-element "^3.1.0"
+    lit-html "^2.1.0"
+
 load-bmfont@^1.3.1, load-bmfont@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/load-bmfont/-/load-bmfont-1.4.1.tgz#c0f5f4711a1e2ccff725a7b6078087ccfcddd3e9"
