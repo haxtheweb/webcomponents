@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "A headless gradebook that supports multiple backends with rubrics",
   "repository": {
     "type": "git",
@@ -45,15 +45,15 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.2",
-    "@lrnwebcomponents/a11y-collapse": "^4.0.7",
-    "@lrnwebcomponents/a11y-tabs": "^4.0.7",
-    "@lrnwebcomponents/editable-table": "^4.0.7",
-    "@lrnwebcomponents/grid-plate": "^4.0.7",
+    "@lrnwebcomponents/a11y-collapse": "^4.0.8",
+    "@lrnwebcomponents/a11y-tabs": "^4.0.8",
+    "@lrnwebcomponents/editable-table": "^4.0.8",
+    "@lrnwebcomponents/grid-plate": "^4.0.8",
     "@lrnwebcomponents/i18n-manager": "^4.0.7",
-    "@lrnwebcomponents/iframe-loader": "^4.0.5",
-    "@lrnwebcomponents/simple-colors": "^4.0.7",
-    "@lrnwebcomponents/simple-fields": "^4.0.7",
-    "@lrnwebcomponents/utils": "^4.0.5",
+    "@lrnwebcomponents/iframe-loader": "^4.0.8",
+    "@lrnwebcomponents/simple-colors": "^4.0.8",
+    "@lrnwebcomponents/simple-fields": "^4.0.8",
+    "@lrnwebcomponents/utils": "^4.0.8",
     "idb-keyval": "5.0.6",
     "lit": "^2.1.4",
     "mobx": "6.3.2"

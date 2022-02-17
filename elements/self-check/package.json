@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -42,20 +42,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^4.0.7",
+    "@lrnwebcomponents/a11y-behaviors": "^4.0.8",
     "@lrnwebcomponents/i18n-manager": "^4.0.7",
-    "@lrnwebcomponents/lazy-image-helpers": "^4.0.7",
+    "@lrnwebcomponents/lazy-image-helpers": "^4.0.8",
     "@lrnwebcomponents/replace-tag": "^4.0.5",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.7",
-    "@lrnwebcomponents/simple-colors": "^4.0.7",
-    "@lrnwebcomponents/simple-icon": "^4.0.7",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.7",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.8",
+    "@lrnwebcomponents/simple-colors": "^4.0.8",
+    "@lrnwebcomponents/simple-icon": "^4.0.8",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.8",
     "@lrnwebcomponents/user-action": "^4.0.5",
     "lit": "^2.1.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.7",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.8",
     "@open-wc/testing": "3.0.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "A basic, well documented example theme for HAXcms",
   "repository": {
     "type": "git",
@@ -42,8 +42,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^4.0.7",
-    "@lrnwebcomponents/simple-colors": "^4.0.7",
+    "@lrnwebcomponents/haxcms-elements": "^4.0.8",
+    "@lrnwebcomponents/simple-colors": "^4.0.8",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

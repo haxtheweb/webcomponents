@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.5",
+  "version": "4.0.8",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
