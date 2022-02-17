@@ -7,17 +7,22 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `promise-progress`
  * `An element to display the progress visually of forfilling an array of JS Promise objects`
- * @demo demo/index.html
+ * @demo demo/basic.html Basic
+ * @demo demo/index.html Fancy
+ * @demo demo/wc-preload.html WC-Preloader
  * @element promise-progress
  */
-class PromiseProgress extends SimpleColors {
+export class PromiseProgress extends SimpleColors {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.list = [];
     this.value = 0;
-    this.max = 1;
+    this.max = 100;
+    this.showCount = false;
+    this.canLoad = false;
   }
   /**
    * LitElement style callback
@@ -33,6 +38,7 @@ class PromiseProgress extends SimpleColors {
       css`
         :host {
           display: block;
+          position: relative;
         }
       `,
     ];
@@ -43,6 +49,8 @@ class PromiseProgress extends SimpleColors {
       max: { type: Number },
       value: { type: Number, reflect: true },
       list: { type: Array },
+      showCount: { type: Boolean, attribute: "show-count" },
+      canLoad: { type: Boolean },
     };
   }
   /**
@@ -50,9 +58,13 @@ class PromiseProgress extends SimpleColors {
    */
   render() {
     return html`
-      <progress max="${this.max}" value="${this.value}"></progress> ${this.list
-        ? html`${this.value} / ${this.max}`
-        : ``}
+      <progress
+        part="progress"
+        max="${this.max}"
+        value="${this.value}"
+      ></progress>
+      ${this.list && this.showCount ? html`${this.value} / ${this.max}` : ``}
+      <slot></slot>
     `;
   }
   /**
@@ -79,7 +91,7 @@ class PromiseProgress extends SimpleColors {
     }
     changedProperties.forEach((oldValue, propName) => {
       // notify but only after we actually render
-      if (propName === "value" && this.shadowRoot) {
+      if (["value", "max"].includes(propName) && this.shadowRoot) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
@@ -88,34 +100,49 @@ class PromiseProgress extends SimpleColors {
           })
         );
       }
-      // only run this when we get a new list of things to process
-      // but also that our value != max possible
+      // ensure we are allowed to load things
       if (
         propName == "list" &&
         this[propName] &&
         this[propName].length > 0 &&
         this.max !== this.value
       ) {
-        this.processList(this[propName]);
-      }
-      // list dictates max size
-      if (propName == "list" && this[propName] && this[propName].length > 0) {
-        this.max = this.list.length;
+        this.canLoad = true;
       }
     });
   }
-  processList(list) {
-    (async () => {
-      const promises = list.map((item) =>
-        item().then(() => {
-          this.value = this.value + 1;
-          this.loadingBar.textContent = `Loading ${this.value} of ${this.max}`;
-        })
-      );
-      await Promise.all(promises);
-      this.loadingBar.textContent = `Loading Finished`;
-    })();
+  // process the array of functions returning Promises
+  async process() {
+    const list = this.list;
+    if (this.canLoad) {
+      var count = 0;
+      const promises = await list.map(async (item) => {
+        return await item()
+          .then((res) => {
+            count = count + 1;
+            this.value = Math.round((count / this.list.length) * 100);
+            this.loadingBar.textContent = `Loading ${this.value} of ${this.max}`;
+            resolve(res);
+          })
+          .catch((err) => {
+            // an error occured
+            reject(err);
+          });
+      });
+      await Promise.allSettled(promises).then(() => {
+        this.loadingBar.textContent = `Loading Finished`;
+        this.value = this.max;
+        setTimeout(() => {
+          this.dispatchEvent(
+            new CustomEvent("promise-progress-finished", {
+              detail: {
+                value: true,
+              },
+            })
+          );
+        }, 100);
+      });
+    }
   }
 }
 customElements.define(PromiseProgress.tag, PromiseProgress);
-export { PromiseProgress };

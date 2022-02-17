@@ -43,7 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-vocab": "^4.0.7",
-    "lit": "^2.1.3"
+    "lit": "^2.1.4"
   },
   "devDependencies": {
     "@open-wc/testing": "3.0.3",

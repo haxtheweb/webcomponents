@@ -47,7 +47,7 @@
     "@lrnwebcomponents/materializecss-styles": "^4.0.7",
     "@lrnwebcomponents/simple-icon": "^4.0.7",
     "@lrnwebcomponents/simple-tooltip": "^4.0.7",
-    "lit": "^2.1.3"
+    "lit": "^2.1.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

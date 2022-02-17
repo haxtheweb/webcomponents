@@ -44,7 +44,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.0.2"
+    "lit": "^2.1.4",
+    "@lrnwebcomponents/simple-colors": "^4.0.7",
+    "@lrnwebcomponents/wc-autoload": "^4.0.5"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",

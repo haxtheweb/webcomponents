@@ -45,7 +45,7 @@
     "@lrnwebcomponents/a11y-collapse": "^4.0.7",
     "@lrnwebcomponents/lrndesign-avatar": "^4.0.7",
     "@lrnwebcomponents/simple-icon": "^4.0.7",
-    "lit": "^2.1.3"
+    "lit": "^2.1.4"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

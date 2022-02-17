@@ -39,7 +39,7 @@
   "dependencies": {
     "@lrnwebcomponents/simple-colors": "^4.0.7",
     "@polymer/iron-image": "^3.0.1",
-    "lit": "^2.1.3"
+    "lit": "^2.1.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
