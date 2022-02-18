@@ -1034,54 +1034,57 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return this._isRangeInScope();
     }
     /**
-     * default regexes for markdown support
+     * regex for heading markdown
      *
      * @readonly
      */
-    get defaultRegexes() {
+    get headingMarkdown() {
       return [
         {
-          match: /^#\s(.+)/,
-          replace: "<h1>$1</h1>",
+          match: /(\n|^)# (.+)(\n|$)/,
+          replace: "<h1>$2</h1>",
           excludeAncestors: ["pre", "code"],
-          lastChars: [""],
+          lastChars: ["enter"],
         },
         {
-          match: /!\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
-          replace: '<img alt="$1" src="$2"/>',
+          match: /(\n|^)## (.+)(\n|$)/,
+          replace: "<h2>$2</h2>",
           excludeAncestors: ["pre", "code"],
-          lastChars: [")"],
+          lastChars: ["enter"],
         },
         {
-          match: /&lt;(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))&gt;/,
-          replace: '<a href="$1">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [">"],
+          match: /(\n|^)### (.+)(\n|$)/,
+          replace: "<h3>$2</h3>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
         },
         {
-          match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
-          replace: '$1<a href="$3">$2</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [")"],
+          match: /(\n|^)#### (.+)(\n|$)/,
+          replace: "<h4>$2</h4>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
         },
         {
-          match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
-          replace: '<a href="mailto:$2">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [")"],
+          match: /(\n|^)##### (.+)(\n|$)/,
+          replace: "<h5>$2</h5>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
         },
         {
-          match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
-          replace: '<a href="mailto:$1">$1</a>',
-          excludeAncestors: ["a", "pre", "code"],
-          lastChars: [">"],
+          match: /(\n|^)###### (.+)(\n|$)/,
+          replace: "<h6>$2</h6>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
         },
-        {
-          match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
-          replace: "<b>$2</b>",
-          excludeAncestors: ["b", "strong", "pre", "code"],
-          lastChars: ["*", "_"],
-        },
+      ];
+    }
+    /**
+     * regex for italics markdown
+     *
+     * @readonly
+     */
+    get italicsMarkdown() {
+      return [
         {
           match: /([^\*]|^)\*(([^\*]*\*{2}[^\*]+\*{2}[^\*]*)+|[^\*]+)\*(?!\*)/,
           replace: "$1<i>$2</i>",
@@ -1118,31 +1121,275 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["_"],
         },
+      ];
+    }
+    /**
+     * regex for bold markdown
+     *
+     * @readonly
+     */
+    get boldMarkdown() {
+      return [
         {
-          match: /`{3}([^`]+)`{3}(?!`)/,
-          replace: "<pre>$1</pre>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["`"],
-        } /*
+          match: /(_{2}|\*{2})(([^_\*]*(([_\*])([^_\*]+)\5)*[^_\*]?)*)(\1)/,
+          replace: "<b>$2</b>",
+          excludeAncestors: ["b", "strong", "pre", "code"],
+          lastChars: ["*", "_"],
+        },
+      ];
+    }
+    /**
+     * regex for strikethrough markdown
+     *
+     * @readonly
+     */
+    get strikeMarkdown() {
+      return [
         {
-          match: /`{3}(?=[^`])/,
-          command: "formatBlock",
-          commandVal: "pre",
+          match: /~{2}(([^~]|(~[^~]+~))+)~{2}/,
+          replace: "<strike>$1</strike>",
+          excludeAncestors: ["strike", "pre", "code"],
+          lastChars: ["~"],
+        },
+      ];
+    }
+    /**
+     * regex for subscript markdown
+     *
+     * @readonly
+     */
+    get subscriptMarkdown() {
+      return [
+        {
+          match: /~(([^~]|(~{2}[^~]+~{2})])+)~/,
+          replace: "<sub>$1</sub>",
+          excludeAncestors: ["sub", "pre", "code"],
+          lastChars: ["~"],
+        },
+        {
+          match: /(~{2})[^~]*~([^~]+)/,
+          replace: "$1<sub>$2</sub>",
+          excludeAncestors: ["sub", "pre", "code"],
+          lastChars: ["~"],
+        },
+      ];
+    }
+    /**
+     * regex for superscript markdown
+     *
+     * @readonly
+     */
+    get superscriptMarkdown() {
+      return [
+        {
+          match: /\^(([^\^]|(\^{2}[^\^]+\^{2})])+)\^/,
+          replace: "<sup>$1</sup>",
+          excludeAncestors: ["sup", "pre", "code"],
+          lastChars: ["^"],
+        },
+        {
+          match: /(\^{2})[^\^]*\^([^\^]+)/,
+          replace: "$1<sup>$2</sup>",
+          excludeAncestors: ["sup", "pre", "code"],
+          lastChars: ["^"],
+        },
+      ];
+    }
+    /**
+     * regex for mark markdown
+     *
+     * @readonly
+     */
+    get markMarkdown() {
+      return [
+        {
+          match: /={2}([^=]+)={2}/,
+          replace: "<mark>$1</mark>",
+          excludeAncestors: ["mark", "pre", "code"],
+          lastChars: ["="],
+        },
+      ];
+    }
+
+    /**
+     * regex for link markdown
+     *
+     * @readonly
+     */
+    get linkMarkdown() {
+      return [
+        {
+          match: /&lt;(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))&gt;/,
+          replace: '<a href="$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
+        },
+        {
+          match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '$1<a href="$3">$2</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
+          replace: '<a href="mailto:$2">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [")"],
+        },
+        {
+          match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
+          replace: '<a href="mailto:$1">$1</a>',
+          excludeAncestors: ["a", "pre", "code"],
+          lastChars: [">"],
+        },
+      ];
+    }
+    /**
+     * regex for image markdown
+     *
+     * @readonly
+     */
+    get imageMarkdown() {
+      return [
+        {
+          match: /!\[([^\]]+)\]\(((https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
+          replace: '<img alt="$1" src="$2"/>',
           excludeAncestors: ["pre", "code"],
-          lastChars: ["`"],
-        },*/,
+          lastChars: [")"],
+        },
+      ];
+    }
+    /**
+     * regex for code markdown
+     *
+     * @readonly
+     */
+    get codeMarkdown() {
+      return [
         {
           match: /([^`])`([^`]+)`(?!`)/,
           replace: "$1<code>$2</code>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["`"],
         },
+      ];
+    }
+    /**
+     * regex for pre markdown
+     *
+     * @readonly
+     */
+    get preformattedMarkdown() {
+      return [
         {
-          match: /\\([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/,
-          replace: "$1",
-          excludeAncestors: ["pre", "code"],
-          lastChars: "+*?^$.[]{}()|/".split(),
+          match: /`{3}/,
+          command: "formatBlock",
+          commandVal: "pre",
+          excludeAncestors: ["code"],
+          lastChars: ["`"],
         },
+        {
+          match: /`{3}([^`]+)`{3}(?!`)/,
+          replace: "<pre>$1</pre>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["`"],
+        },
+      ];
+    }
+    /**
+     * regex for blockquote markdown
+     *
+     * @readonly
+     */
+    get blockquoteMarkdown() {
+      return [
+        {
+          match: /(\n|^)(\>|&gt;) (.+)(\n|$)/,
+          replace: "<blockquote>$3</blockquote>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
+        },
+      ];
+    }
+    /**
+     * TODO: regex for blockquote markdown
+     *
+     * @readonly
+     */
+    get listMarkdown() {
+      return [
+        {
+          match: /(\n|^)- (.+)(\n|$)/,
+          replace: "<ul><li>$2</li></ul>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
+        },
+        {
+          match: /(\n|^)1\. (.+)(\n|$)/,
+          replace: "<ol><li>$2</li></ol>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
+        },
+      ];
+    }
+    /**
+     * regex for horizontal rule markdown
+     *
+     * @readonly
+     */
+    get horizontalRuleMarkdown() {
+      return [
+        {
+          match: /(\n|^)[-\*|_]{3,}(\n|$)/,
+          replace: "<hr>",
+          excludeAncestors: ["pre", "code"],
+          lastChars: ["enter"],
+        },
+      ];
+    }
+    /**
+     * regex for horizontal rule markdown
+     *
+     * @readonly
+     */
+    get footnoteMarkdown() {
+      return [
+        {
+          match: /\[([^\]]+)\]\[([^\]]+)\]/,
+          replace: '$1<sup>(<a href="#$2">$2</a>)</sup>',
+          excludeAncestors: ["pre", "code", "a"],
+          lastChars: ["]"],
+        },
+        {
+          match: /(\n|^)\[([^\]]+)\]: (.+)(\n|$)/,
+          replace: "$1. $2",
+          excludeAncestors: ["pre", "code", "a"],
+          lastChars: ["enter"],
+        },
+      ];
+    }
+    /**
+     * default regexes for markdown support
+     *
+     * @readonly
+     */
+    get defaultRegexes() {
+      return [
+        ...this.headingMarkdown,
+        ...this.imageMarkdown,
+        ...this.linkMarkdown,
+        ...this.boldMarkdown,
+        ...this.italicsMarkdown,
+        ...this.strikeMarkdown,
+        ...this.markMarkdown,
+        ...this.subscriptMarkdown,
+        ...this.superscriptMarkdown,
+        ...this.codeMarkdown,
+        ...this.preformattedMarkdown,
+        ...this.blockquoteMarkdown,
+        ...this.listMarkdown,
+        ...this.horizontalRuleMarkdown,
+        ...this.footnoteMarkdown,
       ];
     }
     /**
@@ -1159,8 +1406,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             : regex.lastChars;
         keys.forEach((key) => {
           if (!regex.replace || !regex.match) return;
-          regexes[key] = regexes[key] || [];
-          regexes[key].push(regex);
+          let char = key == "" ? "any" : key == " " ? "space" : key;
+          regexes[char] = regexes[char] || [];
+          regexes[char].push(regex);
         });
       });
       return regexes;
@@ -1180,8 +1428,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             : regex.lastChars;
         keys.forEach((key) => {
           if (!!regex.replace || !regex.match) return;
-          regexes[key] = regexes[key] || [];
-          regexes[key].push(regex);
+          let char = key == "" ? "any" : key == " " ? "space" : key;
+          regexes[char] = regexes[char] || [];
+          regexes[char].push(regex);
         });
       });
       return regexes;
@@ -1723,7 +1972,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         focus: (e) => this._handleTargetFocus(target, e),
         blur: (e) => this._handleTargetBlur(e),
         keydown: (e) => this._handleShortcutKeys(e),
-        keyup: (e) => this._handleMarkdown(e),
+        keyup: (e) => this._handleMarkdownReplacement(e),
         paste: (e) => this._handlePaste(e),
       };
     }
@@ -1785,7 +2034,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
     }
     _handleTargetFocus(target, e) {
-      console.log("focus");
       this._removeHighlight();
       if (!this.__promptOpen && !target.disabled) {
         this.setTarget(target);
@@ -1801,12 +2049,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {event} e keypress event
      */
-    _handleMarkdown(e) {
+    _handleMarkdownReplacement(e) {
       let keepPaused = this.historyPaused;
       this.historyPaused = true;
+
       //drop a placeholder into editor so we know where range is
       let range = this.getRange(),
-        node = range ? range.commonAncestorContainer : false,
+        node = !range
+          ? false
+          : e.key == "Enter"
+          ? range.commonAncestorContainer.previousElementSibling
+          : range.commonAncestorContainer,
         id = "range-placeholder-" + Date.now(),
         span = document.createElement("span"),
         spanHTML = `<span id="${id}"></span>`,
@@ -1817,45 +2070,95 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       span.id = id;
       range.insertNode(span);
       rangeClone = range.cloneRange();
-      rangeClone.setStartBefore(rangeClone.startContainer);
 
+      //adjust range if last key was enter key
+      if (e.key == "Enter") {
+        rangeClone.selectNode(node);
+      } else {
+        rangeClone.setStartBefore(rangeClone.startContainer);
+      }
+      //make a clone of the range
       let cloneContents = rangeClone.cloneContents(),
-        cloneText = cloneContents.textContent,
-        searchChar = cloneText.charAt(cloneText.length - 2),
-        rangeChar = cloneText.charAt(cloneText.length - 1),
-        listByLastKey = (char, list) => {
-          let lastChar = rangeChar !== "" && list[char] ? list[char] : [],
-            noKey = list[""] || [];
-          return [...lastChar, ...noKey];
+        //clean up copy of clone text
+        cloneText = cloneContents.textContent
+          ? cloneContents.textContent.replace(/\s*\n\s*$/, "\n")
+          : "",
+        //last character of pattern
+        searchChar =
+          e.key == "Enter"
+            ? cloneText.charAt(cloneText.length - 1)
+            : cloneText.charAt(cloneText.length - 2),
+        //last character before end of range
+        rangeChar =
+          e.key == "Enter" ? "enter" : cloneText.charAt(cloneText.length - 1),
+        //gets a list of regexes filtered by matching last key so we don't have to text every regex
+        listByLastKey = (key, list) => {
+          let char = e.key == "Enter" ? "enter" : key == " " ? "space" : key,
+            //get anything that specifically ends with key
+            lastChar = rangeChar !== "" && list[char] ? list[char] : [],
+            //get everything that does not specify a key
+            noKey = list["any"] || [],
+            //if enter key, get everything that ends in search character
+            enterKey =
+              e.key == "Enter" && list[searchChar] ? list[searchChar] : [];
+          return [...lastChar, ...enterKey, ...noKey];
         },
-        commands = listByLastKey(searchChar, this.commandsByLastKey),
-        regexes = listByLastKey(searchChar, this.replacementsByLastKey),
-        searchRegexes = (searchNode) => {
-          let searchNodeClone = searchNode.cloneNode(true),
-            cloneHTML = searchNodeClone ? searchNodeClone.innerHTML : false,
-            cloneSplit = cloneHTML
-              ? cloneHTML.replace(/^(&nbsp;\s?)+/, "").split(placeholderSearch)
-              : [],
-            cloneSearch = cloneSplit[0]
-              ? cloneSplit[0].replace(/&nbsp;$/, " ")
+        //regex commands to text
+        commands = listByLastKey(rangeChar, this.commandsByLastKey),
+        //regex replacement patterns to test
+        replacements = listByLastKey(searchChar, this.replacementsByLastKey),
+        //make a clone of specficied node to search for matches
+        searchNodeClone,
+        cloneHTML,
+        cloneSplit,
+        cloneSearch,
+        makeSearchClone = (searchNode) => {
+          searchNodeClone = searchNode.cloneNode(true);
+          let html = searchNodeClone && searchNodeClone.nodeType == 1;
+          cloneHTML =
+            searchNodeClone && html
+              ? searchNodeClone.innerHTML
+              : searchNodeClone
+              ? searchNodeClone.textContent
               : false;
+          //clean up extra spacing
+          if (html && cloneHTML)
+            cloneHTML = cloneHTML.replace(/^(&nbsp;\s?)+/, "");
+          if (cloneHTML)
+            cloneHTML = cloneHTML.replace(/\s+/, " ").replace(/\s*\n\s*/, "\n");
 
-          regexes.forEach((regex) => {
+          cloneSplit = cloneHTML ? cloneHTML.split(placeholderSearch) : [];
+          cloneSearch = cloneSplit[0] ? cloneSplit[0] : false;
+
+          //convert &nbsp;
+          if (html && cloneSearch)
+            cloneSearch = cloneSearch.replace(/&nbsp;$/, " ");
+        },
+        //node any matches that are valid
+        excludeAncestors,
+        ignoreMatches,
+        match,
+        checkMatch = (regex, searchNode) => {
+          excludeAncestors = (regex.excludeAncestors || []).join();
+          ignoreMatches =
+            searchNode && excludeAncestors.length > 0
+              ? searchNode.closest && searchNode.closest(excludeAncestors)
+              : false;
+          match =
+            !!cloneSearch &&
+            cloneSearch.length > 1 &&
+            regex.match &&
+            !ignoreMatches
+              ? cloneSearch.match(regex.match)
+              : false;
+        },
+        //search a given node for regex replacements
+        searchReplacements = (searchNode) => {
+          makeSearchClone(searchNode);
+          replacements.forEach((regex) => {
             if (!searchNode || !searchNode.cloneNode) return;
-            let excludeAncestors = (regex.excludeAncestors || []).join(),
-              ignoreMatches =
-                searchNode && excludeAncestors.length > 0
-                  ? searchNode.closest && searchNode.closest(excludeAncestors)
-                  : false,
-              match;
-
-            match =
-              !!cloneSearch &&
-              cloneSearch.length > 2 &&
-              regex.match &&
-              !ignoreMatches
-                ? cloneSearch.match(regex.match)
-                : false;
+            let matchIndex = e.key == "Enter" ? 0 : 1;
+            checkMatch(regex, searchNode);
 
             if (
               match &&
@@ -1863,57 +2166,90 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               cloneSearch.length -
                 match[0].length -
                 cloneSearch.lastIndexOf(match[0]) ==
-                1 &&
-              regex.replace
+                matchIndex
             ) {
-              /*console.log(regex.replace, {
-                match: regex.match,
-                html: cloneHTML,
-                split: cloneSplit,
-                replacement: cloneSplit[0].replace(regex.match, regex.replace),
-              });*/
               found = true;
-              cloneSplit[0] = cloneSplit[0].replace(regex.match, regex.replace);
+              if (regex.replace)
+                cloneSplit[0] = cloneSplit[0].replace(
+                  regex.match,
+                  regex.replace
+                );
             }
           });
+
+          //update HTML with replacement
           if (found) {
             range.selectNode(searchNode);
-            //console.log(this.debugRange(range));
             range.setEndBefore(span);
-            //console.log(this.debugRange(range));
             this._handleCommand("insertHTML", cloneSplit[0]);
-            //console.log(searchNode.innerHTML);
             span.remove();
             if (searchNodeClone) searchNodeClone.remove();
           }
         };
-      commands.forEach((command) => {
-        let match = cloneText.match(command.match),
-          last = cloneText.lastIndexOf(match),
-          offset = match ? match[0].length : -1;
-        if (match && cloneText.length - offset - last == 1) {
-          let newOffset = range.startOffset - offset - 1;
-          if (newOffset > 0) {
-            found = true;
-            range.setStart(range.startContainer, newOffset);
-            range.deleteContents();
-            this._handleCommand(command.command, command.commandVal, range);
+
+      //only search the common ancestor node of the range for matching commans
+      commands.forEach((regex) => {
+        if (!node || !node.cloneNode) return;
+        makeSearchClone(node);
+        checkMatch(regex, node, true);
+
+        //run the matching command
+        if (match && match[0]) {
+          let commandVal = regex.commandVal;
+          span.remove();
+          range.setStart(
+            range.startContainer,
+            range.startOffset - match[0].length
+          );
+          range.deleteContents();
+          if (
+            regex.command === "formatBlock" &&
+            range.commonAncestorContainer.closest(commandVal)
+          ) {
+            commandVal = "p";
+          } else if (
+            regex.command === "wrapRange" &&
+            range.commonAncestorContainer.closest(commandVal)
+          ) {
+            commandVal = "span";
           }
+          this._handleCommand(regex.command, commandVal, range);
+          if (searchNodeClone) searchNodeClone.remove();
+          found = true;
         }
       });
+
+      //only search replacements if we didn't alread execute a comand
+      //starting with a target, check for matches
+      //expand search to parent if not found
       while (
         !found &&
         !!target &&
         target !== this.target &&
         !!target.parentNode
       ) {
-        searchRegexes(target);
+        searchReplacements(target);
         target = target.parentNode;
       }
-      if (!found) searchRegexes(this.target);
+      if (!found) searchReplacements(this.target);
+
+      //if enter key, then go to next node
+      if (found && e.key == "Enter") {
+        let sibs =
+            range && range.commonAncestorContainer
+              ? [...range.commonAncestorContainer.childNodes]
+              : [],
+          currentNode =
+            range && range.endOffset ? sibs[range.endOffset] : false,
+          nextNode = currentNode.nextElementSibling;
+        if (nextNode) {
+          nextNode.append(span);
+          this.selectNode(span, this.getRange());
+        }
+      }
 
       //remove placeholder from editor
-      if (!found) span.remove();
+      if (span) span.remove();
       this.historyPaused = keepPaused;
       if (found) this.updateHistory();
     }
@@ -1962,8 +2298,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               node.getAttribute("id").indexOf("range-placeholder") < 0
           );
           if (filtered.length > 0) update = true;
-          if (filtered.length > 0 && !this.pauseHistoryUpdates)
-            console.log(mutation);
         }
       });
       if (update && !this.pauseHistoryUpdates) this.updateHistory();
@@ -2033,11 +2367,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           range: range,
         },
       ];
-      console.log("history", this.history, this.historyMax, {
-        type: description,
-        html: html,
-        range: range,
-      });
 
       //set location to current changes
       this.historyLocation = this.history.length - 1;
@@ -2064,7 +2393,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.range = range;
           this._updateButtonRanges(inRange);
         }
-        console.log("restoring", this.historyLocation, this.history, history);
         this.historyPaused = false;
       }
     }
@@ -2100,7 +2428,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _removeHighlight() {
-      console.log(this.__highlight);
       this.__highlight.unwrap();
     }
   };
