@@ -419,6 +419,7 @@ Custom property | Description | Default
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
  * @demo ./demo/rawhtml.html raw HTML
+ * @demo ./demo/markdown.html markdown support
  */
 class RichTextEditor extends RichTextEditorBehaviors(LitElement) {}
 window.customElements.define(RichTextEditor.tag, RichTextEditor);

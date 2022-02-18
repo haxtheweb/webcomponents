@@ -197,6 +197,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         },
 
         /**
+         * pauses history when multiple mutations must count as one change
+         */
+        enableMarkdown: {
+          name: "enableMarkdown",
+          attribute: "enable-markdown",
+          type: Boolean,
+        },
+
+        /**
          * sets a maximum amount of undo/redo steps in history
          */
         historyMax: {
@@ -2050,6 +2059,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e keypress event
      */
     _handleMarkdownReplacement(e) {
+      if (!this.enableMarkdown) return;
       let keepPaused = this.historyPaused;
       this.historyPaused = true;
 

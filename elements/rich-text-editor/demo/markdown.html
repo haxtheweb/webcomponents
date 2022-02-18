@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RichTextEditor: Configuring rich-text-editor toolbar</title>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../rich-text-editor.js';
+      import '../lib/buttons/rich-text-editor-emoji-picker.js';
+      import '../lib/buttons/rich-text-editor-icon-picker.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Configuring rich-text-editor toolbar</h1>
+      <demo-snippet>
+        <template>
+          <rich-text-editor-toolbar id="editor" show="always" enable-markdown controls="content"></rich-text-editor-toolbar>
+          <rich-text-editor id="content" toolbar="editor"><p>Test me</p></rich-text-editor>
+          <script>
+            let editor = document.getElementById('editor');
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
