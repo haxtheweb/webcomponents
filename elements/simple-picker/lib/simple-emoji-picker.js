@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimplePickerBehaviors } from "@lrnwebcomponents/simple-picker/simple-picker.js";
-import { SimpleEmojiList } from "./simple-emoji-list.js";
+import { SimpleEmojiList } from "@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js";
 
 /**
  * `simple-emoji-picker`
