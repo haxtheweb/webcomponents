@@ -6066,10 +6066,10 @@
     "@polymer/polymer" "^3.0.0"
     chart.js "^2.7.3"
 
-"@wcfactory/rollup-umd-build@^0.12.1":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@wcfactory/rollup-umd-build/-/rollup-umd-build-0.12.3.tgz#24b7aeb665dfd9a0fb3c47435fa52185b1550dad"
-  integrity sha512-xuM2yOVrIXUYEXvCOK6DWnfj5DuUy7VE5fpsvHzOOGRhQoqdjg8zkChJXqIxyD9N8F6opXBh7lgCbkzkHTYRZg==
+"@wcfactory/rollup-umd-build@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@wcfactory/rollup-umd-build/-/rollup-umd-build-0.13.0.tgz#6b16947f34e50b2ea2f4f0cbef1674548453269d"
+  integrity sha512-e20WofQ0LDPrMPCZmZYX8634s1EoxU+FCYRta0Rs9RY/2nl921CPvp2grKf7oVe+JqwozLb7pjGm51kTa7X9Zg==
   dependencies:
     "@rollup/plugin-commonjs" "18.1.0"
     babel-plugin-transform-dynamic-imports-to-static-imports "1.0.0"
