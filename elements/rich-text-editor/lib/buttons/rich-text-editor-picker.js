@@ -221,14 +221,13 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * sets picker's value based ion current selected range
      */
     _setRangeValue() {
-      let val = this._getSelection();
-      if (this.shadowRoot) {
-        if (this.tagsArray.includes(val)) {
-          this.shadowRoot.querySelector("#button").value = val;
-        } else if (!this.range || this.range.collapsed) {
-          this.shadowRoot.querySelector("#button").value = undefined;
-        }
-      }
+      let val = this._getSelection(),
+        button = this.shadowRoot
+          ? this.shadowRoot.querySelector("#button")
+          : undefined,
+        oldVal = button ? button.value : undefined,
+        newVal = this.tagsArray.includes(val) ? val : null;
+      if (button && oldVal !== newVal) button.value = newVal;
     }
 
     /**
