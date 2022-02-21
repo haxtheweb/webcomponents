@@ -1410,7 +1410,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 //converts emoji description to markdown
                 emojimd = `:${emojidesc
                   .toLowerCase()
-                  .replace(/\s+/g, "-")
+                  .replace(/\s+/g, "_")
                   .replace(/[^\w-]/g, "")}:`;
               //handles emoji with identical descriptions
               if (emojimd && obj[emojimd]) {
@@ -1458,7 +1458,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 //converts symbol description to markdown
                 symbolmd = `;${symboldesc
                   .toLowerCase()
-                  .replace(/\s+/g, "-")
+                  .replace(/\s+/g, "_")
                   .replace(/[^\w-]/g, "")};`;
               //handles symbol with identical descriptions
               if (symbolmd && obj[symbolmd]) {
