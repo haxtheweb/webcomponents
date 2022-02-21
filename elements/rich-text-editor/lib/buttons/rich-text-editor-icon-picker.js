@@ -96,6 +96,15 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
     this.command = "insertHTML";
     this.tagsList = "simple-icon-lite";
   }
+  /**
+   * override this custom function to perform a
+   * custom operation when an element that matches the tags list is clicked
+   *
+   * @param {event} e click event
+   */
+  tagClickCallback(e) {
+    return false;
+  }
 
   /**
    * Picker change
