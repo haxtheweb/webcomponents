@@ -2,7 +2,7 @@
   "name": "deprecated-elements",
   "description": "Elements our team has deprecated",
   "wcfactory": {},
-  "version": "4.0.5",
+  "version": "4.0.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
@@ -37,10 +37,10 @@
     "@lrnwebcomponents/top-alert": "4.0.1",
     "@lrnwebcomponents/wave-player": "4.0.4",
     "@polymer/paper-slider": "3.0.1",
-    "lit": "^2.0.2"
+    "lit": "^2.2.0"
   },
   "resolutions": {
-    "lit": "2.0.2"
+    "lit": "2.2.0"
   },
   "private": true,
   "publishConfig": {

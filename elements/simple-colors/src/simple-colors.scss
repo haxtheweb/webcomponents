@@ -348,6 +348,10 @@ $colors:
   @include get-colors('default',$dark: true);
 }
 
+:host {
+  accent-color: var(--simple-colors-default-theme-accent-7);
+}
+
 @each $color in $colors {
   $var: color-variable($color);
   @include get-accent($color,$var);

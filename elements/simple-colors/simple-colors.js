@@ -279,6 +279,10 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-default-theme-blue-grey-12: #e7eff1;
           }
 
+          :host {
+            accent-color: var(--simple-colors-default-theme-accent-7);
+          }
+
           :host([accent-color="grey"]) {
             --simple-colors-default-theme-accent-1: #ffffff;
             --simple-colors-default-theme-accent-2: #eeeeee;

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PromiseProgress: promise-progress Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/promise-progress-lite.js';
+    </script>
+  </head>
+  <body>
+    <h1>This is a very simple usage</h1>
+    <demo-snippet>
+      <template>
+<style>
+  promise-progress-lite {
+    accent-color: red;
+  }
+</style>
+<promise-progress-lite id="progress2" accent-color="red" show-count></promise-progress-lite>
+<button id="b2">Click to load stuff</button>
+<script type="module" async defer>
+  let ary = [
+    () => import("@lrnwebcomponents/meme-maker/meme-maker.js"),
+    () => fetch("https://images-api.nasa.gov/search?q=apollo%2011&description=moon%20landing&media_type=image"),
+    () => fetch("https://images-api.nasa.gov/search?q=moon%2011&description=moon%20landing&media_type=image"),
+    () => fetch("https://images-api.nasa.gov/search?q=rockets%2011&description=moon%20landing&media_type=image"),
+    ];
+  document.querySelector("#progress2").list = ary;
+  document.querySelector("#b2").addEventListener("click", async (e) => {
+    document.querySelector("#progress2").process();
+  });
+  document.querySelector("#progress2").addEventListener("promise-progress-finished", (e) => {
+    if (e.detail.value) {
+      alert("Finished");
+    }
+  })
+</script>
+      </template>
+    </demo-snippet>
+  </body>
+</html>

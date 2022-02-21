@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "promise-progress",
+      "path": "./promise-progress.js",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`"
+    },
+    {
+      "name": "promise-progress",
+      "path": "./src/promise-progress.js",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`"
+    }
+  ]
+}

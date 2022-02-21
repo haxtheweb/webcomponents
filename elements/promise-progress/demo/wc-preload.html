@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PromiseProgress: promise-progress Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import "../lib/wc-preload-progress.js";
+    </script>
+    <script>
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCAutoloadRegistryFile = "https://cdn.webcomponents.psu.edu/cdn/wc-registry.json";
+      // local development and mobx
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "development"
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <style>
+      .count {
+        position: absolute;
+        margin-top: 100px;
+        margin-left: 30px;
+        font-size: 30px;
+        color: var(--simple-colors-default-theme-grey-1, white);
+        font-family: 'Press Start 2P', cursive;
+        width: 350px;
+        text-align: center;
+      }
+      img {
+        width: 400px;
+        height: 400px;
+        pointer-events: none;
+      }
+      .progress {
+        margin-top: -150px;
+        margin-left: 30px;
+        z-index: -1;
+      }
+      .progress::part(progress) {
+        height: 100px;
+        width: 350px;
+      }
+      .game {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        width: 331px;
+        background-color: var(--simple-colors-default-theme-red-7, red);
+        color: var(--simple-colors-default-theme-grey-1, white);
+        border: 0;
+        z-index: 1;
+        display: block;
+        margin-top: -110px;
+        margin-left: 40px;
+        height: 70px;
+      }
+      .game:focus,
+      .game:hover {
+        cursor: pointer;
+        background-color: var(--simple-colors-default-theme-red-8);
+        color: var(--simple-colors-default-theme-grey-2);
+      }
+      .game:active {
+        cursor: progress;
+        background-color: var(--simple-colors-default-theme-red-10);
+        color: var(--simple-colors-default-theme-grey-5);
+      }
+    </style>
+    <h1>This is using WC Registry to load results from it's Promise system</h1>
+    <div class="count"><span id="value">0</span>/<span id="max">100</span></div>
+    <img src="../lib/HatBlank.svg" />
+    <wc-preload-progress class="progress" id="progress2" accent-color="purple"></wc-preload-progress>
+    <button id="b2">Click to load other stuff</button>
+    <script type="module" async defer>
+      await fetch(window.WCAutoloadRegistryFile).then((p) => p.json()).then((data) => {
+        document.querySelector("#progress2").wcList = Object.keys(data);
+      });
+      // preload only specific tags
+      //document.querySelector("#progress2").wcList = ["meme-maker", "simple-icon"];
+      document.querySelector("#b2").addEventListener("click", async (e) => {
+        document.querySelector("#progress2").process();
+      });
+      document.querySelector("#progress2").addEventListener("value-changed", (e) => {
+        document.querySelector("#value").textContent = e.detail.value;
+      });
+      document.querySelector("#progress2").addEventListener("max-changed", (e) => {
+        document.querySelector("#max").textContent = e.detail.value;
+      });
+      document.querySelector("#progress2").addEventListener("promise-progress-finished", (e) => {
+        if (e.detail.value) {
+          const text = document.createElement("button");
+          document.querySelector("#value").textContent = document.querySelector("#max").textContent;
+          text.textContent = "Game Ready";
+          text.classList.add("game");
+          text.addEventListener("click", (e) => {
+            alert("go do something");});
+          document.querySelector("#progress2").parentNode.appendChild(text);
+        }
+      })
+    </script>
+  </body>
+</html>

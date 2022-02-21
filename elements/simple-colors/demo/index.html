@@ -12,7 +12,8 @@
       import '../simple-colors.js';
       import '../lib/simple-colors-picker.js';
     </script>
-    <style></style>
+    <style>
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -75,6 +76,11 @@
           .delete:hover {
             background-color: var(--simple-colors-default-theme-red-8);
           }
+          input[type="checkbox"],
+          input[type="radio"] {
+            height: 20px;
+            width: 20px;
+          }
         </style>
         <script>
           window.onload = () => {
@@ -107,7 +113,14 @@
         </div>
         <simple-colors id="simplecolors">
           <div id="box">
-            <p>This is an accent-color box.</p>
+            <input type="checkbox" checked>
+            <br>
+            <input type="radio" checked>
+            <br>
+            <input type="range">
+            <br>
+            <progress></progress>
+                        <p>This is an accent-color box.</p>
             <button class="button">
               Button
             </button>

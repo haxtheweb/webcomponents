@@ -15,19 +15,19 @@ import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@polymer/marked-element/marked-element.js";
+import "@polymer/paper-badge/paper-badge.js";
+import "@lrnwebcomponents/moment-element/moment-element.js";
 /**
-`lrnsys-comment`
-A well styled comment for a user with markdown support.
-
-* @demo demo/index.html
-*/
+ `lrnsys-comment`
+ A well styled comment for a user with markdown support.
+ 
+ * @demo demo/index.html
+ */
 class LrnsysComment extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/marked-element/marked-element.js");
-    import("@polymer/paper-badge/paper-badge.js");
-    import("@lrnwebcomponents/moment-element/moment-element.js");
   }
   static get template() {
     return html`
@@ -357,8 +357,8 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.reply]]"
-                  ><span>Reply</span></lrnsys-button
-                >
+                  label="Reply"
+                ></lrnsys-button>
               </div>
               <div class="comment-actions-group right-actions">
                 <lrnsys-button
@@ -370,9 +370,8 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.edit]]"
-                >
-                  <span>Edit</span></lrnsys-button
-                >
+                  label="Edit"
+                ></lrnsys-button>
                 <lrnsys-button
                   on-click="actionHandler"
                   id="delete"
@@ -382,8 +381,8 @@ class LrnsysComment extends PolymerElement {
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.delete]]"
-                  ><span>Delete</span></lrnsys-button
-                >
+                  label="Delete"
+                ></lrnsys-button>
               </div>
             </div>
           </div>
@@ -543,8 +542,7 @@ class LrnsysComment extends PolymerElement {
         // simple icon toggle
         if (this.editform) {
           this.shadowRoot.querySelector("#edit").icon = "save";
-          this.shadowRoot.querySelector("#edit").innerHTML =
-            "<span>Save</span>";
+          this.shadowRoot.querySelector("#edit").label = "Save";
           this.shadowRoot.querySelector("#reply").disabled = true;
           this.shadowRoot.querySelector("#editcomment").focus();
           this.dispatchEvent(
@@ -570,8 +568,7 @@ class LrnsysComment extends PolymerElement {
             this.blockFirstState = false;
           }
           this.shadowRoot.querySelector("#edit").icon = "create";
-          this.shadowRoot.querySelector("#edit").innerHTML =
-            "<span>Edit</span>";
+          this.shadowRoot.querySelector("#edit").label = "Edit";
           this.shadowRoot.querySelector("#reply").disabled = false;
         }
       }, 0);

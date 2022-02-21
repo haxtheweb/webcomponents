@@ -154,8 +154,11 @@ function formatHTMLInternals(node, level) {
 }
 
 // with type, safely get data from local storage (assumes it was set using the setter below)
-export function localStorageGet(name) {
+export function localStorageGet(name, defaultValue = "") {
   try {
+    if (localStorage.getItem(name) === null) {
+      return defaultValue;
+    }
     return JSON.parse(localStorage.getItem(name));
   } catch (e) {
     return false;

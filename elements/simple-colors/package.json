@@ -17,7 +17,7 @@
       "screenreaderOnlyCSS"
     ]
   },
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -42,22 +42,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-utils": "^4.0.7",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^4.0.5",
-    "@lrnwebcomponents/simple-picker": "^4.0.7",
-    "lit": "^2.0.2"
+    "@lrnwebcomponents/a11y-utils": "^4.0.8",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^4.0.8",
+    "@lrnwebcomponents/simple-picker": "^4.0.8",
+    "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/simple-modal": "^4.0.7",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.7",
-    "@open-wc/testing": "3.0.3",
+    "@lrnwebcomponents/simple-modal": "^4.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.8",
+    "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/polymer": "^3.4.1",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.1.29",
     "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "5.3.0",
+    "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",

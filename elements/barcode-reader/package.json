@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.5",
+  "version": "4.0.8",
   "description": "Reads barcodes",
   "repository": {
     "type": "git",
@@ -44,20 +44,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@zxing/browser": "^0.0.8",
-    "@zxing/library": "^0.18.4",
-    "javascript-barcode-reader": "0.6.8",
+    "@zxing/browser": "0.1.1",
+    "@zxing/library": "0.19.1",
+    "javascript-barcode-reader": "0.6.9",
     "jquery": "^3.6.0",
-    "lit": "^2.0.2"
+    "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",
-    "@open-wc/testing": "3.0.3",
+    "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.1.29",
     "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "5.3.0",
+    "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",

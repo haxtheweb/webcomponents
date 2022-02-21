@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
@@ -44,21 +44,21 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^4.0.7",
-    "@lrnwebcomponents/lrndesign-chart": "^4.0.7",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.7",
-    "@lrnwebcomponents/simple-colors": "^4.0.7",
-    "lit": "^2.0.2"
+    "@lrnwebcomponents/chartist-render": "^4.0.8",
+    "@lrnwebcomponents/lrndesign-chart": "^4.0.8",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.8",
+    "@lrnwebcomponents/simple-colors": "^4.0.8",
+    "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.7",
-    "@open-wc/testing": "3.0.3",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.8",
+    "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.1.29",
     "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "5.3.0",
+    "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2"

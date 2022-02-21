@@ -87,18 +87,20 @@ class DynamicImportRegistry extends HTMLElement {
       // this can help things on polyfill environments
       this.__loaded[tag] = true;
       try {
-        await import(`${this.basePath}${this.list[tag]}`).then((module) => {
-          // dispatch custom event in case anyone cares
-          this.dispatchEvent(
-            new CustomEvent("dynamic-import-registry-loaded", {
-              detail: {
-                tag: tag,
-                path: this.list[tag],
-                module: module,
-              },
-            })
-          );
-        });
+        return await import(`${this.basePath}${this.list[tag]}`).then(
+          (module) => {
+            // dispatch custom event in case anyone cares
+            this.dispatchEvent(
+              new CustomEvent("dynamic-import-registry-loaded", {
+                detail: {
+                  tag: tag,
+                  path: this.list[tag],
+                  module: module,
+                },
+              })
+            );
+          }
+        );
       } catch (e) {
         console.warn(`${this.basePath}${this.list[tag]}`);
         console.warn(e);

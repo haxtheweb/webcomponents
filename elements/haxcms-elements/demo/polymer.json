@@ -17,7 +17,6 @@
     "node_modules/web-animations-js/*.map",
     "node_modules/web-animations-js/*.js",
     "node_modules/@polymer/marked-element/node_modules/marked/lib/marked.js",
-    "node_modules/@lrnwebcomponents/a11y-media-player/lib/screenfull/dist/screenfull.js",
     "node_modules/@lrnwebcomponents/img-pan-zoom/lib/openseadragon/build/openseadragon/openseadragon.js",
     "node_modules/@lrnwebcomponents/elmsln-apps/lib/*/*.js",
     "node_modules/@webcomponents/webcomponentsjs/*.js",
