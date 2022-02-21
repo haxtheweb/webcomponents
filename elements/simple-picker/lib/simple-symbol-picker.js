@@ -116,7 +116,6 @@ window.simplePickerSymbolsByCategory = () => {
       description: symbol.description,
     });
   });
-  console.log(obj);
   return obj;
 };
 window.SimplePickerSymbols =

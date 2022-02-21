@@ -126,7 +126,6 @@ window.simplePickerEmojisByCategory = () => {
       description: emoji.description,
     });
   });
-  console.log(obj);
   return obj;
 };
 window.SimplePickerEmojis =
