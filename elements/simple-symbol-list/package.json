@@ -1,0 +1,20 @@
+{
+  "name": "@lrnwebcomponents/simple-symbol-list",
+  "version": "4.0.7",
+  "description": "simple list of symbols",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "simple-symbol-list.js",
+  "module": "simple-symbol-list.js",
+  "umd": "simple-symbol-list.umd.js",
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
