@@ -7,5 +7,6 @@
     ":semanticPrefixChore",
     ":ignoreUnstable",
     ":renovatePrefix"
-  ]
+  ],
+  "ignoreDeps": ["bootstrap", "@emotion/styled", "@emotion/core", "strip-css-comments", "actions/setup-node"]
 }
