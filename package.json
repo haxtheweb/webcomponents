@@ -22,6 +22,7 @@
   "license": "Apache-2.0",
   "repository": "git@github.com/elmsln/lrnwebcomponents.git",
   "scripts": {
+    "prepare": "husky install",
     "start": "bash scripts/preinstall.sh && yarn run storybook",
     "lerna": "lerna",
     "hax": "code . && code elements/hax-body/lib/hax-store.js && cd elements/haxcms-elements && yarn start",
@@ -115,7 +116,7 @@
     "rollup-plugin-delete": "2.0.0",
     "rollup-plugin-rewrite-imports": "2.0.0",
     "rollup-plugin-terser": "7.0.2",
-    "strip-css-comments": "5.0.0",
+    "strip-css-comments": "3.0.0",
     "stylelint": "14.5.1",
     "symlink-dir": "5.0.1",
     "trim": "1.0.1",
