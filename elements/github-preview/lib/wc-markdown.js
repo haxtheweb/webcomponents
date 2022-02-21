@@ -1,8 +1,4 @@
-/* eslint no-undef: 0 */
-import Prism from "prism-es6/prism.js";
-import Marked from "marked/lib/marked.esm.js";
-
-self.Prism = Prism;
+import { marked } from "./marked.js";
 
 export class WCMarkdown extends HTMLElement {
   static get observedAttributes() {
@@ -74,10 +70,6 @@ export class WCMarkdown extends HTMLElement {
     contents = WCMarkdown.prepare(contents);
     contents = WCMarkdown.toHtml(contents);
     this.innerHTML = contents;
-
-    if (this.hasAttribute("highlight")) {
-      WCMarkdown.highlight(this);
-    }
   }
 
   static prepare(markdown) {
@@ -91,13 +83,8 @@ export class WCMarkdown extends HTMLElement {
   }
 
   static toHtml(markdown) {
-    return Marked(markdown);
+    return marked(markdown);
   }
-
-  static highlight(element) {
-    Prism.highlightAllUnder(element);
-  }
-
   /**
    * De-dents the code by getting the padding from the first line,
    * then removes the same indent amount padding from the rest of the lines
