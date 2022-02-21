@@ -272,10 +272,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js");
       // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
-      // prettier-ignore
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js");
-      // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js");
       // prettier-ignore
       import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");
@@ -335,7 +331,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.history = this.history.slice(0 - this.historyMax);
           this.historyLocation = Math.min(0, this.history.length - offset);
         }
-        if (propName === "range") this._rangeChanged(this.range, oldValue);
+        if (propName === "range" || propName == "historyPaused")
+          this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChange();
         if (["editor", "show", "range"].includes(propName))
@@ -630,6 +627,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get symbolButton() {
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
       return {
         symbolTypes: ["symbols"],
         type: "rich-text-editor-symbol-picker",
@@ -651,6 +650,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get emojiButton() {
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js");
       return {
         type: "rich-text-editor-emoji-picker",
       };
@@ -1378,6 +1379,118 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ];
     }
     /**
+     * regex for emojis
+     *
+     * @readonly
+     */
+    get mdashMarkdown() {
+      let wordboundaries = " ,.;:'')*!-";
+      return [
+        {
+          match: /(\w+)--(\w+\W)/,
+          replace: "$1&mdash;$2",
+          excludeAncestors: ["pre", "code", "a"],
+          lastChars: wordboundaries.split(""),
+        },
+      ];
+    }
+    /**
+     * regex for emojis
+     *
+     * @readonly
+     */
+    get emojiMarkdown() {
+      import("@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js").then(
+        (module) => {
+          let getEmojisByMarkdown = () => {
+            let obj = {},
+              patterns = [];
+            (module.SimpleEmojiList || []).forEach((emoji) => {
+              let emojidesc = emoji.description || emoji.character || "zzz",
+                //converts emoji description to markdown
+                emojimd = `:${emojidesc
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^\w-]/g, "")}:`;
+              //handles emoji with identical descriptions
+              if (emojimd && obj[emojimd]) {
+                let ctr = 2,
+                  test = `${emojimd}-${ctr}`;
+                while (obj[test]) {
+                  ctr++;
+                  test = `${emojimd}-${ctr}`;
+                }
+                emojimd = test;
+              }
+              //adds emoji markdown data
+              if (emojimd) {
+                obj[emojimd] = emoji;
+                patterns.push({
+                  match: new RegExp(emojimd, "g"),
+                  replace: emoji.character,
+                  excludeAncestors: ["pre", "code"],
+                  lastChars: [":"],
+                });
+              }
+            });
+            return patterns;
+          };
+          if (module.SimpleEmojiList)
+            window.richTextEditorEmojiMarkdown =
+              window.richTextEditorEmojiMarkdown || getEmojisByMarkdown();
+        }
+      );
+      return window.richTextEditorEmojiMarkdown || [];
+    }
+    /**
+     * regex for symbols
+     *
+     * @readonly
+     */
+    get symbolMarkdown() {
+      import("@lrnwebcomponents/simple-symbol-list/simple-symbol-list.js").then(
+        (module) => {
+          let getSymbolsByMarkdown = () => {
+            let obj = {},
+              patterns = [];
+            (module.SimpleSymbolList || []).forEach((symbol) => {
+              let symboldesc = symbol.description || symbol.character || "zzz",
+                //converts symbol description to markdown
+                symbolmd = `;${symboldesc
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^\w-]/g, "")};`;
+              //handles symbol with identical descriptions
+              if (symbolmd && obj[symbolmd]) {
+                let ctr = 2,
+                  test = `${symbolmd}-${ctr}`;
+                while (obj[test]) {
+                  ctr++;
+                  test = `${symbolmd}-${ctr}`;
+                }
+                symbolmd = test;
+              }
+              //adds emoji markdown data
+              if (symbolmd) {
+                obj[symbolmd] = symbol;
+                patterns.push({
+                  match: new RegExp(symbolmd, "g"),
+                  replace: symbol.character,
+                  excludeAncestors: ["pre", "code"],
+                  lastChars: [";"],
+                });
+              }
+            });
+            return patterns;
+          };
+          if (module.SimpleSymbolList)
+            window.richTextEditorSymbolMarkdown =
+              window.richTextEditorSymbolMarkdown || getSymbolsByMarkdown();
+        }
+      );
+      return window.richTextEditorSymbolMarkdown || [];
+    }
+    /**
      * default regexes for markdown support
      *
      * @readonly
@@ -1399,6 +1512,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ...this.listMarkdown,
         ...this.horizontalRuleMarkdown,
         ...this.footnoteMarkdown,
+        ...this.emojiMarkdown,
+        ...this.symbolMarkdown,
+        ...this.mdashMarkdown,
       ];
     }
     /**
@@ -1563,7 +1679,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {event} e
      */
     _rangeChanged(newValue, oldValue) {
-      if (newValue !== oldValue)
+      if (newValue !== oldValue && !this.historyPaused)
         this._updateButtonRanges(this._isRangeInScope(oldValue));
       this.dispatchEvent(
         new CustomEvent("range-changed", {
@@ -2169,7 +2285,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             if (!searchNode || !searchNode.cloneNode) return;
             let matchIndex = e.key == "Enter" ? 0 : 1;
             checkMatch(regex, searchNode);
-
             if (
               match &&
               match[0] &&
@@ -2486,5 +2601,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   LitElement
 ) {}
+
 window.customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
 export { RichTextEditorToolbar, RichTextEditorToolbarBehaviors };
