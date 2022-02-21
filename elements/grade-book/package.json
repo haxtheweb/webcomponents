@@ -54,7 +54,7 @@
     "@lrnwebcomponents/simple-colors": "^4.0.8",
     "@lrnwebcomponents/simple-fields": "^4.0.8",
     "@lrnwebcomponents/utils": "^4.0.8",
-    "idb-keyval": "5.0.6",
+    "idb-keyval": "6.1.0",
     "lit": "^2.2.0",
     "mobx": "6.4.1"
   },

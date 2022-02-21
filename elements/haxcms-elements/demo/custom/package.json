@@ -23,7 +23,6 @@
     "gulp-terser": "2.1.0",
     "gulp": "^4.0.2",
     "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-rewrite-imports": "^1.0.1",
-    "rollup": "^1.6.0"
+    "rollup-plugin-rewrite-imports": "^1.0.1"
   }
 }

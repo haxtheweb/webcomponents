@@ -44,7 +44,7 @@
   "dependencies": {
     "@lrnwebcomponents/lrndesign-avatar": "^4.0.8",
     "@polymer/polymer": "^3.4.1",
-    "time-elements": "1.2.0"
+    "@github/time-elements": "3.1.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
