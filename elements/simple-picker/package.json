@@ -42,6 +42,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-icon": "^4.0.7",
+    "@lrnwebcomponents/simple-symbol-list": "^4.0.7",
+    "@lrnwebcomponents/simple-emoji-list": "^4.0.7",
     "lit": "^2.0.2"
   },
   "devDependencies": {
