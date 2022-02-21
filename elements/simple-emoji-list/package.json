@@ -1,0 +1,20 @@
+{
+  "name": "@lrnwebcomponents/simple-emoji-list",
+  "version": "4.0.7",
+  "description": "simple list of emoticons",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "simple-emoji-list.js",
+  "module": "simple-emoji-list.js",
+  "umd": "simple-emoji-list.umd.js",
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
