@@ -55,17 +55,17 @@
     "@lrnwebcomponents/simple-fields": "^4.0.8",
     "@lrnwebcomponents/utils": "^4.0.8",
     "idb-keyval": "5.0.6",
-    "lit": "^2.1.4",
-    "mobx": "6.3.2"
+    "lit": "^2.2.0",
+    "mobx": "6.4.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",
-    "@open-wc/testing": "3.0.3",
+    "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.28",
+    "@web/dev-server": "0.1.29",
     "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "5.3.0",
+    "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",
