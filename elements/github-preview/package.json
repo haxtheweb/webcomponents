@@ -46,9 +46,7 @@
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^4.0.4",
     "@lrnwebcomponents/simple-icon": "^4.0.8",
-    "lit": "^2.2.0",
-    "marked": "^4.0.12",
-    "prism-es6": "1.2.0"
+    "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",
