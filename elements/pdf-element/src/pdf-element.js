@@ -505,12 +505,10 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
   sideBar() {
     if (this.instance.pdfExists) {
       if (!this.fromChange) {
-        this.shadowRoot.querySelector(
-          "#container"
-        ).style.height = this.shadowRoot.querySelector("#test").style.height;
-        this.shadowRoot.querySelector(
-          "#container"
-        ).style.width = this.shadowRoot.querySelector("#test").style.width;
+        this.shadowRoot.querySelector("#container").style.height =
+          this.shadowRoot.querySelector("#test").style.height;
+        this.shadowRoot.querySelector("#container").style.width =
+          this.shadowRoot.querySelector("#test").style.width;
         if (this.shadowRoot.querySelector("#main").style.marginLeft == "25%") {
           this.sidebarOpen = false;
           this.instance.setViewportPos(false);

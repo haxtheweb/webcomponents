@@ -538,9 +538,8 @@ class LrnsysProgress extends PolymerElement {
         typeof this.items[this.active].metadata.dataUrl !== typeof undefined &&
         !this.disableAjaxCalls
       ) {
-        this.shadowRoot.querySelector("#ajax").url = this.items[
-          this.active
-        ].metadata.dataUrl;
+        this.shadowRoot.querySelector("#ajax").url =
+          this.items[this.active].metadata.dataUrl;
         this.shadowRoot.querySelector("#ajax").generateRequest();
       } else {
         setTimeout(() => {
@@ -653,9 +652,8 @@ class LrnsysProgress extends PolymerElement {
         this.notifyPath("items." + this.active + ".metadata.status");
         // need to make sure finished happens prior to value set to 100
         // otherwise this will kick off the circle to complete itself
-        this.items[this.active].metadata.value = this.items[
-          this.active
-        ].metadata.max;
+        this.items[this.active].metadata.value =
+          this.items[this.active].metadata.max;
         this.set(
           "items." + this.active + ".metadata.value",
           this.items[this.active].metadata.max
@@ -663,9 +661,8 @@ class LrnsysProgress extends PolymerElement {
         this.notifyPath("items." + this.active + ".metadata.value");
       } else {
         // set value = max which will automatically trigger complete in the circle
-        this.items[this.active].metadata.value = this.items[
-          this.active
-        ].metadata.max;
+        this.items[this.active].metadata.value =
+          this.items[this.active].metadata.max;
         this.set(
           "items." + this.active + ".metadata.value",
           this.items[this.active].metadata.max

@@ -176,16 +176,17 @@ if (!ancient) {
       var c = q[a];
       return (
         void 0 === c &&
-          (c = q[a] = {
-            url: a,
-            urlBase: m(a),
-            exports: Object.create(null),
-            state: "Initialized",
-            stateData: void 0,
-            isTopLevel: !1,
-            crossorigin: b,
-            onNextStateChange: [],
-          }),
+          (c = q[a] =
+            {
+              url: a,
+              urlBase: m(a),
+              exports: Object.create(null),
+              state: "Initialized",
+              stateData: void 0,
+              isTopLevel: !1,
+              crossorigin: b,
+              onNextStateChange: [],
+            }),
         c
       );
     }

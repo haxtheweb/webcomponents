@@ -19,19 +19,19 @@ class CourseIntroLessonPlans extends LitElement {
   _itemsChanged(items) {
     this.items = [];
     this.items = items.filter((i) => {
-      return (
-        i.slug !== "introduction" &&
-        i.parent === null
-      );
+      return i.slug !== "introduction" && i.parent === null;
     });
   }
-  
+
   static get styles() {
     return [
       css`
         :host {
           display: block;
-          background-color: var(--course-intro-header--header--background-color, #1e1e1e);
+          background-color: var(
+            --course-intro-header--header--background-color,
+            #1e1e1e
+          );
           padding-bottom: 40px;
           min-height: 60vh;
         }
@@ -66,13 +66,11 @@ class CourseIntroLessonPlans extends LitElement {
   }
   render() {
     return html`
-      
       <div id="plans-container">
         ${this.items.map(
           (plan) =>
             html`<course-intro-lesson-plan
               title="${plan.title}"
-            
               link=${plan.slug}
             ></course-intro-lesson-plan>`
         )}

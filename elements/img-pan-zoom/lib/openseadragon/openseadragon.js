@@ -6067,13 +6067,15 @@ function OpenSeadragon(options) {
         if (tracker.pinchHandler && curGPoint.type === "touch") {
           // Initialize for pinch
           delegate.pinchGPoints = pointsList.asArray();
-          delegate.lastPinchDist = delegate.currentPinchDist = delegate.pinchGPoints[0].currentPos.distanceTo(
-            delegate.pinchGPoints[1].currentPos
-          );
-          delegate.lastPinchCenter = delegate.currentPinchCenter = getCenterPoint(
-            delegate.pinchGPoints[0].currentPos,
-            delegate.pinchGPoints[1].currentPos
-          );
+          delegate.lastPinchDist = delegate.currentPinchDist =
+            delegate.pinchGPoints[0].currentPos.distanceTo(
+              delegate.pinchGPoints[1].currentPos
+            );
+          delegate.lastPinchCenter = delegate.currentPinchCenter =
+            getCenterPoint(
+              delegate.pinchGPoints[0].currentPos,
+              delegate.pinchGPoints[1].currentPos
+            );
         }
       }
     }
@@ -6356,13 +6358,15 @@ function OpenSeadragon(options) {
             if (tracker.pinchHandler && updateGPoint.type === "touch") {
               // Reset for pinch
               delegate.pinchGPoints = pointsList.asArray();
-              delegate.lastPinchDist = delegate.currentPinchDist = delegate.pinchGPoints[0].currentPos.distanceTo(
-                delegate.pinchGPoints[1].currentPos
-              );
-              delegate.lastPinchCenter = delegate.currentPinchCenter = getCenterPoint(
-                delegate.pinchGPoints[0].currentPos,
-                delegate.pinchGPoints[1].currentPos
-              );
+              delegate.lastPinchDist = delegate.currentPinchDist =
+                delegate.pinchGPoints[0].currentPos.distanceTo(
+                  delegate.pinchGPoints[1].currentPos
+                );
+              delegate.lastPinchCenter = delegate.currentPinchCenter =
+                getCenterPoint(
+                  delegate.pinchGPoints[0].currentPos,
+                  delegate.pinchGPoints[1].currentPos
+                );
             }
           }
         } else {
@@ -14815,25 +14819,37 @@ function OpenSeadragon(options) {
       this.imgHover = $.makeTransparentImage(this.srcHover);
       this.imgDown = $.makeTransparentImage(this.srcDown);
 
-      this.imgRest.alt = this.imgGroup.alt = this.imgHover.alt = this.imgDown.alt = this.tooltip;
+      this.imgRest.alt =
+        this.imgGroup.alt =
+        this.imgHover.alt =
+        this.imgDown.alt =
+          this.tooltip;
 
       this.element.style.position = "relative";
       $.setElementTouchActionNone(this.element);
 
-      this.imgGroup.style.position = this.imgHover.style.position = this.imgDown.style.position =
-        "absolute";
+      this.imgGroup.style.position =
+        this.imgHover.style.position =
+        this.imgDown.style.position =
+          "absolute";
 
-      this.imgGroup.style.top = this.imgHover.style.top = this.imgDown.style.top =
-        "0px";
+      this.imgGroup.style.top =
+        this.imgHover.style.top =
+        this.imgDown.style.top =
+          "0px";
 
-      this.imgGroup.style.left = this.imgHover.style.left = this.imgDown.style.left =
-        "0px";
+      this.imgGroup.style.left =
+        this.imgHover.style.left =
+        this.imgDown.style.left =
+          "0px";
 
       this.imgHover.style.visibility = this.imgDown.style.visibility = "hidden";
 
       if ($.Browser.vendor == $.BROWSERS.FIREFOX && $.Browser.version < 3) {
-        this.imgGroup.style.top = this.imgHover.style.top = this.imgDown.style.top =
-          "";
+        this.imgGroup.style.top =
+          this.imgHover.style.top =
+          this.imgDown.style.top =
+            "";
       }
 
       this.element.appendChild(this.imgRest);
@@ -17875,9 +17891,8 @@ function OpenSeadragon(options) {
       if (this.height !== null) {
         style.height = "";
       }
-      var transformOriginProp = $.getCssPropertyWithVendorPrefix(
-        "transformOrigin"
-      );
+      var transformOriginProp =
+        $.getCssPropertyWithVendorPrefix("transformOrigin");
       var transformProp = $.getCssPropertyWithVendorPrefix("transform");
       if (transformOriginProp && transformProp) {
         style[transformOriginProp] = "";
@@ -17924,9 +17939,8 @@ function OpenSeadragon(options) {
         if (this.height !== null) {
           style.height = size.y + "px";
         }
-        var transformOriginProp = $.getCssPropertyWithVendorPrefix(
-          "transformOrigin"
-        );
+        var transformOriginProp =
+          $.getCssPropertyWithVendorPrefix("transformOrigin");
         var transformProp = $.getCssPropertyWithVendorPrefix("transform");
         if (transformOriginProp && transformProp) {
           if (rotate) {
@@ -22792,9 +22806,8 @@ function OpenSeadragon(options) {
                 -tiledImage.getRotation(true),
                 tiledImage._getRotationPoint(true)
               );
-            var clipPoint = tiledImage._drawer.viewportCoordToDrawerCoord(
-              point
-            );
+            var clipPoint =
+              tiledImage._drawer.viewportCoordToDrawerCoord(point);
             if (sketchScale) {
               clipPoint = clipPoint.times(sketchScale);
             }
@@ -23138,11 +23151,10 @@ function OpenSeadragon(options) {
           options.image,
           "[TileCache.cacheTile] options.image is required to create an ImageRecord"
         );
-        imageRecord = this._imagesLoaded[
-          options.tile.cacheKey
-        ] = new ImageRecord({
-          image: options.image,
-        });
+        imageRecord = this._imagesLoaded[options.tile.cacheKey] =
+          new ImageRecord({
+            image: options.image,
+          });
 
         this._imagesLoadedCount++;
       }

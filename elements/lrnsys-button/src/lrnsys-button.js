@@ -118,9 +118,8 @@ class LrnsysButton extends LitElement {
     changedProperties.forEach((oldvalue, propName) => {
       if (this.shadowRoot && ["href", "target"].includes(propName)) {
         if (this[propName]) {
-          this.shadowRoot.querySelector("#lrnsys-button-link")[propName] = this[
-            propName
-          ];
+          this.shadowRoot.querySelector("#lrnsys-button-link")[propName] =
+            this[propName];
         } else {
           this.shadowRoot
             .querySelector("#lrnsys-button-link")

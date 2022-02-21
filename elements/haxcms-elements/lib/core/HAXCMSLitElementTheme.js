@@ -212,9 +212,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       super.firstUpdated(changedProperties);
     }
     if (this.contentContainer == null) {
-      this.contentContainer = this.shadowRoot.querySelector(
-        "#contentcontainer"
-      );
+      this.contentContainer =
+        this.shadowRoot.querySelector("#contentcontainer");
     }
     // update the global managed CSS styles so we can "theme" the content
     // witout leaning on ::slotted which doesn't work always

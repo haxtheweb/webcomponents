@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.AbsolutePositionBehavior = exports.AbsolutePositionBehaviorClass = void 0;
+exports.AbsolutePositionBehavior = exports.AbsolutePositionBehaviorClass =
+  void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -165,7 +166,8 @@ var AbsolutePositionBehaviorClass = function AbsolutePositionBehaviorClass(
         _this.sticky = false;
         _this.__positions = {};
         _this.__observe = false;
-        _this.__manager = window.AbsolutePositionStateManager.requestAvailability();
+        _this.__manager =
+          window.AbsolutePositionStateManager.requestAvailability();
         return _this;
       }
 

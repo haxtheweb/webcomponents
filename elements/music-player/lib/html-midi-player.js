@@ -604,7 +604,10 @@
           s.default.Gain
         );
         s.default.AudioNode.call(this, t),
-          (this.input = this.output = this._gainNode = this.context.createGain()),
+          (this.input =
+            this.output =
+            this._gainNode =
+              this.context.createGain()),
           (this.gain = new s.default.Param({
             param: this._gainNode.gain,
             units: t.units,
@@ -862,7 +865,10 @@
         var n = navigator.userAgent.toLowerCase();
         if (n.includes("safari") && !n.includes("chrome")) {
           var o = function (t) {
-            for (var e in ((this._internalNode = this.input = this.output = t._native_createWaveShaper()),
+            for (var e in ((this._internalNode =
+              this.input =
+              this.output =
+                t._native_createWaveShaper()),
             (this._curve = null),
             this._internalNode))
               this._defineProperty(this._internalNode, e);
@@ -890,14 +896,18 @@
             }),
             (s.default.global.AudioContext.prototype._native_createWaveShaper =
               s.default.global.AudioContext.prototype.createWaveShaper),
-            (s.default.global.AudioContext.prototype.createWaveShaper = function () {
-              return new o(this);
-            });
+            (s.default.global.AudioContext.prototype.createWaveShaper =
+              function () {
+                return new o(this);
+              });
         }
       }
       (s.default.WaveShaper = function (t, e) {
         s.default.SignalBase.call(this),
-          (this._shaper = this.input = this.output = this.context.createWaveShaper()),
+          (this._shaper =
+            this.input =
+            this.output =
+              this.context.createWaveShaper()),
           (this._curve = null),
           Array.isArray(t)
             ? (this.curve = t)
@@ -2629,9 +2639,10 @@
             this.toSeconds(t.maxDelay),
             this.toSeconds(t.delayTime)
           )),
-          (this._delayNode = this.input = this.output = this.context.createDelay(
-            this._maxDelay
-          )),
+          (this._delayNode =
+            this.input =
+            this.output =
+              this.context.createDelay(this._maxDelay)),
           (this.delayTime = new s.default.Param({
             param: this._delayNode.delayTime,
             units: s.default.Type.Time,
@@ -3115,11 +3126,12 @@
       i(7), i(2);
       (s.default.AudioToGain = function () {
         s.default.SignalBase.call(this),
-          (this._norm = this.input = this.output = new s.default.WaveShaper(
-            function (t) {
-              return (t + 1) / 2;
-            }
-          ));
+          (this._norm =
+            this.input =
+            this.output =
+              new s.default.WaveShaper(function (t) {
+                return (t + 1) / 2;
+              }));
       }),
         s.default.extend(s.default.AudioToGain, s.default.SignalBase),
         (s.default.AudioToGain.prototype.dispose = function () {
@@ -3370,8 +3382,10 @@
             this
           );
         }),
-        (s.default.Monophonic.prototype._triggerEnvelopeAttack = function () {}),
-        (s.default.Monophonic.prototype._triggerEnvelopeRelease = function () {}),
+        (s.default.Monophonic.prototype._triggerEnvelopeAttack =
+          function () {}),
+        (s.default.Monophonic.prototype._triggerEnvelopeRelease =
+          function () {}),
         (s.default.Monophonic.prototype.getLevelAtTime = function (t) {
           return (t = this.toSeconds(t)), this.envelope.getValueAtTime(t);
         }),
@@ -3442,10 +3456,8 @@
       (s.default.Volume = function () {
         var t = s.default.defaults(arguments, ["volume"], s.default.Volume);
         s.default.AudioNode.call(this, t),
-          (this.output = this.input = new s.default.Gain(
-            t.volume,
-            s.default.Type.Decibels
-          )),
+          (this.output = this.input =
+            new s.default.Gain(t.volume, s.default.Type.Decibels)),
           (this._unmutedVolume = t.volume),
           (this.volume = this.output.gain),
           this._readOnly("volume"),
@@ -3505,7 +3517,11 @@
       (s.default.Add = function (t) {
         s.default.Signal.call(this),
           this.createInsOuts(2, 0),
-          (this._sum = this.input[0] = this.input[1] = this.output = new s.default.Gain()),
+          (this._sum =
+            this.input[0] =
+            this.input[1] =
+            this.output =
+              new s.default.Gain()),
           (this._param = this.input[1] = new s.default.Signal(t)),
           this._param.connect(this._sum);
       }),
@@ -3920,7 +3936,10 @@
             s.default.Analyser
           );
           s.default.AudioNode.call(this),
-            (this._analyser = this.input = this.output = this.context.createAnalyser()),
+            (this._analyser =
+              this.input =
+              this.output =
+                this.context.createAnalyser()),
             (this._type = t.type),
             (this._buffer = null),
             (this.size = t.size),
@@ -4565,9 +4584,8 @@
       (s.default.ScaleExp = function (t, e, i) {
         s.default.SignalBase.call(this),
           (this._scale = this.output = new s.default.Scale(t, e)),
-          (this._exp = this.input = new s.default.Pow(
-            s.default.defaultArg(i, 2)
-          )),
+          (this._exp = this.input =
+            new s.default.Pow(s.default.defaultArg(i, 2))),
           this._exp.connect(this._scale);
       }),
         s.default.extend(s.default.ScaleExp, s.default.SignalBase),
@@ -4619,7 +4637,10 @@
           s.default.Compressor
         );
         s.default.AudioNode.call(this),
-          (this._compressor = this.input = this.output = this.context.createDynamicsCompressor()),
+          (this._compressor =
+            this.input =
+            this.output =
+              this.context.createDynamicsCompressor()),
           (this.threshold = new s.default.Param({
             param: this._compressor.threshold,
             units: s.default.Type.Decibels,
@@ -4711,21 +4732,8 @@
         var n = !1,
           o = new OfflineAudioContext(1, 1, 44100),
           a = new Uint32Array([
-            1179011410,
-            48,
-            1163280727,
-            544501094,
-            16,
-            131073,
-            44100,
-            176400,
-            1048580,
-            1635017060,
-            8,
-            0,
-            0,
-            0,
-            0,
+            1179011410, 48, 1163280727, 544501094, 16, 131073, 44100, 176400,
+            1048580, 1635017060, 8, 0, 0, 0, 0,
           ]).buffer;
         try {
           var r = o.decodeAudioData(a);
@@ -5161,7 +5169,10 @@
       (s.default.Panner = function () {
         var t = s.default.defaults(arguments, ["pan"], s.default.Panner);
         s.default.AudioNode.call(this),
-          (this._panner = this.input = this.output = this.context.createStereoPanner()),
+          (this._panner =
+            this.input =
+            this.output =
+              this.context.createStereoPanner()),
           (this.pan = this._panner.pan),
           (this.pan.value = t.pan),
           this._readOnly("pan");
@@ -5745,17 +5756,16 @@
           s.default.LowpassCombFilter
         );
         s.default.AudioNode.call(this),
-          (this._combFilter = this.output = new s.default.FeedbackCombFilter(
-            t.delayTime,
-            t.resonance
-          )),
+          (this._combFilter = this.output =
+            new s.default.FeedbackCombFilter(t.delayTime, t.resonance)),
           (this.delayTime = this._combFilter.delayTime),
-          (this._lowpass = this.input = new s.default.Filter({
-            frequency: t.dampening,
-            type: "lowpass",
-            Q: 0,
-            rolloff: -12,
-          })),
+          (this._lowpass = this.input =
+            new s.default.Filter({
+              frequency: t.dampening,
+              type: "lowpass",
+              Q: 0,
+              rolloff: -12,
+            })),
           (this.dampening = this._lowpass.frequency),
           (this.resonance = this._combFilter.resonance),
           this._lowpass.connect(this._combFilter),
@@ -6137,9 +6147,10 @@
           s.default.FeedbackCombFilter
         );
         s.default.AudioNode.call(this),
-          (this._delay = this.input = this.output = new s.default.Delay(
-            t.delayTime
-          )),
+          (this._delay =
+            this.input =
+            this.output =
+              new s.default.Delay(t.delayTime)),
           (this.delayTime = this._delay.delayTime),
           (this._feedback = new s.default.Gain(
             t.resonance,
@@ -6257,10 +6268,10 @@
       (s.default.Pow = function (t) {
         s.default.SignalBase.call(this),
           (this._exp = s.default.defaultArg(t, 1)),
-          (this._expScaler = this.input = this.output = new s.default.WaveShaper(
-            this._expFunc(this._exp),
-            8192
-          ));
+          (this._expScaler =
+            this.input =
+            this.output =
+              new s.default.WaveShaper(this._expFunc(this._exp), 8192));
       }),
         s.default.extend(s.default.Pow, s.default.SignalBase),
         Object.defineProperty(s.default.Pow.prototype, "value", {
@@ -8633,25 +8644,23 @@
           }
           return this;
         }),
-        (s.default.TickSignal.prototype.exponentialRampToValueAtTime = function (
-          t,
-          e
-        ) {
-          (e = this.toSeconds(e)), (t = this._fromUnits(t));
-          for (
-            var i = this._events.get(e),
-              s = Math.round(Math.max(10 * (e - i.time), 1)),
-              n = (e - i.time) / s,
-              o = 0;
-            o <= s;
-            o++
-          ) {
-            var a = n * o + i.time,
-              r = this._exponentialInterpolate(i.time, i.value, e, t, a);
-            this.linearRampToValueAtTime(this._toUnits(r), a);
-          }
-          return this;
-        }),
+        (s.default.TickSignal.prototype.exponentialRampToValueAtTime =
+          function (t, e) {
+            (e = this.toSeconds(e)), (t = this._fromUnits(t));
+            for (
+              var i = this._events.get(e),
+                s = Math.round(Math.max(10 * (e - i.time), 1)),
+                n = (e - i.time) / s,
+                o = 0;
+              o <= s;
+              o++
+            ) {
+              var a = n * o + i.time,
+                r = this._exponentialInterpolate(i.time, i.value, e, t, a);
+              this.linearRampToValueAtTime(this._toUnits(r), a);
+            }
+            return this;
+          }),
         (s.default.TickSignal.prototype._getTicksUntilEvent = function (t, e) {
           if (null === t) t = { ticks: 0, time: 0 };
           else if (s.default.isUndef(t.ticks)) {
@@ -8860,9 +8869,10 @@
       i(2), i(5), i(7);
       (s.default.GreaterThanZero = function () {
         s.default.SignalBase.call(this),
-          (this._thresh = this.output = new s.default.WaveShaper(function (t) {
-            return t <= 0 ? 0 : 1;
-          }, 127)),
+          (this._thresh = this.output =
+            new s.default.WaveShaper(function (t) {
+              return t <= 0 ? 0 : 1;
+            }, 127)),
           (this._scale = this.input = new s.default.Multiply(1e4)),
           this._scale.connect(this._thresh);
       }),
@@ -8965,12 +8975,12 @@
       i(7), i(30);
       (s.default.Abs = function () {
         s.default.SignalBase.call(this),
-          (this._abs = this.input = this.output = new s.default.WaveShaper(
-            function (t) {
-              return Math.abs(t) < 0.001 ? 0 : Math.abs(t);
-            },
-            1024
-          ));
+          (this._abs =
+            this.input =
+            this.output =
+              new s.default.WaveShaper(function (t) {
+                return Math.abs(t) < 0.001 ? 0 : Math.abs(t);
+              }, 1024));
       }),
         s.default.extend(s.default.Abs, s.default.SignalBase),
         (s.default.Abs.prototype.dispose = function () {
@@ -9061,12 +9071,15 @@
       i(7);
       (s.default.EqualPowerGain = function () {
         s.default.SignalBase.call(this),
-          (this._eqPower = this.input = this.output = new s.default.WaveShaper(
-            function (t) {
-              return Math.abs(t) < 0.001 ? 0 : s.default.equalPowerScale(t);
-            }.bind(this),
-            4096
-          ));
+          (this._eqPower =
+            this.input =
+            this.output =
+              new s.default.WaveShaper(
+                function (t) {
+                  return Math.abs(t) < 0.001 ? 0 : s.default.equalPowerScale(t);
+                }.bind(this),
+                4096
+              ));
       }),
         s.default.extend(s.default.EqualPowerGain, s.default.SignalBase),
         (s.default.EqualPowerGain.prototype.dispose = function () {
@@ -9086,9 +9099,10 @@
       i(5), i(2);
       (s.default.Negate = function () {
         s.default.SignalBase.call(this),
-          (this._multiply = this.input = this.output = new s.default.Multiply(
-            -1
-          ));
+          (this._multiply =
+            this.input =
+            this.output =
+              new s.default.Multiply(-1));
       }),
         s.default.extend(s.default.Negate, s.default.SignalBase),
         (s.default.Negate.prototype.dispose = function () {
@@ -9266,9 +9280,8 @@
                       return (
                         this._stream ||
                           ((this._stream = t),
-                          (this._mediaStream = this.context.createMediaStreamSource(
-                            t
-                          )),
+                          (this._mediaStream =
+                            this.context.createMediaStreamSource(t)),
                           s.default.connect(this._mediaStream, this.output)),
                         this
                       );
@@ -9647,9 +9660,8 @@
       i(16), i(2), i(45);
       (s.default.TransportTimelineSignal = function () {
         s.default.Signal.apply(this, arguments),
-          (this.output = this._outputSig = new s.default.Signal(
-            this._initialValue
-          )),
+          (this.output = this._outputSig =
+            new s.default.Signal(this._initialValue)),
           (this._lastVal = this.value),
           (this._synced = s.default.Transport.scheduleRepeat(
             this._onTick.bind(this),
@@ -9695,77 +9707,68 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.linearRampToValueAtTime = function (
-          t,
-          e
-        ) {
-          return (
-            (e = s.default.TransportTime(e)),
-            s.default.Signal.prototype.linearRampToValueAtTime.call(this, t, e),
-            this
-          );
-        }),
-        (s.default.TransportTimelineSignal.prototype.exponentialRampToValueAtTime = function (
-          t,
-          e
-        ) {
-          return (
-            (e = s.default.TransportTime(e)),
-            s.default.Signal.prototype.exponentialRampToValueAtTime.call(
+        (s.default.TransportTimelineSignal.prototype.linearRampToValueAtTime =
+          function (t, e) {
+            return (
+              (e = s.default.TransportTime(e)),
+              s.default.Signal.prototype.linearRampToValueAtTime.call(
+                this,
+                t,
+                e
+              ),
+              this
+            );
+          }),
+        (s.default.TransportTimelineSignal.prototype.exponentialRampToValueAtTime =
+          function (t, e) {
+            return (
+              (e = s.default.TransportTime(e)),
+              s.default.Signal.prototype.exponentialRampToValueAtTime.call(
+                this,
+                t,
+                e
+              ),
+              this
+            );
+          }),
+        (s.default.TransportTimelineSignal.prototype.setTargetAtTime =
+          function (t, e, i) {
+            return (
+              (e = s.default.TransportTime(e)),
+              s.default.Signal.prototype.setTargetAtTime.call(this, t, e, i),
+              this
+            );
+          }),
+        (s.default.TransportTimelineSignal.prototype.cancelScheduledValues =
+          function (t) {
+            return (
+              (t = s.default.TransportTime(t)),
+              s.default.Signal.prototype.cancelScheduledValues.call(this, t),
+              this
+            );
+          }),
+        (s.default.TransportTimelineSignal.prototype.setValueCurveAtTime =
+          function (t, e, i, n) {
+            return (
+              (e = s.default.TransportTime(e)),
+              (i = s.default.TransportTime(i)),
+              s.default.Signal.prototype.setValueCurveAtTime.call(
+                this,
+                t,
+                e,
+                i,
+                n
+              ),
+              this
+            );
+          }),
+        (s.default.TransportTimelineSignal.prototype.cancelAndHoldAtTime =
+          function (t) {
+            return s.default.Signal.prototype.cancelAndHoldAtTime.call(
               this,
-              t,
-              e
-            ),
-            this
-          );
-        }),
-        (s.default.TransportTimelineSignal.prototype.setTargetAtTime = function (
-          t,
-          e,
-          i
-        ) {
-          return (
-            (e = s.default.TransportTime(e)),
-            s.default.Signal.prototype.setTargetAtTime.call(this, t, e, i),
-            this
-          );
-        }),
-        (s.default.TransportTimelineSignal.prototype.cancelScheduledValues = function (
-          t
-        ) {
-          return (
-            (t = s.default.TransportTime(t)),
-            s.default.Signal.prototype.cancelScheduledValues.call(this, t),
-            this
-          );
-        }),
-        (s.default.TransportTimelineSignal.prototype.setValueCurveAtTime = function (
-          t,
-          e,
-          i,
-          n
-        ) {
-          return (
-            (e = s.default.TransportTime(e)),
-            (i = s.default.TransportTime(i)),
-            s.default.Signal.prototype.setValueCurveAtTime.call(
-              this,
-              t,
-              e,
-              i,
-              n
-            ),
-            this
-          );
-        }),
-        (s.default.TransportTimelineSignal.prototype.cancelAndHoldAtTime = function (
-          t
-        ) {
-          return s.default.Signal.prototype.cancelAndHoldAtTime.call(
-            this,
-            s.default.TransportTime(t)
-          );
-        }),
+              s.default.TransportTime(t)
+            );
+          }),
         (s.default.TransportTimelineSignal.prototype.dispose = function () {
           s.default.Transport.clear(this._synced),
             s.default.Transport.off("start stop pause", this._syncedCallback),
@@ -9830,11 +9833,12 @@
       i(7), i(2);
       (s.default.GainToAudio = function () {
         s.default.SignalBase.call(this),
-          (this._norm = this.input = this.output = new s.default.WaveShaper(
-            function (t) {
-              return 2 * Math.abs(t) - 1;
-            }
-          ));
+          (this._norm =
+            this.input =
+            this.output =
+              new s.default.WaveShaper(function (t) {
+                return 2 * Math.abs(t) - 1;
+              }));
       }),
         s.default.extend(s.default.GainToAudio, s.default.SignalBase),
         (s.default.GainToAudio.prototype.dispose = function () {
@@ -12637,9 +12641,10 @@
         var t = s.default.defaults(arguments, ["size"], s.default.Waveform);
         (t.type = s.default.Analyser.Type.Waveform),
           s.default.AudioNode.call(this),
-          (this._analyser = this.input = this.output = new s.default.Analyser(
-            t
-          ));
+          (this._analyser =
+            this.input =
+            this.output =
+              new s.default.Analyser(t));
       }),
         s.default.extend(s.default.Waveform, s.default.AudioNode),
         (s.default.Waveform.defaults = { size: 1024 }),
@@ -12673,7 +12678,10 @@
           s.default.Panner3D
         );
         s.default.AudioNode.call(this),
-          (this._panner = this.input = this.output = this.context.createPanner()),
+          (this._panner =
+            this.input =
+            this.output =
+              this.context.createPanner()),
           (this._panner.panningModel = t.panningModel),
           (this._panner.maxDistance = t.maxDistance),
           (this._panner.distanceModel = t.distanceModel),
@@ -12852,10 +12860,11 @@
             arguments,
             s.default.MultibandCompressor.defaults
           )),
-          (this._splitter = this.input = new s.default.MultibandSplit({
-            lowFrequency: t.lowFrequency,
-            highFrequency: t.highFrequency,
-          })),
+          (this._splitter = this.input =
+            new s.default.MultibandSplit({
+              lowFrequency: t.lowFrequency,
+              highFrequency: t.highFrequency,
+            })),
           (this.lowFrequency = this._splitter.lowFrequency),
           (this.highFrequency = this._splitter.highFrequency),
           (this.output = new s.default.Gain()),
@@ -12989,10 +12998,10 @@
         s.default.AudioNode.call(this),
           (this.smoothing = t.smoothing),
           (this._rms = 0),
-          (this.input = this.output = this._analyser = new s.default.Analyser(
-            "waveform",
-            256
-          ));
+          (this.input =
+            this.output =
+            this._analyser =
+              new s.default.Analyser("waveform", 256));
       }),
         s.default.extend(s.default.Meter, s.default.AudioNode),
         (s.default.Meter.defaults = { smoothing: 0.8 }),
@@ -13032,9 +13041,14 @@
       (s.default.Limiter = function () {
         var t = s.default.defaults(arguments, ["threshold"], s.default.Limiter);
         s.default.AudioNode.call(this),
-          (this._compressor = this.input = this.output = new s.default.Compressor(
-            { attack: 0.001, decay: 0.001, threshold: t.threshold }
-          )),
+          (this._compressor =
+            this.input =
+            this.output =
+              new s.default.Compressor({
+                attack: 0.001,
+                decay: 0.001,
+                threshold: t.threshold,
+              })),
           (this.threshold = this._compressor.threshold),
           this._readOnly("threshold");
       }),
@@ -13116,9 +13130,10 @@
         var t = s.default.defaults(arguments, ["size"], s.default.FFT);
         (t.type = s.default.Analyser.Type.FFT),
           s.default.AudioNode.call(this),
-          (this._analyser = this.input = this.output = new s.default.Analyser(
-            t
-          ));
+          (this._analyser =
+            this.input =
+            this.output =
+              new s.default.Analyser(t));
       }),
         s.default.extend(s.default.FFT, s.default.AudioNode),
         (s.default.FFT.defaults = { size: 1024 }),
@@ -13153,10 +13168,11 @@
         );
         s.default.AudioNode.call(this),
           (this.output = new s.default.Gain()),
-          (this._multibandSplit = this.input = new s.default.MultibandSplit({
-            lowFrequency: t.lowFrequency,
-            highFrequency: t.highFrequency,
-          })),
+          (this._multibandSplit = this.input =
+            new s.default.MultibandSplit({
+              lowFrequency: t.lowFrequency,
+              highFrequency: t.highFrequency,
+            })),
           (this._lowGain = new s.default.Gain(t.low, s.default.Type.Decibels)),
           (this._midGain = new s.default.Gain(t.mid, s.default.Type.Decibels)),
           (this._highGain = new s.default.Gain(
@@ -13230,11 +13246,12 @@
         );
         s.default.AudioNode.call(this, t),
           (this._solo = this.input = new s.default.Solo(t.solo)),
-          (this._panVol = this.output = new s.default.PanVol({
-            pan: t.pan,
-            volume: t.volume,
-            mute: t.mute,
-          })),
+          (this._panVol = this.output =
+            new s.default.PanVol({
+              pan: t.pan,
+              volume: t.volume,
+              mute: t.mute,
+            })),
           (this.pan = this._panVol.pan),
           (this.volume = this._panVol.volume),
           this._solo.connect(this._panVol),
@@ -14276,14 +14293,15 @@
             (r.isObject = function (t) {
               return t && "object" == typeof t;
             }),
-            (r.isset = r.isSet = function (t, e) {
-              var n = t[e];
-              return (
-                !(null == n || !t.hasOwnProperty(e)) &&
-                ("object" != typeof n ||
-                  (Array.isArray(n) ? n.length : Object.keys(n).length) > 0)
-              );
-            }),
+            (r.isset = r.isSet =
+              function (t, e) {
+                var n = t[e];
+                return (
+                  !(null == n || !t.hasOwnProperty(e)) &&
+                  ("object" != typeof n ||
+                    (Array.isArray(n) ? n.length : Object.keys(n).length) > 0)
+                );
+              }),
             (r.Buffer = (function () {
               try {
                 var t = r.inquire("buffer").Buffer;
@@ -15457,18 +15475,19 @@
           }),
           (h.prototype.uint32 = function (t) {
             return (
-              (this.len += (this.tail = this.tail.next = new m(
-                (t >>>= 0) < 128
-                  ? 1
-                  : t < 16384
-                  ? 2
-                  : t < 2097152
-                  ? 3
-                  : t < 268435456
-                  ? 4
-                  : 5,
-                t
-              )).len),
+              (this.len += (this.tail = this.tail.next =
+                new m(
+                  (t >>>= 0) < 128
+                    ? 1
+                    : t < 16384
+                    ? 2
+                    : t < 2097152
+                    ? 3
+                    : t < 268435456
+                    ? 4
+                    : 5,
+                  t
+                )).len),
               this
             );
           }),
@@ -16094,10 +16113,11 @@
                           );
                         break;
                       case 13:
-                        r.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.decode(
-                          t,
-                          t.uint32()
-                        );
+                        r.sourceInfo =
+                          c.tensorflow.magenta.NoteSequence.SourceInfo.decode(
+                            t,
+                            t.uint32()
+                          );
                         break;
                       case 14:
                         (r.textAnnotations && r.textAnnotations.length) ||
@@ -16130,22 +16150,25 @@
                           );
                         break;
                       case 15:
-                        r.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.decode(
-                          t,
-                          t.uint32()
-                        );
+                        r.quantizationInfo =
+                          c.tensorflow.magenta.NoteSequence.QuantizationInfo.decode(
+                            t,
+                            t.uint32()
+                          );
                         break;
                       case 17:
-                        r.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.decode(
-                          t,
-                          t.uint32()
-                        );
+                        r.subsequenceInfo =
+                          c.tensorflow.magenta.NoteSequence.SubsequenceInfo.decode(
+                            t,
+                            t.uint32()
+                          );
                         break;
                       case 19:
-                        r.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.decode(
-                          t,
-                          t.uint32()
-                        );
+                        r.sequenceMetadata =
+                          c.tensorflow.magenta.SequenceMetadata.decode(
+                            t,
+                            t.uint32()
+                          );
                         break;
                       default:
                         t.skipType(7 & i);
@@ -16204,9 +16227,10 @@
                       return "timeSignatures: array expected";
                     for (var e = 0; e < t.timeSignatures.length; ++e)
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.TimeSignature.verify(
-                          t.timeSignatures[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.TimeSignature.verify(
+                            t.timeSignatures[e]
+                          ))
                       )
                         return "timeSignatures." + n;
                   }
@@ -16218,9 +16242,10 @@
                       return "keySignatures: array expected";
                     for (e = 0; e < t.keySignatures.length; ++e)
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.KeySignature.verify(
-                          t.keySignatures[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.KeySignature.verify(
+                            t.keySignatures[e]
+                          ))
                       )
                         return "keySignatures." + n;
                   }
@@ -16281,9 +16306,10 @@
                       return "controlChanges: array expected";
                     for (e = 0; e < t.controlChanges.length; ++e)
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.ControlChange.verify(
-                          t.controlChanges[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.ControlChange.verify(
+                            t.controlChanges[e]
+                          ))
                       )
                         return "controlChanges." + n;
                   }
@@ -16314,9 +16340,10 @@
                       return "textAnnotations: array expected";
                     for (e = 0; e < t.textAnnotations.length; ++e)
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.TextAnnotation.verify(
-                          t.textAnnotations[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.TextAnnotation.verify(
+                            t.textAnnotations[e]
+                          ))
                       )
                         return "textAnnotations." + n;
                   }
@@ -16328,9 +16355,10 @@
                       return "sectionAnnotations: array expected";
                     for (e = 0; e < t.sectionAnnotations.length; ++e)
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.SectionAnnotation.verify(
-                          t.sectionAnnotations[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.SectionAnnotation.verify(
+                            t.sectionAnnotations[e]
+                          ))
                       )
                         return "sectionAnnotations." + n;
                   }
@@ -16343,24 +16371,27 @@
                     for (e = 0; e < t.sectionGroups.length; ++e) {
                       var n;
                       if (
-                        (n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                          t.sectionGroups[e]
-                        ))
+                        (n =
+                          c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
+                            t.sectionGroups[e]
+                          ))
                       )
                         return "sectionGroups." + n;
                     }
                   }
                   return null != t.quantizationInfo &&
                     t.hasOwnProperty("quantizationInfo") &&
-                    (n = c.tensorflow.magenta.NoteSequence.QuantizationInfo.verify(
-                      t.quantizationInfo
-                    ))
+                    (n =
+                      c.tensorflow.magenta.NoteSequence.QuantizationInfo.verify(
+                        t.quantizationInfo
+                      ))
                     ? "quantizationInfo." + n
                     : null != t.subsequenceInfo &&
                       t.hasOwnProperty("subsequenceInfo") &&
-                      (n = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
-                        t.subsequenceInfo
-                      ))
+                      (n =
+                        c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
+                          t.subsequenceInfo
+                        ))
                     ? "subsequenceInfo." + n
                     : null != t.sequenceMetadata &&
                       t.hasOwnProperty("sequenceMetadata") &&
@@ -16406,11 +16437,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.timeSignatures: object expected"
                         );
-                      e.timeSignatures[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.TimeSignature.fromObject(
-                        t.timeSignatures[n]
-                      );
+                      e.timeSignatures[n] =
+                        c.tensorflow.magenta.NoteSequence.TimeSignature.fromObject(
+                          t.timeSignatures[n]
+                        );
                     }
                   }
                   if (t.keySignatures) {
@@ -16427,11 +16457,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.keySignatures: object expected"
                         );
-                      e.keySignatures[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.KeySignature.fromObject(
-                        t.keySignatures[n]
-                      );
+                      e.keySignatures[n] =
+                        c.tensorflow.magenta.NoteSequence.KeySignature.fromObject(
+                          t.keySignatures[n]
+                        );
                     }
                   }
                   if (t.tempos) {
@@ -16444,11 +16473,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.tempos: object expected"
                         );
-                      e.tempos[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.Tempo.fromObject(
-                        t.tempos[n]
-                      );
+                      e.tempos[n] =
+                        c.tensorflow.magenta.NoteSequence.Tempo.fromObject(
+                          t.tempos[n]
+                        );
                     }
                   }
                   if (t.notes) {
@@ -16461,11 +16489,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.notes: object expected"
                         );
-                      e.notes[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.Note.fromObject(
-                        t.notes[n]
-                      );
+                      e.notes[n] =
+                        c.tensorflow.magenta.NoteSequence.Note.fromObject(
+                          t.notes[n]
+                        );
                     }
                   }
                   if (
@@ -16502,11 +16529,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.pitchBends: object expected"
                         );
-                      e.pitchBends[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.PitchBend.fromObject(
-                        t.pitchBends[n]
-                      );
+                      e.pitchBends[n] =
+                        c.tensorflow.magenta.NoteSequence.PitchBend.fromObject(
+                          t.pitchBends[n]
+                        );
                     }
                   }
                   if (t.controlChanges) {
@@ -16523,11 +16549,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.controlChanges: object expected"
                         );
-                      e.controlChanges[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.ControlChange.fromObject(
-                        t.controlChanges[n]
-                      );
+                      e.controlChanges[n] =
+                        c.tensorflow.magenta.NoteSequence.ControlChange.fromObject(
+                          t.controlChanges[n]
+                        );
                     }
                   }
                   if (t.partInfos) {
@@ -16540,11 +16565,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.partInfos: object expected"
                         );
-                      e.partInfos[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.PartInfo.fromObject(
-                        t.partInfos[n]
-                      );
+                      e.partInfos[n] =
+                        c.tensorflow.magenta.NoteSequence.PartInfo.fromObject(
+                          t.partInfos[n]
+                        );
                     }
                   }
                   if (null != t.sourceInfo) {
@@ -16552,9 +16576,10 @@
                       throw TypeError(
                         ".tensorflow.magenta.NoteSequence.sourceInfo: object expected"
                       );
-                    e.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.fromObject(
-                      t.sourceInfo
-                    );
+                    e.sourceInfo =
+                      c.tensorflow.magenta.NoteSequence.SourceInfo.fromObject(
+                        t.sourceInfo
+                      );
                   }
                   if (t.textAnnotations) {
                     if (!Array.isArray(t.textAnnotations))
@@ -16570,11 +16595,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.textAnnotations: object expected"
                         );
-                      e.textAnnotations[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.fromObject(
-                        t.textAnnotations[n]
-                      );
+                      e.textAnnotations[n] =
+                        c.tensorflow.magenta.NoteSequence.TextAnnotation.fromObject(
+                          t.textAnnotations[n]
+                        );
                     }
                   }
                   if (t.sectionAnnotations) {
@@ -16591,11 +16615,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.sectionAnnotations: object expected"
                         );
-                      e.sectionAnnotations[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.fromObject(
-                        t.sectionAnnotations[n]
-                      );
+                      e.sectionAnnotations[n] =
+                        c.tensorflow.magenta.NoteSequence.SectionAnnotation.fromObject(
+                          t.sectionAnnotations[n]
+                        );
                     }
                   }
                   if (t.sectionGroups) {
@@ -16612,11 +16635,10 @@
                         throw TypeError(
                           ".tensorflow.magenta.NoteSequence.sectionGroups: object expected"
                         );
-                      e.sectionGroups[
-                        n
-                      ] = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                        t.sectionGroups[n]
-                      );
+                      e.sectionGroups[n] =
+                        c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
+                          t.sectionGroups[n]
+                        );
                     }
                   }
                   if (null != t.quantizationInfo) {
@@ -16624,27 +16646,30 @@
                       throw TypeError(
                         ".tensorflow.magenta.NoteSequence.quantizationInfo: object expected"
                       );
-                    e.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.fromObject(
-                      t.quantizationInfo
-                    );
+                    e.quantizationInfo =
+                      c.tensorflow.magenta.NoteSequence.QuantizationInfo.fromObject(
+                        t.quantizationInfo
+                      );
                   }
                   if (null != t.subsequenceInfo) {
                     if ("object" != typeof t.subsequenceInfo)
                       throw TypeError(
                         ".tensorflow.magenta.NoteSequence.subsequenceInfo: object expected"
                       );
-                    e.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.fromObject(
-                      t.subsequenceInfo
-                    );
+                    e.subsequenceInfo =
+                      c.tensorflow.magenta.NoteSequence.SubsequenceInfo.fromObject(
+                        t.subsequenceInfo
+                      );
                   }
                   if (null != t.sequenceMetadata) {
                     if ("object" != typeof t.sequenceMetadata)
                       throw TypeError(
                         ".tensorflow.magenta.NoteSequence.sequenceMetadata: object expected"
                       );
-                    e.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.fromObject(
-                      t.sequenceMetadata
-                    );
+                    e.sequenceMetadata =
+                      c.tensorflow.magenta.SequenceMetadata.fromObject(
+                        t.sequenceMetadata
+                      );
                   }
                   return e;
                 }),
@@ -16710,12 +16735,11 @@
                   ) {
                     n.timeSignatures = [];
                     for (var i = 0; i < t.timeSignatures.length; ++i)
-                      n.timeSignatures[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.TimeSignature.toObject(
-                        t.timeSignatures[i],
-                        e
-                      );
+                      n.timeSignatures[i] =
+                        c.tensorflow.magenta.NoteSequence.TimeSignature.toObject(
+                          t.timeSignatures[i],
+                          e
+                        );
                   }
                   if (t.keySignatures && t.keySignatures.length)
                     for (
@@ -16723,28 +16747,25 @@
                       i < t.keySignatures.length;
                       ++i
                     )
-                      n.keySignatures[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.KeySignature.toObject(
-                        t.keySignatures[i],
-                        e
-                      );
+                      n.keySignatures[i] =
+                        c.tensorflow.magenta.NoteSequence.KeySignature.toObject(
+                          t.keySignatures[i],
+                          e
+                        );
                   if (t.tempos && t.tempos.length)
                     for (n.tempos = [], i = 0; i < t.tempos.length; ++i)
-                      n.tempos[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.Tempo.toObject(
-                        t.tempos[i],
-                        e
-                      );
+                      n.tempos[i] =
+                        c.tensorflow.magenta.NoteSequence.Tempo.toObject(
+                          t.tempos[i],
+                          e
+                        );
                   if (t.notes && t.notes.length)
                     for (n.notes = [], i = 0; i < t.notes.length; ++i)
-                      n.notes[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.Note.toObject(
-                        t.notes[i],
-                        e
-                      );
+                      n.notes[i] =
+                        c.tensorflow.magenta.NoteSequence.Note.toObject(
+                          t.notes[i],
+                          e
+                        );
                   if (
                     (null != t.totalTime &&
                       t.hasOwnProperty("totalTime") &&
@@ -16755,39 +16776,37 @@
                     t.pitchBends && t.pitchBends.length)
                   )
                     for (n.pitchBends = [], i = 0; i < t.pitchBends.length; ++i)
-                      n.pitchBends[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.PitchBend.toObject(
-                        t.pitchBends[i],
-                        e
-                      );
+                      n.pitchBends[i] =
+                        c.tensorflow.magenta.NoteSequence.PitchBend.toObject(
+                          t.pitchBends[i],
+                          e
+                        );
                   if (t.controlChanges && t.controlChanges.length)
                     for (
                       n.controlChanges = [], i = 0;
                       i < t.controlChanges.length;
                       ++i
                     )
-                      n.controlChanges[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.ControlChange.toObject(
-                        t.controlChanges[i],
-                        e
-                      );
+                      n.controlChanges[i] =
+                        c.tensorflow.magenta.NoteSequence.ControlChange.toObject(
+                          t.controlChanges[i],
+                          e
+                        );
                   if (t.partInfos && t.partInfos.length)
                     for (n.partInfos = [], i = 0; i < t.partInfos.length; ++i)
-                      n.partInfos[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.PartInfo.toObject(
-                        t.partInfos[i],
-                        e
-                      );
+                      n.partInfos[i] =
+                        c.tensorflow.magenta.NoteSequence.PartInfo.toObject(
+                          t.partInfos[i],
+                          e
+                        );
                   if (
                     (null != t.sourceInfo &&
                       t.hasOwnProperty("sourceInfo") &&
-                      (n.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.toObject(
-                        t.sourceInfo,
-                        e
-                      )),
+                      (n.sourceInfo =
+                        c.tensorflow.magenta.NoteSequence.SourceInfo.toObject(
+                          t.sourceInfo,
+                          e
+                        )),
                     t.textAnnotations && t.textAnnotations.length)
                   )
                     for (
@@ -16795,19 +16814,19 @@
                       i < t.textAnnotations.length;
                       ++i
                     )
-                      n.textAnnotations[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.toObject(
-                        t.textAnnotations[i],
-                        e
-                      );
+                      n.textAnnotations[i] =
+                        c.tensorflow.magenta.NoteSequence.TextAnnotation.toObject(
+                          t.textAnnotations[i],
+                          e
+                        );
                   if (
                     (null != t.quantizationInfo &&
                       t.hasOwnProperty("quantizationInfo") &&
-                      (n.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.toObject(
-                        t.quantizationInfo,
-                        e
-                      )),
+                      (n.quantizationInfo =
+                        c.tensorflow.magenta.NoteSequence.QuantizationInfo.toObject(
+                          t.quantizationInfo,
+                          e
+                        )),
                     null != t.totalQuantizedSteps &&
                       t.hasOwnProperty("totalQuantizedSteps") &&
                       ("number" == typeof t.totalQuantizedSteps
@@ -16828,10 +16847,11 @@
                               : t.totalQuantizedSteps)),
                     null != t.subsequenceInfo &&
                       t.hasOwnProperty("subsequenceInfo") &&
-                      (n.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.toObject(
-                        t.subsequenceInfo,
-                        e
-                      )),
+                      (n.subsequenceInfo =
+                        c.tensorflow.magenta.NoteSequence.SubsequenceInfo.toObject(
+                          t.subsequenceInfo,
+                          e
+                        )),
                     null != t.referenceNumber &&
                       t.hasOwnProperty("referenceNumber") &&
                       ("number" == typeof t.referenceNumber
@@ -16852,10 +16872,11 @@
                               : t.referenceNumber)),
                     null != t.sequenceMetadata &&
                       t.hasOwnProperty("sequenceMetadata") &&
-                      (n.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.toObject(
-                        t.sequenceMetadata,
-                        e
-                      )),
+                      (n.sequenceMetadata =
+                        c.tensorflow.magenta.SequenceMetadata.toObject(
+                          t.sequenceMetadata,
+                          e
+                        )),
                     t.sectionAnnotations && t.sectionAnnotations.length)
                   )
                     for (
@@ -16863,24 +16884,22 @@
                       i < t.sectionAnnotations.length;
                       ++i
                     )
-                      n.sectionAnnotations[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.toObject(
-                        t.sectionAnnotations[i],
-                        e
-                      );
+                      n.sectionAnnotations[i] =
+                        c.tensorflow.magenta.NoteSequence.SectionAnnotation.toObject(
+                          t.sectionAnnotations[i],
+                          e
+                        );
                   if (t.sectionGroups && t.sectionGroups.length)
                     for (
                       n.sectionGroups = [], i = 0;
                       i < t.sectionGroups.length;
                       ++i
                     )
-                      n.sectionGroups[
-                        i
-                      ] = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
-                        t.sectionGroups[i],
-                        e
-                      );
+                      n.sectionGroups[i] =
+                        c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
+                          t.sectionGroups[i],
+                          e
+                        );
                   return n;
                 }),
                 (t.prototype.toJSON = function () {
@@ -17555,7 +17574,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.TimeSignature();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.TimeSignature();
                         t.pos < n;
 
                       ) {
@@ -17605,7 +17625,8 @@
                         c.tensorflow.magenta.NoteSequence.TimeSignature
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.TimeSignature();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.TimeSignature();
                       return (
                         null != t.time && (e.time = Number(t.time)),
                         null != t.numerator && (e.numerator = 0 | t.numerator),
@@ -17681,7 +17702,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.KeySignature();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.KeySignature();
                         t.pos < n;
 
                       ) {
@@ -17760,7 +17782,8 @@
                         c.tensorflow.magenta.NoteSequence.KeySignature
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.KeySignature();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.KeySignature();
                       switch (
                         (null != t.time && (e.time = Number(t.time)), t.key)
                       ) {
@@ -18261,7 +18284,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.ControlChange();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.ControlChange();
                         t.pos < n;
 
                       ) {
@@ -18346,7 +18370,8 @@
                         c.tensorflow.magenta.NoteSequence.ControlChange
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.ControlChange();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.ControlChange();
                       return (
                         null != t.time && (e.time = Number(t.time)),
                         null != t.quantizedStep &&
@@ -18585,7 +18610,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.SourceInfo();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.SourceInfo();
                         t.pos < n;
 
                       ) {
@@ -18659,7 +18685,8 @@
                         c.tensorflow.magenta.NoteSequence.SourceInfo
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.SourceInfo();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.SourceInfo();
                       switch (t.sourceType) {
                         case "UNKNOWN_SOURCE_TYPE":
                         case 0:
@@ -18846,7 +18873,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.TextAnnotation();
                         t.pos < n;
 
                       ) {
@@ -18923,7 +18951,8 @@
                         c.tensorflow.magenta.NoteSequence.TextAnnotation
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.TextAnnotation();
                       switch (
                         (null != t.time && (e.time = Number(t.time)),
                         null != t.quantizedStep &&
@@ -19071,7 +19100,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
                         t.pos < n;
 
                       ) {
@@ -19124,7 +19154,8 @@
                         c.tensorflow.magenta.NoteSequence.QuantizationInfo
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
                       return (
                         null != t.stepsPerQuarter &&
                           (e.stepsPerQuarter = 0 | t.stepsPerQuarter),
@@ -19188,7 +19219,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
                         t.pos < n;
 
                       ) {
@@ -19231,7 +19263,8 @@
                         c.tensorflow.magenta.NoteSequence.SubsequenceInfo
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
                       return (
                         null != t.startTimeOffset &&
                           (e.startTimeOffset = Number(t.startTimeOffset)),
@@ -19303,7 +19336,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
                         t.pos < n;
 
                       ) {
@@ -19353,7 +19387,8 @@
                         c.tensorflow.magenta.NoteSequence.SectionAnnotation
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
                       return (
                         null != t.time && (e.time = Number(t.time)),
                         null != t.sectionId &&
@@ -19474,10 +19509,11 @@
                               : t.int64();
                             break;
                           case 2:
-                            r.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
-                              t,
-                              t.uint32()
-                            );
+                            r.sectionGroup =
+                              c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
+                                t,
+                                t.uint32()
+                              );
                             break;
                           default:
                             t.skipType(7 & i);
@@ -19514,9 +19550,10 @@
                         if (1 === e.sectionType)
                           return "sectionType: multiple values";
                         e.sectionType = 1;
-                        var n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                          t.sectionGroup
-                        );
+                        var n =
+                          c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
+                            t.sectionGroup
+                          );
                         if (n) return "sectionGroup." + n;
                       }
                       return null;
@@ -19548,9 +19585,10 @@
                           throw TypeError(
                             ".tensorflow.magenta.NoteSequence.Section.sectionGroup: object expected"
                           );
-                        e.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                          t.sectionGroup
-                        );
+                        e.sectionGroup =
+                          c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
+                            t.sectionGroup
+                          );
                       }
                       return e;
                     }),
@@ -19577,10 +19615,11 @@
                           e.oneofs && (n.sectionType = "sectionId")),
                         null != t.sectionGroup &&
                           t.hasOwnProperty("sectionGroup") &&
-                          ((n.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
-                            t.sectionGroup,
-                            e
-                          )),
+                          ((n.sectionGroup =
+                            c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
+                              t.sectionGroup,
+                              e
+                            )),
                           e.oneofs && (n.sectionType = "sectionGroup")),
                         n
                       );
@@ -19630,7 +19669,8 @@
                       t instanceof s || (t = s.create(t));
                       for (
                         var n = void 0 === e ? t.len : t.pos + e,
-                          r = new c.tensorflow.magenta.NoteSequence.SectionGroup();
+                          r =
+                            new c.tensorflow.magenta.NoteSequence.SectionGroup();
                         t.pos < n;
 
                       ) {
@@ -19668,9 +19708,10 @@
                         if (!Array.isArray(t.sections))
                           return "sections: array expected";
                         for (var e = 0; e < t.sections.length; ++e) {
-                          var n = c.tensorflow.magenta.NoteSequence.Section.verify(
-                            t.sections[e]
-                          );
+                          var n =
+                            c.tensorflow.magenta.NoteSequence.Section.verify(
+                              t.sections[e]
+                            );
                           if (n) return "sections." + n;
                         }
                       }
@@ -19686,7 +19727,8 @@
                         c.tensorflow.magenta.NoteSequence.SectionGroup
                       )
                         return t;
-                      var e = new c.tensorflow.magenta.NoteSequence.SectionGroup();
+                      var e =
+                        new c.tensorflow.magenta.NoteSequence.SectionGroup();
                       if (t.sections) {
                         if (!Array.isArray(t.sections))
                           throw TypeError(
@@ -19698,11 +19740,10 @@
                             throw TypeError(
                               ".tensorflow.magenta.NoteSequence.SectionGroup.sections: object expected"
                             );
-                          e.sections[
-                            n
-                          ] = c.tensorflow.magenta.NoteSequence.Section.fromObject(
-                            t.sections[n]
-                          );
+                          e.sections[n] =
+                            c.tensorflow.magenta.NoteSequence.Section.fromObject(
+                              t.sections[n]
+                            );
                         }
                       }
                       return (
@@ -19719,12 +19760,11 @@
                       ) {
                         n.sections = [];
                         for (var r = 0; r < t.sections.length; ++r)
-                          n.sections[
-                            r
-                          ] = c.tensorflow.magenta.NoteSequence.Section.toObject(
-                            t.sections[r],
-                            e
-                          );
+                          n.sections[r] =
+                            c.tensorflow.magenta.NoteSequence.Section.toObject(
+                              t.sections[r],
+                              e
+                            );
                       }
                       return (
                         null != t.numTimes &&
@@ -21161,9 +21201,10 @@
         (o.toNumber = function () {
           return 0;
         }),
-          (o.zzEncode = o.zzDecode = function () {
-            return this;
-          }),
+          (o.zzEncode = o.zzDecode =
+            function () {
+              return this;
+            }),
           (o.length = function () {
             return 1;
           });
@@ -21359,9 +21400,8 @@
             (this.requestDelimited = Boolean(e)),
             (this.responseDelimited = Boolean(n));
         }
-        ((i.prototype = Object.create(
-          r.EventEmitter.prototype
-        )).constructor = i),
+        ((i.prototype = Object.create(r.EventEmitter.prototype)).constructor =
+          i),
           (i.prototype.rpcCall = function t(e, n, i, o, s) {
             if (!o) throw TypeError("request must be specified");
             var a = this;
@@ -21378,9 +21418,10 @@
                     if (null !== n) {
                       if (!(n instanceof i))
                         try {
-                          n = i[
-                            a.responseDelimited ? "decodeDelimited" : "decode"
-                          ](n);
+                          n =
+                            i[
+                              a.responseDelimited ? "decodeDelimited" : "decode"
+                            ](n);
                         } catch (t) {
                           return a.emit("error", t, e), s(t);
                         }
@@ -22426,16 +22467,14 @@
                 p = "M 5 -20 a 20 20 0 1 0 0.00001 0 z",
                 f = {
                   4: {
-                    path:
-                      "m 0,0 c 0,-37 49,-51 79,-51 31,0 83,13 83,51 0,39 \n-55,51 -84,51 C 49,51 0,37 0,0 Z m 111,31 c 13,-19 0,-58 -22,-68 -33,-15 \n-53,10 -39,49 9,27 48,39 61,19 z",
+                    path: "m 0,0 c 0,-37 49,-51 79,-51 31,0 83,13 83,51 0,39 \n-55,51 -84,51 C 49,51 0,37 0,0 Z m 111,31 c 13,-19 0,-58 -22,-68 -33,-15 \n-53,10 -39,49 9,27 48,39 61,19 z",
                     width: 150,
                     stemVSteps: 0,
                     stemAnchor: 0,
                     flags: 0,
                   },
                   2: {
-                    path:
-                      "m 0,10 c 0,-25 35,-60 80,-60 15,0 45,4 45,40 C 125,16 \n89,50 45,50 17,50 0,36 0,10 Z m 71,7 c 17,-11 45,-34 38,-45 -7,-10 -39,1 \n-57,12 -19,11 -42,31 -36,42 6,10 37,2 55,-9 z",
+                    path: "m 0,10 c 0,-25 35,-60 80,-60 15,0 45,4 45,40 C 125,16 \n89,50 45,50 17,50 0,36 0,10 Z m 71,7 c 17,-11 45,-34 38,-45 -7,-10 -39,1 \n-57,12 -19,11 -42,31 -36,42 6,10 37,2 55,-9 z",
                     width: 125,
                     stemVSteps: 7,
                     stemAnchor: -10,
@@ -22483,19 +22522,19 @@
                   1: "m 0,-25 c 39,-39 37,-75 8,-120 l 6,-5 61,103 C \n40,-13 31,4 73,71 l -5,5 C 14,52 16,125 67,144 l -4,6 C -37,102 -1,22 59,60 Z",
                   0.5: "m 52,-47 c 26,-2 42,-21 48,-42 l 12,4 L 64,83 52,79 \n88,-49 c 0,0 -17,22 -57,22 -16,0 -31,-13 -31,-27 0,-18 10,-31 27,-31 17,0 \n33,15 25,38 z",
                   0.25: "m 129,-191 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -20,69 \nc -7,18 -22,33 -45,35 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 15,27 \n31,27 40,0 57,-22 57,-22 l -36,128 12,4 77,-270 z",
-                  0.125: "m 129,-191 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -20,69 \nc -7,18 -22,33 -45,35 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 15,27 \n31,27 40,0 57,-22 57,-22 L 68,20 C 61,37 46,51 24,52 32,29 16,14 -1,14 c \n-17,0 -27,13 -27,31 0,14 15,27 31,27 38,0 55,-20 57,-22 l -36,128 12,4 \n105,-369 z",
-                  0.0625: "m 158,-292 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -17,61 \nv 0 c -6,21 -22,40 -48,42 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 \n15,27 31,27 40,0 57,-22 57,-22 l -20,69 c -7,18 -22,33 -45,35 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 L 68,20 C \n61,37 46,51 24,52 32,29 16,14 -1,14 c -17,0 -27,13 -27,31 0,14 15,27 31,27 \n38,0 55,-20 57,-22 l -36,128 12,4 134,-469 z",
+                  0.125:
+                    "m 129,-191 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -20,69 \nc -7,18 -22,33 -45,35 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 15,27 \n31,27 40,0 57,-22 57,-22 L 68,20 C 61,37 46,51 24,52 32,29 16,14 -1,14 c \n-17,0 -27,13 -27,31 0,14 15,27 31,27 38,0 55,-20 57,-22 l -36,128 12,4 \n105,-369 z",
+                  0.0625:
+                    "m 158,-292 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -17,61 \nv 0 c -6,21 -22,40 -48,42 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 \n15,27 31,27 40,0 57,-22 57,-22 l -20,69 c -7,18 -22,33 -45,35 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 L 68,20 C \n61,37 46,51 24,52 32,29 16,14 -1,14 c -17,0 -27,13 -27,31 0,14 15,27 31,27 \n38,0 55,-20 57,-22 l -36,128 12,4 134,-469 z",
                 },
                 d = {
                   50: {
-                    path:
-                      "m 101,-199 c -49,0 -100,28 -100,83 0,39 58,57 82,26 15,-20 \n-4,-47 -32,-47 -23,1 -25,0 -25,-8 0,-22 40,-46 71,-41 91,16 67,208 -105,302 \n75,-27 198,-94 211,-201 6,-66 -42,-114 -102,-114 z m 143,33 c -13,0 -23,11 \n-23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 z m 2,83 c \n-13,0 -23,11 -23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 \nz",
+                    path: "m 101,-199 c -49,0 -100,28 -100,83 0,39 58,57 82,26 15,-20 \n-4,-47 -32,-47 -23,1 -25,0 -25,-8 0,-22 40,-46 71,-41 91,16 67,208 -105,302 \n75,-27 198,-94 211,-201 6,-66 -42,-114 -102,-114 z m 143,33 c -13,0 -23,11 \n-23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 z m 2,83 c \n-13,0 -23,11 -23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 \nz",
                     upper: -4,
                     lower: 3,
                   },
                   71: {
-                    path:
-                      "M 139,48 C 102,57 76,120 131,151 41,128 64,24 129,2 L \n117,-57 C -32,47 26,217 166,182 Z m 12,-1 27,131 C 242,153 216,46 151,47 \nZ m -35,-177 c 34,-23 82,-117 50,-140 -23,-17 -71,33 -50,140 z m -10,10 c \n-23,-77 -20,-200 48,-213 19,-4 89,171 -26,266 l 13,66 c 120,-6 137,155 \n39,191 l 12,58 c 30,131 -137,145 -138,47 0,-29 37,-59 63,-37 21,18 25,71 \n-25,70 32,42 103,0 91,-65 L 167,193 C 56,232 -112,63 106,-120 Z",
+                    path: "M 139,48 C 102,57 76,120 131,151 41,128 64,24 129,2 L \n117,-57 C -32,47 26,217 166,182 Z m 12,-1 27,131 C 242,153 216,46 151,47 \nZ m -35,-177 c 34,-23 82,-117 50,-140 -23,-17 -71,33 -50,140 z m -10,10 c \n-23,-77 -20,-200 48,-213 19,-4 89,171 -26,266 l 13,66 c 120,-6 137,155 \n39,191 l 12,58 c 30,131 -137,145 -138,47 0,-29 37,-59 63,-37 21,18 25,71 \n-25,70 32,42 103,0 91,-65 L 167,193 C 56,232 -112,63 106,-120 Z",
                     upper: -7,
                     lower: 8,
                   },
@@ -23279,13 +23318,13 @@
                 scrollIntoViewIfNeeded(t, e) {
                   if (t)
                     if (this.scrollType === c.PAGE) {
-                      const t = this.parentElement.getBoundingClientRect()
-                        .width;
+                      const t =
+                        this.parentElement.getBoundingClientRect().width;
                       e > this.parentElement.scrollLeft + t &&
                         (this.parentElement.scrollLeft = e - 20);
                     } else {
-                      const t = this.parentElement.getBoundingClientRect()
-                        .width;
+                      const t =
+                        this.parentElement.getBoundingClientRect().width;
                       this.parentElement.scrollLeft = e - 0.5 * t;
                     }
                 }
@@ -24961,7 +25000,8 @@
           redraw(t, e) {
             if ((this.drawn || this.draw(), !t)) return null;
             this.clearActiveNotes(),
-              (this.parentElement.style.paddingTop = this.parentElement.style.height);
+              (this.parentElement.style.paddingTop =
+                this.parentElement.style.height);
             for (let e = 0; e < this.noteSequence.notes.length; e++) {
               const n = this.noteSequence.notes[e];
               if (!(t && this.isPaintingActiveNote(n, t))) continue;
@@ -26803,9 +26843,8 @@
         this.shadowRoot.appendChild(s.content.cloneNode(!0)),
         (this.controlPanel = this.shadowRoot.querySelector(".controls")),
         (this.playButton = this.controlPanel.querySelector(".play")),
-        (this.currentTimeLabel = this.controlPanel.querySelector(
-          ".current-time"
-        )),
+        (this.currentTimeLabel =
+          this.controlPanel.querySelector(".current-time")),
         (this.totalTimeLabel = this.controlPanel.querySelector(".total-time")),
         (this.seekBar = this.controlPanel.querySelector(".seek-bar"));
     }

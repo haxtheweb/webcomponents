@@ -19,14 +19,14 @@ class CourseIntroLessonPlan extends LitElement {
         :host {
           display: block;
         }
-        
+
         a {
           color: inherit;
           text-decoration: inherit;
         }
 
         a:hover {
-          background-color: #f5f5f5
+          background-color: #f5f5f5;
         }
 
         #container {

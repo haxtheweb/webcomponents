@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorPromptButtonBehaviors = exports.RichTextEditorPromptButton = void 0;
+exports.RichTextEditorPromptButtonBehaviors =
+  exports.RichTextEditorPromptButton = void 0;
 
 var _litElement = require("lit");
 
@@ -181,408 +182,408 @@ function _getPrototypeOf(o) {
  * @lit-element
  * @extends RichTextEditorButtonBehaviors
  */
-var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBehaviors(
-  SuperClass
-) {
-  return (
-    /*#__PURE__*/
-    (function (_RichTextEditorButton) {
-      _inherits(_class, _RichTextEditorButton);
+var RichTextEditorPromptButtonBehaviors =
+  function RichTextEditorPromptButtonBehaviors(SuperClass) {
+    return (
+      /*#__PURE__*/
+      (function (_RichTextEditorButton) {
+        _inherits(_class, _RichTextEditorButton);
 
-      _createClass(
-        _class,
-        [
+        _createClass(
+          _class,
+          [
+            {
+              key: "render",
+              // render function for template
+              value: function render() {
+                return _get(
+                  _getPrototypeOf(_class.prototype),
+                  "render",
+                  this
+                ).call(this);
+              }, // properties available to custom element for data binding
+            },
+          ],
+          [
+            {
+              key: "tag",
+
+              /**
+               * Store tag name to make it easier to obtain directly.
+               */
+              get: function get() {
+                return "rich-text-editor-prompt-button";
+              },
+            },
+            {
+              key: "properties",
+              get: function get() {
+                return _objectSpread(
+                  {},
+                  _get(_getPrototypeOf(_class), "properties", this),
+                  {
+                    /**
+                     * fields for prompt popover.
+                     */
+                    fields: {
+                      type: Array,
+                    },
+
+                    /**
+                     * is element a custom inline widget element?
+                     */
+                    id: {
+                      name: "id",
+                      type: String,
+                      reflect: true,
+                      attribute: "id",
+                    },
+
+                    /**
+                     * prefilled value of prompt
+                     */
+                    value: {
+                      type: Object,
+                    },
+
+                    /**
+                     * prompt that pops up when button is pressed
+                     */
+                    prompt: {
+                      name: "prompt",
+                      type: Object,
+                    },
+
+                    /**
+                     * contents node inside selected range
+                     */
+                    __wrap: {
+                      name: "__wrap",
+                      type: Object,
+                    },
+
+                    /**
+                     * contents node inside selected range
+                     */
+                    __oldValue: {
+                      name: "__oldValue",
+                      type: Object,
+                    },
+                  }
+                );
+              },
+            },
+          ]
+        );
+
+        function _class() {
+          var _this;
+
+          _classCallCheck(this, _class);
+
+          _this = _possibleConstructorReturn(
+            this,
+            _getPrototypeOf(_class).call(this)
+          );
+          _this.editableSelection = false;
+          _this.fields = [
+            {
+              property: "innerHTML",
+              title: "Text",
+              inputMethod: "textfield",
+            },
+          ];
+          _this.tagsList = "span";
+          _this.value = {
+            innerHTML: undefined,
+          };
+          _this.prompt = window.RichTextEditorPrompt.requestAvailability();
+          return _this;
+        }
+
+        _createClass(_class, [
           {
-            key: "render",
-            // render function for template
-            value: function render() {
-              return _get(
+            key: "firstUpdated",
+            value: function firstUpdated(changedProperties) {
+              _get(
                 _getPrototypeOf(_class.prototype),
-                "render",
+                "firstUpdated",
                 this
-              ).call(this);
-            }, // properties available to custom element for data binding
+              ).call(this, changedProperties);
+            },
+            /**
+             * determines which command based on values passed from prompt
+             * (can be overriden for custom prompt  commands)
+             *
+             * @readonly
+             */
           },
-        ],
-        [
           {
-            key: "tag",
+            key: "tagClickCallback",
 
             /**
-             * Store tag name to make it easier to obtain directly.
+             * override this custom function to perform a
+             * custom operation when an element that matches the tags list is clicked
+             *
+             * @param {event} e click event
              */
-            get: function get() {
-              return "rich-text-editor-prompt-button";
+            value: function tagClickCallback() {
+              var e =
+                arguments.length > 0 && arguments[0] !== undefined
+                  ? arguments[0]
+                  : {};
+
+              if (e.detail) {
+                this.selectNode(e.detail);
+                this.open(e.detail);
+              }
             },
+            /**
+             * closes without updates
+             */
           },
           {
-            key: "properties",
-            get: function get() {
-              return _objectSpread(
-                {},
-                _get(_getPrototypeOf(_class), "properties", this),
-                {
-                  /**
-                   * fields for prompt popover.
-                   */
-                  fields: {
-                    type: Array,
-                  },
-
-                  /**
-                   * is element a custom inline widget element?
-                   */
-                  id: {
-                    name: "id",
-                    type: String,
-                    reflect: true,
-                    attribute: "id",
-                  },
-
-                  /**
-                   * prefilled value of prompt
-                   */
-                  value: {
-                    type: Object,
-                  },
-
-                  /**
-                   * prompt that pops up when button is pressed
-                   */
-                  prompt: {
-                    name: "prompt",
-                    type: Object,
-                  },
-
-                  /**
-                   * contents node inside selected range
-                   */
-                  __wrap: {
-                    name: "__wrap",
-                    type: Object,
-                  },
-
-                  /**
-                   * contents node inside selected range
-                   */
-                  __oldValue: {
-                    name: "__oldValue",
-                    type: Object,
-                  },
-                }
+            key: "cancel",
+            value: function cancel() {
+              this.close();
+            },
+            /**
+             * closes prompt
+             * @event rich-text-editor-prompt-closed
+             *
+             */
+          },
+          {
+            key: "close",
+            value: function close() {
+              this.dispatchEvent(
+                new CustomEvent("rich-text-editor-prompt-closed", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: this,
+                })
               );
             },
+            /**
+             * updates insertion based on fields
+             */
           },
-        ]
-      );
-
-      function _class() {
-        var _this;
-
-        _classCallCheck(this, _class);
-
-        _this = _possibleConstructorReturn(
-          this,
-          _getPrototypeOf(_class).call(this)
-        );
-        _this.editableSelection = false;
-        _this.fields = [
           {
-            property: "innerHTML",
-            title: "Text",
-            inputMethod: "textfield",
+            key: "confirm",
+            value: function confirm(val) {
+              this.close();
+              this.value = val;
+              this.update();
+              this.setToggled();
+              this.promptCommandVal;
+              this.updateSelection();
+            },
+            /**
+             * expands selection to include this.tags
+             *
+             */
           },
-        ];
-        _this.tagsList = "span";
-        _this.value = {
-          innerHTML: undefined,
-        };
-        _this.prompt = window.RichTextEditorPrompt.requestAvailability();
-        return _this;
-      }
+          {
+            key: "expandSelection",
+            value: function expandSelection() {
+              var element = this.rangeQuery();
 
-      _createClass(_class, [
-        {
-          key: "firstUpdated",
-          value: function firstUpdated(changedProperties) {
-            _get(_getPrototypeOf(_class.prototype), "firstUpdated", this).call(
-              this,
-              changedProperties
-            );
+              if (!!element) {
+                this.highlightNode(element);
+                this.selectedNode = element;
+              }
+            },
+            /**
+             * if selection is a node, gets node innerHTML
+             *
+             * @returns {string}
+             */
           },
-          /**
-           * determines which command based on values passed from prompt
-           * (can be overriden for custom prompt  commands)
-           *
-           * @readonly
-           */
-        },
-        {
-          key: "tagClickCallback",
+          {
+            key: "getInnerHTML",
+            value: function getInnerHTML() {
+              var target =
+                  this.range && this.range.cloneContents
+                    ? this.range.cloneContents()
+                    : undefined,
+                root = this.rangeElement() ? this.rangeElement() : undefined,
+                temp,
+                html;
 
-          /**
-           * override this custom function to perform a
-           * custom operation when an element that matches the tags list is clicked
-           *
-           * @param {event} e click event
-           */
-          value: function tagClickCallback() {
-            var e =
-              arguments.length > 0 && arguments[0] !== undefined
-                ? arguments[0]
-                : {};
+              if (this.rangeIsElement()) {
+                html = root ? root.innerHTML : undefined;
+              } else {
+                temp = document.createElement("span");
+                if (target) temp.appendChild(target);
+                html = temp.innerHTML;
+                temp.remove();
+              }
 
-            if (e.detail) {
-              this.selectNode(e.detail);
-              this.open(e.detail);
-            }
+              return html;
+            },
+            /**
+             * gets a field value (and trims it if it's a string)
+             *
+             * @param {string} prop field name
+             * @returns {*}
+             * @memberof RichTextEditorPrompt
+             */
           },
-          /**
-           * closes without updates
-           */
-        },
-        {
-          key: "cancel",
-          value: function cancel() {
-            this.close();
+          {
+            key: "getPropValue",
+            value: function getPropValue(prop) {
+              var val = !!this.value ? this.value : false,
+                rawVal =
+                  !val || !val[prop]
+                    ? false
+                    : val[prop].trim
+                    ? val[prop].trim()
+                    : val[prop];
+              return rawVal && rawVal !== "" ? rawVal : false;
+            },
+            /**
+             * gets value for prompt based on current selection
+             * (can be overriden for custom prompt field values)
+             */
           },
-          /**
-           * closes prompt
-           * @event rich-text-editor-prompt-closed
-           *
-           */
-        },
-        {
-          key: "close",
-          value: function close() {
-            this.dispatchEvent(
-              new CustomEvent("rich-text-editor-prompt-closed", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: this,
-              })
-            );
+          {
+            key: "getValue",
+            value: function getValue(node) {
+              return {
+                innerHTML: this.getInnerHTML() || "",
+              };
+            },
+            /**
+             * Handles selecting text and opening prompt
+             * @param {object} node optional node to select instead of range
+             * @event rich-text-editor-prompt-open
+             */
           },
-          /**
-           * updates insertion based on fields
-           */
-        },
-        {
-          key: "confirm",
-          value: function confirm(val) {
-            this.close();
-            this.value = val;
-            this.update();
-            this.setToggled();
-            this.promptCommandVal;
-            this.updateSelection();
+          {
+            key: "open",
+            value: function open() {
+              this.expandSelection();
+              this.highlight();
+              this.value = this.getValue();
+              this.dispatchEvent(
+                new CustomEvent("rich-text-editor-prompt-open", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: this,
+                })
+              );
+            },
+            /**
+             * sets inner HTML of selection
+             *
+             * @param {string} html
+             */
           },
-          /**
-           * expands selection to include this.tags
-           *
-           */
-        },
-        {
-          key: "expandSelection",
-          value: function expandSelection() {
-            var element = this.rangeQuery();
+          {
+            key: "setInnerHTML",
+            value: function setInnerHTML(html) {
+              var target = this.rangeElement();
 
-            if (!!element) {
-              this.highlightNode(element);
-              this.selectedNode = element;
-            }
+              if (target && this.rangeIsElement()) {
+                target.innerHTML = html;
+              } else if (this.range) {
+                this.sendCommand("insertHTML", html);
+              }
+            },
+            /**
+             * updates toggled based on values passed from prompt
+             * (can be overriden for custom toggled state)
+             */
           },
-          /**
-           * if selection is a node, gets node innerHTML
-           *
-           * @returns {string}
-           */
-        },
-        {
-          key: "getInnerHTML",
-          value: function getInnerHTML() {
-            var target =
-                this.range && this.range.cloneContents
-                  ? this.range.cloneContents()
-                  : undefined,
-              root = this.rangeElement() ? this.rangeElement() : undefined,
-              temp,
-              html;
+          {
+            key: "setToggled",
+            value: function setToggled() {
+              this.toggled = !this.value;
+            },
+            /**
+             * updates selection based on values passed from prompt
+             */
+          },
+          {
+            key: "updateSelection",
+            value: function updateSelection() {
+              var parent = this.range.commonAncestorContainer;
 
-            if (this.rangeIsElement()) {
-              html = root ? root.innerHTML : undefined;
-            } else {
-              temp = document.createElement("span");
-              if (target) temp.appendChild(target);
-              html = temp.innerHTML;
-              temp.remove();
-            }
+              if (this.rangeIsElement()) {
+                if (this.setsInnerHTML)
+                  this.setInnerHTML(this.getPropValue("innerHTML"));
+                this.sendCommand(this.promptCommand, this.promptCommandVal);
+              } else {
+                this.sendCommand(this.promptCommand, this.promptCommandVal);
+                if (this.setsInnerHTML)
+                  this.setInnerHTML(this.getPropValue("innerHTML"));
+              }
 
-            return html;
+              this.range.collapse();
+              parent.normalize();
+            },
+            /**
+             * Handles button tap
+             * @param {event} e button tap event
+             */
           },
-          /**
-           * gets a field value (and trims it if it's a string)
-           *
-           * @param {string} prop field name
-           * @returns {*}
-           * @memberof RichTextEditorPrompt
-           */
-        },
-        {
-          key: "getPropValue",
-          value: function getPropValue(prop) {
-            var val = !!this.value ? this.value : false,
-              rawVal =
-                !val || !val[prop]
-                  ? false
-                  : val[prop].trim
-                  ? val[prop].trim()
-                  : val[prop];
-            return rawVal && rawVal !== "" ? rawVal : false;
+          {
+            key: "_handleClick",
+            value: function _handleClick(e) {
+              e.preventDefault();
+              this.open();
+            },
+            /**
+             * Handles range change
+             * @param {event} e button tap event
+             */
           },
-          /**
-           * gets value for prompt based on current selection
-           * (can be overriden for custom prompt field values)
-           */
-        },
-        {
-          key: "getValue",
-          value: function getValue(node) {
-            return {
-              innerHTML: this.getInnerHTML() || "",
-            };
+          {
+            key: "_rangeChanged",
+            value: function _rangeChanged(newVal, oldVal) {
+              this.value = this.getValue();
+              this.setToggled();
+            },
           },
-          /**
-           * Handles selecting text and opening prompt
-           * @param {object} node optional node to select instead of range
-           * @event rich-text-editor-prompt-open
-           */
-        },
-        {
-          key: "open",
-          value: function open() {
-            this.expandSelection();
-            this.highlight();
-            this.value = this.getValue();
-            this.dispatchEvent(
-              new CustomEvent("rich-text-editor-prompt-open", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: this,
-              })
-            );
+          {
+            key: "promptCommand",
+            get: function get() {
+              return this.toggledCommand && !this.toggled
+                ? this.toggledCommand
+                : this.command;
+            },
+            /**
+             * determines commandVal based on values passed from prompt
+             * (can be overriden for custom prompt command values)
+             */
           },
-          /**
-           * sets inner HTML of selection
-           *
-           * @param {string} html
-           */
-        },
-        {
-          key: "setInnerHTML",
-          value: function setInnerHTML(html) {
-            var target = this.rangeElement();
+          {
+            key: "promptCommandVal",
+            get: function get() {
+              return this.commandVal;
+            },
+            /**
+             * determines if prompt also sets innerHTML of range
+             * (can be overriden for custom prompts)
+             */
+          },
+          {
+            key: "setsInnerHTML",
+            get: function get() {
+              var innerHTML = (this.fields || []).filter(function (field) {
+                return field.property === "innerHTML";
+              });
+              return innerHTML && innerHTML.length > 0;
+            },
+          },
+        ]);
 
-            if (target && this.rangeIsElement()) {
-              target.innerHTML = html;
-            } else if (this.range) {
-              this.sendCommand("insertHTML", html);
-            }
-          },
-          /**
-           * updates toggled based on values passed from prompt
-           * (can be overriden for custom toggled state)
-           */
-        },
-        {
-          key: "setToggled",
-          value: function setToggled() {
-            this.toggled = !this.value;
-          },
-          /**
-           * updates selection based on values passed from prompt
-           */
-        },
-        {
-          key: "updateSelection",
-          value: function updateSelection() {
-            var parent = this.range.commonAncestorContainer;
-
-            if (this.rangeIsElement()) {
-              if (this.setsInnerHTML)
-                this.setInnerHTML(this.getPropValue("innerHTML"));
-              this.sendCommand(this.promptCommand, this.promptCommandVal);
-            } else {
-              this.sendCommand(this.promptCommand, this.promptCommandVal);
-              if (this.setsInnerHTML)
-                this.setInnerHTML(this.getPropValue("innerHTML"));
-            }
-
-            this.range.collapse();
-            parent.normalize();
-          },
-          /**
-           * Handles button tap
-           * @param {event} e button tap event
-           */
-        },
-        {
-          key: "_handleClick",
-          value: function _handleClick(e) {
-            e.preventDefault();
-            this.open();
-          },
-          /**
-           * Handles range change
-           * @param {event} e button tap event
-           */
-        },
-        {
-          key: "_rangeChanged",
-          value: function _rangeChanged(newVal, oldVal) {
-            this.value = this.getValue();
-            this.setToggled();
-          },
-        },
-        {
-          key: "promptCommand",
-          get: function get() {
-            return this.toggledCommand && !this.toggled
-              ? this.toggledCommand
-              : this.command;
-          },
-          /**
-           * determines commandVal based on values passed from prompt
-           * (can be overriden for custom prompt command values)
-           */
-        },
-        {
-          key: "promptCommandVal",
-          get: function get() {
-            return this.commandVal;
-          },
-          /**
-           * determines if prompt also sets innerHTML of range
-           * (can be overriden for custom prompts)
-           */
-        },
-        {
-          key: "setsInnerHTML",
-          get: function get() {
-            var innerHTML = (this.fields || []).filter(function (field) {
-              return field.property === "innerHTML";
-            });
-            return innerHTML && innerHTML.length > 0;
-          },
-        },
-      ]);
-
-      return _class;
-    })((0, _richTextEditorButton.RichTextEditorButtonBehaviors)(SuperClass))
-  );
-};
+        return _class;
+      })((0, _richTextEditorButton.RichTextEditorButtonBehaviors)(SuperClass))
+    );
+  };
 /**
  * `rich-text-editor-prompt-button`
  * prompts for more information for rich text editor
@@ -597,7 +598,8 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
  * @demo ./demo/buttons.html
  */
 
-exports.RichTextEditorPromptButtonBehaviors = RichTextEditorPromptButtonBehaviors;
+exports.RichTextEditorPromptButtonBehaviors =
+  RichTextEditorPromptButtonBehaviors;
 
 var RichTextEditorPromptButton =
   /*#__PURE__*/

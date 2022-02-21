@@ -379,9 +379,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
 
     validElementSlots() {
       return this.shadowRoot
-        ? [
-            ...this.shadowRoot.querySelectorAll("[data-layout-order]"),
-          ].map((container) => container.getAttribute("data-layout-slotname"))
+        ? [...this.shadowRoot.querySelectorAll("[data-layout-order]")].map(
+            (container) => container.getAttribute("data-layout-slotname")
+          )
         : [];
     }
     /**

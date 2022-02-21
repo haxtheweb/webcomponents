@@ -234,7 +234,8 @@ class MapMenu extends LitElement {
     // get the bound client
     const targetPosition = target.getBoundingClientRect();
     // get the scroll Element position
-    const scrollElementPosition = _options.scrollElement.getBoundingClientRect();
+    const scrollElementPosition =
+      _options.scrollElement.getBoundingClientRect();
     // get the height of the scroll Element
     const scrollElementHeight =
       _options.scrollElement.getBoundingClientRect().bottom -

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
 import "@github/time-elements";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 //import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";

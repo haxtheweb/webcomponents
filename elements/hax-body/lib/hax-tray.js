@@ -1116,16 +1116,13 @@ class HaxTray extends I18NMixin(
       super.firstUpdated(changedProperties);
     }
     if (!this.__setup) {
-      this.shadowRoot.querySelector(
-        "#settingsform"
-      ).schematizer = HaxSchematizer;
-      this.shadowRoot.querySelector(
-        "#settingsform"
-      ).elementizer = HaxElementizer;
+      this.shadowRoot.querySelector("#settingsform").schematizer =
+        HaxSchematizer;
+      this.shadowRoot.querySelector("#settingsform").elementizer =
+        HaxElementizer;
       setTimeout(() => {
-        this.shadowRoot.querySelector(
-          ".wrapper"
-        ).style.margin = this.offsetMargin;
+        this.shadowRoot.querySelector(".wrapper").style.margin =
+          this.offsetMargin;
       }, 1000);
       this.__setup = true;
       this.shadowRoot
@@ -1201,9 +1198,8 @@ class HaxTray extends I18NMixin(
       }
       if (propName == "offsetMargin") {
         setTimeout(() => {
-          this.shadowRoot.querySelector(
-            ".wrapper"
-          ).style.margin = this.offsetMargin;
+          this.shadowRoot.querySelector(".wrapper").style.margin =
+            this.offsetMargin;
         }, 0);
       }
       // change tray detail
@@ -1278,36 +1274,30 @@ class HaxTray extends I18NMixin(
       for (var property in this.activeHaxElement.properties) {
         props.settings.configure.forEach((el) => {
           if (el.property === property) {
-            this.activeValue.settings.configure[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[property] =
+              this.activeHaxElement.properties[property];
           }
           if (el.attribute === property) {
-            this.activeValue.settings.configure[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[property] =
+              this.activeHaxElement.properties[property];
           }
           if (el.slot === property) {
-            this.activeValue.settings.configure[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[property] =
+              this.activeHaxElement.properties[property];
           }
         });
         props.settings.advanced.forEach((el) => {
           if (el.property === property) {
-            this.activeValue.settings.advanced[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[property] =
+              this.activeHaxElement.properties[property];
           }
           if (el.attribute === property) {
-            this.activeValue.settings.advanced[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[property] =
+              this.activeHaxElement.properties[property];
           }
           if (el.slot === property) {
-            this.activeValue.settings.advanced[
-              property
-            ] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[property] =
+              this.activeHaxElement.properties[property];
           }
         });
       }
@@ -1353,10 +1343,8 @@ class HaxTray extends I18NMixin(
       });
       // then we need to work on the layout piece
       if (activeNode.style.width != "") {
-        this.activeValue.settings.layout.__scale = activeNode.style.width.replace(
-          "%",
-          ""
-        );
+        this.activeValue.settings.layout.__scale =
+          activeNode.style.width.replace("%", "");
       } else {
         this.activeValue.settings.layout.__scale = 100;
       }
@@ -1374,8 +1362,10 @@ class HaxTray extends I18NMixin(
       } else {
         this.activeValue.settings.layout.__position = "hax-align-left";
       }
-      this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
-      this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
+      this.activeHaxElement.properties.__scale =
+        this.activeValue.settings.layout.__scale;
+      this.activeHaxElement.properties.__position =
+        this.activeValue.settings.layout.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
@@ -1642,8 +1632,9 @@ class HaxTray extends I18NMixin(
                     if (
                       this.__activePropSchema.settings[key][propTmp].slotWrapper
                     ) {
-                      slotTag = this.__activePropSchema.settings[key][propTmp]
-                        .slotWrapper;
+                      slotTag =
+                        this.__activePropSchema.settings[key][propTmp]
+                          .slotWrapper;
                     } else if (
                       //selects first wrapper from allowed list
                       this.__activePropSchema.settings[key][propTmp]
@@ -1651,8 +1642,9 @@ class HaxTray extends I18NMixin(
                       this.__activePropSchema.settings[key][propTmp]
                         .allowedSlotWrappers[0]
                     ) {
-                      slotTag = this.__activePropSchema.settings[key][propTmp]
-                        .allowedSlotWrappers[0];
+                      slotTag =
+                        this.__activePropSchema.settings[key][propTmp]
+                          .allowedSlotWrappers[0];
                     } else if (
                       this.activeNode.tagName.toLowerCase() === "code-editor"
                     ) {
@@ -1687,9 +1679,8 @@ class HaxTray extends I18NMixin(
                     if (
                       this.__activePropSchema.settings[key][propTmp].slot !== ""
                     ) {
-                      tmpel.slot = this.__activePropSchema.settings[key][
-                        propTmp
-                      ].slot;
+                      tmpel.slot =
+                        this.__activePropSchema.settings[key][propTmp].slot;
                     }
                     tmpel.innerHTML = settings[key][prop];
                     const cloneIt = tmpel.cloneNode(true);

@@ -27,9 +27,8 @@ stories.add("dynamic-import-registry", () => {
         case "Object":
         case "Array":
         case "Date":
-          method = DynamicImportRegistry.properties[
-            key
-          ].type.name.toLowerCase();
+          method =
+            DynamicImportRegistry.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";

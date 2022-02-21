@@ -542,11 +542,10 @@ var HaxAppSearch =
               _haxStore.HAXStore.connectionRewrites.appendJwt != null &&
               params.__HAXJWT__
             ) {
-              params[
-                _haxStore.HAXStore.connectionRewrites.appendJwt
-              ] = localStorageGet(
-                _haxStore.HAXStore.connectionRewrites.appendJwt
-              );
+              params[_haxStore.HAXStore.connectionRewrites.appendJwt] =
+                localStorageGet(
+                  _haxStore.HAXStore.connectionRewrites.appendJwt
+                );
             }
 
             queryString = queryString + this.queryStringData(params); // look for a specialized param

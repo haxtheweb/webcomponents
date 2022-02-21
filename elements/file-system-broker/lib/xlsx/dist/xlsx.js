@@ -3164,92 +3164,19 @@ function make_xlsx_lib(XLSX) {
       return _zlib ? _zlib.deflateRawSync(payload) : _deflate(payload);
     }
     var CLEN_ORDER = [
-      16,
-      17,
-      18,
-      0,
-      8,
-      7,
-      9,
-      6,
-      10,
-      5,
-      11,
-      4,
-      12,
-      3,
-      13,
-      2,
-      14,
-      1,
-      15,
+      16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15,
     ];
 
     /*  LEN_ID = [ 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285 ]; */
     var LEN_LN = [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      13,
-      15,
-      17,
-      19,
-      23,
-      27,
-      31,
-      35,
-      43,
-      51,
-      59,
-      67,
-      83,
-      99,
-      115,
-      131,
-      163,
-      195,
-      227,
-      258,
+      3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59,
+      67, 83, 99, 115, 131, 163, 195, 227, 258,
     ];
 
     /*  DST_ID = [  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13,  14,  15,  16,  17,  18,  19,   20,   21,   22,   23,   24,   25,   26,    27,    28,    29 ]; */
     var DST_LN = [
-      1,
-      2,
-      3,
-      4,
-      5,
-      7,
-      9,
-      13,
-      17,
-      25,
-      33,
-      49,
-      65,
-      97,
-      129,
-      193,
-      257,
-      385,
-      513,
-      769,
-      1025,
-      1537,
-      2049,
-      3073,
-      4097,
-      6145,
-      8193,
-      12289,
-      16385,
-      24577,
+      1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513,
+      769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577,
     ];
 
     function bit_swap_8(n) {
@@ -4436,8 +4363,10 @@ function make_xlsx_lib(XLSX) {
   }
   var XML_HEADER =
     '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n';
-  var attregexg = /([^"\s?>\/]+)\s*=\s*((?:")([^"]*)(?:")|(?:')([^']*)(?:')|([^'">\s]+))/g;
-  var tagregex = /<[\/\?]?[a-zA-Z0-9:_-]+(?:\s+[^"\s?>\/]+\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s=]+))*\s*[\/\?]?>/gm;
+  var attregexg =
+    /([^"\s?>\/]+)\s*=\s*((?:")([^"]*)(?:")|(?:')([^']*)(?:')|([^'">\s]+))/g;
+  var tagregex =
+    /<[\/\?]?[a-zA-Z0-9:_-]+(?:\s+[^"\s?>\/]+\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s=]+))*\s*[\/\?]?>/gm;
 
   if (!XML_HEADER.match(tagregex)) tagregex = /<[^>]*>/g;
   var nsregex = /<\w*:/,
@@ -4867,8 +4796,7 @@ function make_xlsx_lib(XLSX) {
     dcmitype: "http://purl.org/dc/dcmitype/",
     mx: "http://schemas.microsoft.com/office/mac/excel/2008/main",
     r: "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
-    sjs:
-      "http://schemas.openxmlformats.org/package/2006/sheetjs/core-properties",
+    sjs: "http://schemas.openxmlformats.org/package/2006/sheetjs/core-properties",
     vt: "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes",
     xsi: "http://www.w3.org/2001/XMLSchema-instance",
     xsd: "http://www.w3.org/2001/XMLSchema",
@@ -6392,95 +6320,35 @@ function make_xlsx_lib(XLSX) {
   /* [MS-XLSB] 2.5.75 Icv */
   var _XLSIcv = rgbify([
     /* Color Constants */
-    0x000000,
-    0xffffff,
-    0xff0000,
-    0x00ff00,
-    0x0000ff,
-    0xffff00,
-    0xff00ff,
+    0x000000, 0xffffff, 0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff,
     0x00ffff,
 
     /* Overridable Defaults */
-    0x000000,
-    0xffffff,
-    0xff0000,
-    0x00ff00,
-    0x0000ff,
-    0xffff00,
-    0xff00ff,
+    0x000000, 0xffffff, 0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff,
     0x00ffff,
 
-    0x800000,
-    0x008000,
-    0x000080,
-    0x808000,
-    0x800080,
-    0x008080,
-    0xc0c0c0,
-    0x808080,
-    0x9999ff,
-    0x993366,
-    0xffffcc,
-    0xccffff,
-    0x660066,
-    0xff8080,
-    0x0066cc,
-    0xccccff,
+    0x800000, 0x008000, 0x000080, 0x808000, 0x800080, 0x008080, 0xc0c0c0,
+    0x808080, 0x9999ff, 0x993366, 0xffffcc, 0xccffff, 0x660066, 0xff8080,
+    0x0066cc, 0xccccff,
 
-    0x000080,
-    0xff00ff,
-    0xffff00,
-    0x00ffff,
-    0x800080,
-    0x800000,
-    0x008080,
-    0x0000ff,
-    0x00ccff,
-    0xccffff,
-    0xccffcc,
-    0xffff99,
-    0x99ccff,
-    0xff99cc,
-    0xcc99ff,
-    0xffcc99,
+    0x000080, 0xff00ff, 0xffff00, 0x00ffff, 0x800080, 0x800000, 0x008080,
+    0x0000ff, 0x00ccff, 0xccffff, 0xccffcc, 0xffff99, 0x99ccff, 0xff99cc,
+    0xcc99ff, 0xffcc99,
 
-    0x3366ff,
-    0x33cccc,
-    0x99cc00,
-    0xffcc00,
-    0xff9900,
-    0xff6600,
-    0x666699,
-    0x969696,
-    0x003366,
-    0x339966,
-    0x003300,
-    0x333300,
-    0x993300,
-    0x993366,
-    0x333399,
-    0x333333,
+    0x3366ff, 0x33cccc, 0x99cc00, 0xffcc00, 0xff9900, 0xff6600, 0x666699,
+    0x969696, 0x003366, 0x339966, 0x003300, 0x333300, 0x993300, 0x993366,
+    0x333399, 0x333333,
 
     /* Other entries to appease BIFF8/12 */
-    0xffffff /* 0x40 icvForeground ?? */,
-    0x000000 /* 0x41 icvBackground ?? */,
-    0x000000 /* 0x42 icvFrame ?? */,
-    0x000000 /* 0x43 icv3D ?? */,
-    0x000000 /* 0x44 icv3DText ?? */,
-    0x000000 /* 0x45 icv3DHilite ?? */,
-    0x000000 /* 0x46 icv3DShadow ?? */,
-    0x000000 /* 0x47 icvHilite ?? */,
-    0x000000 /* 0x48 icvCtlText ?? */,
-    0x000000 /* 0x49 icvCtlScrl ?? */,
-    0x000000 /* 0x4A icvCtlInv ?? */,
-    0x000000 /* 0x4B icvCtlBody ?? */,
-    0x000000 /* 0x4C icvCtlFrame ?? */,
-    0x000000 /* 0x4D icvCtlFore ?? */,
-    0x000000 /* 0x4E icvCtlBack ?? */,
-    0x000000 /* 0x4F icvCtlNeutral */,
-    0x000000 /* 0x50 icvInfoBk ?? */,
-    0x000000 /* 0x51 icvInfoText ?? */,
+    0xffffff /* 0x40 icvForeground ?? */, 0x000000 /* 0x41 icvBackground ?? */,
+    0x000000 /* 0x42 icvFrame ?? */, 0x000000 /* 0x43 icv3D ?? */,
+    0x000000 /* 0x44 icv3DText ?? */, 0x000000 /* 0x45 icv3DHilite ?? */,
+    0x000000 /* 0x46 icv3DShadow ?? */, 0x000000 /* 0x47 icvHilite ?? */,
+    0x000000 /* 0x48 icvCtlText ?? */, 0x000000 /* 0x49 icvCtlScrl ?? */,
+    0x000000 /* 0x4A icvCtlInv ?? */, 0x000000 /* 0x4B icvCtlBody ?? */,
+    0x000000 /* 0x4C icvCtlFrame ?? */, 0x000000 /* 0x4D icvCtlFore ?? */,
+    0x000000 /* 0x4E icvCtlBack ?? */, 0x000000 /* 0x4F icvCtlNeutral */,
+    0x000000 /* 0x50 icvInfoBk ?? */, 0x000000 /* 0x51 icvInfoText ?? */,
   ]);
   var XLSIcv = dup(_XLSIcv);
 
@@ -6673,42 +6541,35 @@ function make_xlsx_lib(XLSX) {
   var CT_LIST = (function () {
     var o = {
       workbooks: {
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
         xlsm: "application/vnd.ms-excel.sheet.macroEnabled.main+xml",
         xlsb: "application/vnd.ms-excel.sheet.binary.macroEnabled.main",
         xlam: "application/vnd.ms-excel.addin.macroEnabled.main+xml",
-        xltx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml",
+        xltx: "application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml",
       },
       strs: {
         /* Shared Strings */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml",
         xlsb: "application/vnd.ms-excel.sharedStrings",
       },
       comments: {
         /* Comments */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml",
         xlsb: "application/vnd.ms-excel.comments",
       },
       sheets: {
         /* Worksheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml",
         xlsb: "application/vnd.ms-excel.worksheet",
       },
       charts: {
         /* Chartsheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml",
         xlsb: "application/vnd.ms-excel.chartsheet",
       },
       dialogs: {
         /* Dialogsheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml",
         xlsb: "application/vnd.ms-excel.dialogsheet",
       },
       macros: {
@@ -6718,8 +6579,7 @@ function make_xlsx_lib(XLSX) {
       },
       styles: {
         /* Styles */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml",
         xlsb: "application/vnd.ms-excel.styles",
       },
     };
@@ -6877,22 +6737,19 @@ function make_xlsx_lib(XLSX) {
   }
   /* 9.3 Relationships */
   var RELS = {
-    WB:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+    WB: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     SHEET:
       "http://sheetjs.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     HLINK:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
-    VML:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing",
+    VML: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing",
     XPATH:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/externalLinkPath",
     XMISS:
       "http://schemas.microsoft.com/office/2006/relationships/xlExternalLinkPath/xlPathMissing",
     XLINK:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/externalLink",
-    CXML:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml",
+    CXML: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml",
     CXMLP:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps",
     VBA: "http://schemas.microsoft.com/office/2006/relationships/vbaProject",
@@ -9775,14 +9632,7 @@ function make_xlsx_lib(XLSX) {
       0x00: 20127,
     });
     var DBF_SUPPORTED_VERSIONS = [
-      0x02,
-      0x03,
-      0x30,
-      0x31,
-      0x83,
-      0x8b,
-      0x8c,
-      0xf5,
+      0x02, 0x03, 0x30, 0x31, 0x83, 0x8b, 0x8c, 0xf5,
     ];
     /* TODO: find an actual specification */
     function dbf_to_aoa(buf, opts) {
@@ -12229,145 +12079,26 @@ function make_xlsx_lib(XLSX) {
   /* [MS-OFFCRYPTO] 2.3.7.2 Binary Document XOR Array Initialization */
   var crypto_CreateXorArray_Method1 = (function () {
     var PadArray = [
-      0xbb,
-      0xff,
-      0xff,
-      0xba,
-      0xff,
-      0xff,
-      0xb9,
-      0x80,
-      0x00,
-      0xbe,
-      0x0f,
-      0x00,
-      0xbf,
-      0x0f,
-      0x00,
+      0xbb, 0xff, 0xff, 0xba, 0xff, 0xff, 0xb9, 0x80, 0x00, 0xbe, 0x0f, 0x00,
+      0xbf, 0x0f, 0x00,
     ];
     var InitialCode = [
-      0xe1f0,
-      0x1d0f,
-      0xcc9c,
-      0x84c0,
-      0x110c,
-      0x0e10,
-      0xf1ce,
-      0x313e,
-      0x1872,
-      0xe139,
-      0xd40f,
-      0x84f9,
-      0x280c,
-      0xa96a,
-      0x4ec3,
+      0xe1f0, 0x1d0f, 0xcc9c, 0x84c0, 0x110c, 0x0e10, 0xf1ce, 0x313e, 0x1872,
+      0xe139, 0xd40f, 0x84f9, 0x280c, 0xa96a, 0x4ec3,
     ];
     var XorMatrix = [
-      0xaefc,
-      0x4dd9,
-      0x9bb2,
-      0x2745,
-      0x4e8a,
-      0x9d14,
-      0x2a09,
-      0x7b61,
-      0xf6c2,
-      0xfda5,
-      0xeb6b,
-      0xc6f7,
-      0x9dcf,
-      0x2bbf,
-      0x4563,
-      0x8ac6,
-      0x05ad,
-      0x0b5a,
-      0x16b4,
-      0x2d68,
-      0x5ad0,
-      0x0375,
-      0x06ea,
-      0x0dd4,
-      0x1ba8,
-      0x3750,
-      0x6ea0,
-      0xdd40,
-      0xd849,
-      0xa0b3,
-      0x5147,
-      0xa28e,
-      0x553d,
-      0xaa7a,
-      0x44d5,
-      0x6f45,
-      0xde8a,
-      0xad35,
-      0x4a4b,
-      0x9496,
-      0x390d,
-      0x721a,
-      0xeb23,
-      0xc667,
-      0x9cef,
-      0x29ff,
-      0x53fe,
-      0xa7fc,
-      0x5fd9,
-      0x47d3,
-      0x8fa6,
-      0x0f6d,
-      0x1eda,
-      0x3db4,
-      0x7b68,
-      0xf6d0,
-      0xb861,
-      0x60e3,
-      0xc1c6,
-      0x93ad,
-      0x377b,
-      0x6ef6,
-      0xddec,
-      0x45a0,
-      0x8b40,
-      0x06a1,
-      0x0d42,
-      0x1a84,
-      0x3508,
-      0x6a10,
-      0xaa51,
-      0x4483,
-      0x8906,
-      0x022d,
-      0x045a,
-      0x08b4,
-      0x1168,
-      0x76b4,
-      0xed68,
-      0xcaf1,
-      0x85c3,
-      0x1ba7,
-      0x374e,
-      0x6e9c,
-      0x3730,
-      0x6e60,
-      0xdcc0,
-      0xa9a1,
-      0x4363,
-      0x86c6,
-      0x1dad,
-      0x3331,
-      0x6662,
-      0xccc4,
-      0x89a9,
-      0x0373,
-      0x06e6,
-      0x0dcc,
-      0x1021,
-      0x2042,
-      0x4084,
-      0x8108,
-      0x1231,
-      0x2462,
-      0x48c4,
+      0xaefc, 0x4dd9, 0x9bb2, 0x2745, 0x4e8a, 0x9d14, 0x2a09, 0x7b61, 0xf6c2,
+      0xfda5, 0xeb6b, 0xc6f7, 0x9dcf, 0x2bbf, 0x4563, 0x8ac6, 0x05ad, 0x0b5a,
+      0x16b4, 0x2d68, 0x5ad0, 0x0375, 0x06ea, 0x0dd4, 0x1ba8, 0x3750, 0x6ea0,
+      0xdd40, 0xd849, 0xa0b3, 0x5147, 0xa28e, 0x553d, 0xaa7a, 0x44d5, 0x6f45,
+      0xde8a, 0xad35, 0x4a4b, 0x9496, 0x390d, 0x721a, 0xeb23, 0xc667, 0x9cef,
+      0x29ff, 0x53fe, 0xa7fc, 0x5fd9, 0x47d3, 0x8fa6, 0x0f6d, 0x1eda, 0x3db4,
+      0x7b68, 0xf6d0, 0xb861, 0x60e3, 0xc1c6, 0x93ad, 0x377b, 0x6ef6, 0xddec,
+      0x45a0, 0x8b40, 0x06a1, 0x0d42, 0x1a84, 0x3508, 0x6a10, 0xaa51, 0x4483,
+      0x8906, 0x022d, 0x045a, 0x08b4, 0x1168, 0x76b4, 0xed68, 0xcaf1, 0x85c3,
+      0x1ba7, 0x374e, 0x6e9c, 0x3730, 0x6e60, 0xdcc0, 0xa9a1, 0x4363, 0x86c6,
+      0x1dad, 0x3331, 0x6662, 0xccc4, 0x89a9, 0x0373, 0x06e6, 0x0dcc, 0x1021,
+      0x2042, 0x4084, 0x8108, 0x1231, 0x2462, 0x48c4,
     ];
     var Ror = function (Byte) {
       return ((Byte / 2) | (Byte * 128)) & 0xff;
@@ -13951,9 +13682,8 @@ function make_xlsx_lib(XLSX) {
         case "<a:folHlink>":
         case "</a:folHlink>":
           if (y[0].charAt(1) === "/") {
-            themes.themeElements.clrScheme[
-              XLSXThemeClrScheme.indexOf(y[0])
-            ] = color;
+            themes.themeElements.clrScheme[XLSXThemeClrScheme.indexOf(y[0])] =
+              color;
             color = {};
           } else {
             color.name = y[0].slice(3, y[0].length - 1);
@@ -14857,7 +14587,8 @@ function make_xlsx_lib(XLSX) {
   }
   /* TODO: it will be useful to parse the function str */
   var rc_to_a1 = (function () {
-    var rcregex = /(^|[^A-Za-z_])R(\[?-?\d+\]|[1-9]\d*|)C(\[?-?\d+\]|[1-9]\d*|)(?![A-Za-z0-9_])/g;
+    var rcregex =
+      /(^|[^A-Za-z_])R(\[?-?\d+\]|[1-9]\d*|)C(\[?-?\d+\]|[1-9]\d*|)(?![A-Za-z0-9_])/g;
     var rcbase = { r: 0, c: 0 };
     function rcfunc($$, $1, $2, $3) {
       var cRel = false,
@@ -14896,7 +14627,8 @@ function make_xlsx_lib(XLSX) {
     };
   })();
 
-  var crefregex = /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)(10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6]|[1-9]\d{0,5})(?![_.\(A-Za-z0-9])/g;
+  var crefregex =
+    /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)(10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6]|[1-9]\d{0,5})(?![_.\(A-Za-z0-9])/g;
   var a1_to_rc = (function () {
     return function a1_to_rc(fstr, base) {
       return fstr.replace(crefregex, function ($0, $1, $2, $3, $4, $5) {
@@ -17834,14 +17566,17 @@ function make_xlsx_lib(XLSX) {
       ws["!ref"] = encode_range(d);
   }
   var mergecregex = /<(?:\w:)?mergeCell ref="[A-Z0-9:]+"\s*[\/]?>/g;
-  var sheetdataregex = /<(?:\w+:)?sheetData[^>]*>([\s\S]*)<\/(?:\w+:)?sheetData>/;
+  var sheetdataregex =
+    /<(?:\w+:)?sheetData[^>]*>([\s\S]*)<\/(?:\w+:)?sheetData>/;
   var hlinkregex = /<(?:\w:)?hyperlink [^>]*>/gm;
   var dimregex = /"(\w*:\w*)"/;
   var colregex = /<(?:\w:)?col\b[^>]*[\/]?>/g;
-  var afregex = /<(?:\w:)?autoFilter[^>]*([\/]|>([\s\S]*)<\/(?:\w:)?autoFilter)>/g;
+  var afregex =
+    /<(?:\w:)?autoFilter[^>]*([\/]|>([\s\S]*)<\/(?:\w:)?autoFilter)>/g;
   var marginregex = /<(?:\w:)?pageMargins[^>]*\/>/g;
   var sheetprregex = /<(?:\w:)?sheetPr\b(?:[^>a-z][^>]*)?\/>/;
-  var svsregex = /<(?:\w:)?sheetViews[^>]*(?:[\/]|>([\s\S]*)<\/(?:\w:)?sheetViews)>/;
+  var svsregex =
+    /<(?:\w:)?sheetViews[^>]*(?:[\/]|>([\s\S]*)<\/(?:\w:)?sheetViews)>/;
 
   /* 18.3 Worksheets */
   function parse_ws_xml(data, opts, idx, rels, wb, themes, styles) {
@@ -20595,9 +20330,8 @@ function make_xlsx_lib(XLSX) {
               supbooks[0] = [];
               supbooks[0].XTI = [];
             }
-            supbooks[supbooks.length - 1].XTI = supbooks[
-              supbooks.length - 1
-            ].XTI.concat(val);
+            supbooks[supbooks.length - 1].XTI =
+              supbooks[supbooks.length - 1].XTI.concat(val);
             supbooks.XTI = supbooks.XTI.concat(val);
             break;
           case 0x0169 /* 'BrtPlaceholderName' */:
@@ -20894,9 +20628,9 @@ function make_xlsx_lib(XLSX) {
   }
 
   function write_cmnt(data, name, opts) {
-    return (name.slice(-4) === ".bin"
-      ? write_comments_bin
-      : write_comments_xml)(data, opts);
+    return (
+      name.slice(-4) === ".bin" ? write_comments_bin : write_comments_xml
+    )(data, opts);
   }
   /*
 function write_cc(data, name:string, opts) {
@@ -22973,7 +22707,8 @@ function write_cc(data, name:string, opts) {
     var file_depth = 0; /* TODO: make a real stack */
     var BIFF2Fmt = 0,
       BIFF2FmtTable = [];
-    var FilterDatabases = []; /* TODO: sort out supbooks and process elsewhere */
+    var FilterDatabases =
+      []; /* TODO: sort out supbooks and process elsewhere */
     var last_lbl;
 
     /* explicit override for some broken writers */
@@ -23139,9 +22874,8 @@ function write_cc(data, name:string, opts) {
               supbooks[0] = [];
               supbooks[0].XTI = [];
             }
-            supbooks[supbooks.length - 1].XTI = supbooks[
-              supbooks.length - 1
-            ].XTI.concat(val);
+            supbooks[supbooks.length - 1].XTI =
+              supbooks[supbooks.length - 1].XTI.concat(val);
             supbooks.XTI = supbooks.XTI.concat(val);
             break;
           case "NameCmt":
@@ -24298,7 +24032,8 @@ function write_cc(data, name:string, opts) {
     var props = {};
     if (cfb.FullPaths) parse_xls_props(cfb, props, options);
 
-    WorkbookP.Props = WorkbookP.Custprops = props; /* TODO: split up properties */
+    WorkbookP.Props = WorkbookP.Custprops =
+      props; /* TODO: split up properties */
     if (options.bookFiles) WorkbookP.cfb = cfb;
     /*WorkbookP.CompObjP = CompObjP; // TODO: storage? */
     return WorkbookP;
@@ -26666,9 +26401,8 @@ function write_cc(data, name:string, opts) {
                     } else {
                       ws[encode_cell({ r: R + rpt, c: C })] = q;
                       while (--colpeat > 0)
-                        ws[encode_cell({ r: R + rpt, c: C + colpeat })] = dup(
-                          q
-                        );
+                        ws[encode_cell({ r: R + rpt, c: C + colpeat })] =
+                          dup(q);
                     }
                     if (range.e.c <= C) range.e.c = C;
                   }

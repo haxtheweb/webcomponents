@@ -1354,8 +1354,7 @@ class HAXCMSSiteListing extends PolymerElement {
           composed: true,
           cancelable: true,
           detail: {
-            text:
-              "WARNING: You are using a polyfilled browser. HAXcms requires modern browsers, please upgrade or switch to a modern browser to edit in HAXcms!",
+            text: "WARNING: You are using a polyfilled browser. HAXcms requires modern browsers, please upgrade or switch to a modern browser to edit in HAXcms!",
             duration: 10000,
           },
         });
@@ -1955,9 +1954,8 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _saveConfig(e) {
-    window.HAXCMS.config.values = this.shadowRoot.querySelector(
-      "#settingsform"
-    ).value;
+    window.HAXCMS.config.values =
+      this.shadowRoot.querySelector("#settingsform").value;
     this.set("setConfigParams", {});
     this.set("setConfigParams", {
       jwt: this.jwt,

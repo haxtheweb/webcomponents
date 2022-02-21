@@ -3,7 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.LrnCssReset = exports.AttachStylesToHead = exports.LrnCssResetStyles = void 0;
+exports.LrnCssReset =
+  exports.AttachStylesToHead =
+  exports.LrnCssResetStyles =
+    void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 

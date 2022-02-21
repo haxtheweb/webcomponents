@@ -333,12 +333,10 @@ var HaxPreferencesDialog =
         {
           key: "firstUpdated",
           value: function firstUpdated(changedProperties) {
-            this.shadowRoot.querySelector(
-              "#settingsform"
-            ).fields = _toConsumableArray(this.schema);
-            this.shadowRoot.querySelector(
-              "#settingsform"
-            ).value = _objectSpread({}, this.schemaValues);
+            this.shadowRoot.querySelector("#settingsform").fields =
+              _toConsumableArray(this.schema);
+            this.shadowRoot.querySelector("#settingsform").value =
+              _objectSpread({}, this.schemaValues);
             this.shadowRoot
               .querySelector("#settingsform")
               .addEventListener(
@@ -364,12 +362,10 @@ var HaxPreferencesDialog =
         {
           key: "reloadPreferencesForm",
           value: function reloadPreferencesForm() {
-            this.shadowRoot.querySelector(
-              "#settingsform"
-            ).fields = _toConsumableArray(this.schema);
-            this.shadowRoot.querySelector(
-              "#settingsform"
-            ).value = _objectSpread({}, this.schemaValues);
+            this.shadowRoot.querySelector("#settingsform").fields =
+              _toConsumableArray(this.schema);
+            this.shadowRoot.querySelector("#settingsform").value =
+              _objectSpread({}, this.schemaValues);
           },
         },
       ],

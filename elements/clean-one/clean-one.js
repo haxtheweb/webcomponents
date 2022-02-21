@@ -808,13 +808,11 @@ class CleanOne extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.HAXCMSThemeSettings.scrollTarget = this.shadowRoot.querySelector(
-      "#body"
-    );
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector("#body");
     // hook up the scroll target
-    this.shadowRoot.querySelector(
-      "scroll-button"
-    ).target = this.shadowRoot.querySelector("#top");
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#top");
   }
   HAXCMSGlobalStyleSheetContent() {
     return [

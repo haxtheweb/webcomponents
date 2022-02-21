@@ -717,11 +717,10 @@
             });
           }
 
-          var commentAuthorLabel = (exports.commentAuthorLabel = function commentAuthorLabel(
-            comment
-          ) {
-            return comment.authorInitials || "";
-          });
+          var commentAuthorLabel = (exports.commentAuthorLabel =
+            function commentAuthorLabel(comment) {
+              return comment.authorInitials || "";
+            });
         },
         {
           "./documents": 4,
@@ -1037,9 +1036,8 @@
 
             function readRunProperties(element) {
               return readRunStyle(element).map(function (style) {
-                var fontSizeString = element.firstOrEmpty("w:sz").attributes[
-                  "w:val"
-                ];
+                var fontSizeString =
+                  element.firstOrEmpty("w:sz").attributes["w:val"];
                 // w:sz gives the font size in half points, so halve the value to get the size in points
                 var fontSize = /^[0-9]+$/.test(fontSizeString)
                   ? parseInt(fontSizeString, 10) / 2
@@ -1049,8 +1047,8 @@
                   type: "runProperties",
                   styleId: style.styleId,
                   styleName: style.name,
-                  verticalAlignment: element.firstOrEmpty("w:vertAlign")
-                    .attributes["w:val"],
+                  verticalAlignment:
+                    element.firstOrEmpty("w:vertAlign").attributes["w:val"],
                   font: element.firstOrEmpty("w:rFonts").attributes["w:ascii"],
                   fontSize: fontSize,
                   isBold: readBooleanElement(element.first("w:b")),
@@ -1317,9 +1315,8 @@
                   }
 
                   if (relationshipId) {
-                    var href = relationships.findTargetByRelationshipId(
-                      relationshipId
-                    );
+                    var href =
+                      relationships.findTargetByRelationshipId(relationshipId);
                     if (anchor) {
                       href = uris.replaceFragment(href, anchor);
                     }
@@ -1429,9 +1426,8 @@
               return readXmlElements(element.children).map(function (children) {
                 var properties = element.firstOrEmpty("w:tcPr");
 
-                var gridSpan = properties.firstOrEmpty("w:gridSpan").attributes[
-                  "w:val"
-                ];
+                var gridSpan =
+                  properties.firstOrEmpty("w:gridSpan").attributes["w:val"];
                 var colSpan = gridSpan ? parseInt(gridSpan, 10) : 1;
 
                 var cell = documents.TableCell(children, { colSpan: colSpan });
@@ -1530,9 +1526,8 @@
               if (embedRelationshipId) {
                 return findEmbeddedImageFile(embedRelationshipId);
               } else {
-                var imagePath = relationships.findTargetByRelationshipId(
-                  linkRelationshipId
-                );
+                var imagePath =
+                  relationships.findTargetByRelationshipId(linkRelationshipId);
                 return {
                   path: imagePath,
                   read: files.read.bind(files, imagePath),
@@ -1598,9 +1593,8 @@
 
           function readNumberingProperties(styleId, element, numbering) {
             if (styleId != null) {
-              var levelByStyleId = numbering.findLevelByParagraphStyleId(
-                styleId
-              );
+              var levelByStyleId =
+                numbering.findLevelByParagraphStyleId(styleId);
               if (levelByStyleId != null) {
                 return levelByStyleId;
               }
@@ -1896,11 +1890,11 @@
           var Result = require("../results").Result;
           var zipfile = require("../zipfile");
 
-          var readXmlFromZipFile = require("./office-xml-reader")
-            .readXmlFromZipFile;
+          var readXmlFromZipFile =
+            require("./office-xml-reader").readXmlFromZipFile;
           var createBodyReader = require("./body-reader").createBodyReader;
-          var DocumentXmlReader = require("./document-xml-reader")
-            .DocumentXmlReader;
+          var DocumentXmlReader =
+            require("./document-xml-reader").DocumentXmlReader;
           var relationshipsReader = require("./relationships-reader");
           var contentTypesReader = require("./content-types-reader");
           var numberingXml = require("./numbering-xml");
@@ -2302,8 +2296,8 @@
               .forEach(function (levelElement) {
                 var levelIndex = levelElement.attributes["w:ilvl"];
                 var numFmt = levelElement.first("w:numFmt").attributes["w:val"];
-                var paragraphStyleId = levelElement.firstOrEmpty("w:pStyle")
-                  .attributes["w:val"];
+                var paragraphStyleId =
+                  levelElement.firstOrEmpty("w:pStyle").attributes["w:val"];
 
                 levels[levelIndex] = {
                   isOrdered: numFmt !== "bullet",
@@ -2312,8 +2306,8 @@
                 };
               });
 
-            var numStyleLink = element.firstOrEmpty("w:numStyleLink")
-              .attributes["w:val"];
+            var numStyleLink =
+              element.firstOrEmpty("w:numStyleLink").attributes["w:val"];
 
             return { levels: levels, numStyleLink: numStyleLink };
           }
@@ -2322,9 +2316,8 @@
             var nums = {};
             root.getElementsByTagName("w:num").forEach(function (element) {
               var numId = element.attributes["w:numId"];
-              var abstractNumId = element.first("w:abstractNumId").attributes[
-                "w:val"
-              ];
+              var abstractNumId =
+                element.first("w:abstractNumId").attributes["w:val"];
               nums[numId] = { abstractNumId: abstractNumId };
             });
             return nums;
@@ -2595,9 +2588,8 @@
               .forEach(function (styleElement) {
                 var style = readStyleElement(styleElement);
                 if (style.type === "numbering") {
-                  numberingStyles[style.styleId] = readNumberingStyleElement(
-                    styleElement
-                  );
+                  numberingStyles[style.styleId] =
+                    readNumberingStyleElement(styleElement);
                 } else {
                   var styleSet = styles[style.type];
                   if (styleSet) {
@@ -2901,10 +2893,10 @@
 
           var docxReader = require("./docx/docx-reader");
           var docxStyleMap = require("./docx/style-map");
-          var DocumentConverter = require("./document-to-html")
-            .DocumentConverter;
-          var convertElementToRawText = require("./raw-text")
-            .convertElementToRawText;
+          var DocumentConverter =
+            require("./document-to-html").DocumentConverter;
+          var convertElementToRawText =
+            require("./raw-text").convertElementToRawText;
           var readStyle = require("./style-reader").readStyle;
           var readOptions = require("./options-reader").readOptions;
           var unzip = require("./unzip");
@@ -5070,7 +5062,8 @@
             Promise.prototype.bind = function (thisArg) {
               if (!calledBind) {
                 calledBind = true;
-                Promise.prototype._propagateFrom = debug.propagateFromFunction();
+                Promise.prototype._propagateFrom =
+                  debug.propagateFromFunction();
                 Promise.prototype._boundValue = debug.boundValueFunction();
               }
               var maybePromise = tryConvertToPromise(thisArg);
@@ -5293,40 +5286,39 @@
             var errorObj = util.errorObj;
             var async = Promise._async;
 
-            Promise.prototype[
-              "break"
-            ] = Promise.prototype.cancel = function () {
-              if (!debug.cancellation())
-                return this._warn("cancellation is disabled");
+            Promise.prototype["break"] = Promise.prototype.cancel =
+              function () {
+                if (!debug.cancellation())
+                  return this._warn("cancellation is disabled");
 
-              var promise = this;
-              var child = promise;
-              while (promise._isCancellable()) {
-                if (!promise._cancelBy(child)) {
-                  if (child._isFollowing()) {
-                    child._followee().cancel();
-                  } else {
-                    child._cancelBranched();
+                var promise = this;
+                var child = promise;
+                while (promise._isCancellable()) {
+                  if (!promise._cancelBy(child)) {
+                    if (child._isFollowing()) {
+                      child._followee().cancel();
+                    } else {
+                      child._cancelBranched();
+                    }
+                    break;
                   }
-                  break;
-                }
 
-                var parent = promise._cancellationParent;
-                if (parent == null || !parent._isCancellable()) {
-                  if (promise._isFollowing()) {
-                    promise._followee().cancel();
+                  var parent = promise._cancellationParent;
+                  if (parent == null || !parent._isCancellable()) {
+                    if (promise._isFollowing()) {
+                      promise._followee().cancel();
+                    } else {
+                      promise._cancelBranched();
+                    }
+                    break;
                   } else {
-                    promise._cancelBranched();
+                    if (promise._isFollowing()) promise._followee().cancel();
+                    promise._setWillBeCancelled();
+                    child = promise;
+                    promise = parent;
                   }
-                  break;
-                } else {
-                  if (promise._isFollowing()) promise._followee().cancel();
-                  promise._setWillBeCancelled();
-                  child = promise;
-                  promise = parent;
                 }
-              }
-            };
+              };
 
             Promise.prototype._branchHasCancelled = function () {
               this._branchesRemainingToCancel--;
@@ -5486,7 +5478,8 @@
             Promise.prototype._popContext = function () {
               return null;
             };
-            Promise._peekContext = Promise.prototype._peekContext = function () {};
+            Promise._peekContext = Promise.prototype._peekContext =
+              function () {};
 
             function Context() {
               this._trace = new Context.CapturedTrace(peekContext());
@@ -5539,7 +5532,8 @@
               longStackTraces = true;
               Promise.prototype._pushContext = Context.prototype._pushContext;
               Promise.prototype._popContext = Context.prototype._popContext;
-              Promise._peekContext = Promise.prototype._peekContext = peekContext;
+              Promise._peekContext = Promise.prototype._peekContext =
+                peekContext;
               Promise.prototype._promiseCreated = function () {
                 var ctx = this._peekContext();
                 if (ctx && ctx._promiseCreated == null)
@@ -5563,7 +5557,8 @@
               var canAttachTrace = util.canAttachTrace;
               var unhandledRejectionHandled;
               var possiblyUnhandledRejection;
-              var bluebirdFramePattern = /[\\\/]bluebird[\\\/]js[\\\/](release|debug|instrumented)/;
+              var bluebirdFramePattern =
+                /[\\\/]bluebird[\\\/]js[\\\/](release|debug|instrumented)/;
               var nodeFramePattern = /\((?:timers\.js):\d+:\d+\)/;
               var parseLinePattern = /[\/<\(](.+?):(\d+):(\d+)\)?\s*$/;
               var stackFramePattern = null;
@@ -5606,14 +5601,15 @@
                 );
               };
 
-              Promise.prototype._notifyUnhandledRejectionIsHandled = function () {
-                fireRejectionEvent(
-                  "rejectionHandled",
-                  unhandledRejectionHandled,
-                  undefined,
-                  this
-                );
-              };
+              Promise.prototype._notifyUnhandledRejectionIsHandled =
+                function () {
+                  fireRejectionEvent(
+                    "rejectionHandled",
+                    unhandledRejectionHandled,
+                    undefined,
+                    this
+                  );
+                };
 
               Promise.prototype._setReturnedNonUndefined = function () {
                 this._bitField = this._bitField | 268435456;
@@ -5640,9 +5636,10 @@
                 this._bitField = this._bitField | 262144;
               };
 
-              Promise.prototype._unsetUnhandledRejectionIsNotified = function () {
-                this._bitField = this._bitField & ~262144;
-              };
+              Promise.prototype._unsetUnhandledRejectionIsNotified =
+                function () {
+                  this._bitField = this._bitField & ~262144;
+                };
 
               Promise.prototype._isUnhandledRejectionNotified = function () {
                 return (this._bitField & 262144) > 0;
@@ -5711,14 +5708,18 @@
                         "cannot enable long stack traces after promises have been created\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
                       );
                     }
-                    Promise.prototype._captureStackTrace = Promise_captureStackTrace;
-                    Promise.prototype._attachExtraTrace = Promise_attachExtraTrace;
+                    Promise.prototype._captureStackTrace =
+                      Promise_captureStackTrace;
+                    Promise.prototype._attachExtraTrace =
+                      Promise_attachExtraTrace;
                     Context.deactivateLongStackTraces();
                     async.enableTrampoline();
                     config.longStackTraces = false;
                   };
-                  Promise.prototype._captureStackTrace = longStackTracesCaptureStackTrace;
-                  Promise.prototype._attachExtraTrace = longStackTracesAttachExtraTrace;
+                  Promise.prototype._captureStackTrace =
+                    longStackTracesCaptureStackTrace;
+                  Promise.prototype._attachExtraTrace =
+                    longStackTracesAttachExtraTrace;
                   Context.activateLongStackTraces();
                   async.disableTrampolineIfNecessary();
                 }
@@ -5870,11 +5871,13 @@
                       "cannot enable cancellation after promises are in use"
                     );
                   }
-                  Promise.prototype._clearCancellationData = cancellationClearCancellationData;
+                  Promise.prototype._clearCancellationData =
+                    cancellationClearCancellationData;
                   Promise.prototype._propagateFrom = cancellationPropagateFrom;
                   Promise.prototype._onCancel = cancellationOnCancel;
                   Promise.prototype._setOnCancel = cancellationSetOnCancel;
-                  Promise.prototype._attachCancellationCallback = cancellationAttachCancellationCallback;
+                  Promise.prototype._attachCancellationCallback =
+                    cancellationAttachCancellationCallback;
                   Promise.prototype._execute = cancellationExecute;
                   propagateFromFunction = cancellationPropagateFrom;
                   config.cancellation = true;
@@ -6605,30 +6608,29 @@
               throw this.reason;
             }
 
-            Promise.prototype[
-              "return"
-            ] = Promise.prototype.thenReturn = function (value) {
-              if (value instanceof Promise) value.suppressUnhandledRejections();
-              return this._then(
-                returner,
-                undefined,
-                undefined,
-                { value: value },
-                undefined
-              );
-            };
+            Promise.prototype["return"] = Promise.prototype.thenReturn =
+              function (value) {
+                if (value instanceof Promise)
+                  value.suppressUnhandledRejections();
+                return this._then(
+                  returner,
+                  undefined,
+                  undefined,
+                  { value: value },
+                  undefined
+                );
+              };
 
-            Promise.prototype[
-              "throw"
-            ] = Promise.prototype.thenThrow = function (reason) {
-              return this._then(
-                thrower,
-                undefined,
-                undefined,
-                { reason: reason },
-                undefined
-              );
-            };
+            Promise.prototype["throw"] = Promise.prototype.thenThrow =
+              function (reason) {
+                return this._then(
+                  thrower,
+                  undefined,
+                  undefined,
+                  { reason: reason },
+                  undefined
+                );
+              };
 
             Promise.prototype.catchThrow = function (reason) {
               if (arguments.length <= 1) {
@@ -6971,9 +6973,10 @@
               this.finallyHandler = finallyHandler;
             }
 
-            FinallyHandlerCancelReaction.prototype._resultCancelled = function () {
-              checkCancel(this.finallyHandler);
-            };
+            FinallyHandlerCancelReaction.prototype._resultCancelled =
+              function () {
+                checkCancel(this.finallyHandler);
+              };
 
             function checkCancel(ctx, reason) {
               if (ctx.cancelPromise != null) {
@@ -7951,19 +7954,17 @@
               }
             }
 
-            Promise.prototype.asCallback = Promise.prototype.nodeify = function (
-              nodeback,
-              options
-            ) {
-              if (typeof nodeback == "function") {
-                var adapter = successAdapter;
-                if (options !== undefined && Object(options).spread) {
-                  adapter = spreadAdapter;
+            Promise.prototype.asCallback = Promise.prototype.nodeify =
+              function (nodeback, options) {
+                if (typeof nodeback == "function") {
+                  var adapter = successAdapter;
+                  if (options !== undefined && Object(options).spread) {
+                    adapter = spreadAdapter;
+                  }
+                  this._then(adapter, errorAdapter, undefined, this, nodeback);
                 }
-                this._then(adapter, errorAdapter, undefined, this, nodeback);
-              }
-              return this;
-            };
+                return this;
+              };
           };
         },
         { "./util": 75 },
@@ -8674,28 +8675,27 @@
                 }
               };
 
-              Promise.prototype._settlePromiseLateCancellationObserver = function (
-                ctx
-              ) {
-                var handler = ctx.handler;
-                var promise = ctx.promise;
-                var receiver = ctx.receiver;
-                var value = ctx.value;
-                if (typeof handler === "function") {
-                  if (!(promise instanceof Promise)) {
-                    handler.call(receiver, value, promise);
-                  } else {
-                    this._settlePromiseFromHandler(
-                      handler,
-                      receiver,
-                      value,
-                      promise
-                    );
+              Promise.prototype._settlePromiseLateCancellationObserver =
+                function (ctx) {
+                  var handler = ctx.handler;
+                  var promise = ctx.promise;
+                  var receiver = ctx.receiver;
+                  var value = ctx.value;
+                  if (typeof handler === "function") {
+                    if (!(promise instanceof Promise)) {
+                      handler.call(receiver, value, promise);
+                    } else {
+                      this._settlePromiseFromHandler(
+                        handler,
+                        receiver,
+                        value,
+                        promise
+                      );
+                    }
+                  } else if (promise instanceof Promise) {
+                    promise._reject(value);
                   }
-                } else if (promise instanceof Promise) {
-                  promise._reject(value);
-                }
-              };
+                };
 
               Promise.prototype._settlePromiseCtx = function (ctx) {
                 this._settlePromise(
@@ -8720,9 +8720,11 @@
 
               Promise.prototype._clearCallbackDataAtIndex = function (index) {
                 var base = index * 4 - 4;
-                this[base + 2] = this[base + 3] = this[base + 0] = this[
-                  base + 1
-                ] = undefined;
+                this[base + 2] =
+                  this[base + 3] =
+                  this[base + 0] =
+                  this[base + 1] =
+                    undefined;
               };
 
               Promise.prototype._fulfill = function (value) {
@@ -9356,7 +9358,8 @@
                       generateCallForArgumentCount(argumentOrder[i]);
                   }
 
-                  ret += "                                                             \n\
+                  ret +=
+                    "                                                             \n\
         default:                                                             \n\
             var args = new Array(len + 1);                                   \n\
             var i = 0;                                                       \n\
@@ -9367,11 +9370,11 @@
             [CodeForCall]                                                    \n\
             break;                                                           \n\
         ".replace(
-                    "[CodeForCall]",
-                    shouldProxyThis
-                      ? "ret = callback.apply(this, args);\n"
-                      : "ret = callback.apply(receiver, args);\n"
-                  );
+                      "[CodeForCall]",
+                      shouldProxyThis
+                        ? "ret = callback.apply(this, args);\n"
+                        : "ret = callback.apply(receiver, args);\n"
+                    );
                   return ret;
                 }
 
@@ -10434,30 +10437,37 @@
               return this._settledValue();
             });
 
-            var reason = (PromiseInspection.prototype.error = PromiseInspection.prototype.reason = function () {
-              if (!this.isRejected()) {
-                throw new TypeError(
-                  "cannot get rejection reason of a non-rejected promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
-                );
-              }
-              return this._settledValue();
-            });
+            var reason =
+              (PromiseInspection.prototype.error =
+              PromiseInspection.prototype.reason =
+                function () {
+                  if (!this.isRejected()) {
+                    throw new TypeError(
+                      "cannot get rejection reason of a non-rejected promise\u000a\u000a    See http://goo.gl/MqrFmX\u000a"
+                    );
+                  }
+                  return this._settledValue();
+                });
 
-            var isFulfilled = (PromiseInspection.prototype.isFulfilled = function () {
-              return (this._bitField & 33554432) !== 0;
-            });
+            var isFulfilled = (PromiseInspection.prototype.isFulfilled =
+              function () {
+                return (this._bitField & 33554432) !== 0;
+              });
 
-            var isRejected = (PromiseInspection.prototype.isRejected = function () {
-              return (this._bitField & 16777216) !== 0;
-            });
+            var isRejected = (PromiseInspection.prototype.isRejected =
+              function () {
+                return (this._bitField & 16777216) !== 0;
+              });
 
-            var isPending = (PromiseInspection.prototype.isPending = function () {
-              return (this._bitField & 50397184) === 0;
-            });
+            var isPending = (PromiseInspection.prototype.isPending =
+              function () {
+                return (this._bitField & 50397184) === 0;
+              });
 
-            var isResolved = (PromiseInspection.prototype.isResolved = function () {
-              return (this._bitField & 50331648) !== 0;
-            });
+            var isResolved = (PromiseInspection.prototype.isResolved =
+              function () {
+                return (this._bitField & 50331648) !== 0;
+              });
 
             PromiseInspection.prototype.isCancelled = function () {
               return (this._bitField & 8454144) !== 0;
@@ -23387,7 +23397,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           return this._listeners[t].push(e), this;
                         },
                         cleanUp: function () {
-                          (this.streamInfo = this.generatedError = this.extraStreamInfo = null),
+                          (this.streamInfo =
+                            this.generatedError =
+                            this.extraStreamInfo =
+                              null),
                             (this._listeners = []);
                         },
                         emit: function (t, e) {
@@ -24215,12 +24228,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         },
                         readBlockEndOfCentral: function () {
                           (this.diskNumber = this.reader.readInt(2)),
-                            (this.diskWithCentralDirStart = this.reader.readInt(
-                              2
-                            )),
-                            (this.centralDirRecordsOnThisDisk = this.reader.readInt(
-                              2
-                            )),
+                            (this.diskWithCentralDirStart =
+                              this.reader.readInt(2)),
+                            (this.centralDirRecordsOnThisDisk =
+                              this.reader.readInt(2)),
                             (this.centralDirRecords = this.reader.readInt(2)),
                             (this.centralDirSize = this.reader.readInt(4)),
                             (this.centralDirOffset = this.reader.readInt(4)),
@@ -24234,12 +24245,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                           (this.zip64EndOfCentralSize = this.reader.readInt(8)),
                             this.reader.skip(4),
                             (this.diskNumber = this.reader.readInt(4)),
-                            (this.diskWithCentralDirStart = this.reader.readInt(
-                              4
-                            )),
-                            (this.centralDirRecordsOnThisDisk = this.reader.readInt(
-                              8
-                            )),
+                            (this.diskWithCentralDirStart =
+                              this.reader.readInt(4)),
+                            (this.centralDirRecordsOnThisDisk =
+                              this.reader.readInt(8)),
                             (this.centralDirRecords = this.reader.readInt(8)),
                             (this.centralDirSize = this.reader.readInt(8)),
                             (this.centralDirOffset = this.reader.readInt(8)),
@@ -24260,12 +24269,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         },
                         readBlockZip64EndOfCentralLocator: function () {
                           if (
-                            ((this.diskWithZip64CentralDirStart = this.reader.readInt(
-                              4
-                            )),
-                            (this.relativeOffsetEndOfZip64CentralDir = this.reader.readInt(
-                              8
-                            )),
+                            ((this.diskWithZip64CentralDirStart =
+                              this.reader.readInt(4)),
+                            (this.relativeOffsetEndOfZip64CentralDir =
+                              this.reader.readInt(8)),
                             (this.disksCount = this.reader.readInt(4)),
                             1 < this.disksCount)
                           )
@@ -24354,9 +24361,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 this.relativeOffsetEndOfZip64CentralDir,
                                 s.ZIP64_CENTRAL_DIRECTORY_END
                               ) &&
-                                ((this.relativeOffsetEndOfZip64CentralDir = this.reader.lastIndexOfSignature(
-                                  s.ZIP64_CENTRAL_DIRECTORY_END
-                                )),
+                                ((this.relativeOffsetEndOfZip64CentralDir =
+                                  this.reader.lastIndexOfSignature(
+                                    s.ZIP64_CENTRAL_DIRECTORY_END
+                                  )),
                                 this.relativeOffsetEndOfZip64CentralDir < 0))
                             )
                               throw new Error(
@@ -24550,17 +24558,15 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             if (null !== e) this.fileNameStr = e;
                             else {
                               var r = s.transformTo(t, this.fileName);
-                              this.fileNameStr = this.loadOptions.decodeFileName(
-                                r
-                              );
+                              this.fileNameStr =
+                                this.loadOptions.decodeFileName(r);
                             }
                             var i = this.findExtraFieldUnicodeComment();
                             if (null !== i) this.fileCommentStr = i;
                             else {
                               var n = s.transformTo(t, this.fileComment);
-                              this.fileCommentStr = this.loadOptions.decodeFileName(
-                                n
-                              );
+                              this.fileCommentStr =
+                                this.loadOptions.decodeFileName(n);
                             }
                           }
                         },
@@ -27022,25 +27028,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                             C = 0,
                             E = new I.Buf8(4),
                             A = [
-                              16,
-                              17,
-                              18,
-                              0,
-                              8,
-                              7,
-                              9,
-                              6,
-                              10,
-                              5,
-                              11,
-                              4,
-                              12,
-                              3,
-                              13,
-                              2,
-                              14,
-                              1,
-                              15,
+                              16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3,
+                              13, 2, 14, 1, 15,
                             ];
                           if (
                             !t ||
@@ -27229,9 +27218,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                       r.head &&
                                         k &&
                                         r.length < 65536 &&
-                                        (r.head.comment += String.fromCharCode(
-                                          k
-                                        )),
+                                        (r.head.comment +=
+                                          String.fromCharCode(k)),
                                       k && c < o;
 
                                   );
@@ -27712,9 +27700,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                     (t.total_out += d),
                                     (r.total += d),
                                     d &&
-                                      (t.adler = r.check = r.flags
-                                        ? B(r.check, n, d, a - d)
-                                        : O(r.check, n, d, a - d)),
+                                      (t.adler = r.check =
+                                        r.flags
+                                          ? B(r.check, n, d, a - d)
+                                          : O(r.check, n, d, a - d)),
                                     (d = h),
                                     (r.flags ? u : L(u)) !== r.check)
                                   ) {
@@ -27771,9 +27760,10 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                                 (r.total += d),
                                 r.wrap &&
                                   d &&
-                                  (t.adler = r.check = r.flags
-                                    ? B(r.check, n, d, t.next_out - d)
-                                    : O(r.check, n, d, t.next_out - d)),
+                                  (t.adler = r.check =
+                                    r.flags
+                                      ? B(r.check, n, d, t.next_out - d)
+                                      : O(r.check, n, d, t.next_out - d)),
                                 (t.data_type =
                                   r.bits +
                                   (r.last ? 64 : 0) +
@@ -27828,138 +27818,24 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                       "use strict";
                       var D = t("../utils/common"),
                         F = [
-                          3,
-                          4,
-                          5,
-                          6,
-                          7,
-                          8,
-                          9,
-                          10,
-                          11,
-                          13,
-                          15,
-                          17,
-                          19,
-                          23,
-                          27,
-                          31,
-                          35,
-                          43,
-                          51,
-                          59,
-                          67,
-                          83,
-                          99,
-                          115,
-                          131,
-                          163,
-                          195,
-                          227,
-                          258,
-                          0,
-                          0,
+                          3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27,
+                          31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195,
+                          227, 258, 0, 0,
                         ],
                         N = [
-                          16,
-                          16,
-                          16,
-                          16,
-                          16,
-                          16,
-                          16,
-                          16,
-                          17,
-                          17,
-                          17,
-                          17,
-                          18,
-                          18,
-                          18,
-                          18,
-                          19,
-                          19,
-                          19,
-                          19,
-                          20,
-                          20,
-                          20,
-                          20,
-                          21,
-                          21,
-                          21,
-                          21,
-                          16,
-                          72,
-                          78,
+                          16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18,
+                          18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21,
+                          21, 21, 16, 72, 78,
                         ],
                         U = [
-                          1,
-                          2,
-                          3,
-                          4,
-                          5,
-                          7,
-                          9,
-                          13,
-                          17,
-                          25,
-                          33,
-                          49,
-                          65,
-                          97,
-                          129,
-                          193,
-                          257,
-                          385,
-                          513,
-                          769,
-                          1025,
-                          1537,
-                          2049,
-                          3073,
-                          4097,
-                          6145,
-                          8193,
-                          12289,
-                          16385,
-                          24577,
-                          0,
-                          0,
+                          1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129,
+                          193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097,
+                          6145, 8193, 12289, 16385, 24577, 0, 0,
                         ],
                         P = [
-                          16,
-                          16,
-                          16,
-                          16,
-                          17,
-                          17,
-                          18,
-                          18,
-                          19,
-                          19,
-                          20,
-                          20,
-                          21,
-                          21,
-                          22,
-                          22,
-                          23,
-                          23,
-                          24,
-                          24,
-                          25,
-                          25,
-                          26,
-                          26,
-                          27,
-                          27,
-                          28,
-                          28,
-                          29,
-                          29,
-                          64,
-                          64,
+                          16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21,
+                          21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27,
+                          28, 28, 29, 29, 64, 64,
                         ];
                       e.exports = function (t, e, r, i, n, s, a, o) {
                         var h,
@@ -28113,109 +27989,20 @@ https://github.com/nodeca/pako/blob/master/LICENSE
                         v = 17,
                         y = 18,
                         w = [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          1,
-                          1,
-                          1,
-                          1,
-                          2,
-                          2,
-                          2,
-                          2,
-                          3,
-                          3,
-                          3,
-                          3,
-                          4,
-                          4,
-                          4,
-                          4,
-                          5,
-                          5,
-                          5,
-                          5,
-                          0,
+                          0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3,
+                          3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0,
                         ],
                         k = [
-                          0,
-                          0,
-                          0,
-                          0,
-                          1,
-                          1,
-                          2,
-                          2,
-                          3,
-                          3,
-                          4,
-                          4,
-                          5,
-                          5,
-                          6,
-                          6,
-                          7,
-                          7,
-                          8,
-                          8,
-                          9,
-                          9,
-                          10,
-                          10,
-                          11,
-                          11,
-                          12,
-                          12,
-                          13,
-                          13,
+                          0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7,
+                          8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13,
                         ],
                         x = [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          2,
-                          3,
+                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3,
                           7,
                         ],
                         S = [
-                          16,
-                          17,
-                          18,
-                          0,
-                          8,
-                          7,
-                          9,
-                          6,
-                          10,
-                          5,
-                          11,
-                          4,
-                          12,
-                          3,
-                          13,
-                          2,
-                          14,
-                          1,
-                          15,
+                          16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2,
+                          14, 1, 15,
                         ],
                         z = new Array(2 * (l + 2));
                       i(z);
@@ -28735,7 +28522,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
           exports.StringSource = require("./lib/StringSource");
           exports.Token = require("./lib/Token");
           exports.bottomUp = require("./lib/bottom-up");
-          exports.RegexTokeniser = require("./lib/regex-tokeniser").RegexTokeniser;
+          exports.RegexTokeniser =
+            require("./lib/regex-tokeniser").RegexTokeniser;
 
           exports.rule = function (ruleBuilder) {
             var rule;
@@ -29843,7 +29631,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
             // Split a filename into [root, dir, basename, ext], unix version
             // 'root' is just a slash, or nothing.
-            var splitPathRe = /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+            var splitPathRe =
+              /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
             var splitPath = function (filename) {
               return splitPathRe.exec(filename).slice(1);
             };
@@ -32750,12 +32539,16 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               // without a significant breaking change to either this  parser, or the
               // JavaScript language.  Implementation of an emoji-capable xml parser
               // is left as an exercise for the reader.
-              var nameStart = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+              var nameStart =
+                /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
 
-              var nameBody = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040\.\d-]/;
+              var nameBody =
+                /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040\.\d-]/;
 
-              var entityStart = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
-              var entityBody = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040\.\d-]/;
+              var entityStart =
+                /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+              var entityBody =
+                /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040\.\d-]/;
 
               quote = charClass(quote);
               attribEnd = charClass(attribEnd);
@@ -34770,7 +34563,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               var isBufferLike = createSizePropertyCheck(getByteLength);
 
               // Is a given value a typed array?
-              var typedArrayPattern = /\[object ((I|Ui)nt(8|16|32)|Float(32|64)|Uint8Clamped|Big(I|Ui)nt64)Array\]/;
+              var typedArrayPattern =
+                /\[object ((I|Ui)nt(8|16|32)|Float(32|64)|Uint8Clamped|Big(I|Ui)nt64)Array\]/;
               function isTypedArray(obj) {
                 // `ArrayBuffer.isView` is the most future-proof, so use it when available.
                 // Otherwise, fall back on the above regular expression.
@@ -36300,7 +36094,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
               }, true);
 
               // Safely create a real, live array from anything iterable.
-              var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
+              var reStrSymbol =
+                /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
               function toArray(obj) {
                 if (!obj) return [];
                 if (isArray(obj)) return slice.call(obj);

@@ -1025,8 +1025,7 @@ window.addEventListener("hax-store-ready", () => {
             properties: {
               style: "width: 75%; margin: 0px auto; display: block;",
               source: "https://www.youtube.com/watch?v=pKLPQ4ufo64",
-              src:
-                "https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&controls=1&rel=0",
+              src: "https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&controls=1&rel=0",
               iframed: true,
               sandboxed: false,
               width: "560",
@@ -1064,8 +1063,7 @@ window.addEventListener("hax-store-ready", () => {
               title: "Self-Check",
               image:
                 "https://farm1.staticflickr.com/642/21641107852_3602f9c1a8_b.jpg",
-              alt:
-                "A few stickers associated with ELMS:LN are shown presented on the back of a laptop.",
+              alt: "A few stickers associated with ELMS:LN are shown presented on the back of a laptop.",
               correct: false,
               textColor: "#000000",
               textColorClass: "black-text",

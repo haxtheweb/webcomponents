@@ -591,9 +591,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // to defer to the grid level because you could always force a node
           if (!eventPath[0].closest("[data-move-order]:not(.has-nodes")) {
             // way out of a column to the host of the template
-            this.__activeHover = eventPath[0].closest(
-              "[data-move-order]"
-            ).parentNode.parentNode.host;
+            this.__activeHover =
+              eventPath[0].closest(
+                "[data-move-order]"
+              ).parentNode.parentNode.host;
           } else {
             // to avoid a later loop, we force this to "false"
             this.__addAbove = false;
@@ -617,9 +618,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 .closest("[data-move-order]")
                 .parentNode.parentNode.host.appendChild(p);
             }
-            this.__activeHover = eventPath[0].closest(
-              "[data-move-order]"
-            ).parentNode.parentNode.host.children[0];
+            this.__activeHover =
+              eventPath[0].closest(
+                "[data-move-order]"
+              ).parentNode.parentNode.host.children[0];
           }
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
@@ -2244,9 +2246,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (changed) {
         //TODO
         let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
-        let rightremove = this.contextMenus.plate.shadowRoot.querySelector(
-          "#rightremove"
-        );
+        let rightremove =
+          this.contextMenus.plate.shadowRoot.querySelector("#rightremove");
         right.disabled = false;
         rightremove.disabled = false;
         if (node.layout == "1-1-1-1-1-1") {
@@ -2675,9 +2676,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // could be 1st time this shows up so ensure we import
           import("@lrnwebcomponents/rich-text-editor/rich-text-editor.js").then(
             () => {
-              HAXStore.activeEditingElement = document.createElement(
-                "rich-text-editor"
-              );
+              HAXStore.activeEditingElement =
+                document.createElement("rich-text-editor");
               HAXStore.activeEditingElement.type =
                 "rich-text-editor-toolbar-full";
               // test for slots to match to ensure this is maintained

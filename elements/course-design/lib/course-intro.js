@@ -14,7 +14,6 @@ class CourseIntro extends LitElement {
           display: flex;
           flex-direction: column;
         }
-
       `,
     ];
   }
@@ -31,9 +30,9 @@ class CourseIntro extends LitElement {
   }
   render() {
     return html`
-        <course-intro-header></course-intro-header>
-        <course-intro-lesson-plans></course-intro-lesson-plans>
-        <course-intro-footer></course-intro-footer>
+      <course-intro-header></course-intro-header>
+      <course-intro-lesson-plans></course-intro-lesson-plans>
+      <course-intro-footer></course-intro-footer>
     `;
   }
 }

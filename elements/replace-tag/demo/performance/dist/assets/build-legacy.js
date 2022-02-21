@@ -158,16 +158,17 @@ try {
         var t = l[e];
         return (
           void 0 === t &&
-            (t = l[e] = {
-              url: e,
-              urlBase: d(e),
-              exports: Object.create(null),
-              state: "Initialized",
-              stateData: void 0,
-              isTopLevel: !1,
-              crossorigin: n,
-              onNextStateChange: [],
-            }),
+            (t = l[e] =
+              {
+                url: e,
+                urlBase: d(e),
+                exports: Object.create(null),
+                state: "Initialized",
+                stateData: void 0,
+                isTopLevel: !1,
+                crossorigin: n,
+                onNextStateChange: [],
+              }),
           t
         );
       }

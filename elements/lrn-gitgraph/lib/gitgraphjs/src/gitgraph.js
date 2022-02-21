@@ -417,9 +417,8 @@
       self.tooltip.style.left = event.clientX + "px"; // TODO Scroll bug
       self.tooltip.style.top = event.clientY + "px"; // TODO Scroll bug
       if (self.template.commit.tooltipHTMLFormatter !== null) {
-        self.tooltip.innerHTML = self.template.commit.tooltipHTMLFormatter(
-          commit
-        );
+        self.tooltip.innerHTML =
+          self.template.commit.tooltipHTMLFormatter(commit);
       } else {
         self.tooltip.textContent = commit.sha1 + " - " + commit.message;
       }

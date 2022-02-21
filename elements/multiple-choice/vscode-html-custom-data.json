@@ -12,12 +12,44 @@
       ]
     },
     {
+      "name": "multiple-choice-response",
+      "description": "`multiple-choice-response`\n`Ask the user a question from a set of possible answers.`\n\nAttributes:\n\n  * `disabled` {`boolean`} - whether the response is correct\n\n  * `text` {`string`} - text of response\n\n  * `answer-id` {`string`} - unique identifier for response\n\n  * `__fieldLabel` {`string`} - \n\n  * `correct` {`boolean`} - whether the response is correct\n\nProperties:\n\n  * `disabled` {`boolean`} - whether the response is correct\n\n  * `text` {`string`} - text of response\n\n  * `answerId` {`string`} - unique identifier for response\n\n  * `__fieldLabel` {`string`} - \n\n  * `correct` {`boolean`} - whether the response is correct\n\n  * `type` {`string`} - ",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether the response is correct\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - text of response\n\nProperty: text"
+        },
+        {
+          "name": "answer-id",
+          "description": "`answer-id` {`string`} - unique identifier for response\n\nProperty: answerId"
+        },
+        {
+          "name": "__fieldLabel",
+          "description": "`__fieldLabel` {`string`} - \n\nProperty: __fieldLabel"
+        },
+        {
+          "name": "correct",
+          "description": "`correct` {`boolean`} - whether the response is correct\n\nProperty: correct\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `edit-mode` {`boolean`} - flag to hide buttons\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `inputType` {`string`} - \n\n  * `isCorrect` {`boolean`} - if the current answers are correct\n\n  * `correctAnswers` {`string`} - gets a JSON object of alphabetized correct answers\n\n  * `__ctr` {`number`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `editMode` {`boolean`} - flag to hide buttons\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "userGuess",
+          "description": "`userGuess` {`any[]`} - \n\nProperty: userGuess"
         },
         {
           "name": "randomize",
@@ -41,7 +73,7 @@
         },
         {
           "name": "check-label",
-          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check answer"
+          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check Answer"
         },
         {
           "name": "reset-label",
@@ -58,6 +90,11 @@
         {
           "name": "displayedAnswers",
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - flag to hide buttons\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "correct-text",
@@ -104,11 +141,15 @@
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `edit-mode` {`boolean`} - flag to hide buttons\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `inputType` {`string`} - \n\n  * `isCorrect` {`boolean`} - if the current answers are correct\n\n  * `correctAnswers` {`string`} - gets a JSON object of alphabetized correct answers\n\n  * `__ctr` {`number`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `editMode` {`boolean`} - flag to hide buttons\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "userGuess",
+          "description": "`userGuess` {`any[]`} - \n\nProperty: userGuess"
         },
         {
           "name": "randomize",
@@ -132,7 +173,7 @@
         },
         {
           "name": "check-label",
-          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check answer"
+          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check Answer"
         },
         {
           "name": "reset-label",
@@ -149,6 +190,11 @@
         {
           "name": "displayedAnswers",
           "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - flag to hide buttons\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "correct-text",

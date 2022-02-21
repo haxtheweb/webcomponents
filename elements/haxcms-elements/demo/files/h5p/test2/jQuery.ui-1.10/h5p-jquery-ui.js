@@ -774,9 +774,8 @@ jQuery = H5P.jQuery;
           ) {
             return;
           }
-          return (typeof handler === "string"
-            ? instance[handler]
-            : handler
+          return (
+            typeof handler === "string" ? instance[handler] : handler
           ).apply(instance, arguments);
         }
 
@@ -806,9 +805,8 @@ jQuery = H5P.jQuery;
 
     _delay: function (handler, delay) {
       function handlerProxy() {
-        return (typeof handler === "string"
-          ? instance[handler]
-          : handler
+        return (
+          typeof handler === "string" ? instance[handler] : handler
         ).apply(instance, arguments);
       }
       var instance = this;
@@ -846,9 +844,8 @@ jQuery = H5P.jQuery;
 
       data = data || {};
       event = $.Event(event);
-      event.type = (type === this.widgetEventPrefix
-        ? type
-        : this.widgetEventPrefix + type
+      event.type = (
+        type === this.widgetEventPrefix ? type : this.widgetEventPrefix + type
       ).toLowerCase();
       // the original event may come from any element
       // so we need to reset the target on the new event
@@ -4955,12 +4952,10 @@ jQuery = H5P.jQuery;
           p = this.containers[i].element.offset();
           this.containers[i].containerCache.left = p.left;
           this.containers[i].containerCache.top = p.top;
-          this.containers[i].containerCache.width = this.containers[
-            i
-          ].element.outerWidth();
-          this.containers[i].containerCache.height = this.containers[
-            i
-          ].element.outerHeight();
+          this.containers[i].containerCache.width =
+            this.containers[i].element.outerWidth();
+          this.containers[i].containerCache.height =
+            this.containers[i].element.outerHeight();
         }
       }
 
@@ -7038,10 +7033,18 @@ jQuery = H5P.jQuery;
     hideProps = {},
     showProps = {};
 
-  hideProps.height = hideProps.paddingTop = hideProps.paddingBottom = hideProps.borderTopWidth = hideProps.borderBottomWidth =
-    "hide";
-  showProps.height = showProps.paddingTop = showProps.paddingBottom = showProps.borderTopWidth = showProps.borderBottomWidth =
-    "show";
+  hideProps.height =
+    hideProps.paddingTop =
+    hideProps.paddingBottom =
+    hideProps.borderTopWidth =
+    hideProps.borderBottomWidth =
+      "hide";
+  showProps.height =
+    showProps.paddingTop =
+    showProps.paddingBottom =
+    showProps.borderTopWidth =
+    showProps.borderBottomWidth =
+      "show";
 
   $.widget("ui.accordion", {
     version: "1.10.2",
@@ -10615,8 +10618,14 @@ jQuery = H5P.jQuery;
         );
 
       inst.selectedDay = inst.currentDay = newDate.getDate();
-      inst.drawMonth = inst.selectedMonth = inst.currentMonth = newDate.getMonth();
-      inst.drawYear = inst.selectedYear = inst.currentYear = newDate.getFullYear();
+      inst.drawMonth =
+        inst.selectedMonth =
+        inst.currentMonth =
+          newDate.getMonth();
+      inst.drawYear =
+        inst.selectedYear =
+        inst.currentYear =
+          newDate.getFullYear();
       if (
         (origMonth !== inst.selectedMonth || origYear !== inst.selectedYear) &&
         !noChange
@@ -13899,9 +13908,10 @@ jQuery = H5P.jQuery;
       var next;
       if (this.active) {
         if (direction === "first" || direction === "last") {
-          next = this.active[direction === "first" ? "prevAll" : "nextAll"](
-            ".ui-menu-item"
-          ).eq(-1);
+          next =
+            this.active[direction === "first" ? "prevAll" : "nextAll"](
+              ".ui-menu-item"
+            ).eq(-1);
         } else {
           next = this.active[direction + "All"](".ui-menu-item").eq(0);
         }

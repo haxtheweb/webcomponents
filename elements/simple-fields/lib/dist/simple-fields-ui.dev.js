@@ -3,7 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleFieldsFieldsetStyles = exports.SimpleFieldsDescriptionStyles = exports.SimpleFieldsButtonStyles = exports.SimpleFieldsTooltipStyles = exports.SimpleFieldsLabelStyles = exports.SimpleFieldsBaseStyles = void 0;
+exports.SimpleFieldsFieldsetStyles =
+  exports.SimpleFieldsDescriptionStyles =
+  exports.SimpleFieldsButtonStyles =
+  exports.SimpleFieldsTooltipStyles =
+  exports.SimpleFieldsLabelStyles =
+  exports.SimpleFieldsBaseStyles =
+    void 0;
 
 var _litElement = require("lit");
 

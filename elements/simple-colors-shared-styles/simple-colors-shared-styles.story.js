@@ -27,9 +27,8 @@ stories.add("simple-colors-shared-styles", () => {
         case "Object":
         case "Array":
         case "Date":
-          method = SimpleColorsSharedStyles.properties[
-            key
-          ].type.name.toLowerCase();
+          method =
+            SimpleColorsSharedStyles.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";

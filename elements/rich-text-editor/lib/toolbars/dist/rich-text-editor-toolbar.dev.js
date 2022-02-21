@@ -1246,11 +1246,10 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               this
             ).call(this);
 
-            window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
-              function (toolbar) {
+            window.RichTextEditorToolbars =
+              window.RichTextEditorToolbars.filter(function (toolbar) {
                 return toolbar !== _this2;
-              }
-            );
+              });
           },
         },
         {

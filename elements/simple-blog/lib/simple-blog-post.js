@@ -256,9 +256,8 @@ class SimpleBlogPost extends SimpleColors {
           rect.height + "px";
       }, 0);
     } else {
-      this.shadowRoot.querySelector(
-        "#contentcontainer"
-      ).style.paddingTop = null;
+      this.shadowRoot.querySelector("#contentcontainer").style.paddingTop =
+        null;
     }
   }
 

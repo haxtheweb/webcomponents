@@ -27,9 +27,8 @@ stories.add("mutation-observer-import-mixin", () => {
         case "Object":
         case "Array":
         case "Date":
-          method = MutationObserverImportMixin.properties[
-            key
-          ].type.name.toLowerCase();
+          method =
+            MutationObserverImportMixin.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";

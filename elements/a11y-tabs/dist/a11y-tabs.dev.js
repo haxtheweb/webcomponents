@@ -515,8 +515,7 @@ var A11yTabs =
                   {
                     property: "sticky",
                     title: "Sticky.",
-                    desc:
-                      "Horizontal tabs stick to the top of the window when scrolling.",
+                    desc: "Horizontal tabs stick to the top of the window when scrolling.",
                     inputMethod: "boolean",
                   },
                   {

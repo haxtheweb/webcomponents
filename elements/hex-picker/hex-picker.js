@@ -217,14 +217,12 @@ class HexPicker extends LitElement {
     if (!hexInput.startsWith("#")) {
       hexInput = "#" + hexInput;
     }
-    this.shadowRoot.querySelector(
-      ".color-square"
-    ).style.backgroundColor = hexInput;
+    this.shadowRoot.querySelector(".color-square").style.backgroundColor =
+      hexInput;
     this.value = hexInput;
     if (this.largeDisplay) {
-      this.shadowRoot.querySelector(
-        ".large-display"
-      ).style.backgroundColor = hexInput;
+      this.shadowRoot.querySelector(".large-display").style.backgroundColor =
+        hexInput;
     }
     this._dispatchChange(hexInput);
     let rgb = this._hexToRgb(hexInput);
@@ -305,9 +303,8 @@ class HexPicker extends LitElement {
     colorSquare.style.backgroundColor = computedHex;
     inputLabel.value = computedHex;
     if (this.largeDisplay) {
-      this.shadowRoot.querySelector(
-        ".large-display"
-      ).style.backgroundColor = computedHex;
+      this.shadowRoot.querySelector(".large-display").style.backgroundColor =
+        computedHex;
     }
     this._dispatchChange(computedHex);
   }
@@ -347,9 +344,8 @@ class HexPicker extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "value" && this[propName]) {
-        this.shadowRoot.querySelector(
-          ".color-square"
-        ).style.backgroundColor = this.value;
+        this.shadowRoot.querySelector(".color-square").style.backgroundColor =
+          this.value;
         this.shadowRoot.querySelector("input").value = this.value;
         if (this.largeDisplay) {
           this.shadowRoot.querySelector(

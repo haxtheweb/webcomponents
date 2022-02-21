@@ -59,11 +59,6 @@
           "default": "\"\""
         },
         {
-          "name": "path-auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "title",
           "type": "string",
           "default": "\"newPage\""
@@ -71,7 +66,7 @@
         {
           "name": "slug",
           "type": "string",
-          "default": "\"#\""
+          "default": "\"\""
         },
         {
           "name": "published",
@@ -109,7 +104,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
         },
         {
           "name": "schemaMap",
@@ -131,12 +126,6 @@
           "default": "\"\""
         },
         {
-          "name": "pathAuto",
-          "attribute": "path-auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "title",
           "attribute": "title",
           "type": "string",
@@ -146,7 +135,7 @@
           "name": "slug",
           "attribute": "slug",
           "type": "string",
-          "default": "\"#\""
+          "default": "\"\""
         },
         {
           "name": "published",
@@ -226,7 +215,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
         },
         {
           "name": "schemaResourceID",
@@ -272,11 +261,6 @@
           "default": "\"\""
         },
         {
-          "name": "path-auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "title",
           "type": "string",
           "default": "\"newPage\""
@@ -284,7 +268,7 @@
         {
           "name": "slug",
           "type": "string",
-          "default": "\"#\""
+          "default": "\"\""
         },
         {
           "name": "published",
@@ -322,7 +306,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
         },
         {
           "name": "schemaMap",
@@ -344,12 +328,6 @@
           "default": "\"\""
         },
         {
-          "name": "pathAuto",
-          "attribute": "path-auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "title",
           "attribute": "title",
           "type": "string",
@@ -359,7 +337,7 @@
           "name": "slug",
           "attribute": "slug",
           "type": "string",
-          "default": "\"#\""
+          "default": "\"\""
         },
         {
           "name": "published",
@@ -439,7 +417,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\"}"
+          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
         },
         {
           "name": "schemaResourceID",

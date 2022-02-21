@@ -510,9 +510,8 @@ export class PageBreak extends IntersectionObserverMixin(
    */
   haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
-      const itemManifest = window.HAXCMS.requestAvailability().store.getManifestItems(
-        true
-      );
+      const itemManifest =
+        window.HAXCMS.requestAvailability().store.getManifestItems(true);
       // default to null parent as the whole site
       var items = [
         {

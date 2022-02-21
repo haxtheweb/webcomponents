@@ -543,7 +543,8 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
         _this.__focused = false;
         _this.__hovered = false;
         _this.editing = false;
-        _this.__selection = window.RichTextEditorSelection.requestAvailability();
+        _this.__selection =
+          window.RichTextEditorSelection.requestAvailability();
 
         var root = _assertThisInitialized(_this);
 

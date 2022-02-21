@@ -694,9 +694,9 @@ class LrnappStudioKanban extends PolymerElement {
     // break the id out into project and assignment
     var parts = this.activeAssignment.split("-");
     // focus in on the submissions / assignment meta
-    var submission = this.projectResponse.data.projects["project-" + parts[1]]
-      .relationships.assignments["assignment-" + parts[2]].meta
-      .relatedSubmissions.complete;
+    var submission =
+      this.projectResponse.data.projects["project-" + parts[1]].relationships
+        .assignments["assignment-" + parts[2]].meta.relatedSubmissions.complete;
     // ensure this isn't disabled though it shouldn't be possible
     if (!this.shadowRoot.querySelector("#activetoggle").disabled) {
       // hide the loading screen
@@ -730,9 +730,10 @@ class LrnappStudioKanban extends PolymerElement {
     }
     this.activeAssignment = local.id;
     var parts = this.activeAssignment.split("-");
-    this.activeAssignmentNode = this.projectResponse.data.projects[
-      "project-" + parts[1]
-    ].relationships.assignments["assignment-" + parts[2]];
+    this.activeAssignmentNode =
+      this.projectResponse.data.projects[
+        "project-" + parts[1]
+      ].relationships.assignments["assignment-" + parts[2]];
     this._setToggle(false);
     local.nextElementSibling.classList.add("show");
     local.classList.add("active");
@@ -750,9 +751,10 @@ class LrnappStudioKanban extends PolymerElement {
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
         this.set("activeAssignmentNode", {});
-        this.activeAssignmentNode = this.projectResponse.data.projects[
-          "project-" + parts[1]
-        ].relationships.assignments["assignment-" + parts[2]];
+        this.activeAssignmentNode =
+          this.projectResponse.data.projects[
+            "project-" + parts[1]
+          ].relationships.assignments["assignment-" + parts[2]];
         window.dispatchEvent(new Event("resize"));
       }, 100);
     }
@@ -784,9 +786,10 @@ class LrnappStudioKanban extends PolymerElement {
         var parts = this.activeAssignment.split("-");
         window.dispatchEvent(new Event("resize"));
         this.set("activeAssignmentNode", {});
-        this.activeAssignmentNode = this.projectResponse.data.projects[
-          "project-" + parts[1]
-        ].relationships.assignments["assignment-" + parts[2]];
+        this.activeAssignmentNode =
+          this.projectResponse.data.projects[
+            "project-" + parts[1]
+          ].relationships.assignments["assignment-" + parts[2]];
       }, 500);
     } else {
       // this would imply an error
@@ -801,9 +804,10 @@ class LrnappStudioKanban extends PolymerElement {
     if (this.activeAssignment != null) {
       var parts = this.activeAssignment.split("-");
       // focus in on the submissions / assignment meta
-      var submission = this.projectResponse.data.projects["project-" + parts[1]]
-        .relationships.assignments["assignment-" + parts[2]].meta
-        .relatedSubmissions.complete;
+      var submission =
+        this.projectResponse.data.projects["project-" + parts[1]].relationships
+          .assignments["assignment-" + parts[2]].meta.relatedSubmissions
+          .complete;
       // not finished but also not started
       if (submission.status == 0 && submission.submission.length == 0) {
         if (!update) {

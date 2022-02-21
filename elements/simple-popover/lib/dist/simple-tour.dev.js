@@ -449,9 +449,10 @@ var SimpleTour =
 
                 var target = _this3.stacks[_this3.active][_this3.stop].target;
 
-                var part = _this3.stacks[_this3.active][
-                  _this3.stop
-                ].target.getAttribute("part");
+                var part =
+                  _this3.stacks[_this3.active][_this3.stop].target.getAttribute(
+                    "part"
+                  );
 
                 target.setAttribute("part", "simple-tour-active");
                 setTimeout(function () {

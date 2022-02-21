@@ -298,9 +298,8 @@ var SimpleIconBehaviors = function SimpleIconBehaviors(SuperClass) {
             }
 
             var randomId = "f-" + Math.random().toString().slice(2, 10);
-            this.shadowRoot.querySelector(
-              "image"
-            ).style.filter = "url(#".concat(randomId, ")");
+            this.shadowRoot.querySelector("image").style.filter =
+              "url(#".concat(randomId, ")");
             this.shadowRoot
               .querySelector("filter")
               .setAttribute("id", randomId);

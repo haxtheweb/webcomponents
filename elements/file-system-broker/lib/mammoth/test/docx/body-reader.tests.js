@@ -20,14 +20,14 @@ var isTable = documentMatchers.isTable;
 var isRow = documentMatchers.isRow;
 
 var createBodyReader = require("../../lib/docx/body-reader").createBodyReader;
-var _readNumberingProperties = require("../../lib/docx/body-reader")
-  ._readNumberingProperties;
+var _readNumberingProperties =
+  require("../../lib/docx/body-reader")._readNumberingProperties;
 var documents = require("../../lib/documents");
 var xml = require("../../lib/xml");
 var XmlElement = xml.Element;
 var defaultNumbering = require("../../lib/docx/numbering-xml").defaultNumbering;
-var Relationships = require("../../lib/docx/relationships-reader")
-  .Relationships;
+var Relationships =
+  require("../../lib/docx/relationships-reader").Relationships;
 var Styles = require("../../lib/docx/styles-reader").Styles;
 var warning = require("../../lib/results").warning;
 
@@ -130,17 +130,19 @@ test("paragraph indent", {
     assert.equal(paragraph.indent.end, "720");
   },
 
-  "paragraph has indent firstLine read from paragraph properties if present": function () {
-    var paragraphXml = paragraphWithIndent({ "w:firstLine": "720" });
-    var paragraph = readXmlElementValue(paragraphXml);
-    assert.equal(paragraph.indent.firstLine, "720");
-  },
+  "paragraph has indent firstLine read from paragraph properties if present":
+    function () {
+      var paragraphXml = paragraphWithIndent({ "w:firstLine": "720" });
+      var paragraph = readXmlElementValue(paragraphXml);
+      assert.equal(paragraph.indent.firstLine, "720");
+    },
 
-  "paragraph has indent hanging read from paragraph properties if present": function () {
-    var paragraphXml = paragraphWithIndent({ "w:hanging": "720" });
-    var paragraph = readXmlElementValue(paragraphXml);
-    assert.equal(paragraph.indent.hanging, "720");
-  },
+  "paragraph has indent hanging read from paragraph properties if present":
+    function () {
+      var paragraphXml = paragraphWithIndent({ "w:hanging": "720" });
+      var paragraph = readXmlElementValue(paragraphXml);
+      assert.equal(paragraph.indent.hanging, "720");
+    },
 
   "when indent attributes aren't set then indents are null": function () {
     var paragraphXml = paragraphWithIndent({});
@@ -281,81 +283,84 @@ test(
         assert.deepEqual(instrText, []);
       },
 
-      "runs in a complex field for hyperlink without switch are read as external hyperlinks": function () {
-        var hyperlinkRunXml = runOfText("this is a hyperlink");
-        var paragraphXml = new XmlElement("w:p", {}, [
-          beginXml,
-          hyperlinkInstrText,
-          separateXml,
-          hyperlinkRunXml,
-          endXml,
-        ]);
-        var paragraph = readXmlElementValue(paragraphXml);
+      "runs in a complex field for hyperlink without switch are read as external hyperlinks":
+        function () {
+          var hyperlinkRunXml = runOfText("this is a hyperlink");
+          var paragraphXml = new XmlElement("w:p", {}, [
+            beginXml,
+            hyperlinkInstrText,
+            separateXml,
+            hyperlinkRunXml,
+            endXml,
+          ]);
+          var paragraph = readXmlElementValue(paragraphXml);
 
-        assertThat(
-          paragraph.children,
-          contains(
-            isEmptyRun,
-            isEmptyHyperlinkedRun,
-            isHyperlinkedRun({
-              href: uri,
-              children: contains(isText("this is a hyperlink")),
-            }),
-            isEmptyRun
-          )
-        );
-      },
+          assertThat(
+            paragraph.children,
+            contains(
+              isEmptyRun,
+              isEmptyHyperlinkedRun,
+              isHyperlinkedRun({
+                href: uri,
+                children: contains(isText("this is a hyperlink")),
+              }),
+              isEmptyRun
+            )
+          );
+        },
 
-      "runs in a complex field for hyperlink with l switch are read as internal hyperlinks": function () {
-        var hyperlinkRunXml = runOfText("this is a hyperlink");
-        var paragraphXml = new XmlElement("w:p", {}, [
-          beginXml,
-          new XmlElement("w:instrText", {}, [
-            xml.text(' HYPERLINK \\l "InternalLink"'),
-          ]),
-          separateXml,
-          hyperlinkRunXml,
-          endXml,
-        ]);
-        var paragraph = readXmlElementValue(paragraphXml);
+      "runs in a complex field for hyperlink with l switch are read as internal hyperlinks":
+        function () {
+          var hyperlinkRunXml = runOfText("this is a hyperlink");
+          var paragraphXml = new XmlElement("w:p", {}, [
+            beginXml,
+            new XmlElement("w:instrText", {}, [
+              xml.text(' HYPERLINK \\l "InternalLink"'),
+            ]),
+            separateXml,
+            hyperlinkRunXml,
+            endXml,
+          ]);
+          var paragraph = readXmlElementValue(paragraphXml);
 
-        assertThat(
-          paragraph.children,
-          contains(
-            isEmptyRun,
-            isEmptyHyperlinkedRun,
-            isHyperlinkedRun({
-              anchor: "InternalLink",
-              children: contains(isText("this is a hyperlink")),
-            }),
-            isEmptyRun
-          )
-        );
-      },
+          assertThat(
+            paragraph.children,
+            contains(
+              isEmptyRun,
+              isEmptyHyperlinkedRun,
+              isHyperlinkedRun({
+                anchor: "InternalLink",
+                children: contains(isText("this is a hyperlink")),
+              }),
+              isEmptyRun
+            )
+          );
+        },
 
-      "runs after a complex field for hyperlinks are not read as hyperlinks": function () {
-        var afterEndXml = runOfText("this will not be a hyperlink");
-        var paragraphXml = new XmlElement("w:p", {}, [
-          beginXml,
-          hyperlinkInstrText,
-          separateXml,
-          endXml,
-          afterEndXml,
-        ]);
-        var paragraph = readXmlElementValue(paragraphXml);
+      "runs after a complex field for hyperlinks are not read as hyperlinks":
+        function () {
+          var afterEndXml = runOfText("this will not be a hyperlink");
+          var paragraphXml = new XmlElement("w:p", {}, [
+            beginXml,
+            hyperlinkInstrText,
+            separateXml,
+            endXml,
+            afterEndXml,
+          ]);
+          var paragraph = readXmlElementValue(paragraphXml);
 
-        assertThat(
-          paragraph.children,
-          contains(
-            isEmptyRun,
-            isEmptyHyperlinkedRun,
-            isEmptyRun,
-            isRun({
-              children: contains(isText("this will not be a hyperlink")),
-            })
-          )
-        );
-      },
+          assertThat(
+            paragraph.children,
+            contains(
+              isEmptyRun,
+              isEmptyHyperlinkedRun,
+              isEmptyRun,
+              isRun({
+                children: contains(isText("this will not be a hyperlink")),
+              })
+            )
+          );
+        },
 
       "can handle split instrText elements": function () {
         var hyperlinkInstrTextPart1 = new XmlElement("w:instrText", {}, [
@@ -422,39 +427,40 @@ test(
         );
       },
 
-      "complex field nested within a hyperlink complex field is wrapped with the hyperlink": function () {
-        var authorInstrText = new XmlElement("w:instrText", {}, [
-          xml.text(' AUTHOR "John Doe"'),
-        ]);
-        var paragraphXml = new XmlElement("w:p", {}, [
-          beginXml,
-          hyperlinkInstrText,
-          separateXml,
-          beginXml,
-          authorInstrText,
-          separateXml,
-          runOfText("John Doe"),
-          endXml,
-          endXml,
-        ]);
-        var paragraph = readXmlElementValue(paragraphXml);
+      "complex field nested within a hyperlink complex field is wrapped with the hyperlink":
+        function () {
+          var authorInstrText = new XmlElement("w:instrText", {}, [
+            xml.text(' AUTHOR "John Doe"'),
+          ]);
+          var paragraphXml = new XmlElement("w:p", {}, [
+            beginXml,
+            hyperlinkInstrText,
+            separateXml,
+            beginXml,
+            authorInstrText,
+            separateXml,
+            runOfText("John Doe"),
+            endXml,
+            endXml,
+          ]);
+          var paragraph = readXmlElementValue(paragraphXml);
 
-        assertThat(
-          paragraph.children,
-          contains(
-            isEmptyRun,
-            isEmptyHyperlinkedRun,
-            isEmptyHyperlinkedRun,
-            isEmptyHyperlinkedRun,
-            isHyperlinkedRun({
-              href: uri,
-              children: contains(isText("John Doe")),
-            }),
-            isEmptyHyperlinkedRun,
-            isEmptyRun
-          )
-        );
-      },
+          assertThat(
+            paragraph.children,
+            contains(
+              isEmptyRun,
+              isEmptyHyperlinkedRun,
+              isEmptyHyperlinkedRun,
+              isEmptyHyperlinkedRun,
+              isHyperlinkedRun({
+                href: uri,
+                children: contains(isText("John Doe")),
+              }),
+              isEmptyHyperlinkedRun,
+              isEmptyRun
+            )
+          );
+        },
 
       "field without separate w:fldChar is ignored": function () {
         var hyperlinkRunXml = runOfText("this is a hyperlink");
@@ -1046,14 +1052,11 @@ function isImage(options) {
   if (options.buffer) {
     return allOf(
       matcher,
-      new FeatureMatcher(
-        willBe(options.buffer),
-        "buffer",
-        "buffer",
-        function (element) {
-          return element.read();
-        }
-      )
+      new FeatureMatcher(willBe(options.buffer), "buffer", "buffer", function (
+        element
+      ) {
+        return element.read();
+      })
     );
   } else {
     return matcher;
@@ -1324,35 +1327,41 @@ test("w:hyperlink", {
     assert.deepEqual(result.value.children[0].type, "run");
   },
 
-  "is read as external hyperlink if it has a relationship ID and an anchor": function () {
-    var runXml = new XmlElement("w:r", {}, []);
-    var hyperlinkXml = new XmlElement(
-      "w:hyperlink",
-      { "r:id": "r42", "w:anchor": "fragment" },
-      [runXml]
-    );
-    var relationships = new Relationships([
-      hyperlinkRelationship("r42", "http://example.com/"),
-    ]);
-    var result = readXmlElement(hyperlinkXml, { relationships: relationships });
-    assert.deepEqual(result.value.href, "http://example.com/#fragment");
-    assert.deepEqual(result.value.children[0].type, "run");
-  },
+  "is read as external hyperlink if it has a relationship ID and an anchor":
+    function () {
+      var runXml = new XmlElement("w:r", {}, []);
+      var hyperlinkXml = new XmlElement(
+        "w:hyperlink",
+        { "r:id": "r42", "w:anchor": "fragment" },
+        [runXml]
+      );
+      var relationships = new Relationships([
+        hyperlinkRelationship("r42", "http://example.com/"),
+      ]);
+      var result = readXmlElement(hyperlinkXml, {
+        relationships: relationships,
+      });
+      assert.deepEqual(result.value.href, "http://example.com/#fragment");
+      assert.deepEqual(result.value.children[0].type, "run");
+    },
 
-  "existing fragment is replaced when anchor is set on external link": function () {
-    var runXml = new XmlElement("w:r", {}, []);
-    var hyperlinkXml = new XmlElement(
-      "w:hyperlink",
-      { "r:id": "r42", "w:anchor": "fragment" },
-      [runXml]
-    );
-    var relationships = new Relationships([
-      hyperlinkRelationship("r42", "http://example.com/#previous"),
-    ]);
-    var result = readXmlElement(hyperlinkXml, { relationships: relationships });
-    assert.deepEqual(result.value.href, "http://example.com/#fragment");
-    assert.deepEqual(result.value.children[0].type, "run");
-  },
+  "existing fragment is replaced when anchor is set on external link":
+    function () {
+      var runXml = new XmlElement("w:r", {}, []);
+      var hyperlinkXml = new XmlElement(
+        "w:hyperlink",
+        { "r:id": "r42", "w:anchor": "fragment" },
+        [runXml]
+      );
+      var relationships = new Relationships([
+        hyperlinkRelationship("r42", "http://example.com/#previous"),
+      ]);
+      var result = readXmlElement(hyperlinkXml, {
+        relationships: relationships,
+      });
+      assert.deepEqual(result.value.href, "http://example.com/#fragment");
+      assert.deepEqual(result.value.children[0].type, "run");
+    },
 
   "is read as internal hyperlink if it has an anchor": function () {
     var runXml = new XmlElement("w:r", {}, []);
@@ -1569,8 +1578,7 @@ function hyperlinkRelationship(relationshipId, target) {
   return {
     relationshipId: relationshipId,
     target: target,
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
   };
 }
 
@@ -1578,8 +1586,7 @@ function imageRelationship(relationshipId, target) {
   return {
     relationshipId: relationshipId,
     target: target,
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
   };
 }
 

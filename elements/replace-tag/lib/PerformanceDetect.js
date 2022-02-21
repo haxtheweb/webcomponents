@@ -5,14 +5,14 @@ window.PerformanceDetectManager = window.PerformanceDetectManager || {};
 // is rendered through the same modal
 window.PerformanceDetectManager.requestAvailability = () => {
   if (!window.PerformanceDetectManager.instance) {
-    window.PerformanceDetectManager.instance = document.createElement(
-      "performance-detect"
-    );
+    window.PerformanceDetectManager.instance =
+      document.createElement("performance-detect");
     document.body.appendChild(window.PerformanceDetectManager.instance);
   }
   return window.PerformanceDetectManager.instance;
 };
-export const DeviceDetails = window.PerformanceDetectManager.requestAvailability();
+export const DeviceDetails =
+  window.PerformanceDetectManager.requestAvailability();
 class PerformanceDetect extends HTMLElement {
   constructor() {
     super();

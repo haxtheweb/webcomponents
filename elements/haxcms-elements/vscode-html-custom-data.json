@@ -278,7 +278,7 @@
     },
     {
       "name": "haxcms-site-editor-ui",
-      "description": "`haxcms-site-editor-ui`\n`haxcms editor element buttons that you see`\n\nEvents:\n\n  * `haxcms-load-user-data` {`CustomEvent<boolean>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-node` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-load-node-fields` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; elements: { ...; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-create-node` {`CustomEvent<{ values: any; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `haxcms-delete-node` {`CustomEvent<{ item: any; }>`} - \n\n  * `haxcms-load-site-dashboard` {`CustomEvent<any>`} - \n\n  * `haxcms-outline-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `active-title` {`string`} - \n\n  * `manifest` - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `page-allowed` {`boolean`} - page allowed\n\n  * `edit-mode` {`boolean`} - if the page is in an edit state or not\n\n  * `__editIcon` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `manifest-edit-mode` {`boolean`} - Manifest editing state\n\n  * `t` - \n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `manifest` - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `__disposer` - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `pageAllowed` {`boolean`} - page allowed\n\n  * `editMode` {`boolean`} - if the page is in an edit state or not\n\n  * `__editIcon` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `manifestEditMode` {`boolean`} - Manifest editing state\n\n  * `t` - ",
+      "description": "`haxcms-site-editor-ui`\n`haxcms editor element buttons that you see`\n\nEvents:\n\n  * `haxcms-load-user-data` {`CustomEvent<boolean>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-node` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-load-node-fields` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `haxcms-create-node` {`CustomEvent<{ values: any; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; elements: { content: HTMLSpanElement; buttons: HTMLSpanElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-delete-node` {`CustomEvent<{ item: any; }>`} - \n\n  * `haxcms-load-site-dashboard` {`CustomEvent<any>`} - \n\n  * `haxcms-outline-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `active-title` {`string`} - \n\n  * `manifest` - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `page-allowed` {`boolean`} - page allowed\n\n  * `edit-mode` {`boolean`} - if the page is in an edit state or not\n\n  * `__editIcon` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `manifest-edit-mode` {`boolean`} - Manifest editing state\n\n  * `t` - \n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `manifest` - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `__disposer` - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `pageAllowed` {`boolean`} - page allowed\n\n  * `editMode` {`boolean`} - if the page is in an edit state or not\n\n  * `__editIcon` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `manifestEditMode` {`boolean`} - Manifest editing state\n\n  * `t` - ",
       "attributes": [
         {
           "name": "user-name",
@@ -382,16 +382,16 @@
           "description": "`hax-cancel` {`CustomEvent<any>`} - "
         },
         {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; elements: { ...; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - "
-        },
-        {
           "name": "onhaxcms-create-node",
           "description": "`haxcms-create-node` {`CustomEvent<{ values: any; }>`} - "
         },
         {
           "name": "onhaxcms-save-node-details",
           "description": "`haxcms-save-node-details` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; elements: { content: HTMLSpanElement; buttons: HTMLSpanElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - "
         },
         {
           "name": "onhaxcms-delete-node",
@@ -413,7 +413,7 @@
     },
     {
       "name": "haxcms-site-editor",
-      "description": "`haxcms-site-editor`\n`haxcms editor element that provides all editing capabilities`\n\nEvents:\n\n  * `jwt-login-logout` {`CustomEvent<{ redirect: boolean; }>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; }>`} - \n\n  * `haxcms-site-editor-loaded` {`CustomEvent<boolean>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; elements: { content: HTMLElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-save-site-data` {`CustomEvent<any>`} - \n\n  * `haxcms-trigger-update` {`CustomEvent<boolean>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-trigger-update-node` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `get-user-data-path` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `save-node-path` {`string`} - end point for saving nodes\n\n  * `create-node-path` {`string`} - end point for create new nodes\n\n  * `delete-node-path` {`string`} - end point for delete nodes\n\n  * `save-manifest-path` {`string`} - end point for saving manifest\n\n  * `publish-site-path` {`string`} - end point for publishing\n\n  * `revert-site-path` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `sync-site-path` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `save-outline-path` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `get-node-fields-path` {`string`} - \n\n  * `save-site-fields-path` {`string`} - \n\n  * `get-form-token` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `edit-mode` {`boolean`} - if the node is in an edit state or not\n\nProperties:\n\n  * `getUserDataPath` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `saveNodePath` {`string`} - end point for saving nodes\n\n  * `createNodePath` {`string`} - end point for create new nodes\n\n  * `deleteNodePath` {`string`} - end point for delete nodes\n\n  * `saveManifestPath` {`string`} - end point for saving manifest\n\n  * `publishSitePath` {`string`} - end point for publishing\n\n  * `revertSitePath` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `syncSitePath` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `saveOutlinePath` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `getNodeFieldsPath` {`string`} - \n\n  * `getSiteFieldsPath` {`string`} - \n\n  * `getFormToken` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `__disposer` {`never[]`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `editMode` {`boolean`} - if the node is in an edit state or not",
+      "description": "`haxcms-site-editor`\n`haxcms editor element that provides all editing capabilities`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `jwt-login-logout` {`CustomEvent<{ redirect: boolean; }>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\n  * `haxcms-site-editor-loaded` {`CustomEvent<boolean>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-z-index\": string; \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; elements: { content: HTMLElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-save-site-data` {`CustomEvent<any>`} - \n\n  * `haxcms-trigger-update` {`CustomEvent<boolean>`} - \n\n  * `haxcms-create-node-success` {`CustomEvent<{ value: boolean; originalTarget: any; }>`} - \n\n  * `haxcms-trigger-update-node` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `get-user-data-path` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `save-node-path` {`string`} - end point for saving nodes\n\n  * `create-node-path` {`string`} - end point for create new nodes\n\n  * `delete-node-path` {`string`} - end point for delete nodes\n\n  * `save-manifest-path` {`string`} - end point for saving manifest\n\n  * `publish-site-path` {`string`} - end point for publishing\n\n  * `revert-site-path` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `sync-site-path` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `save-outline-path` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `get-node-fields-path` {`string`} - \n\n  * `save-site-fields-path` {`string`} - \n\n  * `get-form-token` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `edit-mode` {`boolean`} - if the node is in an edit state or not\n\nProperties:\n\n  * `getUserDataPath` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `saveNodePath` {`string`} - end point for saving nodes\n\n  * `createNodePath` {`string`} - end point for create new nodes\n\n  * `deleteNodePath` {`string`} - end point for delete nodes\n\n  * `saveManifestPath` {`string`} - end point for saving manifest\n\n  * `publishSitePath` {`string`} - end point for publishing\n\n  * `revertSitePath` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `syncSitePath` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `saveOutlinePath` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `getNodeFieldsPath` {`string`} - \n\n  * `getSiteFieldsPath` {`string`} - \n\n  * `getFormToken` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `__disposer` {`never[]`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `editMode` {`boolean`} - if the node is in an edit state or not",
       "attributes": [
         {
           "name": "get-user-data-path",
@@ -506,16 +506,16 @@
           "valueSet": "v"
         },
         {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
+        },
+        {
           "name": "onjwt-login-logout",
           "description": "`jwt-login-logout` {`CustomEvent<{ redirect: boolean; }>`} - "
         },
         {
           "name": "onjwt-login-refresh-token",
           "description": "`jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; }>`} - "
         },
         {
           "name": "onhaxcms-site-editor-loaded",
@@ -546,12 +546,8 @@
           "description": "`haxcms-trigger-update` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<any>`} - "
+          "name": "onhaxcms-create-node-success",
+          "description": "`haxcms-create-node-success` {`CustomEvent<{ value: boolean; originalTarget: any; }>`} - "
         },
         {
           "name": "onhaxcms-trigger-update-node",
@@ -580,6 +576,47 @@
         {
           "name": "onhaxcms-edit-mode-changed",
           "description": "`haxcms-edit-mode-changed` {`CustomEvent<boolean>`} - "
+        }
+      ]
+    },
+    {
+      "name": "haxcms-button-add",
+      "description": "Attributes:\n\n  * `type` {`string`} - \n\n  * `auto-edit` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `voiceCommand` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `autoEdit` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `voiceCommand` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `t` - ",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: sibling"
+        },
+        {
+          "name": "auto-edit",
+          "description": "`auto-edit` {`boolean`} - \n\nProperty: autoEdit\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: hax:add-page"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: button"
+        },
+        {
+          "name": "voiceCommand",
+          "description": "`voiceCommand` {`string`} - \n\nProperty: voiceCommand\n\nDefault: add page"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - \n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t"
         }
       ]
     },

@@ -54,9 +54,10 @@ class SimplePopoverSelection extends LitElement {
       // delay for render
       setTimeout(() => {
         // walk kids in the element and apply event listeners back to here
-        let children = window.SimplePopoverManager.requestAvailability().querySelectorAll(
-          "*"
-        );
+        let children =
+          window.SimplePopoverManager.requestAvailability().querySelectorAll(
+            "*"
+          );
         for (var i in children) {
           if (children[i].addEventListener) {
             children[i].addEventListener("click", this.itemSelect.bind(this));

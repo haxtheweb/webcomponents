@@ -222,7 +222,8 @@ var HaxContextItem =
            */
           value: function _handleMousedown(e) {
             if (!this.disabled)
-              _haxStore.HAXStore._tmpSelection = _haxStore.HAXStore.getSelection();
+              _haxStore.HAXStore._tmpSelection =
+                _haxStore.HAXStore.getSelection();
           },
           /**
            * Fire an event that includes the eventName of what was just pressed.

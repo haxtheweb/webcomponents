@@ -105,7 +105,8 @@ window.DOCXFileSystemBroker.requestAvailability = () => {
   return window.DOCXFileSystemBroker.instance;
 };
 // forces appending
-const DOCXFileSystemBrokerSingleton = window.DOCXFileSystemBroker.requestAvailability();
+const DOCXFileSystemBrokerSingleton =
+  window.DOCXFileSystemBroker.requestAvailability();
 export {
   DOCXFileSystemBrokerSingleton,
   DOCXFileSystemBroker,

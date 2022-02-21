@@ -162,7 +162,7 @@
     },
     {
       "name": "editable-table-editor-rowcol",
-      "description": "`editable-table-editor-rowcol`\nA header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).\n\nEvents:\n\n  * `rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - \n\n  * `rowcol-menu-toggle` {`CustomEvent<this>`} - \n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperties:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `controls` {`string`} - Gets first cell that menu controls\n\n  * `label` - Gets row or column label based on type\n\n  * `labelInfo` {`TemplateResult<1>`} - get cell label\n\n  * `type` {`\"Row\" | \"Column\"`} - Gets row or column type\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover",
+      "description": "`editable-table-editor-rowcol`\nA header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).\n\nEvents:\n\n  * `rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - \n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `type` {`\"Row\" | \"Column\"`} - Gets row or column type\n\n  * `tooltipDirection` {`string`} - \n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - gets focusable button element\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template menu button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
       "attributes": [
         {
           "name": "index",
@@ -176,11 +176,6 @@
         {
           "name": "currentItem",
           "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
-          "valueSet": "v"
         },
         {
           "name": "expanded",
@@ -224,12 +219,79 @@
           "valueSet": "v"
         },
         {
-          "name": "onrowcol-action",
-          "description": "`rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - "
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
         },
         {
-          "name": "onrowcol-menu-toggle",
-          "description": "`rowcol-menu-toggle` {`CustomEvent<this>`} - "
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "onrowcol-action",
+          "description": "`rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - "
         },
         {
           "name": "onclose",
@@ -242,71 +304,128 @@
         {
           "name": "onitem-click",
           "description": "`item-click` {`CustomEvent<Event>`} - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-editor-toggle",
-      "description": "`editable-table-editor-toggle`\nA toggle button for an property in editable-table interface (editable-table.html).\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether button is toggled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether button is toggled",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
         },
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - Table id for accessibility\n\nProperty: controls\n\nDefault: table"
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
         },
         {
-          "name": "id",
-          "description": "`id` {`string`} - Button id that matches table property to toggle\n\nProperty: id\n\nDefault: null"
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - Button icon\n\nProperty: icon\n\nDefault: null"
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - Button label\n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "toggled",
-          "description": "`toggled` {`boolean`} - Whether button is toggled\n\nProperty: toggled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onchange",
-          "description": "`change` {`CustomEvent<this>`} - "
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "editable-table-filter",
-      "description": "`editable-table-editor-filter`\n`Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of column\n\n  * `filtered` {`boolean`} - Whether column is filtered\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Index of column\n\n  * `filtered` {`boolean`} - Whether column is filtered\n\n  * `text` {`string`} - Column header text",
+      "description": "`editable-table-editor-filter`\n`Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` {`CustomEvent<this>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of column\n\n  * `text` {`string`} - Index of column\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `columnIndex` {`number`} - Index of column\n\n  * `filtered` {`boolean`} - \n\n  * `text` {`string`} - Index of column\n\n  * `tooltip` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - \n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
       "attributes": [
         {
           "name": "column-index",
           "description": "`column-index` {`number`} - Index of column\n\nProperty: columnIndex\n\nDefault: null"
         },
         {
-          "name": "filtered",
-          "description": "`filtered` {`boolean`} - Whether column is filtered\n\nProperty: filtered\n\nDefault: false",
+          "name": "text",
+          "description": "`text` {`string`} - Index of column\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby\n\nDefault: cell"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon\n\nDefault: editable-table:filter"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label\n\nDefault: Toggle filter."
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
           "valueSet": "v"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "ontoggle-filter",
           "description": "`toggle-filter` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "editable-table-sort",
-      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of current sort column\n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sorting` {`boolean`} - Whether column is being sorted\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of current sort column",
+      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` {`CustomEvent<this>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of current sort column\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of current sort column\n\n  * `tooltip` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - \n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
       "attributes": [
         {
           "name": "column-index",
@@ -321,8 +440,90 @@
           "description": "`sort-column` {`number`} - Index of current sort column\n\nProperty: sortColumn\n\nDefault: -1"
         },
         {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby\n\nDefault: cell"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon\n\nDefault: editable-table:sortable"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label\n\nDefault: Toggle sort mode."
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
           "name": "onchange-sort-mode",
           "description": "`change-sort-mode` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },

@@ -232,9 +232,8 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       // find the sibling element in the DOM and associate to it's resource ID
       // also generate a resource ID if it doesn't have one
       if (this.previousElementSibling.getAttribute("resource")) {
-        this.relatedResource = this.previousElementSibling.getAttribute(
-          "resource"
-        );
+        this.relatedResource =
+          this.previousElementSibling.getAttribute("resource");
       } else {
         let uuid = generateResourceID();
         this.relatedResource = uuid;

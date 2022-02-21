@@ -294,8 +294,8 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for button
     toggleRubricInfo(e) {
-      this.hideRubricInfo[parseInt(e.target.getAttribute("data-id"))] = !this
-        .hideRubricInfo[parseInt(e.target.getAttribute("data-id"))];
+      this.hideRubricInfo[parseInt(e.target.getAttribute("data-id"))] =
+        !this.hideRubricInfo[parseInt(e.target.getAttribute("data-id"))];
       this.requestUpdate();
     }
 

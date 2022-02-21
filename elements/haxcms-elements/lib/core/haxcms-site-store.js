@@ -245,9 +245,8 @@ class Store {
    */
   cmsSiteEditorAvailability() {
     if (!this.cmsSiteEditor.instance) {
-      this.cmsSiteEditor.instance = document.createElement(
-        "haxcms-site-editor"
-      );
+      this.cmsSiteEditor.instance =
+        document.createElement("haxcms-site-editor");
     }
     return this.cmsSiteEditor.instance;
   }
@@ -455,8 +454,7 @@ class Store {
         themeData = {
           "haxcms-basic-theme": {
             element: "haxcms-basic-theme",
-            path:
-              "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+            path: "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
             name: "Basic theme",
             variables: {
               image: "assets/banner.jpg",

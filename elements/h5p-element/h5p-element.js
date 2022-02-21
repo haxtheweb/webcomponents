@@ -311,7 +311,8 @@ class H5PStandalone {
     this.content = JSON.stringify(
       await this.getJSONPromise(`${this.path}/content/content.json`)
     );
-    window.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = await this.checkIfPathIncludesVersion();
+    window.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion =
+      await this.checkIfPathIncludesVersion();
 
     this.mainLibrary = await this.findMainLibrary();
 

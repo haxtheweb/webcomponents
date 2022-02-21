@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextToolbarStyles = exports.RichTextStyles = exports.RichTextEditorButtonBehaviors = exports.RichTextEditorButton = void 0;
+exports.RichTextToolbarStyles =
+  exports.RichTextStyles =
+  exports.RichTextEditorButtonBehaviors =
+  exports.RichTextEditorButton =
+    void 0;
 
 var _litElement = require("lit");
 

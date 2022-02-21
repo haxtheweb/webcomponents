@@ -121,9 +121,8 @@ export { ResponsiveUtility };
  */
 window.ResponsiveUtility.requestAvailability = () => {
   if (window.ResponsiveUtility.instance == null) {
-    window.ResponsiveUtility.instance = document.createElement(
-      "responsive-utility"
-    );
+    window.ResponsiveUtility.instance =
+      document.createElement("responsive-utility");
   }
   document.body.appendChild(window.ResponsiveUtility.instance);
 };

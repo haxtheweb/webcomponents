@@ -115,16 +115,22 @@ class CourseIntroFooter extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this._disposer = autorun(() => {
-      this.organization = toJS(store.manifest.metadata.theme.variables.organization);
+      this.organization = toJS(
+        store.manifest.metadata.theme.variables.organization
+      );
     });
     this._disposer = autorun(() => {
       this.company = toJS(store.manifest.metadata.theme.variables.company);
     });
     this._disposer = autorun(() => {
-      this.companyLink = toJS(store.manifest.metadata.theme.variables.companyLink);
+      this.companyLink = toJS(
+        store.manifest.metadata.theme.variables.companyLink
+      );
     });
     this._disposer = autorun(() => {
-      this.organizationLink = toJS(store.manifest.metadata.theme.variables.organizationLink);
+      this.organizationLink = toJS(
+        store.manifest.metadata.theme.variables.organizationLink
+      );
     });
     this.shadowRoot.querySelector(
       "#footer-container"
@@ -134,19 +140,19 @@ class CourseIntroFooter extends LitElement {
   }
 
   render() {
-    return html` 
+    return html`
       <div id="footer-container">
         <div id="company-logo">
           <a href="${this.companyLink}" target="_blank">
-            <img src="${this.company}">
+            <img src="${this.company}" />
           </a>
         </div>
         <div id="organization-logo">
           <a href="${this.organizationLink}" target="_blank">
-            <img src="${this.organization}">
+            <img src="${this.organization}" />
           </a>
         </div>
-      </div> 
+      </div>
     `;
   }
 }
