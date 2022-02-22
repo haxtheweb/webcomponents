@@ -58,7 +58,7 @@
     "@lrnwebcomponents/simple-tooltip": "^4.0.8",
     "@lrnwebcomponents/utils": "^4.0.8",
     "@lrnwebcomponents/voice-recorder": "^4.0.8",
-    "@vaadin/vaadin-upload": "22.0.5",
+    "@vaadin/vaadin-upload": "^4.4.1",
     "lit": "^2.2.0"
   },
   "devDependencies": {

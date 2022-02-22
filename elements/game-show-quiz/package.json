@@ -51,7 +51,7 @@
     "@polymer/paper-dialog-scrollable": "^3.0.0",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/polymer": "^3.4.1",
-    "@vaadin/vaadin-split-layout": "22.0.5",
+    "@vaadin/vaadin-split-layout": "^4.1.0",
     "lit": "^2.2.0"
   },
   "devDependencies": {

@@ -49,8 +49,9 @@
     "@polymer/paper-dialog": "3.0.1",
     "@polymer/paper-toggle-button": "3.0.1",
     "@polymer/polymer": "^3.4.1",
-    "@vaadin/vaadin-grid": "22.0.5",
-    "@vaadin/vaadin-upload": "22.0.5"
+    "@vaadin/vaadin-split-layout": "^4.1.0",
+    "@vaadin/vaadin-grid": "^5.2.5",
+    "@vaadin/vaadin-upload": "^4.4.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
