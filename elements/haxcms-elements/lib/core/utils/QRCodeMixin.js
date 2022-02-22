@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 const QRCodeMixin = function (SuperClass) {
