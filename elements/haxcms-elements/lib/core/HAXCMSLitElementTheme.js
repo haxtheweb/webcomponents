@@ -64,7 +64,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     e.target.appendChild(this.__styleTag);
   }
   hoverIntentLeave(e) {
-    this.__styleTag.remove();
+    if (this.__styleTag) {
+      this.__styleTag.remove();
+    }
   }
   HAXCMSGlobalStyleSheetContent() {
     let styles = ["red", "blue", "green", "orange", "purple"].map(

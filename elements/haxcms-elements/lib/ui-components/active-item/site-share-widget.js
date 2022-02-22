@@ -6,7 +6,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "web-social-share";
+import { defineCustomElements } from "web-social-share/dist/esm/loader.js";
 
 class SiteShareWidget extends LitElement {
   static get tag() {
@@ -57,6 +57,7 @@ class SiteShareWidget extends LitElement {
   }
   constructor() {
     super();
+    defineCustomElements(window);
     this.alt = "Share page";
     this.icon = "social:share";
     this.activeGitFileLink = "";
