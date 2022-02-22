@@ -707,16 +707,6 @@ class CleanOne extends HAXCMSRememberRoute(
                       <slot></slot>
                     </div>
                   </section>
-                  ${this.isLoggedIn
-                    ? html` <haxcms-button-add
-                          auto-edit
-                          type="child"
-                        ></haxcms-button-add>
-                        <haxcms-button-add
-                          auto-edit
-                          type="duplicate"
-                        ></haxcms-button-add>`
-                    : ``}
                 </div>
               </article>
             </main>
