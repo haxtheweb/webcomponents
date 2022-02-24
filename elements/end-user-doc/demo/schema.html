@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>EndUserDoc: end-user-doc Documentation Schema</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../end-user-doc.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>end-user-doc Page</h3>
+      <demo-snippet>
+        <p>The <code>contents</code> property is set by using a javascript object with the following properties:</p>
+        <ul>
+          <li><code>id</code> (string): <em>recommended</em>, a unique identfier  that serves as anchor</li>
+          <li><code>title</code> (string): <em>recommended</em>, page heading</li>
+          <li><code>contents</code> (array): <em>required</em>, array of page content</li>
+        </ul>
+        <template>
+          <end-user-doc id="pagedemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
+          <script>
+            let pageDemo = document.querySelector('#pagedemo');
+            pageDemo.contents = {
+              id: "page",
+              title: "Documentation Page",
+              contents: [
+                'This is a basic doumentation page.',
+              ]
+            }
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Sections</h3>
+      <demo-snippet>
+        <p>A section or subsection can be added to a page's or section's <code>contents</code> array by using a javascript object with the following properties:</p>
+        <ul>
+          <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
+          <li><code>title</code> (string): <em>recommended</em>, section heading</li>
+          <li><code>contents</code> (array): <em>required</em>, array of section content</li>
+        </ul>
+        <template>
+          <end-user-doc id="sectiondemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
+          <script>
+            let sectionDemo = document.querySelector('#sectiondemo');
+            sectionDemo.contents = {
+              id: "page",
+              title: "Documentation Page",
+              contents: [
+                'This is a basic doumentation page.',
+                //section of page
+                {
+                  id: "section",
+                  title: "Documentation Section",
+                  contents: [
+                    'This is a basic doumentation section.',
+                    //subsection of page
+                    {
+                      id: "subsection",
+                      title: "Documentation Subsection",
+                      contents: [
+                        'This is a basic doumentation subsection.',
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Images</h3>
+      <demo-snippet>
+        <p>
+          You can add images to any <code>contents</code> array by creating an object with the following properties:
+        </p>
+        <ul>
+          <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
+          <li><code>alt</code> (string): <em>recommended</em>, image alt text for accessibility</li>
+          <li><code>src</code> (string): <em>required</em>, image source</li>
+          <li><code>srcset</code> (string): <em>optional</em>, image source set for responsive images</li>
+          <li><code>sizes</code> (string): <em>optional</em>, image sizes for responsive images</li>
+          <li><code>caption</code> (string): <em>optional</em>, caption if image will be a figure</li>
+        </ul>
+        <template>
+          <end-user-doc id="cheatsheetdemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
+          <script>
+            let cheatsheetDemo = document.querySelector('#cheatsheetdemo');
+            cheatsheetDemo.contents = {
+              id: "page",
+              title: "Documentation Page",
+              contents: [
+                'This is a basic doumentation page.',
+                //this is a responsive image 
+                { 
+                  id: "laptop-banner",
+                  alt: "laptop computer with coffee and sketch notebook",
+                  src: "https://picsum.photos/id/2/400/100", 
+                  srcset: "https://picsum.photos/id/2/400/100 400w, https://picsum.photos/id/2/800/200 800w",
+                  sizes: "(max-width: 600px) 400px, 800px",
+                },
+                //this is an image with caption 
+                { 
+                  id: "laptop",
+                  alt: "laptop computer with coff and mobile phone", 
+                  src: "https://picsum.photos/id/0/400/300", 
+                  caption: "Features you can access on your laptop"
+                }
+              ]
+            }
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Cheatsheets</h3>
+      <demo-snippet>
+        <p>
+          You can add cheatsheet reference tables to a <code>contents</code> 
+          array by creating an object with the following properties:
+        </p>
+        <ul>
+          <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
+          <li><code>title</code> (string): <em>recommended</em>, table caption</li>
+          <li>
+            <code>cheatsheet</code> (object): <em>required</em>, object with the following properties:
+            <ul>
+              <li><code>columns</code> (array): <em>recommended</em>, array of column headers</li>
+              <li><code>rows</code> (array): <em>required</em>, nested array of rows, where each row array contains a string for each column</li>
+            </ul>
+          </li>
+        </ul>
+        <template>
+          <end-user-doc id="imagedemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
+          <script>
+            let imageDemo = document.querySelector('#imagedemo');
+            imageDemo.contents = {
+              id: "page",
+              title: "Documentation Page",
+              contents: [
+                'This is a basic doumentation page.',
+                //this is a cheatsheet
+                {
+                  id: "keyboardshortcuts",
+                  //becomes the table caption
+                  title: "Keyboard Shortcuts",
+                  cheatsheet: {
+                    //column headers
+                    columns: ["Shortcut","Description"],
+                    rows: [
+                      ["ctrl+x","cut"],
+                      ["ctrl+c","copy"],
+                      ["ctrl+v","paste"]
+                    ]
+                  }
+                }
+              ]
+            }
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Step-by-Step Instructions</h3>
+      <demo-snippet>
+        <p>
+          You can add step-by-step lists to a <code>contents</code> 
+          array by creating an object with the following properties:
+        </p>
+        <ul>
+          <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
+          <li><code>listStyle</code> (string): <em>optional</em>, space-separated list styles in order of least nested to most nested</li>
+          <li><code>steps</code> (array): <em>required</em>, array of steps, which can include nested arrays of substeps</li>
+        </ul>
+        <template>
+          <end-user-doc id="stepdemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
+          <script>
+            let stepDemo = document.querySelector('#stepdemo');
+            stepDemo.contents = {
+              id: "page",
+              title: "Documentation Page",
+              contents: [
+                'This is a basic doumentation page.',
+                //this is a step by step instructions
+                {
+                  id: "stepbystep",
+                  //optional, set numbering style 
+                  //as a string of space-separated list styles
+                  //in order of least nested to most nested
+                  //default is 'decimal lower-alpha lower-roman'
+                  listStyle: "upper-alpha decimal lower-alpha",
+
+                  //array of steps
+                  steps: [
+                    //top-level step as "upper-alpha"
+                    "Step A.",
+
+                    //sub-steps as "decimal"
+                    [
+                      "Step A1.",
+
+                      //sub-steps of a substep as "lower-alpha"
+                      [
+                        "step A1a.",
+                        "step A1b.",
+                      ],
+                      "step B1.",
+                    ],
+                    "Step B.", 
+                    "Step C."
+                  ]
+                }
+              ]
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

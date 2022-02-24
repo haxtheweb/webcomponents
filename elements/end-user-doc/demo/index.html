@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>EndUserDoc: end-user-doc Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../end-user-doc.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Dynamically update end-user-doc</h3>
+      <p>
+        If you have a tool that is modular, the documentation can be updated 
+        dynamically based on which features are enabled. Addons can create their own documentation.
+      </p>
+      <demo-snippet>
+        <template>
+          <fieldset>
+            <legend>Dynamically these sections to docs:</legend>
+            <label><input type="checkbox" onclick="toggleSection(this)"> Getting Started</label>
+            <label><input type="checkbox" onclick="toggleShortcut(this,'ctrl+z','undo')">Undo Shortcut</label>
+            <label><input type="checkbox" onclick="toggleShortcut(this,'ctrl+y','redo')">Redo Shortcut</label>
+            <label><input type="checkbox" onclick="toggleShortcut(this,'ctrl+s','save')">Save Shortcut</label>
+            <label><input type="checkbox" onclick="toggleShortcut(this,'ctrl+a','select all')">Select All Shortcut</label>
+          </fieldset>
+          <end-user-doc id="updating"></end-user-doc>
+          <script>
+            // set documentation contents
+            let updateDoc = document.querySelector('#updating');
+            updateDoc.contents = {
+              id: "userdocs",
+              title: "End User Documentation",
+              contents: [
+                { 
+                  src: "https://picsum.photos/id/0/200/300", 
+                  alt: "laptop computer", 
+                  caption: "Features you can access on your laptop"
+                },
+                {
+                  id: "keyboardshortcuts",
+                  title: "Keyboard Shortcuts",
+                  cheatsheet: {
+                    columns: ["Shortcut","Description"],
+                    rows: [
+                      ["ctrl+x","cut"],
+                      ["ctrl+c","copy"],
+                      ["ctrl+v","paste"]
+                    ]
+                  },
+                }
+              ]
+            };
+            
+            // adds a shortcut to documentation's list of shortcuts
+            function toggleShortcut(checkbox,shortcut,desc){
+              if(checkbox.checked){
+                updateDoc.appendCheat([shortcut,desc],'keyboardshortcuts');
+              } else {
+                updateDoc.removeCheat([shortcut,desc],'keyboardshortcuts');
+              }
+            }
+
+            // adds a getting startered section 
+            // with windows/macOS subsections to 
+            // documentation's list of shortcuts
+            function toggleSection(checkbox){
+              let section = {
+                  id: "gettingstarted",
+                  title: "Getting Started",
+                  contents: [
+                  {
+                    id: "pc",
+                    title: "Windows",
+                    contents: [
+                      {
+                        listStyle: "upper-alpha decimal",
+                        steps: [
+                          "Step A.",
+                          [
+                            "step A1.",
+                            "step B1.",
+                          ],
+                          "Step B.", 
+                          "Step C."
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    id: "mac",
+                    title: "MacOS",
+                    contents: [
+                      {
+                        steps: [
+                          "Step one.",
+                          "Step two.", 
+                          [
+                            "step 2a.",
+                            [
+                              "step 2ai.",
+                              "step 2aii.",
+                            ],
+                            "step 2b.",
+                          ],
+                          "Step three."
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              };
+              if(checkbox.checked){
+                updateDoc.appendToSection(section,'userdocs');
+              } else {
+                updateDoc.removeSectionContent("gettingstarted");
+              }
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
