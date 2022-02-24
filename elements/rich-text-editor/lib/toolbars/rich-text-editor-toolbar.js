@@ -1044,52 +1044,30 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return this._isRangeInScope();
     }
     /**
-     * regex for heading markdown
+     * markdown patterns for heading markdown
      *
      * @readonly
      */
     get headingMarkdown() {
-      return [
-        {
-          match: /(\n|^)# (.+)(\n|$)/,
-          replace: "<h1>$2</h1>",
+      return [1,2,3,4,5,6].map(num=>{
+        let pound = () => {
+          let str = '';
+          for(let i=0;i<num;i++){
+            str+='#';
+          }
+          return str;
+        }
+        return {
+          match: new RegExp(`(\n|^)${pound()} (.+)(\n|$)`,''),
+          replace: `<h${num}>$2</h${num}>`,
           excludeAncestors: ["pre", "code"],
           lastChars: ["enter"],
-        },
-        {
-          match: /(\n|^)## (.+)(\n|$)/,
-          replace: "<h2>$2</h2>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["enter"],
-        },
-        {
-          match: /(\n|^)### (.+)(\n|$)/,
-          replace: "<h3>$2</h3>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["enter"],
-        },
-        {
-          match: /(\n|^)#### (.+)(\n|$)/,
-          replace: "<h4>$2</h4>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["enter"],
-        },
-        {
-          match: /(\n|^)##### (.+)(\n|$)/,
-          replace: "<h5>$2</h5>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["enter"],
-        },
-        {
-          match: /(\n|^)###### (.+)(\n|$)/,
-          replace: "<h6>$2</h6>",
-          excludeAncestors: ["pre", "code"],
-          lastChars: ["enter"],
-        },
-      ];
+          examples: [`${pound()} Heading Level ${num}`]
+        };
+      });
     }
     /**
-     * regex for italics markdown
+     * markdown patterns for italics markdown
      *
      * @readonly
      */
@@ -1100,12 +1078,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "$1<i>$2</i>",
           excludeAncestors: ["em", "i", "pre", "code"],
           lastChars: ["*"],
+          examples: ["*italics*"]
         },
         {
           match: /([^_]|^)_(([^_]*_{2}[^_]+_{2}[^_]*)+|[^_]+)_(?!_)/,
           replace: "$1<i>$2</i>",
           excludeAncestors: ["em", "i", "pre", "code"],
-          lastChars: ["*"],
+          lastChars: ["_"],
+          examples: ["_italics_"],
         },
         {
           match: /([^\*]|^|\*{2})\*([^\*]+)\*(?=[^\*])/,
@@ -1134,7 +1114,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ];
     }
     /**
-     * regex for bold markdown
+     * markdown patterns for bold markdown
      *
      * @readonly
      */
@@ -1145,11 +1125,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<b>$2</b>",
           excludeAncestors: ["b", "strong", "pre", "code"],
           lastChars: ["*", "_"],
+          examples: ['**bold**','__bold__']
         },
       ];
     }
     /**
-     * regex for strikethrough markdown
+     * markdown patterns for strikethrough markdown
      *
      * @readonly
      */
@@ -1160,11 +1141,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<strike>$1</strike>",
           excludeAncestors: ["strike", "pre", "code"],
           lastChars: ["~"],
+          examples: ["~~strikethrough~~"]
         },
       ];
     }
     /**
-     * regex for subscript markdown
+     * markdown patterns for subscript markdown
      *
      * @readonly
      */
@@ -1175,6 +1157,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<sub>$1</sub>",
           excludeAncestors: ["sub", "pre", "code"],
           lastChars: ["~"],
+          examples: ["~subscript~"],
         },
         {
           match: /(~{2})[^~]*~([^~]+)/,
@@ -1185,7 +1168,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ];
     }
     /**
-     * regex for superscript markdown
+     * markdown patterns for superscript markdown
      *
      * @readonly
      */
@@ -1196,6 +1179,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<sup>$1</sup>",
           excludeAncestors: ["sup", "pre", "code"],
           lastChars: ["^"],
+          examples: ["^superscript^"],
         },
         {
           match: /(\^{2})[^\^]*\^([^\^]+)/,
@@ -1206,7 +1190,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ];
     }
     /**
-     * regex for mark markdown
+     * markdown patterns for mark markdown
      *
      * @readonly
      */
@@ -1217,12 +1201,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<mark>$1</mark>",
           excludeAncestors: ["mark", "pre", "code"],
           lastChars: ["="],
+          examples: ["==mark (highlight)=="],
         },
       ];
     }
 
     /**
-     * regex for link markdown
+     * markdown patterns for link markdown
      *
      * @readonly
      */
@@ -1233,29 +1218,33 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: '<a href="$1">$1</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [">"],
+          examples: ["<http://haxtheweb.org>"],
         },
         {
           match: /([^!])\[([^\]]+)\]\((#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)(?=\)))\)/,
           replace: '$1<a href="$3">$2</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [")"],
+          examples: ["[HAX](http://haxtheweb.org)"],
         },
         {
           match: /\[([^\]]+)\]\((?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\)/,
           replace: '<a href="mailto:$2">$1</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [")"],
+          examples: ["[My Email](email@domain.com)"],
         },
         {
           match: /&lt;(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})\&gt;/,
           replace: '<a href="mailto:$1">$1</a>',
           excludeAncestors: ["a", "pre", "code"],
           lastChars: [">"],
+          examples: ["<email@domain.com>"],
         },
       ];
     }
     /**
-     * regex for image markdown
+     * markdown patterns for image markdown
      *
      * @readonly
      */
@@ -1266,11 +1255,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: '<img alt="$1" src="$2"/>',
           excludeAncestors: ["pre", "code"],
           lastChars: [")"],
+          examples: ["![Black Labrador Puppy](https://picsum.photos/id/237/200/300)"],
         },
       ];
     }
     /**
-     * regex for code markdown
+     * markdown patterns for code markdown
      *
      * @readonly
      */
@@ -1281,11 +1271,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "$1<code>$2</code>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["`"],
+          examples: ["`code`"],
         },
       ];
     }
     /**
-     * regex for pre markdown
+     * markdown patterns for pre markdown
      *
      * @readonly
      */
@@ -1303,11 +1294,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<pre>$1</pre>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["`"],
+          examples: ["```preformatted```"],
         },
       ];
     }
     /**
-     * regex for blockquote markdown
+     * markdown patterns for blockquote markdown
      *
      * @readonly
      */
@@ -1318,6 +1310,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<blockquote>$3</blockquote>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["enter"],
+          examples: ["> blockquote"],
         },
       ];
     }
@@ -1333,17 +1326,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<ul><li>$2</li></ul>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["enter"],
+          examples: ["* bulleted list item"],
         },
         {
           match: /(\n|^)1\. (.+)(\n|$)/,
           replace: "<ol><li>$2</li></ol>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["enter"],
+          examples: ["1. numbered list item"],
         },
       ];
     }
     /**
-     * regex for horizontal rule markdown
+     * markdown patterns for horizontal rule markdown
      *
      * @readonly
      */
@@ -1354,11 +1349,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "<hr>",
           excludeAncestors: ["pre", "code"],
           lastChars: ["enter"],
+          examples: ["---"],
         },
       ];
     }
     /**
-     * regex for horizontal rule markdown
+     * markdown patterns for horizontal rule markdown
      *
      * @readonly
      */
@@ -1369,21 +1365,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: '$1<sup>(<a href="#$2">$2</a>)</sup>',
           excludeAncestors: ["pre", "code", "a"],
           lastChars: ["]"],
+          examples: ["see footnote[^1]"],
         },
         {
           match: /(\n|^)\[([^\]]+)\]: (.+)(\n|$)/,
           replace: "$1. $2",
           excludeAncestors: ["pre", "code", "a"],
           lastChars: ["enter"],
+          examples: ["[^1]: This is a footnote."],
         },
       ];
     }
     /**
-     * regex for emojis
+     * markdown patterns for emojis
      *
      * @readonly
      */
-    get mdashMarkdown() {
+    get mdashReplacement() {
       let wordboundaries = " ,.;:'')*!-";
       return [
         {
@@ -1391,47 +1389,54 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           replace: "$1&mdash;$2",
           excludeAncestors: ["pre", "code", "a"],
           lastChars: wordboundaries.split(""),
+          examples: ["The emdash--an incredibly versatile punctuation mark that can be used instead of parentheses, commas, colons, or quotation marks in a sentence."],
         },
       ];
     }
     /**
-     * regex for emojis
+     * markdown patterns for emojis
      *
      * @readonly
      */
     get emojiMarkdown() {
       import("@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js").then(
         (module) => {
+          this.SimpleEmojiList = module.SimpleEmojiList;
           let getEmojisByMarkdown = () => {
             let obj = {},
               patterns = [];
             (module.SimpleEmojiList || []).forEach((emoji) => {
-              let emojidesc = emoji.description || emoji.character || "zzz",
+              let shortcodes = emoji.shortcodes || [ emoji.description || emoji.character || "zzz"];
+              shortcodes.forEach(emojidesc => {
                 //converts emoji description to markdown
-                emojimd = `:${emojidesc
+                let emojimd = `:${emojidesc
                   .toLowerCase()
                   .replace(/\s+/g, "_")
-                  .replace(/[^\w-]/g, "")}:`;
-              //handles emoji with identical descriptions
-              if (emojimd && obj[emojimd]) {
-                let ctr = 2,
-                  test = `${emojimd}-${ctr}`;
-                while (obj[test]) {
-                  ctr++;
-                  test = `${emojimd}-${ctr}`;
+                  .replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}:`;
+                //handles emoji with identical descriptions
+                if (emojimd && obj[emojimd]) {
+                  let ctr = 2,
+                    test = `${emojimd}-${ctr}`;
+                  while (obj[test]) {
+                    ctr++;
+                    test = `${emojimd}-${ctr}`;
+                  }
+                  emojimd = test;
                 }
-                emojimd = test;
-              }
-              //adds emoji markdown data
-              if (emojimd) {
-                obj[emojimd] = emoji;
-                patterns.push({
-                  match: new RegExp(emojimd, "g"),
-                  replace: emoji.character,
-                  excludeAncestors: ["pre", "code"],
-                  lastChars: [":"],
-                });
-              }
+                //adds emoji markdown data
+                if (emojimd) {
+                  obj[emojimd] = emoji;
+                  patterns.push({
+                    name: emoji.description,
+                    match: new RegExp(emojimd, "g"),
+                    replace: emoji.character,
+                    excludeAncestors: ["pre", "code"],
+                    lastChars: [":"],
+                    examples: [emojimd]
+                  });
+                }
+
+              })  
             });
             return patterns;
           };
@@ -1443,7 +1448,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return window.richTextEditorEmojiMarkdown || [];
     }
     /**
-     * regex for symbols
+     * markdown patterns for symbols
      *
      * @readonly
      */
@@ -1459,7 +1464,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 symbolmd = `;${symboldesc
                   .toLowerCase()
                   .replace(/\s+/g, "_")
-                  .replace(/[^\w-]/g, "")};`;
+                  .replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')};`;
               //handles symbol with identical descriptions
               if (symbolmd && obj[symbolmd]) {
                 let ctr = 2,
@@ -1478,6 +1483,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                   replace: symbol.character,
                   excludeAncestors: ["pre", "code"],
                   lastChars: [";"],
+                  examples: [symbolmd]
                 });
               }
             });
@@ -1491,11 +1497,34 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return window.richTextEditorSymbolMarkdown || [];
     }
     /**
-     * default regexes for markdown support
+     * markdown patterns for icons
      *
      * @readonly
      */
-    get defaultRegexes() {
+    get simpleIconMarkdown(){
+      import("@lrnwebcomponents/simple-icon/lib/simple-iconset.js").then(module=>{
+        
+        let icons = module.SimpleIconsetStore && module.SimpleIconsetStore.iconlist ? module.SimpleIconsetStore.iconlist : [];
+        if (icons) window.richTextEditorIconMarkdown = window.richTextEditorIconMarkdown 
+          || icons.map(icon=>{
+            let iconmd = `!(${icon})`.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1');
+            return {
+              match: new RegExp(iconmd, "g"),
+              replace: `<simple-icon-lite icon="${icon}"></simple-icon-lite>`,
+              excludeAncestors: ["pre", "code"],
+              lastChars: [")"],
+              examples: [iconmd]
+            }
+          });
+      });
+      return window.richTextEditorIconMarkdown || [];
+    }
+    /**
+     * a series of markdown patterns
+     *
+     * @readonly
+     */
+    get markdownPatterns(){
       return [
         ...this.headingMarkdown,
         ...this.imageMarkdown,
@@ -1512,9 +1541,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ...this.listMarkdown,
         ...this.horizontalRuleMarkdown,
         ...this.footnoteMarkdown,
+      ];
+    }
+    /**
+     * default regexes for markdown support
+     *
+     * @readonly
+     */
+    get defaultPatterns() {
+      return [
+        ...this.markdownPatterns,
         ...this.emojiMarkdown,
         ...this.symbolMarkdown,
-        ...this.mdashMarkdown,
+        ...this.simpleIconMarkdown,
+        ...this.mdashReplacement
       ];
     }
     /**
@@ -1524,7 +1564,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get replacementsByLastKey() {
       let regexes = {};
-      this.defaultRegexes.forEach((regex) => {
+      this.defaultPatterns.forEach((regex) => {
         let keys =
           !regex.lastChars || regex.lastChars.length == 0
             ? [""]
@@ -1546,7 +1586,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get commandsByLastKey() {
       let regexes = {};
-      this.defaultRegexes.forEach((regex) => {
+      this.defaultPatterns.forEach((regex) => {
         let keys =
           !regex.lastChars || regex.lastChars.length == 0
             ? [""]
@@ -2097,7 +2137,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         focus: (e) => this._handleTargetFocus(target, e),
         blur: (e) => this._handleTargetBlur(e),
         keydown: (e) => this._handleShortcutKeys(e),
-        keyup: (e) => this._handleMarkdownReplacement(e),
+        keyup: (e) => this._handlePatterns(e),
         paste: (e) => this._handlePaste(e),
       };
     }
@@ -2174,7 +2214,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {event} e keypress event
      */
-    _handleMarkdownReplacement(e) {
+    _handlePatterns(e) {
       if (!this.enableMarkdown) return;
       let keepPaused = this.historyPaused;
       this.historyPaused = true;
