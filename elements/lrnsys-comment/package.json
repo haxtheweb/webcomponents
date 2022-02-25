@@ -53,6 +53,7 @@
     "@lrnwebcomponents/simple-toast": "^4.0.11",
     "@lrnwebcomponents/simple-tooltip": "^4.0.11",
     "@lrnwebcomponents/word-count": "^4.0.11",
+    "@lrnwebcomponents/grafitto-filter": "^4.0.11",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "3.1.0",
