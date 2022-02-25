@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.10",
+  "version": "4.0.11",
   "description": "A simple modal that ensures accessibility and stack order context appropriately",
   "repository": {
     "type": "git",
@@ -42,14 +42,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^4.0.10",
+    "@lrnwebcomponents/simple-icon": "^4.0.11",
     "lit": "^2.2.0",
     "web-dialog": "0.0.11"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/simple-fields": "^4.0.10",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.10",
+    "@lrnwebcomponents/simple-fields": "^4.0.11",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.11",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

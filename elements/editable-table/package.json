@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.10",
+  "version": "4.0.11",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -42,20 +42,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-menu-button": "^4.0.10",
-    "@lrnwebcomponents/hax-iconset": "^4.0.10",
-    "@lrnwebcomponents/responsive-utility": "^4.0.10",
-    "@lrnwebcomponents/rich-text-editor": "^4.0.10",
-    "@lrnwebcomponents/simple-icon": "^4.0.10",
-    "@lrnwebcomponents/simple-picker": "^4.0.10",
-    "@lrnwebcomponents/simple-toolbar": "^4.0.10",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.10",
+    "@lrnwebcomponents/a11y-menu-button": "^4.0.11",
+    "@lrnwebcomponents/hax-iconset": "^4.0.11",
+    "@lrnwebcomponents/responsive-utility": "^4.0.11",
+    "@lrnwebcomponents/rich-text-editor": "^4.0.11",
+    "@lrnwebcomponents/simple-icon": "^4.0.11",
+    "@lrnwebcomponents/simple-picker": "^4.0.11",
+    "@lrnwebcomponents/simple-toolbar": "^4.0.11",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.11",
     "@lrnwebcomponents/utils": "^4.0.8",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.10",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.11",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

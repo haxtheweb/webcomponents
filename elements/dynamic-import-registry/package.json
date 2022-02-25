@@ -16,7 +16,7 @@
       "hax": "src/dynamic-import-registry-hax.json"
     }
   },
-  "version": "4.0.10",
+  "version": "4.0.11",
   "description": "maintain manage the registration and usage of dynamic imports",
   "repository": {
     "type": "git",

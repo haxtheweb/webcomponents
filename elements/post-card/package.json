@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.10",
+  "version": "4.0.11",
   "description": "sending you mail from afar, or the browser.",
   "repository": {
     "type": "git",
