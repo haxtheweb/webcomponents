@@ -270,7 +270,7 @@
         ? this.parentByContentId[siblingId]
         : undefined,
       index = this._getContentIndexById(siblingId,section);
-    return index && this.insertIntoSection(schema,section.id,index);
+   return index < 0 ? false : this.insertIntoSection(schema,section.id,index);
   }
   /**
    * inserts content after a sibling with given id
@@ -283,7 +283,7 @@
         ? this.parentByContentId[siblingId]
         : undefined,
       index = this._getContentIndexById(siblingId,section);
-      return index && this.insertIntoSection(schema,section.id,index+1);
+     return index < 0 ? false : this.insertIntoSection(schema,section.id,index+1);
   }
   /**
    * 
@@ -297,7 +297,7 @@
         ? this.parentByContentId[replaceId]
         : undefined,
       index = this._getContentIndexById(replaceId,section);
-      return index && this.insertIntoSection(schema,section.id,index,true);
+     return index < 0 ? false : this.insertIntoSection(schema,section.id,index,true);
   }
   /**
    * removes content with a given Id
@@ -309,7 +309,7 @@
         ? this.parentByContentId[id] 
         : undefined,
       index = this._getContentIndexById(id,section);
-    return index && this.insertIntoSection([],section.id,index,true);
+   return index < 0 ? false : this.insertIntoSection([],section.id,index,true);
   }
   /**
    * 
@@ -349,12 +349,9 @@
    */
   _getContentIndexById(id,section){
     let parentContents = section && section.id && section.contents
-        ? section.contents
-        : undefined,
-      content = this.contentsById[id];
-    return content && parentContents && parentContents.indexOf(content) 
-        ? parentContents.indexOf(content) 
+        ? (section.contents|| []).map(section=>section.id)
         : undefined;
+    return parentContents.indexOf(id);
   }
 
   /**
@@ -484,8 +481,7 @@
  
   // Template return function
   render() {
-    let contents = this.demoMode ? this.demoContents : this.contents ? this.contents : undefined;
-    return !contents ? '' : this._section(contents,1);
+    return this._section(this.demoMode ? this.demoContents : this.contents ? this.contents : undefined,1);
   }
   /**
    * determins if an item is lit html
@@ -578,7 +574,7 @@
           : html`
             <tbody>
               ${cheatsheet.rows.map(rows=>html`
-              <tr>${rows.map(row=>html`<td>${row}</td>`)}</tr>
+              <tr>${(rows||[]).map(row=>html`<td>${row}</td>`)}</tr>
             `)}
         </tbody>
           `}
