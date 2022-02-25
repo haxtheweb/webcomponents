@@ -53,5 +53,6 @@
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
-  }
+  },
+  "gitHead": "bac67ce81927f35543280771df34a19aaeca5e67"
 }
