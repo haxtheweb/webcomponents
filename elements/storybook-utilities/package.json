@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/storybook-utilities",
-  "version": "4.0.8",
+  "version": "4.0.10",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
@@ -14,8 +14,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^4.0.0",
-    "@lrnwebcomponents/lorem-data": "^4.0.8",
-    "@lrnwebcomponents/simple-colors": "^4.0.8",
+    "@lrnwebcomponents/lorem-data": "^4.0.10",
+    "@lrnwebcomponents/simple-colors": "^4.0.10",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/polymer": "5.3.21",
     "lorem-ipsum": "^2.0.3"
