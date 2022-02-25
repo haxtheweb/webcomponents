@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.11",
+  "version": "4.0.12",
   "description": "helpers for building lazy loading images",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^4.0.11",
+    "@lrnwebcomponents/simple-icon": "^4.0.12",
     "lit": "^2.2.0"
   },
   "devDependencies": {
