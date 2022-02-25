@@ -55,9 +55,11 @@
     "@lrnwebcomponents/simple-picker": "^4.0.8",
     "@lrnwebcomponents/simple-popover": "^4.0.8",
     "@lrnwebcomponents/simple-toolbar": "^4.0.8",
+    "@lrnwebcomponents/end-user-doc": "^4.0.9",
     "@lrnwebcomponents/utils": "^4.0.8",
     "@polymer/iron-icons": "^3.0.1",
     "lit": "^2.2.0",
+    "lit-html": "^2.2.0",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {
