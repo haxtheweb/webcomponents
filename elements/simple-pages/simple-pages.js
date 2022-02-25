@@ -15,49 +15,51 @@ import { LitElement, html, css } from "lit";
  * @element simple-pages
  */
 class SimplePages extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        iron-pages:not(:defined) {
-          display: none;
-        }
-      `,
+iron-pages:not(:defined) {
+  display: none;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <iron-pages
-      selected="${this.selected}"
-      selected-attribute="${this.selectedAttribute}"
-      @selected-changed="${this._selectedChanged}"
-    >
-      <slot></slot>
-    </iron-pages>`;
+    return html`
+
+<iron-pages selected="${this.selected}" selected-attribute="${this.selectedAttribute}" @selected-changed="${this._selectedChanged}">
+  <slot></slot>
+</iron-pages>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      selected: {
-        type: Number,
-      },
-      selectedAttribute: {
-        type: String,
-        attribute: "selected-attribute",
-      },
-    };
+  
+  ...super.properties,
+  
+  "selected": {
+    "type": Number
+  },
+  "selectedAttribute": {
+    "type": String,
+    "attribute": "selected-attribute"
+  }
+}
+;
   }
 
   /**
@@ -89,7 +91,7 @@ class SimplePages extends LitElement {
     ) {
       let el = this.children[e.detail.value];
       if (!window.customElements.get(el.tagName.toLowerCase())) {
-        const basePath = new URL("./", import.meta.url).href;
+        const basePath = new URL("./simple-pages.js", import.meta.url).href + "/../";
         import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
           (response) => {
             setTimeout(() => {

@@ -51,7 +51,12 @@
     "@polymer/polymer": "^3.4.1",
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-grid": "^5.2.5",
-    "@vaadin/vaadin-upload": "^4.4.1"
+    "@vaadin/vaadin-upload": "^4.4.1",
+    "@polymer/iron-icons": "3.0.1",
+    "@lrnwebcomponents/lrn-icons": "^4.0.5",
+    "@lrnwebcomponents/simple-icon": "^4.0.8",
+    "@lrnwebcomponents/hax-iconset": "^4.0.8",
+    "@lrnwebcomponents/dropdown-select": "^4.0.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

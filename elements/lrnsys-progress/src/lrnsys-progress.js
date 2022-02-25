@@ -22,9 +22,9 @@ class LrnsysProgress extends PolymerElement {
   constructor() {
     super();
     this.completeSound =
-      new URL("./", import.meta.url).href + "lib/assets/complete.mp3";
+      new URL("./lib/assets/complete.mp3", import.meta.url).href;
     this.finishedSound =
-      new URL("./", import.meta.url).href + "lib/assets/finished.mp3";
+      new URL("./lib/assets/finished.mp3", import.meta.url).href;
   }
   static get template() {
     return html`
@@ -621,7 +621,7 @@ class LrnsysProgress extends PolymerElement {
    * This forms the line that's connecting the steps.
    */
   _overallPercentageCompute(items, active) {
-    if (typeof items !== typeof undefined) {
+    if (typeof items !== typeof undefined && this.shadowRoot) {
       this.shadowRoot.querySelector("#progress").classList.add("transiting");
       return (active / (items.length - 1)) * 100;
     }

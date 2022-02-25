@@ -37,8 +37,8 @@ class Hal9000 extends LitElement {
     window.Hal9000 = window.Hal9000 || {};
     window.Hal9000.instance = this;
     const location = `${
-      new URL("./", import.meta.url).href
-    }lib/annyang/annyang.min.js`;
+      new URL("./lib/annyang/annyang.min.js", import.meta.url).href
+    }`;
     window.addEventListener(
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this)

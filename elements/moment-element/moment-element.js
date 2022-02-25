@@ -56,8 +56,7 @@ class MomentElement extends LitElement {
     this.outputFormat = "";
     this.from = "";
     this.to = "";
-    const basePath = new URL("./", import.meta.url).href;
-    const location = `${basePath}lib/moment/moment.js`;
+    const location = new URL("./lib/moment/moment.js", import.meta.url).href;
     window.addEventListener(
       "es-bridge-moment-loaded",
       this._momentLoaded.bind(this)

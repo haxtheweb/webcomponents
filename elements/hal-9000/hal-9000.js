@@ -13,90 +13,96 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @demo demo/index.html
  */
 class Hal9000 extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
-      `,
+:host {
+  display: block;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <slot></slot>`;
+    return html`
+
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Commands to listen for and take action on
-       */
-      commands: {
-        name: "commands",
-        type: Object,
-      },
-      /**
-       * The name that HAL 9000 should respond to.
-       */
-      respondsTo: {
-        name: "respondsTo",
-        type: String,
-        attribute: "responds-to",
-      },
-      /**
-       * Debug mode for annyang
-       */
-      debug: {
-        name: "debug",
-        type: Boolean,
-      },
-      /**
-       * Start automatically
-       */
-      auto: {
-        name: "auto",
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Status of listening
-       */
-      enabled: {
-        name: "enabled",
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Pitch of speech
-       */
-      pitch: {
-        name: "pitch",
-        type: Number,
-        reflect: true,
-      },
-      /**
-       * Rate of speech
-       */
-      rate: {
-        name: "rate",
-        type: Number,
-        reflect: true,
-      },
-      /**
-       * Language of the speaker
-       */
-      language: {
-        name: "language",
-        type: String,
-        reflect: true,
-      },
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Commands to listen for and take action on
+   */
+  "commands": {
+    "name": "commands",
+    "type": Object
+  },
+  /**
+   * The name that HAL 9000 should respond to.
+   */
+  "respondsTo": {
+    "name": "respondsTo",
+    "type": String,
+    "attribute": "responds-to"
+  },
+  /**
+   * Debug mode for annyang
+   */
+  "debug": {
+    "name": "debug",
+    "type": Boolean
+  },
+  /**
+   * Start automatically
+   */
+  "auto": {
+    "name": "auto",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * Status of listening
+   */
+  "enabled": {
+    "name": "enabled",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * Pitch of speech
+   */
+  "pitch": {
+    "name": "pitch",
+    "type": Number,
+    "reflect": true
+  },
+  /**
+   * Rate of speech
+   */
+  "rate": {
+    "name": "rate",
+    "type": Number,
+    "reflect": true
+  },
+  /**
+   * Language of the speaker
+   */
+  "language": {
+    "name": "language",
+    "type": String,
+    "reflect": true
+  }
+}
+;
   }
 
   /**
@@ -121,8 +127,8 @@ class Hal9000 extends LitElement {
     window.Hal9000 = window.Hal9000 || {};
     window.Hal9000.instance = this;
     const location = `${
-      new URL("./", import.meta.url).href
-    }lib/annyang/annyang.min.js`;
+      new URL("./lib/annyang/annyang.min.js", import.meta.url).href
+    }`;
     window.addEventListener(
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this)
