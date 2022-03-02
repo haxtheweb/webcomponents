@@ -1922,7 +1922,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         rangeClone;
       span.id = id;
       if(this.target !== node && !this.target.contains(node)) return;
-      if(e.key == "Enter"){
+      if(e.key == "Enter" && range.commonAncestorContainer.previousElementSibling){
         range.commonAncestorContainer.previousElementSibling.append(span);
       } else {
         range.insertNode(span);
@@ -1976,69 +1976,76 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           if (html && cloneSearch)
             cloneSearch = cloneSearch.replace(/&nbsp;/g, " ");
         },
-        //node any matches that are valid
-        excludeAncestors,
-        ignoreMatches,
         match,
+        //ignore matches is excluded ancestors
+        isIgnored = (regex, searchNode)=>{
+          let excludeAncestors = (regex.excludeAncestors || []).join();
+          return searchNode && excludeAncestors.length > 0
+            ? searchNode.closest && searchNode.closest(excludeAncestors)
+            : false;
+        },
         checkMatch = (regex, searchNode,search = cloneSearch) => {
-          
-          excludeAncestors = (regex.excludeAncestors || []).join();
-          ignoreMatches =
-            searchNode && excludeAncestors.length > 0
-              ? searchNode.closest && searchNode.closest(excludeAncestors)
-              : false;
-        return !!search &&
-          search.length > 1 &&
-            regex.match &&
-            !ignoreMatches
-              ? search.match(regex.match)
-              : false;
+          let ignoreMatches = isIgnored(regex, searchNode);
+          return !!search &&
+            search.length > 1 &&
+              regex.match &&
+              !ignoreMatches
+                ? search.match(regex.match)
+                : false;
         };
 
       //main node of the range for matching commands
       makeSearchClone(node);
+
       //regex commands to text
-      let commands = listByLastKey(this.commandsByLastKey);
+      let commands = e.key == "Enter" ? this.commandsByLastKey['enter'] : listByLastKey(this.commandsByLastKey);
 
       commands.forEach((regex) => {
         if (!node || !node.cloneNode) return;
-        
-        match = checkMatch(regex, node);
+        let ignoreMatches = isIgnored(regex, node),
+          current = range.commonAncestorContainer,
+          prev = current ? current.previousElementSibling : false; 
+          searchNodeClone = prev ? prev.cloneNode(true) : false;
+          if(span) span.remove();
+          let search = e.key == "Enter" ? searchNodeClone.innerHTML : (cloneSplit[0] || '');
+        match = !ignoreMatches && regex.match && search.length > 1 ? `${search}`.match(regex.match) : false;
 
         //run the matching command
         if (match && match[0]) {
-          let commandVal = regex.commandVal;
-          span.remove();
-          range.setStart(
-            range.startContainer,
-            range.startOffset - match[0].length
-          );
-          range.deleteContents();
+          let commandVal = regex.commandVal,
+            isToggled = (range.commonAncestorContainer.tagName || '').toLowerCase() == commandVal.toLowerCase() 
+              || range.commonAncestorContainer.closest(commandVal);
+          if(e.key == "Enter") {
+            range.setStartBefore(prev);
+            prev.innerHTML = searchNodeClone.innerHTML.replace(regex.match,'');
+            range.setEndAfter(current);
+            //clean up extra stuff
+            span = range.commonAncestorContainer ? range.commonAncestorContainer.querySelector(`#${id}`) : false;
+            span.parentElement.remove();
+          }
           if (
-            regex.command === "formatBlock" &&
-            range.commonAncestorContainer.closest(commandVal)
+            regex.command === "formatBlock" && isToggled
           ) {
             commandVal = "p";
           } else if (
-            regex.command === "wrapRange" &&
-            range.commonAncestorContainer.closest(commandVal)
+            regex.command === "wrapRange" && isToggled
           ) {
             commandVal = "span";
           }
-          this._handleCommand(regex.command, commandVal, range);
-          if (searchNodeClone) searchNodeClone.remove();
+          this._handleCommand(regex.command, commandVal, this.getRange());
+          range = this.getRange();
           found = true;
         }
       });
       //handle multline patterns, usch as lists and headings
-      if(e.key == "Enter" && range.commonAncestorContainer.previousElementSibling){
+      if(!found && e.key == "Enter" && range.commonAncestorContainer.previousElementSibling){
         let current = range.commonAncestorContainer,
           prev = current ? current.previousElementSibling : false; 
-        searchNodeClone = prev.cloneNode(true);
-        span = searchNodeClone.querySelector(`#${id}`);
-        if(span) span.remove();
-        let search = searchNodeClone ? searchNodeClone.innerHTML : false,
-          multiline = search ? listByLastKey(this.replacementsByLastKey).filter(regex=>regex.lastChars && regex.lastChars == "enter") : [];
+          searchNodeClone = prev ? prev.cloneNode(true) : false;
+          span = searchNodeClone ? searchNodeClone.querySelector(`#${id}`) : false;
+          if(span) span.remove();
+          let search = searchNodeClone ? searchNodeClone.innerHTML.replace(/&nbsp;/,' ') : false,
+          multiline = search ? this.replacementsByLastKey["enter"] : [];
           if(searchNodeClone) searchNodeClone.remove();
         multiline.forEach((regex)=>{
           if(found) return;
@@ -2061,7 +2068,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           }
         });
       };
-
       //search a given node for regex replacements
       let searchReplacements = (searchNode) => {
         makeSearchClone(searchNode);
