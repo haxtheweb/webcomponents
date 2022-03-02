@@ -107,14 +107,14 @@ export const rteStrikeMarkdown = {
 export const rteSubscriptMarkdown = {
   patterns: [
     {
-      match: /~(([^~]|(~{2}[^~]+~{2})])+)~/,
-      replace: "<sub>$1</sub>",
+      match: /([^~]|^)~(([^~]*~{2}[^~]+~{2}[^~]*)+|[^~]+)~(?!~)/,
+      replace: "$1<sub>$2</sub>",
       excludeAncestors: ["sub", "pre", "code"],
       lastChars: ["~"],
       examples: ["text~subscript~"],
     },
     {
-      match: /(~{2})[^~]*~([^~]+)/,
+      match: /([^~]|^|~{2})~([^~]+)~(?=[^~])/,
       replace: "$1<sub>$2</sub>",
       excludeAncestors: ["sub", "pre", "code"],
       lastChars: ["~"],
@@ -129,14 +129,14 @@ export const rteSubscriptMarkdown = {
 export const rteSuperscriptMarkdown = {
   patterns: [
     {
-      match: /\^(([^\^]|(\^{2}[^\^]+\^{2})])+)\^/,
-      replace: "<sup>$1</sup>",
+      match:  /([^\^]|^)\^(([^\^]*\^{2}[^\^]+\^{2}[^\^]*)+|[^\^]+)\^(?!\^)/,
+      replace: "$1<sup>$2</sup>",
       excludeAncestors: ["sup", "pre", "code"],
       lastChars: ["^"],
       examples: ["text^superscript^"],
     },
     {
-      match: /(\^{2})[^\^]*\^([^\^]+)/,
+      match: /([^\^]|^|\^{2})\^([^\^]+)\^(?=[^\^])/,
       replace: "$1<sup>$2</sup>",
       excludeAncestors: ["sup", "pre", "code"],
       lastChars: ["^"],
@@ -170,7 +170,7 @@ export const rteLinkMarkdown = {
       match: /(&lt;|<)(#\S+|(https?:\/\/|\.{1,2}\/)+[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))(&gt;|>)/,
       replace: '<a href="$2">$2</a>',
       excludeAncestors: ["a", "pre", "code"],
-      lastChars: [">"],
+      lastChars: [">",";"],
       examples: ["<http://haxtheweb.org>"],
     },
     {
@@ -191,7 +191,7 @@ export const rteLinkMarkdown = {
       match: /(&lt;|<)(?:mailto\:)?(\w+@(\w+\.)+\w{2,4})(\&gt;|>)/,
       replace: '<a href="mailto:$1">$2</a>',
       excludeAncestors: ["a", "pre", "code"],
-      lastChars: [">"],
+      lastChars: [">",";"],
       examples: ["<email@domain.com>"],
     },
   ]
@@ -235,13 +235,13 @@ export const rteCodeMarkdown = {
 */
 export const rtePreformattedMarkdown = {
   patterns: [
-    {
+    /*{
       match: /`{3}/,
       command: "formatBlock",
       commandVal: "pre",
       excludeAncestors: ["code"],
       lastChars: ["`"],
-    },
+    },*/
     {
       match: /`{3}([^`]+)`{3}(?!`)/,
       replace: "<pre>$1</pre>",
@@ -298,7 +298,7 @@ export const rteListMarkdown = {
 export const rteHorizontalRuleMarkdown = {
   patterns: [
     {
-      match: /(\n|^)[-\*|_]{3,}(\n|$)/,
+      match: /(\n|^)[-\*_]{3,}(?=\n|$)/,
       replace: "<hr>",
       excludeAncestors: ["pre", "code"],
       lastChars: ["enter"],
