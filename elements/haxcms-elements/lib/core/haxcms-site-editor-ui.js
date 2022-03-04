@@ -238,10 +238,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         label="${this.t.editDetails}"
         voice-command="edit (page) details"
       ></simple-icon-button>
-      <haxcms-button-add
-       hidden
-       dark
-       id="addbutton"></haxcms-button-add>
+      <haxcms-button-add hidden dark id="addbutton"></haxcms-button-add>
       <haxcms-button-add
         hidden
         dark

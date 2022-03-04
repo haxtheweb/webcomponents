@@ -68,7 +68,10 @@ class AwesomeExplosion extends LitElement {
     super();
     this.state = "stop";
     this.image = new URL("./assets/explode.gif", import.meta.url).href;
-    this.sound = new URL("./assets/273320__clagnut__fireworks.mp3", import.meta.url).href;
+    this.sound = new URL(
+      "./assets/273320__clagnut__fireworks.mp3",
+      import.meta.url
+    ).href;
     this.size = "medium";
     this.color = "";
     this.resetSound = false;

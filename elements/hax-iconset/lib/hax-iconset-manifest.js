@@ -46,6 +46,7 @@ export const HaxIconsetManifest = [
       "6-6",
       "8-4",
       "add-brick",
+      "add-child-page",
       "add-item",
       "add-page",
       "add",
@@ -58,6 +59,7 @@ export const HaxIconsetManifest = [
       "bricks",
       "calendar",
       "code-json",
+      "duplicate",
       "expand-more",
       "figure",
       "file-ai",
@@ -232,6 +234,7 @@ export const HaxIconsetManifest = [
       "subscript",
       "superscript",
       "unlink",
+      "vector-polyline-plus",
     ],
   },
   {

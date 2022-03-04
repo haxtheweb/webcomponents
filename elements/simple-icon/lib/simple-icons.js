@@ -16,10 +16,7 @@ const here = new URL("./simple-icons.js", import.meta.url).href + "/../";
   "social",
   "loading",
 ].forEach((i) => {
-  SimpleIconsetStore.registerIconset(
-    i,
-    `${here}svgs/${i}/`
-  );
+  SimpleIconsetStore.registerIconset(i, `${here}svgs/${i}/`);
 });
 // flags too but they come from elsewhere
 // ISO 3166-1-alpha-2 Flags

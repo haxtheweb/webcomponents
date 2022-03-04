@@ -311,7 +311,8 @@
         {
           "name": "fields-endpoint",
           "description": "End point to load this data",
-          "type": "string"
+          "type": "string",
+          "default": "\"href\""
         }
       ],
       "properties": [
@@ -415,7 +416,8 @@
           "name": "fieldsEndpoint",
           "attribute": "fields-endpoint",
           "description": "End point to load this data",
-          "type": "string"
+          "type": "string",
+          "default": "\"href\""
         }
       ],
       "events": [

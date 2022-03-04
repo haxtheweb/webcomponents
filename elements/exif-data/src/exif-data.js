@@ -56,7 +56,7 @@ class ExifData extends HTMLElement {
     super();
     this.nodeData = [];
     if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath + 'lib/exif-js.js';
+      this.basePath = window.WCGlobalBasePath + "lib/exif-js.js";
     } else {
       this.basePath = new URL("./lib/exif-js.js", import.meta.url).href;
     }

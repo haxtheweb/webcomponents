@@ -26,11 +26,11 @@
         },
         {
           "name": "image",
-          "description": "`image` {`string`} - This allows you to swap out the image\n\nProperty: image"
+          "description": "`image` {`string`} - This allows you to swap out the image\n\nProperty: image\n\nDefault: href"
         },
         {
           "name": "sound",
-          "description": "`sound` {`string`} - This allows you to swap out the sound.\n\nProperty: sound"
+          "description": "`sound` {`string`} - This allows you to swap out the sound.\n\nProperty: sound\n\nDefault: href"
         },
         {
           "name": "size",
@@ -76,11 +76,11 @@
         },
         {
           "name": "image",
-          "description": "`image` {`string`} - This allows you to swap out the image\n\nProperty: image"
+          "description": "`image` {`string`} - This allows you to swap out the image\n\nProperty: image\n\nDefault: href"
         },
         {
           "name": "sound",
-          "description": "`sound` {`string`} - This allows you to swap out the sound.\n\nProperty: sound"
+          "description": "`sound` {`string`} - This allows you to swap out the sound.\n\nProperty: sound\n\nDefault: href"
         },
         {
           "name": "size",

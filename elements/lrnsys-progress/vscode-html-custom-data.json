@@ -114,11 +114,11 @@
         },
         {
           "name": "complete-sound",
-          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound"
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
           "name": "finished-sound",
-          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound"
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
           "name": "onnode-percent-milestone",
@@ -213,11 +213,11 @@
         },
         {
           "name": "complete-sound",
-          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound"
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
           "name": "finished-sound",
-          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound"
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
           "name": "onprogress-state-change",
@@ -316,11 +316,11 @@
         },
         {
           "name": "complete-sound",
-          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound"
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
           "name": "finished-sound",
-          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound"
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
           "name": "onprogress-state-change",

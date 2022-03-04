@@ -264,7 +264,8 @@ class PaperAvatar extends LitElement {
    * LitElement life cycle - shadowDom / properties mapped
    */
   firstUpdated(changedProperties) {
-    const location = new URL("./lib/jdenticon-1.4.0.min.js", import.meta.url).href;
+    const location = new URL("./lib/jdenticon-1.4.0.min.js", import.meta.url)
+      .href;
     window.addEventListener(
       "es-bridge-jdenticon-loaded",
       this._jdenticonLoaded.bind(this)

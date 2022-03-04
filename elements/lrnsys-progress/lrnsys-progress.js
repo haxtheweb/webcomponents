@@ -21,10 +21,14 @@ import "./lib/lrnsys-progress-circle.js";
 class LrnsysProgress extends PolymerElement {
   constructor() {
     super();
-    this.completeSound =
-      new URL("./lib/assets/complete.mp3", import.meta.url).href;
-    this.finishedSound =
-      new URL("./lib/assets/finished.mp3", import.meta.url).href;
+    this.completeSound = new URL(
+      "./lib/assets/complete.mp3",
+      import.meta.url
+    ).href;
+    this.finishedSound = new URL(
+      "./lib/assets/finished.mp3",
+      import.meta.url
+    ).href;
   }
   static get template() {
     return html`
