@@ -1901,7 +1901,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _handlePatterns(e) {
       if (!this.enableMarkdown) return;
-
+      let range = this.getRange();
+      
       //ensures there will always be a child node to check
       if([...this.target.children].length < 1) {
         let p = document.createElement("p");
@@ -1916,8 +1917,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.historyPaused = true;
 
       //drop a placeholder into editor so we know where range is
-      let range = this.getRange(), 
-        node = !range
+      let node = !range
           ? false
           : this.rangeNodeOrParentNode(range),
         id = "range-placeholder-" + Date.now(),
@@ -2193,8 +2193,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!this.__promptOpen) this.range = this.getRange();
     }
     _handlePaste(e) {
+      console.log(e);
+      e.preventDefault();
       e.stopImmediatePropagation();
       this.pasteFromClipboard();
+      return false;
     }
 
     /**
