@@ -235,13 +235,13 @@ export const rteCodeMarkdown = {
 */
 export const rtePreformattedMarkdown = {
   patterns: [
-    /*{
-      match: /`{3}/,
+    {
+      match: /(\n|^)`{3}/,
       command: "formatBlock",
       commandVal: "pre",
       excludeAncestors: ["code"],
-      lastChars: ["`"],
-    },*/
+      lastChars: ["enter"],
+    },
     {
       match: /`{3}([^`]+)`{3}(?!`)/,
       replace: "<pre>$1</pre>",
