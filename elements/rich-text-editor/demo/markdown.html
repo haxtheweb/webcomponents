@@ -23,7 +23,7 @@
       <demo-snippet>
         <template>
           <rich-text-editor-toolbar id="editor" show="always" enable-markdown controls="content"></rich-text-editor-toolbar>
-          <rich-text-editor id="content" toolbar="editor"><p>This editor uses default its markdown patterns</p></rich-text-editor>
+          <rich-text-editor id="content" toolbar="editor"></rich-text-editor>
           <script>
             let editor = document.getElementById('editor');
             editor.config = [
@@ -40,8 +40,40 @@
       <h1>Configuring rich-text-editor toolbar markdown patterns</h1>
       <demo-snippet>
         <template>
-          <rich-text-editor-toolbar id="all" show="always" enable-markdown controls="content"></rich-text-editor-toolbar>
-          <rich-text-editor id="content" toolbar="editor"><p>This editor uses uses all of the patterns packaged with it.</p></rich-text-editor>
+          <rich-text-editor-toolbar id="all" show="always" enable-markdown controls="allcontent"></rich-text-editor-toolbar>
+          <rich-text-editor id="allcontent" toolbar="all">
+            <h2>Heading 2</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              In nec tincidunt tortor, at varius leo. Mauris varius 
+              iaculis enim in molestie. Cras semper odio id nunc 
+              convallis gravida. Curabitur ut dui non massa venenatis 
+              aliquam. Integer quis <a href="#top">turpis ut tellus</a> 
+              facilisis elementum. Nulla non leo dapibus, interdum ipsum 
+              imperdiet, pharetra nibh. Praesent cursus posuere varius. 
+              Sed non <i>pellentesque</i> massa. Morbi et purus id quam fermentum 
+              consectetur sit amet sed est. Nam convallis tellus non nisl 
+              tempor ornare. Duis <b>maximus</b> malesuada <code>arcu</code> sit amet 
+              placerat. Duis sollicitudin ex at dapibus porta. Pellentesque 
+              porta tellus at diam bibendum congue. Nam dignissim leo nec 
+              consectetur consequat.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              In nec tincidunt tortor, at varius leo. Mauris varius 
+              iaculis enim in molestie. Cras semper odio id nunc 
+              convallis gravida. Curabitur ut dui non massa venenatis 
+              aliquam. Integer quis <a href="#top">turpis ut tellus</a> 
+              facilisis elementum. Nulla non leo dapibus, interdum ipsum 
+              imperdiet, pharetra nibh. Praesent cursus posuere varius. 
+              Sed non <i>pellentesque</i> massa. Morbi et purus id quam fermentum 
+              consectetur sit amet sed est. Nam convallis tellus non nisl 
+              tempor ornare. Duis <b>maximus</b> malesuada <code>arcu</code> sit amet 
+              placerat. Duis sollicitudin ex at dapibus porta. Pellentesque 
+              porta tellus at diam bibendum congue. Nam dignissim leo nec 
+              consectetur consequat.
+            </p>
+          </rich-text-editor>
           <script>
             let all = document.getElementById('all');
             import("../lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
