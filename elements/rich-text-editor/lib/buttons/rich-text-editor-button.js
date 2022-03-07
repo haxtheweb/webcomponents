@@ -24,6 +24,8 @@ const RichTextStyles = [
     :host {
       --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);
       --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);
+      --simple-toolbar-hover-border-color: var(--rich-text-editor-hover-border-color, var(--rich-text-editor-border-color, #ddd));
+      --simple-toolbar-hover-border-width: var(--rich-text-editor-hover-border-width, var(--rich-text-editor-border-width, 1px));
       --simple-toolbar-button-bg: var(--rich-text-editor-bg, #ffffff);
       --simple-fields-focus-color: var(--rich-text-editor-focus-color, blue);
       --simple-fields-invalid-color: var(--rich-text-editor-error-color, #800);
@@ -44,8 +46,6 @@ const RichTextToolbarStyles = [
   ...RichTextStyles,
   css`
     :host {
-      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);
-      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);
       --simple-toolbar-button-opacity: var(
         --rich-text-editor-button-opacity,
         1
@@ -220,7 +220,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @memberof RichTextEditorButton
      */
     get isToggled() {
-      return this.commandIsToggled;
+      return this.commandToggledForRange(this.range);
     }
 
     /**

@@ -92,9 +92,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               var(--rich-text-editor-border-color, #ddd);
             background-color: var(--rich-text-editor-bg, #ffffff);
           }
-          :host(:focus-within) {
-            border-width: var(--rich-text-editor-border-width, 1px);
-          }
+        
           #morebutton::part(button) {
             border-radius: var(
               --rich-text-editor-button-disabled-border-radius,
@@ -330,6 +328,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this._handleTargetSelection.bind(this.__toolbar)
       );
       this.addEventListener("mousedown", this._handleToolbarMousedown);
+      this.addEventListener("mouseover", this._handleToolbarMouseover);
     }
 
     connectedCallback() {
@@ -1264,9 +1263,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         !this.target ||
         !this.target.getAttribute("contenteditable") ||
         this.target.getAttribute("contenteditable") != "true" ||
-        !this.__prompt.hidden ||
-        !this.__highlight.hidden ||
-        this.__highlight.isActiveForEditor(this.target)
+        (!!this.__prompt && !this.__prompt.hidden) ||
+        (!!this.__highlight && !this.__highlight.hidden) ||
+        (!!this.__highlight && this.__highlight.isActiveForEditor(this.target))
       );
     }
     /**
@@ -1886,6 +1885,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleToolbarMousedown(e) {
       //stops mousedown from bubbling up and triggering other focus logic
       e.stopImmediatePropagation();
+    }
+    /**
+     * handles when toolbar has mouseover event
+     * @param {event} e 
+     */
+    _handleToolbarMouseover(e) {
+      //makes sure toolbar is enabled
+      if(!!this.target) this.target.tabindex = 0;
     }
     /**
      * checks for markdown and replaces
