@@ -36,9 +36,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
           :host(:empty) {
             opacity: 0.7;
           }
-          :host(:focus) {
-            outline: none;
-          }
 
           :host(.heightmax[contenteditable="true"]) {
             max-height: calc(100vh - 200px);
@@ -56,7 +53,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
             padding: 0;
             min-height: var(--rich-text-editor-min-height, 20px);
             cursor: pointer;
-            outline: none;
             flex: 1 1 100%;
             width: 100%;
           }
