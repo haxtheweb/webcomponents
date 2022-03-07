@@ -44,7 +44,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     }
 
     get commandIsToggled() {
-      return this.commandToggledForRange(this.range);
+      return this.commandToggledForRange();
     }
     /**
      * whether or not toolbar breadcrumbs
@@ -305,6 +305,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             ? !!this.rangeOrMatchingAncestor("u")
             : command === "wrapRange"
             ? !!this.rangeOrMatchingAncestor(commandVal)
+            : command === "insertOrderedList"
+            ? !!this.rangeOrMatchingAncestor('OL')
+            : command === "insertUnorderedList"
+            ? !!this.rangeOrMatchingAncestor('UL')
             : query;
       return !!block ? true : false;
     }
@@ -662,8 +666,13 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     _handleCommand(command, commandVal, range = this.getRange()) {
       let toolbar = this.__toolbar,
         target = toolbar.target,
-        keepPaused = toolbar && toolbar.historyPaused;
-
+        keepPaused = toolbar && toolbar.historyPaused,
+        el = this.__highlight == this.rangeElementOrParentElement() 
+          ? this.__highlight.parentNode 
+          : this.rangeElementOrParentElement(),
+        tagName = el.tagName,
+        ul = 'insertUnorderedList',
+        ol = 'insertOrderedList';
       if (
         !toolbar ||
         !target ||
@@ -672,28 +681,69 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         target.getAttribute("contenteditable") != "true"
       )
         return;
-
-      //custom cancel source command
       if (command === "cancel") {
+        //custom cancel source command
         toolbar.revertTarget(target);
         toolbar.close(target);
-        //custom close source command
       } else if (command === "close") {
+        //custom close source command
         toolbar.close(target);
-        //custom view source command
       } else if (command === "viewSource") {
+        //custom view source command
         this.__source.toggle(toolbar);
-        //overrides default undo
       } else if (command == "undo") {
+        //overrides default undo
         toolbar.undo();
         return;
-        //overrides default redo
       } else if (command == "redo") {
+        //overrides default redo
         toolbar.redo();
         return;
-        //custom command wraps a range in element specified by commandVal
+      } else if(["UL","OL","LI"].includes(tagName) && [ul,ol].includes(command)){
+        //handle list toggling
+        let parent = el.parentNode,
+          listType = ["UL","OL"].includes(tagName) 
+            ? tagName.toLowerCase() 
+            : parent && parent.tagName 
+            ? parent.tagName.toLowerCase()
+            : '',
+          toggle = (listType == 'ul' && command == ul) || (listType == 'ol' && command == ol),
+          swap = (listType == 'ol' && command == ul) || (listType == 'ul' && command == ol),
+          switchListStyles = (node) =>{
+            let newNode = document.createElement(node.tagName == 'OL' ? 'ul' : 'ol')
+            node.parentNode.insertBefore(newNode,node);
+            [...node.children].forEach(li=>newNode.append(li));
+            node.remove();
+            range.selectNode(newNode);
+            range.collapse();
+          },
+          unwapListItem = (list,li,block = "p",reverse = false) =>{
+            let blockEl = document.createElement(block);
+            [...li.childNodes].forEach(child=>blockEl.append(child));
+            if(reverse) {
+              list.parentNode.insertBefore(blockEl,list.nextSibling);
+            } else {
+              list.parentNode.insertBefore(blockEl,list);
+            }
+            range.selectNode(blockEl);
+            li.remove();
+          },
+          unwapLists = (list,block) =>{
+            [...list.children].forEach(li=>unwapListItem(list,li,block));
+            list.remove();
+            range.collapse();
+          };
+        if(tagName == "LI" && toggle && (parent.firstChild == el)) {
+          unwapListItem(parent,el);
+        } else if(tagName == "LI" && toggle && (parent.lastChild == el)) {
+          unwapListItem(parent,el,'p',true);
+        } else if(toggle){
+          unwapLists(parent);
+        } else if(swap){
+          switchListStyles(parent);
+        }
       } else if (command == "wrapRange" && !!commandVal) {
-        // wrap or unwrapsa range with a commandVal element
+        //custom command wraps a range in element specified by commandVal
         let toggled = this.commandToggledForRange(
             range,
             "wrapRange",
