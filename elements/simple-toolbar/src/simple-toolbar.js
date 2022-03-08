@@ -628,9 +628,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     checkDocSection(changedProperties,dataProp,sectionProp,updateFunction,enabledProp,parentId){
       if(!updateFunction) return;
-      let enabledChanged = false, docsChanged = false;
+      let enabledChanged = false, 
+        docsChanged = false, 
+        enabled = false;
       changedProperties.forEach((oldValue, propName) => {
         if (!!enabledProp && propName === enabledProp)  {
+          enabledChanged = true;
+        }
+        if(propName == '__helpDocs') {
           enabledChanged = true;
         }
         if (propName === dataProp)  {
@@ -638,7 +643,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           enabledChanged = true;
         }
       });
-      if(enabledChanged) this.updateDocSection(sectionProp,updateFunction,docsChanged,enabledChanged,parentId);
+      enabled = !!this.__helpDocs && (!enabledProp || !!this[enabledProp]);
+      if(enabledChanged) this.updateDocSection(sectionProp,updateFunction,docsChanged,enabled,parentId);
     }
 
     /**
@@ -653,6 +659,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     updateDocSection(sectionProp,updateFunction,changed,enabled,parentId){
       if(!this.endUserDoc || !updateFunction) return;
+      console.log(sectionProp,this.endUserDocContents);
 
       //add end user doc schema if there is none
       if(!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
@@ -668,6 +675,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         //add markdown section schema exists add it to docs
         if(!!this[sectionProp]) this.endUserDoc.appendToSection({...this[sectionProp]},parentId || this.endUserDocId);
       }
+      console.log(sectionProp,this[sectionProp],this.endUserDocContents);
     }
 
     /**

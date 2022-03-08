@@ -714,9 +714,14 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
         value: function checkDocSection(changedProperties, dataProp, sectionProp, updateFunction, enabledProp, parentId) {
           if (!updateFunction) return;
           var enabledChanged = false,
-              docsChanged = false;
+              docsChanged = false,
+              enabled = false;
           changedProperties.forEach(function (oldValue, propName) {
             if (!!enabledProp && propName === enabledProp) {
+              enabledChanged = true;
+            }
+
+            if (propName == '__helpDocs') {
               enabledChanged = true;
             }
 
@@ -725,7 +730,8 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
               enabledChanged = true;
             }
           });
-          if (enabledChanged) this.updateDocSection(sectionProp, updateFunction, docsChanged, enabledChanged, parentId);
+          enabled = !!this.__helpDocs && (!enabledProp || !!this[enabledProp]);
+          if (enabledChanged) this.updateDocSection(sectionProp, updateFunction, docsChanged, enabled, parentId);
         }
         /**
          * shows or hides a documentation section based on whether or not section is enabled
@@ -741,7 +747,8 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
       }, {
         key: "updateDocSection",
         value: function updateDocSection(sectionProp, updateFunction, changed, enabled, parentId) {
-          if (!this.endUserDoc || !updateFunction) return; //add end user doc schema if there is none
+          if (!this.endUserDoc || !updateFunction) return;
+          console.log(sectionProp, this.endUserDocContents); //add end user doc schema if there is none
 
           if (!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
 
@@ -756,6 +763,8 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
 
             if (!!this[sectionProp]) this.endUserDoc.appendToSection(_objectSpread({}, this[sectionProp]), parentId || this.endUserDocId);
           }
+
+          console.log(sectionProp, this[sectionProp], this.endUserDocContents);
         }
         /**
          * resizes toolbar based on element positions
