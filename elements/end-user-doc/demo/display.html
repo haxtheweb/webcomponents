@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>EndUserDoc: end-user-doc Display Modes</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../end-user-doc.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>end-user-doc Default Display</h3>
+      <p>
+        By default, section objects with the <code>toc</code> 
+        property will display with a list of buttopns to 
+        navigate to each content item. Clicking the buttons will 
+        show the rendered sections.
+      </p>
+      <demo-snippet>
+        <template>
+          <end-user-doc id="demo" demo-mode></end-user-doc>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Displayed as a Single Page</h3>
+      <p>
+        If <code>display-mode</code> is set to all, all documentation 
+        sections will be rendered on a single page.
+      </p>
+      <demo-snippet>
+        <template>
+          <end-user-doc id="demo2" demo-mode display-mode="all"></end-user-doc>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Automatic Display</h3>
+      <p>
+        If <code>display-mode</code> is set to a number, section objects 
+        with items that number greater than or equal to the 
+        <code>display-mode</code> number, will display with a list of buttons to 
+        navigate to each content item, <em>regardless of whether the sections 
+        have the <code>toc</code> property</em>. 
+      </p>
+      <demo-snippet>
+        <template>
+          <end-user-doc id="demo3" demo-mode display-mode="3"></end-user-doc>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Navigate to Section</h3>
+      <p>
+        You can navigate to a specific section by setting the <code>current-section</code>.
+      </p>
+      <demo-snippet>
+        <template>
+          <end-user-doc id="demo3" demo-mode display-mode="3" current-section="feature"></end-user-doc>
+        </template>
+      </demo-snippet>
+      <h3>end-user-doc Hide Breadcrumbs</h3>
+      <p>
+        If you do not want to display breadcrumbs, you can set <code>hide-breadcrumbs</code>. 
+      </p>
+      <demo-snippet>
+        <template>
+          <end-user-doc id="demo3" demo-mode display-mode="3" current-section="feature" hide-breadcrumbs></end-user-doc>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

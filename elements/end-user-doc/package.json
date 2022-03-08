@@ -38,7 +38,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.3.1"
+    "lit-element": "^2.3.1",
+    "@lrnwebcomponents/simple-icon": "^4.0.8",
+    "@vaadin/router": "1.7.4"
   },
   "devDependencies": {
     "web-animations-js": "2.3.2",

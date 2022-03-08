@@ -3,111 +3,151 @@
  * @license Apache-2.0, see License.md for full text.
  */
  import { LitElement, html, css } from "lit-element/lit-element.js";
+ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
  /**
   * `end-user-doc`
   * `given an array of feature documentation, will generate end user documentation (good for modular, customizable tools where documentation whould be based on what is enabled or added on)`
-  * @demo demo/index.html
+  * @demo demo/index.html Overview
   * @demo demo/demo.html demo-mode
+  * @demo demo/display.html display-mode
   * @demo demo/schema.html schema
   * @element end-user-doc
   */
- class EndUserDoc extends LitElement {
-   //styles function
-   static get styles() {
-     return [
-       css`
-         :host {
-           display: block;
-           color: #444;
-           font-weight: 300;
-           font-family: sans-serif;
-         }
-         :host([hidden]) {
-           display: none;
-         }
-         h1,h2,h3,h4,h5,h6,caption {
-          font-family: serif;
-         }
-         ol[part=upper-roman]{
-           list-style: upper-roman;
-         }
-         ol[part=upper-alpha]{
-           list-style: upper-alpha;
-         }
-         ol[part=lower-alpha]{
-           list-style: lower-alpha;
-         }
-         ol[part=lower-roman]{
-           list-style: lower-roman;
-         }
-         table {
-          border-collapse: collapse;
-         }
-         caption {
-           color: #000; 
-           text-align: left;
-           font-weight: bold;
-         }
-         th {
-           font-weight: 400;
-         }
-         th,td {
-           border: 1px solid #999;
-           padding: 2px 5px;
-         }
-         thead tr {
-           background-color: #f0f0f0;
-           color: #000; 
-         }
-         tbody tr:nth-child(2n+1){
-           background-color: #f8f8f8;
-         }
-         figure {
-          display: inline-flex;
-          width: min-content;
-          flex-direction: column;
-         }
-         figcaption {
-           font-size: 85%;
-         }
-         img[part=image] {
-           display: block;
-         }
-         table, 
-         figure, 
-         img[part=image], 
-         p, 
-         ol {
-          margin: 1em 0;
-         }
-         li > ol {
-          margin: 0.25em 0 0.5em;
-         }
-         img[part=image],figure,table {
-           max-width: 100%;
-         }
-         table:first-child, 
-         figure:first-child, 
-         img[part=image]:first-child,
-         p:first-child, 
-         ol:first-child {
-          margin-top: 0 ;
-         }
-         table:last-child, 
-         figure:last-child, 
-         img[part=image]:last-child,
-         p:last-child, 
-         ol:last-child, 
-         li:last-child > ol {
-          margin-bottom: 0;
-         }
-         li > ol:last-child {
-          margin-bottom: 0.5em;
-         }
-       `,
-     ];
-   }
+class EndUserDoc extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          color: #444;
+          font-weight: 300;
+          font-family: sans-serif;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        h1,h2,h3,h4,h5,h6,caption {
+        font-family: serif;
+        }
+        ol[part=upper-roman]{
+          list-style: upper-roman;
+        }
+        ol[part=upper-alpha]{
+          list-style: upper-alpha;
+        }
+        ol[part=lower-alpha]{
+          list-style: lower-alpha;
+        }
+        ol[part=lower-roman]{
+          list-style: lower-roman;
+        }
+        table {
+        border-collapse: collapse;
+        }
+        caption {
+          color: #000; 
+          text-align: left;
+          font-weight: bold;
+        }
+        th {
+          font-weight: 400;
+        }
+        th,td {
+          border: 1px solid #999;
+          padding: 2px 5px;
+        }
+        thead tr {
+          background-color: #f0f0f0;
+          color: #000; 
+        }
+        tbody tr:nth-child(2n+1){
+          background-color: #f8f8f8;
+        }
+        figure {
+        display: inline-flex;
+        width: min-content;
+        flex-direction: column;
+        }
+        figcaption {
+          font-size: 85%;
+        }
+        img[part=image] {
+          display: block;
+        }
+        table, 
+        figure, 
+        img[part=image], 
+        p, 
+        ol {
+        margin: 1em 0;
+        }
+        li > ol {
+        margin: 0.25em 0 0.5em;
+        }
+        img[part=image],figure,table {
+          max-width: 100%;
+        }
+        table:first-child, 
+        figure:first-child, 
+        img[part=image]:first-child,
+        p:first-child, 
+        ol:first-child {
+        margin-top: 0 ;
+        }
+        table:last-child, 
+        figure:last-child, 
+        img[part=image]:last-child,
+        p:last-child, 
+        ol:last-child, 
+        li:last-child > ol {
+        margin-bottom: 0;
+        }
+        li > ol:last-child {
+        margin-bottom: 0.5em;
+        }
+        p[part=navback] {
+          display: inline-block;
+        }
+        ul[part="breadcrumbs"]{
+          list-style: none;
+          padding-inline-start: 0;
+          display: flex;
+          font-size: 85%;
+        }
+        li[part="breadcrumb"]{
+          display: inline;
+        }
+        li[part="breadcrumb"]:before {
+          content: '>';
+          color: #444;
+          text-decoration: none;
+          padding: 0 0.5em;
+        }
+        li[part="breadcrumb"]:first-child:before {
+          content: '';
+          padding: 0;
+        }
+        button[part=navbutton] {
+          display: inline;
+          color: #444;
+          font-weight: 300;
+          font-family: sans-serif;
+          border: none;
+          text-decoration: underline;
+          color: blue;
+          background-color: transparent;
+          padding: 0;
+        }
+        li[part="breadcrumb"] button[part=navbutton] {
+          display: inline;
+          margin: 0;
+        }
+      `,
+    ];
+  }
   /**
    * a schema object that can be rendered in demo mode
    *
@@ -118,6 +158,7 @@
     return {
     id: "demo",
     title: "End User Documentation",
+    toc: true,
     contents: [
       { 
         id: "laptop-banner",
@@ -188,7 +229,7 @@
           },
           {
             id: "feature-usecase-y",
-            title: "Using Feature to y",
+            title: "Using Feature to Y",
             contents: [
               {
                 listStyle: "upper-alpha",
@@ -198,10 +239,30 @@
                 ]
               }
             ]
+          },
+          {
+            id: "feature-usecase-z",
+            title: "Using Feature to Z",
+            contents: [
+              {
+                listStyle: "upper-roman upper-alpha decimal",
+                steps: [
+                  "Step I.",
+                  [
+                    "step IA."
+                    [
+                      "step IA1.",
+                      "step IA2."
+                    ],,
+                    "step IB."
+                  ],
+                  "Step II."
+                ]
+              }
+            ]
           }
         ]
       }
-      
     ]
   }
   }
@@ -219,7 +280,12 @@
         //get subsection content as well
         if(typeof contents == "object") (contents.contents || []).forEach(item=>getIDs(item));
       };
-    if(this.contents) getIDs(this.contents);
+
+    if(this.demoMode) {
+      getIDs(this.demoContents)
+    } else if(this.contents) {
+      getIDs(this.contents);
+    }
   return contentById;
   }
   /**
@@ -236,8 +302,19 @@
         //get subsection content as well
         if(typeof contents == "object") (contents.contents || []).forEach(item=>getIDs(item,contents));
       };
-    if(this.contents) getIDs(this.contents,undefined);
+    if(this.demoMode) {
+      getIDs(this.demoContents,undefined)
+    } else if(this.contents) {
+      getIDs(this.contents,undefined);
+    }
   return contentById;
+  }
+  get renderedSection(){
+    return this.currentSection && this.contentsById[this.currentSection] 
+      ? this.contentsById[this.currentSection] 
+      : this.demoMode 
+      ? this.demoContents 
+      : this.contents;
   }
   /**
    * adds new content at beginiing of section with given id
@@ -270,7 +347,7 @@
         ? this.parentByContentId[siblingId]
         : undefined,
       index = this._getContentIndexById(siblingId,section);
-   return index < 0 ? false : this.insertIntoSection(schema,section.id,index);
+    return index < 0 ? false : this.insertIntoSection(schema,section.id,index);
   }
   /**
    * inserts content after a sibling with given id
@@ -283,7 +360,7 @@
         ? this.parentByContentId[siblingId]
         : undefined,
       index = this._getContentIndexById(siblingId,section);
-     return index < 0 ? false : this.insertIntoSection(schema,section.id,index+1);
+      return index < 0 ? false : this.insertIntoSection(schema,section.id,index+1);
   }
   /**
    * 
@@ -297,7 +374,7 @@
         ? this.parentByContentId[replaceId]
         : undefined,
       index = this._getContentIndexById(replaceId,section);
-     return index < 0 ? false : this.insertIntoSection(schema,section.id,index,true);
+      return index < 0 ? false : this.insertIntoSection(schema,section.id,index,true);
   }
   /**
    * removes content with a given Id
@@ -309,7 +386,7 @@
         ? this.parentByContentId[id] 
         : undefined,
       index = this._getContentIndexById(id,section);
-   return index < 0 ? false : this.insertIntoSection([],section.id,index,true);
+    return index < 0 ? false : this.insertIntoSection([],section.id,index,true);
   }
   /**
    * 
@@ -452,7 +529,7 @@
         && this.contentsById[id].cheatsheet 
         ? this.contentsById[id].cheatsheet 
         : undefined;
-     return sheet && sheet.rows 
+      return sheet && sheet.rows 
         && Array.isArray(sheet.rows) 
         ? sheet.rows
         : undefined;
@@ -478,10 +555,57 @@
       ? rows.indexOf(cheat) 
       : undefined;
   }
- 
+
   // Template return function
   render() {
-    return this._section(this.demoMode ? this.demoContents : this.contents ? this.contents : undefined,1);
+    return html`
+      ${!this.currentSection || !this.contentsById[this.currentSection] || this.hideBreadcrumbs
+        ? ''
+        : this._breadcrumb()
+      }
+      ${this._content(this.renderedSection,1)}
+    `;
+  }
+
+  /**
+   * gets breadcrumbs
+   * @returns {object} html
+   */
+  _breadcrumb(){
+    let breadcrumbs = [], 
+      target = this.currentSection 
+        && this.contentsById[this.currentSection] 
+        ? this.contentsById[this.currentSection] 
+        : undefined;
+    if(!!target) breadcrumbs.push(target);
+    while(!!target){
+      let parent = this.parentByContentId[target.id];
+      if(!!parent) breadcrumbs.push(parent);
+      target = parent;
+    }
+    return html`
+      ${!this.currentSection || !this.contentsById[this.currentSection] || breadcrumbs.length < 1
+        ? ''
+        : html`
+          <nav>
+            <ul part="breadcrumbs">
+              ${breadcrumbs.reverse().map((breadcrumb,index)=>
+                index == breadcrumbs.length - 1 
+                ? html`<li part="breadcrumb" aria-current="page">${breadcrumb.title}</li>`
+                : html`
+                  <li part="breadcrumb">
+                    <button 
+                      part="navbutton" 
+                      @click="${e=>this.currentSection = index < 1 ? undefined : breadcrumb.id}">
+                      ${breadcrumb.title}
+                    </button>
+                  </li>`
+                )}
+            </ul>
+          </nav>
+        `
+      }
+  `;
   }
   /**
    * determins if an item is lit html
@@ -495,12 +619,12 @@
    * renders section
    * @param {object} section schema for a section
    * @param {number} level heading level
-   * @returns {object} 
+   * @returns {object} html
    */
   _section(section = {},level = 1){
     return html`
       ${this._heading(section,level)}
-      ${this._body(section.contents,level)}
+      ${this._body(section,level)}
     `;
   }
   /**
@@ -509,22 +633,83 @@
    * @param {number} level heading level
    * @returns {object} 
    */
-  _body(contents = [],level = 1){
-    return html`${(contents).map(item=>
-      this._isHTML(item)
-        ? item
-        : typeof item == "string"
-        ? html`<div>${item}</div>`
-        : item.steps
-        ? this._steps(item.steps,item.listStyle)
-        : item.cheatsheet 
-        ? this._cheatsheet(item)
-        : item.src
-        ? this._image(item)
-        : item.contents
-        ? this._section(item,level+1)
-        : ''
-      )}`;
+  _body(section = {},level = 1){
+    let contents = section.contents || [],
+      //if max items for display is a number, get max
+      max = !!this.displayMode 
+        && this.displayMode !== "all" 
+        && parseInt(this.displayMode) 
+        ? parseInt(this.displayMode) 
+        : undefined,
+      //show all content instead of toc
+      showAll = contents.cheatsheet 
+        || contents.src 
+        || contents.steps 
+        || this.displayMode === "all" 
+        ? true
+        : section.toc 
+        ? false
+        : !max || contents.filter(item=>!!item.title).length < max,
+      //content items with toc lists if needed
+      items = showAll ? contents : this._toc(contents);
+    console.log('_body',section,max,showAll,items,contents.filter(item=>!!item.title));
+    return html`${items.map(item=>this._content(item,level))}`;
+  }
+  /**
+   * renders section content by type
+   * @param {object} content section content
+   * @param {number} level heading level of section
+   * @returns {object} html
+   */
+  _content(content = {},level = 1){
+    console.log('_content',this.displayMode,content);
+    return this._isHTML(content)
+    ? content
+    : typeof content == "string"
+    ? html`<div>${content}</div>`
+    : content.steps
+    ? this._steps(content.steps,content.listStyle)
+    : content.cheatsheet 
+    ? this._cheatsheet(content)
+    : content.src
+    ? this._image(content)
+    : content.links
+    ? this._links(content.contents)
+    : content.contents
+    ? this._section(content,level+1)
+    : '';
+  }
+  /**
+   * gets contents with toc link schema
+   * @param {object} content section content
+   * @returns {object} content object with link schema
+   */
+  _toc(contents){
+    let toc = [];
+    contents.forEach(item=>{
+      if(!item.title) {
+        toc.push(item)
+      } else {
+        if(!toc[toc.length-1] || !toc[toc.length-1].links) toc.push({links: true, contents: []});
+        toc[toc.length-1].contents.push(item);
+      }
+    });
+    console.log('_toc',contents,toc);
+    return toc;
+  }
+  /**
+   * renders link list
+   * @param {array} links arry of content to link
+   * @returns {object} html
+   */
+  _links(links){
+    console.log('_links',links);
+    return !links || links.length < 1 
+      ? ''
+      : html`
+        <ul>
+          ${links.map(link=>html`<li><button id="link-${link.id}" part="navbutton" @click="${e=>this.currentSection = link.id}">${link.title}</button></li>`)}
+        </ul>`;
   }
   /**
    * renders image
@@ -627,11 +812,19 @@
       ? html`<a id="${section.id}"></a>` 
       : '';
   }
- 
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
+      /** 
+       * determines how contents are displayed
+       */
+      displayMode: {
+        attribute: "display-mode",
+        type: String,
+        reflect: true
+      },
       /** 
        * schema object of content to be rendered
        */
@@ -640,41 +833,57 @@
         type: Object
       },
       /** 
+       * determines which section to display
+       */
+      currentSection: {
+        attribute: "current-section",
+        type: String,
+        reflect: true
+      },
+      /** 
        * render demo contents instead of contents
        */
       demoMode: {
         attribute: "demo-mode",
         type: Boolean,
         reflect: true
-      }
+      },
+      /** 
+       * hides breadcrumbs
+       */
+      hideBreadcrumbs: {
+        attribute: "hide-breadcrumbs",
+        type: Boolean,
+        reflect: true
+      },
     };
   }
- 
-   /**
-    * Convention we use
-    */
-   static get tag() {
-     return "end-user-doc";
-   }
- 
-   /**
-    * HTMLElement
-    */
-   constructor() {
-     super();
-   }
-   /**
-    * LitElement ready
-    */
-   firstUpdated(changedProperties) {}
-   /**
-    * LitElement life cycle - property changed
-    */
-   updated(changedProperties) {
-     changedProperties.forEach((oldValue, propName) => {
-     });
-   }
- }
- customElements.define(EndUserDoc.tag, EndUserDoc);
- export { EndUserDoc };
+
+  /**
+  * Convention we use
+  */
+  static get tag() {
+    return "end-user-doc";
+  }
+
+  /**
+  * HTMLElement
+  */
+  constructor() {
+    super();
+  }
+  /**
+  * LitElement ready
+  */
+  firstUpdated(changedProperties) {}
+  /**
+  * LitElement life cycle - property changed
+  */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+    });
+  }
+}
+customElements.define(EndUserDoc.tag, EndUserDoc);
+export { EndUserDoc };
  
