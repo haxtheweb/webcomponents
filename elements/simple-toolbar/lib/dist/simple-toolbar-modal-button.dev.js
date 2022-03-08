@@ -9,22 +9,12 @@ var _lit = require("lit");
 
 var _simpleToolbarButton = require("./simple-toolbar-button.js");
 
-require("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js");
+var _simpleModal = require("@lrnwebcomponents/simple-modal/simple-modal.js");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n        <simple-modal-template modal-id=\"", "-modal\" title=\"", "\">\n          ", "\n          ", "\n          ", "\n          ", "\n          ", "\n        </simple-modal-template>\n        <slot></slot>\n      "]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n        simple-modal-template {\n          --simple-modal-titlebar-color: var(--simple-toolbar-button-bg);\n          --simple-modal-titlebar-background: var(--simple-toolbar-button-color);\n          --simple-modal-header-color: var(--simple-toolbar-button-hover-color);\n          --simple-modal-header-background: var(--simple-toolbar-button-hover-bg);\n          --simple-modal-content-container-color: var(--simple-toolbar-button-color);\n          --simple-modal-content-container-background: var(--simple-toolbar-button-bg);\n          --simple-modal-buttons-color: var(--simple-toolbar-button-color);\n          --simple-modal-buttons-background: var(--simple-toolbar-button-bg);\n        }\n      "]);
+  var data = _taggedTemplateLiteral(["\n        <slot hidden name=\"header\"></slot>\n        <slot hidden name=\"precontent\"></slot>\n        <slot hidden name=\"content\"></slot>\n        <slot hidden name=\"buttons\"></slot>\n        <slot hidden name=\"custom\"></slot>\n      "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -50,7 +40,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n          :host([hidden]) {\n            display: none !important;\n          }\n        "]);
+  var data = _taggedTemplateLiteral(["\n          :host([hidden]), \n          [hidden] {\n            display: none !important;\n          }\n        "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -117,6 +107,11 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
               attribute: "id",
               type: String,
               reflect: true
+            },
+            title: {
+              attribute: "string",
+              type: String,
+              reflect: true
             }
           });
         }
@@ -128,6 +123,7 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
         _classCallCheck(this, _class);
 
         _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this));
+        window.SimpleModal.requestAvailability();
         window.removeEventListener("simple-modal-hide", _this._handleModalClose.bind(_assertThisInitialized(_this)));
         window.removeEventListener("simple-modal-show", _this._handleModalOpen.bind(_assertThisInitialized(_this)));
         return _this;
@@ -141,15 +137,7 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
       }, {
         key: "_handleModalClose",
         value: function _handleModalClose(e) {
-          var _this2 = this;
-
           this.toggled = false;
-
-          this.__children.forEach(function (child) {
-            return _this2.append(child);
-          });
-
-          this.__children = undefined;
         }
       }, {
         key: "_handleModalOpen",
@@ -157,9 +145,45 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
           if (e.detail && e.deal.invokedBy && e.deal.invokedBy == this) this.toggled = true;
         }
       }, {
+        key: "_getModalStyles",
+        value: function _getModalStyles(target) {
+          var styles = getComputedStyle(target);
+          return {
+            "--simple-modal-titlebar-color": styles.getPropertyValue('--simple-toolbar-button-bg'),
+            "--simple-modal-titlebar-background": styles.getPropertyValue('--simple-toolbar-button-color'),
+            "--simple-modal-header-color": styles.getPropertyValue('--simple-toolbar-button-hover-color'),
+            "--simple-modal-header-background": styles.getPropertyValue('--simple-toolbar-button-hover-bg'),
+            "--simple-modal-content-container-color": styles.getPropertyValue('--simple-toolbar-button-color'),
+            "--simple-modal-content-container-background": styles.getPropertyValue('--simple-toolbar-button-bg'),
+            "--simple-modal-buttons-color": styles.getPropertyValue('--simple-toolbar-button-color'),
+            "--simple-modal-buttons-background": styles.getPropertyValue('--simple-toolbar-button-bg'),
+            "--simple-modal-z-index": Number(styles.getPropertyValue('--simple-toolbar-button-z-index)') + 2)
+          };
+        }
+      }, {
         key: "_handleClick",
         value: function _handleClick(e) {
           this.toggleModal();
+        }
+        /**
+         * toggles button if shortcutKey is pressed
+         *
+         * @param {string} key
+         * @event toggle
+         */
+
+      }, {
+        key: "_handleShortcutKeys",
+        value: function _handleShortcutKeys(e, key) {
+          if (!!this.shortcutKeys && this.shortcutKeys != '') this.dispatchEvent(new CustomEvent("toggle", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: _objectSpread({}, e.detail, {
+              button: this,
+              shortcutKey: this
+            })
+          }));
         }
       }, {
         key: "toggleModal",
@@ -183,57 +207,34 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
       }, {
         key: "openModal",
         value: function openModal() {
-          var _this3 = this;
+          var styles = this._getModalStyles(this),
+              elements = {};
 
-          if (this.shadowModal && this.shadowModal.openModal) {
-            this.__children = _toConsumableArray(this.children);
+          _toConsumableArray(this.children).forEach(function (child) {
+            var clone = child.cloneNode(true),
+                slot = child.slot;
+            clone.hidden = false;
+            delete clone.slot;
+            if (!elements[slot]) elements[slot] = [];
+            elements[slot].push(clone);
+          });
 
-            this.__children.forEach(function (child) {
-              return _this3.shadowModal.append(child);
-            });
-
-            this.shadowModal.openModal();
-          }
-        }
-      }, {
-        key: "modalStyles",
-        get: function get() {
-          return (0, _lit.css)(_templateObject3());
+          this.dispatchEvent(new CustomEvent("simple-modal-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              title: this.title || this.label,
+              id: this.id || this.getAttribute('id'),
+              elements: elements,
+              styles: styles,
+              invokedBy: this
+            }
+          }));
         }
       }, {
         key: "modalTemplate",
         get: function get() {
-          return (0, _lit.html)(_templateObject4(), this.id || 'modal-button', this.label, this.headerTemplate, this.precontentTemplate, this.contentTemplate, this.customTemplate, this.buttonsTemplate);
-        }
-      }, {
-        key: "headerTemplate",
-        get: function get() {
-          return;
-        }
-      }, {
-        key: "contentTemplate",
-        get: function get() {
-          return;
-        }
-      }, {
-        key: "precontentTemplate",
-        get: function get() {
-          return;
-        }
-      }, {
-        key: "buttonsTemplate",
-        get: function get() {
-          return;
-        }
-      }, {
-        key: "customTemplate",
-        get: function get() {
-          return;
-        }
-      }, {
-        key: "shadowModal",
-        get: function get() {
-          return this.shadowRoot && this.shadowRoot.querySelector('simple-modal-template') ? this.shadowRoot.querySelector('simple-modal-template') : undefined;
+          return (0, _lit.html)(_templateObject3());
         }
       }]);
 
