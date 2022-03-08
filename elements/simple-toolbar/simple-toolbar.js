@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import "./lib/simple-toolbar-more-button.js";
+import "./lib/simple-toolbar-help-button.js";
 import "./lib/simple-toolbar-field.js";
 import "./lib/simple-toolbar-button-group.js";
 import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
@@ -61,6 +62,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           :host([disabled]) {
             opacity: 0.6;
             pointer-events: none;
+            z-index: 0;
           }
           :host(:focus-within) {
             border: 1px solid
@@ -159,6 +161,13 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
+         * collection of documentation for help button modal 
+         */
+        documentation: {
+          attribute: "documentation",
+          type: Object
+        },
+        /**
          * Custom configuration of toolbar groups and buttons.
          * (See default value for example using default configuration.)
          */
@@ -209,6 +218,28 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         __buttons: {
           name: "__buttons",
           type: Array,
+        },
+        /**
+         * first simple-toolbar-help-button
+         */
+        __helpModalButton: {
+          name: "__helpModalButton",
+          type: Object,
+        },
+        /**
+         * end-user-doc element
+         */
+        __helpDocs: {
+          name: "__helpDocs",
+          type: Object,
+        },
+        /**
+         * schema for shortcutDocs
+         */
+        __shortcutDocs: {
+          name: "__shortcutDocs",
+          type: Object,
+
         },
         /**
          * whether there is no need to collapse
@@ -334,8 +365,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
+      this.__helpDocs = document.createElement('end-user-doc');
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
+      this.addEventListener("end-user-docs-connected", this._handleHelpDocsRegister);
+      this.addEventListener("end-user-docs-disconnected", this._handleHelpDocsDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
       this.addEventListener("toggle-toolbar", this._handleToggleToolbar);
     }
@@ -369,7 +403,39 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.onmouseout = (e) => (this.__hovered = false);
       this.addEventListener("keydown", this._handleKeydown);
       if (super.firstUpdated) super.firstUpdated(changedProperties);
+      this.__endUserDocSchema = {
+        id: 'main',
+        title: 'Documentation',
+        contents: []
+      }
     }
+    /**
+     * end-user-doc component
+     *
+     * @readonly
+     */
+    get endUserDoc(){
+      return this.__helpDocs;
+    }
+
+    /**
+     * end-user-doc component's content schema
+     *
+     * @readonly
+     */
+    get endUserDocContents(){
+      return !this.endUserDoc ? undefined : this.endUserDoc.contents;
+    }
+
+    /**
+     * top-level id for end-user-doc component's content
+     *
+     * @readonly
+     */
+    get endUserDocId(){
+      return !this.endUserDocContents ? undefined : this.endUserDocContents.id;
+    }
+
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
@@ -385,6 +451,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "hidden")
           this.setAttribute("aria-hidden", this.hidden ? "true" : "false");
       });
+      this.checkDocSection(changedProperties,"shortcutKeys","__shortcutDocs",'_getShortcutDocs');
       if (!this.currentItem && this.buttons)
         this.setCurrentItem(this.buttons[0]);
       this.resizeToolbar();
@@ -439,10 +506,20 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     deregisterButton(button) {
+      //remove button from list of buttons
       this.__buttons = this.__buttons.filter((b) => b !== button);
+
+      //remove button shortcut keys
       (button.shortcutKeys || "")
         .split(" ")
-        .forEach((key) => delete this.shortcutKeys[key]);
+        .forEach((key) => {
+          if(this.shortcutKeys[key] === button) delete this.shortcutKeys[key]
+        });
+
+      //add end-user-doc shortcut schema if there is none
+      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+
+      //remove button event listeners
       button.removeEventListener("blur", (e) =>
         this._handleFocusChange(button)
       );
@@ -451,22 +528,127 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       );
     }
     /**
+     * deregisters help docs when removed
+     * 
+     * @param {object} docs simple-toolbar-help-docs component
+     */
+    deregisterHelpDocs(docs){
+      this.__helpDocs = undefined;
+    }
+    /**
      * registers button when appended
      *
      * @param {object} button button node
      * @memberof SimpleToolbar
      */
     registerButton(button) {
+      //add button to list of buttons
       this.__buttons.push(button);
       this.__buttons = [...new Set(this.__buttons)];
+
+      //get all button shortcut keys
       (button.shortcutKeys || "")
         .split(" ")
-        .forEach((key) => (this.shortcutKeys[key] = button));
+        .forEach((key) => {
+          if(key && key != '') this.shortcutKeys[key] = button;
+        });
       if (button.role !== "menuitem") button.isCurrentItem = false;
+
+      //add end-user-doc schema if there is none
+      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+
+      //add button event listeners
       button.addEventListener("blur", (e) => this._handleFocusChange(button));
       button.addEventListener("focus", (e) => this._handleFocusChange(button));
       if (!this.currentItem) this.setCurrentItem(button);
     }
+    /**
+     * registers help docs when appended
+     * 
+     * @param {object} docs simple-toolbar-help-docs component
+     */
+    registerHelpDocs(docs){
+      this.__helpDocs = docs;
+
+      //add end-user-doc shortcut schema if there is none
+      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+    }
+    /**
+     * gets all shortcut key documentation into a single cheatsheet
+     */
+    _getShortcutDocs(){
+      if(!this.shortcutKeys) return undefined;
+      let keys = Object.keys(this.shortcutKeys || {}),
+        schema = {
+        id: "keyboard-shortcuts",
+        title: "Keyboard Shortcuts",
+        cheatsheet: {
+          columns: ["Keys","Shortcut"],
+          rows: []
+        }
+      };
+      if(keys.length > 0) keys.forEach(key=>{
+        if(this.shortcutKeys[key]) schema.cheatsheet.rows.push([html`<code>${key}</code>`,this.shortcutKeys[key].label])
+      });
+      console.log(schema);
+      return schema;
+    }
+    /**
+     * 
+     * @param {array} changedProperties changed properties fomr lifecycle update
+     * @param {string} dataProp name of property for section data
+     * @param {string} sectionProp name of property for section of end-user-doc contents schema object
+     * @param {string} updateFunction name of function to return new content schema object to replace section
+     * @param {string} enabledProp name of property for whether or not section is enabled
+     * @param {string} parentId id of parent section
+     * @returns 
+     */
+    checkDocSection(changedProperties,dataProp,sectionProp,updateFunction,enabledProp,parentId){
+      if(!updateFunction) return;
+      let enabledChanged = false, docsChanged = false;
+      changedProperties.forEach((oldValue, propName) => {
+        if (!!enabledProp && propName === enabledProp)  {
+          enabledChanged = true;
+        }
+        if (propName === dataProp)  {
+          docsChanged = true;
+          enabledChanged = true;
+        }
+      });
+      if(enabledChanged) this.updateDocSection(sectionProp,updateFunction,docsChanged,enabledChanged,parentId);
+    }
+
+    /**
+     * shows or hides a documentation section based on whether or not section is enabled
+     * 
+     * @param {string} sectionProp name of property for section of end-user-doc contents schema object
+     * @param {string} updateFunction name of function to return new content schema object to replace section
+     * @param {boolean} changed whether or not section content has changed
+     * @param {boolean} enabled whether or not section is enabled
+     * @param {string} [parentId=this.endUserDocId] id of parent section
+     * @returns 
+     */
+    updateDocSection(sectionProp,updateFunction,changed,enabled,parentId){
+      console.log('updateDocSection',sectionProp,updateFunction,changed,enabled,parentId);
+      if(!this.endUserDoc || !updateFunction) return;
+
+      //add end user doc schema if there is none
+      if(!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
+
+      if((!enabled || changed) && !!this[sectionProp]) {
+        //remove markdown section from docs
+        if(!!this[sectionProp] && this[sectionProp].id && this.endUserDoc.contentsById[this[sectionProp].id]) 
+          this.endUserDoc.removeSectionContent(this[sectionProp].id);
+      }
+      if(enabled){
+        //add markdown patterns and add markdown section to docs
+        if(!this[sectionProp] || changed) this[sectionProp] = this[updateFunction]();
+        //add markdown section schema exists add it to docs
+        if(!!this[sectionProp]) this.endUserDoc.appendToSection({...this[sectionProp]},parentId || this.endUserDocId);
+        console.log('updateDocSection',this[sectionProp],this.endUserDocId,this.endUserDocContents);
+      }
+    }
+
     /**
      * resizes toolbar based on element positions
      *
@@ -696,6 +878,24 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _handleFocusChange() {
       this.__focused = this.contains(document.activeElement);
+    }
+    /**
+     * handles appended help documentation
+     *
+     * @param {event} e
+     */
+    _handleHelpDocsRegister(e) {
+      e.stopPropagation();
+      this.registerHelpDocs(e.detail);
+    }
+    /**
+     * handles moved/removed help documentation
+     *
+     * @param {event} e
+     */
+    _handleHelpDocsDeregister(e) {
+      e.stopPropagation();
+      this.deregisterHelpDocs(e.detail);
     }
     /**
      * handles appended button

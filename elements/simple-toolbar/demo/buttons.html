@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lib/simple-toolbar-button.js';
+      import '../lib/simple-toolbar-modal-button.js';
       import '../lib/simple-button-grid.js';
       import '../simple-toolbar.js';
     </script>
@@ -30,9 +31,11 @@
             <simple-toolbar-button icon="undo" label="Undo" show-text-label icon-position="top"></simple-toolbar-button>
             <simple-toolbar-button icon="editor:format-italic" label="Italics" show-text-label icon-position="bottom"></simple-toolbar-button>
             <simple-toolbar-button icon="editor:format-italic" label="Italics" show-text-label icon-position="right"></simple-toolbar-button>
+            <simple-toolbar-modal-button icon="help" label="Help"><p slot="content">Help docs here.</p></simple-toolbar-modal-button>
           </simple-toolbar>
           <style>
-            simple-toolbar-button {
+            simple-toolbar-button,
+            simple-toolbar-modal-button {
               --simple-toolbar-border-color: #ddd;
             }
           </style>
