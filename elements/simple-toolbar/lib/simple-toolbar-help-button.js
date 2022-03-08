@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarModalButtonBehaviors } from "./simple-toolbar-modal-button.js";
-import "./simple-toolbar-help-docs.js";
+import "@lrnwebcomponents/end-user-doc/end-user-doc.js";
 
 /**
  * @extends SimpleToolbarModalButtonBehaviors
@@ -16,12 +16,6 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
      */
     static get tag() {
       return "simple-toolbar-help-button";
-    }
-    static get styles() {
-      return [
-        ...super.styles,
-        css``,
-      ];
     }
 
     constructor() {
@@ -43,7 +37,7 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
     }
 
     get modalTemplate(){
-      return html`<simple-toolbar-help-docs hidden></simple-toolbar-help-docs>`;
+      return html`<end-user-docs hidden></end-user-docs>`;
     }
 
     openModal(){
