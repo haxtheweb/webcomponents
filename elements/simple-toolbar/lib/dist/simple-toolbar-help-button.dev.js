@@ -106,7 +106,6 @@ var SimpleToolbarHelpButtonBehaviors = function SimpleToolbarHelpButtonBehaviors
         _this.toggled = false;
         _this.toggles = true;
         _this.label = "Help";
-        _this.tooltipDirection = "left";
         _this.disabled = false;
         _this.shortcutKeys = "F1";
         return _this;

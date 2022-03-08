@@ -311,6 +311,26 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             },
 
             /**
+             * Optional documentation for maindocumentation. Example:
+             * { id: 'main', title: 'Documentation', contents: []}
+             */
+            docsSchema: {
+              name: "docsSchema",
+              attribute: "docs-schema",
+              type: Object
+            },
+
+            /**
+             * Optional documentation for shortcut keys documentation. Example:
+             * { id: "keyboard-shortcuts", title: "Keyboard Shortcuts", cheatsheet: { columns: ["Keys","Shortcut"], rows: [] }}
+             */
+            shortcutDocsSchema: {
+              name: "shortcutDocsSchema",
+              attribute: "shortcut-docs-schema",
+              type: Object
+            },
+
+            /**
              * Should toolbar stick to top so that it is always visible?
              */
             sticky: {
@@ -470,11 +490,11 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
 
           this.addEventListener("keydown", this._handleKeydown);
           if (_get(_getPrototypeOf(_class.prototype), "firstUpdated", this)) _get(_getPrototypeOf(_class.prototype), "firstUpdated", this).call(this, changedProperties);
-          this.__endUserDocSchema = {
+          this.__endUserDocSchema = _objectSpread({
             id: 'main',
             title: 'Documentation',
             contents: []
-          };
+          }, this.docsSchema);
         }
         /**
          * end-user-doc component
@@ -660,19 +680,22 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
           var _this7 = this;
 
           if (!this.shortcutKeys) return undefined;
+
           var keys = Object.keys(this.shortcutKeys || {}),
-              schema = {
+              schema = _objectSpread({
             id: "keyboard-shortcuts",
-            title: "Keyboard Shortcuts",
-            cheatsheet: {
-              columns: ["Keys", "Shortcut"],
-              rows: []
-            }
-          };
+            title: "Keyboard Shortcuts"
+          }, this.shortcutDocsSchema);
+
           if (keys.length > 0) keys.forEach(function (key) {
-            if (_this7.shortcutKeys[key]) schema.cheatsheet.rows.push([(0, _lit.html)(_templateObject5(), key), _this7.shortcutKeys[key].label]);
+            if (_this7.shortcutKeys[key]) {
+              schema.cheatsheet = _objectSpread({
+                columns: ["Keys", "Shortcut"],
+                rows: []
+              }, schema.cheatsheet);
+              schema.cheatsheet.rows.push([(0, _lit.html)(_templateObject5(), key), _this7.shortcutKeys[key].label]);
+            }
           });
-          console.log(schema);
           return schema;
         }
         /**
@@ -718,7 +741,6 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
       }, {
         key: "updateDocSection",
         value: function updateDocSection(sectionProp, updateFunction, changed, enabled, parentId) {
-          console.log('updateDocSection', sectionProp, updateFunction, changed, enabled, parentId);
           if (!this.endUserDoc || !updateFunction) return; //add end user doc schema if there is none
 
           if (!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
@@ -733,7 +755,6 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             if (!this[sectionProp] || changed) this[sectionProp] = this[updateFunction](); //add markdown section schema exists add it to docs
 
             if (!!this[sectionProp]) this.endUserDoc.appendToSection(_objectSpread({}, this[sectionProp]), parentId || this.endUserDocId);
-            console.log('updateDocSection', this[sectionProp], this.endUserDocId, this.endUserDocContents);
           }
         }
         /**
@@ -969,7 +990,6 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
       }, {
         key: "_handleHelpDocsRegister",
         value: function _handleHelpDocsRegister(e) {
-          console.log('reg', e);
           e.stopPropagation();
           this.registerHelpDocs(e.detail);
         }

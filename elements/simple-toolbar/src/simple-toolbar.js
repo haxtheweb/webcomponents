@@ -205,6 +205,24 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           type: Object,
         },
         /**
+         * Optional documentation for maindocumentation. Example:
+         * { id: 'main', title: 'Documentation', contents: []}
+         */
+        docsSchema: {
+          name: "docsSchema",
+          attribute: "docs-schema",
+          type: Object,
+        },
+        /**
+         * Optional documentation for shortcut keys documentation. Example:
+         * { id: "keyboard-shortcuts", title: "Keyboard Shortcuts", cheatsheet: { columns: ["Keys","Shortcut"], rows: [] }}
+         */
+        shortcutDocsSchema: {
+          name: "shortcutDocsSchema",
+          attribute: "shortcut-docs-schema",
+          type: Object,
+        },
+        /**
          * Should toolbar stick to top so that it is always visible?
          */
         sticky: {
@@ -407,7 +425,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__endUserDocSchema = {
         id: 'main',
         title: 'Documentation',
-        contents: []
+        contents: [],
+        ...this.docsSchema
       }
     }
     /**
@@ -581,17 +600,20 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if(!this.shortcutKeys) return undefined;
       let keys = Object.keys(this.shortcutKeys || {}),
         schema = {
-        id: "keyboard-shortcuts",
-        title: "Keyboard Shortcuts",
-        cheatsheet: {
-          columns: ["Keys","Shortcut"],
-          rows: []
-        }
-      };
+          id: "keyboard-shortcuts",
+          title: "Keyboard Shortcuts",
+          ...this.shortcutDocsSchema 
+        };
       if(keys.length > 0) keys.forEach(key=>{
-        if(this.shortcutKeys[key]) schema.cheatsheet.rows.push([html`<code>${key}</code>`,this.shortcutKeys[key].label])
+        if(this.shortcutKeys[key]) {
+          schema.cheatsheet = {
+            columns: ["Keys","Shortcut"],
+            rows: [],
+            ...schema.cheatsheet
+          };
+          schema.cheatsheet.rows.push([html`<code>${key}</code>`,this.shortcutKeys[key].label])
+        }
       });
-      console.log(schema);
       return schema;
     }
     /**
@@ -630,7 +652,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @returns 
      */
     updateDocSection(sectionProp,updateFunction,changed,enabled,parentId){
-      console.log('updateDocSection',sectionProp,updateFunction,changed,enabled,parentId);
       if(!this.endUserDoc || !updateFunction) return;
 
       //add end user doc schema if there is none
@@ -646,7 +667,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if(!this[sectionProp] || changed) this[sectionProp] = this[updateFunction]();
         //add markdown section schema exists add it to docs
         if(!!this[sectionProp]) this.endUserDoc.appendToSection({...this[sectionProp]},parentId || this.endUserDocId);
-        console.log('updateDocSection',this[sectionProp],this.endUserDocId,this.endUserDocContents);
       }
     }
 
@@ -886,7 +906,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {event} e
      */
     _handleHelpDocsRegister(e) {
-      console.log('reg',e);
       e.stopPropagation();
       this.registerHelpDocs(e.detail);
     }

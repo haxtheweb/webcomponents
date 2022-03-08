@@ -50,7 +50,6 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
       this.toggled = false;
       this.toggles = true;
       this.label = "Help";
-      this.tooltipDirection = "left";
       this.disabled = false;
       this.shortcutKeys = "F1";
     }
