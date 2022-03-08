@@ -13,18 +13,8 @@ var _simpleModal = require("@lrnwebcomponents/simple-modal/simple-modal.js");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n        <slot hidden name=\"header\"></slot>\n        <slot hidden name=\"precontent\"></slot>\n        <slot hidden name=\"content\"></slot>\n        <slot hidden name=\"buttons\"></slot>\n        <slot hidden name=\"custom\"></slot>\n      "]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["", "", ""]);
+  var data = _taggedTemplateLiteral(["\n        <slot hidden name=\"header\"></slot>\n        <slot hidden name=\"precontent\"></slot>\n        <slot hidden name=\"content\"></slot>\n        <slot hidden name=\"buttons\"></slot>\n        <slot hidden name=\"custom\"></slot>\n      "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -33,14 +23,8 @@ function _templateObject2() {
   return data;
 }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n          :host([hidden]), \n          [hidden] {\n            display: none !important;\n          }\n        "]);
+  var data = _taggedTemplateLiteral(["", "", ""]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -58,6 +42,12 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -95,14 +85,17 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
           return "simple-toolbar-modal-button";
         }
       }, {
-        key: "styles",
-        get: function get() {
-          return [].concat(_toConsumableArray(_get(_getPrototypeOf(_class), "styles", this)), [(0, _lit.css)(_templateObject())]);
-        }
-      }, {
         key: "properties",
         get: function get() {
           return _objectSpread({}, _get(_getPrototypeOf(_class), "properties", this), {
+            /**
+             * The `id` of modal that button controls.
+             */
+            controls: {
+              type: String,
+              attribute: "controls-editor",
+              reflect: false
+            },
             id: {
               attribute: "id",
               type: String,
@@ -130,9 +123,15 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
       }
 
       _createClass(_class, [{
+        key: "firstUpdated",
+        value: function firstUpdated(changedProperties) {
+          if (_get(_getPrototypeOf(_class.prototype), "firstUpdated", this)) _get(_getPrototypeOf(_class.prototype), "firstUpdated", this).call(this, changedProperties);
+          this.setAttribute('aria-haspopup', "true");
+        }
+      }, {
         key: "render",
         value: function render() {
-          return (0, _lit.html)(_templateObject2(), _get(_getPrototypeOf(_class.prototype), "render", this).call(this), this.modalTemplate);
+          return this.simpleToolbarModalButtonRender;
         }
       }, {
         key: "_handleModalClose",
@@ -232,9 +231,14 @@ var SimpleToolbarModalButtonBehaviors = function SimpleToolbarModalButtonBehavio
           }));
         }
       }, {
+        key: "simpleToolbarModalButtonRender",
+        get: function get() {
+          return (0, _lit.html)(_templateObject(), _get(_getPrototypeOf(_class.prototype), "render", this).call(this), this.modalTemplate);
+        }
+      }, {
         key: "modalTemplate",
         get: function get() {
-          return (0, _lit.html)(_templateObject3());
+          return (0, _lit.html)(_templateObject2());
         }
       }]);
 

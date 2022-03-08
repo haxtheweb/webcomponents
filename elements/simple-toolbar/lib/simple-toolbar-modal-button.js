@@ -14,21 +14,18 @@ const SimpleToolbarModalButtonBehaviors = function (SuperClass) {
     static get tag() {
       return "simple-toolbar-modal-button";
     }
-    static get styles() {
-      return [
-        ...super.styles,
-        css`
-          :host([hidden]), 
-          [hidden] {
-            display: none !important;
-          }
-        `,
-      ];
-    }
 
     static get properties() {
       return {
         ...super.properties,
+        /**
+         * The `id` of modal that button controls.
+         */
+        controls: {
+          type: String,
+          attribute: "controls-editor",
+          reflect: false,
+        },
         id: {
           attribute: "id",
           type: String,
@@ -49,8 +46,17 @@ const SimpleToolbarModalButtonBehaviors = function (SuperClass) {
       window.removeEventListener("simple-modal-show", this._handleModalOpen.bind(this));
     }
 
+    firstUpdated(changedProperties) {
+      if(super.firstUpdated) super.firstUpdated(changedProperties);
+      this.setAttribute('aria-haspopup',"true");
+    }
+
     render(){
-      return html`${super.render()}${this.modalTemplate}`
+      return this.simpleToolbarModalButtonRender;
+    }
+
+    get simpleToolbarModalButtonRender(){
+      return html`${super.render()}${this.modalTemplate}`;
     }
 
     get modalTemplate(){

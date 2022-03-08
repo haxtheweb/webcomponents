@@ -18,6 +18,32 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
       return "simple-toolbar-help-button";
     }
 
+    static get properties() {
+      return {
+        ...super.properties,
+        /**
+         * whether help documentation can be searched
+         */
+         searchable: {
+          name: "helpSearchable",
+          type: Boolean,
+          attribute: "searchable",
+          reflect: true,
+        },
+        /**
+         * display mode for help documents
+         */
+        displayMode: {
+          name: "displayMode",
+          type: Boolean,
+          attribute: "display-mode",
+          reflect: true,
+        },
+      };
+    }
+
+    
+
     constructor() {
       super();
       this.icon = "help-outline";
@@ -37,7 +63,7 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
     }
 
     get modalTemplate(){
-      return html`<end-user-doc hidden></end-user-doc>`;
+      return html`<end-user-doc hidden ?searchable="${this.searchable}" display-mode="${this.displayMode}"></end-user-doc>`;
     }
 
     openModal(){
