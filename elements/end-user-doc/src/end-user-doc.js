@@ -468,6 +468,7 @@ const EndUserDocBehaviors = function (SuperClass) {
      */
     insertIntoSection(schema,sectionId,index,replace=false){
       if(!schema) return false;
+      if(!replace && schema.id && this.contentsById[schema.id]) this.removeSectionContent(schema.id);
       let section = sectionId && this.contentsById[sectionId] 
         ? this.contentsById[sectionId]
         : undefined;
