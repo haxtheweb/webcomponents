@@ -23,6 +23,7 @@
           <li><code>id</code> (string): <em>recommended</em>, a unique identfier  that serves as anchor</li>
           <li><code>title</code> (string): <em>recommended</em>, page heading</li>
           <li><code>contents</code> (array): <em>required</em>, array of page content</li>
+          <li><code>searchTerms</code> (string): <em>optional</em>, list of search terms to boost content in search results</li>
         </ul>
         <template>
           <end-user-doc id="pagedemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
@@ -45,6 +46,8 @@
           <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
           <li><code>title</code> (string): <em>recommended</em>, section heading</li>
           <li><code>contents</code> (array): <em>required</em>, array of section content</li>
+          <li><code>toc</code> (boolean): <em>optional</em>, treats subsections as table of contents links to other pages</li>
+          <li><code>searchTerms</code> (string): <em>optional</em>, list of search terms to boost content in search results</li>
         </ul>
         <template>
           <end-user-doc id="sectiondemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
@@ -134,6 +137,7 @@
               <li><code>rows</code> (array): <em>required</em>, nested array of rows, where each row array contains a string for each column</li>
             </ul>
           </li>
+          <li><code>searchTerms</code> (string): <em>optional</em>, list of search terms to boost content in search results</li>
         </ul>
         <template>
           <end-user-doc id="imagedemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>
@@ -174,6 +178,7 @@
           <li><code>id</code> (string): <em>recommended</em>, a unique identfier that serves as anchor</li>
           <li><code>listStyle</code> (string): <em>optional</em>, space-separated list styles in order of least nested to most nested</li>
           <li><code>steps</code> (array): <em>required</em>, array of steps, which can include nested arrays of substeps</li>
+          <li><code>searchTerms</code> (string): <em>optional</em>, list of search terms to boost content in search results</li>
         </ul>
         <template>
           <end-user-doc id="stepdemo" style="padding: 0 15px 20px; border:1px solid #999"></end-user-doc>

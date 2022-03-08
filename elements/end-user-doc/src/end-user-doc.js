@@ -2,16 +2,19 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
- import { LitElement, html, css } from "lit-element/lit-element.js";
+ import { LitElement, html, css, render } from "lit-element/lit-element.js";
  import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
  import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
  /**
   * `end-user-doc`
   * `given an array of feature documentation, will generate end user documentation (good for modular, customizable tools where documentation whould be based on what is enabled or added on)`
-  * @demo demo/index.html Overview
+  * @demo demo/index.html overview
   * @demo demo/demo.html demo-mode
   * @demo demo/display.html display-mode
+  * @demo demo/search.html search
   * @demo demo/schema.html schema
   * @element end-user-doc
   */
@@ -28,6 +31,10 @@ class EndUserDoc extends LitElement {
         }
         :host([hidden]) {
           display: none;
+        }
+        :host([hidden]),
+        [hidden] {
+          display: none!important;
         }
         h1,h2,h3,h4,h5,h6,caption {
         font-family: serif;
@@ -135,15 +142,73 @@ class EndUserDoc extends LitElement {
           color: #444;
           font-weight: 300;
           font-family: sans-serif;
+          font-size: inherit;
           border: none;
           text-decoration: underline;
           color: blue;
           background-color: transparent;
           padding: 0;
         }
+        ul[part=preview] button[part=navbutton]:after {
+          content: ': ';
+        }
         li[part="breadcrumb"] button[part=navbutton] {
           display: inline;
           margin: 0;
+        }
+        #skipNavLink {
+          position: absolute;
+          left: -99999px;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        div[part=search]{
+          text-align: right;
+        }
+        div[part=search]+h1{
+          margin-top: 0px;
+        }
+        simple-fields-field[part=searchfield]{
+          text-align: left;
+        }
+        simple-fields-field[part=searchfield]:not([value]),
+        simple-fields-field[part=searchfield][value=''] {
+          --simple-fields-border-bottom-size: 0px;
+          --simple-fields-border-bottom-focus-size: 0px;
+        }
+        simple-fields-field[part=searchfield]:focus-within,
+        simple-fields-field[part=searchfield]:hover {
+          --simple-fields-border-bottom-size: 1px;
+          --simple-fields-border-bottom-focus-size: 1px;
+        }
+        simple-fields-field[part=searchfield]:not([value]),
+        simple-fields-field[part=searchfield][value=''] {
+          display: inline-block;
+          width:40px;
+          transition: 0.5s ease-in-out width;
+        }
+        simple-fields-field[part=searchfield],
+        simple-fields-field[part=searchfield]:focus-within,
+        simple-fields-field[part=searchfield]:hover {
+          width:100%;
+          transition: 0.5s ease-in-out width;
+        }
+        simple-fields-field[part=searchfield]:not([value])::part(option-input),
+        simple-fields-field[part=searchfield][value='']::part(option-input){
+          width:0px;
+        }
+        simple-fields-field[part=searchfield]::part(option-input):focus-within,
+        simple-fields-field[part=searchfield]::part(option-input):hover{
+          width:calc(100% - 4px);
+        }
+        simple-fields-field[part=searchfield]:not([value]) simple-icon-button-lite[part=cancelsearch],
+        simple-fields-field[part=searchfield][value=''] simple-icon-button-lite[part=cancelsearch]{
+          display: none;
+        }
+        simple-fields-field[part=searchfield]:focus-within simple-icon-button-lite[part=cancelsearch],
+        simple-fields-field[part=searchfield]:hover simple-icon-button-lite[part=cancelsearch]{
+          display: block;
         }
       `,
     ];
@@ -558,13 +623,96 @@ class EndUserDoc extends LitElement {
 
   // Template return function
   render() {
+    let section = this.currentSection && this.contentsById[this.currentSection];
     return html`
-      ${!this.currentSection || !this.contentsById[this.currentSection] || this.hideBreadcrumbs
-        ? ''
-        : this._breadcrumb()
-      }
-      ${this._content(this.renderedSection,1)}
+      ${!this.searchable ? '' : html`
+        <div part="search" ?hidden=${section}>
+          <simple-fields-field
+            id="searchfield"
+            part="searchfield"
+            label="${this.searchLabel}"
+            .value="${this.searchText || ''}"
+            @value-changed="${this._handleSearch}"
+          >
+            <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
+            <simple-icon-button-lite part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
+          </simple-fields-field>
+        </div>
+      `}
+      ${!!this.searchResults && !section
+        ? this._links(this.searchResults,true)
+        : html`
+          ${!this.currentSection || !section || this.hideBreadcrumbs
+            ? ''
+            : this._breadcrumb()
+          }
+          ${this._content(this.renderedSection,0)}
+        `}
+      
     `;
+  }
+
+  get searchResults(){
+    return !this.__searchResults 
+      || !this.searchText 
+      || this.searchText == ''
+      ? false 
+      : Object.keys(this.__searchResults || {}).map(id=>[this.__searchResults[id],id])
+        .sort((a,b)=>a[0] == b[0] ? a[1] - b[1] : b[0] - a[0])
+        .map(item=>this.contentsById[item[1]]);
+  }
+  _handleSearchCancel(e){
+    this.searchText = '';
+    this.__searchResults = undefined;
+  }
+
+  _handleSearch(e){
+    this.searchText = e.detail.value || '';
+    let target = this.demoMode ? this.demoContents : this.contents;
+    if(!this.searchText || this.searchText == '') {
+      this.__searchResults = undefined;
+      return;
+    }
+    this.__searchResults = {};
+    let score = this._searchSection(target,this.searchText);
+    if(score) this.__searchResults[target.id] = score;
+  }
+  _searchSection(section,search){
+    let score = 0;
+    if(!section || !section.id) return false;
+    score += this._searchScore(section.title,search,1000,100);
+    score += this._searchScore(section.searchTerms,search,1000,100);
+    if(section.contents) {
+      let content = html`${section.contents.filter(item=>!item.contents).map(item=>this._content(item,1))}`;
+      score += this._searchContent(content,search, 100,10);
+      section.contents.forEach(item=>{
+        if(!item.id) return;
+        let score2 = this._searchSection(item,search);
+        if(score2) this.__searchResults[item.id] = score2;
+      })
+    }
+    if(section.cheatsheet) score += this._searchContent(this._cheatsheet(section),search,100,10);
+    if(section.steps) score += this._searchContent(this._steps(section),search,100,10);
+    return score;
+  }
+  _searchContent(content = '', search, exactScore, termScore){
+    let temp = document.createElement("div");
+    render(content,temp);
+    return this._searchScore(temp.textContent, search, exactScore, termScore);
+  }
+  _searchScore(content, search, exactScore, termScore){
+    let score = 0,
+      contentLC = content && content.toLowerCase ? content.toLowerCase() : undefined,
+      searchLC = search && search.toLowerCase ? search.toLowerCase() : undefined,
+      terms = searchLC ? searchLC.split('\W') : [];
+    if(!searchLC || !contentLC) return 0;
+    if(contentLC.match(searchLC)) {
+      score += exactScore;
+    }
+    terms.forEach(term=>{
+      if(contentLC.match(term)) score += termScore;
+    });
+    return score;
   }
 
   /**
@@ -587,7 +735,10 @@ class EndUserDoc extends LitElement {
       ${!this.currentSection || !this.contentsById[this.currentSection] || breadcrumbs.length < 1
         ? ''
         : html`
-          <nav>
+          <a id="skipNavLink" href="#${!this.currentSection || !this.contentsById[this.currentSection] ? this.contents.id : this.contentsById[this.currentSection].id}">
+            ${this.skipNavLabel || `Skip ${this.breadcrumbsLabel || 'Breadcrumbs'}`}
+          </a>
+          <nav aria-label="${this.breadcrumbsLabel || 'Breadcrumbs'}">
             <ul part="breadcrumbs">
               ${breadcrumbs.reverse().map((breadcrumb,index)=>
                 index == breadcrumbs.length - 1 
@@ -652,7 +803,6 @@ class EndUserDoc extends LitElement {
         : !max || contents.filter(item=>!!item.title).length < max,
       //content items with toc lists if needed
       items = showAll ? contents : this._toc(contents);
-    console.log('_body',section,max,showAll,items,contents.filter(item=>!!item.title));
     return html`${items.map(item=>this._content(item,level))}`;
   }
   /**
@@ -662,7 +812,6 @@ class EndUserDoc extends LitElement {
    * @returns {object} html
    */
   _content(content = {},level = 1){
-    console.log('_content',this.displayMode,content);
     return this._isHTML(content)
     ? content
     : typeof content == "string"
@@ -694,7 +843,6 @@ class EndUserDoc extends LitElement {
         toc[toc.length-1].contents.push(item);
       }
     });
-    console.log('_toc',contents,toc);
     return toc;
   }
   /**
@@ -702,13 +850,22 @@ class EndUserDoc extends LitElement {
    * @param {array} links arry of content to link
    * @returns {object} html
    */
-  _links(links){
-    console.log('_links',links);
+  _links(links,preview=false){
+    let linkContent = (link) =>{
+      let temp = document.createElement("div");
+      render(this._content(link),temp);
+      return temp.textContent.substring(0,200);
+    }
     return !links || links.length < 1 
       ? ''
       : html`
-        <ul>
-          ${links.map(link=>html`<li><button id="link-${link.id}" part="navbutton" @click="${e=>this.currentSection = link.id}">${link.title}</button></li>`)}
+        <ul part="${preview ? 'preview' : 'toc'}">
+          ${links.map(link=>html`
+            <li>
+              <button id="link-${link.id}" part="navbutton" @click="${e=>this.currentSection = link.id}">${link.title}</button>
+              ${!preview ? '' : linkContent(link)}
+            </li>
+          `)}
         </ul>`;
   }
   /**
@@ -818,10 +975,10 @@ class EndUserDoc extends LitElement {
     return {
       ...super.properties,
       /** 
-       * determines how contents are displayed
+       * aria label for breadcrumbs
        */
-      displayMode: {
-        attribute: "display-mode",
+      breadcrumbsLabel: {
+        attribute: "breadcrumbs-label",
         type: String,
         reflect: true
       },
@@ -849,6 +1006,14 @@ class EndUserDoc extends LitElement {
         reflect: true
       },
       /** 
+       * determines how contents are displayed
+       */
+      displayMode: {
+        attribute: "display-mode",
+        type: String,
+        reflect: true
+      },
+      /** 
        * hides breadcrumbs
        */
       hideBreadcrumbs: {
@@ -856,6 +1021,46 @@ class EndUserDoc extends LitElement {
         type: Boolean,
         reflect: true
       },
+      /** 
+       * adds searching to docs
+       */
+      searchable: {
+        attribute: "searchable",
+        type: Boolean,
+        reflect: true
+      },
+      /** 
+       * label for search
+       */
+      searchLabel: {
+        attribute: "search-label",
+        type: String,
+        reflect: true
+      },
+      /** 
+       * text of search
+       */
+      searchText: {
+        attribute: "search-text",
+        type: String,
+        reflect: true
+      },
+      /** 
+       * label for skip nav link
+       */
+      skipNavLabel: {
+        attribute: "skip-nav-label",
+        type: String,
+        reflect: true
+
+      },
+      /** 
+       * raw, weighted search results by section id
+       */
+      __searchResults: {
+        type: Object,
+
+      }
     };
   }
 
