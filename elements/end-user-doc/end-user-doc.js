@@ -25,7 +25,7 @@ const EndUserDocBehaviors = function (SuperClass) {
             display: none!important;
           }
           h1,h2,h3,h4,h5,h6,caption {
-          font-family: serif;
+            font-family: serif;
           }
           ol[part=upper-roman]{
             list-style: upper-roman;
@@ -40,7 +40,7 @@ const EndUserDocBehaviors = function (SuperClass) {
             list-style: lower-roman;
           }
           table {
-          border-collapse: collapse;
+            border-collapse: collapse;
           }
           caption {
             color: #000; 
@@ -85,23 +85,39 @@ const EndUserDocBehaviors = function (SuperClass) {
           img[part=image],figure,table {
             max-width: 100%;
           }
+          h1:first-child,
+          h2:first-child,
+          h3:first-child,
+          h4:first-child,
+          h5:first-child,
+          h6:first-child,
           table:first-child, 
           figure:first-child, 
           img[part=image]:first-child,
+          blockquote:first-child,
+          pre:first-child,
           p:first-child, 
           ol:first-child {
-          margin-top: 0 ;
+            margin-top: 0 ;
           }
+          h1:last-child,
+          h2:last-child,
+          h3:last-child,
+          h4:last-child,
+          h5:last-child,
+          h6:last-child,
           table:last-child, 
           figure:last-child, 
           img[part=image]:last-child,
+          blockquote:last-child,
+          pre:last-child,
           p:last-child, 
           ol:last-child, 
           li:last-child > ol {
-          margin-bottom: 0;
+            margin-bottom: 0;
           }
           li > ol:last-child {
-          margin-bottom: 0.5em;
+            margin-bottom: 0.5em;
           }
           p[part=navback] {
             display: inline-block;
