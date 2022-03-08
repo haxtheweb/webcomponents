@@ -45,7 +45,9 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-menu-button": "^4.0.8",
     "@lrnwebcomponents/radio-behaviors": "^4.0.8",
+    "@lrnwebcomponents/simple-fields": "^4.0.8",
     "@lrnwebcomponents/simple-icon": "^4.0.8",
+    "@lrnwebcomponents/simple-modal": "^4.0.8",
     "@lrnwebcomponents/simple-tooltip": "^4.0.8",
     "lit": "^2.2.0"
   },

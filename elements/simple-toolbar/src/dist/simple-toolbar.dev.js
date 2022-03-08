@@ -969,6 +969,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
       }, {
         key: "_handleHelpDocsRegister",
         value: function _handleHelpDocsRegister(e) {
+          console.log('reg', e);
           e.stopPropagation();
           this.registerHelpDocs(e.detail);
         }

@@ -7,6 +7,7 @@ import "./lib/simple-toolbar-more-button.js";
 import "./lib/simple-toolbar-help-button.js";
 import "./lib/simple-toolbar-field.js";
 import "./lib/simple-toolbar-button-group.js";
+import "@lrnwebcomponents/end-user-doc/end-user-doc.js";
 import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
 /**
  * @customElement
@@ -885,6 +886,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {event} e
      */
     _handleHelpDocsRegister(e) {
+      console.log('reg',e);
       e.stopPropagation();
       this.registerHelpDocs(e.detail);
     }

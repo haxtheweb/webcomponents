@@ -14,7 +14,7 @@ require("@lrnwebcomponents/end-user-doc/end-user-doc.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["<end-user-docs hidden></end-user-docs>"]);
+  var data = _taggedTemplateLiteral(["<end-user-doc hidden></end-user-doc>"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -83,6 +83,7 @@ var SimpleToolbarHelpButtonBehaviors = function SimpleToolbarHelpButtonBehaviors
           var styles = this._getModalStyles(this),
               content = this.docs.cloneNode(true);
 
+          console.log(content, this.docs.contents);
           content.hidden = false;
           content.contents = this.docs.contents;
           this.dispatchEvent(new CustomEvent("simple-modal-show", {
@@ -101,7 +102,7 @@ var SimpleToolbarHelpButtonBehaviors = function SimpleToolbarHelpButtonBehaviors
       }, {
         key: "docs",
         get: function get() {
-          return this.shadowRoot && this.shadowRoot.querySelector('simple-toolbar-help-docs') ? this.shadowRoot.querySelector('simple-toolbar-help-docs') : undefined;
+          return this.shadowRoot && this.shadowRoot.querySelector('end-user-doc') ? this.shadowRoot.querySelector('end-user-doc') : undefined;
         }
       }, {
         key: "modalTemplate",

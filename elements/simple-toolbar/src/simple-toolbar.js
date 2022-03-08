@@ -886,6 +886,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {event} e
      */
     _handleHelpDocsRegister(e) {
+      console.log('reg',e);
       e.stopPropagation();
       this.registerHelpDocs(e.detail);
     }

@@ -31,18 +31,20 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
 
     get docs(){
       return this.shadowRoot 
-        && this.shadowRoot.querySelector('simple-toolbar-help-docs') 
-        ? this.shadowRoot.querySelector('simple-toolbar-help-docs') 
+        && this.shadowRoot.querySelector('end-user-doc') 
+        ? this.shadowRoot.querySelector('end-user-doc') 
         : undefined;
     }
 
     get modalTemplate(){
-      return html`<end-user-docs hidden></end-user-docs>`;
+      return html`<end-user-doc hidden></end-user-doc>`;
     }
 
     openModal(){
       let styles = this._getModalStyles(this), 
         content = this.docs.cloneNode(true);
+      
+        console.log(content,this.docs.contents);
         
       content.hidden = false;
       content.contents = this.docs.contents;
