@@ -54,25 +54,23 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
       this.shortcutKeys = "F1";
     }
 
-    get docs(){
+    get endUserDoc(){
       return this.shadowRoot 
-        && this.shadowRoot.querySelector('end-user-doc') 
-        ? this.shadowRoot.querySelector('end-user-doc') 
+        && this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') 
+        ? this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') 
         : undefined;
     }
 
     get modalTemplate(){
-      return html`<end-user-doc hidden ?searchable="${this.searchable}" display-mode="${this.displayMode}"></end-user-doc>`;
+      return html`<end-user-doc id="helpDocsTemplate" hidden class="${this.icon}" ?searchable="${this.searchable}" display-mode="${this.displayMode}"></end-user-doc>`;
     }
 
     openModal(){
       let styles = this._getModalStyles(this), 
-        content = this.docs.cloneNode(true);
-      
-        console.log(content,this.docs.contents);
+        content = this.endUserDoc.cloneNode(true);
         
       content.hidden = false;
-      content.contents = this.docs.contents;
+      content.contents = this.endUserDoc.contents;
       this.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,

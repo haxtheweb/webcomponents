@@ -248,8 +248,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         /**
          * end-user-doc element
          */
-        __helpDocs: {
-          name: "__helpDocs",
+        __endUserDoc: {
+          name: "__endUserDoc",
           type: Object,
         },
         /**
@@ -384,11 +384,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
-      this.__helpDocs = document.createElement('end-user-doc');
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
-      this.addEventListener("end-user-docs-connected", this._handleHelpDocsRegister);
-      this.addEventListener("end-user-docs-disconnected", this._handleHelpDocsDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
       this.addEventListener("toggle-toolbar", this._handleToggleToolbar);
     }
@@ -435,7 +432,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get endUserDoc(){
-      return this.__helpDocs;
+      return this.__endUserDoc;
     }
 
     /**
@@ -529,6 +526,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       //remove button from list of buttons
       this.__buttons = this.__buttons.filter((b) => b !== button);
 
+      //if button contains help documentation, deregister docs
+      if(button.endUserDoc && this.endUserDoc == button.endUserDoc) this.deregisterEndUserDoc(button.endUserDoc);
+
       //remove button shortcut keys
       (button.shortcutKeys || "")
         .split(" ")
@@ -537,7 +537,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         });
 
       //add end-user-doc shortcut schema if there is none
-      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+      this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
 
       //remove button event listeners
       button.removeEventListener("blur", (e) =>
@@ -550,10 +550,17 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     /**
      * deregisters help docs when removed
      * 
-     * @param {object} docs simple-toolbar-help-docs component
+     * @param {object} doc end-user-doc component
      */
-    deregisterHelpDocs(docs){
-      this.__helpDocs = undefined;
+    deregisterEndUserDoc(doc){
+      this.__deregEndUserDoc = this.__endUserDoc;
+
+      //don't deregister if doc's button is temporarily disconnected
+      setTimeout(()=>{
+        if(this.__deregEndUserDoc) this.__endUserDoc = undefined;
+        this.__deregEndUserDoc = false;
+      },1);
+      
     }
     /**
      * registers button when appended
@@ -566,6 +573,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons.push(button);
       this.__buttons = [...new Set(this.__buttons)];
 
+      //if button contains help documentation, deregister docs
+      if(button.endUserDoc) this.registerEndUserDoc(button.endUserDoc);
+
       //get all button shortcut keys
       (button.shortcutKeys || "")
         .split(" ")
@@ -575,7 +585,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (button.role !== "menuitem") button.isCurrentItem = false;
 
       //add end-user-doc schema if there is none
-      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+      this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
 
       //add button event listeners
       button.addEventListener("blur", (e) => this._handleFocusChange(button));
@@ -585,14 +595,25 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     /**
      * registers help docs when appended
      * 
-     * @param {object} docs simple-toolbar-help-docs component
+     * @param {object} doc end-user-doc component
      */
-    registerHelpDocs(docs){
-      this.__helpDocs = docs;
-
-      //add end-user-doc shortcut schema if there is none
-      if(!this.endUserDocId) this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+    registerEndUserDoc(doc){
+      //don't reregister if doc's button is temporarily disconnected
+      if(doc !== this.__endUserDoc && this.__endUserDoc !== doc) {
+        this.__deregEndUserDoc = false;
+        this.__endUserDoc = doc;
+        this.updateEndUserDoc();
+      }
     }
+
+    /**
+     * updates end-user-doc when it is registered
+     */
+    updateEndUserDoc(){
+      //add end-user-doc shortcut schema if there is none
+      this.updateDocSection('__shortcutDocs','_getShortcutDocs',true,true);
+    }
+
     /**
      * gets all shortcut key documentation into a single cheatsheet
      */
@@ -611,7 +632,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             rows: [],
             ...schema.cheatsheet
           };
-          schema.cheatsheet.rows.push([html`<code>${key}</code>`,this.shortcutKeys[key].label])
+          schema.cheatsheet.rows.push([html`<kbd>${key}</kbd>`,this.shortcutKeys[key].label])
         }
       });
       return schema;
@@ -627,7 +648,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @returns 
      */
     checkDocSection(changedProperties,dataProp,sectionProp,updateFunction,enabledProp,parentId){
-      if(!updateFunction) return;
+      if(!updateFunction || !this.endUserDoc) return;
       let enabledChanged = false, 
         docsChanged = false, 
         enabled = false;
@@ -635,15 +656,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (!!enabledProp && propName === enabledProp)  {
           enabledChanged = true;
         }
-        if(propName == '__helpDocs') {
-          enabledChanged = true;
-        }
         if (propName === dataProp)  {
           docsChanged = true;
           enabledChanged = true;
         }
       });
-      enabled = !!this.__helpDocs && (!enabledProp || !!this[enabledProp]);
+      enabled = !enabledProp || !!this[enabledProp];
       if(enabledChanged) this.updateDocSection(sectionProp,updateFunction,docsChanged,enabled,parentId);
     }
 
@@ -659,23 +677,21 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     updateDocSection(sectionProp,updateFunction,changed,enabled,parentId){
       if(!this.endUserDoc || !updateFunction) return;
-      console.log(sectionProp,this.endUserDocContents);
 
       //add end user doc schema if there is none
       if(!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
 
-      if((!enabled || changed) && !!this[sectionProp]) {
-        //remove markdown section from docs
+      if(!enabled || changed) {
+        //remove section from docs
         if(!!this[sectionProp] && this[sectionProp].id && this.endUserDoc.contentsById[this[sectionProp].id]) 
           this.endUserDoc.removeSectionContent(this[sectionProp].id);
       }
       if(enabled){
-        //add markdown patterns and add markdown section to docs
+        //update section
         if(!this[sectionProp] || changed) this[sectionProp] = this[updateFunction]();
-        //add markdown section schema exists add it to docs
+        //add section schema to docs
         if(!!this[sectionProp]) this.endUserDoc.appendToSection({...this[sectionProp]},parentId || this.endUserDocId);
       }
-      console.log(sectionProp,this[sectionProp],this.endUserDocContents);
     }
 
     /**
@@ -907,24 +923,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _handleFocusChange() {
       this.__focused = this.contains(document.activeElement);
-    }
-    /**
-     * handles appended help documentation
-     *
-     * @param {event} e
-     */
-    _handleHelpDocsRegister(e) {
-      e.stopPropagation();
-      this.registerHelpDocs(e.detail);
-    }
-    /**
-     * handles moved/removed help documentation
-     *
-     * @param {event} e
-     */
-    _handleHelpDocsDeregister(e) {
-      e.stopPropagation();
-      this.deregisterHelpDocs(e.detail);
     }
     /**
      * handles appended button

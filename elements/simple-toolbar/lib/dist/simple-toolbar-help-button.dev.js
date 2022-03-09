@@ -14,7 +14,7 @@ require("@lrnwebcomponents/end-user-doc/end-user-doc.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["<end-user-doc hidden ?searchable=\"", "\" display-mode=\"", "\"></end-user-doc>"]);
+  var data = _taggedTemplateLiteral(["<end-user-doc id=\"helpDocsTemplate\" hidden class=\"", "\" ?searchable=\"", "\" display-mode=\"", "\"></end-user-doc>"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -115,11 +115,10 @@ var SimpleToolbarHelpButtonBehaviors = function SimpleToolbarHelpButtonBehaviors
         key: "openModal",
         value: function openModal() {
           var styles = this._getModalStyles(this),
-              content = this.docs.cloneNode(true);
+              content = this.endUserDoc.cloneNode(true);
 
-          console.log(content, this.docs.contents);
           content.hidden = false;
-          content.contents = this.docs.contents;
+          content.contents = this.endUserDoc.contents;
           this.dispatchEvent(new CustomEvent("simple-modal-show", {
             bubbles: true,
             cancelable: true,
@@ -134,14 +133,14 @@ var SimpleToolbarHelpButtonBehaviors = function SimpleToolbarHelpButtonBehaviors
           }));
         }
       }, {
-        key: "docs",
+        key: "endUserDoc",
         get: function get() {
-          return this.shadowRoot && this.shadowRoot.querySelector('end-user-doc') ? this.shadowRoot.querySelector('end-user-doc') : undefined;
+          return this.shadowRoot && this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') ? this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') : undefined;
         }
       }, {
         key: "modalTemplate",
         get: function get() {
-          return (0, _lit.html)(_templateObject(), this.searchable, this.displayMode);
+          return (0, _lit.html)(_templateObject(), this.icon, this.searchable, this.displayMode);
         }
       }]);
 
