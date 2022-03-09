@@ -6,25 +6,8 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "web-social-share/dist/esm/web-social-share.entry.js";
-import {
-  a as patchEsm,
-  b as bootstrapLazy,
-} from "web-social-share/dist/esm/index-bef2383e.js";
+import { defineCustomElements } from "web-social-share/dist/esm/loader.js";
 
-const defineCustomElements = (win, options) => {
-  return patchEsm().then(() => {
-    bootstrapLazy(
-      [
-        [
-          "web-social-share",
-          [[1, "web-social-share", { show: [1028], share: [16] }]],
-        ],
-      ],
-      options
-    );
-  });
-};
 class SiteShareWidget extends LitElement {
   static get tag() {
     return "site-share-widget";

@@ -260,9 +260,8 @@ class SimpleTour extends LitElement {
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;
-        let part = this.stacks[this.active][this.stop].target.getAttribute(
-          "part"
-        );
+        let part =
+          this.stacks[this.active][this.stop].target.getAttribute("part");
         target.setAttribute("part", "simple-tour-active");
         setTimeout(() => {
           if (part == null || part == "simple-tour-active") {

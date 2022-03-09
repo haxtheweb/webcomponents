@@ -503,13 +503,13 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
       window.SimpleColorsSharedStyles.instance.colors;
     window.SimpleColorsSharedStyles.contrasts =
       window.SimpleColorsSharedStyles.instance.contrasts;
-    window.SimpleColorsSharedStyles.stylesheet = document.createElement(
-      "style"
-    );
+    window.SimpleColorsSharedStyles.stylesheet =
+      document.createElement("style");
     window.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
     document.head.appendChild(window.SimpleColorsSharedStyles.stylesheet);
   }
   return window.SimpleColorsSharedStyles.instance;
 };
 
-export const SimpleColorsSharedStylesGlobal = window.SimpleColorsSharedStyles.requestAvailability();
+export const SimpleColorsSharedStylesGlobal =
+  window.SimpleColorsSharedStyles.requestAvailability();

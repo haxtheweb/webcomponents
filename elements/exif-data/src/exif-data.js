@@ -56,9 +56,9 @@ class ExifData extends HTMLElement {
     super();
     this.nodeData = [];
     if (window.WCGlobalBasePath) {
-      this.basePath = window.WCGlobalBasePath;
+      this.basePath = window.WCGlobalBasePath + "lib/exif-js.js";
     } else {
-      this.basePath = new URL("./", import.meta.url).href;
+      this.basePath = new URL("./lib/exif-js.js", import.meta.url).href;
     }
     // see if we already have it imported
     if (ESGlobalBridgeStore.imports["exif-js"]) {
@@ -67,7 +67,7 @@ class ExifData extends HTMLElement {
         this.updateExif();
       }, 0);
     } else {
-      ESGlobalBridgeStore.load("exif-js", `${this.basePath}lib/exif-js.js`);
+      ESGlobalBridgeStore.load("exif-js", `${this.basePath}`);
       window.addEventListener(
         "es-bridge-exif-js-loaded",
         this._onExifJsLoaded.bind(this)

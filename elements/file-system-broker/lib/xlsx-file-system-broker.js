@@ -197,7 +197,8 @@ window.XLSXFileSystemBroker.requestAvailability = () => {
   return window.XLSXFileSystemBroker.instance;
 };
 // forces appending
-const XLSXFileSystemBrokerSingleton = window.XLSXFileSystemBroker.requestAvailability();
+const XLSXFileSystemBrokerSingleton =
+  window.XLSXFileSystemBroker.requestAvailability();
 export {
   XLSXFileSystemBrokerSingleton,
   XLSXFileSystemBroker,

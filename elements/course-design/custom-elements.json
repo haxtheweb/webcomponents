@@ -87,6 +87,58 @@
       ]
     },
     {
+      "name": "course-intro-footer",
+      "path": "./lib/course-intro-footer.js",
+      "attributes": [
+        {
+          "name": "organization",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "organizationLink",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "company",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "companyLink",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "organization",
+          "attribute": "organization",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "organizationLink",
+          "attribute": "organizationLink",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "company",
+          "attribute": "company",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "companyLink",
+          "attribute": "companyLink",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
       "name": "course-intro-header",
       "path": "./lib/course-intro-header.js",
       "attributes": [
@@ -99,6 +151,11 @@
           "name": "description",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -113,6 +170,12 @@
           "attribute": "description",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },
@@ -121,17 +184,7 @@
       "path": "./lib/course-intro-lesson-plan.js",
       "attributes": [
         {
-          "name": "position",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "description",
           "type": "string",
           "default": "\"\""
         },
@@ -143,20 +196,8 @@
       ],
       "properties": [
         {
-          "name": "position",
-          "attribute": "position",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
           "name": "title",
           "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "description",
-          "attribute": "description",
           "type": "string",
           "default": "\"\""
         },

@@ -42,6 +42,18 @@
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "hex-color",
           "description": "Class for the color",
           "type": "string"
@@ -152,6 +164,24 @@
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
         },
         {
           "name": "hexColor",
@@ -350,6 +380,18 @@
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
         {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "hex-color",
           "description": "Class for the color",
           "type": "string"
@@ -460,6 +502,24 @@
           "name": "t",
           "attribute": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
         },
         {
           "name": "hexColor",

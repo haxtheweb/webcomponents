@@ -3,13 +3,392 @@
   "tags": [
     {
       "name": "promise-progress",
+      "path": "./lib/promise-progress-lite.js",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "attributes": [
+        {
+          "name": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "list",
+          "attribute": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "showCount",
+          "attribute": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "attribute": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "promise-progress-finished"
+        }
+      ]
+    },
+    {
+      "name": "promise-progress-lite",
+      "path": "./lib/promise-progress-lite.js",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "attributes": [
+        {
+          "name": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "list",
+          "attribute": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "showCount",
+          "attribute": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "attribute": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "promise-progress-finished"
+        }
+      ]
+    },
+    {
+      "name": "wc-preload-progress",
+      "path": "./lib/wc-preload-progress.js",
+      "description": "`promise-progress`\n`layer on top of promise progress with specific integration with the WC Autoloader registry`",
+      "attributes": [
+        {
+          "name": "wcList",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "wcList",
+          "attribute": "wcList",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "registry"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        },
+        {
+          "name": "list",
+          "attribute": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "showCount",
+          "attribute": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "attribute": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "promise-progress-finished"
+        }
+      ]
+    },
+    {
+      "name": "promise-progress",
       "path": "./promise-progress.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`"
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        },
+        {
+          "name": "list",
+          "attribute": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "showCount",
+          "attribute": "show-count",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canLoad",
+          "attribute": "canLoad",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "promise-progress-finished"
+        }
+      ]
     },
     {
       "name": "promise-progress",
       "path": "./src/promise-progress.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`"
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
     }
   ]
 }

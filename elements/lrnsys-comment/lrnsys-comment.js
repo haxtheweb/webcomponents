@@ -535,9 +535,8 @@ class LrnsysComment extends PolymerElement {
     if (typeof this.comment !== typeof undefined && this.comment.actions.edit) {
       setTimeout(() => {
         // show / hide the edit vs display area
-        this.shadowRoot.querySelector(
-          "#renderedcomment"
-        ).hidden = this.editform;
+        this.shadowRoot.querySelector("#renderedcomment").hidden =
+          this.editform;
         this.shadowRoot.querySelector("#commenteditor").hidden = !this.editform;
         // simple icon toggle
         if (this.editform) {

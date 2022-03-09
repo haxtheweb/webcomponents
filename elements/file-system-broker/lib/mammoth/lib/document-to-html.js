@@ -487,8 +487,7 @@ function walkHtml(nodes, callback) {
   });
 }
 
-var commentAuthorLabel = (exports.commentAuthorLabel = function commentAuthorLabel(
-  comment
-) {
-  return comment.authorInitials || "";
-});
+var commentAuthorLabel = (exports.commentAuthorLabel =
+  function commentAuthorLabel(comment) {
+    return comment.authorInitials || "";
+  });

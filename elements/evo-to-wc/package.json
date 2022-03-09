@@ -9,7 +9,7 @@
     "files": {},
     "sharedStyles": []
   },
-  "version": "4.0.5",
+  "version": "4.0.12",
   "description": "Converts evolution content to web component equivalents.",
   "repository": {
     "type": "git",
@@ -36,22 +36,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@lrnwebcomponents/a11y-tabs": "^4.0.8",
-    "@lrnwebcomponents/accent-card": "^4.0.8",
-    "@lrnwebcomponents/hax-iconset": "^4.0.8",
-    "@lrnwebcomponents/simple-icon": "^4.0.8"
+    "@lrnwebcomponents/a11y-tabs": "^4.0.12",
+    "@lrnwebcomponents/accent-card": "^4.0.12",
+    "@lrnwebcomponents/hax-iconset": "^4.0.12",
+    "@lrnwebcomponents/simple-icon": "^4.0.12"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.29",
+    "@web/dev-server": "0.1.30",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
-  }
+  },
+  "gitHead": "bf3a571b543295fbade018f69e6e0ea71156df0f"
 }

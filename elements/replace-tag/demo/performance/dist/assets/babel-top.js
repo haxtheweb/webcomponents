@@ -453,11 +453,12 @@
     }
     function a(t) {
       return (
-        (p.getPrototypeOf = a = Object.setPrototypeOf
-          ? Object.getPrototypeOf
-          : function (t) {
-              return t.__proto__ || Object.getPrototypeOf(t);
-            }),
+        (p.getPrototypeOf = a =
+          Object.setPrototypeOf
+            ? Object.getPrototypeOf
+            : function (t) {
+                return t.__proto__ || Object.getPrototypeOf(t);
+              }),
         a(t)
       );
     }
@@ -473,63 +474,65 @@
     }
     function c() {
       return (
-        (p.construct = c = (function () {
-          if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-          if (Reflect.construct.sham) return !1;
-          if ("function" == typeof Proxy) return !0;
-          try {
-            return (
-              Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {})
-              ),
-              !0
-            );
-          } catch (t) {
-            return !1;
-          }
-        })()
-          ? Reflect.construct
-          : function (t, e, r) {
-              var n = [null];
-              n.push.apply(n, e);
-              var o = new (Function.bind.apply(t, n))();
-              return r && p.setPrototypeOf(o, r.prototype), o;
-            }),
+        (p.construct = c =
+          (function () {
+            if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
+            if (Reflect.construct.sham) return !1;
+            if ("function" == typeof Proxy) return !0;
+            try {
+              return (
+                Date.prototype.toString.call(
+                  Reflect.construct(Date, [], function () {})
+                ),
+                !0
+              );
+            } catch (t) {
+              return !1;
+            }
+          })()
+            ? Reflect.construct
+            : function (t, e, r) {
+                var n = [null];
+                n.push.apply(n, e);
+                var o = new (Function.bind.apply(t, n))();
+                return r && p.setPrototypeOf(o, r.prototype), o;
+              }),
         c.apply(null, arguments)
       );
     }
     function f(t) {
       var e = "function" == typeof Map ? new Map() : void 0;
       return (
-        (p.wrapNativeSuper = f = function (t) {
-          function r() {
-            return p.construct(
-              t,
-              arguments,
-              p.getPrototypeOf(this).constructor
+        (p.wrapNativeSuper = f =
+          function (t) {
+            function r() {
+              return p.construct(
+                t,
+                arguments,
+                p.getPrototypeOf(this).constructor
+              );
+            }
+            if (null === t || !p.isNativeFunction(t)) return t;
+            if ("function" != typeof t)
+              throw new TypeError(
+                "Super expression must either be null or a function"
+              );
+            if (void 0 !== e) {
+              if (e.has(t)) return e.get(t);
+              e.set(t, r);
+            }
+            return (
+              (r.prototype = Object.create(t.prototype, {
+                constructor: {
+                  value: r,
+                  enumerable: !1,
+                  writable: !0,
+                  configurable: !0,
+                },
+              })),
+              p.setPrototypeOf(r, t)
             );
-          }
-          if (null === t || !p.isNativeFunction(t)) return t;
-          if ("function" != typeof t)
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          if (void 0 !== e) {
-            if (e.has(t)) return e.get(t);
-            e.set(t, r);
-          }
-          return (
-            (r.prototype = Object.create(t.prototype, {
-              constructor: {
-                value: r,
-                enumerable: !1,
-                writable: !0,
-                configurable: !0,
-              },
-            })),
-            p.setPrototypeOf(r, t)
-          );
-        }),
+          }),
         f(t)
       );
     }

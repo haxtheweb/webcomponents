@@ -54,8 +54,7 @@ let getVideoKnobs = () => {
   ytKnobs = getVideoKnobs();
 videoKnobs.sources.value = [
   {
-    src:
-      "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4",
+    src: "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4",
     type: "video/mp4",
   },
 ];

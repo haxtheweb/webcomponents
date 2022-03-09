@@ -2,14 +2,292 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "post-card-photo",
+      "path": "./lib/PostCardPhoto.js",
+      "attributes": [
+        {
+          "name": "image",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "post-card-postmark",
+      "path": "./lib/PostCardPostmark.js",
+      "attributes": [
+        {
+          "name": "image",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "locations",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "locations",
+          "attribute": "locations",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "post-card-stamp",
+      "path": "./lib/PostCardStamp.js",
+      "attributes": [
+        {
+          "name": "image",
+          "type": "string",
+          "default": "\"href\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string",
+          "default": "\"href\""
+        }
+      ]
+    },
+    {
       "name": "post-card",
       "path": "./post-card.js",
-      "description": "`post-card`\n`sending you mail from afar, or the browser.`"
+      "attributes": [
+        {
+          "name": "to",
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"label\":\"Post Card\",\"send\":\"To\",\"receive\":\"From\"}"
+        },
+        {
+          "name": "photo-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "stamp-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "post-mark-locations",
+          "type": "string",
+          "default": "\"insert - locations - here\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "to",
+          "attribute": "to",
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "attribute": "from",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "attribute": "message",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"label\":\"Post Card\",\"send\":\"To\",\"receive\":\"From\"}"
+        },
+        {
+          "name": "photoSrc",
+          "attribute": "photo-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "stampSrc",
+          "attribute": "stamp-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "postMarkLocations",
+          "attribute": "post-mark-locations",
+          "type": "string",
+          "default": "\"insert - locations - here\""
+        }
+      ],
+      "events": [
+        {
+          "name": "i18n-manager-register-element"
+        }
+      ]
     },
     {
       "name": "post-card",
       "path": "./src/post-card.js",
-      "description": "`post-card`\n`sending you mail from afar, or the browser.`"
+      "attributes": [
+        {
+          "name": "to",
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"label\":\"Post Card\",\"send\":\"To\",\"receive\":\"From\"}"
+        },
+        {
+          "name": "photo-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "stamp-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "post-mark-locations",
+          "type": "string",
+          "default": "\"insert - locations - here\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "to",
+          "attribute": "to",
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "attribute": "from",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "attribute": "message",
+          "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"label\":\"Post Card\",\"send\":\"To\",\"receive\":\"From\"}"
+        },
+        {
+          "name": "photoSrc",
+          "attribute": "photo-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "stampSrc",
+          "attribute": "stamp-src",
+          "type": "string",
+          "default": "\"href\""
+        },
+        {
+          "name": "postMarkLocations",
+          "attribute": "post-mark-locations",
+          "type": "string",
+          "default": "\"insert - locations - here\""
+        }
+      ],
+      "events": [
+        {
+          "name": "i18n-manager-register-element"
+        }
+      ]
     }
   ]
 }

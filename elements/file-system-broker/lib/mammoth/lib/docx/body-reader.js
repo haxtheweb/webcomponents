@@ -73,9 +73,8 @@ function BodyReader(options) {
         type: "runProperties",
         styleId: style.styleId,
         styleName: style.name,
-        verticalAlignment: element.firstOrEmpty("w:vertAlign").attributes[
-          "w:val"
-        ],
+        verticalAlignment:
+          element.firstOrEmpty("w:vertAlign").attributes["w:val"],
         font: element.firstOrEmpty("w:rFonts").attributes["w:ascii"],
         fontSize: fontSize,
         isBold: readBooleanElement(element.first("w:b")),
@@ -515,9 +514,8 @@ function BodyReader(options) {
     if (embedRelationshipId) {
       return findEmbeddedImageFile(embedRelationshipId);
     } else {
-      var imagePath = relationships.findTargetByRelationshipId(
-        linkRelationshipId
-      );
+      var imagePath =
+        relationships.findTargetByRelationshipId(linkRelationshipId);
       return {
         path: imagePath,
         read: files.read.bind(files, imagePath),

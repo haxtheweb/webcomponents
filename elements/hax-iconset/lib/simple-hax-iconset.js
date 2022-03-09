@@ -11,6 +11,6 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 ].forEach((i) => {
   SimpleIconsetStore.registerIconset(
     i,
-    `${new URL("./", import.meta.url).href}svgs/${i}/`
+    `${new URL("./simple-hax-iconset.js", import.meta.url).href}/../svgs/${i}/`
   );
 });

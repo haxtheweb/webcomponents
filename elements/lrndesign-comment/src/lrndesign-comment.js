@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "time-elements/dist/time-elements.js";
+import "@github/time-elements";
 /**
  * `lrndesign-comment`
  * @element lrndesign-comment

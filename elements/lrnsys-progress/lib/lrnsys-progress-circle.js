@@ -513,10 +513,14 @@ class LrnsysProgressCircle extends PolymerElement {
   }
   constructor() {
     super();
-    this.completeSound =
-      new URL("./", import.meta.url).href + "lib/assets/complete.mp3";
-    this.finishedSound =
-      new URL("./", import.meta.url).href + "lib/assets/finished.mp3";
+    this.completeSound = new URL(
+      "./lib/assets/complete.mp3",
+      import.meta.url
+    ).href;
+    this.finishedSound = new URL(
+      "./lib/assets/finished.mp3",
+      import.meta.url
+    ).href;
     setTimeout(() => {
       this.addEventListener("click", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.focusOn.bind(this));
@@ -589,7 +593,7 @@ class LrnsysProgressCircle extends PolymerElement {
    * Calculate which icon to present.
    */
   _getActiveIcon(icon, iconComplete, status) {
-    if (typeof icon !== typeof undefined) {
+    if (typeof icon !== typeof undefined && this.shadowRoot) {
       var tmp = icon;
       // support for a loading icon while loading
       if (status == "loading") {

@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
-import "time-elements/dist/time-elements.js";
+import "@github/time-elements";
 /**
  * `simple-blog-card`
  * `a card commonly found on a blogging website`

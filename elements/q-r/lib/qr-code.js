@@ -9,8 +9,7 @@ class QRCodeElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
-    const basePath = new URL("./", import.meta.url).href;
-    const location = `${basePath}/qr.js`;
+    const location = new URL("./qr.js", import.meta.url).href;
     window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this));
     window.ESGlobalBridge.requestAvailability().load("qr", location);
   }

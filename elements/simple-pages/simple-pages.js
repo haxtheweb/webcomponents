@@ -89,7 +89,8 @@ class SimplePages extends LitElement {
     ) {
       let el = this.children[e.detail.value];
       if (!window.customElements.get(el.tagName.toLowerCase())) {
-        const basePath = new URL("./", import.meta.url).href;
+        const basePath =
+          new URL("./simple-pages.js", import.meta.url).href + "/../";
         import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
           (response) => {
             setTimeout(() => {

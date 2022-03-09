@@ -380,13 +380,11 @@ class PageContentsMenu extends LitElement {
             (module) => {
               setTimeout(() => {
                 // hook up the pop over menu
-                this.__toggleTarget = this.shadowRoot.querySelector(
-                  "#popovertarget"
-                );
+                this.__toggleTarget =
+                  this.shadowRoot.querySelector("#popovertarget");
                 this.__toggleTarget.setAttribute("tabindex", "0");
-                this.shadowRoot.querySelector(
-                  "simple-popover"
-                ).target = this.__toggleTarget;
+                this.shadowRoot.querySelector("simple-popover").target =
+                  this.__toggleTarget;
               }, 0);
             }
           );

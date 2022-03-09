@@ -36,9 +36,10 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
       case "sibling":
         return this.renderButton(this.t.newPage, this.t.newPage);
       case "child":
+        this.icon = "hax:add-child-page";
         return this.renderButton(this.t.newChildPage, this.t.newChildPage);
       case "duplicate":
-        this.icon = "icons:content-copy";
+        this.icon = "hax:duplicate";
         return this.renderButton(this.t.duplicatePage, this.t.duplicatePage);
     }
   }

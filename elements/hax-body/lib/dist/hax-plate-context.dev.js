@@ -761,11 +761,12 @@ var HaxPlateContext =
                         !!this.activeNode && !!this.activeNode.tagName
                           ? this.activeNode.tagName.toLowerCase()
                           : undefined;
-                      primTag = _haxStore.HAXStore.activeHaxBody.primitiveTextBlocks.includes(
-                        tag
-                      )
-                        ? "p"
-                        : undefined;
+                      primTag =
+                        _haxStore.HAXStore.activeHaxBody.primitiveTextBlocks.includes(
+                          tag
+                        )
+                          ? "p"
+                          : undefined;
                       this.formatBlocks = !!tag
                         ? elements.filter(function (el) {
                             return el.tag && ![tag, primTag].includes(el.tag);

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.8",
+  "version": "4.0.12",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.29",
+    "@web/dev-server": "0.1.30",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
@@ -64,5 +64,6 @@
   "keywords": [
     "web-components",
     "html"
-  ]
+  ],
+  "gitHead": "bf3a571b543295fbade018f69e6e0ea71156df0f"
 }

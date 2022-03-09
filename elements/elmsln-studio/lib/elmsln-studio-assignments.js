@@ -135,10 +135,9 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
                               ${p.project}
                             </span>
                             <div slot="linklist">
-                              ${this.sortDates(
-                                p.assignments || [],
-                                true
-                              ).map((a) => this.renderAssignment(a))}
+                              ${this.sortDates(p.assignments || [], true).map(
+                                (a) => this.renderAssignment(a)
+                              )}
                             </div>
                           </nav-card>
                         `

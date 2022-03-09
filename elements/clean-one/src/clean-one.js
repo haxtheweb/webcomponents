@@ -707,16 +707,6 @@ class CleanOne extends HAXCMSRememberRoute(
                       <slot></slot>
                     </div>
                   </section>
-                  ${this.isLoggedIn
-                    ? html` <haxcms-button-add
-                          auto-edit
-                          type="child"
-                        ></haxcms-button-add>
-                        <haxcms-button-add
-                          auto-edit
-                          type="duplicate"
-                        ></haxcms-button-add>`
-                    : ``}
                 </div>
               </article>
             </main>
@@ -808,13 +798,11 @@ class CleanOne extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.HAXCMSThemeSettings.scrollTarget = this.shadowRoot.querySelector(
-      "#body"
-    );
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector("#body");
     // hook up the scroll target
-    this.shadowRoot.querySelector(
-      "scroll-button"
-    ).target = this.shadowRoot.querySelector("#top");
+    this.shadowRoot.querySelector("scroll-button").target =
+      this.shadowRoot.querySelector("#top");
   }
   HAXCMSGlobalStyleSheetContent() {
     return [

@@ -3,7 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SimpleToolbarButtonBehaviors = exports.SimpleToolbarButton = exports.SimpleToolbarGlobalProperties = void 0;
+exports.SimpleToolbarButtonBehaviors =
+  exports.SimpleToolbarButton =
+  exports.SimpleToolbarGlobalProperties =
+    void 0;
 
 var _lit = require("lit");
 

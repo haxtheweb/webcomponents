@@ -1,7 +1,7 @@
 var assert = require("assert");
 
-var createCommentsReader = require("../../lib/docx/comments-reader")
-  .createCommentsReader;
+var createCommentsReader =
+  require("../../lib/docx/comments-reader").createCommentsReader;
 var createBodyReader = require("../../lib/docx/body-reader").createBodyReader;
 var documents = require("../../lib/documents");
 var xml = require("../../lib/xml");

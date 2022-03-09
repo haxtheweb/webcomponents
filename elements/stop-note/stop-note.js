@@ -7,7 +7,9 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
-  `${new URL("./", import.meta.url).href}lib/svgs/stopnoteicons/`
+  `${
+    new URL("./stop-note.js", import.meta.url).href
+  }/../lib/svgs/stopnoteicons/`
 );
 /**
  * `stop-note`

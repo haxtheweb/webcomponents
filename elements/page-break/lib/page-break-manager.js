@@ -299,9 +299,8 @@ window.PageBreakManager = window.PageBreakManager || {};
 // is rendered through the same modal
 window.PageBreakManager.requestAvailability = () => {
   if (!window.PageBreakManager.instance) {
-    window.PageBreakManager.instance = document.createElement(
-      "page-break-manager"
-    );
+    window.PageBreakManager.instance =
+      document.createElement("page-break-manager");
     document.body.appendChild(window.PageBreakManager.instance);
   }
   return window.PageBreakManager.instance;

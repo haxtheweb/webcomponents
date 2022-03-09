@@ -778,11 +778,8 @@ var HaxTray =
             this.shadowRoot
               .querySelector("#gizmobrowser")
               .resetList((0, _mobx.toJS)(_haxStore.HAXStore.gizmoList));
-            this.shadowRoot.querySelector(
-              "#staxbrowser"
-            ).staxList = _toConsumableArray(
-              (0, _mobx.toJS)(_haxStore.HAXStore.staxList)
-            );
+            this.shadowRoot.querySelector("#staxbrowser").staxList =
+              _toConsumableArray((0, _mobx.toJS)(_haxStore.HAXStore.staxList));
           },
           /**
            * Process event for simple content inserts.
@@ -1035,9 +1032,8 @@ var HaxTray =
                   detail: {
                     command:
                       ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
-                    context: this.shadowRoot.querySelector(
-                      "#advanced-settings"
-                    ),
+                    context:
+                      this.shadowRoot.querySelector("#advanced-settings"),
                     callback: "click",
                   },
                 })
@@ -1344,10 +1340,8 @@ var HaxTray =
               }); // then we need to work on the layout piece
 
               if (activeNode.style.width != "") {
-                this.activeValue.settings.layout.__scale = activeNode.style.width.replace(
-                  "%",
-                  ""
-                );
+                this.activeValue.settings.layout.__scale =
+                  activeNode.style.width.replace("%", "");
               } else {
                 this.activeValue.settings.layout.__scale = 100;
               }
@@ -1368,8 +1362,10 @@ var HaxTray =
                 this.activeValue.settings.layout.__position = "hax-align-left";
               }
 
-              this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
-              this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position; // tabs / deep objects require us to preview the value w/ the path correctly
+              this.activeHaxElement.properties.__scale =
+                this.activeValue.settings.layout.__scale;
+              this.activeHaxElement.properties.__position =
+                this.activeValue.settings.layout.__position; // tabs / deep objects require us to preview the value w/ the path correctly
 
               props.settings.configure.forEach(function (val, key) {
                 if (props.settings.configure[key].attribute) {
@@ -1474,12 +1470,10 @@ var HaxTray =
               }
 
               this.__activePropSchema = props;
-              this.shadowRoot.querySelector(
-                "#settingsform"
-              ).fields = this.activeSchema;
-              this.shadowRoot.querySelector(
-                "#settingsform"
-              ).value = this.activeValue;
+              this.shadowRoot.querySelector("#settingsform").fields =
+                this.activeSchema;
+              this.shadowRoot.querySelector("#settingsform").value =
+                this.activeValue;
             }
           },
           /**

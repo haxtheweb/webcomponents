@@ -1615,7 +1615,8 @@ Container class	Ratio
      * @param {function} [fnc=this._updateData] function to rerun when script is loaded
      */
     _loadScripts(classname, path, fnc = this._getChart) {
-      let basePath = new URL("./", import.meta.url).href;
+      let basePath =
+        new URL("./chartist-render.js", import.meta.url).href + "/../";
       let location = `${basePath}${path}`;
       window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this));
       window.ESGlobalBridge.requestAvailability().load(classname, location);

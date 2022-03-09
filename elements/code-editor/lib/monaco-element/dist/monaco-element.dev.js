@@ -327,34 +327,35 @@ var MonacoElement =
               var div = document.createElement("div");
               div.id = "container";
               this.document.body.appendChild(div);
-              var iframeScript = "\n  var eventTypes = {\n    ready: 'ready',\n    focus: 'focus',\n    blur: \"blur\",\n    valueChanged: 'valueChanged',\n    languageChanged: 'languageChanged',\n    themeChanged: 'themeChanged',\n  };\n\n  class MonacoEditor {\n    constructor(editorReference) {\n      this._editorReference_ = editorReference;\n      this.language = 'javascript';\n      this.value = '';\n      this.editor = null;\n      this.setupEventListener('message', this.handleMessage.bind(this));\n      this.setupEditor();\n    }\n\n    setupEditor() {\n      require.config({ paths: { vs: '"
-                .concat(
-                  this.libPath,
-                  "' } });\n      require(['vs/editor/editor.main'], () => {\n        this.editor = monaco.editor.create(document.getElementById('container'), {\n          value: this.value,\n          language: '"
-                )
-                .concat(
-                  this.language,
-                  "',\n          scrollBeyondLastLine: false,\n          automaticLayout: true,\n          "
-                )
-                .concat(
-                  this.hideLineNumbers ? "lineNumbers: 'false'," : "",
-                  "\n          fontSize: "
-                )
-                .concat(this.fontSize, ",\n          wordWrap: ")
-                .concat(this.wordWrap, ",\n          readOnly: ")
-                .concat(
-                  this.readOnly,
-                  ",\n          automaticLayout: true,\n          minimap: {\n            enabled: true\n          },\n          tabSize: "
-                )
-                .concat(
-                  this.tabSize,
-                  ",\n          autoIndent: true,\n        });\n        const model = this.editor.getModel();\n        model.onDidChangeContent(() => {\n          const value = model.getValue();\n          this.onValueChanged(value);\n        });\n        this.ready();\n      });\n    }\n\n    ready() {\n      setTimeout(root => {\n        this.postMessage(eventTypes.ready, null);\n        if("
-                )
-                .concat(
-                  this.autofocus,
-                  ') this.editor.focus();\n        this.setupEventListener(\n          eventTypes.valueChanged,\n          this.onValueChanged.bind(this)\n        );\n        this.editor.onDidFocusEditorText(e=>{\n          this.postMessage(eventTypes.focus, null);\n        });\n        this.editor.onDidBlurEditorText(e=>{\n          this.postMessage(eventTypes.blur, null);\n        });\n        this.editor.onDidFocusEditorWidget(e=>{\n          this.postMessage(eventTypes.focus, null);\n        });\n        this.editor.onDidBlurEditorWidget(e=>{\n          this.postMessage(eventTypes.blur, null);\n        });\n      }, 100);\n    }\n\n    _handleMessage(data) {\n      switch (data.event) {\n        case eventTypes.valueChanged:\n          this.onInputValueChanged(data.payload);\n          break;\n        case eventTypes.languageChanged:\n          this.onLanguageChanged(data.payload);\n          break;\n        case eventTypes.themeChanged:\n          this.onThemeChanged(data.payload);\n          break;\n        default:\n          break;\n      }\n    }\n\n    handleMessage(message) {\n      try {\n        const data = JSON.parse(message.data);\n        this._handleMessage(data);\n      } catch (error) {\n        console.warn(error);\n        return;\n      }\n    }\n\n    postMessage(event, payload) {\n      var msg = {\n        event: event,\n        payload: payload,\n        editorReference: this._editorReference_\n      }\n      window.parent.postMessage(msg, window.parent.location.href);\n    }\n\n    setupEventListener(type, callback) {\n      window.addEventListener(type, data => {\n        callback(data);\n      });\n    }\n\n    onInputValueChanged(newValue) {\n      if (newValue !== this.value) {\n        this.value = newValue;\n        this.editor.getModel().setValue(newValue);\n        this.postMessage(eventTypes.valueChanged, newValue);\n      }\n    } \n\n    onValueChanged(newValue) {\n      if (newValue !== this.value) {\n        this.value = newValue;\n        this.postMessage(eventTypes.valueChanged, newValue);\n      }\n    }\n\n    onLanguageChanged(newLang) {\n      monaco.editor.setModelLanguage(this.editor.getModel(), newLang);\n    }\n\n    onThemeChanged(newValue) {\n      monaco.editor.setTheme(newValue);\n    }\n  }\n\n  new MonacoEditor("'
-                )
-                .concat(this.editorReference, '");');
+              var iframeScript =
+                "\n  var eventTypes = {\n    ready: 'ready',\n    focus: 'focus',\n    blur: \"blur\",\n    valueChanged: 'valueChanged',\n    languageChanged: 'languageChanged',\n    themeChanged: 'themeChanged',\n  };\n\n  class MonacoEditor {\n    constructor(editorReference) {\n      this._editorReference_ = editorReference;\n      this.language = 'javascript';\n      this.value = '';\n      this.editor = null;\n      this.setupEventListener('message', this.handleMessage.bind(this));\n      this.setupEditor();\n    }\n\n    setupEditor() {\n      require.config({ paths: { vs: '"
+                  .concat(
+                    this.libPath,
+                    "' } });\n      require(['vs/editor/editor.main'], () => {\n        this.editor = monaco.editor.create(document.getElementById('container'), {\n          value: this.value,\n          language: '"
+                  )
+                  .concat(
+                    this.language,
+                    "',\n          scrollBeyondLastLine: false,\n          automaticLayout: true,\n          "
+                  )
+                  .concat(
+                    this.hideLineNumbers ? "lineNumbers: 'false'," : "",
+                    "\n          fontSize: "
+                  )
+                  .concat(this.fontSize, ",\n          wordWrap: ")
+                  .concat(this.wordWrap, ",\n          readOnly: ")
+                  .concat(
+                    this.readOnly,
+                    ",\n          automaticLayout: true,\n          minimap: {\n            enabled: true\n          },\n          tabSize: "
+                  )
+                  .concat(
+                    this.tabSize,
+                    ",\n          autoIndent: true,\n        });\n        const model = this.editor.getModel();\n        model.onDidChangeContent(() => {\n          const value = model.getValue();\n          this.onValueChanged(value);\n        });\n        this.ready();\n      });\n    }\n\n    ready() {\n      setTimeout(root => {\n        this.postMessage(eventTypes.ready, null);\n        if("
+                  )
+                  .concat(
+                    this.autofocus,
+                    ') this.editor.focus();\n        this.setupEventListener(\n          eventTypes.valueChanged,\n          this.onValueChanged.bind(this)\n        );\n        this.editor.onDidFocusEditorText(e=>{\n          this.postMessage(eventTypes.focus, null);\n        });\n        this.editor.onDidBlurEditorText(e=>{\n          this.postMessage(eventTypes.blur, null);\n        });\n        this.editor.onDidFocusEditorWidget(e=>{\n          this.postMessage(eventTypes.focus, null);\n        });\n        this.editor.onDidBlurEditorWidget(e=>{\n          this.postMessage(eventTypes.blur, null);\n        });\n      }, 100);\n    }\n\n    _handleMessage(data) {\n      switch (data.event) {\n        case eventTypes.valueChanged:\n          this.onInputValueChanged(data.payload);\n          break;\n        case eventTypes.languageChanged:\n          this.onLanguageChanged(data.payload);\n          break;\n        case eventTypes.themeChanged:\n          this.onThemeChanged(data.payload);\n          break;\n        default:\n          break;\n      }\n    }\n\n    handleMessage(message) {\n      try {\n        const data = JSON.parse(message.data);\n        this._handleMessage(data);\n      } catch (error) {\n        console.warn(error);\n        return;\n      }\n    }\n\n    postMessage(event, payload) {\n      var msg = {\n        event: event,\n        payload: payload,\n        editorReference: this._editorReference_\n      }\n      window.parent.postMessage(msg, window.parent.location.href);\n    }\n\n    setupEventListener(type, callback) {\n      window.addEventListener(type, data => {\n        callback(data);\n      });\n    }\n\n    onInputValueChanged(newValue) {\n      if (newValue !== this.value) {\n        this.value = newValue;\n        this.editor.getModel().setValue(newValue);\n        this.postMessage(eventTypes.valueChanged, newValue);\n      }\n    } \n\n    onValueChanged(newValue) {\n      if (newValue !== this.value) {\n        this.value = newValue;\n        this.postMessage(eventTypes.valueChanged, newValue);\n      }\n    }\n\n    onLanguageChanged(newLang) {\n      monaco.editor.setModelLanguage(this.editor.getModel(), newLang);\n    }\n\n    onThemeChanged(newValue) {\n      monaco.editor.setTheme(newValue);\n    }\n  }\n\n  new MonacoEditor("'
+                  )
+                  .concat(this.editorReference, '");');
               this.insertScriptElement({
                 src: "".concat(this.libPath, "/loader.js"),
                 onload: function onload() {

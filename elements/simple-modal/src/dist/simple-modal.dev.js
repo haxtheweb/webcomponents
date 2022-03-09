@@ -3,7 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleModalStore = exports.SimpleModalCssVars = exports.SimpleModal = void 0;
+exports.SimpleModalStore =
+  exports.SimpleModalCssVars =
+  exports.SimpleModal =
+    void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 

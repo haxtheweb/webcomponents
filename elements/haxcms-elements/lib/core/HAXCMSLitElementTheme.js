@@ -64,7 +64,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     e.target.appendChild(this.__styleTag);
   }
   hoverIntentLeave(e) {
-    this.__styleTag.remove();
+    if (this.__styleTag) {
+      this.__styleTag.remove();
+    }
   }
   HAXCMSGlobalStyleSheetContent() {
     let styles = ["red", "blue", "green", "orange", "purple"].map(
@@ -212,9 +214,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       super.firstUpdated(changedProperties);
     }
     if (this.contentContainer == null) {
-      this.contentContainer = this.shadowRoot.querySelector(
-        "#contentcontainer"
-      );
+      this.contentContainer =
+        this.shadowRoot.querySelector("#contentcontainer");
     }
     // update the global managed CSS styles so we can "theme" the content
     // witout leaning on ::slotted which doesn't work always

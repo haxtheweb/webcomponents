@@ -69,9 +69,8 @@ function readAbstractNum(element) {
   element.getElementsByTagName("w:lvl").forEach(function (levelElement) {
     var levelIndex = levelElement.attributes["w:ilvl"];
     var numFmt = levelElement.first("w:numFmt").attributes["w:val"];
-    var paragraphStyleId = levelElement.firstOrEmpty("w:pStyle").attributes[
-      "w:val"
-    ];
+    var paragraphStyleId =
+      levelElement.firstOrEmpty("w:pStyle").attributes["w:val"];
 
     levels[levelIndex] = {
       isOrdered: numFmt !== "bullet",

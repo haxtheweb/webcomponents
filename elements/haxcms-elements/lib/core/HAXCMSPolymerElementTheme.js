@@ -68,9 +68,8 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
     super.connectedCallback();
     // we don't have a content container, establish one
     if (typeof this.contentContainer === typeof undefined) {
-      this.contentContainer = this.shadowRoot.querySelector(
-        "#contentcontainer"
-      );
+      this.contentContainer =
+        this.shadowRoot.querySelector("#contentcontainer");
     }
   }
 }

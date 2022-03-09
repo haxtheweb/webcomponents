@@ -467,261 +467,57 @@ Note: since JSZip 3 removed critical functionality, this version assigns to the
           var utils = _dereq_("./utils");
 
           var table = [
-            0x00000000,
-            0x77073096,
-            0xee0e612c,
-            0x990951ba,
-            0x076dc419,
-            0x706af48f,
-            0xe963a535,
-            0x9e6495a3,
-            0x0edb8832,
-            0x79dcb8a4,
-            0xe0d5e91e,
-            0x97d2d988,
-            0x09b64c2b,
-            0x7eb17cbd,
-            0xe7b82d07,
-            0x90bf1d91,
-            0x1db71064,
-            0x6ab020f2,
-            0xf3b97148,
-            0x84be41de,
-            0x1adad47d,
-            0x6ddde4eb,
-            0xf4d4b551,
-            0x83d385c7,
-            0x136c9856,
-            0x646ba8c0,
-            0xfd62f97a,
-            0x8a65c9ec,
-            0x14015c4f,
-            0x63066cd9,
-            0xfa0f3d63,
-            0x8d080df5,
-            0x3b6e20c8,
-            0x4c69105e,
-            0xd56041e4,
-            0xa2677172,
-            0x3c03e4d1,
-            0x4b04d447,
-            0xd20d85fd,
-            0xa50ab56b,
-            0x35b5a8fa,
-            0x42b2986c,
-            0xdbbbc9d6,
-            0xacbcf940,
-            0x32d86ce3,
-            0x45df5c75,
-            0xdcd60dcf,
-            0xabd13d59,
-            0x26d930ac,
-            0x51de003a,
-            0xc8d75180,
-            0xbfd06116,
-            0x21b4f4b5,
-            0x56b3c423,
-            0xcfba9599,
-            0xb8bda50f,
-            0x2802b89e,
-            0x5f058808,
-            0xc60cd9b2,
-            0xb10be924,
-            0x2f6f7c87,
-            0x58684c11,
-            0xc1611dab,
-            0xb6662d3d,
-            0x76dc4190,
-            0x01db7106,
-            0x98d220bc,
-            0xefd5102a,
-            0x71b18589,
-            0x06b6b51f,
-            0x9fbfe4a5,
-            0xe8b8d433,
-            0x7807c9a2,
-            0x0f00f934,
-            0x9609a88e,
-            0xe10e9818,
-            0x7f6a0dbb,
-            0x086d3d2d,
-            0x91646c97,
-            0xe6635c01,
-            0x6b6b51f4,
-            0x1c6c6162,
-            0x856530d8,
-            0xf262004e,
-            0x6c0695ed,
-            0x1b01a57b,
-            0x8208f4c1,
-            0xf50fc457,
-            0x65b0d9c6,
-            0x12b7e950,
-            0x8bbeb8ea,
-            0xfcb9887c,
-            0x62dd1ddf,
-            0x15da2d49,
-            0x8cd37cf3,
-            0xfbd44c65,
-            0x4db26158,
-            0x3ab551ce,
-            0xa3bc0074,
-            0xd4bb30e2,
-            0x4adfa541,
-            0x3dd895d7,
-            0xa4d1c46d,
-            0xd3d6f4fb,
-            0x4369e96a,
-            0x346ed9fc,
-            0xad678846,
-            0xda60b8d0,
-            0x44042d73,
-            0x33031de5,
-            0xaa0a4c5f,
-            0xdd0d7cc9,
-            0x5005713c,
-            0x270241aa,
-            0xbe0b1010,
-            0xc90c2086,
-            0x5768b525,
-            0x206f85b3,
-            0xb966d409,
-            0xce61e49f,
-            0x5edef90e,
-            0x29d9c998,
-            0xb0d09822,
-            0xc7d7a8b4,
-            0x59b33d17,
-            0x2eb40d81,
-            0xb7bd5c3b,
-            0xc0ba6cad,
-            0xedb88320,
-            0x9abfb3b6,
-            0x03b6e20c,
-            0x74b1d29a,
-            0xead54739,
-            0x9dd277af,
-            0x04db2615,
-            0x73dc1683,
-            0xe3630b12,
-            0x94643b84,
-            0x0d6d6a3e,
-            0x7a6a5aa8,
-            0xe40ecf0b,
-            0x9309ff9d,
-            0x0a00ae27,
-            0x7d079eb1,
-            0xf00f9344,
-            0x8708a3d2,
-            0x1e01f268,
-            0x6906c2fe,
-            0xf762575d,
-            0x806567cb,
-            0x196c3671,
-            0x6e6b06e7,
-            0xfed41b76,
-            0x89d32be0,
-            0x10da7a5a,
-            0x67dd4acc,
-            0xf9b9df6f,
-            0x8ebeeff9,
-            0x17b7be43,
-            0x60b08ed5,
-            0xd6d6a3e8,
-            0xa1d1937e,
-            0x38d8c2c4,
-            0x4fdff252,
-            0xd1bb67f1,
-            0xa6bc5767,
-            0x3fb506dd,
-            0x48b2364b,
-            0xd80d2bda,
-            0xaf0a1b4c,
-            0x36034af6,
-            0x41047a60,
-            0xdf60efc3,
-            0xa867df55,
-            0x316e8eef,
-            0x4669be79,
-            0xcb61b38c,
-            0xbc66831a,
-            0x256fd2a0,
-            0x5268e236,
-            0xcc0c7795,
-            0xbb0b4703,
-            0x220216b9,
-            0x5505262f,
-            0xc5ba3bbe,
-            0xb2bd0b28,
-            0x2bb45a92,
-            0x5cb36a04,
-            0xc2d7ffa7,
-            0xb5d0cf31,
-            0x2cd99e8b,
-            0x5bdeae1d,
-            0x9b64c2b0,
-            0xec63f226,
-            0x756aa39c,
-            0x026d930a,
-            0x9c0906a9,
-            0xeb0e363f,
-            0x72076785,
-            0x05005713,
-            0x95bf4a82,
-            0xe2b87a14,
-            0x7bb12bae,
-            0x0cb61b38,
-            0x92d28e9b,
-            0xe5d5be0d,
-            0x7cdcefb7,
-            0x0bdbdf21,
-            0x86d3d2d4,
-            0xf1d4e242,
-            0x68ddb3f8,
-            0x1fda836e,
-            0x81be16cd,
-            0xf6b9265b,
-            0x6fb077e1,
-            0x18b74777,
-            0x88085ae6,
-            0xff0f6a70,
-            0x66063bca,
-            0x11010b5c,
-            0x8f659eff,
-            0xf862ae69,
-            0x616bffd3,
-            0x166ccf45,
-            0xa00ae278,
-            0xd70dd2ee,
-            0x4e048354,
-            0x3903b3c2,
-            0xa7672661,
-            0xd06016f7,
-            0x4969474d,
-            0x3e6e77db,
-            0xaed16a4a,
-            0xd9d65adc,
-            0x40df0b66,
-            0x37d83bf0,
-            0xa9bcae53,
-            0xdebb9ec5,
-            0x47b2cf7f,
-            0x30b5ffe9,
-            0xbdbdf21c,
-            0xcabac28a,
-            0x53b39330,
-            0x24b4a3a6,
-            0xbad03605,
-            0xcdd70693,
-            0x54de5729,
-            0x23d967bf,
-            0xb3667a2e,
-            0xc4614ab8,
-            0x5d681b02,
-            0x2a6f2b94,
-            0xb40bbe37,
-            0xc30c8ea1,
-            0x5a05df1b,
+            0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419,
+            0x706af48f, 0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4,
+            0xe0d5e91e, 0x97d2d988, 0x09b64c2b, 0x7eb17cbd, 0xe7b82d07,
+            0x90bf1d91, 0x1db71064, 0x6ab020f2, 0xf3b97148, 0x84be41de,
+            0x1adad47d, 0x6ddde4eb, 0xf4d4b551, 0x83d385c7, 0x136c9856,
+            0x646ba8c0, 0xfd62f97a, 0x8a65c9ec, 0x14015c4f, 0x63066cd9,
+            0xfa0f3d63, 0x8d080df5, 0x3b6e20c8, 0x4c69105e, 0xd56041e4,
+            0xa2677172, 0x3c03e4d1, 0x4b04d447, 0xd20d85fd, 0xa50ab56b,
+            0x35b5a8fa, 0x42b2986c, 0xdbbbc9d6, 0xacbcf940, 0x32d86ce3,
+            0x45df5c75, 0xdcd60dcf, 0xabd13d59, 0x26d930ac, 0x51de003a,
+            0xc8d75180, 0xbfd06116, 0x21b4f4b5, 0x56b3c423, 0xcfba9599,
+            0xb8bda50f, 0x2802b89e, 0x5f058808, 0xc60cd9b2, 0xb10be924,
+            0x2f6f7c87, 0x58684c11, 0xc1611dab, 0xb6662d3d, 0x76dc4190,
+            0x01db7106, 0x98d220bc, 0xefd5102a, 0x71b18589, 0x06b6b51f,
+            0x9fbfe4a5, 0xe8b8d433, 0x7807c9a2, 0x0f00f934, 0x9609a88e,
+            0xe10e9818, 0x7f6a0dbb, 0x086d3d2d, 0x91646c97, 0xe6635c01,
+            0x6b6b51f4, 0x1c6c6162, 0x856530d8, 0xf262004e, 0x6c0695ed,
+            0x1b01a57b, 0x8208f4c1, 0xf50fc457, 0x65b0d9c6, 0x12b7e950,
+            0x8bbeb8ea, 0xfcb9887c, 0x62dd1ddf, 0x15da2d49, 0x8cd37cf3,
+            0xfbd44c65, 0x4db26158, 0x3ab551ce, 0xa3bc0074, 0xd4bb30e2,
+            0x4adfa541, 0x3dd895d7, 0xa4d1c46d, 0xd3d6f4fb, 0x4369e96a,
+            0x346ed9fc, 0xad678846, 0xda60b8d0, 0x44042d73, 0x33031de5,
+            0xaa0a4c5f, 0xdd0d7cc9, 0x5005713c, 0x270241aa, 0xbe0b1010,
+            0xc90c2086, 0x5768b525, 0x206f85b3, 0xb966d409, 0xce61e49f,
+            0x5edef90e, 0x29d9c998, 0xb0d09822, 0xc7d7a8b4, 0x59b33d17,
+            0x2eb40d81, 0xb7bd5c3b, 0xc0ba6cad, 0xedb88320, 0x9abfb3b6,
+            0x03b6e20c, 0x74b1d29a, 0xead54739, 0x9dd277af, 0x04db2615,
+            0x73dc1683, 0xe3630b12, 0x94643b84, 0x0d6d6a3e, 0x7a6a5aa8,
+            0xe40ecf0b, 0x9309ff9d, 0x0a00ae27, 0x7d079eb1, 0xf00f9344,
+            0x8708a3d2, 0x1e01f268, 0x6906c2fe, 0xf762575d, 0x806567cb,
+            0x196c3671, 0x6e6b06e7, 0xfed41b76, 0x89d32be0, 0x10da7a5a,
+            0x67dd4acc, 0xf9b9df6f, 0x8ebeeff9, 0x17b7be43, 0x60b08ed5,
+            0xd6d6a3e8, 0xa1d1937e, 0x38d8c2c4, 0x4fdff252, 0xd1bb67f1,
+            0xa6bc5767, 0x3fb506dd, 0x48b2364b, 0xd80d2bda, 0xaf0a1b4c,
+            0x36034af6, 0x41047a60, 0xdf60efc3, 0xa867df55, 0x316e8eef,
+            0x4669be79, 0xcb61b38c, 0xbc66831a, 0x256fd2a0, 0x5268e236,
+            0xcc0c7795, 0xbb0b4703, 0x220216b9, 0x5505262f, 0xc5ba3bbe,
+            0xb2bd0b28, 0x2bb45a92, 0x5cb36a04, 0xc2d7ffa7, 0xb5d0cf31,
+            0x2cd99e8b, 0x5bdeae1d, 0x9b64c2b0, 0xec63f226, 0x756aa39c,
+            0x026d930a, 0x9c0906a9, 0xeb0e363f, 0x72076785, 0x05005713,
+            0x95bf4a82, 0xe2b87a14, 0x7bb12bae, 0x0cb61b38, 0x92d28e9b,
+            0xe5d5be0d, 0x7cdcefb7, 0x0bdbdf21, 0x86d3d2d4, 0xf1d4e242,
+            0x68ddb3f8, 0x1fda836e, 0x81be16cd, 0xf6b9265b, 0x6fb077e1,
+            0x18b74777, 0x88085ae6, 0xff0f6a70, 0x66063bca, 0x11010b5c,
+            0x8f659eff, 0xf862ae69, 0x616bffd3, 0x166ccf45, 0xa00ae278,
+            0xd70dd2ee, 0x4e048354, 0x3903b3c2, 0xa7672661, 0xd06016f7,
+            0x4969474d, 0x3e6e77db, 0xaed16a4a, 0xd9d65adc, 0x40df0b66,
+            0x37d83bf0, 0xa9bcae53, 0xdebb9ec5, 0x47b2cf7f, 0x30b5ffe9,
+            0xbdbdf21c, 0xcabac28a, 0x53b39330, 0x24b4a3a6, 0xbad03605,
+            0xcdd70693, 0x54de5729, 0x23d967bf, 0xb3667a2e, 0xc4614ab8,
+            0x5d681b02, 0x2a6f2b94, 0xb40bbe37, 0xc30c8ea1, 0x5a05df1b,
             0x2d02ef8d,
           ];
 
@@ -3199,9 +2995,8 @@ Usage:
                   compression.uncompressInputType,
                   this.getCompressedContent()
                 );
-                var uncompressedFileData = compression.uncompress(
-                  compressedFileData
-                );
+                var uncompressedFileData =
+                  compression.uncompress(compressedFileData);
 
                 if (uncompressedFileData.length !== uncompressedSize) {
                   throw new Error("Bug : uncompressed data size mismatch");
@@ -3262,12 +3057,13 @@ Usage:
               this.decompressed.uncompressedSize = this.uncompressedSize;
               this.decompressed.crc32 = this.crc32;
               this.decompressed.compressionMethod = this.compressionMethod;
-              this.decompressed.getCompressedContent = this.prepareCompressedContent(
-                reader,
-                reader.index,
-                this.compressedSize,
-                compression
-              );
+              this.decompressed.getCompressedContent =
+                this.prepareCompressedContent(
+                  reader,
+                  reader.index,
+                  this.compressedSize,
+                  compression
+                );
               this.decompressed.getContent = this.prepareContent(
                 reader,
                 reader.index,
@@ -5897,7 +5693,8 @@ Usage:
             this.gzhead = null; /* gzip header information to write */
             this.gzindex = 0; /* where in extra, name, or comment */
             this.method = Z_DEFLATED; /* can only be DEFLATED */
-            this.last_flush = -1; /* value of flush param for previous deflate call */
+            this.last_flush =
+              -1; /* value of flush param for previous deflate call */
 
             this.w_size = 0; /* LZ77 window size (32K by default) */
             this.w_bits = 0; /* log2(w_size)  (8..16) */
@@ -6566,7 +6363,8 @@ Usage:
                 }
                 flush_pending(strm);
                 if (strm.avail_out === 0) {
-                  s.last_flush = -1; /* avoid BUF_ERROR at next call, see above */
+                  s.last_flush =
+                    -1; /* avoid BUF_ERROR at next call, see above */
                   return Z_OK;
                 }
               }
@@ -7203,8 +7001,10 @@ exports.deflateTune = deflateTune;
    as buffers so we don't need codes
   */
             //this.codes = new utils.Buf32(ENOUGH);       /* space for code tables */
-            this.lendyn = null; /* dynamic table for length/literal codes (JS specific) */
-            this.distdyn = null; /* dynamic table for distance codes (JS specific) */
+            this.lendyn =
+              null; /* dynamic table for length/literal codes (JS specific) */
+            this.distdyn =
+              null; /* dynamic table for distance codes (JS specific) */
             this.sane = 0; /* if false, allow invalid distance too far */
             this.back = 0; /* bits back of last unprocessed length/lit */
             this.was = 0; /* initial length of match */
@@ -7467,24 +7267,7 @@ exports.deflateTune = deflateTune;
             var order =
               /* permutation of code lengths */
               [
-                16,
-                17,
-                18,
-                0,
-                8,
-                7,
-                9,
-                6,
-                10,
-                5,
-                11,
-                4,
-                12,
-                3,
-                13,
-                2,
-                14,
-                1,
+                16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1,
                 15,
               ];
 
@@ -8798,141 +8581,27 @@ exports.inflateUndermine = inflateUndermine;
           var DISTS = 2;
 
           var lbase = [
-            /* Length codes 257..285 base */ 3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            13,
-            15,
-            17,
-            19,
-            23,
-            27,
-            31,
-            35,
-            43,
-            51,
-            59,
-            67,
-            83,
-            99,
-            115,
-            131,
-            163,
-            195,
-            227,
-            258,
-            0,
-            0,
+            /* Length codes 257..285 base */ 3, 4, 5, 6, 7, 8, 9, 10, 11, 13,
+            15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163,
+            195, 227, 258, 0, 0,
           ];
 
           var lext = [
-            /* Length codes 257..285 extra */ 16,
-            16,
-            16,
-            16,
-            16,
-            16,
-            16,
-            16,
-            17,
-            17,
-            17,
-            17,
-            18,
-            18,
-            18,
-            18,
-            19,
-            19,
-            19,
-            19,
-            20,
-            20,
-            20,
-            20,
-            21,
-            21,
-            21,
-            21,
-            16,
-            72,
-            78,
+            /* Length codes 257..285 extra */ 16, 16, 16, 16, 16, 16, 16, 16,
+            17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21,
+            21, 21, 21, 16, 72, 78,
           ];
 
           var dbase = [
-            /* Distance codes 0..29 base */ 1,
-            2,
-            3,
-            4,
-            5,
-            7,
-            9,
-            13,
-            17,
-            25,
-            33,
-            49,
-            65,
-            97,
-            129,
-            193,
-            257,
-            385,
-            513,
-            769,
-            1025,
-            1537,
-            2049,
-            3073,
-            4097,
-            6145,
-            8193,
-            12289,
-            16385,
-            24577,
-            0,
-            0,
+            /* Distance codes 0..29 base */ 1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33,
+            49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073,
+            4097, 6145, 8193, 12289, 16385, 24577, 0, 0,
           ];
 
           var dext = [
-            /* Distance codes 0..29 extra */ 16,
-            16,
-            16,
-            16,
-            17,
-            17,
-            18,
-            18,
-            19,
-            19,
-            20,
-            20,
-            21,
-            21,
-            22,
-            22,
-            23,
-            23,
-            24,
-            24,
-            25,
-            25,
-            26,
-            26,
-            27,
-            27,
-            28,
-            28,
-            29,
-            29,
-            64,
-            64,
+            /* Distance codes 0..29 extra */ 16, 16, 16, 16, 17, 17, 18, 18, 19,
+            19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27,
+            28, 28, 29, 29, 64, 64,
           ];
 
           module.exports = function inflate_table(
@@ -9359,70 +9028,15 @@ exports.inflateUndermine = inflateUndermine;
           var extra_lbits =
             /* extra bits for each length code */
             [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              1,
-              1,
-              1,
-              2,
-              2,
-              2,
-              2,
-              3,
-              3,
-              3,
-              3,
-              4,
-              4,
-              4,
-              4,
-              5,
-              5,
-              5,
-              5,
-              0,
+              0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4,
+              4, 4, 5, 5, 5, 5, 0,
             ];
 
           var extra_dbits =
             /* extra bits for each distance code */
             [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1,
-              2,
-              2,
-              3,
-              3,
-              4,
-              4,
-              5,
-              5,
-              6,
-              6,
-              7,
-              7,
-              8,
-              8,
-              9,
-              9,
-              10,
-              10,
-              11,
-              11,
-              12,
-              12,
-              13,
-              13,
+              0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9,
+              10, 10, 11, 11, 12, 12, 13, 13,
             ];
 
           var extra_blbits =
@@ -9430,25 +9044,7 @@ exports.inflateUndermine = inflateUndermine;
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7];
 
           var bl_order = [
-            16,
-            17,
-            18,
-            0,
-            8,
-            7,
-            9,
-            6,
-            10,
-            5,
-            11,
-            4,
-            12,
-            3,
-            13,
-            2,
-            14,
-            1,
-            15,
+            16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15,
           ];
           /* The lengths of the bit length codes are sent in order of decreasing
            * probability, to avoid transmitting the lengths for unused bit length codes.
@@ -13787,92 +13383,19 @@ function make_xlsx_lib(XLSX) {
       return _zlib ? _zlib.deflateRawSync(payload) : _deflate(payload);
     }
     var CLEN_ORDER = [
-      16,
-      17,
-      18,
-      0,
-      8,
-      7,
-      9,
-      6,
-      10,
-      5,
-      11,
-      4,
-      12,
-      3,
-      13,
-      2,
-      14,
-      1,
-      15,
+      16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15,
     ];
 
     /*  LEN_ID = [ 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285 ]; */
     var LEN_LN = [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      13,
-      15,
-      17,
-      19,
-      23,
-      27,
-      31,
-      35,
-      43,
-      51,
-      59,
-      67,
-      83,
-      99,
-      115,
-      131,
-      163,
-      195,
-      227,
-      258,
+      3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59,
+      67, 83, 99, 115, 131, 163, 195, 227, 258,
     ];
 
     /*  DST_ID = [  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13,  14,  15,  16,  17,  18,  19,   20,   21,   22,   23,   24,   25,   26,    27,    28,    29 ]; */
     var DST_LN = [
-      1,
-      2,
-      3,
-      4,
-      5,
-      7,
-      9,
-      13,
-      17,
-      25,
-      33,
-      49,
-      65,
-      97,
-      129,
-      193,
-      257,
-      385,
-      513,
-      769,
-      1025,
-      1537,
-      2049,
-      3073,
-      4097,
-      6145,
-      8193,
-      12289,
-      16385,
-      24577,
+      1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513,
+      769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577,
     ];
 
     function bit_swap_8(n) {
@@ -15059,8 +14582,10 @@ function make_xlsx_lib(XLSX) {
   }
   var XML_HEADER =
     '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n';
-  var attregexg = /([^"\s?>\/]+)\s*=\s*((?:")([^"]*)(?:")|(?:')([^']*)(?:')|([^'">\s]+))/g;
-  var tagregex = /<[\/\?]?[a-zA-Z0-9:_-]+(?:\s+[^"\s?>\/]+\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s=]+))*\s*[\/\?]?>/gm;
+  var attregexg =
+    /([^"\s?>\/]+)\s*=\s*((?:")([^"]*)(?:")|(?:')([^']*)(?:')|([^'">\s]+))/g;
+  var tagregex =
+    /<[\/\?]?[a-zA-Z0-9:_-]+(?:\s+[^"\s?>\/]+\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s=]+))*\s*[\/\?]?>/gm;
 
   if (!XML_HEADER.match(tagregex)) tagregex = /<[^>]*>/g;
   var nsregex = /<\w*:/,
@@ -15490,8 +15015,7 @@ function make_xlsx_lib(XLSX) {
     dcmitype: "http://purl.org/dc/dcmitype/",
     mx: "http://schemas.microsoft.com/office/mac/excel/2008/main",
     r: "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
-    sjs:
-      "http://schemas.openxmlformats.org/package/2006/sheetjs/core-properties",
+    sjs: "http://schemas.openxmlformats.org/package/2006/sheetjs/core-properties",
     vt: "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes",
     xsi: "http://www.w3.org/2001/XMLSchema-instance",
     xsd: "http://www.w3.org/2001/XMLSchema",
@@ -17015,95 +16539,35 @@ function make_xlsx_lib(XLSX) {
   /* [MS-XLSB] 2.5.75 Icv */
   var _XLSIcv = rgbify([
     /* Color Constants */
-    0x000000,
-    0xffffff,
-    0xff0000,
-    0x00ff00,
-    0x0000ff,
-    0xffff00,
-    0xff00ff,
+    0x000000, 0xffffff, 0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff,
     0x00ffff,
 
     /* Overridable Defaults */
-    0x000000,
-    0xffffff,
-    0xff0000,
-    0x00ff00,
-    0x0000ff,
-    0xffff00,
-    0xff00ff,
+    0x000000, 0xffffff, 0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff,
     0x00ffff,
 
-    0x800000,
-    0x008000,
-    0x000080,
-    0x808000,
-    0x800080,
-    0x008080,
-    0xc0c0c0,
-    0x808080,
-    0x9999ff,
-    0x993366,
-    0xffffcc,
-    0xccffff,
-    0x660066,
-    0xff8080,
-    0x0066cc,
-    0xccccff,
+    0x800000, 0x008000, 0x000080, 0x808000, 0x800080, 0x008080, 0xc0c0c0,
+    0x808080, 0x9999ff, 0x993366, 0xffffcc, 0xccffff, 0x660066, 0xff8080,
+    0x0066cc, 0xccccff,
 
-    0x000080,
-    0xff00ff,
-    0xffff00,
-    0x00ffff,
-    0x800080,
-    0x800000,
-    0x008080,
-    0x0000ff,
-    0x00ccff,
-    0xccffff,
-    0xccffcc,
-    0xffff99,
-    0x99ccff,
-    0xff99cc,
-    0xcc99ff,
-    0xffcc99,
+    0x000080, 0xff00ff, 0xffff00, 0x00ffff, 0x800080, 0x800000, 0x008080,
+    0x0000ff, 0x00ccff, 0xccffff, 0xccffcc, 0xffff99, 0x99ccff, 0xff99cc,
+    0xcc99ff, 0xffcc99,
 
-    0x3366ff,
-    0x33cccc,
-    0x99cc00,
-    0xffcc00,
-    0xff9900,
-    0xff6600,
-    0x666699,
-    0x969696,
-    0x003366,
-    0x339966,
-    0x003300,
-    0x333300,
-    0x993300,
-    0x993366,
-    0x333399,
-    0x333333,
+    0x3366ff, 0x33cccc, 0x99cc00, 0xffcc00, 0xff9900, 0xff6600, 0x666699,
+    0x969696, 0x003366, 0x339966, 0x003300, 0x333300, 0x993300, 0x993366,
+    0x333399, 0x333333,
 
     /* Other entries to appease BIFF8/12 */
-    0xffffff /* 0x40 icvForeground ?? */,
-    0x000000 /* 0x41 icvBackground ?? */,
-    0x000000 /* 0x42 icvFrame ?? */,
-    0x000000 /* 0x43 icv3D ?? */,
-    0x000000 /* 0x44 icv3DText ?? */,
-    0x000000 /* 0x45 icv3DHilite ?? */,
-    0x000000 /* 0x46 icv3DShadow ?? */,
-    0x000000 /* 0x47 icvHilite ?? */,
-    0x000000 /* 0x48 icvCtlText ?? */,
-    0x000000 /* 0x49 icvCtlScrl ?? */,
-    0x000000 /* 0x4A icvCtlInv ?? */,
-    0x000000 /* 0x4B icvCtlBody ?? */,
-    0x000000 /* 0x4C icvCtlFrame ?? */,
-    0x000000 /* 0x4D icvCtlFore ?? */,
-    0x000000 /* 0x4E icvCtlBack ?? */,
-    0x000000 /* 0x4F icvCtlNeutral */,
-    0x000000 /* 0x50 icvInfoBk ?? */,
-    0x000000 /* 0x51 icvInfoText ?? */,
+    0xffffff /* 0x40 icvForeground ?? */, 0x000000 /* 0x41 icvBackground ?? */,
+    0x000000 /* 0x42 icvFrame ?? */, 0x000000 /* 0x43 icv3D ?? */,
+    0x000000 /* 0x44 icv3DText ?? */, 0x000000 /* 0x45 icv3DHilite ?? */,
+    0x000000 /* 0x46 icv3DShadow ?? */, 0x000000 /* 0x47 icvHilite ?? */,
+    0x000000 /* 0x48 icvCtlText ?? */, 0x000000 /* 0x49 icvCtlScrl ?? */,
+    0x000000 /* 0x4A icvCtlInv ?? */, 0x000000 /* 0x4B icvCtlBody ?? */,
+    0x000000 /* 0x4C icvCtlFrame ?? */, 0x000000 /* 0x4D icvCtlFore ?? */,
+    0x000000 /* 0x4E icvCtlBack ?? */, 0x000000 /* 0x4F icvCtlNeutral */,
+    0x000000 /* 0x50 icvInfoBk ?? */, 0x000000 /* 0x51 icvInfoText ?? */,
   ]);
   var XLSIcv = dup(_XLSIcv);
 
@@ -17296,42 +16760,35 @@ function make_xlsx_lib(XLSX) {
   var CT_LIST = (function () {
     var o = {
       workbooks: {
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
         xlsm: "application/vnd.ms-excel.sheet.macroEnabled.main+xml",
         xlsb: "application/vnd.ms-excel.sheet.binary.macroEnabled.main",
         xlam: "application/vnd.ms-excel.addin.macroEnabled.main+xml",
-        xltx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml",
+        xltx: "application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml",
       },
       strs: {
         /* Shared Strings */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml",
         xlsb: "application/vnd.ms-excel.sharedStrings",
       },
       comments: {
         /* Comments */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml",
         xlsb: "application/vnd.ms-excel.comments",
       },
       sheets: {
         /* Worksheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml",
         xlsb: "application/vnd.ms-excel.worksheet",
       },
       charts: {
         /* Chartsheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml",
         xlsb: "application/vnd.ms-excel.chartsheet",
       },
       dialogs: {
         /* Dialogsheet */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml",
         xlsb: "application/vnd.ms-excel.dialogsheet",
       },
       macros: {
@@ -17341,8 +16798,7 @@ function make_xlsx_lib(XLSX) {
       },
       styles: {
         /* Styles */
-        xlsx:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml",
+        xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml",
         xlsb: "application/vnd.ms-excel.styles",
       },
     };
@@ -17500,22 +16956,19 @@ function make_xlsx_lib(XLSX) {
   }
   /* 9.3 Relationships */
   var RELS = {
-    WB:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+    WB: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     SHEET:
       "http://sheetjs.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
     HLINK:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
-    VML:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing",
+    VML: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing",
     XPATH:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/externalLinkPath",
     XMISS:
       "http://schemas.microsoft.com/office/2006/relationships/xlExternalLinkPath/xlPathMissing",
     XLINK:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/externalLink",
-    CXML:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml",
+    CXML: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml",
     CXMLP:
       "http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps",
     VBA: "http://schemas.microsoft.com/office/2006/relationships/vbaProject",
@@ -20398,14 +19851,7 @@ function make_xlsx_lib(XLSX) {
       0x00: 20127,
     });
     var DBF_SUPPORTED_VERSIONS = [
-      0x02,
-      0x03,
-      0x30,
-      0x31,
-      0x83,
-      0x8b,
-      0x8c,
-      0xf5,
+      0x02, 0x03, 0x30, 0x31, 0x83, 0x8b, 0x8c, 0xf5,
     ];
     /* TODO: find an actual specification */
     function dbf_to_aoa(buf, opts) {
@@ -22852,145 +22298,26 @@ function make_xlsx_lib(XLSX) {
   /* [MS-OFFCRYPTO] 2.3.7.2 Binary Document XOR Array Initialization */
   var crypto_CreateXorArray_Method1 = (function () {
     var PadArray = [
-      0xbb,
-      0xff,
-      0xff,
-      0xba,
-      0xff,
-      0xff,
-      0xb9,
-      0x80,
-      0x00,
-      0xbe,
-      0x0f,
-      0x00,
-      0xbf,
-      0x0f,
-      0x00,
+      0xbb, 0xff, 0xff, 0xba, 0xff, 0xff, 0xb9, 0x80, 0x00, 0xbe, 0x0f, 0x00,
+      0xbf, 0x0f, 0x00,
     ];
     var InitialCode = [
-      0xe1f0,
-      0x1d0f,
-      0xcc9c,
-      0x84c0,
-      0x110c,
-      0x0e10,
-      0xf1ce,
-      0x313e,
-      0x1872,
-      0xe139,
-      0xd40f,
-      0x84f9,
-      0x280c,
-      0xa96a,
-      0x4ec3,
+      0xe1f0, 0x1d0f, 0xcc9c, 0x84c0, 0x110c, 0x0e10, 0xf1ce, 0x313e, 0x1872,
+      0xe139, 0xd40f, 0x84f9, 0x280c, 0xa96a, 0x4ec3,
     ];
     var XorMatrix = [
-      0xaefc,
-      0x4dd9,
-      0x9bb2,
-      0x2745,
-      0x4e8a,
-      0x9d14,
-      0x2a09,
-      0x7b61,
-      0xf6c2,
-      0xfda5,
-      0xeb6b,
-      0xc6f7,
-      0x9dcf,
-      0x2bbf,
-      0x4563,
-      0x8ac6,
-      0x05ad,
-      0x0b5a,
-      0x16b4,
-      0x2d68,
-      0x5ad0,
-      0x0375,
-      0x06ea,
-      0x0dd4,
-      0x1ba8,
-      0x3750,
-      0x6ea0,
-      0xdd40,
-      0xd849,
-      0xa0b3,
-      0x5147,
-      0xa28e,
-      0x553d,
-      0xaa7a,
-      0x44d5,
-      0x6f45,
-      0xde8a,
-      0xad35,
-      0x4a4b,
-      0x9496,
-      0x390d,
-      0x721a,
-      0xeb23,
-      0xc667,
-      0x9cef,
-      0x29ff,
-      0x53fe,
-      0xa7fc,
-      0x5fd9,
-      0x47d3,
-      0x8fa6,
-      0x0f6d,
-      0x1eda,
-      0x3db4,
-      0x7b68,
-      0xf6d0,
-      0xb861,
-      0x60e3,
-      0xc1c6,
-      0x93ad,
-      0x377b,
-      0x6ef6,
-      0xddec,
-      0x45a0,
-      0x8b40,
-      0x06a1,
-      0x0d42,
-      0x1a84,
-      0x3508,
-      0x6a10,
-      0xaa51,
-      0x4483,
-      0x8906,
-      0x022d,
-      0x045a,
-      0x08b4,
-      0x1168,
-      0x76b4,
-      0xed68,
-      0xcaf1,
-      0x85c3,
-      0x1ba7,
-      0x374e,
-      0x6e9c,
-      0x3730,
-      0x6e60,
-      0xdcc0,
-      0xa9a1,
-      0x4363,
-      0x86c6,
-      0x1dad,
-      0x3331,
-      0x6662,
-      0xccc4,
-      0x89a9,
-      0x0373,
-      0x06e6,
-      0x0dcc,
-      0x1021,
-      0x2042,
-      0x4084,
-      0x8108,
-      0x1231,
-      0x2462,
-      0x48c4,
+      0xaefc, 0x4dd9, 0x9bb2, 0x2745, 0x4e8a, 0x9d14, 0x2a09, 0x7b61, 0xf6c2,
+      0xfda5, 0xeb6b, 0xc6f7, 0x9dcf, 0x2bbf, 0x4563, 0x8ac6, 0x05ad, 0x0b5a,
+      0x16b4, 0x2d68, 0x5ad0, 0x0375, 0x06ea, 0x0dd4, 0x1ba8, 0x3750, 0x6ea0,
+      0xdd40, 0xd849, 0xa0b3, 0x5147, 0xa28e, 0x553d, 0xaa7a, 0x44d5, 0x6f45,
+      0xde8a, 0xad35, 0x4a4b, 0x9496, 0x390d, 0x721a, 0xeb23, 0xc667, 0x9cef,
+      0x29ff, 0x53fe, 0xa7fc, 0x5fd9, 0x47d3, 0x8fa6, 0x0f6d, 0x1eda, 0x3db4,
+      0x7b68, 0xf6d0, 0xb861, 0x60e3, 0xc1c6, 0x93ad, 0x377b, 0x6ef6, 0xddec,
+      0x45a0, 0x8b40, 0x06a1, 0x0d42, 0x1a84, 0x3508, 0x6a10, 0xaa51, 0x4483,
+      0x8906, 0x022d, 0x045a, 0x08b4, 0x1168, 0x76b4, 0xed68, 0xcaf1, 0x85c3,
+      0x1ba7, 0x374e, 0x6e9c, 0x3730, 0x6e60, 0xdcc0, 0xa9a1, 0x4363, 0x86c6,
+      0x1dad, 0x3331, 0x6662, 0xccc4, 0x89a9, 0x0373, 0x06e6, 0x0dcc, 0x1021,
+      0x2042, 0x4084, 0x8108, 0x1231, 0x2462, 0x48c4,
     ];
     var Ror = function (Byte) {
       return ((Byte / 2) | (Byte * 128)) & 0xff;
@@ -24574,9 +23901,8 @@ function make_xlsx_lib(XLSX) {
         case "<a:folHlink>":
         case "</a:folHlink>":
           if (y[0].charAt(1) === "/") {
-            themes.themeElements.clrScheme[
-              XLSXThemeClrScheme.indexOf(y[0])
-            ] = color;
+            themes.themeElements.clrScheme[XLSXThemeClrScheme.indexOf(y[0])] =
+              color;
             color = {};
           } else {
             color.name = y[0].slice(3, y[0].length - 1);
@@ -25480,7 +24806,8 @@ function make_xlsx_lib(XLSX) {
   }
   /* TODO: it will be useful to parse the function str */
   var rc_to_a1 = (function () {
-    var rcregex = /(^|[^A-Za-z_])R(\[?-?\d+\]|[1-9]\d*|)C(\[?-?\d+\]|[1-9]\d*|)(?![A-Za-z0-9_])/g;
+    var rcregex =
+      /(^|[^A-Za-z_])R(\[?-?\d+\]|[1-9]\d*|)C(\[?-?\d+\]|[1-9]\d*|)(?![A-Za-z0-9_])/g;
     var rcbase = { r: 0, c: 0 };
     function rcfunc($$, $1, $2, $3) {
       var cRel = false,
@@ -25519,7 +24846,8 @@ function make_xlsx_lib(XLSX) {
     };
   })();
 
-  var crefregex = /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)(10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6]|[1-9]\d{0,5})(?![_.\(A-Za-z0-9])/g;
+  var crefregex =
+    /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)(10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6]|[1-9]\d{0,5})(?![_.\(A-Za-z0-9])/g;
   var a1_to_rc = (function () {
     return function a1_to_rc(fstr, base) {
       return fstr.replace(crefregex, function ($0, $1, $2, $3, $4, $5) {
@@ -28457,14 +27785,17 @@ function make_xlsx_lib(XLSX) {
       ws["!ref"] = encode_range(d);
   }
   var mergecregex = /<(?:\w:)?mergeCell ref="[A-Z0-9:]+"\s*[\/]?>/g;
-  var sheetdataregex = /<(?:\w+:)?sheetData[^>]*>([\s\S]*)<\/(?:\w+:)?sheetData>/;
+  var sheetdataregex =
+    /<(?:\w+:)?sheetData[^>]*>([\s\S]*)<\/(?:\w+:)?sheetData>/;
   var hlinkregex = /<(?:\w:)?hyperlink [^>]*>/gm;
   var dimregex = /"(\w*:\w*)"/;
   var colregex = /<(?:\w:)?col\b[^>]*[\/]?>/g;
-  var afregex = /<(?:\w:)?autoFilter[^>]*([\/]|>([\s\S]*)<\/(?:\w:)?autoFilter)>/g;
+  var afregex =
+    /<(?:\w:)?autoFilter[^>]*([\/]|>([\s\S]*)<\/(?:\w:)?autoFilter)>/g;
   var marginregex = /<(?:\w:)?pageMargins[^>]*\/>/g;
   var sheetprregex = /<(?:\w:)?sheetPr\b(?:[^>a-z][^>]*)?\/>/;
-  var svsregex = /<(?:\w:)?sheetViews[^>]*(?:[\/]|>([\s\S]*)<\/(?:\w:)?sheetViews)>/;
+  var svsregex =
+    /<(?:\w:)?sheetViews[^>]*(?:[\/]|>([\s\S]*)<\/(?:\w:)?sheetViews)>/;
 
   /* 18.3 Worksheets */
   function parse_ws_xml(data, opts, idx, rels, wb, themes, styles) {
@@ -31218,9 +30549,8 @@ function make_xlsx_lib(XLSX) {
               supbooks[0] = [];
               supbooks[0].XTI = [];
             }
-            supbooks[supbooks.length - 1].XTI = supbooks[
-              supbooks.length - 1
-            ].XTI.concat(val);
+            supbooks[supbooks.length - 1].XTI =
+              supbooks[supbooks.length - 1].XTI.concat(val);
             supbooks.XTI = supbooks.XTI.concat(val);
             break;
           case 0x0169 /* 'BrtPlaceholderName' */:
@@ -31517,9 +30847,9 @@ function make_xlsx_lib(XLSX) {
   }
 
   function write_cmnt(data, name, opts) {
-    return (name.slice(-4) === ".bin"
-      ? write_comments_bin
-      : write_comments_xml)(data, opts);
+    return (
+      name.slice(-4) === ".bin" ? write_comments_bin : write_comments_xml
+    )(data, opts);
   }
   /*
 function write_cc(data, name:string, opts) {
@@ -33596,7 +32926,8 @@ function write_cc(data, name:string, opts) {
     var file_depth = 0; /* TODO: make a real stack */
     var BIFF2Fmt = 0,
       BIFF2FmtTable = [];
-    var FilterDatabases = []; /* TODO: sort out supbooks and process elsewhere */
+    var FilterDatabases =
+      []; /* TODO: sort out supbooks and process elsewhere */
     var last_lbl;
 
     /* explicit override for some broken writers */
@@ -33762,9 +33093,8 @@ function write_cc(data, name:string, opts) {
               supbooks[0] = [];
               supbooks[0].XTI = [];
             }
-            supbooks[supbooks.length - 1].XTI = supbooks[
-              supbooks.length - 1
-            ].XTI.concat(val);
+            supbooks[supbooks.length - 1].XTI =
+              supbooks[supbooks.length - 1].XTI.concat(val);
             supbooks.XTI = supbooks.XTI.concat(val);
             break;
           case "NameCmt":
@@ -34921,7 +34251,8 @@ function write_cc(data, name:string, opts) {
     var props = {};
     if (cfb.FullPaths) parse_xls_props(cfb, props, options);
 
-    WorkbookP.Props = WorkbookP.Custprops = props; /* TODO: split up properties */
+    WorkbookP.Props = WorkbookP.Custprops =
+      props; /* TODO: split up properties */
     if (options.bookFiles) WorkbookP.cfb = cfb;
     /*WorkbookP.CompObjP = CompObjP; // TODO: storage? */
     return WorkbookP;
@@ -37289,9 +36620,8 @@ function write_cc(data, name:string, opts) {
                     } else {
                       ws[encode_cell({ r: R + rpt, c: C })] = q;
                       while (--colpeat > 0)
-                        ws[encode_cell({ r: R + rpt, c: C + colpeat })] = dup(
-                          q
-                        );
+                        ws[encode_cell({ r: R + rpt, c: C + colpeat })] =
+                          dup(q);
                     }
                     if (range.e.c <= C) range.e.c = C;
                   }

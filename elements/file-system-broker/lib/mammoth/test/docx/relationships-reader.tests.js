@@ -1,7 +1,7 @@
 var assert = require("assert");
 
-var readRelationships = require("../../lib/docx/relationships-reader")
-  .readRelationships;
+var readRelationships =
+  require("../../lib/docx/relationships-reader").readRelationships;
 var xml = require("../../lib/xml");
 var test = require("../test")(module);
 
@@ -11,14 +11,12 @@ test("relationships can be found by ID", function () {
       relationshipElement({
         Id: "rId1",
         Target: "http://example.com/",
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
       }),
       relationshipElement({
         Id: "rId2",
         Target: "http://example.net/",
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
       }),
     ])
   );
@@ -34,20 +32,17 @@ test("relationships can be found by type", function () {
       relationshipElement({
         Id: "rId2",
         Target: "docProps/core.xml",
-        Type:
-          "http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties",
+        Type: "http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties",
       }),
       relationshipElement({
         Id: "rId1",
         Target: "word/document.xml",
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
       }),
       relationshipElement({
         Id: "rId3",
         Target: "word/document2.xml",
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
       }),
     ])
   );

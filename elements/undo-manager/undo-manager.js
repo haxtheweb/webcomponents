@@ -306,9 +306,10 @@ class UndoManagerCommand {
       this.el.undoStack.commands &&
       this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
     ) {
-      this.el.innerHTML = this.el.undoStack.commands[
-        this.el.undoStack.undoStackPosition - 1
-      ].newValue;
+      this.el.innerHTML =
+        this.el.undoStack.commands[
+          this.el.undoStack.undoStackPosition - 1
+        ].newValue;
     } else if (
       this.el.undoStack.commands &&
       this.el.undoStack.undoStackPosition === 0

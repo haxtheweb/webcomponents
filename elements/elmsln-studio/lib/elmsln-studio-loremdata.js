@@ -428,9 +428,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         );
     });
 
-    this.profile = this.profiles[
-      lorem.randomOption(Object.keys(this.profiles)) || 0
-    ];
+    this.profile =
+      this.profiles[lorem.randomOption(Object.keys(this.profiles)) || 0];
   }
   _profile(student, lorem) {
     let profile = student;
@@ -511,9 +510,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             this.__imgCtr
           );
           if (this.sourcePath && this.__demoImages.length > 0)
-            img.src = this.__demoImages[
-              this.__imgCtr % this.__demoImages.length
-            ];
+            img.src =
+              this.__demoImages[this.__imgCtr % this.__demoImages.length];
           img.type =
             img.src.substring(img.src.lastIndexOf(".") + 1, img.src.length) ||
             "png";
@@ -610,9 +608,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           values: {},
         };
       for (let i = 0; i < criteria; i++) {
-        rubric.values[
-          `${lorem.randomWord()} ${lorem.randomWord()}`
-        ] = rubric.key.map((k) => lorem.randomSentence(3, 6));
+        rubric.values[`${lorem.randomWord()} ${lorem.randomWord()}`] =
+          rubric.key.map((k) => lorem.randomSentence(3, 6));
       }
       return rubric;
     }

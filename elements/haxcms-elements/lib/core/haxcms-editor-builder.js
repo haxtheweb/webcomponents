@@ -108,7 +108,8 @@ class HAXCMSEditorBuilder extends HTMLElement {
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
       if (!["published", "11ty"].includes(context)) {
-        const basePath = new URL("./", import.meta.url).href;
+        const basePath =
+          new URL("./haxcms-editor-builder.js", import.meta.url).href + "/../";
         // import and set the tag based on the context
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there

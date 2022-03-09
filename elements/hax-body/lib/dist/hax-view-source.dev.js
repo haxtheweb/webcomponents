@@ -500,10 +500,11 @@ var HaxViewSource =
             var content = body; // if you want full HTML headers or not
 
             if (full) {
-              content = '\n        <!DOCTYPE html>\n        <html lang="en">\n          <head>\n            <meta charset="utf-8" />\n            <meta\n              name="viewport"\n              content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"\n            />\n            <title>hax-body demo</title>\n            <script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> \n            <style>\n              body {\n                padding: 32px;\n              }\n            </style>\n          </head>\n          <body>\n          '.concat(
-                body,
-                "\n          </body>\n        </html>\n      "
-              );
+              content =
+                '\n        <!DOCTYPE html>\n        <html lang="en">\n          <head>\n            <meta charset="utf-8" />\n            <meta\n              name="viewport"\n              content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"\n            />\n            <title>hax-body demo</title>\n            <script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> \n            <style>\n              body {\n                padding: 32px;\n              }\n            </style>\n          </head>\n          <body>\n          '.concat(
+                  body,
+                  "\n          </body>\n        </html>\n      "
+                );
             }
 
             return content;

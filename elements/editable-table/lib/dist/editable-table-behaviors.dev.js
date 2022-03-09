@@ -3,7 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.cellBehaviors = exports.displayBehaviors = exports.dataProperties = exports.displayProperties = exports.editableTableDisplayStyles = exports.editableTableStyles = exports.editableTableCellStyles = void 0;
+exports.cellBehaviors =
+  exports.displayBehaviors =
+  exports.dataProperties =
+  exports.displayProperties =
+  exports.editableTableDisplayStyles =
+  exports.editableTableStyles =
+  exports.editableTableCellStyles =
+    void 0;
 
 var _litElement = require("lit");
 

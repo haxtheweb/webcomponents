@@ -2,8 +2,8 @@ var assert = require("assert");
 
 var documents = require("../lib/documents");
 var test = require("./test")(module);
-var convertElementToRawText = require("../lib/raw-text")
-  .convertElementToRawText;
+var convertElementToRawText =
+  require("../lib/raw-text").convertElementToRawText;
 
 test("text element is converted to text content", function () {
   var element = new documents.Text("Hello.");

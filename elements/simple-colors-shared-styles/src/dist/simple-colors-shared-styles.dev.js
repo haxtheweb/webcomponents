@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleColorsSharedStylesGlobal = exports.SimpleColorsSharedStyles = void 0;
+exports.SimpleColorsSharedStylesGlobal = exports.SimpleColorsSharedStyles =
+  void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -794,9 +795,8 @@ window.SimpleColorsSharedStyles.requestAvailability = function () {
       window.SimpleColorsSharedStyles.instance.colors;
     window.SimpleColorsSharedStyles.contrasts =
       window.SimpleColorsSharedStyles.instance.contrasts;
-    window.SimpleColorsSharedStyles.stylesheet = document.createElement(
-      "style"
-    );
+    window.SimpleColorsSharedStyles.stylesheet =
+      document.createElement("style");
     window.SimpleColorsSharedStyles.stylesheet.innerHTML = "".concat(
       SimpleColorsSharedStyles.styles[0].cssText
     );
@@ -806,5 +806,6 @@ window.SimpleColorsSharedStyles.requestAvailability = function () {
   return window.SimpleColorsSharedStyles.instance;
 };
 
-var SimpleColorsSharedStylesGlobal = window.SimpleColorsSharedStyles.requestAvailability();
+var SimpleColorsSharedStylesGlobal =
+  window.SimpleColorsSharedStyles.requestAvailability();
 exports.SimpleColorsSharedStylesGlobal = SimpleColorsSharedStylesGlobal;

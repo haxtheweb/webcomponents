@@ -461,9 +461,8 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             ) {
               this.$input = document.activeElement;
             }
-            this.shadowRoot.querySelector(
-              "simple-popover"
-            ).target = this.$input;
+            this.shadowRoot.querySelector("simple-popover").target =
+              this.$input;
             this.shadowRoot.querySelector("simple-popover").updatePosition();
           }
         }, 0);

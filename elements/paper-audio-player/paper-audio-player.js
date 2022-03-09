@@ -582,9 +582,8 @@ class PaperAudioPlayer extends mixinBehaviors(
 
     player.timer.sliderUpdateInterval = setInterval(function () {
       if (player.isPlaying) {
-        player.currentTime = player.shadowRoot.querySelector(
-          "#audio"
-        ).currentTime;
+        player.currentTime =
+          player.shadowRoot.querySelector("#audio").currentTime;
         player.timeLeft =
           player.shadowRoot.querySelector("#audio").duration -
           player.currentTime;
@@ -695,9 +694,8 @@ class PaperAudioPlayer extends mixinBehaviors(
 
   _updatePlayPosition(newTime) {
     var player = this;
-    player.currentTime = player.shadowRoot.querySelector(
-      "#audio"
-    ).currentTime = newTime;
+    player.currentTime = player.shadowRoot.querySelector("#audio").currentTime =
+      newTime;
 
     var percentagePlayed =
       player.currentTime / player.shadowRoot.querySelector("#audio").duration;
@@ -741,9 +739,8 @@ class PaperAudioPlayer extends mixinBehaviors(
     player.shadowRoot.querySelector("#left").style.backgroundColor = newValue;
     player.shadowRoot.querySelector("#title").style.color = newValue;
     player.shadowRoot.querySelector("#duration").style.color = newValue;
-    player.shadowRoot.querySelector(
-      "#progress"
-    ).style.backgroundColor = newValue;
+    player.shadowRoot.querySelector("#progress").style.backgroundColor =
+      newValue;
     player.shadowRoot.querySelector("#replay").style.color = newValue;
   }
 

@@ -775,11 +775,10 @@ var RichTextEditorSelection =
 
                 _this5.pasteFromClipboard(e.detail);
               },
-              "rich-text-editor-prompt-closed": function richTextEditorPromptClosed(
-                e
-              ) {
-                toolbar.__promptOpen = false;
-              },
+              "rich-text-editor-prompt-closed":
+                function richTextEditorPromptClosed(e) {
+                  toolbar.__promptOpen = false;
+                },
               "rich-text-editor-prompt-open": function richTextEditorPromptOpen(
                 e
               ) {

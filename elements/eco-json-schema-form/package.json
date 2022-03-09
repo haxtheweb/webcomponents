@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.8",
+  "version": "4.0.12",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -37,10 +37,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^4.0.8",
-    "@lrnwebcomponents/a11y-tabs": "^4.0.8",
-    "@lrnwebcomponents/hax-body": "^4.0.8",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.8",
+    "@lrnwebcomponents/a11y-collapse": "^4.0.12",
+    "@lrnwebcomponents/a11y-tabs": "^4.0.12",
+    "@lrnwebcomponents/hax-body": "^4.0.12",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.12",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -66,12 +66,12 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.12",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-material": "^3.0.1",
-    "@web/dev-server": "0.1.29",
+    "@web/dev-server": "0.1.30",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "7.0.0",
     "gulp-babel": "8.0.0",
@@ -86,5 +86,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "e38751e6f76a812e00ae87ef826fafcdbfec4083"
+  "gitHead": "bf3a571b543295fbade018f69e6e0ea71156df0f"
 }

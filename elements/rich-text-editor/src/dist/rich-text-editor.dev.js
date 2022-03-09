@@ -269,6 +269,16 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
         _this.__focused = false;
         _this.__hovered = false;
         _this.editing = false;
+        _this.__selection =
+          window.RichTextEditorSelection.requestAvailability();
+
+        var root = _assertThisInitialized(_this);
+
+        Promise.resolve().then(function () {
+          return _interopRequireWildcard(
+            require("@lrnwebcomponents/code-editor/code-editor.js")
+          );
+        });
 
         _this.setAttribute("tabindex", 1);
 

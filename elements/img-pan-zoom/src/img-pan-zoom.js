@@ -409,7 +409,10 @@ class ImgPanZoom extends LitElement {
     this.showReferenceStrip = false;
     this.referenceStripScroll = "horizontal";
 
-    const basePath = new URL("./", import.meta.url).href;
+    const basePath = new URL("./img-pan-zoom.js", import.meta.url).href.replace(
+      "/img-pan-zoom.js",
+      ""
+    );
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
@@ -521,8 +524,8 @@ class ImgPanZoom extends LitElement {
         this.viewer = new OpenSeadragon({
           element: this.shadowRoot.querySelector("#viewer"),
           prefixUrl: `${
-            new URL("./", import.meta.url).href
-          }lib/openseadragon/images/`,
+            new URL("./img-pan-zoom.js", import.meta.url).href
+          }/../lib/openseadragon/images/`,
           visibilityRatio: this.visibilityRatio,
           constrainDuringPan: this.constrainDuringPan,
           showNavigationControl: this.showNavigationControl,

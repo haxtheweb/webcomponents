@@ -111,9 +111,8 @@ class RCoder extends LitElement {
    */
   firstUpdated() {
     this.ping();
-    this.shadowRoot.getElementById(
-      "editor"
-    ).editorValue = this.textContent.trim();
+    this.shadowRoot.getElementById("editor").editorValue =
+      this.textContent.trim();
   }
   constructor() {
     super();

@@ -44,8 +44,7 @@ var relationshipNamespaces = {
 test("main document is found using _rels/.rels", function () {
   var relationships = xml.element("r:Relationships", {}, [
     xml.element("r:Relationship", {
-      Type:
-        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+      Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
       Target: "/word/document2.xml",
     }),
   ]);
@@ -65,8 +64,7 @@ test("main document is found using _rels/.rels", function () {
 test("error is thrown when main document part does not exist", function () {
   var relationships = xml.element("r:Relationships", {}, [
     xml.element("r:Relationship", {
-      Type:
-        "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+      Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
       Target: "/word/document2.xml",
     }),
   ]);
@@ -91,8 +89,7 @@ test("part paths", {
   "main document part is found using package relationships": function () {
     var relationships = xml.element("r:Relationships", {}, [
       xml.element("r:Relationship", {
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
         Target: "/word/document2.xml",
       }),
     ]);
@@ -106,41 +103,37 @@ test("part paths", {
     });
   },
 
-  "word/document.xml is used as fallback location for main document part": function () {
-    var docxFile = createFakeDocxFile({
-      "word/document.xml": " ",
-    });
-    return docxReader._findPartPaths(docxFile).then(function (partPaths) {
-      assert.equal(partPaths.mainDocument, "word/document.xml");
-    });
-  },
+  "word/document.xml is used as fallback location for main document part":
+    function () {
+      var docxFile = createFakeDocxFile({
+        "word/document.xml": " ",
+      });
+      return docxReader._findPartPaths(docxFile).then(function (partPaths) {
+        assert.equal(partPaths.mainDocument, "word/document.xml");
+      });
+    },
 });
 
 [
   {
     name: "comments",
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments",
   },
   {
     name: "endnotes",
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/endnotes",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/endnotes",
   },
   {
     name: "footnotes",
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footnotes",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footnotes",
   },
   {
     name: "numbering",
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering",
   },
   {
     name: "styles",
-    type:
-      "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles",
+    type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles",
   },
 ].forEach(function (options) {
   test(
@@ -190,8 +183,7 @@ function createPackageRelationships(mainDocumentPath) {
   return xml.writeString(
     xml.element("r:Relationships", {}, [
       xml.element("r:Relationship", {
-        Type:
-          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+        Type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
         Target: mainDocumentPath,
       }),
     ]),

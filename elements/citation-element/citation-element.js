@@ -232,9 +232,8 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       // find the sibling element in the DOM and associate to it's resource ID
       // also generate a resource ID if it doesn't have one
       if (this.previousElementSibling.getAttribute("resource")) {
-        this.relatedResource = this.previousElementSibling.getAttribute(
-          "resource"
-        );
+        this.relatedResource =
+          this.previousElementSibling.getAttribute("resource");
       } else {
         let uuid = generateResourceID();
         this.relatedResource = uuid;
@@ -264,8 +263,84 @@ class CitationElement extends SchemaBehaviors(LitElement) {
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      gizmo: {
+        title: "Citation",
+        description: "A basic citation element with 3 presentation modes",
+        icon: "editor:title",
+        color: "grey",
+        groups: ["Content", "Copyright"],
+        handles: [
+          {
+            type: "citation",
+            source: "source",
+            title: "title",
+            author: "creator",
+            license: "license",
+            accessDate: "date",
+          },
+        ],
+        meta: {
+          author: "ELMS:LN",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the work being cited.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+          },
+          {
+            property: "source",
+            title: "Source link",
+            description: "The source url for the element this is citing.",
+            inputMethod: "textfield",
+            icon: "link",
+            validationType: "url",
+          },
+          {
+            property: "date",
+            title: "Date accessed",
+            description: "The date this was accessed.",
+            inputMethod: "textfield",
+            icon: "link",
+          },
+          {
+            property: "scope",
+            title: "Scope",
+            description: "Scope of what to cite.",
+            inputMethod: "select",
+            options: {
+              sibling: "Sibling element",
+              parent: "Parent element",
+            },
+            icon: "code",
+          },
+          {
+            property: "license",
+            title: "License",
+            description: "The source url for the element this is citing.",
+            inputMethod: "select",
+            options: new licenseList("select"),
+            icon: "link",
+          },
+          {
+            property: "creator",
+            title: "Creator",
+            description: "Who made or owns this.",
+            inputMethod: "textfield",
+            icon: "link",
+          },
+        ],
+        advanced: [],
+      },
+    };
   }
 
   /**

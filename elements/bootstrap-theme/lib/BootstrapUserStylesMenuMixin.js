@@ -457,9 +457,8 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         "#haxcmsuserstylesmenupopover"
       );
       // hook up the pop over menu
-      this.shadowRoot.querySelector(
-        "#haxcmsuserstylesmenu"
-      ).target = this.toggleUserStylesMenuTarget;
+      this.shadowRoot.querySelector("#haxcmsuserstylesmenu").target =
+        this.toggleUserStylesMenuTarget;
     }
     toggleUserStylesMenu(e) {
       this.hideUserStylesMenu = !this.hideUserStylesMenu;

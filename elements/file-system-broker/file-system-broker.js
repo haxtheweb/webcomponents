@@ -203,9 +203,8 @@ window.FileSystemBroker = window.FileSystemBroker || {};
 window.FileSystemBroker.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!window.FileSystemBroker.instance) {
-    window.FileSystemBroker.instance = document.createElement(
-      "file-system-broker"
-    );
+    window.FileSystemBroker.instance =
+      document.createElement("file-system-broker");
     document.body.appendChild(window.FileSystemBroker.instance);
   }
   return window.FileSystemBroker.instance;

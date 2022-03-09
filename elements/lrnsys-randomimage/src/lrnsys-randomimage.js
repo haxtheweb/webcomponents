@@ -44,9 +44,8 @@ class LrnsysRandomimage extends PolymerElement {
    * trigger a reload of the random-image element
    */
   reload(e) {
-    this.shadowRoot.querySelector(
-      "#list"
-    ).innerHTML = this.shadowRoot.querySelector("#list").innerHTML;
+    this.shadowRoot.querySelector("#list").innerHTML =
+      this.shadowRoot.querySelector("#list").innerHTML;
   }
 }
 window.customElements.define(LrnsysRandomimage.tag, LrnsysRandomimage);

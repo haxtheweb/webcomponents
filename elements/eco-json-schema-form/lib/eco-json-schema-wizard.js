@@ -564,9 +564,8 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           for (var i = 0, ii = splice.addedCount; i < ii; i++) {
             if (splice.addedKeys && splice.addedKeys[i]) {
               property.keyMap = property.keyMap || {};
-              property.keyMap[
-                path.concat([splice.addedKeys[i]]).join(".")
-              ] = path.concat([i + splice.index]).join(".");
+              property.keyMap[path.concat([splice.addedKeys[i]]).join(".")] =
+                path.concat([i + splice.index]).join(".");
             }
             args.push(ctx._deepClone(splice.object[i + splice.index]));
           }

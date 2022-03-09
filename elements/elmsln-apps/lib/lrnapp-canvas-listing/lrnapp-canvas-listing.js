@@ -429,9 +429,8 @@ class LrnappCanvasListing extends PolymerElement {
     this.querySelector("#details-dialog").toggleDialog();
     this.roster = false;
     this.activeCourse = this.canvasCourses[e.target.id];
-    this.querySelector("#request").params[
-      "sis_course_id"
-    ] = this.activeCourse.sis_course_id;
+    this.querySelector("#request").params["sis_course_id"] =
+      this.activeCourse.sis_course_id;
     this.querySelector("#request").generateRequest();
     this.querySelector("#loadingContent").style.display = "none";
   }

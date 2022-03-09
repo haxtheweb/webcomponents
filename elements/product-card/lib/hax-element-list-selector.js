@@ -46,7 +46,7 @@ class HaxElementListSelector extends LitElement {
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
     // default fields json blob, most implementations should provide their own though obviously
-    this.fieldsEndpoint = new URL("./", import.meta.url).href + "fields.json";
+    this.fieldsEndpoint = new URL("./fields.json", import.meta.url).href;
     // allow flobal base path focibly set
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;

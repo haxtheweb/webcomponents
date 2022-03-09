@@ -381,9 +381,8 @@ var HaxGizmoBrowser =
               }
 
               this.crt.style.opacity = ".8";
-              this.crt.style.backgroundColor = e.target.getAttribute(
-                "drag-color"
-              );
+              this.crt.style.backgroundColor =
+                e.target.getAttribute("drag-color");
               e.dataTransfer.effectAllowed = "move";
               e.dataTransfer.dropEffect = "move"; //document.body.appendChild(this.crt);
 
