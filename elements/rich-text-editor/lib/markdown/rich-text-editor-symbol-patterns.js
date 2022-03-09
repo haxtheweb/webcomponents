@@ -32,8 +32,8 @@ symbols.forEach((symbol) => {
  */
 export const rteSymbolPatterns = {
   documentation: {
-    id: "rte-icon-patterns",
-    title: "Icon Pattern Cheatsheet",
+    id: "rte-symbol-patterns",
+    title: "Symbol Pattern Cheatsheet",
     cheatsheet: {}
   },
   patterns: patterns
