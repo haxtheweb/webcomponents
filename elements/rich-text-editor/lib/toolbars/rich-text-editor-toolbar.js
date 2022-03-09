@@ -378,14 +378,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       });
       this.checkDocSection(changedProperties,"markdownPatterns","__markdownDocs",'_getMarkdownDocs',"enableMarkdown");
     }
-    get debugMD(){
-      return {
-        contents: JSON.parse(JSON.stringify(this.endUserDocContents || {})),
-        docs: JSON.parse(JSON.stringify(this.__markdownDocs || {})),
-        patterns: JSON.parse(JSON.stringify(this.markdownPatterns || {})),
-        schema: JSON.parse(JSON.stringify(this.__endUserDocSchema || {}))
-      }
-    }
     /**
      * updates markdown patterns list and documentation
      * @returns 
@@ -2003,7 +1995,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           searchNodeClone = prev ? prev.cloneNode(true) : false;
           span = searchNodeClone ? searchNodeClone.querySelector(`#${id}`) : false;
           if(span) span.remove();
-          let search = searchNodeClone ? searchNodeClone.innerHTML.replace(/&nbsp;/,' ') : false,
+          let search = searchNodeClone ? searchNodeClone.innerHTML.replace(/(&nbsp;)+/,' ') : false,
           multiline = search ? this.replacementsByLastKey["enter"] : [];
           if(searchNodeClone) searchNodeClone.remove();
         multiline.forEach((regex)=>{
@@ -2018,11 +2010,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               replacement = replacement.replace(tags,`$1$3$5$6$3<br>$6$7`);
               range.setStartBefore(prev);
               range.setEndAfter(current);
-              this._handleCommand('insertHTML',replacement,range);
+              this._handleCommand('insertHTML',replacement.replace(/\s+/,' '),range);
             //update previous node and then select current node again
             } else {
               range.selectNode(prev);
-              this._handleCommand('insertHTML',replacement+current.outerHTML,range);
+              this._handleCommand('insertHTML',(replacement+current.outerHTML).replace(/\s+/,' '),range);
             }
           }
         });
@@ -2057,12 +2049,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (found) { 
           if(e.key == "Enter") {
             cloneSplit[1] = cloneSplit[1].replace(/(<\/[^<]+><[^<]+>.*)(<\/\S+>)/g,`$1${spanHTML}$2`);
-            searchNode.innerHTML = cloneSplit.join('').replace(/\s(?![^<]+>)/g,'&nbsp;');
+            searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
           } else { 
             let prepend = new RegExp(`${e.key.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}$`);
             cloneSplit[0] = cloneSplit[0].replace(prepend,'').replace(/\s$/,'&nbsp;');
-            cloneSplit[1] = e.key.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s/,'&nbsp;');
-            searchNode.innerHTML = cloneSplit.join('').replace(/\s(?![^<]+>)/g,'&nbsp;');
+            cloneSplit[1] = e.key.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s+/,'&nbsp;');
+            searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
           }
           span = searchNode.querySelector(`#${id}`);
           this.selectNode(span);
