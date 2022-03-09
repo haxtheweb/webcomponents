@@ -17,7 +17,6 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
 import * as shadow from "shadow-selection-polyfill/shadow.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { rteDefaultPatterns } from "@lrnwebcomponents/rich-text-editor/lib/markdown/rich-text-editor-default-patterns.js";
-import "@lrnwebcomponents/end-user-doc/end-user-doc.js";
 
 window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
 /**
@@ -115,7 +114,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     // render function for template
     render() {
-      return html`<end-user-doc hidden></end-user-doc>${this.toolbarTemplate}`;
+      return html`${this.toolbarTemplate}`;
     }
 
     // properties available to custom element for data binding
@@ -318,11 +317,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.__toolbar = this;
       this.__patternList = [];
       this.historyMax = 10;
-      this.__endUserDocSchema = {
-        id: `rte-doc-`+this.id,
-        title: 'Documentation',
-        contents: []
-      }
       document.addEventListener(
         shadow.eventName,
         this._handleTargetSelection.bind(this.__toolbar)
@@ -364,8 +358,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     
 
     updated(changedProperties) {
-      let markdownDocsChanged = false, 
-        markdownPatternsChanged = false;
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "historyMax") {
@@ -383,10 +375,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.sticky = this.sticky;
         if (["history", "historyLocation"].includes(propName))
           this._updateUndoRedoButtons();
-        if(["markdownPatterns","enableMarkdown"].includes(propName)) markdownDocsChanged = true;
-        if (propName === "markdownPatterns")  markdownPatternsChanged = true;
       });
-      if(markdownDocsChanged) this.updateMarkdownDocs(markdownPatternsChanged);
+      this.checkDocSection(changedProperties,"markdownPatterns","__markdownDocs",'_getMarkdownDocs',"enableMarkdown");
     }
     get debugMD(){
       return {
@@ -394,26 +384,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         docs: JSON.parse(JSON.stringify(this.__markdownDocs || {})),
         patterns: JSON.parse(JSON.stringify(this.markdownPatterns || {})),
         schema: JSON.parse(JSON.stringify(this.__endUserDocSchema || {}))
-      }
-    }
-    /**
-     * shows or hides markdown documentation section based on whether or not markdown is enabled
-     */
-    updateMarkdownDocs(patternsChanged){
-      if(!this.endUserDoc) return;
-
-      //add end user doc schema if there is none
-      if(!this.endUserDocId) this.endUserDoc.contents = this.__endUserDocSchema;
-
-      if((!this.enableMarkdown || patternsChanged) && !!this.__markdownDocs) {
-        //remove markdown section from docs
-        if(!!this.__markdownDocs && !!this.endUserDoc) this.endUserDoc.removeSectionContent(this.__markdownDocs.id);
-      }
-      if(this.enableMarkdown){
-        //add markdown patterns and add markdown section to docs
-        if(!this.__markdownDocs || patternsChanged) this.__markdownDocs = this._getMarkdownDocs();
-        //add markdown section schema exists add it to docs
-        this.endUserDoc.appendToSection({...this.__markdownDocs},this.endUserDocId);
       }
     }
     /**
@@ -426,24 +396,27 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if(!this.markdownPatterns) return;
       
       // skeleton schema for markdown section of docs
-      this.__markdownDocs = {...this.markdownPatterns.documentation}; 
+      let schema = this.markdownPatterns.documentation; 
+      schema.contents = [];
       this.__patternList = [];
-      
       // for each group of patterns, make a schema for a cheatsheet table in docs
-      let groups = [...this.markdownPatterns.patterns];
+      let groups = this.markdownPatterns.patterns;
       (groups || []).forEach(group=>{
         // skeleton schema for cheatsheet
-        let groupDoc = JSON.parse(JSON.stringify(group.documentation));
-        if(!groupDoc) return;
-        groupDoc.cheatsheet = groupDoc.cheatsheet || {};
-        if(groupDoc.cheatsheet){
-          groupDoc.cheatsheet.columns = groupDoc.cheatsheet.columns 
-            ? groupDoc.cheatsheet.columns 
-            : this.markdownPatterns.cheatsheetHeadings 
-            ? [ ...this.markdownPatterns.cheatsheetHeadings] 
-            : ["Pattern","Result"];
-          groupDoc.cheatsheet.rows = groupDoc.cheatsheet.rows || [];
-          let flattenPatterns = (group =>{ 
+        const mdDoc = group.documentation;
+        if(!mdDoc) return;
+        const mdCheat = mdDoc.cheatsheet || {};
+        if(mdCheat){
+          let cheat = {
+            columns: mdCheat.columns 
+              ? mdCheat.columns 
+              : this.markdownPatterns.cheatsheetHeadings 
+              ? [ ...this.markdownPatterns.cheatsheetHeadings] 
+              : ["Pattern","Result"],
+          };
+          const mdRows = cheat.rows || [];
+          let rows = [],
+            flattenPatterns = (group =>{ 
               return group.match ? group : (group.patterns ||[]).map(p=>flattenPatterns(p)).flat();
             }), 
             sheetPatterns = flattenPatterns(group);
@@ -455,9 +428,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 result.innerHTML = example;
                 result.innerHTML = example.replace(pattern.match,pattern.replace);
 
-                groupDoc.cheatsheet.rows.push([
+                rows.push([
                   //cell that shows example code for pattern
-                  html`<code>${example}</code>`,
+                  html`<kbd>${example}</kbd>`,
                   //cell that shows example's result when replacement runs
                   html`${templateContent(result)}`
                 ]);
@@ -465,43 +438,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             });
             this.__patternList.push(pattern);
           });
-          
-
+          //add rows to cheat sheet
+          cheat.rows = [...mdRows, ...rows];
           // add each pattern to patterns list
-          this.__markdownDocs.contents.push(groupDoc);
+          schema.contents.push({...mdDoc, cheatsheet: cheat});
         }
       });
       // update markdown section of documentation 
-      return this.__markdownDocs;
-    }
-    /**
-     * end-user-documentation component
-     *
-     * @readonly
-     */
-    get endUserDoc(){
-      return !this.shadowRoot 
-        || !this.shadowRoot.querySelector('end-user-doc') 
-        ? undefined 
-        : this.shadowRoot.querySelector('end-user-doc');
-    }
-
-    /**
-     * end-user-documentation component's content schema
-     *
-     * @readonly
-     */
-    get endUserDocContents(){
-      return !this.endUserDoc ? undefined : this.endUserDoc.contents;
-    }
-
-    /**
-     * top-level id for end-user-documentation component's content
-     *
-     * @readonly
-     */
-    get endUserDocId(){
-      return !this.endUserDocContents ? undefined : this.endUserDocContents.id;
+      return schema;
     }
     /**
      * default config for an undo button
@@ -1088,13 +1032,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
 
-    get markdownHelpButton(){
-      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-dialog-button.js");
+    get helpButton(){
+      import("../buttons/rich-text-editor-help-button.js");
       return { 
-        type: "rich-text-editor-dialog-button",
-        icon: "icons:help",
-        label: "Markdown Help",
-        id: 'mdhelp'
+        type: "rich-text-editor-help-button"
        };
     }
     /**
@@ -1112,6 +1053,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.scriptButtonGroup,
         this.insertButtonGroup,
         this.listIndentButtonGroup,
+        this.helpButton
       ];
     }
 
@@ -1428,6 +1370,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.clickableElements[tag] = this.clickableElements[tag] || button;
       });
       this._updateUndoRedoButton(button);
+    }
+
+    /**
+     * updates end-user-doc when it is registered
+     */
+    updateEndUserDoc(){
+      if(super.updateEndUserDoc) super.updateEndUserDoc();
+
+      //add end-user-doc markdown schema if there is one
+      this.updateDocSection("__markdownDocs",'_getMarkdownDocs',true,true);
     }
 
     /**
@@ -2193,7 +2145,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!this.__promptOpen) this.range = this.getRange();
     }
     _handlePaste(e) {
-      console.log(e);
       e.preventDefault();
       e.stopImmediatePropagation();
       this.pasteFromClipboard();

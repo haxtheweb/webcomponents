@@ -22,19 +22,8 @@
       <h1>rich-text-editor toolbar with markdown enabled</h1>
       <demo-snippet>
         <template>
-          <rich-text-editor-toolbar id="editor" show="always" enable-markdown controls="content"></rich-text-editor-toolbar>
+          <rich-text-editor-toolbar id="editor" show="always" enable-markdown controls="content" help-display-mode="2"></rich-text-editor-toolbar>
           <rich-text-editor id="content" toolbar="editor"></rich-text-editor>
-          <script>
-            let editor = document.getElementById('editor');
-            editor.config = [
-              ...editor.defaultConfig || [], 
-              {
-                type: "button-group",
-                subtype: "help-button-group",
-                buttons: [editor.markdownHelpButton]
-              }
-            ];
-          </script>
         </template>
       </demo-snippet>
       <h1>Configuring rich-text-editor toolbar markdown patterns</h1>
