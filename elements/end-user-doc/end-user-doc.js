@@ -769,7 +769,31 @@ const EndUserDocBehaviors = function (SuperClass) {
      * @returns {boolean}
      */
     _isHTML(item){
-      return !!item && typeof item == "object" && item["_$litType$"] && item["_$litType$"] == 1
+      let valid = this._isLitHtml(item);
+      if(valid) try {
+        this._debugTemplate(item);
+      } catch (error) {
+        valid = false;
+      }
+      return valid;
+    }
+    /**
+     * determins if item is lit html template
+     * @param {object} item 
+     * @returns 
+     */
+    _isLitHtml(item){
+      return!!item && typeof item == "object" && item["_$litType$"] && item["_$litType$"] == 1;
+    }
+    /**
+     * returns rendered lit-html
+     * @param {object} tpl lit html
+     * @returns 
+     */
+    _debugTemplate(tpl){
+      let temp = document.createElement("div");
+      if(this._isLitHtml(tpl)) render(tpl,temp);
+      return temp;
     }
     /**
      * renders section
@@ -856,11 +880,11 @@ const EndUserDocBehaviors = function (SuperClass) {
      * @returns {object} html
      */
     _links(links,preview=false){
-      let linkContent = (link) =>{
+      let linkContent = (link) => {
         let temp = document.createElement("div");
         render(this._content(link),temp);
         return temp.textContent.substring(0,200);
-      }
+      };
       return !links || links.length < 1 
         ? ''
         : html`
@@ -1092,36 +1116,6 @@ const EndUserDocBehaviors = function (SuperClass) {
     updated(changedProperties) {
       changedProperties.forEach((oldValue, propName) => {
       });
-    }
-    /**
-     * Called every time the element is inserted into the DOM. Useful for
-     * running setup code, such as fetching resources or rendering.
-     * Generally, you should try to delay work until this time.
-     */
-    connectedCallback() {
-      super.connectedCallback();
-      this.dispatchEvent(
-        new CustomEvent("end-user-docs-connected", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
-    }
-    /**
-     * life cycle, element is detatched
-     */
-    disconnectedCallback() {
-      this.dispatchEvent(
-        new CustomEvent("end-user-docs-disconnected", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
-      super.disconnectedCallback();
     }
   };
 };

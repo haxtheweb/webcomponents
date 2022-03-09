@@ -842,7 +842,38 @@ var EndUserDocBehaviors = function EndUserDocBehaviors(SuperClass) {
       }, {
         key: "_isHTML",
         value: function _isHTML(item) {
+          var valid = this._isLitHtml(item);
+
+          if (valid) try {
+            this._debugTemplate(item);
+          } catch (error) {
+            valid = false;
+          }
+          return valid;
+        }
+        /**
+         * determins if item is lit html template
+         * @param {object} item 
+         * @returns 
+         */
+
+      }, {
+        key: "_isLitHtml",
+        value: function _isLitHtml(item) {
           return !!item && _typeof(item) == "object" && item["_$litType$"] && item["_$litType$"] == 1;
+        }
+        /**
+         * returns rendered lit-html
+         * @param {object} tpl lit html
+         * @returns 
+         */
+
+      }, {
+        key: "_debugTemplate",
+        value: function _debugTemplate(tpl) {
+          var temp = document.createElement("div");
+          if (this._isLitHtml(tpl)) (0, _litElement.render)(tpl, temp);
+          return temp;
         }
         /**
          * renders section
@@ -1299,40 +1330,6 @@ var EndUserDocBehaviors = function EndUserDocBehaviors(SuperClass) {
         key: "updated",
         value: function updated(changedProperties) {
           changedProperties.forEach(function (oldValue, propName) {});
-        }
-        /**
-         * Called every time the element is inserted into the DOM. Useful for
-         * running setup code, such as fetching resources or rendering.
-         * Generally, you should try to delay work until this time.
-         */
-
-      }, {
-        key: "connectedCallback",
-        value: function connectedCallback() {
-          _get(_getPrototypeOf(_class.prototype), "connectedCallback", this).call(this);
-
-          this.dispatchEvent(new CustomEvent("end-user-docs-connected", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          }));
-        }
-        /**
-         * life cycle, element is detatched
-         */
-
-      }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          this.dispatchEvent(new CustomEvent("end-user-docs-disconnected", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          }));
-
-          _get(_getPrototypeOf(_class.prototype), "disconnectedCallback", this).call(this);
         }
       }]);
 
