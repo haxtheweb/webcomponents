@@ -40,6 +40,15 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
           attribute: "display-mode",
           reflect: true,
         },
+        /**
+         * modal mode for styling
+         */
+        modalMode: {
+          name: "modalMode",
+          type: Boolean,
+          attribute: "modal-mode",
+          reflect: true,
+        },
       };
     }
 
@@ -53,6 +62,7 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
       this.label = "Help";
       this.disabled = false;
       this.shortcutKeys = "F1";
+      this.modalMode = "toolbar-help";
     }
 
     get endUserDoc(){
@@ -81,8 +91,10 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
       this.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: {
+            mode: this.modalMode || undefined,
             title: this.title || this.label,
             elements: { content: content },
             styles: styles,

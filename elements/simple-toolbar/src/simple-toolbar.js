@@ -384,6 +384,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
+      this.docsSchema = {};
+      this.shortcutDocsSchema = {};
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
@@ -441,7 +443,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get endUserDocContents(){
-      console.log(this.endUserDoc,!this.endUserDoc ? undefined : this.endUserDoc.contents)
       return !this.endUserDoc ? undefined : this.endUserDoc.contents;
     }
 
@@ -601,7 +602,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {object} doc end-user-doc component
      */
     registerEndUserDoc(doc){
-      console.log(doc)
       //don't reregister if doc's button is temporarily disconnected
       if(doc !== this.__endUserDoc && this.__endUserDoc !== doc) {
         this.__deregEndUserDoc = false;
@@ -839,6 +839,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _addConfigItems(items = this.config, parent = this) {
       (items || []).forEach((config) => {
+        if(!config) return;
         if (
           config.type === "button-group" ||
           config.type === "simple-toolbar-button-group"
