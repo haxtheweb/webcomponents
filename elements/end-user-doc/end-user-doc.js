@@ -89,6 +89,14 @@ const EndUserDocProperties = {
     reflect: true
   },
   /** 
+   * label for cancel search buton
+   */
+  cancelSearchLabel: {
+    attribute: "cancel-search-label",
+    type: String,
+    reflect: true
+  },
+  /** 
    * text of search
    */
   searchText: {
@@ -198,7 +206,10 @@ const EndUserDocBehaviors = function (SuperClass) {
           img[part=image], 
           p, 
           ol {
-          margin: 1em 0;
+            margin: 1em 0;
+          }
+          li {
+            margin: 5px 0;
           }
           li > ol {
           margin: 0.25em 0 0.5em;
@@ -281,7 +292,8 @@ const EndUserDocBehaviors = function (SuperClass) {
             display: inline;
             margin: 0;
           }
-          #skipNavLink {
+          #skipNavLink,
+          simple-fields-field[part=searchfield]::part(label) {
             position: absolute;
             left: -99999px;
             height: 0;
@@ -759,26 +771,7 @@ const EndUserDocBehaviors = function (SuperClass) {
     render() {
       let section = this.currentSection && this.contentsById[this.currentSection];
       return html`
-        ${this.__printMode ? '' : html`
-          <div part="searchprint">
-            ${!this.searchable ? '' : html`
-              <simple-fields-field
-                id="searchfield"
-                part="searchfield" 
-                ?hidden=${section}
-                label="${this.searchLabel}"
-                .value="${this.searchText || ''}"
-                @value-changed="${this._handleSearch}"
-              >
-                <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
-                <simple-icon-button-lite ?hidden="${!this.searchText}" part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
-              </simple-fields-field>
-            `}
-            ${!this.printable ? '' : html`
-              <simple-icon-button-lite icon="print" label="${this.printLabel}" @click="${this.print}"></simple-icon-button-lite>
-            `}
-          </div>
-        `}
+        ${this.__printMode ? '' : this._searchAndPrint(!!section)}
         ${!!this.searchResults && !section
           ? this._links(this.searchResults,true)
           : html`
@@ -853,6 +846,40 @@ const EndUserDocBehaviors = function (SuperClass) {
         if(contentLC.match(term)) score += termScore;
       });
       return score;
+    }
+    /**
+     * search and print buttons at top of docs
+     * @param {boolean} hideSearch whether search is hidden
+     * @returns {object} html 
+     */
+    _searchAndPrint(hideSearch){
+      return html`
+        <div part="searchprint">
+          ${!this.searchable ? '' : html`
+            <simple-fields-field
+              id="searchfield"
+              part="searchfield" 
+              ?hidden=${hideSearch}
+              label="${this.searchLabel || "Search"}"
+              .value="${this.searchText || ''}"
+              @value-changed="${this._handleSearch}"
+            >
+              <span slot="label"></span>
+              <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
+              <simple-icon-button-lite 
+                ?hidden="${!this.searchText}" 
+                part="cancelsearch" 
+                icon="icons:close" 
+                slot="suffix" 
+                label="${this.cancelSearchLabel || "Cancel Search"}"
+                @click="${this._handleSearchCancel}"></simple-icon-button-lite>
+            </simple-fields-field>
+          `}
+          ${!this.printable ? '' : html`
+            <simple-icon-button-lite icon="print" label="${this.printLabel || "Print"}" @click="${this.print}"></simple-icon-button-lite>
+          `}
+        </div>
+      `;
     }
 
     /**
