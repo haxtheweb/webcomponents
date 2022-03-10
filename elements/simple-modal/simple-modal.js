@@ -27,6 +27,7 @@ const SimpleModalCssVars = [
   "--simple-modal-header-padding",
   "--simple-modal-content-container-color",
   "--simple-modal-content-container-background",
+  "--simple-modal-content-container-overflow",
   "--simple-modal-content-padding",
   "--simple-modal-buttons-color",
   "--simple-modal-buttons-background",
@@ -45,7 +46,7 @@ for styling:
 Custom property | Description | Default
 ----------------|-------------|--------
 --simple-modal-resize | whether modal can be resized by user (see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/resize}) | unset
---simple-modal-titlebar-color | height for modal's titlebar | #444
+--simple-modal-titlebar-color | color for modal's titlebar | #444
 --simple-modal-titlebar-background | background color for modal's titlebar | #ddd
 --simple-modal-titlebar-padding | padding for modal's titlebar | 0px 16px
 --simple-modal-titlebar-height | height for modal's titlebar | unset
@@ -55,6 +56,7 @@ Custom property | Description | Default
 --simple-modal-header-padding | padding for modal's header | 0px 16px
 --simple-modal-content-container-color | text color for modal's content | #222;
 --simple-modal-content-container-background | text color for modal's content | #fff 
+--simple-modal-content-container-overflow | whether content overflow should be visible or scroll | unset
 --simple-modal-content-padding | text color for modal's content | 8px 16px
 --simple-modal-buttons-color | text color for modal's buttons | unset
 --simple-modal-buttons-background | background color for modal's buttons | unset
@@ -155,6 +157,7 @@ class SimpleModal extends LitElement {
             --simple-modal-content-container-background,
             #fff
           );
+          overflow: var(--simple-modal-content-container-overflow, unset);
         }
 
         .buttons {
