@@ -8,6 +8,117 @@
  import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
+const EndUserDocProperties = {
+  /** 
+   * aria label for breadcrumbs
+   */
+  breadcrumbsLabel: {
+    attribute: "breadcrumbs-label",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * schema object of content to be rendered
+   */
+  contents: {
+    attribute: "contents",
+    type: Object
+  },
+  /** 
+   * determines which section to display
+   */
+  currentSection: {
+    attribute: "current-section",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * render demo contents instead of contents
+   */
+  demoMode: {
+    attribute: "demo-mode",
+    type: Boolean,
+    reflect: true
+  },
+  /** 
+   * determines how contents are displayed
+   */
+  displayMode: {
+    attribute: "display-mode",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * hides breadcrumbs
+   */
+  hideBreadcrumbs: {
+    attribute: "hide-breadcrumbs",
+    type: Boolean,
+    reflect: true
+  },
+  /** 
+   * adds printing to docs
+   */
+  printable: {
+    attribute: "printable",
+    type: Boolean,
+    reflect: true
+  },
+  /** 
+   * label for print
+   */
+  printLabel: {
+    attribute: "print-label",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * adds searching to docs
+   */
+  searchable: {
+    attribute: "searchable",
+    type: Boolean,
+    reflect: true
+  },
+  /** 
+   * label for search
+   */
+  searchLabel: {
+    attribute: "search-label",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * text of search
+   */
+  searchText: {
+    attribute: "search-text",
+    type: String,
+    reflect: true
+  },
+  /** 
+   * label for skip nav link
+   */
+  skipNavLabel: {
+    attribute: "skip-nav-label",
+    type: String,
+    reflect: true
+
+  },
+  /** 
+   * if this is a clone for printing, will set display accordingly
+   */
+  __printMode: {
+    type: Boolean
+  },
+  /** 
+   * raw, weighted search results by section id
+   */
+  __searchResults: {
+    type: Object,
+
+  }
+};
 const EndUserDocBehaviors = function (SuperClass) {
   return class extends SuperClass {
     //styles function
@@ -1046,7 +1157,6 @@ const EndUserDocBehaviors = function (SuperClass) {
         );
       this.__printMode = true;
       if(all) this.displayMode = all;
-      console.log('print',print);
       print.document.head.append(`
         <title>
           ${this.renderedSection === this.contents ? mainTitle : `${mainTitle}: ${this.renderedSection.title}`}
@@ -1081,115 +1191,7 @@ const EndUserDocBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-        /** 
-         * aria label for breadcrumbs
-         */
-        breadcrumbsLabel: {
-          attribute: "breadcrumbs-label",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * schema object of content to be rendered
-         */
-        contents: {
-          attribute: "contents",
-          type: Object
-        },
-        /** 
-         * determines which section to display
-         */
-        currentSection: {
-          attribute: "current-section",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * render demo contents instead of contents
-         */
-        demoMode: {
-          attribute: "demo-mode",
-          type: Boolean,
-          reflect: true
-        },
-        /** 
-         * determines how contents are displayed
-         */
-        displayMode: {
-          attribute: "display-mode",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * hides breadcrumbs
-         */
-        hideBreadcrumbs: {
-          attribute: "hide-breadcrumbs",
-          type: Boolean,
-          reflect: true
-        },
-        /** 
-         * adds printing to docs
-         */
-        printable: {
-          attribute: "printable",
-          type: Boolean,
-          reflect: true
-        },
-        /** 
-         * label for print
-         */
-        printLabel: {
-          attribute: "print-label",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * adds searching to docs
-         */
-        searchable: {
-          attribute: "searchable",
-          type: Boolean,
-          reflect: true
-        },
-        /** 
-         * label for search
-         */
-        searchLabel: {
-          attribute: "search-label",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * text of search
-         */
-        searchText: {
-          attribute: "search-text",
-          type: String,
-          reflect: true
-        },
-        /** 
-         * label for skip nav link
-         */
-        skipNavLabel: {
-          attribute: "skip-nav-label",
-          type: String,
-          reflect: true
-
-        },
-        /** 
-         * if this is a clone for printing, will set display accordingly
-         */
-        __printMode: {
-          type: Boolean
-        },
-        /** 
-         * raw, weighted search results by section id
-         */
-        __searchResults: {
-          type: Object,
-
-        }
+        ...EndUserDocProperties
       };
     }
 
@@ -1232,5 +1234,5 @@ const EndUserDocBehaviors = function (SuperClass) {
  */
 class EndUserDoc extends EndUserDocBehaviors(LitElement) {}
 customElements.define(EndUserDoc.tag, EndUserDoc);
-export { EndUserDoc, EndUserDocBehaviors };
+export { EndUserDoc, EndUserDocBehaviors, EndUserDocProperties };
  
