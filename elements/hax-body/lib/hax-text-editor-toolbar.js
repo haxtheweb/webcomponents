@@ -150,6 +150,21 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       outdentButton: "Outdent",
       textEditorToolbarTour:
         "Change how the text is structured and visualized in the page.",
+      helpButton: "Editor Help",
+      helpBreadcrumbs: "Breadcrumbs",
+      helpDocTitle: "Documentation",
+      printHelp: "Print",
+      searchHelp: "Search",
+      markdownDocsTitle: "Replacement Patterns",
+      markdownDocsInfo: undefined,
+      markdownDocsPatternLabel: "Pattern",
+      markdownDocsReplacementLabel: "Replacement",
+      cancelHelpSearchLabel: "Cancel Search",
+      skipHelpBreadcrumbs: "Skip Breadcrumbs",
+      keyboardShortcutTitle: "Keyboard Shortcuts",
+      keyboardShortcutInfo: "Keyboard Shortcuts",
+      keyboardShortcutKeyLabel: "Key(s)",
+      keyboardShortcutButtonLabel: "Button",
     };
     this.registerLocalization({
       context: this,
@@ -158,6 +173,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
+    this.enableMarkdown = true;
     window.HaxTextEditorToolbarConfig = window.HaxTextEditorToolbarConfig || {};
     window.HaxTextEditorToolbarConfig.inlineGizmos =
       window.HaxTextEditorToolbarConfig.inlineGizmos || {};
@@ -302,7 +318,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       buttons: [
         this.underlineButton,
         this.strikethroughButton,
-        this.codeButton,
       ],
     };
   }
@@ -480,11 +495,51 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    *
    * @readonly
    */
+  get helpButton() {
+    return {
+      ...super.helpButton,
+      label: this.t.helpButton,
+      breadcrumbsLabel: this.t.helpBreadcrumbs,
+      printLabel: this.t.printHelp,
+      searchLabel: this.t.searchHelp,
+      cancelSearchLabel: this.t.cancelHelpSearch,
+      skipNavLabel: this.t.skipHelpBreadcrumbs,
+      printable: true,
+      searchable: true,
+      modalMode: "hax-ui"
+    };
+  }
+  /**
+   * default config for a view source button
+   *
+   * @readonly
+   */
   get sourceButton() {
     return {
       ...super.sourceButton,
     };
   }
+  /**
+   * default config for a style button group: format, bold, italic, and remove format
+   *
+   * @readonly
+   */
+  get codeHelpButtonGroup() {
+    return {
+      type: "button-group",
+      subtype: "code-help-button-group",
+      buttons: [
+        this.codeButton,
+        this.helpButton,
+      ],
+    };
+  }
+  /**
+   * group for inserting emoji and symbols
+   *
+   * @readonly
+   * @memberof HaxTextEditorToolbar
+   */
   get haxSymbolInsertButtonGroup() {
     return {
       type: "button-group",
@@ -497,14 +552,29 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {};
   }
 
+  get inlineGizmoButtonGroup(){
+    let buttons = !window.HaxTextEditorToolbarConfig ? [] : Object.keys(
+          window.HaxTextEditorToolbarConfig.inlineGizmos || {}
+        ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
+    return buttons.length === 0
+      ? undefined
+      : {
+        type: "button-group",
+        subtype: "hax-insert-button-group",
+        buttons: buttons,
+      };
+  }
+
   get defaultConfig() {
     return [
       this.basicInlineButtonGroup,
       this.linkButtonGroup,
       this.listIndentButtonGroup,
+      this.advancedInlineButtonGroup,
       this.scriptButtonGroup,
       this.haxSymbolInsertButtonGroup,
-      this.advancedInlineButtonGroup,
+      this.inlineGizmoButtonGroup,
+      this.codeHelpButtonGroup,
     ];
   }
 
@@ -554,19 +624,53 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           this.updateBlocks();
         if (propName === "activeNode" && this.activeNode !== oldValue)
           this.setTarget(this.activeNode);
-        if (propName === "t" && this.t !== oldValue)
-          this.updateToolbarElements();
+        if (propName === "t" && this.t !== oldValue) this.updateToolbarElements();
       });
     }
   }
   firstUpdated(changedProperties) {
+    //before other updates add localization
+    this._localizeHelpDocumentation();
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.config = this.updateToolbarElements();
+    this.updateToolbarElements();
     this.__prompt.haxUIElement = true;
     this.__prompt.classList.add("ignore-activation");
     this.addEventListener("keypress", this.trapKeys.bind(this));
     this.__prompt.addEventListener("keypress", this.trapKeys.bind(this));
     this.__prompt.addEventListener("paste", this._handlePaste.bind(this));
+  }
+  /**
+   * customizes and localizes markdown patterns and help documentation
+   */
+  _localizeHelpDocumentation(){
+    //override help documentation main title
+    this.docsSchema.title = this.t.helpDocTitle;
+    //override default shortcut documentation
+    this.shortcutDocsSchema = {
+      ...this.shortcutDocsSchema,
+      id: "hax-keyboard-shortcuts",
+      title: this.t.keyboardShortcutTitle,
+      contents: !this.t.keyboardShortcutInfo ? [] : [
+        html`<p>${this.t.keyboardShortcutInfo}</p>`
+      ],
+      cheatsheetHeadings: [this.t.keyboardShortcutKeyLabel,this.t.keyboardShortcutButtonLabel]
+    };
+    //override default markdown patterns and documentation
+    import("@lrnwebcomponents/rich-text-editor/lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
+      if(module.rteAllPatterns && module.rteAllPatterns.patterns) {
+        this.markdownPatterns = {
+          documentation: {
+            id: "hax-replacement-patterns",
+            title: this.t.markdownDocsTitle,
+            contents: this.t.markdownDocsInfo ? [] : [
+              html`<p>${this.t.markdownDocsInfo}</p>`
+            ]
+          },
+          cheatsheetHeadings: [this.t.markdownDocsPatternLabel,this.t.markdownDocsReplacementLabel],
+          patterns: module.rteAllPatterns.patterns
+        };
+      }
+    });
   }
   /**
    * keeps keys from HAX
@@ -679,7 +783,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         type: "hax-text-editor-button",
       };
       this.__updated = false;
-      setTimeout((e) => (this.config = this.updateToolbarElements()), 500);
+      setTimeout((e) => (this.updateToolbarElements()), 500);
     }
   }
   /**
@@ -692,19 +796,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   updateToolbarElements() {
     if (this.__updated) return;
     this.__updated = true;
-    let buttons = Object.keys(
-      window.HaxTextEditorToolbarConfig.inlineGizmos || {}
-    ).map((key) => window.HaxTextEditorToolbarConfig.inlineGizmos[key]);
-    return buttons.length === 0
-      ? [...(this.defaultConfig || [])]
-      : [
-          ...(this.defaultConfig || []),
-          {
-            type: "button-group",
-            subtype: "hax-insert-button-group",
-            buttons: buttons,
-          },
-        ];
+    this.config = this.defaultConfig;
   }
 }
 customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);

@@ -1825,6 +1825,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this._handleShortcutKeys(e)
     }
     /**
+     * handles target keypress
+     *
+     * @param {event} e keypress event
+     */
+    _handleTargetKeypress(e) {
+      this.handlePatterns(e.key);
+    }
+    /**
      * handles when toolbar has mousedown event
      * @param {event} e 
      */
@@ -1839,14 +1847,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleToolbarMouseover(e) {
       //makes sure toolbar is enabled
       if(!!this.target) this.target.tabindex = 0;
-    }
-    /**
-     * handles target keypress
-     *
-     * @param {event} e keypress event
-     */
-    _handleTargetKeypress(e) {
-      this.handlePatterns(e.key);
     }
     /**
      * checks for markdown and replace
