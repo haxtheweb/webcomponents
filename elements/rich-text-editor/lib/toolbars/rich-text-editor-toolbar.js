@@ -422,7 +422,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
                 rows.push([
                   //cell that shows example code for pattern
-                  html`<kbd>${example}</kbd>`,
+                  html`<code>${example}</code>`,
                   //cell that shows example's result when replacement runs
                   html`${templateContent(result)}`
                 ]);
@@ -1027,7 +1027,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get helpButton(){
       import("../buttons/rich-text-editor-help-button.js");
       return { 
-        type: "rich-text-editor-help-button"
+        type: "rich-text-editor-help-button",
+        searchable: true,
+        printable: true
        };
     }
     /**
