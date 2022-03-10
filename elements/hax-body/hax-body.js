@@ -1205,6 +1205,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     window.addEventListener("blur", this.blurEvent.bind(this));
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
+    window.addEventListener("keyup", this._onKeyUp.bind(this));
     document.body.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
@@ -1228,6 +1229,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     window.removeEventListener("blur", this.blurEvent.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
+    window.removeEventListener("keyup", this._onKeyUp.bind(this));
     document.body.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
@@ -1463,13 +1465,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
   }
+  _onKeyUp(e) {
+    if(this.activeNode && this.contextMenus.text.target == this.activeNode){
+      this.contextMenus.text.handlePatterns(e.key);
+    }
+  }
   _onKeyPress(e) {
     let next =
       this.activeNode && this.activeNode.nextElementSibling
         ? this.activeNode.nextElementSibling
         : null;
-    if (next && e.key === "Enter")
+    if (next && e.key === "Enter") {
       this.setActiveNode(this.activeNode.nextElementSibling);
+    }
     //needed so that you can add new paragraphs before and element
     setTimeout(() => {
       if (

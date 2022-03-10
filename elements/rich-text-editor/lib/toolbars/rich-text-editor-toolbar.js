@@ -1739,7 +1739,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         focus: (e) => this._handleTargetFocus(target, e),
         blur: (e) => this._handleTargetBlur(e),
         keydown: (e) => this._handleTargetKeydown(e),
-        keypress: (e) => this._handleTargetKeypress(e),
+        keyup: (e) => this._handleTargetKeyup(e),
         paste: (e) => this._handlePaste(e),
       };
     }
@@ -1829,7 +1829,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {event} e keypress event
      */
-    _handleTargetKeypress(e) {
+    _handleTargetKeyup(e) {
       this.handlePatterns(e.key);
     }
     /**
@@ -1854,7 +1854,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {string} lastKey last key entered
      * @returns 
      */
-    handlePatterns(lastKey){
+    handlePatterns(lastKeyEntered){
       if (!this.enableMarkdown) return;
       let range = this.getRange();
       
@@ -2095,18 +2095,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.historyPaused = keepPaused;
       if (found) this.updateHistory();
 
-    }
-
-    _handleTargetKeypress(e) {
-      if (this.targetEmpty() && e.key) {
-        this.innerHTML = e.key
-          .replace(">", "&gt;")
-          .replace("<", "&lt;")
-          .replace("&", "&amp;");
-        this.range = this.getRange();
-        this.range.selectNodeContents(this);
-        this.range.collapse();
-      }
     }
     _handleTargetMutation(mutations = []) {
       this._handleTargetSelection();
