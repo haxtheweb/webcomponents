@@ -19,6 +19,7 @@ const EndUserDocBehaviors = function (SuperClass) {
             color: #444;
             font-weight: 300;
             font-family: sans-serif;
+            background-color: white;
           }
           :host([hidden]),
           [hidden] {
@@ -39,6 +40,14 @@ const EndUserDocBehaviors = function (SuperClass) {
           ol[part=lower-roman]{
             list-style: lower-roman;
           }
+          kbd {
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-family: sans-serif;
+            font-weight: 400;
+            padding: 1px 3px;
+            background-color: white;
+          }
           table {
             border-collapse: collapse;
           }
@@ -52,13 +61,14 @@ const EndUserDocBehaviors = function (SuperClass) {
           }
           th,td {
             border: 1px solid #999;
-            padding: 2px 5px;
+            padding: 5px;
+            background-color: white;
           }
           thead tr {
             background-color: #f0f0f0;
             color: #000; 
           }
-          tbody tr:nth-child(2n+1){
+          tbody tr:nth-child(2n+1) td {
             background-color: #f8f8f8;
           }
           figure {
@@ -167,10 +177,10 @@ const EndUserDocBehaviors = function (SuperClass) {
             width: 0;
             overflow: hidden;
           }
-          div[part=search]{
+          div[part=searchprint]{
             text-align: right;
           }
-          div[part=search]+h1{
+          div[part=searchprint]+h1{
             margin-top: 0px;
           }
           simple-fields-field[part=searchfield]{
@@ -350,12 +360,8 @@ const EndUserDocBehaviors = function (SuperClass) {
           if(typeof contents == "object") (contents.contents || []).forEach(item=>getIDs(item));
         };
 
-      if(this.demoMode) {
-        getIDs(this.demoContents)
-      } else if(this.contents) {
-        getIDs(this.contents);
-      }
-    return contentById;
+      getIDs(this.mainContent)
+      return contentById;
     }
     /**
      * creates an object that lists parents by id of its content
@@ -371,20 +377,30 @@ const EndUserDocBehaviors = function (SuperClass) {
           //get subsection content as well
           if(typeof contents == "object") (contents.contents || []).forEach(item=>getIDs(item,contents));
         };
-      if(this.demoMode) {
-        getIDs(this.demoContents,undefined)
-      } else if(this.contents) {
-        getIDs(this.contents,undefined);
-      }
-    return contentById;
+      getIDs(this.mainContent,undefined);
+      return contentById;
     }
+    /**
+     * gets currently selected section of content to render
+     *
+     * @readonly
+     */
     get renderedSection(){
       return this.currentSection && this.contentsById[this.currentSection] 
         ? this.contentsById[this.currentSection] 
-        : this.demoMode 
+        : this.mainContent;
+    }
+    /**
+     * gets highest level of content
+     *
+     * @readonly
+     */
+    get mainContent(){
+      return this.demoMode 
         ? this.demoContents 
         : this.contents;
     }
+
     /**
      * adds new content at beginiing of section with given id
      * @param {object} schema schema of content to be added
@@ -630,18 +646,24 @@ const EndUserDocBehaviors = function (SuperClass) {
     render() {
       let section = this.currentSection && this.contentsById[this.currentSection];
       return html`
-        ${!this.searchable ? '' : html`
-          <div part="search" ?hidden=${section}>
-            <simple-fields-field
-              id="searchfield"
-              part="searchfield"
-              label="${this.searchLabel}"
-              .value="${this.searchText || ''}"
-              @value-changed="${this._handleSearch}"
-            >
-              <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
-              <simple-icon-button-lite part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
-            </simple-fields-field>
+        ${this.__printMode ? '' : html`
+          <div part="searchprint">
+            ${!this.searchable ? '' : html`
+              <simple-fields-field
+                id="searchfield"
+                part="searchfield" 
+                ?hidden=${section}
+                label="${this.searchLabel}"
+                .value="${this.searchText || ''}"
+                @value-changed="${this._handleSearch}"
+              >
+                <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
+                <simple-icon-button-lite part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
+              </simple-fields-field>
+            `}
+            ${!this.printable ? '' : html`
+              <simple-icon-button-lite icon="print" label="${this.printLabel}" @click="${this.print}"></simple-icon-button-lite>
+            `}
           </div>
         `}
         ${!!this.searchResults && !section
@@ -673,7 +695,7 @@ const EndUserDocBehaviors = function (SuperClass) {
 
     _handleSearch(e){
       this.searchText = e.detail.value || '';
-      let target = this.demoMode ? this.demoContents : this.contents;
+      let target = this.mainContent;
       if(!this.searchText || this.searchText == '') {
         this.__searchResults = undefined;
         return;
@@ -750,11 +772,15 @@ const EndUserDocBehaviors = function (SuperClass) {
                   ? html`<li part="breadcrumb" aria-current="page">${breadcrumb.title}</li>`
                   : html`
                     <li part="breadcrumb">
-                      <button 
-                        part="navbutton" 
-                        @click="${e=>this.currentSection = index < 1 ? undefined : breadcrumb.id}">
-                        ${breadcrumb.title}
-                      </button>
+                      ${this.__printMode 
+                        ? breadcrumb.title 
+                        : html`
+                            <button 
+                              part="navbutton" 
+                              @click="${e=>this.currentSection = index < 1 ? undefined : breadcrumb.id}">
+                              ${breadcrumb.title}
+                            </button>
+                        `}
                     </li>`
                   )}
               </ul>
@@ -891,7 +917,11 @@ const EndUserDocBehaviors = function (SuperClass) {
           <ul part="${preview ? 'preview' : 'toc'}">
             ${links.map(link=>html`
               <li>
-                <button id="link-${link.id}" part="navbutton" @click="${e=>this.currentSection = link.id}">${link.title}</button>
+                ${this.__printMode 
+                  ? link.title 
+                  : html`
+                    <button id="link-${link.id}" part="navbutton" @click="${e=>this.currentSection = link.id}">${link.title}</button>
+                `}
                 ${!preview ? '' : linkContent(link)}
               </li>
             `)}
@@ -999,6 +1029,54 @@ const EndUserDocBehaviors = function (SuperClass) {
         : '';
     }
 
+    /**
+     * prints the active transcript
+     * @param {string} the title of the media
+     */
+    print(all=false) {
+      let displayMode = this.displayMode,
+        mainTitle = this.mainContent 
+          && this.mainContent.title 
+          ? this.mainContent.title 
+          : "Documentation",
+        print = window.open(
+          "",
+          "",
+          "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
+        );
+      this.__printMode = true;
+      if(all) this.displayMode = all;
+      console.log('print',print);
+      print.document.head.append(`
+        <title>
+          ${this.renderedSection === this.contents ? mainTitle : `${mainTitle}: ${this.renderedSection.title}`}
+        </title>`);
+      console.log(this.constructor.styles);
+      print.document.write(`<style>${this.constructor.styles.map(style=>style.cssText)}</style>`);
+      print.document.write(this.shadowRoot.innerHTML);
+      this.__printMode = false;
+      if(all) this.displayMode = displayMode;
+      print.document.close();
+      print.focus();
+      print.print();
+      print.addEventListener("afterprint", (event) => {
+        print.close();
+      });
+  
+      /**
+       * Fires when transcript is printed
+       * @event transcript-printed
+       */
+      this.dispatchEvent(
+        new CustomEvent("print", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this,
+        })
+      );
+    }
+
     // properties available to the custom element for data binding
     static get properties() {
       return {
@@ -1051,6 +1129,22 @@ const EndUserDocBehaviors = function (SuperClass) {
           reflect: true
         },
         /** 
+         * adds printing to docs
+         */
+        printable: {
+          attribute: "printable",
+          type: Boolean,
+          reflect: true
+        },
+        /** 
+         * label for print
+         */
+        printLabel: {
+          attribute: "print-label",
+          type: String,
+          reflect: true
+        },
+        /** 
          * adds searching to docs
          */
         searchable: {
@@ -1082,6 +1176,12 @@ const EndUserDocBehaviors = function (SuperClass) {
           type: String,
           reflect: true
 
+        },
+        /** 
+         * if this is a clone for printing, will set display accordingly
+         */
+        __printMode: {
+          type: Boolean
         },
         /** 
          * raw, weighted search results by section id
@@ -1122,11 +1222,12 @@ const EndUserDocBehaviors = function (SuperClass) {
 /**
  * `end-user-doc`
  * `given an array of feature documentation, will generate end user documentation (good for modular, customizable tools where documentation whould be based on what is enabled or added on)`
- * @demo demo/index.html overview
- * @demo demo/demo.html demo-mode
- * @demo demo/display.html display-mode
- * @demo demo/search.html search
- * @demo demo/schema.html schema
+ * @demo demo/index.html Overview
+ * @demo demo/display.html Display Modes
+ * @demo demo/search.html Search
+ * @demo demo/print.html Print
+ * @demo demo/schema.html Schema
+ * @demo demo/demo.html Demo Mode
  * @element end-user-doc
  */
 class EndUserDoc extends EndUserDocBehaviors(LitElement) {}

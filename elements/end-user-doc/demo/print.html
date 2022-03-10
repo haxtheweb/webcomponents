@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>EndUserDoc: end-user-doc demo-mode</title>
+    <title>EndUserDoc: end-user-doc Print</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -16,18 +16,10 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic end-user-doc demo-mode</h3>
-      <p>
-        This mode allows you too see sample documentation. 
-        Use the javascript console to view the demo documentation object.
-      </p>
+      <h3>end-user-doc Print</h3>
       <demo-snippet>
         <template>
-          <end-user-doc id="demo" demo-mode searchable></end-user-doc>
-          <script>
-            let demoDoc = document.querySelector('#demo');
-            console.log(demoDoc.demoContents);
-          </script>
+          <end-user-doc id="demo2" demo-mode display-mode="all" printable></end-user-doc>
         </template>
       </demo-snippet>
     </div>
