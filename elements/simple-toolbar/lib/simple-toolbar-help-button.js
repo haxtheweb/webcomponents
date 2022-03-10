@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarModalButtonBehaviors } from "./simple-toolbar-modal-button.js";
-import "@lrnwebcomponents/end-user-doc/end-user-doc.js";
+import { EndUserDocProperties } from "@lrnwebcomponents/end-user-doc/end-user-doc.js";
 
 /**
  * @extends SimpleToolbarModalButtonBehaviors
@@ -21,6 +21,7 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        ...EndUserDocProperties,
         /**
          * whether help documentation can be searched
          */
@@ -56,13 +57,19 @@ const SimpleToolbarHelpButtonBehaviors = function (SuperClass) {
 
     get endUserDoc(){
       return this.shadowRoot 
-        && this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') 
-        ? this.shadowRoot.querySelector('end-user-doc#helpDocsTemplate') 
+        && this.shadowRoot.querySelector('end-user-doc') 
+        ? this.shadowRoot.querySelector('end-user-doc') 
         : undefined;
     }
 
     get modalTemplate(){
-      return html`<end-user-doc id="helpDocsTemplate" hidden class="${this.icon}" ?searchable="${this.searchable}" display-mode="${this.displayMode}"></end-user-doc>`;
+      return html`
+        <end-user-doc 
+          hidden 
+          ?searchable="${this.searchable}" 
+          ?printable="${this.printable}" 
+          display-mode="${this.displayMode}">
+        </end-user-doc>`;
     }
 
     openModal(){

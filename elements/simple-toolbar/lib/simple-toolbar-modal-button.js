@@ -78,17 +78,28 @@ const SimpleToolbarModalButtonBehaviors = function (SuperClass) {
     }
 
     _getModalStyles(target){
-      let styles = getComputedStyle(target);
+      let styles = getComputedStyle(target),
+        style = (cssVar,defaultVal='unset') => {
+          return styles.getPropertyValue(cssVar) || defaultVal; 
+        };
       return {
-        "--simple-modal-titlebar-color": styles.getPropertyValue('--simple-toolbar-button-bg'),
-        "--simple-modal-titlebar-background": styles.getPropertyValue('--simple-toolbar-button-color'),
-        "--simple-modal-header-color": styles.getPropertyValue('--simple-toolbar-button-hover-color'),
-        "--simple-modal-header-background": styles.getPropertyValue('--simple-toolbar-button-hover-bg'),
-        "--simple-modal-content-container-color": styles.getPropertyValue('--simple-toolbar-button-color'),
-        "--simple-modal-content-container-background": styles.getPropertyValue('--simple-toolbar-button-bg'),
-        "--simple-modal-buttons-color": styles.getPropertyValue('--simple-toolbar-button-color'),
-        "--simple-modal-buttons-background": styles.getPropertyValue('--simple-toolbar-button-bg'),
-        "--simple-modal-z-index": Number(styles.getPropertyValue('--simple-toolbar-button-z-index)')+2),
+        "--simple-modal-titlebar-color": style('--simple-toolbar-button-bg'),
+        "--simple-modal-titlebar-background": style('--simple-toolbar-button-color'),
+        "--simple-modal-header-color": style('--simple-toolbar-button-hover-color'),
+        "--simple-modal-header-background": style('--simple-toolbar-button-hover-bg'),
+        "--simple-modal-content-container-color": style('--simple-toolbar-button-color'),
+        "--simple-modal-content-container-background": style('--simple-toolbar-button-bg'),
+        "--simple-modal-content-container-overflow": style('--simple-toolbar-modal-container-overflow', 'auto'),
+        "--simple-modal-buttons-color": style('--simple-toolbar-button-color'),
+        "--simple-modal-buttons-background": style('--simple-toolbar-button-bg'),
+        "--simple-modal-z-index": Number(style('--simple-toolbar-button-z-index',2)+2),
+        "--simple-modal-resize": style('--simple-toolbar-modal-resize','both'),
+        "--simple-modal-min-width": style('--simple-toolbar-modal-min-width'),
+        "--simple-modal-min-height": style('--simple-toolbar-modal-min-height'),
+        "--simple-modal-width": style('--simple-toolbar-modal-width','75%'),
+        "--simple-modal-height": style('--simple-toolbar-modal-height','75vh'),
+        "--simple-modal-max-width": style('--simple-toolbar-modal-max-width'),
+        "--simple-modal-max-height": style('--simple-toolbar-modal-max-height')
       };
     
     }
@@ -177,6 +188,20 @@ const SimpleToolbarModalButtonBehaviors = function (SuperClass) {
  * @lit-html
  * @lit-element
  * @demo ./demo/buttons.html
+ * ### Styling
+`<simple-fields>` provides following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|--------
+--simple-toolbar-modal-container-overflow | whether content overflow should be visible or scroll |  auto
+--simple-toolbar-modal-resize | whether modal can be resized by user (see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/resize})  | both
+--simple-toolbar-modal-width | width of modal | --simple-modal-width
+--simple-toolbar-modal-height | height of modal | --simple-modal-height
+--simple-toolbar-modal-min-width | min-width of modal | --simple-modal-min-width
+--simple-toolbar-modal-min-height | min-height of modal | --simple-modal-min-height
+--simple-toolbar-modal-max-width | max-width of modal | --simple-modal-max-width
+--simple-toolbar-modal-max-height | max-height of modal | --simple-modal-max-height
  */
 class SimpleToolbarModalButton extends SimpleToolbarModalButtonBehaviors(LitElement) {}
 window.customElements.define(
