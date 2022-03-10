@@ -65,7 +65,7 @@
           </rich-text-editor>
           <script>
             let all = document.getElementById('all');
-            import("../lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
+            import("@lrnwebcomponents/rich-text-editor/lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
               all.markdownPatterns = {};
               all.markdownPatterns = module.rteAllPatterns;
             });
