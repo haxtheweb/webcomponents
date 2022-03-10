@@ -289,28 +289,38 @@ const EndUserDocBehaviors = function (SuperClass) {
             overflow: hidden;
           }
           div[part=searchprint]{
-            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
           }
           div[part=searchprint]+h1{
             margin-top: 0px;
           }
           simple-fields-field[part=searchfield]{
             text-align: left;
+            margin-bottom: 0;
+            margin-right: 0.5em;
           }
-          simple-fields-field[part=searchfield]:not([value]),
-          simple-fields-field[part=searchfield][value=''] {
-            --simple-fields-border-bottom-size: 0px;
-            --simple-fields-border-bottom-focus-size: 0px;
+          simple-fields-field[part=searchfield]:last-child {
+            margin-right: 0;
           }
-          simple-fields-field[part=searchfield]:focus-within,
-          simple-fields-field[part=searchfield]:hover {
-            --simple-fields-border-bottom-size: 1px;
-            --simple-fields-border-bottom-focus-size: 1px;
+          simple-fields-field[part=searchfield]:not([value])::part(option-inner),
+          simple-fields-field[part=searchfield][value='']::part(option-inner){
+            width: 0;
+            transition: 0.5s ease-in-out width;
+          }
+          simple-fields-field[part=searchfield]:not([value])::part(border-bottom-blur),
+          simple-fields-field[part=searchfield][value='']::part(border-bottom-blur) {
+            opacity: 0;
+          }
+          simple-fields-field[part=searchfield]:focus-within::part(border-bottom-blur),
+          simple-fields-field[part=searchfield]:hover::part(border-bottom-blur) {
+            opacity: 1;
           }
           simple-fields-field[part=searchfield]:not([value]),
           simple-fields-field[part=searchfield][value=''] {
             display: inline-block;
-            width:40px;
+            width: var(--simple-icon-width, 24px);
             transition: 0.5s ease-in-out width;
           }
           simple-fields-field[part=searchfield],
@@ -326,14 +336,6 @@ const EndUserDocBehaviors = function (SuperClass) {
           simple-fields-field[part=searchfield]::part(option-input):focus-within,
           simple-fields-field[part=searchfield]::part(option-input):hover{
             width:calc(100% - 4px);
-          }
-          simple-fields-field[part=searchfield]:not([value]) simple-icon-button-lite[part=cancelsearch],
-          simple-fields-field[part=searchfield][value=''] simple-icon-button-lite[part=cancelsearch]{
-            display: none;
-          }
-          simple-fields-field[part=searchfield]:focus-within simple-icon-button-lite[part=cancelsearch],
-          simple-fields-field[part=searchfield]:hover simple-icon-button-lite[part=cancelsearch]{
-            display: block;
           }
         `,
       ];
@@ -769,7 +771,7 @@ const EndUserDocBehaviors = function (SuperClass) {
                 @value-changed="${this._handleSearch}"
               >
                 <simple-icon-lite part="searchicon" icon="icons:search" slot="prefix"></simple-icon-lite>
-                <simple-icon-button-lite part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
+                <simple-icon-button-lite ?hidden="${!this.searchText}" part="cancelsearch" icon="icons:close" slot="suffix" @click="${this._handleSearchCancel}"></simple-icon-button-lite>
               </simple-fields-field>
             `}
             ${!this.printable ? '' : html`
@@ -1161,7 +1163,6 @@ const EndUserDocBehaviors = function (SuperClass) {
         <title>
           ${this.renderedSection === this.contents ? mainTitle : `${mainTitle}: ${this.renderedSection.title}`}
         </title>`);
-      console.log(this.constructor.styles);
       print.document.write(`<style>${this.constructor.styles.map(style=>style.cssText)}</style>`);
       print.document.write(this.shadowRoot.innerHTML);
       this.__printMode = false;
