@@ -574,7 +574,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons = [...new Set(this.__buttons)];
 
       //if button contains help documentation, deregister docs
-      if(button.endUserDoc) this.registerEndUserDoc(button.endUserDoc);
+      setTimeout(()=>{ 
+        if(button.endUserDoc) this.registerEndUserDoc(button.endUserDoc)
+      },1);
 
       //get all button shortcut keys
       (button.shortcutKeys || "")

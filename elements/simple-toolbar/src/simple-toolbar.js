@@ -441,6 +441,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @readonly
      */
     get endUserDocContents(){
+      console.log(this.endUserDoc,!this.endUserDoc ? undefined : this.endUserDoc.contents)
       return !this.endUserDoc ? undefined : this.endUserDoc.contents;
     }
 
@@ -574,7 +575,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons = [...new Set(this.__buttons)];
 
       //if button contains help documentation, deregister docs
-      if(button.endUserDoc) this.registerEndUserDoc(button.endUserDoc);
+      setTimeout(()=>{ 
+        if(button.endUserDoc) this.registerEndUserDoc(button.endUserDoc)
+      },1);
 
       //get all button shortcut keys
       (button.shortcutKeys || "")
@@ -598,6 +601,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {object} doc end-user-doc component
      */
     registerEndUserDoc(doc){
+      console.log(doc)
       //don't reregister if doc's button is temporarily disconnected
       if(doc !== this.__endUserDoc && this.__endUserDoc !== doc) {
         this.__deregEndUserDoc = false;
