@@ -287,8 +287,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * documentation schema for markdown object
          */
-        __markdownDocsuments: {
-          name: "__markdownDocsuments",
+        __markdownDocuments: {
+          name: "__markdownDocuments",
           type: Object,
         }
       };
@@ -1739,7 +1739,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         focus: (e) => this._handleTargetFocus(target, e),
         blur: (e) => this._handleTargetBlur(e),
         keydown: (e) => this._handleTargetKeydown(e),
-        keyup: (e) => this._handlePatterns(e),
+        keypress: (e) => this._handleTargetKeypress(e),
         paste: (e) => this._handlePaste(e),
       };
     }
@@ -1841,11 +1841,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if(!!this.target) this.target.tabindex = 0;
     }
     /**
-     * checks for markdown and replaces
+     * handles target keypress
      *
      * @param {event} e keypress event
      */
-    _handlePatterns(e) {
+    _handleTargetKeypress(e) {
+      this.handlePatterns(e.key);
+    }
+    /**
+     * checks for markdown and replace
+     * s
+     * @param {string} lastKey last key entered
+     * @returns 
+     */
+    handlePatterns(lastKey){
       if (!this.enableMarkdown) return;
       let range = this.getRange();
       
@@ -1875,7 +1884,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         rangeClone;
       span.id = id;
       if(this.target !== node && !this.target.contains(node)) return;
-      if(e.key == "Enter" && range.commonAncestorContainer.previousElementSibling){
+      if(lastKeyEntered == "Enter" && range.commonAncestorContainer.previousElementSibling){
         range.commonAncestorContainer.previousElementSibling.append(span);
       } else {
         range.insertNode(span);
@@ -1890,13 +1899,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let listByLastKey = (list) => {
           if(!cloneSplit || !cloneSplit[0] || cloneSplit.length < 2) return [];
           //last key
-          let char = e.key == "Enter" 
+          let char = lastKeyEntered == "Enter" 
               ? cloneSplit[0].charAt(cloneSplit[0].length - 1)
               : cloneSplit[0].charAt(cloneSplit[0].length - 2).replace(/\s/, 'space'),
             //list items for last key
             charKey =  list[char] ? list[char] : [],
             //list items for enter key
-            enterKey =  e.key == "Enter" && list["enter"] ? list["enter"] : [],
+            enterKey =  lastKeyEntered == "Enter" && list["enter"] ? list["enter"] : [],
             //everything that does not specify a key
             noKey = list["any"] || [];
           return [...charKey, ...enterKey, ...noKey];
@@ -1951,7 +1960,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       makeSearchClone(node);
 
       //regex commands to text
-      let commands = e.key == "Enter" ? this.commandsByLastKey['enter'] : listByLastKey(this.commandsByLastKey);
+      let commands = lastKeyEntered == "Enter" ? this.commandsByLastKey['enter'] : listByLastKey(this.commandsByLastKey);
 
       commands.forEach((regex) => {
         if (!node || !node.cloneNode) return;
@@ -1960,7 +1969,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           prev = current ? current.previousElementSibling : false; 
           searchNodeClone = prev ? prev.cloneNode(true) : false;
           if(span) span.remove();
-          let search = e.key == "Enter" ? searchNodeClone.innerHTML : (cloneSplit[0] || '');
+          let search = lastKeyEntered == "Enter" ? searchNodeClone.innerHTML : (cloneSplit[0] || '');
         match = !ignoreMatches && regex.match && search.length > 1 ? `${search}`.match(regex.match) : false;
 
         //run the matching command
@@ -1968,7 +1977,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           let commandVal = regex.commandVal,
             isToggled = (range.commonAncestorContainer.tagName || '').toLowerCase() == commandVal.toLowerCase() 
               || range.commonAncestorContainer.closest(commandVal);
-          if(e.key == "Enter") {
+          if(lastKeyEntered == "Enter") {
             range.setStartBefore(prev);
             prev.innerHTML = searchNodeClone.innerHTML.replace(regex.match,'');
             range.setEndAfter(current);
@@ -1991,7 +2000,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
       });
       //handle multline patterns, usch as lists and headings
-      if(!found && e.key == "Enter" && range.commonAncestorContainer.previousElementSibling){
+      if(!found && lastKeyEntered == "Enter" && range.commonAncestorContainer.previousElementSibling){
         let current = range.commonAncestorContainer,
           prev = current ? current.previousElementSibling : false; 
           searchNodeClone = prev ? prev.cloneNode(true) : false;
@@ -2028,7 +2037,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         let replacements = listByLastKey(this.replacementsByLastKey);
         replacements.forEach((regex) => {
           if (!searchNode || !searchNode.cloneNode) return;
-          let matchIndex = e.key == "Enter" ? 0 : 1;
+          let matchIndex = lastKeyEntered == "Enter" ? 0 : 1;
           match = checkMatch(regex, searchNode);
           if (
             match &&
@@ -2049,13 +2058,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
         //update HTML with replacement
         if (found) { 
-          if(e.key == "Enter") {
+          if(lastKeyEntered == "Enter") {
             cloneSplit[1] = cloneSplit[1].replace(/(<\/[^<]+><[^<]+>.*)(<\/\S+>)/g,`$1${spanHTML}$2`);
             searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
           } else { 
-            let prepend = new RegExp(`${e.key.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}$`);
+            let prepend = new RegExp(`${lastKeyEntered.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}$`);
             cloneSplit[0] = cloneSplit[0].replace(prepend,'').replace(/\s$/,'&nbsp;');
-            cloneSplit[1] = e.key.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s+/,'&nbsp;');
+            cloneSplit[1] = lastKeyEntered.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s+/,'&nbsp;');
             searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
           }
           span = searchNode.querySelector(`#${id}`);
@@ -2085,6 +2094,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
       this.historyPaused = keepPaused;
       if (found) this.updateHistory();
+
     }
 
     _handleTargetKeypress(e) {
