@@ -481,8 +481,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      */
     get fieldBottom() {
       return html`
-        <div class="border-bottom blur"></div>
-        <div class="border-bottom focus"></div>
+        <div class="border-bottom blur" part="border-bottom-blur"></div>
+        <div class="border-bottom focus" part="border-bottom-focus"></div>
         <div id="field-bottom" part="field-bottom">
           <div id="error-desc" part="field-bottom-inner">
             ${this.descriptionTemplate} ${this.errorTemplate}
