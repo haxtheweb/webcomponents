@@ -169,11 +169,20 @@ class HaxPicker extends LitElement {
     this.pickerType = pickerType;
     var tmp = [],
       addKeywords = (i) => {
-        elements[i].gizmo.keywords.forEach((keyword) => {
-          keyword = (keyword || "").toLowerCase();
-          let sanitized = keyword.replace(/[\s\W]*/, "");
-          if (sanitized.length > 0) this.keywords[keyword] = keyword;
-        });
+        if (pickerType === "gizmo") {
+          elements[i].gizmo.keywords.forEach((keyword) => {
+            keyword = (keyword || "").toLowerCase();
+            let sanitized = keyword.replace(/[\s\W]*/, "");
+            if (sanitized.length > 0) this.keywords[keyword] = keyword;
+          });
+        }
+        else if (pickerType === "app") {
+          elements[i].details.tag.forEach((keyword) => {
+            keyword = (keyword || "").toLowerCase();
+            let sanitized = keyword.replace(/[\s\W]*/, "");
+            if (sanitized.length > 0) this.keywords[keyword] = keyword;
+          });
+        }
       };
     this.keywords = {};
     switch (pickerType) {
@@ -198,8 +207,8 @@ class HaxPicker extends LitElement {
             icon: elements[i].details.icon,
             title: elements[i].details.title,
             color: elements[i].details.color,
-            tag: elements[i].gizmo.tag,
-            keywords: elements[i].gizmo.keywords,
+            tag: elements[i].details.tags || [],
+            keywords: elements[i].details.tags || [],
           });
           addKeywords(i);
         }

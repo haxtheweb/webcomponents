@@ -1572,7 +1572,6 @@
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "local-time": "time-elements/dist/time-elements.js",
     "iframe-loader": "@lrnwebcomponents/iframe-loader/iframe-loader.js",
     "loading-indicator": "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js"
   }
