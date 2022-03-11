@@ -21,9 +21,11 @@ const QRCodeMixin = function (SuperClass) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
       }
-      this.qrcodebtn = this.shadowRoot.querySelector("#qrcodebtn");
-      // hook up the pop over menu
-      this.shadowRoot.querySelector("#qrcodepopover").target = this.qrcodebtn;
+      // hook up the pop over menu with trap to ensure theme is rendering a QR code
+      if (this.shadowRoot.querySelector("#qrcodepopover")) {
+        this.qrcodebtn = this.shadowRoot.querySelector("#qrcodebtn");
+        this.shadowRoot.querySelector("#qrcodepopover").target = this.qrcodebtn;
+      }
     }
 
     static get styles() {
