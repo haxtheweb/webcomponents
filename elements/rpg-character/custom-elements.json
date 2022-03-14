@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "rpg-character",
+      "path": "./rpg-character.js",
+      "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`"
+    },
+    {
+      "name": "rpg-character",
+      "path": "./src/rpg-character.js",
+      "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`"
+    }
+  ]
+}
