@@ -11,19 +11,51 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../rpg-character.js';
+      import '@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic rpg-character demo</h3>
+      <label>Hat</label>
+      <simple-colors-picker id="hat" value="orange"></simple-colors-picker>
+      <label>Shirt</label>
+      <simple-colors-picker id="shirt" value="blue"></simple-colors-picker>
+      <label>Face</label>
+      <simple-colors-picker id="face" value="green"></simple-colors-picker>
+      <label>Pants</label>
+      <simple-colors-picker id="pants" value="green"></simple-colors-picker>
       <demo-snippet>
         <template>
-          <rpg-character>
-            This is rpg-character
-          </rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
+          <rpg-character></rpg-character>
         </template>
       </demo-snippet>
+      <script async defer>
+        function dqs(sel) { return document.querySelector(sel); }
+        dqs("#hat").addEventListener("changed", (e) => {
+          dqs("rpg-character").hatColor = e.detail.value;
+        });
+        dqs("#shirt").addEventListener("changed", (e) => {
+          dqs("rpg-character").shirtColor = e.detail.value;
+        });
+        dqs("#face").addEventListener("changed", (e) => {
+          dqs("rpg-character").faceColor = e.detail.value;
+        });
+        dqs("#pants").addEventListener("changed", (e) => {
+          dqs("rpg-character").pantsColor = e.detail.value;
+        });
+      </script>
     </div>
   </body>
 </html>
