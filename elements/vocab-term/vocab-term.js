@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimplePopover } from "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 
 /**
@@ -21,7 +21,10 @@ class VocabTerm extends LitElement {
   static get properties() {
     return {
       popoverMode: { type: Boolean, reflect: true, attribute: "popover-mode" },
+      detailsOpen: { type: Boolean},
       links: { type: Array },
+      information: { type: String },
+      term: { type: String, },
     };
   }
   /**
@@ -29,22 +32,21 @@ class VocabTerm extends LitElement {
    */
   constructor() {
     super();
-    this.closeText = "";
-    this.openText = "";
     this.popoverMode = false;
     this.term = "";
-    if (this.querySelector("summary")) {
-      this.term = this.querySelector("summary").innerText;
-    }
     this.information = "";
-    if (this.querySelector(`[slot="information"]`)) {
-      this.information = this.querySelector(`[slot="information"]`).innerText;
-    }
     this.links = [];
+    this.detailsOpen = false;
+    if (this.querySelector("summary")) {
+      this.term = this.querySelector("summary").textContent;
+    }
+    if (this.querySelector(`[slot="information"]`)) {
+      this.information = this.querySelector(`[slot="information"]`).textContent;
+    }
     if (this.querySelector(".links a")) {
       this.querySelectorAll(".links a").forEach((el) => {
         this.links.push({
-          title: el.innerText,
+          title: el.textContent,
           href: el.getAttribute("href"),
         });
       });
@@ -90,7 +92,7 @@ class VocabTerm extends LitElement {
             <div part="term">
               <summary id="summary">${this.term}</summary>
             </div>
-            <simple-modal-template title=${this.term}>
+            <simple-modal-template title="${this.term}">
               <p slot="content">${this.information}</p>
               ${this.links.length > 0
                 ? html` <ul slot="content">
@@ -138,10 +140,8 @@ class VocabTerm extends LitElement {
    * provides click for keyboard if open property is not supported by browser
    */
   _handleClick(e) {
-    if (this.details && typeof this.details.open === "undefined") {
+    if (this.details && typeof this.detailsOpen === "undefined") {
       this.toggleOpen();
-      e.preventDefault();
-      e.stopPropagation();
     }
   }
   /**
@@ -150,13 +150,11 @@ class VocabTerm extends LitElement {
   _handleKeyup(e) {
     if (
       (this.details &&
-        typeof this.details.open === "undefined" &&
+        typeof this.detailsOpen === "undefined" &&
         e.keyCode == 13) ||
       e.keyCode == 32
     ) {
       this.toggleOpen();
-      e.preventDefault();
-      e.stopPropagation();
     }
   }
   /**
@@ -165,10 +163,10 @@ class VocabTerm extends LitElement {
   toggleOpen() {
     if (this.details.hasAttribute("open")) {
       this.details.removeAttribute("open");
-      if (this.details.open) this.details.open = false;
+      if (this.detailsOpen) this.detailsOpen = false;
     } else {
-      this.details.setAttribute("open", "");
-      if (this.details.open) this.details.open = true;
+      this.details.setAttribute("open", "open");
+      if (this.detailsOpen) this.detailsOpen = true;
     }
   }
   /**
@@ -178,13 +176,17 @@ class VocabTerm extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (this.popoverMode == false) {
+    if (this.popoverMode === false) {
       this.shadowRoot
         .querySelector(`simple-modal-template`)
         .associateEvents(this.shadowRoot.querySelector(`summary`));
       this.shadowRoot
         .querySelector("summary")
         .addEventListener("focus", this.detailsFocusOut.bind(this));
+    }
+    else {
+      this.details = this.shadowRoot
+      .querySelector(`details`);
     }
   }
 
@@ -198,37 +200,22 @@ class VocabTerm extends LitElement {
       .removeEventListener("focus", this.detailsFocusOut.bind(this));
   }
 
-  /**
-   * LitElement life cycle - property changed
-   */
   updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      if (propName === "popoverMode") {
+        if (this[propName]) {
+          this.detailsOpen = false;
+          if (this.shadowRoot) {
+            this.details = this.shadowRoot
+      .querySelector(`details`);
+          }
+          this.addEventListener("click", this._handleClick.bind(this));
+        }
+        else {
+          this.removeEventListener("click", this._handleClick.bind(this));
+        }
       }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
-    });
+    } );
   }
 }
 customElements.define(VocabTerm.tag, VocabTerm);
