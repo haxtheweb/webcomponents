@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "rating display and interaction widget",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^4.0.12",
-    "@lrnwebcomponents/simple-icon": "^4.0.12",
+    "@lrnwebcomponents/simple-colors": "^4.0.13",
+    "@lrnwebcomponents/simple-icon": "^4.0.13",
     "lit": "^2.2.0"
   },
   "devDependencies": {

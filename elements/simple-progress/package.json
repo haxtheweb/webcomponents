@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "a simple progress slider bar",
   "repository": {
     "type": "git",

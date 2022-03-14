@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^4.0.12",
+    "@lrnwebcomponents/simple-icon": "^4.0.13",
     "lit": "^2.2.0"
   },
   "devDependencies": {

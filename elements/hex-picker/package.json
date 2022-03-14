@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "Choose a color by hex or rgba code",
   "repository": {
     "type": "git",

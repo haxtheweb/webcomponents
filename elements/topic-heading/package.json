@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "Semantic and visual meaning behind a heading break",
   "repository": {
     "type": "git",
@@ -42,8 +42,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/relative-heading": "^4.0.12",
-    "@lrnwebcomponents/simple-icon": "^4.0.12",
+    "@lrnwebcomponents/relative-heading": "^4.0.13",
+    "@lrnwebcomponents/simple-icon": "^4.0.13",
     "lit": "^2.2.0"
   },
   "devDependencies": {

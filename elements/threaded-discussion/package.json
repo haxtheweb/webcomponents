@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "Start of threaded-discussion",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.12",
-    "@lrnwebcomponents/lrndesign-avatar": "^4.0.12",
-    "@lrnwebcomponents/simple-icon": "^4.0.12",
+    "@lrnwebcomponents/hax-iconset": "^4.0.13",
+    "@lrnwebcomponents/lrndesign-avatar": "^4.0.13",
+    "@lrnwebcomponents/simple-icon": "^4.0.13",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@github/time-elements": "3.1.2",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.12",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.13",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
