@@ -360,7 +360,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       <local-time
                         slot="corner"
                         id="date-${s.id}"
-                        datetime="${s.date}"
+                        .datetime="${s.date}"
                         month="long"
                         day="numeric"
                         year="${this.list ? "numeric" : undefined}"
@@ -424,7 +424,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                           <relative-time
                             id="comment-${f.id}"
                             slot="description"
-                            datetime="${f.date}"
+                            .datetime="${f.date}"
                           >
                             ${this.dateFormat(f.date, "long")}
                           </relative-time>

@@ -248,7 +248,7 @@ export const UIRenderPieces = function (SuperClass) {
                 </h3>
                 ${this.t.dueDate}:
                 <local-time
-                  datetime="${this.database.assignments[this.activeAssignment]
+                  .datetime="${this.database.assignments[this.activeAssignment]
                     ._ISODueDate}"
                   month="short"
                   day="numeric"

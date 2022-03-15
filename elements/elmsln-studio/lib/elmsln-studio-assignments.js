@@ -189,7 +189,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
                 minute="2-digit"
                 second="2-digit"
                 time-zone-name="short"
-                datetime="${assignment.date}"
+                .datetime="${assignment.date}"
               >
                 ${this.dateFormat(assignment.date)}
               </local-time>

@@ -321,7 +321,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           <relative-time
                             id="due-${a.id}-desc"
                             slot="description"
-                            datetime="${a.date}"
+                            .datetime="${a.date}"
                           >
                             ${this.dateFormat(a.date, "long")}
                           </relative-time>
@@ -377,7 +377,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                         <relative-time
                           id="sub-${s.id}-desc"
                           slot="description"
-                          datetime="${s.date}"
+                          .datetime="${s.date}"
                         >
                           ${this.dateFormat(s.date)}
                         </relative-time>
@@ -421,7 +421,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                         <relative-time
                           id="feed-${f.id}-desc"
                           slot="description"
-                          datetime="${f.date}"
+                          .datetime="${f.date}"
                         >
                           ${this.dateFormat(f.date)}
                         </relative-time>
@@ -463,7 +463,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                         <relative-time
                           id="act-${s.id}-desc"
                           slot="description"
-                          datetime="${s.date}"
+                          .datetime="${s.date}"
                         >
                           ${this.dateFormat(s.date)}
                         </relative-time>
@@ -498,7 +498,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           <relative-time
                             id="act-${d.id}-desc"
                             slot="description"
-                            datetime="${d.date}"
+                            .datetime="${d.date}"
                           >
                             ${this.dateFormat(d.date)}
                           </relative-time>

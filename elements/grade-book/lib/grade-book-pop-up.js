@@ -97,7 +97,7 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
     let pre = html`<h3>${this.t.studentSubmission}</h3>
       ${this.t.submitted}
       <relative-time
-        datetime="${GradeBookStore.database.assignments[
+        .datetime="${GradeBookStore.database.assignments[
           GradeBookStore.activeAssignment
         ]._ISODueDate}"
       ></relative-time> `;

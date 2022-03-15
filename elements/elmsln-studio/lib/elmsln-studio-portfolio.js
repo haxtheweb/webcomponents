@@ -371,7 +371,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                         minute="2-digit"
                         second="2-digit"
                         time-zone-name="short"
-                        datetime="${s.date}"
+                        .datetime="${s.date}"
                       >
                         ${this.dateFormat(s.date)}
                       </local-time>

@@ -1114,7 +1114,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     let pre = html`<h3>${this.t.studentSubmission}</h3>
       ${this.t.submitted}
       <relative-time
-        datetime="${this.database.assignments[this.activeAssignment]
+        .datetime="${this.database.assignments[this.activeAssignment]
           ._ISODueDate}"
       ></relative-time> `;
     // test if this smells like a URL
