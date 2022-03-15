@@ -30,7 +30,9 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
   content: attr(data-debug-position);
   background-color: white;
   color: #880000;
-  display: block;
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
 }
       `
     ];
