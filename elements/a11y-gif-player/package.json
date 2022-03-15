@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -37,15 +37,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^4.0.14",
+    "@lrnwebcomponents/a11y-details": "^4.0.15",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.14",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.14",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.15",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.15",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.14",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.15",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "Creates break statements to show conditional rendering",
   "repository": {
     "type": "git",

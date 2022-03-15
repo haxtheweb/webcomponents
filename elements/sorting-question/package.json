@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "sorting questions to be in the right order when they are randomized.",
   "repository": {
     "type": "git",
