@@ -241,7 +241,7 @@ class ThreadedDiscussion extends LitElement {
             <p class="comment-date">
               ${this.relativeDates
                 ? html`
-                    <relative-time datetime="${comment.date}">
+                    <relative-time .datetime="${comment.date}">
                       ${this._getDate(comment.date)}
                     </relative-time>
                   `
@@ -266,7 +266,7 @@ class ThreadedDiscussion extends LitElement {
                         ? this.dateFormat.second
                         : "2-digit"}"
                       time-zone-name="short"
-                      datetime="${comment.date}"
+                      .datetime="${comment.date}"
                     >
                       ${this._getDate(comment.date)}
                     </local-time>

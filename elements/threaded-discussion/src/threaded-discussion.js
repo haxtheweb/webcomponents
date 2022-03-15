@@ -241,7 +241,7 @@ class ThreadedDiscussion extends LitElement {
             <p class="comment-date">
               ${this.relativeDates
                 ? html`
-                    <relative-time datetime="${comment.date}">
+                    <relative-time .datetime="${comment.date}">
                       ${this._getDate(comment.date)}
                     </relative-time>
                   `
@@ -266,7 +266,7 @@ class ThreadedDiscussion extends LitElement {
                         ? this.dateFormat.second
                         : "2-digit"}"
                       time-zone-name="short"
-                      datetime="${comment.date}"
+                      .datetime="${comment.date}"
                     >
                       ${this._getDate(comment.date)}
                     </local-time>
@@ -478,6 +478,7 @@ class ThreadedDiscussion extends LitElement {
    */
   _handleRawData(data) {
     this.__loading = false;
+    console.log(data);
     return this._getArray(data || [])
       .filter((comment) => !this._getMap(comment, "thread", "replyThread"))
       .map((thread) => {
@@ -496,7 +497,7 @@ class ThreadedDiscussion extends LitElement {
           body: this._getMap(thread, "body"),
           color: this._getMap(thread, "color"),
           date: this._getMap(thread, "date"),
-          replies: this._getArray(replies).map((reply) => {
+          replies: this._getArray(replies || []).map((reply) => {
             //gets all comments if they are mapped as nested array of thread
             return {
               id: this._getMap(reply, "id", "replyId"),
@@ -589,8 +590,8 @@ class ThreadedDiscussion extends LitElement {
    *
    * @memberof ThreadedDiscussion
    */
-  fetchDiscussion() {
-    fetch(this._getPath(this.source, this.params))
+  async fetchDiscussion() {
+    await fetch(this._getPath(this.source, this.params))
       .then((response) => response.json())
       .then((data) => (this.__data = this._handleRawData(data)));
   }
