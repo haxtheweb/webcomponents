@@ -58,6 +58,11 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
             updatePosition = true;
         });
         if (updatePosition) this.updatePosition();
+        if(this.debugMode) {
+          this.setAttribute('data-debug-position',!this.__positions ? 'No positions' : JSON.stringify(this.__positions));
+        } else {
+          this.removeAttribute('data-debug-position');
+        }
       }
     }
 

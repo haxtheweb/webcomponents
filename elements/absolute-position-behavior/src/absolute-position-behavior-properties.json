@@ -8,6 +8,14 @@
     "attribute": "allow-overlap"
   },
   /**
+   * Debug element
+   */
+  "debugMode": {
+    "type": "Boolean",
+    "attribute": "debug-mode",
+    "reflect": true
+  },
+  /**
    * Element is positioned from connected to disconnected?
    * Otherwise setPosition and unsetPosition must be called manually.
    */
@@ -72,6 +80,9 @@
     "attribute": "position-align",
     "reflect": true
   },
+  /**
+   * make element same size as target
+   */
   "justify": {
     "type": "Boolean",
     "reflect": true,
