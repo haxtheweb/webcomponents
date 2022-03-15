@@ -313,10 +313,10 @@ class AbsolutePositionStateManager extends LitElement {
         } else {
           align += t[startAt] - distance(e) / 2 + distance(t) / 2;
         }
+        //if element size > parent, align where parent begins
         bounds = el.fitToVisibleBounds
           ? Math.max(min, Math.min(max, align))
-          : align; //if element size > parent, align where parent begins
-
+          : align; 
         return bounds;
       },
       //gets coordinate for top ot left position
@@ -407,6 +407,10 @@ class AbsolutePositionStateManager extends LitElement {
       self: e,
       parent: p,
       target: t,
+      style: {
+        top: tt,
+        left: ll
+      }
     };
   }
 
