@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.15",
+  "version": "4.0.16",
   "description": "a card commonly found on a blogging website",
   "repository": {
     "type": "git",
@@ -42,8 +42,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-avatar": "^4.0.15",
-    "@lrnwebcomponents/simple-popover": "^4.0.15",
+    "@lrnwebcomponents/paper-avatar": "^4.0.16",
+    "@lrnwebcomponents/simple-popover": "^4.0.16",
     "@polymer/paper-card": "^3.0.1",
     "lit": "^2.2.0",
     "local-time": "^2.1.0"

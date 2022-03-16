@@ -16,7 +16,7 @@
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "4.0.15",
+  "version": "4.0.16",
   "description": "a simple tooltip forked from paper-tooltip with the same api",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.15",
+    "@lrnwebcomponents/simple-icon": "^4.0.16",
     "@open-wc/testing": "3.0.4",
     "@web/dev-server": "0.1.30",
     "@webcomponents/webcomponentsjs": "2.6.0",
