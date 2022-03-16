@@ -1520,6 +1520,7 @@
     }
   ],
   "autoloader": {
+    "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",

@@ -1528,6 +1528,7 @@
     }
   ],
   "autoloader": {
+    "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js",
     "course-intro": "@lrnwebcomponents/course-design/lib/course-intro.js",
     "page-break": "@lrnwebcomponents/page-break/page-break.js",
     "post-card": "@lrnwebcomponents/post-card/post-card.js",

@@ -49,7 +49,7 @@ class RpgCharacter extends SimpleColors {
       faceItem: { type: Number },
       skin: { type: Number },
       hair: { type: Number },
-      seed: { type: String },
+      seed: { type: String, reflect: true },
     }
   }
   /**
@@ -91,7 +91,10 @@ class RpgCharacter extends SimpleColors {
         `
     ];
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (this.seed === null) {
       this.seed = Math.random().toString(36).substring(2,12);
     }
@@ -130,6 +133,9 @@ class RpgCharacter extends SimpleColors {
   }
 
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "seed" && this[propName]) {
         // use the seed to generate a random number
@@ -148,6 +154,9 @@ class RpgCharacter extends SimpleColors {
         this.pantsColor = this.randomColor();
       }
     });
+  }
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 customElements.define(RpgCharacter.tag, RpgCharacter);
