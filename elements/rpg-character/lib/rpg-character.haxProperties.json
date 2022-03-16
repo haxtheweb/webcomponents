@@ -1,9 +1,6 @@
 {
-    "canScale": {
-      "min": 25,
-      "step": 12.5
-    },
-    "canPosition": true,
+    "canScale": false,
+    "canPosition": false,
     "canEditSource": true,
     "gizmo": {
       "title": "RPG Character",
