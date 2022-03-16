@@ -22,10 +22,11 @@
       <simple-colors-picker id="hat" value="orange"></simple-colors-picker>
       <label>Shirt</label>
       <simple-colors-picker id="shirt" value="blue"></simple-colors-picker>
-      <label>Face</label>
-      <simple-colors-picker id="face" value="green"></simple-colors-picker>
       <label>Pants</label>
       <simple-colors-picker id="pants" value="green"></simple-colors-picker>
+      <label>Seed</label>
+      <input id="seed" size="20"/>
+      <button id="dice">Roll the dice</button>
       <demo-snippet>
         <template>
           <rpg-character></rpg-character>
@@ -43,17 +44,23 @@
       </demo-snippet>
       <script async defer>
         function dqs(sel) { return document.querySelector(sel); }
+        function dqsa(sel) { return document.querySelectorAll(sel); }
         dqs("#hat").addEventListener("changed", (e) => {
           dqs("rpg-character").hatColor = e.detail.value;
         });
         dqs("#shirt").addEventListener("changed", (e) => {
           dqs("rpg-character").shirtColor = e.detail.value;
         });
-        dqs("#face").addEventListener("changed", (e) => {
-          dqs("rpg-character").faceColor = e.detail.value;
-        });
         dqs("#pants").addEventListener("changed", (e) => {
           dqs("rpg-character").pantsColor = e.detail.value;
+        });
+        dqs("#seed").addEventListener("input", (e) => {
+          dqs("rpg-character").seed = e.target.value;
+        });
+        dqs("#dice").addEventListener("click", (e) => {
+          Array.from(dqsa("rpg-character")).forEach((item) => {
+            item.seed = Math.random().toString(36).substring(2,12);
+          });
         });
       </script>
     </div>
