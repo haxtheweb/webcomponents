@@ -66,6 +66,8 @@ class RpgCharacter extends SimpleColors {
       css`
         :host {
           display: inline-block;
+          margin: 0;
+          padding: 0;
         }
         img {
           position: absolute;
@@ -75,6 +77,8 @@ class RpgCharacter extends SimpleColors {
         div {
           width: 113px;
           transition: .3s ease-in-out background-color;
+          margin: 0;
+          padding: 0;
         }
         #hat {
           height: 55px;
@@ -139,19 +143,36 @@ class RpgCharacter extends SimpleColors {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "seed" && this[propName]) {
         // use the seed to generate a random number
-        let seed = 540;
-        for (let i=0; i < this.seed.length; i++) {
-          seed *= this.seed.charCodeAt(i);
+        let seed = 54;
+        for (let i=0; i < (this.seed.length); i++) {
+          // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
+          if (i < 64) {
+            seed *= this.seed.charCodeAt(i);
+          }
         }
-        seed = seed.toString();
+        // ensure huge numbers dont bust JS max
+        seed = BigInt(seed).toString();
+        if (['edtechjoker', 'btopro'].includes(this[propName])) {
+          seed = "11020";
+          this.hatColor = 'red';
+          this.shirtColor = 'light-green';
+          this.pantsColor = 'deep-purple';
+        }
+        else {
+          this.hatColor = this.randomColor();
+          this.shirtColor = this.randomColor();
+          this.pantsColor = this.randomColor();
+        }
         this.skin = seed[0];
-        this.base = seed[1] > 5 ? 1 : 0;
+        this.face = seed[1] > 5 ? 5 : seed[1];
         this.hair = seed[2];
-        this.face = seed[3] > 5 ? 5 : seed[3];
-        this.faceItem = seed[4];
-        this.hatColor = this.randomColor();
-        this.shirtColor = this.randomColor();
-        this.pantsColor = this.randomColor();
+        this.faceItem = seed[3];
+        if (seed[4]) {
+          this.base = seed[4] >= 5 ? 1 : 0;
+        }
+        else {
+          this.base = 0;
+        }
       }
     });
   }
