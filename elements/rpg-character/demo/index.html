@@ -11,20 +11,32 @@
       import '../rpg-character.js';
       import '@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js';
     </script>
+    <style>
+      rpg-character[circle] {
+        border-radius: 50%;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic rpg-character demo</h3>
       <label>Hat</label>
       <simple-colors-picker id="hat" value="orange"></simple-colors-picker>
-      <label>Shirt</label>
-      <simple-colors-picker id="shirt" value="blue"></simple-colors-picker>
       <label>Pants</label>
       <simple-colors-picker id="pants" value="green"></simple-colors-picker>
       <label>Seed</label>
       <input id="seed" size="20"/>
+      <label>Walking?</label>
+      <input id="walking" type="checkbox" />
       <button id="dice">Roll the dice</button>
       <div>
+        <rpg-character circle></rpg-character>
+        <rpg-character></rpg-character>
+        <rpg-character walking></rpg-character>
+        <rpg-character></rpg-character>
+        <rpg-character></rpg-character>
+        <rpg-character></rpg-character>
+        <rpg-character walking></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
@@ -32,14 +44,7 @@
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
+        <rpg-character walking></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
@@ -80,14 +85,14 @@
         dqs("#hat").addEventListener("changed", (e) => {
           dqs("rpg-character").hatColor = e.detail.value;
         });
-        dqs("#shirt").addEventListener("changed", (e) => {
-          dqs("rpg-character").shirtColor = e.detail.value;
-        });
         dqs("#pants").addEventListener("changed", (e) => {
           dqs("rpg-character").pantsColor = e.detail.value;
         });
         dqs("#seed").addEventListener("input", (e) => {
           dqs("rpg-character").seed = e.target.value;
+        });
+        dqs("#walking").addEventListener("change", (e) => {
+          dqs("rpg-character").walking = !dqs("rpg-character").walking;
         });
         dqs("#dice").addEventListener("click", (e) => {
           Array.from(dqsa("rpg-character")).forEach((item) => {

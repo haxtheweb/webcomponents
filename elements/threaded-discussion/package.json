@@ -44,11 +44,11 @@
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^4.0.16",
     "@lrnwebcomponents/lrndesign-avatar": "^4.0.16",
+    "@github/time-elements": "3.1.2",
     "@lrnwebcomponents/simple-icon": "^4.0.16",
     "lit": "^2.2.0"
   },
   "devDependencies": {
-    "@github/time-elements": "3.1.2",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
     "@lrnwebcomponents/storybook-utilities": "^4.0.16",
     "@open-wc/testing": "3.0.4",
