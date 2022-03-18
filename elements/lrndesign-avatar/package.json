@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.17",
+  "version": "4.0.18",
   "description": "Visualize a user account either with an image, a label, or as abstract art.",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-avatar": "^4.0.17",
-    "@lrnwebcomponents/simple-colors": "^4.0.17",
+    "@lrnwebcomponents/paper-avatar": "^4.0.18",
+    "@lrnwebcomponents/simple-colors": "^4.0.18",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.17",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.18",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
