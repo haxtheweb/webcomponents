@@ -92,7 +92,7 @@
           dqs("rpg-character").seed = e.target.value;
         });
         dqs("#walking").addEventListener("change", (e) => {
-          dqs("rpg-character").walking = !dqs("rpg-character").walking;
+          dqs("rpg-character").walking = e.target.checked;
         });
         dqs("#dice").addEventListener("click", (e) => {
           Array.from(dqsa("rpg-character")).forEach((item) => {

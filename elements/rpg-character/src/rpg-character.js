@@ -34,7 +34,8 @@ class RpgCharacter extends SimpleColors {
     this.seed = null;
     this.walking = false;
     this.leg = '';
-    this.speed = 300;
+    this.speed = 500;
+    this.__walkingTimeout = null;
   }
 
   randomColor(seed = null) {
@@ -57,7 +58,7 @@ class RpgCharacter extends SimpleColors {
       pants: { type: Number },
       shirt: { type: Number },
       skin: { type: Number },
-      walking: { type: Boolean,},
+      walking: { type: Boolean, reflect: true},
       leg: { type: String },
       seed: { type: String, reflect: true },
       speed: { type: Number },
@@ -157,11 +158,9 @@ class RpgCharacter extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "walking" && this[propName]) {
-        this.leg = "L";
-      }
-      if (propName === "leg" && this.walking) {
-        setTimeout(() => {
+      if ((propName === "leg" || propName === "walking") && this.walking) {
+        clearTimeout(this.__walkingTimeout);
+        this.__walkingTimeout = setTimeout(() => {
           switch (this.leg) {
             case '':
               this.leg = "R";
@@ -198,7 +197,7 @@ class RpgCharacter extends SimpleColors {
         const charBuilder = {
           accessories : 9,
           base : 1,
-          leg : ['', 'L', 'R'],
+          leg : ['', 'R', 'L'],
           face : 5,
           faceItem : 9,
           hair : 9,
