@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.16",
+  "version": "4.0.17",
   "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",
@@ -37,14 +37,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^4.0.16",
-    "@lrnwebcomponents/responsive-grid": "^4.0.16",
+    "@lrnwebcomponents/hax-body-behaviors": "^4.0.17",
+    "@lrnwebcomponents/responsive-grid": "^4.0.17",
     "@lrnwebcomponents/utils": "^4.0.8",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.16",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.17",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

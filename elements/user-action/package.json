@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.16",
+  "version": "4.0.17",
   "description": "track user actions and allow them to talk to xAPI stores easily",
   "repository": {
     "type": "git",

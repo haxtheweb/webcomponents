@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.16",
+  "version": "4.0.17",
   "description": "Automated conversion of lrnsys-button/",
   "repository": {
     "type": "git",
@@ -42,17 +42,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-apps": "^4.0.16",
-    "@lrnwebcomponents/hax-iconset": "^4.0.16",
-    "@lrnwebcomponents/materializecss-styles": "^4.0.16",
-    "@lrnwebcomponents/simple-icon": "^4.0.16",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.16",
+    "@lrnwebcomponents/elmsln-apps": "^4.0.17",
+    "@lrnwebcomponents/hax-iconset": "^4.0.17",
+    "@lrnwebcomponents/materializecss-styles": "^4.0.17",
+    "@lrnwebcomponents/simple-icon": "^4.0.17",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.17",
     "@polymer/paper-styles": "^3.0.0",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.16",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.17",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
