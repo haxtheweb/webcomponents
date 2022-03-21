@@ -11,11 +11,6 @@
       import '../rpg-character.js';
       import '@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js';
     </script>
-    <style>
-      rpg-character[circle] {
-        border-radius: 50%;
-      }
-    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -26,18 +21,20 @@
       <simple-colors-picker id="pants" value="green"></simple-colors-picker>
       <label>Seed</label>
       <input id="seed" size="20"/>
+      <label>Circle?</label>
+      <input id="circle" type="checkbox" />
       <label>Walking?</label>
       <input id="walking" type="checkbox" />
       <button id="dice">Roll the dice</button>
       <div>
-        <rpg-character circle></rpg-character>
+        <rpg-character></rpg-character>
+        <rpg-character hat="construction"></rpg-character>
+        <rpg-character walking></rpg-character>
+        <rpg-character hat="education"></rpg-character>
+        <rpg-character hat="cowboy"></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character walking></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character></rpg-character>
-        <rpg-character walking></rpg-character>
-        <rpg-character></rpg-character>
+        <rpg-character hat="bunny"></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
@@ -94,10 +91,16 @@
         dqs("#walking").addEventListener("change", (e) => {
           dqs("rpg-character").walking = e.target.checked;
         });
+        dqs("#circle").addEventListener("change", (e) => {
+          dqs("rpg-character").circle = e.target.checked;
+        });
         dqs("#dice").addEventListener("click", (e) => {
           Array.from(dqsa("rpg-character")).forEach((item) => {
             item.seed = Math.random().toString(36).substring(2,12);
           });
+        });
+        Array.from(dqsa("rpg-character")).forEach((item) => {
+          item.demo = true;
         });
       </script>
     </div>

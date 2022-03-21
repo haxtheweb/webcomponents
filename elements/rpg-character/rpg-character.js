@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, svg } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `rpg-character`
@@ -36,6 +36,10 @@ class RpgCharacter extends SimpleColors {
     this.leg = '';
     this.speed = 500;
     this.__walkingTimeout = null;
+    this.circle = false;
+    this.status = 0;
+    this.hat = 'none';
+    this.demo = false;
   }
 
   randomColor(seed = null) {
@@ -58,10 +62,14 @@ class RpgCharacter extends SimpleColors {
       pants: { type: Number },
       shirt: { type: Number },
       skin: { type: Number },
+      hat: { type: String },      
+      status: { type: Number },
       walking: { type: Boolean, reflect: true},
       leg: { type: String },
       seed: { type: String, reflect: true },
       speed: { type: Number },
+      circle: { type: Boolean, reflect: true},
+      demo: { type: Boolean}
     }
   }
   /**
@@ -81,7 +89,7 @@ class RpgCharacter extends SimpleColors {
           margin: 0;
           padding: 0;
         }
-        img {
+        svg,img {
           position: absolute;
           margin: 0;
           padding: 0;
@@ -103,6 +111,14 @@ class RpgCharacter extends SimpleColors {
         }
         #pants {
           height: 20px;
+        }
+        #demo {
+          height: 30px;
+          padding-top: 10px;
+          text-align: center;
+          background-color: black;
+          color: white;
+          font-weight: bold;
         }
         `
     ];
@@ -128,7 +144,10 @@ class RpgCharacter extends SimpleColors {
     const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url).href;
     const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
+    const hat = new URL(`./lib/hat/${this.hat}.svg`, import.meta.url).href;
+    const status = new URL(`./lib/status/${this.status}.svg`, import.meta.url).href;
     return html`
+    <div class="wrapper">
       <img src="${skin}" />
       ${this.base === 1 ? html`<img src="${hair}" />` : ``}
       <img src="${face}" />
@@ -137,11 +156,26 @@ class RpgCharacter extends SimpleColors {
       <img src="${pants}" />
       <img src="${accessories}" />
       <img src="${base}" />${this.leg !== '' ? html`<img src="${leg}" />`:``}
-
+      <img src="${hat}" />
+      ${this.circle ? svg`
+<svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_143_641)">
+    <path id="cardcircle" fill-rule="evenodd" clip-rule="evenodd" d="M122 -1H-10V142H122V-1ZM8 32V17H13V12H18V7H33V2H77.9835L78 7H93V12H98V17H103V32H108V77H103V92H98V97H93V102H78V107.5L33 107V102H18V97H13V92H8V77H3V32H8Z" fill="transparent"/>
+    <path d="M7.5 31.5V16.5H12.5V11.5H17.5V6.5H32.5V1.5H78.5V6.5H93.5V11.5H98.5V16.5H103.5V31.5H108.5V77.5H103.5V92.5H98.5V97.5H93.5V102.5H78.5V107.5H32.5V102.5H17.5V97.5H12.5V92.5H7.5V77.5H2.5V31.5H7.5Z" stroke="black"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_143_641">
+    <rect width="113" height="142" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>` : ``}
+      <img src="${status}" />
       <div id="hat"></div>
       <div id="face"></div>
       <div id="shirt"></div>
       <div id="pants"></div>
+  </div>
+      ${this.demo ? html`<div id="demo">${this.seed}</div>` : ``}
       <style>
         #hat {
           background-color: var(--simple-colors-default-theme-${this.hatColor}-7, orange);
@@ -149,15 +183,32 @@ class RpgCharacter extends SimpleColors {
         #pants {
           background-color: var(--simple-colors-default-theme-${this.pantsColor}-8, yellow);
         }
+        #cardcircle {
+          fill: var(--simple-colors-default-theme-${this.pantsColor}-8, var(--simple-colors-default-theme-accent-8, yellow));
+        }
       </style>
     `;
   }
+
+
 
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "demo") {
+        if (this[propName]) {
+          this.shadowRoot.querySelector(".wrapper").addEventListener("click", (e) => {
+            this.seed = Math.random().toString(36).substring(2,12);
+          });
+        }
+        else {
+          this.shadowRoot.querySelector(".wrapper").removeEventListener("click", (e) => {
+            e.target.seed = Math.random().toString(36).substring(2,12);
+          });
+        }
+      }
       if ((propName === "leg" || propName === "walking") && this.walking) {
         clearTimeout(this.__walkingTimeout);
         this.__walkingTimeout = setTimeout(() => {
@@ -183,10 +234,15 @@ class RpgCharacter extends SimpleColors {
             seed *= this.seed.charCodeAt(i);
           }
         }
+        const funKeys = {
+          zpg: '7501517984378880262144',
+          edtechjoker: '712215550',
+          btopro: '712215550',
+        };
         // ensure huge numbers dont bust JS max
         seed = BigInt(seed).toString();
-        if (['edtechjoker', 'btopro'].includes(this[propName])) {
-          seed = "712215550";
+        if (Object.keys(funKeys).includes(this[propName])) {
+          seed = funKeys[this[propName]];
           this.hatColor = 'red';
           this.pantsColor = 'deep-purple';
         }
