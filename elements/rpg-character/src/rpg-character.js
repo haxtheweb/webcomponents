@@ -37,7 +37,6 @@ class RpgCharacter extends SimpleColors {
     this.speed = 500;
     this.__walkingTimeout = null;
     this.circle = false;
-    this.status = 0;
     this.hat = 'none';
     this.demo = false;
   }
@@ -63,7 +62,6 @@ class RpgCharacter extends SimpleColors {
       shirt: { type: Number },
       skin: { type: Number },
       hat: { type: String },      
-      status: { type: Number },
       walking: { type: Boolean, reflect: true},
       leg: { type: String },
       seed: { type: String, reflect: true },
@@ -145,7 +143,6 @@ class RpgCharacter extends SimpleColors {
     const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
     const hat = new URL(`./lib/hat/${this.hat}.svg`, import.meta.url).href;
-    const status = new URL(`./lib/status/${this.status}.svg`, import.meta.url).href;
     return html`
     <div class="wrapper">
       <img src="${skin}" />
@@ -169,7 +166,6 @@ class RpgCharacter extends SimpleColors {
     </clipPath>
   </defs>
 </svg>` : ``}
-      <img src="${status}" />
       <div id="hat"></div>
       <div id="face"></div>
       <div id="shirt"></div>

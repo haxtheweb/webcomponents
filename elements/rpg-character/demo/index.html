@@ -16,9 +16,19 @@
     <div class="vertical-section-container centered">
       <h3>Basic rpg-character demo</h3>
       <label>Hat</label>
-      <simple-colors-picker id="hat" value="orange"></simple-colors-picker>
+      <simple-colors-picker id="hatcolor" value="orange"></simple-colors-picker>
       <label>Pants</label>
       <simple-colors-picker id="pants" value="green"></simple-colors-picker>
+      <label>Pants</label>
+      <select id="hat">
+        <option value="none">None</option>
+        <option value="bunny">Bunny</option>
+        <option value="cowboy">Cowboy</option>
+        <option value="education">Education</option>
+        <option value="construction">Construction</option>
+        <option value="error">Error</option>
+        <option value="edit">Edit</option>
+      </select>
       <label>Seed</label>
       <input id="seed" size="20"/>
       <label>Circle?</label>
@@ -32,10 +42,10 @@
         <rpg-character walking></rpg-character>
         <rpg-character hat="education"></rpg-character>
         <rpg-character hat="cowboy"></rpg-character>
-        <rpg-character></rpg-character>
+        <rpg-character hat="error"></rpg-character>
         <rpg-character walking></rpg-character>
         <rpg-character hat="bunny"></rpg-character>
-        <rpg-character></rpg-character>
+        <rpg-character hat="edit"></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
@@ -79,11 +89,14 @@
       <script async defer>
         function dqs(sel) { return document.querySelector(sel); }
         function dqsa(sel) { return document.querySelectorAll(sel); }
-        dqs("#hat").addEventListener("changed", (e) => {
+        dqs("#hatcolor").addEventListener("changed", (e) => {
           dqs("rpg-character").hatColor = e.detail.value;
         });
         dqs("#pants").addEventListener("changed", (e) => {
           dqs("rpg-character").pantsColor = e.detail.value;
+        });
+        dqs("#hat").addEventListener("input", (e) => {
+          dqs("rpg-character").hat = e.target.value;
         });
         dqs("#seed").addEventListener("input", (e) => {
           dqs("rpg-character").seed = e.target.value;
