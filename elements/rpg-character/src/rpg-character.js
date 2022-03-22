@@ -86,17 +86,21 @@ class RpgCharacter extends SimpleColors {
           display: inline-block;
           margin: 0;
           padding: 0;
+          text-align: initial;
+          position: relative;
         }
         svg,img {
           position: absolute;
           margin: 0;
           padding: 0;
+          text-align: initial;
         }
         div {
           width: 113px;
           transition: .3s ease-in-out background-color;
           margin: 0;
           padding: 0;
+          text-align: initial;
         }
         #hat {
           height: 55px;
