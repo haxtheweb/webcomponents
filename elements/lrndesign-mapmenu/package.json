@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.19",
+  "version": "4.0.20",
   "description": "Automated conversion of lrndesign-mapmenu/",
   "repository": {
     "type": "git",
@@ -42,14 +42,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^4.0.19",
-    "@lrnwebcomponents/lrndesign-avatar": "^4.0.19",
-    "@lrnwebcomponents/simple-icon": "^4.0.19",
+    "@lrnwebcomponents/a11y-collapse": "^4.0.20",
+    "@lrnwebcomponents/lrndesign-avatar": "^4.0.20",
+    "@lrnwebcomponents/simple-icon": "^4.0.20",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.19",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.20",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
