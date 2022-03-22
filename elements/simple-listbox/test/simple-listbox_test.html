@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../simple-listbox.js"></script>
+  </head>
+  <body>
+
+    <simple-listbox>
+      This is the element content.
+    </simple-listbox>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <simple-listbox></simple-listbox>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <simple-listbox></simple-listbox>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<simple-listbox>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('simple-listbox'), customElements.get("simple-listbox", 'simple-listbox should be an instance of simpleListbox'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
