@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.18",
+  "version": "4.0.19",
   "description": "Automated conversion of word-count/",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^4.0.18",
+    "@lrnwebcomponents/i18n-manager": "^4.0.19",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
     "@lrnwebcomponents/i18n-manager": "^3.0.7",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.19",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

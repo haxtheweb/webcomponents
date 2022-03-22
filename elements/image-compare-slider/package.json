@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.18",
+  "version": "4.0.19",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -42,18 +42,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-compare-image": "^4.0.18",
-    "@lrnwebcomponents/a11y-details": "^4.0.18",
-    "@lrnwebcomponents/i18n-manager": "^4.0.18",
+    "@lrnwebcomponents/a11y-compare-image": "^4.0.19",
+    "@lrnwebcomponents/a11y-details": "^4.0.19",
+    "@lrnwebcomponents/i18n-manager": "^4.0.19",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.18",
-    "@lrnwebcomponents/simple-colors": "^4.0.18",
-    "@lrnwebcomponents/user-action": "^4.0.18",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.19",
+    "@lrnwebcomponents/simple-colors": "^4.0.19",
+    "@lrnwebcomponents/user-action": "^4.0.19",
     "lit": "^2.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.18",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.19",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
