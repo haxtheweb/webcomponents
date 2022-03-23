@@ -372,13 +372,34 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
   // render function
   render() {
-    return html` <ul id="tabs" role="tablist" part="tablist">
+    return html`
+      ${this.tablistTemplate}
+      ${this.contentTemplate}`;
+  }
+  /**
+   * tab list
+   *
+   * @readonly
+   * @memberof A11yTabs
+   */
+  get tablistTemplate(){
+    return html`
+      <ul id="tabs" role="tablist" part="tablist">
         ${this.tabs.map(
           (tab, i) => html`
             <li part="tablist-item">${this._tabButton(tab, i)}</li>
           `
         )}
-      </ul>
+      </ul>`;
+  }
+  /**
+   * content which includes tab panels
+   *
+   * @readonly
+   * @memberof A11yTabs
+   */
+  get contentTemplate(){
+    return html`
       <div id="content" part="content">
         <slot></slot>
       </div>`;
@@ -752,11 +773,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"
         role="tab"
-        part="${tab.id === this.activeTab && !this.disabled
-          ? "tab-active"
+        part="tab${tab.id === this.activeTab && !this.disabled
+          ? " tab-active"
           : this.disabled || tab.disabled
-          ? "tab-disabled"
-          : "tab"}"
+          ? " tab-disabled"
+          : ""}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
