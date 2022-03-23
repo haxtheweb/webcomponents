@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "app-hax",
+      "path": "./app-hax.js",
+      "description": "`app-hax`\n`HAX+HAXcms as a full app experience`"
+    },
+    {
+      "name": "app-hax",
+      "path": "./src/app-hax.js",
+      "description": "`app-hax`\n`HAX+HAXcms as a full app experience`"
+    }
+  ]
+}

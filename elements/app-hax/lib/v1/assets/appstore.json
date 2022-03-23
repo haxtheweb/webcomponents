@@ -1,0 +1,184 @@
+{
+    "status": 200,
+    "autoloader": {
+      "rename-me": "./rename-me.js",
+      "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+      "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+      "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
+      "self-check": "@lrnwebcomponents/self-check/self-check.js",
+      "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+      "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js"
+    },
+    "apps": [
+      {
+        "details": {
+          "title": "NASA",
+          "icon": "places:all-inclusive",
+          "color": "blue",
+          "author": "US Government",
+          "description": "The cozmos through one simple API.",
+          "status": "available",
+          "tags": ["images", "government", "space"]
+        },
+        "connection": {
+          "protocol": "https",
+          "url": "images-api.nasa.gov",
+          "operations": {
+            "browse": {
+              "method": "GET",
+              "endPoint": "search",
+              "pagination": {
+                "style": "page",
+                "props": {
+                  "page": "page"
+                }
+              },
+              "search": {
+                "q": {
+                  "title": "Search",
+                  "type": "string"
+                }
+              },
+              "data": {
+                "media_type": "image"
+              },
+              "resultMap": {
+                "defaultGizmoType": "image",
+                "items": "collection.items",
+                "preview": {
+                  "title": "data.0.title",
+                  "details": "data.0.description",
+                  "image": "links.0.href",
+                  "id": "links.0.href"
+                },
+                "gizmo": {
+                  "id": "links.0.href",
+                  "source": "links.0.href",
+                  "title": "data.0.title",
+                  "caption": "data.0.description",
+                  "description": "data.0.description",
+                  "citation": "data.0.photographer",
+                  "type": "data.0.media_type"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "details": {
+          "title": "Giphy",
+          "icon": "gif",
+          "color": "green",
+          "author": "Giphy",
+          "description": "Crowd sourced memes via animated gifs.",
+          "status": "available",
+          "tags": ["gif", "crowdsourced", "meme"]
+        },
+        "connection": {
+          "protocol": "https",
+          "url": "api.giphy.com",
+          "data": {
+            "api_key": "mr3blNkTT0HeTvtyPPT4TIftqUSgyHoO"
+          },
+          "operations": {
+            "browse": {
+              "method": "GET",
+              "endPoint": "v1/gifs/search",
+              "pagination": {
+                "style": "offset",
+                "props": {
+                  "offset": "pagination.offset",
+                  "total": "pagination.total_count",
+                  "count": "pagination.count"
+                }
+              },
+              "search": {
+                "q": {
+                  "title": "Search",
+                  "type": "string"
+                },
+                "rating": {
+                  "title": "Rating",
+                  "type": "string",
+                  "format": "select",
+                  "items": [
+                    { "value": "value", "text": "Y" },
+                    { "value": "value", "text": "G" },
+                    { "value": "value", "text": "PG" },
+                    { "value": "value", "text": "PG-13" },
+                    { "value": "value", "text": "R" }
+                  ]
+                },
+                "lang": {
+                  "title": "Language",
+                  "type": "string",
+                  "format": "select",
+                  "items": [
+                    { "value": "value", "text": "en" },
+                    { "value": "value", "text": "es" },
+                    { "value": "value", "text": "pt" },
+                    { "value": "value", "text": "id" },
+                    { "value": "value", "text": "fr" },
+                    { "value": "value", "text": "ar" },
+                    { "value": "value", "text": "tr" },
+                    { "value": "value", "text": "th" },
+                    { "value": "value", "text": "vi" },
+                    { "value": "value", "text": "de" },
+                    { "value": "value", "text": "it" },
+                    { "value": "value", "text": "ja" },
+                    { "value": "value", "text": "zh-CN" },
+                    { "value": "value", "text": "zh-TW" },
+                    { "value": "value", "text": "ru" },
+                    { "value": "value", "text": "ko" },
+                    { "value": "value", "text": "pl" },
+                    { "value": "value", "text": "nl" },
+                    { "value": "value", "text": "ro" },
+                    { "value": "value", "text": "hu" },
+                    { "value": "value", "text": "sv" },
+                    { "value": "value", "text": "cs" },
+                    { "value": "value", "text": "hi" },
+                    { "value": "value", "text": "bn" },
+                    { "value": "value", "text": "da" },
+                    { "value": "value", "text": "fa" },
+                    { "value": "value", "text": "tl" },
+                    { "value": "value", "text": "fi" },
+                    { "value": "value", "text": "iw" },
+                    { "value": "value", "text": "ms" },
+                    { "value": "value", "text": "no" },
+                    { "value": "value", "text": "uk" }
+                  ]
+                }
+              },
+              "data": {
+                "limit": "20",
+                "lang": "en"
+              },
+              "resultMap": {
+                "defaultGizmoType": "image",
+                "items": "data",
+                "preview": {
+                  "title": "title",
+                  "details": "description",
+                  "image": "images.preview_gif.url",
+                  "id": "id"
+                },
+                "gizmo": {
+                  "source": "images.original.url",
+                  "source2": "images.480w_still.url",
+                  "id": "id",
+                  "title": "title",
+                  "alt": "title",
+                  "caption": "user.display_name",
+                  "citation": "user.display_name"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "stax": [],
+    "blox": []    
+  }
+  

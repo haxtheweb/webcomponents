@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <base href="/elements/app-hax/demo/" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import '../app-hax.js';
+    </script>
+    <script>
+      // local development and mobx
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "development"
+        }
+      };
+      </script>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        font-family: 'Press Start 2P', sans-serif;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      :root {
+        background-image: url('../lib/v1/lib/LMGridBox.svg'), url('../lib/v1/lib/Design Light Mode Left.svg'), url('../lib/v1/lib/Design Light Mode Right.svg');
+        background-repeat: repeat, repeat-y, repeat-y;
+        background-position: center center, top left, top right;
+        background-size: auto, 20% auto, 20% auto;
+        --accent-color: black;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          background-color: black;
+          background-image: url('../lib/v1/DMGridBox.svg'), url('../lib/v1/lib/Design Dark Mode Left.svg'), url('../lib/v1/lib/Design Dark Mode Right.svg');
+          background-repeat: repeat, repeat-y, repeat-y;
+          background-position: center center, top left, top right;
+          background-size: auto, 20% auto, 20% auto;
+          --accent-color: white;
+        }
+
+        .welcome {
+          -webkit-text-stroke: 0px var(--accent-color);
+          -webkit-text-fill-color: white;
+        }
+      }
+
+      @media (min-width: 721px) {
+        :root {
+          background-size: auto, 23% auto, 23% auto;
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 720px) {
+        :root {
+          background-size: auto, 26% auto, 26% auto;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 600px) {
+        :root {
+          background-size: auto, 30% auto, 30% auto;
+        }
+      }
+
+      @media (min-width: 371px) and (max-width: 480px) {
+        :root {
+          background-size: auto, 35% auto, 35% auto;
+        }
+      }
+
+      @media (max-width: 370px) {
+        :root {
+          background-size: auto, 37% auto, 37% auto;
+        }
+      }
+
+      .welcomeBox {
+        text-align: center;
+        margin: 0;
+        font-size: 60px;
+        
+      }
+
+      .welcome {
+        -webkit-text-stroke: 1px var(--accent-color);
+	      -webkit-text-fill-color: white;
+      }
+
+      .bracket {
+        font-size: 100px;
+        vertical-align: middle;
+        -webkit-text-stroke: 0px;
+        -webkit-text-fill-color: var(--accent-color);
+      }
+    </style>
+    <title>Let's HAX your web</title>
+  </head>
+  <body>
+      <div class="welcomeBox">
+        <p class="welcome"><span class="bracket">&#60;</span>Welcome<span class="bracket">&#62;</span></p>
+      </div>
+    <haxcms-app demo></haxcms-app>
+  </body>
+</html>

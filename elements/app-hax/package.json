@@ -1,0 +1,95 @@
+{
+  "name": "@lrnwebcomponents/app-hax",
+  "wcfactory": {
+    "className": "AppHax",
+    "customElementClass": "LitElement",
+    "elementName": "app-hax",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/app-hax.css",
+      "scss": "src/app-hax.scss",
+      "html": "src/app-hax.html",
+      "js": "src/app-hax.js",
+      "properties": "src/app-hax-properties.json",
+      "hax": "src/app-hax-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "4.0.20",
+  "description": "HAX+HAXcms as a full app experience",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "app-hax.js",
+  "module": "app-hax.js",
+  "umd": "app-hax.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "cd demo && web-dev-server -c ../../../web-dev-server.haxcms.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "resolutions": {
+    "roughjs": "4.4",
+    "lit": "2.2.1"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lit-labs/motion": "^1.0.2",
+    "@lrnwebcomponents/promise-progress": "^4.0.20",
+    "@lrnwebcomponents/simple-colors": "^4.0.20",
+    "@lrnwebcomponents/simple-icon": "^4.0.20",
+    "@lrnwebcomponents/rpg-character": "^4.0.20",
+    "@vaadin/router": "^1.7.4",
+    "lit": "^2.2.1",
+    "mobx": "^6.3.13",
+    "scrollable-component": "^1.2.0",
+    "wired-elements": "3.0.0-rc.6",
+    "roughjs": "4.4"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/grid-plate": "^4.0.20",
+    "@lrnwebcomponents/h-a-x": "^4.0.20",
+    "@lrnwebcomponents/meme-maker": "^4.0.20",
+    "@lrnwebcomponents/multiple-choice": "^4.0.20",
+    "@lrnwebcomponents/replace-tag": "^4.0.20",
+    "@lrnwebcomponents/retro-card": "^4.0.20",
+    "@lrnwebcomponents/self-check": "^4.0.20",
+    "@lrnwebcomponents/wikipedia-query": "^4.0.20",
+    "@lrnwebcomponents/word-count": "^4.0.20",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "@web/dev-server": "0.1.28",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
