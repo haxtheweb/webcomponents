@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-listbox.js';
+      import '../lib/simple-listbox-emoji.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -20,8 +21,9 @@
       <demo-snippet>
         <template>
           <simple-listbox demo-mode="items" justify autocomplete="both"></simple-listbox>
-          <simple-listbox demo-mode="grouped" justify autocomplete="both"></simple-listbox>
-          <simple-listbox demo-mode="tabs" justify autocomplete="both"></simple-listbox>
+          <simple-listbox demo-mode="groups" justify autocomplete="both"></simple-listbox>
+          <simple-listbox demo-mode="groups" justify autocomplete="both" tabs></simple-listbox>
+          <simple-listbox-emoji tabs></simple-listbox-emoji>
         </template>
       </demo-snippet>
     </div>

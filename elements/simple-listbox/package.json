@@ -39,7 +39,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "lit-element": "^2.3.1",
+    "@lrnwebcomponents/a11y-tabs": "^4.0.12",
+    "@lrnwebcomponents/simple-emoji-list": "^4.0.7",
     "@lrnwebcomponents/simple-icon": "^4.0.12",
+    "@lrnwebcomponents/simple-symbol-list": "^4.0.7",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.12",
     "@lrnwebcomponents/absolute-position-behavior": "^4.0.12"
   },
   "devDependencies": {

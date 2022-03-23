@@ -164,6 +164,7 @@ const SimpleListboxProperties = {
    * if options are grouped, displays them as tabs
    */
   tabs: {
+    attribute: "tabs",
     type: Boolean,
     reflect: true,
   },
@@ -231,14 +232,37 @@ const SimpleListboxStyles = [
       z-index: 2;
     }
     :host([expanded]),
-    :host([expanded]) ul[role="listbox"],
-    :host([expanded]) li,
+    :host([expanded]) ul[role="listbox"]:focus-within,
+    :host([expanded]) li:focus-within,
     :host(:focus-within) {
       z-index: 3;
     }
     absolute-position-behavior {
       display:inline-block;
-      max-width: 100%;
+      max-width: 300px;
+      background-color: white;
+    }
+    simple-listbox-tabs::part(tablist){
+      outline: 1px solid #ddd;
+      opacity: 0;
+      display: none;
+      max-height: 0;
+      transition: 0.5s ease-in-out max-height;
+    }
+    simple-listbox-tabs::part(tablist-item) {
+      flex: 1 0 auto;
+    }
+    simple-listbox-tabs::part(tab) {
+      background-color: white;
+      border-bottom: 3px solid white;
+    }
+    simple-listbox-tabs::part(tab-active) {
+      border-bottom: 3px solid black;
+    }
+    :host([expanded]) simple-listbox-tabs::part(tablist) {
+      opacity: 1;
+      display:flex;
+      max-height: 5em;
     }
     ul[role="listbox"] {
       opacity: 0;
@@ -255,9 +279,6 @@ const SimpleListboxStyles = [
     }
     :host([expanded]) ul[role="listbox"] {
       outline: 1px solid #ddd;
-    }
-    :host([expanded]:hover) ul[role="listbox"],
-    :host([expanded]:focus-within) ul[role="listbox"] {
       opacity: 1;
       overflow: auto;
       max-height: 12em;
@@ -331,6 +352,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.itemsList = [];
       this.options = {};
       this.hovered = false;
+      this.tabs = false;
     }
 
     render(){
@@ -344,10 +366,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           for="field" 
           auto
           fit-to-visible-bounds 
+          part="listbox-outer"
           position="bottom" 
           position-align="${this.alignRight ? 'end' : 'start'}"
           ?justify="${this.justify}">
-          ${this.listboxTemplate}
+          ${!this.tabs ? this.listboxTemplate : this.tablistTemplate}
         </absolute-position-behavior>
       `;
     }
@@ -384,6 +407,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           this.fieldValueChanged();
         if (propName === "itemsList" || propName === "options" || propName == "demoMode")
           this.filterOptions(this.filter, this.option);
+          if(this.tablist && this.tablist.updateTabs) setTimeout(this.tablist.updateTabs(),10);
       });
     }
   
@@ -538,6 +562,19 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      *
      * @readonly
      */
+    get tablist() {
+      if (!this._tablist)
+        this._tablist =
+          this.shadowRoot && this.shadowRoot.querySelector(`simple-listbox-tabs`)
+            ? this.shadowRoot.querySelector(`simple-listbox-tabs`)
+            : undefined;
+      return this._tablist;
+    }
+    /**
+     * listbox from shadowRoot
+     *
+     * @readonly
+     */
     get listbox() {
       if (!this._listbox)
         this._listbox =
@@ -650,6 +687,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         </simple-icon-button-lite>
       `;
     }
+    get tablistTemplate(){
+      import("./lib/simple-listbox-tabs.js");
+      return html`
+        <simple-listbox-tabs part="tabsdisplay" exportparts="tablist tablist-item tab tab-active tab-disabled">
+          <div role="tabpanel" part="tabpanel">${this.listboxTemplate}</div>
+        </simple-listbox-tabs>`;
+    }
     /**
      * listbox
      *
@@ -714,14 +758,21 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           >
             ${this.getListItemInner(option)}
           </li>` 
-        : html`
-          <li
-            id="option${option.id}"
-            role="presentation"
-            part="listbox-group"
-          >
-            ${option.group}
-          </li>`;
+        : this.getGroupItem(option);
+    }
+
+    getGroupItem(option){
+      return html`
+      <li
+        id="option${option.id}"
+        role="presentation"
+        part="listbox-group"
+        data-group="${option.group}"
+        data-tooltip="${option.tooltip}"
+        data-icon="${option.icon}"
+      >
+        ${this.getListItemInner(option)}
+      </li>`;
     }
   
     /**
@@ -730,7 +781,20 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @returns 
      */
     getListItemInner(option) {
-      return option.value;
+      return html`
+        ${option.group || option.value}
+        ${!option.tooltip ? '' : this.getListItemTooltip(option)}
+      `;
+    }
+  
+    /**
+     * text content of a list item option
+     * @param {object} option object representing option with id and value properties
+     * @returns 
+     */
+    getListItemTooltip(option) {
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      return html`<simple-tooltip for="option${option.id}">${option.tooltip}</simple-tooltip>`;
     }
     /**
      * sets aria-activeDescendant
@@ -1086,7 +1150,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           flattened.push(item)
         } else {
           let id = (item.id || item.group || i).replace(/\W/g,'-').toLowerCase()
-          flattened.push({id: id, group: item.group || item.id});
+          flattened.push({...item, id: id, group: item.group || item.id});
           isGroup = true;
           item.itemsList.sort((a, b) => (a > b ? 1 : -1)).forEach((subitem,j)=>flattened.push(typeof subitem !== "object" ? { id: `${id}-${j}`, value: subitem } : subitem));
         }
@@ -1310,4 +1374,4 @@ class SimpleListbox extends SimpleListBoxBehaviors(LitElement) {
   }
 }
 window.customElements.define(SimpleListbox.tag, SimpleListbox);
-export { SimpleListbox };
+export { SimpleListbox, SimpleListBoxBehaviors };
