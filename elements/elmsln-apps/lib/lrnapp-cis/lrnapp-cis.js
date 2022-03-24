@@ -434,11 +434,9 @@ class LrnappCis extends PolymerElement {
         </div>
         <div class="buttons">
           <button
-            raised=""
-            dialog-confirm=""
-            autofocus=""
             on-click="_confirmBuild"
             class="green"
+            data-letsdoit="data-letsdoit"
           >
             Let's do it!
           </button>
@@ -771,6 +769,9 @@ class LrnappCis extends PolymerElement {
       this._activeService = service; // confirm via paper prompt
 
       this.$.confirm.toggleDialog();
+      setTimeout(() => {
+        document.querySelector("simple-modal div.buttons button[data-letsdoit]").addEventListener('click', this._confirmBuild.bind(this));        
+      }, 250);
     } else {
       console.log("that was not a valid service..");
     }
@@ -781,6 +782,15 @@ class LrnappCis extends PolymerElement {
 
   _confirmBuild(e) {
     this.$.makeservice.generateRequest();
+    const evt = new CustomEvent("simple-modal-closed", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        opened: false,
+        invokedBy: this.querySelector("lrnsys-dialog button[data-letsdoit]"),
+      },
+    });
+    this.dispatchEvent(evt);
   }
   ready() {
     super.ready();
