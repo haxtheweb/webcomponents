@@ -49,6 +49,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lit-labs/motion": "^1.0.2",
+    "@lrnwebcomponents/jwt-login": "^4.0.20",
     "@lrnwebcomponents/promise-progress": "^4.0.20",
     "@lrnwebcomponents/simple-colors": "^4.0.20",
     "@lrnwebcomponents/simple-icon": "^4.0.20",

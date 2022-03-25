@@ -411,7 +411,7 @@ class ImgPanZoom extends LitElement {
 
     const basePath = new URL("./img-pan-zoom.js", import.meta.url).href.replace(
       "/img-pan-zoom.js",
-      ""
+      "/"
     );
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
