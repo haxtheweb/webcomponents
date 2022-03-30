@@ -12,6 +12,8 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-listbox.js';
       import '../lib/simple-listbox-emoji.js';
+      import '../lib/simple-listbox-symbol.js';
+      import '../lib/simple-listbox-icon.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -20,10 +22,54 @@
       <h3>Basic simple-listbox demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox demo-mode="items" justify autocomplete="both"></simple-listbox>
-          <simple-listbox demo-mode="groups" justify autocomplete="both"></simple-listbox>
-          <simple-listbox demo-mode="groups" justify autocomplete="both" tabs></simple-listbox>
-          <simple-listbox-emoji tabs></simple-listbox-emoji>
+          <p><simple-listbox demo-mode="items"></simple-listbox></p>
+          <p><simple-listbox id="custom"></simple-listbox></p>
+          <script>
+            document.getElementById('custom').itemsList = ['bird','cat', 'dog'];
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>simple-listbox autocomplete modes</h3>
+      <demo-snippet>
+        <template>
+          <p><simple-listbox demo-mode="items" autocomplete="none"></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" autocomplete="inline"></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" autocomplete="list"></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" autocomplete="both"></simple-listbox></p>
+        </template>
+      </demo-snippet>
+      <h3>simple-listbox positioning</h3>
+      <demo-snippet>
+        <template>
+          <p><simple-listbox demo-mode="items"></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" justify></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" align-right></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" position-above></simple-listbox></p>
+        </template>
+      </demo-snippet>
+      <h3>simple-listbox custom styles</h3>
+      <demo-snippet>
+        <template>
+          <p><simple-listbox id="fonts" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
+          <p><simple-listbox id="colors" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
+          <script>
+            document.getElementById('fonts').itemsList = [
+              'serif',
+              'sans-serif',
+              'monospace',
+              'cursive'
+            ].map(font=>{
+              return {value: font, style: `font-family: ${font}`}
+            });
+            document.getElementById('colors').itemsList = [
+              'purple',
+              'red',
+              'magenta',
+              'blue'
+            ].map(color=>{
+              return {value: color, style: `color: ${color}`}
+            });
+          </script>
         </template>
       </demo-snippet>
     </div>

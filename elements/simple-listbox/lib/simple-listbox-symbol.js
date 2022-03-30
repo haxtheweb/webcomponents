@@ -4,18 +4,18 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
-import { SimpleEmojiList } from "@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js";
+import { SimpleSymbolList } from "@lrnwebcomponents/simple-symbol-list/simple-symbol-list.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
- * `simple-listbox-emoji`
- * @element simple-listbox-emoji
+ * `simple-listbox-symbol`
+ * @element simple-listbox-symbol
  * Uses simple-picker to create an icon picker
  *
 
- * @demo ./demo/emoji.html
+ * @demo ./demo/index.html
  */
-class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
+class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
 
   static get styles(){
     return [
@@ -42,7 +42,7 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
       ...super.properties,
 
       /**
-       * emoji types to include
+       * symbol types to include
        */
        tabsGroups: {
         name: "tabsGroups",
@@ -57,67 +57,45 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "simple-listbox-emoji";
+    return "simple-listbox-symbol";
   }
 
   constructor() {
     super();
     this.tabsGroups = [
       { 
-        "group": "People",
-        "icon": "social:sentiment-satisfied",
-        "groups": [
-          "emotions",
-          "people",
-        ]
-      },
-      { 
-        "group": "Nature",
-        "icon": "maps:local-florist",
-        "groups": [
-          "nature",
-        ]
-      },
-      { 
-        "group": "Food",
-        "icon": "maps:restaurant",
-        "groups": [
-          "food",
-        ]
-      },
-      { 
-        "group": "Travel",
-        "icon": "maps:flight",
-        "groups": [
-          "travel",
-        ]
-      },
-      { 
-        "group": "Activities",
-        "icon": "maps:directions-bike",
-        "groups": [
-          "activities",
-        ]
-      },
-      { 
-        "group": "Objects",
-        "icon": "icons:lightbulb-outline",
-        "groups": [
-          "objects",
-        ]
-      },
-      { 
         "group": "Symbols",
-        "icon": "icons:star",
+        "tab": "&sect;",
         "groups": [
           "symbols",
         ]
       },
       { 
-        "group": "Flags",
-        "icon": "icons:flag",
+        "group": "Math",
+        "tab": "&divide;",
         "groups": [
-          "flags",
+          "math",
+        ]
+      },
+      { 
+        "group": "Characters",
+        "tab": "&Auml;",
+        "groups": [
+          "characters",
+        ]
+      },
+      { 
+        "group": "Greek",
+        "tab": "&omega;",
+        "groups": [
+          "greek",
+        ]
+      },
+      { 
+        "group": "Misc",
+        "tab": "&spades;",
+        "groups": [
+          "misc",
         ]
       }
     ];
@@ -134,22 +112,22 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateEmoji();
+      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateSymbol();
     });
   }
-  updateEmoji(){
+  updateSymbol(){
     this.itemsList =  (this.tabsGroups || []).map((tab,i) => {
-      let id=`emoji-${(tab.group || i).replace(/\W/g,'-').toLowerCase()}`;
+      let id=`symbol-${(tab.group || i).replace(/\W/g,'-').toLowerCase()}`;
       return {
         id: id,
         group: tab.group,
         tab: tab.tab ? this._getUnicode(tab.tab) : undefined,
         icon: tab.icon,
         tooltip: tab.tooltip,
-        itemsList: (tab.groups || []).map(group=>window.SimplePickerEmojis[group]).flat().map(item=>{
+        itemsList: (tab.groups || []).map(group=>window.SimplePickerSymbols[group]).flat().map(item=>{
           return {
             ...item,
-            id: `${id}-${item.value.replace(/[\&\#\;]/g,"")}`,
+            id: `${id}-${item.value.replace(/[\&\;]/g,"")}`,
             html: item.value,
             value: this._getUnicode(item.value),
           }
@@ -158,29 +136,29 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
     });
   }
   _getUnicode(html){
-      if(!html.match(/^\&\#[a-zA-Z0-9]+\;$/)) return;
+      if(!html.match(/^\&[a-zA-Z0-9]+\;$/)) return;
       let temp = document.createElement('textarea');
       temp.innerHTML = html;
     return temp.value;
   }
 }
 
-window.simpleListboxEmojisByCategory = () => {
+window.simpleListboxSymbolsByCategory = () => {
   let obj = {};
-  (SimpleEmojiList || []).forEach((emoji) => {
-    let emojitype = emoji.type || "";
-    obj[emojitype] = obj[emojitype] || [];
-    obj[emojitype].push({
-      ...emoji,
-      value: emoji.character,
-      tooltip: emoji.description,
+  (SimpleSymbolList || []).forEach((symbol) => {
+    let symboltype = symbol.type || "";
+    obj[symboltype] = obj[symboltype] || [];
+    obj[symboltype].push({
+      ...symbol,
+      value: symbol.character,
+      tooltip: symbol.character,
     });
   });
   return obj;
 };
 
-window.SimplePickerEmojis =
-  window.SimplePickerEmojis || window.simpleListboxEmojisByCategory();
+window.SimplePickerSymbols =
+  window.SimplePickerSymbols || window.simpleListboxSymbolsByCategory();
 
-window.customElements.define(SimpleListboxEmoji.tag, SimpleListboxEmoji);
-export { SimpleListboxEmoji };
+window.customElements.define(SimpleListboxSymbol.tag, SimpleListboxSymbol);
+export { SimpleListboxSymbol };

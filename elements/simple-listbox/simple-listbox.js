@@ -11,6 +11,14 @@ const SimpleListboxProperties = {
     type: String,
   },
   /**
+   * whether listbox is positioned above the input
+   */
+  positionAbove: {
+    type: Boolean,
+    reflect: true,
+    attribute: "position-above",
+  },
+  /**
    * whether listbox is aligned on the right edge
    */
   alignRight: {
@@ -19,7 +27,7 @@ const SimpleListboxProperties = {
     attribute: "align-right",
   },
   /**
-   * Hint for form autofill feature: "none", "both", "list"
+   * Hint for form autofill feature: "none", "inline", "both", "list"
    */
   autocomplete: {
     type: String,
@@ -225,16 +233,15 @@ const SimpleListboxStyles = [
     :host([expanded]) {
       overflow: auto;
     }
-    :host(:focus-within),
+    :host([expanded]),
     :host(:hover),
     ul:hover,
     li:hover {
       z-index: 2;
     }
-    :host([expanded]),
+    :host([expanded]:focus-within),
     :host([expanded]) ul[role="listbox"]:focus-within,
-    :host([expanded]) li:focus-within,
-    :host(:focus-within) {
+    :host([expanded]) li:focus-within {
       z-index: 3;
     }
     absolute-position-behavior {
@@ -283,9 +290,6 @@ const SimpleListboxStyles = [
       overflow: auto;
       max-height: 12em;
     }
-    ul[role="listbox"]{
-      background-color: white;
-    }
 
     ul[role="listbox"] li[role] {
       font-family: sans-serif;
@@ -295,6 +299,7 @@ const SimpleListboxStyles = [
       border-bottom: 1px solid transparent;
       display: block;
       font-size: 100%;
+      background-color: white;
     }
 
     ul[role="listbox"] li[role="presentation"] {
@@ -340,14 +345,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.filteredOptions = [];
       this.inputFocus = false;
       this.inputHover = false;
-      this.isNone = true;
-      this.isList = false;
-      this.isBoth = false;
       this.listFocus = false;
       this.listHover = false;
       this.option = false;
       this.autofocus = false;
-      this.autocomplete = "none";
+      this.autocomplete = "both";
       this.readonly = false;
       this.itemsList = [];
       this.options = {};
@@ -358,7 +360,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     render(){
       return html`
         <div id="field">
-          ${this.labelTemplate}
           ${this.inputTemplate}
           ${this.expandButtonTemplate}
         </div>
@@ -367,7 +368,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           auto
           fit-to-visible-bounds 
           part="listbox-outer"
-          position="bottom" 
+          position="${this.positionAbove ? 'top' : 'bottom'}" 
           position-align="${this.alignRight ? 'end' : 'start'}"
           ?justify="${this.justify}">
           ${!this.tabs ? this.listboxTemplate : this.tablistTemplate}
@@ -401,7 +402,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "autocomplete") this.autocompleteChanged();
         if (propName === "expanded" && this.absolutePosition) this.absolutePosition.updatePosition();
         if (propName === "value" && this.value !== oldValue)
           this.fieldValueChanged();
@@ -420,16 +420,12 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     _fireValueChanged(){
 
     }
-  
-    autocompleteChanged() {
-      if (typeof this.autocomplete === "string") {
-        let autocomplete = this.autocomplete.toLowerCase();
-        this.isNone = autocomplete === "none";
-        this.isList = autocomplete === "list";
-        this.isBoth = autocomplete === "both";
-      } else {
-        this.isNone = true;
-      }
+
+    get isList(){
+      return this.autocomplete !== "none" && this.autocomplete !== "inline";
+    }
+    get isInline(){
+      return this.autocomplete !== "none" && this.autocomplete !== "list";
     }
 
     get demoItems(){
@@ -618,17 +614,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      */
     get labelTemplate() {
       return html`
-        <label
-          id="${this.labelId}"
-          for="${this.fieldId}"
-          class="label-main"
-          ?hidden="${this.type === "fieldset"}"
-          part="label"
-        >
-          <slot name="label-prefix"></slot>
-          <slot name="label"></slot>
-          ${this.error || this.required ? "*" : ""}
-        </label>
+        <slot name="label">
+          <label
+            id="${this.labelId}"
+            for="${this.fieldId}"
+            part="label"
+          >${this.label}
+          </label>
+      </slot>
       `;
     }
   
@@ -677,7 +670,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return html`
         <simple-icon-button-lite
           icon="arrow-drop-down"
-          ?hidden="${this.sortedOptions.length < 1}"
+          ?hidden="${!this.isList || this.sortedOptions.length < 1}"
           label="open"
           @click="${this._onButtonClick}"
           part="option-icon"
@@ -737,7 +730,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     get isListboxHidden() {
-      return this.hidden || !this.expanded || !this.hasOptions;
+      return this.hidden || !this.expanded || !this.hasOptions || !this.isList;
     }
     /**
      * list item for a given option
@@ -755,6 +748,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             @click="${(e) => this._onOptionClick(e, option)}"
             @mouseout="${(e) => this._onOptionMouseout(e, option)}"
             @mouseover="${(e) => this._onOptionMouseover(e, option)}"
+            style="${option.style}"
           >
             ${this.getListItemInner(option)}
           </li>` 
@@ -767,8 +761,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         id="option${option.id}"
         role="presentation"
         part="listbox-group"
-        data-group="${option.group}"
-        data-tooltip="${option.tooltip}"
+        data-group="${option.tab || option.group}"
+        data-tooltip="${option.tooltip || option.group}"
         data-icon="${option.icon}"
       >
         ${this.getListItemInner(option)}
@@ -782,7 +776,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      */
     getListItemInner(option) {
       return html`
-        ${option.group || option.value}
+        ${option.group ? option.group : option.icon ? html`<simple-icon-lite icon="${option.icon}"></simple-icon-lite>` : option.value}
         ${!option.tooltip ? '' : this.getListItemTooltip(option)}
       `;
     }
@@ -818,7 +812,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     setValue(value) {
       this.filter = value;
       this.input.setSelectionRange(this.filter.length, this.filter.length);
-      if (this.isList || this.isBoth) {
+      if (this.isList || this.isInline) {
         this.value = this.filterOptions(this.filter, this.option).value;
       }
     }
@@ -835,7 +829,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         this.setCurrentOptionStyle(this.option);
         this.setActiveDescendant(this.option);
   
-        if (this.isBoth) {
+        if (this.isInline) {
           this.value = this.option.value;
           this.input.value = this.option.value;
           if (flag) {
@@ -951,7 +945,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
   
       switch (event.keyCode) {
         case this.keyCode.RETURN:
-          if ((this.listFocus || this.isBoth) && this.option) {
+          if ((this.listFocus || this.isInline) && this.option) {
             this.setValue(this.option.value);
           }
           this.close(true);
@@ -960,7 +954,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
   
         case this.keyCode.DOWN:
           if (this.hasOptions) {
-            if (this.listFocus || (this.isBoth && this.option)) {
+            if (this.listFocus || (this.isInline && this.option)) {
               this.setOption(this.nextItem, true);
             } else {
               this.open();
@@ -975,7 +969,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
   
         case this.keyCode.UP:
           if (this.hasOptions) {
-            if (this.listFocus || (this.isBoth && this.option)) {
+            if (this.listFocus || (this.isInline && this.option)) {
               this.setOption(this.previousItem, true);
             } else {
               this.open();
@@ -1065,7 +1059,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.RIGHT:
         case this.keyCode.HOME:
         case this.keyCode.END:
-          if (this.isBoth) {
+          if (this.isInline) {
             this.filter = this.input.value;
           } else {
             this.option = false;
@@ -1087,7 +1081,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
   
       if (event.keyCode !== this.keyCode.RETURN) {
-        if (this.isList || this.isBoth) {
+        if (this.isList || this.isInline) {
           option = this.filterOptions(this.filter, this.option);
           if (option) {
             if (!this.expanded && (this.input.value || "").length) this.open();
@@ -1098,9 +1092,9 @@ const SimpleListBoxBehaviors = function (SuperClass) {
               ) === 0
             ) {
               this.option = option;
-              if (this.isBoth || this.listFocus) {
+              if (this.isInline || this.listFocus) {
                 this.setCurrentOptionStyle(option);
-                if (this.isBoth && isPrintableCharacter(char)) {
+                if (this.isInline && isPrintableCharacter(char)) {
                   this.setOption(option);
                 }
               }
@@ -1366,7 +1360,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
  * @customElement
  * @class SimpleListbox
  * @extends {SimpleListBoxBehaviors(LitElement)}
- * @demo ./demo/index.html Demo
+ * @demo ./demo/index.html Overview
+ * @demo ./demo/groups.html Groups of Items
+ * @demo ./demo/icons.html Icons
+ * @demo ./demo/emoji.html Emojis
+ * @demo ./demo/symbols.html Symbols
  */
 class SimpleListbox extends SimpleListBoxBehaviors(LitElement) {
   static get tag() {
