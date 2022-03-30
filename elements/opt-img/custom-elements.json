@@ -1,0 +1,35 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "opt-img",
+      "path": "./opt-img.js",
+      "description": "`opt-img`\n`an optimized image delivery`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "opt-img",
+      "path": "./src/opt-img.js",
+      "description": "`opt-img`\n`an optimized image delivery`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
