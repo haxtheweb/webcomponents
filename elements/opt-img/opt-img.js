@@ -13,13 +13,22 @@
 class OptImg extends HTMLElement {
   constructor() {
     super();
+    // for translation support if globally managed
+    this.t = this.t || {};
+    this.t.imageLoading = "Image loading..";
     // alt as nothing for decorative purposes if not set
     this.alt = '';
     this.src = '';
     this.width = "300px";
     this.height = "200px";
-    this.t = this.t || {};
-    this.t.imageLoading = "Image loading..";
+    // see if we have anything to pull data from light dom
+    if (this.querySelector("img")) {
+      const img = this.querySelector("img");
+      this.alt = img.alt || '';
+      this.src = img.src || '';
+      this.width = img.width || "300px";
+      this.height = img.height || "200px";
+    }
     // wipe anything that may be here from before
     this.innerHTML = null;
     // create a 'loading' container
