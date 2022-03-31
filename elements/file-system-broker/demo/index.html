@@ -32,8 +32,39 @@
       });
       document.getElementById('loaddir').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();
-        console.log(await broker.openDir(true));
+        const ary = await broker.openDir(true);
+        ary.sort(await function (a, b) {
+          return a.name > b.name;
+        });
+        console.log(ary);
+        let files = [];
+        await ary.forEach(async (item) => {
+          if (item.kind === "file" && endsWith(item.name, '.docx') || endsWith(item.name, '.html') || endsWith(item.name, '.md')) {
+            let file = await item.handle.getFile();
+            let JOSItem = {
+              name: item.name.replace(".docx", "").replace(".html", "").replace(".md", ""),
+              order: parseInt(item.name.split("-")[0]) || 0,
+              content: await file.text(),
+              metadata: {
+                type: endsWith(item.name, '.docx') ? 'docx' : endsWith(item.name, '.html') ? 'html' : 'md',
+                originalPath: item.folder + "/" + item.name
+              }
+            };
+            console.log(JOSItem);
+            files.push(JOSItem);
+          }
+        });
+        setTimeout(async () => {
+          files.sort(await function (a, b) {
+            return a.order <= b.order;
+          });
+          console.log(files);          
+        }, 1000);
+        // sort into a structure similar to JOS
       });
+      function endsWith(str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+      }
       document.getElementById('save').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();
         await broker.saveFile("markdown", document.getElementById('textarea').innerHTML);
