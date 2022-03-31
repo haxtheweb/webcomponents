@@ -5,17 +5,15 @@
     <meta name="description" content="Put your description here.">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>OptImg: opt-img Demo</title>
-    <script type="module" async defer>
+    <script nomodule="" src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" fetchpriority="low"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js" fetchpriority="high"></script>
+    <script nomodule="" src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js" fetchpriority="low"></script>
+    <script type="module">
       import '../opt-img.js';
     </script>
-    <style>
-      opt-img {
-        display: block;
-      }
-    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
+    <div>
       <h3>Basic opt-img demo</h3>
       <opt-img src="https://memegenerator.net/img/instances/57897121/10-years-later.jpg" alt="10 years later"></opt-img>
       <h3>Basic opt-img demo</h3>

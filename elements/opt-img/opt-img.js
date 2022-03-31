@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+
 /**
  * `opt-img`
  * `an optimized image delivery that is vanilla`
@@ -10,49 +10,73 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
  * @demo demo/index.html
  * @element opt-img
  */
-class OptImg extends IntersectionObserverMixin(HTMLElement) {
+class OptImg extends HTMLElement {
   constructor() {
     super();
     // alt as nothing for decorative purposes if not set
     this.alt = '';
     this.src = '';
-    // 10% of image visible === visible
-    this.IOVisibleLimit = 0.1;
-    // these help w/ threashold being set
-    this.IOThresholds = [0.0, 0.10, 0.25, 0.5, 0.75, 1.0];
-    this.template = document.createElement("template");
-    // preconnect the domain early on
-    this._preconnect = document.createElement("link");
-    this._preconnect.rel = "preconnect";
+    this.width = "300px";
+    this.height = "200px";
+    this.t = this.t || {};
+    this.t.imageLoading = "Image loading..";
     // wipe anything that may be here from before
     this.innerHTML = null;
     // create a 'loading' container
     this._loading = document.createElement("div");
+    this._loading.style.height = this.height;
+    this._loading.style.width = this.width;
     this._loading.innerHTML = this.loading;
     this.appendChild(this._loading);
+    // used for flipping visibility status to change what loads
+    this.loadingvisible = false;
+    this.template = document.createElement("template");
+    // preconnect the domain early on
+    this._preconnect = document.createElement("link");
+    this._preconnect.rel = "preconnect";
+  }
+  handleIntersectionCallback(entries) {
+    super.handleIntersectionCallback(entries);
+    for (let entry of entries) {
+      let ratio = Number(entry.intersectionRatio).toFixed(2);
+      if (ratio >= .1 && this._preconnect.rel != "preload" && !this.loadingvisible) {
+        // preload the image via header request
+        this._preconnect.remove();
+        this._preconnect = document.createElement("link");
+        this._preconnect.rel = "preload";
+        this._preconnect.href = this.src;
+        this._preconnect.as = "image";
+        document.head.appendChild(this._preconnect);
+      }
+    }
   }
   // return a basic img tag w/ values printed in
   get html() {
-    return `<img src="${this.src}" height="${this.height}" width="${this.width}" alt="${this.alt}" decoding="async" loading="lazy" />`;
+    return `<img 
+    src="${this.src}" 
+    height="${this.height}" 
+    width="${this.width}" 
+    alt="${this.alt}" 
+    decoding="async" 
+    loading="lazy"
+    fetchpriority="high" />`;
   }
   // get a basic loading svg that's styled
   get loading() {
     return `
     <style>
-    opt-img #dots {
-      margin-bottom: 100px;
+    opt-img {
+      display: inline;
     }
-    opt-img #dots #dot1{
+    opt-img #dots circle{
       animation: load 1s infinite;
     }
     
     opt-img #dots #dot2{
-      animation: load 1s infinite;
       animation-delay: 0.2s;
     }
     
     opt-img #dots #dot3{
-      animation: load 1s infinite;
       animation-delay: 0.4s;
     }
     
@@ -76,13 +100,15 @@ class OptImg extends IntersectionObserverMixin(HTMLElement) {
               <circle id="dot3" sketch:type="MSShapeGroup" cx="105" cy="30" r="13"></circle>
           </g>
       </g>
-    </svg>`;
+    </svg>
+    <div aria-busy="true" aria-live="polite">${this.t.imageLoading}</div>
+    `;
   }
   /**
    * only update on the 3 values we care about changing
    */
   static get observedAttributes() {
-    return ["src", "alt", "element-visible"];
+    return ["src", "alt", "loadingvisible"];
   }
   /**
    * callback when any observed attribute changes
@@ -93,7 +119,7 @@ class OptImg extends IntersectionObserverMixin(HTMLElement) {
       // force a repaint
       this.render();
     }
-    else if (['element-visible'].includes(attr)) {
+    else if (['loadingvisible'].includes(attr)) {
       this.render();
     }
     // source being set, let's preconnect the domain prior to usage
@@ -104,16 +130,16 @@ class OptImg extends IntersectionObserverMixin(HTMLElement) {
     }
   }
   // peg attribute to property change internally
-  set elementVisible(val) {
+  set loadingvisible(val) {
     if (val === false) {
-      this.removeAttribute("element-visible");
+      this.removeAttribute("loadingvisible");
     }
     else {
-      this.setAttribute("element-visible", "element-visible");
+      this.setAttribute("loadingvisible", "loadingvisible");
     }
   }
-  get elementVisible() {
-    return this.getAttribute("element-visible");
+  get loadingvisible() {
+    return this.getAttribute("loadingvisible");
   }
   /**
    * This is a convention, not the standard
@@ -126,9 +152,10 @@ class OptImg extends IntersectionObserverMixin(HTMLElement) {
    */
   render() {
     // only render if we're visible
-    if (this.elementVisible) {
+    if (this.loadingvisible) {
       // make a fake image
       let i = new Image();
+      i.fetchpriority = "high";
       // when we load, we'll have the props about it
       i.onload = () => {
         // subtle, but these 4 lines help reduce the jarring of painting the image
@@ -152,6 +179,70 @@ class OptImg extends IntersectionObserverMixin(HTMLElement) {
       i.src = this.src;
       // delete the preconnect tag in the head for clean up
       this._preconnect.remove();
+    }
+  }
+  /**
+     * HTMLElement specification
+     */
+   connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          context: this,
+          namespace: "opt-img",
+          localesPath: new URL("./locales", import.meta.url).href,
+          updateCallback: "render",
+          locales: ["es"],
+        },
+      })
+    );
+    // setup the intersection observer, only if we are not visible
+    if (!this.loadingvisible) {
+      this.intersectionObserver = new IntersectionObserver(
+        this.handleIntersectionCallback.bind(this),
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: [0.0, 0.25, 0.5, 0.75, 1.0], // when to return records
+          delay: 500, // how often to query this
+        }
+      );
+      this.intersectionObserver.observe(this);
+    }
+  }
+  /**
+   * HTMLElement specification
+   */
+  disconnectedCallback() {
+    // if we have an intersection observer, disconnect it
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+      // edge case where element is moved in the DOM so that
+      // connnected will set the event back up accurately
+      this.loadingvisible = false;
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
+  /**
+   * Very basic IntersectionObserver callback which will set loadingvisible to true
+   */
+  handleIntersectionCallback(entries) {
+    for (let entry of entries) {
+      let ratio = Number(entry.intersectionRatio).toFixed(2);
+      // ensure ratio is higher than our limit before trigger visibility
+      // call when 1/2 of our loader is visible
+      if (ratio >= .25) {
+        this.loadingvisible = true;
+        // remove the observer if we've reached our target of being visible
+        this.intersectionObserver.disconnect();
+      } else {
+        this.loadingvisible = false;
+      }
     }
   }
 }

@@ -44,7 +44,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^4.0.4"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
