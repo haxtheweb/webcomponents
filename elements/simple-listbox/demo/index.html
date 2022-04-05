@@ -47,11 +47,26 @@
           <p><simple-listbox demo-mode="items" position-above></simple-listbox></p>
         </template>
       </demo-snippet>
+      <h3>simple-listbox custom text comparison for autocomplete</h3>
+      <demo-snippet>
+        <p>The following example can be searched by entering color name or hex code:</p>
+        <template>
+          <p><simple-listbox id="hex" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
+          <script>
+            document.getElementById('hex').itemsList = [
+              { value: 'purple', textComparison: ["purple","#800080","800080"] },
+              { value: 'red', textComparison: ["red","#ff0000","ff0000"] },
+              { value: 'magenta', textComparison: ["magenta","#ff00ff","ff00ff"] },
+              { value: 'blue', textComparison: ["blue","#0000ff","#0000ff"] },
+            ];
+          </script>
+        </template>
+      </demo-snippet>
       <h3>simple-listbox custom styles</h3>
       <demo-snippet>
         <template>
           <p><simple-listbox id="fonts" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
-          <p><simple-listbox id="colors" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
+          <p><simple-listbox id="colors" autocomplete="both"><span slot="label">Listbox with Color Styles</span></simple-listbox></p>
           <script>
             document.getElementById('fonts').itemsList = [
               'serif',

@@ -49,6 +49,13 @@ const SimpleListboxProperties = {
     reflect: true,
   },
   /**
+   * sets aria-describedby
+   */
+  describedBy: {
+    type: String,
+    attribute: "described-by"
+  },
+  /**
    * Whether field has errors
    */
   error: {
@@ -61,12 +68,6 @@ const SimpleListboxProperties = {
   expanded: {
     type: Boolean,
     reflect: true,
-  },
-  /**
-   * aray of filtered listbox option first characters
-   */
-  firstChars: {
-    type: Array,
   },
   /**
    * aray of filtered listbox options
@@ -304,7 +305,11 @@ const SimpleListboxStyles = [
 
     ul[role="listbox"] li[role="presentation"] {
       color: #444;
-      background-color: #f8f8f8;
+      text-transform: uppercase;
+      font-size: 80%;
+      line-height: 125%;
+      letter-spacing: 0.15em;
+      background-color: #f0f0f0;
     }
 
     ul[role="listbox"] li[role="option"][aria-selected="true"] {
@@ -683,7 +688,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     get tablistTemplate(){
       import("./lib/simple-listbox-tabs.js");
       return html`
-        <simple-listbox-tabs part="tabsdisplay" exportparts="tablist tablist-item tab tab-active tab-disabled">
+        <simple-listbox-tabs 
+          part="tabsdisplay" 
+          exportparts="tablist tablist-item tab tab-active tab-disabled"
+          @focus="${this._onTablistFocus}"
+          @blur="${this._onTablistBlur}"
+          @mouseout="${this._onTablistMouseout}"
+          @mouseover="${this._onTablistMouseover}">
           <div role="tabpanel" part="tabpanel">${this.listboxTemplate}</div>
         </simple-listbox-tabs>`;
     }
@@ -934,6 +945,42 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.setCurrentOptionStyle(null);
     }
     /**
+     * handles tablist focus
+     *
+     * @param {event} event
+     * @memberof SimpleFieldsCombo
+     */
+    _onTablistFocus(event) {
+      this.__tabFocus = true;
+    }
+    /**
+     * handles tablist blur
+     *
+     * @param {event} event
+     * @memberof SimpleFieldsCombo
+     */
+    _onTablistBlur(event) {
+      this.__tabFocus = false;
+    }
+    /**
+     * handles tablist mouseover
+     *
+     * @param {event} event
+     * @memberof SimpleFieldsCombo
+     */
+    _onTablistMouseover(event) {
+      this.__tabHover = true;
+    }
+    /**
+     * handles tablist mouseout
+     *
+     * @param {event} event
+     * @memberof SimpleFieldsCombo
+     */
+     _onTablistMouseout(event) {
+      this.__tabHover = false;
+    }
+    /**
      * handles input keydown
      *
      * @param {event} event
@@ -1170,22 +1217,25 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       filter = filter.toLowerCase();
   
       this.filteredOptions = [];
-      this.firstChars = [];
   
       for (i = 0; i < this.sortedOptions.length; i++) {
         option = this.sortedOptions[i];
         option.id = i;
-        option.textComparison = !option.group ? (option.value || "").toLowerCase() : undefined;
+        option.textComparison = option.group 
+          ? undefined
+          : option.textComparison && Array.isArray(option.textComparison) && option.textComparison.length > 0 
+          ? option.textComparison.map(text=>text.toLowerCase())
+          : [ (option.textComparison || option.value || "").toLowerCase() ];
+        let filtered = filter.length === 0 || !option.group && option.textComparison.filter(text=>text.indexOf(filter) === 0).length > 0;
         if(!!option.group){
           lastGroup = option;
-        } else if (filter.length === 0 || option.textComparison.indexOf(filter) === 0) {
+        } else if (filtered) {
           if(!!lastGroup) {
             this.filteredOptions.push(lastGroup);
             lastGroup = undefined;
           }
           this.filteredOptions.push(option);
           textContent = (option.value || '').trim();
-          if(!option.group) this.firstChars.push(textContent.substring(0, 1).toLowerCase());
         }
       }
   
@@ -1240,7 +1290,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         force = false;
       }
   
-      if (force || (!this.inputFocus && !this.hasHover && !this.hasHover)) {
+      if (force || (!this.inputFocus && !this.hasHover && !this.hasHover && !this.__tabFocus && !this.__tabHover )) {
         this.setCurrentOptionStyle(false);
         this.expanded = false;
         this.setActiveDescendant(false);

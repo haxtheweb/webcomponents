@@ -316,7 +316,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   get isListboxHidden() {
-    return this.hidden || !this.expanded || this.filteredOptions.length < 1;
+    return this.hidden || !this.expanded || !this.hasOptions;
   }
 
   getListItem(option) {
@@ -364,7 +364,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   }
 
   get hasOptions() {
-    return this.filteredOptions.length > 0;
+    return !!this.filteredOptions && this.filteredOptions.length > 0;
   }
   /**
    * sets aria-activeDescendant
@@ -723,11 +723,9 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       filter = "";
     }
 
-    var firstMatch = false,
-      i,
+    var i,
       option,
-      textContent,
-      numItems;
+      textContent;
 
     filter = filter.toLowerCase();
 
@@ -745,25 +743,16 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       }
     }
 
-    // Use populated.filteredOptions array to initialize firstOption and lastOption.
-    numItems = this.filteredOptions.length;
-    if (numItems > 0) {
-      this.firstOption = this.filteredOptions[0];
-      this.lastOption = this.filteredOptions[numItems - 1];
-      let filteredText = this.filteredOptions.map((o) => o.textComparison);
-      if (
-        currentOption &&
-        currentOption.textComparison &&
-        filteredText.includes(currentOption.textComparison)
-      ) {
-        option = currentOption;
-      } else {
-        option = this.firstOption;
-      }
+    if(!this.hasOptions) return false;
+    let filteredText = this.filteredOptions.map((o) => o.textComparison);
+    if (
+      currentOption &&
+      currentOption.textComparison &&
+      filteredText.includes(currentOption.textComparison)
+    ) {
+      option = currentOption;
     } else {
-      this.firstOption = false;
-      option = false;
-      this.lastOption = false;
+      option = this.firstOption;
     }
     return option;
   }
@@ -826,6 +815,14 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     this.listHover = false;
     this.hoveredOption = undefined;
     setTimeout(this.close(false), 300);
+  }
+
+  get firstOption(){
+    return this.hasOptions ? this.filteredOptions[0] : false;
+  }
+
+  get lastOption(){
+    return this.hasOptions ? this.filteredOptions[this.filteredOptions.length - 1] : false;
   }
 
   get previousItem() {
