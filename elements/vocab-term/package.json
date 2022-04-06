@@ -45,7 +45,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.2.0"
+    "lit": "^2.2.0",
+    "@lrnwebcomponents/simple-popover": "^4.0.20",
+    "@lrnwebcomponents/simple-modal": "^4.0.20"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "3.0.0",

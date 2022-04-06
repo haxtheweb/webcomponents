@@ -39,6 +39,7 @@ class RpgCharacter extends SimpleColors {
     this.circle = false;
     this.hat = 'none';
     this.demo = false;
+    this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
   randomColor(seed = null) {
@@ -67,7 +68,8 @@ class RpgCharacter extends SimpleColors {
       seed: { type: String, reflect: true },
       speed: { type: Number },
       circle: { type: Boolean, reflect: true},
-      demo: { type: Boolean}
+      demo: { type: Boolean},
+      reduceMotion: { type: Boolean }
     }
   }
   /**
@@ -149,15 +151,15 @@ class RpgCharacter extends SimpleColors {
     const hat = new URL(`./lib/hat/${this.hat}.svg`, import.meta.url).href;
     return html`
     <div class="wrapper">
-      <img src="${skin}" />
-      ${this.base === 1 ? html`<img src="${hair}" />` : ``}
-      <img src="${face}" />
-      <img src="${faceItem}" />
-      <img src="${shirt}" />
-      <img src="${pants}" />
-      <img src="${accessories}" />
-      <img src="${base}" />${this.leg !== '' ? html`<img src="${leg}" />`:``}
-      <img src="${hat}" />
+      <img src="${skin}" alt="" loading="lazy" decoding="async" />
+      ${this.base === 1 ? html`<img src="${hair}" alt="" loading="lazy" decoding="async" />` : ``}
+      <img src="${face}" alt="" loading="lazy" decoding="async" />
+      <img src="${faceItem}" alt="" loading="lazy" decoding="async" />
+      <img src="${shirt}" alt="" loading="lazy" decoding="async" />
+      <img src="${pants}" alt="" loading="lazy" decoding="async" />
+      <img src="${accessories}" alt="" loading="lazy" decoding="async" />
+      <img src="${base}" alt="" loading="lazy" decoding="async" />${this.leg !== '' ? html`<img src="${leg}" alt="" loading="lazy" decoding="async" />`:``}
+      <img src="${hat}" alt="" loading="lazy" decoding="async" />
       ${this.circle ? svg`
 <svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_143_641)">
@@ -209,7 +211,7 @@ class RpgCharacter extends SimpleColors {
           });
         }
       }
-      if ((propName === "leg" || propName === "walking") && this.walking) {
+      if ((propName === "leg" || propName === "walking") && this.walking && !this.reduceMotion) {
         clearTimeout(this.__walkingTimeout);
         this.__walkingTimeout = setTimeout(() => {
           switch (this.leg) {
