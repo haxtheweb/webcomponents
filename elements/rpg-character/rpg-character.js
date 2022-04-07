@@ -52,8 +52,6 @@ class RpgCharacter extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
-      hatColor: { type: String, attribute: "hat-color" },
-      pantsColor: { type: String, attribute: "pants-color" },
       accessories: { type: Number },
       base: { type: Number },
       face: { type: Number },
@@ -104,17 +102,8 @@ class RpgCharacter extends SimpleColors {
           padding: 0;
           text-align: initial;
         }
-        #hat {
-          height: 55px;
-        }
-        #face {
-          height: 30px;
-        }
-        #shirt {
-          height: 28px;
-        }
-        #pants {
-          height: 20px;
+        .wrapper {
+          height: 142px;
         }
         #demo {
           height: 30px;
@@ -159,7 +148,7 @@ class RpgCharacter extends SimpleColors {
       <img src="${pants}" alt="" loading="lazy" decoding="async" />
       <img src="${accessories}" alt="" loading="lazy" decoding="async" />
       <img src="${base}" alt="" loading="lazy" decoding="async" />${this.leg !== '' ? html`<img src="${leg}" alt="" loading="lazy" decoding="async" />`:``}
-      <img src="${hat}" alt="" loading="lazy" decoding="async" />
+      ${this.hat !== 'none' ? html`<img src="${hat}" alt="" loading="lazy" decoding="async" />` : ``}
       ${this.circle ? svg`
 <svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_143_641)">
@@ -172,21 +161,11 @@ class RpgCharacter extends SimpleColors {
     </clipPath>
   </defs>
 </svg>` : ``}
-      <div id="hat"></div>
-      <div id="face"></div>
-      <div id="shirt"></div>
-      <div id="pants"></div>
   </div>
       ${this.demo ? html`<div id="demo">${this.seed}</div>` : ``}
       <style>
-        #hat {
-          background-color: var(--simple-colors-default-theme-${this.hatColor}-7, orange);
-        }
-        #pants {
-          background-color: var(--simple-colors-default-theme-${this.pantsColor}-8, yellow);
-        }
         #cardcircle {
-          fill: var(--simple-colors-default-theme-${this.pantsColor}-8, var(--simple-colors-default-theme-accent-8, yellow));
+          fill: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));
         }
       </style>
     `;
@@ -245,12 +224,6 @@ class RpgCharacter extends SimpleColors {
         seed = BigInt(seed).toString();
         if (Object.keys(funKeys).includes(this[propName])) {
           seed = funKeys[this[propName]];
-          this.hatColor = 'red';
-          this.pantsColor = 'deep-purple';
-        }
-        else {
-          this.hatColor = this.randomColor();
-          this.pantsColor = this.randomColor();
         }
         const charBuilder = {
           accessories : 9,
