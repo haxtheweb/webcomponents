@@ -35,6 +35,8 @@
       <input id="seed" size="20"/>
       <label for="circle">Circle?</label>
       <input id="circle" type="checkbox" />
+      <label for="fire">Fire!?!?</label>
+      <input id="fire" type="checkbox" />
       <label>Accent color</label>
       <simple-colors-picker id="accent" value="orange"></simple-colors-picker>
       <label for="walking">Walking?</label>
@@ -51,7 +53,7 @@
         <rpg-character hat="bunny"></rpg-character>
         <rpg-character hat="edit"></rpg-character>
         <rpg-character walking speed="100"></rpg-character>
-        <rpg-character></rpg-character>
+        <rpg-character fire></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
         <rpg-character></rpg-character>
@@ -107,6 +109,9 @@
         });
         dqs("#circle").addEventListener("change", (e) => {
           dqs("rpg-character").circle = e.target.checked;
+        });
+        dqs("#fire").addEventListener("change", (e) => {
+          dqs("rpg-character").fire = e.target.checked;
         });
         dqs("#dice").addEventListener("click", (e) => {
           Array.from(dqsa("rpg-character")).forEach((item) => {

@@ -4,6 +4,7 @@
  */
 import { html, css, svg } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+const defaultSpeed = 500;
 /**
  * `rpg-character`
  * `Little RPG character that&#39;s remixable`
@@ -38,7 +39,9 @@ class RpgCharacter extends SimpleColors {
     this.__walkingTimeout = null;
     this.circle = false;
     this.hat = 'none';
+    this.hatColor = 0;
     this.demo = false;
+    this.fire = false;
     this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
@@ -60,12 +63,14 @@ class RpgCharacter extends SimpleColors {
       pants: { type: Number },
       shirt: { type: Number },
       skin: { type: Number },
-      hat: { type: String },      
+      hatColor: { type: Number },
+      hat: { type: String },
       walking: { type: Boolean, reflect: true},
       leg: { type: String },
       seed: { type: String, reflect: true },
       speed: { type: Number },
       circle: { type: Boolean, reflect: true},
+      fire: { type: Boolean, reflect: true},
       demo: { type: Boolean},
       reduceMotion: { type: Boolean }
     }
@@ -138,6 +143,8 @@ class RpgCharacter extends SimpleColors {
     const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
     const hat = new URL(`./lib/hat/${this.hat}.svg`, import.meta.url).href;
+    const hatColor = new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
+    const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
     return html`
     <div class="wrapper">
       <img src="${skin}" alt="" loading="lazy" decoding="async" />
@@ -148,7 +155,9 @@ class RpgCharacter extends SimpleColors {
       <img src="${pants}" alt="" loading="lazy" decoding="async" />
       <img src="${accessories}" alt="" loading="lazy" decoding="async" />
       <img src="${base}" alt="" loading="lazy" decoding="async" />${this.leg !== '' ? html`<img src="${leg}" alt="" loading="lazy" decoding="async" />`:``}
+      <img src="${hatColor}" alt="" loading="lazy" decoding="async" />
       ${this.hat !== 'none' ? html`<img src="${hat}" alt="" loading="lazy" decoding="async" />` : ``}
+      ${this.fire ? html`<img src="${fire}" alt="" loading="lazy" decoding="async" />` : ``}
       ${this.circle ? svg`
 <svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_143_641)">
@@ -178,6 +187,9 @@ class RpgCharacter extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'fire') {
+        this.speed = (this[propName] ? 100 : defaultSpeed);
+      }
       if (propName === "demo") {
         if (this[propName]) {
           this.shadowRoot.querySelector(".wrapper").addEventListener("click", (e) => {
@@ -218,7 +230,7 @@ class RpgCharacter extends SimpleColors {
         const funKeys = {
           zpg: '7501517984378880262144',
           edtechjoker: '712215550',
-          btopro: '712215550',
+          btopro: '7122155501',
         };
         // ensure huge numbers dont bust JS max
         seed = BigInt(seed).toString();
@@ -235,6 +247,7 @@ class RpgCharacter extends SimpleColors {
           pants : 9,
           shirt : 9,
           skin : 9,
+          hatColor : 9,
         }
         Object.keys(charBuilder).forEach((trait, key) => {
           if (seed[key] !== undefined) {
