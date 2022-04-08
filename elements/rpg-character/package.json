@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.20",
+  "version": "4.0.21",
   "description": "Little RPG character that&#39;s remixable",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^4.0.20",
+    "@lrnwebcomponents/simple-colors": "^4.0.21",
     "lit": "^2.2.0"
   },
   "devDependencies": {
