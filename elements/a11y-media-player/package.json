@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.21",
+  "version": "4.0.22",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -44,22 +44,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^4.0.21",
-    "@lrnwebcomponents/anchor-behaviors": "^4.0.21",
-    "@lrnwebcomponents/fullscreen-behaviors": "^4.0.21",
-    "@lrnwebcomponents/responsive-utility": "^4.0.21",
-    "@lrnwebcomponents/simple-colors": "^4.0.21",
-    "@lrnwebcomponents/simple-fields": "^4.0.21",
-    "@lrnwebcomponents/simple-icon": "^4.0.21",
-    "@lrnwebcomponents/simple-range-input": "^4.0.21",
-    "@lrnwebcomponents/simple-search": "^4.0.21",
-    "@lrnwebcomponents/simple-toast": "^4.0.21",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.21",
+    "@lrnwebcomponents/absolute-position-behavior": "^4.0.22",
+    "@lrnwebcomponents/anchor-behaviors": "^4.0.22",
+    "@lrnwebcomponents/fullscreen-behaviors": "^4.0.22",
+    "@lrnwebcomponents/responsive-utility": "^4.0.22",
+    "@lrnwebcomponents/simple-colors": "^4.0.22",
+    "@lrnwebcomponents/simple-fields": "^4.0.22",
+    "@lrnwebcomponents/simple-icon": "^4.0.22",
+    "@lrnwebcomponents/simple-range-input": "^4.0.22",
+    "@lrnwebcomponents/simple-search": "^4.0.22",
+    "@lrnwebcomponents/simple-toast": "^4.0.22",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.22",
     "@lrnwebcomponents/utils": "^4.0.8",
     "lit": "^2.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^4.0.21",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.22",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
