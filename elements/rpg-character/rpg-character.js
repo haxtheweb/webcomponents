@@ -4,7 +4,12 @@
  */
 import { html, css, svg } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+// default movement speed
 const defaultSpeed = 500;
+// default list of non-status related hats
+const hatList = [
+  'bunny', 'coffee', 'construction', 'cowboy', 'education', 'knight', 'ninja', 'party', 'pirate', 'watermelon'
+];
 /**
  * `rpg-character`
  * `Little RPG character that&#39;s remixable`
@@ -142,7 +147,15 @@ class RpgCharacter extends SimpleColors {
     const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url).href;
     const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
-    const hat = new URL(`./lib/hat/${this.hat}.svg`, import.meta.url).href;
+    let hatFileName = this.hat;
+    // special cases to change hat from the one requested
+    if (this.fire && this.hat === 'none') {
+      hatFileName = 'coffee';
+    }
+    else if (this.hat === 'random') {
+      hatFileName = hatList[Math.floor(Math.random()*hatList.length)];
+    }
+    const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
     const hatColor = new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
     const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
     return html`
@@ -156,8 +169,8 @@ class RpgCharacter extends SimpleColors {
       <img src="${accessories}" alt="" loading="lazy" decoding="async" />
       <img src="${base}" alt="" loading="lazy" decoding="async" />${this.leg !== '' ? html`<img src="${leg}" alt="" loading="lazy" decoding="async" />`:``}
       <img src="${hatColor}" alt="" loading="lazy" decoding="async" />
-      ${this.hat !== 'none' ? html`<img src="${hat}" alt="" loading="lazy" decoding="async" />` : ``}
       ${this.fire ? html`<img src="${fire}" alt="" loading="lazy" decoding="async" />` : ``}
+      ${hatFileName !== 'none' ? html`<img src="${hat}" alt="" loading="lazy" decoding="async" />` : ``}
       ${this.circle ? svg`
 <svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_143_641)">
