@@ -33,6 +33,7 @@
           <button id="button1">Open 1</button>
           <button id="button2">Pull some div in</button>
           <button id="button3">Fire an event</button>
+          <button id="button4">modal content</button>
         <script>
           document.getElementById('button1').addEventListener('click', () => {
             let p = document.createElement("div");
@@ -93,6 +94,28 @@
               }
             });
             document.getElementById('button3').dispatchEvent(evt);
+          });
+          // this is the best way to work with the modal as it provides the most flexibility
+          document.getElementById('button4').addEventListener('click', () => {
+            let p = document.createElement("div");
+            p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
+            let h = document.createElement("h3");
+            h.innerHTML = 'We Love headings';
+            let button = document.createElement("button");
+            button.addEventListener('click', window.__click.bind(this));
+            button.appendChild(document.createTextNode("I keep event binding"));
+            const evt = new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: false,
+                elements: {header: h, content: p, buttons: button },
+                invokedBy: document.getElementById('button3'),
+                clone: false,
+                modal: true
+              }
+            });
+            document.getElementById('button4').dispatchEvent(evt);
           });
         </script>
         </template>
