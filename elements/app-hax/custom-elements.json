@@ -4,12 +4,1409 @@
     {
       "name": "app-hax",
       "path": "./app-hax.js",
-      "description": "`app-hax`\n`HAX+HAXcms as a full app experience`"
+      "attributes": [
+        {
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "name": "userMenuOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "courses",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "activeItem",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "phrases",
+          "type": "object",
+          "default": "{\"new\":[\"What's ya name?\",\"HAX to the moon\",\"Welcome to the Jungle\",\"We like to party\",\"Build something awesome\",\"Everything is awesome!\",\"Everything is cool when you're part of the team\",\"When you're living our dream\"],\"return\":[\"Welcome back, take 2?\",\"That wasn't very long\",\"Sup?\",\"You again? Awesome!\",\"Let's do this\",\"There can only be one ring...\",\"There is another\",\"Fancy that, I love HAX and you show up\"]}"
+        },
+        {
+          "name": "isNewUser",
+          "type": "boolean"
+        },
+        {
+          "name": "routes",
+          "type": "array",
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "appMode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "soundIcon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "userName",
+          "attribute": "userName",
+          "type": "string"
+        },
+        {
+          "name": "userMenuOpen",
+          "attribute": "userMenuOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "courses",
+          "attribute": "courses",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "phrases",
+          "attribute": "phrases",
+          "type": "object",
+          "default": "{\"new\":[\"What's ya name?\",\"HAX to the moon\",\"Welcome to the Jungle\",\"We like to party\",\"Build something awesome\",\"Everything is awesome!\",\"Everything is cool when you're part of the team\",\"When you're living our dream\"],\"return\":[\"Welcome back, take 2?\",\"That wasn't very long\",\"Sup?\",\"You again? Awesome!\",\"Let's do this\",\"There can only be one ring...\",\"There is another\",\"Fancy that, I love HAX and you show up\"]}"
+        },
+        {
+          "name": "isNewUser",
+          "attribute": "isNewUser",
+          "type": "boolean"
+        },
+        {
+          "name": "routes",
+          "attribute": "routes",
+          "type": "array",
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "appMode",
+          "attribute": "appMode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "soundIcon",
+          "attribute": "soundIcon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "store",
+          "default": "\"store\""
+        },
+        {
+          "name": "sound"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "app-hax-loaded"
+        }
+      ]
+    },
+    {
+      "name": "random-word",
+      "path": "./lib/random-word/random-word.js",
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "name": "phrases",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "word",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "key",
+          "attribute": "key",
+          "type": "string"
+        },
+        {
+          "name": "phrases",
+          "attribute": "phrases",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "word",
+          "attribute": "word",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "word-changed"
+        }
+      ]
+    },
+    {
+      "name": "rpg-character-toast",
+      "path": "./lib/rpg-character-toast/rpg-character-toast.js",
+      "attributes": [
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "fire",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hat",
+          "type": "string",
+          "default": "\"coffee\""
+        },
+        {
+          "name": "walking",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "text",
+          "description": "Plain text based message to display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number",
+          "default": "3000"
+        },
+        {
+          "name": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "classStyle",
+          "attribute": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "eventCallback",
+          "attribute": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "phrases",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "fire",
+          "attribute": "fire",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hat",
+          "attribute": "hat",
+          "type": "string",
+          "default": "\"coffee\""
+        },
+        {
+          "name": "walking",
+          "attribute": "walking",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "word"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Plain text based message to display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "duration",
+          "attribute": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number",
+          "default": "3000"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "opened-changed"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-backend-api",
+      "path": "./lib/v1/AppHaxBackendAPI.js",
+      "attributes": [
+        {
+          "name": "jwt",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "type": "string"
+        },
+        {
+          "name": "base-address",
+          "type": "string",
+          "default": "\"/\""
+        },
+        {
+          "name": "appSettings",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "type": "string"
+        },
+        {
+          "name": "baseAddress",
+          "attribute": "base-address",
+          "type": "string",
+          "default": "\"/\""
+        },
+        {
+          "name": "lastResponse",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "appSettings",
+          "attribute": "appSettings",
+          "type": "object",
+          "default": "{}"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-router",
+      "path": "./lib/v1/AppHaxRouter.js",
+      "description": "`app-hax-router`",
+      "properties": [
+        {
+          "name": "baseURI",
+          "type": "string | null"
+        },
+        {
+          "name": "router"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-button",
+      "path": "./lib/v1/app-hax-button.js",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"save\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "elevation",
+          "type": "number",
+          "default": "\"2\""
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"save\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "type": "number",
+          "default": "\"2\""
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-hat-progress",
+      "path": "./lib/v1/app-hax-hat-progress.js",
+      "attributes": [
+        {
+          "name": "promises",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "promises",
+          "attribute": "promises",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "progress-ready"
+        },
+        {
+          "name": "promise-progress-finished"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-label",
+      "path": "./lib/v1/app-hax-label.js",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Welcome\""
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "default": "\"Start your journey now!\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Welcome\""
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "type": "string",
+          "default": "\"Start your journey now!\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-search-bar",
+      "path": "./lib/v1/app-hax-search-bar.js",
+      "attributes": [
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-search",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSearch",
+          "attribute": "show-search",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-search-results",
+      "path": "./lib/v1/app-hax-search-results.js",
+      "attributes": [
+        {
+          "name": "searchItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "displayItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "searchItems",
+          "attribute": "searchItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "displayItems",
+          "attribute": "displayItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-site-bar",
+      "path": "./lib/v1/app-hax-site-bar.js",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "inprogress",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon-link",
+          "type": "string",
+          "default": "\"https://www.psu.edu\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "inprogress",
+          "attribute": "inprogress",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "iconLink",
+          "attribute": "icon-link",
+          "type": "string",
+          "default": "\"https://www.psu.edu\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-site-button",
+      "path": "./lib/v1/app-hax-site-button.js",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "elevation",
+          "type": "number",
+          "default": "\"3\""
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "type": "number",
+          "default": "\"3\""
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-site-details",
+      "path": "./lib/v1/app-hax-site-details.js",
+      "attributes": [
+        {
+          "name": "need",
+          "type": "string",
+          "default": "\"all need to succeed\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "need",
+          "attribute": "need",
+          "type": "string",
+          "default": "\"all need to succeed\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-site-login",
+      "path": "./lib/v1/app-hax-site-login.js",
+      "attributes": [
+        {
+          "name": "username",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "errorMSG",
+          "type": "string",
+          "default": "\"Enter User name\""
+        },
+        {
+          "name": "hidePassword",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "username",
+          "attribute": "username",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "password",
+          "attribute": "password",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "errorMSG",
+          "attribute": "errorMSG",
+          "type": "string",
+          "default": "\"Enter User name\""
+        },
+        {
+          "name": "hidePassword",
+          "attribute": "hidePassword",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-steps",
+      "path": "./lib/v1/app-hax-steps.js",
+      "attributes": [
+        {
+          "name": "stepRoutes",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "step",
+          "type": "number"
+        },
+        {
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "themeNames",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "appSettings",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stepRoutes",
+          "attribute": "stepRoutes",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "step",
+          "attribute": "step",
+          "type": "number"
+        },
+        {
+          "name": "loaded",
+          "attribute": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "themeNames",
+          "attribute": "themeNames",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "appSettings",
+          "attribute": "appSettings",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-toast",
+      "path": "./lib/v1/app-hax-toast.js",
+      "attributes": [
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "fire",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hat",
+          "type": "string",
+          "default": "\"coffee\""
+        },
+        {
+          "name": "walking",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "text",
+          "description": "Plain text based message to display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number",
+          "default": "3000"
+        },
+        {
+          "name": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "classStyle",
+          "attribute": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "eventCallback",
+          "attribute": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "phrases",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "fire",
+          "attribute": "fire",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hat",
+          "attribute": "hat",
+          "type": "string",
+          "default": "\"coffee\""
+        },
+        {
+          "name": "walking",
+          "attribute": "walking",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "word"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Plain text based message to display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "duration",
+          "attribute": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number",
+          "default": "3000"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "opened-changed"
+        }
+      ]
+    },
+    {
+      "name": "app-hax-top-bar",
+      "path": "./lib/v1/app-hax-top-bar.js"
+    },
+    {
+      "name": "app-hax-wired-toggle",
+      "path": "./lib/v1/app-hax-wired-toggle.js",
+      "attributes": [
+        {
+          "name": "checked",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "checked",
+          "attribute": "checked",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        }
+      ]
     },
     {
       "name": "app-hax",
       "path": "./src/app-hax.js",
-      "description": "`app-hax`\n`HAX+HAXcms as a full app experience`"
+      "attributes": [
+        {
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "name": "userMenuOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "courses",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "activeItem",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "phrases",
+          "type": "object",
+          "default": "{\"new\":[\"What's ya name?\",\"HAX to the moon\",\"Welcome to the Jungle\",\"We like to party\",\"Build something awesome\",\"Everything is awesome!\",\"Everything is cool when you're part of the team\",\"When you're living our dream\"],\"return\":[\"Welcome back, take 2?\",\"That wasn't very long\",\"Sup?\",\"You again? Awesome!\",\"Let's do this\",\"There can only be one ring...\",\"There is another\",\"Fancy that, I love HAX and you show up\"]}"
+        },
+        {
+          "name": "isNewUser",
+          "type": "boolean"
+        },
+        {
+          "name": "routes",
+          "type": "array",
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "appMode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "soundIcon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "userName",
+          "attribute": "userName",
+          "type": "string"
+        },
+        {
+          "name": "userMenuOpen",
+          "attribute": "userMenuOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "courses",
+          "attribute": "courses",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "phrases",
+          "attribute": "phrases",
+          "type": "object",
+          "default": "{\"new\":[\"What's ya name?\",\"HAX to the moon\",\"Welcome to the Jungle\",\"We like to party\",\"Build something awesome\",\"Everything is awesome!\",\"Everything is cool when you're part of the team\",\"When you're living our dream\"],\"return\":[\"Welcome back, take 2?\",\"That wasn't very long\",\"Sup?\",\"You again? Awesome!\",\"Let's do this\",\"There can only be one ring...\",\"There is another\",\"Fancy that, I love HAX and you show up\"]}"
+        },
+        {
+          "name": "isNewUser",
+          "attribute": "isNewUser",
+          "type": "boolean"
+        },
+        {
+          "name": "routes",
+          "attribute": "routes",
+          "type": "array",
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "appMode",
+          "attribute": "appMode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "soundIcon",
+          "attribute": "soundIcon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "store",
+          "default": "\"store\""
+        },
+        {
+          "name": "sound"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "app-hax-loaded"
+        }
+      ]
     }
   ]
 }

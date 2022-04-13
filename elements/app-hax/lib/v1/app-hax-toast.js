@@ -4,7 +4,7 @@ import { RPGCharacterToast } from "../rpg-character-toast/rpg-character-toast.js
 
 export class AppHaxToast extends RPGCharacterToast {
   static get tag() {
-    return 'app-hax-toast';
+    return "app-hax-toast";
   }
 
   constructor() {
@@ -16,7 +16,6 @@ export class AppHaxToast extends RPGCharacterToast {
       this.darkMode = toJS(store.darkMode);
     });
   }
-
 
   connectedCallback() {
     super.connectedCallback();

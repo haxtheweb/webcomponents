@@ -1,12 +1,12 @@
 // dependencies / things imported
-import { LitElement, html, css } from 'lit';
-import './app-hax-wired-toggle.js';
+import { LitElement, html, css } from "lit";
+import "./app-hax-wired-toggle.js";
 
 // top bar of the UI
 export class AppHaxTopBar extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-top-bar';
+    return "app-hax-top-bar";
   }
 
   // constructor() {

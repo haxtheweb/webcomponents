@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html } from "lit";
 
 export class RandomWord extends LitElement {
   static get tag() {
-    return 'random-word';
+    return "random-word";
   }
 
   constructor() {
@@ -22,16 +22,16 @@ export class RandomWord extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (['key', 'phrases'].includes(propName)) {
+      if (["key", "phrases"].includes(propName)) {
         this.getNewWord();
       }
       // wipe slot and rebuild
-      if (propName === 'word' && this[propName]) {
-        this.innerHTML = '';
+      if (propName === "word" && this[propName]) {
+        this.innerHTML = "";
         this.innerHTML = this.word;
         // inform others if they want to tap into events
         this.dispatchEvent(
-          new CustomEvent('word-changed', { detail: this.word })
+          new CustomEvent("word-changed", { detail: this.word })
         );
       }
     });

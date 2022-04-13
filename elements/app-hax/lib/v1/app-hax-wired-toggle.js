@@ -3,15 +3,15 @@ import {
   hachureEllipseFill,
   ellipse,
   svgNode,
-} from 'wired-elements/lib/wired-lib.js';
-import { WiredToggle } from 'wired-elements/lib/wired-toggle.js';
-import { css, unsafeCSS } from 'lit';
-import { autorun, toJS } from 'mobx';
-import { store } from './AppHaxStore.js';
+} from "wired-elements/lib/wired-lib.js";
+import { WiredToggle } from "wired-elements/lib/wired-toggle.js";
+import { css, unsafeCSS } from "lit";
+import { autorun, toJS } from "mobx";
+import { store } from "./AppHaxStore.js";
 // need to highjack in order to alter the scale so we can fit our icon
 // for states
-const sun = new URL('../assets/images/sun.svg', import.meta.url).href;
-const moon = new URL('../assets/images/moon.svg', import.meta.url).href;
+const sun = new URL("../assets/images/sun.svg", import.meta.url).href;
+const moon = new URL("../assets/images/moon.svg", import.meta.url).href;
 export class AppHAXWiredToggle extends WiredToggle {
   constructor() {
     super();
@@ -26,17 +26,17 @@ export class AppHAXWiredToggle extends WiredToggle {
   }
 
   static get tag() {
-    return 'app-hax-wired-toggle';
+    return "app-hax-wired-toggle";
   }
 
   draw(svg, size) {
     const rect = rectangle(svg, 0, 8, size[0], 40, this.seed);
-    rect.classList.add('toggle-bar');
-    this.knob = svgNode('g');
-    this.knob.classList.add('knob');
+    rect.classList.add("toggle-bar");
+    this.knob = svgNode("g");
+    this.knob.classList.add("knob");
     svg.appendChild(this.knob);
     const knobFill = hachureEllipseFill(26, 26, 40, 40, this.seed);
-    knobFill.classList.add('knobfill');
+    knobFill.classList.add("knobfill");
     this.knob.appendChild(knobFill);
     ellipse(this.knob, 26, 26, 40, 40, this.seed);
   }
@@ -59,9 +59,9 @@ export class AppHAXWiredToggle extends WiredToggle {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'checked' && oldValue !== undefined) {
+      if (propName === "checked" && oldValue !== undefined) {
         store.darkMode = this[propName];
-        store.appEl.playSound('click');
+        store.appEl.playSound("click");
       }
     });
   }
@@ -76,7 +76,7 @@ export class AppHAXWiredToggle extends WiredToggle {
           margin-top: -4px;
         }
         :host div {
-          background-image: url('${unsafeCSS(sun)}');
+          background-image: url("${unsafeCSS(sun)}");
           background-repeat: no-repeat;
           --wired-toggle-off-color: #66edff;
           --wired-toggle-on-color: #006b7a;
@@ -85,7 +85,7 @@ export class AppHAXWiredToggle extends WiredToggle {
           display: inline-flex;
         }
         :host([checked]) div {
-          background-image: url('${unsafeCSS(moon)}');
+          background-image: url("${unsafeCSS(moon)}");
           background-position: left;
         }
         input {

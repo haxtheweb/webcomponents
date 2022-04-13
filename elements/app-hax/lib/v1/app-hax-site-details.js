@@ -1,18 +1,18 @@
 // dependencies / things imported
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
 export class AppHaxSiteDetails extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-site-details';
+    return "app-hax-site-details";
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.need = 'all need to succeed';
+    this.need = "all need to succeed";
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -43,7 +43,7 @@ export class AppHaxSiteDetails extends LitElement {
       }
 
       .btn-group:after {
-        content: '';
+        content: "";
         clear: both;
         display: table;
       }
@@ -59,9 +59,9 @@ export class AppHaxSiteDetails extends LitElement {
       .flex-container > div {
         background-color: #f1f1f1;
         margin: 10px;
-        flex-direction: 'row';
-        justify-content: 'space-around';
-        align-items: 'center';
+        flex-direction: "row";
+        justify-content: "space-around";
+        align-items: "center";
         display: flex;
         border-width: 4px solid red;
       }
