@@ -227,24 +227,12 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-transition: margin-bottom 250ms ease;
           overflow-x: hidden;
         }
-        :host([is-logged-in]) .body-wrapper {
-          width: calc(100% - 48px);
-        }
-        :host([is-logged-in][menu-open]) .body-wrapper {
-          margin-left: 48px;
-        }
         :host([menu-open]) .body-wrapper .left-col {
           display: -webkit-box;
           display: -moz-box;
           display: -ms-flexbox;
           display: -webkit-flex;
           display: flex;
-        }
-        :host([is-logged-in][menu-open]) .body-wrapper .content-wrapper {
-          margin-left: 0;
-        }
-        :host([is-logged-in]) .body-wrapper .content-wrapper {
-          margin-left: 48px;
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
@@ -308,8 +296,8 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-overflow-scrolling: touch;
         }
 
-        :host([is-logged-in][menu-open]) site-menu {
-          left: 48px;
+        :host([is-logged-in]) .body-wrapper {
+          margin-top: 48px;
         }
 
         .qr-code-btn {

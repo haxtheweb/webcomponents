@@ -42,10 +42,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           display: none;
         }
         :host([is-logged-in]) {
-          margin-left: 48px;
-        }
-        :host([is-logged-in][edit-mode]) {
-          padding-left: 12px;
+          margin-top: 48px;
         }
         /**
       * Hide the slotted content during edit mode. This must be here to work.
@@ -279,14 +276,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           .annoy-inner {
             max-width: unset;
             margin: 0;
-          }
-          :host([edit-mode][is-logged-in]) {
-            margin-left: 0px;
-          }
-        }
-        @media screen and (max-width: 640px) {
-          :host([is-logged-in][edit-mode]) {
-            padding-left: 8px;
           }
         }
       `,

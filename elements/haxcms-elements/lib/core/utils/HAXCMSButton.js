@@ -36,7 +36,6 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           display: block;
         }
         simple-icon-button {
-          display: block;
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
           border-radius: 50%;
@@ -47,7 +46,6 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           line-height: 40px;
           min-width: unset;
           padding: 0;
-          margin: 4px 2px;
           width: 40px;
           height: 40px;
           transition: 0.2s all ease-in-out;
@@ -110,7 +108,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
         icon="${this.icon}"
         voice-command="${this.voiceCommand}"
       ></simple-icon-button>
-      <simple-tooltip for="button" position="right" offset="14">
+      <simple-tooltip for="button" position="bottom" offset="14">
         ${tooltip}
       </simple-tooltip>
     `;

@@ -97,7 +97,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         /* logged in responsiveness */
         :host([is-logged-in][menu-open]) .menu-outline {
-          left: 48px;
+          top: 48px;
         }
 
         .menu-outline {
@@ -198,11 +198,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host([menu-open]) .site-body {
           left: 300px;
         }
-        :host([is-logged-in][menu-open]) .site-body {
-          left: 348px;
-        }
         :host([is-logged-in]) .site-body {
-          left: 48px;
+          top: 48px;
         }
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {
@@ -230,6 +227,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
         /* header */
         .pull-right {
           float: right;
+        }
+        :host([is-logged-in]) .pull-right {
+          top: 48px;
         }
         .btn-container {
           z-index: 2;

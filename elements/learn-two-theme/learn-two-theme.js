@@ -102,7 +102,9 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           text-align: center;
           padding: 0 0 16px;
         }
-
+        :host([is-logged-in]) app-drawer {
+          top: 48px;
+        }
         site-git-corner {
           top: 0;
           right: 0;
@@ -161,14 +163,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           pointer-events: none;
         }
 
-        :host([is-logged-in]) app-drawer {
-          left: 48px;
-        }
-
-        :host([is-logged-in]) app-drawer-layout[narrow] {
-          margin: 0 0 0 48px;
-        }
-
         git-corner {
           float: right;
         }
@@ -205,10 +199,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           margin: 12px;
         }
 
-        :host([is-logged-in]) site-menu-button[type="prev"] {
-          left: 348px;
-        }
-
         site-menu-button:not([disabled]):hover,
         site-menu-button:not([disabled]):active,
         site-menu-button:not([disabled]):focus {
@@ -229,9 +219,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           --site-menu-button-icon-width: 64px;
           --site-menu-button-icon-height: 64px;
         }
-        site-menu-button[type="prev"] {
-          left: 0;
-        }
         site-menu-button[type="next"] {
           right: 0;
         }
@@ -245,18 +232,15 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           left: unset;
         }
 
-        :host([is-logged-in])
-          app-drawer-layout[narrow]
-          site-menu-button[type="prev"],
-        app-drawer-layout[narrow] site-menu-button[type="prev"] {
-          left: unset;
-        }
-
         :host([opened]) app-drawer-layout[narrow] site-menu-button[type="prev"],
         :host([opened])
           app-drawer-layout[narrow]
           site-menu-button[type="next"] {
           display: none;
+        }
+
+        app-drawer-layout[narrow] site-menu-button[type="prev"] {
+          left: 0;
         }
 
         site-title {
@@ -335,6 +319,9 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           margin: 16px 0;
           padding: 0;
           font-size: 36px;
+        }
+        :host([is-logged-in]) main {
+          margin-top: 48px;
         }
       `,
     ];

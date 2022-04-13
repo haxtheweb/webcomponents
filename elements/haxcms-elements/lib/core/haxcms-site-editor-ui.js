@@ -23,14 +23,13 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           display: none;
         }
         :host {
-          display: block;
+          display: flex;
           position: fixed;
           left: 0;
           top: 0;
-          bottom: 0;
+          right: 0;
           background-color: var(--haxcms-system-bg, #37474f);
           z-index: 10000;
-          border-right: 2px solid black;
           visibility: visible;
         }
         :host([edit-mode]) {
@@ -76,7 +75,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           visibility: hidden;
         }
         simple-icon-button {
-          display: block;
+          vertical-align: text-bottom;
+          display: inline-flex;
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
           border-radius: 50%;
@@ -95,6 +95,11 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
             0 3px 14px 2px rgba(0, 0, 0, 0.12),
             0 5px 5px -3px rgba(0, 0, 0, 0.4);
+        }
+        haxcms-button-add {
+          display: inline-flex;
+          margin: 4px 2px;
+          vertical-align: text-bottom;
         }
         paper-avatar:hover,
         paper-avatar:focus,
@@ -278,25 +283,25 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         label="${this.__settingsText}"
         voice-command="edit site settings"
       ></simple-icon-button>
-      <simple-tooltip for="username" position="right" offset="14"
+      <simple-tooltip for="username" position="bottom" offset="14"
         >${this.backText}</simple-tooltip
       >
-      <simple-tooltip for="cancelbutton" position="right" offset="14"
+      <simple-tooltip for="cancelbutton" position="bottom" offset="14"
         >${this.t.cancelEditing}</simple-tooltip
       >
-      <simple-tooltip for="editbutton" position="right" offset="14"
+      <simple-tooltip for="editbutton" position="bottom" offset="14"
         >${this.__editText}</simple-tooltip
       >
-      <simple-tooltip for="editdetails" position="right" offset="14"
+      <simple-tooltip for="editdetails" position="bottom" offset="14"
         >${this.t.editDetails}</simple-tooltip
       >
-      <simple-tooltip for="deletebutton" position="right" offset="14"
+      <simple-tooltip for="deletebutton" position="bottom" offset="14"
         >${this.t.deletePage}</simple-tooltip
       >
-      <simple-tooltip for="outlinebutton" position="right" offset="14"
+      <simple-tooltip for="outlinebutton" position="bottom" offset="14"
         >${this.t.editSiteOutline}</simple-tooltip
       >
-      <simple-tooltip for="manifestbutton" position="right" offset="14"
+      <simple-tooltip for="manifestbutton" position="bottom" offset="14"
         >${this.__settingsText}</simple-tooltip
       >
       <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>

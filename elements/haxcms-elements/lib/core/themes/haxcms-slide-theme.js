@@ -88,14 +88,6 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           overflow: scroll;
           border-bottom: 4px solid var(--haxcms-color, black);
         }
-        :host([is-logged-in]) .active-slide {
-          left: 48px;
-          width: calc(100vw - 64px - 48px);
-        }
-        :host([is-logged-in]) .bottom-wrapper {
-          left: 48px;
-          width: calc(100vw - 48px);
-        }
         :host([edit-mode]) .active-slide {
           bottom: 0;
           overflow: scroll;

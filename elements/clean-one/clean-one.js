@@ -180,7 +180,7 @@ class CleanOne extends HAXCMSRememberRoute(
            left: 0;
          }
          :host([is-logged-in][menu-open]) .menu-outline {
-           left: 48px;
+           top: 48px;
          }
          .menu-outline {
            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -220,6 +220,9 @@ class CleanOne extends HAXCMSRememberRoute(
            right: 16px;
            position: fixed;
          }
+         :host([is-logged-in]) .pull-right {
+           top: 48px;
+         }
          .main-content *,
          .main-content ::slotted(*) {
            box-sizing: border-box;
@@ -238,11 +241,8 @@ class CleanOne extends HAXCMSRememberRoute(
          :host([menu-open]) .site-body {
            left: 300px;
          }
-         :host([is-logged-in][menu-open]) .site-body {
-           left: 348px;
-         }
          :host([is-logged-in]) .site-body {
-           left: 48px;
+           top: 48px;
          }
          .site-body {
            position: absolute;
@@ -352,7 +352,7 @@ class CleanOne extends HAXCMSRememberRoute(
          @media (max-width: 1240px){
            .site-body .body-inner {
              position: static;
-             min-height: calc(100% - 50px);
+             min-height: calc(100% - 98px);
            }
          }
          @media (max-width: 1240px){
@@ -402,9 +402,6 @@ class CleanOne extends HAXCMSRememberRoute(
          }
          :host([is-logged-in][menu-open]) site-menu-button[type="prev"] {
            left: 348px;
-         }
-         :host([is-logged-in]) site-menu-button[type="prev"] {
-           left: 48px;
          }
          :host([menu-open]) site-menu-button[type="prev"] {
            left: 300px;

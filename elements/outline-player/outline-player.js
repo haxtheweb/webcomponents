@@ -118,6 +118,12 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           /* if the user has set a specific value then override the defaults */
           min-height: var(--outline-player-min-height);
         }
+        :host([is-logged-in]) site-git-corner,
+        :host([is-logged-in]) app-drawer,
+        :host([is-logged-in]) app-drawer-layout {
+          margin-top: 48px;
+        }
+        
 
         outline-player-navigation {
           --outline-player-dark: var(--outline-player-dark);
@@ -143,10 +149,6 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         :host([edit-mode]) #contentcontainer {
           padding: 32px 8px 8px 8px;
         }
-        :host([is-logged-in]) app-drawer,
-        :host([is-logged-in]) app-drawer-layout[narrow] {
-          left: 48px;
-        }
         #contentcontainer {
           max-width: 840px;
           display: block;
@@ -170,12 +172,6 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           margin: 0 0 0 24px;
           padding: 0;
           display: block;
-        }
-        @media screen and (max-width: 800px) {
-          :host([edit-mode][is-logged-in]) app-drawer,
-          :host([edit-mode][is-logged-in]) app-drawer-layout[narrow] {
-            left: 0;
-          }
         }
         @media screen and (max-width: 640px) {
           #content {
@@ -232,6 +228,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         :host([responsive-size="xs"]) site-git-corner {
           display: none;
         }
+        
       `,
     ];
   }
