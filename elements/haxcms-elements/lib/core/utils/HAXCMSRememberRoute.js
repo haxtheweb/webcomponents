@@ -90,7 +90,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
      */
     resumeLastRoute(e) {
       window.dispatchEvent(
-        new CustomEvent("simple-toast-hide", {
+        new CustomEvent("haxcms-toast-hide", {
           bubbles: true,
           composed: true,
           cancelable: false,

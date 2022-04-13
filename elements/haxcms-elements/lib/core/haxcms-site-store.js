@@ -6,13 +6,17 @@ import {
   toJS,
   configure,
 } from "mobx";
-import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import { varExists, varGet, localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
     this.location = null;
     this.jwt = null;
+    this.soundStatus = localStorageGet('app-hax-soundStatus', true);
+    this.darkMode = !localStorageGet('app-hax-darkMode')
+    ? false
+    : localStorageGet('app-hax-darkMode');
     this.setupSlots = {};
     this.editMode = false;
     this.manifest = null;
@@ -54,6 +58,8 @@ class Store {
       activeTitle: computed, // active page title
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
+      darkMode: observable, // dark mode pref
+      soundStatus: observable, // toggle sounds on and off
     });
   }
   /**
@@ -112,14 +118,15 @@ class Store {
   toast(
     message,
     duration = 2000,
+    extras = {},
     classStyle = "capsule",
     closeText = this.t.close,
     eventCallback = null,
-    slot = null
+    slot = null,
   ) {
     // gets it all the way to the top immediately
     window.dispatchEvent(
-      new CustomEvent("simple-toast-show", {
+      new CustomEvent("haxcms-toast-show", {
         bubbles: true,
         composed: true,
         cancelable: true,
@@ -130,6 +137,7 @@ class Store {
           closeText: closeText,
           eventCallback: eventCallback,
           slot: slot,
+          ...extras
         },
       })
     );

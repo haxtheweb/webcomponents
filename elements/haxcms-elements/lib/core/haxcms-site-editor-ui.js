@@ -2,11 +2,18 @@ import { LitElement, html, css } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
+import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "./micros/haxcms-button-add.js";
+import "@lrnwebcomponents/rpg-character/rpg-character.js";
+import '@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js';
+import '@lrnwebcomponents/app-hax/lib/v1/app-hax-wired-toggle.js';
+import 'wired-elements/lib/wired-button.js';
+
+const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
 
 /**
  * `haxcms-site-editor-ui`
@@ -64,12 +71,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         simple-tooltip:not(:defined) {
           display: none !important;
         }
-        paper-avatar {
-          width: 48px;
-          height: 48px;
-          line-height: 20px;
-          padding: 12px;
-        }
         :host([painting]) {
           opacity: 0;
           visibility: hidden;
@@ -100,11 +101,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           display: inline-flex;
           margin: 4px 2px;
           vertical-align: text-bottom;
-        }
-        paper-avatar:hover,
-        paper-avatar:focus,
-        paper-avatar:active {
-          cursor: pointer;
         }
         simple-icon-button:hover,
         simple-icon-button:focus,
@@ -157,6 +153,78 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           --simple-tooltip-font-size: 14px;
           --simple-tooltip-width: 145px;
         }
+        app-hax-top-bar {
+          top: 0;
+          z-index: 1000;
+          right: 0;
+          left: 0;
+          position: fixed;
+        }
+        .haxLogo {
+          --simple-icon-height: 40px;
+          --simple-icon-width: 40px;
+          margin: 4px;
+        }
+
+        .space-hack {
+          display: inline-flex;
+          width: 64px;
+          height: 48px;
+        }
+        .soundToggle {
+          margin-right: 16px;
+          position: relative;
+          display: inline-flex;
+          vertical-align: top;
+        }
+
+        .soundToggle img {
+          width: 24px;
+          height: 24px;
+        }
+
+        app-hax-search-bar {
+          vertical-align: middle;
+          display: inline-flex;
+        }
+        .user-menu {
+          display:none;
+        }
+        .user-menu.open {
+          display: block;
+          top: 48px;
+          right: 0px;
+          position: absolute;
+          border: 1px solid black;
+          background-color: white;
+        }
+        .user-menu.open button {
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 8px;
+          font-size: 20px;
+          font-family: 'Press Start 2P', sans-serif;
+          color: black;
+          background-color: white;
+        }
+        .user-menu.open button:hover,
+        .user-menu.open button:active,
+        .user-menu.open button:focus {
+          background-color: black;
+          color: white;
+        }
+        .topbar-character {
+          transform: scale(0.4, 0.4);
+          margin: -36px -35px 0px 0px;
+          vertical-align: text-top;
+          position: fixed;
+          top: 0px;
+          right: 0px;
+          overflow: hidden;
+          height: 120px;
+          cursor: pointer;
+        }
       `,
     ];
   }
@@ -168,6 +236,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.userMenuOpen = false;
+    this.soundIcon = '';
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
     this.t = {
@@ -201,20 +271,48 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       );
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
-      import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     }, 0);
+  }
+
+  soundToggle() {
+    store.soundStatus = !toJS(store.soundStatus);
+    localStorageSet('app-hax-soundStatus', toJS(store.soundStatus));
+  }
+
+  toggleMenu() {
+    this.userMenuOpen = !this.userMenuOpen;
   }
   // render function
   render() {
     return html`
+      <app-hax-top-bar>
+        <simple-icon-lite src="${haxLogo}" class="haxLogo" slot="left" @click=${this.redirectToSites}
+></simple-icon-lite>     
+        <wired-button
+          elevation="1"
+          slot="right"
+          class="soundToggle"
+          @click="${this.soundToggle}"
+        >
+          <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
+        </wired-button>
+        <app-hax-wired-toggle slot="right"></app-hax-wired-toggle>
+        <div class="space-hack" slot="right"></div>
+        <rpg-character
+          class="topbar-character"
+          seed="${this.userName}"
+          slot="right"
+          @click="${this.toggleMenu}"
+        ></rpg-character>
+        <div slot="right" class="user-menu ${this.userMenuOpen ? 'open' : ''}">
+          <button>Site settings</button>
+          <button>Site outline</button>
+          <button>New Journey</button>
+          <button>Account info</button>
+          <button>log out</button>
+        </div>
+      </app-hax-top-bar>
       <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
-      <paper-avatar
-        @click=${this.redirectToSites}
-        id="username"
-        label="${this.userName}"
-        two-chars
-        src="${this.userPicture}"
-      ></paper-avatar>
       <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
       <simple-icon-button
         hidden
@@ -417,6 +515,15 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    autorun(() => {
+      this.soundIcon = toJS(store.soundStatus) ? new URL('../../../app-hax/lib/assets/images/FullVolume.svg',import.meta.url).href : new URL('../../../app-hax/lib/assets/images/Silence.svg',import.meta.url).href;
+      if (!toJS(store.soundStatus)) {
+        store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true});
+      }
+      else {
+        store.toast("Can you hear me now? Good.", 2000,{ hat: 'random'});
+      }
+    });
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -515,6 +622,10 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         type: String,
         attribute: "user-picture",
       },
+      userMenuOpen: {
+        type: Boolean,
+      },
+      soundIcon: { type: String },
       backLink: {
         type: String,
       },

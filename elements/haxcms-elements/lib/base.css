@@ -71,9 +71,8 @@ body, html, :root {
 
   /** simple-toast **/
   --simple-toast-z-index: 10000000;
-  --simple-toast-color: white;
-  --simple-toast-bg: black;
-  --simple-toast-border: 1px solid black;
+  --simple-toast-color: black;
+  --simple-toast-bg: white;
   --simple-toast-font-size: 16px;
   --simple-toast-margin: 0;
   --simple-toast-left: 0;

@@ -408,15 +408,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         ) {
           window.location.reload();
         }
-        const evt = new CustomEvent("simple-toast-show", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            text: e.detail.value.status + " " + e.detail.value.statusText,
-          },
-        });
-        window.dispatchEvent(evt);
+        store.toast(
+          e.detail.value.status + " " + e.detail.value.statusText,
+          5000,
+          { fire: true }
+        );
       } else {
         // no detail is bad, this implies a server level connection error
         // if we force reloads then let's do it now
@@ -495,7 +491,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
     )
       .then((response) => {
-        import("@lrnwebcomponents/simple-toast/simple-toast.js");
+        import("./haxcms-toast.js");
         this.editorBuilder = document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);

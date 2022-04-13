@@ -1,12 +1,10 @@
 // dependencies / things imported
-import { LitElement, html, css } from "lit";
-import "./app-hax-wired-toggle.js";
-
+import { LitElement, html, css } from 'lit';
 // top bar of the UI
 export class AppHaxTopBar extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return "app-hax-top-bar";
+    return 'app-hax-top-bar';
   }
 
   // constructor() {
@@ -21,8 +19,8 @@ export class AppHaxTopBar extends LitElement {
   static get styles() {
     return css`
       :host {
-        --bg-color: orange;
-        --accent-color: white;
+        --bg-color: var(--app-hax-background-color);
+        --accent-color: var(--app-hax-accent-color);
         --top-bar-height: 48px;
         display: block;
         height: var(--top-bar-height);
@@ -48,7 +46,7 @@ export class AppHaxTopBar extends LitElement {
         text-align: center;
         vertical-align: middle;
         font-size: 2vw;
-
+        border-bottom: 3px solid var(--app-hax-accent-color);
         display: grid;
         grid-template-columns: 30% 40% 30%;
       }

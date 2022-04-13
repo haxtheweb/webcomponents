@@ -369,15 +369,10 @@ class HAXCMSSiteEditor extends LitElement {
   __deleteNodeResponseChanged(e) {
     // show message
     if (e.detail.value && e.detail.value.data && e.detail.value.data.title) {
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: `Page deleted ${e.detail.value.data.title}, selecting another page`,
-          duration: 4000,
-        },
-      });
+      store.toast(
+        `Page deleted ${e.detail.value.data.title}, selecting another page`,
+        4000
+      );
       this.dispatchEvent(evt);
     }
   }
@@ -386,16 +381,11 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       window.history.pushState({}, null, e.detail.value.data.slug);
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: `Created ${e.detail.value.data.title}!`,
-          duration: 3000,
-        },
-      });
-      window.dispatchEvent(evt);
+      store.toast(
+        `Created ${e.detail.value.data.title}!`,
+        3000,
+        { hat: 'random' }
+      );
     }
   }
 
@@ -450,15 +440,11 @@ class HAXCMSSiteEditor extends LitElement {
           );
           break;
         default:
-          const evt = new CustomEvent("simple-toast-show", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              text: e.detail.value.status + " " + e.detail.value.statusText,
-            },
-          });
-          window.dispatchEvent(evt);
+          store.toast(
+            e.detail.value.status + " " + e.detail.value.statusText,
+            5000,
+            { fire: true}
+          );
           break;
       }
     }
@@ -937,27 +923,17 @@ class HAXCMSSiteEditor extends LitElement {
 
   _publishingChanged(newValue, oldValue) {
     if (newValue) {
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "Publishing...",
-          duration: 0,
-        },
-      });
-      window.dispatchEvent(evt);
+      store.toast(
+        `Publishing...`,
+        0,
+        { hat: 'random' }
+      );
     } else if (!newValue && oldValue) {
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "Publishing...",
-          duration: 2000,
-        },
-      });
-      window.dispatchEvent(evt);
+      store.toast(
+        `Publishing...`,
+        2000,
+        { hat: 'random' }
+      );
     }
   }
   /**
@@ -1010,17 +986,11 @@ class HAXCMSSiteEditor extends LitElement {
     ) {
       window.history.replaceState({}, null, e.detail.value.data.slug);
     }
-
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Page saved!",
-        duration: 3000,
-      },
-    });
-    window.dispatchEvent(evt); // updates the manifest
+    store.toast(
+      `Page saved!`,
+      3000,
+      { hat: 'random' }
+    );
 
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1043,17 +1013,12 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleOutlineResponse(e) {
     // trigger a refresh of the data in node
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Outline saved!",
-        duration: 3000,
-      },
-    });
+    store.toast(
+      `Outline saved!`,
+      3000,
+      { hat: 'random' }
+    );
     setTimeout(() => {
-      window.dispatchEvent(evt);
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -1067,16 +1032,9 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleManifestResponse(e) {
     // trigger a refresh of the data in node
-    this.dispatchEvent(
-      new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "Site details saved, reloading to reflect changes!",
-          duration: 2000,
-        },
-      })
+    store.toast(
+      `Site details saved, reloading to reflect changes!`,
+      2000,
     );
     store.dashboardOpened = false;
     this.dispatchEvent(
@@ -1098,16 +1056,10 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleRevertResponse(e) {
     // trigger a refresh of the data in node
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Last save undone",
-        duration: 2000,
-      },
-    });
-    this.dispatchEvent(evt);
+    store.toast(
+      `Last save undone`,
+      2000,
+    );
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1122,17 +1074,12 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _handleSyncResponse(e) {
+    store.toast(
+      `Site synced`,
+      2000,
+      { hat: 'random' }
+    );
     // trigger a refresh of the data in node
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Site synced",
-        duration: 2000,
-      },
-    });
-    this.dispatchEvent(evt);
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1157,7 +1104,7 @@ class HAXCMSSiteEditor extends LitElement {
       ${data.label}
       </button>
     </a>`;
-    const evt = new CustomEvent("simple-toast-show", {
+    const evt = new CustomEvent("haxcms-toast-show", {
       bubbles: true,
       composed: true,
       cancelable: true,

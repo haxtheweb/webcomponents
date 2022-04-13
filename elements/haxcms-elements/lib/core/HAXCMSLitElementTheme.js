@@ -112,7 +112,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     document.execCommand("copy");
     document.body.removeChild(el);
     window.dispatchEvent(
-      new CustomEvent("simple-toast-show", {
+      new CustomEvent("haxcms-toast-show", {
         cancelable: true,
         detail: {
           text: `Link copied to clipboard`,
