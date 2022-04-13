@@ -44,7 +44,7 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^4.0.23",
     "@lrnwebcomponents/utils": "^4.0.8",
-    "lit": "^2.2.0",
+    "lit": "^2.2.2",
     "monaco-editor": "0.32.1"
   },
   "devDependencies": {

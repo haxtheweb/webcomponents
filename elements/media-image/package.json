@@ -46,7 +46,7 @@
     "@lrnwebcomponents/image-inspector": "^4.0.23",
     "@lrnwebcomponents/schema-behaviors": "^4.0.23",
     "@lrnwebcomponents/simple-icon": "^4.0.23",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

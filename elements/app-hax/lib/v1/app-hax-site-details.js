@@ -3,10 +3,10 @@ import { LitElement, html, css } from 'lit';
 
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
-export class HAXCMSSiteDetails extends LitElement {
+export class AppHaxSiteDetails extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'haxcms-site-details';
+    return 'app-hax-site-details';
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
@@ -22,36 +22,6 @@ export class HAXCMSSiteDetails extends LitElement {
     };
   }
 
-  // updated fires every time a property defined above changes
-  // this allows you to react to variables changing and use javascript to perform logic
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'need' && this[propName] === 'joy') {
-        this.classList.add('joyful');
-      }
-    });
-  }
-
-  // Lit life-cycle; this fires the 1st time the element is rendered on the screen
-  // this is a sign it is safe to make calls to this.shadowRoot
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-  }
-
-  // HTMLElement life-cycle, element has been connected to the page / added or moved
-  // this fires EVERY time the element is moved
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  // HTMLElement life-cycle, element has been removed from the page OR moved
-  // this fires every time the element moves
-  disconnectedCallback() {
-    super.disconnectedCallback();
-  }
-
   // CSS - specific to Lit
   static get styles() {
     return css`
@@ -61,10 +31,6 @@ export class HAXCMSSiteDetails extends LitElement {
         justify-content: center;
         align-items: stretch;
       }
-      :host([need='joy']) {
-        color: yellow;
-        background-color: black;
-      }
 
       .btn-group button {
         background-color: #3c7ff7;
@@ -72,11 +38,8 @@ export class HAXCMSSiteDetails extends LitElement {
         color: white;
         padding: 15px 30px;
         cursor: pointer;
-        float: left;
-
+        width: 25%;
         display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       .btn-group:after {
@@ -95,10 +58,7 @@ export class HAXCMSSiteDetails extends LitElement {
 
       .flex-container > div {
         background-color: #f1f1f1;
-        width: 100px;
         margin: 10px;
-        text-align: center;
-        font-size: 30px;
         flex-direction: 'row';
         justify-content: 'space-around';
         align-items: 'center';
@@ -137,7 +97,5 @@ export class HAXCMSSiteDetails extends LitElement {
   /**
    * haxProperties integration via file reference
    */
-  static get haxProperties() {
-    return new URL(`../lib/app.haxProperties.json`, import.meta.url).href;
-  }
 }
+customElements.define(AppHaxSiteDetails.tag, AppHaxSiteDetails);

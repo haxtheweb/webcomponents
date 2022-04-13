@@ -45,7 +45,7 @@
   "dependencies": {
     "@lrnwebcomponents/haxcms-elements": "^4.0.23",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "lit": "^2.2.0",
+    "lit": "^2.2.2",
     "mobx": "6.4.1"
   },
   "devDependencies": {

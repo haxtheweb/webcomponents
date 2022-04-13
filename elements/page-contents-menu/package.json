@@ -46,7 +46,7 @@
     "@lrnwebcomponents/simple-popover": "^4.0.23",
     "@lrnwebcomponents/simple-tooltip": "^4.0.23",
     "@lrnwebcomponents/utils": "^4.0.8",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -46,7 +46,7 @@
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^4.0.4",
     "@lrnwebcomponents/simple-icon": "^4.0.23",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",

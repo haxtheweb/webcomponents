@@ -48,7 +48,7 @@
     "@lrnwebcomponents/json-editor": "^4.0.23",
     "@lrnwebcomponents/simple-fields": "^4.0.23",
     "@polymer/paper-tabs": "3.1.0",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

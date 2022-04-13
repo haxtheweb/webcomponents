@@ -1,65 +1,104 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <base href="/elements/app-hax/demo/" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <link rel="icon" href="../lib/assets/images/HAXLogo.svg" type="image/png">
+    <meta name="Description" content="Put your description here." />
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+      window.WCGlobalBasePath = "/node_modules/";
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <script type="module">
-      import '../app-hax.js';
-    </script>
-    <script>
-      // local development and mobx
-      window.process = window.process || {
-        env: {
-          NODE_ENV: "development"
-        }
-      };
-      </script>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <style>
       body {
-        height: 100vh;
-        width: 100vw;
         margin: 0;
         padding: 0;
         font-family: 'Press Start 2P', sans-serif;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        overflow-x: hidden;
+        background-image: url('../lib/assets/images/LMGridBox.svg');
+        background-repeat: repeat;
+        background-position: center center;
+        background-size: auto, 20% auto, 20% auto;
+        --app-hax-accent-color: black;
+        --app-hax-background-color: white;
       }
-
-      :root {
-        background-image: url('../lib/v1/lib/LMGridBox.svg'), url('../lib/v1/lib/Design Light Mode Left.svg'), url('../lib/v1/lib/Design Light Mode Right.svg');
+      body.app-hax-create {
+        overflow: hidden;
+      }
+      body.dark-mode {
+        background-color: black;
+        background-image: url('../lib/assets/images/DMGridBox.svg');
+        --app-hax-accent-color: white;
+        --app-hax-background-color: black;
+      }
+      body.app-loaded {
+        background-image: url('../lib/assets/images/LMGridBox.svg'), url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
         background-repeat: repeat, repeat-y, repeat-y;
         background-position: center center, top left, top right;
         background-size: auto, 20% auto, 20% auto;
-        --accent-color: black;
       }
-      
-      @media (prefers-color-scheme: dark) {
-        :root {
-          background-color: black;
-          background-image: url('../lib/v1/DMGridBox.svg'), url('../lib/v1/lib/Design Dark Mode Left.svg'), url('../lib/v1/lib/Design Dark Mode Right.svg');
-          background-repeat: repeat, repeat-y, repeat-y;
-          background-position: center center, top left, top right;
-          background-size: auto, 20% auto, 20% auto;
-          --accent-color: white;
-        }
+      div[slot="externalproviders"] {
+        display: none;
+      }
+      body.app-loaded div[slot="externalproviders"] {
+        display: unset;
+      }
+      body.app-loaded.dark-mode {
+        background-image: url('../lib/assets/images/DMGridBox.svg'), url('../lib/assets/images/DesignDarkModeLeft.svg'), url('../lib/assets/images/DesignDarkModeRight.svg');
+      }
 
-        .welcome {
-          -webkit-text-stroke: 0px var(--accent-color);
-          -webkit-text-fill-color: white;
-        }
+      #loading {
+        font-family: 'Press Start 2P', sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      #loading .title {
+        -webkit-text-stroke: 1px
+          var(--app-hax-accent-color, var(--accent-color));
+        -webkit-text-fill-color: var(
+          --app-hax-background-color,
+          var(--background-color)
+        );
+        font-weight: normal;
+        font-size: 4vw;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      #loading .subtitle {
+        color: var(--app-hax-accent-color, var(--accent-color));
+        font-weight: normal;
+        margin-top: 2.5px;
+        font-size: 2vw;
+      }
+
+      #loading .bracket {
+        font-size: 10vw;
+        font-weight: normal;
+        vertical-align: middle;
+        -webkit-text-stroke: 0px;
+        -webkit-text-fill-color: var(
+          --app-hax-accent-color,
+          var(--accent-color)
+        );
       }
 
       @media (min-width: 721px) {
@@ -92,31 +131,165 @@
         }
       }
 
-      .welcomeBox {
-        text-align: center;
-        margin: 0;
-        font-size: 60px;
-        
-      }
-
-      .welcome {
-        -webkit-text-stroke: 1px var(--accent-color);
-	      -webkit-text-fill-color: white;
-      }
-
-      .bracket {
-        font-size: 100px;
-        vertical-align: middle;
-        -webkit-text-stroke: 0px;
-        -webkit-text-fill-color: var(--accent-color);
-      }
     </style>
     <title>Let's HAX your web</title>
   </head>
+
   <body>
-      <div class="welcomeBox">
-        <p class="welcome"><span class="bracket">&#60;</span>Welcome<span class="bracket">&#62;</span></p>
+    <div id="loading">
+      <div class="title">
+        <span class="bracket">&#60;</span>Loading..<span class="bracket">&#62;</span>
       </div>
-    <haxcms-app demo></haxcms-app>
-  </body>
+      <div class="subtitle">HAX is loading</div>
+    </div>
+      <app-hax>
+        <div slot="externalproviders">
+          <a href="https://login.microsoftonline.com/">
+            <button style="background-color: darkblue;"><img src="https://sites.psu.edu/psucanvas/files/2016/12/newlogosm-1y04ysv.png" width="93" height="43" alt="Canvas" id="logo" data-height-percentage="100" data-actual-width="648" data-actual-height="300"></button>
+          </a>
+        </div>
+      </app-hax>
+      <div id="demo">
+        <style>
+          #demobtns {
+            bottom: 0;
+            left: 0;
+            position: fixed;
+          }
+          #demobtns button {
+            font-size: 30px;
+            border: 2px solid black;
+            margin: 2px;
+            background-color: orange;
+            cursor: pointer;
+            color: black;
+            display: block;
+          }
+          #demobtns button:hover {
+            background-color: red;
+          }
+        </style>
+        <div id="demobtns">
+          <button id="loginbtn">Login</button>
+          <button id="nosites">Test new user</button>
+          <button id="test404">Test 404</button>
+          <button id="resetbtn">reset app</button>
+        </div>
+        <script>
+          // reduce FOUC for dark mode so it starts in dark rapidly if selected
+          if (window.localStorage && window.localStorage.getItem('app-hax-darkMode')) {
+            if (window.localStorage.getItem('app-hax-darkMode') == 'true') {
+              document.body.classList.add('dark-mode');
+            }
+            else {
+              document.body.classList.remove('dark-mode');
+            }
+          }
+          // remove loading text
+        window.addEventListener('app-hax-loaded',(e) => {
+          dqs("#loading").remove();
+        });
+          function dqs(sel) { return document.querySelector(sel)}
+          dqs("#loginbtn").addEventListener("click", (e) => {
+            dqs("app-hax").login();
+          });
+          dqs("#nosites").addEventListener("click", (e) => {
+            // reset to clear internal state
+            dqs("app-hax").reset(false);
+            // fake injection of a new site listing location
+            window.AppHax.requestAvailability().store.appSettings.getSitesList = 'sitesEmpty.json';
+          });
+          dqs("#test404").addEventListener("click", (e) => {
+            window.location = "nothin9383832";
+          });
+          dqs("#resetbtn").addEventListener("click", (e) => {
+            dqs("app-hax").reset();
+          });
+        </script>
+      </div>
+      <script type="module">
+        import '../src/app-hax.js';
+      </script>
+      <script>
+        // this is how haxcms / haxiam operates w/ injecting the base settings
+        // think of it like localStorage but the backend is injecting at run time
+        // so that we can deploy this at different domains more headlessly
+        const blueStyle = '../lib/assets/images/BlueStyle.svg';
+        const greyStyle = '../lib/assets/images/GreyStyle.svg';
+        const partyStyle = '../lib/assets/images/PartyStyle.svg';
+        window.appSettings = {
+          "demo": true,
+          "getSitesList": 'sites.json',
+          "createSite": 'createSite.json',
+          "login": 'login.json',
+          "refreshUrl": "/bto108/system/api/refreshAccessToken",
+          "logout": "/bto108/system/api/logout",
+          "connectionSettings": "/bto108/system/api/connectionSettings",
+          "redirectUrl": "/login.php",
+          "themes": {
+              "clean-one": {
+                  "element": "clean-one",
+                  "path": "@lrnwebcomponents/clean-one/clean-one.js",
+                  "name": "Course theme",
+                  "thumbnail": partyStyle, 
+              },
+              "clean-two": {
+                  "element": "clean-two",
+                  "path": "@lrnwebcomponents/clean-two/clean-two.js",
+                  "name": "Course theme 2",
+                  "thumbnail": greyStyle, 
+              },
+              "learn-two-theme": {
+                  "element": "learn-two-theme",
+                  "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+                  "name": "Course theme 3",
+                  "thumbnail": blueStyle, 
+              },
+              "bootstrap-theme": {
+                  "element": "bootstrap-theme",
+                  "path": "@lrnwebcomponents/bootstrap-theme/bootstrap-theme.js",
+                  "name": "Bootstrap theme",
+                  "thumbnail": partyStyle, 
+              },
+              "haxor-slevin": {
+                  "element": "haxor-slevin",
+                  "path": "@lrnwebcomponents/haxor-slevin/haxor-slevin.js",
+                  "name": "Blog theme",
+                  "thumbnail": blueStyle, 
+              },
+              "outline-player": {
+                  "element": "outline-player",
+                  "path": "@lrnwebcomponents/outline-player/outline-player.js",
+                  "name": "Documentation theme",
+                  "thumbnail": blueStyle, 
+              }
+          },
+          "saveNodePath": "/bto108/system/api/saveNode",
+          "saveManifestPath": "/bto108/system/api/saveManifest",
+          "saveOutlinePath": "/bto108/system/api/saveOutline",
+          "publishSitePath": "/bto108/system/api/publishSite",
+          "syncSitePath": "/bto108/system/api/syncSite",
+          "setConfigPath": "/bto108/system/api/setConfig",
+          "getConfigPath": "/bto108/system/api/getConfig",
+          "getNodeFieldsPath": "/bto108/system/api/getNodeFields",
+          "getSiteFieldsPath": "/bto108/system/api/formLoad?haxcms_form_id=siteSettings",
+          "revertSitePath": "/bto108/system/api/revertCommit",
+          "getFormToken": "gdgdgdfgd4444",
+          "createNodePath": "/bto108/system/api/createNode",
+          "getUserDataPath": "/bto108/system/api/getUserData",
+          "setUserPhotoPath": "/bto108/system/api/setUserPhoto",
+          "deleteNodePath": "/bto108/system/api/deleteNode",
+          "gitImportSitePath": "/bto108/system/api/gitImportSite",
+          "downloadSitePath": "/bto108/system/api/downloadSite",
+          "archiveSitePath": "/bto108/system/api/archiveSite",
+          "cloneSitePath": "/bto108/system/api/cloneSite",
+          "deleteSitePath": "/bto108/system/api/deleteSite",
+          "appStore": {
+              "url": "/bto108/system/api/generateAppStore?app-store-token=fghjhgjjghjgg5555"
+          },
+          "jwt": "sdfsff34f4f33f3f3ggfgfgh.fghfghfgh.jkhjhkkhjjhkhjkjhkhjk",
+          "reloadOnError": true
+      };
+        </script>
+          </body>
 </html>

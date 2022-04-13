@@ -6,18 +6,27 @@ import {
 } from 'wired-elements/lib/wired-lib.js';
 import { WiredToggle } from 'wired-elements/lib/wired-toggle.js';
 import { css, unsafeCSS } from 'lit';
+import { autorun, toJS } from 'mobx';
+import { store } from './AppHaxStore.js';
 // need to highjack in order to alter the scale so we can fit our icon
 // for states
-const sun = new URL('./assets/sun.svg', import.meta.url).href;
-const moon = new URL('./assets/moon.svg', import.meta.url).href;
-export class HAXWiredToggle extends WiredToggle {
+const sun = new URL('../assets/images/sun.svg', import.meta.url).href;
+const moon = new URL('../assets/images/moon.svg', import.meta.url).href;
+export class AppHAXWiredToggle extends WiredToggle {
+  constructor() {
+    super();
+    autorun(() => {
+      this.checked = toJS(store.darkMode);
+    });
+  }
+
   // eslint-disable-next-line class-methods-use-this
   canvasSize() {
     return [100, 60];
   }
 
   static get tag() {
-    return 'hax-wired-toggle';
+    return 'app-hax-wired-toggle';
   }
 
   draw(svg, size) {
@@ -45,23 +54,48 @@ export class HAXWiredToggle extends WiredToggle {
     };
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'checked' && oldValue !== undefined) {
+        store.darkMode = this[propName];
+        store.appEl.playSound('click');
+      }
+    });
+  }
+
   static get styles() {
     return [
       ...super.styles,
       css`
+        :host {
+          opacity: 1;
+          display: inline-flex;
+          margin-top: -4px;
+        }
         :host div {
           background-image: url('${unsafeCSS(sun)}');
           background-repeat: no-repeat;
-          background-position: right;
-          background-size: 45%;
-          --wired-toggle-off-color: #00e1ff;
-          --wired-toggle-on-color: #060638;
+          --wired-toggle-off-color: #66edff;
+          --wired-toggle-on-color: #006b7a;
+          background-position-x: 50px;
+          width: 100px;
+          display: inline-flex;
         }
         :host([checked]) div {
           background-image: url('${unsafeCSS(moon)}');
           background-position: left;
         }
+        input {
+          width: 100px;
+          height: 60px;
+          padding: 0;
+          margin: 0;
+        }
       `,
     ];
   }
 }
+customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);

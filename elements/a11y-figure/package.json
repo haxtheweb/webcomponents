@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-details": "^4.0.23",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

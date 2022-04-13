@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-pages": "3.0.1",
-    "lit": "^2.2.0"
+    "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

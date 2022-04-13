@@ -1,7 +1,6 @@
 {
     "status": 200,
     "autoloader": {
-      "rename-me": "./rename-me.js",
       "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
       "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
       "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",

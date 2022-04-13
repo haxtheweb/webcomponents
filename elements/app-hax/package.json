@@ -42,22 +42,29 @@
   "author": {
     "name": "btopro"
   },
-  "resolutions": {
-    "roughjs": "4.4",
-    "lit": "2.2.1"
-  },
   "license": "Apache-2.0",
   "dependencies": {
     "@lit-labs/motion": "^1.0.2",
-    "@lrnwebcomponents/jwt-login": "^4.0.23",
+    "@lrnwebcomponents/future-terminal-text": "^4.0.23",
     "@lrnwebcomponents/promise-progress": "^4.0.23",
+    "@lrnwebcomponents/simple-toast": "^4.0.23",
     "@lrnwebcomponents/rpg-character": "^4.0.23",
     "@lrnwebcomponents/simple-colors": "^4.0.23",
+    "@lrnwebcomponents/simple-modal": "^4.0.23",
     "@lrnwebcomponents/simple-icon": "^4.0.23",
+    "@lrnwebcomponents/hax-iconset": "^4.0.23",
+    "@lrnwebcomponents/jwt-login": "^4.0.23",
+    "@lrnwebcomponents/i18n-manager": "^4.0.23",
+    "@lrnwebcomponents/wc-autoload": "^4.0.23",
+    "@lrnwebcomponents/replace-tag": "^4.0.23",
+    "@lrnwebcomponents/grid-plate": "^4.0.23",
+    "@lrnwebcomponents/simple-fields": "^4.0.23",
+    "@lrnwebcomponents/h-a-x": "^4.0.23",
+    "@lrnwebcomponents/utils": "^4.0.8",
     "@vaadin/router": "^1.7.4",
-    "lit": "^2.2.1",
+    "lit": "^2.2.2",
     "mobx": "^6.3.13",
-    "roughjs": "4.4",
+    "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",
     "wired-elements": "3.0.0-rc.6"
   },
