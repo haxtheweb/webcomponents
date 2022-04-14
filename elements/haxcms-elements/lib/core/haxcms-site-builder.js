@@ -10,6 +10,17 @@ import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+
+// toggle store darkmode
+function darkToggle(e) {
+  if (e.matches) {
+    // dark mode
+    store.darkMode = true;
+  } else {
+    // light mode
+    store.darkMode = false;
+  }
+}
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -457,6 +468,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       "haxcms-trigger-update-node",
       this._triggerUpdatedNode.bind(this)
     );
+    window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', darkToggle);
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -569,6 +583,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       "haxcms-trigger-update-node",
       this._triggerUpdatedNode.bind(this)
     );
+    window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .removeEventListener('change', darkToggle);
     super.disconnectedCallback();
   }
   storeReady(e) {

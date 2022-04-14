@@ -112,6 +112,36 @@ class Store {
       .join("-")
       .replace(/[^0-9\-\/a-z]/gi, "");
   }
+  // eslint-disable-next-line class-methods-use-this
+  playSound(sound) {
+    if (this.soundStatus) {
+      try {
+        switch (sound) {
+          case 'click':
+          case 'click2':
+          case 'coin':
+          case 'coin2':
+          case 'hit':
+          case 'success':
+            this.audio = new Audio(
+              new URL(`../../../app-hax/lib/assets/sounds/${sound}.mp3`, import.meta.url).href
+            );
+            this.audio.play();
+            break;
+          default:
+            this.audio = new Audio(
+              new URL(`../../../app-hax/lib/assets/sounds/hit.mp3`, import.meta.url).href
+            );
+            this.audio.play();
+            console.warn(`${sound} is not a valid sound file yet`);
+            break;
+        }
+      }
+      catch(e) {
+        console.warn(e);
+      }
+    }
+  }
   /**
    * Global toast bridge so we don't have to keep writing custom event
    */

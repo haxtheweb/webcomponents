@@ -1,8 +1,8 @@
 import { autorun, toJS } from 'mobx';
-import { store } from './AppHaxStore.js';
-import { WiredDarkmodeToggle } from '../wired-darkmode-toggle/wired-darkmode-toggle.js';
+import { store } from './haxcms-site-store.js';
+import { WiredDarkmodeToggle } from '@lrnwebcomponents/app-hax/lib/wired-darkmode-toggle/wired-darkmode-toggle.js';
 
-export class AppHAXWiredToggle extends WiredDarkmodeToggle {
+export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
   constructor() {
     super();
     autorun(() => {
@@ -11,7 +11,7 @@ export class AppHAXWiredToggle extends WiredDarkmodeToggle {
   }
 
   static get tag() {
-    return 'app-hax-wired-toggle';
+    return 'haxcms-darkmode-toggle';
   }
 
   updated(changedProperties) {
@@ -21,9 +21,9 @@ export class AppHAXWiredToggle extends WiredDarkmodeToggle {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'checked' && oldValue !== undefined) {
         store.darkMode = this[propName];
-        store.appEl.playSound('click');
+        store.playSound('click');
       }
     });
   }
 }
-customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);
+customElements.define(HAXCMSDarkmodeToggle.tag, HAXCMSDarkmodeToggle);

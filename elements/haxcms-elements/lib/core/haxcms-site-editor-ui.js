@@ -10,7 +10,7 @@ import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "./micros/haxcms-button-add.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import '@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js';
-import '@lrnwebcomponents/app-hax/lib/v1/app-hax-wired-toggle.js';
+import './haxcms-darkmode-toggle.js';
 import 'wired-elements/lib/wired-button.js';
 
 const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
@@ -296,7 +296,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         >
           <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
         </wired-button>
-        <app-hax-wired-toggle slot="right"></app-hax-wired-toggle>
+        <haxcms-darkmode-toggle slot="right"></haxcms-darkmode-toggle>
         <div class="space-hack" slot="right"></div>
         <rpg-character
           class="topbar-character"
