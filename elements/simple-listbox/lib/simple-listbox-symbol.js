@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
-import { SimpleSymbolList } from "@lrnwebcomponents/simple-symbol-list/simple-symbol-list.js";
+import { SymbolsByType } from "@lrnwebcomponents/simple-symbol-list/simple-symbol-list.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
@@ -100,22 +100,17 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
       }
     ];
   }
-  /**
-   * LitElement life cycle - ready callback
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-  }
   
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateSymbol();
+      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateSymbolsList();
     });
   }
-  updateSymbol(){
+  /**
+   * updates list of symbols for listbox and tabs
+   */
+  updateSymbolsList(){
     this.itemsList =  (this.tabsGroups || []).map((tab,i) => {
       let id=`symbol-${(tab.group || i).replace(/\W/g,'-').toLowerCase()}`;
       return {
@@ -124,17 +119,23 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
         tab: tab.tab ? this._getUnicode(tab.tab) : undefined,
         icon: tab.icon,
         tooltip: tab.tooltip,
-        itemsList: (tab.groups || []).map(group=>window.SimplePickerSymbols[group]).flat().map(item=>{
+        itemsList: (tab.groups || []).map(group=>window.SimpleListboxSymbols[group]).flat().map(item=>{
           return {
             ...item,
-            id: `${id}-${item.value.replace(/[\&\;]/g,"")}`,
-            html: item.value,
-            value: this._getUnicode(item.value),
+            id: `${id}-${item.character.replace(/[\&\;]/g,"")}`,
+            html: item.character,
+            value: this._getUnicode(item.character),
+            tooltip: item.character,
           }
         })
       }
     });
   }
+  /**
+   * gets unicode character for an HTML entity
+   * @param {string} html HTML entity
+   * @returns {string}
+   */
   _getUnicode(html){
       if(!html.match(/^\&[a-zA-Z0-9]+\;$/)) return;
       let temp = document.createElement('textarea');
@@ -143,22 +144,8 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
   }
 }
 
-window.simpleListboxSymbolsByCategory = () => {
-  let obj = {};
-  (SimpleSymbolList || []).forEach((symbol) => {
-    let symboltype = symbol.type || "";
-    obj[symboltype] = obj[symboltype] || [];
-    obj[symboltype].push({
-      ...symbol,
-      value: symbol.character,
-      tooltip: symbol.character,
-    });
-  });
-  return obj;
-};
-
-window.SimplePickerSymbols =
-  window.SimplePickerSymbols || window.simpleListboxSymbolsByCategory();
+window.SimpleListboxSymbols =
+  window.SimpleListboxSymbols || SymbolsByType;
 
 window.customElements.define(SimpleListboxSymbol.tag, SimpleListboxSymbol);
 export { SimpleListboxSymbol };

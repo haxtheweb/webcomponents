@@ -259,3 +259,20 @@ export const SimpleSymbolList = [
   { character: "&thorn;", type: "misc" },
   { character: "&yuml;", type: "misc" },
 ];
+/**
+ * groups symbols by type
+ * @returns {object}
+ */
+const _getSymbolsByType = () => {
+  let obj = {};
+  (SimpleSymbolList || []).forEach((symbol) => {
+    let symboltype = symbol.type || "";
+    obj[symboltype] = obj[symboltype] || [];
+    obj[symboltype].push(symbol);
+  });
+  return obj;
+};
+/**
+ * symbols grouped by type
+ */
+export const SymbolsByType = _getSymbolsByType();

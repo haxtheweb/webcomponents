@@ -72,11 +72,21 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
   constructor() {
     super();
   }
-
+  /**
+   * icons that must be added to listbox options
+   *
+   * @readonly
+   * @memberof SimpleListboxIcon
+   */
   get includedSets(){
     return !!this.includeSets && !!this.includeSets.split(/\s+/) ? this.includeSets.split(/\s+/) : undefined;
   }
-
+  /**
+   * icons that must NOT be added to listbox options
+   *
+   * @readonly
+   * @memberof SimpleListboxIcon
+   */
   get excludedSets(){
     return !!this.excludeSets && !!this.excludeSets.split(/\s+/) ? this.excludeSets.split(/\s+/) : undefined;
   }
@@ -96,23 +106,32 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
       if (["includeSets","excludeSets"].includes(propName)) this.updateIconsets();
     });
   }
+  /**
+   * updates list of icons for listbox and tabs
+   */
   updateIconsets(){
-    let list = !this.includedSets 
-      ? Object.keys(window.SimplePickerIcons) 
-      : this.includedSets.filter(iconset=>Object.keys(window.SimplePickerIcons).includes(iconset));
+    let groupedIcons = SimpleIconsetStore.groupedIconlist || [],
+      list = !this.includedSets 
+        ? Object.keys(groupedIcons) 
+        : this.includedSets.filter(iconset=>Object.keys(groupedIcons).includes(iconset));
     if(!!this.excludedSets) list = (list || []).filter(iconset=>!this.excludedSets.includes(iconset));
     this.itemsList =  list.length == 1 
-      ? this.getIconsList(window.SimplePickerIcons[list[0]])
+      ? this.getIconsetOptions(groupedIcons[list[0]])
       : (list || []).map((key,i) => {
         let id=`icon-${(key || i).toLowerCase()}`;
         return {
           id: id,
           group: key,
-          itemsList: this.getIconsList(window.SimplePickerIcons[key])
+          itemsList: this.getIconsetOptions(groupedIcons[key])
         }
       });
   }
-  getIconsList(iconset){
+  /**
+   * gets icons list as an array of options
+   * @param {array} iconset array of icon obbjects
+   * @returns {array}
+   */
+  getIconsetOptions(iconset){
     return (iconset || []).map(item=>{
       return {
         id: `icon-${item.toLowerCase().replace(/\:/g,'-')}`,
@@ -121,25 +140,16 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
       }
     })
   }
-  _getHTML(icon){
+  /**
+   * gets template for an icon based on icon name
+   * @param {string} icon name of icon
+   * @returns {object}
+   */
+  _getIconTemplate(icon){
     if(!icon.match(/^[-a-zA-Z0-9]+(-[-a-zA-Z0-9]+)*\:[a-zA-Z0-9]+(-[-a-zA-Z0-9]+)*$/)) return;
     return html`<simple-icon-lite icon="${icon}"></simple-icon-lite>`;
   }
 }
-
-window.simpleListboxIconsByCategory = () => {
-  let obj = {};
-  (SimpleIconsetStore.iconlist || []).forEach((icon,i) => {
-    let parts = icon.split(':'), 
-    icontype = parts[0];
-    obj[icontype] = obj[icontype] || [];
-    obj[icontype].push(icon);
-  });
-  return obj;
-};
-
-window.SimplePickerIcons =
-  window.SimplePickerIcons || window.simpleListboxIconsByCategory();
 
 window.customElements.define(SimpleListboxIcon.tag, SimpleListboxIcon);
 export { SimpleListboxIcon };

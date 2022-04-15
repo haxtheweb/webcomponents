@@ -380,7 +380,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         </absolute-position-behavior>
       `;
     }
-
+    /**
+     * an object containing proerty info that can be used for debugging
+     *
+     * @readonly
+     */
     get stateInfo() {
       return {
         activeDescendant: this.activeDescendant,
@@ -394,9 +398,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         lastOption: this.lastOption,
         input: !this.input ? false : this.input.value,
       };
-    }
-    get fieldElementTag() {
-      return "input";
     }
   
     firstUpdated(changedProperties) {
@@ -427,48 +428,59 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return typeof val !== typeof undefined ? val : '';
 
     }
-  
+    /**
+     * handles change to input field
+     */
     fieldValueChanged() {
       if (this.input && this.input.value !== this.inputText)
         this.input.value = this.inputText;
       this._fireValueChanged();
     }
 
-    _fireValueChanged(){
-
+    /**
+     * fires when value changes
+     * @event value-changed
+     */
+    _fireValueChanged() {
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
-
+    /**
+     * whether autocomplete includes a list
+     *
+     * @readonly
+     */
     get isList(){
       return this.autocomplete !== "none" && this.autocomplete !== "inline";
     }
+    /**
+     * whether autocomplete includes inlune suggestions
+     *
+     * @readonly
+     */
     get isInline(){
       return this.autocomplete !== "none" && this.autocomplete !== "list";
     }
-
+    /**
+     * a simple list of autocomplete items when element is in demo-mode
+     *
+     * @readonly
+     */
     get demoItems(){
-      return [
-        "Arryn",
-        "Baratheon",
-        "Bolton",
-        "Florent",
-        "Frey",
-        "Greyjoy",
-        "Hightower",
-        "Lannister",
-        "Martell",
-        "Mormont",
-        "Redwyne",
-        "Seaworth",
-        "Selmy",
-        "Stark",
-        "Targaryen",
-        "Tarley",
-        "Tully",
-        "Tyrell",
-        "Umber",
-      ];
+      return this.demoGroups.map(g=>g.itemsList).flat().sort();
     }
 
+    /**
+     * a simple list of autocomplete items when element is in demo-mode
+     *
+     * @readonly
+     */
     get demoGroups(){
       return [
         {
@@ -539,7 +551,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
 
     /**
-     * gets field's id
+     * input field's id
      *
      * @readonly
      * @returns {string}
@@ -550,7 +562,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
 
     /**
-     * gets field's id
+     * labels elements's id
      *
      * @readonly
      * @returns {string}
@@ -561,7 +573,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
 
     /**
-     * gets field's id
+     * listbox's id
      *
      * @readonly
      * @returns {string}
@@ -571,7 +583,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return `${this.id || "input"}-listbox`;
     }
     /**
-     * listbox from shadowRoot
+     * tablist element from shadowRoot
      *
      * @readonly
      */
@@ -584,7 +596,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return this._tablist;
     }
     /**
-     * listbox from shadowRoot
+     * listbox element from shadowRoot
      *
      * @readonly
      */
@@ -597,6 +609,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return this._listbox;
     }
 
+    /**
+     * absolutely positioned element that contains listbox from shadowRoot
+     *
+     * @readonly
+     */
     get absolutePosition(){
       if (!this._abs)
         this._abs =
@@ -608,7 +625,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
 
     /**
-     * input from shadowRoot
+     * input element from shadowRoot
      *
      * @readonly
      */
@@ -643,7 +660,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     /**
-     * input
+     * template for input field
      *
      * @readonly
      */
@@ -680,7 +697,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       `;
     }
     /**
-     * button to expand listbox
+     * template for button to expand listbox
      *
      * @readonly
      */
@@ -698,6 +715,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         </simple-icon-button-lite>
       `;
     }
+    /**
+     * template for tablist in listbox
+     *
+     * @readonly
+     */
     get tablistTemplate(){
       import("./lib/simple-listbox-tabs.js");
       return html`
@@ -712,7 +734,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         </simple-listbox-tabs>`;
     }
     /**
-     * listbox
+     * template for listbox
      *
      * @readonly
      */
@@ -737,7 +759,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       `;
     }
     /**
-     * listbox options
+     * template for listbox options
      *
      * @readonly
      */
@@ -748,7 +770,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     /**
-     * determines if listbox is hidden
+     * whether listbox is currently hidden
      *
      * @readonly
      * @memberof SimpleFieldsCombo
@@ -757,7 +779,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return this.hidden || !this.expanded || !this.hasOptions || !this.isList;
     }
     /**
-     * list item for a given option
+     * template for list item for a given option
      * @param {object} option object representing option with id and value properties
      * @returns 
      */
@@ -778,7 +800,9 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           </li>` 
         : this.getGroupItem(option);
     }
-
+    /**
+     * template for listbox list item that represents a group label
+     */
     getGroupItem(option){
       return html`
       <li
@@ -794,7 +818,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     /**
-     * text content of a list item option
+     * template for text content of a list item option
      * @param {object} option object representing option with id and value properties
      * @returns 
      */
@@ -806,7 +830,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     /**
-     * text content of a list item option
+     * template for text content of a list item option
      * @param {object} option object representing option with id and value properties
      * @returns 
      */
@@ -815,7 +839,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return html`<simple-tooltip for="option${option.id}">${option.tooltip}</simple-tooltip>`;
     }
     /**
-     * sets aria-activeDescendant
+     * sets aria-activeDescendant of listbox
      *
      * @param {object} option
      * @memberof SimpleFieldsCombo
@@ -841,7 +865,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
     }
     /**
-     * sets the selected option
+     * sets the selected option, inlcuding active descendent and input selection
      *
      * @param {object} option
      * @param {string} flag
@@ -851,11 +875,12 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (option) {
         this.option = option;
         this.setActiveDescendant(option);
-        this.setCurrentOptionStyle(option);
+        this.updateCurrentOption(option);
         if (this.isInline && this.isList) {
           this.value = option.value;
           this.input.value = option.value;
           if (flag) {
+            //set selection at the end of value
             setTimeout(() => {
               this.input.setSelectionRange(
                 option.value.length,
@@ -863,6 +888,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
               );
             }, 0);
           } else {
+            //select suggested characters
             setTimeout(() => {
               this.input.setSelectionRange(
                 this.filter.length,
@@ -941,7 +967,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     _onInputBlur(event) {
       if (!!this.hoveredOption) return;
       this.listFocus = false;
-      this.setCurrentOptionStyle(null);
+      this.updateCurrentOption(null);
       this.removeVisualFocusAll();
       setTimeout(this.close(false), 300);
     }
@@ -954,7 +980,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     _onInputFocus(event) {
       this.setVisualFocusTextbox();
       this.option = false;
-      this.setCurrentOptionStyle(null);
+      this.updateCurrentOption(null);
     }
     /**
      * handles tablist focus
@@ -1109,7 +1135,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.BACKSPACE:
           this.setValue(this.input.value);
           this.setVisualFocusTextbox();
-          this.setCurrentOptionStyle(false);
+          this.updateCurrentOption(false);
           this.option = false;
           flag = true;
           break;
@@ -1122,7 +1148,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             this.filter = this.input.value;
           } else {
             this.option = false;
-            this.setCurrentOptionStyle(false);
+            this.updateCurrentOption(false);
           }
   
           this.setVisualFocusTextbox();
@@ -1132,7 +1158,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         default:
           if (isPrintableCharacter(char)) {
             this.setVisualFocusTextbox();
-            this.setCurrentOptionStyle(false);
+            this.updateCurrentOption(false);
             flag = true;
           }
   
@@ -1152,14 +1178,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             ) {
               this.option = option;
               if (this.isInline || this.listFocus) {
-                this.setCurrentOptionStyle(option);
+                this.updateCurrentOption(option);
                 if (this.isInline && isPrintableCharacter(char)) {
                   this.setOption(option);
                 }
               }
             } else {
               this.option = false;
-              this.setCurrentOptionStyle(false);
+              this.updateCurrentOption(false);
             }
           } else {
             this.close();
@@ -1265,8 +1291,12 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
       return option;
     }
-  
-    setCurrentOptionStyle(option) {
+
+    /**
+     * updates current selected option and scrolls to it
+     * @param {object} option 
+     */
+    updateCurrentOption(option) {
       this._selectedOption = option;
       if (
         !!this.listbox &&
@@ -1278,23 +1308,33 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           `#option${option.id}`
         ).offsetTop;
     }
-    _isSelected(optionId) {
-      return optionId && this._selectedOption && 
-        this._selectedOption.id == optionId
-        ? "true"
-        : "false";
-    }
+    /**
+     * handles listbox mouseover
+     * @param {event} event 
+     */
     _onListboxMouseover(event) {
       this.listHover = true;
     }
+    /**
+     * handles listbox mouseout
+     * @param {event} event 
+     */
     _onListboxMouseout(event) {
       this.listHover = false;
       this.hoveredOption = undefined;
+      //wait for next action and then check if listbox should be closed
       setTimeout(this.close(false), 300);
     }
+    /**
+     * opens listbox if it is not open
+     */
     open() {
       if (!this.expanded) this.expanded = true;
     }
+    /**
+     * closes listbox based is closing is intentional or automatically when no longer focused/hovered
+     * @param {boolean} force whether clsoing is intentional
+     */
     close(force) {
       //return;
       if (typeof force !== "boolean") {
@@ -1302,7 +1342,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
   
       if (force || (!this.inputFocus && !this.hasHover && !this.hasHover && !this.__tabFocus && !this.__tabHover )) {
-        this.setCurrentOptionStyle(false);
+        this.updateCurrentOption(false);
         this.expanded = false;
         this.setActiveDescendant(false);
       }
@@ -1358,15 +1398,30 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     get hasOptions() {
       return this.optionsOnly.length > 0;
     }
-  
+
+    /**
+     * first option from filtered list of options
+     *
+     * @readonly
+     */
     get firstOption(){
       return this.hasOptions ? this.optionsOnly[0] : false;
     }
   
+    /**
+     * last option from filtered list of options
+     *
+     * @readonly
+     */
     get lastOption(){
       return this.hasOptions ? this.optionsOnly[this.optionsOnly.length - 1] : false;
     }
   
+    /**
+     * option that appears before active desciendant in filtered list of options
+     *
+     * @readonly
+     */
     get previousOption() {
       var index,
         optionId = !this.option ? undefined : this.option.id,
@@ -1378,6 +1433,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
       return this.firstId;
     }
+    /**
+     * option that appears after active desciendant in filtered list of options
+     *
+     * @readonly
+     */
     get nextOption() {
       var index,
         optionId = !this.option ? undefined : this.option.id,
@@ -1389,6 +1449,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
       return this.firstOption;
     }
+    /**
+     * keycodes by key
+     *
+     * @readonly
+     */
     get keyCode() {
       return {
         BACKSPACE: 8,
@@ -1406,8 +1471,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         DOWN: 40,
       };
     }
-  
-    
   };
 }
 /**

@@ -43,8 +43,9 @@ class SimpleListboxTabs extends A11yTabs {
   updated(changedProperties) {
     if(super.updated)super.updated(changedProperties);
   }
+
   /**
-   * selects a tab
+   * selects a tab when given tab id
    * @param {string} id the active tab's id
    */
   selectTab(id) {
@@ -60,7 +61,7 @@ class SimpleListboxTabs extends A11yTabs {
   }
 
   /**
-   * makes tab label
+   * tab label template
    *
    * @param {string} flag tab's flag
    * @returns object
@@ -72,7 +73,7 @@ class SimpleListboxTabs extends A11yTabs {
   }
 
   /**
-   * makes tab icon
+   * tab icon template
    *
    * @param {string} icon tab's icon
    * @returns object
@@ -91,7 +92,7 @@ class SimpleListboxTabs extends A11yTabs {
   }
 
   /**
-   * makes tab tooltip
+   * tab tooltip template
    *
    * @param {string} id tab's unique id
    * @param {label} label tab's label
@@ -107,7 +108,7 @@ class SimpleListboxTabs extends A11yTabs {
     `;
   }
   /**
-   * determines if tabs should show icons only
+   * whether tabs should show icons only
    * @readonly
    * @returns {boolean}
    */

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
-import { SimpleEmojiList } from "@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js";
+import { EmojiByType } from "@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
@@ -122,22 +122,17 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
       }
     ];
   }
-  /**
-   * LitElement life cycle - ready callback
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-  }
   
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateEmoji();
+      if (propName === "tabsGroups" && !!this.tabsGroups) this.updateEmojiList();
     });
   }
-  updateEmoji(){
+  /**
+   * updates list of symbols for listbox and tabs
+   */
+  updateEmojiList(){
     this.itemsList =  (this.tabsGroups || []).map((tab,i) => {
       let id=`emoji-${(tab.group || i).replace(/\W/g,'-').toLowerCase()}`;
       return {
@@ -146,17 +141,26 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
         tab: tab.tab ? this._getUnicode(tab.tab) : undefined,
         icon: tab.icon,
         tooltip: tab.tooltip,
-        itemsList: (tab.groups || []).map(group=>window.SimplePickerEmojis[group]).flat().map(item=>{
+        itemsList: (tab.groups || []).map(group=>EmojiByType[group]).flat().map(item=>{
           return {
             ...item,
-            id: `${id}-${item.value.replace(/[\&\#\;]/g,"")}`,
-            html: item.value,
-            value: this._getUnicode(item.value),
+            id: `${id}-${item.character.replace(/[\&\#\;]/g,"")}`,
+            html: item.character,
+            value: this._getUnicode(item.character),
+            tooltip: item.description,
+            textComparison: item.description || item.shortcodes && item.shortcodes.length > 0 
+            ? [...(item.shortcodes || []).map(code=>`:${code}:`), ...(item.shortcodes || []), item.description ].sort()
+            : undefined
           }
         })
       }
     });
   }
+  /**
+   * gets unicode character for an HTML entity
+   * @param {string} html HTML entity
+   * @returns {string}
+   */
   _getUnicode(html){
       if(!html.match(/^\&\#[a-zA-Z0-9]+\;$/)) return;
       let temp = document.createElement('textarea');
@@ -164,26 +168,6 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
     return temp.value;
   }
 }
-
-window.simpleListboxEmojisByCategory = () => {
-  let obj = {};
-  (SimpleEmojiList || []).forEach((emoji) => {
-    let emojitype = emoji.type || "";
-    obj[emojitype] = obj[emojitype] || [];
-    obj[emojitype].push({
-      ...emoji,
-      value: emoji.character,
-      tooltip: emoji.description,
-      textComparison: emoji.description || emoji.shortcodes && emoji.shortcodes.length > 0 
-        ? [...(emoji.shortcodes || []).map(code=>`:${code}:`), ...(emoji.shortcodes || []), emoji.description ].sort()
-        : undefined
-    });
-  });
-  return obj;
-};
-
-window.SimplePickerEmojis =
-  window.SimplePickerEmojis || window.simpleListboxEmojisByCategory();
 
 window.customElements.define(SimpleListboxEmoji.tag, SimpleListboxEmoji);
 export { SimpleListboxEmoji };

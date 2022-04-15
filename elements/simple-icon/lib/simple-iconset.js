@@ -25,6 +25,22 @@ class SimpleIconset extends HTMLElement {
     this.needsHydrated = [];
   }
   /**
+   * returns icons grouped by prefix
+   *
+   * @readonly
+   * @memberof SimpleIconset
+   */
+  get groupedIconlist(){
+    let obj = {};
+    this.iconlist.forEach((icon,i) => {
+      let parts = icon.split(':'), 
+      icontype = parts[0];
+      obj[icontype] = obj[icontype] || [];
+      obj[icontype].push(icon);
+    });
+    return obj;
+  }
+  /**
    * Manifest.js files can register themselves to create an icon list.
    * These files export an array of iconsets
    * as [{name: iconsetName, icons: [ iconName,iconName2 ]}]

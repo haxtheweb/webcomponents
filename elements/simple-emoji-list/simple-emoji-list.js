@@ -1271,3 +1271,22 @@ export const SimpleEmojiList = [
   {"character":"&#x1F3F4;","type":"flags","description":"black flag","shortcodes":["black_flag","pirate_flag","england","scotland","wales"]},
   {"character":"&#x1F3F3;","type":"flags","description":"white flag","shortcodes":["white_flag","rainbow_flag","transgender_flag"]}
 ];
+/**
+ * groups symbols by type
+ * @returns {object}
+ */
+const _getEmojiByType = () => {
+  let obj = {};
+  (SimpleEmojiList || []).forEach((emoji) => {
+    let emojitype = emoji.type || "";
+    obj[emojitype] = obj[emojitype] || [];
+    obj[emojitype].push({
+      ...emoji,
+    });
+  });
+  return obj;
+};
+/**
+ * symbols grouped by type
+ */
+export const EmojiByType = _getEmojiByType();
