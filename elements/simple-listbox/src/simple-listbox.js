@@ -390,6 +390,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         _selectedOption: this._selectedOption,
         value: this.value,
         firstOption: this.firstOption,
+        nextOption: this.nextOption,
         lastOption: this.lastOption,
         input: !this.input ? false : this.input.value,
       };
@@ -415,10 +416,21 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           if(this.tablist && this.tablist.updateTabs) setTimeout(this.tablist.updateTabs(),10);
       });
     }
+    /**
+     *gets text for input box
+     *
+     * @readonly
+     */
+    get inputText(){
+      let option = (this.sortedOptions || []).filter(o=>o.value === this.value), 
+        val = option && option[0] ? (option[0].text || option[0].value) : undefined;
+      return typeof val !== typeof undefined ? val : '';
+
+    }
   
     fieldValueChanged() {
-      if (this.input && this.input.value !== this.value)
-        this.input.value = this.value;
+      if (this.input && this.input.value !== this.inputText)
+        this.input.value = this.inputText;
       this._fireValueChanged();
     }
 
@@ -662,8 +674,9 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           ?required="${this.required}"
           tabindex="0"
           type="text"
-          value="${this.value || ""}"
+          value="${this.inputText}"
         />
+        <input type="hidden" value="${this.value}">
       `;
     }
     /**
@@ -752,7 +765,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return !option.group 
         ? html`
           <li
-            aria-selected="${this._isSelected(option)}"
+            aria-selected="${option && this._selectedOption && option.id == this._selectedOption.id}"
             id="option${option.id}"
             role="option"
             part="listbox-li"
@@ -787,7 +800,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      */
     getListItemInner(option) {
       return html`
-        ${option.group ? option.group : option.icon ? html`<simple-icon-lite icon="${option.icon}"></simple-icon-lite>` : option.value}
+        ${option.group ? option.group : option.icon ? html`<simple-icon-lite icon="${option.icon}"></simple-icon-lite>` : option.text || option.value}
         ${!option.tooltip ? '' : this.getListItemTooltip(option)}
       `;
     }
@@ -808,7 +821,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     setActiveDescendant(option) {
-      if (option && this.listFocus) {
+      console.log('desc',option,this.stateInfo,this.listFocus)
+      if (option && this.expanded) {
         this.activeDescendant = `option${option.id}`;
       } else {
         this.activeDescendant = "";
@@ -824,7 +838,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.filter = value;
       this.input.setSelectionRange(this.filter.length, this.filter.length);
       if (this.isList || this.isInline) {
-        this.value = this.filterOptions(this.filter, this.option).value;
+        this.value = this.filterOptions(this.filter, this.option).value || '';
       }
     }
     /**
@@ -835,14 +849,15 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     setOption(option, flag = false) {
+      console.log('setOption',option,this.stateInfo)
       if (option) {
         this.option = option;
-        this.setCurrentOptionStyle(this.option);
-        this.setActiveDescendant(this.option);
+        this.setActiveDescendant(option);
+        this.setCurrentOptionStyle(option);
   
         if (this.isInline) {
-          this.value = this.option.value;
-          this.input.value = this.option.value;
+          this.value = option.value;
+          this.input.value = option.value;
           if (flag) {
             setTimeout(() => {
               this.input.setSelectionRange(
@@ -1000,13 +1015,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           break;
   
         case this.keyCode.DOWN:
+          console.log('down',this.hasOptions,this.listFocus,this.isInline,this.stateInfo);
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.nextItem, true);
+              this.setOption(this.nextOption, true);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.firstItem, true);
+                this.setOption(this.firstOption, true);
               }
             }
             this.setVisualFocusListbox();
@@ -1017,11 +1033,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.UP:
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.previousItem, true);
+              this.setOption(this.previousOption, true);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.lastItem, true);
+                this.setOption(this.lastOption, true);
               }
             }
             this.setVisualFocusListbox();
@@ -1082,6 +1098,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (isPrintableCharacter(char)) {
         this.filter += char;
       }
+      console.log('key',event.keyCode,!this.input || this.input.value,this.filter);
   
       // this is for the case when a selection in the textbox has been deleted
       if (this.input && (this.input.value || "").length < this.filter.length) {
@@ -1130,13 +1147,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (event.keyCode !== this.keyCode.RETURN) {
         if (this.isList || this.isInline) {
           option = this.filterOptions(this.filter, this.option);
+        console.log('key 2',option,this.option,!this.input || this.input.value,this.filter);
           if (option) {
             if (!this.expanded && (this.input.value || "").length) this.open();
   
             if (
-              option.textComparison.indexOf(
-                (this.input.value || "").toLowerCase()
-              ) === 0
+              option.textComparison.filter(t=>t.indexOf(
+                (this.filter.value || "").toLowerCase()
+              ) === 0).length > 0
             ) {
               this.option = option;
               if (this.isInline || this.listFocus) {
@@ -1217,6 +1235,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       filter = filter.toLowerCase();
   
       this.filteredOptions = [];
+      console.log('filterOptions',filter,currentOption);
   
       for (i = 0; i < this.sortedOptions.length; i++) {
         option = this.sortedOptions[i];
@@ -1240,12 +1259,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       }
   
       if(!this.hasOptions) return false;
-      let filteredText = this.filteredOptions.filter(o=>!!o.textComparison).map((o) => o.textComparison);
+      let filteredIds = this.filteredOptions.filter(o=>!!o.id).map((o) => o.id);
+      console.log(this.filteredOptions,filteredIds,!currentOption || currentOption.id);
       if (
-        !currentOption.group,
         currentOption &&
-        currentOption.textComparison &&
-        filteredText.includes(currentOption.textComparison)
+        !currentOption.group && 
+        currentOption.id &&
+        filteredIds.includes(currentOption.id)
       ) {
         option = currentOption;
       } else {
@@ -1255,6 +1275,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     setCurrentOptionStyle(option) {
+      console.log('selected',option,this.stateInfo);
       this._selectedOption = option;
       if (
         !!this.listbox &&
@@ -1266,10 +1287,9 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           `#option${option.id}`
         ).offsetTop;
     }
-    _isSelected(option) {
-      return option &&
-        this._selectedOption &&
-        option.textComparison === this._selectedOption.textComparison
+    _isSelected(optionId) {
+      return optionId && this._selectedOption && 
+        this._selectedOption.id == optionId
         ? "true"
         : "false";
     }
@@ -1282,7 +1302,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       setTimeout(this.close(false), 300);
     }
     open() {
-      if (!this.exapanded) this.expanded = true;
+      if (!this.expanded) this.expanded = true;
     }
     close(force) {
       //return;
@@ -1356,26 +1376,24 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return this.hasOptions ? this.optionsOnly[this.optionsOnly.length - 1] : false;
     }
   
-    get previousItem() {
+    get previousOption() {
       var index,
-        optionText = !this.option ? undefined : this.option.textComparison,
-        firstText = !this.firstOption
-          ? undefined
-          : this.firstOption.textComparison,
-        filteredtext = this.optionsOnly.map((o) => o.textComparison);
-      if (optionText !== firstText) {
-        index = filteredtext.indexOf(optionText);
+        optionId = !this.option ? undefined : this.option.id,
+        firstId = !this.firstOption ? undefined : this.firstOption.id,
+        filteredIds = this.optionsOnly.map((o) => o.id);
+      if (!!firstId && optionId !== firstId) {
+        index = filteredIds.indexOf(optionId);
         return this.optionsOnly[index - 1];
       }
-      return this.lastOption;
+      return this.firstId;
     }
-    get nextItem() {
+    get nextOption() {
       var index,
-        optionText = !this.option ? undefined : this.option.textComparison,
-        lastText = !this.lastOption ? undefined : this.lastOption.textComparison,
-        filteredtext = this.optionsOnly.map((o) => o.textComparison);
-      if (optionText !== lastText) {
-        index = filteredtext.indexOf(optionText);
+        optionId = !this.option ? undefined : this.option.id,
+        lastId = !this.lastOption ? undefined : this.lastOption.id,
+        filteredIds = this.optionsOnly.map((o) => o.id);
+      if (!!lastId  && optionId !== lastId) {
+        index = filteredIds.indexOf(optionId);
         return this.optionsOnly[index + 1];
       }
       return this.firstOption;
