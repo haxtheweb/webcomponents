@@ -93,7 +93,7 @@ class SimpleToastEl extends SimpleColors {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "opened") {
+      if (propName === "opened" && oldValue !== undefined) {
         // notify for others listening
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
