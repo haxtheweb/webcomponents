@@ -44,7 +44,7 @@
           <p><simple-listbox demo-mode="items"></simple-listbox></p>
           <p><simple-listbox demo-mode="items" justify></simple-listbox></p>
           <p><simple-listbox demo-mode="items" align-right></simple-listbox></p>
-          <p><simple-listbox demo-mode="items" position-above></simple-listbox></p>
+          <p><simple-listbox demo-mode="items" position-above value="Seaworth"></simple-listbox></p>
         </template>
       </demo-snippet>
       <h3>simple-listbox custom text comparison for autocomplete</h3>
@@ -54,10 +54,10 @@
           <p><simple-listbox id="hex" autocomplete="both"><span slot="label">Listbox with Font Styles</span></simple-listbox></p>
           <script>
             document.getElementById('hex').itemsList = [
-              { value: 'purple', textComparison: ["purple","#800080","800080"] },
-              { value: 'red', textComparison: ["red","#ff0000","ff0000"] },
-              { value: 'magenta', textComparison: ["magenta","#ff00ff","ff00ff"] },
-              { value: 'blue', textComparison: ["blue","#0000ff","#0000ff"] },
+              { text: 'purple', value: '#800080', textComparison: ["purple","#800080","800080"] },
+              { text: 'red', value: '#ff0000', textComparison: ["red","#ff0000","ff0000"] },
+              { text: 'magenta', value: '#ff00ff', textComparison: ["magenta","#ff00ff","ff00ff"] },
+              { text: 'blue', value: '#0000ff', textComparison: ["blue","#0000ff","#0000ff"] },
             ];
           </script>
         </template>

@@ -821,7 +821,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     setActiveDescendant(option) {
-      console.log('desc',option,this.stateInfo,this.listFocus)
       if (option && this.expanded) {
         this.activeDescendant = `option${option.id}`;
       } else {
@@ -849,13 +848,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     setOption(option, flag = false) {
-      console.log('setOption',option,this.stateInfo)
       if (option) {
         this.option = option;
         this.setActiveDescendant(option);
         this.setCurrentOptionStyle(option);
-  
-        if (this.isInline) {
+        if (this.isInline && this.isList) {
           this.value = option.value;
           this.input.value = option.value;
           if (flag) {
@@ -1015,14 +1012,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           break;
   
         case this.keyCode.DOWN:
-          console.log('down',this.hasOptions,this.listFocus,this.isInline,this.stateInfo);
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.nextOption, true);
+              this.setOption(this.nextOption, !this.isInline);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.firstOption, true);
+                this.setOption(this.firstOption, !this.isInline);
               }
             }
             this.setVisualFocusListbox();
@@ -1033,11 +1029,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.UP:
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.previousOption, true);
+              this.setOption(this.previousOption, !this.isInline);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.lastOption, true);
+                this.setOption(this.lastOption, !this.isInline);
               }
             }
             this.setVisualFocusListbox();
@@ -1098,7 +1094,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (isPrintableCharacter(char)) {
         this.filter += char;
       }
-      console.log('key',event.keyCode,!this.input || this.input.value,this.filter);
   
       // this is for the case when a selection in the textbox has been deleted
       if (this.input && (this.input.value || "").length < this.filter.length) {
@@ -1147,7 +1142,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (event.keyCode !== this.keyCode.RETURN) {
         if (this.isList || this.isInline) {
           option = this.filterOptions(this.filter, this.option);
-        console.log('key 2',option,this.option,!this.input || this.input.value,this.filter);
           if (option) {
             if (!this.expanded && (this.input.value || "").length) this.open();
   
@@ -1235,7 +1229,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       filter = filter.toLowerCase();
   
       this.filteredOptions = [];
-      console.log('filterOptions',filter,currentOption);
   
       for (i = 0; i < this.sortedOptions.length; i++) {
         option = this.sortedOptions[i];
@@ -1260,7 +1253,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
   
       if(!this.hasOptions) return false;
       let filteredIds = this.filteredOptions.filter(o=>!!o.id).map((o) => o.id);
-      console.log(this.filteredOptions,filteredIds,!currentOption || currentOption.id);
       if (
         currentOption &&
         !currentOption.group && 
@@ -1275,7 +1267,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
   
     setCurrentOptionStyle(option) {
-      console.log('selected',option,this.stateInfo);
       this._selectedOption = option;
       if (
         !!this.listbox &&
