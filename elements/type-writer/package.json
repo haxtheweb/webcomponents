@@ -16,7 +16,7 @@
       "hax": "src/type-writer-hax.json"
     }
   },
-  "version": "4.0.23",
+  "version": "4.0.24",
   "description": "typewritter effect",
   "repository": {
     "type": "git",

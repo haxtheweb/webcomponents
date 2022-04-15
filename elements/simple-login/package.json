@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.23",
+  "version": "4.0.24",
   "description": "a simple login form",
   "repository": {
     "type": "git",
@@ -43,10 +43,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^4.0.0",
-    "@lrnwebcomponents/simple-colors": "^4.0.23",
-    "@lrnwebcomponents/simple-fields": "^4.0.23",
-    "@lrnwebcomponents/simple-icon": "^4.0.23",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.23",
+    "@lrnwebcomponents/simple-colors": "^4.0.24",
+    "@lrnwebcomponents/simple-fields": "^4.0.24",
+    "@lrnwebcomponents/simple-icon": "^4.0.24",
+    "@lrnwebcomponents/simple-tooltip": "^4.0.24",
     "@polymer/paper-progress": "^3.0.1",
     "lit": "^2.2.2",
     "msr": "^1.3.4"

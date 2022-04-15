@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.0.23",
+  "version": "4.0.24",
   "description": "a vocabulary term visualized in the page",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-modal": "^4.0.23",
-    "@lrnwebcomponents/simple-popover": "^4.0.23",
+    "@lrnwebcomponents/simple-modal": "^4.0.24",
+    "@lrnwebcomponents/simple-popover": "^4.0.24",
     "lit": "^2.2.2"
   },
   "devDependencies": {

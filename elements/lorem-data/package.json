@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.23",
+  "version": "4.0.24",
   "description": "Start of lorem-data",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.23",
-    "@lrnwebcomponents/lrndesign-avatar": "^4.0.23",
-    "@lrnwebcomponents/simple-icon": "^4.0.23",
+    "@lrnwebcomponents/hax-iconset": "^4.0.24",
+    "@lrnwebcomponents/lrndesign-avatar": "^4.0.24",
+    "@lrnwebcomponents/simple-icon": "^4.0.24",
     "dummy-text": "^1.0.3",
     "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.23",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.24",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

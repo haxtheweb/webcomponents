@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.23",
+  "version": "4.0.24",
   "description": "Start of accent-card",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.23",
-    "@lrnwebcomponents/simple-colors": "^4.0.23",
+    "@lrnwebcomponents/schema-behaviors": "^4.0.24",
+    "@lrnwebcomponents/simple-colors": "^4.0.24",
     "lit": "^2.2.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.23",
+    "@lrnwebcomponents/storybook-utilities": "^4.0.24",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
