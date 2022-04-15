@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, svg } from "lit";
+import { html, css, svg, unsafeCSS } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 // default movement speed
 const defaultSpeed = 500;
@@ -28,6 +28,8 @@ class RpgCharacter extends SimpleColors {
    */
   constructor() {
     super();
+    this.height = 142;
+    this.width = 113;
     this.accessories = 0;
     this.base = 0;
     this.face = 0;
@@ -61,6 +63,8 @@ class RpgCharacter extends SimpleColors {
     return {
       ...super.properties,
       accessories: { type: Number },
+      height: { type: Number },
+      width: { type: Number },
       base: { type: Number },
       face: { type: Number },
       faceItem: { type: Number },
@@ -106,14 +110,10 @@ class RpgCharacter extends SimpleColors {
           text-align: initial;
         }
         div {
-          width: 113px;
           transition: .3s ease-in-out background-color;
           margin: 0;
           padding: 0;
           text-align: initial;
-        }
-        .wrapper {
-          height: 142px;
         }
         #demo {
           height: 30px;
@@ -157,43 +157,51 @@ class RpgCharacter extends SimpleColors {
     }
     const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
     const hatColor = new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
-    const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
+    const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;    
+    const circle = new URL(`./lib/circle.svg`, import.meta.url).href;    
     return html`
-    <div class="wrapper">
-      <img src="${skin}" alt="" loading="lazy" decoding="async" />
-      ${this.base === 1 ? html`<img src="${hair}" alt="" loading="lazy" decoding="async" />` : ``}
-      <img src="${face}" alt="" loading="lazy" decoding="async" />
-      <img src="${faceItem}" alt="" loading="lazy" decoding="async" />
-      <img src="${shirt}" alt="" loading="lazy" decoding="async" />
-      <img src="${pants}" alt="" loading="lazy" decoding="async" />
-      <img src="${accessories}" alt="" loading="lazy" decoding="async" />
-      <img src="${base}" alt="" loading="lazy" decoding="async" />${this.leg !== '' ? html`<img src="${leg}" alt="" loading="lazy" decoding="async" />`:``}
-      <img src="${hatColor}" alt="" loading="lazy" decoding="async" />
-      ${this.fire ? html`<img src="${fire}" alt="" loading="lazy" decoding="async" />` : ``}
-      ${hatFileName !== 'none' ? html`<img src="${hat}" alt="" loading="lazy" decoding="async" />` : ``}
-      ${this.circle ? svg`
-<svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g clip-path="url(#clip0_143_641)">
-    <path id="cardcircle" fill-rule="evenodd" clip-rule="evenodd" d="M122 -1H-10V142H122V-1ZM8 32V17H13V12H18V7H33V2H77.9835L78 7H93V12H98V17H103V32H108V77H103V92H98V97H93V102H78V107.5L33 107V102H18V97H13V92H8V77H3V32H8Z" fill="transparent"/>
-    <path d="M7.5 31.5V16.5H12.5V11.5H17.5V6.5H32.5V1.5H78.5V6.5H93.5V11.5H98.5V16.5H103.5V31.5H108.5V77.5H103.5V92.5H98.5V97.5H93.5V102.5H78.5V107.5H32.5V102.5H17.5V97.5H12.5V92.5H7.5V77.5H2.5V31.5H7.5Z" stroke="black"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_143_641">
-    <rect width="113" height="142" fill="white"/>
-    </clipPath>
-  </defs>
-</svg>` : ``}
+      <div class="wrapper">
+      ${this.renderPiece(skin)}
+      ${this.base === 1 ? this.renderPiece(hair) : ``}
+      ${this.renderPiece(face)}
+      ${this.renderPiece(faceItem)}
+      ${this.renderPiece(shirt)}
+      ${this.renderPiece(pants)}
+      ${this.renderPiece(accessories)}
+      ${this.renderPiece(base)}
+      ${this.leg !== '' ? this.renderPiece(leg) : ``}
+      ${this.renderPiece(hatColor)}
+      ${this.fire ? this.renderPiece(fire) : ``}
+      ${hatFileName !== 'none' ? this.renderPiece(hat) : ``}
+      ${this.circle ? this.renderPiece(circle) : `` }
   </div>
       ${this.demo ? html`<div id="demo">${this.seed}</div>` : ``}
       <style>
         #cardcircle {
           fill: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));
         }
+        div {
+          width: ${this.width + 'px'};
+        }
+        .wrapper {
+          height: ${this.height + 'px'};
+        }
       </style>
     `;
   }
 
-
+  renderPiece(piece) {
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet">
+      <image
+        href="${piece}"
+        width="${this.width}px"
+        height="${this.height}px"
+        focusable="false"
+        preserveAspectRatio="xMidYMid meet"
+      ></image>
+    </svg>`;
+  }
 
   updated(changedProperties) {
     if (super.updated) {

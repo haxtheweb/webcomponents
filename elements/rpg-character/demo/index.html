@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>RpgCharacter: rpg-character Demo</title>
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" defer></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js" defer></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js" defer></script>
     <script type="module">
       import '../rpg-character.js';
-      import '@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js';
     </script>
   </head>
   <body>
@@ -33,6 +32,10 @@
       </select>
       <label for="seed">Seed</label>
       <input id="seed" size="20"/>
+      <label for="height">height</label>
+      <input id="height" size="20" type="number"/>
+      <label for="width">width</label>
+      <input id="width" size="20" type="number"/>
       <label for="circle">Circle?</label>
       <input id="circle" type="checkbox" />
       <label for="fire">Fire!?!?</label>
@@ -123,6 +126,12 @@
         dqs("#seed").addEventListener("input", (e) => {
           dqs("rpg-character").seed = e.target.value;
         });
+        dqs("#height").addEventListener("input", (e) => {
+          dqs("rpg-character").height = e.target.value;
+        });
+        dqs("#width").addEventListener("input", (e) => {
+          dqs("rpg-character").width = e.target.value;
+        });
         dqs("#walking").addEventListener("change", (e) => {
           dqs("rpg-character").walking = e.target.checked;
         });
@@ -140,6 +149,9 @@
         Array.from(dqsa("rpg-character")).forEach((item) => {
           item.demo = true;
         });
+      </script>
+      <script type="module" defer>
+        import '@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js';
       </script>
     </div>
   </body>
