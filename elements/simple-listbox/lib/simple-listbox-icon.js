@@ -132,13 +132,19 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
    * @returns {array}
    */
   getIconsetOptions(iconset){
-    return (iconset || []).map(item=>{
-      return {
-        id: `icon-${item.toLowerCase().replace(/\:/g,'-')}`,
-        icon: item,
-        value: item,
-      }
-    })
+    return (iconset || []).map(icon=>this.updateIcon(icon))
+  }
+  /**
+   * updates icon data object 
+   * @param {object} icon raw icon data object
+   * @returns 
+   */
+  updateIcon(icon){
+    return {
+      id: `icon-${icon.toLowerCase().replace(/\:/g,'-')}`,
+      icon: icon,
+      value: icon,
+    };
   }
   /**
    * gets template for an icon based on icon name

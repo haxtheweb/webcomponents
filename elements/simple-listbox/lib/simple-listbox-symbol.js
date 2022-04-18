@@ -119,17 +119,24 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
         tab: tab.tab ? this._getUnicode(tab.tab) : undefined,
         icon: tab.icon,
         tooltip: tab.tooltip,
-        itemsList: (tab.groups || []).map(group=>window.SimpleListboxSymbols[group]).flat().map(item=>{
-          return {
-            ...item,
-            id: `${id}-${item.character.replace(/[\&\;]/g,"")}`,
-            html: item.character,
-            value: this._getUnicode(item.character),
-            tooltip: item.character,
-          }
-        })
+        itemsList: (tab.groups || []).map(group=>window.SimpleListboxSymbols[group]).flat().map(symbol=>this.updateSymbol(id,symbol))
       }
     });
+  }
+  /**
+   * updates symbol data object 
+   * @param {string} id 
+   * @param {object} symbol raw symbol data object
+   * @returns 
+   */
+  updateSymbol(id,symbol){
+    return {
+      ...symbol,
+      id: `${id}-${symbol.character.replace(/[\&\;]/g,"")}`,
+      html: symbol.character,
+      value: this._getUnicode(symbol.character),
+      tooltip: symbol.character,
+    };
   }
   /**
    * gets unicode character for an HTML entity

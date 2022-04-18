@@ -141,20 +141,27 @@ class SimpleListboxEmoji extends SimpleListBoxBehaviors(LitElement) {
         tab: tab.tab ? this._getUnicode(tab.tab) : undefined,
         icon: tab.icon,
         tooltip: tab.tooltip,
-        itemsList: (tab.groups || []).map(group=>EmojiByType[group]).flat().map(item=>{
-          return {
-            ...item,
-            id: `${id}-${item.character.replace(/[\&\#\;]/g,"")}`,
-            html: item.character,
-            value: this._getUnicode(item.character),
-            tooltip: item.description,
-            textComparison: item.description || item.shortcodes && item.shortcodes.length > 0 
-            ? [...(item.shortcodes || []).map(code=>`:${code}:`), ...(item.shortcodes || []), item.description ].sort()
-            : undefined
-          }
-        })
+        itemsList: (tab.groups || []).map(group=>EmojiByType[group]).flat().map(emoji=>this.updateEmoji(id,emoji))
       }
     });
+  }
+  /**
+   * updates emoji data object 
+   * @param {string} id 
+   * @param {object} emoji raw emoji data object
+   * @returns 
+   */
+  updateEmoji(id,emoji){
+    return {
+      ...emoji,
+      id: `${id}-${emoji.character.replace(/[\&\#\;]/g,"")}`,
+      html: emoji.character,
+      value: this._getUnicode(emoji.character),
+      tooltip: emoji.description,
+      textComparison: emoji.description || emoji.shortcodes && emoji.shortcodes.length > 0 
+      ? [...(emoji.shortcodes || []).map(code=>`:${code}:`), ...(emoji.shortcodes || []), emoji.description ].sort()
+      : undefined
+    };
   }
   /**
    * gets unicode character for an HTML entity
