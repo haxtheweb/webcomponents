@@ -1,39 +1,85 @@
 {
-    "canScale": false,
-    "canPosition": false,
-    "canEditSource": true,
-    "gizmo": {
-      "title": "RPG Character",
-      "description": "Fun character from HAX",
-      "icon": "hax:hax2022",
-      "color": "red",
-      "groups": ["Fun"],
-      "handles": [],
-      "meta": {
-        "author": "LRNWebComponents"
-      }
-    },
-    "settings": {
-      "configure": [
-        {
-          "property": "seed",
-          "title": "Name",
-          "description": "A word that will generate a new random character",
-          "inputMethod": "textfield"
-        }
-      ]
-    },
-    "saveOptions": {
-      "unsetAttributes": ["colors"]
-    },
-    "demoSchema": [
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "RPG Character",
+    "description": "Fun character from HAX",
+    "icon": "hax:hax2022",
+    "color": "red",
+    "groups": ["Fun"],
+    "handles": [],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "configure": [
       {
-        "tag": "rpg-character",
-        "properties": {
-          "seed": "haxtheweb"
-        },
-        "content": ""
+        "property": "seed",
+        "title": "Name",
+        "description": "A word that will generate a new random character",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hat",
+        "title": "Hat",
+        "description": "Hat to wear",
+        "inputMethod": "select",
+        "options": {
+          "none": "Default",
+          "random": "Random",
+          "bunny": "Bunny",
+          "cowboy": "Cowboy",
+          "education": "Education",
+          "construction": "Construction",
+          "warning": "Warning",
+          "watermelon": "Watermelon",
+          "coffee": "Coffee",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "error": "Error",
+          "edit": "Edit"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "A word that will generate a new random character",
+        "inputMethod": "number"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "A word that will generate a new random character",
+        "inputMethod": "number"
+      },
+      {
+        "property": "fire",
+        "title": "On fire?",
+        "description": "Is the character on fire?",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "walking",
+        "title": "Walking?",
+        "description": "Walking around or running if on fire",
+        "inputMethod": "boolean"
       }
     ]
-  }
-  
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors"]
+  },
+  "demoSchema": [
+    {
+      "tag": "rpg-character",
+      "properties": {
+        "seed": "haxtheweb",
+        "hat": "random"
+      },
+      "content": ""
+    }
+  ]
+}

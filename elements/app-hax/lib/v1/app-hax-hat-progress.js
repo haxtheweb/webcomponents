@@ -1,12 +1,12 @@
-import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, css } from 'lit';
+import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
+import { autorun, toJS } from 'mobx';
 import { store } from "./AppHaxStore.js";
-import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/promise-progress/promise-progress.js";
+import '@lrnwebcomponents/promise-progress/promise-progress.js';
 
 export class AppHaxHatProgress extends SimpleColors {
   static get tag() {
-    return "app-hax-hat-progress";
+    return 'app-hax-hat-progress';
   }
 
   constructor() {
@@ -29,32 +29,32 @@ export class AppHaxHatProgress extends SimpleColors {
   }
 
   process() {
-    this.shadowRoot.querySelector("#progress2").process();
+    this.shadowRoot.querySelector('#progress2').process();
   }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.dispatchEvent(new CustomEvent("progress-ready", { detail: true }));
+    this.dispatchEvent(new CustomEvent('progress-ready', { detail: true }));
 
     setTimeout(() => {
       this.shadowRoot
-        .querySelector("#progress2")
-        .addEventListener("value-changed", (e) => {
-          this.shadowRoot.querySelector("#value").textContent = e.detail.value;
+        .querySelector('#progress2')
+        .addEventListener('value-changed', e => {
+          this.shadowRoot.querySelector('#value').textContent = e.detail.value;
         });
       this.shadowRoot
-        .querySelector("#progress2")
-        .addEventListener("max-changed", (e) => {
+        .querySelector('#progress2')
+        .addEventListener('max-changed', e => {
           this.max = e.detail.value;
         });
       this.shadowRoot
-        .querySelector("#progress2")
-        .addEventListener("promise-progress-finished", (e) => {
+        .querySelector('#progress2')
+        .addEventListener('promise-progress-finished', e => {
           if (e.detail.value) {
             this.dispatchEvent(
-              new CustomEvent("promise-progress-finished", {
+              new CustomEvent('promise-progress-finished', {
                 detail: true,
               })
             );
@@ -66,24 +66,18 @@ export class AppHaxHatProgress extends SimpleColors {
             // we more or less assume it completed bc the Promises all resolved
             // and it was our 1st Promise we asked to issue!
             const createResponse = store.AppHaxAPI.lastResponse.createSite;
-            const text = document.createElement("button");
-            this.shadowRoot.querySelector("#value").textContent = this.max;
+            const text = document.createElement('button');
+            this.shadowRoot.querySelector('#value').textContent = this.max;
             text.textContent = "Let's go!";
-            text.classList.add("game");
-            text.addEventListener("click", () => {
-              window.location = toJS(store.sitesBase).concat(
-                createResponse.slug
-              );
+            text.classList.add('game');
+            text.addEventListener('click', () => {
+              window.location = toJS(store.sitesBase).concat(createResponse.slug);
             });
             this.shadowRoot
-              .querySelector("#progress2")
+              .querySelector('#progress2')
               .parentNode.appendChild(text);
             // show you saying you got this!
-            store.toast(
-              `${createResponse.title} looks awesome, come see!`,
-              5000,
-              { hat: "random", walking: true }
-            );
+            store.toast(`${createResponse.title} looks awesome, come see!`, 5000, { hat: 'random', walking: true});
           }
         });
     }, 0);
@@ -122,7 +116,7 @@ export class AppHaxHatProgress extends SimpleColors {
 
         .count {
           color: var(--simple-colors-default-theme-grey-1, white);
-          font-family: "Press Start 2P", sans-serif;
+          font-family: 'Press Start 2P', sans-serif;
           width: 350px;
           text-align: center;
           position: relative;
@@ -132,7 +126,7 @@ export class AppHaxHatProgress extends SimpleColors {
           margin-left: 30px;
         }
         .game {
-          font-family: "Press Start 2P", sans-serif;
+          font-family: 'Press Start 2P', sans-serif;
           font-size: 28px;
           font-weight: bold;
           text-align: center;
@@ -165,7 +159,8 @@ export class AppHaxHatProgress extends SimpleColors {
   render() {
     return html`
       <img
-        src="${new URL("../assets/images/HatBlank.svg", import.meta.url).href}"
+        src="${new URL('../assets/images/HatBlank.svg', import.meta.url)
+          .href}"
         alt=""
       />
       <promise-progress

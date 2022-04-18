@@ -11,6 +11,10 @@ const HAXCMSThemeParts = function (SuperClass) {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
       });
+      autorun((reaction) => {
+        this.darkMode = toJS(store.darkMode);
+        this.__disposer.push(reaction);
+      });
     }
     static get styles() {
       let styles = [];
@@ -42,6 +46,11 @@ const HAXCMSThemeParts = function (SuperClass) {
         editMode: {
           type: Boolean,
           attribute: "edit-mode",
+          reflect: true,
+        },
+        darkMode: {
+          type: Boolean,
+          attribute: "dark-mode",
           reflect: true,
         },
       };

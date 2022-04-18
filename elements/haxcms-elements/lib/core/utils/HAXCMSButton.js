@@ -1,10 +1,12 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, unsafeCSS } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { HAXCMSThemeParts } from "./HAXCMSThemeParts.js";
+const ButtonBGLight = new URL('../../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
+const ButtonBGDark = new URL('../../../../app-hax/lib/assets/images/ButtonBGDM.svg', import.meta.url).href;
 
 // translation support baked in, use this class to reduce
 // complexity in adding new buttons to the HAXcms UI for editors
@@ -16,14 +18,12 @@ export class HAXCMSButton extends HAXCMSThemeParts(
     this.icon = "mdextra:hexagon-multiple";
     this.label = "button";
     this.voiceCommand = "";
-    this.dark = false;
   }
   static get properties() {
     return {
       ...super.properties,
       icon: { type: String },
       label: { type: String },
-      dark: { type: Boolean, reflect: true },
       voiceCommand: { type: String },
     };
   }
@@ -40,7 +40,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           --simple-icon-height: 24px;
           border-radius: 50%;
           border: none;
-          background-color: var(--simple-colors-default-theme-accent-1, black);
+          background-image: url('${unsafeCSS(ButtonBGLight)}');
           color: var(--simple-colors-default-theme-accent-12, white);
           text-align: center;
           line-height: 40px;
@@ -57,8 +57,10 @@ export class HAXCMSButton extends HAXCMSThemeParts(
         simple-icon-button:hover,
         simple-icon-button:focus,
         simple-icon-button:active {
-          background-color: var(--haxcms-color);
-          color: var(--simple-colors-default-theme-accent-1, white);
+          opacity: .8;
+        }
+        :host([dark-mode]) simple-icon-button {
+          background-image: url('${unsafeCSS(ButtonBGDark)}');
         }
         simple-tooltip:not(:defined) {
           display: none !important;
@@ -72,7 +74,6 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
-          --simple-tooltip-width: 145px;
         }
       `,
     ];
@@ -104,7 +105,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
         id="button"
         label="${label}"
         @click="${this.HAXCMSButtonClick}"
-        ?dark="${this.dark}"
+        ?dark="${!this.darkMode}"
         icon="${this.icon}"
         voice-command="${this.voiceCommand}"
       ></simple-icon-button>

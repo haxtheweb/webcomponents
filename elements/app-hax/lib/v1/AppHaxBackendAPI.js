@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
-import { toJS, autorun } from "mobx";
+import { toJS, autorun } from 'mobx';
 import { store } from "./AppHaxStore.js";
 
 // this element will manage all connectivity to the backend
@@ -8,33 +8,34 @@ import { store } from "./AppHaxStore.js";
 // so that it doesn't get messy down below in state
 export class AppHaxBackendAPI extends LitElement {
   static get tag() {
-    return "app-hax-backend-api";
+    return 'app-hax-backend-api';
   }
 
   constructor() {
     super();
     this.jwt = null;
-    this.method = window.appSettings.demo ? "GET" : "POST";
-    this.baseAddress = "/";
+    this.method = window.appSettings.demo ? 'GET' : 'POST';
+    this.baseAddress = '/';
     this.lastResponse = {};
     this.appSettings = {};
     autorun(() => {
       this.appSettings = toJS(store.appSettings);
     });
   }
-
+  
   static get properties() {
     return {
       jwt: { type: String },
-      baseAddress: { type: String, attribute: "base-address" },
+      baseAddress: { type: String, attribute: 'base-address' },
       appSettings: { type: Object },
       method: { type: String },
-    };
+    }
   }
 
   render() {
     // eslint-disable-next-line no-unused-expressions
-    html` <jwt-login
+    html`
+      <jwt-login
       auto
       id="jwt"
       jwt="${this.jwt}"
@@ -58,19 +59,19 @@ export class AppHaxBackendAPI extends LitElement {
         method: this.method,
       };
       // encode in search params or body of the request
-      if (this.method === "GET") {
-        urlRequest += "?" + new URLSearchParams(data).toString();
-      } else {
+      if (this.method === 'GET') {
+        urlRequest+= '?' + new URLSearchParams(data).toString();
+      }
+      else {
         options.body = JSON.stringify(data);
       }
-      const response = await fetch(`${urlRequest}`, options).then(
-        (response) => {
+      const response = await fetch(`${urlRequest}`, options)
+        .then((response) => {
           if (response.ok) {
             return response.json();
           }
           return {};
-        }
-      );
+        });
       // ability to save the output if this is being done as a bg task
       // that way we can get access to the result later on
       if (save) {
@@ -88,9 +89,8 @@ export class AppHaxBackendAPI extends LitElement {
     // set store refernece to this singleton
     store.AppHaxAPI = this;
     store.newSitePromiseList = [
-      () => this.makeCall("createSite", store.site, true),
-      ...store.newSitePromiseList,
-    ];
+      () => this.makeCall('createSite',store.site, true),
+      ...store.newSitePromiseList];
   }
 
   updated(changedProperties) {
@@ -98,12 +98,13 @@ export class AppHaxBackendAPI extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "jwt") {
+      if (propName === 'jwt') {
         store.jwt = this[propName];
       }
     });
   }
 }
+
 
 window.AppHaxAPI = window.AppHaxAPI || {};
 

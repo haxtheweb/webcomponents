@@ -8,7 +8,16 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 const defaultSpeed = 500;
 // default list of non-status related hats
 const hatList = [
-  'bunny', 'coffee', 'construction', 'cowboy', 'education', 'knight', 'ninja', 'party', 'pirate', 'watermelon'
+  "bunny",
+  "coffee",
+  "construction",
+  "cowboy",
+  "education",
+  "knight",
+  "ninja",
+  "party",
+  "pirate",
+  "watermelon",
 ];
 /**
  * `rpg-character`
@@ -20,7 +29,7 @@ class RpgCharacter extends SimpleColors {
   /**
    * Convention we use
    */
-   static get tag() {
+  static get tag() {
     return "rpg-character";
   }
   /**
@@ -41,20 +50,22 @@ class RpgCharacter extends SimpleColors {
     this.accentColor = "orange";
     this.seed = null;
     this.walking = false;
-    this.leg = '';
+    this.leg = "";
     this.speed = 500;
     this.__walkingTimeout = null;
     this.circle = false;
-    this.hat = 'none';
+    this.hat = "none";
     this.hatColor = 0;
     this.demo = false;
     this.fire = false;
-    this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
   }
 
   randomColor(seed = null) {
     if (seed === null) {
-      seed = "" + Math.floor(Math.random()*Object.keys(this.colors).length);
+      seed = "" + Math.floor(Math.random() * Object.keys(this.colors).length);
     }
     return Object.keys(this.colors)[seed];
   }
@@ -74,15 +85,15 @@ class RpgCharacter extends SimpleColors {
       skin: { type: Number },
       hatColor: { type: Number },
       hat: { type: String },
-      walking: { type: Boolean, reflect: true},
+      walking: { type: Boolean, reflect: true },
       leg: { type: String },
       seed: { type: String, reflect: true },
       speed: { type: Number },
-      circle: { type: Boolean, reflect: true},
-      fire: { type: Boolean, reflect: true},
-      demo: { type: Boolean},
-      reduceMotion: { type: Boolean }
-    }
+      circle: { type: Boolean, reflect: true },
+      fire: { type: Boolean, reflect: true },
+      demo: { type: Boolean },
+      reduceMotion: { type: Boolean },
+    };
   }
   /**
    * LitElement style callback
@@ -103,14 +114,15 @@ class RpgCharacter extends SimpleColors {
           text-align: initial;
           position: relative;
         }
-        svg,img {
+        svg,
+        img {
           position: absolute;
           margin: 0;
           padding: 0;
           text-align: initial;
         }
         div {
-          transition: .3s ease-in-out background-color;
+          transition: 0.3s ease-in-out background-color;
           margin: 0;
           padding: 0;
           text-align: initial;
@@ -123,7 +135,7 @@ class RpgCharacter extends SimpleColors {
           color: white;
           font-weight: bold;
         }
-        `
+      `,
     ];
   }
   firstUpdated(changedProperties) {
@@ -131,60 +143,72 @@ class RpgCharacter extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
     if (this.seed === null) {
-      this.seed = Math.random().toString(36).substring(2,12);
+      this.seed = Math.random().toString(36).substring(2, 12);
     }
   }
   /**
    * LitElement render callback
    */
   render() {
-    const accessories = new URL(`./lib/accessories/${this.accessories}.svg`, import.meta.url).href;
-    const base = new URL(`./lib/base/${this.base}${this.leg}.svg`, import.meta.url).href;
+    const accessories = new URL(
+      `./lib/accessories/${this.accessories}.svg`,
+      import.meta.url
+    ).href;
+    const base = new URL(
+      `./lib/base/${this.base}${this.leg}.svg`,
+      import.meta.url
+    ).href;
     const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
     const face = new URL(`./lib/face/${this.face}.svg`, import.meta.url).href;
-    const faceItem = new URL(`./lib/faceItem/${this.faceItem}.svg`, import.meta.url).href;
+    const faceItem = new URL(
+      `./lib/faceItem/${this.faceItem}.svg`,
+      import.meta.url
+    ).href;
     const hair = new URL(`./lib/hair/${this.hair}.svg`, import.meta.url).href;
-    const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url).href;
-    const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url).href;
+    const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url)
+      .href;
+    const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url)
+      .href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
     let hatFileName = this.hat;
     // special cases to change hat from the one requested
-    if (this.fire && this.hat === 'none') {
-      hatFileName = 'coffee';
-    }
-    else if (this.hat === 'random') {
-      hatFileName = hatList[Math.floor(Math.random()*hatList.length)];
+    if (this.fire && this.hat === "none") {
+      hatFileName = "coffee";
+    } else if (this.hat === "random") {
+      hatFileName = hatList[Math.floor(Math.random() * hatList.length)];
     }
     const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
-    const hatColor = new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
-    const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;    
-    const circle = new URL(`./lib/circle.svg`, import.meta.url).href;    
+    const hatColor = new URL(
+      `./lib/hatColor/${this.hatColor}.svg`,
+      import.meta.url
+    ).href;
+    const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
+    const circle = new URL(`./lib/circle.svg`, import.meta.url).href;
     return html`
       <div class="wrapper">
-      ${this.renderPiece(skin)}
-      ${this.base === 1 ? this.renderPiece(hair) : ``}
-      ${this.renderPiece(face)}
-      ${this.renderPiece(faceItem)}
-      ${this.renderPiece(shirt)}
-      ${this.renderPiece(pants)}
-      ${this.renderPiece(accessories)}
-      ${this.renderPiece(base)}
-      ${this.leg !== '' ? this.renderPiece(leg) : ``}
-      ${this.renderPiece(hatColor)}
-      ${this.fire ? this.renderPiece(fire) : ``}
-      ${hatFileName !== 'none' ? this.renderPiece(hat) : ``}
-      ${this.circle ? this.renderPiece(circle) : `` }
-  </div>
+        ${this.renderPiece(skin)}
+        ${this.base === 1 ? this.renderPiece(hair) : ``}
+        ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
+        ${this.renderPiece(shirt)} ${this.renderPiece(pants)}
+        ${this.renderPiece(accessories)} ${this.renderPiece(base)}
+        ${this.leg !== "" ? this.renderPiece(leg) : ``}
+        ${this.renderPiece(hatColor)} ${this.fire ? this.renderPiece(fire) : ``}
+        ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
+        ${this.circle ? this.renderPiece(circle) : ``}
+      </div>
       ${this.demo ? html`<div id="demo">${this.seed}</div>` : ``}
       <style>
         #cardcircle {
-          fill: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));
+          fill: var(
+            --simple-colors-default-theme-${this.accentColor}-8,
+            var(--simple-colors-default-theme-accent-8, yellow)
+          );
         }
         div {
-          width: ${this.width + 'px'};
+          width: ${this.width + "px"};
         }
         .wrapper {
-          height: ${this.height + 'px'};
+          height: ${this.height + "px"};
         }
       </style>
     `;
@@ -208,50 +232,57 @@ class RpgCharacter extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'fire') {
-        this.speed = (this[propName] ? 100 : defaultSpeed);
+      if (propName === "fire") {
+        this.speed = this[propName] ? 100 : defaultSpeed;
       }
       if (propName === "demo") {
         if (this[propName]) {
-          this.shadowRoot.querySelector(".wrapper").addEventListener("click", (e) => {
-            this.seed = Math.random().toString(36).substring(2,12);
-          });
-        }
-        else {
-          this.shadowRoot.querySelector(".wrapper").removeEventListener("click", (e) => {
-            e.target.seed = Math.random().toString(36).substring(2,12);
-          });
+          this.shadowRoot
+            .querySelector(".wrapper")
+            .addEventListener("click", (e) => {
+              this.seed = Math.random().toString(36).substring(2, 12);
+            });
+        } else {
+          this.shadowRoot
+            .querySelector(".wrapper")
+            .removeEventListener("click", (e) => {
+              e.target.seed = Math.random().toString(36).substring(2, 12);
+            });
         }
       }
-      if ((propName === "leg" || propName === "walking") && this.walking && !this.reduceMotion) {
+      if (
+        (propName === "leg" || propName === "walking") &&
+        this.walking &&
+        !this.reduceMotion
+      ) {
         clearTimeout(this.__walkingTimeout);
         this.__walkingTimeout = setTimeout(() => {
           switch (this.leg) {
-            case '':
+            case "":
               this.leg = "R";
-            break;
-            case 'R':
+              break;
+            case "R":
               this.leg = "L";
-            break;
-            case 'L':
+              break;
+            case "L":
               this.leg = "";
-            break;
+              break;
           }
         }, this.speed);
       }
       if (propName === "seed" && this[propName]) {
         // use the seed to generate a random number
         let seed = 54;
-        for (let i=0; i < (this.seed.length); i++) {
+        for (let i = 0; i < this.seed.length; i++) {
           // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
           if (i < 64) {
             seed *= this.seed.charCodeAt(i);
           }
         }
         const funKeys = {
-          zpg: '7501517984378880262144',
-          edtechjoker: '712215550',
-          btopro: '7122155501',
+          zpg: "7501517984378880262144",
+          edtechjoker: "712215550",
+          btopro: "7122155501",
         };
         // ensure huge numbers dont bust JS max
         seed = BigInt(seed).toString();
@@ -259,34 +290,36 @@ class RpgCharacter extends SimpleColors {
           seed = funKeys[this[propName]];
         }
         const charBuilder = {
-          accessories : 9,
-          base : 1,
-          leg : ['', 'R', 'L'],
-          face : 5,
-          faceItem : 9,
-          hair : 9,
-          pants : 9,
-          shirt : 9,
-          skin : 9,
-          hatColor : 9,
-        }
+          accessories: 9,
+          base: 1,
+          leg: ["", "R", "L"],
+          face: 5,
+          faceItem: 9,
+          hair: 9,
+          pants: 9,
+          shirt: 9,
+          skin: 9,
+          hatColor: 9,
+        };
         Object.keys(charBuilder).forEach((trait, key) => {
           if (seed[key] !== undefined) {
             if (trait === "leg") {
-              this[trait] = charBuilder[trait][Math.floor(Math.random()*Object.keys(charBuilder[trait]).length)];
+              this[trait] =
+                charBuilder[trait][
+                  Math.floor(
+                    Math.random() * Object.keys(charBuilder[trait]).length
+                  )
+                ];
             }
             // base needs to be even 50/50 split
             else if (trait === "base") {
               this[trait] = seed[key] >= 5 ? 1 : 0;
-            }
-            else if (trait === "face") {
+            } else if (trait === "face") {
               this[trait] = seed[key] > 5 ? 1 : seed[key];
-            }
-            else {
+            } else {
               this[trait] = seed[key];
             }
-          }
-          else {
+          } else {
             this[trait] = 0;
           }
         });
@@ -297,7 +330,8 @@ class RpgCharacter extends SimpleColors {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(RpgCharacter.tag, RpgCharacter);

@@ -106,7 +106,6 @@ class LetterGrade extends LitElement {
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
-          --simple-tooltip-width: 145px;
         }
       `,
     ];

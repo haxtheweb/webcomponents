@@ -1,23 +1,23 @@
 /* eslint-disable no-return-assign */
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
-import { store } from "./AppHaxStore.js";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
-import "./app-hax-site-bar.js";
-import "./app-hax-site-details.js";
+import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
+import { html, css } from 'lit';
+import { autorun, toJS } from 'mobx';
+import { store } from './AppHaxStore.js';
+import { varGet } from '@lrnwebcomponents/utils/utils.js';
+import './app-hax-site-bar.js';
+import './app-hax-site-details.js';
 
 export class AppHaxSearchResults extends SimpleColors {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return "app-hax-search-results";
+    return 'app-hax-search-results';
   }
 
   constructor() {
     super();
     this.searchItems = [];
     this.displayItems = [];
-    this.searchTerm = "";
+    this.searchTerm = '';
     this.dark = false;
     autorun(() => {
       this.searchTerm = toJS(store.searchTerm);
@@ -50,8 +50,8 @@ export class AppHaxSearchResults extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "searchTerm") {
-        this.displayItems = this.searchItems.filter((word) => {
+      if (propName === 'searchTerm') {
+        this.displayItems = this.searchItems.filter(word => {
           if (
             word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
             word.description
@@ -75,9 +75,30 @@ export class AppHaxSearchResults extends SimpleColors {
         :host {
           overflow: hidden;
         }
-        ul {
+        ul, li {
           margin: 0;
           padding: 0;
+          list-style: none;
+        }
+        app-hax-site-bar {
+          margin: 8px 0;
+        }
+        
+        @media (max-width: 800px) {
+          app-hax-site-bar {
+            --main-banner-width: 60vw;
+          }
+        }
+        @media (max-width: 400px) {
+          app-hax-site-bar {
+            --main-banner-width: 90vw;
+          }
+        }
+        span[slot="band"] {
+          height: 48px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-bottom: 8px;
         }
       `,
     ];
@@ -87,28 +108,18 @@ export class AppHaxSearchResults extends SimpleColors {
     return html`
       <ul id="results">
         ${this.displayItems.map(
-          (item) =>
+          item =>
             html`<li>
               <app-hax-site-bar
                 @opened-changed="${this.openedChanged}"
                 ?dark="${this.dark}"
-                accent-color="${varGet(
-                  item,
-                  "metadata.theme.variables.cssVariable",
-                  "orange"
-                )
-                  .replace("--simple-colors-default-theme-", "")
-                  .replace("-7", "")}"
-                icon="${varGet(
-                  item,
-                  "metadata.theme.variables.icon",
-                  "icons:home"
-                )}"
-                icon-link="${"https://iam.hax.psu.edu" + item.slug}"
-              >
-                <p slot="heading">${item.title}</p>
-                <p slot="subHeading">${item.author}</p>
-                <p slot="band">${item.description}</p>
+                accent-color="${varGet(item,'metadata.theme.variables.cssVariable', 'orange').replace('--simple-colors-default-theme-','').replace('-7','')}"
+                icon="${varGet(item,'metadata.theme.variables.icon', 'icons:home')}"
+                icon-link="${'https://iam.hax.psu.edu' + item.slug}"
+                >
+                <span slot="heading">${item.title}</span>
+                <span slot="subHeading">${item.author}</span>
+                <span slot="band">${item.description}</span>
                 <app-hax-site-details slot="band"></app-hax-site-details>
               </app-hax-site-bar>
             </li>`
@@ -116,16 +127,13 @@ export class AppHaxSearchResults extends SimpleColors {
       </ul>
     `;
   }
-
+  
   openedChanged(e) {
     if (!e.detail.value) {
-      this.shadowRoot
-        .querySelector("app-hax-site-details")
-        .setAttribute("tabindex", "-1");
-    } else {
-      this.shadowRoot
-        .querySelector("app-hax-site-details")
-        .removeAttribute("tabindex");
+      this.shadowRoot.querySelector("app-hax-site-details").setAttribute("tabindex", "-1");
+    }
+    else {
+      this.shadowRoot.querySelector("app-hax-site-details").removeAttribute("tabindex");
     }
   }
 }

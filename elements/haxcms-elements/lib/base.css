@@ -116,6 +116,15 @@ hax-tray {
   }
 }
 
+body {
+  --app-hax-accent-color: black;
+  --app-hax-background-color: white;
+}
+body.dark-mode {
+  --app-hax-accent-color: white;
+  --app-hax-background-color: black;
+}
+
 body, html {
   padding: 0;
   margin: 0;

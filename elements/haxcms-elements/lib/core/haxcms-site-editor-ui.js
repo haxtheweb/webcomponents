@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -14,7 +14,9 @@ import './haxcms-darkmode-toggle.js';
 import 'wired-elements/lib/wired-button.js';
 
 const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
-
+const ButtonBGLight = new URL('../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
+const ButtonBGDark = new URL('../../../app-hax/lib/assets/images/ButtonBGDM.svg', import.meta.url).href;
+const LogOut = new URL('../../../app-hax/lib/assets/images/Logout.svg', import.meta.url).href;
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -61,8 +63,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([dashboard-opened]) #deletebutton,
         :host([dashboard-opened]) #addbutton,
         :host([dashboard-opened]) #addbuttonchild,
-        :host([dashboard-opened]) #duplicatebutton,
-        :host([dashboard-opened]) #outlinebutton {
+        :host([dashboard-opened]) #duplicatebutton {
           display: none !important;
         }
         :host *[hidden] {
@@ -102,11 +103,16 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           margin: 4px 2px;
           vertical-align: text-bottom;
         }
-        simple-icon-button:hover,
-        simple-icon-button:focus,
-        simple-icon-button:active {
-          background-color: var(--haxcms-color, blue);
-          color: #ffffff;
+        .topbar-button:hover,
+        .topbar-button:focus,
+        .topbar-button:active {
+          opacity: .8;
+        }
+        .topbar-button {
+          background-image: url('${unsafeCSS(ButtonBGLight)}');
+        }
+        :host([dark-mode]) .topbar-button {
+          background-image: url('${unsafeCSS(ButtonBGDark)}');
         }
         #cancelbutton {
           background-color: var(--haxcms-system-danger-color);
@@ -127,13 +133,11 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           color: white;
           background-color: var(--haxcms-system-action-color, blue) !important;
         }
-        :host([edit-mode]) #manifestbutton,
         :host([edit-mode]) #editdetails,
         :host([edit-mode]) #deletebutton,
         :host([edit-mode]) #addbutton,
         :host([edit-mode]) #addbuttonchild,
-        :host([edit-mode]) #duplicatebutton,
-        :host([edit-mode]) #outlinebutton {
+        :host([edit-mode]) #duplicatebutton {
           display: none !important;
         }
 
@@ -151,7 +155,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
-          --simple-tooltip-width: 145px;
         }
         app-hax-top-bar {
           top: 0;
@@ -159,6 +162,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           right: 0;
           left: 0;
           position: fixed;
+        }
+        app-hax-top-bar::part(top-bar) {
+          grid-template-columns: 20% 60% 20%;
         }
         .haxLogo {
           --simple-icon-height: 40px;
@@ -172,7 +178,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           height: 48px;
         }
         .soundToggle {
-          margin-right: 16px;
           position: relative;
           display: inline-flex;
           vertical-align: top;
@@ -192,10 +197,10 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         }
         .user-menu.open {
           display: block;
-          top: 48px;
+          top: 49px;
           right: 0px;
           position: absolute;
-          border: 1px solid black;
+          border: 3px solid black;
           background-color: white;
         }
         .user-menu.open button {
@@ -214,16 +219,39 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           background-color: black;
           color: white;
         }
+        .user-menu .ops-panel {
+          justify-content: space-around;
+          display: flex;
+          padding: 8px 16px;
+        }
+
+        :host([dark-mode]) .user-menu.open {
+          background-color: black;
+          color: white;
+          border: 3px solid white;
+        }
+        :host([dark-mode]) .user-menu.open button {
+          background-color: black;
+          color: white;
+        }
+
+        :host([dark-mode]) .user-menu.open button:hover,
+        :host([dark-mode]) .user-menu.open button:active,
+        :host([dark-mode]) .user-menu.open button:focus {
+          background-color: white;
+          color: black;
+        }
+
         .topbar-character {
-          transform: scale(0.4, 0.4);
-          margin: -36px -35px 0px 0px;
-          vertical-align: text-top;
-          position: fixed;
-          top: 0px;
-          right: 0px;
-          overflow: hidden;
-          height: 120px;
           cursor: pointer;
+          display: inline-block;
+          margin: -4px -8px 0 2px;
+        }
+        .user-menu.open > .logout {
+          background-image: url('${unsafeCSS(LogOut)}');
+          background-repeat: no-repeat;
+          background-position: center;
+          text-align: center;
         }
       `,
     ];
@@ -236,6 +264,8 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.rpgHat = "none";
+    this.darkMode = false;
     this.userMenuOpen = false;
     this.soundIcon = '';
     this.__disposer = this.__disposer || [];
@@ -252,6 +282,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       editSiteSettings: "Edit site settings",
       savePageContent: "Save page content",
       editPageContent: "Edit page content",
+      startNewJourney: "Start New Journey",
+      accountInfo: "Account Info",
+      logOut: "Log out",
     };
     this.backText = "Back to site list";
     this.painting = true;
@@ -286,123 +319,121 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   render() {
     return html`
       <app-hax-top-bar>
-        <simple-icon-lite src="${haxLogo}" class="haxLogo" slot="left" @click=${this.redirectToSites}
-></simple-icon-lite>     
-        <wired-button
-          elevation="1"
-          slot="right"
-          class="soundToggle"
-          @click="${this.soundToggle}"
+        <span slot="left">
+          <simple-icon-lite src="${haxLogo}" class="haxLogo" @click="${this.redirectToSites}"></simple-icon-lite>
+          <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
+        </span>
+      <span slot="center">
+        <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
+        <simple-icon-button
+          hidden
+          ?dark="${!this.darkMode}"
+          id="editbutton"
+          icon="${this.__editIcon}"
+          @click="${this._editButtonTap}"
+          label="${this.__editText}"
+          voice-command="edit (this) page"
+          class="topbar-button"
+        ></simple-icon-button>
+        <simple-icon-button
+          id="cancelbutton"
+          ?dark="${!this.darkMode}"
+          icon="icons:cancel"
+          @click="${this._cancelButtonTap}"
+          .hidden="${!this.editMode}"
+          label="${this.t.cancelEditing}"
+          voice-command="cancel (editing)"
+          class="topbar-button"
+        ></simple-icon-button>
+        <simple-icon-button
+          hidden
+          ?dark="${!this.darkMode}"
+          id="editdetails"
+          icon="hax:page-details"
+          @click="${this._editDetailsButtonTap}"
+          label="${this.t.editDetails}"
+          voice-command="edit (page) details"
+          class="topbar-button"
+        ></simple-icon-button>
+        <simple-icon-button
+          hidden
+          ?dark="${!this.darkMode}"
+          id="deletebutton"
+          icon="icons:delete"
+          @click="${this._deleteButtonTap}"
+          label="${this.t.deletePage}"
+          voice-command="delete page"
+          class="topbar-button"
+        ></simple-icon-button>
+        <haxcms-button-add
+        hidden
+        ?dark-mode="${this.darkMode}"
+        id="addbutton"></haxcms-button-add>
+        <haxcms-button-add
+          hidden
+          ?dark-mode="${this.darkMode}"
+          id="addbuttonchild"
+          type="child"
+        ></haxcms-button-add>
+        <haxcms-button-add
+          hidden
+          ?dark-mode="${this.darkMode}"
+          type="duplicate"
+          id="duplicatebutton"
+        ></haxcms-button-add>
+        <simple-tooltip for="username" position="bottom" offset="14"
+          >${this.backText}</simple-tooltip
         >
-          <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
-        </wired-button>
-        <haxcms-darkmode-toggle slot="right"></haxcms-darkmode-toggle>
-        <div class="space-hack" slot="right"></div>
+        <simple-tooltip for="cancelbutton" position="bottom" offset="14"
+          >${this.t.cancelEditing}</simple-tooltip
+        >
+        <simple-tooltip for="editbutton" position="bottom" offset="14"
+          >${this.__editText}</simple-tooltip
+        >
+        <simple-tooltip for="editdetails" position="bottom" offset="14"
+          >${this.t.editDetails}</simple-tooltip
+        >
+        <simple-tooltip for="deletebutton" position="bottom" offset="14"
+          >${this.t.deletePage}</simple-tooltip
+        >
+        <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+      </span>
+      <span slot="right">
         <rpg-character
           class="topbar-character"
           seed="${this.userName}"
-          slot="right"
+          width="68"
+          height="68"
+          aria-label="System menu"
+          title="System menu"
+          hat="${this.rpgHat}"
           @click="${this.toggleMenu}"
         ></rpg-character>
-        <div slot="right" class="user-menu ${this.userMenuOpen ? 'open' : ''}">
-          <button>Site settings</button>
-          <button>Site outline</button>
-          <button>New Journey</button>
-          <button>Account info</button>
-          <button>log out</button>
+        <div class="user-menu ${this.userMenuOpen ? 'open' : ''}">
+          <div class="ops-panel">
+            <wired-button
+              elevation="1"
+              class="soundToggle"
+              @click="${this.soundToggle}"
+            >
+              <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
+            </wired-button>
+            <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
+          </div>
+          <button @click="${this._manifestButtonTap}">
+            <simple-icon-lite icon="${this.icon}"></simple-icon-lite>${this.__settingsText}</button>
+          <button
+          id="outlinebutton"
+          @click="${this._outlineButtonTap}"
+          ><simple-icon-lite icon="hax:site-map"></simple-icon-lite>${this.t.editSiteOutline}</button>
+          <button>
+          <simple-icon-lite icon="add"></simple-icon-lite>${this.t.startNewJourney}</button>
+          <button>
+          <simple-icon-lite icon="face"></simple-icon-lite>${this.t.accountInfo}</button>
+          <button class="logout">${this.t.logOut}</button>
         </div>
-      </app-hax-top-bar>
-      <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
-      <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
-      <simple-icon-button
-        hidden
-        dark
-        id="editbutton"
-        icon="${this.__editIcon}"
-        @click="${this._editButtonTap}"
-        label="${this.__editText}"
-        voice-command="edit (this) page"
-      ></simple-icon-button>
-      <simple-icon-button
-        id="cancelbutton"
-        dark
-        icon="icons:cancel"
-        @click="${this._cancelButtonTap}"
-        .hidden="${!this.editMode}"
-        label="${this.t.cancelEditing}"
-        voice-command="cancel (editing)"
-      ></simple-icon-button>
-      <simple-icon-button
-        hidden
-        dark
-        id="editdetails"
-        icon="hax:page-details"
-        @click="${this._editDetailsButtonTap}"
-        label="${this.t.editDetails}"
-        voice-command="edit (page) details"
-      ></simple-icon-button>
-      <haxcms-button-add hidden dark id="addbutton"></haxcms-button-add>
-      <haxcms-button-add
-        hidden
-        dark
-        id="addbuttonchild"
-        type="child"
-      ></haxcms-button-add>
-      <haxcms-button-add
-        hidden
-        dark
-        type="duplicate"
-        id="duplicatebutton"
-      ></haxcms-button-add>
-      <simple-icon-button
-        hidden
-        dark
-        id="deletebutton"
-        icon="icons:delete"
-        @click="${this._deleteButtonTap}"
-        label="${this.t.deletePage}"
-        voice-command="delete page"
-      ></simple-icon-button>
-      <simple-icon-button
-        hidden
-        dark
-        id="outlinebutton"
-        icon="hax:site-map"
-        @click="${this._outlineButtonTap}"
-        label="${this.t.editSiteOutline}"
-        voice-command="edit site outline"
-      ></simple-icon-button>
-      <simple-icon-button
-        hidden
-        dark
-        id="manifestbutton"
-        icon="${this.icon}"
-        @click="${this._manifestButtonTap}"
-        label="${this.__settingsText}"
-        voice-command="edit site settings"
-      ></simple-icon-button>
-      <simple-tooltip for="username" position="bottom" offset="14"
-        >${this.backText}</simple-tooltip
-      >
-      <simple-tooltip for="cancelbutton" position="bottom" offset="14"
-        >${this.t.cancelEditing}</simple-tooltip
-      >
-      <simple-tooltip for="editbutton" position="bottom" offset="14"
-        >${this.__editText}</simple-tooltip
-      >
-      <simple-tooltip for="editdetails" position="bottom" offset="14"
-        >${this.t.editDetails}</simple-tooltip
-      >
-      <simple-tooltip for="deletebutton" position="bottom" offset="14"
-        >${this.t.deletePage}</simple-tooltip
-      >
-      <simple-tooltip for="outlinebutton" position="bottom" offset="14"
-        >${this.t.editSiteOutline}</simple-tooltip
-      >
-      <simple-tooltip for="manifestbutton" position="bottom" offset="14"
-        >${this.__settingsText}</simple-tooltip
-      >
-      <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+      </span>
+    </app-hax-top-bar>
     `;
   }
 
@@ -464,20 +495,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
             varPath: "createNodePath",
             selector: "#duplicatebutton",
           },
-          {
-            varPath: "saveOutlinePath",
-            selector: "#outlinebutton",
-          },
-          {
-            varPath: "saveManifestPath",
-            selector: "#manifestbutton",
-            dep: "getSiteFieldsPath",
-          },
-          {
-            varPath: "getSiteFieldsPath",
-            selector: "#manifestbutton",
-            dep: "saveManifestPath",
-          },
         ];
         // see which features should be enabled
         ary.forEach((pair) => {
@@ -516,6 +533,17 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     autorun(() => {
+      localStorageSet('app-hax-darkMode', toJS(store.darkMode));
+      this.darkMode = toJS(store.darkMode);
+      if (this.darkMode) {
+        document.body.classList.add('dark-mode');
+        store.toast("I'm ascared of the dark", 2000, { fire: true});
+      } else {
+        document.body.classList.remove('dark-mode');
+        store.toast("Sunny day it is", 2000, { hat: 'random'});
+      }
+    });
+    autorun(() => {
       this.soundIcon = toJS(store.soundStatus) ? new URL('../../../app-hax/lib/assets/images/FullVolume.svg',import.meta.url).href : new URL('../../../app-hax/lib/assets/images/Silence.svg',import.meta.url).href;
       if (!toJS(store.soundStatus)) {
         store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true});
@@ -548,19 +576,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
             },
           })
         );
-      } else if (el.getAttribute("id") == "manifestbutton") {
-        this.dispatchEvent(
-          new CustomEvent("hax-add-voice-command", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: {
-              command: ":name: cancel site settings",
-              context: el,
-              callback: "click",
-            },
-          })
-        );
       }
       this.dispatchEvent(
         new CustomEvent("hax-add-voice-command", {
@@ -578,7 +593,21 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'userMenuOpen' && oldValue !== undefined) {
+        if (this.userMenuOpen) {
+          this.rpgHat = 'construction';
+        }
+        else {
+          this.rpgHat = 'none';
+        }
+      }
       if (propName == "editMode") {
+        if (this.editMode) {
+          this.rpgHat = 'edit';
+        }
+        else {
+          this.rpgHat = 'none';
+        }
         // observer
         this._editModeChanged(this[propName], oldValue);
         // notify
@@ -618,6 +647,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         type: String,
         attribute: "user-name",
       },
+      rpgHat: { type: String},
       userPicture: {
         type: String,
         attribute: "user-picture",
@@ -626,6 +656,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         type: Boolean,
       },
       soundIcon: { type: String },
+      darkMode: { type: Boolean, reflect: true, attribute: 'dark-mode'},
       backLink: {
         type: String,
       },

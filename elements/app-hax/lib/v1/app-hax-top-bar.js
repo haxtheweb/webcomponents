@@ -1,5 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from 'lit';
+import './app-hax-wired-toggle.js';
+
 // top bar of the UI
 export class AppHaxTopBar extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -45,20 +47,9 @@ export class AppHaxTopBar extends LitElement {
         height: var(--top-bar-height);
         text-align: center;
         vertical-align: middle;
-        font-size: 2vw;
         border-bottom: 3px solid var(--app-hax-accent-color);
         display: grid;
         grid-template-columns: 30% 40% 30%;
-      }
-      @media (max-width: 780px) {
-        .topBar {
-          grid-template-columns: 20% 20% 60%;
-        }
-      }
-      @media (max-width: 600px) {
-        .topBar {
-          grid-template-columns: 10% 30% 60%;
-        }
       }
 
       /* .topBar > div {
@@ -88,7 +79,7 @@ export class AppHaxTopBar extends LitElement {
 
   render() {
     return html`
-      <div class="topBar">
+      <div class="topBar" part="top-bar">
         <div class="left" part="left">
           <slot name="left"></slot>
         </div>

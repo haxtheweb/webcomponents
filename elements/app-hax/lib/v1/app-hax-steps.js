@@ -3,23 +3,20 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable class-methods-use-this */
-import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
-import "./AppHaxRouter.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { store } from "./AppHaxStore.js";
-import {
-  localStorageSet,
-  localStorageGet,
-} from "@lrnwebcomponents/utils/utils.js";
-import "scrollable-component/index.js";
-import "./app-hax-site-button.js";
-import "./app-hax-hat-progress.js";
-import "./app-hax-button.js";
+import { html, css } from 'lit';
+import './AppHaxRouter.js';
+import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
+import { autorun, toJS } from 'mobx';
+import { store } from './AppHaxStore.js';
+import { localStorageSet, localStorageGet } from '@lrnwebcomponents/utils/utils.js';
+import 'scrollable-component/index.js';
+import './app-hax-site-button.js';
+import './app-hax-hat-progress.js';
+import './app-hax-button.js';
 
 export class AppHaxSteps extends SimpleColors {
   static get tag() {
-    return "app-hax-steps";
+    return 'app-hax-steps';
   }
 
   constructor() {
@@ -35,10 +32,10 @@ export class AppHaxSteps extends SimpleColors {
       this.themeNames = Object.keys(this.appSettings.themes);
     });
     autorun(() => {
-      localStorageSet("app-hax-step", toJS(store.step));
+      localStorageSet('app-hax-step', toJS(store.step));
     });
     autorun(() => {
-      localStorageSet("app-hax-site", toJS(store.site));
+      localStorageSet('app-hax-site', toJS(store.site));
       this.step = store.stepTest(this.step);
     });
     autorun(() => {
@@ -50,7 +47,7 @@ export class AppHaxSteps extends SimpleColors {
     // routes, but only the ones that have a step property
     autorun(() => {
       const routes = toJS(store.routes);
-      this.stepRoutes = routes.filter((item) => item.step);
+      this.stepRoutes = routes.filter((item => item.step));
     });
   }
 
@@ -61,7 +58,7 @@ export class AppHaxSteps extends SimpleColors {
       stepRoutes: { type: Array },
       themeNames: { type: Array },
       loaded: { type: Boolean, reflect: true },
-      appSettings: { type: Object },
+      appSettings: { type: Object},
     };
   }
 
@@ -69,28 +66,28 @@ export class AppHaxSteps extends SimpleColors {
   chooseStructure(e) {
     const { value } = e.target;
     store.site.structure = value;
-    store.appEl.playSound("click2");
+    store.appEl.playSound('click2');
   }
 
   // step 2
   chooseType(e) {
     const { value } = e.target;
     store.site.type = value;
-    store.appEl.playSound("click2");
+    store.appEl.playSound('click2');
   }
-
+  
   // step 3
   chooseTheme(e) {
     const { value } = e.target;
     store.site.theme = value;
-    store.appEl.playSound("click2");
+    store.appEl.playSound('click2');
   }
 
   // step 4
   chooseName(e) {
     const value = this.shadowRoot.querySelector("#sitename").value;
     store.site.name = value;
-    store.appEl.playSound("click2");
+    store.appEl.playSound('click2');
   }
 
   progressReady(e) {
@@ -98,7 +95,7 @@ export class AppHaxSteps extends SimpleColors {
       this._progressReady = true;
       if (this.step === 5) {
         setTimeout(() => {
-          this.shadowRoot.querySelector("app-hax-hat-progress").process();
+          this.shadowRoot.querySelector('app-hax-hat-progress').process();
         }, 300);
       }
     }
@@ -110,24 +107,26 @@ export class AppHaxSteps extends SimpleColors {
     }
     changedProperties.forEach((oldValue, propName) => {
       // set input field to whats in store if we have it
-      if (this.step === 4 && propName === "step" && this.shadowRoot) {
-        this.shadowRoot.querySelector("#sitename").value = toJS(
-          store.site.name
-        );
+      if (
+        this.step === 4 &&
+        propName === 'step' &&
+        this.shadowRoot
+      ) {
+        this.shadowRoot.querySelector('#sitename').value = toJS(store.site.name);
       }
       // progress
       if (
         this.step === 5 &&
-        propName === "step" &&
+        propName === 'step' &&
         this.shadowRoot &&
         this._progressReady
       ) {
         setTimeout(() => {
-          this.shadowRoot.querySelector("app-hax-hat-progress").process();
+          this.shadowRoot.querySelector('app-hax-hat-progress').process();
         }, 600);
       }
       // update the store for step when it changes internal to our step flow
-      if (propName === "step") {
+      if (propName === 'step') {
         store[propName] = this[propName];
       }
     });
@@ -135,11 +134,11 @@ export class AppHaxSteps extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this.maintainScroll.bind(this));
+    window.addEventListener('resize', this.maintainScroll.bind(this));
   }
 
   disconnectedCallback() {
-    window.removeEventListener("resize", this.maintainScroll.bind(this));
+    window.removeEventListener('resize', this.maintainScroll.bind(this));
     super.disconnectedCallback();
   }
 
@@ -148,16 +147,16 @@ export class AppHaxSteps extends SimpleColors {
   maintainScroll() {
     if (this.shadowRoot && this.step) {
       this.scrollToThing(`#step-${this.step}`, {
-        behavior: "instant",
-        block: "nearest",
-        inline: "nearest",
+        behavior: 'instant',
+        block: 'nearest',
+        inline: 'nearest'
       });
       // account for an animated window drag... stupid.
       setTimeout(() => {
         this.scrollToThing(`#step-${this.step}`, {
-          behavior: "instant",
-          block: "nearest",
-          inline: "nearest",
+          behavior: 'instant',
+          block: 'nearest',
+          inline: 'nearest'
         });
       }, 100);
     }
@@ -173,9 +172,9 @@ export class AppHaxSteps extends SimpleColors {
         this.step = 1;
       }
       this.scrollToThing(`#step-${this.step}`, {
-        behavior: "instant",
-        block: "nearest",
-        inline: "nearest",
+        behavior: 'instant',
+        block: 'nearest',
+        inline: 'nearest'
       });
     }, 100);
 
@@ -186,10 +185,10 @@ export class AppHaxSteps extends SimpleColors {
         if (location.route && location.route.step && location.route.id) {
           // account for an animated window drag... stupid.
           setTimeout(() => {
-            this.scrollToThing("#".concat(location.route.id), {
-              block: "nearest",
-              inline: "nearest",
-              behavior: "smooth",
+            this.scrollToThing('#'.concat(location.route.id), {
+              block: 'nearest',
+              inline: 'nearest',
+              behavior: 'smooth',
             });
           }, 300); // this delay helps w/ initial paint timing but also user perception
           // there's a desire to have a delay especialy when tapping things of
@@ -198,14 +197,11 @@ export class AppHaxSteps extends SimpleColors {
       }
     });
     autorun(() => {
-      if (
-        this.shadowRoot &&
-        toJS(store.createSiteSteps) &&
-        toJS(store.appReady)
-      ) {
+      if (this.shadowRoot && toJS(store.createSiteSteps) && toJS(store.appReady)) {
         const activeItem = toJS(store.activeItem);
         if (activeItem && activeItem.step && !this.__overrideProgression) {
-          this.shadowRoot.querySelector("#link-".concat(activeItem.id)).click();
+          this.shadowRoot
+          .querySelector('#link-'.concat(activeItem.id)).click();
         }
       }
     });
@@ -220,11 +216,15 @@ export class AppHaxSteps extends SimpleColors {
    */
   scrollToThing(sel, props) {
     const isSafari = window.safari !== undefined;
+    if(this.shadowRoot.querySelector('.carousel-with-snapping-item.active-step')) {
+      this.shadowRoot.querySelector('.carousel-with-snapping-item.active-step').classList.remove('active-step');
+    }
     if (isSafari) {
       this.shadowRoot.querySelector(sel).scrollIntoView();
     } else {
       this.shadowRoot.querySelector(sel).scrollIntoView(props);
     }
+    this.shadowRoot.querySelector(sel).classList.add('active-step');
   }
 
   static get styles() {
@@ -256,18 +256,22 @@ export class AppHaxSteps extends SimpleColors {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
+          justify-content: normal;
           scroll-snap-align: center;
           scroll-snap-stop: always;
           width: var(--viewport-width);
           font-size: 1.5rem;
           text-align: center;
-          overflow: hidden;
-          margin-top: 48px;
+          overflow-x: hidden;
+          max-height: 70vh;
+          padding-top: 3vh;
         }
         #step-links {
           padding: 0;
           margin: 0;
+        }
+        ul,li {
+          list-style: none;
         }
         li {
           display: inline-flex;
@@ -289,7 +293,7 @@ export class AppHaxSteps extends SimpleColors {
           pointer-events: none;
         }
         li[disabled] {
-          background-color: grey;
+          background-color: grey
         }
         li.active-step {
           background-color: orange;
@@ -308,7 +312,8 @@ export class AppHaxSteps extends SimpleColors {
           pointer-events: none;
         }
         #themeContainer {
-          width: 60vw;
+          width: 70vw;
+          height: 55vh;
         }
         .theme-button {
           background-color: transparent;
@@ -317,8 +322,9 @@ export class AppHaxSteps extends SimpleColors {
           padding: 8px;
           width: 245px;
         }
+        
         .theme-button div {
-          font-family: "Press Start 2P", sans-serif;
+          font-family: 'Press Start 2P', sans-serif;
           font-size: 16px;
           margin-top: 16px;
         }
@@ -331,21 +337,81 @@ export class AppHaxSteps extends SimpleColors {
           cursor: pointer;
         }
         #sitename {
-          font-family: "Press Start 2P", sans-serif;
+          font-family: 'Press Start 2P', sans-serif;
           font-size: 64px;
           padding: 8px;
           width: 40vw;
           text-align: center;
         }
-
         app-hax-site-button {
+          justify-content: center;
           --app-hax-site-button-width: 30vw;
-          --app-hax-site-button-min-width: 300px;
+          --app-hax-site-button-min-width: 240px;
         }
         app-hax-hat-progress {
           height: 400px;
           width: 400px;
           display: block;
+        }
+
+        @media (max-width: 800px) {
+          .theme-button {
+            width: unset;
+            padding: 0;
+          }
+          .theme-button div {
+            font-size: 12px;
+            margin-top: 8px;
+          }
+          .theme-button img {
+            height: 70px;
+          }
+          app-hax-site-button {
+            width: 320px;
+            max-width: 60vw;
+            --app-hax-site-button-font-size: 2.5vw;
+          }
+          #sitename {
+            width: 70vw;
+            font-size: 20px;
+          }
+          #grid-container {
+            grid-template-columns: 150px 150px;
+          }
+        }
+        @media (max-height: 600px) {
+          .carousel-with-snapping-item {
+            padding-top: 4px;
+            max-height: 57vh;
+          }
+          #sitename {
+            width: 40vw;
+            font-size: 14px;
+          }
+          app-hax-hat-progress {
+            transform: scale(.5);
+            margin-top: -18vh;
+          }
+        }
+        @media (max-width: 500px) {
+          app-hax-hat-progress {
+            transform: scale(.5);
+            margin-top: -15vh;
+          }
+        }
+        @media (max-height: 400px) {
+          .carousel-with-snapping-item {
+            padding-top: 4px;
+            max-height: 40vh;
+          }
+          app-hax-hat-progress {
+            transform: scale(.3);
+          }
+          .carousel-with-snapping-item.active-step app-hax-hat-progress {
+            position: fixed;
+            top: 20%;
+            left: 20%;
+          }
         }
       `,
     ];
@@ -354,7 +420,7 @@ export class AppHaxSteps extends SimpleColors {
   progressFinished(e) {
     if (e.detail) {
       this.loaded = true;
-      store.appEl.playSound("success");
+      store.appEl.playSound('success');
     }
   }
 
@@ -368,11 +434,13 @@ export class AppHaxSteps extends SimpleColors {
       if (clickedStep === 1) {
         store.site.structure = null;
         store.site.type = null;
-        store.site.theme = null;
-      } else if (clickedStep === 2) {
+        store.site.theme = null;            
+      }
+      else if (clickedStep === 2) {
         store.site.type = null;
         store.site.theme = null;
-      } else if (clickedStep === 3) {
+      }
+      else if (clickedStep === 3) {
         store.site.theme = null;
       }
       this.step = clickedStep;
@@ -382,50 +450,52 @@ export class AppHaxSteps extends SimpleColors {
   renderTypes(step) {
     const structure = toJS(store.site.structure);
     var template = html``;
-    switch (structure) {
-      case "portfolio":
-        template = html` <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="Technology"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="Business"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="Art"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-          ></app-hax-button>`;
-        break;
+    switch(structure) {
+      case 'portfolio':
+        template = html`
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="Technology"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="Business"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="Art"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+        ></app-hax-button>`
+      break;
       default:
-      case "course":
-        template = html` <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="6w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="15w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="training"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${this.step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-          ></app-hax-button>`;
-        break;
+      case 'course':
+        template = html`
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="6w"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="15w"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+          type="training"
+        ></app-hax-button>
+        <app-hax-button
+          tabindex="${step !== 2 ? '-1' : ''}"
+          @click=${this.chooseType}
+        ></app-hax-button>`;
+      break;
     }
     return template;
   }
@@ -434,19 +504,17 @@ export class AppHaxSteps extends SimpleColors {
       <div id="container">
         <ul id="step-links">
           ${this.stepRoutes.map(
-            (item) =>
+            item =>
               html`<li
-                ?disabled="${this.step < item.step ? true : false}"
-                class="${this.step === item.step ? "active-step" : ""}"
-              >
-                <a
-                  href="${item.path}"
+              ?disabled="${this.step < item.step ? true : false}"
+              class="${this.step === item.step ? 'active-step' : ''}">
+                <a href="${item.path}"
                   ?disabled="${this.step < item.step ? true : false}"
                   @click="${this.stepLinkClick}"
                   id="link-${item.id}"
                   title="${item.label}"
                   data-step="${item.step}"
-                ></a>
+                  ></a>
               </li>`
           )}
         </ul>
@@ -455,13 +523,13 @@ export class AppHaxSteps extends SimpleColors {
             <div class="carousel-with-snapping-item" id="step-1">
               <div class="step-wrapper">
                 <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  tabindex="${this.step !== 1 ? '-1' : ''}"
                   label="> Course"
                   value="course"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
                 <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  tabindex="${this.step !== 1 ? '-1' : ''}"
                   label="> Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
@@ -475,38 +543,26 @@ export class AppHaxSteps extends SimpleColors {
           </div>
           <div class="carousel-with-snapping-item" id="step-3">
               <div id="themeContainer">
-                ${
-                  this.appSettings && this.appSettings.themes
-                    ? this.themeNames.map(
-                        (themeKey) => html`
-                          <button
-                            aria-label="${this.appSettings.themes[themeKey]
-                              .name} theme"
-                            value="${themeKey}"
-                            class="theme-button"
-                            @click=${this.chooseTheme}
-                            tabindex="${this.step !== 3 ? "-1" : ""}"
-                          >
-                            <img
-                              src=${this.appSettings.themes[themeKey].thumbnail}
-                              alt=""
-                              loading="lazy"
-                              decoding="async"
-                            />
-                            <div>${this.appSettings.themes[themeKey].name}</div>
-                          </button>
-                        `
-                      )
-                    : ``
-                }
+                ${this.appSettings && this.appSettings.themes ? this.themeNames.map((themeKey) => html`
+                <button
+                  aria-label="${this.appSettings.themes[themeKey].name} theme"
+                  value="${themeKey}"
+                  class="theme-button"
+                  @click=${this.chooseTheme}
+                  tabindex="${this.step !== 3 ? '-1' : ''}"
+                >
+                  <img class="theme-img" src=${this.appSettings.themes[themeKey].thumbnail} alt="" loading="lazy" decoding="async" />
+                  <div>${this.appSettings.themes[themeKey].name}</div>
+                </button>
+                `) : ``}
               </div>
             </div>
             <div class="carousel-with-snapping-item" id="step-4">
               <input id="sitename"
-              tabindex="${this.step !== 4 ? "-1" : ""}">
+              tabindex="${this.step !== 4 ? '-1' : ''}">
               <app-hax-site-button
                   class="sitenamebtn"
-                  tabindex="${this.step !== 4 ? "-1" : ""}"
+                  tabindex="${this.step !== 4 ? '-1' : ''}"
                   label="> Create journey"
                   @click=${this.chooseName}
                 ></app-hax-site-button>
@@ -515,7 +571,7 @@ export class AppHaxSteps extends SimpleColors {
               <app-hax-hat-progress
                 @progress-ready="${this.progressReady}"
                 @promise-progress-finished="${this.progressFinished}"
-                tabindex="${this.step !== 5 ? "-1" : ""}"
+                tabindex="${this.step !== 5 ? '-1' : ''}"
               ></app-hax-hat-progress>
             </div>
         </scrollable-component>
