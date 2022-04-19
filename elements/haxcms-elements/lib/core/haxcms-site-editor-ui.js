@@ -538,8 +538,10 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
       if (this.darkMode) {
         document.body.classList.add('dark-mode');
         store.toast("I'm ascared of the dark", 2000, { fire: true});
+        HAXStore.globalPreferences.haxUiTheme = 'haxdark';
       } else {
         document.body.classList.remove('dark-mode');
+        HAXStore.globalPreferences.haxUiTheme = 'hax';
         store.toast("Sunny day it is", 2000, { hat: 'random'});
       }
     });
