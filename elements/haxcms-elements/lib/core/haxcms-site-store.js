@@ -8,9 +8,12 @@ import {
 } from "mobx";
 import { varExists, varGet, localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
+import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
+    this.badDevice = false;
+    this.evaluatebadDevice();
     this.location = null;
     this.jwt = null;
     this.soundStatus = localStorageGet('app-hax-soundStatus', true);
@@ -114,8 +117,16 @@ class Store {
       .join("-")
       .replace(/[^0-9\-\/a-z]/gi, "");
   }
+  // see if this device is poor
+  async evaluatebadDevice() {
+    this.badDevice = await DeviceDetails.badDevice();
+    if (this.badDevice) {
+      this.soundStatus = false;
+    }
+  }
   // eslint-disable-next-line class-methods-use-this
   playSound(sound) {
+
     if (this.soundStatus && this.appReady) {
       try {
         switch (sound) {

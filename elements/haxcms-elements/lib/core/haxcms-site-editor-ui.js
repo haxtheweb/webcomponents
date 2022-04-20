@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS } from "lit";
+import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -13,6 +13,7 @@ import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import '@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js';
 import './haxcms-darkmode-toggle.js';
 import 'wired-elements/lib/wired-button.js';
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
 const ButtonBGLight = new URL('../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
@@ -25,7 +26,7 @@ const LogOut = new URL('../../../app-hax/lib/assets/images/Logout.svg', import.m
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
+class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors)) {
   static get styles() {
     return [...super.styles,
       css`
@@ -151,6 +152,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
           grid-template-columns: 20% 60% 20%;
         }
         .haxLogo {
+          color: var(--simple-colors-default-theme-accent-12, black);
+        }
+        .haxLogo:hover,
+        .haxLogo:focus,
+        .haxLogo:active {
+          color: var(--haxcms-color);
+        }
+        .haxLogo simple-icon-lite {
           --simple-icon-height: 40px;
           --simple-icon-width: 40px;
           margin: 4px;
@@ -229,8 +238,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
         .topbar-character {
           cursor: pointer;
           display: inline-block;
-          margin: -4px -8px 0 2px;
+          border: none;
+          border-radius: 0px;
+          background-color: transparent;
         }
+        .topbar-character:hover,
+        .topbar-character:focus {
+          background-color: var(--simple-colors-default-theme-light-blue-4);
+          outline: var(--haxcms-color) solid 3px;
+          outline-offset: -3px;
+          height: 48px;
+        }
+        .topbar-character rpg-character {
+          margin: -4px -14px 0px -10px;
+          height: 52px;
+          width: 64px;      
+          display: inline-block;
+        }
+
         .user-menu.open > .logout {
           background-image: url('${unsafeCSS(LogOut)}');
           background-repeat: no-repeat;
@@ -278,6 +303,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
       startNewJourney: "Start New Journey",
       accountInfo: "Account Info",
       logOut: "Log out",
+      systemMenu: "System menu",
     };
     this.backText = "Back to site list";
     this.painting = true;
@@ -286,8 +312,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
     this.__editIcon = "hax:page-edit";
     this.icon = "hax:site-settings";
     this.manifestEditMode = false;
+    this.backLink = '../../';
+    if (window.appSettings && window.appSettings.backLink) {
+      this.backLink = window.appSettings.backLink;
+    }
     autorun(() => {
       this.darkMode = toJS(store.darkMode);
+      this.dark  = this.darkMode;
       if (toJS(store.darkMode)) {
         HAXStore.globalPreferences.haxUiTheme = 'haxdark';
       } else {
@@ -326,13 +357,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
 
   toggleMenu() {
     this.userMenuOpen = !this.userMenuOpen;
+    store.playSound('click');
   }
   // render function
   render() {
     return html`
       <app-hax-top-bar>
         <span slot="left">
-          <simple-icon-lite src="${haxLogo}" class="haxLogo" @click="${this.redirectToSites}"></simple-icon-lite>
+          <a href="${this.backLink}" class="haxLogo" id="backtosites">
+            <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
+          </a>
           <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
         </span>
       <span slot="center">
@@ -402,7 +436,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
           id="duplicatebutton"
           accent-color="purple"
         ></haxcms-button-add>
-        <simple-tooltip for="username" position="bottom" offset="14"
+        <simple-tooltip for="backtosites" position="right"
           >${this.backText}</simple-tooltip
         >
         <simple-tooltip for="cancelbutton" position="bottom" offset="14"
@@ -420,16 +454,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
         <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       </span>
       <span slot="right">
-        <rpg-character
-          class="topbar-character"
-          seed="${this.userName}"
-          width="68"
-          height="68"
-          aria-label="System menu"
-          title="System menu"
-          hat="${this.rpgHat}"
-          @click="${this.toggleMenu}"
-        ></rpg-character>
+        <button class="topbar-character" @click="${this.toggleMenu}">
+          <rpg-character
+            seed="${this.userName}"
+            width="68"
+            height="68"
+            aria-label="${this.t.systemMenu}"
+            title="${this.t.systemMenu}"
+            hat="${this.rpgHat}"
+          ></rpg-character>
+        </button>
         <div class="user-menu ${this.userMenuOpen ? 'open' : ''}">
           <div class="ops-panel">
             <wired-button
@@ -456,26 +490,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
       </span>
     </app-hax-top-bar>
     `;
-  }
-
-  /*
-   * Function to redirect back to sites page
-   */
-  redirectToSites() {
-    let redirectUrl = "";
-    if (window.appSettings && window.appSettings.backLink) {
-      redirectUrl = window.appSettings.backLink;
-    } else {
-      let webTypeRegex = /^http/;
-      let tmp = document.createElement("a");
-      tmp.href = window.location.href;
-      if (webTypeRegex.test(tmp.href)) {
-        redirectUrl = `http://${tmp.host}`;
-      } else {
-        redirectUrl = `https://${tmp.host}`;
-      }
-    }
-    window.location.replace(redirectUrl);
   }
 
   /**
