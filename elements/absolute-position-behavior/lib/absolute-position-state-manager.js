@@ -268,7 +268,6 @@ class AbsolutePositionStateManager extends LitElement {
     if (!el.position) {
       el.position = "bottom";
     }
-    el.style.position = "absolute";
     if (!el.style.top) el.style.top = "0px";
     if (!el.style.left) el.style.left = "0px";
 
@@ -277,6 +276,7 @@ class AbsolutePositionStateManager extends LitElement {
       parent = el.offsetParent,
       t = !target || target.getBoundingClientRect();
     if (!target || !parent) return;
+    el.style.position = "absolute";
     //if justify is set, re-adjust element to
     //target width before getting other dimensions
     if (el.justify) el.style.width = `${t.width}px`;
