@@ -163,8 +163,10 @@ export class RPGCharacterToast extends SimpleToastEl {
     return html`
     <div class="bubble">
       <span class="bubble leftedge"></span>
-      <span class="bubble mid">${this.text}</span>
+      <span class="bubble mid">
+      ${this.text}
       <slot></slot>
+      </span>
       <span class="bubble rightedge"></span>
       <rpg-character seed="${this.userName}" ?fire="${this.fire}" hat="${this.hat}" ?walking="${this.walking}"></rpg-character>
     </div>`;

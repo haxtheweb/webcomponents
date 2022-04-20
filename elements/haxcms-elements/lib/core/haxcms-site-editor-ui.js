@@ -6,6 +6,7 @@ import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "./micros/haxcms-button-add.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
@@ -24,9 +25,9 @@ const LogOut = new URL('../../../app-hax/lib/assets/images/Logout.svg', import.m
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
+class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host *:not(:defined) {
           display: none;
@@ -47,14 +48,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([dashboard-opened]) {
           left: 50vw;
         }
-        @media screen and (max-width: 800px) {
-          :host([dashboard-opened]) {
-            left: 90vw;
-          }
-          :host([edit-mode]) {
-            bottom: unset;
-          }
-        }
         /**
          * Dashboard open trumps all contextual settings
          */
@@ -65,6 +58,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([dashboard-opened]) #addbuttonchild,
         :host([dashboard-opened]) #duplicatebutton {
           display: none !important;
+        }
+        :host([edit-mode]) #editdetails {
+          margin-left: 64px;
         }
         :host *[hidden] {
           display: none;
@@ -110,6 +106,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         }
         .topbar-button {
           background-image: url('${unsafeCSS(ButtonBGLight)}');
+          background-color: var(--simple-colors-default-theme-accent-5, blue);
         }
         :host([dark-mode]) .topbar-button {
           background-image: url('${unsafeCSS(ButtonBGDark)}');
@@ -117,9 +114,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         #cancelbutton {
           background-color: var(--haxcms-system-danger-color);
         }
-        #editbutton,
-        #editdetails,
-        #deletebutton {
+        #editbutton {
           visibility: hidden;
           opacity: 0;
         }
@@ -128,17 +123,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
         :host([page-allowed]) #deletebutton {
           visibility: visible;
           opacity: 1;
-        }
-        :host([edit-mode]) #editbutton {
-          color: white;
-          background-color: var(--haxcms-system-action-color, blue) !important;
-        }
-        :host([edit-mode]) #editdetails,
-        :host([edit-mode]) #deletebutton,
-        :host([edit-mode]) #addbutton,
-        :host([edit-mode]) #addbuttonchild,
-        :host([edit-mode]) #duplicatebutton {
-          display: none !important;
         }
 
         :host(:hover),
@@ -253,6 +237,15 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           background-position: center;
           text-align: center;
         }
+
+        @media screen and (max-width: 800px) {
+          :host([dashboard-opened]) {
+            left: 90vw;
+          }
+          :host([edit-mode]) {
+            bottom: unset;
+          }
+        }
       `,
     ];
   }
@@ -293,6 +286,17 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     this.__editIcon = "hax:page-edit";
     this.icon = "hax:site-settings";
     this.manifestEditMode = false;
+    autorun(() => {
+      this.darkMode = toJS(store.darkMode);
+      if (toJS(store.darkMode)) {
+        HAXStore.globalPreferences.haxUiTheme = 'haxdark';
+      } else {
+        HAXStore.globalPreferences.haxUiTheme = 'hax';
+      }
+    });
+    autorun(() => {
+      this.soundIcon = toJS(store.soundStatus) ? new URL('../../../app-hax/lib/assets/images/FullVolume.svg',import.meta.url).href : new URL('../../../app-hax/lib/assets/images/Silence.svg',import.meta.url).href;
+    });
     setTimeout(() => {
       // prettier-ignore
       import(
@@ -308,8 +312,16 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
 
   soundToggle() {
-    store.soundStatus = !toJS(store.soundStatus);
-    localStorageSet('app-hax-soundStatus', toJS(store.soundStatus));
+    const status = !toJS(store.soundStatus);
+    store.soundStatus = status
+    localStorageSet('app-hax-soundStatus', status);
+    if (!status) {
+      store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true});
+    }
+    else {
+      store.toast("Can you hear me now? Good.", 2000,{ hat: 'random'});
+      store.playSound('click');
+    }
   }
 
   toggleMenu() {
@@ -334,6 +346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           label="${this.__editText}"
           voice-command="edit (this) page"
           class="topbar-button"
+          accent-color="green"
         ></simple-icon-button>
         <simple-icon-button
           id="cancelbutton"
@@ -344,9 +357,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           label="${this.t.cancelEditing}"
           voice-command="cancel (editing)"
           class="topbar-button"
+          accent-color="red"
         ></simple-icon-button>
         <simple-icon-button
-          hidden
           ?dark="${!this.darkMode}"
           id="editdetails"
           icon="hax:page-details"
@@ -354,9 +367,13 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           label="${this.t.editDetails}"
           voice-command="edit (page) details"
           class="topbar-button"
+          accent-color="blue"
+          part="${this.editMode ? `edit-mode-active` : ``}"
+          tabindex="${this.editMode ? "-1" : ""}"
         ></simple-icon-button>
         <simple-icon-button
-          hidden
+          part="${this.editMode ? `edit-mode-active` : ``}"
+          tabindex="${this.editMode ? "-1" : ""}"
           ?dark="${!this.darkMode}"
           id="deletebutton"
           icon="icons:delete"
@@ -364,22 +381,26 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
           label="${this.t.deletePage}"
           voice-command="delete page"
           class="topbar-button"
+          accent-color="red"
         ></simple-icon-button>
         <haxcms-button-add
         hidden
         ?dark-mode="${this.darkMode}"
+        accent-color="purple"
         id="addbutton"></haxcms-button-add>
         <haxcms-button-add
           hidden
           ?dark-mode="${this.darkMode}"
           id="addbuttonchild"
           type="child"
+          accent-color="purple"
         ></haxcms-button-add>
         <haxcms-button-add
           hidden
           ?dark-mode="${this.darkMode}"
           type="duplicate"
           id="duplicatebutton"
+          accent-color="purple"
         ></haxcms-button-add>
         <simple-tooltip for="username" position="bottom" offset="14"
           >${this.backText}</simple-tooltip
@@ -532,28 +553,6 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    autorun(() => {
-      localStorageSet('app-hax-darkMode', toJS(store.darkMode));
-      this.darkMode = toJS(store.darkMode);
-      if (this.darkMode) {
-        document.body.classList.add('dark-mode');
-        store.toast("I'm ascared of the dark", 2000, { fire: true});
-        HAXStore.globalPreferences.haxUiTheme = 'haxdark';
-      } else {
-        document.body.classList.remove('dark-mode');
-        HAXStore.globalPreferences.haxUiTheme = 'hax';
-        store.toast("Sunny day it is", 2000, { hat: 'random'});
-      }
-    });
-    autorun(() => {
-      this.soundIcon = toJS(store.soundStatus) ? new URL('../../../app-hax/lib/assets/images/FullVolume.svg',import.meta.url).href : new URL('../../../app-hax/lib/assets/images/Silence.svg',import.meta.url).href;
-      if (!toJS(store.soundStatus)) {
-        store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true});
-      }
-      else {
-        store.toast("Can you hear me now? Good.", 2000,{ hat: 'random'});
-      }
-    });
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -594,6 +593,9 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     });
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'userMenuOpen' && oldValue !== undefined) {
         if (this.userMenuOpen) {
@@ -645,6 +647,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       userName: {
         type: String,
         attribute: "user-name",
@@ -778,6 +781,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
    * toggle state on button tap
    */
   _editButtonTap(e) {
+    store.playSound('click');
     this.editMode = !this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
@@ -799,6 +803,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     );
   }
   _editDetailsButtonTap(e) {
+    store.playSound('click');
     const evt = new CustomEvent("haxcms-load-node-fields", {
       bubbles: true,
       composed: true,
@@ -809,6 +814,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
   }
   _cancelButtonTap(e) {
     this.editMode = false;
+    store.playSound('error');
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,
@@ -873,6 +879,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
    * Delete button hit, confirm they want to do this
    */
   _deleteButtonTap(e) {
+    store.playSound('click');
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("button");
@@ -888,6 +895,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
     icon2.icon = "icons:cancel";
     b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
+    b2.addEventListener("click", () => store.playSound('error'));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
     b.appendChild(b1);
@@ -915,6 +923,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
    * delete active item
    */
   _deleteActive(e) {
+    store.playSound('click');
     const evt = new CustomEvent("haxcms-delete-node", {
       bubbles: true,
       composed: true,
@@ -929,6 +938,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
    * toggle state on button tap
    */
   _outlineButtonTap(e) {
+    store.playSound('click');
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -956,6 +966,7 @@ class HAXCMSSiteEditorUI extends HAXCMSI18NMixin(LitElement) {
    * toggle state on button tap
    */
   _manifestButtonTap(e) {
+    store.playSound('click');
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

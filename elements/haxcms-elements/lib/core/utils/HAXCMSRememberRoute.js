@@ -56,31 +56,29 @@ const HAXCMSRememberRoute = function (SuperClass) {
             `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
           ) != toJS(store.location.pathname)
         ) {
-          import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-            window.SimpleToast.requestAvailability();
-            let slot = document.createElement("a");
-            slot.setAttribute(
-              "href",
-              localStorageGet(
-                `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
-              )
+          let slot = document.createElement("a");
+          slot.setAttribute(
+            "href",
+            localStorageGet(
+              `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+            )
+          );
+          slot.addEventListener("click", this.resumeLastRoute.bind(this));
+          slot.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
+          const urlParams = new URLSearchParams(window.location.search);
+          const format = urlParams.get("format");
+          // ensure we don't show this if we have an alternate format request
+          if (!format) {
+            store.toast(
+              this.t.resumeMessage,
+              8000,
+              {},
+              "capsule",
+              null,
+              null,
+              slot
             );
-            slot.addEventListener("click", this.resumeLastRoute.bind(this));
-            slot.innerHTML = `<button>${this.t.resume}</button>`;
-            const urlParams = new URLSearchParams(window.location.search);
-            const format = urlParams.get("format");
-            // ensure we don't show this if we have an alternate format request
-            if (!format) {
-              store.toast(
-                this.t.resumeMessage,
-                8000,
-                "capsule",
-                null,
-                null,
-                slot
-              );
-            }
-          });
+          }
         }
         this.__evaluateRoute = true;
       }, 1000);

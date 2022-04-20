@@ -8,7 +8,6 @@ import { autorun, toJS } from "mobx";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
@@ -374,6 +373,7 @@ class HAXCMSSiteEditor extends LitElement {
         4000
       );
       this.dispatchEvent(evt);
+      store.playSound('coin');
     }
   }
 
@@ -386,6 +386,7 @@ class HAXCMSSiteEditor extends LitElement {
         3000,
         { hat: 'random' }
       );
+      store.playSound('coin');
     }
   }
 
@@ -445,6 +446,7 @@ class HAXCMSSiteEditor extends LitElement {
             5000,
             { fire: true}
           );
+          store.playSound('error');
           break;
       }
     }
@@ -686,6 +688,7 @@ class HAXCMSSiteEditor extends LitElement {
     b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    b2.addEventListener("click", () => store.playSound('error'));
     let b = document.createElement("div");
     b.style.position = "absolute";
     b.style.bottom = 0;
@@ -992,6 +995,7 @@ class HAXCMSSiteEditor extends LitElement {
       3000,
       { hat: 'random' }
     );
+    store.playSound('coin');
 
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1019,6 +1023,7 @@ class HAXCMSSiteEditor extends LitElement {
       3000,
       { hat: 'random' }
     );
+    store.playSound('coin');
     setTimeout(() => {
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
@@ -1037,6 +1042,7 @@ class HAXCMSSiteEditor extends LitElement {
       `Site details saved, reloading to reflect changes!`,
       2000,
     );
+    store.playSound('coin');
     store.dashboardOpened = false;
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1061,6 +1067,7 @@ class HAXCMSSiteEditor extends LitElement {
       `Last save undone`,
       2000,
     );
+    store.playSound('error');
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1080,6 +1087,7 @@ class HAXCMSSiteEditor extends LitElement {
       2000,
       { hat: 'random' }
     );
+    store.playSound('success');
     // trigger a refresh of the data in node
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {

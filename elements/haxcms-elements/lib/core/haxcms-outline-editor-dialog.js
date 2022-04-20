@@ -181,6 +181,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap(e) {
+    store.playSound('click');
     window.dispatchEvent(
       new CustomEvent("haxcms-save-outline", {
         bubbles: true,
@@ -203,6 +204,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
     }, 0);
   }
   _cancelTap(e) {
+    store.playSound('error');
     this.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

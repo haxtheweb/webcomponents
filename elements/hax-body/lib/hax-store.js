@@ -404,13 +404,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   toast(
     message,
     duration = 2000,
+    extras = {},
     classStyle = "capsule",
     closeText = this.t.close,
-    eventCallback = null
+    eventCallback = null,
+    slot = null,
   ) {
     // gets it all the way to the top immediately
     window.dispatchEvent(
-      new CustomEvent("simple-toast-show", {
+      new CustomEvent(this.toastShowEventName, {
         bubbles: true,
         composed: true,
         cancelable: true,
@@ -420,6 +422,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           classStyle: classStyle,
           closeText: closeText,
           eventCallback: eventCallback,
+          slot: slot,
+          ...extras
         },
       })
     );
@@ -1149,7 +1153,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     This data is stored in your browser and is never sent anywhere.
     Click to accept.
     `;
-      this.toast(msg, "-1", "fit-bottom", "I Accept", "hax-consent-tap");
+      this.toast(msg, "-1", {}, "fit-bottom", "I Accept", "hax-consent-tap");
     } else {
       if (sessionStorageGet("haxConfirm") && !localStorageGet("haxConfirm")) {
         // verify there is something there
@@ -1888,6 +1892,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   constructor() {
     super();
+    this.toastShowEventName = "simple-toast-show";
     this.t = {
       close: "Close",
     };

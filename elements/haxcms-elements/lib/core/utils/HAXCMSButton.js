@@ -25,6 +25,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
       icon: { type: String },
       label: { type: String },
       voiceCommand: { type: String },
+      accentColor: { type: String, attribute: "accent-color"},
     };
   }
   static get styles() {
@@ -41,6 +42,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           border-radius: 50%;
           border: none;
           background-image: url('${unsafeCSS(ButtonBGLight)}');
+          background-color: var(--simple-colors-default-theme-accent-5, blue);
           color: var(--simple-colors-default-theme-accent-12, white);
           text-align: center;
           line-height: 40px;
@@ -102,11 +104,13 @@ export class HAXCMSButton extends HAXCMSThemeParts(
     return html`
       <simple-icon-button
         .part="${this.editMode ? `edit-mode-active` : ``}"
+        tabindex="${this.editMode ? "-1" : ""}"
         id="button"
         label="${label}"
         @click="${this.HAXCMSButtonClick}"
         ?dark="${!this.darkMode}"
         icon="${this.icon}"
+        accent-color="${this.accentColor}"
         voice-command="${this.voiceCommand}"
       ></simple-icon-button>
       <simple-tooltip for="button" position="bottom" offset="14">

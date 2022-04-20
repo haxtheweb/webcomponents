@@ -331,6 +331,7 @@ class HAXCMSSiteDashboard extends LitElement {
    * Save the fields as we get tapped
    */
   _saveSiteFieldsTap(e) {
+    store.playSound('click');
     // fire event with details for saving
     window.dispatchEvent(
       new CustomEvent("haxcms-save-site-data", {
@@ -345,6 +346,7 @@ class HAXCMSSiteDashboard extends LitElement {
    * Close the dashboard and reset state
    */
   _cancel(e) {
+    store.playSound('error');
     window.dispatchEvent(
       new CustomEvent("haxcms-load-site-dashboard", {
         bubbles: true,

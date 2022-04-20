@@ -4,6 +4,7 @@ import {
   findTagsInHTML,
   wipeSlot,
   varExists,
+  localStorageSet
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -471,12 +472,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', darkToggle);
+    autorun(() => {
+      localStorageSet('app-hax-darkMode', toJS(store.darkMode));
+      if (toJS(store.darkMode)) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
     this.__ready = true;
+    store.appReady = true;
     window.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,

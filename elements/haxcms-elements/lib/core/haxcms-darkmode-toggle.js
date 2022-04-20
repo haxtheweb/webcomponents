@@ -22,6 +22,11 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
       if (propName === 'checked' && oldValue !== undefined) {
         store.darkMode = this[propName];
         store.playSound('click');
+        if (this[propName]) {
+          store.toast("I'm ascared of the dark", 2000, { fire: true});
+        } else {
+          store.toast("Sunny day it is", 2000, { hat: 'random'});
+        }
       }
     });
   }

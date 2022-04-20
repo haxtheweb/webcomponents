@@ -18,6 +18,7 @@ class Store {
     ? false
     : localStorageGet('app-hax-darkMode');
     this.setupSlots = {};
+    this.appReady = false;
     this.editMode = false;
     this.manifest = null;
     this.activeItemContent = "";
@@ -60,6 +61,7 @@ class Store {
       ancestorTitle: computed, // active page ancestor title
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
+      appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
     });
   }
   /**
@@ -114,7 +116,7 @@ class Store {
   }
   // eslint-disable-next-line class-methods-use-this
   playSound(sound) {
-    if (this.soundStatus) {
+    if (this.soundStatus && this.appReady) {
       try {
         switch (sound) {
           case 'click':
@@ -154,23 +156,25 @@ class Store {
     eventCallback = null,
     slot = null,
   ) {
-    // gets it all the way to the top immediately
-    window.dispatchEvent(
-      new CustomEvent("haxcms-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: message,
-          duration: duration,
-          classStyle: classStyle,
-          closeText: closeText,
-          eventCallback: eventCallback,
-          slot: slot,
-          ...extras
-        },
-      })
-    );
+    if (this.appReady) {
+      // gets it all the way to the top immediately
+      window.dispatchEvent(
+        new CustomEvent("haxcms-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: message,
+            duration: duration,
+            classStyle: classStyle,
+            closeText: closeText,
+            eventCallback: eventCallback,
+            slot: slot,
+            ...extras
+          },
+        })
+      );
+    }
   }
   /**
    * Load a manifest / site.json / JSON outline schema
@@ -940,6 +944,7 @@ class HAXCMSSiteStore extends HTMLElement {
           })
         );
         window.HaxStore.requestAvailability().editMode = editMode;
+        window.HaxStore.requestAvailability().toastShowEventName = "haxcms-toast-show";
         // @todo hack to keep voice controls active if enabled
         if (
           window.HaxStore.requestAvailability().globalPreferences
