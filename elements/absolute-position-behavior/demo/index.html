@@ -50,7 +50,7 @@
             <absolute-position-behavior for="strong" auto fit-to-visible-bounds position="left">
               <div class="box">I'm automatically positioned next to &lt;strong/&gt;</div>
             </absolute-position-behavior>
-            <absolute-position-behavior id="abs" for="p2" fit-to-visible-bounds position="top">
+            <absolute-position-behavior id="abs" fit-to-visible-bounds position="top" always-visible>
               <div class="box">I can be manually positioned above the second &lt;p/&gt;</div>
             </absolute-position-behavior>
             <absolute-position-behavior auto for="p1" position="top" sticky>
@@ -70,6 +70,7 @@
           </style>
           <script>
             document.getElementById('button').onclick = () => {
+              document.getElementById('abs').for = "p2";
               document.getElementById('abs').updatePosition();
             }
           </script>
