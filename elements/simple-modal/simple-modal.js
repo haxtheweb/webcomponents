@@ -469,7 +469,6 @@
      else {
       wd.$backdrop.addEventListener("click", wd.onBackdropClick);
       wd.addEventListener("keydown", wd.onKeyDown, { capture: true, passive: true });
-      console.log("?");
      }
      if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
        this.shadowRoot
