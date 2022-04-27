@@ -3,10 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
+import { SimpleListboxIconStyles, SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
  * `simple-listbox-icon`
@@ -21,20 +20,7 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
   static get styles(){
     return [
       ...super.styles,
-      css`
-        ul[role="listbox"]{
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-        ul[role="listbox"] li[role="presentation"] {
-          flex: 1 1 100%;
-        }
-        ul[role="listbox"] li[role="option"] {
-          display: inline;
-          flex: 0 0 auto;
-        }
-      `
+      ...SimpleListboxIconStyles
     ];
   }
   // properties available to the custom element for data binding
@@ -144,6 +130,7 @@ class SimpleListboxIcon extends SimpleListBoxBehaviors(LitElement) {
       id: `icon-${icon.toLowerCase().replace(/\:/g,'-')}`,
       icon: icon,
       value: icon,
+      tooltip: icon
     };
   }
   /**

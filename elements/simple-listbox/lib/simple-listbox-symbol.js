@@ -3,9 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
+import { SimpleListboxIconStyles, SimpleListBoxBehaviors } from "@lrnwebcomponents/simple-listbox/simple-listbox.js";
 import { SymbolsByType } from "@lrnwebcomponents/simple-symbol-list/simple-symbol-list.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
  * `simple-listbox-symbol`
@@ -20,20 +19,7 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
   static get styles(){
     return [
       ...super.styles,
-      css`
-        ul[role="listbox"]{
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-        ul[role="listbox"] li[role="presentation"] {
-          flex: 1 1 100%;
-        }
-        ul[role="listbox"] li[role="option"] {
-          display: inline;
-          flex: 0 0 auto;
-        }
-      `
+      ...SimpleListboxIconStyles
     ];
   }
   // properties available to the custom element for data binding
@@ -137,17 +123,6 @@ class SimpleListboxSymbol extends SimpleListBoxBehaviors(LitElement) {
       value: this._getUnicode(symbol.character),
       tooltip: symbol.character,
     };
-  }
-  /**
-   * gets unicode character for an HTML entity
-   * @param {string} html HTML entity
-   * @returns {string}
-   */
-  _getUnicode(html){
-      if(!html.match(/^\&[a-zA-Z0-9]+\;$/)) return;
-      let temp = document.createElement('textarea');
-      temp.innerHTML = html;
-    return temp.value;
   }
 }
 
