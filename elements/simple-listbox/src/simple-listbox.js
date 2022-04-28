@@ -42,7 +42,7 @@ const SimpleListboxProperties = {
     reflect: true,
   },
   /**
-   * Whether the form control is disabled
+   * Whether form control is disabled
    */
   disabled: {
     type: Boolean,
@@ -76,11 +76,27 @@ const SimpleListboxProperties = {
     type: Array,
   },
   /**
+   * whether items in list will be displayed as grid, typically used for color swatches, icons, symbols, or emoji
+   */
+  grid: {
+    type: Boolean,
+    reflect: true,
+    attribute: "grid"
+  },
+  /**
    * Whether the field is hidden
    */
   hidden: {
     type: Boolean,
     reflect: true,
+  },
+  /**
+   * whether items in list will be displayed as an icon only
+   */
+  iconOnly: {
+    type: Boolean,
+    reflect: true,
+    attribute: "icon-only"
   },
   /**
    * input text to filter listbox options
@@ -267,6 +283,9 @@ const SimpleListboxStyles = [
     simple-listbox-tabs::part(tab-active) {
       border-bottom: 3px solid black;
     }
+    simple-tooltip {
+      float: right;
+    }
     :host([expanded]) simple-listbox-tabs::part(tablist) {
       opacity: 1;
       display:flex;
@@ -323,6 +342,18 @@ const SimpleListboxStyles = [
 
     ul[role="listbox"] li[role="option"]:hover {
       background-color: #d9eaff;
+    }
+    :host([grid]) ul[role="listbox"]{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    :host([grid]) ul[role="listbox"] li[role="presentation"] {
+      flex: 1 1 100%;
+    }
+    :host([grid]) ul[role="listbox"] li[role="option"] {
+      display: inline;
+      flex: 0 0 auto;
     }
   `
 ];
@@ -837,6 +868,17 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     getListItemTooltip(option) {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`<simple-tooltip for="option${option.id}">${option.tooltip}</simple-tooltip>`;
+    }
+    /**
+     * gets template for an icon based on icon name
+     * @param {string} icon name of icon
+     * @returns {object}
+     */
+    _getIconTemplate(icon){
+      return !this.iconOnly 
+      ? super._getIconTemplate(icon) 
+      : icon.match(/^[-a-zA-Z0-9]+(-[-a-zA-Z0-9]+)*\:[a-zA-Z0-9]+(-[-a-zA-Z0-9]+)*$/) 
+      ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : '';
     }
     /**
      * sets aria-activeDescendant of listbox

@@ -10,7 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/simple-listbox-symbol.js';
+      import '../simple-listbox.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -19,46 +19,35 @@
       <h3>Basic simple-listbox-symbol demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-symbol></simple-listbox-icon>
+          <simple-listbox id="basic" grid></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-symbol.js').then(module=>{
+              document.getElementById("basic").itemsList = module.SimpleListboxSymbol;
+            });
+          </script>
         </template>
       </demo-snippet>
       <h3>Tabbed simple-listbox-symbol demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-symbol tabs></simple-listbox-icon>
+          <simple-listbox id="tabs" tabs grid></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-symbol.js').then(module=>{
+              document.getElementById("tabs").itemsList = module.SimpleListboxSymbol;
+            });
+          </script>
         </template>
       </demo-snippet>
       <h3>Customize simple-listbox-symbol</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-symbol id="custom" tabs></simple-listbox-icon>
-          <script>
-            document.getElementById("custom").tabsGroups = [
-              { 
-                "group": "Symbols",
-                "tab": "&sect;",
-                "groups": [
-                  "symbols",
-                  "misc",
-                ]
-              },
-              { 
-                "group": "Math",
-                "tab": "&divide;",
-                "groups": [
-                  "math",
-                ]
-              },
-              { 
-                "group": "Characters",
-                "tab": "&Auml;",
-                "groups": [
-                  "characters",
-                  "greek",
-                ]
-              }
-            ];
-          </script>
+          <simple-listbox id="custom" grid></simple-listbox>
+            <script>
+              import('../lib/simple-listbox-symbol.js').then(module=>{
+                let math = module.SimpleListboxSymbol.filter(group=>group.group=="Math")[0] || {};
+                document.getElementById("custom").itemsList = math.itemsList;
+              });
+            </script>
         </template>
       </demo-snippet>
     </div>

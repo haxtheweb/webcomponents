@@ -10,7 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/simple-listbox-emoji.js';
+      import '../simple-listbox.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -19,46 +19,33 @@
       <h3>Basic simple-listbox-emoji demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-emoji></simple-listbox-icon>
+          <simple-listbox id="basic" grid></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-emoji.js').then(module=>{
+              document.getElementById("basic").itemsList = module.SimpleListboxEmoji
+            });
+          </script>
         </template>
       </demo-snippet>
       <h3>Tabbed simple-listbox-emoji demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-emoji tabs></simple-listbox-icon>
+          <simple-listbox id="tabs" tabs grid icon-only></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-emoji.js').then(module=>{
+              document.getElementById("tabs").itemsList = module.SimpleListboxEmoji
+            });
+          </script>
         </template>
       </demo-snippet>
       <h3>Customize simple-listbox-emoji</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-emoji id="custom" tabs></simple-listbox-icon>
+          <simple-listbox id="custom"></simple-listbox>
           <script>
-            document.getElementById("custom").tabsGroups = [
-              { 
-                "group": "People",
-                "icon": "social:sentiment-satisfied",
-                "groups": [
-                  "emotions",
-                  "people",
-                ]
-              },
-              { 
-                "group": "Activities",
-                "icon": "maps:directions-bike",
-                "groups": [
-                  "activities",
-                  "travel",
-                ]
-              },
-              { 
-                "group": "Symbols",
-                "icon": "icons:flag",
-                "groups": [
-                  "symbols",
-                  "flags",
-                ]
-              }
-            ];
+            import('../lib/simple-listbox-emoji.js').then(module=>{
+              document.getElementById("custom").itemsList = module.SimpleListboxEmoji.filter(group=>["emoji-emotions","emoji-people"].includes(group.id))
+            });
           </script>
         </template>
       </demo-snippet>

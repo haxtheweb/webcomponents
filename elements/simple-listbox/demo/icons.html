@@ -10,7 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/simple-listbox-icon.js';
+      import '../simple-listbox.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -19,14 +19,26 @@
       <h3>Basic simple-listbox-icon demo</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-icon autocomplete="both"></simple-listbox-icon>
+          <simple-listbox id="basic" autocomplete="both" grid tabs icon-only></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-icon.js').then(module=>{
+              document.getElementById("basic").itemsList = module.SimpleListboxIcon;
+            });
+          </script>
         </template>
       </demo-snippet>
       <h3>Limit simple-listbox-icon</h3>
       <demo-snippet>
         <template>
-          <simple-listbox-icon id="include" include-sets="icons"></simple-listbox-icon>
-          <simple-listbox-icon id="exclude" exclude-sets="icons"></simple-listbox-icon>
+          <simple-listbox id="include"></simple-listbox>
+          <simple-listbox id="exclude" grid></simple-listbox>
+          <script>
+            import('../lib/simple-listbox-icon.js').then(module=>{
+              let av = module.SimpleListboxIcon.filter(group=>group.group=="av")[0] || {};
+              document.getElementById("include").itemsList = av.itemsList;
+              document.getElementById("exclude").itemsList = module.SimpleListboxIcon.filter(group=>group.group!=="av");
+            });
+          </script>
         </template>
       </demo-snippet>
     </div>
