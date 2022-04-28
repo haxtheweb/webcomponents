@@ -1,17 +1,17 @@
 // dependencies / things imported
-import { LitElement, html, css } from 'lit';
-import '@lrnwebcomponents/future-terminal-text/future-terminal-text.js';
+import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
 
 export class AppHaxLabel extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-label';
+    return "app-hax-label";
   }
 
   constructor() {
     super();
-    this.title = 'Welcome';
-    this.subtitle = 'Start your journey now!';
+    this.title = "Welcome";
+    this.subtitle = "Start your journey now!";
   }
 
   static get properties() {
@@ -25,7 +25,7 @@ export class AppHaxLabel extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         text-align: center;
       }
 
@@ -69,7 +69,7 @@ export class AppHaxLabel extends LitElement {
           -webkit-text-stroke: unset;
           -webkit-text-fill-color: unset;
         }
-       .bracket {
+        .bracket {
           font-size: 4vw;
           margin: 0;
           padding: 0;

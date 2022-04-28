@@ -1,19 +1,19 @@
 /* eslint-disable no-console */
 // dependencies / things imported
-import { html, css } from 'lit';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
-import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
-import 'wired-elements/lib/wired-button.js';
+import { html, css } from "lit";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "wired-elements/lib/wired-button.js";
 
-const postIt = new URL('../assets/images/PostIt.svg', import.meta.url).href;
+const postIt = new URL("../assets/images/PostIt.svg", import.meta.url).href;
 
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
 export class AppHaxSiteButton extends SimpleColors {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-site-button';
+    return "app-hax-site-button";
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
@@ -22,14 +22,14 @@ export class AppHaxSiteButton extends SimpleColors {
     this.label = null;
     this.value = null;
     this.disabled = false;
-    this.elevation = '3';
+    this.elevation = "3";
     this.active = false;
     this.comingSoon = false;
-    this.addEventListener('click', this._handleClick);
-    this.addEventListener('focus', this._handleFocus);
-    this.addEventListener('blur', this._handleBlur);
-    this.addEventListener('mouseover', this._handleFocus);
-    this.addEventListener('mouseout', this._handleBlur);
+    this.addEventListener("click", this._handleClick);
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("blur", this._handleBlur);
+    this.addEventListener("mouseover", this._handleFocus);
+    this.addEventListener("mouseout", this._handleBlur);
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -54,7 +54,7 @@ export class AppHaxSiteButton extends SimpleColors {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         width: fit-content;
         margin: 20px 0;
       }
@@ -104,20 +104,20 @@ export class AppHaxSiteButton extends SimpleColors {
   _handleFocus() {
     if (!this.disabled && !this.comingSoon) {
       this.active = true;
-      this.elevation = '5';
+      this.elevation = "5";
     }
   }
 
   _handleBlur() {
     if (!this.disabled && !this.comingSoon) {
       this.active = false;
-      this.elevation = '3';
+      this.elevation = "3";
     }
   }
 
   _handleClick() {
     if (!this.disabled && !this.comingSoon) {
-      this.shadowRoot.querySelector('.haxButton').blur();
+      this.shadowRoot.querySelector(".haxButton").blur();
     }
   }
 
@@ -129,15 +129,21 @@ export class AppHaxSiteButton extends SimpleColors {
         ?disabled=${this.disabled || this.comingSoon}
         class="haxButton"
         @click="${this._handleClick}"
-        >
-        <div class="contents">
-          <span class="label">
-            ${this.label}
-          </span>
-          ${this.comingSoon ? html`<img src="${postIt}" loading="lazy" decoding="async" fetchpriority="low" alt="Feature coming soon" class="coming-soon" />` : ``}
-        </div>
-      </wired-button
       >
+        <div class="contents">
+          <span class="label"> ${this.label} </span>
+          ${this.comingSoon
+            ? html`<img
+                src="${postIt}"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                alt="Feature coming soon"
+                class="coming-soon"
+              />`
+            : ``}
+        </div>
+      </wired-button>
     `;
   }
 

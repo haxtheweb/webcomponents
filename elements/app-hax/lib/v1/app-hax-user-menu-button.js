@@ -1,12 +1,12 @@
 // TODO: Text-overflow-ellipses
 
 // dependencies / things imported
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 export class AppHaxUserMenuButton extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-user-menu-button';
+    return "app-hax-user-menu-button";
   }
 
   constructor() {
@@ -18,20 +18,20 @@ export class AppHaxUserMenuButton extends LitElement {
   static get properties() {
     return {
       icon: { type: String },
-      label: { type: String }
+      label: { type: String },
     };
   }
 
   static get styles() {
     return css`
       :host {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         text-align: center;
         width: 100%;
         --background-color: var(--app-hax-background-color);
         --accent-color: var(--app-hax-accent-color);
       }
-      
+
       .menu-button {
         display: block;
         border: 2px solid var(--accent-color);
@@ -54,14 +54,14 @@ export class AppHaxUserMenuButton extends LitElement {
       .icon {
         padding-right: 16px;
       }
-
     `;
   }
 
   render() {
     return html`
       <div class="menu-button" part="menu-button">
-        <simple-icon-lite class="icon" icon="${this.icon}"></simple-icon-lite>${this.label}
+        <simple-icon-lite class="icon" icon="${this.icon}"></simple-icon-lite
+        >${this.label}
       </div>
     `;
   }

@@ -2,18 +2,18 @@
 // TODO: Create prefix and suffix sections for sound/light toggles and other shtuff
 
 // dependencies / things imported
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 export class AppHaxUserMenu extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-user-menu';
+    return "app-hax-user-menu";
   }
 
   constructor() {
     super();
     this.isOpen = false;
-    this.icon = 'account-circle';
+    this.icon = "account-circle";
   }
 
   static get properties() {
@@ -26,7 +26,7 @@ export class AppHaxUserMenu extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         text-align: center;
         display: inline-block;
         margin: 0px;
@@ -58,7 +58,7 @@ export class AppHaxUserMenu extends LitElement {
         margin: 0;
         font-size: 16px;
         text-align: left;
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         color: var(--app-hax-accent-color);
         background-color: var(--app-hax-background-color);
       }
@@ -98,7 +98,7 @@ export class AppHaxUserMenu extends LitElement {
           ></slot>
         </div>
 
-        <div class="user-menu ${this.isOpen ? 'open' : ''}">
+        <div class="user-menu ${this.isOpen ? "open" : ""}">
           <div class="pre-menu">
             <slot name="pre-menu"></slot>
           </div>
@@ -114,4 +114,3 @@ export class AppHaxUserMenu extends LitElement {
   }
 }
 customElements.define(AppHaxUserMenu.tag, AppHaxUserMenu);
-

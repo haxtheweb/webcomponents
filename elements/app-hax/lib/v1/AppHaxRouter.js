@@ -1,24 +1,24 @@
-import { Router } from '@vaadin/router';
-import { autorun, toJS } from 'mobx';
-import { store } from './AppHaxStore.js';
+import { Router } from "@vaadin/router";
+import { autorun, toJS } from "mobx";
+import { store } from "./AppHaxStore.js";
 
 /**
  * `app-hax-router`
  */
 export class AppHaxRouter extends HTMLElement {
   get baseURI() {
-    return this.getAttribute('base-uri');
+    return this.getAttribute("base-uri");
   }
 
   set baseURI($value) {
-    this.setAttribute('base-uri', $value);
+    this.setAttribute("base-uri", $value);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
 
   static get tag() {
-    return 'app-hax-router';
+    return "app-hax-router";
   }
   /**
    * ready life cycle
@@ -39,7 +39,7 @@ export class AppHaxRouter extends HTMLElement {
 
   connectedCallback() {
     window.addEventListener(
-      'vaadin-router-location-changed',
+      "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
   }
@@ -49,7 +49,7 @@ export class AppHaxRouter extends HTMLElement {
 
   disconnectedCallback() {
     window.removeEventListener(
-      'vaadin-router-location-changed',
+      "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
   }
@@ -58,9 +58,7 @@ export class AppHaxRouter extends HTMLElement {
    * Update the router based on a manifest.
    */
   _updateRouter(routerItems) {
-    this.router.setRoutes([
-      ...routerItems
-    ]);
+    this.router.setRoutes([...routerItems]);
   }
   /**
    * React to page changes in the vaadin router and convert it

@@ -1,28 +1,31 @@
 /* eslint-disable no-console */
 // dependencies / things imported
-import { html, css, unsafeCSS } from 'lit';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite';
-import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
+import { html, css, unsafeCSS } from "lit";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import { animate } from '@lit-labs/motion';
+import { animate } from "@lit-labs/motion";
 
-const DropDownBorder = new URL('../assets/images/DropDownBorder.svg', import.meta.url);
+const DropDownBorder = new URL(
+  "../assets/images/DropDownBorder.svg",
+  import.meta.url
+);
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
 export class AppHaxSiteBars extends SimpleColors {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-site-bar';
+    return "app-hax-site-bar";
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.icon = 'link';
+    this.icon = "link";
     this.opened = false;
     this.inprogress = false;
-    this.iconLink = '/';
+    this.iconLink = "/";
     this.textInfo = {};
     this.siteId = "";
   }
@@ -34,9 +37,9 @@ export class AppHaxSiteBars extends SimpleColors {
       opened: { type: Boolean, reflect: true },
       icon: { type: String },
       inprogress: { type: Boolean, reflect: true },
-      iconLink: { type: String, attribute: 'icon-link' },
+      iconLink: { type: String, attribute: "icon-link" },
       textInfo: { type: Object },
-      siteId: {type: String, reflect: true, attribute: 'site-id'}
+      siteId: { type: String, reflect: true, attribute: "site-id" },
     };
   }
 
@@ -47,7 +50,7 @@ export class AppHaxSiteBars extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'opened' && oldValue !== undefined) {
+      if (propName === "opened" && oldValue !== undefined) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
@@ -83,7 +86,7 @@ export class AppHaxSiteBars extends SimpleColors {
           white-space: nowrap;
         }
         #labels ::slotted(*) {
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
           font-size: 25px;
         }
         #labels ::slotted(a) {
@@ -118,7 +121,6 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         :host([opened]) #band-container {
-          
           height: var(--band-banner-height);
           visibility: visible;
         }
@@ -162,9 +164,9 @@ export class AppHaxSiteBars extends SimpleColors {
     return html`
       <div id="mainCard">
         <a href="${this.iconLink}" tabindex="-1" id="icon">
-        <simple-icon-button-lite
-          icon="${this.icon}"
-        ></simple-icon-button-lite>
+          <simple-icon-button-lite
+            icon="${this.icon}"
+          ></simple-icon-button-lite>
         </a>
         <div id="labels">
           <slot name="heading"></slot>

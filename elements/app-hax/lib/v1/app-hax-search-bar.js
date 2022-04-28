@@ -1,17 +1,17 @@
 /* eslint-disable no-return-assign */
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import { store } from './AppHaxStore.js';
+import { store } from "./AppHaxStore.js";
 
 export class AppHaxSearchBar extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'app-hax-search-bar';
+    return "app-hax-search-bar";
   }
 
   constructor() {
     super();
-    this.searchTerm = '';
+    this.searchTerm = "";
     this.disabled = false;
     this.showSearch = false;
   }
@@ -20,23 +20,21 @@ export class AppHaxSearchBar extends LitElement {
 
   static get properties() {
     return {
-      searchTerm: { type: String},
-      showSearch: { type: Boolean, reflect: true, attribute:'show-search'},
-      disabled: { type: Boolean, reflect: true},
+      searchTerm: { type: String },
+      showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
+      disabled: { type: Boolean, reflect: true },
     };
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'searchItems') {
+      if (propName === "searchItems") {
         this.displayItems = [...this.searchItems];
-      }
-      else if (propName === 'searchTerm') {
+      } else if (propName === "searchTerm") {
         store.searchTerm = this.searchTerm;
-      }
-      else if (propName === 'showSearch' && oldValue !== undefined) {
+      } else if (propName === "showSearch" && oldValue !== undefined) {
         if (this[propName] === false) {
-          this.searchTerm = '';
+          this.searchTerm = "";
         }
       }
     });
@@ -52,9 +50,9 @@ export class AppHaxSearchBar extends LitElement {
           visibility: none;
           opacity: 0;
           width: 0;
-          transition: all ease-in-out .3s;
+          transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
           font-size: 20px;
           margin: 2px 0 0 16px;
         }
@@ -85,7 +83,7 @@ export class AppHaxSearchBar extends LitElement {
           background-color: white;
         }
         simple-icon-button-lite[disabled] {
-          background-color: #CCCCCC;
+          background-color: #cccccc;
           pointer-events: none;
           cursor: help;
         }
@@ -99,25 +97,39 @@ export class AppHaxSearchBar extends LitElement {
 
   // eslint-disable-next-line class-methods-use-this
   search() {
-    store.appEl.playSound('click');
-    this.searchTerm = this.shadowRoot.querySelector('#searchField').value;
+    store.appEl.playSound("click");
+    this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
   }
 
   render() {
     return html`
-      <simple-icon-button-lite id="searchico" ?disabled="${this.disabled}" label="Search" icon="icons:search" @click="${this.toggleSearch}"></simple-icon-button-lite>
-      <simple-tooltip for="searchico" position="bottom">Toggle Search</simple-tooltip>
-      <input ?disabled="${!this.showSearch}" id="searchField" @input="${this.search}" type="text" placeholder="Search.." />
+      <simple-icon-button-lite
+        id="searchico"
+        ?disabled="${this.disabled}"
+        label="Search"
+        icon="icons:search"
+        @click="${this.toggleSearch}"
+      ></simple-icon-button-lite>
+      <simple-tooltip for="searchico" position="bottom"
+        >Toggle Search</simple-tooltip
+      >
+      <input
+        ?disabled="${!this.showSearch}"
+        id="searchField"
+        @input="${this.search}"
+        type="text"
+        placeholder="Search.."
+      />
     `;
   }
-  
+
   toggleSearch() {
     if (!this.disabled) {
-      this.shadowRoot.querySelector('#searchField').value = '';
-      store.appEl.playSound('click');
+      this.shadowRoot.querySelector("#searchField").value = "";
+      store.appEl.playSound("click");
       this.showSearch = !this.showSearch;
       setTimeout(() => {
-        this.shadowRoot.querySelector("#searchField").focus();      
+        this.shadowRoot.querySelector("#searchField").focus();
       }, 300);
     }
   }

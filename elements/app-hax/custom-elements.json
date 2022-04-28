@@ -10,6 +10,10 @@
           "type": "string"
         },
         {
+          "name": "siteReady",
+          "type": "boolean"
+        },
+        {
           "name": "userMenuOpen",
           "type": "boolean",
           "default": "false"
@@ -36,7 +40,12 @@
         {
           "name": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "base-path",
+          "type": "string",
+          "default": "\"/\""
         },
         {
           "name": "searchTerm",
@@ -57,6 +66,18 @@
           "name": "source",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -64,6 +85,11 @@
           "name": "userName",
           "attribute": "userName",
           "type": "string"
+        },
+        {
+          "name": "siteReady",
+          "attribute": "siteReady",
+          "type": "boolean"
         },
         {
           "name": "userMenuOpen",
@@ -98,7 +124,13 @@
           "name": "routes",
           "attribute": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "basePath",
+          "attribute": "base-path",
+          "type": "string",
+          "default": "\"/\""
         },
         {
           "name": "searchTerm",
@@ -130,6 +162,24 @@
           "attribute": "source",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
         }
       ],
       "events": [
@@ -353,7 +403,7 @@
           "type": "string"
         },
         {
-          "name": "base-address",
+          "name": "base-path",
           "type": "string",
           "default": "\"/\""
         },
@@ -375,8 +425,8 @@
           "type": "string"
         },
         {
-          "name": "baseAddress",
-          "attribute": "base-address",
+          "name": "basePath",
+          "attribute": "base-path",
           "type": "string",
           "default": "\"/\""
         },
@@ -418,11 +468,6 @@
         },
         {
           "name": "type",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "value",
           "type": "string"
         },
         {
@@ -433,7 +478,7 @@
         {
           "name": "elevation",
           "type": "number",
-          "default": "\"2\""
+          "default": "2"
         },
         {
           "name": "active",
@@ -441,14 +486,7 @@
           "default": "false"
         },
         {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
+          "name": "coming-soon",
           "type": "boolean",
           "default": "false"
         }
@@ -463,13 +501,10 @@
         {
           "name": "type",
           "attribute": "type",
-          "type": "string",
-          "default": "\"\""
+          "type": "string"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string"
+          "name": "value"
         },
         {
           "name": "disabled",
@@ -481,7 +516,7 @@
           "name": "elevation",
           "attribute": "elevation",
           "type": "number",
-          "default": "\"2\""
+          "default": "2"
         },
         {
           "name": "active",
@@ -490,22 +525,10 @@
           "default": "false"
         },
         {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
+          "name": "comingSoon",
+          "attribute": "coming-soon",
           "type": "boolean",
           "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
         }
       ]
     },
@@ -720,7 +743,7 @@
         {
           "name": "icon",
           "type": "string",
-          "default": "\"add\""
+          "default": "\"link\""
         },
         {
           "name": "opened",
@@ -735,7 +758,17 @@
         {
           "name": "icon-link",
           "type": "string",
-          "default": "\"https://www.psu.edu\""
+          "default": "\"/\""
+        },
+        {
+          "name": "textInfo",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "site-id",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "accent-color",
@@ -755,7 +788,7 @@
           "name": "icon",
           "attribute": "icon",
           "type": "string",
-          "default": "\"add\""
+          "default": "\"link\""
         },
         {
           "name": "opened",
@@ -773,7 +806,19 @@
           "name": "iconLink",
           "attribute": "icon-link",
           "type": "string",
-          "default": "\"https://www.psu.edu\""
+          "default": "\"/\""
+        },
+        {
+          "name": "textInfo",
+          "attribute": "textInfo",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "siteId",
+          "attribute": "site-id",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "accentColor",
@@ -823,6 +868,11 @@
           "default": "false"
         },
         {
+          "name": "coming-soon",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -865,6 +915,12 @@
           "default": "false"
         },
         {
+          "name": "comingSoon",
+          "attribute": "coming-soon",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
@@ -889,17 +945,76 @@
       "path": "./lib/v1/app-hax-site-details.js",
       "attributes": [
         {
-          "name": "need",
+          "name": "details",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "site-id",
           "type": "string",
-          "default": "\"all need to succeed\""
+          "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "need",
-          "attribute": "need",
           "type": "string",
           "default": "\"all need to succeed\""
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "siteId",
+          "attribute": "site-id",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "detailOps",
+          "type": "{}[]",
+          "default": "[{\"name\":\"Copy\",\"op\":\"copySite\",\"icon\":\"icons:content-copy\"},{\"name\":\"Download\",\"op\":\"downloadSite\",\"icon\":\"file-download\"},{\"name\":\"Archive\",\"op\":\"archiveSite\",\"icon\":\"icons:archive\"},{\"name\":\"Delete\",\"op\":\"deleteSite\",\"icon\":\"icons:delete-forever\"}]"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
         }
       ]
     },
@@ -995,6 +1110,11 @@
       "path": "./lib/v1/app-hax-steps.js",
       "attributes": [
         {
+          "name": "nameTyped",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
           "name": "stepRoutes",
           "type": "array",
           "default": "[]"
@@ -1032,6 +1152,12 @@
         }
       ],
       "properties": [
+        {
+          "name": "nameTyped",
+          "attribute": "nameTyped",
+          "type": "string",
+          "default": "\"\""
+        },
         {
           "name": "stepRoutes",
           "attribute": "stepRoutes",
@@ -1243,12 +1369,78 @@
       "path": "./lib/v1/app-hax-top-bar.js"
     },
     {
+      "name": "app-hax-user-menu-button",
+      "path": "./lib/v1/app-hax-user-menu-button.js",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"account-circle\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"account-circle\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Default\""
+        }
+      ]
+    },
+    {
+      "name": "app-hax-user-menu",
+      "path": "./lib/v1/app-hax-user-menu.js",
+      "attributes": [
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"account-circle\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "isOpen",
+          "attribute": "isOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"account-circle\""
+        }
+      ]
+    },
+    {
       "name": "app-hax-wired-toggle",
       "path": "./lib/v1/app-hax-wired-toggle.js",
       "attributes": [
         {
+          "name": "label",
+          "type": "string",
+          "default": "\"Dark mode\""
+        },
+        {
           "name": "checked",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
@@ -1257,9 +1449,60 @@
       ],
       "properties": [
         {
+          "name": "tourName",
+          "type": "string",
+          "default": "\"hax\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Dark mode\""
+        },
+        {
           "name": "checked",
           "attribute": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
           "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "wired-darkmode-toggle",
+      "path": "./lib/wired-darkmode-toggle/wired-darkmode-toggle.js",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Dark mode\""
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Dark mode\""
+        },
+        {
+          "name": "checked",
+          "attribute": "checked",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
@@ -1275,6 +1518,10 @@
         {
           "name": "userName",
           "type": "string"
+        },
+        {
+          "name": "siteReady",
+          "type": "boolean"
         },
         {
           "name": "userMenuOpen",
@@ -1303,7 +1550,12 @@
         {
           "name": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "base-path",
+          "type": "string",
+          "default": "\"/\""
         },
         {
           "name": "searchTerm",
@@ -1324,6 +1576,18 @@
           "name": "source",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -1331,6 +1595,11 @@
           "name": "userName",
           "attribute": "userName",
           "type": "string"
+        },
+        {
+          "name": "siteReady",
+          "attribute": "siteReady",
+          "type": "boolean"
         },
         {
           "name": "userMenuOpen",
@@ -1365,7 +1634,13 @@
           "name": "routes",
           "attribute": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"id\":\"step-1\",\"label\":\"Welcome\",\"statement\":\"Let's start a new journey!\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"id\":\"step-2\",\"label\":\"Pick type\",\"statement\":\"What type of journey is this?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"id\":\"step-3\",\"label\":\"Theme Select\",\"statement\":\"What's it look like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"id\":\"step-4\",\"label\":\"Name\",\"statement\":\"Name this journey\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"id\":\"step-5\",\"label\":\"Loading\",\"statement\":\"Get ready for your journey\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's explore HAX land\"},{\"path\":\"/search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+        },
+        {
+          "name": "basePath",
+          "attribute": "base-path",
+          "type": "string",
+          "default": "\"/\""
         },
         {
           "name": "searchTerm",
@@ -1397,6 +1672,24 @@
           "attribute": "source",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
         }
       ],
       "events": [
