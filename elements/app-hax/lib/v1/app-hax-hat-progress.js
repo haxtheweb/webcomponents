@@ -53,11 +53,6 @@ export class AppHaxHatProgress extends SimpleColors {
         .querySelector('#progress2')
         .addEventListener('promise-progress-finished', e => {
           if (e.detail.value) {
-            this.dispatchEvent(
-              new CustomEvent('promise-progress-finished', {
-                detail: true,
-              })
-            );
             // this will seem like magic... but our createSite
             // Promise has a special flag on the function that
             // saves the result in an object relative to our API broker
@@ -65,11 +60,19 @@ export class AppHaxHatProgress extends SimpleColors {
             // the response is there even though we kicked it off previously
             // we more or less assume it completed bc the Promises all resolved
             // and it was our 1st Promise we asked to issue!
-            const createResponse = store.AppHaxAPI.lastResponse.createSite;
+
+            // state clean up incase activated twice
+            if (this.shadowRoot.querySelector('.game')) {
+              this.shadowRoot.querySelector('.game').remove();
+            }
+            const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
             const text = document.createElement('button');
             this.shadowRoot.querySelector('#value').textContent = this.max;
             text.textContent = "Let's go!";
             text.classList.add('game');
+            text.addEventListener('pointerdown', () => {
+              store.appEl.playSound('click');
+            });
             text.addEventListener('click', () => {
               window.location = toJS(store.sitesBase).concat(createResponse.slug);
             });
@@ -77,7 +80,27 @@ export class AppHaxHatProgress extends SimpleColors {
               .querySelector('#progress2')
               .parentNode.appendChild(text);
             // show you saying you got this!
-            store.toast(`${createResponse.title} looks awesome, come see!`, 5000, { hat: 'random', walking: true});
+            store.toast(`${createResponse.title} ready!`, 1500, { hat: 'random', walking: true});
+            setTimeout(() => {
+              store.toast(`redirecting in 3..`, 10000, { hat: 'random', walking: true});
+              setTimeout(() => {
+                store.toast(`redirecting in 2..`, 10000, { hat: 'random', walking: true});
+                setTimeout(() => {
+                  store.toast(`redirecting in 1..`, 10000, { hat: 'random', walking: true});
+                  setTimeout(() => {
+                    window.location = toJS(store.sitesBase).concat(createResponse.slug);
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+            }, 1800);
+            this.dispatchEvent(
+              new CustomEvent('promise-progress-finished', {
+                composed: true,
+                bubbles: true,
+                cancelable: true,
+                detail: true,
+              })
+            );
           }
         });
     }, 0);

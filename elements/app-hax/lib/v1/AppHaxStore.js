@@ -8,11 +8,13 @@ import {
   computed,
   configure
 } from 'mobx';
-
+import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false, useProxies: 'ifavailable' }); // strict mode off
 
 class Store {
   constructor() {
+    this.badDevice = null;
+    this.evaluateBadDevice();
     this.location = null;
     this.jwt = null; // useful to know when we're logged in
     this.createSiteSteps = false;
@@ -35,7 +37,10 @@ class Store {
     this.soundStatus = localStorageGet('app-hax-soundStatus', true);
     // If user is new, make sure they are on step 1
     this.appMode = 'search';
+    this.activeSiteOp = null;
+    this.activeSiteId = null;
     this.routes = [];
+    this.siteReady = false;
     this.manifest = {};
     this.searchTerm = '';
     this.user = {
@@ -73,9 +78,30 @@ class Store {
       activeItem: computed, // active item is route
       isNewUser: computed, // if they are new so we can auto kick to createSiteSteps if needed
       isLoggedIn: computed, // basic bool for logged in
+      badDevice: observable, // if we have a terrible device or not based on detected speeds
+      activeSiteOp: observable, // active operation for sites if working with them
+      activeSiteId: observable, // active Item if working w/ sites
+      activeSite: computed, // activeSite from ID
+      siteReady: observable, // implied that we had a site and then it got built and we can leave app
     });
   }
-
+  // filter to just get data about THIS site
+  get activeSite() {
+    if (this.activeSiteId && this.manifest && this.manifest.items) {
+      const sites = this.manifest.items.filter((item) => item.id === this.activeSiteId);
+      if (sites.length === 1) {
+        return sites.pop()
+      }
+      return null;
+    }
+  }
+  // see if this device is poor
+  async evaluateBadDevice() {
+    this.badDevice = await DeviceDetails.badDevice();
+    if (this.badDevice === true) {
+      this.soundStatus = false;
+    }
+  }
   // validate if they are on the right step via state
   // otherwise we need to force them to the correct step
   stepTest(current) {
@@ -98,7 +124,8 @@ class Store {
       this.site.structure !== null &&
       this.site.type !== null &&
       this.site.theme !== null && 
-      this.site.name === null
+      this.site.name === null &&
+      current !== 4
     ) {
       return 4;
     } else if (

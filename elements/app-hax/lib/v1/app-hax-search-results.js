@@ -2,8 +2,8 @@
 import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
 import { html, css } from 'lit';
 import { autorun, toJS } from 'mobx';
-import { store } from './AppHaxStore.js';
 import { varGet } from '@lrnwebcomponents/utils/utils.js';
+import { store } from './AppHaxStore.js';
 import './app-hax-site-bar.js';
 import './app-hax-site-details.js';
 
@@ -75,7 +75,8 @@ export class AppHaxSearchResults extends SimpleColors {
         :host {
           overflow: hidden;
         }
-        ul, li {
+        ul,
+        li {
           margin: 0;
           padding: 0;
           list-style: none;
@@ -83,7 +84,7 @@ export class AppHaxSearchResults extends SimpleColors {
         app-hax-site-bar {
           margin: 8px 0;
         }
-        
+
         @media (max-width: 800px) {
           app-hax-site-bar {
             --main-banner-width: 60vw;
@@ -94,46 +95,72 @@ export class AppHaxSearchResults extends SimpleColors {
             --main-banner-width: 90vw;
           }
         }
-        span[slot="band"] {
+        span[slot='band'] {
           height: 48px;
           overflow: hidden;
           text-overflow: ellipsis;
           margin-bottom: 8px;
         }
+        :host([dark]) #noResult {
+          color: var(--simple-colors-default-theme-grey-12, black);
+        }
       `,
     ];
   }
-
   render() {
     return html`
       <ul id="results">
-        ${this.displayItems.map(
-          item =>
-            html`<li>
-              <app-hax-site-bar
-                @opened-changed="${this.openedChanged}"
-                ?dark="${this.dark}"
-                accent-color="${varGet(item,'metadata.theme.variables.cssVariable', 'orange').replace('--simple-colors-default-theme-','').replace('-7','')}"
-                icon="${varGet(item,'metadata.theme.variables.icon', 'icons:home')}"
-                icon-link="${'https://iam.hax.psu.edu' + item.slug}"
-                >
-                <span slot="heading">${item.title}</span>
-                <span slot="subHeading">${item.author}</span>
-                <span slot="band">${item.description}</span>
-                <app-hax-site-details slot="band"></app-hax-site-details>
-              </app-hax-site-bar>
-            </li>`
-        )}
+        ${this.displayItems.length > 0
+          ? this.displayItems.map(
+              item =>
+                html`
+                <li>
+                  <app-hax-site-bar
+                    @opened-changed="${this.openedChanged}"
+                    ?dark="${this.dark}"
+                    accent-color="${varGet(
+                      item,
+                      'metadata.theme.variables.cssVariable',
+                      'orange'
+                    )
+                      .replace('--simple-colors-default-theme-', '')
+                      .replace('-7', '')}"
+                    
+                    icon-link="${item.slug}"
+                    icon="${varGet(item, 'metadata.theme.variables.icon', 'link')}"
+                  >
+                    <a href="${item.slug}" slot="heading">${item.title}</a>
+                    <span slot="subHeading">${item.author}</span>
+                    <app-hax-site-details
+                      slot="band"
+                      .details="${{
+                        created: item.metadata.site.created,
+                        updated: item.metadata.site.updated,
+                        pages: item.metadata.pageCount,
+                        url: item.slug,
+                      }}"
+                      site-id="${item.id}"
+                    >
+                      <div slot="pre">${item.description}</div>
+                    </app-hax-site-details>
+                  </app-hax-site-bar>
+                </li>`
+            )
+          : html`<div id="noResult">No results for ${this.searchTerm !== '' ? html`<strong>"${this.searchTerm}"</strong>` : 'your account, try starting a new journey!'}.</div>`}
       </ul>
     `;
   }
-  
+
   openedChanged(e) {
+    store.appEl.playSound('click');
     if (!e.detail.value) {
-      this.shadowRoot.querySelector("app-hax-site-details").setAttribute("tabindex", "-1");
-    }
-    else {
-      this.shadowRoot.querySelector("app-hax-site-details").removeAttribute("tabindex");
+      this.shadowRoot
+        .querySelector('app-hax-site-details')
+        .setAttribute('tabindex', '-1');
+    } else {
+      this.shadowRoot
+        .querySelector('app-hax-site-details')
+        .removeAttribute('tabindex');
     }
   }
 }

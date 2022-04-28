@@ -1,4 +1,4 @@
 {
-  "status_code": 200,
-  "jwt": "supDudeImmaJwat"
+    "status": 200,
+    "jwt": "supDudeImmaJwat" 
 }

@@ -15,7 +15,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
   constructor() {
     super();
     this.checked = false;
-    this.label = 'Toggle app dark mode status';
+    this.label = 'Dark mode';
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -58,10 +58,11 @@ export class WiredDarkmodeToggle extends WiredToggle {
   render() {
     return html `
     <div style="position: relative;">
-      <svg></svg>
+      <svg id="svg"></svg>
       <label for="input">${this.label}</label>
       <input id="input" type="checkbox" .checked="${this.checked}" ?disabled="${this.disabled}"  @change="${this.onChange}">
     </div>
+
     `;
 }
 

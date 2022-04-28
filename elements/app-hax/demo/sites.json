@@ -1,600 +1,642 @@
 {
-  "id": "123-123-123-123",
-  "title": "My sites",
-  "author": "me",
-  "description": "All of my micro sites I know and love.",
-  "license": "by-sa",
-  "metadata": [],
-  "items": [
-    {
-      "id": "0e28ad66-e00f-4033-ae3e-4692f6f5a73e",
-      "title": "IST 402",
-      "author": "",
-      "description": "Web Technologies and Activism",
-      "license": "by-sa",
-      "metadata": {
+    "status": 200,
+    "data": {
+        "id": "123-123-123-123",
+        "title": "My sites",
+        "author": "me",
+        "description": "All of my micro sites I know and love.",
+        "license": "by-sa",
+        "metadata": [],
+        "items": [
+        {
+        "id": "0e28ad66-e00f-4033-ae3e-4692f6f5a73e",
+        "title": "IST 402",
+        "author": "",
+        "description": "Web Technologies and Activism",
+        "license": "by-sa",
+        "metadata": {
         "author": {
-          "image": "files/ECrfY0IXUAA4qsQ.jpeg",
-          "name": "Bryan Ollendyke",
-          "email": "bto108@psu.edu",
-          "socialLink": "https://twitter.com/btopro"
+        "image": "files/ECrfY0IXUAA4qsQ.jpeg",
+        "name": "Bryan Ollendyke",
+        "email": "bto108@psu.edu",
+        "socialLink": "https://twitter.com/btopro"
         },
         "site": {
-          "name": "ist402",
-          "created": 1565898366,
-          "updated": 1615262120,
-          "git": {
-            "autoPush": false,
-            "branch": "master",
-            "staticBranch": "gh-pages",
-            "vendor": "github",
-            "publicRepoUrl": "https://github.com/btopro/ist402/blob/master/",
-            "url": "git@github.com:btopro/ist402.git"
-          },
-          "version": "2.0.8",
-          "domain": "",
-          "logo": "files/1633609907554_48eae0bf5903e0f3b990_132.jpg",
-          "static": {
-            "cdn": "build",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": true,
-            "forceUpgrade": true,
-            "sw": false
-          }
+        "name": "ist402",
+        "created": 1565898366,
+        "updated": 1615262120,
+        "git": {
+        "autoPush": false,
+        "branch": "master",
+        "staticBranch": "gh-pages",
+        "vendor": "github",
+        "publicRepoUrl": "https://github.com/btopro/ist402/blob/master/",
+        "url": "git@github.com:btopro/ist402.git"
+        },
+        "version": "2.0.8",
+        "domain": "",
+        "logo": "files/1633609907554_48eae0bf5903e0f3b990_132.jpg",
+        "static": {
+        "cdn": "build",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "forceUpgrade": true,
+        "sw": false
+        }
         },
         "theme": {
-          "element": "clean-one",
-          "path": "@lrnwebcomponents/clean-one/clean-one.js",
-          "name": "Course theme",
-          "variables": {
-            "image": "assets/banner.jpg",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-deep-purple-7",
-            "icon": "icons:cloud-circle"
-          }
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "image": "assets/banner.jpg",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-deep-purple-7",
+        "icon": "icons:cloud-circle"
+        }
         },
         "node": {
-          "fields": {},
-          "dynamicElementLoader": {
-            "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
-            "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
-            "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-            "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-            "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
-            "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-            "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-            "license-element": "@lrnwebcomponents/license-element/license-element.js",
-            "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-            "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
-            "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-            "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
-            "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-            "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-            "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-            "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
-            "media-image": "@lrnwebcomponents/media-image/media-image.js",
-            "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-            "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-            "md-block": "@lrnwebcomponents/md-block/md-block.js",
-            "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-            "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-            "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-            "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
-            "q-r": "@lrnwebcomponents/q-r/q-r.js",
-            "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
-            "self-check": "@lrnwebcomponents/self-check/self-check.js",
-            "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
-            "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-            "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
-            "task-list": "@lrnwebcomponents/task-list/task-list.js",
-            "video-player": "@lrnwebcomponents/video-player/video-player.js",
-            "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
-            "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-            "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-            "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
-            "html-block": "@lrnwebcomponents/html-block/html-block.js",
-            "user-action": "@lrnwebcomponents/user-action/user-action.js",
-            "rss-items": "@lrnwebcomponents/rss-items/rss-items.js"
-          }
+        "fields": {},
+        "dynamicElementLoader": {
+        "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
+        "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
+        "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+        "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+        "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
+        "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+        "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+        "license-element": "@lrnwebcomponents/license-element/license-element.js",
+        "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+        "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
+        "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+        "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+        "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+        "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+        "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+        "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
+        "media-image": "@lrnwebcomponents/media-image/media-image.js",
+        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+        "md-block": "@lrnwebcomponents/md-block/md-block.js",
+        "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+        "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+        "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+        "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+        "q-r": "@lrnwebcomponents/q-r/q-r.js",
+        "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
+        "self-check": "@lrnwebcomponents/self-check/self-check.js",
+        "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
+        "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+        "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
+        "task-list": "@lrnwebcomponents/task-list/task-list.js",
+        "video-player": "@lrnwebcomponents/video-player/video-player.js",
+        "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
+        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+        "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
+        "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
+        "html-block": "@lrnwebcomponents/html-block/html-block.js",
+        "user-action": "@lrnwebcomponents/user-action/user-action.js",
+        "rss-items": "@lrnwebcomponents/rss-items/rss-items.js"
+        }
         },
         "pageCount": 48
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/ist402/",
-      "slug": "/bto108/sites/ist402/"
-    },
-    {
-      "id": "53f32f42-f80d-46c1-816f-23d49fcabc50",
-      "title": "acctg211",
-      "author": "",
-      "description": "accounting",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/ist402/",
+        "slug": "/bto108/sites/ist402/"
+        },
+        {
+        "id": "53f32f42-f80d-46c1-816f-23d49fcabc50",
+        "title": "acctg211",
+        "author": "",
+        "description": "accounting",
+        "license": "by-sa",
+        "metadata": {
         "site": {
-          "name": "acctg211",
-          "created": 1610048864,
-          "updated": 1612555993,
-          "version": "2.0.9",
-          "domain": "",
-          "logo": "",
-          "static": {
-            "cdn": "build",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": false,
-            "sw": false,
-            "forceUpgrade": true
-          },
-          "git": {
-            "autoPush": false,
-            "branch": "master",
-            "staticBranch": "",
-            "vendor": "",
-            "publicRepoUrl": "",
-            "url": ""
-          }
+        "name": "acctg211",
+        "created": 1610048864,
+        "updated": 1612555993,
+        "version": "2.0.9",
+        "domain": "",
+        "logo": "",
+        "static": {
+        "cdn": "build",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": false,
+        "sw": false,
+        "forceUpgrade": true
+        },
+        "git": {
+        "autoPush": false,
+        "branch": "master",
+        "staticBranch": "",
+        "vendor": "",
+        "publicRepoUrl": "",
+        "url": ""
+        }
         },
         "theme": {
-          "element": "clean-two",
-          "path": "@lrnwebcomponents/clean-two/clean-two.js",
-          "name": "Course theme 2",
-          "variables": {
-            "image": "assets/banner.jpg",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-light-blue-7",
-            "icon": "device:battery-charging-full"
-          }
+        "element": "clean-two",
+        "path": "@lrnwebcomponents/clean-two/clean-two.js",
+        "name": "Course theme 2",
+        "variables": {
+        "image": "assets/banner.jpg",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "device:battery-charging-full"
+        }
         },
         "updated": 1610048865,
         "author": {
-          "image": "",
-          "name": "",
-          "email": "",
-          "socialLink": ""
+        "image": "",
+        "name": "",
+        "email": "",
+        "socialLink": ""
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 220
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/acctg211/",
-      "slug": "/bto108/sites/acctg211/"
-    },
-    {
-      "id": "2f8e931f-9af7-414a-a026-7079f70af361",
-      "title": "geodz511",
-      "author": "",
-      "description": "Geo Design 511",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/acctg211/",
+        "slug": "/bto108/sites/acctg211/"
+        },
+        {
+        "id": "2f8e931f-9af7-414a-a026-7079f70af361",
+        "title": "geodz511",
+        "author": "",
+        "description": "Geo Design 511",
+        "license": "by-sa",
+        "metadata": {
         "author": {
-          "image": "",
-          "name": "",
-          "socialLink": "",
-          "email": ""
+        "image": "",
+        "name": "",
+        "socialLink": "",
+        "email": ""
         },
         "site": {
-          "name": "geodz511",
-          "created": 1569349769,
-          "updated": 1640014827,
-          "git": {
-            "vendor": "github",
-            "branch": "master",
-            "autoPush": false,
-            "staticBranch": "gh-pages",
-            "publicRepoUrl": "",
-            "url": ""
-          },
-          "domain": "",
-          "static": {
-            "cdn": "webcomponents.psu.edu",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": false,
-            "sw": false,
-            "forceUpgrade": false
-          },
-          "version": "3.0.0",
-          "logo": ""
+        "name": "geodz511",
+        "created": 1569349769,
+        "updated": 1640014827,
+        "git": {
+        "vendor": "github",
+        "branch": "master",
+        "autoPush": false,
+        "staticBranch": "gh-pages",
+        "publicRepoUrl": "",
+        "url": ""
+        },
+        "domain": "",
+        "static": {
+        "cdn": "webcomponents.psu.edu",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": false,
+        "sw": false,
+        "forceUpgrade": false
+        },
+        "version": "3.0.0",
+        "logo": ""
         },
         "theme": {
-          "element": "clean-one",
-          "path": "@lrnwebcomponents/clean-one/clean-one.js",
-          "name": "Course theme",
-          "variables": {
-            "image": "",
-            "hexCode": "",
-            "cssVariable": "--simple-colors-default-theme-green-7",
-            "icon": "device:graphic-eq"
-          }
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "image": "",
+        "hexCode": "",
+        "cssVariable": "--simple-colors-default-theme-green-7",
+        "icon": "device:graphic-eq"
+        }
         },
         "node": {
-          "fields": {},
-          "dynamicElementLoader": {
-            "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
-            "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
-            "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-            "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-            "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
-            "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-            "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-            "license-element": "@lrnwebcomponents/license-element/license-element.js",
-            "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-            "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
-            "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-            "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
-            "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-            "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-            "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-            "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
-            "media-image": "@lrnwebcomponents/media-image/media-image.js",
-            "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-            "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-            "md-block": "@lrnwebcomponents/md-block/md-block.js",
-            "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-            "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-            "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-            "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
-            "q-r": "@lrnwebcomponents/q-r/q-r.js",
-            "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
-            "self-check": "@lrnwebcomponents/self-check/self-check.js",
-            "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
-            "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-            "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
-            "task-list": "@lrnwebcomponents/task-list/task-list.js",
-            "video-player": "@lrnwebcomponents/video-player/video-player.js",
-            "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
-            "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-            "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-            "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
-            "html-block": "@lrnwebcomponents/html-block/html-block.js",
-            "user-action": "@lrnwebcomponents/user-action/user-action.js",
-            "rss-items": "@lrnwebcomponents/rss-items/rss-items.js"
-          }
+        "fields": {},
+        "dynamicElementLoader": {
+        "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
+        "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
+        "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+        "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+        "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
+        "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+        "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+        "license-element": "@lrnwebcomponents/license-element/license-element.js",
+        "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+        "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
+        "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+        "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+        "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+        "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+        "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+        "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
+        "media-image": "@lrnwebcomponents/media-image/media-image.js",
+        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+        "md-block": "@lrnwebcomponents/md-block/md-block.js",
+        "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+        "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+        "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+        "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+        "q-r": "@lrnwebcomponents/q-r/q-r.js",
+        "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
+        "self-check": "@lrnwebcomponents/self-check/self-check.js",
+        "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
+        "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+        "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
+        "task-list": "@lrnwebcomponents/task-list/task-list.js",
+        "video-player": "@lrnwebcomponents/video-player/video-player.js",
+        "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
+        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+        "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
+        "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
+        "html-block": "@lrnwebcomponents/html-block/html-block.js",
+        "user-action": "@lrnwebcomponents/user-action/user-action.js",
+        "rss-items": "@lrnwebcomponents/rss-items/rss-items.js"
+        }
         },
         "pageCount": 106
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/geodz511/",
-      "slug": "/bto108/sites/geodz511/"
-    },
-    {
-      "id": "e09d9e24-0c1f-4926-89c6-9af296db833f",
-      "title": "microfrontends",
-      "author": "",
-      "description": "",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/geodz511/",
+        "slug": "/bto108/sites/geodz511/"
+        },
+        {
+        "id": "e09d9e24-0c1f-4926-89c6-9af296db833f",
+        "title": "microfrontends",
+        "author": "",
+        "description": "",
+        "license": "by-sa",
+        "metadata": {
         "author": {},
         "site": {
-          "name": "microfrontends",
-          "logo": "assets/banner.jpg",
-          "created": 1635276018,
-          "updated": 1635276048,
-          "git": {}
+        "name": "microfrontends",
+        "logo": "assets/banner.jpg",
+        "created": 1635276018,
+        "updated": 1635276048,
+        "git": {}
         },
         "theme": {
-          "element": "clean-one",
-          "path": "@lrnwebcomponents/clean-one/clean-one.js",
-          "name": "Course theme",
-          "variables": {
-            "icon": "icons:add-circle-outline",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-light-blue-7"
-          }
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "icon": "icons:add-circle-outline",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7"
+        }
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 3
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/microfrontends/",
-      "slug": "/bto108/sites/microfrontends/"
-    },
-    {
-      "id": "b47fe456-cb6f-438c-9182-bd6694c2cfb3",
-      "title": "static-this",
-      "author": "",
-      "description": "",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/microfrontends/",
+        "slug": "/bto108/sites/microfrontends/"
+        },
+        {
+        "id": "b47fe456-cb6f-438c-9182-bd6694c2cfb3",
+        "title": "static-this-shit",
+        "author": "",
+        "description": "",
+        "license": "by-sa",
+        "metadata": {
         "author": {},
         "site": {
-          "name": "static-this",
-          "logo": "assets/banner.jpg",
-          "created": 1635530037,
-          "updated": 1635530037,
-          "git": {}
+        "name": "static-this-shit",
+        "logo": "assets/banner.jpg",
+        "created": 1635530037,
+        "updated": 1635530037,
+        "git": {}
         },
         "theme": {
-          "element": "clean-one",
-          "path": "@lrnwebcomponents/clean-one/clean-one.js",
-          "name": "Course theme",
-          "variables": {
-            "icon": "icons:add-circle-outline",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-light-blue-7"
-          }
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "icon": "icons:add-circle-outline",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7"
+        }
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 2
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/static-this/",
-      "slug": "/bto108/sites/static-this/"
-    },
-    {
-      "id": "879550a7-ef12-40d6-a491-051a628a10cb",
-      "title": "IST 210",
-      "author": "",
-      "description": "Databases",
-      "license": "by-nc",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/static-this-shit/",
+        "slug": "/bto108/sites/static-this-shit/"
+        },
+        {
+        "id": "879550a7-ef12-40d6-a491-051a628a10cb",
+        "title": "IST 210",
+        "author": "",
+        "description": "Databases",
+        "license": "by-nc",
+        "metadata": {
         "author": {
-          "image": "",
-          "name": "Bryan Ollendyke",
-          "email": "bto108@psu.edu",
-          "socialLink": "https://twitter.com/btopro"
+        "image": "",
+        "name": "Bryan Ollendyke",
+        "email": "bto108@psu.edu",
+        "socialLink": "https://twitter.com/btopro"
         },
         "site": {
-          "name": "ist210",
-          "created": 1592403069,
-          "updated": 1598281185,
-          "git": {
-            "autoPush": false,
-            "branch": "",
-            "staticBranch": "",
-            "vendor": "",
-            "publicRepoUrl": "",
-            "url": ""
-          },
-          "version": "1.2.6",
-          "domain": "",
-          "logo": "files/headshot619778.2699999998.jpg",
-          "static": {
-            "cdn": "",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": false,
-            "sw": false,
-            "forceUpgrade": false
-          }
+        "name": "ist210",
+        "created": 1592403069,
+        "updated": 1598281185,
+        "git": {
+        "autoPush": false,
+        "branch": "",
+        "staticBranch": "",
+        "vendor": "",
+        "publicRepoUrl": "",
+        "url": ""
+        },
+        "version": "1.2.6",
+        "domain": "",
+        "logo": "files/headshot619778.2699999998.jpg",
+        "static": {
+        "cdn": "",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": false,
+        "sw": false,
+        "forceUpgrade": false
+        }
         },
         "theme": {
-          "element": "clean-two",
-          "path": "@lrnwebcomponents/clean-two/clean-two.js",
-          "name": "Course theme 2",
-          "variables": {
-            "image": "assets/banner.jpg",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-red-7",
-            "icon": "notification:confirmation-number"
-          }
+        "element": "clean-two",
+        "path": "@lrnwebcomponents/clean-two/clean-two.js",
+        "name": "Course theme 2",
+        "variables": {
+        "image": "assets/banner.jpg",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-red-7",
+        "icon": "notification:confirmation-number"
+        }
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 31
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/ist210/",
-      "slug": "/bto108/sites/ist210/"
-    },
-    {
-      "id": "be5f376a-9cc3-4dd5-a441-5024b336a1d5",
-      "title": "ldsc",
-      "author": "",
-      "description": "",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/ist210/",
+        "slug": "/bto108/sites/ist210/"
+        },
+        {
+        "id": "be5f376a-9cc3-4dd5-a441-5024b336a1d5",
+        "title": "ldsc",
+        "author": "",
+        "description": "",
+        "license": "by-sa",
+        "metadata": {
         "author": {
-          "image": "",
-          "name": "",
-          "email": "",
-          "socialLink": ""
+        "image": "",
+        "name": "",
+        "email": "",
+        "socialLink": ""
         },
         "site": {
-          "name": "ldsc",
-          "logo": "assets/banner.jpg",
-          "created": 1594994550,
-          "updated": 1595266163,
-          "git": {
-            "autoPush": false,
-            "branch": "",
-            "staticBranch": "",
-            "vendor": "",
-            "publicRepoUrl": "",
-            "url": ""
-          },
-          "version": "1.2.8",
-          "domain": "",
-          "static": {
-            "cdn": "",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": false,
-            "sw": false,
-            "forceUpgrade": false
-          }
+        "name": "ldsc",
+        "logo": "assets/banner.jpg",
+        "created": 1594994550,
+        "updated": 1595266163,
+        "git": {
+        "autoPush": false,
+        "branch": "",
+        "staticBranch": "",
+        "vendor": "",
+        "publicRepoUrl": "",
+        "url": ""
+        },
+        "version": "1.2.8",
+        "domain": "",
+        "static": {
+        "cdn": "",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": false,
+        "sw": false,
+        "forceUpgrade": false
+        }
         },
         "theme": {
-          "element": "clean-two",
-          "path": "@lrnwebcomponents/clean-one/clean-two.js",
-          "name": "Course theme 2",
-          "variables": {
-            "image": "",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-light-blue-7",
-            "icon": "icons:add-circle-outline"
-          }
+        "element": "clean-two",
+        "path": "@lrnwebcomponents/clean-one/clean-two.js",
+        "name": "Course theme 2",
+        "variables": {
+        "image": "",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "icons:add-circle-outline"
+        }
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 2
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/ldsc/",
-      "slug": "/bto108/sites/ldsc/"
-    },
-    {
-      "id": "d0ce73f6-4351-426f-a015-202e686e68db",
-      "title": "edtechjoker",
-      "author": "",
-      "description": "Resources to improve education one piece at at time.",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/ldsc/",
+        "slug": "/bto108/sites/ldsc/"
+        },
+        {
+        "id": "d0ce73f6-4351-426f-a015-202e686e68db",
+        "title": "edtechjoker",
+        "author": "",
+        "description": "Resources to improve education one piece at at time.",
+        "license": "by-sa",
+        "metadata": {
         "author": {
-          "image": "",
-          "name": "",
-          "email": "",
-          "socialLink": ""
+        "image": "",
+        "name": "",
+        "email": "",
+        "socialLink": ""
         },
         "site": {
-          "name": "edtechjoker",
-          "logo": "assets/banner.jpg",
-          "created": 1629208877,
-          "updated": 1642013655,
-          "git": {
-            "autoPush": false,
-            "branch": "",
-            "staticBranch": "",
-            "vendor": "",
-            "publicRepoUrl": "",
-            "url": ""
-          },
-          "version": "3.0.0",
-          "domain": "",
-          "static": {
-            "cdn": "",
-            "offline": false
-          },
-          "settings": {
-            "pathauto": false,
-            "publishPagesOn": false,
-            "sw": false,
-            "forceUpgrade": false
-          }
+        "name": "edtechjoker",
+        "logo": "assets/banner.jpg",
+        "created": 1629208877,
+        "updated": 1642013655,
+        "git": {
+        "autoPush": false,
+        "branch": "",
+        "staticBranch": "",
+        "vendor": "",
+        "publicRepoUrl": "",
+        "url": ""
+        },
+        "version": "3.0.0",
+        "domain": "",
+        "static": {
+        "cdn": "",
+        "offline": false
+        },
+        "settings": {
+        "pathauto": false,
+        "publishPagesOn": false,
+        "sw": false,
+        "forceUpgrade": false
+        }
         },
         "theme": {
-          "element": "clean-one",
-          "path": "@lrnwebcomponents/clean-one/clean-one.js",
-          "name": "Course theme",
-          "variables": {
-            "image": "",
-            "hexCode": "#aeff00",
-            "cssVariable": "--simple-colors-default-theme-light-blue-7",
-            "icon": "av:closed-caption"
-          }
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "image": "",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "av:closed-caption"
+        }
         },
         "node": {
-          "fields": {}
+        "fields": {}
         },
         "pageCount": 13
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/edtechjoker/",
-      "slug": "/bto108/sites/edtechjoker/"
-    },
-    {
-      "id": "44d3fd13-4cec-4999-9a83-678334123d55",
-      "title": "astro130",
-      "author": "",
-      "description": "",
-      "license": "by-sa",
-      "metadata": {
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/edtechjoker/",
+        "slug": "/bto108/sites/edtechjoker/"
+        },
+        {
+        "id": "e2074368-55a5-4aee-95ca-b906afd30f52",
+        "title": "clunkyform",
+        "author": "",
+        "description": "and im riffing on purpose",
+        "license": "by-sa",
+        "metadata": {
+        "author": {},
+        "site": {
+        "name": "clunkyform",
+        "logo": "assets/banner.jpg",
+        "created": 1644856484,
+        "updated": 1644856484,
+        "git": {}
+        },
+        "theme": {
+        "element": "clean-one",
+        "path": "@lrnwebcomponents/clean-one/clean-one.js",
+        "name": "Course theme",
+        "variables": {
+        "icon": "icons:add-circle-outline",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7"
+        }
+        },
+        "node": {
+        "fields": {}
+        },
+        "pageCount": 4
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/clunkyform/",
+        "slug": "/bto108/sites/clunkyform/"
+        },
+        {
+        "id": "44d3fd13-4cec-4999-9a83-678334123d55",
+        "title": "astro130",
+        "author": "",
+        "description": "",
+        "license": "by-sa",
+        "metadata": {
         "siteName": "astro130",
         "domain": null,
+        "site": {
+
         "created": 1558624482,
-        "updated": 1558624504,
-        "theme": {
-          "element": "learn-two-theme",
-          "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
-          "name": "Learn"
+        "updated": 1558624504
+    },
+    "theme": {
+        "element": "learn-two-theme",
+        "path": "@lrnwebcomponents/learn-two-theme/learn-two-theme.js",
+        "name": "Learn"
         },
         "image": "assets/banner.jpg",
         "hexCode": "#aeff00",
         "cssVariable": "",
         "publishing": {
-          "git": {
-            "vendor": "github",
-            "branch": "gh-pages"
-          }
+        "git": {
+        "vendor": "github",
+        "branch": "gh-pages"
+        }
         },
         "dynamicElementLoader": {
-          "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-          "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-          "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
-          "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-          "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-          "license-element": "@lrnwebcomponents/license-element/license-element.js",
-          "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-          "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
-          "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-          "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
-          "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-          "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-          "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-          "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
-          "media-image": "@lrnwebcomponents/media-image/media-image.js",
-          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-          "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-          "md-block": "@lrnwebcomponents/md-block/md-block.js",
-          "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-          "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-          "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-          "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
-          "q-r": "@lrnwebcomponents/q-r/q-r.js",
-          "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
-          "self-check": "@lrnwebcomponents/self-check/self-check.js",
-          "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
-          "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-          "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
-          "task-list": "@lrnwebcomponents/task-list/task-list.js",
-          "video-player": "@lrnwebcomponents/video-player/video-player.js",
-          "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
-          "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-          "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-          "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js"
+        "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+        "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+        "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
+        "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+        "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+        "license-element": "@lrnwebcomponents/license-element/license-element.js",
+        "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+        "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
+        "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+        "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+        "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+        "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+        "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+        "media-behaviors": "@lrnwebcomponents/media-behaviors/media-behaviors.js",
+        "media-image": "@lrnwebcomponents/media-image/media-image.js",
+        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+        "md-block": "@lrnwebcomponents/md-block/md-block.js",
+        "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+        "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+        "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+        "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+        "q-r": "@lrnwebcomponents/q-r/q-r.js",
+        "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
+        "self-check": "@lrnwebcomponents/self-check/self-check.js",
+        "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
+        "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+        "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
+        "task-list": "@lrnwebcomponents/task-list/task-list.js",
+        "video-player": "@lrnwebcomponents/video-player/video-player.js",
+        "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
+        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+        "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
+        "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js"
         },
         "pageCount": 92
-      },
-      "indent": 0,
-      "order": 0,
-      "parent": null,
-      "location": "/bto108/sites/astro130/",
-      "slug": "/bto108/sites/astro130/"
-    }
-  ]
+        },
+        "indent": 0,
+        "order": 0,
+        "parent": null,
+        "location": "/bto108/sites/astro130/",
+        "slug": "/bto108/sites/astro130/"
+        }
+        ]
+        }
 }

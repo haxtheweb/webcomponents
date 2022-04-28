@@ -1,6 +1,7 @@
 import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
 import '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js';
 import { html, css, LitElement } from 'lit';
+const postIt = new URL('../assets/images/PostIt.svg', import.meta.url).href;
 
 export class AppHaxButton extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -16,6 +17,7 @@ export class AppHaxButton extends LitElement {
     this.disabled = false;
     this.elevation = 2;
     this.active = false;
+    this.comingSoon = false;
     this.addEventListener('click', this._handleClick);
     this.addEventListener('click', this._handleClick);
     this.addEventListener('focus', this._handleFocus);
@@ -25,17 +27,21 @@ export class AppHaxButton extends LitElement {
   }
 
   _handleFocus() {
-    this.active = true;
-    this.elevation = '4';
+    if (!this.disabled && !this.comingSoon) {
+      this.active = true;
+      this.elevation = '4';
+    }
   }
 
   _handleBlur() {
-    this.active = false;
-    this.elevation = '2';
+    if (!this.disabled && !this.comingSoon) {
+      this.active = false;
+      this.elevation = '2';
+    }
   }
 
   _handleClick() {
-    if (!this.disabled) {
+    if (!this.disabled && !this.comingSoon) {
       this.shadowRoot.querySelector('.haxButton').blur();
     }
   }
@@ -47,6 +53,7 @@ export class AppHaxButton extends LitElement {
       disabled: { type: Boolean, reflect: true },
       elevation: { type: Number },
       active: { type: Boolean, reflect: true },
+      comingSoon: { type: Boolean, reflect: true, attribute: 'coming-soon'}
     };
   }
 
@@ -81,6 +88,10 @@ export class AppHaxButton extends LitElement {
             this.icon = 'hax:bricks';
             this.value = 'Training';
           break;
+          case 'Blog':
+            this.icon = 'social:public';
+            this.value = 'Blog';
+          break;
           default:
             this.icon = 'image:photo-filter';
             this.value = 'own';
@@ -99,6 +110,10 @@ export class AppHaxButton extends LitElement {
         --background-color: transparent;
         --background-color-active: white;
         font-family: 'Press Start 2P', sans-serif;
+      }
+      :host([coming-soon]) .haxButton {
+        pointer-events: none;
+        background-color: var(--simple-colors-default-theme-grey-6);
       }
       :host([active]) .haxButton {
         color: var(--app-hax-background-color, var(--background-color-active));
@@ -123,6 +138,14 @@ export class AppHaxButton extends LitElement {
         width: 132px;
         height: 112px;
       }
+      .coming-soon {
+        display: block;
+        height: 114px;
+        width: 140px;
+        z-index: 1;
+        position: absolute;
+        margin-top: -75px;
+      }
       .haxButton {
         background-color: var(
           --app-hax-background-color,
@@ -145,6 +168,11 @@ export class AppHaxButton extends LitElement {
           width: 100px;
           height: 75px;
         }
+        .coming-soon {
+          margin-top: -50px;
+          height: 114px;
+          width: 100px;
+        }
       }
     `];
   }
@@ -153,13 +181,14 @@ export class AppHaxButton extends LitElement {
     return html`
       <wired-button
         elevation=${this.elevation}
-        ?disabled=${this.disabled}
+        ?disabled=${this.disabled || this.comingSoon}
         class="haxButton"
       >
         <div id="container">
           <simple-icon-lite icon=${this.icon}> </simple-icon-lite>
           <div class="type">${this.type}</div>
         </div>
+        ${this.comingSoon ? html`<img src="${postIt}" loading="lazy" decoding="async" fetchpriority="low" alt="Feature coming soon" class="coming-soon" />` : ``}
       </wired-button>
     `;
   }

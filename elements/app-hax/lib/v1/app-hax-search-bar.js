@@ -1,5 +1,6 @@
 /* eslint-disable no-return-assign */
 import { LitElement, html, css } from 'lit';
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { store } from './AppHaxStore.js';
 
 export class AppHaxSearchBar extends LitElement {
@@ -34,7 +35,6 @@ export class AppHaxSearchBar extends LitElement {
         store.searchTerm = this.searchTerm;
       }
       else if (propName === 'showSearch' && oldValue !== undefined) {
-        this[propName] ? window.history.pushState({}, null, 'search') : window.history.pushState(null, null, store.location.baseUrl);
         if (this[propName] === false) {
           this.searchTerm = '';
         }
@@ -99,18 +99,22 @@ export class AppHaxSearchBar extends LitElement {
 
   // eslint-disable-next-line class-methods-use-this
   search() {
+    store.appEl.playSound('click');
     this.searchTerm = this.shadowRoot.querySelector('#searchField').value;
   }
 
   render() {
     return html`
-      <simple-icon-button-lite ?disabled="${this.disabled}" label="Search" icon="icons:search" @click="${this.toggleSearch}"></simple-icon-button-lite>
+      <simple-icon-button-lite id="searchico" ?disabled="${this.disabled}" label="Search" icon="icons:search" @click="${this.toggleSearch}"></simple-icon-button-lite>
+      <simple-tooltip for="searchico" position="bottom">Toggle Search</simple-tooltip>
       <input ?disabled="${!this.showSearch}" id="searchField" @input="${this.search}" type="text" placeholder="Search.." />
     `;
   }
   
   toggleSearch() {
     if (!this.disabled) {
+      this.shadowRoot.querySelector('#searchField').value = '';
+      store.appEl.playSound('click');
       this.showSearch = !this.showSearch;
       setTimeout(() => {
         this.shadowRoot.querySelector("#searchField").focus();      

@@ -37,7 +37,7 @@ export class AppHaxLabel extends LitElement {
           var(--background-color)
         );
         font-weight: normal;
-        font-size: 4vw;
+        font-size: 3.5vw;
         display: inline-flex;
         align-items: center;
       }
@@ -45,8 +45,8 @@ export class AppHaxLabel extends LitElement {
       .subtitle {
         color: var(--app-hax-accent-color, var(--accent-color));
         font-weight: normal;
-        margin-top: 2.5px;
-        font-size: 24px;
+        margin-top: 2px;
+        font-size: 20px;
       }
       @media (max-width: 700px) {
         .subtitle {
@@ -55,7 +55,7 @@ export class AppHaxLabel extends LitElement {
       }
 
       .bracket {
-        font-size: 10vw;
+        font-size: 8vw;
         font-weight: normal;
         vertical-align: middle;
         -webkit-text-stroke: 0px;

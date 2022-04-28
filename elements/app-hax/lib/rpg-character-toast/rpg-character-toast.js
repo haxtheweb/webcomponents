@@ -53,9 +53,14 @@ export class RPGCharacterToast extends SimpleToastEl {
         text-align: center;
         vertical-align: middle;
       }
+      rpg-character {
+        margin: 30px -30px 0 -30px;
+        width: 145px;
+      }
       .bubble {
         height: 142px;
         display: inline-flex;
+        margin-top: 6px;
       }
       .mid {
         line-height: 142px;
@@ -83,14 +88,19 @@ export class RPGCharacterToast extends SimpleToastEl {
           --simple-toast-width: 80vw;
           --simple-toast-font-size: 12px;
         }
+        rpg-character {
+          width: 100px;
+          margin: 70px -24px 0 -24px;
+        }
       }
       @media (max-width: 500px) {
         :host {
           height: 50px;
           line-height: 50px;
+          border: none;
         }
         rpg-character {
-          display:none;
+          display: none;
         }
         .rightedge {
           display: none;
@@ -105,7 +115,8 @@ export class RPGCharacterToast extends SimpleToastEl {
         }
         .bubble {
           height: 50px;
-          border: 3px solid black;
+          margin: 0;
+          border: 2px solid black;
           border-radius: 5px;
         }
       }
@@ -163,12 +174,10 @@ export class RPGCharacterToast extends SimpleToastEl {
     return html`
     <div class="bubble">
       <span class="bubble leftedge"></span>
-      <span class="bubble mid">
-      ${this.text}
+      <span class="bubble mid">${this.text}</span>
       <slot></slot>
-      </span>
       <span class="bubble rightedge"></span>
-      <rpg-character seed="${this.userName}" ?fire="${this.fire}" hat="${this.hat}" ?walking="${this.walking}"></rpg-character>
+      <rpg-character height="130" width="130" seed="${this.userName}" ?fire="${this.fire}" hat="${this.hat}" ?walking="${this.walking}"></rpg-character>
     </div>`;
   }
 

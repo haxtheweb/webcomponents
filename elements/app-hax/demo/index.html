@@ -143,11 +143,6 @@
       <div class="subtitle">HAX is loading</div>
     </div>
       <app-hax>
-        <div slot="externalproviders">
-          <a href="https://login.microsoftonline.com/">
-            <button style="background-color: darkblue;"><img src="https://sites.psu.edu/psucanvas/files/2016/12/newlogosm-1y04ysv.png" width="93" height="43" alt="Canvas" id="logo" data-height-percentage="100" data-actual-width="648" data-actual-height="300"></button>
-          </a>
-        </div>
       </app-hax>
       <div id="demo">
         <style>
@@ -170,7 +165,6 @@
           }
         </style>
         <div id="demobtns">
-          <button id="loginbtn">Login</button>
           <button id="nosites">Test new user</button>
           <button id="test404">Test 404</button>
           <button id="resetbtn">reset app</button>
@@ -190,9 +184,6 @@
           dqs("#loading").remove();
         });
           function dqs(sel) { return document.querySelector(sel)}
-          dqs("#loginbtn").addEventListener("click", (e) => {
-            dqs("app-hax").login();
-          });
           dqs("#nosites").addEventListener("click", (e) => {
             // reset to clear internal state
             dqs("app-hax").reset(false);

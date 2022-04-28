@@ -21,6 +21,9 @@ export class AppHaxBackendAPI extends LitElement {
     autorun(() => {
       this.appSettings = toJS(store.appSettings);
     });
+    autorun(() => {
+      this.jwt = toJS(store.jwt);
+    });
   }
   
   static get properties() {
@@ -58,6 +61,9 @@ export class AppHaxBackendAPI extends LitElement {
       var options = {
         method: this.method,
       };
+      if (this.jwt) {
+        data.jwt = this.jwt;
+      }
       // encode in search params or body of the request
       if (this.method === 'GET') {
         urlRequest+= '?' + new URLSearchParams(data).toString();
@@ -66,12 +72,12 @@ export class AppHaxBackendAPI extends LitElement {
         options.body = JSON.stringify(data);
       }
       const response = await fetch(`${urlRequest}`, options)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          return {};
-        });
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return {};
+      });
       // ability to save the output if this is being done as a bg task
       // that way we can get access to the result later on
       if (save) {
@@ -89,7 +95,7 @@ export class AppHaxBackendAPI extends LitElement {
     // set store refernece to this singleton
     store.AppHaxAPI = this;
     store.newSitePromiseList = [
-      () => this.makeCall('createSite',store.site, true),
+      async () => await this.makeCall('createSite', toJS(store.site), true),
       ...store.newSitePromiseList];
   }
 

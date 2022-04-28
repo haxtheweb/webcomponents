@@ -93,6 +93,7 @@ export class AppHaxSiteLogin extends SimpleColors {
         this.hidePassword = false;
         this.errorMSG = '';
         this.username = value;
+        store.appEl.playSound('click2');
         setTimeout(() => {
           this.shadowRoot.querySelector('input').focus();        
         }, 0);
@@ -101,33 +102,35 @@ export class AppHaxSiteLogin extends SimpleColors {
 
     // eslint-disable-next-line class-methods-use-this
     async checkPassword() {
+      store.appEl.playSound('click2');
+      // eslint-disable-next-line prefer-destructuring
+      const value = this.shadowRoot.querySelector("#password").value;
+      
+      const resp = await AppHaxAPI.makeCall('login', {username: this.username, password: value})
 
-        // eslint-disable-next-line prefer-destructuring
-        const value = this.shadowRoot.querySelector("#password").value;
+      if(resp.status !== 200){
+        this.hidePassword = true;
+        this.errorMSG = 'Invalid Username or Password';
+        store.appEl.playSound('error');
+      } else {
+        localStorageSet('jwt', resp.jwt);
+        autorun(() => {
+        store.user = {
+          name: this.username
+        }});
+        store.appEl.playSound('success');
+        store.jwt = resp.jwt;
         
-        const resp = await AppHaxAPI.makeCall('login', {username: this.username, password: value})
-
-        if(resp.status_code !== 200){
-          this.hidePassword = true;
-          this.errorMSG = 'Invalid Username or Password';
-        } else {
-          localStorageSet('jwt', resp.jwt);
-          autorun(() => { store.user = {
-            name: this.username
-          }});
-
-          store.jwt = resp.jwt;
-          
-          this.dispatchEvent(new CustomEvent("simple-modal-hide", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-            }
-          }));
-          // Call BackendAPI? 
-          store.toast(`Welcome ${this.username}! Let's build!`, 5000, { hat: 'construction'});
-          // @todo need to set local storage from here
-        }
+        this.dispatchEvent(new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+          }
+        }));
+        // Call BackendAPI? 
+        store.toast(`Welcome ${this.username}! Let's go!`, 5000, { hat: 'construction'});
+        // @todo need to set local storage from here
+      }
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -146,8 +149,8 @@ export class AppHaxSiteLogin extends SimpleColors {
         <rpg-character seed="${this.username}"></rpg-character> 
         <div id="inputcontainer">
             ${this.hidePassword
-            ? html `<input id="username" type="text" placeholder="abc123@psu.edu" @input="${this.nameChange}"/>  <button @click=${this.checkUsername}>next</button>`
-            : html `<p> Hey ${this.username}! <a @click=${this.reset}>not you?</a></p><input id="password" type="text" placeholder="insert password here"/>   <button @click=${this.checkPassword}>Login</button>`
+            ? html `<input id="username" type="text" placeholder="abc123@hax.camp" @input="${this.nameChange}"/>  <button @click=${this.checkUsername}>next</button>`
+            : html `<p> Hey ${this.username}! <a @click=${this.reset}>not you?</a></p><input id="password" type="password" placeholder="enter password"/>   <button @click=${this.checkPassword}>Login</button>`
             }
             <div class="external">
               <slot name="externalproviders"></slot>
