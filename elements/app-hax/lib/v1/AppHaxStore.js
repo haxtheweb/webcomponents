@@ -9,7 +9,7 @@ class Store {
     this.badDevice = null;
     this.evaluateBadDevice();
     this.location = null;
-    this.jwt = localStorageGet("jwt", null); // useful to know when we're logged in
+    this.jwt = localStorageGet("jwt", null);
     this.token = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
@@ -25,13 +25,34 @@ class Store {
       () => import("@lrnwebcomponents/simple-fields/simple-fields.js"),
       () => import("mobx/dist/mobx.esm.js"),
       () => import("@lrnwebcomponents/h-a-x/h-a-x.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"),
-      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
+        ),
+      () =>
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
+        ),
     ];
     this.appEl = null;
     this.appReady = false;
@@ -219,7 +240,9 @@ class Store {
   }
 
   get isLoggedIn() {
-    return this.jwt !== "null" && this.jwt;
+    if (this.appReady && this.AppHaxAPI) {
+      return this.jwt !== "null" && this.jwt;
+    }
   }
 
   get isNewUser() {

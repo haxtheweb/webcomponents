@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
+import { localStorageSet, localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `lrs-bridge`
@@ -81,15 +82,10 @@ class LrsBridge extends LitElement {
    * Get the user name from local storage
    */
   getUserName() {
-    var currentName;
-    try {
-      currentName = window.localStorage.getItem("lrs-name");
-      if (!currentName) {
-        const newName = this.makeGUID();
-        window.localStorage.setItem("lrs-name", newName);
-      }
-    } catch (e) {
-      currentName = "";
+    var currentName = localStorageGet("lrs-name", "");
+    if (!currentName) {
+      const newName = this.makeGUID();
+      localStorageSet("lrs-name", newName);
     }
     return currentName;
   }

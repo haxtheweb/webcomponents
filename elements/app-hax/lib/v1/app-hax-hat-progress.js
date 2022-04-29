@@ -77,7 +77,7 @@ export class AppHaxHatProgress extends SimpleColors {
               store.appEl.reset();
               setTimeout(() => {
                 window.location = createResponse.slug;
-              },0);
+              }, 0);
             });
             this.shadowRoot
               .querySelector("#progress2")

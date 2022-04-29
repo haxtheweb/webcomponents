@@ -66,12 +66,14 @@ export class AppHax extends SimpleColors {
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", darkToggle);
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
   }
 
   disconnectedCallback() {
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .removeEventListener("change", darkToggle);
+    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     super.disconnectedCallback();
   }
 
@@ -205,7 +207,7 @@ export class AppHax extends SimpleColors {
             this.reset();
             setTimeout(() => {
               window.location = location.route.slug;
-            },0);
+            }, 0);
           }
           // page miss is high check too
           else if (location.route.name === "404") {
@@ -270,23 +272,6 @@ export class AppHax extends SimpleColors {
         document.body.classList.add(`app-hax-${mode}`);
       }
     });
-
-    // App is ready and the user is Logged in
-    autorun(async () => {
-      if (
-        toJS(store.appReady) &&
-        toJS(store.isLoggedIn) &&
-        toJS(store.appSettings) &&
-        toJS(store.refreshSiteList)
-      ) {
-        // Need this for the auto run when testing new user
-        // if we get new data source, trigger a rebuild of the site list
-        const results = await AppHaxAPI.makeCall("getSitesList");
-        store.manifest = results.data;
-      } else if (toJS(store.appReady) && !toJS(store.isLoggedIn)) {
-        this.login();
-      }
-    });
   }
 
   static get properties() {
@@ -328,15 +313,20 @@ export class AppHax extends SimpleColors {
 
   // eslint-disable-next-line class-methods-use-this
   async logout() {
-    const results = await AppHaxAPI.makeCall("logout");
-    // localStorage possible to be blocked by permission of system
-    try {
-      window.localStorage.removeItem("jwt");
-    } catch (e) {
-      // do nothing, this is a framed in / secure context
+    window.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: true,
+      })
+    );
+  }
+  // only care about logouts
+  _jwtLoggedIn(e) {
+    if (e.detail === false) {
+      this.reset();
     }
-    store.jwt = "";
-    this.reset(true);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -669,6 +659,23 @@ export class AppHax extends SimpleColors {
         store.toast("Sound off.. hey! HELLO!?!", 2000, { fire: true });
       } else {
         store.toast("You can hear me now? Good.", 2000, { hat: "random" });
+      }
+    });
+    // App is ready and the user is Logged in
+    autorun(async () => {
+      if (
+        toJS(store.appReady) &&
+        store.AppHaxAPI &&
+        toJS(store.isLoggedIn) &&
+        toJS(store.appSettings) &&
+        toJS(store.refreshSiteList)
+      ) {
+        // Need this for the auto run when testing new user
+        // if we get new data source, trigger a rebuild of the site list
+        const results = await AppHaxAPI.makeCall("getSitesList");
+        store.manifest = results.data;
+      } else if (toJS(store.appReady) && !toJS(store.isLoggedIn)) {
+        this.login();
       }
     });
   }

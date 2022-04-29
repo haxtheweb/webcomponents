@@ -9,6 +9,8 @@ import {
   validURL,
   camelToDash,
   htmlEntities,
+  localStorageGet,
+  localStorageSet
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   observable,
@@ -29,22 +31,6 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
-
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
-
-function localStorageSet(name, newItem) {
-  try {
-    return localStorage.setItem(name, newItem);
-  } catch (e) {
-    return false;
-  }
-}
 
 function sessionStorageGet(name) {
   try {
@@ -566,10 +552,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _storageDataChanged(newValue) {
     if (newValue && this.ready && this.__storageDataProcessed) {
-      if (localStorageGet("haxConfirm")) {
-        localStorageSet("haxUserData", JSON.stringify(newValue));
-      } else if (sessionStorageGet("haxConfirm")) {
-        sessionStorageSet("haxUserData", JSON.stringify(newValue));
+      if (localStorageGet("haxConfirm", false)) {
+        localStorageSet("haxUserData", newValue);
+      } else if (sessionStorageGet("haxConfirm", false)) {
+        sessionStorageSet("haxUserData", newValue);
       }
     }
   }
@@ -1166,9 +1152,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         } catch (e) {}
       } else {
         try {
-          let globalData = localStorageGet("haxUserData")
-            ? JSON.parse(localStorageGet("haxUserData"))
-            : {};
+          let globalData = localStorageGet("haxUserData", {});
           this.storageData = globalData;
           this._storageDataChanged(this.storageData);
         } catch (e) {}

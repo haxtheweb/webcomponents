@@ -1,14 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
-
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
+import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-app-search`

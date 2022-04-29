@@ -1,22 +1,6 @@
 import { css, html } from "lit";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath, localStorageGet, localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
-
-function localStorageGet(name) {
-  try {
-    return JSON.parse(localStorage.getItem(name));
-  } catch (e) {
-    return false;
-  }
-}
-
-function localStorageSet(name, newItem) {
-  try {
-    return localStorage.setItem(name, JSON.stringify(newItem));
-  } catch (e) {
-    return false;
-  }
-}
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -38,16 +22,9 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         textSettings: "Text settings",
       };
       this.hideUserStylesMenu = true;
-      this.fontSize = localStorageGet("haxcms-userPref-fontSize")
-        ? localStorageGet("haxcms-userPref-fontSize")
-        : 1;
-      this.fontFamily = localStorageGet("haxcms-userPref-fontFamily")
-        ? localStorageGet("haxcms-userPref-fontFamily")
-        : 0;
-      this.colorTheme = localStorageGet("haxcms-userPref-colorTheme")
-        ? localStorageGet("haxcms-userPref-colorTheme")
-        : 0;
-
+      this.fontSize = localStorageGet("haxcms-userPref-fontSize", 1);
+      this.fontFamily = localStorageGet("haxcms-userPref-fontFamily", 0);
+      this.colorTheme = localStorageGet("haxcms-userPref-colorTheme", 0);
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
     }
     static get styles() {

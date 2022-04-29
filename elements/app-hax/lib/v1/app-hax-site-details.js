@@ -244,16 +244,19 @@ export class AppHaxSiteDetails extends SimpleColors {
     const op = toJS(store.activeSiteOp);
     const site = toJS(store.activeSite);
     // @todo bother to implement these / translate to the path via switch
-    await store.AppHaxAPI.makeCall(op,
+    await store.AppHaxAPI.makeCall(
+      op,
       {
-        site: { 
-          name: site.metadata.site.name, id: site.id 
-        }
+        site: {
+          name: site.metadata.site.name,
+          id: site.id,
+        },
       },
       false,
       () => {
         store.refreshSiteListing();
-      });
+      }
+    );
     window.dispatchEvent(new CustomEvent("simple-modal-hide"));
     store.appEl.playSound("success");
     store.toast(`${site.metadata.site.name} ${op} successful!`, 3000, {

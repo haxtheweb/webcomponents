@@ -1,4 +1,5 @@
 import { LitElement, html } from "lit";
+import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { store } from "./AppHaxStore.js";
@@ -13,16 +14,20 @@ export class AppHaxBackendAPI extends LitElement {
 
   constructor() {
     super();
-    this.jwt = null;
+    this.jwt = localStorageGet("jwt", null);
     this.method = window.appSettings.demo ? "GET" : "POST";
     this.basePath = "/";
     this.lastResponse = {};
     this.appSettings = {};
     autorun(() => {
       this.appSettings = toJS(store.appSettings);
-    });
-    autorun(() => {
-      this.jwt = toJS(store.jwt);
+      // allow setting in session driven environments
+      if (this.appSettings.method) {
+        this.method = this.appSettings.method;
+      }
+      if (this.appSettings.jwt) {
+        this.jwt = this.appSettings.jwt;
+      }
     });
     autorun(() => {
       this.token = toJS(store.token);
@@ -40,16 +45,15 @@ export class AppHaxBackendAPI extends LitElement {
   }
 
   render() {
-    // eslint-disable-next-line no-unused-expressions
-    html` <jwt-login
-      auto
-      id="jwt"
+    return html`<jwt-login
       jwt="${this.jwt}"
-      @jwt-changed="${this.jwtChanged}"
       url="${this.appSettings.login}"
+      method="${this.method}"
       refresh-url="${this.appSettings.refreshUrl}"
       redirect-url="${this.appSettings.redirectUrl}"
-      logout-url="${this.appSettings.logoutUrl}"
+      logout-url="${this.appSettings.logout}"
+      id="jwt"
+      @jwt-changed="${this.jwtChanged}"
     ></jwt-login>`;
   }
 
@@ -67,7 +71,7 @@ export class AppHaxBackendAPI extends LitElement {
       if (this.jwt) {
         data.jwt = this.jwt;
       }
-      if (this.jwt) {
+      if (this.token) {
         data.token = this.token;
       }
       // encode in search params or body of the request
@@ -103,14 +107,16 @@ export class AppHaxBackendAPI extends LitElement {
     }
     // set store refernece to this singleton
     store.AppHaxAPI = this;
-
+    // site creation roped into the promise list
+    // after knowing our data structure since we'll definitely call this
     store.newSitePromiseList = [
-      async () => await this.makeCall("createSite", this.formatSite(), true),
       ...store.newSitePromiseList,
+      async () =>
+        await this.makeCall("createSite", this._formatSitePostData(), true),
     ];
   }
-
-  formatSite() {
+  // just easier to read here
+  _formatSitePostData() {
     const site = toJS(store.site);
     return {
       site: {

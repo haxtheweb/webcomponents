@@ -2,22 +2,7 @@ import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
-
-function localStorageGet(name) {
-  try {
-    return JSON.parse(localStorage.getItem(name));
-  } catch (e) {
-    return false;
-  }
-}
-
-function localStorageSet(name, newItem) {
-  try {
-    return localStorage.setItem(name, JSON.stringify(newItem));
-  } catch (e) {
-    return false;
-  }
-}
+import { localStorageSet,localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSMobileMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -26,7 +11,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       this.menuOpen = true;
       this.t = this.t || {};
       this.t.toggleMenu = "Toggle menu";
-      let status = localStorageGet("hax-mobile-menu-menuOpen");
+      let status = localStorageGet("hax-mobile-menu-menuOpen", null);
       if (status !== null) {
         if (status === true) {
           this.menuOpen = true;
@@ -44,7 +29,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           this.menuOpen &&
           toJS(store.activeId) &&
           ["sm", "xs"].includes(this.responsiveSize) &&
-          localStorageGet("hax-mobile-menu-menuOpen") === null
+          localStorageGet("hax-mobile-menu-menuOpen", null) === null
         ) {
           this.__HAXCMSMobileMenuToggle();
         }
@@ -145,7 +130,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         // abide by these things
         if (
           propName == "responsiveSize" &&
-          localStorageGet("hax-mobile-menu-menuOpen") === null
+          localStorageGet("hax-mobile-menu-menuOpen", null) === null
         ) {
           switch (this[propName]) {
             case "sm":

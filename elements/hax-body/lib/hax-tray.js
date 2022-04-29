@@ -4,6 +4,7 @@ import {
   camelCaseToDash,
   wipeSlot,
   normalizeEventPath,
+  localStorageSet
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
@@ -34,22 +35,6 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
-
-function localStorageSet(name, newItem) {
-  try {
-    return localStorage.setItem(name, newItem);
-  } catch (e) {
-    return false;
-  }
-}
 
 /**
  * `hax-tray`
@@ -920,7 +905,7 @@ class HaxTray extends I18NMixin(
         this.style.setProperty("--hax-tray-custom-x", null);
         HAXStore.elementAlign = direction;
         //set local storage
-        localStorage.setItem("hax-tray-elementAlign", direction);
+        localStorageSet("hax-tray-elementAlign", direction);
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;

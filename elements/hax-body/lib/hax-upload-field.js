@@ -1,16 +1,8 @@
 import { html, css } from "lit";
 import { SimpleFieldsUpload } from "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement,localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
 
 class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   /**

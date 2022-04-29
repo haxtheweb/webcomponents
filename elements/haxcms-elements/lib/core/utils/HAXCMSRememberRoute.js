@@ -1,22 +1,7 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
-
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
-
-function localStorageSet(name, newItem) {
-  try {
-    return localStorage.setItem(name, newItem);
-  } catch (e) {
-    return false;
-  }
-}
+import { localStorageGet, localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSRememberRoute = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {

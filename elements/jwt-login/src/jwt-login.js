@@ -23,7 +23,7 @@ class JwtLogin extends LitElement {
   lastErrorChanged(e) {
     if (e && this.__context != "logout") {
       // check for JWT needing refreshed vs busted but must be 403
-      console.error(e);
+      console.warn(e);
       this.dispatchEvent(
         new CustomEvent("jwt-login-refresh-error", {
           composed: true,
@@ -152,7 +152,10 @@ class JwtLogin extends LitElement {
       );
     } else if (newValue) {
       // set the jwt into local storage so we can reference later
-      localStorage.setItem(this.key, newValue);
+      try {
+        localStorage.setItem(this.key, JSON.stringify(newValue));
+      } catch (e) {
+      }
       this.dispatchEvent(
         new CustomEvent("jwt-token", {
           bubbles: true,
@@ -209,7 +212,12 @@ class JwtLogin extends LitElement {
     }
     this.ready = true;
     // set jwt from local storage bin
-    this.jwt = localStorage.getItem(this.key);
+    try {
+      this.jwt = JSON.parse(localStorage.getItem(this.key));
+    }
+    catch(e) {
+      this.jwt = null;
+    }
   }
   /**
    * Request a refresh token
@@ -234,9 +242,11 @@ class JwtLogin extends LitElement {
     }
     fetch(url, data)
       .then((response) => {
+        console.log(response);
         if (response.ok) {
           return response.json();
         } else {
+
           // prevent infinite loop if we fail on the logout endpoint
           if (
             this.__context == "logout" &&
@@ -247,12 +257,33 @@ class JwtLogin extends LitElement {
               window.location.href = this.redirectUrl;
             }, 100);
           }
+          // message so things know out login attempt failed
+          else if (this.__context == "login") {
+            this.dispatchEvent(
+              new CustomEvent("jwt-login-login-failed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: true,
+              })
+            );
+          }
           this.lastErrorChanged(response);
         }
       })
-      .then((token) => {
+      .then((jwtData) => {
         try {
-          this.loginResponse(token);
+          const token = jwtData;
+          if (token) {
+            // support direct response back
+            // or nested object
+            if (token.jwt) {
+              this.loginResponse(token.jwt);
+            }
+            else {
+              this.loginResponse(token);
+            }
+          }
         } catch (e) {
           console.warn(e);
         }

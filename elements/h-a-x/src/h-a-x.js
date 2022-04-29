@@ -4,13 +4,7 @@
  */
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
-function localStorageGet(name) {
-  try {
-    return localStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
+import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `h-a-x`
  * @element h-a-x

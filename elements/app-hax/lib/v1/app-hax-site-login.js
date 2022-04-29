@@ -104,26 +104,61 @@ export class AppHaxSiteLogin extends SimpleColors {
     store.appEl.playSound("click2");
     // eslint-disable-next-line prefer-destructuring
     const value = this.shadowRoot.querySelector("#password").value;
-    // attempt login and wait for response
-    const resp = await AppHaxAPI.makeCall("login", {
-      username: this.username,
-      password: value,
-    });
+    // attempt login and wait for response from the jwt-login tag via
+    // jwt-logged-in event @see _jwtLoggedIn
+    window.dispatchEvent(
+      new CustomEvent("jwt-login-login", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {
+          username: this.username,
+          password: value,
+        },
+      })
+    );
+  }
 
-    if (resp.status !== 200) {
-      this.hidePassword = true;
-      this.errorMSG = "Invalid Username or Password";
-      store.appEl.playSound("error");
-    } else {
-      localStorageSet("jwt", resp.jwt);
-      autorun(() => {
-        store.user = {
-          name: this.username,
-        };
-      });
+  // eslint-disable-next-line class-methods-use-this
+  reset() {
+    this.errorMSG = "";
+    this.username = "";
+    this.hidePassword = true;
+  }
+
+  nameChange() {
+    this.username = this.shadowRoot.querySelector("#username").value;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.addEventListener(
+      "jwt-login-login-failed",
+      this._jwtLoginFailed.bind(this)
+    );
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.removeEventListener(
+      "jwt-login-login-failed",
+      this._jwtLoginFailed.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  // implies that it failed to connect via the login credentials
+  _jwtLoginFailed(e) {
+    this.hidePassword = true;
+    this.errorMSG = "Invalid Username or Password";
+    store.appEl.playSound("error");
+  }
+  _jwtLoggedIn(e) {
+    if (e.detail) {
+      store.user = {
+        name: this.username,
+      };
       store.appEl.playSound("success");
-      store.jwt = resp.jwt;
-
       this.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -136,20 +171,7 @@ export class AppHaxSiteLogin extends SimpleColors {
       });
       // just to be safe
       store.appEl.reset();
-      // force return to home page to avoid state issues as we JUST logged in
-      //store.appEl.shadowRoot.querySelector("#home").click();
     }
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  reset() {
-    this.errorMSG = "";
-    this.username = "";
-    this.hidePassword = true;
-  }
-
-  nameChange() {
-    this.username = this.shadowRoot.querySelector("#username").value;
   }
 
   render() {
