@@ -84,6 +84,11 @@ export class AppHaxSearchResults extends SimpleColors {
         app-hax-site-bar {
           margin: 8px 0;
         }
+        .description {
+          max-height: 64px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
         @media (max-width: 800px) {
           app-hax-site-bar {
@@ -143,7 +148,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       }}"
                       site-id="${item.id}"
                     >
-                      <div slot="pre">${item.description}</div>
+                      <div class="description" slot="pre">${item.description}</div>
                     </app-hax-site-details>
                   </app-hax-site-bar>
                 </li>`

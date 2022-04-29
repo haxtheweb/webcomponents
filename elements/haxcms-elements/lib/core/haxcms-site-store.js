@@ -65,6 +65,7 @@ class Store {
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
+      badDevice: observable, // if we have a low performance device
     });
   }
   /**

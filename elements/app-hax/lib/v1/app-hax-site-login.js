@@ -2,11 +2,8 @@ import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import { autorun } from "mobx";
 import { store } from "./AppHaxStore.js";
-import { AppHaxAPI } from "./AppHaxBackendAPI.js";
 export class AppHaxSiteLogin extends SimpleColors {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
@@ -20,6 +17,7 @@ export class AppHaxSiteLogin extends SimpleColors {
     this.password = "";
     this.errorMSG = "Enter User name";
     this.hidePassword = true;
+    this.hasPass = false;
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -30,6 +28,7 @@ export class AppHaxSiteLogin extends SimpleColors {
       password: { type: String },
       errorMSG: { type: String },
       hidePassword: { type: Boolean },
+      hasPass: { type: Boolean }
     };
   }
 
@@ -77,10 +76,50 @@ export class AppHaxSiteLogin extends SimpleColors {
         }
         rpg-character {
           display: block;
-          margin: 10px;
+          margin: 0px;
         }
         .external {
           text-align: center;
+        }
+        input {
+          font-family: "Press Start 2P", sans-serif;
+          font-size: 28px;
+          padding: 8px;
+          border: 4px solid black;
+          border-radius: 8px;
+          width: 75%;
+        }
+        button {
+          font-family: "Press Start 2P", sans-serif;
+          font-size: 30px;
+          padding: 8px;
+          border: 4px solid black;
+          border-radius: 8px;
+          min-width: 50%;
+          margin: 16px;
+        }
+        button:focus,
+        button:hover {
+          background-color: var(--simple-colors-default-theme-green-8);
+          color: var(--simple-colors-default-theme-grey-1);
+          outline: 2px solid var(--simple-colors-default-theme-grey-1);
+          cursor: pointer;
+        }
+        .notyou {
+          padding: 8px;
+        }
+        .visibility-icon {
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-3);
+          border: 2px solid var(--simple-colors-default-theme-grey-12);
+          position: relative;
+          margin-top: -44px;
+          margin-bottom: 20px;
+          margin-left: 70%;
+          z-index: 1;
+          padding: 2px;
+          --simple-icon-width: 26px;
+          --simple-icon-height: 26px;
         }
       `,
     ];
@@ -123,6 +162,7 @@ export class AppHaxSiteLogin extends SimpleColors {
   reset() {
     this.errorMSG = "";
     this.username = "";
+    this.hasPass = false;
     this.hidePassword = true;
   }
 
@@ -174,32 +214,51 @@ export class AppHaxSiteLogin extends SimpleColors {
     }
   }
 
+  passChange(e) {
+    const value = this.shadowRoot.querySelector("#password").value;
+    if (value) {
+      this.hasPass = true;
+    }
+    else {
+      this.hasPass = false;
+    }
+  }
+  toggleViewPass(e) {
+    const password = this.shadowRoot.querySelector("#password");
+    const type = password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+    e.target.icon = type === 'text' ? 'lrn:visible': 'lrn:view-off';
+  }
+
   render() {
     return html`
       <rpg-character seed="${this.username}"></rpg-character>
+      <p id="errorText">${this.errorMSG}</p>
       <div id="inputcontainer">
         ${this.hidePassword
           ? html`<input
                 id="username"
                 type="text"
-                placeholder="abc123@hax.camp"
+                placeholder="user name"
+                aria-label="user name"
                 @input="${this.nameChange}"
               />
-              <button @click=${this.checkUsername}>next</button>`
-          : html`<p>
+              <button ?disabled="${!this.username}" @click=${this.checkUsername}>Next &gt;</button>`
+          : html`<div class="notyou">
                 Hey ${this.username}! <a @click=${this.reset}>not you?</a>
-              </p>
+        </div>
               <input
                 id="password"
                 type="password"
-                placeholder="enter password"
+                placeholder="password"
+                @input="${this.passChange}"
               />
-              <button @click=${this.checkPassword}>Login</button>`}
+              <simple-icon-button-lite icon="lrn:view-off" title="Toggle password display" @click="${this.toggleViewPass}" class="visibility-icon"></simple-icon-button-lite>
+              <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>Login</button>`}
         <div class="external">
           <slot name="externalproviders"></slot>
         </div>
       </div>
-      <p id="errorText">${this.errorMSG}</p>
     `;
   }
 }

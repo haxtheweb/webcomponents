@@ -25,7 +25,7 @@ export class AppHaxUserMenuButton extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: "Press Start 2P", sans-serif;
+        font-family: 'Press Start 2P', sans-serif;
         text-align: center;
         width: 100%;
         --background-color: var(--app-hax-background-color);
@@ -34,6 +34,7 @@ export class AppHaxUserMenuButton extends LitElement {
 
       .menu-button {
         display: block;
+        width: 100%;
         border: 2px solid var(--accent-color);
         margin: 0;
         padding: 8px;
@@ -59,10 +60,10 @@ export class AppHaxUserMenuButton extends LitElement {
 
   render() {
     return html`
-      <div class="menu-button" part="menu-button">
+      <button class="menu-button" part="menu-button">
         <simple-icon-lite class="icon" icon="${this.icon}"></simple-icon-lite
         >${this.label}
-      </div>
+      </button>
     `;
   }
 }

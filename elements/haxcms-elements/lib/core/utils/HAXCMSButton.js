@@ -68,14 +68,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           display: none !important;
         }
         simple-tooltip {
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-duration-in: 200ms;
-          --simple-tooltip-duration-out: 0;
-          --simple-tooltip-border-radius: 0;
-          --simple-tooltip-font-size: 14px;
+          font-family: 'Press Start 2P', sans-serif;
         }
       `,
     ];

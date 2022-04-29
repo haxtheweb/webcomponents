@@ -184,8 +184,10 @@ export class RPGCharacterToast extends SimpleToastEl {
   render() {
     return html` <div class="bubble">
       <span class="bubble leftedge"></span>
-      <span class="bubble mid">${this.text}</span>
-      <slot></slot>
+      <span class="bubble mid">
+        ${this.text}
+        <slot></slot>
+      </span>
       <span class="bubble rightedge"></span>
       <rpg-character
         height="130"

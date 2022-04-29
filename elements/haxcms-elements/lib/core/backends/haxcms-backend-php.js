@@ -70,7 +70,8 @@ class HAXCMSBackendPHP extends LitElement {
       if (
         this.jwt != null &&
         this.jwt != "null" &&
-        this.jphpof this.jwt == "string"
+        this.jwt != "" &&
+        typeof this.jwt == "string"
       ) {
         this.dynamicallyImportEditor();
       } else {

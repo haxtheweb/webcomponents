@@ -57,6 +57,7 @@ export class AppHax extends SimpleColors {
       this.audio = new Audio(
         new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
       );
+      this.audio.volume = 0.2;
       this.audio.play();
     }
   }
@@ -312,7 +313,7 @@ export class AppHax extends SimpleColors {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async logout() {
+  logout() {
     window.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
@@ -321,11 +322,16 @@ export class AppHax extends SimpleColors {
         detail: true,
       })
     );
+    this.closeMenu();
+    this.__logoutUserAction = true;
   }
   // only care about logouts
   _jwtLoggedIn(e) {
-    if (e.detail === false) {
-      this.reset();
+    if (e.detail === false && this.__logoutUserAction) {
+      this.__logoutUserAction = false;
+      setTimeout(() => {
+        this.reset(true);
+      }, 100);
     }
   }
 
@@ -347,18 +353,18 @@ export class AppHax extends SimpleColors {
               cancelable: true,
               composed: true,
               detail: {
-                title: "User login",
+                title: "< login >",
                 elements: { content: p },
                 modal: true,
                 styles: {
-                  "--simple-modal-titlebar-background": "orange",
+                  "--simple-modal-titlebar-background": "transparent",
                   "--simple-modal-titlebar-color": "black",
-                  "--simple-modal-width": "25vw",
+                  "--simple-modal-width": "40vw",
                   "--simple-modal-min-width": "300px",
                   "--simple-modal-z-index": "100000000",
-                  "--simple-modal-height": "40vh",
+                  "--simple-modal-height": "62vh",
                   "--simple-modal-min-height": "400px",
-                  "--simple-modal-titlebar-height": "40px",
+                  "--simple-modal-titlebar-height": "64px",
                 },
               },
             })
@@ -494,7 +500,9 @@ export class AppHax extends SimpleColors {
             padding-top: 64px;
           }
         }
-
+        app-hax-user-menu {
+          z-index:1003;
+        }
         .logout::part(menu-button) {
           background-image: url("${unsafeCSS(logoutBtn)}");
           background-repeat: no-repeat;
@@ -504,6 +512,10 @@ export class AppHax extends SimpleColors {
           border-top: 0px;
           border-bottom: 0px;
           padding: 10px;
+        }
+        app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
+          font-family: 'Press Start 2P', sans-serif;
+          font-size: 12px;
         }
 
         random-word:not(:defined) {
@@ -705,7 +717,7 @@ export class AppHax extends SimpleColors {
               title="Home"
             ></simple-icon-lite>
           </a>
-          <simple-tooltip for="hlogo" position="bottom" slot="left"
+          <simple-tooltip for="hlogo" position="right" slot="left"
             >Home</simple-tooltip
           >
           <app-hax-search-bar
@@ -746,11 +758,11 @@ export class AppHax extends SimpleColors {
                 @click="${this.toggleMenu}"
               ></rpg-character>
             </button>
-            <app-hax-user-menu-button
+            <!-- <app-hax-user-menu-button
               slot="main-menu"
               icon="face"
               label="Account Info"
-            ></app-hax-user-menu-button>
+            ></app-hax-user-menu-button> -->
             <app-hax-user-menu-button
               slot="post-menu"
               class="logout"
@@ -758,12 +770,9 @@ export class AppHax extends SimpleColors {
               @click=${this.logout}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
-
-          ${this.userMenuOpen
-            ? ""
-            : html`<simple-tooltip for="tbchar" position="bottom" slot="right"
+          <simple-tooltip for="tbchar" position="bottom" slot="right"
                 >System menu</simple-tooltip
-              >`}
+              >
         </app-hax-top-bar>
       </header>
       lbh

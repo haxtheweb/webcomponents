@@ -8,13 +8,16 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
-import "./micros/haxcms-button-add.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import '@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js';
-import './haxcms-darkmode-toggle.js';
+import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
+import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
 import 'wired-elements/lib/wired-button.js';
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
+import "./micros/haxcms-button-add.js";
+import './haxcms-darkmode-toggle.js';
 const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
 const ButtonBGLight = new URL('../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
 const ButtonBGDark = new URL('../../../app-hax/lib/assets/images/ButtonBGDM.svg', import.meta.url).href;
@@ -140,6 +143,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
+          font-family: 'Press Start 2P', sans-serif;          
         }
         app-hax-top-bar {
           top: 0;
@@ -185,54 +189,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           vertical-align: middle;
           display: inline-flex;
         }
-        .user-menu {
-          display:none;
-        }
-        .user-menu.open {
-          display: block;
-          top: 49px;
-          right: 0px;
-          position: absolute;
-          border: 3px solid black;
-          background-color: white;
-        }
-        .user-menu.open button {
-          display: block;
-          width: 100%;
-          margin: 0;
-          padding: 8px;
-          font-size: 20px;
-          font-family: 'Press Start 2P', sans-serif;
-          color: black;
-          background-color: white;
-        }
-        .user-menu.open button:hover,
-        .user-menu.open button:active,
-        .user-menu.open button:focus {
-          background-color: black;
-          color: white;
-        }
-        .user-menu .ops-panel {
+        .ops-panel {
           justify-content: space-around;
           display: flex;
-          padding: 8px 16px;
-        }
-
-        :host([dark-mode]) .user-menu.open {
-          background-color: black;
-          color: white;
-          border: 3px solid white;
-        }
-        :host([dark-mode]) .user-menu.open button {
-          background-color: black;
-          color: white;
-        }
-
-        :host([dark-mode]) .user-menu.open button:hover,
-        :host([dark-mode]) .user-menu.open button:active,
-        :host([dark-mode]) .user-menu.open button:focus {
-          background-color: white;
-          color: black;
+          padding: 4px 0px;
         }
 
         .topbar-character {
@@ -256,12 +216,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           display: inline-block;
         }
 
-        .user-menu.open > .logout {
+        .logout::part(menu-button) {
           background-image: url('${unsafeCSS(LogOut)}');
           background-repeat: no-repeat;
-          background-position: center;
+          background-position: center center;
           text-align: center;
+          background-size: cover;
+          border-top: 0px;
+          border-bottom: 0px;
+          padding: 10px;
+          font-family: 'Press Start 2P', sans-serif;
         }
+        app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
+          font-family: 'Press Start 2P', sans-serif;
+          font-size: 12px;
+        }
+        
 
         @media screen and (max-width: 800px) {
           :host([dashboard-opened]) {
@@ -295,17 +265,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       editDetails: "Edit details",
       addPage: "Add page",
       deletePage: "Delete page",
-      editSiteOutline: "Edit site outline",
+      editSiteOutline: "Site outline",
       closeSiteSettings: "Close site settings",
-      editSiteSettings: "Edit site settings",
+      editSiteSettings: "Site settings",
       savePageContent: "Save page content",
       editPageContent: "Edit page content",
-      startNewJourney: "Start New Journey",
+      startNewJourney: "New Journey",
       accountInfo: "Account Info",
       logOut: "Log out",
       systemMenu: "System menu",
     };
-    this.backText = "Back to site list";
+    this.backText = "Site list";
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -316,6 +286,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     if (window.appSettings && window.appSettings.backLink) {
       this.backLink = window.appSettings.backLink;
     }
+    autorun(() => {
+      const badDevice = toJS(store.badDevice);
+      // good device, we can inject font we use
+      if (badDevice === false) {
+        const link = document.createElement("link");
+        link.setAttribute(
+          "href",
+          "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+        );
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("fetchpriority", "low");
+        document.head.appendChild(link);
+      } else if (badDevice === true) {
+        document.body.classList.add("bad-device");
+      }
+    });
     autorun(() => {
       this.darkMode = toJS(store.darkMode);
       this.dark  = this.darkMode;
@@ -337,8 +323,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
-      import("@lrnwebcomponents/simple-modal/simple-modal.js");
-      import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
     }, 0);
   }
 
@@ -453,43 +437,86 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         >
         <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       </span>
-      <span slot="right">
-        <button class="topbar-character" @click="${this.toggleMenu}">
+
+      <app-hax-user-menu slot="right" id="user-menu">
+        <button class="topbar-character" slot="menuButton" id="tbchar" @click="${this.toggleMenu}">
           <rpg-character
             seed="${this.userName}"
             width="68"
             height="68"
             aria-label="${this.t.systemMenu}"
-            title="${this.t.systemMenu}"
             hat="${this.rpgHat}"
           ></rpg-character>
         </button>
-        <div class="user-menu ${this.userMenuOpen ? 'open' : ''}">
-          <div class="ops-panel">
-            <wired-button
-              elevation="1"
-              class="soundToggle"
-              @click="${this.soundToggle}"
-            >
-              <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
-            </wired-button>
-            <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
-          </div>
-          <button @click="${this._manifestButtonTap}">
-            <simple-icon-lite icon="${this.icon}"></simple-icon-lite>${this.__settingsText}</button>
-          <button
+        <simple-tooltip for="tbchar" position="left" slot="menuButton">${this.t.systemMenu}</simple-tooltip>
+        <div slot="pre-menu" class="ops-panel">
+          <wired-button
+            elevation="1"
+            class="soundToggle"
+            @click="${this.soundToggle}"
+          >
+            <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
+          </wired-button>
+          <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
+        </div>
+        <!-- <app-hax-user-menu-button
+          slot="main-menu"
+          icon="face"
+          label="${this.t.accountInfo}"
+        ></app-hax-user-menu-button> -->
+
+        <app-hax-user-menu-button
           id="outlinebutton"
           @click="${this._outlineButtonTap}"
-          ><simple-icon-lite icon="hax:site-map"></simple-icon-lite>${this.t.editSiteOutline}</button>
-          <button>
-          <simple-icon-lite icon="add"></simple-icon-lite>${this.t.startNewJourney}</button>
-          <button>
-          <simple-icon-lite icon="face"></simple-icon-lite>${this.t.accountInfo}</button>
-          <button class="logout">${this.t.logOut}</button>
-        </div>
-      </span>
+          slot="main-menu"
+          icon="hax:site-map"
+          label="${this.t.editSiteOutline}"
+        ></app-hax-user-menu-button>
+
+        <app-hax-user-menu-button
+          @click="${this._manifestButtonTap}"
+          slot="main-menu"
+          icon="${this.icon}"
+          label="${this.__settingsText}"
+        ></app-hax-user-menu-button>
+
+        <app-hax-user-menu-button
+          slot="main-menu"
+          icon="add"
+          label="${this.t.startNewJourney}"
+          @click="${this._addButtonTap}"
+        ></app-hax-user-menu-button>
+        
+        <app-hax-user-menu-button
+          slot="post-menu"
+          class="logout"
+          label="${this.t.logOut}"
+          @click=${this._logout}
+        ></app-hax-user-menu-button>
+      </app-hax-user-menu>
     </app-hax-top-bar>
     `;
+  }
+
+  _logout() {
+    window.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: true,
+      })
+    );
+    this.__logoutUserAction = true;
+  }
+  // only care about logouts
+  _jwtLoggedIn(e) {
+    if (e.detail === false && this.__logoutUserAction) {
+      this.__logoutUserAction = false;
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
   }
 
   /**
@@ -741,6 +768,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
   }
   connectedCallback() {
     super.connectedCallback();
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     autorun((reaction) => {
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
@@ -780,6 +808,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     super.disconnectedCallback();
   }
   _dashboardOpenedChanged(newValue) {
@@ -975,6 +1004,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       },
     });
     window.dispatchEvent(evt);
+  }
+  _addButtonTap() {
+    store.playSound('click');
+    setTimeout(() => {
+      window.location = this.backLink + "createSite-step-1";      
+    }, 100);
   }
   /**
    * toggle state on button tap

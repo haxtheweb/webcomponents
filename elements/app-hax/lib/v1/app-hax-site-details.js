@@ -252,9 +252,17 @@ export class AppHaxSiteDetails extends SimpleColors {
           id: site.id,
         },
       },
-      false,
+      true,
       () => {
-        store.refreshSiteListing();
+        const activeOp = toJS(store.activeSiteOp);
+        // download is weird relative to the others
+        if (activeOp === 'downloadSite') {
+          // cheat to download a file path
+          window.open(store.AppHaxAPI.lastResponse.downloadSite.data.link, "_blank");
+        }
+        else {
+          store.refreshSiteListing();
+        }
       }
     );
     window.dispatchEvent(new CustomEvent("simple-modal-hide"));

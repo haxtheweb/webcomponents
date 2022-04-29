@@ -62,7 +62,7 @@ export class AppHaxBackendAPI extends LitElement {
     this.jwt = e.detail.value;
   }
 
-  async makeCall(call, data = {}, save = false, callback) {
+  async makeCall(call, data = {}, save = false, callback = false) {
     if (this.appSettings && this.appSettings[call]) {
       var urlRequest = `${this.basePath}${this.appSettings[call]}`;
       var options = {
@@ -84,6 +84,39 @@ export class AppHaxBackendAPI extends LitElement {
         (response) => {
           if (response.ok) {
             return response.json();
+          }
+          else if (response.status === 401) {
+          // call not allowed, log out bc unauthorized
+          window.dispatchEvent(
+              new CustomEvent("jwt-login-logout", {
+                composed: true,
+                bubbles: true,
+                cancelable: false,
+                detail: {
+                  redirect: true,
+                },
+              })
+            );
+          }
+          else if (response.status === 403) {
+            // if this was a 403 it should be because of a bad jwt
+            // or out of date one. let's kick off a call to get a new one
+            // hopefully from the timing token, knowing this ALSO could kick
+            // over here.
+            window.dispatchEvent(
+              new CustomEvent("jwt-login-refresh-token", {
+                composed: true,
+                bubbles: true,
+                cancelable: false,
+                detail: {
+                  element: {
+                    obj: this,
+                    callback: "makeCall",
+                    params: [call, data, save, callback],
+                  },
+                },
+              })
+            );  
           }
           return {};
         }

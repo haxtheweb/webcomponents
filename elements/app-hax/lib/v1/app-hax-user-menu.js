@@ -18,7 +18,7 @@ export class AppHaxUserMenu extends LitElement {
 
   static get properties() {
     return {
-      isOpen: { type: Boolean, reflect: true },
+      isOpen: { type: Boolean, reflect: true, attribute: "is-open" },
       icon: { type: String, reflect: true },
     };
   }
@@ -34,8 +34,6 @@ export class AppHaxUserMenu extends LitElement {
       }
 
       .menuToggle {
-        --simple-icon-width: 60px;
-        --simple-icon-height: 60px;
         cursor: pointer;
       }
 
@@ -45,7 +43,7 @@ export class AppHaxUserMenu extends LitElement {
 
       .user-menu.open {
         display: block;
-        top: 48px;
+        top: 50px;
         right: 0px;
         position: absolute;
         border: 1px solid var(--app-hax-accent-color);
@@ -63,9 +61,9 @@ export class AppHaxUserMenu extends LitElement {
         background-color: var(--app-hax-background-color);
       }
 
-      .user-menu.open ::slotted(*:hover),
-      .user-menu.open ::slotted(*:active),
-      .user-menu.open ::slotted(*:focus) {
+      .user-menu.open .main-menu ::slotted(*:hover),
+      .user-menu.open .main-menu ::slotted(*:active),
+      .user-menu.open .main-menu ::slotted(*:focus) {
         background-color: var(--app-hax-background-color-active);
         color: var(--app-hax-background-color);
       }
@@ -91,7 +89,6 @@ export class AppHaxUserMenu extends LitElement {
           class="menuToggle"
           part="menuToggle"
           @click="${this.toggleMenu}"
-          @keydown="${this.toggleMenu}"
         >
           <slot name="menuButton"
             ><simple-icon-lite icon="${this.icon}"></simple-icon-lite

@@ -48,6 +48,8 @@ const HAXCMSRememberRoute = function (SuperClass) {
               `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
             )
           );
+          slot.style.height = "40px";
+          slot.style.display = "block";
           slot.addEventListener("click", this.resumeLastRoute.bind(this));
           slot.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
           const urlParams = new URLSearchParams(window.location.search);
@@ -56,7 +58,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
           if (!format) {
             store.toast(
               this.t.resumeMessage,
-              8000,
+              10000,
               {},
               "capsule",
               null,

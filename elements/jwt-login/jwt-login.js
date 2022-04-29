@@ -154,8 +154,7 @@ class JwtLogin extends LitElement {
       // set the jwt into local storage so we can reference later
       try {
         localStorage.setItem(this.key, JSON.stringify(newValue));
-      } catch (e) {
-      }
+      } catch (e) {}
       this.dispatchEvent(
         new CustomEvent("jwt-token", {
           bubbles: true,
@@ -214,8 +213,7 @@ class JwtLogin extends LitElement {
     // set jwt from local storage bin
     try {
       this.jwt = JSON.parse(localStorage.getItem(this.key));
-    }
-    catch(e) {
+    } catch (e) {
       this.jwt = null;
     }
   }
@@ -242,11 +240,9 @@ class JwtLogin extends LitElement {
     }
     fetch(url, data)
       .then((response) => {
-        console.log(response);
         if (response.ok) {
           return response.json();
         } else {
-
           // prevent infinite loop if we fail on the logout endpoint
           if (
             this.__context == "logout" &&
@@ -279,8 +275,7 @@ class JwtLogin extends LitElement {
             // or nested object
             if (token.jwt) {
               this.loginResponse(token.jwt);
-            }
-            else {
+            } else {
               this.loginResponse(token);
             }
           }
