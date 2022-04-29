@@ -9,8 +9,9 @@ class Store {
     this.badDevice = null;
     this.evaluateBadDevice();
     this.location = null;
-    this.jwt = null; // useful to know when we're logged in
+    this.jwt = localStorageGet("jwt", null); // useful to know when we're logged in
     this.token = null;
+    this.refreshSiteList = true;
     this.createSiteSteps = false;
     this.appSettings = window.appSettings || {};
     // placeholder for when the actual API Backend gets plugged in here
@@ -21,9 +22,16 @@ class Store {
       () => import("@lrnwebcomponents/replace-tag/replace-tag.js"),
       () => import("@lrnwebcomponents/utils/utils.js"),
       () => import("@lrnwebcomponents/grid-plate/grid-plate.js"),
-      () => import("mobx/dist/mobx.esm.js"),
       () => import("@lrnwebcomponents/simple-fields/simple-fields.js"),
+      () => import("mobx/dist/mobx.esm.js"),
       () => import("@lrnwebcomponents/h-a-x/h-a-x.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"),
+      () => import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"),
     ];
     this.appEl = null;
     this.appReady = false;
@@ -32,7 +40,77 @@ class Store {
     this.appMode = "search";
     this.activeSiteOp = null;
     this.activeSiteId = null;
-    this.routes = [];
+    this.baseRoutes = [
+      {
+        path: "createSite-step-1",
+        component: "fake",
+        step: 1,
+        name: "step-1",
+        label: "New Journey",
+        statement: "What sort of journey is it?",
+      },
+      {
+        path: "createSite-step-2",
+        component: "fake",
+        step: 2,
+        name: "step-2",
+        label: "Structure",
+        statement: "How is this organized?",
+      },
+      {
+        path: "createSite-step-3",
+        component: "fake",
+        step: 3,
+        name: "step-3",
+        label: "Theme select",
+        statement: "What your journey feels like?",
+      },
+      {
+        path: "createSite-step-4",
+        component: "fake",
+        step: 4,
+        name: "step-4",
+        label: "Journey Name",
+        statement: "What do you want to call your journey?",
+      },
+      {
+        path: "createSite-step-5",
+        component: "fake",
+        step: 5,
+        name: "step-5",
+        label: "Building..",
+        statement: "Getting your journey ready to launch",
+      },
+      {
+        path: "home",
+        component: "fake",
+        name: "home",
+        label: "Welcome back",
+        statement: "Let's go on a HAX Journey",
+      },
+      {
+        path: "search",
+        component: "fake",
+        name: "search",
+        label: "Search",
+        statement: "Discover active adventures",
+      },
+      {
+        path: "/",
+        component: "fake",
+        name: "welcome",
+        label: "Welcome",
+        statement: "Let's build something awesome!",
+      },
+      {
+        path: "/(.*)",
+        component: "fake",
+        name: "404",
+        label: "404 :[",
+        statement: "it's not you.. it's me",
+      },
+    ];
+    this.routes = this.baseRoutes;
     this.siteReady = false;
     this.manifest = {};
     this.searchTerm = "";
@@ -76,7 +154,13 @@ class Store {
       activeSiteId: observable, // active Item if working w/ sites
       activeSite: computed, // activeSite from ID
       siteReady: observable, // implied that we had a site and then it got built and we can leave app
+      refreshSiteList: observable, // used to force state to refresh sitelisting
     });
+  }
+  refreshSiteListing() {
+    this.refreshSiteList = false;
+    // @todo this causes a reactive feedbackloop in
+    this.refreshSiteList = true;
   }
   // filter to just get data about THIS site
   get activeSite() {

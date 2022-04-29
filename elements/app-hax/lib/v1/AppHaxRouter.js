@@ -46,7 +46,7 @@ export class AppHaxRouter extends HTMLElement {
             component: `fake-${i.id}-e`,
           };
         });
-        store.routes = [...siteItemRoutes].concat(toJS(store.routes));
+        store.routes = [...siteItemRoutes].concat(store.baseRoutes);
       }
     });
   }

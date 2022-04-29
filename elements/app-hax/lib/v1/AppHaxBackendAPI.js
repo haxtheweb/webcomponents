@@ -58,7 +58,7 @@ export class AppHaxBackendAPI extends LitElement {
     this.jwt = e.detail.value;
   }
 
-  async makeCall(call, data = {}, save = false) {
+  async makeCall(call, data = {}, save = false, callback) {
     if (this.appSettings && this.appSettings[call]) {
       var urlRequest = `${this.basePath}${this.appSettings[call]}`;
       var options = {
@@ -88,6 +88,9 @@ export class AppHaxBackendAPI extends LitElement {
       // that way we can get access to the result later on
       if (save) {
         this.lastResponse[call] = response;
+      }
+      if (callback) {
+        callback();
       }
       return response;
     }

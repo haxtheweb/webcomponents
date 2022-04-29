@@ -160,76 +160,6 @@ export class AppHax extends SimpleColors {
       ],
     };
     this.isNewUser = null;
-    this.routes = [
-      {
-        path: "createSite-step-1",
-        component: "fake",
-        step: 1,
-        name: "step-1",
-        label: "New Journey",
-        statement: "What sort of journey is it?",
-      },
-      {
-        path: "createSite-step-2",
-        component: "fake",
-        step: 2,
-        name: "step-2",
-        label: "Structure",
-        statement: "How is this organized?",
-      },
-      {
-        path: "createSite-step-3",
-        component: "fake",
-        step: 3,
-        name: "step-3",
-        label: "Theme select",
-        statement: "What your journey feels like?",
-      },
-      {
-        path: "createSite-step-4",
-        component: "fake",
-        step: 4,
-        name: "step-4",
-        label: "Journey Name",
-        statement: "What do you want to call your journey?",
-      },
-      {
-        path: "createSite-step-5",
-        component: "fake",
-        step: 5,
-        name: "step-5",
-        label: "Building..",
-        statement: "Getting your journey ready to launch",
-      },
-      {
-        path: "home",
-        component: "fake",
-        name: "home",
-        label: "Welcome back",
-        statement: "Let's go on a HAX Journey",
-      },
-      {
-        path: "search",
-        component: "fake",
-        name: "search",
-        label: "Search",
-        statement: "Discover active adventures",
-      },
-      {
-        path: "/",
-        component: "fake",
-        name: "welcome",
-        label: "Welcome",
-        statement: "Let's build something awesome!",
-      },
-      {
-        path: "/(.*)",
-        component: "fake",
-        name: "404",
-        label: "404 :[",
-        statement: "it's not you.. it's me",
-      },
-    ];
     this.basePath = "/";
     this.searchTerm = "";
     this.appMode = "";
@@ -272,8 +202,13 @@ export class AppHax extends SimpleColors {
         if (!location.route.step) {
           // support external site links
           if (location.route.slug) {
-            window.location = location.route.slug;
-          } else if (location.route.name === "404") {
+            this.reset();
+            setTimeout(() => {
+              window.location = location.route.slug;
+            },0);
+          }
+          // page miss is high check too
+          else if (location.route.name === "404") {
             store.createSiteSteps = false;
             store.appMode = "404";
             setTimeout(() => {
@@ -282,7 +217,9 @@ export class AppHax extends SimpleColors {
                 walking: true,
               });
             }, 500);
-          } else if (
+          }
+          // then home / landing page which is default expectation
+          else if (
             location.route.name === "home" ||
             location.route.name === "search"
           ) {
@@ -292,10 +229,9 @@ export class AppHax extends SimpleColors {
             //console.warn(location.route);
           }
         } else {
+          // we have a "step" based operation
           store.appMode = "create";
-          setTimeout(() => {
-            store.createSiteSteps = true;
-          }, 0);
+          store.createSiteSteps = true;
         }
       }
     });
@@ -335,22 +271,13 @@ export class AppHax extends SimpleColors {
       }
     });
 
-    autorun(() => {
-      if (
-        localStorageGet("jwt") !== "" &&
-        localStorageGet("jwt") !== "null" &&
-        localStorageGet("jwt") !== null
-      ) {
-        store.jwt = localStorageGet("jwt");
-      }
-    });
-
     // App is ready and the user is Logged in
     autorun(async () => {
       if (
         toJS(store.appReady) &&
         toJS(store.isLoggedIn) &&
-        toJS(store.appSettings)
+        toJS(store.appSettings) &&
+        toJS(store.refreshSiteList)
       ) {
         // Need this for the auto run when testing new user
         // if we get new data source, trigger a rebuild of the site list
@@ -369,7 +296,6 @@ export class AppHax extends SimpleColors {
       userName: { type: String },
       activeItem: { type: Object },
       soundIcon: { type: String },
-      routes: { type: Array },
       searchTerm: { type: String },
       appMode: { type: String }, // minor context of what we're doing in the app for rendering
       isNewUser: { type: Boolean },
@@ -382,12 +308,10 @@ export class AppHax extends SimpleColors {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  reset(reload = true) {
+  reset(reload = false) {
     // localStorage possible to be blocked by permission of system
     try {
       window.localStorage.removeItem("app-hax-step");
-      window.localStorage.removeItem("app-hax-darkMode");
-      window.localStorage.removeItem("app-hax-soundStatus");
       window.localStorage.removeItem("app-hax-site");
       if (reload) {
         // should always be a base tag for a SPA but just checking
@@ -412,7 +336,7 @@ export class AppHax extends SimpleColors {
       // do nothing, this is a framed in / secure context
     }
     store.jwt = "";
-    this.reset();
+    this.reset(true);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -696,7 +620,7 @@ export class AppHax extends SimpleColors {
         store.AppHaxAPI[propName] = this[propName];
       }
       // settings for the store itself
-      if (["token", "routes"].includes(propName) && this[propName]) {
+      if (["token"].includes(propName) && this[propName]) {
         store[propName] = this[propName];
       }
     });
@@ -765,7 +689,7 @@ export class AppHax extends SimpleColors {
     return html`<app-hax-router></app-hax-router>
       <header>
         <app-hax-top-bar>
-          <a href="home" tabindex="-1" slot="left">
+          <a id="home" href="home" tabindex="-1" slot="left">
             <simple-icon-lite
               id="hlogo"
               src="${haxLogo}"

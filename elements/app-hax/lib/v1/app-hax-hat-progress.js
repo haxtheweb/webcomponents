@@ -74,7 +74,10 @@ export class AppHaxHatProgress extends SimpleColors {
               store.appEl.playSound("click");
             });
             text.addEventListener("click", () => {
-              window.location = createResponse.slug;
+              store.appEl.reset();
+              setTimeout(() => {
+                window.location = createResponse.slug;
+              },0);
             });
             this.shadowRoot
               .querySelector("#progress2")
@@ -99,6 +102,7 @@ export class AppHaxHatProgress extends SimpleColors {
                     hat: "random",
                     walking: true,
                   });
+                  store.appEl.reset();
                   setTimeout(() => {
                     window.location = createResponse.slug;
                   }, 1000);

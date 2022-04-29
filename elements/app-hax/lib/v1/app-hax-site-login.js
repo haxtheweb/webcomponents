@@ -104,7 +104,7 @@ export class AppHaxSiteLogin extends SimpleColors {
     store.appEl.playSound("click2");
     // eslint-disable-next-line prefer-destructuring
     const value = this.shadowRoot.querySelector("#password").value;
-
+    // attempt login and wait for response
     const resp = await AppHaxAPI.makeCall("login", {
       username: this.username,
       password: value,
@@ -131,11 +131,13 @@ export class AppHaxSiteLogin extends SimpleColors {
           detail: {},
         })
       );
-      // Call BackendAPI?
       store.toast(`Welcome ${this.username}! Let's go!`, 5000, {
         hat: "construction",
       });
-      // @todo need to set local storage from here
+      // just to be safe
+      store.appEl.reset();
+      // force return to home page to avoid state issues as we JUST logged in
+      //store.appEl.shadowRoot.querySelector("#home").click();
     }
   }
 

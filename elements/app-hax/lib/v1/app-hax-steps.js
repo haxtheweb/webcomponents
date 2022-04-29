@@ -227,7 +227,7 @@ export class AppHaxSteps extends SimpleColors {
               inline: "nearest",
             });
             /// just for step 4 since it has an input
-            if (location.route.step === 4) {
+            if (location.route.step === 4 && store.stepTest(4) === 4) {
               setTimeout(() => {
                 this.shadowRoot.querySelector("#sitename").focus();
                 this.scrollToThing(`#step-4`, {
