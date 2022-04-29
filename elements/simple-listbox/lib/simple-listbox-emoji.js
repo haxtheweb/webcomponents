@@ -73,7 +73,7 @@ export const SimpleListboxEmoji = [
         value: val,
         tooltip: emoji.description,
         textComparison: emoji.description || emoji.shortcodes && emoji.shortcodes.length > 0 
-        ? [...(emoji.shortcodes || []).map(code=>`:${code}:`), ...(emoji.shortcodes || []), emoji.description ].sort()
+        ? [ ...(emoji.shortcodes || []), emoji.description ].sort()
         : undefined
       }
     })

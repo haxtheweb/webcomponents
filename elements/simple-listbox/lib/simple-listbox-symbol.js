@@ -58,6 +58,7 @@ export const SimpleListboxSymbol = [
         html: symbol.character,
         value: getUnicode(symbol.character),
         tooltip: symbol.character,
+        textComparison: [symbol.character,getUnicode(symbol.character)]
       };
     })
   }

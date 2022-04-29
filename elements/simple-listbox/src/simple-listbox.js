@@ -11,6 +11,14 @@ const SimpleListboxProperties = {
     type: String,
   },
   /**
+   * whether listbox is alwaus open
+   */
+  alwaysExpanded: {
+    type: Boolean,
+    reflect: true,
+    attribute: "always-expanded",
+  },
+  /**
    * whether listbox is positioned above the input
    */
   positionAbove: {
@@ -247,15 +255,20 @@ const SimpleListboxStyles = [
       display: inline-block;
       overflow: hidden;
     }
+    :host([always-expanded]),
     :host([expanded]) {
       overflow: auto;
     }
+    :host([always-expanded]),
     :host([expanded]),
     :host(:hover),
     ul:hover,
     li:hover {
       z-index: 2;
     }
+    :host([always-expanded]:focus-within),
+    :host([always-expanded]) ul[role="listbox"]:focus-within,
+    :host([always-expanded]) li:focus-within,
     :host([expanded]:focus-within),
     :host([expanded]) ul[role="listbox"]:focus-within,
     :host([expanded]) li:focus-within {
@@ -286,6 +299,7 @@ const SimpleListboxStyles = [
     simple-tooltip {
       float: right;
     }
+    :host([always-expanded]) simple-listbox-tabs::part(tablist), 
     :host([expanded]) simple-listbox-tabs::part(tablist) {
       opacity: 1;
       display:flex;
@@ -304,6 +318,7 @@ const SimpleListboxStyles = [
       padding-inline-end: 0;
       transition: 0.5s ease-in-out max-height;
     }
+    :host([always-expanded]) ul[role="listbox"], 
     :host([expanded]) ul[role="listbox"] {
       outline: 1px solid #ddd;
       opacity: 1;
@@ -395,20 +410,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
 
     render(){
       return html`
-        <div id="field">
+        <div id="field" part="field-outer">
           ${this.inputTemplate}
-          ${this.expandButtonTemplate}
+          ${!this.alwaysExpanded ? this.expandButtonTemplate : ''}
         </div>
-        <absolute-position-behavior 
-          for="field" 
-          auto
-          fit-to-visible-bounds 
-          part="listbox-outer"
-          position="${this.positionAbove ? 'top' : 'bottom'}" 
-          position-align="${this.alignRight ? 'end' : 'start'}"
-          ?justify="${this.justify}">
-          ${!this.tabs ? this.listboxTemplate : this.tablistTemplate}
-        </absolute-position-behavior>
+        ${this.absolutePositionTemplate}
       `;
     }
     /**
@@ -442,29 +448,16 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "expanded" && this.absolutePosition) this.absolutePosition.updatePosition();
         if (propName === "value" && this.value !== oldValue)
-          this.fieldValueChanged();
+          this.fieldValueChanged(oldValue,this.value);
         if (propName === "itemsList" || propName === "options" || propName == "demoMode")
           this.filterOptions(this.filter, this.option);
           if(this.tablist && this.tablist.updateTabs) setTimeout(this.tablist.updateTabs(),10);
       });
     }
     /**
-     *gets text for input box
-     *
-     * @readonly
-     */
-    get inputText(){
-      let option = (this.sortedOptions || []).filter(o=>o.value === this.value), 
-        val = option && option[0] ? (option[0].text || option[0].value) : undefined;
-      return typeof val !== typeof undefined ? val : '';
-
-    }
-    /**
      * handles change to input field
      */
-    fieldValueChanged() {
-      if (this.input && this.input.value !== this.inputText)
-        this.input.value = this.inputText;
+    fieldValueChanged(oldValue,newValue) {
       this._fireValueChanged();
     }
 
@@ -472,13 +465,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * fires when value changes
      * @event value-changed
      */
-    _fireValueChanged() {
+    _fireValueChanged(oldValue) {
       this.dispatchEvent(
         new CustomEvent("value-changed", {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this,
+          detail: {...this, oldValue: oldValue},
         })
       );
     }
@@ -664,8 +657,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       if (!this._input)
         this._input = this.field
           ? this.field
-          : this.shadowRoot && this.shadowRoot.querySelector(`input`)
-          ? this.shadowRoot.querySelector(`input`)
+          : this.shadowRoot && this.shadowRoot.querySelector(`input#${this.fieldId}`)
+          ? this.shadowRoot.querySelector(`input#${this.fieldId}`)
           : undefined;
       return this._input;
     }
@@ -689,6 +682,20 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       </slot>
       `;
     }
+
+    get absolutePositionTemplate(){
+      return html`
+        <absolute-position-behavior 
+          for="field" 
+          auto
+          fit-to-visible-bounds 
+          part="listbox-outer"
+          position="${this.positionAbove ? 'top' : 'bottom'}" 
+          position-align="${this.alignRight ? 'end' : 'start'}"
+          ?justify="${this.justify}">
+          ${!this.tabs ? this.listboxTemplate : this.tablistTemplate}
+        </absolute-position-behavior>`;
+    }
   
     /**
      * template for input field
@@ -698,13 +705,13 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     get inputTemplate() {
       return html`
         <input
-          .aria-activedescendant="${this.activeDescendant}"
-          .aria-autocomplete="${this.autocomplete}"
-          .aria-descrbedby="${this.describedBy}"
-          .aria-expanded="${this.expanded}"
+          aria-activedescendant="${this.activeDescendant}"
+          aria-autocomplete="${this.autocomplete}"
+          aria-descrbedby="${this.describedBy}"
+          aria-expanded="${this.expanded ? "true" : "false"}"
           aria-haspopup="true"
-          .aria-invalid="${this.error ? "true" : "false"}"
-          .aria-owns="${this.listboxId}"
+          aria-invalid="${this.error ? "true" : "false"}"
+          aria-owns="${this.listboxId}"
           ?autofocus="${this.autofocus}"
           @blur="${this._onInputBlur}"
           @change="${this._handleFieldChange}"
@@ -722,9 +729,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
           ?required="${this.required}"
           tabindex="0"
           type="text"
-          value="${this.inputText}"
         />
-        <input type="hidden" value="${this.value}">
       `;
     }
     /**
@@ -903,7 +908,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.filter = value;
       this.input.setSelectionRange(this.filter.length, this.filter.length);
       if (this.isList || this.isInline) {
-        this.value = this.filterOptions(this.filter, this.option).value || '';
+        this.value = this.filterOptions(this.filter, this.option).value || this.input.value || '';
       }
     }
     /**
@@ -913,14 +918,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @param {string} flag
      * @memberof SimpleFieldsCombo
      */
-    setOption(option, flag = false) {
+    setOption(option, filter = false, flag = false) {
       if (option) {
         this.option = option;
         this.setActiveDescendant(option);
         this.updateCurrentOption(option);
         if (this.isInline && this.isList) {
-          this.value = option.value;
-          this.input.value = option.value;
+          if(this.value !== option.value) this.value = option.value;
+          this.updateInputText(option,filter);
           if (flag) {
             //set selection at the end of value
             setTimeout(() => {
@@ -939,6 +944,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             }, 0);
           }
         }
+      } else {
+        this.value = this.input.value;
       }
     }
     /**
@@ -1082,11 +1089,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.DOWN:
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.nextOption, !this.isInline);
+              this.setOption(this.nextOption, false, !this.isInline);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.firstOption, !this.isInline);
+                this.setOption(this.firstOption, false, !this.isInline);
               }
             }
             this.setVisualFocusListbox();
@@ -1097,11 +1104,11 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.UP:
           if (this.hasOptions) {
             if (this.listFocus || (this.isInline && this.option)) {
-              this.setOption(this.previousOption, !this.isInline);
+              this.setOption(this.previousOption, false, !this.isInline);
             } else {
               this.open();
               if (!altKey) {
-                this.setOption(this.lastOption, !this.isInline);
+                this.setOption(this.lastOption, false, !this.isInline);
               }
             }
             this.setVisualFocusListbox();
@@ -1222,7 +1229,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
               if (this.isInline || this.listFocus) {
                 this.updateCurrentOption(option);
                 if (this.isInline && isPrintableCharacter(char)) {
-                  this.setOption(option);
+                  this.setOption(option,this.filter);
                 }
               }
             } else {
@@ -1334,6 +1341,30 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       return option;
     }
 
+    _getOptionByValue(val){
+      return this.sortedOptions.filter(o=>!option.group && o.value === val)[0];
+    }
+    _getOptionsByText(text =""){
+      return this.sortedOptions.filter(o=>!option.group && option.textComparison.filter(tc=>tc.indexOf(text) === 0).length > 0);
+    }
+    _getOptionByText(text = ""){
+      return this._getMatchingOptionsByText(text)[0];
+    }
+
+    updateInputText(option=this.option || {},filter=false){
+      if(!this.input) return;
+      let matchFilter = option 
+          && option.textComparison 
+          && Array.isArray(option.textComparison) 
+          //for several suggexted text comparisons, show what matches filter
+          ? option.textComparison.filter(text=>text.indexOf(filter || this.filter) == 0)[0] 
+          //for a single text comparison, just show option text or value
+          : undefined,
+        //if no text comparison match, show option text or value
+        val = matchFilter || option.text || option.value || "";
+      this.input.value = val;
+    }
+
     /**
      * updates current selected option and scrolls to it
      * @param {object} option 
@@ -1366,6 +1397,17 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       this.hoveredOption = undefined;
       //wait for next action and then check if listbox should be closed
       setTimeout(this.close(false), 300);
+    }
+    /**
+     * focus on input
+     * 
+     * @param {boolean} focusEnd whether selection range should be at the end of input value
+     */
+    focus(rangeEnd){
+      if(this.input) {
+        this.input.focus();
+        if(!!rangeEnd) this.input.setSelectionRange(this.input.value.length, this.input.value.length);
+      }
     }
     /**
      * opens listbox if it is not open

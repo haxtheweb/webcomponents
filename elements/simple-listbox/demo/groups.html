@@ -11,7 +11,6 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-listbox.js';
-      import '../lib/simple-listbox-input.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -20,8 +19,8 @@
       <h3>simple-listbox with grouped items</h3>
       <demo-snippet>
         <template>
-          <p><simple-listbox-input demo-mode="groups"></simple-listbox-input></p>
-          <p><simple-listbox-input id="custom"></simple-listbox-input></p>
+          <p><simple-listbox demo-mode="groups"></simple-listbox></p>
+          <p><simple-listbox id="custom"></simple-listbox></p>
           <script>
             document.getElementById('custom').itemsList = [
               {
@@ -54,7 +53,7 @@
       <h3>simple-listbox with tabbed items</h3>
       <demo-snippet>
         <template>
-          <p><simple-listbox-input demo-mode="groups" tabs></simple-listbox-input></p>
+          <p><simple-listbox demo-mode="groups" tabs></simple-listbox></p>
         </template>
       </demo-snippet>
     </div>
