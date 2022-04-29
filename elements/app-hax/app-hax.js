@@ -210,7 +210,7 @@ export class AppHax extends SimpleColors {
       },
       {
         path: "search",
-        component: "fake-search-e",
+        component: "fake",
         name: "search",
         label: "Search",
         statement: "Discover active adventures",
@@ -220,7 +220,7 @@ export class AppHax extends SimpleColors {
         component: "fake",
         name: "welcome",
         label: "Welcome",
-        statement: "Let's build something awesome together!",
+        statement: "Let's build something awesome!",
       },
       {
         path: "/(.*)",
@@ -273,8 +273,11 @@ export class AppHax extends SimpleColors {
       if (location && location.route) {
         // verify this is a step vs other operations
         if (!location.route.step) {
-          console.log(location.route);
-          if (location.route.name === "404") {
+          // support external site links
+          if (location.route.slug) {
+            window.location = location.route.slug;
+          }
+          else if (location.route.name === "404") {
             store.createSiteSteps = false;
             store.appMode = "404";
             setTimeout(() => {
@@ -379,6 +382,7 @@ export class AppHax extends SimpleColors {
       userMenuOpen: { type: Boolean }, // leave here to ensure hat change and sound effects happen
       siteReady: { type: Boolean },
       basePath: { type: String, attribute: "base-path" },
+      token: { type: String},
     };
   }
 
@@ -709,13 +713,16 @@ export class AppHax extends SimpleColors {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    // update the store for step when it changes internal to our step flow
+    // update the store as these get set via entrypoint of the app
+    // but used downstream in calls
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "routes") {
-        store.routes = this.routes;
+      // API backend broker settings
+      if (["basePath"].includes(propName) && this[propName]) {
+        store.AppHaxAPI[propName] = this[propName];
       }
-      if (propName === "basePath" && oldValue !== undefined) {
-        store.AppHaxAPI.basePath = this.basePath;
+      // settings for the store itself
+      if (["token", "routes"].includes(propName) && this[propName]) {
+        store[propName] = this[propName];
       }
     });
   }

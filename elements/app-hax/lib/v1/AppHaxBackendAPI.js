@@ -24,6 +24,9 @@ export class AppHaxBackendAPI extends LitElement {
     autorun(() => {
       this.jwt = toJS(store.jwt);
     });
+    autorun(() => {
+      this.token = toJS(store.token);
+    });
   }
 
   static get properties() {
@@ -32,6 +35,7 @@ export class AppHaxBackendAPI extends LitElement {
       basePath: { type: String, attribute: "base-path" },
       appSettings: { type: Object },
       method: { type: String },
+      token: { type: String }
     };
   }
 
@@ -63,6 +67,9 @@ export class AppHaxBackendAPI extends LitElement {
       if (this.jwt) {
         data.jwt = this.jwt;
       }
+      if (this.jwt) {
+        data.token = this.token;
+      }
       // encode in search params or body of the request
       if (this.method === "GET") {
         urlRequest += "?" + new URLSearchParams(data).toString();
@@ -93,10 +100,26 @@ export class AppHaxBackendAPI extends LitElement {
     }
     // set store refernece to this singleton
     store.AppHaxAPI = this;
+    
     store.newSitePromiseList = [
-      async () => await this.makeCall("createSite", toJS(store.site), true),
+      async () => await this.makeCall("createSite", this.formatSite(), true),
       ...store.newSitePromiseList,
     ];
+  }
+
+  formatSite() {
+    const site = toJS(store.site);
+    return {
+      site: {
+        name: site.name,
+        description: `${site.type} ${site.structure}`,
+        theme: site.theme
+      },
+      theme: {
+        color: "blue",
+        icon: "icons:link"
+      }
+    };
   }
 
   updated(changedProperties) {
@@ -106,6 +129,9 @@ export class AppHaxBackendAPI extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "jwt") {
         store.jwt = this[propName];
+      }
+      if (propName === "token") {
+        store.token = this[propName];
       }
     });
   }

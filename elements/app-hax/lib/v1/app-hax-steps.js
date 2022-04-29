@@ -252,11 +252,11 @@ export class AppHaxSteps extends SimpleColors {
         const activeItem = toJS(store.activeItem);
         if (
           activeItem &&
-          activeItem.id &&
+          activeItem.name &&
           activeItem.step &&
           !this.__overrideProgression
         ) {
-          this.shadowRoot.querySelector("#link-".concat(activeItem.id)).click();
+          this.shadowRoot.querySelector("#link-".concat(activeItem.name)).click();
         }
       }
     });
@@ -704,12 +704,12 @@ export class AppHaxSteps extends SimpleColors {
                     : false}"
                   tabindex="${this.step <= item.step ? "-1" : "0"}"
                   @click="${this.stepLinkClick}"
-                  id="link-${item.id}"
+                  id="link-${item.name}"
                   title="Step ${index + 1}: ${item.label}"
                   data-step="${item.step}"
                   >${index + 1}</a
                 >
-                <simple-tooltip for="link-${item.id}" position="bottom"
+                <simple-tooltip for="link-${item.name}" position="bottom"
                   >Step ${index + 1}: ${item.label}</simple-tooltip
                 >
               </li>`

@@ -35,6 +35,20 @@ export class AppHaxRouter extends HTMLElement {
     autorun(() => {
       this._updateRouter(toJS(store.routes));
     });
+    autorun(() => {
+      const manifest = toJS(store.manifest);
+      if (manifest && manifest.items && manifest.items.length > 0) {
+        const siteItemRoutes = manifest.items.map((i) => {
+          return {
+            path: i.slug,
+            slug: i.slug,
+            name: i.id,
+            component: `fake-${i.id}-e`,
+          };
+        });
+        store.routes = [...siteItemRoutes].concat(toJS(store.routes));
+      }
+    });
   }
 
   connectedCallback() {

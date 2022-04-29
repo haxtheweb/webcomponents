@@ -10,6 +10,7 @@ class Store {
     this.evaluateBadDevice();
     this.location = null;
     this.jwt = null; // useful to know when we're logged in
+    this.token = null;
     this.createSiteSteps = false;
     this.appSettings = window.appSettings || {};
     this.sitesBase = "https://iam.hax.psu.edu";
@@ -61,8 +62,9 @@ class Store {
       site: observable, // information about the site being created
       newSitePromiseList: observable,
       // user related data
-      jwt: observable,
-      manifest: observable,
+      jwt: observable, // JSON web token
+      token: observable, // XSS prevention token
+      manifest: observable, // sites the user has access to
       user: observable, // user object like name after login
       // user preferences
       searchTerm: observable, // current search term for filtering own list of sites
