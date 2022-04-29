@@ -74,9 +74,7 @@ export class AppHaxHatProgress extends SimpleColors {
               store.appEl.playSound("click");
             });
             text.addEventListener("click", () => {
-              window.location = toJS(store.sitesBase).concat(
-                createResponse.slug
-              );
+              window.location = createResponse.slug;
             });
             this.shadowRoot
               .querySelector("#progress2")
@@ -102,9 +100,7 @@ export class AppHaxHatProgress extends SimpleColors {
                     walking: true,
                   });
                   setTimeout(() => {
-                    window.location = toJS(store.sitesBase).concat(
-                      createResponse.slug
-                    );
+                    window.location = createResponse.slug;
                   }, 1000);
                 }, 1000);
               }, 1000);

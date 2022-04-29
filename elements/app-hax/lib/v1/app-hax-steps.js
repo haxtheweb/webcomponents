@@ -256,7 +256,9 @@ export class AppHaxSteps extends SimpleColors {
           activeItem.step &&
           !this.__overrideProgression
         ) {
-          this.shadowRoot.querySelector("#link-".concat(activeItem.name)).click();
+          this.shadowRoot
+            .querySelector("#link-".concat(activeItem.name))
+            .click();
         }
       }
     });

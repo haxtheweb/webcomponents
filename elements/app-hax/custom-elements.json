@@ -14,6 +14,10 @@
           "type": "boolean"
         },
         {
+          "name": "token",
+          "type": "string"
+        },
+        {
           "name": "userMenuOpen",
           "type": "boolean",
           "default": "false"
@@ -40,7 +44,7 @@
         {
           "name": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
         },
         {
           "name": "base-path",
@@ -59,11 +63,6 @@
         },
         {
           "name": "soundIcon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source",
           "type": "string",
           "default": "\"\""
         },
@@ -90,6 +89,11 @@
           "name": "siteReady",
           "attribute": "siteReady",
           "type": "boolean"
+        },
+        {
+          "name": "token",
+          "attribute": "token",
+          "type": "string"
         },
         {
           "name": "userMenuOpen",
@@ -124,7 +128,7 @@
           "name": "routes",
           "attribute": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
         },
         {
           "name": "basePath",
@@ -156,12 +160,6 @@
         },
         {
           "name": "sound"
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string",
-          "default": "\"\""
         },
         {
           "name": "accentColor",
@@ -395,6 +393,10 @@
       "path": "./lib/v1/AppHaxBackendAPI.js",
       "attributes": [
         {
+          "name": "token",
+          "type": "string"
+        },
+        {
           "name": "jwt",
           "type": "string"
         },
@@ -414,6 +416,11 @@
         }
       ],
       "properties": [
+        {
+          "name": "token",
+          "attribute": "token",
+          "type": "string"
+        },
         {
           "name": "jwt",
           "attribute": "jwt",
@@ -1524,6 +1531,10 @@
           "type": "boolean"
         },
         {
+          "name": "token",
+          "type": "string"
+        },
+        {
           "name": "userMenuOpen",
           "type": "boolean",
           "default": "false"
@@ -1550,7 +1561,7 @@
         {
           "name": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
         },
         {
           "name": "base-path",
@@ -1569,11 +1580,6 @@
         },
         {
           "name": "soundIcon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source",
           "type": "string",
           "default": "\"\""
         },
@@ -1600,6 +1606,11 @@
           "name": "siteReady",
           "attribute": "siteReady",
           "type": "boolean"
+        },
+        {
+          "name": "token",
+          "attribute": "token",
+          "type": "string"
         },
         {
           "name": "userMenuOpen",
@@ -1634,7 +1645,7 @@
           "name": "routes",
           "attribute": "routes",
           "type": "array",
-          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake-search-e\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome together!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
+          "default": "[{\"path\":\"createSite-step-1\",\"component\":\"fake\",\"step\":1,\"name\":\"step-1\",\"label\":\"New Journey\",\"statement\":\"What sort of journey is it?\"},{\"path\":\"createSite-step-2\",\"component\":\"fake\",\"step\":2,\"name\":\"step-2\",\"label\":\"Structure\",\"statement\":\"How is this organized?\"},{\"path\":\"createSite-step-3\",\"component\":\"fake\",\"step\":3,\"name\":\"step-3\",\"label\":\"Theme select\",\"statement\":\"What your journey feels like?\"},{\"path\":\"createSite-step-4\",\"component\":\"fake\",\"step\":4,\"name\":\"step-4\",\"label\":\"Journey Name\",\"statement\":\"What do you want to call your journey?\"},{\"path\":\"createSite-step-5\",\"component\":\"fake\",\"step\":5,\"name\":\"step-5\",\"label\":\"Building..\",\"statement\":\"Getting your journey ready to launch\"},{\"path\":\"home\",\"component\":\"fake\",\"name\":\"home\",\"label\":\"Welcome back\",\"statement\":\"Let's go on a HAX Journey\"},{\"path\":\"search\",\"component\":\"fake\",\"name\":\"search\",\"label\":\"Search\",\"statement\":\"Discover active adventures\"},{\"path\":\"/\",\"component\":\"fake\",\"name\":\"welcome\",\"label\":\"Welcome\",\"statement\":\"Let's build something awesome!\"},{\"path\":\"/(.*)\",\"component\":\"fake\",\"name\":\"404\",\"label\":\"404 :[\",\"statement\":\"it's not you.. it's me\"}]"
         },
         {
           "name": "basePath",
@@ -1666,12 +1677,6 @@
         },
         {
           "name": "sound"
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string",
-          "default": "\"\""
         },
         {
           "name": "accentColor",

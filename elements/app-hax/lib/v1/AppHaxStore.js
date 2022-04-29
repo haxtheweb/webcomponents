@@ -13,7 +13,6 @@ class Store {
     this.token = null;
     this.createSiteSteps = false;
     this.appSettings = window.appSettings || {};
-    this.sitesBase = "https://iam.hax.psu.edu";
     // placeholder for when the actual API Backend gets plugged in here
     this.AppHaxAPI = {};
     this.newSitePromiseList = [
@@ -52,7 +51,6 @@ class Store {
       // internal state for routing
       location: observable.ref, // router location in url
       routes: observable, // routes that are valid
-      sitesBase: observable, // path of sites relative to here
       // internal state requirements
       appSettings: observable, // endpoint connections to the backend app
       appReady: observable, // all ready to paint

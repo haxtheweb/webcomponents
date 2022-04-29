@@ -236,11 +236,8 @@ export class AppHax extends SimpleColors {
     this.soundIcon = "";
     // full on store that does the heavy lifting
     this.store = store;
-    // source for reading in the store if different than default site.json
-    this.source = "";
     // centralized sound source to not flood sounds when playing
     this.sound = new Audio();
-    this.source = new URL("../demo/sites.json", import.meta.url).href;
     // @todo need this from app deploy itself
     autorun(() => {
       this.isNewUser = toJS(store.isNewUser);
@@ -276,8 +273,7 @@ export class AppHax extends SimpleColors {
           // support external site links
           if (location.route.slug) {
             window.location = location.route.slug;
-          }
-          else if (location.route.name === "404") {
+          } else if (location.route.name === "404") {
             store.createSiteSteps = false;
             store.appMode = "404";
             setTimeout(() => {
@@ -370,7 +366,6 @@ export class AppHax extends SimpleColors {
     return {
       ...super.properties,
       courses: { type: Array },
-      source: { type: String },
       userName: { type: String },
       activeItem: { type: Object },
       soundIcon: { type: String },
@@ -382,28 +377,8 @@ export class AppHax extends SimpleColors {
       userMenuOpen: { type: Boolean }, // leave here to ensure hat change and sound effects happen
       siteReady: { type: Boolean },
       basePath: { type: String, attribute: "base-path" },
-      token: { type: String},
+      token: { type: String },
     };
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  getData() {
-    fetch(this.source)
-      .then((response) => response.json())
-      .then((data) => {
-        this.courses = [];
-        data.items.forEach((item) => {
-          const courseInfo = {
-            title: item.title,
-            description: item.description,
-            link: toJS(store.sitesBase).concat(item.slug),
-            icon: item.metadata.theme.variables
-              ? item.metadata.theme.variables.icon
-              : "",
-          };
-          this.courses.push(courseInfo);
-        });
-      });
   }
 
   // eslint-disable-next-line class-methods-use-this

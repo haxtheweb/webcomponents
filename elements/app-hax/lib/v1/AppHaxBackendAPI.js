@@ -35,7 +35,7 @@ export class AppHaxBackendAPI extends LitElement {
       basePath: { type: String, attribute: "base-path" },
       appSettings: { type: Object },
       method: { type: String },
-      token: { type: String }
+      token: { type: String },
     };
   }
 
@@ -100,7 +100,7 @@ export class AppHaxBackendAPI extends LitElement {
     }
     // set store refernece to this singleton
     store.AppHaxAPI = this;
-    
+
     store.newSitePromiseList = [
       async () => await this.makeCall("createSite", this.formatSite(), true),
       ...store.newSitePromiseList,
@@ -113,12 +113,12 @@ export class AppHaxBackendAPI extends LitElement {
       site: {
         name: site.name,
         description: `${site.type} ${site.structure}`,
-        theme: site.theme
+        theme: site.theme,
       },
       theme: {
         color: "blue",
-        icon: "icons:link"
-      }
+        icon: "icons:link",
+      },
     };
   }
 
