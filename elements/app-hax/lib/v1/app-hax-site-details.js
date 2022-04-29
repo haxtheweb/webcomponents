@@ -186,7 +186,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         );
         div.appendChild(
           document.createTextNode(
-            `Are you sure you want to ${op} ${site.metadata.site.name}?`
+            `Are you sure you want to ${op.replace('Site','')} ${site.metadata.site.name}?`
           )
         );
         if (op === "deleteSite") {
@@ -201,10 +201,13 @@ export class AppHaxSiteDetails extends SimpleColors {
         const bcontainer = document.createElement("div");
         const b = document.createElement("button");
         b.innerText = "Confirm";
+        b.classList.add("hax-modal-btn");
         b.addEventListener("click", this.confirmOperation.bind(this));
         bcontainer.appendChild(b);
         const b2 = document.createElement("button");
         b2.innerText = "Cancel";
+        b2.classList.add("hax-modal-btn");
+        b2.classList.add("cancel");
         b2.addEventListener("click", this.cancelOperation.bind(this));
         bcontainer.appendChild(b2);
         this.dispatchEvent(
@@ -219,12 +222,12 @@ export class AppHaxSiteDetails extends SimpleColors {
               styles: {
                 "--simple-modal-titlebar-background": "orange",
                 "--simple-modal-titlebar-color": "black",
-                "--simple-modal-width": "20vw",
+                "--simple-modal-width": "30vw",
                 "--simple-modal-min-width": "300px",
                 "--simple-modal-z-index": "100000000",
                 "--simple-modal-height": "20vh",
-                "--simple-modal-min-height": "400px",
-                "--simple-modal-titlebar-height": "60px",
+                "--simple-modal-min-height": "300px",
+                "--simple-modal-titlebar-height": "80px",
               },
             },
           })
