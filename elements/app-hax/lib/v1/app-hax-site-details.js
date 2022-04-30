@@ -186,7 +186,9 @@ export class AppHaxSiteDetails extends SimpleColors {
         );
         div.appendChild(
           document.createTextNode(
-            `Are you sure you want to ${op.replace('Site','')} ${site.metadata.site.name}?`
+            `Are you sure you want to ${op.replace("Site", "")} ${
+              site.metadata.site.name
+            }?`
           )
         );
         if (op === "deleteSite") {
@@ -259,11 +261,13 @@ export class AppHaxSiteDetails extends SimpleColors {
       () => {
         const activeOp = toJS(store.activeSiteOp);
         // download is weird relative to the others
-        if (activeOp === 'downloadSite') {
+        if (activeOp === "downloadSite") {
           // cheat to download a file path
-          window.open(store.AppHaxAPI.lastResponse.downloadSite.data.link, "_blank");
-        }
-        else {
+          window.open(
+            store.AppHaxAPI.lastResponse.downloadSite.data.link,
+            "_blank"
+          );
+        } else {
           store.refreshSiteListing();
         }
       }

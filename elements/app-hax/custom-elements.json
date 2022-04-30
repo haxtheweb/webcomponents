@@ -440,6 +440,14 @@
           "type": "object",
           "default": "{}"
         }
+      ],
+      "events": [
+        {
+          "name": "jwt-login-logout"
+        },
+        {
+          "name": "jwt-login-refresh-token"
+        }
       ]
     },
     {
@@ -1042,6 +1050,11 @@
           "default": "true"
         },
         {
+          "name": "hasPass",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -1078,6 +1091,12 @@
           "attribute": "hidePassword",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "hasPass",
+          "attribute": "hasPass",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
@@ -1405,7 +1424,7 @@
       "path": "./lib/v1/app-hax-user-menu.js",
       "attributes": [
         {
-          "name": "isOpen",
+          "name": "is-open",
           "type": "boolean",
           "default": "false"
         },
@@ -1418,7 +1437,7 @@
       "properties": [
         {
           "name": "isOpen",
-          "attribute": "isOpen",
+          "attribute": "is-open",
           "type": "boolean",
           "default": "false"
         },

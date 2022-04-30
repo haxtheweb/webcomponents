@@ -25,7 +25,7 @@ export class AppHaxUserMenuButton extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: 'Press Start 2P', sans-serif;
+        font-family: "Press Start 2P", sans-serif;
         text-align: center;
         width: 100%;
         --background-color: var(--app-hax-background-color);

@@ -28,7 +28,7 @@ export class AppHaxSiteLogin extends SimpleColors {
       password: { type: String },
       errorMSG: { type: String },
       hidePassword: { type: Boolean },
-      hasPass: { type: Boolean }
+      hasPass: { type: Boolean },
     };
   }
 
@@ -218,16 +218,16 @@ export class AppHaxSiteLogin extends SimpleColors {
     const value = this.shadowRoot.querySelector("#password").value;
     if (value) {
       this.hasPass = true;
-    }
-    else {
+    } else {
       this.hasPass = false;
     }
   }
   toggleViewPass(e) {
     const password = this.shadowRoot.querySelector("#password");
-    const type = password.getAttribute("type") === "password" ? "text" : "password";
+    const type =
+      password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
-    e.target.icon = type === 'text' ? 'lrn:visible': 'lrn:view-off';
+    e.target.icon = type === "text" ? "lrn:visible" : "lrn:view-off";
   }
 
   render() {
@@ -243,18 +243,30 @@ export class AppHaxSiteLogin extends SimpleColors {
                 aria-label="user name"
                 @input="${this.nameChange}"
               />
-              <button ?disabled="${!this.username}" @click=${this.checkUsername}>Next &gt;</button>`
+              <button
+                ?disabled="${!this.username}"
+                @click=${this.checkUsername}
+              >
+                Next &gt;
+              </button>`
           : html`<div class="notyou">
                 Hey ${this.username}! <a @click=${this.reset}>not you?</a>
-        </div>
+              </div>
               <input
                 id="password"
                 type="password"
                 placeholder="password"
                 @input="${this.passChange}"
               />
-              <simple-icon-button-lite icon="lrn:view-off" title="Toggle password display" @click="${this.toggleViewPass}" class="visibility-icon"></simple-icon-button-lite>
-              <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>Login</button>`}
+              <simple-icon-button-lite
+                icon="lrn:view-off"
+                title="Toggle password display"
+                @click="${this.toggleViewPass}"
+                class="visibility-icon"
+              ></simple-icon-button-lite>
+              <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>
+                Login
+              </button>`}
         <div class="external">
           <slot name="externalproviders"></slot>
         </div>

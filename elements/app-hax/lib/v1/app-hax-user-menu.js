@@ -85,11 +85,7 @@ export class AppHaxUserMenu extends LitElement {
   render() {
     return html`
       <div class="entireComponent">
-        <div
-          class="menuToggle"
-          part="menuToggle"
-          @click="${this.toggleMenu}"
-        >
+        <div class="menuToggle" part="menuToggle" @click="${this.toggleMenu}">
           <slot name="menuButton"
             ><simple-icon-lite icon="${this.icon}"></simple-icon-lite
           ></slot>

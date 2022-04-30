@@ -84,10 +84,9 @@ export class AppHaxBackendAPI extends LitElement {
         (response) => {
           if (response.ok) {
             return response.json();
-          }
-          else if (response.status === 401) {
-          // call not allowed, log out bc unauthorized
-          window.dispatchEvent(
+          } else if (response.status === 401) {
+            // call not allowed, log out bc unauthorized
+            window.dispatchEvent(
               new CustomEvent("jwt-login-logout", {
                 composed: true,
                 bubbles: true,
@@ -97,8 +96,7 @@ export class AppHaxBackendAPI extends LitElement {
                 },
               })
             );
-          }
-          else if (response.status === 403) {
+          } else if (response.status === 403) {
             // if this was a 403 it should be because of a bad jwt
             // or out of date one. let's kick off a call to get a new one
             // hopefully from the timing token, knowing this ALSO could kick
@@ -116,7 +114,7 @@ export class AppHaxBackendAPI extends LitElement {
                   },
                 },
               })
-            );  
+            );
           }
           return {};
         }

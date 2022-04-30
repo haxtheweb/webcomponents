@@ -501,7 +501,7 @@ export class AppHax extends SimpleColors {
           }
         }
         app-hax-user-menu {
-          z-index:1003;
+          z-index: 1003;
         }
         .logout::part(menu-button) {
           background-image: url("${unsafeCSS(logoutBtn)}");
@@ -514,7 +514,7 @@ export class AppHax extends SimpleColors {
           padding: 10px;
         }
         app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
         }
 
@@ -708,6 +708,7 @@ export class AppHax extends SimpleColors {
     return html`<app-hax-router></app-hax-router>
       <header>
         <app-hax-top-bar>
+          <slot name="app-header-pre"></slot>
           <a id="home" href="home" tabindex="-1" slot="left">
             <simple-icon-lite
               id="hlogo"
@@ -771,8 +772,8 @@ export class AppHax extends SimpleColors {
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
           <simple-tooltip for="tbchar" position="bottom" slot="right"
-                >System menu</simple-tooltip
-              >
+            >System menu</simple-tooltip
+          >
         </app-hax-top-bar>
       </header>
       lbh

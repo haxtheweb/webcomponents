@@ -148,7 +148,9 @@ export class AppHaxSearchResults extends SimpleColors {
                       }}"
                       site-id="${item.id}"
                     >
-                      <div class="description" slot="pre">${item.description}</div>
+                      <div class="description" slot="pre">
+                        ${item.description}
+                      </div>
                     </app-hax-site-details>
                   </app-hax-site-bar>
                 </li>`
