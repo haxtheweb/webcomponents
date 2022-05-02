@@ -57,7 +57,7 @@ export class AppHax extends SimpleColors {
       this.audio = new Audio(
         new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
       );
-      this.audio.volume = 0.2;
+      this.audio.volume = 0.5;
       this.audio.play();
     }
   }
