@@ -792,9 +792,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               @click=${this.logout}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
-          <simple-tooltip for="tbchar" position="bottom" slot="right"
-            >System menu</simple-tooltip
-          >
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
