@@ -809,7 +809,7 @@ export class AppHax extends SimpleColors {
         </simple-icon-lite>
         <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
         <section class="content">${this.appBody(this.appMode)}</section>
- </confetti-container>
+        </confetti-container>
       </main>`;
   }
 
