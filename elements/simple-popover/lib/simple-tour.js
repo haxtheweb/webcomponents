@@ -158,26 +158,22 @@ class SimpleTour extends LitElement {
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
         label="Prev"
+        title="Prev"
         icon="arrow-back"
         show-text-label
       >
       </simple-icon-button-lite>
-      <simple-tooltip for="prev" position="top" slot="nav">
-        Previous Item
-      </simple-tooltip>
       <simple-icon-button-lite
         id="next"
         slot="nav"
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
+        title="Next"
         label="Next"
         icon="arrow-forward"
         show-text-label
       >
-      </simple-icon-button-lite>
-      <simple-tooltip for="next" position="top" slot="nav">
-        Next Item
-      </simple-tooltip>`;
+      </simple-icon-button-lite>`;
   }
   /**
    * Simple utility to do nice scrolling or only scroll if we can't see it
