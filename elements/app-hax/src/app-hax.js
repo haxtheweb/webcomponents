@@ -858,7 +858,6 @@ export class AppHax extends SimpleColors {
   // eslint-disable-next-line class-methods-use-this
   templateCreate() {
     return html`<app-hax-steps
-      id="confetti"
       @promise-progress-finished="${this.siteReadyToGo}"
     ></app-hax-steps>`;
   }
