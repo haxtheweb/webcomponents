@@ -782,8 +782,8 @@ export class AppHax extends SimpleColors {
           <app-hax-label>
             ${this.activeItem && !this.siteReady
               ? html`
-                  <h1>${this.activeItem.label}</h1>
-                  <div slot="subtitle">${this.activeItem.statement}</div>
+                  <h1>${this.activeItem && this.activeItem.label ? this.activeItem.label.replace(':structure', toJS(store.site.structure)) : ''}</h1>
+                  <div slot="subtitle">${this.activeItem && this.activeItem.statement ? this.activeItem.statement.replace(':structure', toJS(store.site.structure)) : ''}</div>
                 `
               : ``}
             ${this.activeItem && this.siteReady

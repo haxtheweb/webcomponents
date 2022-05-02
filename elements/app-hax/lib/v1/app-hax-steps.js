@@ -417,7 +417,7 @@ export class AppHaxSteps extends SimpleColors {
         }
         #sitename {
           font-family: "Press Start 2P", sans-serif;
-          font-size: 40px;
+          font-size: 32px;
           padding: 8px;
           width: 40vw;
         }
@@ -438,7 +438,7 @@ export class AppHaxSteps extends SimpleColors {
         }
         app-hax-site-button {
           justify-content: center;
-          --app-hax-site-button-width: 30vw;
+          --app-hax-site-button-width: 35vw;
           --app-hax-site-button-min-width: 240px;
         }
         app-hax-hat-progress {
@@ -783,7 +783,7 @@ export class AppHaxSteps extends SimpleColors {
                 @input="${this.typeKey}"
                 @keydown="${this.keydown}"
                 maxlength="30"
-                placeholder="journey name.."
+                placeholder="${toJS(store.site.structure)} name.."
                 tabindex="${this.step !== 4 ? "-1" : ""}" />
               <app-hax-site-button
                   class="sitenamebtn"
