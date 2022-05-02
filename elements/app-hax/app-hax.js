@@ -778,38 +778,52 @@ export class AppHax extends SimpleColors {
       </header>
       lbh
       <main @click="${this.closeMenu}">
-      <confetti-container id="confetti">
-        <div class="label">
-          <app-hax-label>
-            ${this.activeItem && !this.siteReady
-              ? html`
-                  <h1>${this.activeItem && this.activeItem.label ? this.activeItem.label.replace(':structure', toJS(store.site.structure)) : ''}</h1>
-                  <div slot="subtitle">${this.activeItem && this.activeItem.statement ? this.activeItem.statement.replace(':structure', toJS(store.site.structure)) : ''}</div>
-                `
-              : ``}
-            ${this.activeItem && this.siteReady
-              ? html`
-                  <h1>${toJS(store.site.name)}</h1>
-                  <div slot="subtitle">
-                    Is all ready, are you ready to build?
-                  </div>
-                `
-              : ``}
-          </app-hax-label>
-        </div>
-        <random-word
-          key="${this.isNewUser ? `new` : `return`}"
-          .phrases="${this.phrases}"
-          @click="${this.getNewWord}"
-        ></random-word>
-        <simple-icon-lite
-          id="helpbtn"
-          @click="${this.helpClick}"
-          src="${helpBtn}"
-        >
-        </simple-icon-lite>
-        <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
-        <section class="content">${this.appBody(this.appMode)}</section>
+        <confetti-container id="confetti">
+          <div class="label">
+            <app-hax-label>
+              ${this.activeItem && !this.siteReady
+                ? html`
+                    <h1>
+                      ${this.activeItem && this.activeItem.label
+                        ? this.activeItem.label.replace(
+                            ":structure",
+                            toJS(store.site.structure)
+                          )
+                        : ""}
+                    </h1>
+                    <div slot="subtitle">
+                      ${this.activeItem && this.activeItem.statement
+                        ? this.activeItem.statement.replace(
+                            ":structure",
+                            toJS(store.site.structure)
+                          )
+                        : ""}
+                    </div>
+                  `
+                : ``}
+              ${this.activeItem && this.siteReady
+                ? html`
+                    <h1>${toJS(store.site.name)}</h1>
+                    <div slot="subtitle">
+                      Is all ready, are you ready to build?
+                    </div>
+                  `
+                : ``}
+            </app-hax-label>
+          </div>
+          <random-word
+            key="${this.isNewUser ? `new` : `return`}"
+            .phrases="${this.phrases}"
+            @click="${this.getNewWord}"
+          ></random-word>
+          <simple-icon-lite
+            id="helpbtn"
+            @click="${this.helpClick}"
+            src="${helpBtn}"
+          >
+          </simple-icon-lite>
+          <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
+          <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
   }
@@ -858,20 +872,19 @@ export class AppHax extends SimpleColors {
   // eslint-disable-next-line class-methods-use-this
   templateCreate() {
     return html`<app-hax-steps
-      id="confetti"
       @promise-progress-finished="${this.siteReadyToGo}"
     ></app-hax-steps>`;
   }
 
   siteReadyToGo(e) {
     console.log("Let's show confetti");
-    import(
-      "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
-    ).then((module) => {
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
-      }, 0);
-    });
+    import("@lrnwebcomponents/multiple-choice/lib/confetti-container.js").then(
+      (module) => {
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+        }, 0);
+      }
+    );
     if (e.detail) {
       store.siteReady = true;
     }
