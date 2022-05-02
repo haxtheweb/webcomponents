@@ -777,7 +777,7 @@ export class AppHax extends SimpleColors {
         </app-hax-top-bar>
       </header>
       lbh
-      <main @click="${this.closeMenu}">
+      <main @click="${this.closeMenu}" id="confetti">
         <div class="label">
           <app-hax-label>
             ${this.activeItem && !this.siteReady
@@ -856,11 +856,20 @@ export class AppHax extends SimpleColors {
   // eslint-disable-next-line class-methods-use-this
   templateCreate() {
     return html`<app-hax-steps
+      id="confetti"
       @promise-progress-finished="${this.siteReadyToGo}"
     ></app-hax-steps>`;
   }
 
   siteReadyToGo(e) {
+    console.log("Let's show confetti")
+    import(
+      "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
+    ).then((module) => {
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+      }, 0);
+    });
     if (e.detail) {
       store.siteReady = true;
     }
