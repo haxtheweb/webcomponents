@@ -5,6 +5,8 @@
 import "./rich-text-editor-highlight.js";
 import "./rich-text-editor-clipboard.js";
 import "./rich-text-editor-source.js";
+import "./rich-text-editor-listbox.js";
+
 
 export const RichTextEditorRangeBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -681,7 +683,32 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         target.getAttribute("contenteditable") != "true"
       )
         return;
-      if (command === "cancel") {
+      if(command === "openListbox") {
+        if(!this.__listbox) {
+          this.__listbox = document.createElement('rich-text-editor-listbox');
+        }
+        let settings = JSON.parse(commandVal || {});
+        this.__highlight.wrap(range);
+        this.__highlight.parentElement.insertBefore(this.__listbox,this.__highlight);
+        this.__highlight.unwrap(range);
+        Object.keys(settings).forEach(setting=>{
+          if(setting !== "input") {
+            this.__listbox[setting] = settings[setting];
+          } else {
+            this.__listbox.value = settings[setting];
+          }
+        });
+        this.range.setEndBefore(this.__listbox);
+        console.log(settings.input,this.__listbox.value,this.__highlight.innerHTML);
+      } else if(command === "closeListbox") {
+        if(this.__listbox) {
+          this.__highlight.selectNode(this.__listbox);
+          this.__highlight.innerHTML = this.__listbox.value;
+          if(this.__listbox) this.__listbox.remove();
+          this.__listbox = undefined;
+        }
+        console.log('close',this.__listbox);
+      } else if (command === "cancel") {
         //custom cancel source command
         toolbar.revertTarget(target);
         toolbar.close(target);

@@ -1,10 +1,13 @@
 import { SimpleEmojiList } from "@lrnwebcomponents/simple-emoji-list/simple-emoji-list.js";
+import "@lrnwebcomponents/simple-listbox/simple-listbox.js"; 
+import { SimpleListboxEmoji } from '@lrnwebcomponents/simple-listbox/lib/simple-listbox-emoji.js';
 
 let emoji = SimpleEmojiList 
     ? SimpleEmojiList 
     : [],  
   obj = {},
-  patterns = [];
+  patterns = [],
+  lastChars = {};
   emoji.forEach((emoji) => {
     let shortcodes = emoji.shortcodes || [ emoji.description || emoji.character || "zzz"];
     shortcodes.forEach(emojidesc => {
@@ -35,10 +38,29 @@ let emoji = SimpleEmojiList
           examples: [`:${emojimd}:`]
         });
       }
-
     });
   });
-
+  console.log(SimpleListboxEmoji);
+  //adds emoji listbox when ":" prefix is entered
+  patterns.push({
+    name: "emoji listbox open",
+    match: new RegExp(`(?:^|\\W:)([a-zA-z0-9_+])*`,'g'),
+    command: "openListbox",
+    settings: {
+      itemsList: SimpleListboxEmoji,
+      grid: true,
+      iconsOnly: true,
+      tabs: true,
+    },
+    lastChars: [":"],
+  });
+  //closes emoji listbox when ":" suffix is entered
+  patterns.push({
+    name: "emoji listbox close",
+    match: new RegExp(`(?:^|\\W):[\\w_]+[\\s\\t\\n:]`),
+    command: "closeListbox",
+    lastChars: [":","enter","space"],
+  });
 /**
  * rich-text-editor regex patterns 
  * and documentation for emoji

@@ -1162,7 +1162,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             ? [""]
             : regex.lastChars;
         keys.forEach((key) => {
-          if (!regex.replace || !regex.match) return;
+          if (!regex.replace || !regex.match || !!regex.command) return;
           let char = key == "" ? "any" : key == " " ? "space" : key;
           regexes[char] = regexes[char] || [];
           regexes[char].push(regex);
@@ -1184,12 +1184,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             ? [""]
             : regex.lastChars;
         keys.forEach((key) => {
-          if (!!regex.replace || !regex.match) return;
+          if (!regex.command) return;
           let char = key == "" ? "any" : key == " " ? "space" : key;
           regexes[char] = regexes[char] || [];
           regexes[char].push(regex);
         });
       });
+      console.log(regexes);
       return regexes;
     }
 
@@ -1975,8 +1976,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         //run the matching command
         if (match && match[0]) {
           let commandVal = regex.commandVal,
-            isToggled = (range.commonAncestorContainer.tagName || '').toLowerCase() == commandVal.toLowerCase() 
+            isToggled = typeof commandVal == typeof undefined
+              ? undefined 
+              : (range.commonAncestorContainer.tagName || '').toLowerCase() == commandVal.toLowerCase() 
               || range.commonAncestorContainer.closest(commandVal);
+        console.log(regex,match,ignoreMatches,!match || match[0],!match || match[1],this.debugRange(),lastKeyEntered);
           if(lastKeyEntered == "Enter") {
             range.setStartBefore(prev);
             prev.innerHTML = searchNodeClone.innerHTML.replace(regex.match,'');
@@ -1985,108 +1989,122 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             span = range.commonAncestorContainer ? range.commonAncestorContainer.querySelector(`#${id}`) : false;
             span.parentElement.remove();
           }
-          if (
-            regex.command === "formatBlock" && isToggled
-          ) {
-            commandVal = "p";
-          } else if (
-            regex.command === "wrapRange" && isToggled
-          ) {
-            commandVal = "span";
+            console.log(search,regex.match,regex.replace,lastKeyEntered);
+          if(!this.__listbox) {
+            console.log('no list yet');
+            if (
+              regex.command === "formatBlock" && isToggled
+            ) {
+              commandVal = "p";
+            } else if (
+              regex.command === "wrapRange" && isToggled
+            ) {
+              commandVal = "span";
+            } else if(regex.command == "openListbox") {
+              let settings = {...regex.settings, "input": lastKeyEntered};
+              commandVal = JSON.stringify(settings);
+            }
+            this._handleCommand(regex.command, commandVal, this.getRange());
+            range = this.getRange();
+            found = true;
+          } else {
+            console.log('list');
+            this.__listbox.value = search.replace(regex.match,regex.replace)+lastKeyEntered;
           }
-          this._handleCommand(regex.command, commandVal, this.getRange());
-          range = this.getRange();
-          found = true;
         }
       });
-      //handle multline patterns, usch as lists and headings
-      if(!found && lastKeyEntered == "Enter" && range.commonAncestorContainer.previousElementSibling){
-        let current = range.commonAncestorContainer,
-          prev = current ? current.previousElementSibling : false; 
-          searchNodeClone = prev ? prev.cloneNode(true) : false;
-          span = searchNodeClone ? searchNodeClone.querySelector(`#${id}`) : false;
-          if(span) span.remove();
-          let search = searchNodeClone ? searchNodeClone.innerHTML.replace(/(&nbsp;)+/,' ') : false,
-          multiline = search ? this.replacementsByLastKey["enter"] : [];
-          if(searchNodeClone) searchNodeClone.remove();
-        multiline.forEach((regex)=>{
-          if(found) return;
-          match = checkMatch(regex, node, search);
-          if(match) {
-            found = true;
-            let replacement = search.replace(regex.match,regex.replace),
-              tags = /^(<([-a-zA-Z0-9]+)[^>]*>)(<([-a-zA-Z0-9]+)[^>]*>)(.*)(<\/\4>)(<\/\2>)$/;
-            //for nested tags like with lists next lin should be same as nested tag
-            if(replacement.match(tags)) {
-              replacement = replacement.replace(tags,`$1$3$5$6$3<br>$6$7`);
-              range.setStartBefore(prev);
-              range.setEndAfter(current);
-              this._handleCommand('insertHTML',replacement.replace(/\s+/,' '),range);
-            //update previous node and then select current node again
-            } else {
-              range.selectNode(prev);
-              this._handleCommand('insertHTML',(replacement+current.outerHTML).replace(/\s+/,' '),range);
+      //stop matching other patterns when a listbox is open
+      if(!this.__listbox) {
+        //handle multline patterns, such as lists and headings
+        if(!found && lastKeyEntered == "Enter" && range.commonAncestorContainer.previousElementSibling){
+          let current = range.commonAncestorContainer,
+            prev = current ? current.previousElementSibling : false; 
+            searchNodeClone = prev ? prev.cloneNode(true) : false;
+            span = searchNodeClone ? searchNodeClone.querySelector(`#${id}`) : false;
+            if(span) span.remove();
+            let search = searchNodeClone ? searchNodeClone.innerHTML.replace(/(&nbsp;)+/,' ') : false,
+            multiline = search ? this.replacementsByLastKey["enter"] : [];
+            if(searchNodeClone) searchNodeClone.remove();
+          multiline.forEach((regex)=>{
+            if(found) return;
+            match = checkMatch(regex, node, search);
+            if(match) {
+              found = true;
+              let replacement = search.replace(regex.match,regex.replace),
+                tags = /^(<([-a-zA-Z0-9]+)[^>]*>)(<([-a-zA-Z0-9]+)[^>]*>)(.*)(<\/\4>)(<\/\2>)$/;
+              //for nested tags like with lists next lin should be same as nested tag
+              if(replacement.match(tags)) {
+                replacement = replacement.replace(tags,`$1$3$5$6$3<br>$6$7`);
+                range.setStartBefore(prev);
+                range.setEndAfter(current);
+                this._handleCommand('insertHTML',replacement.replace(/\s+/,' '),range);
+              //update previous node and then select current node again
+              } else {
+                range.selectNode(prev);
+                this._handleCommand('insertHTML',(replacement+current.outerHTML).replace(/\s+/,' '),range);
+              }
             }
-          }
-        });
-      };
-      //search a given node for regex replacements
-      let searchReplacements = (searchNode) => {
-        makeSearchClone(searchNode);
-        //regex replacement patterns to test
-        let replacements = listByLastKey(this.replacementsByLastKey);
-        replacements.forEach((regex) => {
-          if (!searchNode || !searchNode.cloneNode) return;
-          let matchIndex = lastKeyEntered == "Enter" ? 0 : 1;
-          match = checkMatch(regex, searchNode);
-          if (
-            match &&
-            match[0] &&
-            cloneSearch.length -
-              match[0].length -
-              cloneSearch.lastIndexOf(match[0]) ==
-              matchIndex
-          ) {
-            found = true;
-            if (found && regex.replace)
-              cloneSplit[0] = cloneSplit[0].replace(
-                regex.match,
-                regex.replace
-              );
-          }
-        });
+          });
+        };
+        //search a given node for regex replacements
+        let searchReplacements = (searchNode) => {
+          makeSearchClone(searchNode);
+          //regex replacement patterns to test
+          let replacements = listByLastKey(this.replacementsByLastKey);
+          replacements.forEach((regex) => {
+            if (!searchNode || !searchNode.cloneNode) return;
+            let matchIndex = lastKeyEntered == "Enter" ? 0 : 1;
+            match = checkMatch(regex, searchNode);
+            if (
+              match &&
+              match[0] &&
+              cloneSearch.length -
+                match[0].length -
+                cloneSearch.lastIndexOf(match[0]) ==
+                matchIndex
+            ) {
+              found = true;
+              if (found && regex.replace)
+                cloneSplit[0] = cloneSplit[0].replace(
+                  regex.match,
+                  regex.replace
+                );
+            }
+          });
 
-        //update HTML with replacement
-        if (found) { 
-          if(lastKeyEntered == "Enter") {
-            cloneSplit[1] = cloneSplit[1].replace(/(<\/[^<]+><[^<]+>.*)(<\/\S+>)/g,`$1${spanHTML}$2`);
-            searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
-          } else { 
-            let prepend = new RegExp(`${lastKeyEntered.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}$`);
-            cloneSplit[0] = cloneSplit[0].replace(prepend,'').replace(/\s$/,'&nbsp;');
-            cloneSplit[1] = lastKeyEntered.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s+/,'&nbsp;');
-            searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
+          //update HTML with replacement
+          if (found) { 
+            if(lastKeyEntered == "Enter") {
+              cloneSplit[1] = cloneSplit[1].replace(/(<\/[^<]+><[^<]+>.*)(<\/\S+>)/g,`$1${spanHTML}$2`);
+              searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
+            } else { 
+              let prepend = new RegExp(`${lastKeyEntered.replace(/([\+\*\?\^\$\\\.\[\]\{\}\(\)\|\/])/g,'\\$1')}$`);
+              cloneSplit[0] = cloneSplit[0].replace(prepend,'').replace(/\s$/,'&nbsp;');
+              cloneSplit[1] = lastKeyEntered.replace(/\s/,'&nbsp;')+spanHTML+cloneSplit[1].replace(/^\s+/,'&nbsp;');
+              searchNode.innerHTML = cloneSplit.join('').replace(/\s+/,' ').replace(/\s+(?![^<]+>)/g,'&nbsp;');
+            }
+            span = searchNode.querySelector(`#${id}`);
+            this.selectNode(span);
+            range.collapse();
+            span.remove();
           }
-          span = searchNode.querySelector(`#${id}`);
-          this.selectNode(span);
-          range.collapse();
-          span.remove();
         }
-      }
 
-      //only search replacements if we didn't alread execute a comand
-      //starting with a target, check for matches
-      //expand search to parent if not found
-      while (
-        !found &&
-        !!target &&
-        target !== this.target &&
-        !!target.parentNode
-      ) {
-        searchReplacements(target);
-        target = target.parentNode;
+        //only search replacements if we didn't alread execute a comand
+        //starting with a target, check for matches
+        //expand search to parent if not found
+        while (
+          !found &&
+          !!target &&
+          target !== this.target &&
+          !!target.parentNode
+        ) {
+          searchReplacements(target);
+          target = target.parentNode;
+        }
+        if (!found) searchReplacements(this.target);
+
       }
-      if (!found) searchReplacements(this.target);
 
       //remove placeholder and clone
       if (span) span.remove();

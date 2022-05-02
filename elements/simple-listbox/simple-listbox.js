@@ -448,17 +448,18 @@ const SimpleListBoxBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "expanded" && this.absolutePosition) this.absolutePosition.updatePosition();
         if (propName === "value" && this.value !== oldValue)
-          this.fieldValueChanged(oldValue,this.value);
+          this._handleValueChange(oldValue);
         if (propName === "itemsList" || propName === "options" || propName == "demoMode")
           this.filterOptions(this.filter, this.option);
           if(this.tablist && this.tablist.updateTabs) setTimeout(this.tablist.updateTabs(),10);
       });
     }
+    
     /**
      * handles change to input field
      */
-    fieldValueChanged(oldValue,newValue) {
-      this._fireValueChanged();
+    _handleValueChange(oldValue) {
+      this._fireValueChanged(oldValue);
     }
 
     /**
@@ -900,17 +901,21 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
     /**
      * sets the combobox value
-     *
-     * @param {*} value
-     * @memberof SimpleFieldsCombo
+     * 
+     * @param {*} value 
+     * @param {string} filter text of filter
      */
-    setValue(value) {
-      this.filter = value;
+    setValue(value,filter) {
+      this.filter = filter || value || "";
+      if(!this.input) return;
+      if(!this.input.value || this.input.value.indexOf(filter) !== 0) this.input.value = filter;
       this.input.setSelectionRange(this.filter.length, this.filter.length);
       if (this.isList || this.isInline) {
-        this.value = this.filterOptions(this.filter, this.option).value || this.input.value || '';
+        this.value = this.filterOptions(value, this.option).value || this.input.value || '';
       }
     }
+
+    
     /**
      * sets the selected option, inlcuding active descendent and input selection
      *
@@ -930,8 +935,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             //set selection at the end of value
             setTimeout(() => {
               this.input.setSelectionRange(
-                option.value.length,
-                option.value.length
+                this.input.value.length,
+                this.input.value.length
               );
             }, 0);
           } else {
@@ -939,7 +944,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
             setTimeout(() => {
               this.input.setSelectionRange(
                 this.filter.length,
-                option.value.length
+                this.input.value.length
               );
             }, 0);
           }
@@ -1075,12 +1080,14 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      */
     _onInputKeydown(event) {
       var flag = false,
-        altKey = event.altKey;
+        altKey = event.altKey,
+        filterText = this.option.textComparison.filter(text=>text.indexOf(this.filter) == 0)[0] || this.option.text || this.option.value;
+
   
       switch (event.keyCode) {
         case this.keyCode.RETURN:
           if ((this.listFocus || this.isInline) && this.option) {
-            this.setValue(this.option.value);
+            this.setValue(this.option.value,filterText);
           }
           this.close(true);
           flag = true;
@@ -1127,8 +1134,8 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         case this.keyCode.TAB:
           this.close(true);
           if (this.listFocus) {
-            if (this.option) {
-              this.setValue(this.option.value);
+            if (this.option) {            
+              this.setValue(this.option.value, filterText);
             }
           }
           break;
@@ -1339,16 +1346,6 @@ const SimpleListBoxBehaviors = function (SuperClass) {
         option = this.firstOption;
       }
       return option;
-    }
-
-    _getOptionByValue(val){
-      return this.sortedOptions.filter(o=>!option.group && o.value === val)[0];
-    }
-    _getOptionsByText(text =""){
-      return this.sortedOptions.filter(o=>!option.group && option.textComparison.filter(tc=>tc.indexOf(text) === 0).length > 0);
-    }
-    _getOptionByText(text = ""){
-      return this._getMatchingOptionsByText(text)[0];
     }
 
     updateInputText(option=this.option || {},filter=false){
