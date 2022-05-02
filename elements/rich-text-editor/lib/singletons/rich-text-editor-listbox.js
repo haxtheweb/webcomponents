@@ -69,6 +69,7 @@ class RichTextEditorListbox extends SimpleListBoxBehaviors(LitElement) {
   firstUpdated(changedProperties){
     if(super.firstUpdated) super.firstUpdated(changedProperties);
     this.alwaysExpanded = true;
+    this.autofocus = false;
   }
 }
 window.customElements.define(RichTextEditorListbox.tag, RichTextEditorListbox);

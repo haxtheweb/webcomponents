@@ -688,9 +688,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           this.__listbox = document.createElement('rich-text-editor-listbox');
         }
         let settings = JSON.parse(commandVal || {});
-        this.__highlight.wrap(range);
-        this.__highlight.parentElement.insertBefore(this.__listbox,this.__highlight);
-        this.__highlight.unwrap(range);
+        this.range.insertNode(this.__listbox);
         Object.keys(settings).forEach(setting=>{
           if(setting !== "input") {
             this.__listbox[setting] = settings[setting];
@@ -698,7 +696,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             this.__listbox.value = settings[setting];
           }
         });
-        this.range.setEndBefore(this.__listbox);
+        this.range.collapse(true);
         console.log(settings.input,this.__listbox.value,this.__highlight.innerHTML);
       } else if(command === "closeListbox") {
         if(this.__listbox) {
