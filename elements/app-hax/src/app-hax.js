@@ -13,6 +13,7 @@ import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-style
 import "./lib/v1/AppHaxRouter.js";
 import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
 
 const haxLogo = new URL("./lib/assets/images/HAXLogo.svg", import.meta.url)
   .href;
@@ -36,7 +37,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends SimpleColors {
+export class AppHax extends SimpleTourFinder(SimpleColors) {
   static get tag() {
     return "app-hax";
   }
@@ -125,6 +126,7 @@ export class AppHax extends SimpleColors {
       }
       `,
     });
+    this.tourName = "hax";
     autorun(() => {
       this.siteReady = toJS(store.siteReady);
     });
@@ -716,7 +718,14 @@ export class AppHax extends SimpleColors {
               tabindex="0"
               class="haxLogo"
               title="Home"
-            ></simple-icon-lite>
+              data-simple-tour-stop
+              data-stop-title="data-label"
+              data-label="Home"
+            >
+              <div data-stop-content slot="tour" style="display:none;">
+                You can come back to this home screen whenever you click this..
+              </div>
+            </simple-icon-lite>
           </a>
           <simple-tooltip for="hlogo" position="right" slot="left"
             >Home</simple-tooltip
@@ -737,7 +746,12 @@ export class AppHax extends SimpleColors {
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
-            ></simple-icon-lite>
+              data-simple-tour-stop
+              data-stop-title="data-label"
+              data-label="Sound"
+            >
+            <div slot="tour" data-stop-content>Not a fan of the awesome sound effects, you can mute them but I highly suggest you dont.....or else.</div>
+          </simple-icon-lite>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
@@ -747,8 +761,15 @@ export class AppHax extends SimpleColors {
             >Toggle dark mode</simple-tooltip
           >
 
-          <app-hax-user-menu slot="right" id="user-menu">
-            <button class="topbar-character" slot="menuButton">
+          <app-hax-user-menu
+            slot="right"
+            id="user-menu"
+            data-simple-tour-stop
+            data-stop-title="data-label"
+            data-label="Menu"
+          >
+            <div slot="tour" data-stop-content>You want to log out and be someone else?  You want to check your sites option?  Click your character.  \n Fun Fact....your character is unique to you.</div>
+            <button class="topbar-character" slot="menuButton" id="tbchar">
               <rpg-character
                 seed="${this.userName}"
                 width="68"

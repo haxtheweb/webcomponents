@@ -151,6 +151,11 @@
           "name": "sound"
         },
         {
+          "name": "tourName",
+          "type": "string",
+          "default": "\"hax\""
+        },
+        {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
@@ -1680,6 +1685,11 @@
         },
         {
           "name": "sound"
+        },
+        {
+          "name": "tourName",
+          "type": "string",
+          "default": "\"hax\""
         },
         {
           "name": "accentColor",
