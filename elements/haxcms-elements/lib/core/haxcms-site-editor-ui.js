@@ -273,7 +273,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       startNewJourney: "New Journey",
       accountInfo: "Account Info",
       logOut: "Log out",
-      systemMenu: "System menu",
+      menu: "Menu",
     };
     this.backText = "Site list";
     this.painting = true;
@@ -444,11 +444,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
             seed="${this.userName}"
             width="68"
             height="68"
-            aria-label="${this.t.systemMenu}"
+            aria-label="${this.t.menu}"
             hat="${this.rpgHat}"
           ></rpg-character>
         </button>
-        <simple-tooltip for="tbchar" position="left" slot="menuButton">${this.t.systemMenu}</simple-tooltip>
+        <simple-tooltip for="tbchar" position="left" slot="menuButton">${this.t.menu}</simple-tooltip>
         <div slot="pre-menu" class="ops-panel">
           <wired-button
             elevation="1"

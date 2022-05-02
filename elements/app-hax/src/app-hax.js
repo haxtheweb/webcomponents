@@ -748,7 +748,7 @@ export class AppHax extends SimpleColors {
           >
 
           <app-hax-user-menu slot="right" id="user-menu">
-            <button class="topbar-character" slot="menuButton" id="tbchar">
+            <button class="topbar-character" slot="menuButton">
               <rpg-character
                 seed="${this.userName}"
                 width="68"
@@ -771,9 +771,6 @@ export class AppHax extends SimpleColors {
               @click=${this.logout}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
-          <simple-tooltip for="tbchar" position="bottom" slot="right"
-            >System menu</simple-tooltip
-          >
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
