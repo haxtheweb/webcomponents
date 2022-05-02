@@ -270,7 +270,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       editSiteSettings: "Site settings",
       savePageContent: "Save page content",
       editPageContent: "Edit page content",
-      startNewJourney: "New Journey",
+      newJourney: "New Journey",
       accountInfo: "Account Info",
       logOut: "Log out",
       menu: "Menu",
@@ -439,7 +439,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       </span>
 
       <app-hax-user-menu slot="right" id="user-menu">
-        <button class="topbar-character" slot="menuButton" id="tbchar" @click="${this.toggleMenu}">
+        <button class="topbar-character" slot="menuButton" @click="${this.toggleMenu}">
           <rpg-character
             seed="${this.userName}"
             width="68"
@@ -448,8 +448,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
             hat="${this.rpgHat}"
           ></rpg-character>
         </button>
-        <simple-tooltip for="tbchar" position="left" slot="menuButton">${this.t.menu}</simple-tooltip>
         <div slot="pre-menu" class="ops-panel">
+          <slot name="haxcms-site-editor-ui-pre-menu"></slot>
           <wired-button
             elevation="1"
             class="soundToggle"
@@ -464,12 +464,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           icon="face"
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
-
+        <div slot="main-menu"><slot name="haxcms-site-editor-ui-main-menu"></slot></div>
         <app-hax-user-menu-button
           id="outlinebutton"
           @click="${this._outlineButtonTap}"
           slot="main-menu"
           icon="hax:site-map"
+          part="outlinebtn"
           label="${this.t.editSiteOutline}"
         ></app-hax-user-menu-button>
 
@@ -477,18 +478,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           @click="${this._manifestButtonTap}"
           slot="main-menu"
           icon="${this.icon}"
+          part="manifestbtn"
           label="${this.__settingsText}"
         ></app-hax-user-menu-button>
 
         <app-hax-user-menu-button
           slot="main-menu"
           icon="add"
-          label="${this.t.startNewJourney}"
+          label="${this.t.newJourney}"
+          part="newjourneybtn"
           @click="${this._addButtonTap}"
         ></app-hax-user-menu-button>
-        
+        <div slot="post-menu"><slot name="haxcms-site-editor-ui-post-menu"></slot></div>
         <app-hax-user-menu-button
           slot="post-menu"
+          part="logoutbtn"
           class="logout"
           label="${this.t.logOut}"
           @click=${this._logout}
