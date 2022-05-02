@@ -83,10 +83,14 @@ export class AppHaxHatProgress extends SimpleColors {
               .querySelector("#progress2")
               .parentNode.appendChild(text);
             // show you saying you got this!
-            store.toast(`${createResponse.title ? createResponse.title : ''} ready!`, 1500, {
-              hat: "random",
-              walking: true,
-            });
+            store.toast(
+              `${createResponse.title ? createResponse.title : ""} ready!`,
+              1500,
+              {
+                hat: "random",
+                walking: true,
+              }
+            );
             setTimeout(() => {
               store.toast(`redirecting in 3..`, 10000, {
                 hat: "random",
