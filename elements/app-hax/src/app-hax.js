@@ -776,54 +776,39 @@ export class AppHax extends SimpleColors {
           >
         </app-hax-top-bar>
       </header>
-      lbh
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
-          <div class="label">
-            <app-hax-label>
-              ${this.activeItem && !this.siteReady
-                ? html`
-                    <h1>
-                      ${this.activeItem && this.activeItem.label
-                        ? this.activeItem.label.replace(
-                            ":structure",
-                            toJS(store.site.structure)
-                          )
-                        : ""}
-                    </h1>
-                    <div slot="subtitle">
-                      ${this.activeItem && this.activeItem.statement
-                        ? this.activeItem.statement.replace(
-                            ":structure",
-                            toJS(store.site.structure)
-                          )
-                        : ""}
-                    </div>
-                  `
-                : ``}
-              ${this.activeItem && this.siteReady
-                ? html`
-                    <h1>${toJS(store.site.name)}</h1>
-                    <div slot="subtitle">
-                      Is all ready, are you ready to build?
-                    </div>
-                  `
-                : ``}
-            </app-hax-label>
-          </div>
-          <random-word
-            key="${this.isNewUser ? `new` : `return`}"
-            .phrases="${this.phrases}"
-            @click="${this.getNewWord}"
-          ></random-word>
-          <simple-icon-lite
-            id="helpbtn"
-            @click="${this.helpClick}"
-            src="${helpBtn}"
-          >
-          </simple-icon-lite>
-          <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
-          <section class="content">${this.appBody(this.appMode)}</section>
+        <div class="label">
+          <app-hax-label>
+            ${this.activeItem && !this.siteReady
+              ? html`
+                  <h1>${this.activeItem.label}</h1>
+                  <div slot="subtitle">${this.activeItem && this.activeItem.statement ? this.activeItem.statement.replace(':structure', toJS(store.site.structure)) : ''}</div>
+                `
+              : ``}
+            ${this.activeItem && this.siteReady
+              ? html`
+                  <h1>${toJS(store.site.name)}</h1>
+                  <div slot="subtitle">
+                    Is all ready, are you ready to build?
+                  </div>
+                `
+              : ``}
+          </app-hax-label>
+        </div>
+        <random-word
+          key="${this.isNewUser ? `new` : `return`}"
+          .phrases="${this.phrases}"
+          @click="${this.getNewWord}"
+        ></random-word>
+        <simple-icon-lite
+          id="helpbtn"
+          @click="${this.helpClick}"
+          src="${helpBtn}"
+        >
+        </simple-icon-lite>
+        <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
+        <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
   }
