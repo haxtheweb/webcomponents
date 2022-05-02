@@ -777,7 +777,8 @@ export class AppHax extends SimpleColors {
         </app-hax-top-bar>
       </header>
       lbh
-      <main @click="${this.closeMenu}" id="confetti">
+      <main @click="${this.closeMenu}">
+      <confetti-container id="confetti">
         <div class="label">
           <app-hax-label>
             ${this.activeItem && !this.siteReady
@@ -809,6 +810,7 @@ export class AppHax extends SimpleColors {
         </simple-icon-lite>
         <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
         <section class="content">${this.appBody(this.appMode)}</section>
+        </confetti-container>
       </main>`;
   }
 
@@ -862,7 +864,7 @@ export class AppHax extends SimpleColors {
   }
 
   siteReadyToGo(e) {
-    console.log("Let's show confetti")
+    console.log("Let's show confetti");
     import(
       "@lrnwebcomponents/multiple-choice/lib/confetti-container.js"
     ).then((module) => {
