@@ -463,7 +463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           icon="face"
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
-        <div slot="main-menu"><slot name="haxcms-site-editor-ui-main-menu"></slot></div>
+        <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
         <app-hax-user-menu-button
           id="outlinebutton"
           @click="${this._outlineButtonTap}"
@@ -488,7 +488,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           part="newjourneybtn"
           @click="${this._addButtonTap}"
         ></app-hax-user-menu-button>
-        <div slot="post-menu"><slot name="haxcms-site-editor-ui-post-menu"></slot></div>
+        <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
         <app-hax-user-menu-button
           slot="post-menu"
           part="logoutbtn"
