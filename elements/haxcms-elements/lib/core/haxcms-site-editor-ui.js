@@ -146,7 +146,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           font-family: 'Press Start 2P', sans-serif;          
         }
         app-hax-top-bar {
-          top: 0;
           z-index: 1000;
           right: 0;
           left: 0;
@@ -346,9 +345,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
   // render function
   render() {
     return html`
-      <app-hax-top-bar>
+      <app-hax-top-bar part="top-bar">
         <span slot="left">
-          <a href="${this.backLink}" class="haxLogo" id="backtosites">
+          <a href="${this.backLink}" class="haxLogo" id="backtosites" part="hax-logo">
             <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
           </a>
           <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
@@ -386,7 +385,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           voice-command="edit (page) details"
           class="topbar-button"
           accent-color="blue"
-          part="${this.editMode ? `edit-mode-active` : ``}"
+          part="detailsbtn ${this.editMode ? `edit-mode-active` : ``}"
           tabindex="${this.editMode ? "-1" : ""}"
         ></simple-icon-button>
         <simple-icon-button

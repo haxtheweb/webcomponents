@@ -516,9 +516,15 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     )
       .then((response) => {
         import("./haxcms-toast.js");
+
         this.editorBuilder = document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
-        document.body.appendChild(this.editorBuilder);
+        if (this.parentNode) {
+          this.parentNode.insertBefore(this.editorBuilder, this);
+        }
+        else {
+          document.body.appendChild(this.editorBuilder);
+        }
         // get fresh data if not published / demo which is a form of published
         if (
           HAXcmsStore.getApplicationContext() !==

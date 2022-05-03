@@ -82,7 +82,6 @@ class SimplePopover extends AbsolutePositionBehavior {
   box-shadow: var(--simple-popover-box-shadow, rgba(60, 64, 67, 0.3) 0px 4px 8px 3px);
   min-height: var(--simple-popover-min-height, 20px);
   max-height: var(--simple-popover-max-height, 200px);
-  overflow: auto;
   scroll-behavior: smooth;
 }
 

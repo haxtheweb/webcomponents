@@ -74,7 +74,12 @@ class HAXCMSEditorBuilder extends HTMLElement {
               break;
           }
         }
-        document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+        if (this.parentNode) {
+          this.parentNode.insertBefore(store.cmsSiteEditor.haxCmsSiteEditorUIElement, this);
+        }
+        else {
+          document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+        }
         // forces a nice fade in transition
         setTimeout(() => {
           store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
