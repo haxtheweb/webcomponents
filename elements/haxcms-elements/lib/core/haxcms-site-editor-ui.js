@@ -379,6 +379,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         <simple-icon-button
           ?dark="${!this.darkMode}"
           id="editdetails"
+          hidden
           icon="hax:page-details"
           @click="${this._editDetailsButtonTap}"
           label="${this.t.editDetails}"
@@ -393,6 +394,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           tabindex="${this.editMode ? "-1" : ""}"
           ?dark="${!this.darkMode}"
           id="deletebutton"
+          hidden
           icon="icons:delete"
           @click="${this._deleteButtonTap}"
           label="${this.t.deletePage}"
@@ -443,9 +445,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
             seed="${this.userName}"
             width="68"
             height="68"
+            part="rpgcharacter"
             aria-label="${this.t.menu}"
             hat="${this.rpgHat}"
           ></rpg-character>
+          <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
         </button>
         <div slot="pre-menu" class="ops-panel">
           <slot name="haxcms-site-editor-ui-pre-menu"></slot>
