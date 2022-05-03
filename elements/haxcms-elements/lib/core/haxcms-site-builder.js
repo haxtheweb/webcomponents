@@ -89,6 +89,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
       <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
       <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+      <slot name="haxcms-site-editor-ui-main-menu"></slot>
       <simple-colors-polymer></simple-colors-polymer>
     `;
   }
@@ -460,6 +461,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     import("./haxcms-site-router.js").then(() => {
       HAXcmsStore.storePieces.siteBuilder = this;
     });
+    // support initial setup stuff with slots
+    for (var i in this.children) {
+      if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
+        const item = this.children[i].cloneNode(true);
+        let key = item.getAttribute("slot");
+        switch (key) {
+          case "haxcms-site-editor-ui-prefix-avatar":
+          case "haxcms-site-editor-ui-prefix-buttons":
+          case "haxcms-site-editor-ui-suffix-buttons":
+          case "haxcms-site-editor-ui-main-menu":
+            store.setupSlots[key].push(item);
+          break;
+        }
+      }
+    }
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     window.addEventListener(
       "haxcms-trigger-update",
@@ -495,20 +511,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         detail: this,
       })
     );
-    // support initial setup stuff with slots
-    for (var i in this.children) {
-      if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
-        const item = this.children[i].cloneNode(true);
-        let key = item.getAttribute("slot");
-        switch (key) {
-          case "haxcms-site-editor-ui-prefix-avatar":
-          case "haxcms-site-editor-ui-prefix-buttons":
-          case "haxcms-site-editor-ui-suffix-buttons":
-            store.setupSlots[key] = item;
-            break;
-        }
-      }
-    }
     // dyanmcially import the editor builder which figures out if we should have one
     // prettier-ignore
     import(

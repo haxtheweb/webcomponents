@@ -20,7 +20,12 @@ class Store {
     this.darkMode = !localStorageGet('app-hax-darkMode')
     ? false
     : localStorageGet('app-hax-darkMode');
-    this.setupSlots = {};
+    this.setupSlots = {
+      "haxcms-site-editor-ui-prefix-avatar": [],
+      "haxcms-site-editor-ui-prefix-buttons": [],
+      "haxcms-site-editor-ui-suffix-buttons": [],
+      "haxcms-site-editor-ui-main-menu": [],
+    };
     this.appReady = false;
     this.editMode = false;
     this.manifest = null;

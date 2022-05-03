@@ -68,8 +68,10 @@ class HAXCMSEditorBuilder extends HTMLElement {
             case "haxcms-site-editor-ui-prefix-avatar":
             case "haxcms-site-editor-ui-prefix-buttons":
             case "haxcms-site-editor-ui-suffix-buttons":
+            case "haxcms-site-editor-ui-main-menu":
+              for (var key2 in store.setupSlots[key])
               store.cmsSiteEditor.haxCmsSiteEditorUIElement.appendChild(
-                store.setupSlots[key]
+                store.setupSlots[key][key2]
               );
               break;
           }
