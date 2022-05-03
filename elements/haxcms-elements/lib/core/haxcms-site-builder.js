@@ -90,6 +90,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
       <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       <slot name="haxcms-site-editor-ui-main-menu"></slot>
+      <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
       <simple-colors-polymer></simple-colors-polymer>
     `;
   }
@@ -471,6 +472,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           case "haxcms-site-editor-ui-prefix-buttons":
           case "haxcms-site-editor-ui-suffix-buttons":
           case "haxcms-site-editor-ui-main-menu":
+          case "haxcms-site-editor-ui-topbar-character-button":
             store.setupSlots[key].push(item);
           break;
         }

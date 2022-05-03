@@ -25,6 +25,7 @@ class Store {
       "haxcms-site-editor-ui-prefix-buttons": [],
       "haxcms-site-editor-ui-suffix-buttons": [],
       "haxcms-site-editor-ui-main-menu": [],
+      "haxcms-site-editor-ui-topbar-character-button": [],
     };
     this.appReady = false;
     this.editMode = false;
