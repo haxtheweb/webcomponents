@@ -1,5 +1,8 @@
 /* eslint-disable max-classes-per-file */
-import { localStorageGet, localStorageSet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  localStorageGet,
+  localStorageSet,
+} from "@lrnwebcomponents/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
@@ -15,7 +18,7 @@ class Store {
     this.appSettings = window.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {
-      localStorageSet('jwt', this.appSettings.jwt);
+      localStorageSet("jwt", this.appSettings.jwt);
     }
     this.jwt = localStorageGet("jwt", null);
     // placeholder for when the actual API Backend gets plugged in here

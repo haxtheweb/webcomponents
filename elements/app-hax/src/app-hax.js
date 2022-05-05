@@ -634,6 +634,10 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // required for our early siteList updating
+    if (store.AppHaxAPI && this.basePath) {
+      store.AppHaxAPI.basePath = this.basePath;
+    }
     import("./lib/v1/app-hax-steps.js");
     import("./lib/v1/app-hax-site-button.js");
     import("wired-elements/lib/wired-button.js");
@@ -750,8 +754,11 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               data-stop-title="data-label"
               data-label="Sound"
             >
-            <div slot="tour" data-stop-content>Not a fan of the awesome sound effects, you can mute them but I highly suggest you dont.....or else.</div>
-          </simple-icon-lite>
+              <div slot="tour" data-stop-content>
+                Not a fan of the awesome sound effects, you can mute them but I
+                highly suggest you dont.....or else.
+              </div>
+            </simple-icon-lite>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
@@ -767,7 +774,11 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
             data-stop-title="data-label"
             data-label="Menu"
           >
-            <div slot="tour" data-stop-content>You want to log out and be someone else?  You want to check your sites option?  Click your character.  \n Fun Fact....your character is unique to you.</div>
+            <div slot="tour" data-stop-content>
+              You want to log out and be someone else? You want to check your
+              sites option? Click your character. Fun Fact....your character is
+              unique to you.
+            </div>
             <button class="topbar-character" slot="menuButton" id="tbchar">
               <rpg-character
                 seed="${this.userName}"
@@ -798,37 +809,44 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
       </header>
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
-        <div class="label">
-          <app-hax-label>
-            ${this.activeItem && !this.siteReady
-              ? html`
-                  <h1>${this.activeItem.label}</h1>
-                  <div slot="subtitle">${this.activeItem && this.activeItem.statement ? this.activeItem.statement.replace(':structure', toJS(store.site.structure)) : ''}</div>
-                `
-              : ``}
-            ${this.activeItem && this.siteReady
-              ? html`
-                  <h1>${toJS(store.site.name)}</h1>
-                  <div slot="subtitle">
-                    Is all ready, are you ready to build?
-                  </div>
-                `
-              : ``}
-          </app-hax-label>
-        </div>
-        <random-word
-          key="${this.isNewUser ? `new` : `return`}"
-          .phrases="${this.phrases}"
-          @click="${this.getNewWord}"
-        ></random-word>
-        <simple-icon-lite
-          id="helpbtn"
-          @click="${this.helpClick}"
-          src="${helpBtn}"
-        >
-        </simple-icon-lite>
-        <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
-        <section class="content">${this.appBody(this.appMode)}</section>
+          <div class="label">
+            <app-hax-label>
+              ${this.activeItem && !this.siteReady
+                ? html`
+                    <h1>${this.activeItem.label}</h1>
+                    <div slot="subtitle">
+                      ${this.activeItem && this.activeItem.statement
+                        ? this.activeItem.statement.replace(
+                            ":structure",
+                            toJS(store.site.structure)
+                          )
+                        : ""}
+                    </div>
+                  `
+                : ``}
+              ${this.activeItem && this.siteReady
+                ? html`
+                    <h1>${toJS(store.site.name)}</h1>
+                    <div slot="subtitle">
+                      Is all ready, are you ready to build?
+                    </div>
+                  `
+                : ``}
+            </app-hax-label>
+          </div>
+          <random-word
+            key="${this.isNewUser ? `new` : `return`}"
+            .phrases="${this.phrases}"
+            @click="${this.getNewWord}"
+          ></random-word>
+          <simple-icon-lite
+            id="helpbtn"
+            @click="${this.helpClick}"
+            src="${helpBtn}"
+          >
+          </simple-icon-lite>
+          <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
+          <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
   }
@@ -882,7 +900,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
   }
 
   siteReadyToGo(e) {
-    console.log("Let's show confetti");
     import("@lrnwebcomponents/multiple-choice/lib/confetti-container.js").then(
       (module) => {
         setTimeout(() => {

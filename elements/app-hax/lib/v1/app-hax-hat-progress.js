@@ -76,7 +76,7 @@ export class AppHaxHatProgress extends SimpleColors {
             text.addEventListener("click", () => {
               store.appEl.reset();
               setTimeout(() => {
-                window.location = createResponse.slug.replace('index.html', '');
+                window.location = createResponse.slug.replace("index.html", "");
               }, 0);
             });
             this.shadowRoot
@@ -108,7 +108,10 @@ export class AppHaxHatProgress extends SimpleColors {
                   });
                   store.appEl.reset();
                   setTimeout(() => {
-                    window.location = createResponse.slug.replace('index.html', '');
+                    window.location = createResponse.slug.replace(
+                      "index.html",
+                      ""
+                    );
                   }, 1000);
                 }, 1000);
               }, 1000);

@@ -198,7 +198,7 @@
       </div>
       <div class="subtitle">HAX is loading</div>
     </div>
-      <app-hax>
+      <app-hax base-path="/elements/app-hax/demo/">
       </app-hax>
       <div id="demo">
         <style>
@@ -266,10 +266,10 @@
         const partyStyle = '../lib/assets/images/PartyStyle.svg';
         window.appSettings = {
           "demo": true,
-          "getSitesList": 'elements/app-hax/demo/sites.json',
-          "createSite": 'elements/app-hax/demo/createSite.json',
+          "getSitesList": 'sites.json',
+          "createSite": 'createSite.json',
           "login": '/elements/app-hax/demo/login.json',
-          "refreshUrl": "/bto108/system/api/refreshAccessToken",
+          "refreshUrl": "/elements/app-hax/demo/refreshAccessToken",
           "logout": "/elements/app-hax/demo/logout.json",
           "connectionSettings": "/bto108/system/api/connectionSettings",
           "redirectUrl": "/",
