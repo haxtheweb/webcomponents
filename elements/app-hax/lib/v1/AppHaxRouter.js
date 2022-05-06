@@ -6,13 +6,6 @@ import { store } from "./AppHaxStore.js";
  * `app-hax-router`
  */
 export class AppHaxRouter extends HTMLElement {
-  get baseURI() {
-    return this.getAttribute("base-uri");
-  }
-
-  set baseURI($value) {
-    this.setAttribute("base-uri", $value);
-  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -37,10 +30,11 @@ export class AppHaxRouter extends HTMLElement {
     });
     autorun(() => {
       const manifest = toJS(store.manifest);
+      const baseURI = toJS(store.AppHaxAPI.basePath);
       if (manifest && manifest.items && manifest.items.length > 0) {
         const siteItemRoutes = manifest.items.map((i) => {
           return {
-            path: i.slug,
+            path: i.slug.replace(baseURI, ''), // replacement of the basePath ensures routes match in haxiam / subdirs
             slug: i.slug,
             name: i.id,
             component: `fake-${i.id}-e`,

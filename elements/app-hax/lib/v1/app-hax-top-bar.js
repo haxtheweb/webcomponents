@@ -50,7 +50,7 @@ export class AppHaxTopBar extends LitElement {
         vertical-align: middle;
         border-bottom: 3px solid var(--app-hax-accent-color);
         display: grid;
-        grid-template-columns: 30% 40% 30%;
+        grid-template-columns: 32.5% 35% 32.5%;
       }
 
       /* .topBar > div {

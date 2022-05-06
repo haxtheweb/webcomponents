@@ -167,7 +167,6 @@ export class AppHaxSearchResults extends SimpleColors {
       pages: varGet(item, "metadata.pageCount", 0),
       url: item.slug,
     };
-    console.log(details);
     return details;
   }
 

@@ -4,7 +4,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable class-methods-use-this */
 import { html, css, unsafeCSS } from "lit";
-import "./AppHaxRouter.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";

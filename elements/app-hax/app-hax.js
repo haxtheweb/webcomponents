@@ -398,7 +398,22 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           display: inline-block;
           border: none;
           border-radius: 0px;
+          padding: 0 8px;
+          margin: 0 0 0 16px;
           background-color: transparent;
+          height: 48px;
+          max-width: 160px;
+        }
+        .characterbtn-name {
+          font-family: "Press Start 2P", sans-serif;
+          margin-left: 8px;
+          font-size: 12px;
+          vertical-align: bottom;
+          line-height: 48px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 48px;
+          word-break: break-all;
         }
         .topbar-character:hover,
         .topbar-character:focus {
@@ -498,6 +513,9 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           padding-top: 80px;
         }
         @media (max-width: 900px) {
+          .characterbtn-name {
+            display: none;
+          }
           main {
             padding-top: 64px;
           }
@@ -789,6 +807,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
                 hat="${this.userMenuOpen ? "edit" : "none"}"
                 @click="${this.toggleMenu}"
               ></rpg-character>
+              <span class="characterbtn-name">${this.userName}</span>
             </button>
             <!-- <app-hax-user-menu-button
               slot="main-menu"

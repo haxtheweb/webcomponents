@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "data": {
+    "userName": "abc1234",
+    "fName": "ffgdfgd",
+    "lName": "ghg",
+    "userPicture": "https://fghfghf.com/files/headshot.jpg",
+    "social": {
+        "twitter": "https://twitter.com/fghfhfg",
+        "website": "https://fghfghf"
+    },
+    "integrations": {
+        "github": {
+            "token": "....",
+            "name": "fhdhf",
+            "email": "fgdgd@dfgdgd.dgdgd"
+        }
+    }
+  }
+}

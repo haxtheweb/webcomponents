@@ -58,8 +58,17 @@ export class AppHaxBackendAPI extends LitElement {
   }
 
   // event meaning we either got or removed the jwt
-  jwtChanged(e) {
+  async jwtChanged(e) {
     this.jwt = e.detail.value;
+    // sanity check we actually got a response
+    // this fires every time our JWT changes so it can update even after already logging in
+    // like hitting refresh or coming back to the app
+    const userData = await this.makeCall('getUserDataPath');
+    if (userData) {
+      store.user = {
+        name: userData.data.userName,
+      };
+    }
   }
 
   async makeCall(call, data = {}, save = false, callback = false) {
