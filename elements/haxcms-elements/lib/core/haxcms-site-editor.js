@@ -372,7 +372,6 @@ class HAXCMSSiteEditor extends LitElement {
         `Page deleted ${e.detail.value.data.title}, selecting another page`,
         4000
       );
-      this.dispatchEvent(evt);
       store.playSound('coin');
     }
   }
