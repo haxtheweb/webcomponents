@@ -8,7 +8,6 @@ import { store } from "./AppHaxStore.js";
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
 export class AppHaxBackendAPI extends LitElement {
-  refreshRequest;
   static get tag() {
     return "app-hax-backend-api";
   }

@@ -45,7 +45,7 @@
   "dependencies": {
     "@lrnwebcomponents/paper-avatar": "^4.0.24",
     "@lrnwebcomponents/simple-colors": "^4.0.24",
-    "lit": "^2.2.2"
+    "lit": "^2.2.3"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

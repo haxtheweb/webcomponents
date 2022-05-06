@@ -64,7 +64,7 @@
     "@lrnwebcomponents/simple-fields": "^4.0.24",
     "@lrnwebcomponents/utils": "^4.0.8",
     "@vaadin/router": "^1.7.4",
-    "lit": "^2.2.2",
+    "lit": "^2.2.3",
     "mobx": "^6.3.13",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",

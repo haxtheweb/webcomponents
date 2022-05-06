@@ -48,7 +48,7 @@
     "@lrnwebcomponents/simple-icon": "^4.0.24",
     "@lrnwebcomponents/simple-tooltip": "^4.0.24",
     "@polymer/paper-progress": "^3.0.1",
-    "lit": "^2.2.2",
+    "lit": "^2.2.3",
     "msr": "^1.3.4"
   },
   "devDependencies": {

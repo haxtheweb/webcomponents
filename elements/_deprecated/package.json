@@ -37,10 +37,10 @@
     "@lrnwebcomponents/top-alert": "4.0.1",
     "@lrnwebcomponents/wave-player": "4.0.4",
     "@polymer/paper-slider": "3.0.1",
-    "lit": "^2.2.2"
+    "lit": "^2.2.3"
   },
   "resolutions": {
-    "lit": "2.2.2"
+    "lit": "2.2.3"
   },
   "private": true,
   "publishConfig": {

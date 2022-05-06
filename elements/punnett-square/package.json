@@ -43,7 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/paper-input": "^3.0.0",
-    "lit": "^2.2.2"
+    "lit": "^2.2.3"
   },
   "devDependencies": {
     "@open-wc/testing": "3.0.4",

@@ -43,7 +43,7 @@
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^4.0.24",
     "@lrnwebcomponents/simple-icon": "^4.0.24",
-    "lit": "^2.2.2"
+    "lit": "^2.2.3"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
