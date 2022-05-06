@@ -813,7 +813,7 @@ const SimpleListBoxBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsCombo
      */
     get isListboxHidden() {
-      return this.hidden || !this.expanded || !this.hasOptions || !this.isList;
+      return this.hidden || (!this.expanded && !this.alwaysExpanded) || !this.hasOptions || !this.isList;
     }
     /**
      * template for list item for a given option
