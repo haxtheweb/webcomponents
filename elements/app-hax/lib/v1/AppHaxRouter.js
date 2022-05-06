@@ -34,7 +34,7 @@ export class AppHaxRouter extends HTMLElement {
       if (manifest && manifest.items && manifest.items.length > 0) {
         const siteItemRoutes = manifest.items.map((i) => {
           return {
-            path: i.slug.replace(baseURI, ''), // replacement of the basePath ensures routes match in haxiam / subdirs
+            path: i.slug.replace(baseURI, ""), // replacement of the basePath ensures routes match in haxiam / subdirs
             slug: i.slug,
             name: i.id,
             component: `fake-${i.id}-e`,

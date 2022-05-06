@@ -162,8 +162,8 @@ export class AppHaxSearchResults extends SimpleColors {
 
   getItemDetails(item) {
     const details = {
-      created: varGet(item, "metadata.site.created", new Date()/1000),
-      updated: varGet(item, "metadata.site.updated", new Date()/1000),
+      created: varGet(item, "metadata.site.created", new Date() / 1000),
+      updated: varGet(item, "metadata.site.updated", new Date() / 1000),
       pages: varGet(item, "metadata.pageCount", 0),
       url: item.slug,
     };

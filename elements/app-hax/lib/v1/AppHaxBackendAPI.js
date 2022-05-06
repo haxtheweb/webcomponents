@@ -8,6 +8,7 @@ import { store } from "./AppHaxStore.js";
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
 export class AppHaxBackendAPI extends LitElement {
+  refreshRequest;
   static get tag() {
     return "app-hax-backend-api";
   }
@@ -54,17 +55,23 @@ export class AppHaxBackendAPI extends LitElement {
       logout-url="${this.appSettings.logout}"
       id="jwt"
       @jwt-changed="${this.jwtChanged}"
+      @jwt-login-login-failed="${this.jwtFailed}"
     ></jwt-login>`;
   }
 
+  // failed to get valid JWT, wipe current
+  jwtFailed(e) {
+    this.jwt = null;
+    this.token = null;
+  }
   // event meaning we either got or removed the jwt
   async jwtChanged(e) {
     this.jwt = e.detail.value;
     // sanity check we actually got a response
     // this fires every time our JWT changes so it can update even after already logging in
     // like hitting refresh or coming back to the app
-    const userData = await this.makeCall('getUserDataPath');
-    if (userData) {
+    const userData = await this.makeCall("getUserDataPath");
+    if (userData && userData.data) {
       store.user = {
         name: userData.data.userName,
       };
@@ -118,7 +125,7 @@ export class AppHaxBackendAPI extends LitElement {
                 detail: {
                   element: {
                     obj: this,
-                    callback: "makeCall",
+                    callback: "refreshRequest",
                     params: [call, data, save, callback],
                   },
                 },
@@ -138,6 +145,18 @@ export class AppHaxBackendAPI extends LitElement {
       }
       return response;
     }
+  }
+
+  /**
+   * Attempt to salvage the request that was kicked off
+   * when our JWT needed refreshed
+   */
+  refreshRequest(jwt, response) {
+    const { call, data, save, callback } = response;
+    // force the jwt to be the updated jwt
+    // this helps avoid any possible event timing issue
+    this.jwt = jwt;
+    this.makeCall(call, data, save, callback);
   }
 
   // set instance of API in store

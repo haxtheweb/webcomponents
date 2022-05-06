@@ -6,15 +6,15 @@
     "lName": "ghg",
     "userPicture": "https://fghfghf.com/files/headshot.jpg",
     "social": {
-        "twitter": "https://twitter.com/fghfhfg",
-        "website": "https://fghfghf"
+      "twitter": "https://twitter.com/fghfhfg",
+      "website": "https://fghfghf"
     },
     "integrations": {
-        "github": {
-            "token": "....",
-            "name": "fhdhf",
-            "email": "fgdgd@dfgdgd.dgdgd"
-        }
+      "github": {
+        "token": "....",
+        "name": "fhdhf",
+        "email": "fgdgd@dfgdgd.dgdgd"
+      }
     }
   }
 }

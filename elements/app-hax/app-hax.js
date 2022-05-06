@@ -63,12 +63,33 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
     }
   }
 
+  /**
+   * A token refresh just failed so force to login prompt / state
+   */
+  _tokenRefreshFailed(e) {
+    window.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {},
+      })
+    );
+    setTimeout(() => {
+      this.reset(true);
+    }, 100);
+  }
+
   connectedCallback() {
     super.connectedCallback();
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", darkToggle);
     window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.addEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
   }
 
   disconnectedCallback() {
@@ -76,6 +97,10 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
       .matchMedia("(prefers-color-scheme: dark)")
       .removeEventListener("change", darkToggle);
     window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.removeEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
     super.disconnectedCallback();
   }
 

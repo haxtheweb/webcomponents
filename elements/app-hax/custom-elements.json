@@ -414,6 +414,9 @@
       ],
       "properties": [
         {
+          "name": "refreshRequest"
+        },
+        {
           "name": "token",
           "attribute": "token",
           "type": "string"
@@ -460,10 +463,6 @@
       "path": "./lib/v1/AppHaxRouter.js",
       "description": "`app-hax-router`",
       "properties": [
-        {
-          "name": "baseURI",
-          "type": "string | null"
-        },
         {
           "name": "router"
         }
