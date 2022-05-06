@@ -274,9 +274,13 @@ export class AppHaxSiteDetails extends SimpleColors {
     );
     window.dispatchEvent(new CustomEvent("simple-modal-hide"));
     store.appEl.playSound("success");
-    store.toast(`${site.metadata.site.name} ${op} successful!`, 3000, {
-      hat: "random",
-    });
+    store.toast(
+      `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+      3000,
+      {
+        hat: "random",
+      }
+    );
   }
 
   // HTML - specific to Lit

@@ -69,11 +69,15 @@ export class AppHaxBackendAPI extends LitElement {
     // sanity check we actually got a response
     // this fires every time our JWT changes so it can update even after already logging in
     // like hitting refresh or coming back to the app
-    const userData = await this.makeCall("getUserDataPath");
-    if (userData && userData.data) {
-      store.user = {
-        name: userData.data.userName,
-      };
+    if (!this.__loopBlock && this.jwt) {
+      this.__loopBlock = true;
+      const userData = await this.makeCall("getUserDataPath");
+      if (userData && userData.data) {
+        store.user = {
+          name: userData.data.userName,
+        };
+        this.__loopBlock = false;
+      }
     }
   }
 
@@ -106,9 +110,19 @@ export class AppHaxBackendAPI extends LitElement {
                 composed: true,
                 bubbles: true,
                 cancelable: false,
-                detail: {
-                  redirect: true,
-                },
+                detail: true,
+              })
+            );
+          }
+          // we got a miss, logout cause something is wrong
+          else if (response.status === 404) {
+            // call not allowed, log out bc unauthorized
+            window.dispatchEvent(
+              new CustomEvent("jwt-login-logout", {
+                composed: true,
+                bubbles: true,
+                cancelable: false,
+                detail: true,
               })
             );
           } else if (response.status === 403) {
@@ -154,8 +168,10 @@ export class AppHaxBackendAPI extends LitElement {
     const { call, data, save, callback } = response;
     // force the jwt to be the updated jwt
     // this helps avoid any possible event timing issue
-    this.jwt = jwt;
-    this.makeCall(call, data, save, callback);
+    if (jwt) {
+      this.jwt = jwt;
+      this.makeCall(call, data, save, callback);
+    }
   }
 
   // set instance of API in store

@@ -414,9 +414,6 @@
       ],
       "properties": [
         {
-          "name": "refreshRequest"
-        },
-        {
           "name": "token",
           "attribute": "token",
           "type": "string"

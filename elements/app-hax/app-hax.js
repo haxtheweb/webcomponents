@@ -72,7 +72,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: {},
+        detail: true,
       })
     );
     setTimeout(() => {
