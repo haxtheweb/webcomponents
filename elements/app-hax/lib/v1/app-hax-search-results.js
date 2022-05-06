@@ -140,12 +140,7 @@ export class AppHaxSearchResults extends SimpleColors {
                     <span slot="subHeading">${item.author}</span>
                     <app-hax-site-details
                       slot="band"
-                      .details="${{
-                        created: item.metadata.site.created,
-                        updated: item.metadata.site.updated,
-                        pages: item.metadata.pageCount,
-                        url: item.slug,
-                      }}"
+                      .details="${this.getItemDetails(item)}"
                       site-id="${item.id}"
                     >
                       <div class="description" slot="pre">
@@ -163,6 +158,17 @@ export class AppHaxSearchResults extends SimpleColors {
             </div>`}
       </ul>
     `;
+  }
+
+  getItemDetails(item) {
+    const details = {
+      created: varGet(item, "metadata.site.created", new Date()/1000),
+      updated: varGet(item, "metadata.site.updated", new Date()/1000),
+      pages: varGet(item, "metadata.pageCount", 0),
+      url: item.slug,
+    };
+    console.log(details);
+    return details;
   }
 
   openedChanged(e) {
