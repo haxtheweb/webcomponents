@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import "./hax-view-source.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**

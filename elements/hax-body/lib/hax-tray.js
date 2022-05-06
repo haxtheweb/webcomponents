@@ -197,8 +197,8 @@ class HaxTray extends I18NMixin(
           top: 0;
           bottom: 0;
           width: var(--hax-tray-width);
-          height: 100vh;
-          max-height: 100vh;
+          height: calc(100vh - 48px);
+          max-height: calc(100vh - 48px);
           transition: 0.2s opacity ease-in-out 0s;
           z-index: var(--hax-ui-focus-z-index);
         }
@@ -940,7 +940,7 @@ class HaxTray extends I18NMixin(
         break;
       case "view-source":
         this.trayDetail = e.detail.eventName;
-        HAXStore.haxViewSource.openSource();
+        this.shadowRoot.querySelector("#view-source").openSource();
         this.collapsed = false;
         break;
     }

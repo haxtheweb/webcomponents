@@ -80,25 +80,16 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       </div>
       <hax-toolbar always-expanded>
         <hax-tray-button
-          label="${this.t.refresh}"
-          tooltip="${this.t.refreshTooltip}"
-          icon="icons:refresh"
-          @click="${this.refreshHTMLEditor.bind(this)}"
-          show-text-label
-          icon-position="top"
-        >
-        </hax-tray-button>
-        <hax-tray-button
           label="${this.t.updatePage}"
           tooltip="${this.t.updatePageTooltip}"
           icon="editor:insert-drive-file"
-          @click="${this.importContent.bind(this)}"
+          @click="${this.importContent}"
           show-text-label
           icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
-          @click="${this.scrubContent.bind(this)}"
+          @click="${this.scrubContent}"
           icon="editor:format-clear"
           label="${this.t.cleanFormatting}"
           tooltip="${this.t.cleanFormattingTooltip}"
@@ -107,7 +98,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         >
         </hax-tray-button>
         <hax-tray-button
-          @click="${this.selectBody.bind(this)}"
+          @click="${this.selectBody}"
           icon="icons:content-copy"
           label="${this.t.copyHTML}"
           tooltip="${this.t.copyHTMLTooltip}"
@@ -119,7 +110,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           label="${this.t.downloadHTML}"
           tooltip="${this.t.downloadHTMLTooltip}"
           icon="icons:file-download"
-          @click="${this.download.bind(this)}"
+          @click="${this.download}"
           show-text-label
           icon-position="top"
         >
@@ -128,13 +119,13 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           label="${this.t.downloadDOCX}"
           tooltip="${this.t.downloadDOCXTooltip}"
           icon="editor:insert-drive-file"
-          @click="${this.downloadDOCX.bind(this)}"
+          @click="${this.downloadDOCX}"
           show-text-label
           icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
-          @click="${this.importDOCX.bind(this)}"
+          @click="${this.importDOCX}"
           label="${this.t.importDOCX}"
           tooltip="${this.t.importDOCXTooltip}"
           icon="icons:file-upload"
@@ -143,7 +134,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         >
         </hax-tray-button>
         <hax-tray-button
-          @click="${this.htmlToHaxElements.bind(this)}"
+          @click="${this.htmlToHaxElements}"
           label="${this.t.schema}"
           tooltip="${this.t.schemaTooltip}"
           icon="hax:code-json"
@@ -274,9 +265,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   openSource() {
     // import at this time so we can delay as long as possible
     // from needing to pull in monaco
-    import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
+    if (!window.customElements.get("code-editor")) {
+      import("@lrnwebcomponents/code-editor/code-editor.js").then(() => {
+        this.updateEditor();
+        setTimeout(() => {
+          this.updateEditor();
+        }, 1000);
+      });
+    }
+    else {
       this.updateEditor();
-    });
+    }
   }
   /**
    * selectBody
@@ -318,23 +317,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     HAXStore.haxTray.trayDetail = "";
   }
 
-  async firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-      // fire an event that this is a core piece of the system
-      this.dispatchEvent(
-        new CustomEvent("hax-register-core-piece", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            piece: "haxViewSource",
-            object: this,
-          },
-        })
-      );
-    }
-  }
   updateEditor() {
     if (
       HAXStore.activeHaxBody &&
@@ -343,9 +325,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     ) {
       this.shadowRoot.querySelector("#textarea").editorValue = "";
       setTimeout(async () => {
-        this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
+        const htmlCode = formatHTML(
           await HAXStore.activeHaxBody.haxToContent()
         );
+        this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }
   }
@@ -415,8 +398,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       cleanFormatting: "Clean",
       schema: "Schema",
       schemaTooltip: "HAX Schema",
-      refresh: "Refresh",
-      refreshTooltip: "Refresh HTML source",
       importDOCX: "Import DOCX",
       importDOCXTooltip: "Import .docx content into body",
       fileImported: "File imported",

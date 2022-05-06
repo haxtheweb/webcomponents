@@ -10,7 +10,8 @@
     "groups": ["Content", "CMS"],
     "handles": [],
     "meta": {
-      "author": "ELMS:LN"
+      "author": "ELMS:LN",
+      "hidden": true
     }
   },
   "settings": {

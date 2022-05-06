@@ -56,24 +56,6 @@ class HaxExportDialog extends I18NMixin(LitElement) {
     return "hax-export-dialog";
   }
 
-  /**
-   * Attached to the DOM, now fire that we exist.
-   */
-  firstUpdated() {
-    // fire an event that this is a core piece of the system
-    this.dispatchEvent(
-      new CustomEvent("hax-register-core-piece", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          piece: "haxExport",
-          object: this,
-        },
-      })
-    );
-  }
-
   constructor() {
     super();
     this.t = {
