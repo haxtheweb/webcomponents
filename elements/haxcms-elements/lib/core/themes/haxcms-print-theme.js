@@ -47,6 +47,7 @@ class HAXCMSPrintTheme extends CleanTwo {
       super.firstUpdated(changedProperties);
     }
     document.body.style.setProperty("--haxcms-color", "white");
+    document.body.style.overflow = 'auto';
     window.SimpleToast.requestAvailability().hide();
     setTimeout(() => {
       this.shadowRoot.querySelector("#printbtn").focus();

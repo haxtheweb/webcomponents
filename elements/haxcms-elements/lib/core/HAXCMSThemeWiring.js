@@ -144,15 +144,11 @@ const HAXCMSTheme = function (SuperClass) {
       autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
         setTimeout(() => {
-          if (this.HAXCMSThemeSettings.autoScroll) {
+          if (this.HAXCMSThemeSettings.autoScroll && this.shadowRoot && this.HAXCMSThemeSettings.scrollTarget) {
             this.HAXCMSThemeSettings.scrollTarget.scrollTo({
               top: 0,
               left: 0,
             });
-            setTimeout(() => {
-              // try scrolling to the target ID after content gets imported
-              window.AnchorBehaviors.getTarget(store.themeElement);
-            }, 500);
           }
         }, 10);
         this.__disposer.push(reaction);
