@@ -115,28 +115,24 @@ class CourseIntroFooter extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this._disposer = autorun(() => {
-      this.organization = toJS(
-        store.manifest.metadata.theme.variables.organization
-      );
+      if (store.manifest && store.manifest.metadata && store.manifest.metadata.theme && store.manifest.metadata.theme.variables) {
+        this.organization = toJS(
+          store.manifest.metadata.theme.variables.organization
+        );
+        this.company = toJS(store.manifest.metadata.theme.variables.company);
+        this.companyLink = toJS(
+          store.manifest.metadata.theme.variables.companyLink
+        );
+        this.organizationLink = toJS(
+          store.manifest.metadata.theme.variables.organizationLink
+        );
+        this.shadowRoot.querySelector(
+          "#footer-container"
+        ).style.borderColor = `${toJS(
+          store.manifest.metadata.theme.variables.hexCode
+        )}`;
+      }
     });
-    this._disposer = autorun(() => {
-      this.company = toJS(store.manifest.metadata.theme.variables.company);
-    });
-    this._disposer = autorun(() => {
-      this.companyLink = toJS(
-        store.manifest.metadata.theme.variables.companyLink
-      );
-    });
-    this._disposer = autorun(() => {
-      this.organizationLink = toJS(
-        store.manifest.metadata.theme.variables.organizationLink
-      );
-    });
-    this.shadowRoot.querySelector(
-      "#footer-container"
-    ).style.borderColor = `${toJS(
-      store.manifest.metadata.theme.variables.hexCode
-    )}`;
   }
 
   render() {

@@ -13,7 +13,9 @@ class CourseIntroLessonPlans extends LitElement {
     super();
     this.items = [];
     this._disposer = autorun(() => {
-      this._itemsChanged(toJS(store.routerManifest.items));
+      if (store.routerManifest && store.routerManifest.items) {
+        this._itemsChanged(toJS(store.routerManifest.items));
+      }
     });
   }
   _itemsChanged(items) {

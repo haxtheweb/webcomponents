@@ -281,19 +281,21 @@ class CourseIntroHeader extends LitElement {
     }
 
     this._disposer = autorun(() => {
-      this.title = toJS(store.manifest.title);
-      this.description = toJS(store.manifest.description);
-      this.icon = toJS(store.manifest.metadata.theme.variables.icon);
+      if (store.manifest && store.manifest.metadata && store.manifest.metadata.theme && store.manifest.metadata.theme.variables) {
+        this.title = toJS(store.manifest.title);
+        this.description = toJS(store.manifest.description);
+        this.icon = toJS(store.manifest.metadata.theme.variables.icon);
 
-      this.shadowRoot.querySelector("#sub-heading").style.color = `${toJS(
-        store.manifest.metadata.theme.variables.hexCode
-      )}`;
+        this.shadowRoot.querySelector("#sub-heading").style.color = `${toJS(
+          store.manifest.metadata.theme.variables.hexCode
+        )}`;
 
-      this.shadowRoot.querySelector(
-        "#header"
-      ).style.backgroundImage = `url(${toJS(
-        store.manifest.metadata.theme.variables.image
-      )})`;
+        this.shadowRoot.querySelector(
+          "#header"
+        ).style.backgroundImage = `url(${toJS(
+          store.manifest.metadata.theme.variables.image
+        )})`;
+      }
     });
   }
 
