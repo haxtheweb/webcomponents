@@ -6,8 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <base href="/elements/app-hax/demo/" />
-    <link rel="icon" href="../lib/assets/images/HAXLogo.svg" type="image/png">
+    <base href="/" />
+    <link rel="icon" href="../assets/HAXLogo.svg" type="image/png">
     <meta name="Description" content="Put your description here." />
     <script>
       window.process = window.process || {
@@ -23,15 +23,12 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <style>
       body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
-        background-image: url('../lib/assets/images/LMGridBox.svg');
+        background-image: url('../assets/LMGridBox.svg');
         background-repeat: repeat;
         background-position: center center;
         background-size: auto, 20% auto, 20% auto;
@@ -45,7 +42,7 @@
         --simple-tooltip-duration-out: 0;
         --simple-tooltip-border-radius: 0;
         --simple-tooltip-font-size: 14px;
-        background-image: url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
+        background-image: url('../assets/DesignLightModeLeft.svg'), url('../assets/DesignLightModeRight.svg');
         background-repeat: repeat-y, repeat-y;
         background-position:  top left, top right;
         background-size:  20% auto, 20% auto;
@@ -53,12 +50,19 @@
 
       .container {
         text-align: center;
-        margin-top: 20px;
-        padding: 20px 20vw;
+        margin-top: 40px;
+        padding: 8px 20vw;
         font-size: 24px;
       }
       .list {
         text-align: left;
+        padding: 20px;
+        font-size: 26px;
+        line-height: 1.2;
+        background-color: rgba(12,12,12,.04);
+      }
+      .list li {
+        margin: 20px;
       }
 
       .title {
@@ -69,17 +73,23 @@
           --app-hax-background-color,
           var(--background-color)
         );
+        background-color: rgba(12,12,12,.02);
         font-weight: normal;
-        font-size: 4vw;
+        font-size: 5vw;
         display: inline-flex;
         align-items: center;
+      }
+
+      h2 {
+        font-family: 'Press Start 2P', sans-serif;
+        margin: 0;
       }
 
       .subtitle {
         font-family: 'Press Start 2P', sans-serif;
         color: var(--app-hax-accent-color, var(--accent-color));
         font-weight: normal;
-        margin-top: 2.5px;
+        margin-top: 16px;
         font-size: 2vw;
       }
 
@@ -123,6 +133,12 @@
           background-size: auto, 37% auto, 37% auto;
         }
       }
+      p {
+        padding: 20px;
+        font-size: 50px;
+        line-height: 1.5;
+        background-color: rgba(12,12,12,.04);
+      }
       .version {
         position: fixed;
         left: 0;
@@ -140,40 +156,90 @@
         border-right: 3px solid var(--simple-colors-default-theme-grey-1);
         border-top: 3px solid  var(--simple-colors-default-theme-grey-1);
       }
+      .logo {
+        background-color: white;
+        position: absolute;
+        top:0;
+        left:0;
+        padding: 16px 0 0 32px;
+        height: 75px;
+      }
+      button.hax-btn {
+        font-size: 40px;
+        transition: .2s all ease-in-out;
+        padding: 8px;
+        margin: 4px;
+        color: white;
+        background-color: darkblue;
+        border: 4px solid black;
+        border-radius: 8px;
+        font-family: 'Press Start 2P', sans-serif;
+      }
+      button.hax-btn:focus,
+      button.hax-btn:hover {
+        cursor: pointer;
+        background-color: green;
+      }
+
+      button.hax-btn:active {
+        background-color: blue;
+        border: 6px solid blue;
+      }
+      @media (max-width: 980px) {
+        .logo {
+          padding: 8px 0 0 8px;
+          height: 50px;
+        }
+      }
+      @media (max-width: 600px) {
+        .logo {
+          padding: 2px 0 0 2px;
+          height: 40px;
+        }
+      }
+      footer p {
+        font-size: 16px;
+      }
     </style>
-    <title>HAX.psu</title>
+    <title>We are.. HAX</title>
   </head>
 
   <body>
+    <a href="https://www.psu.edu/"><img class="logo" src="../assets/psu-mark-280.png" alt="Penn State University" /></a>
+    <main>
     <div class="container">
-      <div class="title">
-        <span class="bracket">&#60;</span>HAXTheWeb<span class="bracket">&#62;</span>
-      </div>
-      <div class="subtitle">Build something awesome!</div>
+      <h1 class="title">
+        <span class="bracket">&#60;</span>HAX.PSU<span class="bracket">&#62;</span>
+      </h1>
+      <div class="subtitle">Make something awesome!</div>
     </div>
     <div class="container">
-    <h2>HAX makes web site building simple!</h2>
-    <p>
-      <a href="/login.php">HAX Login</a>
-    </p>
-    <h2>What is HAX?</h2>
-    <p>
-      HAX is a paradigm shift for web publishing.
-      It puts advanced authoring capabilities in the hands of instructional designers, instructors, and students
-      in a portable format that lives for ever.
-    </p>
-    <h2>Why HAX?</h2>
-    <ul class="list">
-      <li><strong>Simplicity</strong> - Simple Add, Make, Find system to ensure ease of use regardless of element being created</li>
-      <li><strong>Sustainability</strong> - Writes HTML, a forever format that is platform agnostic!</li>
-      <li><strong>Portability</strong> - HAX ultimately writes all files to a simple, human readable, download as a zip and send to another person style format. No databases, just pure HTML via web components.</li>
-      <li><strong>Community</strong> - We're a diverse network of educators, students and staff driving requirements</li>
-      <li><strong>Extensibility</strong> - We're adding new widgets, integrations and features to HAX all the time!</li>
-      <li><strong>Remixable</strong> - HAX writes to a "flat file" format, meaning all files live in an easy to read folder structure. You can download it as a zip, clone spaces, and share them with ease in and out of Penn state.</li>
-      <li><strong>Accessible</strong> - HAX elements and themes have been vetted by accessibility experts and the platform itself prevents common accessibility mistakes from being possible.</li>
-      <li><strong>Stylish</strong> - HAX themes are decoupled from designed assets. Meaning if you change your mind and want to teach using a blog style courses as opposed to a traditional online course theme, no problem. Switch themes with the click of a button but content and structure maintain accuracy.</li>
-    </ul>
+      <a href="/login.php" tabindex="-1"><button class="hax-btn">Login to HAX</button></a>
+      <br><br><br><br><hr><br>
+      <h2>What is HAX?</h2>
+      <p>
+        HAX is a paradigm shift for web publishing.
+        It puts advanced authoring capabilities in the hands of everyone, regardless of technical ability
+        and all items made are sustainability built in highly semantic HTML.
+      </p>
+      <h2>Why HAX?</h2>
+      <ul class="list">
+        <li><strong>Simplicity</strong> - Blocks, Media, Edit system to ensure ease of use</li>
+        <li><strong>Sustainability</strong> - Writes HTML + Web components so it will never go out of date!</li>
+        <li><strong>Portability</strong> - HAX sites can be downloaded as single ZIP folder and put on any server</li>
+        <li><strong>Community</strong> - A diverse network of educators, students and staff driving requirements</li>
+        <li><strong>Accessible</strong> - HAX elements and themes are highly accessible and proactively prevent making common A11y mistakes</li>
+        <li><strong>Stylish</strong> - HAX themes are decoupled from designed, meaning content isn't tied to presentation.</li>
+      </ul>
+      <h2>Get involved!</h2>
+      <ul class="list">
+        <li><a href="https://bit.ly/haxslack">Join our open Slack community</a></li>
+        <li><a href="https://github.com/elmsln/haxcms">Run your own copy locally</a></li>
+        <li><a href="mailto:hax@psu.edu">Contact for more details</a></li>
     </div>
-
+  </main>
+  <footer class="container">
+    <p>HAX is supported by a collaboration of multiple Penn State colleges and departmens.</p>
+  </footer>
   </body>
 </html>

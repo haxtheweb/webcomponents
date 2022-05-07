@@ -416,6 +416,9 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           display: block;
           --app-hax-background-color-active: var(--app-hax-accent-color);
         }
+        #home {
+          display: inline-flex;
+        }
         .wired-button-label {
           clip: rect(0 0 0 0);
           clip-path: inset(50%);
@@ -765,7 +768,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
     return html`<app-hax-router></app-hax-router>
       <header>
         <app-hax-top-bar>
-          <slot name="app-header-pre"></slot>
+          <slot name="app-header-pre" slot="left"></slot>
           <a id="home" href="home" tabindex="-1" slot="left">
             <simple-icon-lite
               id="hlogo"
