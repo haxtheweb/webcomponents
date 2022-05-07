@@ -152,6 +152,13 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
       `,
     });
     this.tourName = "hax";
+    // manage title when activeItem changes
+    autorun(() => {
+      const item = toJS(store.activeItem);
+      if (item && item.title) {
+        store.setPageTitle(item.title);
+      }
+    });
     autorun(() => {
       this.siteReady = toJS(store.siteReady);
     });

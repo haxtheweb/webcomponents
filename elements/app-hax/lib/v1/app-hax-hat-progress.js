@@ -65,6 +65,7 @@ export class AppHaxHatProgress extends SimpleColors {
             if (this.shadowRoot.querySelector(".game")) {
               this.shadowRoot.querySelector(".game").remove();
             }
+
             const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
             const text = document.createElement("button");
             this.shadowRoot.querySelector("#value").textContent = this.max;
@@ -88,26 +89,30 @@ export class AppHaxHatProgress extends SimpleColors {
               1500,
               {
                 hat: "random",
-                walking: true,
               }
             );
+            store.setPageTitle(`${createResponse.title ? createResponse.title : ""} ready!`);
             setTimeout(() => {
               store.toast(`redirecting in 3..`, 10000, {
                 hat: "random",
                 walking: true,
               });
+              store.setPageTitle('Redirecting in 3..');
               setTimeout(() => {
                 store.toast(`redirecting in 2..`, 10000, {
                   hat: "random",
                   walking: true,
                 });
+                store.setPageTitle('Redirecting in 2..');
                 setTimeout(() => {
                   store.toast(`redirecting in 1..`, 10000, {
                     hat: "random",
                     walking: true,
                   });
+                  store.setPageTitle('Redirecting in 1..');
                   store.appEl.reset();
                   setTimeout(() => {
+                    store.setPageTitle(`Enjoy!`);
                     window.location = createResponse.slug.replace(
                       "index.html",
                       ""

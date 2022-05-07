@@ -76,6 +76,7 @@ class Store {
         name: "step-1",
         label: "New Journey",
         statement: "What sort of journey is it?",
+        title: "Step 1: Create",
       },
       {
         path: "createSite-step-2",
@@ -84,6 +85,7 @@ class Store {
         name: "step-2",
         label: "Structure",
         statement: "How is this organized?",
+        title: "Step 2: Structure",
       },
       {
         path: "createSite-step-3",
@@ -92,6 +94,7 @@ class Store {
         name: "step-3",
         label: "Theme select",
         statement: "What your :structure feels like?",
+        title: "Step 3: Theme",
       },
       {
         path: "createSite-step-4",
@@ -100,6 +103,7 @@ class Store {
         name: "step-4",
         label: "Name",
         statement: "What do you want to call your :structure?",
+        title: "Step 4: Name",
       },
       {
         path: "createSite-step-5",
@@ -108,6 +112,7 @@ class Store {
         name: "step-5",
         label: "Building..",
         statement: "Getting your :structure ready to launch",
+        title: "Step 5: Building site",
       },
       {
         path: "home",
@@ -115,6 +120,7 @@ class Store {
         name: "home",
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
+        title: "Home",
       },
       {
         path: "index.html",
@@ -122,6 +128,7 @@ class Store {
         name: "home",
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
+        title: "Home",
       },
       {
         path: "index.php",
@@ -129,6 +136,7 @@ class Store {
         name: "home",
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
+        title: "Home",
       },
       {
         path: "search",
@@ -136,6 +144,7 @@ class Store {
         name: "search",
         label: "Search",
         statement: "Discover active adventures",
+        title: "Search sites",
       },
       {
         path: "/",
@@ -143,6 +152,7 @@ class Store {
         name: "welcome",
         label: "Welcome",
         statement: "Let's build something awesome!",
+        title: "Home",
       },
       {
         path: "/(.*)",
@@ -150,6 +160,7 @@ class Store {
         name: "404",
         label: "404 :[",
         statement: "it's not you.. it's me",
+        title: "FoUr Oh FoUr",
       },
     ];
     this.routes = this.baseRoutes;
@@ -199,6 +210,12 @@ class Store {
       refreshSiteList: observable, // used to force state to refresh sitelisting
     });
   }
+  setPageTitle(title) {
+    if (document.querySelector('title')) {
+      document.querySelector('title').innerText = `HAX: ${title}`;
+    }
+  }
+  // refresh
   refreshSiteListing() {
     this.refreshSiteList = false;
     // @todo this causes a reactive feedbackloop in
