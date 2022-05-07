@@ -212,7 +212,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         .body-wrapper {
           flex: 1;
           height: auto;
-          min-height: 100vh;
+          height: 100vh;
           font-size: 16px;
           color: #3B454E;
           background-color: #ffffff;
@@ -226,6 +226,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-box-align: stretch;
           -webkit-transition: margin-bottom 250ms ease;
           overflow-x: hidden;
+        }
+        :host([is-logged-in]) .body-wrapper {
+          height: calc(100vh - 48px);
         }
         :host([menu-open]) .body-wrapper .left-col {
           display: -webkit-box;
@@ -296,17 +299,12 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-overflow-scrolling: touch;
         }
 
-        :host([is-logged-in]) .body-wrapper {
-          margin-top: 48px;
-        }
-
         .qr-code-btn {
           padding: 8px;
           display: block;
           margin-left: -60px;
           width: 36px;
         }
-
         .content-wrapper {
           max-width: 100%;
           margin: 0;
@@ -316,6 +314,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
+        }
+        :host([menu-open]) .content-wrapper {
+          width: calc(100% - 300px);
         }
         .header {
           position: sticky;
@@ -342,6 +343,15 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin: 0px 16px;
           display: block;
           padding: 0;
+        }
+        
+        @media screen and (max-width: 1200px) {
+          .content {
+            width: 80vw;
+          }
+          :host([menu-open]) .content {
+            width: calc(80vw - 300px);
+          }
         }
         @media screen and (max-width: 400px) {
           .content {
@@ -373,7 +383,7 @@ class CleanTwo extends HAXCMSOperationButtons(
             width: auto;
           } 
         }
-        @media screen and (min-width: 400px) and (max-width: 600px) {
+        @media screen and (max-width: 600px) {
           .header site-menu-content {
             margin-right: -40px;
           }
@@ -394,21 +404,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           }
           #slot ::slotted(replace-tag) {
             overflow: hidden;
-          }
-        }
-        @media screen and (min-width: 601px) {
-          .content {
-            width: 65vw;
-          }
-        }
-        @media screen and (min-width: 913px) {
-          .content {
-            width: 40vw;
-          }
-        }
-        @media screen and (min-width: 1024px) {
-          .content {
-            width: 48vw;
           }
         }
         .right-col {
@@ -452,6 +447,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         .right-col site-menu-content {
           flex: 1;
+          max-width: 240px;
           margin: 0;
           display: flex;
           padding: 0;
@@ -518,6 +514,16 @@ class CleanTwo extends HAXCMSOperationButtons(
       `,
     ];
   }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    document.body.style.overflow = 'hidden';
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector(".body-wrapper");
+  }
+
   searchItemSelected(e) {
     // an item was picked, let's just make the UI jump to that item
     this.searchTerm = "";
@@ -593,6 +599,7 @@ class CleanTwo extends HAXCMSOperationButtons(
               ?hidden="${this.searchTerm != "" ? false : true}"
             ></site-search>
             <main>
+              <div id="haxcms-theme-top"></div>
               <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
               <site-active-title part="page-title"></site-active-title>
               <article

@@ -38,6 +38,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           display: block;
           position: relative;
         }
+        :host([is-logged-in]) {
+          max-height: calc(100vh - 48px);
+        }
         :host #slot {
           opacity: 0.2;
           visibility: hidden;
@@ -306,6 +309,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       _timeStamp: {
         type: String,
       },
+      isLoggedIn: {
+        type: Boolean,
+        reflect: true,
+        attribute: "is-logged-in",
+      },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
@@ -452,6 +460,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       localesPath: new URL("../../locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.isLoggedIn = false;
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;
@@ -497,6 +506,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       } else {
         document.body.classList.remove('dark-mode');
       }
+    });
+    autorun(() => {
+      this.isLoggedIn = toJS(store.isLoggedIn);
     });
   }
   firstUpdated(changedProperties) {

@@ -223,8 +223,11 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           right: 0;
         }
 
+        :host([is-logged-in]) app-drawer-layout[narrow] site-menu {
+          height: calc(100vh - 146px);
+        }
         app-drawer-layout[narrow] site-menu {
-          max-height: calc(100vh - 100px);
+          height: calc(100vh - 98px);
         }
 
         site-menu-button[type="next"] {
@@ -253,10 +256,14 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           background-color: var(--learn-two-theme-menu-color, #383f45);
           color: #ffffff;
           padding: 0;
-          max-height: calc(100vh - 100px);
+          height: calc(100vh - 98px);
           --site-menu-active-color: #ffffff;
           --site-menu-item-active-item-color: goldenrod;
           overflow: auto;
+        }
+
+        :host([is-logged-in]) site-menu {
+          height: calc(100vh - 146px);
         }
 
         app-drawer-layout {
@@ -319,9 +326,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           margin: 16px 0;
           padding: 0;
           font-size: 36px;
-        }
-        :host([is-logged-in]) main {
-          margin-top: 48px;
         }
       `,
     ];

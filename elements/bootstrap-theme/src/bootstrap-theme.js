@@ -95,11 +95,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           padding: 0 8px;
         }
 
-        /* logged in responsiveness */
-        :host([is-logged-in][menu-open]) .menu-outline {
-          top: 48px;
-        }
-
         .menu-outline {
           position: absolute;
           top: 50px;
@@ -136,6 +131,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           align-items: center;
           height: 48px;
           display: sticky;
+        }
+        #haxcmsmobilemenunav {
+          height: calc(100vh - 130px);
         }
 
         .site-img {
@@ -197,9 +195,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
         :host([menu-open]) .site-body {
           left: 300px;
-        }
-        :host([is-logged-in]) .site-body {
-          top: 48px;
         }
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {
@@ -605,7 +600,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
       document.head.removeChild(this._bootstrapLink);
     }
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    console.log(basePath);
     let link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
@@ -631,6 +625,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
       super.firstUpdated(changedProperties);
     }
     this._loadScripts();
+    document.body.style.overflow = 'hidden';
+    this.HAXCMSThemeSettings.scrollTarget =
+      this.shadowRoot.querySelector(".site-body");
     this._bootstrapLink = this._generateBootstrapLink();
   }
 

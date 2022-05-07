@@ -117,13 +117,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           min-height: fill-available;
           /* if the user has set a specific value then override the defaults */
           min-height: var(--outline-player-min-height);
-        }
-        :host([is-logged-in]) site-git-corner,
-        :host([is-logged-in]) app-drawer,
-        :host([is-logged-in]) app-drawer-layout {
-          margin-top: 48px;
-        }
-        
+        }        
 
         outline-player-navigation {
           --outline-player-dark: var(--outline-player-dark);

@@ -37,8 +37,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           display: none;
         }
         :host {
-          display: flex;
-          position: fixed;
+          display: block;
+          position: relative;
+          height: 48px;
           left: 0;
           top: 0;
           right: 0;

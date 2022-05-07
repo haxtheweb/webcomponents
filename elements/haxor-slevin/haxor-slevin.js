@@ -41,9 +41,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         :host([hidden]) {
           display: none;
         }
-        :host([is-logged-in]) {
-          margin-top: 48px;
-        }
+
         /**
       * Hide the slotted content during edit mode. This must be here to work.
       */
@@ -77,13 +75,15 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding-right: 20px;
         }
         simple-blog-card {
-          padding: 8px;
+          padding: 16px;
           min-height: 100px;
+          border: 2px solid lightgray;
+          margin: 8px;
+          text-align: center;
         }
         .simple-blog-card-wrapper {
           display: flex;
           justify-content: space-evenly;
-          max-width: 900px;
         }
         simple-blog-card[size="micro"] {
           padding: 4px;
@@ -362,7 +362,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             <site-query
               @result-changed="${this.__extraPostsChanged}"
               start-index="2"
-              limit="6"
+              limit="4"
               sort='{"created": "ASC"}'
             ></site-query>
             <div class="simple-blog-card-wrapper">

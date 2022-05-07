@@ -26,7 +26,11 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
-      this.contentContainer = toJS(store.themeElement);
+      this.contentContainer = store.themeElement;
+      // target container if we have a fixed UI layout
+      if (this.contentContainer && this.contentContainer.HAXCMSThemeSettings && this.contentContainer.HAXCMSThemeSettings.scrollTarget) {
+        this.contentContainer.HAXCMSThemeSettings.scrollTarget.addEventListener("scroll", this._applyScrollDetect.bind(this));
+      }
       setTimeout(() => {
         this.updateMenu();
       }, 10);
@@ -61,6 +65,11 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
             var(--simple-colors-default-theme-purple-7)
           );
         }
+        .contents {
+          max-height: 80vh;
+          border-bottom: 2px solid lightgray;
+          max-width: 240px;
+        }
         @media screen and (max-width: 600px) {
           .indent-1,
           .indent-2,
@@ -74,10 +83,14 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         :host([hide-if-empty][is-empty]) {
           display: none !important;
         }
-        simple-popover,
-        ol,
-        .item {
-          max-width: 175px;
+        :host([mobile]) .item {
+          max-width: 240px;
+        }
+        :host([mobile]) simple-popover {
+          --simple-popover-max-height: 200px;
+          --simple-popover-max-width: 240px;
+          overflow: hidden;
+          top: 0px !important;
         }
       `,
     ];

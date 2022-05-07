@@ -179,9 +179,6 @@ class CleanOne extends HAXCMSRememberRoute(
          :host([menu-open]) .menu-outline {
            left: 0;
          }
-         :host([is-logged-in][menu-open]) .menu-outline {
-           top: 48px;
-         }
          .menu-outline {
            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
            position: absolute;
@@ -220,9 +217,6 @@ class CleanOne extends HAXCMSRememberRoute(
            right: 16px;
            position: fixed;
          }
-         :host([is-logged-in]) .pull-right {
-           top: 48px;
-         }
          .main-content *,
          .main-content ::slotted(*) {
            box-sizing: border-box;
@@ -241,9 +235,6 @@ class CleanOne extends HAXCMSRememberRoute(
          :host([menu-open]) .site-body {
            left: 300px;
          }
-         :host([is-logged-in]) .site-body {
-           top: 48px;
-         }
          .site-body {
            position: absolute;
            top: 0;
@@ -254,19 +245,12 @@ class CleanOne extends HAXCMSRememberRoute(
            overflow-y: auto;
            transition: left 250ms ease;
          }
-         :host([responsive-size="xs"]) .site-body,
-         :host([responsive-size="sm"]) .site-body {
-           overflow-x: hidden;
-           position: var(--clean-one-sm-site-body-position, fixed);
-         }
+
          :host([responsive-size="md"]) .page-inner,
          :host([responsive-size="lg"]) .page-inner {
            padding: 40px 15px;
          }
-         :host([responsive-size="xs"]) .main-content,
-         :host([responsive-size="sm"]) .main-content {
-           overflow-x: hidden;
-         }
+
          :host([responsive-size="xs"]) .site-inner {
            max-width: 100vw;
          }
@@ -342,6 +326,15 @@ class CleanOne extends HAXCMSRememberRoute(
             width: calc(100vw - 32px);
             background-color: white;
            }
+           footer {
+             position: fixed;
+             bottom: 0;
+             left: 0;
+             right: 0;
+           }
+           :host([menu-open]) footer {
+             left: 300px;
+           }
          }
  
          @media (max-width: 700px){
@@ -399,9 +392,6 @@ class CleanOne extends HAXCMSRememberRoute(
          site-menu-button {
            --site-menu-button-icon-width: 64px;
            --site-menu-button-icon-height: 64px;
-         }
-         :host([is-logged-in][menu-open]) site-menu-button[type="prev"] {
-           left: 348px;
          }
          :host([menu-open]) site-menu-button[type="prev"] {
            left: 300px;
@@ -655,7 +645,7 @@ class CleanOne extends HAXCMSRememberRoute(
           ${this.HAXCMSMobileMenu()}
         </div>
         <div id="body" class="site-body" part="site-body">
-          <div id="top"></div>
+          <div id="haxcms-theme-top"></div>
           <div class="site-inner">
             <header class="site-header">
               <div class="btn-container">
@@ -795,11 +785,13 @@ class CleanOne extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // only way to hit this
+    document.body.style.overflow = 'hidden';
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#body");
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
-      this.shadowRoot.querySelector("#top");
+      this.shadowRoot.querySelector("#haxcms-theme-top");
   }
   HAXCMSGlobalStyleSheetContent() {
     return [

@@ -69,7 +69,7 @@ a {
 }
 
 .card-content {
-  height: 120px;
+  height: 100px;
   padding: 0;
   overflow: hidden;
 }
@@ -100,10 +100,6 @@ a {
 
 .card-medium .card-content {
   height: 125px;
-}
-
-.card-large .card-content {
-  height: 150px;
 }
 
 div.card h3 {

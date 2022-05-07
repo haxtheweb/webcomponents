@@ -27,6 +27,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
     autorun((reaction) => {
       let tmp = toJS(store.activeItemContent);
+      if (this.HAXCMSThemeSettings.autoScroll && this.shadowRoot) {
+        this.HAXCMSThemeSettings.scrollTarget.scrollTo({
+          top: 0,
+          left: 0,
+        });
+      }
       // delay bc this shouldn't block page load in any way
       setTimeout(() => {
         // headings only
@@ -44,7 +50,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             );
           });
         }
-      }, 100);
+      }, 500);
       this.__disposer.push(reaction);
     });
   }

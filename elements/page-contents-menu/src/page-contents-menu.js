@@ -70,6 +70,8 @@ class PageContentsMenu extends LitElement {
           margin: 0;
           padding: 0;
           list-style-type: none;
+          overflow-y:auto;
+          max-height: 50vh;
         }
         .item {
           margin: 0;
@@ -213,13 +215,17 @@ class PageContentsMenu extends LitElement {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      this.items[
-        parseInt(target.getAttribute("data-index"))
-      ].object.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+      let objItem = this.contentContainer.querySelector('#' + this.items[parseInt(target.getAttribute("data-index"))].id);
+      const isSafari = window.safari !== undefined;
+      if (isSafari) {
+        objItem.scrollIntoView();
+      } else {
+        objItem.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
       // keep state in history
       window.history.pushState({}, null, target.getAttribute("href"));
       // close menu
@@ -227,7 +233,7 @@ class PageContentsMenu extends LitElement {
     }
   }
   renderItem(item, index) {
-    if (item.link == null && item.object) {
+    if (item.link == null && item.id) {
       // tab index ensures browser treats it like a normal link
       return html`
         <li class="item">
@@ -318,7 +324,7 @@ class PageContentsMenu extends LitElement {
     this.contentContainer = null;
     this.mobile = false;
     // how long to wait between updating. 100ms default
-    this.scrollPolling = 100;
+    this.scrollPolling = 200;
     // only useful with mobile
     this.hideSettings = true;
     this.label = "Contents";
@@ -341,7 +347,10 @@ class PageContentsMenu extends LitElement {
       this.hideSettings = true;
     }
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // if we are told to use the parent and we're connected...
     if (this.relationship == "parent") {
       // which will kick that off
@@ -356,11 +365,17 @@ class PageContentsMenu extends LitElement {
     // anything else we ignore sot hat contentContainer can be set manually
     else {
     }
+    setTimeout(() => {
+      this.updateMenu();
+    }, 1000);
   }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       // fire a "scroll" processing event if the list of items updated
       // this ensures if something else changes the available items that we are
@@ -421,7 +436,7 @@ class PageContentsMenu extends LitElement {
         let reference = {
           title: title,
           link: item.id ? document.location.pathname + "#" + item.id : null,
-          object: item,
+          id: item.id,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
           active: "",
         };
@@ -455,12 +470,12 @@ class PageContentsMenu extends LitElement {
       let browserViewport =
         window.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
-        let itemTop = this.items[i].object.getBoundingClientRect().top - 100;
+        let objItem = this.contentContainer.querySelector('#' + this.items[i].id);
+        let itemTop = objItem.getBoundingClientRect().top - 100;
         let itemBottom = 0;
         // ensure bottom is ACTUALLY set to the top of the NEXT item
         if (i !== this.items.length - 1) {
-          itemBottom =
-            this.items[i + 1].object.getBoundingClientRect().top - 100;
+          itemBottom = this.contentContainer.querySelector('#' + this.items[i+1].id).getBoundingClientRect().top - 100;
         } else {
           itemBottom = browserViewport;
         }
@@ -474,9 +489,10 @@ class PageContentsMenu extends LitElement {
       });
       // account for potentially not finding ANYTHING yet having a "bottom" or top element
       if (!activeFound && this.items && this.items.length > 0) {
+        let objItem = this.contentContainer.querySelector('#' + this.items[0].id);
         // if we are ABOVE the 1st item, assume top; otherwise it's end
         if (
-          this.items[0].object.getBoundingClientRect().top >= browserViewport
+          objItem.getBoundingClientRect().top >= browserViewport
         ) {
           this.items[0].active = "active";
         } else {
@@ -500,14 +516,14 @@ class PageContentsMenu extends LitElement {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
-    document.addEventListener("scroll", this._applyScrollDetect.bind(this));
+    window.addEventListener("scroll", this._applyScrollDetect.bind(this));
   }
 
   disconnectedCallback() {
+    window.removeEventListener("scroll", this._applyScrollDetect.bind(this));
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
-    document.removeEventListener("scroll", this._applyScrollDetect.bind(this));
   }
 }
 customElements.define(PageContentsMenu.tag, PageContentsMenu);
