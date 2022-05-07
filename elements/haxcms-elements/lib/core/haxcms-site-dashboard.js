@@ -55,7 +55,7 @@ class HAXCMSSiteDashboard extends LitElement {
           display: inline-block;
           vertical-align: top;
           position: fixed;
-          height: 100vh;
+          height: calc(100vh - 48px);
           width: 50vw;
           margin-left: -50vw;
           border-right: 2px solid #17271f;
