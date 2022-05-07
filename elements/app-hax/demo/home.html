@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <base href="/elements/app-hax/demo/" />
+    <link rel="icon" href="../lib/assets/images/HAXLogo.svg" type="image/png">
+    <meta name="Description" content="Put your description here." />
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+      window.WCGlobalBasePath = "/node_modules/";
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-image: url('../lib/assets/images/LMGridBox.svg');
+        background-repeat: repeat;
+        background-position: center center;
+        background-size: auto, 20% auto, 20% auto;
+        --app-hax-accent-color: black;
+        --app-hax-background-color: white;
+        --simple-tooltip-background: #000000;
+        --simple-tooltip-opacity: 1;
+        --simple-tooltip-text-color: #ffffff;
+        --simple-tooltip-delay-in: 0;
+        --simple-tooltip-duration-in: 200ms;
+        --simple-tooltip-duration-out: 0;
+        --simple-tooltip-border-radius: 0;
+        --simple-tooltip-font-size: 14px;
+        background-image: url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
+        background-repeat: repeat-y, repeat-y;
+        background-position:  top left, top right;
+        background-size:  20% auto, 20% auto;
+      }
+
+      .container {
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px 20vw;
+        font-size: 24px;
+      }
+      .list {
+        text-align: left;
+      }
+
+      .title {
+        font-family: 'Press Start 2P', sans-serif;
+        -webkit-text-stroke: 1px
+          var(--app-hax-accent-color, var(--accent-color));
+        -webkit-text-fill-color: var(
+          --app-hax-background-color,
+          var(--background-color)
+        );
+        font-weight: normal;
+        font-size: 4vw;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .subtitle {
+        font-family: 'Press Start 2P', sans-serif;
+        color: var(--app-hax-accent-color, var(--accent-color));
+        font-weight: normal;
+        margin-top: 2.5px;
+        font-size: 2vw;
+      }
+
+      .bracket {
+        font-size: 10vw;
+        font-weight: normal;
+        vertical-align: middle;
+        -webkit-text-stroke: 0px;
+        -webkit-text-fill-color: var(
+          --app-hax-accent-color,
+          var(--accent-color)
+        );
+      }
+
+      @media (min-width: 721px) {
+        :root {
+          background-size: auto, 23% auto, 23% auto;
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 720px) {
+        :root {
+          background-size: auto, 26% auto, 26% auto;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 600px) {
+        :root {
+          background-size: auto, 30% auto, 30% auto;
+        }
+      }
+
+      @media (min-width: 371px) and (max-width: 480px) {
+        :root {
+          background-size: auto, 35% auto, 35% auto;
+        }
+      }
+
+      @media (max-width: 370px) {
+        :root {
+          background-size: auto, 37% auto, 37% auto;
+        }
+      }
+      .version {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background-color:  var(--simple-colors-default-theme-yellow-6);
+        display: inline-block;
+        padding: 8px;
+        color: var(--simple-colors-default-theme-grey-12);
+        border-right: 3px solid var(--simple-colors-default-theme-grey-12);
+        border-top: 3px solid  var(--simple-colors-default-theme-grey-12);
+      }
+      body .version {
+        background-color:  var(--simple-colors-default-theme-yellow-8);
+        color: var(--simple-colors-default-theme-grey-1);
+        border-right: 3px solid var(--simple-colors-default-theme-grey-1);
+        border-top: 3px solid  var(--simple-colors-default-theme-grey-1);
+      }
+    </style>
+    <title>HAX.psu</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">
+        <span class="bracket">&#60;</span>HAXTheWeb<span class="bracket">&#62;</span>
+      </div>
+      <div class="subtitle">Build something awesome!</div>
+    </div>
+    <div class="container">
+    <h2>HAX makes web site building simple!</h2>
+    <p>
+      <a href="/login.php">HAX Login</a>
+    </p>
+    <h2>What is HAX?</h2>
+    <p>
+      HAX is a paradigm shift for web publishing.
+      It puts advanced authoring capabilities in the hands of instructional designers, instructors, and students
+      in a portable format that lives for ever.
+    </p>
+    <h2>Why HAX?</h2>
+    <ul class="list">
+      <li><strong>Simplicity</strong> - Simple Add, Make, Find system to ensure ease of use regardless of element being created</li>
+      <li><strong>Sustainability</strong> - Writes HTML, a forever format that is platform agnostic!</li>
+      <li><strong>Portability</strong> - HAX ultimately writes all files to a simple, human readable, download as a zip and send to another person style format. No databases, just pure HTML via web components.</li>
+      <li><strong>Community</strong> - We're a diverse network of educators, students and staff driving requirements</li>
+      <li><strong>Extensibility</strong> - We're adding new widgets, integrations and features to HAX all the time!</li>
+      <li><strong>Remixable</strong> - HAX writes to a "flat file" format, meaning all files live in an easy to read folder structure. You can download it as a zip, clone spaces, and share them with ease in and out of Penn state.</li>
+      <li><strong>Accessible</strong> - HAX elements and themes have been vetted by accessibility experts and the platform itself prevents common accessibility mistakes from being possible.</li>
+      <li><strong>Stylish</strong> - HAX themes are decoupled from designed assets. Meaning if you change your mind and want to teach using a blog style courses as opposed to a traditional online course theme, no problem. Switch themes with the click of a button but content and structure maintain accuracy.</li>
+    </ul>
+    </div>
+
+  </body>
+</html>

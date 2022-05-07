@@ -114,7 +114,8 @@ class JwtLogin extends LitElement {
         ["auto", "method", "url"].includes(propName) &&
         this.url &&
         !this.jwt &&
-        this.ready
+        this.ready &&
+        this.auto
       ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {

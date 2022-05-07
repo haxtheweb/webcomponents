@@ -199,7 +199,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           display: inline-block;
           border: none;
           border-radius: 0px;
+          padding: 0 8px;
+          margin: 0 0 0 16px;
           background-color: transparent;
+          height: 48px;
+          max-width: 160px;
+        }
+        .characterbtn-name {
+          color: var(--simple-colors-default-theme-grey-12);
+          font-family: "Press Start 2P", sans-serif;
+          margin-left: 8px;
+          font-size: 12px;
+          vertical-align: bottom;
+          line-height: 48px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 48px;
+          word-break: break-all;
         }
         .topbar-character:hover,
         .topbar-character:focus {
@@ -449,6 +465,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
             aria-label="${this.t.menu}"
             hat="${this.rpgHat}"
           ></rpg-character>
+          <span class="characterbtn-name">${this.userName}</span>
           <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
         </button>
         <div slot="pre-menu" class="ops-panel">

@@ -430,6 +430,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           max-width: 160px;
         }
         .characterbtn-name {
+          color: var(--simple-colors-default-theme-grey-12);
           font-family: "Press Start 2P", sans-serif;
           margin-left: 8px;
           font-size: 12px;
