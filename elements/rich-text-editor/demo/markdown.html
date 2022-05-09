@@ -20,17 +20,28 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>rich-text-editor toolbar with markdown enabled</h1>
-      <demo-snippet>
+      <!--demo-snippet>
         <template>
           <rich-text-editor-toolbar id="editor" show="always" enable-markdown controls="content"></rich-text-editor-toolbar>
           <rich-text-editor id="content" toolbar="editor"></rich-text-editor>
         </template>
       </demo-snippet>
-      <h1>Configuring rich-text-editor toolbar markdown patterns</h1>
+      <h1>Configuring rich-text-editor toolbar markdown patterns</h1-->
       <demo-snippet>
         <template>
           <rich-text-editor-toolbar id="all" show="always" enable-markdown controls="allcontent"></rich-text-editor-toolbar>
           <rich-text-editor id="allcontent" toolbar-id="all">
+            <p>text</p>
+          </rich-text-editor>
+          <script>
+            let all = document.getElementById('all');
+            import("../lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
+              all.markdownPatterns = {};
+              all.markdownPatterns = module.rteAllPatterns;
+            });
+          </script>
+        </template>
+      </demo-snippet>
             <h2>Heading 2</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -62,16 +73,6 @@
               porta tellus at diam bibendum congue. Nam dignissim leo nec 
               consectetur consequat.
             </p>
-          </rich-text-editor>
-          <script>
-            let all = document.getElementById('all');
-            import("@lrnwebcomponents/rich-text-editor/lib/markdown/rich-text-editor-all-patterns.js").then(module=>{
-              all.markdownPatterns = {};
-              all.markdownPatterns = module.rteAllPatterns;
-            });
-          </script>
-        </template>
-      </demo-snippet>
     </div>
   </body>
 </html>

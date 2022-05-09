@@ -39,6 +39,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "lit-element": "^2.3.1",
+    "@lit-labs/virtualizer": "^0.7.0-pre.2",
     "@lrnwebcomponents/a11y-tabs": "^4.0.12",
     "@lrnwebcomponents/simple-emoji-list": "^4.0.7",
     "@lrnwebcomponents/simple-icon": "^4.0.12",

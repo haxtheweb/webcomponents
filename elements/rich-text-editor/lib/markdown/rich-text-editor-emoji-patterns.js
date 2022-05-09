@@ -44,7 +44,8 @@ let emoji = SimpleEmojiList
   //adds emoji listbox when ":" prefix is entered
   patterns.push({
     name: "emoji listbox open",
-    match: new RegExp(`(?:^|\\W:)([a-zA-z0-9_+])*`,'g'),
+    match: new RegExp(`(?:^|\\W):`),
+    replace: "$1",
     command: "openListbox",
     settings: {
       itemsList: SimpleListboxEmoji,
@@ -54,10 +55,18 @@ let emoji = SimpleEmojiList
     },
     lastChars: [":"],
   });
+  //updates emoji listbox text is entered
+  patterns.push({
+    name: "emoji listbox update",
+    match: new RegExp(`(?:^|\\W):([a-xA-Z0-9_]+)`),
+    command: "updateListbox",
+    replace: "$1",
+    lastChars: ["any"],
+  });
   //closes emoji listbox when ":" suffix is entered
   patterns.push({
     name: "emoji listbox close",
-    match: new RegExp(`(?:^|\\W):[\\w_]+[\\s\\t\\n:]`),
+    match: new RegExp(`(?:^|\\W):[a-xA-Z0-9_]*:`),
     command: "closeListbox",
     lastChars: [":","enter","space"],
   });

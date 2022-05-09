@@ -309,17 +309,19 @@ const RichTextEditorBehaviors = function (SuperClass) {
      */
     focus() {
       if (!this.disabled) {
+        console.log('focus');
         this.contenteditable = "true";
         this.__focused = true;
+        super.focus();
+        this.dispatchEvent(
+          new CustomEvent("focus", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: this.querySelector("*"),
+          })
+        );
       }
-      this.dispatchEvent(
-        new CustomEvent("focus", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: this.querySelector("*"),
-        })
-      );
     }
 
     /**

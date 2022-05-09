@@ -2,6 +2,9 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import { virtualize } from "@lit-labs/virtualizer/virtualize.js";
+import { grid } from '@lit-labs/virtualizer/layouts/grid.js';
+import { layout1dFlex } from '@lit-labs/virtualizer/layouts/flexWrap.js';
 
 const SimpleListboxProperties = {
   /**
@@ -255,11 +258,11 @@ const SimpleListboxStyles = [
       display: inline-block;
       overflow: hidden;
     }
-    :host([always-expanded]),
+    :host([always-expanded]:focus-within),
     :host([expanded]) {
       overflow: auto;
     }
-    :host([always-expanded]),
+    :host([always-expanded]:focus-within),
     :host([expanded]),
     :host(:hover),
     ul:hover,
@@ -409,7 +412,12 @@ const SimpleListBoxBehaviors = function (SuperClass) {
     }
 
     render(){
-      return html`
+      return html`<div>
+        ${virtualize({
+          items: this.filteredOptions || [],
+          renderItem: item => html`<div>${item.text || item.value}</div>`,
+          layout: layout1dFlex()
+        })}</div>
         <div id="field" part="field-outer">
           ${this.inputTemplate}
           ${!this.alwaysExpanded ? this.expandButtonTemplate : ''}

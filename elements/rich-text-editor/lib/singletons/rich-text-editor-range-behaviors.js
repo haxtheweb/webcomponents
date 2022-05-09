@@ -697,15 +697,13 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           }
         });
         this.range.collapse(true);
-        console.log(settings.input,this.__listbox.value,this.__highlight.innerHTML);
+      } else if(command === "updateListbox") {
+        if(this.__listbox) this.__listbox.setValue(commandVal);
       } else if(command === "closeListbox") {
         if(this.__listbox) {
-          this.__highlight.selectNode(this.__listbox);
-          this.__highlight.innerHTML = this.__listbox.value;
           if(this.__listbox) this.__listbox.remove();
           this.__listbox = undefined;
         }
-        console.log('close',this.__listbox);
       } else if (command === "cancel") {
         //custom cancel source command
         toolbar.revertTarget(target);
