@@ -92,11 +92,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
     };
   }
 
-  /**
-   * life cycle, element is ready
-   */
-  constructor() {
-    super();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     let target = this.shadowRoot.querySelector("#carouselitem");
     if (this.selected.scroll && target) {
       this._scrollIntoView([this._getParentOffset(target)]);

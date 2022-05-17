@@ -70,7 +70,7 @@ class PageContentsMenu extends LitElement {
           margin: 0;
           padding: 0;
           list-style-type: none;
-          overflow-y:auto;
+          overflow-y: auto;
           max-height: 50vh;
         }
         .item {
@@ -215,7 +215,9 @@ class PageContentsMenu extends LitElement {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      let objItem = this.contentContainer.querySelector('#' + this.items[parseInt(target.getAttribute("data-index"))].id);
+      let objItem = this.contentContainer.querySelector(
+        "#" + this.items[parseInt(target.getAttribute("data-index"))].id
+      );
       const isSafari = window.safari !== undefined;
       if (isSafari) {
         objItem.scrollIntoView();
@@ -470,33 +472,46 @@ class PageContentsMenu extends LitElement {
       let browserViewport =
         window.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
-        let objItem = this.contentContainer.querySelector('#' + this.items[i].id);
-        let itemTop = objItem.getBoundingClientRect().top - 100;
-        let itemBottom = 0;
-        // ensure bottom is ACTUALLY set to the top of the NEXT item
-        if (i !== this.items.length - 1) {
-          itemBottom = this.contentContainer.querySelector('#' + this.items[i+1].id).getBoundingClientRect().top - 100;
-        } else {
-          itemBottom = browserViewport;
-        }
-        // we are in viewport or at least 100 px within it and NOT past it
-        if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
-          activeFound = true;
-          this.items[i].active = "active";
-        } else {
-          this.items[i].active = "";
+        try {
+          let objItem = this.contentContainer.querySelector(
+            "#" + this.items[i].id
+          );
+          let itemTop = objItem.getBoundingClientRect().top - 100;
+          let itemBottom = 0;
+          // ensure bottom is ACTUALLY set to the top of the NEXT item
+          if (i !== this.items.length - 1) {
+            itemBottom =
+              this.contentContainer
+                .querySelector("#" + this.items[i + 1].id)
+                .getBoundingClientRect().top - 100;
+          } else {
+            itemBottom = browserViewport;
+          }
+          // we are in viewport or at least 100 px within it and NOT past it
+          if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
+            activeFound = true;
+            this.items[i].active = "active";
+          } else {
+            this.items[i].active = "";
+          }
+        } catch (e) {
+          console.log(e);
         }
       });
       // account for potentially not finding ANYTHING yet having a "bottom" or top element
       if (!activeFound && this.items && this.items.length > 0) {
-        let objItem = this.contentContainer.querySelector('#' + this.items[0].id);
-        // if we are ABOVE the 1st item, assume top; otherwise it's end
-        if (
-          objItem.getBoundingClientRect().top >= browserViewport
-        ) {
-          this.items[0].active = "active";
-        } else {
-          this.items[this.items.length - 1].active = "active";
+        try {
+          let objItem = this.contentContainer.querySelector(
+            "#" + this.items[0].id
+          );
+          // if we are ABOVE the 1st item, assume top; otherwise it's end
+          if (objItem.getBoundingClientRect().top >= browserViewport) {
+            this.items[0].active = "active";
+          } else {
+            this.items[this.items.length - 1].active = "active";
+          }
+        } catch (e) {
+          console.log(e);
         }
       }
       this.requestUpdate();

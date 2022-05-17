@@ -99,7 +99,7 @@
         {
           "name": "scrollPolling",
           "type": "number",
-          "default": "100"
+          "default": "200"
         },
         {
           "name": "hideSettings",
@@ -218,7 +218,7 @@
         {
           "name": "scrollPolling",
           "type": "number",
-          "default": "100"
+          "default": "200"
         },
         {
           "name": "hideSettings",

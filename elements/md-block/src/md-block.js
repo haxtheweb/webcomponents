@@ -223,6 +223,10 @@ class MdBlock extends LitElement {
     this.markdown = "";
     this.source = "";
     import("@polymer/marked-element/marked-element.js");
+    if (this.innerHTML) {
+      this.markdown = this.innerHTML.trim();
+      this.innerHTML = null;
+    }
   }
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -95,6 +95,12 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     super();
     this.__aspects = {};
     this.__items = [];
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     let target = this.shadowRoot.querySelector("#carouselitem");
     if (this.selected.scroll && target) {
       this._scrollIntoView([this._getParentOffset(target)]);
@@ -120,7 +126,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
                       .src="${col.large}"
                       .tooltip="${col.tooltip}"
                       .zoom-alt="${col.zoomAlt}"
-                      style="${this._getStyle(col.aspect, row.aspect)}"
+                      .style="${this._getStyle(col.aspect, row.aspect)}"
                     >
                       <img
                         .alt="${col.alt}"

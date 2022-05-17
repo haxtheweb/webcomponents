@@ -139,7 +139,7 @@ function update(elem) {
     math = elem.textContent.trim(),
     isBlock = elem.getAttribute("mode") === "display",
     check = (isBlock ? "D" : "I") + math;
-  if (check !== elem._private.check) {
+  if (elem._private && check !== elem._private.check) {
     while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
     elem._private.check = check;
     if (math.length && handler) {
