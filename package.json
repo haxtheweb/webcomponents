@@ -38,7 +38,7 @@
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "npx --max_old_space_size=16384 start-storybook --node-resolve --watch --open",
-    "build-storybook": "bash scripts/preinstall.sh && npx --max_old_space_size=16384 build-storybook && bash scripts/postinstall.sh",
+    "build-storybook": "npx --max_old_space_size=16384 build-storybook",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
