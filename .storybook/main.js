@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const cpy = require("rollup-plugin-cpy");
 var outputDir = "../../../storybooks/styleguide";
-if (!process.env.VERCEL) {
+if (process.env.VERCEL) {
   outputDir = "../storybook";
 }
 module.exports = {
