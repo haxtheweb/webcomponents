@@ -1,5 +1,9 @@
 import { css, html } from "lit";
-import { normalizeEventPath, localStorageGet, localStorageSet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  normalizeEventPath,
+  localStorageGet,
+  localStorageSet,
+} from "@lrnwebcomponents/utils/utils.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {

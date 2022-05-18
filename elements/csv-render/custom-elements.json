@@ -1,281 +1,105 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
         },
         {
           "name": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
+          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
         },
         {
           "name": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
+          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
         },
         {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
+          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
         },
         {
           "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
+          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
         },
         {
           "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "dataSource",
-          "attribute": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
+          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
         },
         {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "summary",
-          "attribute": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "attribute": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableHeadings",
-          "attribute": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableData",
-          "attribute": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
         },
         {
           "name": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
+          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
         },
         {
           "name": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
+          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
         },
         {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
+          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
         },
         {
           "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
+          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
         },
         {
           "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "dataSource",
-          "attribute": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
+          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
         },
         {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "summary",
-          "attribute": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "attribute": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableHeadings",
-          "attribute": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableData",
-          "attribute": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
-      "attributes": [
-        {
-          "name": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
-        },
-        {
-          "name": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
-        },
-        {
-          "name": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "dataSource",
-          "attribute": "data-source",
-          "description": "Location of the CSV file.",
-          "type": "string"
-        },
-        {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Caption for the table to improve accessibility and readability.",
-          "type": "string"
-        },
-        {
-          "name": "summary",
-          "attribute": "summary",
-          "description": "Summary to improve accessibility for screen readers.",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "attribute": "table",
-          "description": "Table busted out as an array.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableHeadings",
-          "attribute": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "tableData",
-          "attribute": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "type": "string",
-          "default": "\"\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

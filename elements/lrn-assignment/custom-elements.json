@@ -1,526 +1,139 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "lrn-assignment",
-      "description": "`lrn-assignment`",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "description": "Image url",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "description": "Details of the assignment",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "actions",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image url",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "attribute": "details",
-          "description": "Details of the assignment",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "attribute": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "attribute": "complete",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "actions",
-          "attribute": "actions",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "lrn-assignments",
-      "attributes": [
-        {
-          "name": "assignments",
-          "type": "object"
-        },
-        {
-          "name": "layout",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "assignments",
-          "attribute": "assignments",
-          "type": "object"
-        },
-        {
-          "name": "layout",
-          "attribute": "layout",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "lrn-assignment",
-      "description": "`lrn-assignment`",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "description": "Image url",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "description": "Details of the assignment",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "actions",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image url",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "attribute": "details",
-          "description": "Details of the assignment",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "attribute": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "attribute": "complete",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "actions",
-          "attribute": "actions",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "lrn-assignments",
-      "attributes": [
-        {
-          "name": "assignments",
-          "type": "object"
-        },
-        {
-          "name": "layout",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "assignments",
-          "attribute": "assignments",
-          "type": "object"
-        },
-        {
-          "name": "layout",
-          "attribute": "layout",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
       "name": "lrn-assignment-button",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
           "name": "url",
-          "type": "string"
+          "description": "`url` {`string`} - \n\nProperty: url"
         },
         {
           "name": "open",
-          "type": "boolean",
-          "default": "false"
+          "description": "`open` {`boolean`} - \n\nProperty: open\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "complete",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "attribute": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "attribute": "complete",
-          "type": "boolean",
-          "default": "false"
+          "description": "`complete` {`boolean`} - \n\nProperty: complete\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lrn-assignment",
-      "description": "`lrn-assignment`",
+      "description": "`lrn-assignment`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image url\n\n  * `details` {`string`} - Details of the assignment\n\n  * `url` {`string`} - url\n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - \n\n  * `actions` - \n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image url\n\n  * `details` {`string`} - Details of the assignment\n\n  * `url` {`string`} - url\n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - \n\n  * `actions` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "Title",
-          "type": "string"
+          "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
           "name": "image",
-          "description": "Image url",
-          "type": "string"
+          "description": "`image` {`string`} - Image url\n\nProperty: image"
         },
         {
           "name": "details",
-          "description": "Details of the assignment",
-          "type": "string"
+          "description": "`details` {`string`} - Details of the assignment\n\nProperty: details"
         },
         {
           "name": "url",
-          "description": "url",
-          "type": "string"
+          "description": "`url` {`string`} - url\n\nProperty: url"
         },
         {
           "name": "open",
-          "type": "boolean",
-          "default": "false"
+          "description": "`open` {`boolean`} - \n\nProperty: open\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "complete",
-          "type": "boolean",
-          "default": "false"
+          "description": "`complete` {`boolean`} - \n\nProperty: complete\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "actions",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image url",
-          "type": "string"
-        },
-        {
-          "name": "details",
-          "attribute": "details",
-          "description": "Details of the assignment",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "open",
-          "attribute": "open",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete",
-          "attribute": "complete",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "actions",
-          "attribute": "actions",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`actions` - \n\nProperty: actions"
         }
       ]
     },
     {
       "name": "lrn-assignments",
+      "description": "Attributes:\n\n  * `assignments` - \n\n  * `layout` {`string`} - \n\n  * `url` {`string`} - \n\nProperties:\n\n  * `assignments` - \n\n  * `layout` {`string`} - \n\n  * `url` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "assignments",
-          "type": "object"
+          "description": "`assignments` - \n\nProperty: assignments"
         },
         {
           "name": "layout",
-          "type": "string"
+          "description": "`layout` {`string`} - \n\nProperty: layout"
         },
         {
           "name": "url",
-          "type": "string"
+          "description": "`url` {`string`} - \n\nProperty: url"
         }
-      ],
-      "properties": [
+      ]
+    },
+    {
+      "name": "lrn-assignment",
+      "description": "`lrn-assignment`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image url\n\n  * `details` {`string`} - Details of the assignment\n\n  * `url` {`string`} - url\n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - \n\n  * `actions` - \n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image url\n\n  * `details` {`string`} - Details of the assignment\n\n  * `url` {`string`} - url\n\n  * `open` {`boolean`} - \n\n  * `complete` {`boolean`} - \n\n  * `actions` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image url\n\nProperty: image"
+        },
+        {
+          "name": "details",
+          "description": "`details` {`string`} - Details of the assignment\n\nProperty: details"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url\n\nProperty: url"
+        },
+        {
+          "name": "open",
+          "description": "`open` {`boolean`} - \n\nProperty: open\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "complete",
+          "description": "`complete` {`boolean`} - \n\nProperty: complete\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "actions",
+          "description": "`actions` - \n\nProperty: actions"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignments",
+      "description": "Attributes:\n\n  * `assignments` - \n\n  * `layout` {`string`} - \n\n  * `url` {`string`} - \n\nProperties:\n\n  * `assignments` - \n\n  * `layout` {`string`} - \n\n  * `url` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
         {
           "name": "assignments",
-          "attribute": "assignments",
-          "type": "object"
+          "description": "`assignments` - \n\nProperty: assignments"
         },
         {
           "name": "layout",
-          "attribute": "layout",
-          "type": "string"
+          "description": "`layout` {`string`} - \n\nProperty: layout"
         },
         {
           "name": "url",
-          "attribute": "url",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`url` {`string`} - \n\nProperty: url"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

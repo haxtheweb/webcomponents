@@ -211,8 +211,8 @@ class Store {
     });
   }
   setPageTitle(title) {
-    if (document.querySelector('title')) {
-      document.querySelector('title').innerText = `HAX: ${title}`;
+    if (document.querySelector("title")) {
+      document.querySelector("title").innerText = `HAX: ${title}`;
     }
   }
   // refresh

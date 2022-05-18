@@ -27,7 +27,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
     autorun((reaction) => {
       let tmp = toJS(store.activeItemContent);
-      if (this.HAXCMSThemeSettings.autoScroll && this.shadowRoot && this.HAXCMSThemeSettings.scrollTarget) {
+      if (
+        this.HAXCMSThemeSettings.autoScroll &&
+        this.shadowRoot &&
+        this.HAXCMSThemeSettings.scrollTarget
+      ) {
         this.HAXCMSThemeSettings.scrollTarget.scrollTo({
           top: 0,
           left: 0,

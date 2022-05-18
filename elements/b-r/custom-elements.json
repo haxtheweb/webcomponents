@@ -1,97 +1,27 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "b-r",
-      "path": "./b-r.js",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`",
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`\n\nAttributes:\n\n  * `amount` {`number`} - \n\nProperties:\n\n  * `amount` {`number`} - ",
       "attributes": [
         {
           "name": "amount",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "amount",
-          "attribute": "amount",
-          "type": "number",
-          "default": "0"
-        }
-      ]
-    },
-    {
-      "name": "star-rating",
-      "path": "./lib/star-rating.js",
-      "attributes": [
-        {
-          "name": "num-stars",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "score",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "possible",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "interactive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "numStars",
-          "attribute": "num-stars",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "score",
-          "attribute": "score",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "possible",
-          "attribute": "possible",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "interactive",
-          "attribute": "interactive",
-          "type": "boolean",
-          "default": "false"
+          "description": "`amount` {`number`} - \n\nProperty: amount\n\nDefault: 0"
         }
       ]
     },
     {
       "name": "b-r",
-      "path": "./src/b-r.js",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`",
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`\n\nAttributes:\n\n  * `amount` {`number`} - \n\nProperties:\n\n  * `amount` {`number`} - ",
       "attributes": [
         {
           "name": "amount",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "amount",
-          "attribute": "amount",
-          "type": "number",
-          "default": "0"
+          "description": "`amount` {`number`} - \n\nProperty: amount\n\nDefault: 0"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

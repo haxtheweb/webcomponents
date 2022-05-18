@@ -21,227 +21,224 @@ import "./lib/lrndesign-gallery-masonry.js";
  * @demo demo/masonry.html Masonry Layout
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none; 
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-::slotted(figure){
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: space-between;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 5px;
-  max-width: 400px;
-  border: 1px solid #ddd;
-  page-break-inside: avoid;
-}
+        ::slotted(figure) {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: space-between;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          padding: 5px;
+          max-width: 400px;
+          border: 1px solid #ddd;
+          page-break-inside: avoid;
+        }
 
-:host([edit-mode]) #figures {
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+        :host([edit-mode]) #figures {
+          display: grid;
+          grid-gap: 5px;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
 
-}
+        :host([edit-mode]) ::slotted(figure) {
+          padding: 5px;
+          margin: 0;
+          width: calc(100% - 10px);
+        }
 
-:host([edit-mode]) ::slotted(figure){
-  padding: 5px;
-  margin: 0;
-  width: calc(100% - 10px);
-}
-
-@media screen {
-  :host(:not([edit-mode])) ::slotted(figure){
-    display: none;
-  }
-}
-      `
+        @media screen {
+          :host(:not([edit-mode])) ::slotted(figure) {
+            display: none;
+          }
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
-  <div slot="title"><slot name="title"></slot></div>
-  <div slot="description"><slot name="description"></slot></div>
-  ${this.editMode 
-    ? html`<div id="figures"><slot></slot></div>` 
-    : this.layout === 'masonry'
-      ? html`
-          <lrndesign-gallery-masonry
-            accent-color="${this.accentColor}"
-            .aspect-ratio="${this.aspect}"
-            .extra-wide="${this.extra}"
-            ?dark="${this.dark}"
-            .gallery-id="${this.id}"
-            @item-changed="${e=>this.goToItem(e.detail)}"
-            responsive-size="${this.responsiveSize}"
-            .selected="${this.selected}"
-            .sources="${this.items}"
-          >
-        </lrndesign-gallery-masonry>
-        `
-    : this.grid || this.layout === 'grid'
-      ? html`
-          <lrndesign-gallery-grid
-            accent-color="${this.accentColor}"
-            .aspect-ratio="${this.aspect}"
-            .extra-wide="${this.extra}"
-            ?dark="${this.dark}"
-            .gallery-id="${this.id}"
-            @item-changed="${e=>this.goToItem(e.detail)}"
-            responsive-size="${this.responsiveSize}"
-            .selected="${this.selected}"
-            sizing="${this.sizing === 'cover' || 'contain'}"
-            .sources="${this.items}"
-          >
-        </lrndesign-gallery-grid>
-        `
-      : html`
-          <lrndesign-gallery-carousel
-            accent-color="${this.accentColor}"
-            .aspect-ratio="${this.aspect}"
-            .extra-wide="${this.extra}"
-            ?dark="${this.dark}"
-            .gallery-id="${this.id}"
-            @item-changed="${e=>this.goToItem(e.detail)}"
-            responsive-size="${this.responsiveSize}"
-            .selected="${this.selected}"
-            sizing="${this.sizing === 'cover' || 'contain'}"
-            .sources="${this.items}"
-          >
-          </lrndesign-gallery-carousel>`
-      }
-</div>
-${this.editMode ? '' :  html`<slot hidden></slot>`}`;
+    return html` <div
+        id="gallery"
+        style="--lrndesign-gallery-image-aspect:${this
+          .aspectRatio};--lrndesign-gallery-image-height:${100 /
+        this.aspectRatio}%"
+      >
+        <div slot="title"><slot name="title"></slot></div>
+        <div slot="description"><slot name="description"></slot></div>
+        ${this.editMode
+          ? html`<div id="figures"><slot></slot></div>`
+          : this.layout === "masonry"
+          ? html`
+              <lrndesign-gallery-masonry
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspect}"
+                .extra-wide="${this.extra}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                @item-changed="${(e) => this.goToItem(e.detail)}"
+                responsive-size="${this.responsiveSize}"
+                .selected="${this.selected}"
+                .sources="${this.items}"
+              >
+              </lrndesign-gallery-masonry>
+            `
+          : this.grid || this.layout === "grid"
+          ? html`
+              <lrndesign-gallery-grid
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspect}"
+                .extra-wide="${this.extra}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                @item-changed="${(e) => this.goToItem(e.detail)}"
+                responsive-size="${this.responsiveSize}"
+                .selected="${this.selected}"
+                sizing="${this.sizing === "cover" || "contain"}"
+                .sources="${this.items}"
+              >
+              </lrndesign-gallery-grid>
+            `
+          : html` <lrndesign-gallery-carousel
+              accent-color="${this.accentColor}"
+              .aspect-ratio="${this.aspect}"
+              .extra-wide="${this.extra}"
+              ?dark="${this.dark}"
+              .gallery-id="${this.id}"
+              @item-changed="${(e) => this.goToItem(e.detail)}"
+              responsive-size="${this.responsiveSize}"
+              .selected="${this.selected}"
+              sizing="${this.sizing === "cover" || "contain"}"
+              .sources="${this.items}"
+            >
+            </lrndesign-gallery-carousel>`}
+      </div>
+      ${this.editMode ? "" : html`<slot hidden></slot>`}`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": false,
-  "canPosition": false,
-  "canEditSource": true,
-  "contentEditable": true,
-  "gizmo": {
-    "title": "Image Gallery",
-    "description": "An image gallery displayed as a carousel or a grid",
-    "icon": "image:collections",
-    "color": "cyan",
-    "groups": ["Content", "Instructional", "Media", "Image"],
-    "handles": [
-      {
-        "type": "image",
-        "source": "image"
-      }
-    ],
-    "meta": {
-      "author": "ELMS:LN"
-    }
-  },
-  "settings": {
-    "configure": [
-      {
-        "slot": "title",
-        "title": "Optional Gallery Title",
-        "description": "Am optional title for the gallery.",
-        "inputMethod": "textfield",
-        "slotWrapper": "h1",
-        "allowedSlotWrappers": ["h1", "h2", "h3", "h4", "h5", "h5"]
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      contentEditable: true,
+      gizmo: {
+        title: "Image Gallery",
+        description: "An image gallery displayed as a carousel or a grid",
+        icon: "image:collections",
+        color: "cyan",
+        groups: ["Content", "Instructional", "Media", "Image"],
+        handles: [
+          {
+            type: "image",
+            source: "image",
+          },
+        ],
+        meta: {
+          author: "ELMS:LN",
+        },
       },
-      {
-        "slot": "description",
-        "title": "OptionalGallery Description",
-        "description": "An optional description for the gallery.",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "allowedSlotWrappers": ["p", "div"]
+      settings: {
+        configure: [
+          {
+            slot: "title",
+            title: "Optional Gallery Title",
+            description: "Am optional title for the gallery.",
+            inputMethod: "textfield",
+            slotWrapper: "h1",
+            allowedSlotWrappers: ["h1", "h2", "h3", "h4", "h5", "h5"],
+          },
+          {
+            slot: "description",
+            title: "OptionalGallery Description",
+            description: "An optional description for the gallery.",
+            inputMethod: "textfield",
+            slotWrapper: "p",
+            allowedSlotWrappers: ["p", "div"],
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+          },
+          {
+            property: "layout",
+            title: "Layout",
+            description: "Display as grid?",
+            inputMethod: "select",
+            itemsList: ["carousel", "grid", "masonry"],
+          },
+          {
+            slot: "",
+            title: "Gallery Figures",
+            description: "The figures for the gallery.",
+            inputMethod: "textfield",
+            slotWrapper: "figure",
+          },
+        ],
+        advanced: [
+          {
+            property: "aspectRatio",
+            title: "Aspect Ratio",
+            description:
+              "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
+            inputMethod: "textfield",
+          },
+          {
+            property: "sizing",
+            title: "Fit to Aspect Ratio",
+            description: "Fit images to aspect ratio",
+            inputMethod: "select",
+            options: {
+              cover: "crop",
+              contain: "letterbox",
+            },
+          },
+        ],
       },
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "An optional accent color.",
-        "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Enable Dark Theme",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "layout",
-        "title": "Layout",
-        "description": "Display as grid?",
-        "inputMethod": "select",
-        "itemsList": ["carousel", "grid", "masonry"]
-      },
-      {
-        "slot": "",
-        "title": "Gallery Figures",
-        "description": "The figures for the gallery.",
-        "inputMethod": "textfield",
-        "slotWrapper": "figure"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "aspectRatio",
-        "title": "Aspect Ratio",
-        "description": "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "sizing",
-        "title": "Fit to Aspect Ratio",
-        "description": "Fit images to aspect ratio",
-        "inputMethod": "select",
-        "options": {
-          "cover": "crop",
-          "contain": "letterbox"
-        }
-      }
-    ]
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "id": {
-    "type": String,
-    "reflect": true,
-    "attribute": "id"
-  },
-  "responsiveSize": {
-    "type": String,
-    "reflect": true,
-    "attribute": "responsive-size"
-  },
-  "editMode": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "edit-mode"
-  }
-}
-;
+      ...super.properties,
+
+      id: {
+        type: String,
+        reflect: true,
+        attribute: "id",
+      },
+      responsiveSize: {
+        type: String,
+        reflect: true,
+        attribute: "responsive-size",
+      },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
+      },
+    };
   }
 
   /**

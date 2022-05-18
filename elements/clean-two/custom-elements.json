@@ -29,6 +29,10 @@
           "default": "false"
         },
         {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
@@ -132,6 +136,11 @@
           "attribute": "showQRCode",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
         },
         {
           "name": "menuOpen",
@@ -246,10 +255,10 @@
           "name": "hax-cancel"
         },
         {
-          "name": "simple-toast-hide"
+          "name": "haxcms-toast-hide"
         },
         {
-          "name": "simple-toast-show"
+          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -305,6 +314,10 @@
           "default": "false"
         },
         {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
           "name": "menu-open",
           "type": "boolean",
           "default": "true"
@@ -408,6 +421,11 @@
           "attribute": "showQRCode",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
         },
         {
           "name": "menuOpen",
@@ -522,10 +540,10 @@
           "name": "hax-cancel"
         },
         {
-          "name": "simple-toast-hide"
+          "name": "haxcms-toast-hide"
         },
         {
-          "name": "simple-toast-show"
+          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"

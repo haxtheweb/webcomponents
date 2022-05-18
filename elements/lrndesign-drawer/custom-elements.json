@@ -1,248 +1,53 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`",
+      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - State for if it is currently open.\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
+          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: icon"
         },
         {
           "name": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
+          "description": "`align` {`string`} - Side of the screen to align the flyout (right or left)\n\nProperty: align\n\nDefault: left"
         },
         {
           "name": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
-        },
-        {
-          "name": "align",
-          "attribute": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`alt` {`string`} - Alt / hover text for this link\n\nProperty: alt\n\nDefault: "
         }
       ]
     },
     {
       "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`",
+      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - State for if it is currently open.\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
+          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: icon"
         },
         {
           "name": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
+          "description": "`align` {`string`} - Side of the screen to align the flyout (right or left)\n\nProperty: align\n\nDefault: left"
         },
         {
           "name": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
-        },
-        {
-          "name": "align",
-          "attribute": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`",
-      "attributes": [
-        {
-          "name": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
-        },
-        {
-          "name": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "description": "State for if it is currently open.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon to present for clicking.",
-          "type": "string",
-          "default": "\"icon\""
-        },
-        {
-          "name": "align",
-          "attribute": "align",
-          "description": "Side of the screen to align the flyout (right or left)",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt / hover text for this link",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`alt` {`string`} - Alt / hover text for this link\n\nProperty: alt\n\nDefault: "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

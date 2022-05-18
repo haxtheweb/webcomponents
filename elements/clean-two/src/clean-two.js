@@ -519,7 +519,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".body-wrapper");
   }

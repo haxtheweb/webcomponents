@@ -1,658 +1,241 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
+      "name": "confetti-container",
+      "description": "Attributes:\n\n  * `popped` {} - \n\nProperties:\n\n  * `canvas` - \n\n  * `confetti` {`never[]`} - \n\n  * `sequins` {`never[]`} - \n\n  * `options` - ",
       "attributes": [
         {
-          "name": "positionTarget",
-          "type": "object"
-        },
-        {
-          "name": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
-        },
-        {
-          "name": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
-        },
+          "name": "popped",
+          "description": "`popped` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "multiple-choice-response",
+      "description": "`multiple-choice-response`\n`Ask the user a question from a set of possible answers.`\n\nAttributes:\n\n  * `disabled` {`boolean`} - whether the response is correct\n\n  * `text` {`string`} - text of response\n\n  * `answer-id` {`string`} - unique identifier for response\n\n  * `__fieldLabel` {`string`} - \n\n  * `correct` {`boolean`} - whether the response is correct\n\nProperties:\n\n  * `disabled` {`boolean`} - whether the response is correct\n\n  * `text` {`string`} - text of response\n\n  * `answerId` {`string`} - unique identifier for response\n\n  * `__fieldLabel` {`string`} - \n\n  * `correct` {`boolean`} - whether the response is correct\n\n  * `type` {`string`} - ",
+      "attributes": [
         {
           "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - whether the response is correct\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
-          "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
+          "name": "text",
+          "description": "`text` {`string`} - text of response\n\nProperty: text"
         },
         {
-          "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
+          "name": "answer-id",
+          "description": "`answer-id` {`string`} - unique identifier for response\n\nProperty: answerId"
         },
         {
-          "name": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
+          "name": "__fieldLabel",
+          "description": "`__fieldLabel` {`string`} - \n\nProperty: __fieldLabel"
         },
         {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
-        },
-        {
-          "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
-        },
-        {
-          "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "positionTarget",
-          "attribute": "positionTarget",
-          "type": "object"
-        },
-        {
-          "name": "relatedResource",
-          "attribute": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
-        },
-        {
-          "name": "randomize",
-          "attribute": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "hideButtons",
-          "attribute": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "singleOption",
-          "attribute": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "checkLabel",
-          "attribute": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
-        },
-        {
-          "name": "resetLabel",
-          "attribute": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
-        },
-        {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "question",
-          "attribute": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "answers",
-          "attribute": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "attribute": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "correctText",
-          "attribute": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
-        },
-        {
-          "name": "incorrectText",
-          "attribute": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
-        },
-        {
-          "name": "quizName",
-          "attribute": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "events": [
-        {
-          "name": "user-engagement"
+          "name": "correct",
+          "description": "`correct` {`boolean`} - whether the response is correct\n\nProperty: correct\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `edit-mode` {`boolean`} - flag to hide buttons\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `inputType` {`string`} - \n\n  * `isCorrect` {`boolean`} - if the current answers are correct\n\n  * `correctAnswers` {`string`} - gets a JSON object of alphabetized correct answers\n\n  * `__ctr` {`number`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `editMode` {`boolean`} - flag to hide buttons\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "positionTarget",
-          "type": "object"
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
         },
         {
-          "name": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
+          "name": "userGuess",
+          "description": "`userGuess` {`any[]`} - \n\nProperty: userGuess"
         },
         {
           "name": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
+          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
+          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
+          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check Answer"
         },
         {
           "name": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
+          "description": "`reset-label` {`string`} - Text of the reset button\n\nProperty: resetLabel\n\nDefault: Reset"
         },
         {
           "name": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
+          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
         },
         {
           "name": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
+          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
         },
         {
           "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
+          "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - flag to hide buttons\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
+          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
+        },
+        {
+          "name": "correct-icon",
+          "description": "`correct-icon` {`string`} - Correct answer text to display\n\nProperty: correctIcon\n\nDefault: icons:thumb-up"
         },
         {
           "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
+          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
+        },
+        {
+          "name": "incorrect-icon",
+          "description": "`incorrect-icon` {`string`} - Incorrect answer text to display\n\nProperty: incorrectIcon\n\nDefault: icons:thumb-down"
         },
         {
           "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "positionTarget",
-          "attribute": "positionTarget",
-          "type": "object"
+          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
         },
         {
-          "name": "relatedResource",
-          "attribute": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "randomize",
-          "attribute": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "hideButtons",
-          "attribute": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "singleOption",
-          "attribute": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "checkLabel",
-          "attribute": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
-        },
-        {
-          "name": "resetLabel",
-          "attribute": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
-        },
-        {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "question",
-          "attribute": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "answers",
-          "attribute": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "attribute": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "correctText",
-          "attribute": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
-        },
-        {
-          "name": "incorrectText",
-          "attribute": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
-        },
-        {
-          "name": "quizName",
-          "attribute": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "events": [
-        {
-          "name": "user-engagement"
+          "name": "onuser-engagement",
+          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
         }
       ]
     },
     {
-      "name": "tag",
-      "events": [
-        {
-          "name": "user-engagement"
-        }
-      ]
+      "name": "confetti-container",
+      "attributes": []
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `edit-mode` {`boolean`} - flag to hide buttons\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `userGuess` {`any[]`} - \n\n  * `inputType` {`string`} - \n\n  * `isCorrect` {`boolean`} - if the current answers are correct\n\n  * `correctAnswers` {`string`} - gets a JSON object of alphabetized correct answers\n\n  * `__ctr` {`number`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `editMode` {`boolean`} - flag to hide buttons\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "positionTarget",
-          "type": "object"
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
         },
         {
-          "name": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
+          "name": "userGuess",
+          "description": "`userGuess` {`any[]`} - \n\nProperty: userGuess"
         },
         {
           "name": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
+          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
+          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
+          "description": "`check-label` {`string`} - Text of the label to check your answer\n\nProperty: checkLabel\n\nDefault: Check Answer"
         },
         {
           "name": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
+          "description": "`reset-label` {`string`} - Text of the reset button\n\nProperty: resetLabel\n\nDefault: Reset"
         },
         {
           "name": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
+          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
         },
         {
           "name": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
+          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
         },
         {
           "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
+          "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - flag to hide buttons\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
+          "description": "`correct-text` {`string`} - Correct answer text to display\n\nProperty: correctText\n\nDefault: Great job!"
+        },
+        {
+          "name": "correct-icon",
+          "description": "`correct-icon` {`string`} - Correct answer text to display\n\nProperty: correctIcon\n\nDefault: icons:thumb-up"
         },
         {
           "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
+          "description": "`incorrect-text` {`string`} - Incorrect answer text to display\n\nProperty: incorrectText\n\nDefault: Better luck next time!"
+        },
+        {
+          "name": "incorrect-icon",
+          "description": "`incorrect-icon` {`string`} - Incorrect answer text to display\n\nProperty: incorrectIcon\n\nDefault: icons:thumb-down"
         },
         {
           "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "positionTarget",
-          "attribute": "positionTarget",
-          "type": "object"
+          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
         },
         {
-          "name": "relatedResource",
-          "attribute": "related-resource",
-          "description": "Related Resource ID",
-          "type": "string"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "randomize",
-          "attribute": "randomize",
-          "description": "Randomize the display of the answers",
-          "type": "boolean",
-          "default": "false"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "hideButtons",
-          "attribute": "hide-buttons",
-          "description": "flag to hide buttons",
-          "type": "boolean",
-          "default": "false"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "singleOption",
-          "attribute": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "checkLabel",
-          "attribute": "check-label",
-          "description": "Text of the label to check your answer",
-          "type": "string",
-          "default": "\"Check answer\""
-        },
-        {
-          "name": "resetLabel",
-          "attribute": "reset-label",
-          "description": "Text of the reset button",
-          "type": "string",
-          "default": "\"Reset\""
-        },
-        {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "Flag to hide the title",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "question",
-          "attribute": "question",
-          "description": "Question to ask",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "answers",
-          "attribute": "answers",
-          "description": "Array of possible answers",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "attribute": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "correctText",
-          "attribute": "correct-text",
-          "description": "Correct answer text to display",
-          "type": "string",
-          "default": "\"Great job!\""
-        },
-        {
-          "name": "incorrectText",
-          "attribute": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "type": "string",
-          "default": "\"Better luck next time!\""
-        },
-        {
-          "name": "quizName",
-          "attribute": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "type": "string",
-          "default": "\"default\""
-        }
-      ],
-      "events": [
-        {
-          "name": "user-engagement"
+          "name": "onuser-engagement",
+          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

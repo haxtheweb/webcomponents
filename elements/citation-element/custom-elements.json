@@ -1,341 +1,99 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "citation-element",
-      "description": "`citation-element`",
+      "description": "`citation-element`\nAn element dedicated to presenting and managing a correct citation on the web\nboth visually as well as semantically with simple inputs.\n\nAttributes:\n\n  * `title` {`string`} - Title of the work.\n\n  * `display-method` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\n  * `creator` {`string`} - Person or group that owns / created the work.\n\n  * `date` {`string`} - Date the work was accessed.\n\n  * `license-name` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\n  * `license-link` {`string`} - License link for more details\n\n  * `license` {`string`} - License short hand. Options cc0,\n\n  * `scope` {`string`} - License scope\n\n  * `source` {`string`} - Original Source of the work in question\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title of the work.\n\n  * `displayMethod` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\n  * `creator` {`string`} - Person or group that owns / created the work.\n\n  * `date` {`string`} - Date the work was accessed.\n\n  * `licenseName` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\n  * `licenseLink` {`string`} - License link for more details\n\n  * `license` {`string`} - License short hand. Options cc0,\n\n  * `scope` {`string`} - License scope\n\n  * `source` {`string`} - Original Source of the work in question\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "title",
-          "description": "Title of the work.",
-          "type": "string"
+          "description": "`title` {`string`} - Title of the work.\n\nProperty: title"
         },
         {
           "name": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
+          "description": "`display-method` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\nProperty: displayMethod"
         },
         {
           "name": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
+          "description": "`creator` {`string`} - Person or group that owns / created the work.\n\nProperty: creator"
         },
         {
           "name": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
+          "description": "`date` {`string`} - Date the work was accessed.\n\nProperty: date"
         },
         {
           "name": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
+          "description": "`license-name` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\nProperty: licenseName"
         },
         {
           "name": "license-link",
-          "description": "License link for more details",
-          "type": "string"
+          "description": "`license-link` {`string`} - License link for more details\n\nProperty: licenseLink"
         },
         {
           "name": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
+          "description": "`license` {`string`} - License short hand. Options cc0,\n\nProperty: license"
         },
         {
           "name": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
+          "description": "`scope` {`string`} - License scope\n\nProperty: scope\n\nDefault: sibling"
         },
         {
           "name": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of the work.",
-          "type": "string"
+          "description": "`source` {`string`} - Original Source of the work in question\n\nProperty: source\n\nDefault: "
         },
         {
-          "name": "displayMethod",
-          "attribute": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
-        },
-        {
-          "name": "creator",
-          "attribute": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
-        },
-        {
-          "name": "licenseName",
-          "attribute": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
-        },
-        {
-          "name": "licenseLink",
-          "attribute": "license-link",
-          "description": "License link for more details",
-          "type": "string"
-        },
-        {
-          "name": "license",
-          "attribute": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
-        },
-        {
-          "name": "scope",
-          "attribute": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "citation-element",
-      "description": "`citation-element`",
+      "description": "`citation-element`\nAn element dedicated to presenting and managing a correct citation on the web\nboth visually as well as semantically with simple inputs.\n\nAttributes:\n\n  * `title` {`string`} - Title of the work.\n\n  * `display-method` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\n  * `creator` {`string`} - Person or group that owns / created the work.\n\n  * `date` {`string`} - Date the work was accessed.\n\n  * `license-name` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\n  * `license-link` {`string`} - License link for more details\n\n  * `license` {`string`} - License short hand. Options cc0,\n\n  * `scope` {`string`} - License scope\n\n  * `source` {`string`} - Original Source of the work in question\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title of the work.\n\n  * `displayMethod` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\n  * `creator` {`string`} - Person or group that owns / created the work.\n\n  * `date` {`string`} - Date the work was accessed.\n\n  * `licenseName` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\n  * `licenseLink` {`string`} - License link for more details\n\n  * `license` {`string`} - License short hand. Options cc0,\n\n  * `scope` {`string`} - License scope\n\n  * `source` {`string`} - Original Source of the work in question\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "title",
-          "description": "Title of the work.",
-          "type": "string"
+          "description": "`title` {`string`} - Title of the work.\n\nProperty: title"
         },
         {
           "name": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
+          "description": "`display-method` {`string`} - How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible\n\nProperty: displayMethod"
         },
         {
           "name": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
+          "description": "`creator` {`string`} - Person or group that owns / created the work.\n\nProperty: creator"
         },
         {
           "name": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
+          "description": "`date` {`string`} - Date the work was accessed.\n\nProperty: date"
         },
         {
           "name": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
+          "description": "`license-name` {`string`} - License name, calculated or supplied by the end user if we don't have them.\n\nProperty: licenseName"
         },
         {
           "name": "license-link",
-          "description": "License link for more details",
-          "type": "string"
+          "description": "`license-link` {`string`} - License link for more details\n\nProperty: licenseLink"
         },
         {
           "name": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
+          "description": "`license` {`string`} - License short hand. Options cc0,\n\nProperty: license"
         },
         {
           "name": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
+          "description": "`scope` {`string`} - License scope\n\nProperty: scope\n\nDefault: sibling"
         },
         {
           "name": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of the work.",
-          "type": "string"
+          "description": "`source` {`string`} - Original Source of the work in question\n\nProperty: source\n\nDefault: "
         },
         {
-          "name": "displayMethod",
-          "attribute": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
-        },
-        {
-          "name": "creator",
-          "attribute": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
-        },
-        {
-          "name": "licenseName",
-          "attribute": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
-        },
-        {
-          "name": "licenseLink",
-          "attribute": "license-link",
-          "description": "License link for more details",
-          "type": "string"
-        },
-        {
-          "name": "license",
-          "attribute": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
-        },
-        {
-          "name": "scope",
-          "attribute": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "citation-element",
-      "description": "`citation-element`",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title of the work.",
-          "type": "string"
-        },
-        {
-          "name": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
-        },
-        {
-          "name": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
-        },
-        {
-          "name": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
-        },
-        {
-          "name": "license-link",
-          "description": "License link for more details",
-          "type": "string"
-        },
-        {
-          "name": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
-        },
-        {
-          "name": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
-        },
-        {
-          "name": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of the work.",
-          "type": "string"
-        },
-        {
-          "name": "displayMethod",
-          "attribute": "display-method",
-          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
-          "type": "string"
-        },
-        {
-          "name": "creator",
-          "attribute": "creator",
-          "description": "Person or group that owns / created the work.",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "description": "Date the work was accessed.",
-          "type": "string"
-        },
-        {
-          "name": "licenseName",
-          "attribute": "license-name",
-          "description": "License name, calculated or supplied by the end user if we don't have them.",
-          "type": "string"
-        },
-        {
-          "name": "licenseLink",
-          "attribute": "license-link",
-          "description": "License link for more details",
-          "type": "string"
-        },
-        {
-          "name": "license",
-          "attribute": "license",
-          "description": "License short hand. Options cc0,",
-          "type": "string"
-        },
-        {
-          "name": "scope",
-          "attribute": "scope",
-          "description": "License scope",
-          "type": "string",
-          "default": "\"sibling\""
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "description": "Original Source of the work in question",
-          "type": "string",
-          "default": "\"\""
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

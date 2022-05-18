@@ -770,7 +770,9 @@ class LrnappCis extends PolymerElement {
 
       this.$.confirm.toggleDialog();
       setTimeout(() => {
-        document.querySelector("simple-modal div.buttons button[data-letsdoit]").addEventListener('click', this._confirmBuild.bind(this));        
+        document
+          .querySelector("simple-modal div.buttons button[data-letsdoit]")
+          .addEventListener("click", this._confirmBuild.bind(this));
       }, 250);
     } else {
       console.log("that was not a valid service..");

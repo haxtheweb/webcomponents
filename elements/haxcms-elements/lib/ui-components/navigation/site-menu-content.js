@@ -28,8 +28,15 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     autorun((reaction) => {
       this.contentContainer = store.themeElement;
       // target container if we have a fixed UI layout
-      if (this.contentContainer && this.contentContainer.HAXCMSThemeSettings && this.contentContainer.HAXCMSThemeSettings.scrollTarget) {
-        this.contentContainer.HAXCMSThemeSettings.scrollTarget.addEventListener("scroll", this._applyScrollDetect.bind(this));
+      if (
+        this.contentContainer &&
+        this.contentContainer.HAXCMSThemeSettings &&
+        this.contentContainer.HAXCMSThemeSettings.scrollTarget
+      ) {
+        this.contentContainer.HAXCMSThemeSettings.scrollTarget.addEventListener(
+          "scroll",
+          this._applyScrollDetect.bind(this)
+        );
       }
       setTimeout(() => {
         this.updateMenu();

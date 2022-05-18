@@ -117,7 +117,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           min-height: fill-available;
           /* if the user has set a specific value then override the defaults */
           min-height: var(--outline-player-min-height);
-        }        
+        }
 
         outline-player-navigation {
           --outline-player-dark: var(--outline-player-dark);
@@ -222,7 +222,6 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         :host([responsive-size="xs"]) site-git-corner {
           display: none;
         }
-        
       `,
     ];
   }

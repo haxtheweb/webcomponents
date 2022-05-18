@@ -1,182 +1,49 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "lrndesign-stepper",
-      "description": "`lrndesign-stepper`\nvisualization of steps",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-stepper",
-      "description": "`lrndesign-stepper`\nvisualization of steps",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
       "name": "lrndesign-stepper-button",
-      "description": "`lrndesign-stepper-button`\nvisualization of steps",
+      "description": "`lrndesign-stepper-button`\nvisualization of steps\n\nAttributes:\n\n  * `title` {`string`} - The button title.\n\n  * `icon` {`string`} - The button icon.\n\n  * `url` {`string`} - The url for button.\n\n  * `location` {`string`} - The tab location position (start / middle / end).\n\n  * `collapsible` {`boolean`} - Allow for collapsible content with the items inside\n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - The button title.\n\n  * `icon` {`string`} - The button icon.\n\n  * `url` {`string`} - The url for button.\n\n  * `location` {`string`} - The tab location position (start / middle / end).\n\n  * `collapsible` {`boolean`} - Allow for collapsible content with the items inside\n\n  * `opened` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "The button title.",
-          "type": "string"
+          "description": "`title` {`string`} - The button title.\n\nProperty: title"
         },
         {
           "name": "icon",
-          "description": "The button icon.",
-          "type": "string"
+          "description": "`icon` {`string`} - The button icon.\n\nProperty: icon"
         },
         {
           "name": "url",
-          "description": "The url for button.",
-          "type": "string"
+          "description": "`url` {`string`} - The url for button.\n\nProperty: url"
         },
         {
           "name": "location",
-          "description": "The tab location position (start / middle / end).",
-          "type": "string"
+          "description": "`location` {`string`} - The tab location position (start / middle / end).\n\nProperty: location"
         },
         {
           "name": "collapsible",
-          "description": "Allow for collapsible content with the items inside",
-          "type": "boolean",
-          "default": "false"
+          "description": "`collapsible` {`boolean`} - Allow for collapsible content with the items inside\n\nProperty: collapsible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "The button title.",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "The button icon.",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "The url for button.",
-          "type": "string"
-        },
-        {
-          "name": "location",
-          "attribute": "location",
-          "description": "The tab location position (start / middle / end).",
-          "type": "string"
-        },
-        {
-          "name": "collapsible",
-          "attribute": "collapsible",
-          "description": "Allow for collapsible content with the items inside",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lrndesign-stepper",
-      "description": "`lrndesign-stepper`\nvisualization of steps",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
+      "description": "`lrndesign-stepper`\nvisualization of steps\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
+    },
+    {
+      "name": "lrndesign-stepper",
+      "description": "`lrndesign-stepper`\nvisualization of steps\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

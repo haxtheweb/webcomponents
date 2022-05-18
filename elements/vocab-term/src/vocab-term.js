@@ -21,10 +21,10 @@ class VocabTerm extends LitElement {
   static get properties() {
     return {
       popoverMode: { type: Boolean, reflect: true, attribute: "popover-mode" },
-      detailsOpen: { type: Boolean},
+      detailsOpen: { type: Boolean },
       links: { type: Array },
       information: { type: String },
-      term: { type: String, },
+      term: { type: String },
     };
   }
   /**
@@ -183,10 +183,8 @@ class VocabTerm extends LitElement {
       this.shadowRoot
         .querySelector("summary")
         .addEventListener("focus", this.detailsFocusOut.bind(this));
-    }
-    else {
-      this.details = this.shadowRoot
-      .querySelector(`details`);
+    } else {
+      this.details = this.shadowRoot.querySelector(`details`);
     }
   }
 
@@ -206,16 +204,14 @@ class VocabTerm extends LitElement {
         if (this[propName]) {
           this.detailsOpen = false;
           if (this.shadowRoot) {
-            this.details = this.shadowRoot
-      .querySelector(`details`);
+            this.details = this.shadowRoot.querySelector(`details`);
           }
           this.addEventListener("click", this._handleClick.bind(this));
-        }
-        else {
+        } else {
           this.removeEventListener("click", this._handleClick.bind(this));
         }
       }
-    } );
+    });
   }
 }
 customElements.define(VocabTerm.tag, VocabTerm);

@@ -1,244 +1,81 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrn-markdown-editor-editor",
+      "description": "Events:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `content-updated` {`CustomEvent<{ content: any; }>`} - \n\nAttributes:\n\n  * `content` {`string`} - \n\nProperties:\n\n  * `content` {`string`} - ",
       "attributes": [
         {
           "name": "content",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "content",
-          "attribute": "content",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "content-changed"
+          "description": "`content` {`string`} - \n\nProperty: content"
         },
         {
-          "name": "content-updated"
+          "name": "oncontent-changed",
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "oncontent-updated",
+          "description": "`content-updated` {`CustomEvent<{ content: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
         {
-          "name": "selected",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
           "name": "layout",
-          "type": "string",
-          "default": "\"0\""
+          "description": "`layout` {`string`} - \n\nProperty: layout\n\nDefault: 0"
         },
         {
           "name": "content",
-          "type": "string",
-          "default": "\"\""
+          "description": "`content` {`string`} - \n\nProperty: content\n\nDefault: "
         },
         {
           "name": "cookies",
-          "type": "boolean",
-          "default": "true"
+          "description": "`cookies` {`boolean`} - \n\nProperty: cookies\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "selected",
-          "attribute": "selected",
-          "type": "string",
-          "default": "\"0\""
+          "description": "`el-ready` {`boolean`} - \n\nProperty: elReady\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "layout",
-          "attribute": "layout",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "content",
-          "attribute": "content",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "cookies",
-          "attribute": "cookies",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "elReady",
-          "attribute": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "content-changed"
+          "name": "oncontent-changed",
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
         {
-          "name": "selected",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
           "name": "layout",
-          "type": "string",
-          "default": "\"0\""
+          "description": "`layout` {`string`} - \n\nProperty: layout\n\nDefault: 0"
         },
         {
           "name": "content",
-          "type": "string",
-          "default": "\"\""
+          "description": "`content` {`string`} - \n\nProperty: content\n\nDefault: "
         },
         {
           "name": "cookies",
-          "type": "boolean",
-          "default": "true"
+          "description": "`cookies` {`boolean`} - \n\nProperty: cookies\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "selected",
-          "attribute": "selected",
-          "type": "string",
-          "default": "\"0\""
+          "description": "`el-ready` {`boolean`} - \n\nProperty: elReady\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "layout",
-          "attribute": "layout",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "content",
-          "attribute": "content",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "cookies",
-          "attribute": "cookies",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "elReady",
-          "attribute": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "content-changed"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "content-changed"
-        },
-        {
-          "name": "content-updated"
-        }
-      ]
-    },
-    {
-      "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`",
-      "attributes": [
-        {
-          "name": "selected",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "layout",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "content",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "cookies",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "selected",
-          "attribute": "selected",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "layout",
-          "attribute": "layout",
-          "type": "string",
-          "default": "\"0\""
-        },
-        {
-          "name": "content",
-          "attribute": "content",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "cookies",
-          "attribute": "cookies",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "elReady",
-          "attribute": "el-ready",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "content-changed"
+          "name": "oncontent-changed",
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

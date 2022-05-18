@@ -1,42 +1,39 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
-    },
-    {
-      "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "caption",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "caption",
-          "attribute": "caption",
-          "type": "string"
+          "description": "`caption` {`string`} - \n\nProperty: caption"
         }
       ]
     },
     {
-      "name": "full-width-image"
+      "name": "full-width-image",
+      "attributes": []
     },
     {
       "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source"
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - \n\nProperty: caption"
+        }
+      ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

@@ -61,7 +61,7 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
   }
 
   HAXCMSButtonClick(e) {
-    store.playSound('click');
+    store.playSound("click");
     let order = null;
     let title = this.t.newPage;
     let parent = null;

@@ -1,309 +1,118 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "lrnsys-outline",
-      "description": "`lrnsys-outline`",
-      "attributes": [
-        {
-          "name": "data",
-          "type": "array"
-        },
-        {
-          "name": "items",
-          "type": "array"
-        },
-        {
-          "name": "active-item",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "data",
-          "attribute": "data",
-          "type": "array"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array"
-        },
-        {
-          "name": "activeItem",
-          "attribute": "active-item",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "simple-modal-show"
-        },
-        {
-          "name": "simple-modal-hide"
-        }
-      ]
-    },
-    {
-      "name": "lrnsys-outline",
-      "description": "`lrnsys-outline`",
-      "attributes": [
-        {
-          "name": "data",
-          "type": "array"
-        },
-        {
-          "name": "items",
-          "type": "array"
-        },
-        {
-          "name": "active-item",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "data",
-          "attribute": "data",
-          "type": "array"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array"
-        },
-        {
-          "name": "activeItem",
-          "attribute": "active-item",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "simple-modal-show"
-        },
-        {
-          "name": "simple-modal-hide"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "simple-modal-show"
-        },
-        {
-          "name": "simple-modal-hide"
-        }
-      ]
-    },
-    {
       "name": "lrnsys-outline-item",
-      "description": "`lrnsys-outline-item`\nA LRN element",
+      "description": "`lrnsys-outline-item`\nA LRN element\n\nEvents:\n\n  * `attached-item` {`CustomEvent<{ item: this; }>`} - \n\n  * `focus-item` {`CustomEvent<this>`} - \n\n  * `delete-item` {`CustomEvent<{ item: this; }>`} - \n\n  * `indent-item` {`CustomEvent<{ item: this; increase: boolean; }>`} - \n\n  * `add-item` {`CustomEvent<{ item: this; value: any; new: any; }>`} - \n\n  * `move-item` {`CustomEvent<{ item: this; moveUp: boolean; }>`} - \n\n  * `blur-item` {`CustomEvent<this>`} - \n\n  * `change-item` {`CustomEvent<{ item: this; value: any; }>`} - \n\nAttributes:\n\n  * `indent-level` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `indentLevel` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "indent-level",
-          "type": "number",
-          "default": "0"
+          "description": "`indent-level` {`number`} - \n\nProperty: indentLevel\n\nDefault: 0"
         },
         {
           "name": "index",
-          "type": "number",
-          "default": "0"
+          "description": "`index` {`number`} - \n\nProperty: index\n\nDefault: 0"
         },
         {
           "name": "parent",
-          "type": "string"
+          "description": "`parent` {`string`} - \n\nProperty: parent\n\nDefault: null"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
         },
         {
           "name": "focus-state",
-          "description": "Tracks if focus state is applied",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "indentLevel",
-          "attribute": "indent-level",
-          "type": "number",
-          "default": "0"
+          "description": "`focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "index",
-          "attribute": "index",
-          "type": "number",
-          "default": "0"
+          "name": "onattached-item",
+          "description": "`attached-item` {`CustomEvent<{ item: this; }>`} - "
         },
         {
-          "name": "parent",
-          "attribute": "parent",
-          "type": "string"
+          "name": "onfocus-item",
+          "description": "`focus-item` {`CustomEvent<this>`} - "
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
+          "name": "ondelete-item",
+          "description": "`delete-item` {`CustomEvent<{ item: this; }>`} - "
         },
         {
-          "name": "focusState",
-          "attribute": "focus-state",
-          "description": "Tracks if focus state is applied",
-          "type": "boolean",
-          "default": "false"
+          "name": "onindent-item",
+          "description": "`indent-item` {`CustomEvent<{ item: this; increase: boolean; }>`} - "
         },
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "onadd-item",
+          "description": "`add-item` {`CustomEvent<{ item: this; value: any; new: any; }>`} - "
         },
         {
-          "name": "importPath",
-          "type": "string"
+          "name": "onmove-item",
+          "description": "`move-item` {`CustomEvent<{ item: this; moveUp: boolean; }>`} - "
         },
         {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+          "name": "onblur-item",
+          "description": "`blur-item` {`CustomEvent<this>`} - "
         },
         {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "attached-item"
-        },
-        {
-          "name": "focus-item"
-        },
-        {
-          "name": "delete-item"
-        },
-        {
-          "name": "indent-item"
-        },
-        {
-          "name": "add-item"
-        },
-        {
-          "name": "move-item"
-        },
-        {
-          "name": "change-item"
+          "name": "onchange-item",
+          "description": "`change-item` {`CustomEvent<{ item: this; value: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrnsys-outline",
-      "description": "`lrnsys-outline`",
+      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "data",
-          "type": "array"
+          "description": "`data` {`any[]`} - \n\nProperty: data\n\nDefault: null"
         },
         {
           "name": "items",
-          "type": "array"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: null"
         },
         {
           "name": "active-item",
-          "type": "object"
+          "description": "`active-item` - \n\nProperty: activeItem"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
-      ],
-      "properties": [
+      ]
+    },
+    {
+      "name": "lrnsys-outline",
+      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
         {
           "name": "data",
-          "attribute": "data",
-          "type": "array"
+          "description": "`data` {`any[]`} - \n\nProperty: data\n\nDefault: null"
         },
         {
           "name": "items",
-          "attribute": "items",
-          "type": "array"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: null"
         },
         {
-          "name": "activeItem",
-          "attribute": "active-item",
-          "type": "object"
+          "name": "active-item",
+          "description": "`active-item` - \n\nProperty: activeItem"
         },
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "simple-modal-show"
-        },
-        {
-          "name": "simple-modal-hide"
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

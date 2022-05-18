@@ -1,356 +1,83 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrndesign-contactcard",
-      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "description": "`lrndesign-contactcard`\nlrndesign-contactcard\n\nAttributes:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\nProperties:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
+          "description": "`image` {`string`} - A url to the image in question.\n\nProperty: image"
         },
         {
           "name": "email",
-          "description": "The email address of the user.",
-          "type": "string"
+          "description": "`email` {`string`} - The email address of the user.\n\nProperty: email"
         },
         {
           "name": "name",
-          "description": "The name of the user.",
-          "type": "string"
+          "description": "`name` {`string`} - The name of the user.\n\nProperty: name"
         },
         {
           "name": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
+          "description": "`position` {`string`} - The job-title / position of the user.\n\nProperty: position"
         },
         {
           "name": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
+          "description": "`organization` {`string`} - The employer / organization of the user.\n\nProperty: organization"
         },
         {
           "name": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
+          "description": "`phone` {`string`} - The phone number of the user.\n\nProperty: phone"
         },
         {
           "name": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
+          "description": "`website` {`string`} - The associated website of the user.\n\nProperty: website"
         },
         {
           "name": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "attribute": "email",
-          "description": "The email address of the user.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name of the user.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
-        },
-        {
-          "name": "organization",
-          "attribute": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
-        },
-        {
-          "name": "phone",
-          "attribute": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
-        },
-        {
-          "name": "website",
-          "attribute": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`twitter` {`string`} - Twitter account of the user.\n\nProperty: twitter"
         }
       ]
     },
     {
       "name": "lrndesign-contactcard",
-      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "description": "`lrndesign-contactcard`\nlrndesign-contactcard\n\nAttributes:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\nProperties:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
+          "description": "`image` {`string`} - A url to the image in question.\n\nProperty: image"
         },
         {
           "name": "email",
-          "description": "The email address of the user.",
-          "type": "string"
+          "description": "`email` {`string`} - The email address of the user.\n\nProperty: email"
         },
         {
           "name": "name",
-          "description": "The name of the user.",
-          "type": "string"
+          "description": "`name` {`string`} - The name of the user.\n\nProperty: name"
         },
         {
           "name": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
+          "description": "`position` {`string`} - The job-title / position of the user.\n\nProperty: position"
         },
         {
           "name": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
+          "description": "`organization` {`string`} - The employer / organization of the user.\n\nProperty: organization"
         },
         {
           "name": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
+          "description": "`phone` {`string`} - The phone number of the user.\n\nProperty: phone"
         },
         {
           "name": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
+          "description": "`website` {`string`} - The associated website of the user.\n\nProperty: website"
         },
         {
           "name": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "attribute": "email",
-          "description": "The email address of the user.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name of the user.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
-        },
-        {
-          "name": "organization",
-          "attribute": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
-        },
-        {
-          "name": "phone",
-          "attribute": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
-        },
-        {
-          "name": "website",
-          "attribute": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrndesign-contactcard",
-      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
-      "attributes": [
-        {
-          "name": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "description": "The email address of the user.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "description": "The name of the user.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
-        },
-        {
-          "name": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
-        },
-        {
-          "name": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
-        },
-        {
-          "name": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
-        },
-        {
-          "name": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "A url to the image in question.",
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "attribute": "email",
-          "description": "The email address of the user.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name of the user.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The job-title / position of the user.",
-          "type": "string"
-        },
-        {
-          "name": "organization",
-          "attribute": "organization",
-          "description": "The employer / organization of the user.",
-          "type": "string"
-        },
-        {
-          "name": "phone",
-          "attribute": "phone",
-          "description": "The phone number of the user.",
-          "type": "string"
-        },
-        {
-          "name": "website",
-          "attribute": "website",
-          "description": "The associated website of the user.",
-          "type": "string"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "Twitter account of the user.",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`twitter` {`string`} - Twitter account of the user.\n\nProperty: twitter"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

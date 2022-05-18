@@ -19,5 +19,6 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const UnityWebglStory = () => {
+  console.log(utils.makeElementFromClass(UnityWebgl));
   return utils.makeElementFromClass(UnityWebgl);
 };

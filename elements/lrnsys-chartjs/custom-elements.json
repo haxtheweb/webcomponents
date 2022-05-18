@@ -1,158 +1,35 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrnsys-chartjs",
-      "description": "`lrnsys-chartjs`\nA LRN element",
+      "description": "`lrnsys-chartjs`\nA LRN element\n\nAttributes:\n\n  * `labels` {`any[]`} - \n\n  * `data` - \n\nProperties:\n\n  * `labels` {`any[]`} - \n\n  * `data` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
+          "description": "`labels` {`any[]`} - \n\nProperty: labels\n\nDefault: January,February,March,April,May,June,July"
         },
         {
           "name": "data",
-          "type": "object",
-          "default": "{}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "labels",
-          "attribute": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
-        },
-        {
-          "name": "data",
-          "attribute": "data",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`data` - \n\nProperty: data\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "lrnsys-chartjs",
-      "description": "`lrnsys-chartjs`\nA LRN element",
+      "description": "`lrnsys-chartjs`\nA LRN element\n\nAttributes:\n\n  * `labels` {`any[]`} - \n\n  * `data` - \n\nProperties:\n\n  * `labels` {`any[]`} - \n\n  * `data` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
+          "description": "`labels` {`any[]`} - \n\nProperty: labels\n\nDefault: January,February,March,April,May,June,July"
         },
         {
           "name": "data",
-          "type": "object",
-          "default": "{}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "labels",
-          "attribute": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
-        },
-        {
-          "name": "data",
-          "attribute": "data",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrnsys-chartjs",
-      "description": "`lrnsys-chartjs`\nA LRN element",
-      "attributes": [
-        {
-          "name": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
-        },
-        {
-          "name": "data",
-          "type": "object",
-          "default": "{}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "labels",
-          "attribute": "labels",
-          "type": "array",
-          "default": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"]"
-        },
-        {
-          "name": "data",
-          "attribute": "data",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`data` - \n\nProperty: data\n\nDefault: [object Object]"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

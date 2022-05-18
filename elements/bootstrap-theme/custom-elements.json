@@ -12,6 +12,10 @@
           "default": "\"\""
         },
         {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
           "name": "hideUserStylesMenu",
           "type": "boolean",
           "default": "true"
@@ -113,6 +117,11 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
         },
         {
           "name": "hideUserStylesMenu",
@@ -238,7 +247,7 @@
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"
@@ -367,6 +376,10 @@
           "default": "\"\""
         },
         {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
           "name": "hideUserStylesMenu",
           "type": "boolean",
           "default": "true"
@@ -468,6 +481,11 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
         },
         {
           "name": "hideUserStylesMenu",
@@ -593,7 +611,7 @@
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "haxcms-toast-show"
         },
         {
           "name": "content-container-changed"

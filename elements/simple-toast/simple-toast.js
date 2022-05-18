@@ -27,117 +27,121 @@ export const SimpleToastStore = window.SimpleToast.requestAvailability();
  * @element simple-toast
  */
 class SimpleToast extends SimpleColors {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-simple-toast-el {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  width: var(--simple-toast-width, auto);
-  color: var(--simple-toast-color, var(--simple-colors-default-theme-accent-1, white));
-  background-color: var(--simple-toast-bg, var(--simple-colors-default-theme-accent-12, black));
-  top: var(--simple-toast-top);
-  margin: var(--simple-toast-margin, 8px);
-  padding: var(--simple-toast-padding, 16px);
-  left: var(--simple-toast-left, 36px);
-  bottom: var(--simple-toast-bottom, 36px);
-  right: var(--simple-toast-right);
-  border: var(--simple-toast-border);
-  z-index: var(--simple-toast-z-index, 1000);
-  font-size: var(--simple-toast-font-size);
-}
+        simple-toast-el {
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          width: var(--simple-toast-width, auto);
+          color: var(
+            --simple-toast-color,
+            var(--simple-colors-default-theme-accent-1, white)
+          );
+          background-color: var(
+            --simple-toast-bg,
+            var(--simple-colors-default-theme-accent-12, black)
+          );
+          top: var(--simple-toast-top);
+          margin: var(--simple-toast-margin, 8px);
+          padding: var(--simple-toast-padding, 16px);
+          left: var(--simple-toast-left, 36px);
+          bottom: var(--simple-toast-bottom, 36px);
+          right: var(--simple-toast-right);
+          border: var(--simple-toast-border);
+          z-index: var(--simple-toast-z-index, 1000);
+          font-size: var(--simple-toast-font-size);
+        }
 
-button {
-  margin-left: 8px;
-}
-      `
+        button {
+          margin-left: 8px;
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<simple-toast-el
-id="toast"
-accent-color="${this.accentColor}"
-?dark="${this.dark}"
-text="${this.text}"
-duration="${this.duration}"
-?opened="${this.opened}"
-@opened-changed="${this.openedChanged}"
-.class="${this.classStyle}">
-  <slot></slot>
-  <button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</button>
-</simple-toast-el>`;
+    return html` <simple-toast-el
+      id="toast"
+      accent-color="${this.accentColor}"
+      ?dark="${this.dark}"
+      text="${this.text}"
+      duration="${this.duration}"
+      ?opened="${this.opened}"
+      @opened-changed="${this.openedChanged}"
+      .class="${this.classStyle}"
+    >
+      <slot></slot>
+      <button .hidden="${!this.closeButton}" @click="${this.hide}">
+        ${this.closeText}
+      </button>
+    </simple-toast-el>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * Opened state of the toast, use event to change
-   */
-  "opened": {
-    "type": Boolean,
-    "reflect": true
-  },
-  /**
-   * Plain text based message to display
-   */
-  "text": {
-    "type": String
-  },
-  /**
-   * Class name, fit-bottom being a useful one
-   */
-  "classStyle": {
-    "type": String,
-    "attribute": "class-style"
-  },
-  /**
-   * Text for the close button
-   */
-  "closeText": {
-    "type": String,
-    "attribute": "close-text"
-  },
-  /**
-   * How long the toast message should be displayed
-   */
-  "duration": {
-    "type": Number
-  },
-  /**
-   * Event callback when hide is called
-   */
-  "eventCallback": {
-    "type": String,
-    "attribute": "event-callback"
-  },
-  /**
-   * If there should be a close button shown
-   */
-  "closeButton": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "close-button"
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * Opened state of the toast, use event to change
+       */
+      opened: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Plain text based message to display
+       */
+      text: {
+        type: String,
+      },
+      /**
+       * Class name, fit-bottom being a useful one
+       */
+      classStyle: {
+        type: String,
+        attribute: "class-style",
+      },
+      /**
+       * Text for the close button
+       */
+      closeText: {
+        type: String,
+        attribute: "close-text",
+      },
+      /**
+       * How long the toast message should be displayed
+       */
+      duration: {
+        type: Number,
+      },
+      /**
+       * Event callback when hide is called
+       */
+      eventCallback: {
+        type: String,
+        attribute: "event-callback",
+      },
+      /**
+       * If there should be a close button shown
+       */
+      closeButton: {
+        type: Boolean,
+        reflect: true,
+        attribute: "close-button",
+      },
+    };
   }
 
   /**

@@ -1,460 +1,182 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
-      "properties": [
-        {
-          "name": "href",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "target",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "focusState",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "focus-changed"
-        }
-      ]
-    },
-    {
-      "name": "lrn-button",
+      "description": "Events:\n\n  * `focus-changed` {`CustomEvent<{ focus: any; }>`} - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - ",
       "attributes": [
         {
           "name": "href",
-          "type": "string",
-          "default": "\"#\""
+          "description": "`href` {`string`} - \n\nProperty: href\n\nDefault: #"
         },
         {
           "name": "show-href",
-          "type": "string"
+          "description": "`show-href` {`string`} - \n\nProperty: showHref\n\nDefault: false"
         },
         {
           "name": "raised",
-          "type": "boolean"
+          "description": "`raised` {`boolean`} - \n\nProperty: raised",
+          "valueSet": "v"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"\""
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
         },
         {
           "name": "target",
-          "type": "string",
-          "default": "\"\""
+          "description": "`target` {`string`} - \n\nProperty: target\n\nDefault: "
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: false"
         },
         {
           "name": "hover-class",
-          "type": "string"
+          "description": "`hover-class` {`string`} - \n\nProperty: hoverClass"
         },
         {
           "name": "icon-class",
-          "type": "string"
+          "description": "`icon-class` {`string`} - \n\nProperty: iconClass"
         },
         {
           "name": "inner-class",
-          "type": "string"
+          "description": "`inner-class` {`string`} - \n\nProperty: innerClass"
         },
         {
           "name": "color",
-          "type": "string"
+          "description": "`color` {`string`} - \n\nProperty: color"
         },
         {
           "name": "text-color",
-          "type": "string"
+          "description": "`text-color` {`string`} - \n\nProperty: textColor"
         },
         {
           "name": "prefetch",
-          "type": "string"
+          "description": "`prefetch` {`string`} - \n\nProperty: prefetch"
         },
         {
           "name": "alt",
-          "type": "string"
+          "description": "`alt` {`string`} - \n\nProperty: alt"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "focus-state",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "href",
-          "attribute": "href",
-          "type": "string",
-          "default": "\"#\""
+          "description": "`focus-state` {`boolean`} - \n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "showHref",
-          "attribute": "show-href",
-          "type": "string"
-        },
-        {
-          "name": "raised",
-          "attribute": "raised",
-          "type": "boolean"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "target",
-          "attribute": "target",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "hoverClass",
-          "attribute": "hover-class",
-          "type": "string"
-        },
-        {
-          "name": "iconClass",
-          "attribute": "icon-class",
-          "type": "string"
-        },
-        {
-          "name": "innerClass",
-          "attribute": "inner-class",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "type": "string"
-        },
-        {
-          "name": "textColor",
-          "attribute": "text-color",
-          "type": "string"
-        },
-        {
-          "name": "prefetch",
-          "attribute": "prefetch",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "focusState",
-          "attribute": "focus-state",
-          "type": "boolean"
-        },
-        {
-          "name": "templateUrl",
-          "type": "string"
-        },
-        {
-          "name": "propertiesUrl",
-          "type": "string"
-        },
-        {
-          "name": "HAXPropertiesUrl",
-          "type": "string"
-        },
-        {
-          "name": "styleUrl",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "focus-changed"
+          "name": "onfocus-changed",
+          "description": "`focus-changed` {`CustomEvent<{ focus: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `show-href` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `inner-class` {`string`} - Inner container classes.\n\n  * `text-color` {`boolean`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `accent-color` {`string`} - materializeCSS color class\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `showHref` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `iconClass` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `innerClass` {`string`} - Inner container classes.\n\n  * `textColor` {`boolean`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `accentColor` {`string`} - materializeCSS color class\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "show-href",
-          "description": "What to display for the resource",
-          "type": "string"
+          "description": "`show-href` {`string`} - What to display for the resource\n\nProperty: showHref"
         },
         {
           "name": "raised",
-          "description": "If the button should be visually lifted off the UI.",
-          "type": "boolean"
+          "description": "`raised` {`boolean`} - If the button should be visually lifted off the UI.\n\nProperty: raised",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "description": "iron-icon to use (with iconset if needed)",
-          "type": "string"
+          "description": "`icon` {`string`} - simple-icon to use (with iconset if needed)\n\nProperty: icon"
         },
         {
           "name": "hover-class",
-          "description": "Classes to add / subtract based on the item being hovered.",
-          "type": "string"
+          "description": "`hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\nProperty: hoverClass"
         },
         {
           "name": "icon-class",
-          "description": "Icon class in the event you want it to look different from the text.",
-          "type": "string"
+          "description": "`icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\nProperty: iconClass"
         },
         {
           "name": "inner-class",
-          "description": "Inner container classes.",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "materializeCSS color class",
-          "type": "string"
+          "description": "`inner-class` {`string`} - Inner container classes.\n\nProperty: innerClass"
         },
         {
           "name": "text-color",
-          "description": "materializeCSS color class for text",
-          "type": "string"
+          "description": "`text-color` {`boolean`} - materializeCSS color class for text\n\nProperty: textColor",
+          "valueSet": "v"
         },
         {
           "name": "prefetch",
-          "description": "Allow for prefetch data on hover",
-          "type": "string"
+          "description": "`prefetch` {`string`} - Allow for prefetch data on hover\n\nProperty: prefetch"
         },
         {
           "name": "alt",
-          "description": "Alt via tooltip.",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt via tooltip.\n\nProperty: alt"
         },
         {
           "name": "href",
-          "description": "Standard href pass down",
-          "type": "string",
-          "default": "\"#\""
+          "description": "`href` {`string`} - Standard href pass down\n\nProperty: href\n\nDefault: #"
         },
         {
           "name": "label",
-          "description": "Label to place in the text area",
-          "type": "string",
-          "default": "\"\""
+          "description": "`label` {`string`} - Label to place in the text area\n\nProperty: label\n\nDefault: "
         },
         {
           "name": "target",
-          "type": "string",
-          "default": "\"\""
+          "description": "`target` {`string`} - \n\nProperty: target\n\nDefault: "
         },
         {
           "name": "disabled",
-          "description": "Disabled state.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Disabled state.\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "focus-state",
-          "description": "Tracks if focus state is applied",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "showHref",
-          "attribute": "show-href",
-          "description": "What to display for the resource",
-          "type": "string"
-        },
-        {
-          "name": "raised",
-          "attribute": "raised",
-          "description": "If the button should be visually lifted off the UI.",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "iron-icon to use (with iconset if needed)",
-          "type": "string"
-        },
-        {
-          "name": "hoverClass",
-          "attribute": "hover-class",
-          "description": "Classes to add / subtract based on the item being hovered.",
-          "type": "string"
-        },
-        {
-          "name": "iconClass",
-          "attribute": "icon-class",
-          "description": "Icon class in the event you want it to look different from the text.",
-          "type": "string"
-        },
-        {
-          "name": "innerClass",
-          "attribute": "inner-class",
-          "description": "Inner container classes.",
-          "type": "string"
+          "description": "`focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "color",
-          "attribute": "color",
-          "description": "materializeCSS color class",
-          "type": "string"
+          "description": "`color` {`string`} - materializeCSS color class\n\nProperty: color\n\nDefault: grey"
         },
         {
-          "name": "textColor",
-          "attribute": "text-color",
-          "description": "materializeCSS color class for text",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - materializeCSS color class\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "prefetch",
-          "attribute": "prefetch",
-          "description": "Allow for prefetch data on hover",
-          "type": "string"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt via tooltip.",
-          "type": "string"
-        },
-        {
-          "name": "href",
-          "attribute": "href",
-          "description": "Standard href pass down",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "Label to place in the text area",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "target",
-          "attribute": "target",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Disabled state.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "focusState",
-          "attribute": "focus-state",
-          "description": "Tracks if focus state is applied",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "focus-changed"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "focus-changed"
+          "name": "onfocus-changed",
+          "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
-      "properties": [
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `color` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
         {
-          "name": "href",
-          "type": "string",
-          "default": "\"#\""
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "label",
-          "type": "string",
-          "default": "\"\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "target",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "focusState",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "focus-changed"
+          "name": "onfocus-changed",
+          "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

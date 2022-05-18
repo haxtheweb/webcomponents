@@ -1,37 +1,31 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "page-scroll-position",
-      "events": [
+      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
+      "attributes": [
         {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     },
     {
       "name": "page-scroll-position",
-      "events": [
-        {
-          "name": "value-changed"
-        }
-      ]
+      "attributes": []
     },
     {
       "name": "page-scroll-position",
-      "events": [
+      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
+      "attributes": [
         {
-          "name": "value-changed"
-        }
-      ]
-    },
-    {
-      "name": "page-scroll-position",
-      "events": [
-        {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

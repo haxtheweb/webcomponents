@@ -12,29 +12,6 @@
           "default": "false"
         },
         {
-          "name": "links",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "closeText",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "openText",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "popoverMode",
-          "attribute": "popover-mode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "term",
           "type": "string",
           "default": "\"\""
@@ -46,9 +23,45 @@
         },
         {
           "name": "links",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "detailsOpen",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "popoverMode",
+          "attribute": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "term",
+          "attribute": "term",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "information",
+          "attribute": "information",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "links",
           "attribute": "links",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "detailsOpen",
+          "attribute": "detailsOpen",
+          "type": "boolean",
+          "default": "false"
         }
       ]
     },
@@ -63,29 +76,6 @@
           "default": "false"
         },
         {
-          "name": "links",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "closeText",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "openText",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "popoverMode",
-          "attribute": "popover-mode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "term",
           "type": "string",
           "default": "\"\""
@@ -97,9 +87,45 @@
         },
         {
           "name": "links",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "detailsOpen",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "popoverMode",
+          "attribute": "popover-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "term",
+          "attribute": "term",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "information",
+          "attribute": "information",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "links",
           "attribute": "links",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "detailsOpen",
+          "attribute": "detailsOpen",
+          "type": "boolean",
+          "default": "false"
         }
       ]
     }

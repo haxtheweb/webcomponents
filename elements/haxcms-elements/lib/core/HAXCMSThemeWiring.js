@@ -8,7 +8,7 @@ import {
   varExists,
   varGet,
   localStorageGet,
-  localStorageSet
+  localStorageSet,
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -144,7 +144,11 @@ const HAXCMSTheme = function (SuperClass) {
       autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
         setTimeout(() => {
-          if (this.HAXCMSThemeSettings.autoScroll && this.shadowRoot && this.HAXCMSThemeSettings.scrollTarget) {
+          if (
+            this.HAXCMSThemeSettings.autoScroll &&
+            this.shadowRoot &&
+            this.HAXCMSThemeSettings.scrollTarget
+          ) {
             this.HAXCMSThemeSettings.scrollTarget.scrollTo({
               top: 0,
               left: 0,

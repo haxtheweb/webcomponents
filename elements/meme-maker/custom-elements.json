@@ -1,170 +1,67 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "meme-maker",
-      "description": "`meme-maker`",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+        },
+        {
           "name": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
+          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
         },
         {
           "name": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
+          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
         },
         {
           "name": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
+          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
         },
         {
           "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "imageUrl",
-          "attribute": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
         },
         {
-          "name": "topText",
-          "attribute": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
-        },
-        {
-          "name": "bottomText",
-          "attribute": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+        },
+        {
           "name": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
+          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
         },
         {
           "name": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
+          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
         },
         {
           "name": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
+          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
         },
         {
           "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "imageUrl",
-          "attribute": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
         },
         {
-          "name": "topText",
-          "attribute": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
-        },
-        {
-          "name": "bottomText",
-          "attribute": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "meme-maker",
-      "description": "`meme-maker`",
-      "attributes": [
-        {
-          "name": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
-        },
-        {
-          "name": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
-        },
-        {
-          "name": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "imageUrl",
-          "attribute": "image-url",
-          "description": "url to the meme image",
-          "type": "string"
-        },
-        {
-          "name": "topText",
-          "attribute": "top-text",
-          "description": "Text on top of the image.",
-          "type": "string"
-        },
-        {
-          "name": "bottomText",
-          "attribute": "bottom-text",
-          "description": "Bottom text for the image.",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "type": "string",
-          "default": "\"\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

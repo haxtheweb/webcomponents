@@ -1,131 +1,53 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "punnett-square",
-      "description": "`punnett-square`",
+      "description": "`punnett-square`\n\nAttributes:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - ",
       "attributes": [
         {
           "name": "variant1",
-          "type": "string",
-          "default": "\"\""
+          "description": "`variant1` {`string`} - Varient 1 - example XY\n\nProperty: variant1\n\nDefault: "
         },
         {
           "name": "variant2",
-          "type": "string",
-          "default": "\"\""
+          "description": "`variant2` {`string`} - Varient 2 - example XX\n\nProperty: variant2\n\nDefault: "
         },
         {
           "name": "editable",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "variant1",
-          "attribute": "variant1",
-          "type": "string",
-          "default": "\"\""
+          "description": "`editable` {`boolean`} - Editable - allow users to change the varient values\n\nProperty: editable\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "variant2",
-          "attribute": "variant2",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "editable",
-          "attribute": "editable",
-          "type": "boolean",
-          "default": "false"
+          "name": "__results",
+          "description": "`__results` {`any[]`} - \n\nProperty: __results\n\nDefault: "
         }
       ]
     },
     {
       "name": "punnett-square",
-      "description": "`punnett-square`",
+      "description": "`punnett-square`\n\nAttributes:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - ",
       "attributes": [
         {
           "name": "variant1",
-          "type": "string",
-          "default": "\"\""
+          "description": "`variant1` {`string`} - Varient 1 - example XY\n\nProperty: variant1\n\nDefault: "
         },
         {
           "name": "variant2",
-          "type": "string",
-          "default": "\"\""
+          "description": "`variant2` {`string`} - Varient 2 - example XX\n\nProperty: variant2\n\nDefault: "
         },
         {
           "name": "editable",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "variant1",
-          "attribute": "variant1",
-          "type": "string",
-          "default": "\"\""
+          "description": "`editable` {`boolean`} - Editable - allow users to change the varient values\n\nProperty: editable\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "variant2",
-          "attribute": "variant2",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "editable",
-          "attribute": "editable",
-          "type": "boolean",
-          "default": "false"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "punnett-square",
-      "description": "`punnett-square`",
-      "attributes": [
-        {
-          "name": "variant1",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "variant2",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "editable",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "variant1",
-          "attribute": "variant1",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "variant2",
-          "attribute": "variant2",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "editable",
-          "attribute": "editable",
-          "type": "boolean",
-          "default": "false"
+          "name": "__results",
+          "description": "`__results` {`any[]`} - \n\nProperty: __results\n\nDefault: "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

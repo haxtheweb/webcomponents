@@ -1,272 +1,111 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "responsive-grid-col",
-      "description": "`responsive-grid-col`\nA column for the responsive grid",
+      "name": "responsive-grid-clear",
+      "description": "`responsive-grid-clear`\nA clearumn for the responsive grid\n\nAttributes:\n\n  * `xl` {`boolean`} - clear the float and force a new worw on an extra-large screen?\n\n  * `lg` {`boolean`} - clear the float and force a new worw on a large screen?\n\n  * `md` {`boolean`} - clear the float and force a new worw on a medium screen?\n\n  * `sm` {`boolean`} - clear the float and force a new worw on a small screen?\n\n  * `xs` {`boolean`} - clear the float and force a new worw on an extra-small screen?\n\nProperties:\n\n  * `xl` {`boolean`} - clear the float and force a new worw on an extra-large screen?\n\n  * `lg` {`boolean`} - clear the float and force a new worw on a large screen?\n\n  * `md` {`boolean`} - clear the float and force a new worw on a medium screen?\n\n  * `sm` {`boolean`} - clear the float and force a new worw on a small screen?\n\n  * `xs` {`boolean`} - clear the float and force a new worw on an extra-small screen?",
       "attributes": [
         {
           "name": "xl",
-          "description": "the width when viewed on an extra large screen",
-          "type": "number",
-          "default": "1"
+          "description": "`xl` {`boolean`} - clear the float and force a new worw on an extra-large screen?\n\nProperty: xl\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "lg",
-          "description": "the width when viewed on a large screen",
-          "type": "number",
-          "default": "1"
+          "description": "`lg` {`boolean`} - clear the float and force a new worw on a large screen?\n\nProperty: lg\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "md",
-          "description": "the width when viewed on a medium screen",
-          "type": "number",
-          "default": "1"
+          "description": "`md` {`boolean`} - clear the float and force a new worw on a medium screen?\n\nProperty: md\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "sm",
-          "description": "the width when viewed on a small screen",
-          "type": "number",
-          "default": "1"
+          "description": "`sm` {`boolean`} - clear the float and force a new worw on a small screen?\n\nProperty: sm\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "xs",
-          "description": "the width when viewed on an extra-small screen",
-          "type": "number",
-          "default": "1"
-        }
-      ],
-      "properties": [
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "the width when viewed on an extra large screen",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "the width when viewed on a large screen",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "the width when viewed on a medium screen",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "the width when viewed on a small screen",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "xs",
-          "attribute": "xs",
-          "description": "the width when viewed on an extra-small screen",
-          "type": "number",
-          "default": "1"
+          "description": "`xs` {`boolean`} - clear the float and force a new worw on an extra-small screen?\n\nProperty: xs\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
-      "name": "responsive-grid-clear",
-      "description": "`responsive-grid-clear`\nA clearumn for the responsive grid",
+      "name": "responsive-grid-col",
+      "description": "`responsive-grid-col`\nA column for the responsive grid\n\nAttributes:\n\n  * `xl` {`number`} - the width when viewed on an extra large screen\n\n  * `lg` {`number`} - the width when viewed on a large screen\n\n  * `md` {`number`} - the width when viewed on a medium screen\n\n  * `sm` {`number`} - the width when viewed on a small screen\n\n  * `xs` {`number`} - the width when viewed on an extra-small screen\n\nProperties:\n\n  * `xl` {`number`} - the width when viewed on an extra large screen\n\n  * `lg` {`number`} - the width when viewed on a large screen\n\n  * `md` {`number`} - the width when viewed on a medium screen\n\n  * `sm` {`number`} - the width when viewed on a small screen\n\n  * `xs` {`number`} - the width when viewed on an extra-small screen",
       "attributes": [
         {
           "name": "xl",
-          "description": "clear the float and force a new worw on an extra-large screen?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`xl` {`number`} - the width when viewed on an extra large screen\n\nProperty: xl\n\nDefault: 1"
         },
         {
           "name": "lg",
-          "description": "clear the float and force a new worw on a large screen?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`lg` {`number`} - the width when viewed on a large screen\n\nProperty: lg\n\nDefault: 1"
         },
         {
           "name": "md",
-          "description": "clear the float and force a new worw on a medium screen?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`md` {`number`} - the width when viewed on a medium screen\n\nProperty: md\n\nDefault: 1"
         },
         {
           "name": "sm",
-          "description": "clear the float and force a new worw on a small screen?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`sm` {`number`} - the width when viewed on a small screen\n\nProperty: sm\n\nDefault: 1"
         },
         {
           "name": "xs",
-          "description": "clear the float and force a new worw on an extra-small screen?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "clear the float and force a new worw on an extra-large screen?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "clear the float and force a new worw on a large screen?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "clear the float and force a new worw on a medium screen?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "clear the float and force a new worw on a small screen?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "xs",
-          "attribute": "xs",
-          "description": "clear the float and force a new worw on an extra-small screen?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`xs` {`number`} - the width when viewed on an extra-small screen\n\nProperty: xs\n\nDefault: 1"
         }
       ]
     },
     {
       "name": "responsive-grid-row",
-      "description": "`responsive-grid-row`\nA LRN element",
+      "description": "`responsive-grid-row`\nA LRN element\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; }>`} - \n\n  * `screen-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `xl` {`number`} - Custom extra-large breakpoint\n\n  * `lg` {`number`} - Custom large breakpoint\n\n  * `md` {`number`} - Custom medium breakpoint\n\n  * `sm` {`number`} - Custom small breakpoint\n\n  * `xs` {`number`} - Custom x-small breakpoint\n\n  * `gutter` {`number`} - the gutter-level for the columns from 0-4\n\n  * `responsive-to-parent` {`boolean`} - make responsive based on a container instead of the window\n\n  * `screen` {`string`} - screen size: xs, sm, md, lg, or xl\n\nProperties:\n\n  * `xl` {`number`} - Custom extra-large breakpoint\n\n  * `lg` {`number`} - Custom large breakpoint\n\n  * `md` {`number`} - Custom medium breakpoint\n\n  * `sm` {`number`} - Custom small breakpoint\n\n  * `xs` {`number`} - Custom x-small breakpoint\n\n  * `gutter` {`number`} - the gutter-level for the columns from 0-4\n\n  * `responsiveToParent` {`boolean`} - make responsive based on a container instead of the window\n\n  * `screen` {`string`} - screen size: xs, sm, md, lg, or xl",
       "attributes": [
         {
           "name": "xl",
-          "description": "Custom extra-large breakpoint",
-          "type": "number"
+          "description": "`xl` {`number`} - Custom extra-large breakpoint\n\nProperty: xl\n\nDefault: null"
         },
         {
           "name": "lg",
-          "description": "Custom large breakpoint",
-          "type": "number"
+          "description": "`lg` {`number`} - Custom large breakpoint\n\nProperty: lg\n\nDefault: null"
         },
         {
           "name": "md",
-          "description": "Custom medium breakpoint",
-          "type": "number"
+          "description": "`md` {`number`} - Custom medium breakpoint\n\nProperty: md\n\nDefault: null"
         },
         {
           "name": "sm",
-          "description": "Custom small breakpoint",
-          "type": "number"
+          "description": "`sm` {`number`} - Custom small breakpoint\n\nProperty: sm\n\nDefault: null"
         },
         {
           "name": "xs",
-          "description": "Custom x-small breakpoint",
-          "type": "number"
+          "description": "`xs` {`number`} - Custom x-small breakpoint\n\nProperty: xs\n\nDefault: null"
         },
         {
           "name": "gutter",
-          "description": "the gutter-level for the columns from 0-4",
-          "type": "number",
-          "default": "0"
+          "description": "`gutter` {`number`} - the gutter-level for the columns from 0-4\n\nProperty: gutter\n\nDefault: 0"
         },
         {
           "name": "responsive-to-parent",
-          "description": "make responsive based on a container instead of the window",
-          "type": "boolean",
-          "default": "false"
+          "description": "`responsive-to-parent` {`boolean`} - make responsive based on a container instead of the window\n\nProperty: responsiveToParent\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "screen",
-          "description": "screen size: xs, sm, md, lg, or xl",
-          "type": "string",
-          "default": "\"xs\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Custom extra-large breakpoint",
-          "type": "number"
+          "description": "`screen` {`string`} - screen size: xs, sm, md, lg, or xl\n\nProperty: screen\n\nDefault: xs"
         },
         {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Custom large breakpoint",
-          "type": "number"
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; }>`} - "
         },
         {
-          "name": "md",
-          "attribute": "md",
-          "description": "Custom medium breakpoint",
-          "type": "number"
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Custom small breakpoint",
-          "type": "number"
-        },
-        {
-          "name": "xs",
-          "attribute": "xs",
-          "description": "Custom x-small breakpoint",
-          "type": "number"
-        },
-        {
-          "name": "gutter",
-          "attribute": "gutter",
-          "description": "the gutter-level for the columns from 0-4",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "responsiveToParent",
-          "attribute": "responsive-to-parent",
-          "description": "make responsive based on a container instead of the window",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "screen",
-          "attribute": "screen",
-          "description": "screen size: xs, sm, md, lg, or xl",
-          "type": "string",
-          "default": "\"xs\""
-        }
-      ],
-      "events": [
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "screen-changed"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "screen-changed"
+          "name": "onscreen-changed",
+          "description": "`screen-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

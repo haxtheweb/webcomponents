@@ -1,302 +1,184 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "simple-login",
-      "description": "`simple-login`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "simple-login-login"
-        }
-      ]
-    },
-    {
-      "name": "simple-login",
-      "description": "`simple-login`",
+      "name": "simple-camera-snap",
+      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `simple-camera-snap-image` {`CustomEvent<{ img: any; raw: any; }>`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `t` - \n\n  * `template` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title of the loginscreen",
-          "type": "string"
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         },
         {
-          "name": "subtitle",
-          "description": "Subtitle of the loginscreen",
-          "type": "string"
-        },
-        {
-          "name": "error-msg",
-          "description": "Error message to show (example : \"Invalid username\")",
-          "type": "string"
-        },
-        {
-          "name": "username",
-          "description": "Content of the username field",
-          "type": "string"
-        },
-        {
-          "name": "password",
-          "description": "Content of the password field",
-          "type": "string"
-        },
-        {
-          "name": "loading",
-          "description": "When true, all fields are disabled and the progress bar is visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "user-input-label",
-          "description": "Placeholder of the username field",
-          "type": "string",
-          "default": "\"Username\""
-        },
-        {
-          "name": "user-input-err-msg",
-          "description": "Error message of the username field",
-          "type": "string",
-          "default": "\"Username required\""
-        },
-        {
-          "name": "password-input-label",
-          "description": "Placeholder of the password field",
-          "type": "string",
-          "default": "\"Password\""
-        },
-        {
-          "name": "password-input-err-msg",
-          "description": "Error message of the password field",
-          "type": "string",
-          "default": "\"Password required\""
-        },
-        {
-          "name": "login-btn-text",
-          "description": "Login button label",
-          "type": "string",
-          "default": "\"Login\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of the loginscreen",
-          "type": "string"
-        },
-        {
-          "name": "subtitle",
-          "attribute": "subtitle",
-          "description": "Subtitle of the loginscreen",
-          "type": "string"
-        },
-        {
-          "name": "errorMsg",
-          "attribute": "error-msg",
-          "description": "Error message to show (example : \"Invalid username\")",
-          "type": "string"
-        },
-        {
-          "name": "username",
-          "attribute": "username",
-          "description": "Content of the username field",
-          "type": "string"
-        },
-        {
-          "name": "password",
-          "attribute": "password",
-          "description": "Content of the password field",
-          "type": "string"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "description": "When true, all fields are disabled and the progress bar is visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "userInputLabel",
-          "attribute": "user-input-label",
-          "description": "Placeholder of the username field",
-          "type": "string",
-          "default": "\"Username\""
-        },
-        {
-          "name": "userInputErrMsg",
-          "attribute": "user-input-err-msg",
-          "description": "Error message of the username field",
-          "type": "string",
-          "default": "\"Username required\""
-        },
-        {
-          "name": "passwordInputLabel",
-          "attribute": "password-input-label",
-          "description": "Placeholder of the password field",
-          "type": "string",
-          "default": "\"Password\""
-        },
-        {
-          "name": "passwordInputErrMsg",
-          "attribute": "password-input-err-msg",
-          "description": "Error message of the password field",
-          "type": "string",
-          "default": "\"Password required\""
-        },
-        {
-          "name": "loginBtnText",
-          "attribute": "login-btn-text",
-          "description": "Login button label",
-          "type": "string",
-          "default": "\"Login\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "simple-login-login"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "simple-login-login"
+          "name": "onsimple-camera-snap-image",
+          "description": "`simple-camera-snap-image` {`CustomEvent<{ img: any; raw: any; }>`} - "
         }
       ]
     },
     {
       "name": "simple-login-avatar",
-      "description": "`simple-login-avatar`",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"simple-login-avatar\""
-        },
-        {
-          "name": "template"
-        }
-      ]
+      "description": "`simple-login-avatar`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": []
     },
     {
       "name": "simple-login-camera",
-      "description": "Inspiration from https://github.com/wanoo21/MyCamera",
+      "description": "Inspiration from https://github.com/wanoo21/MyCamera\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `site-listing-video-activate` {`CustomEvent<this>`} - \n\n  * `simple-login-camera-icon-click` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `autoplay` {} - \n\n  * `controls` {} - \n\n  * `audio` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `t` - \n\n  * `template` - \n\n  * `_shadow` - \n\n  * `_video` - \n\n  * `_error` - \n\n  * `_record` - \n\n  * `_pauseRecord` - ",
       "attributes": [
         {
-          "name": "autoplay"
+          "name": "autoplay",
+          "description": "`autoplay` {} - \n\n"
         },
         {
-          "name": "controls"
+          "name": "controls",
+          "description": "`controls` {} - \n\n"
         },
         {
-          "name": "audio"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "simple-camera-snap",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
+          "name": "audio",
+          "description": "`audio` {} - \n\n"
         },
         {
-          "name": "tag",
-          "type": "string",
-          "default": "\"simple-camera-snap\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         },
         {
-          "name": "template"
-        }
-      ],
-      "events": [
+          "name": "onsite-listing-video-activate",
+          "description": "`site-listing-video-activate` {`CustomEvent<this>`} - "
+        },
         {
-          "name": "simple-camera-snap-image"
+          "name": "onsimple-login-camera-icon-click",
+          "description": "`simple-login-camera-icon-click` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "simple-login",
-      "description": "`simple-login`",
-      "properties": [
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "title",
+          "description": "`title` - Title of the loginscreen\n\nProperty: title"
         },
         {
-          "name": "importPath",
-          "type": "string"
+          "name": "subtitle",
+          "description": "`subtitle` - Subtitle of the loginscreen\n\nProperty: subtitle"
         },
         {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+          "name": "errorMsg",
+          "description": "`errorMsg` - Error message to show (example : \"Invalid username\")\n\nProperty: errorMsg"
         },
         {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
+          "name": "password",
+          "description": "`password` {`string`} - Content of the password field\n\nProperty: password\n\nDefault: "
         },
         {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "username",
+          "description": "`username` {`string`} - Content of the username field\n\nProperty: username\n\nDefault: "
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "user-input-label",
+          "description": "`user-input-label` {`string`} - Placeholder of the username field\n\nProperty: userInputLabel\n\nDefault: User name"
+        },
+        {
+          "name": "userInputErrMsg",
+          "description": "`userInputErrMsg` {`string`} - Error message of the username field\n\nProperty: userInputErrMsg\n\nDefault: User name required"
+        },
+        {
+          "name": "password-input-label",
+          "description": "`password-input-label` {`string`} - Placeholder of the password field\n\nProperty: passwordInputLabel\n\nDefault: Password"
+        },
+        {
+          "name": "passwordInputErrMsg",
+          "description": "`passwordInputErrMsg` {`string`} - Error message of the password field\n\nProperty: passwordInputErrMsg\n\nDefault: Password required"
+        },
+        {
+          "name": "login-btn-text",
+          "description": "`login-btn-text` {`string`} - Login button label\n\nProperty: loginBtnText\n\nDefault: Login"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsimple-login-login",
+          "description": "`simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - "
         }
-      ],
-      "events": [
+      ]
+    },
+    {
+      "name": "simple-login",
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
         {
-          "name": "simple-login-login"
+          "name": "title",
+          "description": "`title` - Title of the loginscreen\n\nProperty: title"
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` - Subtitle of the loginscreen\n\nProperty: subtitle"
+        },
+        {
+          "name": "errorMsg",
+          "description": "`errorMsg` - Error message to show (example : \"Invalid username\")\n\nProperty: errorMsg"
+        },
+        {
+          "name": "password",
+          "description": "`password` {`string`} - Content of the password field\n\nProperty: password\n\nDefault: "
+        },
+        {
+          "name": "username",
+          "description": "`username` {`string`} - Content of the username field\n\nProperty: username\n\nDefault: "
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "user-input-label",
+          "description": "`user-input-label` {`string`} - Placeholder of the username field\n\nProperty: userInputLabel\n\nDefault: User name"
+        },
+        {
+          "name": "userInputErrMsg",
+          "description": "`userInputErrMsg` {`string`} - Error message of the username field\n\nProperty: userInputErrMsg\n\nDefault: User name required"
+        },
+        {
+          "name": "password-input-label",
+          "description": "`password-input-label` {`string`} - Placeholder of the password field\n\nProperty: passwordInputLabel\n\nDefault: Password"
+        },
+        {
+          "name": "passwordInputErrMsg",
+          "description": "`passwordInputErrMsg` {`string`} - Error message of the password field\n\nProperty: passwordInputErrMsg\n\nDefault: Password required"
+        },
+        {
+          "name": "login-btn-text",
+          "description": "`login-btn-text` {`string`} - Login button label\n\nProperty: loginBtnText\n\nDefault: Login"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsimple-login-login",
+          "description": "`simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

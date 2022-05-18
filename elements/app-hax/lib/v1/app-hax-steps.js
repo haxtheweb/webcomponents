@@ -182,30 +182,26 @@ export class AppHaxSteps extends SimpleColors {
   // see if user navigates forward or backward while in app
   popstateListener(e) {
     // filter out vaadin link clicks which have a state signature
-    if (e.type === 'popstate' && e.state === null) {
+    if (e.type === "popstate" && e.state === null) {
       // a lot going on here, just to be safe
       try {
         // the delay allows clicking for step to change, process, and then testing it
         setTimeout(() => {
-          const link = e.target.document.location.pathname.split('/').pop();
+          const link = e.target.document.location.pathname.split("/").pop();
           // other links we don't care about validating state
-          if (link.includes('createSite')) {
-            const step = parseInt(link.replace('createSite-step-', ''));
+          if (link.includes("createSite")) {
+            const step = parseInt(link.replace("createSite-step-", ""));
             if (step < store.stepTest(step)) {
               this.shadowRoot.querySelector("#link-step-" + step).click();
-            }
-            else if (step > store.stepTest(step)) {
+            } else if (step > store.stepTest(step)) {
               store.toast(`Please select an option`);
               this.step = store.stepTest(step);
               // forces state by maintaining where we are
               this.shadowRoot.querySelector("#link-step-" + this.step).click();
             }
-          }     
+          }
         }, 0);
-      }
-      catch(e) {
-
-      }
+      } catch (e) {}
     }
   }
 

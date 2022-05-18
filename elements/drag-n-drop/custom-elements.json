@@ -1,91 +1,29 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "drag-n-drop",
-      "description": "`drag-n-drop`",
+      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "editing",
-          "type": "void"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "editing",
-          "attribute": "editing",
-          "type": "void"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"drag-n-drop\""
-        },
-        {
-          "name": "template"
+          "description": "`editing` {`boolean`} - \n\nProperty: editing",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "drag-n-drop",
-      "description": "`drag-n-drop`",
+      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "editing",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "editing",
-          "attribute": "editing",
-          "type": "boolean"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"drag-n-drop\""
-        },
-        {
-          "name": "template"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "drag-n-drop",
-      "description": "`drag-n-drop`",
-      "attributes": [
-        {
-          "name": "editing",
-          "type": "void"
-        }
-      ],
-      "properties": [
-        {
-          "name": "editing",
-          "attribute": "editing",
-          "type": "void"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"drag-n-drop\""
-        },
-        {
-          "name": "template"
+          "description": "`editing` {`boolean`} - \n\nProperty: editing",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

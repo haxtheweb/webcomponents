@@ -1,100 +1,75 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "scroll-button",
-      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
-      "properties": [
-        {
-          "name": "icon",
-          "type": "string",
-          "default": "\"icons:expand-less\""
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "default": "\"Scroll to top\""
-        },
-        {
-          "name": "position",
-          "type": "string",
-          "default": "\"top\""
-        }
-      ]
-    },
-    {
-      "name": "scroll-button",
-      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
       "attributes": [
         {
           "name": "target",
-          "type": "object"
+          "description": "`target` - \n\nProperty: target"
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"icons:expand-less\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:expand-less"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "_label",
+          "description": "`_label` {`string`} - \n\nProperty: _label\n\nDefault: backToTop"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Scroll to top\""
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
         },
         {
           "name": "position",
-          "type": "string",
-          "default": "\"top\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "target",
-          "attribute": "target",
-          "type": "object"
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: top"
         },
         {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"icons:expand-less\""
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"Scroll to top\""
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "type": "string",
-          "default": "\"top\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "scroll-button",
-      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
-      "properties": [
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
+      "attributes": [
+        {
+          "name": "target",
+          "description": "`target` - \n\nProperty: target"
+        },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"icons:expand-less\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:expand-less"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "_label",
+          "description": "`_label` {`string`} - \n\nProperty: _label\n\nDefault: backToTop"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Scroll to top\""
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
         },
         {
           "name": "position",
-          "type": "string",
-          "default": "\"top\""
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: top"
+        },
+        {
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }
