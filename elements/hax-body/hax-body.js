@@ -951,6 +951,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         !this.__fakeEndCap
       ) {
         mutations.forEach((mutation) => {
+          //move toolbar when active Node is deleted
+          if (mutation.removedNodes.length > 0) for (var node of mutation.removedNodes){
+              if(mutation.previousSibling && this.activeNode == node) this.setActiveNode(mutation.previousSibling);
+            }
           if (mutation.addedNodes.length > 0) {
             for (var node of mutation.addedNodes) {
               if (this._validElementTest(node)) {
