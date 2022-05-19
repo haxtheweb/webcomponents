@@ -1,104 +1,61 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "color",
-          "description": "color",
-          "type": "string"
+          "description": "`color` {`string`} - color\n\nProperty: color"
+        },
+        {
+          "name": "contrast",
+          "description": "`contrast` {`number`} - contrast\n\nProperty: contrast"
         },
         {
           "name": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "color",
-          "type": "string"
+          "description": "`size` {`string`} - tiny, small, medium, large, epic sizing.\n\nProperty: size\n\nDefault: medium"
         },
         {
-          "name": "size",
-          "attribute": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - dark\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "color",
-          "description": "color",
-          "type": "string"
+          "description": "`color` {`string`} - color\n\nProperty: color"
+        },
+        {
+          "name": "contrast",
+          "description": "`contrast` {`number`} - contrast\n\nProperty: contrast"
         },
         {
           "name": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "color",
-          "type": "string"
+          "description": "`size` {`string`} - tiny, small, medium, large, epic sizing.\n\nProperty: size\n\nDefault: medium"
         },
         {
-          "name": "size",
-          "attribute": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "attributes": [
-        {
-          "name": "color",
-          "description": "color",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "color",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "tiny, small, medium, large, epic sizing.",
-          "type": "string",
-          "default": "\"medium\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - dark\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

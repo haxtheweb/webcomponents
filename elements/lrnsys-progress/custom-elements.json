@@ -1,1153 +1,346 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrnsys-progress-circle",
-      "description": "`lrnsys-progress-circle`",
+      "description": "`lrnsys-progress-circle`\n\nEvents:\n\n  * `node-percent-milestone` {`CustomEvent<{ percentage: number; }>`} - \n\n  * `node-is-active` {`CustomEvent<{ target: any; }>`} - \n\n  * `node-status-change` {`CustomEvent<{ status: any; }>`} - \n\nAttributes:\n\n  * `value` {`number`} - Current value.\n\n  * `tool-tip` {`boolean`} - Whether to add a tooltip on hover.\n\n  * `list-view` {`boolean`} - If this is in a list view, expand the output.\n\n  * `icon` {`string`} - Icon.\n\n  * `icon-complete` {`string`} - Special icon to use when the item has been completed.\n\n  * `loading-icon` {`string`} - Loading icon\n\n  * `finished-icon` {`string`} - Finished icon\n\n  * `active-icon` {`string`} - Current value.\n\n  * `step` {`number`} - Array position within a larger body of items.\n\n  * `active` {`boolean`} - If this item is active or not in the larger list\n\n  * `status` {`string`} - Status of the progression.\nPossible values are disabled, loading, available, complete\n\n  * `disabled` {`boolean`} - Correctly disable the button if it's status is such.\n\n  * `loading` {`boolean`} - Calculate if something is in a loading status which invokes a swirl.\n\n  * `finished` {`boolean`} - Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.\n\n  * `max` {`string`} - Max progression for doing math against.\n\n  * `__chimed` {`boolean`} - Internal property to ensure we only ding 1x\n\n  * `__finishchimed` {`boolean`} - Internal property to ensure we only finish 1x\n\n  * `url` {`string`} - URL to link to on click.\n\n  * `data-url` {`string`} - Data url to bubble up for more advanced implementations.\n\n  * `stroke-width` {`number`} - Stroke width.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.\n\n  * `play-sound` {`boolean`} - Play sound status; if this should play sound\nwhen it hits certain milestones or not.\n\n  * `play-finish-sound` {`boolean`} - Play sound at end; if this should play sound\nwhen it hits certain milestones or not.\n\n  * `_bubble-progress` - Fire and track milestones towards completion state.\n\n  * `complete-sound` {`string`} - Play sound on complete.\n\n  * `finished-sound` {`string`} - Play sound on complete.\n\nProperties:\n\n  * `value` {`number`} - Current value.\n\n  * `toolTip` {`boolean`} - Whether to add a tooltip on hover.\n\n  * `listView` {`boolean`} - If this is in a list view, expand the output.\n\n  * `icon` {`string`} - Icon.\n\n  * `iconComplete` {`string`} - Special icon to use when the item has been completed.\n\n  * `loadingIcon` {`string`} - Loading icon\n\n  * `finishedIcon` {`string`} - Finished icon\n\n  * `activeIcon` {`string`} - Current value.\n\n  * `step` {`number`} - Array position within a larger body of items.\n\n  * `active` {`boolean`} - If this item is active or not in the larger list\n\n  * `status` {`string`} - Status of the progression.\nPossible values are disabled, loading, available, complete\n\n  * `disabled` {`boolean`} - Correctly disable the button if it's status is such.\n\n  * `loading` {`boolean`} - Calculate if something is in a loading status which invokes a swirl.\n\n  * `finished` {`boolean`} - Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.\n\n  * `max` {`string`} - Max progression for doing math against.\n\n  * `__chimed` {`boolean`} - Internal property to ensure we only ding 1x\n\n  * `__finishchimed` {`boolean`} - Internal property to ensure we only finish 1x\n\n  * `url` {`string`} - URL to link to on click.\n\n  * `dataUrl` {`string`} - Data url to bubble up for more advanced implementations.\n\n  * `strokeWidth` {`number`} - Stroke width.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.\n\n  * `playSound` {`boolean`} - Play sound status; if this should play sound\nwhen it hits certain milestones or not.\n\n  * `playFinishSound` {`boolean`} - Play sound at end; if this should play sound\nwhen it hits certain milestones or not.\n\n  * `_bubbleProgress` - Fire and track milestones towards completion state.\n\n  * `completeSound` {`string`} - Play sound on complete.\n\n  * `finishedSound` {`string`} - Play sound on complete.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "value",
-          "description": "Current value.",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - Current value.\n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "tool-tip",
-          "description": "Whether to add a tooltip on hover.",
-          "type": "boolean",
-          "default": "true"
+          "description": "`tool-tip` {`boolean`} - Whether to add a tooltip on hover.\n\nProperty: toolTip\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "list-view",
-          "description": "If this is in a list view, expand the output.",
-          "type": "boolean",
-          "default": "true"
+          "description": "`list-view` {`boolean`} - If this is in a list view, expand the output.\n\nProperty: listView\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "description": "Icon.",
-          "type": "string",
-          "default": "\"icons:description\""
+          "description": "`icon` {`string`} - Icon.\n\nProperty: icon\n\nDefault: icons:description"
         },
         {
           "name": "icon-complete",
-          "description": "Special icon to use when the item has been completed.",
-          "type": "string",
-          "default": "\"icons:description\""
+          "description": "`icon-complete` {`string`} - Special icon to use when the item has been completed.\n\nProperty: iconComplete\n\nDefault: icons:description"
         },
         {
           "name": "loading-icon",
-          "description": "Loading icon",
-          "type": "string",
-          "default": "\"hourglass-full\""
+          "description": "`loading-icon` {`string`} - Loading icon\n\nProperty: loadingIcon\n\nDefault: hourglass-full"
         },
         {
           "name": "finished-icon",
-          "description": "Finished icon",
-          "type": "string",
-          "default": "\"thumb-up\""
+          "description": "`finished-icon` {`string`} - Finished icon\n\nProperty: finishedIcon\n\nDefault: thumb-up"
         },
         {
           "name": "active-icon",
-          "description": "Current value.",
-          "type": "string"
+          "description": "`active-icon` {`string`} - Current value.\n\nProperty: activeIcon"
         },
         {
           "name": "step",
-          "description": "Array position within a larger body of items.",
-          "type": "number",
-          "default": "0"
+          "description": "`step` {`number`} - Array position within a larger body of items.\n\nProperty: step\n\nDefault: 0"
         },
         {
           "name": "active",
-          "description": "If this item is active or not in the larger list",
-          "type": "boolean",
-          "default": "false"
+          "description": "`active` {`boolean`} - If this item is active or not in the larger list\n\nProperty: active\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "status",
-          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
-          "type": "string",
-          "default": "\"available\""
+          "description": "`status` {`string`} - Status of the progression.\nPossible values are disabled, loading, available, complete\n\nProperty: status\n\nDefault: available"
         },
         {
           "name": "disabled",
-          "description": "Correctly disable the button if it's status is such.",
-          "type": "boolean"
+          "description": "`disabled` {`boolean`} - Correctly disable the button if it's status is such.\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
           "name": "loading",
-          "description": "Calculate if something is in a loading status which invokes a swirl.",
-          "type": "boolean"
+          "description": "`loading` {`boolean`} - Calculate if something is in a loading status which invokes a swirl.\n\nProperty: loading",
+          "valueSet": "v"
         },
         {
           "name": "finished",
-          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
-          "type": "boolean"
+          "description": "`finished` {`boolean`} - Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.\n\nProperty: finished",
+          "valueSet": "v"
         },
         {
           "name": "max",
-          "description": "Max progression for doing math against.",
-          "type": "string"
+          "description": "`max` {`string`} - Max progression for doing math against.\n\nProperty: max"
+        },
+        {
+          "name": "__chimed",
+          "description": "`__chimed` {`boolean`} - Internal property to ensure we only ding 1x\n\nProperty: __chimed\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__finishchimed",
+          "description": "`__finishchimed` {`boolean`} - Internal property to ensure we only finish 1x\n\nProperty: __finishchimed\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "url",
-          "description": "URL to link to on click.",
-          "type": "string",
-          "default": "\"#\""
+          "description": "`url` {`string`} - URL to link to on click.\n\nProperty: url\n\nDefault: #"
         },
         {
           "name": "data-url",
-          "description": "Data url to bubble up for more advanced implementations.",
-          "type": "string",
-          "default": "false"
+          "description": "`data-url` {`string`} - Data url to bubble up for more advanced implementations.\n\nProperty: dataUrl\n\nDefault: false"
         },
         {
           "name": "stroke-width",
-          "description": "Stroke width.",
-          "type": "number",
-          "default": "4"
+          "description": "`stroke-width` {`number`} - Stroke width.\n\nProperty: strokeWidth\n\nDefault: 4"
         },
         {
           "name": "focus-state",
-          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`focus-state` {`boolean`} - Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.\n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "play-sound",
-          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`play-sound` {`boolean`} - Play sound status; if this should play sound\nwhen it hits certain milestones or not.\n\nProperty: playSound\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "play-finish-sound",
-          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`play-finish-sound` {`boolean`} - Play sound at end; if this should play sound\nwhen it hits certain milestones or not.\n\nProperty: playFinishSound\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "_bubble-progress",
+          "description": "`_bubble-progress` - Fire and track milestones towards completion state.\n\nProperty: _bubbleProgress\n\nDefault: [object Object]"
         },
         {
           "name": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
           "name": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "value",
-          "attribute": "value",
-          "description": "Current value.",
-          "type": "number",
-          "default": "0"
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
-          "name": "toolTip",
-          "attribute": "tool-tip",
-          "description": "Whether to add a tooltip on hover.",
-          "type": "boolean",
-          "default": "true"
+          "name": "onnode-percent-milestone",
+          "description": "`node-percent-milestone` {`CustomEvent<{ percentage: number; }>`} - "
         },
         {
-          "name": "listView",
-          "attribute": "list-view",
-          "description": "If this is in a list view, expand the output.",
-          "type": "boolean",
-          "default": "true"
+          "name": "onnode-is-active",
+          "description": "`node-is-active` {`CustomEvent<{ target: any; }>`} - "
         },
         {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon.",
-          "type": "string",
-          "default": "\"icons:description\""
-        },
-        {
-          "name": "iconComplete",
-          "attribute": "icon-complete",
-          "description": "Special icon to use when the item has been completed.",
-          "type": "string",
-          "default": "\"icons:description\""
-        },
-        {
-          "name": "loadingIcon",
-          "attribute": "loading-icon",
-          "description": "Loading icon",
-          "type": "string",
-          "default": "\"hourglass-full\""
-        },
-        {
-          "name": "finishedIcon",
-          "attribute": "finished-icon",
-          "description": "Finished icon",
-          "type": "string",
-          "default": "\"thumb-up\""
-        },
-        {
-          "name": "activeIcon",
-          "attribute": "active-icon",
-          "description": "Current value.",
-          "type": "string"
-        },
-        {
-          "name": "step",
-          "attribute": "step",
-          "description": "Array position within a larger body of items.",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "active",
-          "attribute": "active",
-          "description": "If this item is active or not in the larger list",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "status",
-          "attribute": "status",
-          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
-          "type": "string",
-          "default": "\"available\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Correctly disable the button if it's status is such.",
-          "type": "boolean"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "description": "Calculate if something is in a loading status which invokes a swirl.",
-          "type": "boolean"
-        },
-        {
-          "name": "finished",
-          "attribute": "finished",
-          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
-          "type": "boolean"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "description": "Max progression for doing math against.",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "URL to link to on click.",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "dataUrl",
-          "attribute": "data-url",
-          "description": "Data url to bubble up for more advanced implementations.",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "strokeWidth",
-          "attribute": "stroke-width",
-          "description": "Stroke width.",
-          "type": "number",
-          "default": "4"
-        },
-        {
-          "name": "focusState",
-          "attribute": "focus-state",
-          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "playSound",
-          "attribute": "play-sound",
-          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "playFinishSound",
-          "attribute": "play-finish-sound",
-          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "completeSound",
-          "attribute": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "finishedSound",
-          "attribute": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "node-percent-milestone"
-        },
-        {
-          "name": "node-is-active"
-        },
-        {
-          "name": "node-status-change"
+          "name": "onnode-status-change",
+          "description": "`node-status-change` {`CustomEvent<{ status: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrnsys-progress",
-      "description": "`lrnsys-progress`",
+      "description": "`lrnsys-progress`\n\nEvents:\n\n  * `progress-state-change` {`CustomEvent<{ state: string | undefined; active: any; }>`} - \n\n  * `progress-response-loaded` {`CustomEvent<{ response: any; }>`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<any>`} - \n\n  * `node-load-failed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `disable-ajax-calls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\n  * `items` {`any[]`} - Items to display to visualize the progression.\n\n  * `sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\n  * `sound-finish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\n  * `title` {`string`} - Title of this progression, primarily for accessibility.\n\n  * `key-items` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\n  * `active` {`number`} - ID of the active item.\n\n  * `progressive-unlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\n  * `state` {`string`} - State of progress in the current progression\n\n  * `overall-percentage` {`number`} - How far is the user through this series of items.\n\n  * `_response-list` {`any[]`} - Responses for each item.\n\n  * `active-node-response` {`string`} - Active response from the node selected.\n\n  * `manifest` - Active response from the node selected.\n\n  * `node-data-error` - Error.\n\n  * `vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\n  * `size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\n  * `stroke-width` {`number`} - Calculate width based on the size since we have to convert em to px.\n\n  * `complete-sound` {`string`} - Play sound on complete.\n\n  * `finished-sound` {`string`} - Play sound on complete.\n\nProperties:\n\n  * `disableAjaxCalls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\n  * `items` {`any[]`} - Items to display to visualize the progression.\n\n  * `sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\n  * `soundFinish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\n  * `title` {`string`} - Title of this progression, primarily for accessibility.\n\n  * `keyItems` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\n  * `active` {`number`} - ID of the active item.\n\n  * `progressiveUnlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\n  * `state` {`string`} - State of progress in the current progression\n\n  * `overallPercentage` {`number`} - How far is the user through this series of items.\n\n  * `_responseList` {`any[]`} - Responses for each item.\n\n  * `activeNodeResponse` {`string`} - Active response from the node selected.\n\n  * `manifest` - Active response from the node selected.\n\n  * `nodeDataError` - Error.\n\n  * `vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\n  * `size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\n  * `strokeWidth` {`number`} - Calculate width based on the size since we have to convert em to px.\n\n  * `completeSound` {`string`} - Play sound on complete.\n\n  * `finishedSound` {`string`} - Play sound on complete.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disable-ajax-calls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\nProperty: disableAjaxCalls\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - Items to display to visualize the progression.\n\nProperty: items\n\nDefault: "
         },
         {
           "name": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\nProperty: sound\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "description": "`sound-finish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\nProperty: soundFinish\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
+          "description": "`title` {`string`} - Title of this progression, primarily for accessibility.\n\nProperty: title\n\nDefault: Steps to completion"
         },
         {
           "name": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
+          "description": "`key-items` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\nProperty: keyItems\n\nDefault: "
         },
         {
           "name": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
+          "description": "`active` {`number`} - ID of the active item.\n\nProperty: active\n\nDefault: 0"
         },
         {
           "name": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
+          "description": "`progressive-unlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\nProperty: progressiveUnlock\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
+          "description": "`state` {`string`} - State of progress in the current progression\n\nProperty: state\n\nDefault: null"
         },
         {
           "name": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
+          "description": "`overall-percentage` {`number`} - How far is the user through this series of items.\n\nProperty: overallPercentage"
+        },
+        {
+          "name": "_response-list",
+          "description": "`_response-list` {`any[]`} - Responses for each item.\n\nProperty: _responseList\n\nDefault: "
         },
         {
           "name": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`active-node-response` {`string`} - Active response from the node selected.\n\nProperty: activeNodeResponse\n\nDefault: "
         },
         {
           "name": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
+          "description": "`manifest` - Active response from the node selected.\n\nProperty: manifest\n\nDefault: [object Object]"
         },
         {
           "name": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
+          "description": "`node-data-error` - Error.\n\nProperty: nodeDataError\n\nDefault: "
         },
         {
           "name": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\nProperty: vertical\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
+          "description": "`size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\nProperty: size\n\nDefault: medium"
         },
         {
           "name": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "disableAjaxCalls",
-          "attribute": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`stroke-width` {`number`} - Calculate width based on the size since we have to convert em to px.\n\nProperty: strokeWidth"
         },
         {
-          "name": "items",
-          "attribute": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
+          "name": "complete-sound",
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
-          "name": "sound",
-          "attribute": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
+          "name": "finished-sound",
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
-          "name": "soundFinish",
-          "attribute": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
+          "name": "onprogress-state-change",
+          "description": "`progress-state-change` {`CustomEvent<{ state: string | undefined; active: any; }>`} - "
         },
         {
-          "name": "completeSound",
-          "attribute": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "name": "onprogress-response-loaded",
+          "description": "`progress-response-loaded` {`CustomEvent<{ response: any; }>`} - "
         },
         {
-          "name": "finishedSound",
-          "attribute": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
-        },
-        {
-          "name": "keyItems",
-          "attribute": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "active",
-          "attribute": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "progressiveUnlock",
-          "attribute": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "state",
-          "attribute": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
-        },
-        {
-          "name": "overallPercentage",
-          "attribute": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
-        },
-        {
-          "name": "activeNodeResponse",
-          "attribute": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "manifest",
-          "attribute": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "nodeDataError",
-          "attribute": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
-        },
-        {
-          "name": "vertical",
-          "attribute": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
-        },
-        {
-          "name": "strokeWidth",
-          "attribute": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "progress-state-change"
-        },
-        {
-          "name": "progress-response-loaded"
-        },
-        {
-          "name": "json-outline-schema-active-item-changed"
-        },
-        {
-          "name": "node-load-failed"
+          "name": "onnode-load-failed",
+          "description": "`node-load-failed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "lrnsys-progress",
-      "description": "`lrnsys-progress`",
+      "description": "`lrnsys-progress`\n\nEvents:\n\n  * `progress-state-change` {`CustomEvent<{ state: string | undefined; active: any; }>`} - \n\n  * `progress-response-loaded` {`CustomEvent<{ response: any; }>`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<any>`} - \n\n  * `node-load-failed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `disable-ajax-calls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\n  * `items` {`any[]`} - Items to display to visualize the progression.\n\n  * `sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\n  * `sound-finish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\n  * `title` {`string`} - Title of this progression, primarily for accessibility.\n\n  * `key-items` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\n  * `active` {`number`} - ID of the active item.\n\n  * `progressive-unlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\n  * `state` {`string`} - State of progress in the current progression\n\n  * `overall-percentage` {`number`} - How far is the user through this series of items.\n\n  * `_response-list` {`any[]`} - Responses for each item.\n\n  * `active-node-response` {`string`} - Active response from the node selected.\n\n  * `manifest` - Active response from the node selected.\n\n  * `node-data-error` - Error.\n\n  * `vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\n  * `size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\n  * `stroke-width` {`number`} - Calculate width based on the size since we have to convert em to px.\n\n  * `complete-sound` {`string`} - Play sound on complete.\n\n  * `finished-sound` {`string`} - Play sound on complete.\n\nProperties:\n\n  * `disableAjaxCalls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\n  * `items` {`any[]`} - Items to display to visualize the progression.\n\n  * `sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\n  * `soundFinish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\n  * `title` {`string`} - Title of this progression, primarily for accessibility.\n\n  * `keyItems` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\n  * `active` {`number`} - ID of the active item.\n\n  * `progressiveUnlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\n  * `state` {`string`} - State of progress in the current progression\n\n  * `overallPercentage` {`number`} - How far is the user through this series of items.\n\n  * `_responseList` {`any[]`} - Responses for each item.\n\n  * `activeNodeResponse` {`string`} - Active response from the node selected.\n\n  * `manifest` - Active response from the node selected.\n\n  * `nodeDataError` - Error.\n\n  * `vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\n  * `size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\n  * `strokeWidth` {`number`} - Calculate width based on the size since we have to convert em to px.\n\n  * `completeSound` {`string`} - Play sound on complete.\n\n  * `finishedSound` {`string`} - Play sound on complete.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disable-ajax-calls` {`boolean`} - Disable internal ajax calls as something is handling them above.\n\nProperty: disableAjaxCalls\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - Items to display to visualize the progression.\n\nProperty: items\n\nDefault: "
         },
         {
           "name": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`sound` {`boolean`} - Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.\n\nProperty: sound\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "description": "`sound-finish` {`boolean`} - Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)\n\nProperty: soundFinish\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
+          "description": "`title` {`string`} - Title of this progression, primarily for accessibility.\n\nProperty: title\n\nDefault: Steps to completion"
         },
         {
           "name": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
+          "description": "`key-items` {`any[]`} - Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.\n\nProperty: keyItems\n\nDefault: "
         },
         {
           "name": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
+          "description": "`active` {`number`} - ID of the active item.\n\nProperty: active\n\nDefault: 0"
         },
         {
           "name": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
+          "description": "`progressive-unlock` {`boolean`} - Whether to automatically make disabled items available\nor not when the previous one was just complete.\n\nProperty: progressiveUnlock\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
+          "description": "`state` {`string`} - State of progress in the current progression\n\nProperty: state\n\nDefault: null"
         },
         {
           "name": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
+          "description": "`overall-percentage` {`number`} - How far is the user through this series of items.\n\nProperty: overallPercentage"
+        },
+        {
+          "name": "_response-list",
+          "description": "`_response-list` {`any[]`} - Responses for each item.\n\nProperty: _responseList\n\nDefault: "
         },
         {
           "name": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`active-node-response` {`string`} - Active response from the node selected.\n\nProperty: activeNodeResponse\n\nDefault: "
         },
         {
           "name": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
+          "description": "`manifest` - Active response from the node selected.\n\nProperty: manifest\n\nDefault: [object Object]"
         },
         {
           "name": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
+          "description": "`node-data-error` - Error.\n\nProperty: nodeDataError\n\nDefault: "
         },
         {
           "name": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`vertical` {`boolean`} - Flag to be vertical instead of horizontal.\n\nProperty: vertical\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
+          "description": "`size` {`string`} - Size to make everything, small, medium, large, and epic\nare available class names; default medium.\n\nProperty: size\n\nDefault: medium"
         },
         {
           "name": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "disableAjaxCalls",
-          "attribute": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "sound",
-          "attribute": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "soundFinish",
-          "attribute": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "completeSound",
-          "attribute": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "finishedSound",
-          "attribute": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
-        },
-        {
-          "name": "keyItems",
-          "attribute": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "active",
-          "attribute": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "progressiveUnlock",
-          "attribute": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "state",
-          "attribute": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
-        },
-        {
-          "name": "overallPercentage",
-          "attribute": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
-        },
-        {
-          "name": "activeNodeResponse",
-          "attribute": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "manifest",
-          "attribute": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "nodeDataError",
-          "attribute": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
-        },
-        {
-          "name": "vertical",
-          "attribute": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
-        },
-        {
-          "name": "strokeWidth",
-          "attribute": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "progress-state-change"
-        },
-        {
-          "name": "progress-response-loaded"
-        },
-        {
-          "name": "json-outline-schema-active-item-changed"
-        },
-        {
-          "name": "node-load-failed"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "node-percent-milestone"
-        },
-        {
-          "name": "node-is-active"
-        },
-        {
-          "name": "node-status-change"
-        },
-        {
-          "name": "progress-state-change"
-        },
-        {
-          "name": "progress-response-loaded"
-        },
-        {
-          "name": "json-outline-schema-active-item-changed"
-        },
-        {
-          "name": "node-load-failed"
-        }
-      ]
-    },
-    {
-      "name": "lrnsys-progress",
-      "description": "`lrnsys-progress`",
-      "attributes": [
-        {
-          "name": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
+          "description": "`stroke-width` {`number`} - Calculate width based on the size since we have to convert em to px.\n\nProperty: strokeWidth"
         },
         {
           "name": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "description": "`complete-sound` {`string`} - Play sound on complete.\n\nProperty: completeSound\n\nDefault: href"
         },
         {
           "name": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
+          "description": "`finished-sound` {`string`} - Play sound on complete.\n\nProperty: finishedSound\n\nDefault: href"
         },
         {
-          "name": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
+          "name": "onprogress-state-change",
+          "description": "`progress-state-change` {`CustomEvent<{ state: string | undefined; active: any; }>`} - "
         },
         {
-          "name": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
+          "name": "onprogress-response-loaded",
+          "description": "`progress-response-loaded` {`CustomEvent<{ response: any; }>`} - "
         },
         {
-          "name": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
-        },
-        {
-          "name": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
-        },
-        {
-          "name": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
-        },
-        {
-          "name": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
-        },
-        {
-          "name": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "disableAjaxCalls",
-          "attribute": "disable-ajax-calls",
-          "description": "Disable internal ajax calls as something is handling them above.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "description": "Items to display to visualize the progression.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "sound",
-          "attribute": "sound",
-          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "soundFinish",
-          "attribute": "sound-finish",
-          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "completeSound",
-          "attribute": "complete-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "finishedSound",
-          "attribute": "finished-sound",
-          "description": "Play sound on complete.",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title of this progression, primarily for accessibility.",
-          "type": "string",
-          "default": "\"Steps to completion\""
-        },
-        {
-          "name": "keyItems",
-          "attribute": "key-items",
-          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "active",
-          "attribute": "active",
-          "description": "ID of the active item.",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "progressiveUnlock",
-          "attribute": "progressive-unlock",
-          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "state",
-          "attribute": "state",
-          "description": "State of progress in the current progression",
-          "type": "string"
-        },
-        {
-          "name": "overallPercentage",
-          "attribute": "overall-percentage",
-          "description": "How far is the user through this series of items.",
-          "type": "number"
-        },
-        {
-          "name": "activeNodeResponse",
-          "attribute": "active-node-response",
-          "description": "Active response from the node selected.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "manifest",
-          "attribute": "manifest",
-          "description": "Active response from the node selected.",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "nodeDataError",
-          "attribute": "node-data-error",
-          "description": "Error.",
-          "type": "object",
-          "default": "[]"
-        },
-        {
-          "name": "vertical",
-          "attribute": "vertical",
-          "description": "Flag to be vertical instead of horizontal.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
-          "type": "string",
-          "default": "\"medium\""
-        },
-        {
-          "name": "strokeWidth",
-          "attribute": "stroke-width",
-          "description": "Calculate width based on the size since we have to convert em to px.",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "progress-state-change"
-        },
-        {
-          "name": "progress-response-loaded"
-        },
-        {
-          "name": "json-outline-schema-active-item-changed"
-        },
-        {
-          "name": "node-load-failed"
+          "name": "onnode-load-failed",
+          "description": "`node-load-failed` {`CustomEvent<any>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

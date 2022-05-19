@@ -1,206 +1,51 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrndesign-comment",
-      "description": "`lrndesign-comment`",
+      "description": "`lrndesign-comment`\n\nAttributes:\n\n  * `avatar` - \n\n  * `name` {`string`} - \n\n  * `date` {`string`} - \n\n  * `links` - \n\nProperties:\n\n  * `avatar` - \n\n  * `name` {`string`} - \n\n  * `date` {`string`} - \n\n  * `links` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "avatar",
-          "type": "object"
+          "description": "`avatar` - \n\nProperty: avatar"
         },
         {
           "name": "name",
-          "type": "string"
+          "description": "`name` {`string`} - \n\nProperty: name"
         },
         {
           "name": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
+          "description": "`date` {`string`} - \n\nProperty: date\n\nDefault: 2014-04-01T00:00:00.000Z"
         },
         {
           "name": "links",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "avatar",
-          "attribute": "avatar",
-          "type": "object"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
-        },
-        {
-          "name": "links",
-          "attribute": "links",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`links` - \n\nProperty: links"
         }
       ]
     },
     {
       "name": "lrndesign-comment",
-      "description": "`lrndesign-comment`",
+      "description": "`lrndesign-comment`\n\nAttributes:\n\n  * `avatar` - \n\n  * `name` {`string`} - \n\n  * `date` {`string`} - \n\n  * `links` - \n\nProperties:\n\n  * `avatar` - \n\n  * `name` {`string`} - \n\n  * `date` {`string`} - \n\n  * `links` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "avatar",
-          "type": "object"
+          "description": "`avatar` - \n\nProperty: avatar"
         },
         {
           "name": "name",
-          "type": "string"
+          "description": "`name` {`string`} - \n\nProperty: name"
         },
         {
           "name": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
+          "description": "`date` {`string`} - \n\nProperty: date\n\nDefault: 2014-04-01T00:00:00.000Z"
         },
         {
           "name": "links",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "avatar",
-          "attribute": "avatar",
-          "type": "object"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
-        },
-        {
-          "name": "links",
-          "attribute": "links",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrndesign-comment",
-      "description": "`lrndesign-comment`",
-      "attributes": [
-        {
-          "name": "avatar",
-          "type": "object"
-        },
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
-        },
-        {
-          "name": "links",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "avatar",
-          "attribute": "avatar",
-          "type": "object"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "type": "string",
-          "default": "\"2014-04-01T00:00:00.000Z\""
-        },
-        {
-          "name": "links",
-          "attribute": "links",
-          "type": "object"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`links` - \n\nProperty: links"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

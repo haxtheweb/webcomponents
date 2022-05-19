@@ -6,7 +6,11 @@ import {
   toJS,
   configure,
 } from "mobx";
-import { varExists, varGet, localStorageGet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  varExists,
+  varGet,
+  localStorageGet,
+} from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
@@ -16,10 +20,10 @@ class Store {
     this.evaluatebadDevice();
     this.location = null;
     this.jwt = null;
-    this.soundStatus = localStorageGet('app-hax-soundStatus', true);
-    this.darkMode = !localStorageGet('app-hax-darkMode')
-    ? false
-    : localStorageGet('app-hax-darkMode');
+    this.soundStatus = localStorageGet("app-hax-soundStatus", true);
+    this.darkMode = !localStorageGet("app-hax-darkMode")
+      ? false
+      : localStorageGet("app-hax-darkMode");
     this.setupSlots = {
       "haxcms-site-editor-ui-prefix-avatar": [],
       "haxcms-site-editor-ui-prefix-buttons": [],
@@ -133,31 +137,35 @@ class Store {
   }
   // eslint-disable-next-line class-methods-use-this
   playSound(sound) {
-
     if (this.soundStatus && this.appReady) {
       try {
         switch (sound) {
-          case 'click':
-          case 'click2':
-          case 'coin':
-          case 'coin2':
-          case 'hit':
-          case 'success':
+          case "click":
+          case "click2":
+          case "coin":
+          case "coin2":
+          case "hit":
+          case "success":
             this.audio = new Audio(
-              new URL(`../../../app-hax/lib/assets/sounds/${sound}.mp3`, import.meta.url).href
+              new URL(
+                `../../../app-hax/lib/assets/sounds/${sound}.mp3`,
+                import.meta.url
+              ).href
             );
             this.audio.play();
             break;
           default:
             this.audio = new Audio(
-              new URL(`../../../app-hax/lib/assets/sounds/hit.mp3`, import.meta.url).href
+              new URL(
+                `../../../app-hax/lib/assets/sounds/hit.mp3`,
+                import.meta.url
+              ).href
             );
             this.audio.play();
             console.warn(`${sound} is not a valid sound file yet`);
             break;
         }
-      }
-      catch(e) {
+      } catch (e) {
         console.warn(e);
       }
     }
@@ -172,7 +180,7 @@ class Store {
     classStyle = "capsule",
     closeText = this.t.close,
     eventCallback = null,
-    slot = null,
+    slot = null
   ) {
     if (this.appReady) {
       // gets it all the way to the top immediately
@@ -188,7 +196,7 @@ class Store {
             closeText: closeText,
             eventCallback: eventCallback,
             slot: slot,
-            ...extras
+            ...extras,
           },
         })
       );
@@ -962,7 +970,8 @@ class HAXCMSSiteStore extends HTMLElement {
           })
         );
         window.HaxStore.requestAvailability().editMode = editMode;
-        window.HaxStore.requestAvailability().toastShowEventName = "haxcms-toast-show";
+        window.HaxStore.requestAvailability().toastShowEventName =
+          "haxcms-toast-show";
         // @todo hack to keep voice controls active if enabled
         if (
           window.HaxStore.requestAvailability().globalPreferences

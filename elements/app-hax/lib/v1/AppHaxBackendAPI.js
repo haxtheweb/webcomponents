@@ -15,7 +15,8 @@ export class AppHaxBackendAPI extends LitElement {
   constructor() {
     super();
     this.jwt = localStorageGet("jwt", null);
-    this.method = window.appSettings.demo ? "GET" : "POST";
+    this.method =
+      window && window.appSettings && window.appSettings.demo ? "GET" : "POST";
     this.basePath = "/";
     this.lastResponse = {};
     this.appSettings = {};

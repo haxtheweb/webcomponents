@@ -1,298 +1,133 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "jwt-login",
-      "description": "`jwt-login`",
+      "description": "`jwt-login`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `jwt-login-refresh-error` {`CustomEvent<{ value: any; }>`} - \n\n  * `jwt-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `jwt-logged-in` {`CustomEvent<boolean>`} - \n\n  * `jwt-token` {`CustomEvent<any>`} - \n\n  * `jwt-login-login-failed` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logout-url` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `refreshUrl` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirectUrl` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logoutUrl` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\n  * `ready` {`boolean`} - ",
       "attributes": [
         {
+          "name": "refresh-url",
+          "description": "`refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\nProperty: refreshUrl"
+        },
+        {
+          "name": "redirect-url",
+          "description": "`redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\nProperty: redirectUrl"
+        },
+        {
+          "name": "logout-url",
+          "description": "`logout-url` {`string`} - logout url\n\nProperty: logoutUrl"
+        },
+        {
           "name": "url",
-          "description": "url",
-          "type": "string"
+          "description": "`url` {`string`} - url to get the JWT\n\nProperty: url"
         },
         {
           "name": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
+          "description": "`auto` {`boolean`} - auto, useful for demos\n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
+          "description": "`method` {`string`} - Request method\n\nProperty: method\n\nDefault: GET"
         },
         {
           "name": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
+          "description": "`body` - Optional body, useful when doing posts\n\nProperty: body\n\nDefault: [object Object]"
         },
         {
           "name": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
+          "description": "`key` {`string`} - Key that contains the token in local storage\n\nProperty: key\n\nDefault: jwt"
         },
         {
           "name": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
+          "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
         },
         {
-          "name": "auto",
-          "attribute": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "method",
-          "attribute": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "body",
-          "attribute": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "key",
-          "attribute": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
+          "name": "onjwt-token",
+          "description": "`jwt-token` {`CustomEvent<any>`} - "
         },
         {
-          "name": "jwt",
-          "attribute": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "jwt-changed"
-        },
-        {
-          "name": "jwt-logged-in"
-        },
-        {
-          "name": "jwt-token"
+          "name": "onjwt-login-login-failed",
+          "description": "`jwt-login-login-failed` {`CustomEvent<boolean>`} - "
         }
       ]
     },
     {
       "name": "jwt-login",
-      "description": "`jwt-login`",
+      "description": "`jwt-login`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `jwt-login-refresh-error` {`CustomEvent<{ value: any; }>`} - \n\n  * `jwt-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `jwt-logged-in` {`CustomEvent<boolean>`} - \n\n  * `jwt-token` {`CustomEvent<any>`} - \n\n  * `jwt-login-login-failed` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logout-url` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `refreshUrl` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirectUrl` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logoutUrl` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\n  * `ready` {`boolean`} - ",
       "attributes": [
         {
+          "name": "refresh-url",
+          "description": "`refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\nProperty: refreshUrl"
+        },
+        {
+          "name": "redirect-url",
+          "description": "`redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\nProperty: redirectUrl"
+        },
+        {
+          "name": "logout-url",
+          "description": "`logout-url` {`string`} - logout url\n\nProperty: logoutUrl"
+        },
+        {
           "name": "url",
-          "description": "url",
-          "type": "string"
+          "description": "`url` {`string`} - url to get the JWT\n\nProperty: url"
         },
         {
           "name": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
+          "description": "`auto` {`boolean`} - auto, useful for demos\n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
+          "description": "`method` {`string`} - Request method\n\nProperty: method\n\nDefault: GET"
         },
         {
           "name": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
+          "description": "`body` - Optional body, useful when doing posts\n\nProperty: body\n\nDefault: [object Object]"
         },
         {
           "name": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
+          "description": "`key` {`string`} - Key that contains the token in local storage\n\nProperty: key\n\nDefault: jwt"
         },
         {
           "name": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
+          "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
         },
         {
-          "name": "auto",
-          "attribute": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "method",
-          "attribute": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "body",
-          "attribute": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "key",
-          "attribute": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
+          "name": "onjwt-token",
+          "description": "`jwt-token` {`CustomEvent<any>`} - "
         },
         {
-          "name": "jwt",
-          "attribute": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "jwt-changed"
-        },
-        {
-          "name": "jwt-logged-in"
-        },
-        {
-          "name": "jwt-token"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "jwt-changed"
-        },
-        {
-          "name": "jwt-token"
-        },
-        {
-          "name": "jwt-logged-in"
-        }
-      ]
-    },
-    {
-      "name": "jwt-login",
-      "description": "`jwt-login`",
-      "attributes": [
-        {
-          "name": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
-        },
-        {
-          "name": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
-        },
-        {
-          "name": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "url",
-          "type": "string"
-        },
-        {
-          "name": "auto",
-          "attribute": "auto",
-          "description": "auto, useful for demos",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "method",
-          "attribute": "method",
-          "description": "Request method",
-          "type": "string",
-          "default": "\"GET\""
-        },
-        {
-          "name": "body",
-          "attribute": "body",
-          "description": "Optional body, useful when doing posts",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "key",
-          "attribute": "key",
-          "description": "Key that contains the token in local storage",
-          "type": "string",
-          "default": "\"jwt\""
-        },
-        {
-          "name": "jwt",
-          "attribute": "jwt",
-          "description": "JSON Web token to securely pass around",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "jwt-changed"
-        },
-        {
-          "name": "jwt-logged-in"
-        },
-        {
-          "name": "jwt-token"
+          "name": "onjwt-login-login-failed",
+          "description": "`jwt-login-login-failed` {`CustomEvent<boolean>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

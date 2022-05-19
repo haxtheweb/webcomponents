@@ -1,70 +1,35 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "md-block",
-      "description": "`md-block`\n`a markdown block`",
-      "properties": [
-        {
-          "name": "markdown",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source",
-          "type": "string",
-          "default": "\"\""
-        }
-      ]
-    },
-    {
-      "name": "md-block",
-      "description": "`md-block`\n`a markdown block`",
+      "description": "`md-block`\n`a markdown block`\n\nAttributes:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - ",
       "attributes": [
         {
           "name": "markdown",
-          "type": "string",
-          "default": "\"\""
+          "description": "`markdown` {`string`} - \n\nProperty: markdown\n\nDefault: "
         },
         {
           "name": "source",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "markdown",
-          "attribute": "markdown",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "md-block",
-      "description": "`md-block`\n`a markdown block`",
-      "properties": [
+      "description": "`md-block`\n`a markdown block`\n\nAttributes:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - ",
+      "attributes": [
         {
           "name": "markdown",
-          "type": "string",
-          "default": "\"\""
+          "description": "`markdown` {`string`} - \n\nProperty: markdown\n\nDefault: "
         },
         {
           "name": "source",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

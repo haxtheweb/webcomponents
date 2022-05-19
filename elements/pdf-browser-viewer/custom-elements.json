@@ -1,404 +1,85 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "pdf-browser-viewer",
-      "description": "Example:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  not-supported-message=\"Not supported by your browser\"\n  not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  card elevation=\"3\"\n  download-label=\"Baixar\">\n</pdf-browser-viewer>\n```",
+      "description": "Example:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  not-supported-message=\"Not supported by your browser\"\n  not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  card elevation=\"3\"\n  download-label=\"Baixar\">\n</pdf-browser-viewer>\n```\n\nAttributes:\n\n  * `file` {`string`} - The location of the PDF file.\n\n  * `not-supported-message` {`string`} - The message when browser doesn't support pdf object\n\n  * `not-supported-link-message` {`string`} - The PDF link message when browser doesn't support pdf object\n\n  * `height` {`string`} - The height of the PDF viewer.\n\n  * `width` {`string`} - The width of the PDF viewer.\n\n  * `card` {`boolean`} - PDF viewer as a card with download button.\n\n  * `download-label` {`string`} - Download button label.\n\n  * `elevation` {`string`} - The z-depth of the card, from 0-5.\n\nProperties:\n\n  * `file` {`string`} - The location of the PDF file.\n\n  * `notSupportedMessage` {`string`} - The message when browser doesn't support pdf object\n\n  * `notSupportedLinkMessage` {`string`} - The PDF link message when browser doesn't support pdf object\n\n  * `height` {`string`} - The height of the PDF viewer.\n\n  * `width` {`string`} - The width of the PDF viewer.\n\n  * `card` {`boolean`} - PDF viewer as a card with download button.\n\n  * `downloadLabel` {`string`} - Download button label.\n\n  * `elevation` {`string`} - The z-depth of the card, from 0-5.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
+          "description": "`file` {`string`} - The location of the PDF file.\n\nProperty: file\n\nDefault: undefined"
         },
         {
           "name": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
+          "description": "`not-supported-message` {`string`} - The message when browser doesn't support pdf object\n\nProperty: notSupportedMessage\n\nDefault: It appears your Web browser is not configured to display PDF files. No worries, just"
         },
         {
           "name": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
+          "description": "`not-supported-link-message` {`string`} - The PDF link message when browser doesn't support pdf object\n\nProperty: notSupportedLinkMessage\n\nDefault: click here to download the PDF file."
         },
         {
           "name": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
+          "description": "`height` {`string`} - The height of the PDF viewer.\n\nProperty: height\n\nDefault: 400px"
         },
         {
           "name": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
+          "description": "`width` {`string`} - The width of the PDF viewer.\n\nProperty: width\n\nDefault: 100%"
         },
         {
           "name": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - PDF viewer as a card with download button.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
+          "description": "`download-label` {`string`} - Download button label.\n\nProperty: downloadLabel\n\nDefault: Download"
         },
         {
           "name": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
-        },
-        {
-          "name": "notSupportedMessage",
-          "attribute": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
-        },
-        {
-          "name": "notSupportedLinkMessage",
-          "attribute": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
-        },
-        {
-          "name": "card",
-          "attribute": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
-        },
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`elevation` {`string`} - The z-depth of the card, from 0-5.\n\nProperty: elevation\n\nDefault: 1"
         }
       ]
     },
     {
       "name": "pdf-browser-viewer",
-      "description": "Example:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  not-supported-message=\"Not supported by your browser\"\n  not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  card elevation=\"3\"\n  download-label=\"Baixar\">\n</pdf-browser-viewer>\n```",
+      "description": "Example:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  not-supported-message=\"Not supported by your browser\"\n  not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  card elevation=\"3\"\n  download-label=\"Baixar\">\n</pdf-browser-viewer>\n```\n\nAttributes:\n\n  * `file` {`string`} - The location of the PDF file.\n\n  * `not-supported-message` {`string`} - The message when browser doesn't support pdf object\n\n  * `not-supported-link-message` {`string`} - The PDF link message when browser doesn't support pdf object\n\n  * `height` {`string`} - The height of the PDF viewer.\n\n  * `width` {`string`} - The width of the PDF viewer.\n\n  * `card` {`boolean`} - PDF viewer as a card with download button.\n\n  * `download-label` {`string`} - Download button label.\n\n  * `elevation` {`string`} - The z-depth of the card, from 0-5.\n\nProperties:\n\n  * `file` {`string`} - The location of the PDF file.\n\n  * `notSupportedMessage` {`string`} - The message when browser doesn't support pdf object\n\n  * `notSupportedLinkMessage` {`string`} - The PDF link message when browser doesn't support pdf object\n\n  * `height` {`string`} - The height of the PDF viewer.\n\n  * `width` {`string`} - The width of the PDF viewer.\n\n  * `card` {`boolean`} - PDF viewer as a card with download button.\n\n  * `downloadLabel` {`string`} - Download button label.\n\n  * `elevation` {`string`} - The z-depth of the card, from 0-5.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
+          "description": "`file` {`string`} - The location of the PDF file.\n\nProperty: file\n\nDefault: undefined"
         },
         {
           "name": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
+          "description": "`not-supported-message` {`string`} - The message when browser doesn't support pdf object\n\nProperty: notSupportedMessage\n\nDefault: It appears your Web browser is not configured to display PDF files. No worries, just"
         },
         {
           "name": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
+          "description": "`not-supported-link-message` {`string`} - The PDF link message when browser doesn't support pdf object\n\nProperty: notSupportedLinkMessage\n\nDefault: click here to download the PDF file."
         },
         {
           "name": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
+          "description": "`height` {`string`} - The height of the PDF viewer.\n\nProperty: height\n\nDefault: 400px"
         },
         {
           "name": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
+          "description": "`width` {`string`} - The width of the PDF viewer.\n\nProperty: width\n\nDefault: 100%"
         },
         {
           "name": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - PDF viewer as a card with download button.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
+          "description": "`download-label` {`string`} - Download button label.\n\nProperty: downloadLabel\n\nDefault: Download"
         },
         {
           "name": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
-        },
-        {
-          "name": "notSupportedMessage",
-          "attribute": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
-        },
-        {
-          "name": "notSupportedLinkMessage",
-          "attribute": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
-        },
-        {
-          "name": "card",
-          "attribute": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
-        },
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "pdf-browser-viewer",
-      "description": "Example:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  not-supported-message=\"Not supported by your browser\"\n  not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n  file=\"[[pdfUrl]]\"\n  card elevation=\"3\"\n  download-label=\"Baixar\">\n</pdf-browser-viewer>\n```",
-      "attributes": [
-        {
-          "name": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
-        },
-        {
-          "name": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
-        },
-        {
-          "name": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
-        },
-        {
-          "name": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
-        },
-        {
-          "name": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
-        },
-        {
-          "name": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
-        },
-        {
-          "name": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "The location of the PDF file.",
-          "type": "string",
-          "default": "\"undefined\""
-        },
-        {
-          "name": "notSupportedMessage",
-          "attribute": "not-supported-message",
-          "description": "The message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
-        },
-        {
-          "name": "notSupportedLinkMessage",
-          "attribute": "not-supported-link-message",
-          "description": "The PDF link message when browser doesn't support pdf object",
-          "type": "string",
-          "default": "\"click here to download the PDF file.\""
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "description": "The height of the PDF viewer.",
-          "type": "string",
-          "default": "\"400px\""
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "description": "The width of the PDF viewer.",
-          "type": "string",
-          "default": "\"100%\""
-        },
-        {
-          "name": "card",
-          "attribute": "card",
-          "description": "PDF viewer as a card with download button.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download button label.",
-          "type": "string",
-          "default": "\"Download\""
-        },
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "The z-depth of the card, from 0-5.",
-          "type": "string",
-          "default": "\"1\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`elevation` {`string`} - The z-depth of the card, from 0-5.\n\nProperty: elevation\n\nDefault: 1"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

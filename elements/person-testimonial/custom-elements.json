@@ -1,170 +1,69 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
+          "description": "`image` {`string`} - The profile image to display to the left of the quote.\n\nProperty: image"
         },
         {
           "name": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
+          "description": "`name` {`string`} - Name of the person making the quote.\n\nProperty: name"
         },
         {
           "name": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
+          "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
         },
         {
-          "name": "image",
-          "attribute": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
+          "description": "`image` {`string`} - The profile image to display to the left of the quote.\n\nProperty: image"
         },
         {
           "name": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
+          "description": "`name` {`string`} - Name of the person making the quote.\n\nProperty: name"
         },
         {
           "name": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
+          "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
         },
         {
-          "name": "image",
-          "attribute": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "person-testimonial",
-      "description": "`person-testimonial`",
-      "attributes": [
-        {
-          "name": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "elevation",
-          "attribute": "elevation",
-          "description": "Visual height of the card.",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "The profile image to display to the left of the quote.",
-          "type": "string"
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "Name of the person making the quote.",
-          "type": "string"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "description": "The title / position of the person in question.",
-          "type": "string"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

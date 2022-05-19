@@ -1,607 +1,179 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "a11y-menu-button",
-      "description": "`a11y-menu-button`",
+      "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset\n\nEvents:\n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover",
       "attributes": [
         {
-          "name": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
         },
         {
           "name": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
           "name": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
+          "valueSet": "v"
         },
         {
-          "name": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
+          "valueSet": "v"
         },
         {
-          "name": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
+          "valueSet": "v"
         },
         {
-          "name": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
+          "name": "position",
+          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
         },
         {
-          "name": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
+          "name": "position-align",
+          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
         },
         {
-          "name": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
+          "name": "offset",
+          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
         },
         {
-          "name": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
+          "name": "menuItems",
+          "description": "`menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: menuItems\n\nDefault: "
+        },
+        {
+          "name": "keep-open-on-click",
+          "description": "`keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\nProperty: keepOpenOnClick\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "no-open-on-hover",
+          "description": "`no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperty: noOpenOnHover\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<this>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<this>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
         }
-      ],
-      "properties": [
-        {
-          "name": "accordion",
-          "attribute": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
-        },
+      ]
+    },
+    {
+      "name": "a11y-menu-button-item",
+      "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `slot` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `linkTemplate` {`TemplateResult<1>`} - renders item as a link\n\n  * `buttonTemplate` {`TemplateResult<1>`} - renders item as a button\n\n  * `menuItem` - gets item with role=\"menuitem\"\n\n  * `slot` {`string`} - ",
+      "attributes": [
         {
           "name": "disabled",
-          "attribute": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
-          "name": "expanded",
-          "attribute": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - Whether toggle is disabled\n\nProperty: hidden",
+          "valueSet": "v"
         },
         {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
+          "name": "href",
+          "description": "`href` {`string`} - Whether toggle is disabled\n\nProperty: href"
         },
         {
-          "name": "iconExpanded",
-          "attribute": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
+          "name": "controls",
+          "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
         },
         {
-          "name": "label",
-          "attribute": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
+          "name": "slot",
+          "description": "`slot` {`string`} - \n\nProperty: slot\n\nDefault: menuitem"
         },
         {
-          "name": "labelExpanded",
-          "attribute": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
+          "name": "onadd-a11y-menu-button-item",
+          "description": "`add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom"
         },
         {
-          "name": "tooltip",
-          "attribute": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
-        },
-        {
-          "name": "tooltipExpanded",
-          "attribute": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "a11y-menu-button-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
-        },
-        {
-          "name": "toggle",
-          "description": "Fires when toggled."
-        },
-        {
-          "name": "a11y-menu-button-toggle",
-          "description": "Deprecated. Fires when toggled."
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded."
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed."
-        },
-        {
-          "name": "a11y-menu-button-click",
-          "description": "Fires when clicked."
+          "name": "onremove-a11y-menu-button-item",
+          "description": "`remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom"
         }
       ]
     },
     {
       "name": "a11y-menu-button",
-      "description": "`a11y-menu-button`",
+      "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset\n\nEvents:\n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover",
       "attributes": [
         {
-          "name": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
         },
         {
           "name": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
           "name": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
+          "valueSet": "v"
         },
         {
-          "name": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
+          "valueSet": "v"
         },
         {
-          "name": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
+          "valueSet": "v"
         },
         {
-          "name": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
+          "name": "position",
+          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
         },
         {
-          "name": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
+          "name": "position-align",
+          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
         },
         {
-          "name": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
+          "name": "offset",
+          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
         },
         {
-          "name": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "accordion",
-          "attribute": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "expanded",
-          "attribute": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
-        },
-        {
-          "name": "iconExpanded",
-          "attribute": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
-        },
-        {
-          "name": "labelExpanded",
-          "attribute": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "attribute": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
-        },
-        {
-          "name": "tooltipExpanded",
-          "attribute": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "a11y-menu-button-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
-        },
-        {
-          "name": "toggle",
-          "description": "Fires when toggled."
-        },
-        {
-          "name": "a11y-menu-button-toggle",
-          "description": "Deprecated. Fires when toggled."
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded."
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed."
-        },
-        {
-          "name": "a11y-menu-button-click",
-          "description": "Fires when clicked."
-        }
-      ]
-    },
-    {
-      "name": "a11y-menu-button-group",
-      "description": "`a11y-menu-button-group`",
-      "attributes": [
-        {
-          "name": "global-options",
-          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "radio",
-          "description": "is every a11y-menu-button item radio button?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon."
-        },
-        {
-          "name": "disabled",
-          "description": "is disabled?"
-        },
-        {
-          "name": "expanded",
-          "description": "icon when expanded"
-        },
-        {
-          "name": "icon",
-          "description": "icon for the button"
-        },
-        {
-          "name": "icon-expanded",
-          "description": "icon when expanded"
-        },
-        {
-          "name": "label",
-          "description": "label for the button"
-        },
-        {
-          "name": "label-expanded",
-          "description": "optional label for the button when expanded"
-        },
-        {
-          "name": "tooltip",
-          "description": "tooltip for the button"
-        },
-        {
-          "name": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded"
-        }
-      ],
-      "properties": [
-        {
-          "name": "globalOptions",
-          "attribute": "global-options",
-          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "radio",
-          "attribute": "radio",
-          "description": "is every a11y-menu-button item radio button?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accordion",
-          "attribute": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon."
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "is disabled?"
-        },
-        {
-          "name": "expanded",
-          "attribute": "expanded",
-          "description": "icon when expanded"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "icon for the button"
-        },
-        {
-          "name": "iconExpanded",
-          "attribute": "icon-expanded",
-          "description": "icon when expanded"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "label for the button"
-        },
-        {
-          "name": "labelExpanded",
-          "attribute": "label-expanded",
-          "description": "optional label for the button when expanded"
-        },
-        {
-          "name": "tooltip",
-          "attribute": "tooltip",
-          "description": "tooltip for the button"
-        },
-        {
-          "name": "tooltipExpanded",
-          "attribute": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded"
-        }
-      ],
-      "events": [
-        {
-          "name": "a11y-menu-button-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
-        },
-        {
-          "name": "toggle",
-          "description": "Fires when toggled."
-        },
-        {
-          "name": "a11y-menu-button-toggle",
-          "description": "Deprecated. Fires when toggled."
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded."
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed."
-        },
-        {
-          "name": "a11y-menu-button-click",
-          "description": "Fires when clicked."
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "a11y-menu-button-attached"
-        },
-        {
-          "name": "a11y-menu-button-detached"
-        },
-        {
-          "name": "toggle"
-        },
-        {
-          "name": "a11y-menu-button-toggle"
-        },
-        {
-          "name": "expand"
-        },
-        {
-          "name": "collapse"
-        },
-        {
-          "name": "a11y-menu-button-click"
-        }
-      ]
-    },
-    {
-      "name": "a11y-menu-button",
-      "description": "`a11y-menu-button`",
-      "attributes": [
-        {
-          "name": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
-        },
-        {
-          "name": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
-        },
-        {
-          "name": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
-        },
-        {
-          "name": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "accordion",
-          "attribute": "accordion",
-          "description": "accordion-style: whole header acts as button? default is just icon.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "is disabled?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "expanded",
-          "attribute": "expanded",
-          "description": "icon when expanded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "icon for the button",
-          "type": "string",
-          "default": "\"expand-more\""
-        },
-        {
-          "name": "iconExpanded",
-          "attribute": "icon-expanded",
-          "description": "icon when expanded",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "label for the button",
-          "type": "string",
-          "default": "\"expand/collapse\""
-        },
-        {
-          "name": "labelExpanded",
-          "attribute": "label-expanded",
-          "description": "optional label for the button when expanded",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "attribute": "tooltip",
-          "description": "tooltip for the button",
-          "type": "string",
-          "default": "\"toggle expand/collapse\""
-        },
-        {
-          "name": "tooltipExpanded",
-          "attribute": "tooltip-expanded",
-          "description": "optional tooltip for the button when expanded",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "a11y-menu-button-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+          "name": "menuItems",
+          "description": "`menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: menuItems\n\nDefault: "
         },
         {
-          "name": "toggle",
-          "description": "Fires when toggled."
+          "name": "keep-open-on-click",
+          "description": "`keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\nProperty: keepOpenOnClick\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "a11y-menu-button-toggle",
-          "description": "Deprecated. Fires when toggled."
+          "name": "no-open-on-hover",
+          "description": "`no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperty: noOpenOnHover\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "expand",
-          "description": "Fires when expanded."
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<this>`} - Fires when menu is closed"
         },
         {
-          "name": "collapse",
-          "description": "Fires when collapsed."
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<this>`} - Fires when menu is opened"
         },
         {
-          "name": "a11y-menu-button-click",
-          "description": "Fires when clicked."
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

@@ -1,145 +1,27 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "pouch-db",
-      "description": "`pouch-db`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "show-data"
-        }
-      ]
-    },
-    {
-      "name": "pouch-db",
-      "description": "`pouch-db`",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `pouch-db-show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `type` {`string`} - ",
       "attributes": [
         {
-          "name": "title",
-          "type": "string",
-          "default": "\"pouch-db-default-value\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"pouch-db-default-value\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "show-data"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "show-data"
+          "name": "onpouch-db-show-data",
+          "description": "`pouch-db-show-data` {`CustomEvent<string[]>`} - "
         }
       ]
     },
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`",
-      "properties": [
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `pouch-db-show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `type` {`string`} - ",
+      "attributes": [
         {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "pouch-db",
-      "description": "`pouch-db`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "show-data"
+          "name": "onpouch-db-show-data",
+          "description": "`pouch-db-show-data` {`CustomEvent<string[]>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

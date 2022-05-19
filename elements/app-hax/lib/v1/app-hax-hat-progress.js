@@ -91,25 +91,27 @@ export class AppHaxHatProgress extends SimpleColors {
                 hat: "random",
               }
             );
-            store.setPageTitle(`${createResponse.title ? createResponse.title : ""} ready!`);
+            store.setPageTitle(
+              `${createResponse.title ? createResponse.title : ""} ready!`
+            );
             setTimeout(() => {
               store.toast(`redirecting in 3..`, 10000, {
                 hat: "random",
                 walking: true,
               });
-              store.setPageTitle('Redirecting in 3..');
+              store.setPageTitle("Redirecting in 3..");
               setTimeout(() => {
                 store.toast(`redirecting in 2..`, 10000, {
                   hat: "random",
                   walking: true,
                 });
-                store.setPageTitle('Redirecting in 2..');
+                store.setPageTitle("Redirecting in 2..");
                 setTimeout(() => {
                   store.toast(`redirecting in 1..`, 10000, {
                     hat: "random",
                     walking: true,
                   });
-                  store.setPageTitle('Redirecting in 1..');
+                  store.setPageTitle("Redirecting in 1..");
                   store.appEl.reset();
                   setTimeout(() => {
                     store.setPageTitle(`Enjoy!`);

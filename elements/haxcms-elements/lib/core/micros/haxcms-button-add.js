@@ -81,7 +81,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) 
   }
 
   HAXCMSButtonClick(e) {
-    store.playSound('click');
+    store.playSound("click");
     let order = null;
     let title = this.t.newPage;
     let parent = null;

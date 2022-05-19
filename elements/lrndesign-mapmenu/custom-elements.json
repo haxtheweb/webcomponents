@@ -1,258 +1,91 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "lrndesign-mapmenu-item",
+      "name": "lrndesign-mapmenu-header",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
-          "name": "icon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
-          "name": "url",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"\""
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
+          "name": "avatar-label",
+          "description": "`avatar-label` {`string`} - \n\nProperty: avatarLabel\n\nDefault: "
         },
         {
-          "name": "url",
-          "attribute": "url",
-          "type": "string",
-          "default": "\"\""
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "valueSet": "v"
         }
       ]
     },
     {
-      "name": "lrndesign-mapmenu-header",
+      "name": "lrndesign-mapmenu-item",
+      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - ",
       "attributes": [
         {
-          "name": "title",
-          "type": "string"
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
         },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "avatar-label",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "opened",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
         {
           "name": "title",
-          "attribute": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "avatarLabel",
-          "attribute": "avatar-label",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "url",
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
         }
       ]
     },
     {
       "name": "lrndesign-mapmenu-submenu",
+      "description": "Attributes:\n\n  * `label` {`string`} - \n\n  * `title` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `title` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - ",
       "attributes": [
         {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+        },
+        {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "avatar-label",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
+          "description": "`avatar-label` {`string`} - \n\nProperty: avatarLabel\n\nDefault: "
         },
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "collapsable",
-          "type": "boolean",
-          "default": "true"
+          "description": "`collapsable` {`boolean`} - \n\nProperty: collapsable\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "expand-children",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "avatarLabel",
-          "attribute": "avatar-label",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "collapsable",
-          "attribute": "collapsable",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "expandChildren",
-          "attribute": "expand-children",
-          "type": "boolean",
-          "default": "false"
+          "description": "`expand-children` {`boolean`} - \n\nProperty: expandChildren\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lrndesign-mapmenu",
-      "description": "`lrndesign-mapmenu`\nA LRN element",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
+      "description": "`lrndesign-mapmenu`\nA LRN element\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     },
     {
       "name": "lrndesign-mapmenu",
-      "description": "`lrndesign-mapmenu`\nA LRN element",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrndesign-mapmenu",
-      "description": "`lrndesign-mapmenu`\nA LRN element",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
+      "description": "`lrndesign-mapmenu`\nA LRN element\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

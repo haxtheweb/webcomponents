@@ -1,217 +1,51 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "select-menu",
-      "description": "`select-menu`",
+      "description": "`select-menu`\n\nEvents:\n\n  * `change` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
+          "description": "`label` {`string`} - The label of the select menu\n\nProperty: label\n\nDefault: Select an option."
         },
         {
           "name": "value",
-          "description": "The default value",
-          "type": "string"
+          "description": "`value` {`string`} - The default value\n\nProperty: value\n\nDefault: null"
         },
         {
           "name": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
+          "description": "`selected-index` {`number`} - The index of the selected item\n\nProperty: selectedIndex"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "description": "The default value",
-          "type": "string"
-        },
-        {
-          "name": "selectedIndex",
-          "attribute": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "change"
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "select-menu",
-      "description": "`select-menu`",
+      "description": "`select-menu`\n\nEvents:\n\n  * `change` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
+          "description": "`label` {`string`} - The label of the select menu\n\nProperty: label\n\nDefault: Select an option."
         },
         {
           "name": "value",
-          "description": "The default value",
-          "type": "string"
+          "description": "`value` {`string`} - The default value\n\nProperty: value\n\nDefault: null"
         },
         {
           "name": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
+          "description": "`selected-index` {`number`} - The index of the selected item\n\nProperty: selectedIndex"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "description": "The default value",
-          "type": "string"
-        },
-        {
-          "name": "selectedIndex",
-          "attribute": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "change"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "events": [
-        {
-          "name": "change"
-        }
-      ]
-    },
-    {
-      "name": "select-menu",
-      "description": "`select-menu`",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
-        },
-        {
-          "name": "value",
-          "description": "The default value",
-          "type": "string"
-        },
-        {
-          "name": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "The label of the select menu",
-          "type": "string",
-          "default": "\"Select an option.\""
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "description": "The default value",
-          "type": "string"
-        },
-        {
-          "name": "selectedIndex",
-          "attribute": "selected-index",
-          "description": "The index of the selected item",
-          "type": "number"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ],
-      "events": [
-        {
-          "name": "change"
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

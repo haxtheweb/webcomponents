@@ -1,6 +1,6 @@
-import { autorun, toJS } from 'mobx';
-import { store } from './haxcms-site-store.js';
-import { WiredDarkmodeToggle } from '@lrnwebcomponents/app-hax/lib/wired-darkmode-toggle/wired-darkmode-toggle.js';
+import { autorun, toJS } from "mobx";
+import { store } from "./haxcms-site-store.js";
+import { WiredDarkmodeToggle } from "@lrnwebcomponents/app-hax/lib/wired-darkmode-toggle/wired-darkmode-toggle.js";
 
 export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
   constructor() {
@@ -11,7 +11,7 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
   }
 
   static get tag() {
-    return 'haxcms-darkmode-toggle';
+    return "haxcms-darkmode-toggle";
   }
 
   updated(changedProperties) {
@@ -19,13 +19,13 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'checked' && oldValue !== undefined) {
+      if (propName === "checked" && oldValue !== undefined) {
         store.darkMode = this[propName];
-        store.playSound('click');
+        store.playSound("click");
         if (this[propName]) {
-          store.toast("I'm ascared of the dark", 2000, { fire: true});
+          store.toast("I'm ascared of the dark", 2000, { fire: true });
         } else {
-          store.toast("Sunny day it is", 2000, { hat: 'random'});
+          store.toast("Sunny day it is", 2000, { hat: "random" });
         }
       }
     });

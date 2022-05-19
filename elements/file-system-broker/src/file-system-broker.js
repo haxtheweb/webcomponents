@@ -121,7 +121,7 @@ class FileSystemBroker extends HTMLElement {
     this.files = await this.__readDir(
       this.dirHandler,
       recursive,
-      (this.dirHandler.name || ''),
+      this.dirHandler.name || "",
       this.dirHandler
     );
     return this.files;

@@ -1,0 +1,548 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "editable-table",
+      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | default table font-weight. | 300;\n`--editable-table-heavy-weight` | heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | table text color. | #222;\n`--editable-table-bg-color` | table background color. | #fff;\n`--editable-table-caption-color` | caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | caption background color. | #fff;\n`--editable-table-heading-color` | row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | row/column heading background color. | #e8e8e8;\n`--editable-table-stripe-bg-color` | background color for alternating row striping. | #f0f0f0;\n`--editable-table-border-width` | border width for table. | 1px;\n`--editable-table-border-style` | border style for table. | solid;\n`--editable-table-border-color` | border color for table. | #999;\n`--editable-table-border` | table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | default text color of toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | default background color of toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | text color of toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | background color of toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | text color of toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | background color of toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | text color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | background color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | text color of toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | background color of toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Default horizontal padding for cells. | 6px;\n`--editable-table-row-horizontal-padding-condensed` | Smaller horizontal padding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 10px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` {`CustomEvent<this>`} - \n\n  * `csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed\n\n  * `table-printed` {`CustomEvent<this>`} - Fires when transcript is printed\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is table in edit-mode? Default is false (display mode).\n\nProperties:\n\n  * `display` - \n\n  * `editor` - \n\n  * `editMode` {`boolean`} - Is table in edit-mode? Default is false (display mode).\n\n  * `hideBordered` {`boolean`} - \n\n  * `hideCondensed` {`boolean`} - \n\n  * `hideDownloadable` {`boolean`} - \n\n  * `hideFilter` {`boolean`} - \n\n  * `hideResponsive` {`boolean`} - \n\n  * `hidePrintable` {`boolean`} - \n\n  * `hideSort` {`boolean`} - \n\n  * `caption` {`string`} - \n\n  * `hideStriped` {`boolean`} - \n\n  * `config` {`({} | {} | {})[]`} - \n\n  * `thead` {`any[]`} - Rows in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `columnHeader` {`boolean`} - \n\n  * `downloadable` {`boolean`} - \n\n  * `data` {`never[]`} - \n\n  * `filter` {`boolean`} - \n\n  * `footer` {`boolean`} - \n\n  * `rowHeader` {`boolean`} - \n\n  * `sort` {`boolean`} - \n\n  * `dataCsv` - ",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - Is table in edit-mode? Default is false (display mode).\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "ontoggle-edit-mode",
+          "description": "`toggle-edit-mode` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "oncsv-downloaded",
+          "description": "`csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed"
+        },
+        {
+          "name": "ontable-printed",
+          "description": "`table-printed` {`CustomEvent<this>`} - Fires when transcript is printed"
+        }
+      ]
+    },
+    {
+      "name": "editable-table-display",
+      "description": "`editable-table-display`\n`An editor interface for editable-table\n\nEvents:\n\n  * `change` {`CustomEvent<any>`} - \n\n  * `csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed\n\n  * `table-printed` {`CustomEvent<this>`} - Fires when transcript is printed\n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `filter-column` {`number`} - Index of current filter column\n\n  * `filter-case-sensitive` {`boolean`} - whether filter is case sensitive\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filter-text` {`string`} - Text for Filtering\n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of current sort column\n\n  * `filter-contains` {`boolean`} - whether column only needs to contain filter text\ninstead of default requiriwhich requires an exact match\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `filterColumn` {`number`} - Index of current filter column\n\n  * `filterCaseSensitive` {`boolean`} - whether filter is case sensitive\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filterText` {`string`} - Text for Filtering\n\n  * `options` {`{ alt: never; value: number; }[][]`} - Gets columns in `<thead>`\n\n  * `sortedTbody` - \n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of current sort column\n\n  * `filterContains` {`boolean`} - whether column only needs to contain filter text\ninstead of default requiriwhich requires an exact match\n\n  * `_observer` - \n\n  * `thead` {`any[]`} - Rows in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `columnHeader` {`boolean`} - \n\n  * `downloadable` {`boolean`} - \n\n  * `data` {`never[]`} - \n\n  * `filter` {`boolean`} - \n\n  * `footer` {`boolean`} - \n\n  * `rowHeader` {`boolean`} - \n\n  * `sort` {`boolean`} - \n\n  * `dataCsv` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "filter-column",
+          "description": "`filter-column` {`number`} - Index of current filter column\n\nProperty: filterColumn"
+        },
+        {
+          "name": "filter-case-sensitive",
+          "description": "`filter-case-sensitive` {`boolean`} - whether filter is case sensitive\n\nProperty: filterCaseSensitive",
+          "valueSet": "v"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`boolean`} - Whether table is filtered\n\nProperty: filtered",
+          "valueSet": "v"
+        },
+        {
+          "name": "filter-text",
+          "description": "`filter-text` {`string`} - Text for Filtering\n\nProperty: filterText"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` {`number`} - Selected column to display when in responsive mode\n\nProperty: selected\n\nDefault: 1"
+        },
+        {
+          "name": "sort-mode",
+          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
+        },
+        {
+          "name": "sort-column",
+          "description": "`sort-column` {`number`} - Index of current sort column\n\nProperty: sortColumn\n\nDefault: -1"
+        },
+        {
+          "name": "filter-contains",
+          "description": "`filter-contains` {`boolean`} - whether column only needs to contain filter text\ninstead of default requiriwhich requires an exact match\n\nProperty: filterContains\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncsv-downloaded",
+          "description": "`csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed"
+        },
+        {
+          "name": "ontable-printed",
+          "description": "`table-printed` {`CustomEvent<this>`} - Fires when transcript is printed"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-edit",
+      "description": "`editable-table-edit`\nAn editor interface for tables that toggles between view mode.\n\nEvents:\n\n  * `editing-disabled` {`CustomEvent<{ editor: this; }>`} - Fires this editor is disabled\n\n  * `column-deleted` {`CustomEvent<{ editor: this; data: any; colNum: number; }>`} - Fires when column is deleted\n\n  * `row-deleted` {`CustomEvent<{ editor: this; data: any; rowNum: number; }>`} - Fires when row is deleted\n\n  * `column-inserted` {`CustomEvent<{ editor: this; data: any; colNum: number; }>`} - Fires when column is inserted\n\n  * `row-inserted` {`CustomEvent<{ editor: this; data: any; rowNum: number; }>`} - Fires cwhen row is inserted\n\n  * `cell-changed` {`CustomEvent<{ editor: this; data: any; rowNum: any; colNum: any; }>`} - Fires when cell value is changed\n\n  * `caption-changed` {`CustomEvent<{ editor: this; caption: any; }>`} - Fires caption is changed\n\n  * `change` {`CustomEvent<any>`} - Fires this editor is disabled\n\n  * `csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed\n\n  * `table-printed` {`CustomEvent<this>`} - Fires when transcript is printed\n\nProperties:\n\n  * `textEditorToolbar` {`TemplateResult<1>`} - \n\n  * `columnHeaderButton` {`TemplateResult<1>`} - \n\n  * `rowHeaderButton` {`TemplateResult<1>`} - \n\n  * `footerButton` {`TemplateResult<1>`} - \n\n  * `headersFootersGroup` {`TemplateResult<1>`} - \n\n  * `borderButton` {`TemplateResult<1>`} - \n\n  * `stripeButton` {`TemplateResult<1>`} - \n\n  * `columnStripeButton` {`TemplateResult<1>`} - \n\n  * `condenseButton` {`TemplateResult<1>`} - \n\n  * `numericStylesButton` {`TemplateResult<1>`} - \n\n  * `responsiveButton` {`TemplateResult<1>`} - \n\n  * `displayGroup` {`TemplateResult<1>`} - \n\n  * `sortButton` {`TemplateResult<1>`} - \n\n  * `filterButton` {`TemplateResult<1>`} - \n\n  * `downloadButton` {`TemplateResult<1>`} - \n\n  * `printButton` {`TemplateResult<1>`} - \n\n  * `dataGroup` {`TemplateResult<1>`} - \n\n  * `settingsToolbar` {`TemplateResult<1>`} - \n\n  * `editableCaption` {`TemplateResult<1>`} - \n\n  * `editableColumns` {`TemplateResult<1>`} - \n\n  * `editableRows` {`TemplateResult<1>`} - \n\n  * `hideSortFilter` - hides data sorting and filtering feature set\n\n  * `hideDisplay` - hides display feature set\n\n  * `hideBordered` {`boolean`} - \n\n  * `hideCondensed` {`boolean`} - \n\n  * `hideDownloadable` {`boolean`} - \n\n  * `hideFilter` {`boolean`} - \n\n  * `hideResponsive` {`boolean`} - \n\n  * `hidePrintable` {`boolean`} - \n\n  * `hideSort` {`boolean`} - \n\n  * `caption` {`string`} - \n\n  * `hideStriped` {`boolean`} - \n\n  * `config` {`({} | {} | {})[]`} - \n\n  * `thead` {`any[]`} - Rows in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `columnHeader` {`boolean`} - \n\n  * `downloadable` {`boolean`} - \n\n  * `data` {`never[]`} - \n\n  * `filter` {`boolean`} - \n\n  * `footer` {`boolean`} - \n\n  * `rowHeader` {`boolean`} - \n\n  * `sort` {`boolean`} - \n\n  * `dataCsv` - ",
+      "attributes": [
+        {
+          "name": "onediting-disabled",
+          "description": "`editing-disabled` {`CustomEvent<{ editor: this; }>`} - Fires this editor is disabled"
+        },
+        {
+          "name": "oncolumn-deleted",
+          "description": "`column-deleted` {`CustomEvent<{ editor: this; data: any; colNum: number; }>`} - Fires when column is deleted"
+        },
+        {
+          "name": "onrow-deleted",
+          "description": "`row-deleted` {`CustomEvent<{ editor: this; data: any; rowNum: number; }>`} - Fires when row is deleted"
+        },
+        {
+          "name": "oncolumn-inserted",
+          "description": "`column-inserted` {`CustomEvent<{ editor: this; data: any; colNum: number; }>`} - Fires when column is inserted"
+        },
+        {
+          "name": "onrow-inserted",
+          "description": "`row-inserted` {`CustomEvent<{ editor: this; data: any; rowNum: number; }>`} - Fires cwhen row is inserted"
+        },
+        {
+          "name": "oncell-changed",
+          "description": "`cell-changed` {`CustomEvent<{ editor: this; data: any; rowNum: any; colNum: any; }>`} - Fires when cell value is changed"
+        },
+        {
+          "name": "oncaption-changed",
+          "description": "`caption-changed` {`CustomEvent<{ editor: this; caption: any; }>`} - Fires caption is changed"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<any>`} - Fires this editor is disabled"
+        },
+        {
+          "name": "oncsv-downloaded",
+          "description": "`csv-downloaded` {`CustomEvent<{ table: this; data: string; filename: string; }>`} - Fires when transcript is printed"
+        },
+        {
+          "name": "ontable-printed",
+          "description": "`table-printed` {`CustomEvent<this>`} - Fires when transcript is printed"
+        }
+      ]
+    },
+    {
+      "name": "editable-table-editor-rowcol",
+      "description": "`editable-table-editor-rowcol`\nA header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).\n\nEvents:\n\n  * `rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - \n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `index` {`number`} - Index of row or column\n\n  * `row` {`boolean`} - Whether menu button controls a row\n\n  * `type` {`\"Row\" | \"Column\"`} - Gets row or column type\n\n  * `tooltipDirection` {`string`} - \n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult<1>`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - gets focusable button element\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template menu button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "index",
+          "description": "`index` {`number`} - Index of row or column\n\nProperty: index"
+        },
+        {
+          "name": "row",
+          "description": "`row` {`boolean`} - Whether menu button controls a row\n\nProperty: row",
+          "valueSet": "v"
+        },
+        {
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
+          "valueSet": "v"
+        },
+        {
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
+          "valueSet": "v"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
+        },
+        {
+          "name": "position-align",
+          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
+        },
+        {
+          "name": "menuItems",
+          "description": "`menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: menuItems\n\nDefault: "
+        },
+        {
+          "name": "keep-open-on-click",
+          "description": "`keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\nProperty: keepOpenOnClick\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "no-open-on-hover",
+          "description": "`no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperty: noOpenOnHover\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "onrowcol-action",
+          "description": "`rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - "
+        },
+        {
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<this>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<this>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-filter",
+      "description": "`editable-table-editor-filter`\n`Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` {`CustomEvent<this>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of column\n\n  * `text` {`string`} - Index of column\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `columnIndex` {`number`} - Index of column\n\n  * `filtered` {`boolean`} - \n\n  * `text` {`string`} - Index of column\n\n  * `tooltip` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - \n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Index of column\n\nProperty: columnIndex\n\nDefault: null"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Index of column\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby\n\nDefault: cell"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon\n\nDefault: editable-table:filter"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label\n\nDefault: Toggle filter."
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "ontoggle-filter",
+          "description": "`toggle-filter` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-sort",
+      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` {`CustomEvent<this>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `button-toggled` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of current sort column\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `show-tooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `is-current-item` {`boolean`} - \n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of current sort column\n\n  * `tooltip` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `describedby` {`string`} - Optional to set aria-describedby.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `showTooltip` {`boolean`} - Alway show tooltip.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `focusableElement` - \n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult<1>`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult<1>`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult<1>`} - template for button tooltip\n\n  * `buttonInnerTemplate` {`TemplateResult<1>`} - template for inner part of button (label and icon) in order specified\n\n  * `buttonTemplate` {`TemplateResult<1>`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `radio` {`boolean`} - for radio-button behavior\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys\n\n  * `isCurrentItem` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Sort ascending, descending or none\n\nProperty: columnIndex"
+        },
+        {
+          "name": "sort-mode",
+          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
+        },
+        {
+          "name": "sort-column",
+          "description": "`sort-column` {`number`} - Index of current sort column\n\nProperty: sortColumn\n\nDefault: -1"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "describedby",
+          "description": "`describedby` {`string`} - Optional to set aria-describedby.\n\nProperty: describedby\n\nDefault: cell"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon\n\nDefault: editable-table:sortable"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label\n\nDefault: Toggle sort mode."
+        },
+        {
+          "name": "show-tooltip",
+          "description": "`show-tooltip` {`boolean`} - Alway show tooltip.\n\nProperty: showTooltip",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - for radio-button behavior\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "is-current-item",
+          "description": "`is-current-item` {`boolean`} - \n\nProperty: isCurrentItem\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "onchange-sort-mode",
+          "description": "`change-sort-mode` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onbutton-toggled",
+          "description": "`button-toggled` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table",
+      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | default table font-weight. | 300;\n`--editable-table-heavy-weight` | heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | table text color. | #222;\n`--editable-table-bg-color` | table background color. | #fff;\n`--editable-table-caption-color` | caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | caption background color. | #fff;\n`--editable-table-heading-color` | row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | row/column heading background color. | #e8e8e8;\n`--editable-table-stripe-bg-color` | background color for alternating row striping. | #f0f0f0;\n`--editable-table-border-width` | border width for table. | 1px;\n`--editable-table-border-style` | border style for table. | solid;\n`--editable-table-border-color` | border color for table. | #999;\n`--editable-table-border` | table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | default text color of toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | default background color of toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | text color of toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | background color of toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | text color of toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | background color of toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | text color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | background color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | text color of toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | background color of toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Default horizontal padding for cells. | 6px;\n`--editable-table-row-horizontal-padding-condensed` | Smaller horizontal padding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 10px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is table in edit-mode? Default is false (display mode).\n\nProperties:\n\n  * `display` - \n\n  * `editor` - \n\n  * `editMode` {`boolean`} - Is table in edit-mode? Default is false (display mode).",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - Is table in edit-mode? Default is false (display mode).\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "ontoggle-edit-mode",
+          "description": "`toggle-edit-mode` {`CustomEvent<this>`} - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

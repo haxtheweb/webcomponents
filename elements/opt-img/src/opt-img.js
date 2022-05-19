@@ -17,15 +17,15 @@ class OptImg extends HTMLElement {
     this.t = this.t || {};
     this.t.imageLoading = "Image loading..";
     // alt as nothing for decorative purposes if not set
-    this.alt = '';
-    this.src = '';
+    this.alt = "";
+    this.src = "";
     this.width = "300px";
     this.height = "200px";
     // see if we have anything to pull data from light dom
     if (this.querySelector("img")) {
       const img = this.querySelector("img");
-      this.alt = img.alt || '';
-      this.src = img.src || '';
+      this.alt = img.alt || "";
+      this.src = img.src || "";
       this.width = img.width || "300px";
       this.height = img.height || "200px";
     }
@@ -48,7 +48,11 @@ class OptImg extends HTMLElement {
     super.handleIntersectionCallback(entries);
     for (let entry of entries) {
       let ratio = Number(entry.intersectionRatio).toFixed(2);
-      if (ratio >= .1 && this._preconnect.rel != "preload" && !this.loadingvisible) {
+      if (
+        ratio >= 0.1 &&
+        this._preconnect.rel != "preload" &&
+        !this.loadingvisible
+      ) {
         // preload the image via header request
         this._preconnect.remove();
         this._preconnect = document.createElement("link");
@@ -123,16 +127,15 @@ class OptImg extends HTMLElement {
    * callback when any observed attribute changes
    */
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (['src','alt'].includes(attr)) {
+    if (["src", "alt"].includes(attr)) {
       this[attr] = newValue;
       // force a repaint
       this.render();
-    }
-    else if (['loadingvisible'].includes(attr)) {
+    } else if (["loadingvisible"].includes(attr)) {
       this.render();
     }
     // source being set, let's preconnect the domain prior to usage
-    if (attr === 'src') {
+    if (attr === "src") {
       // preconnect domain
       this._preconnect.href = new URL(this.src).origin;
       document.head.appendChild(this._preconnect);
@@ -142,8 +145,7 @@ class OptImg extends HTMLElement {
   set loadingvisible(val) {
     if (val === false) {
       this.removeAttribute("loadingvisible");
-    }
-    else {
+    } else {
       this.setAttribute("loadingvisible", "loadingvisible");
     }
   }
@@ -169,21 +171,21 @@ class OptImg extends HTMLElement {
       i.onload = () => {
         // subtle, but these 4 lines help reduce the jarring of painting the image
         // by setting the height/width quickly on the container + img tag
-        this.style.height = i.height + 'px';
-        this.style.width = i.width + 'px';
-        this.height = i.height + 'px';
-        this.width = i.width + 'px';
+        this.style.height = i.height + "px";
+        this.style.width = i.width + "px";
+        this.height = i.height + "px";
+        this.width = i.width + "px";
         // render the actual image happens in this block
         this.template.innerHTML = this.html;
         this.appendChild(this.template.content);
         // delay a cycle, undo the style height/width on container
         // and remove the loading element. this delay helps reduce layout jar
         setTimeout(() => {
-          this.style.height = '';
-          this.style.width = '';
+          this.style.height = "";
+          this.style.width = "";
           this._loading.remove();
         }, 0);
-      }
+      };
       // setting the src triggers the image to be requested
       i.src = this.src;
       // delete the preconnect tag in the head for clean up
@@ -191,9 +193,9 @@ class OptImg extends HTMLElement {
     }
   }
   /**
-     * HTMLElement specification
-     */
-   connectedCallback() {
+   * HTMLElement specification
+   */
+  connectedCallback() {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
@@ -245,7 +247,7 @@ class OptImg extends HTMLElement {
       let ratio = Number(entry.intersectionRatio).toFixed(2);
       // ensure ratio is higher than our limit before trigger visibility
       // call when 1/2 of our loader is visible
-      if (ratio >= .25) {
+      if (ratio >= 0.25) {
         this.loadingvisible = true;
         // remove the observer if we've reached our target of being visible
         this.intersectionObserver.disconnect();

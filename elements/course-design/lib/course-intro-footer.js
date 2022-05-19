@@ -115,7 +115,12 @@ class CourseIntroFooter extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this._disposer = autorun(() => {
-      if (store.manifest && store.manifest.metadata && store.manifest.metadata.theme && store.manifest.metadata.theme.variables) {
+      if (
+        store.manifest &&
+        store.manifest.metadata &&
+        store.manifest.metadata.theme &&
+        store.manifest.metadata.theme.variables
+      ) {
         this.organization = toJS(
           store.manifest.metadata.theme.variables.organization
         );

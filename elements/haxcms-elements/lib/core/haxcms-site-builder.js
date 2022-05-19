@@ -4,7 +4,7 @@ import {
   findTagsInHTML,
   wipeSlot,
   varExists,
-  localStorageSet
+  localStorageSet,
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -483,7 +483,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           case "haxcms-site-editor-ui-main-menu":
           case "haxcms-site-editor-ui-topbar-character-button":
             store.setupSlots[key].push(item);
-          break;
+            break;
         }
       }
     }
@@ -497,14 +497,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this._triggerUpdatedNode.bind(this)
     );
     window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', darkToggle);
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", darkToggle);
     autorun(() => {
-      localStorageSet('app-hax-darkMode', toJS(store.darkMode));
+      localStorageSet("app-hax-darkMode", toJS(store.darkMode));
       if (toJS(store.darkMode)) {
-        document.body.classList.add('dark-mode');
+        document.body.classList.add("dark-mode");
       } else {
-        document.body.classList.remove('dark-mode');
+        document.body.classList.remove("dark-mode");
       }
     });
     autorun(() => {
@@ -616,8 +616,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this._triggerUpdatedNode.bind(this)
     );
     window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .removeEventListener('change', darkToggle);
+      .matchMedia("(prefers-color-scheme: dark)")
+      .removeEventListener("change", darkToggle);
     super.disconnectedCallback();
   }
   storeReady(e) {

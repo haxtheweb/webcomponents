@@ -1,665 +1,147 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "team-member",
-      "description": "`team-member`",
+      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
-          "description": "Image",
-          "type": "string"
+          "description": "`image` {`string`} - Image\n\nProperty: image"
         },
         {
           "name": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
+          "description": "`full-name` {`string`} - Full name of the team member\n\nProperty: fullName"
         },
         {
           "name": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
+          "description": "`first-line` {`string`} - first line\n\nProperty: firstLine\n\nDefault: false"
         },
         {
           "name": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
+          "description": "`second-line` {`string`} - second line\n\nProperty: secondLine\n\nDefault: false"
         },
         {
           "name": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
+          "description": "`dribble` {`string`} - dribble\n\nProperty: dribble\n\nDefault: false"
         },
         {
           "name": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
+          "description": "`facebook` {`string`} - facebook\n\nProperty: facebook\n\nDefault: false"
         },
         {
           "name": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
+          "description": "`github` {`string`} - github\n\nProperty: github\n\nDefault: false"
         },
         {
           "name": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
+          "description": "`google` {`string`} - google\n\nProperty: google\n\nDefault: false"
         },
         {
           "name": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
+          "description": "`instagram` {`string`} - instagram\n\nProperty: instagram\n\nDefault: false"
         },
         {
           "name": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
+          "description": "`linkedin` {`string`} - linkedin\n\nProperty: linkedin\n\nDefault: false"
         },
         {
           "name": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
+          "description": "`pinterest` {`string`} - pinterest\n\nProperty: pinterest\n\nDefault: false"
         },
         {
           "name": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
+          "description": "`tumblr` {`string`} - tumblr\n\nProperty: tumblr\n\nDefault: false"
         },
         {
           "name": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
+          "description": "`twitch` {`string`} - twitch\n\nProperty: twitch\n\nDefault: false"
         },
         {
           "name": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
+          "description": "`twitter` {`string`} - twitter\n\nProperty: twitter\n\nDefault: false"
         },
         {
           "name": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image",
-          "type": "string"
+          "description": "`whatsapp` {`string`} - whatsapp\n\nProperty: whatsapp\n\nDefault: false"
         },
         {
-          "name": "fullName",
-          "attribute": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
-        },
-        {
-          "name": "firstLine",
-          "attribute": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "secondLine",
-          "attribute": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "dribble",
-          "attribute": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "facebook",
-          "attribute": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "github",
-          "attribute": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "google",
-          "attribute": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "instagram",
-          "attribute": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "linkedin",
-          "attribute": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "pinterest",
-          "attribute": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "tumblr",
-          "attribute": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitch",
-          "attribute": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "whatsapp",
-          "attribute": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "team-member",
-      "description": "`team-member`",
+      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
-          "description": "Image",
-          "type": "string"
+          "description": "`image` {`string`} - Image\n\nProperty: image"
         },
         {
           "name": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
+          "description": "`full-name` {`string`} - Full name of the team member\n\nProperty: fullName"
         },
         {
           "name": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
+          "description": "`first-line` {`string`} - first line\n\nProperty: firstLine\n\nDefault: false"
         },
         {
           "name": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
+          "description": "`second-line` {`string`} - second line\n\nProperty: secondLine\n\nDefault: false"
         },
         {
           "name": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
+          "description": "`dribble` {`string`} - dribble\n\nProperty: dribble\n\nDefault: false"
         },
         {
           "name": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
+          "description": "`facebook` {`string`} - facebook\n\nProperty: facebook\n\nDefault: false"
         },
         {
           "name": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
+          "description": "`github` {`string`} - github\n\nProperty: github\n\nDefault: false"
         },
         {
           "name": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
+          "description": "`google` {`string`} - google\n\nProperty: google\n\nDefault: false"
         },
         {
           "name": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
+          "description": "`instagram` {`string`} - instagram\n\nProperty: instagram\n\nDefault: false"
         },
         {
           "name": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
+          "description": "`linkedin` {`string`} - linkedin\n\nProperty: linkedin\n\nDefault: false"
         },
         {
           "name": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
+          "description": "`pinterest` {`string`} - pinterest\n\nProperty: pinterest\n\nDefault: false"
         },
         {
           "name": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
+          "description": "`tumblr` {`string`} - tumblr\n\nProperty: tumblr\n\nDefault: false"
         },
         {
           "name": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
+          "description": "`twitch` {`string`} - twitch\n\nProperty: twitch\n\nDefault: false"
         },
         {
           "name": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
+          "description": "`twitter` {`string`} - twitter\n\nProperty: twitter\n\nDefault: false"
         },
         {
           "name": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image",
-          "type": "string"
+          "description": "`whatsapp` {`string`} - whatsapp\n\nProperty: whatsapp\n\nDefault: false"
         },
         {
-          "name": "fullName",
-          "attribute": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
-        },
-        {
-          "name": "firstLine",
-          "attribute": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "secondLine",
-          "attribute": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "dribble",
-          "attribute": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "facebook",
-          "attribute": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "github",
-          "attribute": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "google",
-          "attribute": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "instagram",
-          "attribute": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "linkedin",
-          "attribute": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "pinterest",
-          "attribute": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "tumblr",
-          "attribute": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitch",
-          "attribute": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "whatsapp",
-          "attribute": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "team-member",
-      "description": "`team-member`",
-      "attributes": [
-        {
-          "name": "image",
-          "description": "Image",
-          "type": "string"
-        },
-        {
-          "name": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
-        },
-        {
-          "name": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "Image",
-          "type": "string"
-        },
-        {
-          "name": "fullName",
-          "attribute": "full-name",
-          "description": "Full name of the team member",
-          "type": "string"
-        },
-        {
-          "name": "firstLine",
-          "attribute": "first-line",
-          "description": "first line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "secondLine",
-          "attribute": "second-line",
-          "description": "second line",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "dribble",
-          "attribute": "dribble",
-          "description": "dribble",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "facebook",
-          "attribute": "facebook",
-          "description": "facebook",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "github",
-          "attribute": "github",
-          "description": "github",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "google",
-          "attribute": "google",
-          "description": "google",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "instagram",
-          "attribute": "instagram",
-          "description": "instagram",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "linkedin",
-          "attribute": "linkedin",
-          "description": "linkedin",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "pinterest",
-          "attribute": "pinterest",
-          "description": "pinterest",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "tumblr",
-          "attribute": "tumblr",
-          "description": "tumblr",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitch",
-          "attribute": "twitch",
-          "description": "twitch",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "twitter",
-          "attribute": "twitter",
-          "description": "twitter",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "whatsapp",
-          "attribute": "whatsapp",
-          "description": "whatsapp",
-          "type": "string",
-          "default": "false"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

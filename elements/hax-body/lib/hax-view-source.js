@@ -272,8 +272,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           this.updateEditor();
         }, 1000);
       });
-    }
-    else {
+    } else {
       this.updateEditor();
     }
   }

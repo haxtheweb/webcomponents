@@ -175,8 +175,7 @@ class HaxPicker extends LitElement {
             let sanitized = keyword.replace(/[\s\W]*/, "");
             if (sanitized.length > 0) this.keywords[keyword] = keyword;
           });
-        }
-        else if (pickerType === "app") {
+        } else if (pickerType === "app") {
           elements[i].details.tag.forEach((keyword) => {
             keyword = (keyword || "").toLowerCase();
             let sanitized = keyword.replace(/[\s\W]*/, "");

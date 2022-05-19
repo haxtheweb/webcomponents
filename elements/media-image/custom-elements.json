@@ -1,485 +1,239 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "media-image",
-      "description": "`media-image`",
+      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
+          "name": "__figureLabel",
+          "description": "`__figureLabel` {`boolean`} - \n\nProperty: __figureLabel",
+          "valueSet": "v"
+        },
+        {
+          "name": "_hasCaption",
+          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
+          "valueSet": "v"
+        },
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - image aria-described by\n\nProperty: describedBy"
+        },
+        {
+          "name": "modalTitle",
+          "description": "`modalTitle` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
+        },
+        {
           "name": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
         },
         {
           "name": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
         },
         {
           "name": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
         },
         {
           "name": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
         },
         {
           "name": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
         },
         {
           "name": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
+          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
         },
         {
           "name": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
+          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
+          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
-      ],
-      "properties": [
+      ]
+    },
+    {
+      "name": "media-image-image",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "attributes": [
         {
           "name": "source",
-          "attribute": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "citation",
-          "attribute": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelTitle",
-          "attribute": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelDescription",
-          "attribute": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "alt",
-          "attribute": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt"
         },
         {
-          "name": "size",
-          "attribute": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
+          "name": "described-by",
+          "description": "`described-by` {`string`} - \n\nProperty: describedBy"
         },
         {
           "name": "round",
-          "attribute": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
+          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "card",
-          "attribute": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
+          "name": "modal-title",
+          "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
         },
         {
-          "name": "box",
-          "attribute": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "offset",
-          "attribute": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "media-image-citation",
-      "description": "`media-image-citation`"
+      "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
     },
     {
       "name": "media-image",
-      "description": "`media-image`",
+      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
+          "name": "__figureLabel",
+          "description": "`__figureLabel` {`boolean`} - \n\nProperty: __figureLabel",
+          "valueSet": "v"
+        },
+        {
+          "name": "_hasCaption",
+          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
+          "valueSet": "v"
+        },
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - image aria-described by\n\nProperty: describedBy"
+        },
+        {
+          "name": "modalTitle",
+          "description": "`modalTitle` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
+        },
+        {
           "name": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
         },
         {
           "name": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
         },
         {
           "name": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
         },
         {
           "name": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
         },
         {
           "name": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
         },
         {
           "name": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
+          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
         },
         {
           "name": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
+          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
+          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
-      ],
-      "properties": [
+      ]
+    },
+    {
+      "name": "media-image-image",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "attributes": [
         {
           "name": "source",
-          "attribute": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "citation",
-          "attribute": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelTitle",
-          "attribute": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelDescription",
-          "attribute": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "alt",
-          "attribute": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt"
         },
         {
-          "name": "size",
-          "attribute": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
+          "name": "described-by",
+          "description": "`described-by` {`string`} - \n\nProperty: describedBy"
         },
         {
           "name": "round",
-          "attribute": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
+          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "card",
-          "attribute": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
+          "name": "modal-title",
+          "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
         },
         {
-          "name": "box",
-          "attribute": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "offset",
-          "attribute": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "media-image-citation",
-      "description": "`media-image-citation`"
+      "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "media-image",
-      "description": "`media-image`",
-      "attributes": [
-        {
-          "name": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "description": "Image source.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "citation",
-          "attribute": "citation",
-          "description": "Image citation.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "caption",
-          "attribute": "caption",
-          "description": "Image caption.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelTitle",
-          "attribute": "figure-label-title",
-          "description": "Added a figure label title to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "figureLabelDescription",
-          "attribute": "figure-label-description",
-          "description": "Added a figure label description to the top of the media-image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Image alt.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "The size of the image (small, wide).",
-          "type": "string",
-          "default": "\"wide\""
-        },
-        {
-          "name": "round",
-          "attribute": "round",
-          "description": "The shape of the image (round).",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "card",
-          "attribute": "card",
-          "description": "Applies card styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "box",
-          "attribute": "box",
-          "description": "Applies box styling.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "offset",
-          "attribute": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "type": "string",
-          "default": "\"none\""
-        }
-      ]
-    },
-    {
-      "name": "media-image-citation",
-      "description": "`media-image-citation`"
-    },
-    {
-      "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

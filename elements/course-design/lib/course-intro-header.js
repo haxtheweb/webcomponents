@@ -281,7 +281,12 @@ class CourseIntroHeader extends LitElement {
     }
 
     this._disposer = autorun(() => {
-      if (store.manifest && store.manifest.metadata && store.manifest.metadata.theme && store.manifest.metadata.theme.variables) {
+      if (
+        store.manifest &&
+        store.manifest.metadata &&
+        store.manifest.metadata.theme &&
+        store.manifest.metadata.theme.variables
+      ) {
         this.title = toJS(store.manifest.title);
         this.description = toJS(store.manifest.description);
         this.icon = toJS(store.manifest.metadata.theme.variables.icon);

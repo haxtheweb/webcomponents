@@ -1,120 +1,53 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "user-action",
-      "description": "`user-action`",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
-          "name": "track"
+          "name": "track",
+          "description": "`track` {`string`} - \n\nProperty: track\n\nDefault: visibility"
         },
         {
-          "name": "eventname"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
+          "name": "eventname",
+          "description": "`eventname` {`string`} - \n\nProperty: eventname\n\nDefault: user-engagement"
         },
         {
-          "name": "UserActionBroker"
+          "name": "every",
+          "description": "`every` {`string | null`} - \n\nProperty: every\n\nDefault: false",
+          "values": []
         },
         {
-          "name": "tag",
-          "type": "string",
-          "default": "\"user-action\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     },
     {
       "name": "user-action",
-      "description": "`user-action`",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
-          "name": "every",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "visiblelimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
           "name": "track",
-          "type": "string",
-          "default": "\"visibility\""
+          "description": "`track` {`string`} - \n\nProperty: track\n\nDefault: visibility"
         },
         {
           "name": "eventname",
-          "type": "string",
-          "default": "\"user-engagement\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
+          "description": "`eventname` {`string`} - \n\nProperty: eventname\n\nDefault: user-engagement"
         },
         {
           "name": "every",
-          "attribute": "every",
-          "type": "boolean",
-          "default": "false"
+          "description": "`every` {`string | null`} - \n\nProperty: every\n\nDefault: false",
+          "values": []
         },
         {
-          "name": "visiblelimit",
-          "attribute": "visiblelimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "track",
-          "attribute": "track",
-          "type": "string",
-          "default": "\"visibility\""
-        },
-        {
-          "name": "eventname",
-          "attribute": "eventname",
-          "type": "string",
-          "default": "\"user-engagement\""
-        },
-        {
-          "name": "UserActionBroker"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"user-action\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "user-action",
-      "description": "`user-action`",
-      "attributes": [
-        {
-          "name": "track"
-        },
-        {
-          "name": "eventname"
-        }
-      ],
-      "properties": [
-        {
-          "name": "UserActionBroker"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"user-action\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

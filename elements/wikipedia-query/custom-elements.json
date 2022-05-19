@@ -1,209 +1,103 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
-          "name": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search"
         },
         {
           "name": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
+          "name": "language",
+          "description": "`language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\nProperty: language"
         },
         {
-          "name": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
+          "name": "headers",
+          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
         },
         {
-          "name": "searchResponse",
-          "attribute": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
         },
         {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "search",
-          "attribute": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         },
         {
-          "name": "renderAs",
-          "attribute": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
+          "name": "onhax-register-app",
+          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
     },
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
-          "name": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search"
         },
         {
           "name": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
+          "name": "language",
+          "description": "`language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\nProperty: language"
         },
         {
-          "name": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
+          "name": "headers",
+          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
         },
         {
-          "name": "searchResponse",
-          "attribute": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
         },
         {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "search",
-          "attribute": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         },
         {
-          "name": "renderAs",
-          "attribute": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "wikipedia-query",
-      "description": "`wikipedia-query`",
-      "attributes": [
-        {
-          "name": "title",
-          "type": "string"
-        },
-        {
-          "name": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
-        },
-        {
-          "name": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
-        },
-        {
-          "name": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "searchResponse",
-          "attribute": "searchResponse",
-          "description": "Response to parse.",
-          "type": "object"
-        },
-        {
-          "name": "hideTitle",
-          "attribute": "hide-title",
-          "description": "hideTitle",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "search",
-          "attribute": "search",
-          "description": "Search string.",
-          "type": "string",
-          "default": "\"Web_Components\""
-        },
-        {
-          "name": "renderAs",
-          "attribute": "render-as",
-          "description": "Render the response as..",
-          "type": "string",
-          "default": "\"content\""
+          "name": "onhax-register-app",
+          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

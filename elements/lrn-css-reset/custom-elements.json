@@ -1,41 +1,29 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrn-css-reset",
-      "path": "./lrn-css-reset.js",
-      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles",
+      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles\n\nAttributes:\n\n  * `apply-to-head` {`boolean`} - \n\nProperties:\n\n  * `applyToHead` {`boolean`} - ",
       "attributes": [
         {
           "name": "apply-to-head",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "applyToHead",
-          "attribute": "apply-to-head",
-          "type": "boolean"
+          "description": "`apply-to-head` {`boolean`} - \n\nProperty: applyToHead",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lrn-css-reset",
-      "path": "./src/lrn-css-reset.js",
-      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles",
+      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles\n\nAttributes:\n\n  * `apply-to-head` {`boolean`} - \n\nProperties:\n\n  * `applyToHead` {`boolean`} - ",
       "attributes": [
         {
           "name": "apply-to-head",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "applyToHead",
-          "attribute": "apply-to-head",
-          "type": "boolean"
+          "description": "`apply-to-head` {`boolean`} - \n\nProperty: applyToHead",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

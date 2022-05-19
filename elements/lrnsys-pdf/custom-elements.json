@@ -1,269 +1,69 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lrnsys-pdf",
-      "description": "`lrnsys-pdf`",
+      "description": "`lrnsys-pdf`\n\nAttributes:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `download-label` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `downloadLabel` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
+          "description": "`title` {`string`} - Title prior to the PDF\n\nProperty: title\n\nDefault: lrnsys-pdf"
         },
         {
           "name": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - Whether or not to present this as a card.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "download-label",
-          "description": "Download Label.",
-          "type": "string"
+          "description": "`download-label` {`string`} - Download Label.\n\nProperty: downloadLabel"
         },
         {
           "name": "page",
-          "description": "Active Page",
-          "type": "string"
+          "description": "`page` {`string`} - Active Page\n\nProperty: page"
         },
         {
           "name": "file",
-          "description": "File to present",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
+          "description": "`file` {`string`} - File to present\n\nProperty: file"
         },
         {
-          "name": "card",
-          "attribute": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download Label.",
-          "type": "string"
-        },
-        {
-          "name": "page",
-          "attribute": "page",
-          "description": "Active Page",
-          "type": "string"
-        },
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "File to present",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "lrnsys-pdf",
-      "description": "`lrnsys-pdf`",
+      "description": "`lrnsys-pdf`\n\nAttributes:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `download-label` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `downloadLabel` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
+          "description": "`title` {`string`} - Title prior to the PDF\n\nProperty: title\n\nDefault: lrnsys-pdf"
         },
         {
           "name": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
+          "description": "`card` {`boolean`} - Whether or not to present this as a card.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "download-label",
-          "description": "Download Label.",
-          "type": "string"
+          "description": "`download-label` {`string`} - Download Label.\n\nProperty: downloadLabel"
         },
         {
           "name": "page",
-          "description": "Active Page",
-          "type": "string"
+          "description": "`page` {`string`} - Active Page\n\nProperty: page"
         },
         {
           "name": "file",
-          "description": "File to present",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
+          "description": "`file` {`string`} - File to present\n\nProperty: file"
         },
         {
-          "name": "card",
-          "attribute": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download Label.",
-          "type": "string"
-        },
-        {
-          "name": "page",
-          "attribute": "page",
-          "description": "Active Page",
-          "type": "string"
-        },
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "File to present",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "lrnsys-pdf",
-      "description": "`lrnsys-pdf`",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
-        },
-        {
-          "name": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "download-label",
-          "description": "Download Label.",
-          "type": "string"
-        },
-        {
-          "name": "page",
-          "description": "Active Page",
-          "type": "string"
-        },
-        {
-          "name": "file",
-          "description": "File to present",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title prior to the PDF",
-          "type": "string",
-          "default": "\"lrnsys-pdf\""
-        },
-        {
-          "name": "card",
-          "attribute": "card",
-          "description": "Whether or not to present this as a card.",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "downloadLabel",
-          "attribute": "download-label",
-          "description": "Download Label.",
-          "type": "string"
-        },
-        {
-          "name": "page",
-          "attribute": "page",
-          "description": "Active Page",
-          "type": "string"
-        },
-        {
-          "name": "file",
-          "attribute": "file",
-          "description": "File to present",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

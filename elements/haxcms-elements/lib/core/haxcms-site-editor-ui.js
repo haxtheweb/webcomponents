@@ -8,23 +8,31 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import '@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js';
+import "@lrnwebcomponents/app-hax/lib/v1/app-hax-top-bar.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
-import 'wired-elements/lib/wired-button.js';
+import "wired-elements/lib/wired-button.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
-import './haxcms-darkmode-toggle.js';
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-const haxLogo = new URL('../../../app-hax/lib/assets/images/HAXLogo.svg', import.meta.url).href;
-const ButtonBGLight = new URL('../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
-const ButtonBGDark = new URL('../../../app-hax/lib/assets/images/ButtonBGDM.svg', import.meta.url).href;
-const LogOut = new URL('../../../app-hax/lib/assets/images/Logout.svg', import.meta.url).href;
+import "./haxcms-darkmode-toggle.js";
+const haxLogo = new URL(
+  "../../../app-hax/lib/assets/images/HAXLogo.svg",
+  import.meta.url
+).href;
+const ButtonBGLight = new URL(
+  "../../../app-hax/lib/assets/images/ButtonBGLM.svg",
+  import.meta.url
+).href;
+const ButtonBGDark = new URL(
+  "../../../app-hax/lib/assets/images/ButtonBGDM.svg",
+  import.meta.url
+).href;
+const LogOut = new URL(
+  "../../../app-hax/lib/assets/images/Logout.svg",
+  import.meta.url
+).href;
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -32,9 +40,12 @@ const LogOut = new URL('../../../app-hax/lib/assets/images/Logout.svg', import.m
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors)) {
+class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
+  HAXCMSI18NMixin(SimpleColors)
+) {
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host *:not(:defined) {
           display: none;
@@ -102,7 +113,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
-          font-family: 'Press Start 2P', sans-serif;          
+          font-family: "Press Start 2P", sans-serif;
         }
         app-hax-top-bar {
           z-index: 1000;
@@ -201,7 +212,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         .topbar-character rpg-character {
           margin: -4px -14px 0px -10px;
           height: 52px;
-          width: 64px;      
+          width: 64px;
           display: inline-block;
           transform: scale(0.7);
           transition: all 0.5 ease-in-out;
@@ -212,7 +223,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         }
 
         .logout::part(menu-button) {
-          background-image: url('${unsafeCSS(LogOut)}');
+          background-image: url("${unsafeCSS(LogOut)}");
           background-repeat: no-repeat;
           background-position: center center;
           text-align: center;
@@ -220,13 +231,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
           border-top: 0px;
           border-bottom: 0px;
           padding: 10px;
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
         }
         app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
         }
-        
 
         @media screen and (max-width: 800px) {
           :host([dashboard-opened]) {
@@ -250,7 +260,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     this.rpgHat = "none";
     this.darkMode = false;
     this.userMenuOpen = false;
-    this.soundIcon = '';
+    this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
     this.t = {
@@ -278,7 +288,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     this.__editIcon = "hax:page-edit";
     this.icon = "hax:site-settings";
     this.manifestEditMode = false;
-    this.backLink = '../../';
+    this.backLink = "../../";
     if (window.appSettings && window.appSettings.backLink) {
       this.backLink = window.appSettings.backLink;
     }
@@ -300,15 +310,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     });
     autorun(() => {
       this.darkMode = toJS(store.darkMode);
-      this.dark  = this.darkMode;
+      this.dark = this.darkMode;
       if (toJS(store.darkMode)) {
-        HAXStore.globalPreferences.haxUiTheme = 'haxdark';
+        HAXStore.globalPreferences.haxUiTheme = "haxdark";
       } else {
-        HAXStore.globalPreferences.haxUiTheme = 'hax';
+        HAXStore.globalPreferences.haxUiTheme = "hax";
       }
     });
     autorun(() => {
-      this.soundIcon = toJS(store.soundStatus) ? new URL('../../../app-hax/lib/assets/images/FullVolume.svg',import.meta.url).href : new URL('../../../app-hax/lib/assets/images/Silence.svg',import.meta.url).href;
+      this.soundIcon = toJS(store.soundStatus)
+        ? new URL(
+            "../../../app-hax/lib/assets/images/FullVolume.svg",
+            import.meta.url
+          ).href
+        : new URL(
+            "../../../app-hax/lib/assets/images/Silence.svg",
+            import.meta.url
+          ).href;
     });
     setTimeout(() => {
       // prettier-ignore
@@ -324,27 +342,31 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
 
   soundToggle() {
     const status = !toJS(store.soundStatus);
-    store.soundStatus = status
-    localStorageSet('app-hax-soundStatus', status);
+    store.soundStatus = status;
+    localStorageSet("app-hax-soundStatus", status);
     if (!status) {
-      store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true});
-    }
-    else {
-      store.toast("Can you hear me now? Good.", 2000,{ hat: 'random'});
-      store.playSound('click');
+      store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true });
+    } else {
+      store.toast("Can you hear me now? Good.", 2000, { hat: "random" });
+      store.playSound("click");
     }
   }
 
   toggleMenu() {
     this.userMenuOpen = !this.userMenuOpen;
-    store.playSound('click');
+    store.playSound("click");
   }
   // render function
   render() {
     return html`
       <app-hax-top-bar part="top-bar">
         <span slot="left">
-          <a href="${this.backLink}" class="haxLogo" id="backtosites" part="hax-logo">
+          <a
+            href="${this.backLink}"
+            class="haxLogo"
+            id="backtosites"
+            part="hax-logo"
+          >
             <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
           </a>
           <simple-tooltip for="backtosites" position="right"
@@ -437,70 +459,78 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       </simple-toolbar>
 
-      <app-hax-user-menu slot="right" id="user-menu">
-        <button class="topbar-character" slot="menuButton" @click="${this.toggleMenu}">
-          <rpg-character
-            seed="${this.userName}"
-            width="68"
-            height="68"
-            part="rpgcharacter"
-            aria-label="${this.t.menu}"
-            hat="${this.rpgHat}"
-          ></rpg-character>
-          <span class="characterbtn-name">${this.userName}</span>
-          <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
-        </button>
-        <div slot="pre-menu" class="ops-panel">
-          <slot name="haxcms-site-editor-ui-pre-menu"></slot>
-          <wired-button
-            elevation="1"
-            class="soundToggle"
-            @click="${this.soundToggle}"
+        <app-hax-user-menu slot="right" id="user-menu">
+          <button
+            class="topbar-character"
+            slot="menuButton"
+            @click="${this.toggleMenu}"
           >
-            <simple-icon-lite src="${this.soundIcon}" loading="lazy" decoding="async"></simple-icon-lite>
-          </wired-button>
-          <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
-        </div>
-        <!-- <app-hax-user-menu-button
+            <rpg-character
+              seed="${this.userName}"
+              width="68"
+              height="68"
+              part="rpgcharacter"
+              aria-label="${this.t.menu}"
+              hat="${this.rpgHat}"
+            ></rpg-character>
+            <span class="characterbtn-name">${this.userName}</span>
+            <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
+          </button>
+          <div slot="pre-menu" class="ops-panel">
+            <slot name="haxcms-site-editor-ui-pre-menu"></slot>
+            <wired-button
+              elevation="1"
+              class="soundToggle"
+              @click="${this.soundToggle}"
+            >
+              <simple-icon-lite
+                src="${this.soundIcon}"
+                loading="lazy"
+                decoding="async"
+              ></simple-icon-lite>
+            </wired-button>
+            <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
+          </div>
+          <!-- <app-hax-user-menu-button
           slot="main-menu"
           icon="face"
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
-        <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
-        <app-hax-user-menu-button
-          id="outlinebutton"
-          @click="${this._outlineButtonTap}"
-          slot="main-menu"
-          icon="hax:site-map"
-          part="outlinebtn"
-          label="${this.t.editSiteOutline}"
-        ></app-hax-user-menu-button>
+          <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
+          <app-hax-user-menu-button
+            id="outlinebutton"
+            @click="${this._outlineButtonTap}"
+            slot="main-menu"
+            icon="hax:site-map"
+            part="outlinebtn"
+            label="${this.t.editSiteOutline}"
+          ></app-hax-user-menu-button>
 
-        <app-hax-user-menu-button
-          @click="${this._manifestButtonTap}"
-          slot="main-menu"
-          icon="${this.icon}"
-          part="manifestbtn"
-          label="${this.__settingsText}"
-        ></app-hax-user-menu-button>
+          <app-hax-user-menu-button
+            @click="${this._manifestButtonTap}"
+            slot="main-menu"
+            icon="${this.icon}"
+            part="manifestbtn"
+            label="${this.__settingsText}"
+          ></app-hax-user-menu-button>
 
-        <app-hax-user-menu-button
-          slot="main-menu"
-          icon="add"
-          label="${this.t.newJourney}"
-          part="newjourneybtn"
-          @click="${this._addButtonTap}"
-        ></app-hax-user-menu-button>
-        <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
-        <app-hax-user-menu-button
-          slot="post-menu"
-          part="logoutbtn"
-          class="logout"
-          label="${this.t.logOut}"
-          @click=${this._logout}
-        ></app-hax-user-menu-button>
-      </app-hax-user-menu>
-    </app-hax-top-bar>
+          <app-hax-user-menu-button
+            slot="main-menu"
+            icon="add"
+            label="${this.t.newJourney}"
+            part="newjourneybtn"
+            @click="${this._addButtonTap}"
+          ></app-hax-user-menu-button>
+          <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
+          <app-hax-user-menu-button
+            slot="post-menu"
+            part="logoutbtn"
+            class="logout"
+            label="${this.t.logOut}"
+            @click=${this._logout}
+          ></app-hax-user-menu-button>
+        </app-hax-user-menu>
+      </app-hax-top-bar>
     `;
   }
 
@@ -644,20 +674,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'userMenuOpen' && oldValue !== undefined) {
+      if (propName === "userMenuOpen" && oldValue !== undefined) {
         if (this.userMenuOpen) {
-          this.rpgHat = 'construction';
-        }
-        else {
-          this.rpgHat = 'none';
+          this.rpgHat = "construction";
+        } else {
+          this.rpgHat = "none";
         }
       }
       if (propName == "editMode") {
         if (this.editMode) {
-          this.rpgHat = 'edit';
-        }
-        else {
-          this.rpgHat = 'none';
+          this.rpgHat = "edit";
+        } else {
+          this.rpgHat = "none";
         }
         // observer
         this._editModeChanged(this[propName], oldValue);
@@ -699,7 +727,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         type: String,
         attribute: "user-name",
       },
-      rpgHat: { type: String},
+      rpgHat: { type: String },
       userPicture: {
         type: String,
         attribute: "user-picture",
@@ -708,7 +736,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
         type: Boolean,
       },
       soundIcon: { type: String },
-      darkMode: { type: Boolean, reflect: true, attribute: 'dark-mode'},
+      darkMode: { type: Boolean, reflect: true, attribute: "dark-mode" },
       backLink: {
         type: String,
       },
@@ -830,7 +858,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
    * toggle state on button tap
    */
   _editButtonTap(e) {
-    store.playSound('click');
+    store.playSound("click");
     this.editMode = !this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
@@ -852,7 +880,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     );
   }
   _editDetailsButtonTap(e) {
-    store.playSound('click');
+    store.playSound("click");
     const evt = new CustomEvent("haxcms-load-node-fields", {
       bubbles: true,
       composed: true,
@@ -863,7 +891,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
   }
   _cancelButtonTap(e) {
     this.editMode = false;
-    store.playSound('error');
+    store.playSound("error");
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,
@@ -928,7 +956,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
    * Delete button hit, confirm they want to do this
    */
   _deleteButtonTap(e) {
-    store.playSound('click');
+    store.playSound("click");
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("button");
@@ -944,7 +972,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     icon2.icon = "icons:cancel";
     b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
-    b2.addEventListener("click", () => store.playSound('error'));
+    b2.addEventListener("click", () => store.playSound("error"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
     b.appendChild(b1);
@@ -972,7 +1000,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
    * delete active item
    */
   _deleteActive(e) {
-    store.playSound('click');
+    store.playSound("click");
     const evt = new CustomEvent("haxcms-delete-node", {
       bubbles: true,
       composed: true,
@@ -987,7 +1015,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
    * toggle state on button tap
    */
   _outlineButtonTap(e) {
-    store.playSound('click');
+    store.playSound("click");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -1012,16 +1040,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(HAXCMSI18NMixin(SimpleColors))
     window.dispatchEvent(evt);
   }
   _addButtonTap() {
-    store.playSound('click');
+    store.playSound("click");
     setTimeout(() => {
-      window.location = this.backLink + "createSite-step-1";      
+      window.location = this.backLink + "createSite-step-1";
     }, 100);
   }
   /**
    * toggle state on button tap
    */
   _manifestButtonTap(e) {
-    store.playSound('click');
+    store.playSound("click");
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

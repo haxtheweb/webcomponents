@@ -5,8 +5,14 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { HAXCMSThemeParts } from "./HAXCMSThemeParts.js";
-const ButtonBGLight = new URL('../../../../app-hax/lib/assets/images/ButtonBGLM.svg', import.meta.url).href;
-const ButtonBGDark = new URL('../../../../app-hax/lib/assets/images/ButtonBGDM.svg', import.meta.url).href;
+const ButtonBGLight = new URL(
+  "../../../../app-hax/lib/assets/images/ButtonBGLM.svg",
+  import.meta.url
+).href;
+const ButtonBGDark = new URL(
+  "../../../../app-hax/lib/assets/images/ButtonBGDM.svg",
+  import.meta.url
+).href;
 
 // translation support baked in, use this class to reduce
 // complexity in adding new buttons to the HAXcms UI for editors
@@ -25,7 +31,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
       icon: { type: String },
       label: { type: String },
       voiceCommand: { type: String },
-      accentColor: { type: String, attribute: "accent-color"},
+      accentColor: { type: String, attribute: "accent-color" },
     };
   }
   static get styles() {
@@ -41,7 +47,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
           --simple-icon-height: 24px;
           border-radius: 50%;
           border: none;
-          background-image: url('${unsafeCSS(ButtonBGLight)}');
+          background-image: url("${unsafeCSS(ButtonBGLight)}");
           background-color: var(--simple-colors-default-theme-accent-5, blue);
           color: var(--simple-colors-default-theme-accent-12, white);
           text-align: center;
@@ -59,16 +65,16 @@ export class HAXCMSButton extends HAXCMSThemeParts(
         simple-icon-button:hover,
         simple-icon-button:focus,
         simple-icon-button:active {
-          opacity: .8;
+          opacity: 0.8;
         }
         :host([dark-mode]) simple-icon-button {
-          background-image: url('${unsafeCSS(ButtonBGDark)}');
+          background-image: url("${unsafeCSS(ButtonBGDark)}");
         }
         simple-tooltip:not(:defined) {
           display: none !important;
         }
         simple-tooltip {
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
         }
       `,
     ];

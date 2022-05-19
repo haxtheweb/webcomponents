@@ -1,0 +1,574 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "simple-emoji-picker",
+      "description": "`simple-emoji-picker`\n\nEvents:\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `emoji-types` {`any[]`} - emoji types to include\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\nProperties:\n\n  * `emojiTypes` {`any[]`} - emoji types to include\n\n  * `icon` {`string`} - \n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker",
+      "attributes": [
+        {
+          "name": "emoji-types",
+          "description": "`emoji-types` {`any[]`} - emoji types to include\n\nProperty: emojiTypes\n\nDefault: emotions,people,nature,food,travel,activities,objects,symbols,flags"
+        },
+        {
+          "name": "hide-null-option",
+          "description": "`hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: hideNullOption",
+          "valueSet": "v"
+        },
+        {
+          "name": "justify",
+          "description": "`justify` {`boolean`} - Box is 100% width of the ui\n\nProperty: justify",
+          "valueSet": "v"
+        },
+        {
+          "name": "__options",
+          "description": "`__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\nProperty: __options"
+        },
+        {
+          "name": "allow-null",
+          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align-right",
+          "description": "`align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\nProperty: alignRight\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "aria-labelledby",
+          "description": "`aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\nProperty: ariaLabelledby\n\nDefault: null"
+        },
+        {
+          "name": "block-label",
+          "description": "`block-label` {`boolean`} - Position label above select dropdown?\n\nProperty: blockLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Is picker disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Is it expanded?\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-option-labels",
+          "description": "`hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\nProperty: hideOptionLabels\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-sample",
+          "description": "`hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\nProperty: hideSample\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Optional. Label for picker input\n\nProperty: label\n\nDefault: Emoji"
+        },
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\nProperty: options\n\nDefault: "
+        },
+        {
+          "name": "title-as-html",
+          "description": "`title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\nProperty: titleAsHtml\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - An string that stores current value for picker\n\nProperty: value\n\nDefault: null"
+        },
+        {
+          "name": "__activeDesc",
+          "description": "`__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\nProperty: __activeDesc\n\nDefault: option-0-0"
+        },
+        {
+          "name": "__selectedOption",
+          "description": "`__selectedOption` - Selected option based on value of picker\n\nProperty: __selectedOption\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onchanged",
+          "description": "`changed` {`CustomEvent<this>`} - Fires when properties change"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<this>`} - handles listbox click event"
+        },
+        {
+          "name": "onmousedown",
+          "description": "`mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event"
+        },
+        {
+          "name": "onkeydown",
+          "description": "`keydown` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onoption-focus",
+          "description": "`option-focus` {`CustomEvent<this>`} - fires when active descendant changes"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - fires when value changes"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<this>`} - fires when options or value changes"
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` {`CustomEvent<this>`} - fires when listbox is expanded"
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` {`CustomEvent<this>`} - fires when listbox is collapsed"
+        }
+      ]
+    },
+    {
+      "name": "simple-picker-option",
+      "description": "`simple-picker-option`\na simple picker for options, icons, etc.\n\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-picker-color` | color of simple picker text | unset\n`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px\n`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding\n`--simple-picker-option-size` | size of each simple picker option | 24px\n\nEvents:\n\n  * `option-focus` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `styles` - styles object to allow for piercing of shadow DOM\n\n  * `active` {`boolean`} - Is the option active?\n\n  * `data` - The style of the option. (Required for accessibility.)\n\n  * `hidden` {`boolean`} - If the option is hidden\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move the labels off-screen so that only screen-readers will have them.\n\n  * `icon` {`string`} - Optional. If option is an iron icon, the iconset:name of the icon\n\n  * `id` {`string`} - The id of the option\n\n  * `label` {`string`} - The text of the option. (Required for accessibility.)\n\n  * `selected` {`boolean`} - Is the option selected?\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - The value of the option.\n\nProperties:\n\n  * `styles` - styles object to allow for piercing of shadow DOM\n\n  * `active` {`boolean`} - Is the option active?\n\n  * `data` - The style of the option. (Required for accessibility.)\n\n  * `hidden` {`boolean`} - If the option is hidden\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move the labels off-screen so that only screen-readers will have them.\n\n  * `icon` {`string`} - Optional. If option is an iron icon, the iconset:name of the icon\n\n  * `id` {`string`} - The id of the option\n\n  * `label` {`string`} - The text of the option. (Required for accessibility.)\n\n  * `selected` {`boolean`} - Is the option selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - The value of the option.",
+      "attributes": [
+        {
+          "name": "styles",
+          "description": "`styles` - styles object to allow for piercing of shadow DOM\n\nProperty: styles"
+        },
+        {
+          "name": "active",
+          "description": "`active` {`boolean`} - Is the option active?\n\nProperty: active\n\nDefault: null",
+          "valueSet": "v"
+        },
+        {
+          "name": "data",
+          "description": "`data` - The style of the option. (Required for accessibility.)\n\nProperty: data\n\nDefault: null"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - If the option is hidden\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-option-labels",
+          "description": "`hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move the labels off-screen so that only screen-readers will have them.\n\nProperty: hideOptionLabels\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional. If option is an iron icon, the iconset:name of the icon\n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The id of the option\n\nProperty: id\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - The text of the option. (Required for accessibility.)\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` {`boolean`} - Is the option selected?\n\nProperty: selected\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "title-as-html",
+          "description": "`title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\nProperty: titleAsHtml\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - The value of the option.\n\nProperty: value\n\nDefault: null"
+        },
+        {
+          "name": "onoption-focus",
+          "description": "`option-focus` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "simple-symbol-picker",
+      "description": "`simple-symbol-picker`\n\nEvents:\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `symbol-types` {`any[]`} - Symbol types to include\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `symbolTypes` {`any[]`} - Symbol types to include\n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker",
+      "attributes": [
+        {
+          "name": "symbol-types",
+          "description": "`symbol-types` {`any[]`} - Symbol types to include\n\nProperty: symbolTypes\n\nDefault: symbols,math,characters,greek,misc"
+        },
+        {
+          "name": "hide-null-option",
+          "description": "`hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: hideNullOption",
+          "valueSet": "v"
+        },
+        {
+          "name": "justify",
+          "description": "`justify` {`boolean`} - Box is 100% width of the ui\n\nProperty: justify",
+          "valueSet": "v"
+        },
+        {
+          "name": "__options",
+          "description": "`__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\nProperty: __options"
+        },
+        {
+          "name": "allow-null",
+          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align-right",
+          "description": "`align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\nProperty: alignRight\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "aria-labelledby",
+          "description": "`aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\nProperty: ariaLabelledby\n\nDefault: null"
+        },
+        {
+          "name": "block-label",
+          "description": "`block-label` {`boolean`} - Position label above select dropdown?\n\nProperty: blockLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Is picker disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Is it expanded?\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-option-labels",
+          "description": "`hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\nProperty: hideOptionLabels\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-sample",
+          "description": "`hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\nProperty: hideSample\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Optional. Label for picker input\n\nProperty: label\n\nDefault: Symbol"
+        },
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\nProperty: options\n\nDefault: "
+        },
+        {
+          "name": "title-as-html",
+          "description": "`title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\nProperty: titleAsHtml\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - An string that stores current value for picker\n\nProperty: value\n\nDefault: null"
+        },
+        {
+          "name": "__activeDesc",
+          "description": "`__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\nProperty: __activeDesc\n\nDefault: option-0-0"
+        },
+        {
+          "name": "__selectedOption",
+          "description": "`__selectedOption` - Selected option based on value of picker\n\nProperty: __selectedOption\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onchanged",
+          "description": "`changed` {`CustomEvent<this>`} - Fires when properties change"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<this>`} - handles listbox click event"
+        },
+        {
+          "name": "onmousedown",
+          "description": "`mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event"
+        },
+        {
+          "name": "onkeydown",
+          "description": "`keydown` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onoption-focus",
+          "description": "`option-focus` {`CustomEvent<this>`} - fires when active descendant changes"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - fires when value changes"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<this>`} - fires when options or value changes"
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` {`CustomEvent<this>`} - fires when listbox is expanded"
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` {`CustomEvent<this>`} - fires when listbox is collapsed"
+        }
+      ]
+    },
+    {
+      "name": "simple-picker",
+      "description": "`simple-picker`\na simple picker for options, icons, etc.\n\nEvents:\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\nProperties:\n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker",
+      "attributes": [
+        {
+          "name": "hide-null-option",
+          "description": "`hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: hideNullOption",
+          "valueSet": "v"
+        },
+        {
+          "name": "justify",
+          "description": "`justify` {`boolean`} - Box is 100% width of the ui\n\nProperty: justify",
+          "valueSet": "v"
+        },
+        {
+          "name": "__options",
+          "description": "`__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\nProperty: __options"
+        },
+        {
+          "name": "allow-null",
+          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align-right",
+          "description": "`align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\nProperty: alignRight\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "aria-labelledby",
+          "description": "`aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\nProperty: ariaLabelledby\n\nDefault: null"
+        },
+        {
+          "name": "block-label",
+          "description": "`block-label` {`boolean`} - Position label above select dropdown?\n\nProperty: blockLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Is picker disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Is it expanded?\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-option-labels",
+          "description": "`hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\nProperty: hideOptionLabels\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-sample",
+          "description": "`hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\nProperty: hideSample\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Optional. Label for picker input\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\nProperty: options\n\nDefault: "
+        },
+        {
+          "name": "title-as-html",
+          "description": "`title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\nProperty: titleAsHtml\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - An string that stores current value for picker\n\nProperty: value\n\nDefault: null"
+        },
+        {
+          "name": "__activeDesc",
+          "description": "`__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\nProperty: __activeDesc\n\nDefault: option-0-0"
+        },
+        {
+          "name": "__selectedOption",
+          "description": "`__selectedOption` - Selected option based on value of picker\n\nProperty: __selectedOption\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onchanged",
+          "description": "`changed` {`CustomEvent<this>`} - Fires when properties change"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<this>`} - handles listbox click event"
+        },
+        {
+          "name": "onmousedown",
+          "description": "`mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event"
+        },
+        {
+          "name": "onkeydown",
+          "description": "`keydown` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onoption-focus",
+          "description": "`option-focus` {`CustomEvent<this>`} - fires when active descendant changes"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - fires when value changes"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<this>`} - fires when options or value changes"
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` {`CustomEvent<this>`} - fires when listbox is expanded"
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` {`CustomEvent<this>`} - fires when listbox is collapsed"
+        }
+      ]
+    },
+    {
+      "name": "simple-picker",
+      "description": "`simple-picker`\na simple picker for options, icons, etc.\n\nEvents:\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\nProperties:\n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker",
+      "attributes": [
+        {
+          "name": "hide-null-option",
+          "description": "`hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: hideNullOption",
+          "valueSet": "v"
+        },
+        {
+          "name": "justify",
+          "description": "`justify` {`boolean`} - Box is 100% width of the ui\n\nProperty: justify",
+          "valueSet": "v"
+        },
+        {
+          "name": "__options",
+          "description": "`__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\nProperty: __options"
+        },
+        {
+          "name": "allow-null",
+          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align-right",
+          "description": "`align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\nProperty: alignRight\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "aria-labelledby",
+          "description": "`aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\nProperty: ariaLabelledby\n\nDefault: null"
+        },
+        {
+          "name": "block-label",
+          "description": "`block-label` {`boolean`} - Position label above select dropdown?\n\nProperty: blockLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Is picker disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Is it expanded?\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-option-labels",
+          "description": "`hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\nProperty: hideOptionLabels\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-sample",
+          "description": "`hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\nProperty: hideSample\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Optional. Label for picker input\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\nProperty: options\n\nDefault: "
+        },
+        {
+          "name": "title-as-html",
+          "description": "`title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\nProperty: titleAsHtml\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - An string that stores current value for picker\n\nProperty: value\n\nDefault: null"
+        },
+        {
+          "name": "__activeDesc",
+          "description": "`__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\nProperty: __activeDesc\n\nDefault: option-0-0"
+        },
+        {
+          "name": "__selectedOption",
+          "description": "`__selectedOption` - Selected option based on value of picker\n\nProperty: __selectedOption\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onchanged",
+          "description": "`changed` {`CustomEvent<this>`} - Fires when properties change"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<this>`} - handles listbox click event"
+        },
+        {
+          "name": "onmousedown",
+          "description": "`mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event"
+        },
+        {
+          "name": "onkeydown",
+          "description": "`keydown` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onoption-focus",
+          "description": "`option-focus` {`CustomEvent<this>`} - fires when active descendant changes"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - fires when value changes"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<this>`} - fires when options or value changes"
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` {`CustomEvent<this>`} - fires when listbox is expanded"
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` {`CustomEvent<this>`} - fires when listbox is collapsed"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

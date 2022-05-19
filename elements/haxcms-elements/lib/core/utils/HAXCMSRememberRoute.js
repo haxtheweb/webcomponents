@@ -1,7 +1,10 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
-import { localStorageGet, localStorageSet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  localStorageGet,
+  localStorageSet,
+} from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSRememberRoute = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {

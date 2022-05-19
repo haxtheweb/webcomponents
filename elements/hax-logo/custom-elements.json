@@ -1,85 +1,17 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "tag"
+      "name": "hax-logo",
+      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `size` {`string | null`} - \n\n  * `toupper` {`string | null`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": []
     },
     {
       "name": "hax-logo",
-      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "type": "string | null"
-        },
-        {
-          "name": "toupper",
-          "type": "string | null"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"hax-logo\""
-        },
-        {
-          "name": "template"
-        }
-      ]
-    },
-    {
-      "name": "hax-logo",
-      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "type": "string | null"
-        },
-        {
-          "name": "toupper",
-          "type": "string | null"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"hax-logo\""
-        },
-        {
-          "name": "template"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "hax-logo",
-      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
-      "properties": [
-        {
-          "name": "size",
-          "type": "string | null"
-        },
-        {
-          "name": "toupper",
-          "type": "string | null"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"hax-logo\""
-        },
-        {
-          "name": "template"
-        }
-      ]
+      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `size` {`string | null`} - \n\n  * `toupper` {`string | null`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

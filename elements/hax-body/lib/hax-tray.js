@@ -4,7 +4,7 @@ import {
   camelCaseToDash,
   wipeSlot,
   normalizeEventPath,
-  localStorageSet
+  localStorageSet,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,

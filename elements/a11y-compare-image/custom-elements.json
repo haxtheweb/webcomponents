@@ -1,170 +1,95 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them",
+      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "active-layer",
+          "description": "`active-layer` {`number`} - \n\nProperty: activeLayer"
         },
         {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__lower",
+          "description": "`__lower` {`string`} - \n\nProperty: __lower"
         },
         {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__upper",
+          "description": "`__upper` {`string`} - \n\nProperty: __upper"
         },
         {
           "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
+          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "position",
+          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 50"
         },
         {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__markers",
+          "description": "`__markers` {`any[]`} - \n\nProperty: __markers\n\nDefault: "
         },
         {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Compare images"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them",
+      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "active-layer",
+          "description": "`active-layer` {`number`} - \n\nProperty: activeLayer"
         },
         {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__lower",
+          "description": "`__lower` {`string`} - \n\nProperty: __lower"
         },
         {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__upper",
+          "description": "`__upper` {`string`} - \n\nProperty: __upper"
         },
         {
           "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
+          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "position",
+          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 50"
         },
         {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "__markers",
+          "description": "`__markers` {`any[]`} - \n\nProperty: __markers\n\nDefault: "
         },
         {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Compare images"
         },
         {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
         },
         {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

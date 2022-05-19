@@ -1,350 +1,137 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Click to play this audio file"
         },
         {
           "name": "autoPlay",
-          "type": "boolean",
-          "default": "false"
+          "description": "`autoPlay` {`boolean`} - \n\nProperty: autoPlay\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "preload",
-          "type": "string",
-          "default": "\"auto\""
+          "description": "`preload` {`string`} - \n\nProperty: preload\n\nDefault: auto"
         },
         {
           "name": "currentTime",
-          "type": "number",
-          "default": "0"
+          "description": "`currentTime` {`number`} - \n\nProperty: currentTime\n\nDefault: 0"
         },
         {
           "name": "timeLeft",
-          "type": "number",
-          "default": "0"
+          "description": "`timeLeft` {`number`} - \n\nProperty: timeLeft\n\nDefault: 0"
         },
         {
           "name": "smallSkip",
-          "type": "number",
-          "default": "15"
+          "description": "`smallSkip` {`number`} - \n\nProperty: smallSkip\n\nDefault: 15"
         },
         {
           "name": "largeSkip",
-          "type": "number",
-          "default": "60"
+          "description": "`largeSkip` {`number`} - \n\nProperty: largeSkip\n\nDefault: 60"
         },
         {
           "name": "error",
-          "type": "boolean"
+          "description": "`error` {`boolean`} - \n\nProperty: error",
+          "valueSet": "v"
         },
         {
           "name": "timeOffset",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
+          "description": "`timeOffset` {`number`} - \n\nProperty: timeOffset\n\nDefault: 0"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "autoPlay",
-          "attribute": "autoPlay",
-          "type": "boolean",
-          "default": "false"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "preload",
-          "attribute": "preload",
-          "type": "string",
-          "default": "\"auto\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "currentTime",
-          "attribute": "currentTime",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "timeLeft",
-          "attribute": "timeLeft",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "smallSkip",
-          "attribute": "smallSkip",
-          "type": "number",
-          "default": "15"
-        },
-        {
-          "name": "largeSkip",
-          "attribute": "largeSkip",
-          "type": "number",
-          "default": "60"
-        },
-        {
-          "name": "error",
-          "attribute": "error",
-          "type": "boolean"
-        },
-        {
-          "name": "timeOffset",
-          "attribute": "timeOffset",
-          "type": "number",
-          "default": "0"
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
       "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Click to play this audio file"
         },
         {
           "name": "autoPlay",
-          "type": "boolean",
-          "default": "false"
+          "description": "`autoPlay` {`boolean`} - \n\nProperty: autoPlay\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "preload",
-          "type": "string",
-          "default": "\"auto\""
+          "description": "`preload` {`string`} - \n\nProperty: preload\n\nDefault: auto"
         },
         {
           "name": "currentTime",
-          "type": "number",
-          "default": "0"
+          "description": "`currentTime` {`number`} - \n\nProperty: currentTime\n\nDefault: 0"
         },
         {
           "name": "timeLeft",
-          "type": "number",
-          "default": "0"
+          "description": "`timeLeft` {`number`} - \n\nProperty: timeLeft\n\nDefault: 0"
         },
         {
           "name": "smallSkip",
-          "type": "number",
-          "default": "15"
+          "description": "`smallSkip` {`number`} - \n\nProperty: smallSkip\n\nDefault: 15"
         },
         {
           "name": "largeSkip",
-          "type": "number",
-          "default": "60"
+          "description": "`largeSkip` {`number`} - \n\nProperty: largeSkip\n\nDefault: 60"
         },
         {
           "name": "error",
-          "type": "boolean"
+          "description": "`error` {`boolean`} - \n\nProperty: error",
+          "valueSet": "v"
         },
         {
           "name": "timeOffset",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
+          "description": "`timeOffset` {`number`} - \n\nProperty: timeOffset\n\nDefault: 0"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "autoPlay",
-          "attribute": "autoPlay",
-          "type": "boolean",
-          "default": "false"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "preload",
-          "attribute": "preload",
-          "type": "string",
-          "default": "\"auto\""
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "currentTime",
-          "attribute": "currentTime",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "timeLeft",
-          "attribute": "timeLeft",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "smallSkip",
-          "attribute": "smallSkip",
-          "type": "number",
-          "default": "15"
-        },
-        {
-          "name": "largeSkip",
-          "attribute": "largeSkip",
-          "type": "number",
-          "default": "60"
-        },
-        {
-          "name": "error",
-          "attribute": "error",
-          "type": "boolean"
-        },
-        {
-          "name": "timeOffset",
-          "attribute": "timeOffset",
-          "type": "number",
-          "default": "0"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
-      "attributes": [
-        {
-          "name": "src",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
-        },
-        {
-          "name": "autoPlay",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "preload",
-          "type": "string",
-          "default": "\"auto\""
-        },
-        {
-          "name": "currentTime",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "timeLeft",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "smallSkip",
-          "type": "number",
-          "default": "15"
-        },
-        {
-          "name": "largeSkip",
-          "type": "number",
-          "default": "60"
-        },
-        {
-          "name": "error",
-          "type": "boolean"
-        },
-        {
-          "name": "timeOffset",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"Click to play this audio file\""
-        },
-        {
-          "name": "autoPlay",
-          "attribute": "autoPlay",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "preload",
-          "attribute": "preload",
-          "type": "string",
-          "default": "\"auto\""
-        },
-        {
-          "name": "currentTime",
-          "attribute": "currentTime",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "timeLeft",
-          "attribute": "timeLeft",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "smallSkip",
-          "attribute": "smallSkip",
-          "type": "number",
-          "default": "15"
-        },
-        {
-          "name": "largeSkip",
-          "attribute": "largeSkip",
-          "type": "number",
-          "default": "60"
-        },
-        {
-          "name": "error",
-          "attribute": "error",
-          "type": "boolean"
-        },
-        {
-          "name": "timeOffset",
-          "attribute": "timeOffset",
-          "type": "number",
-          "default": "0"
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

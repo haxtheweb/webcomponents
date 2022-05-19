@@ -10,7 +10,7 @@ import {
   camelToDash,
   htmlEntities,
   localStorageGet,
-  localStorageSet
+  localStorageSet,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   observable,
@@ -394,7 +394,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     classStyle = "capsule",
     closeText = this.t.close,
     eventCallback = null,
-    slot = null,
+    slot = null
   ) {
     // gets it all the way to the top immediately
     window.dispatchEvent(
@@ -409,7 +409,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           closeText: closeText,
           eventCallback: eventCallback,
           slot: slot,
-          ...extras
+          ...extras,
         },
       })
     );

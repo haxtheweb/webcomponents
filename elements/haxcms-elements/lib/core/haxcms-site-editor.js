@@ -372,7 +372,7 @@ class HAXCMSSiteEditor extends LitElement {
         `Page deleted ${e.detail.value.data.title}, selecting another page`,
         4000
       );
-      store.playSound('coin');
+      store.playSound("coin");
     }
   }
 
@@ -380,12 +380,10 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       window.history.pushState({}, null, e.detail.value.data.slug);
-      store.toast(
-        `Created ${e.detail.value.data.title}!`,
-        3000,
-        { hat: 'random' }
-      );
-      store.playSound('coin');
+      store.toast(`Created ${e.detail.value.data.title}!`, 3000, {
+        hat: "random",
+      });
+      store.playSound("coin");
     }
   }
 
@@ -443,9 +441,9 @@ class HAXCMSSiteEditor extends LitElement {
           store.toast(
             e.detail.value.status + " " + e.detail.value.statusText,
             5000,
-            { fire: true}
+            { fire: true }
           );
-          store.playSound('error');
+          store.playSound("error");
           break;
       }
     }
@@ -687,7 +685,7 @@ class HAXCMSSiteEditor extends LitElement {
     b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    b2.addEventListener("click", () => store.playSound('error'));
+    b2.addEventListener("click", () => store.playSound("error"));
     let b = document.createElement("div");
     b.style.position = "absolute";
     b.style.bottom = 0;
@@ -926,17 +924,9 @@ class HAXCMSSiteEditor extends LitElement {
 
   _publishingChanged(newValue, oldValue) {
     if (newValue) {
-      store.toast(
-        `Publishing...`,
-        0,
-        { hat: 'random' }
-      );
+      store.toast(`Publishing...`, 0, { hat: "random" });
     } else if (!newValue && oldValue) {
-      store.toast(
-        `Publishing...`,
-        2000,
-        { hat: 'random' }
-      );
+      store.toast(`Publishing...`, 2000, { hat: "random" });
     }
   }
   /**
@@ -989,12 +979,8 @@ class HAXCMSSiteEditor extends LitElement {
     ) {
       window.history.replaceState({}, null, e.detail.value.data.slug);
     }
-    store.toast(
-      `Page saved!`,
-      3000,
-      { hat: 'random' }
-    );
-    store.playSound('coin');
+    store.toast(`Page saved!`, 3000, { hat: "random" });
+    store.playSound("coin");
 
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1017,12 +1003,8 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleOutlineResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(
-      `Outline saved!`,
-      3000,
-      { hat: 'random' }
-    );
-    store.playSound('coin');
+    store.toast(`Outline saved!`, 3000, { hat: "random" });
+    store.playSound("coin");
     setTimeout(() => {
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
@@ -1037,11 +1019,8 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleManifestResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(
-      `Site details saved, reloading to reflect changes!`,
-      2000,
-    );
-    store.playSound('coin');
+    store.toast(`Site details saved, reloading to reflect changes!`, 2000);
+    store.playSound("coin");
     store.dashboardOpened = false;
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1062,11 +1041,8 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleRevertResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(
-      `Last save undone`,
-      2000,
-    );
-    store.playSound('error');
+    store.toast(`Last save undone`, 2000);
+    store.playSound("error");
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1081,12 +1057,8 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _handleSyncResponse(e) {
-    store.toast(
-      `Site synced`,
-      2000,
-      { hat: 'random' }
-    );
-    store.playSound('success');
+    store.toast(`Site synced`, 2000, { hat: "random" });
+    store.playSound("success");
     // trigger a refresh of the data in node
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {

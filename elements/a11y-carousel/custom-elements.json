@@ -1,170 +1,112 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "no-buttons",
+          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "no-prev-next",
+          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "prevLabel",
+          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
         },
         {
-          "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
+          "name": "nextLabel",
+          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
+        },
+        {
+          "name": "itemData",
+          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
+        },
+        {
+          "name": "selection",
+          "description": "`selection` {`string`} - \n\nProperty: selection"
+        },
+        {
+          "name": "onselection-changed",
+          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
         }
-      ],
-      "properties": [
+      ]
+    },
+    {
+      "name": "a11y-carousel-button",
+      "description": "`a11y-carousel-button`\nbutton that controls a carousel\n\nEvents:\n\n  * `select-carousel-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `button-type` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `buttonType` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `tabindex` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - ",
+      "attributes": [
         {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "button-type",
+          "description": "`button-type` {`string`} - \n\nProperty: buttonType"
         },
         {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "controls",
+          "description": "`controls` {`string`} - \n\nProperty: controls"
         },
         {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "active",
+          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - \n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onselect-carousel-item",
+          "description": "`select-carousel-item` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "no-buttons",
+          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "no-prev-next",
+          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "prevLabel",
+          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
         },
         {
-          "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
+          "name": "nextLabel",
+          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
         },
         {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "itemData",
+          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
         },
         {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
+          "name": "selection",
+          "description": "`selection` {`string`} - \n\nProperty: selection"
         },
         {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ]
-    },
-    {
-      "name": "tag"
-    },
-    {
-      "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "top-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title",
-          "type": "string"
-        },
-        {
-          "name": "topSrc",
-          "attribute": "top-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "bottomSrc",
-          "attribute": "bottom-src",
-          "description": "src for top image",
-          "type": "string"
-        },
-        {
-          "name": "opacity",
-          "attribute": "opacity",
-          "description": "mode for the slider: wipe",
-          "type": "boolean",
-          "default": "false"
+          "name": "onselection-changed",
+          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }
