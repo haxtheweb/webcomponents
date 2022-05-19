@@ -177,7 +177,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * Optional space-sperated list of keyboard shortcuts for editor
+         * Optional space-separated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
         moreShortcuts: {
@@ -276,24 +276,24 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     get moreButton() {
       return html` <simple-toolbar-more-button
         id="morebutton"
-        .align-horizontal="${this.alignHorizontal}"
-        .align-vertical="${this.alignVertical}"
+        align-horizontal="${this.alignHorizontal}"
+        align-vertical="${this.alignVertical}"
         aria-controls="buttons"
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
         ?disabled=${this.collapseDisabled}
         @toggle="${(e) => (this.collapsed = !this.collapsed)}"
         ?hidden=${this.collapseDisabled}
-        .icon="${this.icon}"
-        .icon-position="${this.iconPosition}"
-        .label="${this.label}"
-        .shortcut="${this.shortcut}"
+        icon="${this.icon}"
+        icon-position="${this.iconPosition}"
+        label="${this.label}"
+        shortcut="${this.shortcut}"
         ?show-text-label="${this.showTextLabel}"
         ?toggled="${!this.collapsed}"
-        .toggled-icon="${this.toggledIcon}"
-        .toggled-label="${this.toggledLabel}"
-        .toggled-tooltip="${this.toggledTooltip}"
-        .tooltip-direction="${this.tooltipDirection}"
+        toggled-icon="${this.toggledIcon}"
+        toggled-label="${this.toggledLabel}"
+        toggled-tooltip="${this.toggledTooltip}"
+        tooltip-direction="${this.tooltipDirection}"
         part="morebutton"
       >
       </simple-toolbar-more-button>`;
@@ -327,9 +327,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons = [];
       this.__focused = false;
       this.__hovered = false;
+      this.alignVertical = "center";
+      this.alignHorizontal = "center";
       this.icon = "more-vert";
       this.label = "More Buttons";
       this.toggledLabel = "Fewer Buttons";
+      this.iconPosition = "left";
       this.showTextLabel = false;
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;

@@ -24,22 +24,21 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       return [
         ...super.simpleButtonCoreStyles,
         css`
+          :host {
+            --icon-offset-left: 12px;
+          }
           #menubutton {
             display: flex;
             flex-wrap: none;
             align-items: center;
-            min-width: 42px;
-          }
-          .label {
-            padding: 0 5px;
+            min-width: calc(42px - var(--icon-offset-left));
+            padding-right: var(--icon-offset-left);
           }
           #dropdownicon {
             --simple-icon-height: 18px;
             --simple-icon-width: 18px;
-            margin-left: -2px;
-          }
-          #icon + #dropdownicon {
-            margin-left: -6px;
+            position: absolute;
+            right: 2px;
           }
         `,
       ];
@@ -129,6 +128,10 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         </button>
         ${this.tooltipTemplate}
       `;
+    }
+    get buttonInnerTemplate(){
+      console.log(this.iconPosition);
+      return super.buttonInnerTemplate;
     }
     /**
      * template for button tooltip
