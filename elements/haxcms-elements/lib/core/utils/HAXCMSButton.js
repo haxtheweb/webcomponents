@@ -25,6 +25,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
       icon: { type: String },
       label: { type: String },
       voiceCommand: { type: String },
+      simpleStyle: {type: Boolean, reflect: true, attribute: "simple-style"},
       accentColor: { type: String, attribute: "accent-color"},
     };
   }
@@ -94,21 +95,34 @@ export class HAXCMSButton extends HAXCMSThemeParts(
   }
 
   renderButton(label, tooltip) {
-    return html`
-      <simple-icon-button
-        .part="${this.editMode ? `edit-mode-active` : ``}"
-        tabindex="${this.editMode ? "-1" : ""}"
-        id="button"
-        label="${label}"
-        @click="${this.HAXCMSButtonClick}"
-        ?dark="${!this.darkMode}"
-        icon="${this.icon}"
-        accent-color="${this.accentColor}"
-        voice-command="${this.voiceCommand}"
-      ></simple-icon-button>
-      <simple-tooltip for="button" position="bottom" offset="14">
-        ${tooltip}
-      </simple-tooltip>
-    `;
+    return this.simpleStyle 
+      ? html`
+        <simple-toolbar-button
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          tabindex="${this.editMode ? "-1" : ""}"
+          id="button"
+          label="${label}"
+          @click="${this.HAXCMSButtonClick}"
+          icon="${this.icon}"
+          icon-position="top"
+          show-text-label
+          voice-command="${this.voiceCommand}"
+        ></simple-toolbar-button>` 
+      : html`
+        <simple-icon-button
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          tabindex="${this.editMode ? "-1" : ""}"
+          id="button"
+          label="${label}"
+          @click="${this.HAXCMSButtonClick}"
+          ?dark="${!this.darkMode}"
+          icon="${this.icon}"
+          accent-color="${this.accentColor}"
+          voice-command="${this.voiceCommand}"
+        ></simple-icon-button>
+        <simple-tooltip for="button" position="bottom" offset="14">
+          ${tooltip}
+        </simple-tooltip>
+      `;
   }
 }
