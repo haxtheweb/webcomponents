@@ -121,11 +121,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           left: 0;
           position: fixed;
         }
-        /* 
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #222;
           --accent-color: #fff;
-        }*/
+        }
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: 20% 60% 20%;
           overflow: visible;
@@ -133,6 +132,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-12, black);
         }
+        :host([dark-mode]) .haxLogo {
+          color: var(--simple-colors-default-theme-accent-1, white);
+        }
+        :host([dark-mode]) .haxLogo:hover,
+        :host([dark-mode]) .haxLogo:focus,
+        :host([dark-mode]) .haxLogo:active,
         .haxLogo:hover,
         .haxLogo:focus,
         .haxLogo:active {
@@ -165,13 +170,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-disabled-border-color: transparent;
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
-        }/*
+        }
         simple-toolbar[dark-mode] {
           --simple-toolbar-button-color: #e0e0e0;
           --simple-toolbar-button-hover-color: #fff;
           --simple-toolbar-button-bg: #222;
           --simple-toolbar-button-hover-bg: #000;
-        }*/
+        }
         simple-toolbar::part(buttons) {
           flex: 0 1 auto;
         }
