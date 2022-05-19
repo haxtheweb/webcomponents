@@ -472,30 +472,34 @@ class PageContentsMenu extends LitElement {
       let browserViewport =
         window.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
-        try {
-          let objItem = this.contentContainer.querySelector(
-            "#" + this.items[i].id
-          );
-          let itemTop = objItem.getBoundingClientRect().top - 100;
-          let itemBottom = 0;
-          // ensure bottom is ACTUALLY set to the top of the NEXT item
-          if (i !== this.items.length - 1) {
-            itemBottom =
-              this.contentContainer
-                .querySelector("#" + this.items[i + 1].id)
-                .getBoundingClientRect().top - 100;
-          } else {
-            itemBottom = browserViewport;
+        if (this.contentContainer && this.items && this.items[i] && this.items[i].id) {
+          try {
+            let objItem = this.contentContainer.querySelector(
+              "#" + this.items[i].id
+            );
+            if (objItem) {
+              let itemTop = objItem.getBoundingClientRect().top - 100;
+              let itemBottom = 0;
+              // ensure bottom is ACTUALLY set to the top of the NEXT item
+              if (i !== this.items.length - 1 && this.items[i + 1] && this.items[i + 1].id) {
+                itemBottom =
+                  this.contentContainer
+                    .querySelector("#" + this.items[i + 1].id)
+                    .getBoundingClientRect().top - 100;
+              } else {
+                itemBottom = browserViewport;
+              }
+              // we are in viewport or at least 100 px within it and NOT past it
+              if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
+                activeFound = true;
+                this.items[i].active = "active";
+              } else {
+                this.items[i].active = "";
+              }
+            }
+          } catch (e) {
+            console.log(e);
           }
-          // we are in viewport or at least 100 px within it and NOT past it
-          if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
-            activeFound = true;
-            this.items[i].active = "active";
-          } else {
-            this.items[i].active = "";
-          }
-        } catch (e) {
-          console.log(e);
         }
       });
       // account for potentially not finding ANYTHING yet having a "bottom" or top element

@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from "lit";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import { withKnobs, withWebComponentsKnobs } from '@open-wc/demoing-storybook';
 
