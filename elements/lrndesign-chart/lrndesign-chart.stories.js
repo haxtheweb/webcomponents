@@ -1,16 +1,16 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import { LrndesignChart } from "@lrnwebcomponents/lrndesign-chart/lrndesign-chart.js";
 import { LrndesignBar } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";
 import { LrndesignLine } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js";
 import { LrndesignPie } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Charts|Lrndesign Chart",
   component: "lrndesign-chart",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

@@ -1,8 +1,7 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { LrndesignPaperstack } from "@lrnwebcomponents/lrndesign-paperstack/lrndesign-paperstack.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   select,
   number,
   boolean,
@@ -13,7 +12,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Widgets|Callouts",
   component: "lrndesign-paperstack",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

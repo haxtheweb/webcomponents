@@ -1,11 +1,10 @@
-import { html, LitElement } from "lit";
+import { html } from 'lit-html';
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
 
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   button,
   number,
@@ -193,10 +192,18 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @returns {object} HAX property object
    * @memberof StorybookUtilities
    */
-  getHaxField(el, title) {
+  async getHaxField(el, title) {
+    var hProps = el.haxProperties;
+    if (el.tag && JSON.parse(window.localStorage.getItem(`${el.tag}-props`))) {
+      hProps = JSON.parse(window.localStorage.getItem(`${el.tag}-props`));
+    }
+    else if (el.tag && typeof hProps == 'string') {
+      setTimeout( async () => {
+        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
+      }, 0);    }
     let settings =
-        el.haxProperties && el.haxProperties.settings
-          ? el.haxProperties.settings
+      hProps && hProps.settings
+          ? hProps.settings
           : undefined,
       quick = settings && settings.quick ? settings.quick : [],
       configure = settings && settings.configure ? settings.configure : [],
@@ -325,15 +332,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = (quick || []).concat(configure || [], advanced || []);
-    console.debug(
-      "getElementProperties",
-      props,
-      haxProps,
-      hax,
-      quick,
-      configure,
-      advanced
-    );
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map((property) => {
@@ -383,7 +381,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @memberof StorybookUtilities
    */
   getKnobs(properties, defaults = {}, exclusions = []) {
-    console.debug("getKnobs", properties, defaults, exclusions);
     let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach((field) => {
       if (!!field) {
@@ -396,18 +393,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
           !exclusions.includes(field.name)
         ) {
           let knob = this.getKnob(field, defaults[field.name]);
-          console.debug(
-            "getKnob:",
-            knob,
-            "\nfield",
-            field,
-            "\nfield name",
-            field.name,
-            "\nfdefaults",
-            defaults,
-            "\ndefault value",
-            defaults[field.name]
-          );
           knobs[knob.group][field.name] = knob;
         }
       }
@@ -430,7 +415,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
-    console.debug("getKnob", field, defaultValue);
     let title = field.title,
       name = field.name,
       editedName = name === "emptyslot" ? '""' : name,
@@ -542,7 +526,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @memberof StorybookUtilities
    */
   updateSlot(text, slot) {
-    console.debug("updateSlot", text, slot);
     if (text) {
       let div = document.createElement("div"),
         inner = div.cloneNode(),
@@ -589,7 +572,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @memberof StorybookUtilities
    */
   makeElement(el, knobs, noDemo = false) {
-    console.debug("makeElement", el, knobs, noDemo);
     let demo = document.createElement("demo-snippet"),
       template = document.createElement("template"),
       tag = typeof el === "string" ? el : el.tag,
@@ -612,7 +594,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     child = `<${tag}${attrs}${styles}>${this._getDemoSlots(
       knobs.slots
     )}\n</${tag}>`;
-
     if (noDemo) {
       return child;
     } else {
@@ -653,15 +634,23 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     index,
     container = false
   ) {
+    var hProps = el.haxProperties;
+    if (el.tag && JSON.parse(window.localStorage.getItem(`${el.tag}-props`))) {
+      hProps = JSON.parse(window.localStorage.getItem(`${el.tag}-props`));
+    }
+    else if (el.tag && typeof hProps == 'string') {
+      setTimeout( async () => {
+        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
+      }, 0);    }
     let demoschema =
-        el.haxProperties && el.haxProperties.demoSchema
-          ? el.haxProperties.demoSchema
+    hProps && hProps.demoSchema
+          ? hProps.demoSchema
           : undefined,
       demo =
         demoschema && index && demoschema[index]
           ? demoschema[index]
-          : demoschema.length > 0
-          ? this.randomOption(el.haxProperties.demoSchema)
+          : demoschema && demoschema.length > 0
+          ? this.randomOption(hProps.demoSchema)
           : {},
       props = demo.properties,
       styles =
@@ -669,7 +658,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
           ? demo.properties.style.replace(/;$/, "").split(/;/)
           : [],
       content = document.createElement("div");
-    if (styles.length > 0) delete demo.properties.style;
+      if (styles.length > 0) delete demo.properties.style;
 
     styles.forEach((style) => {
       let parts = style.split(/:/),
@@ -762,14 +751,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
   ) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.debug(
-      "makeElementFromClass",
-      el,
-      props,
-      defaults,
-      additions,
-      knobs
-    );
     return this.makeElement(el, knobs, container);
   }
 }

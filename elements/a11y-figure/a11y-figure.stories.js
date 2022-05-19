@@ -1,12 +1,12 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { A11yFigure } from "@lrnwebcomponents/a11y-figure/a11y-figure.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Figure",
   component: "a11y-figure",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

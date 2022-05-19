@@ -1,9 +1,8 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { PaperAvatar } from "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import * as md5 from "@lrnwebcomponents/paper-avatar/lib/md5.min.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Media|Avatar",
   component: "paper-avatar",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

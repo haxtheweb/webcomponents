@@ -1,9 +1,8 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { A11yTabs } from "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Navigation|Tabs",
   component: "a11y-tabs",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

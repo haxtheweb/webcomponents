@@ -1,10 +1,9 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { CodeEditor } from "@lrnwebcomponents/code-editor/code-editor.js";
 import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
 import "@lrnwebcomponents/code-editor/lib/code-pen-button.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -13,7 +12,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Forms|Markup",
   component: "code-editor",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

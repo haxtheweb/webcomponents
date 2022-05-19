@@ -3,7 +3,6 @@ import { A11yMenuButtonGroup } from "@lrnwebcomponents/a11y-menu-button/lib/a11y
 import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Navigation|Collapse",
   component: "a11y-menu-button-group",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

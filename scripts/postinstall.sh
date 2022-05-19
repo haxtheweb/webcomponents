@@ -81,3 +81,7 @@ for project in */ ; do
   fi
   cd ../
 done
+# this ensures that the storybook tooling works
+cd $DIR
+cd ../node_modules/storybook-prebuilt
+yarn install --prod

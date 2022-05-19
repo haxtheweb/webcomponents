@@ -1,4 +1,4 @@
-import { html } from "lit-element/lit-element.js";
+import { html } from 'lit-html';
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

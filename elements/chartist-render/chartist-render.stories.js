@@ -1,8 +1,7 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   select,
   boolean,
@@ -13,7 +12,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 export default {
   title: "Charts|Chartist",
   component: "chartist-render",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

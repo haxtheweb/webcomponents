@@ -1,15 +1,15 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import { RichTextEditorToolbarFull } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
 import { RichTextEditorToolbarMini } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Forms|Rich Text",
   component: "rich-text-editor",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },
@@ -416,7 +416,7 @@ export const RichTextEditorToolbarStory = () => {
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbar, knobs, true)}${editor(
       knobs.props.id.knob,
-      knobs.props.config.knob
+      knobs.props.config ? knobs.props.config.knob : []
     )}`
   );
 };
@@ -429,7 +429,7 @@ export const RichTextEditorToolbarFullStory = () => {
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbarFull, knobs, true)}${editor(
       knobs.props.id.knob,
-      knobs.props.config.knob
+      knobs.props.config ? knobs.props.config.knob : []
     )}`
   );
 };

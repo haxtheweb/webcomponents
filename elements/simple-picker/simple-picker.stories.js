@@ -1,14 +1,14 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { SimpleSymbolPicker } from "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
 import { SimpleEmojiPicker } from "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Forms|Picker",
   component: "simple-picker",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

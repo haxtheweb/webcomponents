@@ -1,12 +1,12 @@
-import { html } from "lit";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { html } from 'lit-html';
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { SimpleColorsPicker } from "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 
 export default {
   title: "Forms|Picker",
   component: "simple-colors-picker",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

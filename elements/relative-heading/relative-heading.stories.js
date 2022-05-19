@@ -1,5 +1,5 @@
-import { html } from "lit";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { html } from 'lit-html';
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { RelativeHeading } from "@lrnwebcomponents/relative-heading/relative-heading.js";
 import { RelativeHeadingLite } from "@lrnwebcomponents/relative-heading/lib/relative-heading-lite.js";
@@ -7,7 +7,7 @@ import { RelativeHeadingLite } from "@lrnwebcomponents/relative-heading/lib/rela
 export default {
   title: "Navigation|Relative Headings",
   component: "relative-heading",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

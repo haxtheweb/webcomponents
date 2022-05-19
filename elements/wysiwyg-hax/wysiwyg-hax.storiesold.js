@@ -2,7 +2,6 @@ import { html } from "lit";
 import { WysiwygHax } from "@lrnwebcomponents/wysiwyg-hax/wysiwyg-hax.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -11,7 +10,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Apps|HAX",
   component: "wysiwyg-hax",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

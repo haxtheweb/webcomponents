@@ -1,7 +1,6 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { HexPicker } from "./hex-picker.js";
 export default {
   title: "Forms|HexPicker",
   component: "hex-picker",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

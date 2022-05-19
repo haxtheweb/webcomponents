@@ -1,14 +1,14 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { ImgViewModal } from "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import { ImgViewViewer } from "@lrnwebcomponents/img-view-modal/lib/img-view-viewer.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image View Modal",
   component: "img-view-modal",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

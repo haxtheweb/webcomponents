@@ -1,10 +1,9 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { LrndesignAvatar } from "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import * as md5 from "@lrnwebcomponents/paper-avatar/lib/md5.min.js";
 //import * as jdenticon from "@lrnwebcomponents/paper-avatar/lib/jdenticon-1.4.0.min.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -13,7 +12,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Media|Avatar",
   component: "lrndesign-avatar",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

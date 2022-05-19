@@ -1,7 +1,6 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -9,12 +8,10 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 import { AppHax } from "./app-hax.js";
 // need to account for polymer goofiness when webpack rolls this up
 
-/** 
- * Uncomment to add to Storybook
 export default {
   title: 'Hax|AppHax',
   component: 'app-hax',
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
@@ -22,5 +19,4 @@ export default {
 const utils = new StorybookUtilities();
 export const AppHaxStory = () => {
   return utils.makeElementFromClass(AppHax);
-}; 
-*/
+};

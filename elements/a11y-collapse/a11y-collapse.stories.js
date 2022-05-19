@@ -1,9 +1,8 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { A11yCollapseGroup } from "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import { A11yCollapse } from "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Navigation|Collapse",
   component: "a11y-collapse-group",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

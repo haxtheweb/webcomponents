@@ -1,12 +1,12 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { a11yCompareImage } from "@lrnwebcomponents/a11y-compare-image/a11y-compare-image.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image Compare",
   component: "a11y-compare-image",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

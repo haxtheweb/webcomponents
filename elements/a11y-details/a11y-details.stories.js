@@ -1,12 +1,12 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Navigation|Details",
   component: "a11y-details",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

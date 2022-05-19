@@ -1,13 +1,13 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { HexagonLoader } from "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import { Hexagon } from "@lrnwebcomponents/hexagon-loader/lib/hex-a-gon.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Loader|Hexagon Loader",
   component: "hexagon-loader",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

@@ -1,5 +1,5 @@
-import { html } from "lit";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { html } from 'lit-html';
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { SimpleIconPicker } from "./simple-icon-picker.js";
@@ -7,7 +7,7 @@ import { SimpleIconPicker } from "./simple-icon-picker.js";
 export default {
   title: "Forms|Picker",
   component: "simple-picker",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

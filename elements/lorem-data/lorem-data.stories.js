@@ -1,8 +1,7 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { LoremData } from "@lrnwebcomponents/lorem-data/lorem-data.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -11,7 +10,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Forms|Data",
   component: "lorem-data",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

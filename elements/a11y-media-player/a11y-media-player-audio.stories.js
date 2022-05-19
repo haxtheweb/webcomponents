@@ -1,6 +1,6 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "@polymer/paper-slider/paper-slider.js";
@@ -15,7 +15,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
 export default {
   title: "Media|Audio",
   component: "a11y-media-player",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

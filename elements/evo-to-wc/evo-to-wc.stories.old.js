@@ -3,7 +3,6 @@ import { EvoToWcGroup } from "@lrnwebcomponents/evo-to-wc/lib/evo-to-wc-group.js
 import { EvoToWc } from "@lrnwebcomponents/evo-to-wc/evo-to-wc.js";
 import {
   withKnobs,
-  withWebComponentsKnobs,
   text,
   boolean,
 } from "@open-wc/demoing-storybook";
@@ -12,7 +11,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 export default {
   title: "Navigation|Collapse",
   component: "evo-to-wc-group",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

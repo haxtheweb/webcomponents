@@ -1,12 +1,12 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { ElmslnStudio } from "@lrnwebcomponents/elmsln-studio/elmsln-studio.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Apps|ELMS:LN Studio",
   component: "elmsln-studio",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },

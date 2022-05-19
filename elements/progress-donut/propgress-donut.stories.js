@@ -1,12 +1,12 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { ProgressDonut } from "@lrnwebcomponents/progress-donut/progress-donut.js";
-import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Charts|Progress Donut",
   component: "progress-donut",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },

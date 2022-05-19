@@ -1,16 +1,15 @@
-import { html } from "lit";
+import { html } from 'lit-html';
 import { LrndesignImagemap } from "@lrnwebcomponents/lrndesign-imagemap/lrndesign-imagemap.js";
 import {
   text,
   withKnobs,
-  withWebComponentsKnobs,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
   title: "Media|Image Map",
   component: "lrndesign-imagemap",
-  decorators: [withKnobs, withWebComponentsKnobs],
+  decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
   },
