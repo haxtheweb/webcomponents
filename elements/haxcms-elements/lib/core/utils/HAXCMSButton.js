@@ -34,51 +34,6 @@ export class HAXCMSButton extends HAXCMSThemeParts(
       accentColor: { type: String, attribute: "accent-color" },
     };
   }
-  static get styles() {
-    let styles = super.styles || [];
-    return [
-      ...styles,
-      css`
-        :host {
-          display: block;
-        }
-        simple-icon-button {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          border-radius: 50%;
-          border: none;
-          background-image: url("${unsafeCSS(ButtonBGLight)}");
-          background-color: var(--simple-colors-default-theme-accent-5, blue);
-          color: var(--simple-colors-default-theme-accent-12, white);
-          text-align: center;
-          line-height: 40px;
-          min-width: unset;
-          padding: 0;
-          width: 40px;
-          height: 40px;
-          transition: 0.2s all ease-in-out;
-          position: relative;
-          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-            0 3px 14px 2px rgba(0, 0, 0, 0.12),
-            0 5px 5px -3px rgba(0, 0, 0, 0.4);
-        }
-        simple-icon-button:hover,
-        simple-icon-button:focus,
-        simple-icon-button:active {
-          opacity: 0.8;
-        }
-        :host([dark-mode]) simple-icon-button {
-          background-image: url("${unsafeCSS(ButtonBGDark)}");
-        }
-        simple-tooltip:not(:defined) {
-          display: none !important;
-        }
-        simple-tooltip {
-          font-family: "Press Start 2P", sans-serif;
-        }
-      `,
-    ];
-  }
   // wrapper on CustomEvent so we include the payload as these are listened for on window
   HAXCMSFireButtonEvent(name, target, payload) {
     // send message off so that the control board hands it off to the CMS

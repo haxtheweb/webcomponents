@@ -98,6 +98,33 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           visibility: visible;
           opacity: 1;
         }
+        #editbutton[icon="icons:save"]:focus,
+        #editbutton[icon="icons:save"]:active,
+        #editbutton[icon="icons:save"]:hover {
+          background-color: var(--simple-colors-default-theme-green-2);
+        }
+        #editbutton[icon="icons:save"] {
+          background-color: var(--simple-colors-default-theme-green-1);
+          color: var(--simple-colors-default-theme-green-8);
+        }
+        #cancelbutton {
+          color: var(--hax-ui-color-danger-secondary);
+          background-color: var(--simple-colors-default-theme-red-1);
+        }
+        #cancelbutton:hover,
+        #cancelbutton:active,
+        #cancelbutton:focus {
+          background-color: var(--simple-colors-default-theme-red-2);
+        }
+        simple-toolbar-menu:hover,
+        simple-toolbar-menu:active,
+        simple-toolbar-menu:focus,
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          background-color: var(--hax-ui-background-color-accent);
+          color: var(--hax-ui-color);
+        }
 
         :host(:hover),
         :host(:active),
@@ -166,7 +193,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar {
           align-items: stretch;
           justify-content: center;
-          min-height: var(--top-bar-height);
+          height: var(--top-bar-height);
           --simple-toolbar-button-disabled-border-color: transparent;
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
@@ -249,6 +276,42 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
           :host([edit-mode]) {
             bottom: unset;
+          }
+          .topbar-character {
+            padding: 0;
+            margin: 0;
+          }
+          .characterbtn-name {
+            padding: 0;
+            margin: 0;
+            width: 30px;
+            display: inline-flex;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: -2px;
+            margin-left: -6px;
+          }
+          simple-toolbar {
+            --simple-toolbar-button-padding: 3px 3px;
+          }
+          .characterbtn-name,
+          haxcms-button-add,
+          simple-toolbar-menu,
+          simple-toolbar-button {
+            font-size: 10px;
+          }
+          simple-toolbar-menu {
+            --icon-offset-right: 2px;
+            --icon-offset-left: 2px;
+          }
+          simple-toolbar-menu::part(dropdown-icon) {
+            right: 0;
+            top: 10px;
+          }
+          :host([edit-mode]) #deletebutton,
+          :host([edit-mode]) #addmenubutton,
+          :host([edit-mode]) #editdetails {
+            display: none;
           }
         }
       `,
@@ -395,16 +458,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           voice-command="edit (this) page"
         ></simple-toolbar-button>
         <simple-toolbar-button
-          id="cancelbutton"
-          icon="icons:cancel"
-          icon-position="top"
-          @click="${this._cancelButtonTap}"
-          .hidden="${!this.editMode}"
-          show-text-label
-          label="${this.t.cancelEditing}"
-          voice-command="cancel (editing)"
-        ></simple-toolbar-button>
-        <simple-toolbar-button
           id="editdetails"
           hidden
           ?disabled="${this.editMode}"
@@ -432,35 +485,50 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         <simple-toolbar-menu
           show-text-label
           id="addmenubutton"
+          ?disabled="${this.editMode}"
           icon="hax:add-page"
           icon-position="top"
           label="Add page"
+          @dblclick="${this._addPageClick}"
           show-text-label>
           <simple-toolbar-menu-item>
-          <haxcms-button-add
-            hidden
-            show-text-label
-            id="addbutton"
-            show-text-label>
-          </haxcms-button-add>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <haxcms-button-add
-            hidden
-            id="addbuttonchild"
-            type="child"
-            show-text-label
-          ></haxcms-button-add>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <haxcms-button-add
-            hidden
-            type="duplicate"
-            id="duplicatebutton"
-            show-text-label
-          ></haxcms-button-add>
-        </simple-toolbar-menu-item>
+            <haxcms-button-add
+              hidden
+              ?disabled="${this.editMode}"
+              show-text-label
+              id="addbutton"
+              show-text-label>
+            </haxcms-button-add>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item>
+            <haxcms-button-add
+              hidden
+              ?disabled="${this.editMode}"
+              id="addbuttonchild"
+              type="child"
+              show-text-label
+            ></haxcms-button-add>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item>
+            <haxcms-button-add
+              hidden
+              ?disabled="${this.editMode}"
+              type="duplicate"
+              id="duplicatebutton"
+              show-text-label
+            ></haxcms-button-add>
+          </simple-toolbar-menu-item>
         </simple-toolbar-menu>
+        <simple-toolbar-button
+          id="cancelbutton"
+          icon="icons:cancel"
+          icon-position="top"
+          @click="${this._cancelButtonTap}"
+          .hidden="${!this.editMode}"
+          show-text-label
+          label="${this.t.cancelEditing}"
+          voice-command="cancel (editing)"
+        ></simple-toolbar-button>
         <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       </simple-toolbar>
 
@@ -557,6 +625,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       setTimeout(() => {
         window.location.reload();
       }, 100);
+    }
+  }
+
+  _addPageClick(e) {
+    // ensure they see thes operations
+    if (!this.editMode && this.shadowRoot.querySelector('simple-toolbar-menu-item haxcms-button-add:not([hidden])')) {
+      this.shadowRoot.querySelector('simple-toolbar-menu-item haxcms-button-add:not([hidden])').HAXCMSButtonClick();
     }
   }
 
@@ -681,14 +756,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "userMenuOpen" && oldValue !== undefined) {
         if (this.userMenuOpen) {
-          this.rpgHat = "construction";
+          this.rpgHat = "edit";
         } else {
           this.rpgHat = "none";
         }
       }
       if (propName == "editMode") {
         if (this.editMode) {
-          this.rpgHat = "edit";
+          this.rpgHat = "construction";
         } else {
           this.rpgHat = "none";
         }

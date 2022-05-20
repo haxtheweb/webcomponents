@@ -113,6 +113,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           id="menubutton"
           aria-haspopup="true"
           aria-controls="menu"
+          ?disabled="${this.disabled}"
           aria-expanded="${this.expanded ? "true" : "false"}"
           @blur="${this._handleBlur}"
           part="button"
@@ -130,7 +131,6 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
       `;
     }
     get buttonInnerTemplate(){
-      console.log(this.iconPosition);
       return super.buttonInnerTemplate;
     }
     /**

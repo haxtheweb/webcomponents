@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": {
+    "id": "item-d7863ef6-555e-4608-b7f2-ef830da216c6",
+    "indent": 0,
+    "location": "pages/item-d7863ef6-555e-4608-b7f2-ef830da216c6/index.html",
+    "slug": "new-page-1",
+    "order": "1",
+    "parent": null,
+    "title": "New page",
+    "description": "",
+    "metadata": {
+      "created": 1653063483,
+      "updated": 1653063483
+    }
+  }
+}

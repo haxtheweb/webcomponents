@@ -24,9 +24,11 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) 
     this.showTextLabel = true;
     this.iconPosition = "left";
     this.alignHorizontal = "left";
+    this.addEventListener('click', this.HAXCMSButtonClick);
   }
   static get styles(){
     return [
+      ...super.styles,
       ...this.iconStyles,
       ...this.labelStyles,
       ...this.tooltipStyles,
@@ -80,7 +82,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) 
     super.disconnectedCallback();
   }
 
-  HAXCMSButtonClick(e) {
+  HAXCMSButtonClick() {
     store.playSound("click");
     let order = null;
     let title = this.t.newPage;
