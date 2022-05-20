@@ -5,7 +5,6 @@ import { autorun, toJS } from "mobx";
 import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
@@ -79,9 +78,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([dashboard-opened]) #duplicatebutton {
           display: none !important;
         }
-        :host([edit-mode]) #editdetails {
-          margin-left: 64px;
-        }
         :host *[hidden] {
           display: none;
         }
@@ -91,48 +87,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([painting]) {
           opacity: 0;
           visibility: hidden;
-        }
-        simple-icon-button {
-          vertical-align: text-bottom;
-          display: inline-flex;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          border-radius: 50%;
-          border: none;
-          background-color: black;
-          color: white;
-          text-align: center;
-          line-height: 40px;
-          min-width: unset;
-          padding: 0;
-          margin: 4px 2px;
-          width: 40px;
-          height: 40px;
-          transition: 0.2s all ease-in-out;
-          position: relative;
-          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-            0 3px 14px 2px rgba(0, 0, 0, 0.12),
-            0 5px 5px -3px rgba(0, 0, 0, 0.4);
-        }
-        haxcms-button-add {
-          display: inline-flex;
-          margin: 4px 2px;
-          vertical-align: text-bottom;
-        }
-        .topbar-button:hover,
-        .topbar-button:focus,
-        .topbar-button:active {
-          opacity: 0.8;
-        }
-        .topbar-button {
-          background-image: url("${unsafeCSS(ButtonBGLight)}");
-          background-color: var(--simple-colors-default-theme-accent-5, blue);
-        }
-        :host([dark-mode]) .topbar-button {
-          background-image: url("${unsafeCSS(ButtonBGDark)}");
-        }
-        #cancelbutton {
-          background-color: var(--haxcms-system-danger-color);
         }
         #editbutton {
           visibility: hidden;
@@ -167,12 +121,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           left: 0;
           position: fixed;
         }
+        :host([dark-mode]) app-hax-top-bar {
+          --bg-color: #222;
+          --accent-color: #fff;
+        }
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: 20% 60% 20%;
+          overflow: visible;
         }
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-12, black);
         }
+        :host([dark-mode]) .haxLogo {
+          color: var(--simple-colors-default-theme-accent-1, white);
+        }
+        :host([dark-mode]) .haxLogo:hover,
+        :host([dark-mode]) .haxLogo:focus,
+        :host([dark-mode]) .haxLogo:active,
         .haxLogo:hover,
         .haxLogo:focus,
         .haxLogo:active {
@@ -182,12 +147,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-icon-height: 40px;
           --simple-icon-width: 40px;
           margin: 4px;
-        }
-
-        .space-hack {
-          display: inline-flex;
-          width: 64px;
-          height: 48px;
         }
         .soundToggle {
           position: relative;
@@ -203,6 +162,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         app-hax-search-bar {
           vertical-align: middle;
           display: inline-flex;
+        }
+        simple-toolbar {
+          align-items: stretch;
+          justify-content: center;
+          min-height: var(--top-bar-height);
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 0.3;
+          --simple-toolbar-button-padding: 3px 6px;
+        }
+        simple-toolbar[dark-mode] {
+          --simple-toolbar-button-color: #e0e0e0;
+          --simple-toolbar-button-hover-color: #fff;
+          --simple-toolbar-button-bg: #222;
+          --simple-toolbar-button-hover-bg: #000;
+        }
+        simple-toolbar::part(buttons) {
+          flex: 0 1 auto;
         }
         .ops-panel {
           justify-content: space-around;
@@ -220,9 +196,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: transparent;
           height: 48px;
           max-width: 160px;
+          transition: all 0.5 ease-in-out;
         }
         .characterbtn-name {
-          color: var(--simple-colors-default-theme-grey-12);
           font-family: "Press Start 2P", sans-serif;
           margin-left: 8px;
           font-size: 12px;
@@ -233,18 +209,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           height: 48px;
           word-break: break-all;
         }
-        .topbar-character:hover,
-        .topbar-character:focus {
-          background-color: var(--simple-colors-default-theme-light-blue-4);
-          outline: var(--haxcms-color) solid 3px;
-          outline-offset: -3px;
-          height: 48px;
+        :host([dark-mode]) .topbar-character,
+        :host([dark-mode]) .topbar-character {
+          color: #e0e0e0;
+          background-color: #222;
         }
         .topbar-character rpg-character {
           margin: -4px -14px 0px -10px;
           height: 52px;
           width: 64px;
           display: inline-block;
+          transform: scale(0.7);
+          transition: all 0.5 ease-in-out;
+        }
+        .topbar-character:hover rpg-character,
+        .topbar-character:focus rpg-character {
+          transform: scale(0.9);
         }
 
         .logout::part(menu-button) {
@@ -292,18 +272,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ...this.t,
       backToSiteList: "Back to site list",
       cancelEditing: "Cancel editing",
-      editDetails: "Edit details",
+      editDetails: "Page details",
       addPage: "Add page",
       deletePage: "Delete page",
       editSiteOutline: "Site outline",
       closeSiteSettings: "Close site settings",
       editSiteSettings: "Site settings",
-      savePageContent: "Save page content",
-      editPageContent: "Edit page content",
+      savePageContent: "Save page",
+      editPageContent: "Edit page",
       newJourney: "New Journey",
       accountInfo: "Account Info",
       logOut: "Log out",
       menu: "Menu",
+      showMore: "More"
     };
     this.backText = "Site list";
     this.painting = true;
@@ -393,95 +374,95 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
             <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
           </a>
+          <simple-tooltip for="backtosites" position="right"
+            >${this.backText}</simple-tooltip>
           <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
         </span>
-        <span slot="center">
-          <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
-          <simple-icon-button
-            hidden
-            ?dark="${!this.darkMode}"
-            id="editbutton"
-            icon="${this.__editIcon}"
-            @click="${this._editButtonTap}"
-            label="${this.__editText}"
-            voice-command="edit (this) page"
-            class="topbar-button"
-            accent-color="green"
-          ></simple-icon-button>
-          <simple-icon-button
-            id="cancelbutton"
-            ?dark="${!this.darkMode}"
-            icon="icons:cancel"
-            @click="${this._cancelButtonTap}"
-            .hidden="${!this.editMode}"
-            label="${this.t.cancelEditing}"
-            voice-command="cancel (editing)"
-            class="topbar-button"
-            accent-color="red"
-          ></simple-icon-button>
-          <simple-icon-button
-            ?dark="${!this.darkMode}"
-            id="editdetails"
-            hidden
-            icon="hax:page-details"
-            @click="${this._editDetailsButtonTap}"
-            label="${this.t.editDetails}"
-            voice-command="edit (page) details"
-            class="topbar-button"
-            accent-color="blue"
-            part="detailsbtn ${this.editMode ? `edit-mode-active` : ``}"
-            tabindex="${this.editMode ? "-1" : ""}"
-          ></simple-icon-button>
-          <simple-icon-button
-            part="${this.editMode ? `edit-mode-active` : ``}"
-            tabindex="${this.editMode ? "-1" : ""}"
-            ?dark="${!this.darkMode}"
-            id="deletebutton"
-            hidden
-            icon="icons:delete"
-            @click="${this._deleteButtonTap}"
-            label="${this.t.deletePage}"
-            voice-command="delete page"
-            class="topbar-button"
-            accent-color="red"
-          ></simple-icon-button>
+      <simple-toolbar slot="center"
+          ?dark="${!this.darkMode}"
+          icon-position="top"
+          show-text-label
+          label="${this.t.showMore}">
+        <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
+        <simple-toolbar-button
+          hidden
+          id="editbutton"
+          icon="${this.__editIcon}"
+          icon-position="top"
+          @click="${this._editButtonTap}"
+          label="${this.__editText}"
+          show-text-label
+          voice-command="edit (this) page"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          id="cancelbutton"
+          icon="icons:cancel"
+          icon-position="top"
+          @click="${this._cancelButtonTap}"
+          .hidden="${!this.editMode}"
+          show-text-label
+          label="${this.t.cancelEditing}"
+          voice-command="cancel (editing)"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          id="editdetails"
+          hidden
+          ?disabled="${this.editMode}"
+          icon="hax:page-details"
+          icon-position="top"
+          @click="${this._editDetailsButtonTap}"
+          label="${this.t.editDetails}"
+          show-text-label
+          voice-command="edit (page) details"
+          part="detailsbtn"
+          tabindex="${this.editMode ? "-1" : ""}"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          ?disabled="${this.editMode}"
+          tabindex="${this.editMode ? "-1" : ""}"
+          id="deletebutton"
+          hidden
+          icon-position="top"
+          icon="icons:delete"
+          @click="${this._deleteButtonTap}"
+          label="${this.t.deletePage}"
+          show-text-label
+          voice-command="delete page"
+        ></simple-toolbar-button>
+        <simple-toolbar-menu
+          show-text-label
+          id="addmenubutton"
+          icon="hax:add-page"
+          icon-position="top"
+          label="Add page"
+          show-text-label>
+          <simple-toolbar-menu-item>
           <haxcms-button-add
             hidden
-            ?dark-mode="${this.darkMode}"
-            accent-color="purple"
+            show-text-label
             id="addbutton"
-          ></haxcms-button-add>
+            show-text-label>
+          </haxcms-button-add>
+        </simple-toolbar-menu-item>
+        <simple-toolbar-menu-item>
           <haxcms-button-add
             hidden
-            ?dark-mode="${this.darkMode}"
             id="addbuttonchild"
             type="child"
-            accent-color="purple"
+            show-text-label
           ></haxcms-button-add>
+        </simple-toolbar-menu-item>
+        <simple-toolbar-menu-item>
           <haxcms-button-add
             hidden
-            ?dark-mode="${this.darkMode}"
             type="duplicate"
             id="duplicatebutton"
-            accent-color="purple"
+            show-text-label
           ></haxcms-button-add>
-          <simple-tooltip for="backtosites" position="right"
-            >${this.backText}</simple-tooltip
-          >
-          <simple-tooltip for="cancelbutton" position="bottom" offset="14"
-            >${this.t.cancelEditing}</simple-tooltip
-          >
-          <simple-tooltip for="editbutton" position="bottom" offset="14"
-            >${this.__editText}</simple-tooltip
-          >
-          <simple-tooltip for="editdetails" position="bottom" offset="14"
-            >${this.t.editDetails}</simple-tooltip
-          >
-          <simple-tooltip for="deletebutton" position="bottom" offset="14"
-            >${this.t.deletePage}</simple-tooltip
-          >
-          <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
-        </span>
+        </simple-toolbar-menu-item>
+        </simple-toolbar-menu>
+        <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+      </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu">
           <button

@@ -101,20 +101,20 @@ export class HAXCMSButton extends HAXCMSThemeParts(
 
   renderButton(label, tooltip) {
     return html`
-      <simple-icon-button
-        .part="${this.editMode ? `edit-mode-active` : ``}"
-        tabindex="${this.editMode ? "-1" : ""}"
-        id="button"
-        label="${label}"
-        @click="${this.HAXCMSButtonClick}"
-        ?dark="${!this.darkMode}"
-        icon="${this.icon}"
-        accent-color="${this.accentColor}"
-        voice-command="${this.voiceCommand}"
-      ></simple-icon-button>
-      <simple-tooltip for="button" position="bottom" offset="14">
-        ${tooltip}
-      </simple-tooltip>
-    `;
+        <simple-icon-button
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          tabindex="${this.editMode ? "-1" : ""}"
+          id="button"
+          label="${label}"
+          @click="${this.HAXCMSButtonClick}"
+          ?dark="${!this.darkMode}"
+          icon="${this.icon}"
+          accent-color="${this.accentColor}"
+          voice-command="${this.voiceCommand}"
+        ></simple-icon-button>
+        <simple-tooltip for="button" position="bottom" offset="14">
+          ${tooltip}
+        </simple-tooltip>
+      `;
   }
 }

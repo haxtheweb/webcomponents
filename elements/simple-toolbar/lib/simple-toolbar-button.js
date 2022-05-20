@@ -42,6 +42,15 @@ export const SimpleToolbarGlobalProperties = {
     attribute: "hidden",
     reflect: true,
   },
+
+  /**
+   * Optional iron icon name for the button.
+   */
+  icon: {
+    type: String,
+    attribute: "icon",
+    reflect: true,
+  },
   /**
    * Optionally place icon at top, bottom, or right of label
    */
@@ -51,12 +60,51 @@ export const SimpleToolbarGlobalProperties = {
     reflect: true,
   },
   /**
+   * Label for the icon.
+   */
+  label: {
+    type: String,
+  },
+  /**
    * show text label for more button.
    */
   showTextLabel: {
     name: "showTextLabel",
     type: Boolean,
-    attribute: "more-show-text-label",
+    attribute: "show-text-label",
+  },
+
+  /**
+   * Always show tooltip.
+   */
+  showTooltip: {
+    attribute: "show-tooltip",
+    type: Boolean,
+    reflect: true,
+  },
+
+  /**
+   * Optional iron icon name for the button if it is toggled.
+   */
+  toggledIcon: {
+    attribute: "toggled-icon",
+    type: String,
+  },
+
+  /**
+   * Label for the icon, if button is toggled.
+   */
+  toggledLabel: {
+    attribute: "toggled-label",
+    type: String,
+  },
+
+  /**
+   * Label for the icon, if button is toggled.
+   */
+  toggledTooltip: {
+    attribute: "toggled-tooltip",
+    type: String,
   },
   /**
    * Direction that the tooltip should flow
@@ -96,27 +144,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           attribute: "describedby",
         },
 
-        /**
-         * Optional iron icon name for the button.
-         */
-        icon: {
-          type: String,
-          attribute: "icon",
-          reflect: true,
-        },
-
         isCurrentItem: {
           type: Boolean,
           attribute: "is-current-item",
           reflect: true,
         },
 
-        /**
-         * Label for the icon.
-         */
-        label: {
-          type: String,
-        },
 
         /**
          * for radio-button behavior
@@ -136,44 +169,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
-         * Show text label even if an icon is named?
-         */
-        showTextLabel: {
-          attribute: "show-text-label",
-          type: Boolean,
-          reflect: true,
-        },
-
-        /**
-         * Alway show tooltip.
-         */
-        showTooltip: {
-          attribute: "show-tooltip",
-          type: Boolean,
-          reflect: true,
-        },
-
-        /**
          * The active selected range, inherited from the toolbar
          */
         target: {
           type: Object,
-        },
-
-        /**
-         * Optional iron icon name for the button if it is toggled.
-         */
-        toggledIcon: {
-          attribute: "toggled-icon",
-          type: String,
-        },
-
-        /**
-         * Label for the icon, if button is toggled.
-         */
-        toggledLabel: {
-          attribute: "toggled-label",
-          type: String,
         },
         /**
          * Can this button toggle?
@@ -187,14 +186,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         toggled: {
           attribute: "toggled",
           type: Boolean,
-        },
-
-        /**
-         * Label for the icon, if button is toggled.
-         */
-        toggledTooltip: {
-          attribute: "toggled-tooltip",
-          type: String,
         },
       };
     }
@@ -521,7 +512,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get buttonInnerTemplate() {
-      return this.iconPosition !== "right" || this.iconPosition !== "bottom"
+      return this.iconPosition === "right" || this.iconPosition === "bottom"
         ? html`${this.labelTemplate} ${this.iconTemplate}`
         : html`${this.iconTemplate} ${this.labelTemplate}`;
     }
@@ -753,43 +744,32 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             align-items: var(--simple-toolbar-button-align, center);
             justify-content: var(--simple-toolbar-button-justify, center);
           }
-
           :host([icon-position="top"]) *[part="button"],
           :host([icon-position="bottom"]) *[part="button"] {
             flex-direction: column;
           }
           :host([align-vertical="top"][icon-position="left"]) *[part="button"],
           :host([align-vertical="top"][icon-position="right"]) *[part="button"],
-          :host([align-horizontal="left"][icon-position="top"])
-            *[part="button"],
-          :host([align-horizontal="left"][icon-position="bottom"])
-            *[part="button"] {
+          :host([align-horizontal="left"][icon-position="top"]) *[part="button"],
+          :host([align-horizontal="left"][icon-position="bottom"]) *[part="button"] {
             align-items: flex-start;
           }
-          :host([align-vertical="bottom"][icon-position="left"])
-            *[part="button"],
-          :host([align-vertical="bottom"][icon-position="right"])
-            *[part="button"],
-          :host([align-horizontal="right"][icon-position="top"])
-            *[part="button"],
-          :host([align-horizontal="right"][icon-position="bottom"]) {
+          :host([align-vertical="bottom"][icon-position="left"]) *[part="button"],
+          :host([align-vertical="bottom"][icon-position="right"]) *[part="button"],
+          :host([align-horizontal="right"][icon-position="top"]) *[part="button"],
+          :host([align-horizontal="right"][icon-position="bottom"]) *[part="button"] {
             align-items: flex-end;
           }
-          :host([align-horizontal="left"][icon-position="left"])
-            *[part="button"],
-          :host([align-horizontal="left"][icon-position="right"])
-            *[part="button"],
+          :host([align-horizontal="left"][icon-position="left"]) *[part="button"],
+          :host([align-horizontal="left"][icon-position="right"]) *[part="button"],
           :host([align-vertical="top"][icon-position="top"]) *[part="button"],
-          :host([align-vertical="top"][icon-position="bottom"]) {
+          :host([align-vertical="top"][icon-position="bottom"]) *[part="button"] {
             justify-content: flex-start;
           }
-          :host([align-horizontal="right"][icon-position="left"])
-            *[part="button"],
-          :host([align-horizontal="right"][icon-position="right"])
-            *[part="button"],
-          :host([align-vertical="bottom"][icon-position="top"])
-            *[part="button"],
-          :host([align-vertical="bottom"][icon-position="bottom"]) {
+          :host([align-horizontal="right"][icon-position="left"]) *[part="button"],
+          :host([align-horizontal="right"][icon-position="right"]) *[part="button"],
+          :host([align-vertical="bottom"][icon-position="top"]) *[part="button"],
+          :host([align-vertical="bottom"][icon-position="bottom"]) *[part="button"]{
             justify-content: flex-end;
           }
         `,

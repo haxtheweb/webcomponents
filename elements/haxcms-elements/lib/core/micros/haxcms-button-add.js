@@ -1,8 +1,9 @@
 import { store } from "../haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
+import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
-export class HAXCMSButtonAdd extends HAXCMSButton {
+export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) {
   static get tag() {
     return "haxcms-button-add";
   }
@@ -11,15 +12,28 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
     super();
     this.t = this.t || {};
     this.t.newPageAdded = "New page added";
-    this.t.newPage = "New page";
+    this.t.newPage = "Page";
     this.t.copy = "Copy";
-    this.t.newChildPage = "New child page";
-    this.t.duplicatePage = "Duplicate page";
+    this.t.newChildPage = "Child";
+    this.t.duplicatePage = "Duplicate";
     this.icon = "hax:add-page";
     this.voiceCommand = "add page";
     this.dark = false;
     this.type = "sibling";
     this.autoEdit = false;
+    this.showTextLabel = true;
+    this.iconPosition = "left";
+    this.alignHorizontal = "left";
+  }
+  static get styles(){
+    return [
+      ...this.iconStyles,
+      ...this.labelStyles,
+      ...this.tooltipStyles,
+      ...this.simpleButtonCoreStyles,
+      ...this.simpleButtonLayoutStyles,
+      ...this.simpleButtonThemeStyles,
+    ];
   }
 
   static get properties() {
@@ -30,18 +44,24 @@ export class HAXCMSButtonAdd extends HAXCMSButton {
     };
   }
 
-  render() {
-    // render the button passing in our translated strings
+  updated(changedProperties){
+    if(super.updated) super.updated(changedProperties);
     switch (this.type) {
       case "sibling":
-        return this.renderButton(this.t.newPage, this.t.newPage);
+        return this.label = this.t.newPage;
       case "child":
         this.icon = "hax:add-child-page";
-        return this.renderButton(this.t.newChildPage, this.t.newChildPage);
+        return this.label = this.t.newChildPage;
       case "duplicate":
         this.icon = "hax:duplicate";
-        return this.renderButton(this.t.duplicatePage, this.t.duplicatePage);
+        return this.label = this.t.duplicatePage;
     }
+    this.icon = undefined;
+    this.setAttribute('role','menuitem');
+  }
+
+  render() {
+    return this.buttonTemplate;
   }
 
   connectedCallback() {

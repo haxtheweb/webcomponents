@@ -39,19 +39,20 @@
         </template>
       </demo-snippet>
       <h3>Alignment of simple-toolbar-button demo</h3>
+      <h4>Icon Position: Left</h4>
       <demo-snippet>
         <template>
         <simple-toolbar always-expanded>
-          <simple-toolbar-button icon="flag" label="Default" show-text-label ></simple-toolbar-button>
+          <!--Icon Position Left-->
+          <simple-toolbar-button icon="flag" align-vertical="top" align-horizontal="left" label="Top Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="top" label="Top Center" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="top" align-horizontal="right" label="Top Right" show-text-label ></simple-toolbar-button>
           <simple-toolbar-button icon="flag" align-horizontal="left" label="Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" label="Center" show-text-label ></simple-toolbar-button>
           <simple-toolbar-button icon="flag" align-horizontal="right" label="Right" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="flag" align-vertical="top" label="Top" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="flag" align-vertical="bottom" label="Bottom" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="drafts" icon-position="top" label="Default" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="top" label="Top" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="bottom" label="Bottom" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="left" label="Left" show-text-label ></simple-toolbar-button>
-          <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="right" label="Right" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="bottom" align-horizontal="left" label="Bottom Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="bottom" label="Bottom Center" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="bottom" align-horizontal="right" label="Bottom Right" show-text-label ></simple-toolbar-button>
         </simple-toolbar>
         
           <style>
@@ -59,12 +60,61 @@
             simple-toolbar-button[icon=drafts] {
               --simple-toolbar-border-color: #ddd;
               --simple-toolbar-button-padding: 10px;
-              width: 280px;
+              width: 33.3333333%;
               height: 100px;
             }
           </style>
         </template>
-    </demo-snippet>
+      </demo-snippet>
+      <h4>Icon Position: Top</h4>
+      <demo-snippet>
+        <template>
+          <simple-toolbar always-expanded>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="top" align-horizontal="left" label="Top Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="top" label="Top Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="top" align-horizontal="right" label="Top Right" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="left" label="Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" label="Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="right" label="Right" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="bottom" align-horizontal="left" label="Bottom Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="bottom" label="Bottom Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="bottom" align-horizontal="right" label="Bottom Right" show-text-label ></simple-toolbar-button>
+          </simple-toolbar>
+        </template>
+      </demo-snippet>
+      <h4>Icon Position: Right</h4>
+      <demo-snippet>
+        <template>
+        <simple-toolbar always-expanded>
+          <!--Icon Position Left-->
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="top" align-horizontal="left" label="Top Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="top" label="Top Center" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="top" align-horizontal="right" label="Top Right" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-horizontal="left" label="Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" label="Center" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-horizontal="right" label="Right" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="bottom" align-horizontal="left" label="Bottom Left" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="bottom" label="Bottom Center" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" icon-position="right" align-vertical="bottom" align-horizontal="right" label="Bottom Right" show-text-label ></simple-toolbar-button>
+        </simple-toolbar>
+        </template>
+      </demo-snippet>
+      <h4>Icon Position: Bottom</h4>
+      <demo-snippet>
+        <template>
+          <simple-toolbar always-expanded>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="top" align-horizontal="left" label="Top Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="top" label="Top Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="top" align-horizontal="right" label="Top Right" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-horizontal="left" label="Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" label="Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-horizontal="right" label="Right" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="bottom" align-horizontal="left" label="Bottom Left" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="bottom" label="Bottom Center" show-text-label ></simple-toolbar-button>
+            <simple-toolbar-button icon="drafts" icon-position="bottom" align-vertical="bottom" align-horizontal="right" label="Bottom Right" show-text-label ></simple-toolbar-button>
+          </simple-toolbar>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>
