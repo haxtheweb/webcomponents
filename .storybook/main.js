@@ -35,7 +35,7 @@ module.exports = {
         targets: [
           {
             src: 'elements/rpg-character/lib/',
-            dest: `${outputDir}/elements/rpg-character/lib`,
+            dest: `${outputDir}/elements/rpg-character`,
             flatten: false
           },
           {
