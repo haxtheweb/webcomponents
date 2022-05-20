@@ -22,3 +22,5 @@ elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
 elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/submissions/353
 elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/data.json
 elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/submissions/1868
+.vercel
+.env

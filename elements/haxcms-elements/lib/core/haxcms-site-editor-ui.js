@@ -468,11 +468,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           show-text-label
           voice-command="edit (page) details"
           part="detailsbtn"
-          tabindex="${this.editMode ? "-1" : ""}"
+          tabindex="${this.editMode ? "-1" : "0"}"
         ></simple-toolbar-button>
         <simple-toolbar-button
           ?disabled="${this.editMode}"
-          tabindex="${this.editMode ? "-1" : ""}"
+          tabindex="${this.editMode ? "-1" : "0"}"
           id="deletebutton"
           hidden
           icon-position="top"
@@ -489,6 +489,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           icon="hax:add-page"
           icon-position="top"
           label="Add page"
+          tabindex="${this.editMode ? "-1" : "0"}"
           @dblclick="${this._addPageClick}"
           show-text-label>
           <simple-toolbar-menu-item>
@@ -526,6 +527,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           @click="${this._cancelButtonTap}"
           .hidden="${!this.editMode}"
           show-text-label
+          tabindex="${this.editMode ? "0" : "-1"}"
           label="${this.t.cancelEditing}"
           voice-command="cancel (editing)"
         ></simple-toolbar-button>
