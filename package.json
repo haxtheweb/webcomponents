@@ -127,7 +127,8 @@
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
-    "@wcfactory/rollup-umd-build": "^0.13.0"
+    "@wcfactory/rollup-umd-build": "^0.13.0",
+    "rollup-plugin-copy": "3.4.0"
   },
   "peerDependencies": {
     "@web/test-runner": "0.13.27",
@@ -140,7 +141,6 @@
     "lunr": "2.3.9",
     "concurrently": "7.0.0",
     "promise-polyfill": "8.2.1",
-    "rollup-plugin-cpy": "^2.0.1",
     "lit": "^2.2.4"
   },
   "resolutions": {

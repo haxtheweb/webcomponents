@@ -1,10 +1,7 @@
 const path = require("path");
-const fs = require("fs");
-const cpy = require("rollup-plugin-cpy");
-var outputDir = "../../../storybooks/styleguide";
-if (process.env.VERCEL) {
-  outputDir = "../storybook";
-}
+const copy = require("rollup-plugin-copy");
+
+var outputDir = "storybook";
 module.exports = {
   // Globs of all the stories in your project
   stories: ["./**.stories.{js,mdx}", "../elements/*/**.stories.{js,mdx}"],
@@ -29,37 +26,50 @@ module.exports = {
   },
 
   // Rollup build output directory (build-storybook only)
-  outputDir: outputDir,
+  outputDir: '../' + outputDir,
 
   // Configuration for rollup (build-storybook only)
   rollup: (config) => {
     config.plugins.push(
-      cpy({
-        files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
-        dest: outputDir,
-        options: { parents: true },
-      }),
-      cpy({
-        files: ["node_modules/monaco-editor/min/**/*"],
-        dest: `${outputDir}/`,
-        options: { parents: true },
-      }),
-      cpy({
-        files: ["elements/chartist-render/lib/chartist/dist/chartist.min.*"],
-        dest: `${outputDir}/`,
-        options: { parents: true },
-      }),
-      cpy({
-        files: ["elements/img-pan-zoom/lib/openseadragon/*"],
-        dest: `${outputDir}/`,
-        options: { parents: true },
-      }),
-      cpy({
-        files: ["elements/*/lib/svgs/**/*"],
-        dest: `${outputDir}/`,
-        options: { parents: true },
-      })
-    );
+      copy({
+        targets: [
+          {
+            src: 'node_modules/@lrnwebcomponents/rpg-character/lib/**',
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: ['node_modules/@lrnwebcomponents/simple-icon/lib/svgs/*', '!node_modules/@lrnwebcomponents/simple-icon/lib/svgs/elmsln-custom'],
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: 'node_modules/@lrnwebcomponents/hax-iconset/lib/svgs',
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: 'node_modules/@lrnwebcomponents/chartist-render/lib/chartist/dist',
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: 'node_modules/@lrnwebcomponents/img-pan-zoom/lib/openseadragon',
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: 'node_modules/flag-icon-css/flags/*',
+            dest: outputDir,
+            flatten: false
+          },
+          {
+            src: 'node_modules/monaco-editor/min/**',
+            dest: outputDir,
+            flatten: false
+          },
+        ],
+      }),    );
     return config;
   },
 };
