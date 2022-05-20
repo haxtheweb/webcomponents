@@ -34,38 +34,38 @@ module.exports = {
       copy({
         targets: [
           {
-            src: 'node_modules/@lrnwebcomponents/rpg-character/lib/**',
-            dest: outputDir,
+            src: 'elements/rpg-character/lib/',
+            dest: `${outputDir}/elements/rpg-character/lib`,
             flatten: false
           },
           {
-            src: ['node_modules/@lrnwebcomponents/simple-icon/lib/svgs/*', '!node_modules/@lrnwebcomponents/simple-icon/lib/svgs/elmsln-custom'],
-            dest: outputDir,
+            src: ['elements/simple-icon/lib/svgs/*', '!elements/simple-icon/lib/svgs/elmsln-custom'],
+            dest: `${outputDir}/elements/simple-icon/lib/svgs`,
             flatten: false
           },
           {
-            src: 'node_modules/@lrnwebcomponents/hax-iconset/lib/svgs',
-            dest: outputDir,
+            src: 'elements/hax-iconset/lib/svgs/',
+            dest: `${outputDir}/elements/hax-iconset/lib`,
             flatten: false
           },
           {
-            src: 'node_modules/@lrnwebcomponents/chartist-render/lib/chartist/dist',
-            dest: outputDir,
+            src: 'elements/chartist-render/lib/chartist/dist',
+            dest: `${outputDir}/elements/chartist-render/lib/chartist`,
             flatten: false
           },
           {
-            src: 'node_modules/@lrnwebcomponents/img-pan-zoom/lib/openseadragon',
-            dest: outputDir,
+            src: 'elements/img-pan-zoom/lib/openseadragon/',
+            dest: `${outputDir}/elements/img-pan-zoom/lib`,
             flatten: false
           },
           {
-            src: 'node_modules/flag-icon-css/flags/*',
-            dest: outputDir,
+            src: 'node_modules/flag-icon-css/flags/',
+            dest: `${outputDir}/node_modules/flag-icon-css/flags`,
             flatten: false
           },
           {
-            src: 'node_modules/monaco-editor/min/**',
-            dest: outputDir,
+            src: 'node_modules/monaco-editor/min/',
+            dest: `${outputDir}/node_modules/monaco-editor`,
             flatten: false
           },
         ],
