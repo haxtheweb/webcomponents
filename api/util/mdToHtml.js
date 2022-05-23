@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   var md = body.md;
   var html;
   // md is actually a link reference so fetch it 1st
-  if (req.body.type === 'link' && md) {
+  if (body.type === 'link' && md) {
     md = await fetch(md.trim()).then((d) => d.ok ? d.text(): '');
   }
   html = await mdClass.render(md);
