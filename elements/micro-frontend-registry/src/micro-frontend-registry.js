@@ -3,74 +3,111 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
+// very basic class for micro
+const MicroFrontendKeys = ['endpoint', 'name', 'title', 'description', 'params', 'callback'];
+
+// new micro
+export class MicroFrontend {
+  constructor() {
+    // set defaults for each key expected
+    MicroFrontendKeys.map((key) => key === 'params' ? this[key] = {} : this[key] = null);
+  }
+}
+
 /**
  * `micro-frontend-registry`
  * `A singleton for registration and managing access to leverage microservices for web components`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @demo demo/index.html
  * @element micro-frontend-registry
  */
-class MicroFrontendRegistry extends HTMLElement {
-  /**
-   * object life cycle
-   */
-  constructor(delayRender = false) {
-    super();
-
-    // create a template element for processing shadowRoot
-    this.template = document.createElement("template");
-    // create a shadowRoot
-    this.attachShadow({ mode: "open" });
-    // optional delay in rendering, otherwise it always happens
-    if (!delayRender) {
-      this.render();
-    }
-  }
-  /**
-   * This is a convention, not the standard to return HTML of the element
-   */
-  get html() {
-    return ``;
-  }
-  /**
-   * attributes to notice changes to
-   */
-  static get observedAttributes() {
-    return [];
-  }
-  /**
-   * callback when any observed attribute changes
-   */
-  attributeChangedCallback(attr, oldValue, newValue) {}
-  /**
-   * This is a convention, not the standard
-   */
+class MicroFrontendRegistryEl extends HTMLElement {
   static get tag() {
     return "micro-frontend-registry";
   }
+
+  constructor() {
+    super();
+    this.list = [];
+  }
+
   /**
-   * life cycle, element is afixed to the DOM
+   * define a new micro frontend
+   * 
+   * @param {MicroFrontend} item - instanceof MicroFrontend
+   * @returns {Boolean} status of definition being accepted
    */
-  connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+  define(item) {
+    // validate item has all keys we care about
+    if (item instanceof MicroFrontend && MicroFrontendKeys.every(key => Object.keys(item).includes(key))) {
+      if (!this.get(item.name)) {
+        this.list.push(item);
+        return true;
+      }
+    }
+    else {
+      console.warn(
+        "MicroFrontendRegistry: class MicroFrontend instance required to define microservice"
+      );
+      return false;
     }
   }
-  /**
-   * Render / rerender the shadowRoot
-   */
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+  /**
+   * get the definition for a machine named micro
+   * 
+   * @param {String} name - machine name of the micro record requested
+   * @returns {MicroFrontend} the micro in question
+   */
+  get(name) {
+    if (name && this.list.length > 0) {
+      const found = this.list.find((item) => item.name === name);
+      if (found) {
+        return found;
+      }
     }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    return null;
+  }
+
+  /**
+   * generate the call to the micro based on accepting name and params
+   * 
+   * @param {String} name - machine name for the micro to call
+   * @param {Object} params - data to send to endpoint
+   * @param {Object} caller - reference to DOM node that called this
+   * @returns {Object} Response object from microservice, otherwise `null`
+   */
+  async call(name, params = {}, callback = null, caller = null) {
+    const item = this.get(name);
+    if (item) {
+      const data = await fetch(item.endpoint,
+        {
+          method: 'POST',
+          body: JSON.stringify(params)
+        }
+        ).then((d) => d.ok ? d.json() : null);
+      // endpoints can require a callback be hit every time
+      if (item.callback) {
+        await item.callback(data, caller);
+      }
+      if (callback) {
+        await callback(data, caller);
+      }
+      return data;
+    }
+    return null;
   }
 }
-customElements.define(MicroFrontendRegistry.tag, MicroFrontendRegistry);
-export { MicroFrontendRegistry };
+customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
+
+// register globally so we can make sure there is only one
+window.MicroFrontendRegistry = window.MicroFrontendRegistry || {};
+window.MicroFrontendRegistry.requestAvailability = () => {
+  if (!window.MicroFrontendRegistry.instance) {
+    window.MicroFrontendRegistry.instance = document.createElement(MicroFrontendRegistryEl.tag);
+    document.body.appendChild(window.MicroFrontendRegistry.instance);
+  }
+  return window.MicroFrontendRegistry.instance;
+};
+// most common way to access registry
+export const MicroFrontendRegistry = window.MicroFrontendRegistry.requestAvailability();
