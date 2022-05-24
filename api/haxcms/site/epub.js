@@ -1,6 +1,6 @@
 import url from "url";
 import Epub from "epub-gen";
-import { JSONOutlineSchema } from "@haxtheweb/haxcms/lib/JSONOutlineSchema.js";
+import { JSONOutlineSchema } from "../../../microservices/haxcms/lib/JSONOutlineSchema.js";
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';

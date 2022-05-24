@@ -182,7 +182,7 @@
   "workspaces": {
     "packages": [
       "elements/*",
-      "packages/*"
+      "microservices/*"
     ],
     "nohoist": []
   },
