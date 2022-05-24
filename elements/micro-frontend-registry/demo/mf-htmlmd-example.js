@@ -62,10 +62,41 @@ export class MfHtmlExample extends LitElement {
       type: 'link',
     };
     MicroFrontendRegistry.define(hydrate);
+
+    // HAXCMS
+    // LOAD ENTIRE SITE CONTENT
+    const haxcms = new MicroFrontend();
+    haxcms.endpoint = `${base}/api/haxcms/site/html`;
+    haxcms.name = "haxcms-site-html";
+    haxcms.title = "HAXcms Site HTML";
+    haxcms.description = "Load entire HAXcms site via URL";
+    haxcms.params = {
+      url: 'location of the HAXcms site',
+    };
+    MicroFrontendRegistry.define(haxcms);
+
+    // HAXCMS
+    // EPUB ENTIRE SITE CONTENT
+    const epub = new MicroFrontend();
+    epub.endpoint = `${base}/api/haxcms/site/epub`;
+    epub.name = "haxcms-site-epub";
+    epub.title = "HAXcms site EPUB";
+    epub.description = "EPUB entire HAXcms site via URL";
+    epub.params = {
+      url: 'location of the HAXcms site',
+    };
+    MicroFrontendRegistry.define(epub);
   }
 
   render() {
     return html`
+    <div>
+      <label>URL of HAXcms site</label>
+      <input type="url" id="haxcmsurl" />
+      <button id="haxcms">HTML entire site</button>
+      <button id="epub">EPUB entire site</button>
+      <div id="haxcmssite"></div>
+    </div>
     <div class="wrap">
       <div>MD
         <textarea id="md" cols="50" rows="25"></textarea>
@@ -99,6 +130,13 @@ export class MfHtmlExample extends LitElement {
   hydrateCallback(data) {
     this.shadowRoot.querySelector('#html').value = data.data;
   }
+  haxcmsCallback(data) {
+    this.shadowRoot.querySelector('#haxcmssite').innerHTML = data.data;
+  }
+  haxcmsepubCallback(data) {
+    console.log(data);
+    // fake download
+  }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -124,6 +162,18 @@ export class MfHtmlExample extends LitElement {
         type: 'link',
       };
       MicroFrontendRegistry.call('hydrate-ssr', params, this.hydrateCallback.bind(this));
+    });
+    this.shadowRoot.querySelector('#haxcms').addEventListener('click', () => {
+      const params = {
+        url: this.shadowRoot.querySelector('#haxcmsurl').value,
+      };
+      MicroFrontendRegistry.call('haxcms-site-html', params, this.haxcmsCallback.bind(this));
+    });
+    this.shadowRoot.querySelector('#epub').addEventListener('click', () => {
+      const params = {
+        url: this.shadowRoot.querySelector('#haxcmsurl').value,
+      };
+      MicroFrontendRegistry.call('haxcms-site-epub', params, this.haxcmsepubCallback.bind(this));
     });
   }
 }

@@ -181,7 +181,8 @@
   "useWorkspaces": true,
   "workspaces": {
     "packages": [
-      "elements/*"
+      "elements/*",
+      "packages/*"
     ],
     "nohoist": []
   },
