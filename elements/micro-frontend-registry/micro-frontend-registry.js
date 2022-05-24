@@ -29,6 +29,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
   constructor() {
     super();
     this.list = [];
+    this.MicroFrontend = MicroFrontend;
   }
 
   /**
