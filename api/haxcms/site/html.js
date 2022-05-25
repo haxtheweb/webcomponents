@@ -1,5 +1,5 @@
 import url from "url";
-import { JSONOutlineSchema } from "../../../microservices/haxcms/lib/JSONOutlineSchema.js";
+import { JSONOutlineSchema } from "../lib/JSONOutlineSchema.js";
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
