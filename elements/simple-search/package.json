@@ -43,7 +43,7 @@
     "@lrnwebcomponents/simple-fields": "^4.0.24",
     "@lrnwebcomponents/simple-icon": "^4.0.24",
     "@lrnwebcomponents/simple-tooltip": "^4.0.24",
-    "lit": "^2.2.3"
+    "lit": "^2.2.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

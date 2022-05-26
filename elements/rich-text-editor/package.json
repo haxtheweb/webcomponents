@@ -55,7 +55,7 @@
     "@lrnwebcomponents/simple-toolbar": "^4.0.24",
     "@lrnwebcomponents/utils": "^4.0.8",
     "@polymer/iron-icons": "^3.0.1",
-    "lit": "^2.2.3",
+    "lit": "^2.2.5",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {

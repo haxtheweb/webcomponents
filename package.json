@@ -150,7 +150,7 @@
     "lunr": "2.3.9",
     "concurrently": "7.0.0",
     "promise-polyfill": "8.2.1",
-    "lit": "^2.2.4"
+    "lit": "^2.2.5"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.7",
@@ -158,7 +158,7 @@
     "lit-element": "3.2.0",
     "lit-html": "2.2.4",
     "roughjs": "4.4.5",
-    "lit": "2.2.4"
+    "lit": "2.2.5"
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",

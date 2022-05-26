@@ -47,7 +47,7 @@
   "dependencies": {
     "@lrnwebcomponents/chartist-render": "^4.0.24",
     "@lrnwebcomponents/simple-colors": "^4.0.24",
-    "lit": "^2.2.3"
+    "lit": "^2.2.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -47,7 +47,7 @@
     "@lrnwebcomponents/simple-icon": "^4.0.24",
     "@lrnwebcomponents/simple-toast": "^4.0.24",
     "@polymer/paper-toast": "^3.0.1",
-    "lit": "^2.2.3"
+    "lit": "^2.2.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

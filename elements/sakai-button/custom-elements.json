@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "sakai-button",
+      "path": "./sakai-button.js",
+      "description": "`sakai-button`\n`to demo things`"
+    },
+    {
+      "name": "sakai-button",
+      "path": "./src/sakai-button.js",
+      "description": "`sakai-button`\n`to demo things`"
+    }
+  ]
+}
