@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-img",
+      "path": "./simple-img.js",
+      "description": "`simple-img`\n`simple image manipulation with a microservice`"
+    },
+    {
+      "name": "simple-img",
+      "path": "./src/simple-img.js",
+      "description": "`simple-img`\n`simple image manipulation with a microservice`"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ addDecorator(withA11y);
 addParameters({
   options: {
     panelPosition: "right",
+    enableShortcuts: false,
     sortStoriesByKind: true,
     storySort: (a, b) =>
       a[1].kind === b[1].kind

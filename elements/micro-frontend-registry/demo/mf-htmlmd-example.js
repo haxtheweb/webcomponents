@@ -1,5 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { MicroFrontend, MicroFrontendRegistry } from "../micro-frontend-registry.js";
+import "@lrnwebcomponents/simple-img/simple-img.js";
 // support for local resolution of vercel vs serve
 const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
 
@@ -13,10 +14,10 @@ export class MfHtmlExample extends LitElement {
       display: block;
     }
    .wrap {
-        display: flex;
-        border: 2px solid black;
-      }
-    `];
+      display: flex;
+      border: 2px solid black;
+    }
+  `];
   }
   constructor() {
     super();
@@ -25,7 +26,7 @@ export class MfHtmlExample extends LitElement {
     // TO
     // HTML
     const mdToHtml = new MicroFrontend();
-    mdToHtml.endpoint = `${base}/api/util/mdToHtml`;
+    mdToHtml.endpoint = `${base}/api/media/convert/mdToHtml`;
     mdToHtml.name = "md-to-html";
     mdToHtml.title = "Markdown to HTML";
     mdToHtml.description = "Convert Markdown string (or file) to HTML";
@@ -40,7 +41,7 @@ export class MfHtmlExample extends LitElement {
     // TO
     // MARKDOWN
     const htmlToMd = new MicroFrontend();
-    htmlToMd.endpoint = `${base}/api/util/htmlToMd`;
+    htmlToMd.endpoint = `${base}/api/media/convert/htmlToMd`;
     htmlToMd.name = "html-to-md";
     htmlToMd.title = "Markdown to HTML";
     htmlToMd.description = "Convert Markdown string (or file) to HTML";
@@ -53,7 +54,7 @@ export class MfHtmlExample extends LitElement {
     // HTML
     // HYDRATED
     const hydrate = new MicroFrontend();
-    hydrate.endpoint = `${base}/api/util/hydrateFromAutoloader`;
+    hydrate.endpoint = `${base}/api/experimental/hydrateFromAutoloader`;
     hydrate.name = "hydrate-ssr";
     hydrate.title = "";
     hydrate.description = "Server side hydrate web components from CDN";
@@ -86,10 +87,38 @@ export class MfHtmlExample extends LitElement {
       url: 'location of the HAXcms site',
     };
     MicroFrontendRegistry.define(epub);
+
+    // DUCKDUCKGO
+    // Example endpoint
+    const ddg = new MicroFrontend();
+    ddg.endpoint = `${base}/api/experimental/duckduckgo`;
+    ddg.name = "ddg";
+    ddg.title = "Duck duck go";
+    ddg.description = "Search duck duck go";
+    ddg.params = {
+      q: 'query param to search on',
+    };
+    MicroFrontendRegistry.define(ddg);
   }
 
   render() {
     return html`
+    <div>
+      <label for="src">source url</label>
+      <input type="text" id="src" value="https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1" size="100" />
+      <label for="height">height</label>
+      <input type="number" id="height" value="200" min="10" max="1000" />
+      <label for="width">width</label>
+      <input type="number" id="width" value="300" min="10" max="1000" />
+      <label for="quality">quality</label>
+      <input type="range" id="quality" value="80" min="5" max="100" step="5" />
+    </div>
+    <simple-img></simple-img>
+    <div>
+      <label>Duck duck go</label>
+      <input type="text" id="search" />
+      <button id="searchbtn">Search</button>
+    </div>
     <div>
       <label>URL of HAXcms site</label>
       <input type="url" id="haxcmsurl" />
@@ -137,6 +166,12 @@ export class MfHtmlExample extends LitElement {
     console.log(data);
     // fake download
   }
+  ddgCallback(data) {
+    console.log(data);
+  }
+  simpleImgCallback(data) {
+    this.shadowRoot.querySelector('simple-img').value = data.data;
+  }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -174,6 +209,18 @@ export class MfHtmlExample extends LitElement {
         url: this.shadowRoot.querySelector('#haxcmsurl').value,
       };
       MicroFrontendRegistry.call('haxcms-site-epub', params, this.haxcmsepubCallback.bind(this));
+    });
+    this.shadowRoot.querySelector('#searchbtn').addEventListener('click', () => {
+      const params = {
+        q: this.shadowRoot.querySelector('#search').value,
+      };
+      MicroFrontendRegistry.call('ddg', params, this.ddgCallback.bind(this));
+    });
+    this.shadowRoot.querySelector('#src').addEventListener('input', () => {
+      const params = {
+        src: this.shadowRoot.querySelector('#src').value,
+      };
+      MicroFrontendRegistry.call('simple-img', params, this.simpleImgCallback.bind(this));
     });
   }
 }
