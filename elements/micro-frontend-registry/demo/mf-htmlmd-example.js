@@ -1,8 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { MicroFrontend, MicroFrontendRegistry } from "../micro-frontend-registry.js";
 import "@lrnwebcomponents/simple-img/simple-img.js";
-// support for local resolution of vercel vs serve
-const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
 
 export class MfHtmlExample extends LitElement {
   static get tag() {
@@ -26,7 +24,7 @@ export class MfHtmlExample extends LitElement {
     // TO
     // HTML
     const mdToHtml = new MicroFrontend();
-    mdToHtml.endpoint = `${base}/api/media/convert/mdToHtml`;
+    mdToHtml.endpoint = '/api/services/media/format/mdToHtml';
     mdToHtml.name = "md-to-html";
     mdToHtml.title = "Markdown to HTML";
     mdToHtml.description = "Convert Markdown string (or file) to HTML";
@@ -41,7 +39,7 @@ export class MfHtmlExample extends LitElement {
     // TO
     // MARKDOWN
     const htmlToMd = new MicroFrontend();
-    htmlToMd.endpoint = `${base}/api/media/convert/htmlToMd`;
+    htmlToMd.endpoint = '/api/services/media/format/htmlToMd';
     htmlToMd.name = "html-to-md";
     htmlToMd.title = "Markdown to HTML";
     htmlToMd.description = "Convert Markdown string (or file) to HTML";
@@ -54,7 +52,7 @@ export class MfHtmlExample extends LitElement {
     // HTML
     // HYDRATED
     const hydrate = new MicroFrontend();
-    hydrate.endpoint = `${base}/api/experimental/hydrateFromAutoloader`;
+    hydrate.endpoint = '/api/experiments/hydrateFromAutoloader';
     hydrate.name = "hydrate-ssr";
     hydrate.title = "";
     hydrate.description = "Server side hydrate web components from CDN";
@@ -67,7 +65,7 @@ export class MfHtmlExample extends LitElement {
     // HAXCMS
     // LOAD ENTIRE SITE CONTENT
     const haxcms = new MicroFrontend();
-    haxcms.endpoint = `${base}/api/haxcms/site/html`;
+    haxcms.endpoint = '/api/apps/haxcms/site/html';
     haxcms.name = "haxcms-site-html";
     haxcms.title = "HAXcms Site HTML";
     haxcms.description = "Load entire HAXcms site via URL";
@@ -79,7 +77,7 @@ export class MfHtmlExample extends LitElement {
     // HAXCMS
     // EPUB ENTIRE SITE CONTENT
     const epub = new MicroFrontend();
-    epub.endpoint = `${base}/api/haxcms/site/epub`;
+    epub.endpoint = '/api/apps/haxcms/site/epub';
     epub.name = "haxcms-site-epub";
     epub.title = "HAXcms site EPUB";
     epub.description = "EPUB entire HAXcms site via URL";
@@ -91,7 +89,7 @@ export class MfHtmlExample extends LitElement {
     // DUCKDUCKGO
     // Example endpoint
     const ddg = new MicroFrontend();
-    ddg.endpoint = `${base}/api/experimental/duckduckgo`;
+    ddg.endpoint = '/api/services/search/duckduckgo';
     ddg.name = "ddg";
     ddg.title = "Duck duck go";
     ddg.description = "Search duck duck go";

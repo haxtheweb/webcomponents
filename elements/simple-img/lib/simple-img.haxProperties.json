@@ -1,0 +1,87 @@
+{
+  "canScale": false,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Simple Image",
+    "description": "Manipulation of images with simple parameters",
+    "icon": "image:image",
+    "color": "red",
+    "groups": ["Image", "Media"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Source",
+        "description": "Image source / location",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "validationType": "url"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "Height of the image (optional)",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 5000
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "Width of the image (optional)",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 5000
+      },
+      {
+        "property": "alt",
+        "title": "Alt text",
+        "description": "Useful for screen readers and improved SEO.",
+        "inputMethod": "alt"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Quality",
+        "description": "Quality of the image when generating (JPEG only)",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Fetch Priority",
+        "description": "Performance optimization hints for modern browsers",
+        "inputMethod": "select",
+        "options": {
+          "auto": "Automatic",
+          "high": "High",
+          "low": "Low"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Decoding method",
+        "description": "Performance optimization hint for rendering image in modern browsers",
+        "inputMethod": "select",
+        "options": {
+          "auto": "Automatic",
+          "async": "Async"
+        }
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "simple-img",
+      "properties": {
+        "decoding": "async",
+        "fetchpriority": "low"
+      },
+      "content": "<template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>"
+    }
+  ]
+}

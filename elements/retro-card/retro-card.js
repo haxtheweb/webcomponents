@@ -278,6 +278,20 @@ class RetroCard extends SimpleColors {
       saveOptions: {
         unsetAttributes: ["colors"],
       },
+      demoSchema: [
+        {
+          tag: "video-player",
+          properties: {
+            title: "HAX Camp",
+            subtitle: "btopro dreaming reality",
+            tags: "dreams, hax, camp",
+            accentColor: "pink",
+            url: "https://btopro.com",
+            "media-source": "https://btopro.com/files/IMG_20190716_102855.jpg",
+          },
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

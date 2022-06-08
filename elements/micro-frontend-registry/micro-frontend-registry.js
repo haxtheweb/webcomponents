@@ -39,17 +39,29 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @returns {Boolean} status of definition being accepted
    */
   define(item) {
+    if (!(item instanceof MicroFrontend)) {
+      console.warn(
+        "MicroFrontendRegistry: use class MicroFrontend instance but if keys match it will register still."
+      );
+      console.warn(item);
+    }
     // validate item has all keys we care about
-    if (item instanceof MicroFrontend && MicroFrontendKeys.every(key => Object.keys(item).includes(key))) {
+    if (MicroFrontendKeys.every(key => Object.keys(item).includes(key))) {
+       // support for local resolution of vercel vs serve for things that are
+       // built off of the main registry on localhost
+      if (item.endpoint.startsWith('/api/')) {
+        const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
+        item.endpoint = `${base}${item.endpoint}`;
+        console.log(item.endpoint);
+      }
+
       if (!this.get(item.name)) {
+        console.log('push');
         this.list.push(item);
         return true;
       }
     }
     else {
-      console.warn(
-        "MicroFrontendRegistry: class MicroFrontend instance required to define microservice"
-      );
       return false;
     }
   }
@@ -97,6 +109,18 @@ class MicroFrontendRegistryEl extends HTMLElement {
       return data;
     }
     return null;
+  }
+
+  /**
+   * generate the call to the micro as a URL
+   * 
+   * @param {String} name - machine name for the micro to call
+   * @param {Object} params - data to send to endpoint
+   * @returns {String} URL with parameters for a GET
+   */
+  url(name, params = {}) {
+    const item = this.get(name);
+    return new URL(item.endpoint).toString() + `?${new URLSearchParams(params).toString()}`;
   }
 }
 customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);

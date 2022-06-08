@@ -1,33 +1,33 @@
 {
   "title": {
-    "type": String
+    "type": "String"
   },
   "subtitle": {
-    "type": String
+    "type": "String"
   },
   "tags": {
-    "type": String
+    "type": "String"
   },
   "mediaSource": {
-    "type": String,
+    "type": "String",
     "attribute": "media-source"
   },
   "url": {
-    "type": String
+    "type": "String"
   },
   "hoverSource": {
-    "type": String,
+    "type": "String",
     "attribute": "hover-source"
   },
   "hoverState": {
-    "type": Boolean,
+    "type": "Boolean",
     "attribute": "hover-state",
     "reflect": true
   },
   "__cardTags": {
-    "type": Array
+    "type": "Array"
   },
   "__source": {
-    "type": String
+    "type": "String"
   }
 }

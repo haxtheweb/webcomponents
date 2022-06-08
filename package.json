@@ -145,6 +145,7 @@
     "jsdom": "19.0.0",
     "@lit-labs/ssr": "2.1.0",
     "node-fetch": "3.2.4",
+    "sharp": "0.30.6",
     "stream": "0.0.2",
     "fetch-ie8": "1.5.0",
     "lunr": "2.3.9",

@@ -1,4 +1,4 @@
-import { MicroFrontend, MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
@@ -9,24 +9,21 @@ export class SimpleImg extends HTMLElement {
     super();
     // simple-image
     // simple image conversion work
-    const simpleImg = new MicroFrontend();
-    // simple debugging support for vercel locally
-    const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
-    simpleImg.endpoint = `${base}/api/media/image/manipulate`;
-    simpleImg.name = "simple-img";
-    simpleImg.title = "simple image manipulation";
-    simpleImg.description = "manipulation";
-    simpleImg.params = {
-      src: 'image source',
-      height: 'height in numbers',
-      width: 'width in numbers',
-      quality: '0-100, jpeg quality to reduce image by if jpeg',
-      fit: 'how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)',
-      rotate: 'https://sharp.pixelplumbing.com/api-operation#rotate',
-      format: 'png,jpg,gif,webp',
-    };
-    MicroFrontendRegistry.define(simpleImg);
-
+    MicroFrontendRegistry.define({
+      endpoint: '/api/services/media/image/manipulate',
+      name: "simple-img",
+      title: "simple image manipulation",
+      description: "scale, resize, convert and perform operations to manipulate any image",
+      params: {
+        src: 'image source',
+        height: 'height in numbers',
+        width: 'width in numbers',
+        quality: '0-100, jpeg quality to reduce image by if jpeg',
+        fit: 'how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)',
+        rotate: 'https://sharp.pixelplumbing.com/api-operation#rotate',
+        format: 'png, jpg, gif, webp',
+      }
+    });
     this.rendering = false;
     // progressive enhancement, tho less performant
     var img = this.querySelector("img");
@@ -47,48 +44,50 @@ export class SimpleImg extends HTMLElement {
     this.fetchpriority = img.fetchpriority || this.fetchpriority || 'high';
     this.width = parseInt(img.width || this.width || 300);
     this.height = parseInt(img.height || this.height || 200);
-    console.log(this.src);
     // defaults on the wrapper element
     this.style.display = 'inline-block';
     this.style.width = this.width + 'px';
     this.style.height = this.height + 'px';
     // wipe anything that may be here from before as we'll replace with our own
     this.innerHTML = null;
-    this.quality = this.quality || 80;    
+    this.quality = this.quality || 80;
+  }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+    .href;
   }
 
   // notice these changing
   static get observedAttributes() {
-    return ['srcconverted', 'src', 'loading', 'fetchpriority', 'decoding', 'alt', 'quality', 'height', 'width']
+    return ['srcconverted', 'src', 'loading', 'fetchpriority', 'decoding', 'alt', 'quality', 'height', 'width', 'rotate', 'fit', 'format']
   }
 
-  simpleImgCallback(data) {
-    /**
-     * this is not how this API works
-     * we want to point to the endpoint and it just do its thing
-     * we can still access the API via the registry BUT we might
-     * want to make a new API so that it can give you the address
-     * to what it's going to call in GET format as opposed to fetching
-     * the API.
-     */
-    this.srcconverted = data;
-  }
-
-  // rerender when we get hits on these important aspects
-  attributeChangedCallback(attr, oldValue, newValue) {
-    if (['width', 'height', 'quality', 'src'].includes(attr) && this.width && this.height && this.quality && this.src) {
+  // user params to generate and set the converted src
+  updateconvertedurl() {
+    // src is only actually required property
+    if (this.src) {
       const params = {
-        src: this.shadowRoot.querySelector('#src').value,
-      };
-      MicroFrontendRegistry.call('simple-img', params, this.simpleImgCallback.bind(this));
-
-      
-      this.srcconverted = new URL(this.baseurl).toString() + `?${new URLSearchParams({
         height: this.height,
         width: this.width,
         quality: this.quality,
         src: this.src,
-      }).toString()}`;
+        rotate: this.rotate,
+        fit: this.fit,
+        format: this.format,
+      };
+      this.srcconverted = MicroFrontendRegistry.url('simple-img', params);
+    }
+  }
+
+  // rerender when we get hits on these important aspects
+  attributeChangedCallback(attr, oldValue, newValue) {
+    console.log("?");
+    if (['width', 'height', 'quality', 'src', 'rotate', 'fit', 'format'].includes(attr)) {
+      this.updateconvertedurl();
     }
     // render when srcconverted is set
     if (attr === 'srcconverted' && this.src != '' && !this.rendering) {
@@ -103,6 +102,13 @@ export class SimpleImg extends HTMLElement {
       };
       i.src = this.srcconverted;
     }
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    this.updateconvertedurl();
   }
 
   render() {
@@ -121,13 +127,28 @@ export class SimpleImg extends HTMLElement {
   }
 
   // getter and setter palooza
-
-  get endpoint() {
-    return this.getAttribute('endpoint');
+  get rotate() {
+    return this.getAttribute('rotate');
   }
 
-  set endpoint(val) {
-    this.setAttribute('endpoint', val);
+  set rotate(val) {
+    this.setAttribute('rotate', val);
+  }
+
+  get fit() {
+    return this.getAttribute('fit');
+  }
+
+  set fit(val) {
+    this.setAttribute('fit', val);
+  }
+
+  get format() {
+    return this.getAttribute('format');
+  }
+
+  set format(val) {
+    this.setAttribute('format', val);
   }
 
   get height() {

@@ -42,7 +42,7 @@ export const A11yCollapseGroupStory = () => {
     ]
   );
 };
-export const A11yCollapseStory = () => {
+export const a11yCollapse = () => {
   return utils.makeElementFromClass(
     A11yCollapse,
     {
