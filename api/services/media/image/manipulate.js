@@ -10,12 +10,12 @@ export default async function handler(req, res) {
     height: req.query.height ? parseInt(req.query.height) : null,
     quality: req.query.quality ? parseInt(req.query.quality) : 80,
     fit: req.query.fit ? req.query.fit : "contain",
-    rotate: req.query.rotate ? req.query.rotate : null,
+    rotate: req.query.rotate ? parseInt(req.query.rotate) : null,
     format: req.query.format ? req.query.format : 'jpg',
   };
   // we don't require anything really as this could just be a simple quality convert
   // and leveraging the Edge caching engine
-  if (!src) {
+  if (!options.src) {
     res = invalidRequest(res, 'missing src');
   }
   else {
