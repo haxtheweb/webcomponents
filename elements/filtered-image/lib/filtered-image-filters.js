@@ -130,7 +130,7 @@ class FilteredImageFilters extends PolymerElement {
         type: String,
         value: "",
       },
-      filter1: {
+      filter2: {
         name: "filter2",
         type: String,
         value: "",

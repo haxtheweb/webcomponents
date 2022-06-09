@@ -245,13 +245,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         reflect: true,
       },
       /**
-       * Sets aria-describedby attribute.
-       */
-      describedBy: {
-        type: String,
-        attrbute: "described-by",
-      },
-      /**
        * Applies box styling.
        */
       box: {

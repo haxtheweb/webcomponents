@@ -61,7 +61,6 @@
     "postinstall": "patch-package",
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "oclif-dev manifest && oclif-dev readme",
-    "start": "node index.js",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md"
   }
