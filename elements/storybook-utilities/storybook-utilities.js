@@ -382,6 +382,13 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    */
   getKnobs(properties, defaults = {}, exclusions = []) {
     let knobs = { props: {}, slots: {}, css: {} };
+    if (!properties.emptyslot && defaults.emptyslot) {
+      properties.push({
+        inputMethod: "textfield",
+        name: "emptyslot",
+        slot: ""
+      });
+    }
     (properties || []).forEach((field) => {
       if (!!field) {
         field.name =
@@ -637,11 +644,15 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     var hProps = el.haxProperties;
     if (el.tag && JSON.parse(window.localStorage.getItem(`${el.tag}-props`))) {
       hProps = JSON.parse(window.localStorage.getItem(`${el.tag}-props`));
+      setTimeout( async () => {
+        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(el.haxProperties).then((e) => e.json())))        
+      }, 0);
     }
-    else if (el.tag && typeof hProps == 'string') {
+    else if (el.tag && typeof hProps === 'string') {
       setTimeout( async () => {
         window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
-      }, 0);    }
+      }, 0);
+    }
     let demoschema =
     hProps && hProps.demoSchema
           ? hProps.demoSchema
@@ -659,7 +670,6 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
           : [],
       content = document.createElement("div");
       if (styles.length > 0) delete demo.properties.style;
-
     styles.forEach((style) => {
       let parts = style.split(/:/),
         camel = this.kebabToCamel(parts[0]).trim();
@@ -749,7 +759,9 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     exclusions = [],
     container = false
   ) {
-    let props = this.getElementProperties(el.properties, el.haxProperties),
+    let props = this.getElementProperties(el.properties || el.observedAttributes ? el.observedAttributes.reduce((accumulator, value) => {
+      return {...accumulator, [value]: ''};
+    }, {}) : {}, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
     return this.makeElement(el, knobs, container);
   }

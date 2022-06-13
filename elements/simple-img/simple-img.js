@@ -1,4 +1,4 @@
-import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { MicroFrontendRegistry, MicroFrontend } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
@@ -9,7 +9,7 @@ export class SimpleImg extends HTMLElement {
     super();
     // simple-image
     // simple image conversion work
-    MicroFrontendRegistry.define({
+    const mf = new MicroFrontend({
       endpoint: '/api/services/media/image/manipulate',
       name: "simple-img",
       title: "simple image manipulation",
@@ -24,6 +24,7 @@ export class SimpleImg extends HTMLElement {
         format: 'png, jpg, gif, webp',
       }
     });
+    MicroFrontendRegistry.define(mf);
     this.rendering = false;
     // progressive enhancement, tho less performant
     var img = this.querySelector("img");
@@ -85,7 +86,6 @@ export class SimpleImg extends HTMLElement {
 
   // rerender when we get hits on these important aspects
   attributeChangedCallback(attr, oldValue, newValue) {
-    console.log("?");
     if (['width', 'height', 'quality', 'src', 'rotate', 'fit', 'format'].includes(attr)) {
       this.updateconvertedurl();
     }

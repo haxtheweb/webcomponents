@@ -1,27 +1,26 @@
 import url from "url";
 import { JSONOutlineSchema } from "../lib/JSONOutlineSchema.js";
+import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
+
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
-  const body = JSON.parse(req.body);
+  // use this if POST data is what's being sent
+  const body = stdPostBody(req);
   // get URL bits for validating and forming calls
   const parseURL = url.parse(body.url.replace('/site.json',''));
+  parseURL.endsWith('/')
   // verify we have a path / host
   if (parseURL.pathname && parseURL.host) {
     const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
     content = await fullSiteContent(base);
   }
+  let options = {methods: "OPTIONS, POST" };
   if (!body.cacheBuster) {
-    res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
+    options.cache = 86400;
   }
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "OPTIONS,POST");
-  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
-  res.json({
-    status: "success",
-    data: content
-  });
+  res = stdResponse(res, content, options);
+
 }
 
 export async function fullSiteContent(siteLocation, noTitles = false) {

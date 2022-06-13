@@ -167,9 +167,6 @@ export class MfHtmlExample extends LitElement {
   ddgCallback(data) {
     console.log(data);
   }
-  simpleImgCallback(data) {
-    this.shadowRoot.querySelector('simple-img').value = data.data;
-  }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -214,11 +211,10 @@ export class MfHtmlExample extends LitElement {
       };
       MicroFrontendRegistry.call('ddg', params, this.ddgCallback.bind(this));
     });
-    this.shadowRoot.querySelector('#src').addEventListener('input', () => {
-      const params = {
-        src: this.shadowRoot.querySelector('#src').value,
-      };
-      MicroFrontendRegistry.call('simple-img', params, this.simpleImgCallback.bind(this));
+    ['src','width','height','quality'].forEach((key) => {
+      this.shadowRoot.querySelector(`#${key}`).addEventListener('input', () => {
+        this.shadowRoot.querySelector('simple-img')[key] = this.shadowRoot.querySelector(`#${key}`).value;
+      });
     });
   }
 }

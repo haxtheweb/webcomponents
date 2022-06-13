@@ -8,9 +8,9 @@ const MicroFrontendKeys = ['endpoint', 'name', 'title', 'description', 'params',
 
 // new micro
 export class MicroFrontend {
-  constructor() {
+  constructor(values = {}) {
     // set defaults for each key expected
-    MicroFrontendKeys.map((key) => key === 'params' ? this[key] = {} : this[key] = null);
+    MicroFrontendKeys.map((key) => key === 'params' ? this[key] = values[key] || {} : this[key] = values[key] || null);
   }
 }
 
@@ -46,17 +46,15 @@ class MicroFrontendRegistryEl extends HTMLElement {
       console.warn(item);
     }
     // validate item has all keys we care about
-    if (MicroFrontendKeys.every(key => Object.keys(item).includes(key))) {
+    if (Object.keys(item).every(key => MicroFrontendKeys.includes(key))) {
        // support for local resolution of vercel vs serve for things that are
        // built off of the main registry on localhost
       if (item.endpoint.startsWith('/api/')) {
         const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
         item.endpoint = `${base}${item.endpoint}`;
-        console.log(item.endpoint);
       }
 
       if (!this.get(item.name)) {
-        console.log('push');
         this.list.push(item);
         return true;
       }
@@ -120,7 +118,13 @@ class MicroFrontendRegistryEl extends HTMLElement {
    */
   url(name, params = {}) {
     const item = this.get(name);
-    console.log(item);
+    // no null submissions
+    for(var key in params){
+      if(params.hasOwnProperty(key)){
+          if(params[key] == null) delete params[key];
+      }
+    }
+    console.log(params);
     return new URL(item.endpoint).toString() + `?${new URLSearchParams(params).toString()}`;
   }
 }
