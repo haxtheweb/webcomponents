@@ -16,7 +16,7 @@
       "hax": "src/voice-recorder-hax.json"
     }
   },
-  "version": "4.0.24",
+  "version": "4.0.25",
   "description": "LAME bridge",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.0.24",
-    "@lrnwebcomponents/simple-icon": "^4.0.24",
+    "@lrnwebcomponents/hax-iconset": "^4.0.25",
+    "@lrnwebcomponents/simple-icon": "^4.0.25",
     "lit": "^2.2.5"
   },
   "devDependencies": {
