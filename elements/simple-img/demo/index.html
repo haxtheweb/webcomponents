@@ -8,9 +8,14 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-img.js';
+      const mfr = window.MicroFrontendRegistry.requestAvailability();
+      const img = mfr.get('simple-img');
+      img.endpoint = img.endpoint.replace('http://localhost:3000', 'https://lrnwebcomponents.vercel.app');
+      mfr.set('simple-img', img);
+      setTimeout(() => {
+        document.querySelector('simple-img').updateconvertedurl();
+      }, 100);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>

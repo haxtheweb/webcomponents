@@ -13,7 +13,7 @@ export class SimpleImg extends HTMLElement {
     // simple-image
     // simple image conversion work
     const mf = new MicroFrontend({
-      endpoint: "/api/services/media/image/manipulate",
+      endpoint: `${!window.location.origin.includes('://localhost') ? 'https://lrnwebcomponents.vercel.app' : ''}/api/services/media/image/manipulate`,
       name: "simple-img",
       title: "simple image manipulation",
       description:

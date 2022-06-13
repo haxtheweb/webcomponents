@@ -94,6 +94,21 @@ class MicroFrontendRegistryEl extends HTMLElement {
   }
 
   /**
+   * set the definition for a machine named micro that was already registered
+   *
+   * @param {String} name - machine name of the micro record requested
+   * @param {MicroFrontend} item - updated micro data
+   * @returns {MicroFrontend} the micro in question
+   */
+   set(name, item = {}) {
+    if (name && this.list.length > 0 && this.get(name)) {
+      const index = this.list.findIndex((item) => item.name === name);
+      this.list[index] = item;
+    }
+    return null;
+  }
+
+  /**
    * generate the call to the micro based on accepting name and params
    *
    * @param {String} name - machine name for the micro to call
@@ -135,7 +150,6 @@ class MicroFrontendRegistryEl extends HTMLElement {
         if (params[key] == null) delete params[key];
       }
     }
-    console.log(params);
     return (
       new URL(item.endpoint).toString() +
       `?${new URLSearchParams(params).toString()}`
