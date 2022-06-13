@@ -43,6 +43,9 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/micro-frontend-registry": "^4.0.25"
+  },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
     "@open-wc/testing": "2.5.32",
