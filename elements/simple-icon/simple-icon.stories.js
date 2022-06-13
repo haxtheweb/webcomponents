@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js";
 import { SimpleIcon } from "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";

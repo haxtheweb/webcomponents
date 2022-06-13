@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import { LrndesignChart } from "@lrnwebcomponents/lrndesign-chart/lrndesign-chart.js";
 import { LrndesignBar } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";

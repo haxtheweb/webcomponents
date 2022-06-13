@@ -1,11 +1,7 @@
 import { html } from "lit";
 import { EvoToWcGroup } from "@lrnwebcomponents/evo-to-wc/lib/evo-to-wc-group.js";
 import { EvoToWc } from "@lrnwebcomponents/evo-to-wc/evo-to-wc.js";
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

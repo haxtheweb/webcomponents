@@ -1,10 +1,6 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { LoremData } from "@lrnwebcomponents/lorem-data/lorem-data.js";
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

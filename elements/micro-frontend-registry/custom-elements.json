@@ -2,17 +2,23 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "mf-htmlmd-example",
+      "path": "./demo/mf-htmlmd-example.js"
+    },
+    {
       "name": "micro-frontend-registry",
       "path": "./micro-frontend-registry.js",
       "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`",
       "properties": [
         {
-          "name": "html",
-          "description": "This is a convention, not the standard to return HTML of the element",
-          "type": "string"
+          "name": "list",
+          "type": "never[]",
+          "default": "[]"
         },
         {
-          "name": "template"
+          "name": "MicroFrontend",
+          "type": "object",
+          "default": "\"MicroFrontend\""
         }
       ]
     },
@@ -22,12 +28,14 @@
       "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`",
       "properties": [
         {
-          "name": "html",
-          "description": "This is a convention, not the standard to return HTML of the element",
-          "type": "string"
+          "name": "list",
+          "type": "never[]",
+          "default": "[]"
         },
         {
-          "name": "template"
+          "name": "MicroFrontend",
+          "type": "object",
+          "default": "\"MicroFrontend\""
         }
       ]
     }

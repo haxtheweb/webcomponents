@@ -43,8 +43,7 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

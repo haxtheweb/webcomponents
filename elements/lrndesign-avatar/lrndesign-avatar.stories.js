@@ -1,12 +1,8 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { LrndesignAvatar } from "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import * as md5 from "@lrnwebcomponents/paper-avatar/lib/md5.min.js";
 //import * as jdenticon from "@lrnwebcomponents/paper-avatar/lib/jdenticon-1.4.0.min.js";
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

@@ -1,11 +1,6 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
-import {
-  withKnobs,
-  text,
-  select,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, select, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 

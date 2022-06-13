@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "eco-json-schema-array",
-      "description": "`eco-json-schema-array` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `global-options` - \n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\n  * `__headings` {`any[]`} - \n\nProperties:\n\n  * `globalOptions` - \n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `__headings` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`eco-json-schema-array` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `global-options` - \n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\n  * `__headings` {`any[]`} - \n\nProperties:\n\n  * `globalOptions` - \n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `__headings` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "global-options",
@@ -23,7 +23,7 @@
         },
         {
           "name": "onbuild-fieldset",
-          "description": "`build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
+          "description": "`build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
         }
       ]
     },
@@ -75,7 +75,7 @@
     },
     {
       "name": "eco-json-schema-fieldset",
-      "description": "`eco-json-schema-fieldset` takes in a JSON schema of type fieldset and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\nProperties:\n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`eco-json-schema-fieldset` takes in a JSON schema of type fieldset and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\nProperties:\n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "property-name",
@@ -87,7 +87,7 @@
         },
         {
           "name": "onbuild-fieldset",
-          "description": "`build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
+          "description": "`build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
         }
       ]
     },
@@ -298,7 +298,7 @@
     },
     {
       "name": "eco-json-schema-tabs",
-      "description": "`eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\nProperties:\n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.\n\nEvents:\n\n  * `build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - \n\nAttributes:\n\n  * `property-name` {`string`} - \n\n  * `schema` - \n\nProperties:\n\n  * `propertyName` {`string`} - \n\n  * `schema` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "property-name",
@@ -310,7 +310,7 @@
         },
         {
           "name": "onbuild-fieldset",
-          "description": "`build-fieldset` {`CustomEvent<{ container: any; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
+          "description": "`build-fieldset` {`CustomEvent<{ container: Element; path: string; prefix: string; properties: any; type: string; value: any; }>`} - "
         }
       ]
     },

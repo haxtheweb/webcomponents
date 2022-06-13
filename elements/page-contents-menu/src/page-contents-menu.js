@@ -472,7 +472,12 @@ class PageContentsMenu extends LitElement {
       let browserViewport =
         window.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
-        if (this.contentContainer && this.items && this.items[i] && this.items[i].id) {
+        if (
+          this.contentContainer &&
+          this.items &&
+          this.items[i] &&
+          this.items[i].id
+        ) {
           try {
             let objItem = this.contentContainer.querySelector(
               "#" + this.items[i].id
@@ -481,7 +486,11 @@ class PageContentsMenu extends LitElement {
               let itemTop = objItem.getBoundingClientRect().top - 100;
               let itemBottom = 0;
               // ensure bottom is ACTUALLY set to the top of the NEXT item
-              if (i !== this.items.length - 1 && this.items[i + 1] && this.items[i + 1].id) {
+              if (
+                i !== this.items.length - 1 &&
+                this.items[i + 1] &&
+                this.items[i + 1].id
+              ) {
                 itemBottom =
                   this.contentContainer
                     .querySelector("#" + this.items[i + 1].id)
@@ -490,7 +499,11 @@ class PageContentsMenu extends LitElement {
                 itemBottom = browserViewport;
               }
               // we are in viewport or at least 100 px within it and NOT past it
-              if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
+              if (
+                itemTop <= browserViewport &&
+                itemBottom > 0 &&
+                !activeFound
+              ) {
                 activeFound = true;
                 this.items[i].active = "active";
               } else {

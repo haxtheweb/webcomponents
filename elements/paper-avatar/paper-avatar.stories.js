@@ -1,11 +1,7 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { PaperAvatar } from "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import * as md5 from "@lrnwebcomponents/paper-avatar/lib/md5.min.js";
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

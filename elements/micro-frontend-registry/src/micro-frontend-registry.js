@@ -4,13 +4,24 @@
  */
 
 // very basic class for micro
-const MicroFrontendKeys = ['endpoint', 'name', 'title', 'description', 'params', 'callback'];
+const MicroFrontendKeys = [
+  "endpoint",
+  "name",
+  "title",
+  "description",
+  "params",
+  "callback",
+];
 
 // new micro
 export class MicroFrontend {
   constructor(values = {}) {
     // set defaults for each key expected
-    MicroFrontendKeys.map((key) => key === 'params' ? this[key] = values[key] || {} : this[key] = values[key] || null);
+    MicroFrontendKeys.map((key) =>
+      key === "params"
+        ? (this[key] = values[key] || {})
+        : (this[key] = values[key] || null)
+    );
   }
 }
 
@@ -34,7 +45,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
 
   /**
    * define a new micro frontend
-   * 
+   *
    * @param {MicroFrontend} item - instanceof MicroFrontend
    * @returns {Boolean} status of definition being accepted
    */
@@ -46,11 +57,14 @@ class MicroFrontendRegistryEl extends HTMLElement {
       console.warn(item);
     }
     // validate item has all keys we care about
-    if (Object.keys(item).every(key => MicroFrontendKeys.includes(key))) {
-       // support for local resolution of vercel vs serve for things that are
-       // built off of the main registry on localhost
-      if (item.endpoint.startsWith('/api/')) {
-        const base = window.location.origin.replace(/localhost:8(.*)/, "localhost:3000");
+    if (Object.keys(item).every((key) => MicroFrontendKeys.includes(key))) {
+      // support for local resolution of vercel vs serve for things that are
+      // built off of the main registry on localhost
+      if (item.endpoint.startsWith("/api/")) {
+        const base = window.location.origin.replace(
+          /localhost:8(.*)/,
+          "localhost:3000"
+        );
         item.endpoint = `${base}${item.endpoint}`;
       }
 
@@ -58,15 +72,14 @@ class MicroFrontendRegistryEl extends HTMLElement {
         this.list.push(item);
         return true;
       }
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   /**
    * get the definition for a machine named micro
-   * 
+   *
    * @param {String} name - machine name of the micro record requested
    * @returns {MicroFrontend} the micro in question
    */
@@ -82,7 +95,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
 
   /**
    * generate the call to the micro based on accepting name and params
-   * 
+   *
    * @param {String} name - machine name for the micro to call
    * @param {Object} params - data to send to endpoint
    * @param {Object} caller - reference to DOM node that called this
@@ -91,12 +104,10 @@ class MicroFrontendRegistryEl extends HTMLElement {
   async call(name, params = {}, callback = null, caller = null) {
     const item = this.get(name);
     if (item) {
-      const data = await fetch(item.endpoint,
-        {
-          method: 'POST',
-          body: JSON.stringify(params)
-        }
-        ).then((d) => d.ok ? d.json() : null);
+      const data = await fetch(item.endpoint, {
+        method: "POST",
+        body: JSON.stringify(params),
+      }).then((d) => (d.ok ? d.json() : null));
       // endpoints can require a callback be hit every time
       if (item.callback) {
         await item.callback(data, caller);
@@ -111,7 +122,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
 
   /**
    * generate the call to the micro as a URL
-   * 
+   *
    * @param {String} name - machine name for the micro to call
    * @param {Object} params - data to send to endpoint
    * @returns {String} URL with parameters for a GET
@@ -119,13 +130,16 @@ class MicroFrontendRegistryEl extends HTMLElement {
   url(name, params = {}) {
     const item = this.get(name);
     // no null submissions
-    for(var key in params){
-      if(params.hasOwnProperty(key)){
-          if(params[key] == null) delete params[key];
+    for (var key in params) {
+      if (params.hasOwnProperty(key)) {
+        if (params[key] == null) delete params[key];
       }
     }
     console.log(params);
-    return new URL(item.endpoint).toString() + `?${new URLSearchParams(params).toString()}`;
+    return (
+      new URL(item.endpoint).toString() +
+      `?${new URLSearchParams(params).toString()}`
+    );
   }
 }
 customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
@@ -134,10 +148,13 @@ customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
 window.MicroFrontendRegistry = window.MicroFrontendRegistry || {};
 window.MicroFrontendRegistry.requestAvailability = () => {
   if (!window.MicroFrontendRegistry.instance) {
-    window.MicroFrontendRegistry.instance = document.createElement(MicroFrontendRegistryEl.tag);
+    window.MicroFrontendRegistry.instance = document.createElement(
+      MicroFrontendRegistryEl.tag
+    );
     document.body.appendChild(window.MicroFrontendRegistry.instance);
   }
   return window.MicroFrontendRegistry.instance;
 };
 // most common way to access registry
-export const MicroFrontendRegistry = window.MicroFrontendRegistry.requestAvailability();
+export const MicroFrontendRegistry =
+  window.MicroFrontendRegistry.requestAvailability();

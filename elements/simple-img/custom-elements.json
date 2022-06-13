@@ -4,12 +4,258 @@
     {
       "name": "simple-img",
       "path": "./simple-img.js",
-      "description": "`simple-img`\n`simple image manipulation with a microservice`"
+      "attributes": [
+        {
+          "name": "srcconverted",
+          "type": "string | null"
+        },
+        {
+          "name": "rotate",
+          "type": "string | null"
+        },
+        {
+          "name": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "format",
+          "type": "string | null"
+        },
+        {
+          "name": "alt",
+          "type": "string | null"
+        },
+        {
+          "name": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "loading",
+          "type": "string | null"
+        },
+        {
+          "name": "decoding",
+          "type": "string | null"
+        },
+        {
+          "name": "fetchpriority",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "quality",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "baseurl",
+          "type": "string | null"
+        },
+        {
+          "name": "srcconverted",
+          "attribute": "srcconverted",
+          "type": "string | null"
+        },
+        {
+          "name": "rotate",
+          "attribute": "rotate",
+          "type": "string | null"
+        },
+        {
+          "name": "fit",
+          "attribute": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "format",
+          "attribute": "format",
+          "type": "string | null"
+        },
+        {
+          "name": "rendering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string | null"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "string | null"
+        },
+        {
+          "name": "decoding",
+          "attribute": "decoding",
+          "type": "string | null"
+        },
+        {
+          "name": "fetchpriority",
+          "attribute": "fetchpriority",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "innerHTML"
+        },
+        {
+          "name": "quality",
+          "attribute": "quality",
+          "type": "string | null"
+        }
+      ]
     },
     {
       "name": "simple-img",
       "path": "./src/simple-img.js",
-      "description": "`simple-img`\n`simple image manipulation with a microservice`"
+      "attributes": [
+        {
+          "name": "srcconverted",
+          "type": "string | null"
+        },
+        {
+          "name": "rotate",
+          "type": "string | null"
+        },
+        {
+          "name": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "format",
+          "type": "string | null"
+        },
+        {
+          "name": "alt",
+          "type": "string | null"
+        },
+        {
+          "name": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "loading",
+          "type": "string | null"
+        },
+        {
+          "name": "decoding",
+          "type": "string | null"
+        },
+        {
+          "name": "fetchpriority",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "quality",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "baseurl",
+          "type": "string | null"
+        },
+        {
+          "name": "srcconverted",
+          "attribute": "srcconverted",
+          "type": "string | null"
+        },
+        {
+          "name": "rotate",
+          "attribute": "rotate",
+          "type": "string | null"
+        },
+        {
+          "name": "fit",
+          "attribute": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "format",
+          "attribute": "format",
+          "type": "string | null"
+        },
+        {
+          "name": "rendering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string | null"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "string | null"
+        },
+        {
+          "name": "decoding",
+          "attribute": "decoding",
+          "type": "string | null"
+        },
+        {
+          "name": "fetchpriority",
+          "attribute": "fetchpriority",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "innerHTML"
+        },
+        {
+          "name": "quality",
+          "attribute": "quality",
+          "type": "string | null"
+        }
+      ]
     }
   ]
 }

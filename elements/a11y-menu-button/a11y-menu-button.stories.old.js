@@ -1,11 +1,7 @@
 import { html } from "lit";
 import { A11yMenuButtonGroup } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-group.js";
 import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {

@@ -150,7 +150,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           reflect: true,
         },
 
-
         /**
          * for radio-button behavior
          */
@@ -750,26 +749,39 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           :host([align-vertical="top"][icon-position="left"]) *[part="button"],
           :host([align-vertical="top"][icon-position="right"]) *[part="button"],
-          :host([align-horizontal="left"][icon-position="top"]) *[part="button"],
-          :host([align-horizontal="left"][icon-position="bottom"]) *[part="button"] {
+          :host([align-horizontal="left"][icon-position="top"])
+            *[part="button"],
+          :host([align-horizontal="left"][icon-position="bottom"])
+            *[part="button"] {
             align-items: flex-start;
           }
-          :host([align-vertical="bottom"][icon-position="left"]) *[part="button"],
-          :host([align-vertical="bottom"][icon-position="right"]) *[part="button"],
-          :host([align-horizontal="right"][icon-position="top"]) *[part="button"],
-          :host([align-horizontal="right"][icon-position="bottom"]) *[part="button"] {
+          :host([align-vertical="bottom"][icon-position="left"])
+            *[part="button"],
+          :host([align-vertical="bottom"][icon-position="right"])
+            *[part="button"],
+          :host([align-horizontal="right"][icon-position="top"])
+            *[part="button"],
+          :host([align-horizontal="right"][icon-position="bottom"])
+            *[part="button"] {
             align-items: flex-end;
           }
-          :host([align-horizontal="left"][icon-position="left"]) *[part="button"],
-          :host([align-horizontal="left"][icon-position="right"]) *[part="button"],
+          :host([align-horizontal="left"][icon-position="left"])
+            *[part="button"],
+          :host([align-horizontal="left"][icon-position="right"])
+            *[part="button"],
           :host([align-vertical="top"][icon-position="top"]) *[part="button"],
-          :host([align-vertical="top"][icon-position="bottom"]) *[part="button"] {
+          :host([align-vertical="top"][icon-position="bottom"])
+            *[part="button"] {
             justify-content: flex-start;
           }
-          :host([align-horizontal="right"][icon-position="left"]) *[part="button"],
-          :host([align-horizontal="right"][icon-position="right"]) *[part="button"],
-          :host([align-vertical="bottom"][icon-position="top"]) *[part="button"],
-          :host([align-vertical="bottom"][icon-position="bottom"]) *[part="button"]{
+          :host([align-horizontal="right"][icon-position="left"])
+            *[part="button"],
+          :host([align-horizontal="right"][icon-position="right"])
+            *[part="button"],
+          :host([align-vertical="bottom"][icon-position="top"])
+            *[part="button"],
+          :host([align-vertical="bottom"][icon-position="bottom"])
+            *[part="button"] {
             justify-content: flex-end;
           }
         `,

@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { a11yCarousel } from "@lrnwebcomponents/a11y-carousel/a11y-carousel.js";
 import { a11yCarouselButton } from "@lrnwebcomponents/a11y-carousel/lib/a11y-carousel-button.js";
 import { withKnobs } from "@open-wc/demoing-storybook";

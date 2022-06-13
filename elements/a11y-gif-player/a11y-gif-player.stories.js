@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { A11yGifPlayer } from "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
@@ -14,5 +14,5 @@ export default {
 
 export const A11yGifPlayerStory = () => {
   const utils = new StorybookUtilities();
-  return utils.makeElementFromHaxDemo(A11yGifPlayer);    
+  return utils.makeElementFromHaxDemo(A11yGifPlayer);
 };

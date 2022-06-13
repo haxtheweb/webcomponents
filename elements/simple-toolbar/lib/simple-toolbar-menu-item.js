@@ -12,7 +12,6 @@ import { A11yMenuButtonItemBehaviors } from "@lrnwebcomponents/a11y-menu-button/
  * @extends A11yMenuButtonItemBehaviors
  */
 class SimpleToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
-
   static get styles() {
     return [
       ...super.styles,

@@ -347,7 +347,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       accountInfo: "Account Info",
       logOut: "Log out",
       menu: "Menu",
-      showMore: "More"
+      showMore: "More",
     };
     this.backText = "Site list";
     this.painting = true;
@@ -438,101 +438,106 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
           </a>
           <simple-tooltip for="backtosites" position="right"
-            >${this.backText}</simple-tooltip>
+            >${this.backText}</simple-tooltip
+          >
           <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
         </span>
-      <simple-toolbar slot="center"
+        <simple-toolbar
+          slot="center"
           ?dark="${!this.darkMode}"
           icon-position="top"
           show-text-label
-          label="${this.t.showMore}">
-        <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
-        <simple-toolbar-button
-          hidden
-          id="editbutton"
-          icon="${this.__editIcon}"
-          icon-position="top"
-          @click="${this._editButtonTap}"
-          label="${this.__editText}"
-          show-text-label
-          voice-command="edit (this) page"
-        ></simple-toolbar-button>
-        <simple-toolbar-button
-          id="editdetails"
-          hidden
-          ?disabled="${this.editMode}"
-          icon="hax:page-details"
-          icon-position="top"
-          @click="${this._editDetailsButtonTap}"
-          label="${this.t.editDetails}"
-          show-text-label
-          voice-command="edit (page) details"
-          part="detailsbtn"
-          tabindex="${this.editMode ? "-1" : "0"}"
-        ></simple-toolbar-button>
-        <simple-toolbar-button
-          ?disabled="${this.editMode}"
-          tabindex="${this.editMode ? "-1" : "0"}"
-          id="deletebutton"
-          hidden
-          icon-position="top"
-          icon="icons:delete"
-          @click="${this._deleteButtonTap}"
-          label="${this.t.deletePage}"
-          show-text-label
-          voice-command="delete page"
-        ></simple-toolbar-button>
-        <simple-toolbar-menu
-          show-text-label
-          id="addmenubutton"
-          ?disabled="${this.editMode}"
-          icon="hax:add-page"
-          icon-position="top"
-          label="Add page"
-          tabindex="${this.editMode ? "-1" : "0"}"
-          @dblclick="${this._addPageClick}"
-          show-text-label>
-          <simple-toolbar-menu-item>
-            <haxcms-button-add
-              hidden
-              ?disabled="${this.editMode}"
-              show-text-label
-              id="addbutton"
-              show-text-label>
-            </haxcms-button-add>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item>
-            <haxcms-button-add
-              hidden
-              ?disabled="${this.editMode}"
-              id="addbuttonchild"
-              type="child"
-              show-text-label
-            ></haxcms-button-add>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item>
-            <haxcms-button-add
-              hidden
-              ?disabled="${this.editMode}"
-              type="duplicate"
-              id="duplicatebutton"
-              show-text-label
-            ></haxcms-button-add>
-          </simple-toolbar-menu-item>
-        </simple-toolbar-menu>
-        <simple-toolbar-button
-          id="cancelbutton"
-          icon="icons:cancel"
-          icon-position="top"
-          @click="${this._cancelButtonTap}"
-          .hidden="${!this.editMode}"
-          show-text-label
-          tabindex="${this.editMode ? "0" : "-1"}"
-          label="${this.t.cancelEditing}"
-          voice-command="cancel (editing)"
-        ></simple-toolbar-button>
-        <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
-      </simple-toolbar>
+          label="${this.t.showMore}"
+        >
+          <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
+          <simple-toolbar-button
+            hidden
+            id="editbutton"
+            icon="${this.__editIcon}"
+            icon-position="top"
+            @click="${this._editButtonTap}"
+            label="${this.__editText}"
+            show-text-label
+            voice-command="edit (this) page"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            id="editdetails"
+            hidden
+            ?disabled="${this.editMode}"
+            icon="hax:page-details"
+            icon-position="top"
+            @click="${this._editDetailsButtonTap}"
+            label="${this.t.editDetails}"
+            show-text-label
+            voice-command="edit (page) details"
+            part="detailsbtn"
+            tabindex="${this.editMode ? "-1" : "0"}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            ?disabled="${this.editMode}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+            id="deletebutton"
+            hidden
+            icon-position="top"
+            icon="icons:delete"
+            @click="${this._deleteButtonTap}"
+            label="${this.t.deletePage}"
+            show-text-label
+            voice-command="delete page"
+          ></simple-toolbar-button>
+          <simple-toolbar-menu
+            show-text-label
+            id="addmenubutton"
+            ?disabled="${this.editMode}"
+            icon="hax:add-page"
+            icon-position="top"
+            label="Add page"
+            tabindex="${this.editMode ? "-1" : "0"}"
+            @dblclick="${this._addPageClick}"
+            show-text-label
+          >
+            <simple-toolbar-menu-item>
+              <haxcms-button-add
+                hidden
+                ?disabled="${this.editMode}"
+                show-text-label
+                id="addbutton"
+                show-text-label
+              >
+              </haxcms-button-add>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <haxcms-button-add
+                hidden
+                ?disabled="${this.editMode}"
+                id="addbuttonchild"
+                type="child"
+                show-text-label
+              ></haxcms-button-add>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <haxcms-button-add
+                hidden
+                ?disabled="${this.editMode}"
+                type="duplicate"
+                id="duplicatebutton"
+                show-text-label
+              ></haxcms-button-add>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
+          <simple-toolbar-button
+            id="cancelbutton"
+            icon="icons:cancel"
+            icon-position="top"
+            @click="${this._cancelButtonTap}"
+            .hidden="${!this.editMode}"
+            show-text-label
+            tabindex="${this.editMode ? "0" : "-1"}"
+            label="${this.t.cancelEditing}"
+            voice-command="cancel (editing)"
+          ></simple-toolbar-button>
+          <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+        </simple-toolbar>
 
         <app-hax-user-menu slot="right" id="user-menu">
           <button
@@ -632,8 +637,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   _addPageClick(e) {
     // ensure they see thes operations
-    if (!this.editMode && this.shadowRoot.querySelector('simple-toolbar-menu-item haxcms-button-add:not([hidden])')) {
-      this.shadowRoot.querySelector('simple-toolbar-menu-item haxcms-button-add:not([hidden])').HAXCMSButtonClick();
+    if (
+      !this.editMode &&
+      this.shadowRoot.querySelector(
+        "simple-toolbar-menu-item haxcms-button-add:not([hidden])"
+      )
+    ) {
+      this.shadowRoot
+        .querySelector(
+          "simple-toolbar-menu-item haxcms-button-add:not([hidden])"
+        )
+        .HAXCMSButtonClick();
     }
   }
 

@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { ImgViewModal } from "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import { ImgViewViewer } from "@lrnwebcomponents/img-view-modal/lib/img-view-viewer.js";

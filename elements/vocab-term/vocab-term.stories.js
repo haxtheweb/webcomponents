@@ -1,17 +1,12 @@
-import { html } from 'lit-html';
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { html } from "lit-html";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { VocabTerm } from "./vocab-term.js";
 // need to account for polymer goofiness when webpack rolls this up
 
-
 export default {
-  title: 'Term|VocabTerm',
-  component: 'vocab-term',
+  title: "Term|VocabTerm",
+  component: "vocab-term",
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
@@ -20,5 +15,4 @@ export default {
 const utils = new StorybookUtilities();
 export const VocabTermStory = () => {
   return utils.makeElementFromClass(VocabTerm);
-}; 
-
+};

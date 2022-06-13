@@ -3,7 +3,9 @@ import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
-export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) {
+export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
+  HAXCMSButton
+) {
   static get tag() {
     return "haxcms-button-add";
   }
@@ -24,9 +26,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) 
     this.showTextLabel = true;
     this.iconPosition = "left";
     this.alignHorizontal = "left";
-    this.addEventListener('click', this.HAXCMSButtonClick);
+    this.addEventListener("click", this.HAXCMSButtonClick);
   }
-  static get styles(){
+  static get styles() {
     return [
       ...super.styles,
       ...this.iconStyles,
@@ -46,20 +48,20 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(HAXCMSButton) 
     };
   }
 
-  updated(changedProperties){
-    if(super.updated) super.updated(changedProperties);
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     switch (this.type) {
       case "sibling":
-        return this.label = this.t.newPage;
+        return (this.label = this.t.newPage);
       case "child":
         this.icon = "hax:add-child-page";
-        return this.label = this.t.newChildPage;
+        return (this.label = this.t.newChildPage);
       case "duplicate":
         this.icon = "hax:duplicate";
-        return this.label = this.t.duplicatePage;
+        return (this.label = this.t.duplicatePage);
     }
     this.icon = undefined;
-    this.setAttribute('role','menuitem');
+    this.setAttribute("role", "menuitem");
   }
 
   render() {

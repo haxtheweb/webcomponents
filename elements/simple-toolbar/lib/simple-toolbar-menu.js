@@ -130,7 +130,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         ${this.tooltipTemplate}
       `;
     }
-    get buttonInnerTemplate(){
+    get buttonInnerTemplate() {
       return super.buttonInnerTemplate;
     }
     /**

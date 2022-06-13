@@ -1,8 +1,11 @@
-import { MicroFrontendRegistry, MicroFrontend } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import {
+  MicroFrontendRegistry,
+  MicroFrontend,
+} from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
-    return 'simple-img';
+    return "simple-img";
   }
 
   constructor() {
@@ -10,19 +13,20 @@ export class SimpleImg extends HTMLElement {
     // simple-image
     // simple image conversion work
     const mf = new MicroFrontend({
-      endpoint: '/api/services/media/image/manipulate',
+      endpoint: "/api/services/media/image/manipulate",
       name: "simple-img",
       title: "simple image manipulation",
-      description: "scale, resize, convert and perform operations to manipulate any image",
+      description:
+        "scale, resize, convert and perform operations to manipulate any image",
       params: {
-        src: 'image source',
-        height: 'height in numbers',
-        width: 'width in numbers',
-        quality: '0-100, jpeg quality to reduce image by if jpeg',
-        fit: 'how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)',
-        rotate: 'https://sharp.pixelplumbing.com/api-operation#rotate',
-        format: 'png, jpg, gif, webp',
-      }
+        src: "image source",
+        height: "height in numbers",
+        width: "width in numbers",
+        quality: "0-100, jpeg quality to reduce image by if jpeg",
+        fit: "how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)",
+        rotate: "https://sharp.pixelplumbing.com/api-operation#rotate",
+        format: "png, jpg, gif, webp",
+      },
     });
     MicroFrontendRegistry.define(mf);
     this.rendering = false;
@@ -30,25 +34,28 @@ export class SimpleImg extends HTMLElement {
     var img = this.querySelector("img");
     if (!img) {
       // performance minded prog enhancement
-      if (this.querySelector("template") && this.querySelector("template").content.children[0] && this.querySelector("template").content.children[0].tagName === 'IMG') {
+      if (
+        this.querySelector("template") &&
+        this.querySelector("template").content.children[0] &&
+        this.querySelector("template").content.children[0].tagName === "IMG"
+      ) {
         img = this.querySelector("template").content.children[0];
-      }
-      else {
+      } else {
         img = {};
       }
     }
     // defaults, using img pulled in or default
-    this.alt = img.alt || this.alt || '';
-    this.src = img.src || this.src || '';
-    this.loading = img.loading || this.loading || 'lazy';
-    this.decoding = img.decoding || this.decoding || 'async';
-    this.fetchpriority = img.fetchpriority || this.fetchpriority || 'high';
+    this.alt = img.alt || this.alt || "";
+    this.src = img.src || this.src || "";
+    this.loading = img.loading || this.loading || "lazy";
+    this.decoding = img.decoding || this.decoding || "async";
+    this.fetchpriority = img.fetchpriority || this.fetchpriority || "high";
     this.width = parseInt(img.width || this.width || 300);
     this.height = parseInt(img.height || this.height || 200);
     // defaults on the wrapper element
-    this.style.display = 'inline-block';
-    this.style.width = this.width + 'px';
-    this.style.height = this.height + 'px';
+    this.style.display = "inline-block";
+    this.style.width = this.width + "px";
+    this.style.height = this.height + "px";
     // wipe anything that may be here from before as we'll replace with our own
     this.innerHTML = null;
     this.quality = this.quality || 80;
@@ -59,12 +66,25 @@ export class SimpleImg extends HTMLElement {
    */
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-    .href;
+      .href;
   }
 
   // notice these changing
   static get observedAttributes() {
-    return ['srcconverted', 'src', 'loading', 'fetchpriority', 'decoding', 'alt', 'quality', 'height', 'width', 'rotate', 'fit', 'format']
+    return [
+      "srcconverted",
+      "src",
+      "loading",
+      "fetchpriority",
+      "decoding",
+      "alt",
+      "quality",
+      "height",
+      "width",
+      "rotate",
+      "fit",
+      "format",
+    ];
   }
 
   // user params to generate and set the converted src
@@ -80,17 +100,21 @@ export class SimpleImg extends HTMLElement {
         fit: this.fit,
         format: this.format,
       };
-      this.srcconverted = MicroFrontendRegistry.url('simple-img', params);
+      this.srcconverted = MicroFrontendRegistry.url("simple-img", params);
     }
   }
 
   // rerender when we get hits on these important aspects
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (['width', 'height', 'quality', 'src', 'rotate', 'fit', 'format'].includes(attr)) {
+    if (
+      ["width", "height", "quality", "src", "rotate", "fit", "format"].includes(
+        attr
+      )
+    ) {
       this.updateconvertedurl();
     }
     // render when srcconverted is set
-    if (attr === 'srcconverted' && this.src != '' && !this.rendering) {
+    if (attr === "srcconverted" && this.src != "" && !this.rendering) {
       this.rendering = true;
       // loads the image in the background in-case of quality change
       let i = new Image();
@@ -128,107 +152,107 @@ export class SimpleImg extends HTMLElement {
 
   // getter and setter palooza
   get rotate() {
-    return this.getAttribute('rotate');
+    return this.getAttribute("rotate");
   }
 
   set rotate(val) {
-    this.setAttribute('rotate', val);
+    this.setAttribute("rotate", val);
   }
 
   get fit() {
-    return this.getAttribute('fit');
+    return this.getAttribute("fit");
   }
 
   set fit(val) {
-    this.setAttribute('fit', val);
+    this.setAttribute("fit", val);
   }
 
   get format() {
-    return this.getAttribute('format');
+    return this.getAttribute("format");
   }
 
   set format(val) {
-    this.setAttribute('format', val);
+    this.setAttribute("format", val);
   }
 
   get height() {
-    return this.getAttribute('height');
+    return this.getAttribute("height");
   }
 
   set height(val) {
-    this.setAttribute('height', val);
+    this.setAttribute("height", val);
   }
 
   get width() {
-    return this.getAttribute('width');
+    return this.getAttribute("width");
   }
 
   set width(val) {
-    this.setAttribute('width', val);
+    this.setAttribute("width", val);
   }
 
   get src() {
-    return this.getAttribute('src');
+    return this.getAttribute("src");
   }
 
   set src(val) {
-    this.setAttribute('src', val);
+    this.setAttribute("src", val);
   }
 
   set srcconverted(val) {
-    this.setAttribute('srcconverted', val);
+    this.setAttribute("srcconverted", val);
   }
 
   get srcconverted() {
-    return this.getAttribute('srcconverted');
+    return this.getAttribute("srcconverted");
   }
 
   set loading(val) {
-    this.setAttribute('loading', val);
+    this.setAttribute("loading", val);
   }
 
   get loading() {
-    return this.getAttribute('loading');
+    return this.getAttribute("loading");
   }
 
   set fetchpriority(val) {
-    this.setAttribute('fetchpriority', val);
+    this.setAttribute("fetchpriority", val);
   }
 
   get fetchpriority() {
-    return this.getAttribute('fetchpriority');
+    return this.getAttribute("fetchpriority");
   }
 
   get quality() {
-    return this.getAttribute('quality');
+    return this.getAttribute("quality");
   }
 
   set quality(val) {
-    this.setAttribute('quality', val);
+    this.setAttribute("quality", val);
   }
 
   get alt() {
-    return this.getAttribute('alt');
+    return this.getAttribute("alt");
   }
 
   set alt(val) {
-    this.setAttribute('alt', val);
+    this.setAttribute("alt", val);
   }
 
   get baseurl() {
-    return this.getAttribute('baseurl');
+    return this.getAttribute("baseurl");
   }
 
   set baseurl(val) {
-    this.setAttribute('baseurl', val);
+    this.setAttribute("baseurl", val);
   }
 
   get decoding() {
-    return this.getAttribute('decoding');
+    return this.getAttribute("decoding");
   }
 
   set decoding(val) {
-    this.setAttribute('decoding', val);
+    this.setAttribute("decoding", val);
   }
 }
 

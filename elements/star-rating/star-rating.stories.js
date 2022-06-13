@@ -1,9 +1,5 @@
-import { html } from 'lit-html';
-import {
-  withKnobs,
-  text,
-  boolean,
-} from "@open-wc/demoing-storybook";
+import { html } from "lit-html";
+import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { StarRating } from "./star-rating.js";
 // need to account for polymer goofiness when webpack rolls this up
