@@ -70,6 +70,12 @@ class MicroFrontendRegistryEl extends HTMLElement {
         );
         item.endpoint = `${base}${item.endpoint}`;
       }
+      // check for registry config object
+      if (window.MicroFrontendRegistryConfig[item.name]) {
+        Object.keys(window.MicroFrontendRegistryConfig[item.name]).map((key) => {
+          item[key] = window.MicroFrontendRegistryConfig[item.name][key];
+        })
+      }
 
       if (!this.get(item.name)) {
         this.list.push(item);
@@ -163,6 +169,7 @@ customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
 
 // register globally so we can make sure there is only one
 window.MicroFrontendRegistry = window.MicroFrontendRegistry || {};
+window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
 window.MicroFrontendRegistry.requestAvailability = () => {
   if (!window.MicroFrontendRegistry.instance) {
     window.MicroFrontendRegistry.instance = document.createElement(

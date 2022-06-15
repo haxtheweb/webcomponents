@@ -7,17 +7,15 @@
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      // support for overriding values in the registry via config object
+      window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
+      window.MicroFrontendRegistryConfig['simple-img'] = {
+        endpoint: "https://lrnwebcomponents.vercel.app/api/services/media/image/manipulate"
+      };
+    </script>
     <script type="module">
-      import '../simple-img.js';
-      /**
-      const mfr = window.MicroFrontendRegistry.requestAvailability();
-      const img = mfr.get('simple-img');
-      img.endpoint = img.endpoint.replace('http://localhost:3000', 'https://lrnwebcomponents.vercel.app');
-      mfr.set('simple-img', img);
-      setTimeout(() => {
-        document.querySelector('simple-img').updateconvertedurl();
-      }, 100);
-      */
+      import '../simple-img.js';      
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
