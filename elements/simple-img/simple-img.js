@@ -24,11 +24,12 @@ export class SimpleImg extends HTMLElement {
         width: "width in numbers",
         quality: "0-100, jpeg quality to reduce image by if jpeg",
         fit: "how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)",
+        watermark: "SRC for an image to watermark on the output",
+        wmspot: "nw,ne,se,sw for moving the location of the watermark",
         rotate: "https://sharp.pixelplumbing.com/api-operation#rotate",
         format: "png, jpg, gif, webp",
       },
-    });
-    MicroFrontendRegistry.define(mf);
+    }, true);
     this.rendering = false;
     // progressive enhancement, tho less performant
     var img = this.querySelector("img");
@@ -83,6 +84,8 @@ export class SimpleImg extends HTMLElement {
       "width",
       "rotate",
       "fit",
+      "watermark",
+      "wmspot",
       "format",
     ];
   }
@@ -98,6 +101,8 @@ export class SimpleImg extends HTMLElement {
         src: this.src,
         rotate: this.rotate,
         fit: this.fit,
+        watermark: this.watermark,
+        wmspot: this.wmspot,
         format: this.format,
       };
       this.srcconverted = MicroFrontendRegistry.url("simple-img", params);
@@ -107,7 +112,7 @@ export class SimpleImg extends HTMLElement {
   // rerender when we get hits on these important aspects
   attributeChangedCallback(attr, oldValue, newValue) {
     if (
-      ["width", "height", "quality", "src", "rotate", "fit", "format"].includes(
+      ["width", "height", "quality", "src", "rotate", "fit", "format", "watermark", "wmspot"].includes(
         attr
       )
     ) {
@@ -117,12 +122,14 @@ export class SimpleImg extends HTMLElement {
     if (attr === "srcconverted" && this.src != "" && !this.rendering) {
       this.rendering = true;
       // loads the image in the background in-case of quality change
+      // also then supports failure events
       let i = new Image();
       i.onload = () => {
-        this.render();
+        this.render(this.srcconverted);
       };
+      // try loading just the normal one if this bombed
       i.onerror = () => {
-        this.rendering = false;
+        this.render(this.src);
       };
       i.src = this.srcconverted;
     }
@@ -134,12 +141,12 @@ export class SimpleImg extends HTMLElement {
     }
     this.updateconvertedurl();
   }
-
-  render() {
+  // render a given src as it will be calculated
+  render(src) {
     this.innerHTML = null;
     this.innerHTML = `
     <img 
-      src="${this.srcconverted}" 
+      src="${src}" 
       height="${this.height}" 
       width="${this.width}" 
       alt="${this.alt}" 
@@ -165,6 +172,22 @@ export class SimpleImg extends HTMLElement {
 
   set fit(val) {
     this.setAttribute("fit", val);
+  }
+
+  get watermark() {
+    return this.getAttribute("watermark");
+  }
+
+  set watermark(val) {
+    this.setAttribute("watermark", val);
+  }
+
+  get wmspot() {
+    return this.getAttribute("wmspot");
+  }
+
+  set wmspot(val) {
+    this.setAttribute("wmspot", val);
   }
 
   get format() {

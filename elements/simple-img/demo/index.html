@@ -9,6 +9,7 @@
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '../simple-img.js';
+      /**
       const mfr = window.MicroFrontendRegistry.requestAvailability();
       const img = mfr.get('simple-img');
       img.endpoint = img.endpoint.replace('http://localhost:3000', 'https://lrnwebcomponents.vercel.app');
@@ -16,17 +17,35 @@
       setTimeout(() => {
         document.querySelector('simple-img').updateconvertedurl();
       }, 100);
+      */
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-img demo</h3>
-      <simple-img>
+      <simple-img
+        height="500"
+        width="500"
+        fit="contain"
+        quality="60"
+        watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
+        wmspot="ne">
         <template>
-          <img src="https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1" decoding="async" fetchpriority="low" />
+          <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
         </template>
       </simple-img>
+
+      <simple-img
+      height="200"
+      width="300"
+      quality="30"
+      watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
+      wmspot="sw">
+      <template>
+        <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
+      </template>
+    </simple-img>
     </div>
   </body>
 </html>

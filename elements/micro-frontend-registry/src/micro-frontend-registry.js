@@ -15,13 +15,16 @@ const MicroFrontendKeys = [
 
 // new micro
 export class MicroFrontend {
-  constructor(values = {}) {
+  constructor(values = {}, define = false) {
     // set defaults for each key expected
     MicroFrontendKeys.map((key) =>
       key === "params"
         ? (this[key] = values[key] || {})
         : (this[key] = values[key] || null)
     );
+    if (define) {
+      MicroFrontendRegistry.define(this);
+    }
   }
 }
 
