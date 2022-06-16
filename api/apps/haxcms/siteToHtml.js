@@ -1,6 +1,5 @@
-import url from "url";
-import { JSONOutlineSchema } from "../lib/JSONOutlineSchema.js";
-import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
+import { stdPostBody, stdResponse } from "../../utilities/requestHelpers.js";
+import { JSONOutlineSchema } from "./lib/JSONOutlineSchema.js";
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
@@ -8,8 +7,12 @@ export default async function handler(req, res) {
   // use this if POST data is what's being sent
   const body = stdPostBody(req);
   // get URL bits for validating and forming calls
-  const parseURL = url.parse(body.url.replace('/site.json',''));
-  parseURL.endsWith('/')
+  let url = body.url.replace('/site.json','');
+  // handle trailing slash
+  if (url.endsWith('/')) {
+    url = url.slice(0, -1);
+  }
+  var parseURL = new URL(url);
   // verify we have a path / host
   if (parseURL.pathname && parseURL.host) {
     const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;

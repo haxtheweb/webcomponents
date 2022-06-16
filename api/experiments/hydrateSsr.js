@@ -1,27 +1,27 @@
+import { fetch, stdPostBody, stdResponse } from "../utilities/requestHelpers.js";
+
 // @todo remote load HTML or accept string
 // leverage the WC registry supplied OR default to a CDN
 // return hydrated shadow using Lit hydration thing
-import fetch from "node-fetch";
 import { render } from '@lit-labs/ssr/lib/render-with-global-dom-shim.js';
 import { Readable } from 'stream';
-import { html as htmlLit } from 'lit';
+import { html } from 'lit';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import pkg from 'jsdom';
 const { JSDOM } = pkg;
 
-import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
 export default async function handler(req, res) {
-  const body = JSON.parse(req.body);
-  var html = body.html;
+  const body = stdPostBody(req);
+  var htmlContent = body.html;
   var domBody = '';
   // md is actually a link reference so fetch it 1st
-  if (body.type === 'link' && html) {
-    html = await fetch(html.trim()).then((d) => d.ok ? d.text(): '');
-    const dom = new JSDOM(html);
+  if (body.type === 'link' && htmlContent) {
+    htmlContent = await fetch(htmlContent.trim()).then((d) => d.ok ? d.text(): '');
+    const dom = new JSDOM(htmlContent);
     domBody = dom.window.document.querySelector("body").innerHTML;
     console.log(domBody);
   }
-  const ssrContent = await readStream(Readable.from(render(htmlLit`
+  const ssrContent = await readStream(Readable.from(render(html`
     ${unsafeHTML(domBody)}
     <script type="module">
         // Hydrate template-shadowroots eagerly after rendering (for browsers without
@@ -35,18 +35,10 @@ export default async function handler(req, res) {
         }
         // ...
         // Load and hydrate components lazily
-        import("@lrnwebcomponents/wc-autoload/wc-autoload.js");
+        import("./node_modules/@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js");
       </script>
   `)));
-  
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
-  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
-  res.json({
-    status: "success",
-    data: ssrContent
-  });
+  res = stdResponse(res, ssrContent)
 }
 
 function readStream(stream, encoding = "utf8") {

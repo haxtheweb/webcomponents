@@ -1,10 +1,13 @@
+import { stdPostBody, stdResponse } from "../../utilities/requestHelpers.js";
+import { JSONOutlineSchema } from "./lib/JSONOutlineSchema.js";
+
 import url from "url";
 import Epub from "epub-gen";
-import { JSONOutlineSchema } from "../lib/JSONOutlineSchema.js";
+
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
-  const body = JSON.parse(req.body);
+  const body = stdPostBody(req);
   // get URL bits for validating and forming calls
   const parseURL = url.parse(body.url.replace('/site.json',''));
   // verify we have a path / host
@@ -25,16 +28,11 @@ export default async function handler(req, res) {
     new Epub(options).promise.then(() => console.log('Done'));    
   }
   if (!body.cacheBuster) {
-    res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
+    res = stdResponse(res, content, { cache: 86400 });
   }
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "OPTIONS,POST");
-  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
-  res.json({
-    status: "success",
-    data: content
-  });
+  else {
+    res = stdResponse(res, content);  
+  }
 }
 
 export async function pagesAsData(site) {

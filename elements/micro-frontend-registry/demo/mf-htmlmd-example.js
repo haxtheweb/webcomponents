@@ -1,8 +1,6 @@
 import { LitElement, css, html } from "lit";
-import {
-  MicroFrontend,
-  MicroFrontendRegistry,
-} from "../micro-frontend-registry.js";
+import { MicroFrontendRegistry } from "../micro-frontend-registry.js";
+import { enableServices } from '../lib/microServices.js';
 import "@lrnwebcomponents/simple-img/simple-img.js";
 
 export class MfHtmlExample extends LitElement {
@@ -24,84 +22,8 @@ export class MfHtmlExample extends LitElement {
   }
   constructor() {
     super();
-    // MARKDOWN
-    // CONVERTED
-    // TO
-    // HTML
-    const mdToHtml = new MicroFrontend();
-    mdToHtml.endpoint = "/api/services/media/format/mdToHtml";
-    mdToHtml.name = "md-to-html";
-    mdToHtml.title = "Markdown to HTML";
-    mdToHtml.description = "Convert Markdown string (or file) to HTML";
-    mdToHtml.params = {
-      md: "MD or link to be converted",
-      type: "link for processing as link otherwise unused",
-    };
-    MicroFrontendRegistry.define(mdToHtml);
-
-    // HTML
-    // CONVERTED
-    // TO
-    // MARKDOWN
-    const htmlToMd = new MicroFrontend();
-    htmlToMd.endpoint = "/api/services/media/format/htmlToMd";
-    htmlToMd.name = "html-to-md";
-    htmlToMd.title = "Markdown to HTML";
-    htmlToMd.description = "Convert Markdown string (or file) to HTML";
-    htmlToMd.params = {
-      html: "HTML or link to be converted",
-      type: "link for processing as link otherwise unused",
-    };
-    MicroFrontendRegistry.define(htmlToMd);
-
-    // HTML
-    // HYDRATED
-    const hydrate = new MicroFrontend();
-    hydrate.endpoint = "/api/experiments/hydrateFromAutoloader";
-    hydrate.name = "hydrate-ssr";
-    hydrate.title = "";
-    hydrate.description = "Server side hydrate web components from CDN";
-    hydrate.params = {
-      html: "Link to SSR",
-      type: "link",
-    };
-    MicroFrontendRegistry.define(hydrate);
-
-    // HAXCMS
-    // LOAD ENTIRE SITE CONTENT
-    const haxcms = new MicroFrontend();
-    haxcms.endpoint = "/api/apps/haxcms/site/html";
-    haxcms.name = "haxcms-site-html";
-    haxcms.title = "HAXcms Site HTML";
-    haxcms.description = "Load entire HAXcms site via URL";
-    haxcms.params = {
-      url: "location of the HAXcms site",
-    };
-    MicroFrontendRegistry.define(haxcms);
-
-    // HAXCMS
-    // EPUB ENTIRE SITE CONTENT
-    const epub = new MicroFrontend();
-    epub.endpoint = "/api/apps/haxcms/site/epub";
-    epub.name = "haxcms-site-epub";
-    epub.title = "HAXcms site EPUB";
-    epub.description = "EPUB entire HAXcms site via URL";
-    epub.params = {
-      url: "location of the HAXcms site",
-    };
-    MicroFrontendRegistry.define(epub);
-
-    // DUCKDUCKGO
-    // Example endpoint
-    const ddg = new MicroFrontend();
-    ddg.endpoint = "/api/services/search/duckduckgo";
-    ddg.name = "ddg";
-    ddg.title = "Duck duck go";
-    ddg.description = "Search duck duck go";
-    ddg.params = {
-      q: "query param to search on",
-    };
-    MicroFrontendRegistry.define(ddg);
+    // enable these services
+    enableServices(['haxcms', 'experimental', 'core']);
   }
 
   render() {
@@ -173,7 +95,7 @@ export class MfHtmlExample extends LitElement {
     this.shadowRoot.querySelector("#html").value = data.data;
   }
   hydrateCallback(data) {
-    this.shadowRoot.querySelector("#html").value = data.data;
+    this.shadowRoot.querySelector("#haxcmssite").innerHTML = data.data;
   }
   haxcmsCallback(data) {
     this.shadowRoot.querySelector("#haxcmssite").innerHTML = data.data;
@@ -196,7 +118,7 @@ export class MfHtmlExample extends LitElement {
         type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
       };
       MicroFrontendRegistry.call(
-        "md-to-html",
+        "@core/mdToHtml",
         params,
         this.mdToHtmlCallback.bind(this)
       );
@@ -207,18 +129,18 @@ export class MfHtmlExample extends LitElement {
         type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
       };
       MicroFrontendRegistry.call(
-        "html-to-md",
+        "@core/htmlToMd",
         params,
         this.htmlToMdCallback.bind(this)
       );
     });
     this.shadowRoot.querySelector("#hydrate").addEventListener("click", () => {
       const params = {
-        html: this.shadowRoot.querySelector("#md").value,
-        type: "link",
+        html: this.shadowRoot.querySelector("#html").value,
+        type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
       };
       MicroFrontendRegistry.call(
-        "hydrate-ssr",
+        "@experiments/hydrateSsr",
         params,
         this.hydrateCallback.bind(this)
       );
@@ -228,7 +150,7 @@ export class MfHtmlExample extends LitElement {
         url: this.shadowRoot.querySelector("#haxcmsurl").value,
       };
       MicroFrontendRegistry.call(
-        "haxcms-site-html",
+        "@haxcms/siteToHtml",
         params,
         this.haxcmsCallback.bind(this)
       );
@@ -238,7 +160,7 @@ export class MfHtmlExample extends LitElement {
         url: this.shadowRoot.querySelector("#haxcmsurl").value,
       };
       MicroFrontendRegistry.call(
-        "haxcms-site-epub",
+        "@haxcms/siteToEpub",
         params,
         this.haxcmsepubCallback.bind(this)
       );
@@ -249,7 +171,7 @@ export class MfHtmlExample extends LitElement {
         const params = {
           q: this.shadowRoot.querySelector("#search").value,
         };
-        MicroFrontendRegistry.call("ddg", params, this.ddgCallback.bind(this));
+        MicroFrontendRegistry.call("@core/duckDuckGo", params, this.ddgCallback.bind(this));
       });
     ["src", "width", "height", "quality"].forEach((key) => {
       this.shadowRoot.querySelector(`#${key}`).addEventListener("input", () => {

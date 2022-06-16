@@ -15,16 +15,13 @@ const MicroFrontendKeys = [
 
 // new micro
 export class MicroFrontend {
-  constructor(values = {}, define = false) {
+  constructor(values = {}) {
     // set defaults for each key expected
     MicroFrontendKeys.map((key) =>
       key === "params"
         ? (this[key] = values[key] || {})
         : (this[key] = values[key] || null)
     );
-    if (define) {
-      MicroFrontendRegistry.define(this);
-    }
   }
 }
 
@@ -46,6 +43,14 @@ class MicroFrontendRegistryEl extends HTMLElement {
     this.MicroFrontend = MicroFrontend;
   }
 
+  /**
+   * Adding more or less alias for define
+   * @param {Object} params 
+   */
+  add(params) {
+    this.define(new MicroFrontend(params));
+  }
+  
   /**
    * define a new micro frontend
    *

@@ -1,7 +1,7 @@
 import {
-  MicroFrontendRegistry,
-  MicroFrontend,
+  MicroFrontendRegistry
 } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableCoreServices } from '@lrnwebcomponents/micro-frontend-registry/lib/microServices.js';
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
@@ -10,26 +10,10 @@ export class SimpleImg extends HTMLElement {
 
   constructor() {
     super();
+    // core services so we can access image manipulation
+    enableCoreServices();
     // simple-image
     // simple image conversion work
-    const mf = new MicroFrontend({
-      endpoint: `${!window.location.origin.includes('://localhost') ? 'https://lrnwebcomponents.vercel.app' : ''}/api/services/media/image/manipulate`,
-      name: "simple-img",
-      title: "simple image manipulation",
-      description:
-        "scale, resize, convert and perform operations to manipulate any image",
-      params: {
-        src: "image source",
-        height: "height in numbers",
-        width: "width in numbers",
-        quality: "0-100, jpeg quality to reduce image by if jpeg",
-        fit: "how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)",
-        watermark: "SRC for an image to watermark on the output",
-        wmspot: "nw,ne,se,sw for moving the location of the watermark",
-        rotate: "https://sharp.pixelplumbing.com/api-operation#rotate",
-        format: "png, jpg, gif, webp",
-      },
-    }, true);
     this.rendering = false;
     // progressive enhancement, tho less performant
     var img = this.querySelector("img");
@@ -105,7 +89,7 @@ export class SimpleImg extends HTMLElement {
         wmspot: this.wmspot,
         format: this.format,
       };
-      this.srcconverted = MicroFrontendRegistry.url("simple-img", params);
+      this.srcconverted = MicroFrontendRegistry.url("@core/imgManipulate", params);
     }
   }
 
