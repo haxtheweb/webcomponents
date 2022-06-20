@@ -43,6 +43,12 @@
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
+  "peerDependencies": {
+    "@web/test-runner": "0.13.27",
+    "@web/test-runner-commands": "0.6.1",
+    "@web/test-runner-playwright": "0.8.8",
+    "puppeteer": "13.5.2"
+  },
   "dependencies": {
     "fetch-ie8": "1.5.0",
     "lunr": "2.3.9",
@@ -68,10 +74,6 @@
     "html-pdf": "3.0.1"
   },
   "devDependencies": {
-    "@web/test-runner": "0.13.27",
-    "@web/test-runner-commands": "0.6.1",
-    "@web/test-runner-playwright": "0.8.8",
-    "puppeteer": "13.5.2",
     "patch-package": "6.4.7",
     "validate-element-name": "3.0.0",
     "@babel/core": "^7.9.0",
