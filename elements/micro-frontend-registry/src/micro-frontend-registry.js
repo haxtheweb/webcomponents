@@ -133,9 +133,10 @@ class MicroFrontendRegistryEl extends HTMLElement {
   async call(name, params = {}, callback = null, caller = null) {
     const item = this.get(name);
     if (item) {
+      // support for formdata which is already encoded
       const data = await fetch(item.endpoint, {
         method: "POST",
-        body: JSON.stringify(params),
+        body: params instanceof FormData ? params : JSON.stringify(params),
       }).then((d) => (d.ok ? d.json() : null));
       // endpoints can require a callback be hit every time
       if (item.callback) {

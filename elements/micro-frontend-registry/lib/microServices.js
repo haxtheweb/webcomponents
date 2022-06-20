@@ -61,6 +61,18 @@ export function enableCoreServices() {
     }
   );
 
+  // screenshot
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/website/screenshotUrl",
+    name: "@core/screenshotUrl",
+    title: "Screenshot page",
+    description: "Takes screenshot of a URL and returns image",
+    params: {
+      urlToCapture: "full url with https",
+      quality: "Optional image quality parameter"
+    }
+  });
+
   // docxToPdf
   MicroFrontendRegistry.add({
     endpoint: "/api/services/media/format/docxToPdf",

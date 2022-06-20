@@ -3,6 +3,7 @@ import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import "./micro-frontend-registry.js";
 import "./demo/mf-htmlmd-example.js";
+import "./demo/docx-example.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
@@ -51,6 +52,11 @@ export const example = () => {
       <mf-htmlmd-example></mf-htmlmd-example>
   `);
 };
+
+export const docxAndScreenshot = () => {
+  return getRenderString(html`<docx-example></docx-example>`);
+};
+
 // via https://stackoverflow.com/questions/70657298/render-lit-lit-html-templateresult-as-string
 const getRenderString = (data) => {
   const { strings, values } = data;
