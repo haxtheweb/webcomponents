@@ -1,5 +1,5 @@
-import { fetch, stdPostBody, stdResponse } from "../utilities/requestHelpers.js";
-
+import { stdPostBody, stdResponse } from "../utilities/requestHelpers.js";
+import fetch from "node-fetch";
 // @todo remote load HTML or accept string
 // leverage the WC registry supplied OR default to a CDN
 // return hydrated shadow using Lit hydration thing

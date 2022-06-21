@@ -1,8 +1,8 @@
 // duckduckgo.js
 // this is an example to fork from that uses common, simple conventions
 // for getting data, validating data, and responding in a consistent way.
-import { fetch, stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
-
+import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
+import fetch from "node-fetch";
 export default async function handler(req, res) {
   // destructing GET params after ? available in this object
   var { q } = req.query;

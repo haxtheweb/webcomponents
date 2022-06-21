@@ -1,6 +1,3 @@
-import fetch from "node-fetch";
-export { fetch };
-
 // standard helper for post body processing
 export function stdPostBody(req) {
   try {

@@ -1,5 +1,5 @@
-import { fetch, stdPostBody, stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
-
+import { stdPostBody, stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
+import fetch from "node-fetch";
 import * as df from 'turndown';
 const TurndownService = df.default;
 var turndownService = new TurndownService();

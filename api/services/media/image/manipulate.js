@@ -1,4 +1,5 @@
-import { fetch, stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
+import { stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
+import fetch from "node-fetch";
 import pkg from 'sharp';
 const sharp = pkg;
 
