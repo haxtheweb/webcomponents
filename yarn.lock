@@ -26403,6 +26403,11 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+text-vide@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/text-vide/-/text-vide-1.5.0.tgz#21f73d6a568938dfb30ae410448e095eab89b36f"
+  integrity sha512-RTtKQksEpzeL4lFpXObCtVp06K4lXZu3f6Ctd0j5ZqUccY7qh6ZIwx3jQTbdc0MoUgS04nV9bVQPmJDQ3qSXlg==
+
 textextensions@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/textextensions/-/textextensions-2.6.0.tgz#d7e4ab13fe54e32e08873be40d51b74229b00fc4"
