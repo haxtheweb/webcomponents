@@ -63,7 +63,7 @@ export function enableCoreServices() {
 
   // screenshot
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/website/screenshotUrl",
+    endpoint: "https://screenshoturl.elmsln.vercel.app/api/screenshotUrl",
     name: "@core/screenshotUrl",
     title: "Screenshot page",
     description: "Takes screenshot of a URL and returns image",
