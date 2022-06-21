@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "enhanced-text",
+      "path": "./enhanced-text.js",
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`"
+    },
+    {
+      "name": "enhanced-text",
+      "path": "./src/enhanced-text.js",
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`"
+    }
+  ]
+}
