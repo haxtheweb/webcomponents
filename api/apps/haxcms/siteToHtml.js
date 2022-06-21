@@ -1,4 +1,4 @@
-import { stdPostBody, stdResponse } from "../../utilities/requestHelpers.js";
+import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { JSONOutlineSchema } from "./lib/JSONOutlineSchema.js";
 
 // site object to validate response from passed in url

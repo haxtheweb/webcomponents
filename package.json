@@ -82,8 +82,6 @@
     "epub-gen": "0.1.0",
     "mammoth": "1.4.21",
     "busboy": "1.5.0",
-    "puppeteer-core": "^10.1.0",
-    "chrome-aws-lambda": "10.1.0",
     "asciify-image": "0.1.8",
     "concat-stream": "2.0.0",
     "html-pdf": "3.0.1"

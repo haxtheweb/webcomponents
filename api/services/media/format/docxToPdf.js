@@ -1,4 +1,4 @@
-import { stdResponse } from "../../../utilities/requestHelpers.js";
+import { stdResponse } from "../../../../utilities/requestHelpers.js";
 import df from 'mammoth';
 const { convertToHtml } = df;
 import busboy from 'busboy';
@@ -33,7 +33,7 @@ const generatePDF = (html) => {
 export default async function handler(req, res) {
   var string64 = '';
   var buffer = {
-    filename: null,
+
     data: null,
   };
   

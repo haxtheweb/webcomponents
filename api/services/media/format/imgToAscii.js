@@ -1,4 +1,4 @@
-import { stdResponse } from "../../../utilities/requestHelpers.js";
+import { stdResponse } from "../../../../utilities/requestHelpers.js";
 
 import asciify from 'asciify-image';
 import busboy from 'busboy';

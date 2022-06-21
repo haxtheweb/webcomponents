@@ -1,6 +1,8 @@
-import { getBrowserInstance } from '../../utilities/getBrowserInstance.js';
-import { stdResponse, invalidRequest, stdPostBody } from "../../utilities/requestHelpers.js";
+import { getBrowserInstance } from './getBrowserInstance.js';
+import { stdResponse, invalidRequest, stdPostBody } from "./requestHelpers.js";
 
+// this requires its own service instance and can't live with the monorepo
+// due to the size of the dependencies involved
 export default async function handler(req, res) {
   const body = stdPostBody(req);
   const urlToCapture = body.urlToCapture;

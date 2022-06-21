@@ -1,4 +1,4 @@
-import { stdResponse } from "../../../utilities/requestHelpers.js";
+import { stdResponse } from "../../../../utilities/requestHelpers.js";
 
 import df from 'mammoth';
 const { convertToHtml } = df;
