@@ -1,5 +1,6 @@
 import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { siteGlossary } from "./siteGlossary.js";
+import fetch from "node-fetch";
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
@@ -22,6 +23,31 @@ export default async function handler(req, res) {
     for (var i=0; i < terms.length; i++) {
       // term in contents, push def to a new array
       if (html.indexOf(terms[i].term) !== false) {
+        // look for a related wikipedia link
+        if (body.wikipedia) {
+          const wiki = await fetch(`https://en.wikipedia.org/w/api.php?action=opensearch&profile=classic&search=${terms[i].term}`).then((d) => d.ok ? d.json(): {});
+          if (wiki && wiki.length === 4 && wiki[1].length > 0 && wiki[3].length > 0) {
+            terms[i].links = [];
+            if (wiki[1][0]) {
+              terms[i].links.push({
+                title: wiki[1][0] + ' (Wikipedia)',
+                href: wiki[3][0]
+              });
+            }
+            if (wiki[1][1]) {
+              terms[i].links.push({
+                title: wiki[1][1] + ' (Wikipedia)',
+                href: wiki[3][1]
+              });
+            }
+            if (wiki[1][2]) {
+              terms[i].links.push({
+                title: wiki[1][2] + ' (Wikipedia)',
+                href: wiki[3][2]
+              });
+            }
+          }
+        }
         found.push(terms[i]);
       }
     }    

@@ -63,6 +63,7 @@ class EnhancedText extends LitElement {
     let textNodes = [...this.childNodes] // has childNodes inside, including text ones
     .filter(child => child.nodeType === 3) // get only text nodes
     .filter(child => child.textContent.trim()) // eliminate empty text
+    // no text nodes, look for html
     if (textNodes.length === 0) {
       const content = this.innerText;
       this.innerHTML = '';
@@ -75,6 +76,7 @@ class EnhancedText extends LitElement {
       .filter(child => child.nodeType === 3) // get only text nodes
       .filter(child => child.textContent.trim()) // eliminate empty text
     }
+    // if we only have 1, leverage it
     if (textNodes.length === 1) {
       const content = textNodes[0].textContent;
       textNodes[0].remove();
@@ -87,17 +89,30 @@ class EnhancedText extends LitElement {
       .filter(child => child.nodeType === 3) // get only text nodes
       .filter(child => child.textContent.trim()) // eliminate empty text
     }
+    // loop through data and apply vocab-term wrapper
     for (var i=0; i < data.data.length; i++) {
       let term = data.data[i];
-      // find term in contents of page
-      // replace in context
-      let termEl = document.createElement('vocab-term');
-      termEl.term = term.term;
-      termEl.information = term.definition;
       // find textnodes that match the term and apply
       for(var j=0; j < textNodes.length; j++) {
         let el = textNodes[j];
-        if (textNodes[j].textContent.toLowerCase() == term.term.toLowerCase()) {
+        if (el.textContent.toLowerCase() == term.term.toLowerCase()) {
+          // find term in contents of page
+          // replace in context
+          let termEl = document.createElement('vocab-term');
+          termEl.term = el.textContent;
+          termEl.information = term.definition;
+          // support for links from endpoint
+          if (term.links && term.links.length > 0) {
+            let div = document.createElement('div');
+            div.classList.add('links');
+            for(var t=0; t < term.links.length; t++) {
+              let a = document.createElement('a');
+              a.href = term.links[t].href;
+              a.innerText = term.links[t].title;
+              div.appendChild(a);
+            }
+            termEl.appendChild(div);
+          }
           el.parentNode.insertBefore(termEl, el);
           termEl.appendChild(el);
         }
@@ -105,6 +120,7 @@ class EnhancedText extends LitElement {
     }
   }
 
+  // apply enhancement to text. if not in auto user must invoke this.
   async enhance() {
     const body = this.innerHTML;
     this.loading = true;
@@ -112,10 +128,7 @@ class EnhancedText extends LitElement {
       await MicroFrontendRegistry.call('@enhancedText/textVide', {body: body, fixationPoint: this.fixationPoint}, this.enahncedTextResponse.bind(this));
     }
     if (this.haxcmsGlossary && this.haxcmsSiteLocation) {
-      await MicroFrontendRegistry.call('@haxcms/termsInPage', {body: body, site: this.haxcmsSiteLocation}, this.applyTermFromList.bind(this));
-    }
-    if (this.wikipedia) {
-      await MicroFrontendRegistry.call('@enhancedText/textWikipedia', {body: body}, this.applyTermFromList.bind(this));
+      await MicroFrontendRegistry.call('@haxcms/termsInPage', {body: body, site: this.haxcmsSiteLocation, wikipedia: this.wikipedia}, this.applyTermFromList.bind(this));
     }
     // all above will run in order
     this.loading = false;
