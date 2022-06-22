@@ -202,6 +202,18 @@ export class JSONOutlineSchema
       }
       return false;
     }
+
+    /**
+     * Get an item by property value
+     */
+    getItemByProperty(propName, value) {
+      for (var id in this.items) {
+        if (this.items[id][propName] === value) {
+          return this.items[id];
+        }
+      }
+      return false;
+    }
     /**
      * Get an item by ID
      */

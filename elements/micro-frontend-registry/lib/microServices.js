@@ -149,6 +149,29 @@ export function enableHAXcmsServices() {
       url: "location of the HAXcms site",
     }
   });
+
+  // siteGlossary
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/siteGlossary",
+    name: "@haxcms/siteGlossary",
+    title: "HAXcms site Glossary",
+    description: "array of terms found in the glossary slug",
+    params: {
+      url: "location of the HAXcms site",
+    }
+  });
+
+  // termsInPage
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/termsInPage",
+    name: "@haxcms/termsInPage",
+    title: "HAXcms Page terms",
+    description: "array of terms from glossary found in a blob of html",
+    params: {
+      url: "location of the HAXcms site",
+      body: "HTML blob to process"
+    }
+  });
 }
 
 // experimental service
