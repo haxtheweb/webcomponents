@@ -22,12 +22,25 @@ export class MfHtmlExample extends LitElement {
   }
   constructor() {
     super();
+    this.img = false;
+    this.ddg = false;
+    this.haxcms = false;
+    this.mdhtml = false;
     // enable these services
     enableServices(['haxcms', 'experimental', 'core']);
   }
 
+  static get properties() {
+    return {
+      img: { type: Boolean},
+      ddg: { type: Boolean},
+      haxcms: { type: Boolean},
+      mdhtml: { type: Boolean},
+    }
+  }
+
   render() {
-    return html` <div>
+    return html`${this.img ? html`<div>
         <label for="src">source url</label>
         <input
           type="text"
@@ -49,12 +62,14 @@ export class MfHtmlExample extends LitElement {
           step="5"
         />
       </div>
-      <simple-img></simple-img>
-      <div>
+      <simple-img></simple-img>` : ``}
+      ${this.ddg ? html`<div>
         <label>Duck duck go</label>
         <input type="text" id="search" />
         <button id="searchbtn">Search</button>
-      </div>
+        <div id="ddgresult"></div>
+      </div>` : ``}
+      ${this.haxcms ? html`
       <div>
         <label>URL of HAXcms site</label>
         <input type="url" id="haxcmsurl" />
@@ -62,6 +77,8 @@ export class MfHtmlExample extends LitElement {
         <button id="epub">EPUB entire site</button>
         <div id="haxcmssite"></div>
       </div>
+      ` : ``}
+      ${this.mdhtml ? html`
       <div class="wrap">
         <div>
           MD
@@ -85,7 +102,7 @@ export class MfHtmlExample extends LitElement {
           HTML
           <textarea id="html" cols="50" rows="25"></textarea>
         </div>
-      </div>`;
+      </div>` : ``}`;
   }
 
   htmlToMdCallback(data) {
@@ -105,79 +122,97 @@ export class MfHtmlExample extends LitElement {
     // fake download
   }
   ddgCallback(data) {
-    console.log(data);
+    console.log(data.data.RelatedTopics);
+    this.shadowRoot.querySelector("#ddgresult").innerHTML = 
+    `<code><pre>
+    ${JSON.stringify(data.data.RelatedTopics, null, 4)}
+    </pre></code>`;
   }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.shadowRoot.querySelector("#mdtohtml").addEventListener("click", () => {
-      const params = {
-        md: this.shadowRoot.querySelector("#md").value,
-        type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
-      };
-      MicroFrontendRegistry.call(
-        "@core/mdToHtml",
-        params,
-        this.mdToHtmlCallback.bind(this)
-      );
-    });
-    this.shadowRoot.querySelector("#htmltomd").addEventListener("click", () => {
-      const params = {
-        html: this.shadowRoot.querySelector("#html").value,
-        type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
-      };
-      MicroFrontendRegistry.call(
-        "@core/htmlToMd",
-        params,
-        this.htmlToMdCallback.bind(this)
-      );
-    });
-    this.shadowRoot.querySelector("#hydrate").addEventListener("click", () => {
-      const params = {
-        html: this.shadowRoot.querySelector("#html").value,
-        type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
-      };
-      MicroFrontendRegistry.call(
-        "@experiments/hydrateSsr",
-        params,
-        this.hydrateCallback.bind(this)
-      );
-    });
-    this.shadowRoot.querySelector("#haxcms").addEventListener("click", () => {
-      const params = {
-        url: this.shadowRoot.querySelector("#haxcmsurl").value,
-      };
-      MicroFrontendRegistry.call(
-        "@haxcms/siteToHtml",
-        params,
-        this.haxcmsCallback.bind(this)
-      );
-    });
-    this.shadowRoot.querySelector("#epub").addEventListener("click", () => {
-      const params = {
-        url: this.shadowRoot.querySelector("#haxcmsurl").value,
-      };
-      MicroFrontendRegistry.call(
-        "@haxcms/siteToEpub",
-        params,
-        this.haxcmsepubCallback.bind(this)
-      );
-    });
-    this.shadowRoot
-      .querySelector("#searchbtn")
-      .addEventListener("click", () => {
+    if (this.shadowRoot.querySelector("#mdtohtml")) {
+      this.shadowRoot.querySelector("#mdtohtml").addEventListener("click", () => {
         const params = {
-          q: this.shadowRoot.querySelector("#search").value,
+          md: this.shadowRoot.querySelector("#md").value,
+          type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
         };
-        MicroFrontendRegistry.call("@core/duckDuckGo", params, this.ddgCallback.bind(this));
+        MicroFrontendRegistry.call(
+          "@core/mdToHtml",
+          params,
+          this.mdToHtmlCallback.bind(this)
+        );
       });
+    }
+    if (this.shadowRoot.querySelector("#htmltomd")) {
+      this.shadowRoot.querySelector("#htmltomd").addEventListener("click", () => {
+        const params = {
+          html: this.shadowRoot.querySelector("#html").value,
+          type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
+        };
+        MicroFrontendRegistry.call(
+          "@core/htmlToMd",
+          params,
+          this.htmlToMdCallback.bind(this)
+        );
+      });
+    }
+    if (this.shadowRoot.querySelector("#hydrate")) {
+      this.shadowRoot.querySelector("#hydrate").addEventListener("click", () => {
+        const params = {
+          html: this.shadowRoot.querySelector("#html").value,
+          type: this.shadowRoot.querySelector("#link").checked ? "link" : "",
+        };
+        MicroFrontendRegistry.call(
+          "@experiments/hydrateSsr",
+          params,
+          this.hydrateCallback.bind(this)
+        );
+      });
+    }
+    if (this.shadowRoot.querySelector("#haxcms")) {
+      this.shadowRoot.querySelector("#haxcms").addEventListener("click", () => {
+        const params = {
+          url: this.shadowRoot.querySelector("#haxcmsurl").value,
+        };
+        MicroFrontendRegistry.call(
+          "@haxcms/siteToHtml",
+          params,
+          this.haxcmsCallback.bind(this)
+        );
+      });
+    }
+    if (this.shadowRoot.querySelector("#epub")) {
+      this.shadowRoot.querySelector("#epub").addEventListener("click", () => {
+        const params = {
+          url: this.shadowRoot.querySelector("#haxcmsurl").value,
+        };
+        MicroFrontendRegistry.call(
+          "@haxcms/siteToEpub",
+          params,
+          this.haxcmsepubCallback.bind(this)
+        );
+      });
+    }
+    if (this.shadowRoot.querySelector("#searchbtn")) {
+      this.shadowRoot
+        .querySelector("#searchbtn")
+        .addEventListener("click", () => {
+          const params = {
+            q: this.shadowRoot.querySelector("#search").value,
+          };
+          MicroFrontendRegistry.call("@core/duckDuckGo", params, this.ddgCallback.bind(this));
+        });
+    }
     ["src", "width", "height", "quality"].forEach((key) => {
-      this.shadowRoot.querySelector(`#${key}`).addEventListener("input", () => {
-        this.shadowRoot.querySelector("simple-img")[key] =
-          this.shadowRoot.querySelector(`#${key}`).value;
-      });
+      if (this.shadowRoot.querySelector(`#${key}`)) {
+        this.shadowRoot.querySelector(`#${key}`).addEventListener("input", () => {
+          this.shadowRoot.querySelector("simple-img")[key] =
+            this.shadowRoot.querySelector(`#${key}`).value;
+        });
+      }
     });
   }
 }

@@ -44,6 +44,7 @@ class EnhancedText extends LitElement {
     this.wikipedia = false;
     this.haxcmsGlossary = false;
     this.haxcmsSiteLocation = '';
+    this.haxcmsMarkAll = false;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -93,10 +94,11 @@ class EnhancedText extends LitElement {
       // loop through data and apply vocab-term wrapper
       for (var i=0; i < data.data.length; i++) {
         let term = data.data[i];
+        let found = false;
         // find textnodes that match the term and apply
         for(var j=0; j < textNodes.length; j++) {
           let el = textNodes[j];
-          if (el.textContent.toLowerCase() == term.term.toLowerCase()) {
+          if (el.textContent.toLowerCase() == term.term.toLowerCase() && (!found || this.haxcmsMarkAll)) {
             // find term in contents of page
             // replace in context
             let termEl = document.createElement('vocab-term');
@@ -116,6 +118,7 @@ class EnhancedText extends LitElement {
             }
             el.parentNode.insertBefore(termEl, el);
             termEl.appendChild(el);
+            found = true;
           }
         }
       }
@@ -157,6 +160,10 @@ class EnhancedText extends LitElement {
       haxcmsSiteLocation: {
         type: String,
         attribute: 'haxcms-site-location',
+      },
+      haxcmsMarkAll: {
+        type: Boolean,
+        attribute: 'haxcms-mark-all',
       },
       loading: {
         type: Boolean,

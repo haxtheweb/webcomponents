@@ -19,7 +19,8 @@ export const haxCmsGlossary = () => {
     wikipedia: 1,
     "haxcms-site-location": 'https://oer.hax.psu.edu/bto108/sites/edtechjoker/',
     "haxcms-glossary": 1,
-    auto: 1
+    auto: 1,
+    "haxcms-mark-all": 1
   })
 };
 

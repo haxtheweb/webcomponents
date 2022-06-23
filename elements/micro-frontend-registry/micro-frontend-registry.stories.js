@@ -7,16 +7,13 @@ import "./demo/docx-example.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Micro-frontends|Registry",
+  title: "Micro-frontends|Core Services",
   component: "micro-frontend-registry",
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
-const utils = new StorybookUtilities(),
-  demostyle =
-    "margin:0 -8px 40px;padding:0;box-shadow:none;border-bottom:1px solid #e0e0e0;";
 
 export const usage = () => {
   return getRenderString(html`
@@ -35,7 +32,7 @@ export const usage = () => {
     </p>
   `);
 };
-export const example = () => {
+export const mdToHtml = () => {
   return getRenderString(html`
   <h3>Basic micro-frontend-registry demo</h3>
       <p>This is illustrating 2 services working together off of the vercel version of this monorepo.
@@ -49,12 +46,53 @@ export const example = () => {
           <li>https://raw.githubusercontent.com/elmsln/edtechjoker/master/draft-outline.md</li>
         </ul>
       </p>
-      <mf-htmlmd-example></mf-htmlmd-example>
+      <mf-htmlmd-example mdhtml></mf-htmlmd-example>
   `);
 };
 
-export const docxAndScreenshot = () => {
-  return getRenderString(html`<docx-example></docx-example>`);
+export const duckDuckGo = () => {
+  return getRenderString(html`
+  <h3>Duck duck go search</h3>
+      <p>Check console after search
+      </p>
+      <mf-htmlmd-example ddg></mf-htmlmd-example>
+  `);
+};
+
+export const haxcmsFullSite = () => {
+  return getRenderString(html`
+  <h3>Enter a HAXcms site URL</h3>
+      <p>
+        You'll be given the full HTML source of the entire site
+      </p>
+      <mf-htmlmd-example haxcms></mf-htmlmd-example>
+  `);
+};
+
+export const simpleImgRemixer = () => {
+  return getRenderString(html`
+  <h3>Tweak values and live update an image</h3>
+      <p>
+        This also has its own story but this is some specific operations in real time
+      </p>
+      <mf-htmlmd-example img></mf-htmlmd-example>
+  `);
+};
+
+export const imageToAscii = () => {
+  return getRenderString(html`<docx-example ascii></docx-example>`);
+};
+
+export const screenshotUrl = () => {
+  return getRenderString(html`<docx-example screenshot></docx-example>`);
+};
+
+export const docxToPdf = () => {
+  return getRenderString(html`<docx-example pdf></docx-example>`);
+};
+
+export const docxToHtml = () => {
+  return getRenderString(html`<docx-example html></docx-example>`);
 };
 
 // via https://stackoverflow.com/questions/70657298/render-lit-lit-html-templateresult-as-string

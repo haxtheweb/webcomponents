@@ -23,8 +23,21 @@ export class DocxExample extends LitElement {
       `,
     ];
   }
+
+  static get properties() {
+    return {
+      html: { type: Boolean },
+      pdf: { type: Boolean },
+      ascii: { type: Boolean },
+      screenshot: { type: Boolean },
+    }
+  }
   constructor() {
     super();
+    this.html = false;
+    this.pdf = false;
+    this.ascii = false;
+    this.screenshot = false;
     // enable these services
     enableServices(['core']);
   }
@@ -120,10 +133,10 @@ export class DocxExample extends LitElement {
 
   render() {
     return html`
-    ${this.asciiImgRender()}
-    ${this.docxToHtmlRender()}
-    ${this.docxToPdfRender()}
-    ${this.screenshotUrlRender()}
+    ${this.ascii ? this.asciiImgRender() : ``}
+    ${this.html ? this.docxToHtmlRender() : ``}
+    ${this.pdf ? this.docxToPdfRender() : ``}
+    ${this.screenshot ? this.screenshotUrlRender() : ``}
     `;
   }
 }
