@@ -43,14 +43,6 @@ class VocabTerm extends LitElement {
     if (this.querySelector(`[slot="information"]`)) {
       this.information = this.querySelector(`[slot="information"]`).textContent;
     }
-    if (this.querySelector(".links a")) {
-      this.querySelectorAll(".links a").forEach((el) => {
-        this.links.push({
-          title: el.textContent,
-          href: el.getAttribute("href"),
-        });
-      });
-    }
   }
   /**
    * LitElement style callback
@@ -92,13 +84,13 @@ class VocabTerm extends LitElement {
             <div part="term">
               <summary id="summary">${this.term}</summary>
             </div>
-            <simple-modal-template title="${this.term}">
+            <simple-modal-template title="${this.term ? this.term : ''}">
               <p slot="content">${this.information}</p>
               ${this.links.length > 0
                 ? html` <ul slot="content">
                     ${this.links.map(
                       (el) => html`
-                        <li><a href="${el.href}">${el.title}</a></li>
+                        <li><a href="${el.href}" target="_blank" rel="noopener noreferrer">${el.title}</a></li>
                       `
                     )}
                   </ul>`
@@ -118,7 +110,7 @@ class VocabTerm extends LitElement {
                         <ul>
                           ${this.links.map(
                             (el) => html`
-                              <li><a href="${el.href}">${el.title}</a></li>
+                              <li><a href="${el.href}" target="_blank" rel="noopener noreferrer">${el.title}</a></li>
                             `
                           )}
                         </ul>
@@ -141,6 +133,7 @@ class VocabTerm extends LitElement {
    */
   _handleClick(e) {
     if (this.details && typeof this.detailsOpen === "undefined") {
+      this.requestUpdate();
       this.toggleOpen();
     }
   }
@@ -186,6 +179,16 @@ class VocabTerm extends LitElement {
     } else {
       this.details = this.shadowRoot.querySelector(`details`);
     }
+    // ensure this gets noticed
+    if (this.querySelector(".links a")) {
+      this.querySelectorAll(".links a").forEach((el) => {
+        this.links.push({
+          title: el.textContent,
+          href: el.getAttribute("href"),
+        });
+      });
+    }
+    this.links = [...this.links];
   }
 
   /**

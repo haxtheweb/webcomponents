@@ -57,64 +57,66 @@ class EnhancedText extends LitElement {
 
   // apply terms from whatever came back
   applyTermFromList(data) {
-    import("@lrnwebcomponents/vocab-term/vocab-term.js");
-    // loop through and apply terms that were found w/ the vocab-term element
-    // get all text nodes internally
-    let textNodes = [...this.childNodes] // has childNodes inside, including text ones
-    .filter(child => child.nodeType === 3) // get only text nodes
-    .filter(child => child.textContent.trim()) // eliminate empty text
-    // no text nodes, look for html
-    if (textNodes.length === 0) {
-      const content = this.innerText;
-      this.innerHTML = '';
-      content.split(/\s|\.+/).forEach((item) => {
-        const tn = document.createTextNode(item);
-        this.appendChild(tn);
-        this.appendChild(document.createTextNode(' '));
-      })
-      textNodes = [...this.childNodes] // has childNodes inside, including text ones
+    if (data.status && data.data && data.data.length) {
+      import("@lrnwebcomponents/vocab-term/vocab-term.js");
+      // loop through and apply terms that were found w/ the vocab-term element
+      // get all text nodes internally
+      let textNodes = [...this.childNodes] // has childNodes inside, including text ones
       .filter(child => child.nodeType === 3) // get only text nodes
       .filter(child => child.textContent.trim()) // eliminate empty text
-    }
-    // if we only have 1, leverage it
-    if (textNodes.length === 1) {
-      const content = textNodes[0].textContent;
-      textNodes[0].remove();
-      content.split(/\s|\.+/).forEach((item) => {
-        const tn = document.createTextNode(item);
-        this.appendChild(tn);
-        this.appendChild(document.createTextNode(' '));
-      })
-      textNodes = [...this.childNodes] // has childNodes inside, including text ones
-      .filter(child => child.nodeType === 3) // get only text nodes
-      .filter(child => child.textContent.trim()) // eliminate empty text
-    }
-    // loop through data and apply vocab-term wrapper
-    for (var i=0; i < data.data.length; i++) {
-      let term = data.data[i];
-      // find textnodes that match the term and apply
-      for(var j=0; j < textNodes.length; j++) {
-        let el = textNodes[j];
-        if (el.textContent.toLowerCase() == term.term.toLowerCase()) {
-          // find term in contents of page
-          // replace in context
-          let termEl = document.createElement('vocab-term');
-          termEl.term = el.textContent;
-          termEl.information = term.definition;
-          // support for links from endpoint
-          if (term.links && term.links.length > 0) {
-            let div = document.createElement('div');
-            div.classList.add('links');
-            for(var t=0; t < term.links.length; t++) {
-              let a = document.createElement('a');
-              a.href = term.links[t].href;
-              a.innerText = term.links[t].title;
-              div.appendChild(a);
+      // no text nodes, look for html
+      if (textNodes.length === 0) {
+        const content = this.innerText;
+        this.innerHTML = '';
+        content.split(/\s|\.+/).forEach((item) => {
+          const tn = document.createTextNode(item);
+          this.appendChild(tn);
+          this.appendChild(document.createTextNode(' '));
+        })
+        textNodes = [...this.childNodes] // has childNodes inside, including text ones
+        .filter(child => child.nodeType === 3) // get only text nodes
+        .filter(child => child.textContent.trim()) // eliminate empty text
+      }
+      // if we only have 1, leverage it
+      if (textNodes.length === 1) {
+        const content = textNodes[0].textContent;
+        textNodes[0].remove();
+        content.split(/\s|\.+/).forEach((item) => {
+          const tn = document.createTextNode(item);
+          this.appendChild(tn);
+          this.appendChild(document.createTextNode(' '));
+        })
+        textNodes = [...this.childNodes] // has childNodes inside, including text ones
+        .filter(child => child.nodeType === 3) // get only text nodes
+        .filter(child => child.textContent.trim()) // eliminate empty text
+      }
+      // loop through data and apply vocab-term wrapper
+      for (var i=0; i < data.data.length; i++) {
+        let term = data.data[i];
+        // find textnodes that match the term and apply
+        for(var j=0; j < textNodes.length; j++) {
+          let el = textNodes[j];
+          if (el.textContent.toLowerCase() == term.term.toLowerCase()) {
+            // find term in contents of page
+            // replace in context
+            let termEl = document.createElement('vocab-term');
+            termEl.term = el.textContent;
+            termEl.information = term.definition;
+            // support for links from endpoint
+            if (term.links && term.links.length > 0) {
+              let div = document.createElement('div');
+              div.classList.add('links');
+              for(var t=0; t < term.links.length; t++) {
+                let a = document.createElement('a');
+                a.href = term.links[t].href;
+                a.innerText = term.links[t].title;
+                div.appendChild(a);
+              }
+              termEl.appendChild(div);
             }
-            termEl.appendChild(div);
+            el.parentNode.insertBefore(termEl, el);
+            termEl.appendChild(el);
           }
-          el.parentNode.insertBefore(termEl, el);
-          termEl.appendChild(el);
         }
       }
     }
@@ -168,7 +170,9 @@ class EnhancedText extends LitElement {
   }
 
   enahncedTextResponse(data) {
-    this.innerHTML = data.data;
+    if (data.status && data.data && data.data.length) {
+      this.innerHTML = data.data;
+    }
   }
 
   /**
@@ -274,6 +278,42 @@ class EnhancedText extends LitElement {
    */
   static get tag() {
     return "enhanced-text";
+  }
+
+  static get haxProperties() {
+    return {
+      gizmo: {
+        title: "Enhanced text",
+        description: "Add content look up to a blob of text"
+      },
+      setttings: {
+        configure: [
+          {
+            slot: "",
+            title: "Text to process",
+            description: "Text that will be enhanced"
+          },
+          {
+            property: "wikipedia",
+            type: "boolean",
+            title: "Wikipedia articles",
+            description: "Enhance found definitions in glossary with possibly related wikipedia article links"
+          },
+          {
+            property: "haxcmsGlossary",
+            type: "boolean",
+            title: "haxcms: Glossary",
+            description: "Automatically link to definitions found on the /glossary page of a haxcms site"
+          },
+          {
+            property: "haxcmsSiteLocation",
+            type: "textfield",
+            title: "haxcms: site",
+            description: "Link to the HAXcms site to leverage for glossary of terms"
+          }
+        ]
+      }
+    }
   }
 }
 customElements.define(EnhancedText.tag, EnhancedText);

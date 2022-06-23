@@ -137,7 +137,12 @@ class MicroFrontendRegistryEl extends HTMLElement {
       const data = await fetch(item.endpoint, {
         method: "POST",
         body: params instanceof FormData ? params : JSON.stringify(params),
-      }).then((d) => (d.ok ? d.json() : null));
+      }).then((d) => {
+        return (d.ok ? d.json() : { status: d.status, data: null })
+      }).catch((e, d) => {
+        // this is endpoint completely failed to respond
+        return { status: 500, data: null };
+      });
       // endpoints can require a callback be hit every time
       if (item.callback) {
         await item.callback(data, caller);
