@@ -5,21 +5,38 @@ import fetch from "node-fetch";
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let found = [];
+  var terms = [];
   // use this if POST data is what's being sent
   const body = stdPostBody(req);
   // html to process
   const html = body.body ? body.body : '';
-  // get URL bits for validating and forming calls
-  let url = body.site.replace('/site.json','');
-  // handle trailing slash
-  if (url.endsWith('/')) {
-    url = url.slice(0, -1);
+  if (body.type) {
+    // get URL bits for validating and forming calls
+    let url = '';
+    if (body.type === 'link') {
+      url = body.site.replace('/site.json','');
+    }
+    else {
+      // abuse that we have this prop for where somerthing lives
+      url = body.site.file.replace('/site.json','');
+    }
+    // handle trailing slash
+    if (url.endsWith('/')) {
+      url = url.slice(0, -1);
+    }
+    var parseURL = new URL(url);
+    // verify we have a path / host
+    if (parseURL.pathname && parseURL.host) {
+      const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
+      if (body.type === 'link') {
+        terms = await siteGlossary(base);
+      }
+      else {
+        terms = await siteGlossary(base, body.site);
+      }
+    }
   }
-  var parseURL = new URL(url);
-  // verify we have a path / host
-  if (parseURL.pathname && parseURL.host) {
-    const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
-    const terms = await siteGlossary(base);
+  if (terms.length > 0) {
     for (var i=0; i < terms.length; i++) {
       // term in contents, push def to a new array
       if (html.indexOf(terms[i].term) !== false) {

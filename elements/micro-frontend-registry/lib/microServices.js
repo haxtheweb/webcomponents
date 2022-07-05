@@ -95,6 +95,17 @@ export function enableCoreServices() {
     }
   });
 
+    // htmlToDocx
+    MicroFrontendRegistry.add({
+      endpoint: '/api/services/media/format/htmlToDocx',
+      name: "@core/htmlToDocx",
+      title: "HTML to docx",
+      description: "Convert HTML to .docx file",
+      params: {
+        html: "html body to be converted to a docx file download"
+      }
+    });
+
   // imgToAscii
   MicroFrontendRegistry.add({
     endpoint: "/api/services/media/format/imgToAscii",
@@ -168,8 +179,10 @@ export function enableHAXcmsServices() {
     title: "HAXcms Page terms",
     description: "array of terms from glossary found in a blob of html",
     params: {
-      url: "location of the HAXcms site",
-      body: "HTML blob to process"
+      body: "HTML blob to process",
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      wikipedia: "if wikipedia links should be included in response, if found"
     }
   });
 }

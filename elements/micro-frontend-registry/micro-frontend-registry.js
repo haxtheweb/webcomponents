@@ -108,6 +108,16 @@ class MicroFrontendRegistryEl extends HTMLElement {
   }
 
   /**
+   * boolean for having the definition for a machine named micro
+   *
+   * @param {String} name - machine name of the micro record requested
+   * @returns {Boolean} if we have this micro
+   */
+     has(name) {
+      return this.get(name) !== null;
+    }
+
+  /**
    * set the definition for a machine named micro that was already registered
    *
    * @param {String} name - machine name of the micro record requested

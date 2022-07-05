@@ -1,12 +1,14 @@
 import { LitElement, html, css } from "lit";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
+import { stripMSWord, formatHTML, b64toBlob } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js";
+
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
  * `hax-eview-source`
@@ -115,15 +117,37 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           icon-position="top"
         >
         </hax-tray-button>
+        ${MicroFrontendRegistry.has('@core/htmlToDocx') ? html`
+          <hax-tray-button
+            label="${this.t.downloadDOCX}"
+            tooltip="${this.t.downloadDOCXTooltip}"
+            icon="editor:insert-drive-file"
+            @click="${this.downloadDOCXviaMicro}"
+            show-text-label
+            icon-position="top"
+          >
+          </hax-tray-button>
+        ` : html`
+          <hax-tray-button
+            label="${this.t.downloadDOCX}"
+            tooltip="${this.t.downloadDOCXTooltip}"
+            icon="editor:insert-drive-file"
+            @click="${this.downloadDOCX}"
+            show-text-label
+            icon-position="top"
+          >
+          </hax-tray-button>
+        `}
+        ${MicroFrontendRegistry.has('@core/docxToHtml') ? html`        
         <hax-tray-button
-          label="${this.t.downloadDOCX}"
-          tooltip="${this.t.downloadDOCXTooltip}"
-          icon="editor:insert-drive-file"
-          @click="${this.downloadDOCX}"
+          @click="${this.importDOCXviaMicro}"
+          label="${this.t.importDOCX}"
+          tooltip="${this.t.importDOCXTooltip}"
+          icon="icons:file-upload"
           show-text-label
           icon-position="top"
         >
-        </hax-tray-button>
+        </hax-tray-button>` : html`
         <hax-tray-button
           @click="${this.importDOCX}"
           label="${this.t.importDOCX}"
@@ -133,6 +157,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           icon-position="top"
         >
         </hax-tray-button>
+        `}
         <hax-tray-button
           @click="${this.htmlToHaxElements}"
           label="${this.t.schema}"
@@ -166,6 +191,27 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         file,
         "hax-view-source"
       );
+    });
+  }
+  // import using microservice to obtain file contents
+  importDOCXviaMicro(e) {
+    import(
+      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+    ).then(async (e) => {
+      const broker = window.FileSystemBroker.requestAvailability();
+      const file = await broker.loadFile("docx");
+      const formData = new FormData();
+      formData.append('upload', file);
+      const response = await MicroFrontendRegistry.call('@core/docxToHtml', formData);
+      if (response.status == 200) {
+        // fake file event from built in method for same ux
+        this.insertDOCXFileContents({
+          detail: {
+            name: "hax-view-source",
+            value: response.data.contents
+          }
+        });
+      }
     });
   }
   // this will get called at a later time bc of the Promise involved
@@ -229,6 +275,26 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     this.close();
   }
 
+  /**
+   * Download DOCX, via microservice
+   */
+  async downloadDOCXviaMicro(e) {
+    let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
+    const response = await MicroFrontendRegistry.call('@core/htmlToDocx', { html: haxBodyHtml });
+    if (response.status == 200) {
+      const link = document.createElement("a");
+      // click link to download file
+      // @todo this downloads but claims to be corrupt.
+      link.href = window.URL.createObjectURL(b64toBlob(`${response.data}`, "application/vnd.openxmlformats-officedocument.wordprocessingml.document"));
+      link.download = 'PageContents.docx';
+      link.target = "_blank";
+      this.appendChild(link);
+      link.click();
+      this.removeChild(link);
+      HAXStore.toast("docx file downloaded");
+      this.close();
+    }
+  }
   /**
    * Download file.
    */

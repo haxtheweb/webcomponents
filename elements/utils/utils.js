@@ -3,6 +3,30 @@
  */
 
 /**
+ * Convert a base64 encoded string to type Blob
+ * @param {String} b64Data - base64 encoded string
+ * @param {String} contentType - type to mark as the encoding of the blob
+ * @param {Number} sliceSize - size of chunks
+ * @returns {Blob} class blob for file operations
+ */
+export function b64toBlob(b64Data, contentType='', sliceSize=512) {
+  const byteCharacters = atob(b64Data);
+  const byteArrays = [];
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  const blob = new Blob(byteArrays, {type: contentType});
+  return blob;
+}
+
+/**
  * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
  */
 export function CSVtoArray(text) {

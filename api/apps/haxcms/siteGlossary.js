@@ -28,10 +28,25 @@ export default async function handler(req, res) {
 }
 
 // return glossary terms from file
-export async function siteGlossary(siteLocation) {
+export async function siteGlossary(siteLocation = '', siteData = null) {
   var terms = [];
   const site = new JSONOutlineSchema();
-  await site.load(`${siteLocation}/site.json`);
+  // support side-loading site.json data through direct access
+  // this is most useful for themes and solutions that are actively
+  // running a HAXcms site and already have access to these details
+  if (siteData) {
+    site.file = siteData.file;
+    site.id = siteData.id;
+    site.title = siteData.title;
+    site.author = siteData.author;
+    site.description = siteData.description;
+    site.license = siteData.license;
+    site.metadata = siteData.metadata;
+    site.items = siteData.items;
+  }
+  else {
+    await site.load(`${siteLocation}/site.json`);
+  }
   const item = site.getItemByProperty('slug', 'glossary');
   if (item) {
     let glossaryContent = await site.getContentById(item.id);

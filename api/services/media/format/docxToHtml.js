@@ -7,7 +7,6 @@ import concat from "concat-stream";
 
 export default async function handler(req, res) {
   var html = '';
-  var img = '';
   var buffer = {
     filename: null,
     data: null,
@@ -15,7 +14,7 @@ export default async function handler(req, res) {
   const bb = busboy({ headers: req.headers });
   bb.on('file', async (name, file, info) => {
     const { filename, encoding, mimeType } = info;
-    if(filename.length > 0 && mimeType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+    if(filename.length > 0 && ['application/octet-stream', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(mimeType)) {
       file.pipe(concat((fileBuffer) => {
         buffer.filename = filename;
         buffer.data = fileBuffer;
@@ -42,7 +41,7 @@ export default async function handler(req, res) {
         filename: buffer.filename,
       },
       {
-        methods: "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        methods: "GET,OPTIONS,POST,PUT"
       }
     );
   });

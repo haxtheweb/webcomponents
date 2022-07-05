@@ -23,7 +23,7 @@ export function stdResponse(res, data = {}, respOptions = {}) {
     status: 200,
     methods: "OPTIONS, POST",
     origin: "*",
-    headers: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+    headers: "X-CSRF-Token, X-Requested-With, Disposition, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
     credentials: "true",
     ...respOptions
   };
@@ -34,6 +34,14 @@ export function stdResponse(res, data = {}, respOptions = {}) {
   // cache is opt in but also support buster flag to ensure we force NOT hitting a cache
   if (headers.cache && headers.cache !== 'bust') {
     res.setHeader('Cache-Control', `max-age=0, s-maxage=${headers.cache}`);
+  }
+  // helps w/ type setting
+  if (headers.disposition) {
+    res.setHeader('Content-Disposition', headers.disposition);
+  }
+  // length for file download / streaming support
+  if (headers.length) {
+    res.setHeader('Content-Length', headers.length);
   }
   // support non-json based responses. If type is set for content type
   // then we just send the status / data in the format provided

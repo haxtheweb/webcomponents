@@ -37,6 +37,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/micro-frontend-registry": "^4.0.28",
     "@lrnwebcomponents/absolute-position-behavior": "^4.0.25",
     "@lrnwebcomponents/accent-card": "^4.0.25",
     "@lrnwebcomponents/code-editor": "^4.0.25",
