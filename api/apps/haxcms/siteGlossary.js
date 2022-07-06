@@ -28,8 +28,7 @@ export default async function handler(req, res) {
 }
 
 // return glossary terms from file
-export async function siteGlossary(siteLocation = '', siteData = null) {
-  var terms = [];
+export async function siteGlossary(siteLocation = '', siteData = null, terms = []) {
   const site = new JSONOutlineSchema();
   // support side-loading site.json data through direct access
   // this is most useful for themes and solutions that are actively

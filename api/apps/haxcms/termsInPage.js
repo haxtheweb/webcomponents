@@ -10,7 +10,13 @@ export default async function handler(req, res) {
   const body = stdPostBody(req);
   // html to process
   const html = body.body ? body.body : '';
-  if (body.type) {
+  // support seeding terms ahead of time
+  // this is for locked environments where the service is basically
+  // just doing the processing of what terms appear in content
+  if (body.terms && body.terms.length > 0) {
+    terms = body.terms;
+  }
+  else if (body.type) {
     // get URL bits for validating and forming calls
     let url = '';
     if (body.type === 'link') {

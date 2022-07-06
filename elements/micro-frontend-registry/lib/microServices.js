@@ -182,7 +182,8 @@ export function enableHAXcmsServices() {
       body: "HTML blob to process",
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",
-      wikipedia: "if wikipedia links should be included in response, if found"
+      wikipedia: "if wikipedia links should be included in response, if found",
+      terms: "Optional array of term objects. This is intended for future use / forcibly passing a list from elsewhere"
     }
   });
 }
