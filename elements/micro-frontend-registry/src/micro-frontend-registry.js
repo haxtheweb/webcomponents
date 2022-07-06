@@ -69,10 +69,22 @@ class MicroFrontendRegistryEl extends HTMLElement {
       // support for local resolution of vercel vs serve for things that are
       // built off of the main registry on localhost
       if (item.endpoint.startsWith("/api/")) {
-        const base = window.location.origin.replace(
-          /localhost:8(.*)/,
-          "localhost:3000"
-        );
+        var base = '';
+        // support base rewrite
+        if (window.MicroFrontendRegistryConfig.base) {
+          base = window.MicroFrontendRegistryConfig.base;
+        }
+        // keep local based if we're local, otherwise we need to leverage deployed address
+        else if (window.location.origin.startsWith('http://localhost')) {
+          base = window.location.origin.replace(
+            /localhost:8(.*)/,
+            "localhost:3000"
+          );
+        }
+        // most common case, hit vercel address
+        else {
+          base = 'https://haxapi.vercel.app';
+        }
         item.endpoint = `${base}${item.endpoint}`;
       }
       // check for registry config object
