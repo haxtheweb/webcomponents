@@ -47,7 +47,17 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     }
   });
-
+  // htmlToPdf
+  MicroFrontendRegistry.add({
+    endpoint: '/api/services/media/format/htmlToPdf',
+    name: '@core/htmlToPdf',
+    title: 'HTML to PDF',
+    description: 'Convert HTML string (or file) to a PDF',
+    params: {
+      html: "HTML or link to be converted",
+      type: "link for processing as link otherwise unused",
+    }
+  });
   // duckDuckGo
   MicroFrontendRegistry.add(
     {
@@ -95,16 +105,16 @@ export function enableCoreServices() {
     }
   });
 
-    // htmlToDocx
-    MicroFrontendRegistry.add({
-      endpoint: '/api/services/media/format/htmlToDocx',
-      name: "@core/htmlToDocx",
-      title: "HTML to docx",
-      description: "Convert HTML to .docx file",
-      params: {
-        html: "html body to be converted to a docx file download"
-      }
-    });
+  // htmlToDocx
+  MicroFrontendRegistry.add({
+    endpoint: '/api/services/media/format/htmlToDocx',
+    name: "@core/htmlToDocx",
+    title: "HTML to docx",
+    description: "Convert HTML to .docx file",
+    params: {
+      html: "html body to be converted to a docx file download"
+    }
+  });
 
   // imgToAscii
   MicroFrontendRegistry.add({
@@ -147,17 +157,7 @@ export function enableHAXcmsServices() {
     description: "Load entire HAXcms site via URL as HTML",
     params: {
       url: "location of the HAXcms site",
-    }
-  });
-
-  // siteToEpub
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/siteToEpub",
-    name: "@haxcms/siteToEpub",
-    title: "HAXcms Full Site EPUB",
-    description: "generate .epub of entire HAXcms site via URL",
-    params: {
-      url: "location of the HAXcms site",
+      ancestor: "optional: ancestor to print from as opposed to entire site"
     }
   });
 
@@ -186,11 +186,21 @@ export function enableHAXcmsServices() {
       terms: "Optional array of term objects. This is intended for future use / forcibly passing a list from elsewhere"
     }
   });
+  // siteToEpub
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/siteToEpub",
+    name: "@haxcms/siteToEpub",
+    title: "HAXcms Full Site EPUB",
+    description: "generate .epub of entire HAXcms site via URL",
+    params: {
+      url: "location of the HAXcms site",
+    }
+  });
 }
 
 // experimental service
 export function enableExperimentalServices() {
-  // siteToHtml
+  // hydrateSsr
   MicroFrontendRegistry.add({
     endpoint: "/api/experiments/hydrateSsr",
     name: "@experiments/hydrateSsr",

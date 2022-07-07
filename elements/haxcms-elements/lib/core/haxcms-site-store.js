@@ -72,6 +72,7 @@ class Store {
       activeTitle: computed, // active page title
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
+      ancestorItem: computed, // active page ancestor
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
@@ -623,6 +624,25 @@ class Store {
       }
     }
     return "";
+  }
+  /**
+   * shortcut for active page ancestor
+   */
+  get ancestorItem() {
+    if (this.manifest && this.activeItem) {
+      let tmpItem = this.manifest.items.find(
+        (d) => this.activeItem.parent === d.id
+      );
+      // walk back up to the root
+      while (tmpItem && tmpItem.parent != null) {
+        // take the parent object of this current item
+        tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
+      }
+      if (tmpItem) {
+        return tmpItem;
+      }
+    }
+    return null;
   }
   /**
    * shortcut to find an item in the manifest based on id

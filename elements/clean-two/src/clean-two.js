@@ -6,6 +6,8 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
@@ -30,7 +32,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  */
 class CleanTwo extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
-    QRCodeMixin(HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)))
+    PrintBranchMixin(PDFPageMixin(QRCodeMixin(HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)))))
   )
 ) {
   //styles function
@@ -144,6 +146,15 @@ class CleanTwo extends HAXCMSOperationButtons(
           padding: 8px;
           display: block;
           float: unset;
+        }
+        .pdf-page-btn simple-icon-button-lite {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          color: black;
+          padding: 8px;
+          display: block;
+          width: 36px;
+          margin-left: -60px;
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
@@ -575,6 +586,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                 import-method="view"
                 part="print-btn"
               ></replace-tag>
+              ${this.PDFPageButton()}
               <replace-tag
                 with="site-rss-button"
                 type="rss"
@@ -589,7 +601,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                 import-method="view"
                 part="git-corner-btn"
               ></replace-tag>
-              ${this.QRCodeButton()}
+              ${this.QRCodeButton('right')}
             </header>
             <site-search
               hide-input

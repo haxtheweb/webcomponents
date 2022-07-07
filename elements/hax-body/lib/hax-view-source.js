@@ -174,7 +174,19 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
                 icon-position="top"
               >
               </hax-tray-button>
-              </simple-toolbar-menu-item>
+            </simple-toolbar-menu-item>
+            ` : html``}
+            ${MicroFrontendRegistry.has('@core/htmlToPdf') ? html`
+            <simple-toolbar-menu-item>
+              <hax-tray-button
+                label="${this.t.downloadPDF}"
+                icon="lrn:pdf"
+                @click="${this.downloadPDFviaMicro}"
+                show-text-label
+                icon-position="top"
+              >
+              </hax-tray-button>
+            </simple-toolbar-menu-item>
             ` : html``}
             <simple-toolbar-menu-item>
             <hax-tray-button
@@ -377,6 +389,31 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     }
   }
   /**
+   * Download PDF, via microservice
+   */
+   async downloadPDFviaMicro(e) {
+    let htmlContent = await HAXStore.activeHaxBody.haxToContent();
+    // base helps w/ calculating URLs in content
+    var base = '';
+    if (document.querySelector('base')) {
+      base = document.querySelector('base').href;
+    }
+    const response = await MicroFrontendRegistry.call('@core/htmlToPdf', { base: base, html: htmlContent });    
+    if (response.status == 200 && response.data) {
+      const link = document.createElement("a");
+      // click link to download file
+      // @todo this downloads but claims to be corrupt.
+      link.href = window.URL.createObjectURL(b64toBlob(response.data, "application/pdf"));
+      link.download = 'PageContents.pdf';
+      link.target = "_blank";
+      this.appendChild(link);
+      link.click();
+      this.removeChild(link);
+      HAXStore.toast(this.t.fileDownloaded);
+      this.close();
+    }
+  }
+  /**
    * Download file.
    */
   downloadfull(e) {
@@ -538,6 +575,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       fileDownloaded: "File downloaded",
       downloadDOCX: "Download DOCX",
       downloadMD: "Download Markdown",
+      downloadPDF: "Download PDF",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAXSchema",
       importContent: "Import content",

@@ -116,6 +116,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         return found;
       }
     }
+    console.error(`call for ${name} but not found in micro-frontend-registry`);
     return null;
   }
 
@@ -125,9 +126,9 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @param {String} name - machine name of the micro record requested
    * @returns {Boolean} if we have this micro
    */
-     has(name) {
-      return this.get(name) !== null;
-    }
+  has(name) {
+    return this.get(name) !== null;
+  }
 
   /**
    * set the definition for a machine named micro that was already registered

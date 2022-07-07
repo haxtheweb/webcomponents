@@ -5,19 +5,15 @@ import busboy from 'busboy';
 import concat from "concat-stream";
 import {create as toPDF } from 'html-pdf';
 
-const generatePDF = (html) => {
+const generatePDF = (html, base = '/') => {
     return new Promise (
         (resolve, reject) => {
             toPDF(html, {
                 format: 'A4',
                 orientation: 'portrait',
-                margin: {
-                    top: "10mm",
-                    right: "10mm",
-                    bottom: "10mm",
-                    left: "10mm",
-                },
+                border: ".5in",
                 timeout: 30000,
+                base: base,
             }).toBuffer((error, buffer) => {
                 if(error) { 
                     reject(error) 
