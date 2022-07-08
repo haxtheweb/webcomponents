@@ -94,7 +94,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         })
       }
 
-      if (!this.get(item.name)) {
+      if (!this.has(item.name)) {
         this.list.push(item);
         return true;
       }
@@ -109,14 +109,16 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @param {String} name - machine name of the micro record requested
    * @returns {MicroFrontend} the micro in question
    */
-  get(name) {
+  get(name, testOnly = false) {
     if (name && this.list.length > 0) {
       const found = this.list.find((item) => item.name === name);
       if (found) {
         return found;
       }
     }
-    console.error(`call for ${name} but not found in micro-frontend-registry`);
+    if (!testOnly) {
+      console.error(`call for ${name} but not found in micro-frontend-registry`);
+    }
     return null;
   }
 
@@ -127,7 +129,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @returns {Boolean} if we have this micro
    */
   has(name) {
-    return this.get(name) !== null;
+    return this.get(name, true) !== null;
   }
 
   /**
@@ -138,7 +140,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @returns {MicroFrontend} the micro in question
    */
    set(name, item = {}) {
-    if (name && this.list.length > 0 && this.get(name)) {
+    if (name && this.list.length > 0 && this.has(name)) {
       const index = this.list.findIndex((item) => item.name === name);
       this.list[index] = item;
     }
@@ -154,8 +156,8 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @returns {Object} Response object from microservice, otherwise `null`
    */
   async call(name, params = {}, callback = null, caller = null) {
-    const item = this.get(name);
-    if (item) {
+    if (this.has(name)) {
+      const item = this.get(name);
       // support for formdata which is already encoded
       const data = await fetch(item.endpoint, {
         method: "POST",
@@ -186,17 +188,20 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @returns {String} URL with parameters for a GET
    */
   url(name, params = {}) {
-    const item = this.get(name);
-    // no null submissions
-    for (var key in params) {
-      if (params.hasOwnProperty(key)) {
-        if (params[key] == null) delete params[key];
+    if (this.has(name)) {
+      const item = this.get(name);
+      // no null submissions
+      for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+          if (params[key] == null) delete params[key];
+        }
       }
+      return (
+        new URL(item.endpoint).toString() +
+        `?${new URLSearchParams(params).toString()}`
+      );
     }
-    return (
-      new URL(item.endpoint).toString() +
-      `?${new URLSearchParams(params).toString()}`
-    );
+    return '';
   }
 }
 customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);
