@@ -147,6 +147,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: block;
           float: unset;
         }
+        .print-branch-btn simple-icon-button-lite,
         .pdf-page-btn simple-icon-button-lite {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
@@ -580,12 +581,12 @@ class CleanTwo extends HAXCMSOperationButtons(
               >
                 <site-search></site-search>
               </site-modal>
-              <replace-tag
+              ${MicroFrontendRegistry.has('@haxcms/siteToHtml') ? this.PrintBranchButton() : html`<replace-tag
                 with="site-print-button"
                 class="btn js-toolbar-action"
                 import-method="view"
                 part="print-btn"
-              ></replace-tag>
+              ></replace-tag>`}
               ${this.PDFPageButton()}
               <replace-tag
                 with="site-rss-button"

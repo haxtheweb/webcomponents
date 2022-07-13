@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import {  b64toBlob } from "@lrnwebcomponents/utils/utils.js";
+import { b64toBlob } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
@@ -11,7 +11,7 @@ export const PrintBranchMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
     constructor() {
       super();
-      enableServices(['core']);
+      enableServices(['haxcms']);
       this.t = this.t || {};
       this.t = {
         ...this.t,
@@ -39,19 +39,37 @@ export const PrintBranchMixin = function (SuperClass) {
    * Download PDF, via microservice
    */
    async printBranchOfSite(e) {
-    let activeAncestor = toJS(store.activeAncestor);
+    let ancestorItem = toJS(store.ancestorItem);
     // base helps w/ calculating URLs in content
     var base = '';
     if (document.querySelector('base')) {
       base = document.querySelector('base').href;
     }
-    const response = await MicroFrontendRegistry.call('@haxcms/siteToHtml', { ancestor: activeAncestor });
+    const site = toJS(store.manifest);
+    const params = {
+      type: 'site',
+      site: {
+        file: base,
+        id: site.id,
+        title: site.title,
+        author:site.author,
+        description: site.description,
+        license: site.license,
+        metadata: site.metadata,
+        items: site.items,
+      },
+      link: base,
+      ancestor: ancestorItem.id,
+      magic: window.__appCDN,
+      base: base,
+    };
+    const response = await MicroFrontendRegistry.call('@haxcms/siteToHtml', params);
     if (response.status == 200 && response.data) {
       const link = document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(b64toBlob(response.data, "application/pdf"));
-      link.download = `${toJS(store.activeTitle)}.pdf`;
+      link.href = window.URL.createObjectURL(b64toBlob(btoa(response.data), "text/html"));
+      link.download = `${toJS(store.ancestorTitle)}.html`;
       link.target = "_blank";
       this.appendChild(link);
       link.click();

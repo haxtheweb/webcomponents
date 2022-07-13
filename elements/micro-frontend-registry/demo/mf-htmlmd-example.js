@@ -175,7 +175,8 @@ export class MfHtmlExample extends LitElement {
     if (this.shadowRoot.querySelector("#haxcms")) {
       this.shadowRoot.querySelector("#haxcms").addEventListener("click", () => {
         const params = {
-          url: this.shadowRoot.querySelector("#haxcmsurl").value,
+          site: this.shadowRoot.querySelector("#haxcmsurl").value,
+          type: 'link',
         };
         MicroFrontendRegistry.call(
           "@haxcms/siteToHtml",
