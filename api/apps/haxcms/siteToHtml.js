@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     ${body.base ? `<base href="${body.base}" />` : ``}
   </head>
   <body>
-  ${content}      
+    ${content}
   </body>
   <script>window.__appCDN="${body.magic}";</script>
   <script src="${body.magic}/build.js"></script>

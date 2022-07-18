@@ -71,8 +71,14 @@ export class MfHtmlExample extends LitElement {
       </div>` : ``}
       ${this.haxcms ? html`
       <div>
-        <label>URL of HAXcms site</label>
+        <label style="display:block;">URL of HAXcms site</label>
         <input type="url" id="haxcmsurl" />
+        <label style="display:block;">Parent ID</label>
+        <input type="text" id="haxcmsparentid" />
+        <label style="display:block;">magic</label>
+        <input type="text" id="haxcmsmagic" />
+        <label style="display:block;">base URL</label>
+        <input type="text" id="haxcmsbase" />
         <button id="haxcms">HTML entire site</button>
         <button id="epub">EPUB entire site</button>
         <div id="haxcmssite"></div>
@@ -176,6 +182,9 @@ export class MfHtmlExample extends LitElement {
       this.shadowRoot.querySelector("#haxcms").addEventListener("click", () => {
         const params = {
           site: this.shadowRoot.querySelector("#haxcmsurl").value,
+          base: this.shadowRoot.querySelector("#haxcmsbase").value,
+          magic: this.shadowRoot.querySelector("#haxcmsmagic").value,
+          ancestor: this.shadowRoot.querySelector("#haxcmsparentid").value || null,
           type: 'link',
         };
         MicroFrontendRegistry.call(
