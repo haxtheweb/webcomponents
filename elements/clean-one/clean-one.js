@@ -16,6 +16,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+
 /**
  * `clean-one`
  * `Clean HAXcms theme, one.`
@@ -28,14 +32,14 @@ import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors
  * @element clean-one
  */
 class CleanOne extends HAXCMSRememberRoute(
-  QRCodeMixin(
+  PDFPageMixin(PrintBranchMixin(QRCodeMixin(
     HAXCMSThemeParts(
       HAXCMSUserStylesMenuMixin(
         HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
       )
     )
   )
-) {
+))) {
   //styles function
   static get styles() {
     return [
@@ -140,6 +144,11 @@ class CleanOne extends HAXCMSRememberRoute(
            --simple-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
            --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
            --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+         }
+         .pdf-page-btn,
+         .print-branch-btn {
+          padding: 8px 4px;
+          display: inline-flex;
          }
          site-menu-button {
            --site-menu-button-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
@@ -652,10 +661,13 @@ class CleanOne extends HAXCMSRememberRoute(
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
                   ${this.HAXCMSUserStylesMenu()}
+                  ${MicroFrontendRegistry.has('@haxcms/siteToHtml') ? this.PrintBranchButton() : html`
                   <site-print-button
                     class="btn js-toolbar-action"
                     part="print-btn"
                   ></site-print-button>
+                  `}
+                  ${this.PDFPageButton()}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}
