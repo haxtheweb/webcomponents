@@ -18,6 +18,7 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
  * `clean-two`

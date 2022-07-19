@@ -58,8 +58,8 @@ export const PrintBranchMixin = function (SuperClass) {
         metadata: site.metadata,
         items: site.items,
       },
+      ancestor: ancestorItem ? ancestorItem.id : toJS(store.activeId),
       link: base,
-      ancestor: ancestorItem.id,
       magic: window.__appCDN,
       base: base,
     };
@@ -74,6 +74,14 @@ export const PrintBranchMixin = function (SuperClass) {
       this.appendChild(link);
       link.click();
       this.removeChild(link);
+    }
+    else {
+      // fallback in case the service fails
+      window.open(
+        window.location.href + "?format=print-page",
+        "",
+        "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
+      );
     }
   }
   };
