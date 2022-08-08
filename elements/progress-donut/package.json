@@ -48,7 +48,7 @@
     "@lrnwebcomponents/lrndesign-chart": "^4.0.29",
     "@lrnwebcomponents/schema-behaviors": "^4.0.29",
     "@lrnwebcomponents/simple-colors": "^4.0.29",
-    "lit": "^2.2.5"
+    "lit": "^2.2.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/polymer": "^3.4.1",
-    "lit": "^2.2.5"
+    "lit": "^2.2.8"
   },
   "devDependencies": {
     "@open-wc/testing": "3.0.4",

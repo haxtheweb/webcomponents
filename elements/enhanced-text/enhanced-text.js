@@ -16,15 +16,6 @@
      body: "Block of text to enhance"
    }
  });
- MicroFrontendRegistry.add({
-   endpoint: "/api/services/text/textWikipedia",
-   name: "@enhancedText/textWikipedia",
-   title: "Wikipedia terms",
-   description: "return a list of matching wikipedia terms in a html blob",
-   params: {
-     body: "Block of text"
-   }
- });
  /**
   * `enhanced-text`
   * `take text and process it with various enhancements`
@@ -188,7 +179,9 @@
  
    enahncedTextResponse(data) {
      if (data.status && data.data && data.data.length) {
-       this.innerHTML = data.data;
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(data.data, 'text/html');
+      this.innerHTML = doc.body.innerHTML;
      }
    }
  

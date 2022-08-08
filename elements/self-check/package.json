@@ -51,7 +51,7 @@
     "@lrnwebcomponents/simple-icon": "^4.0.29",
     "@lrnwebcomponents/simple-tooltip": "^4.0.29",
     "@lrnwebcomponents/user-action": "^4.0.25",
-    "lit": "^2.2.5"
+    "lit": "^2.2.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

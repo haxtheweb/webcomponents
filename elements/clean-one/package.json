@@ -51,7 +51,7 @@
     "@lrnwebcomponents/simple-icon": "^4.0.29",
     "@lrnwebcomponents/simple-popover": "^4.0.29",
     "@lrnwebcomponents/utils": "^4.0.29",
-    "lit": "^2.2.5",
+    "lit": "^2.2.8",
     "mobx": "6.4.1"
   },
   "devDependencies": {

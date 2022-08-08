@@ -46,7 +46,7 @@
   "dependencies": {
     "@lrnwebcomponents/simple-colors": "^4.0.29",
     "@lrnwebcomponents/wc-autoload": "^4.0.25",
-    "lit": "^2.2.5"
+    "lit": "^2.2.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
