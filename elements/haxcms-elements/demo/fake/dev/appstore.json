@@ -1537,7 +1537,7 @@
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
     "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-    "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+    "vocab-term": "@lrnwebcomponents/vocab-term/vocab-term.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
     "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",

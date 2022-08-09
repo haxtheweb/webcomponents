@@ -22,7 +22,24 @@ class VocabTerm extends LitElement {
     return {
       popoverMode: { type: Boolean, reflect: true, attribute: "popover-mode" },
       detailsOpen: { type: Boolean },
-      links: { type: Array },
+      links: {
+        type: Array,
+        converter: {
+          fromAttribute: (val) => {
+            return val.split(/\r?\n/).map(p => {
+              let ary = p.split(',');
+              return {
+                title: ary[0],
+                href: ary[1]
+              };
+            });
+          },
+          toAttribute: (val) => {
+            let ary = val.map(p => `${p.title},${p.href}`);
+            return ary.join('\n');
+          }
+        }
+      },
       information: { type: String },
       term: { type: String },
     };
@@ -86,7 +103,7 @@ class VocabTerm extends LitElement {
             </div>
             <simple-modal-template title="${this.term ? this.term : ''}">
               <p slot="content">${this.information}</p>
-              ${this.links.length > 0
+              ${this.links && this.links.length > 0 && this.links.map
                 ? html` <ul slot="content">
                     ${this.links.map(
                       (el) => html`
@@ -105,7 +122,7 @@ class VocabTerm extends LitElement {
               <simple-popover for="summary" position="top" auto>
                 <p>${this.information}</p>
                 <div part="links">
-                  ${this.links.length > 0
+                  ${this.links && this.links.length > 0 && this.links.map
                     ? html`
                         <ul>
                           ${this.links.map(
@@ -215,6 +232,13 @@ class VocabTerm extends LitElement {
         }
       }
     });
+  }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(VocabTerm.tag, VocabTerm);
