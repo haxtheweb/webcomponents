@@ -255,27 +255,31 @@ class CleanOne extends HAXCMSRememberRoute(
            transition: left 250ms ease;
          }
 
-         :host([responsive-size="md"]) .page-inner,
-         :host([responsive-size="lg"]) .page-inner {
-           padding: 40px 15px;
-         }
-
-         :host([responsive-size="xs"]) .site-inner {
-           max-width: 100vw;
-         }
-         :host([responsive-size="xs"]) .page-inner {
-           overflow-x: auto;
-         }
-         h1 {
-           font-size: 2em;
-           margin: .67em 0;
-         }
-         .main-content h2 {
-           font-size: 1.75em;
-         }
-         .main-content h3 {
-           font-size: 1.5em;
-         }
+        :host([responsive-size="sm"]) .page-inner,
+        :host([responsive-size="md"]) .page-inner,
+        :host([responsive-size="lg"]) .page-inner {
+          padding: 48px 15px;
+        }
+        :host([responsive-size="sm"]) .site-inner {
+          padding: 0px 24px;
+        }
+        :host([responsive-size="xs"]) .site-inner {
+          max-width: 100vw;
+          padding: 0px 24px;
+        }
+        :host([responsive-size="xs"]) .page-inner {
+          overflow-x: auto;
+        }
+        h1 {
+          font-size: 2em;
+          margin: .67em 0;
+        }
+        .main-content h2 {
+          font-size: 1.75em;
+        }
+        .main-content h3 {
+          font-size: 1.5em;
+        }
          .main-content h4 {
            font-size: 1.25em;
          }
@@ -327,14 +331,15 @@ class CleanOne extends HAXCMSRememberRoute(
            display: block;
            padding: 0 16px;
          }
- 
-         @media (max-width: 900px) {
-           .site-header {
+         @media (max-width: 1200px) {
+          .site-header {
             height: 50px;
             position: fixed;
-            width: calc(100vw - 32px);
+            width: 100vw;
             background-color: white;
            }
+         }      
+         @media (max-width: 900px) {
            footer {
              position: fixed;
              bottom: 0;
