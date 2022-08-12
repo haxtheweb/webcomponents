@@ -351,6 +351,10 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             // delay just to be sure
             setTimeout(() => {
               target.generateRequest();
+              // should be able to get comments to reup as well
+              const sourcePath = this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath;
+              this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath = '';
+              this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath = sourcePath;                
             }, 250);
           });
         break;
