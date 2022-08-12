@@ -242,22 +242,22 @@ class LrnappStudioInstructor extends PolymerElement {
         tail="{{tail}}">
     </app-route>
     <iron-ajax
-      reject-with-request
       auto
       id="projectrequest"
       url="[[sourceProjectPath]]"
       handle-as="json"
       last-response="{{_projectData}}"
       on-response="_handleProjectResponse"
+      reject-with-request
       on-last-error-changed="lastErrorChanged"></iron-ajax>
     <iron-ajax
-      reject-with-request
       id="studentrequest"
       url="[[sourceStudentPath]]"
       params="[[studentParams]]"
       handle-as="json"
       last-response="{{_studentData}}"
       on-response="_handleStudentResponse"
+      reject-with-request
       on-last-error-changed="lastErrorChanged"></iron-ajax>
     <div id="loading">
       <h3>Loading..</h3>
@@ -392,7 +392,7 @@ class LrnappStudioInstructor extends PolymerElement {
             // delay just to be sure
             setTimeout(() => {
               target.generateRequest();
-            }, 100);
+            }, 250);
           });
         break;
       }
