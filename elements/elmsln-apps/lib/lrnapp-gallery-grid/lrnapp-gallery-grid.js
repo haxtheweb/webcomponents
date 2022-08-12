@@ -5,6 +5,8 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "../elmsln-base-deps.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappGalleryGrid extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();

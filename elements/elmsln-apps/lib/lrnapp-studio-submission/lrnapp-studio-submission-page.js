@@ -19,6 +19,8 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-studio-submission-object.js";
 import "./lrnapp-studio-submission-comments.js";
 import "./lrnapp-studio-submission-comment.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 
 class LrnappStudioSubmissionPage extends PolymerElement {
   static get template() {

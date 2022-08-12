@@ -3,6 +3,8 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 
 /*
 `lrnapp-studio-project-button`

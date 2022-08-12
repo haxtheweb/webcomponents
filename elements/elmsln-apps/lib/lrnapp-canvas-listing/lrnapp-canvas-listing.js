@@ -14,6 +14,8 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 
 class LrnappCanvasListing extends PolymerElement {
   static get template() {

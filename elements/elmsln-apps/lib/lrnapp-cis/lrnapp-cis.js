@@ -27,6 +27,8 @@ import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-cis-course-card.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  `lrnapp-cis`
  A learning application for visualizing course information and listing.

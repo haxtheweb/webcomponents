@@ -3,6 +3,8 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /*
 `lrnapp-studio-assignment-button`
 Allows users to either start a assignment or link to a assignment.

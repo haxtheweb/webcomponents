@@ -17,6 +17,8 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-open-studio-table.js";
 import "./lrnapp-open-studio-projects.js";
 import "./lrnapp-open-studio-assignments.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappOpenStudio extends PolymerElement {
   static get template() {
     return html`

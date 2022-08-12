@@ -23,6 +23,8 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappStudioKanban extends PolymerElement {
   static get template() {
     return html`

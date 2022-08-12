@@ -9,6 +9,8 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
   static get template() {
     return html`

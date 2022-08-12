@@ -18,6 +18,8 @@ import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "../elmsln-base-deps.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `lrnapp-book`
  * A LRN element
