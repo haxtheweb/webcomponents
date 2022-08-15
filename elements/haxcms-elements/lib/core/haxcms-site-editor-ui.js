@@ -539,7 +539,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
         </simple-toolbar>
 
-        <app-hax-user-menu slot="right" id="user-menu">
+        <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu">
           <button
             class="topbar-character"
             slot="menuButton"
