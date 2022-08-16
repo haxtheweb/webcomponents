@@ -16,7 +16,6 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 
@@ -32,12 +31,11 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
  * @element clean-one
  */
 class CleanOne extends HAXCMSRememberRoute(
-  PDFPageMixin(PrintBranchMixin(QRCodeMixin(
+  PrintBranchMixin(QRCodeMixin(
     HAXCMSThemeParts(
       HAXCMSUserStylesMenuMixin(
         HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
       )
-    )
   )
 ))) {
   //styles function
@@ -672,7 +670,6 @@ class CleanOne extends HAXCMSRememberRoute(
                     part="print-btn"
                   ></site-print-button>
                   `}
-                  ${this.PDFPageButton()}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}
