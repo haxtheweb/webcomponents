@@ -161,7 +161,7 @@
     "rollup-plugin-copy": "3.4.0"
   },
   "resolutions": {
-    "@mdjs/mdjs-preview": "0.5.7",
+    "@mdjs/mdjs-preview": "0.5.9",
     "chokidar": "^3.0.0",
     "lit-element": "3.2.0",
     "lit-html": "2.2.4",
