@@ -23,6 +23,13 @@ export default async function handler(req, res) {
     var parseURL = new URL(url);
     // verify we have a path / host
     if (parseURL.pathname && parseURL.host) {
+      // support for iam vs oer
+      if (parseURL.host) {
+        // specific to our instances but iam is going to block access when querying for the site content
+        // iam is the authoring domain while oer is the openly available one which if printing
+        // and rendering the content appropriately, this is the way to do it
+        parseURL.host = parseURL.host.replace('iam.stage-hax.', 'oer.stage-hax.').replace('iam.hax.', 'oer.hax.');
+      }
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       const siteData = body.site || null;
       const ancestor = body.ancestor || null;
