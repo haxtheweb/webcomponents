@@ -49,7 +49,7 @@ export const PrintBranchMixin = function (SuperClass) {
     const params = {
       type: 'site',
       site: {
-        file: base,
+        file: base + 'site.json',
         id: site.id,
         title: site.title,
         author:site.author,

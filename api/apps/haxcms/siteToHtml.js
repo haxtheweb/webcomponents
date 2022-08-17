@@ -10,11 +10,12 @@ export default async function handler(req, res) {
     // get URL bits for validating and forming calls
     let url = '';
     if (body.type === 'link') {
-      url = body.site.replace('/site.json','');
+      url = body.site.replace('/site.json', '');
     }
     else {
+      body.site.file = body.site.file.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.');
       // abuse that we have this prop for where somerthing lives
-      url = body.site.file.replace('/site.json','');
+      url = body.site.file.replace('/site.json', '');
     }
     // handle trailing slash
     if (url.endsWith('/')) {
@@ -50,7 +51,7 @@ export default async function handler(req, res) {
     content = `
 <html>
   <head>
-    ${body.base ? `<base href="${body.base}" />` : ``}
+    ${body.base ? `<base href="${body.base.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.')}" />` : ``}
   </head>
   <body>
     ${content}
