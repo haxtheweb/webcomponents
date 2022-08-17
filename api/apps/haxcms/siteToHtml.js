@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         // specific to our instances but iam is going to block access when querying for the site content
         // iam is the authoring domain while oer is the openly available one which if printing
         // and rendering the content appropriately, this is the way to do it
-        parseURL.host = parseURL.host.replace('iam.stage-hax.', 'oer.stage-hax.').replace('iam.hax.', 'oer.hax.');
+        parseURL.host = parseURL.host.replace('.stage-hax.', '.hax.').replace('iam.hax.', 'oer.hax.');
       }
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       const siteData = body.site || null;
