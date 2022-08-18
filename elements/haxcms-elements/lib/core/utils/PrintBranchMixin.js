@@ -4,6 +4,8 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { b64toBlob } from "@lrnwebcomponents/utils/utils.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { enableServices } from '@lrnwebcomponents/micro-frontend-registry/lib/microServices.js';
 
@@ -15,7 +17,7 @@ export const PrintBranchMixin = function (SuperClass) {
       this.t = this.t || {};
       this.t = {
         ...this.t,
-        printBranch: "Print Branch",
+        print: "Print",
       };
     }
 
@@ -25,13 +27,15 @@ export const PrintBranchMixin = function (SuperClass) {
       <div class="print-branch-btn" part="${this.editMode ? `edit-mode-active` : ``}">
         <simple-icon-button-lite
           part="print-branch-btn"
-          label="${this.t.printBranch}"
           icon="print"
           @click="${this.printBranchOfSite}"
-          show-text-label
           icon-position="top"
+          id="print-branch-btn"
         >
         </simple-icon-button-lite>
+        <simple-tooltip for="print-branch-btn">
+          ${this.t.print}
+        </simple-tooltip>
       </div>` : ``}
       `;
     }
@@ -39,7 +43,6 @@ export const PrintBranchMixin = function (SuperClass) {
    * Download PDF, via microservice
    */
    async printBranchOfSite(e) {
-    let ancestorItem = toJS(store.ancestorItem);
     // base helps w/ calculating URLs in content
     var base = '';
     if (document.querySelector('base')) {
@@ -58,7 +61,7 @@ export const PrintBranchMixin = function (SuperClass) {
         metadata: site.metadata,
         items: site.items,
       },
-      ancestor: ancestorItem ? ancestorItem.id : toJS(store.activeId),
+      ancestor: toJS(store.activeId),
       link: base,
       magic: window.__appCDN,
       base: base,
@@ -69,12 +72,7 @@ export const PrintBranchMixin = function (SuperClass) {
       // click link to download file
       // @todo this downloads but claims to be corrupt.
       link.href = window.URL.createObjectURL(b64toBlob(btoa(unescape(encodeURIComponent(response.data))), "text/html"));
-      if (ancestorItem) {
-        link.download = `${toJS(store.ancestorTitle)}.html`;
-      }
-      else {
-        link.download = `${toJS(store.activeTitle)}.html`;
-      }
+      link.download = `${toJS(store.activeTitle)}.html`;
       link.target = "_blank";
       this.appendChild(link);
       link.click();
