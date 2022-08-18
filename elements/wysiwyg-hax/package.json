@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.30",
+  "version": "4.1.0",
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",
@@ -42,12 +42,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^4.0.30",
+    "@lrnwebcomponents/cms-hax": "^4.1.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.30",
+    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

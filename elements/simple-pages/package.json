@@ -16,7 +16,7 @@
       "hax": "src/simple-pages-hax.json"
     }
   },
-  "version": "4.0.30",
+  "version": "4.1.0",
   "description": "toggle between pages",
   "repository": {
     "type": "git",

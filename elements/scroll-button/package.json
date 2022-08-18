@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.30",
+  "version": "4.1.0",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^4.0.30",
-    "@lrnwebcomponents/simple-tooltip": "^4.0.30",
+    "@lrnwebcomponents/simple-icon": "^4.1.0",
+    "@lrnwebcomponents/simple-tooltip": "^4.1.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {

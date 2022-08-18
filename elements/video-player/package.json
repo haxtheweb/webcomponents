@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.0.30",
+  "version": "4.1.0",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -44,19 +44,19 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-media-player": "^4.0.30",
+    "@lrnwebcomponents/a11y-media-player": "^4.1.0",
     "@lrnwebcomponents/i18n-manager": "^4.0.25",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/media-behaviors": "^4.0.30",
-    "@lrnwebcomponents/schema-behaviors": "^4.0.30",
-    "@lrnwebcomponents/simple-colors": "^4.0.30",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^4.0.30",
-    "@lrnwebcomponents/utils": "^4.0.30",
+    "@lrnwebcomponents/media-behaviors": "^4.1.0",
+    "@lrnwebcomponents/schema-behaviors": "^4.1.0",
+    "@lrnwebcomponents/simple-colors": "^4.1.0",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^4.1.0",
+    "@lrnwebcomponents/utils": "^4.1.0",
     "lit": "^2.2.8"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.0.30",
+    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
