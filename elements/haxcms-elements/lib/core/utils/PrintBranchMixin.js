@@ -68,7 +68,7 @@ export const PrintBranchMixin = function (SuperClass) {
       const link = document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(b64toBlob(btoa(response.data), "text/html"));
+      link.href = window.URL.createObjectURL(b64toBlob(btoa(unescape(encodeURIComponent(response.data))), "text/html"));
       if (ancestorItem) {
         link.download = `${toJS(store.ancestorTitle)}.html`;
       }
