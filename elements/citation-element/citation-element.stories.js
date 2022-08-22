@@ -1,0 +1,17 @@
+import { withKnobs } from "@open-wc/demoing-storybook";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { CitationElement } from "./citation-element.js";
+// need to account for polymer goofiness when webpack rolls this up
+
+export default {
+  title: "Education|Citation",
+  component: "citation-element",
+  decorators: [withKnobs],
+  parameters: {
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
+};
+const utils = new StorybookUtilities();
+export const BasicCitationElement = () => {
+  return utils.makeElementFromHaxDemo(CitationElement);
+};

@@ -340,6 +340,19 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "citation-element",
+          properties: {
+            creator: "Cool Joe",
+            license: "by",
+            title: "Te Futr Da Biz",
+            source:"https://duckduckgo.com/",
+            date:"03/07/2020"
+          },
+          content: ""
+        }
+      ]
     };
   }
 
