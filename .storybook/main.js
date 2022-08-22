@@ -59,8 +59,8 @@ module.exports = {
             flatten: false
           },
           {
-            src: 'node_modules/flag-icon-css/flags/',
-            dest: `${outputDir}/node_modules/flag-icon-css/flags`,
+            src: 'node_modules/flag-icons/flags/',
+            dest: `${outputDir}/node_modules/flag-icons/flags`,
             flatten: false
           },
           {

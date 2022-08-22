@@ -23,10 +23,10 @@ const here = new URL("./simple-icons.js", import.meta.url).href + "/../";
 // via https://flagicons.lipis.dev/
 SimpleIconsetStore.registerIconset(
   "flags",
-  `${here}../../../flag-icon-css/flags/4x3/`
+  `${here}../../../node_modules/flag-icons/flags/4x3/`
 );
 // square flag less common but needed ratio
 SimpleIconsetStore.registerIconset(
   "flags1x1",
-  `${here}../../../flag-icon-css/flags/1x1/`
+  `${here}../../../node_modules/flag-icons/flags/1x1/`
 );
