@@ -10,7 +10,7 @@
     "@lit-labs/ssr": "2.1.0",
     "stream": "0.0.2",
     "uuid": "8.3.2",
-    "node-fetch": "3.2.4",
+    "node-fetch": "3.2.10",
     "epub-gen": "0.1.0",
     "mammoth": "1.4.21",
     "busboy": "1.5.0",
