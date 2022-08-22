@@ -1,7 +1,5 @@
-import {
-  MicroFrontendRegistry
-} from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
-import { enableCoreServices } from '@lrnwebcomponents/micro-frontend-registry/lib/microServices.js';
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableCoreServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
@@ -89,16 +87,27 @@ export class SimpleImg extends HTMLElement {
         wmspot: this.wmspot,
         format: this.format,
       };
-      this.srcconverted = MicroFrontendRegistry.url("@core/imgManipulate", params);
+      this.srcconverted = MicroFrontendRegistry.url(
+        "@core/imgManipulate",
+        params
+      );
     }
   }
 
   // rerender when we get hits on these important aspects
   attributeChangedCallback(attr, oldValue, newValue) {
     if (
-      ["width", "height", "quality", "src", "rotate", "fit", "format", "watermark", "wmspot"].includes(
-        attr
-      )
+      [
+        "width",
+        "height",
+        "quality",
+        "src",
+        "rotate",
+        "fit",
+        "format",
+        "watermark",
+        "wmspot",
+      ].includes(attr)
     ) {
       this.updateconvertedurl();
     }

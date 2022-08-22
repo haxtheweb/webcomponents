@@ -4,12 +4,214 @@
     {
       "name": "enhanced-text",
       "path": "./enhanced-text.js",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`"
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`",
+      "attributes": [
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixation-point",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "vide",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "wikipedia",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms-glossary",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms-site-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "haxcms-site",
+          "type": "object"
+        },
+        {
+          "name": "haxcms-mark-all",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixationPoint",
+          "attribute": "fixation-point",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "vide",
+          "attribute": "vide",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "wikipedia",
+          "attribute": "wikipedia",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcmsGlossary",
+          "attribute": "haxcms-glossary",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcmsSiteLocation",
+          "attribute": "haxcms-site-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "haxcmsSite",
+          "attribute": "haxcms-site",
+          "type": "object"
+        },
+        {
+          "name": "haxcmsMarkAll",
+          "attribute": "haxcms-mark-all",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     },
     {
       "name": "enhanced-text",
       "path": "./src/enhanced-text.js",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`"
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`",
+      "attributes": [
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixation-point",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "vide",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "wikipedia",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms-glossary",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms-site-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "haxcms-site",
+          "type": "object"
+        },
+        {
+          "name": "haxcms-mark-all",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixationPoint",
+          "attribute": "fixation-point",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "vide",
+          "attribute": "vide",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "wikipedia",
+          "attribute": "wikipedia",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcmsGlossary",
+          "attribute": "haxcms-glossary",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcmsSiteLocation",
+          "attribute": "haxcms-site-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "haxcmsSite",
+          "attribute": "haxcms-site",
+          "type": "object"
+        },
+        {
+          "name": "haxcmsMarkAll",
+          "attribute": "haxcms-mark-all",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     }
   ]
 }

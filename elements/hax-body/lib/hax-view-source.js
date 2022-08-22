@@ -1,6 +1,10 @@
 import { LitElement, html, css } from "lit";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import { stripMSWord, formatHTML, b64toBlob } from "@lrnwebcomponents/utils/utils.js";
+import {
+  stripMSWord,
+  formatHTML,
+  b64toBlob,
+} from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
@@ -71,44 +75,47 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   render() {
     return html`
       <hax-toolbar always-expanded>
-      <simple-toolbar-menu
+        <simple-toolbar-menu
           icon="icons:file-upload"
           icon-position="top"
           label="${this.t.importContent}"
           show-text-label
         >
           <simple-toolbar-menu-item>
-          ${MicroFrontendRegistry.has('@core/docxToHtml') ? html`        
-          <hax-tray-button
-            @click="${this.importDOCXviaMicro}"
-            label="${this.t.importDOCX}"
-            icon="hax:file-doc"
-            show-text-label
-            icon-position="top"
-          >
-          </hax-tray-button>` : html`
-          <hax-tray-button
-            @click="${this.importDOCX}"
-            label="${this.t.importDOCX}"
-            icon="hax:file-doc"
-            show-text-label
-            icon-position="top"
-          >
-          </hax-tray-button>
-          `}
+            ${MicroFrontendRegistry.has("@core/docxToHtml")
+              ? html` <hax-tray-button
+                  @click="${this.importDOCXviaMicro}"
+                  label="${this.t.importDOCX}"
+                  icon="hax:file-doc"
+                  show-text-label
+                  icon-position="top"
+                >
+                </hax-tray-button>`
+              : html`
+                  <hax-tray-button
+                    @click="${this.importDOCX}"
+                    label="${this.t.importDOCX}"
+                    icon="hax:file-doc"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                `}
           </simple-toolbar-menu-item>
-          ${MicroFrontendRegistry.has('@core/mdToHtml') ? html`
-          <simple-toolbar-menu-item>
-            <hax-tray-button
-              label="${this.t.importMarkdown}"
-              icon="hax:format-textblock"
-              @click="${this.importMDviaMicro}"
-              show-text-label
-              icon-position="top"
-            >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          ` : html``}
+          ${MicroFrontendRegistry.has("@core/mdToHtml")
+            ? html`
+                <simple-toolbar-menu-item>
+                  <hax-tray-button
+                    label="${this.t.importMarkdown}"
+                    icon="hax:format-textblock"
+                    @click="${this.importMDviaMicro}"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                </simple-toolbar-menu-item>
+              `
+            : html``}
         </simple-toolbar-menu>
         <hax-tray-button
           @click="${this.scrubContent}"
@@ -127,13 +134,13 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         >
         </hax-tray-button>
         <simple-toolbar-menu
-            icon="icons:file-download"
-            icon-position="top"
-            label="${this.t.downloadContent}"
-            @dblclick="${this.download}"
-            show-text-label
-          >
-            <simple-toolbar-menu-item>
+          icon="icons:file-download"
+          icon-position="top"
+          label="${this.t.downloadContent}"
+          @dblclick="${this.download}"
+          show-text-label
+        >
+          <simple-toolbar-menu-item>
             <hax-tray-button
               icon="hax:file-html"
               icon-position="top"
@@ -142,53 +149,59 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               show-text-label
             >
             </hax-tray-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-            ${MicroFrontendRegistry.has('@core/htmlToDocx') ? html`
-              <hax-tray-button
-                label="${this.t.downloadDOCX}"
-                icon="hax:file-doc"
-                @click="${this.downloadDOCXviaMicro}"
-                show-text-label
-                icon-position="top"
-              >
-              </hax-tray-button>
-            ` : html`
-              <hax-tray-button
-                label="${this.t.downloadDOCX}"
-                icon="editor:insert-drive-file"
-                @click="${this.downloadDOCX}"
-                show-text-label
-                icon-position="top"
-              >
-              </hax-tray-button>
-            `}
-            </simple-toolbar-menu-item>
-            ${MicroFrontendRegistry.has('@core/htmlToMd') ? html`
-            <simple-toolbar-menu-item>
-              <hax-tray-button
-                label="${this.t.downloadMD}"
-                icon="hax:format-textblock"
-                @click="${this.downloadMDviaMicro}"
-                show-text-label
-                icon-position="top"
-              >
-              </hax-tray-button>
-            </simple-toolbar-menu-item>
-            ` : html``}
-            ${MicroFrontendRegistry.has('@core/htmlToPdf') ? html`
-            <simple-toolbar-menu-item>
-              <hax-tray-button
-                label="${this.t.downloadPDF}"
-                icon="lrn:pdf"
-                @click="${this.downloadPDFviaMicro}"
-                show-text-label
-                icon-position="top"
-              >
-              </hax-tray-button>
-            </simple-toolbar-menu-item>
-            ` : html``}
-            <simple-toolbar-menu-item>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item>
+            ${MicroFrontendRegistry.has("@core/htmlToDocx")
+              ? html`
+                  <hax-tray-button
+                    label="${this.t.downloadDOCX}"
+                    icon="hax:file-doc"
+                    @click="${this.downloadDOCXviaMicro}"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                `
+              : html`
+                  <hax-tray-button
+                    label="${this.t.downloadDOCX}"
+                    icon="editor:insert-drive-file"
+                    @click="${this.downloadDOCX}"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                `}
+          </simple-toolbar-menu-item>
+          ${MicroFrontendRegistry.has("@core/htmlToMd")
+            ? html`
+                <simple-toolbar-menu-item>
+                  <hax-tray-button
+                    label="${this.t.downloadMD}"
+                    icon="hax:format-textblock"
+                    @click="${this.downloadMDviaMicro}"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                </simple-toolbar-menu-item>
+              `
+            : html``}
+          ${MicroFrontendRegistry.has("@core/htmlToPdf")
+            ? html`
+                <simple-toolbar-menu-item>
+                  <hax-tray-button
+                    label="${this.t.downloadPDF}"
+                    icon="lrn:pdf"
+                    @click="${this.downloadPDFviaMicro}"
+                    show-text-label
+                    icon-position="top"
+                  >
+                  </hax-tray-button>
+                </simple-toolbar-menu-item>
+              `
+            : html``}
+          <simple-toolbar-menu-item>
             <hax-tray-button
               @click="${this.htmlToHaxElements}"
               label="${this.t.haxSchema}"
@@ -253,15 +266,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
     ).then(async (e) => {
       const broker = window.FileSystemBroker.requestAvailability();
-      const contents = await broker.getFileContents('markdown');
-      const response = await MicroFrontendRegistry.call('@core/mdToHtml', { md: contents});
+      const contents = await broker.getFileContents("markdown");
+      const response = await MicroFrontendRegistry.call("@core/mdToHtml", {
+        md: contents,
+      });
       if (response.status == 200) {
         // fake file event from built in method for same ux
         this.insertContentsFromFile({
           detail: {
             name: "hax-view-source",
-            value: response.data
-          }
+            value: response.data,
+          },
         });
       }
     });
@@ -274,15 +289,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       const broker = window.FileSystemBroker.requestAvailability();
       const file = await broker.loadFile("docx");
       const formData = new FormData();
-      formData.append('upload', file);
-      const response = await MicroFrontendRegistry.call('@core/docxToHtml', formData);
+      formData.append("upload", file);
+      const response = await MicroFrontendRegistry.call(
+        "@core/docxToHtml",
+        formData
+      );
       if (response.status == 200) {
         // fake file event from built in method for same ux
         this.insertContentsFromFile({
           detail: {
             name: "hax-view-source",
-            value: response.data.contents
-          }
+            value: response.data.contents,
+          },
         });
       }
     });
@@ -353,13 +371,20 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    */
   async downloadDOCXviaMicro(e) {
     let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
-    const response = await MicroFrontendRegistry.call('@core/htmlToDocx', { html: haxBodyHtml });
+    const response = await MicroFrontendRegistry.call("@core/htmlToDocx", {
+      html: haxBodyHtml,
+    });
     if (response.status == 200) {
       const link = document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(b64toBlob(`${response.data}`, "application/vnd.openxmlformats-officedocument.wordprocessingml.document"));
-      link.download = 'PageContents.docx';
+      link.href = window.URL.createObjectURL(
+        b64toBlob(
+          `${response.data}`,
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
+      );
+      link.download = "PageContents.docx";
       link.target = "_blank";
       this.appendChild(link);
       link.click();
@@ -371,15 +396,19 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Download MD, via microservice
    */
-   async downloadMDviaMicro(e) {
+  async downloadMDviaMicro(e) {
     let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
-    const response = await MicroFrontendRegistry.call('@core/htmlToMd', { html: haxBodyHtml });
+    const response = await MicroFrontendRegistry.call("@core/htmlToMd", {
+      html: haxBodyHtml,
+    });
     if (response.status == 200 && response.data) {
       const link = document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(b64toBlob(btoa(response.data), "text/markdown"));
-      link.download = 'PageContents.md';
+      link.href = window.URL.createObjectURL(
+        b64toBlob(btoa(response.data), "text/markdown")
+      );
+      link.download = "PageContents.md";
       link.target = "_blank";
       this.appendChild(link);
       link.click();
@@ -391,20 +420,25 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Download PDF, via microservice
    */
-   async downloadPDFviaMicro(e) {
+  async downloadPDFviaMicro(e) {
     let htmlContent = await HAXStore.activeHaxBody.haxToContent();
     // base helps w/ calculating URLs in content
-    var base = '';
-    if (document.querySelector('base')) {
-      base = document.querySelector('base').href;
+    var base = "";
+    if (document.querySelector("base")) {
+      base = document.querySelector("base").href;
     }
-    const response = await MicroFrontendRegistry.call('@core/htmlToPdf', { base: base, html: htmlContent });    
+    const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
+      base: base,
+      html: htmlContent,
+    });
     if (response.status == 200 && response.data) {
       const link = document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = window.URL.createObjectURL(b64toBlob(response.data, "application/pdf"));
-      link.download = 'PageContents.pdf';
+      link.href = window.URL.createObjectURL(
+        b64toBlob(response.data, "application/pdf")
+      );
+      link.download = "PageContents.pdf";
       link.target = "_blank";
       this.appendChild(link);
       link.click();

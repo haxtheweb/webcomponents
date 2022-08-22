@@ -26,19 +26,19 @@ class VocabTerm extends LitElement {
         type: Array,
         converter: {
           fromAttribute: (val) => {
-            return val.split(/\r?\n/).map(p => {
-              let ary = p.split(',');
+            return val.split(/\r?\n/).map((p) => {
+              let ary = p.split(",");
               return {
                 title: ary[0],
-                href: ary[1]
+                href: ary[1],
               };
             });
           },
           toAttribute: (val) => {
-            let ary = val.map(p => `${p.title},${p.href}`);
-            return ary.join('\n');
-          }
-        }
+            let ary = val.map((p) => `${p.title},${p.href}`);
+            return ary.join("\n");
+          },
+        },
       },
       information: { type: String },
       term: { type: String },
@@ -101,13 +101,20 @@ class VocabTerm extends LitElement {
             <div part="term">
               <summary id="summary">${this.term}</summary>
             </div>
-            <simple-modal-template title="${this.term ? this.term : ''}">
+            <simple-modal-template title="${this.term ? this.term : ""}">
               <p slot="content">${this.information}</p>
               ${this.links && this.links.length > 0 && this.links.map
                 ? html` <ul slot="content">
                     ${this.links.map(
                       (el) => html`
-                        <li><a href="${el.href}" target="_blank" rel="noopener noreferrer">${el.title}</a></li>
+                        <li>
+                          <a
+                            href="${el.href}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >${el.title}</a
+                          >
+                        </li>
                       `
                     )}
                   </ul>`
@@ -127,7 +134,14 @@ class VocabTerm extends LitElement {
                         <ul>
                           ${this.links.map(
                             (el) => html`
-                              <li><a href="${el.href}" target="_blank" rel="noopener noreferrer">${el.title}</a></li>
+                              <li>
+                                <a
+                                  href="${el.href}"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  >${el.title}</a
+                                >
+                              </li>
                             `
                           )}
                         </ul>

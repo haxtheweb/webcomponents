@@ -9,15 +9,15 @@ import { MicroFrontendRegistry } from "../micro-frontend-registry.js";
 export function enableServices(services) {
   services.forEach((service) => {
     switch (service) {
-      case 'core':
+      case "core":
         enableCoreServices();
-      break;
-      case 'experimental':
+        break;
+      case "experimental":
         enableExperimentalServices();
-      break;
-      case 'haxcms':
+        break;
+      case "haxcms":
         enableHAXcmsServices();
-      break;
+        break;
     }
   });
 }
@@ -26,50 +26,48 @@ export function enableServices(services) {
 export function enableCoreServices() {
   // mdToHtml
   MicroFrontendRegistry.add({
-    endpoint: '/api/services/media/format/mdToHtml',
-    name: '@core/mdToHtml',
-    title: 'Markdown to HTML',
-    description: 'Convert Markdown string (or file) to HTML',
+    endpoint: "/api/services/media/format/mdToHtml",
+    name: "@core/mdToHtml",
+    title: "Markdown to HTML",
+    description: "Convert Markdown string (or file) to HTML",
     params: {
       md: "MD or link to be converted",
       type: "link for processing as link otherwise unused",
-    }
+    },
   });
 
   // htmlToMd
   MicroFrontendRegistry.add({
-    endpoint: '/api/services/media/format/htmlToMd',
-    name: '@core/htmlToMd',
-    title: 'HTML to MD',
-    description: 'Convert HTML string (or file) to MD',
+    endpoint: "/api/services/media/format/htmlToMd",
+    name: "@core/htmlToMd",
+    title: "HTML to MD",
+    description: "Convert HTML string (or file) to MD",
     params: {
       html: "HTML or link to be converted",
       type: "link for processing as link otherwise unused",
-    }
+    },
   });
   // htmlToPdf
   MicroFrontendRegistry.add({
-    endpoint: '/api/services/media/format/htmlToPdf',
-    name: '@core/htmlToPdf',
-    title: 'HTML to PDF',
-    description: 'Convert HTML string (or file) to a PDF',
+    endpoint: "/api/services/media/format/htmlToPdf",
+    name: "@core/htmlToPdf",
+    title: "HTML to PDF",
+    description: "Convert HTML string (or file) to a PDF",
     params: {
       html: "HTML or link to be converted",
       type: "link for processing as link otherwise unused",
-    }
+    },
   });
   // duckDuckGo
-  MicroFrontendRegistry.add(
-    {
-      endpoint: '/api/services/website/duckDuckGo',
-      name: '@core/duckDuckGo',
-      title: 'Duck Duck Go',
-      description: 'Search results from duck duck go',
-      params: {
-        q: "query param to search on"
-      }
-    }
-  );
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/website/duckDuckGo",
+    name: "@core/duckDuckGo",
+    title: "Duck Duck Go",
+    description: "Search results from duck duck go",
+    params: {
+      q: "query param to search on",
+    },
+  });
 
   // screenshot - kept by itself bc of size of getBrowserInstance
   MicroFrontendRegistry.add({
@@ -79,8 +77,8 @@ export function enableCoreServices() {
     description: "Takes screenshot of a URL and returns image",
     params: {
       urlToCapture: "full url with https",
-      quality: "Optional image quality parameter"
-    }
+      quality: "Optional image quality parameter",
+    },
   });
 
   // docxToPdf
@@ -90,30 +88,30 @@ export function enableCoreServices() {
     title: "Docx to pdf",
     description: "Convert .docx file to PDF response (downloaded)",
     params: {
-      body: "FormData class w/ uploaded file encoded into it"
-    }
+      body: "FormData class w/ uploaded file encoded into it",
+    },
   });
 
   // docxToHtml
   MicroFrontendRegistry.add({
-    endpoint: '/api/services/media/format/docxToHtml',
+    endpoint: "/api/services/media/format/docxToHtml",
     name: "@core/docxToHtml",
     title: "Docx to HTML",
     description: "Convert .docx file to HTML",
     params: {
-      body: "FormData class w/ uploaded file encoded into it"
-    }
+      body: "FormData class w/ uploaded file encoded into it",
+    },
   });
 
   // htmlToDocx
   MicroFrontendRegistry.add({
-    endpoint: '/api/services/media/format/htmlToDocx',
+    endpoint: "/api/services/media/format/htmlToDocx",
     name: "@core/htmlToDocx",
     title: "HTML to docx",
     description: "Convert HTML to .docx file",
     params: {
-      html: "html body to be converted to a docx file download"
-    }
+      html: "html body to be converted to a docx file download",
+    },
   });
 
   // imgToAscii
@@ -121,10 +119,11 @@ export function enableCoreServices() {
     endpoint: "/api/services/media/format/imgToAscii",
     name: "@core/imgToAscii",
     title: "Image to ascii art",
-    description: "Convert any valid image formatted file to ASCII terminal style art",
+    description:
+      "Convert any valid image formatted file to ASCII terminal style art",
     params: {
-      body: "FormData class w/ uploaded file encoded into it"
-    }
+      body: "FormData class w/ uploaded file encoded into it",
+    },
   });
 
   // imgManipulation
@@ -132,7 +131,8 @@ export function enableCoreServices() {
     endpoint: "/api/services/media/image/manipulate",
     name: "@core/imgManipulate",
     title: "simple image manipulation",
-    description: "scale, resize, convert and perform operations to manipulate any image",
+    description:
+      "scale, resize, convert and perform operations to manipulate any image",
     params: {
       src: "image source",
       height: "height in numbers",
@@ -158,8 +158,8 @@ export function enableHAXcmsServices() {
     params: {
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",
-      ancestor: "optional: ancestor to print from as opposed to entire site"
-    }
+      ancestor: "optional: ancestor to print from as opposed to entire site",
+    },
   });
 
   // siteGlossary
@@ -170,7 +170,7 @@ export function enableHAXcmsServices() {
     description: "array of terms found in the glossary slug",
     params: {
       url: "location of the HAXcms site",
-    }
+    },
   });
 
   // termsInPage
@@ -184,8 +184,9 @@ export function enableHAXcmsServices() {
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",
       wikipedia: "if wikipedia links should be included in response, if found",
-      terms: "Optional array of term objects. This is intended for future use / forcibly passing a list from elsewhere"
-    }
+      terms:
+        "Optional array of term objects. This is intended for future use / forcibly passing a list from elsewhere",
+    },
   });
   // siteToEpub
   MicroFrontendRegistry.add({
@@ -195,7 +196,7 @@ export function enableHAXcmsServices() {
     description: "generate .epub of entire HAXcms site via URL",
     params: {
       url: "location of the HAXcms site",
-    }
+    },
   });
 }
 
@@ -209,6 +210,6 @@ export function enableExperimentalServices() {
     description: "Hydrate web components via lit server side",
     params: {
       html: "blob of HTML or link to html file to load",
-    }
+    },
   });
 }

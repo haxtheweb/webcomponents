@@ -45,12 +45,12 @@ class MicroFrontendRegistryEl extends HTMLElement {
 
   /**
    * Adding more or less alias for define
-   * @param {Object} params 
+   * @param {Object} params
    */
   add(params) {
     this.define(new MicroFrontend(params));
   }
-  
+
   /**
    * define a new micro frontend
    *
@@ -69,13 +69,13 @@ class MicroFrontendRegistryEl extends HTMLElement {
       // support for local resolution of vercel vs serve for things that are
       // built off of the main registry on localhost
       if (item.endpoint.startsWith("/api/")) {
-        var base = '';
+        var base = "";
         // support base rewrite
         if (window.MicroFrontendRegistryConfig.base) {
           base = window.MicroFrontendRegistryConfig.base;
         }
         // keep local based if we're local, otherwise we need to leverage deployed address
-        else if (window.location.origin.startsWith('http://localhost')) {
+        else if (window.location.origin.startsWith("http://localhost")) {
           base = window.location.origin.replace(
             /localhost:8(.*)/,
             "localhost:3000"
@@ -83,15 +83,17 @@ class MicroFrontendRegistryEl extends HTMLElement {
         }
         // most common case, hit vercel address
         else {
-          base = 'https://haxapi.vercel.app';
+          base = "https://haxapi.vercel.app";
         }
         item.endpoint = `${base}${item.endpoint}`;
       }
       // check for registry config object
       if (window.MicroFrontendRegistryConfig[item.name]) {
-        Object.keys(window.MicroFrontendRegistryConfig[item.name]).map((key) => {
-          item[key] = window.MicroFrontendRegistryConfig[item.name][key];
-        })
+        Object.keys(window.MicroFrontendRegistryConfig[item.name]).map(
+          (key) => {
+            item[key] = window.MicroFrontendRegistryConfig[item.name][key];
+          }
+        );
       }
 
       if (!this.has(item.name)) {
@@ -117,7 +119,9 @@ class MicroFrontendRegistryEl extends HTMLElement {
       }
     }
     if (!testOnly) {
-      console.error(`call for ${name} but not found in micro-frontend-registry`);
+      console.error(
+        `call for ${name} but not found in micro-frontend-registry`
+      );
     }
     return null;
   }
@@ -139,7 +143,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @param {MicroFrontend} item - updated micro data
    * @returns {MicroFrontend} the micro in question
    */
-   set(name, item = {}) {
+  set(name, item = {}) {
     if (name && this.list.length > 0 && this.has(name)) {
       const index = this.list.findIndex((item) => item.name === name);
       this.list[index] = item;
@@ -162,12 +166,14 @@ class MicroFrontendRegistryEl extends HTMLElement {
       const data = await fetch(item.endpoint, {
         method: "POST",
         body: params instanceof FormData ? params : JSON.stringify(params),
-      }).then((d) => {
-        return (d.ok ? d.json() : { status: d.status, data: null })
-      }).catch((e, d) => {
-        // this is endpoint completely failed to respond
-        return { status: 500, data: null };
-      });
+      })
+        .then((d) => {
+          return d.ok ? d.json() : { status: d.status, data: null };
+        })
+        .catch((e, d) => {
+          // this is endpoint completely failed to respond
+          return { status: 500, data: null };
+        });
       // endpoints can require a callback be hit every time
       if (item.callback) {
         await item.callback(data, caller);
@@ -201,7 +207,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         `?${new URLSearchParams(params).toString()}`
       );
     }
-    return '';
+    return "";
   }
 }
 customElements.define(MicroFrontendRegistryEl.tag, MicroFrontendRegistryEl);

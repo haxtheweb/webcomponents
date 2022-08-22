@@ -13,12 +13,20 @@ export default {
 
 export const Codepen = () => {
   return getRenderString(html`
-  <h1>Codepen of haxcms</h1>
-  <p>Unfortunately due to limitations of how storybook does bundling, haxcms is difficult to load into the context of it.
-    Here's an iframe to <a href="https://codepen.io/btopro/pen/NWyQGaM">https://codepen.io/btopro/pen/NWyQGaM</a> which is not the latest but
-    at least something.
+    <h1>Codepen of haxcms</h1>
+    <p>
+      Unfortunately due to limitations of how storybook does bundling, haxcms is
+      difficult to load into the context of it. Here's an iframe to
+      <a href="https://codepen.io/btopro/pen/NWyQGaM"
+        >https://codepen.io/btopro/pen/NWyQGaM</a
+      >
+      which is not the latest but at least something.
     </p>
-    <iframe src="https://codepen.io/btopro/embed/NWyQGaM" width="100%" height="600px"></iframe>
+    <iframe
+      src="https://codepen.io/btopro/embed/NWyQGaM"
+      width="100%"
+      height="600px"
+    ></iframe>
   `);
 };
 

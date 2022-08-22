@@ -2,8 +2,108 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "docx-example",
+      "path": "./demo/docx-example.js",
+      "attributes": [
+        {
+          "name": "html",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pdf",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ascii",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "screenshot",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "attribute": "html",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pdf",
+          "attribute": "pdf",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ascii",
+          "attribute": "ascii",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "screenshot",
+          "attribute": "screenshot",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
       "name": "mf-htmlmd-example",
-      "path": "./demo/mf-htmlmd-example.js"
+      "path": "./demo/mf-htmlmd-example.js",
+      "attributes": [
+        {
+          "name": "img",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ddg",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mdhtml",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "img",
+          "attribute": "img",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ddg",
+          "attribute": "ddg",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "haxcms",
+          "attribute": "haxcms",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mdhtml",
+          "attribute": "mdhtml",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     },
     {
       "name": "micro-frontend-registry",

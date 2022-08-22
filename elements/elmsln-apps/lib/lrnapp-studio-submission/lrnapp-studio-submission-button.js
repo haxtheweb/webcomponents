@@ -32,8 +32,8 @@ class LrnappStudioSubmissionButton extends PolymerElement {
           label="Create submission"
         ></lrnsys-button>
         <iron-ajax
-        reject-with-request
-      on-last-error-changed="lastErrorChanged"
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="ajaxCreateStub"
           url="[[endPoint]]/api/submissions/create-stub?token=[[csrfToken]]"
           method="POST"
@@ -60,7 +60,7 @@ class LrnappStudioSubmissionButton extends PolymerElement {
   /**
    * Handle the last error rolling in
    */
-   lastErrorChanged(e) {
+  lastErrorChanged(e) {
     if (e.detail.value) {
       console.error(e);
       const target = normalizeEventPath(e)[0];
@@ -78,14 +78,16 @@ class LrnappStudioSubmissionButton extends PolymerElement {
           // no-cors will force a hit against the backend to refresh
           // the PHP session / bounce back from Azure as needed
           // so that when we reissue this call it'll go through (magically)
-          fetch(window.Drupal.settings.basePath, { mode: 'no-cors'}).then((e) => {
-            console.log(e);
-            // delay just to be sure
-            setTimeout(() => {
-              target.generateRequest();
-            }, 250);
-          });
-        break;
+          fetch(window.Drupal.settings.basePath, { mode: "no-cors" }).then(
+            (e) => {
+              console.log(e);
+              // delay just to be sure
+              setTimeout(() => {
+                target.generateRequest();
+              }, 250);
+            }
+          );
+          break;
       }
     }
   }

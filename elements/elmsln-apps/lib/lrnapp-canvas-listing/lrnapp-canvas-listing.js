@@ -16,7 +16,6 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
-
 class LrnappCanvasListing extends PolymerElement {
   static get template() {
     return html`
@@ -143,8 +142,8 @@ class LrnappCanvasListing extends PolymerElement {
         }
       </style>
       <iron-ajax
-      reject-with-request
-      on-last-error-changed="lastErrorChanged"
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
         auto
         url="[[sourcePath]]"
         params='{"return": "courses"}'
@@ -300,8 +299,8 @@ class LrnappCanvasListing extends PolymerElement {
         </vaadin-grid-column>
       </vaadin-grid>
       <iron-ajax
-      reject-with-request
-      on-last-error-changed="lastErrorChanged"
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
         id="request"
         url="[[sourcePath]]"
         params='{"return": "users"}'
@@ -414,7 +413,7 @@ class LrnappCanvasListing extends PolymerElement {
   /**
    * Handle the last error rolling in
    */
-   lastErrorChanged(e) {
+  lastErrorChanged(e) {
     if (e.detail.value) {
       console.error(e);
       const target = normalizeEventPath(e)[0];
@@ -432,14 +431,16 @@ class LrnappCanvasListing extends PolymerElement {
           // no-cors will force a hit against the backend to refresh
           // the PHP session / bounce back from Azure as needed
           // so that when we reissue this call it'll go through (magically)
-          fetch(window.Drupal.settings.basePath, { mode: 'no-cors'}).then((e) => {
-            console.log(e);
-            // delay just to be sure
-            setTimeout(() => {
-              target.generateRequest();
-            }, 250);
-          });
-        break;
+          fetch(window.Drupal.settings.basePath, { mode: "no-cors" }).then(
+            (e) => {
+              console.log(e);
+              // delay just to be sure
+              setTimeout(() => {
+                target.generateRequest();
+              }, 250);
+            }
+          );
+          break;
       }
     }
   }

@@ -18,6 +18,14 @@
           "type": "string | null"
         },
         {
+          "name": "watermark",
+          "type": "string | null"
+        },
+        {
+          "name": "wmspot",
+          "type": "string | null"
+        },
+        {
           "name": "format",
           "type": "string | null"
         },
@@ -72,6 +80,16 @@
         {
           "name": "fit",
           "attribute": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "watermark",
+          "attribute": "watermark",
+          "type": "string | null"
+        },
+        {
+          "name": "wmspot",
+          "attribute": "wmspot",
           "type": "string | null"
         },
         {
@@ -146,6 +164,14 @@
           "type": "string | null"
         },
         {
+          "name": "watermark",
+          "type": "string | null"
+        },
+        {
+          "name": "wmspot",
+          "type": "string | null"
+        },
+        {
           "name": "format",
           "type": "string | null"
         },
@@ -200,6 +226,16 @@
         {
           "name": "fit",
           "attribute": "fit",
+          "type": "string | null"
+        },
+        {
+          "name": "watermark",
+          "attribute": "watermark",
+          "type": "string | null"
+        },
+        {
+          "name": "wmspot",
+          "attribute": "wmspot",
           "type": "string | null"
         },
         {

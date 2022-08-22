@@ -465,35 +465,37 @@ class LrnappStudioKanban extends PolymerElement {
   /**
    * Handle the last error rolling in
    */
- lastErrorChanged(e) {
-  if (e.detail.value) {
-    console.error(e);
-    const target = normalizeEventPath(e)[0];
-    // check for JWT needing refreshed vs busted but must be 403
-    switch (parseInt(e.detail.value.status)) {
-      // cookie data not found, need to go get it
-      // @notice this currently isn't possible but we could modify
-      // the backend in the future to support throwing 401s dynamically
-      // if we KNOW an event must expire the timing token
-      case 401:
-      case 401:
-        // we know what the "target" is as an iron-ajax tag
-        // so we know what call was just attempted. Let's await
-        // a fetch against the top level site landing page with
-        // no-cors will force a hit against the backend to refresh
-        // the PHP session / bounce back from Azure as needed
-        // so that when we reissue this call it'll go through (magically)
-        fetch(window.Drupal.settings.basePath, { mode: 'no-cors'}).then((e) => {
-          console.log(e);
-          // delay just to be sure
-          setTimeout(() => {
-            target.generateRequest();
-          }, 250);
-        });
-      break;
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      console.error(e);
+      const target = normalizeEventPath(e)[0];
+      // check for JWT needing refreshed vs busted but must be 403
+      switch (parseInt(e.detail.value.status)) {
+        // cookie data not found, need to go get it
+        // @notice this currently isn't possible but we could modify
+        // the backend in the future to support throwing 401s dynamically
+        // if we KNOW an event must expire the timing token
+        case 401:
+        case 401:
+          // we know what the "target" is as an iron-ajax tag
+          // so we know what call was just attempted. Let's await
+          // a fetch against the top level site landing page with
+          // no-cors will force a hit against the backend to refresh
+          // the PHP session / bounce back from Azure as needed
+          // so that when we reissue this call it'll go through (magically)
+          fetch(window.Drupal.settings.basePath, { mode: "no-cors" }).then(
+            (e) => {
+              console.log(e);
+              // delay just to be sure
+              setTimeout(() => {
+                target.generateRequest();
+              }, 250);
+            }
+          );
+          break;
+      }
     }
   }
-}
   static get tag() {
     return "lrnapp-studio-kanban";
   }

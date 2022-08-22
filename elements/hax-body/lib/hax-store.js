@@ -26,7 +26,7 @@ import {
   I18NMixin,
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { enableServices } from '@lrnwebcomponents/micro-frontend-registry/lib/microServices.js';
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -1878,7 +1878,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   constructor() {
     super();
-    enableServices(['core']);
+    enableServices(["core"]);
     this.toastShowEventName = "simple-toast-show";
     this.t = {
       close: "Close",

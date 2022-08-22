@@ -52,30 +52,28 @@ export const mdToHtml = () => {
 
 export const duckDuckGo = () => {
   return getRenderString(html`
-  <h3>Duck duck go search</h3>
-      <p>Check console after search
-      </p>
-      <mf-htmlmd-example ddg></mf-htmlmd-example>
+    <h3>Duck duck go search</h3>
+    <p>Check console after search</p>
+    <mf-htmlmd-example ddg></mf-htmlmd-example>
   `);
 };
 
 export const haxcmsFullSite = () => {
   return getRenderString(html`
-  <h3>Enter a HAXcms site URL</h3>
-      <p>
-        You'll be given the full HTML source of the entire site
-      </p>
-      <mf-htmlmd-example haxcms></mf-htmlmd-example>
+    <h3>Enter a HAXcms site URL</h3>
+    <p>You'll be given the full HTML source of the entire site</p>
+    <mf-htmlmd-example haxcms></mf-htmlmd-example>
   `);
 };
 
 export const simpleImgRemixer = () => {
   return getRenderString(html`
-  <h3>Tweak values and live update an image</h3>
-      <p>
-        This also has its own story but this is some specific operations in real time
-      </p>
-      <mf-htmlmd-example img></mf-htmlmd-example>
+    <h3>Tweak values and live update an image</h3>
+    <p>
+      This also has its own story but this is some specific operations in real
+      time
+    </p>
+    <mf-htmlmd-example img></mf-htmlmd-example>
   `);
 };
 

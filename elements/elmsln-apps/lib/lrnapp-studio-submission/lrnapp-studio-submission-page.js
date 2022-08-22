@@ -21,7 +21,6 @@ import "./lrnapp-studio-submission-comments.js";
 import "./lrnapp-studio-submission-comment.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
-
 class LrnappStudioSubmissionPage extends PolymerElement {
   static get template() {
     return html`
@@ -328,7 +327,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   /**
    * Handle the last error rolling in
    */
-   lastErrorChanged(e) {
+  lastErrorChanged(e) {
     if (e.detail.value) {
       console.error(e);
       const target = normalizeEventPath(e)[0];
@@ -346,18 +345,26 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           // no-cors will force a hit against the backend to refresh
           // the PHP session / bounce back from Azure as needed
           // so that when we reissue this call it'll go through (magically)
-          fetch(window.Drupal.settings.basePath, { mode: 'no-cors'}).then((e) => {
-            console.log(e);
-            // delay just to be sure
-            setTimeout(() => {
-              target.generateRequest();
-              // should be able to get comments to reup as well
-              const sourcePath = this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath;
-              this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath = '';
-              this.shadowRoot.querySelector('lrnsys-comment-list').sourcePath = sourcePath;                
-            }, 250);
-          });
-        break;
+          fetch(window.Drupal.settings.basePath, { mode: "no-cors" }).then(
+            (e) => {
+              console.log(e);
+              // delay just to be sure
+              setTimeout(() => {
+                target.generateRequest();
+                // should be able to get comments to reup as well
+                const sourcePath = this.shadowRoot.querySelector(
+                  "lrnsys-comment-list"
+                ).sourcePath;
+                this.shadowRoot.querySelector(
+                  "lrnsys-comment-list"
+                ).sourcePath = "";
+                this.shadowRoot.querySelector(
+                  "lrnsys-comment-list"
+                ).sourcePath = sourcePath;
+              }, 250);
+            }
+          );
+          break;
       }
     }
   }

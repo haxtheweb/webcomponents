@@ -31,13 +31,16 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
  * @element clean-one
  */
 class CleanOne extends HAXCMSRememberRoute(
-  PrintBranchMixin(QRCodeMixin(
-    HAXCMSThemeParts(
-      HAXCMSUserStylesMenuMixin(
-        HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+  PrintBranchMixin(
+    QRCodeMixin(
+      HAXCMSThemeParts(
+        HAXCMSUserStylesMenuMixin(
+          HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+        )
       )
+    )
   )
-))) {
+) {
   //styles function
   static get styles() {
     return [
@@ -664,12 +667,14 @@ class CleanOne extends HAXCMSRememberRoute(
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
                   ${this.HAXCMSUserStylesMenu()}
-                  ${MicroFrontendRegistry.has('@haxcms/siteToHtml') ? this.PrintBranchButton() : html`
-                  <site-print-button
-                    class="btn js-toolbar-action"
-                    part="print-btn"
-                  ></site-print-button>
-                  `}
+                  ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+                    ? this.PrintBranchButton()
+                    : html`
+                        <site-print-button
+                          class="btn js-toolbar-action"
+                          part="print-btn"
+                        ></site-print-button>
+                      `}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}
