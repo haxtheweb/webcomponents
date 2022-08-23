@@ -285,8 +285,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.dispatchEvent(
           new CustomEvent("active-item-content-changed", {
             bubbles: true,
-            cancelable: true,
-            composed: true,
             detail: this[propName],
           })
         );
@@ -302,9 +300,15 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       activeItemLocation: {
         type: String,
         attribute: "active-item-location",
+      },
+      disableFeatures: {
+        type: String,
+        reflect: true,
+        attribute: 'disable-features'
       },
       _timeStamp: {
         type: String,
@@ -460,6 +464,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       localesPath: new URL("../../locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.disableFeatures = '';
     this.isLoggedIn = false;
     this.__disposer = [];
     this.queryParams = {};
@@ -574,6 +579,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                 this.themeData.element = "haxcms-print-theme";
                 break;
             }
+          }
+          const disableFeatures = urlParams.get("disable-features");
+          if (disableFeatures != null) {
+            this.disableFeatures = disableFeatures;
           }
         }
         if (this.themeData && this.themeData.element !== this.themeName) {
