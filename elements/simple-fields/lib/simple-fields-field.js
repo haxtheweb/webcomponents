@@ -983,7 +983,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return attributes[type];
     }
     _getFieldsetValue() {
-      return this.value;
+      return super._getFieldsetValue();
     }
     /**
      * listens for focusout
