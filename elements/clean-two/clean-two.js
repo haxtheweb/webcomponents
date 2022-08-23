@@ -562,16 +562,18 @@ class CleanTwo extends HAXCMSOperationButtons(
   render() {
     return html`
       <div class="body-wrapper">
-        <div class="left-col">${this.HAXCMSMobileMenu()}</div>
+        <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">
             <header class="header">
               ${!["lg", "xl"].includes(this.responsiveSize)
                 ? html`
+                    <div part="site-menu-content">
                     <site-menu-content
                       .part="${this.editMode ? `edit-mode-active` : ``}"
                       mobile
                     ></site-menu-content>
+                    </div>
                   `
                 : ``}
               ${this.HAXCMSMobileMenuButton()}
@@ -677,7 +679,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         </div>
         ${["lg", "xl"].includes(this.responsiveSize)
           ? html`
-              <div class="right-col">
+              <div class="right-col" part="site-menu-content right-col">
                 <div class="site-menu-content-wrapper">
                   <site-menu-content
                     .part="${this.editMode ? `edit-mode-active` : ``}"
