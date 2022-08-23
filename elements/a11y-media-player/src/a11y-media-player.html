@@ -217,7 +217,7 @@
           .options="${this.captionsPicker}"
           ?hidden="${!this.hasCaptions}"
           ?disabled="${!this.hasCaptions}"
-          @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+          @value-changed="${this.selectCaptionByKeyEvent}"
           type="select"
         >
         </simple-fields-field>
@@ -233,7 +233,7 @@
           .options="${this.transcriptPicker}"
           ?hidden="${!this.hasCaptions || this.learningMode}"
           ?disabled="${!this.hasCaptions || this.learningMode}"
-          @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+          @value-changed="${this.selectTranscriptByKeyEvent}"
           type="select"
         >
         </simple-fields-field>
@@ -279,7 +279,7 @@
           id="loop"
           class="setting-control"
           aria-labelledby="loop-label"
-          @value-change="${e => this.toggleLoop()}"
+          @value-change="${this.toggleLoop}"
           ?value="${this.loop}">
         </simple-fields-field>
       </div>

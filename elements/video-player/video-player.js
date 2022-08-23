@@ -23,558 +23,564 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 class VideoPlayer extends IntersectionObserverMixin(
   MediaBehaviorsVideo(SchemaBehaviors(I18NMixin(SimpleColors)))
 ) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          margin: 0 0 15px;
-          line-height: 16px !important;
-          font-size: 16px !important;
-        }
+:host {
+  display: block;
+  margin: 0 0 15px;
+  line-height: 16px !important;
+  font-size: 16px !important;
+}
 
-        .video-caption {
-          font-style: italic;
-          margin: 0;
-          padding: 8px;
-        }
-      `,
+.video-caption {
+  font-style: italic;
+  margin: 0;
+  padding: 8px;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` ${this.elementVisible
-      ? html`${!this.isA11yMedia
-          ? html` <div
-                class="responsive-video-container"
-                .lang="${this.lang || undefined}"
-              >
-                ${this.sandboxed
-                  ? html``
-                  : html` <webview
-                      resource="${this.schemaResourceID}-video"
-                      .src="${(this.sourceData &&
-                        this.sourceData[0] &&
-                        this.sourceData[0].src) ||
-                      undefined}"
-                      .width="${this.width || undefined}"
-                      .height="${this.height || undefined}"
-                      frameborder="0"
-                    >
-                    </webview>`}
-                ${!(!this.sandboxed && this.iframed)
-                  ? html``
-                  : html`
-                      <iframe
-                        loading="lazy"
-                        resource="${this.schemaResourceID}-video"
-                        .src="${(this.sourceData &&
-                          this.sourceData[0] &&
-                          this.sourceData[0].src) ||
-                        undefined}"
-                        width="${this.width}"
-                        height="${this.height}"
-                        frameborder="0"
-                        webkitallowfullscreen=""
-                        mozallowfullscreen=""
-                        allowfullscreen=""
-                      ></iframe>
-                    `}
-              </div>
-              <div id="videocaption" class="video-caption">
-                <p>
-                  ${this.mediaTitle}
-                  <span class="media-type print-only"
-                    >(${this.t.embeddedMedia})</span
-                  >
-                </p>
-                <slot name="caption"></slot>
-              </div>
-              <slot hidden></slot>`
-          : html` <a11y-media-player
-                accent-color="${this.accentColor}"
-                ?audio-only="${this.audioOnly}"
-                ?dark="${this.dark}"
-                ?dark-transcript="${this.darkTranscript}"
-                ?disable-interactive="${this.disableInteractive}"
-                ?hide-timestamps="${this.hideTimestamps}"
-                ?hide-transcript="${this.hideTranscript}"
-                ?hide-youtube-link="${this.hideYoutubeLink}"
-                id="${this.playerId}"
-                lang="${this.lang || "en"}"
-                ?learning-mode="${this.learningMode}"
-                ?linkable="${this.linkable}"
-                preload="${this.preload || "metadata"}"
-                media-title="${this.mediaTitle || ""}"
-                .sources="${this.sourceProperties}"
-                ?stand-alone="${this.standAlone}"
-                sticky-corner="${this.stickyCorner || "top-right"}"
-                .thumbnail-src="${this.thumbnailSrc}"
-                .tracks="${this.trackProperties}"
-                .crossorigin="${this.crossorigin || "anonymous"}"
-                .width="${this.width}"
-                .height="${this.height}"
-                .youtubeId="${this.youtubeId || undefined}"
-              >
-              </a11y-media-player
-              ><slot hidden></slot>`}`
-      : ``}`;
+    return html`
+
+${this.elementVisible ? html`${!this.isA11yMedia
+    ? html`
+      <div class="responsive-video-container" .lang="${this.lang || undefined}">
+        ${this.sandboxed ? html``: html`
+          <webview
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            .width="${this.width || undefined }"
+            .height="${this.height || undefined }"
+            frameborder="0">
+          </webview>`}
+        ${!(!this.sandboxed && this.iframed) ? html``: html`
+          <iframe
+            loading="lazy"
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            width="${this.width}"
+            height="${this.height}"
+            frameborder="0"
+            webkitallowfullscreen=""
+            mozallowfullscreen=""
+            allowfullscreen=""
+          ></iframe>
+        `}
+      </div>
+      <div id="videocaption" class="video-caption">
+        <p>
+          ${this.mediaTitle}
+          <span class="media-type print-only">(${this.t.embeddedMedia})</span>
+        </p>
+        <slot name="caption"></slot>
+      </div><slot hidden></slot>` 
+    : html`
+      <a11y-media-player
+        accent-color="${this.accentColor}"
+        ?audio-only="${this.audioOnly}"
+        ?dark="${this.dark}"
+        ?dark-transcript="${this.darkTranscript}"
+        ?disable-interactive="${this.disableInteractive}"
+        ?hide-timestamps="${this.hideTimestamps}"
+        ?hide-transcript="${this.hideTranscript}"
+        ?hide-youtube-link="${this.hideYoutubeLink}"
+        id="${this.playerId}"
+        @play="${this.playEvent}"
+        @pause="${this.pauseEvent}"
+        lang="${this.lang || 'en'}"
+        ?learning-mode="${this.learningMode}"
+        ?linkable="${this.linkable}"
+        preload="${this.preload || 'metadata'}"
+        media-title="${this.mediaTitle || ''}"
+        .sources="${this.sourceProperties}"
+        ?stand-alone="${this.standAlone}"
+        sticky-corner="${this.stickyCorner || 'top-right'}"
+        .thumbnail-src="${this.thumbnailSrc}"
+        .tracks="${this.trackProperties}"
+        .crossorigin="${this.crossorigin || 'anonymous'}"
+        .width="${this.width}"
+        .height="${this.height}"
+        .youtubeId="${this.youtubeId || undefined}"
+        >
+      </a11y-media-player><slot hidden></slot>`
+}` : ``}`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: {
-        min: 25,
-        step: 12.5,
+  "canScale": {
+    "min": 25,
+    "step": 12.5
+  },
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Video player",
+    "description": "This can present video in a highly accessible manner regardless of source.",
+    "icon": "av:play-circle-filled",
+    "color": "red",
+    "groups": ["Video", "Media"],
+    "handles": [
+      {
+        "type": "video",
+        "type_exclusive": true,
+        "source": "source",
+        "title": "caption",
+        "caption": "caption",
+        "description": "caption",
+        "color": "primaryColor"
+      }
+    ],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "The URL for this media.",
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true,
+        "validationType": "url"
       },
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Video player",
-        description:
-          "This can present video in a highly accessible manner regardless of source.",
-        icon: "av:play-circle-filled",
-        color: "red",
-        groups: ["Video", "Media"],
-        handles: [
-          {
-            type: "video",
-            type_exclusive: true,
-            source: "source",
-            title: "caption",
-            caption: "caption",
-            description: "caption",
-            color: "primaryColor",
-          },
-        ],
-        meta: {
-          author: "LRNWebComponents",
-        },
+      {
+        "property": "track",
+        "title": "Closed captions",
+        "description": "The URL for the captions file.",
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true,
+        "validationType": "url"
       },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            title: "Source",
-            description: "The URL for this media.",
-            inputMethod: "haxupload",
-            noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
-          },
-          {
-            property: "track",
-            title: "Closed captions",
-            description: "The URL for the captions file.",
-            inputMethod: "haxupload",
-            noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
-          },
-          {
-            property: "thumbnailSrc",
-            title: "Thumbnail image",
-            description: "Optional. The URL for a thumbnail/poster image.",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            validationType: "url",
-          },
-          {
-            property: "mediaTitle",
-            title: "Title",
-            description: "Simple title for under video",
-            inputMethod: "textfield",
-            validationType: "text",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
-          },
-          {
-            attribute: "dark",
-            title: "Dark theme",
-            description: "Enable dark theme for the player.",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [
-          {
-            property: "crossorigin",
-            title: "Crossorigin",
-            description: "Indicates whether to use CORS.",
-            inputMethod: "select",
-            options: {
-              "": "",
-              anonymous: "anonymous",
-              "use-credentials": "use-credentials",
-            },
-          },
-          {
-            property: "learningMode",
-            title: "Enable learning mode",
-            description: "Disables fast forward and rewind.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "darkTranscript",
-            title: "Dark theme for transcript",
-            description: "Enable dark theme for the transcript.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disableInteractive",
-            title: "Disable Interactive",
-            description:
-              "Disable interactive mode that makes transcript clickable.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "height",
-            title: "Height",
-            inputMethod: "textfield",
-            required: false,
-            validationType: "text",
-          },
-          {
-            property: "hideTimestamps",
-            title: "Hide timestamps",
-            description: "Hide the time stamps on the transcript.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideTranscript",
-            title: "Hide Transcript",
-            description: "Hide transcript by default.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "lang",
-            title: "Language",
-            description: "Language of the media.",
-            inputMethod: "textfield",
-            validationType: "text",
-          },
-          {
-            property: "linkable",
-            title: "Include a share link?",
-            description: "Provides a link to share the video.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideYoutubeLink",
-            title: "Remove open on YouTube button",
-            description: "Removes the button for opening the video on YouTube.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "preload",
-            title: "Preload source(s).",
-            description:
-              "How the sources should be preloaded, i.e. auto, metadata (default), or none.",
-            inputMethod: "select",
-            options: {
-              preload: "Preload all media",
-              metadata: "Preload media metadata only",
-              none: "Don't preload anything",
-            },
-          },
-          {
-            property: "stickyCorner",
-            title: "Sticky Corner",
-            description:
-              "Set the corner where a video plays when scrolled out of range, or choose none to disable sticky video.",
-            inputMethod: "select",
-            options: {
-              none: "none",
-              "top-left": "top-left",
-              "top-right": "top-right",
-              "bottom-left": "bottom-left",
-              "bottom-right": "bottom-right",
-            },
-          },
-          {
-            property: "sources",
-            title: "Other sources",
-            description: "List of other sources",
-            inputMethod: "array",
-            properties: [
-              {
-                property: "src",
-                title: "Source",
-                description: "The URL for this source.",
-                inputMethod: "haxupload",
-                required: true,
-                noCamera: true,
-                noVoiceRecord: true,
-                validationType: "url",
-              },
-              {
-                property: "type",
-                title: "Type",
-                description: "Media type data",
-                inputMethod: "select",
-                options: {
-                  "audio/aac": "acc audio",
-                  "audio/flac": "flac audio",
-                  "audio/mp3": "mp3 audio",
-                  "video/mp4": "mp4 video",
-                  "video/mov": "mov video",
-                  "audio/ogg": "ogg audio",
-                  "video/ogg": "ogg video",
-                  "audio/wav": "wav audio",
-                  "audio/webm": "webm audio",
-                  "video/webm": "webm video",
-                },
-              },
-            ],
-          },
-          {
-            property: "tracks",
-            title: "Track list",
-            description: "Tracks of different languages of closed captions",
-            inputMethod: "array",
-            properties: [
-              {
-                property: "kind",
-                title: "Kind",
-                description: "Kind of track",
-                inputMethod: "select",
-                options: {
-                  subtitles: "subtitles",
-                },
-              },
-              {
-                property: "label",
-                title: "Label",
-                description:
-                  'The human-readable name for this track, eg. "English Subtitles"',
-                inputMethod: "textfield",
-              },
-              {
-                property: "src",
-                title: "Source",
-                description: "The source for the captions file.",
-                inputMethod: "haxupload",
-                required: false,
-                noCamera: true,
-                noVoiceRecord: true,
-                validationType: "url",
-              },
-              {
-                property: "srclang",
-                title:
-                  'Two letter, language code, eg. \'en\' for English, "de" for German, "es" for Spanish, etc.',
-                description: "Label",
-                inputMethod: "textfield",
-              },
-            ],
-          },
-          {
-            property: "width",
-            title: "width",
-            inputMethod: "textfield",
-            required: false,
-            validationType: "text",
-          },
-        ],
+      {
+        "property": "thumbnailSrc",
+        "title": "Thumbnail image",
+        "description": "Optional. The URL for a thumbnail/poster image.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "validationType": "url"
       },
-      saveOptions: {
-        unsetAttributes: ["__utils", "__stand-alone", "colors"],
+      {
+        "property": "mediaTitle",
+        "title": "Title",
+        "description": "Simple title for under video",
+        "inputMethod": "textfield",
+        "validationType": "text"
       },
-      demoSchema: [
-        {
-          tag: "video-player",
-          properties: {
-            style: "width: 100%; margin: 0px auto; display: block;",
-            accentColor: "orange",
-            dark: true,
-            crossorigin: "anonymous",
-            lang: "en",
-            mediaTitle: "Why do I need to go anywhere?",
-            preload: "metadata",
-            source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
-            stickyCorner: "top-right",
-            track: "https://haxtheweb.org/files/HAXshort.vtt",
-            youtubeId: "LrS7dqokTLE?undefined",
-            sourceType: "youtube",
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Select the accent color for the player.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "attribute": "dark",
+        "title": "Dark theme",
+        "description": "Enable dark theme for the player.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indicates whether to use CORS.",
+        "inputMethod": "select",
+        "options": {
+          "": "",
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Allow background playback",
+        "description": "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "learningMode",
+        "title": "Enable learning mode",
+        "description": "Disables fast forward and rewind.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dark theme for transcript",
+        "description": "Enable dark theme for the transcript.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Disable Interactive",
+        "description": "Disable interactive mode that makes transcript clickable.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "inputMethod": "textfield",
+        "required": false,
+        "validationType": "text"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Hide timestamps",
+        "description": "Hide the time stamps on the transcript.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Hide Transcript",
+        "description": "Hide transcript by default.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "lang",
+        "title": "Language",
+        "description": "Language of the media.",
+        "inputMethod": "textfield",
+        "validationType": "text"
+      },
+      {
+        "property": "linkable",
+        "title": "Include a share link?",
+        "description": "Provides a link to share the video.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Remove open on YouTube button",
+        "description": "Removes the button for opening the video on YouTube.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "preload",
+        "title": "Preload source(s).",
+        "description": "How the sources should be preloaded, i.e. auto, metadata (default), or none.",
+        "inputMethod": "select",
+        "options": {
+          "preload": "Preload all media",
+          "metadata": "Preload media metadata only",
+          "none": "Don't preload anything"
+        }
+      },
+      {
+        "property": "stickyCorner",
+        "title": "Sticky Corner",
+        "description": "Set the corner where a video plays when scrolled out of range, or choose none to disable sticky video.",
+        "inputMethod": "select",
+        "options": {
+          "none": "none",
+          "top-left": "top-left",
+          "top-right": "top-right",
+          "bottom-left": "bottom-left",
+          "bottom-right": "bottom-right"
+        }
+      },
+      {
+        "property": "sources",
+        "title": "Other sources",
+        "description": "List of other sources",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "property": "src",
+            "title": "Source",
+            "description": "The URL for this source.",
+            "inputMethod": "haxupload",
+            "required": true,
+            "noCamera": true,
+            "noVoiceRecord": true,
+            "validationType": "url"
           },
-          content:
-            '    <track src="https://haxtheweb.org/files/HAXshort.vtt" kind="subtitles" label="English" slot="track">\n\n',
-        },
-      ],
-    };
+          {
+            "property": "type",
+            "title": "Type",
+            "description": "Media type data",
+            "inputMethod": "select",
+            "options": {
+              "audio/aac": "acc audio",
+              "audio/flac": "flac audio",
+              "audio/mp3": "mp3 audio",
+              "video/mp4": "mp4 video",
+              "video/mov": "mov video",
+              "audio/ogg": "ogg audio",
+              "video/ogg": "ogg video",
+              "audio/wav": "wav audio",
+              "audio/webm": "webm audio",
+              "video/webm": "webm video"
+            }
+          }
+        ]
+      },
+      {
+        "property": "tracks",
+        "title": "Track list",
+        "description": "Tracks of different languages of closed captions",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "property": "kind",
+            "title": "Kind",
+            "description": "Kind of track",
+            "inputMethod": "select",
+            "options": {
+              "subtitles": "subtitles"
+            }
+          },
+          {
+            "property": "label",
+            "title": "Label",
+            "description": "The human-readable name for this track, eg. \"English Subtitles\"",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "src",
+            "title": "Source",
+            "description": "The source for the captions file.",
+            "inputMethod": "haxupload",
+            "required": false,
+            "noCamera": true,
+            "noVoiceRecord": true,
+            "validationType": "url"
+          },
+          {
+            "property": "srclang",
+            "title": "Two letter, language code, eg. 'en' for English, \"de\" for German, \"es\" for Spanish, etc.",
+            "description": "Label",
+            "inputMethod": "textfield"
+          }
+        ]
+      },
+      {
+        "property": "width",
+        "title": "width",
+        "inputMethod": "textfield",
+        "required": false,
+        "validationType": "text"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "__stand-alone", "colors"]
+  },
+  "demoSchema": [
+    {
+      "tag": "video-player",
+      "properties": {
+        "style": "width: 100%; margin: 0px auto; display: block;",
+        "accentColor": "orange",
+        "dark": true,
+        "crossorigin": "anonymous",
+        "lang": "en",
+        "mediaTitle": "Why do I need to go anywhere?",
+        "preload": "metadata",
+        "source": "https://www.youtube.com/watch?v=LrS7dqokTLE",
+        "stickyCorner": "top-right",
+        "track": "https://haxtheweb.org/files/HAXshort.vtt",
+        "youtubeId": "LrS7dqokTLE?undefined",
+        "sourceType": "youtube"
+      },
+      "content": "    <track src=\"https://haxtheweb.org/files/HAXshort.vtt\" kind=\"subtitles\" label=\"English\" slot=\"track\">\n\n"
+    }
+  ]
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Optional accent color for controls,
-       * using these colors:
-       * `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,
-       * `light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,
-       * `yellow`, `amber`, orange, deep-orange, and brown.
-       * Default is null.
-       */
-      accentColor: {
-        type: String,
-        attribute: "accent-color",
-        reflect: true,
-      },
-      /**
-       * Cross origin flag for transcripts to load
-       */
-      crossorigin: {
-        type: String,
-        attribute: "crossorigin",
-        reflect: true,
-      },
-      /**
-       * Enables darker player.
-       */
-      dark: {
-        type: Boolean,
-        attribute: "dark",
-        reflect: true,
-      },
-      /**
-       * Use dark theme on transcript? Default is false, even when player is dark.
-       */
-      darkTranscript: {
-        type: Boolean,
-      },
-      /**
-       * disable interactive mode that makes transcript clickable
-       */
-      disableInteractive: {
-        type: Boolean,
-      },
-      /**
-       * Height of media player.
-       */
-      height: {
-        type: String,
-      },
-      /**
-       * show cue's start and end time
-       */
-      hideTimestamps: {
-        type: Boolean,
-        attribute: "hide-timestamps",
-      },
-      /**
-       * Hide transcript by default
-       */
-      hideTranscript: {
-        type: Boolean,
-        attribute: "hide-transcript",
-      },
-      /**
-       * Unique id
-       */
-      id: {
-        type: String,
-        attribute: "id",
-        reflect: true,
-      },
-      /**
-       * Learning mode
-       */
-      learningMode: {
-        type: Boolean,
-        attribute: "learning-mode",
-      },
-      /**
-       * Language of media
-       */
-      lang: {
-        type: String,
-      },
-      /**
-       * Include a share link?
-       */
-      linkable: {
-        type: Boolean,
-      },
-      /**
-       * Simple caption for video
-       */
-      mediaTitle: {
-        type: String,
-        attribute: "media-title",
-        reflect: true,
-      },
-      /**
-       * Open on YouTube button
-       */
-      hideYoutubeLink: {
-        type: Boolean,
-        attribute: "hide-youtube-link",
-      },
-      /**
-       * What to preload for a11y-media-player: auto, metadata (default), or none.
-       */
-      preload: {
-        type: String,
-      },
-      /**
-       * Single sources of video
-       */
-      source: {
-        type: String,
-        attribute: "source",
-        reflect: true,
-      },
-      /**
-       * Array of multiple video sources
-       */
-      sources: {
-        type: Array,
-      },
-      /**
-       * When playing but scrolled off screen, to which corner does it "stick":
-       * `top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?
-       * Default is `top-right`. `None` disables stickiness.
-       */
-      stickyCorner: {
-        type: String,
-        attribute: "sticky-corner",
-        reflect: true,
-      },
-      /**
-       * Url for a single subtitle track
-       */
-      track: {
-        type: String,
-      },
-      /**
-       * Array of text tracks, eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles", }]`
-       */
-      tracks: {
-        type: Array,
-      },
-      /**
-       * Source of optional thumbnail image
-       */
-      thumbnailSrc: {
-        type: String,
-        attribute: "thumbnail-src",
-        reflect: true,
-      },
-      /**
-       * Width of media player for non-a11y-media.
-       */
-      width: {
-        type: String,
-      },
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Optional accent color for controls,
+   * using these colors:
+   * `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,
+   * `light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,
+   * `yellow`, `amber`, orange, deep-orange, and brown.
+   * Default is null.
+   */
+  "accentColor": {
+    "type": String,
+    "attribute": "accent-color",
+    "reflect": true
+  },
+  /**
+   * Cross origin flag for transcripts to load
+   */
+  "crossorigin": {
+    "type": String,
+    "attribute": "crossorigin",
+    "reflect": true
+  },
+  /**
+   * Enables darker player.
+   */
+  "dark": {
+    "type": Boolean,
+    "attribute": "dark",
+    "reflect": true
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "type": Boolean
+  },
+  /**
+   * disable interactive mode that makes transcript clickable
+   */
+  "disableInteractive": {
+    "type": Boolean
+  },
+  /**
+   * Height of media player.
+   */
+  "height": {
+    "type": String
+  },
+  /**
+   * show cue's start and end time
+   */
+  "hideTimestamps": {
+    "type": Boolean,
+    "attribute": "hide-timestamps"
+  },
+  /**
+   * Hide transcript by default
+   */
+  "hideTranscript": {
+    "type": Boolean,
+    "attribute": "hide-transcript"
+  },
+  /**
+   * Unique id
+   */
+  "id": {
+    "type": String,
+    "attribute": "id",
+    "reflect": true
+  },
+  /**
+   * Learning mode
+   */
+  "learningMode": {
+    "type": Boolean,
+    "attribute": "learning-mode"
+  },
+  /**
+   * Language of media
+   */
+  "lang": {
+    "type": String
+  },
+  /**
+   * Include a share link?
+   */
+  "linkable": {
+    "type": Boolean
+  },
+  /**
+   * Simple caption for video
+   */
+  "mediaTitle": {
+    "type": String,
+    "attribute": "media-title",
+    "reflect": true
+  },
+  /**
+   * Open on YouTube button
+   */
+  "hideYoutubeLink": {
+    "type": Boolean,
+    "attribute": "hide-youtube-link"
+  },
+  /**
+   * What to preload for a11y-media-player: auto, metadata (default), or none.
+   */
+  "preload": {
+    "type": String
+  },
+  /**
+   * Single sources of video
+   */
+  "source": {
+    "type": String,
+    "attribute": "source",
+    "reflect": true
+  },
+  /**
+   * Array of multiple video sources
+   */
+  "sources": {
+    "type": Array
+  },
+  /**
+   * When playing but scrolled off screen, to which corner does it "stick":
+   * `top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?
+   * Default is `top-right`. `None` disables stickiness.
+   */
+  "stickyCorner": {
+    "type": String,
+    "attribute": "sticky-corner",
+    "reflect": true
+  },
+  /**
+   * Url for a single subtitle track
+   */
+  "track": {
+    "type": String
+  },
+  /**
+   * Array of text tracks, eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles", }]`
+   */
+  "tracks": {
+    "type": Array
+  },
+  /**
+   * Source of optional thumbnail image
+   */
+  "thumbnailSrc": {
+    "type": String,
+    "attribute": "thumbnail-src",
+    "reflect": true
+  },
+  /**
+   * Width of media player for non-a11y-media.
+   */
+  "width": {
+    "type": String
+  },
+  /**
+   * Data reactivity for play status from a11y-media-player
+   */
+   "playing": {
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * Option to allow playing while not active tab
+   */
+  "allowBackgroundPlay": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "allow-background-play"
+  }
+}
+;
   }
   /**
    * Store tag name to make it easier to obtain directly.
@@ -593,6 +599,9 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.hideTranscript = false;
     this.hideYoutubeLink = false;
     this.lang = "en";
+    this.playing = false;
+    this.__setVisChange = false;
+    this.allowBackgroundPlay = false;
     this.learningMode = false;
     this.linkable = false;
     this.preload = "metadata";
@@ -619,6 +628,10 @@ class VideoPlayer extends IntersectionObserverMixin(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    if (this.__setVisChange) {
+      this.__setVisChange = false;
+      document.removeEventListener("visibilitychange", this._visChange.bind(this));
+    }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
   }
@@ -959,6 +972,43 @@ class VideoPlayer extends IntersectionObserverMixin(
     let temp = this.source;
     this.source = "";
     this.source = temp;
+  }
+  playEvent(e) {
+    this.playing = e.detail.__playing;
+  }
+  pauseEvent(e) {
+    this.playing = e.detail.__playing;
+  }
+  
+  /**
+   * LitElement lifecycle
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "allowBackgroundPlay" && this[propName] && this.__setVisChange) {
+        this.__setVisChange = false;
+        document.removeEventListener("visibilitychange", this._visChange.bind(this));
+      }
+      else if (propName === "allowBackgroundPlay" && !this[propName] && !this.__setVisChange) {
+        this.__setVisChange = true;
+        document.addEventListener("visibilitychange", this._visChange.bind(this));
+      }
+    });
+  }
+  _visChange(e) {
+    if (document.visibilityState === 'visible' && !this.playing && this.__forcePaused) {
+      this.__forcePaused = false;
+      // resume the video bc it has focus and we stopped it playing previously
+      this.shadowRoot.querySelector('a11y-media-player').togglePlay();
+    }
+    else if (document.visibilityState === 'hidden' && this.playing) {
+      // force pause the video; we're in learning mode and they swtiched tabs
+      this.__forcePaused = true;
+      this.shadowRoot.querySelector('a11y-media-player').togglePlay();
+    }
   }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);

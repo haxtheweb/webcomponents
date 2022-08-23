@@ -87,6 +87,12 @@
         }
       },
       {
+        "property": "allowBackgroundPlay",
+        "title": "Allow background playback",
+        "description": "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "learningMode",
         "title": "Enable learning mode",
         "description": "Disables fast forward and rewind.",

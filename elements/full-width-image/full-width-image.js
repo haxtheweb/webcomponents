@@ -33,7 +33,7 @@ class FullWidthImage extends LitElement {
         #image {
           left: 0;
           right: 0;
-          position: absolute;
+          position: relative;
           background-repeat: no-repeat;
           background-position: center center;
           background-size: cover;

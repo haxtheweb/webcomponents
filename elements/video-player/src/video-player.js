@@ -41,6 +41,9 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.hideTranscript = false;
     this.hideYoutubeLink = false;
     this.lang = "en";
+    this.playing = false;
+    this.__setVisChange = false;
+    this.allowBackgroundPlay = false;
     this.learningMode = false;
     this.linkable = false;
     this.preload = "metadata";
@@ -67,6 +70,10 @@ class VideoPlayer extends IntersectionObserverMixin(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    if (this.__setVisChange) {
+      this.__setVisChange = false;
+      document.removeEventListener("visibilitychange", this._visChange.bind(this));
+    }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
   }
@@ -407,6 +414,43 @@ class VideoPlayer extends IntersectionObserverMixin(
     let temp = this.source;
     this.source = "";
     this.source = temp;
+  }
+  playEvent(e) {
+    this.playing = e.detail.__playing;
+  }
+  pauseEvent(e) {
+    this.playing = e.detail.__playing;
+  }
+  
+  /**
+   * LitElement lifecycle
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "allowBackgroundPlay" && this[propName] && this.__setVisChange) {
+        this.__setVisChange = false;
+        document.removeEventListener("visibilitychange", this._visChange.bind(this));
+      }
+      else if (propName === "allowBackgroundPlay" && !this[propName] && !this.__setVisChange) {
+        this.__setVisChange = true;
+        document.addEventListener("visibilitychange", this._visChange.bind(this));
+      }
+    });
+  }
+  _visChange(e) {
+    if (document.visibilityState === 'visible' && !this.playing && this.__forcePaused) {
+      this.__forcePaused = false;
+      // resume the video bc it has focus and we stopped it playing previously
+      this.shadowRoot.querySelector('a11y-media-player').togglePlay();
+    }
+    else if (document.visibilityState === 'hidden' && this.playing) {
+      // force pause the video; we're in learning mode and they swtiched tabs
+      this.__forcePaused = true;
+      this.shadowRoot.querySelector('a11y-media-player').togglePlay();
+    }
   }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);

@@ -1053,7 +1053,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media plays
      * @event play
      */
-    window.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("play", {
         bubbles: true,
         composed: true,
@@ -1085,7 +1085,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
      * Fires when media pauses
      * @event pause
      */
-    window.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("pause", {
         bubbles: true,
         composed: true,
@@ -1201,12 +1201,24 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   }
 
   /**
+   * Event version for Lit version requirements
+   */
+  selectCaptionByKeyEvent(e) {
+    this.selectCaptionByKey(e.detail.value);
+  }
+  /**
    * selects `captionsTrack` by key and adjusts `cc` accordingly
    */
   selectCaptionByKey(id) {
     id = parseInt(id);
     if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
     this.cc = id > -1;
+  }
+  /**
+   * Event version for Lit version requirements
+   */
+  selectTranscriptByKeyEvent(e) {
+    this.selectTranscriptByKey(e.detail.value);
   }
 
   /**

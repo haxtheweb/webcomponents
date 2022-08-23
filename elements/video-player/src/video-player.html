@@ -41,6 +41,8 @@ ${this.elementVisible ? html`${!this.isA11yMedia
         ?hide-transcript="${this.hideTranscript}"
         ?hide-youtube-link="${this.hideYoutubeLink}"
         id="${this.playerId}"
+        @play="${this.playEvent}"
+        @pause="${this.pauseEvent}"
         lang="${this.lang || 'en'}"
         ?learning-mode="${this.learningMode}"
         ?linkable="${this.linkable}"

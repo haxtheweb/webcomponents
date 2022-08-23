@@ -157,5 +157,20 @@
    */
   "width": {
     "type": "String"
+  },
+  /**
+   * Data reactivity for play status from a11y-media-player
+   */
+   "playing": {
+    "type": "Boolean",
+    "reflect": true
+  },
+  /**
+   * Option to allow playing while not active tab
+   */
+  "allowBackgroundPlay": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "allow-background-play"
   }
 }
