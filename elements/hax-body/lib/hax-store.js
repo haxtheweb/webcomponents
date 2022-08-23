@@ -1801,6 +1801,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "h6",
       "blockquote",
       "code",
+      "section",
+      "dl",
+      "dd",
+      "dt",
       "figure",
     ];
   }
@@ -1845,6 +1849,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "video",
       "audio",
       "section",
+      "dl",
+      "dt",
+      "dd",
       "template",
       "webview",
     ];
@@ -2486,6 +2493,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       section: {
         title: "Section",
         icon: "image:crop-landscape",
+      },
+      dl: {
+        title: "Data list",
+        icon: "editor:format-list-bulleted",
+      },
+      dt: {
+        title: "Data term",
+        icon: "editor:format-list-bulleted",
+      },
+      dd: {
+        title: "Data definition",
+        icon: "editor:format-list-bulleted",
       },
       ol: {
         title: "Numbered list",
