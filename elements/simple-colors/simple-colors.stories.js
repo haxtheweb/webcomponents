@@ -1,11 +1,11 @@
-import { html } from "lit-html";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SimpleColorsPicker } from "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/simple-colors/lib/demo/simple-colors-swatches.js";
 
 export default {
-  title: "Colors|Simple Colors",
+  title: "System|Simple Colors",
   component: "simple-colors",
   decorators: [withKnobs],
   parameters: {
@@ -24,7 +24,7 @@ export const SimpleColorsStory = () => {
       { property: "dark", title: "Invert Colors", inputMethod: "boolean" },
     ],
     knobs = utils.getKnobs(props, { accentColor: utils.randomColor() });
-  return utils.getDemo(
+  return utils.makeUsageDocs(SimpleColors, import.meta.url, utils.getDemo(
     `<style>
       div {
         padding: 20px;
@@ -93,7 +93,7 @@ export const SimpleColorsStory = () => {
       With simple colors, you can easily create a dark mode version of 
       your interfaces, and/or swap accent colors on the fly.
     </p>`
-  );
+  ));
 };
 
 export const AllTheSimpleColors = () => {

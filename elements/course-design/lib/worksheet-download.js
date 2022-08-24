@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
-class WorksheetDownload extends LitElement {
+export class WorksheetDownload extends LitElement {
   static get properties() {
     return {
       title: { type: String },
@@ -157,4 +157,3 @@ class WorksheetDownload extends LitElement {
   }
 }
 customElements.define(WorksheetDownload.tag, WorksheetDownload);
-export { WorksheetDownload };

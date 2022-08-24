@@ -5,7 +5,7 @@ import { CheckItOut } from "./check-it-out.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Widgets|CheckItOut",
+  title: "Education|Check It Out",
   component: "check-it-out",
   decorators: [withKnobs],
   parameters: {
@@ -13,6 +13,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const CheckItOutStory = () => {
-  return utils.makeElementFromClass(CheckItOut);
-};
+export const CheckItOutStory = () =>
+  utils.makeUsageDocs(
+    CheckItOut,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(CheckItOut)
+  );

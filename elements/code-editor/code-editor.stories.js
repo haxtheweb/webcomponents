@@ -6,7 +6,7 @@ import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Forms|Markup",
+  title: "Developer|Code editor",
   component: "code-editor",
   decorators: [withKnobs],
   parameters: {
@@ -14,11 +14,4 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const CodeEditorStory = () => {
-  return utils.makeElementFromClass(CodeEditor, {
-    id: "code",
-    language: "html",
-    fontSize: 13,
-    emptyslot: `<template><p>Things and stuff</p></template>`,
-  });
-};
+export const CodeEditorStory = () => utils.makeUsageDocs(CodeEditor, import.meta.url, utils.makeElementFromHaxDemo(CodeEditor));

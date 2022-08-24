@@ -1,11 +1,9 @@
-import { html } from "lit-html";
-import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { ProductGlance } from "./product-glance.js";
-// need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Widgets|ProductGlance",
+  title: "Extra|Product",
   component: "product-glance",
   decorators: [withKnobs],
   parameters: {
@@ -14,5 +12,12 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const ProductGlanceStory = () => {
-  return utils.makeElementFromClass(ProductGlance);
+  return utils.makeUsageDocs(ProductGlance, import.meta.url, utils.makeElementFromClass(ProductGlance,
+    {
+      title: "The upside-down",
+      dark: true,
+      'accent-color': 'red',
+      subtitle: "A great netflix show about a board game gone wrong.",
+      icon: "save"
+    }));
 };

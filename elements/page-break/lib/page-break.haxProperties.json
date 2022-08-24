@@ -65,6 +65,7 @@
         "published": true,
         "locked": false,
         "status": "new",
+        "title": "New page",
         "data-hax-ray": "Page break"
       }
     }

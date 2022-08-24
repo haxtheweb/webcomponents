@@ -3,7 +3,7 @@ import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
 import "./course-intro-footer.js";
 
-class CourseIntro extends LitElement {
+export class CourseIntro extends LitElement {
   static get tag() {
     return "course-intro";
   }

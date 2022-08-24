@@ -5,7 +5,7 @@ import { AppHax } from "./app-hax.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Hax|AppHax",
+  title: "Hax|Site Creation",
   component: "app-hax",
   decorators: [withKnobs],
   parameters: {
@@ -13,6 +13,4 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const AppHaxStory = () => {
-  return utils.makeElementFromClass(AppHax);
-};
+export const AppHaxStory = () => utils.makeUsageDocs(AppHax, import.meta.url, utils.makeElementFromHaxDemo(AppHax));

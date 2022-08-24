@@ -1,18 +1,15 @@
-import { html } from "lit-html";
-import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { CourseDesign } from "./course-design.js";
+import { EbookButton } from "./ebook-button.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Widgets|CourseDesign",
-  component: "course-design",
+  title: "Education|Course Design",
+  component: EbookButton.tag,
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
 const utils = new StorybookUtilities();
-export const CourseDesignStory = () => {
-  return utils.makeElementFromClass(CourseDesign);
-};
+export const EbookButtonStory = () => utils.makeUsageDocs(EbookButton, import.meta.url, utils.makeElementFromHaxDemo(EbookButton));

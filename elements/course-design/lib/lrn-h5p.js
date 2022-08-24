@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
-class LrnH5p extends LitElement {
+export class LrnH5p extends LitElement {
   static get properties() {
     return {
       _editing: { type: Boolean },

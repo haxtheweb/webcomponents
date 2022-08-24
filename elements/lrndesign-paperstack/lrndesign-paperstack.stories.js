@@ -1,16 +1,11 @@
-import { html } from "lit-html";
 import { LrndesignPaperstack } from "@lrnwebcomponents/lrndesign-paperstack/lrndesign-paperstack.js";
 import {
-  withKnobs,
-  select,
-  number,
-  boolean,
-  text,
+  withKnobs
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Widgets|Callouts",
+  title: "Education|Callout",
   component: "lrndesign-paperstack",
   decorators: [withKnobs],
   parameters: {
@@ -24,7 +19,8 @@ export const LrndesignPaperstackStory = () => {
     LrndesignPaperstack.properties,
     LrndesignPaperstack.haxProperties
   );
-  return utils.makeElementFromClass(
+
+  return utils.makeUsageDocs(LrndesignPaperstack, import.meta.url, utils.makeElementFromClass(
     LrndesignPaperstack,
     {
       icon: utils.randomIcon(),
@@ -62,5 +58,5 @@ export const LrndesignPaperstackStory = () => {
       },
       { slot: "", title: "Content" },
     ]
-  );
+  ));
 };

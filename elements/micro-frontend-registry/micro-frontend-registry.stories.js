@@ -7,7 +7,7 @@ import "./demo/docx-example.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Micro-frontends|Core Services",
+  title: "Developer|Micro-frontend: Core services",
   component: "micro-frontend-registry",
   decorators: [withKnobs],
   parameters: {

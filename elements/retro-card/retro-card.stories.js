@@ -5,7 +5,7 @@ import { RetroCard } from "./retro-card.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Card|Retro",
+  title: "Cards|Retro Design",
   component: "retro-card",
   decorators: [withKnobs],
   parameters: {
@@ -14,5 +14,5 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const BasicRetroCard = () => {
-  return utils.makeElementFromHaxDemo(RetroCard);
+  return utils.makeUsageDocs(RetroCard, import.meta.url, utils.makeElementFromHaxDemo(RetroCard));
 };

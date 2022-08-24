@@ -5,7 +5,7 @@ import { VocabTerm } from "./vocab-term.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Term|VocabTerm",
+  title: "Education|Vocab Term",
   component: "vocab-term",
   decorators: [withKnobs],
   parameters: {
@@ -13,6 +13,5 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const VocabTermStory = () => {
-  return utils.makeElementFromClass(VocabTerm);
-};
+export const VocabTermStory = () => utils.makeUsageDocs(VocabTerm, import.meta.url, utils.makeElementFromHaxDemo(VocabTerm));
+

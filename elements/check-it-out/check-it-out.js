@@ -14,109 +14,18 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
  * @element check-it-out
  */
 class CheckItOut extends IntersectionObserverMixin(LitElement) {
+  /**
+   * Convention we use
+   */
+  static get tag() {
+    return "check-it-out";
+  }
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      gizmo: {
-        title: "Check it out",
-        description: "Clickable button for media and code previews",
-        icon: "check-circle",
-        color: "grey",
-        groups: ["developer", "code", "video", "pdf"],
-        handles: [],
-        meta: {
-          author: "collinkleest",
-          owner: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            title: "Resource url",
-            description: "Resource url",
-            inputMethod: "textfield",
-          },
-          {
-            property: "icon",
-            title: "Icon",
-            description: "Icon for button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "type",
-            title: "Type of resource",
-            description: "Type of resource in url (video, code, pdf)",
-            inputMethod: "select",
-            options: {
-              code: "Code Snippet",
-              video: "Video",
-              pdf: "PDF / Document",
-            },
-          },
-          {
-            property: "label",
-            title: "Button label",
-            description: "Text to display in check-it-out button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "modal",
-            title: "Enable Modal Mode",
-            description: "Puts content inside a popup modal",
-            inputMethod: "boolean",
-          },
-          {
-            property: "modal-title",
-            title: "Popup Modal Title",
-            description: "Puts a title at the top of popup modal",
-            inputMethod: "textfield",
-          },
-          {
-            property: "filePath",
-            title: "File Path",
-            description: "File path for stackblitz embed",
-            inputMethod: "textfield",
-          },
-          {
-            property: "hideExplorer",
-            title: "Hide file explorer",
-            description: "Hide the file explorer in a stackblitz embed",
-            inputMethod: "boolean",
-          },
-          {
-            property: "ctl",
-            title: "Click to load stackblitz",
-            description: "Require click to load stackblitz embed",
-            inputMethod: "boolean",
-          },
-          {
-            property: "view",
-            title: "View",
-            description: "Stackblitz default view (preview, editor, or both)",
-            inputMethod: "select",
-            options: {
-              preview: "Preview",
-              editor: "Editor",
-              both: "Both",
-            },
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "check-it-out",
-          properties: {
-            org: "elmsln",
-            repo: "lrnwebcomponents",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 
   static get properties() {
@@ -288,13 +197,6 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         }
       `,
     ];
-  }
-
-  /**
-   * Convention we use
-   */
-  static get tag() {
-    return "check-it-out";
   }
 
   render() {

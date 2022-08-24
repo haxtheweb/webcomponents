@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 
-class ActivityBox extends LitElement {
+export class ActivityBox extends LitElement {
   static get styles() {
     return [
       css`

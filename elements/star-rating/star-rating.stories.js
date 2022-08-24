@@ -1,11 +1,9 @@
-import { html } from "lit-html";
-import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { StarRating } from "./star-rating.js";
-// need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Widgets|StarRating",
+  title: "System|Star Rating",
   component: "star-rating",
   decorators: [withKnobs],
   parameters: {
@@ -13,6 +11,4 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const StarRatingStory = () => {
-  return utils.makeElementFromClass(StarRating);
-};
+export const StarRatingStory = () => utils.makeUsageDocs(StarRating, import.meta.url, utils.makeElementFromClass(StarRating));
