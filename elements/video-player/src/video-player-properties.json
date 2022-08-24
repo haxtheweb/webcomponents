@@ -161,7 +161,7 @@
   /**
    * Data reactivity for play status from a11y-media-player
    */
-   "playing": {
+  "playing": {
     "type": "Boolean",
     "reflect": true
   },

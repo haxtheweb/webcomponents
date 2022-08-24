@@ -56,7 +56,11 @@ export const HexagonLoaderStory = () => {
       loading: true,
       itemCount: 37,
       size: "small",
-      color: 'blue'
+      color: "blue",
     });
-  return utils.makeUsageDocs(HexagonLoader, import.meta.url, utils.makeElement("hexagon-loader", knobs));
+  return utils.makeUsageDocs(
+    HexagonLoader,
+    import.meta.url,
+    utils.makeElement("hexagon-loader", knobs)
+  );
 };

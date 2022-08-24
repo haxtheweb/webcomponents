@@ -14,4 +14,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const CodeEditorStory = () => utils.makeUsageDocs(CodeEditor, import.meta.url, utils.makeElementFromHaxDemo(CodeEditor));
+export const CodeEditorStory = () =>
+  utils.makeUsageDocs(
+    CodeEditor,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(CodeEditor)
+  );

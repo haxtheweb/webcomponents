@@ -12,4 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const WorksheetDownloadStory = () => utils.makeUsageDocs(WorksheetDownload, import.meta.url, utils.makeElementFromHaxDemo(WorksheetDownload));
+export const WorksheetDownloadStory = () =>
+  utils.makeUsageDocs(
+    WorksheetDownload,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(WorksheetDownload)
+  );

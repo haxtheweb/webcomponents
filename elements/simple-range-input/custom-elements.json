@@ -1,275 +1,121 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-range-input",
-      "path": "./simple-range-input.js",
-      "description": "`simple-range-input`\n`simple styling on a range input`",
+      "description": "`simple-range-input`\n`simple styling on a range input`\n\nEvents:\n\n  * `immediate-value-changed` {`CustomEvent<{ value: number; }>`} - \n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - \n\nAttributes:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediate-value` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediateValue` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "dragging",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dragging` {`boolean`} - \n\nProperty: dragging\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Range input\""
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Range input"
         },
         {
           "name": "min",
-          "type": "number",
-          "default": "0"
+          "description": "`min` {`number`} - \n\nProperty: min\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "step",
-          "type": "number",
-          "default": "1"
+          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "immediate-value",
-          "type": "number",
-          "default": "0"
+          "description": "`immediate-value` {`number`} - \n\nProperty: immediateValue\n\nDefault: 0"
         },
         {
           "name": "disabled",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "dragging",
-          "attribute": "dragging",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"Range input\""
+          "name": "onimmediate-value-changed",
+          "description": "`immediate-value-changed` {`CustomEvent<{ value: number; }>`} - "
         },
         {
-          "name": "min",
-          "attribute": "min",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "step",
-          "attribute": "step",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "immediateValue",
-          "attribute": "immediate-value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ],
-      "events": [
-        {
-          "name": "immediate-value-changed"
-        },
-        {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     },
     {
       "name": "simple-range-input",
-      "path": "./src/simple-range-input.js",
-      "description": "`simple-range-input`\n`simple styling on a range input`",
+      "description": "`simple-range-input`\n`simple styling on a range input`\n\nEvents:\n\n  * `immediate-value-changed` {`CustomEvent<{ value: number; }>`} - \n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - \n\nAttributes:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediate-value` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediateValue` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "dragging",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dragging` {`boolean`} - \n\nProperty: dragging\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Range input\""
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Range input"
         },
         {
           "name": "min",
-          "type": "number",
-          "default": "0"
+          "description": "`min` {`number`} - \n\nProperty: min\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "step",
-          "type": "number",
-          "default": "1"
+          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "immediate-value",
-          "type": "number",
-          "default": "0"
+          "description": "`immediate-value` {`number`} - \n\nProperty: immediateValue\n\nDefault: 0"
         },
         {
           "name": "disabled",
-          "type": "boolean",
-          "default": "false"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "dragging",
-          "attribute": "dragging",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"Range input\""
+          "name": "onimmediate-value-changed",
+          "description": "`immediate-value-changed` {`CustomEvent<{ value: number; }>`} - "
         },
         {
-          "name": "min",
-          "attribute": "min",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "step",
-          "attribute": "step",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "immediateValue",
-          "attribute": "immediate-value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ],
-      "events": [
-        {
-          "name": "immediate-value-changed"
-        },
-        {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

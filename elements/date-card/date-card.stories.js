@@ -12,4 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicDateCard = () => utils.makeUsageDocs(DateCard, import.meta.url, utils.makeElementFromHaxDemo(DateCard));
+export const BasicDateCard = () =>
+  utils.makeUsageDocs(
+    DateCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(DateCard)
+  );

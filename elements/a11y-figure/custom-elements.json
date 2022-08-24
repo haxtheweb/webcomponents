@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "a11y-figure",
+      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
+      "attributes": [
+        {
+          "name": "img-src",
+          "description": "`img-src` {`string`} - \n\nProperty: imgSrc"
+        },
+        {
+          "name": "img-alt",
+          "description": "`img-alt` {`string`} - \n\nProperty: imgAlt"
+        },
+        {
+          "name": "__hasDetail",
+          "description": "`__hasDetail` {`boolean`} - \n\nProperty: __hasDetail",
+          "valueSet": "v"
+        },
+        {
+          "name": "close-text",
+          "description": "`close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\nProperty: closeText\n\nDefault: "
+        },
+        {
+          "name": "open-text",
+          "description": "`open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperty: openText\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "a11y-figure",
+      "attributes": []
+    },
+    {
+      "name": "a11y-figure",
+      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
+      "attributes": [
+        {
+          "name": "img-src",
+          "description": "`img-src` {`string`} - \n\nProperty: imgSrc"
+        },
+        {
+          "name": "img-alt",
+          "description": "`img-alt` {`string`} - \n\nProperty: imgAlt"
+        },
+        {
+          "name": "__hasDetail",
+          "description": "`__hasDetail` {`boolean`} - \n\nProperty: __hasDetail",
+          "valueSet": "v"
+        },
+        {
+          "name": "close-text",
+          "description": "`close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\nProperty: closeText\n\nDefault: "
+        },
+        {
+          "name": "open-text",
+          "description": "`open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperty: openText\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

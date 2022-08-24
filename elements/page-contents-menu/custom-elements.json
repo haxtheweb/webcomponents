@@ -1,243 +1,99 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "page-contents-menu",
-      "path": "./page-contents-menu.js",
-      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`",
+      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`\n\nAttributes:\n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `relationship` {`string`} - \n\n  * `fallbackText` - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
       "attributes": [
         {
           "name": "relationship",
-          "type": "string"
+          "description": "`relationship` {`string`} - \n\nProperty: relationship\n\nDefault: null"
         },
         {
           "name": "items",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
           "name": "is-empty",
-          "type": "boolean",
-          "default": "true"
+          "description": "`is-empty` {`boolean`} - \n\nProperty: isEmpty\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "hide-if-empty",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-if-empty` {`boolean`} - \n\nProperty: hideIfEmpty\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "position",
-          "type": "string",
-          "default": "\"left\""
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: left"
         },
         {
           "name": "contentContainer",
-          "type": "object"
+          "description": "`contentContainer` - \n\nProperty: contentContainer\n\nDefault: null"
         },
         {
           "name": "mobile",
-          "type": "boolean",
-          "default": "false"
+          "description": "`mobile` {`boolean`} - \n\nProperty: mobile\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hideSettings",
-          "type": "boolean",
-          "default": "true"
+          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Contents\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "relationship",
-          "attribute": "relationship",
-          "type": "string"
-        },
-        {
-          "name": "fallbackText",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "isEmpty",
-          "attribute": "is-empty",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "hideIfEmpty",
-          "attribute": "hide-if-empty",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "type": "object"
-        },
-        {
-          "name": "mobile",
-          "attribute": "mobile",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "scrollPolling",
-          "type": "number",
-          "default": "200"
-        },
-        {
-          "name": "hideSettings",
-          "attribute": "hideSettings",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"Contents\""
-        },
-        {
-          "name": "hierarchyTags",
-          "type": "string[]",
-          "default": "[\"h1\",\"h2\",\"h3\",\"h4\",\"h5\",\"h6\"]"
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Contents"
         }
       ]
     },
     {
       "name": "page-contents-menu",
-      "path": "./src/page-contents-menu.js",
-      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`",
+      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`\n\nAttributes:\n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `relationship` {`string`} - \n\n  * `fallbackText` - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
       "attributes": [
         {
           "name": "relationship",
-          "type": "string"
+          "description": "`relationship` {`string`} - \n\nProperty: relationship\n\nDefault: null"
         },
         {
           "name": "items",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
           "name": "is-empty",
-          "type": "boolean",
-          "default": "true"
+          "description": "`is-empty` {`boolean`} - \n\nProperty: isEmpty\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "hide-if-empty",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-if-empty` {`boolean`} - \n\nProperty: hideIfEmpty\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "position",
-          "type": "string",
-          "default": "\"left\""
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: left"
         },
         {
           "name": "contentContainer",
-          "type": "object"
+          "description": "`contentContainer` - \n\nProperty: contentContainer\n\nDefault: null"
         },
         {
           "name": "mobile",
-          "type": "boolean",
-          "default": "false"
+          "description": "`mobile` {`boolean`} - \n\nProperty: mobile\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hideSettings",
-          "type": "boolean",
-          "default": "true"
+          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "label",
-          "type": "string",
-          "default": "\"Contents\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "relationship",
-          "attribute": "relationship",
-          "type": "string"
-        },
-        {
-          "name": "fallbackText",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "isEmpty",
-          "attribute": "is-empty",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "hideIfEmpty",
-          "attribute": "hide-if-empty",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "position",
-          "attribute": "position",
-          "type": "string",
-          "default": "\"left\""
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "type": "object"
-        },
-        {
-          "name": "mobile",
-          "attribute": "mobile",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "scrollPolling",
-          "type": "number",
-          "default": "200"
-        },
-        {
-          "name": "hideSettings",
-          "attribute": "hideSettings",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string",
-          "default": "\"Contents\""
-        },
-        {
-          "name": "hierarchyTags",
-          "type": "string[]",
-          "default": "[\"h1\",\"h2\",\"h3\",\"h4\",\"h5\",\"h6\"]"
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Contents"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

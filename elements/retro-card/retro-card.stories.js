@@ -14,5 +14,9 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const BasicRetroCard = () => {
-  return utils.makeUsageDocs(RetroCard, import.meta.url, utils.makeElementFromHaxDemo(RetroCard));
+  return utils.makeUsageDocs(
+    RetroCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(RetroCard)
+  );
 };

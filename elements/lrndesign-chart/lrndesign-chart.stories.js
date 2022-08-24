@@ -1,4 +1,3 @@
-import { html } from "lit-html";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import { LrndesignChart } from "@lrnwebcomponents/lrndesign-chart/lrndesign-chart.js";
 import { LrndesignBar } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";
@@ -18,18 +17,21 @@ export default {
 
 const utils = new StorybookUtilities();
 export const LrndesignBarStory = () => {
-  return utils.makeElementFromClass(
+  return utils.makeUsageDocs(
     LrndesignBar,
-    {
-      accentColor: utils.randomColor(),
-      dark: utils.randomBool(),
-      showTable: utils.randomBool(),
-      axisXTitle: "Quarter",
-      axisYTitle: "Sales",
-      scale: "ct-octave",
-      heading: `<h3>Sales by Quarter</h3>`,
-      desc: `<p>A bar graph of sales by quarter. Each series is a salesperson.</p>`,
-      emptyslot: `
+    import.meta.url,
+    utils.makeElementFromClass(
+      LrndesignBar,
+      {
+        accentColor: utils.randomColor(),
+        dark: utils.randomBool(),
+        showTable: utils.randomBool(),
+        axisXTitle: "Quarter",
+        axisYTitle: "Sales",
+        scale: "ct-octave",
+        heading: `<h3>Sales by Quarter</h3>`,
+        desc: `<p>A bar graph of sales by quarter. Each series is a salesperson.</p>`,
+        emptyslot: `
     <table>
       <caption>Sales by Quarter (table)</caption>
       <thead>
@@ -48,12 +50,13 @@ export const LrndesignBarStory = () => {
         <tr><td>4</td><td>1</td><td>2</td><td>1</td></tr>
       </tbody>
     </table>`,
-    },
-    [
-      { slot: "heading", title: "Chart Heading" },
-      { slot: "desc", title: "Chart Description" },
-      { property: "showTable", title: "Show Table", inputMethod: "boolean" },
-    ]
+      },
+      [
+        { slot: "heading", title: "Chart Heading" },
+        { slot: "desc", title: "Chart Description" },
+        { property: "showTable", title: "Show Table", inputMethod: "boolean" },
+      ]
+    )
   );
 };
 export const LrndesignLineStory = () => {

@@ -13,5 +13,9 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const PageBreakStory = () => {
-  return utils.makeUsageDocs(PageBreak, import.meta.url, utils.makeElementFromHaxDemo(PageBreak));
+  return utils.makeUsageDocs(
+    PageBreak,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(PageBreak)
+  );
 };

@@ -1,230 +1,127 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "twitter-embed-vanilla",
-      "path": "./lib/twitter-embed-vanilla.js",
+      "description": "Attributes:\n\n  * `lang` {`string | null`} - \n\n  * `tweet` {`string | null`} - \n\n  * `data-width` {} - \n\n  * `data-theme` {} - \n\n  * `tweet-id` {} - \n\n  * `no-popups` {} - \n\nProperties:\n\n  * `html` {`string`} - my own convention, easy to remember\n\n  * `lang` {`string | null`} - \n\n  * `dataWidth` {`string | null`} - \n\n  * `dataTheme` {`string | null`} - \n\n  * `tweet` {`string | null`} - \n\n  * `tweetId` {`string | null`} - \n\n  * `allowPopups` {`string | string`} - ",
       "attributes": [
         {
           "name": "lang",
-          "type": "string | null"
+          "description": "`lang` {`string | null`} - \n\nProperty: lang",
+          "values": []
         },
         {
           "name": "tweet",
-          "type": "string | null"
+          "description": "`tweet` {`string | null`} - \n\nProperty: tweet",
+          "values": []
         },
         {
-          "name": "data-width"
+          "name": "data-width",
+          "description": "`data-width` {} - \n\n"
         },
         {
-          "name": "data-theme"
+          "name": "data-theme",
+          "description": "`data-theme` {} - \n\n"
         },
         {
-          "name": "tweet-id"
+          "name": "tweet-id",
+          "description": "`tweet-id` {} - \n\n"
         },
         {
-          "name": "no-popups"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "description": "my own convention, easy to remember",
-          "type": "string"
-        },
-        {
-          "name": "lang",
-          "attribute": "lang",
-          "type": "string | null"
-        },
-        {
-          "name": "dataWidth",
-          "type": "string | null"
-        },
-        {
-          "name": "dataTheme",
-          "type": "string | null"
-        },
-        {
-          "name": "tweet",
-          "attribute": "tweet",
-          "type": "string | null"
-        },
-        {
-          "name": "tweetId",
-          "type": "string | null"
-        },
-        {
-          "name": "allowPopups",
-          "type": "string | string"
+          "name": "no-popups",
+          "description": "`no-popups` {} - \n\n"
         }
       ]
     },
     {
       "name": "twitter-embed",
-      "path": "./src/twitter-embed.js",
-      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
+      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `_haxstate` {`boolean`} - \n\n  * `no-popups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `data-width` {`string`} - \n\n  * `data-theme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweet-id` {`string`} - \n\n  * `allowPopups` {`string`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `noPopups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `dataWidth` {`string`} - \n\n  * `dataTheme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweetId` {`string`} - \n\n  * `allowPopups` {`string`} - ",
       "attributes": [
         {
+          "name": "_haxstate",
+          "description": "`_haxstate` {`boolean`} - \n\nProperty: _haxstate",
+          "valueSet": "v"
+        },
+        {
           "name": "no-popups",
-          "type": "boolean"
+          "description": "`no-popups` {`boolean`} - \n\nProperty: noPopups",
+          "valueSet": "v"
         },
         {
           "name": "lang",
-          "type": "string"
+          "description": "`lang` {`string`} - \n\nProperty: lang"
         },
         {
           "name": "data-width",
-          "type": "string",
-          "default": "\"550px\""
+          "description": "`data-width` {`string`} - \n\nProperty: dataWidth\n\nDefault: 550px"
         },
         {
           "name": "data-theme",
-          "type": "string",
-          "default": "\"light\""
+          "description": "`data-theme` {`string`} - \n\nProperty: dataTheme\n\nDefault: light"
         },
         {
           "name": "tweet",
-          "type": "string"
+          "description": "`tweet` {`string`} - \n\nProperty: tweet\n\nDefault: null"
         },
         {
           "name": "tweet-id",
-          "type": "string"
+          "description": "`tweet-id` {`string`} - \n\nProperty: tweetId\n\nDefault: null"
         },
         {
           "name": "allowPopups",
-          "type": "string",
-          "default": "\"allow-popups\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "noPopups",
-          "attribute": "no-popups",
-          "type": "boolean"
+          "description": "`allowPopups` {`string`} - \n\nProperty: allowPopups\n\nDefault: allow-popups"
         },
         {
-          "name": "lang",
-          "attribute": "lang",
-          "type": "string"
-        },
-        {
-          "name": "dataWidth",
-          "attribute": "data-width",
-          "type": "string",
-          "default": "\"550px\""
-        },
-        {
-          "name": "dataTheme",
-          "attribute": "data-theme",
-          "type": "string",
-          "default": "\"light\""
-        },
-        {
-          "name": "tweet",
-          "attribute": "tweet",
-          "type": "string"
-        },
-        {
-          "name": "tweetId",
-          "attribute": "tweet-id",
-          "type": "string"
-        },
-        {
-          "name": "allowPopups",
-          "attribute": "allowPopups",
-          "type": "string",
-          "default": "\"allow-popups\""
-        }
-      ],
-      "events": [
-        {
-          "name": "i18n-manager-register-element"
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     },
     {
       "name": "twitter-embed",
-      "path": "./twitter-embed.js",
-      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
+      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `_haxstate` {`boolean`} - \n\n  * `no-popups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `data-width` {`string`} - \n\n  * `data-theme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweet-id` {`string`} - \n\n  * `allowPopups` {`string`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `noPopups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `dataWidth` {`string`} - \n\n  * `dataTheme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweetId` {`string`} - \n\n  * `allowPopups` {`string`} - ",
       "attributes": [
         {
+          "name": "_haxstate",
+          "description": "`_haxstate` {`boolean`} - \n\nProperty: _haxstate",
+          "valueSet": "v"
+        },
+        {
           "name": "no-popups",
-          "type": "boolean"
+          "description": "`no-popups` {`boolean`} - \n\nProperty: noPopups",
+          "valueSet": "v"
         },
         {
           "name": "lang",
-          "type": "string"
+          "description": "`lang` {`string`} - \n\nProperty: lang"
         },
         {
           "name": "data-width",
-          "type": "string",
-          "default": "\"550px\""
+          "description": "`data-width` {`string`} - \n\nProperty: dataWidth\n\nDefault: 550px"
         },
         {
           "name": "data-theme",
-          "type": "string",
-          "default": "\"light\""
+          "description": "`data-theme` {`string`} - \n\nProperty: dataTheme\n\nDefault: light"
         },
         {
           "name": "tweet",
-          "type": "string"
+          "description": "`tweet` {`string`} - \n\nProperty: tweet\n\nDefault: null"
         },
         {
           "name": "tweet-id",
-          "type": "string"
+          "description": "`tweet-id` {`string`} - \n\nProperty: tweetId\n\nDefault: null"
         },
         {
           "name": "allowPopups",
-          "type": "string",
-          "default": "\"allow-popups\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "noPopups",
-          "attribute": "no-popups",
-          "type": "boolean"
+          "description": "`allowPopups` {`string`} - \n\nProperty: allowPopups\n\nDefault: allow-popups"
         },
         {
-          "name": "lang",
-          "attribute": "lang",
-          "type": "string"
-        },
-        {
-          "name": "dataWidth",
-          "attribute": "data-width",
-          "type": "string",
-          "default": "\"550px\""
-        },
-        {
-          "name": "dataTheme",
-          "attribute": "data-theme",
-          "type": "string",
-          "default": "\"light\""
-        },
-        {
-          "name": "tweet",
-          "attribute": "tweet",
-          "type": "string"
-        },
-        {
-          "name": "tweetId",
-          "attribute": "tweet-id",
-          "type": "string"
-        },
-        {
-          "name": "allowPopups",
-          "attribute": "allowPopups",
-          "type": "string",
-          "default": "\"allow-popups\""
-        }
-      ],
-      "events": [
-        {
-          "name": "i18n-manager-register-element"
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

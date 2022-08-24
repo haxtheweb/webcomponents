@@ -12,4 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const EbookButtonStory = () => utils.makeUsageDocs(EbookButton, import.meta.url, utils.makeElementFromHaxDemo(EbookButton));
+export const EbookButtonStory = () =>
+  utils.makeUsageDocs(
+    EbookButton,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(EbookButton)
+  );

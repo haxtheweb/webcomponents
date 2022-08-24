@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "undo-manager",
+      "description": "Events:\n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\nProperties:\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - ",
+      "attributes": [
+        {
+          "name": "can-undo",
+          "description": "`can-undo` {`boolean`} - If we can currently undo based on stack position\n\nProperty: canUndo",
+          "valueSet": "v"
+        },
+        {
+          "name": "can-redo",
+          "description": "`can-redo` {`boolean`} - If we can currently redo based on stack position\n\nProperty: canRedo",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - Allow for targetting OTHER elements w/ this behavior\n\nProperty: target"
+        },
+        {
+          "name": "stack",
+          "description": "`stack` - The undo stack order\n\nProperty: stack"
+        },
+        {
+          "name": "undoStackObserverProps",
+          "description": "`undoStackObserverProps` - Properties for the mutation observer\n\nProperty: undoStackObserverProps\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onstack-changed",
+          "description": "`stack-changed` {`CustomEvent<{ value: Undo; }>`} - "
+        },
+        {
+          "name": "oncan-undo-changed",
+          "description": "`can-undo-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "oncan-redo-changed",
+          "description": "`can-redo-changed` {`CustomEvent<{ value: any; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "undo-manager",
+      "description": "Events:\n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\nProperties:\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - ",
+      "attributes": [
+        {
+          "name": "can-undo",
+          "description": "`can-undo` {`boolean`} - If we can currently undo based on stack position\n\nProperty: canUndo",
+          "valueSet": "v"
+        },
+        {
+          "name": "can-redo",
+          "description": "`can-redo` {`boolean`} - If we can currently redo based on stack position\n\nProperty: canRedo",
+          "valueSet": "v"
+        },
+        {
+          "name": "target",
+          "description": "`target` - Allow for targetting OTHER elements w/ this behavior\n\nProperty: target"
+        },
+        {
+          "name": "stack",
+          "description": "`stack` - The undo stack order\n\nProperty: stack"
+        },
+        {
+          "name": "undoStackObserverProps",
+          "description": "`undoStackObserverProps` - Properties for the mutation observer\n\nProperty: undoStackObserverProps\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onstack-changed",
+          "description": "`stack-changed` {`CustomEvent<{ value: Undo; }>`} - "
+        },
+        {
+          "name": "oncan-undo-changed",
+          "description": "`can-undo-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "oncan-redo-changed",
+          "description": "`can-redo-changed` {`CustomEvent<{ value: any; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "undo-manager",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

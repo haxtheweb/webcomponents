@@ -1,317 +1,149 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-autocomplete-text-trigger",
-      "path": "./lib/simple-autocomplete-text-trigger.js",
+      "description": "Attributes:\n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - \n\nProperties:\n\n  * `haxUIElement` {`boolean`} - \n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - ",
       "attributes": [
         {
           "name": "target",
-          "type": "object"
+          "description": "`target` - \n\nProperty: target\n\nDefault: null"
         },
         {
           "name": "triggers",
-          "type": "object",
-          "default": "{}"
+          "description": "`triggers` - \n\nProperty: triggers\n\nDefault: [object Object]"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "haxUIElement",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "target",
-          "attribute": "target",
-          "type": "object"
-        },
-        {
-          "name": "triggers",
-          "attribute": "triggers",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
         }
       ]
     },
     {
       "name": "simple-autocomplete",
-      "path": "./simple-autocomplete.js",
-      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`",
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`\n\nEvents:\n\n  * `item-selected` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `item-limit` {`number`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `selection-position` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `itemLimit` {`number`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `selectionPosition` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
       "attributes": [
         {
           "name": "item-limit",
-          "type": "number",
-          "default": "6"
+          "description": "`item-limit` {`number`} - \n\nProperty: itemLimit\n\nDefault: 6"
         },
         {
           "name": "hide-input",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-input` {`boolean`} - \n\nProperty: hideInput\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "selection-position",
-          "type": "boolean",
-          "default": "false"
+          "description": "`selection-position` {`boolean`} - \n\nProperty: selectionPosition\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
         },
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "items",
-          "description": "These are the items to be filtered",
-          "type": "array"
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
         },
         {
           "name": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
         },
         {
           "name": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string"
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where"
         },
         {
           "name": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "itemLimit",
-          "attribute": "item-limit",
-          "type": "number",
-          "default": "6"
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
         },
         {
-          "name": "hideInput",
-          "attribute": "hide-input",
-          "type": "boolean",
-          "default": "false"
+          "name": "onitem-selected",
+          "description": "`item-selected` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "selectionPosition",
-          "attribute": "selection-position",
-          "type": "boolean",
-          "default": "false"
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "description": "These are the items to be filtered",
-          "type": "array"
-        },
-        {
-          "name": "like",
-          "attribute": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
-        },
-        {
-          "name": "where",
-          "attribute": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string"
-        },
-        {
-          "name": "caseSensitive",
-          "attribute": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "filtered",
-          "attribute": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "events": [
-        {
-          "name": "item-selected"
-        },
-        {
-          "name": "filter"
-        },
-        {
-          "name": "filtered-changed"
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
         }
       ]
     },
     {
       "name": "simple-autocomplete",
-      "path": "./src/simple-autocomplete.js",
-      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`",
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`\n\nEvents:\n\n  * `item-selected` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `item-limit` {`number`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `selection-position` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `itemLimit` {`number`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `selectionPosition` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
       "attributes": [
         {
           "name": "item-limit",
-          "type": "number",
-          "default": "6"
+          "description": "`item-limit` {`number`} - \n\nProperty: itemLimit\n\nDefault: 6"
         },
         {
           "name": "hide-input",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-input` {`boolean`} - \n\nProperty: hideInput\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "selection-position",
-          "type": "boolean",
-          "default": "false"
+          "description": "`selection-position` {`boolean`} - \n\nProperty: selectionPosition\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
         },
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "items",
-          "description": "These are the items to be filtered",
-          "type": "array"
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
         },
         {
           "name": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
         },
         {
           "name": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string"
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where"
         },
         {
           "name": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "itemLimit",
-          "attribute": "item-limit",
-          "type": "number",
-          "default": "6"
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
         },
         {
-          "name": "hideInput",
-          "attribute": "hide-input",
-          "type": "boolean",
-          "default": "false"
+          "name": "onitem-selected",
+          "description": "`item-selected` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "selectionPosition",
-          "attribute": "selection-position",
-          "type": "boolean",
-          "default": "false"
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "description": "These are the items to be filtered",
-          "type": "array"
-        },
-        {
-          "name": "like",
-          "attribute": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
-        },
-        {
-          "name": "where",
-          "attribute": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string"
-        },
-        {
-          "name": "caseSensitive",
-          "attribute": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "filtered",
-          "attribute": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "events": [
-        {
-          "name": "item-selected"
-        },
-        {
-          "name": "filter"
-        },
-        {
-          "name": "filtered-changed"
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

@@ -1,133 +1,63 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "vocab-term",
-      "path": "./src/vocab-term.js",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`",
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
       "attributes": [
         {
           "name": "popover-mode",
-          "type": "boolean",
-          "default": "false"
+          "description": "`popover-mode` {`boolean`} - \n\nProperty: popoverMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "term",
-          "type": "string",
-          "default": "\"\""
+          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: "
         },
         {
           "name": "information",
-          "type": "string",
-          "default": "\"\""
+          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: "
         },
         {
           "name": "links",
-          "type": "array",
-          "default": "[]"
+          "description": "`links` {`any[]`} - \n\nProperty: links\n\nDefault: "
         },
         {
           "name": "detailsOpen",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "popoverMode",
-          "attribute": "popover-mode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "term",
-          "attribute": "term",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "information",
-          "attribute": "information",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "links",
-          "attribute": "links",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "detailsOpen",
-          "attribute": "detailsOpen",
-          "type": "boolean",
-          "default": "false"
+          "description": "`detailsOpen` {`boolean`} - \n\nProperty: detailsOpen\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "vocab-term",
-      "path": "./vocab-term.js",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`",
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
       "attributes": [
         {
           "name": "popover-mode",
-          "type": "boolean",
-          "default": "false"
+          "description": "`popover-mode` {`boolean`} - \n\nProperty: popoverMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "term",
-          "type": "string",
-          "default": "\"\""
+          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: "
         },
         {
           "name": "information",
-          "type": "string",
-          "default": "\"\""
+          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: "
         },
         {
           "name": "links",
-          "type": "array",
-          "default": "[]"
+          "description": "`links` {`any[]`} - \n\nProperty: links\n\nDefault: "
         },
         {
           "name": "detailsOpen",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "popoverMode",
-          "attribute": "popover-mode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "term",
-          "attribute": "term",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "information",
-          "attribute": "information",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "links",
-          "attribute": "links",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "detailsOpen",
-          "attribute": "detailsOpen",
-          "type": "boolean",
-          "default": "false"
+          "description": "`detailsOpen` {`boolean`} - \n\nProperty: detailsOpen\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

@@ -12,5 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const RpgCharacterStory = () => utils.makeUsageDocs(RpgCharacter, import.meta.url, utils.makeElementFromHaxDemo(RpgCharacter));
-
+export const RpgCharacterStory = () =>
+  utils.makeUsageDocs(
+    RpgCharacter,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(RpgCharacter)
+  );

@@ -1,448 +1,186 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "page-break-manager",
-      "path": "./lib/page-break-manager.js",
-      "properties": [
-        {
-          "name": "target"
-        },
-        {
-          "name": "breaks",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
+      "description": "Properties:\n\n  * `target` - \n\n  * `breaks` {`never[]`} - \n\n  * `_timer` {`number`} - ",
+      "attributes": []
     },
     {
       "name": "page-break-outline",
-      "path": "./lib/page-break-outline.js",
+      "description": "Attributes:\n\n  * `selector` - \n\n  * `base-path` {} - \n\nProperties:\n\n  * `target` - \n\n  * `selector` - \n\n  * `div` - \n\n  * `basePath` {`string`} - ",
       "attributes": [
         {
-          "name": "selector"
-        },
-        {
-          "name": "base-path"
-        }
-      ],
-      "properties": [
-        {
-          "name": "target"
-        },
-        {
           "name": "selector",
-          "attribute": "selector"
+          "description": "`selector` - \n\nProperty: selector\n\nDefault: null"
         },
         {
-          "name": "div"
-        },
-        {
-          "name": "basePath",
-          "type": "string",
-          "default": "\"\""
+          "name": "base-path",
+          "description": "`base-path` {} - \n\n"
         }
       ]
     },
     {
       "name": "page-break",
-      "path": "./page-break.js",
-      "description": "`page-break`\n`a visual break but also helps manage hierarchy`",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`\n\nEvents:\n\n  * `page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - \n\n  * `page-break-change` {`CustomEvent<{ value: this; }>`} - \n\n  * `hax-refresh-tray-form` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - \n\n  * `status` {`string`} - \n\n  * `title` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `item-id` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `break-type` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `t` - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `parent` {`string`} - \n\n  * `status` {`string`} - \n\n  * `title` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `target` - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `itemId` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `remoteHeadingobserver` - \n\n  * `breakType` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `t` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "parent",
-          "type": "string"
+          "description": "`parent` {`string`} - \n\nProperty: parent"
         },
         {
           "name": "status",
-          "type": "string",
-          "default": "\"\""
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"newPage\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: newPage"
         },
         {
           "name": "slug",
-          "type": "string",
-          "default": "\"\""
+          "description": "`slug` {`string`} - \n\nProperty: slug\n\nDefault: "
         },
         {
           "name": "published",
-          "type": "boolean",
-          "default": "false"
+          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "locked",
-          "type": "boolean",
-          "default": "false"
+          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "order",
-          "type": "number"
+          "description": "`order` {`number`} - \n\nProperty: order\n\nDefault: null"
         },
         {
           "name": "depth",
-          "type": "number",
-          "default": "0"
+          "description": "`depth` {`number`} - \n\nProperty: depth\n\nDefault: 0"
         },
         {
           "name": "item-id",
-          "type": "string"
+          "description": "`item-id` {`string`} - \n\nProperty: itemId\n\nDefault: null"
+        },
+        {
+          "name": "_haxState",
+          "description": "`_haxState` {`boolean`} - \n\nProperty: _haxState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "break-type",
-          "type": "string",
-          "default": "\"node\""
+          "description": "`break-type` {`string`} - \n\nProperty: breakType\n\nDefault: node"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "t",
-          "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "schemaMap",
-          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-          "type": "object",
-          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "parent",
-          "attribute": "parent",
-          "type": "string"
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "status",
-          "attribute": "status",
-          "type": "string",
-          "default": "\"\""
+          "name": "onpage-break-registration",
+          "description": "`page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - "
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"newPage\""
+          "name": "onpage-break-change",
+          "description": "`page-break-change` {`CustomEvent<{ value: this; }>`} - "
         },
         {
-          "name": "slug",
-          "attribute": "slug",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "published",
-          "attribute": "published",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "target"
-        },
-        {
-          "name": "locked",
-          "attribute": "locked",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "order",
-          "attribute": "order",
-          "type": "number"
-        },
-        {
-          "name": "depth",
-          "attribute": "depth",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "itemId",
-          "attribute": "item-id",
-          "type": "string"
-        },
-        {
-          "name": "remoteHeadingobserver"
-        },
-        {
-          "name": "breakType",
-          "attribute": "break-type",
-          "type": "string",
-          "default": "\"node\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "250"
-        },
-        {
-          "name": "IORoot"
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
-        },
-        {
-          "name": "schemaResourceID",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "schemaMap",
-          "attribute": "schemaMap",
-          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-          "type": "object",
-          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
-        }
-      ],
-      "events": [
-        {
-          "name": "page-break-registration"
-        },
-        {
-          "name": "page-break-change"
-        },
-        {
-          "name": "hax-refresh-tray-form"
+          "name": "onhax-refresh-tray-form",
+          "description": "`hax-refresh-tray-form` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "page-break-manager",
-      "path": "./page-break.umd.js"
+      "attributes": []
     },
     {
       "name": "page-break",
-      "path": "./src/page-break.js",
-      "description": "`page-break`\n`a visual break but also helps manage hierarchy`",
+      "description": "`page-break`\n`a visual break but also helps manage hierarchy`\n\nEvents:\n\n  * `page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - \n\n  * `page-break-change` {`CustomEvent<{ value: this; }>`} - \n\n  * `hax-refresh-tray-form` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - \n\n  * `status` {`string`} - \n\n  * `title` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `item-id` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `break-type` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `t` - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `parent` {`string`} - \n\n  * `status` {`string`} - \n\n  * `title` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `target` - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `itemId` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `remoteHeadingobserver` - \n\n  * `breakType` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `t` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "parent",
-          "type": "string"
+          "description": "`parent` {`string`} - \n\nProperty: parent"
         },
         {
           "name": "status",
-          "type": "string",
-          "default": "\"\""
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"newPage\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: newPage"
         },
         {
           "name": "slug",
-          "type": "string",
-          "default": "\"\""
+          "description": "`slug` {`string`} - \n\nProperty: slug\n\nDefault: "
         },
         {
           "name": "published",
-          "type": "boolean",
-          "default": "false"
+          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "locked",
-          "type": "boolean",
-          "default": "false"
+          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "order",
-          "type": "number"
+          "description": "`order` {`number`} - \n\nProperty: order\n\nDefault: null"
         },
         {
           "name": "depth",
-          "type": "number",
-          "default": "0"
+          "description": "`depth` {`number`} - \n\nProperty: depth\n\nDefault: 0"
         },
         {
           "name": "item-id",
-          "type": "string"
+          "description": "`item-id` {`string`} - \n\nProperty: itemId\n\nDefault: null"
+        },
+        {
+          "name": "_haxState",
+          "description": "`_haxState` {`boolean`} - \n\nProperty: _haxState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "break-type",
-          "type": "string",
-          "default": "\"node\""
+          "description": "`break-type` {`string`} - \n\nProperty: breakType\n\nDefault: node"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "t",
-          "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "schemaMap",
-          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-          "type": "object",
-          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "parent",
-          "attribute": "parent",
-          "type": "string"
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         },
         {
-          "name": "status",
-          "attribute": "status",
-          "type": "string",
-          "default": "\"\""
+          "name": "onpage-break-registration",
+          "description": "`page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - "
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"newPage\""
+          "name": "onpage-break-change",
+          "description": "`page-break-change` {`CustomEvent<{ value: this; }>`} - "
         },
         {
-          "name": "slug",
-          "attribute": "slug",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "published",
-          "attribute": "published",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "target"
-        },
-        {
-          "name": "locked",
-          "attribute": "locked",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "order",
-          "attribute": "order",
-          "type": "number"
-        },
-        {
-          "name": "depth",
-          "attribute": "depth",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "itemId",
-          "attribute": "item-id",
-          "type": "string"
-        },
-        {
-          "name": "remoteHeadingobserver"
-        },
-        {
-          "name": "breakType",
-          "attribute": "break-type",
-          "type": "string",
-          "default": "\"node\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "250"
-        },
-        {
-          "name": "IORoot"
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object",
-          "default": "{\"newPage\":\"New page\",\"pageBreak\":\"Page break\",\"pageDetails\":\"Page details\",\"clickToUnlock\":\"Click to unlock\",\"noParent\":\"No parent\",\"toggleLock\":\"Toggle lock\",\"togglePublished\":\"Toggle published\"}"
-        },
-        {
-          "name": "schemaResourceID",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "schemaMap",
-          "attribute": "schemaMap",
-          "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-          "type": "object",
-          "default": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
-        }
-      ],
-      "events": [
-        {
-          "name": "page-break-registration"
-        },
-        {
-          "name": "page-break-change"
-        },
-        {
-          "name": "hax-refresh-tray-form"
+          "name": "onhax-refresh-tray-form",
+          "description": "`hax-refresh-tray-form` {`CustomEvent<any>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

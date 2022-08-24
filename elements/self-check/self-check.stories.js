@@ -11,5 +11,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicSelfCheck = () => utils.makeUsageDocs(SelfCheck, import.meta.url, utils.makeElementFromHaxDemo(SelfCheck));
-
+export const BasicSelfCheck = () =>
+  utils.makeUsageDocs(
+    SelfCheck,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(SelfCheck)
+  );

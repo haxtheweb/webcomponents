@@ -133,4 +133,9 @@ export const AccentCardStory = () => {
     ]
   );
 };
-export const AccentCardHaxStory = () => utils.makeUsageDocs(AccentCard, import.meta.url, utils.makeElementFromHaxDemo(AccentCard));
+export const AccentCardHaxStory = () =>
+  utils.makeUsageDocs(
+    AccentCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(AccentCard)
+  );

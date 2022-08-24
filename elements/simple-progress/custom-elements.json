@@ -1,55 +1,29 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-progress",
-      "path": "./simple-progress.js",
-      "description": "`simple-progress`\n`a simple progress slider bar`",
+      "description": "`simple-progress`\n`a simple progress slider bar`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "disabled",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "template"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "simple-progress",
-      "path": "./src/simple-progress.js",
-      "description": "`simple-progress`\n`a simple progress slider bar`",
+      "description": "`simple-progress`\n`a simple progress slider bar`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "disabled",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "template"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

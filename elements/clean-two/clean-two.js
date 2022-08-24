@@ -569,10 +569,10 @@ class CleanTwo extends HAXCMSOperationButtons(
               ${!["lg", "xl"].includes(this.responsiveSize)
                 ? html`
                     <div part="site-menu-content">
-                    <site-menu-content
-                      .part="${this.editMode ? `edit-mode-active` : ``}"
-                      mobile
-                    ></site-menu-content>
+                      <site-menu-content
+                        .part="${this.editMode ? `edit-mode-active` : ``}"
+                        mobile
+                      ></site-menu-content>
                     </div>
                   `
                 : ``}

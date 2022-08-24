@@ -1,203 +1,114 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "midi-player",
-      "path": "./lib/html-midi-player.js",
+      "description": "Events:\n\n  * `load` {`CustomEvent<any>`} - \n\n  * `start` {`CustomEvent<any>`} - \n\n  * `note` {`CustomEvent<{ note: any; }>`} - \n\n  * `stop` {`CustomEvent<{ finished: boolean; }>`} - \n\nAttributes:\n\n  * `src` {`string | null`} - \n\n  * `sound-font` {} - \n\n  * `visualizer` {} - \n\nProperties:\n\n  * `noteSequence` - \n\n  * `soundFont` {`string | null`} - \n\n  * `currentTime` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `playing` {`boolean`} - \n\n  * `src` {`string | null`} - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string | null"
+          "description": "`src` {`string | null`} - \n\nProperty: src",
+          "values": []
         },
         {
-          "name": "sound-font"
+          "name": "sound-font",
+          "description": "`sound-font` {} - \n\n"
         },
         {
-          "name": "visualizer"
-        }
-      ],
-      "properties": [
-        {
-          "name": "noteSequence"
+          "name": "visualizer",
+          "description": "`visualizer` {} - \n\n"
         },
         {
-          "name": "soundFont",
-          "type": "string | null"
+          "name": "onload",
+          "description": "`load` {`CustomEvent<any>`} - "
         },
         {
-          "name": "currentTime",
-          "type": "number"
+          "name": "onstart",
+          "description": "`start` {`CustomEvent<any>`} - "
         },
         {
-          "name": "duration",
-          "type": "number"
+          "name": "onnote",
+          "description": "`note` {`CustomEvent<{ note: any; }>`} - "
         },
         {
-          "name": "playing",
-          "type": "boolean"
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string | null"
-        }
-      ],
-      "events": [
-        {
-          "name": "load"
-        },
-        {
-          "name": "start"
-        },
-        {
-          "name": "note"
-        },
-        {
-          "name": "stop"
+          "name": "onstop",
+          "description": "`stop` {`CustomEvent<{ finished: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "midi-visualizer",
-      "path": "./lib/html-midi-player.js",
+      "description": "Attributes:\n\n  * `src` {`string | null`} - \n\n  * `type` {`string | null`} - \n\nProperties:\n\n  * `noteSequence` - \n\n  * `config` - \n\n  * `src` {`string | null`} - \n\n  * `type` {`string | null`} - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string | null"
+          "description": "`src` {`string | null`} - \n\nProperty: src",
+          "values": []
         },
         {
           "name": "type",
-          "type": "string | null"
-        }
-      ],
-      "properties": [
-        {
-          "name": "noteSequence"
-        },
-        {
-          "name": "config"
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string | null"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string | null"
+          "description": "`type` {`string | null`} - \n\nProperty: type",
+          "values": []
         }
       ]
     },
     {
       "name": "music-player",
-      "path": "./music-player.js",
-      "description": "`music-player`\n`Visualize different types of music and simple format player`",
+      "description": "`music-player`\n`Visualize different types of music and simple format player`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `no-waterfall` {`boolean`} - \n\n  * `no-visual` {`boolean`} - \n\n  * `visualizer` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `noWaterfall` {`boolean`} - \n\n  * `noVisual` {`boolean`} - \n\n  * `visualizer` {`string`} - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "no-waterfall",
-          "type": "boolean",
-          "default": "false"
+          "description": "`no-waterfall` {`boolean`} - \n\nProperty: noWaterfall\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "no-visual",
-          "type": "boolean",
-          "default": "false"
+          "description": "`no-visual` {`boolean`} - \n\nProperty: noVisual\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "visualizer",
-          "type": "string",
-          "default": "\"staff\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "noWaterfall",
-          "attribute": "no-waterfall",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "noVisual",
-          "attribute": "no-visual",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "visualizer",
-          "attribute": "visualizer",
-          "type": "string",
-          "default": "\"staff\""
+          "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
         }
       ]
     },
     {
       "name": "midi-player",
-      "path": "./music-player.umd.js"
+      "attributes": []
     },
     {
       "name": "midi-visualizer",
-      "path": "./music-player.umd.js"
+      "attributes": []
     },
     {
       "name": "music-player",
-      "path": "./src/music-player.js",
-      "description": "`music-player`\n`Visualize different types of music and simple format player`",
+      "description": "`music-player`\n`Visualize different types of music and simple format player`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `no-waterfall` {`boolean`} - \n\n  * `no-visual` {`boolean`} - \n\n  * `visualizer` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `noWaterfall` {`boolean`} - \n\n  * `noVisual` {`boolean`} - \n\n  * `visualizer` {`string`} - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "no-waterfall",
-          "type": "boolean",
-          "default": "false"
+          "description": "`no-waterfall` {`boolean`} - \n\nProperty: noWaterfall\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "no-visual",
-          "type": "boolean",
-          "default": "false"
+          "description": "`no-visual` {`boolean`} - \n\nProperty: noVisual\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "visualizer",
-          "type": "string",
-          "default": "\"staff\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "noWaterfall",
-          "attribute": "no-waterfall",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "noVisual",
-          "attribute": "no-visual",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "visualizer",
-          "attribute": "visualizer",
-          "type": "string",
-          "default": "\"staff\""
+          "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

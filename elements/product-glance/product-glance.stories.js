@@ -12,12 +12,15 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const ProductGlanceStory = () => {
-  return utils.makeUsageDocs(ProductGlance, import.meta.url, utils.makeElementFromClass(ProductGlance,
-    {
+  return utils.makeUsageDocs(
+    ProductGlance,
+    import.meta.url,
+    utils.makeElementFromClass(ProductGlance, {
       title: "The upside-down",
       dark: true,
-      'accent-color': 'red',
+      "accent-color": "red",
       subtitle: "A great netflix show about a board game gone wrong.",
-      icon: "save"
-    }));
+      icon: "save",
+    })
+  );
 };

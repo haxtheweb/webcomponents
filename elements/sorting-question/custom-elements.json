@@ -1,15 +1,17 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "sorting-question",
-      "path": "./sorting-question.js",
-      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`"
+      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`\n\n",
+      "attributes": []
     },
     {
       "name": "sorting-question",
-      "path": "./src/sorting-question.js",
-      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`"
+      "description": "`sorting-question`\n`sorting questions to be in the right order when they are randomized.`\n\n",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

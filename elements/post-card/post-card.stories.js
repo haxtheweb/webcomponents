@@ -14,5 +14,9 @@ export default {
 
 const utils = new StorybookUtilities();
 export const PostCardStory = () => {
-  return utils.makeUsageDocs(PostCard, import.meta.url, utils.makeElementFromHaxDemo(PostCard));
+  return utils.makeUsageDocs(
+    PostCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(PostCard)
+  );
 };

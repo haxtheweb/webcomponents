@@ -13,5 +13,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const VocabTermStory = () => utils.makeUsageDocs(VocabTerm, import.meta.url, utils.makeElementFromHaxDemo(VocabTerm));
-
+export const VocabTermStory = () =>
+  utils.makeUsageDocs(
+    VocabTerm,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(VocabTerm)
+  );

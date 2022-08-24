@@ -1,143 +1,69 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "docx-example",
-      "path": "./demo/docx-example.js",
+      "description": "Attributes:\n\n  * `html` {`boolean`} - \n\n  * `pdf` {`boolean`} - \n\n  * `ascii` {`boolean`} - \n\n  * `screenshot` {`boolean`} - \n\nProperties:\n\n  * `html` {`boolean`} - \n\n  * `pdf` {`boolean`} - \n\n  * `ascii` {`boolean`} - \n\n  * `screenshot` {`boolean`} - ",
       "attributes": [
         {
           "name": "html",
-          "type": "boolean",
-          "default": "false"
+          "description": "`html` {`boolean`} - \n\nProperty: html\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "pdf",
-          "type": "boolean",
-          "default": "false"
+          "description": "`pdf` {`boolean`} - \n\nProperty: pdf\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "ascii",
-          "type": "boolean",
-          "default": "false"
+          "description": "`ascii` {`boolean`} - \n\nProperty: ascii\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "screenshot",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "attribute": "html",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "pdf",
-          "attribute": "pdf",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "ascii",
-          "attribute": "ascii",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "screenshot",
-          "attribute": "screenshot",
-          "type": "boolean",
-          "default": "false"
+          "description": "`screenshot` {`boolean`} - \n\nProperty: screenshot\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "mf-htmlmd-example",
-      "path": "./demo/mf-htmlmd-example.js",
+      "description": "Attributes:\n\n  * `img` {`boolean`} - \n\n  * `ddg` {`boolean`} - \n\n  * `haxcms` {`boolean`} - \n\n  * `mdhtml` {`boolean`} - \n\nProperties:\n\n  * `img` {`boolean`} - \n\n  * `ddg` {`boolean`} - \n\n  * `haxcms` {`boolean`} - \n\n  * `mdhtml` {`boolean`} - ",
       "attributes": [
         {
           "name": "img",
-          "type": "boolean",
-          "default": "false"
+          "description": "`img` {`boolean`} - \n\nProperty: img\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "ddg",
-          "type": "boolean",
-          "default": "false"
+          "description": "`ddg` {`boolean`} - \n\nProperty: ddg\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "haxcms",
-          "type": "boolean",
-          "default": "false"
+          "description": "`haxcms` {`boolean`} - \n\nProperty: haxcms\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "mdhtml",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "img",
-          "attribute": "img",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "ddg",
-          "attribute": "ddg",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "haxcms",
-          "attribute": "haxcms",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "mdhtml",
-          "attribute": "mdhtml",
-          "type": "boolean",
-          "default": "false"
+          "description": "`mdhtml` {`boolean`} - \n\nProperty: mdhtml\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "micro-frontend-registry",
-      "path": "./micro-frontend-registry.js",
-      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`",
-      "properties": [
-        {
-          "name": "list",
-          "type": "never[]",
-          "default": "[]"
-        },
-        {
-          "name": "MicroFrontend",
-          "type": "object",
-          "default": "\"MicroFrontend\""
-        }
-      ]
+      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`\n\nProperties:\n\n  * `list` {`never[]`} - \n\n  * `MicroFrontend` - ",
+      "attributes": []
     },
     {
       "name": "micro-frontend-registry",
-      "path": "./src/micro-frontend-registry.js",
-      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`",
-      "properties": [
-        {
-          "name": "list",
-          "type": "never[]",
-          "default": "[]"
-        },
-        {
-          "name": "MicroFrontend",
-          "type": "object",
-          "default": "\"MicroFrontend\""
-        }
-      ]
+      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`\n\nProperties:\n\n  * `list` {`never[]`} - \n\n  * `MicroFrontend` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

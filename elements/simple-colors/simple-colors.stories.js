@@ -24,8 +24,11 @@ export const SimpleColorsStory = () => {
       { property: "dark", title: "Invert Colors", inputMethod: "boolean" },
     ],
     knobs = utils.getKnobs(props, { accentColor: utils.randomColor() });
-  return utils.makeUsageDocs(SimpleColors, import.meta.url, utils.getDemo(
-    `<style>
+  return utils.makeUsageDocs(
+    SimpleColors,
+    import.meta.url,
+    utils.getDemo(
+      `<style>
       div {
         padding: 20px;
         margin: 0 0 15px;
@@ -85,7 +88,7 @@ export const SimpleColorsStory = () => {
         <button class="delete">Delete</button>
       </div>
     </simple-colors>`,
-    `<p>
+      `<p>
       Simple-colors is a method for managing colors. It includes a 
       custom element, and CSS variables declared in shared styles.
     </p>
@@ -93,7 +96,8 @@ export const SimpleColorsStory = () => {
       With simple colors, you can easily create a dark mode version of 
       your interfaces, and/or swap accent colors on the fly.
     </p>`
-  ));
+    )
+  );
 };
 
 export const AllTheSimpleColors = () => {

@@ -12,4 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BlockQuoteStory = () => utils.makeUsageDocs(BlockQuote, import.meta.url, utils.makeElementFromHaxDemo(BlockQuote));
+export const BlockQuoteStory = () =>
+  utils.makeUsageDocs(
+    BlockQuote,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(BlockQuote)
+  );

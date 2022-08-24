@@ -1,217 +1,103 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "enhanced-text",
-      "path": "./enhanced-text.js",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`",
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`\n\nAttributes:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixation-point` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcms-glossary` {`boolean`} - \n\n  * `haxcms-site-location` {`string`} - \n\n  * `haxcms-site` - \n\n  * `haxcms-mark-all` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixationPoint` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcmsGlossary` {`boolean`} - \n\n  * `haxcmsSiteLocation` {`string`} - \n\n  * `haxcmsSite` - \n\n  * `haxcmsMarkAll` {`boolean`} - ",
       "attributes": [
         {
           "name": "loading",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "auto",
-          "type": "boolean",
-          "default": "false"
+          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "fixation-point",
-          "type": "number",
-          "default": "4"
+          "description": "`fixation-point` {`number`} - \n\nProperty: fixationPoint\n\nDefault: 4"
         },
         {
           "name": "vide",
-          "type": "boolean",
-          "default": "false"
+          "description": "`vide` {`boolean`} - \n\nProperty: vide\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "wikipedia",
-          "type": "boolean",
-          "default": "false"
+          "description": "`wikipedia` {`boolean`} - \n\nProperty: wikipedia\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "haxcms-glossary",
-          "type": "boolean",
-          "default": "false"
+          "description": "`haxcms-glossary` {`boolean`} - \n\nProperty: haxcmsGlossary\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "haxcms-site-location",
-          "type": "string",
-          "default": "\"\""
+          "description": "`haxcms-site-location` {`string`} - \n\nProperty: haxcmsSiteLocation\n\nDefault: "
         },
         {
           "name": "haxcms-site",
-          "type": "object"
+          "description": "`haxcms-site` - \n\nProperty: haxcmsSite\n\nDefault: null"
         },
         {
           "name": "haxcms-mark-all",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "auto",
-          "attribute": "auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "fixationPoint",
-          "attribute": "fixation-point",
-          "type": "number",
-          "default": "4"
-        },
-        {
-          "name": "vide",
-          "attribute": "vide",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "wikipedia",
-          "attribute": "wikipedia",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "haxcmsGlossary",
-          "attribute": "haxcms-glossary",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "haxcmsSiteLocation",
-          "attribute": "haxcms-site-location",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "haxcmsSite",
-          "attribute": "haxcms-site",
-          "type": "object"
-        },
-        {
-          "name": "haxcmsMarkAll",
-          "attribute": "haxcms-mark-all",
-          "type": "boolean",
-          "default": "false"
+          "description": "`haxcms-mark-all` {`boolean`} - \n\nProperty: haxcmsMarkAll\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "enhanced-text",
-      "path": "./src/enhanced-text.js",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`",
+      "description": "`enhanced-text`\n`take text and process it with various enhancements`\n\nAttributes:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixation-point` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcms-glossary` {`boolean`} - \n\n  * `haxcms-site-location` {`string`} - \n\n  * `haxcms-site` - \n\n  * `haxcms-mark-all` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixationPoint` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcmsGlossary` {`boolean`} - \n\n  * `haxcmsSiteLocation` {`string`} - \n\n  * `haxcmsSite` - \n\n  * `haxcmsMarkAll` {`boolean`} - ",
       "attributes": [
         {
           "name": "loading",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "auto",
-          "type": "boolean",
-          "default": "false"
+          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "fixation-point",
-          "type": "number",
-          "default": "4"
+          "description": "`fixation-point` {`number`} - \n\nProperty: fixationPoint\n\nDefault: 4"
         },
         {
           "name": "vide",
-          "type": "boolean",
-          "default": "false"
+          "description": "`vide` {`boolean`} - \n\nProperty: vide\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "wikipedia",
-          "type": "boolean",
-          "default": "false"
+          "description": "`wikipedia` {`boolean`} - \n\nProperty: wikipedia\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "haxcms-glossary",
-          "type": "boolean",
-          "default": "false"
+          "description": "`haxcms-glossary` {`boolean`} - \n\nProperty: haxcmsGlossary\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "haxcms-site-location",
-          "type": "string",
-          "default": "\"\""
+          "description": "`haxcms-site-location` {`string`} - \n\nProperty: haxcmsSiteLocation\n\nDefault: "
         },
         {
           "name": "haxcms-site",
-          "type": "object"
+          "description": "`haxcms-site` - \n\nProperty: haxcmsSite\n\nDefault: null"
         },
         {
           "name": "haxcms-mark-all",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "auto",
-          "attribute": "auto",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "fixationPoint",
-          "attribute": "fixation-point",
-          "type": "number",
-          "default": "4"
-        },
-        {
-          "name": "vide",
-          "attribute": "vide",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "wikipedia",
-          "attribute": "wikipedia",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "haxcmsGlossary",
-          "attribute": "haxcms-glossary",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "haxcmsSiteLocation",
-          "attribute": "haxcms-site-location",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "haxcmsSite",
-          "attribute": "haxcms-site",
-          "type": "object"
-        },
-        {
-          "name": "haxcmsMarkAll",
-          "attribute": "haxcms-mark-all",
-          "type": "boolean",
-          "default": "false"
+          "description": "`haxcms-mark-all` {`boolean`} - \n\nProperty: haxcmsMarkAll\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

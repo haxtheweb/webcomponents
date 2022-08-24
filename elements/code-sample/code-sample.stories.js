@@ -12,4 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicCodeSample = () => utils.makeUsageDocs(CodeSample, import.meta.url, utils.makeElementFromHaxDemo(CodeSample));
+export const BasicCodeSample = () =>
+  utils.makeUsageDocs(
+    CodeSample,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(CodeSample)
+  );

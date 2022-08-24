@@ -13,4 +13,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const ActivityBoxStory = () => utils.makeUsageDocs(ActivityBox, import.meta.url, utils.makeElementFromHaxDemo(ActivityBox));
+export const ActivityBoxStory = () =>
+  utils.makeUsageDocs(
+    ActivityBox,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(ActivityBox)
+  );

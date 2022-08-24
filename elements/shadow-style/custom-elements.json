@@ -1,29 +1,17 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "shadow-style",
-      "path": "./shadow-style.js",
-      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
-      "properties": [
-        {
-          "name": "cssMap",
-          "type": "object",
-          "default": "{}"
-        }
-      ]
+      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`\n\nProperties:\n\n  * `cssMap` - ",
+      "attributes": []
     },
     {
       "name": "shadow-style",
-      "path": "./src/shadow-style.js",
-      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
-      "properties": [
-        {
-          "name": "cssMap",
-          "type": "object",
-          "default": "{}"
-        }
-      ]
+      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`\n\nProperties:\n\n  * `cssMap` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

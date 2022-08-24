@@ -13,4 +13,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const AppHaxStory = () => utils.makeUsageDocs(AppHax, import.meta.url, utils.makeElementFromHaxDemo(AppHax));
+export const AppHaxStory = () =>
+  utils.makeUsageDocs(
+    AppHax,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(AppHax)
+  );

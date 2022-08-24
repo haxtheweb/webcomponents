@@ -1,255 +1,103 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "product-offering",
-      "path": "./product-offering.js",
-      "description": "`product-offering`\n`Simple card for displaying product info`",
+      "description": "`product-offering`\n`Simple card for displaying product info`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "`icon` {`string`} - \n\nProperty: icon"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_titleOne",
+          "description": "`_titleOne` {`string`} - \n\nProperty: _titleOne"
+        },
+        {
+          "name": "_titleTwo",
+          "description": "`_titleTwo` {`string`} - \n\nProperty: _titleTwo"
         },
         {
           "name": "description",
-          "type": "string"
+          "description": "`description` {`string`} - \n\nProperty: description"
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"blue\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "attribute": "description",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"blue\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "product-offering",
-      "path": "./src/product-offering.js",
-      "description": "`product-offering`\n`Simple card for displaying product info`",
+      "description": "`product-offering`\n`Simple card for displaying product info`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "`icon` {`string`} - \n\nProperty: icon"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_titleOne",
+          "description": "`_titleOne` {`string`} - \n\nProperty: _titleOne"
+        },
+        {
+          "name": "_titleTwo",
+          "description": "`_titleTwo` {`string`} - \n\nProperty: _titleTwo"
         },
         {
           "name": "description",
-          "type": "string"
+          "description": "`description` {`string`} - \n\nProperty: description"
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"blue\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "attribute": "description",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"blue\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

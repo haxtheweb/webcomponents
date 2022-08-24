@@ -629,8 +629,8 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
         if (d.tags) {
           await d.tags.forEach((item) => {
             // ignore source versions
-            if (!item.path.startsWith('./src/')) {
-              allD += item.name + "\n" + item.path + "\n" + (item.description ? item.description + "\n" : '') + "\n";
+            if (!item.path || !item.path.startsWith('./src/')) {
+              allD += item.name + "\n" + (item.path ? item.path + "\n" : '') + (item.description ? item.description + "\n" : '') + "\n";
             }
           })
         }

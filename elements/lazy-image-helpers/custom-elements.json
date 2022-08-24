@@ -1,449 +1,139 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "lazy-image-helpers",
-      "path": "./lazy-image-helpers.js",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
         },
         {
           "name": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "image-loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
-        },
-        {
-          "name": "describedBy",
-          "attribute": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
-        },
-        {
-          "name": "loaded",
-          "attribute": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "replacementDelay",
-          "type": "number",
-          "default": "1000"
-        },
-        {
-          "name": "imageLoaded",
-          "attribute": "image-loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "loadingImg",
-          "type": "string",
-          "default": "\"loading:bars\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.1,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.1"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lazy-image",
-      "path": "./lazy-image-helpers.js",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
         },
         {
           "name": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "image-loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
-        },
-        {
-          "name": "describedBy",
-          "attribute": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
-        },
-        {
-          "name": "loaded",
-          "attribute": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "replacementDelay",
-          "type": "number",
-          "default": "1000"
-        },
-        {
-          "name": "imageLoaded",
-          "attribute": "image-loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "loadingImg",
-          "type": "string",
-          "default": "\"loading:bars\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.1,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.1"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lazy-image-helpers",
-      "path": "./src/lazy-image-helpers.js",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
         },
         {
           "name": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "image-loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
-        },
-        {
-          "name": "describedBy",
-          "attribute": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
-        },
-        {
-          "name": "loaded",
-          "attribute": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "replacementDelay",
-          "type": "number",
-          "default": "1000"
-        },
-        {
-          "name": "imageLoaded",
-          "attribute": "image-loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "loadingImg",
-          "type": "string",
-          "default": "\"loading:bars\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.1,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.1"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "lazy-image",
-      "path": "./src/lazy-image-helpers.js",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
         },
         {
           "name": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "image-loaded",
-          "type": "boolean",
-          "default": "false"
+          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "description": "Alt text for image.",
-          "type": "string"
-        },
-        {
-          "name": "describedBy",
-          "attribute": "described-by",
-          "description": "Aria-describedby data passed down to appropriate tag",
-          "type": "string"
-        },
-        {
-          "name": "loaded",
-          "attribute": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "replacementDelay",
-          "type": "number",
-          "default": "1000"
-        },
-        {
-          "name": "imageLoaded",
-          "attribute": "image-loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "loadingImg",
-          "type": "string",
-          "default": "\"loading:bars\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.1,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.1"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

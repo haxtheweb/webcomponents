@@ -11,4 +11,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const A11yFigureStory = () => utils.makeUsageDocs(A11yFigure, import.meta.url, utils.makeElementFromHaxDemo(A11yFigure));
+export const A11yFigureStory = () =>
+  utils.makeUsageDocs(
+    A11yFigure,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(A11yFigure)
+  );
