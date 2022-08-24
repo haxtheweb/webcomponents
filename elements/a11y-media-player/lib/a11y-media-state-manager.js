@@ -58,7 +58,6 @@ class A11yMediaStateManager extends LitElement {
     this.players = [];
     this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
     this.__fullscreenManager = (e) => this._handleFullscreen(e.detail);
-    this.__scrollChecker = (e) => setTimeout(this._checkScroll(), 500);
     this.__playerLoader = (e) => this.players.push(e.detail);
 
     // sets the instance to the current instance
@@ -93,6 +92,44 @@ class A11yMediaStateManager extends LitElement {
   setActivePlayer(player) {
     this.activePlayer = player;
     this.checkConcurrentPlayers();
+    if(this.observer )this.observer.disconnect();
+    this.observer.observe(this.activePlayer);
+
+  }
+
+  /**
+   * active player observer
+   *
+   * @readonly
+   * @memberof A11yMediaStateManager
+   */
+  get observer(){
+    let handleIntersect = (entries, observer) => {
+        window.A11yMediaStateManager.instance._handleIntersect(entries, observer);
+    };
+    this._observer = this._observer || new IntersectionObserver(handleIntersect, {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.25,0.75]
+    });
+    return this._observer;
+  }
+  /**
+   * 
+   * handles when active player is out of range and sets stickiness accordingly
+   * @param {array} entries 
+   * @param {object} observer 
+   */
+  _handleIntersect(entries, observer){
+    entries.forEach((entry) => {
+      console.log(entry.isVisible,entry.isIntersecting,entry,this.activePlayer,observer);
+      if (!this.activePlayer || this.activePlayer.fullscreen) {
+      } else if (!this.activePlayer.__playing) {
+        this.activePlayer.toggleSticky(false);
+      } else {
+        this.activePlayer.toggleSticky(!entry.isIntersecting);
+      }
+    });
   }
 
   /**
@@ -101,7 +138,6 @@ class A11yMediaStateManager extends LitElement {
    * @param {object} the player to set stickiness
    */
   setStickyPlayer(player) {
-    let parent = this._getParentNode(player);
     if (
       player !== this.activePlayer &&
       this.activePlayer !== undefined &&
@@ -110,56 +146,12 @@ class A11yMediaStateManager extends LitElement {
       this.activePlayer.toggleSticky(false);
     }
     this.setActivePlayer(player);
-    setTimeout(this._checkScroll(), 500);
   }
+  
   _handleFullscreen(player) {
     if (player && player.fullscreen) this.setActivePlayer(player);
   }
-
-  /**
-   * checks the wondow's scroll position and compares it to active player to set sticky attribute
-   */
-  _checkScroll() {
-    if (this.__wait) return;
-    this.__wait = true;
-    let wintop = window.pageYOffset,
-      winbottom = wintop + window.innerHeight;
-    //no need to handle player if it isn't playing or if in fullscreen mode
-    if (!this.activePlayer || this.activePlayer.fullscreen) {
-    } else if (!this.activePlayer.__playing) {
-      this.activePlayer.toggleSticky(false);
-    } else {
-      let parent = this._getParentNode(this.activePlayer),
-        top = parent.offsetTop,
-        height = parent.offsetHeight,
-        upper = top + height * 0.8,
-        lower = top + height * 0.2;
-      if (lower > winbottom || upper < wintop) {
-        this.activePlayer.toggleSticky(true);
-      } else {
-        this.activePlayer.toggleSticky(false);
-      }
-    }
-    setTimeout((e) => (this.__wait = false), 500);
-  }
-
-  /**
-   * gets parent node in light DOM
-   *
-   * @param {object} the node
-   * @returns {object} the parent node
-   */
-  _getParentNode(node) {
-    let parent = node.parentNode;
-    if (
-      parent !== undefined &&
-      parent !== null &&
-      parent.nodeType === Node.DOCUMENT_FRAGMENT_NODE
-    ) {
-      parent = parent.host;
-    }
-    return parent;
-  }
+  
   connectedCallback() {
     super.connectedCallback();
     // listen for a player that starts playing
@@ -167,9 +159,6 @@ class A11yMediaStateManager extends LitElement {
 
     // listen for a player toggling fullscreen mode
     window.addEventListener("fullscreen-toggle", this._handleFullscreen);
-
-    // listen for scrolling and find out if a player is off-screen
-    window.addEventListener("scroll", this.__scrollChecker);
 
     // listen for a players added to the page
     window.addEventListener("a11y-player", this.__playerLoader);
@@ -182,7 +171,6 @@ class A11yMediaStateManager extends LitElement {
     window.removeEventListener("a11y-player", root.__playerLoader);
     window.removeEventListener("a11y-player-playing", root.__stickyManager);
     window.removeEventListener("fullscreen-toggle", root.__fullscreenManager);
-    window.removeEventListener("scroll", root.__scrollChecker);
     super.disconnectedCallback();
   }
 }
