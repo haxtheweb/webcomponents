@@ -68,7 +68,7 @@
         "inputMethod": "colorpicker"
       },
       {
-        "attribute": "dark",
+        "property": "dark",
         "title": "Dark theme",
         "description": "Enable dark theme for the player.",
         "inputMethod": "boolean"

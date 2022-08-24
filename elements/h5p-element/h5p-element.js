@@ -63,7 +63,7 @@ class H5PElement extends LitElement {
       settings: {
         configure: [
           {
-            attribute: "source",
+            property: "source",
             description: "Location the H5P file was unpacked to",
             inputMethod: "textfield",
             required: true,

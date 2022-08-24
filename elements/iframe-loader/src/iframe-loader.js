@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "./lib/loading-indicator.js";
 
-class IframeLoader extends LitElement {
+export class IframeLoader extends LitElement {
   static get properties() {
     return {
       loading: { type: Boolean },

@@ -1,9 +1,0 @@
-{
-  "selected": {
-    "type": Number
-  },
-  "selectedAttribute": {
-    "type": String,
-    "attribute": "selected-attribute"
-  }
-}

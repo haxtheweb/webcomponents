@@ -1,54 +1,35 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "h5p-element"
-    },
-    {
       "name": "h5p-element",
-      "description": "`h5p-element`",
-      "properties": [
-        {
-          "name": "contentId",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "h5p-element",
-      "description": "`h5p-element`",
+      "description": "`h5p-element`\n\nAttributes:\n\n  * `source` {`string`} - Source of the .h5p file\n\nProperties:\n\n  * `source` {`string`} - Source of the .h5p file\n\n  * `contentId` {`string`} - ",
       "attributes": [
         {
           "name": "source",
-          "description": "Source of the .h5p file",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "description": "Source of the .h5p file",
-          "type": "string"
-        },
-        {
-          "name": "contentId",
-          "type": "string"
+          "description": "`source` {`string`} - Source of the .h5p file\n\nProperty: source"
         }
       ]
     },
     {
-      "name": "h5p-element"
+      "name": "h5p-wrapped-element",
+      "attributes": []
     },
     {
       "name": "h5p-element",
-      "description": "`h5p-element`",
-      "properties": [
-        {
-          "name": "contentId",
-          "type": "string"
-        }
-      ]
+      "attributes": []
+    },
+    {
+      "name": "h5p-wrapped-element",
+      "description": "Properties:\n\n  * `__editLink` {`string`} - \n\n  * `__editMode` {`boolean`} - \n\n  * `src` {`string`} - \n\n  * `__disposer` - ",
+      "attributes": []
+    },
+    {
+      "name": "h5p-element",
+      "description": "`h5p-element`\n\nProperties:\n\n  * `contentId` {`string`} - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

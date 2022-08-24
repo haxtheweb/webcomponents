@@ -1,6 +1,5 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
 
 export class AppHaxLabel extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place

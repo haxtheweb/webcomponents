@@ -31,6 +31,7 @@ class UserAction extends HTMLElement {
     this.track = "visibility";
     this.eventname = "user-engagement";
     this.every = false;
+    this.demo = false;
     this.visiblelimit = 0.5;
   }
   get every() {
@@ -41,6 +42,15 @@ class UserAction extends HTMLElement {
       this.setAttribute("every", val);
     }
   }
+
+  get demo() {
+    return this.getAttribute("demo");
+  }
+  set demo(val) {
+    if (val) {
+      this.setAttribute("demo", val);
+    }
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -49,7 +59,7 @@ class UserAction extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["track", "eventname", "every"];
+    return ["track", "eventname", "every", "demo"];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
@@ -94,7 +104,7 @@ class UserAction extends HTMLElement {
       (!this.fired || this.every) &&
       UABroker.valid(this.track)
     ) {
-      UABroker.fire(this.eventname, this.track, e, this);
+      UABroker.fire(this.eventname, this.track, e, this, this.demo);
       this.fired = true;
     } else if (!UABroker.valid(this.track)) {
       console.warn(this.track + " was not valid");
