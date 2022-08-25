@@ -2589,6 +2589,48 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/deduping-fix/-/deduping-fix-3.0.0.tgz#c2341672c364d59405d7f3e4c63e2b58008c0bb0"
   integrity sha512-nhgzz/1qlWclHL7c8GjPoSHtUo1kgITtzFt8mXZQRhJN/mNDN3hl5xx6OzXsNUZvCmonARcV9/lAp4QZ5ONWpQ==
 
+"@lrnwebcomponents/drag-n-drop@4.0.25":
+  version "4.0.25"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/drag-n-drop/-/drag-n-drop-4.0.25.tgz#93a2550052980a9d76077f9164561bb8d67ca011"
+  integrity sha512-1b3oObZPg4DI80nKLCuAdpA50Gpwb1VK9aiPQoMjXEQ5hX2A2wG0xJgeAHxnfLviVs8uwzr02T8nl1XVvU52dg==
+
+"@lrnwebcomponents/future-terminal-text@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/future-terminal-text/-/future-terminal-text-4.1.0.tgz#a835f8f30683ea58543cdaf487dec402e37f1947"
+  integrity sha512-/304wP3QOYoMUPxeY4pkexOxaBYxryhsZQtwuH+WKxshG2BbzGYCKk6jq8CavtncM68FCbusCO81DLGNPA6GGA==
+  dependencies:
+    lit "^2.2.8"
+
+"@lrnwebcomponents/game-show-quiz@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/game-show-quiz/-/game-show-quiz-4.1.0.tgz#059d8cf47a6f042f0dd72c7c6385e01d2e797980"
+  integrity sha512-4iCcwpgQPtp8+Wwbzjl/1RT2x4IZfYfYsmopBp9kCo3GxxCvvWOXp7sPGhDU+8FAT9qCKs8tbCqIgrlZpL7F9w==
+  dependencies:
+    "@lrnwebcomponents/chartist-render" "^4.1.0"
+    "@lrnwebcomponents/hax-body" "^4.1.0"
+    "@lrnwebcomponents/multiple-choice" "^4.1.0"
+    "@lrnwebcomponents/responsive-grid" "^4.1.0"
+    "@lrnwebcomponents/simple-colors" "^4.1.0"
+    "@lrnwebcomponents/simple-icon" "^4.1.0"
+    "@lrnwebcomponents/simple-toast" "^4.1.0"
+    "@polymer/app-layout" "^3.0.2"
+    "@polymer/iron-ajax" "^3.0.0"
+    "@polymer/iron-flex-layout" "^3.0.1"
+    "@polymer/paper-dialog" "^3.0.0"
+    "@polymer/paper-dialog-scrollable" "^3.0.0"
+    "@polymer/paper-toast" "^3.0.1"
+    "@polymer/polymer" "^3.4.1"
+    "@vaadin/vaadin-split-layout" "^4.1.0"
+    lit "^2.2.8"
+
+"@lrnwebcomponents/glossary-term@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/glossary-term/-/glossary-term-4.1.0.tgz#dd4f69c3ef1439f697b0bc7c22ffbfd75e83135c"
+  integrity sha512-HWs2DRATM39jhzYsOsTDXWoSko6PGSQOkMRzjAzH+TA9HG+XZMy0tT0pVnJ+R+kZC950LXGzjorZNeIAwHj/zw==
+  dependencies:
+    "@lrnwebcomponents/lrn-vocab" "^4.1.0"
+    lit "^2.2.8"
+
 "@lrnwebcomponents/hero-banner@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/hero-banner/-/hero-banner-4.0.4.tgz#92b1cc1e84b64412286854625889acfcc8c96908"
@@ -2663,12 +2705,40 @@
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     lit "2.0.0"
 
+"@lrnwebcomponents/material-progress@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/material-progress/-/material-progress-4.1.0.tgz#abf0ded211f80583a0a6cbdea6900416e7df9a77"
+  integrity sha512-LGFCFvQRQjTqEpbpBcddbTFQZ8/iFtL8gb2ZhJKH+9RFWQHh6jXqkhA7T3IDO2N09FRq6kE5DHkkrzyO3u5uYQ==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
+
 "@lrnwebcomponents/material-word@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/material-word/-/material-word-4.0.4.tgz#7a70c15320d30202f24b2767b28544bef521d136"
   integrity sha512-85RvBDEnXTSo26hMc9fHmoFkB/kHf2bU9kzrKjEERPOSNBM0XY/7XHAq/HxPOeWMs9QaB+zItwO0y9jIFyz6eA==
   dependencies:
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/materializecss-styles@4.1.0", "@lrnwebcomponents/materializecss-styles@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/materializecss-styles/-/materializecss-styles-4.1.0.tgz#5f637fd772644399ed9b10520e5df455868cb62f"
+  integrity sha512-6xrK4Ea11rpCSDYWPtfJxD1lCu5juH+tVlTjfQ/YdwRBV8yW2zIiPnOKHGjLbbgA9P7hHHGT7CLRN475ABk6dA==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
+
+"@lrnwebcomponents/paper-audio-player@4.1.0", "@lrnwebcomponents/paper-audio-player@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/paper-audio-player/-/paper-audio-player-4.1.0.tgz#8f0f6e32cb07a3f8e396eaf3279ebead5ef14215"
+  integrity sha512-sX2+U+1TjsaAaoT7DMTMeGBE/v1crIrsDpl50tLdG/CZ8fsEkh8xLpErwO4w+/iUe5XEAD7bJgKFcZLK6nL1jg==
+  dependencies:
+    "@lrnwebcomponents/hax-iconset" "^4.1.0"
+    "@lrnwebcomponents/schema-behaviors" "^4.1.0"
+    "@lrnwebcomponents/simple-colors" "^4.1.0"
+    "@lrnwebcomponents/simple-icon" "^4.1.0"
+    "@polymer/iron-a11y-keys-behavior" "^3.0.0"
+    "@polymer/paper-progress" "^3.0.0"
+    "@polymer/paper-ripple" "^3.0.0"
+    "@polymer/polymer" "^3.4.1"
 
 "@lrnwebcomponents/promo-tile@4.0.4":
   version "4.0.4"
@@ -2745,6 +2815,14 @@
     "@lrnwebcomponents/simple-colors" "^2.8.0"
     lit-element "2.4.0"
 
+"@lrnwebcomponents/simple-pages@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-pages/-/simple-pages-4.1.0.tgz#ae856cc1b4c4505e1d4736714fcd2133ff527d8b"
+  integrity sha512-QzbbDMOezdnFc8TYiwi32POaYY7Tf3zomuUeZxNUOVqMujj5Qlcaz1UgA0LZwqNKpNbzOQmntwDxzbNutlDN5A==
+  dependencies:
+    "@polymer/iron-pages" "3.0.1"
+    lit "^2.2.8"
+
 "@lrnwebcomponents/simple-picker@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-picker/-/simple-picker-2.8.0.tgz#9c37483ff28dc2a7e91303c7b4b4f62d293de04e"
@@ -2770,6 +2848,13 @@
     "@lrnwebcomponents/utils" "^4.0.4"
     lit "2.0.0"
 
+"@lrnwebcomponents/they-live@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/they-live/-/they-live-4.1.0.tgz#64d087c72ecd1689e43cd9b5c06fb067d677ef72"
+  integrity sha512-ZKTnW2NsynFhJ/Xc5++PulThKjbZBrFVMC9L1RKb+D67tLrhIQt2EjfdUgoX5HH0vnZsrugXQBLaMshLgkT+FQ==
+  dependencies:
+    lit "^2.2.8"
+
 "@lrnwebcomponents/to-do@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/to-do/-/to-do-4.0.4.tgz#cbef7d1db9cff1585d44d24ed7b8087e523d87e7"
@@ -2780,6 +2865,11 @@
     "@lrnwebcomponents/simple-fields" "^4.0.4"
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/to-element@4.0.25":
+  version "4.0.25"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/to-element/-/to-element-4.0.25.tgz#aa417c552bbf9139b9a311666157306cf042bcbf"
+  integrity sha512-VLiBi53GBpnZYThyhSvHxi8rdFpnoKSmW0P86wxSBk9mM53pNVJGPXyyaig+QtdtdL2j2Dv6I33eWM2WVZH4Iw==
 
 "@lrnwebcomponents/top-alert@4.0.1":
   version "4.0.1"
