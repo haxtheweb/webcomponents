@@ -60,6 +60,7 @@
     "@lrnwebcomponents/simple-popover": "^4.1.0",
     "@lrnwebcomponents/simple-toast": "^4.1.0",
     "@lrnwebcomponents/simple-tooltip": "^4.1.0",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^4.1.0",
     "@lrnwebcomponents/utils": "^4.1.0",
     "@lrnwebcomponents/wc-autoload": "^4.0.25",
     "@vaadin/router": "^1.7.4",
