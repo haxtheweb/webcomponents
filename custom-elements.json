@@ -404,7 +404,7 @@
     },
     {
       "name": "a11y-figure",
-      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` - ",
+      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
       "attributes": [
         {
           "name": "img-src",
@@ -435,7 +435,7 @@
     },
     {
       "name": "a11y-figure",
-      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` - ",
+      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
       "attributes": [
         {
           "name": "img-src",
@@ -1033,7 +1033,7 @@
     },
     {
       "name": "a11y-media-state-manager",
-      "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.\n\nAttributes:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\nProperties:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\n  * `__stickyManager` - \n\n  * `__fullscreenManager` - \n\n  * `__scrollChecker` - \n\n  * `__playerLoader` - ",
+      "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.\n\nAttributes:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\nProperties:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `observer` - active player observer\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\n  * `__stickyManager` - \n\n  * `__fullscreenManager` - \n\n  * `__playerLoader` - ",
       "attributes": [
         {
           "name": "activePlayer",
@@ -5490,28 +5490,6 @@
       ]
     },
     {
-      "name": "drag-n-drop",
-      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": [
-        {
-          "name": "editing",
-          "description": "`editing` {`boolean`} - \n\nProperty: editing",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "drag-n-drop",
-      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": [
-        {
-          "name": "editing",
-          "description": "`editing` {`boolean`} - \n\nProperty: editing",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "dropdown-select",
       "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\n  * `open` {`CustomEvent<this>`} - \n\n  * `close` {`CustomEvent<this>`} - \n\n  * `value-changed` {`CustomEvent<{ value: string; oldValue: string; }>`} - \n\n  * `dropdown-select-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
       "attributes": [
@@ -9479,271 +9457,6 @@
       ]
     },
     {
-      "name": "future-terminal-text",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: green"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
-        }
-      ]
-    },
-    {
-      "name": "future-terminal-text",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
-        {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
-        }
-      ]
-    },
-    {
-      "name": "future-terminal-text-lite",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
-        {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
-        }
-      ]
-    },
-    {
-      "name": "future-terminal-text",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: green"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "game-show-quiz",
-      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "game-directions-data",
-          "description": "`game-directions-data` {`string`} - \n\nProperty: gameDirectionsData"
-        },
-        {
-          "name": "game-directions",
-          "description": "`game-directions` {`string`} - \n\nProperty: gameDirections"
-        },
-        {
-          "name": "token",
-          "description": "`token` {`string`} - \n\nProperty: token"
-        },
-        {
-          "name": "attempts-data",
-          "description": "`attempts-data` - \n\nProperty: attemptsData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "points",
-          "description": "`points` - Points object\n\nProperty: points\n\nDefault: [object Object]"
-        },
-        {
-          "name": "remaining-attempts",
-          "description": "`remaining-attempts` {`number`} - Remaining attempts for the user\n\nProperty: remainingAttempts\n\nDefault: 30"
-        },
-        {
-          "name": "directions-title",
-          "description": "`directions-title` {`string`} - Title to use on the directions dialog.\n\nProperty: directionsTitle\n\nDefault: Directions"
-        },
-        {
-          "name": "question-title",
-          "description": "`question-title` {`string`} - Title to use on the question dialog.\n\nProperty: questionTitle\n\nDefault: Answer the following"
-        },
-        {
-          "name": "game-board",
-          "description": "`game-board` {`any[]`} - Rows on the gameshow board\n\nProperty: gameBoard"
-        },
-        {
-          "name": "game-board-data",
-          "description": "`game-board-data` - \n\nProperty: gameBoardData"
-        },
-        {
-          "name": "game-data",
-          "description": "`game-data` {`string`} - URL to load data for the game.\n\nProperty: gameData"
-        },
-        {
-          "name": "game-score-board-backend",
-          "description": "`game-score-board-backend` {`string`} - \n\nProperty: gameScoreBoardBackend"
-        },
-        {
-          "name": "active-question",
-          "description": "`active-question` - Active item that is in the modal.\n\nProperty: activeQuestion"
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
-        },
-        {
-          "name": "ongame-show-quiz-game-over",
-          "description": "`game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "game-show-quiz-modal",
-      "description": "`game-show-quiz-modal`\n\nEvents:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        }
-      ]
-    },
-    {
-      "name": "game-show-quiz",
-      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "game-directions-data",
-          "description": "`game-directions-data` {`string`} - \n\nProperty: gameDirectionsData"
-        },
-        {
-          "name": "game-directions",
-          "description": "`game-directions` {`string`} - \n\nProperty: gameDirections"
-        },
-        {
-          "name": "token",
-          "description": "`token` {`string`} - \n\nProperty: token"
-        },
-        {
-          "name": "attempts-data",
-          "description": "`attempts-data` - \n\nProperty: attemptsData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "points",
-          "description": "`points` - Points object\n\nProperty: points\n\nDefault: [object Object]"
-        },
-        {
-          "name": "remaining-attempts",
-          "description": "`remaining-attempts` {`number`} - Remaining attempts for the user\n\nProperty: remainingAttempts\n\nDefault: 30"
-        },
-        {
-          "name": "directions-title",
-          "description": "`directions-title` {`string`} - Title to use on the directions dialog.\n\nProperty: directionsTitle\n\nDefault: Directions"
-        },
-        {
-          "name": "question-title",
-          "description": "`question-title` {`string`} - Title to use on the question dialog.\n\nProperty: questionTitle\n\nDefault: Answer the following"
-        },
-        {
-          "name": "game-board",
-          "description": "`game-board` {`any[]`} - Rows on the gameshow board\n\nProperty: gameBoard"
-        },
-        {
-          "name": "game-board-data",
-          "description": "`game-board-data` - \n\nProperty: gameBoardData"
-        },
-        {
-          "name": "game-data",
-          "description": "`game-data` {`string`} - URL to load data for the game.\n\nProperty: gameData"
-        },
-        {
-          "name": "game-score-board-backend",
-          "description": "`game-score-board-backend` {`string`} - \n\nProperty: gameScoreBoardBackend"
-        },
-        {
-          "name": "active-question",
-          "description": "`active-question` - Active item that is in the modal.\n\nProperty: activeQuestion"
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
-        },
-        {
-          "name": "ongame-show-quiz-game-over",
-          "description": "`game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - "
-        }
-      ]
-    },
-    {
       "name": "git-corner",
       "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\nProperties:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment",
       "attributes": [
@@ -9965,42 +9678,6 @@
           "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
-    },
-    {
-      "name": "glossary-term",
-      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nAttributes:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - \n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "name",
-          "description": "`name` {`string`} - \n\nProperty: name\n\nDefault: "
-        },
-        {
-          "name": "definition",
-          "description": "`definition` {`string`} - \n\nProperty: definition\n\nDefault: "
-        },
-        {
-          "name": "display",
-          "description": "`display` {`string`} - \n\nProperty: display\n\nDefault: "
-        },
-        {
-          "name": "serviceType",
-          "description": "`serviceType` {`string`} - \n\nProperty: serviceType\n\nDefault: file"
-        },
-        {
-          "name": "endpoint",
-          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: "
-        },
-        {
-          "name": "_fallback",
-          "description": "`_fallback` {`boolean`} - \n\nProperty: _fallback\n\nDefault: true",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "glossary-term",
-      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
-      "attributes": []
     },
     {
       "name": "grade-book",
@@ -13320,7 +12997,7 @@
     },
     {
       "name": "haxcms-site-builder",
-      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` {`CustomEvent<any>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `active-item-changed` {`CustomEvent<any>`} - \n\n  * `active-item-content-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-ready` {`CustomEvent<this>`} - \n\n  * `resize` {`Event`} - \n\n  * `json-outline-schema-active-body-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `is-logged-in` {`boolean`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `isLoggedIn` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - \n\n  * `t` - ",
+      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` {`CustomEvent<any>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `active-item-changed` {`CustomEvent<any>`} - \n\n  * `active-item-content-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-ready` {`CustomEvent<this>`} - \n\n  * `resize` {`Event`} - \n\n  * `json-outline-schema-active-body-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `disable-features` {`string`} - \n\n  * `is-logged-in` {`boolean`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `disableFeatures` {`string`} - \n\n  * `isLoggedIn` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "_timeStamp",
@@ -13358,6 +13035,10 @@
         {
           "name": "base-uri",
           "description": "`base-uri` {`string`} - Injected by HAXcms\n\nProperty: baseURI"
+        },
+        {
+          "name": "disable-features",
+          "description": "`disable-features` {`string`} - \n\nProperty: disableFeatures\n\nDefault: "
         },
         {
           "name": "is-logged-in",
@@ -21424,69 +21105,8 @@
     },
     {
       "name": "lunr-search",
-      "description": "`lunr-search`\n`LunrJS search element`\n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `no-stop-words` {`boolean`} - \n\n  * `data-source` {`string`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `dataSource` {`string`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "data",
-          "description": "`data` {`any[]`} - \n\nProperty: data"
-        },
-        {
-          "name": "search",
-          "description": "`search` {`string`} - \n\nProperty: search"
-        },
-        {
-          "name": "results",
-          "description": "`results` {`any[]`} - \n\nProperty: results"
-        },
-        {
-          "name": "indexNoStopWords",
-          "description": "`indexNoStopWords` - \n\nProperty: indexNoStopWords"
-        },
-        {
-          "name": "index",
-          "description": "`index` - \n\nProperty: index"
-        },
-        {
-          "name": "__lunrLoaded",
-          "description": "`__lunrLoaded` {`boolean`} - \n\nProperty: __lunrLoaded",
-          "valueSet": "v"
-        },
-        {
-          "name": "method",
-          "description": "`method` {`string`} - \n\nProperty: method\n\nDefault: GET"
-        },
-        {
-          "name": "no-stop-words",
-          "description": "`no-stop-words` {`boolean`} - \n\nProperty: noStopWords\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "data-source",
-          "description": "`data-source` {`string`} - \n\nProperty: dataSource\n\nDefault: null"
-        },
-        {
-          "name": "fields",
-          "description": "`fields` {`any[]`} - \n\nProperty: fields\n\nDefault: "
-        },
-        {
-          "name": "limit",
-          "description": "`limit` {`number`} - \n\nProperty: limit\n\nDefault: 500"
-        },
-        {
-          "name": "__auto",
-          "description": "`__auto` {`boolean`} - \n\nProperty: __auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "minScore",
-          "description": "`minScore` {`number`} - \n\nProperty: minScore\n\nDefault: 0"
-        },
-        {
-          "name": "log",
-          "description": "`log` {`boolean`} - \n\nProperty: log\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
+      "description": "`lunr-search`\n`LunrJS search element`\n\nProperties:\n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `dataSource` - \n\n  * `fields` {`never[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
+      "attributes": []
     },
     {
       "name": "lunr-search",
@@ -21839,27 +21459,6 @@
       "attributes": []
     },
     {
-      "name": "material-progress-bars",
-      "description": "Attributes:\n\n  * `max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\nProperties:\n\n  * `max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "max",
-          "description": "`max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\nProperty: max\n\nDefault: 100"
-        }
-      ]
-    },
-    {
-      "name": "material-progress-histo",
-      "description": "Attributes:\n\n  * `scale-to-sum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\nProperties:\n\n  * `scaleToSum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "scale-to-sum",
-          "description": "`scale-to-sum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\nProperty: scaleToSum\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "md-block",
       "description": "`md-block`\n`a markdown block`\n\nAttributes:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - ",
       "attributes": [
@@ -22121,7 +21720,7 @@
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nMeme all the things\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
           "name": "described-by",
@@ -22151,7 +21750,7 @@
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nMeme all the things\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
           "name": "described-by",
@@ -23835,136 +23434,6 @@
         {
           "name": "onvalue-changed",
           "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Click to play this audio file"
-        },
-        {
-          "name": "autoPlay",
-          "description": "`autoPlay` {`boolean`} - \n\nProperty: autoPlay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - \n\nProperty: preload\n\nDefault: auto"
-        },
-        {
-          "name": "currentTime",
-          "description": "`currentTime` {`number`} - \n\nProperty: currentTime\n\nDefault: 0"
-        },
-        {
-          "name": "timeLeft",
-          "description": "`timeLeft` {`number`} - \n\nProperty: timeLeft\n\nDefault: 0"
-        },
-        {
-          "name": "smallSkip",
-          "description": "`smallSkip` {`number`} - \n\nProperty: smallSkip\n\nDefault: 15"
-        },
-        {
-          "name": "largeSkip",
-          "description": "`largeSkip` {`number`} - \n\nProperty: largeSkip\n\nDefault: 60"
-        },
-        {
-          "name": "error",
-          "description": "`error` {`boolean`} - \n\nProperty: error",
-          "valueSet": "v"
-        },
-        {
-          "name": "timeOffset",
-          "description": "`timeOffset` {`number`} - \n\nProperty: timeOffset\n\nDefault: 0"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        }
-      ]
-    },
-    {
-      "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Click to play this audio file"
-        },
-        {
-          "name": "autoPlay",
-          "description": "`autoPlay` {`boolean`} - \n\nProperty: autoPlay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - \n\nProperty: preload\n\nDefault: auto"
-        },
-        {
-          "name": "currentTime",
-          "description": "`currentTime` {`number`} - \n\nProperty: currentTime\n\nDefault: 0"
-        },
-        {
-          "name": "timeLeft",
-          "description": "`timeLeft` {`number`} - \n\nProperty: timeLeft\n\nDefault: 0"
-        },
-        {
-          "name": "smallSkip",
-          "description": "`smallSkip` {`number`} - \n\nProperty: smallSkip\n\nDefault: 15"
-        },
-        {
-          "name": "largeSkip",
-          "description": "`largeSkip` {`number`} - \n\nProperty: largeSkip\n\nDefault: 60"
-        },
-        {
-          "name": "error",
-          "description": "`error` {`boolean`} - \n\nProperty: error",
-          "valueSet": "v"
-        },
-        {
-          "name": "timeOffset",
-          "description": "`timeOffset` {`number`} - \n\nProperty: timeOffset\n\nDefault: 0"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
@@ -29366,16 +28835,6 @@
       ]
     },
     {
-      "name": "sakai-button",
-      "description": "`sakai-button`\n`to demo things`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "sakai-button",
-      "description": "`sakai-button`\n`to demo things`\n\n",
-      "attributes": []
-    },
-    {
       "name": "scroll-button",
       "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
       "attributes": [
@@ -34162,34 +33621,6 @@
       ]
     },
     {
-      "name": "simple-pages",
-      "description": "`simple-pages`\n`toggle between pages`\n\nEvents:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `selected-attribute` {`string`} - \n\n  * `selected` {`number`} - \n\nProperties:\n\n  * `selectedAttribute` {`string`} - \n\n  * `selected` {`number`} - ",
-      "attributes": [
-        {
-          "name": "selected-attribute",
-          "description": "`selected-attribute` {`string`} - \n\nProperty: selectedAttribute"
-        },
-        {
-          "name": "selected",
-          "description": "`selected` {`number`} - \n\nProperty: selected\n\nDefault: 0"
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        }
-      ]
-    },
-    {
-      "name": "simple-pages",
-      "description": "`simple-pages`\n`toggle between pages`\n\nEvents:\n\n  * `resize` {`Event`} - \n\nProperties:\n\n  * `selected` {`number`} - ",
-      "attributes": [
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        }
-      ]
-    },
-    {
       "name": "simple-emoji-picker",
       "description": "`simple-emoji-picker`\n\nEvents:\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `emoji-types` {`any[]`} - emoji types to include\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\nProperties:\n\n  * `emojiTypes` {`any[]`} - emoji types to include\n\n  * `icon` {`string`} - \n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker",
       "attributes": [
@@ -36347,25 +35778,6 @@
       ]
     },
     {
-      "name": "they-live",
-      "description": "`they-live`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "they-live",
-      "description": "`they-live`\n\nAttributes:\n\n  * `truth` {`string`} - \n\nProperties:\n\n  * `truth` {`string`} - ",
-      "attributes": [
-        {
-          "name": "truth",
-          "description": "`truth` {`string`} - \n\nProperty: truth"
-        }
-      ]
-    },
-    {
-      "name": "they-live",
-      "attributes": []
-    },
-    {
       "name": "threaded-discussion-form",
       "description": "`threaded-discussion-form`\na threaded discussions component for elms-ln\n\n### Styling\n\n`<threaded-discussion-form>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-button-BorderRadius` | border-radius for all buttons | 3px\n`--threaded-discussion-button-FontWeight` | default button font-weight | \n`--threaded-discussion-button-FontSize` | default button line-height | var(--threaded-discussion-FontSize, 14px));\n`--threaded-discussion-button-FontFamily` | default button font-family |\n`--threaded-discussion-reply-button-Color` | text color for reply button | #4b4b4b\n`--threaded-discussion-reply-button-BackgroundColor` | background color for reply button | #fff\n`--threaded-discussion-reply-button-BorderColor` | border color for reply button | #4b4b4b\n`--threaded-discussion-reply-button-focus-Color` | text color for reply button when focused | #222\n`--threaded-discussion-reply-button-focus-BackgroundColor` | background color for reply button when focused | #fff\n`--threaded-discussion-reply-button-focus-BorderColor` | border color for reply button when focused | #222\n`--threaded-discussion-comment-button-Color` | text color for reply button | #fff\n`--threaded-discussion-comment-button-BackgroundColor` | background color for reply button | #4b4b4b\n`--threaded-discussion-comment-button-BorderColor` | border color for reply button | #4b4b4b\n`--threaded-discussion-comment-button-focus-Color` | text color for reply button when focused | #fff\n`--threaded-discussion-comment-button-focus-BackgroundColor` | background color for reply button when focused | #222\n`--threaded-discussion-comment-button-focus-BorderColor` | border color for reply button when focused | #222\n`--threaded-discussion-comment-button-FontWeight` | overrides default button font-weight for comment button | \n`--threaded-discussion-comment-button-FontSize` | overrides default default button line-height for comment button |\n`--threaded-discussion-comment-button-FontFamily` | overrides default default button font-family for comment button |\n`--threaded-discussion-textarea-Height` | height of textarea when form is NOT focused | 16px\n`--threaded-discussion-textarea-Opacity` | opacity of textarea when form is NT focused | 0\n`--threaded-discussion-textarea-focus-Height` | height of textarea when form is focused | 100px\n`--threaded-discussion-textarea-focus-Opacity` | opacity of textarea when form is focused | 1\n`--threaded-discussion-textarea-Color` | textarea text color | var(--threaded-discussion-Color, #4b4b4b));\n`--threaded-discussion-textarea-LineHeight` | textarea line-height | var(--threaded-discussion-LineHeight, 160%));\n`--threaded-discussion-textarea-FontWeight` | textarea font-weight | \n`--threaded-discussion-textarea-FontSize` | textarea line-height | var(--threaded-discussion-FontSize, 14px));\n`--threaded-discussion-textarea-FontFamily` | textarea font-family | var(--threaded-discussion-FontFamily));\n\nEvents:\n\n  * `comment-demo` {`CustomEvent<{ textarea: HTMLTextAreaElement | null; thread: any; }>`} - \n\n  * `comment-submitted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `button` {`string`} - reply button id\n\n  * `button-label` {`string`} - label for button\n\n  * `demo` {`boolean`} - whetherin demo mode\n\n  * `field` {`string`} - field name for comment body\n\n  * `icon` {`string`} - button icon\n\n  * `submit` {`string`} - form action on submit\n\n  * `textarea-label` {`string`} - label for textarea\n\n  * `thread` {`string`} - thread id if this form is replying to a thread\n\n  * `disabled` {`boolean`} - whether form is disabled\n\n  * `hidden` {`boolean`} - whether form is hidden\n\nProperties:\n\n  * `button` {`string`} - reply button id\n\n  * `buttonLabel` {`string`} - label for button\n\n  * `demo` {`boolean`} - whetherin demo mode\n\n  * `field` {`string`} - field name for comment body\n\n  * `icon` {`string`} - button icon\n\n  * `submit` {`string`} - form action on submit\n\n  * `textareaLabel` {`string`} - label for textarea\n\n  * `thread` {`string`} - thread id if this form is replying to a thread\n\n  * `disabled` {`boolean`} - whether form is disabled\n\n  * `hidden` {`boolean`} - whether form is hidden",
       "attributes": [
@@ -36595,33 +36007,6 @@
       ]
     },
     {
-      "name": "to-element",
-      "description": "`to-element`\n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
-    },
-    {
-      "name": "to-element",
-      "description": "`to-element`\n\nAttributes:\n\n  * `element` - object in question to clone and turn into a custom element\n\n  * `name` {`string`} - valid custom element name of the new element to create\n\n  * `sourceUrl` {`string`} - optional original location that this came from\n\n  * `fileTypes` - MIME type lookup for file extensions\n\nProperties:\n\n  * `element` - object in question to clone and turn into a custom element\n\n  * `name` {`string`} - valid custom element name of the new element to create\n\n  * `sourceUrl` {`string`} - optional original location that this came from\n\n  * `fileTypes` - MIME type lookup for file extensions\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": [
-        {
-          "name": "element",
-          "description": "`element` - object in question to clone and turn into a custom element\n\nProperty: element\n\nDefault: [object Object]"
-        },
-        {
-          "name": "name",
-          "description": "`name` {`string`} - valid custom element name of the new element to create\n\nProperty: name\n\nDefault: new-element"
-        },
-        {
-          "name": "sourceUrl",
-          "description": "`sourceUrl` {`string`} - optional original location that this came from\n\nProperty: sourceUrl\n\nDefault: "
-        },
-        {
-          "name": "fileTypes",
-          "description": "`fileTypes` - MIME type lookup for file extensions\n\nProperty: fileTypes"
-        }
-      ]
-    },
-    {
       "name": "topic-heading",
       "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - ",
       "attributes": []
@@ -36639,16 +36024,6 @@
           "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "trading-card",
-      "description": "`trading-card`\n`A playful element for presenting cards abot someone in a fun manner like a popular card game would.`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "trading-card",
-      "description": "`trading-card`\n`A playful element for presenting cards abot someone in a fun manner like a popular card game would.`\n\n",
-      "attributes": []
     },
     {
       "name": "twitter-embed-vanilla",
@@ -36929,7 +36304,7 @@
     },
     {
       "name": "user-action",
-      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
           "name": "track",
@@ -36942,6 +36317,11 @@
         {
           "name": "every",
           "description": "`every` {`string | null`} - \n\nProperty: every\n\nDefault: false",
+          "values": []
+        },
+        {
+          "name": "demo",
+          "description": "`demo` {`string | null`} - \n\nProperty: demo\n\nDefault: false",
           "values": []
         },
         {
@@ -36952,7 +36332,7 @@
     },
     {
       "name": "user-action",
-      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
           "name": "track",
@@ -36968,6 +36348,11 @@
           "values": []
         },
         {
+          "name": "demo",
+          "description": "`demo` {`string | null`} - \n\nProperty: demo\n\nDefault: false",
+          "values": []
+        },
+        {
           "name": "oni18n-manager-register-element",
           "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
@@ -36975,7 +36360,7 @@
     },
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `hideYoutubeLink` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `learningMode` {`boolean`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `hideYoutubeLink` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `playing` {`boolean`} - \n\n  * `__setVisChange` {`boolean`} - \n\n  * `allowBackgroundPlay` {`boolean`} - \n\n  * `learningMode` {`boolean`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "element-visible",
@@ -37003,95 +36388,8 @@
     },
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `media-title` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hide-timestamps` {`boolean`} - show cue's start and end time\n\n  * `hide-transcript` {`boolean`} - Hide transcript by default\n\n  * `hide-youtube-link` {`boolean`} - Open on YouTube button\n\n  * `lang` {`string`} - Language of media\n\n  * `learning-mode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\nProperties:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `hideYoutubeLink` {`boolean`} - Open on YouTube button\n\n  * `lang` {`string`} - Language of media\n\n  * `learningMode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `colors` - ",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `hideYoutubeLink` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `playing` {`boolean`} - \n\n  * `__setVisChange` {`boolean`} - \n\n  * `allowBackgroundPlay` {`boolean`} - \n\n  * `learningMode` {`boolean`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
-        {
-          "name": "height",
-          "description": "`height` {`string`} - Height of media player.\n\nProperty: height"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - Unique id\n\nProperty: id"
-        },
-        {
-          "name": "media-title",
-          "description": "`media-title` {`string`} - Simple caption for video\n\nProperty: mediaTitle"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - Single sources of video\n\nProperty: source"
-        },
-        {
-          "name": "track",
-          "description": "`track` {`string`} - Url for a single subtitle track\n\nProperty: track"
-        },
-        {
-          "name": "thumbnail-src",
-          "description": "`thumbnail-src` {`string`} - Source of optional thumbnail image\n\nProperty: thumbnailSrc"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - Width of media player for non-a11y-media.\n\nProperty: width"
-        },
-        {
-          "name": "crossorigin",
-          "description": "`crossorigin` {`string`} - Cross origin flag for transcripts to load\n\nProperty: crossorigin\n\nDefault: anonymous"
-        },
-        {
-          "name": "darkTranscript",
-          "description": "`darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\nProperty: darkTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disableInteractive",
-          "description": "`disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\nProperty: disableInteractive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-timestamps",
-          "description": "`hide-timestamps` {`boolean`} - show cue's start and end time\n\nProperty: hideTimestamps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-transcript",
-          "description": "`hide-transcript` {`boolean`} - Hide transcript by default\n\nProperty: hideTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-youtube-link",
-          "description": "`hide-youtube-link` {`boolean`} - Open on YouTube button\n\nProperty: hideYoutubeLink\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - Language of media\n\nProperty: lang\n\nDefault: en"
-        },
-        {
-          "name": "learning-mode",
-          "description": "`learning-mode` {`boolean`} - Learning mode\n\nProperty: learningMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "linkable",
-          "description": "`linkable` {`boolean`} - Include a share link?\n\nProperty: linkable\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\nProperty: preload\n\nDefault: metadata"
-        },
-        {
-          "name": "sources",
-          "description": "`sources` {`any[]`} - Array of multiple video sources\n\nProperty: sources\n\nDefault: "
-        },
-        {
-          "name": "sticky-corner",
-          "description": "`sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\nProperty: stickyCorner\n\nDefault: top-right"
-        },
-        {
-          "name": "tracks",
-          "description": "`tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperty: tracks\n\nDefault: "
-        },
         {
           "name": "element-visible",
           "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
@@ -37107,11 +36405,11 @@
         },
         {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor\n\nDefault: grey"
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "`dark` {`boolean`} - Enables darker player.\n\nProperty: dark\n\nDefault: false",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
         }
       ]
