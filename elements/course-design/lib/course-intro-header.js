@@ -29,6 +29,7 @@ class CourseIntroHeader extends LitElement {
         h1,
         h2,
         h3 {
+          font-family: var(--course-intro-header-font-family, 'Roboto');
           margin: 0;
           color: #fff;
         }
