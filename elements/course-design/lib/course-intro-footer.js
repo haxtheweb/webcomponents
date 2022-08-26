@@ -9,19 +9,13 @@ class CourseIntroFooter extends LitElement {
 
   static get properties() {
     return {
-      organization: { type: String },
-      organizationLink: { type: String },
-      company: { type: String },
-      companyLink: { type: String },
+    
     };
   }
 
   constructor() {
     super();
-    this.organization = "";
-    this.organizationLink = "";
-    this.company = "";
-    this.companyLink = "";
+  
   }
 
   static get styles() {
@@ -121,16 +115,6 @@ class CourseIntroFooter extends LitElement {
         store.manifest.metadata.theme &&
         store.manifest.metadata.theme.variables
       ) {
-        this.organization = toJS(
-          store.manifest.metadata.theme.variables.organization
-        );
-        this.company = toJS(store.manifest.metadata.theme.variables.company);
-        this.companyLink = toJS(
-          store.manifest.metadata.theme.variables.companyLink
-        );
-        this.organizationLink = toJS(
-          store.manifest.metadata.theme.variables.organizationLink
-        );
         this.shadowRoot.querySelector(
           "#footer-container"
         ).style.borderColor = `${toJS(
@@ -144,17 +128,15 @@ class CourseIntroFooter extends LitElement {
     return html`
       <div id="footer-container">
         <div id="company-logo">
-          <a href="${this.companyLink}" target="_blank">
-            <img src="${this.company}" />
-          </a>
+          <slot name="footer-left"></slot>
         </div>
         <div id="organization-logo">
-          <a href="${this.organizationLink}" target="_blank">
-            <img src="${this.organization}" />
-          </a>
+          <slot name="footer-right"></slot>
         </div>
       </div>
     `;
   }
 }
+
+
 customElements.define(CourseIntroFooter.tag, CourseIntroFooter);

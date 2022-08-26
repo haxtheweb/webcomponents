@@ -14,6 +14,8 @@ export class CourseIntro extends LitElement {
           display: flex;
           flex-direction: column;
         }
+
+        
       `,
     ];
   }
@@ -32,7 +34,14 @@ export class CourseIntro extends LitElement {
     return html`
       <course-intro-header></course-intro-header>
       <course-intro-lesson-plans></course-intro-lesson-plans>
-      <course-intro-footer></course-intro-footer>
+      <course-intro-footer>
+        <div id="company-logo" slot="footer-left">
+          <slot name="footer-left"></slot>
+        </div>
+        <div id="organization-logo" slot="footer-right">
+          <slot name="footer-right"></slot>
+        </div>
+      </course-intro-footer>
     `;
   }
 }
