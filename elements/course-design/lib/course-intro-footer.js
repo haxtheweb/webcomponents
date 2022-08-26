@@ -52,54 +52,6 @@ class CourseIntroFooter extends LitElement {
           justify-content: space-between;
           align-items: center;
         }
-
-        @media screen and (min-width: 320px) {
-          #company-logo img {
-            height: 70px;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          #company-logo img {
-            height: 80px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #company-logo img {
-            height: 100px;
-          }
-        }
-
-        @media screen and (min-width: 1120px) {
-          #company-logo img {
-            height: 120px;
-          }
-        }
-
-        @media screen and (min-width: 320px) {
-          #organization-logo img {
-            height: 70px;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          #organization-logo img {
-            height: 80px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #organization-logo img {
-            height: 100px;
-          }
-        }
-
-        @media screen and (min-width: 1120px) {
-          #organization-logo img {
-            height: 120px;
-          }
-        }
       `,
     ];
   }
