@@ -245,15 +245,13 @@ dd {
   margin-bottom: 1em;
 }
 
-haxcms-site-builder[disable-features*="site-menu"] .haxcms-theme-element::part(site-menu),
-haxcms-site-builder[disable-features*="page-breadcrumb"] .haxcms-theme-element::part(page-breadcrumb),
-haxcms-site-builder[disable-features*="print-branch-btn"] .haxcms-theme-element::part(print-branch-btn),
-haxcms-site-builder[disable-features*="rss-btn"] .haxcms-theme-element::part(rss-btn),
-haxcms-site-builder[disable-features*="git-corner-btn"] .haxcms-theme-element::part(git-corner-btn),
-haxcms-site-builder[disable-features*="search-btn"] .haxcms-theme-element::part(search-btn),
-haxcms-site-builder[disable-features*="site-menu-content"] .haxcms-theme-element::part(site-menu-content),
+haxcms-site-builder[disable-features*="breadcrumb"] .haxcms-theme-element::part(page-breadcrumb),
+haxcms-site-builder[disable-features*="print"] .haxcms-theme-element::part(print-branch-btn),
+haxcms-site-builder[disable-features*="rss"] .haxcms-theme-element::part(rss-btn),
+haxcms-site-builder[disable-features*="git-link"] .haxcms-theme-element::part(git-corner-btn),
+haxcms-site-builder[disable-features*="search"] .haxcms-theme-element::part(search-btn),
 haxcms-site-builder[disable-features*="footer"] .haxcms-theme-element::part(footer),
-haxcms-site-builder[disable-features*="qr-code-btn"] .haxcms-theme-element::part(qr-code-btn),
+haxcms-site-builder[disable-features*="qr-code"] .haxcms-theme-element::part(qr-code-btn),
 haxcms-site-builder[disable-features*="right-col"] .haxcms-theme-element::part(right-col),
 haxcms-site-builder[disable-features*="left-col"] .haxcms-theme-element::part(left-col)
 {

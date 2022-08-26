@@ -327,6 +327,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     super();
     this.rpgHat = "none";
     this.darkMode = false;
+    this.__settingsText = '';
     this.userMenuOpen = false;
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
@@ -338,7 +339,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       editDetails: "Page details",
       addPage: "Add page",
       deletePage: "Delete page",
-      editSiteOutline: "Site outline",
+      siteOutline: "Site outline",
+      shareSite: "Share site",
       closeSiteSettings: "Close site settings",
       editSiteSettings: "Site settings",
       savePageContent: "Save page",
@@ -400,6 +402,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js"
+      );
+      // prettier-ignore
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-share-dialog.js"
       );
       // prettier-ignore
       import(
@@ -583,7 +589,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             slot="main-menu"
             icon="hax:site-map"
             part="outlinebtn"
-            label="${this.t.editSiteOutline}"
+            label="${this.t.siteOutline}"
           ></app-hax-user-menu-button>
 
           <app-hax-user-menu-button
@@ -592,6 +598,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon="${this.icon}"
             part="manifestbtn"
             label="${this.__settingsText}"
+          ></app-hax-user-menu-button>
+
+          <app-hax-user-menu-button
+            id="sharebutton"
+            @click="${this._shareButtonTap}"
+            slot="main-menu"
+            icon="social:share"
+            part="sharebtn"
+            label="${this.t.shareSite}"
           ></app-hax-user-menu-button>
 
           <app-hax-user-menu-button
@@ -1108,16 +1123,44 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   /**
-   * toggle state on button tap
+   * toggle share button
    */
-  _outlineButtonTap(e) {
+  _shareButtonTap(e) {
     store.playSound("click");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
-        title: this.t.editSiteOutline,
+        title: this.t.shareSite,
+        styles: {
+          "--simple-modal-width": "70vw",
+          "--simple-modal-max-width": "70vw",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-height": "70vh",
+          "--simple-modal-max-height": "70vh",
+        },
+        elements: {
+          content: document.createElement("haxcms-share-dialog"),
+        },
+        invokedBy: this.shadowRoot.querySelector("#sharebutton"),
+        clone: false,
+        modal: false,
+      },
+    });
+    window.dispatchEvent(evt);
+  }
+  /**
+   * toggle state on button tap
+   */
+   _outlineButtonTap(e) {
+    store.playSound("click");
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: this.t.siteOutline,
         styles: {
           "--simple-modal-width": "70vw",
           "--simple-modal-max-width": "70vw",
