@@ -201,6 +201,7 @@ class CourseIntroHeader extends LitElement {
             text-transform: uppercase;
             font-family: Open Sans;
             margin-top: -110px;
+            text-align: center;
           }
         }
 
