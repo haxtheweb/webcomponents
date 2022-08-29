@@ -103,8 +103,8 @@ export class AppHaxSteps extends SimpleColors {
   // step 2
   chooseType(e) {
     if (!e.target.comingSoon) {
-      const { value } = e.target;
-      store.site.type = value;
+      const { type } = e.target;
+      store.site.type = type;
       store.appEl.playSound("click2");
     }
   }
@@ -636,19 +636,19 @@ export class AppHaxSteps extends SimpleColors {
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            type="Technology"
+            type="technology"
             coming-soon
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            type="Business"
+            type="business"
             coming-soon
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            type="Art"
+            type="art"
             coming-soon
           ></app-hax-button>`;
         break;
@@ -662,26 +662,23 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="15w"
-            coming-soon
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="6w"
-            coming-soon
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="training"
-            coming-soon
           ></app-hax-button>`;
         break;
       case "website":
         template = html` <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            type="Blog"
+            type="blog"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
@@ -742,8 +739,7 @@ export class AppHaxSteps extends SimpleColors {
                 >
               </li>`
           )}
-        </ul>
-       
+        </ul>   
         <scrollable-component>
           <div class="carousel-with-snapping-track">
             <div class="carousel-with-snapping-item" id="step-1">
@@ -770,11 +766,9 @@ export class AppHaxSteps extends SimpleColors {
               </div>
             </div>
             <div class="carousel-with-snapping-item" id="step-2">
-              <div id="grid-container">
-                ${this.renderTypes(this.step)}
-              </div>
-          </div>
-          <div class="carousel-with-snapping-item" id="step-3">
+              <div id="grid-container">${this.renderTypes(this.step)}</div>
+            </div>
+            <div class="carousel-with-snapping-item" id="step-3">
               <div id="themeContainer">
                 ${
                   this.appSettings && this.appSettings.themes
@@ -812,12 +806,12 @@ export class AppHaxSteps extends SimpleColors {
                 placeholder="${toJS(store.site.structure)} name.."
                 tabindex="${this.step !== 4 ? "-1" : ""}" />
               <app-hax-site-button
-                  class="sitenamebtn"
-                  tabindex="${this.step !== 4 ? "-1" : ""}"
-                  label="&gt; Create journey"
-                  @click=${this.chooseName}
-                  ?disabled="${this.nameTyped === ""}"
-                ></app-hax-site-button>
+                class="sitenamebtn"
+                tabindex="${this.step !== 4 ? "-1" : ""}"
+                label="&gt; Create journey"
+                @click=${this.chooseName}
+                ?disabled="${this.nameTyped === ""}">
+              </app-hax-site-button>
             </div>
             <div class="carousel-with-snapping-item" id="step-5">
               <app-hax-hat-progress
@@ -826,6 +820,7 @@ export class AppHaxSteps extends SimpleColors {
                 tabindex="${this.step !== 5 ? "-1" : ""}"
               ></app-hax-hat-progress>
             </div>
+          </div>
         </scrollable-component>
       </div>
     `;

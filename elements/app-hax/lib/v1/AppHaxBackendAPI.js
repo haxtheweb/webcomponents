@@ -201,6 +201,10 @@ export class AppHaxBackendAPI extends LitElement {
         description: `${site.type} ${site.structure}`,
         theme: site.theme,
       },
+      build: {
+        type: site.type,
+        structure: site.structure,  
+      },
       theme: {
         // select a random color
         color: colors[Math.floor(Math.random() * colors.length)],

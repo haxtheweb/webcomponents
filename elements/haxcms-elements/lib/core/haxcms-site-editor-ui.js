@@ -328,6 +328,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.rpgHat = "none";
     this.darkMode = false;
     this.__settingsText = '';
+    this.__editText = '';
     this.userMenuOpen = false;
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
