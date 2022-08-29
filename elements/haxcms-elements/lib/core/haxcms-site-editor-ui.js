@@ -156,6 +156,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           grid-template-columns: 20% 60% 20%;
           overflow: visible;
         }
+        @media (max-width: 600px) {
+          app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 15% 70% 15%;
+          }
+        }
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-12, black);
         }
