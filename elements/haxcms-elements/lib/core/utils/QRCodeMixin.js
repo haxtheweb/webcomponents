@@ -58,6 +58,7 @@ const QRCodeMixin = function (SuperClass) {
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@lrnwebcomponents/q-r/q-r.js");
       return html`
         <div
           id="qrcodebtnwrapper"
