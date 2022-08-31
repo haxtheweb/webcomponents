@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { QRCodeMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
@@ -32,11 +33,11 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
  */
 class CleanTwo extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
-    PrintBranchMixin(
+    PDFPageMixin(PrintBranchMixin(
       QRCodeMixin(
         HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
       )
-    )
+    ))
   )
 ) {
   //styles function
@@ -587,6 +588,9 @@ class CleanTwo extends HAXCMSOperationButtons(
               >
                 <site-search></site-search>
               </site-modal>
+              ${MicroFrontendRegistry.has("@core/htmlToPdf")
+                ? this.PDFPageButton()
+                : ``}
               ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
                 ? this.PrintBranchButton()
                 : html`<replace-tag

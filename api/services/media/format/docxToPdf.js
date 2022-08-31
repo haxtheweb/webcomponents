@@ -3,28 +3,8 @@ import df from 'mammoth';
 const { convertToHtml } = df;
 import busboy from 'busboy';
 import concat from "concat-stream";
-import {create as toPDF } from 'html-pdf';
-
-const generatePDF = (html, base = '/') => {
-    return new Promise (
-        (resolve, reject) => {
-            toPDF(html, {
-                format: 'A4',
-                orientation: 'portrait',
-                border: ".5in",
-                timeout: 30000,
-                base: base,
-            }).toBuffer((error, buffer) => {
-                if(error) { 
-                    reject(error) 
-                }
-                else {
-                    resolve(buffer.toString('base64'))
-                }
-            });
-        }
-    )
-}
+import fetch from "node-fetch";
+import { encode } from "base64-arraybuffer";
 
 export default async function handler(req, res) {
   var string64 = '';
@@ -49,8 +29,11 @@ export default async function handler(req, res) {
       try {
         string64 = await convertToHtml({buffer: buffer.data})
         .then(async (result) => {
+              // need to outsource this endpoint from vercel 1 to 2 for scale reasons
             let html = `<html><body>${result.value}</body></html>`;
-            return await generatePDF(html);
+            const response = await fetch(`https://pdf-from.elmsln.vercel.app/api/pdfFrom?type=html&url=${html}`);
+            const pdf = encode(await response.arrayBuffer());
+            return pdf;
         });
       }
       catch(e) {
