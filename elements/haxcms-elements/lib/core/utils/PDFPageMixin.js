@@ -22,7 +22,7 @@ export const PDFPageMixin = function (SuperClass) {
       this.__pdfLoading = false;
     }
 
-    PDFPageButton() {
+    PDFPageButton(position = 'auto') {
       return html`
         ${MicroFrontendRegistry.has("@core/htmlToPdf")
           ? html` <div
@@ -37,7 +37,7 @@ export const PDFPageMixin = function (SuperClass) {
                 icon-position="top"
               >
               </simple-icon-button-lite>
-              <simple-tooltip for="pdf-page-btn" position="auto">
+              <simple-tooltip for="pdf-page-btn" position="${position}">
               ${this.__pdfLoading ? this.t.downloadingPdfPleaseWait : this.t.downloadPdf}
               </simple-tooltip>
             </div>`

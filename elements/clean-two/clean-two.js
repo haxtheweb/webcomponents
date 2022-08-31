@@ -33,11 +33,13 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
  */
 class CleanTwo extends HAXCMSOperationButtons(
   HAXCMSRememberRoute(
-    PDFPageMixin(PrintBranchMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+    PDFPageMixin(
+      PrintBranchMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+        )
       )
-    ))
+    )
   )
 ) {
   //styles function

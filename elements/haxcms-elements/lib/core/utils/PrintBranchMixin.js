@@ -30,7 +30,7 @@ export const PrintBranchMixin = function (SuperClass) {
       }
     }
 
-    PrintBranchButton() {
+    PrintBranchButton(position = "auto") {
       return html`
         ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
           ? html` <div
@@ -45,7 +45,7 @@ export const PrintBranchMixin = function (SuperClass) {
                 id="print-branch-btn"
               >
               </simple-icon-button-lite>
-              <simple-tooltip for="print-branch-btn" position="auto">
+              <simple-tooltip for="print-branch-btn" position="${position}">
                 ${this.__printBranchLoading ? this.t.printingPleaseWait : this.t.print}
               </simple-tooltip>
             </div>`
