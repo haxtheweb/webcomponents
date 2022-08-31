@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { CleanTwo } from "@lrnwebcomponents/clean-two/clean-two.js";
 import "../../ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 
 // a print theme that extends the conventions of CleanTwo bootstrap but can output a very clean print document
 class HAXCMSPrintTheme extends CleanTwo {
@@ -35,7 +36,9 @@ class HAXCMSPrintTheme extends CleanTwo {
     window.addEventListener("afterprint", (e) => {
       window.close();
     });
-    window.SimpleToast.requestAvailability().hide();
+    if (window.SimpleToast && window.SimpleToast.requestAvailability) {
+      window.SimpleToast.requestAvailability().hide();
+    }
     setTimeout(() => {
       window.document.close();
       window.focus();
@@ -48,7 +51,9 @@ class HAXCMSPrintTheme extends CleanTwo {
     }
     document.body.style.setProperty("--haxcms-color", "white");
     document.body.style.overflow = "auto";
-    window.SimpleToast.requestAvailability().hide();
+    if (window.SimpleToast && window.SimpleToast.requestAvailability) {
+      window.SimpleToast.requestAvailability().hide();
+    }
     setTimeout(() => {
       this.shadowRoot.querySelector("#printbtn").focus();
     }, 0);
