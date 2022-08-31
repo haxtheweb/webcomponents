@@ -26,15 +26,14 @@ export default async function handler(req, res) {
       <script src="${magic}build.js"></script>
     </html>`;
     const response = await fetch(`https://pdf-from.elmsln.vercel.app/api/pdfFrom`,
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        type: 'html',
-        url: html,
-      }),
-    }
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          type: 'html',
+          url: html,
+        }),
+      }
     );
-    console.log(response);
     const pdf = encode(await response.arrayBuffer());
     res = stdResponse(res, pdf, {cache: 86400 });
   }
