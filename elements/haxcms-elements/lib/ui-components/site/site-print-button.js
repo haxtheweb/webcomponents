@@ -58,7 +58,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
       printOutline: "Print outline",
     };
     this.icon = "icons:print";
-    this.position = "bottom";
+    this.position = "auto";
     this.type = "page";
   }
   // render function

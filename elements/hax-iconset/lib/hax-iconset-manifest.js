@@ -89,6 +89,7 @@ export const HaxIconsetManifest = [
       "html-code",
       "keyboard-arrow-down",
       "keyboard-arrow-up",
+      "loading",
       "map",
       "math",
       "meme",

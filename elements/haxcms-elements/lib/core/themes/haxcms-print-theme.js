@@ -7,7 +7,6 @@ import { CleanTwo } from "@lrnwebcomponents/clean-two/clean-two.js";
 import "../../ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-
 // a print theme that extends the conventions of CleanTwo bootstrap but can output a very clean print document
 class HAXCMSPrintTheme extends CleanTwo {
   render() {
@@ -31,7 +30,7 @@ class HAXCMSPrintTheme extends CleanTwo {
       </footer>
     `;
   }
-  print(e) {
+  async print(e) {
     this.shadowRoot.querySelector("#printbtn").style.display = "none";
     window.addEventListener("afterprint", (e) => {
       window.close();
@@ -39,11 +38,15 @@ class HAXCMSPrintTheme extends CleanTwo {
     if (window.SimpleToast && window.SimpleToast.requestAvailability) {
       window.SimpleToast.requestAvailability().hide();
     }
+    window.scrollBy({ left:0, top:document.body.scrollHeight, behavior: 'smooth'});
     setTimeout(() => {
-      window.document.close();
-      window.focus();
-      window.print();
-    }, 100);
+      window.scrollTo(0,0)
+      setTimeout(() => {
+        window.document.close();
+        window.focus();
+        window.print();
+      }, 10);
+    }, 500);
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -54,6 +57,18 @@ class HAXCMSPrintTheme extends CleanTwo {
     if (window.SimpleToast && window.SimpleToast.requestAvailability) {
       window.SimpleToast.requestAvailability().hide();
     }
+    // support replace tag which needs to run its replacements first
+    const replaceTag = Array.from(document.body.querySelectorAll('haxcms-print-theme replace-tag'));
+    for (let i = 0; i < replaceTag.length; i++) {
+      replaceTag[i].runReplacement();
+    }
+    setTimeout(() => {
+      const all = Array.from(document.body
+        .querySelectorAll('haxcms-print-theme *'));
+      for (let i = 0; i < all.length; i++) {
+        all[i].elementVisible = true;
+      }
+    }, 250);
     setTimeout(() => {
       this.shadowRoot.querySelector("#printbtn").focus();
     }, 0);

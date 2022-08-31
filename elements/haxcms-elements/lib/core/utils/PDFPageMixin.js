@@ -6,6 +6,7 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 export const PDFPageMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -15,8 +16,10 @@ export const PDFPageMixin = function (SuperClass) {
       this.t = this.t || {};
       this.t = {
         ...this.t,
-        downloadContentPdf: "Download Content PDF",
+        downloadPdf: "Download PDF",
+        downloadingPdfPleaseWait: "Downloading PDF, please wait"
       };
+      this.__pdfLoading = false;
     }
 
     PDFPageButton() {
@@ -28,21 +31,30 @@ export const PDFPageMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="pdf-page-btn"
-                label="${this.t.downloadContentPdf}"
-                icon="lrn:pdf"
+                icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
+                id="pdf-page-btn"
                 @click="${this.downloadPDFviaMicro}"
-                show-text-label
                 icon-position="top"
               >
               </simple-icon-button-lite>
+              <simple-tooltip for="pdf-page-btn" position="auto">
+              ${this.__pdfLoading ? this.t.downloadingPdfPleaseWait : this.t.downloadPdf}
+              </simple-tooltip>
             </div>`
           : ``}
       `;
+    }
+    static get properties() {
+      return {
+        ...super.properties,
+        __pdfLoading: { type: Boolean }
+      }
     }
     /**
      * Download PDF, via microservice
      */
     async downloadPDFviaMicro(e) {
+      this.__pdfLoading = true;
       let htmlContent = toJS(store.activeItemContent);
       // base helps w/ calculating URLs in content
       var base = "";
@@ -66,6 +78,7 @@ export const PDFPageMixin = function (SuperClass) {
         link.click();
         this.removeChild(link);
       }
+      this.__pdfLoading = false;
     }
   };
 };

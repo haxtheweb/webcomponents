@@ -54,7 +54,7 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
     this.title = "Dialog";
     this.icon = "icons:menu";
     this.buttonLabel = "Open dialog";
-    this.position = "bottom";
+    this.position = "auto";
     this.disabled = false;
   }
   // render function

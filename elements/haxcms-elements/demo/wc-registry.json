@@ -230,6 +230,7 @@
   "haxcms-site-listing": "@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing.js",
   "haxcms-basic-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
   "haxcms-blank-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+  "haxcms-print-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-print-theme.js",
   "haxcms-minimalist-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-minimalist-theme.js",
   "haxcms-slide-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
   "haxcms-user-theme": "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-user-theme.js",

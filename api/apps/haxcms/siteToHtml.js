@@ -48,17 +48,64 @@ export default async function handler(req, res) {
   }
   // support rendering full document with paths and magic script
   if (body.magic) {
-    content = `
-<html>
-  <head>
-    ${body.base ? `<base href="${body.base.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.')}" />` : ``}
-  </head>
-  <body>
-    ${content}
-  </body>
-  <script>window.__appCDN="${body.magic}";</script>
-  <script src="${body.magic}/build.js"></script>
-</html>`;
+    const isDev = process.env.NODE_ENV === 'development';
+    const magic = body.magic;
+    // local vercel development needs special paths but output should be the same
+    content = isDev ? `
+    <!DOCTYPE html>
+    <html lang="en">
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+      <head>
+        <meta charset="utf-8">
+        ${body.base ? `<base href="${body.base.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.')}" />` : ``}
+    </head>
+    <body>
+    <haxcms-print-theme>
+      ${content}
+    </haxcms-print-theme>
+    </body>
+    <script type="module">
+      import "${body.base}/../../../wc-autoload/wc-autoload.js";
+    </script>
+    <script>
+      window.WCAutoloadRegistryFile = "./wc-registry.json";
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCGlobalBasePath = "/node_modules/";
+    </script>
+    </html>
+    ` : `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        ${body.base ? `<base href="${body.base.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.')}" />` : ``}
+        <link rel="preconnect" crossorigin href="${magic}">
+        <link rel="preconnect" crossorigin href="https://fonts.googleapis.com">
+        <link rel="preload" href="${magic}build.js" as="script" />
+        <link rel="preload" href="${magic}wc-registry.json" as="fetch" crossorigin="anonymous" />
+        <link rel="preload" href="${magic}build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js" as="script" crossorigin="anonymous" />
+        <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js" />
+        <link rel="preload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" as="script" crossorigin="anonymous" />
+        <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" />
+        <link rel="preload" href="${magic}build/es6/node_modules/web-animations-js/web-animations-next-lite.min.js" as="script" />
+        <link rel="stylesheet" href="${magic}build/es6/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+      </head>
+      <body>
+      <haxcms-print-theme>
+        ${content}
+      </haxcms-print-theme>
+      </body>
+      <script>window.__appCDN="${magic}";</script>
+      <script src="${magic}build.js"></script>
+
+    </html>`;
   }
   res = stdResponse(res, content, options);
 }

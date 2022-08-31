@@ -31,6 +31,11 @@ export default async function handler(req, res) {
         <link rel="preload" href="${magic}build/es6/node_modules/web-animations-js/web-animations-next-lite.min.js" as="script" />
         <link rel="stylesheet" href="${magic}build/es6/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+        <style>
+        body {
+          margin:40px;
+        }
+        </style>
       </head>
       <body>
         ${body.html}
