@@ -18480,7 +18480,7 @@ lit-html@2.2.4, lit-html@^1.0.0, lit-html@^2.0.0, lit-html@^2.1.0, lit-html@^2.2
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@2.0.0, lit@2.2.8, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.5, lit@^2.2.8:
+lit@2.0.0, lit@2.2.8, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.4, lit@^2.2.5, lit@^2.2.8:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.2.8.tgz#26bdf560042aa3ec9b788f5d48119f7138b2dcc1"
   integrity sha512-QjeNbi/H9LVIHR+u0OqsL+hs62a16m02JlJHYN48HcBuXyiPYR8JvzsTp5dYYS81l+b9Emp3UaGo82EheV0pog==

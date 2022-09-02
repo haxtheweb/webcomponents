@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lesson-overview",
+      "path": "./lesson-overview.js",
+      "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`"
+    },
+    {
+      "name": "lesson-overview",
+      "path": "./src/lesson-overview.js",
+      "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`"
+    }
+  ]
+}
