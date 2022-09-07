@@ -7,20 +7,71 @@
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lesson-overview.js';
+      import '../lib/lesson-highlight.js';
+    </script>
+    <script>
+      setTimeout(() => {
+        document.querySelector('#btn').addEventListener('click', (e) => {
+          document.querySelector('lesson-overview').getSmartData(document.querySelector('#text').value);
+        });
+      }, 10);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lesson-overview demo</h3>
+      <input type="textfield" id="text" value="https://oer.hax.psu.edu/ajh6037/sites/chem110/" size="100" />
+      <button id="btn">Load stats</button>
       <demo-snippet>
         <template>
           <lesson-overview>
-            This is lesson-overview
+            <h2 slot="prefix">Looking ahead</h2>
+            <lesson-highlight smart="objectives"></lesson-highlight>
+            <lesson-highlight smart="pages"></lesson-highlight>
+            <lesson-highlight smart="readTime"></lesson-highlight>
+            <lesson-highlight smart="selfChecks"></lesson-highlight>
+            <lesson-highlight smart="video"></lesson-highlight>
+            <lesson-highlight icon="hax:hax2022">
+              <p slot="title">Uses HAX</p>
+              <p>This shows how much this can be N.E. Thing you want :p</p>
+            </lesson-highlight>
+          </lesson-overview>
+          <lesson-overview>
+            <h2>This is a heading slotted in</h2>
+            <p>You'll never know what you'll find here! It's amazing</p>
+            <lesson-highlight icon="editor:insert-drive-file">
+              <p slot="title">16 Pages</p>
+              <p>4 Learning obectives, 10 files and 3 data tables</p>
+            </lesson-highlight>
+            <lesson-highlight icon="communication:import-contacts">
+              <p slot="title">Approx. 3 hours of reading</p>
+              <p>This is just an estimate of words to read</p>
+            </lesson-highlight>
+            <lesson-highlight icon="communication:forum">
+              <p slot="title">2 Discussions</p>
+              <p>Engage in topics deeper with your instructor and peers</p>
+            </lesson-highlight>
+            <lesson-highlight icon="av:play-circle-outline">
+              <p slot="title">8 Videos</p><p>Video topics to watch</p>
+            </lesson-highlight>
+            <lesson-highlight icon="av:music-video">
+              <p slot="title">3 Audio</p><p>Audio files to listen to</p>
+            </lesson-highlight>
+            <lesson-highlight icon="hardware:videogame-asset">
+              <p slot="title">10 Interactive items</p><p>Self checks and interactive widgets to learn by applying knowledge</p>
+            </lesson-highlight>
           </lesson-overview>
         </template>
       </demo-snippet>

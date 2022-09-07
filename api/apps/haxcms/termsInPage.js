@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   if (body.terms && body.terms.length > 0) {
     terms = body.terms;
   }
-  else if (body.type) {
+  else if (body.site && body.type) {
     // get URL bits for validating and forming calls
     let url = '';
     if (body.type === 'link') {

@@ -1528,6 +1528,8 @@
     }
   ],
   "autoloader": {
+    "lesson-highlight": "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js",
+    "lesson-overview": "@lrnwebcomponents/lesson-overview/lesson-overview.js",
     "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js",
     "course-intro": "@lrnwebcomponents/course-design/lib/course-intro.js",
     "page-break": "@lrnwebcomponents/page-break/page-break.js",

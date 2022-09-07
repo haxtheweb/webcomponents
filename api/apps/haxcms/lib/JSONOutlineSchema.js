@@ -236,7 +236,7 @@ export class JSONOutlineSchema
     for (var key in items) {
       // we found a kid
       if (activeIds.includes(items[key].parent)) {
-    orderTree
+    
       }
       let child = this.items[key2];
       if (child.parent == item.id) {

@@ -44,7 +44,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.2.4"
+    "lit": "^2.2.4",
+    "mobx": "6.6.1",
+    "@lrnwebcomponents/simple-colors": "^4.1.0",
+    "@lrnwebcomponents/simple-icon": "^4.1.0",
+    "@lrnwebcomponents/micro-frontend-registry": "^4.1.0",
+    "@lrnwebcomponents/haxcms-elements": "^4.1.0",
+    "@lrnwebcomponents/intersection-element": "^4.0.4",
+    "@lrnwebcomponents/i18n-manager": "^4.0.25",
+    "@lrnwebcomponents/hax-iconset": "^4.1.0"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",

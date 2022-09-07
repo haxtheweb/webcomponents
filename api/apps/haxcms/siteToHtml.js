@@ -1,12 +1,12 @@
 import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
-import { JSONOutlineSchema } from "./lib/JSONOutlineSchema.js";
+import { siteHTMLContent } from "./lib/JOSHelpers.js";
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
   // use this if POST data is what's being sent
   const body = stdPostBody(req);
-  if (body.type) {
+  if (body.site && body.type) {
     // get URL bits for validating and forming calls
     let url = '';
     if (body.type === 'link') {
@@ -108,45 +108,4 @@ export default async function handler(req, res) {
     </html>`;
   }
   res = stdResponse(res, content, options);
-}
-
-export async function siteHTMLContent(siteLocation, siteData = null, ancestor = null, noTitles = false) {
-  const site = new JSONOutlineSchema();
-  var siteContent = '';
-    // support side-loading site.json data through direct access
-  // this is most useful for themes and solutions that are actively
-  // running a HAXcms site and already have access to these details
-  if (siteData) {
-    site.file = siteData.file;
-    site.id = siteData.id;
-    site.title = siteData.title;
-    site.author = siteData.author;
-    site.description = siteData.description;
-    site.license = siteData.license;
-    site.metadata = siteData.metadata;
-    site.items = siteData.items;
-  }
-  else {
-    await site.load(`${siteLocation}/site.json`);
-  }
-  // support slicing the structure to only the branch in question
-  // this will set the "root" for buildind an HTML structure to be something different than
-  // null and as a result will build the whole site
-  let items = [];
-  if (ancestor != null) {
-    items = site.findBranch(ancestor);
-  }
-  else {
-    items = site.orderTree(site.items);
-  }
-  // ordered
-  // get every page and stuff it together
-  for (var i in items) {
-    if (!noTitles) {
-      siteContent += `<h1>${items[i].title}</h1>`;
-    }
-    let content = await site.getContentById(items[i].id);
-    siteContent += content;
-  }
-  return siteContent;
 }

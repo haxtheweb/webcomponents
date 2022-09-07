@@ -156,6 +156,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
    *
    * @param {String} name - machine name for the micro to call
    * @param {Object} params - data to send to endpoint
+   * @param {Function} callback - Function callback on data return
    * @param {Object} caller - reference to DOM node that called this
    * @returns {Object} Response object from microservice, otherwise `null`
    */
