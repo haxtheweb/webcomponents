@@ -353,6 +353,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       editPageContent: "Edit page",
       newJourney: "New Journey",
       accountInfo: "Account Info",
+      siteOutline: "Site outline",
+      moreOptions: "More options",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
@@ -498,12 +500,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="delete page"
           ></simple-toolbar-button>
           <simple-toolbar-menu
-            show-text-label
             id="addmenubutton"
             ?disabled="${this.editMode}"
             icon="hax:add-page"
             icon-position="top"
-            label="Add page"
+            label="${this.t.addPage}"
             tabindex="${this.editMode ? "-1" : "0"}"
             @dblclick="${this._addPageClick}"
             show-text-label
@@ -535,6 +536,38 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 id="duplicatebutton"
                 show-text-label
               ></haxcms-button-add>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
+          <simple-toolbar-menu
+            show-text-label
+            ?disabled="${this.editMode}"
+            icon="hax:settings"
+            icon-position="top"
+            label="${this.t.moreOptions}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+          >
+          <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              id="outlinebutton"
+              @click="${this._outlineButtonTap}"
+              icon-position="left"
+              icon="hax:site-map"
+              part="outlinebtn"
+              show-text-label
+              tabindex="${this.editMode ? "0" : "-1"}"
+              label="${this.t.siteOutline}"
+            ></simple-toolbar-button>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              @click="${this._manifestButtonTap}"
+              icon-position="left"
+              icon="${this.icon}"
+              part="manifestbtn"
+              show-text-label
+              tabindex="${this.editMode ? "0" : "-1"}"
+              label="${this.__settingsText}"
+            ></simple-toolbar-button>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <simple-toolbar-button
@@ -589,22 +622,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
-          <app-hax-user-menu-button
-            id="outlinebutton"
-            @click="${this._outlineButtonTap}"
-            slot="main-menu"
-            icon="hax:site-map"
-            part="outlinebtn"
-            label="${this.t.siteOutline}"
-          ></app-hax-user-menu-button>
-
-          <app-hax-user-menu-button
-            @click="${this._manifestButtonTap}"
-            slot="main-menu"
-            icon="${this.icon}"
-            part="manifestbtn"
-            label="${this.__settingsText}"
-          ></app-hax-user-menu-button>
 
           <app-hax-user-menu-button
             id="sharebutton"
