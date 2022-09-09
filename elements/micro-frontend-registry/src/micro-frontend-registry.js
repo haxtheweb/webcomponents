@@ -172,6 +172,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
           return d.ok ? d.json() : { status: d.status, data: null };
         })
         .catch((e, d) => {
+          console.warn('Request failed', e);
           // this is endpoint completely failed to respond
           return { status: 500, data: null };
         });

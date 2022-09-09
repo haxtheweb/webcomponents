@@ -10,7 +10,6 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 enableServices(["haxcms"]);
 /**
@@ -110,6 +109,13 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       );
       if (response.status === 200) {
         this.updateSmartHighlightElements(response.data);
+      }
+      else {
+        // failed, just hide them
+        this.querySelectorAll(`lesson-highlight[smart]`).forEach((item) => {
+          item.hidden = true;
+          item.loading = false;
+        });
       }
     }
   }
