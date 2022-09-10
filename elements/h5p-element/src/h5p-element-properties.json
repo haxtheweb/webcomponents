@@ -4,6 +4,6 @@
    */
   "source": {
     "name": "source",
-    "type": String
+    "type": "String"
   }
 }

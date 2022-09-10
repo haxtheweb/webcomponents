@@ -36,12 +36,26 @@ class SiteFooter extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
+    autorun((reaction) => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
+    });
+
     import("@lrnwebcomponents/license-element/license-element.js");
   }
   // render function
   render() {
     return html`
       <div class="wrapper">
+        ${this.manifest ? html`
         <license-element
           .title="${this.siteTitle}"
           .creator="${this.manifest.author}"
@@ -49,6 +63,7 @@ class SiteFooter extends LitElement {
           .license="${this.manifest.license}"
         >
         </license-element>
+        ` : ``}
       </div>
     `;
   }
@@ -67,21 +82,6 @@ class SiteFooter extends LitElement {
         attribute: "edit-mode",
       },
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.siteTitle = toJS(store.siteTitle);
-      this.__disposer.push(reaction);
-    });
   }
   disconnectedCallback() {
     // clean up state

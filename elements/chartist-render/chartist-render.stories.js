@@ -1,6 +1,5 @@
-import { html } from "lit-html";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
-import { withKnobs, text, select, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 
@@ -91,17 +90,21 @@ props.forEach((prop) => {
 });
 props = [...props, ...styles];
 export const ChartistRenderBarStory = () => {
-  return utils.makeElement(
+  return utils.makeUsageDocs(
     ChartistRender,
-    utils.getKnobs(props, {
-      dataSource: barData,
-      chartTitle: "Sales by Quarter",
-      chartDesc:
-        "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
-      scale: "ct-double-octave",
-      type: "bar",
-      maxWidth: "600px",
-    })
+    import.meta.url,
+    utils.makeElement(
+      ChartistRender,
+      utils.getKnobs(props, {
+        dataSource: barData,
+        chartTitle: "Sales by Quarter",
+        chartDesc:
+          "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
+        scale: "ct-double-octave",
+        type: "bar",
+        maxWidth: "600px",
+      })
+    )
   );
 };
 export const ChartistRenderLineStory = () => {

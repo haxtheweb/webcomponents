@@ -14,5 +14,9 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const BasicMeme = () => {
-  return utils.makeElementFromHaxDemo(MemeMaker);
+  return utils.makeUsageDocs(
+    MemeMaker,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(MemeMaker)
+  );
 };

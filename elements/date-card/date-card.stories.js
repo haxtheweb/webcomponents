@@ -4,7 +4,7 @@ import { DateCard } from "./date-card.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Card|Date",
+  title: "Cards|Date",
   component: "date-card",
   decorators: [withKnobs],
   parameters: {
@@ -12,6 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicDateCard = () => {
-  return utils.makeElementFromHaxDemo(DateCard);
-};
+export const BasicDateCard = () =>
+  utils.makeUsageDocs(
+    DateCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(DateCard)
+  );

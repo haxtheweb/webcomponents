@@ -58,6 +58,7 @@
     "@lrnwebcomponents/schema-behaviors": "^4.1.0",
     "@lrnwebcomponents/simple-colors": "^4.1.0",
     "@lrnwebcomponents/simple-datetime": "^4.1.0",
+    "@lrnwebcomponents/q-r": "^4.1.0",
     "@lrnwebcomponents/simple-fields": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.1.0",
     "@lrnwebcomponents/simple-icon-picker": "^4.1.0",

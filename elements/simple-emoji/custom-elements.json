@@ -1,15 +1,17 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-emoji",
-      "path": "./simple-emoji.js",
-      "description": "`simple-emoji`\n`simplify emoji creation and management`"
+      "description": "`simple-emoji`\n`simplify emoji creation and management`\n\n",
+      "attributes": []
     },
     {
       "name": "simple-emoji",
-      "path": "./src/simple-emoji.js",
-      "description": "`simple-emoji`\n`simplify emoji creation and management`"
+      "description": "`simple-emoji`\n`simplify emoji creation and management`\n\n",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

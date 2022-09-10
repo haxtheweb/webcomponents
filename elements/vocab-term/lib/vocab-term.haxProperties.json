@@ -44,5 +44,16 @@
       }
     ],
     "advanced": []
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "vocab-term",
+      "properties": {
+        "term": "HAX Camp",
+        "information": "An event dedicated to spreading web components knowledge person to person.",
+        "links": "Website,https://hax.camp/"
+      },
+      "content": ""
+    }
+  ]
 }

@@ -18,10 +18,19 @@ export const PrintBranchMixin = function (SuperClass) {
       this.t = {
         ...this.t,
         print: "Print",
+        printingPleaseWait: "Printing, please wait.."
       };
+      this.__printBranchLoading = false;
     }
 
-    PrintBranchButton() {
+    static get properties() {
+      return {
+        ...super.properties,
+        __printBranchLoading: { type: Boolean }
+      }
+    }
+
+    PrintBranchButton(position = "auto") {
       return html`
         ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
           ? html` <div
@@ -30,14 +39,14 @@ export const PrintBranchMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="print-branch-btn"
-                icon="print"
+                icon="${this.__printBranchLoading ? `hax:loading` : `icons:print`}"
                 @click="${this.printBranchOfSite}"
                 icon-position="top"
                 id="print-branch-btn"
               >
               </simple-icon-button-lite>
-              <simple-tooltip for="print-branch-btn">
-                ${this.t.print}
+              <simple-tooltip for="print-branch-btn" position="${position}">
+                ${this.__printBranchLoading ? this.t.printingPleaseWait : this.t.print}
               </simple-tooltip>
             </div>`
           : ``}
@@ -47,6 +56,7 @@ export const PrintBranchMixin = function (SuperClass) {
      * Download PDF, via microservice
      */
     async printBranchOfSite(e) {
+      this.__printBranchLoading = true;
       // base helps w/ calculating URLs in content
       var base = "";
       if (document.querySelector("base")) {
@@ -84,11 +94,22 @@ export const PrintBranchMixin = function (SuperClass) {
             "text/html"
           )
         );
-        link.download = `${toJS(store.activeTitle)}.html`;
+        /*link.download = `${toJS(store.activeTitle)}.html`;
         link.target = "_blank";
         this.appendChild(link);
         link.click();
-        this.removeChild(link);
+        this.removeChild(link);*/
+        // fallback in case the service fails
+        window.open(
+          window.URL.createObjectURL(
+            b64toBlob(
+              btoa(unescape(encodeURIComponent(response.data))),
+              "text/html"
+            )
+          ),
+          "",
+          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
+        );
       } else {
         // fallback in case the service fails
         window.open(
@@ -97,6 +118,7 @@ export const PrintBranchMixin = function (SuperClass) {
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1"
         );
       }
+      this.__printBranchLoading = false;
     }
   };
 };

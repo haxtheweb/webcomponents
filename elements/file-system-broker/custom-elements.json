@@ -1,111 +1,45 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "file-system-broker",
-      "path": "./file-system-broker.js",
-      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
-      "properties": [
-        {
-          "name": "dirHandler"
-        },
-        {
-          "name": "fileHandler"
-        },
-        {
-          "name": "files",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`\n\nProperties:\n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
+      "attributes": []
     },
     {
       "name": "docx-file-system-broker",
-      "path": "./lib/docx-file-system-broker.js",
-      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the DOCX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from DOCX",
-      "properties": [
+      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the DOCX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from DOCX\n\nEvents:\n\n  * `docx-reader-ready` {`CustomEvent<this>`} - \n\n  * `docx-file-system-data` {`CustomEvent<{ name: any; value: any; }>`} - \n\nProperties:\n\n  * `libPath` {`string`} - \n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
+      "attributes": [
         {
-          "name": "libPath",
-          "type": "string",
-          "default": "\"href\""
+          "name": "ondocx-reader-ready",
+          "description": "`docx-reader-ready` {`CustomEvent<this>`} - "
         },
         {
-          "name": "dirHandler"
-        },
-        {
-          "name": "fileHandler"
-        },
-        {
-          "name": "files",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ],
-      "events": [
-        {
-          "name": "docx-reader-ready"
-        },
-        {
-          "name": "docx-file-system-data"
+          "name": "ondocx-file-system-data",
+          "description": "`docx-file-system-data` {`CustomEvent<{ name: any; value: any; }>`} - "
         }
       ]
     },
     {
       "name": "xlsx-file-system-broker",
-      "path": "./lib/xlsx-file-system-broker.js",
-      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos",
-      "properties": [
+      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos\n\nEvents:\n\n  * `xlsx-ready` {`CustomEvent<this>`} - \n\n  * `xlsx-file-system-data` {`CustomEvent<{ filename: string; format: any; operation: string; data: string; }>`} - \n\nProperties:\n\n  * `XLSX` - \n\n  * `libPath` {`string`} - \n\n  * `XW` - \n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
+      "attributes": [
         {
-          "name": "XLSX"
+          "name": "onxlsx-ready",
+          "description": "`xlsx-ready` {`CustomEvent<this>`} - "
         },
         {
-          "name": "libPath",
-          "type": "string",
-          "default": "\"href\""
-        },
-        {
-          "name": "XW",
-          "type": "object",
-          "default": "{\"msg\":\"xlsx\"}"
-        },
-        {
-          "name": "dirHandler"
-        },
-        {
-          "name": "fileHandler"
-        },
-        {
-          "name": "files",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ],
-      "events": [
-        {
-          "name": "xlsx-ready"
-        },
-        {
-          "name": "xlsx-file-system-data"
+          "name": "onxlsx-file-system-data",
+          "description": "`xlsx-file-system-data` {`CustomEvent<{ filename: string; format: any; operation: string; data: string; }>`} - "
         }
       ]
     },
     {
       "name": "file-system-broker",
-      "path": "./src/file-system-broker.js",
-      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
-      "properties": [
-        {
-          "name": "dirHandler"
-        },
-        {
-          "name": "fileHandler"
-        },
-        {
-          "name": "files",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`\n\nProperties:\n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

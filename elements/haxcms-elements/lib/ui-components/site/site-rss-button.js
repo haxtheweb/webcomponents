@@ -62,9 +62,11 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     this._link = {
       title: this.t.rssFeed,
     };
+    this.href = "rss.xml";
+    this.icon = "communication:rss-feed";
     this.type = "rss";
     this.raised = false;
-    this.position = "bottom";
+    this.position = "auto";
   }
   // render function
   render() {

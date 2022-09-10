@@ -1,320 +1,169 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "course-design",
-      "path": "./course-design.js",
-      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
+      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`\n\n",
+      "attributes": []
     },
     {
       "name": "activity-box",
-      "path": "./lib/activity-box.js",
+      "description": "Attributes:\n\n  * `nocolourize` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `tag` {`string`} - \n\nProperties:\n\n  * `nocolourize` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `tag` {`string`} - ",
       "attributes": [
         {
           "name": "nocolourize",
-          "type": "boolean"
+          "description": "`nocolourize` {`boolean`} - \n\nProperty: nocolourize",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
         },
         {
           "name": "tag",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "nocolourize",
-          "attribute": "nocolourize",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "tag",
-          "attribute": "tag",
-          "type": "string",
-          "default": "\"\""
+          "description": "`tag` {`string`} - \n\nProperty: tag\n\nDefault: "
         }
       ]
     },
     {
       "name": "block-quote",
-      "path": "./lib/block-quote.js",
+      "description": "Attributes:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\nProperties:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - ",
       "attributes": [
         {
           "name": "citation",
-          "type": "string",
-          "default": "\"\""
+          "description": "`citation` {`string`} - \n\nProperty: citation\n\nDefault: "
         },
         {
           "name": "image",
-          "type": "string",
-          "default": "\"\""
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: "
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "citation",
-          "attribute": "citation",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-intro-footer",
-      "path": "./lib/course-intro-footer.js",
+      "description": "Attributes:\n\n  * `organization` {`string`} - \n\n  * `organizationLink` {`string`} - \n\n  * `company` {`string`} - \n\n  * `companyLink` {`string`} - \n\nProperties:\n\n  * `organization` {`string`} - \n\n  * `organizationLink` {`string`} - \n\n  * `company` {`string`} - \n\n  * `companyLink` {`string`} - ",
       "attributes": [
         {
           "name": "organization",
-          "type": "string",
-          "default": "\"\""
+          "description": "`organization` {`string`} - \n\nProperty: organization\n\nDefault: "
         },
         {
           "name": "organizationLink",
-          "type": "string",
-          "default": "\"\""
+          "description": "`organizationLink` {`string`} - \n\nProperty: organizationLink\n\nDefault: "
         },
         {
           "name": "company",
-          "type": "string",
-          "default": "\"\""
+          "description": "`company` {`string`} - \n\nProperty: company\n\nDefault: "
         },
         {
           "name": "companyLink",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "organization",
-          "attribute": "organization",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "organizationLink",
-          "attribute": "organizationLink",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "company",
-          "attribute": "company",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "companyLink",
-          "attribute": "companyLink",
-          "type": "string",
-          "default": "\"\""
+          "description": "`companyLink` {`string`} - \n\nProperty: companyLink\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-intro-header",
-      "path": "./lib/course-intro-header.js",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "description",
-          "type": "string",
-          "default": "\"\""
+          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "description",
-          "attribute": "description",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-intro-lesson-plan",
-      "path": "./lib/course-intro-lesson-plan.js",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "link",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "link",
-          "attribute": "link",
-          "type": "string",
-          "default": "\"\""
+          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-intro-lesson-plans",
-      "path": "./lib/course-intro-lesson-plans.js",
+      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `_disposer` - ",
       "attributes": [
         {
           "name": "items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-intro",
-      "path": "./lib/course-intro.js"
+      "attributes": []
     },
     {
       "name": "ebook-button",
-      "path": "./lib/ebook-button.js",
+      "description": "Attributes:\n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [
         {
           "name": "link",
-          "type": "string",
-          "default": "\"\""
+          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"icons:book\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "link",
-          "attribute": "link",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"icons:book\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:book"
         }
       ]
     },
     {
       "name": "lrn-h5p",
-      "path": "./lib/lrn-h5p.js"
+      "description": "Attributes:\n\n  * `_editing` {`boolean`} - \n\nProperties:\n\n  * `_editing` {`boolean`} - \n\n  * `_disposer` - ",
+      "attributes": [
+        {
+          "name": "_editing",
+          "description": "`_editing` {`boolean`} - \n\nProperty: _editing\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     },
     {
       "name": "responsive-iframe",
-      "path": "./lib/responsive-iframe.js"
+      "attributes": []
     },
     {
       "name": "worksheet-download",
-      "path": "./lib/worksheet-download.js",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "link",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "link",
-          "attribute": "link",
-          "type": "string",
-          "default": "\"\""
+          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
         }
       ]
     },
     {
       "name": "course-design",
-      "path": "./src/course-design.js",
-      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
+      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`\n\n",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

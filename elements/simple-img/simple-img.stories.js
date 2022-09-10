@@ -5,7 +5,7 @@ import { SimpleImg } from "./simple-img.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Micro-frontends|Simple Image",
+  title: "Developer|Micro-frontend: Images",
   component: "simple-img",
   decorators: [withKnobs],
   parameters: {

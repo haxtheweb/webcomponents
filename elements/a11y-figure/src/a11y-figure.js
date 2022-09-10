@@ -241,7 +241,7 @@ class A11yFigure extends A11yDetails {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "a11y-figure";
   }
 

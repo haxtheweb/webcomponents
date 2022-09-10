@@ -347,12 +347,12 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             creator: "Cool Joe",
             license: "by",
             title: "Te Futr Da Biz",
-            source:"https://duckduckgo.com/",
-            date:"03/07/2020"
+            source: "https://duckduckgo.com/",
+            date: "03/07/2020",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
 

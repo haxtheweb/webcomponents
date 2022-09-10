@@ -1,664 +1,345 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "clean-one",
-      "path": "./clean-one.js",
-      "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `searchTerm` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `font-size` {`number`} - \n\n  * `font-family` {`number`} - \n\n  * `color-theme` {`number`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `searchTerm` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `fontSize` {`number`} - \n\n  * `fontFamily` {`number`} - \n\n  * `colorTheme` {`number`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "searchTerm",
-          "type": "string"
+          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm"
+        },
+        {
+          "name": "__printBranchLoading",
+          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "showQRCode",
-          "type": "boolean",
-          "default": "false"
+          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "dark-mode",
-          "type": "boolean"
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
         },
         {
           "name": "hideUserStylesMenu",
-          "type": "boolean",
-          "default": "true"
+          "description": "`hideUserStylesMenu` {`boolean`} - \n\nProperty: hideUserStylesMenu\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "font-size",
-          "type": "number"
+          "description": "`font-size` {`number`} - \n\nProperty: fontSize"
         },
         {
           "name": "font-family",
-          "type": "number"
+          "description": "`font-family` {`number`} - \n\nProperty: fontFamily"
         },
         {
           "name": "color-theme",
-          "type": "number"
+          "description": "`color-theme` {`number`} - \n\nProperty: colorTheme"
         },
         {
           "name": "menu-open",
-          "type": "boolean",
-          "default": "true"
+          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
         },
         {
           "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
         },
         {
           "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
         },
         {
           "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
         },
         {
           "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
         },
         {
           "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
         },
         {
           "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
         },
         {
           "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
         },
         {
           "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
         },
         {
           "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "searchTerm",
-          "attribute": "searchTerm",
-          "type": "string"
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "showQRCode",
-          "attribute": "showQRCode",
-          "type": "boolean",
-          "default": "false"
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
+          "name": "onhaxcms-toast-show",
+          "description": "`haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         },
         {
-          "name": "hideUserStylesMenu",
-          "attribute": "hideUserStylesMenu",
-          "type": "boolean",
-          "default": "true"
+          "name": "oncontent-container-changed",
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "fontSize",
-          "attribute": "font-size",
-          "type": "number"
+          "name": "onis-logged-in-changed",
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "fontFamily",
-          "attribute": "font-family",
-          "type": "number"
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "colorTheme",
-          "attribute": "color-theme",
-          "type": "number"
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         },
         {
-          "name": "menuOpen",
-          "attribute": "menu-open",
-          "type": "boolean",
-          "default": "true"
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         },
         {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
         },
         {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "haxcms-toast-show"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "clean-one-search-box",
-      "path": "./lib/clean-one-search-box.js",
+      "description": "Events:\n\n  * `input-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `value` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `value` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
         },
         {
           "name": "t",
-          "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object",
-          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
-        }
-      ],
-      "events": [
-        {
-          "name": "input-changed"
+          "name": "oninput-changed",
+          "description": "`input-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "clean-one",
-      "path": "./src/clean-one.js",
-      "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `searchTerm` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `font-size` {`number`} - \n\n  * `font-family` {`number`} - \n\n  * `color-theme` {`number`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `searchTerm` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `fontSize` {`number`} - \n\n  * `fontFamily` {`number`} - \n\n  * `colorTheme` {`number`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "searchTerm",
-          "type": "string"
+          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm"
+        },
+        {
+          "name": "__printBranchLoading",
+          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "showQRCode",
-          "type": "boolean",
-          "default": "false"
+          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "dark-mode",
-          "type": "boolean"
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
         },
         {
           "name": "hideUserStylesMenu",
-          "type": "boolean",
-          "default": "true"
+          "description": "`hideUserStylesMenu` {`boolean`} - \n\nProperty: hideUserStylesMenu\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "font-size",
-          "type": "number"
+          "description": "`font-size` {`number`} - \n\nProperty: fontSize"
         },
         {
           "name": "font-family",
-          "type": "number"
+          "description": "`font-family` {`number`} - \n\nProperty: fontFamily"
         },
         {
           "name": "color-theme",
-          "type": "number"
+          "description": "`color-theme` {`number`} - \n\nProperty: colorTheme"
         },
         {
           "name": "menu-open",
-          "type": "boolean",
-          "default": "true"
+          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
         },
         {
           "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
         },
         {
           "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
         },
         {
           "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
         },
         {
           "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
         },
         {
           "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
         },
         {
           "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
         },
         {
           "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
         },
         {
           "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
         },
         {
           "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "searchTerm",
-          "attribute": "searchTerm",
-          "type": "string"
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "showQRCode",
-          "attribute": "showQRCode",
-          "type": "boolean",
-          "default": "false"
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
+          "name": "onhaxcms-toast-show",
+          "description": "`haxcms-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         },
         {
-          "name": "hideUserStylesMenu",
-          "attribute": "hideUserStylesMenu",
-          "type": "boolean",
-          "default": "true"
+          "name": "oncontent-container-changed",
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "fontSize",
-          "attribute": "font-size",
-          "type": "number"
+          "name": "onis-logged-in-changed",
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "fontFamily",
-          "attribute": "font-family",
-          "type": "number"
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "colorTheme",
-          "attribute": "color-theme",
-          "type": "number"
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         },
         {
-          "name": "menuOpen",
-          "attribute": "menu-open",
-          "type": "boolean",
-          "default": "true"
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         },
         {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
         },
         {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "haxcms-toast-show"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

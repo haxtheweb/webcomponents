@@ -4,7 +4,7 @@ const copy = require("rollup-plugin-copy");
 var outputDir = "storybook";
 module.exports = {
   // Globs of all the stories in your project
-  stories: ["./**.stories.{js,mdx}", "../elements/*/**.stories.{js,mdx}"],
+  stories: ["./**.stories.{js,mdx}", "../elements/*/**.stories.{js,mdx}", "../elements/*/lib/**.stories.{js,mdx}"],
 
   // Addons to be loaded, note that you need to import
   // them from storybook-prebuilt

@@ -35,10 +35,13 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
       <git-corner
         .part="${this.editMode ? `edit-mode-active` : ``}"
         size="${this.size}"
-        alt="${this.t.seePageSource}"
         ?circle="${this.circle}"
+        id="git-corner"
         source="${this.activeGitFileLink}"
       ></git-corner>
+      <simple-tooltip for="git-corner" position="auto">
+        ${this.t.seePageSource}
+      </simple-tooltip>
     `;
   }
   constructor() {

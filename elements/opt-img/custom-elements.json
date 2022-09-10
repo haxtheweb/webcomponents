@@ -1,153 +1,53 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "opt-img",
-      "path": "./opt-img.js",
-      "description": "`opt-img`\n`an optimized image delivery that is vanilla`",
+      "description": "`opt-img`\n`an optimized image delivery that is vanilla`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `alt` {`string`} - \n\n  * `src` {`string`} - \n\n  * `loadingvisible` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `loading` {`string`} - \n\n  * `t` - \n\n  * `alt` {`string`} - \n\n  * `src` {`string`} - \n\n  * `width` {`string`} - \n\n  * `height` {`string`} - \n\n  * `innerHTML` - \n\n  * `_loading` - \n\n  * `loadingvisible` {`string | null`} - \n\n  * `template` - \n\n  * `_preconnect` - ",
       "attributes": [
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
         },
         {
           "name": "loadingvisible",
-          "type": "string | null",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
+          "description": "`loadingvisible` {`string | null`} - \n\nProperty: loadingvisible\n\nDefault: false",
+          "values": []
         },
         {
-          "name": "loading",
-          "type": "string"
-        },
-        {
-          "name": "t"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "width",
-          "type": "string",
-          "default": "\"300px\""
-        },
-        {
-          "name": "height",
-          "type": "string",
-          "default": "\"200px\""
-        },
-        {
-          "name": "innerHTML"
-        },
-        {
-          "name": "loadingvisible",
-          "attribute": "loadingvisible",
-          "type": "string | null",
-          "default": "false"
-        },
-        {
-          "name": "template"
-        }
-      ],
-      "events": [
-        {
-          "name": "i18n-manager-register-element"
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
     },
     {
       "name": "opt-img",
-      "path": "./src/opt-img.js",
-      "description": "`opt-img`\n`an optimized image delivery that is vanilla`",
+      "description": "`opt-img`\n`an optimized image delivery that is vanilla`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `alt` {`string`} - \n\n  * `src` {`string`} - \n\n  * `loadingvisible` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `loading` {`string`} - \n\n  * `t` - \n\n  * `alt` {`string`} - \n\n  * `src` {`string`} - \n\n  * `width` {`string`} - \n\n  * `height` {`string`} - \n\n  * `innerHTML` - \n\n  * `_loading` - \n\n  * `loadingvisible` {`string | null`} - \n\n  * `template` - \n\n  * `_preconnect` - ",
       "attributes": [
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
         },
         {
           "name": "loadingvisible",
-          "type": "string | null",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
+          "description": "`loadingvisible` {`string | null`} - \n\nProperty: loadingvisible\n\nDefault: false",
+          "values": []
         },
         {
-          "name": "loading",
-          "type": "string"
-        },
-        {
-          "name": "t"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "width",
-          "type": "string",
-          "default": "\"300px\""
-        },
-        {
-          "name": "height",
-          "type": "string",
-          "default": "\"200px\""
-        },
-        {
-          "name": "innerHTML"
-        },
-        {
-          "name": "loadingvisible",
-          "attribute": "loadingvisible",
-          "type": "string | null",
-          "default": "false"
-        },
-        {
-          "name": "template"
-        }
-      ],
-      "events": [
-        {
-          "name": "i18n-manager-register-element"
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

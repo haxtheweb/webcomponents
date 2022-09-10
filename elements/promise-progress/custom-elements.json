@@ -1,394 +1,172 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "promise-progress",
-      "path": "./lib/promise-progress-lite.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
       "attributes": [
         {
           "name": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "show-count",
-          "type": "boolean",
-          "default": "false"
+          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "list",
-          "attribute": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "showCount",
-          "attribute": "show-count",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "canLoad",
-          "attribute": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "promise-progress-finished"
+          "name": "onpromise-progress-finished",
+          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "promise-progress-lite",
-      "path": "./lib/promise-progress-lite.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
       "attributes": [
         {
           "name": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "show-count",
-          "type": "boolean",
-          "default": "false"
+          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "list",
-          "attribute": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "showCount",
-          "attribute": "show-count",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "canLoad",
-          "attribute": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "promise-progress-finished"
+          "name": "onpromise-progress-finished",
+          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "wc-preload-progress",
-      "path": "./lib/wc-preload-progress.js",
-      "description": "`promise-progress`\n`layer on top of promise progress with specific integration with the WC Autoloader registry`",
+      "description": "`promise-progress`\n`layer on top of promise progress with specific integration with the WC Autoloader registry`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `wcList` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `wcList` {`any[]`} - \n\n  * `registry` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
       "attributes": [
         {
           "name": "wcList",
-          "type": "array",
-          "default": "[]"
+          "description": "`wcList` {`any[]`} - \n\nProperty: wcList\n\nDefault: "
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "show-count",
-          "type": "boolean",
-          "default": "false"
+          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "wcList",
-          "attribute": "wcList",
-          "type": "array",
-          "default": "[]"
+          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "registry"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        },
-        {
-          "name": "list",
-          "attribute": "list",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "showCount",
-          "attribute": "show-count",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "canLoad",
-          "attribute": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "promise-progress-finished"
+          "name": "onpromise-progress-finished",
+          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "promise-progress",
-      "path": "./promise-progress.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
       "attributes": [
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "list",
-          "type": "array",
-          "default": "[]"
+          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
         },
         {
           "name": "value",
-          "type": "number",
-          "default": "0"
+          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
         },
         {
           "name": "max",
-          "type": "number",
-          "default": "100"
+          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
         },
         {
           "name": "show-count",
-          "type": "boolean",
-          "default": "false"
+          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        },
-        {
-          "name": "list",
-          "attribute": "list",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "max",
-          "attribute": "max",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "showCount",
-          "attribute": "show-count",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "canLoad",
-          "attribute": "canLoad",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "promise-progress-finished"
+          "name": "onpromise-progress-finished",
+          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "promise-progress",
-      "path": "./src/promise-progress.js",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

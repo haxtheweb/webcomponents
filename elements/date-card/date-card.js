@@ -33,7 +33,7 @@ class DateCard extends SimpleColors {
    */
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-    .href;
+      .href;
   }
   constructor() {
     super();

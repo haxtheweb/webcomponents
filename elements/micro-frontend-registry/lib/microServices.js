@@ -151,6 +151,18 @@ export function enableCoreServices() {
 export function enableHAXcmsServices() {
   // siteToHtml
   MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/courseStats",
+    name: "@haxcms/courseStats",
+    title: "Course stats",
+    description: "Relevant stats for teaching relative to the ancestor in question",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      ancestor: "optional: ancestor to print from as opposed to entire site",
+    },
+  });
+  // siteToHtml
+  MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/siteToHtml",
     name: "@haxcms/siteToHtml",
     title: "HAXcms Full Site HTML",

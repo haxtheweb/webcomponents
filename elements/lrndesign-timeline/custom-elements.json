@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`\n`an element that displays events on a timeline`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - \n\nAttributes:\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `timeline-size` {`string`} - the timline size, calculated by responsive utility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `eventsElement` - events container element\n\n  * `eventsList` - ensures that events list is an Array\n\n  * `observer` - mutation observer for tabs\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `timelineSize` {`string`} - the timline size, calculated by responsive utility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "events",
+          "description": "`events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\nProperty: events\n\nDefault: "
+        },
+        {
+          "name": "timeline-size",
+          "description": "`timeline-size` {`string`} - the timline size, calculated by responsive utility\n\nProperty: timelineSize\n\nDefault: xs"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`\n`an element that displays events on a timeline`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `eventsElement` - events container element\n\n  * `eventsList` - ensures that events list is an Array\n\n  * `observer` - mutation observer for tabs\n\n  * `events` {`never[]`} - \n\n  * `timelineSize` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

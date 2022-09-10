@@ -1264,6 +1264,60 @@
   dependencies:
     "@types/chai" "^4.2.12"
 
+"@ffprobe-installer/darwin-arm64@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/darwin-arm64/-/darwin-arm64-5.0.1.tgz#a020a623955d55aa8daf45cb668c3044876b553b"
+  integrity sha512-vwNCNjokH8hfkbl6m95zICHwkSzhEvDC3GVBcUp5HX8+4wsX10SP3B+bGur7XUzTIZ4cQpgJmEIAx6TUwRepMg==
+
+"@ffprobe-installer/darwin-x64@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/darwin-x64/-/darwin-x64-5.0.0.tgz#66116b642cb1759939f4f4b3b18b0aea5d7814b0"
+  integrity sha512-Zl0UkZ+wW/eyMKBPLTUCcNQch2VDnZz/cBn1DXv3YtCBVbYd9aYzGj4MImdxgWcoE0+GpbfbO6mKGwMq5HCm6A==
+
+"@ffprobe-installer/ffprobe@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/ffprobe/-/ffprobe-1.4.1.tgz#64e46bb21580e3383b86ec79606222117acfac90"
+  integrity sha512-3WJvxU0f4d7IOZdzoVCAj9fYtiQNC6E0521FJFe9iP5Ej8auTXU7TsrUzIAG1CydeQI+BnM3vGog92SCcF9KtA==
+  optionalDependencies:
+    "@ffprobe-installer/darwin-arm64" "5.0.1"
+    "@ffprobe-installer/darwin-x64" "5.0.0"
+    "@ffprobe-installer/linux-arm" "5.0.0"
+    "@ffprobe-installer/linux-arm64" "5.0.0"
+    "@ffprobe-installer/linux-ia32" "5.0.0"
+    "@ffprobe-installer/linux-x64" "5.0.0"
+    "@ffprobe-installer/win32-ia32" "5.0.0"
+    "@ffprobe-installer/win32-x64" "5.0.0"
+
+"@ffprobe-installer/linux-arm64@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/linux-arm64/-/linux-arm64-5.0.0.tgz#8e50c2ac0fa9f1ccaf553114c09cc9d2f9571de2"
+  integrity sha512-IwFbzhe1UydR849YXLPP0RMpHgHXSuPO1kznaCHcU5FscFBV5gOZLkdD8e/xrcC8g/nhKqy0xMjn5kv6KkFQlQ==
+
+"@ffprobe-installer/linux-arm@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/linux-arm/-/linux-arm-5.0.0.tgz#0a67b1610284e4be115da1656f150abc4706fe08"
+  integrity sha512-mM1PPxP2UX5SUvhy0urcj5U8UolwbYgmnXA/eBWbW78k6N2Wk1COvcHYzOPs6c5yXXL6oshS2rZHU1kowigw7g==
+
+"@ffprobe-installer/linux-ia32@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/linux-ia32/-/linux-ia32-5.0.0.tgz#38714de93ce3842887e51a8b0c9dab3297777dbb"
+  integrity sha512-c3bWlWEDMST59SAZycVh0oyc2eNS/CxxeRjoNryGRgqcZX3EJWJJQL1rAXbpQOMLMi8to1RqnmMuwPJgLLjjUA==
+
+"@ffprobe-installer/linux-x64@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/linux-x64/-/linux-x64-5.0.0.tgz#dc51a99acf74675035c02f59c4d73270ba3742f7"
+  integrity sha512-zgLnWJFvMGCaw1txGtz84sMEQt6mQUzdw86ih9S/kZOWnp06Gj/ams/EXxEkAxgAACCVM6/O0mkDe/6biY5tgA==
+
+"@ffprobe-installer/win32-ia32@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/win32-ia32/-/win32-ia32-5.0.0.tgz#77f5cfba1aa91e47255562d23a07432b3e087bb1"
+  integrity sha512-NnDdAZD6ShFXzJeCkAFl2ZjAv7GcJWYudLA+0T/vjZwvskBop+sq1PGfdmVltfFDcdQiomoThRhn9Xiy9ZC71g==
+
+"@ffprobe-installer/win32-x64@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@ffprobe-installer/win32-x64/-/win32-x64-5.0.0.tgz#8ed741260b7db346c7bfe77d2fd9acbe3bd70d2f"
+  integrity sha512-P4ZMRFxVMnfMsOyTfBM/+nkTodLeOUfXNPo+X1bKEWBiZxRErqX/IHS5sLA0yAH8XmtKZcL7Cu6M26ztGcQYxw==
+
 "@gar/promisify@^1.0.1", "@gar/promisify@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
@@ -2589,6 +2643,48 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/deduping-fix/-/deduping-fix-3.0.0.tgz#c2341672c364d59405d7f3e4c63e2b58008c0bb0"
   integrity sha512-nhgzz/1qlWclHL7c8GjPoSHtUo1kgITtzFt8mXZQRhJN/mNDN3hl5xx6OzXsNUZvCmonARcV9/lAp4QZ5ONWpQ==
 
+"@lrnwebcomponents/drag-n-drop@4.0.25":
+  version "4.0.25"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/drag-n-drop/-/drag-n-drop-4.0.25.tgz#93a2550052980a9d76077f9164561bb8d67ca011"
+  integrity sha512-1b3oObZPg4DI80nKLCuAdpA50Gpwb1VK9aiPQoMjXEQ5hX2A2wG0xJgeAHxnfLviVs8uwzr02T8nl1XVvU52dg==
+
+"@lrnwebcomponents/future-terminal-text@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/future-terminal-text/-/future-terminal-text-4.1.0.tgz#a835f8f30683ea58543cdaf487dec402e37f1947"
+  integrity sha512-/304wP3QOYoMUPxeY4pkexOxaBYxryhsZQtwuH+WKxshG2BbzGYCKk6jq8CavtncM68FCbusCO81DLGNPA6GGA==
+  dependencies:
+    lit "^2.2.8"
+
+"@lrnwebcomponents/game-show-quiz@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/game-show-quiz/-/game-show-quiz-4.1.0.tgz#059d8cf47a6f042f0dd72c7c6385e01d2e797980"
+  integrity sha512-4iCcwpgQPtp8+Wwbzjl/1RT2x4IZfYfYsmopBp9kCo3GxxCvvWOXp7sPGhDU+8FAT9qCKs8tbCqIgrlZpL7F9w==
+  dependencies:
+    "@lrnwebcomponents/chartist-render" "^4.1.0"
+    "@lrnwebcomponents/hax-body" "^4.1.0"
+    "@lrnwebcomponents/multiple-choice" "^4.1.0"
+    "@lrnwebcomponents/responsive-grid" "^4.1.0"
+    "@lrnwebcomponents/simple-colors" "^4.1.0"
+    "@lrnwebcomponents/simple-icon" "^4.1.0"
+    "@lrnwebcomponents/simple-toast" "^4.1.0"
+    "@polymer/app-layout" "^3.0.2"
+    "@polymer/iron-ajax" "^3.0.0"
+    "@polymer/iron-flex-layout" "^3.0.1"
+    "@polymer/paper-dialog" "^3.0.0"
+    "@polymer/paper-dialog-scrollable" "^3.0.0"
+    "@polymer/paper-toast" "^3.0.1"
+    "@polymer/polymer" "^3.4.1"
+    "@vaadin/vaadin-split-layout" "^4.1.0"
+    lit "^2.2.8"
+
+"@lrnwebcomponents/glossary-term@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/glossary-term/-/glossary-term-4.1.0.tgz#dd4f69c3ef1439f697b0bc7c22ffbfd75e83135c"
+  integrity sha512-HWs2DRATM39jhzYsOsTDXWoSko6PGSQOkMRzjAzH+TA9HG+XZMy0tT0pVnJ+R+kZC950LXGzjorZNeIAwHj/zw==
+  dependencies:
+    "@lrnwebcomponents/lrn-vocab" "^4.1.0"
+    lit "^2.2.8"
+
 "@lrnwebcomponents/hero-banner@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/hero-banner/-/hero-banner-4.0.4.tgz#92b1cc1e84b64412286854625889acfcc8c96908"
@@ -2663,12 +2759,40 @@
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     lit "2.0.0"
 
+"@lrnwebcomponents/material-progress@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/material-progress/-/material-progress-4.1.0.tgz#abf0ded211f80583a0a6cbdea6900416e7df9a77"
+  integrity sha512-LGFCFvQRQjTqEpbpBcddbTFQZ8/iFtL8gb2ZhJKH+9RFWQHh6jXqkhA7T3IDO2N09FRq6kE5DHkkrzyO3u5uYQ==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
+
 "@lrnwebcomponents/material-word@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/material-word/-/material-word-4.0.4.tgz#7a70c15320d30202f24b2767b28544bef521d136"
   integrity sha512-85RvBDEnXTSo26hMc9fHmoFkB/kHf2bU9kzrKjEERPOSNBM0XY/7XHAq/HxPOeWMs9QaB+zItwO0y9jIFyz6eA==
   dependencies:
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/materializecss-styles@4.1.0", "@lrnwebcomponents/materializecss-styles@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/materializecss-styles/-/materializecss-styles-4.1.0.tgz#5f637fd772644399ed9b10520e5df455868cb62f"
+  integrity sha512-6xrK4Ea11rpCSDYWPtfJxD1lCu5juH+tVlTjfQ/YdwRBV8yW2zIiPnOKHGjLbbgA9P7hHHGT7CLRN475ABk6dA==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
+
+"@lrnwebcomponents/paper-audio-player@4.1.0", "@lrnwebcomponents/paper-audio-player@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/paper-audio-player/-/paper-audio-player-4.1.0.tgz#8f0f6e32cb07a3f8e396eaf3279ebead5ef14215"
+  integrity sha512-sX2+U+1TjsaAaoT7DMTMeGBE/v1crIrsDpl50tLdG/CZ8fsEkh8xLpErwO4w+/iUe5XEAD7bJgKFcZLK6nL1jg==
+  dependencies:
+    "@lrnwebcomponents/hax-iconset" "^4.1.0"
+    "@lrnwebcomponents/schema-behaviors" "^4.1.0"
+    "@lrnwebcomponents/simple-colors" "^4.1.0"
+    "@lrnwebcomponents/simple-icon" "^4.1.0"
+    "@polymer/iron-a11y-keys-behavior" "^3.0.0"
+    "@polymer/paper-progress" "^3.0.0"
+    "@polymer/paper-ripple" "^3.0.0"
+    "@polymer/polymer" "^3.4.1"
 
 "@lrnwebcomponents/promo-tile@4.0.4":
   version "4.0.4"
@@ -2745,6 +2869,14 @@
     "@lrnwebcomponents/simple-colors" "^2.8.0"
     lit-element "2.4.0"
 
+"@lrnwebcomponents/simple-pages@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-pages/-/simple-pages-4.1.0.tgz#ae856cc1b4c4505e1d4736714fcd2133ff527d8b"
+  integrity sha512-QzbbDMOezdnFc8TYiwi32POaYY7Tf3zomuUeZxNUOVqMujj5Qlcaz1UgA0LZwqNKpNbzOQmntwDxzbNutlDN5A==
+  dependencies:
+    "@polymer/iron-pages" "3.0.1"
+    lit "^2.2.8"
+
 "@lrnwebcomponents/simple-picker@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-picker/-/simple-picker-2.8.0.tgz#9c37483ff28dc2a7e91303c7b4b4f62d293de04e"
@@ -2770,6 +2902,13 @@
     "@lrnwebcomponents/utils" "^4.0.4"
     lit "2.0.0"
 
+"@lrnwebcomponents/they-live@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/they-live/-/they-live-4.1.0.tgz#64d087c72ecd1689e43cd9b5c06fb067d677ef72"
+  integrity sha512-ZKTnW2NsynFhJ/Xc5++PulThKjbZBrFVMC9L1RKb+D67tLrhIQt2EjfdUgoX5HH0vnZsrugXQBLaMshLgkT+FQ==
+  dependencies:
+    lit "^2.2.8"
+
 "@lrnwebcomponents/to-do@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/to-do/-/to-do-4.0.4.tgz#cbef7d1db9cff1585d44d24ed7b8087e523d87e7"
@@ -2780,6 +2919,11 @@
     "@lrnwebcomponents/simple-fields" "^4.0.4"
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/to-element@4.0.25":
+  version "4.0.25"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/to-element/-/to-element-4.0.25.tgz#aa417c552bbf9139b9a311666157306cf042bcbf"
+  integrity sha512-VLiBi53GBpnZYThyhSvHxi8rdFpnoKSmW0P86wxSBk9mM53pNVJGPXyyaig+QtdtdL2j2Dv6I33eWM2WVZH4Iw==
 
 "@lrnwebcomponents/top-alert@4.0.1":
   version "4.0.1"
@@ -8578,6 +8722,11 @@ base64-arraybuffer@0.1.4:
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.4.tgz#9818c79e059b1355f97e0428a017c838e90ba812"
   integrity sha512-a1eIFi4R9ySrbiMuyTGx5e92uRH5tQY6kArNcFaKBUleIoLjdjBg7Zxm3Mqm3Kmkf27HLR/1fnxX9q8GQ7Iavg==
 
+base64-arraybuffer@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz#1c37589a7c4b0746e34bd1feb951da2df01c1bdc"
+  integrity sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==
+
 base64-js@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
@@ -14120,6 +14269,15 @@ get-value@^2.0.3, get-value@^2.0.6:
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA==
 
+get-video-duration@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/get-video-duration/-/get-video-duration-4.1.0.tgz#3ba2102f9e16fe91571e8d3b508867ce31e23221"
+  integrity sha512-kDmnD/C/WFHmZx7eV2duUNCwAH6w9YwpigiUHmq7cRNmxuTvcJ/otvcxa4A5GDus2iSZ+CZEA5e0va/r5ZWumw==
+  dependencies:
+    "@ffprobe-installer/ffprobe" "^1.4.1"
+    execa "^5.0.0"
+    is-stream "^2.0.0"
+
 getpass@^0.1.1:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
@@ -18385,7 +18543,7 @@ lit-html@2.2.4, lit-html@^1.0.0, lit-html@^2.0.0, lit-html@^2.1.0, lit-html@^2.2
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@2.0.0, lit@2.2.8, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.5, lit@^2.2.8:
+lit@2.0.0, lit@2.2.8, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.4, lit@^2.2.5, lit@^2.2.8:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.2.8.tgz#26bdf560042aa3ec9b788f5d48119f7138b2dcc1"
   integrity sha512-QjeNbi/H9LVIHR+u0OqsL+hs62a16m02JlJHYN48HcBuXyiPYR8JvzsTp5dYYS81l+b9Emp3UaGo82EheV0pog==
@@ -20035,7 +20193,7 @@ mobx@6.4.1:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.4.1.tgz#c1d0eeb37ceb31bb2020a85f6bf856782d47fe60"
   integrity sha512-NFXx0uMbGBgsa0uxhH099L8cMuoRQWh01q6Sf0ZX/3hFU7svJ7yfTD+1LnLMa5wzY/b7gImAeMsR1p0wordDnA==
 
-mobx@^6.3.13:
+mobx@6.6.1, mobx@^6.3.13:
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.6.1.tgz#70ee6aa82f25aeb7e7d522bd621207434e509318"
   integrity sha512-7su3UZv5JF+ohLr2opabjbUAERfXstMY+wiBtey8yNAPoB8H187RaQXuhFjNkH8aE4iHbDWnhDFZw0+5ic4nGQ==

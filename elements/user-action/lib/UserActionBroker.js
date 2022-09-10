@@ -23,7 +23,7 @@ export class UserActionBroker {
   /**
    * Fire the action for the user engagement broker.
    */
-  fire(eventName, eventType, details, context) {
+  fire(eventName, eventType, details, context, demo = false) {
     details.eventType = eventType;
     context.dispatchEvent(
       new CustomEvent(eventName, {
@@ -33,6 +33,9 @@ export class UserActionBroker {
         detail: details,
       })
     );
+    if (demo) {
+      context.innerHTML = `<pre>${JSON.stringify(details, null, 2)}</pre>`
+    }
   }
 }
 export const UABroker = new UserActionBroker();

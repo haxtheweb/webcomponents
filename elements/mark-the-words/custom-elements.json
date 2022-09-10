@@ -1,15 +1,17 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "mark-the-words",
-      "path": "./mark-the-words.js",
-      "description": "`mark-the-words`\n`Mark desired words in a sentence`"
+      "description": "`mark-the-words`\n`Mark desired words in a sentence`\n\n",
+      "attributes": []
     },
     {
       "name": "mark-the-words",
-      "path": "./src/mark-the-words.js",
-      "description": "`mark-the-words`\n`Mark desired words in a sentence`"
+      "description": "`mark-the-words`\n`Mark desired words in a sentence`\n\n",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

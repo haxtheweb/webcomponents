@@ -1,231 +1,101 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "date-card",
-      "path": "./date-card.js",
-      "description": "`date-card`\n`simple presentation of a date`",
+      "description": "`date-card`\n`simple presentation of a date`\n\nAttributes:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `start-time` {`string`} - \n\n  * `end-time` {`string`} - \n\n  * `location` {`string`} - \n\n  * `border-spacing` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `startTime` {`string`} - \n\n  * `endTime` {`string`} - \n\n  * `location` {`string`} - \n\n  * `borderSpacing` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "month",
-          "type": "string"
+          "description": "`month` {`string`} - \n\nProperty: month"
         },
         {
           "name": "date",
-          "type": "string"
+          "description": "`date` {`string`} - \n\nProperty: date"
         },
         {
           "name": "day",
-          "type": "string"
+          "description": "`day` {`string`} - \n\nProperty: day"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
           "name": "start-time",
-          "type": "string"
+          "description": "`start-time` {`string`} - \n\nProperty: startTime"
         },
         {
           "name": "end-time",
-          "type": "string"
+          "description": "`end-time` {`string`} - \n\nProperty: endTime"
         },
         {
           "name": "location",
-          "type": "string"
+          "description": "`location` {`string`} - \n\nProperty: location"
         },
         {
           "name": "border-spacing",
-          "type": "number",
-          "default": "5"
+          "description": "`border-spacing` {`number`} - \n\nProperty: borderSpacing\n\nDefault: 5"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"light-blue\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: light-blue"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "month",
-          "attribute": "month",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "type": "string"
-        },
-        {
-          "name": "day",
-          "attribute": "day",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "startTime",
-          "attribute": "start-time",
-          "type": "string"
-        },
-        {
-          "name": "endTime",
-          "attribute": "end-time",
-          "type": "string"
-        },
-        {
-          "name": "location",
-          "attribute": "location",
-          "type": "string"
-        },
-        {
-          "name": "borderSpacing",
-          "attribute": "border-spacing",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"light-blue\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "date-card",
-      "path": "./src/date-card.js",
-      "description": "`date-card`\n`simple presentation of a date`",
+      "description": "`date-card`\n`simple presentation of a date`\n\nAttributes:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `start-time` {`string`} - \n\n  * `end-time` {`string`} - \n\n  * `location` {`string`} - \n\n  * `border-spacing` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `startTime` {`string`} - \n\n  * `endTime` {`string`} - \n\n  * `location` {`string`} - \n\n  * `borderSpacing` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "month",
-          "type": "string"
+          "description": "`month` {`string`} - \n\nProperty: month"
         },
         {
           "name": "date",
-          "type": "string"
+          "description": "`date` {`string`} - \n\nProperty: date"
         },
         {
           "name": "day",
-          "type": "string"
+          "description": "`day` {`string`} - \n\nProperty: day"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
           "name": "start-time",
-          "type": "string"
+          "description": "`start-time` {`string`} - \n\nProperty: startTime"
         },
         {
           "name": "end-time",
-          "type": "string"
+          "description": "`end-time` {`string`} - \n\nProperty: endTime"
         },
         {
           "name": "location",
-          "type": "string"
+          "description": "`location` {`string`} - \n\nProperty: location"
         },
         {
           "name": "border-spacing",
-          "type": "number",
-          "default": "5"
+          "description": "`border-spacing` {`number`} - \n\nProperty: borderSpacing\n\nDefault: 5"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"light-blue\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: light-blue"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "month",
-          "attribute": "month",
-          "type": "string"
-        },
-        {
-          "name": "date",
-          "attribute": "date",
-          "type": "string"
-        },
-        {
-          "name": "day",
-          "attribute": "day",
-          "type": "string"
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "startTime",
-          "attribute": "start-time",
-          "type": "string"
-        },
-        {
-          "name": "endTime",
-          "attribute": "end-time",
-          "type": "string"
-        },
-        {
-          "name": "location",
-          "attribute": "location",
-          "type": "string"
-        },
-        {
-          "name": "borderSpacing",
-          "attribute": "border-spacing",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"light-blue\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

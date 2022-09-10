@@ -56,9 +56,10 @@
       "properties": {
         "to": "btopro",
         "from": "everyone",
-        "post-mark-locations": "state college",
+        "postMarkLocations": "state college",
         "message": "Look more enthused at work",
-        "photoSrc": "https://pbs.twimg.com/profile_images/1449009517702877205/HMEL-g-h_400x400.jpg"
+        "photoSrc": "https://btopro.com/assets/banner.jpg",
+        "stampSrc": "https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg"
       }
     }
   ]

@@ -177,9 +177,11 @@ const utils = new StorybookUtilities(),
       inputMethod: "code-editor",
     },
   ];
-
-export const A11yMediaPlayerStory = () => {
-  return utils.makeElement(
+export const BasicA11yMediaPlayer = () => {
+  return utils.makeUsageDocs(
+    A11yMediaPlayer,
+    import.meta.url,
+    utils.makeElement(
     A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
@@ -200,5 +202,5 @@ export const A11yMediaPlayerStory = () => {
         )}">
       </video>`,
     })
-  );
+  ));
 };

@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
-class BlockQuote extends LitElement {
+export class BlockQuote extends LitElement {
   static get properties() {
     return {
       citation: { type: String },

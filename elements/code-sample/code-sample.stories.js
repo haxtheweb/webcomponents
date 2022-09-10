@@ -4,7 +4,7 @@ import { CodeSample } from "./code-sample.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Developer|CodeSample",
+  title: "Developer|Code Sample",
   component: "code-sample",
   decorators: [withKnobs],
   parameters: {
@@ -12,6 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicCodeSample = () => {
-  return utils.makeElementFromHaxDemo(CodeSample);
-};
+export const BasicCodeSample = () =>
+  utils.makeUsageDocs(
+    CodeSample,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(CodeSample)
+  );

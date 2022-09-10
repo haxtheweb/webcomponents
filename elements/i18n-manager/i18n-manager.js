@@ -165,11 +165,13 @@ class I18NManager extends HTMLElement {
       detail = this.detailNormalize(detail);
       this.elements.push(detail);
       // store in this.locales for quick "do we support this" look up
-      detail.locales.forEach(this.locales.add, this.locales);
+      if (detail && detail.locales) {
+        detail.locales.forEach(this.locales.add, this.locales);
+      }
       // timing issue, see if we are ready + a language and that it happened PRIOR
       // to registration just now but match against locales we support
       // and it being the set language already
-      if (this.lang && this.__ready && detail.locales.includes(this.lang)) {
+      if (this.lang && this.__ready && detail.locales && detail.locales.includes(this.lang)) {
         // prevent flooding w/ lots of translatable elements
         clearTimeout(this._debounce);
         this._debounce = setTimeout(() => {

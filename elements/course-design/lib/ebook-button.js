@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
-class EbookButton extends LitElement {
+export class EbookButton extends LitElement {
   static get properties() {
     return {
       link: { type: String },

@@ -1,65 +1,27 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "wc-registry",
-      "path": "./src/wc-autoload.js",
-      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
-      "properties": [
-        {
-          "name": "loader"
-        }
-      ]
+      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`\n\nProperties:\n\n  * `loader` - ",
+      "attributes": []
     },
     {
       "name": "wc-autoload",
-      "path": "./src/wc-autoload.js",
-      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
-      "properties": [
-        {
-          "name": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "registry"
-        },
-        {
-          "name": "options",
-          "type": "object",
-          "default": "{\"childList\":true,\"subtree\":true}"
-        }
-      ]
+      "description": "`wc-autoload`\n`automatically load new tags in the dom`\n\nProperties:\n\n  * `loaded` {`boolean`} - \n\n  * `registry` - \n\n  * `options` - ",
+      "attributes": []
     },
     {
       "name": "wc-registry",
-      "path": "./wc-autoload.js",
-      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
-      "properties": [
-        {
-          "name": "loader"
-        }
-      ]
+      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`\n\nProperties:\n\n  * `loader` - ",
+      "attributes": []
     },
     {
       "name": "wc-autoload",
-      "path": "./wc-autoload.js",
-      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
-      "properties": [
-        {
-          "name": "loaded",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "registry"
-        },
-        {
-          "name": "options",
-          "type": "object",
-          "default": "{\"childList\":true,\"subtree\":true}"
-        }
-      ]
+      "description": "`wc-autoload`\n`automatically load new tags in the dom`\n\nProperties:\n\n  * `loaded` {`boolean`} - \n\n  * `registry` - \n\n  * `options` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

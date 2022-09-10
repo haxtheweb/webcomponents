@@ -1,0 +1,38 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Lesson Overview",
+    "description": "Quick overview of a thing",
+    "icon": "communication:business",
+    "color": "blue",
+    "groups": ["Buisness", "Communication", "Education"],
+    "handles": [],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon to represent concept at a high level",
+        "inputMethod": "iconpicker"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "product-glance",
+      "content": "",
+      "properties": {
+        "icon": "star",
+        "title": "Simple Objectives",
+        "subtitle": "Learn on the go, anywhere"
+      }
+    }
+  ]
+}

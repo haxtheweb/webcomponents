@@ -18,6 +18,7 @@ import "./lib/clean-one-search-box.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { PrintBranchMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { PDFPageMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 
 /**
  * `clean-one`
@@ -32,10 +33,12 @@ import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry
  */
 class CleanOne extends HAXCMSRememberRoute(
   PrintBranchMixin(
-    QRCodeMixin(
-      HAXCMSThemeParts(
-        HAXCMSUserStylesMenuMixin(
-          HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+    PDFPageMixin(
+      QRCodeMixin(
+        HAXCMSThemeParts(
+          HAXCMSUserStylesMenuMixin(
+            HAXCMSMobileMenuMixin(SimpleColorsSuper(HAXCMSLitElementTheme))
+          )
         )
       )
     )
@@ -668,13 +671,16 @@ class CleanOne extends HAXCMSRememberRoute(
                   ${this.HAXCMSMobileMenuButton()}
                   ${this.HAXCMSUserStylesMenu()}
                   ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
-                    ? this.PrintBranchButton()
+                    ? this.PrintBranchButton("bottom")
                     : html`
                         <site-print-button
                           class="btn js-toolbar-action"
                           part="print-btn"
                         ></site-print-button>
                       `}
+                  ${MicroFrontendRegistry.has("@core/htmlToPdf")
+                    ? this.PDFPageButton("bottom")
+                    : ``}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}

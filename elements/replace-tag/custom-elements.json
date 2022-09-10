@@ -1,41 +1,22 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "performance-detect",
-      "path": "./lib/PerformanceDetect.js",
-      "properties": [
-        {
-          "name": "details",
-          "type": "Promise<{}>"
-        }
-      ]
+      "description": "Properties:\n\n  * `details` {`Promise<{}>`} - ",
+      "attributes": []
     },
     {
       "name": "replace-tag",
-      "path": "./replace-tag.js",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "template"
-        }
-      ]
+      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `template` - ",
+      "attributes": []
     },
     {
       "name": "replace-tag",
-      "path": "./src/replace-tag.js",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "template"
-        }
-      ]
+      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `template` - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

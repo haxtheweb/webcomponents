@@ -1,11 +1,10 @@
-import { html } from "lit-html";
-import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
+import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { PageBreak } from "./page-break.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Break|PageBreak",
+  title: "HAX|PageBreak",
   component: "page-break",
   decorators: [withKnobs],
   parameters: {
@@ -14,5 +13,9 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const PageBreakStory = () => {
-  return utils.makeElementFromClass(PageBreak);
+  return utils.makeUsageDocs(
+    PageBreak,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(PageBreak)
+  );
 };

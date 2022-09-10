@@ -1,297 +1,159 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-img",
-      "path": "./simple-img.js",
+      "description": "Attributes:\n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `quality` {`string | null`} - \n\nProperties:\n\n  * `baseurl` {`string | null`} - \n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `rendering` {`boolean`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `innerHTML` - \n\n  * `quality` {`string | null`} - ",
       "attributes": [
         {
           "name": "srcconverted",
-          "type": "string | null"
+          "description": "`srcconverted` {`string | null`} - \n\nProperty: srcconverted",
+          "values": []
         },
         {
           "name": "rotate",
-          "type": "string | null"
+          "description": "`rotate` {`string | null`} - \n\nProperty: rotate",
+          "values": []
         },
         {
           "name": "fit",
-          "type": "string | null"
+          "description": "`fit` {`string | null`} - \n\nProperty: fit",
+          "values": []
         },
         {
           "name": "watermark",
-          "type": "string | null"
+          "description": "`watermark` {`string | null`} - \n\nProperty: watermark",
+          "values": []
         },
         {
           "name": "wmspot",
-          "type": "string | null"
+          "description": "`wmspot` {`string | null`} - \n\nProperty: wmspot",
+          "values": []
         },
         {
           "name": "format",
-          "type": "string | null"
+          "description": "`format` {`string | null`} - \n\nProperty: format",
+          "values": []
         },
         {
           "name": "alt",
-          "type": "string | null"
+          "description": "`alt` {`string | null`} - \n\nProperty: alt",
+          "values": []
         },
         {
           "name": "src",
-          "type": "string | null"
+          "description": "`src` {`string | null`} - \n\nProperty: src",
+          "values": []
         },
         {
           "name": "loading",
-          "type": "string | null"
+          "description": "`loading` {`string | null`} - \n\nProperty: loading",
+          "values": []
         },
         {
           "name": "decoding",
-          "type": "string | null"
+          "description": "`decoding` {`string | null`} - \n\nProperty: decoding",
+          "values": []
         },
         {
           "name": "fetchpriority",
-          "type": "string | null"
+          "description": "`fetchpriority` {`string | null`} - \n\nProperty: fetchpriority",
+          "values": []
         },
         {
           "name": "width",
-          "type": "string | null"
+          "description": "`width` {`string | null`} - \n\nProperty: width",
+          "values": []
         },
         {
           "name": "height",
-          "type": "string | null"
+          "description": "`height` {`string | null`} - \n\nProperty: height",
+          "values": []
         },
         {
           "name": "quality",
-          "type": "string | null"
-        }
-      ],
-      "properties": [
-        {
-          "name": "baseurl",
-          "type": "string | null"
-        },
-        {
-          "name": "srcconverted",
-          "attribute": "srcconverted",
-          "type": "string | null"
-        },
-        {
-          "name": "rotate",
-          "attribute": "rotate",
-          "type": "string | null"
-        },
-        {
-          "name": "fit",
-          "attribute": "fit",
-          "type": "string | null"
-        },
-        {
-          "name": "watermark",
-          "attribute": "watermark",
-          "type": "string | null"
-        },
-        {
-          "name": "wmspot",
-          "attribute": "wmspot",
-          "type": "string | null"
-        },
-        {
-          "name": "format",
-          "attribute": "format",
-          "type": "string | null"
-        },
-        {
-          "name": "rendering",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string | null"
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string | null"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "string | null"
-        },
-        {
-          "name": "decoding",
-          "attribute": "decoding",
-          "type": "string | null"
-        },
-        {
-          "name": "fetchpriority",
-          "attribute": "fetchpriority",
-          "type": "string | null"
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "type": "string | null"
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "type": "string | null"
-        },
-        {
-          "name": "innerHTML"
-        },
-        {
-          "name": "quality",
-          "attribute": "quality",
-          "type": "string | null"
+          "description": "`quality` {`string | null`} - \n\nProperty: quality",
+          "values": []
         }
       ]
     },
     {
       "name": "simple-img",
-      "path": "./src/simple-img.js",
+      "description": "Attributes:\n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `quality` {`string | null`} - \n\nProperties:\n\n  * `baseurl` {`string | null`} - \n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `rendering` {`boolean`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `innerHTML` - \n\n  * `quality` {`string | null`} - ",
       "attributes": [
         {
           "name": "srcconverted",
-          "type": "string | null"
+          "description": "`srcconverted` {`string | null`} - \n\nProperty: srcconverted",
+          "values": []
         },
         {
           "name": "rotate",
-          "type": "string | null"
+          "description": "`rotate` {`string | null`} - \n\nProperty: rotate",
+          "values": []
         },
         {
           "name": "fit",
-          "type": "string | null"
+          "description": "`fit` {`string | null`} - \n\nProperty: fit",
+          "values": []
         },
         {
           "name": "watermark",
-          "type": "string | null"
+          "description": "`watermark` {`string | null`} - \n\nProperty: watermark",
+          "values": []
         },
         {
           "name": "wmspot",
-          "type": "string | null"
+          "description": "`wmspot` {`string | null`} - \n\nProperty: wmspot",
+          "values": []
         },
         {
           "name": "format",
-          "type": "string | null"
+          "description": "`format` {`string | null`} - \n\nProperty: format",
+          "values": []
         },
         {
           "name": "alt",
-          "type": "string | null"
+          "description": "`alt` {`string | null`} - \n\nProperty: alt",
+          "values": []
         },
         {
           "name": "src",
-          "type": "string | null"
+          "description": "`src` {`string | null`} - \n\nProperty: src",
+          "values": []
         },
         {
           "name": "loading",
-          "type": "string | null"
+          "description": "`loading` {`string | null`} - \n\nProperty: loading",
+          "values": []
         },
         {
           "name": "decoding",
-          "type": "string | null"
+          "description": "`decoding` {`string | null`} - \n\nProperty: decoding",
+          "values": []
         },
         {
           "name": "fetchpriority",
-          "type": "string | null"
+          "description": "`fetchpriority` {`string | null`} - \n\nProperty: fetchpriority",
+          "values": []
         },
         {
           "name": "width",
-          "type": "string | null"
+          "description": "`width` {`string | null`} - \n\nProperty: width",
+          "values": []
         },
         {
           "name": "height",
-          "type": "string | null"
+          "description": "`height` {`string | null`} - \n\nProperty: height",
+          "values": []
         },
         {
           "name": "quality",
-          "type": "string | null"
-        }
-      ],
-      "properties": [
-        {
-          "name": "baseurl",
-          "type": "string | null"
-        },
-        {
-          "name": "srcconverted",
-          "attribute": "srcconverted",
-          "type": "string | null"
-        },
-        {
-          "name": "rotate",
-          "attribute": "rotate",
-          "type": "string | null"
-        },
-        {
-          "name": "fit",
-          "attribute": "fit",
-          "type": "string | null"
-        },
-        {
-          "name": "watermark",
-          "attribute": "watermark",
-          "type": "string | null"
-        },
-        {
-          "name": "wmspot",
-          "attribute": "wmspot",
-          "type": "string | null"
-        },
-        {
-          "name": "format",
-          "attribute": "format",
-          "type": "string | null"
-        },
-        {
-          "name": "rendering",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string | null"
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string | null"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "string | null"
-        },
-        {
-          "name": "decoding",
-          "attribute": "decoding",
-          "type": "string | null"
-        },
-        {
-          "name": "fetchpriority",
-          "attribute": "fetchpriority",
-          "type": "string | null"
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "type": "string | null"
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "type": "string | null"
-        },
-        {
-          "name": "innerHTML"
-        },
-        {
-          "name": "quality",
-          "attribute": "quality",
-          "type": "string | null"
+          "description": "`quality` {`string | null`} - \n\nProperty: quality",
+          "values": []
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

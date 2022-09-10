@@ -1,153 +1,74 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "retro-card",
-      "path": "./retro-card.js",
-      "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "description": "`retro-card`\n`Simple card in a cool retro design`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `media-source` {`string`} - \n\n  * `url` {`string`} - \n\n  * `hover-source` {`string`} - \n\n  * `__source` {`string`} - \n\n  * `__cardTags` {`any[]`} - \n\n  * `hover-state` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `mediaSource` {`string`} - \n\n  * `url` {`string`} - \n\n  * `hoverSource` {`string`} - \n\n  * `__source` {`string`} - \n\n  * `__cardTags` {`any[]`} - \n\n  * `hoverState` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
           "name": "subtitle",
-          "type": "string"
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle"
         },
         {
           "name": "tags",
-          "type": "string"
+          "description": "`tags` {`string`} - \n\nProperty: tags"
         },
         {
           "name": "media-source",
-          "type": "string"
+          "description": "`media-source` {`string`} - \n\nProperty: mediaSource"
         },
         {
           "name": "url",
-          "type": "string"
+          "description": "`url` {`string`} - \n\nProperty: url"
         },
         {
           "name": "hover-source",
-          "type": "string"
+          "description": "`hover-source` {`string`} - \n\nProperty: hoverSource"
+        },
+        {
+          "name": "__source",
+          "description": "`__source` {`string`} - \n\nProperty: __source"
+        },
+        {
+          "name": "__cardTags",
+          "description": "`__cardTags` {`any[]`} - \n\nProperty: __cardTags\n\nDefault: "
         },
         {
           "name": "hover-state",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hover-state` {`boolean`} - \n\nProperty: hoverState\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "subtitle",
-          "attribute": "subtitle",
-          "type": "string"
-        },
-        {
-          "name": "tags",
-          "attribute": "tags",
-          "type": "string"
-        },
-        {
-          "name": "mediaSource",
-          "attribute": "media-source",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string"
-        },
-        {
-          "name": "hoverSource",
-          "attribute": "hover-source",
-          "type": "string"
-        },
-        {
-          "name": "hoverState",
-          "attribute": "hover-state",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "retro-card",
-      "path": "./src/retro-card.js",
-      "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "description": "`retro-card`\n`Simple card in a cool retro design`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__cardTags` {`never[]`} - \n\n  * `hoverState` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "hoverState",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

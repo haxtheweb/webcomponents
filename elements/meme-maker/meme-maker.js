@@ -6,7 +6,8 @@ import { LitElement, html, css } from "lit";
 
 /**
  * `meme-maker`
- * Connects lrndesign-gallery to HAX
+ * Meme all the things
+ *
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  *  - go forth and make dank memes yo

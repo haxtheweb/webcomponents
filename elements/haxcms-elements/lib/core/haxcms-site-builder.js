@@ -308,7 +308,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       disableFeatures: {
         type: String,
         reflect: true,
-        attribute: 'disable-features'
+        attribute: "disable-features",
       },
       _timeStamp: {
         type: String,
@@ -464,7 +464,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       localesPath: new URL("../../locales", import.meta.url).href,
       locales: ["es"],
     });
-    this.disableFeatures = '';
+    this.disableFeatures = "";
     this.isLoggedIn = false;
     this.__disposer = [];
     this.queryParams = {};

@@ -58,6 +58,7 @@ const QRCodeMixin = function (SuperClass) {
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@lrnwebcomponents/q-r/q-r.js");
       return html`
         <div
           id="qrcodebtnwrapper"
@@ -66,12 +67,11 @@ const QRCodeMixin = function (SuperClass) {
           <simple-icon-button-lite
             part="qr-code-btn"
             class="qr-code-btn btn"
-            label="${this.t.currentPage}"
             icon="hax:qr-code"
             @click="${this.QRCodeButtonToggle}"
             id="qrcodebtn"
           ></simple-icon-button-lite>
-          <simple-tooltip for="qrcodebtn">
+          <simple-tooltip for="qrcodebtn" position="auto">
             ${this.t.currentPage}
           </simple-tooltip>
           <simple-popover

@@ -17,6 +17,7 @@ import {
   radios,
   files,
   optionsKnob,
+  Description,
 } from "@open-wc/demoing-storybook";
 
 /**
@@ -608,6 +609,88 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     }
   }
   /**
+   * 
+   * @param { Object } el - element class
+   * @param { String } path - import.meta.url or equivalent path to the file referenced
+   * @param { Object } demo - HTMLElement assumed demo of the element in question
+   * @param { String } packageName - manual dev setting only for extreme edge cases
+   * @returns 
+   */
+  makeUsageDocs(el, path, demo, packageName = null) {
+    const url = new URL(path);
+    let entryFile = el.tag;
+    let importPath = url.pathname.replace('/elements/','@lrnwebcomponents/').replace('.stories.js','.js');
+    packageName = packageName || `${importPath.split('/')[0]}/${importPath.split('/')[1]}`;
+    var description = window.localStorage.getItem(`${entryFile}-description`);
+    setTimeout( async () => {
+      // pull from the custom-elements json file since our tooling rebuilds this
+      const d = await fetch(`${url.pathname}/../custom-elements.json`.replace('/lib/','/')).then((e) => e.json()).then(async (d) => {
+        let allD = '';
+        if (d.tags) {
+          await d.tags.forEach((item) => {
+            // ignore source versions
+            if (!item.path || !item.path.startsWith('./src/')) {
+              allD += item.name + "\n" + (item.path ? item.path + "\n" : '') + (item.description ? item.description + "\n" : '') + "\n";
+            }
+          })
+        }
+        return allD;
+      })
+      window.localStorage.setItem(`${entryFile}-description`, d);
+    }, 0);
+    const div = document.createElement('div');
+    div.style.padding = "20px";
+    div.innerHTML = `
+    <h2>${entryFile} Demo</h2>
+    <div style="border:1px solid grey;">
+      ${demo.outerHTML}
+    </div>
+    <style>
+    code-sample {
+      --code-sample-font-size: 20px;
+      --code-sample-line-height: 1.8;
+      margin: 4px 0;
+    }
+    summary {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    </style>
+    <details>
+      <summary>API details</summary>
+      <pre>${description || 'Reload to view'}</pre>
+    </details>
+    <h3>Install in your project</h3>
+    <ul>
+      <li>
+        <code-sample copy-clipboard-button>
+          <template preserve-content="preserve-content">npm install --save ${packageName}</template>
+        </code-sample>
+      </li>
+      <li>
+        <code-sample copy-clipboard-button>
+          <template preserve-content="preserve-content">yarn add ${packageName}</template>
+        </code-sample>
+      </li>
+      <li>
+        <code-sample copy-clipboard-button>
+          <template preserve-content="preserve-content">pnpm add ${packageName}</template>
+        </code-sample>
+      </li>
+    </ul>
+    <h3>Import into your code</h3>
+    <code-sample copy-clipboard-button type="javascript">
+      <template preserve-content="preserve-content">import "${importPath}";</template>
+    </code-sample>
+    <h3>Additional links</h3>
+    <ul>
+      <li><a target="_blank" href="https://www.npmjs.com/package/${packageName}">NPM Project page</a></li>
+      <li><a target="_blank" href="https://github.com/elmsln/lrnwebcomponents/tree/master/elements/${entryFile}/">GitHub source code</a></li>
+    </ul>`;
+    return div;
+
+  }
+  /**
    * @param {string} el
    * @param {string} before
    */
@@ -650,7 +733,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     }
     else if (el.tag && typeof hProps === 'string') {
       setTimeout( async () => {
-        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
+        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))
       }, 0);
     }
     let demoschema =
@@ -669,6 +752,12 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
           ? demo.properties.style.replace(/;$/, "").split(/;/)
           : [],
       content = document.createElement("div");
+      // map props to attr equivalent; even if it's not there story will just ignore it
+      if (props && Object.keys(props).length > 0) {
+        Object.entries(props).forEach(prop => {
+          props[this.camelToKebab(prop[0]).trim()] = prop[1];
+        });
+      }
       if (styles.length > 0) delete demo.properties.style;
     styles.forEach((style) => {
       let parts = style.split(/:/),

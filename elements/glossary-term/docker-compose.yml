@@ -1,8 +1,0 @@
-version: "3"
-services:
-  glossary-service:
-    image: heymp/glossary-service:latest
-    volumes:
-      - ./demo/glossary-terms/glossary-terms.json:/tmp/glossary-terms.json
-    ports:
-      - "4000:4000"

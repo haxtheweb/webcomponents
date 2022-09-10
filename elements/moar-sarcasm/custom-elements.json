@@ -1,83 +1,39 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "moar-sarcasm",
-      "path": "./moar-sarcasm.js",
-      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`\n\nAttributes:\n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\n  * `template` - \n\n  * `observer` - ",
       "attributes": [
         {
           "name": "say",
-          "type": "string | null"
+          "description": "`say` {`string | null`} - \n\nProperty: say",
+          "values": []
         },
         {
           "name": "a11y",
-          "type": "string | null",
-          "default": "\"the following is sarcastic \""
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "say",
-          "attribute": "say",
-          "type": "string | null"
-        },
-        {
-          "name": "a11y",
-          "attribute": "a11y",
-          "type": "string | null",
-          "default": "\"the following is sarcastic \""
-        },
-        {
-          "name": "template"
-        },
-        {
-          "name": "observer"
+          "description": "`a11y` {`string | null`} - \n\nProperty: a11y\n\nDefault: the following is sarcastic ",
+          "values": []
         }
       ]
     },
     {
       "name": "moar-sarcasm",
-      "path": "./src/moar-sarcasm.js",
-      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`\n\nAttributes:\n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\n  * `template` - \n\n  * `observer` - ",
       "attributes": [
         {
           "name": "say",
-          "type": "string | null"
+          "description": "`say` {`string | null`} - \n\nProperty: say",
+          "values": []
         },
         {
           "name": "a11y",
-          "type": "string | null",
-          "default": "\"the following is sarcastic \""
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "say",
-          "attribute": "say",
-          "type": "string | null"
-        },
-        {
-          "name": "a11y",
-          "attribute": "a11y",
-          "type": "string | null",
-          "default": "\"the following is sarcastic \""
-        },
-        {
-          "name": "template"
-        },
-        {
-          "name": "observer"
+          "description": "`a11y` {`string | null`} - \n\nProperty: a11y\n\nDefault: the following is sarcastic ",
+          "values": []
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

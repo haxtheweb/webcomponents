@@ -3,7 +3,7 @@ import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "HAXcms|Example site load",
+  title: "HAX|HAXcms",
   component: "micro-frontend-registry",
   decorators: [withKnobs],
   parameters: {

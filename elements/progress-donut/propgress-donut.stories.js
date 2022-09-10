@@ -1,10 +1,9 @@
-import { html } from "lit-html";
 import { ProgressDonut } from "@lrnwebcomponents/progress-donut/progress-donut.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Charts|Progress Donut",
+  title: "System|Progress Donut",
   component: "progress-donut",
   decorators: [withKnobs],
   parameters: {
@@ -14,18 +13,22 @@ export default {
 
 const utils = new StorybookUtilities();
 export const ProgressDonutStory = () => {
-  return utils.makeElementFromClass(
+  return utils.makeUsageDocs(
     ProgressDonut,
-    {
-      accentColor: utils.randomColor(),
-      animation: 500,
-      animationDelay: 500,
-      desc: "You have completed 5,4,8,12,6,3,4, and 3 points of work out of 50 points.",
-      complete: [5, 4, 8, 12, 6, 3, 4, 3],
-      imageSrc: new URL(`./demo/images/profile1.jpg`, import.meta.url),
-      width: "300px",
-      total: 50,
-    },
-    [{ css: "width" }, { css: "maxWidth" }]
+    import.meta.url,
+    utils.makeElementFromClass(
+      ProgressDonut,
+      {
+        accentColor: utils.randomColor(),
+        animation: 500,
+        animationDelay: 500,
+        desc: "You have completed 5,4,8,12,6,3,4, and 3 points of work out of 50 points.",
+        complete: [5, 4, 8, 12, 6, 3, 4, 3],
+        imageSrc: new URL(`./demo/images/profile1.jpg`, import.meta.url),
+        width: "300px",
+        total: 50,
+      },
+      [{ css: "width" }, { css: "maxWidth" }]
+    )
   );
 };

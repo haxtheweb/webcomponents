@@ -8,12 +8,7 @@
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/lunr-search.css",
-      "scss": "src/lunr-search.scss",
-      "html": "src/lunr-search.html",
-      "js": "src/lunr-search.js",
-      "properties": "src/lunr-search-properties.json",
-      "hax": "src/lunr-search-hax.json"
+      "js": "src/lunr-search.js"
     },
     "sharedStyles": []
   },

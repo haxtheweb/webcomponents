@@ -97,6 +97,7 @@ class ElmslnLoading extends SimpleColors {
   constructor() {
     super();
     this.size = "medium";
+    this.dark = false;
   }
   /**
    * LitElement properties changed
@@ -150,7 +151,7 @@ class ElmslnLoading extends SimpleColors {
         icon="lrn:network"
         accent-color="${this.accentColor}"
         contrast="${this.contrast}"
-        dark="${this.dark}"
+        ?dark="${this.dark}"
       ></simple-icon>
     `;
   }

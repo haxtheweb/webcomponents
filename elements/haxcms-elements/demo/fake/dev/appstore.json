@@ -1521,6 +1521,8 @@
   ],
   "autoloader": {
     "rpg-character": "@lrnwebcomponents/rpg-character/rpg-character.js",
+    "lesson-overview": "@lrnwebcomponents/lesson-overview/lesson-overview.js",
+    "lesson-highlight": "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",

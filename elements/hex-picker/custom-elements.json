@@ -1,95 +1,55 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "hex-picker",
-      "path": "./hex-picker.js",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`",
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `large-display` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `largeDisplay` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `_rValue` {`number`} - \n\n  * `_gValue` {`number`} - \n\n  * `_bValue` {`number`} - \n\n  * `_oValue` {`number`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "large-display",
-          "type": "boolean"
+          "description": "`large-display` {`boolean`} - \n\nProperty: largeDisplay",
+          "valueSet": "v"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"#000000FF\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: #000000FF"
         },
         {
           "name": "disabled",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "largeDisplay",
-          "attribute": "large-display",
-          "type": "boolean"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"#000000FF\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "hex-picker",
-      "path": "./src/hex-picker.js",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`",
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `large-display` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `largeDisplay` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `_rValue` {`number`} - \n\n  * `_gValue` {`number`} - \n\n  * `_bValue` {`number`} - \n\n  * `_oValue` {`number`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "large-display",
-          "type": "boolean"
+          "description": "`large-display` {`boolean`} - \n\nProperty: largeDisplay",
+          "valueSet": "v"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"#000000FF\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: #000000FF"
         },
         {
           "name": "disabled",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "largeDisplay",
-          "attribute": "large-display",
-          "type": "boolean"
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"#000000FF\""
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "value-changed"
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<this>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

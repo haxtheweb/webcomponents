@@ -1,11 +1,9 @@
-import { html } from "lit-html";
 import { HexagonLoader } from "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
-import { Hexagon } from "@lrnwebcomponents/hexagon-loader/lib/hex-a-gon.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Loader|Hexagon Loader",
+  title: "System|Loading hexagons",
   component: "hexagon-loader",
   decorators: [withKnobs],
   parameters: {
@@ -56,19 +54,13 @@ export const HexagonLoaderStory = () => {
     ),
     knobs = utils.getKnobs(props, {
       loading: true,
-      itemCount: utils.randomNumber(1, 37),
-      size: utils.randomOption([
-        undefined,
-        undefined,
-        undefined,
-        "small",
-        "large",
-        "epic",
-      ]),
+      itemCount: 37,
+      size: "small",
+      color: "blue",
     });
-  return utils.makeElement("hexagon-loader", knobs);
-};
-
-export const HexagonStory = () => {
-  return utils.makeElementFromClass(Hexagon);
+  return utils.makeUsageDocs(
+    HexagonLoader,
+    import.meta.url,
+    utils.makeElement("hexagon-loader", knobs)
+  );
 };

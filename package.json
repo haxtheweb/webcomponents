@@ -39,7 +39,7 @@
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "set STORYBOOK=true && npx --max_old_space_size=16384 start-storybook --node-resolve --watch --open",
-    "build-storybook": "yarn run analyze && set STORYBOOK=true && npx --max_old_space_size=16384 build-storybook",
+    "build-storybook": "yarn run analyze && set STORYBOOK=true && npx --max_old_space_size=16384 build-storybook && cp elements/*/demo/*.json --parents storybook && cp elements/*/lib/*.json --parents storybook",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
@@ -79,6 +79,7 @@
     "stream": "0.0.2",
     "uuid": "8.3.2",
     "node-fetch": "3.2.10",
+    "base64-arraybuffer": "1.0.2",
     "epub-gen": "0.1.0",
     "mammoth": "1.4.21",
     "busboy": "1.5.0",

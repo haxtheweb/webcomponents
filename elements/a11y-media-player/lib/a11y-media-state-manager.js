@@ -92,9 +92,8 @@ class A11yMediaStateManager extends LitElement {
   setActivePlayer(player) {
     this.activePlayer = player;
     this.checkConcurrentPlayers();
-    if(this.observer )this.observer.disconnect();
+    if (this.observer) this.observer.disconnect();
     this.observer.observe(this.activePlayer);
-
   }
 
   /**
@@ -103,26 +102,34 @@ class A11yMediaStateManager extends LitElement {
    * @readonly
    * @memberof A11yMediaStateManager
    */
-  get observer(){
+  get observer() {
     let handleIntersect = (entries, observer) => {
-        window.A11yMediaStateManager.instance._handleIntersect(entries, observer);
+      window.A11yMediaStateManager.instance._handleIntersect(entries, observer);
     };
-    this._observer = this._observer || new IntersectionObserver(handleIntersect, {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.25,0.75]
-    });
+    this._observer =
+      this._observer ||
+      new IntersectionObserver(handleIntersect, {
+        root: null,
+        rootMargin: "0px",
+        threshold: [0.25, 0.75],
+      });
     return this._observer;
   }
   /**
-   * 
+   *
    * handles when active player is out of range and sets stickiness accordingly
-   * @param {array} entries 
-   * @param {object} observer 
+   * @param {array} entries
+   * @param {object} observer
    */
-  _handleIntersect(entries, observer){
+  _handleIntersect(entries, observer) {
     entries.forEach((entry) => {
-      console.log(entry.isVisible,entry.isIntersecting,entry,this.activePlayer,observer);
+      console.log(
+        entry.isVisible,
+        entry.isIntersecting,
+        entry,
+        this.activePlayer,
+        observer
+      );
       if (!this.activePlayer || this.activePlayer.fullscreen) {
       } else if (!this.activePlayer.__playing) {
         this.activePlayer.toggleSticky(false);
@@ -147,11 +154,11 @@ class A11yMediaStateManager extends LitElement {
     }
     this.setActivePlayer(player);
   }
-  
+
   _handleFullscreen(player) {
     if (player && player.fullscreen) this.setActivePlayer(player);
   }
-  
+
   connectedCallback() {
     super.connectedCallback();
     // listen for a player that starts playing

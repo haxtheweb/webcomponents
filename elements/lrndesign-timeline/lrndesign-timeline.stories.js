@@ -1,10 +1,9 @@
-import { html } from "lit-html";
 import { LrndesignTimeline } from "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Media|Timeline",
+  title: "Education|Timeline",
   component: "lrndesign-timeline",
   decorators: [withKnobs],
   parameters: {
@@ -14,10 +13,13 @@ export default {
 
 export const LrndesignTimelineStory = () => {
   const utils = new StorybookUtilities();
-  return utils.makeElementFromClass(LrndesignTimeline, {
-    accentColor: "blue",
-    timelineTitle: "Penn State University",
-    emptyslot: `
+  return utils.makeUsageDocs(
+    LrndesignTimeline,
+    import.meta.url,
+    utils.makeElementFromClass(LrndesignTimeline, {
+      accentColor: "blue",
+      timelineTitle: "Penn State University",
+      emptyslot: `
     <p>This is lrndesign-timeline</p>
     <section>
       <img 
@@ -53,7 +55,8 @@ export const LrndesignTimelineStory = () => {
       <h3>1953 - The Pennsylvania State University</h3>
       <p>The Pennsylvania State University became official name.</p>
     </section>`,
-  });
+    })
+  );
 };
 export const LrndesignTimelineHaxGizmo = () => {
   const utils = new StorybookUtilities();

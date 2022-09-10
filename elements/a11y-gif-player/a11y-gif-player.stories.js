@@ -12,7 +12,11 @@ export default {
   },
 };
 
+const utils = new StorybookUtilities();
 export const A11yGifPlayerStory = () => {
-  const utils = new StorybookUtilities();
-  return utils.makeElementFromHaxDemo(A11yGifPlayer);
+  return utils.makeUsageDocs(
+    A11yGifPlayer,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(A11yGifPlayer)
+  );
 };

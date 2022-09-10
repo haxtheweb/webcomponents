@@ -3,7 +3,8 @@ import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { store } from "./AppHaxStore.js";
-
+import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { SimpleIconIconsetsManifest } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-manifest.js";
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
@@ -193,15 +194,22 @@ export class AppHaxBackendAPI extends LitElement {
   // just easier to read here
   _formatSitePostData() {
     const site = toJS(store.site);
+    const colors = Object.keys(SimpleColorsSharedStylesGlobal.colors);
     return {
       site: {
         name: site.name,
         description: `${site.type} ${site.structure}`,
         theme: site.theme,
       },
+      build: {
+        type: site.type,
+        structure: site.structure,  
+      },
       theme: {
-        color: "blue",
-        icon: "icons:link",
+        // select a random color
+        color: colors[Math.floor(Math.random() * colors.length)],
+        // select a random av icon
+        icon: `${SimpleIconIconsetsManifest[0].name}:${SimpleIconIconsetsManifest[0].icons[Math.floor(Math.random() * SimpleIconIconsetsManifest[0].icons.length)]}`,
       },
     };
   }

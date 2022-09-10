@@ -12,6 +12,9 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const BasicCitationElement = () => {
-  return utils.makeElementFromHaxDemo(CitationElement);
-};
+export const BasicCitationElement = () =>
+  utils.makeUsageDocs(
+    CitationElement,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(CitationElement)
+  );

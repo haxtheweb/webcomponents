@@ -1,187 +1,87 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "star-rating",
-      "path": "./src/star-rating.js",
-      "description": "`star-rating`\n`Rating display widget or button to do rating`",
+      "description": "`star-rating`\n`Rating display widget or button to do rating`\n\nEvents:\n\n  * `star-rating-click` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `num-stars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `numStars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "interactive",
-          "type": "boolean"
+          "description": "`interactive` {`boolean`} - \n\nProperty: interactive",
+          "valueSet": "v"
+        },
+        {
+          "name": "_calPercent",
+          "description": "`_calPercent` {`number`} - \n\nProperty: _calPercent\n\nDefault: 0"
         },
         {
           "name": "num-stars",
-          "type": "number",
-          "default": "5"
+          "description": "`num-stars` {`number`} - \n\nProperty: numStars\n\nDefault: 5"
         },
         {
           "name": "score",
-          "type": "number",
-          "default": "10"
+          "description": "`score` {`number`} - \n\nProperty: score\n\nDefault: 10"
         },
         {
           "name": "possible",
-          "type": "number",
-          "default": "100"
+          "description": "`possible` {`number`} - \n\nProperty: possible\n\nDefault: 100"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"yellow\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: yellow"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "true"
-        }
-      ],
-      "properties": [
-        {
-          "name": "interactive",
-          "attribute": "interactive",
-          "type": "boolean"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: true",
+          "valueSet": "v"
         },
         {
-          "name": "numStars",
-          "attribute": "num-stars",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "score",
-          "attribute": "score",
-          "type": "number",
-          "default": "10"
-        },
-        {
-          "name": "possible",
-          "attribute": "possible",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "contrast",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"yellow\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ],
-      "events": [
-        {
-          "name": "star-rating-click"
+          "name": "onstar-rating-click",
+          "description": "`star-rating-click` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "star-rating",
-      "path": "./star-rating.js",
-      "description": "`star-rating`\n`Rating display widget or button to do rating`",
+      "description": "`star-rating`\n`Rating display widget or button to do rating`\n\nEvents:\n\n  * `star-rating-click` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `num-stars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `numStars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "interactive",
-          "type": "boolean"
+          "description": "`interactive` {`boolean`} - \n\nProperty: interactive",
+          "valueSet": "v"
+        },
+        {
+          "name": "_calPercent",
+          "description": "`_calPercent` {`number`} - \n\nProperty: _calPercent\n\nDefault: 0"
         },
         {
           "name": "num-stars",
-          "type": "number",
-          "default": "5"
+          "description": "`num-stars` {`number`} - \n\nProperty: numStars\n\nDefault: 5"
         },
         {
           "name": "score",
-          "type": "number",
-          "default": "10"
+          "description": "`score` {`number`} - \n\nProperty: score\n\nDefault: 10"
         },
         {
           "name": "possible",
-          "type": "number",
-          "default": "100"
+          "description": "`possible` {`number`} - \n\nProperty: possible\n\nDefault: 100"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"yellow\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: yellow"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "true"
-        }
-      ],
-      "properties": [
-        {
-          "name": "interactive",
-          "attribute": "interactive",
-          "type": "boolean"
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: true",
+          "valueSet": "v"
         },
         {
-          "name": "numStars",
-          "attribute": "num-stars",
-          "type": "number",
-          "default": "5"
-        },
-        {
-          "name": "score",
-          "attribute": "score",
-          "type": "number",
-          "default": "10"
-        },
-        {
-          "name": "possible",
-          "attribute": "possible",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "contrast",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"yellow\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ],
-      "events": [
-        {
-          "name": "star-rating-click"
+          "name": "onstar-rating-click",
+          "description": "`star-rating-click` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

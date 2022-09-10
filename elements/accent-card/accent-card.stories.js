@@ -4,7 +4,7 @@ import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Navigation|Card",
+  title: "Cards|Accent card",
   component: "accent-card",
   decorators: [withKnobs],
   parameters: {
@@ -134,4 +134,8 @@ export const AccentCardStory = () => {
   );
 };
 export const AccentCardHaxStory = () =>
-  utils.makeElementFromHaxDemo(AccentCard);
+  utils.makeUsageDocs(
+    AccentCard,
+    import.meta.url,
+    utils.makeElementFromHaxDemo(AccentCard)
+  );

@@ -7,9 +7,7 @@
     "description": "Displays a calendar date with details",
     "icon": "hax:calendar",
     "color": "green",
-    "groups": [
-      "Date"
-    ],
+    "groups": ["Date"],
     "handles": [],
     "meta": {
       "author": "McGarvelcuddy",
@@ -76,22 +74,20 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "colors"
-    ]
+    "unsetAttributes": ["colors"]
   },
   "demoSchema": [
     {
       "tag": "date-card",
       "properties": {
-        "month":"August",
-        "date":"4",
-        "day":"Friday",
-        "title":"IST Ice Cream Social",
-        "end-time":"6PM" ,
-        "location":"West Dining Commons",
-        "border-spacing":"20",
-        "accent-color":"blue",
+        "month": "August",
+        "date": "4",
+        "day": "Friday",
+        "title": "IST Ice Cream Social",
+        "end-time": "6PM",
+        "location": "West Dining Commons",
+        "border-spacing": "20",
+        "accent-color": "blue",
         "dark": true
       },
       "content": ""

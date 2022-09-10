@@ -5,7 +5,7 @@ import { EnhancedText } from "./enhanced-text.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Micro-Frontends|Text Enhancement",
+  title: "Developer|Micro-frontend: Text",
   component: "enhanced-text",
   decorators: [withKnobs],
   parameters: {
