@@ -40,7 +40,7 @@
     "@lrnwebcomponents/hax-body-behaviors": "^4.1.0",
     "@lrnwebcomponents/responsive-grid": "^4.1.0",
     "@lrnwebcomponents/utils": "^4.1.0",
-    "lit": "^2.2.8"
+    "lit": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
