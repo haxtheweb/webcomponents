@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
   else {
     // need to outsource this endpoint from vercel 1 to 2 for scale reasons
-    const base = `<base href="${body.base.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.')}"  />` || '';
+    const base = `<base href="${body.base.replace('iam.', 'oer.')}"  />` || '';
     const magic = 'https://hax.psu.edu/cdn/1.x.x/';
     var html = `
     <!DOCTYPE html>

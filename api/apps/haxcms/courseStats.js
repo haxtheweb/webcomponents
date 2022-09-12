@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       url = body.site.replace('/site.json', '');
     }
     else {
-      body.site.file = body.site.file.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.');
+      body.site.file = body.site.file.replace('iam.', 'oer.');
       // abuse that we have this prop for where somerthing lives
       url = body.site.file.replace('/site.json', '');
     }
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
         // specific to our instances but iam is going to block access when querying for the site content
         // iam is the authoring domain while oer is the openly available one which if printing
         // and rendering the content appropriately, this is the way to do it
-        parseURL.host = parseURL.host.replace('.stage-hax.vmhost.', '.hax.').replace('iam.hax.', 'oer.hax.');
+        parseURL.host = parseURL.host.replace('iam.', 'oer.');
       }
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       const siteData = body.site || null;
