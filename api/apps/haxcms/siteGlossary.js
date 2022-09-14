@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     terms = await siteGlossary(base);
 
   }
-  let options = {methods: "OPTIONS, POST" };
+  let options = {};
   if (!body.cacheBuster) {
     options.cache = 86400;
   }

@@ -81,6 +81,6 @@ export default async function handler(req, res) {
         img = img.jpeg({ mozjpeg: true, quality: options.quality });
       break;
     }
-    stdResponse(res,await img.toBuffer(),{methods: "GET,OPTIONS", cache: 1800, type:'image/jpeg'});
+    stdResponse(res,await img.toBuffer(),{cache: 1800, type:'image/jpeg'});
   }
 }

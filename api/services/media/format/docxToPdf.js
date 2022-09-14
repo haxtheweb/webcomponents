@@ -9,7 +9,6 @@ import { encode } from "base64-arraybuffer";
 export default async function handler(req, res) {
   var string64 = '';
   var buffer = {
-
     data: null,
   };
   

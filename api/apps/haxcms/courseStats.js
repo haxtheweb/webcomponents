@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       }
     }
   }
-  let options = {methods: "OPTIONS, POST" };
+  let options = {};
   if (!body.cacheBuster) {
     // no ancestor means entire site; only allow this weekly
     if ((body.ancestor || null) === null) {

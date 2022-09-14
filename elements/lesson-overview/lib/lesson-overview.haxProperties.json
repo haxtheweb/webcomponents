@@ -26,13 +26,9 @@
   },
   "demoSchema": [
     {
-      "tag": "product-glance",
-      "content": "",
-      "properties": {
-        "icon": "star",
-        "title": "Simple Objectives",
-        "subtitle": "Learn on the go, anywhere"
-      }
+      "tag": "lesson-overview",
+      "content": "<lesson-highlight smart=\"objectives\"></lesson-highlight><lesson-highlight smart=\"pages\"></lesson-highlight>      <lesson-highlight smart=\"readTime\"></lesson-highlight>      <lesson-highlight smart=\"selfChecks\"></lesson-highlight><lesson-highlight smart=\"video\"></lesson-highlight>",
+      "properties": {}
     }
   ]
 }
