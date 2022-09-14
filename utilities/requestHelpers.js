@@ -32,8 +32,8 @@ export function stdResponse(res, data = {}, respOptions = {}) {
   res.setHeader("Access-Control-Allow-Credentials", headers.credentials);
   res.setHeader("Access-Control-Allow-Headers", headers.headers);
   // cache is opt in but also support buster flag to ensure we force NOT hitting a cache
-  if (headers.cache && headers.cache !== 'bust') {
-    res.setHeader('Cache-Control', `s-maxage=${headers.cache}, stale-while-revalidate=60`);
+  if (headers.cache && headers.revalidate && headers.cache !== 'bust') {
+    res.setHeader('Cache-Control', `s-maxage=${headers.cache}, stale-while-revalidate=${headers.revalidate}`);
   }
   // helps w/ type setting
   if (headers.disposition) {

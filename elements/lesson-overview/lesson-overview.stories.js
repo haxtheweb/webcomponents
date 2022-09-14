@@ -13,13 +13,11 @@ export default {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
-document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(() => {
-    document.querySelector('#btn').addEventListener('click', (e) => {
-      document.querySelector('#target').getSmartData(document.querySelector('#text').value);
-    });      
-  }, 250);
-});
+setTimeout(() => {
+  document.querySelector('#btn').addEventListener('click', (e) => {
+    document.querySelector('#target').getSmartData(document.querySelector('#text').value);
+  });      
+}, 500);
 
 const utils = new StorybookUtilities();
 export const LessonOverviewStory = () => {

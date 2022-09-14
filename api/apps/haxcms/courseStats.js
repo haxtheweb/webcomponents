@@ -53,14 +53,8 @@ export default async function handler(req, res) {
   }
   let options = {};
   if (!body.cacheBuster) {
-    // no ancestor means entire site; only allow this weekly
-    if ((body.ancestor || null) === null) {
-      options.cache = 604800;
-    }
-    else {
-      // full day cache for everything lower; this is still very aggressive
-      options.cache = 86400;
-    }
+    options.cache = 14400;
+    options.revalidate = 86400;
   }
   res = stdResponse(res, data, options);
 }
