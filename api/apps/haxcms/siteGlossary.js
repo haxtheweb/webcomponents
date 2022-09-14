@@ -6,7 +6,13 @@ import { parse } from 'node-html-parser';
 export default async function handler(req, res) {
   let terms = [];
   // use this if POST data is what's being sent
-  const body = stdPostBody(req);
+  let body = {};
+  if (req.query.url) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   // get URL bits for validating and forming calls
   let url = body.url.replace('/site.json','');
   // handle trailing slash

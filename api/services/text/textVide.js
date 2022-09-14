@@ -2,7 +2,13 @@ import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/req
 import { textVide } from 'text-vide';
 export default async function handler(req, res) {
   // use this if POST data is what's being sent
-  const body = stdPostBody(req);
+  let body = {};
+  if (req.query.body) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   const text = body.body;
   if (text) {
     const highlightedText = textVide(text, { fixationPoint: body.fixationPoint ? parseInt(body.fixationPoint) : 4 });

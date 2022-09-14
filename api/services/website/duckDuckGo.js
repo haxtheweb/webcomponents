@@ -5,11 +5,17 @@ import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/req
 import fetch from "node-fetch";
 export default async function handler(req, res) {
   // destructing GET params after ? available in this object
-  var { q } = req.query;
   // use this if POST data is what's being sent
-  const body = stdPostBody(req);
+  let body = {};
+  let q = null;
+  if (req.query.q) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   // fallback support for post
-  if (!q && body && body.q) {
+  if (body && body.q) {
     q = body.q;
   }
   // need to know what we're searching for otherwise bail

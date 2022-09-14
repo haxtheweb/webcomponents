@@ -7,7 +7,13 @@ import Epub from "epub-gen";
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
-  const body = stdPostBody(req);
+  let body = {};
+  if (req.query.url) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   // get URL bits for validating and forming calls
   const parseURL = url.parse(body.url.replace('/site.json',''));
   // verify we have a path / host

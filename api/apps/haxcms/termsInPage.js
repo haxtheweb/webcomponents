@@ -7,7 +7,13 @@ export default async function handler(req, res) {
   let found = [];
   var terms = [];
   // use this if POST data is what's being sent
-  const body = stdPostBody(req);
+  let body = {};
+  if (req.query.body) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   // html to process
   const html = body.body ? body.body : '';
   // support seeding terms ahead of time
