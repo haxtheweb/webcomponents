@@ -51,7 +51,6 @@ export default async function handler(req, res) {
   let options = {};
   if (!body.cacheBuster) {
     options.cache = 14400;
-    options.revalidate = 86400;
   }
   // support rendering full document with paths and magic script
   if (body.magic) {

@@ -17,7 +17,7 @@ setTimeout(() => {
   document.querySelector('#btn').addEventListener('click', (e) => {
     document.querySelector('#target').getSmartData(document.querySelector('#text').value);
   });      
-}, 500);
+}, 800);
 
 const utils = new StorybookUtilities();
 export const LessonOverviewStory = () => {
@@ -25,7 +25,7 @@ export const LessonOverviewStory = () => {
     LessonOverview,
     import.meta.url,
     utils.getDemo(`
-    <input type="textfield" id="text" value="https://oer.hax.psu.edu/ajh6037/sites/chem110/" size="100" />
+    <input type="textfield" id="text" value="https://oer.hax.psu.edu/bto108/sites/edtechjoker/" size="50" />
     <button id="btn">Load stats</button>
     <lesson-overview id="target">
       <lesson-highlight smart="objectives"></lesson-highlight>

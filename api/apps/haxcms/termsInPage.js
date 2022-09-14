@@ -84,7 +84,6 @@ export default async function handler(req, res) {
   let options = {};
   if (!body.cacheBuster) {
     options.cache = 14400;
-    options.revalidate = 86400;
   }
   // front end will have to apply this as its just a list of what exists
   res = stdResponse(res, found, options);
