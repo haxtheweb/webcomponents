@@ -8,7 +8,13 @@ import { courseStatsFromOutline } from "./lib/JOSHelpers.js";
 export default async function handler(req, res) {
   let data = {};
   // use this if POST data is what's being sent
-  const body = stdPostBody(req);
+  let body = {};
+  if (req.query.site) {
+    body = req.query;
+  }
+  else {
+    body = stdPostBody(req);
+  }
   if (body.site && body.type) {
     // get URL bits for validating and forming calls
     let url = '';

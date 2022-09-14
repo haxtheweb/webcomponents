@@ -211,13 +211,19 @@ class PageContentsMenu extends LitElement {
   }
   scrollToObject(e) {
     var target = normalizeEventPath(e)[0];
-    if (target.getAttribute("data-index")) {
+    if (this.items && this.contentContainer && target.getAttribute("data-index") && this.items[parseInt(target.getAttribute("data-index"))]) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      let objItem = this.contentContainer.querySelector(
-        "#" + this.items[parseInt(target.getAttribute("data-index"))].id
-      );
+      let objItem;
+      if (this.items[parseInt(target.getAttribute("data-index"))].item) {
+        objItem = this.items[parseInt(target.getAttribute("data-index"))].item;
+      }
+      else {
+        objItem = this.contentContainer.querySelector(
+          "#" + this.items[parseInt(target.getAttribute("data-index"))].id
+        );
+      }
       const isSafari = window.safari !== undefined;
       if (isSafari) {
         objItem.scrollIntoView();
@@ -441,6 +447,7 @@ class PageContentsMenu extends LitElement {
           id: item.id,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
           active: "",
+          item: item,
         };
         items.push(reference);
       }
@@ -516,7 +523,7 @@ class PageContentsMenu extends LitElement {
         }
       });
       // account for potentially not finding ANYTHING yet having a "bottom" or top element
-      if (!activeFound && this.items && this.items.length > 0) {
+      if (!activeFound && this.items && this.items.length > 0 && this.contentContainer && this.items[0] && this.items[0].id) {
         try {
           let objItem = this.contentContainer.querySelector(
             "#" + this.items[0].id

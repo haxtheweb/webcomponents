@@ -66,39 +66,26 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
   }
   // calculate smart details and update associated blocks
   async getSmartData(manualSite = null) {
-    var params = null;
+    var params = {
+      type: "link",
+      __method: "GET"
+    };
     if (manualSite) {
-      params = {
-        type: "link",
-        site: manualSite
-      };
+      params.site = manualSite;
     }
     else {
       // assemble manifest
       const site = toJS(store.manifest);
-      if (site) {
+      if (site) {q
         var base = "";
         if (document.querySelector("base")) {
           base = document.querySelector("base").href;
         }
-        params = {
-          type: "site",
-          site: {
-            file: base + "site.json",
-            id: site.id,
-            title: site.title,
-            author: site.author,
-            description: site.description,
-            license: site.license,
-            metadata: site.metadata,
-            items: site.items,
-          },
-          ancestor: toJS(store.activeId),
-        };
+        params.site = base;
       }
     }
     // only call if we have params
-    if (params) {
+    if (params.site) {
       this.querySelectorAll(`lesson-highlight[smart]`).forEach((item) => {
         item.hidden = false;
         item.loading = true;

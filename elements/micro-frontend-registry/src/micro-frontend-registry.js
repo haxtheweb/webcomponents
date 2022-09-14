@@ -163,19 +163,46 @@ class MicroFrontendRegistryEl extends HTMLElement {
   async call(name, params = {}, callback = null, caller = null) {
     if (this.has(name)) {
       const item = this.get(name);
-      // support for formdata which is already encoded
-      const data = await fetch(item.endpoint, {
-        method: "POST",
-        body: params instanceof FormData ? params : JSON.stringify(params),
-      })
-        .then((d) => {
-          return d.ok ? d.json() : { status: d.status, data: null };
-        })
-        .catch((e, d) => {
-          console.warn('Request failed', e);
-          // this is endpoint completely failed to respond
-          return { status: 500, data: null };
-        });
+      let method = "POST";
+      if (params.__method) {
+        method = params.__method;
+        delete params.__method;
+      }
+      let data = null;
+      switch (method) {
+        case 'GET':
+        case 'HEAD':
+          // support for formdata which is already encoded
+          const searchParams = new URLSearchParams(params).toString();
+          data = await fetch(searchParams ? `${item.endpoint}?${searchParams}` : item.endpoint, {
+            method: method,
+          })
+          .then((d) => {
+            return d.ok ? d.json() : { status: d.status, data: null };
+          })
+          .catch((e, d) => {
+            console.warn('Request failed', e);
+            // this is endpoint completely failed to respond
+            return { status: 500, data: null };
+          });
+        break;
+        case 'POST':
+        default:
+          // support for formdata which is already encoded
+          data = await fetch(item.endpoint, {
+            method: method,
+            body: params instanceof FormData ? params : JSON.stringify(params),
+          })
+          .then((d) => {
+            return d.ok ? d.json() : { status: d.status, data: null };
+          })
+          .catch((e, d) => {
+            console.warn('Request failed', e);
+            // this is endpoint completely failed to respond
+            return { status: 500, data: null };
+          });
+        break;
+      }
       // endpoints can require a callback be hit every time
       if (item.callback) {
         await item.callback(data, caller);

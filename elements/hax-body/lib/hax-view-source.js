@@ -346,8 +346,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Download file.
    */
-  download(e) {
-    const data = this.contentToFile(false);
+  async download(e) {
+    const data = await this.contentToFile(false);
     this.downloadFromData(data, "html", "my-new-code");
     HAXStore.toast(this.t.fileDownloaded);
     this.close();
@@ -450,8 +450,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Download file.
    */
-  downloadfull(e) {
-    const data = this.contentToFile(true);
+  async downloadfull(e) {
+    const data = await this.contentToFile(true);
     this.downloadFromData(data, "html", "my-new-webpage");
     HAXStore.toast(this.t.fileDownloaded);
     this.close();

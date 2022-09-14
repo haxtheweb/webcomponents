@@ -199,6 +199,7 @@ export class MfHtmlExample extends LitElement {
           ancestor:
             this.shadowRoot.querySelector("#haxcmsparentid").value || null,
           type: "link",
+          __method: "GET"
         };
         MicroFrontendRegistry.call(
           "@haxcms/siteToHtml",
@@ -211,6 +212,7 @@ export class MfHtmlExample extends LitElement {
       this.shadowRoot.querySelector("#epub").addEventListener("click", () => {
         const params = {
           url: this.shadowRoot.querySelector("#haxcmsurl").value,
+          __method: "GET"
         };
         MicroFrontendRegistry.call(
           "@haxcms/siteToEpub",
@@ -225,6 +227,7 @@ export class MfHtmlExample extends LitElement {
         .addEventListener("click", () => {
           const params = {
             q: this.shadowRoot.querySelector("#search").value,
+            __method: "GET"
           };
           MicroFrontendRegistry.call(
             "@core/duckDuckGo",
