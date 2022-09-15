@@ -129,7 +129,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
         case 'https://vimeo.com':
         case 'https://player.vimeo.com':
           // no batching in vimeo oembed API
-          const vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
+          let vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
           if (vimData?.duration) {
             videoLength += parseInt(vimData.duration);
           }
@@ -142,11 +142,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
             // the NID included in the id that goes in the page
             if (nid) {
               console.log(`request: https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`);
-              const elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then(
-                (d) => {
-                  console.log(d);
-                  return d.ok ? d.json(): {}
-              });
+              let elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then((d) => d.ok ? d.json(): {});
               console.log(elmsData);
               // resolve video vs audio
               if (elmsData?.field_video?.metadata?.duration) {
