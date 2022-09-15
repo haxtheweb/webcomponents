@@ -24,6 +24,13 @@ export class JSONOutlineSchema
       this.license = 'by-sa';
       this.metadata = {};
       this.items = [];
+      // outside normal spec to allow for request differences when remove loading
+      // this helps account for deploy differences in server configuration
+      // and are not related to the spec itself but influence how data is resolved
+      this.__siteFileBase = 'site.json';
+      this.__fetchOptions = {
+        method: 'GET'
+      }
   }
 
   /**
@@ -161,9 +168,9 @@ export class JSONOutlineSchema
   /**
    * Load a schema from a file
    */
-  async load(location)
+  async load(location, options = {method: 'GET'})
   {
-    const fileData = await fetch(location).then((d) => d.ok ? d.json() : null);
+    const fileData = await fetch(location, options).then((d) => d.ok ? d.json() : null);
     for (var key in fileData) {
       if ((this[key]) && key != 'items') {
         this[key] = fileData[key];
@@ -269,8 +276,8 @@ export class JSONOutlineSchema
    */
   async getContentById(id) {
     const item = this.getItemById(id);
-    const location = this.file.replace('site.json', item.location);
-    return await fetch(location).then((d) => d.ok ? d.text() : '');
+    const location = this.file.replace(this.__siteFileBase, item.location);
+    return await fetch(location, this.__fetchOptions).then((d) => d.ok ? d.text() : '');
   }
   /**
    * Organize the items based on tree order. This makes front end navigation line up correctly

@@ -19,7 +19,27 @@ export async function resolveSiteData(siteLocation, siteData = null) {
     site.items = siteData.items;
   }
   else {
-    await site.load(`${siteLocation}/site.json`);
+    // test for some internal API implementation differences
+    if (siteLocation.includes('.aanda.psu.edu') ||
+    siteLocation.includes('.ed.science.psu.edu')) {
+      // test for aanda elms as "basic auth" is required to bypass azure
+      // and defer to app level permissions handling
+      let buff = Buffer.from(process.env.ELMSLN_VERCEL_SERVICE_AUTH).toString('base64');
+      site.__fetchOptions = {
+        method: "GET",
+        headers: {'Authorization': 'Basic ' + buff}
+      };
+      await site.load(`${siteLocation}`, site.__fetchOptions);
+      // location isn't at site.json bc this is generated path
+      // so we need to lob this off from the path instead of site.json
+      if (siteLocation.includes('/haxapi/loadJOS/')) {
+        let urlData = new URL(siteLocation);``
+        site.__siteFileBase = urlData.pathname;
+      }
+    }
+    else {
+      await site.load(`${siteLocation}/site.json`);
+    }
   }
   return site;
 }
@@ -72,11 +92,24 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   var videoLength = 0;
   doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player').forEach( async (el) => {
     let urlData = {};
+    // ensure we have valid source/src data to draw from
     if (el.getAttribute('source')) {
-      urlData = new URL(el.getAttribute('source'));
+      if (el.getAttribute('source').includes("https://")) {
+        urlData = new URL(el.getAttribute('source'));
+      }
+      else {
+        let tmp = new URL(siteLocation);
+        urlData = new URL(tmp.origin + el.getAttribute('source'));
+      }
     }
     else if (el.getAttribute('src')) {
-      urlData = new URL(el.getAttribute('src'));
+      if (el.getAttribute('src').includes("https://")) {
+        urlData = new URL(el.getAttribute('src'));
+      }
+      else {
+        let tmp = new URL(siteLocation);
+        urlData = new URL(tmp.origin + el.getAttribute('src'));
+      }
     }
     if (urlData.origin) {
       // support the 3 variations of youtube link
@@ -101,9 +134,33 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
             videoLength += parseInt(vimData.duration);
           }
         break;
+        case 'https://media.aanda.psu.edu':
+          // ensure we have an id param
+          if (el.getAttribute('id') && el.getAttribute('id').includes('node-')) {
+            let nid = el.getAttribute('id').replace('node-', '');
+            // elms media server embed code / auto replacement has
+            // the NID included in the id that goes in the page
+            if (nid) {
+              console.log(`request: https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`);
+              const elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then(
+                (d) => {
+                  console.log(d);
+                  return d.ok ? d.json(): {}
+              });
+              console.log(elmsData);
+              // resolve video vs audio
+              if (elmsData?.field_video?.metadata?.duration) {
+                videoLength += parseInt(durationFormatHMSConvert(elmsData.field_video.metadata.duration));
+              }
+              else if (elmsData?.field_audio?.metadata?.duration) {
+                // @todo lump audioLength together?
+                videoLength += parseInt(durationFormatHMSConvert(elmsData.field_audio.metadata.duration));
+              }
+            }
+          }
+        break;
         default:
           // @todo if a file try to read metadata off it
-          // if vimeo try to hit their duration API
           // if elsewhere, ignore.
         break;
       }
@@ -160,14 +217,15 @@ export async function getYoutubeDuration(vid) {
   const ytData = await fetch(url).then((d) => d.ok ? d.json(): {});
   if (ytData?.items) {
     ytData.items.forEach((item) => {
-      duration += parseInt(durationFormatConvert(item.contentDetails.duration));
+      duration += parseInt(YTDurationFormatConvert(item.contentDetails.duration));
     })
     return duration;
   }
   return 0;
 }
 
-export function durationFormatConvert(input) {
+// convert youtube format to seconds for duration
+export function YTDurationFormatConvert(input) {
   var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
   var hours = 0, minutes = 0, seconds = 0, totalseconds;
 
@@ -179,4 +237,43 @@ export function durationFormatConvert(input) {
     totalseconds = hours * 3600  + minutes * 60 + seconds;
   }
   return totalseconds;
+}
+
+// https://stackoverflow.com/questions/9640266/convert-hhmmss-string-to-seconds-only-in-javascript
+export function durationFormatHMSConvert(input) {
+  let a = input.split(':');
+  let seconds = 0;
+  if (a.length === 3) {
+    let t=0;
+    if (a[0] !== '0') {
+      t = parseInt(a[0]) * 60 * 60;
+    }
+    if (a[1] !== '0') {
+      t+= parseInt(a[1]) * 60;
+      
+    }
+    if (a[2] !== '0') {
+      t+= parseInt(a[2]);      
+    }
+    seconds+=t;
+  }
+  else if (a.length === 2) {
+    let t=0;
+    if (a[0] !== '0') {
+      t+= parseInt(a[0]) * 60;
+      
+    }
+    if (a[1] !== '0') {
+      t+= parseInt(a[1]);      
+    }
+    seconds+=t;
+  }
+  else if (a.length === 1) {
+    let t=0;
+    if (a[0] !== '0') {
+      t = parseInt(a[0]);
+    }
+    seconds+=t;
+  }
+  return seconds;
 }

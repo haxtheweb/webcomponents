@@ -1,5 +1,6 @@
 import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { courseStatsFromOutline } from "./lib/JOSHelpers.js";
+import fetch from "node-fetch";
 
 // given a site, and current page, obtain stats that are possibly relevant
 // to smart blocks like lesson-intro, course-intro and others as long
@@ -42,7 +43,10 @@ export default async function handler(req, res) {
       }
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       const siteData = body.site || null;
-      const ancestor = body.ancestor || null;
+      let ancestor = body.ancestor || null;
+      if (ancestor === "null") {
+        ancestor = null;
+      }
       if (body.type === 'link') {
         data = await courseStatsFromOutline(base, null, ancestor);
       }

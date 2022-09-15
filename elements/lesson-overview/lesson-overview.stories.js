@@ -15,9 +15,10 @@ export default {
 };
 setTimeout(() => {
   document.querySelector('#btn').addEventListener('click', (e) => {
+    document.querySelector('#target').ancestor = document.querySelector('#ancestor').value;
     document.querySelector('#target').getSmartData(document.querySelector('#text').value);
   });      
-}, 800);
+}, 1000);
 
 const utils = new StorybookUtilities();
 export const LessonOverviewStory = () => {
@@ -26,6 +27,7 @@ export const LessonOverviewStory = () => {
     import.meta.url,
     utils.getDemo(`
     <input type="textfield" id="text" value="https://oer.hax.psu.edu/bto108/sites/edtechjoker/" size="50" />
+    <input type="textfield" id="ancestor" value="mlid-4599" size="50" />
     <button id="btn">Load stats</button>
     <lesson-overview id="target">
       <lesson-highlight smart="objectives"></lesson-highlight>

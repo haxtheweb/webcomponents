@@ -33,6 +33,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
     this.t.hours = "hours";
     this.t.minute = "minute";
     this.t.minutes = "minutes";
+    this.ancestor = null;
   }
 
   static get styles() {
@@ -54,6 +55,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       <slot></slot>
     </div>` : ``}`;
   }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -70,18 +72,22 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       type: "link",
       __method: "GET"
     };
+    if (this.ancestor) {
+      params.ancestor = this.ancestor;
+    }
     if (manualSite) {
       params.site = manualSite;
     }
     else {
       // assemble manifest
       const site = toJS(store.manifest);
-      if (site) {q
+      if (site) {
         var base = "";
         if (document.querySelector("base")) {
           base = document.querySelector("base").href;
         }
         params.site = base;
+        params.ancestor = toJS(store.activeId); // set as the active item ID
       }
     }
     // only call if we have params
