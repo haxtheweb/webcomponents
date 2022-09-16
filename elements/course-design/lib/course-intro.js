@@ -30,7 +30,14 @@ export class CourseIntro extends LitElement {
   }
   render() {
     return html`
-      <course-intro-header></course-intro-header>
+      <course-intro-header>
+        <div slot="header-left">
+          <slot name="header-left"></slot>
+        </div>
+        <div slot="outline-title">
+          <slot name="outline-title"></slot>
+        </div>
+      </course-intro-header>
       <course-intro-lesson-plans></course-intro-lesson-plans>
       <course-intro-footer>
         <div slot="footer-left">
