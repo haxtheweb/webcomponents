@@ -49,11 +49,12 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
     ];
   }
   render() {
-    return html`${this.elementVisible ? html`
-    <div class="wrapper">
-      <slot name="prefix"></slot>
-      <slot></slot>
-    </div>` : ``}`;
+    return html`${this.elementVisible
+      ? html` <div class="wrapper">
+          <slot name="prefix"></slot>
+          <slot></slot>
+        </div>`
+      : ``}`;
   }
 
   updated(changedProperties) {
@@ -61,7 +62,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'elementVisible') {
+      if (propName === "elementVisible") {
         this.getSmartData();
       }
     });
@@ -70,15 +71,14 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
   async getSmartData(manualSite = null) {
     var params = {
       type: "link",
-      __method: "GET"
+      __method: "GET",
     };
     if (this.ancestor) {
       params.ancestor = this.ancestor;
     }
     if (manualSite) {
       params.site = manualSite;
-    }
-    else {
+    } else {
       // assemble manifest
       const site = toJS(store.manifest);
       if (site) {
@@ -88,6 +88,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
         }
         params.site = base;
         params.ancestor = toJS(store.activeId); // set as the active item ID
+        params.cacheBuster = toJS(store.isLoggedIn); // if not logged in, false; if logged in, FORCES updated data instantly
       }
     }
     // only call if we have params
@@ -102,8 +103,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       );
       if (response.status === 200) {
         this.updateSmartHighlightElements(response.data);
-      }
-      else {
+      } else {
         // failed, just hide them
         this.querySelectorAll(`lesson-highlight[smart]`).forEach((item) => {
           item.hidden = true;
@@ -122,30 +122,29 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
         let value = data[key];
         if (value === 0) {
           item.hidden = true;
-        }
-        else {
+        } else {
           item.loaded = true;
         }
         // walk response details, setting things into associated smart blocks
         switch (key) {
-          case 'audio':
+          case "audio":
             item.title = `${value} Audio`;
-            item.icon = 'av:music-video';
-          break;
-          case 'images':
+            item.icon = "av:music-video";
+            break;
+          case "images":
             item.title = `${value} Images`;
-            item.icon = 'image:image';
-          break;
-          case 'objectives':
+            item.icon = "image:image";
+            break;
+          case "objectives":
             item.title = `${value} Objectives`;
             item.subtitle = "Goals for you as you learn";
-            item.icon = 'editor:format-list-numbered';
-          break;
-          case 'dataTables':
+            item.icon = "editor:format-list-numbered";
+            break;
+          case "dataTables":
             item.title = `${value} Data tables`;
-            item.icon = 'image:grid-on';
-          break;
-          case 'pages':
+            item.icon = "image:grid-on";
+            break;
+          case "pages":
             let items = [];
             item.title = `${value} Pages`;
             if (data.objectives) {
@@ -157,57 +156,54 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             if (data.dataTables) {
               items.push(`${data.dataTables} data tables`);
             }
-            item.subtitle = items.join(', ');
-            item.icon = 'editor:insert-drive-file';
-          break;
-          case 'readTime':
+            item.subtitle = items.join(", ");
+            item.icon = "editor:insert-drive-file";
+            break;
+          case "readTime":
             let readVal = [];
-            var hours   = Math.floor(value / 60);
-            var minutes = Math.floor(value - (hours * 60));
+            var hours = Math.floor(value / 60);
+            var minutes = Math.floor(value - hours * 60);
             // handle hours of reading
             if (hours === 1) {
               readVal.push(`${hours} ${this.t.hour}`);
-            }
-            else if (hours === 0) {
+            } else if (hours === 0) {
               // do nothing for 0
-            }
-            else {
+            } else {
               readVal.push(`${hours} ${this.t.hours}`);
             }
             // minutes
             if (minutes === 1) {
               readVal.push(`${minutes} ${this.t.minute}`);
-            }
-            else if (minutes === 0) {
-              // do nothing for 0              
-            }
-            else {
+            } else if (minutes === 0) {
+              // do nothing for 0
+            } else {
               readVal.push(`${minutes} ${this.t.minutes}`);
             }
-            item.title = `Approx. ${readVal.join(', ')} of reading`;
+            item.title = `Approx. ${readVal.join(", ")} of reading`;
             item.subtitle = "This is just an estimate of words to read";
-            item.icon = 'communication:import-contacts';
-          break;
-          case 'selfChecks':
+            item.icon = "communication:import-contacts";
+            break;
+          case "selfChecks":
             item.title = `${value} Interactive items`;
-            item.subtitle = "Self checks and interactive widgets to learn by applying knowledge";
-            item.icon = 'hardware:videogame-asset';
-          break;
-          case 'video':
+            item.subtitle =
+              "Self checks and interactive widgets to learn by applying knowledge";
+            item.icon = "hardware:videogame-asset";
+            break;
+          case "video":
             item.title = `${value} Videos`;
             if (data.videoLength) {
               item.subtitle = `${toHHMMSS(data.videoLength)} of video`;
             }
-            item.icon = 'av:play-circle-outline';
-          break;
-          case 'videoLength':
+            item.icon = "av:play-circle-outline";
+            break;
+          case "videoLength":
             item.title = `${toHHMMSS(value)} of video`;
-            item.icon = 'av:play-circle-outline';
-          break;
+            item.icon = "av:play-circle-outline";
+            break;
           default:
             item.title = `${value} of ${key}`;
-            item.icon = 'hardware:videogame-asset';
-          break;
+            item.icon = "hardware:videogame-asset";
+            break;
         }
       }
     });
@@ -225,22 +221,22 @@ export { LessonOverview };
 
 // convert seconds back into full time stamp
 function toHHMMSS(seconds) {
-  var out = '';
+  var out = "";
   var snum = parseInt(seconds, 10);
-  var hours   = Math.floor(snum / 3600);
-  var minutes = Math.floor((snum - (hours * 3600)) / 60);
+  var hours = Math.floor(snum / 3600);
+  var minutes = Math.floor((snum - hours * 3600) / 60);
 
   if (hours !== 0) {
-    out += `${hours} hour`
+    out += `${hours} hour`;
     if (hours !== 1) {
-      out += 's';
+      out += "s";
     }
-    out += ', ';
+    out += ", ";
   }
   if (minutes !== 0) {
-    out += `${minutes} minute`
+    out += `${minutes} minute`;
     if (hours !== 1) {
-      out += 's';
+      out += "s";
     }
   }
   return out;

@@ -13,7 +13,7 @@
     "node-fetch": "3.2.10",
     "base64-arraybuffer": "1.0.2",
     "epub-gen": "0.1.0",
-    "mammoth": "1.4.21",
+    "mammoth": "1.5.1",
     "busboy": "1.5.0",
     "asciify-image": "0.1.8",
     "concat-stream": "2.0.0",

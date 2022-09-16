@@ -23,9 +23,9 @@ class LessonHighlight extends SimpleColors {
    */
   constructor() {
     super();
-    this.title = '';
-    this.subtitle = '';
-    this.icon = 'star';
+    this.title = "";
+    this.subtitle = "";
+    this.icon = "star";
     this.disabled = false;
     this.loading = false;
     this.smart = false;
@@ -53,16 +53,22 @@ class LessonHighlight extends SimpleColors {
           display: none;
         }
         :host([disabled]) {
-          opacity: .6;
+          opacity: 0.6;
           cursor: not-allowed;
         }
         :host([loading]) {
-          opacity: .6;
+          opacity: 0.6;
           cursor: wait;
         }
         :host .wrapper:hover {
-          --lesson-highlight-text-color: var(--simple-colors-default-theme-grey-12, #222222);
-          --lesson-highlight-subtext-color: var(--simple-colors-default-theme-grey-12, #222222);
+          --lesson-highlight-text-color: var(
+            --simple-colors-default-theme-grey-12,
+            #222222
+          );
+          --lesson-highlight-subtext-color: var(
+            --simple-colors-default-theme-grey-12,
+            #222222
+          );
         }
         .wrapper {
           display: grid;
@@ -121,7 +127,7 @@ class LessonHighlight extends SimpleColors {
             var(--simple-colors-default-theme-grey-8, #555555)
           );
           font-family: "OpenSans-Bold", "OpenSans", "Arial", sans-serif;
-          font-size: .95em;
+          font-size: 0.95em;
           line-height: 1.2;
         }
       `,
@@ -138,7 +144,7 @@ class LessonHighlight extends SimpleColors {
       hidden: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       loaded: { type: Boolean, reflect: true },
-      smart: { type: String}, // if this is a "smart" block or manually set
+      smart: { type: String }, // if this is a "smart" block or manually set
     };
   }
 
@@ -170,7 +176,7 @@ class LessonHighlight extends SimpleColors {
     }
     changedProperties.forEach((oldValue, propName) => {
       // if we go into a loading state, disable the item until loading finishes
-      if (propName === 'loading' && this[propName] && this.smart) {
+      if (propName === "loading" && this[propName] && this.smart) {
         this.title = `Updating ${this.smart} data..`;
       }
     });
@@ -179,8 +185,7 @@ class LessonHighlight extends SimpleColors {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 customElements.define(LessonHighlight.tag, LessonHighlight);

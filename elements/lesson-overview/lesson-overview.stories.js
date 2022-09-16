@@ -14,10 +14,13 @@ export default {
   },
 };
 setTimeout(() => {
-  document.querySelector('#btn').addEventListener('click', (e) => {
-    document.querySelector('#target').ancestor = document.querySelector('#ancestor').value;
-    document.querySelector('#target').getSmartData(document.querySelector('#text').value);
-  });      
+  document.querySelector("#btn").addEventListener("click", (e) => {
+    document.querySelector("#target").ancestor =
+      document.querySelector("#ancestor").value;
+    document
+      .querySelector("#target")
+      .getSmartData(document.querySelector("#text").value);
+  });
 }, 1000);
 
 const utils = new StorybookUtilities();
