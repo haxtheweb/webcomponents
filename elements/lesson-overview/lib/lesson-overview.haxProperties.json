@@ -2,7 +2,6 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
-  "type": "grid",
   "gizmo": {
     "title": "Lesson Overview",
     "description": "Quick overview of a thing",
@@ -16,12 +15,6 @@
   },
   "settings": {
     "configure": [
-      {
-        "property": "icon",
-        "title": "Icon",
-        "description": "Icon to represent concept at a high level",
-        "inputMethod": "iconpicker"
-      }
     ]
   },
   "demoSchema": [
