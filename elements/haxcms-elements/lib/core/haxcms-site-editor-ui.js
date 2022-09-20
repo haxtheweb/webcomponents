@@ -14,6 +14,7 @@ import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
 import "wired-elements/lib/wired-button.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
@@ -354,6 +355,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       accountInfo: "Account Info",
       siteOutline: "Site outline",
       moreOptions: "More options",
+      insights: "Insights",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
@@ -472,6 +474,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.__editText}"
             show-text-label
             voice-command="edit (this) page"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            id="insightsbutton"
+            icon="hax:clipboard-pulse"
+            icon-position="top"
+            @click="${this._insightsButtonTap}"
+            label="${this.t.insights}"
+            show-text-label
+            voice-command="insights"
           ></simple-toolbar-button>
           <simple-toolbar-button
             id="editdetails"
@@ -1019,6 +1030,33 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       composed: true,
       cancelable: false,
       detail: e.target,
+    });
+    window.dispatchEvent(evt);
+  }
+  _insightsButtonTap(e) {
+    store.playSound("click");
+    const c = document.createElement('haxcms-site-insights');
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: this.t.insights,
+        styles: {
+          "--simple-modal-titlebar-background": "orange",
+          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-width": "70vw",
+          "--simple-modal-min-width": "300px",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-height": "70vh",
+          "--simple-modal-min-height": "300px",
+          "--simple-modal-titlebar-height": "80px",
+        },
+        elements: { content: c },
+        invokedBy: this.shadowRoot.querySelector("#insightsbutton"),
+        clone: false,
+        modal: false,
+      },
     });
     window.dispatchEvent(evt);
   }

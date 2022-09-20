@@ -64,6 +64,7 @@
     "@lrnwebcomponents/simple-icon-picker": "^4.1.0",
     "@lrnwebcomponents/simple-login": "^4.1.0",
     "@lrnwebcomponents/simple-picker": "^4.1.0",
+    "@github/time-elements": "3.1.4",
     "@lrnwebcomponents/simple-toast": "^4.1.0",
     "@lrnwebcomponents/simple-tooltip": "^4.1.0",
     "@polymer/app-layout": "^3.0.2",

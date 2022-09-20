@@ -145,11 +145,33 @@ export function enableCoreServices() {
       format: "png, jpg, gif, webp",
     },
   });
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/text/readability",
+    name: "@core/readability",
+    title: "readability score",
+    description: "Readability metrics from analyzing text",
+    params: {
+      body: "Block of text to enhance",
+    },
+  });
 }
 
 // HAXcms services
 export function enableHAXcmsServices() {
-  // siteToHtml
+  // insights
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/insights",
+    name: "@haxcms/insights",
+    title: "Site insights",
+    description: "States relative to the page, lesson, and site as a whole. Used for content authors.",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      ancestorId: "ancestor of this page",
+      activeId: "id of this page",
+    },
+  });
+  // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",
     name: "@haxcms/courseStats",

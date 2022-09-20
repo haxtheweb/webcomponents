@@ -103,7 +103,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       }
     }
     else if (el.getAttribute('src')) {
-      if (el.getAttribute('src').includes("https://")) {
+      if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
         urlData = new URL(el.getAttribute('src'));
       }
       else {
@@ -181,7 +181,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
 }
 
 // get all of the HTML for the site relative to an ancestor starting point
-export async function siteHTMLContent(siteLocation, siteData = null, ancestor = null, noTitles = false) {
+export async function siteHTMLContent(siteLocation, siteData = null, ancestor = null, noTitles = false, textOnly = false) {
   const site = await resolveSiteData(siteLocation, siteData);
   var siteContent = '';
   // support slicing the structure to only the branch in question
@@ -197,11 +197,17 @@ export async function siteHTMLContent(siteLocation, siteData = null, ancestor = 
   // ordered
   // get every page and stuff it together
   for (var i in items) {
+    // default is to send titles as h1 since they are full pages
     if (!noTitles) {
       siteContent += `<h1>${items[i].title}</h1>`;
     }
     let content = await site.getContentById(items[i].id);
     siteContent += content;
+  }
+  // support stripping HTML if goal was purely text
+  if (textOnly) {
+    const doc = parse(`<div id="wrapper">${siteContent}</div>`);
+    siteContent = doc.innerText;
   }
   return siteContent;
 }

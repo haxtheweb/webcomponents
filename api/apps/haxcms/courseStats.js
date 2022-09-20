@@ -1,6 +1,5 @@
 import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { courseStatsFromOutline } from "./lib/JOSHelpers.js";
-import fetch from "node-fetch";
 
 // given a site, and current page, obtain stats that are possibly relevant
 // to smart blocks like lesson-intro, course-intro and others as long

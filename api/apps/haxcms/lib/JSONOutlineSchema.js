@@ -282,10 +282,15 @@ export class JSONOutlineSchema
   /**
    * Organize the items based on tree order. This makes front end navigation line up correctly
    */
-  orderTree(items) {
+  orderTree(items, orderBy = 'order') {
     let sorted = [];
-    items.sort( function(a, b) {return a.order > b.order} );
-    this.orderRecurse(items, sorted);
+    items.sort( function(a, b) {
+      if (orderBy === 'updated') {
+        return a.metadata.updated > b.metadata.updated;
+      }
+      return a[orderBy] > b[orderBy]}
+    );
+    this.orderRecurse(items, sorted, [], orderBy);
     // sanity check, should always be equal
     if (sorted.length == items.length) {
       return sorted;
@@ -296,7 +301,7 @@ export class JSONOutlineSchema
   /**
    * Sort a JOS
    */
-  orderRecurse(currentItems, sorted = [], idList = []) {
+  orderRecurse(currentItems, sorted = [], idList = [], orderBy = 'order') {
     for (var key in currentItems) {
       let item = currentItems[key];
       if (!idList.includes(item.id)) {
@@ -310,10 +315,15 @@ export class JSONOutlineSchema
           }
         }
         // sort the kids
-        children.sort( function(a, b) {return a.order > b.order} );
+        children.sort( function(a, b) {
+          if (orderBy === 'updated') {
+            return a.metadata.updated > b.metadata.updated;
+          }
+          return a[orderBy] > b[orderBy]}
+        );
         // only walk deeper if there were children for this page
         if (children.length > 0) {
-          this.orderRecurse(children, sorted, idList);
+          this.orderRecurse(children, sorted, idList, orderBy);
         }
       }
     }
