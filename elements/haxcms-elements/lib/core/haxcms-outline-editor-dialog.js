@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -13,7 +14,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  *
  * @microcopy - the mental model for this element
  */
-class HAXCMSOutlineEditorDialog extends LitElement {
+class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -23,17 +24,17 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         :host {
           display: block;
           height: 60vh;
-          min-width: 50vw;
+          min-width: 40vw;
           overflow: auto;
+          padding-bottom: 40px;
         }
         .buttons {
           position: absolute;
           bottom: 0;
           z-index: 1000000;
           background-color: var(--simple-modal-titlebar-background, #000000);
-          color: var(--simple-modal-titlebar-color, #ffffff);
           left: 0;
-          right: 0;
+          right: 32px;
         }
         .buttons button {
           color: black;
@@ -49,12 +50,28 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           float: right;
           text-transform: unset;
         }
-        #savebtn {
+        button.hax-modal-btn {
+          font-size: 30px;
+          padding: 8px;
+          margin: 4px;
           color: white;
-          background-color: var(--haxcms-color, #2196f3);
+          background-color: green;
+          border: 4px solid black;
+          border-radius: 8px;
+          font-family: 'Press Start 2P', sans-serif;
         }
-        editable-outline {
-          margin-bottom: 32px;
+        button.hax-modal-btn.cancel {
+          background-color: red;
+        }
+        button.hax-modal-btn:hover,
+        button.hax-modal-btn:focus {
+          outline: 2px solid black;
+          cursor: pointer;
+          background-color: darkgreen;
+        }
+        button.hax-modal-btn.cancel:hover,
+        button.hax-modal-btn.cancel:focus {
+          background-color: darkred;
         }
       `,
     ];
@@ -75,11 +92,11 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         .items="${this.manifestItems}"
       ></editable-outline>
       <div class="buttons">
-        <button id="savebtn" @click="${this._saveTap}">
-          <simple-icon icon="icons:save" dark></simple-icon>Save
+        <button @click="${this._saveTap}" class="hax-modal-btn">
+          ${this.t.save}
         </button>
-        <button @click="${this._cancelTap}">
-          <simple-icon icon="icons:cancel"></simple-icon>Cancel
+        <button @click="${this._cancelTap}" class="cancel hax-modal-btn">
+          ${this.t.cancel}
         </button>
       </div>
     `;
@@ -88,6 +105,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
     super();
     this.__disposer = [];
     this.viewMode = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      save: "Save",
+      cancel: "cancel"
+    };
   }
   static get properties() {
     return {
@@ -130,6 +153,9 @@ class HAXCMSOutlineEditorDialog extends LitElement {
    * LitElement property change life cycle
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened") {
         // notify
@@ -157,7 +183,10 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
     }
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
   }
   connectedCallback() {

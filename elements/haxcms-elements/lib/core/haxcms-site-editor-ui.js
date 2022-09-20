@@ -345,7 +345,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       editDetails: "Page details",
       addPage: "Add page",
       deletePage: "Delete page",
-      siteOutline: "Site outline",
       shareSite: "Share site",
       closeSiteSettings: "Close site settings",
       editSiteSettings: "Site settings",
@@ -1094,20 +1093,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("button");
-    let icon = document.createElement("simple-icon");
-    icon.icon = "icons:delete";
-    b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Confirm"));
-    b1.style.color = "white";
-    b1.style.backgroundColor = "#ee0000";
+    b1.classList.add("hax-modal-btn");
     b1.addEventListener("click", this._deleteActive.bind(this));
     let b2 = document.createElement("button");
-    let icon2 = document.createElement("simple-icon");
-    icon2.icon = "icons:cancel";
-    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.addEventListener("click", () => store.playSound("error"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    b2.classList.add("hax-modal-btn");
+    b2.classList.add("cancel");
     let b = document.createElement("span");
     b.appendChild(b1);
     b.appendChild(b2);
@@ -1118,9 +1112,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
+          "--simple-modal-titlebar-background": "orange",
+          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-width": "25vw",
+          "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-min-width": "30vw",
-          "--simple-modal-min-height": "30vh",
+          "--simple-modal-height": "15vh",
+          "--simple-modal-min-height": "300px",
+          "--simple-modal-titlebar-height": "80px",
         },
         elements: { content: c, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#deletebutton"),
@@ -1157,11 +1156,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.shareSite,
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-titlebar-background": "orange",
+          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-width": "55vw",
+          "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "70vh",
-          "--simple-modal-max-height": "70vh",
+          "--simple-modal-height": "50vh",
+          "--simple-modal-min-height": "300px",
+          "--simple-modal-titlebar-height": "80px",
         },
         elements: {
           content: document.createElement("haxcms-share-dialog"),
@@ -1185,11 +1187,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       detail: {
         title: this.t.siteOutline,
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-titlebar-background": "orange",
+          "--simple-modal-titlebar-color": "black",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "70vh",
-          "--simple-modal-max-height": "70vh",
+          "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-width": "55vw",
+          "--simple-modal-max-width": "55vw",
+          "--simple-modal-height": "80vh",
+          "--simple-modal-max-height": "80vh",
         },
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog"),

@@ -236,7 +236,7 @@
             "inputMethod": "haxupload",
             "required": false,
             "noCamera": true,
-            "noVoiceRecord": true,
+            "noVoiceRecord": false,
             "validationType": "url"
           },
           {

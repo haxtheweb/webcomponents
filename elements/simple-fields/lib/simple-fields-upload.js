@@ -262,7 +262,7 @@ class SimpleFieldsUpload extends I18NMixin(
             >
             </simple-toolbar-button>
             <simple-toolbar-button
-              icon="image:camera-alt"
+              icon="hardware:keyboard-voice"
               ?disabled="${this.disabled}"
               label="${this.t.recordAudio}.."
               ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"

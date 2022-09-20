@@ -353,7 +353,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
             "inputMethod": "haxupload",
             "required": false,
             "noCamera": true,
-            "noVoiceRecord": true,
+            "noVoiceRecord": false,
             "validationType": "url"
           },
           {
@@ -751,7 +751,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
     let temp =
       typeof this.sources === "string"
         ? JSON.parse(this.sources)
-        : this.sources.slice();
+        : (this.sources || []).slice();
     if (this.source) temp.unshift({ src: this.source });
     if (temp && temp.length > 0)
       temp.forEach((item) => {
@@ -770,7 +770,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
     let temp =
       typeof this.tracks === "string"
         ? JSON.parse(this.tracks)
-        : this.tracks.slice();
+        : (this.tracks || []).slice();
     if (this.track) temp.unshift({ src: this.track });
     if (temp && temp.length > 0)
       temp.forEach((item) => {
@@ -787,7 +787,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
    * @returns {Array} List of source objects
    */
   get sourceData() {
-    let temp = this.sourceProperties.slice(),
+    let temp = (this.sourceProperties || []).slice(),
       slotted = this.querySelectorAll("video source, audio source, iframe");
     slotted.forEach((slot) => {
       if (this.sources.filter((source) => source.src === slot.src).length < 1)
@@ -839,8 +839,8 @@ ${this.elementVisible ? html`${!this.isA11yMedia
   get trackData() {
     let temp =
         typeof this.tracks === "string"
-          ? JSON.parse(this.tracks).slice()
-          : this.tracks.slice(),
+          ? (JSON.parse(this.tracks) || []).slice()
+          : (this.tracks || []).slice(),
       slotted = this.querySelectorAll("video track, audio track");
     slotted.forEach((slot) => {
       if (this.tracks.filter((track) => track.src === slot.src).length < 1) {

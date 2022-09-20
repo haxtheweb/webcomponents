@@ -671,39 +671,34 @@ class HAXCMSSiteEditor extends LitElement {
     form.loadEndpoint = this.getNodeFieldsPath;
     this.__fieldsForm = form;
     let b1 = document.createElement("button");
-    let icon = document.createElement("simple-icon");
-    icon.icon = "icons:save";
-    b1.appendChild(icon);
-    b1.appendChild(document.createTextNode("Save fields"));
-    b1.style.color = "white";
-    b1.style.backgroundColor = "#2196f3";
+    b1.appendChild(document.createTextNode("Save"));
+    b1.classList.add("hax-modal-btn");
     b1.setAttribute("dialog-confirm", "dialog-confirm");
     b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
     let b2 = document.createElement("button");
-    let icon2 = document.createElement("simple-icon");
-    icon2.icon = "icons:cancel";
-    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    b2.classList.add("hax-modal-btn");
+    b2.classList.add("cancel");
     b2.addEventListener("click", () => store.playSound("error"));
     let b = document.createElement("div");
-    b.style.position = "absolute";
-    b.style.bottom = 0;
-    b.style.left = 0;
-    b.style.right = 0;
-    b.style.zIndex = 1000000;
     b.appendChild(b1);
     b.appendChild(b2);
-    const evt = new CustomEvent("simple-modal-show", {
+    window.dispatchEvent(new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
+          "--simple-modal-titlebar-background": "orange",
+          "--simple-modal-titlebar-color": "black",
+          "--simple-modal-width": "30vw",
+          "--simple-modal-min-width": "400px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-min-width": "75vw",
-          "--simple-modal-min-height": "75vh",
+          "--simple-modal-height": "70vh",
+          "--simple-modal-min-height": "400px",
+          "--simple-modal-titlebar-height": "80px",
         },
         elements: {
           content: form,
@@ -713,8 +708,7 @@ class HAXCMSSiteEditor extends LitElement {
         clone: false,
         modal: true,
       },
-    });
-    window.dispatchEvent(evt);
+    }));
   }
   /**
    * Load site fields

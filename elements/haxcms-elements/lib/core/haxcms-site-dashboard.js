@@ -60,7 +60,8 @@ class HAXCMSSiteDashboard extends LitElement {
           margin-left: -50vw;
           border-right: 2px solid #17271f;
           overflow: scroll;
-          background-color: var(--haxcms-dashboard-bg, #37474f);
+          color: black;
+          background-color: var(--haxcms-dashboard-bg, orange);
         }
         :host([dashboard-opened]) {
           margin-left: 0;
@@ -71,8 +72,9 @@ class HAXCMSSiteDashboard extends LitElement {
           margin-top: 4px;
         }
         #homebutton simple-icon-button {
-          color: #ffffff;
-          background-color: #000000;
+          background-color: #ffffff;
+          color: #000000;
+          --simple-icon-color: black;
           height: 40px;
           width: 40px;
           --simple-icon-width: 36px;
@@ -80,52 +82,38 @@ class HAXCMSSiteDashboard extends LitElement {
           padding: 2px;
           border-radius: 50%;
         }
-        #homebutton simple-icon-button:hover,
-        #homebutton simple-icon-button:active,
-        #homebutton simple-icon-button:focus {
-          background-color: var(--haxcms-color, #ffffff);
-        }
         .buttons {
-          border: 1px solid #aaaaaa;
-          background-color: var(--simple-modal-titlebar-background, #000000);
-          color: var(--simple-modal-titlebar-color, #ffffff);
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
           display: flex;
         }
-        .buttons button {
-          color: #ffffff;
-          background-color: #000000;
-          font-weight: bold;
-          text-transform: none;
-          border-radius: 0;
-          border: none;
-          border-right: 1px solid white;
-          margin: 0;
+        button.hax-modal-btn {
+          font-size: 30px;
+          padding: 8px;
+          margin: 4px;
+          color: white;
+          background-color: green;
+          border: 4px solid black;
+          border-radius: 8px;
+          font-family: 'Press Start 2P', sans-serif;
         }
-        #save {
-          background-color: var(--haxcms-system-action-color);
+        button.hax-modal-btn.cancel {
+          background-color: red;
         }
-        #cancel {
-          background-color: var(--haxcms-system-danger-color);
+        button.hax-modal-btn:hover,
+        button.hax-modal-btn:focus {
+          outline: 2px solid black;
+          cursor: pointer;
+          background-color: darkgreen;
         }
-        #save:active,
-        #save:focus,
-        #save:hover,
-        #cancel:active,
-        #cancel:focus,
-        #cancel:hover {
-          background-color: var(--haxcms-color);
-        }
-        .buttons button:active,
-        .buttons button:focus,
-        .buttons button:hover {
-          color: #ffffff;
+        button.hax-modal-btn.cancel:hover,
+        button.hax-modal-btn.cancel:focus {
+          background-color: darkred;
         }
         .title {
-          color: white;
+          color: black;
           font-size: 24px;
           margin: 0 0 0 16px;
           padding: 0;
@@ -156,7 +144,8 @@ class HAXCMSSiteDashboard extends LitElement {
           color: black;
         }
         .publishlink {
-          color: white;
+          color: black;
+          float: right;
         }
         .title-wrapper {
           padding: 0 16px;
@@ -194,7 +183,6 @@ class HAXCMSSiteDashboard extends LitElement {
             ><simple-icon-button
               icon="icons:home"
               title="${this.backText}"
-              dark
             ></simple-icon-button
           ></a>
         </portal-launcher>
@@ -234,18 +222,16 @@ class HAXCMSSiteDashboard extends LitElement {
       </div>
       <div class="buttons">
         <button
-          title="Save site settings"
-          id="save"
+          class="hax-modal-btn"
           @click="${this._saveSiteFieldsTap}"
         >
-          <simple-icon dark icon="icons:save"></simple-icon> Save settings
+          Save
         </button>
         <button
-          title="Cancel and close dashboard"
-          id="cancel"
+          class="hax-modal-btn cancel"
           @click="${this._cancel}"
         >
-          <simple-icon dark icon="icons:cancel"></simple-icon> Cancel
+          cancel
         </button>
       </div>
     `;
@@ -284,10 +270,13 @@ class HAXCMSSiteDashboard extends LitElement {
       /**
        * Outline of items in json outline schema format
        */
-      manifest: {
-        type: Object,
-      },
-    };
+       /**
+       * Outline of items in json outline schema format
+       */
+        manifest: {
+          type: Object,
+        },
+      }
   }
   /**
    * Detatched life cycle

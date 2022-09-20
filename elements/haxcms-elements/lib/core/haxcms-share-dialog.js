@@ -20,8 +20,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          height: 60vh;
-          min-width: 50vw;
           overflow: auto;
         }
         .buttons {
