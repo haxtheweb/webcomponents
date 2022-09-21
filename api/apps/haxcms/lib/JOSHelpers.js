@@ -82,8 +82,11 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
     selfChecks: doc.querySelectorAll('iframe.entity_iframe,self-check,multiple-choice').length,
     objectives: doc.querySelectorAll('instruction-card[type="objectives"] li').length,
     images: doc.querySelectorAll('media-image,img,simple-img').length,
+    headings: doc.querySelectorAll('h1,h2,h3,h4,h5,h6,relative-heading').length,
     readTime: readTime,
     dataTables: doc.querySelectorAll('table').length,
+    links: doc.querySelectorAll('a').length,
+    specialTags: doc.querySelectorAll('*:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)').length,
     videoLength: 0,
   };
   // walk all the video sources and build 1 request for google API about duration data

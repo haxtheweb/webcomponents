@@ -7,6 +7,7 @@ import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/mi
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@github/time-elements/dist/relative-time-element.js";
+import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 enableServices(["haxcms"]);
 
 /**
@@ -34,6 +35,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
+    this.refreshData();
+  }
+  _insightResponse(data) {
+    this.loading = false;
+    this.data = data.data;
+  }
+  refreshData() {
     var base = "";
     if (document.querySelector("base")) {
       base = document.querySelector("base").href;
@@ -56,15 +64,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       ancestorId: ancestor ? ancestor.id : null,
       link: base,
     };
+    this.loading = true;
     MicroFrontendRegistry.call(
       "@haxcms/insights",
       params,
       this._insightResponse.bind(this),
       this
     );
-  }
-  _insightResponse(data) {
-    this.data = data.data;
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -94,98 +100,106 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     return readVal.join(", ");
   }
+  closeModal() {
+    window.dispatchEvent(new CustomEvent('simple-modal-hide'));
+  }
   // render function
   render() {
     const site = this.data.site;
     const branch = this.data.branch;
     const page = this.data.page;
     return html`
+    <simple-icon-button-lite @click="${this.refreshData}" icon="refresh" ?disabled="${this.loading}">${this.t.refresh}</simple-icon-button-lite>
     <a11y-tabs id="tabs" full-width>
       <a11y-tab id="course" icon="communication:import-contacts" label="${this.t.course}">
+      <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+      ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
         <div>
           <h2>Course insights</h2>
           <ul>
             <li><strong>${site.objectives}</strong> ${site.objectives == 0 ? html`objectives, why not add some?` : html`objectives in this course`}</li>
-            <li><strong>15</strong> Lessons</li>
-            <li>Reading stats:
-              <ul>
-                <li><strong>${site.pages}</strong> Pages</li>
-                <li><strong>${this.getReadingTime(site.readTime)}</strong> of reading</li>
-                <li><strong>${site.readability.gradeLevel}</strong> grade reading level</li>
-                <li><strong>${site.readability.lexiconCount}</strong> words</li>
-                <li><strong>${site.readability.difficultWords}</strong> difficult words</li>
-              </ul>
-            </li>
-            ${site.video == 0 ? `` : html`<li>${site.video} videos (${toHHMMSS(site.videoLength)})</li>`}
-            <li>Created: ${site.created}
-              <relative-time .datetime="${parseInt(site.created)}">
+            <li><strong>${site.specialTags}</strong> special elements</li>
+            <li><strong>${site.headings}</strong> headings</li>
+            <li><strong>${site.links}</strong> links</li>
+            ${site.video == 0 ? `` : html`<li><strong>${site.video}</strong> videos ${site.videoLength != 0 ? html`(<strong>${toHHMMSS(site.videoLength)}</strong>)` : ``}</li>`}
+            <li><strong>${site.pages}</strong> Pages</li>
+            <li><strong>${this.getReadingTime(site.readTime)}</strong> of reading</li>
+            <li><strong>${site.readability.gradeLevel}</strong> grade reading level</li>
+            <li><strong>${site.readability.lexiconCount}</strong> words</li>
+            <li><strong>${site.readability.difficultWords}</strong> difficult words</li>
+            <li>Created:
+              <relative-time datetime="${site.created}">
               </relative-time></li>
-            <li>Last updated: ${site.updated}
-              <relative-time .datetime="${site.updated}">
+            <li>Last updated:
+              <relative-time datetime="${site.updated}">
               </relative-time></li>
             <li>Recent updates:
               <ol>
                 ${site.updatedItems.map((item) => html`
                 <li>
-                <relative-time .datetime="${item.metadata.updated}">
-                </relative-time>, <a href="${item.slug  }">${item.title}</a></li>`)}
+                  <a @click="${this.closeModal}" href="${item.slug}">${item.title} <relative-time datetime="${item.metadata.updated}"></relative-time></a>
+                </li>`)}
               </ol>
             </li>
           </ul>
         </div>
-    </a11y-tab>
+      `}
+      </a11y-tab>
       <a11y-tab id="lesson" icon="editor:format-list-bulleted" label="${this.t.lesson}">
-      <h2>Lesson insights</h2>
-        <ul>
-        <li><strong>${branch.objectives}</strong> ${branch.objectives == 0 ? html`objectives, why not add some?` : html`objectives in this course`}</li>
-          <li>Reading stats:
-            <ul>
-              <li><strong>${branch.pages}</strong> Pages</li>
-              <li><strong>${this.getReadingTime(branch.readTime)}</strong> of reading</li>
-              <li><strong>${branch.readability.gradeLevel}</strong> grade reading level</li>
-              <li><strong>${branch.readability.lexiconCount}</strong> words</li>
-              <li><strong>${branch.readability.difficultWords}</strong> difficult words</li>
-            </ul>
-          </li>
-          ${branch.video == 0 ? `` : html`<li>${branch.video} videos (${toHHMMSS(branch.videoLength)})</li>`}
-          <li>10 special elements</li>
-          <li>30 headings</li>
-          <li>18 links</li>
-          <li>Created:
-          <relative-time .datetime="${branch.created}">
-          </relative-time></li>
-        <li>Last updated:
-          <relative-time .datetime="${branch.updated}">
-          </relative-time></li>
-        </ul>
+        <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+        <div>
+        ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
+        <h2>Lesson insights</h2>
+          <ul>
+            ${branch.video == 0 ? `` : html`<li><strong>${branch.video}</strong> videos ${branch.videoLength != 0 ? html`(<strong>${toHHMMSS(branch.videoLength)}</strong>)` : ``}</li>`}
+            <li><strong>${branch.objectives}</strong> ${branch.objectives == 0 ? html`objectives, why not add some?` : html`objectives in this course`}</li>
+            <li><strong>${branch.specialTags}</strong> special elements</li>
+            <li><strong>${branch.headings}</strong> headings</li>
+            <li><strong>${branch.links}</strong> links</li>
+                <li><strong>${branch.pages}</strong> Pages</li>
+                <li><strong>${this.getReadingTime(branch.readTime)}</strong> of reading</li>
+                <li><strong>${branch.readability.gradeLevel}</strong> grade reading level</li>
+                <li><strong>${branch.readability.lexiconCount}</strong> words</li>
+                <li><strong>${branch.readability.difficultWords}</strong> difficult words</li>
+            <li>Created:
+              <relative-time datetime="${branch.created}">
+              </relative-time>
+            </li>
+            <li>Last updated:
+              <relative-time datetime="${branch.updated}">
+              </relative-time>
+            </li>
+          </ul>
+          `}
+        </div>
       </a11y-tab>
       <a11y-tab id="page" icon="icons:subject" label="${this.t.page}">
-        <h2>Page insights</h2>
-        <ul>
-        <li>Created:
-          <relative-time .datetime="${page.created}">
-          </relative-time></li>
-        <li>Last updated:
-          <relative-time .datetime="${page.updated}">
-          </relative-time></li>
-          ${page.objectives == 0 ? `` : html`<li><strong>${page.objectives}</strong> objectives</li>`}
-          <li>Reading stats:
+        <div>
+        <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+        ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
+            <h2>Page insights</h2>
             <ul>
+              ${page.objectives == 0 ? `` : html`<li><strong>${page.objectives}</strong> objectives</li>`}
+              ${page.video == 0 ? `` : html`<li><strong>${page.video}</strong> videos ${page.videoLength != 0 ? html`(<strong>${toHHMMSS(page.videoLength)}</strong>)` : ``}</li>`}
+              <li><strong>${page.specialTags}</strong> special elements</li>
+              <li><strong>${page.headings}</strong> headings</li>
+              <li><strong>${page.links}</strong> links</li>
               <li><strong>${page.pages}</strong> Pages</li>
               <li><strong>${this.getReadingTime(page.readTime)}</strong> of reading</li>
               <li><strong>${page.readability.gradeLevel}</strong> grade reading level</li>
               <li><strong>${page.readability.lexiconCount}</strong> words</li>
               <li><strong>${page.readability.difficultWords}</strong> difficult words</li>
+              <li>Created:
+                <relative-time datetime="${page.created}">
+                </relative-time></li>
+              <li>Last updated:
+                <relative-time datetime="${page.updated}">
+                </relative-time></li>
             </ul>
-          </li>
-          ${page.video == 0 ? `` : html`<li>${page.video} videos (${toHHMMSS(page.videoLength)})</li>`}
-          <li>4 special elements</li>
-          <li>3 headings</li>
-          <li>2 links</li>
-          <li>Created: 4/20/2020</li>
-        </ul>
-      </a11y-tab>
-    </a11y-tabs>
+          `}
+          </div>
+        </a11y-tab>
+      </a11y-tabs>
     `;
   }
 
@@ -194,6 +208,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      refresh: "Refresh",
+      loading: "Loading",
       course: "Course",
       lesson: "Lesson",
       page: "Page",
@@ -214,13 +230,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         readability: {}
       }
     };
+    this.loading = false;
   }
   static get properties() {
     return {
       ...super.properties,
       data: {
         type: Object
-      }
+      },
+      loading: { type: Boolean, reflect: true},
     }
   }
 }
@@ -251,12 +269,4 @@ function toHHMMSS(seconds) {
     }
   }
   return out;
-}
-
-function dateFormat(d) {
-  if (d) {
-    let dateObject = new Date(d * 1000);
-    return dateObject.toLocaleString()
-  }
-  return '';
 }

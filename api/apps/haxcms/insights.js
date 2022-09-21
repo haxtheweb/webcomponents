@@ -71,6 +71,8 @@ export default async function handler(req, res) {
         lexiconCount: rs.lexiconCount(text), // word count
         sentenceCount: rs.sentenceCount(text), // sentences
       };
+      // get updated data stats
+      const fullManifest = await resolveSiteData(base, siteData);
       if (ancestor == null) {
         data.branch.readability = data.page.readability;
       }
@@ -84,8 +86,8 @@ export default async function handler(req, res) {
           sentenceCount: rs.sentenceCount(text), // sentences
         };
         const activeBranch = fullManifest.getItemById(ancestor);
-        data.branch.updated = activeBranch.metadata.updated;
-        data.branch.created = activeBranch.metadata.created;
+        data.branch.updated = new Date(activeBranch.metadata.updated * 1000).toISOString();
+        data.branch.created = new Date(activeBranch.metadata.created * 1000).toISOString();   
       }
       text = await siteHTMLContent(base, siteData, null, true, true);
       data.site.readability = {
@@ -96,21 +98,21 @@ export default async function handler(req, res) {
         sentenceCount: rs.sentenceCount(text), // sentences
       };
 
-      // get updated data stats
-      const fullManifest = await resolveSiteData(base, siteData);
-      data.site.updated = fullManifest.metadata.site.updated;
-      data.site.created = fullManifest.metadata.site.updated;
-      
+      data.site.updated = new Date(fullManifest.metadata.site.updated * 1000).toISOString();
+      data.site.created = new Date(fullManifest.metadata.site.created * 1000).toISOString();  
       const activePage = fullManifest.getItemById(itemId);
-      data.page.updated = activePage.metadata.updated;
-      data.page.created = activePage.metadata.created;
-      
-      // obtain the last 5 updated items
-      const oldOrder = fullManifest.orderTree(fullManifest.items);
-      console.log(oldOrder.slice(0,4));
-      const updateOrder = fullManifest.orderTree(fullManifest.items, 'updated');
-      console.log(updateOrder.slice(0,4));
-      data.site.updatedItems = updateOrder.slice(0,4);
+      data.page.updated = new Date(activePage.metadata.updated * 1000).toISOString();
+      data.page.created = new Date(activePage.metadata.created * 1000).toISOString();      
+      // order items by updated date
+      // this is across ALL pages
+      fullManifest.items.sort( function(a, b) {
+        return parseInt(b.metadata.updated) - parseInt(a.metadata.updated);
+      });
+      // convert time stamp to ISO
+      fullManifest.items.map((item) => {
+        item.metadata.updated = new Date(item.metadata.updated * 1000).toISOString();
+      });
+      data.site.updatedItems = fullManifest.items.slice(0,6);
     }
   }
   res = stdResponse(res, data);
