@@ -117,10 +117,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               </ul>
             </li>
             ${site.video == 0 ? `` : html`<li>${site.video} videos (${toHHMMSS(site.videoLength)})</li>`}
-            <li>Created:
-              <relative-time .datetime="${site.created}">
+            <li>Created: ${site.created}
+              <relative-time .datetime="${parseInt(site.created)}">
               </relative-time></li>
-            <li>Last updated:
+            <li>Last updated: ${site.updated}
               <relative-time .datetime="${site.updated}">
               </relative-time></li>
             <li>Recent updates:

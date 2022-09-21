@@ -79,10 +79,13 @@ export default async function handler(req, res) {
         data.branch.readability = {
           gradeLevel: rs.textStandard(text, true), // grade level from multiple tests averaged
           difficultWords: rs.difficultWords(text), // difficult words
-          syllableCount: rs.syllableCount(text), // sylables
+          syllableCount: rs.syllableCount(text), // syllable
           lexiconCount: rs.lexiconCount(text), // word count
           sentenceCount: rs.sentenceCount(text), // sentences
         };
+        const activeBranch = fullManifest.getItemById(ancestor);
+        data.branch.updated = activeBranch.metadata.updated;
+        data.branch.created = activeBranch.metadata.created;
       }
       text = await siteHTMLContent(base, siteData, null, true, true);
       data.site.readability = {
@@ -97,18 +100,17 @@ export default async function handler(req, res) {
       const fullManifest = await resolveSiteData(base, siteData);
       data.site.updated = fullManifest.metadata.site.updated;
       data.site.created = fullManifest.metadata.site.updated;
-
-      const activeBranch = fullManifest.getItemById(ancestor);
-      data.branch.updated = activeBranch.metadata.updated;
-      data.branch.created = activeBranch.metadata.created;
       
       const activePage = fullManifest.getItemById(itemId);
       data.page.updated = activePage.metadata.updated;
       data.page.created = activePage.metadata.created;
       
       // obtain the last 5 updated items
+      const oldOrder = fullManifest.orderTree(fullManifest.items);
+      console.log(oldOrder.slice(0,4));
       const updateOrder = fullManifest.orderTree(fullManifest.items, 'updated');
-      data.site.updatedItems = updateOrder.slice(0,5);
+      console.log(updateOrder.slice(0,4));
+      data.site.updatedItems = updateOrder.slice(0,4);
     }
   }
   res = stdResponse(res, data);

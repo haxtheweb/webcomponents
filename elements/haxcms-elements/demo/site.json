@@ -640,9 +640,7 @@
             "p": 7,
             "ul": 1,
             "code-sample": 5,
-            "h3": 1,
-            "grid-plate": 1,
-            "img": 3
+            "h3": 1
           },
           "elements": 23
         }
@@ -1485,7 +1483,7 @@
       "description": "There are multiple ways to \"theme\" in HAXcms that align with the skillsets of the person doing the theme development. Know web components? Cool. Know basic CSS and HTML? Cool. Want to build something ",
       "metadata": {
         "created": 1550643005,
-        "updated": 1617805490
+        "updated": 1817805490
       }
     },
     {
@@ -1499,7 +1497,7 @@
       "description": "The main piece to our integrations is wrapped up in something we call \"The magic script\". The magic script is a standard way of dynamically discovering and importing the definitions of web components ",
       "metadata": {
         "created": 1548828434,
-        "updated": 1617805490,
+        "updated": 1917805490,
         "files": [
           {
             "path": "/var/www/html/_sites/haxtheweb/files/59453a821222752c90fa970c937c2c396bff61f5-ngdle-university-faculty-side.jpg",
