@@ -9,19 +9,13 @@ class CourseIntroFooter extends LitElement {
 
   static get properties() {
     return {
-      organization: { type: String },
-      organizationLink: { type: String },
-      company: { type: String },
-      companyLink: { type: String },
+    
     };
   }
 
   constructor() {
     super();
-    this.organization = "";
-    this.organizationLink = "";
-    this.company = "";
-    this.companyLink = "";
+  
   }
 
   static get styles() {
@@ -58,54 +52,6 @@ class CourseIntroFooter extends LitElement {
           justify-content: space-between;
           align-items: center;
         }
-
-        @media screen and (min-width: 320px) {
-          #company-logo img {
-            height: 70px;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          #company-logo img {
-            height: 80px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #company-logo img {
-            height: 100px;
-          }
-        }
-
-        @media screen and (min-width: 1120px) {
-          #company-logo img {
-            height: 120px;
-          }
-        }
-
-        @media screen and (min-width: 320px) {
-          #organization-logo img {
-            height: 70px;
-          }
-        }
-
-        @media screen and (min-width: 620px) {
-          #organization-logo img {
-            height: 80px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          #organization-logo img {
-            height: 100px;
-          }
-        }
-
-        @media screen and (min-width: 1120px) {
-          #organization-logo img {
-            height: 120px;
-          }
-        }
       `,
     ];
   }
@@ -121,16 +67,6 @@ class CourseIntroFooter extends LitElement {
         store.manifest.metadata.theme &&
         store.manifest.metadata.theme.variables
       ) {
-        this.organization = toJS(
-          store.manifest.metadata.theme.variables.organization
-        );
-        this.company = toJS(store.manifest.metadata.theme.variables.company);
-        this.companyLink = toJS(
-          store.manifest.metadata.theme.variables.companyLink
-        );
-        this.organizationLink = toJS(
-          store.manifest.metadata.theme.variables.organizationLink
-        );
         this.shadowRoot.querySelector(
           "#footer-container"
         ).style.borderColor = `${toJS(
@@ -144,17 +80,15 @@ class CourseIntroFooter extends LitElement {
     return html`
       <div id="footer-container">
         <div id="company-logo">
-          <a href="${this.companyLink}" target="_blank">
-            <img src="${this.company}" />
-          </a>
+          <slot name="footer-left"></slot>
         </div>
         <div id="organization-logo">
-          <a href="${this.organizationLink}" target="_blank">
-            <img src="${this.organization}" />
-          </a>
+          <slot name="footer-right"></slot>
         </div>
       </div>
     `;
   }
 }
+
+
 customElements.define(CourseIntroFooter.tag, CourseIntroFooter);

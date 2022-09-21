@@ -54,6 +54,34 @@
   },
   "items": [
     {
+      "id": "item-10ae7636-2d20-49ad-b9a6-95614d34db7e",
+      "indent": 0,
+      "location": "pages\/course-intro\/index.html",
+      "slug": "introduction",
+      "order": "0",
+      "parent": null,
+      "title": "course-intro",
+      "description": "",
+      "metadata": {
+          "created": 1565903961,
+          "updated": 1661360465,
+          "readtime": 1,
+          "layout": "course-intro",
+          "contentDetails": {
+              "headings": 0,
+              "paragraphs": 0,
+              "schema": [],
+              "tags": [],
+              "elements": 0
+          },
+          "theme": {
+              "element": "haxcms-blank-theme",
+              "path": "@lrnwebcomponents\/haxcms-blank-theme\/haxcms-blank-theme.js",
+              "name": "Blank Theme"
+          }
+      }
+  },
+    {
       "id": "item-534ed4c7-2468-366f-5410-adc169efcebc",
       "indent": "1",
       "location": "pages/documentation-1/hax-development/index.html",

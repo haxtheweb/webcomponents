@@ -11,3 +11,84 @@
  * Think of it like a sass mixin, where you can apply any css you want
  * inside of that block and it'll apply downstream. Two examples are given below
  */
+
+ /* Removes margin from HAXcms Blank Theme */
+
+ haxcms-blank-theme {
+  margin: 0; 
+}
+
+/* Provides styling for course-header & course-footer branding */
+
+@media screen and (min-width: 320px) {
+  #company-logo img {
+    height: 70px;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  #company-logo img {
+    height: 80px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  #company-logo img {
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  #company-logo img {
+    height: 120px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  #organization-logo img {
+    height: 70px;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  #organization-logo img {
+    height: 80px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  #organization-logo img {
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  #organization-logo img {
+    height: 120px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  svg#psu-logo {
+    width: 45px;
+    height: 45px;
+    padding: 10px 0 0 10px;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  svg#psu-logo {
+    width: 55px;
+    height: 55px;
+    padding: 12px 0 0 12px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  svg#psu-logo {
+    width: 80px;
+    height: 80px;
+    padding: 15px 0 0 15px;
+  }
+}
+
