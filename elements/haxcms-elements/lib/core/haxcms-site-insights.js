@@ -110,6 +110,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     const page = this.data.page;
     return html`
     <simple-icon-button-lite @click="${this.refreshData}" icon="refresh" ?disabled="${this.loading}">${this.t.refresh}</simple-icon-button-lite>
+    <input type="checkbox" name="validateLinks" checked/><label>Validate Links</label>
+    <div>Note: this is an agressive operation that will take longer to process.</div>
     <a11y-tabs id="tabs" full-width>
       <a11y-tab id="course" icon="communication:import-contacts" label="${this.t.course}">
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
