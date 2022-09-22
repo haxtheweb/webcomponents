@@ -1,6 +1,9 @@
 import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { courseStatsFromOutline, siteHTMLContent, resolveSiteData } from "./lib/JOSHelpers.js";
 import rs from "text-readability";
+import { parse } from 'node-html-parser';
+import fetch from "node-fetch";
+
 // given a site, and current page, obtain stats that are possibly relevant
 // to smart blocks like lesson-intro, course-intro and others as long
 // as they might be relevant to pedagogy. This is pretty open ended
@@ -97,12 +100,39 @@ export default async function handler(req, res) {
         lexiconCount: rs.lexiconCount(text), // word count
         sentenceCount: rs.sentenceCount(text), // sentences
       };
-
+      let responses = {};
+      // @todo add UI option for toggling this
+      if (body.validateLinks) {
+        for (const link of Object.keys(data.site.externalLinkLocations)) {
+          let resp;
+          try {
+            resp = await fetch(link, { method: "HEAD"});
+            // rare but implies HEAD request not allowed
+            if (resp.status === 405) {
+              resp = await fetch(link, { method: "GET"});
+            }
+          }
+          catch {
+            resp = {
+              ok: false,
+              status: 999
+            }
+          }
+          // we only care about dead links
+          if (!resp.ok) {
+            responses[link] = {
+              ok: resp.ok,
+              status: resp.status,
+            }
+          }
+        }
+        data.site.linkValidation = responses;
+      }
       data.site.updated = new Date(fullManifest.metadata.site.updated * 1000).toISOString();
       data.site.created = new Date(fullManifest.metadata.site.created * 1000).toISOString();  
       const activePage = fullManifest.getItemById(itemId);
       data.page.updated = new Date(activePage.metadata.updated * 1000).toISOString();
-      data.page.created = new Date(activePage.metadata.created * 1000).toISOString();      
+      data.page.created = new Date(activePage.metadata.created * 1000).toISOString();
       // order items by updated date
       // this is across ALL pages
       fullManifest.items.sort( function(a, b) {

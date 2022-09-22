@@ -8,7 +8,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-enableServices(["haxcms"]);
+enableServices(["haxcms", "core"]);
 
 /**
  * `haxcms-outline-editor-dialog`

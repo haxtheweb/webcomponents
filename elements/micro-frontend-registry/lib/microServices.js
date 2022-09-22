@@ -24,6 +24,17 @@ export function enableServices(services) {
 
 // core services
 export function enableCoreServices() {
+  // linkValidator
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/website/linkValidator",
+    name: "@core/linkValidator",
+    title: "Validate URLs",
+    description: "Validates that an array of URLs are valid by returning status codes of a HEAD request",
+    params: {
+      links: "link for processing as link otherwise unused",
+    },
+  });
+
   // mdToHtml
   MicroFrontendRegistry.add({
     endpoint: "/api/services/media/format/mdToHtml",

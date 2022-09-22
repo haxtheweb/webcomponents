@@ -75,6 +75,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   // guestimate readTime, assuming 225 words per minute for average adult reading time
   const words = doc.querySelector("#wrapper").innerText.trim().split(/\s+/).length;
   const readTime = Math.ceil(words / 225);
+  const extLinks = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]');
   const data = {
     pages: items.length,
     video: doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player').length,
@@ -85,15 +86,31 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
     headings: doc.querySelectorAll('h1,h2,h3,h4,h5,h6,relative-heading').length,
     readTime: readTime,
     dataTables: doc.querySelectorAll('table').length,
-    links: doc.querySelectorAll('a').length,
+    links: extLinks.length,
+    externalLinkLocations: {},
     specialTags: doc.querySelectorAll('*:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)').length,
     videoLength: 0,
   };
+  for (let el of extLinks) {
+    // obtain which page this link shows up on
+    let parent = el.parentNode;
+    while (parent && !parent.getAttribute('data-jos-item-id')) {
+      parent = parent.parentNode;      
+    }
+    if (data.externalLinkLocations[el.getAttribute('href')]) {
+      data.externalLinkLocations[el.getAttribute('href')].push(parent.getAttribute('data-jos-item-id'));
+    }
+    else {
+      data.externalLinkLocations[el.getAttribute('href')] = [parent.getAttribute('data-jos-item-id')];
+
+    }
+  }
   // walk all the video sources and build 1 request for google API about duration data
   // as they allow batches of 50
   var ytVids = [];
   var videoLength = 0;
-  doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player').forEach( async (el) => {
+  const docVids = doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player');
+  for (let el of docVids) {
     let urlData = {};
     // ensure we have valid source/src data to draw from
     if (el.getAttribute('source')) {
@@ -164,7 +181,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
         break;
       }
     }
-  });
+  }
   // make sure we found videos
   if (ytVids.length > 0) {
     let tmp = [];
@@ -205,7 +222,7 @@ export async function siteHTMLContent(siteLocation, siteData = null, ancestor = 
       siteContent += `<h1>${items[i].title}</h1>`;
     }
     let content = await site.getContentById(items[i].id);
-    siteContent += content;
+    siteContent += `<div data-jos-item-id="${items[i].id}">${content}</div>`;
   }
   // support stripping HTML if goal was purely text
   if (textOnly) {
@@ -221,9 +238,9 @@ export async function getYoutubeDuration(vid) {
   const url = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&key=${process.env.YOUTUBE_API_KEY}&id=${vid}`;
   const ytData = await fetch(url).then((d) => d.ok ? d.json(): {});
   if (ytData?.items) {
-    ytData.items.forEach((item) => {
+    for (const item of ytData.items) {
       duration += parseInt(YTDurationFormatConvert(item.contentDetails.duration));
-    })
+    }
     return duration;
   }
   return 0;
