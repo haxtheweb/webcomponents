@@ -1045,10 +1045,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         styles: {
           "--simple-modal-titlebar-background": "orange",
           "--simple-modal-titlebar-color": "black",
-          "--simple-modal-width": "70vw",
+          "--simple-modal-width": "94vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "70vh",
+          "--simple-modal-height": "94vh",
           "--simple-modal-min-height": "300px",
           "--simple-modal-titlebar-height": "80px",
         },

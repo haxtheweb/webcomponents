@@ -31,13 +31,7 @@ class RetroCard extends SimpleColors {
     super();
     this.__cardTags = [];
     this.hoverState = false;
-    setTimeout(() => {
-      this.addEventListener("keypress", this._keyPress.bind(this));
-      this.addEventListener("mouseover", this._hoverStateOn.bind(this));
-      this.addEventListener("mouseout", this._hoverStateOff.bind(this));
-      this.addEventListener("focusin", this._hoverStateOn.bind(this));
-      this.addEventListener("focusout", this._hoverStateOff.bind(this));
-    }, 0);
+    this.nosource = false;
   }
   /**
    * A11y because we are delegating keyboard function to hit the link when enter pressed
@@ -56,10 +50,20 @@ class RetroCard extends SimpleColors {
   _hoverStateOn(e) {
     this.hoverState = true;
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.addEventListener("mouseover", this._hoverStateOn.bind(this));
+    this.addEventListener("mouseout", this._hoverStateOff.bind(this));
     // makes this focusable and we normalize the hover / focus state
     // between CSS, JS and keyboard actions this way
-    this.setAttribute("tabindex", 0);
+    if (!this.nosource) {
+      this.setAttribute("tabindex", 0);
+      this.addEventListener("keypress", this._keyPress.bind(this));
+      this.addEventListener("focusin", this._hoverStateOn.bind(this));
+      this.addEventListener("focusout", this._hoverStateOff.bind(this));
+    }
     // optional support for hoverSource being the default source
     if (!this.hoverSource) {
       this.hoverSource = this.mediaSource;
@@ -95,7 +99,7 @@ class RetroCard extends SimpleColors {
    * special support for HAX since the whole card is selectable
    */
   _clickCard(e) {
-    if (this._haxstate) {
+    if (this._haxstate && !this.nosource) {
       // do not do default
       e.preventDefault();
       e.stopPropagation();

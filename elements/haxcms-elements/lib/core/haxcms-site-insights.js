@@ -5,6 +5,10 @@ import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@lrnwebcomponents/retro-card/retro-card.js";
+import "@lrnwebcomponents/simple-img/simple-img.js";
+
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 enableServices(["haxcms", "core"]);
@@ -27,6 +31,105 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         :host {
           display: block;
           overflow: auto;
+          height: 85vh;
+        }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        a11y-tabs {
+          --a11y-tabs-horizontal-background: white;
+        }
+        a11y-tabs::part(tab) {
+          font-size: 24px;
+        }
+        a11y-tabs::part(tab-insights) {
+          color: var(--simple-colors-default-theme-purple-8);
+        }
+        a11y-tabs::part(tab-linkchecker) {
+          color: var(--simple-colors-default-theme-orange-8);
+        }
+        a11y-tabs::part(tab-mediabrowser) {
+          color: var(--simple-colors-default-theme-red-8);
+        }
+        a11y-tabs::part(tab-contentbrowser) {
+          color: var(--simple-colors-default-theme-blue-8);
+        }
+        a11y-tab#insights loading-indicator {
+          --loading-indicator-color: var(--simple-colors-default-theme-purple-8);
+        }
+        a11y-tab#linkchecker loading-indicator {
+          --loading-indicator-color: var(--simple-colors-default-theme-orange-8);
+        }
+        a11y-tab#mediabrowser loading-indicator {
+          --loading-indicator-color: var(--simple-colors-default-theme-red-8);
+        }
+        a11y-tab#contentbrowser loading-indicator {
+          --loading-indicator-color: var(--simple-colors-default-theme-blue-8);
+        }
+        simple-icon {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          padding: 2px;
+        }
+        accent-card {
+          height: 225px;
+          width: 300px;
+          overflow: auto;
+        }
+        accent-card .title-link {
+          text-decoration: none;
+          font-family: "Roboto Mono", Consolas, Monospace;
+          font-size: 20px;
+          color: blue;
+        }
+        accent-card .title-link:hover,
+        accent-card .title-link:focus,
+        accent-card .title-link:active {
+          text-decoration: underline;
+          color: black;
+        }
+        accent-card .stats {
+          height: 125px;
+        }
+        .stats li {
+          display: block;
+          padding: 4px;
+          margin: 4px;
+          list-style: none;
+        }
+        .content-list li {
+          display: inline-block;
+          margin: 0;
+          padding: 0;
+          font-size: 12px;
+          --accent-card-padding: 0;
+        }
+        .media-list li {
+          margin: 8px;
+          display: inline-flex;
+        }
+        .media-list retro-card {
+          width: 350px;
+          height: 460px;
+        }
+        .media-list retro-card::part(title) {
+          padding: 0;
+          font-size: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .media-list retro-card::part(description) {
+          padding: 0;
+          font-size: 14px;
+        }
+        .media-list retro-card .body {
+          height: 275px;
+        }
+        .media-list retro-card img {
+          max-height: 250px;
+          width: 275px;
         }
       `,
     ];
@@ -84,6 +187,22 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           this
         );
       break;
+      case 'contentbrowser':
+        MicroFrontendRegistry.call(
+          "@haxcms/contentBrowser",
+          params,
+          this._insightResponse.bind(this),
+          this
+        );
+      break;
+      case 'mediabrowser':
+        MicroFrontendRegistry.call(
+          "@haxcms/mediaBrowser",
+          params,
+          this._insightResponse.bind(this),
+          this
+        );
+      break;
       // bad selection
       default: 
         this.loading = false;
@@ -127,17 +246,21 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   // render function
   render() {
     const data = this.data;
+    var base = "";
+    if (document.querySelector("base")) {
+      base = document.querySelector("base").href;
+    }
     return html`
     ${this.pageSelector()}
     <button @click="${this.refreshData}" icon="refresh" ?disabled="${this.loading}">${this.t.updateInsights}</button>
-    <a11y-tabs id="tabs" full-width @a11y-tabs-active-changed="${this.activeChanged}">
+    <a11y-tabs id="tabs" full-width @a11y-tabs-active-changed="${this.activeChanged}" sticky>
       <a11y-tab id="insights" icon="communication:import-contacts" label="${this.t.insights}">
       ${this.activeTab === 'insights' ? html`
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
       ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
         <div>
           <h2>${data.title}</h2>
-          <ul>
+          <ul class="insight-list">
             <li><strong>${data.objectives}</strong> ${this.t.learningObjectives}</li>
             <li><strong>${data.specialTags}</strong> ${this.t.specialElements}</li>
             <li><strong>${data.headings}</strong> ${this.t.headings}</li>
@@ -157,10 +280,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               </relative-time></li>
             <li>${this.t.recentUpdates}:
               <ol>
-                ${data.updatedItems.map((item) => html`
+                ${data.updatedItems ? data.updatedItems.map((item) => html`
                 <li>
                   <a @click="${this.closeModal}" href="${item.slug}">${item.title} <relative-time datetime="${item.metadata.updated}"></relative-time></a>
-                </li>`)}
+                </li>`) : ``}
               </ol>
             </li>
           </ul>
@@ -174,7 +297,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
           <div>
             <h2>${this.t.linkReport}</h2>
-            <ul>
+            <ul class="link-list">
             ${
               data.linkData ? Object.keys(data.linkData).map((key) => html`
                 <li>
@@ -189,10 +312,93 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         `}
       ` : ``}
       </a11y-tab>
+      <a11y-tab id="contentbrowser" icon="icons:view-module" label="${this.t.contentBrowser}">
+      ${this.activeTab == 'contentbrowser' ? html`
+        <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+          ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
+          <div>
+            <h2>${this.t.contentBrowser}</h2>
+            <ul class="content-list">
+            ${data.contentData ? data.contentData.map(item => html`
+            <li>
+            <accent-card image-src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=25render=img&urlToCapture=${base}${item.location}" horizontal>
+            <div slot="heading"><a class="title-link" href="${item.slug}" @click="${this.closeModal}">${item.title}</a></div>
+              <div slot="content">
+                <div>
+                  ${this.t.created} <relative-time datetime="${item.created}"></relative-time>
+                </div>
+                <div>
+                  ${this.t.lastUpdated} <relative-time datetime="${item.updated}"></relative-time>
+                </div>
+                <div>
+                  <ul class="stats">
+                  ${item.objectives > 0 ? html`<li><simple-icon icon="editor:format-list-bulleted"></simple-icon>${item.objectives} ${this.t.learningObjectives}</li>` : ``}
+                  ${item.videos > 0 ? html`<li><simple-icon icon="av:play-arrow"></simple-icon>${item.videos} ${this.t.videos}</li>` : ``}
+                  ${item.audio > 0 ? html`<li><simple-icon icon="av:music-video"></simple-icon>${item.audio} ${this.t.audio}</li>` : ``}
+                  ${item.selfChecks > 0 ? html`<li><simple-icon icon="hardware:videogame-asset"></simple-icon>${item.selfChecks} ${this.t.selfChecks}</li>` : ``}
+                  ${item.images > 0 ? html`<li><simple-icon icon="image:collections"></simple-icon>${item.images} ${this.t.images}</li>` : ``}
+                  ${item.dataTables > 0 ? html`<li><simple-icon icon="image:grid-on"></simple-icon>${item.dataTables} ${this.t.dataTables}</li>` : ``}
+                  ${item.specialTags > 0 ? html`<li><simple-icon icon="icons:stars"></simple-icon>${item.specialTags} ${this.t.specialElements}</li>` : ``}
+                  ${item.links > 0 ? html`<li><simple-icon icon="icons:link"></simple-icon>${item.links} ${this.t.links}</li>` : ``}
+                  ${item.readTime > 0 ? html`<li><simple-icon icon="icons:chrome-reader-mode"></simple-icon>${this.getReadingTime(item.readTime)}${this.t.ofReading}</li>` : ``}
+                  </ul>
+                </div>
+              </div>
+            </accent-card>
+            </li>
+            `) : ``}
+            </ul>
+          </div>
+          `}
+        ` : ``}
+      </a11y-tab>
+      <a11y-tab id="mediabrowser" icon="icons:perm-media" label="${this.t.mediaBrowser}">
+      ${this.activeTab == 'mediabrowser' ? html`
+        <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+          ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
+          <div>
+            <h2>${this.t.mediaBrowser}</h2>
+            <ul class="media-list">
+            ${data.mediaData ? data.mediaData.map(item => html`
+              <li>
+                <retro-card
+                nosource
+                accent-color="${this.accentColorFromType(item.type)}"
+                title="${item.name}"
+                tags="${item.locType},${item.type}">
+                <div class="body">
+                ${item.type == 'image' ? html`<img src="${item.source}" />` : ``}
+                ${item.type == 'video' && item.source.includes('videoseries') ? html`<iframe src="${item.source}"></iframe>` : ``}
+                ${item.type == 'video' && !item.source.includes('videoseries') ? html`<video-player source="${item.source}"></video-player>` : ``}
+                ${item.type == 'audio' ? html`<video-player source="${item.source}"></video-player>` : ``}
+                ${item.type == 'document' ? html`<div><a href="${item.source}" target="_blank">${this.t.openInNewTab}</a></div>` : ``}
+                  <div>${this.renderItemLinkById(item.itemId)}</div>
+                  </div>
+                </retro-card>
+              </li>
+            `) : ``}
+            </ul>
+          </div>
+          `}
+        ` : ``}
+      </a11y-tab>
     </a11y-tabs>
     `;
   }
-
+  accentColorFromType(type) {
+    switch(type) {
+      case 'video':
+        return 'red';
+      case 'audio':
+        return 'orange';
+      case 'image':
+        return 'blue';
+      case 'document':
+        return 'green';
+      default:
+        return 'grey';
+    }
+  }
   renderItemLinkById(itemId) {
     const item = toJS(store.findItem(itemId));
     return html`<a href="${item.slug}" @click="${this.closeModal}">${item.title}</a>`;
@@ -203,6 +409,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      pageToProvideInsightsAbout: "Page to provide insights about",
       noLinksInSelectedPages: "No links in selected pages",
       recentUpdates: "Recent updates",
       created: "Created",
@@ -215,6 +422,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       externalLinks: "External links",
       pages: "Pages",
       videos: "videos",
+      openInNewTab: "Open in new tab",
+      links: "Links",
+      images: "Images",
+      dataTables: "Data tables",
       ofReading: "of reading",
       gradeReadingLevel: "grade reading level",
       words: "Words",
@@ -276,7 +487,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         value: el.id,
       });
     });
-    return html`<select id="selector">
+    return html`<label style="font-weight:bold;" for="selector">${this.t.pageToProvideInsightsAbout}</label>:<select id="selector">
       ${
         items.map(item => html`
         <option .value="${item.value}" ?selected="${toJS(store.activeId) == item.value}">${item.text}</option>

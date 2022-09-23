@@ -27,6 +27,9 @@
   "__cardTags": {
     "type": "Array"
   },
+  "nosource": {
+    "type": "Boolean"
+  },
   "__source": {
     "type": "String"
   }

@@ -1,10 +1,22 @@
-<a tabindex="-1" class="link ${this.color}" href="${this.url}" @click="${this._clickCard}">
-    <img class="img" loading="lazy" src="${this.__source}" alt="">
-    <span class="title">${this.title}</span>
-    <span class="name">${this.subtitle}</span>
-    <span class="description"><slot></slot></span>
-    <hr/>
-    <div class="card-tags">
-        ${this.__cardTags.map(tag => html`<span class="project-tag">${tag.trim()}</span>`)}
-    </div>
+${!this.nosource ? html`
+  <a tabindex="-1" class="link ${this.color}" href="${this.url}" @click="${this._clickCard}">
+    ${this.__source ? html`<img class="img" loading="lazy" src="${this.__source}" alt="" />`:``}
+    <div class="title" part="title"><slot name="title"></slot>${this.title}</slot></div>
+    <div class="subtitle" part="subtitle"><slot name="subtitle">${this.subtitle}</slot></div>
+    <div class="description" part="description"><slot></slot></div>
+    ${this.__cardTags ? html`<hr/>
+      <div class="card-tags" part="card-tags">
+          ${this.__cardTags.map(tag => html`<span class="project-tag" part="project-tag">${tag.trim()}</span>`)}
+      </div>`:``}
 </a>
+` : html`
+<div class="link ${this.color}">
+  ${this.__source ? html`<img class="img" loading="lazy" src="${this.__source}" alt="" />`:``}
+  <div class="title" part="title"><slot name="title"></slot>${this.title}</slot></div>
+  <div class="subtitle" part="subtitle"><slot name="subtitle">${this.subtitle}</slot></div>
+  <div class="description" part="description"><slot></slot></div>
+  ${this.__cardTags ? html`<hr/>
+  <div class="card-tags" part="card-tags">
+      ${this.__cardTags.map(tag => html`<span class="project-tag" part="project-tag">${tag.trim()}</span>`)}
+  </div>`:``}
+</div>`}

@@ -756,7 +756,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           ? "tab-active"
           : this.disabled || tab.disabled
           ? "tab-disabled"
-          : "tab"}"
+          : ""} tab tab-${tab.id}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}

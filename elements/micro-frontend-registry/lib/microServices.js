@@ -181,18 +181,42 @@ export function enableHAXcmsServices() {
       activeId: "id to query from",
     },
   });
-    // linkChecker
-    MicroFrontendRegistry.add({
-      endpoint: "/api/apps/haxcms/linkChecker",
-      name: "@haxcms/linkChecker",
-      title: "Check site links",
-      description: "Returns links found and status codes based on the tree in question",
-      params: {
-        site: "location of the HAXcms site OR site.json data",
-        type: "site for site.json or link for remote loading",
-        activeId: "id to query from",
-      },
-    });
+  // contentBrowser
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/contentBrowser",
+    name: "@haxcms/contentBrowser",
+    title: "Content browser",
+    description: "Returns details about content relative to an activeID",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      activeId: "id to query from",
+    },
+  });
+  // mediaBrowser
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/mediaBrowser",
+    name: "@haxcms/mediaBrowser",
+    title: "Media browser",
+    description: "Returns details about media relative to an activeID",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      activeId: "id to query from",
+    },
+  });
+  // linkChecker
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/linkChecker",
+    name: "@haxcms/linkChecker",
+    title: "Check site links",
+    description: "Returns details about links relative to an activeID",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      activeId: "id to query from",
+    },
+  });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",

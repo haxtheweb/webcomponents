@@ -46,6 +46,12 @@
   padding: 2rem;
   box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
   transition: padding 0.4s ease-in-out 0s,border 0.4s ease-in-out 0s,box-shadow 0.2s ease-in-out 0s;
+  text-align: center;
+  color: var(--retro-card-dark-color);
+  text-decoration: none;
+  line-height: inherit;
+  cursor: pointer;
+  font-family: "Roboto Mono", Consolas, Monospace;
 }
 
 .img {
@@ -107,13 +113,4 @@ hr {
   border-left: 0;
   margin: 1.25rem auto;
   clear: both;
-}
-
-a {
-  text-align: center;
-  color: var(--retro-card-dark-color);
-  text-decoration: none;
-  line-height: inherit;
-  cursor: pointer;
-  font-family: "Roboto Mono", Consolas, Monospace;
 }

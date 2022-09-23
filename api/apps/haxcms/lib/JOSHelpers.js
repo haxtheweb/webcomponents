@@ -1,6 +1,9 @@
 import { JSONOutlineSchema } from "./JSONOutlineSchema.js";
-import { parse, valid } from 'node-html-parser';
+import { parse } from 'node-html-parser';
 import fetch from "node-fetch";
+
+// average adult reading pace
+const WORDSPERMIN = 225;
 // this either pulls the site from the location directly or from the data passed in
 // so that other things can work with the outline as loaded
 export async function resolveSiteData(siteLocation, siteData = null) {
@@ -71,6 +74,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   }
   // parse dom of the content of the site relative to ancestor
   const html = await siteHTMLContent(siteLocation, siteData, ancestor);
+  console.log(html);
   const doc = parse(`<div id="wrapper">${html}</div>`);
   var data = {};
   if (dataInclude === null) {
@@ -82,7 +86,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
         data[inc] = items.length;
       break;
       case 'audio':
-        data[inc] = doc.querySelectorAll('audio[src],audio source[src],audio-player').length;
+        data[inc] = doc.querySelectorAll('audio,audio-player').length;
       break;
       case 'selfChecks':
         data[inc] = doc.querySelectorAll('iframe.entity_iframe,self-check,multiple-choice').length;
@@ -102,111 +106,111 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       case 'specialTags':
         data[inc] = doc.querySelectorAll('*:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)').length;
       break;
+      case 'links':
+        data[inc] = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]').length;
+      break;
+      // inner Text with some basic math applied
+      case 'readTime':
+        // guestimate readTime, assuming words per minute for average adult reading time
+        const words = doc.querySelector("#wrapper").innerText.trim().split(/\s+/).length;
+        data[inc] = Math.ceil(words / WORDSPERMIN);
+      break;
+      // get videos, and then attempt to query APIs to obtain total video duration across providers
       case 'video':
         const videos = doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="youtube-nocookie.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player');
         data[inc] = videos.length;
         data.videoLength = 0;
-          // walk all the video sources and build 1 request for google API about duration data
-          // as they allow batches of 50
-          var ytVids = [];
-          var videoLength = 0;
-          for (let el of videos) {
-            let urlData = {};
-            // ensure we have valid source/src data to draw from
-            if (el.getAttribute('source')) {
-              if (el.getAttribute('source').includes("https://")) {
-                urlData = new URL(el.getAttribute('source'));
-              }
-              else {
-                let tmp = new URL(siteLocation);
-                urlData = new URL(tmp.origin + el.getAttribute('source'));
-              }
+        // walk all the video sources and build 1 request for google API about duration data
+        // as they allow batches of 50
+        var ytVids = [];
+        var videoLength = 0;
+        for (let el of videos) {
+          let urlData = {};
+          // ensure we have valid source/src data to draw from
+          if (el.getAttribute('source')) {
+            if (el.getAttribute('source').includes("https://")) {
+              urlData = new URL(el.getAttribute('source'));
             }
-            else if (el.getAttribute('src')) {
-              if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
-                urlData = new URL(el.getAttribute('src'));
-              }
-              else {
-                let tmp = new URL(siteLocation);
-                urlData = new URL(tmp.origin + el.getAttribute('src'));
-              }
+            else {
+              let tmp = new URL(siteLocation);
+              urlData = new URL(tmp.origin + el.getAttribute('source'));
             }
-            if (urlData.origin) {
-              // support the 3 variations of youtube link
-              switch (urlData.origin) {
-                case 'https://www.youtube-nocookie.com':
-                case 'https://www.youtube.com':
-                  if (urlData?.searchParams?.v) {
-                    ytVids.push(urlData.searchParams.v);
-                  }
-                  else if (urlData.pathname.startsWith('/embed/')) {
-                    ytVids.push(urlData.pathname.replace('/embed/',''));
-                  }
-                break;
-                case 'https://youtu.be':
-                  ytVids.push(urlData.pathname.replace('/',''));
-                break;
-                case 'https://vimeo.com':
-                case 'https://player.vimeo.com':
-                  // no batching in vimeo oembed API
-                  let vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
-                  if (vimData?.duration) {
-                    videoLength += parseInt(vimData.duration);
-                  }
-                break;
-                case 'https://media.aanda.psu.edu':
-                  // ensure we have an id param
-                  if (el.getAttribute('id') && el.getAttribute('id').includes('node-')) {
-                    let nid = el.getAttribute('id').replace('node-', '');
-                    // elms media server embed code / auto replacement has
-                    // the NID included in the id that goes in the page
-                    if (nid) {
-                      console.log(`request: https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`);
-                      let elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then((d) => d.ok ? d.json(): {});
-                      console.log(elmsData);
-                      // resolve video vs audio
-                      if (elmsData?.field_video?.metadata?.duration) {
-                        videoLength += parseInt(durationFormatHMSConvert(elmsData.field_video.metadata.duration));
-                      }
-                      else if (elmsData?.field_audio?.metadata?.duration) {
-                        // @todo lump audioLength together?
-                        videoLength += parseInt(durationFormatHMSConvert(elmsData.field_audio.metadata.duration));
-                      }
+          }
+          else if (el.getAttribute('src')) {
+            if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
+              urlData = new URL(el.getAttribute('src'));
+            }
+            else {
+              let tmp = new URL(siteLocation);
+              urlData = new URL(tmp.origin + el.getAttribute('src'));
+            }
+          }
+          if (urlData.origin) {
+            // support the 3 variations of youtube link
+            switch (urlData.origin) {
+              case 'https://www.youtube-nocookie.com':
+              case 'https://www.youtube.com':
+                if (urlData?.searchParams?.v) {
+                  ytVids.push(urlData.searchParams.v);
+                }
+                else if (urlData.pathname.startsWith('/embed/')) {
+                  ytVids.push(urlData.pathname.replace('/embed/',''));
+                }
+              break;
+              case 'https://youtu.be':
+                ytVids.push(urlData.pathname.replace('/',''));
+              break;
+              case 'https://vimeo.com':
+              case 'https://player.vimeo.com':
+                // no batching in vimeo oembed API
+                let vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
+                if (vimData?.duration) {
+                  videoLength += parseInt(vimData.duration);
+                }
+              break;
+              case 'https://media.aanda.psu.edu':
+                // ensure we have an id param
+                if (el.getAttribute('id') && el.getAttribute('id').includes('node-')) {
+                  let nid = el.getAttribute('id').replace('node-', '');
+                  // elms media server embed code / auto replacement has
+                  // the NID included in the id that goes in the page
+                  if (nid) {
+                    let elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then((d) => d.ok ? d.json(): {});
+                    // resolve video vs audio
+                    if (elmsData?.field_video?.metadata?.duration) {
+                      videoLength += parseInt(durationFormatHMSConvert(elmsData.field_video.metadata.duration));
+                    }
+                    else if (elmsData?.field_audio?.metadata?.duration) {
+                      // @todo lump audioLength together?
+                      videoLength += parseInt(durationFormatHMSConvert(elmsData.field_audio.metadata.duration));
                     }
                   }
-                break;
-                default:
-                  // @todo if a file try to read metadata off it
-                  // if elsewhere, ignore.
-                break;
-              }
+                }
+              break;
+              default:
+                // @todo if a file try to read metadata off it
+                // if elsewhere, ignore.
+              break;
             }
           }
-          // make sure we found videos
-          if (ytVids.length > 0) {
-            let tmp = [];
-            for (let i=0; i< ytVids.length; i++) {
-              if (tmp.length === 50) {
-                videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
-                tmp = [];
-              }
-              tmp.push(ytVids[i]);
-            }
-            if (tmp.length > 0) {
+        }
+        // make sure we found videos
+        if (ytVids.length > 0) {
+          let tmp = [];
+          for (let i=0; i< ytVids.length; i++) {
+            if (tmp.length === 50) {
               videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
+              tmp = [];
             }
+            tmp.push(ytVids[i]);
           }
-          data.videoLength = videoLength;
+          if (tmp.length > 0) {
+            videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
+          }
+        }
+        data.videoLength = videoLength;
       break;
-      case 'readTime':
-        // guestimate readTime, assuming 225 words per minute for average adult reading time
-        const words = doc.querySelector("#wrapper").innerText.trim().split(/\s+/).length;
-        data[inc] = Math.ceil(words / 225);
-      break;
-      case 'links':
-        data[inc] = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]').length;
-      break;
-      // varient on links, not included by default as it does more dom parsing then needed by overview stats
+      // variant on links, not included by default as it does more dom parsing then needed by overview stats
       case 'linkData':
         var extLinks = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]');
         data.linkData = {};
@@ -228,9 +232,153 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
           }
         }
       break;
+      // find all content and return details about what's included on specific pages
+      case 'contentData':
+        data.contentData = [];
+        let contentItems = doc.querySelectorAll('div[data-jos-item-id]');
+        console.log(contentItems);
+        for (let el of contentItems) {
+          let itemData = site.getItemById(el.getAttribute('data-jos-item-id'));
+          if (itemData.id && itemData.metadata) {
+            let itemSel = `div[data-jos-item-id="${itemData.id}"]`;
+            const words = doc.querySelector(itemSel).innerText.trim().split(/\s+/).length;
+            // dig into things JUST on this page
+            data.contentData.push({
+              id: itemData.id,
+              created: new Date(itemData.metadata.created * 1000).toISOString(),
+              updated: new Date(itemData.metadata.updated * 1000).toISOString(),
+              title: itemData.title,
+              slug: itemData.slug,
+              location: itemData.location,
+              videos: doc.querySelectorAll(`${itemSel} video-player,${itemSel} iframe[src*="youtube.com"],${itemSel} iframe[src*="youtube-nocookie.com"],${itemSel} iframe[src*="vimeo.com"],${itemSel} video,${itemSel} a11y-media-player`).length,
+              audio: doc.querySelectorAll(`${itemSel} audio,${itemSel} audio-player`).length,
+              selfChecks: doc.querySelectorAll(`${itemSel} iframe.entity_iframe,${itemSel} self-check,${itemSel} multiple-choice`).length,
+              objectives: doc.querySelectorAll(`${itemSel} instruction-card[type="objectives"] li`).length,
+              images: doc.querySelectorAll(`${itemSel} media-image,${itemSel} img,${itemSel} simple-img`).length,
+              dataTables: doc.querySelectorAll(`${itemSel} table`).length,
+              specialTags: doc.querySelectorAll(`${itemSel} *:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)`).length,
+              links: doc.querySelectorAll(`${itemSel} a[href^="http://"],${itemSel} a[href^="https://"]`).length,
+              readTime: Math.ceil(words / WORDSPERMIN)
+            });  
+          }
+        }
+      break;
+      // find all "media" and return details about where it all lives
+      case 'mediaData':
+        data.mediaData = [];
+        let locType;
+        const allMedia = doc.querySelectorAll('audio[src],audio source[src],audio-player,video[src],video source[src],video-player,a11y-media-player,embed,object,iframe[src],media-image,img,simple-img');
+        for (let el of allMedia) {
+          // obtain which page this shows up on
+          let parent = el.parentNode;
+          while (parent && !parent.getAttribute('data-jos-item-id')) {
+            parent = parent.parentNode;
+          }
+          let urlData = {};
+          locType = 'external';
+          let name = 'unknown';
+          let source = 'unknown';
+          // ensure we have valid source/src data to draw from
+          if (el.getAttribute('source')) {
+            if (el.getAttribute('source').includes("https://")) {
+              urlData = new URL(el.getAttribute('source'));
+              source = urlData.toString();
+              name = urlData.pathname.split('/').pop();
+            }
+            else {
+              urlData = resolveLocalFile(siteLocation, el.getAttribute('source'));
+              locType = 'internal';
+              source = urlData.toString();
+              name = urlData.pathname.split('/').pop();
+            }
+          }
+          else if (el.getAttribute('src')) {
+            if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
+              urlData = new URL(el.getAttribute('src'));
+              source = urlData.toString();
+              name = urlData.pathname.split('/').pop();
+            }
+            else {
+              urlData = resolveLocalFile(siteLocation, el.getAttribute('src'));
+              locType = 'internal';
+              source = urlData.toString();
+              name = urlData.pathname.split('/').pop();
+            }
+          }
+          data.mediaData.push({
+            source: source,
+            name: name,
+            locType: locType,
+            type: typeFromElement(el),
+            itemId: parent.getAttribute('data-jos-item-id'),
+          });
+        }
+        // find and mix in the item uploaded file data if it exists
+        let allParents = doc.querySelectorAll('div[data-jos-item-id]');
+        for (let el of allParents) {
+          locType = 'internal';
+          let itemId = el.getAttribute('data-jos-item-id');
+          let parentItem = site.getItemById(itemId);
+          // include this file array data if it exists
+          if (parentItem?.metadata?.files) {
+            for (let file of parentItem.metadata.files) {
+              let urlData = resolveLocalFile(siteLocation, file.url);
+              data.mediaData.push({
+                source: urlData.toString(),
+                name: file.name,
+                locType: locType,
+                type: mimeTypeToMediaType(file.type),
+                itemId: itemId,
+              });
+            }
+          }
+        }
+      break;
     }
   }
   return data;
+}
+
+// resolve differences in local file referencing
+export function resolveLocalFile(siteLocation, path) {
+  let tmp = new URL(siteLocation);
+  let urlData;
+  if (path[0] === '/') {
+    urlData = new URL(tmp.origin + path);
+  }
+  else {
+    urlData = new URL(tmp.origin + tmp.pathname + '/' + path);
+  }
+  return urlData;
+}
+
+// simple type for tagging purposes
+export function typeFromElement(el) {
+  switch (el.tagName.toLowerCase()) {
+    case 'audio':
+    case 'audio-player':
+      return 'audio';
+    break;
+    case'video':
+    case'video-player':
+    case'a11y-media-player':
+      return 'video';
+    break;
+    case 'embed':
+    case 'object':
+    case 'iframe':
+      if (el.getAttribute('src').includes('youtube.com') || el.getAttribute('src').includes('youtube-nocookie.com') || el.getAttribute('src').includes('vimeo.com')) {
+        return 'video';
+      }
+      return 'other';
+    break;
+    case 'img':
+    case 'simple-img':
+    case 'media-image':
+      return 'image';
+    break;
+  }
+  return 'other';
 }
 
 // get all of the HTML for the site relative to an ancestor starting point
@@ -331,4 +479,26 @@ export function durationFormatHMSConvert(input) {
     seconds+=t;
   }
   return seconds;
+}
+
+// simple mimeType to media type
+export function mimeTypeToMediaType(mime) {
+  let parts = mime.split("/");
+  switch (parts[0]) {
+    case "audio":
+      return "audio";
+      break;
+    case "image":
+      return "image";
+      break;
+    case "video":
+      return "video";
+      break;
+    case "text":
+      return "document";
+      break;
+    case "application":
+      return "document";
+      break;
+  }
 }
