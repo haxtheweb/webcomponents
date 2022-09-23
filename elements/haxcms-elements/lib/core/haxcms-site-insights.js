@@ -270,7 +270,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             <li><strong>${this.getReadingTime(data.readTime)}</strong> ${this.t.ofReading}</li>
             ${data.readability ? html`
             <li><strong>${data.readability.gradeLevel}</strong> ${this.t.gradeReadingLevel}</li>
-            <li><strong>${data.readability.lexiconCount}</strong> ${this.t.words} (${this.t.difficultWords} ${this.t.longWords})</li>
+            <li><strong>${data.readability.lexiconCount}</strong> ${this.t.words} (${data.readability.difficultWords} ${this.t.longWords})</li>
             ` : ``}
             <li>${this.t.created}:
               <relative-time datetime="${data.created}">
