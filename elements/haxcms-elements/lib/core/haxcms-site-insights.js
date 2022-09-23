@@ -4,7 +4,6 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -33,10 +32,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     ];
   }
 
-  firstUpdated(changedProperties) {
-    super.firstUpdated(changedProperties);
-    this.refreshData();
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'activeTab' && this[propName]) {
+        this.refreshData();
+      }
+    })
   }
+
   _insightResponse(data) {
     this.loading = false;
     this.data = data.data;
@@ -47,7 +51,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       base = document.querySelector("base").href;
     }
     const site = toJS(store.manifest);
-    const ancestor = toJS(store.ancestorItem);
     const params = {
       type: "site",
       site: {
@@ -60,17 +63,32 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         metadata: site.metadata,
         items: site.items,
       },
-      activeId: toJS(store.activeId),
-      ancestorId: ancestor ? ancestor.id : null,
+      activeId: this.shadowRoot.querySelector('#selector').value,
       link: base,
     };
     this.loading = true;
-    MicroFrontendRegistry.call(
-      "@haxcms/insights",
-      params,
-      this._insightResponse.bind(this),
-      this
-    );
+    switch (this.activeTab) {
+      case 'insights':
+        MicroFrontendRegistry.call(
+          "@haxcms/insights",
+          params,
+          this._insightResponse.bind(this),
+          this
+        );
+      break;
+      case 'linkchecker':
+        MicroFrontendRegistry.call(
+          "@haxcms/linkChecker",
+          params,
+          this._insightResponse.bind(this),
+          this
+        );
+      break;
+      // bad selection
+      default: 
+        this.loading = false;
+      break;
+    }
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -103,41 +121,43 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   closeModal() {
     window.dispatchEvent(new CustomEvent('simple-modal-hide'));
   }
+  activeChanged(e) {
+    this.activeTab = e.detail.activeTab;
+  }
   // render function
   render() {
-    const site = this.data.site;
-    const branch = this.data.branch;
-    const page = this.data.page;
+    const data = this.data;
     return html`
-    <simple-icon-button-lite @click="${this.refreshData}" icon="refresh" ?disabled="${this.loading}">${this.t.refresh}</simple-icon-button-lite>
-    <input type="checkbox" name="validateLinks" checked/><label>Validate Links</label>
-    <div>Note: this is an agressive operation that will take longer to process.</div>
-    <a11y-tabs id="tabs" full-width>
-      <a11y-tab id="course" icon="communication:import-contacts" label="${this.t.course}">
+    ${this.pageSelector()}
+    <button @click="${this.refreshData}" icon="refresh" ?disabled="${this.loading}">${this.t.updateInsights}</button>
+    <a11y-tabs id="tabs" full-width @a11y-tabs-active-changed="${this.activeChanged}">
+      <a11y-tab id="insights" icon="communication:import-contacts" label="${this.t.insights}">
+      ${this.activeTab === 'insights' ? html`
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
       ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
         <div>
-          <h2>Course insights</h2>
+          <h2>${data.title}</h2>
           <ul>
-            <li><strong>${site.objectives}</strong> ${site.objectives == 0 ? html`objectives, why not add some?` : html`objectives in this course`}</li>
-            <li><strong>${site.specialTags}</strong> special elements</li>
-            <li><strong>${site.headings}</strong> headings</li>
-            <li><strong>${site.links}</strong> links</li>
-            ${site.video == 0 ? `` : html`<li><strong>${site.video}</strong> videos ${site.videoLength != 0 ? html`(<strong>${toHHMMSS(site.videoLength)}</strong>)` : ``}</li>`}
-            <li><strong>${site.pages}</strong> Pages</li>
-            <li><strong>${this.getReadingTime(site.readTime)}</strong> of reading</li>
-            <li><strong>${site.readability.gradeLevel}</strong> grade reading level</li>
-            <li><strong>${site.readability.lexiconCount}</strong> words</li>
-            <li><strong>${site.readability.difficultWords}</strong> difficult words</li>
-            <li>Created:
-              <relative-time datetime="${site.created}">
+            <li><strong>${data.objectives}</strong> ${this.t.learningObjectives}</li>
+            <li><strong>${data.specialTags}</strong> ${this.t.specialElements}</li>
+            <li><strong>${data.headings}</strong> ${this.t.headings}</li>
+            <li><strong>${data.links}</strong> ${this.t.externalLinks}</li>
+            ${data.video == 0 ? `` : html`<li><strong>${data.video}</strong> ${this.t.videos} ${data.videoLength != 0 ? html`(<strong>${toHHMMSS(data.videoLength)}</strong>)` : ``}</li>`}
+            <li><strong>${data.pages}</strong> ${this.t.pages}</li>
+            <li><strong>${this.getReadingTime(data.readTime)}</strong> ${this.t.ofReading}</li>
+            ${data.readability ? html`
+            <li><strong>${data.readability.gradeLevel}</strong> ${this.t.gradeReadingLevel}</li>
+            <li><strong>${data.readability.lexiconCount}</strong> ${this.t.words} (${this.t.difficultWords} ${this.t.longWords})</li>
+            ` : ``}
+            <li>${this.t.created}:
+              <relative-time datetime="${data.created}">
               </relative-time></li>
-            <li>Last updated:
-              <relative-time datetime="${site.updated}">
+            <li>${this.t.lastUpdated}:
+              <relative-time datetime="${data.updated}">
               </relative-time></li>
-            <li>Recent updates:
+            <li>${this.t.recentUpdates}:
               <ol>
-                ${site.updatedItems.map((item) => html`
+                ${data.updatedItems.map((item) => html`
                 <li>
                   <a @click="${this.closeModal}" href="${item.slug}">${item.title} <relative-time datetime="${item.metadata.updated}"></relative-time></a>
                 </li>`)}
@@ -146,63 +166,36 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           </ul>
         </div>
       `}
+      ` : ``}
       </a11y-tab>
-      <a11y-tab id="lesson" icon="editor:format-list-bulleted" label="${this.t.lesson}">
+      <a11y-tab id="linkchecker" icon="editor:format-list-bulleted" label="${this.t.linkChecker}">
+      ${this.activeTab == 'linkchecker' ? html`
         <loading-indicator full ?loading="${this.loading}"></loading-indicator>
-        <div>
-        ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
-        <h2>Lesson insights</h2>
-          <ul>
-            ${branch.video == 0 ? `` : html`<li><strong>${branch.video}</strong> videos ${branch.videoLength != 0 ? html`(<strong>${toHHMMSS(branch.videoLength)}</strong>)` : ``}</li>`}
-            <li><strong>${branch.objectives}</strong> ${branch.objectives == 0 ? html`objectives, why not add some?` : html`objectives in this course`}</li>
-            <li><strong>${branch.specialTags}</strong> special elements</li>
-            <li><strong>${branch.headings}</strong> headings</li>
-            <li><strong>${branch.links}</strong> links</li>
-                <li><strong>${branch.pages}</strong> Pages</li>
-                <li><strong>${this.getReadingTime(branch.readTime)}</strong> of reading</li>
-                <li><strong>${branch.readability.gradeLevel}</strong> grade reading level</li>
-                <li><strong>${branch.readability.lexiconCount}</strong> words</li>
-                <li><strong>${branch.readability.difficultWords}</strong> difficult words</li>
-            <li>Created:
-              <relative-time datetime="${branch.created}">
-              </relative-time>
-            </li>
-            <li>Last updated:
-              <relative-time datetime="${branch.updated}">
-              </relative-time>
-            </li>
-          </ul>
-          `}
-        </div>
-      </a11y-tab>
-      <a11y-tab id="page" icon="icons:subject" label="${this.t.page}">
-        <div>
-        <loading-indicator full ?loading="${this.loading}"></loading-indicator>
-        ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
-            <h2>Page insights</h2>
+          ${this.loading ? html`<p>${this.t.loading}...</p>`: html`
+          <div>
+            <h2>${this.t.linkReport}</h2>
             <ul>
-              ${page.objectives == 0 ? `` : html`<li><strong>${page.objectives}</strong> objectives</li>`}
-              ${page.video == 0 ? `` : html`<li><strong>${page.video}</strong> videos ${page.videoLength != 0 ? html`(<strong>${toHHMMSS(page.videoLength)}</strong>)` : ``}</li>`}
-              <li><strong>${page.specialTags}</strong> special elements</li>
-              <li><strong>${page.headings}</strong> headings</li>
-              <li><strong>${page.links}</strong> links</li>
-              <li><strong>${page.pages}</strong> Pages</li>
-              <li><strong>${this.getReadingTime(page.readTime)}</strong> of reading</li>
-              <li><strong>${page.readability.gradeLevel}</strong> grade reading level</li>
-              <li><strong>${page.readability.lexiconCount}</strong> words</li>
-              <li><strong>${page.readability.difficultWords}</strong> difficult words</li>
-              <li>Created:
-                <relative-time datetime="${page.created}">
-                </relative-time></li>
-              <li>Last updated:
-                <relative-time datetime="${page.updated}">
-                </relative-time></li>
+            ${
+              data.linkData ? Object.keys(data.linkData).map((key) => html`
+                <li>
+                ${!data.badLinks[key] ? html`<simple-icon icon="check" accent-color="green"></simple-icon>` : html`<simple-icon icon="clear" accent-color="red" title="${data.badLinks[key].status}"></simple-icon>`}
+                ${!data.badLinks[key] ? html`<a href="${key}" target="_blank" rel="noopener nofollow noreferrer">${key}</a>` : html`${key}`} (${data.linkData[key].map(linkUsage => html`
+                <strong>${linkUsage.linkTitle}</strong> ${this.t.onPage} ${this.renderItemLinkById(linkUsage.itemId)}
+                `)})  
+              </li>
+              `) : html`${this.t.noLinksInSelectedPages}`}
             </ul>
-          `}
           </div>
-        </a11y-tab>
-      </a11y-tabs>
+        `}
+      ` : ``}
+      </a11y-tab>
+    </a11y-tabs>
     `;
+  }
+
+  renderItemLinkById(itemId) {
+    const item = toJS(store.findItem(itemId));
+    return html`<a href="${item.slug}" @click="${this.closeModal}">${item.title}</a>`;
   }
 
   constructor() {
@@ -210,38 +203,85 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      refresh: "Refresh",
+      noLinksInSelectedPages: "No links in selected pages",
+      recentUpdates: "Recent updates",
+      created: "Created",
+      lastUpdated: "Last updated",
+      updateInsights: "Update insights",
+      onPage: "on page",
+      learningObjectives: "learning objectives",
+      specialElements: "Special elements",
+      headings: "Headings",
+      externalLinks: "External links",
+      pages: "Pages",
+      videos: "videos",
+      ofReading: "of reading",
+      gradeReadingLevel: "grade reading level",
+      words: "Words",
+      longWords: "long words",
+      linkReport: "Link report",
       loading: "Loading",
-      course: "Course",
-      lesson: "Lesson",
-      page: "Page",
+      fullSite: "Full site",
+      insights: "Insights",
+      linkChecker: "Link checker",
+      mediaBrowser: "Media browser",
+      contentBrowser: "Content browser",
       hour: "hour",
       hours: "hours",
       minute: "minute",
       minutes: "minutes"
     };
     this.data = {
-      site: {
-        readability: {},
-        updatedItems: []
-      },
-      branch: {
-        readability: {}
-      },
-      page: {
-        readability: {}
-      }
+      readability: {},
+      updatedItems: []
     };
+    this.activeTab = 'insights';
     this.loading = false;
   }
   static get properties() {
     return {
       ...super.properties,
       data: {
-        type: Object
+        type: Object,
+      },
+      activeTab: {
+        type: String,
       },
       loading: { type: Boolean, reflect: true},
     }
+  }
+  pageSelector() {
+    const itemManifest = store.getManifestItems(true);
+    // default to null parent as the whole site
+    var items = [
+      {
+        text: `-- ${this.t.fullSite} --`,
+        value: null,
+      },
+    ];
+    itemManifest.forEach((el) => {
+      // calculate -- depth so it looks like a tree
+      let itemBuilder = el;
+      // walk back through parent tree
+      let distance = "- ";
+      while (itemBuilder && itemBuilder.parent != null) {
+        itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+        // double check structure is sound
+        if (itemBuilder) {
+          distance = "--" + distance;
+        }
+      }
+      items.push({
+        text: distance + el.title,
+        value: el.id,
+      });
+    });
+    return html`<select id="selector">
+      ${
+        items.map(item => html`
+        <option .value="${item.value}" ?selected="${toJS(store.activeId) == item.value}">${item.text}</option>
+      `)}
+      </select>`;
   }
 }
 window.customElements.define(

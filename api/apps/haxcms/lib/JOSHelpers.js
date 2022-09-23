@@ -1,5 +1,5 @@
 import { JSONOutlineSchema } from "./JSONOutlineSchema.js";
-import { parse } from 'node-html-parser';
+import { parse, valid } from 'node-html-parser';
 import fetch from "node-fetch";
 // this either pulls the site from the location directly or from the data passed in
 // so that other things can work with the outline as loaded
@@ -45,7 +45,7 @@ export async function resolveSiteData(siteLocation, siteData = null) {
 }
 
 // generate stats given a location within the outline
-export async function courseStatsFromOutline(siteLocation, siteData = null, ancestor = null) {
+export async function courseStatsFromOutline(siteLocation, siteData = null, ancestor = null, dataInclude = null) {
   // get youtube data
   const site = await resolveSiteData(siteLocation, siteData);
   // support slicing the structure to only the branch in question
@@ -72,131 +72,164 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   // parse dom of the content of the site relative to ancestor
   const html = await siteHTMLContent(siteLocation, siteData, ancestor);
   const doc = parse(`<div id="wrapper">${html}</div>`);
-  // guestimate readTime, assuming 225 words per minute for average adult reading time
-  const words = doc.querySelector("#wrapper").innerText.trim().split(/\s+/).length;
-  const readTime = Math.ceil(words / 225);
-  const extLinks = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]');
-  const data = {
-    pages: items.length,
-    video: doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player').length,
-    audio: doc.querySelectorAll('audio[src],audio source[src],audio-player').length,
-    selfChecks: doc.querySelectorAll('iframe.entity_iframe,self-check,multiple-choice').length,
-    objectives: doc.querySelectorAll('instruction-card[type="objectives"] li').length,
-    images: doc.querySelectorAll('media-image,img,simple-img').length,
-    headings: doc.querySelectorAll('h1,h2,h3,h4,h5,h6,relative-heading').length,
-    readTime: readTime,
-    dataTables: doc.querySelectorAll('table').length,
-    links: extLinks.length,
-    externalLinkLocations: {},
-    specialTags: doc.querySelectorAll('*:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)').length,
-    videoLength: 0,
-  };
-  for (let el of extLinks) {
-    // obtain which page this link shows up on
-    let parent = el.parentNode;
-    while (parent && !parent.getAttribute('data-jos-item-id')) {
-      parent = parent.parentNode;      
-    }
-    if (data.externalLinkLocations[el.getAttribute('href')]) {
-      data.externalLinkLocations[el.getAttribute('href')].push(parent.getAttribute('data-jos-item-id'));
-    }
-    else {
-      data.externalLinkLocations[el.getAttribute('href')] = [parent.getAttribute('data-jos-item-id')];
-
-    }
+  var data = {};
+  if (dataInclude === null) {
+    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'images', 'headings', 'dataTables','specialTags','video','readTime','links'];
   }
-  // walk all the video sources and build 1 request for google API about duration data
-  // as they allow batches of 50
-  var ytVids = [];
-  var videoLength = 0;
-  const docVids = doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player');
-  for (let el of docVids) {
-    let urlData = {};
-    // ensure we have valid source/src data to draw from
-    if (el.getAttribute('source')) {
-      if (el.getAttribute('source').includes("https://")) {
-        urlData = new URL(el.getAttribute('source'));
-      }
-      else {
-        let tmp = new URL(siteLocation);
-        urlData = new URL(tmp.origin + el.getAttribute('source'));
-      }
-    }
-    else if (el.getAttribute('src')) {
-      if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
-        urlData = new URL(el.getAttribute('src'));
-      }
-      else {
-        let tmp = new URL(siteLocation);
-        urlData = new URL(tmp.origin + el.getAttribute('src'));
-      }
-    }
-    if (urlData.origin) {
-      // support the 3 variations of youtube link
-      switch (urlData.origin) {
-        case 'https://www.youtube-nocookie.com':
-        case 'https://www.youtube.com':
-          if (urlData?.searchParams?.v) {
-            ytVids.push(urlData.searchParams.v);
-          }
-          else if (urlData.pathname.startsWith('/embed/')) {
-            ytVids.push(urlData.pathname.replace('/embed/',''));
-          }
-        break;
-        case 'https://youtu.be':
-          ytVids.push(urlData.pathname.replace('/',''));
-        break;
-        case 'https://vimeo.com':
-        case 'https://player.vimeo.com':
-          // no batching in vimeo oembed API
-          let vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
-          if (vimData?.duration) {
-            videoLength += parseInt(vimData.duration);
-          }
-        break;
-        case 'https://media.aanda.psu.edu':
-          // ensure we have an id param
-          if (el.getAttribute('id') && el.getAttribute('id').includes('node-')) {
-            let nid = el.getAttribute('id').replace('node-', '');
-            // elms media server embed code / auto replacement has
-            // the NID included in the id that goes in the page
-            if (nid) {
-              console.log(`request: https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`);
-              let elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then((d) => d.ok ? d.json(): {});
-              console.log(elmsData);
-              // resolve video vs audio
-              if (elmsData?.field_video?.metadata?.duration) {
-                videoLength += parseInt(durationFormatHMSConvert(elmsData.field_video.metadata.duration));
+  for (let inc of dataInclude) {
+    switch (inc) {
+      case 'pages':
+        data[inc] = items.length;
+      break;
+      case 'audio':
+        data[inc] = doc.querySelectorAll('audio[src],audio source[src],audio-player').length;
+      break;
+      case 'selfChecks':
+        data[inc] = doc.querySelectorAll('iframe.entity_iframe,self-check,multiple-choice').length;
+      break;
+      case 'objectives':
+        data[inc] = doc.querySelectorAll('instruction-card[type="objectives"] li').length;
+      break;
+      case 'images':
+        data[inc] = doc.querySelectorAll('media-image,img,simple-img').length;
+      break;
+      case 'headings':
+        data[inc] = doc.querySelectorAll('h1,h2,h3,h4,h5,h6,relative-heading').length;
+      break;
+      case 'dataTables':
+        data[inc] = doc.querySelectorAll('table').length;
+      break;
+      case 'specialTags':
+        data[inc] = doc.querySelectorAll('*:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)').length;
+      break;
+      case 'video':
+        const videos = doc.querySelectorAll('video-player,iframe[src*="youtube.com"],iframe[src*="youtube-nocookie.com"],iframe[src*="vimeo.com"],video[src],video source[src],a11y-media-player');
+        data[inc] = videos.length;
+        data.videoLength = 0;
+          // walk all the video sources and build 1 request for google API about duration data
+          // as they allow batches of 50
+          var ytVids = [];
+          var videoLength = 0;
+          for (let el of videos) {
+            let urlData = {};
+            // ensure we have valid source/src data to draw from
+            if (el.getAttribute('source')) {
+              if (el.getAttribute('source').includes("https://")) {
+                urlData = new URL(el.getAttribute('source'));
               }
-              else if (elmsData?.field_audio?.metadata?.duration) {
-                // @todo lump audioLength together?
-                videoLength += parseInt(durationFormatHMSConvert(elmsData.field_audio.metadata.duration));
+              else {
+                let tmp = new URL(siteLocation);
+                urlData = new URL(tmp.origin + el.getAttribute('source'));
+              }
+            }
+            else if (el.getAttribute('src')) {
+              if (el.getAttribute('src').includes("https://") || el.getAttribute('src').includes("http://")) {
+                urlData = new URL(el.getAttribute('src'));
+              }
+              else {
+                let tmp = new URL(siteLocation);
+                urlData = new URL(tmp.origin + el.getAttribute('src'));
+              }
+            }
+            if (urlData.origin) {
+              // support the 3 variations of youtube link
+              switch (urlData.origin) {
+                case 'https://www.youtube-nocookie.com':
+                case 'https://www.youtube.com':
+                  if (urlData?.searchParams?.v) {
+                    ytVids.push(urlData.searchParams.v);
+                  }
+                  else if (urlData.pathname.startsWith('/embed/')) {
+                    ytVids.push(urlData.pathname.replace('/embed/',''));
+                  }
+                break;
+                case 'https://youtu.be':
+                  ytVids.push(urlData.pathname.replace('/',''));
+                break;
+                case 'https://vimeo.com':
+                case 'https://player.vimeo.com':
+                  // no batching in vimeo oembed API
+                  let vimData = await fetch(`https://vimeo.com/api/oembed.json?url=${urlData.href}`).then((d) => d.ok ? d.json(): {});
+                  if (vimData?.duration) {
+                    videoLength += parseInt(vimData.duration);
+                  }
+                break;
+                case 'https://media.aanda.psu.edu':
+                  // ensure we have an id param
+                  if (el.getAttribute('id') && el.getAttribute('id').includes('node-')) {
+                    let nid = el.getAttribute('id').replace('node-', '');
+                    // elms media server embed code / auto replacement has
+                    // the NID included in the id that goes in the page
+                    if (nid) {
+                      console.log(`request: https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`);
+                      let elmsData = await fetch(`https://media.aanda.psu.edu/node/${nid}.json?deep-load-refs=file`, site.__fetchOptions).then((d) => d.ok ? d.json(): {});
+                      console.log(elmsData);
+                      // resolve video vs audio
+                      if (elmsData?.field_video?.metadata?.duration) {
+                        videoLength += parseInt(durationFormatHMSConvert(elmsData.field_video.metadata.duration));
+                      }
+                      else if (elmsData?.field_audio?.metadata?.duration) {
+                        // @todo lump audioLength together?
+                        videoLength += parseInt(durationFormatHMSConvert(elmsData.field_audio.metadata.duration));
+                      }
+                    }
+                  }
+                break;
+                default:
+                  // @todo if a file try to read metadata off it
+                  // if elsewhere, ignore.
+                break;
               }
             }
           }
-        break;
-        default:
-          // @todo if a file try to read metadata off it
-          // if elsewhere, ignore.
-        break;
-      }
+          // make sure we found videos
+          if (ytVids.length > 0) {
+            let tmp = [];
+            for (let i=0; i< ytVids.length; i++) {
+              if (tmp.length === 50) {
+                videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
+                tmp = [];
+              }
+              tmp.push(ytVids[i]);
+            }
+            if (tmp.length > 0) {
+              videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
+            }
+          }
+          data.videoLength = videoLength;
+      break;
+      case 'readTime':
+        // guestimate readTime, assuming 225 words per minute for average adult reading time
+        const words = doc.querySelector("#wrapper").innerText.trim().split(/\s+/).length;
+        data[inc] = Math.ceil(words / 225);
+      break;
+      case 'links':
+        data[inc] = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]').length;
+      break;
+      // varient on links, not included by default as it does more dom parsing then needed by overview stats
+      case 'linkData':
+        var extLinks = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]');
+        data.linkData = {};
+        for (let el of extLinks) {
+          // obtain which page this link shows up on
+          let parent = el.parentNode;
+          while (parent && !parent.getAttribute('data-jos-item-id')) {
+            parent = parent.parentNode;      
+          }
+          let tmpItem = {
+            linkTitle: el.innerText,
+            itemId: parent.getAttribute('data-jos-item-id'),
+          };
+          if (data.linkData[el.getAttribute('href')]) {
+            data.linkData[el.getAttribute('href')].push(tmpItem);
+          }
+          else {
+            data.linkData[el.getAttribute('href')] = [tmpItem];
+          }
+        }
+      break;
     }
   }
-  // make sure we found videos
-  if (ytVids.length > 0) {
-    let tmp = [];
-    for (let i=0; i< ytVids.length; i++) {
-      if (tmp.length === 50) {
-        videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
-        tmp = [];
-      }
-      tmp.push(ytVids[i]);
-    }
-    if (tmp.length > 0) {
-      videoLength += parseInt(await getYoutubeDuration(tmp.join(',')));
-    }
-  }
-  data.videoLength = videoLength;
   return data;
 }
 

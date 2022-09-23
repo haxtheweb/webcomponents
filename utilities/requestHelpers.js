@@ -33,7 +33,7 @@ export function stdResponse(res, data = {}, respOptions = {}) {
   res.setHeader("Access-Control-Allow-Headers", headers.headers);
   // cache is opt in but also support buster flag to ensure we force NOT hitting a cache
   if (headers.cache) {
-    res.setHeader('Cache-Control', `max-age=0, s-maxage=${headers.cache}, stale-while-revalidate`);
+    res.setHeader('Cache-Control', `max-age=0, s-maxage=${headers.cache}, stale-while-revalidate=${headers.cache}`);
   }
   // helps w/ type setting
   if (headers.disposition) {

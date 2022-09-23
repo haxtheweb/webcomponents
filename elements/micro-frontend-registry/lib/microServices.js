@@ -178,10 +178,21 @@ export function enableHAXcmsServices() {
     params: {
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",
-      ancestorId: "ancestor of this page",
-      activeId: "id of this page",
+      activeId: "id to query from",
     },
   });
+    // linkChecker
+    MicroFrontendRegistry.add({
+      endpoint: "/api/apps/haxcms/linkChecker",
+      name: "@haxcms/linkChecker",
+      title: "Check site links",
+      description: "Returns links found and status codes based on the tree in question",
+      params: {
+        site: "location of the HAXcms site OR site.json data",
+        type: "site for site.json or link for remote loading",
+        activeId: "id to query from",
+      },
+    });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",
