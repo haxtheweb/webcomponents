@@ -340,7 +340,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                   ${item.dataTables > 0 ? html`<li><simple-icon icon="image:grid-on"></simple-icon>${item.dataTables} ${this.t.dataTables}</li>` : ``}
                   ${item.specialTags > 0 ? html`<li><simple-icon icon="icons:stars"></simple-icon>${item.specialTags} ${this.t.specialElements}</li>` : ``}
                   ${item.links > 0 ? html`<li><simple-icon icon="icons:link"></simple-icon>${item.links} ${this.t.links}</li>` : ``}
-                  ${item.readTime > 0 ? html`<li><simple-icon icon="icons:chrome-reader-mode"></simple-icon>${this.getReadingTime(item.readTime)}${this.t.ofReading}</li>` : ``}
+                  ${item.readTime > 0 ? html`<li><simple-icon icon="icons:chrome-reader-mode"></simple-icon>${this.getReadingTime(item.readTime)} ${this.t.ofReading}</li>` : ``}
                   </ul>
                 </div>
               </div>
