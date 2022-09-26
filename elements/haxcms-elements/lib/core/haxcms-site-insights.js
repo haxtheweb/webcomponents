@@ -9,7 +9,7 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
 import "@lrnwebcomponents/retro-card/retro-card.js";
 import "@lrnwebcomponents/simple-img/simple-img.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-
+import "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 enableServices(["haxcms", "core"]);
@@ -472,11 +472,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
       ${this.loading ? html`<p>${this.t.loading} ${this.t.insights}..</p>`: html`
         <div class="insights">
-          <h2>${data.title} ${this.t.insights}</h2>
+          <h2>${data && data.title ? data.title : ''} ${this.t.insights}</h2>
           <ul>
             <li>
             <lesson-highlight icon="editor:insert-drive-file">
-              <p slot="title">${data.pages} ${this.t.pages}</p>
+              <p slot="title">${data.pages ? data.pages : html`0`} ${this.t.pages}</p>
               <p>${data.objectives} ${this.t.learningObjectives},
               ${data.specialTags} ${this.t.specialElements},
               ${data.dataTables} ${this.t.dataTables},
@@ -623,11 +623,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 ${item.type == 'video' && !item.source.includes('videoseries') ? html`<video-player source="${item.source}"></video-player>` : ``}
                 ${item.type == 'audio' ? html`<video-player source="${item.source}"></video-player>` : ``}
                 ${item.type == 'document' ? html`<div><a href="${item.source}" target="_blank">${this.t.openInNewTab}</a></div>` : ``}
-                  <div>${this.renderItemLinkById(item.itemId)}</div>
+                  <div>${item.itemId ? this.renderItemLinkById(item.itemId) : ``}</div>
                   </div>
                 </retro-card>
               </li>
-            `) : ``}
+            `) : `${this.t.noMediaInSelectedPages}`}
             </ul>
           </div>
           `}
@@ -664,7 +664,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       ${this.linkResponseData[key].ok === 'loading' ? html`<simple-icon icon="hax:loading" accent-color="grey"></simple-icon>` : ``}
       ${this.linkResponseData[key].ok != 'loading' ? (this.linkResponseData[key].ok ? html`<simple-icon icon="check" accent-color="green"></simple-icon>` : html`<simple-icon icon="clear" accent-color="red" title="${this.linkResponseData[key].status}"></simple-icon>`) : ``}
       ${this.linkResponseData[key].ok != 'loading' ? (this.linkResponseData[key].ok ? html`<a href="${key}" target="_blank" rel="noopener nofollow noreferrer">${key}</a>` : html`${key}`) : ``} (${links[key].map(linkUsage => html`
-      <strong>${linkUsage.linkTitle}</strong> ${this.t.onPage} ${this.renderItemLinkById(linkUsage.itemId)}
+      <strong>${linkUsage.linkTitle}</strong> ${this.t.onPage} ${linkUsage.itemId ? this.renderItemLinkById(linkUsage.itemId) : ``}
       `)})
     </li>
     `;
@@ -684,8 +684,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   renderItemLinkById(itemId) {
-    const item = toJS(store.findItem(itemId));
-    return html`<a href="${item.slug}" @click="${this.closeModal}">${item.title}</a>`;
+    // trap for highest level of the site
+    if (itemId != null) {
+      const item = toJS(store.findItem(itemId));
+      if (item) {
+        return html`<a href="${item.slug}" @click="${this.closeModal}">${item.title}</a>`;
+      }
+    }
+    return html``;
   }
 
   constructor() {
@@ -697,6 +703,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       ...this.t,
       pageToProvideInsightsAbout: "Page to provide insights about",
       noLinksInSelectedPages: "No links in selected pages",
+      noMediaInSelectedPages: "No media in selected pages",
       recentUpdates: "Recent updates",
       created: "Created",
       lastUpdated: "Last updated",

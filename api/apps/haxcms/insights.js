@@ -45,6 +45,9 @@ export default async function handler(req, res) {
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       var siteData = body.site || null;
       let itemId = body.activeId || null;
+      if (itemId === 'null') {
+        itemId = null;
+      }
       if (body.type === 'link') {
         siteData = null;
       }
@@ -61,7 +64,7 @@ export default async function handler(req, res) {
       // specific to where this resides or stats about EVERYTHING
       const fullManifest = await resolveSiteData(base, siteData);
       var items = [...fullManifest.items];
-      if (itemId === null) {
+      if (itemId === null || itemId == 'null') {
         data.updated = new Date(fullManifest.metadata.site.updated * 1000).toISOString();
         data.created = new Date(fullManifest.metadata.site.created * 1000).toISOString();
         data.title = fullManifest.title;

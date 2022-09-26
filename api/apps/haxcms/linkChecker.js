@@ -44,6 +44,9 @@ export default async function handler(req, res) {
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       var siteData = body.site || null;
       let itemId = body.activeId || null;
+      if (itemId === 'null') {
+        itemId = null;
+      }
       if (body.type === 'link') {
         siteData = null;
       }
