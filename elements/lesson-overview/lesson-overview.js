@@ -29,10 +29,13 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
   constructor() {
     super();
     this.t = this.t || {};
-    this.t.hour = "hour";
-    this.t.hours = "hours";
-    this.t.minute = "minute";
-    this.t.minutes = "minutes";
+    this.t = {
+      ...this.t,
+      hour: "hour",
+      hours: "hours",
+      minute: "minute",
+      minutes: "minutes",
+    };
     this.ancestor = null;
   }
 

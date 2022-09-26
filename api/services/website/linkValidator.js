@@ -3,13 +3,19 @@
 import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
 import fetch from "node-fetch";
 export default async function handler(req, res) {
-  // destructing GET params after ? available in this object
-  // use this if POST data is what's being sent
-  let body = stdPostBody(req);
-  // fallback support for post
-  if (body && body.links) {
-    let responses = {};
-    let links = body.links;
+  let responses = {};
+  let links = [];
+  // GET will be a single string for validating a single link and caching
+  if (req.query && req.query.links) {
+    links = req.query.links;
+  }
+  else {
+    // use this if POST data is what's being sent
+    let body = stdPostBody(req);
+    // fallback support for post
+    links = body.links ? body.links : null;
+  }
+  if (links) {
     // 1 vs multiple
     if ( typeof links === 'string') {
       links = [links];
@@ -34,7 +40,7 @@ export default async function handler(req, res) {
         status: resp.status,
       }
     }
-    res = stdResponse(res, responses, {methods: "OPTIONS, POST" });
+    res = stdResponse(res, responses, {cache: 1800 });
   }
   else {
     // invalidate the response and provide a reason

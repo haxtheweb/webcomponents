@@ -66,7 +66,7 @@ class RetroCard extends SimpleColors {
   display: block;
   background-color: var(--retro-card-level-3);
   border: 4px var(--retro-card-level-1) solid;
-  padding: 2rem;
+  padding: var(--retro-card-padding, 2rem);
   box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
   transition: padding 0.4s ease-in-out 0s,border 0.4s ease-in-out 0s,box-shadow 0.2s ease-in-out 0s;
   text-align: center;

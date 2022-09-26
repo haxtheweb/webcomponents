@@ -74,7 +74,6 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   }
   // parse dom of the content of the site relative to ancestor
   const html = await siteHTMLContent(siteLocation, siteData, ancestor);
-  console.log(html);
   const doc = parse(`<div id="wrapper">${html}</div>`);
   var data = {};
   if (dataInclude === null) {
@@ -236,7 +235,6 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       case 'contentData':
         data.contentData = [];
         let contentItems = doc.querySelectorAll('div[data-jos-item-id]');
-        console.log(contentItems);
         for (let el of contentItems) {
           let itemData = site.getItemById(el.getAttribute('data-jos-item-id'));
           if (itemData.id && itemData.metadata) {

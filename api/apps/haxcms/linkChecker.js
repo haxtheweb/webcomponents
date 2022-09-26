@@ -48,31 +48,7 @@ export default async function handler(req, res) {
         siteData = null;
       }
       data = await courseStatsFromOutline(base, siteData, itemId, ['linkData']);
-      let responses = {};
-      for (const link of Object.keys(data.linkData)) {
-        let resp;
-        try {
-          resp = await fetch(link, { method: "HEAD"});
-          // rare but implies HEAD request not allowed
-          if (resp.status === 405) {
-            resp = await fetch(link, { method: "GET"});
-          }
-        }
-        catch {
-          resp = {
-            ok: false,
-            status: 999
-          }
-        }
-        // we only care about dead links
-        if (!resp.ok) {
-          responses[link] = {
-            ok: resp.ok,
-            status: resp.status,
-          }
-        }
-      }
-      data.badLinks = responses;
+
     }
   }
   res = stdResponse(res, data);
