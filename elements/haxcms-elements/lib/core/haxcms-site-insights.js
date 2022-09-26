@@ -84,6 +84,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           overflow-x: hidden;
           overflow-y: auto;
           --accent-card-image-width: 25%;
+          --accent-card-image-x: left;
+          --accent-card-image-y: top;
         }
         accent-card .title-link {
           text-decoration: none;
@@ -569,7 +571,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             ${data.contentData ? data.contentData.map(item => html`
             <li>
             <accent-card
-            image-src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=25render=img&urlToCapture=${base}${item.location}"
+            image-src="https://screenshoturl.elmsln.vercel.app/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
             horizontal>
             <div slot="heading"><a class="title-link" href="${item.slug}" @click="${this.closeModal}">${item.title}</a></div>
               <div slot="content">
