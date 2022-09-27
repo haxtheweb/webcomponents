@@ -260,6 +260,7 @@ export class AppHaxSiteLogin extends SimpleColors {
               />
               <simple-icon-button-lite
                 icon="lrn:view-off"
+                tabindex="-1"
                 title="Toggle password display"
                 @click="${this.toggleViewPass}"
                 class="visibility-icon"

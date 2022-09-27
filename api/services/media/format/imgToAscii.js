@@ -50,9 +50,6 @@ export default async function handler(req, res) {
       {
         filename: buffer.filename,
         image: img
-      },
-      {
-        methods: "GET,OPTIONS,PATCH,DELETE,POST,PUT"
       }
     );
   });

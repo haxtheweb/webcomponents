@@ -88,6 +88,10 @@ export class AppHaxButton extends LitElement {
             this.icon = "hax:bricks";
             this.value = "Training";
             break;
+          case "docx import":
+            this.icon = "hax:file-doc";
+            this.value = "docx";
+          break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";

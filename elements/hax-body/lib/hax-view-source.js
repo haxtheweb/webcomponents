@@ -260,7 +260,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       );
     });
   }
-  // import markdow from a file
+  // import markdown from a file
   importMDviaMicro(e) {
     import(
       "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"

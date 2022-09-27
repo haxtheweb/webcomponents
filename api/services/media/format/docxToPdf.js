@@ -52,9 +52,6 @@ export default async function handler(req, res) {
     res = stdResponse(res, {
         filename: buffer.filename,
         pdf: string64
-      },
-      {
-        methods: "GET,OPTIONS,PATCH,DELETE,POST,PUT"
       }
     );
   });

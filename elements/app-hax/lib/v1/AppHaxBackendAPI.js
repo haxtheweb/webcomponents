@@ -194,6 +194,8 @@ export class AppHaxBackendAPI extends LitElement {
   // just easier to read here
   _formatSitePostData() {
     const site = toJS(store.site);
+    // html contents if we are starting from a file import, otherwise its null
+    const htmlSiteContents = toJS(store.htmlSiteContents);
     const colors = Object.keys(SimpleColorsSharedStylesGlobal.colors);
     return {
       site: {
@@ -203,7 +205,8 @@ export class AppHaxBackendAPI extends LitElement {
       },
       build: {
         type: site.type,
-        structure: site.structure,  
+        structure: site.structure,
+        html: htmlSiteContents
       },
       theme: {
         // select a random color

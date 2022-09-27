@@ -10,6 +10,9 @@ import { store } from "./AppHaxStore.js";
 import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "scrollable-component/index.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+
 import "./app-hax-site-button.js";
 import "./app-hax-hat-progress.js";
 import "./app-hax-button.js";
@@ -106,6 +109,48 @@ export class AppHaxSteps extends SimpleColors {
       const { type } = e.target;
       store.site.type = type;
       store.appEl.playSound("click2");
+    }
+  }
+  // step 2, doc import
+  async docxImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      import(
+        "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+      ).then(async (e) => {
+        // enable core services
+        enableServices(['haxcms']);
+        // get the broker for docx selection
+        const broker = window.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile("docx");
+        // tee up as a form for upload
+        const formData = new FormData();
+        formData.append("upload", file);
+        const response = await MicroFrontendRegistry.call(
+          "@haxcms/docxToHtml",
+          formData
+        );
+        // must be a valid response and have at least SOME html to bother attempting
+        if (response.status == 200 && response.data && response.data.contents != "") {
+          store.htmlSiteContents = response.data.contents;
+          // invoke a file broker for a docx file
+          // send to the endpoint and wait
+          // if it comes back with content, then we engineer details off of it
+          this.nameTyped = response.data.filename.replace('.docx','').replace('outline','').replace(/\s/g, '').replace(/-/g,'').toLowerCase();
+          setTimeout(() => {
+            this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+            this.shadowRoot.querySelector("#sitename").select();
+          }, 800);
+          store.site.type = type;
+          store.site.theme = 'clean-one';
+          store.appEl.playSound("click2");
+        }
+        else {
+          store.appEl.playSound("error");
+          store.toast(`File did not return valid HTML`);
+          e.preventDefault();
+        }
+      });
     }
   }
 
@@ -330,7 +375,7 @@ export class AppHaxSteps extends SimpleColors {
         }
         #grid-container {
           display: grid;
-          grid-template-columns: 200px 200px;
+          grid-template-columns: 200px 200px 200px;
           background: transparent;
         }
         .carousel-with-snapping-track {
@@ -495,7 +540,7 @@ export class AppHaxSteps extends SimpleColors {
             font-size: 20px;
           }
           #grid-container {
-            grid-template-columns: 150px 150px;
+            grid-template-columns: 150px 150px 150px;
           }
         }
         @media (max-height: 600px) {
@@ -582,6 +627,8 @@ export class AppHaxSteps extends SimpleColors {
       e.preventDefault();
     } else if (e.key === "Enter") {
       this.chooseName();
+    } else if (['ArrowUp','ArrowRight','ArrowDown','ArrowLeft'].includes(e.key)) {
+      // do nothing, directional keys for modifying word
     } else {
       store.appEl.playSound("click");
     }
@@ -672,6 +719,11 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="training"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.docxImport}
+            type="docx import"
           ></app-hax-button>`;
         break;
       case "website":
