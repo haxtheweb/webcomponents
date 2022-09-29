@@ -510,7 +510,7 @@ export function cleanTitle(value) {
   cleanTitle = cleanTitle.replace(/\s/, '-').toLowerCase();
   cleanTitle = cleanTitle.replace(/[^\w\-\/\s]+/u, '-');
   cleanTitle = cleanTitle.replace(/--+/u, '-');
-  cleanTitle = cleanTitle.replace(/,/g, '').replace(/:/g, '');
+  cleanTitle = cleanTitle.replace(/,/g, '').replace(/:/g, '').replace(/\?/g, '');
   // ensure we don't return an empty title or it could break downstream things
   if (cleanTitle == '') {
       cleanTitle = 'blank';
@@ -520,14 +520,12 @@ export function cleanTitle(value) {
 
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 export function validURL(str) {
-  var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  ); // fragment locator
-  return !!pattern.test(str);
+  let url;
+  // if we fail to load, we don't have a valid URL
+  try {
+    url = new URL(str);
+  } catch (_) {
+    return false;  
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
 }

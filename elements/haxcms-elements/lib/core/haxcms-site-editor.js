@@ -11,6 +11,8 @@ import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
@@ -816,9 +818,37 @@ class HAXCMSSiteEditor extends LitElement {
    * create node event
    */
 
-  createNode(e) {
+  async createNode(e) {
     if (e.detail.values) {
       var reqBody = e.detail.values;
+      // docxImport use the routine from app-hax
+      if (reqBody.docximport) {
+        await import("@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js").then(async (e) => {
+          // enable core services
+          enableServices(['haxcms']);
+          // get the broker for docx selection
+          const broker = window.FileSystemBroker.requestAvailability();
+          const file = await broker.loadFile("docx");
+          // tee up as a form for upload
+          const formData = new FormData();
+          formData.append("method", reqBody.docximport); // this is a branch or site based importer
+          let structure = 'course';
+          if (this.manifest.metadata.build && this.manifest.metadata.structure) {
+            structure = this.manifest.metadata.structure;
+          }
+          formData.append("type", structure);
+          formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
+          formData.append("upload", file);
+          const response = await MicroFrontendRegistry.call(
+            "@haxcms/docxToSite",
+            formData
+          );
+          // must be a valid response and have at least SOME html to bother attempting
+          if (response.status == 200 && response.data && response.data.contents != "") {
+            reqBody.items = response.data.items;
+          }
+        });
+      }
       reqBody.jwt = this.jwt;
       reqBody.site = {
         name: this.manifest.metadata.site.name,

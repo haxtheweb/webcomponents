@@ -15,6 +15,7 @@ export default async function handler(req, res) {
   };
   var type = "";
   var method = 'site';
+  var parentId = null;
   // this allows mapping document styles to html tags
   var mammothOptions = {
     styleMap: [
@@ -29,6 +30,9 @@ export default async function handler(req, res) {
     }
     else if (name === 'type') {
       type = fieldValue;
+    }
+    else if (name === 'parentId' && fieldValue !== 'null') {
+      parentId = fieldValue;
     }
   });
   bb.on('file', async (name, file, info) => {
@@ -68,27 +72,13 @@ export default async function handler(req, res) {
       case 'site':
         let h1s = doc.querySelectorAll('h1');
         order = 0;
-        // create a top level welcome that has the intro tag
-        let top = new JSONOutlineSchemaItem();
-        top.title = 'Welcome to ' + buffer.filename.replace('.docx','');
-        top.slug = 'welcome';
-        top.order = order;
-        if (type == 'course') {
-          top.contents = `<course-intro></course-intro>`;
-        }
-        else if (type == 'portfolio') {
-          top.contents = '<p>Welcome to my portfolio</p>';
-        }
-        else {
-          top.contents = '<p></p>';
-        }
-        items.push(top);
         for (const h1 of h1s) {
-          order += 1;
           let item = new JSONOutlineSchemaItem();
           item.title = h1.innerText.trim().replace('  ', ' ').replace('  ', ' ');
           item.slug = cleanTitle(item.title);
           item.order = order;
+          item.parent = parentId; // null default, supports importing deep structure under a parent though
+          order += 1;
           let tmp = nextUntilElement(h1, ['H1']);
           let h1Children = tmp.siblings;
           let contents = '';
@@ -109,11 +99,11 @@ export default async function handler(req, res) {
             order = 0;
             let h2 = h1Children[0];
             while (h2 !== null && h2.tagName === 'H2') {
-              order += 1;
               let item2 = new JSONOutlineSchemaItem();
               item2.title = h2.innerText.trim().replace('  ', ' ').replace('  ', ' ');
               item2.slug = item.slug + '/' + cleanTitle(item2.title);
               item2.order = order;
+              order += 1;
               item2.indent = 1;
               // this page's parent is the prev item
               item2.parent = item.id;
@@ -136,11 +126,12 @@ export default async function handler(req, res) {
         let els = doc.querySelectorAll('h1');
         order = 0;
         for (const h1 of els) {
-          order += 1;
           let item = new JSONOutlineSchemaItem();
           item.title = h1.innerText.trim().replace('  ', ' ').replace('  ', ' ');
           item.slug = cleanTitle(item.title);
           item.order = order;
+          item.parent = parentId; // null default, supports importing structure under a parent though
+          order += 1;
           let tmp = nextUntilElement(h1, ['H1']);
           let h1Children = tmp.siblings;
           let contents = '';
@@ -157,6 +148,7 @@ export default async function handler(req, res) {
         let item = new JSONOutlineSchemaItem();
         item.title = buffer.filename.replace('.docx','');
         item.slug = cleanTitle(item.title);
+        item.parent = parentId; // null default, supports importing to a new page under a parent though
         // parser helps ensure validity of HTML structure, though it should
         // be ok given that it came from mammoth
         item.contents = doc.querySelector('#docx-import-wrapper').innerHTML;
@@ -172,7 +164,7 @@ export default async function handler(req, res) {
   req.pipe(bb);
 }
 
-
+// replacement for tabs, also support for single line video player calls
 function htmlFromEl(el) {
   // test if this is a stand alone, valid URL
   if (validURL(el.innerText)) {
