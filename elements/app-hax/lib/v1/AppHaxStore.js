@@ -13,7 +13,7 @@ class Store {
     this.evaluateBadDevice();
     this.location = null;
     this.token = null;
-    this.htmlSiteContents = null;
+    this.items = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     this.appSettings = window.appSettings || {};
@@ -191,7 +191,7 @@ class Store {
       step: observable, // step that we're on in our build
       site: observable, // information about the site being created
       newSitePromiseList: observable,
-      htmlSiteContents: observable, // HTML, from a docx micro if option selected
+      items: observable, // site items / structure from a docx micro if option selected
       // user related data
       jwt: observable, // JSON web token
       token: observable, // XSS prevention token

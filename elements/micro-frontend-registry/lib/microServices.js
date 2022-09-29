@@ -169,10 +169,10 @@ export function enableCoreServices() {
 
 // HAXcms services
 export function enableHAXcmsServices() {
-  // docxToHtml
+  // docxToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/docxToSite",
-    name: "@haxcms/docxToHtml",
+    name: "@haxcms/docxToSite",
     title: "Docx to Site",
     description: "Convert .docx file to Site schema",
     params: {

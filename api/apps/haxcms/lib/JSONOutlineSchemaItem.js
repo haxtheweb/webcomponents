@@ -13,7 +13,7 @@ export class JSONOutlineSchemaItem
     this.location = '';
     this.slug = '';
     this.order = 0;
-    this.parent = '';
+    this.parent = null;
     this.title = 'New item';
     this.description = '';
     this.metadata = {};

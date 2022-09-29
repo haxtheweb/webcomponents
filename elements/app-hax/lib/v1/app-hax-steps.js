@@ -125,14 +125,16 @@ export class AppHaxSteps extends SimpleColors {
         const file = await broker.loadFile("docx");
         // tee up as a form for upload
         const formData = new FormData();
+        formData.append("method", 'site'); // this is a site based importer
+        formData.append("type", toJS(store.site.structure));
         formData.append("upload", file);
         const response = await MicroFrontendRegistry.call(
-          "@haxcms/docxToHtml",
+          "@haxcms/docxToSite",
           formData
         );
         // must be a valid response and have at least SOME html to bother attempting
         if (response.status == 200 && response.data && response.data.contents != "") {
-          store.htmlSiteContents = response.data.contents;
+          store.items = response.data.items;
           // invoke a file broker for a docx file
           // send to the endpoint and wait
           // if it comes back with content, then we engineer details off of it

@@ -75,8 +75,11 @@ class MicroFrontendRegistryEl extends HTMLElement {
           base = window.MicroFrontendRegistryConfig.base;
         }
         // keep local based if we're local, otherwise we need to leverage deployed address
-        else if (window.location.origin.startsWith("http://localhost")) {
+        else if (window.location.origin.startsWith("http://127.0.0.1") || window.location.origin.startsWith("http://localhost")) {
           base = window.location.origin.replace(
+            /127.0.0.1:8(.*)/,
+            "localhost:3000"
+          ).replace(
             /localhost:8(.*)/,
             "localhost:3000"
           );

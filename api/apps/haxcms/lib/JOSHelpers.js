@@ -485,18 +485,49 @@ export function mimeTypeToMediaType(mime) {
   switch (parts[0]) {
     case "audio":
       return "audio";
-      break;
+    break;
     case "image":
       return "image";
-      break;
+    break;
     case "video":
       return "video";
-      break;
+    break;
     case "text":
       return "document";
-      break;
+    break;
     case "application":
       return "document";
-      break;
+    break;
   }
+}
+
+/**
+ * Clean up a title / sanitize the input string for file system usage
+ */
+export function cleanTitle(value) {
+  let cleanTitle = value.trim();
+  cleanTitle = cleanTitle.split(" ").join("");
+  cleanTitle = cleanTitle.replace(/\s/, '-').toLowerCase();
+  cleanTitle = cleanTitle.replace(/[^\w\-\/\s]+/u, '-');
+  cleanTitle = cleanTitle.replace(/--+/u, '-');
+  cleanTitle = cleanTitle.replace(/,/g, '').replace(/:/g, '');
+  // ensure we don't return an empty title or it could break downstream things
+  if (cleanTitle == '') {
+      cleanTitle = 'blank';
+  }
+  return cleanTitle;
+}
+
+// https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+export function validURL(str) {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(str);
 }
