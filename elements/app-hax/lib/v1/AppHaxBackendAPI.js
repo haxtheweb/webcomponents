@@ -197,7 +197,7 @@ export class AppHaxBackendAPI extends LitElement {
     // html contents if we are starting from a file import, otherwise its null
     const items = toJS(store.items);
     const colors = Object.keys(SimpleColorsSharedStylesGlobal.colors);
-    return {
+    const buildData = {
       site: {
         name: site.name,
         description: `${site.type} ${site.structure}`,
@@ -215,6 +215,7 @@ export class AppHaxBackendAPI extends LitElement {
         icon: `${SimpleIconIconsetsManifest[0].name}:${SimpleIconIconsetsManifest[0].icons[Math.floor(Math.random() * SimpleIconIconsetsManifest[0].icons.length)]}`,
       },
     };
+    return buildData;
   }
 
   updated(changedProperties) {
