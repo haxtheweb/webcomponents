@@ -184,7 +184,7 @@ function htmlFromEl(el) {
     }
   }
   else {
-    return el.outerHTML;
+    return el.outerHTML.replace(/\t/g, '');
   }
 }
 
