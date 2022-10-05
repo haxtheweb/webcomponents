@@ -79,7 +79,7 @@ class MemeMaker extends LitElement {
         <img
           loading="lazy"
           src="${this.imageUrl}"
-          .alt="${this.alt}"
+          alt="${this.alt || ""}"
           aria-describedby="${this.describedBy || ""}"
         />
         <figcaption class="top-text">${this.topText}</figcaption>

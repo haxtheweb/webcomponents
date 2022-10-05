@@ -265,7 +265,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       case 'mediaData':
         data.mediaData = [];
         let locType;
-        const allMedia = doc.querySelectorAll('audio[src],audio source[src],audio-player,video[src],video source[src],video-player,a11y-media-player,embed,object,iframe[src],media-image,img,simple-img');
+        const allMedia = doc.querySelectorAll('audio[src],audio source[src],audio-player,video[src],video source[src],video-player,a11y-media-player,embed,object,iframe[src],media-image,img,simple-img,meme-maker');
         for (let el of allMedia) {
           // obtain which page this shows up on
           let parent = el.parentNode;
@@ -303,13 +303,22 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               name = urlData.pathname.split('/').pop();
             }
           }
-          data.mediaData.push({
+          let alt = el.getAttribute('alt') || null;
+          let title = el.getAttribute('title') || null;
+          if (title == null && el.getAttribute('media-title')) {
+            title = el.getAttribute('media-title');
+          }
+          let tmp = {
             source: source,
             name: name,
+            alt: alt,
+            title: title,
             locType: locType,
             type: typeFromElement(el),
             itemId: parent.getAttribute('data-jos-item-id'),
-          });
+          };
+          tmp.status = mediaStatus(tmp);
+          data.mediaData.push(tmp);
         }
         // find and mix in the item uploaded file data if it exists
         let allParents = doc.querySelectorAll('div[data-jos-item-id]');
@@ -324,6 +333,9 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               data.mediaData.push({
                 source: urlData.toString(),
                 name: file.name,
+                alt: null,
+                status: 'info',
+                title: null,
                 locType: locType,
                 type: mimeTypeToMediaType(file.type),
                 itemId: itemId,
@@ -377,6 +389,45 @@ export function typeFromElement(el) {
     break;
   }
   return 'other';
+}
+
+// common alt issues
+export function mediaStatus(item) {
+  switch (item.type) {
+    case 'audio':
+      return 'info';
+    break;
+    case'video':
+      return 'info';
+    break;
+    case 'other':
+      return 'info';
+    break;
+    case 'image':
+      if (item.alt == null || item.alt == "null") {
+        return 'error';
+      }
+      else if (item.name == item.alt || item.source == item.alt) {
+        return 'error';
+      }
+      else if (item.title == item.alt) {
+        return 'error';
+      }
+      else if (item.alt == '') {
+        return 'warning';
+      }
+      else if (item.alt && item.alt.includes('image')) {
+        return 'warning';
+      }
+      else if (item.alt && item.alt.includes('picture')) {
+        return 'warning';
+      }
+      else {
+        return 'info';
+      }
+    break;
+  }
+  return 'info';
 }
 
 // get all of the HTML for the site relative to an ancestor starting point

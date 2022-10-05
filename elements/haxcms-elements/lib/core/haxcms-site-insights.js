@@ -148,7 +148,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           height: 275px;
         }
         .media-list retro-card img {
-          max-height: 250px;
+          max-height: 225px;
           width: 275px;
         }
         .mediabrowser-wrapper {
@@ -238,6 +238,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               inputMethod: "textfield",
             },
             {
+              property: "status",
+              title: "Status",
+              inputMethod: "select",
+              options: {
+                all: "All",
+                info : "No issues",
+                warning: "Warnings",
+                error: "Errors"
+              }
+            },
+            {
               property: "type",
               title: "Media type",
               inputMethod: "select",
@@ -260,7 +271,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               }
             }
           ];
-          this.shadowRoot.querySelector('#schema').values = this.filters;         
+          this.shadowRoot.querySelector('#schema').values = this.filters;
         break;
       }
     }, 0);
@@ -421,12 +432,24 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.filters = {
       title: val.title ? val.title : '',
       type: val.type ? val.type : 'all',
+      status: val.status ? val.status : 'all',
       location: val.location ? val.location : 'all',
     };
     if (this.data.mediaData) {
       this.data.mediaData = this.data.mediaData.filter((item) => {
         if (this.filters.location != 'all') {
           if (this.filters.location != item.locType) {
+            return false;
+          }
+          else {
+            return true;
+          }
+        }
+        return true;
+      });
+      this.data.mediaData = this.data.mediaData.filter((item) => {
+        if (this.filters.status != 'all') {
+          if (this.filters.status != item.status) {
             return false;
           }
           else {
@@ -614,18 +637,18 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             ${data.mediaData ? data.mediaData.map(item => html`
               <li>
                 <retro-card
-                nosource
-                class="${item.locType} ${item.type}"
-                accent-color="${this.accentColorFromType(item.type)}"
-                title="${item.name}"
-                tags="${item.locType},${item.type}">
-                <div class="body">
-                ${item.type == 'image' ? html`<img src="${item.source}" />` : ``}
-                ${item.type == 'video' && item.source.includes('videoseries') ? html`<iframe src="${item.source}"></iframe>` : ``}
-                ${item.type == 'video' && !item.source.includes('videoseries') ? html`<video-player source="${item.source}"></video-player>` : ``}
-                ${item.type == 'audio' ? html`<video-player source="${item.source}"></video-player>` : ``}
-                ${item.type == 'document' ? html`<div><a href="${item.source}" target="_blank">${this.t.openInNewTab}</a></div>` : ``}
-                  <div>${item.itemId ? this.renderItemLinkById(item.itemId) : ``}</div>
+                  nosource
+                  class="${item.locType} ${item.type}"
+                  accent-color="${this.accentColorFromType(item.type)}"
+                  title="${item.name} ${item.title}"
+                  tags="${item.locType}, ${item.type}">
+                  <div class="body">
+                    ${item.type == 'image' ? html`<img src="${item.source}" alt="${item.alt}" title="${item.title}" /><div>${this.analyzeAltData(item)}</div>` : ``}
+                    ${item.type == 'video' && item.source.includes('videoseries') ? html`<iframe src="${item.source}"></iframe>` : ``}
+                    ${item.type == 'video' && !item.source.includes('videoseries') ? html`<video-player source="${item.source}"></video-player>` : ``}
+                    ${item.type == 'audio' ? html`<video-player source="${item.source}"></video-player>` : ``}
+                    ${item.type == 'document' ? html`<div><a href="${item.source}" target="_blank">${this.t.openInNewTab}</a></div>` : ``}
+                    <div>${item.itemId ? this.renderItemLinkById(item.itemId) : ``}</div>
                   </div>
                 </retro-card>
               </li>
@@ -637,6 +660,28 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       </a11y-tab>
     </a11y-tabs>
     `;
+  }
+  // alt feedback
+  analyzeAltData(item) {
+    if (item.alt == null || item.alt == "null") {
+      return html`<simple-icon icon="error" accent-color="red" title="missing alt text"></simple-icon>`;
+    }
+    else if (item.name == item.alt || item.source == item.alt) {
+      return html`<simple-icon icon="error" accent-color="red" title="alt text matches file name"></simple-icon>`;
+    }
+    else if (item.title == item.alt) {
+      return html`<simple-icon icon="error" accent-color="red" title="alt text matches title"></simple-icon>`;
+    }
+    else if (item.alt == '') {
+      return html`<simple-icon icon="warning" accent-color="yellow" title="alt text set to blank, ensure decorative image"></simple-icon>`;
+    }
+    else if (item.alt && item.alt.includes('image')) {
+      return html`<simple-icon icon="warning" accent-color="yellow" title="alt text includes word 'image'"></simple-icon>`;
+    }
+    else if (item.alt && item.alt.includes('picture')) {
+      return html`<simple-icon icon="warning" accent-color="yellow" title="alt text includes word 'picture'"></simple-icon>`;
+    }
+    return html`<simple-icon icon="info" accent-color="blue" title="alt text: ${item.alt}"></simple-icon>`;
   }
   // response is key'ed object by link and response data
   linkValidationResponse(e) {
