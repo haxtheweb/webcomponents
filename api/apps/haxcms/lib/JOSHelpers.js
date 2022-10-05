@@ -321,7 +321,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
           data.mediaData.push(tmp);
         }
         // find and mix in the item uploaded file data if it exists
-        let allParents = doc.querySelectorAll('div[data-jos-item-id]');
+        /*let allParents = doc.querySelectorAll('div[data-jos-item-id]');
         for (let el of allParents) {
           locType = 'internal';
           let itemId = el.getAttribute('data-jos-item-id');
@@ -333,16 +333,16 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               data.mediaData.push({
                 source: urlData.toString(),
                 name: file.name,
-                alt: null,
+                alt: 'internal media reference',
                 status: 'info',
-                title: null,
+                title: '',
                 locType: locType,
                 type: mimeTypeToMediaType(file.type),
                 itemId: itemId,
               });
             }
           }
-        }
+        }*/
       break;
     }
   }
