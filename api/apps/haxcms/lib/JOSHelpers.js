@@ -303,7 +303,13 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               name = urlData.pathname.split('/').pop();
             }
           }
-          let alt = el.getAttribute('alt') || null;
+          let alt = null;
+          // we want the RAW alt attribute if it actually exists
+          // this helps resolve the difference between an empty value
+          // and no value being supplied
+          if (el?._rawAttrs?.alt !== undefined) {
+            alt = el._rawAttrs.alt;
+          }
           let title = el.getAttribute('title') || null;
           if (title == null && el.getAttribute('media-title')) {
             title = el.getAttribute('media-title');
