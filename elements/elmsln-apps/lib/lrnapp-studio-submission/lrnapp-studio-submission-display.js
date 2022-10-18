@@ -172,7 +172,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           target="_blank"
                         ></lrnsys-button>
                         <img
-                          style="width:500px; height:500px; background-color: lightgray;"
+                          style="background-color: lightgray; max-width:90vw; max-height:90vh;"
                           class="contain image"
                           src$="[[_getImageUrl(image)]]"
                           loading="lazy"
