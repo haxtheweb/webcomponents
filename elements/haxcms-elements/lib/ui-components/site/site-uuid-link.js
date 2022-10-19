@@ -6,12 +6,12 @@
  import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
  import { toJS } from "mobx";
  /**
-  * `site-uuid-token`
+  * `site-uuid-link`
   * `UUID to render an accurate link and title in the site`
   *
   * @demo demo/index.html
   */
-class SiteUuidToken extends LitElement {
+class SiteUuidLink extends LitElement {
   static get styles() {
     return [css`
       :host {
@@ -23,7 +23,7 @@ class SiteUuidToken extends LitElement {
   * Store the tag name to make it easier to obtain directly.
   */
   static get tag() {
-    return "site-uuid-token";
+    return "site-uuid-link";
   }
   constructor() {
     super();
@@ -103,7 +103,7 @@ class SiteUuidToken extends LitElement {
           {
             "property": "uuid",
             "title": "Item",
-            "description": "Item to use as the token data",
+            "description": "Item to render for the link / title data",
             "inputMethod": "textfield"
           }
         ]
@@ -174,6 +174,6 @@ class SiteUuidToken extends LitElement {
     }
   }
 }
-window.customElements.define(SiteUuidToken.tag, SiteUuidToken);
-export { SiteUuidToken };
+window.customElements.define(SiteUuidLink.tag, SiteUuidLink);
+export { SiteUuidLink };
  
