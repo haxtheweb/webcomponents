@@ -36,6 +36,9 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
         iron-selector lrnsys-button {
           display: inline-flex;
         }
+        image-inspector {
+          --image-inspector-height: 95vh;
+        }
         marked-element {
           display: block;
           margin: 0 5em 0 5em;

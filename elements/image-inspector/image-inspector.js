@@ -48,6 +48,9 @@ class ImageInspector extends LitElement {
           display: block;
           z-index: 2;
         }
+        img-pan-zoom {
+          --img-pan-zoom-height: var(--image-inspector-height, 500px);
+        }
         exif-data {
           margin: 0 auto;
           justify-content: space-evenly;
