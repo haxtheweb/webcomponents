@@ -157,7 +157,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                     </span>
                     <div style="text-align: center;">
                       <div hidden$="[[_isGif(image)]]">
-                        <image-inspector src$="[[_getImageUrl(image)]]">
+                        <image-inspector src$="[[_getImageUrl(image)]]" style="--image-inspector-height-rotated: 600px;--image-inspector-height: 95vh;">
                           <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
                               alt="Download all images"
@@ -339,7 +339,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
     if (image) {
       if (image.url) {
         return image.url;
-      }
+      }image-inspector
       return image;
     }
     return "";

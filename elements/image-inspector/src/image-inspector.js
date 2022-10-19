@@ -64,7 +64,7 @@ class ImageInspector extends LitElement {
           margin: 0;
           opacity: 0;
           padding: 0;
-          height: 500px;
+          height: var(--image-inspector-height, 600px);
           pointer-events: none;
         }
         .wrap {
