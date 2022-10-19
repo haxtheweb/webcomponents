@@ -8,7 +8,6 @@ import { varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
-import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -29,8 +28,6 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   constructor() {
     super();
-    this.backText = "Back to site list";
-    this.backLink = "../../";
     this.manifest = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
@@ -65,22 +62,6 @@ class HAXCMSSiteDashboard extends LitElement {
         }
         :host([dashboard-opened]) {
           margin-left: 0;
-        }
-        #homebutton {
-          display: inline-block;
-          vertical-align: top;
-          margin-top: 4px;
-        }
-        #homebutton simple-icon-button {
-          background-color: #ffffff;
-          color: #000000;
-          --simple-icon-color: black;
-          height: 40px;
-          width: 40px;
-          --simple-icon-width: 36px;
-          --simple-icon-height: 36px;
-          padding: 2px;
-          border-radius: 50%;
         }
         .buttons {
           position: absolute;
@@ -131,13 +112,6 @@ class HAXCMSSiteDashboard extends LitElement {
           .toptext {
             font-size: 11px;
           }
-          #homebutton simple-icon-button {
-            height: 36px;
-            width: 36px;
-            --simple-icon-height: 36px;
-            --simple-icon-width: 36px;
-            padding: 4px;
-          }
         }
         button {
           background-color: white;
@@ -178,17 +152,6 @@ class HAXCMSSiteDashboard extends LitElement {
   render() {
     return html`
       <div class="title-wrapper">
-        <portal-launcher>
-          <a href="${this.backLink}" tabindex="-1" id="homebutton"
-            ><simple-icon-button
-              icon="icons:home"
-              title="${this.backText}"
-            ></simple-icon-button
-          ></a>
-        </portal-launcher>
-        <simple-tooltip for="homebutton" offset="14" position="bottom">
-          ${this.backText}
-        </simple-tooltip>
         <h2 class="title">${this.manifest.title} settings</h2>
         ${varExists(this.manifest, "metadata.site.static.publishedLocation")
           ? html`
@@ -238,12 +201,6 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   static get properties() {
     return {
-      backLink: {
-        type: String,
-      },
-      backText: {
-        type: String,
-      },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
@@ -302,19 +259,6 @@ class HAXCMSSiteDashboard extends LitElement {
         this.setAttribute("tabindex", "-1");
       }
     });
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    setTimeout(() => {
-      if (window.appSettings && window.appSettings.backText) {
-        this.backText = window.appSettings.backText;
-      }
-      if (window.appSettings && window.appSettings.backLink) {
-        this.backLink = window.appSettings.backLink;
-      }
-    }, 0);
   }
   /**
    * Save the fields as we get tapped
