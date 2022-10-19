@@ -40,16 +40,17 @@ class ImageInspector extends LitElement {
           );
         }
 
-        .top-rotated {
+        img-pan-zoom.top-rotated {
           top: 150px;
           pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
+          height: var(--image-inspector-height-rotated, 600px);
         }
         .showData {
           display: block;
           z-index: 2;
         }
         img-pan-zoom {
-          --img-pan-zoom-height: var(--image-inspector-height, 500px);
+          --img-pan-zoom-height: var(--image-inspector-height, 600px);
         }
         exif-data {
           margin: 0 auto;

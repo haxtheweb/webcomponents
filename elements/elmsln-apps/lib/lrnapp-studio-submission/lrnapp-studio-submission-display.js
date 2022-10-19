@@ -37,6 +37,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
           display: inline-flex;
         }
         image-inspector {
+          --image-inspector-height-rotated: 600px;
           --image-inspector-height: 95vh;
         }
         marked-element {
