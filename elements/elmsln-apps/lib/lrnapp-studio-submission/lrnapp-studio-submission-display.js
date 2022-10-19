@@ -38,7 +38,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
         }
         image-inspector {
           --image-inspector-height-rotated: 600px;
-          --image-inspector-height: 95vh;
+          --image-inspector-height: 85vh;
         }
         marked-element {
           display: block;
@@ -157,7 +157,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                     </span>
                     <div style="text-align: center;">
                       <div hidden$="[[_isGif(image)]]">
-                        <image-inspector src$="[[_getImageUrl(image)]]" style="--image-inspector-height-rotated: 600px;--image-inspector-height: 95vh;">
+                        <image-inspector src$="[[_getImageUrl(image)]]" style="--image-inspector-height-rotated: 600px;--image-inspector-height: 85vh;">
                           <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
                               alt="Download all images"
