@@ -72,32 +72,33 @@ export default async function handler(req, res) {
       case 'site':
         let h1s = doc.querySelectorAll('h1');
         order = 0;
-        for (const h1 of h1s) {
+        for await (const h1 of h1s) {
           let item = new JSONOutlineSchemaItem();
           item.title = h1.innerText.trim().replace('  ', ' ').replace('  ', ' ');
           item.slug = cleanTitle(item.title);
           item.order = order;
           item.parent = parentId; // null default, supports importing deep structure under a parent though
           order += 1;
-          let tmp = nextUntilElement(h1, ['H1']);
+          let tmp = await nextUntilElement(h1, ['H1']);
           let h1Children = tmp.siblings;
           let contents = '';
-          for (const h1Child of h1Children) {
+          let h2 = null;
+          for await (const h1Child of h1Children) {
             if (h1Child.tagName === 'H2') {
               // implies we need to drill down bc we have nested pages
+              h2 = h1Child;
               break;
             }
-            else {
-              contents += htmlFromEl(h1Children.pop());
+            else if (h2 === null) {
+              contents += htmlFromEl(h1Child);
             }
           }
           // if empty, make it a blank p so it has at least something
           item.contents = contents !== '' ? contents : getFallbackContent(type);
           items.push(item);
           // we found an h2 under an h1, associate down more
-          if (h1Children.length > 0) {
+          if (h2) {
             order = 0;
-            let h2 = h1Children[0];
             while (h2 !== null && h2.tagName === 'H2') {
               let item2 = new JSONOutlineSchemaItem();
               item2.title = h2.innerText.trim().replace('  ', ' ').replace('  ', ' ');
@@ -108,11 +109,11 @@ export default async function handler(req, res) {
               // this page's parent is the prev item
               item2.parent = item.id;
               // get next h2, or run out at an h1
-              let tmp = nextUntilElement(h2, ['H1','H2']);
+              let tmp = await nextUntilElement(h2, ['H1','H2']);
               let h2Children = tmp.siblings;
               h2 = tmp.lastEl;
               let contents2 = '';
-              for (const h2Child of h2Children) {
+              for await (const h2Child of h2Children) {
                 contents2 += htmlFromEl(h2Child);
               }
               item2.contents = contents2 !== '' ? contents2 : '<p></p>';
@@ -125,17 +126,17 @@ export default async function handler(req, res) {
       case 'branch':
         let els = doc.querySelectorAll('h1');
         order = 0;
-        for (const h1 of els) {
+        for await (const h1 of els) {
           let item = new JSONOutlineSchemaItem();
           item.title = h1.innerText.trim().replace('  ', ' ').replace('  ', ' ');
           item.slug = cleanTitle(item.title);
           item.order = order;
           item.parent = parentId; // null default, supports importing structure under a parent though
           order += 1;
-          let tmp = nextUntilElement(h1, ['H1']);
+          let tmp = await nextUntilElement(h1, ['H1']);
           let h1Children = tmp.siblings;
           let contents = '';
-          for (const h1Child of h1Children) {
+          for await (const h1Child of h1Children) {
             contents += htmlFromEl(h1Child);
           }
           // if empty, make it a blank p so it has at least something
@@ -200,7 +201,7 @@ function htmlFromEl(el) {
 }
 
 // based on https://vanillajstoolkit.com/helpers/nextuntil/
-function nextUntilElement(elem, tagMatches) {
+async function nextUntilElement(elem, tagMatches) {
 	// Setup siblings array
 	var siblings = [];
 	// Get the next sibling element
@@ -208,7 +209,9 @@ function nextUntilElement(elem, tagMatches) {
 	// As long as a sibling exists
 	while (elem) {
 		// If we've reached a tag name we want to stop on, bail
-		if (tagMatches.includes(elem.tagName)) break;
+		if (tagMatches.includes(elem.tagName)) {
+      break;
+    }
 		// Otherwise, push it to the siblings array
 		siblings.push(elem);
 		// Get the next sibling element
