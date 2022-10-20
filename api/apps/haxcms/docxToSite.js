@@ -167,17 +167,36 @@ export default async function handler(req, res) {
 // replacement for tabs, also support for single line video player calls
 function htmlFromEl(el) {
   // test if this is a stand alone, valid URL
-  if (validURL(el.innerText)) {
-    if (el.innerText.includes('youtube.com') || 
-      el.innerText.includes('youtu.be') || 
-      el.innerText.includes('youtube-nocookie.com') || 
-      el.innerText.includes('vimeo.com')) {
-      return `<video-player source="${el.innerText}"></video-player>`;
+  if (validURL(el.innerText) && (
+    el.innerText.includes('youtube.com') ||
+    el.innerText.includes('youtu.be') ||
+    el.innerText.includes('youtube-nocookie.com') ||
+    el.innerText.includes('vimeo.com') ||
+    el.innerText.includes('.mp4')
+    )
+  ) {
+    return `<video-player source="${el.innerText}"></video-player>`;
+  }
+  // test for ! which implies a specififc tag is going to be inserted
+  else if (el.innerText.startsWith('!') && el.innerText.includes('-')) {
+    let tag = el.innerText.replace('!', '').trim();
+    return `<${tag}></${tag}>`;
+  }
+  // test for a common convention for a place holder
+  else if (el.innerText.startsWith('[') && el.innerText.endsWith(']')) {
+    let text = el.innerText.replace('[','').replace(']','');
+    return `<place-holder type="text" text="${text}"></place-holder>`;
+  }
+  // test for a more specific place holder convention
+  else if (el.innerText.startsWith('>') || el.innerText.startsWith('&gt;')) {
+    let tmp = el.innerText.split(':');
+    if (tmp.length > 1) {
+      let type = tmp.shift().replace('>','').replace('&gt;','');
+      let text = tmp.join(':').trim();
+      return `<place-holder type="${type}" text="${text}"></place-holder>`;
     }
   }
-  else {
-    return el.outerHTML.replace(/\t/g, '');
-  }
+  return el.outerHTML.replace(/\t/g, '');
 }
 
 // based on https://vanillajstoolkit.com/helpers/nextuntil/
