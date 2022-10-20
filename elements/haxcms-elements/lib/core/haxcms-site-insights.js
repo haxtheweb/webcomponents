@@ -191,7 +191,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           ];
         break;
         case 'contentbrowser':
-          this.filters = {sort: 'title', title:'', hasVideo: false, hasLinks: false, hasImages: false};
+          this.filters = {sort: 'title', title:'', hasVideo: false, hasLinks: false, hasImages: false, hasPlaceholders: false};
           this.shadowRoot.querySelector('#schema').value = this.filters;
           this.shadowRoot.querySelector('#schema').fields = [
             {
@@ -213,6 +213,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               property: "hasVideo",
               title: "Video",
               description: "Includes video",
+              inputMethod: "boolean",
+            },
+            {
+              property: "hasPlaceholders",
+              title: "Placeholders",
+              description: "Includes placeholders",
               inputMethod: "boolean",
             },
             {
@@ -388,12 +394,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       title: val.title ? val.title : '',
       sort: val.sort,
       hasVideo: val.hasVideo,
+      hasPlaceholders: val.hasPlaceholders,
       hasLinks: val.hasLinks,
       hasImages: val.hasImages,
     };
     if (this.data.contentData) {
       this.data.contentData = this.data.contentData.filter((item) => {
         if (this.filters.hasVideo === true && item.videos === 0) {
+          return false;
+        }
+        if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
           return false;
         }
         if (this.filters.hasLinks === true && item.links === 0) {
@@ -609,6 +619,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 <ul class="stats">
                 ${item.objectives > 0 ? html`<li><simple-icon icon="editor:format-list-bulleted"></simple-icon>${item.objectives} ${this.t.learningObjectives}</li>` : ``}
                 ${item.videos > 0 ? html`<li><simple-icon icon="av:play-arrow"></simple-icon>${item.videos} ${this.t.videos}</li>` : ``}
+                ${item.placeholders > 0 ? html`<li><simple-icon icon="hax:placeholder-image"></simple-icon>${item.placeholders} ${this.t.placeholders}</li>` : ``}
                 ${item.audio > 0 ? html`<li><simple-icon icon="av:music-video"></simple-icon>${item.audio} ${this.t.audio}</li>` : ``}
                 ${item.selfChecks > 0 ? html`<li><simple-icon icon="hardware:videogame-asset"></simple-icon>${item.selfChecks} ${this.t.selfChecks}</li>` : ``}
                 ${item.images > 0 ? html`<li><simple-icon icon="image:collections"></simple-icon>${item.images} ${this.t.images}</li>` : ``}
@@ -763,6 +774,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       externalLinks: "External links",
       pages: "Pages",
       videos: "videos",
+      placeholders: "Placeholders",
       video: "Video",
       audio: "Audio",
       selfChecks: "Self checks",

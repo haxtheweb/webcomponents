@@ -108,6 +108,9 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       case 'links':
         data[inc] = doc.querySelectorAll('a[href^="http://"],a[href^="https://"]').length;
       break;
+      case 'placeholders':
+        data[inc] = doc.querySelectorAll('place-holder').length;
+      break;
       // inner Text with some basic math applied
       case 'readTime':
         // guestimate readTime, assuming words per minute for average adult reading time
@@ -250,6 +253,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               location: itemData.location,
               videos: doc.querySelectorAll(`${itemSel} video-player,${itemSel} iframe[src*="youtube.com"],${itemSel} iframe[src*="youtube-nocookie.com"],${itemSel} iframe[src*="vimeo.com"],${itemSel} video,${itemSel} a11y-media-player`).length,
               audio: doc.querySelectorAll(`${itemSel} audio,${itemSel} audio-player`).length,
+              placeholders: doc.querySelectorAll(`${itemSel} place-holder`).length,
               selfChecks: doc.querySelectorAll(`${itemSel} iframe.entity_iframe,${itemSel} self-check,${itemSel} multiple-choice`).length,
               objectives: doc.querySelectorAll(`${itemSel} instruction-card[type="objectives"] li`).length,
               images: doc.querySelectorAll(`${itemSel} media-image,${itemSel} img,${itemSel} simple-img`).length,
