@@ -27,6 +27,10 @@ class HaxAppBrowser extends LitElement {
           max-height: 0 !important;
           transition: all 0.5s;
         }
+        hax-tray-button {
+          font-size: 11px;
+          --hax-ui-font-size-sm: 11px;
+        }
         .visibility-hidden {
           z-index: -1;
           visibility: hidden;
@@ -65,7 +69,7 @@ class HaxAppBrowser extends LitElement {
       <simple-button-grid
         class="${this.searching ? "collapse-hide" : ""}"
         always-expanded
-        columns="3"
+        columns="4"
       >
         ${this.appList.map(
           (app) => html`

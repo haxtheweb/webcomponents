@@ -25,6 +25,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         :host > * {
           max-width: 100%;
         }
+        hax-tray-button {
+          font-size: 10px;
+          --hax-ui-font-size-sm: 10px;
+        }
         .toolbar-inner {
           display: flex;
           flex-direction: column;
@@ -65,7 +69,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           part="filter"
         ></simple-fields-field>
       </div>
-      <simple-button-grid columns="3" always-expanded part="grid">
+      <simple-button-grid columns="4" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
             <hax-tray-button
