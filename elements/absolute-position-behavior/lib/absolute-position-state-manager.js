@@ -273,9 +273,9 @@ class AbsolutePositionStateManager extends LitElement {
     if (!el.style.left) el.style.left = "0px";
 
     //continue only if there is a target and a parent
-    let target = this.findTarget(el),
-      parent = el.offsetParent,
-      t = !target || target.getBoundingClientRect();
+    let target = this.findTarget(el);
+    let parent = el.offsetParent;
+    let t = target && target.getBoundingClientRect ? target.getBoundingClientRect() : {};
     if (!target || !parent) return;
     //if justify is set, re-adjust element to
     //target width before getting other dimensions

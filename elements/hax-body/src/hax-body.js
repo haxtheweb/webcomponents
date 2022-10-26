@@ -759,14 +759,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
           <hax-text-editor-toolbar
             id="textcontextmenu"
-            class="hax-context-menu ignore-activation ${!this.activeNode ||
-            this.activeNode.getAttribute("data-hax-lock") ||
-            (this.activeNode.parentNode &&
-              this.activeNode.parentNode.getAttribute("data-hax-lock")) ||
-            (!HAXStore.isTextElement(this.activeNode) &&
-              !HAXStore.isSingleSlotElement(this.activeNode))
-              ? "not-text"
-              : "is-text"}"
+            class="hax-context-menu ignore-activation ${this.calcClasses(this.activeNode)}"
             .activeNode="${this.activeNode}"
             show="always"
           >
@@ -774,6 +767,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         </div>
       </absolute-position-behavior>
     `;
+  }
+  calcClasses(activeNode) {
+    let txt = 'not-text';
+    if (activeNode && activeNode.getAttribute && !activeNode.getAttribute("data-hax-lock")
+    && activeNode.parentNode &&
+    activeNode.parentNode.getAttribute && !activeNode.parentNode.getAttribute("data-hax-lock")
+    && HAXStore.isTextElement(activeNode) && !HAXStore.isSingleSlotElement(activeNode)) {
+      txt = 'is-text';
+    }
+    return txt;
   }
   /**
    * LitElement / popular convention
@@ -3867,7 +3870,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
 
   unsetElementEditMode(node = this.activeNode) {
-    if (!node) return;
+    if (!node || !node.getAttribute) return;
     let editProp = node.getAttribute("data-element-edit-mode") || "editMode";
     node[editProp] = false;
     this.__applyNodeEditableState(node, this.editMode);
@@ -3941,7 +3944,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.editMode &&
       typeof newValue !== typeof undefined &&
       newValue !== null &&
-      newValue.parentNode
+      newValue.parentNode &&
+      newValue.tagName
     ) {
       let tag = newValue.tagName.toLowerCase();
       // remove the menu, establish the new active, then reapply
@@ -3997,7 +4001,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support for custom editing interfaces defined by the element
     // this requires wrapping to modify which as the data is in it's slow it could
     // do whatever it wants but the expectation is it is ONLY working with that element
-    if (this.editMode && oldValue) {
+    if (this.editMode && oldValue && oldValue.tagName) {
       let oldSchema = HAXStore.haxSchemaFromTag(oldValue.tagName.toLowerCase());
       // account for other things injecting a UI that needs removed on loss of focus
       if (

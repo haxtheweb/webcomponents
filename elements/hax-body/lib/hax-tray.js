@@ -1685,7 +1685,7 @@ class HaxTray extends I18NMixin(
                 }
               }
               // this will get reached often but tough to know if we had a slot
-              if (!setAhead) {
+              if (!setAhead && camelCaseToDash(prop) != '') {
                 try {
                   // silly but this is the spec way to do a boolean
                   if (settings[key][prop] === true) {

@@ -2847,9 +2847,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * get the schema from a tag
    */
   haxSchemaFromTag(tag) {
-    tag = tag.toLowerCase();
-    if (this.elementList && this.elementList[tag]) {
-      return this.elementList[tag];
+    if (tag && tag.toLowerCase) {
+      tag = tag.toLowerCase();
+      if (this.elementList && this.elementList[tag]) {
+        return this.elementList[tag];
+      }  
     }
     return {};
   }

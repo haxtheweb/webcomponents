@@ -2,6 +2,7 @@ import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import {
   normalizeEventPath,
@@ -60,43 +61,67 @@ class HaxMap extends I18NMixin(LitElement) {
           margin: 0;
           padding: 0;
         }
-        li > hax-toolbar-item {
-          width: 100%;
+        li hax-toolbar-item {
+          display: inline-flex;
+          width: 50%;
+          max-width: 60%;
+        }
+        li simple-icon-button {
+          display: inline-flex;
+          opacity: 0;
+          visibility: hidden;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          height: 38px;
+          float: right;
+        }
+        li simple-icon-button.del {
+          margin-left: 8px;
+        }
+        li:hover simple-icon-button {
+          visibility: visible;
+          opacity: 1;
         }
         hax-toolbar-item[data-active-item]::part(button) {
           color: var(--hax-ui-color);
           background-color: var(--hax-ui-background-color-accent);
           border-color: var(--hax-ui-color-accent);
         }
-        li > hax-toolbar-item::part(button),
-        li > hax-toolbar-item.heading-level-page-break::part(button),
-        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
-          width: 100%;
+        li.is-child {
+          margin-left: 8px;
+        }
+
+        li hax-toolbar-item::part(button),
+        li.parent-h2 hax-toolbar-item[icon="hax:h2"]::part(button) {
           margin-left: 0px;
+          cursor: pointer;
         }
-        li > hax-toolbar-item.heading-level-h2::part(button),
-        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {
-          width: calc(100% - 26px);
-          margin-left: 26px;
+        li.parent-h2 hax-toolbar-item::part(button),
+        li.parent-h2 + li.is-child hax-toolbar-item::part(button),
+        li.parent-h2 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
+        li.parent-h3 hax-toolbar-item[icon="hax:h3"]::part(button) {
+          margin-left: 8px;
         }
-        li > hax-toolbar-item.heading-level-h3::part(button),
-        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {
-          width: calc(100% - calc(2 * 26px));
-          margin-left: calc(2 * 26px);
+        li.parent-h3 hax-toolbar-item::part(button),
+        li.parent-h3 + li.is-child hax-toolbar-item::part(button),
+        li.parent-h3 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
+        li.parent-h4 hax-toolbar-item[icon="hax:h4"]::part(button) {
+          margin-left: calc(2 * 8px);
         }
-        li > hax-toolbar-item.heading-level-h4::part(button),
-        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {
-          width: calc(100% - calc(3 * 26px));
-          margin-left: calc(3 * 26px);
+        li.parent-h4 hax-toolbar-item::part(button),
+        li.parent-h4 + li.is-child hax-toolbar-item::part(button),
+        li.parent-h4 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
+        li.parent-h5 hax-toolbar-item[icon="hax:h5"]::part(button) {
+          margin-left: calc(3 * 8px);
         }
-        li > hax-toolbar-item.heading-level-h5::part(button),
-        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {
-          width: calc(100% - calc(4 * 26px));
-          margin-left: calc(4 * 26px);
-        }
-        li > hax-toolbar-item.heading-level-h6::part(button) {
-          width: calc(100% - calc(5 * 26px));
-          margin-left: calc(5 * 26px);
+        li.parent-h5 hax-toolbar-item::part(button),
+        li.parent-h5 + li.is-child hax-toolbar-item::part(button),
+        li.parent-h5 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
+        li.parent-h6 hax-toolbar-item[icon="hax:h6"]::part(button),
+        li.parent-h6 hax-toolbar-item::part(button),
+        li.parent-h6 + li.is-child hax-toolbar-item::part(button),
+        li.parent-h6 + li.is-child ~ li.is-child hax-toolbar-item::part(button) {
+          margin-left: calc(4 * 8px);
         }
       `,
     ];
@@ -108,7 +133,6 @@ class HaxMap extends I18NMixin(LitElement) {
       contentStatistics: "Content Statistics",
       words: "Words",
       headings: "Headings",
-      pageBreaks: "Page breaks",
       paragraphs: "Paragraphs",
       widgets: "Widgets",
       characters: "Characters",
@@ -119,14 +143,29 @@ class HaxMap extends I18NMixin(LitElement) {
       namespace: "hax",
     });
     autorun(() => {
-      this.activeNodeIndex = toJS(HAXStore.activeNodeIndex);
+      this.activeNode = toJS(HAXStore.activeNode);
+      this.requestUpdate();
     });
   }
   async updateHAXMap(e) {
     let list = [];
     for (var i = 0; i < HAXStore.activeHaxBody.childNodes.length; i++) {
       const node = HAXStore.activeHaxBody.childNodes[i];
-      list.push(await nodeToHaxElement(node, null));
+      let tmpNode = await nodeToHaxElement(node, null);
+      tmpNode.parent = null;
+      tmpNode.node = node;
+      list.push(tmpNode);
+      if (node.children && node.children.length > 0) {
+        for (var j = 0; j < node.children.length; j++) {
+          let tmpNodeChild = await nodeToHaxElement(node.children[j], null);
+          tmpNodeChild.parent = tmpNode.tag;
+          tmpNodeChild.node = node.children[j];
+          // ignore certain tags we don't need a deep selection of
+          if (!['span', 'strong', 'b', 'sup', 'sub', 'i', 'em'].includes(tmpNodeChild.tag)) {
+            list.push(tmpNodeChild);
+          }
+        }
+      }
     }
     this.calcStats(list);
     let elements = [];
@@ -134,7 +173,9 @@ class HaxMap extends I18NMixin(LitElement) {
       let def = HAXStore.haxSchemaFromTag(list[i].tag);
       if (def.gizmo) {
         elements.push({
+          node: list[i].node,
           tag: list[i].tag,
+          parent: list[i].parent,
           icon: def.gizmo.icon,
           name: def.gizmo.title,
         });
@@ -142,12 +183,14 @@ class HaxMap extends I18NMixin(LitElement) {
         if (list[i].tag && list[i].tag.includes("-")) {
           elements.push({
             tag: list[i].tag,
+            parent: list[i].parent,
             icon: "hax:templates",
             name: "Widget",
           });
         } else {
           elements.push({
             tag: list[i].tag,
+            parent: list[i].parent,
             icon: "hax:paragraph",
             name: "HTML block",
           });
@@ -189,9 +232,6 @@ class HaxMap extends I18NMixin(LitElement) {
           case "h6":
             counts.h++;
             break;
-          case "page-break":
-            counts.b++;
-            break;
           default:
             counts.e++;
             break;
@@ -219,10 +259,6 @@ class HaxMap extends I18NMixin(LitElement) {
           <span>${this.t.characters}</span>
         </div>
         <div class="stat">
-          <span>${this.bCount}</span>
-          <span>${this.t.pageBreaks}</span>
-        </div>
-        <div class="stat">
           <span>${this.hCount}</span>
           <span>${this.t.headings}</span>
         </div>
@@ -233,35 +269,73 @@ class HaxMap extends I18NMixin(LitElement) {
       </div>
       <h5>${this.t.listView}</h5>
       <ul>
-        ${this.indentedElements.map((element, index) => {
+        ${this.indentedElements(this.elementList).map((element, index) => {
           return html`
-            <li>
+            <li class="${element.parent ? `parent-${element.parent}` : 'no-parent'} ${["h1", "h2", "h3", "h4", "h5", "h6", element.tag].includes(element.parent) ? '' : 'is-child'}">
               <hax-toolbar-item
                 align-horizontal="left"
-                class="heading-level-${element.parent || "h1"}"
                 @click="${(e) => this.goToItem(index)}"
                 data-index="${index}"
-                ?data-active-item="${index === this.activeNodeIndex}"
+                ?data-active-item="${element.node === this.activeNode}"
                 icon="${element.icon}"
                 label="${element.name}"
                 show-text-label
               >
               </hax-toolbar-item>
+              ${element.tag != 'page-break' ? html`  
+              <simple-icon-button class="del" icon="delete" @click="${(e) => this.itemOp(index, 'delete')}" title="Delete" ?disabled="${this.isLocked(index)}"></simple-icon-button>
+              <simple-icon-button icon="hax:keyboard-arrow-up" @click="${(e) => this.itemOp(index, 'up')}" title="Move up" ?disabled="${this.isLocked(index)}"></simple-icon-button>
+              <simple-icon-button icon="hax:keyboard-arrow-down" @click="${(e) => this.itemOp(index, 'down')}" title="Move down" ?disabled="${this.isLocked(index)}"></simple-icon-button>
+              ` : ``}
             </li>
           `;
         })}
       </ul>
     `;
   }
-  get indentedElements() {
+  isLocked(index) {
+    if (index !== false && this.elementList[index].node) {
+      let node = this.elementList[index].node;
+      if (node.getAttribute("data-hax-lock") != null) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  }
+  itemOp(index, action) {
+    if (index !== false && this.elementList[index].node && action) {
+      let node = this.elementList[index].node;
+      // verify this is not locked
+      if (node.getAttribute("data-hax-lock") == null) {
+        HAXStore.activeNode = node;
+        switch (action) {
+          case 'delete':
+            node.remove();
+          break;
+          case 'up':
+            if (node.previousElementSibling) {
+              node.previousElementSibling.insertAdjacentElement('beforebegin', node);
+            }
+          break;
+          case 'down':
+            if (node.previousElementSibling) {
+              node.previousElementSibling.insertAdjacentElement('afterend', node);
+            }
+          break;
+        }
+      }
+    }
+  }
+  indentedElements(elementList) {
     let prev = "h1";
-    return this.elementList.map((element) => {
+    return elementList.map((element) => {
       let el = element;
-      el.parent = prev;
-      if (el.tag === "page-break") {
-        el.parent = "page-break";
-        prev = "page-break";
-      } else if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(el.tag)) {
+      if (el.parent === null) {
+        el.parent = prev;
+      }
+      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(el.tag)) {
         el.parent = el.tag;
         prev = el.tag;
       }
@@ -269,9 +343,9 @@ class HaxMap extends I18NMixin(LitElement) {
     });
   }
   goToItem(index) {
-    if (index !== false) {
+    if (index !== false && this.elementList[index].node) {
       // find based on index position
-      let activeChild = HAXStore.activeHaxBody.children[parseInt(index)];
+      let activeChild = this.elementList[index].node;
       HAXStore.activeNode = activeChild;
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
@@ -322,9 +396,6 @@ class HaxMap extends I18NMixin(LitElement) {
       },
       eCount: {
         type: String,
-      },
-      activeNodeIndex: {
-        type: Number,
       },
     };
   }

@@ -1280,7 +1280,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!!target && !target.hidden && !target.disabled) {
         if (target.makeSticky) target.makeSticky(this.sticky);
         this.positionByTarget(target);
-        target.setAttribute("contenteditable", "true");
+        if (target && target.setAttribute) {
+          target.setAttribute("contenteditable", "true");
+        }
 
         Object.keys(handlers).forEach((handler) =>
           target.removeEventListener(handler, handlers[handler])
@@ -1316,7 +1318,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.getRoot(target).onselectionchange = undefined;
         this.observeChanges(false);
         if (this.__source) this.__source.toggle(false);
-        target.removeAttribute("contenteditable");
+        if (target && target.removeAttribute) {
+          target.removeAttribute("contenteditable");
+        }
 
         Object.keys(handlers).forEach((handler) =>
           target.removeEventListener(handler, handlers[handler])
@@ -1404,9 +1408,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target),
         oldTarget = this.target;
       if (!!target) {
-        if (oldTarget && oldTarget.getAttribute("role") == "textbox")
+        if (oldTarget && oldTarget.getAttribute && oldTarget.getAttribute("role") == "textbox") {
           oldTarget.removeAttribute("role");
-        target.setAttribute("role", "textbox");
+        }
+        if (target && target.setAttribute) {
+          target.setAttribute("role", "textbox");
+        }
         if (oldTarget !== target) {
           if (!!oldTarget) this.unsetTarget(oldTarget);
           Object.keys(handlers).forEach((handler) =>
