@@ -70,8 +70,8 @@ class HaxMap extends I18NMixin(LitElement) {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
-          --simple-icon-width: 20px;
-          --simple-icon-height: 20px;
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
           height: 38px;
           float: right;
         }
@@ -161,7 +161,7 @@ class HaxMap extends I18NMixin(LitElement) {
           tmpNodeChild.parent = tmpNode.tag;
           tmpNodeChild.node = node.children[j];
           // ignore certain tags we don't need a deep selection of
-          if (!['span', 'strong', 'b', 'sup', 'sub', 'i', 'em'].includes(tmpNodeChild.tag)) {
+          if (!['span', 'strong', 'b', 'sup', 'sub', 'i', 'em', 'div', 'strike'].includes(tmpNodeChild.tag)) {
             list.push(tmpNodeChild);
           }
         }
@@ -282,10 +282,11 @@ class HaxMap extends I18NMixin(LitElement) {
                 show-text-label
               >
               </hax-toolbar-item>
-              ${element.tag != 'page-break' ? html`  
+              ${element.tag != 'page-break' ? html`
               <simple-icon-button class="del" icon="delete" @click="${(e) => this.itemOp(index, 'delete')}" title="Delete" ?disabled="${this.isLocked(index)}"></simple-icon-button>
               <simple-icon-button icon="hax:keyboard-arrow-up" @click="${(e) => this.itemOp(index, 'up')}" title="Move up" ?disabled="${this.isLocked(index)}"></simple-icon-button>
               <simple-icon-button icon="hax:keyboard-arrow-down" @click="${(e) => this.itemOp(index, 'down')}" title="Move down" ?disabled="${this.isLocked(index)}"></simple-icon-button>
+              <simple-icon-button icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}" @click="${(e) => this.itemOp(index, 'lock')}" title="Lock / Unlock"></simple-icon-button>
               ` : ``}
             </li>
           `;
@@ -311,20 +312,28 @@ class HaxMap extends I18NMixin(LitElement) {
       if (node.getAttribute("data-hax-lock") == null) {
         HAXStore.activeNode = node;
         switch (action) {
+          case 'lock':
+            node.setAttribute("data-hax-lock", "data-hax-lock");
+          break;
           case 'delete':
             node.remove();
           break;
+          case 'down':
+            console.log(node.nextElementSibling);
+            if (node.nextElementSibling) {
+              node.nextElementSibling.insertAdjacentElement('afterend', node);
+            }
+          break;
           case 'up':
-            if (node.previousElementSibling) {
+            console.log(node.previousElementSibling);
+            if (node.previousElementSibling && node.previousElementSibling.tagName !== 'PAGE-BREAK') {
               node.previousElementSibling.insertAdjacentElement('beforebegin', node);
             }
           break;
-          case 'down':
-            if (node.previousElementSibling) {
-              node.previousElementSibling.insertAdjacentElement('afterend', node);
-            }
-          break;
         }
+      }
+      else if (action === 'lock') {
+        node.removeAttribute("data-hax-lock");
       }
     }
   }
