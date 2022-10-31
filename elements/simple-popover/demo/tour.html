@@ -34,19 +34,19 @@
         <template>
           <button id="tourbtn">Start tour 1</button>
           <button id="tourbtn2">Start tour 2</button>
-          <simple-popover-selection id="popover" position="bottom">
+          <simple-popover-selection id="popover" event="hover">
             <button slot="button">Selection area</button>
             <button slot="options" value="1">Option 1</button>
             <button slot="options" value="cool">Option 2</button>
             <button slot="options" value="stuff">Option 3</button>
           </simple-popover-selection>
-          <simple-popover-selection id="popover2" position="bottom">
+          <simple-popover-selection id="popover2">
             <button slot="button">Selection area</button>
             <button slot="options" value="1">Option 3</button>
             <button slot="options" value="cool">Option 4</button>
             <button slot="options" value="stuff">Option 5</button>
           </simple-popover-selection>
-          <simple-popover-selection id="popover3" position="bottom">
+          <simple-popover-selection id="popover3">
             <button slot="button">Selection area</button>
             <button slot="options" value="1">Option 5</button>
             <button slot="options" value="cool">Option 6</button>
@@ -64,7 +64,10 @@
             </p>
             <p id="p2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Quisque porta, dolor at pharetra condimentum, elit tellus 
+              <simple-popover-selection event="hover">
+                <span slot="button">Quisque porta</span>
+                <span slot="options">All the contents</span>
+              </simple-popover-selection>, dolor at pharetra condimentum, elit tellus 
               scelerisque lacus, ut placerat lectus quam in massa. 
               Donec sit amet sapien vitae nibh ultricies hendrerit sit 
               amet dignissim justo. Orci varius natoque penatibus et 

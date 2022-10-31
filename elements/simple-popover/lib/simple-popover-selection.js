@@ -6,6 +6,7 @@ class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
     this.disabled = false;
+    this.event = 'click';
   }
 
   openedToggle(e) {
@@ -16,8 +17,12 @@ class SimplePopoverSelection extends LitElement {
 
   openedChanged(state) {
     if (state) {
+      let popover = window.SimplePopoverManager.requestAvailability();
+      render(
+        document.createElement("div"),
+        popover
+      );
       let div = document.createElement("div");
-      render(div, window.SimplePopoverManager.requestAvailability());
       let slot = this.querySelectorAll('[slot="options"]');
       // account for nesting in a single option area
       if (
@@ -50,7 +55,10 @@ class SimplePopoverSelection extends LitElement {
       } else {
         content = html`${unsafeHTML(div.innerHTML)}`;
       }
-      render(content, window.SimplePopoverManager.requestAvailability());
+      let wrap = document.createElement('div');
+      wrap.setAttribute('slot', 'body');
+      popover.appendChild(wrap); 
+      render(content, wrap);
       // delay for render
       setTimeout(() => {
         // walk kids in the element and apply event listeners back to here
@@ -133,14 +141,41 @@ class SimplePopoverSelection extends LitElement {
       /**
        * disabled state
        */
-      disabled: {
+       disabled: {
         type: Boolean,
         reflect: true,
+      },
+      /**
+       * event activation type
+       */
+       event: {
+        type: String,
       },
     };
   }
   firstUpdated() {
-    this.addEventListener("click", this.openedToggle.bind(this));
+    if (this.event === 'click') {
+      this.addEventListener("click", this.openedToggle.bind(this));
+    }
+    else if (this.event === 'hover') {
+      this.addEventListener("mouseenter", this.openPopover.bind(this));      
+      this.addEventListener("focusin", this.openPopover.bind(this));      
+      this.addEventListener("focusout", this.closePopover.bind(this));      
+      this.addEventListener("mouseleave", this.closePopover.bind(this));      
+      this.addEventListener("mouseout", this.closePopover.bind(this));      
+    }
+  }
+  openPopover() {
+    if (!this.disabled) {
+      setTimeout(() => {
+        this.opened = true;
+      }, 0);
+    }
+  }
+  closePopover() {
+    setTimeout(() => {
+      this.opened = false;      
+    }, 0);
   }
   render() {
     return html`<slot name="button"></slot>`;

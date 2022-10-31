@@ -2,9 +2,11 @@ import { LitElement, html, css } from "lit";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import "./hax-element-demo.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
@@ -25,7 +27,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         :host > * {
           max-width: 100%;
         }
+        simple-popover-selection {
+          display: flex;
+        }
         hax-tray-button {
+          flex: auto;
           font-size: 10px;
           --hax-ui-font-size-sm: 10px;
         }
@@ -55,6 +61,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       context: this,
       namespace: "hax",
     });
+    this.addEventListener("mouseleave", this.closePopover.bind(this));      
+    this.addEventListener("mouseout", this.closePopover.bind(this));  
+  }
+  closePopover() {
+    let popover = window.SimplePopoverManager.requestAvailability();
+    popover.opened = false;
   }
   render() {
     return html`
@@ -72,6 +84,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       <simple-button-grid columns="4" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
+          <simple-popover-selection event="hover">
             <hax-tray-button
               show-text-label
               voice-command="insert ${gizmo.title}"
@@ -85,7 +98,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
               icon-position="top"
               icon="${gizmo.icon}"
               part="grid-button"
+              slot="button"
             ></hax-tray-button>
+            <hax-element-demo tag-name="${gizmo.tag}" slot="options"></hax-element-demo>
+            </simple-popover-selection>
           `
         )}
       </simple-button-grid>
