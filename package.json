@@ -160,11 +160,15 @@
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
-    "rollup-plugin-copy": "3.4.0"
+    "rollup-plugin-copy": "3.4.0",
+    "@lit/reactive-element": "^1.4.0",
+    "lit-element": "^3.2.0",
+    "lit-html": "^2.4.0"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "chokidar": "^3.0.0",
+    "@lit/reactive-element": "1.4.2",
     "lit-element": "3.2.2",
     "lit-html": "2.4.0",
     "roughjs": "4.4.5",
