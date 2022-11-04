@@ -915,5 +915,5 @@ class LrnappStudioKanban extends PolymerElement {
     });
   }
 }
-window.customElements.define(LrnappStudioKanban.tag, LrnappStudioKanban);
+customElements.define(LrnappStudioKanban.tag, LrnappStudioKanban);
 export { LrnappStudioKanban };

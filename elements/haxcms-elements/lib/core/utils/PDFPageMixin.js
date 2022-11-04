@@ -17,12 +17,12 @@ export const PDFPageMixin = function (SuperClass) {
       this.t = {
         ...this.t,
         downloadPdf: "Download PDF",
-        downloadingPdfPleaseWait: "Downloading PDF, please wait"
+        downloadingPdfPleaseWait: "Downloading PDF, please wait",
       };
       this.__pdfLoading = false;
     }
 
-    PDFPageButton(position = 'auto') {
+    PDFPageButton(position = "auto") {
       return html`
         ${MicroFrontendRegistry.has("@core/htmlToPdf")
           ? html` <div
@@ -38,7 +38,9 @@ export const PDFPageMixin = function (SuperClass) {
               >
               </simple-icon-button-lite>
               <simple-tooltip for="pdf-page-btn" position="${position}">
-              ${this.__pdfLoading ? this.t.downloadingPdfPleaseWait : this.t.downloadPdf}
+                ${this.__pdfLoading
+                  ? this.t.downloadingPdfPleaseWait
+                  : this.t.downloadPdf}
               </simple-tooltip>
             </div>`
           : ``}
@@ -47,8 +49,8 @@ export const PDFPageMixin = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-        __pdfLoading: { type: Boolean }
-      }
+        __pdfLoading: { type: Boolean },
+      };
     }
     /**
      * Download PDF, via microservice

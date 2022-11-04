@@ -144,5 +144,5 @@ class SimpleModalTemplate extends LitElement {
     return slot !== null ? container.cloneNode(true) : false;
   }
 }
-window.customElements.define(SimpleModalTemplate.tag, SimpleModalTemplate);
+customElements.define(SimpleModalTemplate.tag, SimpleModalTemplate);
 export { SimpleModalTemplate };

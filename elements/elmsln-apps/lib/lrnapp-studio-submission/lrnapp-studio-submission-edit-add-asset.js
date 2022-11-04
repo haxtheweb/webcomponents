@@ -65,7 +65,7 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
     };
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditAddAsset.tag,
   LrnappStudioSubmissionEditAddAsset
 );

@@ -225,5 +225,5 @@ class LrnappGalleryGrid extends PolymerElement {
     });
   }
 }
-window.customElements.define(LrnappGalleryGrid.tag, LrnappGalleryGrid);
+customElements.define(LrnappGalleryGrid.tag, LrnappGalleryGrid);
 export { LrnappGalleryGrid };

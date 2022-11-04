@@ -440,5 +440,5 @@ class GameShowScoreboard extends PolymerElement {
   }
 }
 
-window.customElements.define(GameShowScoreboard.tag, GameShowScoreboard);
+customElements.define(GameShowScoreboard.tag, GameShowScoreboard);
 export { GameShowScoreboard };

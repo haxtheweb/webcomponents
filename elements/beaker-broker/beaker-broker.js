@@ -40,15 +40,9 @@ class BeakerBroker extends LitElement {
     return {
       ...super.properties,
 
-      /**
-       * Archive
-       */
       archive: {
         type: Object,
       },
-      /**
-       * datUrl
-       */
       datUrl: {
         type: String,
         attribute: "dat-url",

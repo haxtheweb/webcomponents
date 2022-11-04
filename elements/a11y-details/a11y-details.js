@@ -4,55 +4,55 @@
  */
 import { LitElement, html, css } from "lit";
 /**
- * `a11y-details`
- * accessible progressive disclosure with detail and summary
-### Styling
-#### Summary Button
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-summary-fontSize | font-size | 0.8em
---a11y-details-summary-color | text color | #000
---a11y-details-summary-backgroundColor | background-color | #fff
---a11y-details-summary-borderColor | border-color | #000
---a11y-details-summary-borderWidth | border-width | 1px
---a11y-details-summary-borderStyle | border-style | solid
---a11y-details-summary-borderRadius | border-radius | 3px
---a11y-details-summary-padding | padding | 0.5em
-
-#### Summary Button (:focus state)
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-summary-focus-color | text color | #000
---a11y-details-summary-focus-backgroundColor | background-color | #fff
---a11y-details-summary-focus-borderColor | border-color | #000
---a11y-details-summary-focus-borderWidth | border-width | 1px
---a11y-details-summary-focus-borderStyle | border-style | dotted
---a11y-details-summary-focus-borderRadius | border-radius | 3px
-
-#### Details
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-fontSize | font-size  | 0.8em
---a11y-details-color | text color | #000
---a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
---a11y-details-borderColor | border-color | #000
---a11y-details-borderWidth | border-width | 1px
---a11y-details-borderStyle | border-style | solid
---a11y-details-borderRadius | border-radius | 3px
---a11y-details-padding | padding | 0.5em
---a11y-details-left | left position | 0
---a11y-details-right | right position | 0
---a11y-details-maxHeight | max-height | 400px
-
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @lit-html
- * @lit-element
- * @demo demo/index.html
- */
+  * `a11y-details`
+  * accessible progressive disclosure with detail and summary
+ ### Styling
+ #### Summary Button
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-summary-fontSize | font-size | 0.8em
+ --a11y-details-summary-color | text color | #000
+ --a11y-details-summary-backgroundColor | background-color | #fff
+ --a11y-details-summary-borderColor | border-color | #000
+ --a11y-details-summary-borderWidth | border-width | 1px
+ --a11y-details-summary-borderStyle | border-style | solid
+ --a11y-details-summary-borderRadius | border-radius | 3px
+ --a11y-details-summary-padding | padding | 0.5em
+ 
+ #### Summary Button (:focus state)
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-summary-focus-color | text color | #000
+ --a11y-details-summary-focus-backgroundColor | background-color | #fff
+ --a11y-details-summary-focus-borderColor | border-color | #000
+ --a11y-details-summary-focus-borderWidth | border-width | 1px
+ --a11y-details-summary-focus-borderStyle | border-style | dotted
+ --a11y-details-summary-focus-borderRadius | border-radius | 3px
+ 
+ #### Details
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-fontSize | font-size  | 0.8em
+ --a11y-details-color | text color | #000
+ --a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
+ --a11y-details-borderColor | border-color | #000
+ --a11y-details-borderWidth | border-width | 1px
+ --a11y-details-borderStyle | border-style | solid
+ --a11y-details-borderRadius | border-radius | 3px
+ --a11y-details-padding | padding | 0.5em
+ --a11y-details-left | left position | 0
+ --a11y-details-right | right position | 0
+ --a11y-details-maxHeight | max-height | 400px
+ 
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+  * @customElement
+  * @lit-html
+  * @lit-element
+  * @demo demo/index.html
+  */
 class A11yDetails extends LitElement {
   //styles function
   static get styles() {
@@ -295,7 +295,7 @@ class A11yDetails extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "a11y-details";
   }
 

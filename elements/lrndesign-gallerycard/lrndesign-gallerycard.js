@@ -280,5 +280,5 @@ class LrndesignGallerycard extends LitElement {
     this.elevation -= 2;
   }
 }
-window.customElements.define(LrndesignGallerycard.tag, LrndesignGallerycard);
+customElements.define(LrndesignGallerycard.tag, LrndesignGallerycard);
 export { LrndesignGallerycard };

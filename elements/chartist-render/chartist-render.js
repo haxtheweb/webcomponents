@@ -1176,60 +1176,60 @@ const ChartistRenderSuper = function (SuperClass) {
           type: Array,
         },
         /**
-   * The responsive options.
-
-    From https://gionkunz.github.io/chartist-js/api-documentation.html:
-
-    In addition to the regular options we specify responsive option 
-    overrides that will override the default configutation based 
-    on the matching media queries.
-
-    `var responsiveOptions = [
-      ['screen and (min-width: 641px) and (max-width: 1024px)', {
-        showPoint: false,
-        axisX: {
-          labelInterpolationFnc: function(value) {
-            // Will return Mon, Tue, Wed etc. on medium screens
-            return value.slice(0, 3);
-          }
-        }
-      }],
-      ['screen and (max-width: 640px)', {
-        showLine: false,
-        axisX: {
-          labelInterpolationFnc: function(value) {
-            // Will return M, T, W etc. on small screens
-            return value[0];
-          }
-        }
-      }]
-    ];`
-   */
+    * The responsive options.
+ 
+     From https://gionkunz.github.io/chartist-js/api-documentation.html:
+ 
+     In addition to the regular options we specify responsive option 
+     overrides that will override the default configutation based 
+     on the matching media queries.
+ 
+     `var responsiveOptions = [
+       ['screen and (min-width: 641px) and (max-width: 1024px)', {
+         showPoint: false,
+         axisX: {
+           labelInterpolationFnc: function(value) {
+             // Will return Mon, Tue, Wed etc. on medium screens
+             return value.slice(0, 3);
+           }
+         }
+       }],
+       ['screen and (max-width: 640px)', {
+         showLine: false,
+         axisX: {
+           labelInterpolationFnc: function(value) {
+             // Will return M, T, W etc. on small screens
+             return value[0];
+           }
+         }
+       }]
+     ];`
+    */
         responsiveOptions: {
           type: Array,
           attribute: "responsive-options",
         },
         /**
-   * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
-Container class	Ratio
-.ct-square          1
-.ct-minor-second	  15:16
-.ct-major-second	  8:9
-.ct-minor-third	    5:6
-.ct-major-third	    4:5
-.ct-perfect-fourth	3:4
-.ct-perfect-fifth	  2:3
-.ct-minor-sixth	    5:8
-.ct-golden-section	1:1.618
-.ct-major-sixth	    3:5
-.ct-minor-seventh	  9:16
-.ct-major-seventh	  8:15
-.ct-octave	        1:2
-.ct-major-tenth	    2:5
-.ct-major-eleventh	3:8
-.ct-major-twelfth	  1:3
-.ct-double-octave	  1:4```
-   */
+    * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
+ Container class	Ratio
+ .ct-square          1
+ .ct-minor-second	  15:16
+ .ct-major-second	  8:9
+ .ct-minor-third	    5:6
+ .ct-major-third	    4:5
+ .ct-perfect-fourth	3:4
+ .ct-perfect-fifth	  2:3
+ .ct-minor-sixth	    5:8
+ .ct-golden-section	1:1.618
+ .ct-major-sixth	    3:5
+ .ct-minor-seventh	  9:16
+ .ct-major-seventh	  8:15
+ .ct-octave	        1:2
+ .ct-major-tenth	    2:5
+ .ct-major-eleventh	3:8
+ .ct-major-twelfth	  1:3
+ .ct-double-octave	  1:4```
+    */
         scale: {
           type: String,
         },
@@ -1657,28 +1657,28 @@ Container class	Ratio
         table = table || document.createElement("table");
         if (thead)
           html += `
-          <thead><tr>
-            ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
-            ${
-              thead.col
-                ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
-                : ``
-            }
-          </tr></thead>`;
+           <thead><tr>
+             ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
+             ${
+               thead.col
+                 ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
+                 : ``
+             }
+           </tr></thead>`;
         if (tbody.length > 0)
           html += `
-          <tbody>
-            ${tbody
-              .map(
-                (tr) => `
-              <tr>
-                ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
-                ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
-              </tr>
-            `
-              )
-              .join("")}
-          </tbody>`;
+           <tbody>
+             ${tbody
+               .map(
+                 (tr) => `
+               <tr>
+                 ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
+                 ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
+               </tr>
+             `
+               )
+               .join("")}
+           </tbody>`;
         table.innerHTML = html;
         this.appendChild(table);
       } else if (table) {
@@ -1731,57 +1731,57 @@ Container class	Ratio
   };
 };
 /**
- * @element chartist-render
- * @extends SchemaBehaviors
- * @demo ./demo/index.html 
- * @demo ./demo/csv.html CSV Loading
- * 
- * `chartist-render`
- * uses chartist library to render a chart
- *
-### Styling
-
-`<chartist-render>` provides the following custom properties
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--chartist-bg-padding` | padding inside chartist-render | 0px
-`--chartist-bg-margin` | margin chartist chartist-render | 15px 0
-`--chartist-text-color` | default label color for charts | #000
-`--chartist-bg-color` | default label color for charts | #000
-`--chartist-text-color` | default label color for charts | #000
-`--chartist-color-a` | background color for 1st series |  #d70206
-`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
-`--chartist-color-b` | background color for 2nd series |  #f05b4f
-`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`
-`--chartist-color-c` | background color for 3rd series |  #f4c63d
-`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`
-`--chartist-color-d` | background color for 4th series |  #d17905
-`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`
-`--chartist-color-e` | background color for 5th series |  #453d3f
-`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`
-`--chartist-color-f` | background color for 6th series |  #59922b
-`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`
-`--chartist-color-g` | background color for 7th series |  #0544d3
-`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`
-`--chartist-color-h` | background color for 8th series |  #6b0392
-`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`
-`--chartist-color-i` | background color for 9th series |  #f05b4f
-`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`
-`--chartist-color-j` | background color for 10th series |  #dda458
-`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`
-`--chartist-color-k` | background color for 11th series |  #eacf7d
-`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`
-`--chartist-color-l` | background color for 12th series |  #86797d
-`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`
-`--chartist-color-m` | background color for 13th series |  #b2c326
-`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`
-`--chartist-color-n` | background color for 14th series |  #6188e2
-`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
-`--chartist-color-0` | background color for 15th series |  #a748ca
-`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
- */
+  * @element chartist-render
+  * @extends SchemaBehaviors
+  * @demo ./demo/index.html 
+  * @demo ./demo/csv.html CSV Loading
+  * 
+  * `chartist-render`
+  * uses chartist library to render a chart
+  *
+ ### Styling
+ 
+ `<chartist-render>` provides the following custom properties
+ for styling:
+ 
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--chartist-bg-padding` | padding inside chartist-render | 0px
+ `--chartist-bg-margin` | margin chartist chartist-render | 15px 0
+ `--chartist-text-color` | default label color for charts | #000
+ `--chartist-bg-color` | default label color for charts | #000
+ `--chartist-text-color` | default label color for charts | #000
+ `--chartist-color-a` | background color for 1st series |  #d70206
+ `--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
+ `--chartist-color-b` | background color for 2nd series |  #f05b4f
+ `--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`
+ `--chartist-color-c` | background color for 3rd series |  #f4c63d
+ `--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`
+ `--chartist-color-d` | background color for 4th series |  #d17905
+ `--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`
+ `--chartist-color-e` | background color for 5th series |  #453d3f
+ `--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`
+ `--chartist-color-f` | background color for 6th series |  #59922b
+ `--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`
+ `--chartist-color-g` | background color for 7th series |  #0544d3
+ `--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`
+ `--chartist-color-h` | background color for 8th series |  #6b0392
+ `--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`
+ `--chartist-color-i` | background color for 9th series |  #f05b4f
+ `--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`
+ `--chartist-color-j` | background color for 10th series |  #dda458
+ `--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`
+ `--chartist-color-k` | background color for 11th series |  #eacf7d
+ `--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`
+ `--chartist-color-l` | background color for 12th series |  #86797d
+ `--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`
+ `--chartist-color-m` | background color for 13th series |  #b2c326
+ `--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`
+ `--chartist-color-n` | background color for 14th series |  #6188e2
+ `--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
+ `--chartist-color-0` | background color for 15th series |  #a748ca
+ `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
+  */
 class ChartistRender extends ChartistRenderSuper(LitElement) {}
-window.customElements.define(ChartistRender.tag, ChartistRender);
+customElements.define(ChartistRender.tag, ChartistRender);
 export { ChartistRender, ChartistRenderSuper };

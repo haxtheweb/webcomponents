@@ -164,5 +164,5 @@ class SimpleColorsPolymer extends PolymerElement {
     );
   }
 }
-window.customElements.define(SimpleColorsPolymer.tag, SimpleColorsPolymer);
+customElements.define(SimpleColorsPolymer.tag, SimpleColorsPolymer);
 export { SimpleColorsPolymer };

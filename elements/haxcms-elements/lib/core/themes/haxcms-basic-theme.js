@@ -168,5 +168,5 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
     `;
   }
 }
-window.customElements.define("haxcms-basic-theme", HAXCMSBasicTheme);
+customElements.define("haxcms-basic-theme", HAXCMSBasicTheme);
 export { HAXCMSBasicTheme };

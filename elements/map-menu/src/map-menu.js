@@ -446,5 +446,5 @@ class MapMenu extends LitElement {
     return this.__parentsHidden(parent);
   }
 }
-window.customElements.define(MapMenu.tag, MapMenu);
+customElements.define(MapMenu.tag, MapMenu);
 export { MapMenu };

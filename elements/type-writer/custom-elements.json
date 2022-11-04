@@ -1,200 +1,103 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "type-writer",
-      "path": "./src/type-writer.js",
-      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer\n\nEvents:\n\n  * `type-writer-end` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursor-duration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `erase-speed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursorDuration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `eraseSpeed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
-          "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "delay",
-          "type": "number",
-          "default": "100"
+          "name": "text",
+          "description": "`text` {`string`} - \n\nProperty: text"
         },
         {
-          "name": "cursorDuration",
-          "type": "number",
-          "default": "0"
+          "name": "_length",
+          "description": "`_length` {`number`} - \n\nProperty: _length"
+        },
+        {
+          "name": "_oldText",
+          "description": "`_oldText` {`string`} - \n\nProperty: _oldText"
+        },
+        {
+          "name": "delay",
+          "description": "`delay` {`number`} - \n\nProperty: delay\n\nDefault: 100"
+        },
+        {
+          "name": "cursor-duration",
+          "description": "`cursor-duration` {`number`} - \n\nProperty: cursorDuration\n\nDefault: 0"
         },
         {
           "name": "speed",
-          "type": "number",
-          "default": "150"
+          "description": "`speed` {`number`} - \n\nProperty: speed\n\nDefault: 150"
         },
         {
-          "name": "eraseSpeed",
-          "type": "number",
-          "default": "80"
+          "name": "erase-speed",
+          "description": "`erase-speed` {`number`} - \n\nProperty: eraseSpeed\n\nDefault: 80"
         },
         {
           "name": "typing",
-          "type": "boolean",
-          "default": "false"
+          "description": "`typing` {`boolean`} - \n\nProperty: typing\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
+          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        }
-      ],
-      "events": [
-        {
-          "name": "type-writer-end"
+          "name": "ontype-writer-end",
+          "description": "`type-writer-end` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "type-writer",
-      "path": "./type-writer.js",
-      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer\n\nEvents:\n\n  * `type-writer-end` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursor-duration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `erase-speed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursorDuration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `eraseSpeed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "text",
-          "type": "string"
+          "description": "`text` {`string`} - \n\nProperty: text"
+        },
+        {
+          "name": "_length",
+          "description": "`_length` {`number`} - \n\nProperty: _length"
+        },
+        {
+          "name": "_oldText",
+          "description": "`_oldText` {`string`} - \n\nProperty: _oldText"
         },
         {
           "name": "delay",
-          "type": "number",
-          "default": "100"
+          "description": "`delay` {`number`} - \n\nProperty: delay\n\nDefault: 100"
         },
         {
           "name": "cursor-duration",
-          "type": "number",
-          "default": "0"
+          "description": "`cursor-duration` {`number`} - \n\nProperty: cursorDuration\n\nDefault: 0"
         },
         {
           "name": "speed",
-          "type": "number",
-          "default": "150"
+          "description": "`speed` {`number`} - \n\nProperty: speed\n\nDefault: 150"
         },
         {
           "name": "erase-speed",
-          "type": "number",
-          "default": "80"
+          "description": "`erase-speed` {`number`} - \n\nProperty: eraseSpeed\n\nDefault: 80"
         },
         {
           "name": "typing",
-          "type": "boolean",
-          "default": "false"
+          "description": "`typing` {`boolean`} - \n\nProperty: typing\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "elementVisible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "text",
-          "attribute": "text",
-          "type": "string"
+          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "delay",
-          "attribute": "delay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "cursorDuration",
-          "attribute": "cursor-duration",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "speed",
-          "attribute": "speed",
-          "type": "number",
-          "default": "150"
-        },
-        {
-          "name": "eraseSpeed",
-          "attribute": "erase-speed",
-          "type": "number",
-          "default": "80"
-        },
-        {
-          "name": "typing",
-          "attribute": "typing",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "elementVisible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        }
-      ],
-      "events": [
-        {
-          "name": "type-writer-end"
+          "name": "ontype-writer-end",
+          "description": "`type-writer-end` {`CustomEvent<any>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

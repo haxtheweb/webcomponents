@@ -57,5 +57,5 @@ class LrnsysRenderHtml extends LitElement {
     });
   }
 }
-window.customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);
+customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);
 export { LrnsysRenderHtml };

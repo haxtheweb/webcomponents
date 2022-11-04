@@ -7,17 +7,17 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
- * `full-screen-image`
- * @element full-screen-image
- * `full screen banner image with down arrow`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
- * @demo demo/index.html
- */
+  * `full-screen-image`
+  * @element full-screen-image
+  * `full screen banner image with down arrow`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @polymer
+  * @demo demo/index.html
+  */
 class FullScreenImage extends LitElement {
   //styles function
   static get styles() {
@@ -223,5 +223,5 @@ class FullScreenImage extends LitElement {
     });
   }
 }
-window.customElements.define(FullScreenImage.tag, FullScreenImage);
+customElements.define(FullScreenImage.tag, FullScreenImage);
 export { FullScreenImage };

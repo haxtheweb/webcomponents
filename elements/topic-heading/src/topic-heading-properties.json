@@ -1,8 +1,0 @@
-{
-  "icon": {
-    "type": String
-  },
-  "title": {
-    "type": String
-  }
-}

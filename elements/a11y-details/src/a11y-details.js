@@ -4,63 +4,298 @@
  */
 import { LitElement, html, css } from "lit";
 /**
- * `a11y-details`
- * accessible progressive disclosure with detail and summary
-### Styling
-#### Summary Button
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-summary-fontSize | font-size | 0.8em
---a11y-details-summary-color | text color | #000
---a11y-details-summary-backgroundColor | background-color | #fff
---a11y-details-summary-borderColor | border-color | #000
---a11y-details-summary-borderWidth | border-width | 1px
---a11y-details-summary-borderStyle | border-style | solid
---a11y-details-summary-borderRadius | border-radius | 3px
---a11y-details-summary-padding | padding | 0.5em
-
-#### Summary Button (:focus state)
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-summary-focus-color | text color | #000
---a11y-details-summary-focus-backgroundColor | background-color | #fff
---a11y-details-summary-focus-borderColor | border-color | #000
---a11y-details-summary-focus-borderWidth | border-width | 1px
---a11y-details-summary-focus-borderStyle | border-style | dotted
---a11y-details-summary-focus-borderRadius | border-radius | 3px
-
-#### Details
-Custom property | Description | Default
-----------------|-------------|----------
---a11y-details-fontSize | font-size  | 0.8em
---a11y-details-color | text color | #000
---a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
---a11y-details-borderColor | border-color | #000
---a11y-details-borderWidth | border-width | 1px
---a11y-details-borderStyle | border-style | solid
---a11y-details-borderRadius | border-radius | 3px
---a11y-details-padding | padding | 0.5em
---a11y-details-left | left position | 0
---a11y-details-right | right position | 0
---a11y-details-maxHeight | max-height | 400px
-
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @lit-html
- * @lit-element
- * @demo demo/index.html
- */
+  * `a11y-details`
+  * accessible progressive disclosure with detail and summary
+ ### Styling
+ #### Summary Button
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-summary-fontSize | font-size | 0.8em
+ --a11y-details-summary-color | text color | #000
+ --a11y-details-summary-backgroundColor | background-color | #fff
+ --a11y-details-summary-borderColor | border-color | #000
+ --a11y-details-summary-borderWidth | border-width | 1px
+ --a11y-details-summary-borderStyle | border-style | solid
+ --a11y-details-summary-borderRadius | border-radius | 3px
+ --a11y-details-summary-padding | padding | 0.5em
+ 
+ #### Summary Button (:focus state)
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-summary-focus-color | text color | #000
+ --a11y-details-summary-focus-backgroundColor | background-color | #fff
+ --a11y-details-summary-focus-borderColor | border-color | #000
+ --a11y-details-summary-focus-borderWidth | border-width | 1px
+ --a11y-details-summary-focus-borderStyle | border-style | dotted
+ --a11y-details-summary-focus-borderRadius | border-radius | 3px
+ 
+ #### Details
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ --a11y-details-fontSize | font-size  | 0.8em
+ --a11y-details-color | text color | #000
+ --a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
+ --a11y-details-borderColor | border-color | #000
+ --a11y-details-borderWidth | border-width | 1px
+ --a11y-details-borderStyle | border-style | solid
+ --a11y-details-borderRadius | border-radius | 3px
+ --a11y-details-padding | padding | 0.5em
+ --a11y-details-left | left position | 0
+ --a11y-details-right | right position | 0
+ --a11y-details-maxHeight | max-height | 400px
+ 
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+  * @customElement
+  * @lit-html
+  * @lit-element
+  * @demo demo/index.html
+  */
 class A11yDetails extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host,
+        details {
+          display: inline-flex;
+          overflow: visible;
+        }
+
+        :host([hidden]) {
+          display: none !important;
+        }
+
+        summary {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: var(--a11y-details-summary-fontSize, 0.8em);
+          color: var(--a11y-details-summary-color, #000);
+          background-color: var(--a11y-details-summary-backgroundColor, #fff);
+          border-color: var(--a11y-details-summary-borderColor, #ddd);
+          border-width: var(--a11y-details-summary-borderWidth, 1px);
+          border-style: var(--a11y-details-summary-borderStyle, solid);
+          border-radius: var(--a11y-details-summary-borderRadius, 3px);
+          padding: var(--a11y-details-summary-padding, 0.5em);
+        }
+
+        summary:focus {
+          outline: var(--a11y-details-summary-focus-outline, 1px solid #006688);
+          color: var(
+            --a11y-details-summary-focus-color,
+            var(--a11y-details-summary-color, #000)
+          );
+          background-color: var(
+            --a11y-details-summary-focus-backgroundColor,
+            var(--a11y-details-summary-backgroundColor, #fff)
+          );
+          border-color: var(
+            --a11y-details-summary-focus-borderColor,
+            var(--a11y-details-borderColor, #999)
+          );
+          border-width: var(
+            --a11y-details-summary-focus-borderWidth,
+            var(--a11y-details-summary-borderWidth, 1px)
+          );
+          border-style: var(
+            --a11y-details-summary-focus-borderStyle,
+            var(--a11y-details-summary-borderStyle, dotted)
+          );
+          border-radius: var(
+            --a11y-details-summary-focus-borderRadius,
+            var(--a11y-details-summary-borderRadius, 3px)
+          );
+        }
+
+        #details-inner {
+          position: absolute;
+          display: none;
+          max-height: 0px;
+          transition: all 0.7s ease-in-out 0.2s;
+          overflow-y: auto;
+          padding: 0;
+          font-size: var(--a11y-details-fontSize, 0.8em);
+          color: var(--a11y-details-color, #000);
+          background-color: var(
+            --a11y-details-backgroundColor,
+            rgba(255, 255, 255, 0.8)
+          );
+          border-color: var(--a11y-details-borderColor, #999);
+          border-width: var(--a11y-details-borderWidth, 1px);
+          border-style: var(--a11y-details-borderStyle, solid);
+          border-radius: var(--a11y-details-borderRadius, 3px);
+        }
+
+        ::slotted(*:not[slot="summary"]) {
+          display: none;
+        }
+
+        .close-text,
+        details[open] .open-text,
+        details:not([open]) .has-open-text,
+        details[open] .has-close-text {
+          display: none;
+        }
+
+        details[open] .close-text {
+          display: inline;
+        }
+
+        ::slotted([slot="details"]) {
+          display: block;
+          height: auto;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.7s ease-in-out 0.2s;
+        }
+
+        details[open] ::slotted([slot="details"]) {
+          max-height: var(--a11y-details-maxHeight, 400px);
+          transition: all 0.7s ease-in-out 0.2s;
+        }
+
+        details[open] #details-inner {
+          z-index: 9999999999;
+          display: block;
+          left: var(--a11y-details-left, unset);
+          right: var(--a11y-details-right, unset);
+          padding: var(--a11y-details-padding, 0.5em);
+          max-height: var(--a11y-details-maxHeight, 400px);
+          padding: var(--a11y-details-padding, 0.5em);
+          width: calc(auto - 2 * var(--a11y-details-padding, 0.5em));
+          transition: all 0.7s ease-in-out 0.2s;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <details id="details">
+        <summary
+          @click="${this._handleClick}"
+          @keyup="${this._handleKeyup}"
+          tabindex="0"
+          role="button"
+        >
+          <span class="open-text">${this.openText}</span>
+          <span class="close-text">${this.closeText}</span>
+          <slot name="summary" class="${this.summaryClasses}"></slot>
+        </summary>
+        <div id="details-inner"><slot name="details"></slot></div>
+      </details>
+      <slot hidden></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Accessible Details Button",
+        description:
+          "Accessible progressive disclosure with detail and summary",
+        icon: "icons:arrow-drop-down",
+        color: "grey",
+        groups: ["11"],
+        handles: [
+          {
+            type: "",
+          },
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            slot: "summary",
+            title: "Button",
+            description:
+              'Summary of the content that if concealed, eg. "info", "medatadata", etc. ',
+            inputMethod: "code-editor",
+          },
+          {
+            slot: "details",
+            title: "Decription",
+            description: "Detailed description that can be hidden or shown",
+            inputMethod: "code-editor",
+          },
+          {
+            slot: "",
+            title: "Decription Button",
+            description:
+              'Default for button that shows/hides description text, eg. "info", "medatadata", etc. ',
+            inputMethod: "code-editor",
+          },
+        ],
+        advanced: [
+          {
+            property: "openText",
+            title: "Optional summary text when details are open",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "closeText",
+            title: "Optional summary text when details are closed",
+            inputMethod: "textfield",
+            required: false,
+          },
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "a11y-details",
+          properties: {
+            openText: "Show Aenean",
+            closeText: "Hide Aenean",
+          },
+          content:
+            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>',
+        },
+      ],
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * optional text for when summary button is open,
+       * eg. "Hide", "Less" or "Close"
+       */
+      closeText: {
+        type: String,
+        attribute: "close-text",
+        reflect: true,
+      },
+      /**
+       * optional text for when summary button is closed,
+       * eg. "Show", "More" or "Open"
+       */
+      openText: {
+        type: String,
+        attribute: "open-text",
+        reflect: true,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "a11y-details";
   }
 

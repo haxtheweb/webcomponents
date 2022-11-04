@@ -274,5 +274,5 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     }
   }
 }
-window.customElements.define(SimpleFieldsArray.tag, SimpleFieldsArray);
+customElements.define(SimpleFieldsArray.tag, SimpleFieldsArray);
 export { SimpleFieldsArray };

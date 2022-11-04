@@ -31,7 +31,193 @@ window.SimpleDrawer.requestAvailability = () => {
  * @element simple-drawer
  */
 class SimpleDrawer extends SimpleColors {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+          z-index: 1000;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        :host div::slotted(*) {
+          font-size: 14px;
+        }
+
+        .content {
+          text-align: left;
+          padding: 8px 24px;
+        }
+
+        .top ::slotted(*) {
+          font-size: 24px;
+          margin: 0;
+          padding: 0 15px;
+          height: 40px;
+          line-height: 48px;
+        }
+
+        #close {
+          position: absolute;
+          right: 8px;
+          top: 8px;
+          padding: 4px 6px 4px 4px;
+          margin: 11px 5px 0px 0px;
+          text-transform: none;
+          float: right;
+          font-size: var(--simple-drawer-close-font-size, 12px);
+          color: var(--simple-drawer-header-color, #ffffff);
+          background-color: var(--simple-drawer-close-background, transparent);
+          border: var(--simple-drawer-close-border);
+          cursor: pointer;
+          min-width: unset;
+        }
+
+        #close simple-icon {
+          display: inline-block;
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+          margin-top: -2px;
+          margin-right: 2px;
+        }
+
+        .top {
+          font-size: 24px;
+          margin: 0 0 8px 0;
+          padding: 0 16px;
+          height: 64px;
+          line-height: 64px;
+          display: flex;
+          text-align: left;
+          justify-content: space-between;
+          background-color: var(--simple-drawer-header-background, #20427b);
+          color: var(--simple-drawer-header-color, #ffffff);
+        }
+
+        .top h2 {
+          flex: auto;
+          color: var(--simple-drawer-header-color, #ffffff);
+          font-size: 24px;
+          padding: 0;
+          line-height: 45px;
+          margin: 8px;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <custom-style>
+        <style>
+          app-drawer {
+            --app-drawer-content-container: {
+              padding: 0;
+              overflow-y: scroll;
+              position: fixed;
+              color: var(--simple-drawer-color, #222222);
+              background-color: var(--simple-drawer-background-color, #ffffff);
+            }
+          }
+          :host ::slotted(*) {
+            @apply --simple-drawer-content;
+          }
+
+          .content {
+            @apply --simple-drawer-content-container;
+          }
+          .top {
+            @apply --simple-drawer-header;
+          }
+
+          .top h2 {
+            @apply --simple-drawer-heading;
+          }
+        </style>
+      </custom-style>
+      <app-drawer
+        tabindex="0"
+        id="drawer"
+        ?opened="${this.opened}"
+        @opened-changed="${this.__openedChanged}"
+        .align="${this.align}"
+        role="dialog"
+      >
+        <div class="wrapper">
+          <div class="top">
+            ${this.title ? html`<h2>${this.title}</h2>` : ""}
+            <slot name="header"></slot>
+          </div>
+          <div class="content">
+            <slot name="content"></slot>
+          </div>
+          <button id="close" @click="${this.close}">
+            <simple-icon
+              icon="${this.closeIcon}"
+              dark
+              contrast="4"
+            ></simple-icon>
+            ${this.closeLabel}
+          </button>
+        </div>
+      </app-drawer>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * heading / label of the modal
+       */
+      title: {
+        name: "title",
+        type: String,
+      },
+      /**
+       * alignment of the drawer
+       */
+      align: {
+        name: "align",
+        type: String,
+      },
+      /**
+       * open state
+       */
+      opened: {
+        name: "opened",
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Close label
+       */
+      closeLabel: {
+        name: "closeLabel",
+        type: String,
+      },
+      /**
+       * Close icon
+       */
+      closeIcon: {
+        name: "closeIcon",
+        type: String,
+      },
+      /**
+       * The element that invoked this. This way we can track our way back accessibly
+       */
+      invokedBy: {
+        name: "invokedBy",
+        type: Object,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

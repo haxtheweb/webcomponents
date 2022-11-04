@@ -238,8 +238,5 @@ class LrndesignStepperButton extends PolymerElement {
     }
   }
 }
-window.customElements.define(
-  LrndesignStepperButton.tag,
-  LrndesignStepperButton
-);
+customElements.define(LrndesignStepperButton.tag, LrndesignStepperButton);
 export { LrndesignStepperButton };

@@ -107,7 +107,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "hax-text-editor-toolbar";
   }
 

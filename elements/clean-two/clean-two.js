@@ -791,5 +791,5 @@ class CleanTwo extends HAXCMSOperationButtons(
     super.disconnectedCallback();
   }
 }
-window.customElements.define(CleanTwo.tag, CleanTwo);
+customElements.define(CleanTwo.tag, CleanTwo);
 export { CleanTwo };

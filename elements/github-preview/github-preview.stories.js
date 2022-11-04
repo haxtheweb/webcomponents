@@ -15,10 +15,9 @@ export const StandardUsage = () => {
   return utils.makeUsageDocs(
     GithubPreview,
     import.meta.url,
-    utils.makeElementFromClass(GithubPreview,
-      {
-        repo: 'lrnwebcomponents',
-        org: "elmsln"
-      })
+    utils.makeElementFromClass(GithubPreview, {
+      repo: "lrnwebcomponents",
+      org: "elmsln",
+    })
   );
 };

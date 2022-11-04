@@ -173,5 +173,5 @@ class HaxLogo extends HTMLElement {
     }
   }
 }
-window.customElements.define(HaxLogo.tag, HaxLogo);
+customElements.define(HaxLogo.tag, HaxLogo);
 export { HaxLogo };

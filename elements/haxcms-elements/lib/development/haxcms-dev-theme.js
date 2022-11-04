@@ -232,5 +232,5 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     }
   }
 }
-window.customElements.define(HAXCMSDevTheme.tag, HAXCMSDevTheme);
+customElements.define(HAXCMSDevTheme.tag, HAXCMSDevTheme);
 export { HAXCMSDevTheme };

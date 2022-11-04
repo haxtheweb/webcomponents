@@ -539,5 +539,5 @@ class MoocContent extends PolymerElement {
     this.appendChild(dom);
   }
 }
-window.customElements.define(MoocContent.tag, MoocContent);
+customElements.define(MoocContent.tag, MoocContent);
 export { MoocContent };

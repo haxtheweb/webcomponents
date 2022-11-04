@@ -318,5 +318,5 @@ class ResponsiveGridRow extends LitElement {
     };
   }
 }
-window.customElements.define(ResponsiveGridRow.tag, ResponsiveGridRow);
+customElements.define(ResponsiveGridRow.tag, ResponsiveGridRow);
 export { ResponsiveGridRow };

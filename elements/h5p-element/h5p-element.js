@@ -10,17 +10,17 @@ window.__H5PBridgeTimeOut = function () {
   }, 500);
 };
 /**
- * `h5p-element`
- * @element h5p-element
- * `h5p wrapper for loading and presenting .h5p files`
- *
- * @microcopy - language worth noting:
- *  - h5p is it's own eco system, we're just trying to wrap it a bit
- *
-
- * @lit-element
- * @demo demo/index.html
- */
+  * `h5p-element`
+  * @element h5p-element
+  * `h5p wrapper for loading and presenting .h5p files`
+  *
+  * @microcopy - language worth noting:
+  *  - h5p is it's own eco system, we're just trying to wrap it a bit
+  *
+ 
+  * @lit-element
+  * @demo demo/index.html
+  */
 class H5PElement extends LitElement {
   //styles function
   static get styles() {
@@ -209,10 +209,10 @@ class H5PElement extends LitElement {
       scripts: this.h5pJSDeps,
     };
     let frag = document.createRange().createContextualFragment(`
-    <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-      <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
-    </div>
-    `);
+     <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
+       <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
+     </div>
+     `);
     if (
       this.querySelector('[data-content-id="wrapper-' + this.contentId + '"')
     ) {

@@ -250,7 +250,7 @@ class RichTextEditorSource extends LitElement {
     }
   }
 }
-window.customElements.define(RichTextEditorSource.tag, RichTextEditorSource);
+customElements.define(RichTextEditorSource.tag, RichTextEditorSource);
 export { RichTextEditorSource };
 
 // register globally so we can make sure there is only one

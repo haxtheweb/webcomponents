@@ -370,5 +370,5 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
     }
   }
 }
-window.customElements.define(LicenseElement.tag, LicenseElement);
+customElements.define(LicenseElement.tag, LicenseElement);
 export { LicenseElement };

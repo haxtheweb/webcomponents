@@ -289,5 +289,5 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     });
   }
 }
-window.customElements.define(a11yCarousel.tag, a11yCarousel);
+customElements.define(a11yCarousel.tag, a11yCarousel);
 export { a11yCarousel };

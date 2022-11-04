@@ -187,5 +187,5 @@ class SiteDotIndicator extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteDotIndicator.tag, SiteDotIndicator);
+customElements.define(SiteDotIndicator.tag, SiteDotIndicator);
 export { SiteDotIndicator };

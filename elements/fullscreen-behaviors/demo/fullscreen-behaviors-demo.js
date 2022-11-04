@@ -69,8 +69,5 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
     super();
   }
 }
-window.customElements.define(
-  FullscreenBehaviorsDemo.tag,
-  FullscreenBehaviorsDemo
-);
+customElements.define(FullscreenBehaviorsDemo.tag, FullscreenBehaviorsDemo);
 export { FullscreenBehaviorsDemo };

@@ -282,5 +282,5 @@ class HaxAutoloader extends HAXElement(LitElement) {
     }
   }
 }
-window.customElements.define(HaxAutoloader.tag, HaxAutoloader);
+customElements.define(HaxAutoloader.tag, HaxAutoloader);
 export { HaxAutoloader };

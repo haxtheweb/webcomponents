@@ -373,5 +373,5 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
   ],
 };
 
-window.customElements.define(SimpleSymbolPicker.tag, SimpleSymbolPicker);
+customElements.define(SimpleSymbolPicker.tag, SimpleSymbolPicker);
 export { SimpleSymbolPicker };

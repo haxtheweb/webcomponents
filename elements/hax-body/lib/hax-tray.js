@@ -1685,7 +1685,7 @@ class HaxTray extends I18NMixin(
                 }
               }
               // this will get reached often but tough to know if we had a slot
-              if (!setAhead && camelCaseToDash(prop) != '') {
+              if (!setAhead && camelCaseToDash(prop) != "") {
                 try {
                   // silly but this is the spec way to do a boolean
                   if (settings[key][prop] === true) {
@@ -1802,5 +1802,5 @@ class HaxTray extends I18NMixin(
   }
 }
 
-window.customElements.define(HaxTray.tag, HaxTray);
+customElements.define(HaxTray.tag, HaxTray);
 export { HaxTray };

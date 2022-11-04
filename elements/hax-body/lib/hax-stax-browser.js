@@ -62,5 +62,5 @@ class HaxStaxBrowser extends LitElement {
     };
   }
 }
-window.customElements.define(HaxStaxBrowser.tag, HaxStaxBrowser);
+customElements.define(HaxStaxBrowser.tag, HaxStaxBrowser);
 export { HaxStaxBrowser };

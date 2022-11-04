@@ -59,5 +59,5 @@ class EcoJsonSchemaMarkup extends mixinBehaviors(
     this.appendChild(frag);
   }
 }
-window.customElements.define(EcoJsonSchemaMarkup.tag, EcoJsonSchemaMarkup);
+customElements.define(EcoJsonSchemaMarkup.tag, EcoJsonSchemaMarkup);
 export { EcoJsonSchemaMarkup };

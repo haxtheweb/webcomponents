@@ -908,5 +908,5 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     //console.log(this);
   }
 }
-window.customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);
+customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);
 export { EcoJsonSchemaObject };

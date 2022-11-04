@@ -264,5 +264,5 @@ Custom property | Description | Default
  * @extends A11yMenuButtonItemBehaviors
  */
 class A11yMenuButtonItem extends A11yMenuButtonItemBehaviors(LitElement) {}
-window.customElements.define(A11yMenuButtonItem.tag, A11yMenuButtonItem);
+customElements.define(A11yMenuButtonItem.tag, A11yMenuButtonItem);
 export { A11yMenuButtonItem, A11yMenuButtonItemBehaviors };

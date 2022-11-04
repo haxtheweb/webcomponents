@@ -96,5 +96,5 @@ class SimpleBlogListing extends SimpleColors {
     };
   }
 }
-window.customElements.define(SimpleBlogListing.tag, SimpleBlogListing);
+customElements.define(SimpleBlogListing.tag, SimpleBlogListing);
 export { SimpleBlogListing };

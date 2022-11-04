@@ -89,5 +89,5 @@ class CodePenButton extends LitElement {
     return JSON.stringify(data).replace(/"/g, "&quot;").replace(/'/g, "&apos;");
   }
 }
-window.customElements.define(CodePenButton.tag, CodePenButton);
+customElements.define(CodePenButton.tag, CodePenButton);
 export { CodePenButton };

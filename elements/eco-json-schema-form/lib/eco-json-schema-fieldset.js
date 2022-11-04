@@ -103,5 +103,5 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
     });
   }
 }
-window.customElements.define(EcoJsonSchemaFieldset.tag, EcoJsonSchemaFieldset);
+customElements.define(EcoJsonSchemaFieldset.tag, EcoJsonSchemaFieldset);
 export { EcoJsonSchemaFieldset };

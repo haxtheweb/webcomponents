@@ -97,5 +97,5 @@ class ResponsiveGridCol extends LitElement {
     };
   }
 }
-window.customElements.define(ResponsiveGridCol.tag, ResponsiveGridCol);
+customElements.define(ResponsiveGridCol.tag, ResponsiveGridCol);
 export { ResponsiveGridCol };

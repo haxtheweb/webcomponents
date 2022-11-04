@@ -333,8 +333,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     super();
     this.rpgHat = "none";
     this.darkMode = false;
-    this.__settingsText = '';
-    this.__editText = '';
+    this.__settingsText = "";
+    this.__editText = "";
     this.userMenuOpen = false;
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
@@ -574,28 +574,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.moreOptions}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
-          <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              id="outlinebutton"
-              @click="${this._outlineButtonTap}"
-              icon-position="left"
-              icon="hax:site-map"
-              part="outlinebtn"
-              show-text-label
-              tabindex="${this.editMode ? "0" : "-1"}"
-              label="${this.t.siteOutline}"
-            ></simple-toolbar-button>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              @click="${this._manifestButtonTap}"
-              icon-position="left"
-              icon="${this.icon}"
-              part="manifestbtn"
-              show-text-label
-              tabindex="${this.editMode ? "0" : "-1"}"
-              label="${this.__settingsText}"
-            ></simple-toolbar-button>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                id="outlinebutton"
+                @click="${this._outlineButtonTap}"
+                icon-position="left"
+                icon="hax:site-map"
+                part="outlinebtn"
+                show-text-label
+                tabindex="${this.editMode ? "0" : "-1"}"
+                label="${this.t.siteOutline}"
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                @click="${this._manifestButtonTap}"
+                icon-position="left"
+                icon="${this.icon}"
+                part="manifestbtn"
+                show-text-label
+                tabindex="${this.editMode ? "0" : "-1"}"
+                label="${this.__settingsText}"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <simple-toolbar-button
@@ -1061,7 +1061,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _insightsButtonTap(e) {
     store.playSound("click");
-    const c = document.createElement('haxcms-site-insights');
+    const c = document.createElement("haxcms-site-insights");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -1242,7 +1242,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * toggle state on button tap
    */
-   _outlineButtonTap(e) {
+  _outlineButtonTap(e) {
     store.playSound("click");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
@@ -1344,5 +1344,5 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
 }
-window.customElements.define(HAXCMSSiteEditorUI.tag, HAXCMSSiteEditorUI);
+customElements.define(HAXCMSSiteEditorUI.tag, HAXCMSSiteEditorUI);
 export { HAXCMSSiteEditorUI };

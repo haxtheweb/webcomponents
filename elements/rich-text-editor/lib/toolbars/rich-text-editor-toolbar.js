@@ -1408,7 +1408,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target),
         oldTarget = this.target;
       if (!!target) {
-        if (oldTarget && oldTarget.getAttribute && oldTarget.getAttribute("role") == "textbox") {
+        if (
+          oldTarget &&
+          oldTarget.getAttribute &&
+          oldTarget.getAttribute("role") == "textbox"
+        ) {
           oldTarget.removeAttribute("role");
         }
         if (target && target.setAttribute) {
@@ -1621,5 +1625,5 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   LitElement
 ) {}
-window.customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
+customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
 export { RichTextEditorToolbar, RichTextEditorToolbarBehaviors };

@@ -287,5 +287,5 @@ class DropdownSelect extends LitElement {
    * @param {object} detail dropdown-select instance
    */
 }
-window.customElements.define(DropdownSelect.tag, DropdownSelect);
+customElements.define(DropdownSelect.tag, DropdownSelect);
 export { DropdownSelect };

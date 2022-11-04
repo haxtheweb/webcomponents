@@ -22,8 +22,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
         icon: "icons:android",
         color: "green",
         groups: ["Emitter"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "elmsln",
           owner: "Penn State",
@@ -121,5 +120,5 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(LrsEmitter.tag, LrsEmitter);
+customElements.define(LrsEmitter.tag, LrsEmitter);
 export { LrsEmitter };

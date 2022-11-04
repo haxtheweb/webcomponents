@@ -44,28 +44,6 @@
       ]
     },
     {
-      "name": "course-intro-footer",
-      "description": "Attributes:\n\n  * `organization` {`string`} - \n\n  * `organizationLink` {`string`} - \n\n  * `company` {`string`} - \n\n  * `companyLink` {`string`} - \n\nProperties:\n\n  * `organization` {`string`} - \n\n  * `organizationLink` {`string`} - \n\n  * `company` {`string`} - \n\n  * `companyLink` {`string`} - ",
-      "attributes": [
-        {
-          "name": "organization",
-          "description": "`organization` {`string`} - \n\nProperty: organization\n\nDefault: "
-        },
-        {
-          "name": "organizationLink",
-          "description": "`organizationLink` {`string`} - \n\nProperty: organizationLink\n\nDefault: "
-        },
-        {
-          "name": "company",
-          "description": "`company` {`string`} - \n\nProperty: company\n\nDefault: "
-        },
-        {
-          "name": "companyLink",
-          "description": "`companyLink` {`string`} - \n\nProperty: companyLink\n\nDefault: "
-        }
-      ]
-    },
-    {
       "name": "course-intro-header",
       "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [

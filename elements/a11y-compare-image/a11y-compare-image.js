@@ -250,5 +250,5 @@ class a11yCompareImage extends SimpleColors {
     }
   }
 }
-window.customElements.define(a11yCompareImage.tag, a11yCompareImage);
+customElements.define(a11yCompareImage.tag, a11yCompareImage);
 export { a11yCompareImage };

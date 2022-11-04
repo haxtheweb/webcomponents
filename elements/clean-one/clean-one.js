@@ -850,5 +850,5 @@ class CleanOne extends HAXCMSRememberRoute(
     super.nextPage(e);
   }
 }
-window.customElements.define(CleanOne.tag, CleanOne);
+customElements.define(CleanOne.tag, CleanOne);
 export { CleanOne };

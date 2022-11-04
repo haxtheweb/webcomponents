@@ -118,7 +118,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
     this.splice("links", deleteIndex, 1);
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditLinks.tag,
   LrnappStudioSubmissionEditLinks
 );

@@ -687,5 +687,5 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
     };
   }
 }
-window.customElements.define(AccentCard.tag, AccentCard);
+customElements.define(AccentCard.tag, AccentCard);
 export { AccentCard };

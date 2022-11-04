@@ -168,7 +168,7 @@ class LrnappStudioSubmissionButton extends PolymerElement {
     return this.endPoint + "/submissions/" + id;
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionButton.tag,
   LrnappStudioSubmissionButton
 );

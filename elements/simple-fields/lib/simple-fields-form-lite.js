@@ -368,5 +368,5 @@ class SimpleFieldsFormLite extends LitElement {
     };
   }
 }
-window.customElements.define(SimpleFieldsFormLite.tag, SimpleFieldsFormLite);
+customElements.define(SimpleFieldsFormLite.tag, SimpleFieldsFormLite);
 export { SimpleFieldsFormLite };

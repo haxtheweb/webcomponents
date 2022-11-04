@@ -85,7 +85,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
    */
   _setOptions() {}
 }
-window.customElements.define(
+customElements.define(
   RichTextEditorSymbolPicker.tag,
   RichTextEditorSymbolPicker
 );

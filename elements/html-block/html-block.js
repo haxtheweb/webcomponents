@@ -159,5 +159,5 @@ class HtmlBlock extends HTMLElement {
     }
   }
 }
-window.customElements.define(HtmlBlock.tag, HtmlBlock);
+customElements.define(HtmlBlock.tag, HtmlBlock);
 export { HtmlBlock };

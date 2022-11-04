@@ -16,7 +16,220 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * @element editable-outline
  */
 class EditableOutline extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          font-family: "Noto Serif", serif;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        .button-wrapper {
+          line-height: 36px;
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0px;
+          background-color: white;
+          display: block;
+          justify-content: space-evenly;
+        }
+        @media (max-width: 1000px) {
+          button span {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: -9999px;
+          }
+        }
+
+        button {
+          height: 32px;
+          font-size: 10px;
+          margin: 0;
+          padding: 0 8px;
+        }
+
+        button span {
+          padding-left: 4px;
+          pointer-events: none;
+        }
+
+        #outline {
+          margin: 0;
+        }
+
+        ul {
+          font-size: 16px;
+          line-height: 32px;
+          padding-left: 32px;
+          visibility: visible;
+          opacity: 1;
+          overflow: hidden;
+          height: auto;
+          transition: 0.2s ease-in-out all;
+        }
+
+        li {
+          font-size: 16px;
+          line-height: 32px;
+          padding: 4px;
+          transition: 0.2s linear all;
+        }
+
+        ul:hover {
+          outline: 1px solid #eeeeee;
+        }
+
+        li.collapsed-title {
+          background-color: #dddddd;
+        }
+
+        li.collapsed-title:after {
+          content: "    ( Double-click to expand )";
+        }
+
+        li:after {
+          transition: 0.4s ease-in-out all;
+          opacity: 0;
+          font-size: 11px;
+          visibility: hidden;
+        }
+
+        li.collapsed-title:hover:after {
+          font-style: italic;
+          opacity: 1;
+          visibility: visible;
+        }
+
+        ul.collapsed-content {
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+        }
+
+        li:focus,
+        li:active,
+        li:hover {
+          background-color: #eeeeee;
+          outline: 1px solid #cccccc;
+        }
+
+        simple-icon {
+          pointer-events: none;
+        }
+
+        li[data-jos-published="false"] {
+          text-decoration: line-through;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <div class="button-wrapper">
+        <button @click="${this.buttonEvents}" id="add" title="Add a new node">
+          <simple-icon icon="icons:add"></simple-icon><span>Add</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="collapse"
+          title="Toggle active node collapsed status"
+        >
+          <simple-icon icon="icons:swap-vert"></simple-icon
+          ><span>Toggle active</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="collapseall"
+          title="Collapse all nodes"
+        >
+          <simple-icon icon="icons:swap-vert"></simple-icon
+          ><span>Collapse all</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="expandall"
+          title="Expand all nodes"
+        >
+          <simple-icon icon="icons:swap-vert"></simple-icon
+          ><span>Expand all</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="down"
+          title="Move active node down"
+        >
+          <simple-icon icon="icons:arrow-downward"></simple-icon
+          ><span>Move down</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="up"
+          title="Move active node up"
+        >
+          <simple-icon icon="icons:arrow-upward"></simple-icon
+          ><span>Move up</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="outdent"
+          title="Outdent active node"
+        >
+          <simple-icon icon="editor:format-indent-decrease"></simple-icon
+          ><span>Outdent</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="indent"
+          title="Indent active node"
+        >
+          <simple-icon icon="editor:format-indent-increase"></simple-icon
+          ><span>Indent</span>
+        </button>
+        <button
+          @click="${this.buttonEvents}"
+          id="duplicate"
+          title="Duplicate active node tree"
+        >
+          <simple-icon icon="icons:content-copy"></simple-icon
+          ><span>Duplicate</span>
+        </button>
+      </div>
+      <ul id="outline"></ul>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * A items list of JSON Outline Schema Items
+       */
+      items: {
+        type: Array,
+      },
+      /**
+       * Edit mode
+       */
+      editMode: {
+        type: Boolean,
+        attribute: "edit-mode",
+      },
+      /**
+       * Outline node for keyboard key binding
+       */
+      __outlineNode: {
+        type: Object,
+      },
+    };
+  }
   constructor() {
     super();
     this.items = [];

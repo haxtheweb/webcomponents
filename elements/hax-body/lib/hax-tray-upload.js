@@ -72,5 +72,5 @@ class HaxTrayUpload extends HaxUploadField {
   }
 }
 
-window.customElements.define(HaxTrayUpload.tag, HaxTrayUpload);
+customElements.define(HaxTrayUpload.tag, HaxTrayUpload);
 export { HaxTrayUpload };

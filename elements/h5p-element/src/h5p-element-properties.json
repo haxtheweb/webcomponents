@@ -1,9 +1,0 @@
-{
-  /**
-   * Source of the .h5p file
-   */
-  "source": {
-    "name": "source",
-    "type": "String"
-  }
-}

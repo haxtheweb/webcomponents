@@ -6,7 +6,7 @@ class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
     this.disabled = false;
-    this.event = 'click';
+    this.event = "click";
   }
 
   openedToggle(e) {
@@ -18,10 +18,7 @@ class SimplePopoverSelection extends LitElement {
   openedChanged(state) {
     if (state) {
       let popover = window.SimplePopoverManager.requestAvailability();
-      render(
-        document.createElement("div"),
-        popover
-      );
+      render(document.createElement("div"), popover);
       let div = document.createElement("div");
       let slot = this.querySelectorAll('[slot="options"]');
       // account for nesting in a single option area
@@ -55,9 +52,9 @@ class SimplePopoverSelection extends LitElement {
       } else {
         content = html`${unsafeHTML(div.innerHTML)}`;
       }
-      let wrap = document.createElement('div');
-      wrap.setAttribute('slot', 'body');
-      popover.appendChild(wrap); 
+      let wrap = document.createElement("div");
+      wrap.setAttribute("slot", "body");
+      popover.appendChild(wrap);
       render(content, wrap);
       // delay for render
       setTimeout(() => {
@@ -141,28 +138,27 @@ class SimplePopoverSelection extends LitElement {
       /**
        * disabled state
        */
-       disabled: {
+      disabled: {
         type: Boolean,
         reflect: true,
       },
       /**
        * event activation type
        */
-       event: {
+      event: {
         type: String,
       },
     };
   }
   firstUpdated() {
-    if (this.event === 'click') {
+    if (this.event === "click") {
       this.addEventListener("click", this.openedToggle.bind(this));
-    }
-    else if (this.event === 'hover') {
-      this.addEventListener("mouseenter", this.openPopover.bind(this));      
-      this.addEventListener("focusin", this.openPopover.bind(this));      
-      this.addEventListener("focusout", this.closePopover.bind(this));      
-      this.addEventListener("mouseleave", this.closePopover.bind(this));      
-      this.addEventListener("mouseout", this.closePopover.bind(this));      
+    } else if (this.event === "hover") {
+      this.addEventListener("mouseenter", this.openPopover.bind(this));
+      this.addEventListener("focusin", this.openPopover.bind(this));
+      this.addEventListener("focusout", this.closePopover.bind(this));
+      this.addEventListener("mouseleave", this.closePopover.bind(this));
+      this.addEventListener("mouseout", this.closePopover.bind(this));
     }
   }
   openPopover() {
@@ -174,7 +170,7 @@ class SimplePopoverSelection extends LitElement {
   }
   closePopover() {
     setTimeout(() => {
-      this.opened = false;      
+      this.opened = false;
     }, 0);
   }
   render() {

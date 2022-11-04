@@ -1,4 +1,3 @@
-
 import { MoarSarcasm } from "./moar-sarcasm.js";
 import { withKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
@@ -16,16 +15,14 @@ export const ProgressiveEnhancement = () => {
   return utils.makeUsageDocs(
     MoarSarcasm,
     import.meta.url,
-    utils.makeElementFromClass(MoarSarcasm,
-      {
-        emptyslot: 'whatever you want to say is really importanter here!'
-      })
+    utils.makeElementFromClass(MoarSarcasm, {
+      emptyslot: "whatever you want to say is really importanter here!",
+    })
   );
 };
 
 export const AttributeDriven = () => {
-  return utils.makeElementFromClass(MoarSarcasm,
-  {
-    say: 'Just use the platform'
+  return utils.makeElementFromClass(MoarSarcasm, {
+    say: "Just use the platform",
   });
 };

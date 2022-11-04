@@ -13,7 +13,122 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @element filtered-image
  */
 class FilteredImage extends SimpleColors {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <svg id="svg" viewBox="0 0 ${this.width} ${this.height}">
+      <rect id="rect" x="0" y="0"></rect>
+      <filter id="${this.__id}">
+        <feColorMatrix
+          id="matrix"
+          type="matrix"
+          values=" 1   0   0   0   0
+                0   1   0   0   0
+                0   0   1   0   0
+                0   0   0   1   0 "
+        />
+      </filter>
+      <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
+    </svg>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Filtered image",
+        description:
+          "An image using an SVG filter. Can be used to make background images have more contrast with text.",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Image"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage",
+          },
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "src",
+            description: "",
+            inputMethod: "textfield",
+            required: true,
+            icon: "icons:link",
+            validationType: "url",
+          },
+          {
+            property: "alt",
+            description: "",
+            inputMethod: "alt",
+            required: true,
+            icon: "icons:accessibility",
+          },
+        ],
+        advanced: [],
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"],
+      },
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      src: {
+        type: String,
+      },
+      __id: {
+        type: String,
+      },
+      alt: {
+        type: String,
+      },
+      height: {
+        type: String,
+      },
+      width: {
+        type: String,
+      },
+      color: {
+        type: String,
+      },
+      strength: {
+        type: Number,
+      },
+      contrast: {
+        type: Number,
+      },
+      __matrix: {
+        type: Array,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -146,7 +146,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionComment.tag,
   LrnappStudioSubmissionComment
 );

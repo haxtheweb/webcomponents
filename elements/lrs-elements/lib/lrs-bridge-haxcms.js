@@ -43,5 +43,5 @@ class LrsBridgeHaxcms extends LrsBridge {
     });
   }
 }
-window.customElements.define(LrsBridgeHaxcms.tag, LrsBridgeHaxcms);
+customElements.define(LrsBridgeHaxcms.tag, LrsBridgeHaxcms);
 export { LrsBridgeHaxcms };

@@ -146,7 +146,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
     );
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionCritiquePanel.tag,
   LrnappStudioSubmissionCritiquePanel
 );

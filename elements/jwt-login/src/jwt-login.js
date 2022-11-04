@@ -343,5 +343,5 @@ class JwtLogin extends LitElement {
     }
   }
 }
-window.customElements.define(JwtLogin.tag, JwtLogin);
+customElements.define(JwtLogin.tag, JwtLogin);
 export { JwtLogin };

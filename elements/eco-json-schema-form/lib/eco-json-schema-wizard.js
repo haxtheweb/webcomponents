@@ -761,5 +761,5 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
     return type === "array";
   }
 }
-window.customElements.define(EcoJsonSchemaWizard.tag, EcoJsonSchemaWizard);
+customElements.define(EcoJsonSchemaWizard.tag, EcoJsonSchemaWizard);
 export { EcoJsonSchemaWizard };

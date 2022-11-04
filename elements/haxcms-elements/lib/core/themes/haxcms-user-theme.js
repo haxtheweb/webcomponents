@@ -121,5 +121,5 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
     }
   }
 }
-window.customElements.define("haxcms-user-theme", HAXCMSUserTheme);
+customElements.define("haxcms-user-theme", HAXCMSUserTheme);
 export { HAXCMSUserTheme };

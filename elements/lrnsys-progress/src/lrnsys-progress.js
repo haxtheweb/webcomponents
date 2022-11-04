@@ -726,5 +726,5 @@ class LrnsysProgress extends PolymerElement {
     return response;
   }
 }
-window.customElements.define(LrnsysProgress.tag, LrnsysProgress);
+customElements.define(LrnsysProgress.tag, LrnsysProgress);
 export { LrnsysProgress };

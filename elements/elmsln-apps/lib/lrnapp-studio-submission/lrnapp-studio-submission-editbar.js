@@ -19,7 +19,7 @@ class LrnappStudioSubmissionEditbar extends PolymerElement {
     return "lrnapp-studio-submission-editbar";
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditbar.tag,
   LrnappStudioSubmissionEditbar
 );

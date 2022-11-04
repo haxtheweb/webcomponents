@@ -913,5 +913,5 @@ Custom property | Description | Default
  * @demo ./demo/buttons.html
  */
 class SimpleToolbarButton extends SimpleToolbarButtonBehaviors(LitElement) {}
-window.customElements.define(SimpleToolbarButton.tag, SimpleToolbarButton);
+customElements.define(SimpleToolbarButton.tag, SimpleToolbarButton);
 export { SimpleToolbarButton, SimpleToolbarButtonBehaviors };

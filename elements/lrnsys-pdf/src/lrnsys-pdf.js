@@ -85,5 +85,5 @@ class LrnsysPdf extends SchemaBehaviors(PolymerElement) {
     }
   }
 }
-window.customElements.define(LrnsysPdf.tag, LrnsysPdf);
+customElements.define(LrnsysPdf.tag, LrnsysPdf);
 export { LrnsysPdf };

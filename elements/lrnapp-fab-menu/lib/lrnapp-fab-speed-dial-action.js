@@ -98,8 +98,5 @@ class LrnappFabSpeedDialAction extends LitElement {
     };
   }
 }
-window.customElements.define(
-  LrnappFabSpeedDialAction.tag,
-  LrnappFabSpeedDialAction
-);
+customElements.define(LrnappFabSpeedDialAction.tag, LrnappFabSpeedDialAction);
 export { LrnappFabSpeedDialAction };

@@ -105,7 +105,7 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
     );
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionMediaEditoverlay.tag,
   LrnappStudioSubmissionMediaEditoverlay
 );

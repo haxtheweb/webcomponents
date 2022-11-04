@@ -15,11 +15,13 @@ export const SimpleSearch = () => {
   return utils.makeUsageDocs(
     LunrSearch,
     import.meta.url,
-    utils.makeElementFromClass(LunrSearch,
-      {
-        demo: true,
-        search: 'Drupal',
-        'data-source': `${import.meta.url.replace("lunr-search.stories.js?storybook-story","")}demo/lunrSearchIndex.json`
-      })
+    utils.makeElementFromClass(LunrSearch, {
+      demo: true,
+      search: "Drupal",
+      "data-source": `${import.meta.url.replace(
+        "lunr-search.stories.js?storybook-story",
+        ""
+      )}demo/lunrSearchIndex.json`,
+    })
   );
 };

@@ -70,5 +70,5 @@ class FluidType extends HTMLElement {
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
-window.customElements.define(FluidType.tag, FluidType);
+customElements.define(FluidType.tag, FluidType);
 export { FluidType };

@@ -187,5 +187,5 @@ class ExampleHaxElement extends HTMLElement {
   // disconnectedCallback() {}
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-window.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
+customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
 export { ExampleHaxElement };

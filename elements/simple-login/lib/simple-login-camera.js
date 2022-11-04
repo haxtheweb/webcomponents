@@ -310,6 +310,6 @@ class SimpleLoginCamera extends HTMLElement {
 }
 // only show this element if we're on a secure environment
 if (navigator.mediaDevices) {
-  window.customElements.define(SimpleLoginCamera.tag, SimpleLoginCamera);
+  customElements.define(SimpleLoginCamera.tag, SimpleLoginCamera);
 }
 export { SimpleLoginCamera };

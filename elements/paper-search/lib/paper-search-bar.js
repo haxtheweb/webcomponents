@@ -120,5 +120,5 @@ class PaperSearchBar extends mixinBehaviors(
     }
   }
 }
-window.customElements.define(PaperSearchBar.tag, PaperSearchBar);
+customElements.define(PaperSearchBar.tag, PaperSearchBar);
 export { PaperSearchBar };

@@ -206,8 +206,5 @@ class SiteRecentContentBlock extends PolymerElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(
-  SiteRecentContentBlock.tag,
-  SiteRecentContentBlock
-);
+customElements.define(SiteRecentContentBlock.tag, SiteRecentContentBlock);
 export { SiteRecentContentBlock };

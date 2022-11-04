@@ -1,49 +1,39 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "figure-label"
-    },
-    {
       "name": "figure-label",
-      "description": "`figure-label`"
-    },
-    {
-      "name": "figure-label",
-      "description": "`figure-label`",
+      "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "description",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "description",
-          "attribute": "description",
-          "type": "string",
-          "default": "\"\""
+          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
         }
       ]
     },
     {
-      "name": "figure-label"
+      "name": "figure-label",
+      "attributes": []
     },
     {
       "name": "figure-label",
-      "description": "`figure-label`"
+      "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
+        }
+      ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

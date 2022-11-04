@@ -579,5 +579,5 @@ class A11yMediaYoutube extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(A11yMediaYoutube.tag, A11yMediaYoutube);
+customElements.define(A11yMediaYoutube.tag, A11yMediaYoutube);
 export { A11yMediaYoutube };

@@ -378,5 +378,5 @@ class SiteQuery extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteQuery.tag, SiteQuery);
+customElements.define(SiteQuery.tag, SiteQuery);
 export { SiteQuery };

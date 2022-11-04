@@ -437,20 +437,20 @@ class LrndesignTimeline extends SimpleColors {
       ...super.properties,
 
       /**
-   * the events of the timeline, in the desired order, as in:```
-[
-  {
-    "heading": "1855 - Penn State Charter",   //required, the main heading for the media, usually a date, time, or era
-    "details": "",                            //optional, text describing the event
-    "image": {                                //optional image for the event
-      "src": "path/to/media.jpg",             //the alt text of the image
-      "alt": "path/to/media.mp3",             //the url of the image
-    },
-    {...},
-    {...},
-  }
-]```
-   */
+    * the events of the timeline, in the desired order, as in:```
+ [
+   {
+     "heading": "1855 - Penn State Charter",   //required, the main heading for the media, usually a date, time, or era
+     "details": "",                            //optional, text describing the event
+     "image": {                                //optional image for the event
+       "src": "path/to/media.jpg",             //the alt text of the image
+       "alt": "path/to/media.mp3",             //the url of the image
+     },
+     {...},
+     {...},
+   }
+ ]```
+    */
       events: {
         type: Array,
       },

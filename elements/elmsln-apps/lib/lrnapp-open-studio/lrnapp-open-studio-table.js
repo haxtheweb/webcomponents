@@ -440,5 +440,5 @@ class LrnappOpenStudioTable extends PolymerElement {
     });
   }
 }
-window.customElements.define(LrnappOpenStudioTable.tag, LrnappOpenStudioTable);
+customElements.define(LrnappOpenStudioTable.tag, LrnappOpenStudioTable);
 export { LrnappOpenStudioTable };

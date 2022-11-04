@@ -152,5 +152,5 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
     this._scrollIntoView([this._getParentOffset(this), item.offsetTop]);
   }*/
 }
-window.customElements.define(LrndesignGalleryGrid.tag, LrndesignGalleryGrid);
+customElements.define(LrndesignGalleryGrid.tag, LrndesignGalleryGrid);
 export { LrndesignGalleryGrid };

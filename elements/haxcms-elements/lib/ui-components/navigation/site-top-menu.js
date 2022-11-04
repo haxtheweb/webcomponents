@@ -384,5 +384,5 @@ class SiteTopMenu extends PolymerElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteTopMenu.tag, SiteTopMenu);
+customElements.define(SiteTopMenu.tag, SiteTopMenu);
 export { SiteTopMenu };

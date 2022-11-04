@@ -38,9 +38,9 @@ class FilteredImage extends SimpleColors {
           id="matrix"
           type="matrix"
           values=" 1   0   0   0   0
-               0   1   0   0   0
-               0   0   1   0   0
-               0   0   0   1   0 "
+                0   1   0   0   0
+                0   0   1   0   0
+                0   0   0   1   0 "
         />
       </filter>
       <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>

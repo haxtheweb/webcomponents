@@ -127,5 +127,5 @@ class MomentElement extends LitElement {
     }
   }
 }
-window.customElements.define(MomentElement.tag, MomentElement);
+customElements.define(MomentElement.tag, MomentElement);
 export { MomentElement };

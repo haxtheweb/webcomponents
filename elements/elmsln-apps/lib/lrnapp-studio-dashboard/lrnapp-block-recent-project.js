@@ -239,8 +239,5 @@ class LrnappBlockRecentProject extends PolymerElement {
     });
   }
 }
-window.customElements.define(
-  LrnappBlockRecentProject.tag,
-  LrnappBlockRecentProject
-);
+customElements.define(LrnappBlockRecentProject.tag, LrnappBlockRecentProject);
 export { LrnappBlockRecentProject };

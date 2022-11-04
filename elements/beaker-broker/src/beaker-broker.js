@@ -17,7 +17,38 @@ import { LitElement, html, css } from "lit";
  * @element beaker-broker
  */
 class BeakerBroker extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  render() {
+    return html` <style>
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {};
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      archive: {
+        type: Object,
+      },
+      datUrl: {
+        type: String,
+        attribute: "dat-url",
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

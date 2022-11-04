@@ -163,7 +163,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
     }
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditFiles.tag,
   LrnappStudioSubmissionEditFiles
 );

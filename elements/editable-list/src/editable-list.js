@@ -11,7 +11,69 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
  * @element editable-list
  */
 class EditableList extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        #list {
+          height: 100%;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <div id="list">
+      ${this.items.map(
+        (item) => html`
+          <editable-list-item
+            ?edit-mode="${item.metadata.canEdit}"
+            ?can-edit="${item.metadata.canEdit}"
+            ?can-delete="${item.metadata.canDelete}"
+            value="${item.title}"
+          ></editable-list-item>
+        `
+      )}
+    </div>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * ability to edit the items in the list
+       */
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
+      },
+      /**
+       * items array
+       */
+      items: {
+        type: Array,
+        reflect: false,
+      },
+      /**
+       * Active element being worked on in the list
+       */
+      activeElement: {
+        type: Object,
+      },
+    };
+  }
 
   /**
    * convention

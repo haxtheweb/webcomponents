@@ -190,35 +190,35 @@ class SimpleBlogCard extends LitElement {
   // render function
   render() {
     return html`
-
-<div class="card-${this.size} card">
-  <img .alt="${this.alt}" .src="${this.image}" loading="lazy"/>
-  <div class="card-content">
-    <a href="${this.link}">
-      <h3>${this.title}</h3>
-      <div class="teaser">
-        <slot></slot>
-      </div>
-    </a>
-  </div>
-  <div class="card-actions">
-    <div id="author" class="author-block">
-      <paper-avatar
-        .label="${this.author}"
-        .src="${this.authorimage}">
-      </paper-avatar>
-      <div class="author-info">
-        <a .href="${this.authorlink}">${this.author}</a>
-        <div class="post-details">
-          <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
-          </simple-datetime>
-          <span class="dot">&#183</span>
-          <span class="reading-time" .title="${this.readtime} min read"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`;
+ 
+ <div class="card-${this.size} card">
+   <img .alt="${this.alt}" .src="${this.image}" loading="lazy"/>
+   <div class="card-content">
+     <a href="${this.link}">
+       <h3>${this.title}</h3>
+       <div class="teaser">
+         <slot></slot>
+       </div>
+     </a>
+   </div>
+   <div class="card-actions">
+     <div id="author" class="author-block">
+       <paper-avatar
+         .label="${this.author}"
+         .src="${this.authorimage}">
+       </paper-avatar>
+       <div class="author-info">
+         <a .href="${this.authorlink}">${this.author}</a>
+         <div class="post-details">
+           <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
+           </simple-datetime>
+           <span class="dot">&#183</span>
+           <span class="reading-time" .title="${this.readtime} min read"></span>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>`;
   }
 
   // properties available to the custom element for data binding

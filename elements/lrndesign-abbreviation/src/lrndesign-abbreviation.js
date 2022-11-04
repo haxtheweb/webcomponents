@@ -133,5 +133,5 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
     };
   }
 }
-window.customElements.define(LrndesignAbbreviation.tag, LrndesignAbbreviation);
+customElements.define(LrndesignAbbreviation.tag, LrndesignAbbreviation);
 export { LrndesignAbbreviation };

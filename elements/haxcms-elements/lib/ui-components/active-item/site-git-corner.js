@@ -93,5 +93,5 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   }
 }
 
-window.customElements.define(SiteGitCorner.tag, SiteGitCorner);
+customElements.define(SiteGitCorner.tag, SiteGitCorner);
 export { SiteGitCorner };

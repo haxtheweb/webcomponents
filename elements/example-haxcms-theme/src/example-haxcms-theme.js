@@ -24,7 +24,73 @@ import { autorun, toJS } from "mobx";
  * @demo demo/index.html
  */
 class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  render() {
+    return html` <style>
+        :host {
+          display: block;
+
+          --example-haxcms-theme-color: #222222;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        :host([edit-mode]) #slot {
+          display: none;
+        }
+
+        :host #slot ::slotted(*) {
+          color: var(--example-haxcms-theme-color);
+        }
+      </style>
+      <site-top-menu noink indicator="arrow" arrow-size="8">
+        <site-title slot="prefix" class="spacing"></site-title>
+        <site-modal
+          slot="suffix"
+          icon="icons:search"
+          title="Search site"
+          button-label="Search"
+        >
+          <site-search></site-search>
+        </site-modal>
+      </site-top-menu>
+      <site-breadcrumb></site-breadcrumb>
+      <div id="contentcontainer">
+        <div id="slot">
+          <slot></slot>
+        </div>
+      </div>
+      <site-menu-button type="prev" position="top"></site-menu-button>
+      <site-menu-button type="next" position="top"></site-menu-button>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * Edit mode which will be updated whenever HAXcms store
+       * has been updated. It's also reflected to attribute which
+       * is a Polymer convention to allow it to be leveraged in
+       * CSS styling.
+       */
+      editMode: {
+        name: "editMode",
+        type: Boolean,
+        reflectToAttribute: true,
+      },
+      /**
+       * Current array index of the active page that's been loaded.
+       */
+      activeManifestIndex: {
+        name: "activeManifestIndex",
+        type: Number,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

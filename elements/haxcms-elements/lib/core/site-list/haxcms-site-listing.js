@@ -2151,5 +2151,5 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 }
 
-window.customElements.define(HAXCMSSiteListing.tag, HAXCMSSiteListing);
+customElements.define(HAXCMSSiteListing.tag, HAXCMSSiteListing);
 export { HAXCMSSiteListing };

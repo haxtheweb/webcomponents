@@ -204,8 +204,5 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     this.__items = items;
   }
 }
-window.customElements.define(
-  LrndesignGalleryMasonry.tag,
-  LrndesignGalleryMasonry
-);
+customElements.define(LrndesignGalleryMasonry.tag, LrndesignGalleryMasonry);
 export { LrndesignGalleryMasonry };

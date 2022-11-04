@@ -334,5 +334,5 @@ class SortableList extends GestureEventListeners(PolymerElement) {
     el.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
   }
 }
-window.customElements.define("sortable-list", SortableList);
+customElements.define("sortable-list", SortableList);
 export { SortableList };

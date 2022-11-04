@@ -10,19 +10,88 @@ window.__H5PBridgeTimeOut = function () {
   }, 500);
 };
 /**
- * `h5p-element`
- * @element h5p-element
- * `h5p wrapper for loading and presenting .h5p files`
- *
- * @microcopy - language worth noting:
- *  - h5p is it's own eco system, we're just trying to wrap it a bit
- *
-
- * @lit-element
- * @demo demo/index.html
- */
+  * `h5p-element`
+  * @element h5p-element
+  * `h5p wrapper for loading and presenting .h5p files`
+  *
+  * @microcopy - language worth noting:
+  *  - h5p is it's own eco system, we're just trying to wrap it a bit
+  *
+ 
+  * @lit-element
+  * @demo demo/index.html
+  */
 class H5PElement extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` ${!this.source
+      ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
+      : html`<div
+          class="h5p-container"
+          data-content-id="wrapper-${this.contentId}"
+        ></div>`}`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "H5P element",
+        description: "h5p wrapper for loading and presenting .h5p files",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Interactive"],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "source",
+            description: "Location the H5P file was unpacked to",
+            inputMethod: "textfield",
+            required: true,
+            icon: "icons:link",
+          },
+        ],
+        advanced: [],
+      },
+      saveOptions: {
+        wipeSlot: true,
+        unsetAttributes: ["content-id"],
+      },
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * Source of the .h5p file
+       */
+      source: {
+        name: "source",
+        type: String,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -140,10 +209,10 @@ class H5PElement extends LitElement {
       scripts: this.h5pJSDeps,
     };
     let frag = document.createRange().createContextualFragment(`
-    <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-      <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
-    </div>
-    `);
+     <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
+       <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
+     </div>
+     `);
     if (
       this.querySelector('[data-content-id="wrapper-' + this.contentId + '"')
     ) {

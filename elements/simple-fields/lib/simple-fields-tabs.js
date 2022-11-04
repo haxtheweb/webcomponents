@@ -75,5 +75,5 @@ class SimpleFieldsTabs extends A11yTabs {
     `;
   }
 }
-window.customElements.define(SimpleFieldsTabs.tag, SimpleFieldsTabs);
+customElements.define(SimpleFieldsTabs.tag, SimpleFieldsTabs);
 export { SimpleFieldsTabs };

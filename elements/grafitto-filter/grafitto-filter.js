@@ -368,5 +368,5 @@ class GrafittoFilter extends mixinBehaviors(
     );
   }
 }
-window.customElements.define(GrafittoFilter.tag, GrafittoFilter);
+customElements.define(GrafittoFilter.tag, GrafittoFilter);
 export { GrafittoFilter };

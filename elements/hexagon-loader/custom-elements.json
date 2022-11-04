@@ -1,123 +1,66 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "hex-a-gon",
-      "description": "`hex-a-gon`",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "tag",
-          "type": "string",
-          "default": "\"hex-a-gon\""
-        },
-        {
-          "name": "template"
-        }
-      ]
-    },
-    {
       "name": "hexagon-loader",
-      "description": "`hexagon-loader`",
-      "properties": [
-        {
-          "name": "itemCount",
-          "type": "number",
-          "default": "37"
-        },
-        {
-          "name": "items",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
-    },
-    {
-      "name": "hexagon-loader",
-      "description": "`hexagon-loader`",
+      "description": "`hexagon-loader`\n\nAttributes:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `item-count` {`number`} - Count of the items\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `itemCount` {`number`} - Count of the items\n\n  * `items` {`any[]`} - ",
       "attributes": [
         {
           "name": "color",
-          "description": "Color to make the loader",
-          "type": "string"
+          "description": "`color` {`string`} - Color to make the loader\n\nProperty: color"
         },
         {
           "name": "size",
-          "description": "The relative size of this loader. Options small, medium, large",
-          "type": "string"
+          "description": "`size` {`string`} - The relative size of this loader. Options small, medium, large\n\nProperty: size"
         },
         {
           "name": "loading",
-          "description": "Loading state",
-          "type": "boolean"
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading",
+          "valueSet": "v"
         },
         {
           "name": "item-count",
-          "description": "Count of the items",
-          "type": "number",
-          "default": "37"
+          "description": "`item-count` {`number`} - Count of the items\n\nProperty: itemCount\n\nDefault: 37"
         },
         {
           "name": "items",
-          "type": "array",
-          "default": "[]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color to make the loader",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "attribute": "size",
-          "description": "The relative size of this loader. Options small, medium, large",
-          "type": "string"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "description": "Loading state",
-          "type": "boolean"
-        },
-        {
-          "name": "itemCount",
-          "attribute": "item-count",
-          "description": "Count of the items",
-          "type": "number",
-          "default": "37"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         }
       ]
     },
     {
-      "name": "tag"
+      "name": "hex-a-gon",
+      "description": "`hex-a-gon`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
+      "attributes": []
     },
     {
       "name": "hexagon-loader",
-      "description": "`hexagon-loader`",
-      "properties": [
+      "description": "`hexagon-loader`\n\nAttributes:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `item-count` {`number`} - Count of the items\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `itemCount` {`number`} - Count of the items\n\n  * `items` {`any[]`} - ",
+      "attributes": [
         {
-          "name": "itemCount",
-          "type": "number",
-          "default": "37"
+          "name": "color",
+          "description": "`color` {`string`} - Color to make the loader\n\nProperty: color"
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - The relative size of this loader. Options small, medium, large\n\nProperty: size"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading",
+          "valueSet": "v"
+        },
+        {
+          "name": "item-count",
+          "description": "`item-count` {`number`} - Count of the items\n\nProperty: itemCount\n\nDefault: 37"
         },
         {
           "name": "items",
-          "type": "never[]",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

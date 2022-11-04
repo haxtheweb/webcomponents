@@ -200,5 +200,5 @@ class ExifData extends HTMLElement {
     this.observer.disconnect();
   }
 }
-window.customElements.define(ExifData.tag, ExifData);
+customElements.define(ExifData.tag, ExifData);
 export { ExifData };

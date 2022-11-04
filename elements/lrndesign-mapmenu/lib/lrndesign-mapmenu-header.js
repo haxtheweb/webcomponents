@@ -88,8 +88,5 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
     this.setAttribute("tabindex", "0");
   }
 }
-window.customElements.define(
-  LrndesignMapmenuHeader.tag,
-  LrndesignMapmenuHeader
-);
+customElements.define(LrndesignMapmenuHeader.tag, LrndesignMapmenuHeader);
 export { LrndesignMapmenuHeader };

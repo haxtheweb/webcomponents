@@ -337,5 +337,5 @@ class CMSEntity extends PolymerElement {
     return schema;
   }
 }
-window.customElements.define(CMSEntity.tag, CMSEntity);
+customElements.define(CMSEntity.tag, CMSEntity);
 export { CMSEntity };

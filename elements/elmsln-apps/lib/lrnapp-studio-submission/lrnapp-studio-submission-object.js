@@ -89,7 +89,7 @@ class LrnappStudioSubmissionObject extends PolymerElement {
     this.set("selectedPage", selected);
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionObject.tag,
   LrnappStudioSubmissionObject
 );

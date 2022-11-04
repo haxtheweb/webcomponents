@@ -271,5 +271,5 @@ class AwesomeExplosion extends LitElement {
     window.audio.play();
   }
 }
-window.customElements.define(AwesomeExplosion.tag, AwesomeExplosion);
+customElements.define(AwesomeExplosion.tag, AwesomeExplosion);
 export { AwesomeExplosion };

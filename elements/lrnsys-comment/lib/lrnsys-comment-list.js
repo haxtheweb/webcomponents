@@ -467,5 +467,5 @@ class LrnsysCommentList extends PolymerElement {
     });
   }
 }
-window.customElements.define(LrnsysCommentList.tag, LrnsysCommentList);
+customElements.define(LrnsysCommentList.tag, LrnsysCommentList);
 export { LrnsysCommentList };

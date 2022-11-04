@@ -45,7 +45,7 @@ class LrnappStudioAssignmentDisplay extends PolymerElement {
     };
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioAssignmentDisplay.tag,
   LrnappStudioAssignmentDisplay
 );

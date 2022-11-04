@@ -95,5 +95,5 @@ class PaperIconStepper extends LitElement {
     this._items = this.shadowRoot.querySelector("#selector").items;
   }
 }
-window.customElements.define(PaperIconStepper.tag, PaperIconStepper);
+customElements.define(PaperIconStepper.tag, PaperIconStepper);
 export { PaperIconStepper };

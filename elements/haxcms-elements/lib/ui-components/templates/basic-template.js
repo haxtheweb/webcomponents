@@ -150,5 +150,5 @@ let BasicTemplate = (superclass) =>
     }
   };
 class Basic extends BasicTemplate(HTMLElement) {}
-window.customElements.define("basic-template", Basic);
+customElements.define("basic-template", Basic);
 export { BasicTemplate, Basic };

@@ -33,5 +33,5 @@ class LrndesignContentblock extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrndesignContentblock.tag, LrndesignContentblock);
+customElements.define(LrndesignContentblock.tag, LrndesignContentblock);
 export { LrndesignContentblock };

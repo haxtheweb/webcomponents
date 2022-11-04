@@ -181,5 +181,5 @@ class SiteBreadcrumb extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);
+customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);
 export { SiteBreadcrumb };

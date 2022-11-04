@@ -6,17 +6,17 @@ import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 /**
- * `lrndesign-avatar`
- * Visualize a user account either with an image, icon, initials, or as abstract art.
- *
-### Styling
-Custom property | Description | Default
-----------------|-------------|----------
-`--lrndesign-avatar-width` | Size (width and height) of the avatar image | 40px
- * @lit-html
- * @lit-element
- * @demo demo/index.html
- */
+  * `lrndesign-avatar`
+  * Visualize a user account either with an image, icon, initials, or as abstract art.
+  *
+ ### Styling
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--lrndesign-avatar-width` | Size (width and height) of the avatar image | 40px
+  * @lit-html
+  * @lit-element
+  * @demo demo/index.html
+  */
 class LrndesignAvatar extends SimpleColors {
   //styles function
   static get styles() {

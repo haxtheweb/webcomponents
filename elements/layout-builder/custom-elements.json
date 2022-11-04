@@ -1,108 +1,37 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "layout-builder",
-      "description": "`layout-builder`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "layout-builder",
-      "description": "`layout-builder`",
+      "description": "`layout-builder`\n\nAttributes:\n\n  * `type` {`boolean`} - \n\n  * `id` {`string`} - \n\nProperties:\n\n  * `type` {`boolean`} - \n\n  * `id` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "type",
-          "type": "boolean",
-          "default": "\"layout\""
+          "description": "`type` {`boolean`} - \n\nProperty: type\n\nDefault: layout",
+          "valueSet": "v"
         },
         {
           "name": "id",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "boolean",
-          "default": "\"layout\""
-        },
-        {
-          "name": "id",
-          "attribute": "id",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`id` {`string`} - \n\nProperty: id"
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "layout-builder",
-      "description": "`layout-builder`",
-      "properties": [
+      "description": "`layout-builder`\n\nAttributes:\n\n  * `type` {`boolean`} - \n\n  * `id` {`string`} - \n\nProperties:\n\n  * `type` {`boolean`} - \n\n  * `id` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "type",
+          "description": "`type` {`boolean`} - \n\nProperty: type\n\nDefault: layout",
+          "valueSet": "v"
         },
         {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "id",
+          "description": "`id` {`string`} - \n\nProperty: id"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

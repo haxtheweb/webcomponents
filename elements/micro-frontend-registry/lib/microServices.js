@@ -29,7 +29,8 @@ export function enableCoreServices() {
     endpoint: "/api/services/website/linkValidator",
     name: "@core/linkValidator",
     title: "Validate URLs",
-    description: "Validates that an array of URLs are valid by returning status codes of a HEAD request",
+    description:
+      "Validates that an array of URLs are valid by returning status codes of a HEAD request",
     params: {
       links: "link for processing as link otherwise unused",
     },
@@ -184,7 +185,8 @@ export function enableHAXcmsServices() {
     endpoint: "/api/apps/haxcms/insights",
     name: "@haxcms/insights",
     title: "Site insights",
-    description: "States relative to the page, lesson, and site as a whole. Used for content authors.",
+    description:
+      "States relative to the page, lesson, and site as a whole. Used for content authors.",
     params: {
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",
@@ -232,7 +234,8 @@ export function enableHAXcmsServices() {
     endpoint: "/api/apps/haxcms/courseStats",
     name: "@haxcms/courseStats",
     title: "Course stats",
-    description: "Relevant stats for teaching relative to the ancestor in question",
+    description:
+      "Relevant stats for teaching relative to the ancestor in question",
     params: {
       site: "location of the HAXcms site OR site.json data",
       type: "site for site.json or link for remote loading",

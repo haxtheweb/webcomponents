@@ -64,5 +64,5 @@ class LrndesignComment extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrndesignComment.tag, LrndesignComment);
+customElements.define(LrndesignComment.tag, LrndesignComment);
 export { LrndesignComment };

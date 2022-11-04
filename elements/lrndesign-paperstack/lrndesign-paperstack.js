@@ -268,5 +268,5 @@ class LrndesignPaperstack extends SimpleColors {
     };
   }
 }
-window.customElements.define(LrndesignPaperstack.tag, LrndesignPaperstack);
+customElements.define(LrndesignPaperstack.tag, LrndesignPaperstack);
 export { LrndesignPaperstack };

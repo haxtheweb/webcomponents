@@ -107,5 +107,5 @@ class HaxContextItemTextop extends HaxToolbarItemBehaviors(LitElement) {
     }
   }
 }
-window.customElements.define(HaxContextItemTextop.tag, HaxContextItemTextop);
+customElements.define(HaxContextItemTextop.tag, HaxContextItemTextop);
 export { HaxContextItemTextop };

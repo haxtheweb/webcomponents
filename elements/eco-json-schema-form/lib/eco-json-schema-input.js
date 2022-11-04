@@ -196,5 +196,5 @@ class EcoJsonSchemaInput extends mixinBehaviors(
     return type === "array";
   }
 }
-window.customElements.define(EcoJsonSchemaInput.tag, EcoJsonSchemaInput);
+customElements.define(EcoJsonSchemaInput.tag, EcoJsonSchemaInput);
 export { EcoJsonSchemaInput };

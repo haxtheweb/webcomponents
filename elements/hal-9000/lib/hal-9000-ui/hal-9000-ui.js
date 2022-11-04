@@ -87,4 +87,4 @@ export class Hal9000UI extends SimpleColors {
   }
 }
 
-window.customElements.define(Hal9000UI.tag, Hal9000UI);
+customElements.define(Hal9000UI.tag, Hal9000UI);

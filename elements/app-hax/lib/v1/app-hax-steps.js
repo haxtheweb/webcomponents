@@ -119,13 +119,13 @@ export class AppHaxSteps extends SimpleColors {
         "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
       ).then(async (e) => {
         // enable core services
-        enableServices(['haxcms']);
+        enableServices(["haxcms"]);
         // get the broker for docx selection
         const broker = window.FileSystemBroker.requestAvailability();
         const file = await broker.loadFile("docx");
         // tee up as a form for upload
         const formData = new FormData();
-        formData.append("method", 'site'); // this is a site based importer
+        formData.append("method", "site"); // this is a site based importer
         formData.append("type", toJS(store.site.structure));
         formData.append("upload", file);
         const response = await MicroFrontendRegistry.call(
@@ -133,21 +133,29 @@ export class AppHaxSteps extends SimpleColors {
           formData
         );
         // must be a valid response and have at least SOME html to bother attempting
-        if (response.status == 200 && response.data && response.data.contents != "") {
+        if (
+          response.status == 200 &&
+          response.data &&
+          response.data.contents != ""
+        ) {
           store.items = response.data.items;
           // invoke a file broker for a docx file
           // send to the endpoint and wait
           // if it comes back with content, then we engineer details off of it
-          this.nameTyped = response.data.filename.replace('.docx','').replace('outline','').replace(/\s/g, '').replace(/-/g,'').toLowerCase();
+          this.nameTyped = response.data.filename
+            .replace(".docx", "")
+            .replace("outline", "")
+            .replace(/\s/g, "")
+            .replace(/-/g, "")
+            .toLowerCase();
           setTimeout(() => {
             this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
             this.shadowRoot.querySelector("#sitename").select();
           }, 800);
           store.site.type = type;
-          store.site.theme = 'clean-one';
+          store.site.theme = "clean-one";
           store.appEl.playSound("click2");
-        }
-        else {
+        } else {
           store.appEl.playSound("error");
           store.toast(`File did not return valid HTML`);
           e.preventDefault();
@@ -629,7 +637,9 @@ export class AppHaxSteps extends SimpleColors {
       e.preventDefault();
     } else if (e.key === "Enter") {
       this.chooseName();
-    } else if (['ArrowUp','ArrowRight','ArrowDown','ArrowLeft'].includes(e.key)) {
+    } else if (
+      ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"].includes(e.key)
+    ) {
       // do nothing, directional keys for modifying word
     } else {
       store.appEl.playSound("click");
@@ -749,8 +759,7 @@ export class AppHaxSteps extends SimpleColors {
       <div id="container">
         <ul id="step-links">
           <li>
-          ${
-            !toJS(store.isNewUser)
+            ${!toJS(store.isNewUser)
               ? html`
                   <a href="home" class="homelnk" tabindex="-1">
                     <simple-icon-lite
@@ -765,8 +774,7 @@ export class AppHaxSteps extends SimpleColors {
                     >Site list</simple-tooltip
                   >
                 `
-              : html``
-          }
+              : html``}
           </li>
           ${this.stepRoutes.map(
             (item, index) =>
@@ -793,7 +801,7 @@ export class AppHaxSteps extends SimpleColors {
                 >
               </li>`
           )}
-        </ul>   
+        </ul>
         <scrollable-component>
           <div class="carousel-with-snapping-track">
             <div class="carousel-with-snapping-item" id="step-1">
@@ -824,47 +832,47 @@ export class AppHaxSteps extends SimpleColors {
             </div>
             <div class="carousel-with-snapping-item" id="step-3">
               <div id="themeContainer">
-                ${
-                  this.appSettings && this.appSettings.themes
-                    ? this.themeNames.map(
-                        (themeKey) => html`
-                          <button
-                            aria-label="${this.appSettings.themes[themeKey]
-                              .name} theme"
-                            value="${themeKey}"
-                            class="theme-button"
-                            @click=${this.chooseTheme}
-                            tabindex="${this.step !== 3 ? "-1" : ""}"
-                          >
-                            <img
-                              class="theme-img"
-                              src="${this.appSettings.themes[themeKey]
-                                .thumbnail}"
-                              alt=""
-                              loading="lazy"
-                              decoding="async"
-                            />
-                            <div>${this.appSettings.themes[themeKey].name}</div>
-                          </button>
-                        `
-                      )
-                    : ``
-                }
+                ${this.appSettings && this.appSettings.themes
+                  ? this.themeNames.map(
+                      (themeKey) => html`
+                        <button
+                          aria-label="${this.appSettings.themes[themeKey]
+                            .name} theme"
+                          value="${themeKey}"
+                          class="theme-button"
+                          @click=${this.chooseTheme}
+                          tabindex="${this.step !== 3 ? "-1" : ""}"
+                        >
+                          <img
+                            class="theme-img"
+                            src="${this.appSettings.themes[themeKey].thumbnail}"
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <div>${this.appSettings.themes[themeKey].name}</div>
+                        </button>
+                      `
+                    )
+                  : ``}
               </div>
             </div>
             <div class="carousel-with-snapping-item" id="step-4">
-              <input id="sitename"
+              <input
+                id="sitename"
                 @input="${this.typeKey}"
                 @keydown="${this.keydown}"
                 maxlength="30"
                 placeholder="${toJS(store.site.structure)} name.."
-                tabindex="${this.step !== 4 ? "-1" : ""}" />
+                tabindex="${this.step !== 4 ? "-1" : ""}"
+              />
               <app-hax-site-button
                 class="sitenamebtn"
                 tabindex="${this.step !== 4 ? "-1" : ""}"
                 label="&gt; Create journey"
                 @click=${this.chooseName}
-                ?disabled="${this.nameTyped === ""}">
+                ?disabled="${this.nameTyped === ""}"
+              >
               </app-hax-site-button>
             </div>
             <div class="carousel-with-snapping-item" id="step-5">

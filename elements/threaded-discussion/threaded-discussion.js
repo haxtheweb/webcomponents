@@ -654,5 +654,5 @@ class ThreadedDiscussion extends LitElement {
     return query ? `${path}?${query}` : path;
   }
 }
-window.customElements.define(ThreadedDiscussion.tag, ThreadedDiscussion);
+customElements.define(ThreadedDiscussion.tag, ThreadedDiscussion);
 export { ThreadedDiscussion };

@@ -5,23 +5,23 @@
 import { LitElement, html, css } from "lit";
 
 /**
- * `simple-tooltip`
- * `a simple tooltip forked from paper-tooltip with the same api minus apply removal`
-    ### Styling
-    The following custom properties and mixins are available for styling:
-
-    Custom property | Description | Default
-    ----------------|-------------|----------
-    `--simple-tooltip-background` | The background color of the tooltip | `#616161`
-    `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`
-    `--simple-tooltip-text-color` | The text color of the tooltip | `white`
-    `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`
-    `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`
-    `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`
-    `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`
- * @demo demo/index.html
- * @element simple-tooltip
- */
+  * `simple-tooltip`
+  * `a simple tooltip forked from paper-tooltip with the same api minus apply removal`
+     ### Styling
+     The following custom properties and mixins are available for styling:
+ 
+     Custom property | Description | Default
+     ----------------|-------------|----------
+     `--simple-tooltip-background` | The background color of the tooltip | `#616161`
+     `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`
+     `--simple-tooltip-text-color` | The text color of the tooltip | `white`
+     `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`
+     `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`
+     `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`
+     `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`
+  * @demo demo/index.html
+  * @element simple-tooltip
+  */
 class SimpleTooltip extends LitElement {
   //styles function
   static get styles() {

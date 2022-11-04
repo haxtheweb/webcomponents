@@ -6,126 +6,206 @@ import { LitElement, html, css } from "lit";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
 import "./lib/simple-fields-field.js";
 /**
- * `simple-fields`
- * Uses JSON Schema to display a series of fields
- * 
-### Styling
-`<simple-fields>` provides following custom properties
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|--------
-`--simple-fields-margin` | vertical margin around container | 16px
-`--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
-`--simple-fields-border-radus` | default border-radius | 2px
-`--simple-fields-color` | text color | black
-`--simple-fields-error-color` | error text color | #b40000
-`--simple-fields-accent-color` | accent text/underline color | #3f51b5
-`--simple-fields-border-color` | border-/underline color | #999
-`--simple-fields-border-color-light` | used for range tracks | #ccc
-`--simple-fields-faded-error-color` | used for range tracks | #ffc0c0
-
-#### Field text
-Custom property | Description | Default
-----------------|-------------|--------
-`--simple-fields-font-size` | font-size of field | 16px
-`--simple-fields-font-family` | font-size of field | sans-serif
-`--simple-fields-line-height` | line-height of field | 22px
-
-#### Detail text
-Custom property | Description | Default
-----------------|-------------|--------
-`--simple-fields-detail-font-size` | font-size of field details | 12px
-`--simple-fields-detail-font-family` | font-size of field details | sans-serif
-`--simple-fields-detail-line-height` | line-height of field details | 22px
-
-#### Disabled Fields
-Custom property | Description | Default
-----------------|-------------|--------
-`--simple-fields-disabled-color` | disabled text color | #999
-`--simple-fields-disabled-opacity` | opacity for disabled field | 0.7
-
-#### Radio Buttons and Checkboxes
-Custom property | Description | Default
-----------------|-------------|--------
-`--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
-`--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
-
-### Configuring schemaConversion Property
-You can customise elements from JSON schema conversion by setting `schemaConversion` property.
-```
-type: {                                       //For properties in "this.schema", define elements based on a property's "type"
-  object: {                                   //Defines element used when property's "type" is an "object"
-    format: {                                 //Optional: define elements for "object" properties by "format"
-      "tabs": {                               //Defines element used for object properties when "format" is "tabs"
-        element: "a11y-tabs"                  //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
-        descriptionProperty: "description"    //Optional: element's property that sets its description, e.g. "description"
-        descriptionSlot: "description"        //Optional: element's slot that contains its description, e.g. "description"
-        errorProperty: "error"                //Optional: element's property that sets its error status, e.g. "error"
-        errorChangedProperty: "error"         //Optional: event element fires when error status changes, e.g. "error-changed"
-        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, e.g. "errorMessage"
-        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, e.g. "errorMessage"
-        labelProperty: "label"                //Optional: element's property that sets its label, e.g. "label"
-        labelSlot: "label"                    //Optional: element's slot that contains its label, e.g. "label"
-        valueProperty: "value"                //Optional: element's property that gets its value, e.g. "value" or "checked"
-        setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
-        valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
-        valueSlot: ""                         //Optional: element's slot that's used to set its value, e.g. ""
-        description: ""                       //Optional: element that contains description, e.g. "p", "span", "paper-tooltip", etc.
-        child: {                              //Optional: child elements to be appended
-          element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
-          attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
-            disabled: true                    //Example: sets disabled to true  
-          } 
-          properties: {                       //Optional: sets child element's attributes based on this.schema properties
-            icon: "iconName"                  //Example: sets child element's icon property to this.schema property's iconName 
-          }, 
-          slots: {                            //Optional: inserts schema properties in child element's slots
-            label: "label",                   //Example: places schema property's label into child element's label slot
-            "": "description"                 //Example: places schema property's description into child element's unnamed slot
-          } 
-        },
-        attributes: {},
-        properties: {},
-        slots: {}
-      }
-    },
-    defaultSettings: {                        //Default element used for object properties
-      element: ""
-      label: ""
-      description: ""     
-      attributes: {}       
-      properties: {}       
-      slots: {}           
-    }
-  }
-}
-``` 
-### Configuring fieldsConversion Property
-You can customise fields to JSON schema conversion by setting `fieldsConversion` property.
-```
-defaultSettings: {            //default JSON schema type if no type is matched
-  type: "string"              //sets JSON schema type to string
-},
-inputMethod: {                //for fields in "this.fields", define elements based on a property's "inputMethod"
-  colorpicker: {              //settings if inputMethod is color picker
-    defaultSettings: {        //default colorpicker settings
-      type: "string",         //sets JSON schema type to string
-      format: "color"         //sets JSON schema format to color
-    }
-  }
-}
-``` 
- * @element simple-fields
- * @extends simple-fields-lite
- * @demo ./demo/index.html
- * @demo ./demo/schema.html Schema
- * @demo ./demo/conditional.html Conditional Logic
- * @demo ./demo/subschema.html Subschemas
- * @demo ./demo/form.html Form
- */
+  * `simple-fields`
+  * Uses JSON Schema to display a series of fields
+  * 
+ ### Styling
+ `<simple-fields>` provides following custom properties
+ for styling:
+ 
+ Custom property | Description | Default
+ ----------------|-------------|--------
+ `--simple-fields-margin` | vertical margin around container | 16px
+ `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
+ `--simple-fields-border-radus` | default border-radius | 2px
+ `--simple-fields-color` | text color | black
+ `--simple-fields-error-color` | error text color | #b40000
+ `--simple-fields-accent-color` | accent text/underline color | #3f51b5
+ `--simple-fields-border-color` | border-/underline color | #999
+ `--simple-fields-border-color-light` | used for range tracks | #ccc
+ `--simple-fields-faded-error-color` | used for range tracks | #ffc0c0
+ 
+ #### Field text
+ Custom property | Description | Default
+ ----------------|-------------|--------
+ `--simple-fields-font-size` | font-size of field | 16px
+ `--simple-fields-font-family` | font-size of field | sans-serif
+ `--simple-fields-line-height` | line-height of field | 22px
+ 
+ #### Detail text
+ Custom property | Description | Default
+ ----------------|-------------|--------
+ `--simple-fields-detail-font-size` | font-size of field details | 12px
+ `--simple-fields-detail-font-family` | font-size of field details | sans-serif
+ `--simple-fields-detail-line-height` | line-height of field details | 22px
+ 
+ #### Disabled Fields
+ Custom property | Description | Default
+ ----------------|-------------|--------
+ `--simple-fields-disabled-color` | disabled text color | #999
+ `--simple-fields-disabled-opacity` | opacity for disabled field | 0.7
+ 
+ #### Radio Buttons and Checkboxes
+ Custom property | Description | Default
+ ----------------|-------------|--------
+ `--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
+ `--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
+ 
+ ### Configuring schemaConversion Property
+ You can customise elements from JSON schema conversion by setting `schemaConversion` property.
+ ```
+ type: {                                       //For properties in "this.schema", define elements based on a property's "type"
+   object: {                                   //Defines element used when property's "type" is an "object"
+     format: {                                 //Optional: define elements for "object" properties by "format"
+       "tabs": {                               //Defines element used for object properties when "format" is "tabs"
+         element: "a11y-tabs"                  //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
+         descriptionProperty: "description"    //Optional: element's property that sets its description, e.g. "description"
+         descriptionSlot: "description"        //Optional: element's slot that contains its description, e.g. "description"
+         errorProperty: "error"                //Optional: element's property that sets its error status, e.g. "error"
+         errorChangedProperty: "error"         //Optional: event element fires when error status changes, e.g. "error-changed"
+         errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, e.g. "errorMessage"
+         errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, e.g. "errorMessage"
+         labelProperty: "label"                //Optional: element's property that sets its label, e.g. "label"
+         labelSlot: "label"                    //Optional: element's slot that contains its label, e.g. "label"
+         valueProperty: "value"                //Optional: element's property that gets its value, e.g. "value" or "checked"
+         setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
+         valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
+         valueSlot: ""                         //Optional: element's slot that's used to set its value, e.g. ""
+         description: ""                       //Optional: element that contains description, e.g. "p", "span", "paper-tooltip", etc.
+         child: {                              //Optional: child elements to be appended
+           element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
+           attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
+             disabled: true                    //Example: sets disabled to true  
+           } 
+           properties: {                       //Optional: sets child element's attributes based on this.schema properties
+             icon: "iconName"                  //Example: sets child element's icon property to this.schema property's iconName 
+           }, 
+           slots: {                            //Optional: inserts schema properties in child element's slots
+             label: "label",                   //Example: places schema property's label into child element's label slot
+             "": "description"                 //Example: places schema property's description into child element's unnamed slot
+           } 
+         },
+         attributes: {},
+         properties: {},
+         slots: {}
+       }
+     },
+     defaultSettings: {                        //Default element used for object properties
+       element: ""
+       label: ""
+       description: ""     
+       attributes: {}       
+       properties: {}       
+       slots: {}           
+     }
+   }
+ }
+ ``` 
+ ### Configuring fieldsConversion Property
+ You can customise fields to JSON schema conversion by setting `fieldsConversion` property.
+ ```
+ defaultSettings: {            //default JSON schema type if no type is matched
+   type: "string"              //sets JSON schema type to string
+ },
+ inputMethod: {                //for fields in "this.fields", define elements based on a property's "inputMethod"
+   colorpicker: {              //settings if inputMethod is color picker
+     defaultSettings: {        //default colorpicker settings
+       type: "string",         //sets JSON schema type to string
+       format: "color"         //sets JSON schema format to color
+     }
+   }
+ }
+ ``` 
+  * @element simple-fields
+  * @extends simple-fields-lite
+  * @demo ./demo/index.html
+  * @demo ./demo/schema.html Schema
+  * @demo ./demo/conditional.html Conditional Logic
+  * @demo ./demo/subschema.html Subschemas
+  * @demo ./demo/form.html Form
+  */
 class SimpleFields extends SimpleFieldsLite {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+          --simple-picker-background-color: var(
+            --simple-fields-background-color,
+            transparent
+          );
+          --simple-picker-border-width: 0;
+          --simple-picker-focus-border-width: 0;
+          --simple-picker-display: block;
+          --simple-picker-listbox-border-width: 1px;
+          --simple-picker-listbox-outline: none;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <div id="schema-fields" aria-live="polite" part="fields-list">
+      <slot></slot>
+    </div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {};
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
+      /**
+       * Fields to convert to JSON Schema.
+       */
+      fields: {
+        type: Array,
+      },
+      /**
+       * Conversion from fields array with inputMethods to JSON schema types and formats.
+       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+       */
+      schematizer: {
+        type: Object,
+        attribute: "schematizer",
+      },
+      /**
+       * Schema label
+       */
+      label: {
+        type: String,
+      },
+      /**
+       * tracks all activeTabs as an object
+       */
+      __activeTabs: {
+        type: Object,
+        attribute: "active-path",
+      },
+      /**
+       * default theme for code editor
+       */
+      codeTheme: {
+        type: String,
+        attribute: "code-theme",
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -848,9 +928,9 @@ class SimpleFields extends SimpleFieldsLite {
           schema.properties = this.fieldsToSchema(field.properties);
         }
         /*} else if (key === "slot") {
-        schema[key] = !field[key] || field[key] === "" 
-          ? "unnamed-slot-placeholder" 
-          : field[key];*/
+         schema[key] = !field[key] || field[key] === "" 
+           ? "unnamed-slot-placeholder" 
+           : field[key];*/
       } else if (
         ![
           "items",

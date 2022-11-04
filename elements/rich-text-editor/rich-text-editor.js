@@ -422,5 +422,5 @@ Custom property | Description | Default
  * @demo ./demo/rawhtml.html raw HTML
  */
 class RichTextEditor extends RichTextEditorBehaviors(LitElement) {}
-window.customElements.define(RichTextEditor.tag, RichTextEditor);
+customElements.define(RichTextEditor.tag, RichTextEditor);
 export { RichTextEditor, RichTextEditorBehaviors };

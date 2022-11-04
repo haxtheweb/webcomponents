@@ -431,8 +431,5 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
     this.goToItem(item.index);
   }
 }
-window.customElements.define(
-  LrndesignGalleryCarousel.tag,
-  LrndesignGalleryCarousel
-);
+customElements.define(LrndesignGalleryCarousel.tag, LrndesignGalleryCarousel);
 export { LrndesignGalleryCarousel };

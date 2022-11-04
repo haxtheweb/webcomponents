@@ -22,8 +22,8 @@ const styleElement = document.createElement("dom-module");
 const css = html`
   <style include="iron-flex iron-flex-alignment">
     /**
-     * Normalizes simple-icon and lrn-icon.
-     */
+      * Normalizes simple-icon and lrn-icon.
+      */
     lrn-icon,
     simple-icon,
     simple-icon-lite {
@@ -32,8 +32,8 @@ const css = html`
       }
     }
     /**
-     * Visible to screenreaders only.
-     */
+      * Visible to screenreaders only.
+      */
     .sr-only {
       position: absolute;
       left: -9999999px;
@@ -43,25 +43,25 @@ const css = html`
       overflow: hidden;
     }
     /**
-    * Hide elements from all users.
-    *
-    * Used for elements which should not be immediately displayed to any user. An
-    * example would be a collapsible fieldset that will be expanded with a click
-    * from a user. The effect of this class can be toggled with the jQuery show()
-    * and hide() functions.
-    */
+     * Hide elements from all users.
+     *
+     * Used for elements which should not be immediately displayed to any user. An
+     * example would be a collapsible fieldset that will be expanded with a click
+     * from a user. The effect of this class can be toggled with the jQuery show()
+     * and hide() functions.
+     */
     .element-hidden {
       display: none;
     }
 
     /**
-    * Hide elements visually, but keep them available for screen-readers.
-    *
-    * Used for information required for screen-reader users to understand and use
-    * the site where visual display is undesirable. Information provided in this
-    * manner should be kept concise, to avoid unnecessary burden on the user.
-    * "!important" is used to prevent unintentional overrides.
-    */
+     * Hide elements visually, but keep them available for screen-readers.
+     *
+     * Used for information required for screen-reader users to understand and use
+     * the site where visual display is undesirable. Information provided in this
+     * manner should be kept concise, to avoid unnecessary burden on the user.
+     * "!important" is used to prevent unintentional overrides.
+     */
     .element-invisible {
       position: absolute !important;
       clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
@@ -71,9 +71,9 @@ const css = html`
     }
 
     /**
-    * The .element-focusable class extends the .element-invisible class to allow
-    * the element to be focusable when navigated to via the keyboard.
-    */
+     * The .element-focusable class extends the .element-invisible class to allow
+     * the element to be focusable when navigated to via the keyboard.
+     */
     .element-invisible.element-focusable:active,
     .element-invisible.element-focusable:focus {
       position: static !important;
@@ -83,16 +83,16 @@ const css = html`
     }
     @media screen {
       /**
-       * Visible only when printed. Invisible on screen.
-       */
+        * Visible only when printed. Invisible on screen.
+        */
       .print-only {
         display: none;
       }
     }
     @media print {
       /**
-       * Visible only on screen. Invisible when printed.
-       */
+        * Visible only on screen. Invisible when printed.
+        */
       .screen-only {
         display: none;
       }

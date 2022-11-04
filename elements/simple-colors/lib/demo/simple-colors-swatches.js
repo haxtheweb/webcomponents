@@ -212,4 +212,4 @@ class simpleColorsSwatches extends SimpleColors {
 
 export { simpleColorsSwatches };
 
-window.customElements.define(simpleColorsSwatches.tag, simpleColorsSwatches);
+customElements.define(simpleColorsSwatches.tag, simpleColorsSwatches);

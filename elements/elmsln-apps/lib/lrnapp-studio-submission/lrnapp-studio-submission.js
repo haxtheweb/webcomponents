@@ -167,8 +167,5 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
     });
   }
 }
-window.customElements.define(
-  LrnappStudioSubmission.tag,
-  LrnappStudioSubmission
-);
+customElements.define(LrnappStudioSubmission.tag, LrnappStudioSubmission);
 export { LrnappStudioSubmission };

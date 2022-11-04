@@ -239,5 +239,5 @@ class ImageInspector extends LitElement {
     this.__img.zoomOut();
   }
 }
-window.customElements.define(ImageInspector.tag, ImageInspector);
+customElements.define(ImageInspector.tag, ImageInspector);
 export { ImageInspector };

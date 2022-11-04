@@ -115,7 +115,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     ];
   }
 }
-window.customElements.define(
+customElements.define(
   RichTextEditorHeadingPicker.tag,
   RichTextEditorHeadingPicker
 );

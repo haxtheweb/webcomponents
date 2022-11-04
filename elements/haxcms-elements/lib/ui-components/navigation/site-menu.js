@@ -198,5 +198,5 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     } catch (e) {}
   }
 }
-window.customElements.define(SiteMenu.tag, SiteMenu);
+customElements.define(SiteMenu.tag, SiteMenu);
 export { SiteMenu };

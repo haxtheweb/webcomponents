@@ -759,7 +759,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
           <hax-text-editor-toolbar
             id="textcontextmenu"
-            class="hax-context-menu ignore-activation ${this.calcClasses(this.activeNode)}"
+            class="hax-context-menu ignore-activation ${this.calcClasses(
+              this.activeNode
+            )}"
             .activeNode="${this.activeNode}"
             show="always"
           >
@@ -769,12 +771,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     `;
   }
   calcClasses(activeNode) {
-    let txt = 'not-text';
-    if (activeNode && activeNode.getAttribute && !activeNode.getAttribute("data-hax-lock")
-    && activeNode.parentNode &&
-    activeNode.parentNode.getAttribute && !activeNode.parentNode.getAttribute("data-hax-lock")
-    && HAXStore.isTextElement(activeNode) && !HAXStore.isSingleSlotElement(activeNode)) {
-      txt = 'is-text';
+    let txt = "not-text";
+    if (
+      activeNode &&
+      activeNode.getAttribute &&
+      !activeNode.getAttribute("data-hax-lock") &&
+      activeNode.parentNode &&
+      activeNode.parentNode.getAttribute &&
+      !activeNode.parentNode.getAttribute("data-hax-lock") &&
+      HAXStore.isTextElement(activeNode) &&
+      !HAXStore.isSingleSlotElement(activeNode)
+    ) {
+      txt = "is-text";
     }
     return txt;
   }
@@ -1772,7 +1780,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support for properties if they exist
     for (var property in properties) {
       let attributeName = camelToDash(property);
-      if (attributeName != '' && properties.hasOwnProperty(property)) {
+      if (attributeName != "" && properties.hasOwnProperty(property)) {
         // special supporting for boolean because html is weird :p
         if (properties[property] === true) {
           newNode.setAttribute(attributeName, attributeName);
@@ -4230,5 +4238,5 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
 }
-window.customElements.define(HaxBody.tag, HaxBody);
+customElements.define(HaxBody.tag, HaxBody);
 export { HaxBody };

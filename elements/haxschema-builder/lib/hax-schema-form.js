@@ -262,5 +262,5 @@ class HaxSchemaForm extends PolymerElement {
     this.notifyPath("schema.*");
   }
 }
-window.customElements.define(HaxSchemaForm.tag, HaxSchemaForm);
+customElements.define(HaxSchemaForm.tag, HaxSchemaForm);
 export { HaxSchemaForm };

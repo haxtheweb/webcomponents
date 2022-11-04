@@ -5,13 +5,13 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
- * `hal-9000`
- * @element hal-9000
- * `Robot assistant tag, hopefully not evil`
- *
-
- * @demo demo/index.html
- */
+  * `hal-9000`
+  * @element hal-9000
+  * `Robot assistant tag, hopefully not evil`
+  *
+ 
+  * @demo demo/index.html
+  */
 class Hal9000 extends LitElement {
   //styles function
   static get styles() {
@@ -302,7 +302,7 @@ class Hal9000 extends LitElement {
 // }
 
 // ensure we can generate a singleton
-window.customElements.define(Hal9000.tag, Hal9000);
+customElements.define(Hal9000.tag, Hal9000);
 export { Hal9000 };
 window.Hal9000 = window.Hal9000 || {};
 

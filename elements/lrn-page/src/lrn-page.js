@@ -31,5 +31,5 @@ class LrnPage extends LitElement {
     return "lrn-page";
   }
 }
-window.customElements.define(LrnPage.tag, LrnPage);
+customElements.define(LrnPage.tag, LrnPage);
 export { LrnPage };

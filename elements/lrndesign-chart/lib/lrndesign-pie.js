@@ -259,5 +259,5 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
     this.type = "pie";
   }
 }
-window.customElements.define(LrndesignPie.tag, LrndesignPie);
+customElements.define(LrndesignPie.tag, LrndesignPie);
 export { LrndesignPie };

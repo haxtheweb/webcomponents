@@ -947,5 +947,5 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     });
   }
 }
-window.customElements.define(ImgViewViewer.tag, ImgViewViewer);
+customElements.define(ImgViewViewer.tag, ImgViewViewer);
 export { ImgViewViewer };

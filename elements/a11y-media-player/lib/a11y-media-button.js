@@ -211,5 +211,5 @@ class A11yMediaButton extends LitElement {
     this.dispatchEvent(new CustomEvent("button-click", { detail: this }));
   }
 }
-window.customElements.define(A11yMediaButton.tag, A11yMediaButton);
+customElements.define(A11yMediaButton.tag, A11yMediaButton);
 export { A11yMediaButton };

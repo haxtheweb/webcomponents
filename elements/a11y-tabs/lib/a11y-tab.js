@@ -338,5 +338,5 @@ class A11yTab extends LitElement {
     );
   }
 }
-window.customElements.define(A11yTab.tag, A11yTab);
+customElements.define(A11yTab.tag, A11yTab);
 export { A11yTab };

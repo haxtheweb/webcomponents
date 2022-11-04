@@ -36,5 +36,5 @@ class LrndesignMapmenu extends PolymerElement {
     return {};
   }
 }
-window.customElements.define(LrndesignMapmenu.tag, LrndesignMapmenu);
+customElements.define(LrndesignMapmenu.tag, LrndesignMapmenu);
 export { LrndesignMapmenu };

@@ -191,7 +191,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     this.set("videoGenerateSourceUrl", url);
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditVideo.tag,
   LrnappStudioSubmissionEditVideo
 );

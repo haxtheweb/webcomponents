@@ -565,5 +565,5 @@ class LrnsysOutlineItem extends PolymerElement {
     this.move(1);
   }
 }
-window.customElements.define(LrnsysOutlineItem.tag, LrnsysOutlineItem);
+customElements.define(LrnsysOutlineItem.tag, LrnsysOutlineItem);
 export { LrnsysOutlineItem };

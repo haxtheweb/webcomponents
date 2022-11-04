@@ -15,15 +15,14 @@ export const RangeInput = () => {
   return utils.makeUsageDocs(
     SimpleRangeInput,
     import.meta.url,
-    utils.makeElementFromClass(SimpleRangeInput,
-      {
-        "accent-color": "orange",
-        dark: true,
-        value: 16,
-        max: 20,
-        min: 4,
-        label: "coolness factor",
-        step: 4
-      })
+    utils.makeElementFromClass(SimpleRangeInput, {
+      "accent-color": "orange",
+      dark: true,
+      value: 16,
+      max: 20,
+      min: 4,
+      label: "coolness factor",
+      step: 4,
+    })
   );
 };

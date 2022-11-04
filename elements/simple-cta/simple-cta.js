@@ -259,27 +259,27 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         this.remoteLinkURL = this[propName];
       }
       /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
+       // notify
+       if (propName == 'format') {
+         this.dispatchEvent(
+           new CustomEvent(`${propName}-changed`, {
+             detail: {
+               value: this[propName],
+             }
+           })
+         );
+       }
+       */
       /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
+       if (propName == 'activeNode') {
+         this._activeNodeChanged(this[propName], oldValue);
+       }
+       */
       /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
+       if (['id', 'selected'].includes(propName)) {
+         this.__selectedChanged(this.selected, this.id);
+       }
+       */
     });
   }
 }

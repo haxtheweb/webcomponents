@@ -83,5 +83,5 @@ class LrnTable extends SchemaBehaviors(LitElement) {
     return new URL("./lib/lrn-table.haxProperties.json", import.meta.url).href;
   }
 }
-window.customElements.define(LrnTable.tag, LrnTable);
+customElements.define(LrnTable.tag, LrnTable);
 export { LrnTable };

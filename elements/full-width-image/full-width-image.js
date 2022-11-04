@@ -133,5 +133,5 @@ class FullWidthImage extends LitElement {
     }
   }
 }
-window.customElements.define("full-width-image", FullWidthImage);
+customElements.define("full-width-image", FullWidthImage);
 export { FullWidthImage };

@@ -184,5 +184,5 @@ class PaperFilterDialog extends PolymerElement {
     return names.length > 0 ? names.join(", ") : this.noValuesLabel;
   }
 }
-window.customElements.define(PaperFilterDialog.tag, PaperFilterDialog);
+customElements.define(PaperFilterDialog.tag, PaperFilterDialog);
 export { PaperFilterDialog };

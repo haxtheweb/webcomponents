@@ -1,269 +1,147 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "filtered-image",
-      "description": "`filtered-image`",
-      "properties": [
-        {
-          "name": "src",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "height",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "width",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "color",
-          "type": "string",
-          "default": "\"#ffffff\""
-        },
-        {
-          "name": "strength",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "contrast",
-          "type": "number",
-          "default": "0"
-        }
-      ]
-    },
-    {
-      "name": "filtered-image",
-      "description": "`filtered-image`",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
+          "name": "__id",
+          "description": "`__id` {`string`} - \n\nProperty: __id"
+        },
+        {
+          "name": "__matrix",
+          "description": "`__matrix` {`any[]`} - \n\nProperty: __matrix"
+        },
+        {
           "name": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "height",
-          "type": "string",
-          "default": "\"\""
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: "
         },
         {
           "name": "width",
-          "type": "string",
-          "default": "\"\""
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: "
         },
         {
           "name": "color",
-          "type": "string",
-          "default": "\"#ffffff\""
+          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: #ffffff"
         },
         {
           "name": "strength",
-          "type": "number",
-          "default": "1"
+          "description": "`strength` {`number`} - \n\nProperty: strength\n\nDefault: 1"
         },
         {
           "name": "contrast",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`contrast` {`number`} - \n\nProperty: contrast\n\nDefault: 0"
         },
         {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "height",
-          "attribute": "height",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "type": "string",
-          "default": "\"#ffffff\""
-        },
-        {
-          "name": "strength",
-          "attribute": "strength",
-          "type": "number",
-          "default": "1"
-        },
-        {
-          "name": "contrast",
-          "attribute": "contrast",
-          "type": "number",
-          "default": "0"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "filtered-image-filters",
-      "description": "`filtered-image-filters`",
+      "description": "`filtered-image-filters`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filter2` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selected-filters` {`any[]`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filter2` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selectedFilters` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "height",
-          "type": "string",
-          "default": "\"\""
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: "
         },
         {
           "name": "width",
-          "type": "string",
-          "default": "\"\""
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: "
         },
         {
           "name": "filter1",
-          "type": "string",
-          "default": "\"\""
+          "description": "`filter1` {`string`} - \n\nProperty: filter1\n\nDefault: "
+        },
+        {
+          "name": "filter2",
+          "description": "`filter2` {`string`} - \n\nProperty: filter2\n\nDefault: "
         },
         {
           "name": "filters",
-          "type": "array",
-          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
-        }
-      ],
-      "properties": [
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`filters` {`any[]`} - \n\nProperty: filters\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         },
         {
-          "name": "alt",
-          "attribute": "alt",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "height",
-          "attribute": "height",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "width",
-          "attribute": "width",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "filter1",
-          "attribute": "filter1",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "filters",
-          "attribute": "filters",
-          "type": "array",
-          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "__selected-filters",
+          "description": "`__selected-filters` {`any[]`} - \n\nProperty: __selectedFilters"
         }
       ]
     },
     {
       "name": "filtered-image",
-      "description": "`filtered-image`",
-      "properties": [
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "__id",
+          "description": "`__id` {`string`} - \n\nProperty: __id"
+        },
+        {
+          "name": "__matrix",
+          "description": "`__matrix` {`any[]`} - \n\nProperty: __matrix"
+        },
         {
           "name": "src",
-          "type": "string",
-          "default": "\"\""
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
         },
         {
           "name": "alt",
-          "type": "string",
-          "default": "\"\""
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
         },
         {
           "name": "height",
-          "type": "string",
-          "default": "\"\""
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: "
         },
         {
           "name": "width",
-          "type": "string",
-          "default": "\"\""
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: "
         },
         {
           "name": "color",
-          "type": "string",
-          "default": "\"#ffffff\""
+          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: #ffffff"
         },
         {
           "name": "strength",
-          "type": "number",
-          "default": "1"
+          "description": "`strength` {`number`} - \n\nProperty: strength\n\nDefault: 1"
         },
         {
           "name": "contrast",
-          "type": "number",
-          "default": "0"
+          "description": "`contrast` {`number`} - \n\nProperty: contrast\n\nDefault: 0"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

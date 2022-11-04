@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/license-element/license-element.js";
 /**
  * `site-footer`
  * `A basic site footer`
@@ -48,22 +49,22 @@ class SiteFooter extends LitElement {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
-
-    import("@lrnwebcomponents/license-element/license-element.js");
   }
   // render function
   render() {
     return html`
       <div class="wrapper">
-        ${this.manifest ? html`
-        <license-element
-          .title="${this.siteTitle}"
-          .creator="${this.manifest.author}"
-          .source="${this.manifest.domain}"
-          .license="${this.manifest.license}"
-        >
-        </license-element>
-        ` : ``}
+        ${this.manifest
+          ? html`
+              <license-element
+                .title="${this.siteTitle}"
+                .creator="${this.manifest.author}"
+                .source="${this.manifest.domain}"
+                .license="${this.manifest.license}"
+              >
+              </license-element>
+            `
+          : ``}
       </div>
     `;
   }
@@ -91,5 +92,5 @@ class SiteFooter extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteFooter.tag, SiteFooter);
+customElements.define(SiteFooter.tag, SiteFooter);
 export { SiteFooter };

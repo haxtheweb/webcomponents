@@ -4,17 +4,17 @@
  */
 import { LitElement, html, css } from "lit";
 /**
- * `micro-copy-heading`
- * @element micro-copy-heading
- * `small call to action / attention that acts as a heading too`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @lit-element
- * @demo demo/index.html
- */
+  * `micro-copy-heading`
+  * @element micro-copy-heading
+  * `small call to action / attention that acts as a heading too`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @lit-element
+  * @demo demo/index.html
+  */
 class MicroCopyHeading extends LitElement {
   //styles function
   static get styles() {

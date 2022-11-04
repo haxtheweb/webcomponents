@@ -180,8 +180,5 @@ class A11yMediaTranscriptCue extends LitElement {
     });
   }
 }
-window.customElements.define(
-  A11yMediaTranscriptCue.tag,
-  A11yMediaTranscriptCue
-);
+customElements.define(A11yMediaTranscriptCue.tag, A11yMediaTranscriptCue);
 export { A11yMediaTranscriptCue };

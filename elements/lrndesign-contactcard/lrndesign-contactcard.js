@@ -256,5 +256,5 @@ class LrndesignContactcard extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrndesignContactcard.tag, LrndesignContactcard);
+customElements.define(LrndesignContactcard.tag, LrndesignContactcard);
 export { LrndesignContactcard };

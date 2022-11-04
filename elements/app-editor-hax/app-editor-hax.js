@@ -84,5 +84,5 @@ class AppEditorHax extends LitElement {
     );
   }
 }
-window.customElements.define(AppEditorHax.tag, AppEditorHax);
+customElements.define(AppEditorHax.tag, AppEditorHax);
 export { AppEditorHax };

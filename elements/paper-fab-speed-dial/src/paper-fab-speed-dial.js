@@ -53,5 +53,5 @@ class PaperFabSpeedDial extends PolymerElement {
     this.opened = false;
   }
 }
-window.customElements.define(PaperFabSpeedDial.tag, PaperFabSpeedDial);
+customElements.define(PaperFabSpeedDial.tag, PaperFabSpeedDial);
 export { PaperFabSpeedDial };

@@ -6,4 +6,4 @@ class ELMSLNBase extends HTMLElement {
     }, 0);
   }
 }
-window.customElements.define("elmsln-base", ELMSLNBase);
+customElements.define("elmsln-base", ELMSLNBase);

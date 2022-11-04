@@ -18,7 +18,7 @@ export const PrintBranchMixin = function (SuperClass) {
       this.t = {
         ...this.t,
         print: "Print",
-        printingPleaseWait: "Printing, please wait.."
+        printingPleaseWait: "Printing, please wait..",
       };
       this.__printBranchLoading = false;
     }
@@ -26,8 +26,8 @@ export const PrintBranchMixin = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-        __printBranchLoading: { type: Boolean }
-      }
+        __printBranchLoading: { type: Boolean },
+      };
     }
 
     PrintBranchButton(position = "auto") {
@@ -39,14 +39,18 @@ export const PrintBranchMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="print-branch-btn"
-                icon="${this.__printBranchLoading ? `hax:loading` : `icons:print`}"
+                icon="${this.__printBranchLoading
+                  ? `hax:loading`
+                  : `icons:print`}"
                 @click="${this.printBranchOfSite}"
                 icon-position="top"
                 id="print-branch-btn"
               >
               </simple-icon-button-lite>
               <simple-tooltip for="print-branch-btn" position="${position}">
-                ${this.__printBranchLoading ? this.t.printingPleaseWait : this.t.print}
+                ${this.__printBranchLoading
+                  ? this.t.printingPleaseWait
+                  : this.t.print}
               </simple-tooltip>
             </div>`
           : ``}

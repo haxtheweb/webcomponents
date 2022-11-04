@@ -328,5 +328,5 @@ class SimpleBlogFooter extends SimpleColors {
     window.dispatchEvent(new PopStateEvent("popstate"));
   }
 }
-window.customElements.define(SimpleBlogFooter.tag, SimpleBlogFooter);
+customElements.define(SimpleBlogFooter.tag, SimpleBlogFooter);
 export { SimpleBlogFooter };

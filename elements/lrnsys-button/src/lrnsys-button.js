@@ -352,5 +352,5 @@ class LrnsysButton extends LitElement {
     this.focusState = !this.focusState;
   }
 }
-window.customElements.define(LrnsysButton.tag, LrnsysButton);
+customElements.define(LrnsysButton.tag, LrnsysButton);
 export { LrnsysButton };

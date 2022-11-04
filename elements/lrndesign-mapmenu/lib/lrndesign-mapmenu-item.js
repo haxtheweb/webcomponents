@@ -50,5 +50,5 @@ class LrndesignMapmenuItem extends LitElement {
     };
   }
 }
-window.customElements.define(LrndesignMapmenuItem.tag, LrndesignMapmenuItem);
+customElements.define(LrndesignMapmenuItem.tag, LrndesignMapmenuItem);
 export { LrndesignMapmenuItem };

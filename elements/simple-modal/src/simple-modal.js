@@ -572,7 +572,7 @@ class SimpleModal extends LitElement {
     return !title ? "Modal Dialog" : null;
   }
 }
-window.customElements.define(SimpleModal.tag, SimpleModal);
+customElements.define(SimpleModal.tag, SimpleModal);
 export { SimpleModal, SimpleModalCssVars };
 
 // register globally so we can make sure there is only one

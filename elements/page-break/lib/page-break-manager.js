@@ -305,5 +305,5 @@ window.PageBreakManager.requestAvailability = () => {
   }
   return window.PageBreakManager.instance;
 };
-window.customElements.define("page-break-manager", PageBreakManagerEl);
+customElements.define("page-break-manager", PageBreakManagerEl);
 export const pageBreakManager = window.PageBreakManager.requestAvailability();

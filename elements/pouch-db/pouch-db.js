@@ -268,5 +268,5 @@ class PouchDb extends HTMLElement {
   }
   // end of getDataFunction
 }
-window.customElements.define(PouchDb.tag, PouchDb);
+customElements.define(PouchDb.tag, PouchDb);
 export { PouchDb };

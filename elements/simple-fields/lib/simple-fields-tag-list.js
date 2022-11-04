@@ -338,5 +338,5 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SimpleFieldsTagList.tag, SimpleFieldsTagList);
+customElements.define(SimpleFieldsTagList.tag, SimpleFieldsTagList);
 export { SimpleFieldsTagList };

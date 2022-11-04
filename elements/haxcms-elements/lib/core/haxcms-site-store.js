@@ -1073,5 +1073,5 @@ class HAXCMSSiteStore extends HTMLElement {
     }
   }
 }
-window.customElements.define(HAXCMSSiteStore.tag, HAXCMSSiteStore);
+customElements.define(HAXCMSSiteStore.tag, HAXCMSSiteStore);
 export { HAXCMSSiteStore };

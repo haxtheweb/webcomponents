@@ -1,70 +1,35 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "topic-heading",
-      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
-      "properties": [
-        {
-          "name": "icon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "default": "\"\""
-        }
-      ]
-    },
-    {
-      "name": "topic-heading",
-      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
+      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - ",
       "attributes": [
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "topic-heading",
-      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
-      "properties": [
+      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - ",
+      "attributes": [
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
         },
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

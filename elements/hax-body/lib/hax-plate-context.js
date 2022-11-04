@@ -776,5 +776,5 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     };
   }
 }
-window.customElements.define(HaxPlateContext.tag, HaxPlateContext);
+customElements.define(HaxPlateContext.tag, HaxPlateContext);
 export { HaxPlateContext };

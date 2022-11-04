@@ -1,101 +1,129 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
-      "name": "simple-toast",
-      "description": "`simple-toast`"
-    },
-    {
-      "name": "simple-toast",
-      "description": "`simple-toast`",
+      "name": "simple-toast-el",
+      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `duration` {`number`} - \n\n  * `opened` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `text` {`string`} - \n\n  * `duration` {`number`} - \n\n  * `opened` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "opened",
-          "description": "Opened state of the toast, use event to change",
-          "type": "boolean"
-        },
-        {
           "name": "text",
-          "description": "Plain text based message to display",
-          "type": "string"
-        },
-        {
-          "name": "class-style",
-          "description": "Class name, fit-bottom being a useful one",
-          "type": "string"
-        },
-        {
-          "name": "close-text",
-          "description": "Text for the close button",
-          "type": "string"
+          "description": "`text` {`string`} - \n\nProperty: text\n\nDefault: "
         },
         {
           "name": "duration",
-          "description": "How long the toast message should be displayed",
-          "type": "number"
+          "description": "`duration` {`number`} - \n\nProperty: duration\n\nDefault: 3000"
         },
-        {
-          "name": "event-callback",
-          "description": "Event callback when hide is called",
-          "type": "string"
-        },
-        {
-          "name": "close-button",
-          "description": "If there should be a close button shown",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
         {
           "name": "opened",
-          "attribute": "opened",
-          "description": "Opened state of the toast, use event to change",
-          "type": "boolean"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "text",
-          "attribute": "text",
-          "description": "Plain text based message to display",
-          "type": "string"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "classStyle",
-          "attribute": "class-style",
-          "description": "Class name, fit-bottom being a useful one",
-          "type": "string"
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "closeText",
-          "attribute": "close-text",
-          "description": "Text for the close button",
-          "type": "string"
-        },
-        {
-          "name": "duration",
-          "attribute": "duration",
-          "description": "How long the toast message should be displayed",
-          "type": "number"
-        },
-        {
-          "name": "eventCallback",
-          "attribute": "event-callback",
-          "description": "Event callback when hide is called",
-          "type": "string"
-        },
-        {
-          "name": "closeButton",
-          "attribute": "close-button",
-          "description": "If there should be a close button shown",
-          "type": "boolean"
+          "name": "onopened-changed",
+          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
-      "name": "tag"
+      "name": "simple-toast",
+      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\nAttributes:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `close-text` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `close-button` {`boolean`} - If there should be a close button shown\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `closeText` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `closeButton` {`boolean`} - If there should be a close button shown\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text"
+        },
+        {
+          "name": "class-style",
+          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle"
+        },
+        {
+          "name": "close-text",
+          "description": "`close-text` {`string`} - Text for the close button\n\nProperty: closeText"
+        },
+        {
+          "name": "duration",
+          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration"
+        },
+        {
+          "name": "event-callback",
+          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback"
+        },
+        {
+          "name": "close-button",
+          "description": "`close-button` {`boolean`} - If there should be a close button shown\n\nProperty: closeButton",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     },
     {
       "name": "simple-toast",
-      "description": "`simple-toast`"
+      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\nAttributes:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `close-text` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `close-button` {`boolean`} - If there should be a close button shown\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `closeText` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `closeButton` {`boolean`} - If there should be a close button shown\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text"
+        },
+        {
+          "name": "class-style",
+          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle"
+        },
+        {
+          "name": "close-text",
+          "description": "`close-text` {`string`} - Text for the close button\n\nProperty: closeText"
+        },
+        {
+          "name": "duration",
+          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration"
+        },
+        {
+          "name": "event-callback",
+          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback"
+        },
+        {
+          "name": "close-button",
+          "description": "`close-button` {`boolean`} - If there should be a close button shown\n\nProperty: closeButton",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

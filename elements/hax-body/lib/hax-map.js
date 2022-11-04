@@ -76,7 +76,7 @@ class HaxMap extends I18NMixin(LitElement) {
           float: right;
         }
         li simple-icon-button:hover {
-          background-color: #F5F5F5;
+          background-color: #f5f5f5;
         }
         li simple-icon-button.del {
           margin-left: 8px;
@@ -123,7 +123,10 @@ class HaxMap extends I18NMixin(LitElement) {
         li.parent-h6 hax-toolbar-item[icon="hax:h6"]::part(button),
         li.parent-h6 hax-toolbar-item::part(button),
         li.parent-h6 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h6 + li.is-child ~ li.is-child hax-toolbar-item::part(button) {
+        li.parent-h6
+          + li.is-child
+          ~ li.is-child
+          hax-toolbar-item::part(button) {
           margin-left: 12px;
         }
       `,
@@ -148,7 +151,7 @@ class HaxMap extends I18NMixin(LitElement) {
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
       setTimeout(() => {
-        this.requestUpdate();        
+        this.requestUpdate();
       }, 0);
     });
   }
@@ -166,7 +169,19 @@ class HaxMap extends I18NMixin(LitElement) {
           tmpNodeChild.parent = tmpNode.tag;
           tmpNodeChild.node = node.children[j];
           // ignore certain tags we don't need a deep selection of
-          if (!['span', 'strong', 'b', 'sup', 'sub', 'i', 'em', 'div', 'strike'].includes(tmpNodeChild.tag)) {
+          if (
+            ![
+              "span",
+              "strong",
+              "b",
+              "sup",
+              "sub",
+              "i",
+              "em",
+              "div",
+              "strike",
+            ].includes(tmpNodeChild.tag)
+          ) {
             list.push(tmpNodeChild);
           }
         }
@@ -276,7 +291,21 @@ class HaxMap extends I18NMixin(LitElement) {
       <ul>
         ${this.indentedElements(this.elementList).map((element, index) => {
           return html`
-            <li class="${element.parent ? `parent-${element.parent}` : 'no-parent'} ${["h1", "h2", "h3", "h4", "h5", "h6", element.tag].includes(element.parent) ? '' : 'is-child'}">
+            <li
+              class="${element.parent
+                ? `parent-${element.parent}`
+                : "no-parent"} ${[
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                element.tag,
+              ].includes(element.parent)
+                ? ""
+                : "is-child"}"
+            >
               <hax-toolbar-item
                 align-horizontal="left"
                 @click="${(e) => this.goToItem(index)}"
@@ -288,15 +317,46 @@ class HaxMap extends I18NMixin(LitElement) {
                 show-text-label
               >
               </hax-toolbar-item>
-              ${element.tag != 'page-break' ? html`
-              <simple-icon-button class="del" icon="delete" @click="${(e) => this.itemOp(index, 'delete')}" title="Delete" ?disabled="${this.isLocked(index)}"></simple-icon-button>
-              <simple-icon-button icon="hax:keyboard-arrow-up" @click="${(e) => this.itemOp(index, 'up')}" title="Move up" ?disabled="${this.isLocked(index)}"></simple-icon-button>
-              <simple-icon-button icon="hax:keyboard-arrow-down" @click="${(e) => this.itemOp(index, 'down')}" title="Move down" ?disabled="${this.isLocked(index)}"></simple-icon-button>
-              ${HAXStore.isTextElement(element.node) || element.tag == 'grid-plate' ? html`` : html`
-              <simple-icon-button icon="image:transform" @click="${(e) => this.itemOp(index, 'transform')}" title="Change to.."></simple-icon-button>
-              `}
-              <simple-icon-button icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}" @click="${(e) => this.itemOp(index, 'lock')}" title="Lock / Unlock"></simple-icon-button>
-              ` : ``}
+              ${element.tag != "page-break"
+                ? html`
+                    <simple-icon-button
+                      class="del"
+                      icon="delete"
+                      @click="${(e) => this.itemOp(index, "delete")}"
+                      title="Delete"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button>
+                    <simple-icon-button
+                      icon="hax:keyboard-arrow-up"
+                      @click="${(e) => this.itemOp(index, "up")}"
+                      title="Move up"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button>
+                    <simple-icon-button
+                      icon="hax:keyboard-arrow-down"
+                      @click="${(e) => this.itemOp(index, "down")}"
+                      title="Move down"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button>
+                    ${HAXStore.isTextElement(element.node) ||
+                    element.tag == "grid-plate"
+                      ? html``
+                      : html`
+                          <simple-icon-button
+                            icon="image:transform"
+                            @click="${(e) => this.itemOp(index, "transform")}"
+                            title="Change to.."
+                          ></simple-icon-button>
+                        `}
+                    <simple-icon-button
+                      icon="${this.isLocked(index)
+                        ? "icons:lock"
+                        : "icons:lock-open"}"
+                      @click="${(e) => this.itemOp(index, "lock")}"
+                      title="Lock / Unlock"
+                    ></simple-icon-button>
+                  `
+                : ``}
             </li>
           `;
         })}
@@ -312,7 +372,7 @@ class HaxMap extends I18NMixin(LitElement) {
           composed: true,
           detail: {
             target: this.elementList[index].node,
-            eventName: 'content-edit',
+            eventName: "content-edit",
             value: true,
           },
         })
@@ -322,10 +382,13 @@ class HaxMap extends I18NMixin(LitElement) {
   isLocked(index) {
     if (index !== false && this.elementList[index].node) {
       let node = this.elementList[index].node;
-      if (node.getAttribute("data-hax-lock") != null || (node.parentNode && node.parentNode.getAttribute("data-hax-lock") != null)) {
+      if (
+        node.getAttribute("data-hax-lock") != null ||
+        (node.parentNode &&
+          node.parentNode.getAttribute("data-hax-lock") != null)
+      ) {
         return true;
-      }
-      else {
+      } else {
         return false;
       }
     }
@@ -334,10 +397,14 @@ class HaxMap extends I18NMixin(LitElement) {
     if (index !== false && this.elementList[index].node && action) {
       let node = this.elementList[index].node;
       // verify this is not locked
-      if (node.getAttribute("data-hax-lock") == null && (node.parentNode && node.parentNode.getAttribute("data-hax-lock") == null)) {
+      if (
+        node.getAttribute("data-hax-lock") == null &&
+        node.parentNode &&
+        node.parentNode.getAttribute("data-hax-lock") == null
+      ) {
         HAXStore.activeNode = node;
         switch (action) {
-          case 'transform':
+          case "transform":
             this.dispatchEvent(
               new CustomEvent("hax-context-item-selected", {
                 bubbles: true,
@@ -345,35 +412,40 @@ class HaxMap extends I18NMixin(LitElement) {
                 composed: true,
                 detail: {
                   target: node,
-                  eventName: 'hax-transform-node',
+                  eventName: "hax-transform-node",
                   value: true,
                 },
               })
             );
-          break;
-          case 'lock':
+            break;
+          case "lock":
             node.setAttribute("data-hax-lock", "data-hax-lock");
-          break;
-          case 'delete':
+            break;
+          case "delete":
             node.remove();
-          break;
-          case 'down':
+            break;
+          case "down":
             if (node.nextElementSibling) {
-              node.nextElementSibling.insertAdjacentElement('afterend', node);
+              node.nextElementSibling.insertAdjacentElement("afterend", node);
             }
-          break;
-          case 'up':
-            if (node.previousElementSibling && node.previousElementSibling.tagName !== 'PAGE-BREAK') {
-              node.previousElementSibling.insertAdjacentElement('beforebegin', node);
+            break;
+          case "up":
+            if (
+              node.previousElementSibling &&
+              node.previousElementSibling.tagName !== "PAGE-BREAK"
+            ) {
+              node.previousElementSibling.insertAdjacentElement(
+                "beforebegin",
+                node
+              );
             }
-          break;
+            break;
         }
-      }
-      else if (action === 'lock') {
+      } else if (action === "lock") {
         node.removeAttribute("data-hax-lock");
       }
       setTimeout(() => {
-        this.requestUpdate();        
+        this.requestUpdate();
       }, 0);
     }
   }

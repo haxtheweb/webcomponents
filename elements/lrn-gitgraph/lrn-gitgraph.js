@@ -130,5 +130,5 @@ class LrnGitgraph extends PolymerElement {
     root.config = config;
   }
 }
-window.customElements.define(LrnGitgraph.tag, LrnGitgraph);
+customElements.define(LrnGitgraph.tag, LrnGitgraph);
 export { LrnGitgraph };

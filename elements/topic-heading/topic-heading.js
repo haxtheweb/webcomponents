@@ -132,5 +132,5 @@ class TopicHeading extends LitElement {
     return "topic-heading";
   }
 }
-window.customElements.define(TopicHeading.tag, TopicHeading);
+customElements.define(TopicHeading.tag, TopicHeading);
 export { TopicHeading };

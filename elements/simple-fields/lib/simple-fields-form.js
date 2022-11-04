@@ -96,5 +96,5 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
     return SimpleFields.defaultSchemaConversion;
   }
 }
-window.customElements.define(SimpleFieldsForm.tag, SimpleFieldsForm);
+customElements.define(SimpleFieldsForm.tag, SimpleFieldsForm);
 export { SimpleFieldsForm };

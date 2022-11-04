@@ -52,7 +52,7 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
     return "[Alternative Text Here](" + file.url + ")";
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditFile.tag,
   LrnappStudioSubmissionEditFile
 );

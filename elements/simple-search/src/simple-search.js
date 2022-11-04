@@ -10,37 +10,295 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
- * `simple-search`
- * @element simple-search
- * a button used in simple-search
- * 
-### Styling
-
-`<simple-search>` provides the following custom properties
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--simple-search-button-color` | text color for button | #111
-`--simple-search-button-bg-color` | background-color for button | #eee
-`--simple-search-button-border-color` | border-color for button | #ccc
-`--simple-search-button-disabled-color` | background-color for disabled seach button | #999
-`--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
-`--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
-`--simple-search-button-hover-color` | text color for button when hovered or focused | #000
-`--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
-`--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
-`--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
-`--simple-search-container-padding` | search input's padding | unset
-`--simple-search-margin` | search input's margin | unset
- *
-
- * @demo ./demo/index.html
- * @demo ./demo/selector.html Searching by CSS selectors
- *
- */
+  * `simple-search`
+  * @element simple-search
+  * a button used in simple-search
+  * 
+ ### Styling
+ 
+ `<simple-search>` provides the following custom properties
+ for styling:
+ 
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--simple-search-button-color` | text color for button | #111
+ `--simple-search-button-bg-color` | background-color for button | #eee
+ `--simple-search-button-border-color` | border-color for button | #ccc
+ `--simple-search-button-disabled-color` | background-color for disabled seach button | #999
+ `--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
+ `--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
+ `--simple-search-button-hover-color` | text color for button when hovered or focused | #000
+ `--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
+ `--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
+ `--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
+ `--simple-search-container-padding` | search input's padding | unset
+ `--simple-search-margin` | search input's margin | unset
+  *
+ 
+  * @demo ./demo/index.html
+  * @demo ./demo/selector.html Searching by CSS selectors
+  *
+  */
 class SimpleSearch extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          width: 100%;
+          background-color: var(
+            --simple-search-input-background-color,
+            transparent
+          );
+        }
+
+        #input {
+          flex-grow: 2;
+          margin-right: 4px;
+          padding: var(--simple-search-padding, unset);
+          margin: var(--simple-search-margin, unset);
+          color: var(--simple-search-input-text-color, #000);
+          --simple-fields-color: var(--simple-search-input-text-color, #000);
+          --simple-fields-container-color: var(
+            --simple-search-input-placeholder-color,
+            #222
+          );
+          --simple-fields-background-color: var(
+            --simple-fields-input-background-color,
+            transparent
+          );
+          --simple-icon-color: var(
+            --simple-search-input-placeholder-color,
+            #222
+          );
+        }
+
+        #xofy {
+          margin: 8px;
+        }
+
+        button {
+          margin: 8px 0 8px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: var(--simple-search-button-border-color, #ccc);
+          color: var(--simple-search-button-color, #111);
+          background-color: var(--simple-search-button-bg-color, #eee);
+          border-color: var(--simple-search-button-border-color, #ccc);
+        }
+
+        button:not([disabled]):focus,
+        button:not([disabled]):hover {
+          cursor: pointer;
+          color: var(--simple-search-button-hover-color, #000);
+          background-color: var(--simple-search-button-hover-bg-color, #fff);
+          border-color: var(--simple-search-button-hover-border-color, #ddd);
+        }
+
+        button[disabled] {
+          cursor: not-allowed;
+          color: var(--simple-search-button-disabled-color, #999);
+          background-color: var(--simple-search-button-disabled-bg-color, #eee);
+          border-color: var(--simple-search-button-disabled-border-color, #ccc);
+        }
+
+        button:not([controls]) {
+          display: none;
+        }
+
+        #searchnav {
+          flex: 1 0 auto;
+        }
+
+        #searchnav button {
+          display: inline;
+          flex: 1 0 auto;
+        }
+
+        *[shrink-hide] {
+          display: none;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <simple-fields-field
+        id="input"
+        label="${this.searchInputLabel}"
+        ?inline="${this.inline || this.noLabelFloat}"
+        @value-changed="${this._handleChange}"
+      >
+        <simple-icon-lite
+          icon="${this.searchInputIcon}"
+          slot="${this.inline ? "label-prefix" : "prefix"}"
+        ></simple-icon-lite>
+      </simple-fields-field>
+      <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+        ${this._getResultsSpan(this.resultPointer, this.resultCount)}
+      </div>
+      <div id="searchnav" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+        <button
+          id="prev"
+          aria-label="${this.prevButtonLabel}"
+          role="button"
+          controls="${this.controls}"
+          tabindex="0"
+          ?disabled="${this.__hidePrev}"
+          @click="${this._navigateResults}"
+        >
+          <simple-icon-lite icon="${this.prevButtonIcon}"></simple-icon-lite>
+        </button>
+        <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
+        <button
+          id="next"
+          aria-label="${this.nextButtonLabel}"
+          role="button"
+          controls="${this.controls}"
+          tabindex="0"
+          ?disabled="${this.__hideNext}"
+          @click="${this._navigateResults}"
+        >
+          <simple-icon-lite icon="${this.nextButtonIcon}"></simple-icon-lite>
+        </button>
+        <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
+      </div>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * @deprecated always float the label
+       */
+      alwaysFloatLabel: {
+        attribute: "always-float-label",
+        type: Boolean,
+      },
+      /**
+       * Is the search case-sensitive
+       */
+      caseSensitive: {
+        attribute: "case-sensitive",
+        type: Boolean,
+      },
+      /**
+       * The id of the container element that the navigation buttons control
+       */
+      controls: {
+        attribute: "controls",
+        type: String,
+      },
+      /**
+       * displays with label inline
+       */
+      inline: {
+        attribute: "inline",
+        type: Boolean,
+      },
+      /**
+       * label for next result icon
+       */
+      nextButtonIcon: {
+        attribute: "next-button-icon",
+        type: String,
+      },
+      /**
+       * label for next result button
+       */
+      nextButtonLabel: {
+        attribute: "next-button-label",
+        type: String,
+      },
+      /**
+       * @deprecated never float the label
+       */
+      noLabelFloat: {
+        attribute: "no-label-float",
+        type: Boolean,
+      },
+      /**
+       * label for previous result icon
+       */
+      prevButtonIcon: {
+        attribute: "prev-button-icon",
+        type: String,
+      },
+      /**
+       * label for previous result button
+       */
+      prevButtonLabel: {
+        attribute: "prev-button-label",
+        type: String,
+      },
+      /**
+       * Number of results.
+       */
+      resultCount: {
+        attribute: "result-count",
+        type: Number,
+      },
+      /**
+       * Which result are we currently on?
+       */
+      resultPointer: {
+        attribute: "result-pointer",
+        type: Number,
+      },
+      /**
+       * limits search to within target's elements that match a selectgor
+       */
+      selector: {
+        attribute: "selector",
+        type: String,
+      },
+      /**
+       * label for search icon
+       */
+      searchInputIcon: {
+        attribute: "search-input-icon",
+        type: String,
+      },
+      /**
+       * label for search input
+       */
+      searchInputLabel: {
+        attribute: "search-input-label",
+        type: String,
+      },
+      /**
+       * an array of search terms
+       */
+      searchTerms: {
+        attribute: "search-terms",
+        type: Array,
+      },
+      /**
+       * If set, search will be automated and restricted to this object.
+       */
+      target: {
+        type: Object,
+      },
+      /**
+       * Hide next button
+       */
+      __hideNext: {
+        type: Boolean,
+      },
+      /**
+       * Hide prev button
+       */
+      __hidePrev: {
+        type: Boolean,
+      },
+    };
+  }
 
   static get tag() {
     return "simple-search";

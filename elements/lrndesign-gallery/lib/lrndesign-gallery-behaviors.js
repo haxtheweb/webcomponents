@@ -347,8 +347,5 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     });
   }
 }
-window.customElements.define(
-  LrndesignGalleryBehaviors.tag,
-  LrndesignGalleryBehaviors
-);
+customElements.define(LrndesignGalleryBehaviors.tag, LrndesignGalleryBehaviors);
 export { LrndesignGalleryBehaviors };

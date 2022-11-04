@@ -360,5 +360,5 @@ class PieMenu extends PolymerElement {
     );
   }
 }
-window.customElements.define(PieMenu.tag, PieMenu);
+customElements.define(PieMenu.tag, PieMenu);
 export { PieMenu };

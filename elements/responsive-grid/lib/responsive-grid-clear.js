@@ -74,5 +74,5 @@ class ResponsiveGridClear extends LitElement {
     };
   }
 }
-window.customElements.define(ResponsiveGridClear.tag, ResponsiveGridClear);
+customElements.define(ResponsiveGridClear.tag, ResponsiveGridClear);
 export { ResponsiveGridClear };

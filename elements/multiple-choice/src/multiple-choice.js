@@ -730,5 +730,5 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     }
   }
 }
-window.customElements.define(MultipleChoice.tag, MultipleChoice);
+customElements.define(MultipleChoice.tag, MultipleChoice);
 export { MultipleChoice };

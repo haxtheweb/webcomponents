@@ -231,5 +231,5 @@ class SimplePickerOption extends LitElement {
     return css`red`;
   }
 }
-window.customElements.define(SimplePickerOption.tag, SimplePickerOption);
+customElements.define(SimplePickerOption.tag, SimplePickerOption);
 export { SimplePickerOption };

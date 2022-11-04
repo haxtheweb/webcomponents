@@ -185,5 +185,5 @@ class HAXCMSBackendNodeJS extends LitElement {
     }
   }
 }
-window.customElements.define(HAXCMSBackendNodeJS.tag, HAXCMSBackendNodeJS);
+customElements.define(HAXCMSBackendNodeJS.tag, HAXCMSBackendNodeJS);
 export { HAXCMSBackendNodeJS };

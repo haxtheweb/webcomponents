@@ -10,35 +10,35 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
- * `simple-search`
- * @element simple-search
- * a button used in simple-search
- * 
-### Styling
-
-`<simple-search>` provides the following custom properties
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--simple-search-button-color` | text color for button | #111
-`--simple-search-button-bg-color` | background-color for button | #eee
-`--simple-search-button-border-color` | border-color for button | #ccc
-`--simple-search-button-disabled-color` | background-color for disabled seach button | #999
-`--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
-`--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
-`--simple-search-button-hover-color` | text color for button when hovered or focused | #000
-`--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
-`--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
-`--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
-`--simple-search-container-padding` | search input's padding | unset
-`--simple-search-margin` | search input's margin | unset
- *
-
- * @demo ./demo/index.html
- * @demo ./demo/selector.html Searching by CSS selectors
- *
- */
+  * `simple-search`
+  * @element simple-search
+  * a button used in simple-search
+  * 
+ ### Styling
+ 
+ `<simple-search>` provides the following custom properties
+ for styling:
+ 
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--simple-search-button-color` | text color for button | #111
+ `--simple-search-button-bg-color` | background-color for button | #eee
+ `--simple-search-button-border-color` | border-color for button | #ccc
+ `--simple-search-button-disabled-color` | background-color for disabled seach button | #999
+ `--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
+ `--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
+ `--simple-search-button-hover-color` | text color for button when hovered or focused | #000
+ `--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
+ `--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
+ `--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
+ `--simple-search-container-padding` | search input's padding | unset
+ `--simple-search-margin` | search input's margin | unset
+  *
+ 
+  * @demo ./demo/index.html
+  * @demo ./demo/selector.html Searching by CSS selectors
+  *
+  */
 class SimpleSearch extends LitElement {
   //styles function
   static get styles() {

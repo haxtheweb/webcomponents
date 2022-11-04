@@ -98,5 +98,5 @@ class HAXCMSSiteRouter extends HTMLElement {
   }
 }
 
-window.customElements.define(HAXCMSSiteRouter.tag, HAXCMSSiteRouter);
+customElements.define(HAXCMSSiteRouter.tag, HAXCMSSiteRouter);
 export { HAXCMSSiteRouter };

@@ -12,8 +12,5 @@ class PaperFabSpeedDialAction extends LitElement {
     };
   }
 }
-window.customElements.define(
-  PaperFabSpeedDialAction.tag,
-  PaperFabSpeedDialAction
-);
+customElements.define(PaperFabSpeedDialAction.tag, PaperFabSpeedDialAction);
 export { PaperFabSpeedDialAction };

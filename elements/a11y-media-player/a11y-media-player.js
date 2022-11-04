@@ -18,90 +18,90 @@ import "./lib/a11y-media-transcript-cue.js";
 import "./lib/a11y-media-youtube.js";
 
 /**
- * `a11y-media-player`
- * an accessible video player
- * 
-### Styling
-`<a11y-media-player>` provides the following basic custom properties
-for styling:
-
-#### Basic Styling
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`
-`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`
-`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`
-`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`
-`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`
-`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`
-`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`
-`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`
-`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`
-`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`
-`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`
-`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`
-`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`
-`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`
-`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`
-`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`
-`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`
-`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`
-`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
-`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
-`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
-
-#### Controls
-Custom property | Description | Default 
-----------------|-------------|----------
-`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
-`--a11y-media-controls-font-family` | font-family of controls
-
-#### Buttons
-Custom property | Description | Default
-----------------|-------------|----------
-`--a11y-media-button-color` | button text color | `--a11y-media-color`
-`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`
-`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`
-`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`
-`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`
-`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`
-
-#### Sliders
-Custom property | Description | Default
-----------------|-------------|----------
-`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`
-`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
-`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`
-`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
-`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
-`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`
-`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
-`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
-`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
-`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
-`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
-
-#### Settings Menu
-Custom property | Description | Default
-----------------|-------------|----------
-`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`
-`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`
-`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`
-`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`
-
-#### Link Sharing Toast
-Custom property | Description | Default
-----------------|-------------|----------
-`--simple-toast-color` | toast text color | `--a11y-media-color`
-`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`
- *
- * @element a11y-media-player
- * @extends SimpleColors
- * @demo ./demo/index.html video demo
- * @demo ./demo/audio.html audio demo
- * @demo ./demo/youtube.html YouTube demo
- */
+  * `a11y-media-player`
+  * an accessible video player
+  * 
+ ### Styling
+ `<a11y-media-player>` provides the following basic custom properties
+ for styling:
+ 
+ #### Basic Styling
+ 
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`
+ `--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`
+ `--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`
+ `--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`
+ `--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`
+ `--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`
+ `--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`
+ `--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`
+ `--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`
+ `--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`
+ `--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`
+ `--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`
+ `--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`
+ `--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`
+ `--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`
+ `--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`
+ `--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`
+ `--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`
+ `--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
+ `--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
+ `--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+ 
+ #### Controls
+ Custom property | Description | Default 
+ ----------------|-------------|----------
+ `--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
+ `--a11y-media-controls-font-family` | font-family of controls
+ 
+ #### Buttons
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--a11y-media-button-color` | button text color | `--a11y-media-color`
+ `--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`
+ `--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`
+ `--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`
+ `--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`
+ `--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`
+ 
+ #### Sliders
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`
+ `--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
+ `--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`
+ `--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
+ `--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
+ `--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`
+ `--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
+ `--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
+ `--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
+ `--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
+ `--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
+ 
+ #### Settings Menu
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`
+ `--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`
+ `--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`
+ `--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`
+ 
+ #### Link Sharing Toast
+ Custom property | Description | Default
+ ----------------|-------------|----------
+ `--simple-toast-color` | toast text color | `--a11y-media-color`
+ `--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`
+  *
+  * @element a11y-media-player
+  * @extends SimpleColors
+  * @demo ./demo/index.html video demo
+  * @demo ./demo/audio.html audio demo
+  * @demo ./demo/youtube.html YouTube demo
+  */
 class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   //styles function
   static get styles() {
@@ -1625,15 +1625,15 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         type: Boolean,
       },
       /**
-   * Dash.js manifest source?
-   * /
-  "manifest": {
-    "attribute": "manifest",
-    "type": String
-  },
-  /**
-   * the language of the media (if different from user interface language)
-   */
+    * Dash.js manifest source?
+    * /
+   "manifest": {
+     "attribute": "manifest",
+     "type": String
+   },
+   /**
+    * the language of the media (if different from user interface language)
+    */
       mediaLang: {
         attribute: "media-lang",
         type: String,
@@ -2717,31 +2717,31 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
       );
     print.document.body.innerHTML = `
-    <h1>${title}</h1>
-    ${Object.keys(cues)
-      .map(
-        (key) =>
-          `<div style="display: table-row;">
-        ${
-          this.hideTimestamps
-            ? ``
-            : `
-            <span style="display: table-cell;
-              font-size: 80%;
-              padding: 0 16px;
-              white-space: nowrap;
-              font-family: monospace;">
-              ${this._getHHMMSS(cues[key].startTime)} - 
-              ${this._getHHMMSS(cues[key].endTime)}:
-            </span>`
-        }
-        <span style="display: table-cell; line-height: 200%;">
-          ${cues[key].text}
-        </span>
-      </div>`
-      )
-      .join("")}
-    `;
+     <h1>${title}</h1>
+     ${Object.keys(cues)
+       .map(
+         (key) =>
+           `<div style="display: table-row;">
+         ${
+           this.hideTimestamps
+             ? ``
+             : `
+             <span style="display: table-cell;
+               font-size: 80%;
+               padding: 0 16px;
+               white-space: nowrap;
+               font-family: monospace;">
+               ${this._getHHMMSS(cues[key].startTime)} - 
+               ${this._getHHMMSS(cues[key].endTime)}:
+             </span>`
+         }
+         <span style="display: table-cell; line-height: 200%;">
+           ${cues[key].text}
+         </span>
+       </div>`
+       )
+       .join("")}
+     `;
     print.document.close();
     print.focus();
     print.print();

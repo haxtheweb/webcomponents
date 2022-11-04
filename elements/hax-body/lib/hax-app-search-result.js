@@ -171,5 +171,5 @@ class HaxAppSearchResult extends LitElement {
     }
   }
 }
-window.customElements.define(HaxAppSearchResult.tag, HaxAppSearchResult);
+customElements.define(HaxAppSearchResult.tag, HaxAppSearchResult);
 export { HaxAppSearchResult };

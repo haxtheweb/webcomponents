@@ -27049,8 +27049,8 @@
       null == e ? this.removeAttribute(t) : this.setAttribute(t, e);
     }
   }
-  window.customElements.define("midi-player", c),
-    window.customElements.define("midi-visualizer", o),
+  customElements.define("midi-player", c),
+    customElements.define("midi-visualizer", o),
     (t.PlayerElement = c),
     (t.VisualizerElement = o),
     Object.defineProperty(t, "__esModule", { value: !0 });

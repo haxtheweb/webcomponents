@@ -58,7 +58,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           background-color: green;
           border: 4px solid black;
           border-radius: 8px;
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
         }
         button.hax-modal-btn.cancel {
           background-color: red;
@@ -109,7 +109,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save",
-      cancel: "cancel"
+      cancel: "cancel",
     };
   }
   static get properties() {
@@ -244,8 +244,5 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     );
   }
 }
-window.customElements.define(
-  HAXCMSOutlineEditorDialog.tag,
-  HAXCMSOutlineEditorDialog
-);
+customElements.define(HAXCMSOutlineEditorDialog.tag, HAXCMSOutlineEditorDialog);
 export { HAXCMSOutlineEditorDialog };

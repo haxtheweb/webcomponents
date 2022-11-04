@@ -1085,5 +1085,5 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     return index === 0;
   }
 }
-window.customElements.define(EditableTableEdit.tag, EditableTableEdit);
+customElements.define(EditableTableEdit.tag, EditableTableEdit);
 export { EditableTableEdit };

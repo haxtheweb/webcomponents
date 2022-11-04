@@ -259,5 +259,5 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);
+customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);
 export { HAXCMSSlideTheme };

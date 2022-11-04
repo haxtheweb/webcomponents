@@ -106,5 +106,5 @@ class MtzMarkedControlLink extends mtzMarkedControlBehavior(PolymerElement) {
     return selection.text.startsWith("https://");
   }
 }
-window.customElements.define(MtzMarkedControlLink.tag, MtzMarkedControlLink);
+customElements.define(MtzMarkedControlLink.tag, MtzMarkedControlLink);
 export { MtzMarkedControlLink };

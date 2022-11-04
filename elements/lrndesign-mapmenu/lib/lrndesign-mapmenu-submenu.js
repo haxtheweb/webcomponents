@@ -112,8 +112,5 @@ class LrndesignMapmenuSubmenu extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(
-  LrndesignMapmenuSubmenu.tag,
-  LrndesignMapmenuSubmenu
-);
+customElements.define(LrndesignMapmenuSubmenu.tag, LrndesignMapmenuSubmenu);
 export { LrndesignMapmenuSubmenu };

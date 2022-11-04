@@ -130,5 +130,5 @@ class EcoJsonSchemaBoolean extends PolymerElement {
     return type === "array";
   }
 }
-window.customElements.define(EcoJsonSchemaBoolean.tag, EcoJsonSchemaBoolean);
+customElements.define(EcoJsonSchemaBoolean.tag, EcoJsonSchemaBoolean);
 export { EcoJsonSchemaBoolean };

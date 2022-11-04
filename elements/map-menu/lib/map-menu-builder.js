@@ -94,5 +94,5 @@ class MapMenuBuilder extends LitElement {
     return this;
   }
 }
-window.customElements.define(MapMenuBuilder.tag, MapMenuBuilder);
+customElements.define(MapMenuBuilder.tag, MapMenuBuilder);
 export { MapMenuBuilder };

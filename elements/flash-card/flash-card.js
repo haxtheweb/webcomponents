@@ -133,5 +133,5 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
     this.shadowRoot.querySelected("#card").classList.remove("flipped");
   }
 }
-window.customElements.define(FlashCard.tag, FlashCard);
+customElements.define(FlashCard.tag, FlashCard);
 export { FlashCard };

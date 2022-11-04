@@ -890,5 +890,5 @@ window.HAXme = function (context = null) {
   }
 };
 
-window.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
+customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
 export { HAXCMSSiteBuilder };

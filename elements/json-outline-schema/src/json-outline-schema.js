@@ -681,5 +681,5 @@ class JsonOutlineSchema extends HTMLElement {
       .sort((a, b) => {});
   }
 }
-window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
+customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
 export { JsonOutlineSchema, JSONOutlineSchemaItem };

@@ -7,7 +7,8 @@
       "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`",
       "attributes": [
         {
-          "name": "t"
+          "name": "t",
+          "default": "{\"hour\":\"hour\",\"hours\":\"hours\",\"minute\":\"minute\",\"minutes\":\"minutes\"}"
         },
         {
           "name": "element-visible",
@@ -21,7 +22,8 @@
         },
         {
           "name": "t",
-          "attribute": "t"
+          "attribute": "t",
+          "default": "{\"hour\":\"hour\",\"hours\":\"hours\",\"minute\":\"minute\",\"minutes\":\"minutes\"}"
         },
         {
           "name": "elementVisible",
@@ -192,7 +194,8 @@
       "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`",
       "attributes": [
         {
-          "name": "t"
+          "name": "t",
+          "default": "{\"hour\":\"hour\",\"hours\":\"hours\",\"minute\":\"minute\",\"minutes\":\"minutes\"}"
         },
         {
           "name": "element-visible",
@@ -206,7 +209,8 @@
         },
         {
           "name": "t",
-          "attribute": "t"
+          "attribute": "t",
+          "default": "{\"hour\":\"hour\",\"hours\":\"hours\",\"minute\":\"minute\",\"minutes\":\"minutes\"}"
         },
         {
           "name": "elementVisible",

@@ -1,173 +1,111 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "social-share-link",
-      "description": "`social-share-link`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "social-share-link",
-      "description": "`social-share-link`",
+      "description": "`social-share-link`\n`a link to share content on social`\n\nAttributes:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `button-style` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share\n\nProperties:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `buttonStyle` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share",
       "attributes": [
         {
+          "name": "__href",
+          "description": "`__href` {`string`} - the href for the link\n\nProperty: __href"
+        },
+        {
+          "name": "__icon",
+          "description": "`__icon` {`string`} - the icon name for the link\n\nProperty: __icon"
+        },
+        {
+          "name": "__linkText",
+          "description": "`__linkText` {`string`} - the link text specified, or the default link text\n\nProperty: __linkText"
+        },
+        {
+          "name": "__showIcon",
+          "description": "`__showIcon` {`boolean`} - \n\nProperty: __showIcon",
+          "valueSet": "v"
+        },
+        {
           "name": "button-style",
-          "description": "display link as a button",
-          "type": "boolean",
-          "default": "false"
+          "description": "`button-style` {`boolean`} - display link as a button\n\nProperty: buttonStyle\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "image",
-          "description": "optional image to attach to the share\n(Pinterest only)",
-          "type": "string",
-          "default": "\"\""
+          "description": "`image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\nProperty: image\n\nDefault: "
         },
         {
           "name": "message",
-          "description": "the message to attach to the social share\n(not used in Facebook)",
-          "type": "string",
-          "default": "\"\""
+          "description": "`message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\nProperty: message\n\nDefault: "
         },
         {
           "name": "mode",
-          "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
-          "type": "string"
+          "description": "`mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\nProperty: mode\n\nDefault: null"
         },
         {
           "name": "text",
-          "description": "the link text; if null, the text will be \"Share on (type of social)\"",
-          "type": "string"
+          "description": "`text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\nProperty: text\n\nDefault: null"
         },
         {
           "name": "type",
-          "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
-          "type": "string",
-          "default": "\"Twitter\""
+          "description": "`type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\nProperty: type\n\nDefault: Twitter"
         },
         {
           "name": "url",
-          "description": "the url to share",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "buttonStyle",
-          "attribute": "button-style",
-          "description": "display link as a button",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "description": "optional image to attach to the share\n(Pinterest only)",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "message",
-          "attribute": "message",
-          "description": "the message to attach to the social share\n(not used in Facebook)",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "mode",
-          "attribute": "mode",
-          "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
-          "type": "string"
-        },
-        {
-          "name": "text",
-          "attribute": "text",
-          "description": "the link text; if null, the text will be \"Share on (type of social)\"",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
-          "type": "string",
-          "default": "\"Twitter\""
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "description": "the url to share",
-          "type": "string"
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`url` {`string`} - the url to share\n\nProperty: url\n\nDefault: null"
         }
       ]
     },
     {
-      "name": "tag"
-    },
-    {
       "name": "social-share-link",
-      "description": "`social-share-link`",
-      "properties": [
+      "description": "`social-share-link`\n`a link to share content on social`\n\nAttributes:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `button-style` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share\n\nProperties:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `buttonStyle` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share",
+      "attributes": [
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "__href",
+          "description": "`__href` {`string`} - the href for the link\n\nProperty: __href"
         },
         {
-          "name": "importPath",
-          "type": "string"
+          "name": "__icon",
+          "description": "`__icon` {`string`} - the icon name for the link\n\nProperty: __icon"
         },
         {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+          "name": "__linkText",
+          "description": "`__linkText` {`string`} - the link text specified, or the default link text\n\nProperty: __linkText"
         },
         {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
+          "name": "__showIcon",
+          "description": "`__showIcon` {`boolean`} - \n\nProperty: __showIcon",
+          "valueSet": "v"
         },
         {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "button-style",
+          "description": "`button-style` {`boolean`} - display link as a button\n\nProperty: buttonStyle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "message",
+          "description": "`message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\nProperty: message\n\nDefault: "
+        },
+        {
+          "name": "mode",
+          "description": "`mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\nProperty: mode\n\nDefault: null"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\nProperty: text\n\nDefault: null"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\nProperty: type\n\nDefault: Twitter"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - the url to share\n\nProperty: url\n\nDefault: null"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

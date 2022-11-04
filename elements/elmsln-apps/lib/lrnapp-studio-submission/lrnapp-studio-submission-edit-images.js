@@ -161,7 +161,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
     }
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditImages.tag,
   LrnappStudioSubmissionEditImages
 );

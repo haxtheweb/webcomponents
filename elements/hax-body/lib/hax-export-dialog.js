@@ -67,5 +67,5 @@ class HaxExportDialog extends I18NMixin(LitElement) {
     });
   }
 }
-window.customElements.define(HaxExportDialog.tag, HaxExportDialog);
+customElements.define(HaxExportDialog.tag, HaxExportDialog);
 export { HaxExportDialog };

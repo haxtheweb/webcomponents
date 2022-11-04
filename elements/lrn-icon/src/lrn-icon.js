@@ -210,5 +210,5 @@ class LrnIcon extends PolymerElement {
     }
   }
 }
-window.customElements.define(LrnIcon.tag, LrnIcon);
+customElements.define(LrnIcon.tag, LrnIcon);
 export { LrnIcon };

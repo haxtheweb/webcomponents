@@ -594,5 +594,5 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SimpleFieldsArrayItem.tag, SimpleFieldsArrayItem);
+customElements.define(SimpleFieldsArrayItem.tag, SimpleFieldsArrayItem);
 export { SimpleFieldsArrayItem };

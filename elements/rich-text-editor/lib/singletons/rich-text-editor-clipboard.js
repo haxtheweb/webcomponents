@@ -79,10 +79,7 @@ class RichTextEditorClipboard extends LitElement {
     this.haxUIElement = true;
   }
 }
-window.customElements.define(
-  RichTextEditorClipboard.tag,
-  RichTextEditorClipboard
-);
+customElements.define(RichTextEditorClipboard.tag, RichTextEditorClipboard);
 export { RichTextEditorClipboard };
 
 // register globally so we can make sure there is only one

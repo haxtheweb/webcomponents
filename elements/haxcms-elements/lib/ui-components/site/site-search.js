@@ -304,5 +304,5 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
     }
   }
 }
-window.customElements.define(SiteSearch.tag, SiteSearch);
+customElements.define(SiteSearch.tag, SiteSearch);
 export { SiteSearch };

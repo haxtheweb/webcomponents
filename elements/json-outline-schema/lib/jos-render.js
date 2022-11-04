@@ -97,5 +97,5 @@ class JosRender extends LitElement {
     }
   }
 }
-window.customElements.define(JosRender.tag, JosRender);
+customElements.define(JosRender.tag, JosRender);
 export { JosRender };

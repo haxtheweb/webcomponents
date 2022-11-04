@@ -15,7 +15,113 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behavio
  * @element haxschema-builder
  */
 class HaxschemaBuilder extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        code-editor {
+          height: 500px;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <vaadin-split-layout>
+      <div>
+        <button @click="${this.addConfigure}">Add to configure</button>
+        <button @click="${this.addAdvanced}">Add to advanced</button>
+        <code-editor
+          id="code"
+          @value-changed="${this._editorDataChanged}"
+          .value="{}"
+          language="json"
+        ></code-editor>
+        <json-editor
+          id="json"
+          label="JSON"
+          @value-changed="${this.__haxSchemaChanged}"
+          value="${this.haxSchema}"
+        ></json-editor>
+      </div>
+      <div>
+        <hax-schema-form
+          id="form"
+          value="${this.value}"
+          @value-changed="${this.__valueChanged}"
+        ></hax-schema-form>
+      </div>
+    </vaadin-split-layout>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Haxschema builder",
+        description: "dynamically build and visualize HAXschema",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Builder"],
+        handles: [],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "source",
+            description: "",
+            inputMethod: "textfield",
+            required: true,
+            icon: "icons:link",
+            validationType: "url",
+          },
+        ],
+        advanced: [],
+      },
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * schema to extract for whatever you wanted it for
+       */
+      haxSchema: {
+        type: String,
+        attribute: "hax-schema",
+      },
+      /**
+       * Optional remote source to pull in
+       */
+      source: {
+        type: String,
+      },
+      /**
+       * String based value passed between the elements to stitch together
+       */
+      value: {
+        type: String,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

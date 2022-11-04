@@ -468,6 +468,6 @@ class MonacoElement extends LitElement {
   }
 }
 
-window.customElements.define("monaco-element", MonacoElement);
+customElements.define("monaco-element", MonacoElement);
 export { MonacoElement };
 window.MonacoData = window.MonacoData || {};

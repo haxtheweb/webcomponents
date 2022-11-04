@@ -141,5 +141,5 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
     return type === "array";
   }
 }
-window.customElements.define(EcoJsonSchemaEnum.tag, EcoJsonSchemaEnum);
+customElements.define(EcoJsonSchemaEnum.tag, EcoJsonSchemaEnum);
 export { EcoJsonSchemaEnum };

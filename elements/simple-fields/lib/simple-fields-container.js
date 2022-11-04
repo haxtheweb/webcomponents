@@ -1056,5 +1056,5 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
 class SimpleFieldsContainer extends SimpleFieldsContainerBehaviors(
   LitElement
 ) {}
-window.customElements.define(SimpleFieldsContainer.tag, SimpleFieldsContainer);
+customElements.define(SimpleFieldsContainer.tag, SimpleFieldsContainer);
 export { SimpleFieldsContainer, SimpleFieldsContainerBehaviors };

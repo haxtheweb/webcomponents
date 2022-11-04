@@ -26,7 +26,37 @@ window.DataViz.requestAvailability = () => {
  * @element data-viz
  */
 class DataViz extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <chartist-render
+      id="barchart"
+      type="bar"
+      scale="ct-major-twelfth"
+      chart-title="Quiz Distribution"
+      chart-desc="A bar graph of quizzes completed by student"
+    >
+    </chartist-render>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -230,5 +230,5 @@ class MdBlock extends LitElement {
     return "md-block";
   }
 }
-window.customElements.define(MdBlock.tag, MdBlock);
+customElements.define(MdBlock.tag, MdBlock);
 export { MdBlock };

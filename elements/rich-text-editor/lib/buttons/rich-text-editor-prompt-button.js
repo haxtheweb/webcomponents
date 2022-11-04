@@ -268,7 +268,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 class RichTextEditorPromptButton extends RichTextEditorPromptButtonBehaviors(
   LitElement
 ) {}
-window.customElements.define(
+customElements.define(
   RichTextEditorPromptButton.tag,
   RichTextEditorPromptButton
 );

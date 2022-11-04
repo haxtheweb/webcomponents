@@ -105,8 +105,5 @@ class LrnsysDialogToolbarButton extends LitElement {
     );
   }
 }
-window.customElements.define(
-  LrnsysDialogToolbarButton.tag,
-  LrnsysDialogToolbarButton
-);
+customElements.define(LrnsysDialogToolbarButton.tag, LrnsysDialogToolbarButton);
 export { LrnsysDialogToolbarButton };

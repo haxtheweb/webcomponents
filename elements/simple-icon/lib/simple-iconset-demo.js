@@ -185,5 +185,5 @@ class SimpleIconsetDemo extends LitElement {
     );
   }
 }
-window.customElements.define(SimpleIconsetDemo.tag, SimpleIconsetDemo);
+customElements.define(SimpleIconsetDemo.tag, SimpleIconsetDemo);
 export { SimpleIconsetDemo };

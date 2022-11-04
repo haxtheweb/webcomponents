@@ -46,7 +46,7 @@ class MtzMarkedControlGenericWrap extends mtzMarkedControlBehavior(
     };
   }
 }
-window.customElements.define(
+customElements.define(
   MtzMarkedControlGenericWrap.tag,
   MtzMarkedControlGenericWrap
 );

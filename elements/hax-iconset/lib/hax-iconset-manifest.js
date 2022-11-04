@@ -58,6 +58,7 @@ export const HaxIconsetManifest = [
       "arrow-right",
       "bricks",
       "calendar",
+      "clipboard-pulse",
       "code-json",
       "duplicate",
       "expand-more",

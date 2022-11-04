@@ -276,5 +276,5 @@ class SimpleBlogPost extends SimpleColors {
     return false;
   }
 }
-window.customElements.define(SimpleBlogPost.tag, SimpleBlogPost);
+customElements.define(SimpleBlogPost.tag, SimpleBlogPost);
 export { SimpleBlogPost };

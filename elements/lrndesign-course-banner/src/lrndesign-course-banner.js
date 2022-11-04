@@ -113,5 +113,5 @@ class LrndesignCourseBanner extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrndesignCourseBanner.tag, LrndesignCourseBanner);
+customElements.define(LrndesignCourseBanner.tag, LrndesignCourseBanner);
 export { LrndesignCourseBanner };

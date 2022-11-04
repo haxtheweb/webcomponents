@@ -141,5 +141,5 @@ class SimpleTimer extends PolymerElement {
       : timeString[0] + "." + timeString[1].substring(0, 2);
   }
 }
-window.customElements.define(SimpleTimer.tag, SimpleTimer);
+customElements.define(SimpleTimer.tag, SimpleTimer);
 export { SimpleTimer };

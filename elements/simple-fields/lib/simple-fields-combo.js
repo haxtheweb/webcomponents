@@ -887,5 +887,5 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     };
   }
 }
-window.customElements.define(SimpleFieldsCombo.tag, SimpleFieldsCombo);
+customElements.define(SimpleFieldsCombo.tag, SimpleFieldsCombo);
 export { SimpleFieldsCombo };

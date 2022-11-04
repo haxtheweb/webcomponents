@@ -227,5 +227,5 @@ class SimpleIconPicker extends SimplePicker {
     if (this.options.length > 1) super._setSelectedOption();
   }
 }
-window.customElements.define(SimpleIconPicker.tag, SimpleIconPicker);
+customElements.define(SimpleIconPicker.tag, SimpleIconPicker);
 export { SimpleIconPicker };

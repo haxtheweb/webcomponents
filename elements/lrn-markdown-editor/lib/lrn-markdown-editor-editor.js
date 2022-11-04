@@ -124,8 +124,5 @@ class LrnMarkdownEditorEditor extends LitElement {
     );
   }
 }
-window.customElements.define(
-  LrnMarkdownEditorEditor.tag,
-  LrnMarkdownEditorEditor
-);
+customElements.define(LrnMarkdownEditorEditor.tag, LrnMarkdownEditorEditor);
 export { LrnMarkdownEditorEditor };

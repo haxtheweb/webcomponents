@@ -643,7 +643,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
     return [];
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionPage.tag,
   LrnappStudioSubmissionPage
 );

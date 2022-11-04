@@ -715,16 +715,16 @@ const LrndesignChart = function (SuperClass) {
             property: "low",
             title: "Chart Minimum",
             description: `
-            Overriding the natural low of the chart allows you to zoom in 
-            or limit the chart's lowest displayed value`,
+             Overriding the natural low of the chart allows you to zoom in 
+             or limit the chart's lowest displayed value`,
             inputMethod: "number",
           },
           {
             property: "high",
             title: "Chart Maximum",
             description: `
-            Overriding the natural high of the chart allows you to zoom in 
-            or limit the chart's highest displayed value`,
+             Overriding the natural high of the chart allows you to zoom in 
+             or limit the chart's highest displayed value`,
             inputMethod: "number",
           },
         ],
@@ -744,9 +744,9 @@ const LrndesignChart = function (SuperClass) {
             property: "axisXPosition",
             title: "X-Axis Position",
             description: `
-              Position where labels are placed. Can be set to "start" or "end" 
-              where "start" is equivalent to left or top on vertical axis
-              and "end" is equivalent to right or bottom on horizontal axis`,
+               Position where labels are placed. Can be set to "start" or "end" 
+               where "start" is equivalent to left or top on vertical axis
+               and "end" is equivalent to right or bottom on horizontal axis`,
             inputMethod: "text-field",
           },
           {
@@ -813,9 +813,9 @@ const LrndesignChart = function (SuperClass) {
             property: "axisYPosition",
             title: "Y-Axis Position",
             description: `
-              Position where labels are placed. Can be set to "start" or "end" 
-              where "start" is equivalent to left or top on vertical axis
-              and "end" is equivalent to right or bottom on horizontal axis`,
+               Position where labels are placed. Can be set to "start" or "end" 
+               where "start" is equivalent to left or top on vertical axis
+               and "end" is equivalent to right or bottom on horizontal axis`,
             inputMethod: "text-field",
           },
           {
@@ -965,9 +965,9 @@ const LrndesignChart = function (SuperClass) {
           type: String,
         },
         /**
-        /**
-         * Offset X of labels for Y-axis
-         */
+         /**
+          * Offset X of labels for Y-axis
+          */
         axisYLabelOffsetX: {
           attribute: "axis-y-label-offset-x",
           type: Number,

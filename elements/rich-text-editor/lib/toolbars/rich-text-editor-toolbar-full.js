@@ -60,7 +60,4 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
 
 export { RichTextEditorToolbarFull };
 
-window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
-);
+customElements.define(RichTextEditorToolbarFull.tag, RichTextEditorToolbarFull);

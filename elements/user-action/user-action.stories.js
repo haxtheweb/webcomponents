@@ -19,7 +19,7 @@ export const trackingBeacon = () => {
       track: "click",
       every: true,
       demo: true,
-      emptyslot: '<button>Clicking me issues an xAPI statement</button>'
+      emptyslot: "<button>Clicking me issues an xAPI statement</button>",
     })
   );
 };

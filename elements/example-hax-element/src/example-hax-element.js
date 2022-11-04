@@ -14,7 +14,85 @@
  * @demo demo/index.html
  */
 class ExampleHaxElement extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  render() {
+    return html` <style>
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Example hax-element",
+        description:
+          "Provide an example to pick apart of a working HAX element",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Hax"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage",
+          },
+        ],
+        meta: {
+          author: "You",
+          owner: "Your Company",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android",
+          },
+          {
+            property: "available",
+            description: "",
+            inputMethod: "boolean",
+            required: false,
+            icon: "icons:android",
+          },
+        ],
+        advanced: [],
+      },
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      title: {
+        name: "title",
+        type: String,
+        value: "My Example",
+        reflectToAttribute: false,
+        observer: false,
+      },
+      available: {
+        name: "available",
+        type: Boolean,
+        value: "",
+        reflectToAttribute: false,
+        observer: false,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -109,5 +187,5 @@ class ExampleHaxElement extends HTMLElement {
   // disconnectedCallback() {}
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-window.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
+customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
 export { ExampleHaxElement };

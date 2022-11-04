@@ -72,5 +72,5 @@ class LrnsysChartjs extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
+customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
 export { LrnsysChartjs };

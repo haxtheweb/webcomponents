@@ -552,4 +552,4 @@ export class HaxUiStyles extends LitElement {
     return "hax-ui-styles";
   }
 }
-window.customElements.define(HaxUiStyles.tag, HaxUiStyles);
+customElements.define(HaxUiStyles.tag, HaxUiStyles);

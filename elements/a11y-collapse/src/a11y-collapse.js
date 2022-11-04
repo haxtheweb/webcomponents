@@ -542,5 +542,5 @@ class A11yCollapse extends LitElement {
     this._makeHeadingButton();
   }
 }
-window.customElements.define(A11yCollapse.tag, A11yCollapse);
+customElements.define(A11yCollapse.tag, A11yCollapse);
 export { A11yCollapse };

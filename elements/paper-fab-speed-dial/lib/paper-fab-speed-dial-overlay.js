@@ -12,8 +12,5 @@ class PaperFabSpeedDialOverlay extends mixinBehaviors(
     return "paper-fab-speed-dial-overlay";
   }
 }
-window.customElements.define(
-  PaperFabSpeedDialOverlay.tag,
-  PaperFabSpeedDialOverlay
-);
+customElements.define(PaperFabSpeedDialOverlay.tag, PaperFabSpeedDialOverlay);
 export { PaperFabSpeedDialOverlay };

@@ -48,5 +48,5 @@ class LrnsysRandomimage extends PolymerElement {
       this.shadowRoot.querySelector("#list").innerHTML;
   }
 }
-window.customElements.define(LrnsysRandomimage.tag, LrnsysRandomimage);
+customElements.define(LrnsysRandomimage.tag, LrnsysRandomimage);
 export { LrnsysRandomimage };

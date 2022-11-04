@@ -444,5 +444,5 @@ class HAXCMSBackendBeaker extends LitElement {
     }
   }
 }
-window.customElements.define(HAXCMSBackendBeaker.tag, HAXCMSBackendBeaker);
+customElements.define(HAXCMSBackendBeaker.tag, HAXCMSBackendBeaker);
 export { HAXCMSBackendBeaker };

@@ -60,33 +60,65 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         <details>
           <summary>Disable features</summary>
           <div>
-          ${['left-col','right-col','search', 'breadcrumb', 'print', 'rss', 'git-link', 'footer', 'qr-code'].map((item) => html`
-          <input type="checkbox" name="disable-features" id="${item}" value="${item}" @change="${this.calculateShareCode}" /><label for="${item}">${item.replace('-', ' ')}</label><br />          
-          `)}
+            ${[
+              "left-col",
+              "right-col",
+              "search",
+              "breadcrumb",
+              "print",
+              "rss",
+              "git-link",
+              "footer",
+              "qr-code",
+            ].map(
+              (item) => html`
+                <input
+                  type="checkbox"
+                  name="disable-features"
+                  id="${item}"
+                  value="${item}"
+                  @change="${this.calculateShareCode}"
+                /><label for="${item}">${item.replace("-", " ")}</label><br />
+              `
+            )}
           </div>
         </details>
-        <label for="link">Link</label><input type="text" id="link" value="${this.link}" size="125" /><br />
+        <label for="link">Link</label
+        ><input type="text" id="link" value="${this.link}" size="125" /><br />
         <label for="iframe">Embed</label>
-        <code-sample type="html" copy-clipboard-button id="iframe"></code-sample>
+        <code-sample
+          type="html"
+          copy-clipboard-button
+          id="iframe"
+        ></code-sample>
         <label for="height">Embed height</label>
-        <input id="height" type="text" name="height" value="600px" @input="${this.calculateShareCode}"/>
+        <input
+          id="height"
+          type="text"
+          name="height"
+          value="600px"
+          @input="${this.calculateShareCode}"
+        />
       </form>
     `;
   }
 
   // generate the share
   calculateShareCode() {
-    const formData = new FormData(this.shadowRoot.querySelector('form'));
+    const formData = new FormData(this.shadowRoot.querySelector("form"));
     let form = {};
     for (var pair of formData.entries()) {
       if (form[pair[0]]) {
         form[pair[0]] += `,${pair[1]}`;
-      }
-      else {
+      } else {
         form[pair[0]] = pair[1];
       }
     }
-    this.link = `${window.location.href.replace('iam.', `${form.sharing}.`)}${form['disable-features'] ? `?disable-features=${form['disable-features']}` : ``}`;
+    this.link = `${window.location.href.replace("iam.", `${form.sharing}.`)}${
+      form["disable-features"]
+        ? `?disable-features=${form["disable-features"]}`
+        : ``
+    }`;
     var shareCode = `<template>
       <iframe
         src="${this.link}"
@@ -98,8 +130,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         mozallowfullscreen="true"
       ></iframe>
     </template>`;
-    this.shadowRoot.querySelector('code-sample').innerHTML = shareCode;
-    this.shadowRoot.querySelector('code-sample')._updateContent();
+    this.shadowRoot.querySelector("code-sample").innerHTML = shareCode;
+    this.shadowRoot.querySelector("code-sample")._updateContent();
   }
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
@@ -109,17 +141,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return {
       ...super.properties,
       link: {
-        type: String
-      }
-    }
+        type: String,
+      },
+    };
   }
   constructor() {
     super();
     this.link = window.location.href;
   }
 }
-window.customElements.define(
-  HAXCMSShareDialog.tag,
-  HAXCMSShareDialog
-);
+customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);
 export { HAXCMSShareDialog };

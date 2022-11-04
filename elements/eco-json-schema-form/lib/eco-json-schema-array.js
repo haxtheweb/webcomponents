@@ -347,5 +347,5 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       : `Item ${index + 1}`;
   }
 }
-window.customElements.define(EcoJsonSchemaArray.tag, EcoJsonSchemaArray);
+customElements.define(EcoJsonSchemaArray.tag, EcoJsonSchemaArray);
 export { EcoJsonSchemaArray };

@@ -196,5 +196,5 @@ class PdfBrowserViewer extends PolymerElement {
     window.location = this.file;
   }
 }
-window.customElements.define(PdfBrowserViewer.tag, PdfBrowserViewer);
+customElements.define(PdfBrowserViewer.tag, PdfBrowserViewer);
 export { PdfBrowserViewer };

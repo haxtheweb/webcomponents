@@ -76,5 +76,5 @@ class LrnAssignmentButton extends LitElement {
     };
   }
 }
-window.customElements.define(LrnAssignmentButton.tag, LrnAssignmentButton);
+customElements.define(LrnAssignmentButton.tag, LrnAssignmentButton);
 export { LrnAssignmentButton };

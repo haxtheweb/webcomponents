@@ -150,5 +150,5 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
  * @demo demo/index.html
  */
 class HaxToolbarItem extends HaxToolbarItemBehaviors(LitElement) {}
-window.customElements.define(HaxToolbarItem.tag, HaxToolbarItem);
+customElements.define(HaxToolbarItem.tag, HaxToolbarItem);
 export { HaxToolbarItem, HaxToolbarItemBehaviors };

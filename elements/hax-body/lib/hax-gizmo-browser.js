@@ -61,8 +61,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       context: this,
       namespace: "hax",
     });
-    this.addEventListener("mouseleave", this.closePopover.bind(this));      
-    this.addEventListener("mouseout", this.closePopover.bind(this));  
+    this.addEventListener("mouseleave", this.closePopover.bind(this));
+    this.addEventListener("mouseout", this.closePopover.bind(this));
   }
   closePopover() {
     let popover = window.SimplePopoverManager.requestAvailability();
@@ -84,23 +84,26 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       <simple-button-grid columns="4" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
-          <simple-popover-selection event="hover">
-            <hax-tray-button
-              show-text-label
-              voice-command="insert ${gizmo.title}"
-              draggable="true"
-              @dragstart="${this._dragStart}"
-              index="${i}"
-              label="${gizmo.title}"
-              event-name="insert-tag"
-              event-data="${gizmo.tag}"
-              data-demo-schema="true"
-              icon-position="top"
-              icon="${gizmo.icon}"
-              part="grid-button"
-              slot="button"
-            ></hax-tray-button>
-            <hax-element-demo tag-name="${gizmo.tag}" slot="options"></hax-element-demo>
+            <simple-popover-selection event="hover">
+              <hax-tray-button
+                show-text-label
+                voice-command="insert ${gizmo.title}"
+                draggable="true"
+                @dragstart="${this._dragStart}"
+                index="${i}"
+                label="${gizmo.title}"
+                event-name="insert-tag"
+                event-data="${gizmo.tag}"
+                data-demo-schema="true"
+                icon-position="top"
+                icon="${gizmo.icon}"
+                part="grid-button"
+                slot="button"
+              ></hax-tray-button>
+              <hax-element-demo
+                tag-name="${gizmo.tag}"
+                slot="options"
+              ></hax-element-demo>
             </simple-popover-selection>
           `
         )}
@@ -174,5 +177,5 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     }
   }
 }
-window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);
+customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);
 export { HaxGizmoBrowser };

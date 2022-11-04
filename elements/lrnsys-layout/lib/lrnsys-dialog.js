@@ -297,5 +297,5 @@ class LrnsysDialog extends SimpleColors {
     this.focusState = !this.focusState;
   }
 }
-window.customElements.define(LrnsysDialog.tag, LrnsysDialog);
+customElements.define(LrnsysDialog.tag, LrnsysDialog);
 export { LrnsysDialog };

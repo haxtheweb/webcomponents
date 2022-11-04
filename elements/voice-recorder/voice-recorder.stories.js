@@ -18,4 +18,3 @@ export const VoiceRecorderInput = () => {
     utils.makeElementFromClass(VoiceRecorder)
   );
 };
-

@@ -94,5 +94,5 @@ class LrndesignDrawer extends PolymerElement {
       });
   }
 }
-window.customElements.define(LrndesignDrawer.tag, LrndesignDrawer);
+customElements.define(LrndesignDrawer.tag, LrndesignDrawer);
 export { LrndesignDrawer };

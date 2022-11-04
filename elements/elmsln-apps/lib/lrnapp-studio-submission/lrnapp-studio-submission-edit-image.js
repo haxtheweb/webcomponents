@@ -61,7 +61,7 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
     return "![Alternative Text Here](" + image.url + ")";
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditImage.tag,
   LrnappStudioSubmissionEditImage
 );

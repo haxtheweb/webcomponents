@@ -455,5 +455,5 @@ class LrnsysOutline extends PolymerElement {
    */
   _handleBlurItem(e) {}
 }
-window.customElements.define(LrnsysOutline.tag, LrnsysOutline);
+customElements.define(LrnsysOutline.tag, LrnsysOutline);
 export { LrnsysOutline };

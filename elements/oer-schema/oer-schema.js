@@ -162,5 +162,5 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     }
   }
 }
-window.customElements.define(OerSchemaElement.tag, OerSchemaElement);
+customElements.define(OerSchemaElement.tag, OerSchemaElement);
 export { OerSchemaElement };

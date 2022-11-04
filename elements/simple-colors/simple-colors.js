@@ -1226,19 +1226,19 @@ const SimpleColorsSuper = function (SuperClass) {
   };
 };
 /**
- * `simple-colors`
- * a shared set of styles for `@lrnwebcomponents`
-### Styling
-See demo of "all of the colors" (`demo/colors.html`) for styling.
- *
-
- * @demo ./demo/index.html demo
- * @demo ./demo/how.html getting started
- * @demo ./demo/colors.html all of the colors
- * @demo ./demo/picker.html simple-colors-picker
- * @demo ./demo/extending.html extending simple-colors
- * @element simple-colors
- */
+  * `simple-colors`
+  * a shared set of styles for `@lrnwebcomponents`
+ ### Styling
+ See demo of "all of the colors" (`demo/colors.html`) for styling.
+  *
+ 
+  * @demo ./demo/index.html demo
+  * @demo ./demo/how.html getting started
+  * @demo ./demo/colors.html all of the colors
+  * @demo ./demo/picker.html simple-colors-picker
+  * @demo ./demo/extending.html extending simple-colors
+  * @element simple-colors
+  */
 class SimpleColors extends SimpleColorsSuper(LitElement) {}
 window.customElements.define(SimpleColors.tag, SimpleColors);
 export { SimpleColors, SimpleColorsSuper };

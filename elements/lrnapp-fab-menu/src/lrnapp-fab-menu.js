@@ -136,5 +136,5 @@ class LrnappFabMenu extends LitElement {
     this.opened = false;
   }
 }
-window.customElements.define(LrnappFabMenu.tag, LrnappFabMenu);
+customElements.define(LrnappFabMenu.tag, LrnappFabMenu);
 export { LrnappFabMenu };

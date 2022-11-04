@@ -5,14 +5,14 @@
 import { LitElement, html, css } from "lit";
 import "./lib/hex-a-gon.js";
 /**
- * `hexagon-loader`
- * @element hexagon-loader
- * `a simple element that is for showing something is loading`
- *
- *
-
- * @demo demo/index.html
- */
+  * `hexagon-loader`
+  * @element hexagon-loader
+  * `a simple element that is for showing something is loading`
+  *
+  *
+ 
+  * @demo demo/index.html
+  */
 class HexagonLoader extends LitElement {
   //styles function
   static get styles() {

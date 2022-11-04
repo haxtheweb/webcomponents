@@ -75,8 +75,5 @@ class LrndesignGalleryDetails extends LitElement {
     this.innerHTML = newValue;
   }
 }
-window.customElements.define(
-  LrndesignGalleryDetails.tag,
-  LrndesignGalleryDetails
-);
+customElements.define(LrndesignGalleryDetails.tag, LrndesignGalleryDetails);
 export { LrndesignGalleryDetails };

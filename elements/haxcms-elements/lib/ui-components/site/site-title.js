@@ -132,5 +132,5 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteTitle.tag, SiteTitle);
+customElements.define(SiteTitle.tag, SiteTitle);
 export { SiteTitle };

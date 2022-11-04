@@ -182,5 +182,5 @@ class CircleProgress extends mixinBehaviors(
     }
   }
 }
-window.customElements.define(CircleProgress.tag, CircleProgress);
+customElements.define(CircleProgress.tag, CircleProgress);
 export { CircleProgress };

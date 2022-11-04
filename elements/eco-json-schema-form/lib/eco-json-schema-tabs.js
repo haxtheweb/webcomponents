@@ -129,5 +129,5 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
     });
   }
 }
-window.customElements.define(EcoJsonSchemaTabs.tag, EcoJsonSchemaTabs);
+customElements.define(EcoJsonSchemaTabs.tag, EcoJsonSchemaTabs);
 export { EcoJsonSchemaTabs };

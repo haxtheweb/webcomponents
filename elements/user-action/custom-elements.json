@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "user-action",
-      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
           "name": "track",
@@ -19,6 +19,11 @@
           "values": []
         },
         {
+          "name": "demo",
+          "description": "`demo` {`string | null`} - \n\nProperty: demo\n\nDefault: false",
+          "values": []
+        },
+        {
           "name": "oni18n-manager-register-element",
           "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
@@ -26,7 +31,7 @@
     },
     {
       "name": "user-action",
-      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
+      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
       "attributes": [
         {
           "name": "track",
@@ -39,6 +44,11 @@
         {
           "name": "every",
           "description": "`every` {`string | null`} - \n\nProperty: every\n\nDefault: false",
+          "values": []
+        },
+        {
+          "name": "demo",
+          "description": "`demo` {`string | null`} - \n\nProperty: demo\n\nDefault: false",
           "values": []
         },
         {

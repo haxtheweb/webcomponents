@@ -298,5 +298,5 @@ class SiteOutlineBlock extends PolymerElement {
     );
   }
 }
-window.customElements.define(SiteOutlineBlock.tag, SiteOutlineBlock);
+customElements.define(SiteOutlineBlock.tag, SiteOutlineBlock);
 export { SiteOutlineBlock };

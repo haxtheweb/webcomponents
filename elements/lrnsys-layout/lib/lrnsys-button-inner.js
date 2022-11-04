@@ -112,5 +112,5 @@ class LrnsysButtonInner extends LitElement {
     return "text-label";
   }
 }
-window.customElements.define(LrnsysButtonInner.tag, LrnsysButtonInner);
+customElements.define(LrnsysButtonInner.tag, LrnsysButtonInner);
 export { LrnsysButtonInner };

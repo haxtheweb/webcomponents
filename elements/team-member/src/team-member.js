@@ -241,5 +241,5 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
     };
   }
 }
-window.customElements.define(TeamMember.tag, TeamMember);
+customElements.define(TeamMember.tag, TeamMember);
 export { TeamMember };

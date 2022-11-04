@@ -120,8 +120,5 @@ class MultipleChoiceResponse extends LitElement {
     };
   }
 }
-window.customElements.define(
-  MultipleChoiceResponse.tag,
-  MultipleChoiceResponse
-);
+customElements.define(MultipleChoiceResponse.tag, MultipleChoiceResponse);
 export { MultipleChoiceResponse };

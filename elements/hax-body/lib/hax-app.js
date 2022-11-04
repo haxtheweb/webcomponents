@@ -147,7 +147,7 @@ class HAXApp extends HTMLElement {
     }
   }
 }
-window.customElements.define(HAXApp.tag, HAXApp);
+customElements.define(HAXApp.tag, HAXApp);
 
 /**
  `hax-stax`
@@ -198,5 +198,5 @@ class HAXStax extends HAXApp {
     return "hax-stax";
   }
 }
-window.customElements.define(HAXStax.tag, HAXStax);
+customElements.define(HAXStax.tag, HAXStax);
 export { HAXApp, HAXStax };

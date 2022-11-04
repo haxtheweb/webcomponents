@@ -78,7 +78,7 @@ class HAXCMSSiteDashboard extends LitElement {
           background-color: green;
           border: 4px solid black;
           border-radius: 8px;
-          font-family: 'Press Start 2P', sans-serif;
+          font-family: "Press Start 2P", sans-serif;
         }
         button.hax-modal-btn.cancel {
           background-color: red;
@@ -184,16 +184,10 @@ class HAXCMSSiteDashboard extends LitElement {
         ></simple-fields-form>
       </div>
       <div class="buttons">
-        <button
-          class="hax-modal-btn"
-          @click="${this._saveSiteFieldsTap}"
-        >
+        <button class="hax-modal-btn" @click="${this._saveSiteFieldsTap}">
           Save
         </button>
-        <button
-          class="hax-modal-btn cancel"
-          @click="${this._cancel}"
-        >
+        <button class="hax-modal-btn cancel" @click="${this._cancel}">
           cancel
         </button>
       </div>
@@ -227,13 +221,13 @@ class HAXCMSSiteDashboard extends LitElement {
       /**
        * Outline of items in json outline schema format
        */
-       /**
+      /**
        * Outline of items in json outline schema format
        */
-        manifest: {
-          type: Object,
-        },
-      }
+      manifest: {
+        type: Object,
+      },
+    };
   }
   /**
    * Detatched life cycle
@@ -290,5 +284,5 @@ class HAXCMSSiteDashboard extends LitElement {
     );
   }
 }
-window.customElements.define(HAXCMSSiteDashboard.tag, HAXCMSSiteDashboard);
+customElements.define(HAXCMSSiteDashboard.tag, HAXCMSSiteDashboard);
 export { HAXCMSSiteDashboard };

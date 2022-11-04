@@ -129,5 +129,5 @@ div:after {
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
-window.customElements.define(Hexagon.tag, Hexagon);
+customElements.define(Hexagon.tag, Hexagon);
 export { Hexagon };

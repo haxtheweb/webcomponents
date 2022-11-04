@@ -4,17 +4,17 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
- * `layout-builder`
- * @element layout-builder
- * `A new UI for adding content to layouts`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
- * @demo demo/index.html
- */
+  * `layout-builder`
+  * @element layout-builder
+  * `A new UI for adding content to layouts`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @polymer
+  * @demo demo/index.html
+  */
 class LayoutBuilder extends PolymerElement {
   // render function
   render() {

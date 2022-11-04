@@ -317,5 +317,5 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     }
   }
 }
-window.customElements.define(MapMenuHeader.tag, MapMenuHeader);
+customElements.define(MapMenuHeader.tag, MapMenuHeader);
 export { MapMenuHeader };

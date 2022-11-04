@@ -44,5 +44,5 @@ class LrndesignStepper extends PolymerElement {
     }
   }
 }
-window.customElements.define(LrndesignStepper.tag, LrndesignStepper);
+customElements.define(LrndesignStepper.tag, LrndesignStepper);
 export { LrndesignStepper };

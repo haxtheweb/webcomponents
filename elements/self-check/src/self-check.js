@@ -439,5 +439,5 @@ class SelfCheck extends I18NMixin(
       .href;
   }
 }
-window.customElements.define(SelfCheck.tag, SelfCheck);
+customElements.define(SelfCheck.tag, SelfCheck);
 export { SelfCheck };

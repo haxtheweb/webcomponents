@@ -85,8 +85,5 @@ class LrnappBlockNeedFeedback extends PolymerElement {
     });
   }
 }
-window.customElements.define(
-  LrnappBlockNeedFeedback.tag,
-  LrnappBlockNeedFeedback
-);
+customElements.define(LrnappBlockNeedFeedback.tag, LrnappBlockNeedFeedback);
 export { LrnappBlockNeedFeedback };

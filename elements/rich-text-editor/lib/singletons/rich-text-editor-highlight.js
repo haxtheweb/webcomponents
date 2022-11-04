@@ -108,10 +108,7 @@ class RichTextEditorHighlight extends LitElement {
     this.range = range;
   }
 }
-window.customElements.define(
-  RichTextEditorHighlight.tag,
-  RichTextEditorHighlight
-);
+customElements.define(RichTextEditorHighlight.tag, RichTextEditorHighlight);
 export { RichTextEditorHighlight };
 
 // register globally so we can make sure there is only one

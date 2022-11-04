@@ -15,12 +15,11 @@ export const GitHubCorner = () => {
   return utils.makeUsageDocs(
     GitCorner,
     import.meta.url,
-    utils.makeElementFromClass(GitCorner,
-      {
-        source: 'https://github.com/elmsln/lrnwebcomponents',
-        alt: "Our monorepo of all the things you see here",
-        corner: true,
-        size: "large"
-      })
+    utils.makeElementFromClass(GitCorner, {
+      source: "https://github.com/elmsln/lrnwebcomponents",
+      alt: "Our monorepo of all the things you see here",
+      corner: true,
+      size: "large",
+    })
   );
 };

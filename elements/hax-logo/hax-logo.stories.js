@@ -15,10 +15,9 @@ export const HaxTheWeb = () => {
   return utils.makeUsageDocs(
     HaxLogo,
     import.meta.url,
-    utils.makeElementFromClass(HaxLogo,
-      {
-        emptyslot: `<span slot="pre">The</span>
-  <span slot="post">of complacency</span>`
-      })
+    utils.makeElementFromClass(HaxLogo, {
+      emptyslot: `<span slot="pre">The</span>
+  <span slot="post">of complacency</span>`,
+    })
   );
 };

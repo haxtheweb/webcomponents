@@ -46,5 +46,5 @@ class SimpleToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
     return this.querySelector("[role=menuitem]") || super.menuItem;
   }
 }
-window.customElements.define(SimpleToolbarMenuItem.tag, SimpleToolbarMenuItem);
+customElements.define(SimpleToolbarMenuItem.tag, SimpleToolbarMenuItem);
 export { SimpleToolbarMenuItem };

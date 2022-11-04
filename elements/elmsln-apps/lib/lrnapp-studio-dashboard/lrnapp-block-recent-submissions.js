@@ -113,7 +113,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
     });
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappBlockRecentSubmissions.tag,
   LrnappBlockRecentSubmissions
 );

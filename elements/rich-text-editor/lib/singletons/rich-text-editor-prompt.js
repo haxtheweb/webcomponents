@@ -318,7 +318,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
     this.close();
   }
 }
-window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
+customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
 export { RichTextEditorPrompt };
 
 // register globally so we can make sure there is only one

@@ -390,5 +390,5 @@ class A11yGifPlayer extends I18NMixin(
     );
   }
 }
-window.customElements.define(A11yGifPlayer.tag, A11yGifPlayer);
+customElements.define(A11yGifPlayer.tag, A11yGifPlayer);
 export { A11yGifPlayer };

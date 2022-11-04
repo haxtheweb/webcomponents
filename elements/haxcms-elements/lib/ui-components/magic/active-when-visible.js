@@ -127,5 +127,5 @@ class ActiveWhenVisible extends LitElement {
     }
   }
 }
-window.customElements.define(ActiveWhenVisible.tag, ActiveWhenVisible);
+customElements.define(ActiveWhenVisible.tag, ActiveWhenVisible);
 export { ActiveWhenVisible };

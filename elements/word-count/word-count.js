@@ -116,5 +116,5 @@ class WordCount extends I18NMixin(LitElement) {
     }
   }
 }
-window.customElements.define(WordCount.tag, WordCount);
+customElements.define(WordCount.tag, WordCount);
 export { WordCount };

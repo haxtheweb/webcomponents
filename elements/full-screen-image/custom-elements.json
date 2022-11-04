@@ -1,85 +1,43 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "full-screen-image",
-      "description": "`full-screen-image`",
-      "properties": [
-        {
-          "name": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "subtitle",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source"
-        }
-      ]
-    },
-    {
-      "name": "full-screen-image",
-      "description": "`full-screen-image`",
+      "description": "`full-screen-image`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - ",
       "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "subtitle",
-          "type": "string",
-          "default": "\"\""
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
         },
         {
           "name": "source",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "subtitle",
-          "attribute": "subtitle",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
         }
       ]
-    },
-    {
-      "name": "tag"
     },
     {
       "name": "full-screen-image",
-      "description": "`full-screen-image`",
-      "properties": [
+      "description": "`full-screen-image`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - ",
+      "attributes": [
         {
           "name": "title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "subtitle",
-          "type": "string",
-          "default": "\"\""
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
         },
         {
-          "name": "source"
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

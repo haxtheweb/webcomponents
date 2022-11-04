@@ -361,5 +361,5 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     );
   }
 }
-window.customElements.define(HAXCMSThemeDeveloper.tag, HAXCMSThemeDeveloper);
+customElements.define(HAXCMSThemeDeveloper.tag, HAXCMSThemeDeveloper);
 export { HAXCMSThemeDeveloper };

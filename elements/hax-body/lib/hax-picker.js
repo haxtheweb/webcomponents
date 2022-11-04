@@ -99,25 +99,28 @@ class HaxPicker extends LitElement {
         : ""}
       <simple-button-grid cols="100px">
         ${this.selectionList.map((element, index) =>
-        
           !this._isFiltered(element.keywords)
             ? ""
             : html`
-              <simple-popover-selection event="hover">
-                <hax-tray-button
-                  show-text-label
-                  id="picker-item-${index}"
-                  @click="${this._selected}"
-                  data-selected="${index}"
-                  ?disabled="${HAXStore.activeGizmo &&
-                  HAXStore.activeGizmo.tag == element.tag}"
-                  label="${element.title}"
-                  icon="${element.icon}"
-                  icon-position="top"
-                  slot="button"
-                ></hax-tray-button>
-                <hax-element-demo tag-name="${element.tag}" slot="options" active-picker-schema="${index}"></hax-element-demo>
-              </simple-popover-selection>
+                <simple-popover-selection event="hover">
+                  <hax-tray-button
+                    show-text-label
+                    id="picker-item-${index}"
+                    @click="${this._selected}"
+                    data-selected="${index}"
+                    ?disabled="${HAXStore.activeGizmo &&
+                    HAXStore.activeGizmo.tag == element.tag}"
+                    label="${element.title}"
+                    icon="${element.icon}"
+                    icon-position="top"
+                    slot="button"
+                  ></hax-tray-button>
+                  <hax-element-demo
+                    tag-name="${element.tag}"
+                    slot="options"
+                    active-picker-schema="${index}"
+                  ></hax-element-demo>
+                </simple-popover-selection>
               `
         )}
       </simple-button-grid>
@@ -290,5 +293,5 @@ class HaxPicker extends LitElement {
     );
   }
 }
-window.customElements.define(HaxPicker.tag, HaxPicker);
+customElements.define(HaxPicker.tag, HaxPicker);
 export { HaxPicker };

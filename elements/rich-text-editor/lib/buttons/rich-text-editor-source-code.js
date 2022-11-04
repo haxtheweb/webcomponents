@@ -83,8 +83,5 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
       this.__source.__toolbar == this.__toolbar;
   }
 }
-window.customElements.define(
-  RichTextEditorSourceCode.tag,
-  RichTextEditorSourceCode
-);
+customElements.define(RichTextEditorSourceCode.tag, RichTextEditorSourceCode);
 export { RichTextEditorSourceCode };

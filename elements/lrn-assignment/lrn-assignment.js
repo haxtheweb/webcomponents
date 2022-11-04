@@ -77,7 +77,7 @@ class LrnAssignment extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrnAssignment.tag, LrnAssignment);
+customElements.define(LrnAssignment.tag, LrnAssignment);
 export { LrnAssignment };
 class LrnAssignments extends PolymerElement {
   static get template() {
@@ -155,5 +155,5 @@ class LrnAssignments extends PolymerElement {
     this.assignments = data.response;
   }
 }
-window.customElements.define(LrnAssignments.tag, LrnAssignments);
+customElements.define(LrnAssignments.tag, LrnAssignments);
 export { LrnAssignments };

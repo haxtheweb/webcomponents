@@ -8,8 +8,7 @@
     "icon": "image:music-note",
     "color": "blue",
     "groups": ["Media", "Music"],
-    "handles": [
-    ],
+    "handles": [],
     "meta": {
       "author": "ELMS:LN"
     }

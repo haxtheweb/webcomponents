@@ -10,7 +10,117 @@ import { LitElement, html, css } from "lit";
  * @element json-editor
  */
 class JsonEditor extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <custom-style>
+        <style>
+          :host([error]) paper-textarea {
+            --iron-autogrow-textarea: {
+              background-color: #ffeeee;
+            }
+          }
+          paper-textarea {
+            --iron-autogrow-textarea: {
+              font-family: "Lucida Console", Monaco, monospace;
+              font-weight: 600;
+              white-space: pre;
+              line-height: 20px;
+              padding: 9.5px;
+              margin: 0 0 10px;
+              font-size: 13px;
+              color: #000000;
+              word-break: break-all;
+              word-wrap: break-word;
+              background-color: #f5f5f5;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              transition: 0.3s linear all;
+            }
+          }
+        </style>
+      </custom-style>
+      <paper-textarea
+        label="${this.label}"
+        value="${this.value}"
+        @value-changed="${this.valueEvent}"
+        error-message="Invalid JSON!"
+        ?readonly="${this.disabled}"
+        ?invalid="${this.error}"
+        max-rows="${this.maxRows}"
+      ></paper-textarea>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * label for the text area
+       */
+      label: {
+        type: String,
+      },
+      /**
+       * State of being valid JSON object
+       */
+      error: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * toggling disabled state of the editor
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * max rows in the textarea
+       */
+      maxRows: {
+        type: Number,
+        reflect: true,
+        attribute: "max-rows",
+      },
+      /**
+       * String based value of the editor, use this to set initial value
+       */
+      value: {
+        type: String,
+        reflect: false,
+      },
+      /**
+       * format test to update value so it's pretty printed
+       */
+      formatTest: {
+        type: String,
+        attribute: "format-test",
+      },
+      /**
+       * The current data object
+       */
+      currentData: {
+        type: Object,
+        attribute: "current-data",
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

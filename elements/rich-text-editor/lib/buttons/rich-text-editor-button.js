@@ -460,7 +460,7 @@ Custom property | Description | Default
  * @demo ./demo/buttons.html
  */
 class RichTextEditorButton extends RichTextEditorButtonBehaviors(LitElement) {}
-window.customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
+customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
 export {
   RichTextEditorButton,
   RichTextEditorButtonBehaviors,

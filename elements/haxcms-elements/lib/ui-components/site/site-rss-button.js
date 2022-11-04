@@ -165,5 +165,5 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     }
   }
 }
-window.customElements.define(SiteRSSButton.tag, SiteRSSButton);
+customElements.define(SiteRSSButton.tag, SiteRSSButton);
 export { SiteRSSButton };

@@ -64,8 +64,5 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     );
   }
 }
-window.customElements.define(
-  SimpleToolbarMoreButton.tag,
-  SimpleToolbarMoreButton
-);
+customElements.define(SimpleToolbarMoreButton.tag, SimpleToolbarMoreButton);
 export { SimpleToolbarMoreButton };

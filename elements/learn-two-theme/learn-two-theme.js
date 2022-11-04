@@ -486,5 +486,5 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     this.shadowRoot.querySelector("app-drawer").toggle();
   }
 }
-window.customElements.define(LearnTwoTheme.tag, LearnTwoTheme);
+customElements.define(LearnTwoTheme.tag, LearnTwoTheme);
 export { LearnTwoTheme };

@@ -170,7 +170,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
     }
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioAssignmentButton.tag,
   LrnappStudioAssignmentButton
 );

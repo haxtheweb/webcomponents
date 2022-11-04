@@ -183,5 +183,5 @@ class SimpleBlogHeader extends SimpleColors {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SimpleBlogHeader.tag, SimpleBlogHeader);
+customElements.define(SimpleBlogHeader.tag, SimpleBlogHeader);
 export { SimpleBlogHeader };

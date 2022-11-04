@@ -89,5 +89,5 @@ class HaxCancelDialog extends I18NMixin(LitElement) {
     });
   }
 }
-window.customElements.define(HaxCancelDialog.tag, HaxCancelDialog);
+customElements.define(HaxCancelDialog.tag, HaxCancelDialog);
 export { HaxCancelDialog };

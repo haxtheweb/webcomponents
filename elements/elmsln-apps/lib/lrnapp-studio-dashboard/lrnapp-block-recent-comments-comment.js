@@ -168,7 +168,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
     super.disconnectedCallback();
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappBlockRecentCommentsComment.tag,
   LrnappBlockRecentCommentsComment
 );

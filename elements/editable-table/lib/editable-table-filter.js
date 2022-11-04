@@ -109,5 +109,5 @@ class EditableTableFilter extends SimpleToolbarButtonBehaviors(LitElement) {
     );
   }
 }
-window.customElements.define(EditableTableFilter.tag, EditableTableFilter);
+customElements.define(EditableTableFilter.tag, EditableTableFilter);
 export { EditableTableFilter };

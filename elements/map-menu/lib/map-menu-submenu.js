@@ -176,5 +176,5 @@ class MapMenuSubmenu extends LitElement {
     this.opened = true;
   }
 }
-window.customElements.define(MapMenuSubmenu.tag, MapMenuSubmenu);
+customElements.define(MapMenuSubmenu.tag, MapMenuSubmenu);
 export { MapMenuSubmenu };

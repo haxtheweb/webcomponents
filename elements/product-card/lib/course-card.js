@@ -193,5 +193,5 @@ class CourseCard extends SimpleColors {
     return "course-card";
   }
 }
-window.customElements.define(CourseCard.tag, CourseCard);
+customElements.define(CourseCard.tag, CourseCard);
 export { CourseCard };

@@ -115,5 +115,5 @@ class QRCodeElement extends HTMLElement {
     }
   }
 }
-window.customElements.define(QRCodeElement.tag, QRCodeElement);
+customElements.define(QRCodeElement.tag, QRCodeElement);
 export { QRCodeElement };

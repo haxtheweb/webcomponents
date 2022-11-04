@@ -201,5 +201,5 @@ class LrndesignGalleryZoom extends LitElement {
     }
   }
 }
-window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
+customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
 export { LrndesignGalleryZoom };

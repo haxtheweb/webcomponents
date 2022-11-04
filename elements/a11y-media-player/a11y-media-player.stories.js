@@ -182,10 +182,10 @@ export const BasicA11yMediaPlayer = () => {
     A11yMediaPlayer,
     import.meta.url,
     utils.makeElement(
-    A11yMediaPlayer,
-    utils.getKnobs(fields, {
-      ...defaults,
-      emptyslot: `<video crossorigin="anonymous" controls>
+      A11yMediaPlayer,
+      utils.getKnobs(fields, {
+        ...defaults,
+        emptyslot: `<video crossorigin="anonymous" controls>
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
         <track label="English" kind="subtitles" srclang="en" src="${new URL(
@@ -201,6 +201,7 @@ export const BasicA11yMediaPlayer = () => {
           import.meta.url
         )}">
       </video>`,
-    })
-  ));
+      })
+    )
+  );
 };

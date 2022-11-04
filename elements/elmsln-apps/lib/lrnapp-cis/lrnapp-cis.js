@@ -944,5 +944,5 @@ class LrnappCis extends PolymerElement {
   }
 }
 
-window.customElements.define(LrnappCis.tag, LrnappCis);
+customElements.define(LrnappCis.tag, LrnappCis);
 export { LrnappCis };

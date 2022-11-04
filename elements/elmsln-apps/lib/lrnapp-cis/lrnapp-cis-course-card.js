@@ -210,5 +210,5 @@ class LrnappCisCourseCard extends PolymerElement {
     this.elevation = this.__oldElevation;
   }
 }
-window.customElements.define(LrnappCisCourseCard.tag, LrnappCisCourseCard);
+customElements.define(LrnappCisCourseCard.tag, LrnappCisCourseCard);
 export { LrnappCisCourseCard };

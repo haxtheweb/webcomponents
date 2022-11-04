@@ -23,23 +23,23 @@ import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
 import { pagemap } from "./lib/pagemap.js";
 /**
- * `outline-designer`
- * @element outline-designer
- * `tools to modify and visualize JSON Outline Schema for editing`
- *
- * @microcopy - language worth noting:
- *  -
- * Feedback
- * color code lessons
-step down the hierarchy
-
-mode vs resolution (3 levels)
-
- *
-
- * @polymer
- * @demo demo/index.html
- */
+  * `outline-designer`
+  * @element outline-designer
+  * `tools to modify and visualize JSON Outline Schema for editing`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  * Feedback
+  * color code lessons
+ step down the hierarchy
+ 
+ mode vs resolution (3 levels)
+ 
+  *
+ 
+  * @polymer
+  * @demo demo/index.html
+  */
 class OutlineDesigner extends PolymerElement {
   // render function
   render() {

@@ -7,57 +7,57 @@ import { cache } from "lit/directives/cache.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
-  * `simple-picker`
-  * a simple picker for options, icons, etc.
-  *
- ### Styling
- 
- `<simple-picker>` provides the following custom properties and mixins
- for styling:
- 
- Custom property | Description | Default
- ----------------|-------------|----------
- `--simple-picker-display` | default display for simple-picker | inline-flex
- `--simple-picker-font-family` | Main font-family. | inherit
- `--simple-picker-font-size` | Main font-size. | inherit
- `--simple-picker-color` | Main text color. | black
- `--simple-picker-color-active` | Color of sample text when button is focused within or hovered. | --simple-picker-color
- `--simple-picker-color-disabled` | Disabled text color. | #888
- `--simple-picker-background-color` | Background color for button. | #f0f0f0
- `--simple-picker-background-color-disabled` | Background color for button when picker is disabled. | #e8e8e8
- `--simple-picker-border-radius` | Main border-radius. | 2px
- `--simple-picker-border-width` | Default border width. | 1px
- `--simple-picker-border-style` | Default border style. | solid
- `--simple-picker-border-color` | Default border color. | --simple-picker-color-disabled
- `--simple-picker-focus-border-width` | Border width when focused within or hovered. | --simple-picker-border-width
- `--simple-picker-focus-border-style` | Border style when focused within or hovered. | --simple-picker-border-style
- `--simple-picker-focus-border-color` | Border color when focused within or hovered. | --simple-picker-border-color
- `--simple-picker-listbox-border-width` | Border width of listbox. | --simple-picker-border-width
- `--simple-picker-listbox-border-style` | Border style of listbox. | --simple-picker-border-style
- `--simple-picker-listbox-border-color` | Border color of listbox. | --simple-picker-border-color
- `--simple-picker-label-color` | Label text color. | --simple-picker-color
- `--simple-picker-float-label-color` | Floating label text color. | --simple-picker-color-disabled
- `--simple-picker-float-label-active-color` | Floating label text color when picker is focused or hovered. | --simple-picker-color-disabled
- `--simple-picker-icon-transform` | Rotation of arrow icon by default. | rotate(0deg)
- `--simple-picker-expanded-icon-transform` | Rotation of arrow icon when picker is expanded. | rotate(0deg)
- `--simple-picker-sample-color` | Sample option text color. | --simple-picker-color
- `--simple-picker-sample-padding` | Sample option padding. | 2px
- `--simple-picker-sample-background-color` | Sample option background-color. | transparent
- `--simple-picker-option-size` | Height of option. | 24px
- `--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
- `--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
- `--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
- `--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
- `--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
- `--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
- `--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
- `--simple-picker-options-border-color` | Border color of listbox. | --simple-picker-border-color
- `--simple-picker-options-background-color` | Background color for listbox. | #fff
- `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
-*
-* @class SimplePickerBehaviors
-* @demo ./demo/index.html
-*/
+   * `simple-picker`
+   * a simple picker for options, icons, etc.
+   *
+  ### Styling
+  
+  `<simple-picker>` provides the following custom properties and mixins
+  for styling:
+  
+  Custom property | Description | Default
+  ----------------|-------------|----------
+  `--simple-picker-display` | default display for simple-picker | inline-flex
+  `--simple-picker-font-family` | Main font-family. | inherit
+  `--simple-picker-font-size` | Main font-size. | inherit
+  `--simple-picker-color` | Main text color. | black
+  `--simple-picker-color-active` | Color of sample text when button is focused within or hovered. | --simple-picker-color
+  `--simple-picker-color-disabled` | Disabled text color. | #888
+  `--simple-picker-background-color` | Background color for button. | #f0f0f0
+  `--simple-picker-background-color-disabled` | Background color for button when picker is disabled. | #e8e8e8
+  `--simple-picker-border-radius` | Main border-radius. | 2px
+  `--simple-picker-border-width` | Default border width. | 1px
+  `--simple-picker-border-style` | Default border style. | solid
+  `--simple-picker-border-color` | Default border color. | --simple-picker-color-disabled
+  `--simple-picker-focus-border-width` | Border width when focused within or hovered. | --simple-picker-border-width
+  `--simple-picker-focus-border-style` | Border style when focused within or hovered. | --simple-picker-border-style
+  `--simple-picker-focus-border-color` | Border color when focused within or hovered. | --simple-picker-border-color
+  `--simple-picker-listbox-border-width` | Border width of listbox. | --simple-picker-border-width
+  `--simple-picker-listbox-border-style` | Border style of listbox. | --simple-picker-border-style
+  `--simple-picker-listbox-border-color` | Border color of listbox. | --simple-picker-border-color
+  `--simple-picker-label-color` | Label text color. | --simple-picker-color
+  `--simple-picker-float-label-color` | Floating label text color. | --simple-picker-color-disabled
+  `--simple-picker-float-label-active-color` | Floating label text color when picker is focused or hovered. | --simple-picker-color-disabled
+  `--simple-picker-icon-transform` | Rotation of arrow icon by default. | rotate(0deg)
+  `--simple-picker-expanded-icon-transform` | Rotation of arrow icon when picker is expanded. | rotate(0deg)
+  `--simple-picker-sample-color` | Sample option text color. | --simple-picker-color
+  `--simple-picker-sample-padding` | Sample option padding. | 2px
+  `--simple-picker-sample-background-color` | Sample option background-color. | transparent
+  `--simple-picker-option-size` | Height of option. | 24px
+  `--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
+  `--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
+  `--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+  `--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
+  `--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
+  `--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
+  `--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
+  `--simple-picker-options-border-color` | Border color of listbox. | --simple-picker-border-color
+  `--simple-picker-options-background-color` | Background color for listbox. | #fff
+  `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
+ *
+ * @class SimplePickerBehaviors
+ * @demo ./demo/index.html
+ */
 const SimplePickerBehaviors = function (SuperClass) {
   return class extends SuperClass {
     //styles function
@@ -583,18 +583,18 @@ const SimplePickerBehaviors = function (SuperClass) {
         },
 
         /**
-     * An array of options for picker, eg.: 
-  [
-    [
-      {
-        "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
-        "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
-        "style": "background-color: blue;", //Optional. Used to set an option's style.
-        ...                                 //Optional. Any other properties that should be captured as part of selected option's value
-      },...
-    ]
-  ]
-     */
+      * An array of options for picker, eg.: 
+   [
+     [
+       {
+         "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+         "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
+         "style": "background-color: blue;", //Optional. Used to set an option's style.
+         ...                                 //Optional. Any other properties that should be captured as part of selected option's value
+       },...
+     ]
+   ]
+      */
         options: {
           type: Array,
         },
@@ -623,18 +623,18 @@ const SimplePickerBehaviors = function (SuperClass) {
         },
 
         /**
-     * An array of options for picker, eg.: `
-  [
-    [
-      {
-        "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
-        "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
-        "style": "background-color: blue;", //Optional. Used to set an option's style.
-        ...                                 //Optional. Any other properties that should be captured as part of selected option's value
-      },...
-    ]
-  ]`
-     */
+      * An array of options for picker, eg.: `
+   [
+     [
+       {
+         "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+         "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
+         "style": "background-color: blue;", //Optional. Used to set an option's style.
+         ...                                 //Optional. Any other properties that should be captured as part of selected option's value
+       },...
+     ]
+   ]`
+      */
         __options: {
           type: Array,
         },

@@ -514,5 +514,5 @@ class EditableTableDisplay extends displayBehaviors(
     }
   }
 }
-window.customElements.define(EditableTableDisplay.tag, EditableTableDisplay);
+customElements.define(EditableTableDisplay.tag, EditableTableDisplay);
 export { EditableTableDisplay };

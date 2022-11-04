@@ -113,7 +113,7 @@ class ResponsiveUtility extends LitElement {
       window.ResponsiveUtility.instance = this;
   }
 }
-window.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
+customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
 export { ResponsiveUtility };
 
 /**

@@ -333,5 +333,5 @@ class SiteChildrenBlock extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
+customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
 export { SiteChildrenBlock };

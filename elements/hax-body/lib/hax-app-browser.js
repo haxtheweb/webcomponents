@@ -162,5 +162,5 @@ class HaxAppBrowser extends LitElement {
     this.searching = false;
   }
 }
-window.customElements.define(HaxAppBrowser.tag, HaxAppBrowser);
+customElements.define(HaxAppBrowser.tag, HaxAppBrowser);
 export { HaxAppBrowser };

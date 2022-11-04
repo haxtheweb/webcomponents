@@ -150,5 +150,5 @@ class LrnappStudioDashboard extends PolymerElement {
     });
   }
 }
-window.customElements.define(LrnappStudioDashboard.tag, LrnappStudioDashboard);
+customElements.define(LrnappStudioDashboard.tag, LrnappStudioDashboard);
 export { LrnappStudioDashboard };

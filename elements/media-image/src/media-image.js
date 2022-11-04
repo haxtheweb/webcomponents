@@ -446,7 +446,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     };
   }
 }
-window.customElements.define(MediaImage.tag, MediaImage);
+customElements.define(MediaImage.tag, MediaImage);
 
 /**
  * `media-image-image`
@@ -545,7 +545,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
     return "media-image-image";
   }
 }
-window.customElements.define(MediaImageImage.tag, MediaImageImage);
+customElements.define(MediaImageImage.tag, MediaImageImage);
 
 /**
  * `media-image-citation`
@@ -582,7 +582,7 @@ class MediaImageCitation extends LitElement {
     return "media-image-citation";
   }
 }
-window.customElements.define(MediaImageCitation.tag, MediaImageCitation);
+customElements.define(MediaImageCitation.tag, MediaImageCitation);
 
 /**
  * `media-image-caption`
@@ -631,6 +631,6 @@ class MediaImageCaption extends LitElement {
     return "media-image-caption";
   }
 }
-window.customElements.define(MediaImageCaption.tag, MediaImageCaption);
+customElements.define(MediaImageCaption.tag, MediaImageCaption);
 
 export { MediaImage };

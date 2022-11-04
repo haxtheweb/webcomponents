@@ -1,208 +1,117 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "hal-9000",
-      "description": "`hal-9000`",
-      "properties": [
-        {
-          "name": "commands",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "respondsTo",
-          "type": "string",
-          "default": "\"(hal)\""
-        },
-        {
-          "name": "debug",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "pitch",
-          "type": "number",
-          "default": "0.9"
-        },
-        {
-          "name": "rate",
-          "type": "number",
-          "default": "0.9"
-        },
-        {
-          "name": "language",
-          "type": "string",
-          "default": "\"en-US\""
-        }
-      ],
-      "events": [
-        {
-          "name": "hal-9000-online"
-        }
-      ]
-    },
-    {
-      "name": "hal-9000",
-      "description": "`hal-9000`",
+      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
       "attributes": [
         {
           "name": "auto",
-          "description": "Start automatically",
-          "type": "boolean"
+          "description": "`auto` {`boolean`} - Start automatically\n\nProperty: auto",
+          "valueSet": "v"
         },
         {
           "name": "enabled",
-          "description": "Status of listening",
-          "type": "boolean"
+          "description": "`enabled` {`boolean`} - Status of listening\n\nProperty: enabled",
+          "valueSet": "v"
         },
         {
           "name": "commands",
-          "description": "Commands to listen for and take action on",
-          "type": "object",
-          "default": "{}"
+          "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
         },
         {
           "name": "responds-to",
-          "description": "The name that HAL 9000 should respond to.",
-          "type": "string",
-          "default": "\"(hal)\""
+          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (hal)"
         },
         {
           "name": "debug",
-          "description": "Debug mode for annyang",
-          "type": "boolean",
-          "default": "false"
+          "description": "`debug` {`boolean`} - Debug mode for annyang\n\nProperty: debug\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "pitch",
-          "description": "Pitch of speech",
-          "type": "number",
-          "default": "0.9"
+          "description": "`pitch` {`number`} - Pitch of speech\n\nProperty: pitch\n\nDefault: 0.9"
         },
         {
           "name": "rate",
-          "description": "Rate of speech",
-          "type": "number",
-          "default": "0.9"
+          "description": "`rate` {`number`} - Rate of speech\n\nProperty: rate\n\nDefault: 0.9"
         },
         {
           "name": "language",
-          "description": "Language of the speaker",
-          "type": "string",
-          "default": "\"en-US\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "auto",
-          "attribute": "auto",
-          "description": "Start automatically",
-          "type": "boolean"
+          "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
         },
         {
-          "name": "enabled",
-          "attribute": "enabled",
-          "description": "Status of listening",
-          "type": "boolean"
-        },
-        {
-          "name": "commands",
-          "attribute": "commands",
-          "description": "Commands to listen for and take action on",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "respondsTo",
-          "attribute": "responds-to",
-          "description": "The name that HAL 9000 should respond to.",
-          "type": "string",
-          "default": "\"(hal)\""
-        },
-        {
-          "name": "debug",
-          "attribute": "debug",
-          "description": "Debug mode for annyang",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "pitch",
-          "attribute": "pitch",
-          "description": "Pitch of speech",
-          "type": "number",
-          "default": "0.9"
-        },
-        {
-          "name": "rate",
-          "attribute": "rate",
-          "description": "Rate of speech",
-          "type": "number",
-          "default": "0.9"
-        },
-        {
-          "name": "language",
-          "attribute": "language",
-          "description": "Language of the speaker",
-          "type": "string",
-          "default": "\"en-US\""
-        }
-      ],
-      "events": [
-        {
-          "name": "hal-9000-online"
+          "name": "onhal-9000-online",
+          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
         }
       ]
     },
     {
-      "name": "tag",
-      "events": [
+      "name": "hal-9000-ui",
+      "description": "Attributes:\n\n  * `mini` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
         {
-          "name": "hal-9000-online"
+          "name": "mini",
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "hal-9000",
-      "description": "`hal-9000`",
-      "properties": [
+      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
+      "attributes": [
         {
-          "name": "commands",
-          "type": "object",
-          "default": "{}"
+          "name": "auto",
+          "description": "`auto` {`boolean`} - Start automatically\n\nProperty: auto",
+          "valueSet": "v"
         },
         {
-          "name": "respondsTo",
-          "type": "string",
-          "default": "\"(hal)\""
+          "name": "enabled",
+          "description": "`enabled` {`boolean`} - Status of listening\n\nProperty: enabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "commands",
+          "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
+        },
+        {
+          "name": "responds-to",
+          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (hal)"
         },
         {
           "name": "debug",
-          "type": "boolean",
-          "default": "false"
+          "description": "`debug` {`boolean`} - Debug mode for annyang\n\nProperty: debug\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "pitch",
-          "type": "number",
-          "default": "0.9"
+          "description": "`pitch` {`number`} - Pitch of speech\n\nProperty: pitch\n\nDefault: 0.9"
         },
         {
           "name": "rate",
-          "type": "number",
-          "default": "0.9"
+          "description": "`rate` {`number`} - Rate of speech\n\nProperty: rate\n\nDefault: 0.9"
         },
         {
           "name": "language",
-          "type": "string",
-          "default": "\"en-US\""
-        }
-      ],
-      "events": [
+          "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
+        },
         {
-          "name": "hal-9000-online"
+          "name": "onhal-9000-online",
+          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

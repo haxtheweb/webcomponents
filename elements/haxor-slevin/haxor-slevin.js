@@ -757,5 +757,5 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.selectedPage = 0;
   }
 }
-window.customElements.define(HaxorSlevin.tag, HaxorSlevin);
+customElements.define(HaxorSlevin.tag, HaxorSlevin);
 export { HaxorSlevin };

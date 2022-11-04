@@ -4,8 +4,11 @@ import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-insights.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 // need to account for polymer goofiness when webpack rolls this up
 const base = "https://haxtheweb.org/";
-setTimeout( async () => {
-  window.localStorage.setItem(`haxcms-demo-manifest`, JSON.stringify(await fetch(`${base}site.json`).then((e) => e.json())))        
+setTimeout(async () => {
+  window.localStorage.setItem(
+    `haxcms-demo-manifest`,
+    JSON.stringify(await fetch(`${base}site.json`).then((e) => e.json()))
+  );
 }, 0);
 
 export default {
@@ -48,15 +51,21 @@ const getRenderString = (data) => {
 export const SiteInsights = () => {
   // tee up a demo
   if (JSON.parse(window.localStorage.getItem(`haxcms-demo-manifest`))) {
-    const manifest = JSON.parse(window.localStorage.getItem(`haxcms-demo-manifest`));
+    const manifest = JSON.parse(
+      window.localStorage.getItem(`haxcms-demo-manifest`)
+    );
     store.loadManifest(manifest);
     // sets to UX concepts as default so that we get a faster initial render
-    store.activeId = 'item-06233713-d866-3351-81da-841d3931144c';
-    return getRenderString(html`<haxcms-site-insights base="${base}"></haxcms-site-insights>
-  `);
-  }
-  else {
-    return getRenderString(html`<p>This element requires a manifest to be loaded, if this is blank, wait a second and hit refresh</p>`);
+    store.activeId = "item-06233713-d866-3351-81da-841d3931144c";
+    return getRenderString(html`<haxcms-site-insights
+      base="${base}"
+    ></haxcms-site-insights> `);
+  } else {
+    return getRenderString(
+      html`<p>
+        This element requires a manifest to be loaded, if this is blank, wait a
+        second and hit refresh
+      </p>`
+    );
   }
 };
-

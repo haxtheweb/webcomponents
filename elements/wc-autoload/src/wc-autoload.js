@@ -244,5 +244,5 @@ class WcAutoload extends HTMLElement {
     }
   }
 }
-window.customElements.define(WcAutoload.tag, WcAutoload);
+customElements.define(WcAutoload.tag, WcAutoload);
 export { WcAutoload };

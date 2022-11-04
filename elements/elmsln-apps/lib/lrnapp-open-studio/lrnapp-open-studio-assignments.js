@@ -229,7 +229,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
     });
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappOpenStudioAssignments.tag,
   LrnappOpenStudioAssignments
 );

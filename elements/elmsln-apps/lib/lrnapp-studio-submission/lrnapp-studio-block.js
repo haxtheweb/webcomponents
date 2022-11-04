@@ -59,5 +59,5 @@ class LrnappStudioBlock extends PolymerElement {
     };
   }
 }
-window.customElements.define(LrnappStudioBlock.tag, LrnappStudioBlock);
+customElements.define(LrnappStudioBlock.tag, LrnappStudioBlock);
 export { LrnappStudioBlock };

@@ -23,9 +23,8 @@ export const DisabledAfterOne = () => {
   return utils.makeUsageDocs(
     SimpleProgress,
     import.meta.url,
-    utils.makeElementFromClass(SimpleProgress,
-      {
-        disabled : 'disabled'
-      })
+    utils.makeElementFromClass(SimpleProgress, {
+      disabled: "disabled",
+    })
   );
 };

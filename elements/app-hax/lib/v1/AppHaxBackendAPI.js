@@ -206,13 +206,19 @@ export class AppHaxBackendAPI extends LitElement {
       build: {
         type: site.type,
         structure: site.structure,
-        items: items
+        items: items,
       },
       theme: {
         // select a random color
         color: colors[Math.floor(Math.random() * colors.length)],
         // select a random av icon
-        icon: `${SimpleIconIconsetsManifest[0].name}:${SimpleIconIconsetsManifest[0].icons[Math.floor(Math.random() * SimpleIconIconsetsManifest[0].icons.length)]}`,
+        icon: `${SimpleIconIconsetsManifest[0].name}:${
+          SimpleIconIconsetsManifest[0].icons[
+            Math.floor(
+              Math.random() * SimpleIconIconsetsManifest[0].icons.length
+            )
+          ]
+        }`,
       },
     };
     return buildData;

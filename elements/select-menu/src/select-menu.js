@@ -111,5 +111,5 @@ class SelectMenu extends PolymerElement {
     return null;
   }
 }
-window.customElements.define(SelectMenu.tag, SelectMenu);
+customElements.define(SelectMenu.tag, SelectMenu);
 export { SelectMenu };

@@ -2,26 +2,28 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
- import { LitElement, html, css } from "lit";
- import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
- import { toJS } from "mobx";
- /**
-  * `site-uuid-link`
-  * `UUID to render an accurate link and title in the site`
-  *
-  * @demo demo/index.html
-  */
+import { LitElement, html, css } from "lit";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { toJS } from "mobx";
+/**
+ * `site-uuid-link`
+ * `UUID to render an accurate link and title in the site`
+ *
+ * @demo demo/index.html
+ */
 class SiteUuidLink extends LitElement {
   static get styles() {
-    return [css`
-      :host {
-        display: inline;
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: inline;
+        }
+      `,
+    ];
   }
   /**
-  * Store the tag name to make it easier to obtain directly.
-  */
+   * Store the tag name to make it easier to obtain directly.
+   */
   static get tag() {
     return "site-uuid-link";
   }
@@ -30,13 +32,13 @@ class SiteUuidLink extends LitElement {
     this.uuid = null;
   }
   /**
-  * LitElement
-  */
+   * LitElement
+   */
   render() {
     return html`
-    <a href="${this.getLinkFromUUID(this.uuid)}" @click="${this.testOpen}">
-      ${this.getTitleFromUUID(this.uuid)}    
-    </a>
+      <a href="${this.getLinkFromUUID(this.uuid)}" @click="${this.testOpen}">
+        ${this.getTitleFromUUID(this.uuid)}
+      </a>
     `;
   }
   testOpen(e) {
@@ -54,7 +56,7 @@ class SiteUuidLink extends LitElement {
       const item = toJS(store.findItem(uuid));
       return item.slug;
     }
-    return '';   
+    return "";
   }
   // get title from uuid
   getTitleFromUUID(uuid) {
@@ -62,16 +64,16 @@ class SiteUuidLink extends LitElement {
       const item = toJS(store.findItem(uuid));
       return item.title;
     }
-    return '';    
+    return "";
   }
   /**
-  * Props
-  */
+   * Props
+   */
   static get properties() {
     return {
       uuid: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -79,36 +81,37 @@ class SiteUuidLink extends LitElement {
    */
   static get haxProperties() {
     return {
-      "canScale": false,
-      "canPosition": false,
-      "canEditSource": false,
-      "gizmo": {
-        "title": "HAX link",
-        "description": "A link to a specific resource in the site your working on.",
-        "icon": "icons:link",
-        "color": "grey",
-        "groups": ["Content", "CMS"],
-        "handles": [
+      canScale: false,
+      canPosition: false,
+      canEditSource: false,
+      gizmo: {
+        title: "HAX link",
+        description:
+          "A link to a specific resource in the site your working on.",
+        icon: "icons:link",
+        color: "grey",
+        groups: ["Content", "CMS"],
+        handles: [
           {
-            "type": "inline",
-            "text": "term"
-          }
+            type: "inline",
+            text: "term",
+          },
         ],
-        "meta": {
-          "author": "ELMS:LN",
-        },     
+        meta: {
+          author: "ELMS:LN",
+        },
       },
-      "settings": {
-        "configure": [
+      settings: {
+        configure: [
           {
-            "property": "uuid",
-            "title": "Item",
-            "description": "Item to render for the link / title data",
-            "inputMethod": "textfield"
-          }
-        ]
+            property: "uuid",
+            title: "Item",
+            description: "Item to render for the link / title data",
+            inputMethod: "textfield",
+          },
+        ],
       },
-    }    
+    };
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -136,7 +139,7 @@ class SiteUuidLink extends LitElement {
    * Allow for dynamic setting of the parent field if we have the store around
    * with values to do so
    */
-   haxsetupActiveElementForm(props) {
+  haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
       const itemManifest = store.getManifestItems(true);
       // default to null parent as the whole site
@@ -174,6 +177,5 @@ class SiteUuidLink extends LitElement {
     }
   }
 }
-window.customElements.define(SiteUuidLink.tag, SiteUuidLink);
+customElements.define(SiteUuidLink.tag, SiteUuidLink);
 export { SiteUuidLink };
- 

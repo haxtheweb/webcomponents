@@ -154,5 +154,5 @@ class SimpleCameraSnap extends HTMLElement {
     selfie.classList.remove("has-snap");
   }
 }
-window.customElements.define(SimpleCameraSnap.tag, SimpleCameraSnap);
+customElements.define(SimpleCameraSnap.tag, SimpleCameraSnap);
 export { SimpleCameraSnap };

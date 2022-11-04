@@ -111,5 +111,5 @@ class AccentCardClickable extends LitElement {
     };
   }
 }
-window.customElements.define(AccentCardClickable.tag, AccentCardClickable);
+customElements.define(AccentCardClickable.tag, AccentCardClickable);
 export { AccentCardClickable };

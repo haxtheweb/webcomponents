@@ -278,7 +278,4 @@ class simpleColorsSwatchInfo extends SimpleColors {
 
 export { simpleColorsSwatchInfo };
 
-window.customElements.define(
-  simpleColorsSwatchInfo.tag,
-  simpleColorsSwatchInfo
-);
+customElements.define(simpleColorsSwatchInfo.tag, simpleColorsSwatchInfo);

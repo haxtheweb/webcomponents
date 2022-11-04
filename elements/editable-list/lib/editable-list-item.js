@@ -251,5 +251,5 @@ class EditableListItem extends SimpleColors {
     }
   }
 }
-window.customElements.define(EditableListItem.tag, EditableListItem);
+customElements.define(EditableListItem.tag, EditableListItem);
 export { EditableListItem };

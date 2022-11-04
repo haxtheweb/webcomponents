@@ -403,5 +403,5 @@ class CMSToken extends PolymerElement {
     return schema;
   }
 }
-window.customElements.define(CMSToken.tag, CMSToken);
+customElements.define(CMSToken.tag, CMSToken);
 export { CMSToken };

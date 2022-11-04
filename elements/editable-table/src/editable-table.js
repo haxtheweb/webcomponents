@@ -231,5 +231,5 @@ class EditableTable extends editBehaviors(LitElement) {
     );
   }
 }
-window.customElements.define(EditableTable.tag, EditableTable);
+customElements.define(EditableTable.tag, EditableTable);
 export { EditableTable };

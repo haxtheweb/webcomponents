@@ -200,5 +200,5 @@ class PaperSearchPanel extends PolymerElement {
     return !(filters && filters.length > 0);
   }
 }
-window.customElements.define(PaperSearchPanel.tag, PaperSearchPanel);
+customElements.define(PaperSearchPanel.tag, PaperSearchPanel);
 export { PaperSearchPanel };

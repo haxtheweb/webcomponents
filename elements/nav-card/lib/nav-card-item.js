@@ -37,8 +37,6 @@ Custom property | Description | Default
  * @demo demo/index.html
  */
 class NavCardItem extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -112,8 +110,7 @@ class NavCardItem extends LitElement {
         icon: "av:playlist-play",
         color: "pink",
         groups: ["Card", "Nav", "List"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "nikkimk",
           owner: "The Pennsylvania State University",

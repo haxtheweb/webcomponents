@@ -2531,5 +2531,5 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
   ],
 };
 
-window.customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);
+customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);
 export { SimpleEmojiPicker };

@@ -9,5 +9,5 @@ class PaperIconStep extends LitElement {
     };
   }
 }
-window.customElements.define(PaperIconStep.tag, PaperIconStep);
+customElements.define(PaperIconStep.tag, PaperIconStep);
 export { PaperIconStep };

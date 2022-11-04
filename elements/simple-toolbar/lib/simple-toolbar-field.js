@@ -196,5 +196,5 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
       );
   }
 }
-window.customElements.define(SimpleToolbarField.tag, SimpleToolbarField);
+customElements.define(SimpleToolbarField.tag, SimpleToolbarField);
 export { SimpleToolbarField };

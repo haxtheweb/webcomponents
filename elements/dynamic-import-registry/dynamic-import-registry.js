@@ -118,5 +118,5 @@ class DynamicImportRegistry extends HTMLElement {
     }
   }
 }
-window.customElements.define(DynamicImportRegistry.tag, DynamicImportRegistry);
+customElements.define(DynamicImportRegistry.tag, DynamicImportRegistry);
 export { DynamicImportRegistry };

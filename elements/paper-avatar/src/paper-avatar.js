@@ -346,5 +346,5 @@ class PaperAvatar extends LitElement {
     return colors[hash];
   }
 }
-window.customElements.define(PaperAvatar.tag, PaperAvatar);
+customElements.define(PaperAvatar.tag, PaperAvatar);
 export { PaperAvatar };

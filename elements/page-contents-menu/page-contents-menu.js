@@ -211,15 +211,19 @@ class PageContentsMenu extends LitElement {
   }
   scrollToObject(e) {
     var target = normalizeEventPath(e)[0];
-    if (this.items && this.contentContainer && target.getAttribute("data-index") && this.items[parseInt(target.getAttribute("data-index"))]) {
+    if (
+      this.items &&
+      this.contentContainer &&
+      target.getAttribute("data-index") &&
+      this.items[parseInt(target.getAttribute("data-index"))]
+    ) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
       let objItem;
       if (this.items[parseInt(target.getAttribute("data-index"))].item) {
         objItem = this.items[parseInt(target.getAttribute("data-index"))].item;
-      }
-      else {
+      } else {
         objItem = this.contentContainer.querySelector(
           "#" + this.items[parseInt(target.getAttribute("data-index"))].id
         );
@@ -523,7 +527,14 @@ class PageContentsMenu extends LitElement {
         }
       });
       // account for potentially not finding ANYTHING yet having a "bottom" or top element
-      if (!activeFound && this.items && this.items.length > 0 && this.contentContainer && this.items[0] && this.items[0].id) {
+      if (
+        !activeFound &&
+        this.items &&
+        this.items.length > 0 &&
+        this.contentContainer &&
+        this.items[0] &&
+        this.items[0].id
+      ) {
         try {
           let objItem = this.contentContainer.querySelector(
             "#" + this.items[0].id

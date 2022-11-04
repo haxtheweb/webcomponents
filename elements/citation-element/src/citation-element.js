@@ -370,5 +370,5 @@ class CitationElement extends SchemaBehaviors(LitElement) {
     }
   }
 }
-window.customElements.define(CitationElement.tag, CitationElement);
+customElements.define(CitationElement.tag, CitationElement);
 export { CitationElement };

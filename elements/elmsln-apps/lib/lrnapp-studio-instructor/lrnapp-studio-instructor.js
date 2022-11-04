@@ -1120,8 +1120,5 @@ class LrnappStudioInstructor extends PolymerElement {
     });
   }
 }
-window.customElements.define(
-  LrnappStudioInstructor.tag,
-  LrnappStudioInstructor
-);
+customElements.define(LrnappStudioInstructor.tag, LrnappStudioInstructor);
 export { LrnappStudioInstructor };

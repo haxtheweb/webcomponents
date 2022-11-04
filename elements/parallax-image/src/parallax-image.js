@@ -185,5 +185,5 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     };
   }
 }
-window.customElements.define(ParallaxImage.tag, ParallaxImage);
+customElements.define(ParallaxImage.tag, ParallaxImage);
 export { ParallaxImage };

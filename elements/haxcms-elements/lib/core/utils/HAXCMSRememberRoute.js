@@ -19,10 +19,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
         resume: "Resume",
       };
       autorun((reaction) => {
-        if (
-          store &&
-          store.location &&
-          store.location.pathname) {
+        if (store && store.location && store.location.pathname) {
           const activePathName = toJS(store.location.pathname);
           if (activePathName && this.__evaluateRoute) {
             localStorageSet(

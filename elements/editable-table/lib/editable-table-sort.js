@@ -133,5 +133,5 @@ class EditableTableSort extends SimpleToolbarButtonBehaviors(LitElement) {
     );
   }
 }
-window.customElements.define(EditableTableSort.tag, EditableTableSort);
+customElements.define(EditableTableSort.tag, EditableTableSort);
 export { EditableTableSort };

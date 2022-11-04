@@ -587,5 +587,5 @@ class LrnsysComment extends PolymerElement {
     this.shadowRoot.querySelector("#bodyarea").classList.toggle("nowrap-me");
   }
 }
-window.customElements.define(LrnsysComment.tag, LrnsysComment);
+customElements.define(LrnsysComment.tag, LrnsysComment);
 export { LrnsysComment };

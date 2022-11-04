@@ -23,7 +23,7 @@ class LrnappStudioSubmissionEditTextArea extends PolymerElement {
     };
   }
 }
-window.customElements.define(
+customElements.define(
   LrnappStudioSubmissionEditTextArea.tag,
   LrnappStudioSubmissionEditTextArea
 );

@@ -686,31 +686,33 @@ class HAXCMSSiteEditor extends LitElement {
     let b = document.createElement("div");
     b.appendChild(b1);
     b.appendChild(b2);
-    window.dispatchEvent(new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: "Edit " + store.activeTitle + " fields",
-        styles: {
-          "--simple-modal-titlebar-background": "orange",
-          "--simple-modal-titlebar-color": "black",
-          "--simple-modal-width": "30vw",
-          "--simple-modal-min-width": "400px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "70vh",
-          "--simple-modal-min-height": "400px",
-          "--simple-modal-titlebar-height": "80px",
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: "Edit " + store.activeTitle + " fields",
+          styles: {
+            "--simple-modal-titlebar-background": "orange",
+            "--simple-modal-titlebar-color": "black",
+            "--simple-modal-width": "30vw",
+            "--simple-modal-min-width": "400px",
+            "--simple-modal-z-index": "100000000",
+            "--simple-modal-height": "70vh",
+            "--simple-modal-min-height": "400px",
+            "--simple-modal-titlebar-height": "80px",
+          },
+          elements: {
+            content: form,
+            buttons: b,
+          },
+          invokedBy: this.__nodeFieldsInvoked,
+          clone: false,
+          modal: true,
         },
-        elements: {
-          content: form,
-          buttons: b,
-        },
-        invokedBy: this.__nodeFieldsInvoked,
-        clone: false,
-        modal: true,
-      },
-    }));
+      })
+    );
   }
   /**
    * Load site fields
@@ -823,17 +825,22 @@ class HAXCMSSiteEditor extends LitElement {
       var reqBody = e.detail.values;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
-        await import("@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js").then(async (e) => {
+        await import(
+          "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+        ).then(async (e) => {
           // enable core services
-          enableServices(['haxcms']);
+          enableServices(["haxcms"]);
           // get the broker for docx selection
           const broker = window.FileSystemBroker.requestAvailability();
           const file = await broker.loadFile("docx");
           // tee up as a form for upload
           const formData = new FormData();
           formData.append("method", reqBody.docximport); // this is a branch or site based importer
-          let structure = 'course';
-          if (this.manifest.metadata.build && this.manifest.metadata.structure) {
+          let structure = "course";
+          if (
+            this.manifest.metadata.build &&
+            this.manifest.metadata.structure
+          ) {
             structure = this.manifest.metadata.structure;
           }
           formData.append("type", structure);
@@ -844,7 +851,11 @@ class HAXCMSSiteEditor extends LitElement {
             formData
           );
           // must be a valid response and have at least SOME html to bother attempting
-          if (response.status == 200 && response.data && response.data.contents != "") {
+          if (
+            response.status == 200 &&
+            response.data &&
+            response.data.contents != ""
+          ) {
             reqBody.items = response.data.items;
           }
         });
@@ -1266,5 +1277,5 @@ class HAXCMSSiteEditor extends LitElement {
   }
 }
 
-window.customElements.define(HAXCMSSiteEditor.tag, HAXCMSSiteEditor);
+customElements.define(HAXCMSSiteEditor.tag, HAXCMSSiteEditor);
 export { HAXCMSSiteEditor };

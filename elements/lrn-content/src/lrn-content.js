@@ -38,5 +38,5 @@ class LrnContent extends LitElement {
     };
   }
 }
-window.customElements.define(LrnContent.tag, LrnContent);
+customElements.define(LrnContent.tag, LrnContent);
 export { LrnContent };

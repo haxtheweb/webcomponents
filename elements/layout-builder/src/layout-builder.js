@@ -4,19 +4,99 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
- * `layout-builder`
- * @element layout-builder
- * `A new UI for adding content to layouts`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
- * @demo demo/index.html
- */
+  * `layout-builder`
+  * @element layout-builder
+  * `A new UI for adding content to layouts`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @polymer
+  * @demo demo/index.html
+  */
 class LayoutBuilder extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  render() {
+    return html` <style>
+        :host {
+          display: block;
+        }
+
+        :host button {
+          display: block;
+          margin: 0;
+        }
+
+        :host button,
+        :host #content-wrapper {
+          border: 1px solid #ddd;
+        }
+
+        :host #content:not(:empty) {
+          padding: 15px;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <div id="content-wrapper">
+        <div id="prepend-child">
+          <button on-tap="_handleAddChild">Insert into [[type]]</button>
+        </div>
+        <div id="content"><slot></slot></div>
+      </div>
+      <div id="insert-sibling-after">
+        <button on-tap="_handleAddSibling">Add new [[type]]</button>
+      </div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Layout builder",
+        description: "A new UI for adding content to layouts",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Builder"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage",
+          },
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University",
+        },
+      },
+      settings: {
+        configure: [],
+        advanced: [],
+      },
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      type: {
+        name: "type",
+        type: Boolean,
+        value: "layout",
+      },
+      id: {
+        name: "id",
+        type: String,
+        reflecttoAttribute: true,
+      },
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

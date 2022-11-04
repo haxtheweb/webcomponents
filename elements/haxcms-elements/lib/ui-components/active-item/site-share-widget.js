@@ -136,5 +136,5 @@ class SiteShareWidget extends LitElement {
   }
 }
 
-window.customElements.define(SiteShareWidget.tag, SiteShareWidget);
+customElements.define(SiteShareWidget.tag, SiteShareWidget);
 export { SiteShareWidget };

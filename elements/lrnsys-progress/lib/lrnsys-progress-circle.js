@@ -682,5 +682,5 @@ class LrnsysProgressCircle extends PolymerElement {
     return false;
   }
 }
-window.customElements.define(LrnsysProgressCircle.tag, LrnsysProgressCircle);
+customElements.define(LrnsysProgressCircle.tag, LrnsysProgressCircle);
 export { LrnsysProgressCircle };

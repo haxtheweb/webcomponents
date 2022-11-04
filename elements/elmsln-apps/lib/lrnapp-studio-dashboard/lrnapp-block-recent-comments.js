@@ -91,8 +91,5 @@ class LrnappBlockRecentComments extends PolymerElement {
     });
   }
 }
-window.customElements.define(
-  LrnappBlockRecentComments.tag,
-  LrnappBlockRecentComments
-);
+customElements.define(LrnappBlockRecentComments.tag, LrnappBlockRecentComments);
 export { LrnappBlockRecentComments };

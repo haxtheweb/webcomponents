@@ -454,5 +454,5 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(OutlinePlayer.tag, OutlinePlayer);
+customElements.define(OutlinePlayer.tag, OutlinePlayer);
 export { OutlinePlayer };

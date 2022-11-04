@@ -167,5 +167,5 @@ class SiteQueryMenuSlice extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SiteQueryMenuSlice.tag, SiteQueryMenuSlice);
+customElements.define(SiteQueryMenuSlice.tag, SiteQueryMenuSlice);
 export { SiteQueryMenuSlice };

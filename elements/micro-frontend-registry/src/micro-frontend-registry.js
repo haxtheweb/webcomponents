@@ -75,14 +75,13 @@ class MicroFrontendRegistryEl extends HTMLElement {
           base = window.MicroFrontendRegistryConfig.base;
         }
         // keep local based if we're local, otherwise we need to leverage deployed address
-        else if (window.location.origin.startsWith("http://127.0.0.1") || window.location.origin.startsWith("http://localhost")) {
-          base = window.location.origin.replace(
-            /127.0.0.1:8(.*)/,
-            "localhost:3000"
-          ).replace(
-            /localhost:8(.*)/,
-            "localhost:3000"
-          );
+        else if (
+          window.location.origin.startsWith("http://127.0.0.1") ||
+          window.location.origin.startsWith("http://localhost")
+        ) {
+          base = window.location.origin
+            .replace(/127.0.0.1:8(.*)/, "localhost:3000")
+            .replace(/localhost:8(.*)/, "localhost:3000");
         }
         // most common case, hit vercel address
         else {
@@ -173,38 +172,41 @@ class MicroFrontendRegistryEl extends HTMLElement {
       }
       let data = null;
       switch (method) {
-        case 'GET':
-        case 'HEAD':
+        case "GET":
+        case "HEAD":
           // support for formdata which is already encoded
           const searchParams = new URLSearchParams(params).toString();
-          data = await fetch(searchParams ? `${item.endpoint}?${searchParams}` : item.endpoint, {
-            method: method,
-          })
-          .then((d) => {
-            return d.ok ? d.json() : { status: d.status, data: null };
-          })
-          .catch((e, d) => {
-            console.warn('Request failed', e);
-            // this is endpoint completely failed to respond
-            return { status: 500, data: null };
-          });
-        break;
-        case 'POST':
+          data = await fetch(
+            searchParams ? `${item.endpoint}?${searchParams}` : item.endpoint,
+            {
+              method: method,
+            }
+          )
+            .then((d) => {
+              return d.ok ? d.json() : { status: d.status, data: null };
+            })
+            .catch((e, d) => {
+              console.warn("Request failed", e);
+              // this is endpoint completely failed to respond
+              return { status: 500, data: null };
+            });
+          break;
+        case "POST":
         default:
           // support for formdata which is already encoded
           data = await fetch(item.endpoint, {
             method: method,
             body: params instanceof FormData ? params : JSON.stringify(params),
           })
-          .then((d) => {
-            return d.ok ? d.json() : { status: d.status, data: null };
-          })
-          .catch((e, d) => {
-            console.warn('Request failed', e);
-            // this is endpoint completely failed to respond
-            return { status: 500, data: null };
-          });
-        break;
+            .then((d) => {
+              return d.ok ? d.json() : { status: d.status, data: null };
+            })
+            .catch((e, d) => {
+              console.warn("Request failed", e);
+              // this is endpoint completely failed to respond
+              return { status: 500, data: null };
+            });
+          break;
       }
       // endpoints can require a callback be hit every time
       if (item.callback) {

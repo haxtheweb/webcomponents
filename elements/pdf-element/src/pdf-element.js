@@ -540,5 +540,5 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     }
   }
 }
-window.customElements.define(PdfElement.tag, PdfElement);
+customElements.define(PdfElement.tag, PdfElement);
 export { PdfElement };

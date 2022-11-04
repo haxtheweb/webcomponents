@@ -312,5 +312,5 @@ class LrnsysDrawer extends SimpleColors {
     return "text-label";
   }
 }
-window.customElements.define(LrnsysDrawer.tag, LrnsysDrawer);
+customElements.define(LrnsysDrawer.tag, LrnsysDrawer);
 export { LrnsysDrawer };

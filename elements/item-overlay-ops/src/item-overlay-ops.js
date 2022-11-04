@@ -458,5 +458,5 @@ class ItemOverlayOps extends PolymerElement {
     this.shadowRoot.querySelector("#duplicate").classList.remove("active");
   }
 }
-window.customElements.define(ItemOverlayOps.tag, ItemOverlayOps);
+customElements.define(ItemOverlayOps.tag, ItemOverlayOps);
 export { ItemOverlayOps };

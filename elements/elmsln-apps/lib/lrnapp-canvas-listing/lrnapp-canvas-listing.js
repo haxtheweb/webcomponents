@@ -489,5 +489,5 @@ class LrnappCanvasListing extends PolymerElement {
     this.appendChild(dom);
   }
 }
-window.customElements.define(LrnappCanvasListing.tag, LrnappCanvasListing);
+customElements.define(LrnappCanvasListing.tag, LrnappCanvasListing);
 export { LrnappCanvasListing };

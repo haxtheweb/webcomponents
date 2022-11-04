@@ -90,5 +90,5 @@ class HaxAppSearchInputs extends LitElement {
     };
   }
 }
-window.customElements.define(HaxAppSearchInputs.tag, HaxAppSearchInputs);
+customElements.define(HaxAppSearchInputs.tag, HaxAppSearchInputs);
 export { HaxAppSearchInputs };

@@ -162,8 +162,5 @@ class LrnappStudioProjectButton extends PolymerElement {
     }
   }
 }
-window.customElements.define(
-  LrnappStudioProjectButton.tag,
-  LrnappStudioProjectButton
-);
+customElements.define(LrnappStudioProjectButton.tag, LrnappStudioProjectButton);
 export { LrnappStudioProjectButton };

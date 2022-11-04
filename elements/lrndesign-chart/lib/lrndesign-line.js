@@ -287,5 +287,5 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
  * life cycle, element is removed from the DOM
  */
 //disconnectedCallback() {}
-window.customElements.define(LrndesignLine.tag, LrndesignLine);
+customElements.define(LrndesignLine.tag, LrndesignLine);
 export { LrndesignLine };

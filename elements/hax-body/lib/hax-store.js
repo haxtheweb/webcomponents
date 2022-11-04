@@ -155,12 +155,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       // but ensure there's either no meta data OR
                       // the meta data needs to NOT say anythinig about hiding
                       if (
-                        gizmo.handles[i][property] !== '' &&
+                        gizmo.handles[i][property] !== "" &&
                         (guess === "inline" ||
-                        !gizmo.meta ||
-                        (gizmo.meta &&
-                          !gizmo.meta.inlineOnly &&
-                          !gizmo.meta.hidden))
+                          !gizmo.meta ||
+                          (gizmo.meta &&
+                            !gizmo.meta.inlineOnly &&
+                            !gizmo.meta.hidden))
                       ) {
                         match = true;
                         props[gizmo.handles[i][property]] = values[property];
@@ -2851,7 +2851,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       tag = tag.toLowerCase();
       if (this.elementList && this.elementList[tag]) {
         return this.elementList[tag];
-      }  
+      }
     }
     return {};
   }
@@ -3568,7 +3568,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return properties;
   }
 }
-window.customElements.define(HaxStore.tag, HaxStore);
+customElements.define(HaxStore.tag, HaxStore);
 export { HaxStore };
 // window bridge for external projects that want to account for HAX
 // yet don't want to require it as part of an import chain

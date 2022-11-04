@@ -310,8 +310,5 @@ class ThreadedDiscussionForm extends LitElement {
     }
   }
 }
-window.customElements.define(
-  ThreadedDiscussionForm.tag,
-  ThreadedDiscussionForm
-);
+customElements.define(ThreadedDiscussionForm.tag, ThreadedDiscussionForm);
 export { ThreadedDiscussionForm };

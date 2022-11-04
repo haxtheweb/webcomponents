@@ -47,7 +47,7 @@ class MtzMarkedControlGenericLine extends mtzMarkedControlBehavior(
     };
   }
 }
-window.customElements.define(
+customElements.define(
   MtzMarkedControlGenericLine.tag,
   MtzMarkedControlGenericLine
 );

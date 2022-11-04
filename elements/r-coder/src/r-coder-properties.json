@@ -1,8 +1,0 @@
-{
-  "endpoint": {
-    "type": String
-  },
-  "__connected": {
-    "type": Boolean
-  }
-}

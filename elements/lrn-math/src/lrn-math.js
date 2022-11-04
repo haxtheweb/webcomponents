@@ -284,8 +284,8 @@ class LrnMath extends HTMLElement {
   }
 }
 
-window.customElements.define("lrn-math", LrnMath);
+customElements.define("lrn-math", LrnMath);
 export { LrnMath };
 
-window.customElements.define("lrn-math-controller", LrnMathController);
+customElements.define("lrn-math-controller", LrnMathController);
 export { LrnMathController };

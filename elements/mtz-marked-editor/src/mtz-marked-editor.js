@@ -158,7 +158,7 @@ class MtzMarkedEditor extends mixinBehaviors(
     e.target.__editor = this;
   }
 }
-window.customElements.define(MtzMarkedEditor.tag, MtzMarkedEditor);
+customElements.define(MtzMarkedEditor.tag, MtzMarkedEditor);
 export { MtzMarkedEditor };
 
 const p = Element.prototype;

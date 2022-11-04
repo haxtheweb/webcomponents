@@ -322,5 +322,5 @@ class FilteredImageFilters extends PolymerElement {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(FilteredImageFilters.tag, FilteredImageFilters);
+customElements.define(FilteredImageFilters.tag, FilteredImageFilters);
 export { FilteredImageFilters };

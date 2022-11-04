@@ -1,99 +1,37 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "r-coder",
-      "description": "`r-coder`",
-      "properties": [
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
-        }
-      ]
-    },
-    {
-      "name": "r-coder",
-      "description": "`r-coder`",
+      "description": "`r-coder`\n`R coder interface for the r-service backend.`\n\nAttributes:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - ",
       "attributes": [
         {
-          "name": "endpoint",
-          "type": "string",
-          "default": "\"/service/r-service\""
-        }
-      ],
-      "properties": [
+          "name": "__connected",
+          "description": "`__connected` {`boolean`} - \n\nProperty: __connected",
+          "valueSet": "v"
+        },
         {
           "name": "endpoint",
-          "attribute": "endpoint",
-          "type": "string",
-          "default": "\"/service/r-service\""
-        },
-        {
-          "name": "rootPath",
-          "type": "string"
-        },
-        {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: /service/r-service"
         }
       ]
     },
     {
-      "name": "tag"
-    },
-    {
       "name": "r-coder",
-      "description": "`r-coder`",
-      "properties": [
+      "description": "`r-coder`\n`R coder interface for the r-service backend.`\n\nAttributes:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - ",
+      "attributes": [
         {
-          "name": "rootPath",
-          "type": "string"
+          "name": "__connected",
+          "description": "`__connected` {`boolean`} - \n\nProperty: __connected",
+          "valueSet": "v"
         },
         {
-          "name": "importPath",
-          "type": "string"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
-        },
-        {
-          "name": "$",
-          "type": "{ [key: string]: Element; }"
-        },
-        {
-          "name": "PROPERTY_EFFECT_TYPES",
-          "type": "{ [key: string]: string; }"
+          "name": "endpoint",
+          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: /service/r-service"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

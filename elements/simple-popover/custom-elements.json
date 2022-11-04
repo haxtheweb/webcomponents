@@ -30,7 +30,7 @@
     },
     {
       "name": "simple-popover-selection",
-      "description": "Events:\n\n  * `simple-popover-selection-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state",
+      "description": "Events:\n\n  * `simple-popover-selection-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `event` {`string`} - event activation type\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `event` {`string`} - event activation type",
       "attributes": [
         {
           "name": "opened",
@@ -41,6 +41,10 @@
           "name": "disabled",
           "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "event",
+          "description": "`event` {`string`} - event activation type\n\nProperty: event\n\nDefault: click"
         },
         {
           "name": "onsimple-popover-selection-changed",

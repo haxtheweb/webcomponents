@@ -4,17 +4,17 @@
  */
 import { LitElement, html, css } from "lit";
 /**
- * `figure-label`
- * @element figure-label
- * `Figure label element to mark media assets within content.`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @lit-element
- * @demo demo/index.html
- */
+  * `figure-label`
+  * @element figure-label
+  * `Figure label element to mark media assets within content.`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @lit-element
+  * @demo demo/index.html
+  */
 class FigureLabel extends LitElement {
   //styles function
   static get styles() {
@@ -122,7 +122,7 @@ class FigureLabel extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "figure-label";
   }
 }

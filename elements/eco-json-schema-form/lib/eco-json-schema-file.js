@@ -684,5 +684,5 @@ class EcoJsonSchemaFile extends mixinBehaviors(
     return JSON.stringify(s);
   }
 }
-window.customElements.define(EcoJsonSchemaFile.tag, EcoJsonSchemaFile);
+customElements.define(EcoJsonSchemaFile.tag, EcoJsonSchemaFile);
 export { EcoJsonSchemaFile };
