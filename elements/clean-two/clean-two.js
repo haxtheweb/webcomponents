@@ -346,6 +346,9 @@ class CleanTwo extends HAXCMSOperationButtons(
           z-index: 2;
           height: 40px;
         }
+        :host([edit-mode]) .header {
+          z-index: unset;
+        }
         .header #haxcmsmobilemenubutton {
           margin-left: -52px;
           padding: 8px;

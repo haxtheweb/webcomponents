@@ -1,7 +1,9 @@
 import { LitElement, html, css } from "lit";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { HAXStore } from "./hax-store.js";
+import "./hax-element-demo.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 /**
  `hax-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -97,9 +99,11 @@ class HaxPicker extends LitElement {
         : ""}
       <simple-button-grid cols="100px">
         ${this.selectionList.map((element, index) =>
+        
           !this._isFiltered(element.keywords)
             ? ""
             : html`
+              <simple-popover-selection event="hover">
                 <hax-tray-button
                   show-text-label
                   id="picker-item-${index}"
@@ -110,7 +114,10 @@ class HaxPicker extends LitElement {
                   label="${element.title}"
                   icon="${element.icon}"
                   icon-position="top"
+                  slot="button"
                 ></hax-tray-button>
+                <hax-element-demo tag-name="${element.tag}" slot="options" active-picker-schema="${index}"></hax-element-demo>
+              </simple-popover-selection>
               `
         )}
       </simple-button-grid>

@@ -65,7 +65,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "elementVisible") {
+      if (propName === "elementVisible" && this[propName]) {
         this.getSmartData();
       }
     });

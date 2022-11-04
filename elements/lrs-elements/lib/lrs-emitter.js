@@ -23,9 +23,6 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
         color: "green",
         groups: ["Emitter"],
         handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
         ],
         meta: {
           author: "elmsln",

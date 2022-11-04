@@ -1772,7 +1772,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support for properties if they exist
     for (var property in properties) {
       let attributeName = camelToDash(property);
-      if (properties.hasOwnProperty(property)) {
+      if (attributeName != '' && properties.hasOwnProperty(property)) {
         // special supporting for boolean because html is weird :p
         if (properties[property] === true) {
           newNode.setAttribute(attributeName, attributeName);
@@ -3897,11 +3897,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @memberof HaxBody
    */
   unsetSlotEditMode(node) {
-    let settings = !node.getAttribute("data-grid-saved-settings")
-      ? undefined
-      : JSON.parse(node.getAttribute("data-grid-saved-settings"));
-    Object.keys(settings || {}).forEach((key) => (node[key] = settings[key]));
-    node.removeAttribute("data-grid-saved-settings");
+    if (node.getAttribute && node.getAttribute) {
+      let settings = !node.getAttribute("data-grid-saved-settings")
+        ? undefined
+        : JSON.parse(node.getAttribute("data-grid-saved-settings"));
+      Object.keys(settings || {}).forEach((key) => (node[key] = settings[key]));
+      node.removeAttribute("data-grid-saved-settings");
+    }
   }
   /**
    * saves grid settings before applying edit mode settings

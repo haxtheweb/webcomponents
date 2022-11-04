@@ -167,13 +167,7 @@ class MdBlock extends LitElement {
         icon: "icons:code",
         color: "yellow",
         groups: ["Block"],
-        handles: [
-          {
-            type: "markdown",
-            source: "source",
-            src: "source",
-          },
-        ],
+        handles: [],
         meta: {
           author: "btopro",
           owner: "The Pennsylvania State University",

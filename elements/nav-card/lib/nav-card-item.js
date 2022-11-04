@@ -113,9 +113,6 @@ class NavCardItem extends LitElement {
         color: "pink",
         groups: ["Card", "Nav", "List"],
         handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
         ],
         meta: {
           author: "nikkimk",

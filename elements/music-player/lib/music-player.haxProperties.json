@@ -9,10 +9,6 @@
     "color": "blue",
     "groups": ["Media", "Music"],
     "handles": [
-      {
-        "type": "audio",
-        "source": "source"
-      }
     ],
     "meta": {
       "author": "ELMS:LN"

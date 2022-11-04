@@ -84,6 +84,7 @@ export const HaxIconsetManifest = [
       "h3",
       "h4",
       "h5",
+      "h6",
       "hax2022",
       "hr",
       "html-code",

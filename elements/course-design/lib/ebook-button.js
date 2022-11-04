@@ -24,10 +24,9 @@ export class EbookButton extends LitElement {
         groups: ["education", "link"],
         handles: [
           {
-            type: "",
-            source: "",
-            title: "",
-            description: "",
+            type: "link",
+            source: "link",
+            title: "title",
           },
         ],
         meta: {

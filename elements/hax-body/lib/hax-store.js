@@ -155,11 +155,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       // but ensure there's either no meta data OR
                       // the meta data needs to NOT say anythinig about hiding
                       if (
-                        guess === "inline" ||
+                        gizmo.handles[i][property] !== '' &&
+                        (guess === "inline" ||
                         !gizmo.meta ||
                         (gizmo.meta &&
                           !gizmo.meta.inlineOnly &&
-                          !gizmo.meta.hidden)
+                          !gizmo.meta.hidden))
                       ) {
                         match = true;
                         props[gizmo.handles[i][property]] = values[property];
@@ -2424,7 +2425,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [
           {
             type: "content",
-            source: "",
             title: "innerHTML",
             alt: "title",
           },
