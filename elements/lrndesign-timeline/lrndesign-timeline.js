@@ -361,7 +361,7 @@ class LrndesignTimeline extends SimpleColors {
           },
         ],
         meta: {
-          author: "LRNWebComponents",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

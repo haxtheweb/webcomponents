@@ -25,7 +25,7 @@ class HexPicker extends LitElement {
         handles: [],
         meta: {
           author: "collinkleest",
-          owner: "ELMS:LN",
+          owner: "The Pennsylvania State University",
         },
       },
       settings: {
@@ -70,12 +70,10 @@ class HexPicker extends LitElement {
       value: {
         type: String,
         reflect: true,
-        attribute: "value",
       },
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled",
       },
       largeDisplay: {
         type: Boolean,
@@ -166,19 +164,18 @@ class HexPicker extends LitElement {
       ${this.largeDisplay ? html`<div class="large-display"></div>` : ``}
       <div class="input-container">
         <input
+          aria-label="HEX code"
           class="text-input"
-          maxlength="9" 
+          maxlength="9"
           @input="${this._inputChanged}"
-          @keydown="${this._validateInput}" 
-          .disabled=${this.disabled}>
-        </input>
+          @keydown="${this._validateInput}"
+          .disabled=${this.disabled}
+        />
         <div class="color-square"></div>
       </div>
       <div class="slider-container">
-        ${this.renderFieldSet("R")}
-        ${this.renderFieldSet("G")}
-        ${this.renderFieldSet("B")}
-        ${this.renderFieldSet("O")}
+        ${this.renderFieldSet("R")} ${this.renderFieldSet("G")}
+        ${this.renderFieldSet("B")} ${this.renderFieldSet("O")}
       </div>
     `;
   }

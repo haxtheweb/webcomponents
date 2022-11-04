@@ -225,7 +225,7 @@ class LrndesignPaperstack extends SimpleColors {
         groups: ["Content", "Layout"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

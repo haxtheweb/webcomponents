@@ -92,7 +92,7 @@ class LrndesignAvatar extends SimpleColors {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

@@ -347,7 +347,7 @@ class CMSToken extends PolymerElement {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

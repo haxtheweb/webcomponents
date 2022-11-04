@@ -146,7 +146,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
           @keydown="${this._handleKeydown}"
           @keyup="${this._handleKeyup}"
           ?autofocus="${this.autofocus}"
-          aria-descrbedby="${this.describedBy || ""}"
+          .aria-descrbedby="${this.describedBy || ""}"
           .aria-invalid="${this.error ? "true" : "false"}"
           @blur="${this._onFocusout}"
           @change="${this._handleFieldChange}"

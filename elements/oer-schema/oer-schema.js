@@ -98,7 +98,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
           inlineOnly: true,
         },
       },

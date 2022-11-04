@@ -513,7 +513,7 @@ const LrndesignChart = function (SuperClass) {
             },
           ],
           meta: {
-            author: "LRNWebComponents",
+            author: "HAXTheWeb core team",
           },
         },
         settings: {

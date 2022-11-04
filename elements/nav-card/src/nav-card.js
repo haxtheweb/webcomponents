@@ -74,13 +74,9 @@ class NavCard extends AccentCard {
         icon: "av:playlist-play",
         color: "pink",
         groups: ["Card", "Nav", "List"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

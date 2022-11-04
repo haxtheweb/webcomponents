@@ -151,10 +151,12 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
           href="${this.source}"
           >${this.creator}</a
         >
-        is licensed under a
-        <a class="license-link" target="_blank" href="${this.licenseLink}"
-          >${this.licenseName}</a
-        >. <span rel="dc:source" href="${this.source}"></span>
+        ${this.license
+          ? html`is licensed under a
+              <a class="license-link" target="_blank" href="${this.licenseLink}"
+                >${this.licenseName}</a
+              >.`
+          : ``} <span rel="dc:source" href="${this.source}"></span>
         ${this.hasMore
           ? html`
               <span
@@ -247,6 +249,8 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     this.licenseList = new licenseList();
+    this.creator = "(author)";
+    this.source = null;
     this.moreLabel = "on the licensing details page";
   }
   updated(changedProperties) {
@@ -280,7 +284,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

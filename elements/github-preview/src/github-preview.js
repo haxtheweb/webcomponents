@@ -304,7 +304,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         ],
         meta: {
           author: "collinkleest",
-          owner: "ELMS:LN",
+          owner: "The Pennsylvania State University",
         },
       },
       settings: {

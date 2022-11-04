@@ -2619,7 +2619,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             groups: ["Content"],
             handles: prims[tag].handles || [],
             meta: {
-              author: "ELMS:LN",
+              author: "HAXTheWeb core team",
               inlineOnly: true,
             },
           },

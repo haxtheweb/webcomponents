@@ -3,12 +3,8 @@
   "tags": [
     {
       "name": "git-corner",
-      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `source` {`string`} - source to point to\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\nProperties:\n\n  * `source` {`string`} - source to point to\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text",
+      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to\n\nProperties:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to",
       "attributes": [
-        {
-          "name": "source",
-          "description": "`source` {`string`} - source to point to\n\nProperty: source"
-        },
         {
           "name": "corner",
           "description": "`corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\nProperty: corner",
@@ -20,18 +16,18 @@
         },
         {
           "name": "alt",
-          "description": "`alt` {`string`} - alt text\n\nProperty: alt\n\nDefault: "
+          "description": "`alt` {`string`} - alt text\n\nProperty: alt\n\nDefault: null"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - source to point to\n\nProperty: source\n\nDefault: null"
         }
       ]
     },
     {
       "name": "git-corner",
-      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `source` {`string`} - source to point to\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\nProperties:\n\n  * `source` {`string`} - source to point to\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text",
+      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to\n\nProperties:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to",
       "attributes": [
-        {
-          "name": "source",
-          "description": "`source` {`string`} - source to point to\n\nProperty: source"
-        },
         {
           "name": "corner",
           "description": "`corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\nProperty: corner",
@@ -43,7 +39,11 @@
         },
         {
           "name": "alt",
-          "description": "`alt` {`string`} - alt text\n\nProperty: alt\n\nDefault: "
+          "description": "`alt` {`string`} - alt text\n\nProperty: alt\n\nDefault: null"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - source to point to\n\nProperty: source\n\nDefault: null"
         }
       ]
     }

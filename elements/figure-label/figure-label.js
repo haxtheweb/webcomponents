@@ -71,7 +71,7 @@ class FigureLabel extends LitElement {
         color: "green",
         groups: ["Label"],
         meta: {
-          author: "heymp",
+          author: "HAXTheWeb core team",
           owner: "PSU",
         },
       },

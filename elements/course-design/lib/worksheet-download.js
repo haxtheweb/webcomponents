@@ -25,7 +25,7 @@ export class WorksheetDownload extends LitElement {
         color: "blue",
         groups: ["education", "link"],
         meta: {
-          author: "LRNWebComponents",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

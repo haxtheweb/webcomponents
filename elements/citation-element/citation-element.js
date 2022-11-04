@@ -68,21 +68,25 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         ><a target="_blank" rel="noopener noreferrer" href="${this.source}"
           >${this.title}</a
         >
-        by ${this.creator}, licensed under
-        <a
-          class="license-link"
-          rel="noopener noreferrer"
-          target="_blank"
-          href="${this.licenseLink}"
-          ><img
-            loading="lazy"
-            alt="${this.licenseName} graphic"
-            src="${this.licenseImage}"
-            ?hidden="${!this.licenseImage}"
-            width="44px"
-            height="16px"
-          />${this.licenseName}</a
-        >. Accessed <span class="citation-date">${this.date}</span>.</cite
+        by
+        ${this.creator}${this.licenseName
+          ? html`, licensed under
+              <a
+                class="license-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                href="${this.licenseLink}"
+                ><img
+                  loading="lazy"
+                  alt="${this.licenseName} graphic"
+                  src="${this.licenseImage}"
+                  ?hidden="${!this.licenseImage}"
+                  width="44px"
+                  height="16px"
+                />${this.licenseName}</a
+              >`
+          : ``}.
+        Accessed <span class="citation-date">${this.date}</span>.</cite
       >
     `;
   }
@@ -284,7 +288,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

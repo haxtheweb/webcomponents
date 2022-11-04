@@ -71,13 +71,9 @@ class MicroCopyHeading extends LitElement {
         icon: "icons:android",
         color: "green",
         groups: ["Copy"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

@@ -31,7 +31,7 @@ class SiteChildrenBlock extends LitElement {
         groups: ["haxcms"],
         handles: [],
         meta: {
-          author: "elmsln",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

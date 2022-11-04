@@ -102,8 +102,8 @@ class SimpleLogin extends SimpleColors {
     return html` <div id="loginform">
       <simple-progress ?disabled="${!this.loading}"></simple-progress>
       <div id="loginformcontent">
-        <h1>${this.title}</h1>
-        <h2>${this.subtitle}</h2>
+        ${this.title ? html`<h1>${this.title}</h1>` : ``}
+        ${this.subtitle ? html`<h2>${this.subtitle}</h2>` : ``}
         <div id="errormsg">${this.errorMsg}</div>
         <slot></slot>
         <simple-fields-field

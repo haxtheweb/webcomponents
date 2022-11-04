@@ -61,13 +61,9 @@ class RCoder extends LitElement {
         icon: "icons:android",
         color: "green",
         groups: ["Coder"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "heymp",
+          author: "HAXTheWeb core team",
           owner: "PSU",
         },
       },

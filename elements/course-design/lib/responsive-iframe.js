@@ -35,7 +35,7 @@ class ResponsiveIframe extends LitElement {
         icon: "icons:file-download",
         color: "blue",
         meta: {
-          author: "LRNWebComponents",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

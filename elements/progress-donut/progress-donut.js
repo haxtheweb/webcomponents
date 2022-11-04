@@ -57,7 +57,7 @@ class ProgressDonut extends LrndesignPie {
         groups: ["Presentation", "Data"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

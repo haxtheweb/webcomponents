@@ -148,7 +148,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

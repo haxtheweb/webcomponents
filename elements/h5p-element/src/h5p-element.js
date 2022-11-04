@@ -56,7 +56,7 @@ class H5PElement extends LitElement {
         color: "green",
         groups: ["Interactive"],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

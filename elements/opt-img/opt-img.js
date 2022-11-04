@@ -105,7 +105,7 @@ class OptImg extends HTMLElement {
       }
     }
     </style>
-    <svg id="dots" width="132px" height="58px" viewBox="0 0 132 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <svg id="dots-svg" width="132px" height="58px" viewBox="0 0 132 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
       <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
           <g id="dots" sketch:type="MSArtboardGroup" fill="#A3A3A3">
               <circle id="dot1" sketch:type="MSShapeGroup" cx="25" cy="30" r="13"></circle>

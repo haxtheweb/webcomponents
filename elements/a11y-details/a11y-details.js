@@ -210,7 +210,7 @@ class A11yDetails extends LitElement {
           },
         ],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

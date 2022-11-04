@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../simple-popover.js";
-
+/*
 describe("simple-popover test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("simple-popover test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("simple-popover passes accessibility test", async () => {
     const el = await fixture(html` <simple-popover></simple-popover> `);

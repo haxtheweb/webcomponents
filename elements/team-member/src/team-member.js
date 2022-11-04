@@ -114,7 +114,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         groups: ["Content", "Presentation"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

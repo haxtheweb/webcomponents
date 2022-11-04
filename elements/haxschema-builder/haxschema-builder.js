@@ -77,7 +77,7 @@ class HaxschemaBuilder extends LitElement {
         groups: ["Builder"],
         handles: [],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

@@ -24,7 +24,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
         groups: ["Emitter"],
         handles: [],
         meta: {
-          author: "elmsln",
+          author: "HAXTheWeb core team",
           owner: "Penn State",
         },
       },

@@ -116,7 +116,7 @@ class CodeSample extends LitElement {
         color: "blue",
         groups: ["Code", "Development"],
         meta: {
-          author: "elmsln",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

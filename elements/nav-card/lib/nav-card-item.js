@@ -112,7 +112,7 @@ class NavCardItem extends LitElement {
         groups: ["Card", "Nav", "List"],
         handles: [],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

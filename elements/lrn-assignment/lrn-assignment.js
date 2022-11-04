@@ -21,7 +21,7 @@ class LrnAssignment extends PolymerElement {
         }
       </style>
       <div class="card">
-        <img src="[[image]]" loading="lazy" />
+        <img src="[[image]]" loading="lazy" alt="" />
         <h3>[[title]]</h3>
         <div class="card-content">[[details]] <slot></slot></div>
         <div class="card-actions">

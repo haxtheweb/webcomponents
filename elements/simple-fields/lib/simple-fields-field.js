@@ -690,7 +690,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         <span class="input-option" part="option-inner">
           <input
             ?autofocus="${this.autofocus}"
-            aria-descrbedby="${this.describedBy || ""}"
+            .aria-descrbedby="${this.describedBy || ""}"
             .aria-invalid="${this.error ? "true" : "false"}"
             @blur="${this._onFocusout}"
             @change="${this._handleFieldChange}"
@@ -714,6 +714,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ?readonly="${this.readonly}"
             ?required="${this.required}"
             tabindex="0"
+            aria-label="${!!this.describedBy ? "" : this.label}"
             type="${this.type}"
             value="${!option ? this.value : (option || {}).value}"
             part="option-input"
@@ -802,7 +803,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return html`
         <select
           ?autofocus="${this.autofocus}"
-          aria-descrbedby="${this.describedBy}"
+          .aria-descrbedby="${this.describedBy || ""}"
           aria-invalid="${this.error ? "true" : "false"}"
           @blur="${this._onFocusout}"
           @change="${this._handleFieldChange}"

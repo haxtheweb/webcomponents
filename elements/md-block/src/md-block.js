@@ -169,7 +169,7 @@ class MdBlock extends LitElement {
         groups: ["Block"],
         handles: [],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

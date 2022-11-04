@@ -30,7 +30,7 @@ export class EbookButton extends LitElement {
           },
         ],
         meta: {
-          author: "LRNWebComponents",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

@@ -6,7 +6,7 @@ describe("simple-cta test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <simple-cta title="test-title"></simple-cta> `
+      html` <simple-cta title="this is my title"></simple-cta> `
     );
   });
 

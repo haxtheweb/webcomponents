@@ -58,7 +58,11 @@ class MonacoElement extends LitElement {
    * LitElement
    */
   render() {
-    return html` <iframe id="iframe" frameborder="0"></iframe>`;
+    return html` <iframe
+      id="iframe"
+      frameborder="0"
+      aria-label="Code editor"
+    ></iframe>`;
   }
   /**
    * LitElement / popular convention

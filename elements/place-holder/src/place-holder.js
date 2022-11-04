@@ -283,7 +283,7 @@ class PlaceHolder extends SimpleColors {
         groups: ["Placeholder", "Content"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

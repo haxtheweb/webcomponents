@@ -60,13 +60,9 @@ class FilteredImage extends SimpleColors {
         icon: "icons:android",
         color: "green",
         groups: ["Image"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

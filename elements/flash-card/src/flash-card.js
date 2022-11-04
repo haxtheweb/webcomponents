@@ -101,7 +101,7 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
         groups: ["Education", "Interactive"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

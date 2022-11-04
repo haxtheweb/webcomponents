@@ -272,7 +272,7 @@ class CMSEntity extends PolymerElement {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

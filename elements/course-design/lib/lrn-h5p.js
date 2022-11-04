@@ -40,7 +40,7 @@ export class LrnH5p extends LitElement {
         icon: "editor:format-quote",
         color: "blue",
         meta: {
-          author: "LRNWebComponents",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

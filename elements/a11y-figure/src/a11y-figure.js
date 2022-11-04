@@ -150,7 +150,7 @@ class A11yFigure extends A11yDetails {
           },
         ],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

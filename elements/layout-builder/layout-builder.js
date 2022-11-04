@@ -64,13 +64,9 @@ class LayoutBuilder extends PolymerElement {
         icon: "icons:android",
         color: "green",
         groups: ["Builder"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

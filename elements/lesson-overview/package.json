@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.2.4",
+    "lit": "^2.4.1",
     "mobx": "6.6.2",
     "@lrnwebcomponents/simple-colors": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.1.0",

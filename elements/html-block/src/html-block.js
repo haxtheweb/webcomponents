@@ -42,7 +42,7 @@ class HtmlBlock extends HTMLElement {
           },
         ],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

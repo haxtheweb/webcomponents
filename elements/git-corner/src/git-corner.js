@@ -161,7 +161,8 @@ class GitCorner extends LitElement {
   }
   constructor() {
     super();
-    this.alt = "";
+    this.alt = null;
+    this.source = null;
   }
 }
 customElements.define(GitCorner.tag, GitCorner);

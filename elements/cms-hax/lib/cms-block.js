@@ -264,7 +264,7 @@ class CMSBlock extends PolymerElement {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

@@ -163,7 +163,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

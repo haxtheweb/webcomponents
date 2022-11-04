@@ -172,7 +172,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         placeholder: {
           name: "placeholder",
           type: String,
-          reflect: true,
+          reflect: false,
           attribute: "aria-placeholder",
         },
 

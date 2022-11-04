@@ -42,7 +42,7 @@
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/paper-spinner": "3.0.2",
     "@polymer/polymer": "^3.4.1",
-    "lit": "^2.3.1"
+    "lit": "^2.4.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

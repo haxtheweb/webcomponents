@@ -108,13 +108,9 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         icon: "icons:android",
         color: "green",
         groups: ["Writer"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "btopro",
+          author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
         },
       },

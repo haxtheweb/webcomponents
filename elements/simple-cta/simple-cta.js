@@ -33,7 +33,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
             darkgreen
           );
           --simple-cta-bg-color: var(
-            --simple-colors-default-theme-accent-7,
+            --simple-colors-default-theme-accent-8,
             green
           );
           margin: 60px 0 0;
@@ -110,7 +110,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

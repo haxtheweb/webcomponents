@@ -98,7 +98,7 @@ class SiteUuidLink extends LitElement {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

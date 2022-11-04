@@ -139,13 +139,9 @@ class FullScreenImage extends LitElement {
         icon: "icons:android",
         color: "green",
         groups: ["Screen"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

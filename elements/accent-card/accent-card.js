@@ -426,7 +426,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           },
         ],
         meta: {
-          author: "nikkimk",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

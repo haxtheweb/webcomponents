@@ -247,7 +247,7 @@ class LrnMath extends HTMLElement {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
           inlineOnly: true,
         },
       },

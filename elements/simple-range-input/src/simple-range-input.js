@@ -276,7 +276,6 @@ class SimpleRangeInput extends SimpleColors {
         max="${this.max}"
         value="${this.value}"
         aria-labelledby="label"
-        title="${this.label}"
       /><label id="label">${this.label}</label>`;
   }
   _inputChanged(e) {

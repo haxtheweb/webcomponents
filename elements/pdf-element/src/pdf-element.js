@@ -305,7 +305,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

@@ -451,7 +451,7 @@ class GridPlate extends LitElement {
         groups: ["Layout"],
         handles: [],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },

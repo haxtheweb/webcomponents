@@ -246,7 +246,7 @@ class RetroCard extends SimpleColors {
           },
         ],
         meta: {
-          author: "ELMS:LN",
+          author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
         },
       },
