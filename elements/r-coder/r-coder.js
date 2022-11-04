@@ -143,6 +143,6 @@ class RCoder extends LitElement {
     this.shadowRoot.getElementById("output").innerText = data;
   }
 }
-window.customElements.define(RCoder.tag, RCoder);
+customElements.define(RCoder.tag, RCoder);
 
 export { RCoder };

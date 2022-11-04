@@ -259,5 +259,5 @@ class SimpleToast extends SimpleColors {
     this.opened = false;
   }
 }
-window.customElements.define(SimpleToast.tag, SimpleToast);
+customElements.define(SimpleToast.tag, SimpleToast);
 export { SimpleToast };

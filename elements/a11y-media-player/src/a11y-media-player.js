@@ -3629,5 +3629,5 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     return local;
   }
 }
-window.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
+customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
 export { A11yMediaPlayer };

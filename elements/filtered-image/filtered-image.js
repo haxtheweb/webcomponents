@@ -255,5 +255,5 @@ class FilteredImage extends SimpleColors {
     return id.replace(/0./g, "-");
   }
 }
-window.customElements.define(FilteredImage.tag, FilteredImage);
+customElements.define(FilteredImage.tag, FilteredImage);
 export { FilteredImage };

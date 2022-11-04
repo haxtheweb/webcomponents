@@ -192,5 +192,5 @@ class EditableList extends LitElement {
     }
   }
 }
-window.customElements.define(EditableList.tag, EditableList);
+customElements.define(EditableList.tag, EditableList);
 export { EditableList };

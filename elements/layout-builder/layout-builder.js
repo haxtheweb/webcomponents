@@ -138,5 +138,5 @@ class LayoutBuilder extends PolymerElement {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(LayoutBuilder.tag, LayoutBuilder);
+customElements.define(LayoutBuilder.tag, LayoutBuilder);
 export { LayoutBuilder };

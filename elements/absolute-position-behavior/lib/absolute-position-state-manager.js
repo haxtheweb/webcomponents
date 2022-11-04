@@ -421,7 +421,7 @@ class AbsolutePositionStateManager extends LitElement {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(
+customElements.define(
   AbsolutePositionStateManager.tag,
   AbsolutePositionStateManager
 );

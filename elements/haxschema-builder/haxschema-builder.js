@@ -228,5 +228,5 @@ class HaxschemaBuilder extends LitElement {
     this.value = e.detail.value;
   }
 }
-window.customElements.define(HaxschemaBuilder.tag, HaxschemaBuilder);
+customElements.define(HaxschemaBuilder.tag, HaxschemaBuilder);
 export { HaxschemaBuilder };

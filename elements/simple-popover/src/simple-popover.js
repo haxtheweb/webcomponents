@@ -220,5 +220,5 @@ class SimplePopover extends AbsolutePositionBehavior {
     return ``;
   }
 }
-window.customElements.define(SimplePopover.tag, SimplePopover);
+customElements.define(SimplePopover.tag, SimplePopover);
 export { SimplePopover };

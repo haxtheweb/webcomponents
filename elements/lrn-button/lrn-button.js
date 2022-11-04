@@ -424,5 +424,5 @@ class LrnButton extends SimpleColors {
     this.focusState = !this.focusState;
   }
 }
-window.customElements.define(LrnButton.tag, LrnButton);
+customElements.define(LrnButton.tag, LrnButton);
 export { LrnButton };

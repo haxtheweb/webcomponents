@@ -169,5 +169,5 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(ExampleHaxcmsTheme.tag, ExampleHaxcmsTheme);
+customElements.define(ExampleHaxcmsTheme.tag, ExampleHaxcmsTheme);
 export { ExampleHaxcmsTheme };

@@ -385,5 +385,5 @@ class SimpleDrawer extends SimpleColors {
     super.disconnectedCallback();
   }
 }
-window.customElements.define(SimpleDrawer.tag, SimpleDrawer);
+customElements.define(SimpleDrawer.tag, SimpleDrawer);
 export { SimpleDrawer };

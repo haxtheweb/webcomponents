@@ -1001,6 +1001,6 @@ class OutlineDesigner extends PolymerElement {
     }
   }
 }
-window.customElements.define("outline-designer", OutlineDesigner);
+customElements.define("outline-designer", OutlineDesigner);
 
 export { OutlineDesigner };

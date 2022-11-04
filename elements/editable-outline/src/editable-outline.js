@@ -857,5 +857,5 @@ class EditableOutline extends LitElement {
     } else false;
   }
 }
-window.customElements.define(EditableOutline.tag, EditableOutline);
+customElements.define(EditableOutline.tag, EditableOutline);
 export { EditableOutline };

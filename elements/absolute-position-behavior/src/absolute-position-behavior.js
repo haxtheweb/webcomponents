@@ -237,8 +237,5 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
 class AbsolutePositionBehavior extends AbsolutePositionBehaviorClass(
   LitElement
 ) {}
-window.customElements.define(
-  AbsolutePositionBehavior.tag,
-  AbsolutePositionBehavior
-);
+customElements.define(AbsolutePositionBehavior.tag, AbsolutePositionBehavior);
 export { AbsolutePositionBehaviorClass, AbsolutePositionBehavior };

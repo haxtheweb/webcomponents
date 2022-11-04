@@ -193,5 +193,5 @@ class JsonEditor extends LitElement {
     } catch (e) {}
   }
 }
-window.customElements.define(JsonEditor.tag, JsonEditor);
+customElements.define(JsonEditor.tag, JsonEditor);
 export { JsonEditor };
