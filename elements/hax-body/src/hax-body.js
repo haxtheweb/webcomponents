@@ -2187,6 +2187,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // this short delay helps improve continuity here
     setTimeout(() => {
       HAXStore.activeNode = node;
+      this.scrollHere(node);
+      this.__focusLogic(node);
     }, 100);
     return true;
   }
