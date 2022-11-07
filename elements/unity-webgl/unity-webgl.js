@@ -30,16 +30,12 @@ class UnityWebgl extends HTMLElement {
   /**
    * object life cycle
    */
-  constructor(delayRender = false) {
+  constructor() {
     super();
     // create a template element for processing shadowRoot
     this.template = document.createElement("template");
     // create a shadowRoot
     this.attachShadow({ mode: "open" });
-    // optional delay in rendering, otherwise it always happens
-    if (!delayRender) {
-      this.render();
-    }
   }
   /**
    * This is a convention, not the standard to return HTML of the element
