@@ -51,6 +51,7 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
           accent-color="${this.accentColor}"
           contrast="${this.contrast}"
           ?dark="${this.dark}"
+          ?no-colorize="${this.noColorize}"
         ></simple-icon>
       </button>
     `;

@@ -132,7 +132,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           .type="${this.type}"
           value="${this.value}"
         >
-          <simple-icon-lite icon="${this.icon}" part="icon"></simple-icon-lite>
+          <simple-icon-lite icon="${this.icon}" part="icon" ?no-colorize="${this.noColorize}"></simple-icon-lite>
           <slot></slot>
         </button>
       `;
