@@ -402,7 +402,6 @@ class HaxMap extends I18NMixin(LitElement) {
         node.parentNode &&
         node.parentNode.getAttribute("data-hax-lock") == null
       ) {
-        HAXStore.activeNode = node;
         switch (action) {
           case "transform":
             this.dispatchEvent(
@@ -422,11 +421,11 @@ class HaxMap extends I18NMixin(LitElement) {
             node.setAttribute("data-hax-lock", "data-hax-lock");
             break;
           case "delete":
-            node.remove();
+            HAXStore.activeHaxBody.haxDeleteNode(node);
             break;
           case "down":
             if (node.nextElementSibling) {
-              node.nextElementSibling.insertAdjacentElement("afterend", node);
+              HAXStore.activeHaxBody.haxMoveGridPlate(node);
             }
             break;
           case "up":
@@ -434,10 +433,7 @@ class HaxMap extends I18NMixin(LitElement) {
               node.previousElementSibling &&
               node.previousElementSibling.tagName !== "PAGE-BREAK"
             ) {
-              node.previousElementSibling.insertAdjacentElement(
-                "beforebegin",
-                node
-              );
+              HAXStore.activeHaxBody.haxMoveGridPlate(node, -1);
             }
             break;
         }
@@ -517,6 +513,9 @@ class HaxMap extends I18NMixin(LitElement) {
       },
       eCount: {
         type: String,
+      },
+      activeNode: {
+        type: Object
       },
     };
   }

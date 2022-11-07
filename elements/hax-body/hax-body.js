@@ -1034,7 +1034,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.activeNode === node.children[0] ||
                     this.activeNode === node
                   ) {
-                    this.activeNode = node;
+                    HAXStore.activeNode = node;
                   }
                   unwrap(node.children[0]);
                   continue;
@@ -1512,7 +1512,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.activeNode &&
       (HAXStore.isTextElement(this.activeNode) || force)
     ) {
-      this.activeNode = node;
+      HAXStore.activeNode = node;
       // If the user has paused for awhile, show the menu
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
@@ -2182,8 +2182,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (!!move) node.setAttribute("slot", move);
       }
     }
-    this.scrollHere(node);
-    this.positionContextMenus(node);
+    // unfortunately the insertBefore APIs will trigger our DOM correction MutationObserver
+    // of a node deletion. This causes the active node to lose focus, against user expectation
+    // this short delay helps improve continuity here
+    setTimeout(() => {
+      HAXStore.activeNode = node;
+    }, 100);
     return true;
   }
   /**
@@ -2633,7 +2637,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // so make sure we treat it like HTML
           // @see haxHooks: preProcessNodeToContent
           if (HAXStore.testHook(this.activeNode, "preProcessNodeToContent")) {
-            this.activeNode = await HAXStore.runHook(
+            HAXStore.activeNode = await HAXStore.runHook(
               this.activeNode,
               "preProcessNodeToContent",
               [this.activeNode]
@@ -2808,10 +2812,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "hax-plate-up":
-        this.haxMoveGridPlate(this.activeNode, -1);
+        if (
+          this.activeNode.previousElementSibling &&
+          this.activeNode.previousElementSibling.tagName !== "PAGE-BREAK"
+        ) {
+          this.haxMoveGridPlate(this.activeNode, -1);
+        }
         break;
       case "hax-plate-down":
-        this.haxMoveGridPlate(this.activeNode);
+        if (this.activeNode.nextElementSibling) {
+          this.haxMoveGridPlate(this.activeNode);
+        }
         break;
       case "content-edit":
         if (HAXStore.haxTray.trayDetail === "content-edit")
@@ -2919,7 +2930,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
-          this.activeNode = activeNode;
           setTimeout(() => {
             if (
               autoFocus &&

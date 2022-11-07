@@ -3613,9 +3613,9 @@ window.Hax.duplicate = function () {
 
 window.Hax.move = function (dir = true) {
   if (dir) {
-    HAXStore.activeHaxBody.haxMoveGridPlate("up", HAXStore.activeNode);
+    HAXStore.activeHaxBody.haxMoveGridPlate(HAXStore.activeNode, -1);
   } else {
-    HAXStore.activeHaxBody.haxMoveGridPlate("down", HAXStore.activeNode);
+    HAXStore.activeHaxBody.haxMoveGridPlate(HAXStore.activeNode);
   }
 };
 

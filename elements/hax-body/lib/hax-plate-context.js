@@ -10,7 +10,7 @@ import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { SimpleToast } from "@lrnwebcomponents/simple-toast/simple-toast";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 
 /**
  * `hax-plate-context`
@@ -511,7 +511,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get disableTransform() {
-    return !this.filteredBlocks || this.filteredBlocks.length < 1;
+    return HAXStore.isTextElement(this.activeNode) || !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
   /**

@@ -3,7 +3,9 @@ import { HAXStore } from "./hax-store.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
-  static tag = "hax-element-demo";
+  static get tag() {
+    return "hax-element-demo";
+  }
   constructor() {
     super();
     this.tagName = null;
@@ -44,7 +46,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         if (
           this.activePickerSchema !== -1 &&
           document.querySelector("hax-picker") &&
-          document.querySelector("hax-picker")?._elements.length > 0
+          document.querySelector("hax-picker")._elements &&
+          document.querySelector("hax-picker")._elements.length > 0
         ) {
           // bc of data rendering we need to get full schema from source
           // this is bizarre looking for sure but we template stamp
