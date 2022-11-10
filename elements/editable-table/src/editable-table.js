@@ -151,6 +151,32 @@ class EditableTable extends editBehaviors(LitElement) {
   static get tag() {
     return "editable-table";
   }
+  // Support being an editing interface element for HAX
+  haxHooks() {
+    return {
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  // about to convert to content, ensure we are no longer the editable-table
+  haxpreProcessNodeToContent(node) {
+    let replacement = this.getTableHTML(true, true);
+    return replacement;
+  }
+  // allow HAX to toggle edit state when activated
+  haxactiveElementChanged(el, val) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!val) {
+      if (el) {
+        el.replaceWith(this.getTableHTML(true, true));
+      }
+    }
+    else {
+      // aligns the state of the element w/ HAX if its available
+      this.toggleEditMode(val);
+    }
+    return el;
+  }
   /**
    * haxProperties integration via file reference
    */
@@ -160,6 +186,7 @@ class EditableTable extends editBehaviors(LitElement) {
   }
   constructor() {
     super();
+    //this.haxUIElement = true;
     this.editMode = false;
   }
   static get properties() {

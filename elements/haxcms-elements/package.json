@@ -57,6 +57,7 @@
     "@lrnwebcomponents/portal-launcher": "^4.0.25",
     "@lrnwebcomponents/schema-behaviors": "^4.1.0",
     "@lrnwebcomponents/simple-colors": "^4.1.0",
+    "@lrnwebcomponents/editable-table": "^4.1.0",
     "@lrnwebcomponents/simple-datetime": "^4.1.0",
     "@lrnwebcomponents/q-r": "^4.1.0",
     "@lrnwebcomponents/simple-fields": "^4.1.0",

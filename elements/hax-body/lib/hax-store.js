@@ -2449,6 +2449,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // table tag which has a custom editing interface
     let table = {
       type: "element",
+      editingElement: {
+        tag: "editable-table",
+        import:
+          "@lrnwebcomponents/editable-table/editable-table.js",
+          callback: this.setupEditableTable.bind(this),
+        },
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -2470,13 +2476,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         {
           tag: "table",
           content:
-            "<tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr>",
-          properties: {},
+            "<tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr>",
+          properties: {
+            "column-striped": true,
+            "column-header": true
+          },
         },
       ],
     };
     // @todo bring back when table editor is supported
-    //this.setHaxProperties(table, "table");
+    this.setHaxProperties(table, "table");
     let prims = {
       caption: {
         title: "Caption",
@@ -2685,7 +2694,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this[e.detail.piece] = e.detail.object;
     }
   }
-
+  /**
+   * set up the autocomplete contextual settings
+   */
+  setupEditableTable(editor) {
+    setTimeout(() => {
+      editor.editMode = true;
+      console.log(editor);        
+    }, 0);
+  }
   /**
    * set up the autocomplete contextual settings
    */

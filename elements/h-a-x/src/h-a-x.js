@@ -5,6 +5,9 @@
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
+import {
+  editableTableDisplayStyles
+} from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
 /**
  * `h-a-x`
  * @element h-a-x
@@ -40,7 +43,9 @@ class HAX extends HTMLElement {
     return `
     <style>
     ${styles.join("\n")}
-
+    ${editableTableDisplayStyles
+      .map((s) => s.cssText.replace(/:host/g, "hax-body table"))
+      .join(" ")}
     :host,h-a-x {
       display: block;
       font-size: var(--haxcms-base-styles-body-font-size);

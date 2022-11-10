@@ -109,15 +109,6 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "editMode"]
-  },
-  "demoSchema": [
-    {
-      "tag": "multiple-choice",
-      "properties": {
-        "randomize": true
-      },
-      "content": "\n<table>\n<caption>\nIs it a sandwich? Food classification chart.\n</caption>\n<tbody>\n<tr>\n<td>Food</td>\n<td>Enclosure</td>\n<td>Contents</td>\n<td>Orientation</td>\n</tr>\n<tr>\n<td>Hamburger</td>\n<td>one bun, split into two</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>horizontal</td>\n</tr>\n<tr>\n<td>Hoagie</td>\n<td>one bun</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>vertical</td>\n</tr>\n<tr>\n<td>Hot Dog</td>\n<td>one bun</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>vertical</td>\n</tr>\n<tr>\n<td>Hot Pocket</td>\n<td>two crusts sealed together</td>\n<td>meat, vegetables, cheese, and/or condiments</td>\n<td>horizontal</td>\n</tr>\n<tr>\n<td>Pie</td>\n<td>two crusts sealed together</td>\n<td>fruit or meat, vegetables, and/or cheese</td>\n<td>horizontal</td>\n</tr>\n</tbody>\n</table>"
-    }
-  ]
+    "unsetAttributes": ["__utils", "editMode", "data"]
+  }
 }

@@ -150,7 +150,7 @@ export const editableTableStyles = [
       color: var(--editable-table-negative-color, red);
       --editable-table-cell-color: var(--editable-table-negative-color, red);
     }
-    ::slotted(table) {
+    editable-table-display ::slotted(table) {
       display: none;
     }
     @media screen {
@@ -427,7 +427,6 @@ export const tableHtmlProperties = {
    */
   caption: {
     type: String,
-    value: null,
   },
   /**
    * Display first row as a column header.
@@ -654,7 +653,7 @@ export const displayBehaviors = function (SuperClass) {
           : window.open(
               "",
               "",
-              "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
+              "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status=0"
             );
       if (print) {
         print.document.head.innerHTML += `<style>
@@ -743,7 +742,7 @@ export const displayBehaviors = function (SuperClass) {
      * Return table as plain HTML
      * @returns {string} HTML for table
      */
-    getTableHTML(addStyleClasses = false) {
+    getTableHTML(addStyleClasses = false, asNode = false) {
       let headers = [],
         body = [],
         footer = [];
@@ -784,7 +783,7 @@ export const displayBehaviors = function (SuperClass) {
       let props = this.getTableProperties();
       let attr = "";
       Object.keys(this.getTableProperties()).forEach((i) => {
-        if (props[i] && Object.keys(displayProperties).includes(i)) {
+        if (props[i] && (Object.keys(displayProperties).includes(i) || Object.keys(dataProperties).includes(i))) {
           let kebabize = (str) => {
             return str
               .split("")
@@ -798,17 +797,15 @@ export const displayBehaviors = function (SuperClass) {
           attr += `${kebabize(i)} `;
         }
       });
-      return [
+      let response = [
         `<table ${attr}>`,
-        this.caption !== "" && this.caption !== null && this.caption !== "null"
+        this.caption && this.caption !== "" && this.caption !== null && this.caption !== "null" && this.caption !== "undefined"
           ? `\n\t<caption${!addStyleClasses ? "" : ` class="caption"`}>\n\t\t${
               this.caption
             }\n\t</caption>`
           : "",
         headers.length > 0
-          ? `\n\t<thead${
-              !addStyleClasses ? "" : ` class="thead"`
-            }">${headers.join("")}\n\t</thead>`
+          ? `\n\t<thead${!addStyleClasses ? "" : ` class="thead"`}>${headers.join("")}\n\t</thead>`
           : "",
         body.length > 0
           ? `\n\t<tbody${!addStyleClasses ? "" : ` class="tbody"`}>${body.join(
@@ -822,6 +819,13 @@ export const displayBehaviors = function (SuperClass) {
           : "",
         "\n</table>",
       ].join("");
+      // allow response as a DOM node
+      if (asNode) {
+        let div = document.createElement('div');
+        div.innerHTML = response;
+        return div.querySelector('table');
+      }
+      return response;
     }
 
     /**
