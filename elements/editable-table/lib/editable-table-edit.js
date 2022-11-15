@@ -609,6 +609,8 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
         rawhtml="${contents}"
         type="rich-text-editor-toolbar-mini"
+        contenteditable="true"
+        role="textbox"
       >
       </rich-text-editor>
     `;
