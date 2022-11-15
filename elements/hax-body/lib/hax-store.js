@@ -1807,6 +1807,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "dd",
       "dt",
       "figure",
+      "editable-table",
     ];
   }
   // internal list of HTML primatives which are valid
@@ -1855,6 +1856,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "dd",
       "template",
       "webview",
+      "editable-table",
     ];
   }
   /**
@@ -2483,6 +2485,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         },
       ],
+      saveOptions: {
+        unsetAttributes: ["__utils", "editMode", "data", "config"]
+      }
     };
     // @todo bring back when table editor is supported
     this.setHaxProperties(table, "table");
@@ -2700,7 +2705,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   setupEditableTable(editor) {
     setTimeout(() => {
       editor.editMode = true;
-      console.log(editor);        
     }, 0);
   }
   /**

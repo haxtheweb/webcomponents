@@ -228,7 +228,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         .hax-context-menu-active {
           display: flex;
         }
-        :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
+        /* this helps ensure editable-table doesn't try internal text editor; all others should */
+        :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]:not(editable-table)) {
           -webkit-appearance: textfield;
           cursor: text;
           -moz-user-select: text;
@@ -646,11 +647,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (target.tagName !== "HAX-BODY" && !target.haxUIElement) {
+      } else if (target.tagName !== "HAX-BODY" && (!target.haxUIElement || target.tagName === "EDITABLE-TABLE")) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
-      if (!target.haxUIElement && this.__focusLogic(target)) {
+      // block haxUIElements, except for editable-table as it's a unique tag
+      // bc it's repairing that table is not natively editable
+      if ((!target.haxUIElement || target.tagName === "EDITABLE-TABLE" ) && this.__focusLogic(target)) {
         e.stopPropagation();
         e.stopImmediatePropagation();
       }
@@ -2928,7 +2931,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         // test for ignore edge case
         if (
-          !activeNode.haxUIElement &&
+          (!activeNode.haxUIElement || activeNode.tagName === "EDITABLE-TABLE") &&
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
@@ -3105,7 +3108,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // search results can be drag'ed from their panel for exact placement
     // special place holder in drag and drop
     if (
-      !node.haxUIElement &&
+      (!node.haxUIElement || node.tagName === "EDITABLE-TABLE") &&
       node.tagName &&
       ![
         "TEMPLATE",
@@ -4035,7 +4038,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__ignoreActive = true;
         // run internal state hook if it exist and if we get a response
         let replacement = await HAXStore.runHook(
-          HAXStore.activeEditingElement,
+          oldValue.parentNode,
           "activeElementChanged",
           [oldValue, false]
         );

@@ -309,7 +309,6 @@ export const editProperties = {
    */
   config: {
     type: Array,
-    attribute: "config",
   },
   /**
    * Hide borders table styles menu option
@@ -447,8 +446,6 @@ export const tableHtmlProperties = {
    */
   data: {
     type: Array,
-    notify: true,
-    attribute: "data",
   },
   /**
    * Location of CSV file.

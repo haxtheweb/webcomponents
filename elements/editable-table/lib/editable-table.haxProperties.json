@@ -109,6 +109,6 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "editMode", "data"]
+    "unsetAttributes": ["__utils", "editMode", "data", "config"]
   }
 }
