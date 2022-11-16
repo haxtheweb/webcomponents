@@ -5,11 +5,14 @@
   "editElement": "editMode",
   "type": "grid",
   "gizmo": {
-    "title": "Editable Table",
-    "description": "Makes tables editable",
+    "title": "Table",
+    "description": "Table based data for the web",
     "icon": "editor:border-all",
     "color": "purple",
-    "groups": ["Instructional"],
+    "groups": [
+      "Instructional",
+      "content"
+    ],
     "handles": [],
     "meta": {
       "author": "ELMS:LN"
@@ -109,6 +112,20 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__utils", "editMode", "data", "config"]
-  }
+    "unsetAttributes": [
+      "__utils",
+      "editMode",
+      "data",
+      "config"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "editable-table",
+      "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
+      "properties": {
+        "downloadable": true
+      }
+    }
+  ]
 }

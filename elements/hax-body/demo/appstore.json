@@ -1539,7 +1539,6 @@
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
     "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-    "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
     "a11y-collapse-group": "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
@@ -1572,7 +1571,6 @@
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "iframe-loader": "@lrnwebcomponents/iframe-loader/iframe-loader.js",
-    "loading-indicator": "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js"
+    "iframe-loader": "@lrnwebcomponents/iframe-loader/iframe-loader.js"
   }
 }

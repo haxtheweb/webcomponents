@@ -30,6 +30,8 @@ import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/mi
 
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/editable-table/editable-table.js";
+import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -1807,7 +1809,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "dd",
       "dt",
       "figure",
-      "editable-table",
     ];
   }
   // internal list of HTML primatives which are valid
@@ -1856,7 +1857,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "dd",
       "template",
       "webview",
-      "editable-table",
     ];
   }
   /**
@@ -2075,86 +2075,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       };
       this.setHaxProperties(webview, "webview");
     }
-    let iframe = {
-      type: "element",
-      editingElement: "core",
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Basic iframe",
-        description: "A basic iframe",
-        icon: "icons:fullscreen",
-        color: "blue-grey",
-        groups: ["Content"],
-        handles: [
-          {
-            type: "link",
-            source: "src",
-            height: "height",
-            width: "width",
-          },
-          {
-            type: "pdf",
-            source: "src",
-            height: "height",
-            width: "width",
-          },
-          {
-            type: "document",
-            source: "src",
-            height: "height",
-            width: "width",
-          },
-          {
-            type: "html",
-            source: "src",
-            height: "height",
-            width: "width",
-          },
-        ],
-        meta: {
-          author: "W3C",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            attribute: "src",
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url",
-          },
-        ],
-        advanced: [
-          {
-            attribute: "loading",
-            title: "Loading method",
-            description: "Whether or not to lazy load this",
-            inputMethod: "select",
-            options: {
-              lazy: "Load when visible",
-              auto: "Automatic",
-            },
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "iframe",
-          content: "",
-          properties: {
-            src: "https://haxtheweb.org/",
-            loading: "lazy",
-            style: "height:50vh;width:75%;margin: 0px auto; display: block;",
-          },
-        },
-      ],
-    };
-    this.setHaxProperties(iframe, "iframe");
     let img = {
       canScale: {
         min: 10,
@@ -2455,8 +2375,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         tag: "editable-table",
         import:
           "@lrnwebcomponents/editable-table/editable-table.js",
-          callback: this.setupEditableTable.bind(this),
-        },
+        callback: this.setupEditableTable.bind(this),
+      },
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -2467,6 +2387,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         color: "blue-grey",
         groups: ["Content", "Table", "Data"],
         meta: {
+          hidden: true,
           author: "W3C",
         },
       },
@@ -2474,20 +2395,54 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         configure: [],
         advanced: [],
       },
-      demoSchema: [
-        {
-          tag: "table",
-          content:
-            "<tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr>",
-          properties: {},
+    };
+    this.setHaxProperties(table, "table");
+    // kinda silly but need the definitions for editable-table as well
+    let eTable = document.createElement('editable-table');
+    this.haxAutoloader.appendChild(eTable);
+    // iframe needs a wrapper or you can't select them because of the spec
+    let iframe = {
+      type: "element",
+      editingElement: {
+        tag: "iframe-loader",
+        import:
+          "@lrnwebcomponents/iframe-loader/iframe-loader.js",
+        callback: this.setupIframeLoader.bind(this),
+      },
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "iFrame",
+        description: "A basic way to frame external web content",
+        icon: "icons:fullscreen",
+        color: "blue-grey",
+        groups: ["Content"],
+        handles: [
+        ],
+        meta: {
+          hidden: true,
+          author: "W3C",
         },
-      ],
-      saveOptions: {
-        unsetAttributes: ["__utils", "editMode", "data", "config"]
+      },
+      settings: {
+        configure: [
+          {
+            attribute: "src",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url",
+          },
+        ]
       }
     };
-    // @todo bring back when table editor is supported
-    this.setHaxProperties(table, "table");
+    this.setHaxProperties(iframe, "iframe");
+    // gets the definition in by force as if iframes don't exist
+    let iframeLoader = document.createElement('iframe-loader');
+    this.haxAutoloader.appendChild(iframeLoader);
     let prims = {
       caption: {
         title: "Caption",
@@ -2697,13 +2652,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
   }
   /**
-   * set up the autocomplete contextual settings
+   * set up the editableTable to behave as the node itself
    */
   setupEditableTable(editor) {
     this.activeNode = editor;
     setTimeout(() => {
       editor.editMode = true;
       editor.focus();
+    }, 0);
+  }
+  /**
+   * set up the iframeLoader to behave as the node itself
+   */
+   setupIframeLoader(editor) {
+    this.activeNode = editor;
+    // SHOULD set this itself but just to be sure
+    setTimeout(() => {
+      editor.disabled = true;
     }, 0);
   }
   /**
