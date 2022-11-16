@@ -2415,7 +2415,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       gizmo: {
         title: "iFrame",
         description: "A basic way to frame external web content",
-        icon: "icons:fullscreen",
+        icon: "hax:iframe",
         color: "blue-grey",
         groups: ["Content"],
         handles: [

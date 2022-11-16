@@ -254,6 +254,28 @@ export function enableHAXcmsServices() {
       ancestor: "optional: ancestor to print from as opposed to entire site",
     },
   });
+  // pageCache
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/pageCache",
+    name: "@haxcms/pageCache",
+    title: "HAXcms Page cache",
+    description: "Load a page from a site via uuid",
+    params: {
+      site: "location of the HAXcms site OR site.json data",
+      type: "site for site.json or link for remote loading",
+      uuid: "page to return content of",
+    },
+  });
+  // siteManifest
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/siteManifest",
+    name: "@haxcms/siteManifest",
+    title: "HAXcms manifest",
+    description: "Load the manifest for a site based on URL",
+    params: {
+      site: "location of the HAXcms site OR site.json data"
+    },
+  });
 
   // siteGlossary
   MicroFrontendRegistry.add({

@@ -18,6 +18,7 @@ import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
+import "../ui-components/site/site-remote-content.js";
 const haxLogo = new URL(
   "../../../app-hax/lib/assets/images/HAXLogo.svg",
   import.meta.url
@@ -339,6 +340,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
+    window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
+    if (HAXStore.ready) {
+      let s = document.createElement('site-remote-content');
+      HAXStore.haxAutoloader.appendChild(s);
+    }
     this.t = {
       ...this.t,
       backToSiteList: "Back to site list",
@@ -422,7 +428,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     }, 0);
   }
-
+  haxStoreReady(e) {
+    // it is safe to add in elements that we want the editor to have every haxcms instance
+    if (e.detail) {
+      let s = document.createElement('site-remote-content');
+      HAXStore.haxAutoloader.appendChild(s);
+    }
+  }
   soundToggle() {
     const status = !toJS(store.soundStatus);
     store.soundStatus = status;
@@ -1013,6 +1025,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer[i].dispose();
     }
     window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.removeEventListener("hax-store-ready", this.haxStoreReady.bind(this));
+
     super.disconnectedCallback();
   }
   _dashboardOpenedChanged(newValue) {
