@@ -169,7 +169,10 @@ class EditableTable extends editBehaviors(LitElement) {
   }
   // allow HAX to toggle edit state when activated
   haxactiveElementChanged(el, val) {
-    this.toggleEditMode(val);
+    el.editMode = val;
+    if (val) {
+      el.focus();
+    }
     return el;
   }
   /**

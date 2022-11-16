@@ -2479,10 +2479,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           tag: "table",
           content:
             "<tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr>",
-          properties: {
-            "column-striped": true,
-            "column-header": true
-          },
+          properties: {},
         },
       ],
       saveOptions: {
@@ -2703,8 +2700,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * set up the autocomplete contextual settings
    */
   setupEditableTable(editor) {
+    this.activeNode = editor;
     setTimeout(() => {
       editor.editMode = true;
+      editor.focus();
     }, 0);
   }
   /**

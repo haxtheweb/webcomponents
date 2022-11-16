@@ -155,7 +155,6 @@ export const editableTableStyles = [
     }
     @media screen {
       :host {
-        overflow-x: auto;
         width: 100%;
         max-width: 100%;
       }

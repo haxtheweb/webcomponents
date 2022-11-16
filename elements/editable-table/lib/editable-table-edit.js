@@ -224,6 +224,10 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         *:focus-within {
           z-index: 4;
         }
+        editable-table-editor-rowcol:hover,
+        editable-table-editor-rowcol:focus-within {
+          z-index: 10000000;
+        }
       `,
     ];
   }
