@@ -440,6 +440,16 @@ export function mediaStatus(item) {
   return 'info';
 }
 
+// get HTML for a single page
+export async function pageContent(siteLocation, siteData = null, uuid = null, cached = false) {
+  let content = '';
+  if (uuid) {
+    const site = await resolveSiteData(siteLocation, siteData);
+    content = await site.getContentById(uuid, cached);
+  }
+  return content;
+}
+
 // get all of the HTML for the site relative to an ancestor starting point
 export async function siteHTMLContent(siteLocation, siteData = null, ancestor = null, noTitles = false, textOnly = false) {
   const site = await resolveSiteData(siteLocation, siteData);
