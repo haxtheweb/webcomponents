@@ -48,7 +48,7 @@ export async function pagesAsData(site) {
   // get every page and stuff it together
   for (var i in items) {
     let item = site.items[i];
-    let content = await site.getContentById(item.id);
+    let content = await site.getContentById(item.id, true);
     data.push({
       title: item.title,
       data: content

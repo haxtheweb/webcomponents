@@ -43,10 +43,10 @@ export default async function handler(req, res) {
       const siteData = body.site || null;
       const uuid = body.uuid || null;
       if (body.type === 'link') {
-        content = await pageContent(base, null, uuid, true);
+        content = await pageContent(base, null, uuid);
       }
       else {
-        content = await pageContent(base, siteData, uuid, true);
+        content = await pageContent(base, siteData, uuid);
       }
     }
     let options = {};

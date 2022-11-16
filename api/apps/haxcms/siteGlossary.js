@@ -54,7 +54,7 @@ export async function siteGlossary(siteLocation = '', siteData = null, terms = [
   }
   const item = site.getItemByProperty('slug', 'glossary');
   if (item) {
-    let glossaryContent = await site.getContentById(item.id);
+    let glossaryContent = await site.getContentById(item.id, true);
     // parse dom of the content in the glossary page
     const doc = parse(glossaryContent);
     // can select all the dt's for term

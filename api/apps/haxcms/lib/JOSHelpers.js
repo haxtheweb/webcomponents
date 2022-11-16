@@ -471,7 +471,7 @@ export async function siteHTMLContent(siteLocation, siteData = null, ancestor = 
     if (!noTitles) {
       siteContent += `<h1>${items[i].title}</h1>`;
     }
-    let content = await site.getContentById(items[i].id);
+    let content = await site.getContentById(items[i].id, true);
     siteContent += `<div data-jos-item-id="${items[i].id}">${content}</div>`;
   }
   // support stripping HTML if goal was purely text
