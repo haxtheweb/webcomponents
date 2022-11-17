@@ -344,6 +344,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (HAXStore.ready) {
       let s = document.createElement('site-remote-content');
       HAXStore.haxAutoloader.appendChild(s);
+      // site-remote-content injects citation element so ensure it's in there too!
+      let ce = document.createElement('citation-element');
+      HAXStore.haxAutoloader.appendChild(ce);
     }
     this.t = {
       ...this.t,

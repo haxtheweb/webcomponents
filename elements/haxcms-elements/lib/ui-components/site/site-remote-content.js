@@ -8,6 +8,7 @@
  import { wipeSlot, lightChildrenToShadowRootSelector, unwrap } from "@lrnwebcomponents/utils/utils.js";
  import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
  import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+ import "@lrnwebcomponents/citation-element/citation-element.js";
  enableServices(['haxcms']);
  /**
   * `site-remote-content`
@@ -246,7 +247,6 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     ${this.showTitle && this._remoteTitle ? html`<h3>${this._remoteTitle}</h3>` : ``}
     <div id="slot"><slot></slot></div>
     <div id="content"></div>
-    ${this.showCitation ? html`<citation-element></citation-element>` : ``}
     `;
   }
   updated(changedProperties) {
@@ -336,6 +336,34 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       if (!this.breakreference) {
         lightChildrenToShadowRootSelector(this, '#content');
       }
+      if (this.itemManifest && response.data) {
+        window.HaxStore.instance.activeBodyIgnoreActive(false);
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; 
+        var yyyy = today.getFullYear();
+        // @todo create and inject these values into the dom node NEXT to this one.
+        if (!this.nextElementSibling || (this.nextElementSibling && this.nextElementSibling.tagName !== 'CITATION-ELEMENT')) {
+          let ce = document.createElement('citation-element');
+          ce.title = this.itemManifest.title;
+          ce.source = this.siteurl;
+          ce.date = `${dd}/${mm}/${yyyy}`;
+          ce.scope = "sibling";
+          ce.license = this.itemManifest.license;
+          ce.creator = this.itemManifest.metadata.author.name;
+          this.insertAdjacentElement('afterend', ce);
+        }
+        // already exists, so just update the one next to it
+        else if (this.nextElementSibling && this.nextElementSibling.tagName === 'CITATION-ELEMENT') {
+          let ce = this.nextElementSibling;
+          ce.title = this.itemManifest.title;
+          ce.source = this.siteurl;
+          ce.date = `${dd}/${mm}/${yyyy}`;
+          ce.scope = "sibling";
+          ce.license = this.itemManifest.license;
+          ce.creator = this.itemManifest.metadata.author.name;
+        }
+      }
     }
   }
   /**
@@ -366,11 +394,6 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
       },
-      showCitation: {
-        type: Boolean,
-        reflect: true,
-        attribute: 'show-citation',
-      }
     };
   }
   firstUpdated(changedProperties) {
@@ -467,7 +490,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
    */
   async haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
-      let itemManifest = {};
+      this.itemManifest = {};
       // support remore vs local look up
       if (this.siteurl) {
         const response = await MicroFrontendRegistry.call(
@@ -477,37 +500,11 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           }
         );
         if (response.data) {
-          itemManifest = response.data;
+          this.itemManifest = response.data;
         }
       }
       else {
-        itemManifest.items = store.getManifestItems(true);
-      }
-      console.log(itemManifest);
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1; 
-      var yyyy = today.getFullYear();
-      // @todo create and inject these values into the dom node NEXT to this one.
-      if (this.nextElementSibling && this.nextElementSibling.tagName !== 'CITATION-ELEMENT') {
-        let ce = document.createElement('citation-element');
-        ce.title = itemManifest.title;
-        ce.source = this.siteurl;
-        ce.date = `${dd}/${mm}/${yyyy}`;
-        ce.scope = "sibling";
-        ce.license = '';
-        ce.creator = '';
-        this.insertAdjacentElement('afterend', ce);
-      }
-      // already exists, so just update the one next to it
-      else if (this.nextElementSibling && this.nextElementSibling.tagName === 'CITATION-ELEMENT') {
-        let ce = this.nextElementSibling;
-        ce.title = itemManifest.title;
-        ce.source = this.siteurl;
-        ce.date = `${dd}/${mm}/${yyyy}`;
-        ce.scope = "sibling";
-        ce.license = '';
-        ce.creator = '';
+        this.itemManifest.items = store.getManifestItems(true);
       }
       // default to null parent as the whole site
       var items = [
@@ -516,14 +513,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           value: null,
         },
       ];
-      itemManifest.items.forEach((el) => {
+      this.itemManifest.items.forEach((el) => {
         if (el.id != this.itemId) {
           // calculate -- depth so it looks like a tree
           let itemBuilder = el;
           // walk back through parent tree
           let distance = "- ";
           while (itemBuilder && itemBuilder.parent != null) {
-            itemBuilder = itemManifest.items.find((i) => i.id == itemBuilder.parent);
+            itemBuilder = this.itemManifest.items.find((i) => i.id == itemBuilder.parent);
             // double check structure is sound
             if (itemBuilder) {
               distance = "--" + distance;
