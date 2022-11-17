@@ -440,14 +440,15 @@ export function mediaStatus(item) {
   return 'info';
 }
 
-// get HTML for a single page
+// get HTML for a single page + the full object
 export async function pageContent(siteLocation, siteData = null, uuid = null, cached = false) {
-  let content = '';
+  let item = {};
   if (uuid) {
     const site = await resolveSiteData(siteLocation, siteData);
-    content = await site.getContentById(uuid, cached);
+    item = site.getItemById(uuid);
+    item.content = await site.getContentById(uuid, cached);
   }
-  return content;
+  return item;
 }
 
 // get all of the HTML for the site relative to an ancestor starting point

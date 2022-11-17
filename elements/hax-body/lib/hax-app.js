@@ -162,7 +162,7 @@ Register a stax with HAX store.
   "details": {
     "title": "Example text and meme",
     "image": "example-meme.jpg",
-    "author": "ELMS:LN",
+    "author": "HAXTheWeb core team",
     "description": "A well organized example list of objectives.",
     "status": "available",
     "rating": "0",

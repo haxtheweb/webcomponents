@@ -117,6 +117,19 @@ function wrap(el, wrapper) {
   }
 }
 
+// shadowDOM consumption of lightDOM
+// this is useful for progressive enhancement and other
+// edge cases where we want HTML rendered in lightDOM but
+// then be consumed and rendered as part of the shadowDOM
+// tracking, self updating web engines, and SEO among reasons
+export function lightChildrenToShadowRootSelector(el, selector) {
+  let child = el.firstElementChild;
+  while (child) {
+    el.shadowRoot.querySelector(selector).appendChild(child);
+    child = el.firstElementChild;
+  }
+}
+
 /**
  * Wrap an array of items all at once
  */

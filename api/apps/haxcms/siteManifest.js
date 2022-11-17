@@ -1,4 +1,4 @@
-// pageCache.js
+// siteManifest.js
 // cache any HAXcms site page via UUID + site address
 import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
 import { resolveSiteData } from "./lib/JOSHelpers.js";

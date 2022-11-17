@@ -2987,6 +2987,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
+  // allow modification of the activation toggle in active body
+  // this allows outside tags to inform the hax-body that they
+  // are going to modify it's lightDOM children but that it
+  // does NOT want it to process the changes
+  // example; lightDom insert moved to shadow / processed differently
+  // in a way not intended for users to actually have access to modify
+  // after the fact
+  activeBodyIgnoreActive(status) {
+    this.activeHaxBody.__ignoreActive = status;
+  }
   /**
    * Helper to convert dash to camel; important when reading attributes.
    */

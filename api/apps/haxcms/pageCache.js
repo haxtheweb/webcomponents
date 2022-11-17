@@ -1,11 +1,12 @@
 // pageCache.js
 // cache any HAXcms site page via UUID + site address
 import { stdPostBody, stdResponse, invalidRequest } from "../../../utilities/requestHelpers.js";
-import { pageContent } from "./lib/JOSHelpers.js";
+import { pageContent, resolveSiteData } from "./lib/JOSHelpers.js";
 
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let content = '';
+  let item = {};
   // use this if POST data is what's being sent
   let body = {};
   if (req.query.site) {
@@ -43,24 +44,22 @@ export default async function handler(req, res) {
       const siteData = body.site || null;
       const uuid = body.uuid || null;
       if (body.type === 'link') {
-        content = await pageContent(base, null, uuid);
+        item = await pageContent(base, null, uuid);
       }
       else {
-        content = await pageContent(base, siteData, uuid);
+        item = await pageContent(base, siteData, uuid);
       }
     }
     let options = {};
-    // optional support for HTML response vs data
+    // optional support for HTML response vs data of the full page as data object
     if (!body.data) {
       options.type = "text/html";
+      content = item.content;
     }
     else {
-      let tmp = content;
-      content = {
-        site: body.site,
-        uuid: body.uuid,
-        content: tmp
-      };
+      content = item;
+      content.site = body.site;
+      content.uuid = body.uuid;
     }
     // 15 minute cache default
     if (!body.cacheBuster) {

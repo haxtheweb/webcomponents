@@ -144,7 +144,7 @@ class HaxTray extends I18NMixin(
       this.tourOpened = toJS(HAXStore.tourOpened);
     });
     autorun(() => {
-      this.appStoreLoaded = toJS(HAXStore.appStoreLoaded);
+      this.loading = !toJS(HAXStore.appStoreLoaded);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -466,7 +466,7 @@ class HaxTray extends I18NMixin(
         ${this.menuToolbarTemplate}
         <div class="detail">
           <loading-indicator
-            ?loading="${!this.appStoreLoaded}"
+            ?loading="${this.loading}"
           ></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
@@ -978,8 +978,9 @@ class HaxTray extends I18NMixin(
       traySizeIcon: {
         type: String,
       },
-      appStoreLoaded: {
+      loading: {
         type: Boolean,
+        reflect: true,
       },
       /**
        * Form values for active node
@@ -1228,6 +1229,7 @@ class HaxTray extends I18NMixin(
    * When the preview node is updated, pull schema associated with it
    */
   async _setupForm() {
+    this.loading = true;
     let activeNode = this.activeNode;
     this._initial = true;
     this.activeValue = {
@@ -1439,6 +1441,7 @@ class HaxTray extends I18NMixin(
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
       this.shadowRoot.querySelector("#settingsform").value = this.activeValue;
+      this.loading = false;
     }
   }
   /**

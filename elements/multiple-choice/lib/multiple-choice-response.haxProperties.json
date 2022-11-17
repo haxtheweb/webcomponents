@@ -10,7 +10,7 @@
     "color": "purple",
     "groups": ["Instructional"],
     "meta": {
-      "author": "ELMS:LN"
+      "author": "HAXTheWeb core team"
     },
     "allowedParents": ["multiple-choice"]
   },
