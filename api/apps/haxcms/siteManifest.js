@@ -34,6 +34,8 @@ export default async function handler(req, res) {
       }
       const base = `${parseURL.protocol}//${parseURL.host}${parseURL.pathname}`;
       siteManifest = await resolveSiteData(base);
+      const items = siteManifest.orderTree(siteManifest.items);
+      siteManifest.items = [...items];
     }
     let options = {};
     // 15 minute cache default

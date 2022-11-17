@@ -277,7 +277,6 @@ export class JSONOutlineSchema
   async getContentById(id, cache = false) {
     const item = this.getItemById(id);
     if (cache && process.env.VERCEL_ENV !== 'development') {
-      console.log(`https://${process.env.VERCEL_URL}/api/apps/haxcms/pageCache?site=${this.file}&uuid=${id}&type=link`);
       return await fetch(`https://${process.env.VERCEL_URL}/api/apps/haxcms/pageCache?site=${this.file}&uuid=${id}&type=link`, this.__fetchOptions).then((d) => d.ok ? d.text() : '');
     }
     else {

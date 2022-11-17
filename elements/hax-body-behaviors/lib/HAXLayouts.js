@@ -326,11 +326,13 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       if (
         eventPath[0] &&
         eventPath[0].assignedNodes &&
-        eventPath[0].assignedNodes().length
+        eventPath[0].assignedNodes().length &&
+        eventPath[0].parentNode &&
+        eventPath[0].parentNode.classList
       ) {
         // has nodes so we can make sure to track this elsewhere
         eventPath[0].parentNode.classList.add("has-nodes");
-      } else {
+      } else if (eventPath[0].parentNode && eventPath[0].parentNode.classList) {
         eventPath[0].parentNode.classList.remove("has-nodes");
       }
     }

@@ -202,6 +202,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             hasLinks: false,
             hasImages: false,
             hasPlaceholders: false,
+            hasSiteRemoteContent: false,
           };
           this.shadowRoot.querySelector("#schema").value = this.filters;
           this.shadowRoot.querySelector("#schema").fields = [
@@ -230,6 +231,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               property: "hasPlaceholders",
               title: "Placeholders",
               description: "Includes placeholders",
+              inputMethod: "boolean",
+            },
+            {
+              property: "hasSiteRemoteContent",
+              title: "Remote content",
+              description: "Includes remote content",
               inputMethod: "boolean",
             },
             {
@@ -405,6 +412,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       sort: val.sort,
       hasVideo: val.hasVideo,
       hasPlaceholders: val.hasPlaceholders,
+      hasSiteRemoteContent: val.hasSiteRemoteContent,
       hasLinks: val.hasLinks,
       hasImages: val.hasImages,
     };
@@ -414,6 +422,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           return false;
         }
         if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
+          return false;
+        }
+        if (this.filters.hasSiteRemoteContent === true && item.siteremotecontent === 0) {
           return false;
         }
         if (this.filters.hasLinks === true && item.links === 0) {

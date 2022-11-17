@@ -32,7 +32,6 @@ export async function resolveSiteData(siteLocation, siteData = null) {
         method: "GET",
         headers: {'Authorization': 'Basic ' + buff}
       };
-      await site.load(`${siteLocation}`, site.__fetchOptions);
       // location isn't at site.json bc this is generated path
       // so we need to lob this off from the path instead of site.json
       if (siteLocation.includes('/haxapi/loadJOS/')) {
@@ -40,9 +39,7 @@ export async function resolveSiteData(siteLocation, siteData = null) {
         site.__siteFileBase = urlData.pathname;
       }
     }
-    else {
-      await site.load(`${siteLocation}/site.json`);
-    }
+    await site.load(`${siteLocation}/site.json`, site.__fetchOptions);
   }
   return site;
 }
@@ -77,7 +74,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   const doc = parse(`<div id="wrapper">${html}</div>`);
   var data = {};
   if (dataInclude === null) {
-    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'images', 'headings', 'dataTables','specialTags','video','readTime','links'];
+    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'images', 'headings', 'dataTables','specialTags', 'links', 'placeholders', 'siteremotecontent','readTime','video'];
   }
   for (let inc of dataInclude) {
     switch (inc) {
@@ -110,6 +107,9 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
       break;
       case 'placeholders':
         data[inc] = doc.querySelectorAll('place-holder').length;
+      break;
+      case 'siteremotecontent':
+        data[inc] = doc.querySelectorAll('site-remote-content').length;
       break;
       // inner Text with some basic math applied
       case 'readTime':
@@ -254,6 +254,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               videos: doc.querySelectorAll(`${itemSel} video-player,${itemSel} iframe[src*="youtube.com"],${itemSel} iframe[src*="youtube-nocookie.com"],${itemSel} iframe[src*="vimeo.com"],${itemSel} video,${itemSel} a11y-media-player`).length,
               audio: doc.querySelectorAll(`${itemSel} audio,${itemSel} audio-player`).length,
               placeholders: doc.querySelectorAll(`${itemSel} place-holder`).length,
+              siteremotecontent: doc.querySelectorAll(`${itemSel} site-remote-content`).length,
               selfChecks: doc.querySelectorAll(`${itemSel} iframe.entity_iframe,${itemSel} self-check,${itemSel} multiple-choice`).length,
               objectives: doc.querySelectorAll(`${itemSel} instruction-card[type="objectives"] li`).length,
               images: doc.querySelectorAll(`${itemSel} media-image,${itemSel} img,${itemSel} simple-img`).length,
@@ -366,6 +367,9 @@ export function resolveLocalFile(siteLocation, path) {
   if (path[0] === '/') {
     urlData = new URL(tmp.origin + path);
   }
+  else if (tmp.pathname === '/') {
+    urlData = new URL(tmp.origin + tmp.pathname + path);
+  }
   else {
     urlData = new URL(tmp.origin + tmp.pathname + '/' + path);
   }
@@ -446,7 +450,32 @@ export async function pageContent(siteLocation, siteData = null, uuid = null, ca
   if (uuid) {
     const site = await resolveSiteData(siteLocation, siteData);
     item = site.getItemById(uuid);
-    item.content = await site.getContentById(uuid, cached);
+    const html = await site.getContentById(uuid, cached);
+    const doc = parse(`<div id="wrapper">${html}</div>`);
+    let urlData = {};
+    const mediaNodesToResolvePath = doc.querySelectorAll('a,audio[src],audio source[src],audio-player,video[src],video source[src],video-player,a11y-media-player,embed,object,iframe[src],media-image,img,simple-img,meme-maker');
+    for (let el of mediaNodesToResolvePath) {
+      // ensure we have valid source/src data to draw from
+      if (el.getAttribute('source')) {
+        if (!el.getAttribute('source').startsWith("https://") && !el.getAttribute('source').startsWith("http://")) {
+          urlData = resolveLocalFile(siteLocation, el.getAttribute('source'));
+          el.setAttribute('source', urlData.toString());
+        }
+      }
+      else if (el.getAttribute('src')) {
+        if (!el.getAttribute('src').startsWith("https://") && !el.getAttribute('src').startsWith("http://")) {
+          urlData = resolveLocalFile(siteLocation, el.getAttribute('src'));
+          el.setAttribute('src', urlData.toString());
+        }
+      }
+      else if (el.getAttribute('href')) {
+        if (!el.getAttribute('href').startsWith("#") && !el.getAttribute('href').startsWith("http://") && !el.getAttribute('href').startsWith("http://")) {
+          urlData = resolveLocalFile(siteLocation, el.getAttribute('href'));
+          el.setAttribute('href', urlData.toString());
+        }
+      }
+    }
+    item.content = doc.querySelector("#wrapper").innerHTML;
   }
   return item;
 }

@@ -5,7 +5,7 @@
  import { LitElement, html, css } from "lit";
  import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
  import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
- import { wipeSlot, lightChildrenToShadowRootSelector, unwrap, encapScript } from "@lrnwebcomponents/utils/utils.js";
+ import { wipeSlot, lightChildrenToShadowRootSelector, unwrap } from "@lrnwebcomponents/utils/utils.js";
  import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
  import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
  enableServices(['haxcms']);
@@ -21,6 +21,21 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       css`
         :host {
           display: inline;
+        }
+        #slot {
+          display: none;
+        }
+        :host #content {
+          border-left: 10px solid #EEEEEE;
+          margin-left: -10px;
+        }
+        :host([breakreference]) #slot {
+          display: block;
+        }
+        :host([breakreference]) #content {
+          display: none;
+          border-left: unset;
+          margin-left: unset;
         }
         :host([loading]) .loading {
           margin: 8px 0 0 -12px;
@@ -229,7 +244,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     return html`
     <div class="loading"></div>
     ${this.showTitle && this._remoteTitle ? html`<h3>${this._remoteTitle}</h3>` : ``}
+    <div id="slot"><slot></slot></div>
     <div id="content"></div>
+    ${this.showCitation ? html`<citation-element></citation-element>` : ``}
     `;
   }
   updated(changedProperties) {
@@ -237,7 +254,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'uuid' && this[propName]) {
+      if (propName === 'uuid' && this[propName] && !this.breakreference && !this.loading) {
         this.loading = true;
         // when UUID changes, remote load the content from it, replacing our own light dom material
         MicroFrontendRegistry.call(
@@ -257,11 +274,21 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         this.__debounce = setTimeout(() => {
           this.loading = true;
           window.HaxStore.instance.refreshActiveNodeForm();
-        }, 500);
+        }, 1000);
       }
-      // this is crazy, self explode if asked to do so!
+      // this is crazy, take that content and spill it into lightDom
+      // and it should be modifiable
       if (propName === 'breakreference' && this[propName]) {
-        // get one last copy of this before blowing up
+        // find the content area in shadow
+        const cid = this.shadowRoot.querySelector('#content');
+        let child = cid.firstElementChild;
+        while (child) {
+          this.appendChild(child);
+          child = cid.firstElementChild;
+        }
+      }
+      // used to be break reference, now we as re-establishing the reference
+      else if (propName === 'breakreference' && !this[propName] && oldValue) {
         this.loading = true;
         MicroFrontendRegistry.call(
           "@haxcms/pageCache",
@@ -290,7 +317,10 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       wipeSlot(cid);
       // build fake div and encap the content from endpoint
       let div = document.createElement('div');
-      div.innerHTML = encapScript(response.data.content);
+      // encap script just to be paranoid
+      let html = response.data.content.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+      html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+      div.innerHTML = html;
       // append as child of this element
       this.appendChild(div);
       // kill the div, the children spill into this tag
@@ -305,10 +335,6 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       // into the shadow selector for content so they can't be modified
       if (!this.breakreference) {
         lightChildrenToShadowRootSelector(this, '#content');
-      }
-      else {
-        // lol, self destruct, on purpose
-        unwrap(this);
       }
     }
   }
@@ -338,6 +364,12 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       },
       breakreference: {
         type: Boolean,
+        reflect: true,
+      },
+      showCitation: {
+        type: Boolean,
+        reflect: true,
+        attribute: 'show-citation',
       }
     };
   }
@@ -354,6 +386,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   */
   static get haxProperties() {
     return {
+      type: "grid",
       canScale: false,
       canPosition: false,
       canEditSource: false,
@@ -385,20 +418,18 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             inputMethod: "textfield",
           },
           {
+            property: "breakreference",
+            title: "Break reference",
+            description: "Checking this box copies the remote content for editing locally but removes the association. It will no longer get updates when the reference material updates.",
+            inputMethod: "boolean",
+          },
+          {
             property: "showTitle",
             title: "Show title",
             description: "Toggle on to render the title of the resource being displayed",
             inputMethod: "boolean"
           }
         ],
-        advanced: [
-          {
-            property: "breakreference",
-            title: "Break reference",
-            description: "Checking this box copies the remote content for editing locally but removes the association. It will no longer get updates when the reference material updates.",
-            inputMethod: "boolean",
-          }
-        ]
       },
       demoSchema: [
         {
@@ -436,7 +467,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
    */
   async haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
-      let itemManifest = [];
+      let itemManifest = {};
       // support remore vs local look up
       if (this.siteurl) {
         const response = await MicroFrontendRegistry.call(
@@ -445,12 +476,38 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             site: this.siteurl
           }
         );
-        if (response.data && response.data.items) {
-          itemManifest = response.data.items;
+        if (response.data) {
+          itemManifest = response.data;
         }
       }
       else {
-        itemManifest = store.getManifestItems(true);
+        itemManifest.items = store.getManifestItems(true);
+      }
+      console.log(itemManifest);
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; 
+      var yyyy = today.getFullYear();
+      // @todo create and inject these values into the dom node NEXT to this one.
+      if (this.nextElementSibling && this.nextElementSibling.tagName !== 'CITATION-ELEMENT') {
+        let ce = document.createElement('citation-element');
+        ce.title = itemManifest.title;
+        ce.source = this.siteurl;
+        ce.date = `${dd}/${mm}/${yyyy}`;
+        ce.scope = "sibling";
+        ce.license = '';
+        ce.creator = '';
+        this.insertAdjacentElement('afterend', ce);
+      }
+      // already exists, so just update the one next to it
+      else if (this.nextElementSibling && this.nextElementSibling.tagName === 'CITATION-ELEMENT') {
+        let ce = this.nextElementSibling;
+        ce.title = itemManifest.title;
+        ce.source = this.siteurl;
+        ce.date = `${dd}/${mm}/${yyyy}`;
+        ce.scope = "sibling";
+        ce.license = '';
+        ce.creator = '';
       }
       // default to null parent as the whole site
       var items = [
@@ -459,14 +516,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           value: null,
         },
       ];
-      itemManifest.forEach((el) => {
+      itemManifest.items.forEach((el) => {
         if (el.id != this.itemId) {
           // calculate -- depth so it looks like a tree
           let itemBuilder = el;
           // walk back through parent tree
           let distance = "- ";
           while (itemBuilder && itemBuilder.parent != null) {
-            itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+            itemBuilder = itemManifest.items.find((i) => i.id == itemBuilder.parent);
             // double check structure is sound
             if (itemBuilder) {
               distance = "--" + distance;
