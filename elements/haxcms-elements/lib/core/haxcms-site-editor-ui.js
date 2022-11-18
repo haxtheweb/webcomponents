@@ -1,6 +1,6 @@
 import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { HaxStore, HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -330,6 +330,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get tag() {
     return "haxcms-site-editor-ui";
   }
+  // ability to link to internal content inside of the 'a' tag
+  _internalLinkChanged(e) {
+    // look up the UUID
+    if (e.detail.value && store.findItem(e.detail.value)) {
+      const item = toJS(store.findItem(e.detail.value));
+      HAXStore.haxTray.shadowRoot.querySelector("[name='settings.configure.href']").value = item.slug;
+    }
+  }
   constructor() {
     super();
     this.rpgHat = "none";
@@ -347,9 +355,54 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // site-remote-content injects citation element so ensure it's in there too!
       let ce = document.createElement('citation-element');
       HAXStore.haxAutoloader.appendChild(ce);
+
+      // links need to be given support for internal linkage updates on the form
+      if (!HAXStore.primativeHooks.a) {
+        HAXStore.primativeHooks.a = {};
+      }
+      HAXStore.primativeHooks.a.setupActiveElementForm = (props) => {
+        const itemManifest = store.getManifestItems(true);
+        // default to null parent as the whole site
+        var items = [
+          {
+            text: `-- ${this.t.selectPage} --`,
+            value: null,
+          },
+        ];
+        itemManifest.forEach((el) => {
+          if (el.id != this.itemId) {
+            // calculate -- depth so it looks like a tree
+            let itemBuilder = el;
+            // walk back through parent tree
+            let distance = "- ";
+            while (itemBuilder && itemBuilder.parent != null) {
+              itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+              // double check structure is sound
+              if (itemBuilder) {
+                distance = "--" + distance;
+              }
+            }
+            items.push({
+              text: distance + el.title,
+              value: el.id,
+            });
+          }
+        });
+        props.settings.configure.splice(1, 0, {
+          property: "data-uuid",
+          title: "Internal content",
+          description: "Link to content internal to this site",
+          inputMethod: "select",
+          itemsList: items,
+        });
+        setTimeout(() => {
+          HAXStore.haxTray.shadowRoot.querySelector("[name='settings.configure.data-uuid']").addEventListener("value-changed", this._internalLinkChanged.bind(this));            
+        }, 100);
+      };
     }
     this.t = {
       ...this.t,
+      selectPage: "Select page",
       backToSiteList: "Back to site list",
       cancelEditing: "Cancel editing",
       editDetails: "Page details",

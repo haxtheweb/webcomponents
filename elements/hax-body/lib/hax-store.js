@@ -76,6 +76,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * test a hook's existance in a target
    */
   testHook(el, op) {
+    // support for primatives
+    if (el && el.tagName && this.HTMLPrimativeTest(el) && this.primativeHooks[el.tagName.toLowerCase()] && this.primativeHooks[el.tagName.toLowerCase()][op]) {
+     return true; 
+    }
     return el && typeof el.haxHooks === "function" && el.haxHooks()[op];
   }
   /**
@@ -84,6 +88,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   async runHook(el, op, data = []) {
     if (this.testHook(el, op)) {
       //console.log('running hook: ' + op);
+      if (this.HTMLPrimativeTest(el)) {
+        return await this.primativeHooks[el.tagName.toLowerCase()][op](...data);
+      }
       return await el[el.haxHooks()[op]](...data);
     }
     return false;
@@ -1893,6 +1900,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    // container for HTML primatives to have hooks declared on their behalf
+    this.primativeHooks = {};
     this.__dragTarget = null;
     this.registerLocalization({
       context: this,
