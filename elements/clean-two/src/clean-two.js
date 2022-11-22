@@ -338,11 +338,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           width: calc(100% - 300px);
         }
         .header {
-          position: sticky;
-          top: 0;
-          width: 100%;
-          padding: 0;
-          margin: 0;
           z-index: 2;
           height: 40px;
         }
@@ -517,8 +512,6 @@ class CleanTwo extends HAXCMSOperationButtons(
         replace-tag[with="site-print-button"],
         site-print-button {
           color: black;
-          --haxcms-tooltip-color: #F5F5F5;
-          --haxcms-tooltip-background-color: #252737;
         }
         site-rss-button,
         site-print-button,
@@ -582,7 +575,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                     </div>
                   `
                 : ``}
-              ${this.HAXCMSMobileMenuButton()}
+              ${this.HAXCMSMobileMenuButton('right')}
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
@@ -590,6 +583,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                 title="Search site"
                 button-label="Search"
                 part="search-btn"
+                position="right"
               >
                 <site-search></site-search>
               </site-modal>
@@ -600,25 +594,28 @@ class CleanTwo extends HAXCMSOperationButtons(
                 ? this.PrintBranchButton()
                 : html`<replace-tag
                     with="site-print-button"
+                    position="right"
                     class="btn js-toolbar-action"
                     import-method="view"
                     part="print-btn"
                   ></replace-tag>`}
+              ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
                 type="rss"
                 import-method="view"
                 part="rss-btn"
+                position="right"
               ></replace-tag>
               <replace-tag
                 with="site-git-corner"
                 size="small"
                 circle
-                direction="left"
+                position="right"
+                direction="right"
                 import-method="view"
                 part="git-corner-btn"
               ></replace-tag>
-              ${this.QRCodeButton("right")}
             </header>
             <site-search
               hide-input

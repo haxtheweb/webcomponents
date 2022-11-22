@@ -71,7 +71,7 @@ const QRCodeMixin = function (SuperClass) {
             @click="${this.QRCodeButtonToggle}"
             id="qrcodebtn"
           ></simple-icon-button-lite>
-          <simple-tooltip for="qrcodebtn" position="auto">
+          <simple-tooltip for="qrcodebtn" position="${direction}">
             ${this.t.currentPage}
           </simple-tooltip>
           <simple-popover

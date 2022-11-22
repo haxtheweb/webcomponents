@@ -63,7 +63,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         `,
       ];
     }
-    HAXCMSMobileMenuButton() {
+    HAXCMSMobileMenuButton(position = "auto") {
       import("@lrnwebcomponents/simple-icon/simple-icon.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
@@ -77,7 +77,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuClickToggle}"
         ></simple-icon-button-lite>
-        <simple-tooltip for="haxcmsmobilemenubutton">
+        <simple-tooltip for="haxcmsmobilemenubutton" position="${position}">
           ${this.t.toggleMenu}
         </simple-tooltip>
       `;
