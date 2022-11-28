@@ -11,6 +11,7 @@ const MicroFrontendKeys = [
   "description",
   "params",
   "callback",
+  "method",
 ];
 
 // new micro
@@ -165,7 +166,13 @@ class MicroFrontendRegistryEl extends HTMLElement {
   async call(name, params = {}, callback = null, caller = null) {
     if (this.has(name)) {
       const item = this.get(name);
+      // default post, but this is not cacheable
       let method = "POST";
+      // support definition requiring a certain method
+      if (item.method) {
+        method = item.method;
+      }
+      // support override when calling
       if (params.__method) {
         method = params.__method;
         delete params.__method;

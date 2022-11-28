@@ -227,7 +227,6 @@ export class MfHtmlExample extends LitElement {
         .addEventListener("click", () => {
           const params = {
             q: this.shadowRoot.querySelector("#search").value,
-            __method: "GET",
           };
           MicroFrontendRegistry.call(
             "@core/duckDuckGo",

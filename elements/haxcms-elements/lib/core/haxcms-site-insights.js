@@ -1015,7 +1015,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       };
       MicroFrontendRegistry.call(
         "@core/linkValidator",
-        { links: key, __method: "GET" },
+        { links: key },
         this.linkValidationResponse.bind(this)
       );
     }

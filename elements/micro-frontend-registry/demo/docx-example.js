@@ -146,7 +146,7 @@ export class DocxExample extends LitElement {
     const urlToCapture = this.shadowRoot.querySelector("#screenshot").value;
     MicroFrontendRegistry.call(
       "@core/screenshotUrl",
-      { urlToCapture: urlToCapture, quality: 80, __method: "GET" },
+      { urlToCapture: urlToCapture, quality: 80 },
       this.screenshotUrlResponse.bind(this)
     );
   }

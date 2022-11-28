@@ -28,6 +28,7 @@ export function enableCoreServices() {
   MicroFrontendRegistry.add({
     endpoint: "/api/services/website/linkValidator",
     name: "@core/linkValidator",
+    method: "GET",
     title: "Validate URLs",
     description:
       "Validates that an array of URLs are valid by returning status codes of a HEAD request",
@@ -74,6 +75,7 @@ export function enableCoreServices() {
   MicroFrontendRegistry.add({
     endpoint: "/api/services/website/duckDuckGo",
     name: "@core/duckDuckGo",
+    method: "GET",
     title: "Duck Duck Go",
     description: "Search results from duck duck go",
     params: {
@@ -85,6 +87,7 @@ export function enableCoreServices() {
   MicroFrontendRegistry.add({
     endpoint: "https://screenshoturl.elmsln.vercel.app/api/screenshotUrl",
     name: "@core/screenshotUrl",
+    method: "GET",
     title: "Screenshot page",
     description: "Takes screenshot of a URL and returns image",
     params: {
@@ -257,6 +260,7 @@ export function enableHAXcmsServices() {
   // pageCache
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/pageCache",
+    method: "GET",
     name: "@haxcms/pageCache",
     title: "HAXcms Page cache",
     description: "Load a page from a site via uuid",
