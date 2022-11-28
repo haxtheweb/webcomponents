@@ -293,7 +293,7 @@ export class JSONOutlineSchema
       if (orderBy === 'updated') {
         return a.metadata.updated > b.metadata.updated;
       }
-      return a[orderBy] > b[orderBy]}
+      return parseInt(a[orderBy]) > parseInt(b[orderBy])}
     );
     this.orderRecurse(items, sorted, [], orderBy);
     // sanity check, should always be equal
@@ -324,8 +324,8 @@ export class JSONOutlineSchema
           if (orderBy === 'updated') {
             return a.metadata.updated > b.metadata.updated;
           }
-          return a[orderBy] > b[orderBy]}
-        );
+          return parseInt(a[orderBy]) > parseInt(b[orderBy])}
+          );
         // only walk deeper if there were children for this page
         if (children.length > 0) {
           this.orderRecurse(children, sorted, idList, orderBy);

@@ -228,15 +228,29 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.circularBlock = false;
+    this.itemManifest = {};
     this.loading = false;
     this.uuid = null;
-    this.siteurl = 'https://haxtheweb.org/';
+    this.siteurl = '';
     this.showTitle = false;
     this.breakreference = false;
     this._remoteTitle = null;
     this.t = {
       selectPage: "Select page"
     };
+    let pNode = this;
+    let pCounter = 0;
+    // ensure we don't have too deep a reference to avoid infinite remotes
+    while (pNode && pNode.tagName) {
+      pNode = pNode.parentNode;
+      if (pNode && pNode.tagName && pNode.tagName === 'SITE-REMOTE-CONTENT') {
+        pCounter++;
+        if (pCounter >= 3) {
+          this.circularBlock = true;
+        }
+      }
+    }
   }
   /**
   * LitElement
@@ -254,7 +268,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'uuid' && this[propName] && !this.breakreference && !this.loading) {
+      if (propName === 'uuid' && this[propName] && !this.breakreference && !this.loading && !this.circularBlock) {
         this.loading = true;
         // when UUID changes, remote load the content from it, replacing our own light dom material
         MicroFrontendRegistry.call(
@@ -269,12 +283,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         );
       }
       // aggressive, only run this if we actually are an author of material / have HAX tools
-      if (propName === 'siteurl' && window.HaxStore) {
+      if (propName === 'siteurl' && window.HaxStore && !this.loading && !this.circularBlock) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
           this.loading = true;
+          // forces the form to update as opposed to deferring to what it loaded initially
+          this.__refresh = true;
           window.HaxStore.instance.refreshActiveNodeForm();
-        }, 1000);
+        }, 1500);
       }
       // this is crazy, take that content and spill it into lightDom
       // and it should be modifiable
@@ -288,8 +304,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         }
       }
       // used to be break reference, now we as re-establishing the reference
-      else if (propName === 'breakreference' && !this[propName] && oldValue) {
+      else if (propName === 'breakreference' && !this[propName] && oldValue && !this.circularBlock) {
         this.loading = true;
+        wipeSlot(this);
         MicroFrontendRegistry.call(
           "@haxcms/pageCache",
           {
@@ -336,17 +353,17 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       if (!this.breakreference) {
         lightChildrenToShadowRootSelector(this, '#content');
       }
-      if (this.itemManifest && response.data) {
+      if (this.itemManifest && response.data && !this.breakreference) {
         window.HaxStore.instance.activeBodyIgnoreActive(false);
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; 
         var yyyy = today.getFullYear();
-        // @todo create and inject these values into the dom node NEXT to this one.
+        // create and inject these values into the dom node NEXT to this one.
         if (!this.nextElementSibling || (this.nextElementSibling && this.nextElementSibling.tagName !== 'CITATION-ELEMENT')) {
           let ce = document.createElement('citation-element');
-          ce.title = this.itemManifest.title;
-          ce.source = this.siteurl;
+          ce.title = `${this.itemManifest.title} - ${response.data.title}`;
+          ce.source = `${response.data.site}${response.data.slug}`;
           ce.date = `${dd}/${mm}/${yyyy}`;
           ce.scope = "sibling";
           ce.license = this.itemManifest.license;
@@ -356,8 +373,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         // already exists, so just update the one next to it
         else if (this.nextElementSibling && this.nextElementSibling.tagName === 'CITATION-ELEMENT') {
           let ce = this.nextElementSibling;
-          ce.title = this.itemManifest.title;
-          ce.source = this.siteurl;
+          ce.title = `${this.itemManifest.title} - ${response.data.title}`;
+          ce.source = `${response.data.site}${response.data.slug}`;
           ce.date = `${dd}/${mm}/${yyyy}`;
           ce.scope = "sibling";
           ce.license = this.itemManifest.license;
@@ -461,7 +478,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             showTitle: true,
             _remoteTitle: "Select content",
           },
-          content: "<div>Remote rendered material</div>"
+          content: "<div>Select content to load</div>"
         }
       ],
       saveOptions: {
@@ -490,21 +507,23 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
    */
   async haxsetupActiveElementForm(props) {
     if (window.HAXCMS) {
-      this.itemManifest = {};
-      // support remore vs local look up
-      if (this.siteurl) {
-        const response = await MicroFrontendRegistry.call(
-          "@haxcms/siteManifest",
-          {
-            site: this.siteurl
+      if (Object.keys(this.itemManifest).length === 0 || this.__refresh) {
+        this.__refresh = false;
+        // support remore vs local look up
+        if (this.siteurl) {
+          const response = await MicroFrontendRegistry.call(
+            "@haxcms/siteManifest",
+            {
+              site: this.siteurl
+            }
+          );
+          if (response.data) {
+            this.itemManifest = response.data;
           }
-        );
-        if (response.data) {
-          this.itemManifest = response.data;
         }
-      }
-      else {
-        this.itemManifest.items = store.getManifestItems(true);
+        else {
+          this.itemManifest.items = store.getManifestItems(true);
+        }
       }
       // default to null parent as the whole site
       var items = [
@@ -534,8 +553,20 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       });
       props.settings.configure.forEach((attr, index) => {
         if (attr.property === "uuid") {
+          props.settings.configure[index].disabled = false;
           props.settings.configure[index].inputMethod = "select";
           props.settings.configure[index].itemsList = items;
+          // disable changes if we broke a reference
+          if (this.breakreference) {
+            props.settings.configure[index].disabled = true;
+          }
+        }
+        else if (attr.property === "siteurl") {
+          props.settings.configure[index].disabled = false;
+          // disable changes if we broke a reference
+          if (this.breakreference) {
+            props.settings.configure[index].disabled = true;
+          }
         }
       });
       // end loading indicator as data should be present now
