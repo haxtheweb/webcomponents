@@ -270,11 +270,15 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'uuid' && this[propName] && !this.breakreference && !this.loading && !this.circularBlock) {
         this.loading = true;
+        let url = this.siteurl;
+        if (url == '' && window.HAXCMS && window.location) {
+          url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+        }
         // when UUID changes, remote load the content from it, replacing our own light dom material
         MicroFrontendRegistry.call(
           "@haxcms/pageCache",
           {
-            site: this.siteurl,
+            site: url,
             type: "link",
             uuid: this.uuid,
             data: true
@@ -307,10 +311,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       else if (propName === 'breakreference' && !this[propName] && oldValue && !this.circularBlock) {
         this.loading = true;
         wipeSlot(this);
+        let url = this.siteurl;
+        if (url == '' && window.HAXCMS && window.location) {
+          url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
+        }
         MicroFrontendRegistry.call(
           "@haxcms/pageCache",
           {
-            site: this.siteurl,
+            site: url,
             type: "link",
             uuid: this.uuid,
             data: true
@@ -522,7 +530,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           }
         }
         else {
-          this.itemManifest.items = store.getManifestItems(true);
+          this.itemManifest = store.getManifest(true);
         }
       }
       // default to null parent as the whole site

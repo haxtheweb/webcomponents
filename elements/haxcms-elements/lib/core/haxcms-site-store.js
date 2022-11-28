@@ -717,6 +717,15 @@ class Store {
     return this.manifest.items;
   }
   /**
+   * Return a clone of the manifest
+   */
+  getManifest(cloneIt = true) {
+    if (cloneIt) {
+      return toJS(this.manifest);
+    }
+    return this.manifest;
+  }
+  /**
    * Add an item
    */
   async addItem(item) {
