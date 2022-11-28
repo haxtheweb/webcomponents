@@ -823,6 +823,13 @@ class HAXCMSSiteEditor extends LitElement {
   async createNode(e) {
     if (e.detail.values) {
       var reqBody = e.detail.values;
+      // ensure site name and jwt are set in request
+      reqBody.jwt = this.jwt;
+      reqBody.site = {
+        name: this.manifest.metadata.site.name,
+      };
+      // store who sent this in-case of multiple instances
+      this._originalTarget = e.detail.originalTarget;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
         await import(
@@ -856,25 +863,89 @@ class HAXCMSSiteEditor extends LitElement {
             response.data &&
             response.data.contents != ""
           ) {
+            // @todo right here is where we need to interject our confirmation dialog
+            // workflow. We can take the items that just came back and visualize them
+            // using our outline / hierarchy visualization
             reqBody.items = response.data.items;
+            await import(
+              "@lrnwebcomponents/outline-designer/outline-designer.js"
+            ).then(async (e) => {
+              const outline = document.createElement("outline-designer");
+              outline.items = response.data.items;
+              outline.eventData = reqBody;
+
+              const b1 = document.createElement("button");
+              b1.innerText = "Confirm";
+              b1.classList.add("hax-modal-btn");
+              b1.addEventListener('click', (e) => {
+                this.querySelector("#createajax").body = outline.getData();
+                this.querySelector("#createajax").generateRequest();
+                const evt = new CustomEvent("simple-modal-hide", {
+                  bubbles: true,
+                  composed: true,
+                  cancelable: true,
+                  detail: {},
+                });
+                window.dispatchEvent(evt);
+              });
+              const b2 = document.createElement("button");
+              b2.innerText = "Cancel";
+              b2.classList.add("hax-modal-btn");
+              b2.classList.add("cancel");
+              b2.addEventListener('click', (e) => {
+                const evt = new CustomEvent("simple-modal-hide", {
+                  bubbles: true,
+                  composed: true,
+                  cancelable: true,
+                  detail: {},
+                });
+                window.dispatchEvent(evt);
+              });
+              // button container
+              const div = document.createElement('div');
+              div.appendChild(b1);
+              div.appendChild(b2);
+
+              this.dispatchEvent(
+                new CustomEvent("simple-modal-show", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: {
+                    title: "Confirm structure",
+                    elements: { content: outline, buttons: div },
+                    modal: true,
+                    styles: {
+                      "--simple-modal-titlebar-background": "transparent",
+                      "--simple-modal-titlebar-color": "black",
+                      "--simple-modal-width": "90vw",
+                      "--simple-modal-min-width": "300px",
+                      "--simple-modal-z-index": "100000000",
+                      "--simple-modal-height": "90vh",
+                      "--simple-modal-min-height": "400px",
+                      "--simple-modal-titlebar-height": "64px",
+                      "--simple-modal-titlebar-color": "black",
+                      "--simple-modal-titlebar-height": "80px",
+                      "--simple-modal-titlebar-background": "orange",
+                    },
+                  },
+                })
+              );
+            });
           }
         });
       }
-      reqBody.jwt = this.jwt;
-      reqBody.site = {
-        name: this.manifest.metadata.site.name,
-      };
-      // store who sent this in-case of multiple instances
-      this._originalTarget = e.detail.originalTarget;
-      this.querySelector("#createajax").body = reqBody;
-      this.querySelector("#createajax").generateRequest();
-      const evt = new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      });
-      window.dispatchEvent(evt);
+      else {
+        this.querySelector("#createajax").body = reqBody;
+        this.querySelector("#createajax").generateRequest();
+        const evt = new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {},
+        });
+        window.dispatchEvent(evt); 
+      }
     }
   }
 
