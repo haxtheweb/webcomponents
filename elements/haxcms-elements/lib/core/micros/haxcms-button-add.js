@@ -18,8 +18,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     this.t.copy = "Copy";
     this.t.newChildPage = "Child";
     this.t.duplicatePage = "Duplicate";
-    this.t.docxImport = "docx import";
-    this.t.docxImportChildren = "docx import children";
+    this.t.docxImport = "Import .DOCX";
     this.icon = "hax:add-page";
     this.voiceCommand = "add page";
     this.dark = false;
@@ -62,11 +61,8 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
         this.icon = "hax:duplicate";
         return (this.label = this.t.duplicatePage);
       case "docximport":
-        this.icon = "hax:file-doc";
+        this.icon = "hax:file-docx";
         return (this.label = this.t.docxImport);
-      case "docximportchildren":
-        this.icon = "hax:file-doc";
-        return (this.label = this.t.docxImportChildren);
     }
     this.icon = undefined;
     this.setAttribute("role", "menuitem");
@@ -113,9 +109,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       } else if (this.type === "docximport") {
         parent = null;
         order = 0;
-      } else if (this.type === "docximportchildren") {
-        parent = item.id;
-        order = 0;
       }
     }
     // sanity fallback in case a translation system is bricked
@@ -134,8 +127,6 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     if (this.type === "duplicate") {
       payload.node.duplicate = item.id;
     } else if (this.type === "docximport") {
-      payload.docximport = "site";
-    } else if (this.type === "docximportchildren") {
       payload.docximport = "branch";
     }
     // wrapper on CustomEvent to ensure uniformity

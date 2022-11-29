@@ -86,7 +86,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               ? html` <hax-tray-button
                   @click="${this.importDOCXviaMicro}"
                   label="${this.t.importDOCX}"
-                  icon="hax:file-doc"
+                  icon="hax:file-docx"
                   show-text-label
                   icon-position="top"
                 >
@@ -95,7 +95,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
                   <hax-tray-button
                     @click="${this.importDOCX}"
                     label="${this.t.importDOCX}"
-                    icon="hax:file-doc"
+                    icon="hax:file-docx"
                     show-text-label
                     icon-position="top"
                   >
@@ -155,7 +155,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               ? html`
                   <hax-tray-button
                     label="${this.t.downloadDOCX}"
-                    icon="hax:file-doc"
+                    icon="hax:file-docx"
                     @click="${this.downloadDOCXviaMicro}"
                     show-text-label
                     icon-position="top"
@@ -165,7 +165,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               : html`
                   <hax-tray-button
                     label="${this.t.downloadDOCX}"
-                    icon="editor:insert-drive-file"
+                    icon="hax:file-docx"
                     @click="${this.downloadDOCX}"
                     show-text-label
                     icon-position="top"

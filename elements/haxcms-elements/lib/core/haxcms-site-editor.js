@@ -877,8 +877,9 @@ class HAXCMSSiteEditor extends LitElement {
               const b1 = document.createElement("button");
               b1.innerText = "Confirm";
               b1.classList.add("hax-modal-btn");
-              b1.addEventListener('click', (e) => {
-                this.querySelector("#createajax").body = outline.getData();
+              b1.addEventListener('click', async (e) => {
+                const data = await outline.getData();
+                this.querySelector("#createajax").body = data;
                 this.querySelector("#createajax").generateRequest();
                 const evt = new CustomEvent("simple-modal-hide", {
                   bubbles: true,

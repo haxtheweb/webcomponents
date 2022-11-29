@@ -624,15 +624,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 show-text-label
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <haxcms-button-add
-                hidden
-                ?disabled="${this.editMode}"
-                type="docximportchildren"
-                id="docximportchildren"
-                show-text-label
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
           </simple-toolbar-menu>
           <simple-toolbar-menu
             show-text-label
@@ -826,10 +817,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           {
             varPath: "createNodePath",
             selector: "#docximport",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#docximportchildren",
           },
         ];
         // see which features should be enabled
