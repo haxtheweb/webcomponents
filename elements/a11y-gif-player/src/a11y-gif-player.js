@@ -41,7 +41,6 @@ class A11yGifPlayer extends I18NMixin(
     super();
     this.__gifLoaded = false;
     this.disabled = false;
-    this.tooltip = "";
     this.__playing = false;
     this._updateFromSlot();
     this.t = {
@@ -134,12 +133,6 @@ class A11yGifPlayer extends I18NMixin(
           width: calc(100% - 2px);
           font-size: 80%;
         }
-        simple-tooltip {
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-        }
       `,
     ];
   }
@@ -191,11 +184,6 @@ class A11yGifPlayer extends I18NMixin(
                   <text x="50" y="115" font-size="40px">GIF</text>
                 </g>
               </svg>
-              <span class="sr-only">
-                ${this.__playing && this.tooltipPlaying
-                  ? this.tooltipPlaying
-                  : this.tooltip}
-              </span>
             </button>
             <a11y-details
               id="longdesc"
@@ -206,11 +194,6 @@ class A11yGifPlayer extends I18NMixin(
               <div slot="details">${this.longdesc}</div>
             </a11y-details>
           </div>
-          <simple-tooltip for="button" offset="30" animation-delay="0">
-            ${this.__playing && this.tooltipPlaying
-              ? this.tooltipPlaying
-              : this.tooltip}
-          </simple-tooltip>
         `
       : nothing} `;
   }
@@ -266,19 +249,6 @@ class A11yGifPlayer extends I18NMixin(
         attribute: "src-without-animation",
       },
       /**
-       * default tooltip
-       */
-      tooltip: {
-        type: String,
-      },
-      /**
-       * tooltip when playing
-       */
-      tooltipPlaying: {
-        type: String,
-        attribute: "tooltip-playing",
-      },
-      /**
        * whether GIF is playing
        */
       __playing: {
@@ -301,7 +271,6 @@ class A11yGifPlayer extends I18NMixin(
       // import on visibility
       if (propName === "elementVisible" && this[propName]) {
         import("@lrnwebcomponents/a11y-details/a11y-details.js");
-        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       }
     });
   }
@@ -319,7 +288,7 @@ class A11yGifPlayer extends I18NMixin(
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false,
+      subtree: true,
     });
     window.addEventListener("beforeprint", (event) => {
       this.shadowRoot.querySelector("#longdesc").toggleOpen();
@@ -374,11 +343,21 @@ class A11yGifPlayer extends I18NMixin(
    * when slot changes update with animated gif
    */
   _updateFromSlot() {
-    let img = this.querySelector("img"),
-      src = img ? img.src : undefined,
-      alt = img ? img.alt : undefined;
-    if (src) this.srcWithoutAnimation = src;
-    if (alt) this.alt = alt;
+    let img = this.querySelector("img");
+    if (img) {
+      let src = img.src || null;
+      let alt = img.alt || null;
+      if (src) this.srcWithoutAnimation = src;
+      if (alt) this.alt = alt;
+    }
+    // support simple-img tag since it can auto-convert gif to static!
+    img = this.querySelector("simple-img");
+    if (img) {
+      let src = img.srcconverted || null;
+      let alt = img.alt || null;
+      if (src) this.srcWithoutAnimation = src;
+      if (alt) this.alt = alt;
+    }
   }
   /**
    * haxProperties integration via file reference

@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../a11y-gif-player.js';
+      import "@lrnwebcomponents/simple-img/simple-img.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -40,8 +41,12 @@
       <demo-snippet>
         <template>
           <a11y-gif-player alt="IT Crowd: Moss eating popcorn."
+          style="width: 200px;"
             src="https://media.giphy.com/media/TrDxCdtmdluP6/giphy.gif"
           >
+          <simple-img
+          width="200"
+          src="https://media.giphy.com/media/TrDxCdtmdluP6/giphy.gif"></simple-img>
           </a11y-gif-player>
           <p>Source: <a href="https://giphy.com">Giphy API</a></p>
         </template>

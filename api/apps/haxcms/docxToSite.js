@@ -174,29 +174,93 @@ function htmlFromEl(el) {
     textValue.includes('youtu.be') ||
     textValue.includes('youtube-nocookie.com') ||
     textValue.includes('vimeo.com') ||
-    textValue.includes('.mp4')
+    textValue.toLowerCase().includes('.mp4')
     )
   ) {
     return `<video-player source="${textValue}"></video-player>`;
   }
-  // test for ! which implies a specififc tag is going to be inserted
-  else if (textValue.startsWith('!') && textValue.includes('-')) {
-    let tag = textValue.replace('!', '').trim();
-    return `<${tag}></${tag}>`;
+  // image
+  else if (validURL(textValue) && (
+    textValue.toLowerCase().includes('.jpg') ||
+    textValue.toLowerCase().includes('.jpeg') ||
+    textValue.toLowerCase().includes('.png') ||
+    textValue.toLowerCase().includes('.webp')
+    )
+  ) {
+    return `<img src="${textValue}" loading="lazy" decoding="async" fetchpriority="high" alt="" />`;
+  }
+  // gif
+  else if (validURL(textValue) && textValue.toLowerCase().includes('.gif')) {
+    return `
+    <a11y-gif-player src="${textValue}" style="width: 300px;">
+      <simple-img width="300" src="${textValue}"></simple-img>
+    </a11y-gif-player>`;
   }
   // test for a common convention for a place holder
   else if (textValue.startsWith('[') && textValue.endsWith(']')) {
-    let text = textValue.replace('[','').replace(']','').trim();
-    return `<place-holder type="text" text="${text}"></place-holder>`;
-  }
-  // test for a more specific place holder convention
-  else if (textValue.startsWith('>') || textValue.startsWith('&gt;')) {
     let tmp = textValue.split(':');
+    // test for a type definition vs just rendering a basic textual one
     if (tmp.length > 1) {
-      let type = tmp.shift().replace('>','').replace('&gt;','');
-      let text = tmp.join(':').trim();
-      return `<place-holder type="${type}" text="${text}"></place-holder>`;
+      let type = tmp.shift().replace('[','');
+      let text = tmp.join(':').replace(']','').trim();
+      // we only support these types, if it is not one of these then we test other
+      // things and could ultimately end on a less specific placeholder
+      // I don't trust spelling things :p
+      switch(type) {
+        case 'math':
+        case 'mathjax':
+          return `<lrn-math>${text}</lrn-math>`;
+        break;
+        case 'video':
+        case 'audio':
+        case 'document':
+        case 'text':
+        case 'image':
+          return `<place-holder type="${type}" text="${text}"></place-holder>`;
+        break;
+      }
     }
+    // see if maybe they put placeholder brackets on the material
+    textValue = textValue.replace('[','').replace(']','').trim();
+    // video test
+    if (validURL(textValue) && (
+      textValue.includes('youtube.com') ||
+      textValue.includes('youtu.be') ||
+      textValue.includes('youtube-nocookie.com') ||
+      textValue.includes('vimeo.com') ||
+      textValue.toLowerCase().includes('.mp4')
+      )
+    ) {
+      return `<video-player source="${textValue}"></video-player>`;
+    }
+    // image test
+    else if (validURL(textValue) && (
+      textValue.toLowerCase().includes('.jpg') ||
+      textValue.toLowerCase().includes('.jpeg') ||
+      textValue.toLowerCase().includes('.png') ||
+      textValue.toLowerCase().includes('.webp')
+      )
+    ) {
+      return `<img src="${textValue}" loading="lazy" decoding="async" fetchpriority="high" alt="" />`;
+    }
+    // gif test
+    else if (validURL(textValue) && textValue.toLowerCase().includes('.gif')) {
+      return `
+      <a11y-gif-player src="${textValue}" style="width: 300px;">
+        <simple-img width="300" src="${textValue}"></simple-img>
+      </a11y-gif-player>`;
+    }
+    // just use a place holder tag since we don't know or they just wanted a note
+    // for a resource they don't have yet
+    else {
+      return `<place-holder type="text" text="${textValue}"></place-holder>`;  
+    }
+  }
+  // test for ! which implies a specififc tag is going to be inserted
+  // this is basically just for developers
+  else if (textValue.startsWith('!') && textValue.includes('-')) {
+    let tag = textValue.replace('!', '').trim();
+    return `<${tag}></${tag}>`;
   }
   return el.outerHTML.replace(/\t/g, '').trim();
 }
