@@ -262,7 +262,9 @@ function htmlFromEl(el) {
     let tag = textValue.replace('!', '').trim();
     return `<${tag}></${tag}>`;
   }
-  return el.outerHTML.replace(/\t/g, '').trim();
+  // allow for inline math replacement
+  let content = el.outerHTML.replace(/\t/g, '').trim().replace(/\[math:(.*?)\]/g,'<lrn-math>$1</lrn-math>');
+  return content;
 }
 
 // based on https://vanillajstoolkit.com/helpers/nextuntil/
