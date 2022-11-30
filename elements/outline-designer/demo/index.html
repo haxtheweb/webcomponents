@@ -1,23 +1,85 @@
 <!doctype html>
 <html>
   <head>
+    <base href="/elements/outline-designer/demo/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>OutlineDesigner: outline-designer Demo</title>
-    
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+      window.addEventListener('haxcms-ready', function(e) {
+      // give the web components a second to build
+      setTimeout(function() {
+        document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
+      }, 1000);
+    });
+    </script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-    <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../outline-designer.js';
-    </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      haxcms-site-builder,
+      haxcms-site-editor-ui {
+        display: none !important;
+      }
+      body {
+        overflow: scroll !important;
+      }
+    </style>
   </head>
-  <body>
+  <body no-js>
     <div class="vertical-section-container centered">
       <h3>Basic outline-designer demo</h3>
-      <outline-designer outline-schema-url="example.json"></outline-designer>
+      <outline-designer></outline-designer>
+      <haxcms-site-builder file="https://haxtheweb.org/site.json"></haxcms-site-builder>
     </div>
+    <script>document.body.removeAttribute('no-js');window.__appCDN="./node_modules/";window.__appForceUpgrade=false;</script>
+    <!-- Reverse engineer of build.js based on what's needed to test locally -->
+    <script type="module">
+      import "@lrnwebcomponents/wc-autoload/wc-autoload.js";
+    </script>
+    <script>
+      window.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCGlobalBasePath = "/node_modules/";
+      // set this in order to simulate the published form of the site
+      //window.HAXCMSContext="published";
+      // set the below to simulate running a demo / end points to load data
+      // this will let you simulate more operations without having a backend
+      window.HAXCMSContext="demo";
+      window.appSettings = {
+        "createNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/createNodePath.json",
+        "saveOutlinePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "getNodeFieldsPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/getNodeFieldsPath.json",
+        "saveManifestPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveManifestPath.json",
+        "getSiteFieldsPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/getSiteFieldsPath.json",
+        "deleteNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "saveNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "getUserDataPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/userData.json",
+        "login": "..\/..\/haxcms-elements\/demo\/dist\/dev\/login.json",
+        "refreshUrl": "..\/..\/haxcms-elements\/demo\/dist\/dev\/refreshUrl.json",
+        "logout": "..\/..\/haxcms-elements\/demo\/dist\/dev\/logout.json",
+        "connectionSettings": "..\/..\/haxcms-elements\/demo\/dist\/dev\/connectionSettings.json",
+        "publishSitePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "revertSitePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "getFieldsToken": "adskjadshjudfu823u823u8fu8fij",
+        "appStore": {
+          "url": "..\/..\/haxcms-elements\/demo\/dist\/dev\/appstore.json"
+        },
+        "jwt": "made-up-thing",
+        // add your custom theme here if testing locally and wanting to emulate the theme selector
+        // this isn't really nessecary though
+        "themes": { 
+          "haxcms-dev-theme": { 
+            "element": "haxcms-dev-theme", 
+            "path": "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js", 
+            "name": "Developer theme"
+          }
+        }
+      };
+    </script>
   </body>
 </html>

@@ -160,8 +160,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         .then((response) => {
           if (response.ok) {
             return response.text();
-          } else {
-            this.lastErrorChanged(err);
           }
         })
         .then((data) => {
