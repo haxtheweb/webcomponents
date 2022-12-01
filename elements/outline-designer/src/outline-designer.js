@@ -2,17 +2,13 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-
 import { LitElement, css, html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -26,7 +22,6 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 export class OutlineDesigner extends I18NMixin(LitElement) {
   static get styles() {
     return [
-      ...HaxTrayDetailHeadings,
       css`
       :host {
         display: block;
@@ -38,16 +33,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         list-style: none;
         padding: 0;
         margin: 0;
-        width: 50%;
       }
       ul li {
         margin: 0;
         padding: 0;
-      }
-      li hax-toolbar-item {
-        display: inline-flex;
-        width: 50%;
-        max-width: 60%;
       }
       li .operation {
         display: inline-flex;
@@ -56,6 +45,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         --simple-icon-width: 24px;
         --simple-icon-height: 24px;
         float: right;
+      }
+      .content-preview {
+        margin-left: 100px;
+      }
+      li[class*="collapsed-by-"] {
+        opacity: 0;
+        height: 0px !important;
+        visibility: hidden;
+        padding: 0px !important;
+        margin: 0px !important;
+        width: 0px !important;
+        padding: 0px !important;
+        margin: 0px !important;
+        border: 0px !important;
+        pointer-events: none;
+        z-index: -1;
       }
       li simple-icon-button:hover {
         background-color: #f5f5f5;
@@ -89,12 +94,25 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         font-size: 20px;
         line-height: 20px;
       }
-
+      :host([stop-animation]) .item {
+        transition: none !important;
+      }
       .item {
+        display: -webkit-box;
         border: 1px solid grey;
         margin: 0;
         padding: 8px;
         cursor: pointer;
+        opacity: 1;
+        visibility: visible;
+        height: 26px;
+        transition: .3s padding ease-in-out, .3s border ease-in-out,.3s margin ease-in-out;
+      }
+      .collapse-btn {
+        visibility: hidden;
+      }
+      .item[data-has-children] .collapse-btn {
+        visibility: visible;
       }
       .item:hover,
       .item:focus {
@@ -143,7 +161,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      namespace: "hax",
+      basePath: import.meta.url,
+      locales: ["es"],
     });
     // so we can prepopulate the parent options menu
     autorun(() => {
@@ -160,7 +179,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     })
   }
-  // selectable list of items in the current HAXcms site
+  // selectable list of items in the current site
   getSiteItems() {
     // default to null parent as the whole site
     var items = [
@@ -169,26 +188,24 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         value: null,
       },
     ];
-    if (this.appReady) {
+    if (this.appReady && this.items.length > 0) {
       const rawItemList = store.getManifestItems(true);
       rawItemList.forEach((el) => {
-        if (el.id != this.itemId) {
-          // calculate -- depth so it looks like a tree
-          let itemBuilder = el;
-          // walk back through parent tree
-          let distance = "- ";
-          while (itemBuilder && itemBuilder.parent != null) {
-            itemBuilder = rawItemList.find((i) => i.id == itemBuilder.parent);
-            // double check structure is sound
-            if (itemBuilder) {
-              distance = "--" + distance;
-            }
+        // calculate -- depth so it looks like a tree
+        let itemBuilder = el;
+        // walk back through parent tree
+        let distance = "- ";
+        while (itemBuilder && itemBuilder.parent != null) {
+          itemBuilder = rawItemList.find((i) => i.id == itemBuilder.parent);
+          // double check structure is sound
+          if (itemBuilder) {
+            distance = "--" + distance;
           }
-          items.push({
-            text: distance + el.title,
-            value: el.id,
-          });
         }
+        items.push({
+          text: distance + el.title,
+          value: el.id,
+        });
       });
     }
     return items;
@@ -214,6 +231,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     ${this.t.thisPage}:
     <simple-fields-field id="itemselector" type="select" value="${this.activeId}" .itemsList="${this.getSiteItems()}"></simple-fields-field>
     <label for="itemselector">${this.t.importContentUnderThisPage}</label>
+    <simple-icon-button-lite icon="hardware:keyboard-arrow-right" @click="${this.collapseAll}">Collapse all</simple-icon-button-lite>
+    <simple-icon-button-lite icon="hardware:keyboard-arrow-down" @click="${this.expandAll}">Expand all</simple-icon-button-lite>
     <ul>
       ${this.items.map((item, index) => this.renderItem(item, index))}
     </ul>`;
@@ -226,7 +245,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       @dragleave="${this._dragLeave}"
       class="item indent-${item.indent} ${item.modified ? 'modified' : ''}"
       data-item-id="${item.id}"
+      data-parents="${this.getItemParents(item)}"
+      ?data-has-children="${this.hasChildren(item.id)}"
     >
+      <simple-icon-button
+        class="collapse-btn"
+        ?disabled="${this.isLocked(index)}"
+        icon="${this.isCollapsed(item.id) ? `hardware:keyboard-arrow-right` : `hardware:keyboard-arrow-down`}"
+        @click="${this.collapseExpand}"></simple-icon-button>
       <simple-icon-button
         ?disabled="${this.isLocked(index)}"
         @dragstart="${this._dragStart}"
@@ -258,6 +284,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       ></simple-icon-button>
       <simple-icon-button
         class="operation"
+        icon="hax:outline-designer-indent"
+        @click="${(e) => this.itemOp(index, "in")}"
+        title="Make child"
+        ?disabled="${this.isLocked(index)}"
+      ></simple-icon-button>
+      <simple-icon-button
+        class="operation"
+        icon="hax:outline-designer-outdent"
+        @click="${(e) => this.itemOp(index, "out")}"
+        title="Move next to parent"
+        ?disabled="${this.isLocked(index)}"
+      ></simple-icon-button>
+      <simple-icon-button
+        class="operation"
         icon="${this.isLocked(index)
           ? "icons:lock"
           : "icons:lock-open"}"
@@ -265,16 +305,61 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         title="Lock / Unlock"
       ></simple-icon-button>
       <simple-icon-button
-        class="operation"
+        class="operation content-preview"
         icon="editor:insert-drive-file"
         @click="${this.toggleContent}"
         ?disabled="${this.isLocked(index)}"
+        title="Preview content"
         id="od-item-${item.id}"       
         ></simple-icon-button>
       <simple-popover for="od-item-${item.id}" hidden
         fit-to-visible-bounds
         auto>${unsafeHTML(item.contents)}</simple-popover>
     </li>`;
+  }
+
+  collapseAll() {
+    this.shadowRoot.querySelectorAll('[data-has-children]:not([data-collapsed]) .collapse-btn').forEach((node) => node.click());
+  }
+  expandAll() {
+    this.shadowRoot.querySelectorAll('[data-has-children][data-collapsed] .collapse-btn').forEach((node) => node.click());
+  }
+
+  getItemParents(activeItem) {
+    let parent = this.items.find((item) => item.id == activeItem.parent);
+    let list = '';
+    while (parent) {
+      list+= parent.id + " ";
+      parent = this.items.find((item) => item.id == parent.parent);
+    }
+    return list;
+  }
+
+  isCollapsed(id) {
+    if (this.shadowRoot.querySelector(`[data-item-id="${id}"]`) && this.shadowRoot.querySelector(`[data-item-id="${id}"]`).hasAttribute('data-collapsed')) {
+      return true;
+    }
+    return false;
+  }
+
+  hasChildren(id) {
+    let children = this.items.find((item) => item.parent == id);
+    if (children) {
+      return true;
+    }
+    return false;
+  }
+  collapseExpand(e) {
+    let itemId = e.target.closest("[data-item-id]").getAttribute('data-item-id');
+    if (e.target.closest("[data-item-id]").hasAttribute('data-collapsed')) {
+      e.target.closest("[data-item-id]").removeAttribute('data-collapsed')
+      this.shadowRoot.querySelectorAll(`.collapsed-by-${itemId}[data-parents~="${itemId}"]`).forEach((item => {item.classList.remove(`collapsed-by-${itemId}`)}))
+    }
+    else {
+      e.target.closest("[data-item-id]").setAttribute('data-collapsed', itemId)
+      this.shadowRoot.querySelectorAll(`[data-parents~="${itemId}"]`).forEach((item => {item.classList.add(`collapsed-by-${itemId}`)}))
+    }
+    this.requestUpdate();
   }
 
   toggleContent(e) {
@@ -356,6 +441,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       if (from !== null && here !== null) {
         let element = this.items.splice(from, 1)[0];
         element.modified = true;
+        element.order = this.items[here].order+1;
+        element.indent = this.items[here].indent;
         this.items.splice(here, 0, element);
       }
       this._targetDrag = null;
@@ -440,7 +527,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }
     return false;
   }
-
+  // operations that can be clicked individually per item
   itemOp(index, action) {
     if (index !== false && this.items[index] && action) {
       // verify this is not locked
@@ -450,8 +537,31 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             this.items[index].metadata.locked = true;
             break;
           case "delete":
+            this.setAttribute('stop-animation', 'true');
             this.items.splice(index, 1);
             break;
+          case "in":
+            // move below sibling just before it
+            if (index !== 0 && this.items[index].parent != this.items[index-1].id) {
+              let parent = this.items[index-1];
+              this.items[index].parent = parent.id;
+              this.items[index].order = 0;
+              this.items[index].indent = parseInt(parent.indent)+1;
+              this.items[index].modified = true;
+            }
+            // @todo rebuild order using JOS
+          break;
+          case "out":
+            if (this.items[index].parent !== null) {
+              // move just after parent and take on it's parent
+              let sibling = this.items.find(item => this.items[index].parent === item.id);
+              this.items[index].parent = sibling.parent;
+              this.items[index].order = parseInt(sibling.order)+1;
+              this.items[index].indent = parseInt(sibling.indent);
+              this.items[index].modified = true;
+            }
+            // @todo rebuild order using JOS
+          break;
           case "down":
             if (index < this.items.length) {
               let element = this.items.splice(index, 1)[0];
@@ -472,6 +582,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
       setTimeout(() => {
         this.requestUpdate();
+        setTimeout(() => {
+          this.removeAttribute('stop-animation');          
+        }, 300);
       }, 0);
     }
   }

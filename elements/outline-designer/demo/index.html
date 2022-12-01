@@ -12,11 +12,11 @@
         }
       };
       window.addEventListener('haxcms-ready', function(e) {
-      // give the web components a second to build
-      setTimeout(function() {
-        document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
-      }, 1000);
-    });
+        // give the web components a second to build
+        setTimeout(function() {
+          document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
+        }, 2000);
+      });
     </script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>

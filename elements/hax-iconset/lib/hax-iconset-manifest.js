@@ -110,6 +110,8 @@ export const HaxIconsetManifest = [
       "multiple-choice",
       "no-assignment",
       "oerschema",
+      "outline-designer-indent",
+      "outline-designer-outdent",
       "page-details",
       "page-edit",
       "paragraph",
