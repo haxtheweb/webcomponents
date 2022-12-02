@@ -395,14 +395,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   collapseExpand(e) {
     let itemId = e.target.closest("[data-item-id]").getAttribute('data-item-id');
     if (e.target.closest("[data-item-id]").hasAttribute('data-collapsed')) {
-      e.target.closest("[data-item-id]").removeAttribute('data-collapsed')
+      this.toggleCollapseItemId(e.target.closest("[data-item-id]"), itemId, true);
+    }
+    else {
+      this.toggleCollapseItemId(e.target.closest("[data-item-id]"), itemId, false);
+    }
+    this.requestUpdate();
+  }
+  toggleCollapseItemId(target, itemId, open) {
+    if (open) {
+      target.removeAttribute('data-collapsed');
       this.shadowRoot.querySelectorAll(`.collapsed-by-${itemId}[data-parents~="${itemId}"]`).forEach((item => {item.classList.remove(`collapsed-by-${itemId}`)}))
     }
     else {
-      e.target.closest("[data-item-id]").setAttribute('data-collapsed', itemId)
-      this.shadowRoot.querySelectorAll(`[data-parents~="${itemId}"]`).forEach((item => {item.classList.add(`collapsed-by-${itemId}`)}))
+      target.setAttribute('data-collapsed', itemId);
+      this.shadowRoot.querySelectorAll(`[data-parents~="${itemId}"]`).forEach((item => { item.classList.add(`collapsed-by-${itemId}`)}))
     }
-    this.requestUpdate();
   }
 
   toggleContent(e) {
@@ -442,6 +450,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       e.target.removeAttribute('contenteditable');
       e.target.previousElementSibling.classList.add('shown');
       e.target.innerText = e.target.previousElementSibling.innerText;
+    }
+  }
+  _mouseDownDrag(e) {
+    // force collapse kids on move
+    let target = e.target.closest("[data-item-id]");
+    if (target.getAttribute('data-has-children') != null) {
+      this.toggleCollapseItemId(target, target.getAttribute("data-item-id"), false);
+      this.requestUpdate();
     }
   }
   /**
@@ -485,6 +501,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         element.indent = this.items[here].indent;
         this.items.splice(here, 0, element);
       }
+      // expand on drop
+      if (this._targetDrag.getAttribute('data-has-children') != null) {
+        this.toggleCollapseItemId(this._targetDrag, this._targetDrag.getAttribute("data-item-id"), true);
+      }
       this._targetDrag = null;
       this._targetDrop = null;
       setTimeout(() => {
@@ -500,6 +520,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let target = e.target.closest("[data-item-id]");
       this._targetDrop = null;
       this._targetDrag = target;
+      this._mouseDownDrag(e);
       if (e.dataTransfer) {
         e.dataTransfer.effectAllowed = "move";
         e.dataTransfer.dropEffect = "move";
