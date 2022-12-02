@@ -46,7 +46,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         --simple-icon-height: 24px;
         float: right;
       }
-      .content-preview {
+      .lock-btn {
         margin-left: 100px;
       }
       li[class*="collapsed-by-"] {
@@ -125,6 +125,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         font-size: 14px;
         font-weight: bold;
       }
+      .content-child {
+        margin-left: 46px;
+        border-top: none;
+        border-bottom: none;
+      }
       .indent-0 {
         padding-left: 0px;
       }
@@ -158,6 +163,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       importContentUnderThisPage: "Import content under this page",
       importThisContent: "Import this content",
       thisPage: "this page",
+      paragraph: "Paragraph",
     };
     this.registerLocalization({
       context: this,
@@ -259,6 +265,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         @dragend="${this._dragEnd}"
         draggable="${!this.isLocked(index)}"
         icon="hax:arrow-all"></simple-icon-button>
+        <simple-icon-button
+        icon="editor:insert-drive-file"
+        @click="${this.toggleContent}"
+        ?disabled="${this.isLocked(index)}"
+        title="Content structure"
+        id="od-item-${item.id}"
+        ></simple-icon-button>
       <span class="label shown" ?disabled="${this.isLocked(index)}" @dblclick="${this.editTitle}">${item.title}</span>
       <span class="label-edit" @keypress="${this.monitorTitle}" @keydown="${this.monitorEsc}"></span>
       <simple-icon-button
@@ -297,27 +310,57 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ?disabled="${this.isLocked(index)}"
       ></simple-icon-button>
       <simple-icon-button
-        class="operation"
+        class="operation lock-btn"
         icon="${this.isLocked(index)
           ? "icons:lock"
           : "icons:lock-open"}"
         @click="${(e) => this.itemOp(index, "lock")}"
         title="Lock / Unlock"
       ></simple-icon-button>
-      <simple-icon-button
-        class="operation content-preview"
-        icon="editor:insert-drive-file"
-        @click="${this.toggleContent}"
-        ?disabled="${this.isLocked(index)}"
-        title="Preview content"
-        id="od-item-${item.id}"       
-        ></simple-icon-button>
-      <simple-popover for="od-item-${item.id}" hidden
-        fit-to-visible-bounds
-        auto>${unsafeHTML(item.contents)}</simple-popover>
-    </li>`;
+    </li>
+    ${this.renderItemContents(item)}
+    `;
+    // @todo render any item.contents here via a function    
   }
 
+  renderItemContents(item) {
+    let render = [];
+    if (item.contents) {
+      let div = document.createElement('div');
+      div.innerHTML = item.contents;
+      div.childNodes.forEach((node) => render.push(this.renderNodeAsItem(node, parseInt(item.indent)+1)));
+    }
+    return render;
+  }
+  renderNodeAsItem(node, indent) {
+    let tagName = node.tagName.toLowerCase();
+    let icon = 'hax:bricks';
+    let label = tagName;
+    switch(tagName) {
+      case 'h1':
+      case 'h2':
+      case 'h3':
+      case 'h4':
+      case 'h5':
+      case 'h6':
+        icon = `hax:${tagName}`;
+        label = node.innerText;
+      break;
+      case 'p':
+        icon = 'hax:paragraph';
+        label = this.t.paragraph;
+      break;
+      default:
+      // @todo run it through the hax map if available
+        
+      break;
+    }
+    return html`
+    <li class="item content-child indent-${indent}">
+      <simple-icon-lite icon="${icon}"></simple-icon-lite>
+      <span class="label shown">${label}</span>
+    </li>`;
+  }
   collapseAll() {
     this.shadowRoot.querySelectorAll('[data-has-children]:not([data-collapsed]) .collapse-btn').forEach((node) => node.click());
   }
@@ -364,10 +407,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
 
   toggleContent(e) {
     this.activePreview = e.target;
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    this.shadowRoot.querySelectorAll('simple-popover').forEach((item) => item.setAttribute('hidden','hidden'));
-    this.shadowRoot.querySelector(`[for="${e.target.id}"]`).removeAttribute('hidden');
+    // @todo class which shows the content
   }
 
   editTitle(e) {
