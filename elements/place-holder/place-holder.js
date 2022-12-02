@@ -273,7 +273,7 @@ class PlaceHolder extends SimpleColors {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: true,
+      canEditSource: false,
       gizmo: {
         title: "Placeholder",
         description:
@@ -327,6 +327,15 @@ class PlaceHolder extends SimpleColors {
         unsetAttributes: ["icon-from-type", "calc-text", "colors"],
         wipeSlot: true,
       },
+      demoSchema: [
+        {
+          tag: "place-holder",
+          properties: {
+            type: "image"
+          },
+          content: ""
+        }
+      ]
     };
   }
 }

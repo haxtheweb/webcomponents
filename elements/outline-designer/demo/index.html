@@ -11,10 +11,20 @@
           NODE_ENV: "production"
         }
       };
+    </script>
+    <script type="module">
+      import "@lrnwebcomponents/wc-autoload/wc-autoload.js";
       window.addEventListener('haxcms-ready', function(e) {
         // give the web components a second to build
-        setTimeout(function() {
-          document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
+        setTimeout(async () => {
+          // use this for items from a HAXcms site
+          //document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
+
+          // get items from example import
+          await fetch(import.meta.url + '/../example.json').then((resp) => (resp.ok) ? resp.json() : []).then((data) => {document.querySelector('outline-designer').items = data;});
+
+          // hide content operations
+          //document.querySelector('outline-designer').hideContentOps = true;
         }, 2000);
       });
     </script>
@@ -30,18 +40,12 @@
       }
     </style>
   </head>
-  <body no-js>
-    <div class="vertical-section-container centered">
-      <h3>Basic outline-designer demo</h3>
-      <outline-designer></outline-designer>
-      <haxcms-site-builder file="https://haxtheweb.org/site.json"></haxcms-site-builder>
-    </div>
-    <script>document.body.removeAttribute('no-js');window.__appCDN="./node_modules/";window.__appForceUpgrade=false;</script>
+  <body>
+    <outline-designer></outline-designer>
+    <haxcms-site-builder file="https://haxtheweb.org/site.json"></haxcms-site-builder>
     <!-- Reverse engineer of build.js based on what's needed to test locally -->
-    <script type="module">
-      import "@lrnwebcomponents/wc-autoload/wc-autoload.js";
-    </script>
     <script>
+      window.__appCDN="./node_modules/";window.__appForceUpgrade=false;
       window.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
       window.WCAutoloadBasePath = "/node_modules/";
       window.WCGlobalBasePath = "/node_modules/";

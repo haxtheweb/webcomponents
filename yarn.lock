@@ -3928,13 +3928,6 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-swipeable-container@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-swipeable-container/-/iron-swipeable-container-3.0.1.tgz#171e69df75190d08a2a6b9c7d71a13e2ac481df1"
-  integrity sha512-BZvha8HY29HColpO6UsQAys+gralSjierrJoU56zDiGvkkU5brgXGmvCFRdq4W13bbobGMlWvxguXTjAC9qGnA==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
 "@polymer/iron-validatable-behavior@^3.0.0-pre.26", "@polymer/iron-validatable-behavior@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-validatable-behavior/-/iron-validatable-behavior-3.0.1.tgz#73538f005a07741c31b6fc1e981168c3d3e0d92b"
@@ -20255,6 +20248,11 @@ mobx@6.6.2:
   version "6.6.2"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.6.2.tgz#9d9102a0e337e3fc09cb2d8ca0c6f00b61270d5a"
   integrity sha512-IOpS0bf3+hXIhDIy+CmlNMBfFpAbHS0aVHcNC+xH/TFYEKIIVDKNYRh9eKlXuVfJ1iRKAp0cRVmO145CyJAMVQ==
+
+mobx@6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.7.0.tgz#2d805610fee1801fd015c54fd5400d2601aa3768"
+  integrity sha512-1kBLBdSNG2bA522HQdbsTvwAwYf9hq9FWxmlhX7wTsJUAI54907J+ozfGW+LoYUo06vjit748g6QH1AAGLNebw==
 
 mocha@^3.4.2:
   version "3.5.3"

@@ -135,7 +135,7 @@ class SimplePopover extends AbsolutePositionBehavior {
   // render function
   render() {
     return html` <div>
-      <div id="content" role="alertdialog">
+      <div id="content" role="alertdialog" part="simple-popover-content">
         <slot></slot>
       </div>
       <div id="pointer-outer">
