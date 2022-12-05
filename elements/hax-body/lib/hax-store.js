@@ -945,6 +945,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.ready
     ) {
       let storageData = this.storageData;
+      // ensure storageData is an object
+      if (typeof storageData === 'string') {
+        storageData = JSON.parse(storageData);
+      }
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);

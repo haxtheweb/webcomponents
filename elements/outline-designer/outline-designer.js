@@ -118,6 +118,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         visibility: visible;
         opacity: 1;
       }
+      .active-preview-item {
+        outline: 1px solid grey;
+        outline-offset: -1px;
+      }
       .label,
       .label-edit  {
         display: none;
@@ -134,6 +138,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         outline-offset: -1px;
         background-color: #e5e5e5;
       }
+      .item.modified {
+        border-color: #ffa5a5;
+      }
       .modified .label::after {
         content: "*";
         color: red;
@@ -145,7 +152,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
       .item {
         display: -webkit-box;
-        border: 1px solid grey;
+        border: 1px solid;
+        border-color: grey;
         margin: 0;
         padding: 8px;
         cursor: pointer;
@@ -326,9 +334,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     </simple-popover>`;
   }
 
-  renderActiveContentItem(itemId, targetNodeIndex) {
-    if (itemId && targetNodeIndex != -1) {
-      let item = this.items.find((item) => item.id === itemId);
+  renderActiveContentItem(activeItemContentNode, targetNodeIndex) {
+    if (activeItemContentNode && targetNodeIndex != -1) {
+      let item = this.items.find((item) => item.id === activeItemContentNode.getAttribute('data-content-parent-id'));
       // should have contents but verify
       if (item.contents) {
         let div = document.createElement('div');
@@ -392,16 +400,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ></simple-icon-button>
         <simple-icon-button
           class="operation"
-          icon="hax:keyboard-arrow-down"
-          @click="${(e) => this.itemOp(index, "down")}"
-          title="Move down"
+          icon="hax:keyboard-arrow-up"
+          @click="${(e) => this.itemOp(index, "up")}"
+          title="Move up"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
         <simple-icon-button
           class="operation"
-          icon="hax:keyboard-arrow-up"
-          @click="${(e) => this.itemOp(index, "up")}"
-          title="Move up"
+          icon="hax:keyboard-arrow-down"
+          @click="${(e) => this.itemOp(index, "down")}"
+          title="Move down"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
         <simple-icon-button
@@ -483,14 +491,29 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     <li @click="${this.setActivePreview}" class="item content-child content-${part} indent-${indent}" data-node-index="${index}" data-content-parent-id="${itemId}" data-contents-collapsed>
       <simple-icon-lite icon="${icon}"></simple-icon-lite>
       <span class="label shown">${label}</span>
-      ${part === 'heading' ? html`<simple-icon-button icon="editor:format-page-break" @click="${this.pageBreakHere}" title="Promote to page"></simple-icon-button>` : ``}
+      ${part === 'heading' ? html`
+      <simple-icon-button
+          icon="hax:keyboard-arrow-up"
+          @click="${this.modifyHeadingLevel}"
+          title="Increase heading"
+          value="up"
+          ?disabled="${tagName === 'h1'}"
+        ></simple-icon-button>  
+        <simple-icon-button
+          icon="hax:keyboard-arrow-down"
+          @click="${this.modifyHeadingLevel}"
+          title="Decrease Heading"
+          value="down"
+          ?disabled="${tagName === 'h6'}"
+        ></simple-icon-button>
+      <simple-icon-button icon="editor:format-page-break" @click="${this.pageBreakHere}" title="Promote to page"></simple-icon-button>` : ``}
     </li>`;
   }
+  // preview of the item in question
   setActivePreview(e) {
     let target = e.target.closest('[data-content-parent-id]');
-    let itemId = target.getAttribute('data-content-parent-id');
     let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
-    this.activePreview = itemId;
+    this.activePreview = target;
     this.shadowRoot.querySelector('simple-popover').removeAttribute('hidden');
     // set target so it points to our current item
     this.shadowRoot.querySelector('simple-popover').target = target;
@@ -499,6 +522,71 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     e.stopPropagation();
     e.stopImmediatePropagation();
   }
+  // ability to mod the content to move heading up or down between h1 and h6
+  modifyHeadingLevel(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    // Take UI index and split at that dom node by recreating
+    // the structure. Bonkers.
+    let direction = e.target.value;
+    let target = e.target.closest('[data-content-parent-id]');
+    let itemId = target.getAttribute('data-content-parent-id');
+    let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
+    let item = this.items.find((item) => item.id === itemId);
+    let targetItemIndex;
+    this.items.map((item, index) => item.id === itemId ? targetItemIndex = index : null);
+    // should have contents but verify
+    if (item.contents) {
+      let div = document.createElement('div');
+      div.innerHTML = item.contents;
+      let content = '';
+      // walk up to the index in question
+      for (let i=0; i < div.childNodes.length; i++) {
+        let node = div.childNodes[i];
+        // so long as index is LOWER than the target, this is original item content
+        if (i < targetNodeIndex) {
+          content += node.outerHTML;
+        }
+        else if (i === targetNodeIndex) {
+          // heading to modify
+          let hlevel = parseInt(node.tagName.toLowerCase().replace('h',''));
+          let h;
+          if (direction === 'up' && hlevel > 1) {
+            h = document.createElement(`h${hlevel-1}`);
+            h.innerText = node.innerText;
+          }
+          else if (direction === 'down' && hlevel < 6) {
+            h = document.createElement(`h${hlevel+1}`);
+            h.innerText = node.innerText;
+          }
+          else {
+            // blocked operation
+            h = node;
+          }
+          content+= h.outerHTML;
+        }
+        else {
+          content += node.outerHTML;
+        }
+      }
+      item.contents = content;
+      this.resetPopOver();
+      this.requestUpdate();
+    }
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'activePreview' && oldValue) {
+        oldValue.classList.remove('active-preview-item');
+      }
+      if (propName === 'activePreview' && this[propName]) {
+        this[propName].classList.add('active-preview-item');
+      }
+    });
+  }
+  // split page to make another one at the heading level
   pageBreakHere(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -748,7 +836,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       eventData: { type: Object },
       items: { type: Array },
       appReady: { type: Boolean},
-      activePreview: { type: String },
+      activePreview: { type: Object },
       activePreviewIndex: { type: Number },
       hideContentOps: { type: Boolean, reflect: true, attribute: "hide-content-ops" },
     };
@@ -847,6 +935,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             if (index !== 0 && this.items[index].parent != this.items[index-1].id) {
               let parent = this.items[index-1];
               this.items[index].parent = parent.id;
+              // this is being made a child of the closest item to it in the array so therefore it's the 1st child
               this.items[index].order = 0;
               this.items[index].indent = parseInt(parent.indent)+1;
               this.items[index].modified = true;
@@ -859,6 +948,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               // move just after parent and take on it's parent
               let sibling = this.items.find(item => this.items[index].parent === item.id);
               this.items[index].parent = sibling.parent;
+              // @todo order needs to be more complex than this potentially
               this.items[index].order = parseInt(sibling.order)+1;
               this.items[index].indent = parseInt(sibling.indent);
               this.items[index].modified = true;
@@ -866,26 +956,58 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               this.recurseUpdateIndent(this.items[index], -1);
             }
           break;
+          case "up":
           case "down":
-            if (index < this.items.length) {
-              // @todo this needs to find thing after it
-              // and swap values
-              let element = this.items.splice(index, 1)[0];
-              element.modified = true;
-              element.order = parseInt(element.order)+1;
-              this.items.splice(index+1, 0, element);
+            this.setAttribute('stop-animation', 'true');
+            // thing in question
+            let element = this.items[index];
+            // find siblings of the current one by finding same parent
+            let siblings = [];
+            this.items.map((thing) => {
+              if (thing.parent === element.parent) {
+                siblings.push(thing);
+              }
+            });
+            // sort order at this level
+            siblings.sort((a,b) => {
+              if (a.order < b.order) {
+                return -1;
+              }
+              else if (a.order > b.order) {
+                return 1;
+              }
+              return 0;
+            });
+            console.log(siblings);
+            let swapSibling = null;
+            // find item just before us; can't use find bc its active 1 only
+            // or just after us
+            siblings.map((thing, i) => {
+              if (action === "up" && i > 0 && thing.id === element.id) {
+                swapSibling = siblings[i-1];
+              }
+              else if (action === "down" && i < (siblings.length-1) && thing.id === element.id) {
+                swapSibling = siblings[i+1];
+              }
+            });
+            // ensure we found something
+            if (swapSibling) {
+              // store this before we overwrite it
+              const swapOrder = parseInt(swapSibling.order + '.0');
+              const elOrder = parseInt(element.order + '.0');
+              this.items.map((thing, i) => {
+                if (thing.id === swapSibling.id) {
+                  this.items[i].order = elOrder;
+                  this.items[i].modified = true;
+                }
+                else if (thing.id === element.id) {
+                  this.items[i].order = swapOrder;
+                  this.items[i].modified = true;
+                }
+              });
+
             }
           break;
-          case "up":
-            if (index !== 0) {
-              // @todo this needs to find thing before it
-              // and swap values
-              let element = this.items.splice(index, 1)[0];
-              element.modified = true;
-              element.order = parseInt(element.order)-1;
-              this.items.splice(index-1, 0, element);
-            }
-            break;
         }
       } else if (action === "lock") {
         this.items[index].metadata.locked = false;
@@ -906,9 +1028,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         });
         if (newItem) {
           delete newItem.children;
-          newItems.push(
-            newItem
-          );  
+          newItems.push(newItem);
         }
       }
       setTimeout(() => {

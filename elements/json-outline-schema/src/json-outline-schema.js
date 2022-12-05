@@ -570,6 +570,22 @@ class JsonOutlineSchema extends HTMLElement {
       } else {
         parent.children = children;
       }
+      // sort order at this level
+      children.sort((a,b) => {
+        if (a.order < b.order) {
+          return -1;
+        }
+        else if (a.order > b.order) {
+          return 1;
+        }
+        return 0;
+      });
+      // forcibly reset the order based on how many child there are
+      // the previous sort will respect the order they came in
+      // and then this one ensures duplicate entries get healed
+      children.map((item, i) => {
+        children[i].order = i;
+      });
       children.forEach((child) => {
         this.unflattenItems(items, child);
       });
@@ -671,14 +687,6 @@ class JsonOutlineSchema extends HTMLElement {
       clone.removeChild(clone.firstChild);
     }
     return items;
-  }
-  /**
-   * Get Next Page
-   */
-  nextPage(manifest, activeItem) {
-    manifest.items = manifest.items
-      // top level
-      .sort((a, b) => {});
   }
 }
 customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
