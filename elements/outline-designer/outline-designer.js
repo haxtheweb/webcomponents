@@ -72,6 +72,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         --simple-icon-height: 24px;
         margin: 0 4px;
       }
+      .lock {
+        margin-right: 16px;
+      }
       .del {
         margin-left: 32px;
       }
@@ -373,7 +376,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <span class="label-edit" @keypress="${this.monitorTitle}" @keydown="${this.monitorEsc}"></span>
       <div class="operations">
         <simple-icon-button
-          class="operation"
+          class="operation lock"
           icon="${this.isLocked(index)
             ? "icons:lock"
             : "icons:lock-open"}"
@@ -382,9 +385,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ></simple-icon-button>
         <simple-icon-button
           class="operation"
-          icon="hax:keyboard-arrow-up"
-          @click="${(e) => this.itemOp(index, "up")}"
-          title="Move up"
+          icon="hax:outline-designer-outdent"
+          @click="${(e) => this.itemOp(index, "out")}"
+          title="Move next to parent"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
         <simple-icon-button
@@ -396,16 +399,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ></simple-icon-button>
         <simple-icon-button
           class="operation"
-          icon="hax:outline-designer-indent"
-          @click="${(e) => this.itemOp(index, "in")}"
-          title="Make child"
+          icon="hax:keyboard-arrow-up"
+          @click="${(e) => this.itemOp(index, "up")}"
+          title="Move up"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
         <simple-icon-button
           class="operation"
-          icon="hax:outline-designer-outdent"
-          @click="${(e) => this.itemOp(index, "out")}"
-          title="Move next to parent"
+          icon="hax:outline-designer-indent"
+          @click="${(e) => this.itemOp(index, "in")}"
+          title="Make child"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
         <simple-icon-button

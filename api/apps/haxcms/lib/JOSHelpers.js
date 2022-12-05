@@ -74,7 +74,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   const doc = parse(`<div id="wrapper">${html}</div>`);
   var data = {};
   if (dataInclude === null) {
-    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'images', 'headings', 'dataTables','specialTags', 'links', 'placeholders', 'siteremotecontent','readTime','video'];
+    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'images', 'h5p', 'headings', 'dataTables','specialTags', 'links', 'placeholders', 'siteremotecontent','readTime','video'];
   }
   for (let inc of dataInclude) {
     switch (inc) {
@@ -85,7 +85,10 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
         data[inc] = doc.querySelectorAll('audio,audio-player').length;
       break;
       case 'selfChecks':
-        data[inc] = doc.querySelectorAll('iframe.entity_iframe,self-check,multiple-choice').length;
+        data[inc] = doc.querySelectorAll('iframe.entity_iframe:not(.elmsmedia_h5p_content),self-check,multiple-choice').length;
+      break;
+      case 'h5p':
+        data[inc] = doc.querySelectorAll('iframe.elmsmedia_h5p_content,iframe[src*="h5p/embed"]').length;
       break;
       case 'objectives':
         data[inc] = doc.querySelectorAll('instruction-card[type="objectives"] li').length;
@@ -255,7 +258,8 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               audio: doc.querySelectorAll(`${itemSel} audio,${itemSel} audio-player`).length,
               placeholders: doc.querySelectorAll(`${itemSel} place-holder`).length,
               siteremotecontent: doc.querySelectorAll(`${itemSel} site-remote-content`).length,
-              selfChecks: doc.querySelectorAll(`${itemSel} iframe.entity_iframe,${itemSel} self-check,${itemSel} multiple-choice`).length,
+              selfChecks: doc.querySelectorAll(`${itemSel} iframe.entity_iframe:not(.elmsmedia_h5p_content),${itemSel} self-check,${itemSel} multiple-choice`).length,
+              h5p: doc.querySelectorAll(`${itemSel} iframe.elmsmedia_h5p_content,${itemSel} iframe[src*="h5p/embed"]`).length,
               objectives: doc.querySelectorAll(`${itemSel} instruction-card[type="objectives"] li`).length,
               images: doc.querySelectorAll(`${itemSel} media-image,${itemSel} img,${itemSel} simple-img`).length,
               dataTables: doc.querySelectorAll(`${itemSel} table`).length,
@@ -393,6 +397,9 @@ export function typeFromElement(el) {
     case 'iframe':
       if (el.getAttribute('src').includes('youtube.com') || el.getAttribute('src').includes('youtube-nocookie.com') || el.getAttribute('src').includes('vimeo.com')) {
         return 'video';
+      }
+      else if(el.getAttribute('class').includes('elmsmedia_h5p_content') || el.getAttribute('src').includes('h5p/embed')) {
+        return 'h5p';
       }
       return 'other';
     break;

@@ -199,6 +199,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             sort: "title",
             title: "",
             hasVideo: false,
+            hasH5P: false,
             hasLinks: false,
             hasImages: false,
             hasPlaceholders: false,
@@ -225,6 +226,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               property: "hasVideo",
               title: "Video",
               description: "Includes video",
+              inputMethod: "boolean",
+            },
+            {
+              property: "hasH5P",
+              title: "H5P",
+              description: "Includes h5p",
               inputMethod: "boolean",
             },
             {
@@ -281,6 +288,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 audio: this.t.audio,
                 video: this.t.video,
                 image: this.t.images,
+                h5p: "H5P",
                 document: "Document",
               },
             },
@@ -411,6 +419,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       title: val.title ? val.title : "",
       sort: val.sort,
       hasVideo: val.hasVideo,
+      hasH5P: val.hasH5P,
       hasPlaceholders: val.hasPlaceholders,
       hasSiteRemoteContent: val.hasSiteRemoteContent,
       hasLinks: val.hasLinks,
@@ -419,6 +428,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     if (this.data.contentData) {
       this.data.contentData = this.data.contentData.filter((item) => {
         if (this.filters.hasVideo === true && item.videos === 0) {
+          return false;
+        }
+        if (this.filters.hasH5P === true && item.h5p === 0) {
           return false;
         }
         if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
@@ -573,6 +585,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                             <p>${toHHMMSS(data.videoLength)}</p>
                             )`
                         : ``}
+                    </lesson-highlight>
+                  </li>`
+            }
+            ${
+              data.h5p == 0
+                ? ``
+                : html`<li>
+                    <lesson-highlight icon="lrn:interact">
+                      <p slot="title">${data.h5p} H5P</p>
                     </lesson-highlight>
                   </li>`
             }
@@ -771,6 +792,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 >${item.videos} ${this.t.videos}
                                               </li>`
                                             : ``}
+                                          ${item.h5p > 0
+                                            ? html`<li>
+                                                <simple-icon
+                                                  icon="lrn:interact"
+                                                ></simple-icon
+                                                >${item.h5p} H5P
+                                              </li>`
+                                            : ``}
+                                          
                                           ${item.placeholders > 0
                                             ? html`<li>
                                                 <simple-icon
@@ -914,6 +944,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                           ? html`<video-player
                                               source="${item.source}"
                                             ></video-player>`
+                                          : ``}
+                                        ${item.type == "h5p"
+                                          ? html`<iframe
+                                              src="${item.source}"
+                                            ></iframe>`
                                           : ``}
                                         ${item.type == "audio"
                                           ? html`<video-player
@@ -1062,6 +1097,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     switch (type) {
       case "video":
         return "red";
+      case "h5p":
+        return "purple";
       case "audio":
         return "orange";
       case "image":
