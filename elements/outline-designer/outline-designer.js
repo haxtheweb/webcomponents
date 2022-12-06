@@ -15,7 +15,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import { getRange } from "@lrnwebcomponents/utils/utils.js";
+import { encapScript } from "@lrnwebcomponents/utils/utils.js";
 /**
   * `outline-designer`
   * @element outline-designer
@@ -28,6 +28,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       css`
       :host {
         display: block;
+      }
+      simple-icon-button[hidden] {
+        visibility: hidden !important;
+        opacity: 0;
+        pointer-events: none;
       }
       .controls .control {
         border: 1px solid black;
@@ -73,17 +78,33 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         margin: 0 4px;
       }
       .lock {
-        margin-right: 16px;
+        margin-right: 16px !important;
       }
       .del {
-        margin-left: 32px;
+        margin-left: 32px !important;
       }
       .add {
-        margin-left: 16px;
+        margin-left: 16px !important;
       }
       li .operations {
         justify-content: space-evenly;
         display: flex;
+      }
+      .content-operation {
+        display: inline-flex;
+        opacity: 0;
+        visibility: hidden;
+        --simple-icon-width: 24px;
+        --simple-icon-height: 24px;
+        margin: 0 4px;
+      }
+      .content-operations {
+        justify-content: space-evenly;
+        display: flex;
+      }
+      li.content-child:hover .content-operation {
+        visibility: visible;
+        opacity: 1;
       }
       li[class*="collapsed-by-"] {
         opacity: 0;
@@ -98,6 +119,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         pointer-events: none;
         z-index: -1;
       }
+      /* content not rendered if hidden but in case we change that */
       li[data-contents-collapsed] {
         opacity: 0;
         height: 0px !important;
@@ -150,9 +172,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       .outline-designer-hovered .make-child-btn:hover {
         opacity: 1;
       }
-      .item.modified {
-        border-color: #ffa5a5;
-      }
       .modified .label::after {
         content: "*";
         color: red;
@@ -174,18 +193,27 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         border: 1px solid;
         border-color: grey;
         margin: 0;
-        padding: 8px;
+        padding: 4px;
         cursor: pointer;
         opacity: 1;
         visibility: visible;
-        height: 26px;
+        height: 42px;
         transition: .3s padding ease-in-out, .3s border ease-in-out,.3s margin ease-in-out;
+        overflow: hidden;
+        align-items: center;
+        justify-content: left;
+        display: flex;
       }
       .collapse-btn {
         visibility: hidden;
       }
       .item[data-has-children] .collapse-btn {
         visibility: visible;
+      }
+      .item[data-about-to-delete] {
+        background-color: #ffa5a5;
+        opacity: .5;
+        border-color: red;
       }
       .item:hover,
       .item:focus {
@@ -201,13 +229,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         font-weight: bold;
         min-width: 200px;
         margin-right: 8px;
-        max-width: 50%;
-        line-height: 2;
+        max-width: 40%;
+        line-height: 1.2;
         padding: 0 4px;
       }
 
       .content-child {
         margin-left: 46px;
+        padding: 8px;
+        height: 24px;
         border-top: none;
         border-bottom: none;
       }
@@ -282,6 +312,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.activeItemForActions = null;
     this.storeTools = false;
     this.hideContentOps = false;
     this.items = [];
@@ -379,7 +410,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <simple-icon-button-lite icon="hardware:keyboard-arrow-down" @click="${this.expandAll}" class="control">Expand all</simple-icon-button-lite>
     </div>
     <ul id="list">
-      ${this.items.map((item, index) => this.renderItem(item, index))}
+      ${this.items.map((item, index) => this.getItemParentsCollapsed(item) === '' ? this.renderItem(item, index) : ``)}
     </ul>
     <simple-popover auto for="list" hidden>
       <simple-icon-button @click="${this.resetPopOver}" title="Close" icon="cancel" class="close-btn"></simple-icon-button>
@@ -398,11 +429,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         for (let i=0; i < div.childNodes.length; i++) {
           let node = div.childNodes[i];
           if (i === targetNodeIndex) {
-            return html`${unsafeHTML(node.outerHTML)}`;
+            // unsafe, but we encap script so should be.
+            return html`${unsafeHTML(encapScript(node.outerHTML))}`;
           }
         }
       }
     }
+  }
+
+  setActiveItemForActions(e) {
+    this.activeItemForActions = e.target.closest("[data-item-id]").getAttribute('data-item-id');
   }
 
   renderItem(item, index) {
@@ -410,14 +446,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     <li
       @dragenter="${this._dragEnter}"
       @dragleave="${this._dragLeave}"
+      @mouseenter="${this.setActiveItemForActions}"
       class="item indent-${item.indent < 20 ? item.indent : 20} ${item.modified ? 'modified' : ''} ${this.getItemParentsCollapsed(item)}"
       data-item-id="${item.id}"
       data-parents="${this.getItemParents(item)}"
       ?data-has-children="${this.hasChildren(item.id)}"
+      ?data-about-to-delete="${item.delete}"
     >
       <simple-icon-button
-        class="collapse-btn"
         ?disabled="${this.isLocked(index)}"
+        class="collapse-btn"
         icon="${this.isCollapsed(item.id) ? `hardware:keyboard-arrow-right` : `hardware:keyboard-arrow-down`}"
         @click="${this.collapseExpand}"></simple-icon-button>
       <simple-icon-button
@@ -428,7 +466,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         icon="hax:arrow-all"></simple-icon-button>
       <simple-icon-button-lite
         ?disabled="${this.isLocked(index)}"
-        ?hidden="${this.hideContentOps}"
+        ?hidden="${this.hideContentOps || item.contents === ''}"
         icon="editor:insert-drive-file"
         @click="${this.toggleContent}"
         title="Content structure"
@@ -439,6 +477,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <span class="label shown" ?disabled="${this.isLocked(index)}" @dblclick="${this.editTitle}">${item.title}</span>
       <span class="label-edit" @keypress="${this.monitorTitle}" @keydown="${this.monitorEsc}"></span>
       <div class="operations">
+        ${this.activeItemForActions === item.id ? html`
         <simple-icon-button
           class="operation lock"
           icon="${this.isLocked(index)
@@ -493,15 +532,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ></simple-icon-button>
         <simple-icon-button
           class="operation del"
-          icon="delete"
+          icon="${!item.delete ? "delete": "hax:delete-restore"}"
           accent-color="red"
           @click="${(e) => this.itemOp(index, "delete")}"
-          title="Delete"
+          title="${!item.delete ? "Delete": "Restore"}"
           ?disabled="${this.isLocked(index)}"
         ></simple-icon-button>
+        ` : ``}
       </div>
     </li>
-    ${!this.hideContentOps ? this.renderItemContents(item) : ``}
+    ${!this.hideContentOps && item.showContent ? this.renderItemContents(item) : ``}
     `;
   }
 
@@ -560,29 +600,65 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }  
     return html`
     <li 
-      @click="${this.setActivePreview}"
       class="item content-child content-${part} indent-${indent < 20 ? indent : 20}" 
       data-node-index="${index}"
       data-content-parent-id="${item.id}" 
-      ?data-contents-collapsed="${!item.showContent}">
-      <simple-icon-lite icon="${icon}"></simple-icon-lite>
-      <span class="label shown">${label}</span>
+      ?data-contents-collapsed="${!item.showContent}"
+      ?data-about-to-delete="${item.delete}">
+      <simple-icon-button-lite icon="${icon}" title="Click to preview" @click="${this.setActivePreview}"
+></simple-icon-button-lite>
       ${part === 'heading' ? html`
+      <span class="label shown" ?disabled="${item.metadata.locked}" @dblclick="${this.editTitle}">${label}</span>
+      <span class="label-edit" @keypress="${this.monitorHeading}" @keydown="${this.monitorEsc}"></span>
+      ` : html `<span class="label shown">${label}</span>`}
+      <div class="content-operations">
+      <simple-icon-button
+          class="content-operation"
+          icon="hax:outline-designer-outdent"
+          @click="${(e) => this.modifyContentAction(e, item,  "in")}"
+          title="Increase heading"
+          ?disabled="${tagName === 'h1' || item.metadata.locked}"
+          ?hidden="${part !== 'heading'}"
+        ></simple-icon-button>
       <simple-icon-button
           icon="hax:keyboard-arrow-up"
-          @click="${this.modifyHeadingLevel}"
-          title="Increase heading"
-          value="up"
-          ?disabled="${tagName === 'h1'}"
+          @click="${(e) => this.modifyContentAction(e, item,  "up")}"
+          title="Move up"
+          ?disabled="${item.metadata.locked}"
+          class="content-operation"
         ></simple-icon-button>  
         <simple-icon-button
           icon="hax:keyboard-arrow-down"
-          @click="${this.modifyHeadingLevel}"
-          title="Decrease Heading"
-          value="down"
-          ?disabled="${tagName === 'h6'}"
+          @click="${(e) => this.modifyContentAction(e, item,  "down")}"
+          title="Move down"
+          ?disabled="${item.metadata.locked}"
+          class="content-operation"
         ></simple-icon-button>
-      <simple-icon-button icon="editor:format-page-break" @click="${this.pageBreakHere}" title="Promote to page"></simple-icon-button>` : ``}
+        <simple-icon-button
+          class="content-operation"
+          icon="hax:outline-designer-indent"
+          @click="${(e) => this.modifyContentAction(e, item, "out")}"
+          title="Decrease Heading"
+          ?disabled="${tagName === 'h6' || item.metadata.locked}"
+          ?hidden="${part !== 'heading'}"
+        ></simple-icon-button>
+        <simple-icon-button 
+          class="content-operation" 
+          icon="editor:format-page-break"
+          @click="${(e) => this.pageBreakHere(e, item)}"
+          title="Promote to page"
+          ?disabled="${item.metadata.locked}"
+          ?hidden="${part !== 'heading'}"
+          ></simple-icon-button>
+        <simple-icon-button
+          icon="delete"
+          @click="${(e) => this.modifyContentAction(e, item,  'delete')}"
+          class="content-operation del"
+          title="Delete"
+          ?disabled="${item.metadata.locked}"
+          accent-color="red"
+        ></simple-icon-button>
+      </div>
     </li>`;
   }
   // preview of the item in question
@@ -599,54 +675,82 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     e.stopImmediatePropagation();
   }
   // ability to mod the content to move heading up or down between h1 and h6
-  modifyHeadingLevel(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    // Take UI index and split at that dom node by recreating
-    // the structure. Bonkers.
-    let direction = e.target.value;
-    let target = e.target.closest('[data-content-parent-id]');
-    let itemId = target.getAttribute('data-content-parent-id');
-    let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
-    let item = this.items.find((item) => item.id === itemId);
-    // should have contents but verify
-    if (item.contents) {
-      let div = document.createElement('div');
-      div.innerHTML = item.contents;
-      let content = '';
-      // walk up to the index in question
-      for (let i=0; i < div.childNodes.length; i++) {
-        let node = div.childNodes[i];
-        // so long as index is LOWER than the target, this is original item content
-        if (i < targetNodeIndex) {
-          content += node.outerHTML;
+  modifyContentAction(e, item, action) {
+    if (!item.metadata.locked) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      // Take UI index and split at that dom node by recreating
+      // the structure. Bonkers.
+      let target = e.target.closest('[data-content-parent-id]');
+      let itemId = target.getAttribute('data-content-parent-id');
+      let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
+      let item = this.items.find((item) => item.id === itemId);
+      // should have contents but verify
+      if (item.contents) {
+        let div = document.createElement('div');
+        div.innerHTML = item.contents;
+        let content = '';
+        // up / down require reorganization prior to html calculation
+        switch (action) {
+          case "up":
+            if (targetNodeIndex !== 0) {
+              div.childNodes[targetNodeIndex].previousElementSibling.insertAdjacentElement("beforebegin", div.childNodes[targetNodeIndex]);
+            }
+          break;
+          case "down":
+            if (targetNodeIndex !== div.childNodes.length-1) {
+              div.childNodes[targetNodeIndex].nextElementSibling.insertAdjacentElement("afterend", div.childNodes[targetNodeIndex]);
+            }
+          break;
         }
-        else if (i === targetNodeIndex) {
-          // heading to modify
-          let hlevel = parseInt(node.tagName.toLowerCase().replace('h',''));
-          let h;
-          if (direction === 'up' && hlevel > 1) {
-            h = document.createElement(`h${hlevel-1}`);
-            h.innerText = node.innerText;
+        // walk up to the index in question
+        for (let i=0; i < div.childNodes.length; i++) {
+          let node = div.childNodes[i];
+          // so long as index is LOWER than the target, this is original item content
+          if (i < targetNodeIndex) {
+            content += node.outerHTML;
           }
-          else if (direction === 'down' && hlevel < 6) {
-            h = document.createElement(`h${hlevel+1}`);
-            h.innerText = node.innerText;
+          else if (i === targetNodeIndex) {
+            switch (action) {
+              case 'delete':
+                // do nothing as we skip this, effectively deleting it
+                this.setAttribute('stop-animation', 'true');
+              break;
+              case "up":
+              case "down":
+                // up and down happen prior to here
+                content += node.outerHTML;
+              break;
+              case "in":
+              case "out":
+                // heading to modify
+                let hlevel = parseInt(node.tagName.toLowerCase().replace('h',''));
+                let h;
+                if (action === 'in' && hlevel > 1) {
+                  h = document.createElement(`h${hlevel-1}`);
+                  h.innerText = node.innerText;
+                }
+                else if (action === 'out' && hlevel < 6) {
+                  h = document.createElement(`h${hlevel+1}`);
+                  h.innerText = node.innerText;
+                }
+                else {
+                  // blocked operation
+                  h = node;
+                }
+                content+= h.outerHTML;
+              break;
+            }
           }
           else {
-            // blocked operation
-            h = node;
+            content += node.outerHTML;
           }
-          content+= h.outerHTML;
         }
-        else {
-          content += node.outerHTML;
-        }
+        item.contents = content;
+        this.resetPopOver();
+        this.__syncUIAndDataModel();
       }
-      item.contents = content;
-      this.resetPopOver();
-      this.requestUpdate();
     }
   }
   updated(changedProperties) {
@@ -661,58 +765,60 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     });
   }
   // split page to make another one at the heading level
-  pageBreakHere(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    // Take UI index and split at that dom node by recreating
-    // the structure. Bonkers.
-    let target = e.target.closest('[data-content-parent-id]');
-    let itemId = target.getAttribute('data-content-parent-id');
-    let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
-    let item = this.items.find((item) => item.id === itemId);
-    let targetItemIndex;
-    this.items.map((item, index) => item.id === itemId ? targetItemIndex = index : null);
-    // should have contents but verify
-    if (item.contents) {
-      let div = document.createElement('div');
-      div.innerHTML = item.contents;
-      let oldContent = '';
-      let newContent = '';
-      let title = this.t.newPage;
-      // walk up to the index in question
-      for (let i=0; i < div.childNodes.length; i++) {
-        let node = div.childNodes[i];
-        // so long as index is LOWER than the target, this is original item content
-        if (i < targetNodeIndex) {
-          oldContent += node.outerHTML;
-        }
-        else if (i === targetNodeIndex) {
-          if (node.innerText != '') {
-            title = node.innerText;
+  pageBreakHere(e, item) {
+    if (!item.metadata.locked) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      // Take UI index and split at that dom node by recreating
+      // the structure. Bonkers.
+      let target = e.target.closest('[data-content-parent-id]');
+      let itemId = target.getAttribute('data-content-parent-id');
+      let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
+      let item = this.items.find((item) => item.id === itemId);
+      let targetItemIndex;
+      this.items.map((item, index) => item.id === itemId ? targetItemIndex = index : null);
+      // should have contents but verify
+      if (item.contents) {
+        let div = document.createElement('div');
+        div.innerHTML = item.contents;
+        let oldContent = '';
+        let newContent = '';
+        let title = this.t.newPage;
+        // walk up to the index in question
+        for (let i=0; i < div.childNodes.length; i++) {
+          let node = div.childNodes[i];
+          // so long as index is LOWER than the target, this is original item content
+          if (i < targetNodeIndex) {
+            oldContent += node.outerHTML;
+          }
+          else if (i === targetNodeIndex) {
+            if (node.innerText != '') {
+              title = node.innerText;
+            }
+          }
+          else {
+            newContent += node.outerHTML;
           }
         }
-        else {
-          newContent += node.outerHTML;
-        }
+        item.contents = oldContent;
+        // create a new item
+        let newItem = new JSONOutlineSchemaItem();
+        newItem.title = title;
+        newItem.slug = newItem.id;
+        newItem.order = item.order + 1;
+        newItem.parent = item.parent;
+        newItem.indent = item.indent;
+        newItem.metadata.locked = false;
+        newItem.new = true;
+        newItem.contents = newContent;
+        // set modified on targetItemIndex
+        this.items[targetItemIndex].modified = true;
+        // splice back into the items array just below where we issued the split
+        this.items.splice(targetItemIndex+1, 0, newItem);
+        this.resetPopOver();
+        this.__syncUIAndDataModel();
       }
-      item.contents = oldContent;
-      // create a new item
-      let newItem = new JSONOutlineSchemaItem();
-      newItem.title = title;
-      newItem.slug = newItem.id;
-      newItem.order = item.order + 1;
-      newItem.parent = item.parent;
-      newItem.indent = item.indent;
-      newItem.metadata.locked = false;
-      newItem.new = true;
-      newItem.contents = newContent;
-      // set modified on targetItemIndex
-      this.items[targetItemIndex].modified = true;
-      // splice back into the items array just below where we issued the split
-      this.items.splice(targetItemIndex+1, 0, newItem);
-      this.resetPopOver();
-      this.__syncUIAndDataModel();
     }
   }
   // common update
@@ -792,16 +898,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     let itemId = e.target.closest("[data-item-id]").getAttribute('data-item-id');
     // find the item and act on it's index to toggle content collapse status
     this.items.map((item, index) => {
-      if (item.id === itemId) {
+      if (item.id === itemId && !this.isLocked(index)) {
         if (this.items[index].collapsed) {
           this.items[index].collapsed = false;
         }
         else {
           this.items[index].collapsed = true;
         }          
+        this.requestUpdate();
       }
     });
-    this.requestUpdate();
   }
 
   toggleContent(e) {
@@ -865,6 +971,42 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }
   }
 
+  monitorHeading(e) {
+    if (e.key === 'Enter') {
+      e.target.classList.remove('shown');
+      e.target.previousElementSibling.classList.add('shown');
+      e.target.removeAttribute('contenteditable');
+      let target = e.target.closest('[data-content-parent-id]');
+      let itemId = target.getAttribute('data-content-parent-id');
+      let targetNodeIndex = parseInt(target.getAttribute('data-node-index'));
+      let item = this.items.find((item) => item.id === itemId);
+      // should have contents but verify
+      if (item.contents) {
+        let div = document.createElement('div');
+        div.innerHTML = item.contents;
+        let content = '';
+        // walk up to the index in question
+        for (let i=0; i < div.childNodes.length; i++) {
+          let node = div.childNodes[i];
+          // so long as index is LOWER than the target, this is original item content
+          if (i < targetNodeIndex) {
+            content += node.outerHTML;
+          }
+          else if (i === targetNodeIndex) {
+            node.innerText = e.target.innerText;
+            content += node.outerHTML;
+          }
+          else {
+            content += node.outerHTML;
+          }
+        }
+        item.contents = content;
+        this.resetPopOver();
+        this.requestUpdate();
+      }
+    }
+  }
+
   monitorEsc(e) {
     if (e.key === 'Escape') {
       e.target.classList.remove('shown');
@@ -882,7 +1024,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     });
     setTimeout(() => {
-      this.requestUpdate();      
+      this.requestUpdate();
     }, 0);
   }
   /**
@@ -960,6 +1102,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      activeItemForActions: { type: String },
       storeTools: { type: Boolean },
       eventData: { type: Object },
       items: { type: Array },
@@ -1068,6 +1211,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       newItem.contents = child.contents;
       // maintain collapsed state for clarity in larger structures
       newItem.collapsed = child.collapsed;
+      // store a reference to where this came from
+      newItem.duplicate = children[i].id;
       // map old id to new one
       map[children[i].id] = newItem.id;
       newItems.push(newItem);
@@ -1076,6 +1221,28 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     }
     return newItems;
+  }
+  // apply an action recursively to children of children
+  recurseAction(itemId, action, value = true) {
+    let children = this.items.filter((item) => item.parent == itemId);
+    for (let i=0; i < children.length; i++) {
+      this.items.map((item, index) => {
+        if (item.id === children[i].id) {
+          switch (action) {
+            case 'delete':
+              this.items[index].delete = value;
+            break;
+            case 'lock':
+              this.items[index].metadata.locked = value;
+            break;
+          }
+        }
+      });
+      if (this.hasChildren(children[i].id)) {
+        this.recurseAction(children[i].id, action, value);
+      }
+    }
+    return true;
   }
 
   // operations that can be clicked individually per item
@@ -1086,10 +1253,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         switch (action) {
           case "lock":
             this.items[index].metadata.locked = true;
+            if (this.hasChildren(this.items[index].id)) {
+              this.recurseAction(this.items[index].id, action, this.items[index].metadata.locked);
+            }
             break;
           case "delete":
-            this.setAttribute('stop-animation', 'true');
-            this.items.splice(index, 1);
+            if (this.items[index].delete) {
+              this.items[index].delete = false;
+            }
+            else {
+              this.items[index].delete = true;
+            }
+            if (this.hasChildren(this.items[index].id)) {
+              this.recurseAction(this.items[index].id, action, this.items[index].delete);
+            }
             break;
           case "add":
             this.setAttribute('stop-animation', 'true');
@@ -1174,8 +1351,12 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             }
           break;
         }
+      // has to be on its own bc we block ALL actions if we are locked
       } else if (action === "lock") {
         this.items[index].metadata.locked = false;
+        if (this.hasChildren(this.items[index].id)) {
+          this.recurseAction(this.items[index].id, action, this.items[index].metadata.locked);
+        }
       }
       this.__syncUIAndDataModel();
     }
