@@ -3,7 +3,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import "@lrnwebcomponents/editable-outline/editable-outline.js";
+import "@lrnwebcomponents/outline-designer/outline-designer.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
@@ -43,7 +43,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         simple-icon {
           margin-right: 4px;
         }
-        editable-outline:not(:defined) {
+        outline-designer:not(:defined) {
           display: none;
         }
         #toggle {
@@ -85,12 +85,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   // render function
   render() {
     return html`
-      <editable-outline
+      <outline-designer
         id="outline"
         edit-mode
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
-      ></editable-outline>
+      ></outline-designer>
       <div class="buttons">
         <button @click="${this._saveTap}" class="hax-modal-btn">
           ${this.t.save}
@@ -104,6 +104,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   constructor() {
     super();
     this.__disposer = [];
+    this.manifestItems = [];
     this.viewMode = false;
     this.t = this.t || {};
     this.t = {
@@ -183,12 +184,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
     }
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
-  }
+
   connectedCallback() {
     super.connectedCallback();
     autorun((reaction) => {
@@ -209,15 +205,16 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   /**
    * Save hit, send the message to push up the outline changes.
    */
-  _saveTap(e) {
+  async _saveTap(e) {
     store.playSound("click");
+    const data = await this.shadowRoot
+    .querySelector("#outline").getData();
+    console.log(data);
     window.dispatchEvent(
       new CustomEvent("haxcms-save-outline", {
         bubbles: true,
         composed: true,
-        detail: this.shadowRoot
-          .querySelector("#outline")
-          .exportJsonOutlineSchemaItems(true),
+        detail: data.items,
       })
     );
     setTimeout(() => {

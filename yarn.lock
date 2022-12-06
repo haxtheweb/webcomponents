@@ -3928,6 +3928,13 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
+"@polymer/iron-swipeable-container@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-swipeable-container/-/iron-swipeable-container-3.0.1.tgz#171e69df75190d08a2a6b9c7d71a13e2ac481df1"
+  integrity sha512-BZvha8HY29HColpO6UsQAys+gralSjierrJoU56zDiGvkkU5brgXGmvCFRdq4W13bbobGMlWvxguXTjAC9qGnA==
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
 "@polymer/iron-validatable-behavior@^3.0.0-pre.26", "@polymer/iron-validatable-behavior@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-validatable-behavior/-/iron-validatable-behavior-3.0.1.tgz#73538f005a07741c31b6fc1e981168c3d3e0d92b"

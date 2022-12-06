@@ -873,6 +873,7 @@ class HAXCMSSiteEditor extends LitElement {
               const outline = document.createElement("outline-designer");
               outline.items = response.data.items;
               outline.eventData = reqBody;
+              outline.storeTools = true;
 
               const b1 = document.createElement("button");
               b1.innerText = "Confirm";
