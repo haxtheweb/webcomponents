@@ -561,7 +561,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     return html`
     <li 
       @click="${this.setActivePreview}"
-      class="item content-child content-${part} indent-${item.indent < 20 ? item.indent : 20}" 
+      class="item content-child content-${part} indent-${indent < 20 ? indent : 20}" 
       data-node-index="${index}"
       data-content-parent-id="${item.id}" 
       ?data-contents-collapsed="${!item.showContent}">
