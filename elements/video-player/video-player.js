@@ -155,6 +155,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         ],
         meta: {
           author: "HAXTheWeb core team",
+          outlineDesigner: true,
         },
       },
       settings: {

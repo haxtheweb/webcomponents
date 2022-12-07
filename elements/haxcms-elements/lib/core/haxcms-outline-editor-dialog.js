@@ -23,10 +23,11 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          height: 60vh;
-          min-width: 40vw;
+          height: 70vh;
           overflow: auto;
           padding-bottom: 40px;
+          padding-top: 16px;
+          min-width: 70vw;
         }
         .buttons {
           position: absolute;
@@ -34,7 +35,8 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           z-index: 1000000;
           background-color: var(--simple-modal-titlebar-background, #000000);
           left: 0;
-          right: 32px;
+          right: 0px;
+          padding-left: 8px;
         }
         .buttons button {
           color: black;
@@ -53,7 +55,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         button.hax-modal-btn {
           font-size: 30px;
           padding: 8px;
-          margin: 4px;
+          margin: 4px 8px;
           color: white;
           background-color: green;
           border: 4px solid black;
@@ -209,25 +211,49 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     store.playSound("click");
     const data = await this.shadowRoot
     .querySelector("#outline").getData();
-    console.log(data);
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-outline", {
-        bubbles: true,
-        composed: true,
-        detail: data.items,
-      })
-    );
-    setTimeout(() => {
-      // ensure things don't conflict w/ the modal if its around
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
+    let deleted = 0;
+    let modified = 0;
+    let added = 0;
+    data.items.map((item) => {
+      if (item.delete) {
+        deleted++;
+      }
+      else if (item.new) {
+        added++;
+      }
+      else if (item.modified) {
+        modified++;
+      }
+    });
+    let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+    let confirmation = false;
+    // no confirmation required if there are no tracked changes
+    if (sumChanges == '') {
+      confirmation = true;
+    }
+    else {
+      confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+    }
+    if (confirmation) {
+      window.dispatchEvent(
+        new CustomEvent("haxcms-save-outline", {
           bubbles: true,
           composed: true,
-          cancelable: false,
-          detail: false,
+          detail: data.items,
         })
       );
-    }, 0);
+      setTimeout(() => {
+        // ensure things don't conflict w/ the modal if its around
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          })
+        );
+      }, 0);
+    }
   }
   _cancelTap(e) {
     store.playSound("error");

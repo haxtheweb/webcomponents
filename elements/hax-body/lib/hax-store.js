@@ -2366,6 +2366,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ],
         meta: {
           author: "W3C",
+          outlineDesigner: true, // you sly dog you..
         },
       },
       settings: {
@@ -2592,14 +2593,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            meta: {
-              hidden: tag == "h2" ? false : true,
-            },
             groups: ["Content"],
             handles: prims[tag].handles || [],
             meta: {
               author: "HAXTheWeb core team",
               inlineOnly: true,
+              hidden: tag == "h2" ? false : true,
+              outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },
           settings: {

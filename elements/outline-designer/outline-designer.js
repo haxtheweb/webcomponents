@@ -15,7 +15,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import { encapScript } from "@lrnwebcomponents/utils/utils.js";
+import { encapScript, haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 /**
   * `outline-designer`
   * @element outline-designer
@@ -33,6 +33,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         visibility: hidden !important;
         opacity: 0;
         pointer-events: none;
+        padding: 0;
+        margin: 0;
+        height: 0;
+        border: 0;
+      }
+      .controls {
+        position: sticky;
+        top: -32px;
+        background-color: white;
+        z-index: 1;
+        padding: 16px 0 8px 0;
       }
       .controls .control {
         border: 1px solid black;
@@ -74,6 +85,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         --simple-icon-width: 24px;
         --simple-icon-height: 24px;
         margin: 0 4px;
+      }
+      .content-adding-operations .operation {
+        display: inline-flex;
+        --simple-icon-width: 24px;
+        --simple-icon-height: 24px;
+        margin: 0 4px;
+        border: 1px solid black;
+        border-radius: 0;
+        padding: 4px;
       }
       .lock {
         margin-right: 16px !important;
@@ -212,6 +232,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       .item[data-about-to-delete][hidden] {
         visibility: hidden !important;
         opacity: 0 !important;
+        padding: 0;
+        margin: 0;
+        height: 0;
+        border: 0;
       }
       .item:hover,
       .item:focus {
@@ -310,6 +334,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.haxGizmos = [];
     this.hideDelete = false;
     this.activeItemForActions = null;
     this.storeTools = false;
@@ -339,6 +364,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     });
     autorun(() => {
       this.appReady = toJS(store.appReady);
+    });
+    // valid list of hax Gizmos
+    autorun(() => {
+      this.haxGizmos = toJS(HAXStore.gizmoList).filter((schema) => {
+        if (schema && schema.meta && schema.meta.outlineDesigner) {
+          return true;
+        }
+        return false;
+      });
     });
     this.addEventListener('click', this.resetPopOver.bind(this));
   }
@@ -405,6 +439,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <simple-fields-field id="itemselector" type="select" value="${this.activeId}" .itemsList="${this.getSiteItems()}"></simple-fields-field>
       <label for="itemselector">${this.t.importContentUnderThisPage}</label>
       `: ``}
+      <simple-icon-button-lite
+          class="control"
+          icon="add"
+          @click="${this.addItemToTop}"
+        >Add page</simple-icon-button-lite>
       <simple-icon-button-lite icon="hardware:keyboard-arrow-right" @click="${this.collapseAll}" class="control">Collapse all</simple-icon-button-lite>
       <simple-icon-button-lite icon="hardware:keyboard-arrow-down" @click="${this.expandAll}" class="control">Expand all</simple-icon-button-lite>
       ${this.hasDeletedItems() ? html`<simple-icon-button-lite icon="delete" @click="${this.toggleDelete}" class="control">${!this.hideDelete ? "Hide Deleted" : "Show Deleted"}</simple-icon-button-lite>` : ``}
@@ -565,7 +604,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
 
   renderItemContents(item) {
-    let render = [];
+    let render = [this.itemContentsOperations(item)];
     if (item.contents) {
       let div = document.createElement('div');
       div.innerHTML = item.contents;
@@ -586,6 +625,42 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       });
     }
     return render;
+  }
+  // support very, very, very basic content adding
+  itemContentsOperations(item) {
+    return html`
+    <li 
+      class="item content-adding-operations indent-${item.indent < 20 ? item.indent : 20}" 
+      data-item-for-content-id="${item.id}" 
+      ?data-contents-collapsed="${!item.showContent}"
+      ?data-about-to-delete="${item.delete}"
+      ?hidden="${this.hideDelete && item.delete}">
+      ${this.haxGizmos.map(gizmo => html`
+      <simple-icon-button-lite class="operation" icon="${gizmo.icon}" value="${gizmo.tag}" @click="${this.prependNodeToContent}"
+      >Add ${gizmo.title}</simple-icon-button-lite>
+      `)}
+    </li>`;
+  }
+  // add content to the top of the item in question
+  prependNodeToContent(e) {
+    let itemId = e.target.closest('[data-item-for-content-id]').getAttribute('data-item-for-content-id');
+    console.log(this.haxGizmos);
+    this.items.map((item, index) => {
+      if (item.id === itemId && e.target.value) {
+        // @todo add support for surfacing these options from the HAX schema
+        // could be something like a gizmo.metadata.outlineDesigner = true flag
+        let schema = HAXStore.haxSchemaFromTag(e.target.value);
+        let node;
+        if (schema.gizmo && schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+          node = haxElementToNode(schema.demoSchema[0]);
+        } else {
+          node = document.createElement(tag);
+        }
+        this.items[index].contents = node.outerHTML + item.contents;
+        this.resetPopOver();
+        this.__syncUIAndDataModel();
+      }
+    });
   }
   // render a content node within an item
   renderNodeAsItem(node, index, item, indent) {
@@ -1115,6 +1190,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      haxGizmos: { type: Array },
       hideDelete: { type: Boolean },
       activeItemForActions: { type: String },
       storeTools: { type: Boolean },
@@ -1132,6 +1208,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
    */
   static get tag() {
     return "outline-designer";
+  }
+
+  // modifier for adding to the top of the stack
+  addItemToTop() {
+    this.setAttribute('stop-animation', 'true');
+    this.addNewItem('top');
+    this.__syncUIAndDataModel();
   }
 
   /**
@@ -1181,9 +1264,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   // add a new page or duplicate
   addNewItem(targetItemIndex, duplicate = false, newItems = []) {
+    let orderAddon = 1;
+    if (targetItemIndex === 'top') {
+      targetItemIndex = 0;
+      orderAddon = -1;
+    }
     const item = this.items[targetItemIndex];
     let newItem = new JSONOutlineSchemaItem();
-    newItem.order = item.order + 1;
+    newItem.order = item.order + orderAddon;
     newItem.parent = item.parent;
     newItem.indent = item.indent;
     newItem.slug = newItem.id;
