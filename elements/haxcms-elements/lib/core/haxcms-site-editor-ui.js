@@ -415,8 +415,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       editPageContent: "Edit page",
       newJourney: "New Journey",
       accountInfo: "Account Info",
-      siteOutline: "Site outline",
-      moreOptions: "More options",
+      outlineDesigner: "Outline designer",
+      more: "More",
       insights: "Insights",
       logOut: "Log out",
       menu: "Menu",
@@ -543,40 +543,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             show-text-label
             voice-command="edit (this) page"
           ></simple-toolbar-button>
-          <simple-toolbar-button
-            id="insightsbutton"
-            icon="hax:clipboard-pulse"
-            icon-position="top"
-            @click="${this._insightsButtonTap}"
-            label="${this.t.insights}"
-            show-text-label
-            voice-command="insights"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            id="editdetails"
-            hidden
-            ?disabled="${this.editMode}"
-            icon="hax:page-details"
-            icon-position="top"
-            @click="${this._editDetailsButtonTap}"
-            label="${this.t.editDetails}"
-            show-text-label
-            voice-command="edit (page) details"
-            part="detailsbtn"
-            tabindex="${this.editMode ? "-1" : "0"}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            ?disabled="${this.editMode}"
-            tabindex="${this.editMode ? "-1" : "0"}"
-            id="deletebutton"
-            hidden
-            icon-position="top"
-            icon="icons:delete"
-            @click="${this._deleteButtonTap}"
-            label="${this.t.deletePage}"
-            show-text-label
-            voice-command="delete page"
-          ></simple-toolbar-button>
           <simple-toolbar-menu
             id="addmenubutton"
             ?disabled="${this.editMode}"
@@ -625,25 +591,62 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
+          <simple-toolbar-button
+            ?disabled="${this.editMode}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+            id="deletebutton"
+            hidden
+            icon-position="top"
+            icon="icons:delete"
+            @click="${this._deleteButtonTap}"
+            label="${this.t.deletePage}"
+            show-text-label
+            voice-command="delete page"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            ?disabled="${this.editMode}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+            id="outlinebutton"
+            @click="${this._outlineButtonTap}"
+            icon-position="top"
+            icon="hax:site-map"
+            part="outlinebtn"
+            show-text-label
+            label="${this.t.outlineDesigner}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            ?disabled="${this.editMode}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+            id="insightsbutton"
+            icon="hax:clipboard-pulse"
+            icon-position="top"
+            @click="${this._insightsButtonTap}"
+            label="${this.t.insights}"
+            show-text-label
+            voice-command="insights"
+          ></simple-toolbar-button>
           <simple-toolbar-menu
             show-text-label
             ?disabled="${this.editMode}"
-            icon="hax:settings"
+            icon="more-vert"
             icon-position="top"
-            label="${this.t.moreOptions}"
+            label="${this.t.more}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
             <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                id="outlinebutton"
-                @click="${this._outlineButtonTap}"
-                icon-position="left"
-                icon="hax:site-map"
-                part="outlinebtn"
-                show-text-label
-                tabindex="${this.editMode ? "0" : "-1"}"
-                label="${this.t.siteOutline}"
-              ></simple-toolbar-button>
+            <simple-toolbar-button
+              id="editdetails"
+              hidden
+              ?disabled="${this.editMode}"
+              icon="hax:page-details"
+              icon-position="left"
+              @click="${this._editDetailsButtonTap}"
+              label="${this.t.editDetails}"
+              show-text-label
+              voice-command="edit (page) details"
+              part="detailsbtn"
+              tabindex="${this.editMode ? "-1" : "0"}"
+            ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <simple-toolbar-button
@@ -1306,7 +1309,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       composed: true,
       cancelable: false,
       detail: {
-        title: this.t.siteOutline,
+        title: this.t.outlineDesigner,
         styles: {
           "--simple-modal-titlebar-background": "orange",
           "--simple-modal-titlebar-color": "black",

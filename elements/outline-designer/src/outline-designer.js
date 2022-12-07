@@ -71,8 +71,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
       .operation {
         display: inline-flex;
-        opacity: 0;
-        visibility: hidden;
         --simple-icon-width: 24px;
         --simple-icon-height: 24px;
         margin: 0 4px;
@@ -135,10 +133,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
       li simple-icon-button:hover {
         background-color: #f5f5f5;
-      }
-      li:hover .operation {
-        visibility: visible;
-        opacity: 1;
       }
       .active-preview-item {
         outline: 1px solid grey;
@@ -465,6 +459,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       @mouseenter="${this.setActiveItemForActions}"
       class="item indent-${item.indent < 20 ? item.indent : 20} ${item.modified ? 'modified' : ''} ${this.getItemParentsCollapsed(item)}"
       data-item-id="${item.id}"
+      @focusin="${this.setActiveItemForActions}"
       data-parents="${this.getItemParents(item)}"
       ?data-has-children="${this.hasChildren(item.id)}"
       ?data-about-to-delete="${item.delete}"
