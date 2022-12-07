@@ -215,6 +215,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         opacity: .5;
         border-color: red;
       }
+      .item[data-about-to-delete][hidden] {
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
       .item:hover,
       .item:focus {
         background-color: #f5f5f5;
@@ -312,6 +316,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.hideDelete = false;
     this.activeItemForActions = null;
     this.storeTools = false;
     this.hideContentOps = false;
@@ -408,6 +413,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       `: ``}
       <simple-icon-button-lite icon="hardware:keyboard-arrow-right" @click="${this.collapseAll}" class="control">Collapse all</simple-icon-button-lite>
       <simple-icon-button-lite icon="hardware:keyboard-arrow-down" @click="${this.expandAll}" class="control">Expand all</simple-icon-button-lite>
+      ${this.hasDeletedItems() ? html`<simple-icon-button-lite icon="delete" @click="${this.toggleDelete}" class="control">${!this.hideDelete ? "Hide Deleted" : "Show Deleted"}</simple-icon-button-lite>` : ``}
     </div>
     <ul id="list">
       ${this.items.map((item, index) => this.getItemParentsCollapsed(item) === '' ? this.renderItem(item, index) : ``)}
@@ -416,6 +422,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <simple-icon-button @click="${this.resetPopOver}" title="Close" icon="cancel" class="close-btn"></simple-icon-button>
       ${this.renderActiveContentItem(this.activePreview, this.activePreviewIndex)}
     </simple-popover>`;
+  }
+
+  hasDeletedItems() {
+    if (this.items.find((item) => item.delete == true)) {
+      return true;
+    }
+    return false;
+  }
+  toggleDelete(e) {
+    this.hideDelete = !this.hideDelete;
   }
 
   renderActiveContentItem(activeItemContentNode, targetNodeIndex) {
@@ -452,6 +468,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       data-parents="${this.getItemParents(item)}"
       ?data-has-children="${this.hasChildren(item.id)}"
       ?data-about-to-delete="${item.delete}"
+      ?hidden="${this.hideDelete && item.delete}"
     >
       <simple-icon-button
         ?disabled="${this.isLocked(index)}"
@@ -604,7 +621,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       data-node-index="${index}"
       data-content-parent-id="${item.id}" 
       ?data-contents-collapsed="${!item.showContent}"
-      ?data-about-to-delete="${item.delete}">
+      ?data-about-to-delete="${item.delete}"
+      ?hidden="${this.hideDelete && item.delete}">
       <simple-icon-button-lite icon="${icon}" title="Click to preview" @click="${this.setActivePreview}"
 ></simple-icon-button-lite>
       ${part === 'heading' ? html`
@@ -1102,6 +1120,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      hideDelete: { type: Boolean },
       activeItemForActions: { type: String },
       storeTools: { type: Boolean },
       eventData: { type: Object },
