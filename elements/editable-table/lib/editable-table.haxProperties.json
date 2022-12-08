@@ -15,7 +15,8 @@
     ],
     "handles": [],
     "meta": {
-      "author": "HAXTheWeb core team"
+      "author": "HAXTheWeb core team",
+      "outlineDesigner": true
     }
   },
   "settings": {

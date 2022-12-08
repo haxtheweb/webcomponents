@@ -2106,7 +2106,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [
           {
             type: "link",
-            source: "src",
+            source: "src", 
           },
           {
             type: "image",
@@ -2118,6 +2118,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ],
         meta: {
           author: "W3C",
+          outlineDesigner: true,
         },
       },
       settings: {
@@ -2582,6 +2583,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
     };
     for (var tag in prims) {
+      let primContentDemo = '';
+      if (tag == 'h2') {
+        primContentDemo = "Heading";
+      }
+      else if (tag == 'ul' || tag == 'ol') {
+        primContentDemo = "<li>Item 1</li><li>Item 2</li>";
+      }
       this.setHaxProperties(
         {
           type: "element",
@@ -2609,7 +2617,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           demoSchema: [
             {
               tag: tag,
-              content: tag == "h2" ? "Heading" : "",
+              content: primContentDemo,
               properties: {},
             },
           ],

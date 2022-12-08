@@ -334,6 +334,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.fidelity = 'medium';
     this.haxGizmos = [];
     this.hideDelete = false;
     this.activeItemForActions = null;
@@ -517,7 +518,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         icon="hax:arrow-all"></simple-icon-button>
       <simple-icon-button-lite
         ?disabled="${this.isLocked(index)}"
-        ?hidden="${this.hideContentOps || item.contents === ''}"
+        ?hidden="${this.hideContentOps || item.contents === '' || !item.contents}"
         icon="editor:insert-drive-file"
         @click="${this.toggleContent}"
         title="Content structure"
@@ -644,7 +645,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // add content to the top of the item in question
   prependNodeToContent(e) {
     let itemId = e.target.closest('[data-item-for-content-id]').getAttribute('data-item-for-content-id');
-    console.log(this.haxGizmos);
     this.items.map((item, index) => {
       if (item.id === itemId && e.target.value) {
         // @todo add support for surfacing these options from the HAX schema
@@ -841,17 +841,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     }
   }
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'activePreview' && oldValue) {
-        oldValue.classList.remove('active-preview-item');
-      }
-      if (propName === 'activePreview' && this[propName]) {
-        this[propName].classList.add('active-preview-item');
-      }
-    });
-  }
+
   // split page to make another one at the heading level
   pageBreakHere(e, item) {
     if (!item.metadata.locked) {
@@ -893,7 +883,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         // create a new item
         let newItem = new JSONOutlineSchemaItem();
         newItem.title = title;
-        newItem.slug = newItem.id;
+        // slug and location NOT set because backend will fill these in
         newItem.order = item.order + 1;
         newItem.parent = item.parent;
         newItem.indent = item.indent;
@@ -1200,7 +1190,39 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       activePreview: { type: Object },
       activePreviewIndex: { type: Number },
       hideContentOps: { type: Boolean, reflect: true, attribute: "hide-content-ops" },
+      fidelity: { type: String }
     };
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'fidelity' && this[propName]) {
+        // @todo these are just conceptual for the moment
+        // need requirements / discussion with group to inform low vs high operations
+        // and the names could correspond more closely with the process someone is engaged in
+        switch (this[propName]) {
+          case 'low':
+            // remove everything except pages
+            // button for seeing content of page but not allowed to delve into it
+          break;
+          case 'medium':
+            // allow rendering contents, but only headings, no edit operations
+
+          break;
+          case 'high':
+            // allow rendering contents, as well as edit operations
+          break;
+
+        }
+      }
+      if (propName === 'activePreview' && oldValue) {
+        oldValue.classList.remove('active-preview-item');
+      }
+      if (propName === 'activePreview' && this[propName]) {
+        this[propName].classList.add('active-preview-item');
+      }
+    });
   }
 
   /**
@@ -1274,12 +1296,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     newItem.order = item.order + orderAddon;
     newItem.parent = item.parent;
     newItem.indent = item.indent;
-    newItem.slug = newItem.id;
+    // slug and location NOT set because backend will fill these in
     newItem.metadata.locked = false;
     newItem.new = true;
     if (duplicate) {
       newItem.title = `${this.t.copyOf} ${item.title}`;
       newItem.contents = item.contents;
+      // reference to what called for this to be created
+      newItem.duplicate = item.id;
     }
     else {
       newItem.contents = `<p></p>`;
@@ -1306,7 +1330,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       // map old parentID to new one
       newItem.parent =  map[child.parent];
       newItem.indent = child.indent;
-      newItem.slug = newItem.id;
+      // slug and location NOT set because backend will fill these in
       newItem.metadata.locked = false;
       newItem.new = true;
       newItem.title = `${this.t.copyOf} ${child.title}`;

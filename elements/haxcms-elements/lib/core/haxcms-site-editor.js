@@ -880,15 +880,40 @@ class HAXCMSSiteEditor extends LitElement {
               b1.classList.add("hax-modal-btn");
               b1.addEventListener('click', async (e) => {
                 const data = await outline.getData();
-                this.querySelector("#createajax").body = data;
-                this.querySelector("#createajax").generateRequest();
-                const evt = new CustomEvent("simple-modal-hide", {
-                  bubbles: true,
-                  composed: true,
-                  cancelable: true,
-                  detail: {},
+                let deleted = 0;
+                let modified = 0;
+                let added = 0;
+                data.items.map((item) => {
+                  if (item.delete) {
+                    deleted++;
+                  }
+                  else if (item.new) {
+                    added++;
+                  }
+                  else if (item.modified) {
+                    modified++;
+                  }
                 });
-                window.dispatchEvent(evt);
+                let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+                let confirmation = false;
+                // no confirmation required if there are no tracked changes
+                if (sumChanges == '') {
+                  confirmation = true;
+                }
+                else {
+                  confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+                }
+                if (confirmation) {
+                  this.querySelector("#createajax").body = data;
+                  this.querySelector("#createajax").generateRequest();
+                  const evt = new CustomEvent("simple-modal-hide", {
+                    bubbles: true,
+                    composed: true,
+                    cancelable: true,
+                    detail: {},
+                  });
+                  window.dispatchEvent(evt);
+                }
               });
               const b2 = document.createElement("button");
               b2.innerText = "Cancel";
