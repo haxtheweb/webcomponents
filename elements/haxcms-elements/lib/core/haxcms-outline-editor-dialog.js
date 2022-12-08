@@ -191,6 +191,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     super.connectedCallback();
     autorun((reaction) => {
       this.manifestItems = [...toJS(store.manifest.items)];
+      setTimeout(() => {
+        // hack, force UI to update as manifest might be loading at an off time
+        if (this.shadowRoot) {
+          this.shadowRoot.querySelector("#outline").__syncUIAndDataModel();
+        }
+      }, 500);
       this.__disposer.push(reaction);
     });
   }
