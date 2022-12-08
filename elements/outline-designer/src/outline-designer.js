@@ -1040,7 +1040,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       e.target.removeAttribute('contenteditable');
       let itemId = e.target.closest("[data-item-id]").getAttribute('data-item-id');
       for ( let index = 0; index < this.items.length; index++) {
-        if (this.items[index].id === itemId) {
+        if (this.items[index].id === itemId && e.target.innerText != '') {
           if (!this.items[index].new) { this.items[index].modified = true; }
           this.items[index].title = e.target.innerText;
         }
@@ -1225,6 +1225,18 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     });
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // avoid some misordering on 1st paint after making lots of things
+    if (this.items) {
+      setTimeout(() => {
+        this.__syncUIAndDataModel();
+      }, 0);
+    }
+  }
+
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -1291,7 +1303,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       targetItemIndex = 0;
       orderAddon = -1;
     }
-    const item = this.items[targetItemIndex];
+    let item = {
+      indent: 0,
+      parent: null,
+      order: 0,
+    }
+    // edge case, new outline with nothing in it or traget is invalid
+    if (this.items && this.items.length > 0 && this.items[targetItemIndex]) {
+      item = this.items[targetItemIndex];
+    }
     let newItem = new JSONOutlineSchemaItem();
     newItem.order = item.order + orderAddon;
     newItem.parent = item.parent;
@@ -1310,14 +1330,19 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }
     newItems.push(newItem);
     // if we were told to duplicate and we have kids, do the whole tree
-    if (this.hasChildren(this.items[targetItemIndex].id) && duplicate) {
+    if (this.items && this.items.length > 0 && this.items[targetItemIndex] && this.hasChildren(this.items[targetItemIndex].id) && duplicate) {
       // map old id to new one
       let map = {};
       map[this.items[targetItemIndex].id] = newItem.id;
       newItems = this.recurseCopyChildren(this.items[targetItemIndex].id, map, newItems);
     }
     // splice back into the items array just below where we issued the split
-    newItems.forEach((spItem, spIndex) => this.items.splice(targetItemIndex+spIndex+1, 0, spItem));
+    if (this.items && this.items.length > 0) {
+      newItems.forEach((spItem, spIndex) => this.items.splice(targetItemIndex+spIndex+1, 0, spItem));
+    }
+    else {
+      newItems.forEach((spItem) => this.items.push(spItem));
+    }
   }
 
   recurseCopyChildren(itemId, map, newItems) {

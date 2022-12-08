@@ -511,7 +511,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get disableTransform() {
-    return HAXStore.isTextElement(this.activeNode) || !this.filteredBlocks || this.filteredBlocks.length < 1;
+    return HAXStore.isTextElement(this.activeNode);// || !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
   /**
@@ -672,6 +672,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
+/*
+// this is a performance bottle neck just for disabling a button that is not often clicked
       if (this.activeNode) {
         // detect if this can be transformed into anything else
         let elements =
@@ -689,7 +691,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         this.formatBlocks = !!tag
           ? elements.filter((el) => el.tag && ![tag, primTag].includes(el.tag))
           : elements;
-      }
+      }*/
       if (HAXStore.activeGizmo) {
         this.activeTagName = HAXStore.activeGizmo.title;
         this.activeTagIcon = HAXStore.activeGizmo.icon;
@@ -742,9 +744,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       ceButtons: {
         type: Array,
-      },
-      formatBlocks: {
-        type: Object,
       },
       hasActiveEditingElement: {
         type: Boolean,
