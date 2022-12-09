@@ -531,6 +531,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       <div class="operations">
         ${this.activeItemForActions === item.id ? html`
         <simple-icon-button
+          part="lockbtn"
           class="operation lock"
           icon="${this.isLocked(index)
             ? "icons:lock"

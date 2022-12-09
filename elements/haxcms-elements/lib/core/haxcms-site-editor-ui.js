@@ -619,6 +619,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             tabindex="${this.editMode ? "-1" : "0"}"
             id="insightsbutton"
             icon="hax:clipboard-pulse"
+            part="insightsbtn"
             icon-position="top"
             @click="${this._insightsButtonTap}"
             label="${this.t.insights}"
@@ -629,6 +630,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             show-text-label
             ?disabled="${this.editMode}"
             icon="more-vert"
+            part="morebtn"
             icon-position="top"
             label="${this.t.more}"
             tabindex="${this.editMode ? "-1" : "0"}"
