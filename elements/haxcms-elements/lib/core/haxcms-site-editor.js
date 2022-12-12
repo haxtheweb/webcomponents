@@ -696,10 +696,10 @@ class HAXCMSSiteEditor extends LitElement {
           styles: {
             "--simple-modal-titlebar-background": "orange",
             "--simple-modal-titlebar-color": "black",
-            "--simple-modal-width": "30vw",
+            "--simple-modal-width": "50vw",
             "--simple-modal-min-width": "400px",
             "--simple-modal-z-index": "100000000",
-            "--simple-modal-height": "70vh",
+            "--simple-modal-height": "80vh",
             "--simple-modal-min-height": "400px",
             "--simple-modal-titlebar-height": "80px",
           },

@@ -76,6 +76,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([dashboard-opened]) #editdetails,
         :host([dashboard-opened]) #deletebutton,
         :host([dashboard-opened]) #addbutton,
+        :host([dashboard-opened]) #outlinebutton,
+        :host([dashboard-opened]) #insightsbutton,
+        :host([dashboard-opened]) #addmenubutton,
         :host([dashboard-opened]) #addbuttonchild,
         :host([dashboard-opened]) #duplicatebutton {
           display: none !important;
