@@ -94,10 +94,10 @@ simple-modal::part(title) {
   background-color: transparent;
   margin: 0;
   text-align: center;
-  font-size: 30px;
+  font-size: 24px;
   color: white;
   font-family: "Press Start 2P", sans-serif;
-  line-height: 32px;
+  line-height: 24px;
   padding: 4px;
 }
 simple-modal button.hax-modal-btn {
