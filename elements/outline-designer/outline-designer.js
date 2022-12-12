@@ -97,6 +97,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
       .lock {
         margin-right: 16px !important;
+        visibility: var(--outline-designer-lock-visibility);
       }
       .del {
         margin-left: 32px !important;
