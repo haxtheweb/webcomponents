@@ -11,6 +11,9 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-search/simple-search.js";
+import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
@@ -934,7 +937,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 this.__playing ? "pause" : "play",
                 "label"
               )}"
-              @button-click="${(e) => this.togglePlay()}"
+              @button-click="${this.togglePlay}"
               ?audio-only="${this.audioOnly}"
               ?disabled="${this.audioNoThumb}"
               youtube-id="${this.youtubeId}"
@@ -993,7 +996,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           @value-changed="${this._handleSliderChanged}"
           @immediate-value-changed="${this._handleSliderDragging}"
           .value="${this.__currentTime}"
-          ?disabled="${this.disableSeek || this.duration === 0}"
+          ?disabled="${this.disableSeek}"
         >
         </simple-range-input>
         <div id="controls" controls="innerplayer">
@@ -1011,7 +1014,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 this.__playing ? "pause" : "play",
                 "label"
               )}"
-              @click="${(e) => this.togglePlay()}"
+              @click="${this.togglePlay}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
@@ -1021,7 +1024,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               label="${this._getLocal(this.localization, "rewind", "label")}"
               ?disabled="${this.disableSeek || this.currentTime <= 0}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => this.rewind()}"
+              @click="${(e) => { this.rewind() }}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
@@ -1032,7 +1035,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               ?disabled="${this.disableSeek ||
               this.currentTime >= this.duration}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => this.forward()}"
+              @click="${(e) => {this.forward()}}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
@@ -1044,7 +1047,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               ?hidden="${this.responsiveSize === "xs" ||
               this.responsiveSize === "sm" ||
               this.disableSeek}"
-              @click="${(e) => this.restart()}"
+              @click="${this.restart}"
             ></a11y-media-button>
             <div
               id="volume-and-mute"
@@ -1065,7 +1068,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                   this.muted ? "unmute" : "mute",
                   "label"
                 )}"
-                @click="${(e) => this.toggleMute()}"
+                @click="${(e) => {this.toggleMute()}}"
               ></a11y-media-button>
               <simple-range-input
                 id="volume"
@@ -1099,7 +1102,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               ?disabled="${!this.hasCaptions}"
               ?hidden="${!this.hasCaptions}"
               ?toggle="${this.captionsTrackKey > -1}"
-              @click="${(e) => this.toggleCC()}"
+              @click="${this.toggleCC}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1120,7 +1123,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               (this.linkable && this.responsiveSize === "md") ||
               this.learningMode}"
               ?toggle="${this.transcriptTrackKey > -1}"
-              @click="${(e) => this.toggleTranscript()}"
+              @click="${this.toggleTranscript}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1145,7 +1148,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               )}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
-              @click="${(e) => this.toggleFullscreen()}"
+              @click="${this.toggleFullscreen}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1156,7 +1159,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               controls="settings"
               icon="${this._getLocal(this.localization, "settings", "icon")}"
               label="${this._getLocal(this.localization, "settings", "label")}"
-              @click="${(e) => this.toggleSettings()}"
+              @click="${this.toggleSettings}"
             ></a11y-media-button>
             ${this.isYoutube
               ? html` <a11y-media-button
@@ -1835,6 +1838,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
 
   constructor() {
     super();
+    window.ResponsiveUtility.requestAvailability();
+    window.A11yMediaStateManager.requestAvailability();
     this.audioOnly = false;
     this.autoplay = false;
     this.allowConcurrent = false;
@@ -1886,12 +1891,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         this.__preloadedDuration = html5.duration;
       });
     });
-    setTimeout(() => {
-      import("@lrnwebcomponents/simple-search/simple-search.js");
-      import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
-      import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    }, 0);
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
@@ -1977,7 +1976,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   get captionsPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "captions", "off");
-    Object.keys(this.loadedTracks.textTracks || {}).forEach((key) => {
+    Object.keys(this.loadedTracks && this.loadedTracks.textTracks ? this.loadedTracks.textTracks : {}).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -2443,7 +2442,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   get transcriptPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "transcript", "off");
-    Object.keys(this.loadedTracks.textTracks || {}).forEach((key) => {
+    Object.keys(this.loadedTracks && this.loadedTracks.textTracks ? this.loadedTracks.textTracks : {}).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -2485,19 +2484,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     return this.shadowRoot.querySelector("a11y-media-youtube") !== null
       ? this.shadowRoot.querySelector("a11y-media-youtube")
       : false;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.__loadedTracks = this.getloadedTracks();
-    this._handleMediaLoaded();
-    this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
-      this._handleMediaLoaded(e)
-    );
-    this.__loadedTracks.addEventListener("timeupdate", (e) => {
-      this._handleTimeUpdate(e);
-    });
-    this.__playerReady = true;
   }
 
   _setAttribute(attr, val) {
@@ -2628,12 +2614,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * handles mute change
    */
   _handleMuteChanged() {
-    this.media.muted = this.muted;
+    if (this.media) {
+      this.media.muted = this.muted;
+    }
     /**
      * Fires when closed caption is toggled
      * @event mute-changed
      */
-    window.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("mute-changed", {
         bubbles: true,
         composed: true,
@@ -2840,7 +2828,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   restart() {
     this.seek(0);
-    this.play();
+    this.play();      
     /**
      * Fires when media retarts
      * @event restart
@@ -3078,7 +3066,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   setVolume(value = 70) {
     this.volume = Math.max(0, Math.min(value, 100));
-    this.media.volume = value / 100;
+    if (this.media) {
+      this.media.volume = value / 100;
+    }
     /**
      * Fires when video volume changes
      * @event volume-changed
@@ -3486,13 +3476,21 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
       this.height ? "146px" : "unset"
     );
+    this.__loadedTracks = this.getloadedTracks();
+    this._handleMediaLoaded();
+    this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
+      this._handleMediaLoaded(e)
+    );
+    this.__loadedTracks.addEventListener("timeupdate", (e) => {
+      this._handleTimeUpdate(e);
+    });
+    this.__playerReady = true;
     setTimeout(() => {
-      window.ResponsiveUtility.requestAvailability();
-
       /**
        * Fires player needs the size of parent container to add responsive styling
        * @event responsive-element
@@ -3510,9 +3508,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           },
         })
       );
-
-      window.A11yMediaStateManager.requestAvailability();
-
       /**
        * Fires when a new player is ready for a11y-media-state-manager
        * @event a11y-player
