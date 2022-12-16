@@ -521,7 +521,7 @@ class A11yMediaYoutube extends LitElement {
       );
       let setYT = (e) => (this.__video = e.target),
         port = window.location.port ? `:${window.location.port}` : ``,
-        origin = `//${window.location.hostname}${port}`;
+        origin = `${window.location.protocol}//${window.location.hostname}${port}`;
       youtube = new YT.Player(divid, {
         width: root.width,
         height: root.height,
