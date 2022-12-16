@@ -1700,6 +1700,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         type: Boolean,
         reflect: true,
       },
+      source: {
+        type: String,
+        reflect: true,
+      },
       /**
        * DEPRECATED: array ouf sources
        */
@@ -3476,7 +3480,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
       this.height ? "146px" : "unset"

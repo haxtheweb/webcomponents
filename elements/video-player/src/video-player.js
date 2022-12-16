@@ -401,21 +401,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         {
           tag: "video-player",
           properties: {
-            style: "width: 100%; margin: 0px auto; display: block;",
             accentColor: "orange",
             dark: true,
             crossorigin: "anonymous",
-            lang: "en",
-            mediaTitle: "Why do I need to go anywhere?",
-            preload: "metadata",
             source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
-            stickyCorner: "top-right",
             track: "https://haxtheweb.org/files/HAXshort.vtt",
-            youtubeId: "LrS7dqokTLE?undefined",
-            sourceType: "youtube",
           },
-          content:
-            '    <track src="https://haxtheweb.org/files/HAXshort.vtt" kind="subtitles" label="English" slot="track">\n\n',
+          content: ""
         },
       ],
     };
@@ -539,7 +531,6 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       source: {
         type: String,
-        attribute: "source",
         reflect: true,
       },
       /**
@@ -627,7 +618,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.sources = [];
     this.stickyCorner = "top-right";
     this.tracks = [];
-    this.setSourceData();
+    this.source = '';
     this.observer.observe(this, {
       childList: true,
       subtree: false,
