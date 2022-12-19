@@ -1101,7 +1101,7 @@ import "./lib/a11y-media-youtube.js";
               ?disabled="${!this.hasCaptions}"
               ?hidden="${!this.hasCaptions}"
               ?toggle="${this.captionsTrackKey > -1}"
-              @click="${this.toggleCC}"
+              @click="${(e) => this.toggleCC()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1122,7 +1122,7 @@ import "./lib/a11y-media-youtube.js";
               (this.linkable && this.responsiveSize === "md") ||
               this.learningMode}"
               ?toggle="${this.transcriptTrackKey > -1}"
-              @click="${this.toggleTranscript}"
+              @click="${(e) => this.toggleTranscript()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1147,7 +1147,7 @@ import "./lib/a11y-media-youtube.js";
               )}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
-              @click="${this.toggleFullscreen}"
+              @click="${(e) => this.toggleFullscreen()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1158,7 +1158,7 @@ import "./lib/a11y-media-youtube.js";
               controls="settings"
               icon="${this._getLocal(this.localization, "settings", "icon")}"
               label="${this._getLocal(this.localization, "settings", "label")}"
-              @click="${this.toggleSettings}"
+              @click="${(e) => this.toggleSettings()}"
             ></a11y-media-button>
             ${this.isYoutube
               ? html` <a11y-media-button
