@@ -3523,7 +3523,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           detail: this,
         })
       );
-    }, 1000);
+    }, 0);
   }
   /**
    * on a cue.onenter event scrolls the first active cue to position
