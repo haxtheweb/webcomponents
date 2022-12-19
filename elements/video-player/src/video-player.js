@@ -113,7 +113,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 media-title="${this.mediaTitle || ""}"
                 .sources="${this.sourceProperties}"
                 ?stand-alone="${this.standAlone}"
-                sticky-corner="${this.stickyCorner || "top-right"}"
+                sticky-corner="${this.stickyCorner || "none"}"
                 .thumbnail-src="${this.thumbnailSrc}"
                 .tracks="${this.trackProperties}"
                 .crossorigin="${this.crossorigin || "anonymous"}"
@@ -395,7 +395,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
             track: "https://haxtheweb.org/files/HAXshort.vtt",
           },
-          content: ""
+          content: "",
         },
       ],
     };
@@ -404,7 +404,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get properties() {
     return {
       ...super.properties,
-      sourceType: { type: String},
+      sourceType: { type: String },
       /**
        * Optional accent color for controls,
        * using these colors:
@@ -583,7 +583,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
-    this.sourceType = '';
+    this.sourceType = "";
     this.crossorigin = "anonymous";
     this.dark = false;
     this.darkTranscript = false;
@@ -598,9 +598,9 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.learningMode = false;
     this.linkable = false;
     this.sources = [];
-    this.stickyCorner = "top-right";
+    this.stickyCorner = "none";
     this.tracks = [];
-    this.source = '';
+    this.source = "";
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -995,7 +995,9 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData[0] !== undefined &&
       typeof this.sourceData[0].src !== typeof undefined
     ) {
-      this.sourceType = window.MediaBehaviors.Video.getVideoType(this.sourceData[0].src);
+      this.sourceType = window.MediaBehaviors.Video.getVideoType(
+        this.sourceData[0].src
+      );
     }
   }
   _visChange(e) {
