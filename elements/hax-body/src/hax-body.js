@@ -439,7 +439,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             height: auto;
           }
           :host(:not([tray-status="collapsed"])) {
-            z-index: -1;
+            /*z-index: -1; */
           }
           :host([edit-mode]) #bodycontainer,
           :host([edit-mode]) #bodycontainer[element-align="left"],

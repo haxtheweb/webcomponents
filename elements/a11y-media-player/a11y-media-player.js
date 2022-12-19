@@ -105,7 +105,7 @@ import "./lib/a11y-media-youtube.js";
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
-class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
+ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   //styles function
   static get styles() {
     return [
@@ -946,9 +946,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             <div id="html5">
               <slot></slot>
             </div>
-            ${!this.videoId
-              ? html``
-              : html`
+            ${this.videoId && this.__playerReady
+              ? html`
                   <a11y-media-youtube
                     id="youtube-${this.id}"
                     class="${this.__currentTime > 0.3 || this.__seeking
@@ -963,7 +962,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                     ?hidden=${!this.isYoutube}
                   >
                   </a11y-media-youtube>
-                `}
+                ` : ``}
             ${Object.keys(this.captionCues || []).length === 0 ||
             !this.showCustomCaptions
               ? html``
@@ -1453,7 +1452,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
-
+      __playerReady: { type: Boolean},
       /**
        * Allow this media to play concurrently with other a11y-media-players?
        * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
@@ -1844,6 +1843,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     super();
     window.ResponsiveUtility.requestAvailability();
     window.A11yMediaStateManager.requestAvailability();
+    this.__playerReady = false;
     this.audioOnly = false;
     this.autoplay = false;
     this.allowConcurrent = false;
@@ -3492,38 +3492,36 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.__loadedTracks.addEventListener("timeupdate", (e) => {
       this._handleTimeUpdate(e);
     });
+    /**
+     * Fires player needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: this,
+          attribute: "responsive-size",
+          relativeToParent: true,
+          sm: 400,
+          md: 700,
+          lg: 1000,
+          xl: 1500,
+        },
+      })
+    );
+    /**
+     * Fires when a new player is ready for a11y-media-state-manager
+     * @event a11y-player
+     */
+    window.dispatchEvent(
+      new CustomEvent("a11y-player", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this,
+      })
+    );
     this.__playerReady = true;
-    setTimeout(() => {
-      /**
-       * Fires player needs the size of parent container to add responsive styling
-       * @event responsive-element
-       */
-      window.dispatchEvent(
-        new CustomEvent("responsive-element", {
-          detail: {
-            element: this,
-            attribute: "responsive-size",
-            relativeToParent: true,
-            sm: 400,
-            md: 700,
-            lg: 1000,
-            xl: 1500,
-          },
-        })
-      );
-      /**
-       * Fires when a new player is ready for a11y-media-state-manager
-       * @event a11y-player
-       */
-      window.dispatchEvent(
-        new CustomEvent("a11y-player", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this,
-        })
-      );
-    }, 0);
   }
   /**
    * on a cue.onenter event scrolls the first active cue to position

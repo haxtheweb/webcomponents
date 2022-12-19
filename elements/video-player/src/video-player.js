@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
@@ -109,7 +109,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 lang="${this.lang || "en"}"
                 ?learning-mode="${this.learningMode}"
                 ?linkable="${this.linkable}"
-                preload="${this.preload || "metadata"}"
+                preload="metadata"
                 media-title="${this.mediaTitle || ""}"
                 .sources="${this.sourceProperties}"
                 ?stand-alone="${this.standAlone}"
@@ -119,7 +119,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 .crossorigin="${this.crossorigin || "anonymous"}"
                 .width="${this.width}"
                 .height="${this.height}"
-                .youtubeId="${this.youtubeId || undefined}"
+                youtube-id="${this.youtubeId}"
               >
               </a11y-media-player
               ><slot hidden></slot>`}`
@@ -283,18 +283,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             inputMethod: "boolean",
           },
           {
-            property: "preload",
-            title: "Preload source(s).",
-            description:
-              "How the sources should be preloaded, i.e. auto, metadata (default), or none.",
-            inputMethod: "select",
-            options: {
-              preload: "Preload all media",
-              metadata: "Preload media metadata only",
-              none: "Don't preload anything",
-            },
-          },
-          {
             property: "stickyCorner",
             title: "Sticky Corner",
             description:
@@ -416,7 +404,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get properties() {
     return {
       ...super.properties,
-
+      sourceType: { type: String},
       /**
        * Optional accent color for controls,
        * using these colors:
@@ -521,12 +509,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         attribute: "hide-youtube-link",
       },
       /**
-       * What to preload for a11y-media-player: auto, metadata (default), or none.
-       */
-      preload: {
-        type: String,
-      },
-      /**
        * Single sources of video
        */
       source: {
@@ -601,6 +583,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    this.sourceType = '';
     this.crossorigin = "anonymous";
     this.dark = false;
     this.darkTranscript = false;
@@ -614,7 +597,6 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.allowBackgroundPlay = false;
     this.learningMode = false;
     this.linkable = false;
-    this.preload = "metadata";
     this.sources = [];
     this.stickyCorner = "top-right";
     this.tracks = [];
@@ -825,23 +807,6 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
 
   /**
-   * Gets type of source based on src attribute
-   * @returns {String} `local`, `vimeo`, `youtube`, etc.
-   */
-  get sourceType() {
-    if (
-      this.sourceData &&
-      this.sourceData.length > 0 &&
-      this.sourceData[0] !== undefined &&
-      typeof this.sourceData[0].src !== typeof undefined
-    ) {
-      return window.MediaBehaviors.Video.getVideoType(this.sourceData[0].src);
-    } else {
-      return null;
-    }
-  }
-
-  /**
    * Gets cleaned track list
    * @readonly
    * @returns {Array} Eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles",}]`
@@ -1023,6 +988,15 @@ class VideoPlayer extends IntersectionObserverMixin(
         );
       }
     });
+    // set source type based on available data
+    if (
+      this.sourceData &&
+      this.sourceData.length > 0 &&
+      this.sourceData[0] !== undefined &&
+      typeof this.sourceData[0].src !== typeof undefined
+    ) {
+      this.sourceType = window.MediaBehaviors.Video.getVideoType(this.sourceData[0].src);
+    }
   }
   _visChange(e) {
     if (

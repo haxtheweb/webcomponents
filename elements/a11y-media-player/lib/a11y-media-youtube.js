@@ -5,6 +5,20 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
+// singleton for youtube frames
+window.A11yMediaYoutubeManager = window.A11yMediaYoutubeManager || {
+  /* gets iframes for all  */
+  getIframes: () => {
+    window.A11yMediaYoutubeManager.queue.forEach(
+      (instance) => {
+        (instance.__yt = instance._preloadVideo(true))
+      }
+    );
+    window.A11yMediaYoutubeManager.queue = [];
+  },
+  queue: [], //array of instances waiting for iframes
+};
+
 /**
  * `a11y-media-youtube`
  * uses YouTubeAPI to create and control an embedded YouTube video.
@@ -191,7 +205,7 @@ class A11yMediaYoutube extends LitElement {
    */
   get api() {
     let scriptid = "a11y-media-youtube-api",
-      ytapi = window.document.getElementById(scriptid);
+      ytapi = document.querySelector(`#${scriptid}`);
 
     /* only add if script doesn't already exist */
     if (!ytapi) {
@@ -199,7 +213,7 @@ class A11yMediaYoutube extends LitElement {
       ytapi.setAttribute("id", scriptid);
       ytapi.setAttribute("src", "https://www.youtube.com/iframe_api");
       ytapi.setAttribute("type", "text/javascript");
-      window.document.body.appendChild(ytapi);
+      document.body.appendChild(ytapi);
     }
     return ytapi;
   }
@@ -266,24 +280,17 @@ class A11yMediaYoutube extends LitElement {
    */
 
   init() {
-    window.A11yMediaYoutubeManager = window.A11yMediaYoutubeManager || {
-      /* gets iframes for all  */
-      getIframes: () => {
-        window.A11yMediaYoutubeManager.queue.forEach(
-          (instance) => (instance.__yt = instance._preloadVideo(true))
-        );
-        window.A11yMediaYoutubeManager.queue = [];
-      },
-      queue: [], //array of instances waiting for iframes
-    };
     window.A11yMediaYoutubeManager.queue.push(this);
     /* checks for api and either uses it to get iframes or gets it */
     if (window.A11yMediaYoutubeManager.api) {
       if (window.YT) window.A11yMediaYoutubeManager.getIframes();
     } else {
-      (window.onYouTubeIframeAPIReady = (e) =>
-        window.A11yMediaYoutubeManager.getIframes()),
-        (window.A11yMediaYoutubeManager.api = this.api);
+      window.onYouTubeIframeAPIReady = (e) =>
+        {
+          window.A11yMediaYoutubeManager.getIframes()
+        };
+
+        window.A11yMediaYoutubeManager.api = this.api;
     }
   }
 
