@@ -5,11 +5,14 @@ const MarkdownIt = df.default;
 const mdClass = new MarkdownIt();
 
 export default async function handler(req, res) {
-  const body = stdPostBody(req);
-  if (body === null) {
-    res = invalidRequest(res, 'missing body');
+  let body = {};
+  if (req.query) {
+    body = req.query;
   }
-  else if (!body.md) {
+  else {
+    body = stdPostBody(req);
+  }
+  if (!body || !body.md) {
     res = invalidRequest(res, 'missing `md` param');
   }
   else {
@@ -18,6 +21,12 @@ export default async function handler(req, res) {
     if (body.type === 'link' && md) {
       md = await fetch(md.trim()).then((d) => d.ok ? d.text(): '');
     }
-    stdResponse(res, await mdClass.render(md), {cache: 180 });
+    let headers = {
+      cache: 180
+    };
+    if (body.raw) {
+      headers.type = 'text/html';
+    }
+    stdResponse(res, await mdClass.render(md), headers);
   }
 }
