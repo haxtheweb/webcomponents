@@ -32,6 +32,9 @@ export async function resolveSiteData(siteLocation, siteData = null) {
         method: "GET",
         headers: {'Authorization': 'Basic ' + buff}
       };
+      // need to store pathname for elms deploys bc of how paths were resolved
+      let tmp = new URL(siteLocation);
+      site.__siteLocationPathName = tmp.pathname;
       // location isn't at site.json bc this is generated path
       // so we need to lob this off from the path instead of site.json
       if (siteLocation.includes('/haxapi/loadJOS/')) {

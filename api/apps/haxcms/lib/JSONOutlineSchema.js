@@ -280,7 +280,10 @@ export class JSONOutlineSchema
       return await fetch(`https://${process.env.VERCEL_URL}/api/apps/haxcms/pageCache?site=${this.file}&uuid=${id}&type=link`, this.__fetchOptions).then((d) => d.ok ? d.text() : '');
     }
     else {
-      const location = this.file.replace(this.__siteFileBase, item.location);
+      let location = this.file.replace(this.__siteFileBase, item.location);
+      if (this.__siteLocationPathName) {
+        location = location.replace(this.__siteLocationPathName + '/', '');
+      }
       return await fetch(location, this.__fetchOptions).then((d) => d.ok ? d.text() : '');
     }
   }
