@@ -1018,7 +1018,7 @@ import "./lib/a11y-media-youtube.js";
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              class="hide-flex"
+              class="hide-flex hide-full-xs"
               icon="${this._getLocal(this.localization, "rewind", "icon")}"
               label="${this._getLocal(this.localization, "rewind", "label")}"
               ?disabled="${this.disableSeek || this.currentTime <= 0}"
@@ -1028,7 +1028,7 @@ import "./lib/a11y-media-youtube.js";
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              class="hide-flex"
+              class="hide-flex hide-full-xs"
               icon="${this._getLocal(this.localization, "forward", "icon")}"
               label="${this._getLocal(this.localization, "forward", "label")}"
               ?disabled="${this.disableSeek ||
@@ -1095,7 +1095,6 @@ import "./lib/a11y-media-youtube.js";
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              class="hide-full-xs"
               icon="${this._getLocal(this.localization, "captions", "icon")}"
               label="${this._getLocal(this.localization, "captions", "label")}"
               ?disabled="${!this.hasCaptions}"
@@ -1119,7 +1118,6 @@ import "./lib/a11y-media-youtube.js";
               ?hidden="${!this.hasCaptions ||
               this.standAlone ||
               (this.height && this.responsiveSize.indexOf("s") > -1) ||
-              (this.linkable && this.responsiveSize === "md") ||
               this.learningMode}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${(e) => this.toggleTranscript()}"
@@ -1138,7 +1136,6 @@ import "./lib/a11y-media-youtube.js";
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              class="hide-full-xs"
               icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
               label="${this._getLocal(
                 this.localization,
