@@ -1750,8 +1750,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     activeEl
                   );
                   _enterSplit = false;
-                } else {
+                } else if (siblingEl.parentNode) {
                   siblingEl.parentNode.insertBefore(
+                    activeEl,
+                    siblingEl.nextElementSibling
+                  );
+                }
+                else {
+                  siblingEl.insertBefore(
                     activeEl,
                     siblingEl.nextElementSibling
                   );
