@@ -35,14 +35,15 @@ export default async function handler(req, res) {
     if (body.name) {
       name = body.name;
     }
-    stdResponse(res, listToJOS(await mdClass.render(md), sourceLink, theme, name), {cache: 180, type: "application/json" });
+    stdResponse(res, await listToJOS(await mdClass.render(md), sourceLink, theme, name), {cache: 180, type: "application/json" });
   }
 }
 
-function listToJOS(html, sourceLink, theme, name) {
+async function listToJOS(html, sourceLink, theme, name) {
   const doc = parse(`<div>${html}</div>`);
   let top = doc.querySelector('ul');
-  top.childNodes.forEach((node, index) => {
+  for (var index in top.childNodes) {
+    let node = top.childNodes[index];
     if (node.tagName === 'LI') {
       let item = new JSONOutlineSchemaItem();
       let a = node.querySelector('a');
@@ -55,10 +56,10 @@ function listToJOS(html, sourceLink, theme, name) {
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {
-        recurseToJOS(item, node.querySelector('ul'), 1, sourceLink);
+        await recurseToJOS(item, node.querySelector('ul'), 1, sourceLink);
       }
     }
-  });
+  }
   site.title = name;
   site.metadata = {
     author: {},
@@ -87,8 +88,9 @@ function listToJOS(html, sourceLink, theme, name) {
   return site;
 }
 
-function recurseToJOS(parent, node, depth, sourceLink) {
-  node.childNodes.forEach((node, index) => {
+async function recurseToJOS(parent, top, depth, sourceLink) {
+  for (var index in top.childNodes) {
+    let node = top.childNodes[index];
     if (node.tagName === 'LI') {
       let item = new JSONOutlineSchemaItem();
       let a = node.querySelector('a');
@@ -101,8 +103,8 @@ function recurseToJOS(parent, node, depth, sourceLink) {
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {
-        recurseToJOS(item, node.querySelector('ul'), depth+1, sourceLink);
+        await recurseToJOS(item, node.querySelector('ul'), depth+1, sourceLink);
       }
     }
-  });
+  }
 }
