@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     if (body.name) {
       name = body.name;
     }
-    stdResponse(res, listToJOS(await mdClass.render(md), sourceLink, theme, name), {cache: 180 });
+    stdResponse(res, listToJOS(await mdClass.render(md), sourceLink, theme, name), {cache: 180, type: "application/json" });
   }
 }
 
@@ -81,6 +81,9 @@ function listToJOS(html, sourceLink, theme, name) {
       }
     }
   };
+  delete site.file;
+  delete site.__siteFileBase;
+  delete site.__fetchOptions;
   return site;
 }
 
