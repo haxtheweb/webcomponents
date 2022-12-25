@@ -16,7 +16,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         :host {
           display: block;
           --wikipedia-query-body-height: 160px;
-          --wikipedia-query-background-color: orange;
+          --wikipedia-query-background-color: #f8f8f8;
         }
         :host [hidden] {
           display: none;
