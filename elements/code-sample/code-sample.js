@@ -195,6 +195,18 @@ class CodeSample extends LitElement {
             description: "button in top right that says copy to clipboard",
             inputMethod: "boolean",
           },
+          {
+            property: "highlightStart",
+            title: "Highlight start",
+            description: "Line number to start highlighting",
+            inputMethod: "number",
+          },
+          {
+            property: "highlightEnd",
+            title: "Highlight end",
+            description: "Line to finish highlighting on",
+            inputMethod: "number",
+          },
         ],
         advanced: [],
       },
@@ -205,7 +217,9 @@ class CodeSample extends LitElement {
         {
           tag: "code-sample",
           content:
-            '<template preserve-content="preserve-content">const great = "example";</template>',
+            `<template preserve-content="preserve-content">const great = "example";
+            const great = "example";
+            const great = "example";</template>`,
           properties: {
             "copy-clipboard-button": "copy-clipboard-button",
           },
@@ -527,5 +541,5 @@ if ($MrTheCheat) {
     return textarea;
   }
 }
-customElements.define(CodeSample.tag, CodeSample);
+window.customElements.define(CodeSample.tag, CodeSample);
 export { CodeSample };
