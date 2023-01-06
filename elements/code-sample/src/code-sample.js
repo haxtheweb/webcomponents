@@ -3,7 +3,7 @@
  */
 import { LitElement, html, css, render } from "lit";
 import { oneDark } from "./lib/themes/one-dark.js";
-import { hljs } from "./lib/highlightjs/highlight.js";
+import { hljs, highlightjs_line_numbers } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
 import { yaml } from "./lib/highlightjs/languages/yaml.js";
 import { jsonLang } from "./lib/highlightjs/languages/json.js";
@@ -18,6 +18,8 @@ hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("html", xml);
 window["hljs"] = hljs;
+highlightjs_line_numbers();
+
 /**
  * `code-sample`
  * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.
@@ -55,14 +57,55 @@ class CodeSample extends LitElement {
           );
           font-size: var(--code-sample-font-size, 0.875rem);
         }
+        /** line ending highlight!!! */
+        table {
+          border-spacing: 0;
+          width:100%;
+          padding: 0;
+          margin: 0;
+          border: 0;
+        }
+        td.hljs-ln-numbers {
+          text-align: right;
+          color: #ccc;
+          border-right: 1px solid #999;
+          vertical-align: top;
+          padding-left: 8px;
+          padding-right: 4px;
+
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        tr {
+          transition: background-color .3s ease-in-out;
+        }
+        tr:hover {
+          background-color: var(--code-sample-line-hover-color, #3297FD11);
+        }
+        tr:hover .hljs-ln-n {
+          font-weight: bold;
+        }
+        .hljs-ln-n:before {
+          content: attr(data-line-number);
+        }
+        td.hljs-ln-code {
+          padding-left: 16px;
+        }
+        .line-highlighted {
+          background-color: var(--code-sample-line-highlighted-color, #3297FD22);
+        }
 
         .hljs {
-          padding: 0 1.25rem;
+          padding: 0;
           line-height: var(--code-sample-line-height, 1.3);
         }
 
         .demo:not(:empty) {
-          padding: var(--code-sample-demo-padding, 0 0 1.25rem);
+          padding: var(--code-sample-demo-padding, 0);
         }
 
         #code-container {
@@ -191,6 +234,16 @@ class CodeSample extends LitElement {
         type: String,
         reflect: true,
       },
+      highlightStart: {
+        type: Number,
+        reflect: true,
+        attribute: 'highlight-start',
+      },
+      highlightEnd: {
+        type: Number,
+        reflect: true,
+        attribute: 'highlight-end',
+      },
     };
   }
 
@@ -202,6 +255,8 @@ class CodeSample extends LitElement {
   }
   constructor() {
     super();
+    this.highlightStart = null;
+    this.highlightEnd = null;
     this._observer = null;
     this.theme = oneDark;
     this.type = "html";
@@ -361,6 +416,34 @@ if ($MrTheCheat) {
       if (propName == "theme" && this.shadowRoot) {
         this._themeChanged(this[propName]);
       }
+      // we need both properties but because of how the mutation observer works
+      // we'll be monitoring attributes (which these are reflected to)
+      // so when we update these values, we're going to force a rebuild
+      // of the shadow that's having highlightjs applied to it
+      // delaying a micro helps ensure that the nodes are there prior to applying the highlighting
+      if (propName === "highlightStart" && this.shadowRoot && this[propName] !== null && this.highlightEnd !== null) {
+        setTimeout(() => {
+          this.highlightLines(this.highlightStart, this.highlightEnd);          
+        }, 100);
+      }
+      if (propName === "highlightEnd" && this.shadowRoot && this[propName] !== null && this.highlightStart !== null) {
+        setTimeout(() => {
+          this.highlightLines(this.highlightStart, this.highlightEnd);          
+        }, 100);
+      }
+    });
+  }
+  // support highlighting lines now that we have line endings!
+  highlightLines(start, end) {
+    Array.from(this.shadowRoot.querySelector('code.hljs table tbody').children).map((node, index) => {
+      if (index < start-1 || index > end-1) {
+        node.classList.remove('line-highlighted');
+        node.setAttribute('part', 'line');
+      }
+      else {
+        node.classList.add('line-highlighted');
+        node.setAttribute('part', 'line line-highlighted');
+      }
     });
   }
   _themeChanged(theme) {
@@ -384,22 +467,23 @@ if ($MrTheCheat) {
       template.setAttribute("preserve-content", "preserve-content");
       this.appendChild(template);
     }
-    this._highlight(template.innerHTML);
+    this._applyHighlightjs(template.innerHTML);
   }
   _getCodeTemplate() {
     const nodes = this.children;
     return [].filter.call(
       nodes,
-      (node) => node.nodeType === Node.ELEMENT_NODE
+      (node) => node.nodeType === Node.ELEMENT_NODE 
     )[0];
   }
-  _highlight(str) {
+  _applyHighlightjs(str) {
     this._code = document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
     if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
       this.shadowRoot.querySelector("#code").appendChild(this._code);
       hljs.highlightBlock(this._code);
+      hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector('code'));
     }
   }
   _cleanIndentation(str) {

@@ -18,27 +18,27 @@
     </style>
   </head>
   <body>
+    <code>
     <pre>
       <!DOCTYPE html> 
       <html> 
           <head> 
               <meta charset="UTF-8"> 
               <title>Page Title</title> 
-              <link rel="stylesheet" href="styles.css"> 
           </head> 
           <body> 
               <!-- Add content here --> 
           </body>
       </html>
       </pre>
-    <code-sample type="html">
+    </code>
+    <code-sample type="html" highlight-start="2" highlight-end="5">
       <template preserve-content="preserve-content">
 <!DOCTYPE html> 
 <html> 
     <head> 
         <meta charset="UTF-8"> 
         <title>Page Title</title> 
-        <link rel="stylesheet" href="styles.css"> 
     </head> 
     <body> 
         <!-- Add content here --> 
@@ -149,6 +149,59 @@
               }
             </template>
           </code-sample>
+
+          <div class="stopblock" data-start="3" data-end="12">
+            <p>The render function is what you'd expect for LitElement to 
+              render HTML on update of ANYTHING that it knows about.</p>
+          </div>
+          <div class="stopblock" data-start="5" data-end="9">
+            <p>Notice that we render the styles inside the HTML. This is NOT standard but makes it easier to read.</p>
+          </div>
+          <div class="stopblock" data-start="2" data-end="2">
+            <p>Classes will always be used in OOP JavaScript.</p>
+          </div>
+          <div class="stopblock" data-start="2" data-end="12">
+            <p>The next thing!</p>
+          </div>
+          <div class="stopblock" data-start="6" data-end="8">
+            <p>:host is a VERY special selector that ONLY works in shadowRoots! This is like saying "do this stuff to ME" which is NO WHERE ELSE POSSIBLE! At the document level though, there's :root which IS THE MOST GENERIC SELECTOR which is soooooorta like the defaults for the very very top of the document cascade.</p>
+            <p>:host is a VERY special selector that ONLY works in shadowRoots! This is like saying "do this stuff to ME" which is NO WHERE ELSE POSSIBLE! At the document level though, there's :root which IS THE MOST GENERIC SELECTOR which is soooooorta like the defaults for the very very top of the document cascade.</p>
+          </div>
+          <style>
+            
+            .stopblock {
+              border-left:#000D25 dashed 2px;
+              padding: 16px 0 16px 0;
+            }
+
+            .stopblock:hover {
+              cursor: pointer;
+              background-color: #0056ab08 !important;
+            }
+
+            .active {
+              background-color:rgba(208, 140, 140, .1) !important;
+            }
+          </style>
+          <script>
+            const demo3 = document.querySelector('#demo-3');
+            function updateHighlight(activeTarget, node, start, end) {
+              if (document.querySelector('.active')) {
+                document.querySelector('.active').classList.remove('active');
+              }
+              activeTarget.classList.add('active');
+              node.highlightStart = start;
+              node.highlightEnd = end;
+            }
+            document.querySelectorAll('.stopblock').forEach((node) => {
+              node.addEventListener('mouseover', (e) => {
+                updateHighlight(node, demo3, node.getAttribute('data-start'), node.getAttribute('data-end'));
+              });
+              node.addEventListener('click', (e) => {
+                updateHighlight(node, demo3, node.getAttribute('data-start'), node.getAttribute('data-end'));
+              });
+            });
+          </script>
         </div>
       </div>
 
