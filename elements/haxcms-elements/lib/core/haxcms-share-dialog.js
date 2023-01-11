@@ -54,7 +54,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         <label for="access">Who are you sharing with?</label>
         <select @change="${this.calculateShareCode}" name="access" id="access">
           <option value="oer">Open to anyone</option>
-          <option value="course">Account required to view</option>
+          <option value="courses">Account required to view</option>
           <option value="iam">Editor rights required</option>
         </select>
         <details>
