@@ -190,9 +190,3 @@ For example:
 ## Contributing
 
 Contributions are always welcome!
-
-## Authors
-
-- [@btopro](https://www.github.com/btopro)
-- [@heyMP](https://www.github.com/heyMP)
-- [@nikkimk](https://www/github.com/nikkimk)
