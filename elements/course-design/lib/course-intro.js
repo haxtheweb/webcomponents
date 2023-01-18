@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
-import "./course-intro-footer.js";
+//import "./course-intro-footer.js";
 
 export class CourseIntro extends LitElement {
   static get tag() {
@@ -13,6 +13,14 @@ export class CourseIntro extends LitElement {
         :host {
           display: flex;
           flex-direction: column;
+        }
+        course-intro-footer {
+          display: flex;
+          justify-content: space-between;
+          background: #000;
+          padding: 25px;
+          min-height: 300px;
+          align-items: center;
         }
       `,
     ];
@@ -30,7 +38,7 @@ export class CourseIntro extends LitElement {
   }
   render() {
     return html`
-      <course-intro-header>
+      <course-intro-header part="course-intro-header">
         <div slot="header-left">
           <slot name="header-left"></slot>
         </div>
@@ -38,8 +46,8 @@ export class CourseIntro extends LitElement {
           <slot name="outline-title"></slot>
         </div>
       </course-intro-header>
-      <course-intro-lesson-plans></course-intro-lesson-plans>
-      <course-intro-footer>
+      <course-intro-lesson-plans part="course-intro-lesson-plans"></course-intro-lesson-plans>
+      <course-intro-footer part="course-intro-footer">
         <div slot="footer-left">
           <slot name="footer-left"></slot>
         </div>
