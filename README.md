@@ -191,8 +191,10 @@ For example:
 
 Contributions are always welcome!
 
-## Authors
+## Active contributors
 
 - [@btopro](https://www.github.com/btopro)
-- [@heyMP](https://www.github.com/heyMP)
-- [@nikkimk](https://www/github.com/nikkimk)
+- [@cgldevel](https://www.github.com/cgldevel)
+
+## Additional contributions
+Past contributors, student and larger community, can be found here: https://github.com/elmsln/lrnwebcomponents/graphs/contributors
