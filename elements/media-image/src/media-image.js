@@ -23,7 +23,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           width: auto;
           margin: auto;
           max-width: 600px;
-          max-height: 600px;
           --box-background-color: #f7f6ef;
         }
 
@@ -81,6 +80,13 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         :host([offset="narrow"]) {
           max-width: var(--media-image-offset-narrow-max-width, 500px);
           margin: auto;
+        }
+
+        media-image-caption {
+          max-height: 100px;
+          padding-bottom: 25px;
+          border-bottom: dashed 2px lightgray;
+          margin-bottom: 25px;
         }
       `,
     ];
@@ -467,7 +473,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
           cursor: pointer;
         }
         .image-wrap {
-          max-height: 600px;
           overflow: hidden;
         }
         .image-wrap img {
@@ -563,7 +568,6 @@ class MediaImageCitation extends LitElement {
         :host {
           display: block;
           overflow: auto;
-          max-height: 100px;
         }
 
         .citation {
@@ -600,13 +604,9 @@ class MediaImageCaption extends LitElement {
         :host {
           display: block;
           overflow: auto;
-          max-height: 200px;
         }
 
         .caption {
-          padding-bottom: 25px;
-          border-bottom: dashed 2px lightgray;
-          margin-bottom: 25px;
           line-height: 1.5;
           font-size: 18px;
         }
