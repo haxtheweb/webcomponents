@@ -64,15 +64,15 @@ export class AppHaxButton extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "type") {
         switch (this.type) {
-          case "Technology":
+          case "technology":
             this.icon = "hardware:desktop-mac";
             this.value = "technology";
             break;
-          case "Business":
+          case "business":
             this.icon = "maps:local-atm";
             this.value = "business";
             break;
-          case "Art":
+          case "art":
             this.icon = "image:palette";
             this.value = "art";
             break;
@@ -92,6 +92,18 @@ export class AppHaxButton extends LitElement {
             this.icon = "hax:file-docx";
             this.value = "docx";
             break;
+          case "docx":
+            this.icon = "hax:file-docx";
+            this.value = "docx";
+          break;
+          case "evolution":
+            this.icon = "communication:business";
+            this.value = "evo";
+          break;
+          case "gitbook":
+            this.icon = "mdi-social:github-circle";
+            this.value = "gitbook";
+          break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";

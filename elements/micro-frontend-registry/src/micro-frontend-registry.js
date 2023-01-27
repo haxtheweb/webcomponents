@@ -11,6 +11,7 @@ const MicroFrontendKeys = [
   "description",
   "params",
   "callback",
+  "method",
 ];
 
 // new micro
@@ -160,9 +161,10 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @param {Object} params - data to send to endpoint
    * @param {Function} callback - Function callback on data return
    * @param {Object} caller - reference to DOM node that called this
+   * @param {String} urlStringAddon - a string to add onto the fetch at the end. edge of edge of edge land here
    * @returns {Object} Response object from microservice, otherwise `null`
    */
-  async call(name, params = {}, callback = null, caller = null) {
+  async call(name, params = {}, callback = null, caller = null, urlStringAddon = '') {
     if (this.has(name)) {
       const item = this.get(name);
       // default post, but this is not cacheable
@@ -183,7 +185,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
           // support for formdata which is already encoded
           const searchParams = new URLSearchParams(params).toString();
           data = await fetch(
-            searchParams ? `${item.endpoint}?${searchParams}` : item.endpoint,
+            searchParams ? `${item.endpoint}?${searchParams}${urlStringAddon}` : item.endpoint + urlStringAddon,
             {
               method: method,
             }
@@ -200,7 +202,7 @@ class MicroFrontendRegistryEl extends HTMLElement {
         case "POST":
         default:
           // support for formdata which is already encoded
-          data = await fetch(item.endpoint, {
+          data = await fetch(item.endpoint + urlStringAddon, {
             method: method,
             body: params instanceof FormData ? params : JSON.stringify(params),
           })

@@ -2658,9 +2658,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             "activeElementChanged",
             [this.activeNode, false]
           );
-          let oldSchema = HAXStore.haxSchemaFromTag(
-            this.activeNode.tagName.toLowerCase()
-          );
+          let oldSchema = {};
+          if (this.activeNode && this.activeNode.tagName) {
+            oldSchema = HAXStore.haxSchemaFromTag(
+              this.activeNode.tagName.toLowerCase()
+            );
+          }
+          else if (this.activeNode.parentElement && this.activeNode.parentElement.tagName) {
+            oldSchema = HAXStore.haxSchemaFromTag(
+              this.activeNode.parentElement.tagName.toLowerCase()
+            );
+          }
           // test for slots to match to ensure this is maintained
           if (
             this.activeNode &&

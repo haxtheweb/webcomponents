@@ -183,6 +183,26 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // evolutionToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/system/api/importEvolution",
+    name: "@haxcms/evolutionToSite",
+    title: "Evolution to Site",
+    description: "Convert .zip and schema to valid HAXcms",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
+  // gitbookToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/gitbookToSite",
+    name: "@haxcms/evolutionToSite",
+    title: "Evolution to Site",
+    description: "Convert .zip and schema to valid HAXcms",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
   // insights
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/insights",
