@@ -196,11 +196,11 @@ export function enableHAXcmsServices() {
   // gitbookToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/gitbookToSite",
-    name: "@haxcms/evolutionToSite",
-    title: "Evolution to Site",
-    description: "Convert .zip and schema to valid HAXcms",
+    name: "@haxcms/gitbookToSite",
+    title: "Gitbook to Site",
+    description: "Convert Gitbook baseed repo to valid HAXcms",
     params: {
-      body: "FormData class w/ uploaded file encoded into it",
+      md: "Location of the repo",
     },
   });
   // insights

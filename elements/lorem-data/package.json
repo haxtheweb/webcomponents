@@ -46,7 +46,7 @@
     "@lrnwebcomponents/lrndesign-avatar": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.1.0",
     "dummy-text": "^1.0.3",
-    "lit": "^2.4.1"
+    "lit": "^2.6.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

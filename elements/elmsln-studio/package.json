@@ -46,7 +46,7 @@
     "@lrnwebcomponents/simple-fields": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.1.0",
     "@lrnwebcomponents/simple-modal": "^4.1.0",
-    "lit": "^2.4.1",
+    "lit": "^2.6.1",
     "lit-element-router": "2.0.3"
   },
   "devDependencies": {

@@ -128,10 +128,12 @@ export class AppHaxSteps extends SimpleColors {
         formData.append("method", "site"); // this is a site based importer
         formData.append("type", toJS(store.site.structure));
         formData.append("upload", file);
+        this.setProcessingVisual();
         const response = await MicroFrontendRegistry.call(
           "@haxcms/docxToSite",
           formData
         );
+        store.toast(`Processed!`, 300);
         // must be a valid response and have at least SOME html to bother attempting
         if (
           response.status == 200 &&
@@ -157,12 +159,12 @@ export class AppHaxSteps extends SimpleColors {
           store.appEl.playSound("click2");
         } else {
           store.appEl.playSound("error");
-          store.toast(`File did not return valid HTML`);
+          store.toast(`File did not return valid HTML structure`);
         }
       });
     }
   }
-
+  // evolution import
   async evoImport(e) {
     if (!e.target.comingSoon) {
       const { type } = e.target;
@@ -180,6 +182,7 @@ export class AppHaxSteps extends SimpleColors {
         formData.append("type", toJS(store.site.structure));
         formData.append("upload", file);
         // local end point + stupid JWT thing
+        this.setProcessingVisual();
         const response = await MicroFrontendRegistry.call(
           "@haxcms/evolutionToSite",
           formData,
@@ -187,6 +190,7 @@ export class AppHaxSteps extends SimpleColors {
           null,
           "?jwt=" + toJS(store.AppHaxAPI.jwt)
         );
+        store.toast(`Processed!`, 300);
         // must be a valid response and have at least SOME html to bother attempting
         if (
           response.status == 200 &&
@@ -212,12 +216,62 @@ export class AppHaxSteps extends SimpleColors {
           store.appEl.playSound("click2");
         } else {
           store.appEl.playSound("error");
-          store.toast(`File did not return valid HTML`);
+          store.toast(`File did not return valid HTML structure`);
         }
       });
     }
   }
-
+  // gitbook import endpoint
+  async gbImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      let gbURL = window.prompt('URL for the Gitbook repo');
+      enableServices(["haxcms"]);
+      this.setProcessingVisual();
+      const response = await MicroFrontendRegistry.call(
+        "@haxcms/gitbookToSite",
+        {md: gbURL}
+      );
+      store.toast(`Processed!`, 300);
+      // must be a valid response and have at least SOME html to bother attempting
+      if (
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != ""
+      ) {
+        store.items = response.data.items;
+        // invoke a file broker for a docx file
+        // send to the endpoint and wait
+        // if it comes back with content, then we engineer details off of it
+        this.nameTyped = response.data.filename
+          .replace(/\s/g, "")
+          .replace(/-/g, "")
+          .toLowerCase();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+          this.shadowRoot.querySelector("#sitename").select();
+        }, 800);
+        store.site.type = type;
+        store.site.theme = "clean-one";
+        store.appEl.playSound("click2");
+      } else {
+        store.appEl.playSound("error");
+        store.toast(`File did not return valid HTML`);
+      }
+    }
+  }
+  // makes guy have hat on, shows it's doing something
+  setProcessingVisual() {
+    let loadingIcon = document.createElement('simple-icon-lite');
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty('--simple-icon-height', '40px');
+    loadingIcon.style.setProperty('--simple-icon-width', '40px');
+    loadingIcon.style.height = '150px';
+    loadingIcon.style.marginLeft = '8px';
+    store.toast(`Processing`, 60000, {
+      hat: 'construction',
+      slot: loadingIcon});
+  }
   // step 3
   chooseTheme(e) {
     if (!e.target.comingSoon) {
@@ -818,9 +872,8 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.docxImport}
+            @click=${this.gbImport}
             type="gitbook"
-            coming-soon
           ></app-hax-button>`;
       break;
     }
