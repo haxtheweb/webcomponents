@@ -20,7 +20,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         }
         :host [hidden] {
           display: none;
-        } 
+        }
         #result {
           height: var(--wikipedia-query-body-height);
           overflow: scroll;
@@ -179,7 +179,11 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         // skip anything that's prototype object
         if (!response.query.pages.hasOwnProperty(key)) continue;
         // load object response, double check we have an extract
-        if (response.query.pages[key].extract) {
+        if (
+          response.query.pages[key].extract &&
+          this.shadowRoot &&
+          this.shadowRoot.querySelector("#result")
+        ) {
           let html = response.query.pages[key].extract;
           html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
           html = html.replace(/<\/script>/gi, "&lt;/script&gt;");

@@ -1258,7 +1258,7 @@ class HaxTray extends I18NMixin(
         this.humanName = props.gizmo.title;
       }
       // first, allow element properties to dictate defaults
-      for (var property in this.activeHaxElement.properties) {
+      for (let property in this.activeHaxElement.properties) {
         props.settings.configure.forEach((el) => {
           if (el.property === property) {
             this.activeValue.settings.configure[property] =
@@ -1612,7 +1612,7 @@ class HaxTray extends I18NMixin(
               } else if (!isGrid) {
                 // need to specifically walk through slots if there is anything
                 // that says it has to come from a slot
-                for (var propTmp in this.__activePropSchema.settings[key]) {
+                for (let propTmp in this.__activePropSchema.settings[key]) {
                   if (
                     this.__activePropSchema.settings[key][propTmp].slot == prop
                   ) {
@@ -1653,7 +1653,7 @@ class HaxTray extends I18NMixin(
                       this.__activePropSchema.settings[key][propTmp]
                         .slotAttributes
                     ) {
-                      for (var attr in this.__activePropSchema.settings[key][
+                      for (let attr in this.__activePropSchema.settings[key][
                         propTmp
                       ].slotAttributes) {
                         tmpel.setAttribute(
