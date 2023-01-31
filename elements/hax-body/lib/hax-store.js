@@ -2116,7 +2116,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
           {
             type: "image",
-            type_exclusive: true,
             source: "src",
             height: "height",
             width: "width",
@@ -2124,7 +2123,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ],
         meta: {
           author: "W3C",
-          outlineDesigner: true,
+          hidden: true,
         },
       },
       settings: {
@@ -2205,6 +2204,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [],
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2239,6 +2239,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         requiresParent: "figure",
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2277,6 +2278,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         handles: [],
         meta: {
           author: "W3C",
+          hidden: true
         },
       },
       settings: {

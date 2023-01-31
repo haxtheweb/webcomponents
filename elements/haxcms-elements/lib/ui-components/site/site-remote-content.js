@@ -439,12 +439,12 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       canPosition: false,
       canEditSource: false,
       gizmo: {
-        title: "Site Content",
+        title: "Remote HAX Content",
         description:
           "Reuse content from one site in another.",
         icon: "hax:remote",
         color: "grey",
-        groups: ["Content", "CMS"],
+        groups: ["Content", "CMS", "Advanced"],
         handles: [
         ],
         meta: {

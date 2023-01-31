@@ -326,6 +326,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "image",
+            type_exclusive: true,
             source: "source",
             title: "alt",
             alt: "alt",
@@ -336,6 +337,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         ],
         meta: {
           author: "HAXTheWeb core team",
+          outlineDesigner: true,
         },
       },
       settings: {
@@ -355,14 +357,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             inputMethod: "alt",
             icon: "accessibility",
             required: true,
-          },
-          {
-            property: "round",
-            title: "Round image",
-            description: "Crops the image appearance to be circle in shape.",
-            inputMethod: "boolean",
-            icon: "account",
-            required: false,
           },
           {
             property: "card",
@@ -430,6 +424,14 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         ],
         advanced: [
           {
+            property: "round",
+            title: "Round image",
+            description: "Crops the image appearance to be circle in shape.",
+            inputMethod: "boolean",
+            icon: "account",
+            required: false,
+          },
+          {
             property: "describedBy",
             title: "aria-describedby",
             description:
@@ -442,7 +444,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         {
           tag: "media-image",
           properties: {
-            source: "http://unsplash.it/600",
+            source: "https://dummyimage.com/300x200/000/fff",
             figureLabelTitle: "1.3",
             figureLabelDescription: "This is the description of the figure.",
             citation: "This is my citation.",
