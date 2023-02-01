@@ -5,9 +5,7 @@
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
-import {
-  editableTableDisplayStyles
-} from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
+import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
 /**
  * `h-a-x`
  * @element h-a-x
@@ -322,8 +320,12 @@ class HAX extends HTMLElement {
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
-    if (!this.elementAlign || this.elementAlign == null) {
-      this.elementAlign = "right";
+    if (
+      !this.elementAlign ||
+      this.elementAlign == null ||
+      this.elementAlign == ""
+    ) {
+      this.elementAlign = "left";
     }
     store.elementAlign = this.elementAlign;
     document.body.appendChild(tray);

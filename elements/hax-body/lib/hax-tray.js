@@ -899,7 +899,7 @@ class HaxTray extends I18NMixin(
         let directions = ["left", "right"],
           direction = !!directions[e.detail.index]
             ? directions[e.detail.index]
-            : "right";
+            : "left";
         if (e.detail.index > 1) this.collapsed = true;
         this.style.setProperty("--hax-tray-custom-y", null);
         this.style.setProperty("--hax-tray-custom-x", null);

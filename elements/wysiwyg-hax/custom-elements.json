@@ -47,7 +47,7 @@
         },
         {
           "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
+          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
         },
         {
           "name": "field-id",
@@ -129,7 +129,7 @@
         },
         {
           "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
+          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
         },
         {
           "name": "field-id",

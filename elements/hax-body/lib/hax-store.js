@@ -1990,7 +1990,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     //if hax-tray-elementAlign exists use that other wise left
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
     if (!this.elementAlign || this.elementAlign == null) {
-      this.elementAlign = "right";
+      this.elementAlign = "left";
     }
     this.trayStatus = "collapsed";
     this.trayDetail = "content-edit";

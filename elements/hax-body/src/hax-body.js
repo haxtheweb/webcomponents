@@ -724,7 +724,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       <div
         id="bodycontainer"
         class="ignore-activation"
-        element-align="${this.elementAlign || "right"}"
+        element-align="${this.elementAlign || "left"}"
       >
         <slot id="body"></slot>
       </div>
