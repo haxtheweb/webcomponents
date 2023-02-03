@@ -202,6 +202,14 @@ class HaxTray extends I18NMixin(
           left: -1000px;
           flex-direction: row;
         }
+        :host([tray-detail="view-source"]) .detail {
+          width: 50vw;
+          height: 50vh;
+          min-height: 300px;
+          min-width: 300px;
+          resize: both;
+          flex: unset;
+        }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
@@ -222,14 +230,11 @@ class HaxTray extends I18NMixin(
           left: 0;
           right: 0;
         }
-        :host([edit-mode]) .wrapper.full-panel .detail {
-          max-width: unset;
-        }
+        
         #menubar {
           display: inline-flex;
           flex-direction: column;
           align-items: stretch;
-          width: var(--hax-tray-menubar-min-width);
           overflow: visible;
           flex: 0 0 auto;
           z-index: 6;
@@ -245,17 +250,10 @@ class HaxTray extends I18NMixin(
           padding: var(--hax-ui-spacing-xs);
         }
         #menubar > *::part(label) {
-          opacity: 0;
           margin: 0px;
-          width: 0%;
           font-size: 10px;
-          padding: 0px;
-          visibility: hidden;
-          overflow: hidden;
           display: inline-block;
           text-align: left;
-        }
-        :host([collapsed]) #menubar > *::part(label) {
           opacity: 1;
           width: 100%;
           visibility: visible;
@@ -285,8 +283,8 @@ class HaxTray extends I18NMixin(
           pointer-events: all;
           border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
-          max-height: 100vh;
-          max-width: calc(
+          height: 100vh;
+          width: calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
           );
           overflow-x: auto;
@@ -372,6 +370,15 @@ class HaxTray extends I18NMixin(
             width: 100%;
             z-index: calc(var(--hax-ui-focus-z-index) + 3);
           }
+          :host([edit-mode]) .wrapper.full-panel .detail {
+            max-width: 100vw;
+            max-height: unset;
+            min-width: unset;
+          }
+          #tray-detail {
+            max-width: unset;
+            max-height: unset;
+          }
           .wrapper {
             width: unset;
             top: -1000px;
@@ -412,8 +419,15 @@ class HaxTray extends I18NMixin(
           #haxMenuAlign {
             display: none;
           }
-          .detail {
+          :host([tray-detail="view-source"]) .detail {
             width: 100%;
+            resize: unset;
+            height: 100vh;
+          }
+          :host([tray-detail="view-source"]) #tray-detail {
+            overflow: hidden;
+          }
+          .detail {
             position: relative;
             flex: 1 1 100%;
           }
@@ -1450,6 +1464,10 @@ class HaxTray extends I18NMixin(
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
   _updateTrayDetail(newValue) {
+    if (newValue && this.shadowRoot && this.shadowRoot.querySelector('.detail')) {
+      this.shadowRoot.querySelector('.detail').style.width = '';
+      this.shadowRoot.querySelector('.detail').style.height = '';
+    }
     if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;
       this._refreshAddData();

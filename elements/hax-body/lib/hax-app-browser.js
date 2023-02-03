@@ -17,11 +17,11 @@ class HaxAppBrowser extends LitElement {
     return [
       css`
         :host {
-          overflow-y: auto;
           position: relative;
         }
-        simple-button-grid {
+        simple-button-grid::part(buttons) {
           overflow: auto;
+          --simple-button-grid-cols: 50% !important;
         }
         simple-button-grid.collapse-hide {
           max-height: 0 !important;
