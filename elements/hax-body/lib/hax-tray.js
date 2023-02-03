@@ -179,7 +179,6 @@ class HaxTray extends I18NMixin(
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
-          transition: 0s color linear 0s;
         }
         :host(:focus-within),
         :host(:hover) {
@@ -199,7 +198,6 @@ class HaxTray extends I18NMixin(
           width: var(--hax-tray-width);
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
-          transition: 0.2s opacity ease-in-out 0s;
           z-index: var(--hax-ui-focus-z-index);
         }
         :host([element-align="left"]) .wrapper {
@@ -258,9 +256,6 @@ class HaxTray extends I18NMixin(
           overflow: hidden;
           display: inline-block;
           text-align: left;
-          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
-            0.2s padding ease-in-out 0s, 0s opacity linear 0.2s,
-            0s visibility linear 0.2s;
         }
         :host([collapsed]) #menubar > *::part(label) {
           opacity: 1;
@@ -268,9 +263,6 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           padding: 0px var(--hax-ui-spacing-sm);
           overflow: unset;
-          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
-            0.2s padding ease-in-out 0s, 0s opacity linear 0s,
-            0s visibility linear 0s, 0s overflow linear 0.2s;
         }
         loading-indicator {
           --loading-indicator-background-color: var(
@@ -293,11 +285,8 @@ class HaxTray extends I18NMixin(
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          transition: 0.2s opacity ease-in-out 0s, 0.2s width ease-in-out 0s,
-            0.2s visibility ease-in-out 0s, 0s border linear;
           border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
-          transition: 0.2s width ease-in-out 0s;
           max-height: 100vh;
           max-width: calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
@@ -345,10 +334,6 @@ class HaxTray extends I18NMixin(
         hax-tray-button,
         hax-app-browser,
         hax-gizmo-browser {
-          transition: 0.2s all ease-in-out;
-          transition: 0s color linear !important;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
           visibility: visible;
         }
         hax-tray-button:not(:defined),
@@ -400,7 +385,6 @@ class HaxTray extends I18NMixin(
           }
           :host([collapsed]) .wrapper {
             height: var(--hax-tray-menubar-min-height);
-            overflow-y: visible;
           }
           :host([element-align="left"]) .wrapper {
             left: -1000px;
