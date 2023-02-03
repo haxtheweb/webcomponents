@@ -2298,6 +2298,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             required: true,
             validationType: "url",
           },
+          DataStyleDecoration,
+        ],
+        advanced: [
           {
             attribute: "target",
             title: "Target",
@@ -2316,9 +2319,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
           },
-          DataStyleDecoration,
-        ],
-        advanced: [
           {
             attribute: "rel",
             title: "rel",

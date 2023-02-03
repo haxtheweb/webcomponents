@@ -231,7 +231,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             action
             align-horizontal="left"
-            ?disabled="${this.viewSource || this.disableOps}"
+            ?disabled="${this.viewSource || this.disableOps || ((!this.layoutParent || this.activeNode !== this.layoutElement) && !this.layoutElement)}"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >

@@ -179,10 +179,6 @@ class HaxTray extends I18NMixin(
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
         }
-        :host(:focus-within),
-        :host(:hover) {
-          z-index: var(--hax-ui-focus-z-index);
-        }
         .wrapper {
           position: fixed;
           display: none;
@@ -198,6 +194,9 @@ class HaxTray extends I18NMixin(
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
+        }
+        :host(:hover) .wrapper {
+          overflow: visible;
         }
         :host([element-align="left"]) .wrapper {
           left: -1000px;
@@ -329,6 +328,7 @@ class HaxTray extends I18NMixin(
         }
         #toggle-tray-size {
           flex: 0 0 auto;
+          margin-right: 8px;
         }
         hax-tray-button,
         hax-app-browser,
@@ -730,9 +730,6 @@ class HaxTray extends I18NMixin(
       selected-detail="${this.trayDetail}"
     >
       <div class="tray-detail-titlebar">
-        <h4>
-          ${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}
-        </h4>
         <hax-tray-button
           voice-command="collapse menu"
           id="toggle-tray-size"
@@ -741,6 +738,9 @@ class HaxTray extends I18NMixin(
           label="${this.t.close}"
         >
         </hax-tray-button>
+        <h4>
+          ${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}
+        </h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
