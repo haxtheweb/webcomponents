@@ -530,6 +530,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     let right = this.shadowRoot.querySelector("#right");
     let rightremove = this.shadowRoot.querySelector("#rightremove");
     // support for enabling or disabling
+    // @note this is a hacky way of evaluating this
     right.disabled = false;
     rightremove.disabled = false;
     if (active && active.tagName == "GRID-PLATE") {
