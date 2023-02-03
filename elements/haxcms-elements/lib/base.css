@@ -201,6 +201,10 @@ h6 {
   font-size: var(--hax-base-styles-h6-font-size);
 }
 
+hr {
+  border-top-width: 2px;
+}
+
 p {
   min-height: var(--hax-base-styles-p-min-height);
   font-size: var(--hax-base-styles-p-font-size);

@@ -2385,7 +2385,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       demoSchema: [
         {
           tag: "p",
-          content: "Paragraph",
+          content: "Deep thoughts..",
           properties: {},
         },
       ],
@@ -2613,7 +2613,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             handles: prims[tag].handles || [],
             meta: {
               author: "HAXTheWeb core team",
-              inlineOnly: true,
+              inlineOnly: ["em","b","strong","i", "strike", "u", "sub", "sup", "span"].includes(tag) ? true : false,
               hidden: tag == "h2" ? false : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },

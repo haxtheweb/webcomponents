@@ -1527,7 +1527,6 @@
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-    "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
     "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",

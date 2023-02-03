@@ -24,14 +24,19 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         :host {
           display: block;
           overflow: hidden;
-          max-width: 200px;
-          max-height: 250px;
+          height: 150px;
+          width: 150px;
+        }
+        div ::slotted(*) {
+          transform: scale(0.4) translate(-75%, -75%);
+          width: 500px;
+          max-height: 300px;
         }
       `,
     ];
   }
   render() {
-    return html`<slot></slot>`;
+    return html`<div><slot></slot></div>`;
   }
   updated(changedProperties) {
     if (super.updated) {
