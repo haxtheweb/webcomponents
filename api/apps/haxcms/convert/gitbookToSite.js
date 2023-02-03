@@ -87,6 +87,25 @@ async function recurseToJOS(parent, top, depth, sourceLink) {
       item.slug = a.getAttribute('href');
       item.location = `content/${a.getAttribute('href')}`;
       item.contents = await fetch(baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'))).then((d) => d.ok ? d.text(): '');
+      // @todo walk the contents response looking for internal links (rewrite them) and img / file references (reference and rewrite the references)
+      const doc = parse(`<div>${item.contents}</div>`);
+      let imgs = doc.querySelector('img');
+      for (var index in imgs) {
+        // look at the image reference to see if it's internal to the repo
+        // ./ or no trailing or ../ or / so long as it's not http...
+        // add it to our collection of files that we need to be aware of for later downloading
+        // rewrite the reference to be something that's in this key'ed output
+        let link = new URL(imgs[index].getAttribute('src'));
+      }
+      // now do that for links
+      let as = doc.querySelector('a');
+      for (var index in as) {
+        // look at the image reference to see if it's internal to the repo
+        // ./ or no trailing or ../ or / so long as it's not http...
+        // add it to our collection of files that we need to be aware of for later downloading
+        // rewrite the reference to be something that's in this key'ed output
+        let link = new URL(as[index].getAttribute('href'));
+      }
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {

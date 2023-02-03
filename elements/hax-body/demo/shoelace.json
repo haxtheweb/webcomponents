@@ -1529,50 +1529,26 @@
     }
   ],
   "autoloader": {
+    "page-break": "@lrnwebcomponents/page-break/page-break.js",
+    "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
+    "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+    "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+    "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+    "license-element": "@lrnwebcomponents/license-element/license-element.js",
+    "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+    "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+    "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+    "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-    "sl-details": {
-      "import": "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/shoelace.js",
-      "haxProperties": {
-        "canScale": true,
-        "canPosition": true,
-        "canEditSource": true,
-        "gizmo": {
-          "title": "sl-details",
-          "icon": "save",
-          "meta": {
-            "author": "Shoelace"
-          }
-        },
-        "settings": {
-          "configure": [
-            {
-              "property": "summary",
-              "title": "Summary",
-              "inputMethod": "textfield"
-            },
-            {
-              "property": "open",
-              "title": "Toggle open",
-              "inputMethod": "boolean"
-            },
-            {
-              "slot": "",
-              "title": "Contents",
-              "inputMethod": "code-editor"
-            }
-          ]
-        },
-        "demoSchema": [
-          {
-            "tag": "sl-details",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>",
-            "properties": {
-              "open": true,
-              "summary": "Your heading"
-            }
-          }
-        ]
-      }
-    }
+    "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+    "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+    "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+    "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+    "q-r": "@lrnwebcomponents/q-r/q-r.js",
+    "self-check": "@lrnwebcomponents/self-check/self-check.js",
+    "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+    "video-player": "@lrnwebcomponents/video-player/video-player.js",
+    "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+    "date-card": "@lrnwebcomponents/date-card/date-card.js"
   }
 }
