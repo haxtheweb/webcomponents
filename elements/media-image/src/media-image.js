@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
+import "@lrnwebcomponents/figure-label/figure-label.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
@@ -35,13 +36,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           background-color: var(--box-background-color);
           padding: 20px;
         }
-
-        @media screen and (min-width: 450px) {
-          :host([size="small"]) {
-            max-width: 50%;
-          }
-        }
-
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
             max-width: 35%;
@@ -84,9 +78,12 @@ class MediaImage extends SchemaBehaviors(LitElement) {
 
         media-image-caption {
           max-height: 100px;
-          padding-bottom: 25px;
+          padding-bottom: 20px;
           border-bottom: dashed 2px lightgray;
-          margin-bottom: 25px;
+          margin-bottom: 20px;
+        }
+        :host(:not([disable-zoom])) media-image-image:hover {
+          cursor: pointer;
         }
       `,
     ];
@@ -126,11 +123,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           ? " - " + this.figureLabelDescription
           : "";
       }
-      if (propName == "__figureLabel") {
-        if (this[propName]) {
-          import("@lrnwebcomponents/figure-label/figure-label.js");
-        }
-      }
     });
   }
   render() {
@@ -150,6 +142,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
         .described-by="${this.describedBy}"
+        .tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
@@ -201,6 +194,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       disableZoom: {
         type: Boolean,
         attribute: 'disable-zoom',
+        reflect: true,
       },
       _hasCaption: {
         type: Boolean,
@@ -296,7 +290,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   // if the either of the figure label values are present then display
   // the figure label
   _hasFigureLabel(title, description) {
-    return title.length > 0 || description.length > 0;
+    return (title && title.length > 0) || (description && description.length > 0);
   }
   _computeHasCaption() {
     this._hasCaption =
@@ -384,8 +378,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             inputMethod: "select",
             options: {
               none: "none",
-              left: "left",
-              right: "right",
               wide: "wide",
               narrow: "narrow",
             },
@@ -472,9 +464,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       css`
         :host {
           display: block;
-        }
-        :host(:hover) {
-          cursor: pointer;
         }
         .image-wrap {
           overflow: hidden;
@@ -575,7 +564,9 @@ class MediaImageCitation extends LitElement {
         }
 
         .citation {
-          font-size: 12.8px;
+          font-size: 13.3333px;
+          line-height: 24px;
+          font-weight: 400;
           font-style: italic;
           color: #4c4c4c;
           margin: 15px 0 15px;
@@ -611,8 +602,9 @@ class MediaImageCaption extends LitElement {
         }
 
         .caption {
-          line-height: 1.5;
-          font-size: 18px;
+          line-height: 28.8px;
+          font-size: 16px;
+          font-weight: 400;
         }
 
         .caption ::slotted(*) {

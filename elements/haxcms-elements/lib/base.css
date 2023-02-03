@@ -1,4 +1,9 @@
 body, html, :root {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
   scroll-behavior: smooth;
   --haxcms-system-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
