@@ -64,7 +64,6 @@ class HaxTray extends I18NMixin(
     this.t = {
       structure: "Outline",
       structureTip: "View Page Structure",
-      editSelected: "Edit selected",
       edit: "Edit",
       save: "Save",
       move: "Move",
@@ -630,7 +629,7 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="${this.t.editSelected} ${this.activeTagName}"
+        tooltip="${this.t.edit} ${this.activeTagName}"
         toggles
         ?toggled="${!this.collapsed && this.trayDetail === "content-edit"}"
         icon-position="left"
@@ -732,7 +731,7 @@ class HaxTray extends I18NMixin(
     >
       <div class="tray-detail-titlebar">
         <h4>
-          ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
+          ${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}
         </h4>
         <hax-tray-button
           voice-command="collapse menu"

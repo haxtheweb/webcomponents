@@ -23,7 +23,10 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
+// our default way of handing grids
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
+// our default image in core
+import "@lrnwebcomponents/media-image/media-image.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {

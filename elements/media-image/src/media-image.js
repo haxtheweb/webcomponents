@@ -93,6 +93,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.disableZoom = false;
     this.modalTitle = "";
     this.source = "";
     this.citation = "";
@@ -170,7 +171,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     };
   }
   _handleClick(event) {
-    if (this._haxState) {
+    if (this._haxState || this.disableZoom) {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
@@ -195,6 +196,11 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       },
       modalTitle: {
         type: String,
+      },
+      // support disabing zoom, zoom by default
+      disableZoom: {
+        type: Boolean,
+        attribute: 'disable-zoom',
       },
       _hasCaption: {
         type: Boolean,
@@ -317,12 +323,12 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "Styled image",
+        title: "Image",
         descrption:
-          "An image gizmo with the ability to provide simple, consistent styling and accessibility options.",
+          "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
-        groups: ["Image", "Media"],
+        groups: ["Image", "Media", "core"],
         handles: [
           {
             type: "image",
@@ -347,7 +353,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Source",
             description: "The URL for the image.",
             inputMethod: "haxupload",
-            icon: "link",
             required: true,
           },
           {
@@ -355,7 +360,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Alternative text",
             description: "Text to describe the image to non-sighted users.",
             inputMethod: "alt",
-            icon: "accessibility",
             required: true,
           },
           {
@@ -364,7 +368,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description:
               "Apply a drop shadow to give the appearance of being a raised card.",
             inputMethod: "boolean",
-            icon: "check-box-outline-blank",
             required: false,
           },
           {
@@ -372,7 +375,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Box",
             description: "Apply a visual box around the image.",
             inputMethod: "boolean",
-            icon: "image:crop-square",
             required: false,
           },
           {
@@ -380,7 +382,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Offset",
             description: "Apply a left or right offset to the image.",
             inputMethod: "select",
-            icon: "image:crop-square",
             options: {
               none: "none",
               left: "left",
@@ -394,7 +395,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Citation",
             description: "Citation for the image.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -402,7 +402,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Caption",
             description: "Caption for the image.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -410,7 +409,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Figure Label Title",
             description: "Title for the figure label.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -418,7 +416,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Figure Label Description",
             description: "Description for the figure label.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
         ],
@@ -428,7 +425,13 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Round image",
             description: "Crops the image appearance to be circle in shape.",
             inputMethod: "boolean",
-            icon: "account",
+            required: false,
+          },
+          {
+            property: "disableZoom",
+            title: "Disable image modal",
+            description: "Disable clicks opening the image in an image inspector dialog.",
+            inputMethod: "boolean",
             required: false,
           },
           {
@@ -445,8 +448,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           tag: "media-image",
           properties: {
             source: "https://dummyimage.com/300x200/000/fff",
-            figureLabelTitle: "1.3",
-            figureLabelDescription: "This is the description of the figure.",
+            card: true,
             citation: "This is my citation.",
           },
         },
