@@ -142,7 +142,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
         .described-by="${this.describedBy}"
-        .tabindex="${!this.disableZoom ? "0" : "-1"}"
+        tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>

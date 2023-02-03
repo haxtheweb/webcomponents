@@ -109,12 +109,16 @@ class ImageInspector extends LitElement {
           icon="image:flip"
           @click="${this.mirrorImage}"
         ></simple-icon-button>
-        <simple-icon-button
-          title="Open in new window"
-          icon="launch"
+        <a 
           href="${this.src}"
           target="_blank"
-        ></simple-icon-button>
+          rel="noopener noreferrer"
+          >
+          <simple-icon-button
+            title="Open in new window"
+            icon="launch"
+          ></simple-icon-button>
+        </a>
         <simple-icon-button
           title="EXIF Data"
           icon="image:camera-roll"
