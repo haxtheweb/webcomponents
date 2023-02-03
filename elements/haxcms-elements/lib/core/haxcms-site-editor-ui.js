@@ -161,11 +161,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           grid-template-columns: 20% 60% 20%;
           overflow: visible;
         }
-        @media (max-width: 600px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 15% 70% 15%;
-          }
-        }
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-12, black);
         }
@@ -321,6 +316,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           :host([edit-mode]) #deletebutton,
           :host([edit-mode]) #addmenubutton,
           :host([edit-mode]) #editdetails {
+            display: none;
+          }
+        }
+        @media (max-width: 600px) {
+          simple-toolbar {
+            --simple-toolbar-button-padding: 0px;
+          }
+          app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 0% 90% 10%;
+          }
+          .haxLogo simple-icon-lite {
+            --simple-icon-height: 16px;
+            --simple-icon-width: 16px;
+            margin: 0px;
+          }
+          .characterbtn-name {
             display: none;
           }
         }
@@ -514,7 +525,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   render() {
     return html`
       <app-hax-top-bar part="top-bar">
-        <span slot="left">
+        <span slot="left" class="home-btn">
           <a
             href="${this.backLink}"
             class="haxLogo"
