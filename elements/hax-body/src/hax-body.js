@@ -312,7 +312,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: 2px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
-          background-color: #fffafa;
           opacity: 0.5;
           transition: 0.2s all ease-in-out;
         }

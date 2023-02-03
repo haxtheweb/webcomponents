@@ -90,7 +90,6 @@ class HaxTray extends I18NMixin(
       cancelWithoutSaving: "Cancel without saving",
       configure: "Configure",
       advanced: "Advanced",
-      layout: "Layout",
       alignment: "Alignment",
       left: "Left",
       center: "Center",
@@ -107,12 +106,11 @@ class HaxTray extends I18NMixin(
     this._initial = true;
     this.activeValue = {
       settings: {
-        layout: {
+        configure: {},
+        advanced: {
           __position: "hax-align-left",
           __scale: 100,
         },
-        configure: {},
-        advanced: {},
       },
     };
     this.collapsed = true;
@@ -1231,12 +1229,11 @@ class HaxTray extends I18NMixin(
     this._initial = true;
     this.activeValue = {
       settings: {
-        layout: {
+        configure: {},
+        advanced: {
           __position: "hax-align-left",
           __scale: 100,
         },
-        configure: {},
-        advanced: {},
       },
     };
     this.shadowRoot.querySelector("#settingsform").fields = [];
@@ -1327,30 +1324,28 @@ class HaxTray extends I18NMixin(
       });
       // then we need to work on the layout piece
       if (activeNode.style.width != "") {
-        this.activeValue.settings.layout.__scale =
+        this.activeValue.settings.advanced.__scale =
           activeNode.style.width.replace("%", "");
       } else {
-        this.activeValue.settings.layout.__scale = 100;
+        this.activeValue.settings.advanced.__scale = 100;
       }
       if (
         activeNode.style.display == "block" &&
         activeNode.style.margin == "0px auto" &&
         activeNode.style.float == "right"
       ) {
-        this.activeValue.settings.layout.__position = "hax-align-right";
+        this.activeValue.settings.advanced.__position = "hax-align-right";
       } else if (
         activeNode.style.display == "block" &&
         activeNode.style.margin == "0px auto"
       ) {
-        this.activeValue.settings.layout.__position = "hax-align-center";
+        this.activeValue.settings.advanced.__position = "hax-align-center";
       } else {
-        this.activeValue.settings.layout.__position = "hax-align-left";
+        this.activeValue.settings.advanced.__position = "hax-align-left";
       }
-      this.activeHaxElement.properties.__scale =
-        this.activeValue.settings.layout.__scale;
-      this.activeHaxElement.properties.__position =
-        this.activeValue.settings.layout.__position;
-      // tabs / deep objects require us to preview the value w/ the path correctly
+      this.activeHaxElement.properties.__scale = this.activeValue.settings.advanced.__scale;
+      this.activeHaxElement.properties.__position = this.activeValue.settings.advanced.__position;
+        // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
@@ -1372,14 +1367,13 @@ class HaxTray extends I18NMixin(
             props.settings.advanced[key].slot;
         }
       });
-      props.settings.layout = [];
       // test if this element can be aligned
       if (props.canPosition) {
-        props.settings.layout.push({
+        props.settings.advanced.unshift({
           property: "__position",
           title: this.t.alignment,
           inputMethod: "select",
-          value: this.activeValue.settings.layout.__position,
+          value: this.activeValue.settings.advanced.__position,
           options: {
             "hax-align-left": this.t.left,
             "hax-align-center": this.t.center,
@@ -1389,11 +1383,11 @@ class HaxTray extends I18NMixin(
       }
       // test if this element can be scaled
       if (props.canScale) {
-        props.settings.layout.push({
+        props.settings.advanced.unshift({
           property: "__scale",
           title: this.t.width,
           inputMethod: "slider",
-          value: this.activeValue.settings.layout.__scale,
+          value: this.activeValue.settings.advanced.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,
           max: props.canScale.max ? props.canScale.max : 100,
           step: props.canScale.step ? props.canScale.step : 12.5,
@@ -1431,8 +1425,6 @@ class HaxTray extends I18NMixin(
       }
       // see if we have any configure settings or disable
       setProps("configure", this.t.configure, props.settings.configure);
-      // see if we have any layout settings or disable
-      setProps("layout", this.t.layout, props.settings.layout);
       // see if we have any configure settings or disable
       setProps("advanced", this.t.advanced, props.settings.advanced);
       this.__activePropSchema = props;
@@ -1509,7 +1501,6 @@ class HaxTray extends I18NMixin(
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",
-        layout: "layout",
       };
       var setAhead;
       clearTimeout(this.__contextPropDebounce);
@@ -1547,7 +1538,7 @@ class HaxTray extends I18NMixin(
                 setAhead = true;
               }
               // this is a special internal held "property" for layout stuff
-              else if (key === "layout" && prop === "__position") {
+              else if (key === "advanced" && prop === "__position") {
                 setAhead = true;
                 if (!this._initial) {
                   clearTimeout(this.__contextValueDebounce);
@@ -1566,7 +1557,7 @@ class HaxTray extends I18NMixin(
                 }
               }
               // this is a special internal held "property" for layout stuff
-              else if (key === "layout" && prop === "__scale") {
+              else if (key === "advanced" && prop === "__scale") {
                 setAhead = true;
                 if (!this._initial) {
                   clearTimeout(this.__contextSizeDebounce);
