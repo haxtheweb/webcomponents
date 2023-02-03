@@ -853,10 +853,12 @@ class HAXCMSSiteEditor extends LitElement {
           formData.append("type", structure);
           formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
           formData.append("upload", file);
+          this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
             "@haxcms/docxToSite",
             formData
           );
+          store.toast('finished!', 300);
           // must be a valid response and have at least SOME html to bother attempting
           if (
             response.status == 200 &&
@@ -905,6 +907,7 @@ class HAXCMSSiteEditor extends LitElement {
                 }
                 if (confirmation) {
                   this.querySelector("#createajax").body = data;
+                  this.setProcessingVisual();
                   this.querySelector("#createajax").generateRequest();
                   const evt = new CustomEvent("simple-modal-hide", {
                     bubbles: true,
@@ -964,6 +967,7 @@ class HAXCMSSiteEditor extends LitElement {
       }
       else {
         this.querySelector("#createajax").body = reqBody;
+        this.setProcessingVisual();
         this.querySelector("#createajax").generateRequest();
         const evt = new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -1011,6 +1015,7 @@ class HAXCMSSiteEditor extends LitElement {
         id: e.detail.item.id,
       },
     };
+    this.setProcessingVisual();
     this.querySelector("#deleteajax").generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
@@ -1249,6 +1254,7 @@ class HAXCMSSiteEditor extends LitElement {
           schema: await HAXStore.htmlToHaxElements(body),
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1269,6 +1275,7 @@ class HAXCMSSiteEditor extends LitElement {
           details: e.detail,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1285,9 +1292,22 @@ class HAXCMSSiteEditor extends LitElement {
         },
         items: e.detail,
       };
+      this.setProcessingVisual();
       this.querySelector("#outlineupdateajax").generateRequest();
     }
   }
+  // processing visualization
+    setProcessingVisual() {
+      let loadingIcon = document.createElement('simple-icon-lite');
+      loadingIcon.icon = "hax:loading";
+      loadingIcon.style.setProperty('--simple-icon-height', '40px');
+      loadingIcon.style.setProperty('--simple-icon-width', '40px');
+      loadingIcon.style.height = '150px';
+      loadingIcon.style.marginLeft = '8px';
+      store.toast(`Processing`, 5000, {
+        hat: 'construction',
+        slot: loadingIcon});
+    }
   /**
    * Save the outline based on an event firing.
    */
@@ -1316,6 +1336,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     if (this.saveManifestPath) {
       this.querySelector("#manifestupdateajax").body = values;
+      this.setProcessingVisual();
       this.querySelector("#manifestupdateajax").generateRequest();
     }
   }
@@ -1340,6 +1361,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: this.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#publishajax").generateRequest();
     }
   }
@@ -1355,6 +1377,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#syncajax").generateRequest();
     }
   }
@@ -1370,6 +1393,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#revertajax").generateRequest();
     }
   }

@@ -380,9 +380,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           .header site-menu-content {
             margin-right: -40px;
           }
-          site-menu {
-            width: 250px;
-          }
           #haxcmsmobilemenunav {
             min-width: 250px;
             margin-left: 0px;

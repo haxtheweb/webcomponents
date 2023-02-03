@@ -324,11 +324,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             --simple-toolbar-button-padding: 0px;
           }
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 0% 90% 10%;
+            grid-template-columns: 10% 80% 10%;
           }
           .haxLogo simple-icon-lite {
-            --simple-icon-height: 16px;
-            --simple-icon-width: 16px;
             margin: 0px;
           }
           .characterbtn-name {
