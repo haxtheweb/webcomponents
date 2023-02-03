@@ -424,7 +424,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             }"
             event-name="hax-plate-remove-right"
             ?hidden="${
-              !this.activeNode || HAXStore.isOriginalGridPlate(this.activeNode)
+              !this.activeNode
             }"
             id="rightremove"
             data-simple-tour-stop
@@ -612,8 +612,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (this.activeNode && this.activeNode.classList) {
         this._resetCEMenu();
       }
-      if (this.activeNode && this.getAttribute("on-screen")) {
-        this.__updatePlatePosition(this.activeNode);
+      // if active, and we are editing, then make suree plate ops match expectation
+      if (this.activeNode && toJS(HAXStore.editMode)) {
+        setTimeout(() => {
+          this.__updatePlatePosition(this.activeNode);          
+        }, 0);
       }
     });
     autorun(() => {

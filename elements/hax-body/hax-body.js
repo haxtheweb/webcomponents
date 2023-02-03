@@ -2202,6 +2202,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Inject / modify a grid plate where something currently lives
    */
   async haxGridPlateOps(add = true, side = "right", node = this.activeNode) {
+    // by design, we will prevent grid nesting because it's... ridiculous
+    if (node.tagName !== 'GRID-PLATE' && node.parentNode.tagName === 'GRID-PLATE') {
+      node = node.parentNode;
+    }
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -2273,7 +2277,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
-        //TODO
         let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
         let rightremove =
           this.contextMenus.plate.shadowRoot.querySelector("#rightremove");
