@@ -281,7 +281,7 @@ class HaxTray extends I18NMixin(
           pointer-events: all;
           border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
-          height: 100vh;
+          max-height: calc(100vh - 48px);
           width: calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
           );
@@ -784,7 +784,7 @@ class HaxTray extends I18NMixin(
   }
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
-    return html` <hax-gizmo-browser
+    return html`<div class="block-add-wrapper"><hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
@@ -792,7 +792,7 @@ class HaxTray extends I18NMixin(
       <hax-stax-browser
         id="staxbrowser"
         ?hidden="${hidden}"
-      ></hax-stax-browser>`;
+      ></hax-stax-browser></div>`;
   }
   get contentMapTemplate() {
     return html`<hax-map

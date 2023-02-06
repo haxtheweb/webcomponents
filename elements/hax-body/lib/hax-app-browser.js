@@ -21,7 +21,6 @@ class HaxAppBrowser extends LitElement {
         }
         simple-button-grid::part(buttons) {
           overflow: auto;
-          --simple-button-grid-cols: 50% !important;
         }
         simple-button-grid.collapse-hide {
           max-height: 0 !important;
@@ -69,7 +68,7 @@ class HaxAppBrowser extends LitElement {
       <simple-button-grid
         class="${this.searching ? "collapse-hide" : ""}"
         always-expanded
-        columns="4"
+        columns="2"
       >
         ${this.appList.map(
           (app) => html`

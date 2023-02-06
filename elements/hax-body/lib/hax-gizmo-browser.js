@@ -36,17 +36,21 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           --hax-ui-font-size-sm: 10px;
         }
         .toolbar-inner {
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          width: 100%;
-          flex: 0 0 auto;
+          max-width: 96%;
         }
         hax-tray-button::part(button) {
           font-size: var(hax-ui-font-size-xs);
         }
+        simple-button-grid {
+          --simple-button-grid-margin: 2px;
+        }
         simple-fields-field {
           margin-top: 0;
+          margin-bottom: 8px;
+        }
+        simple-fields-field::part(option-input) {
+          padding: 0px 2px;
+          font-size: 12px;
         }
       `,
     ];
@@ -81,7 +85,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           part="filter"
         ></simple-fields-field>
       </div>
-      <simple-button-grid columns="4" always-expanded part="grid">
+      <simple-button-grid columns="3" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
             <simple-popover-selection event="hover">

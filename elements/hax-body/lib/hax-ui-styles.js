@@ -499,7 +499,7 @@ export const HaxTrayDetail = [
     #tray-detail h6 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
-      margin: var(--hax-ui-spacing-lg) 0 var(--hax-ui-spacing-xs);
+      margin: var(--hax-ui-spacing) 0 var(--hax-ui-spacing-xs);
       color: var(--hax-ui-color-faded);
     }
     #tray-detail h4 {

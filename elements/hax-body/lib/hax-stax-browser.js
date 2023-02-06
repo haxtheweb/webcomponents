@@ -30,7 +30,7 @@ class HaxStaxBrowser extends LitElement {
   }
   render() {
     return html`
-      <simple-button-grid columns="3" rows="1" always-expanded>
+      <simple-button-grid columns="2" rows="1" always-expanded>
         ${this.staxList.map(
           (stax) => html`
             <hax-tray-button
