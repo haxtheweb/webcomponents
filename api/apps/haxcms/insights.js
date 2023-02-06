@@ -2,6 +2,37 @@ import { stdPostBody, stdResponse } from "../../../utilities/requestHelpers.js";
 import { courseStatsFromOutline, siteHTMLContent, resolveSiteData } from "./lib/JOSHelpers.js";
 import rs from "text-readability";
 
+/**
+ * as per https://www.npmjs.com/package/text-readability
+ * 4.9 or lower	average 4th-grade student or lower
+ * 5.0–5.9	average 5th or 6th-grade student
+ * 6.0–6.9	average 7th or 8th-grade student
+ * 7.0–7.9	average 9th or 10th-grade student
+ * 8.0–8.9	average 11th or 12th-grade student
+ * 9.0–9.9	average 13th to 15th-grade (college) student 
+ */
+function getGradeLevel(text) {
+  const score = rs.daleChallReadabilityScore(text);
+  if (score <= 4.9) {
+    return "4th grade or lower";
+  }
+  else if (score > 4.9 && score <= 5.9) {
+    return "5th / 6th grade";
+  }
+  else if (score > 5.9 && score <= 6.9) {
+    return "7th / 8th grade";
+  }
+  else if (score > 6.9 && score <= 7.9) {
+    return "9th / 10th grade";
+  }
+  else if (score > 7.9 && score <= 8.9) {
+    return "11th / 12th grade";
+  }
+  else if (score > 8.9) {
+    return "college level reading";
+  }
+}
+
 // given a site, and current page, obtain stats that are possibly relevant
 // to smart blocks like lesson-intro, course-intro and others as long
 // as they might be relevant to pedagogy. This is pretty open ended
@@ -54,7 +85,7 @@ export default async function handler(req, res) {
       // calculate readability
       let text = await siteHTMLContent(base, siteData, itemId, true, true);
       data.readability = {
-        gradeLevel: rs.textStandard(text, true), // grade level from multiple tests averaged
+        gradeLevel: getGradeLevel(text), // grade level from multiple tests averaged
         difficultWords: rs.difficultWords(text), // difficult words
         syllableCount: rs.syllableCount(text), // sylables
         lexiconCount: rs.lexiconCount(text), // word count

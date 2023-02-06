@@ -625,7 +625,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                       <lesson-highlight icon="editable-table:numbers">
                         <p slot="title">
                           ${data.readability.gradeLevel}
-                          ${this.t.gradeReadingLevel}
+                        </p>
+                        <p>
+                          Dale-Chall ${this.t.basedGradeReadingLevel}
                         </p>
                       </lesson-highlight>
                     </li>
@@ -1153,7 +1155,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       images: "Images",
       dataTables: "Data tables",
       ofReading: "of reading",
-      gradeReadingLevel: "grade reading level",
+      basedGradeReadingLevel: "based grade reading level",
       words: "Words",
       longWords: "long words",
       linkReport: "Link report",
