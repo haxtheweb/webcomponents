@@ -13,8 +13,7 @@
         "type": "image",
         "source": "image",
         "title": "name",
-        "caption": "position",
-        "ariaDescribedby": "describedBy"
+        "caption": "position"
       }
     ],
     "meta": {
@@ -60,12 +59,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-describedby",
-        "description": "Space-separated list of IDs for elements that describe the image.",
-        "inputMethod": "textfield"
-      }
     ]
   },
   "demoSchema": [

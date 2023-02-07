@@ -193,7 +193,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       // support disabing zoom, zoom by default
       disableZoom: {
         type: Boolean,
-        attribute: 'disable-zoom',
+        attribute: "disable-zoom",
         reflect: true,
       },
       _hasCaption: {
@@ -290,7 +290,9 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   // if the either of the figure label values are present then display
   // the figure label
   _hasFigureLabel(title, description) {
-    return (title && title.length > 0) || (description && description.length > 0);
+    return (
+      (title && title.length > 0) || (description && description.length > 0)
+    );
   }
   _computeHasCaption() {
     this._hasCaption =
@@ -318,8 +320,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       canEditSource: true,
       gizmo: {
         title: "Image",
-        descrption:
-          "A way of presenting images with various enhancements.",
+        descrption: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
         groups: ["Image", "Media", "core"],
@@ -332,7 +333,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             alt: "alt",
             citation: "citation",
             caption: "caption",
-            ariaDescribedby: "describedBy",
           },
         ],
         meta: {
@@ -422,16 +422,10 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           {
             property: "disableZoom",
             title: "Disable image modal",
-            description: "Disable clicks opening the image in an image inspector dialog.",
+            description:
+              "Disable clicks opening the image in an image inspector dialog.",
             inputMethod: "boolean",
             required: false,
-          },
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
           },
         ],
       },

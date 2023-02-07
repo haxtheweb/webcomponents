@@ -15,8 +15,7 @@
         "type": "image",
         "source": "image",
         "title": "question",
-        "description": "answer",
-        "ariaDescribedby": "describedBy"
+        "description": "answer"
       }
     ],
     "meta": {
@@ -83,12 +82,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-describedby",
-        "description": "Space-separated list of IDs for elements that describe the image.",
-        "inputMethod": "textfield"
-      },
       {
         "property": "title",
         "title": "Title (Deprecated)",

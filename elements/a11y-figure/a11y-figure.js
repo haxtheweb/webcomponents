@@ -146,7 +146,6 @@ class A11yFigure extends A11yDetails {
             source: "imgSrc",
             alt: "imgAlt",
             caption: "figcaption",
-            ariaDescribedby: "describedBy",
           },
         ],
         meta: {

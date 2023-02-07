@@ -150,7 +150,6 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
           {
             type: "image",
             url: "source",
-            ariaDescribedby: "describedBy",
           },
         ],
         meta: {
@@ -172,15 +171,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             inputMethod: "textarea",
           },
         ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-          },
-        ],
+        advanced: [],
       },
     };
   }

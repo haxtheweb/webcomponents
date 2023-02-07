@@ -308,18 +308,6 @@ class PlaceHolder extends SimpleColors {
             description: "Identify the place holder desired in greater detail",
             inputMethod: "textfield",
           },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Useful if used for communicating with team members",
-            inputMethod: "colorpicker",
-          },
-          {
-            property: "dark",
-            title: "Invert colors",
-            description: "Useful if used for communicating with team members",
-            inputMethod: "boolean",
-          },
         ],
         advanced: [],
       },
@@ -331,11 +319,11 @@ class PlaceHolder extends SimpleColors {
         {
           tag: "place-holder",
           properties: {
-            type: "image"
+            type: "image",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
 }

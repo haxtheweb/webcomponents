@@ -3,8 +3,8 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Accessible GIF",
-    "description": "Makes animated GIFs accessible.",
+    "title": "GIF",
+    "description": "Make animated GIFs accessible.",
     "icon": "gif",
     "color": "grey",
     "groups": ["Images", "Media"],
@@ -13,8 +13,7 @@
         "type": "image",
         "source": "src",
         "source2": "srcWithoutAnimation",
-        "alt": "alt",
-        "ariaDescribedby": "describedBy"
+        "alt": "alt"
       }
     ],
     "meta": {
@@ -57,12 +56,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-decsribedby",
-        "description": "Space-separated id list for long descriptions that appear elsewhere",
-        "inputMethod": "textfield"
-      }
     ]
   },
   "demoSchema": [
@@ -72,7 +65,7 @@
         "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
         "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
         "srcWithoutAnimation": "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
-        "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.",
+        "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
         "style": "max-width:400px"
       }
     }

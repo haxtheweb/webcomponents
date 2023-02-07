@@ -2155,14 +2155,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ],
         advanced: [
           {
-            attribute: "aria-describedby",
-            title: "Aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-            icon: "accessibility",
-          },
-          {
             attribute: "loading",
             title: "Loading method",
             description: "Whether or not to lazy load this",
