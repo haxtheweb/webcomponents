@@ -316,7 +316,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+      canPosition: false,
       canEditSource: true,
       gizmo: {
         title: "Image",
