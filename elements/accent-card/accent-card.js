@@ -563,14 +563,13 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         {
           tag: "accent-card",
           properties: {
-            style: "maxWidth:600px;width:100%;",
-            accentColor: "cyan",
-            dark: true,
+            accentColor: "red",
+            accentHeading: true,
             horizontal: true,
             imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<div slot="heading">Kitten</div>\n<p slot="content">This kitten will not harm you, though it may with belly rubs.</p>',
+            '<div slot="heading">Accent Card</div><div slot="subheading">A card with optional accent stylings.</div><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
         },
       ],
       saveOptions: {
