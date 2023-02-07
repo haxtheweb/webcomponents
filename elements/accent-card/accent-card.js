@@ -99,7 +99,8 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             var(--simple-colors-default-theme-grey-1, #fff)
           );
         }
-        :host([dark]) {
+        :host([dark]),
+        :host([dark]) .body ::slotted(*) {
           color: var(
             --accent-card-color,
             var(--simple-colors-default-theme-grey-12, #fff)
