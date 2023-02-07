@@ -127,13 +127,14 @@ class PersonTestimonial extends SimpleColors {
   render() {
     return html`
       <div class="card">
+        ${this.image ? html`
         <div class="image">
           <img
             src="${this.image}"
             loading="lazy"
             aria-describedby="${this.describedBy}"
           />
-        </div>
+        </div>` : ``}
         <div class="arrow_right"></div>
         <div class="wrap">
           <div class="testimonial">

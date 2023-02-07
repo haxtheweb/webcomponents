@@ -3,8 +3,8 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Testimonial",
-    "description": "A person saying a nice thing about us",
+    "title": "Blockquote",
+    "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
     "groups": ["Content", "Presentation"],
