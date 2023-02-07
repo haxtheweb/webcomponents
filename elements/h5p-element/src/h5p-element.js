@@ -50,7 +50,7 @@ class H5PElement extends LitElement {
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "H5P element",
+        title: "H5P",
         description: "h5p wrapper for loading and presenting .h5p files",
         icon: "icons:android",
         color: "green",

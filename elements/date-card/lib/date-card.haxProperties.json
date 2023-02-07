@@ -3,7 +3,7 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Date card",
+    "title": "Date",
     "description": "Displays a calendar date with details",
     "icon": "hax:calendar",
     "color": "green",

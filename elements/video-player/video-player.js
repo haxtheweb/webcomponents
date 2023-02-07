@@ -136,7 +136,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "Video player",
+        title: "Video",
         description:
           "This can present video in a highly accessible manner regardless of source.",
         icon: "av:play-circle-filled",

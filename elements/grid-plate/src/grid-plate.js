@@ -444,7 +444,7 @@ class GridPlate extends LitElement {
       canEditSource: true,
       contentEditable: undefined,
       gizmo: {
-        title: "Grid layout",
+        title: "Column layout",
         description: "Simple card in a cool retro design",
         icon: "hax:3-3-3-3",
         color: "grey",
@@ -523,7 +523,8 @@ class GridPlate extends LitElement {
           properties: {
             disableResponsive: true,
           },
-          content: "",
+          content:
+            '<p slot="col-1">Column one</p><p slot="col-2">Column two</p>',
         },
       ],
     };

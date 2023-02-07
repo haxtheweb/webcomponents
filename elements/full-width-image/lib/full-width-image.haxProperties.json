@@ -3,7 +3,7 @@
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Full width-image",
+    "title": "Heading image",
     "description": "full width image that flows beyond boundaries",
     "icon": "image:image",
     "color": "green",

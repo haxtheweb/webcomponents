@@ -408,7 +408,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       canEditSource: true,
       contentEditable: true,
       gizmo: {
-        title: "Accent Card",
+        title: "Card",
         description: "A card with optional accent styling.",
         icon: "chrome-reader-mode",
         color: "light-blue",

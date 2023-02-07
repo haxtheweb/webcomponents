@@ -5,7 +5,7 @@
   "contentEditable": true,
   "type": "grid",
   "gizmo": {
-    "title": "Self-Check",
+    "title": "Self Check",
     "description": "The user will be able to complete a self-check.",
     "icon": "icons:check-circle",
     "color": "orange",
@@ -26,28 +26,10 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "The accent color of the self-check",
-        "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Enable Dark Theme",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "image",
         "title": "Image",
         "description": "The image of the element",
         "inputMethod": "haxupload"
-      },
-      {
-        "property": "link",
-        "title": "More link",
-        "description": "Link to additional information",
-        "inputMethod": "textfield"
       },
       {
         "property": "alt",
@@ -58,6 +40,7 @@
       {
         "slot": "heading",
         "title": "Title",
+        "description": "Title the image",
         "inputMethod": "textfield"
       },
       {
@@ -79,6 +62,24 @@
         "editMode": {
           "correct": true
         }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "The accent color of the self-check",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "link",
+        "title": "More link",
+        "description": "Link to additional information",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [
