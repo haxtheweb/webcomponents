@@ -250,15 +250,11 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: calc(100vh - 48px);
         }
         :host([menu-open]) .body-wrapper .left-col {
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex;
+          margin-left: 0px;
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
-          padding: 0 64px 32px;
+          padding: 0 64px 32px 64px;
         }
         
         nav {
@@ -279,11 +275,17 @@ class CleanTwo extends HAXCMSOperationButtons(
           -webkit-box-direction: normal;
         }
         .left-col {
-          flex: 1;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          flex: 0 1 0%;
           margin: 0;
           padding: 0;
-          display: none;
+          margin-left: -300px;
           background-color: #F5F7F9;
+          transition: margin 250ms ease;
         }
         @media screen and (min-width: 900px){
           .left-col {
@@ -363,11 +365,22 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         
         @media screen and (max-width: 1200px) {
-          .content {
-            width: 80vw;
-          }
           :host([menu-open]) .content {
-            width: calc(80vw - 300px);
+            width: calc(100vw - 300px);
+          }
+        }
+        @media screen and (max-width: 640px) {
+          site-breadcrumb {
+            display: none;
+          }
+          .header {
+            height: 0px;
+          }
+          site-active-title h1 {
+            height: 48px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
           }
         }
         @media screen and (max-width: 400px) {
@@ -410,11 +423,18 @@ class CleanTwo extends HAXCMSOperationButtons(
           #slot ::slotted(iframe) {
             width: auto;
           }
-          .content {
-            width: 300px;
-          }
           #slot ::slotted(*) {
             word-break: break-all;
+          }
+          #slot ::slotted(h1),
+          #slot ::slotted(h2),
+          #slot ::slotted(h3) {
+            font-size: 1.1em !important;
+          }
+          #slot ::slotted(h4),
+          #slot ::slotted(h5),
+          #slot ::slotted(h6) {
+            font-size: .9em !important;
           }
           #slot ::slotted(replace-tag) {
             overflow: hidden;

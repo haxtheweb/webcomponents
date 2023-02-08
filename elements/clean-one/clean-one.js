@@ -274,6 +274,20 @@ class CleanOne extends HAXCMSRememberRoute(
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
         }
+        @media screen and (max-width: 640px) {
+          site-breadcrumb {
+            display: none;
+          }
+          .header {
+            height: 0px;
+          }
+          site-active-title h1 {
+            height: 48px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
+          }
+        }
         h1 {
           font-size: 2em;
           margin: .67em 0;
@@ -441,7 +455,27 @@ class CleanOne extends HAXCMSRememberRoute(
            text-align: center;
            transition: all .35s ease;
          }
-         
+         @media screen and (max-width: 600px) {
+            #slot ::slotted(iframe) {
+              width: auto;
+            }
+            #slot ::slotted(*) {
+              word-break: break-all;
+            }
+            #slot ::slotted(h1),
+            #slot ::slotted(h2),
+            #slot ::slotted(h3) {
+              font-size: 1.5em !important;
+            }
+            #slot ::slotted(h4),
+            #slot ::slotted(h5),
+            #slot ::slotted(h6) {
+              font-size: 1.2em !important;
+            }
+            #slot ::slotted(replace-tag) {
+              overflow: hidden;
+            }
+          }
          @media (max-width: 1240px) {
            .navigation {
              position: static;
