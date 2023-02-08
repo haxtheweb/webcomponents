@@ -708,9 +708,7 @@ const SimplePickerBehaviors = function (SuperClass) {
     _renderOptions(options) {
       return html`${(options || []).map(
         (row, rownum) => html`
-          <div class="row" ?hidden="${!this._isRowHidden(row)}">
-            ${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}
-          </div>
+          <div class="row" ?hidden="${!this._isRowHidden(row)}">${Array.isArray(row) ? this._renderRow(row, rownum) : nothing}</div>
         `
       )}`;
     }

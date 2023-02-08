@@ -41,6 +41,7 @@
     "@lrnwebcomponents/intersection-element": "^4.0.4",
     "@lrnwebcomponents/schema-behaviors": "^4.1.0",
     "@lrnwebcomponents/simple-tooltip": "^4.1.0",
+    "@lrnwebcomponents/micro-frontend-registry": "^4.1.0",
     "lit": "^2.6.1"
   },
   "devDependencies": {

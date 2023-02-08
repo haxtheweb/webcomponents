@@ -341,10 +341,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       } else if (
         source.indexOf(".png") != -1 ||
         source.indexOf(".jpg") != -1 ||
-        source.indexOf(".jpeg") != -1 ||
-        source.indexOf(".gif") != -1
+        source.indexOf(".jpeg") != -1
       ) {
         return "image";
+      } else if (source.indexOf(".gif") != -1) {
+        return "gif";
       } else if (source.indexOf(".pdf") != -1) {
         return "pdf";
       } else if (source.indexOf(".svg") != -1) {

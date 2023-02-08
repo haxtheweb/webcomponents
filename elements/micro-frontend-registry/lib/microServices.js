@@ -21,6 +21,8 @@ export function enableServices(services) {
     }
   });
 }
+// map service enable to global
+MicroFrontendRegistry.enableServices = enableServices;
 
 // core services
 export function enableCoreServices() {
