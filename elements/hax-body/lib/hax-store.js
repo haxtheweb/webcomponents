@@ -1442,8 +1442,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
+      pasteContent = pasteContent.trim();
+      // clear empty span tags that can pop up
+      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
+      //remove styling
+      pasteContent = pasteContent.replace(
+        /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
+        ""
+      );
+      // clean up div tags that can come in from contenteditable pastes
+      // p tags make more sense in the content area
+      pasteContent = pasteContent.replace(/<div/g, "<p");
+      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
       // look for base64 like copy and paste of an image from clipboard
+      
       if (this.isBase64(originalContent)) {
         // stop normal paste
         e.preventDefault();
@@ -1530,42 +1543,40 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
-      // clear empty span tags that can pop up
-      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
-      //remove hax css variables
-      pasteContent = pasteContent.replace(
-        /(?:style="(\S+:\s*[^;"]+;\s*)*)(\S+:\s*var\(--hax[^;"]+(?:[;"]\s*))+/g,
-        ""
-      );
-      // clean up div tags that can come in from contenteditable pastes
-      // p tags make more sense in the content area
-      pasteContent = pasteContent.replace(/<div/g, "<p");
-      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
-      // NOW we can safely handle paste from word cases
-      pasteContent = stripMSWord(pasteContent);
-      // we force h2 to be highest document level on pasted content
-      pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
-      pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
-      // convert all images to place-holder tags and then reference the internal file system object
-      // this probably means nothing to the user but MIGHT be a real file in some cases that they
-      // could potentially paste / find
-      pasteContent = pasteContent.replace(
-        /<img src=\"file:(.*?)\/>/g,
-        function (placeholder, part) {
-          let s = part.split('"');
-          return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
+      // verify this is HTML prior to treating it as such
+      // HTML pasting to ensure it's clean is very slow
+      let fragment = document.createElement("div");
+      fragment.innerHTML = pasteContent;
+      let haxElements = [];
+      // test that this is valid HTML before we dig into it as elements
+      // and that it actually has children prior to parsing for children
+      if (fragment.children) {
+        // NOW we can safely handle paste from word cases
+        pasteContent = stripMSWord(pasteContent);
+        // we force h2 to be highest document level on pasted content
+        pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
+        pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
+        // convert all images to place-holder tags and then reference the internal file system object
+        // this probably means nothing to the user but MIGHT be a real file in some cases that they
+        // could potentially paste / find
+        pasteContent = pasteContent.replace(
+          /<img src=\"file:(.*?)\/>/g,
+          function (placeholder, part) {
+            let s = part.split('"');
+            return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
+          }
+        );
+        // edges that some things preserve empty white space needlessly
+        haxElements = await this.htmlToHaxElements(pasteContent);
+        // ensure that if we only have 1 element that we are wrapped correctly
+        // as some things enjoy pasted absolute nonesense like a strong tag
+        // that wraps all the rest of the content... looking at you Google Docs
+        if (
+          haxElements.length === 1 &&
+          !this.__validGridTags().includes(haxElements[0].tag)
+        ) {
+          haxElements = await this.htmlToHaxElements(haxElements[0].content);
         }
-      );
-      // edges that some things preserve empty white space needlessly
-      let haxElements = await this.htmlToHaxElements(pasteContent);
-      // ensure that if we only have 1 element that we are wrapped correctly
-      // as some things enjoy pasted absolute nonesense like a strong tag
-      // that wraps all the rest of the content... looking at you Google Docs
-      if (
-        haxElements.length === 1 &&
-        !this.__validGridTags().includes(haxElements[0].tag)
-      ) {
-        haxElements = await this.htmlToHaxElements(haxElements[0].content);
       }
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
@@ -1897,6 +1908,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "html",
       "content",
       "text",
+      "gif",
       "inline",
       "*",
     ];
@@ -3028,22 +3040,26 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     });
   }
   /**
-   * Convert HTML into HAX Elements
+   * Convert HTML into HAX Elements; if its valid HTML
    */
   async htmlToHaxElements(html) {
     let elements = [];
-    const validTags = this.validTagList;
     let fragment = document.createElement("div");
     fragment.innerHTML = html;
-    const children = fragment.childNodes;
-    // loop over the new nodes
-    for (let i = 0; i < children.length; i++) {
-      // verify this tag is a valid one
-      if (
-        typeof children[i].tagName !== typeof undefined &&
-        validTags.includes(children[i].tagName.toLowerCase())
-      ) {
-        elements.push(await nodeToHaxElement(children[i], null));
+    // test that this is valid HTML before we dig into it as elements
+    // and that it actually has children prior to parsing for children
+    if (fragment.children) {
+      const validTags = this.validTagList;
+      const children = fragment.children;
+      // loop over the new nodes
+      for (let i = 0; i < children.length; i++) {
+        // verify this tag is a valid one
+        if (
+          typeof children[i].tagName !== typeof undefined &&
+          validTags.includes(children[i].tagName.toLowerCase())
+        ) {
+          elements.push(await nodeToHaxElement(children[i], null));
+        }
       }
     }
     return elements;

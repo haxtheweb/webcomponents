@@ -11,6 +11,7 @@
     "handles": [
       {
         "type": "gif",
+        "type_exclusive": true,
         "source": "src",
         "source2": "srcWithoutAnimation",
         "alt": "alt"
