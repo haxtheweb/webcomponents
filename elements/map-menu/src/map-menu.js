@@ -22,7 +22,7 @@ class MapMenu extends LitElement {
     return [
       css`
         :host {
-          --map-menu-active-color: rgba(0, 0, 0, 0.1);
+          --map-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
           --map-menu-size: 1;
           display: block;
           overflow-y: scroll;
@@ -38,10 +38,36 @@ class MapMenu extends LitElement {
           flex: var(--map-menu-items-list-flex);
         }
         #activeindicator {
-          background: var(--map-menu-active-color);
+          background: var(--map-menu-item-active-item-color);
           transition: all 0.1s ease-in-out;
           position: absolute;
           pointer-events: none;
+          z-index: -1;
+          width: calc(100% + 16px);
+          margin-left: -16px;
+        }
+        
+        map-menu-builder map-menu-builder map-menu-item,
+        map-menu-builder map-menu-builder map-menu-submenu {
+          border-left: 16px solid rgba(0,0,0,.1);
+        }
+        map-menu-builder map-menu-builder map-menu-builder map-menu-item,
+        map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
+          border-left: 16px solid rgba(0,0,0,.2);
+        }
+        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-item,
+        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
+          border-left: 16px solid rgba(0,0,0,.3);
+        }
+
+        map-menu-builder map-menu-submenu[opened] {
+          --map-menu-border-depth: rgba(0,0,0,.1);
+        }
+        map-menu-builder map-menu-builder map-menu-submenu[opened] {
+          --map-menu-border-depth: rgba(0,0,0,.2);
+        }
+        map-menu-builder map-menu-builder map-menu-builder map-menu-submenu[opened] {
+          --map-menu-border-depth: rgba(0,0,0,.3);
         }
 
         map-menu-container {
@@ -55,7 +81,7 @@ class MapMenu extends LitElement {
 
         /* turn default active color if indicator is on */
         :host([active-indicator]) map-menu-builder {
-          --map-menu-active-color: transparent;
+          --map-menu-item-active-item-color: transparent;
         }
       `,
     ];
@@ -416,12 +442,11 @@ class MapMenu extends LitElement {
       const activeindicator = this.shadowRoot.querySelector("#activeindicator");
       const left = element.offsetLeft;
       const top = element.offsetTop;
-      const width = element.offsetWidth;
       // if the element is hidden the set the indicator height to zero to make it disapear
       const height = !hidden ? element.offsetHeight : 0;
       activeindicator.setAttribute(
         "style",
-        `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
+        `height:${height}px;top:${top}px;left:${left}px`
       );
     }, 200);
   }

@@ -127,7 +127,7 @@ class CleanOne extends HAXCMSRememberRoute(
          site-menu {
            height: var(--clean-one-site-menu-height, calc(100vh - 60px));
            --site-menu-active-color: var(--haxcms-user-styles-color-theme-color-3);
-           --site-menu-item-active-item-color: var(--haxcms-user-styles-color-theme-color-4);
+           --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
            --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
            --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
          }

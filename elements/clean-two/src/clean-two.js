@@ -286,6 +286,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           margin-left: -300px;
           background-color: #F5F7F9;
           transition: margin 250ms ease;
+          height: fit-content;
         }
         @media screen and (min-width: 900px){
           .left-col {
@@ -305,7 +306,7 @@ class CleanTwo extends HAXCMSOperationButtons(
           --site-menu-font-size: 15px;
           --site-menu-color: #000000;
           --site-menu-active-color: #E6ECF1;
-          --site-menu-item-active-item-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
+          --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
           overflow-y: auto;
           flex: 1 1 auto;
           height: 100vh;
@@ -764,6 +765,21 @@ class CleanTwo extends HAXCMSOperationButtons(
       this.__disposer.push(reaction);
     });
 
+    autorun(() => {
+      const badDevice = toJS(store.badDevice);
+      // good device, we can inject font we use
+      if (badDevice === false) {
+        const link = document.createElement("link");
+        link.setAttribute(
+          "href",
+          "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+        );
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("fetchpriority", "low");
+        document.head.appendChild(link);
+      }
+    });
+    
     autorun((reaction) => {
       if (
         store.activeItem &&

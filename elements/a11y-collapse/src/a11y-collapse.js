@@ -136,6 +136,8 @@ class A11yCollapse extends LitElement {
             max-height: 0;
             transition: all 0.75s ease;
             overflow-y: hidden;
+            opacity: 1;
+            visibility: visible;
           }
           :host #content-inner {
             max-height: 0;
@@ -167,7 +169,9 @@ class A11yCollapse extends LitElement {
             transition: max-height 0.75s ease;
           }
           :host(:not([expanded])) #content {
-            display: none;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
           }
         }
       `,
@@ -287,8 +291,8 @@ class A11yCollapse extends LitElement {
     this.hidden = false;
     this.expanded = false;
     this.icon = "icons:expand-more";
-    this.label = "expand / collapse";
-    this.tooltip = "toggle expand / collapse";
+    this.label = "expand";
+    this.tooltip = "expand";
   }
   /**
    * haxProperties integration via file reference
@@ -407,6 +411,8 @@ class A11yCollapse extends LitElement {
           detail: this,
         })
       );
+      this.label = "collapse";
+      this.tooltip = "collapse";
     } else {
       /**
        * Fires when collapsed.
@@ -421,6 +427,8 @@ class A11yCollapse extends LitElement {
           detail: this,
         })
       );
+      this.label = "expand";
+      this.tooltip = "expand";
     }
   }
   /**

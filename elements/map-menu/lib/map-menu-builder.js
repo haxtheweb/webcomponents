@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/map-menu/lib/map-menu-submenu.js";
+import "@lrnwebcomponents/map-menu/lib/map-menu-item.js";
 class MapMenuBuilder extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -15,8 +17,6 @@ class MapMenuBuilder extends LitElement {
   constructor() {
     super();
     this.items = [];
-    import("@lrnwebcomponents/map-menu/lib/map-menu-submenu.js");
-    import("@lrnwebcomponents/map-menu/lib/map-menu-item.js");
   }
   /**
    * LitElement life cycle - render
@@ -34,15 +34,12 @@ class MapMenuBuilder extends LitElement {
                       url="${item.slug}"
                       icon="${item.metadata && item.metadata.icon
                         ? item.metadata.icon
-                        : ""}"
-                      open="${item.metadata && item.metadata.active
-                        ? item.metadata.active
-                        : false}"
+                        : null}"
                       avatar-label="${item.metadata && item.metadata.avatarLabel
                         ? item.metadata.avatarLabel
                         : ""}"
                       selected="${this.selected}"
-                      .published="${item.metadata.published}"
+                      ?published="${item.metadata.published}"
                     >
                       <map-menu-builder
                         .items="${item.children}"
@@ -58,12 +55,6 @@ class MapMenuBuilder extends LitElement {
                       icon="${item.metadata && item.metadata.icon
                         ? item.metadata.icon
                         : ""}"
-                      track-icon="${item.metadata &&
-                      item.metadata.accessData &&
-                      item.metadata.accessData.trackIcon
-                        ? item.metadata.accessData.trackIcon
-                        : ""}"
-                      active-path="${this.activePath}"
                       selected="${this.selected}"
                       ?published="${item.metadata.published}"
                       ?locked="${item.metadata.locked}"

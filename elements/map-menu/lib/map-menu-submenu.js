@@ -16,13 +16,18 @@ class MapMenuSubmenu extends LitElement {
           cursor: pointer;
           display: block;
         }
+        :host([opened]) map-menu-header {
+          border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));
+        }
         #container {
           margin: 0;
         }
         #container ::slotted(map-menu-builder) {
           display: block;
-          cursor: pointer;
-          margin-left: 20px;
+        }
+        #container ::slotted(map-menu-item),
+        #container ::slotted(map-menu-submenu) {
+          margin-left: 10px;
         }
         a11y-collapse {
           --a11y-collapse-border: 0;
@@ -43,7 +48,7 @@ class MapMenuSubmenu extends LitElement {
     this.status = "";
     this.locked = false;
     this.published = true;
-    this.icon = "";
+    this.icon = null;
     this.__icon = "";
     setTimeout(() => {
       this.addEventListener("active-item", this.__activeChanged.bind(this));
@@ -58,12 +63,21 @@ class MapMenuSubmenu extends LitElement {
       );
     }, 0);
   }
+
+  // align the collapse state w/ this state
+  // ensure we block this moving up tho or we'll align too much :)
+  __alignCollapseState(e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    this.opened = e.detail.expanded;
+  }
   /**
    * LitElement life cycle - render
    */
   render() {
     return html`
-      <a11y-collapse id="container" ?expanded="${this.opened}">
+      <a11y-collapse id="container" ?expanded="${this.opened}" @a11y-collapse-click="${this.__alignCollapseState}">
         <map-menu-header
           .avatar-label="${this.avatarLabel}"
           id="${this.id}"
@@ -112,6 +126,8 @@ class MapMenuSubmenu extends LitElement {
       },
       opened: {
         type: Boolean,
+        attribute: 'opened',
+        reflect: true,
       },
       collapsable: {
         type: Boolean,

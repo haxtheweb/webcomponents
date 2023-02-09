@@ -12,11 +12,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         :host {
           display: block;
           transition: 0.1s all ease-in-out;
-          --map-menu-item-height: 24px;
+          --map-menu-item-height: 44px;
         }
         :host([active]) {
-          background: var(--map-menu-active-color);
-          color: var(--map-menu-item-active-item-color, #000000);
+          font-weight: bold;
         }
         #container {
           display: flex;
@@ -45,8 +44,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           );
           text-decoration: var(
             --map-menu-header-a-text-decoration-hover,
-            underline
+            none
           );
+          background-color: var(--simple-colors-default-theme-light-grey-3, #dddddd);
         }
         lrndesign-avatar {
           display: inline-block;
@@ -73,9 +73,16 @@ class MapMenuHeader extends I18NMixin(LitElement) {
 
         simple-icon-lite {
           color: inherit;
-          display: inline-block;
-          --simple-icon-height: var(--map-menu-item-height);
-          --simple-icon-width: var(--map-menu-item-height);
+          display: inline-flex;
+          --simple-icon-height: var(--map-menu-item-icon-height);
+          --simple-icon-width: var(--map-menu-item-icon-height);
+          margin-right: 8px;
+        }
+
+        .title {
+          display: inline-flex;
+          font-size: var(--map-menu-font-size, 16px);
+          font-family: "Open+Sans", sans-serif;
         }
 
         button {
@@ -87,10 +94,19 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           justify-content: left;
           margin: 0px;
           border: 0;
-          min-height: var(--map-menu-header-button-min-height, 48px);
-          padding: 4px;
+          min-height: var(--map-menu-header-button-min-height, 44px);
+          padding: 0 16px;
           text-align: left;
           border-radius: 0;
+          height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
+          vertical-align: middle;
+          line-height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
         }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
@@ -108,8 +124,8 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          --simple-icon-width: 20px;
-          --simple-icon-height: 20px;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
           color: orange;
           float: right;
           margin: -4px 32px 0px 0px;
@@ -137,13 +153,12 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           : ``}
         <div id="center">
           <a tabindex="-1" href="${this.url}">
-            <button class="title">
+            <button>
               ${this.icon
                 ? html`
                     <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
                   `
                 : ``}
-              <div id="label">${this.label}</div>
               <div class="title">${this.title}</div>
               ${!this.published
                 ? html`<simple-icon-lite
@@ -194,7 +209,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "opened") {
+      if (propName == "opened" && oldValue !== undefined) {
         this._openedChanged(this[propName], oldValue);
       }
       if (["id", "selected"].includes(propName)) {
@@ -211,18 +226,16 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   static get properties() {
     return {
-      title: {
-        type: String,
+      opened: {
+        type: Boolean,
+        reflect: true,
       },
-      label: {
+      title: {
         type: String,
       },
       avatarLabel: {
         type: String,
         attribute: "avatar-label",
-      },
-      opened: {
-        type: Boolean,
       },
       url: {
         type: String,
@@ -233,6 +246,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       },
       icon: {
         type: String,
+        reflect: true,
       },
       active: {
         type: Boolean,
