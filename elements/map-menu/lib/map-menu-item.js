@@ -17,7 +17,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           --map-menu-item-icon-height: 24px;
           overflow: var(--map-menu-item-overflow, hidden);
         }
-        :host([active]) {
+        :host([active]) button {
           font-weight: bold;
         }
         simple-icon-lite {
@@ -49,6 +49,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
+        a button {
+          transition: all .1s ease;
+        }
         a:hover button,
         a:active button,
         a:focus button {
@@ -60,7 +63,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-header-a-text-decoration-hover,
             none
           );
-          background-color: var(--simple-colors-default-theme-light-grey-3, #dddddd);
+          background-color: var(--map-menu-item-a-active-background-color,var(--simple-colors-default-theme-light-grey-2, #dddddd));
         }
         button {
           cursor: pointer;
@@ -128,7 +131,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           ${this.icon
             ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
             : html`<div class="no-icon"></div>`}
-          <span class="title">${this.title}</span>
+          <span class="title">${this.itemtitle}</span>
           ${!this.published
             ? html`<simple-icon-lite
                 id="unpublished"
@@ -146,7 +149,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.icon = null;
-    this.title = "";
+    this.itemtitle = "";
     this.url = "";
     this.active = false;
     this.published = true;
@@ -172,7 +175,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         type: String,
         reflect: true,
       },
-      title: {
+      itemtitle: {
         type: String,
       },
       url: {

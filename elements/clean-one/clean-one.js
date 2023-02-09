@@ -126,10 +126,11 @@ class CleanOne extends HAXCMSRememberRoute(
          }
          site-menu {
            height: var(--clean-one-site-menu-height, calc(100vh - 60px));
-           --site-menu-active-color: var(--haxcms-user-styles-color-theme-color-3);
+           --site-menu-active-color: var(--haxcms-user-styles-color-theme-color-3); 
            --site-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
            --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
            --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+           --map-menu-item-a-active-background-color: var(--simple-colors-default-theme-grey-1, rgba(200,200,200,.1));
          }
          scroll-button {
            --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
@@ -515,6 +516,9 @@ class CleanOne extends HAXCMSRememberRoute(
            :host([color-theme="1"]) .site-header .btn:active {
              color: #704214;
              background: none;
+           }
+           :host([color-theme="1"]) site-menu {
+            --map-menu-item-a-active-color: white;
            }
            :host([color-theme="1"]) site-active-title {
              color: #704214;

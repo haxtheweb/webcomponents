@@ -17,7 +17,7 @@ class MapMenuSubmenu extends LitElement {
           display: block;
         }
         :host([opened]) map-menu-header {
-          border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));
+          /*border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));*/
         }
         #container {
           margin: 0;
@@ -46,6 +46,7 @@ class MapMenuSubmenu extends LitElement {
     this.avatarLabel = "";
     this.label = "";
     this.status = "";
+    this.itemtitle = "";
     this.locked = false;
     this.published = true;
     this.icon = null;
@@ -81,7 +82,7 @@ class MapMenuSubmenu extends LitElement {
         <map-menu-header
           .avatar-label="${this.avatarLabel}"
           id="${this.id}"
-          title="${this.title}"
+          itemtitle="${this.itemtitle}"
           label="${this.label}"
           ?opened="${this.opened}"
           url="${this.url}"
@@ -108,7 +109,7 @@ class MapMenuSubmenu extends LitElement {
       id: {
         type: String,
       },
-      title: {
+      itemtitle: {
         type: String,
       },
       avatarLabel: {

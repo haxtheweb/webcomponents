@@ -49,25 +49,32 @@ class MapMenu extends LitElement {
         
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid rgba(0,0,0,.1);
+          border-left: 16px solid var(--map-menu-expanded-color-depth-1,rgba(0,0,0,.1));
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid rgba(0,0,0,.2);
+          border-left: 16px solid var(--map-menu-expanded-color-depth-2,rgba(0,0,0,.15));
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid rgba(0,0,0,.3);
+          border-left: 16px solid var(--map-menu-expanded-color-depth-3,rgba(0,0,0,.2));
+        }
+        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-item,
+        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
+          border-left: 16px solid var(--map-menu-expanded-color-depth-4,rgba(0,0,0,.25));
         }
 
         map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: rgba(0,0,0,.1);
+          --map-menu-border-depth: var(--map-menu-expanded-color-depth-1,rgba(0,0,0,.1));
         }
         map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: rgba(0,0,0,.2);
+          --map-menu-border-depth: var(--map-menu-expanded-color-depth-2,rgba(0,0,0,.15));
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: rgba(0,0,0,.3);
+          --map-menu-border-depth: var(--map-menu-expanded-color-depth-3,rgba(0,0,0,.2));
+        }
+        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu[opened] {
+          --map-menu-border-depth: var(--map-menu-expanded-color-depth-4,rgba(0,0,0,.25));
         }
 
         map-menu-container {
@@ -440,13 +447,12 @@ class MapMenu extends LitElement {
     // run it through to set time just to let stuff set up
     setTimeout(() => {
       const activeindicator = this.shadowRoot.querySelector("#activeindicator");
-      const left = element.offsetLeft;
       const top = element.offsetTop;
       // if the element is hidden the set the indicator height to zero to make it disapear
       const height = !hidden ? element.offsetHeight : 0;
       activeindicator.setAttribute(
         "style",
-        `height:${height}px;top:${top}px;left:${left}px`
+        `height:${height}px;top:${top}px;`
       );
     }, 200);
   }

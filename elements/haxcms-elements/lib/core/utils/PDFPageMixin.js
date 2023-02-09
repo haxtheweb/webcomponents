@@ -31,6 +31,7 @@ export const PDFPageMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="pdf-page-btn"
+                class="btn"
                 icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
                 id="pdf-page-btn"
                 @click="${this.downloadPDFviaMicro}"

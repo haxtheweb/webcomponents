@@ -14,7 +14,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           transition: 0.3s all ease;
           --map-menu-item-height: 44px;
         }
-        :host([active]) {
+        :host([active]) button {
           font-weight: bold;
         }
         #container {
@@ -34,6 +34,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
+          transition: background-color .3s ease;
+          background-color: transparent;
+        }
+        a button {
+          transition: all .1s ease;
         }
         a:hover button,
         a:active button,
@@ -46,7 +51,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             --map-menu-header-a-text-decoration-hover,
             none
           );
-          background-color: var(--simple-colors-default-theme-light-grey-3, #dddddd);
+          background-color: var(--map-menu-item-a-active-background-color,var(--simple-colors-default-theme-light-grey-2, #dddddd));
         }
         lrndesign-avatar {
           display: inline-block;
@@ -172,7 +177,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
                     <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
                   `
                 : ``}
-              <div class="title">${this.title}</div>
+              <div class="title">${this.itemtitle}</div>
               ${!this.published
                 ? html`<simple-icon-lite
                     id="unpublished"
@@ -203,6 +208,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.active = false;
     this.published = true;
     this.locked = false;
+    this.itemtitle = '';
     this.t = {
       pageIsUnpublished: "Page is unpublished",
     };
@@ -243,7 +249,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
       },
-      title: {
+      itemtitle: {
         type: String,
       },
       avatarLabel: {

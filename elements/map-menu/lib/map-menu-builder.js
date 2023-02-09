@@ -29,7 +29,7 @@ class MapMenuBuilder extends LitElement {
               ${item.children.length > 0
                 ? html`
                     <map-menu-submenu
-                      title="${item.title}"
+                      itemtitle="${item.title}"
                       id="${item.id}"
                       url="${item.slug}"
                       icon="${item.metadata && item.metadata.icon
@@ -49,7 +49,7 @@ class MapMenuBuilder extends LitElement {
                   `
                 : html`
                     <map-menu-item
-                      title="${item.title}"
+                      itemtitle="${item.title}"
                       id="${item.id}"
                       url="${item.slug}"
                       icon="${item.metadata && item.metadata.icon
