@@ -11,7 +11,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          transition: 0.1s all ease-in-out;
+          transition: 0.3s all ease;
           font-size: var(--map-menu-item-font-size);
           --map-menu-item-height: 44px;
           --map-menu-item-icon-height: 24px;
@@ -21,16 +21,27 @@ class MapMenuItem extends I18NMixin(LitElement) {
           font-weight: bold;
         }
         simple-icon-lite {
-          display: inline-block;
+          display: inline-flex;
           --simple-icon-height: var(--map-menu-item-icon-height);
           --simple-icon-width: var(--map-menu-item-icon-height);
           margin-right: 8px;
+          margin-top: 12px;
+          line-height: 44px;
         }
         .title {
-          text-transform: none;
           display: inline-flex;
+          text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
           font-family: "Open+Sans", sans-serif;
+          text-overflow: ellipsis;
+          height: 44px;
+          vertical-align: middle;
+          width: auto;
+          line-height: 44px;
+          white-space: nowrap;
+          overflow: hidden;
+          word-break: break-all;
+          max-width: 200px;
         }
         a,
         a:visited {
@@ -54,6 +65,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         button {
           cursor: pointer;
           color: inherit;
+          display: flex;
           background-color: transparent;
           text-transform: none;
           width: 100%;

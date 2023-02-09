@@ -11,7 +11,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          transition: 0.1s all ease-in-out;
+          transition: 0.3s all ease;
           --map-menu-item-height: 44px;
         }
         :host([active]) {
@@ -77,16 +77,29 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           --simple-icon-height: var(--map-menu-item-icon-height);
           --simple-icon-width: var(--map-menu-item-icon-height);
           margin-right: 8px;
+          margin-top: 12px;
+          line-height: 44px;
         }
 
         .title {
           display: inline-flex;
+          text-transform: none;
           font-size: var(--map-menu-font-size, 16px);
           font-family: "Open+Sans", sans-serif;
+          text-overflow: ellipsis;
+          height: 44px;
+          vertical-align: middle;
+          width: auto;
+          line-height: 44px;
+          white-space: nowrap;
+          overflow: hidden;
+          word-break: break-all;
+          max-width: 200px;
         }
 
         button {
           cursor: pointer;
+          display: flex;
           color: inherit;
           background-color: transparent;
           text-transform: none;
