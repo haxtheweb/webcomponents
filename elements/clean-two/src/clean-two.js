@@ -49,18 +49,21 @@ class CleanTwo extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          font-size: 16px;
+          font-size: 18px;
+          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          letter-spacing: normal;
+          line-height: 28.8px;
           background-color: white;
-          --haxcms-base-styles-body-font-size:16px;
-          --hax-base-styles-a-font-size: 16px;
-          --hax-base-styles-p-font-size: 16px;
-          --hax-base-styles-list-font-size: 16px;
-          --haxcms-base-styles-body-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-          --haxcms-base-styles-body-line-height: 1.7;
-          --hax-base-styles-list-line-height: 1.7;
-          --hax-base-styles-p-line-height: 1.7;
-          --hax-base-styles-p-letter-spacing: .2px;
-          --haxcms-base-styles-body-letter-spacing : .2px;
+          --haxcms-base-styles-body-font-size:18px;
+          --hax-base-styles-a-font-size: 18px;
+          --hax-base-styles-p-font-size: 18px;
+          --hax-base-styles-list-font-size: 18px;
+          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-line-height: 28.8px;
+          --hax-base-styles-list-line-height: 28.8px
+          --hax-base-styles-p-line-height: 28.8px;
+          --hax-base-styles-p-letter-spacing: normal;
+          --haxcms-base-styles-body-letter-spacing : normal;
           --hax-base-styles-p-min-height: auto;
           --hax-base-styles-list-max-width: auto;
           --haxcms-base-styles-p-min-height: auto;
@@ -181,14 +184,12 @@ class CleanTwo extends HAXCMSOperationButtons(
           text-overflow: ellipsis;
           text-decoration: none;
           font-size: 16px;
-          font-family: Content-font, Roboto, sans-serif;
           font-weight: 500;
           line-height: 1.5;
           text-transform: none;
         }
         site-menu-button div .top {
           font-size: 12px;
-          font-family: Content-font, Roboto, sans-serif;
           font-weight: 400;
           line-height: 1.625;
           color: #444444;
@@ -198,7 +199,6 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         site-menu-button div .bottom {
           font-size: 16px;
-          font-family: Content-font, Roboto, sans-serif;
           font-weight: 500;
           line-height: 1.5;
           max-height: 50px;
@@ -251,6 +251,8 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         :host([menu-open]) .body-wrapper .left-col {
           margin-left: 0px;
+          position: sticky;
+          top: 0px;
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
@@ -312,13 +314,22 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 100vh;
           width: 300px;
           left: 0;
-          margin: 32px 0 32px 0;
+          margin: 0;
           display: block;
           padding: 0;
-          position: sticky;
           font-size: 15px;
           overflow-x: hidden;
           -webkit-overflow-scrolling: touch;
+        }
+
+        :host([is-logged-in]) site-menu {
+          height: calc(100vh - 48px);
+        }
+
+        main {
+          margin: -32px auto 0;
+          max-width: 800px;
+          padding: 0 0 0 32px;
         }
 
         .qr-code-btn {
@@ -336,9 +347,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-        }
-        :host([menu-open]) .content-wrapper {
-          width: calc(100% - 300px);
         }
         .header {
           z-index: 2;
@@ -460,11 +468,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: -webkit-flex;
           flex: 0 0 auto;
           padding-right: 0;
-          min-width: 240px;
+          width: 250px;
           flex: 1;
           margin: 0;
           display: block;
-          max-width: 100%;
           max-height: 976px;
           z-index: 1;
           display: -webkit-box;
@@ -482,14 +489,13 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         .right-col site-menu-content {
           flex: 1;
-          max-width: 240px;
+          width: 250px;
           margin: 0;
           display: flex;
           padding: 0;
           background-color: #ffffff;
           overflow: hidden;
           position: fixed;
-          min-width: 224px;
           counter-reset: toc;
           flex-direction: column;
           -webkit-box-orient: vertical;
@@ -501,7 +507,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           height: 100%;
           content: " ";
           position: absolute;
-          border-left: 1px solid #E6ECF1;
         }
         .footer {
           margin: 0;
@@ -543,6 +548,10 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
         site-breadcrumb {
           --site-breadcrumb-font-size: 12px;
+          margin-bottom: 16px;
+        }
+        .search-modal-btn {
+          margin-top: 16px;
         }
       `,
     ];
@@ -599,6 +608,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                 ?disabled="${this.editMode}"
                 icon="icons:search"
                 title="Search site"
+                class="search-modal-btn"
                 button-label="Search"
                 part="search-btn"
                 position="right"

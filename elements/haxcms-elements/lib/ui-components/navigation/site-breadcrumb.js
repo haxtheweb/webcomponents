@@ -23,13 +23,13 @@ class SiteBreadcrumb extends LitElement {
           color: var(--site-breadcrumb-color, #383f45);
         }
         a {
-          display: inline-flex;
           font-size: var(--site-breadcrumb-font-size, 16px);
           color: inherit;
-          display: inline-flex;
-          padding: 0 8px 0 0;
-          vertical-align: text-top;
+          display: inline-block;
+          padding: 0px 8px 0px 0px;
           text-decoration: var(--site-breadcrumb-text-decoration, underline);
+          line-height: 30px;
+          height: 30px;
         }
         button {
           margin: 0;
@@ -55,18 +55,21 @@ class SiteBreadcrumb extends LitElement {
           color: var(--site-breadcrumb-hover-color, #222222);
         }
         span {
-          margin: 0;
+          margin: 0px;
           font-size: var(--site-breadcrumb-font-size, 16px);
-          padding: 0 8px 0 0;
-          height: 24px;
-          display: inline-flex;
+          padding: 0px 8px 0px 0px;
+          display: inline-block;
+          vertical-align: middle;
+          height: 30px;
+          line-height: 30px;
         }
         simple-icon-lite {
-          display: inline-flex;
+          display: inline-block;
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          padding: 0 8px 0 0;
+          padding: 0px 8px 0px 0px;
           color: inherit;
+          line-height: 30px;
         }
       `,
     ];

@@ -22,7 +22,7 @@ class MapMenu extends LitElement {
     return [
       css`
         :host {
-          --map-menu-item-active-item-color: var(--simple-colors-default-theme-light-blue-1, rgba(100,100,255,.1));
+          --map-menu-item-active-item-color: rgba(100,100,255,.1);
           --map-menu-size: 1;
           display: block;
           overflow-y: scroll;

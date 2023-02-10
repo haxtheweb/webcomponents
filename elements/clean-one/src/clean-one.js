@@ -49,27 +49,31 @@ class CleanOne extends HAXCMSRememberRoute(
     return [
       ...super.styles,
       css`
-         :host {
-           color: #242A31;
-           width: 100%;
-           margin: 0;
-           display: flex;
-           padding: 0;
-           background: #F5F7F9;
-           min-height: 100vh;
-           flex-direction: column;
-           -webkit-box-orient: vertical;
-           -webkit-box-direction: normal;
-           --haxcms-base-styles-body-font-size:14px;
-           --hax-base-styles-a-font-size: 14px;
-           --hax-base-styles-p-font-size: 14px;
-           --hax-base-styles-list-font-size: 14px;
-           --haxcms-base-styles-body-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-           --haxcms-base-styles-body-line-height: 1.7;
-           --hax-base-styles-list-line-height: 1.7;
-           --hax-base-styles-p-line-height: 1.7;
-           --hax-base-styles-p-letter-spacing: .2px;
-           --haxcms-base-styles-body-letter-spacing : .2px;
+        :host {
+          color: #242A31;
+          width: 100%;
+          margin: 0;
+          display: flex;
+          padding: 0;
+          background: #F5F7F9;
+          min-height: 100vh;
+          flex-direction: column;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          font-size: 18px;
+          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          letter-spacing: normal;
+          line-height: 28.8px;
+          --haxcms-base-styles-body-font-size:18px;
+          --hax-base-styles-a-font-size: 18px;
+          --hax-base-styles-p-font-size: 18px;
+          --hax-base-styles-list-font-size: 18px;
+          --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          --haxcms-base-styles-body-line-height: 28.8px;
+          --hax-base-styles-list-line-height: 28.8px
+          --hax-base-styles-p-line-height: 28.8px;
+          --hax-base-styles-p-letter-spacing: normal;
+          --haxcms-base-styles-body-letter-spacing : normal;
            --hax-base-styles-p-min-height: auto;
            --hax-base-styles-list-max-width: auto;
            --haxcms-base-styles-p-min-height: auto;
@@ -383,7 +387,6 @@ class CleanOne extends HAXCMSRememberRoute(
          }
          @media (max-width: 1240px){
            .site-body {
-             transition: transform 200ms ease;
              padding-bottom: 20px;
            }
          }
@@ -454,7 +457,6 @@ class CleanOne extends HAXCMSRememberRoute(
            font-size: 40px;
            color: #ccc;
            text-align: center;
-           transition: all .35s ease;
          }
          @media screen and (max-width: 600px) {
             #slot ::slotted(iframe) {
@@ -517,8 +519,26 @@ class CleanOne extends HAXCMSRememberRoute(
              color: #704214;
              background: none;
            }
+           :host([color-theme="0"]) site-menu {
+            --map-menu-item-a-active-background-color: #4152a945;
+           }
            :host([color-theme="1"]) site-menu {
             --map-menu-item-a-active-color: white;
+            --map-menu-item-a-active-background-color: #70421445;
+            --site-menu-item-active-item-color: #70421410;
+            --map-menu-expanded-color-depth-1: rgba(200,150,100,0.1);
+            --map-menu-expanded-color-depth-2: rgba(200,150,100,0.15);
+            --map-menu-expanded-color-depth-3: rgba(200,150,100,0.20);
+            --map-menu-expanded-color-depth-4: rgba(200,150,100,0.25);
+           }
+           :host([color-theme="2"]) site-menu {
+            --map-menu-item-a-active-color: white;
+            --map-menu-item-a-active-background-color: rgba(0,0,250,.1);
+            --site-menu-item-active-item-color: rgba(0,0,250,.1);
+            --map-menu-expanded-color-depth-1: rgba(0,0,100,.15);
+            --map-menu-expanded-color-depth-2: rgba(0,0,100,.20);
+            --map-menu-expanded-color-depth-3: rgba(0,0,100,.25);
+            --map-menu-expanded-color-depth-4: rgba(0,0,100,.3);
            }
            :host([color-theme="1"]) site-active-title {
              color: #704214;
