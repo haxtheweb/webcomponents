@@ -283,14 +283,20 @@ class CleanOne extends HAXCMSRememberRoute(
           site-breadcrumb {
             display: none;
           }
+          .site-header {
+            padding: 0px;
+          }
           .header {
             height: 0px;
           }
-          site-active-title h1 {
+          .main-content site-active-title h1 {
             height: 48px;
             overflow: hidden;
+            margin-top: 64px;
             text-overflow: ellipsis;
             word-break: break-all;
+            margin-top: 64px;
+            margin-bottom: 8px;
           }
         }
         h1 {
