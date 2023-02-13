@@ -327,7 +327,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         }
 
         main {
-          margin: -32px auto 0;
+          margin: 8px auto 0;
           max-width: 800px;
           padding: 0 0 0 32px;
         }

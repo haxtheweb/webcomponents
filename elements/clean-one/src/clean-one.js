@@ -264,6 +264,7 @@ class CleanOne extends HAXCMSRememberRoute(
            transition: left 250ms ease;
          }
 
+        :host([responsive-size="xs"]) .page-inner,
         :host([responsive-size="sm"]) .page-inner,
         :host([responsive-size="md"]) .page-inner,
         :host([responsive-size="lg"]) .page-inner {
@@ -272,10 +273,7 @@ class CleanOne extends HAXCMSRememberRoute(
         :host([responsive-size="sm"]) .site-inner {
           padding: 0px 24px;
         }
-        :host([responsive-size="xs"]) .site-inner {
-          max-width: 100vw;
-          padding: 0px 24px;
-        }
+        
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
         }
