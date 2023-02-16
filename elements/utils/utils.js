@@ -100,13 +100,6 @@ export function cleanVideoSource(input) {
   ) {
     return input + "/embed";
   }
-  // copy and paste from the URL for sketchfab
-  else if (
-    input.indexOf("dailymotion.com") != -1 &&
-    input.indexOf("/embed") == -1
-  ) {
-    return input.replace("/video/", "/embed/video/");
-  }
   return input;
 }
 // wrap an element with another; super basic but makes it consistent across our apps

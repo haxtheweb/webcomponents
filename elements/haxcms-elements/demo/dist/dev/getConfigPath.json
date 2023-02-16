@@ -90,26 +90,6 @@
               "valueProperty": "value"
             }
           },
-          "googlepoly": {
-            "title": "Google Poly",
-            "type": "string",
-            "value": "AIzaSyDiSvloa49gHUJG0YAt3Ys_I6IEoiscPUM",
-            "component": {
-              "slot": "<div slot=\"suffix\"><a href=\"https://developers.google.com/poly/develop/api\" target=\"_blank\">See Google Poly developer docs.</a></div>",
-              "name": "paper-input",
-              "valueProperty": "value"
-            }
-          },
-          "memegenerator": {
-            "title": "Meme generator",
-            "type": "string",
-            "value": "e7fbcd7f-8d76-4513-9698-e20de4362d99",
-            "component": {
-              "slot": "<div slot=\"suffix\"><a href=\"https://memegenerator.net/Api\" target=\"_blank\">See Meme generator developer docs.</a></div>",
-              "name": "paper-input",
-              "valueProperty": "value"
-            }
-          },
           "vimeo": {
             "title": "Vimeo",
             "type": "string",
@@ -149,16 +129,6 @@
               "name": "paper-input",
               "valueProperty": "value"
             }
-          },
-          "pixabay": {
-            "title": "Pixabay",
-            "type": "string",
-            "value": "7839766-f49bb4174cd49cb587944a5f7",
-            "component": {
-              "slot": "<div slot=\"suffix\"><a href=\"https://pixabay.com/api/docs/\" target=\"_blank\">See Pixabay developer docs.</a></div>",
-              "name": "paper-input",
-              "valueProperty": "value"
-            }
           }
         }
       }
@@ -190,13 +160,10 @@
     "appStore": {
       "apiKeys": {
         "youtube": "",
-        "googlepoly": "",
-        "memegenerator": "",
         "vimeo": "",
         "giphy": "",
         "unsplash": "",
-        "flickr": "",
-        "pixabay": ""
+        "flickr": ""
       }
     },
     "publishing": {

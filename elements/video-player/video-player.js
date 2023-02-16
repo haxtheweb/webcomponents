@@ -916,11 +916,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         } else {
           source += "&portrait=0";
         }
-      } else if (type == "dailymotion") {
-        source += "&ui-start-screen-info=false";
-        source += "&ui-logo=false";
-        source += "&sharing-enable=false";
-        source += "&endscreen-enable=false";
       }
     }
     return source;
