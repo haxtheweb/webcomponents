@@ -159,6 +159,12 @@ class HAX extends HTMLElement {
       text-align: left;
       vertical-align: middle;
     }
+    
+    hax-body[edit-mode] [data-hax-active][contenteditable] {
+      outline-offset: 8px;
+      outline: var(--hax-body-active-outline, 2px solid var(--hax-ui-color-focus, #000)) !important;
+      caret-color: var(--hax-ui-caret-color, auto);
+    }
     figure {
       margin-left: 0;
       margin-right: 0;

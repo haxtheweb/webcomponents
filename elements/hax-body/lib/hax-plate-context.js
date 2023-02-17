@@ -495,11 +495,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             data-simple-tour-stop
             data-stop-title="label"
             event-name="content-edit"
-            toggles
-            ?toggled="${
-              this.trayDetail === "content-edit" &&
-              this.trayStatus !== "collapsed"
-            }"
           >
             <div slot="tour" data-stop-content>
               Opens the Edit panel for more advanced settings.

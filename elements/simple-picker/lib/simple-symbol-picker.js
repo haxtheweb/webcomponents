@@ -21,6 +21,8 @@ class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
       css`
         simple-picker-option {
           justify-content: space-around;
+          --simple-picker-option-size: 24px;
+          font-size: 24px;
         }
         #icon {
           margin-left: calc(-0.125 * var(--simple-picker-icon-size, 16px));

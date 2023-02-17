@@ -2,6 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { css } from "lit";
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -16,6 +17,20 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
  * @demo ./demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        simple-picker-option {
+          --simple-picker-option-size: 32px;
+        }
+        :host([expanded]:not([disabled])) #collapse {
+          position:fixed;
+        }
+      `,
+    ];
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -96,7 +111,7 @@ class SimpleIconPicker extends SimplePicker {
     this.icons = [];
     this.value = null;
     this.options = [];
-    this.optionsPerRow = 10;
+    this.optionsPerRow = 6;
   }
   /**
    * LitElement life cycle - property changed callback

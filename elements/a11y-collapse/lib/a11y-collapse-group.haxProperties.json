@@ -1,6 +1,6 @@
 {
   "canScale": false,
-  "canPosition": true,
+  "canPosition": false,
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
@@ -19,12 +19,6 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable items.",
-        "inputMethod": "boolean"
-      },
-      {
         "slot": "",
         "title": "Collapse Items",
         "description": "The collapse items.",
@@ -36,11 +30,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "hidden",
-        "title": "Hidden",
-        "inputMethod": "boolean"
-      }
     ]
   },
   "saveOptions": {
@@ -50,7 +39,7 @@
     {
       "tag": "a11y-collapse-group",
       "properties": {},
-      "content": "<p>Optional info</p><a11y-collapse><p slot=\"heading\">Collapsible 1</p><p slot=\"content\">Hidden content 1.</p></a11y-collapse><a11y-collapse><p slot=\"heading\">Collapsible 2</p><p slot=\"content\">Hidden content 2.</p></a11y-collapse>"
+      "content": "<p>Optional info</p><a11y-collapse heading=\"Collapse 1\"><p slot=\"content\">Hidden content 1.</p></a11y-collapse><a11y-collapse heading=\"Collapse 2\"><p slot=\"content\">Hidden content 2.</p></a11y-collapse>"
     }
   ]
 }

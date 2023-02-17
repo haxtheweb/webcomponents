@@ -43,7 +43,16 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>a11y-collapse demo</h1>
+      <h1>a11y-collapse demo property</h1>
+      <p>By default, the clicking the icon button triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse heading="What rhymes with orange?">
+            <div>Nothing rhymes with orange.</div>
+          </a11y-collapse>
+        </template>
+      </demo-snippet>
+      <h1>a11y-collapse demo slotted</h1>
       <p>By default, the clicking the icon button triggers expand/collapse.</p>
       <demo-snippet>
         <template>
@@ -54,7 +63,18 @@
         </template>
       </demo-snippet>
 
-      <h2>a11y-collapse demo, with accordion attribute</h2>
+      <h2>a11y-collapse prop, with accordion attribute</h2>
+      <p>With the <tt>accordion</tt> attribute, the clicking anywhere on the heading triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse heading="What rhymes with orange?" heading-button icon="arrow-drop-down" label="toggle info" tooltip="toggle more information">
+            <div slot="content">Nothing rhmyes with orange.</div>
+          </a11y-collapse>
+        </template>
+      </demo-snippet>
+
+
+      <h2>a11y-collapse slot, with accordion attribute</h2>
       <p>With the <tt>accordion</tt> attribute, the clicking anywhere on the heading triggers expand/collapse.</p>
       <demo-snippet>
         <template>

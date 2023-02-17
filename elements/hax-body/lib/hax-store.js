@@ -3229,7 +3229,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     delete propvals.contenteditable;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
-    if (propvals.class == "" || propvals.class == "hax-active") {
+    delete propvals["data-hax-active"];
+    if (propvals.class == "") {
       delete propvals.class;
     }
     // run through the rest and print to the dom
@@ -3321,8 +3322,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     content = content.replace(/&nbsp;/gm, " ");
     // target and remove hax specific things from output if they slipped through
     content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+    content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
-    content = content.replace(/ class="hax-active"/gim, "");
     content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around

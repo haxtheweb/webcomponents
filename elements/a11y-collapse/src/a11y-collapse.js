@@ -45,6 +45,9 @@ class A11yCollapse extends LitElement {
           border-color: var(--a11y-collapse-border-color, inherit);
           transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
+        :host([heading-button]) #heading {
+          cursor: pointer;
+        }
         :host(:not(:first-of-type)) {
           border-top: var(
             --a11y-collapse-border-between,
@@ -253,6 +256,12 @@ class A11yCollapse extends LitElement {
         type: String,
       },
       /**
+       * heading / title for the button
+       */
+      heading: {
+        type: String,
+      },
+      /**
        * optional label for the button when expanded
        */
       labelExpanded: {
@@ -290,6 +299,7 @@ class A11yCollapse extends LitElement {
     this.disabled = false;
     this.hidden = false;
     this.expanded = false;
+    this.heading = null;
     this.icon = "icons:expand-more";
     this.label = "expand";
     this.tooltip = "expand";
@@ -460,7 +470,7 @@ class A11yCollapse extends LitElement {
           this.expanded
         )}"
       >
-        <div id="text"><slot name="heading"></slot></div>
+        <div id="text">${this.heading ? html`<p>${this.heading}</p>`: ``}<slot name="heading"></slot></div>
         <simple-icon-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
@@ -489,7 +499,7 @@ class A11yCollapse extends LitElement {
   _makeIconButton() {
     return html`
       <div id="heading">
-        <div id="text"><slot name="heading"></slot></div>
+        <div id="text">${this.heading ? html`<p>${this.heading}</p>`: ``}<slot name="heading"></slot></div>
         <simple-icon-button-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"

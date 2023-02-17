@@ -409,9 +409,6 @@
       "connection": {
         "protocol": "https",
         "url": "api.sketchfab.com",
-        "data": {
-          "type": "models"
-        },
         "operations": {
           "browse": {
             "method": "GET",
@@ -1146,25 +1143,26 @@
     }
   ],
   "autoloader": {
-    "page-break": "@lrnwebcomponents/page-break/page-break.js",
+    "media-image": "@lrnwebcomponents/media-image/media-image.js",
+    "self-check": "@lrnwebcomponents/self-check/self-check.js",
+    "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+    "video-player": "@lrnwebcomponents/video-player/video-player.js",
+    "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
     "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+    "page-break": "@lrnwebcomponents/page-break/page-break.js",
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
     "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-    "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-    "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
     "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "self-check": "@lrnwebcomponents/self-check/self-check.js",
-    "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-    "date-card": "@lrnwebcomponents/date-card/date-card.js"
+    "date-card": "@lrnwebcomponents/date-card/date-card.js",
+    "a11y-collapse-group": "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js"
   }
 }
