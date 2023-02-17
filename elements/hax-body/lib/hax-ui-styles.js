@@ -4,11 +4,11 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: sans-serif;
-      --hax-ui-font-size: 16px;
-      --hax-ui-font-size-sm: 13px;
-      --hax-ui-font-size-xs: 12px;
-      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 16px));
-      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 16px));
+      --hax-ui-font-size: 14px;
+      --hax-ui-font-size-sm: 12px;
+      --hax-ui-font-size-xs: 11px;
+      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 14px));
+      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 14px));
     }
   `,
 ];
@@ -509,6 +509,10 @@ export const HaxTrayDetail = [
       font-weight: normal;
       margin: 0 var(--hax-ui-spacing-sm) 0 0;
       padding: 0;
+      height: 28px;
+      overflow: hidden;
+      word-break: break-all;
+      text-overflow: ellipsis;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
