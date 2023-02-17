@@ -15,8 +15,8 @@ export class WorksheetDownload extends LitElement {
 
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
+      canScale: false,
+      canPosition: false,
       canEditSource: false,
       gizmo: {
         title: "Worksheet Download",
