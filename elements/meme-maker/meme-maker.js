@@ -140,7 +140,6 @@ class MemeMaker extends LitElement {
    */
   haxHooks() {
     return {
-      activeElementChanged: "haxactiveElementChanged",
       progressiveEnhancement: "haxprogressiveEnhancement",
       gizmoRegistration: "haxgizmoRegistration",
     };
@@ -158,26 +157,6 @@ class MemeMaker extends LitElement {
         },
       })
     );
-  }
-  /**
-   * double-check that we are set to inactivate click handlers
-   * this is for when activated in a duplicate / adding new content state
-   */
-  haxactiveElementChanged(el, val) {
-    let figures = this.shadowRoot.querySelectorAll("figcaption");
-    if (val) {
-      for (var i = 0; i < figures.length; i++) {
-        figures[i].setAttribute("contenteditable", true);
-      }
-    } else {
-      for (var i = 0; i < figures.length; i++) {
-        figures[i].removeAttribute("contenteditable");
-      }
-      // easy, name is flat
-      this.topText = this.shadowRoot.querySelector(".top-text").innerText;
-      this.bottomText = this.shadowRoot.querySelector(".bottom-text").innerText;
-    }
-    return false;
   }
   /**
    * Hook for HAX to support progressive enhancement and return a string
