@@ -192,8 +192,7 @@ class A11yCollapse extends LitElement {
         aria-live="polite"
       >
         <div id="content-inner">
-          <slot name="content"></slot>
-          <slot></slot>
+        ${this.expanded ? html`<slot name="content"></slot><slot></slot>`:``}
         </div>
       </div>
     `;

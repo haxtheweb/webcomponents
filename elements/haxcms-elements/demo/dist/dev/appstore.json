@@ -9,7 +9,7 @@
         "author": "Google, Youtube LLC",
         "description": "The most popular online video sharing and remix site.",
         "status": "available",
-        "tags": ["video", "crowdsourced"]
+        "tags": ["video"]
       },
       "connection": {
         "protocol": "https",
@@ -70,7 +70,7 @@
         "author": "Vimeo Inc.",
         "description": "A high quality video sharing community.",
         "status": "available",
-        "tags": ["video", "crowdsourced"]
+        "tags": ["video"]
       },
       "connection": {
         "protocol": "https",
@@ -134,7 +134,7 @@
         "description": "The original photo sharing platform on the web.",
         "status": "available",
         "rating": "0",
-        "tags": ["images", "creative commons", "crowdsourced"]
+        "tags": ["images"]
       },
       "connection": {
         "protocol": "https",
@@ -215,7 +215,7 @@
         "author": "US Government",
         "description": "The cozmos through one simple API.",
         "status": "available",
-        "tags": ["images", "government", "space"]
+        "tags": ["images"]
       },
       "connection": {
         "protocol": "https",
@@ -270,7 +270,7 @@
         "author": "Giphy",
         "description": "Crowd sourced memes via animated gifs.",
         "status": "available",
-        "tags": ["gif", "crowdsourced", "meme"]
+        "tags": ["images"]
       },
       "connection": {
         "protocol": "https",
@@ -348,7 +348,7 @@
         "description": "3D sharing community.",
         "status": "available",
         "rating": "0",
-        "tags": ["3D", "creative commons", "crowdsourced"]
+        "tags": ["3D models"]
       },
       "connection": {
         "protocol": "https",
@@ -411,7 +411,7 @@
         "author": "Unsplash",
         "description": "Crowd sourced, open photos",
         "status": "available",
-        "tags": ["images", "crowdsourced", "cc"]
+        "tags": ["images"]
       },
       "connection": {
         "protocol": "https",
@@ -468,7 +468,7 @@
         "author": "Wikimedia",
         "description": "Encyclopedia of the world.",
         "status": "available",
-        "tags": ["content", "encyclopedia", "wiki"]
+        "tags": ["encyclopedia"]
       },
       "connection": {
         "protocol": "https",
@@ -524,7 +524,7 @@
         "color": "light-blue",
         "author": "HAXCMS",
         "description": "HAXCMS integration for HAX",
-        "tags": ["media", "hax"]
+        "tags": ["Uploads"]
       },
       "connection": {
         "protocol": "http",

@@ -372,12 +372,6 @@ class CleanTwo extends HAXCMSOperationButtons(
           display: block;
           padding: 0;
         }
-        
-        @media screen and (max-width: 1200px) {
-          :host([menu-open]) .content {
-            width: calc(100vw - 300px);
-          }
-        }
         @media screen and (max-width: 640px) {
           site-breadcrumb {
             display: none;

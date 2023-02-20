@@ -2619,7 +2619,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             meta: {
               author: "HAXTheWeb core team",
               inlineOnly: ["em","b","strong","i", "strike", "u", "sub", "sup", "span"].includes(tag) ? true : false,
-              hidden: tag == "h2" ? false : true,
+              hidden: ["h2", "ul"].includes(tag) ? false : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },

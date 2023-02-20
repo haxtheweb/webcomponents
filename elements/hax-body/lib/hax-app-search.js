@@ -25,7 +25,7 @@ class HaxAppSearch extends LitElement {
           display: none;
           margin: 0 auto;
           z-index: 1000;
-          --hexagon-color: var(--hax-tray-accent-color);
+          --hexagon-color: var(--hax-ui-color-accent);
         }
         hexagon-loader[loading] {
           display: block;
@@ -63,13 +63,13 @@ class HaxAppSearch extends LitElement {
         }
         .tos-text a {
           font-size: var(--hax-ui-font-size-sm);
-          color: var(--hax-tray-accent-color);
+          color: var(--hax-ui-color-accent);
           text-decoration: underline;
         }
         .tos-text a:hover,
         .tos-text a:focus,
         .tos-text a:active {
-          outline: 2px solid var(--hax-tray-accent-color);
+          outline: 2px solid var(--hax-ui-color-accent);
         }
       `,
     ];
