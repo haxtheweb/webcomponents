@@ -7,7 +7,7 @@
     "description": "A set of tabs.",
     "icon": "view-day",
     "color": "grey",
-    "tags": ["Content","tabs","display","layout"]
+    "tags": ["Content", "tabs", "display", "layout"]
   },
   "settings": {
     "configure": [

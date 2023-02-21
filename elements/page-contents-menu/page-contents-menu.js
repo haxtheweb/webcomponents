@@ -97,9 +97,9 @@ class PageContentsMenu extends LitElement {
           white-space: nowrap;
           text-overflow: ellipsis;
           line-height: 24px;
-          letter-spacing: .5px;
-          transition: font .3s ease-in-out, border .1s ease-in-out;
-          border-left: rgba(0,0,0,.1) 1px solid;
+          letter-spacing: 0.5px;
+          transition: font 0.3s ease-in-out, border 0.1s ease-in-out;
+          border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
         .link:hover,
         .link:focus {

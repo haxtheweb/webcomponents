@@ -858,7 +858,7 @@ class HAXCMSSiteEditor extends LitElement {
             "@haxcms/docxToSite",
             formData
           );
-          store.toast('finished!', 300);
+          store.toast("finished!", 300);
           // must be a valid response and have at least SOME html to bother attempting
           if (
             response.status == 200 &&
@@ -880,7 +880,7 @@ class HAXCMSSiteEditor extends LitElement {
               const b1 = document.createElement("button");
               b1.innerText = "Confirm";
               b1.classList.add("hax-modal-btn");
-              b1.addEventListener('click', async (e) => {
+              b1.addEventListener("click", async (e) => {
                 const data = await outline.getData();
                 let deleted = 0;
                 let modified = 0;
@@ -888,22 +888,25 @@ class HAXCMSSiteEditor extends LitElement {
                 data.items.map((item) => {
                   if (item.delete) {
                     deleted++;
-                  }
-                  else if (item.new) {
+                  } else if (item.new) {
                     added++;
-                  }
-                  else if (item.modified) {
+                  } else if (item.modified) {
                     modified++;
                   }
                 });
-                let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+                let sumChanges = `${
+                  added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                }${
+                  modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
+                }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
                 let confirmation = false;
                 // no confirmation required if there are no tracked changes
-                if (sumChanges == '') {
+                if (sumChanges == "") {
                   confirmation = true;
-                }
-                else {
-                  confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+                } else {
+                  confirmation = window.confirm(
+                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                  );
                 }
                 if (confirmation) {
                   this.querySelector("#createajax").body = data;
@@ -922,7 +925,7 @@ class HAXCMSSiteEditor extends LitElement {
               b2.innerText = "Cancel";
               b2.classList.add("hax-modal-btn");
               b2.classList.add("cancel");
-              b2.addEventListener('click', (e) => {
+              b2.addEventListener("click", (e) => {
                 const evt = new CustomEvent("simple-modal-hide", {
                   bubbles: true,
                   composed: true,
@@ -932,7 +935,7 @@ class HAXCMSSiteEditor extends LitElement {
                 window.dispatchEvent(evt);
               });
               // button container
-              const div = document.createElement('div');
+              const div = document.createElement("div");
               div.appendChild(b1);
               div.appendChild(b2);
 
@@ -964,8 +967,7 @@ class HAXCMSSiteEditor extends LitElement {
             });
           }
         });
-      }
-      else {
+      } else {
         this.querySelector("#createajax").body = reqBody;
         this.setProcessingVisual();
         this.querySelector("#createajax").generateRequest();
@@ -975,7 +977,7 @@ class HAXCMSSiteEditor extends LitElement {
           cancelable: true,
           detail: {},
         });
-        window.dispatchEvent(evt); 
+        window.dispatchEvent(evt);
       }
     }
   }
@@ -1297,17 +1299,18 @@ class HAXCMSSiteEditor extends LitElement {
     }
   }
   // processing visualization
-    setProcessingVisual() {
-      let loadingIcon = document.createElement('simple-icon-lite');
-      loadingIcon.icon = "hax:loading";
-      loadingIcon.style.setProperty('--simple-icon-height', '40px');
-      loadingIcon.style.setProperty('--simple-icon-width', '40px');
-      loadingIcon.style.height = '150px';
-      loadingIcon.style.marginLeft = '8px';
-      store.toast(`Processing`, 5000, {
-        hat: 'construction',
-        slot: loadingIcon});
-    }
+  setProcessingVisual() {
+    let loadingIcon = document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.height = "150px";
+    loadingIcon.style.marginLeft = "8px";
+    store.toast(`Processing`, 5000, {
+      hat: "construction",
+      slot: loadingIcon,
+    });
+  }
   /**
    * Save the outline based on an event firing.
    */

@@ -228,7 +228,7 @@ class HaxTray extends I18NMixin(
           left: 0;
           right: 0;
         }
-        
+
         #menubar {
           display: inline-flex;
           flex-direction: column;
@@ -460,9 +460,7 @@ class HaxTray extends I18NMixin(
       <div class="wrapper ${this.trayStatus}">
         ${this.menuToolbarTemplate}
         <div class="detail">
-          <loading-indicator
-            ?loading="${this.loading}"
-          ></loading-indicator>
+          <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
       </div>
@@ -750,9 +748,7 @@ class HaxTray extends I18NMixin(
           label="${this.t.close}"
         >
         </hax-tray-button>
-        <h4>
-          ${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}
-        </h4>
+        <h4>${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}</h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
@@ -784,15 +780,14 @@ class HaxTray extends I18NMixin(
   }
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
-    return html`<div class="block-add-wrapper"><hax-gizmo-browser
+    return html`<div class="block-add-wrapper">
+      <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
       <h5 ?hidden="${hidden}">${this.t.templates}</h5>
-      <hax-stax-browser
-        id="staxbrowser"
-        ?hidden="${hidden}"
-      ></hax-stax-browser></div>`;
+      <hax-stax-browser id="staxbrowser" ?hidden="${hidden}"></hax-stax-browser>
+    </div>`;
   }
   get contentMapTemplate() {
     return html`<hax-map
@@ -1343,9 +1338,11 @@ class HaxTray extends I18NMixin(
       } else {
         this.activeValue.settings.advanced.__position = "hax-align-left";
       }
-      this.activeHaxElement.properties.__scale = this.activeValue.settings.advanced.__scale;
-      this.activeHaxElement.properties.__position = this.activeValue.settings.advanced.__position;
-        // tabs / deep objects require us to preview the value w/ the path correctly
+      this.activeHaxElement.properties.__scale =
+        this.activeValue.settings.advanced.__scale;
+      this.activeHaxElement.properties.__position =
+        this.activeValue.settings.advanced.__position;
+      // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
@@ -1456,9 +1453,13 @@ class HaxTray extends I18NMixin(
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
   _updateTrayDetail(newValue) {
-    if (newValue && this.shadowRoot && this.shadowRoot.querySelector('.detail')) {
-      this.shadowRoot.querySelector('.detail').style.width = '';
-      this.shadowRoot.querySelector('.detail').style.height = '';
+    if (
+      newValue &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(".detail")
+    ) {
+      this.shadowRoot.querySelector(".detail").style.width = "";
+      this.shadowRoot.querySelector(".detail").style.height = "";
     }
     if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;

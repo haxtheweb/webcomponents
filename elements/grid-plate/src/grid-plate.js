@@ -196,7 +196,9 @@ class GridPlate extends LitElement {
         .column.not-shown {
           min-height: unset;
         }
-        :host([data-hax-ray]) .column ::slotted([contenteditable][data-hax-ray]:empty)::before {
+        :host([data-hax-ray])
+          .column
+          ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.2s opacity ease-in-out;
@@ -454,7 +456,15 @@ class GridPlate extends LitElement {
         description: "Simple card in a cool retro design",
         icon: "hax:3-3-3-3",
         color: "grey",
-        tags: ["Content","layout","grid","column","row","responsive","gridplate"],
+        tags: [
+          "Content",
+          "layout",
+          "grid",
+          "column",
+          "row",
+          "responsive",
+          "gridplate",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

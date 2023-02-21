@@ -72,7 +72,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       return html`
         <simple-icon-button-lite
           class="btn"
-          icon="${this.menuOpen ? 'hax:menu-open' : 'icons:menu'}"
+          icon="${this.menuOpen ? "hax:menu-open" : "icons:menu"}"
           label="${this.menuOpen ? this.t.closeMenu : this.t.openMenu}"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -132,9 +132,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         // these cases only fire if the user has not changed the state themselves
         // when the menuOpen setting is placed in local storage we no longer
         // abide by these things
-        if (
-          propName == "responsiveSize" && this[propName]
-        ) {
+        if (propName == "responsiveSize" && this[propName]) {
           switch (this[propName]) {
             case "sm":
               // auto close for small layouts

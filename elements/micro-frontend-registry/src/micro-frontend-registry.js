@@ -164,7 +164,13 @@ class MicroFrontendRegistryEl extends HTMLElement {
    * @param {String} urlStringAddon - a string to add onto the fetch at the end. edge of edge of edge land here
    * @returns {Object} Response object from microservice, otherwise `null`
    */
-  async call(name, params = {}, callback = null, caller = null, urlStringAddon = '') {
+  async call(
+    name,
+    params = {},
+    callback = null,
+    caller = null,
+    urlStringAddon = ""
+  ) {
     if (this.has(name)) {
       const item = this.get(name);
       // default post, but this is not cacheable
@@ -185,7 +191,9 @@ class MicroFrontendRegistryEl extends HTMLElement {
           // support for formdata which is already encoded
           const searchParams = new URLSearchParams(params).toString();
           data = await fetch(
-            searchParams ? `${item.endpoint}?${searchParams}${urlStringAddon}` : item.endpoint + urlStringAddon,
+            searchParams
+              ? `${item.endpoint}?${searchParams}${urlStringAddon}`
+              : item.endpoint + urlStringAddon,
             {
               method: method,
             }

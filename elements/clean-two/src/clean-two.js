@@ -596,7 +596,7 @@ class CleanTwo extends HAXCMSOperationButtons(
                     </div>
                   `
                 : ``}
-              ${this.HAXCMSMobileMenuButton('right')}
+              ${this.HAXCMSMobileMenuButton("right")}
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
@@ -783,7 +783,7 @@ class CleanTwo extends HAXCMSOperationButtons(
         document.head.appendChild(link);
       }
     });
-    
+
     autorun((reaction) => {
       if (
         store.activeItem &&

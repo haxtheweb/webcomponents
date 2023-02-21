@@ -21,7 +21,7 @@ class HexPicker extends LitElement {
         description: "Hexcode color picker",
         icon: "image:colorize",
         color: "grey",
-        tags: ["Other","dev","developer"],
+        tags: ["Other", "dev", "developer"],
         handles: [],
         meta: {
           author: "collinkleest",

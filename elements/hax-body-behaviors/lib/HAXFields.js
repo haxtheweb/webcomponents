@@ -452,7 +452,7 @@ export const HaxElementizer = {
               justify: true,
             },
             properties: {
-              options: "icons"
+              options: "icons",
             },
           },
         },

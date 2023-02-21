@@ -264,7 +264,7 @@ class CMSEntity extends PolymerElement {
         description: "CMS entity rendered on the backend",
         icon: "places:spa",
         color: "light-blue",
-        tags: ["Magic","elmsln","cms","block"],
+        tags: ["Magic", "elmsln", "cms", "block"],
         handles: [
           {
             type: "cmsentity",

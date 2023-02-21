@@ -90,7 +90,14 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
         description: "Schematized element area",
         icon: "hax:oerschema",
         color: "blue",
-        tags: ["Other","developer","Instructional","pedagogical","SEO","Search engine"],
+        tags: [
+          "Other",
+          "developer",
+          "Instructional",
+          "pedagogical",
+          "SEO",
+          "Search engine",
+        ],
         handles: [
           {
             type: "inline",

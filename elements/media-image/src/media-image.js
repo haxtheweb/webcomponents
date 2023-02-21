@@ -323,7 +323,16 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         descrption: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
-        tags: ["Images", "media", "core", "figure", "image", "caption", "presentation", "design"],
+        tags: [
+          "Images",
+          "media",
+          "core",
+          "figure",
+          "image",
+          "caption",
+          "presentation",
+          "design",
+        ],
         handles: [
           {
             type: "image",

@@ -138,7 +138,15 @@ class FullScreenImage extends LitElement {
         description: "full screen banner image with down arrow",
         icon: "icons:android",
         color: "green",
-        tags: ["Images","media","image","banner","full-screen","full","screen"],
+        tags: [
+          "Images",
+          "media",
+          "image",
+          "banner",
+          "full-screen",
+          "full",
+          "screen",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

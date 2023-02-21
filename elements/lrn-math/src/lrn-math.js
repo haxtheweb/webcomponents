@@ -235,7 +235,7 @@ class LrnMath extends HTMLElement {
         description: "Present math in a nice looking way.",
         icon: "hax:pi",
         color: "grey",
-        tags: ["Content","math","mathjax","mathml","latex","mathml"],
+        tags: ["Content", "math", "mathjax", "mathml", "latex", "mathml"],
         handles: [
           {
             type: "math",

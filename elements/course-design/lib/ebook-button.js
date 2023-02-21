@@ -21,7 +21,7 @@ export class EbookButton extends LitElement {
         description: "A button that links to an Ebook.",
         icon: "icons:book",
         color: "blue",
-        tags: ["Instructional", "link", "ebook","book"],
+        tags: ["Instructional", "link", "ebook", "book"],
         handles: [
           {
             type: "link",

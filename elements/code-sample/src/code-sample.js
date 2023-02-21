@@ -60,7 +60,7 @@ class CodeSample extends LitElement {
         /** line ending highlight!!! */
         table {
           border-spacing: 0;
-          width:100%;
+          width: 100%;
           padding: 0;
           margin: 0;
           border: 0;
@@ -81,10 +81,10 @@ class CodeSample extends LitElement {
           user-select: none;
         }
         tr {
-          transition: background-color .3s ease-in-out;
+          transition: background-color 0.3s ease-in-out;
         }
         tr:hover {
-          background-color: var(--code-sample-line-hover-color, #3297FD11);
+          background-color: var(--code-sample-line-hover-color, #3297fd11);
         }
         tr:hover .hljs-ln-n {
           font-weight: bold;
@@ -96,7 +96,10 @@ class CodeSample extends LitElement {
           padding-left: 16px;
         }
         .line-highlighted {
-          background-color: var(--code-sample-line-highlighted-color, #3297FD22);
+          background-color: var(
+            --code-sample-line-highlighted-color,
+            #3297fd22
+          );
         }
 
         .hljs {
@@ -157,7 +160,7 @@ class CodeSample extends LitElement {
         description: "A sample of code highlighted in the page",
         icon: "icons:code",
         color: "blue",
-        tags: ["Other","code","highlight","syntax","code-sample"],
+        tags: ["Other", "code", "highlight", "syntax", "code-sample"],
         meta: {
           author: "HAXTheWeb core team",
         },
@@ -216,8 +219,7 @@ class CodeSample extends LitElement {
       demoSchema: [
         {
           tag: "code-sample",
-          content:
-            `<template preserve-content="preserve-content">const great = "example";
+          content: `<template preserve-content="preserve-content">const great = "example";
             const great = "example";
             const great = "example";</template>`,
           properties: {
@@ -251,12 +253,12 @@ class CodeSample extends LitElement {
       highlightStart: {
         type: Number,
         reflect: true,
-        attribute: 'highlight-start',
+        attribute: "highlight-start",
       },
       highlightEnd: {
         type: Number,
         reflect: true,
-        attribute: 'highlight-end',
+        attribute: "highlight-end",
       },
     };
   }
@@ -435,28 +437,39 @@ if ($MrTheCheat) {
       // so when we update these values, we're going to force a rebuild
       // of the shadow that's having highlightjs applied to it
       // delaying a micro helps ensure that the nodes are there prior to applying the highlighting
-      if (propName === "highlightStart" && this.shadowRoot && this[propName] !== null && this.highlightEnd !== null) {
+      if (
+        propName === "highlightStart" &&
+        this.shadowRoot &&
+        this[propName] !== null &&
+        this.highlightEnd !== null
+      ) {
         setTimeout(() => {
-          this.highlightLines(this.highlightStart, this.highlightEnd);          
+          this.highlightLines(this.highlightStart, this.highlightEnd);
         }, 100);
       }
-      if (propName === "highlightEnd" && this.shadowRoot && this[propName] !== null && this.highlightStart !== null) {
+      if (
+        propName === "highlightEnd" &&
+        this.shadowRoot &&
+        this[propName] !== null &&
+        this.highlightStart !== null
+      ) {
         setTimeout(() => {
-          this.highlightLines(this.highlightStart, this.highlightEnd);          
+          this.highlightLines(this.highlightStart, this.highlightEnd);
         }, 100);
       }
     });
   }
   // support highlighting lines now that we have line endings!
   highlightLines(start, end) {
-    Array.from(this.shadowRoot.querySelector('code.hljs table tbody').children).map((node, index) => {
-      if (index < start-1 || index > end-1) {
-        node.classList.remove('line-highlighted');
-        node.setAttribute('part', 'line');
-      }
-      else {
-        node.classList.add('line-highlighted');
-        node.setAttribute('part', 'line line-highlighted');
+    Array.from(
+      this.shadowRoot.querySelector("code.hljs table tbody").children
+    ).map((node, index) => {
+      if (index < start - 1 || index > end - 1) {
+        node.classList.remove("line-highlighted");
+        node.setAttribute("part", "line");
+      } else {
+        node.classList.add("line-highlighted");
+        node.setAttribute("part", "line line-highlighted");
       }
     });
   }
@@ -487,7 +500,7 @@ if ($MrTheCheat) {
     const nodes = this.children;
     return [].filter.call(
       nodes,
-      (node) => node.nodeType === Node.ELEMENT_NODE 
+      (node) => node.nodeType === Node.ELEMENT_NODE
     )[0];
   }
   _applyHighlightjs(str) {
@@ -497,7 +510,7 @@ if ($MrTheCheat) {
     if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
       this.shadowRoot.querySelector("#code").appendChild(this._code);
       hljs.highlightBlock(this._code);
-      hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector('code'));
+      hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector("code"));
     }
   }
   _cleanIndentation(str) {

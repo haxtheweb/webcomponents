@@ -155,7 +155,16 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
         description: "A 3D file / augmented reality player.",
         icon: "av:play-circle-filled",
         color: "amber",
-        tags: ["3D", "augmented reality", "AR", "VR", "video", "aframe", "webxr", "webvr"],
+        tags: [
+          "3D",
+          "augmented reality",
+          "AR",
+          "VR",
+          "video",
+          "aframe",
+          "webxr",
+          "webvr",
+        ],
         handles: [
           {
             type: "3d",

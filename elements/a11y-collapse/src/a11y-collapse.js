@@ -192,7 +192,9 @@ class A11yCollapse extends LitElement {
         aria-live="polite"
       >
         <div id="content-inner">
-        ${this.expanded ? html`<slot name="content"></slot><slot></slot>`:``}
+          ${this.expanded
+            ? html`<slot name="content"></slot><slot></slot>`
+            : ``}
         </div>
       </div>
     `;
@@ -469,7 +471,11 @@ class A11yCollapse extends LitElement {
           this.expanded
         )}"
       >
-        <div id="text">${this.heading ? html`<p>${this.heading}</p>`: ``}<slot name="heading"></slot></div>
+        <div id="text">
+          ${this.heading ? html`<p>${this.heading}</p>` : ``}<slot
+            name="heading"
+          ></slot>
+        </div>
         <simple-icon-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
@@ -498,7 +504,11 @@ class A11yCollapse extends LitElement {
   _makeIconButton() {
     return html`
       <div id="heading">
-        <div id="text">${this.heading ? html`<p>${this.heading}</p>`: ``}<slot name="heading"></slot></div>
+        <div id="text">
+          ${this.heading ? html`<p>${this.heading}</p>` : ``}<slot
+            name="heading"
+          ></slot>
+        </div>
         <simple-icon-button-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"

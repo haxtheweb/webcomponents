@@ -7,7 +7,7 @@
     "description": "Displays a calendar date with details",
     "icon": "hax:calendar",
     "color": "green",
-    "tags": ["Other","date","place","location","evenet","calendar"],
+    "tags": ["Other", "date", "place", "location", "evenet", "calendar"],
     "handles": [],
     "meta": {
       "author": "McGarvelcuddy",

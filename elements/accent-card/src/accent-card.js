@@ -412,7 +412,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         description: "A card with optional accent styling.",
         icon: "chrome-reader-mode",
         color: "light-blue",
-        tags: ["Layout","content","card", "Image", "Presentation","style"],
+        tags: ["Layout", "content", "card", "Image", "Presentation", "style"],
         handles: [
           {
             type: "media",

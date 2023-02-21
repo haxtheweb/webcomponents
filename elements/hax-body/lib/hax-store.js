@@ -77,8 +77,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   testHook(el, op) {
     // support for primatives
-    if (el && el.tagName && this.HTMLPrimativeTest(el) && this.primativeHooks[el.tagName.toLowerCase()] && this.primativeHooks[el.tagName.toLowerCase()][op]) {
-     return true;
+    if (
+      el &&
+      el.tagName &&
+      this.HTMLPrimativeTest(el) &&
+      this.primativeHooks[el.tagName.toLowerCase()] &&
+      this.primativeHooks[el.tagName.toLowerCase()][op]
+    ) {
+      return true;
     }
     return el && typeof el.haxHooks === "function" && el.haxHooks()[op];
   }
@@ -947,7 +953,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     ) {
       let storageData = this.storageData;
       // ensure storageData is an object
-      if (typeof storageData === 'string') {
+      if (typeof storageData === "string") {
         storageData = JSON.parse(storageData);
       }
       storageData.globalPreferences = newValue;
@@ -1456,7 +1462,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
       // look for base64 like copy and paste of an image from clipboard
-      
+
       if (this.isBase64(originalContent)) {
         // stop normal paste
         e.preventDefault();
@@ -1767,8 +1773,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     activeEl,
                     siblingEl.nextElementSibling
                   );
-                }
-                else {
+                } else {
                   siblingEl.insertBefore(
                     activeEl,
                     siblingEl.nextElementSibling
@@ -2121,11 +2126,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic img tag",
         icon: "image:image",
         color: "blue-grey",
-        tags: ["Images", "media","img","html"],
+        tags: ["Images", "media", "img", "html"],
         handles: [
           {
             type: "link",
-            source: "src", 
+            source: "src",
           },
           {
             type: "image",
@@ -2204,7 +2209,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic figure tag",
         icon: "hax:figure",
         color: "blue-grey",
-        tags: ["Images", "media","figure","html"],
+        tags: ["Images", "media", "figure", "html"],
         requiresChildren: "figcaption",
         handles: [],
         meta: {
@@ -2239,7 +2244,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "Used inside of a figure tag",
         icon: "image:image",
         color: "blue-grey",
-        tags: ["Images", "media","caption","figure","html"],
+        tags: ["Images", "media", "caption", "figure", "html"],
         handles: [],
         requiresParent: "figure",
         meta: {
@@ -2279,11 +2284,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic a tag",
         icon: "icons:link",
         color: "blue-grey",
-        tags: ["Content","link","a","url","html","href","resource","address","http"],
+        tags: [
+          "Content",
+          "link",
+          "a",
+          "url",
+          "html",
+          "href",
+          "resource",
+          "address",
+          "http",
+        ],
         handles: [],
         meta: {
           author: "W3C",
-          hidden: true
+          hidden: true,
         },
       },
       settings: {
@@ -2370,7 +2385,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        tags: ["Content","p","paragraph","text","html"],
+        tags: ["Content", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -2401,8 +2416,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       type: "element",
       editingElement: {
         tag: "editable-table",
-        import:
-          "@lrnwebcomponents/editable-table/editable-table.js",
+        import: "@lrnwebcomponents/editable-table/editable-table.js",
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
@@ -2413,7 +2427,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A table for displaying data",
         icon: "image:grid-on",
         color: "blue-grey",
-        tags: ["Content", "table", "data", "html", "grid", "matrix", "spreadsheet", "csv", "excel"],
+        tags: [
+          "Content",
+          "table",
+          "data",
+          "html",
+          "grid",
+          "matrix",
+          "spreadsheet",
+          "csv",
+          "excel",
+        ],
         meta: {
           hidden: true,
           author: "W3C",
@@ -2426,15 +2450,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     };
     this.setHaxProperties(table, "table");
     // kinda silly but need the definitions for editable-table as well
-    let eTable = document.createElement('editable-table');
+    let eTable = document.createElement("editable-table");
     this.haxAutoloader.appendChild(eTable);
     // iframe needs a wrapper or you can't select them because of the spec
     let iframe = {
       type: "element",
       editingElement: {
         tag: "iframe-loader",
-        import:
-          "@lrnwebcomponents/iframe-loader/iframe-loader.js",
+        import: "@lrnwebcomponents/iframe-loader/iframe-loader.js",
         callback: this.setupIframeLoader.bind(this),
       },
       canScale: false,
@@ -2445,9 +2468,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic way to frame external web content",
         icon: "hax:iframe",
         color: "blue-grey",
-        tags: ["Content","iframe","content","url","link","embed","https","html","resource","address"],
-        handles: [
+        tags: [
+          "Content",
+          "iframe",
+          "content",
+          "url",
+          "link",
+          "embed",
+          "https",
+          "html",
+          "resource",
+          "address",
         ],
+        handles: [],
         meta: {
           hidden: true,
           author: "W3C",
@@ -2464,12 +2497,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             required: true,
             validationType: "url",
           },
-        ]
-      }
+        ],
+      },
     };
     this.setHaxProperties(iframe, "iframe");
     // gets the definition in by force as if iframes don't exist
-    let iframeLoader = document.createElement('iframe-loader');
+    let iframeLoader = document.createElement("iframe-loader");
     this.haxAutoloader.appendChild(iframeLoader);
     let prims = {
       caption: {
@@ -2596,11 +2629,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
     };
     for (let tag in prims) {
-      let primContentDemo = '';
-      if (tag == 'h2') {
+      let primContentDemo = "";
+      if (tag == "h2") {
         primContentDemo = "Heading";
-      }
-      else if (tag == 'ul' || tag == 'ol') {
+      } else if (tag == "ul" || tag == "ol") {
         primContentDemo = "<li>Item 1</li><li>Item 2</li>";
       }
       this.setHaxProperties(
@@ -2618,7 +2650,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             handles: prims[tag].handles || [],
             meta: {
               author: "HAXTheWeb core team",
-              inlineOnly: ["em","b","strong","i", "strike", "u", "sub", "sup", "span"].includes(tag) ? true : false,
+              inlineOnly: [
+                "em",
+                "b",
+                "strong",
+                "i",
+                "strike",
+                "u",
+                "sub",
+                "sup",
+                "span",
+              ].includes(tag)
+                ? true
+                : false,
               hidden: ["h2", "ul"].includes(tag) ? false : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
@@ -2698,7 +2742,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * set up the iframeLoader to behave as the node itself
    */
-   setupIframeLoader(editor) {
+  setupIframeLoader(editor) {
     this.activeNode = editor;
     // SHOULD set this itself but just to be sure
     setTimeout(() => {
@@ -2714,8 +2758,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let triggers = [];
         this.gizmoList.forEach((item) => {
           triggers.push({
-            tags:
-              item.tags && item.tags.length ? item.tags.join(" ") : "",
+            tags: item.tags && item.tags.length ? item.tags.join(" ") : "",
             icon: item.icon,
             label: item.title,
             value: item.tag,

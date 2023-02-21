@@ -141,7 +141,19 @@ class VideoPlayer extends IntersectionObserverMixin(
           "This can present video in a highly accessible manner regardless of source.",
         icon: "av:play-circle-filled",
         color: "red",
-        tags: ["Video", "Media", "youtube","watch","vimeo","mp4","webm","ogg","video-player","a11y","media-player"],
+        tags: [
+          "Video",
+          "Media",
+          "youtube",
+          "watch",
+          "vimeo",
+          "mp4",
+          "webm",
+          "ogg",
+          "video-player",
+          "a11y",
+          "media-player",
+        ],
         handles: [
           {
             type: "video",

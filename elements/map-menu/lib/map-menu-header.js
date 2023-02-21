@@ -34,11 +34,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
-          transition: background-color .3s ease;
+          transition: background-color 0.3s ease;
           background-color: transparent;
         }
         a button {
-          transition: all .1s ease;
+          transition: all 0.1s ease;
         }
         a:hover button,
         a:active button,
@@ -47,11 +47,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color, inherit)
           );
-          text-decoration: var(
-            --map-menu-header-a-text-decoration-hover,
-            none
+          text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
+          background-color: var(
+            --map-menu-item-a-active-background-color,
+            var(--simple-colors-default-theme-light-grey-2, #dddddd)
           );
-          background-color: var(--map-menu-item-a-active-background-color,var(--simple-colors-default-theme-light-grey-2, #dddddd));
         }
         lrndesign-avatar {
           display: inline-block;
@@ -208,7 +208,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.active = false;
     this.published = true;
     this.locked = false;
-    this.itemtitle = '';
+    this.itemtitle = "";
     this.t = {
       pageIsUnpublished: "Page is unpublished",
     };

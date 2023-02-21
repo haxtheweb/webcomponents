@@ -779,7 +779,11 @@ export const displayBehaviors = function (SuperClass) {
       let props = this.getTableProperties();
       let attr = "";
       Object.keys(this.getTableProperties()).forEach((i) => {
-        if (props[i] && (Object.keys(displayProperties).includes(i) || Object.keys(dataProperties).includes(i))) {
+        if (
+          props[i] &&
+          (Object.keys(displayProperties).includes(i) ||
+            Object.keys(dataProperties).includes(i))
+        ) {
           let kebabize = (str) => {
             return str
               .split("")
@@ -795,13 +799,19 @@ export const displayBehaviors = function (SuperClass) {
       });
       let response = [
         `<table ${attr}>`,
-        this.caption && this.caption !== "" && this.caption !== null && this.caption !== "null" && this.caption !== "undefined"
+        this.caption &&
+        this.caption !== "" &&
+        this.caption !== null &&
+        this.caption !== "null" &&
+        this.caption !== "undefined"
           ? `\n\t<caption${!addStyleClasses ? "" : ` class="caption"`}>\n\t\t${
               this.caption
             }\n\t</caption>`
           : "",
         headers.length > 0
-          ? `\n\t<thead${!addStyleClasses ? "" : ` class="thead"`}>${headers.join("")}\n\t</thead>`
+          ? `\n\t<thead${
+              !addStyleClasses ? "" : ` class="thead"`
+            }>${headers.join("")}\n\t</thead>`
           : "",
         body.length > 0
           ? `\n\t<tbody${!addStyleClasses ? "" : ` class="tbody"`}>${body.join(
@@ -817,9 +827,9 @@ export const displayBehaviors = function (SuperClass) {
       ].join("");
       // allow response as a DOM node
       if (asNode) {
-        let div = document.createElement('div');
+        let div = document.createElement("div");
         div.innerHTML = response;
-        return div.querySelector('table');
+        return div.querySelector("table");
       }
       return response;
     }

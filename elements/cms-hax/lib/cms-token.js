@@ -339,7 +339,7 @@ class CMSToken extends PolymerElement {
         description: "CMS token rendered on the backend",
         icon: "icons:code",
         color: "light-blue",
-        tags: ["Magic","elmsln","cms","block"],
+        tags: ["Magic", "elmsln", "cms", "block"],
         handles: [
           {
             type: "cmstoken",

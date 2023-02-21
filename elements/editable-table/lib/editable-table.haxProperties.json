@@ -9,7 +9,17 @@
     "description": "Table based data for the web",
     "icon": "editor:border-all",
     "color": "purple",
-    "tags": ["Content","presentation","table","data","layout","grid","csv","spreadsheet","excel"],
+    "tags": [
+      "Content",
+      "presentation",
+      "table",
+      "data",
+      "layout",
+      "grid",
+      "csv",
+      "spreadsheet",
+      "excel"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
@@ -110,12 +120,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "__utils",
-      "editMode",
-      "data",
-      "config"
-    ]
+    "unsetAttributes": ["__utils", "editMode", "data", "config"]
   },
   "demoSchema": [
     {

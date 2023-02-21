@@ -44,7 +44,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 --a11y-details-fontSize | font-size  | 0.8em
 --a11y-details-color | text color | #000
---a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
+--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)
 --a11y-details-borderColor | border-color | #000
 --a11y-details-borderWidth | border-width | 1px
 --a11y-details-borderStyle | border-style | solid
@@ -139,7 +139,15 @@ class A11yFigure extends A11yDetails {
         description: "Accessible figure with long description",
         icon: "hax:figure",
         color: "grey",
-        groups: ["images"],
+        tags: [
+          "content",
+          "figure",
+          "a11y",
+          "accessibility",
+          "image",
+          "caption",
+          "description",
+        ],
         handles: [
           {
             type: "image",

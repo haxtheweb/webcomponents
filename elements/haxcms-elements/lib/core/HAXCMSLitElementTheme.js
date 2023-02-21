@@ -9,9 +9,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import {
-  editableTableDisplayStyles
-} from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
+import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
 /**
  * LitElement Version of HAXCMSTheme
  */

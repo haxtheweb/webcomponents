@@ -9,7 +9,15 @@
     "description": "The user will be able to complete a self-check.",
     "icon": "icons:check-circle",
     "color": "orange",
-    "tags": ["Instructional","media","self check","pedagogy","quiz","question","image"],
+    "tags": [
+      "Instructional",
+      "media",
+      "self check",
+      "pedagogy",
+      "quiz",
+      "question",
+      "image"
+    ],
     "handles": [
       {
         "type": "image",

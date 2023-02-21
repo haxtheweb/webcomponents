@@ -48,7 +48,6 @@ class HaxAppBrowser extends LitElement {
         a11y-collapse::part(heading) {
           margin: 4px;
         }
-        
       `,
     ];
   }
@@ -78,39 +77,39 @@ class HaxAppBrowser extends LitElement {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
   render() {
-    return html`${this.categories.map((tag) => html`
-    
-      <a11y-collapse heading="${this.ucfirst(tag)}" heading-button>
-      <simple-button-grid
+    return html`${this.categories.map(
+        (tag) => html`
+          <a11y-collapse heading="${this.ucfirst(tag)}" heading-button>
+            <simple-button-grid
               class="${this.searching ? "collapse-hide" : ""}"
               always-expanded
               columns="2"
             >
               ${this.appList.map(
-                (app) => html`
-                ${app.details.tags.includes(tag) ? html`
-                  <hax-tray-button
-                    class="${this.searching ? "visibility-hidden" : ""}"
-                    show-text-label
-                    icon-position="top"
-                    index="${app.index}"
-                    label="${app.details.title}"
-                    icon="${app.details.icon}"
-                    color="${app.details.color}"
-                    event-name="search-selected"
-                    event-data="${app.index}"
-                  >
-                  </hax-tray-button>` : ``}`
+                (app) => html` ${app.details.tags.includes(tag)
+                  ? html` <hax-tray-button
+                      class="${this.searching ? "visibility-hidden" : ""}"
+                      show-text-label
+                      icon-position="top"
+                      index="${app.index}"
+                      label="${app.details.title}"
+                      icon="${app.details.icon}"
+                      color="${app.details.color}"
+                      event-name="search-selected"
+                      event-data="${app.index}"
+                    >
+                    </hax-tray-button>`
+                  : ``}`
               )}
             </simple-button-grid>
-      </a11y-collapse>
-`)}
+          </a11y-collapse>
+        `
+      )}
       <hax-app-search
         id="haxappsearch"
         class="${!this.searching ? "visibility-hidden" : ""}"
       ></hax-app-search>
-      <slot></slot>
-    `;
+      <slot></slot> `;
   }
   static get tag() {
     return "hax-app-browser";
@@ -148,8 +147,8 @@ class HaxAppBrowser extends LitElement {
         type: Array,
       },
       categories: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   updated(changedProperties) {

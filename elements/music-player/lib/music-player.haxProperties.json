@@ -7,7 +7,14 @@
     "description": "Play MIDI in context with visualization",
     "icon": "image:music-note",
     "color": "blue",
-    "tags": ["Audio", "music","midi","visualization","instructional","piano"],
+    "tags": [
+      "Audio",
+      "music",
+      "midi",
+      "visualization",
+      "instructional",
+      "piano"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -57,7 +57,7 @@
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2",
-    "@lrnwebcomponents/simple-img":"^4.1.0"
+    "@lrnwebcomponents/simple-img": "^4.1.0"
   },
   "private": false,
   "publishConfig": {

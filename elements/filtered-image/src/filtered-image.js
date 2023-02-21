@@ -59,7 +59,7 @@ class FilteredImage extends SimpleColors {
           "An image using an SVG filter. Can be used to make background images have more contrast with text.",
         icon: "icons:android",
         color: "green",
-        tags: ["Images", "svg","filter","style"],
+        tags: ["Images", "svg", "filter", "style"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

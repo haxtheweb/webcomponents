@@ -273,7 +273,19 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
         description: "Provide a license for you rwork",
         icon: "icons:copyright",
         color: "grey",
-        tags: ["Content", "copyright", "license","cc0","cc-by","cc-by-sa","cc-by-nd","cc-by-nc","cc-by-nc-sa","cc-by-nc-nd","citation"],
+        tags: [
+          "Content",
+          "copyright",
+          "license",
+          "cc0",
+          "cc-by",
+          "cc-by-sa",
+          "cc-by-nd",
+          "cc-by-nc",
+          "cc-by-nc-sa",
+          "cc-by-nc-nd",
+          "citation",
+        ],
         handles: [
           {
             type: "license",

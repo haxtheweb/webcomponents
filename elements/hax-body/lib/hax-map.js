@@ -127,10 +127,7 @@ class HaxMap extends I18NMixin(LitElement) {
         li.parent-h6 hax-toolbar-item[icon="hax:h6"],
         li.parent-h6 hax-toolbar-item,
         li.parent-h6 + li.is-child hax-toolbar-item,
-        li.parent-h6
-          + li.is-child
-          ~ li.is-child
-          hax-toolbar-item {
+        li.parent-h6 + li.is-child ~ li.is-child hax-toolbar-item {
           margin-left: 12px;
         }
       `,
@@ -332,14 +329,14 @@ class HaxMap extends I18NMixin(LitElement) {
                     ></simple-icon-button>
                     ${HAXStore.isTextElement(element.node) ||
                     element.tag == "grid-plate"
-                    ? html``
-                    : html`
-                        <simple-icon-button
-                          icon="image:transform"
-                          @click="${(e) => this.itemOp(index, "transform")}"
-                          title="Change to.."
-                        ></simple-icon-button>
-                      `}
+                      ? html``
+                      : html`
+                          <simple-icon-button
+                            icon="image:transform"
+                            @click="${(e) => this.itemOp(index, "transform")}"
+                            title="Change to.."
+                          ></simple-icon-button>
+                        `}
                     <simple-icon-button
                       icon="hax:keyboard-arrow-up"
                       @click="${(e) => this.itemOp(index, "up")}"
@@ -519,7 +516,7 @@ class HaxMap extends I18NMixin(LitElement) {
         type: String,
       },
       activeNode: {
-        type: Object
+        type: Object,
       },
     };
   }

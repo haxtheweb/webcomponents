@@ -101,7 +101,15 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         description: "A simple button with a link to take action.",
         icon: "image:crop-16-9",
         color: "orange",
-        groups: ["Marketing", "Content"],
+        tags: [
+          "Other",
+          "Marketing",
+          "Content",
+          "button",
+          "link",
+          "url",
+          "design",
+        ],
         handles: [
           {
             type: "link",

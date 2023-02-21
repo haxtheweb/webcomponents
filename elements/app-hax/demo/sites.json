@@ -60,8 +60,7 @@
           },
           "node": {
             "fields": {},
-            "dynamicElementLoader": {
-            }
+            "dynamicElementLoader": {}
           },
           "pageCount": 48
         },

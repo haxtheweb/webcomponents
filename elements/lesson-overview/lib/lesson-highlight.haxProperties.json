@@ -7,7 +7,14 @@
     "description": "Quick overview of a thing",
     "icon": "communication:business",
     "color": "blue",
-    "tags": ["Magic","instructional","layout","highlight","summary","overview"],
+    "tags": [
+      "Magic",
+      "instructional",
+      "layout",
+      "highlight",
+      "summary",
+      "overview"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

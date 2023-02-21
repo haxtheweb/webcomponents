@@ -7,7 +7,16 @@
     "description": "Make animated GIFs accessible.",
     "icon": "gif",
     "color": "grey",
-    "tags": ["Images","player","gif","media","a11y","accessibility","animation","image"],
+    "tags": [
+      "Images",
+      "player",
+      "gif",
+      "media",
+      "a11y",
+      "accessibility",
+      "animation",
+      "image"
+    ],
     "handles": [
       {
         "type": "gif",

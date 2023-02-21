@@ -7,7 +7,15 @@
     "description": "Simple element to allow one image to swipe over top of the other.",
     "icon": "image:compare",
     "color": "orange",
-    "tags": ["Images", "media", "comparison","slider","swipe","compare", "instructional"],
+    "tags": [
+      "Images",
+      "media",
+      "comparison",
+      "slider",
+      "swipe",
+      "compare",
+      "instructional"
+    ],
     "handles": [
       {
         "type": "image",

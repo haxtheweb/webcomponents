@@ -236,10 +236,11 @@ class I18NManager extends HTMLElement {
       // get all exact matches as well as partial matches
       const processList = this.elements.filter((el) => {
         try {
-          return el.locales.includes(lang) || el.locales.includes(langPieces[0]);
-        }
-        catch(e) {
-          console.error('i18n registration incorrect in:', el, e);
+          return (
+            el.locales.includes(lang) || el.locales.includes(langPieces[0])
+          );
+        } catch (e) {
+          console.error("i18n registration incorrect in:", el, e);
         }
       });
       const fallBack = this.elements.filter((el) => {

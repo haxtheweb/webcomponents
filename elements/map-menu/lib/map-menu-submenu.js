@@ -78,7 +78,11 @@ class MapMenuSubmenu extends LitElement {
    */
   render() {
     return html`
-      <a11y-collapse id="container" ?expanded="${this.opened}" @a11y-collapse-click="${this.__alignCollapseState}">
+      <a11y-collapse
+        id="container"
+        ?expanded="${this.opened}"
+        @a11y-collapse-click="${this.__alignCollapseState}"
+      >
         <map-menu-header
           .avatar-label="${this.avatarLabel}"
           id="${this.id}"
@@ -127,7 +131,7 @@ class MapMenuSubmenu extends LitElement {
       },
       opened: {
         type: Boolean,
-        attribute: 'opened',
+        attribute: "opened",
         reflect: true,
       },
       collapsable: {

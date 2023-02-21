@@ -75,7 +75,7 @@ class FileSystemBroker extends HTMLElement {
         };
         break;
       case "zip":
-        accept = { "application/zip": [".zip", ".gz", ".tar", ".tar.gz"]};
+        accept = { "application/zip": [".zip", ".gz", ".tar", ".tar.gz"] };
         break;
       case "csv":
         accept = { "text/*": [".csv", ".txt"] };

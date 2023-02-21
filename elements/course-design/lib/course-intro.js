@@ -46,7 +46,9 @@ export class CourseIntro extends LitElement {
           <slot name="outline-title"></slot>
         </div>
       </course-intro-header>
-      <course-intro-lesson-plans part="course-intro-lesson-plans"></course-intro-lesson-plans>
+      <course-intro-lesson-plans
+        part="course-intro-lesson-plans"
+      ></course-intro-lesson-plans>
       <course-intro-footer part="course-intro-footer">
         <div slot="footer-left">
           <slot name="footer-left"></slot>

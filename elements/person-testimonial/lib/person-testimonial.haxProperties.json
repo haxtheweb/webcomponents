@@ -7,7 +7,16 @@
     "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
-    "tags": ["Content", "presentation", "layout", "blockquote", "quote", "testimonial","person","image"],
+    "tags": [
+      "Content",
+      "presentation",
+      "layout",
+      "blockquote",
+      "quote",
+      "testimonial",
+      "person",
+      "image"
+    ],
     "handles": [
       {
         "type": "image",
@@ -58,8 +67,7 @@
         "icon": "icons:work"
       }
     ],
-    "advanced": [
-    ]
+    "advanced": []
   },
   "demoSchema": [
     {

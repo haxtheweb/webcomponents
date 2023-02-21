@@ -353,7 +353,16 @@ class LrndesignTimeline extends SimpleColors {
         description: "A timeline of events with images and text",
         icon: "hax:timeline",
         color: "indigo",
-        tags: ["Instructional", "content", "Media","timeline", "time", "event", "image", "text"],
+        tags: [
+          "Instructional",
+          "content",
+          "Media",
+          "timeline",
+          "time",
+          "event",
+          "image",
+          "text",
+        ],
         handles: [
           {
             type: "image",

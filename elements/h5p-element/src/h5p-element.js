@@ -54,7 +54,7 @@ class H5PElement extends LitElement {
         description: "h5p wrapper for loading and presenting .h5p files",
         icon: "icons:android",
         color: "green",
-        tags: ["Other","Interactive","instructional","media"],
+        tags: ["Other", "Interactive", "instructional", "media"],
         meta: {
           author: "HAXTheWeb",
           owner: "The Pennsylvania State University",

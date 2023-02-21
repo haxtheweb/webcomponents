@@ -11,7 +11,18 @@
     "description": "Multiple choice self check",
     "icon": "hax:multiple-choice",
     "color": "purple",
-    "tags": ["Instructional", "quiz","form","multiple","self check","test","exam","question","answer","feedback"],
+    "tags": [
+      "Instructional",
+      "quiz",
+      "form",
+      "multiple",
+      "self check",
+      "test",
+      "exam",
+      "question",
+      "answer",
+      "feedback"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -104,12 +115,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "__utils",
-      "displayed-answers",
-      "colors",
-      "answers"
-    ]
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
   },
   "demoSchema": [
     {

@@ -41,7 +41,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         button {
           display: flex;
           cursor: pointer;
-          transition: color,outline .2s ease;
+          transition: color, outline 0.2s ease;
           outline: 2px transparent;
           min-width: unset;
           background-color: var(
@@ -74,7 +74,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         simple-icon-lite {
           display: block;
           font-size: 16px;
-          transition: .2s color ease;
+          transition: 0.2s color ease;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
           color: var(--site-menu-button-icon-fill-color, black);

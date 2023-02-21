@@ -29,8 +29,7 @@
         }
       }
     ],
-    "advanced": [
-    ]
+    "advanced": []
   },
   "saveOptions": {
     "unsetAttributes": ["expanded"]

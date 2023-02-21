@@ -98,7 +98,15 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
         description: "Flip the card over to learn the term",
         icon: "av:play-circle-filled",
         color: "grey",
-        tags: ["Instructional","pedagogy","media","learning","card","flash", "Interactive"],
+        tags: [
+          "Instructional",
+          "pedagogy",
+          "media",
+          "learning",
+          "card",
+          "flash",
+          "Interactive",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

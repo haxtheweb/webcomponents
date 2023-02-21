@@ -112,7 +112,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   constructor() {
     super();
-    this.shadowRootOptions = {...LitElement.shadowRootOptions, delegatesFocus: true};
+    this.shadowRootOptions = {
+      ...LitElement.shadowRootOptions,
+      delegatesFocus: true,
+    };
     this.randomize = false;
     this.hideButtons = false;
     this.disabled = false;
@@ -161,22 +164,22 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         <h3><span property="oer:name">${this.question}</span></h3>
         ${this.singleOption
           ? html`
-          <fieldset id="answers">
-              ${this.displayedAnswers.map(
-                (answer, index) => html`
-                  <simple-fields-field
-                    ?disabled="${this.disabled}"
-                    property="oer:answer"
-                    type="radio"
-                    name="${index}"
-                    .value="${answer.userGuess}"
-                    @click="${this.clickSingle}"
-                    @value-changed="${this.checkedEvent}"
-                    label="${answer.label ? answer.label : ""}"
-                  ></simple-fields-field>
-                `
-              )}
-            </fieldset>
+              <fieldset id="answers">
+                ${this.displayedAnswers.map(
+                  (answer, index) => html`
+                    <simple-fields-field
+                      ?disabled="${this.disabled}"
+                      property="oer:answer"
+                      type="radio"
+                      name="${index}"
+                      .value="${answer.userGuess}"
+                      @click="${this.clickSingle}"
+                      @value-changed="${this.checkedEvent}"
+                      label="${answer.label ? answer.label : ""}"
+                    ></simple-fields-field>
+                  `
+                )}
+              </fieldset>
             `
           : html`
               <ul>
@@ -222,7 +225,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   clickSingle(e) {
     if (this.singleOption) {
-      this.displayedAnswers.forEach((el,i) => {
+      this.displayedAnswers.forEach((el, i) => {
         this.displayedAnswers[i].userGuess = false;
       });
     }
@@ -405,10 +408,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     // support for haxcms toast
     if (window.HAXCMSToast) {
       toastShowEventName = "haxcms-toast-show";
-      si.style.setProperty('--simple-icon-height', '40px');
-      si.style.setProperty('--simple-icon-width', '40px');
-      si.style.height = '150px';
-      si.style.marginLeft = '8px';
+      si.style.setProperty("--simple-icon-height", "40px");
+      si.style.setProperty("--simple-icon-width", "40px");
+      si.style.height = "150px";
+      si.style.marginLeft = "8px";
     }
     let gotRight = this.checkAnswers();
     // see if they got this correct based on their answers
@@ -433,8 +436,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     si.style.marginLeft = "16px";
     si.accentColor = this.__toastColor;
     si.dark = true;
-     // gets it all the way to the top immediately
-     window.dispatchEvent(
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
       new CustomEvent(toastShowEventName, {
         bubbles: true,
         composed: true,
@@ -444,7 +447,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           accentColor: this.__toastColor,
           duration: 3000,
           slot: si,
-          ...extras
+          ...extras,
         },
       })
     );

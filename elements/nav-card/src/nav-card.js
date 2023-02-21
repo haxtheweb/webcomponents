@@ -73,7 +73,7 @@ class NavCard extends AccentCard {
         description: "an accent card of link lists",
         icon: "av:playlist-play",
         color: "pink",
-        tags: ["Content","card", "Nav", "List"],
+        tags: ["Content", "card", "Nav", "List"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

@@ -258,7 +258,10 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           padding: 0;
           height: calc(100vh - 98px);
           --site-menu-active-color: #ffffff;
-          --site-menu-item-active-item-color: goldenrod;
+          --site-menu-item-active-item-color: var(
+            --simple-colors-default-theme-light-blue-1,
+            rgba(100, 100, 255, 0.1)
+          );
           overflow: auto;
         }
 

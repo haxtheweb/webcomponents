@@ -70,7 +70,7 @@ class MicroCopyHeading extends LitElement {
           "small call to action / attention that acts as a heading too",
         icon: "icons:android",
         color: "green",
-        tags: ["Content","heading","call to action","micro copy"],
+        tags: ["Content", "heading", "call to action", "micro copy"],
         handles: [],
         meta: {
           author: "HAXTheWeb",

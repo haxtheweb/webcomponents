@@ -231,7 +231,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             action
             align-horizontal="left"
-            ?disabled="${this.viewSource || this.disableOps || ((!this.layoutParent || this.activeNode !== this.layoutElement) && !this.layoutElement)}"
+            ?disabled="${
+              this.viewSource ||
+              this.disableOps ||
+              ((!this.layoutParent || this.activeNode !== this.layoutElement) &&
+                !this.layoutElement)
+            }"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >
@@ -423,9 +428,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
             event-name="hax-plate-remove-right"
-            ?hidden="${
-              !this.activeNode
-            }"
+            ?hidden="${!this.activeNode}"
             id="rightremove"
             data-simple-tour-stop
             data-stop-title="label"
@@ -506,7 +509,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get disableTransform() {
-    return HAXStore.isTextElement(this.activeNode);// || !this.filteredBlocks || this.filteredBlocks.length < 1;
+    return HAXStore.isTextElement(this.activeNode); // || !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
   /**
@@ -611,7 +614,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       // if active, and we are editing, then make suree plate ops match expectation
       if (this.activeNode && toJS(HAXStore.editMode)) {
         setTimeout(() => {
-          this.__updatePlatePosition(this.activeNode);          
+          this.__updatePlatePosition(this.activeNode);
         }, 0);
       }
     });
@@ -671,7 +674,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
-/*
+      /*
 // this is a performance bottle neck just for disabling a button that is not often clicked
       if (this.activeNode) {
         // detect if this can be transformed into anything else

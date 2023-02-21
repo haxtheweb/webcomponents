@@ -22,7 +22,7 @@ class MapMenu extends LitElement {
     return [
       css`
         :host {
-          --map-menu-item-active-item-color: rgba(100,100,255,.1);
+          --map-menu-item-active-item-color: rgba(100, 100, 255, 0.1);
           --map-menu-size: 1;
           display: block;
           overflow-y: scroll;
@@ -46,35 +46,76 @@ class MapMenu extends LitElement {
           width: calc(100% + 16px);
           margin-left: -16px;
         }
-        
+
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid var(--map-menu-expanded-color-depth-1,rgba(0,0,0,.1));
+          border-left: 16px solid
+            var(--map-menu-expanded-color-depth-1, rgba(0, 0, 0, 0.1));
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid var(--map-menu-expanded-color-depth-2,rgba(0,0,0,.15));
+          border-left: 16px solid
+            var(--map-menu-expanded-color-depth-2, rgba(0, 0, 0, 0.15));
         }
-        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-item,
-        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid var(--map-menu-expanded-color-depth-3,rgba(0,0,0,.2));
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-item,
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
+          border-left: 16px solid
+            var(--map-menu-expanded-color-depth-3, rgba(0, 0, 0, 0.2));
         }
-        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-item,
-        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          border-left: 16px solid var(--map-menu-expanded-color-depth-4,rgba(0,0,0,.25));
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-item,
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
+          border-left: 16px solid
+            var(--map-menu-expanded-color-depth-4, rgba(0, 0, 0, 0.25));
         }
 
         map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(--map-menu-expanded-color-depth-1,rgba(0,0,0,.1));
+          --map-menu-border-depth: var(
+            --map-menu-expanded-color-depth-1,
+            rgba(0, 0, 0, 0.1)
+          );
         }
         map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(--map-menu-expanded-color-depth-2,rgba(0,0,0,.15));
+          --map-menu-border-depth: var(
+            --map-menu-expanded-color-depth-2,
+            rgba(0, 0, 0, 0.15)
+          );
         }
-        map-menu-builder map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(--map-menu-expanded-color-depth-3,rgba(0,0,0,.2));
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu[opened] {
+          --map-menu-border-depth: var(
+            --map-menu-expanded-color-depth-3,
+            rgba(0, 0, 0, 0.2)
+          );
         }
-        map-menu-builder map-menu-builder map-menu-builder map-menu-builder map-menu-submenu[opened] {
-          --map-menu-border-depth: var(--map-menu-expanded-color-depth-4,rgba(0,0,0,.25));
+        map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu[opened] {
+          --map-menu-border-depth: var(
+            --map-menu-expanded-color-depth-4,
+            rgba(0, 0, 0, 0.25)
+          );
         }
 
         map-menu-container {
@@ -450,10 +491,7 @@ class MapMenu extends LitElement {
       const top = element.offsetTop;
       // if the element is hidden the set the indicator height to zero to make it disapear
       const height = !hidden ? element.offsetHeight : 0;
-      activeindicator.setAttribute(
-        "style",
-        `height:${height}px;top:${top}px;`
-      );
+      activeindicator.setAttribute("style", `height:${height}px;top:${top}px;`);
     }, 200);
   }
   /**

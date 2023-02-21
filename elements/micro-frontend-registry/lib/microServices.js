@@ -299,7 +299,7 @@ export function enableHAXcmsServices() {
     title: "HAXcms manifest",
     description: "Load the manifest for a site based on URL",
     params: {
-      site: "location of the HAXcms site OR site.json data"
+      site: "location of the HAXcms site OR site.json data",
     },
   });
 

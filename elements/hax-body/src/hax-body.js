@@ -187,7 +187,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           margin-bottom: 6px;
         }
         :host([edit-mode][tray-status="full-panel"]) {
-          opacity: .2;
+          opacity: 0.2;
           pointer-events: none;
         }
         :host {
@@ -236,7 +236,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           display: flex;
         }
         /* this helps ensure editable-table doesn't try internal text editor; all others should */
-        :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]:not(editable-table)) {
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[contenteditable]:not(editable-table)) {
           -webkit-appearance: textfield;
           cursor: text;
           -moz-user-select: text;
@@ -300,12 +302,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             var(--hax-base-styles-p-font-size)
           );
         }
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted([data-hax-active]),
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(*.hax-hovered) {
+        :host([edit-mode]) #bodycontainer ::slotted([data-hax-active]),
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
           outline-offset: 8px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
@@ -351,17 +349,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ::slotted([data-hax-active]) {
           margin-bottom: 30px;
         }
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted([data-hax-active]:hover) {
+        :host([edit-mode]) #bodycontainer ::slotted([data-hax-active]:hover) {
           cursor: text !important;
           caret-color: var(--hax-ui-caret-color, auto);
           outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not([data-hax-layout])
-          [data-hax-active]:hover) {
+          ::slotted(*:not([data-hax-layout]) [data-hax-active]:hover) {
           cursor: text !important;
           caret-color: var(--hax-ui-caret-color, auto);
           outline: var(--hax-body-active-outline-hover);
@@ -550,7 +545,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
       if (this.activeNode && this.activeNode.setAttribute) {
-        this.activeNode.setAttribute('data-hax-active','data-hax-active');
+        this.activeNode.setAttribute("data-hax-active", "data-hax-active");
       }
     });
     autorun(() => {
@@ -662,13 +657,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (target.tagName !== "HAX-BODY" && (!target.haxUIElement || target.tagName === "EDITABLE-TABLE")) {
+      } else if (
+        target.tagName !== "HAX-BODY" &&
+        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE")
+      ) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
       // block haxUIElements, except for editable-table as it's a unique tag
       // bc it's repairing that table is not natively editable
-      if ((!target.haxUIElement || target.tagName === "EDITABLE-TABLE" ) && this.__focusLogic(target)) {
+      if (
+        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE") &&
+        this.__focusLogic(target)
+      ) {
         e.stopPropagation();
         e.stopImmediatePropagation();
       }
@@ -1076,7 +1077,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "Backspace":
             case "Delete":
               this.__delHit = true;
-              this.querySelectorAll("[data-hax-active]").forEach((el) => el.classList.remove);
+              this.querySelectorAll("[data-hax-active]").forEach(
+                (el) => el.classList.remove
+              );
               setTimeout(() => {
                 const tmp = HAXStore.getSelection();
                 HAXStore._tmpSelection = tmp;
@@ -1117,7 +1120,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "ArrowDown":
             case "ArrowLeft":
             case "ArrowRight":
-              this.querySelectorAll("[data-hax-active]").forEach((el) => el.classList.remove);
+              this.querySelectorAll("[data-hax-active]").forEach(
+                (el) => el.classList.remove
+              );
               setTimeout(() => {
                 const tmp = HAXStore.getSelection();
                 HAXStore._tmpSelection = tmp;
@@ -1922,7 +1927,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   async haxGridPlateOps(add = true, side = "right", node = this.activeNode) {
     // by design, we will prevent grid nesting because it's... ridiculous
-    if (node.tagName !== 'GRID-PLATE' && node.parentNode.tagName === 'GRID-PLATE') {
+    if (
+      node.tagName !== "GRID-PLATE" &&
+      node.parentNode.tagName === "GRID-PLATE"
+    ) {
       node = node.parentNode;
     }
     // allow splitting the grid plate that is already there
@@ -2388,8 +2396,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             oldSchema = HAXStore.haxSchemaFromTag(
               this.activeNode.tagName.toLowerCase()
             );
-          }
-          else if (this.activeNode.parentElement && this.activeNode.parentElement.tagName) {
+          } else if (
+            this.activeNode.parentElement &&
+            this.activeNode.parentElement.tagName
+          ) {
             oldSchema = HAXStore.haxSchemaFromTag(
               this.activeNode.parentElement.tagName.toLowerCase()
             );
@@ -2569,7 +2579,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
       case "hide-context-menus":
         this.hideContextMenus();
-      break;
+        break;
     }
   }
 
@@ -2611,7 +2621,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       else if (
         containerNode.tagName === "LI" &&
         HAXStore.isTextElement(containerNode.parentNode) &&
-        ["UL","OL"].includes(containerNode.parentNode.tagName)
+        ["UL", "OL"].includes(containerNode.parentNode.tagName)
       ) {
         containerNode = target.parentNode;
       }
@@ -2676,7 +2686,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         // test for ignore edge case
         if (
-          (!activeNode.haxUIElement || activeNode.tagName === "EDITABLE-TABLE") &&
+          (!activeNode.haxUIElement ||
+            activeNode.tagName === "EDITABLE-TABLE") &&
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
@@ -2762,17 +2773,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
         // attributes and what not
-        if (this.children && this.children[0] && this.children[0].focus && this.children[0].tagName) {
+        if (
+          this.children &&
+          this.children[0] &&
+          this.children[0].focus &&
+          this.children[0].tagName
+        ) {
           // special support for page break to NOT focus it initially if we have another child
-          if (this.children[0].tagName === "PAGE-BREAK" && this.children[1] && this.children[1].focus) {
+          if (
+            this.children[0].tagName === "PAGE-BREAK" &&
+            this.children[1] &&
+            this.children[1].focus
+          ) {
             this.__focusLogic(this.children[1]);
           }
           // implies we don't have another child to focus and the one we do is a page break
           // this would leave UX at an empty page so inject a p like the blank state
           else if (this.children[0].tagName === "PAGE-BREAK") {
             this.haxInsert("p", "", {});
-          }
-          else {
+          } else {
             this.__focusLogic(this.children[0]);
           }
         } else {
@@ -2817,7 +2836,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.removeAttribute("contenteditable");
       this.hideContextMenus();
       // clean up for nested items we might miss
-      let activeKids = this.querySelectorAll("[contenteditable],[data-hax-active]");
+      let activeKids = this.querySelectorAll(
+        "[contenteditable],[data-hax-active]"
+      );
       for (var i = 0; i < activeKids.length; i++) {
         let el = activeKids[i];
         el.removeAttribute("contenteditable");
@@ -3026,7 +3047,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   // special support for Header tags showing up w.o. identifiers
                   // this way it's easier to anchor to them in the future
                   if (
-                    ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName) &&
+                    ["H1", "H2", "H3", "H4", "H5", "H6"].includes(
+                      node.tagName
+                    ) &&
                     node.getAttribute("id") == null
                   ) {
                     node.setAttribute("id", generateResourceID("header-"));
@@ -3041,8 +3064,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     mutFind = true;
                     if (node.tagName === "LI" && node.parentNode) {
                       HAXStore.activeNode = node.parentNode;
-                    }
-                    else if (node.tagName === "BR") {
+                    } else if (node.tagName === "BR") {
                       const tmp = HAXStore.getSelection();
                       HAXStore._tmpSelection = tmp;
                       HAXStore.haxSelectedText = tmp.toString();
@@ -3056,11 +3078,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                       ) {
                         HAXStore.activeNode = this.activeNode.parentNode;
                       }
-                    }
-                    else {
+                    } else {
                       HAXStore.activeNode = node;
                     }
-                    HAXStore.activeNode.setAttribute('data-hax-active', 'data-hax-active');
+                    HAXStore.activeNode.setAttribute(
+                      "data-hax-active",
+                      "data-hax-active"
+                    );
                   } else {
                     this.___moveLock = false;
                   }
@@ -3130,13 +3154,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         childList: true,
         subtree: true,
       });
-    }
-    else {
+    } else {
       window.removeEventListener(
         "hax-toggle-active-node-lock",
         this._toggleNodeLocking.bind(this)
       );
-      window.removeEventListener("click", this.scrollerFixclickEvent.bind(this));
+      window.removeEventListener(
+        "click",
+        this.scrollerFixclickEvent.bind(this)
+      );
       window.removeEventListener("blur", this.blurEvent.bind(this));
       window.removeEventListener("keydown", this._onKeyDown.bind(this));
       document.body.removeEventListener(

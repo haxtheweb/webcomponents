@@ -50,7 +50,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
         a button {
-          transition: all .1s ease;
+          transition: all 0.1s ease;
         }
         a:hover button,
         a:active button,
@@ -59,11 +59,11 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color, inherit)
           );
-          text-decoration: var(
-            --map-menu-header-a-text-decoration-hover,
-            none
+          text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
+          background-color: var(
+            --map-menu-item-a-active-background-color,
+            var(--simple-colors-default-theme-light-grey-2, #dddddd)
           );
-          background-color: var(--map-menu-item-a-active-background-color,var(--simple-colors-default-theme-light-grey-2, #dddddd));
         }
         button {
           cursor: pointer;
@@ -116,7 +116,6 @@ class MapMenuItem extends I18NMixin(LitElement) {
         }
         .no-icon {
           display: inline-flex;
-
         }
       `,
     ];

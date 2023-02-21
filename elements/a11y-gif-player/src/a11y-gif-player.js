@@ -274,29 +274,35 @@ class A11yGifPlayer extends I18NMixin(
         // support for automatic web service scrape of the gif for a still image
         if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
           // import registry
-          import("@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js").then(() => {
+          import(
+            "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js"
+          ).then(() => {
             this._automaticStill = true;
             this.srcWithoutAnimation = this.generateStill(this.src);
-          })
+          });
         }
       }
       // support src changing after the fact, we are visible, and set to automatic generation
-      if (this.shadowRoot && propName === "src" && this[propName] && this.elementVisible && this._automaticStill) {
+      if (
+        this.shadowRoot &&
+        propName === "src" &&
+        this[propName] &&
+        this.elementVisible &&
+        this._automaticStill
+      ) {
         this.srcWithoutAnimation = this.generateStill(this.src);
       }
     });
   }
   generateStill(src) {
     // enable core services, though should be available
-    const MicroFrontendRegistry = window.MicroFrontendRegistry.requestAvailability();
-    MicroFrontendRegistry.enableServices(['core']);
-    return MicroFrontendRegistry.url(
-      "@core/imgManipulate",
-      {
-        quality: 50,
-        src: src
-      }
-    );
+    const MicroFrontendRegistry =
+      window.MicroFrontendRegistry.requestAvailability();
+    MicroFrontendRegistry.enableServices(["core"]);
+    return MicroFrontendRegistry.url("@core/imgManipulate", {
+      quality: 50,
+      src: src,
+    });
   }
   /**
    * mutation observer for a11y-details

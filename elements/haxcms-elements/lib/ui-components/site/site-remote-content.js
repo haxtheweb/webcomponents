@@ -2,20 +2,24 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
- import { LitElement, html, css } from "lit";
- import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
- import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
- import { wipeSlot, lightChildrenToShadowRootSelector, unwrap } from "@lrnwebcomponents/utils/utils.js";
- import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
- import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
- import "@lrnwebcomponents/citation-element/citation-element.js";
- enableServices(['haxcms']);
- /**
-  * `site-remote-content`
-  * `Remote render of content given a site URL and UUID`
-  *
-  * @demo demo/index.html
-  */
+import { LitElement, html, css } from "lit";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
+import {
+  wipeSlot,
+  lightChildrenToShadowRootSelector,
+  unwrap,
+} from "@lrnwebcomponents/utils/utils.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import "@lrnwebcomponents/citation-element/citation-element.js";
+enableServices(["haxcms"]);
+/**
+ * `site-remote-content`
+ * `Remote render of content given a site URL and UUID`
+ *
+ * @demo demo/index.html
+ */
 class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   static get styles() {
     return [
@@ -27,7 +31,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           display: none;
         }
         :host #content {
-          border-left: 10px solid #EEEEEE;
+          border-left: 10px solid #eeeeee;
           margin-left: -10px;
         }
         :host([breakreference]) #slot {
@@ -221,8 +225,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     ];
   }
   /**
-  * Store the tag name to make it easier to obtain directly.
-  */
+   * Store the tag name to make it easier to obtain directly.
+   */
   static get tag() {
     return "site-remote-content";
   }
@@ -232,19 +236,19 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     this.itemManifest = {};
     this.loading = false;
     this.uuid = null;
-    this.siteurl = '';
+    this.siteurl = "";
     this.showTitle = false;
     this.breakreference = false;
     this._remoteTitle = null;
     this.t = {
-      selectPage: "Select page"
+      selectPage: "Select page",
     };
     let pNode = this;
     let pCounter = 0;
     // ensure we don't have too deep a reference to avoid infinite remotes
     while (pNode && pNode.tagName) {
       pNode = pNode.parentNode;
-      if (pNode && pNode.tagName && pNode.tagName === 'SITE-REMOTE-CONTENT') {
+      if (pNode && pNode.tagName && pNode.tagName === "SITE-REMOTE-CONTENT") {
         pCounter++;
         if (pCounter >= 3) {
           this.circularBlock = true;
@@ -253,14 +257,16 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     }
   }
   /**
-  * LitElement
-  */
+   * LitElement
+   */
   render() {
     return html`
-    <div class="loading"></div>
-    ${this.showTitle && this._remoteTitle ? html`<h3>${this._remoteTitle}</h3>` : ``}
-    <div id="slot"><slot></slot></div>
-    <div id="content"></div>
+      <div class="loading"></div>
+      ${this.showTitle && this._remoteTitle
+        ? html`<h3>${this._remoteTitle}</h3>`
+        : ``}
+      <div id="slot"><slot></slot></div>
+      <div id="content"></div>
     `;
   }
   updated(changedProperties) {
@@ -268,10 +274,16 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'uuid' && this[propName] && !this.breakreference && !this.loading && !this.circularBlock) {
+      if (
+        propName === "uuid" &&
+        this[propName] &&
+        !this.breakreference &&
+        !this.loading &&
+        !this.circularBlock
+      ) {
         this.loading = true;
         let url = this.siteurl;
-        if (url == '' && window.HAXCMS && window.location) {
+        if (url == "" && window.HAXCMS && window.location) {
           url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
         }
         // when UUID changes, remote load the content from it, replacing our own light dom material
@@ -281,13 +293,18 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             site: url,
             type: "link",
             uuid: this.uuid,
-            data: true
+            data: true,
           },
           this.renderContentResponse.bind(this)
         );
       }
       // aggressive, only run this if we actually are an author of material / have HAX tools
-      if (propName === 'siteurl' && window.HaxStore && !this.loading && !this.circularBlock) {
+      if (
+        propName === "siteurl" &&
+        window.HaxStore &&
+        !this.loading &&
+        !this.circularBlock
+      ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
           this.loading = true;
@@ -298,9 +315,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       }
       // this is crazy, take that content and spill it into lightDom
       // and it should be modifiable
-      if (propName === 'breakreference' && this[propName]) {
+      if (propName === "breakreference" && this[propName]) {
         // find the content area in shadow
-        const cid = this.shadowRoot.querySelector('#content');
+        const cid = this.shadowRoot.querySelector("#content");
         let child = cid.firstElementChild;
         while (child) {
           this.appendChild(child);
@@ -308,11 +325,16 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         }
       }
       // used to be break reference, now we as re-establishing the reference
-      else if (propName === 'breakreference' && !this[propName] && oldValue && !this.circularBlock) {
+      else if (
+        propName === "breakreference" &&
+        !this[propName] &&
+        oldValue &&
+        !this.circularBlock
+      ) {
         this.loading = true;
         wipeSlot(this);
         let url = this.siteurl;
-        if (url == '' && window.HAXCMS && window.location) {
+        if (url == "" && window.HAXCMS && window.location) {
           url = `${window.location.origin}${window.HAXCMS.instance.store.location.baseUrl}`;
         }
         MicroFrontendRegistry.call(
@@ -321,7 +343,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             site: url,
             type: "link",
             uuid: this.uuid,
-            data: true
+            data: true,
           },
           this.renderContentResponse.bind(this)
         );
@@ -337,13 +359,16 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
         window.HaxStore.instance.activeBodyIgnoreActive(true);
       }
       // find the content area in shadow
-      const cid = this.shadowRoot.querySelector('#content');
+      const cid = this.shadowRoot.querySelector("#content");
       // remove past stuff
       wipeSlot(cid);
       // build fake div and encap the content from endpoint
-      let div = document.createElement('div');
+      let div = document.createElement("div");
       // encap script just to be paranoid
-      let html = response.data.content.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+      let html = response.data.content.replace(
+        /<script[\s\S]*?>/gi,
+        "&lt;script&gt;"
+      );
       html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
       div.innerHTML = html;
       // append as child of this element
@@ -359,27 +384,34 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       // if we don't break the reference, the childNodes are moved
       // into the shadow selector for content so they can't be modified
       if (!this.breakreference) {
-        lightChildrenToShadowRootSelector(this, '#content');
+        lightChildrenToShadowRootSelector(this, "#content");
       }
       if (this.itemManifest && response.data && !this.breakreference) {
         window.HaxStore.instance.activeBodyIgnoreActive(false);
         var today = new Date();
         var dd = today.getDate();
-        var mm = today.getMonth()+1; 
+        var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
         // create and inject these values into the dom node NEXT to this one.
-        if (!this.nextElementSibling || (this.nextElementSibling && this.nextElementSibling.tagName !== 'CITATION-ELEMENT')) {
-          let ce = document.createElement('citation-element');
+        if (
+          !this.nextElementSibling ||
+          (this.nextElementSibling &&
+            this.nextElementSibling.tagName !== "CITATION-ELEMENT")
+        ) {
+          let ce = document.createElement("citation-element");
           ce.title = `${this.itemManifest.title} - ${response.data.title}`;
           ce.source = `${response.data.site}${response.data.slug}`;
           ce.date = `${dd}/${mm}/${yyyy}`;
           ce.scope = "sibling";
           ce.license = this.itemManifest.license;
           ce.creator = this.itemManifest.metadata.author.name;
-          this.insertAdjacentElement('afterend', ce);
+          this.insertAdjacentElement("afterend", ce);
         }
         // already exists, so just update the one next to it
-        else if (this.nextElementSibling && this.nextElementSibling.tagName === 'CITATION-ELEMENT') {
+        else if (
+          this.nextElementSibling &&
+          this.nextElementSibling.tagName === "CITATION-ELEMENT"
+        ) {
           let ce = this.nextElementSibling;
           ce.title = `${this.itemManifest.title} - ${response.data.title}`;
           ce.source = `${response.data.site}${response.data.slug}`;
@@ -392,8 +424,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
     }
   }
   /**
-  * Props
-  */
+   * Props
+   */
   static get properties() {
     return {
       ...super.properties,
@@ -402,14 +434,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       },
       // to avoid confusion w/ the site itself
       siteurl: {
-        type: String
+        type: String,
       },
       showTitle: {
         type: Boolean,
-        attribute: 'show-title'
+        attribute: "show-title",
       },
-      _remoteTitle: { 
-        type: String
+      _remoteTitle: {
+        type: String,
       },
       loading: {
         type: Boolean,
@@ -424,14 +456,14 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     if (this.children.length > 0) {
-      let cid = this.shadowRoot.querySelector('#content');
+      let cid = this.shadowRoot.querySelector("#content");
       wipeSlot(cid);
-      lightChildrenToShadowRootSelector(this, '#content');
+      lightChildrenToShadowRootSelector(this, "#content");
     }
   }
   /**
-  * haxProperties integration via file reference
-  */
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
     return {
       type: "grid",
@@ -440,13 +472,19 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       canEditSource: false,
       gizmo: {
         title: "Remote Content",
-        description:
-          "Reuse content from one site in another.",
+        description: "Reuse content from one site in another.",
         icon: "hax:remote",
         color: "grey",
-        tags: ["Magic", "haxcms","content","remote","reference","url","resource"],
-        handles: [
+        tags: [
+          "Magic",
+          "haxcms",
+          "content",
+          "remote",
+          "reference",
+          "url",
+          "resource",
         ],
+        handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },
@@ -456,7 +494,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           {
             property: "siteurl",
             title: "Site address",
-            description: "Paste address to reference content from if not the current site",
+            description:
+              "Paste address to reference content from if not the current site",
             inputMethod: "textfield",
           },
           {
@@ -468,15 +507,17 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           {
             property: "breakreference",
             title: "Break reference",
-            description: "Checking this box copies the remote content for editing locally but removes the association. It will no longer get updates when the reference material updates.",
+            description:
+              "Checking this box copies the remote content for editing locally but removes the association. It will no longer get updates when the reference material updates.",
             inputMethod: "boolean",
           },
           {
             property: "showTitle",
             title: "Show title",
-            description: "Toggle on to render the title of the resource being displayed",
-            inputMethod: "boolean"
-          }
+            description:
+              "Toggle on to render the title of the resource being displayed",
+            inputMethod: "boolean",
+          },
         ],
       },
       demoSchema: [
@@ -486,17 +527,17 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
             showTitle: true,
             _remoteTitle: "Select content",
           },
-          content: "<div>Select content to load</div>"
-        }
+          content: "<div>Select content to load</div>",
+        },
       ],
       saveOptions: {
-        unsetAttributes: ["t", "_remote-title"]
+        unsetAttributes: ["t", "_remote-title"],
       },
     };
   }
   /**
-  * Implements haxHooks to tie into life-cycle if hax exists.
-  */
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
   haxHooks() {
     return {
       // need to add the nodeToContent hook / progressive enhancement
@@ -507,7 +548,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
   // render the shadow root hidden content to lightDom
   // so we can pull it in on initial page load
   haxprogressiveEnhancement(el) {
-    return this.shadowRoot.querySelector('#content').innerHTML;
+    return this.shadowRoot.querySelector("#content").innerHTML;
   }
   /**
    * Allow for dynamic setting of the parent field if we have the store around
@@ -522,14 +563,13 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           const response = await MicroFrontendRegistry.call(
             "@haxcms/siteManifest",
             {
-              site: this.siteurl
+              site: this.siteurl,
             }
           );
           if (response.data) {
             this.itemManifest = response.data;
           }
-        }
-        else {
+        } else {
           this.itemManifest = store.getManifest(true);
         }
       }
@@ -547,7 +587,9 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           // walk back through parent tree
           let distance = "- ";
           while (itemBuilder && itemBuilder.parent != null) {
-            itemBuilder = this.itemManifest.items.find((i) => i.id == itemBuilder.parent);
+            itemBuilder = this.itemManifest.items.find(
+              (i) => i.id == itemBuilder.parent
+            );
             // double check structure is sound
             if (itemBuilder) {
               distance = "--" + distance;
@@ -568,8 +610,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           if (this.breakreference) {
             props.settings.configure[index].disabled = true;
           }
-        }
-        else if (attr.property === "siteurl") {
+        } else if (attr.property === "siteurl") {
           props.settings.configure[index].disabled = false;
           // disable changes if we broke a reference
           if (this.breakreference) {
@@ -581,7 +622,6 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
       this.loading = false;
     }
   }
- }
- customElements.define(SiteRemoteContent.tag, SiteRemoteContent);
- export { SiteRemoteContent };
- 
+}
+customElements.define(SiteRemoteContent.tag, SiteRemoteContent);
+export { SiteRemoteContent };

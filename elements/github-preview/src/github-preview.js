@@ -293,7 +293,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         description: "Accessible figure with long description",
         icon: "mdi-social:github-circle",
         color: "grey",
-        tags: ["Other", "git","code","github","repo","organization"],
+        tags: ["Other", "git", "code", "github", "repo", "organization"],
         handles: [
           {
             type: "github",
@@ -351,7 +351,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         color: "grey",
         description: "Preview a github repository.",
         status: "available",
-        tags: ["Other", "git","code","github","repo","organization"],
+        tags: ["Other", "git", "code", "github", "repo", "organization"],
       },
       connection: {
         protocol: "https",

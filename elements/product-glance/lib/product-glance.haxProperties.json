@@ -7,7 +7,7 @@
     "description": "Quick overview of a thing",
     "icon": "communication:business",
     "color": "blue",
-    "tags": ["Other","product","marketing","overview","card"],
+    "tags": ["Other", "product", "marketing", "overview", "card"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

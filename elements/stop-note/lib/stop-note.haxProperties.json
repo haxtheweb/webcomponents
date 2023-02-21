@@ -8,7 +8,16 @@
     "description": "A message to alert readers to specific directions.",
     "icon": "icons:report",
     "color": "orange",
-    "tags": ["Instructional","content","layout","pedagogy","warning","notice","stop","note"],
+    "tags": [
+      "Instructional",
+      "content",
+      "layout",
+      "pedagogy",
+      "warning",
+      "notice",
+      "stop",
+      "note"
+    ],
     "handles": [
       {
         "type": "text",

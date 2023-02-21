@@ -78,7 +78,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   render() {
     return html`
-    
       <hax-toolbar>
         <hax-tray-button
           label="${this.t.updateHTML}"
