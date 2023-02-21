@@ -7,7 +7,7 @@
     "description": "Vocabulary term",
     "icon": "hax:vocab",
     "color": "red",
-    "groups": ["Vocab"],
+    "tags": ["Instructional","definition","term","vocabulary","glossary"],
     "handles": [
       {
         "type": "inline",

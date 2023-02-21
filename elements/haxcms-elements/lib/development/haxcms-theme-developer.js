@@ -63,7 +63,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -89,7 +89,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -115,7 +115,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -156,7 +156,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -229,7 +229,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -266,7 +266,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",
@@ -292,7 +292,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         description: "The most powerful element in the known universe",
         icon: "icons:android",
         color: "pink",
-        groups: ["Content", "HAXcms"],
+        tags: ["Magic", "haxcms"],
         handles: [],
         meta: {
           author: "HAXcms",

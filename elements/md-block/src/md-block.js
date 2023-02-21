@@ -166,7 +166,7 @@ class MdBlock extends LitElement {
         description: "A block of markdown content directly or remote loaded",
         icon: "icons:code",
         color: "yellow",
-        groups: ["Block"],
+        tags: ["Other", "md","markdown","content","text","code","codeblock","code-block","code block","html"],
         handles: [],
         meta: {
           author: "HAXTheWeb",

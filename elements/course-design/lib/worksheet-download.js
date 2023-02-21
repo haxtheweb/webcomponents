@@ -23,7 +23,7 @@ export class WorksheetDownload extends LitElement {
         description: "A button for displaying files available for download.",
         icon: "icons:file-download",
         color: "blue",
-        groups: ["education", "link"],
+        tags: ["Instructional", "link", "worksheet","download","url","file"],
         meta: {
           author: "HAXTheWeb core team",
         },

@@ -444,7 +444,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(LitElement) {
           "Reuse content from one site in another.",
         icon: "hax:remote",
         color: "grey",
-        groups: ["Content", "CMS", "Advanced"],
+        tags: ["Magic", "haxcms","content","remote","reference","url","resource"],
         handles: [
         ],
         meta: {

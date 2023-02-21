@@ -159,7 +159,7 @@ class HAXElementCardList extends LitElement {
                   <div slot="details-collapse-content">
                     <ul>
                       <li>
-                        <strong>Tags:</strong> ${el.schema.gizmo.groups.map(
+                        <strong>Tags:</strong> ${el.schema.gizmo.tags.map(
                           (group) => html` ${group}, `
                         )}
                       </li>

@@ -40,7 +40,7 @@ class ExampleHaxElement extends HTMLElement {
           "Provide an example to pick apart of a working HAX element",
         icon: "icons:android",
         color: "green",
-        groups: ["Hax"],
+        tags: ["Other","dev","example"],
         handles: [
           {
             type: "todo:read-the-docs-for-usage",

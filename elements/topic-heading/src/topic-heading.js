@@ -66,7 +66,7 @@ class TopicHeading extends LitElement {
         description: "Semantic and visual meaning behind a heading break",
         icon: "icons:android",
         color: "green",
-        groups: ["Heading"],
+        tags: ["Content","Heading"],
         handles: [],
         meta: {
           author: "HAXTheWeb",

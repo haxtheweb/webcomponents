@@ -187,7 +187,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       if (!!i && !!i.type && i.type != "")
                         keywords[i.type.toLowerCase()] = true;
                     });
-                    [...gizmo.groups].forEach((i) => {
+                    [...gizmo.tags].forEach((i) => {
                       if (!!i && i != "") keywords[i.toLowerCase()] = true;
                     });
                     gizmo.keywords = Object.keys(keywords);
@@ -2121,7 +2121,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic img tag",
         icon: "image:image",
         color: "blue-grey",
-        groups: ["Image", "Media"],
+        tags: ["Images", "media","img","html"],
         handles: [
           {
             type: "link",
@@ -2204,7 +2204,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic figure tag",
         icon: "hax:figure",
         color: "blue-grey",
-        groups: ["Image", "Media", "Layout"],
+        tags: ["Images", "media","figure","html"],
         requiresChildren: "figcaption",
         handles: [],
         meta: {
@@ -2239,7 +2239,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "Used inside of a figure tag",
         icon: "image:image",
         color: "blue-grey",
-        groups: ["Image", "Media"],
+        tags: ["Images", "media","caption","figure","html"],
         handles: [],
         requiresParent: "figure",
         meta: {
@@ -2279,7 +2279,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic a tag",
         icon: "icons:link",
         color: "blue-grey",
-        groups: ["Link"],
+        tags: ["Content","link","a","url","html","href","resource","address","http"],
         handles: [],
         meta: {
           author: "W3C",
@@ -2370,7 +2370,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        groups: ["Content"],
+        tags: ["Content","p","paragraph","text","html"],
         handles: [
           {
             type: "content",
@@ -2413,7 +2413,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A table for displaying data",
         icon: "image:grid-on",
         color: "blue-grey",
-        groups: ["Content", "Table", "Data"],
+        tags: ["Content", "table", "data", "html", "grid", "matrix", "spreadsheet", "csv", "excel"],
         meta: {
           hidden: true,
           author: "W3C",
@@ -2445,7 +2445,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic way to frame external web content",
         icon: "hax:iframe",
         color: "blue-grey",
-        groups: ["Content"],
+        tags: ["Content","iframe","content","url","link","embed","https","html","resource","address"],
         handles: [
         ],
         meta: {
@@ -2614,7 +2614,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            groups: ["Content"],
+            tags: ["Content", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
               author: "HAXTheWeb core team",
@@ -2714,8 +2714,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let triggers = [];
         this.gizmoList.forEach((item) => {
           triggers.push({
-            groups:
-              item.groups && item.groups.length ? item.groups.join(" ") : "",
+            tags:
+              item.tags && item.tags.length ? item.tags.join(" ") : "",
             icon: item.icon,
             label: item.title,
             value: item.tag,

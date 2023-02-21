@@ -111,7 +111,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         description: "The user will be able to see this for selection in a UI.",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Content", "Presentation"],
+        tags: ["other", "Content", "Presentation"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

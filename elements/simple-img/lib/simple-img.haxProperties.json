@@ -7,7 +7,7 @@
     "description": "Manipulation of images with simple parameters",
     "icon": "image:image",
     "color": "red",
-    "groups": ["Image", "Media"]
+    "tags": ["Images", "media"]
   },
   "settings": {
     "configure": [

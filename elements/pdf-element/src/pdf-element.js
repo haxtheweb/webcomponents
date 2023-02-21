@@ -291,7 +291,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
           "This can nicely present a PDF in a standard inplace, cross browser way.",
         icon: "image:picture-as-pdf",
         color: "red",
-        groups: ["Presentation", "PDF", "Data"],
+        tags: ["Document", "PDF", "Data"],
         handles: [
           {
             type: "pdf",

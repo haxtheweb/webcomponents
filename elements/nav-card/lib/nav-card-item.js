@@ -109,7 +109,7 @@ class NavCardItem extends LitElement {
         description: "an accent card of link lists",
         icon: "av:playlist-play",
         color: "pink",
-        groups: ["Card", "Nav", "List"],
+        tags: ["Layout","content","card", "Nav", "List"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

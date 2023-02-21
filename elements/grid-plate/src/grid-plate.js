@@ -454,7 +454,7 @@ class GridPlate extends LitElement {
         description: "Simple card in a cool retro design",
         icon: "hax:3-3-3-3",
         color: "grey",
-        groups: ["Layout"],
+        tags: ["Content","layout","grid","column","row","responsive","gridplate"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

@@ -9,10 +9,7 @@
     "description": "Table based data for the web",
     "icon": "editor:border-all",
     "color": "purple",
-    "groups": [
-      "Instructional",
-      "content"
-    ],
+    "tags": ["Content","presentation","table","data","layout","grid","csv","spreadsheet","excel"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",

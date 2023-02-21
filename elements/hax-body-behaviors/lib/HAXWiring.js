@@ -713,7 +713,7 @@ export class HAXWiring {
           description: "",
           icon: "icons:android",
           color: "purple",
-          groups: ["Content"],
+          tags: ["Content"],
           handles: [
             {
               type: "data",

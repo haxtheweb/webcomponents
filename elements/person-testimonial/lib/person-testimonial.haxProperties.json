@@ -7,7 +7,7 @@
     "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
-    "groups": ["Content", "Presentation"],
+    "tags": ["Content", "presentation", "layout", "blockquote", "quote", "testimonial","person","image"],
     "handles": [
       {
         "type": "image",
@@ -17,7 +17,7 @@
       }
     ],
     "meta": {
-      "author": "EberlyODL / LRNWebComponents"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

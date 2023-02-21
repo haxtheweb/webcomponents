@@ -139,7 +139,7 @@ class A11yFigure extends A11yDetails {
         description: "Accessible figure with long description",
         icon: "hax:figure",
         color: "grey",
-        groups: ["images"],
+        tags: ["content","figure","a11y","accessibility","image","caption","description"],
         handles: [
           {
             type: "image",

@@ -84,7 +84,7 @@ class LrndesignAvatar extends SimpleColors {
           "Visualize a user account either with an image, icon, initials, or as abstract art.",
         icon: "image:collections",
         color: "yellow",
-        groups: ["Media", "Image"],
+        tags: ["Other", "image","media","style","avatar","icon","image","initials","jdenticon","user"],
         handles: [
           {
             type: "image",

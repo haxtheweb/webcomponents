@@ -145,7 +145,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         description: "Vocabulary term",
         icon: "hax:vocab",
         color: "red",
-        groups: ["Vocab"],
+        tags: ["Instructional","vocab","term","definition","glossary"],
         handles: [
           {
             type: "inline",

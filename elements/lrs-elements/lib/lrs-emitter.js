@@ -21,7 +21,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
         description: "Emit learning statements occuring in your app.",
         icon: "icons:android",
         color: "green",
-        groups: ["Emitter"],
+        tags: ["Magic","lrs","xapi","statement","emit","send"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

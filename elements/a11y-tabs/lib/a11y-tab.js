@@ -106,7 +106,7 @@ class A11yTab extends LitElement {
         description: "A single tab.",
         icon: "view-day",
         color: "grey",
-        groups: ["Content", "Presentation", "Tabs"],
+        tags: ["Content","a11y","presentation","tab","layout","tabs"],
       },
       settings: {
         configure: [

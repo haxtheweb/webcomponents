@@ -505,7 +505,7 @@ const LrndesignChart = function (SuperClass) {
         gizmo: {
           description: "Creates an accessible chart based on a CSV.",
           color: "green darken-4",
-          groups: ["Data", "Presentation"],
+          tags: ["Other", "Presentation","chart","csv","data","table"],
           handles: [
             {
               type: "data",

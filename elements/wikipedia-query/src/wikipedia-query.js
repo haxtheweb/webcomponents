@@ -249,7 +249,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         author: "Wikimedia",
         description: "Encyclopedia of the world.",
         status: "available",
-        tags: ["content", "encyclopedia", "wiki"],
+        tags: ["Search","source","wikipedia","content", "encyclopedia", "wiki"],
       },
       connection: {
         protocol: "https",
