@@ -13,8 +13,6 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
  * @element multiple-choice
  */
 class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
-  static shadowRootOptions = {...LitElement.shadowRootOptions, delegatesFocus: true};
-
   /**
    * LitElement constructable styles enhancement
    */
@@ -114,6 +112,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   constructor() {
     super();
+    this.shadowRootOptions = {...LitElement.shadowRootOptions, delegatesFocus: true};
     this.randomize = false;
     this.hideButtons = false;
     this.disabled = false;
