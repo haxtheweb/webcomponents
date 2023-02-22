@@ -3,7 +3,6 @@ import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "./hax-app-search.js";
 import "./hax-tray-button.js";
 

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
  * `hax-stax-browser`
  * @element hax-stax-browser
@@ -18,8 +19,34 @@ class HaxStaxBrowser extends LitElement {
           flex: 0 0 auto;
           overflow-y: auto;
         }
+        hax-tray-button {
+          flex: auto;
+          font-size: 12px;
+          --hax-ui-font-size-sm: 12px;
+          --simple-toolbar-button-height: 22px;
+          --simple-toolbar-button-width: 22px;
+        }
+        hax-tray-button[small] {
+          font-size: 8px;
+          --hax-ui-font-size-sm: 8px;
+          --simple-toolbar-button-height: 16px;
+          --simple-toolbar-button-width: 16px;
+        }
+        hax-tray-button::part(button) {
+          font-size: var(hax-ui-font-size-xs);
+        }
         simple-button-grid {
           overflow: auto;
+          --simple-button-grid-margin: 2px;
+        }
+        a11y-collapse {
+          margin: 0;
+          --a11y-collapse-margin: 0;
+          --a11y-collapse-vertical-padding: 8px;
+          --a11y-collapse-horizontal-padding: 4px;
+        }
+        a11y-collapse::part(heading) {
+          margin: 4px;
         }
       `,
     ];
@@ -27,9 +54,11 @@ class HaxStaxBrowser extends LitElement {
   constructor() {
     super();
     this.staxList = [];
+    this.label = "Templates";
   }
   render() {
     return html`
+    <a11y-collapse heading="${this.label}" heading-button>
       <simple-button-grid columns="2" rows="1" always-expanded>
         ${this.staxList.map(
           (stax) => html`
@@ -46,6 +75,7 @@ class HaxStaxBrowser extends LitElement {
           `
         )}
       </simple-button-grid>
+      </a11y-collapse>
     `;
   }
   static get tag() {
@@ -59,6 +89,7 @@ class HaxStaxBrowser extends LitElement {
       staxList: {
         type: Array,
       },
+      label: { type: String }
     };
   }
 }

@@ -8,7 +8,6 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`

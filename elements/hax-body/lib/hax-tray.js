@@ -785,8 +785,7 @@ class HaxTray extends I18NMixin(
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
-      <h5 ?hidden="${hidden}">${this.t.templates}</h5>
-      <hax-stax-browser id="staxbrowser" ?hidden="${hidden}"></hax-stax-browser>
+      <hax-stax-browser id="staxbrowser" ?hidden="${hidden}" label="${this.t.templates}"></hax-stax-browser>
     </div>`;
   }
   get contentMapTemplate() {
