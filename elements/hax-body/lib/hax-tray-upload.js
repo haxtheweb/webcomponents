@@ -24,7 +24,6 @@ class HaxTrayUpload extends HaxUploadField {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "t") {
-        console.log(this.t);
         this.label = this.t.uploadMedia;
       }
     });

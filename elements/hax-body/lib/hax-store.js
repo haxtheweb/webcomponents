@@ -2025,16 +2025,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.voiceDebug = false;
+    this.daemonCommands = {}
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
+    // these are basic markdown shortcuts
     this.keyboardShortcuts = {
       "#": { tag: "h2", content: "" },
       "##": { tag: "h3", content: "" },
       "###": { tag: "h4", content: "" },
       "####": { tag: "h5", content: "" },
       "#####": { tag: "h6", content: "" },
-      "-": { tag: "ul", content: "<li></li>" },
+      "######": { tag: "h6", content: "" },
       "1.": { tag: "ol", content: "<li></li>" },
+      "-": { tag: "ul", content: "<li></li>" },
+      "*": { tag: "ul", content: "<li></li>" },
+      "+": { tag: "ul", content: "<li></li>" },
       "---": { tag: "hr" },
+      "***": { tag: "hr" },
+      "___": { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
     };
