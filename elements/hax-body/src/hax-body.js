@@ -2602,8 +2602,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "content-edit":
-        if (HAXStore.haxTray.trayDetail === "content-edit")
+        if (HAXStore.haxTray.trayDetail === "content-edit") {
           HAXStore.haxTray.collapsed = false;
+        }
         HAXStore.haxTray.trayDetail = "content-edit";
         break;
       case "hide-context-menus":
@@ -2757,7 +2758,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // and we want to ensure it's in the next micro-task
     setTimeout(() => {
       if (typeof node.scrollIntoViewIfNeeded === "function") {
-        node.scrollIntoViewIfNeeded(true);
+        node.scrollIntoViewIfNeeded(false);
       } else {
         node.scrollIntoView({
           behavior: "smooth",

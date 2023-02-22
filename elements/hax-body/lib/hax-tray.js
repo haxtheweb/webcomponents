@@ -1191,12 +1191,10 @@ class HaxTray extends I18NMixin(
       if (propName == "activeGizmo" && this.trayDetail !== "view-source") {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
-          if (
-            (!oldValue || this.trayDetail !== "content-edit") &&
-            this.trayDetail !== "content-map"
-          ) {
+          if (!oldValue || !["content-map", "content-edit", "content-add"].includes(this.trayDetail)) {
             this.trayDetail = "content-edit";
           }
+          
         } else {
           // force a gizmo change (which then implies adding to the page)
           // to select the edit tab if we just added something into the page

@@ -36,6 +36,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     this.trayStatus = "collapsed";
     this.t = {
       edit: "Edit",
+      editDetails: "Edit details",
       dragHandle: "Drag handle",
       moveUp: "Move up",
       moveDown: "Move down",
@@ -500,7 +501,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             ?disabled="${
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
-            label="${this.t.edit}"
+            label="${this.t.editDetails}"
             data-simple-tour-stop
             data-stop-title="label"
             event-name="content-edit"

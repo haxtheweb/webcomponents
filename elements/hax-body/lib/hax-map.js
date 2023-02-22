@@ -467,7 +467,7 @@ class HaxMap extends I18NMixin(LitElement) {
       HAXStore.activeNode = activeChild;
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
-        activeChild.scrollIntoViewIfNeeded(true);
+        activeChild.scrollIntoViewIfNeeded(false);
       } else {
         activeChild.scrollIntoView({
           behavior: "smooth",
