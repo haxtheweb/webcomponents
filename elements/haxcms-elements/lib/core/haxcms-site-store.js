@@ -911,6 +911,10 @@ class Store {
 export const store = new Store();
 // register globally so we can make sure there is only one
 window.HAXCMS = window.HAXCMS || {};
+// developer command to force theme to change for testing
+window.HAXCMS.setTheme = function (theme) {
+  window.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
+};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
