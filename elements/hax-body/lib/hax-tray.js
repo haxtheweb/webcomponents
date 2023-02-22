@@ -31,6 +31,7 @@ import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "./hax-tray-button.js";
 import "./hax-toolbar-menu.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -80,6 +81,7 @@ class HaxTray extends I18NMixin(
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
       takeATour: "Help",
+      superMenu: "Super menu",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -729,6 +731,18 @@ class HaxTray extends I18NMixin(
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
+      ></hax-tray-button>
+      <hax-tray-button
+        event-name="super-daemon"
+        icon="android"
+        label="${this.t.superMenu}"
+        voice-command="${this.t.superMenu}"
+        toggles
+        ?toggled="${!this.collapsed && this.tourOpened}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       ></hax-tray-button> `;
   }
   get trayDetailTemplate() {
@@ -843,13 +857,12 @@ class HaxTray extends I18NMixin(
         let gizmo = {
           tag: e.detail.value,
         };
-        
         let haxElement;
         // get schema for that version of events
         let schema = HAXStore.haxSchemaFromTag(e.detail.value);
         HAXStore.recentGizmoList.push(schema.gizmo);
         if (
-          target.getAttribute("data-demo-schema") &&
+          (target.getAttribute("data-demo-schema") || e.detail.demoSchema) &&
           schema &&
           schema.demoSchema &&
           schema.demoSchema[0]
@@ -901,6 +914,9 @@ class HaxTray extends I18NMixin(
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
         break;
+      case "super-daemon":
+        SuperDaemonInstance.opened = !SuperDaemonInstance.opened;
+      break;
       case "content-map":
         this.trayDetail = e.detail.eventName;
         this.collapsed = false;

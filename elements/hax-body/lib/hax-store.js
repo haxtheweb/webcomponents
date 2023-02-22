@@ -27,6 +27,7 @@ import {
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -1928,6 +1929,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    // custom
+    SuperDaemonInstance.icon = "hax:hax2022";
+    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
+    SuperDaemonInstance.allowedCallback = () => {
+      if (this.ready && this.editMode) {
+        return true;
+      }
+      return false;
+    };
     // container for HTML primatives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
@@ -1940,6 +1950,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
+      "hax-super-daemon-insert-tag": "_superDaemonInsert",
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
       "hax-context-item-selected": "_haxContextOperation",
@@ -1996,7 +2007,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       url: "",
       params: {},
     };
-    this.daemonKeyCombo = "SHIFT + ALT + ";
+    this.daemonKeyCombo = `${SuperDaemonInstance.key1} + ${SuperDaemonInstance.key2} + `;
     this.activeNode = null;
     this.activeEditingElement = null;
     this.haxBodies = [];
@@ -2972,6 +2983,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }, 0);
     }
   }
+  // divert this event at haxTray
+  _superDaemonInsert(e) {
+    this.haxTray._processTrayEvent(e);
+  }
 
   /**
    * Feature detect on the bar.
@@ -3532,6 +3547,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
+          // only add in support for commands we'd expect to see
+          if (!gizmo.meta || (!gizmo.meta.inlineOnly &&
+            !gizmo.meta.hidden)) {
+              SuperDaemonInstance.defineOption({
+                title: gizmo.title,
+                icon: gizmo.icon,
+                key: gizmo.shortcutKey ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}` : null,
+                tags: gizmo.tags || [],
+                value: {
+                  value: gizmo.tag,
+                  eventName: "insert-tag",
+                  demoSchema: true,
+                },
+                eventName: "hax-super-daemon-insert-tag",
+                path: "HAX/insert/block/" + gizmo.tag,
+              });    
+            }
         }
         this.elementList[detail.tag] = detail.properties;
         // only push new values on if we got something new
