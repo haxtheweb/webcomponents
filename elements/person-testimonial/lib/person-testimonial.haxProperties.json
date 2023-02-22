@@ -8,13 +8,14 @@
     "icon": "editor:format-quote",
     "color": "orange",
     "tags": [
-      "Content",
+      "Layout",
+      "content",
       "presentation",
-      "layout",
       "blockquote",
       "quote",
       "testimonial",
       "person",
+      "design",
       "image"
     ],
     "handles": [

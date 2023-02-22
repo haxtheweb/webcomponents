@@ -844,9 +844,11 @@ class HaxTray extends I18NMixin(
         let gizmo = {
           tag: e.detail.value,
         };
+        
         let haxElement;
         // get schema for that version of events
         let schema = HAXStore.haxSchemaFromTag(e.detail.value);
+        HAXStore.recentGizmoList.push(schema.gizmo);
         if (
           target.getAttribute("data-demo-schema") &&
           schema &&

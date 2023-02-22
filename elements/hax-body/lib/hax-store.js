@@ -2014,6 +2014,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
+    this.recentGizmoList = [];
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -2048,6 +2049,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // mobx
     makeObservable(this, {
       gizmoList: observable,
+      recentGizmoList: observable,
       activeNode: observable,
       globalPreferences: observable,
       activeGizmo: computed,

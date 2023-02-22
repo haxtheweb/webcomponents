@@ -174,6 +174,7 @@ class HaxAppBrowser extends LitElement {
         });
       }
     });
+    tags.sort();
     return tags;
   }
 

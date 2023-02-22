@@ -457,8 +457,8 @@ class GridPlate extends LitElement {
         icon: "hax:3-3-3-3",
         color: "grey",
         tags: [
-          "Content",
-          "layout",
+          "Layout",
+          "content",
           "grid",
           "column",
           "row",

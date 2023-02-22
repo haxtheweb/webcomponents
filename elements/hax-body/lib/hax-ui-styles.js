@@ -15,7 +15,7 @@ export const HaxUiText = [
 export const HaxUiSpacing = [
   css`
     body {
-      --hax-tray-width: 300px;
+      --hax-tray-width: 350px;
       --hax-tray-menubar-min-width: 44px;
       --hax-tray-menubar-min-height: 34px;
       --hax-ui-spacing-xs: 4px;

@@ -34,8 +34,16 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
         hax-tray-button {
           flex: auto;
-          font-size: 10px;
-          --hax-ui-font-size-sm: 10px;
+          font-size: 12px;
+          --hax-ui-font-size-sm: 12px;
+          --simple-toolbar-button-height: 22px;
+          --simple-toolbar-button-width: 22px;
+        }
+        hax-tray-button[small] {
+          font-size: 8px;
+          --hax-ui-font-size-sm: 8px;
+          --simple-toolbar-button-height: 16px;
+          --simple-toolbar-button-width: 16px;
         }
         .toolbar-inner {
           max-width: 96%;
@@ -69,6 +77,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   constructor() {
     super();
     this.categories = [];
+    this.recentGizmoList = [];
     this.where = "title";
     this.t = {
       filterContentTypes: "Filter Content Types",
@@ -79,10 +88,30 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
     this.addEventListener("mouseleave", this.closePopover.bind(this));
     this.addEventListener("mouseout", this.closePopover.bind(this));
+    autorun(() => {
+      const recent = toJS(HAXStore.recentGizmoList);
+      let recentList = [];
+      let recentTags = [];
+      recent.forEach((gizmo) => {
+        if (gizmo && gizmo.tag) {
+          if (!recentTags.includes(gizmo.tag)) {
+            recentTags.push(gizmo.tag);
+            recentList.push(gizmo);
+            // limit to 5, then remove the 1st one
+            if (recentList.length > 5) {
+              recentTags.shift();
+              recentList.shift();
+            }
+          }
+        }
+      });
+      this.recentGizmoList = recentList;
+    });
   }
   static get properties() {
     return {...super.properties,
-      categories: { type: Array }
+      categories: { type: Array },
+      recentGizmoList: { type: Array },
     }
   }
   closePopover() {
@@ -102,6 +131,35 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           part="filter"
         ></simple-fields-field>
       </div>
+      <a11y-collapse heading="Recent" heading-button expanded>
+          <simple-button-grid columns="5" always-expanded part="grid">
+            ${this.recentGizmoList.map((gizmo, i) => html`
+              <simple-popover-selection event="hover">
+                <hax-tray-button
+                  small
+                  show-text-label
+                  voice-command="insert ${gizmo.title}"
+                  draggable="true"
+                  @dragstart="${this._dragStart}"
+                  index="${i}"
+                  label="${gizmo.title}"
+                  event-name="insert-tag"
+                  event-data="${gizmo.tag}"
+                  data-demo-schema="true"
+                  icon-position="top"
+                  icon="${gizmo.icon}"
+                  part="grid-button"
+                  slot="button"
+                ></hax-tray-button>
+                <hax-element-demo
+                  render-tag="${gizmo.tag}"
+                  shortcut="${gizmo.shortcut ? gizmo.shortcut : null}"
+                  slot="options"
+                ></hax-element-demo>
+              </simple-popover-selection>`
+            )}
+          </simple-button-grid>
+        </a11y-collapse>
       ${this.categories.map((tag) => html`
         <a11y-collapse heading="${this.ucfirst(tag)}" heading-button>
           <simple-button-grid columns="3" always-expanded part="grid">
@@ -149,6 +207,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     } else {
       target = document.createElement(e.target.eventData);
     }
+    HAXStore.recentGizmoList.push(schema.gizmo);
     HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
       e.dataTransfer.effectAllowed = "move";
@@ -161,6 +220,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.like = e.target.value;
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "activeApp") {
         this._activeAppChanged(this[propName], oldValue);
@@ -168,7 +230,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       if (propName == "filtered") {
         this.requestUpdate();
       }
-      if (propName == "items") {
+      if (propName == "items" && this[propName] && this[propName].length > 0) {
         this.categories = [...this.updateCategories(this.items)];
       }
     });
@@ -185,6 +247,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
       }
     });
+    tags.sort();
     return tags;
   }
 

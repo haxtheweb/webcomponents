@@ -274,7 +274,8 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
         icon: "icons:copyright",
         color: "grey",
         tags: [
-          "Content",
+          "Other",
+          "content",
           "copyright",
           "license",
           "cc0",
