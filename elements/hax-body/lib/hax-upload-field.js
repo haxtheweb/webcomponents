@@ -17,11 +17,19 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
     };
+    this.t = this.t || {};
     this.t = {
+      ...this.t,
       whereUpload: "Where would you like to upload this",
       cantHandle: "Sorry, you don't have a storage location that can handle",
       uploads: "uploads",
-    };
+      dropMediaHereOr: "drop media here or",
+      upload: "Upload",
+      takePhoto: "Take photo",
+      recordAudio: "Record audio",
+      cancel: "Cancel",
+      uploadMedia: "Upload media",
+    };    
     this.registerLocalization({
       context: this,
       namespace: "hax",

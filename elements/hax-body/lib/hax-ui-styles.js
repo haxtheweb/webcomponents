@@ -513,6 +513,7 @@ export const HaxTrayDetail = [
       overflow: hidden;
       word-break: break-all;
       text-overflow: ellipsis;
+      line-height: 28px;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
