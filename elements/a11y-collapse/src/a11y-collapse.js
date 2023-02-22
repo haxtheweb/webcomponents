@@ -472,9 +472,9 @@ class A11yCollapse extends LitElement {
         )}"
       >
         <div id="text">
-          ${this.heading ? html`<p>${this.heading}</p>` : ``}<slot
-            name="heading"
-          ></slot>
+          ${this.heading
+            ? html`<p part="heading">${this.heading}</p>`
+            : ``}<slot name="heading"></slot>
         </div>
         <simple-icon-lite
           id="expand"

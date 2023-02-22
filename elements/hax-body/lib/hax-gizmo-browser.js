@@ -7,6 +7,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
@@ -52,11 +54,21 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           padding: 0px 2px;
           font-size: 12px;
         }
+        a11y-collapse {
+          margin: 0;
+          --a11y-collapse-margin: 0;
+          --a11y-collapse-vertical-padding: 8px;
+          --a11y-collapse-horizontal-padding: 4px;
+        }
+        a11y-collapse::part(heading) {
+          margin: 4px;
+        }
       `,
     ];
   }
   constructor() {
     super();
+    this.categories = [];
     this.where = "title";
     this.t = {
       filterContentTypes: "Filter Content Types",
@@ -67,6 +79,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
     this.addEventListener("mouseleave", this.closePopover.bind(this));
     this.addEventListener("mouseout", this.closePopover.bind(this));
+  }
+  static get properties() {
+    return {...super.properties,
+      categories: { type: Array }
+    }
   }
   closePopover() {
     let popover = window.SimplePopoverManager.requestAvailability();
@@ -85,34 +102,37 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           part="filter"
         ></simple-fields-field>
       </div>
-      <simple-button-grid columns="3" always-expanded part="grid">
-        ${this.filtered.map(
-          (gizmo, i) => html`
-            <simple-popover-selection event="hover">
-              <hax-tray-button
-                show-text-label
-                voice-command="insert ${gizmo.title}"
-                draggable="true"
-                @dragstart="${this._dragStart}"
-                index="${i}"
-                label="${gizmo.title}"
-                event-name="insert-tag"
-                event-data="${gizmo.tag}"
-                data-demo-schema="true"
-                icon-position="top"
-                icon="${gizmo.icon}"
-                part="grid-button"
-                slot="button"
-              ></hax-tray-button>
-              <hax-element-demo
-                tag-name="${gizmo.tag}"
-                slot="options"
-              ></hax-element-demo>
-            </simple-popover-selection>
-          `
-        )}
-      </simple-button-grid>
-    `;
+      ${this.categories.map((tag) => html`
+        <a11y-collapse heading="${this.ucfirst(tag)}" heading-button>
+          <simple-button-grid columns="3" always-expanded part="grid">
+            ${this.filtered.map(
+              (gizmo, i) => html`${gizmo && gizmo.tags && gizmo.tags.includes(tag) ? html`
+                <simple-popover-selection event="hover">
+                  <hax-tray-button
+                    show-text-label
+                    voice-command="insert ${gizmo.title}"
+                    draggable="true"
+                    @dragstart="${this._dragStart}"
+                    index="${i}"
+                    label="${gizmo.title}"
+                    event-name="insert-tag"
+                    event-data="${gizmo.tag}"
+                    data-demo-schema="true"
+                    icon-position="top"
+                    icon="${gizmo.icon}"
+                    part="grid-button"
+                    slot="button"
+                  ></hax-tray-button>
+                  <hax-element-demo
+                    render-tag="${gizmo.tag}"
+                    shortcut="${gizmo.shortcut ? gizmo.shortcut : null}"
+                    slot="options"
+                  ></hax-element-demo>
+                </simple-popover-selection>`: ``}`
+                )}
+            </simple-button-grid>
+        </a11y-collapse>`
+      )}`;
   }
   static get tag() {
     return "hax-gizmo-browser";
@@ -148,7 +168,24 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       if (propName == "filtered") {
         this.requestUpdate();
       }
+      if (propName == "items") {
+        this.categories = [...this.updateCategories(this.items)];
+      }
     });
+  }
+  ucfirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  updateCategories(list) {
+    let tags = [];
+    list.forEach((gizmo) => {
+      if (gizmo.tags && gizmo.tags[0]) {
+        if (!tags.includes(gizmo.tags[0])) {
+          tags.push(gizmo.tags[0]);
+        }
+      }
+    });
+    return tags;
   }
 
   firstUpdated(changedProperties) {
