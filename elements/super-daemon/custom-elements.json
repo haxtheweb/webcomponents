@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "super-daemon",
+      "path": "./src/super-daemon.js",
+      "description": "`super-daemon`\n``"
+    },
+    {
+      "name": "super-daemon",
+      "path": "./super-daemon.js",
+      "description": "`super-daemon`\n``"
+    }
+  ]
+}

@@ -224,16 +224,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           margin-left: -10px;
         }
         .hax-context-menu {
-          display: none;
-          z-index: 1;
+          visibility: hidden;
+          opacity: 0;
+          z-index: -1;
+          pointer-events: none;
+          transition: 0.3s all ease-in-out;
         }
         .hax-context-menu:hover {
           z-index: calc(var(--hax-ui-focus-z-index) + 1);
-          transition: 0s z-index ease-in-out;
         }
         .hax-context-visible,
         .hax-context-menu-active {
           display: flex;
+          pointer-events: auto;
+          visibility: visible;
+          z-index: 1;
+          opacity: 1;
         }
         /* this helps ensure editable-table doesn't try internal text editor; all others should */
         :host([edit-mode])
@@ -483,6 +489,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     super();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
+    this._useristyping = false;
     this.__ignoreActive = false;
     this.__dragMoving = false;
     this.___moveLock = false;
@@ -588,7 +595,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }, 300);
       clearTimeout(this.__mouseTimer);
       this.__mouseTimer = setTimeout(() => {
-        this.__addActiveVisible();
         let target = eventPath[0].closest("[data-hax-ray]:not(li)");
         if (target) {
           this.__activeHover = target;
@@ -684,11 +690,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     setTimeout(() => {
       this.__mouseDown = false;
     }, 0);
+    this._useristyping = false;
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
     this.__manageFakeEndCap(false);
   }
   scrollerFixclickEvent(e) {
+    this._useristyping = false;
+    this.positionContextMenus();
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
   }
@@ -728,8 +737,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
+    this.hideContextMenus();
+    this._useristyping = false;
     // insert a fake child at the end
     this.__manageFakeEndCap(true);
+  }
+  revealMenuIfHidden(e) {
+    this._useristyping = false;
+    this.positionContextMenus();
   }
   /**
    * LitElement render
@@ -765,7 +780,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode}"
       >
-        <div id="topcontextmenu">
+        <div id="topcontextmenu" @mouseenter="${this.revealMenuIfHidden}">
           <hax-plate-context
             always-expanded
             id="platecontextmenu"
@@ -813,6 +828,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ...super.properties,
       /** enabldes link targets */
       allowLinkTarget: {
+        type: Boolean,
+      },
+      _useristyping: {
         type: Boolean,
       },
       haxMover: {
@@ -959,6 +977,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           }, 100);
         }, 0);
       }
+      if (propName == "_useristyping" && this[propName]) {
+        this.hideContextMenus();
+      }
       if (propName == "activeNode" && this.ready && oldValue !== undefined) {
         await this._activeNodeChanged(this[propName], oldValue);
       }
@@ -1039,6 +1060,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               break;
             case "Tab":
+              this._useristyping = true;
               if (HAXStore.isTextElement(this.activeNode)) {
                 if (e.detail.keyboardEvent) {
                   e.detail.keyboardEvent.preventDefault();
@@ -1056,6 +1078,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               break;
             case "Enter":
+              this._useristyping = true;
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
@@ -1076,6 +1099,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // extra trap set for this in case we care that we are in the act of deleting
             case "Backspace":
             case "Delete":
+              this._useristyping = true;
               this.__delHit = true;
               this.querySelectorAll("[data-hax-active]").forEach(
                 (el) => el.classList.remove
@@ -1116,10 +1140,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 }
               }, 100);
               break;
+            case "Escape":
+              this._useristyping = true;
+            break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
             case "ArrowRight":
+              this._useristyping = true;
               this.querySelectorAll("[data-hax-active]").forEach(
                 (el) => el.classList.remove
               );
@@ -1160,6 +1188,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }, 0);
               break;
             default:
+              this._useristyping = true;
               // we only care about contextual ops in a paragraph
               // delay a micro-task to ensure activenode's innerText is set
               setTimeout(() => {
@@ -1785,7 +1814,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   positionContextMenus(node = this.activeNode) {
     //console.warn(node);
     // special case for node not matching container yet it being editable
-    if (node && node.tagName && this.ready) {
+    if (node && node.tagName && this.ready && !this._useristyping) {
       let tag = node.tagName.toLowerCase();
       if (
         HAXStore.elementList &&

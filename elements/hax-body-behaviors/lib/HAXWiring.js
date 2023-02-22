@@ -68,6 +68,7 @@
  *         'url': 'csvFile'
  *       }
  *     ],
+ *    'tags': ['Content', 'csv'],
  *     'meta': {
  *       'author': 'LRNWebComponents'
  *     }
@@ -721,6 +722,7 @@ export class HAXWiring {
               url: "src",
             },
           ],
+          shortcutKey: "T",
           meta: {
             author: "auto",
           },

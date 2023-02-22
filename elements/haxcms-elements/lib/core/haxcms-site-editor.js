@@ -520,7 +520,7 @@ class HAXCMSSiteEditor extends LitElement {
     const link = document.createElement('link');
     link.rel = "stylesheet";
     link.href = new URL("../base.css", import.meta.url).href;
-    this.querySelector("#hax").shadowRoot.appendChild(link);
+    this.querySelector("#hax").shadowRoot.querySelector('style').parentNode.insertBefore(link, this.querySelector("#hax").shadowRoot.querySelector('style').nextSibling);
   }
 
   updated(changedProperties) {

@@ -6401,7 +6401,7 @@
   dependencies:
     semver "^7.3.4"
 
-"@web/dev-server-core@^0.3.18", "@web/dev-server-core@^0.3.19":
+"@web/dev-server-core@^0.3.17", "@web/dev-server-core@^0.3.18", "@web/dev-server-core@^0.3.19":
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.3.19.tgz#b61f9a0b92351371347a758b30ba19e683c72e94"
   integrity sha512-Q/Xt4RMVebLWvALofz1C0KvP8qHbzU1EmdIA2Y1WMPJwiFJFhPxdr75p9YxK32P2t0hGs6aqqS5zE0HW9wYzYA==
@@ -6425,7 +6425,7 @@
     picomatch "^2.2.2"
     ws "^7.4.2"
 
-"@web/dev-server-rollup@^0.3.19":
+"@web/dev-server-rollup@^0.3.13", "@web/dev-server-rollup@^0.3.19":
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/@web/dev-server-rollup/-/dev-server-rollup-0.3.21.tgz#edeecc599970fcc03f6a53fd7c5fdaf01178e88a"
   integrity sha512-138t+vMFkegRip6Rtlz68Bo5rl984C9c2rLg3dWl9JEEJSQcWgA3iEwXYh4xTc52WjXnM3/LpboAjTYQOMyfrA==
@@ -6436,6 +6436,26 @@
     parse5 "^6.0.1"
     rollup "^2.67.0"
     whatwg-url "^11.0.0"
+
+"@web/dev-server@0.1.28":
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/@web/dev-server/-/dev-server-0.1.28.tgz#fcd8a074e71554594361930803dbd0a1380d6d29"
+  integrity sha512-964NqgatvFWX7LM8QGlB1XpcJoUQRXZPiEn3XKgDIUSNS6JNCjGfQQ+TfxBlT5KBHYJakDYbTk+sdEeRi2gaLw==
+  dependencies:
+    "@babel/code-frame" "^7.12.11"
+    "@types/command-line-args" "^5.0.0"
+    "@web/config-loader" "^0.1.3"
+    "@web/dev-server-core" "^0.3.17"
+    "@web/dev-server-rollup" "^0.3.13"
+    camelcase "^6.2.0"
+    command-line-args "^5.1.1"
+    command-line-usage "^6.1.1"
+    debounce "^1.2.0"
+    deepmerge "^4.2.2"
+    ip "^1.1.5"
+    nanocolors "^0.2.1"
+    open "^8.0.2"
+    portfinder "^1.0.28"
 
 "@web/dev-server@0.1.34":
   version "0.1.34"
@@ -6879,6 +6899,11 @@
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.11.1.tgz#add19d5e0db4a014e143d2278921347dcd8f0a55"
   integrity sha512-qSok/oMynEgS99wFY5fKT6cR1y64i01RkHGYOspkh2JQsLSM8pjciER+gu3fqTx589y/7LoSuyB5G9Rh7dyXaQ==
+
+"@webcomponents/webcomponentsjs@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
+  integrity sha512-C0l51MWQZ9kLzcxOZtniOMohpIFdCLZum7/TEHv3XWFc1Fvt5HCpbSX84x8ltka/JuNKcuiDnxXFkiB2gaePcg==
 
 "@webcomponents/webcomponentsjs@2.6.0":
   version "2.6.0"
@@ -18686,7 +18711,7 @@ lit-html@2.6.1, lit-html@^1.0.0, lit-html@^2.0.0, lit-html@^2.1.0, lit-html@^2.2
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@2.0.0, lit@2.6.1, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.5, lit@^2.2.8, lit@^2.6.1:
+lit@2.0.0, lit@2.6.1, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.4, lit@^2.2.5, lit@^2.2.8, lit@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.6.1.tgz#5951a2098b9bde5b328c73b55c15fdc0eefd96d7"
   integrity sha512-DT87LD64f8acR7uVp7kZfhLRrHkfC/N4BVzAtnw9Yg8087mbBJ//qedwdwX0kzDbxgPccWRW6mFwGbRQIxy0pw==

@@ -1996,6 +1996,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       url: "",
       params: {},
     };
+    this.daemonKeyCombo = "SHIFT + ALT + ";
     this.activeNode = null;
     this.activeEditingElement = null;
     this.haxBodies = [];
@@ -2025,7 +2026,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.voiceDebug = false;
-    this.daemonCommands = {}
+    this.daemonCommands = {};
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
     // these are basic markdown shortcuts
     this.keyboardShortcuts = {
@@ -2055,6 +2056,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     // mobx
     makeObservable(this, {
+      daemonKeyCombo: observable,
       gizmoList: observable,
       recentGizmoList: observable,
       activeNode: observable,

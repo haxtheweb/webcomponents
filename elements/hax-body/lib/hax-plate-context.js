@@ -118,8 +118,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           justify-content: center;
           border: 1px solid var(--rich-text-editor-border-color, #ddd);
           padding: 0;
-          border-width: 1px;
-          margin: -1px;
         }
         .group,
         .group > * {
@@ -147,6 +145,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         }
         .first-slot:not(:first-child) {
           border-top: 1px solid black;
+        }
+        hax-toolbar-menu,
+        hax-context-item {
+          line-height: 30px;
+        }
+        hax-context-item {
+          --simple-toolbar-button-width: 26px;
+          --simple-toolbar-button-height: 26px;
         }
       `,
     ];
