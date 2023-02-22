@@ -41,7 +41,7 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "clean-two",
+      "element": "learn-two-theme",
       "path": "@lrnwebcomponents/clean-one/clean-two.js",
       "name": "Course theme 2",
       "variables": {
