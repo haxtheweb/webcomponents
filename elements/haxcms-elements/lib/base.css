@@ -274,6 +274,26 @@ pre {
   font-size: 12px;
 }
 
+blockquote {
+  font-family: var(
+    --hax-base-styles-accent-font-family,
+    "Playfair Display",
+    serif
+  );
+  font-size: var(
+    --hax-base-styles-blockquote-font-size,
+    calc(1.33333337 * var(--haxcms-base-styles-body-font-size, 18px))
+  );
+  font-style: italic;
+  letter-spacing: -0.36px;
+  line-height: 44.4px;
+  overflow-wrap: break-word;
+  margin: 55px 0 33px 0;
+  color: rgba(0, 0, 0, 0.68);
+  padding: 0 0 0 50px;
+  border-left: 0.25em solid #d7d0de;
+}
+
 dt {
   font-weight: bold;
 }

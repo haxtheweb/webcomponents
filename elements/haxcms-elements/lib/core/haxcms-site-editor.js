@@ -516,6 +516,11 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       })
     );
+    // inject cms styles for uniformity between shadowroot
+    const link = document.createElement('link');
+    link.rel = "stylesheet";
+    link.href = new URL("../base.css", import.meta.url).href;
+    this.querySelector("#hax").shadowRoot.appendChild(link);
   }
 
   updated(changedProperties) {
