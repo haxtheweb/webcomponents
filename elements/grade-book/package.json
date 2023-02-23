@@ -54,6 +54,8 @@
     "@lrnwebcomponents/simple-colors": "^4.1.0",
     "@lrnwebcomponents/simple-fields": "^4.1.0",
     "@lrnwebcomponents/utils": "^4.1.0",
+    "@lrnwebcomponents/es-global-bridge": "^4.0.0",
+    "@lrnwebcomponents/file-system-broker": "^4.0.25",
     "idb-keyval": "6.1.0",
     "lit": "^2.6.1",
     "mobx": "6.7.0"

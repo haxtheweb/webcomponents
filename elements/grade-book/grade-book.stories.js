@@ -1,22 +1,26 @@
 import { html } from "lit-html";
 import { withKnobs, text, boolean } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { SuperDaemon } from "./super-daemon.js";
+import { GradeBook } from "./grade-book.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Developer|Super Daemon",
-  component: "super-daemon",
+  title: "Education|Grade Book",
+  component: "grade-book",
   decorators: [withKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
 const utils = new StorybookUtilities();
-export const SuperDaemonStory = () => {
+export const GradeBookStory = () => {
   return utils.makeUsageDocs(
-    SuperDaemon,
+    GradeBook,
     import.meta.url,
-    utils.makeElementFromClass(SuperDaemon)
+    utils.makeElementFromClass(GradeBook, {
+      "accent-color": "blue",
+      "source-data": "2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq",
+      source: "googledocs",
+    })
   );
 };
