@@ -13,6 +13,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
     };
+    this.where = "index";
     this.icon = "hardware:keyboard-return";
   }
   static get tag() {
@@ -88,6 +89,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
 
   inputfilterChanged(e) {
     this.like = e.target.value;
+    
   }
 
   render() {

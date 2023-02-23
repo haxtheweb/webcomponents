@@ -57,6 +57,7 @@ class SuperDaemon extends LitElement {
   // minor validation of option; as we have a singleton this is faster when required
   defineOption(option) {
     if (option && option.value && option.title && option.eventName) {
+      option.index = option.tags.join(" ") + " " + option.title + " " + option.key + " " + option.path;
       this.items.push(option);
     }
   }
@@ -80,9 +81,10 @@ class SuperDaemon extends LitElement {
       }
       // if we hit enter while in the combo box, we should select the 1st option
       // or move between items as far as focus
-      if (this.shadowRoot.querySelector('super-daemon-ui').filtered.length > 0) {
+      if (this.opened && this.shadowRoot.querySelector('super-daemon-ui').filtered.length > 0) {
         switch(e.key) {
           case "Enter":
+            // @todo dont do this if we have focus on an item
             this.shadowRoot.querySelector('super-daemon-ui').shadowRoot.querySelector("super-daemon-row").selected();
           break;
           case "ArrowUp":
