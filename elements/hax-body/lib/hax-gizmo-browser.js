@@ -112,18 +112,18 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
   }
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       categories: { type: Array },
       recentGizmoList: { type: Array },
-    }
+    };
   }
   closePopover() {
     let popover = window.SimplePopoverManager.requestAvailability();
     popover.opened = false;
   }
   render() {
-    return html`
-      <div class="toolbar-inner" part="toolbar">
+    return html` <div class="toolbar-inner" part="toolbar">
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
@@ -135,65 +135,85 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         ></simple-fields-field>
       </div>
       <a11y-collapse heading="Recent" heading-button expanded>
-          <simple-button-grid columns="5" always-expanded part="grid">
-            ${this.recentGizmoList.map((gizmo, i) => html`
-              <simple-popover-selection event="hover">
-                <hax-tray-button
-                  small
-                  show-text-label
-                  voice-command="insert ${gizmo.title}"
-                  draggable="true"
-                  @dragstart="${this._dragStart}"
-                  index="${i}"
-                  label="${gizmo.title}"
-                  event-name="insert-tag"
-                  event-data="${gizmo.tag}"
-                  data-demo-schema="true"
-                  icon-position="top"
-                  icon="${gizmo.icon}"
-                  part="grid-button"
-                  slot="button"
-                ></hax-tray-button>
-                <hax-element-demo
-                  render-tag="${gizmo.tag}"
-                  slot="options"
-                ></hax-element-demo>
-                ${gizmo.shortcutKey ? html`<div slot="options"><kbd style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
-                ">${this.daemonKeyCombo} + ${gizmo.shortcutKey}</kbd></div>` : ``}
-              </simple-popover-selection>`
-            )}
-          </simple-button-grid>
-        </a11y-collapse>
-      ${this.categories.map((tag) => html`
-        <a11y-collapse heading="${this.ucfirst(tag)}" heading-button>
+        <simple-button-grid columns="5" always-expanded part="grid">
+          ${this.recentGizmoList.map(
+            (gizmo, i) => html` <simple-popover-selection event="hover">
+              <hax-tray-button
+                small
+                show-text-label
+                voice-command="insert ${gizmo.title}"
+                draggable="true"
+                @dragstart="${this._dragStart}"
+                index="${i}"
+                label="${gizmo.title}"
+                event-name="insert-tag"
+                event-data="${gizmo.tag}"
+                data-demo-schema="true"
+                icon-position="top"
+                icon="${gizmo.icon}"
+                part="grid-button"
+                slot="button"
+              ></hax-tray-button>
+              <hax-element-demo
+                render-tag="${gizmo.tag}"
+                slot="options"
+              ></hax-element-demo>
+              ${gizmo.shortcutKey
+                ? html`<div slot="options">
+                    <kbd
+                      style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
+                "
+                      >${this.daemonKeyCombo} + ${gizmo.shortcutKey}</kbd
+                    >
+                  </div>`
+                : ``}
+            </simple-popover-selection>`
+          )}
+        </simple-button-grid>
+      </a11y-collapse>
+      ${this.categories.map(
+        (tag) => html` <a11y-collapse
+          heading="${this.ucfirst(tag)}"
+          heading-button
+        >
           <simple-button-grid columns="3" always-expanded part="grid">
             ${this.filtered.map(
-              (gizmo, i) => html`${gizmo && gizmo.tags && gizmo.tags.includes(tag) ? html`
-                <simple-popover-selection event="hover">
-                  <hax-tray-button
-                    show-text-label
-                    voice-command="insert ${gizmo.title}"
-                    draggable="true"
-                    @dragstart="${this._dragStart}"
-                    index="${i}"
-                    label="${gizmo.title}"
-                    event-name="insert-tag"
-                    event-data="${gizmo.tag}"
-                    data-demo-schema="true"
-                    icon-position="top"
-                    icon="${gizmo.icon}"
-                    part="grid-button"
-                    slot="button"
-                  ></hax-tray-button>
-                  ${gizmo.shortcutKey ? html`<div slot="options"><kbd style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
-                ">${this.daemonKeyCombo} + ${gizmo.shortcutKey}</kbd></div>` : ``}
-                  <hax-element-demo
-                    render-tag="${gizmo.tag}"
-                    slot="options"
-                  ></hax-element-demo>
-                </simple-popover-selection>`: ``}`
-                )}
-            </simple-button-grid>
+              (gizmo, i) =>
+                html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
+                  ? html` <simple-popover-selection event="hover">
+                      <hax-tray-button
+                        show-text-label
+                        voice-command="insert ${gizmo.title}"
+                        draggable="true"
+                        @dragstart="${this._dragStart}"
+                        index="${i}"
+                        label="${gizmo.title}"
+                        event-name="insert-tag"
+                        event-data="${gizmo.tag}"
+                        data-demo-schema="true"
+                        icon-position="top"
+                        icon="${gizmo.icon}"
+                        part="grid-button"
+                        slot="button"
+                      ></hax-tray-button>
+                      ${gizmo.shortcutKey
+                        ? html`<div slot="options">
+                            <kbd
+                              style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
+                "
+                              >${this.daemonKeyCombo} +
+                              ${gizmo.shortcutKey}</kbd
+                            >
+                          </div>`
+                        : ``}
+                      <hax-element-demo
+                        render-tag="${gizmo.tag}"
+                        slot="options"
+                      ></hax-element-demo>
+                    </simple-popover-selection>`
+                  : ``}`
+            )}
+          </simple-button-grid>
         </a11y-collapse>`
       )}`;
   }

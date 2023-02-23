@@ -19,19 +19,19 @@ export class SuperDaemonRow extends LitElement {
     };
   }
   static get tag() {
-    return 'super-daemon-row';
+    return "super-daemon-row";
   }
 
   static get properties() {
     return {
-      title: { type: String},
-      path: { type: String},
-      icon: { type: String},
-      key: { type: String},
-      eventName: { type: String, attribute: "event-name"},
+      title: { type: String },
+      path: { type: String },
+      icon: { type: String },
+      key: { type: String },
+      eventName: { type: String, attribute: "event-name" },
       value: { type: Object },
-      tags: { type: Array }
-    }
+      tags: { type: Array },
+    };
   }
 
   static get styles() {
@@ -48,7 +48,10 @@ export class SuperDaemonRow extends LitElement {
         }
         button:focus,
         button:hover {
-          background-color: var(--super-daemon-row-hover, rgba(0,100,200,.1));
+          background-color: var(
+            --super-daemon-row-hover,
+            rgba(0, 100, 200, 0.1)
+          );
           outline: 2px solid black;
         }
         button {
@@ -95,31 +98,38 @@ export class SuperDaemonRow extends LitElement {
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 4px;
           color: rgba(0, 0, 0, 0.7);
-          box-shadow: rgb(209 213 219) 0px -4px 0px inset, rgb(0 0 0 / 40%) 0px 1px 1px;
+          box-shadow: rgb(209 213 219) 0px -4px 0px inset,
+            rgb(0 0 0 / 40%) 0px 1px 1px;
           padding: 6px 8px;
           margin: 0px auto;
           display: block;
           font-size: 14px;
           word-spacing: 1px;
           letter-spacing: -2px;
-          font-family: 'Press Start 2P', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          font-family: "Press Start 2P", "Trebuchet MS", "Lucida Sans Unicode",
+            "Lucida Grande", "Lucida Sans", Arial, sans-serif;
         }
-    `]
+      `,
+    ];
   }
 
   selected(e) {
     // execute the event
-    this.dispatchEvent(new CustomEvent(this.eventName,{
-      composed: true,
-      bubbles: true,
-      detail: this.value
-    }));
+    this.dispatchEvent(
+      new CustomEvent(this.eventName, {
+        composed: true,
+        bubbles: true,
+        detail: this.value,
+      })
+    );
     // close dialog bc we executed that command
-    this.dispatchEvent(new CustomEvent('super-daemon-close',{
-      composed: true,
-      bubbles: true,
-      detail: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent("super-daemon-close", {
+        composed: true,
+        bubbles: true,
+        detail: true,
+      })
+    );
   }
   pickColor(val) {
     if (val === 0) {
@@ -136,12 +146,17 @@ export class SuperDaemonRow extends LitElement {
           <div class="path">${this.path}</div>
         </div>
         <div class="tags">
-          ${this.tags.map((tag, i) => html`
-            <simple-tag accent-color="${this.pickColor(i)}" value="${tag}"></simple-tag>`
+          ${this.tags.map(
+            (tag, i) => html` <simple-tag
+              accent-color="${this.pickColor(i)}"
+              value="${tag}"
+            ></simple-tag>`
           )}
         </div>
         <div class="key-combo">
-        ${this.key ? html`<kbd class="keyboard-shortcut">${this.key}</kbd>`: ``}
+          ${this.key
+            ? html`<kbd class="keyboard-shortcut">${this.key}</kbd>`
+            : ``}
         </div>
       </button>
     `;

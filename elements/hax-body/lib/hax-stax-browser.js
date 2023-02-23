@@ -58,23 +58,23 @@ class HaxStaxBrowser extends LitElement {
   }
   render() {
     return html`
-    <a11y-collapse heading="${this.label}" heading-button>
-      <simple-button-grid columns="2" rows="1" always-expanded>
-        ${this.staxList.map(
-          (stax) => html`
-            <hax-tray-button
-              icon-position="top"
-              show-text-label
-              index="${stax.index}"
-              label="${stax.details.title}"
-              .stax="${stax.stax}"
-              icon="hax:templates"
-              color="green"
-              event-name="insert-stax"
-            ></hax-tray-button>
-          `
-        )}
-      </simple-button-grid>
+      <a11y-collapse heading="${this.label}" heading-button>
+        <simple-button-grid columns="2" rows="1" always-expanded>
+          ${this.staxList.map(
+            (stax) => html`
+              <hax-tray-button
+                icon-position="top"
+                show-text-label
+                index="${stax.index}"
+                label="${stax.details.title}"
+                .stax="${stax.stax}"
+                icon="hax:templates"
+                color="green"
+                event-name="insert-stax"
+              ></hax-tray-button>
+            `
+          )}
+        </simple-button-grid>
       </a11y-collapse>
     `;
   }
@@ -89,7 +89,7 @@ class HaxStaxBrowser extends LitElement {
       staxList: {
         type: Array,
       },
-      label: { type: String }
+      label: { type: String },
     };
   }
 }

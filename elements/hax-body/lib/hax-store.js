@@ -2053,7 +2053,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "+": { tag: "ul", content: "<li></li>" },
       "---": { tag: "hr" },
       "***": { tag: "hr" },
-      "___": { tag: "hr" },
+      ___: { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
     };
@@ -3548,22 +3548,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
           // only add in support for commands we'd expect to see
-          if (!gizmo.meta || (!gizmo.meta.inlineOnly &&
-            !gizmo.meta.hidden)) {
-              SuperDaemonInstance.defineOption({
-                title: gizmo.title,
-                icon: gizmo.icon,
-                key: gizmo.shortcutKey ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}` : null,
-                tags: gizmo.tags || [],
-                value: {
-                  value: gizmo.tag,
-                  eventName: "insert-tag",
-                  demoSchema: true,
-                },
-                eventName: "hax-super-daemon-insert-tag",
-                path: "HAX/insert/block/" + gizmo.tag,
-              });    
-            }
+          if (!gizmo.meta || (!gizmo.meta.inlineOnly && !gizmo.meta.hidden)) {
+            SuperDaemonInstance.defineOption({
+              title: gizmo.title,
+              icon: gizmo.icon,
+              key: gizmo.shortcutKey
+                ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}`
+                : null,
+              tags: gizmo.tags || [],
+              value: {
+                value: gizmo.tag,
+                eventName: "insert-tag",
+                demoSchema: true,
+              },
+              eventName: "hax-super-daemon-insert-tag",
+              path: "HAX/insert/block/" + gizmo.tag,
+            });
+          }
         }
         this.elementList[detail.tag] = detail.properties;
         // only push new values on if we got something new

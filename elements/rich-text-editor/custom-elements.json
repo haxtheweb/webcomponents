@@ -288,7 +288,7 @@
       "attributes": [
         {
           "name": "blocks",
-          "description": "`blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\nProperty: blocks\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+          "description": "`blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\nProperty: blocks\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "hideNullOption",

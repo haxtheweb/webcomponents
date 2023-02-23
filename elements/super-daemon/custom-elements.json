@@ -2,14 +2,308 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "super-daemon-row",
+      "path": "./lib/super-daemon-row.js",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "path",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "name": "event-name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "path",
+          "attribute": "path",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "key",
+          "attribute": "key",
+          "type": "string"
+        },
+        {
+          "name": "eventName",
+          "attribute": "event-name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "tags",
+          "attribute": "tags",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "shadowRootOptions",
+          "type": "object",
+          "default": "{\"delegatesFocus\":true}"
+        }
+      ],
+      "events": [
+        {
+          "name": "super-daemon-close"
+        }
+      ]
+    },
+    {
+      "name": "super-daemon-ui",
+      "path": "./lib/super-daemon-ui.js",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "items",
+          "description": "These are the items to be filtered",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string",
+          "default": "\"index\""
+        },
+        {
+          "name": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "shadowRootOptions",
+          "type": "object",
+          "default": "{\"delegatesFocus\":true}"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "These are the items to be filtered",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "like",
+          "attribute": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "attribute": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string",
+          "default": "\"index\""
+        },
+        {
+          "name": "caseSensitive",
+          "attribute": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "attribute": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "filter"
+        },
+        {
+          "name": "filtered-changed"
+        }
+      ]
+    },
+    {
       "name": "super-daemon",
       "path": "./src/super-daemon.js",
-      "description": "`super-daemon`\n``"
+      "description": "`super-daemon`\n``",
+      "attributes": [
+        {
+          "name": "key1",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "key2",
+          "type": "string",
+          "default": "\"Shift\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "key1",
+          "attribute": "key1",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "key2",
+          "attribute": "key2",
+          "type": "string",
+          "default": "\"Shift\""
+        }
+      ]
     },
     {
       "name": "super-daemon",
       "path": "./super-daemon.js",
-      "description": "`super-daemon`\n``"
+      "description": "`super-daemon`\n``",
+      "attributes": [
+        {
+          "name": "key1",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "key2",
+          "type": "string",
+          "default": "\"Shift\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "key1",
+          "attribute": "key1",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "key2",
+          "attribute": "key2",
+          "type": "string",
+          "default": "\"Shift\""
+        }
+      ]
     }
   ]
 }

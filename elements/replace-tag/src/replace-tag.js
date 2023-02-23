@@ -153,7 +153,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       if (this.getAttribute("import-only") != null) {
         this.exists = false;
         setTimeout(() => {
-          this.remove();          
+          this.remove();
         }, 0);
       } else {
         for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
@@ -179,7 +179,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         if (this.getAttribute("import-only") != null) {
           this.exists = false;
           setTimeout(() => {
-            this.remove();          
+            this.remove();
           }, 0);
         } else {
           // just the props off of this for complex state

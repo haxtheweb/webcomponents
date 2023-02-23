@@ -799,7 +799,11 @@ class HaxTray extends I18NMixin(
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
-      <hax-stax-browser id="staxbrowser" ?hidden="${hidden}" label="${this.t.templates}"></hax-stax-browser>
+      <hax-stax-browser
+        id="staxbrowser"
+        ?hidden="${hidden}"
+        label="${this.t.templates}"
+      ></hax-stax-browser>
     </div>`;
   }
   get contentMapTemplate() {
@@ -916,7 +920,7 @@ class HaxTray extends I18NMixin(
         break;
       case "super-daemon":
         SuperDaemonInstance.opened = !SuperDaemonInstance.opened;
-      break;
+        break;
       case "content-map":
         this.trayDetail = e.detail.eventName;
         this.collapsed = false;
@@ -1207,10 +1211,14 @@ class HaxTray extends I18NMixin(
       if (propName == "activeGizmo" && this.trayDetail !== "view-source") {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
-          if (!oldValue || !["content-map", "content-edit", "content-add"].includes(this.trayDetail)) {
+          if (
+            !oldValue ||
+            !["content-map", "content-edit", "content-add"].includes(
+              this.trayDetail
+            )
+          ) {
             this.trayDetail = "content-edit";
           }
-          
         } else {
           // force a gizmo change (which then implies adding to the page)
           // to select the edit tab if we just added something into the page

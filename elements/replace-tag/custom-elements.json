@@ -8,12 +8,12 @@
     },
     {
       "name": "replace-tag",
-      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `template` - ",
+      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `exists` {`boolean`} - ",
       "attributes": []
     },
     {
       "name": "replace-tag",
-      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `template` - ",
+      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `exists` {`boolean`} - ",
       "attributes": []
     }
   ],

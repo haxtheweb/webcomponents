@@ -29,7 +29,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       recordAudio: "Record audio",
       cancel: "Cancel",
       uploadMedia: "Upload media",
-    };    
+    };
     this.registerLocalization({
       context: this,
       namespace: "hax",

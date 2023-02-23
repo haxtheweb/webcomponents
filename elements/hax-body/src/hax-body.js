@@ -1142,7 +1142,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               break;
             case "Escape":
               this._useristyping = true;
-            break;
+              break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":

@@ -465,9 +465,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @readonly
    */
   get blockquoteButton() {
-    return {
-
-    };
+    return {};
   }
   /**
    * default config for an indent button

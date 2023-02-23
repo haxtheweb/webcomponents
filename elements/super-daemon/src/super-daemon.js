@@ -19,7 +19,7 @@ class SuperDaemon extends LitElement {
       key2: { type: String },
       icon: { type: String },
       items: { type: Array },
-    }
+    };
   }
   /**
    * HTMLElement
@@ -32,8 +32,7 @@ class SuperDaemon extends LitElement {
     const isSafari = window.safari !== undefined;
     if (isSafari) {
       this.key1 = "Ctrl";
-    }
-    else {
+    } else {
       this.key1 = "Alt";
     }
     this.key2 = "Shift";
@@ -41,13 +40,19 @@ class SuperDaemon extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('keydown', this.keyHandler.bind(this));
-    window.addEventListener('super-daemon-define-option', this.defineOptionEvent.bind(this));
+    window.addEventListener("keydown", this.keyHandler.bind(this));
+    window.addEventListener(
+      "super-daemon-define-option",
+      this.defineOptionEvent.bind(this)
+    );
   }
   disconnectedCallback() {
     super.connectedCallback();
-    window.removeEventListener('keydown', this.keyHandler.bind(this));
-    window.removeEventListener('super-daemon-define-option', this.defineOptionEvent.bind(this));
+    window.removeEventListener("keydown", this.keyHandler.bind(this));
+    window.removeEventListener(
+      "super-daemon-define-option",
+      this.defineOptionEvent.bind(this)
+    );
   }
   // take in via event
   defineOptionEvent(e) {
@@ -57,7 +62,14 @@ class SuperDaemon extends LitElement {
   // minor validation of option; as we have a singleton this is faster when required
   defineOption(option) {
     if (option && option.value && option.title && option.eventName) {
-      option.index = option.tags.join(" ") + " " + option.title + " " + option.key + " " + option.path;
+      option.index =
+        option.tags.join(" ") +
+        " " +
+        option.title +
+        " " +
+        option.key +
+        " " +
+        option.path;
       this.items.push(option);
     }
   }
@@ -71,8 +83,7 @@ class SuperDaemon extends LitElement {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {
           this.opened = !this.opened;
-        }
-        else if (this.key1 == "Alt" && e.altKey) {
+        } else if (this.key1 == "Alt" && e.altKey) {
           this.opened = !this.opened;
         }
       }
@@ -81,19 +92,33 @@ class SuperDaemon extends LitElement {
       }
       // if we hit enter while in the combo box, we should select the 1st option
       // or move between items as far as focus
-      if (this.opened && this.shadowRoot.querySelector('super-daemon-ui').filtered.length > 0) {
-        switch(e.key) {
+      if (
+        this.opened &&
+        this.shadowRoot.querySelector("super-daemon-ui").filtered.length > 0
+      ) {
+        switch (e.key) {
           case "Enter":
             // @todo dont do this if we have focus on an item
-            this.shadowRoot.querySelector('super-daemon-ui').shadowRoot.querySelector("super-daemon-row").selected();
-          break;
+            this.shadowRoot
+              .querySelector("super-daemon-ui")
+              .shadowRoot.querySelector("super-daemon-row")
+              .selected();
+            break;
           case "ArrowUp":
             // @todo get focus on the row via an "active" parameter so we can just target that in the UI
-            this.shadowRoot.querySelector('super-daemon-ui').shadowRoot.querySelector("super-daemon-row").shadowRoot.querySelector("button").focus();
-          break;
+            this.shadowRoot
+              .querySelector("super-daemon-ui")
+              .shadowRoot.querySelector("super-daemon-row")
+              .shadowRoot.querySelector("button")
+              .focus();
+            break;
           case "ArrowDown":
-            this.shadowRoot.querySelector('super-daemon-ui').shadowRoot.querySelector("super-daemon-row").shadowRoot.querySelector("button").focus();
-          break;
+            this.shadowRoot
+              .querySelector("super-daemon-ui")
+              .shadowRoot.querySelector("super-daemon-row")
+              .shadowRoot.querySelector("button")
+              .focus();
+            break;
         }
       }
     }
@@ -149,7 +174,8 @@ class SuperDaemon extends LitElement {
         :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
           left: calc(50% - var(--simple-modal-width, 75vw) / 2);
         }
-    `];
+      `,
+    ];
   }
   /**
    * Close the modal and do some clean up
@@ -194,25 +220,32 @@ class SuperDaemon extends LitElement {
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.right = 0;
     }
-    this.shadowRoot.querySelector('super-daemon-ui').shadowRoot.querySelector('simple-fields-field').focus();
+    this.shadowRoot
+      .querySelector("super-daemon-ui")
+      .shadowRoot.querySelector("simple-fields-field")
+      .focus();
   }
   /**
    * LitElement render callback
    */
   render() {
     return html`
-    <web-dialog
-      id="dialog"
-      center
-      role="dialog"
-      part="dialog"
-      aria-label="Super Daemon"
-      aria-modal="true"
-      ?open="${this.opened}"
-      @open="${this.open}"
-      @close="${this.close}"
-    >
-      <super-daemon-ui icon="${this.icon}" .items="${this.items}" @super-daemon-close="${this.close}"></super-daemon-ui>
+      <web-dialog
+        id="dialog"
+        center
+        role="dialog"
+        part="dialog"
+        aria-label="Super Daemon"
+        aria-modal="true"
+        ?open="${this.opened}"
+        @open="${this.open}"
+        @close="${this.close}"
+      >
+        <super-daemon-ui
+          icon="${this.icon}"
+          .items="${this.items}"
+          @super-daemon-close="${this.close}"
+        ></super-daemon-ui>
       </web-dialog>
     `;
   }
@@ -234,11 +267,10 @@ export { SuperDaemon };
 window.SuperDaemonManager = window.SuperDaemonManager || {};
 window.SuperDaemonManager.requestAvailability = () => {
   if (!window.SuperDaemonManager.instance) {
-    window.SuperDaemonManager.instance = document.createElement(
-      "super-daemon"
-    );
+    window.SuperDaemonManager.instance = document.createElement("super-daemon");
     document.body.appendChild(window.SuperDaemonManager.instance);
   }
   return window.SuperDaemonManager.instance;
 };
-export const SuperDaemonInstance = window.SuperDaemonManager.requestAvailability();
+export const SuperDaemonInstance =
+  window.SuperDaemonManager.requestAvailability();

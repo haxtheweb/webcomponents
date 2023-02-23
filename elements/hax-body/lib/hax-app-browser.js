@@ -85,20 +85,21 @@ class HaxAppBrowser extends LitElement {
               columns="2"
             >
               ${this.appList.map(
-                (app) => html` ${app.details.tags.includes(tag)
-                  ? html` <hax-tray-button
-                      class="${this.searching ? "visibility-hidden" : ""}"
-                      show-text-label
-                      icon-position="top"
-                      index="${app.index}"
-                      label="${app.details.title}"
-                      icon="${app.details.icon}"
-                      color="${app.details.color}"
-                      event-name="search-selected"
-                      event-data="${app.index}"
-                    >
-                    </hax-tray-button>`
-                  : ``}`
+                (app) =>
+                  html` ${app.details.tags.includes(tag)
+                    ? html` <hax-tray-button
+                        class="${this.searching ? "visibility-hidden" : ""}"
+                        show-text-label
+                        icon-position="top"
+                        index="${app.index}"
+                        label="${app.details.title}"
+                        icon="${app.details.icon}"
+                        color="${app.details.color}"
+                        event-name="search-selected"
+                        event-data="${app.index}"
+                      >
+                      </hax-tray-button>`
+                    : ``}`
               )}
             </simple-button-grid>
           </a11y-collapse>

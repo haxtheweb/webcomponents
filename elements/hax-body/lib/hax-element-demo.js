@@ -36,8 +36,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
     ];
   }
   render() {
-    return html`
-    <div class="wrap">
+    return html` <div class="wrap">
       <slot></slot>
     </div>`;
   }

@@ -17,13 +17,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
     this.icon = "hardware:keyboard-return";
   }
   static get tag() {
-    return 'super-daemon-ui';
+    return "super-daemon-ui";
   }
 
   static get properties() {
     return {
       ...super.properties,
-      icon: { type: String }
+      icon: { type: String },
     };
   }
 
@@ -59,7 +59,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
           min-height: 20vh;
           overflow-y: scroll;
         }
-        simple-fields-field, simple-fields-field:focus, simple-fields-field:hover {
+        simple-fields-field,
+        simple-fields-field:focus,
+        simple-fields-field:hover {
           border: 1px solid transparent;
           box-shadow: none;
           outline: 0px;
@@ -79,17 +81,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
         }
         simple-fields-field::part(label) {
           opacity: 0;
-          height:0;
-          width:0;
-          position:absolute;
+          height: 0;
+          width: 0;
+          position: absolute;
           pointer-events: none;
         }
-    `]
+      `,
+    ];
   }
 
   inputfilterChanged(e) {
     this.like = e.target.value;
-    
   }
 
   render() {
@@ -110,17 +112,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
       </div>
       <div class="results">
-        ${this.filtered.map((item, i) => html`
-          <super-daemon-row
-            data-row-index="${i}"
-            .value="${item.value}"
-            icon="${item.icon}"
-            title="${item.title}"
-            .tags="${item.tags}"
-            event-name="${item.eventName}"
-            path="${item.path}"
-            key="${item.key}"></super-daemon-row>
-        `)}
+        ${this.filtered.map(
+          (item, i) => html`
+            <super-daemon-row
+              data-row-index="${i}"
+              .value="${item.value}"
+              icon="${item.icon}"
+              title="${item.title}"
+              .tags="${item.tags}"
+              event-name="${item.eventName}"
+              path="${item.path}"
+              key="${item.key}"
+            ></super-daemon-row>
+          `
+        )}
       </div>
     `;
   }
