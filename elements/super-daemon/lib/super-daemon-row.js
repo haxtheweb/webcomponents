@@ -113,7 +113,23 @@ export class SuperDaemonRow extends LitElement {
     ];
   }
 
-  selected(e) {
+  keyEvent(e) {
+    // ensure that the daemon dialog does not accidentally duplicate or get this
+    // when our focus was on a specific item while using the keyboard
+    if (e.type === "keydown" && e.code === "Enter" || e.code === "Space") {
+      this.selected();
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();  
+    }
+  }
+
+  clickEvent(e) {
+    this.selected();
+  }
+
+
+  selected() {
     // execute the event
     this.dispatchEvent(
       new CustomEvent(this.eventName, {
@@ -139,7 +155,7 @@ export class SuperDaemonRow extends LitElement {
   }
   render() {
     return html`
-      <button @click="${this.selected}">
+      <button @click="${this.clickEvent}" @keydown="${this.keyEvent}">
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
         <div class="label-wrap">
           <div class="action">${this.title}</div>

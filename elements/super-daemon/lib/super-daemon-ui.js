@@ -8,6 +8,7 @@ import "./super-daemon-row.js";
 export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
   constructor() {
     super();
+    this.opened = false;
     this.items = [];
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
@@ -24,6 +25,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
     return {
       ...super.properties,
       icon: { type: String },
+      opened: { type: Boolean, reflect: true },
     };
   }
 
@@ -88,6 +90,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
         }
       `,
     ];
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "opened") {
+        if (this.opened) {
+          this.shadowRoot.querySelector("#inputfilter").focus();
+          // reset to top of results
+          this.shadowRoot.querySelector(".results").scrollTo(0,0);
+        }
+      }
+    });
   }
 
   inputfilterChanged(e) {

@@ -76,7 +76,6 @@ class SuperDaemon extends LitElement {
 
   keyHandler(e) {
     // modifier required to activate
-    console.log(e.key);
     if (this.allowedCallback()) {
       // open and close events
       if (this.key2 == "Shift" && e.shiftKey) {
@@ -242,6 +241,7 @@ class SuperDaemon extends LitElement {
         @close="${this.close}"
       >
         <super-daemon-ui
+          ?open="${this.opened}"
           icon="${this.icon}"
           .items="${this.items}"
           @super-daemon-close="${this.close}"
