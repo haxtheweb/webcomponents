@@ -60,7 +60,7 @@ class WysiwygHax extends LitElement {
       this.__importContent = template.cloneNode(true);
     }
     this.openDefault = false;
-    this.elementAlign = "right";
+    this.elementAlign = "left";
     this.fieldId = "textarea-input-field";
     this.fieldName = "data[content]";
     this.endPoint = null;

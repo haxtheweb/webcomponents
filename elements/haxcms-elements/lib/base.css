@@ -1,4 +1,9 @@
 body, html, :root {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
   scroll-behavior: smooth;
   --haxcms-system-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
@@ -14,7 +19,7 @@ body, html, :root {
   --haxcms-tooltip-color: #FFFFFF;
   --haxcms-tooltip-background-color: #000000;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
-
+  --haxcms-base-styles-body-font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   /** HAX specific settings **/
   --hax-color-bg: var(--haxcms-system-bg, #37474f);
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
@@ -33,7 +38,7 @@ body, html, :root {
   --hax-panel-item-ink: var(--haxcms-color, white);
   --hax-panel-item-bg: #000000;
   --hax-panel-item-text: #EEEEEE;
-  --hax-tray-width: 300px;
+  --hax-tray-width: 350px;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
   --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
   --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
@@ -162,7 +167,7 @@ body, html {
   padding: 0;
   margin: 0;
   font-size: var(--haxcms-base-styles-body-font-size, 16px);
-  font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
+  font-family: var(--haxcms-base-styles-body-font-family);
   line-height: var(--haxcms-base-styles-body-line-height, 1.8);
   letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
 }
@@ -194,6 +199,10 @@ h5 {
 
 h6 {
   font-size: var(--hax-base-styles-h6-font-size);
+}
+
+hr {
+  border-top-width: 2px;
 }
 
 p {
@@ -263,6 +272,26 @@ pre {
   margin-top: 0;
   font-family: var(--hax-base-styles-pre-font-family, ui-monospace,monospace);
   font-size: 12px;
+}
+
+blockquote {
+  font-family: var(
+    --hax-base-styles-accent-font-family,
+    "Playfair Display",
+    serif
+  );
+  font-size: var(
+    --hax-base-styles-blockquote-font-size,
+    calc(1.33333337 * var(--haxcms-base-styles-body-font-size, 18px))
+  );
+  font-style: italic;
+  letter-spacing: -0.36px;
+  line-height: 44.4px;
+  overflow-wrap: break-word;
+  margin: 55px 0 33px 0;
+  color: rgba(0, 0, 0, 0.68);
+  padding: 0 0 0 50px;
+  border-left: 0.25em solid #d7d0de;
 }
 
 dt {

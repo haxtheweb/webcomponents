@@ -63,7 +63,7 @@ class LayoutBuilder extends PolymerElement {
         description: "A new UI for adding content to layouts",
         icon: "icons:android",
         color: "green",
-        groups: ["Builder"],
+        tags: ["Developer", "Layout"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

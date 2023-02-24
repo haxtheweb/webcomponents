@@ -12,7 +12,6 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";

@@ -161,7 +161,7 @@ class EditableTable extends editBehaviors(LitElement) {
   // about to convert to content, ensure we are no longer the editable-table
   async haxpreProcessNodeToContent(node) {
     node.editMode = false;
-    node.innerHTML = '';
+    node.innerHTML = "";
     await node.appendChild(this.getTableHTML(true, true));
     //node.data = null;/
     node.config = null;

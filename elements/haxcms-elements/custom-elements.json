@@ -105,16 +105,12 @@
     },
     {
       "name": "haxcms-outline-editor-dialog",
-      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\n  * `t` - \n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display\n\n  * `t` - ",
+      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\n  * `t` - \n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `viewMode` {`boolean`} - Which edit mode to display\n\n  * `t` - ",
       "attributes": [
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - opened state of the dialog inside here\n\nProperty: opened",
           "valueSet": "v"
-        },
-        {
-          "name": "manifestItems",
-          "description": "`manifestItems` {`any[]`} - Outline of items in json outline schema format\n\nProperty: manifestItems"
         },
         {
           "name": "manifest-items-static",
@@ -123,6 +119,10 @@
         {
           "name": "view-label",
           "description": "`view-label` {`string`} - Display label, switch when hitting the toggle button\n\nProperty: viewLabel"
+        },
+        {
+          "name": "manifestItems",
+          "description": "`manifestItems` {`any[]`} - Outline of items in json outline schema format\n\nProperty: manifestItems\n\nDefault: "
         },
         {
           "name": "view-mode",
@@ -2403,6 +2403,43 @@
           "name": "dark-mode",
           "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
           "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "site-remote-content",
+      "description": "`site-remote-content`\n`Remote render of content given a site URL and UUID`\n\nAttributes:\n\n  * `loading` {`boolean`} - \n\n  * `uuid` {`string`} - \n\n  * `siteurl` {`string`} - \n\n  * `show-title` {`boolean`} - \n\n  * `breakreference` {`boolean`} - \n\n  * `_remoteTitle` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `circularBlock` {`boolean`} - \n\n  * `itemManifest` - \n\n  * `loading` {`boolean`} - \n\n  * `uuid` {`string`} - \n\n  * `siteurl` {`string`} - \n\n  * `showTitle` {`boolean`} - \n\n  * `breakreference` {`boolean`} - \n\n  * `_remoteTitle` {`string`} - \n\n  * `t` - ",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "uuid",
+          "description": "`uuid` {`string`} - \n\nProperty: uuid\n\nDefault: null"
+        },
+        {
+          "name": "siteurl",
+          "description": "`siteurl` {`string`} - \n\nProperty: siteurl\n\nDefault: "
+        },
+        {
+          "name": "show-title",
+          "description": "`show-title` {`boolean`} - \n\nProperty: showTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "breakreference",
+          "description": "`breakreference` {`boolean`} - \n\nProperty: breakreference\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "_remoteTitle",
+          "description": "`_remoteTitle` {`string`} - \n\nProperty: _remoteTitle\n\nDefault: null"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },

@@ -1,5 +1,4 @@
 import { html, css } from "lit";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
 
@@ -15,15 +14,18 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
+    this.__winEvents = this.__winEvents || {};
     this.__winEvents = {
-      "hax-app-picker-selection": "_haxAppPickerSelection",
+      ...this.__winEvents,
       "place-holder-file-drop": "_placeHolderFileDrop",
     };
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "t") this.label = this.t.uploadMedia;
+      if (propName === "t") {
+        this.label = this.t.uploadMedia;
+      }
     });
   }
   /**

@@ -190,3 +190,11 @@ For example:
 ## Contributing
 
 Contributions are always welcome!
+
+## Active contributors
+
+- [@btopro](https://www.github.com/btopro)
+- [@cgldevel](https://www.github.com/cgldevel)
+
+## Additional contributions
+Past contributors, student and larger community, can be found here: https://github.com/elmsln/lrnwebcomponents/graphs/contributors

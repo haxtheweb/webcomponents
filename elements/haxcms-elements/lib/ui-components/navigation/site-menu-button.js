@@ -41,7 +41,8 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         button {
           display: flex;
           cursor: pointer;
-          transition: 0.2s color linear;
+          transition: color, outline 0.2s ease;
+          outline: 2px transparent;
           min-width: unset;
           background-color: var(
             --site-menu-button-button-background-color,
@@ -59,9 +60,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         button:hover,
         button:focus,
         button:active {
-          color: var(--site-menu-button-button-hover-color, inherit);
           outline: 2px solid var(--site-menu-button-button-hover-color, inherit);
-          outline-offset: 2px;
           background-color: var(
             --site-menu-button-button-hover-background-color,
             inherit
@@ -70,14 +69,12 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         button:hover simple-icon-lite,
         button:focus simple-icon-lite,
         button:active simple-icon-lite {
-          --simple-icon-fill-color: var(
-            --site-menu-button-button-hover-color,
-            black
-          );
+          color: var(--site-menu-button-button-hover-color, inherit);
         }
         simple-icon-lite {
           display: block;
           font-size: 16px;
+          transition: 0.2s color ease;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
           color: var(--site-menu-button-icon-fill-color, black);

@@ -47,6 +47,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
       { label: "Heading 4", tag: "h4" },
       { label: "Heading 5", tag: "h5" },
       { label: "Heading 6", tag: "h6" },
+      { label: "Blockquote", tag: "blockquote" },
       { label: "Preformatted", tag: "pre" },
     ];
     this.command = "formatBlock";

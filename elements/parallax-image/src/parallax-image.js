@@ -145,12 +145,11 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         description: "Image scroll by",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Image", "Media"],
+        tags: ["Images", "Media", "style"],
         handles: [
           {
             type: "image",
             url: "source",
-            ariaDescribedby: "describedBy",
           },
         ],
         meta: {
@@ -172,15 +171,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             inputMethod: "textarea",
           },
         ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-          },
-        ],
+        advanced: [],
       },
     };
   }

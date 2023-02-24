@@ -47,6 +47,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           margin: 0;
           padding: 0;
         }
+        .updatecontent {
+          background-color: var(--simple-colors-default-theme-green-1);
+          color: var(--simple-colors-default-theme-green-8);
+        }
         hax-toolbar {
           flex: 0 0 auto;
           background-color: var(--hax-ui-background-color);
@@ -74,7 +78,16 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar always-expanded>
+      <hax-toolbar>
+        <hax-tray-button
+          label="${this.t.updateHTML}"
+          icon="icons:check"
+          @click="${this.importContent}"
+          show-text-label
+          icon-position="top"
+          class="updatecontent"
+        >
+        </hax-tray-button>
         <simple-toolbar-menu
           icon="icons:file-upload"
           icon-position="top"
@@ -211,14 +224,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
             ></hax-tray-button>
           </simple-toolbar-menu-item>
         </simple-toolbar-menu>
-        <hax-tray-button
-          label="${this.t.updateContent}"
-          icon="icons:check"
-          @click="${this.importContent}"
-          show-text-label
-          icon-position="top"
-        >
-        </hax-tray-button>
       </hax-toolbar>
       <div id="wrapper">
         <div id="spacer"></div>
@@ -602,7 +607,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   constructor() {
     super();
     this.t = {
-      updateContent: "Update content",
+      updateHTML: "Update HTML",
       copyHTML: "Copy HTML",
       downloadContent: "Download content",
       downloadHTML: "Download HTML",

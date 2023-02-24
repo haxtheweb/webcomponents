@@ -34,7 +34,7 @@ class HtmlBlock extends HTMLElement {
         description: "A basic HTML block that provides HAXschema wiring",
         icon: "hax:html-code",
         color: "red",
-        groups: ["Block"],
+        tags: ["Other", "developer", "html"],
         handles: [
           {
             type: "html",

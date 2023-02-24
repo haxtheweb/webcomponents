@@ -65,9 +65,10 @@
     "@lrnwebcomponents/simple-tooltip": "^4.1.0",
     "@lrnwebcomponents/undo-manager": "^4.1.0",
     "@lrnwebcomponents/utils": "^4.1.0",
+    "@lrnwebcomponents/media-image": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "^2.4.1",
-    "mobx": "6.6.2"
+    "lit": "^2.6.1",
+    "mobx": "6.7.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-collapse": "^4.1.0",
@@ -81,7 +82,6 @@
     "@lrnwebcomponents/lrn-math": "^4.1.0",
     "@lrnwebcomponents/lrn-table": "^4.1.0",
     "@lrnwebcomponents/lrn-vocab": "^4.1.0",
-    "@lrnwebcomponents/media-image": "^4.1.0",
     "@lrnwebcomponents/meme-maker": "^4.1.0",
     "@lrnwebcomponents/multiple-choice": "^4.1.0",
     "@lrnwebcomponents/oer-schema": "^4.1.0",

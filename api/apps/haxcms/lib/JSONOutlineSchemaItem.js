@@ -17,5 +17,6 @@ export class JSONOutlineSchemaItem
     this.title = 'New item';
     this.description = '';
     this.metadata = {};
+    this.contents = null;
   }
 }

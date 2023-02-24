@@ -39,6 +39,7 @@ export const PrintBranchMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="print-branch-btn"
+                class="btn"
                 icon="${this.__printBranchLoading
                   ? `hax:loading`
                   : `icons:print`}"

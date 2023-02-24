@@ -516,6 +516,16 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       })
     );
+    // inject cms styles for uniformity between shadowroot
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = new URL("../base.css", import.meta.url).href;
+    this.querySelector("#hax")
+      .shadowRoot.querySelector("style")
+      .parentNode.insertBefore(
+        link,
+        this.querySelector("#hax").shadowRoot.querySelector("style").nextSibling
+      );
   }
 
   updated(changedProperties) {
@@ -853,10 +863,12 @@ class HAXCMSSiteEditor extends LitElement {
           formData.append("type", structure);
           formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
           formData.append("upload", file);
+          this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
             "@haxcms/docxToSite",
             formData
           );
+          store.toast("finished!", 300);
           // must be a valid response and have at least SOME html to bother attempting
           if (
             response.status == 200 &&
@@ -878,7 +890,7 @@ class HAXCMSSiteEditor extends LitElement {
               const b1 = document.createElement("button");
               b1.innerText = "Confirm";
               b1.classList.add("hax-modal-btn");
-              b1.addEventListener('click', async (e) => {
+              b1.addEventListener("click", async (e) => {
                 const data = await outline.getData();
                 let deleted = 0;
                 let modified = 0;
@@ -886,25 +898,29 @@ class HAXCMSSiteEditor extends LitElement {
                 data.items.map((item) => {
                   if (item.delete) {
                     deleted++;
-                  }
-                  else if (item.new) {
+                  } else if (item.new) {
                     added++;
-                  }
-                  else if (item.modified) {
+                  } else if (item.modified) {
                     modified++;
                   }
                 });
-                let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+                let sumChanges = `${
+                  added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                }${
+                  modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
+                }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
                 let confirmation = false;
                 // no confirmation required if there are no tracked changes
-                if (sumChanges == '') {
+                if (sumChanges == "") {
                   confirmation = true;
-                }
-                else {
-                  confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+                } else {
+                  confirmation = window.confirm(
+                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                  );
                 }
                 if (confirmation) {
                   this.querySelector("#createajax").body = data;
+                  this.setProcessingVisual();
                   this.querySelector("#createajax").generateRequest();
                   const evt = new CustomEvent("simple-modal-hide", {
                     bubbles: true,
@@ -919,7 +935,7 @@ class HAXCMSSiteEditor extends LitElement {
               b2.innerText = "Cancel";
               b2.classList.add("hax-modal-btn");
               b2.classList.add("cancel");
-              b2.addEventListener('click', (e) => {
+              b2.addEventListener("click", (e) => {
                 const evt = new CustomEvent("simple-modal-hide", {
                   bubbles: true,
                   composed: true,
@@ -929,7 +945,7 @@ class HAXCMSSiteEditor extends LitElement {
                 window.dispatchEvent(evt);
               });
               // button container
-              const div = document.createElement('div');
+              const div = document.createElement("div");
               div.appendChild(b1);
               div.appendChild(b2);
 
@@ -961,9 +977,9 @@ class HAXCMSSiteEditor extends LitElement {
             });
           }
         });
-      }
-      else {
+      } else {
         this.querySelector("#createajax").body = reqBody;
+        this.setProcessingVisual();
         this.querySelector("#createajax").generateRequest();
         const evt = new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -971,7 +987,7 @@ class HAXCMSSiteEditor extends LitElement {
           cancelable: true,
           detail: {},
         });
-        window.dispatchEvent(evt); 
+        window.dispatchEvent(evt);
       }
     }
   }
@@ -1011,6 +1027,7 @@ class HAXCMSSiteEditor extends LitElement {
         id: e.detail.item.id,
       },
     };
+    this.setProcessingVisual();
     this.querySelector("#deleteajax").generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
@@ -1249,6 +1266,7 @@ class HAXCMSSiteEditor extends LitElement {
           schema: await HAXStore.htmlToHaxElements(body),
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1269,6 +1287,7 @@ class HAXCMSSiteEditor extends LitElement {
           details: e.detail,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1285,8 +1304,22 @@ class HAXCMSSiteEditor extends LitElement {
         },
         items: e.detail,
       };
+      this.setProcessingVisual();
       this.querySelector("#outlineupdateajax").generateRequest();
     }
+  }
+  // processing visualization
+  setProcessingVisual() {
+    let loadingIcon = document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.height = "150px";
+    loadingIcon.style.marginLeft = "8px";
+    store.toast(`Processing`, 5000, {
+      hat: "construction",
+      slot: loadingIcon,
+    });
   }
   /**
    * Save the outline based on an event firing.
@@ -1316,6 +1349,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     if (this.saveManifestPath) {
       this.querySelector("#manifestupdateajax").body = values;
+      this.setProcessingVisual();
       this.querySelector("#manifestupdateajax").generateRequest();
     }
   }
@@ -1340,6 +1374,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: this.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#publishajax").generateRequest();
     }
   }
@@ -1355,6 +1390,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#syncajax").generateRequest();
     }
   }
@@ -1370,6 +1406,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#revertajax").generateRequest();
     }
   }

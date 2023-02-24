@@ -1,6 +1,9 @@
 import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
-import { HaxStore, HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import {
+  HaxStore,
+  HAXStore,
+} from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import { localStorageSet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -161,11 +164,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           grid-template-columns: 20% 60% 20%;
           overflow: visible;
         }
-        @media (max-width: 600px) {
-          app-hax-top-bar::part(top-bar) {
-            grid-template-columns: 15% 70% 15%;
-          }
-        }
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-12, black);
         }
@@ -324,6 +322,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             display: none;
           }
         }
+        @media (max-width: 600px) {
+          simple-toolbar {
+            --simple-toolbar-button-padding: 0px;
+          }
+          app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 10% 80% 10%;
+          }
+          .haxLogo simple-icon-lite {
+            margin: 0px;
+          }
+          .characterbtn-name {
+            display: none;
+          }
+        }
       `,
     ];
   }
@@ -338,7 +350,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // look up the UUID
     if (e.detail.value && store.findItem(e.detail.value)) {
       const item = toJS(store.findItem(e.detail.value));
-      HAXStore.haxTray.shadowRoot.querySelector("[name='settings.configure.href']").value = item.slug;
+      HAXStore.haxTray.shadowRoot.querySelector(
+        "[name='settings.configure.href']"
+      ).value = item.slug;
     }
   }
   constructor() {
@@ -353,10 +367,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = this.t || {};
     window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
     if (HAXStore.ready) {
-      let s = document.createElement('site-remote-content');
+      let s = document.createElement("site-remote-content");
       HAXStore.haxAutoloader.appendChild(s);
       // site-remote-content injects citation element so ensure it's in there too!
-      let ce = document.createElement('citation-element');
+      let ce = document.createElement("citation-element");
       HAXStore.haxAutoloader.appendChild(ce);
 
       // links need to be given support for internal linkage updates on the form
@@ -379,7 +393,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // walk back through parent tree
             let distance = "- ";
             while (itemBuilder && itemBuilder.parent != null) {
-              itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+              itemBuilder = itemManifest.find(
+                (i) => i.id == itemBuilder.parent
+              );
               // double check structure is sound
               if (itemBuilder) {
                 distance = "--" + distance;
@@ -399,7 +415,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           itemsList: items,
         });
         setTimeout(() => {
-          HAXStore.haxTray.shadowRoot.querySelector("[name='settings.configure.data-uuid']").addEventListener("value-changed", this._internalLinkChanged.bind(this));            
+          HAXStore.haxTray.shadowRoot
+            .querySelector("[name='settings.configure.data-uuid']")
+            .addEventListener(
+              "value-changed",
+              this._internalLinkChanged.bind(this)
+            );
         }, 100);
       };
     }
@@ -490,7 +511,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   haxStoreReady(e) {
     // it is safe to add in elements that we want the editor to have every haxcms instance
     if (e.detail) {
-      let s = document.createElement('site-remote-content');
+      let s = document.createElement("site-remote-content");
       HAXStore.haxAutoloader.appendChild(s);
     }
   }
@@ -514,7 +535,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   render() {
     return html`
       <app-hax-top-bar part="top-bar">
-        <span slot="left">
+        <span slot="left" class="home-btn">
           <a
             href="${this.backLink}"
             class="haxLogo"
@@ -639,19 +660,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             tabindex="${this.editMode ? "-1" : "0"}"
           >
             <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              id="editdetails"
-              hidden
-              ?disabled="${this.editMode}"
-              icon="hax:page-details"
-              icon-position="left"
-              @click="${this._editDetailsButtonTap}"
-              label="${this.t.editDetails}"
-              show-text-label
-              voice-command="edit (page) details"
-              part="detailsbtn"
-              tabindex="${this.editMode ? "-1" : "0"}"
-            ></simple-toolbar-button>
+              <simple-toolbar-button
+                id="editdetails"
+                hidden
+                ?disabled="${this.editMode}"
+                icon="hax:page-details"
+                icon-position="left"
+                @click="${this._editDetailsButtonTap}"
+                label="${this.t.editDetails}"
+                show-text-label
+                voice-command="edit (page) details"
+                part="detailsbtn"
+                tabindex="${this.editMode ? "-1" : "0"}"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <simple-toolbar-button
@@ -1076,7 +1097,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer[i].dispose();
     }
     window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
-    window.removeEventListener("hax-store-ready", this.haxStoreReady.bind(this));
+    window.removeEventListener(
+      "hax-store-ready",
+      this.haxStoreReady.bind(this)
+    );
 
     super.disconnectedCallback();
   }

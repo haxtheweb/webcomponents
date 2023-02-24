@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css, nothing } from "lit";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
@@ -163,7 +163,7 @@ class A11yGifPlayer extends I18NMixin(
                   slot="summary"
                   @load="${this.__imageLoaded}"
                 />`
-              : nothing}
+              : ``}
 
             <button
               id="button"
@@ -195,7 +195,7 @@ class A11yGifPlayer extends I18NMixin(
             </a11y-details>
           </div>
         `
-      : nothing} `;
+      : ``} `;
   }
   /**
    * Convention
@@ -271,7 +271,37 @@ class A11yGifPlayer extends I18NMixin(
       // import on visibility
       if (propName === "elementVisible" && this[propName]) {
         import("@lrnwebcomponents/a11y-details/a11y-details.js");
+        // support for automatic web service scrape of the gif for a still image
+        if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
+          // import registry
+          import(
+            "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js"
+          ).then(() => {
+            this._automaticStill = true;
+            this.srcWithoutAnimation = this.generateStill(this.src);
+          });
+        }
       }
+      // support src changing after the fact, we are visible, and set to automatic generation
+      if (
+        this.shadowRoot &&
+        propName === "src" &&
+        this[propName] &&
+        this.elementVisible &&
+        this._automaticStill
+      ) {
+        this.srcWithoutAnimation = this.generateStill(this.src);
+      }
+    });
+  }
+  generateStill(src) {
+    // enable core services, though should be available
+    const MicroFrontendRegistry =
+      window.MicroFrontendRegistry.requestAvailability();
+    MicroFrontendRegistry.enableServices(["core"]);
+    return MicroFrontendRegistry.url("@core/imgManipulate", {
+      quality: 50,
+      src: src,
     });
   }
   /**

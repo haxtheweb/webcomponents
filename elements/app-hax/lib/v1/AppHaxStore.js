@@ -85,7 +85,7 @@ class Store {
         step: 2,
         name: "step-2",
         label: "Structure",
-        statement: "How is this organized?",
+        statement: "How is the :structure organized?",
         title: "Step 2: Structure",
       },
       {
@@ -94,7 +94,7 @@ class Store {
         step: 3,
         name: "step-3",
         label: "Theme select",
-        statement: "What your :structure feels like?",
+        statement: "What your site feels like?",
         title: "Step 3: Theme",
       },
       {
@@ -103,7 +103,7 @@ class Store {
         step: 4,
         name: "step-4",
         label: "Name",
-        statement: "What do you want to call your :structure?",
+        statement: "What do you want to call your site?",
         title: "Step 4: Name",
       },
       {

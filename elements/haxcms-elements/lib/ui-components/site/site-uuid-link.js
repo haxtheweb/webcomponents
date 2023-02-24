@@ -90,7 +90,15 @@ class SiteUuidLink extends LitElement {
           "A link to a specific resource in the site your working on.",
         icon: "icons:link",
         color: "grey",
-        groups: ["Content", "CMS"],
+        tags: [
+          "Magic",
+          "haxcms",
+          "content",
+          "remote",
+          "reference",
+          "url",
+          "resource",
+        ],
         handles: [
           {
             type: "inline",

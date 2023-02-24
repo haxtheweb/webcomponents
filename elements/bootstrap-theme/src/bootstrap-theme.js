@@ -223,7 +223,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .pull-right {
           float: right;
         }
-        :host([is-logged-in]) .pull-right {
+        :host([is-logged-in]) .site-body {
           top: 48px;
         }
         .btn-container {

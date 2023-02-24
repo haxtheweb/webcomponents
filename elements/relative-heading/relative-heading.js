@@ -101,7 +101,17 @@ class RelativeHeading extends RelativeHeadingLite {
           "outputs the correct heading hierarchy based on parent's heading",
         icon: "icons:android",
         color: "green",
-        groups: ["Heading"],
+        tags: [
+          "Content",
+          "heading",
+          "header",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

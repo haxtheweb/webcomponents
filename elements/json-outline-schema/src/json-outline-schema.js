@@ -571,11 +571,10 @@ class JsonOutlineSchema extends HTMLElement {
         parent.children = children;
       }
       // sort order at this level
-      children.sort((a,b) => {
+      children.sort((a, b) => {
         if (a.order < b.order) {
           return -1;
-        }
-        else if (a.order > b.order) {
+        } else if (a.order > b.order) {
           return 1;
         }
         return 0;

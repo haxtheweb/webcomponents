@@ -140,7 +140,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         description: "An image gallery displayed as a carousel or a grid",
         icon: "image:collections",
         color: "cyan",
-        groups: ["Content", "Instructional", "Media", "Image"],
+        tags: ["Layout", "Media", "Images"],
         handles: [
           {
             type: "image",

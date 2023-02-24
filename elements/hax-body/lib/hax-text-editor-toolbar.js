@@ -63,6 +63,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           border-width: 1px;
           margin: -1px;
           padding: 0px;
+          --simple-toolbar-button-width: 26px;
+          --simple-toolbar-button-height: 26px;
+        }
+        ::slotted(.list-indent-button-group) {
+          line-height: 20px;
         }
         ::slotted(.group),
         ::slotted([icon-position]) {
@@ -78,6 +83,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         }
         :host ::slotted(*:hover) {
           z-index: 3 !important;
+        }
+        div {
+          --simple-toolbar-button-width: 26px;
+          --simple-toolbar-button-height: 26px;
+          line-height: 30px;
+          height: 30px;
+        }
+        rich-text-editor-button {
+          height: 30px;
+          --simple-toolbar-button-width: 26px;
+          --simple-toolbar-button-height: 26px;
+          line-height: 30px;
         }
       `,
     ];
@@ -214,7 +231,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get formatBlocks() {
     return [
       { label: this.t.blockP, tag: "p" },
-      { label: this.t.blockH1, tag: "h1" },
+      { label: this.t.blockquoteButton, tag: "blockquote" },
       { label: this.t.blockH2, tag: "h2" },
       { label: this.t.blockH3, tag: "h3" },
       { label: this.t.blockH4, tag: "h4" },
@@ -448,10 +465,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @readonly
    */
   get blockquoteButton() {
-    return {
-      ...super.blockquoteButton,
-      label: this.t.blockquoteButton,
-    };
+    return {};
   }
   /**
    * default config for an indent button

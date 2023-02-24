@@ -8,13 +8,13 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   }
   constructor() {
     super();
-    this.tagName = null;
+    this.renderTag = null;
     this.activeSchema = -1;
   }
   static get properties() {
     return {
       ...super.properties,
-      tagName: { type: String, attribute: "tag-name" },
+      renderTag: { type: String, attribute: "render-tag" },
       activePickerSchema: { type: Number, attribute: "active-picker-schema" },
     };
   }
@@ -24,21 +24,28 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         :host {
           display: block;
           overflow: hidden;
-          max-width: 200px;
-          max-height: 250px;
+          height: 150px;
+          width: 150px;
+        }
+        div ::slotted(*) {
+          transform: scale(0.4) translate(-75%, -75%);
+          width: 500px;
+          max-height: 300px;
         }
       `,
     ];
   }
   render() {
-    return html`<slot></slot>`;
+    return html` <div class="wrap">
+      <slot></slot>
+    </div>`;
   }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "tagName" && this[propName]) {
+      if (propName === "renderTag" && this[propName]) {
         this.innerHTML = "";
         let schema = HAXStore.haxSchemaFromTag(this[propName]);
         var el;

@@ -48,7 +48,7 @@
     "@lrnwebcomponents/simple-popover": "^4.1.0",
     "@lrnwebcomponents/hax-iconset": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "lit": "2.4.1",
+    "lit": "^2.6.1",
     "mobx": "6.7.0"
   },
   "devDependencies": {

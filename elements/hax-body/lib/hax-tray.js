@@ -31,6 +31,7 @@ import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "./hax-tray-button.js";
 import "./hax-toolbar-menu.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -64,7 +65,6 @@ class HaxTray extends I18NMixin(
     this.t = {
       structure: "Outline",
       structureTip: "View Page Structure",
-      editSelected: "Edit selected",
       edit: "Edit",
       save: "Save",
       move: "Move",
@@ -81,6 +81,7 @@ class HaxTray extends I18NMixin(
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
       takeATour: "Help",
+      superMenu: "Super menu",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -91,7 +92,6 @@ class HaxTray extends I18NMixin(
       cancelWithoutSaving: "Cancel without saving",
       configure: "Configure",
       advanced: "Advanced",
-      layout: "Layout",
       alignment: "Alignment",
       left: "Left",
       center: "Center",
@@ -108,12 +108,11 @@ class HaxTray extends I18NMixin(
     this._initial = true;
     this.activeValue = {
       settings: {
-        layout: {
+        configure: {},
+        advanced: {
           __position: "hax-align-left",
           __scale: 100,
         },
-        configure: {},
-        advanced: {},
       },
     };
     this.collapsed = true;
@@ -179,11 +178,6 @@ class HaxTray extends I18NMixin(
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
-          transition: 0s color linear 0s;
-        }
-        :host(:focus-within),
-        :host(:hover) {
-          z-index: var(--hax-ui-focus-z-index);
         }
         .wrapper {
           position: fixed;
@@ -199,12 +193,22 @@ class HaxTray extends I18NMixin(
           width: var(--hax-tray-width);
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
-          transition: 0.2s opacity ease-in-out 0s;
           z-index: var(--hax-ui-focus-z-index);
+        }
+        :host(:hover) .wrapper {
+          overflow: visible;
         }
         :host([element-align="left"]) .wrapper {
           left: -1000px;
           flex-direction: row;
+        }
+        :host([tray-detail="view-source"]) .detail {
+          width: 50vw;
+          height: 50vh;
+          min-height: 300px;
+          min-width: 300px;
+          resize: both;
+          flex: unset;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
@@ -226,14 +230,11 @@ class HaxTray extends I18NMixin(
           left: 0;
           right: 0;
         }
-        :host([edit-mode]) .wrapper.full-panel .detail {
-          max-width: unset;
-        }
+
         #menubar {
           display: inline-flex;
           flex-direction: column;
           align-items: stretch;
-          width: var(--hax-tray-menubar-min-width);
           overflow: visible;
           flex: 0 0 auto;
           z-index: 6;
@@ -249,28 +250,15 @@ class HaxTray extends I18NMixin(
           padding: var(--hax-ui-spacing-xs);
         }
         #menubar > *::part(label) {
-          opacity: 0;
           margin: 0px;
-          width: 0%;
           font-size: 10px;
-          padding: 0px;
-          visibility: hidden;
-          overflow: hidden;
           display: inline-block;
           text-align: left;
-          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
-            0.2s padding ease-in-out 0s, 0s opacity linear 0.2s,
-            0s visibility linear 0.2s;
-        }
-        :host([collapsed]) #menubar > *::part(label) {
           opacity: 1;
           width: 100%;
           visibility: visible;
           padding: 0px var(--hax-ui-spacing-sm);
           overflow: unset;
-          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
-            0.2s padding ease-in-out 0s, 0s opacity linear 0s,
-            0s visibility linear 0s, 0s overflow linear 0.2s;
         }
         loading-indicator {
           --loading-indicator-background-color: var(
@@ -293,13 +281,10 @@ class HaxTray extends I18NMixin(
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          transition: 0.2s opacity ease-in-out 0s, 0.2s width ease-in-out 0s,
-            0.2s visibility ease-in-out 0s, 0s border linear;
           border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
-          transition: 0.2s width ease-in-out 0s;
-          max-height: 100vh;
-          max-width: calc(
+          max-height: calc(100vh - 48px);
+          width: calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
           );
           overflow-x: auto;
@@ -341,14 +326,11 @@ class HaxTray extends I18NMixin(
         }
         #toggle-tray-size {
           flex: 0 0 auto;
+          margin-right: 8px;
         }
         hax-tray-button,
         hax-app-browser,
         hax-gizmo-browser {
-          transition: 0.2s all ease-in-out;
-          transition: 0s color linear !important;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
           visibility: visible;
         }
         hax-tray-button:not(:defined),
@@ -388,6 +370,15 @@ class HaxTray extends I18NMixin(
             width: 100%;
             z-index: calc(var(--hax-ui-focus-z-index) + 3);
           }
+          :host([edit-mode]) .wrapper.full-panel .detail {
+            max-width: 100vw;
+            max-height: unset;
+            min-width: unset;
+          }
+          #tray-detail {
+            max-width: unset;
+            max-height: unset;
+          }
           .wrapper {
             width: unset;
             top: -1000px;
@@ -400,7 +391,6 @@ class HaxTray extends I18NMixin(
           }
           :host([collapsed]) .wrapper {
             height: var(--hax-tray-menubar-min-height);
-            overflow-y: visible;
           }
           :host([element-align="left"]) .wrapper {
             left: -1000px;
@@ -429,8 +419,15 @@ class HaxTray extends I18NMixin(
           #haxMenuAlign {
             display: none;
           }
-          .detail {
+          :host([tray-detail="view-source"]) .detail {
             width: 100%;
+            resize: unset;
+            height: 100vh;
+          }
+          :host([tray-detail="view-source"]) #tray-detail {
+            overflow: hidden;
+          }
+          .detail {
             position: relative;
             flex: 1 1 100%;
           }
@@ -465,9 +462,7 @@ class HaxTray extends I18NMixin(
       <div class="wrapper ${this.trayStatus}">
         ${this.menuToolbarTemplate}
         <div class="detail">
-          <loading-indicator
-            ?loading="${this.loading}"
-          ></loading-indicator>
+          <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
       </div>
@@ -646,7 +641,7 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="${this.t.editSelected} ${this.activeTagName}"
+        tooltip="${this.t.edit} ${this.activeTagName}"
         toggles
         ?toggled="${!this.collapsed && this.trayDetail === "content-edit"}"
         icon-position="left"
@@ -736,6 +731,18 @@ class HaxTray extends I18NMixin(
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
+      ></hax-tray-button>
+      <hax-tray-button
+        event-name="super-daemon"
+        icon="android"
+        label="${this.t.superMenu}"
+        voice-command="${this.t.superMenu}"
+        toggles
+        ?toggled="${!this.collapsed && this.tourOpened}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       ></hax-tray-button> `;
   }
   get trayDetailTemplate() {
@@ -747,9 +754,6 @@ class HaxTray extends I18NMixin(
       selected-detail="${this.trayDetail}"
     >
       <div class="tray-detail-titlebar">
-        <h4>
-          ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
-        </h4>
         <hax-tray-button
           voice-command="collapse menu"
           id="toggle-tray-size"
@@ -758,6 +762,7 @@ class HaxTray extends I18NMixin(
           label="${this.t.close}"
         >
         </hax-tray-button>
+        <h4>${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}</h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
@@ -789,15 +794,17 @@ class HaxTray extends I18NMixin(
   }
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
-    return html` <hax-gizmo-browser
+    return html`<div class="block-add-wrapper">
+      <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
-      <h5 ?hidden="${hidden}">${this.t.templates}</h5>
       <hax-stax-browser
         id="staxbrowser"
         ?hidden="${hidden}"
-      ></hax-stax-browser>`;
+        label="${this.t.templates}"
+      ></hax-stax-browser>
+    </div>`;
   }
   get contentMapTemplate() {
     return html`<hax-map
@@ -857,8 +864,9 @@ class HaxTray extends I18NMixin(
         let haxElement;
         // get schema for that version of events
         let schema = HAXStore.haxSchemaFromTag(e.detail.value);
+        HAXStore.recentGizmoList.push(schema.gizmo);
         if (
-          target.getAttribute("data-demo-schema") &&
+          (target.getAttribute("data-demo-schema") || e.detail.demoSchema) &&
           schema &&
           schema.demoSchema &&
           schema.demoSchema[0]
@@ -899,7 +907,7 @@ class HaxTray extends I18NMixin(
         let directions = ["left", "right"],
           direction = !!directions[e.detail.index]
             ? directions[e.detail.index]
-            : "right";
+            : "left";
         if (e.detail.index > 1) this.collapsed = true;
         this.style.setProperty("--hax-tray-custom-y", null);
         this.style.setProperty("--hax-tray-custom-x", null);
@@ -909,6 +917,9 @@ class HaxTray extends I18NMixin(
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
+        break;
+      case "super-daemon":
+        SuperDaemonInstance.opened = !SuperDaemonInstance.opened;
         break;
       case "content-map":
         this.trayDetail = e.detail.eventName;
@@ -1201,8 +1212,10 @@ class HaxTray extends I18NMixin(
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
           if (
-            (!oldValue || this.trayDetail !== "content-edit") &&
-            this.trayDetail !== "content-map"
+            !oldValue ||
+            !["content-map", "content-edit", "content-add"].includes(
+              this.trayDetail
+            )
           ) {
             this.trayDetail = "content-edit";
           }
@@ -1234,12 +1247,11 @@ class HaxTray extends I18NMixin(
     this._initial = true;
     this.activeValue = {
       settings: {
-        layout: {
+        configure: {},
+        advanced: {
           __position: "hax-align-left",
           __scale: 100,
         },
-        configure: {},
-        advanced: {},
       },
     };
     this.shadowRoot.querySelector("#settingsform").fields = [];
@@ -1258,7 +1270,7 @@ class HaxTray extends I18NMixin(
         this.humanName = props.gizmo.title;
       }
       // first, allow element properties to dictate defaults
-      for (var property in this.activeHaxElement.properties) {
+      for (let property in this.activeHaxElement.properties) {
         props.settings.configure.forEach((el) => {
           if (el.property === property) {
             this.activeValue.settings.configure[property] =
@@ -1330,29 +1342,29 @@ class HaxTray extends I18NMixin(
       });
       // then we need to work on the layout piece
       if (activeNode.style.width != "") {
-        this.activeValue.settings.layout.__scale =
+        this.activeValue.settings.advanced.__scale =
           activeNode.style.width.replace("%", "");
       } else {
-        this.activeValue.settings.layout.__scale = 100;
+        this.activeValue.settings.advanced.__scale = 100;
       }
       if (
         activeNode.style.display == "block" &&
         activeNode.style.margin == "0px auto" &&
         activeNode.style.float == "right"
       ) {
-        this.activeValue.settings.layout.__position = "hax-align-right";
+        this.activeValue.settings.advanced.__position = "hax-align-right";
       } else if (
         activeNode.style.display == "block" &&
         activeNode.style.margin == "0px auto"
       ) {
-        this.activeValue.settings.layout.__position = "hax-align-center";
+        this.activeValue.settings.advanced.__position = "hax-align-center";
       } else {
-        this.activeValue.settings.layout.__position = "hax-align-left";
+        this.activeValue.settings.advanced.__position = "hax-align-left";
       }
       this.activeHaxElement.properties.__scale =
-        this.activeValue.settings.layout.__scale;
+        this.activeValue.settings.advanced.__scale;
       this.activeHaxElement.properties.__position =
-        this.activeValue.settings.layout.__position;
+        this.activeValue.settings.advanced.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       let isGrid = !!props.type && props.type === "grid";
       props.settings.configure.forEach((val, key) => {
@@ -1375,14 +1387,13 @@ class HaxTray extends I18NMixin(
             props.settings.advanced[key].slot;
         }
       });
-      props.settings.layout = [];
       // test if this element can be aligned
       if (props.canPosition) {
-        props.settings.layout.push({
+        props.settings.advanced.unshift({
           property: "__position",
           title: this.t.alignment,
           inputMethod: "select",
-          value: this.activeValue.settings.layout.__position,
+          value: this.activeValue.settings.advanced.__position,
           options: {
             "hax-align-left": this.t.left,
             "hax-align-center": this.t.center,
@@ -1392,11 +1403,11 @@ class HaxTray extends I18NMixin(
       }
       // test if this element can be scaled
       if (props.canScale) {
-        props.settings.layout.push({
+        props.settings.advanced.unshift({
           property: "__scale",
           title: this.t.width,
           inputMethod: "slider",
-          value: this.activeValue.settings.layout.__scale,
+          value: this.activeValue.settings.advanced.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,
           max: props.canScale.max ? props.canScale.max : 100,
           step: props.canScale.step ? props.canScale.step : 12.5,
@@ -1434,8 +1445,6 @@ class HaxTray extends I18NMixin(
       }
       // see if we have any configure settings or disable
       setProps("configure", this.t.configure, props.settings.configure);
-      // see if we have any layout settings or disable
-      setProps("layout", this.t.layout, props.settings.layout);
       // see if we have any configure settings or disable
       setProps("advanced", this.t.advanced, props.settings.advanced);
       this.__activePropSchema = props;
@@ -1467,6 +1476,14 @@ class HaxTray extends I18NMixin(
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
   _updateTrayDetail(newValue) {
+    if (
+      newValue &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(".detail")
+    ) {
+      this.shadowRoot.querySelector(".detail").style.width = "";
+      this.shadowRoot.querySelector(".detail").style.height = "";
+    }
     if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
@@ -1508,7 +1525,6 @@ class HaxTray extends I18NMixin(
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",
-        layout: "layout",
       };
       var setAhead;
       clearTimeout(this.__contextPropDebounce);
@@ -1546,7 +1562,7 @@ class HaxTray extends I18NMixin(
                 setAhead = true;
               }
               // this is a special internal held "property" for layout stuff
-              else if (key === "layout" && prop === "__position") {
+              else if (key === "advanced" && prop === "__position") {
                 setAhead = true;
                 if (!this._initial) {
                   clearTimeout(this.__contextValueDebounce);
@@ -1565,7 +1581,7 @@ class HaxTray extends I18NMixin(
                 }
               }
               // this is a special internal held "property" for layout stuff
-              else if (key === "layout" && prop === "__scale") {
+              else if (key === "advanced" && prop === "__scale") {
                 setAhead = true;
                 if (!this._initial) {
                   clearTimeout(this.__contextSizeDebounce);
@@ -1612,7 +1628,7 @@ class HaxTray extends I18NMixin(
               } else if (!isGrid) {
                 // need to specifically walk through slots if there is anything
                 // that says it has to come from a slot
-                for (var propTmp in this.__activePropSchema.settings[key]) {
+                for (let propTmp in this.__activePropSchema.settings[key]) {
                   if (
                     this.__activePropSchema.settings[key][propTmp].slot == prop
                   ) {
@@ -1653,7 +1669,7 @@ class HaxTray extends I18NMixin(
                       this.__activePropSchema.settings[key][propTmp]
                         .slotAttributes
                     ) {
-                      for (var attr in this.__activePropSchema.settings[key][
+                      for (let attr in this.__activePropSchema.settings[key][
                         propTmp
                       ].slotAttributes) {
                         tmpel.setAttribute(

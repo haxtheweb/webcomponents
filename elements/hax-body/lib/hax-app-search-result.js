@@ -38,7 +38,7 @@ class HaxAppSearchResult extends LitElement {
         button:hover,
         button:focus,
         button:active {
-          outline-color: var(--hax-tray-accent-color);
+          outline-color: var(--hax-ui-color-accent);
           outline-width: 4px;
           outline-style: solid;
           opacity: 1;

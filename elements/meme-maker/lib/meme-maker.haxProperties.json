@@ -7,15 +7,14 @@
     "description": "Make a meme out of an image",
     "icon": "hax:meme",
     "color": "orange",
-    "groups": ["Media", "Funny"],
+    "tags": ["Images", "media", "funny", "meme", "image"],
     "handles": [
       {
         "type": "image",
         "source": "imageUrl",
         "title": "topText",
         "author": "bottomText",
-        "alt": "alt",
-        "ariaDescribedby": "describedBy"
+        "alt": "alt"
       }
     ],
     "meta": {
@@ -41,16 +40,16 @@
         "title": "Bottom text",
         "description": "Bottom text of the meme.",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "alt",
+        "title": "Alternative text",
+        "description": "Text to describe the image to non-sighted users.",
+        "inputMethod": "alt",
+        "required": true
       }
     ],
-    "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-describedby",
-        "description": "Space-separated list of IDs for elements that describe the image.",
-        "inputMethod": "textfield"
-      }
-    ]
+    "advanced": []
   },
   "saveOptions": {
     "wipeSlot": true

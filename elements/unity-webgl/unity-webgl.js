@@ -175,10 +175,10 @@ class UnityWebgl extends HTMLElement {
         description: "Unity WebGL Player",
         icon: "av:games",
         color: "purple",
-        groups: ["3D"],
+        tags: ["3D", "game", "unity", "media"],
         handles: [],
         meta: {
-          author: "Brainmedia",
+          author: "HAXTheWeb core team",
         },
       },
       settings: {

@@ -222,7 +222,7 @@ class LrndesignPaperstack extends SimpleColors {
         description: "A stack of papers",
         icon: "icons:content-copy",
         color: "grey",
-        groups: ["Content", "Layout"],
+        tags: ["Content", "Layout", "design", "lrn"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

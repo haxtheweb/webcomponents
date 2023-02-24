@@ -12,34 +12,44 @@ const baseMdUrl = `${process.env.VERCEL_ENV !== 'development' ? 'https': 'http'}
 
 export default async function handler(req, res) {
   let body = {};
-  if (req.query) {
-    body = req.query;
-  }
-  else {
-    body = stdPostBody(req);
-  }
+  body = stdPostBody(req);
   if (!body || !body.md) {
     res = invalidRequest(res, 'missing `md` param');
   }
   else {
     const sourceLink = body.md;
     let tmp = new URL(sourceLink);
+    // ensure we end in /SUMMARY.md or else we don't know what to load up
+    //https://raw.githubusercontent.com/dmd-program/dmd-300-master/master/SUMMARY.md
+    //https://github.com/dmd-program/dmd-300-master
+    // ensure we go from github to raw git response for the md
+    if (tmp.href.indexOf("github.com")) {
+      tmp.href = tmp.href.replace('github.com', 'raw.githubusercontent.com');
+    }
+    // if we have /blob/ that's on the frontend so remove it from the path
+    if (tmp.href.indexOf('/blob/')) {
+      tmp.href = tmp.href.replace('/blob/','/');
+    }
+    // if we lack summary, add it in
+    if (tmp.href.indexOf('SUMMARY.md') == -1) {
+      tmp.href += '/master/SUMMARY.md';
+    }
     // md is a link
-    let md = await fetch(sourceLink.trim()).then((d) => d.ok ? d.text(): '');
-    // if theme is set, bring it along
-    let theme = 'clean-one';
-    if (body.theme) {
-      theme = body.theme;
-    }
+    let md = await fetch(tmp.href.trim()).then((d) => d.ok ? d.text(): '');
     let name = tmp.pathname.split('/')[1] || 'New site';
-    if (body.name) {
-      name = body.name;
-    }
-    stdResponse(res, await listToJOS(await mdClass.render(md), sourceLink, theme, name), {cache: 180, type: "application/json" });
+    const JOS = await listToJOS(await mdClass.render(md), tmp.href.trim(), name);
+    stdResponse(res, {
+      data: {
+        items: JOS.items,
+        filename: name,
+        files: {}
+      },
+      status: 200
+    }, {cache: 180, type: "application/json" });
   }
 }
 
-async function listToJOS(html, sourceLink, theme, name) {
+async function listToJOS(html, sourceLink, name) {
   const doc = parse(`<div>${html}</div>`);
   let top = doc.querySelector('ul');
   for (var index in top.childNodes) {
@@ -52,7 +62,8 @@ async function listToJOS(html, sourceLink, theme, name) {
       item.order = index;
       item.indent = 0;
       item.slug = a.getAttribute('href');
-      item.location = baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'));
+      item.location = `content/${a.getAttribute('href')}`;
+      item.contents = await fetch(baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'))).then((d) => d.ok ? d.text(): '');
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {
@@ -60,31 +71,6 @@ async function listToJOS(html, sourceLink, theme, name) {
       }
     }
   }
-  site.title = name;
-  site.metadata = {
-    author: {},
-    site: {
-      name: name,
-      logo: "assets/banner.jpg",
-      version: "6.0.0",
-      created: Date.now(),
-      updated: Date.now(),
-    },
-    theme: {
-      element: theme,
-      path: `@lrnwebcomponents/${theme}/${theme}.js`,
-      name: theme,
-      variables: {
-        image: "",
-        hexCode: "#aeff00",
-        cssVariable: "--simple-colors-default-theme-light-blue-7",
-        icon: "av:closed-caption"
-      }
-    }
-  };
-  delete site.file;
-  delete site.__siteFileBase;
-  delete site.__fetchOptions;
   return site;
 }
 
@@ -99,7 +85,27 @@ async function recurseToJOS(parent, top, depth, sourceLink) {
       item.order = index;
       item.indent = depth;
       item.slug = a.getAttribute('href');
-      item.location = baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'));
+      item.location = `content/${a.getAttribute('href')}`;
+      item.contents = await fetch(baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'))).then((d) => d.ok ? d.text(): '');
+      // @todo walk the contents response looking for internal links (rewrite them) and img / file references (reference and rewrite the references)
+      const doc = parse(`<div>${item.contents}</div>`);
+      let imgs = doc.querySelector('img');
+      for (var index in imgs) {
+        // look at the image reference to see if it's internal to the repo
+        // ./ or no trailing or ../ or / so long as it's not http...
+        // add it to our collection of files that we need to be aware of for later downloading
+        // rewrite the reference to be something that's in this key'ed output
+        let link = new URL(imgs[index].getAttribute('src'));
+      }
+      // now do that for links
+      let as = doc.querySelector('a');
+      for (var index in as) {
+        // look at the image reference to see if it's internal to the repo
+        // ./ or no trailing or ../ or / so long as it's not http...
+        // add it to our collection of files that we need to be aware of for later downloading
+        // rewrite the reference to be something that's in this key'ed output
+        let link = new URL(as[index].getAttribute('href'));
+      }
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {

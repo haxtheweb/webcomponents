@@ -43,7 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "lit": "^2.4.1",
+    "lit": "^2.6.1",
     "web-dialog": "0.0.11"
   },
   "devDependencies": {

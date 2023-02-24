@@ -27,7 +27,7 @@
         },
         {
           "name": "optionsPerRow",
-          "description": "`optionsPerRow` {`number`} - the maximum number of options per row\n\nProperty: optionsPerRow\n\nDefault: 10"
+          "description": "`optionsPerRow` {`number`} - the maximum number of options per row\n\nProperty: optionsPerRow\n\nDefault: 6"
         },
         {
           "name": "hide-null-option",
@@ -176,7 +176,7 @@
         },
         {
           "name": "optionsPerRow",
-          "description": "`optionsPerRow` {`number`} - the maximum number of options per row\n\nProperty: optionsPerRow\n\nDefault: 10"
+          "description": "`optionsPerRow` {`number`} - the maximum number of options per row\n\nProperty: optionsPerRow\n\nDefault: 6"
         },
         {
           "name": "hide-null-option",

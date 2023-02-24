@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
+import "@lrnwebcomponents/figure-label/figure-label.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
@@ -23,7 +24,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           width: auto;
           margin: auto;
           max-width: 600px;
-          max-height: 600px;
           --box-background-color: #f7f6ef;
         }
 
@@ -36,13 +36,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           background-color: var(--box-background-color);
           padding: 20px;
         }
-
-        @media screen and (min-width: 450px) {
-          :host([size="small"]) {
-            max-width: 50%;
-          }
-        }
-
         @media screen and (min-width: 650px) {
           :host([size="small"]) {
             max-width: 35%;
@@ -82,11 +75,22 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           max-width: var(--media-image-offset-narrow-max-width, 500px);
           margin: auto;
         }
+
+        media-image-caption {
+          max-height: 100px;
+          padding-bottom: 20px;
+          border-bottom: dashed 2px lightgray;
+          margin-bottom: 20px;
+        }
+        :host(:not([disable-zoom])) media-image-image:hover {
+          cursor: pointer;
+        }
       `,
     ];
   }
   constructor() {
     super();
+    this.disableZoom = false;
     this.modalTitle = "";
     this.source = "";
     this.citation = "";
@@ -119,11 +123,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           ? " - " + this.figureLabelDescription
           : "";
       }
-      if (propName == "__figureLabel") {
-        if (this[propName]) {
-          import("@lrnwebcomponents/figure-label/figure-label.js");
-        }
-      }
     });
   }
   render() {
@@ -143,6 +142,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
         .described-by="${this.describedBy}"
+        tabindex="${!this.disableZoom ? "0" : "-1"}"
         @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
@@ -164,7 +164,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     };
   }
   _handleClick(event) {
-    if (this._haxState) {
+    if (this._haxState || this.disableZoom) {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
@@ -189,6 +189,12 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       },
       modalTitle: {
         type: String,
+      },
+      // support disabing zoom, zoom by default
+      disableZoom: {
+        type: Boolean,
+        attribute: "disable-zoom",
+        reflect: true,
       },
       _hasCaption: {
         type: Boolean,
@@ -284,7 +290,9 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   // if the either of the figure label values are present then display
   // the figure label
   _hasFigureLabel(title, description) {
-    return title.length > 0 || description.length > 0;
+    return (
+      (title && title.length > 0) || (description && description.length > 0)
+    );
   }
   _computeHasCaption() {
     this._hasCaption =
@@ -308,28 +316,37 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+      canPosition: false,
       canEditSource: true,
       gizmo: {
-        title: "Styled image",
-        descrption:
-          "An image gizmo with the ability to provide simple, consistent styling and accessibility options.",
+        title: "Image",
+        descrption: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
-        groups: ["Image", "Media"],
+        tags: [
+          "Images",
+          "media",
+          "core",
+          "figure",
+          "image",
+          "caption",
+          "presentation",
+          "design",
+        ],
         handles: [
           {
             type: "image",
+            type_exclusive: true,
             source: "source",
             title: "alt",
             alt: "alt",
             citation: "citation",
             caption: "caption",
-            ariaDescribedby: "describedBy",
           },
         ],
         meta: {
           author: "HAXTheWeb core team",
+          outlineDesigner: true,
         },
       },
       settings: {
@@ -339,7 +356,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Source",
             description: "The URL for the image.",
             inputMethod: "haxupload",
-            icon: "link",
             required: true,
           },
           {
@@ -347,16 +363,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Alternative text",
             description: "Text to describe the image to non-sighted users.",
             inputMethod: "alt",
-            icon: "accessibility",
             required: true,
-          },
-          {
-            property: "round",
-            title: "Round image",
-            description: "Crops the image appearance to be circle in shape.",
-            inputMethod: "boolean",
-            icon: "account",
-            required: false,
           },
           {
             property: "card",
@@ -364,7 +371,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description:
               "Apply a drop shadow to give the appearance of being a raised card.",
             inputMethod: "boolean",
-            icon: "check-box-outline-blank",
             required: false,
           },
           {
@@ -372,7 +378,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Box",
             description: "Apply a visual box around the image.",
             inputMethod: "boolean",
-            icon: "image:crop-square",
             required: false,
           },
           {
@@ -380,11 +385,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Offset",
             description: "Apply a left or right offset to the image.",
             inputMethod: "select",
-            icon: "image:crop-square",
             options: {
               none: "none",
-              left: "left",
-              right: "right",
               wide: "wide",
               narrow: "narrow",
             },
@@ -394,7 +396,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Citation",
             description: "Citation for the image.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -402,7 +403,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Caption",
             description: "Caption for the image.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -410,7 +410,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Figure Label Title",
             description: "Title for the figure label.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
           {
@@ -418,17 +417,24 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "Figure Label Description",
             description: "Description for the figure label.",
             inputMethod: "textfield",
-            icon: "text-format",
             required: false,
           },
         ],
         advanced: [
           {
-            property: "describedBy",
-            title: "aria-describedby",
+            property: "round",
+            title: "Round image",
+            description: "Crops the image appearance to be circle in shape.",
+            inputMethod: "boolean",
+            required: false,
+          },
+          {
+            property: "disableZoom",
+            title: "Disable image modal",
             description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
+              "Disable clicks opening the image in an image inspector dialog.",
+            inputMethod: "boolean",
+            required: false,
           },
         ],
       },
@@ -436,9 +442,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         {
           tag: "media-image",
           properties: {
-            source: "http://unsplash.it/600",
-            figureLabelTitle: "1.3",
-            figureLabelDescription: "This is the description of the figure.",
+            source: "https://dummyimage.com/300x200/000/fff",
+            card: true,
             citation: "This is my citation.",
           },
         },
@@ -463,11 +468,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
         :host {
           display: block;
         }
-        :host(:hover) {
-          cursor: pointer;
-        }
         .image-wrap {
-          max-height: 600px;
           overflow: hidden;
         }
         .image-wrap img {
@@ -563,11 +564,12 @@ class MediaImageCitation extends LitElement {
         :host {
           display: block;
           overflow: auto;
-          max-height: 100px;
         }
 
         .citation {
-          font-size: 12.8px;
+          font-size: 13.3333px;
+          line-height: 24px;
+          font-weight: 400;
           font-style: italic;
           color: #4c4c4c;
           margin: 15px 0 15px;
@@ -600,15 +602,12 @@ class MediaImageCaption extends LitElement {
         :host {
           display: block;
           overflow: auto;
-          max-height: 200px;
         }
 
         .caption {
-          padding-bottom: 25px;
-          border-bottom: dashed 2px lightgray;
-          margin-bottom: 25px;
-          line-height: 1.5;
-          font-size: 18px;
+          line-height: 28.8px;
+          font-size: 16px;
+          font-weight: 400;
         }
 
         .caption ::slotted(*) {

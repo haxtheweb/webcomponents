@@ -74,7 +74,7 @@ class HaxschemaBuilder extends LitElement {
         description: "dynamically build and visualize HAXschema",
         icon: "icons:android",
         color: "green",
-        groups: ["Builder"],
+        tags: ["Other"],
         handles: [],
         meta: {
           author: "HAXTheWeb",

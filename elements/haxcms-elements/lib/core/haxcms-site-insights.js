@@ -436,7 +436,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
           return false;
         }
-        if (this.filters.hasSiteRemoteContent === true && item.siteremotecontent === 0) {
+        if (
+          this.filters.hasSiteRemoteContent === true &&
+          item.siteremotecontent === 0
+        ) {
           return false;
         }
         if (this.filters.hasLinks === true && item.links === 0) {
@@ -623,10 +626,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 ? html`
                     <li>
                       <lesson-highlight icon="editable-table:numbers">
-                        <p slot="title">
-                          ${data.readability.gradeLevel}
-                          ${this.t.gradeReadingLevel}
-                        </p>
+                        <p slot="title">${data.readability.gradeLevel}</p>
+                        <p>Dale-Chall ${this.t.basedGradeReadingLevel}</p>
                       </lesson-highlight>
                     </li>
                     <li>
@@ -800,7 +801,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 >${item.h5p} H5P
                                               </li>`
                                             : ``}
-                                          
                                           ${item.placeholders > 0
                                             ? html`<li>
                                                 <simple-icon
@@ -1153,7 +1153,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       images: "Images",
       dataTables: "Data tables",
       ofReading: "of reading",
-      gradeReadingLevel: "grade reading level",
+      basedGradeReadingLevel: "based grade reading level",
       words: "Words",
       longWords: "long words",
       linkReport: "Link report",

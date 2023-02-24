@@ -11,29 +11,46 @@ class MapMenuItem extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
-          transition: 0.1s all ease-in-out;
+          transition: 0.3s all ease;
           font-size: var(--map-menu-item-font-size);
-          --map-menu-item-height: 42px;
+          --map-menu-item-height: 44px;
           --map-menu-item-icon-height: 24px;
           overflow: var(--map-menu-item-overflow, hidden);
         }
-        :host([active]) {
-          background: var(--map-menu-active-color);
-          color: var(--map-menu-item-active-item-color, #000000);
+        :host([active]) button {
+          font-weight: bold;
         }
         simple-icon-lite {
-          display: inline-block;
+          display: inline-flex;
           --simple-icon-height: var(--map-menu-item-icon-height);
           --simple-icon-width: var(--map-menu-item-icon-height);
+          margin-right: 8px;
+          margin-top: 12px;
+          line-height: 44px;
         }
         .title {
+          display: inline-flex;
           text-transform: none;
+          font-size: var(--map-menu-font-size, 16px);
+          font-family: "Open+Sans", sans-serif;
+          text-overflow: ellipsis;
+          height: 44px;
+          vertical-align: middle;
+          width: auto;
+          line-height: 44px;
+          white-space: nowrap;
+          overflow: hidden;
+          word-break: break-all;
+          max-width: 200px;
         }
         a,
         a:visited {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
+        }
+        a button {
+          transition: all 0.1s ease;
         }
         a:hover button,
         a:active button,
@@ -42,45 +59,35 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color, inherit)
           );
-          text-decoration: var(
-            --map-menu-item-a-text-decoration-hover,
-            underline
+          text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
+          background-color: var(
+            --map-menu-item-a-active-background-color,
+            var(--simple-colors-default-theme-light-grey-2, #dddddd)
           );
-        }
-        #track {
-          transition: 0.1s all ease-in-out;
-          position: absolute;
-          right: 0;
-
-          margin-right: 0px;
-          width: 0px;
-          height: 0px;
-          visibility: hidden;
-          opacity: 0;
-        }
-        #track.show-icon {
-          margin-right: 5px;
-          width: 18px;
-          height: 18px;
-          visibility: visible;
-          opacity: 1;
         }
         button {
           cursor: pointer;
           color: inherit;
+          display: flex;
           background-color: transparent;
           text-transform: none;
           width: 100%;
           justify-content: left;
           margin: 0px;
           border: 0;
-          height: var(
-            --map-menu-item-button-height,
-            var(--map-menu-item-height)
-          );
-          padding: 4px;
+          min-height: var(--map-menu-header-button-min-height, 44px);
+          padding: 0 16px;
           text-align: left;
           border-radius: 0;
+          height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
+          vertical-align: middle;
+          line-height: var(
+            --map-menu-item-button-height,
+            var(--map-menu-item-height, 44px)
+          );
         }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
@@ -98,14 +105,17 @@ class MapMenuItem extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          --simple-icon-width: 20px;
-          --simple-icon-height: 20px;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
           color: orange;
           float: right;
           margin: -4px 32px 0px 0px;
           vertical-align: top;
           height: 0px;
           width: 0px;
+        }
+        .no-icon {
+          display: inline-flex;
         }
       `,
     ];
@@ -119,16 +129,8 @@ class MapMenuItem extends I18NMixin(LitElement) {
         <button id="wrapper" noink>
           ${this.icon
             ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
-            : ``}
-          <span class="title">${this.title}</span>
-          ${this.trackIcon
-            ? html`
-                <simple-icon-lite
-                  id="track"
-                  icon="${this.trackIcon}"
-                ></simple-icon-lite>
-              `
-            : ``}
+            : html`<div class="no-icon"></div>`}
+          <span class="title">${this.itemtitle}</span>
           ${!this.published
             ? html`<simple-icon-lite
                 id="unpublished"
@@ -146,8 +148,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.icon = null;
-    this.trackIcon = null;
-    this.title = "";
+    this.itemtitle = "";
     this.url = "";
     this.active = false;
     this.published = true;
@@ -173,11 +174,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         type: String,
         reflect: true,
       },
-      trackIcon: {
-        type: String,
-        attribute: "track-icon",
-      },
-      title: {
+      itemtitle: {
         type: String,
       },
       url: {
@@ -213,22 +210,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "trackIcon") {
-        this._trackIconChanged(this[propName], oldValue);
-      }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
       }
     });
-  }
-  _trackIconChanged(newValue, oldValue) {
-    if (this.shadowRoot.querySelector("#track")) {
-      if (newValue) {
-        this.shadowRoot.querySelector("#track").classList.add("show-icon");
-      } else {
-        this.shadowRoot.querySelector("#track").classList.remove("show-icon");
-      }
-    }
   }
   __selectedChanged(selected, id) {
     if (selected === id) {

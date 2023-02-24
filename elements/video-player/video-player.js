@@ -2,13 +2,13 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { css, html } from "lit";
 
 /**
  * `video-player`
@@ -136,12 +136,24 @@ class VideoPlayer extends IntersectionObserverMixin(
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "Video player",
+        title: "Video",
         description:
           "This can present video in a highly accessible manner regardless of source.",
         icon: "av:play-circle-filled",
         color: "red",
-        groups: ["Video", "Media"],
+        tags: [
+          "Video",
+          "Media",
+          "youtube",
+          "watch",
+          "vimeo",
+          "mp4",
+          "webm",
+          "ogg",
+          "video-player",
+          "a11y",
+          "media-player",
+        ],
         handles: [
           {
             type: "video",
@@ -153,6 +165,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             color: "primaryColor",
           },
         ],
+        shortcutKey: "V",
         meta: {
           author: "HAXTheWeb core team",
           outlineDesigner: true,
@@ -916,11 +929,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         } else {
           source += "&portrait=0";
         }
-      } else if (type == "dailymotion") {
-        source += "&ui-start-screen-info=false";
-        source += "&ui-logo=false";
-        source += "&sharing-enable=false";
-        source += "&endscreen-enable=false";
       }
     }
     return source;

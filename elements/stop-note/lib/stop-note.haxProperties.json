@@ -1,14 +1,23 @@
 {
   "type": "grid",
   "canScale": true,
-  "canPosition": true,
+  "canPosition": false,
   "canEditSource": true,
   "gizmo": {
     "title": "Stop Note",
     "description": "A message to alert readers to specific directions.",
     "icon": "icons:report",
     "color": "orange",
-    "groups": ["Education", "Content"],
+    "tags": [
+      "Instructional",
+      "content",
+      "layout",
+      "pedagogy",
+      "warning",
+      "notice",
+      "stop",
+      "note"
+    ],
     "handles": [
       {
         "type": "text",

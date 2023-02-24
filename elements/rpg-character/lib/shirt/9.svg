@@ -1,8 +1,1 @@
-<svg width="113" height="142" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M28 112V87H33V112H28Z" fill="#3D3D3D"/>
-<path d="M38 112H73V87H58V89H56V91H53V92H48V91H45V89H43V87H38V112Z" fill="#3D3D3D"/>
-<path d="M88 112H78V92H83V107H88V112Z" fill="#3D3D3D"/>
-<path d="M38 87H43V89H45V91H48V92H53V91H56V89H58V87H73V112H67.9533V88H59V90H57V92H54V93H47V92H44V90H42V88H38V87Z" fill="#2E2E2E"/>
-<path d="M83 92H78V112H83V92Z" fill="#2E2E2E"/>
-<path d="M28 112H33V87H28V112Z" fill="#2E2E2E"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" width="113" height="142" viewBox="0 0 113 142"><path d="M28 112V87h5v25h-5Zm10 0h35V87H58v2h-2v2h-3v1h-5v-1h-3v-2h-2v-2h-5v25Zm50 0H78V92h5v15h5v5Z" fill="#3D3D3D"/><path d="M38 87h5v2h2v2h3v1h5v-1h3v-2h2v-2h15v25h-5.047V88H59v2h-2v2h-3v1h-7v-1h-3v-2h-2v-2h-4v-1Zm45 5h-5v20h5V92Zm-55 20h5V87h-5v25Z" fill="#2E2E2E"/></svg>

@@ -292,7 +292,7 @@ class CmsHax extends LitElement {
     this.openDefault = false;
     this.hidePanelOps = false;
     this.hidePreferencesButton = false;
-    this.elementAlign = "right";
+    this.elementAlign = "left";
     this.method = "PUT";
     this.syncBody = false;
     this.bodyValue = "";

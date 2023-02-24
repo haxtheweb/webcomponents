@@ -24,7 +24,6 @@ class HaxPicker extends LitElement {
         simple-button-grid {
           overflow-y: auto;
           margin: var(--hax-ui-spacing-sm);
-          --simple-button-grid-cols: 100px;
         }
         #filters {
           min-height: 24px;
@@ -32,6 +31,9 @@ class HaxPicker extends LitElement {
         simple-icon-button-lite {
           float: right;
           margin-left: -24px;
+        }
+        hax-tray-button {
+          display: block;
         }
         simple-fields-field::part(fieldset-legend) {
           line-height: 24px;
@@ -97,7 +99,7 @@ class HaxPicker extends LitElement {
             </simple-fields-field>
           </div>`
         : ""}
-      <simple-button-grid cols="100px">
+      <simple-button-grid columns="4" always-expanded>
         ${this.selectionList.map((element, index) =>
           !this._isFiltered(element.keywords)
             ? ""

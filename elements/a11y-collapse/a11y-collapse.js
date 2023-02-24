@@ -45,6 +45,9 @@ class A11yCollapse extends LitElement {
           border-color: var(--a11y-collapse-border-color, inherit);
           transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
+        :host([heading-button]) #heading {
+          cursor: pointer;
+        }
         :host(:not(:first-of-type)) {
           border-top: var(
             --a11y-collapse-border-between,
@@ -136,6 +139,8 @@ class A11yCollapse extends LitElement {
             max-height: 0;
             transition: all 0.75s ease;
             overflow-y: hidden;
+            opacity: 1;
+            visibility: visible;
           }
           :host #content-inner {
             max-height: 0;
@@ -167,7 +172,9 @@ class A11yCollapse extends LitElement {
             transition: max-height 0.75s ease;
           }
           :host(:not([expanded])) #content {
-            display: none;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
           }
         }
       `,
@@ -185,8 +192,9 @@ class A11yCollapse extends LitElement {
         aria-live="polite"
       >
         <div id="content-inner">
-          <slot name="content"></slot>
-          <slot></slot>
+          ${this.expanded
+            ? html`<slot name="content"></slot><slot></slot>`
+            : ``}
         </div>
       </div>
     `;
@@ -249,6 +257,12 @@ class A11yCollapse extends LitElement {
         type: String,
       },
       /**
+       * heading / title for the button
+       */
+      heading: {
+        type: String,
+      },
+      /**
        * optional label for the button when expanded
        */
       labelExpanded: {
@@ -286,9 +300,10 @@ class A11yCollapse extends LitElement {
     this.disabled = false;
     this.hidden = false;
     this.expanded = false;
+    this.heading = null;
     this.icon = "icons:expand-more";
-    this.label = "expand / collapse";
-    this.tooltip = "toggle expand / collapse";
+    this.label = "expand";
+    this.tooltip = "expand";
   }
   /**
    * haxProperties integration via file reference
@@ -407,6 +422,8 @@ class A11yCollapse extends LitElement {
           detail: this,
         })
       );
+      this.label = "collapse";
+      this.tooltip = "collapse";
     } else {
       /**
        * Fires when collapsed.
@@ -421,6 +438,8 @@ class A11yCollapse extends LitElement {
           detail: this,
         })
       );
+      this.label = "expand";
+      this.tooltip = "expand";
     }
   }
   /**
@@ -452,7 +471,11 @@ class A11yCollapse extends LitElement {
           this.expanded
         )}"
       >
-        <div id="text"><slot name="heading"></slot></div>
+        <div id="text">
+          ${this.heading
+            ? html`<p part="heading">${this.heading}</p>`
+            : ``}<slot name="heading"></slot>
+        </div>
         <simple-icon-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
@@ -481,7 +504,11 @@ class A11yCollapse extends LitElement {
   _makeIconButton() {
     return html`
       <div id="heading">
-        <div id="text"><slot name="heading"></slot></div>
+        <div id="text">
+          ${this.heading ? html`<p>${this.heading}</p>` : ``}<slot
+            name="heading"
+          ></slot>
+        </div>
         <simple-icon-button-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"

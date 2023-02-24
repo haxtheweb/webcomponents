@@ -115,18 +115,6 @@
                 "inputMethod": "textfield"
               },
               {
-                "property": "haxcore-integrations-googlepoly",
-                "title": "Google Poly",
-                "description": "https://developers.google.com/youtube/v3/getting-started",
-                "inputMethod": "textfield"
-              },
-              {
-                "property": "haxcore-integrations-memegenerator",
-                "title": "Meme generator",
-                "description": "https://memegenerator.net/Api",
-                "inputMethod": "textfield"
-              },
-              {
                 "property": "haxcore-integrations-vimeo",
                 "title": "Vimeo",
                 "description": "https://developer.vimeo.com/",
@@ -148,12 +136,6 @@
                 "property": "haxcore-integrations-flickr",
                 "title": "Flickr",
                 "description": "https://www.flickr.com/services/developer/api/",
-                "inputMethod": "textfield"
-              },
-              {
-                "property": "haxcore-integrations-pixabay",
-                "title": "Pixabay",
-                "description": "https://pixabay.com/api/docs/",
                 "inputMethod": "textfield"
               }
             ]
@@ -221,13 +203,10 @@
         },
         "integrations": {
           "haxcore-integrations-youtube": "",
-          "haxcore-integrations-googlepoly": "",
-          "haxcore-integrations-memegenerator": "",
           "haxcore-integrations-vimeo": "",
           "haxcore-integrations-giphy": "",
           "haxcore-integrations-unsplash": "",
-          "haxcore-integrations-flickr": "",
-          "haxcore-integrations-pixabay": ""
+          "haxcore-integrations-flickr": ""
         },
         "providerdetails": {
           "haxcore-providerdetails-name": "Local development",

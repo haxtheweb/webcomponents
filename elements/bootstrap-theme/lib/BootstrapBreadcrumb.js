@@ -37,6 +37,11 @@ class BootstrapBreadcrumb extends LitElement {
           -moz-box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
           -webkit-box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
           box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
+          list-style-type: none;
+          display: flex;
+        }
+        .breadcrumb-item {
+          padding: 0.5rem 0.75rem;
         }
 
         simple-icon-lite {

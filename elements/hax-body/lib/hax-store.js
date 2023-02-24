@@ -27,6 +27,7 @@ import {
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -77,8 +78,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   testHook(el, op) {
     // support for primatives
-    if (el && el.tagName && this.HTMLPrimativeTest(el) && this.primativeHooks[el.tagName.toLowerCase()] && this.primativeHooks[el.tagName.toLowerCase()][op]) {
-     return true; 
+    if (
+      el &&
+      el.tagName &&
+      this.HTMLPrimativeTest(el) &&
+      this.primativeHooks[el.tagName.toLowerCase()] &&
+      this.primativeHooks[el.tagName.toLowerCase()][op]
+    ) {
+      return true;
     }
     return el && typeof el.haxHooks === "function" && el.haxHooks()[op];
   }
@@ -141,7 +148,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (this.validGizmoTypes.includes(guess)) {
         // now we can look through them
         // look for a match
-        for (var gizmoposition in this.gizmoList) {
+        for (let gizmoposition in this.gizmoList) {
           let gizmo = this.gizmoList[gizmoposition],
             tags = [];
           let props = !!values.innerHTML ? { innerHTML: values.innerHTML } : {};
@@ -149,13 +156,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           let match = false;
           // ensure this gizmo can handle things
           if (gizmo && gizmo.handles) {
-            for (var i = 0; i < gizmo.handles.length; i++) {
+            for (let i = 0; i < gizmo.handles.length; i++) {
               // WHAT!??!?!?!?!
               if (
                 guess === gizmo.handles[i].type ||
                 (guess === "*" && !match)
               ) {
-                for (var property in gizmo.handles[i]) {
+                for (let property in gizmo.handles[i]) {
                   // ignore type.. but again.. WHAT?!?!?!
                   if (property !== "type") {
                     // check the values that came across to see if there's a match
@@ -187,7 +194,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       if (!!i && !!i.type && i.type != "")
                         keywords[i.type.toLowerCase()] = true;
                     });
-                    [...gizmo.groups].forEach((i) => {
+                    [...gizmo.tags].forEach((i) => {
                       if (!!i && i != "") keywords[i.toLowerCase()] = true;
                     });
                     gizmo.keywords = Object.keys(keywords);
@@ -341,10 +348,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       } else if (
         source.indexOf(".png") != -1 ||
         source.indexOf(".jpg") != -1 ||
-        source.indexOf(".jpeg") != -1 ||
-        source.indexOf(".gif") != -1
+        source.indexOf(".jpeg") != -1
       ) {
         return "image";
+      } else if (source.indexOf(".gif") != -1) {
+        return "gif";
       } else if (source.indexOf(".pdf") != -1) {
         return "pdf";
       } else if (source.indexOf(".svg") != -1) {
@@ -792,7 +800,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           {},
           appDataResponse.autoloader
         );
-        for (var i in appDataResponse.autoloader) {
+        for (let i in appDataResponse.autoloader) {
           let CEname = i;
           let CEimport = appDataResponse.autoloader[i];
           // helps support array or object based app store spec
@@ -822,7 +830,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // load apps automatically
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
-        for (var i = 0; i < apps.length; i++) {
+        for (let i = 0; i < apps.length; i++) {
           let app = document.createElement("hax-app");
           app.data = apps[i];
           this.appendChild(app);
@@ -831,7 +839,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // load in stax dynamically
       if (typeof appDataResponse.stax !== typeof undefined) {
         var staxs = appDataResponse.stax;
-        for (var i = 0; i < staxs.length; i++) {
+        for (let i = 0; i < staxs.length; i++) {
           let stax = document.createElement("hax-stax");
           stax.data = staxs[i];
           this.appendChild(stax);
@@ -862,7 +870,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (window.WCGlobalBasePath) {
       basePath = window.WCGlobalBasePath;
     }
-    for (var i in items) {
+    for (let i in items) {
       // try to skip an import
       if (window.customElements.get(i)) {
         if (window.customElements.get(i).haxProperties) {
@@ -946,7 +954,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     ) {
       let storageData = this.storageData;
       // ensure storageData is an object
-      if (typeof storageData === 'string') {
+      if (typeof storageData === "string") {
         storageData = JSON.parse(storageData);
       }
       storageData.globalPreferences = newValue;
@@ -987,7 +995,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // so this 100ms delay helps quiet this down
         this._debounceLang = setTimeout(async () => {
           // run through language matches as nessecary to translate haxProperties definitions
-          for (var i in this.elementList) {
+          for (let i in this.elementList) {
             let el = this.elementList[i];
             // run through translations to see if we have any
             // apply as nessecary; abstract out the current translation thing to be reused
@@ -1100,7 +1108,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (activeNode == null || !activeNode.tagName) {
       return null;
     }
-    for (var gizmoposition in this.gizmoList) {
+    for (let gizmoposition in this.gizmoList) {
       var gizmo = this.gizmoList[gizmoposition];
       if (gizmo.tag === activeNode.tagName.toLowerCase()) {
         return gizmo;
@@ -1400,7 +1408,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         return callback(undefined);
       }
     }
-    for (var i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       // Skip content if not image
       if (items[i].type.indexOf("image") == -1) continue;
       // Retrieve image on clipboard as blob
@@ -1441,8 +1449,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
+      pasteContent = pasteContent.trim();
+      // clear empty span tags that can pop up
+      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
+      //remove styling
+      pasteContent = pasteContent.replace(
+        /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
+        ""
+      );
+      // clean up div tags that can come in from contenteditable pastes
+      // p tags make more sense in the content area
+      pasteContent = pasteContent.replace(/<div/g, "<p");
+      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
       // look for base64 like copy and paste of an image from clipboard
+
       if (this.isBase64(originalContent)) {
         // stop normal paste
         e.preventDefault();
@@ -1460,7 +1481,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               img,
               this.activeNode.nextElementSibling
             );
-            for (var i in e.clipboardData.items) {
+            for (let i in e.clipboardData.items) {
               // generate a file name if one doesn't exist
               if (
                 !e.clipboardData.items[i].name &&
@@ -1502,7 +1523,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let p = this.activeHaxBody.haxInsert("p", "", {});
         // cannot believe this actually works
         e.dataTransfer = e.clipboardData;
-        for (var i in e.clipboardData.files) {
+        for (let i in e.clipboardData.files) {
           // generate a file name if one doesn't exist
           if (!e.clipboardData.files[i].name && e.clipboardData.files[i].type) {
             e.clipboardData.files[i].name =
@@ -1529,42 +1550,40 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
-      // clear empty span tags that can pop up
-      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
-      //remove hax css variables
-      pasteContent = pasteContent.replace(
-        /(?:style="(\S+:\s*[^;"]+;\s*)*)(\S+:\s*var\(--hax[^;"]+(?:[;"]\s*))+/g,
-        ""
-      );
-      // clean up div tags that can come in from contenteditable pastes
-      // p tags make more sense in the content area
-      pasteContent = pasteContent.replace(/<div/g, "<p");
-      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
-      // NOW we can safely handle paste from word cases
-      pasteContent = stripMSWord(pasteContent);
-      // we force h2 to be highest document level on pasted content
-      pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
-      pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
-      // convert all images to place-holder tags and then reference the internal file system object
-      // this probably means nothing to the user but MIGHT be a real file in some cases that they
-      // could potentially paste / find
-      pasteContent = pasteContent.replace(
-        /<img src=\"file:(.*?)\/>/g,
-        function (placeholder, part) {
-          let s = part.split('"');
-          return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
+      // verify this is HTML prior to treating it as such
+      // HTML pasting to ensure it's clean is very slow
+      let fragment = document.createElement("div");
+      fragment.innerHTML = pasteContent;
+      let haxElements = [];
+      // test that this is valid HTML before we dig into it as elements
+      // and that it actually has children prior to parsing for children
+      if (fragment.children) {
+        // NOW we can safely handle paste from word cases
+        pasteContent = stripMSWord(pasteContent);
+        // we force h2 to be highest document level on pasted content
+        pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
+        pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
+        // convert all images to place-holder tags and then reference the internal file system object
+        // this probably means nothing to the user but MIGHT be a real file in some cases that they
+        // could potentially paste / find
+        pasteContent = pasteContent.replace(
+          /<img src=\"file:(.*?)\/>/g,
+          function (placeholder, part) {
+            let s = part.split('"');
+            return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
+          }
+        );
+        // edges that some things preserve empty white space needlessly
+        haxElements = await this.htmlToHaxElements(pasteContent);
+        // ensure that if we only have 1 element that we are wrapped correctly
+        // as some things enjoy pasted absolute nonesense like a strong tag
+        // that wraps all the rest of the content... looking at you Google Docs
+        if (
+          haxElements.length === 1 &&
+          !this.__validGridTags().includes(haxElements[0].tag)
+        ) {
+          haxElements = await this.htmlToHaxElements(haxElements[0].content);
         }
-      );
-      // edges that some things preserve empty white space needlessly
-      let haxElements = await this.htmlToHaxElements(pasteContent);
-      // ensure that if we only have 1 element that we are wrapped correctly
-      // as some things enjoy pasted absolute nonesense like a strong tag
-      // that wraps all the rest of the content... looking at you Google Docs
-      if (
-        haxElements.length === 1 &&
-        !this.__validGridTags().includes(haxElements[0].tag)
-      ) {
-        haxElements = await this.htmlToHaxElements(haxElements[0].content);
       }
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
@@ -1631,7 +1650,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       else if (!this.isGridPlateElement(haxElements[0])) {
         return false;
       } else {
-        for (var i in haxElements) {
+        for (let i in haxElements) {
           // special support for pasting into a list of items
           if (
             haxElements[i].tag == "p" &&
@@ -1668,7 +1687,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // defined so that we can
         newNodes.innerHTML = newContent;
         if (range && sel) {
-          for (var i in newNodes.children) {
+          for (let i in newNodes.children) {
             // delete nodes that are empty text elements
             if (
               newNodes.children[i].tagName &&
@@ -1755,8 +1774,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     activeEl,
                     siblingEl.nextElementSibling
                   );
-                }
-                else {
+                } else {
                   siblingEl.insertBefore(
                     activeEl,
                     siblingEl.nextElementSibling
@@ -1896,6 +1914,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "html",
       "content",
       "text",
+      "gif",
       "inline",
       "*",
     ];
@@ -1910,6 +1929,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
+    // custom
+    SuperDaemonInstance.icon = "hax:hax2022";
+    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
+    SuperDaemonInstance.allowedCallback = () => {
+      if (this.ready && this.editMode) {
+        return true;
+      }
+      return false;
+    };
     // container for HTML primatives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
@@ -1922,6 +1950,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
+      "hax-super-daemon-insert-tag": "_superDaemonInsert",
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
       "hax-context-item-selected": "_haxContextOperation",
@@ -1978,6 +2007,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       url: "",
       params: {},
     };
+    this.daemonKeyCombo = `${SuperDaemonInstance.key1} + ${SuperDaemonInstance.key2} + `;
     this.activeNode = null;
     this.activeEditingElement = null;
     this.haxBodies = [];
@@ -1990,12 +2020,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     //if hax-tray-elementAlign exists use that other wise left
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
     if (!this.elementAlign || this.elementAlign == null) {
-      this.elementAlign = "right";
+      this.elementAlign = "left";
     }
     this.trayStatus = "collapsed";
     this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
+    this.recentGizmoList = [];
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -2006,16 +2037,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.voiceDebug = false;
+    this.daemonCommands = {};
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
+    // these are basic markdown shortcuts
     this.keyboardShortcuts = {
       "#": { tag: "h2", content: "" },
       "##": { tag: "h3", content: "" },
       "###": { tag: "h4", content: "" },
       "####": { tag: "h5", content: "" },
       "#####": { tag: "h6", content: "" },
-      "-": { tag: "ul", content: "<li></li>" },
+      "######": { tag: "h6", content: "" },
       "1.": { tag: "ol", content: "<li></li>" },
+      "-": { tag: "ul", content: "<li></li>" },
+      "*": { tag: "ul", content: "<li></li>" },
+      "+": { tag: "ul", content: "<li></li>" },
       "---": { tag: "hr" },
+      "***": { tag: "hr" },
+      ___: { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
     };
@@ -2029,7 +2067,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
     // mobx
     makeObservable(this, {
+      daemonKeyCombo: observable,
       gizmoList: observable,
+      recentGizmoList: observable,
       activeNode: observable,
       globalPreferences: observable,
       activeGizmo: computed,
@@ -2108,15 +2148,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic img tag",
         icon: "image:image",
         color: "blue-grey",
-        groups: ["Image", "Media"],
+        tags: ["Images", "media", "img", "html"],
         handles: [
           {
             type: "link",
-            source: "src", 
+            source: "src",
           },
           {
             type: "image",
-            type_exclusive: true,
             source: "src",
             height: "height",
             width: "width",
@@ -2124,7 +2163,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ],
         meta: {
           author: "W3C",
-          outlineDesigner: true,
+          hidden: true,
         },
       },
       settings: {
@@ -2155,14 +2194,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         ],
         advanced: [
-          {
-            attribute: "aria-describedby",
-            title: "Aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-            icon: "accessibility",
-          },
           {
             attribute: "loading",
             title: "Loading method",
@@ -2200,11 +2231,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic figure tag",
         icon: "hax:figure",
         color: "blue-grey",
-        groups: ["Image", "Media", "Layout"],
+        tags: ["Images", "media", "figure", "html"],
         requiresChildren: "figcaption",
         handles: [],
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2234,11 +2266,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "Used inside of a figure tag",
         icon: "image:image",
         color: "blue-grey",
-        groups: ["Image", "Media"],
+        tags: ["Images", "media", "caption", "figure", "html"],
         handles: [],
         requiresParent: "figure",
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2273,10 +2306,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic a tag",
         icon: "icons:link",
         color: "blue-grey",
-        groups: ["Link"],
+        tags: [
+          "Content",
+          "link",
+          "a",
+          "url",
+          "html",
+          "href",
+          "resource",
+          "address",
+          "http",
+        ],
         handles: [],
         meta: {
           author: "W3C",
+          hidden: true,
         },
       },
       settings: {
@@ -2296,6 +2340,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             required: true,
             validationType: "url",
           },
+          DataStyleDecoration,
+        ],
+        advanced: [
           {
             attribute: "target",
             title: "Target",
@@ -2314,9 +2361,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
           },
-          DataStyleDecoration,
-        ],
-        advanced: [
           {
             attribute: "rel",
             title: "rel",
@@ -2363,7 +2407,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        groups: ["Content"],
+        tags: ["Content", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -2383,7 +2427,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       demoSchema: [
         {
           tag: "p",
-          content: "Paragraph",
+          content: "Deep thoughts..",
           properties: {},
         },
       ],
@@ -2394,8 +2438,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       type: "element",
       editingElement: {
         tag: "editable-table",
-        import:
-          "@lrnwebcomponents/editable-table/editable-table.js",
+        import: "@lrnwebcomponents/editable-table/editable-table.js",
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
@@ -2406,7 +2449,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A table for displaying data",
         icon: "image:grid-on",
         color: "blue-grey",
-        groups: ["Content", "Table", "Data"],
+        tags: [
+          "Content",
+          "table",
+          "data",
+          "html",
+          "grid",
+          "matrix",
+          "spreadsheet",
+          "csv",
+          "excel",
+        ],
         meta: {
           hidden: true,
           author: "W3C",
@@ -2419,15 +2472,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     };
     this.setHaxProperties(table, "table");
     // kinda silly but need the definitions for editable-table as well
-    let eTable = document.createElement('editable-table');
+    let eTable = document.createElement("editable-table");
     this.haxAutoloader.appendChild(eTable);
     // iframe needs a wrapper or you can't select them because of the spec
     let iframe = {
       type: "element",
       editingElement: {
         tag: "iframe-loader",
-        import:
-          "@lrnwebcomponents/iframe-loader/iframe-loader.js",
+        import: "@lrnwebcomponents/iframe-loader/iframe-loader.js",
         callback: this.setupIframeLoader.bind(this),
       },
       canScale: false,
@@ -2438,9 +2490,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic way to frame external web content",
         icon: "hax:iframe",
         color: "blue-grey",
-        groups: ["Content"],
-        handles: [
+        tags: [
+          "Content",
+          "iframe",
+          "content",
+          "url",
+          "link",
+          "embed",
+          "https",
+          "html",
+          "resource",
+          "address",
         ],
+        handles: [],
         meta: {
           hidden: true,
           author: "W3C",
@@ -2457,12 +2519,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             required: true,
             validationType: "url",
           },
-        ]
-      }
+        ],
+      },
     };
     this.setHaxProperties(iframe, "iframe");
     // gets the definition in by force as if iframes don't exist
-    let iframeLoader = document.createElement('iframe-loader');
+    let iframeLoader = document.createElement("iframe-loader");
     this.haxAutoloader.appendChild(iframeLoader);
     let prims = {
       caption: {
@@ -2588,12 +2650,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "icons:fullscreen",
       },
     };
-    for (var tag in prims) {
-      let primContentDemo = '';
-      if (tag == 'h2') {
+    for (let tag in prims) {
+      let primContentDemo = "";
+      if (tag == "h2") {
         primContentDemo = "Heading";
-      }
-      else if (tag == 'ul' || tag == 'ol') {
+      } else if (tag == "ul" || tag == "ol") {
         primContentDemo = "<li>Item 1</li><li>Item 2</li>";
       }
       this.setHaxProperties(
@@ -2607,12 +2668,24 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            groups: ["Content"],
+            tags: ["Content", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
               author: "HAXTheWeb core team",
-              inlineOnly: true,
-              hidden: tag == "h2" ? false : true,
+              inlineOnly: [
+                "em",
+                "b",
+                "strong",
+                "i",
+                "strike",
+                "u",
+                "sub",
+                "sup",
+                "span",
+              ].includes(tag)
+                ? true
+                : false,
+              hidden: ["h2", "ul"].includes(tag) ? false : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },
@@ -2691,7 +2764,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * set up the iframeLoader to behave as the node itself
    */
-   setupIframeLoader(editor) {
+  setupIframeLoader(editor) {
     this.activeNode = editor;
     // SHOULD set this itself but just to be sure
     setTimeout(() => {
@@ -2707,8 +2780,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let triggers = [];
         this.gizmoList.forEach((item) => {
           triggers.push({
-            groups:
-              item.groups && item.groups.length ? item.groups.join(" ") : "",
+            tags: item.tags && item.tags.length ? item.tags.join(" ") : "",
             icon: item.icon,
             label: item.title,
             value: item.tag,
@@ -2873,7 +2945,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   _haxStoreInsertMultiple(e) {
     if (e.detail) {
       var properties;
-      for (var i in e.detail) {
+      for (let i in e.detail) {
         properties = {};
         // support for properties to be set automatically optionally
         if (typeof e.detail[i].properties !== typeof undefined) {
@@ -2910,6 +2982,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         );
       }, 0);
     }
+  }
+  // divert this event at haxTray
+  _superDaemonInsert(e) {
+    this.haxTray._processTrayEvent(e);
   }
 
   /**
@@ -3033,22 +3109,26 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     });
   }
   /**
-   * Convert HTML into HAX Elements
+   * Convert HTML into HAX Elements; if its valid HTML
    */
   async htmlToHaxElements(html) {
     let elements = [];
-    const validTags = this.validTagList;
     let fragment = document.createElement("div");
     fragment.innerHTML = html;
-    const children = fragment.childNodes;
-    // loop over the new nodes
-    for (var i = 0; i < children.length; i++) {
-      // verify this tag is a valid one
-      if (
-        typeof children[i].tagName !== typeof undefined &&
-        validTags.includes(children[i].tagName.toLowerCase())
-      ) {
-        elements.push(await nodeToHaxElement(children[i], null));
+    // test that this is valid HTML before we dig into it as elements
+    // and that it actually has children prior to parsing for children
+    if (fragment.children) {
+      const validTags = this.validTagList;
+      const children = fragment.children;
+      // loop over the new nodes
+      for (let i = 0; i < children.length; i++) {
+        // verify this tag is a valid one
+        if (
+          typeof children[i].tagName !== typeof undefined &&
+          validTags.includes(children[i].tagName.toLowerCase())
+        ) {
+          elements.push(await nodeToHaxElement(children[i], null));
+        }
       }
     }
     return elements;
@@ -3075,7 +3155,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     var props = this.elementList[tag];
     var propvals = {};
     // grab all of the original's attributes, and pass them to the replacement
-    for (var j = 0, l = node.attributes.length; j < l; ++j) {
+    for (let j = 0, l = node.attributes.length; j < l; ++j) {
       var nodeName = node.attributes.item(j).nodeName;
       var value = node.attributes.item(j).value;
       // encode objects and arrays because they are special
@@ -3125,7 +3205,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       tmpProps = node.__data;
     }
     if (typeof tmpProps !== typeof undefined) {
-      for (var j in tmpProps) {
+      for (let j in tmpProps) {
         var nodeName = camelToDash(j);
         var value = null;
         // prefer local value over properties object if possible
@@ -3196,7 +3276,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeof props !== typeof undefined &&
       typeof props.saveOptions.unsetAttributes !== typeof undefined
     ) {
-      for (var i in props.saveOptions.unsetAttributes) {
+      for (let i in props.saveOptions.unsetAttributes) {
         delete propvals[props.saveOptions.unsetAttributes[i]];
       }
     }
@@ -3204,7 +3284,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // and are edge case things because #hashtag gotta love HTML attributes
     // and the webview tag. facepalm.
     let delProps = ["inner-text", "inner-html", "tabindex", "guestinstance"];
-    for (var delProp in delProps) {
+    for (let delProp in delProps) {
       if (typeof propvals[delProps[delProp]] !== typeof undefined) {
         delete propvals[delProps[delProp]];
       }
@@ -3218,11 +3298,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     delete propvals.contenteditable;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
-    if (propvals.class == "" || propvals.class == "hax-active") {
+    delete propvals["data-hax-active"];
+    if (propvals.class == "") {
       delete propvals.class;
     }
     // run through the rest and print to the dom
-    for (var i in propvals) {
+    for (let i in propvals) {
       if (propvals[i] === true) {
         content += " " + i;
       } else {
@@ -3259,7 +3340,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // ensure there's something inside of this
       if (slotnodes.length > 0) {
         // loop through everything found in the slotted area and put it back in
-        for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
+        for (let j = 0, len2 = slotnodes.length; j < len2; j++) {
           if (typeof slotnodes[j].tagName !== typeof undefined) {
             // if we're a custom element, keep digging, otherwise a simple
             // self append is fine unless template tag cause it's a special
@@ -3310,8 +3391,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     content = content.replace(/&nbsp;/gm, " ");
     // target and remove hax specific things from output if they slipped through
     content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+    content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
-    content = content.replace(/ class="hax-active"/gim, "");
     content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
@@ -3417,7 +3498,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
-      for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
+      for (let j = 0, len2 = slotnodes.length; j < len2; j++) {
         if (!slotnodes[j]) return;
         if (typeof slotnodes[j].tagName !== typeof undefined) {
           // if we're a custom element, keep digging, otherwise a simple
@@ -3466,6 +3547,24 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
+          // only add in support for commands we'd expect to see
+          if (!gizmo.meta || (!gizmo.meta.inlineOnly && !gizmo.meta.hidden)) {
+            SuperDaemonInstance.defineOption({
+              title: gizmo.title,
+              icon: gizmo.icon,
+              key: gizmo.shortcutKey
+                ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}`
+                : null,
+              tags: gizmo.tags || [],
+              value: {
+                value: gizmo.tag,
+                eventName: "insert-tag",
+                demoSchema: true,
+              },
+              eventName: "hax-super-daemon-insert-tag",
+              path: "HAX/insert/block/" + gizmo.tag,
+            });
+          }
         }
         this.elementList[detail.tag] = detail.properties;
         // only push new values on if we got something new
@@ -3555,7 +3654,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (translationMap) {
       // gizmo shows user text
       if (properties.gizmo && translationMap.gizmo) {
-        for (var i in translationMap.gizmo) {
+        for (let i in translationMap.gizmo) {
           properties.gizmo[i] = translationMap.gizmo[i];
         }
       }
@@ -3565,10 +3664,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           advanced: "advanced",
           configure: "configure",
         };
-        for (var h in sTabs) {
+        for (let h in sTabs) {
           if (properties.settings[h] && translationMap.settings[h]) {
-            for (var i in translationMap.settings[h]) {
-              for (var j in translationMap.settings[h][i]) {
+            for (let i in translationMap.settings[h]) {
+              for (let j in translationMap.settings[h][i]) {
                 properties.settings[h][i][j] = translationMap.settings[h][i][j];
               }
             }
@@ -3577,9 +3676,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // demo schema can be rewritten too
       if (properties.demoSchema && translationMap.demoSchema) {
-        for (var i in translationMap.demoSchema) {
+        for (let i in translationMap.demoSchema) {
           if (translationMap.demoSchema[i].properties) {
-            for (var j in translationMap.demoSchema[i].properties) {
+            for (let j in translationMap.demoSchema[i].properties) {
               properties.demoSchema[i].properties[j] =
                 translationMap.demoSchema[i].properties[j];
             }

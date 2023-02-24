@@ -1,12 +1,11 @@
-import { html, css, LitElement } from "lit";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./lib/multiple-choice-response.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
@@ -90,29 +89,20 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         #check {
           margin-right: 8px;
         }
-        .feedback {
-          background-color: black;
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
+        simple-fields-field {
           padding: 8px;
-          border-radius: 3px;
+          margin: 2px;
         }
-        .feedback simple-icon {
-          margin-right: 8px;
+        simple-fields-field::part(option-inner) {
+          position: absolute;
+          right: 0px;
+          bottom: 50%;
+          top: 50%;
+          padding: 0px;
+          margin: 0px;
         }
-        ::slotted([slot="question"]) {
-          margin: 0;
-        }
-        .feedback,
-        ::slotted(multiple-choice-response),
-        ::slotted([slot="correct-feedback"]),
-        ::slotted([slot="incorrect-feedback"]) {
-          font-size: var(--simple-fields-font-size, 16px);
-          text-align: var(--simple-fields-text-align);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
+        simple-icon {
+          display: inline-flex;
         }
       `,
     ];
@@ -122,26 +112,29 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
   }
   constructor() {
     super();
-    this.__ctr = 0;
+    this.shadowRootOptions = {
+      ...LitElement.shadowRootOptions,
+      delegatesFocus: true,
+    };
     this.randomize = false;
     this.hideButtons = false;
     this.disabled = false;
     this.singleOption = false;
-    this.checkLabel = "Check Answer";
+    this.checkLabel = "Check answer";
     this.resetLabel = "Reset";
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
-    this.editMode = false;
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
-    this.addEventListener("value-changed", this._handleChange);
   }
   updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = ["answers", "displayedAnswers"];
       if (notifiedProps.includes(propName)) {
@@ -158,99 +151,89 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         );
       }
       if (propName == "answers" && this.answers && this.answers.length > 0) {
-        this.answers.forEach((answer) => {
-          return {
-            ...answer,
-            answerId: answer.answerId || this._getSlotanswerId(),
-            text: answer.text || answer.value || answer.label,
-            value: answer.value || answer.label,
-          };
-        });
-        this._setSlottedAnswers();
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
       }
-      if (
-        propName == "singleOption" &&
-        !!this.singleOption &&
-        JSON.parse(this.correctAnswers || "[]").length > 1
-      )
-        this.answers = [...this.answers[0]];
-      if (propName == "correctText")
-        this._setSlottedText(this.correctText, "correct-feedback");
-      if (propName == "incorrectText")
-        this._setSlottedText(this.incorrectText, "incorrect-feedback");
-      if (propName == "title") this._setSlottedText(this.title, "question");
-      //only recheck slots editMode is turned off
-      if (propName == "editMode" && !this.editMode) this._handleSlotChange();
     });
   }
   render() {
     return html`
       <confetti-container id="confetti">
         <meta property="oer:assessing" content="${this.relatedResource}" />
-        <h3 id="question" property="oer:name"><slot name="question"></slot></h3>
-        ${this.editMode
-          ? html` <div id="editMode">
-              <slot name="question"></slot>
-              <slot></slot>
-              <p class="feedback">
-                <simple-icon
-                  icon="${this.correctIcon}"
-                  accent-color="green"
-                  dark
-                ></simple-icon>
-                <slot name="correct-feedback"></slot>
-              </p>
-              <p class="feedback">
-                <simple-icon
-                  icon="${this.incorrectIcon}"
-                  accent-color="red"
-                  dark
-                ></simple-icon>
-                <slot name="incorrect-feedback"></slot>
-              </p>
-            </div>`
-          : html`
-              <simple-fields-field
-                id="multiple-choice-question"
-                aria-labelledby="question"
-                block-options
-                ?disabled="${this.disabled}"
-                ?inline="${false}"
-                type="${this.inputType}"
-                .itemsList="${this.displayedAnswers}"
-                .value="${this.userGuess || []}"
-                name="answers"
-                @value-changed="${this.checkedEvent}"
-              ></simple-fields-field>
-              ${!this.hideButtons
-                ? html`
-                    <div id="buttons">
-                      <simple-toolbar-button
-                        id="check"
-                        ?disabled="${this.disabled}"
-                        @click="${this._verifyAnswers}"
-                        label="${this.checkLabel}"
-                      >
-                      </simple-toolbar-button>
-                      <simple-toolbar-button
-                        id="reset"
-                        ?disabled="${this.disabled}"
-                        @click="${this.resetAnswers}"
-                        label="${this.resetLabel}"
-                      >
-                      </simple-toolbar-button>
-                    </div>
+        <h3><span property="oer:name">${this.question}</span></h3>
+        ${this.singleOption
+          ? html`
+              <fieldset id="answers">
+                ${this.displayedAnswers.map(
+                  (answer, index) => html`
+                    <simple-fields-field
+                      ?disabled="${this.disabled}"
+                      property="oer:answer"
+                      type="radio"
+                      name="${index}"
+                      .value="${answer.userGuess}"
+                      @click="${this.clickSingle}"
+                      @value-changed="${this.checkedEvent}"
+                      label="${answer.label ? answer.label : ""}"
+                    ></simple-fields-field>
                   `
-                : ``}
+                )}
+              </fieldset>
+            `
+          : html`
+              <ul>
+                ${this.displayedAnswers.map(
+                  (answer, index) => html`
+                    <li>
+                      <simple-fields-field
+                        ?disabled="${this.disabled}"
+                        property="oer:answer"
+                        name="${index}"
+                        type="checkbox"
+                        label="${answer.label ? answer.label : ""}"
+                        .value="${answer.userGuess}"
+                        @value-changed="${this.checkedEvent}"
+                      ></simple-fields-field>
+                    </li>
+                  `
+                )}
+              </ul>
             `}
+        ${!this.hideButtons
+          ? html`
+              <div id="buttons">
+                <simple-toolbar-button
+                  id="check"
+                  ?disabled="${this.disabled}"
+                  @click="${this._verifyAnswers}"
+                  label="${this.checkLabel}"
+                >
+                </simple-toolbar-button>
+                <simple-toolbar-button
+                  id="reset"
+                  ?disabled="${this.disabled}"
+                  @click="${this.resetAnswers}"
+                  label="${this.resetLabel}"
+                >
+                </simple-toolbar-button>
+              </div>
+            `
+          : ``}
       </confetti-container>
     `;
   }
+  clickSingle(e) {
+    if (this.singleOption) {
+      this.displayedAnswers.forEach((el, i) => {
+        this.displayedAnswers[i].userGuess = false;
+      });
+    }
+  }
   checkedEvent(e) {
-    this.userGuess = e.detail.value || [];
+    let attr = this.displayedAnswers;
+    attr[e.target.name].userGuess = e.detail.value;
+    this.displayedAnswers = [...attr];
   }
   static get properties() {
     return {
@@ -356,17 +339,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         type: Boolean,
         attribute: "hide-buttons",
       },
-      /**
-       * flag to hide buttons
-       */
-      editMode: {
-        type: Boolean,
-        attribute: "edit-mode",
-        reflect: true,
-      },
-      userGuess: {
-        type: Array,
-      },
     };
   }
 
@@ -374,84 +346,77 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
-    SimpleToastStore.hide();
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      })
+    );
     this.displayedAnswers = [];
-    this.userGuess = [];
+    this.answers.forEach((el) => {
+      el.userGuess = false;
+    });
     const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];
   }
 
-  get inputType() {
-    let correct = this.correctAnswers.split(),
-      type = correct.length < 2 && this.singleOption ? "radio" : "checkbox";
-    Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
-      (field) => (field.type = type)
-    );
-    return type;
-  }
-
   /**
-   * if the current answers are correct
-   * @returns {boolean}
-   * @readonly
-   * @memberof MultipleChoice
+   * Return if the current answers are correct
    */
-  get isCorrect() {
+  checkAnswers() {
+    let gotRight = true;
     // see that they got them all right
-    let guess = this.userGuess || [];
-    if (typeof guess === "string") guess = [guess];
-    return this.correctAnswers === JSON.stringify(guess.sort());
+    for (var i in this.displayedAnswers) {
+      if (
+        gotRight != false &&
+        this.displayedAnswers[i].correct &&
+        this.displayedAnswers[i].userGuess
+      ) {
+        gotRight = true;
+      } else if (
+        this.displayedAnswers[i].correct &&
+        !this.displayedAnswers[i].userGuess
+      ) {
+        gotRight = false;
+      } else if (
+        !this.displayedAnswers[i].correct &&
+        this.displayedAnswers[i].userGuess
+      ) {
+        gotRight = false;
+      }
+    }
+    return gotRight;
   }
-  /**
-   * gets a JSON object of alphabetized correct answers
-   * @returns {string}
-   * @readonly
-   * @memberof MultipleChoice
-   */
-  get correctAnswers() {
-    return JSON.stringify(
-      this.displayedAnswers
-        .filter((answer) => !!answer.correct)
-        .map((answer) => answer.value || answer.label)
-        .sort()
-    );
-  }
-  /**
-   * handles single option radio behavior when a response is checked as correct in edit mode
-   * @param {event} e
-   * @returns
-   */
-  _handleChange(e) {
-    if (!this.editMode || !this.singleOption || !e.detail || !e.detail.value)
-      return;
-    let parentNode =
-      !!e.detail &&
-      !!e.detail.parentNode &&
-      !!e.detail.parentNode.host &&
-      e.detail.parentNode.host.tagName === "MULTIPLE-CHOICE-RESPONSE"
-        ? e.detail.parentNode.host
-        : undefined;
-    if (!!parentNode)
-      Array.from(this.querySelectorAll("multiple-choice-response")).forEach(
-        (response) => {
-          if (response !== parentNode) response.correct = false;
-        }
-      );
-  }
-
   /**
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
-    SimpleToastStore.hide();
-    let gotRight = this.isCorrect;
-    let si = document.createElement("simple-icon");
-    this.__toastColor = "grey";
-    si.dark = true;
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      })
+    );
+    let si = document.createElement("simple-icon-lite");
+    let extras = {};
+    let toastShowEventName = "simple-toast-show";
+    // support for haxcms toast
+    if (window.HAXCMSToast) {
+      toastShowEventName = "haxcms-toast-show";
+      si.style.setProperty("--simple-icon-height", "40px");
+      si.style.setProperty("--simple-icon-width", "40px");
+      si.style.height = "150px";
+      si.style.marginLeft = "8px";
+    }
+    let gotRight = this.checkAnswers();
     // see if they got this correct based on their answers
     if (gotRight) {
-      si.accentColor = "green";
+      this.__toastColor = "green";
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
       // make it fun... and performant!
@@ -460,22 +425,32 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
         }, 0);
       });
+      extras.hat = "party";
     } else {
+      this.__toastColor = "red";
       this.__toastIcon = this.incorrectIcon;
       this.__toastText = this.incorrectText;
-      si.accentColor = "red";
+      extras.fire = true;
     }
     si.icon = this.__toastIcon;
     si.style.marginLeft = "16px";
-    SimpleToastStore.showSimpleToast({
-      detail: {
-        duration: 3000,
-        text: this.__toastText,
-        slot: si,
-        dark: !si.dark,
-        accentColor: this.__toastColor,
-      },
-    });
+    si.accentColor = this.__toastColor;
+    si.dark = true;
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
+      new CustomEvent(toastShowEventName, {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: this.__toastText,
+          accentColor: this.__toastColor,
+          duration: 3000,
+          slot: si,
+          ...extras,
+        },
+      })
+    );
     // start of data passing, this is a prototype atm
     let eventData = {
       activityDisplay: "answered",
@@ -533,186 +508,100 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
       .href;
   }
   /**
-   * converts answers in slots to an array
-   *
-   * @returns {array}
-   * @memberof MultipleChoice
+   * Implements haxHooks to tie into life-cycle if hax exists.
    */
-  _getSlottedAnswers() {
-    let others =
-        "[slot=correct-feedback][slot=incorrect-feedback],[slot=question]",
-      slots = Array.from(
-        this.querySelectorAll("multiple-choice-response,input,ul>li,ol>li")
-      ).filter((node) => !node.closest(others));
-    let answers = [];
-    slots.forEach((slot) => answers.push(this._getSlottedAnswer(slot)));
-    Array.from(this.querySelectorAll("ul")).forEach((node) => {
-      if (!node.closest(others)) node.remove();
-    });
-    return answers;
-  }
-  /**
-   * converts an answer in a slot to an object
-   *
-   * @returns {object}
-   * @memberof MultipleChoice
-   */
-  _getSlottedAnswer(slot) {
-    let answer = {
-      answerId: this._getSlotanswerId(slot),
-      value: (slot.value || slot.innerHTML).trim(),
-      text: (slot.value || slot.innerHTML).trim(),
-      correct:
-        slot.tagName !== "INPUT" && slot.tagName !== "LI"
-          ? !!slot.correct
-          : slot.getAttribute("correct") === null
-          ? false
-          : true,
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+      preProcessInsertContent: "haxpreProcessInsertContent",
+      inlineContextMenu: "haxinlineContextMenu",
     };
+  }
 
-    //handle legacy slottes content
-    if (slot.tagName === "INPUT" || slot.tagName === "LI") {
-      slot.remove();
-      this._setSlottedAnswer(answer);
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
     }
-    return answer;
   }
 
-  _getSlotanswerId(slot) {
-    let id = `mc-${Date.now()}-${this.__ctr++}`;
-    if (!!slot && !slot.answerId) slot.answerId = id;
-    return !!slot ? slot.answerId : id;
+  haxeditModeChanged(value) {
+    this._haxstate = value;
   }
-
   /**
-   * makes sure each answer object is represented by slotted content
-   *
-   * @param {object} answer object representing a single answer
-   * @memberof MultipleChoice
+   * add buttons when it is in context
    */
-  _setSlottedAnswer(answer) {
-    let slots = Array.from(
-        this.querySelectorAll("multiple-choice-response")
-      ).filter((response) => {
-        return (
-          (answer.label || answer.value || "").trim ===
-          (response.innerHTML || "").trim()
-        );
-      }),
-      slot = slots[0];
-    //if no slotted response matches query, make one
-    if (!slot) {
-      slot = document.createElement("multiple-choice-response");
-      slot.innerHTML = answer.label || answer.value;
-      this.appendChild(slot);
-    }
-    //update reposnse with answer data
-    slot.answerId = this._getSlotanswerId(slot);
-    slot.correct = answer.correct;
-    slot.type = this.inputType;
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "haxClickInlineAdd",
+        label: "Add answer",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlineRemove",
+        label: "Remove answer",
+      },
+    ];
   }
-
-  /**
-   * makes sure all answrs in array are represented by slotted content
-   *
-   * @param {array}  array array of objects representing answers data
-   * @memberof MultipleChoice
-   */
-  _setSlottedAnswers() {
+  haxClickInlineAdd(e) {
+    this.resetAnswers();
+    let d = this.answers;
+    d.push({ label: "New answer", correct: false });
+    this.answers = [...d];
+    return true;
+  }
+  haxClickInlineRemove(e) {
     if (this.answers.length > 0) {
-      let answers = this.answers.map((answer) => answer.answerId),
-        slots = {};
-      //remove any slotted responses that are no longer in answers array
-      Array.from(this.querySelectorAll("multiple-choice-response,input")).map(
-        (slot) => {
-          let id = this._getSlotanswerId(slot);
-          slots[id] = slot;
-          if (!answers.includes(id)) slot.remove();
+      this.resetAnswers();
+      let d = this.answers;
+      d.pop();
+      this.answers = [...d];
+      return true;
+    }
+  }
+  /**
+   * HAX preprocess Node to Content hook
+   */
+  async haxpreProcessNodeToContent(node) {
+    // ensure we dont accidently have the answer displayed!
+    // this also rips the data into the lightDom for saving
+    // so that we can unset the array data on the object at save time
+    // this helps improve SEO / compatibility with CMS solutions
+    if (node.answers) {
+      // ensure this is null before generating new answers
+      // otherwise page to page saves we could lose statefulness
+      this.innerHTML = "";
+      for (var i in node.answers) {
+        let answer = document.createElement("input");
+        answer.setAttribute("type", "checkbox");
+        answer.value = node.answers[i].label;
+        if (node.answers[i].correct) {
+          answer.setAttribute("correct", "correct");
         }
-      );
-      //update slotted reponses from answers array
-      this.answers.forEach((answer) => {
-        let slot = slots[answer.answerId];
-        if (!slot) {
-          this._setSlottedAnswer(answer);
-        } else {
-          slot.innerHTML = answer.text;
+        node.appendChild(answer);
+      }
+    }
+    return node;
+  }
+
+  /**
+   * HAX preprocess insert content hook
+   */
+  haxpreProcessInsertContent(detail, activeNode) {
+    // ensure we dont accidently have the answer displayed!
+    if (detail.properties.answers) {
+      detail.properties.answers = detail.properties.answers.map(function (val) {
+        if (val.userGuess) {
+          delete val.userGuess;
         }
+        return val;
       });
     }
+    return detail;
   }
-  /**
-   * converts properties to actual slots
-   *
-   * @param {string} text text to be added to a slot
-   * @param {string} slotName name of slot
-   * @param {boolean} [prepend=false] whether this slot should added at the beginning
-   * @returns {string} text
-   * @memberof MultipleChoice
-   */
-  _setSlottedText(text, slotName, prepend = false) {
-    //only make a new node if one doesn't exist
-    if (
-      !["question", "correct-feedback", "incorrect-feedback"].includes(
-        slotName
-      ) ||
-      !this.querySelector(`[slot=${slotName}]`)
-    ) {
-      let p = document.createElement("p");
-      p.slot = slotName;
-      p.innerHTML = text;
-      if (prepend) {
-        this.insertBefore(p, this.firstChild);
-      } else {
-        this.appendChild(p);
-      }
-      // otherwise update the exsiting one
-    } else {
-      this.querySelector(`[slot=${slotName}]`).innerHTML = text;
-    }
-  }
-  /**
-   *
-   *
-   * @param {string} slotName name of slot
-   * @param {string} propName name of property that gets updated
-   * @memberof MultipleChoice
-   */
-  _getSlottedText(propName, slotName) {
-    let selector = `[slot=${slotName}]`,
-      query = this.querySelector(selector),
-      text = query && query.innerHTML ? query.innerHTML.trim() : undefined;
-    if (!this[propName] || this[propName].trim() !== text)
-      this[propName] = text;
-  }
-  /**
-   * updates properties based on slots
-   * on first update and in switching form editMode
-   *
-   * @param {boolean} [init=false] called from firstUpdated()
-   * @memberof MultipleChoice
-   */
-  _handleSlotChange(init = false) {
-    this.answers = this._getSlottedAnswers();
-
-    //update all the other proerties from slots
-    let others = {
-      title: "question",
-      correctText: "correct-feedback",
-      incorrectText: "incorrect-feedback",
-    };
-    Object.keys(others).forEach((key) => {
-      //when first updating if a property is already set, just add a slot
-      if (!this.querySelector(`[slot=${others[key]}]`) && init) {
-        this._setSlottedText(this[key], others[key], key == "question");
-
-        //otherwise set property based on what's in slot
-      } else {
-        this._getSlottedText(key, others[key]);
-      }
-    });
-  }
-
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -721,14 +610,21 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
     if (this.children.length > 0) {
-      this._handleSlotChange(true);
-    } else {
-      this._setSlottedAnswers();
-      this._setSlottedText(this.correctText, "correct-feedback");
-      this._setSlottedText(this.incorrectText, "incorrect-feedback");
-      this._setSlottedText(this.title, "question", true);
+      let inputs = Array.from(this.querySelectorAll("input"));
+      let answers = [];
+      for (var i in inputs) {
+        let answer = {
+          label: inputs[i].value,
+          correct: inputs[i].getAttribute("correct") == null ? false : true,
+        };
+        answers.push(answer);
+      }
+      this.answers = answers;
+      // wipe lightdom after reading it in for data. This makes it harder for someone
+      // to just inspect the document and get at the underlying data
+      this.innerHTML = "";
     }
   }
 }
-customElements.define(MultipleChoice.tag, MultipleChoice);
+window.customElements.define(MultipleChoice.tag, MultipleChoice);
 export { MultipleChoice };

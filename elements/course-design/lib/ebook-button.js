@@ -13,15 +13,15 @@ export class EbookButton extends LitElement {
 
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
+      canScale: false,
+      canPosition: false,
       canEditSource: false,
       gizmo: {
         title: "Ebook button",
         description: "A button that links to an Ebook.",
         icon: "icons:book",
         color: "blue",
-        groups: ["education", "link"],
+        tags: ["Instructional", "link", "ebook", "book"],
         handles: [
           {
             type: "link",
@@ -53,7 +53,7 @@ export class EbookButton extends LitElement {
             property: "icon",
             title: "Icon",
             description: "Icon to represent this link",
-            inputMethod: "textfield",
+            inputMethod: "iconpicker",
             icon: "editor:insert-link",
           },
         ],

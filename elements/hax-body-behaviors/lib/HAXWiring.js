@@ -68,6 +68,7 @@
  *         'url': 'csvFile'
  *       }
  *     ],
+ *    'tags': ['Content', 'csv'],
  *     'meta': {
  *       'author': 'LRNWebComponents'
  *     }
@@ -713,7 +714,7 @@ export class HAXWiring {
           description: "",
           icon: "icons:android",
           color: "purple",
-          groups: ["Content"],
+          tags: ["Content"],
           handles: [
             {
               type: "data",
@@ -721,6 +722,7 @@ export class HAXWiring {
               url: "src",
             },
           ],
+          shortcutKey: "T",
           meta: {
             author: "auto",
           },

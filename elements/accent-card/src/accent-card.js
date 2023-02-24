@@ -99,7 +99,8 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             var(--simple-colors-default-theme-grey-1, #fff)
           );
         }
-        :host([dark]) {
+        :host([dark]),
+        :host([dark]) .body ::slotted(*) {
           color: var(
             --accent-card-color,
             var(--simple-colors-default-theme-grey-12, #fff)
@@ -407,11 +408,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       canEditSource: true,
       contentEditable: true,
       gizmo: {
-        title: "Accent Card",
+        title: "Card",
         description: "A card with optional accent styling.",
         icon: "chrome-reader-mode",
         color: "light-blue",
-        groups: ["Media", "Content", "Image", "Presentation"],
+        tags: ["Layout", "content", "card", "Image", "Presentation", "style"],
         handles: [
           {
             type: "media",
@@ -563,13 +564,13 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         {
           tag: "accent-card",
           properties: {
-            style: "maxWidth:600px;width:100%;",
-            accentColor: "cyan",
-            dark: true,
+            accentColor: "red",
+            accentHeading: true,
+            horizontal: true,
             imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<div slot="heading">Card Heading</div>\n<p slot="content">This is the body of the card.</p>',
+            '<div slot="heading">Accent Card</div><div slot="subheading">A card with optional accent stylings.</div><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
         },
       ],
       saveOptions: {

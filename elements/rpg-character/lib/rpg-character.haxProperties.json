@@ -7,10 +7,19 @@
     "description": "Fun character from HAX",
     "icon": "hax:hax2022",
     "color": "red",
-    "groups": ["Fun"],
+    "tags": [
+      "Other",
+      "marketing",
+      "image",
+      "rpg",
+      "fun",
+      "8bit",
+      "gaming",
+      "game"
+    ],
     "handles": [],
     "meta": {
-      "author": "LRNWebComponents"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

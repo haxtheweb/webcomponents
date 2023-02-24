@@ -4,18 +4,18 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: sans-serif;
-      --hax-ui-font-size: 16px;
-      --hax-ui-font-size-sm: 13px;
-      --hax-ui-font-size-xs: 12px;
-      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 16px));
-      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 16px));
+      --hax-ui-font-size: 14px;
+      --hax-ui-font-size-sm: 12px;
+      --hax-ui-font-size-xs: 11px;
+      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 14px));
+      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 14px));
     }
   `,
 ];
 export const HaxUiSpacing = [
   css`
     body {
-      --hax-tray-width: 300px;
+      --hax-tray-width: 350px;
       --hax-tray-menubar-min-width: 44px;
       --hax-tray-menubar-min-height: 34px;
       --hax-ui-spacing-xs: 4px;
@@ -499,7 +499,7 @@ export const HaxTrayDetail = [
     #tray-detail h6 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
-      margin: var(--hax-ui-spacing-lg) 0 var(--hax-ui-spacing-xs);
+      margin: var(--hax-ui-spacing) 0 var(--hax-ui-spacing-xs);
       color: var(--hax-ui-color-faded);
     }
     #tray-detail h4 {
@@ -509,6 +509,11 @@ export const HaxTrayDetail = [
       font-weight: normal;
       margin: 0 var(--hax-ui-spacing-sm) 0 0;
       padding: 0;
+      height: 28px;
+      overflow: hidden;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      line-height: 28px;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

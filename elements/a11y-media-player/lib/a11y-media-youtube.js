@@ -9,11 +9,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 window.A11yMediaYoutubeManager = window.A11yMediaYoutubeManager || {
   /* gets iframes for all  */
   getIframes: () => {
-    window.A11yMediaYoutubeManager.queue.forEach(
-      (instance) => {
-        (instance.__yt = instance._preloadVideo(true))
-      }
-    );
+    window.A11yMediaYoutubeManager.queue.forEach((instance) => {
+      instance.__yt = instance._preloadVideo(true);
+    });
     window.A11yMediaYoutubeManager.queue = [];
   },
   queue: [], //array of instances waiting for iframes
@@ -285,12 +283,11 @@ class A11yMediaYoutube extends LitElement {
     if (window.A11yMediaYoutubeManager.api) {
       if (window.YT) window.A11yMediaYoutubeManager.getIframes();
     } else {
-      window.onYouTubeIframeAPIReady = (e) =>
-        {
-          window.A11yMediaYoutubeManager.getIframes()
-        };
+      window.onYouTubeIframeAPIReady = (e) => {
+        window.A11yMediaYoutubeManager.getIframes();
+      };
 
-        window.A11yMediaYoutubeManager.api = this.api;
+      window.A11yMediaYoutubeManager.api = this.api;
     }
   }
 

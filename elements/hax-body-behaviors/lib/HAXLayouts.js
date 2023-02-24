@@ -72,7 +72,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-accent-color, #009dc7)
               );
           }
-          :host([data-hax-ray]) ::slotted(.hax-active) {
+          :host([data-hax-ray]) ::slotted([data-hax-active]) {
             outline: var(--hax-layout-slotted-active-outline-width, 1px)
               var(--hax-layout-slotted-active-outline-style, solid)
               var(

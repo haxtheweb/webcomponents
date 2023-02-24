@@ -36,6 +36,7 @@ class PageContentsMenu extends LitElement {
         .wrapper {
           display: inline-block;
           padding: 8px;
+          width: 250px;
         }
         .header {
           display: flex;
@@ -60,7 +61,6 @@ class PageContentsMenu extends LitElement {
           font-weight: var(--page-contents-menu-heading-font-weight, 700);
           padding: 0;
           margin: 0;
-          font-family: Content-font, Roboto, sans-serif;
           line-height: 1;
           letter-spacing: 1.2px;
           text-transform: uppercase;
@@ -82,35 +82,37 @@ class PageContentsMenu extends LitElement {
           text-overflow: ellipsis;
         }
         .link {
-          font-family: Content-font, Roboto, sans-serif;
-          line-height: 1.5;
           display: flex;
           padding: 4px 16px 4px 24px;
-          font-size: var(--page-contents-menu-link-font-size, 12px);
+          font-size: var(--page-contents-menu-link-font-size, 10px);
           text-decoration: none;
           font-weight: var(--page-contents-menu-link-font-weight, 500);
           color: var(--page-contents-menu-link, #74818d);
           cursor: pointer;
-          margin: 0;
+          margin: 0px;
           align-items: center;
           vertical-align: middle;
           -webkit-box-align: center;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          transition: font 0.3s ease-in-out, border 0.1s ease-in-out;
+          border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
         .link:hover,
-        .link:focus,
-        .link:active {
+        .link:focus {
           text-decoration: underline;
           color: var(--page-contents-menu-link-hover, rgb(56, 132, 255));
+          font-size: 11px;
         }
         .link:focus {
           outline: 1px solid var(--page-contents-menu-link, black);
           outline-offset: 4px;
         }
         .indent-1 {
-          padding-left: 0px;
+          padding-left: 8px;
         }
         .indent-2 {
           padding-left: 16px;
@@ -119,11 +121,13 @@ class PageContentsMenu extends LitElement {
         .indent-4,
         .indent-5,
         .indent-6 {
-          padding-left: 32px;
+          padding-left: 24px;
         }
+        .link:active,
         .active {
           font-weight: bold;
-          border-left: black 2px solid;
+          border-left: black 3px solid;
+          font-size: 12px;
         }
       `,
     ];

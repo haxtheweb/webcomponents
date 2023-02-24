@@ -3,11 +3,11 @@
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Full width-image",
+    "title": "Heading image",
     "description": "full width image that flows beyond boundaries",
     "icon": "image:image",
     "color": "green",
-    "groups": ["Width"],
+    "tags": ["Images", "image", "layout", "design", "heading"],
     "handles": [
       {
         "type": "image",
@@ -17,7 +17,7 @@
       }
     ],
     "meta": {
-      "author": "btopro",
+      "author": "HAXTheWeb core team",
       "owner": "The Pennsylvania State University"
     }
   },

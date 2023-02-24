@@ -8,9 +8,9 @@
     "description": "Designed Quote",
     "icon": "editor:format-quote",
     "color": "blue",
-    "groups": ["content", "education"],
+    "tags": ["Layout", "content", "design", "presentation"],
     "meta": {
-      "author": "LRNWebComponents"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

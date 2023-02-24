@@ -56,7 +56,7 @@
         },
         {
           "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to elementAlign the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
+          "description": "`element-align` {`string`} - Direction to elementAlign the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
         },
         {
           "name": "method",
@@ -334,7 +334,7 @@
         },
         {
           "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to elementAlign the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
+          "description": "`element-align` {`string`} - Direction to elementAlign the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
         },
         {
           "name": "method",

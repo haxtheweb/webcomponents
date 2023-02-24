@@ -3,93 +3,97 @@
   "canPosition": false,
   "canEditSource": true,
   "type": "grid",
-  "editMode": { "editMode": true },
+  "editMode": {
+    "editMode": true
+  },
   "gizmo": {
     "title": "Multiple choice",
     "description": "Multiple choice self check",
     "icon": "hax:multiple-choice",
     "color": "purple",
-    "groups": ["Instructional"],
+    "tags": [
+      "Instructional",
+      "quiz",
+      "form",
+      "multiple",
+      "self check",
+      "test",
+      "exam",
+      "question",
+      "answer",
+      "feedback"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
     }
   },
   "settings": {
-    "layout": [
-      {
-        "property": "singleOption",
-        "title": "Single Response",
-        "description": "Only allow one response (uses radio buttons)",
-        "inputMethod": "boolean"
-      }
-    ],
     "configure": [
       {
-        "slot": "question",
+        "property": "question",
         "title": "Question",
         "description": "Question for users to respond to.",
-        "inputMethod": "textfield",
-        "slotWrapper": "h3"
+        "inputMethod": "textfield"
       },
       {
-        "slot": "",
-        "title": "Response",
-        "description": "Possible Responses",
-        "inputMethod": "textfield",
-        "slotWrapper": "multiple-choice-response",
-        "allowedSlotWrappers": ["multiple-choice-response"]
+        "property": "randomize",
+        "title": "Randomize",
+        "description": "Randomize the answers dynamically",
+        "inputMethod": "boolean"
       },
       {
-        "slot": "correct-feedback",
+        "property": "singleOption",
+        "title": "Single asnwer",
+        "description": "Only allow one answer",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "correct",
+            "title": "Correct",
+            "description": "Is this correct",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "label",
+            "title": "Answer",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      },
+      {
+        "property": "correctText",
         "title": "Correct feedback",
         "description": "Feedback when they get it right",
-        "inputMethod": "textfield",
-        "slotWrapper": "p"
+        "inputMethod": "textfield"
       },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
       {
         "property": "correctIcon",
         "title": "Correct icon",
         "description": "Icon to display when correct answer happens",
-        "inputMethod": "iconpicker",
-        "options": [
-          "icons:trending-flat",
-          "icons:launch",
-          "icons:pan-tool",
-          "icons:link",
-          "icons:check",
-          "icons:favorite",
-          "icons:thumb-up",
-          "icons:thumb-down",
-          "icons:send"
-        ]
-      },
-      {
-        "slot": "incorrect-feedback",
-        "title": "Incorrect feedback",
-        "description": "Feedback when they get it wrong",
-        "inputMethod": "textfield",
-        "slotWrapper": "p"
+        "inputMethod": "iconpicker"
       },
       {
         "property": "incorrectIcon",
         "title": "Incorrect icon",
         "description": "Icon to display when wrong answer happens",
-        "inputMethod": "iconpicker",
-        "options": [
-          "icons:trending-flat",
-          "icons:launch",
-          "icons:pan-tool",
-          "icons:link",
-          "icons:check",
-          "icons:favorite",
-          "icons:thumb-up",
-          "icons:thumb-down",
-          "icons:send"
-        ]
-      }
-    ],
-    "advanced": [
+        "inputMethod": "iconpicker"
+      },
       {
         "property": "checkLabel",
         "title": "Check answers label",
@@ -111,13 +115,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "__utils",
-      "displayed-answers",
-      "colors",
-      "answers",
-      "editMode"
-    ]
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
   },
   "demoSchema": [
     {
@@ -125,7 +123,7 @@
       "properties": {
         "randomize": true
       },
-      "content": "<h3 slot=\"question\">What is the answer?</p>\n<p slot=\"correct-answer\">True</p>\n<p slot=\"incorrect-answer\">False</p>"
+      "content": "<input type=\"checkbox\" value=\"Option 1 - Correct answer\" correct>\n<input type=\"checkbox\" value=\"Option 2\">"
     }
   ]
 }

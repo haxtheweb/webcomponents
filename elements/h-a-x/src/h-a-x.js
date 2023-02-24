@@ -5,9 +5,7 @@
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
-import {
-  editableTableDisplayStyles
-} from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
+import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
 /**
  * `h-a-x`
  * @element h-a-x
@@ -160,6 +158,12 @@ class HAX extends HTMLElement {
       padding: 5px 10px;
       text-align: left;
       vertical-align: middle;
+    }
+    
+    hax-body[edit-mode] [data-hax-active][contenteditable] {
+      outline-offset: 8px;
+      outline: var(--hax-body-active-outline, 2px solid var(--hax-ui-color-focus, #000)) !important;
+      caret-color: var(--hax-ui-caret-color, auto);
     }
     figure {
       margin-left: 0;
@@ -322,8 +326,12 @@ class HAX extends HTMLElement {
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
-    if (!this.elementAlign || this.elementAlign == null) {
-      this.elementAlign = "right";
+    if (
+      !this.elementAlign ||
+      this.elementAlign == null ||
+      this.elementAlign == ""
+    ) {
+      this.elementAlign = "left";
     }
     store.elementAlign = this.elementAlign;
     document.body.appendChild(tray);

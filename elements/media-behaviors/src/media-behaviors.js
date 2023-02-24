@@ -79,13 +79,6 @@ window.MediaBehaviors.Video = {
       ) {
         return input + "/embed";
       }
-      // copy and paste from the URL for sketchfab
-      else if (
-        input.indexOf("dailymotion.com") != -1 &&
-        input.indexOf("/embed") == -1
-      ) {
-        return input.replace("/video/", "/embed/video/");
-      }
     }
     return input;
   },
@@ -116,8 +109,6 @@ window.MediaBehaviors.Video = {
       return "youtube";
     } else if (source.indexOf("sketchfab.com") != -1) {
       return "sketchfab";
-    } else if (source.indexOf("dailymotion.com") != -1) {
-      return "dailymotion";
     }
     for (let i = 0; i < localFormats.length; i++) {
       if (!isLocal && source.toLowerCase().indexOf("." + localFormats[i]) > -1)
@@ -194,13 +185,6 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         ) {
           return input + "/embed";
         }
-        // copy and paste from the URL for sketchfab
-        else if (
-          input.indexOf("dailymotion.com") != -1 &&
-          input.indexOf("/embed") == -1
-        ) {
-          return input.replace("/video/", "/embed/video/");
-        }
       }
       return input;
     }
@@ -231,8 +215,6 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         return "youtube";
       } else if (source.indexOf("sketchfab.com") != -1) {
         return "sketchfab";
-      } else if (source.indexOf("dailymotion.com") != -1) {
-        return "dailymotion";
       }
       for (let i = 0; i < localFormats.length; i++) {
         if (

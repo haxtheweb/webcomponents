@@ -47,7 +47,7 @@
   "dependencies": {
     "@lrnwebcomponents/simple-modal": "^4.1.0",
     "@lrnwebcomponents/simple-popover": "^4.1.0",
-    "lit": "^2.4.1"
+    "lit": "^2.6.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "3.0.0",
