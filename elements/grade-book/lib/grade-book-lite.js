@@ -1079,7 +1079,7 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
       data: htmlContent,
     });
     if (response.status == 200 && response.data) {
-      console.log(response.data);
+      window.open(`https://secure-feedback.vercel.app/?message=${response.data}`, '_blank');
     }
     this.__hashLoading = false;
   }
