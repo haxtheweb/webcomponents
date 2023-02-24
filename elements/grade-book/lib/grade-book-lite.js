@@ -70,13 +70,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
     this.activeRubric = [];
     // the active grade sheet
     this.activeGrading = {};
-    // general state
-    this.settings = {
-      photo: true,
-      fname: true,
-      surname: true,
-      email: true,
-    };
     this.disabled = false;
     // shows progress indicator as it loads
     this.loading = false;
@@ -107,7 +100,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
       surname: "Surname",
       photo: "Photo",
       email: "Email",
-      settings: "Settings",
       previous: "Previous",
       next: "Next",
       previousStudent: "Previous student",
@@ -473,7 +465,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
       displayMode: { type: Number },
       __pdfLoading: { type: Boolean },
       __hashLoading: { type: Boolean },
-      settings: { type: Object },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       ready: { type: Boolean, reflect: true },
@@ -976,13 +967,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
       );
     }
   }
-  settingChanged(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    this.settings[e.detail.name] = e.detail.value;
-    this.settings = { ...this.settings };
-  }
   handleGridScaling(e) {
     let paths = normalizeEventPath(e);
     if (paths[0].tagName === "TABLE") {
@@ -1134,7 +1118,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
           </simple-icon-button-lite>
         </div>
         <div class="group">${this.renderGradeScaleBtn()}</div>
-        <div class="group">${this.renderSettingsBtn()}</div>
         ${this.ready && this.source === "filesystem" && this.sourceData
           ? html`
               <div class="group">
@@ -1282,6 +1265,7 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
                   </div>
                   <div slot="col-2">
                     <h3>${this.activeRubric[0].name}</h3>
+                    ${this.PDFPageButton()}
                     ${this.activeRubric.map(
                       (rubric, index) => html`
                         <letter-grade-picker></letter-grade-picker>
@@ -1371,7 +1355,6 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
           icon="assignment"
           label="${this.t.studentReportView}"
         >
-          ${this.PDFPageButton()}
           <div id="studentreport">
             ${!this.loading &&
             this.database.assignments &&
