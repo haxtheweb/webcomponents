@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>grade-book</title>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script type="module">
+      import "../lib/grade-book-lite.js";
+    </script>
+    <style>
+      html,body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- google docs example 
+    <grade-book-lite
+        accent-color="blue"
+        source="googledocs"
+        source-data="2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq"
+      >
+      <div slot="app-name">
+        <img style="height:32px;" src="https://standard.psu.edu/images/uploads/psu-mark.svg" alt="Penn State University">
+        <div style="margin: -20px 0 0 35px;font-weight:bold;">Gradebook</div>
+      </div>
+    </grade-book-lite>
+    -->
+    <grade-book-lite
+      accent-color="blue"
+      source="googledocs"
+      source-data="2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq"
+    >
+    </grade-book-lite>
+  </body>
+</html>

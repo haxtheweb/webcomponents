@@ -73,6 +73,17 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
+  // crypto
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/security/aes256",
+    name: "@core/crypto",
+    title: "Cryptography from string",
+    description: "Convert a string to or from an aes256 based hash",
+    params: {
+      data: "HTML or link to be converted",
+      op: "decrypt or hash",
+    },
+  });
   // duckDuckGo
   MicroFrontendRegistry.add({
     endpoint: "/api/services/website/duckDuckGo",

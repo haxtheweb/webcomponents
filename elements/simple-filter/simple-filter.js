@@ -16,6 +16,8 @@ export const SimpleFilterMixin = function (SuperClass) {
       super();
       this.caseSensitive = false;
       this.filtered = [];
+      this.items = [];
+      this.where = "index";
       this.resetList();
     }
     /**

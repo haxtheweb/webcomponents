@@ -5,13 +5,12 @@
 import { html, css, render, nothing } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import {
-  validURL,
-  cleanVideoSource,
-  isElementInViewport,
-} from "@lrnwebcomponents/utils/utils.js";
 import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
@@ -21,25 +20,35 @@ import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import "./lib/letter-grade.js";
-import "./lib/letter-grade-picker.js";
 import "@github/time-elements";
-import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
-import { GradeBookStore } from "./lib/grade-book-store.js";
-import "./lib/grade-book-pop-up.js";
 import { autorun, toJS } from "mobx";
 import { get, set } from "idb-keyval";
-import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
+import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
+import { MicroFrontendRegistry } from "@lrnwebcomponents/micro-frontend-registry/micro-frontend-registry.js";
+import { enableServices } from "@lrnwebcomponents/micro-frontend-registry/lib/microServices.js";
+import { b64toBlob } from "@lrnwebcomponents/utils/utils.js";
+
+import { UIRenderPieces } from "./GradeBookUIPieces.js";
+import { GradeBookStore } from "./grade-book-store.js";
+import "./grade-book-pop-up.js";
+import "./letter-grade.js";
+import "./letter-grade-picker.js";
+
+
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
  * @demo demo/index.html Grade book
  * @element grade-book
  */
-class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
+class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleColors))) {
   constructor() {
     super();
+    this.__pdfLoading = false;
+    this.__hashLoading = false;
+    enableServices(['core']);
+    this.where = "term";
     this.hasFilePicker = false;
     this.source = "googledocs";
     if (window.showOpenFilePicker) {
@@ -73,6 +82,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.loading = false;
     // translatable text
     this.t = {
+      generateHashLink: "Generate hash link",
+      generatingPleaseWait: "Generating please wait..",
+      downloadingPdfPleaseWait: "Downloading PDF please wait..",
+      downloadPdf: "Download PDF",
       csvURL: "CSV URL",
       points: "Points",
       criteria: "Criteria",
@@ -165,7 +178,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           pixels + "px";
       }, 50);
     });
-    resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
     // see if we have a previous file reference
     setTimeout(async () => {
       this.prevLocalFileReference = await get("grade-book-prev-file");
@@ -282,11 +294,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           this.activeStudentSubmissions = [
             ...this.getStudentSubmissions(this.activeStudent),
           ];
-          if (this.displayMode == 2) {
-            this.renderSubmissionInWindow();
+          if (this.database.tags && this.database.tags.data) {
+            this.items = this.database.tags.data;
           }
         }, 0);
-        this.maintainScrollPosition();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
       if (["sourceData", "source"].includes(propName)) {
@@ -394,52 +405,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     // allow for deeper processing on the data or just return the data found
     return data;
   }
-
-  /**
-   * maintain scroll position within the table overflow scroll whenever assignment or student changes
-   */
-  maintainScrollPosition() {
-    // ensure we maintain visibility of the active student / assignment
-    // in our studentgrid; delay to ensure paints before visibility
-    if (
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("#studentgrid [data-active]")
-    ) {
-      setTimeout(() => {
-        let offset = 192;
-        let isVisible = isElementInViewport(
-          this.shadowRoot.querySelector("#studentgrid [data-active]"),
-          {
-            top: 0,
-            right: window.innerWidth,
-            bottom:
-              this.shadowRoot
-                .querySelector("#studentgrid")
-                .getBoundingClientRect().height + 20,
-            left: offset,
-          }
-        );
-        if (GradeBookStore.activeStudent === 0) {
-          this.shadowRoot.querySelector("#studentgrid").scrollTop = 0;
-        } else if (!isVisible) {
-          this.shadowRoot.querySelector("#studentgrid").scrollTop =
-            this.shadowRoot.querySelector("#studentgrid [data-active]")
-              .offsetTop -
-            this.shadowRoot.querySelector("#studentgrid").offsetTop;
-        }
-        // left to right
-        if (GradeBookStore.activeAssignment === 0) {
-          this.shadowRoot.querySelector("#studentgrid").scrollLeft = 0;
-        } else if (!isVisible) {
-          this.shadowRoot.querySelector("#studentgrid").scrollLeft =
-            this.shadowRoot.querySelector("#studentgrid [data-active]")
-              .offsetLeft -
-            offset -
-            this.shadowRoot.querySelector("#studentgrid").offsetLeft;
-        }
-      }, 0);
-    }
-  }
   /**
    * process assignment data to normalize date string
    */
@@ -506,6 +471,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     return {
       ...super.properties,
       displayMode: { type: Number },
+      __pdfLoading: { type: Boolean },
+      __hashLoading: { type: Boolean },
       settings: { type: Object },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
@@ -524,25 +491,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       activeStudentSubmissions: { type: Array },
     };
   }
-  async changeStudent(e) {
-    this.shadowRoot.querySelectorAll("#studentgrid .th-or-td").forEach((el) => {
-      el.classList.remove("col-highlight");
-    });
-    // have to possibly resolve UI click handler of span vs the button
-    if (e.target.getAttribute("value") == "prev" && 0 !== this.activeStudent) {
-      GradeBookStore.activeStudent--;
-    } else if (
-      e.target.getAttribute("value") == "next" &&
-      this.database.roster.length - 1 !== this.activeStudent
-    ) {
-      GradeBookStore.activeStudent++;
-    }
-    await this.requestUpdate();
-  }
   async changeAssignment(e) {
-    this.shadowRoot.querySelectorAll("#studentgrid .th-or-td").forEach((el) => {
-      el.classList.remove("col-highlight");
-    });
     // have to possibly resolve UI click handler of span vs the button
     if (
       e.target.getAttribute("value") == "prev" &&
@@ -727,97 +676,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         #totalpts {
           width: 84px;
           margin: 0 12px;
-        }
-        #studentgrid {
-          display: block;
-          width: 100%;
-          height: 52vh;
-          max-height: 90vh;
-          min-height: 140px; /** exact height of a row to still be usable */
-          resize: vertical;
-          overflow: auto;
-          scrollbar-color: var(--simple-colors-default-theme-accent-10)
-            var(--simple-colors-default-theme-accent-1);
-          scrollbar-width: auto;
-        }
-        /** start scroll bar styling */
-        #studentgrid::-webkit-scrollbar-track,
-        #studentassessment::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-          border-radius: 20px;
-          background-color: var(--simple-colors-default-theme-accent-1);
-        }
-        #studentgrid::-webkit-scrollbar,
-        #studentassessment::-webkit-scrollbar {
-          width: 16px;
-          height: 16px;
-          background-color: var(--simple-colors-default-theme-accent-1);
-        }
-        #studentgrid::-webkit-scrollbar-thumb {
-          border-radius: 20px;
-          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-          background-color: var(--simple-colors-default-theme-accent-10);
-        }
-        #studentgrid::-webkit-scrollbar-thumb:vertical,
-        #studentassessment::-webkit-scrollbar-thumb:vertical {
-          height: 100px;
-          width: 16px;
-        }
-        #studentgrid::-webkit-scrollbar-corner {
-          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-          background-color: var(--simple-colors-default-theme-accent-10);
-        }
-        /** end scroll bar styling */
-        .student-table-label {
-          text-align: center;
-          vertical-align: middle;
-        }
-        #studentgrid simple-fields-field.select-all {
-          background-color: transparent;
-          float: left;
-          margin: -2px 0 0 -2px;
-          --simple-icon-width: 16px;
-          --simple-icon-height: 16px;
-        }
-        .student-table-label div {
-          border-right: 1px solid var(--editable-table-heading-color, #000);
-          height: 32px;
-          width: 100%;
-          line-height: 32px;
-          margin-left: 3px;
-        }
-        #studentgrid [data-active] {
-          background-color: var(
-            --simple-colors-default-theme-yellow-3
-          ) !important;
-        }
-        #studentgrid button {
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
-          height: 80px;
-          width: 96px;
-          display: block;
-          padding: 0;
-          margin: 0;
-          color: var(--simple-colors-default-theme-grey-12);
-        }
-        #studentgrid button:focus,
-        #studentgrid button:hover {
-          cursor: pointer;
-          outline: 2px black solid;
-          outline-offset: -1px;
-          background-color: var(
-            --simple-colors-default-theme-yellow-4
-          ) !important;
-        }
-        #studentgrid .assignment-name {
-          max-width: 96px;
-          width: 96px;
-          overflow: hidden;
-          padding: 4px;
-          font-size: 14px;
-          text-align: center;
         }
         .student-feedback-wrap {
           display: flex;
@@ -1099,63 +957,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       `,
     ];
   }
-  // render submission; guessing game really :)
-  renderSubmission(data) {
-    const height = parseInt(
-      this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
-        .height
-    );
-    this.shadowRoot
-      .querySelector("#studentassessment")
-      .shadowRoot.querySelector("[part='content']").style.height =
-      Math.round(window.innerHeight - height - 104) + "px";
-    // @todo make this actually be the submitted time, right now it's due relative time'd
-    let pre = html`<h3>${this.t.studentSubmission}</h3>
-      ${this.t.submitted}
-      <relative-time
-        .datetime="${this.database.assignments[this.activeAssignment]
-          ._ISODueDate}"
-      ></relative-time> `;
-    // test if this smells like a URL
-    if (validURL(data)) {
-      pre = html`${pre}<a
-          href="${data}"
-          target="_blank"
-          rel="noopener noreferrer"
-          ><simple-icon-button-lite
-            label="${this.t.openInNewWindow}"
-            icon="open-in-new"
-          ></simple-icon-button-lite
-        ></a>`;
-      // see if this is a video we know about
-      if (data != cleanVideoSource(data)) {
-        // implies it was able to clean it up in some way
-        import("@lrnwebcomponents/video-player/video-player.js");
-        return html`${pre}<video-player
-            class="active-submission"
-            source="${data}"
-            width="60%"
-          ></video-player>`;
-      } else {
-        return html`${pre}
-          <div class="active-submission">
-            <iframe
-              src="${data}"
-              loading="lazy"
-              width="100%"
-              height="100%"
-            ></iframe>
-          </div>`;
-      }
-    } else {
-      // see if we can just present this as data
-      import("@lrnwebcomponents/md-block/md-block.js");
-      return html`${pre}
-        <div class="active-submission">
-          <md-block .markdown="${data}"></md-block>
-        </div>`;
-    }
-  }
   studentLetterGradeHistoryClick(e) {
     // ensure this is numeric
     GradeBookStore.activeAssignment = parseInt(e.target.value);
@@ -1173,52 +974,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       GradeBookStore.activeStudent = parseInt(
         target[0].getAttribute("data-student")
       );
-      // if we collapsed this but then select a specific assignment / student
-      // then let's focus the user on this
-      this.shadowRoot.querySelector("#studentgrid").style.height = "140px";
-      this.maintainScrollPosition();
     }
-  }
-  mouseHighlight(e) {
-    let active = normalizeEventPath(e)[0];
-    clearTimeout(this.__mdebounce);
-    this.__mdebounce = setTimeout(() => {
-      if (
-        active &&
-        active.getAttribute("data-assignment") != this.__activeHoverAssignment
-      ) {
-        this.shadowRoot
-          .querySelectorAll(
-            '#studentgrid .th-or-td[data-assignment="' +
-              this.__activeHoverAssignment +
-              '"]'
-          )
-          .forEach((el) => {
-            el.classList.remove("col-highlight");
-          });
-        // set active so we can clear it on previous
-        this.__activeHoverAssignment = active.getAttribute("data-assignment");
-        this.shadowRoot
-          .querySelectorAll(
-            '#studentgrid .th-or-td[data-assignment="' +
-              this.__activeHoverAssignment +
-              '"]'
-          )
-          .forEach((el) => {
-            el.classList.add("col-highlight");
-          });
-      }
-    }, 10);
-  }
-  mouseLeave(e) {
-    clearTimeout(this.__mdebounce);
-    this.__mdebounce = setTimeout(() => {
-      this.shadowRoot
-        .querySelectorAll("#studentgrid .th-or-td")
-        .forEach((el) => {
-          el.classList.remove("col-highlight");
-        });
-    }, 100);
   }
   settingChanged(e) {
     e.stopPropagation();
@@ -1238,35 +994,94 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       }
     }
   }
-  checkTabHeight(e) {
-    // toggle between height
-    const height = parseInt(
-      this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
-        .height
-    );
-    // ensure small heights are expanded because it's impossible to leverage overwise
-    if (height / window.innerHeight > 0.65) {
-      this.shadowRoot.querySelector("#studentgrid").style.height = null;
-    }
+  PDFPageButton(position = "auto") {
+    return html`
+      ${MicroFrontendRegistry.has("@core/htmlToPdf")
+        ? html` <div
+            class="pdf-page-btn"
+          >
+            <simple-icon-button-lite
+              part="pdf-page-btn"
+              class="btn"
+              icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
+              id="pdf-page-btn"
+              @click="${this.downloadPDFviaMicro}"
+              icon-position="top"
+            >
+            </simple-icon-button-lite>
+            <simple-tooltip for="pdf-page-btn" position="${position}">
+              ${this.__pdfLoading
+                ? this.t.downloadingPdfPleaseWait
+                : this.t.downloadPdf}
+            </simple-tooltip>
+          </div>`
+        : ``}
+         <div
+            class="hash-page-btn"
+          >
+            <simple-icon-button-lite
+              part="hash-page-btn"
+              class="btn"
+              icon="${this.__hashLoading ? `hax:loading` : `link`}"
+              id="hash-page-btn"
+              @click="${this.createHashLink}"
+              icon-position="top"
+            >
+            </simple-icon-button-lite>
+            <simple-tooltip for="pdf-page-btn" position="${position}">
+              ${this.__hashLoading
+                ? this.t.generatingPleaseWait
+                : this.t.generateHashLink}
+            </simple-tooltip>
+          </div>
+    `;
   }
-  studentreportClick(e) {
-    ESGlobalBridgeStore.import(
-      "jspdf",
-      new URL(`./lib/`, import.meta.url).href + "jspdf.min.js"
-    ).then(() => {
-      var pdf = new jsPDF();
-      pdf.fromHTML(
-        this.shadowRoot.querySelector("#studentreport").outerHTML,
-        15,
-        15
-      );
-      const cd = new Date();
-      const dateTime = `${cd.getFullYear()}-${cd.getMonth()}-${cd.getDate()}__${cd.getHours()}-${cd.getMinutes()}-${cd.getSeconds()}`;
-      const fname = `${this.database.roster[this.activeStudent].student}--${
-        this.database.assignments[this.activeAssignment].shortName
-      }--${dateTime}.pdf`;
-      pdf.save(fname);
+  /**
+     * Download PDF, via microservice
+     */
+  async downloadPDFviaMicro(e) {
+    this.__pdfLoading = true;
+    // active dom, but remove the Lit comments from response
+    let htmlContent = this.shadowRoot.querySelector("#studentreport").innerHTML.replace(/<\!--.*?-->/g, "").replace(/\s+/g, ' ').trim();
+    // base helps w/ calculating URLs in content
+    var base = "";
+    if (document.querySelector("base")) {
+      base = document.querySelector("base").href;
+    }
+    const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
+      base: base,
+      html: htmlContent,
     });
+    if (response.status == 200 && response.data) {
+      const link = document.createElement("a");
+      // click link to download file
+      // @todo this downloads but claims to be corrupt.
+      link.href = window.URL.createObjectURL(
+        b64toBlob(response.data, "application/pdf")
+      );
+      link.download = `StudentReport.pdf`;
+      link.target = "_blank";
+      this.appendChild(link);
+      link.click();
+      this.removeChild(link);
+    }
+    this.__pdfLoading = false;
+  }
+  /**
+   * Download PDF, via microservice
+   */
+  async createHashLink(e) {
+    this.__hashLoading = true;
+    // active dom, but remove the Lit comments from response
+    let htmlContent = this.shadowRoot.querySelector("#studentreport").innerHTML.replace(/<\!--.*?-->/g, "").replace(/\s+/g, ' ').trim();
+    const response = await MicroFrontendRegistry.call("@core/crypto", {
+      op: 'hash',
+      data: htmlContent,
+    });
+    if (response.status == 200 && response.data) {
+      console.log(response.data);
+    }
+    this.__hashLoading = false;
   }
   // open extra window and then render content
   openWindow(e) {
@@ -1285,20 +1100,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         this.__openWindow = null;
       };
     }
-    this.renderSubmissionInWindow();
-  }
-  // render submission in window area
-  renderSubmissionInWindow() {
-    if (this.__openWindow && this.displayMode === 2) {
-      this.__openWindow.document.body.style.margin = "0";
-      render(
-        html` ${this.database.assignments.length &&
-        this.database.assignments[this.activeAssignment]
-          ? html`<grade-book-pop-up></grade-book-pop-up>`
-          : html`${this.t.noSubmission}`}`,
-        this.__openWindow.document.body
-      );
-    }
   }
   /**
    * LitElement render method
@@ -1309,28 +1110,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       <div class="top-controls">
         <div class="group divider-right app-name">
           <slot name="app-name"></slot>
-        </div>
-        <div class="group divider-right">
-          ${this.renderActiveStudentBtn()}
-          <simple-icon-button-lite
-            @click="${this.changeStudent}"
-            value="prev"
-            title="${this.t.previousStudent}"
-            ?disabled="${0 === this.activeStudent || !this.ready}"
-            icon="arrow-upward"
-          >
-            <span class="hide-900" value="prev">${this.t.previous}</span>
-          </simple-icon-button-lite>
-          <simple-icon-button-lite
-            @click="${this.changeStudent}"
-            value="next"
-            title="${this.t.nextStudent}"
-            icon="arrow-downward"
-            ?disabled="${this.database.roster.length - 1 ===
-              this.activeStudent || !this.ready}"
-          >
-            <span class="hide-900" value="next">${this.t.next}</span>
-          </simple-icon-button-lite>
         </div>
         <div class="group divider-right">
           ${this.renderActiveAssignmentBtn()}
@@ -1429,134 +1208,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       ${this.source === "filesystem" && this.loading
         ? html`<p class="source-selection">${this.t.loadingFilePleaseWait}</p>`
         : nothing}
-      <table
-        id="studentgrid"
-        @mousemove="${this.mouseHighlight}"
-        @mouseleave="${this.mouseLeave}"
-        @click="${this.activateOption}"
-        @dblclick="${this.handleGridScaling}"
-        bordered
-        column-header
-        condensed
-        disable-responsive
-        scroll
-        striped
-        numeric-styles
-        sort
-        ?hidden="${!(
-          this.database.assignments &&
-          this.database.assignments[this.activeAssignment]
-        )}"
-      >
-        ${this.database.roster.length && this.database.assignments.length
-          ? html`
-              <colgroup>
-                <col />
-              </colgroup>
-              ${this.database.assignments.map(
-                (a, h) =>
-                  html`<colgroup>
-                    <col />
-                  </colgroup>`
-              )}
-              <thead class="thead">
-                <tr class="tr thead-tr" part="tr">
-                  <th
-                    class="th th-or-td student-table-label"
-                    data-assignment="-1"
-                  >
-                    <div>
-                      ${this.t.student} (${parseInt(this.activeStudent + 1)} /
-                      ${this.database.roster.length})
-                    </div>
-                  </th>
-                  ${this.database.assignments.map(
-                    (a, h) =>
-                      html`<th
-                        class="th th-or-td assignment-name"
-                        title="${a.name}"
-                        data-assignment="${h}"
-                      >
-                        <!-- @todo add once we support multi-select <simple-fields-field
-                          data-assignment="${h}"
-                          type="checkbox"
-                          class="select-all"
-                          title="Select all submissions ${a.shortName}"
-                          name="select-all-submission"
-                          aria-label="${a.shortName}"
-                        ></simple-fields-field> -->
-                        ${a.shortName}
-                      </th>`
-                  )}
-                </tr>
-              </thead>
-              <tbody class="tbody">
-                ${this.database.roster.map(
-                  (s, i) => html` <tr class="tr tbody-tr">
-                    <th class="th th-or-td" data-assignment="-1">
-                      <div class="user-info">
-                        <div class="user-left">
-                          ${this.settings.photo
-                            ? html`${s.photo
-                                ? html`<img
-                                    src="${s.photo}"
-                                    loading="lazy"
-                                    class="user-photo"
-                                  />`
-                                : html`<simple-icon-lite
-                                    icon="social:person"
-                                    class="user-photo"
-                                  ></simple-icon-lite>`}`
-                            : nothing}
-                        </div>
-                        <div class="user-right">
-                          ${this.settings.fname
-                            ? html`<div>${s.student}</div>`
-                            : nothing}
-                          ${this.settings.surname
-                            ? html`<div>${s.student}</div>`
-                            : nothing}
-                          ${this.settings.email
-                            ? html`<div>
-                                <a href="mailto:${s.email}" target="_blank"
-                                  >${s.email}</a
-                                >
-                              </div>`
-                            : nothing}
-                        </div>
-                      </div>
-                    </th>
-                    ${this.database.assignments.map(
-                      (a, h) => html` <td
-                        class="td th-or-td"
-                        numeric
-                        data-student="${i}"
-                        data-assignment="${h}"
-                        ?data-active="${this.activeStudent === i &&
-                        this.activeAssignment === h}"
-                      >
-                        <button
-                          aria-label="${s.student}'s assignement ${a.name}"
-                          data-student="${i}"
-                          data-assignment="${h}"
-                        >
-                          ${this.database.grades[i] &&
-                          this.database.grades[i][a.shortName]
-                            ? html`${this.database.grades[i][a.shortName]}`
-                            : `-`}
-                        </button>
-                      </td>`
-                    )}
-                  </tr>`
-                )}
-              </tbody>
-            `
-          : nothing}
-      </table>
       <a11y-tabs
         id="studentassessment"
         full-width
-        @click="${this.checkTabHeight}"
         @a11y-tabs-active-changed="${this.updateStudentReport}"
         ?hidden="${!(
           this.database.assignments &&
@@ -1572,13 +1226,26 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             ? html`
                 <grid-plate
                   disable-responsive
-                  layout="${this.displayModeData()[this.displayMode].layout}"
+                  layout="1-1"
                 >
                   <div slot="col-1" class="tag-group">
-                    ${this.renderDisplayModeBtn()}
+                  <simple-fields-field
+                    id="inputfilter"
+                    @value-changed="${this.inputfilterChanged}"
+                    .value="${this.like}"
+                    aria-controls="filter"
+                    label="Filter"
+                    placeholder="Tag search"
+                    type="text"
+                    auto-validate=""
+                    autofocus
+                    part="filter"
+                  ></simple-fields-field>
+                  <simple-icon-button-lite @click="${this.collapseAll}" icon="hardware:keyboard-arrow-right" class="control" value="">Collapse all</simple-icon-button-lite>
+                  <simple-icon-button-lite @click="${this.expandAll}" icon="hardware:keyboard-arrow-down" class="control" value="">Expand all</simple-icon-button-lite>
                     ${this.database.tags.categories.length > 0
                       ? html`
-                          <a11y-collapse-group heading-button>
+                          <a11y-collapse-group heading-button id="categoriesgroup" global-options='{"expanded": true}'>
                             ${this.database.tags.categories.map(
                               (category, i) => html`
                                 <a11y-collapse>
@@ -1589,7 +1256,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                     >${category}
                                   </div>
                                   <div slot="content">
-                                    ${this.database.tags.data
+                                    ${this.filtered
                                       .filter((item) => {
                                         return item.category.includes(category);
                                       })
@@ -1617,11 +1284,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                     <h3>${this.activeRubric[0].name}</h3>
                     ${this.activeRubric.map(
                       (rubric, index) => html`
-                        ${this.renderRubricInfoBtn(
-                          index,
-                          rubric.criteria,
-                          rubric.description
-                        )}
                         <letter-grade-picker></letter-grade-picker>
 
                         <editable-table-display
@@ -1700,18 +1362,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                       </div>
                     </div>
                   </div>
-                  ${this.displayMode != 2
-                    ? html`
-                        <div slot="col-3">
-                          ${this.database.assignments.length &&
-                          this.database.assignments[this.activeAssignment]
-                            ? html`${this.activeSubmission
-                                ? this.renderSubmission(this.activeSubmission)
-                                : html`${this.t.noSubmission}`}`
-                            : nothing}
-                        </div>
-                      `
-                    : nothing}
                 </grid-plate>
               `
             : nothing}
@@ -1721,13 +1371,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           icon="assignment"
           label="${this.t.studentReportView}"
         >
-          <simple-icon-button-lite
-            @click="${this.studentreportClick}"
-            title="Download PDF"
-            icon="image:picture-as-pdf"
-          >
-            <span class="hide-900" value="prev">Download PDF</span>
-          </simple-icon-button-lite>
+          ${this.PDFPageButton()}
           <div id="studentreport">
             ${!this.loading &&
             this.database.assignments &&
@@ -1850,6 +1494,22 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         </a11y-tab>
       </a11y-tabs>
     `;
+  }
+  inputfilterChanged(e) {
+    if (e.detail.value !== '') {
+      this.expandAll();
+    }
+    this.like = e.target.value;
+  }
+  expandAll(e) {
+    this.shadowRoot.querySelectorAll("#categoriesgroup a11y-collapse").forEach((item) => {
+      item.expanded = true;
+    });
+  }
+  collapseAll(e) {
+    this.shadowRoot.querySelectorAll("#categoriesgroup a11y-collapse").forEach((item) => {
+      item.expanded = false;
+    });
   }
   selectSource(e) {
     this.source = this.shadowRoot.querySelector("#source").value;
@@ -2062,11 +1722,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     e.dataTransfer.setData("text", JSON.stringify(data));
   }
   static get tag() {
-    return "grade-book";
+    return "grade-book-lite";
   }
 }
-customElements.define(GradeBook.tag, GradeBook);
-export { GradeBook };
+customElements.define(GradeBookLite.tag, GradeBookLite);
+export { GradeBookLite };
 window.GradeBook = window.GradeBook || {};
 window.GradeBook.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
