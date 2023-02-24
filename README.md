@@ -18,7 +18,7 @@
 [![Twitter](https://img.shields.io/twitter/follow/haxtheweb.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=haxtheweb)
 
 # Welcome to the lrnwebcomponents project!
-ELMS:LN produced web components for any project
+Web components that can work in just about anything, are very small (Vanila or Lit based) and have full on authoring solutions if you dig deeper; Enjoy!
 
 ![Logo](https://github.com/elmsln/elmsln-logos/blob/master/haxtheweb/2019-08-14_13-05-52.png)
 

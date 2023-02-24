@@ -10,8 +10,8 @@ class HAXCMSBlankTheme extends CleanTwo {
   render() {
     return html`
       <main>
-        <article>
-          <section>
+        <article id="contentcontainer">
+          <section id="slot">
             <slot></slot>
           </section>
         </article>
