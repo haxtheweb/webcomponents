@@ -3,6 +3,7 @@ import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-element-demo.js";
+import "./hax-tray-button.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
@@ -79,9 +80,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     autorun(() => {
       this.daemonKeyCombo = toJS(HAXStore.daemonKeyCombo);
     });
+    this.items = [];
     this.categories = [];
+    this.like = '';
+    this.value = '';
+    this.where = "index";
     this.recentGizmoList = [];
-    this.where = "title";
     this.t = {
       filterContentTypes: "Filter Content Types",
     };
@@ -92,23 +96,25 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.addEventListener("mouseleave", this.closePopover.bind(this));
     this.addEventListener("mouseout", this.closePopover.bind(this));
     autorun(() => {
-      const recent = toJS(HAXStore.recentGizmoList);
-      let recentList = [];
-      let recentTags = [];
-      recent.forEach((gizmo) => {
-        if (gizmo && gizmo.tag) {
-          if (!recentTags.includes(gizmo.tag)) {
-            recentTags.push(gizmo.tag);
-            recentList.push(gizmo);
-            // limit to 5, then remove the 1st one
-            if (recentList.length > 5) {
-              recentTags.shift();
-              recentList.shift();
+      if (HAXStore.editMode) {
+        const recent = toJS(HAXStore.recentGizmoList);
+        let recentList = [];
+        let recentTags = [];
+        recent.forEach((gizmo) => {
+          if (gizmo && gizmo.tag) {
+            if (!recentTags.includes(gizmo.tag)) {
+              recentTags.push(gizmo.tag);
+              recentList.push(gizmo);
+              // limit to 5, then remove the 1st one
+              if (recentList.length > 5) {
+                recentTags.shift();
+                recentList.shift();
+              }
             }
           }
-        }
-      });
-      this.recentGizmoList = recentList;
+        });
+        this.recentGizmoList = recentList;
+      }
     });
   }
   static get properties() {
@@ -134,7 +140,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           part="filter"
         ></simple-fields-field>
       </div>
-      <a11y-collapse heading="Recent" heading-button expanded>
+      <a11y-collapse id="recent" heading="Recent" heading-button expanded>
         <simple-button-grid columns="5" always-expanded part="grid">
           ${this.recentGizmoList.map(
             (gizmo, i) => html` <simple-popover-selection event="hover">
@@ -145,6 +151,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 draggable="true"
                 @dragstart="${this._dragStart}"
                 index="${i}"
+                is-current-item
                 label="${gizmo.title}"
                 event-name="insert-tag"
                 event-data="${gizmo.tag}"
@@ -183,6 +190,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                   ? html` <simple-popover-selection event="hover">
                       <hax-tray-button
                         show-text-label
+                        is-current-item
                         voice-command="insert ${gizmo.title}"
                         draggable="true"
                         @dragstart="${this._dragStart}"
@@ -243,6 +251,22 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   inputfilterChanged(e) {
     this.like = e.target.value;
+    if (this.like == '') {
+      this.collapseAll();
+    }
+    else {
+      this.expandAll();
+    }
+  }
+  expandAll() {
+    this.shadowRoot.querySelectorAll("a11y-collapse").forEach((item) => {
+      item.expanded = true;
+    });
+  }
+  collapseAll() {
+    this.shadowRoot.querySelectorAll("a11y-collapse:not(#recent)").forEach((item) => {
+      item.expanded = false;
+    });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -281,28 +305,40 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     autorun(() => {
-      this.resetList(toJS(HAXStore.gizmoList));
+      if (HAXStore.editMode) {
+        this.resetList(toJS(HAXStore.gizmoList));
+      }
     });
   }
   /**
    * Reset this browser.
    */
   resetList(list) {
-    super.resetList(list);
     if (list) {
-      this.items = [
-        ...list.filter((gizmo, i) => {
-          // remove inline and hidden references
-          if (
-            gizmo &&
-            gizmo.meta &&
-            (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
-          ) {
-            return false;
-          }
-          return true;
-        }),
-      ];
+      this.like = '';
+      this.value = '';
+      const items = list.filter((gizmo, i) => {
+        // remove inline and hidden references
+        if (
+          gizmo &&
+          gizmo.meta &&
+          (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
+        ) {
+          return false;
+        }
+        return true;
+      });
+      // build index for improved searchability
+      items.map((gizmo, i) => {
+        items[i].index = gizmo.title + " " + gizmo.tag;
+        if (gizmo.tags) {
+          items[i].index += " " + gizmo.tags.join(" ")
+        }
+        if (gizmo.meta && gizmo.meta.author) {
+          items[i].index += " " + gizmo.meta.author
+        }
+      });
+      this.items = [...items];
     }
   }
 }

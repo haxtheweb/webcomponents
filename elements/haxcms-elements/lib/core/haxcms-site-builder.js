@@ -11,6 +11,7 @@ import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 // toggle store darkmode
 function darkToggle(e) {

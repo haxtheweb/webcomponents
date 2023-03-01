@@ -3,7 +3,7 @@
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Image comparison",
+    "title": "Image compare",
     "description": "Simple element to allow one image to swipe over top of the other.",
     "icon": "image:compare",
     "color": "orange",

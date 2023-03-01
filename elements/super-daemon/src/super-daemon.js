@@ -19,6 +19,8 @@ class SuperDaemon extends LitElement {
       key2: { type: String },
       icon: { type: String },
       items: { type: Array },
+      allItems: { type: Array },
+      context: { type: String },
     };
   }
   /**
@@ -26,9 +28,11 @@ class SuperDaemon extends LitElement {
    */
   constructor() {
     super();
+    this.context = null;
     this.icon = "hardware:keyboard-return";
     this.opened = false;
     this.items = [];
+    this.allItems = [];
     const isSafari = window.safari !== undefined;
     if (isSafari) {
       this.key1 = "Ctrl";
@@ -45,6 +49,10 @@ class SuperDaemon extends LitElement {
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this)
     );
+    window.addEventListener(
+      "super-daemon-element-method",
+      this.elementMethod.bind(this)
+    );
   }
   disconnectedCallback() {
     super.connectedCallback();
@@ -53,6 +61,20 @@ class SuperDaemon extends LitElement {
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this)
     );
+    window.removeEventListener(
+      "super-daemon-element-method",
+      this.elementMethod.bind(this)
+    );
+  }
+  // allow generating an event on a target
+  elementMethod(e) {
+    if (e.detail) {
+      let data = e.detail;
+      if (!data.args) {
+        data.args = [];
+      }
+      data.target[data.method](...data.args);
+    }
   }
   // take in via event
   defineOptionEvent(e) {
@@ -70,7 +92,7 @@ class SuperDaemon extends LitElement {
         option.key +
         " " +
         option.path;
-      this.items.push(option);
+      this.allItems.push(option);
     }
   }
 
@@ -88,37 +110,6 @@ class SuperDaemon extends LitElement {
       }
       if (e.key == "Escape" && this.opened) {
         this.opened = false;
-      }
-      // if we hit enter while in the combo box, we should select the 1st option
-      // or move between items as far as focus
-      if (
-        this.opened &&
-        this.shadowRoot.querySelector("super-daemon-ui").filtered.length > 0
-      ) {
-        switch (e.key) {
-          case "Enter":
-            // @todo dont do this if we have focus on an item
-            this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("super-daemon-row")
-              .selected();
-            break;
-          case "ArrowUp":
-            // @todo get focus on the row via an "active" parameter so we can just target that in the UI
-            this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("super-daemon-row")
-              .shadowRoot.querySelector("button")
-              .focus();
-            break;
-          case "ArrowDown":
-            this.shadowRoot
-              .querySelector("super-daemon-ui")
-              .shadowRoot.querySelector("super-daemon-row")
-              .shadowRoot.querySelector("button")
-              .focus();
-            break;
-        }
       }
     }
   }
@@ -187,8 +178,17 @@ class SuperDaemon extends LitElement {
         .shadowRoot.querySelector("#backdrop").style.position = "relative";
     }
   }
+  filterItems(items, context) {
+    return items.filter((item) => {
+      if (item.context) {
+        return item.context === context;
+      }
+      return true;
+    });
+  }
   open() {
-    this.items = [...this.items];
+    // filter to context
+    this.items = this.filterItems(this.allItems, this.context);
     this.opened = true;
     const wd = this.shadowRoot.querySelector("web-dialog");
     // modal mode kills off the ability to close the dialog
@@ -249,6 +249,7 @@ class SuperDaemon extends LitElement {
       </web-dialog>
     `;
   }
+
   // override to block calling from global key commands
   allowedCallback() {
     return true;

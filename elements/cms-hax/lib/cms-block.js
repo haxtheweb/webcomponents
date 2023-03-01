@@ -256,7 +256,7 @@ class CMSBlock extends PolymerElement {
         description: "CMS block rendered on the backend",
         icon: "image:crop-square",
         color: "light-blue",
-        tags: ["Magic", "elmsln", "cms", "block"],
+        tags: ["Other", "elmsln", "cms", "block"],
         handles: [
           {
             type: "cmsblock",

@@ -50,6 +50,7 @@ class HaxAppBrowser extends LitElement {
       `,
     ];
   }
+  
   constructor() {
     super();
     this.searching = false;
@@ -58,10 +59,14 @@ class HaxAppBrowser extends LitElement {
     this.activeApp = null;
     this.hasActive = false;
     autorun(() => {
-      this.appList = toJS(HAXStore.appList);
+      if (HAXStore.editMode) {
+        this.appList = toJS(HAXStore.appList);        
+      }
     });
     autorun(() => {
-      this.activeApp = toJS(HAXStore.activeApp);
+      if (HAXStore.editMode) {
+        this.activeApp = toJS(HAXStore.activeApp);
+      }
     });
     this.addEventListener("hax-tray-button-click", (e) => {
       if (e.detail.eventName === "search-selected") {

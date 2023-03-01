@@ -160,7 +160,7 @@ class CodeSample extends LitElement {
         description: "A sample of code highlighted in the page",
         icon: "icons:code",
         color: "blue",
-        tags: ["Other", "code", "highlight", "syntax", "code-sample"],
+        tags: ["Instructional", "code", "highlight", "syntax", "code-sample"],
         meta: {
           author: "HAXTheWeb core team",
         },

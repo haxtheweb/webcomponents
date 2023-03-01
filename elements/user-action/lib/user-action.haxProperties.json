@@ -7,7 +7,7 @@
     "description": "track user actions and allow them to talk to xAPI stores easily",
     "icon": "icons:touch-app",
     "color": "green",
-    "tags": ["Magic", "developer", "dev", "xapi", "analytics", "user", "track"],
+    "tags": ["Other", "developer", "dev", "xapi", "analytics", "user", "track"],
     "meta": {
       "author": "HAXTheWeb core team",
       "owner": "The Pennsylvania State University"

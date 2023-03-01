@@ -8,7 +8,7 @@
     "description": "A basic way to frame external web content",
     "icon": "hax:iframe",
     "color": "blue-grey",
-    "tags": ["Content", "iframe", "embed", "web", "link"],
+    "tags": ["Resource", "iframe", "embed", "web", "link"],
     "handles": [
       {
         "type": "link",

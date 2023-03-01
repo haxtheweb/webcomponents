@@ -16,6 +16,7 @@ import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu.js";
 import "@lrnwebcomponents/app-hax/lib/v1/app-hax-user-menu-button.js";
 import "wired-elements/lib/wired-button.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -365,6 +366,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
+    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
+    SuperDaemonInstance.allowedCallback = () => {
+      return true;
+    };
+    SuperDaemonInstance.context = "CMS";
     window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
     if (HAXStore.ready) {
       let s = document.createElement("site-remote-content");
@@ -884,6 +890,79 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // load up commands for daemon
+    SuperDaemonInstance.defineOption({
+      title: this.t.savePageContent,
+      icon: "icons:save",
+      tags: ["CMS", "save", "page", "operation", "command"],
+      value: {
+        target: this,
+        method: "_editButtonTap"
+      },
+      context: "HAX",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/save",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.editPageContent,
+      icon: "hax:page-edit",
+      tags: ["CMS", "edit", "page", "operation", "command"],
+      value: {
+        target: this,
+        method: "_editButtonTap"
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/edit",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.shareSite,
+      icon: "social:share",
+      tags: ["CMS", "share"],
+      value: {
+        target: this,
+        method: "_shareButtonTap"
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/share",
+    })
+
+    SuperDaemonInstance.defineOption({
+      title: "Dark mode toggle",
+      icon: "device:brightness-medium",
+      tags: ["CMS", "darmMode"],
+      value: {
+        target: this.shadowRoot.querySelector('haxcms-darkmode-toggle'),
+        method: "toggle"
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/darkMode",
+    });
+
+    SuperDaemonInstance.defineOption({
+      title: "Sound toggle",
+      icon: "av:volume-up",
+      tags: ["CMS", "sound"],
+      value: {
+        target: this,
+        method: "soundToggle"
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/sound",
+    });
+
+    SuperDaemonInstance.defineOption({
+      title: this.t.outlineDesigner,
+      icon: "hax:site-map",
+      tags: ["CMS", "outline", "designer", "site outline", "operation", "command"],
+      value: {
+        target: this,
+        method: "_outlineButtonTap"
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/outline",
+    });    
+    
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -1391,13 +1470,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _editModeChanged(newValue, oldValue) {
     if (newValue) {
-      // enable it some how
       this.__editIcon = "icons:save";
       this.__editText = this.t.savePageContent;
+      SuperDaemonInstance.context = "HAX";
     } else {
-      // disable it some how
       this.__editIcon = "hax:page-edit";
       this.__editText = this.t.editPageContent;
+      SuperDaemonInstance.context = "CMS";
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

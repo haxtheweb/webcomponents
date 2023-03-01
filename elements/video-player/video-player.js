@@ -142,7 +142,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         icon: "av:play-circle-filled",
         color: "red",
         tags: [
-          "Video",
+          "Audio / Video",
           "Media",
           "youtube",
           "watch",

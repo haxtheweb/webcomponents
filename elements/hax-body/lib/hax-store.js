@@ -2307,13 +2307,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "icons:link",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Resource",
           "link",
           "a",
           "url",
           "html",
           "href",
-          "resource",
           "address",
           "http",
         ],
@@ -2407,7 +2406,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        tags: ["Content", "p", "paragraph", "text", "html"],
+        tags: ["Text", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -2450,7 +2449,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "image:grid-on",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Instructional",
           "table",
           "data",
           "html",
@@ -2491,7 +2490,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "hax:iframe",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Resource",
           "iframe",
           "content",
           "url",
@@ -2668,10 +2667,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            tags: ["Content", tag, "html", "text"],
+            tags: ["Text", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
-              author: "HAXTheWeb core team",
+              author: "W3C",
               inlineOnly: [
                 "em",
                 "b",
@@ -3543,6 +3542,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let gizmo = detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = detail.tag;
+          
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
@@ -3561,6 +3561,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 eventName: "insert-tag",
                 demoSchema: true,
               },
+              context: "HAX",
               eventName: "hax-super-daemon-insert-tag",
               path: "HAX/insert/block/" + gizmo.tag,
             });

@@ -102,9 +102,8 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         icon: "image:crop-16-9",
         color: "orange",
         tags: [
-          "Other",
-          "Marketing",
-          "Content",
+          "Layout",
+          "marketing",
           "button",
           "link",
           "url",

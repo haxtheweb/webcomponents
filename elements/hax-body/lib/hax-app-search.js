@@ -92,7 +92,9 @@ class HaxAppSearch extends LitElement {
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     import("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
     autorun(() => {
-      this.activeApp = toJS(HAXStore.activeApp);
+      if (HAXStore.editMode) {
+        this.activeApp = toJS(HAXStore.activeApp);
+      }
     });
   }
   /**

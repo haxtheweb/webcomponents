@@ -7,7 +7,7 @@
     "description": "full width image that flows beyond boundaries",
     "icon": "image:image",
     "color": "green",
-    "tags": ["Images", "image", "layout", "design", "heading"],
+    "tags": ["Layout", "image", "layout", "design", "heading"],
     "handles": [
       {
         "type": "image",

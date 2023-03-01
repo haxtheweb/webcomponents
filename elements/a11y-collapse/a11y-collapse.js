@@ -60,6 +60,16 @@ class A11yCollapse extends LitElement {
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;
         }
+        button {
+          background: transparent;
+          border: 0;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          text-align: left;
+          line-height: var(--haxcms-base-styles-body-line-height, 1.8);
+          letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
+        }
         #heading {
           display: flex;
           justify-content: stretch;
@@ -357,12 +367,7 @@ class A11yCollapse extends LitElement {
     this.toggle(false);
   }
 
-  /**
-   * Expands the content
-   */
-  expand() {
-    this.toggle(true);
-  }
+  /**button
 
   /**
    * Toggles based on mode
@@ -458,12 +463,11 @@ class A11yCollapse extends LitElement {
    */
   _makeHeadingButton() {
     return html`
+    <button @click="${this._onClick}"         aria-controls="content"
+        aria-expanded="${this.expanded ? "true" : "false"}"
+>
       <div
         id="heading"
-        aria-controls="content"
-        aria-expanded="${this.expanded ? "true" : "false"}"
-        role="button"
-        @click="${this._onClick}"
         ?disabled="${this.disabled}"
         .label="${this._getExpanded(
           this.label,
@@ -488,6 +492,7 @@ class A11yCollapse extends LitElement {
         >
         </simple-icon-lite>
       </div>
+          </button>
       <simple-tooltip for="heading"
         >${this._getExpanded(
           this.tooltip,

@@ -8,7 +8,7 @@
     "description": "A single instance of an expand collapse.",
     "icon": "icons:view-day",
     "color": "grey",
-    "tags": ["Content"]
+    "tags": ["Layout"]
   },
   "settings": {
     "configure": [

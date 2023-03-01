@@ -291,6 +291,26 @@ class SiteMenuButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
       this.icon = "";
       this.direction = "";
     }
+    this.dispatchEvent(new CustomEvent('super-daemon-define-option', {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      detail: {
+        title: newValue + " page",
+        icon: this.icon,
+        tags: ["CMS", "page", "navigation"],
+        value: {
+          target: this,
+          method: "clickLink"
+        },
+        context: "CMS",
+        eventName: "super-daemon-element-method",
+        path: "CMS/navigation/page/next",
+      }
+    }));
+  }
+  clickLink(e) {
+    this.shadowRoot.querySelector('a').click();
   }
   pageLink(type, activeRouterManifestIndex, items) {
     if (type === "prev" && items) {

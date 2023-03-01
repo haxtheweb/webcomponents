@@ -57,9 +57,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
           width: 100%;
           display: block;
           border: 2px solid black;
-          max-height: 40vh;
-          min-height: 20vh;
+          max-height: 50vh;
+          min-height: 30vh;
           overflow-y: scroll;
+          scroll-snap-align: start;
+          scroll-snap-type: y mandatory;
+          padding: 32px 0px;
         }
         simple-fields-field,
         simple-fields-field:focus,
@@ -88,6 +91,56 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
           position: absolute;
           pointer-events: none;
         }
+
+        @media screen and (max-width: 800px) {
+          .results {
+            padding: 0px;
+          }
+          simple-fields-field {
+            line-height: 20px;
+          }
+          .search simple-icon-lite {
+            display: none;
+          }
+          super-daemon-row {
+            --super-daemon-row-icon: 32px;
+            margin: 8px;
+          }
+          super-daemon-row::part(button) {
+            padding: 4px;
+          }
+          super-daemon-row::part(action) {
+            font-size: 28px;
+            line-height: 28px;
+            height: 28px;
+          }
+          super-daemon-row::part(path) {
+            font-size: 16px;
+          }
+          super-daemon-row::part(tags) {
+            width: 20%;
+          }
+          super-daemon-row::part(tag) {
+            display: none;
+          }
+          super-daemon-row::part(tag-0) {
+            display: inline-flex !important;
+            --simple-fields-font-size: 12px;
+          }
+          super-daemon-row::part(key-combo) {
+            display: none;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          super-daemon-row::part(path) {
+            font-size: 12px;
+          }
+          super-daemon-row::part(action) {
+            font-size: 24px;
+            line-height: 24px;
+            height: 24px;
+          }
+        }
       `,
     ];
   }
@@ -108,12 +161,65 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
     this.like = e.target.value;
   }
 
+  _resultsKeydown(e) {
+    if (this.filtered.length > 0 && this.shadowRoot.querySelector("super-daemon-row[active]")) {
+      switch (e.key) {
+        case "ArrowUp":
+        case "ArrowLeft":
+            // allow wrap around
+          if (this.shadowRoot.querySelector("super-daemon-row[active]") === this.shadowRoot.querySelector("super-daemon-row")) {
+            this.shadowRoot.querySelector("super-daemon-row:last-child").shadowRoot.querySelector("button").focus();
+          }
+          else { 
+            this.shadowRoot.querySelector("super-daemon-row[active]").previousElementSibling.shadowRoot.querySelector("button").focus();
+          }
+
+          break;
+        case "ArrowDown":
+        case "ArrowRight":
+            // allow wrap around 
+          if (this.shadowRoot.querySelector("super-daemon-row[active]") === this.shadowRoot.querySelector("super-daemon-row:last-child")) {
+            this.shadowRoot.querySelector("super-daemon-row").shadowRoot.querySelector("button").focus();
+          }
+          else { 
+            this.shadowRoot.querySelector("super-daemon-row[active]").nextElementSibling.shadowRoot.querySelector("button").focus();
+          }
+        break;
+      }
+    }
+  }
+  // keydown when we have focus on the input field
+  _inputKeydown(e) {
+    if (this.filtered.length > 0) {
+      switch (e.key) {
+        case "Enter":
+          this.shadowRoot.querySelector("super-daemon-row")
+          .selected();    
+        break;
+        case "ArrowUp":
+          // @todo get focus on the row via an "active" parameter so we can just target that in the UI
+          this.shadowRoot.querySelector("super-daemon-row:last-child")
+            .shadowRoot.querySelector("button")
+            .focus();
+            this.shadowRoot.querySelector("super-daemon-row:last-child").scrollIntoView({block: "end", inline: "nearest"});
+          break;
+        case "ArrowDown":
+          this.shadowRoot.querySelector("super-daemon-row")
+            .shadowRoot.querySelector("button")
+            .focus();
+            this.shadowRoot.querySelector("super-daemon-row").scrollIntoView({block: "start", inline: "nearest"});
+          break;
+      }
+    }
+  }
+
   render() {
     return html`
       <div class="search">
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
+          @keydown="${this._inputKeydown}"
           .value="${this.like}"
           aria-controls="filter"
           label="Filter commands"
@@ -125,7 +231,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
         ></simple-fields-field>
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
       </div>
-      <div class="results">
+      <div class="results" @keydown="${this._resultsKeydown}"
+>
         ${this.filtered.map(
           (item, i) => html`
             <super-daemon-row

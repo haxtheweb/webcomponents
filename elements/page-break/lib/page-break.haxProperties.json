@@ -7,7 +7,7 @@
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
-    "tags": ["Magic"],
+    "tags": ["Other"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",

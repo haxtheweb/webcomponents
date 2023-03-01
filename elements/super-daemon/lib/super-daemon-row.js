@@ -17,6 +17,7 @@ export class SuperDaemonRow extends LitElement {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
     };
+    this.active = false;
   }
   static get tag() {
     return "super-daemon-row";
@@ -31,6 +32,7 @@ export class SuperDaemonRow extends LitElement {
       eventName: { type: String, attribute: "event-name" },
       value: { type: Object },
       tags: { type: Array },
+      active: { type: Boolean, reflect: true }
     };
   }
 
@@ -46,7 +48,7 @@ export class SuperDaemonRow extends LitElement {
           display: block;
           margin: 8px 16px;
         }
-        button:focus,
+        :host([active]) button,
         button:hover {
           background-color: var(
             --super-daemon-row-hover,
@@ -66,8 +68,8 @@ export class SuperDaemonRow extends LitElement {
         }
         :host simple-icon-lite {
           display: inline-flex;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 50px;
+          --simple-icon-height: var(--super-daemon-row-icon, 50px);
+          --simple-icon-width: var(--super-daemon-row-icon, 50px);
         }
         .label-wrap {
           min-width: 50%;
@@ -83,16 +85,25 @@ export class SuperDaemonRow extends LitElement {
         .label-wrap .action {
           font-size: 32px;
           font-weight: bold;
+          max-width: 90%;
+          word-break: break-all;
+          overflow: hidden;
+          line-height: 32px;
+          height: 32px;
         }
         .label-wrap .path {
           font-size: 20px;
           font-style: italic;
           margin-top: 8px;
+          overflow-wrap: break-word;
+          word-break: break-all;
+          overflow: hidden;
+          max-width: 80%;
+          line-height: 20px;
+          height: 20px;
         }
         .key-combo {
-          font-size: 42px;
-          font-weight: bold;
-          font-style: italic;
+          height: 64px;
         }
         .keyboard-shortcut {
           background-color: rgba(0, 0, 0, 0.1);
@@ -100,14 +111,13 @@ export class SuperDaemonRow extends LitElement {
           color: rgba(0, 0, 0, 0.7);
           box-shadow: rgb(209 213 219) 0px -4px 0px inset,
             rgb(0 0 0 / 40%) 0px 1px 1px;
-          padding: 6px 8px;
-          margin: 0px auto;
           display: block;
-          font-size: 14px;
-          word-spacing: 1px;
-          letter-spacing: -2px;
+          letter-spacing: 0px;
           font-family: "Press Start 2P", "Trebuchet MS", "Lucida Sans Unicode",
             "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+          padding: 6px 4px;
+          margin: 4px auto;
+          font-size: 9px;
         }
       `,
     ];
@@ -116,7 +126,7 @@ export class SuperDaemonRow extends LitElement {
   keyEvent(e) {
     // ensure that the daemon dialog does not accidentally duplicate or get this
     // when our focus was on a specific item while using the keyboard
-    if (e.type === "keydown" && e.code === "Enter" || e.code === "Space") {
+    if (e.code === "Enter" || e.code === "Space") {
       this.selected();
       e.preventDefault();
       e.stopPropagation();
@@ -147,32 +157,44 @@ export class SuperDaemonRow extends LitElement {
       })
     );
   }
+  _focusIn(e) {
+    this.active = true;
+  }
+  _focusOut(e) {
+    this.active = false;
+  }
+
   pickColor(val) {
     if (val === 0) {
       return "blue";
     }
     return "orange";
   }
+  keyAry(key) {
+    if (key) {
+      return key.split("+");
+    }
+    return [];
+  }
   render() {
     return html`
-      <button @click="${this.clickEvent}" @keydown="${this.keyEvent}">
+      <button part="button" @click="${this.clickEvent}" @keydown="${this.keyEvent}" @focusin="${this._focusIn}" @focusout="${this._focusOut}">
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
         <div class="label-wrap">
-          <div class="action">${this.title}</div>
-          <div class="path">${this.path}</div>
+          <div class="action" part="action">${this.title}</div>
+          <div class="path" part="path">${this.path}</div>
         </div>
-        <div class="tags">
+        <div class="tags" part="tags">
           ${this.tags.map(
             (tag, i) => html` <simple-tag
               accent-color="${this.pickColor(i)}"
               value="${tag}"
+              part="tag tag-${i}"
             ></simple-tag>`
           )}
         </div>
-        <div class="key-combo">
-          ${this.key
-            ? html`<kbd class="keyboard-shortcut">${this.key}</kbd>`
-            : ``}
+        <div class="key-combo" part="key-combo">
+          ${this.keyAry(this.key).map(key => html`<kbd class="keyboard-shortcut">${key}</kbd>`)}
         </div>
       </button>
     `;

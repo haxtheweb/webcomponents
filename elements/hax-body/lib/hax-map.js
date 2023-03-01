@@ -150,10 +150,12 @@ class HaxMap extends I18NMixin(LitElement) {
       namespace: "hax",
     });
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
-      setTimeout(() => {
-        this.requestUpdate();
-      }, 0);
+      if (HAXStore.editMode) {
+        this.activeNode = toJS(HAXStore.activeNode);
+        setTimeout(() => {
+          this.requestUpdate();
+        }, 0);
+      }
     });
   }
   async updateHAXMap(e) {

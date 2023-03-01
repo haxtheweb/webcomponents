@@ -102,7 +102,7 @@ class RelativeHeading extends RelativeHeadingLite {
         icon: "icons:android",
         color: "green",
         tags: [
-          "Content",
+          "Text",
           "heading",
           "header",
           "h1",
