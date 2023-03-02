@@ -223,6 +223,10 @@ class SuperDaemon extends LitElement {
       .querySelector("super-daemon-ui")
       .shadowRoot.querySelector("simple-fields-field")
       .focus();
+    this.shadowRoot
+      .querySelector("super-daemon-ui")
+      .shadowRoot.querySelector("simple-fields-field")
+      .select();
   }
   /**
    * LitElement render callback

@@ -1938,6 +1938,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "hax:hax2022",
+      tags: ["Bug report", "github", "git", "community", "issue queue"],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["bug","POP,bug"]
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Idea / Feature request",
+      icon: "hax:hax2022",
+      tags: ["Feature request", "idea", "github", "git", "community", "issue queue"],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["feature","POP,enhancement"]
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+    });
     // container for HTML primatives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
@@ -2091,6 +2116,33 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     autorun(() => {
       this._editModeChanged(toJS(this.editMode));
     });
+  }
+  async _haxStoreContribute(type, tags) {
+    const title = `[${type}] User report from HAX daemon`;
+    let body = `Location: ${window.location.href}
+Browser: ${navigator.userAgent}
+OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+Screen: ${window.screen.width}x${window.screen.height}
+Window size: ${window.innerWidth}x${window.innerHeight}
+`;
+    if (navigator.getBattery) {
+      const stats = await navigator.getBattery();
+      body += `Battery: ${stats.level*100}%
+`;
+    }
+    // some things report the "type" of internet connection speed
+    // for terrible connections lets save frustration
+    if (
+      navigator.connection &&
+      navigator.connection.effectiveType
+    ) {
+      body += `Connection: ${navigator.connection.effectiveType}
+`;
+    }
+    body += `${type == 'feature' ? `Your idea:` : `Bug you experienced:`}
+`;
+    window.open( 
+        `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(body)}`, "_blank");
   }
   /**
    * Build HAX property definitions for primitives that we support.

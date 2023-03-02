@@ -3,11 +3,16 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "./super-daemon-row.js";
 
-export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
+export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   constructor() {
     super();
+    this.t.noResultsForThisTerm = "No results for this term";
+    this.t.whatAreYouLookingFor = "What are you looking for?";
+    this.t.filterCommands = "Filter commands";
+    this.t.commands = "Commands";
     this.opened = false;
     this.items = [];
     this.shadowRootOptions = {
@@ -52,6 +57,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
           border-radius: 0px;
+        }
+        .results-stats {
+          right: 0;
+          position: absolute;
+          font-size: 12px;
+          color: #666;
+          padding: 8px;
+          margin: 8px;
         }
         .results {
           width: 100%;
@@ -146,6 +159,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
   }
 
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened") {
         if (this.opened) {
@@ -222,8 +238,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
           @keydown="${this._inputKeydown}"
           .value="${this.like}"
           aria-controls="filter"
-          label="Filter commands"
-          placeholder="What are you looking to do?"
+          label="${this.t.filterCommands}"
+          placeholder="${this.t.whatAreYouLookingFor}"
           type="text"
           auto-validate=""
           autofocus
@@ -231,22 +247,26 @@ export class SuperDaemonUI extends SimpleFilterMixin(LitElement) {
         ></simple-fields-field>
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
       </div>
-      <div class="results" @keydown="${this._resultsKeydown}"
->
-        ${this.filtered.map(
-          (item, i) => html`
-            <super-daemon-row
-              data-row-index="${i}"
-              .value="${item.value}"
-              icon="${item.icon}"
-              title="${item.title}"
-              .tags="${item.tags}"
-              event-name="${item.eventName}"
-              path="${item.path}"
-              key="${item.key}"
-            ></super-daemon-row>
-          `
-        )}
+      <div class="results-stats">
+        ${this.filtered.length} / ${this.items.length} ${this.t.commands}
+      </div>
+      <div class="results" @keydown="${this._resultsKeydown}">
+      ${this.filtered.length === 0 ? html`${this.t.noResultsForThisTerm}` : html`
+          ${this.filtered.map(
+            (item, i) => html`
+              <super-daemon-row
+                data-row-index="${i}"
+                .value="${item.value}"
+                icon="${item.icon}"
+                title="${item.title}"
+                .tags="${item.tags}"
+                event-name="${item.eventName}"
+                path="${item.path}"
+                key="${item.key}"
+              ></super-daemon-row>
+            `
+          )}
+        `}
       </div>
     `;
   }

@@ -44,7 +44,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.2.4"
+    "lit": "^2.6.1",
+    "web-dialog": "^0.0.11",
+    "@lrnwebcomponents/simple-icon": "^4.1.0",
+    "@lrnwebcomponents/simple-fields": "^4.1.0",
+    "@lrnwebcomponents/simple-filter": "^4.1.0",
+    "@lrnwebcomponents/i18n-manager": "^4.0.25"
   },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
