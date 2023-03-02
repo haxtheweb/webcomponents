@@ -77,6 +77,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           scroll-snap-type: y mandatory;
           padding: 32px 0px;
         }
+        .no-results {
+          font-size: 32px;
+          font-weight: bold;
+          max-width: 90%;
+          word-break: break-all;
+          overflow: hidden;
+          line-height: 32px;
+          height: 32px;
+          margin: 16px auto;
+        }
         simple-fields-field,
         simple-fields-field:focus,
         simple-fields-field:hover {
@@ -251,7 +261,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
       </div>
       <div class="results" @keydown="${this._resultsKeydown}">
-      ${this.filtered.length === 0 ? html`${this.t.noResultsForThisTerm}` : html`
+      ${this.filtered.length === 0 ? html`<div class="no-results">${this.t.noResultsForThisTerm}</div>` : html`
           ${this.filtered.map(
             (item, i) => html`
               <super-daemon-row

@@ -19,6 +19,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       this.t = this.t || {};
       this.t.closeMenu = "Close menu";
       this.t.openMenu = "Open menu";
+      this.t.toggleSiteMenu = "Toggle site menu";
       let status = localStorageGet("hax-mobile-menu-menuOpen", null);
       if (status !== null) {
         if (status === true) {
@@ -43,6 +44,23 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         }
         this.__disposer.push(reaction);
       });
+      this.dispatchEvent(new CustomEvent('super-daemon-define-option', {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          title: this.t.toggleSiteMenu,
+          icon: "hax:menu-open",
+          tags: ["CMS", "site", "menu"],
+          value: {
+            target: this,
+            method: "__HAXCMSMobileMenuClickToggle"
+          },
+          context: "CMS",
+          eventName: "super-daemon-element-method",
+          path: "CMS/site/menu/toggle",
+        }
+      }));
     }
     static get styles() {
       let styles = [];

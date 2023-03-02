@@ -686,6 +686,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 icon-position="left"
                 icon="${this.icon}"
                 part="manifestbtn"
+                id="manifestbtn"
                 show-text-label
                 tabindex="${this.editMode ? "0" : "-1"}"
                 label="${this.__settingsText}"
@@ -904,6 +905,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/save",
     });
     SuperDaemonInstance.defineOption({
+      title: this.t.insights,
+      icon: "hax:clipboard-pulse",
+      tags: ["CMS", "insights", "data", "operation"],
+      value: {
+        target: this,
+        method: "_insightsButtonTap"
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/site/insights",
+    });
+    SuperDaemonInstance.defineOption({
       title: this.t.editPageContent,
       icon: "hax:page-edit",
       tags: ["CMS", "edit", "page", "operation", "command"],
@@ -916,6 +929,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/edit",
     });
     SuperDaemonInstance.defineOption({
+      title: this.t.editSiteSettings,
+      icon: "hax:site-settings",
+      tags: ["CMS", "site", "settings", "operation", "command"],
+      value: {
+        target: this,
+        method: "_manifestButtonTap",
+        args: [{target: this.shadowRoot.querySelector('#manifestbtn')}]
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/site/settings",
+    });
+    SuperDaemonInstance.defineOption({
       title: this.t.shareSite,
       icon: "social:share",
       tags: ["CMS", "share"],
@@ -925,7 +951,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/share",
-    })
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.newJourney,
+      icon: "add",
+      tags: ["CMS", "create","new site"],
+      value: {
+        target: this,
+        method: "_addButtonTap"
+      },
+      context: "CMS",
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/create-site",
+    });
+    SuperDaemonInstance.defineOption({
+      title: this.t.logOut,
+      icon: "add",
+      tags: ["CMS", "user","logout"],
+      value: {
+        target: this,
+        method: "_logout"
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/user/logout",
+    });
 
     SuperDaemonInstance.defineOption({
       title: "Dark mode toggle",
