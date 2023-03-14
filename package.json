@@ -156,7 +156,7 @@
     "wct-browser-legacy": "1.0.2",
     "web-component-analyzer": "1.1.6",
     "web-component-tester": "6.9.2",
-    "webpack": "5.69.1",
+    "webpack": "5.76.0",
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
