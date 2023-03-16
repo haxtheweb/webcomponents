@@ -2292,7 +2292,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        advanced: [DataStyleDecoration],
+        configure: [DataStyleDecoration],
       },
       demoSchema: [
         {
@@ -2472,8 +2472,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [],
-        advanced: [DataStyleDecoration],
+        configure: [DataStyleDecoration],
+        advanced: [],
       },
       demoSchema: [
         {
@@ -2741,8 +2741,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             },
           },
           settings: {
-            configure: [],
-            advanced: [DataStyleDecoration],
+            configure: [DataStyleDecoration],
+            advanced: [],
           },
           demoSchema: [
             {
@@ -2773,8 +2773,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [],
-        advanced: [DataStyleDecoration],
+        configure: [DataStyleDecoration],
+        advanced: [],
       },
       demoSchema: [
         {

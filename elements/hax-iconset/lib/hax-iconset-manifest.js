@@ -133,6 +133,7 @@ export const HaxIconsetManifest = [
       "templates",
       "timeline",
       "vocab",
+      "wizard-hat",
     ],
   },
   {

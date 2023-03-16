@@ -66,6 +66,7 @@ class HaxTray extends I18NMixin(
       structure: "Outline",
       structureTip: "View Page Structure",
       edit: "Edit",
+      properties: "Properties",
       save: "Save",
       move: "Move",
       close: "Close",
@@ -80,8 +81,8 @@ class HaxTray extends I18NMixin(
       collapse: "Collapse",
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
-      takeATour: "Help",
-      superMenu: "Super menu",
+      merlin: "Merlin",
+      haxCommandWizard: "HAX Command Wizard",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -92,6 +93,7 @@ class HaxTray extends I18NMixin(
       cancelWithoutSaving: "Cancel without saving",
       configure: "Configure",
       advanced: "Advanced",
+      developer: "Developer",
       alignment: "Alignment",
       left: "Left",
       center: "Center",
@@ -113,6 +115,7 @@ class HaxTray extends I18NMixin(
           __position: "hax-align-left",
           __scale: 100,
         },
+        developer: {}
       },
     };
     this.collapsed = true;
@@ -327,6 +330,23 @@ class HaxTray extends I18NMixin(
         #toggle-tray-size {
           flex: 0 0 auto;
           margin-right: 8px;
+        }
+        #settingsform {
+          margin: -8px -8px 0;
+        }
+        a11y-collapse {
+          margin: 0px;
+          --a11y-collapse-margin: 0;
+        }
+        a11y-collapse span[slot="heading"] {
+          line-height: 24px;
+          height: 24px;
+          display: block;
+          margin: 4px;
+        }
+        a11y-collapse-group {
+          margin: 0;
+          padding: 0;
         }
         hax-tray-button,
         hax-app-browser,
@@ -582,9 +602,39 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   get contentButtons() {
-    return html` <hax-tray-button
+    return html`
+          <hax-tray-button
+        event-name="content-edit"
+        icon="settings"
+        id="content-edit"
+        label="${this.t.edit}"
+        ?disabled="${!this.activeTagName ||
+        this.activeTagName == "" ||
+        !this.activeNode ||
+        !this.activeNode.tagName}"
+        voice-command="(modify)(configure)(edit) selected"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        tooltip="${this.t.edit} ${this.activeTagName}"
+        toggles
+        ?toggled="${!this.collapsed && this.trayDetail === "content-edit"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
+      >
+        <div slot="tour" data-stop-content>
+          When you want to add any content to the page from text, to images, to
+          anything more advanced; you can always find items to add under the Add
+          content menu. Click to expand, then either drag and drop items into
+          the page or click and have them placed near whatever you are actively
+          working on.
+        </div>
+      </hax-tray-button>
+    <hax-tray-button
         event-name="content-add"
-        icon="add-box"
+        icon="hax:add-brick"
         id="content-add"
         label="${this.t.blocks}"
         voice-command="select blocks (menu)"
@@ -629,35 +679,6 @@ class HaxTray extends I18NMixin(
         </div>
       </hax-tray-button>
       <hax-tray-button
-        event-name="content-edit"
-        icon="build"
-        id="content-edit"
-        label="${this.t.edit}"
-        ?disabled="${!this.activeTagName ||
-        this.activeTagName == "" ||
-        !this.activeNode ||
-        !this.activeNode.tagName}"
-        voice-command="(modify)(configure)(edit) selected"
-        data-simple-tour-stop
-        data-stop-title="label"
-        controls="tray-detail"
-        tooltip="${this.t.edit} ${this.activeTagName}"
-        toggles
-        ?toggled="${!this.collapsed && this.trayDetail === "content-edit"}"
-        icon-position="left"
-        show-text-label
-        show-tooltip
-        align-horizontal="${this.collapsed ? "left" : "center"}"
-      >
-        <div slot="tour" data-stop-content>
-          When you want to add any content to the page from text, to images, to
-          anything more advanced; you can always find items to add under the Add
-          content menu. Click to expand, then either drag and drop items into
-          the page or click and have them placed near whatever you are actively
-          working on.
-        </div>
-      </hax-tray-button>
-      <hax-tray-button
         event-name="content-map"
         icon="icons:toc"
         id="content-map"
@@ -683,7 +704,7 @@ class HaxTray extends I18NMixin(
   get moreButtons() {
     return html`<hax-tray-button
         id="exportbtn"
-        icon="code"
+        icon="hax:html-code"
         label="${this.t.source}"
         event-name="view-source"
         voice-command="view (page) source"
@@ -721,25 +742,14 @@ class HaxTray extends I18NMixin(
         <div data-stop-content>User preferences for customizing HAX</div>
       </hax-tray-button>
       <hax-tray-button
-        event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
-        icon="help"
-        label="${this.t.takeATour}"
-        voice-command="start tour"
-        toggles
-        ?toggled="${!this.collapsed && this.tourOpened}"
-        icon-position="left"
-        show-text-label
-        show-tooltip
-        align-horizontal="${this.collapsed ? "left" : "center"}"
-      ></hax-tray-button>
-      <hax-tray-button
         event-name="super-daemon"
-        icon="android"
-        label="${this.t.superMenu}"
-        voice-command="${this.t.superMenu}"
+        icon="hax:wizard-hat"
+        label="${this.t.merlin}"
+        voice-command="${this.t.merlin}"
         toggles
         ?toggled="${!this.collapsed && this.tourOpened}"
         icon-position="left"
+        tooltip="${this.t.haxCommandWizard}"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
@@ -762,7 +772,7 @@ class HaxTray extends I18NMixin(
           label="${this.t.close}"
         >
         </hax-tray-button>
-        <h4>${this.trayLabel || `${this.t.edit} ${this.activeTagName}`}</h4>
+        <h4>${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}</h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
@@ -1252,6 +1262,7 @@ class HaxTray extends I18NMixin(
           __position: "hax-align-left",
           __scale: 100,
         },
+        developer: {},
       },
     };
     this.shadowRoot.querySelector("#settingsform").fields = [];
@@ -1299,6 +1310,20 @@ class HaxTray extends I18NMixin(
               this.activeHaxElement.properties[property];
           }
         });
+        props.settings.developer.forEach((el) => {
+          if (el.property === property) {
+            this.activeValue.settings.developer[property] =
+              this.activeHaxElement.properties[property];
+          }
+          if (el.attribute === property) {
+            this.activeValue.settings.developer[property] =
+              this.activeHaxElement.properties[property];
+          }
+          if (el.slot === property) {
+            this.activeValue.settings.developer[property] =
+              this.activeHaxElement.properties[property];
+          }
+        });
       }
       // now we need to parse through for slotted items
       // build a fake tree, then walk the configuration / Settings
@@ -1336,6 +1361,20 @@ class HaxTray extends I18NMixin(
                 el.getAttribute("slot") == "null")
             ) {
               this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
+            }
+          });
+          // now advanced
+          props.settings.developer.forEach((prop) => {
+            if (prop.slot === el.getAttribute("slot")) {
+              this.activeValue.settings.developer[prop.slot] = el.innerHTML;
+            }
+            // no slot and it didnt match so it has no slot
+            else if (
+              prop.slot == "" &&
+              (el.getAttribute("slot") == null ||
+                el.getAttribute("slot") == "null")
+            ) {
+              this.activeValue.settings.developer[prop.slot] = el.innerHTML;
             }
           });
         }
@@ -1387,6 +1426,16 @@ class HaxTray extends I18NMixin(
             props.settings.advanced[key].slot;
         }
       });
+      props.settings.developer.forEach((val, key) => {
+        if (props.settings.developer[key].attribute) {
+          props.settings.developer[key].property =
+            props.settings.developer[key].attribute;
+        }
+        if (props.settings.developer[key].slot) {
+          props.settings.developer[key].property =
+            props.settings.developer[key].slot;
+        }
+      });
       // test if this element can be aligned
       if (props.canPosition) {
         props.settings.advanced.unshift({
@@ -1418,7 +1467,7 @@ class HaxTray extends I18NMixin(
       this.activeSchema = [
         {
           property: "settings",
-          inputMethod: "tabs",
+          inputMethod: "collapse",
           properties: [],
         },
       ];
@@ -1447,6 +1496,8 @@ class HaxTray extends I18NMixin(
       setProps("configure", this.t.configure, props.settings.configure);
       // see if we have any configure settings or disable
       setProps("advanced", this.t.advanced, props.settings.advanced);
+      // see if we have any configure settings or disable
+      setProps("developer", this.t.developer, props.settings.developer);
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
       this.shadowRoot.querySelector("#settingsform").value = this.activeValue;
@@ -1523,8 +1574,9 @@ class HaxTray extends I18NMixin(
       };
       let isGrid = props.type == "grid";
       let settingsKeys = {
-        advanced: "advanced",
         configure: "configure",
+        advanced: "advanced",
+        developer: "developer",
       };
       var setAhead;
       clearTimeout(this.__contextPropDebounce);

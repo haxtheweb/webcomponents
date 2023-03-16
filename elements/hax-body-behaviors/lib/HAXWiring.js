@@ -386,6 +386,9 @@ export class HAXWiring {
           if (typeof props.settings.advanced === typeof undefined) {
             props.settings.advanced = [];
           }
+          if (typeof props.settings.developer === typeof undefined) {
+            props.settings.developer = [];
+          }
           for (let i = 0; i < props.settings.advanced.length; i++) {
             props.settings.advanced[i] = this.validateSetting(
               props.settings.advanced[i]
@@ -510,32 +513,32 @@ export class HAXWiring {
         inputMethod: "textfield",
       });
       // allow schema definitions
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "prefix",
         title: "Schema: prefix",
         description: "Schema prefixes",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "typeof",
         title: "Schema: TypeOf",
         description: "typeof definition for Schema usage",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "property",
         title: "Schema: Property",
         description: "typeof definition for Schema usage",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "resource",
         title: "Schema: Resource ID",
         description: "Schema resource identifier",
         inputMethod: "textfield",
       });
       // allow the id to be modified
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "id",
         title: "ID",
         description: "element ID, only set this if you know why",
@@ -543,7 +546,7 @@ export class HAXWiring {
       });
       // we need to support slot in the UI but actually shift it around under the hood
       // this is so that shadow roots don't get mad when previewing
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "slot",
         title: "slot",
         description: "DOM slot area",

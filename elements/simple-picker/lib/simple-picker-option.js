@@ -226,10 +226,6 @@ class SimplePickerOption extends LitElement {
   _handleHover() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
-
-  _getColor() {
-    return css`red`;
-  }
 }
 customElements.define(SimplePickerOption.tag, SimplePickerOption);
 export { SimplePickerOption };

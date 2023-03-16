@@ -495,7 +495,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           ></hax-context-item>
           <slot name="more"></slot>
           <hax-context-item
-            icon="build"
+            icon="settings"
             action
             align-horizontal="left"
             ?disabled="${

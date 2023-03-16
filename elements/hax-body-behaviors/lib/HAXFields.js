@@ -136,6 +136,12 @@ export const HaxSchematizer = {
         format: "tabs",
       },
     },
+    collapse: {
+      defaultSettings: {
+        type: "object",
+        format: "collapse",
+      },
+    },
     textarea: {
       defaultSettings: {
         type: "string",
@@ -342,6 +348,25 @@ export const HaxElementizer = {
               layoutBreakpoint: "layoutBreakpoint",
               iconBreakpoint: "iconBreakpoint",
               sticky: "sticky",
+            },
+          },
+        },
+        collapse: {
+          defaultSettings: {
+            import:
+              "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+            element: "a11y-collapse-group",
+            noWrap: true,
+            child: {
+              import:
+                "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+              element: "a11y-collapse",
+              noWrap: true,
+              labelSlot: "heading",
+              descriptionSlot: "",
+            },
+            attributes: {
+              accordion: "accordion",
             },
           },
         },
