@@ -69,7 +69,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           --a11y-collapse-horizontal-padding: 4px;
         }
         a11y-collapse::part(heading) {
-          margin: 4px;
+          margin: 8px 0px;
         }
       `,
     ];

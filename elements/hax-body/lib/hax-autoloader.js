@@ -210,6 +210,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   props.gizmo.handles = [];
                   props.settings.configure = [];
                   props.settings.advanced = [];
+                  props.settings.developer = [];
                   props = wiring.standardAdvancedProps(props);
                   props.saveOptions = {};
                   props.demoSchema = [];

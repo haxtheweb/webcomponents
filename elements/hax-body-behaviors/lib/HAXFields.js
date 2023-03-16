@@ -355,7 +355,7 @@ export const HaxElementizer = {
           defaultSettings: {
             import:
               "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
-            element: "a11y-collapse-group",
+            element: "div",
             noWrap: true,
             child: {
               import:
@@ -364,9 +364,6 @@ export const HaxElementizer = {
               noWrap: true,
               labelSlot: "heading",
               descriptionSlot: "",
-            },
-            attributes: {
-              accordion: "accordion",
             },
           },
         },

@@ -119,8 +119,13 @@ class HaxTray extends I18NMixin(
       },
     };
     this.collapsed = true;
-    this.activeTab = "item-0";
-    this.activeSchema = [];
+    this.activeSchema = [
+      {
+        property: "settings",
+        inputMethod: "collapse",
+        properties: [],
+      },
+    ];
     this.canUndo = false;
     this.canRedo = false;
     this.trayDetail = "content-edit";
@@ -333,16 +338,25 @@ class HaxTray extends I18NMixin(
         }
         #settingsform {
           margin: -8px -8px 0;
+          --simple-fields-field-margin: 12px;
         }
         a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
+          --a11y-collapse-vertical-padding: 12px;
+          --a11y-collapse-horizontal-padding: 12px;
+        }
+        simple-fields-field::part(label) {
+          font-size: 11px;
+        }
+        simple-fields-field:hover::part(label) {
+          font-weight: bold;
         }
         a11y-collapse span[slot="heading"] {
           line-height: 24px;
           height: 24px;
           display: block;
-          margin: 4px;
+          margin: 8px 0;
         }
         a11y-collapse-group {
           margin: 0;
@@ -726,7 +740,7 @@ class HaxTray extends I18NMixin(
         ?hidden="${this.hidePreferencesButton}"
         id="advanced-settings"
         event-name="advanced-settings"
-        icon="settings"
+        icon="build"
         label="${this.t.settings}"
         voice-command="select settings (menu)"
         data-simple-tour-stop
@@ -828,16 +842,7 @@ class HaxTray extends I18NMixin(
       <h5 ?hidden="${hidden}">${this.t.search}</h5>
       <hax-app-browser id="appbrowser" ?hidden="${hidden}"></hax-app-browser>`;
   }
-  __simpleFieldsClick(e) {
-    try {
-      this.activeTab = this.shadowRoot
-        .querySelector("#settingsform")
-        .shadowRoot.querySelector("simple-fields").activeTab;
-    } catch (e) {
-      // in case it missed somehow like w/ an incredibly slow repaints
-      this.activeTab = "item-0";
-    }
-  }
+
   _refreshAddData() {
     this.shadowRoot
       .querySelector("#gizmobrowser")
@@ -1013,7 +1018,7 @@ class HaxTray extends I18NMixin(
        * Form schema for active node
        */
       activeSchema: {
-        type: Object,
+        type: Array,
       },
       /**
        * Alignment of the initial edit button
@@ -1132,9 +1137,6 @@ class HaxTray extends I18NMixin(
           this.offsetMargin;
       }, 1000);
       this.__setup = true;
-      this.shadowRoot
-        .querySelector("#settingsform")
-        .addEventListener("click", this.__simpleFieldsClick.bind(this));
       this.shadowRoot
         .querySelector("#settingsform")
         .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
@@ -1265,8 +1267,6 @@ class HaxTray extends I18NMixin(
         developer: {},
       },
     };
-    this.shadowRoot.querySelector("#settingsform").fields = [];
-    this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
       activeNode &&
@@ -1486,6 +1486,8 @@ class HaxTray extends I18NMixin(
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
           disabled: filteredProps.length < 1,
+          expanded: propName === "configure",
+          accordion: true,
         });
       };
       // @see haxHook: setupActiveElementForm - allow elements to modify the properties to be rendered
@@ -1499,6 +1501,8 @@ class HaxTray extends I18NMixin(
       // see if we have any configure settings or disable
       setProps("developer", this.t.developer, props.settings.developer);
       this.__activePropSchema = props;
+      this.shadowRoot.querySelector("#settingsform").fields = [];
+      this.shadowRoot.querySelector("#settingsform").value = {};
       this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
       this.shadowRoot.querySelector("#settingsform").value = this.activeValue;
       this.loading = false;

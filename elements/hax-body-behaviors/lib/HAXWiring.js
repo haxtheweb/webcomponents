@@ -225,6 +225,7 @@ export class HAXWiring {
       settings: {
         configure: [],
         advanced: [],
+        developer: [],
       },
       wipeSlot: {},
     };
@@ -386,9 +387,6 @@ export class HAXWiring {
           if (typeof props.settings.advanced === typeof undefined) {
             props.settings.advanced = [];
           }
-          if (typeof props.settings.developer === typeof undefined) {
-            props.settings.developer = [];
-          }
           for (let i = 0; i < props.settings.advanced.length; i++) {
             props.settings.advanced[i] = this.validateSetting(
               props.settings.advanced[i]
@@ -397,6 +395,18 @@ export class HAXWiring {
               props.settings.advanced.splice(i, 1);
             }
           }
+          if (typeof props.settings.developer === typeof undefined) {
+            props.settings.developer = [];
+          }
+          for (let i = 0; i < props.settings.developer.length; i++) {
+            props.settings.developer[i] = this.validateSetting(
+              props.settings.developer[i]
+            );
+            if (!props.settings.developer[i]) {
+              props.settings.developer.splice(i, 1);
+            }
+          }
+          // apply standard set of props
           props = this.standardAdvancedProps(props);
         }
         // support for advanced save options
@@ -792,6 +802,7 @@ export class HAXWiring {
               validationType: "url",
             },
           ],
+          developer: []
         },
         saveOptions: {
           wipeSlot: false,

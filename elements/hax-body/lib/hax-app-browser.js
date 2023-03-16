@@ -45,7 +45,7 @@ class HaxAppBrowser extends LitElement {
           --a11y-collapse-margin: 0;
         }
         a11y-collapse::part(heading) {
-          margin: 4px;
+          margin: 8px 0px;
         }
       `,
     ];

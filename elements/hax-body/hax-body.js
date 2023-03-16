@@ -676,6 +676,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         (!target.haxUIElement || target.tagName === "EDITABLE-TABLE") &&
         this.__focusLogic(target)
       ) {
+        HAXStore.haxTray.trayDetail = "content-edit";
         e.stopPropagation();
         e.stopImmediatePropagation();
       }
