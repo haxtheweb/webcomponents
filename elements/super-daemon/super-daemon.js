@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
 import "./lib/super-daemon-ui.js";
 /**
@@ -164,6 +165,16 @@ class SuperDaemon extends LitElement {
         :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
           left: calc(50% - var(--simple-modal-width, 75vw) / 2);
         }
+        #cancel {
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 100000000;
+          display: block;
+          margin: 0;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+        }
       `,
     ];
   }
@@ -250,6 +261,7 @@ class SuperDaemon extends LitElement {
           .items="${this.items}"
           @super-daemon-close="${this.close}"
         ></super-daemon-ui>
+        <simple-icon-button id="cancel" icon="cancel" @click="${this.close}"></simple-icon-button>
       </web-dialog>
     `;
   }
