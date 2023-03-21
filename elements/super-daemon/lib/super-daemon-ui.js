@@ -15,6 +15,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.t.commands = "Commands";
     this.opened = false;
     this.items = [];
+    this.slashCommandContext = false;
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
@@ -30,6 +31,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       icon: { type: String },
+      slashCommandContext: { type: Boolean, attribute: "slash-command-context" },
       opened: { type: Boolean, reflect: true },
     };
   }
@@ -52,11 +54,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           display: inline-flex;
           width: 100%;
         }
-        .search simple-icon-lite {
+        .search .icon {
           display: inline-flex;
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
-          border-radius: 0px;
+        }
+        .search .slash-icon {
+          display: inline-flex;
+          --simple-icon-height: 50px;
+          --simple-icon-width: 30px;
         }
         .results-stats {
           right: 0;
@@ -122,7 +128,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           simple-fields-field {
             line-height: 20px;
           }
-          .search simple-icon-lite {
+          .search .icon {
             display: none;
           }
           super-daemon-row {
@@ -180,11 +186,24 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           this.shadowRoot.querySelector(".results").scrollTo(0,0);
         }
       }
+      if (propName == "slashCommandContext" && oldValue != undefined) {
+        this.dispatchEvent(new CustomEvent("slash-command-context-changed", {
+          detail: {
+            value: this[propName],
+          },
+        }));
+      }
     });
   }
 
   inputfilterChanged(e) {
     this.like = e.target.value;
+    if (this.like === '/' || this.like.startsWith('/')) {
+      this.slashCommandContext = true;
+    }
+    else {
+      this.slashCommandContext = false;
+    }
   }
 
   _resultsKeydown(e) {
@@ -199,7 +218,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           else { 
             this.shadowRoot.querySelector("super-daemon-row[active]").previousElementSibling.shadowRoot.querySelector("button").focus();
           }
-
           break;
         case "ArrowDown":
         case "ArrowRight":
@@ -242,6 +260,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="search">
+        ${this.slashCommandContext ? html`<simple-icon-lite title="slash command active" icon="hax:slash" class="slash-icon"></simple-icon-lite>` : ``}
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
@@ -255,7 +274,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           autofocus
           part="filter"
         ></simple-fields-field>
-        <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+        <simple-icon-lite icon="${this.icon}" class="icon"></simple-icon-lite>
       </div>
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}

@@ -8,15 +8,44 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../super-daemon.js';
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+      import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+      import {SuperDaemonInstance} from '../super-daemon.js';
+
+      SuperDaemonInstance.defineOption({
+        title: "insite",
+        icon: "hax:clipboard-pulse",
+        tags: ["CMS", "insights", "data", "operation"],
+        value: true,
+        context: "CMS",
+        eventName: "super-daemon-element-method",
+        path: "CMS/site/insights",
+      });
+      SuperDaemonInstance.defineOption({
+        title: "Search Youtube",
+        icon: "av:video-library",
+        tags: ["Search", "Youtube", "video"],
+        value: true,
+        context: ["search", "/"],
+        eventName: "super-daemon-element-method",
+        path: "/search/youtube",
+      });
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Type the trigger key combo to invoke the Super Daemon</h3>
+      <label>Context we are operating in</label>
+      <select>
+        <option>None</option>
+        <option value="CMS">CMS</option>
+      </select>
     </div>
+    <script>
+      document.querySelector("select").addEventListener("change", function(e) {
+        const daemon = window.SuperDaemonManager.requestAvailability();
+        daemon.context = e.target.value;
+      });
+    </script>
   </body>
 </html>

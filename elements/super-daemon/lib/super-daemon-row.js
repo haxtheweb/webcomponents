@@ -11,6 +11,8 @@ export class SuperDaemonRow extends LitElement {
     this.icon = null;
     this.key = null;
     this.eventName = null;
+    this.more = false;
+    this.showDetails = false;
     this.value = {};
     this.tags = [];
     this.shadowRootOptions = {
@@ -18,6 +20,10 @@ export class SuperDaemonRow extends LitElement {
       delegatesFocus: true,
     };
     this.active = false;
+    // if we have children then show more
+    if (this.innerHTML) {
+      this.more = true;
+    }
   }
   static get tag() {
     return "super-daemon-row";
@@ -28,6 +34,8 @@ export class SuperDaemonRow extends LitElement {
       title: { type: String },
       path: { type: String },
       icon: { type: String },
+      more: { type: Boolean },
+      showDetails: { type: Boolean },
       key: { type: String },
       eventName: { type: String, attribute: "event-name" },
       value: { type: Object },
@@ -48,8 +56,9 @@ export class SuperDaemonRow extends LitElement {
           display: block;
           margin: 8px 16px;
         }
-        :host([active]) button,
-        button:hover {
+        :host([active]),
+        :host:hover {
+          border-radius: 8px;
           background-color: var(
             --super-daemon-row-hover,
             rgba(0, 100, 200, 0.1)
@@ -60,7 +69,7 @@ export class SuperDaemonRow extends LitElement {
           display: flex;
           padding: 16px;
           width: 100%;
-          border-radius: 8px;
+          border-radius: 0;
           border: none;
           align-items: middle;
           justify-content: space-between;
@@ -118,6 +127,24 @@ export class SuperDaemonRow extends LitElement {
           padding: 6px 4px;
           margin: 4px auto;
           font-size: 9px;
+        }
+        summary {
+          display: none;
+        }
+        @keyframes details-show {
+          from {
+            opacity:0;
+            transform: var(--details-translate, translateY(-0.5em));
+          }
+          to {
+            opacity:1;
+            transform: var(--details-translate, translateY(0));
+          }
+        }
+
+        details[open] {
+          padding: 0 16px 16px 16px;
+          animation: details-show 100ms ease-in-out;
         }
       `,
     ];
@@ -196,8 +223,34 @@ export class SuperDaemonRow extends LitElement {
         <div class="key-combo" part="key-combo">
           ${this.keyAry(this.key).map(key => html`<kbd class="keyboard-shortcut">${key}</kbd>`)}
         </div>
+        ${this.more ? html`<simple-icon-button label="More details" icon="more-vert" aria-controls="details" @click="${this.toggleDetailsClick}"  @keydown="${this.toggleDetailsKey}"></simple-icon-button>` : ``}
       </button>
+      ${this.more ? html`<details id="details" ?open="${this.showDetails}" @toggle="${this.openChanged}">
+        <summary>Details</summary>
+        <div>
+          <slot></slot>
+        </div>
+      </details>`: ``}
     `;
+  }
+  // toggle on click but prevent the event from bubbling up
+  toggleDetailsKey(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      this.showDetails = !this.showDetails;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+  // toggle on click but prevent the event from bubbling up
+  toggleDetailsClick(e) {
+    this.showDetails = !this.showDetails;
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+  openChanged(e) {
+    this.showDetails = e.target.open;
   }
 }
 

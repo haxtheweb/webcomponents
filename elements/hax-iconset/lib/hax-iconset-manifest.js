@@ -128,6 +128,7 @@ export const HaxIconsetManifest = [
       "settings",
       "site-map",
       "site-settings",
+      "slash",
       "table-column-plus-after",
       "table-column-remove",
       "templates",

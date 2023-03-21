@@ -192,7 +192,7 @@ class SuperDaemon extends LitElement {
   filterItems(items, context) {
     return items.filter((item) => {
       if (item.context) {
-        return item.context === context;
+        return item.context === context || item.context.includes(context);
       }
       return true;
     });
@@ -260,10 +260,23 @@ class SuperDaemon extends LitElement {
           icon="${this.icon}"
           .items="${this.items}"
           @super-daemon-close="${this.close}"
+          @slash-command-context-changed="${this.slashContextChanged}"
         ></super-daemon-ui>
         <simple-icon-button id="cancel" icon="cancel" @click="${this.close}"></simple-icon-button>
       </web-dialog>
     `;
+  }
+
+  slashContextChanged(e) {
+    if (e.detail.value) {
+      this._oldContext = this.context;
+      this.context = "/";
+      this.items = this.filterItems(this.allItems, this.context);
+    }
+    else {
+      this.context = this._oldContext;
+      this.items = this.filterItems(this.allItems, this.context);
+    }
   }
 
   // override to block calling from global key commands
