@@ -260,6 +260,59 @@ export class AppHaxSteps extends SimpleColors {
       }
     }
   }
+  // pressbooks import endpoint
+  async pressbooksImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      import(
+        "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+      ).then(async (e) => {
+        // enable core services
+        enableServices(["haxcms"]);
+        // get the broker for docx selection
+        const broker = window.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile("html");
+        // tee up as a form for upload
+        const formData = new FormData();
+        formData.append("method", "site"); // this is a site based importer
+        formData.append("type", toJS(store.site.structure));
+        formData.append("upload", file);
+        this.setProcessingVisual();
+        const response = await MicroFrontendRegistry.call(
+          "@haxcms/pressbooksToSite",
+          formData
+        );
+        store.toast(`Processed!`, 300);
+        // must be a valid response and have at least SOME html to bother attempting
+        if (
+          response.status == 200 &&
+          response.data &&
+          response.data.contents != ""
+        ) {
+          store.items = response.data.items;
+          // invoke a file broker for a html file
+          // send to the endpoint and wait
+          // if it comes back with content, then we engineer details off of it
+          this.nameTyped = response.data.filename
+            .replace(".html", "")
+            .replace("outline", "")
+            .replace(/\s/g, "")
+            .replace(/-/g, "")
+            .toLowerCase();
+          setTimeout(() => {
+            this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+            this.shadowRoot.querySelector("#sitename").select();
+          }, 800);
+          store.site.type = type;
+          store.site.theme = "clean-one";
+          store.appEl.playSound("click2");
+        } else {
+          store.appEl.playSound("error");
+          store.toast(`File did not return valid HTML structure`);
+        }
+      });
+    }
+  }
   // makes guy have hat on, shows it's doing something
   setProcessingVisual() {
     let loadingIcon = document.createElement("simple-icon-lite");
@@ -864,6 +917,11 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.docxImport}
             type="docx"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.pressbooksImport}
+            type="pressbooks"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"

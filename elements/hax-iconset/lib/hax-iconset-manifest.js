@@ -134,6 +134,7 @@ export const HaxIconsetManifest = [
       "timeline",
       "vocab",
       "wizard-hat",
+      "wordpress",
     ],
   },
   {
