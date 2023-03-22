@@ -20,8 +20,14 @@ class SuperDaemon extends LitElement {
       key2: { type: String },
       icon: { type: String },
       items: { type: Array },
+      programResults: { type: Array },
+      programName: { type: String },
       allItems: { type: Array },
-      context: { type: String },
+      context: { type: Array },
+      commandContext: { type: String },
+      program: { type: String },
+      programSearch: { type: String },
+      like: { type: String },
     };
   }
   /**
@@ -29,11 +35,17 @@ class SuperDaemon extends LitElement {
    */
   constructor() {
     super();
-    this.context = null;
+    this.context = [];
     this.icon = "hardware:keyboard-return";
     this.opened = false;
     this.items = [];
+    this.like = '';
+    this._programValues = {};
+    this.programSearch = '';
     this.allItems = [];
+    this.programResults = [];
+    this.programName = null;
+    this.commandContext = "*";
     const isSafari = window.safari !== undefined;
     if (isSafari) {
       this.key1 = "Ctrl";
@@ -54,6 +66,10 @@ class SuperDaemon extends LitElement {
       "super-daemon-element-method",
       this.elementMethod.bind(this)
     );
+    window.addEventListener(
+      "super-daemon-run-program",
+      this.runProgramEvent.bind(this)
+    );
   }
   disconnectedCallback() {
     super.connectedCallback();
@@ -66,6 +82,45 @@ class SuperDaemon extends LitElement {
       "super-daemon-element-method",
       this.elementMethod.bind(this)
     );
+    window.removeEventListener(
+      "super-daemon-run-program",
+      this.runProgramEvent.bind(this)
+    );
+  }
+  // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
+  // Run wikipedia search with runProgram('/',{method},'Wikipedia','Drupal');
+  runProgram(context = '/', values = {}, program = null, name = null, search = '', like = null) {
+    this.commandContext = context;
+    this._programToRun = program;
+    this.programSearch = search;
+    // used to force a search prepopulation
+    if (like != null) {
+      this.like = like;
+    }
+    // ensure we have a program as this could be used for resetting program state
+    if (this._programToRun) {
+      this.shadowRoot.querySelector('super-daemon-ui').setupProgram();
+      setTimeout(async () => {
+        this.programResults = await this._programToRun(this.programSearch, values);        
+      }, 50);
+    }
+    else {
+      this.programResults = [];
+    }
+    this.programName = name;
+  }
+  // run "program"
+  runProgramEvent(e) {
+    if (e.detail) {
+      let data = e.detail;
+      this._programValues = data;
+      this.like = '';
+      this.runProgram(data.context, this._programValues, data.program, data.name, '');
+    }
+    else {
+      this.runProgram('/');
+      this._programValues = {};
+    }
   }
   // allow generating an event on a target
   elementMethod(e) {
@@ -181,7 +236,7 @@ class SuperDaemon extends LitElement {
   /**
    * Close the modal and do some clean up
    */
-  close() {
+  close(e) {
     this.opened = false;
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
@@ -191,11 +246,32 @@ class SuperDaemon extends LitElement {
   }
   filterItems(items, context) {
     return items.filter((item) => {
+      // ensuire we have a context at all
       if (item.context) {
-        return item.context === context || item.context.includes(context);
+        // if we're in a global context, include all global context results
+        let results = [];
+        if (this.commandContext == "*") {
+          results = context.filter(value => item.context.includes(value));
+        }
+        else {
+          results = [this.commandContext].filter(value => item.context.includes(value));
+        }
+        return results.length !== 0;
       }
       return true;
     });
+  }
+  // can't directly set context
+  appendContext(context) {
+    if (context && !this.context.includes(context)) {
+      this.context.push(context);
+    }
+  }
+  // remove from context
+  removeContext(context) {
+    if (context && this.context.includes(context)) {
+      this.context.splice(this.context.indexOf(context), 1);
+    }
   }
   open() {
     // filter to context
@@ -258,27 +334,56 @@ class SuperDaemon extends LitElement {
         <super-daemon-ui
           ?open="${this.opened}"
           icon="${this.icon}"
-          .items="${this.items}"
+          like="${this.like}"
+          .items="${this.itemsForDisplay(this.items, this.programResults)}"
+          command-context="${this.commandContext}"
+          program-name="${this.programName}"
+          program-search="${this.programSearch}"
+          @value-changed="${this.inputfilterChanged}"
           @super-daemon-close="${this.close}"
-          @slash-command-context-changed="${this.slashContextChanged}"
+          @super-daemon-command-context-changed="${this.commandContextChanged}"
         ></super-daemon-ui>
         <simple-icon-button id="cancel" icon="cancel" @click="${this.close}"></simple-icon-button>
       </web-dialog>
     `;
   }
 
-  slashContextChanged(e) {
-    if (e.detail.value) {
-      this._oldContext = this.context;
-      this.context = "/";
-      this.items = this.filterItems(this.allItems, this.context);
+  async inputfilterChanged(e) {
+    if (e.detail.value && this.programName && this._programToRun) {
+      this.programResults = await this._programToRun(e.detail.value, this._programValues);
     }
     else {
-      this.context = this._oldContext;
+      this.programResults = [];
+      // we moved back out of a context, reset complete
       this.items = this.filterItems(this.allItems, this.context);
     }
   }
 
+  itemsForDisplay(items, programResults) {
+    if (this.programName != null) {
+      return programResults;
+    }
+    return items;
+  }
+
+  commandContextChanged(e) {
+    if (e.detail.value) {
+      switch (e.detail.value) {
+        case "/":
+        case "*": // global context / anything
+        case "?":
+        case ">":
+          this.commandContext = e.detail.value;
+          this.items = this.filterItems(this.allItems, this.context);
+        break;
+      }
+    }
+    else {
+      // context removed; most likely via backspace being hit
+      this.commandContext = "*";
+      this.items = this.filterItems(this.allItems, this.context);
+    }
+  }
   // override to block calling from global key commands
   allowedCallback() {
     return true;

@@ -111,6 +111,10 @@ export const SimpleFilterMixin = function (SuperClass) {
       //This forces _computeFiltered function to do its job :-)
       this.where = "";
     }
+    // helper function to escape special characters when regex is the comparison tool but input is user string
+    escapeRegExp(text) {
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
 
     /**
      * This filters the items provided
@@ -122,9 +126,7 @@ export const SimpleFilterMixin = function (SuperClass) {
      * @return array} Filter results.
      */
     _computeFiltered(items, where, like, caseSensitive) {
-      if (like[0] === "\\" || like === "\\") {
-        like = "\\" + like;
-      }
+      like = this.escapeRegExp(like);
       var regex = null;
       if (caseSensitive) {
         regex = new RegExp(like);
@@ -144,7 +146,7 @@ export const SimpleFilterMixin = function (SuperClass) {
           if (typeof decomposed == "undefined" && where != "") {
             //Do what I know best
             console.warn(
-              "grafitto-filter was unable to find a property in '" + where + "'"
+              "simple-filter was unable to find a property in '" + where + "'"
             );
           }
           return regex.test(decomposed);

@@ -140,14 +140,6 @@ class HaxAppBrowser extends LitElement {
       activeApp: {
         type: Object,
       },
-      /**
-       * If we have an active, scale everything
-       */
-      hasActive: {
-        reflect: true,
-        type: Boolean,
-        attribute: "has-active",
-      },
       appList: {
         type: Array,
       },
@@ -158,9 +150,6 @@ class HaxAppBrowser extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "activeApp" && this[propName]) {
-        this._activeAppChanged(this[propName], oldValue);
-      }
       if (propName == "appList" && this[propName] && this.shadowRoot) {
         this.searching = false;
         this.categories = [...this.updateCategories(this.appList)];
@@ -183,16 +172,6 @@ class HaxAppBrowser extends LitElement {
     return tags;
   }
 
-  /**
-   * Active app updated, so scroll it into view
-   */
-  _activeAppChanged(newValue, oldValue) {
-    if (typeof oldValue !== typeof undefined && newValue != null) {
-      this.hasActive = true;
-    } else {
-      this.hasActive = false;
-    }
-  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

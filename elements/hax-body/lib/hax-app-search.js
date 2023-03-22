@@ -96,6 +96,7 @@ class HaxAppSearch extends LitElement {
         this.activeApp = toJS(HAXStore.activeApp);
       }
     });
+    HAXStore.appSearch = this;
   }
   /**
    * LitElement life cycle - render callback
@@ -127,11 +128,6 @@ class HaxAppSearch extends LitElement {
         .schema="${this.searchSchema}"
         @search-values-changed="${this._searchValuesChanged}"
       ></hax-app-search-inputs>
-      <hax-app-pagination
-        id="pagerbottom"
-        .request-data="${this.requestData}"
-        .pagination="${this.pagination}"
-      ></hax-app-pagination>
       <hexagon-loader
         size="medium"
         item-count="4"
@@ -163,7 +159,7 @@ class HaxAppSearch extends LitElement {
   async loadAppData() {
     this.loading = true;
     let url = this.requestUrl(this.requestEndPoint, this.requestParams);
-    await fetch(url, {
+    return await fetch(url, {
       headers: this.headers,
       method: this.method,
     })
@@ -171,7 +167,7 @@ class HaxAppSearch extends LitElement {
         if (response.ok) return response.json();
       })
       .then((json) => {
-        this._requestDataChanged(json);
+        return this._requestDataChanged(json);
       });
   }
   updated(changedProperties) {
@@ -347,6 +343,7 @@ class HaxAppSearch extends LitElement {
    */
   _resetAppSearch(newValue) {
     if (newValue && newValue.details) {
+      console.log('reset');
       let app = newValue;
       var requestParams = {};
       this.label = app.details.title;
@@ -544,6 +541,7 @@ class HaxAppSearch extends LitElement {
       }
     }
     this.loading = false;
+    return this.media;
   }
 
   /**

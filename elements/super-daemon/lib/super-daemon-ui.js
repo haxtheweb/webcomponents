@@ -9,13 +9,16 @@ import "./super-daemon-row.js";
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   constructor() {
     super();
-    this.t.noResultsForThisTerm = "No results for this term";
+    this._defaultTextEmpty = "No results for this term";
+    this.t.noResultsForThisTerm = this._defaultTextEmpty;
     this.t.whatAreYouLookingFor = "What are you looking for?";
     this.t.filterCommands = "Filter commands";
     this.t.commands = "Commands";
     this.opened = false;
     this.items = [];
-    this.slashCommandContext = false;
+    this.programSearch = '';
+    this.commandContext = "*";
+    this.programName = null;
     this.shadowRootOptions = {
       ...LitElement.shadowRootOptions,
       delegatesFocus: true,
@@ -31,7 +34,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       icon: { type: String },
-      slashCommandContext: { type: Boolean, attribute: "slash-command-context" },
+      programSearch: { type: String, attribute: "program-search" },
+      programName: { type: String, attribute: "program-name" },
+      commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
     };
   }
@@ -59,10 +64,29 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
         }
-        .search .slash-icon {
+        
+        .search .user-context-icon {
           display: inline-flex;
           --simple-icon-height: 50px;
           --simple-icon-width: 30px;
+        }
+        .program {
+          display: inline-flex;
+          font-family: "Roboto Mono", monospace;
+          background-color: black;
+          color: white;
+          line-break: anywhere;
+          word-break: break-all;
+          word-wrap: break-word;
+          text-overflow: clip;
+          overflow: hidden;
+          line-height: 16px;
+          height: 16px;
+          padding: 2px 4px;
+          margin: 16px 0 0 -2px;
+          font-size: 10px;
+          width: 100%;
+          max-width: 100px;
         }
         .results-stats {
           right: 0;
@@ -92,10 +116,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           line-height: 32px;
           height: 32px;
           margin: 16px auto;
-        }
-        simple-fields-field,
-        simple-fields-field:focus,
-        simple-fields-field:hover {
           border: 1px solid transparent;
           box-shadow: none;
           outline: 0px;
@@ -186,8 +206,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           this.shadowRoot.querySelector(".results").scrollTo(0,0);
         }
       }
-      if (propName == "slashCommandContext" && oldValue != undefined) {
-        this.dispatchEvent(new CustomEvent("slash-command-context-changed", {
+      if (propName == "commandContext") {
+        this.dispatchEvent(new CustomEvent("super-daemon-command-context-changed", {
           detail: {
             value: this[propName],
           },
@@ -196,14 +216,27 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     });
   }
 
+  setupProgram() {
+    this.programSearch = '';
+    this.shadowRoot.querySelector("#inputfilter").focus();
+    this.shadowRoot.querySelector("#inputfilter").select();
+    // reset to top of results
+    this.shadowRoot.querySelector(".results").scrollTo(0,0);
+  }
+  // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
-    this.like = e.target.value;
-    if (this.like === '/' || this.like.startsWith('/')) {
-      this.slashCommandContext = true;
+    if (this.programName) {
+      // don't set like if we're in a program
+      this.programSearch = e.target.value;
     }
     else {
-      this.slashCommandContext = false;
+      this.like = e.target.value;
     }
+  }
+  // reset search values because we selected something
+  itemSelected(e) {
+    this.like = '';
+    this.programSearch = '';
   }
 
   _resultsKeydown(e) {
@@ -238,7 +271,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       switch (e.key) {
         case "Enter":
           this.shadowRoot.querySelector("super-daemon-row")
-          .selected();    
+          .selected();
         break;
         case "ArrowUp":
           // @todo get focus on the row via an "active" parameter so we can just target that in the UI
@@ -246,22 +279,91 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
             .shadowRoot.querySelector("button")
             .focus();
             this.shadowRoot.querySelector("super-daemon-row:last-child").scrollIntoView({block: "end", inline: "nearest"});
-          break;
+        break;
         case "ArrowDown":
           this.shadowRoot.querySelector("super-daemon-row")
             .shadowRoot.querySelector("button")
             .focus();
             this.shadowRoot.querySelector("super-daemon-row").scrollIntoView({block: "start", inline: "nearest"});
-          break;
+        break;
       }
     }
+    // account for global override keys
+    switch (e.key) {
+      case "!":
+      case "/":
+      case "\\":
+      case ">":
+      case "<":
+      case "?":
+        // support variations on "slash" and developer commands that should interpret as same thing
+        if (e.key === "\\" && this.like == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        }
+        else if (e.key === "!" && this.like == "") {
+          this.commandContext = "/";
+          e.preventDefault();
+        }
+        else if (e.key === "<" && this.like == "") {
+          this.commandContext = ">";
+          e.preventDefault();
+        }
+        else if (this.like == ""){
+          this.commandContext = e.key;
+          e.preventDefault();
+        }
+      break;
+      case "Backspace":
+        // use this to back out of a program context
+        if (this.programSearch == "" && this.programName) {
+          // run this to unset the program context
+          this.dispatchEvent(new CustomEvent("super-daemon-run-program", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: false
+          }));
+          e.preventDefault();
+        }
+        else if (!this.programName && this.like == "" && this.commandContext) {
+          this.commandContext = "*";
+          e.preventDefault();
+        }
+      break;
+    }
+  }
+
+  getActiveTitle(context) {
+    switch(context) {
+      case "/":
+        return this.t.slashCommandsActive;
+      case ">":
+        return this.t.developerConsoleActive;
+      case "?":
+        return this.t.helpActive;
+    }
+    return "";
+  }
+
+  getActiveIcon(context) {
+    switch(context) {
+      case "/":
+        return "hax:slash";
+      case ">":
+        return "hax:console-line";
+      case "?":
+        return "icons:help";
+    }
+    return "";
   }
 
   render() {
     return html`
       <div class="search">
-        ${this.slashCommandContext ? html`<simple-icon-lite title="slash command active" icon="hax:slash" class="slash-icon"></simple-icon-lite>` : ``}
-        <simple-fields-field
+      ${this.commandContext != "*" ? html`<simple-icon-lite title="${this.getActiveTitle(this.commandContext)}" icon="${this.getActiveIcon(this.commandContext)}" class="user-context-icon"></simple-icon-lite>` : ``}
+      ${this.programName ? html`<span class="program">${this.programName}</span>`: ``}
+      <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           @keydown="${this._inputKeydown}"
@@ -279,7 +381,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
       </div>
-      <div class="results" @keydown="${this._resultsKeydown}">
+      <div class="results" @keydown="${this._resultsKeydown}" @super-daemon-row-selected="${this.itemSelected}">
       ${this.filtered.length === 0 ? html`<div class="no-results">${this.t.noResultsForThisTerm}</div>` : html`
           ${this.filtered.map(
             (item, i) => html`

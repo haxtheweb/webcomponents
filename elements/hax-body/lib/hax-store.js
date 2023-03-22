@@ -1972,6 +1972,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       basePath: import.meta.url + "/../../",
       locales: ["es"],
     });
+    this.appSearch = null;
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
@@ -3102,6 +3103,70 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       e.detail.index = this.appList.length;
       this.appList = [...this.appList, e.detail];
       this.write("appList", toJS(this.appList), this);
+      // slash command context
+      SuperDaemonInstance.defineOption({
+        title: "Search " + e.detail.details.title,
+        icon: e.detail.details.icon,
+        tags: ["Search", ...e.detail.details.tags],
+        value: {
+          name: "Search " + e.detail.details.title,
+          context: "/",
+          index: e.detail.index,
+          detail: e.detail,
+          program: async (input, values) => {
+            const t1 = toJS(HAXStore.activeApp);
+            const t2 = toJS(HAXStore.appList[values.index]);
+            if (t1.index != t2.index) {
+              HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
+            }
+            let queryParam = Object.keys(values.detail.connection.operations.browse.search)[0]
+            let searchDataMap = { detail: {}};
+            searchDataMap.detail[queryParam] = input;
+            HAXStore.appSearch._searchValuesChanged(searchDataMap);
+            let data = await HAXStore.appSearch.loadAppData();
+            let results = [];
+            await data.forEach(async (item) => {
+              var map = item.map;
+              var gizmoType = item.type;
+              // sanity check as well as guessing based on type if we absolutely have to
+              if (
+                (!gizmoType ||
+                  gizmoType == null ||
+                  gizmoType == "" ||
+                  gizmoType == "undefined") &&
+                map.source
+              ) {
+                gizmoType = HAXStore.guessGizmoType(map);
+              }
+              let haxElements = HAXStore.guessGizmo(gizmoType, map, false, true);
+              // see if we got anything
+              if (haxElements.length > 0) {
+                if (typeof haxElements[0].tag !== typeof undefined) {
+                  haxElements[0].nextToActive = true;
+                }
+              }
+              results.push({
+                title: item.title,
+                icon: "account-balance",
+                image: item.image,
+                tags: [],
+                value: {
+                  value: haxElements[0].tag,
+                  eventName: "insert-tag",
+                  properties: haxElements[0].properties,
+                },
+                context: ["/" + e.detail.details.title.toLowerCase()],
+                eventName: "hax-super-daemon-insert-tag",
+                path: "/" + e.detail.details.title.toLowerCase(),
+              });
+            });
+            return results;
+          }
+        },
+        context: ["HAX"],
+        eventName: "super-daemon-run-program",
+        path: "/" + e.detail.details.title.toLowerCase(),
+      });
       // preconnect apps at registration time
       if (
         e.detail.connection &&
@@ -3613,7 +3678,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                 eventName: "insert-tag",
                 demoSchema: true,
               },
-              context: "HAX",
+              context: ["HAX"],
               eventName: "hax-super-daemon-insert-tag",
               path: "HAX/insert/block/" + gizmo.tag,
             });

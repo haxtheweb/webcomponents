@@ -370,7 +370,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.allowedCallback = () => {
       return true;
     };
-    SuperDaemonInstance.context = "CMS";
+    SuperDaemonInstance.appendContext("CMS");
     window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
     if (HAXStore.ready) {
       let s = document.createElement("site-remote-content");
@@ -972,6 +972,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this,
         method: "_logout"
       },
+      context: ["logged-in","CMS"],
       eventName: "super-daemon-element-method",
       path: "CMS/user/logout",
     });
@@ -1521,11 +1522,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (newValue) {
       this.__editIcon = "icons:save";
       this.__editText = this.t.savePageContent;
-      SuperDaemonInstance.context = "HAX";
+      SuperDaemonInstance.appendContext("HAX");
+      SuperDaemonInstance.removeContext("CMS");
     } else {
       this.__editIcon = "hax:page-edit";
       this.__editText = this.t.editPageContent;
-      SuperDaemonInstance.context = "CMS";
+      SuperDaemonInstance.appendContext("CMS");
+      SuperDaemonInstance.removeContext("HAX");
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

@@ -169,20 +169,35 @@ export class SuperDaemonRow extends LitElement {
   selected() {
     // execute the event
     this.dispatchEvent(
+      new CustomEvent("super-daemon-row-selected", {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: this,
+      })
+    );
+    this.dispatchEvent(
       new CustomEvent(this.eventName, {
         composed: true,
         bubbles: true,
+        cancelable: true,
         detail: this.value,
       })
     );
-    // close dialog bc we executed that command
-    this.dispatchEvent(
-      new CustomEvent("super-daemon-close", {
-        composed: true,
-        bubbles: true,
-        detail: true,
-      })
-    );
+    // programs will run in the same window so we don't want to close the dialog
+    // as every non-program running a single command would have to declare
+    // when it wanted the dialog closed so we just do it automatically
+    if (this.eventName !== "super-daemon-run-program") {
+      // close dialog bc we executed that command
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-close", {
+          composed: true,
+          bubbles: true,
+          cancelable: true,
+          detail: this,
+        })
+      );
+    }
   }
   _focusIn(e) {
     this.active = true;

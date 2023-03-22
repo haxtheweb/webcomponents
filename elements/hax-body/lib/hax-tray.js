@@ -892,6 +892,10 @@ class HaxTray extends I18NMixin(
           // or a baseline if we didn't have a demonstration schema supplied
           let properties = JSON.parse(target.getAttribute("event-properties"));
           let innerContent = target.getAttribute("event-content");
+          // allow event to have supplied this
+          if (e.detail.properties) {
+            properties = e.detail.properties;
+          }
           if (properties == null) {
             properties = {};
           }

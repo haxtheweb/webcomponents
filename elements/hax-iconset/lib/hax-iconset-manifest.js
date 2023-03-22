@@ -60,6 +60,7 @@ export const HaxIconsetManifest = [
       "calendar",
       "clipboard-pulse",
       "code-json",
+      "console-line",
       "delete-restore",
       "duplicate",
       "expand-more",

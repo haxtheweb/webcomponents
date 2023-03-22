@@ -273,9 +273,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "activeApp") {
-        this._activeAppChanged(this[propName], oldValue);
-      }
       if (propName == "filtered") {
         this.requestUpdate();
       }
