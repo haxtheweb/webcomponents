@@ -3144,7 +3144,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                   eventName: "insert-tag",
                   properties: haxElements[0].properties,
                 },
-                context: ["/sources/" + app.details.title.toLowerCase()],
+                context: ["/", "/sources/" + app.details.title.toLowerCase()],
                 eventName: "hax-super-daemon-insert-tag",
                 path: "/sources/" + app.details.title.toLowerCase(),
               });
@@ -3152,7 +3152,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             return results;
           }
         },
-        context: ["HAX"],
+        context: ["HAX", "/"],
         eventName: "super-daemon-run-program",
         path: "/sources/" + app.details.title.toLowerCase(),
       });

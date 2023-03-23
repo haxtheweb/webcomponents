@@ -273,8 +273,11 @@ class SuperDaemon extends LitElement {
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 1000);
           min-width: 280px;
-          margin-top: -42px;
+        }
+        absolute-position-behavior super-daemon-ui {
+          margin-top: -28px;
           background-color: white;
+          width: 400px;
         }
       `,
     ];
@@ -333,16 +336,11 @@ class SuperDaemon extends LitElement {
     this.opened = true;
     const wd = this.shadowRoot.querySelector("web-dialog");
     // modal mode kills off the ability to close the dialog
-    if (this.modal) {
-      wd.$backdrop.removeEventListener("click", wd.onBackdropClick);
-      wd.removeEventListener("keydown", wd.onKeyDown, { capture: true });
-    } else {
-      wd.$backdrop.addEventListener("click", wd.onBackdropClick);
-      wd.addEventListener("keydown", wd.onKeyDown, {
-        capture: true,
-        passive: true,
-      });
-    }
+    wd.$backdrop.addEventListener("click", wd.onBackdropClick);
+    wd.addEventListener("keydown", wd.onKeyDown, {
+      capture: true,
+      passive: true,
+    });
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
@@ -360,14 +358,16 @@ class SuperDaemon extends LitElement {
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.right = 0;
     }
-    this.shadowRoot
+    setTimeout(() => {
+      this.shadowRoot
       .querySelector("super-daemon-ui")
       .shadowRoot.querySelector("simple-fields-field")
       .focus();
-    this.shadowRoot
+      this.shadowRoot
       .querySelector("super-daemon-ui")
       .shadowRoot.querySelector("simple-fields-field")
       .select();
+    }, 0);
   }
   focusout(e) {
     let parent = e.relatedTarget;
@@ -405,7 +405,6 @@ class SuperDaemon extends LitElement {
   render() {
     return html`${this.mini ? html`
     <absolute-position-behavior
-        fit-to-visible-bounds
         justify
         position="bottom"
         allow-overlap

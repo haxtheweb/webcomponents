@@ -482,7 +482,6 @@ export const HaxTrayDetail = [
     #toggle-tray-size {
       color: var(--hax-ui-background-color);
       background-color: var(--hax-ui-color-accent);
-      outline: 1px solid var(--hax-ui-color-accent);
       --simple-icon-button-border: 0px solid transparent;
       --simple-icon-button-border-radius: var(--hax-ui-border-radius);
       width: 24px;

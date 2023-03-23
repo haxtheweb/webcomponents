@@ -121,7 +121,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             composed: true,
             detail: {
               title: item.title,
-              icon: "page",
+              icon: "link",
               tags: ["CMS", "page", "navigation"],
               value: {
                 target: this,

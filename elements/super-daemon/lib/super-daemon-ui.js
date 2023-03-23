@@ -75,6 +75,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           --simple-icon-height: 50px;
           --simple-icon-width: 30px;
         }
+        :host([mini]) .search .user-context-icon {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+          margin-top: 0px;
+        }
         .loading {
           font-size: 24px;
           font-family: "Roboto Mono", monospace;
@@ -98,6 +103,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           font-size: 10px;
           width: 100%;
           max-width: 100px;
+        }
+        :host([mini]) .program {
+          line-height: 12px;
+          font-size: 10px;
+          max-width: 50px;
+          height: 24px;
+          margin: 0;
+          padding: 2px;
         }
         .results-stats {
           right: 0;
@@ -131,6 +144,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           box-shadow: none;
           outline: 0px;
         }
+        :host([mini]) .no-results {
+          font-size: 14px;
+          margin: 8px auto;
+          line-height: 14px;
+        }
         simple-fields-field {
           line-height: 40px;
           padding: 8px;
@@ -139,6 +157,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           font-family: inherit;
           width: 100%;
           margin: 0px;
+        }
+        :host([mini]) simple-fields-field::part(option-input) {
+          font-size: 12px; 
         }
         simple-fields-field::part(option-input) {
           padding: 0px 2px;
@@ -207,13 +228,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         }
         :host([mini]) super-daemon-row {
           --super-daemon-row-icon: 24px;
+          border-radius: 0px;
         }
         :host([mini]) .results-stats {
           display: none;
         }
-        :host([mini]) {
-          max-width: 50vw;
-          max-height: 40vh;
+        :host([mini]) .results {
+          padding: 4px 0px;
+          max-height: unset;
+          min-height: unset;
+          height: 200px;
+        }
+        :host([mini]) .search .icon {
+          display: none;
         }
       `,
     ];
@@ -421,7 +448,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
                 event-name="${item.eventName}"
                 path="${item.path}"
                 key="${item.key}"
-                ?more="${item.more}"
+                ?more="${item.more && !this.mini}"
+                ?mini="${this.mini}"
               >${item.more ? item.more : nothing}</super-daemon-row>
             `
           )}

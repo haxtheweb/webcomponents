@@ -31,6 +31,7 @@ export class SuperDaemonRow extends LitElement {
       title: { type: String },
       path: { type: String },
       icon: { type: String },
+      mini: { type: Boolean, reflect: true },
       image: { type: String },
       more: { type: Boolean },
       showDetails: { type: Boolean },
@@ -63,6 +64,11 @@ export class SuperDaemonRow extends LitElement {
           );
           outline: 2px solid black;
         }
+        :host([mini]) {
+          margin: 0;
+          --super-daemon-row-label: 18px;
+          --super-daemon-row-path: 10px;
+        }
         button {
           display: flex;
           padding: 16px;
@@ -73,20 +79,36 @@ export class SuperDaemonRow extends LitElement {
           justify-content: space-between;
           background-color: transparent;
         }
+        :host([mini]) button {
+          padding: 4px;
+          justify-content: flex-start;
+        }
         .result-icon {
           display: inline-flex;
           --simple-icon-height: var(--super-daemon-row-icon, 50px);
           --simple-icon-width: var(--super-daemon-row-icon, 50px);
+        }
+        :host([mini]) .result-icon {
+          --simple-icon-height: var(--super-daemon-row-icon, 20px);
+          --simple-icon-width: var(--super-daemon-row-icon, 20px);
         }
         .result-image {
           display: inline-flex;
           max-height: 64px;
           max-width: 100px;
         }
+        :host([mini]) .result-image {
+          max-height: 32px;
+          max-width: 50px;
+        }
         .label-wrap {
           min-width: 50%;
           overflow: hidden;
           text-align: left;
+        }
+        :host([mini]) .label-wrap {
+          width: 100%;
+          margin-left: 16px;
         }
         .tags {
           width: 30%;
@@ -94,28 +116,40 @@ export class SuperDaemonRow extends LitElement {
           height: 64px;
           overflow: hidden;
         }
+        :host([mini]) .tags {
+          display: none;
+        }
         .label-wrap .action {
-          font-size: 32px;
+          font-size: var(--super-daemon-row-label, 32px);
           font-weight: bold;
           max-width: 90%;
           word-break: break-all;
           overflow: hidden;
-          line-height: 32px;
-          height: 32px;
+          line-height: var(--super-daemon-row-label, 32px);
+          height: var(--super-daemon-row-label, 32px);
+        }
+        :host([mini]) .label-wrap .action {
+          max-width: unset;
         }
         .label-wrap .path {
-          font-size: 20px;
+          font-size: var(--super-daemon-row-path, 20px);
           font-style: italic;
           margin-top: 8px;
           overflow-wrap: break-word;
           word-break: break-all;
           overflow: hidden;
           max-width: 80%;
-          line-height: 20px;
-          height: 20px;
+          line-height: var(--super-daemon-row-path, 20px);
+          height: var(--super-daemon-row-path, 20px);
+        }
+        :host([mini]) .label-wrap .path {
+          max-width: unset;
         }
         .key-combo {
           height: 64px;
+        }
+        :host([mini]) .key-combo {
+          display: none;
         }
         .keyboard-shortcut {
           background-color: rgba(0, 0, 0, 0.1);

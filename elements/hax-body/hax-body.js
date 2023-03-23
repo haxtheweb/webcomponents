@@ -1146,16 +1146,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this._useristyping = true;
               break;
             case "/":
-              if (this.activeNode &&
-                  this.activeNode.tagName === "P") {
-                    setTimeout(() => {
-                      if (["/",">"].includes(this.activeNode.textContent[0])) {
-                        SuperDaemonInstance.mini = true;
-                        SuperDaemonInstance.activeNode = this.activeNode;
-                        SuperDaemonInstance.runProgram(this.activeNode.textContent[0], {}, null, null, null, this.activeNode.textContent);
-                        SuperDaemonInstance.open();
-                      }
-                    }, 100);
+            case "!":
+            case ">":
+              if (this.activeNode && this.activeNode.tagName === "P" && this.activeNode.textContent.trim() == '') {
+                e.preventDefault();
+                SuperDaemonInstance.mini = true;
+                SuperDaemonInstance.activeNode = this.activeNode;
+                SuperDaemonInstance.runProgram('*', {}, null, null, null, this.activeNode.textContent);
+                SuperDaemonInstance.open();
               }
             break;
             case "ArrowUp":

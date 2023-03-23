@@ -82,7 +82,7 @@ class HaxTray extends I18NMixin(
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
       merlin: "Merlin",
-      haxCommandWizard: "HAX Command Wizard",
+      summonMerlin: "Summon Merlin",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -763,7 +763,7 @@ class HaxTray extends I18NMixin(
         toggles
         ?toggled="${!this.collapsed && this.tourOpened}"
         icon-position="left"
-        tooltip="${this.t.haxCommandWizard}"
+        tooltip="${this.t.summonMerlin}"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
@@ -778,14 +778,6 @@ class HaxTray extends I18NMixin(
       selected-detail="${this.trayDetail}"
     >
       <div class="tray-detail-titlebar">
-        <hax-tray-button
-          voice-command="collapse menu"
-          id="toggle-tray-size"
-          event-name="toggle-tray-size"
-          icon="close"
-          label="${this.t.close}"
-        >
-        </hax-tray-button>
         <h4>${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}</h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
