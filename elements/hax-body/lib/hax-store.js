@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, nothing } from "lit";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
   winEventsElement,
@@ -2443,13 +2443,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     let p = {
       type: "element",
       editingElement: "core",
-      // comment back in when ready to keep cleaning up shadowRoot resolution of focus
-      /*editingElement: {
-        tag: "simple-autocomplete-text-trigger",
-        import:
-          "@lrnwebcomponents/simple-autocomplete/lib/simple-autocomplete-text-trigger.js",
-        callback: this.setupAutocomplete.bind(this),
-      },*/
       canScale: false,
       canPosition: false,
       canEditSource: true,
@@ -2824,25 +2817,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     }, 0);
   }
   /**
-   * set up the autocomplete contextual settings
-   */
-  setupAutocomplete(editor) {
-    editor.triggers = {
-      "!": (el) => {
-        let triggers = [];
-        this.gizmoList.forEach((item) => {
-          triggers.push({
-            tags: item.tags && item.tags.length ? item.tags.join(" ") : "",
-            icon: item.icon,
-            label: item.title,
-            value: item.tag,
-          });
-        });
-        return triggers;
-      },
-    };
-  }
-  /**
    * Insert content in the body.
    */
   async _haxStoreInsertContent(e) {
@@ -3100,19 +3074,35 @@ Window size: ${window.innerWidth}x${window.innerHeight}
    */
   _haxStoreRegisterApp(e) {
     if (e.detail) {
-      e.detail.index = this.appList.length;
-      this.appList = [...this.appList, e.detail];
+      const app = e.detail;
+      app.index = this.appList.length;
+      this.appList = [...this.appList, app];
       this.write("appList", toJS(this.appList), this);
       // slash command context
       SuperDaemonInstance.defineOption({
-        title: "Search " + e.detail.details.title,
-        icon: e.detail.details.icon,
-        tags: ["Search", ...e.detail.details.tags],
+        title: "Search " + app.details.title,
+        icon: app.details.icon,
+        tags: ["Search", ...app.details.tags],
+        more: (app.details.tos && app.details.tos.length > 0) ? html`<div class="tos-text">Terms of service:</div>
+        <ul class="tos-text">
+          ${app.details.tos.map((item) => {
+            return html`
+              <li>
+                <a
+                  href="${item.link}"
+                  target="_blank"
+                  rel="noopener nofollow noreferrer"
+                  >${item.title}</a
+                >
+              </li>
+            `;
+          })}
+        </ul>` : null,
         value: {
-          name: "Search " + e.detail.details.title,
+          name: "Search " + app.details.title,
           context: "/",
-          index: e.detail.index,
-          detail: e.detail,
+          index: app.index,
+          detail: app,
           program: async (input, values) => {
             const t1 = toJS(HAXStore.activeApp);
             const t2 = toJS(HAXStore.appList[values.index]);
@@ -3120,9 +3110,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
             }
             let queryParam = Object.keys(values.detail.connection.operations.browse.search)[0]
-            let searchDataMap = { detail: {}};
-            searchDataMap.detail[queryParam] = input;
-            HAXStore.appSearch._searchValuesChanged(searchDataMap);
+            let searchDataMap = {};
+            searchDataMap[queryParam] = input;
+            HAXStore.appSearch.updateSearchValues(searchDataMap);
             let data = await HAXStore.appSearch.loadAppData();
             let results = [];
             await data.forEach(async (item) => {
@@ -3147,7 +3137,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               }
               results.push({
                 title: item.title,
-                icon: "account-balance",
                 image: item.image,
                 tags: [],
                 value: {
@@ -3155,28 +3144,28 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                   eventName: "insert-tag",
                   properties: haxElements[0].properties,
                 },
-                context: ["/" + e.detail.details.title.toLowerCase()],
+                context: ["/sources/" + app.details.title.toLowerCase()],
                 eventName: "hax-super-daemon-insert-tag",
-                path: "/" + e.detail.details.title.toLowerCase(),
+                path: "/sources/" + app.details.title.toLowerCase(),
               });
             });
             return results;
           }
         },
-        context: ["HAX"],
+        context: ["HAX", "/"],
         eventName: "super-daemon-run-program",
-        path: "/" + e.detail.details.title.toLowerCase(),
+        path: "/sources/" + app.details.title.toLowerCase(),
       });
       // preconnect apps at registration time
       if (
-        e.detail.connection &&
-        e.detail.connection.protocol &&
-        e.detail.connection.url
+        app.connection &&
+        app.connection.protocol &&
+        app.connection.url
       ) {
         let preconnectlink = document.createElement("link");
         preconnectlink.rel = "preconnect";
         preconnectlink.href =
-          e.detail.connection.protocol + "://" + e.detail.connection.url;
+        app.connection.protocol + "://" + app.connection.url;
         document.head.appendChild(preconnectlink);
       }
       // we don't care about this after it's launched

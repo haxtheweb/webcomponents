@@ -9,6 +9,7 @@ export class SuperDaemonRow extends LitElement {
     this.title = null;
     this.path = null;
     this.icon = null;
+    this.image = null;
     this.key = null;
     this.eventName = null;
     this.more = false;
@@ -20,10 +21,6 @@ export class SuperDaemonRow extends LitElement {
       delegatesFocus: true,
     };
     this.active = false;
-    // if we have children then show more
-    if (this.innerHTML) {
-      this.more = true;
-    }
   }
   static get tag() {
     return "super-daemon-row";
@@ -34,6 +31,7 @@ export class SuperDaemonRow extends LitElement {
       title: { type: String },
       path: { type: String },
       icon: { type: String },
+      image: { type: String },
       more: { type: Boolean },
       showDetails: { type: Boolean },
       key: { type: String },
@@ -75,10 +73,15 @@ export class SuperDaemonRow extends LitElement {
           justify-content: space-between;
           background-color: transparent;
         }
-        :host simple-icon-lite {
+        .result-icon {
           display: inline-flex;
           --simple-icon-height: var(--super-daemon-row-icon, 50px);
           --simple-icon-width: var(--super-daemon-row-icon, 50px);
+        }
+        .result-image {
+          display: inline-flex;
+          max-height: 64px;
+          max-width: 100px;
         }
         .label-wrap {
           min-width: 50%;
@@ -221,7 +224,8 @@ export class SuperDaemonRow extends LitElement {
   render() {
     return html`
       <button part="button" @click="${this.clickEvent}" @keydown="${this.keyEvent}" @focusin="${this._focusIn}" @focusout="${this._focusOut}">
-        <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+      ${this.icon ? html`<simple-icon-lite icon="${this.icon}" class="result-icon"></simple-icon-lite>` : ``}
+      ${this.image ? html`<img src="${this.image}" class="result-image" alt=""/>` : ``}
         <div class="label-wrap">
           <div class="action" part="action">${this.title}</div>
           <div class="path" part="path">${this.path}</div>

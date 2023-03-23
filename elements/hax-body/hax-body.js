@@ -27,6 +27,7 @@ import "./lib/hax-plate-context.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 // our default image in core
 import "@lrnwebcomponents/media-image/media-image.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -1144,6 +1145,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "Escape":
               this._useristyping = true;
               break;
+            case "/":
+              if (this.activeNode &&
+                  this.activeNode.tagName === "P") {
+                    setTimeout(() => {
+                      if (["/",">"].includes(this.activeNode.textContent[0])) {
+                        SuperDaemonInstance.mini = true;
+                        SuperDaemonInstance.activeNode = this.activeNode;
+                        SuperDaemonInstance.runProgram(this.activeNode.textContent[0], {}, null, null, null, this.activeNode.textContent);
+                        SuperDaemonInstance.open();
+                      }
+                    }, 100);
+              }
+            break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
@@ -3241,7 +3255,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         "RICH-TEXT-EDITOR-CLIPBOARD",
         "RICH-TEXT-EDITOR-PROMPT",
         "RICH-TEXT-EDITOR-HIGHLIGHT",
-        "HAX-APP-SEARCH-RESULT",
         "FAKE-HAX-BODY-END",
       ].includes(node.tagName)
     ) {

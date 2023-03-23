@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -14,8 +14,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.t.whatAreYouLookingFor = "What are you looking for?";
     this.t.filterCommands = "Filter commands";
     this.t.commands = "Commands";
+    this.t.loadingResults = "Loading results";
     this.opened = false;
     this.items = [];
+    this.mini = false;
+    this.loading = false;
     this.programSearch = '';
     this.commandContext = "*";
     this.programName = null;
@@ -34,6 +37,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       icon: { type: String },
+      mini: { type: Boolean, reflect: true },
+      loading: { type: Boolean, reflect: true},
       programSearch: { type: String, attribute: "program-search" },
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
@@ -69,6 +74,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           display: inline-flex;
           --simple-icon-height: 50px;
           --simple-icon-width: 30px;
+        }
+        .loading {
+          font-size: 24px;
+          font-family: "Roboto Mono", monospace;
+          font-style: italic;
+          margin: 16px;
         }
         .program {
           display: inline-flex;
@@ -189,6 +200,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
             line-height: 24px;
             height: 24px;
           }
+        }
+
+        :host([mini]) {
+          background-color: white;
+        }
+        :host([mini]) super-daemon-row {
+          --super-daemon-row-icon: 24px;
+        }
+        :host([mini]) .results-stats {
+          display: none;
+        }
+        :host([mini]) {
+          max-width: 50vw;
+          max-height: 40vh;
         }
       `,
     ];
@@ -382,6 +407,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
       </div>
       <div class="results" @keydown="${this._resultsKeydown}" @super-daemon-row-selected="${this.itemSelected}">
+      ${this.loading ? html`<div class="loading">${this.t.loadingResults}..</div>` : html`
       ${this.filtered.length === 0 ? html`<div class="no-results">${this.t.noResultsForThisTerm}</div>` : html`
           ${this.filtered.map(
             (item, i) => html`
@@ -389,15 +415,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
                 data-row-index="${i}"
                 .value="${item.value}"
                 icon="${item.icon}"
+                image="${item.image}"
                 title="${item.title}"
                 .tags="${item.tags}"
                 event-name="${item.eventName}"
                 path="${item.path}"
                 key="${item.key}"
-              ></super-daemon-row>
+                ?more="${item.more}"
+              >${item.more ? item.more : nothing}</super-daemon-row>
             `
           )}
         `}
+      `}
       </div>
     `;
   }

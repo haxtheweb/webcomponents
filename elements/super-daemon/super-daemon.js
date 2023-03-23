@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
 /**
  * `super-daemon`
@@ -16,6 +17,7 @@ class SuperDaemon extends LitElement {
   static get properties() {
     return {
       opened: { type: Boolean, reflect: true },
+      loading: { type: Boolean, reflect: true },
       key1: { type: String },
       key2: { type: String },
       icon: { type: String },
@@ -28,6 +30,8 @@ class SuperDaemon extends LitElement {
       program: { type: String },
       programSearch: { type: String },
       like: { type: String },
+      mini: { type: Boolean },
+      activeNode: { type: Object },
     };
   }
   /**
@@ -35,11 +39,14 @@ class SuperDaemon extends LitElement {
    */
   constructor() {
     super();
+    this.activeNode = null; // used when in mini mode to know what to point to
     this.context = [];
     this.icon = "hardware:keyboard-return";
     this.opened = false;
     this.items = [];
+    this.loading = false;
     this.like = '';
+    this.mini = false;
     this._programValues = {};
     this.programSearch = '';
     this.allItems = [];
@@ -101,7 +108,14 @@ class SuperDaemon extends LitElement {
     if (this._programToRun) {
       this.shadowRoot.querySelector('super-daemon-ui').setupProgram();
       setTimeout(async () => {
-        this.programResults = await this._programToRun(this.programSearch, values);        
+        try {
+          this.loading = true;
+          this.programResults = await this._programToRun(this.programSearch, values);
+          this.loading = false;
+        }
+        catch(e) {
+          this.loading = false;
+        }
       }, 50);
     }
     else {
@@ -160,8 +174,16 @@ class SuperDaemon extends LitElement {
         // platform specific additional modifier
         if (this.key1 == "Ctrl" && e.ctrlKey) {
           this.opened = !this.opened;
+          // ensure we're not in mini mode if we are
+          if (this.opened) {
+            this.mini = false;
+          }
         } else if (this.key1 == "Alt" && e.altKey) {
           this.opened = !this.opened;
+          // ensure we're not in mini mode if we are
+          if (this.opened) {
+            this.mini = false;
+          }
         }
       }
       if (e.key == "Escape" && this.opened) {
@@ -229,6 +251,12 @@ class SuperDaemon extends LitElement {
           margin: 0;
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
+        }
+        absolute-position-behavior {
+          z-index: var(--simple-modal-z-index, 1000);
+          min-width: 280px;
+          margin-top: -42px;
+          background-color: white;
         }
       `,
     ];
@@ -315,11 +343,67 @@ class SuperDaemon extends LitElement {
       .shadowRoot.querySelector("simple-fields-field")
       .select();
   }
+  focusout(e) {
+    let parent = e.relatedTarget;
+    while (parent !== document.body && parent !== null) {
+      if (parent === this.shadowRoot
+        .querySelector("super-daemon-ui")) {
+        return;
+      }
+      if (parent && parent.parentElement) {
+        parent = parent.parentElement;
+      }
+      else {
+        return;
+      }
+    }
+    if (parent !== this.shadowRoot
+      .querySelector("super-daemon-ui")) {
+      setTimeout(() => {
+        if (this.opened) {
+          this.shadowRoot
+          .querySelector("super-daemon-ui")
+          .shadowRoot.querySelector("simple-fields-field")
+          .focus();
+        this.shadowRoot
+          .querySelector("super-daemon-ui")
+          .shadowRoot.querySelector("simple-fields-field")
+          .select();
+        }
+      }, 0);
+    }
+  }
   /**
    * LitElement render callback
    */
   render() {
-    return html`
+    return html`${this.mini ? html`
+    <absolute-position-behavior
+        fit-to-visible-bounds
+        justify
+        position="bottom"
+        allow-overlap
+        auto
+        sticky
+        .target="${this.activeNode}"
+        ?hidden="${!this.opened}"
+      >
+        <super-daemon-ui
+        ?open="${this.opened}"
+        ?mini="${this.mini}"
+        icon="${this.icon}"
+        ?loading="${this.loading}"
+        like="${this.like}"
+        .items="${this.itemsForDisplay(this.items, this.programResults)}"
+        command-context="${this.commandContext}"
+        program-name="${this.programName}"
+        program-search="${this.programSearch}"
+        @value-changed="${this.inputfilterChanged}"
+        @super-daemon-close="${this.close}"
+        @super-daemon-command-context-changed="${this.commandContextChanged}"
+      ></super-daemon-ui>
+    </absolute-position-behavior>
+    ` : html`
       <web-dialog
         id="dialog"
         center
@@ -330,27 +414,31 @@ class SuperDaemon extends LitElement {
         ?open="${this.opened}"
         @open="${this.open}"
         @close="${this.close}"
+        @focusout="${this.focusout}"
       >
         <super-daemon-ui
-          ?open="${this.opened}"
-          icon="${this.icon}"
-          like="${this.like}"
-          .items="${this.itemsForDisplay(this.items, this.programResults)}"
-          command-context="${this.commandContext}"
-          program-name="${this.programName}"
-          program-search="${this.programSearch}"
-          @value-changed="${this.inputfilterChanged}"
-          @super-daemon-close="${this.close}"
-          @super-daemon-command-context-changed="${this.commandContextChanged}"
-        ></super-daemon-ui>
+        ?open="${this.opened}"
+        icon="${this.icon}"
+        ?loading="${this.loading}"
+        like="${this.like}"
+        .items="${this.itemsForDisplay(this.items, this.programResults)}"
+        command-context="${this.commandContext}"
+        program-name="${this.programName}"
+        program-search="${this.programSearch}"
+        @value-changed="${this.inputfilterChanged}"
+        @super-daemon-close="${this.close}"
+        @super-daemon-command-context-changed="${this.commandContextChanged}"
+      ></super-daemon-ui>
         <simple-icon-button id="cancel" icon="cancel" @click="${this.close}"></simple-icon-button>
       </web-dialog>
+      `}
     `;
   }
-
   async inputfilterChanged(e) {
     if (e.detail.value && this.programName && this._programToRun) {
+      this.loading = true;
       this.programResults = await this._programToRun(e.detail.value, this._programValues);
+      this.loading = false;
     }
     else {
       this.programResults = [];

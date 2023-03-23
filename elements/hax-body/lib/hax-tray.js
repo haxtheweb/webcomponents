@@ -22,7 +22,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-tray-upload.js";
-import "./hax-app-browser.js";
+import "./hax-app-search.js";
 import "./hax-gizmo-browser.js";
 import "./hax-gizmo-browser.js";
 import "./hax-view-source.js";
@@ -363,12 +363,10 @@ class HaxTray extends I18NMixin(
           padding: 0;
         }
         hax-tray-button,
-        hax-app-browser,
         hax-gizmo-browser {
           visibility: visible;
         }
         hax-tray-button:not(:defined),
-        hax-app-browser:not(:defined),
         hax-gizmo-browser:not(:defined) {
           visibility: hidden;
         }
@@ -671,20 +669,18 @@ class HaxTray extends I18NMixin(
         </div>
       </hax-tray-button>
       <hax-tray-button
-        event-name="media-add"
         icon="image:collections"
-        id="media-add"
         label="${this.t.media}"
         voice-command="select media (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
         toggles
-        ?toggled="${!this.collapsed && this.trayDetail === "media-add"}"
         icon-position="left"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
+        @click="${this._clickMediaButton}"
       >
         <div slot="tour" data-stop-content>
           Search for media and content anywhere that your copy of HAX has access
@@ -714,6 +710,10 @@ class HaxTray extends I18NMixin(
           overview stats.
         </div>
       </hax-tray-button>`;
+  }
+  _clickMediaButton(e) {
+    SuperDaemonInstance.runProgram("/", {}, null, null, '', "sources");
+    SuperDaemonInstance.open();
   }
   get moreButtons() {
     return html`<hax-tray-button
@@ -790,7 +790,7 @@ class HaxTray extends I18NMixin(
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
-      ${this.contentAddTemplate} ${this.mediaTemplate}
+      ${this.contentAddTemplate}
     </div>`;
   }
   get viewSourceTemplate() {
@@ -819,6 +819,7 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
+      <hax-tray-upload ?hidden="${hidden}"></hax-tray-upload>
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
@@ -828,6 +829,7 @@ class HaxTray extends I18NMixin(
         ?hidden="${hidden}"
         label="${this.t.templates}"
       ></hax-stax-browser>
+      <hax-app-search ?hidden="${hidden}" id="haxappsearch"></hax-app-search>
     </div>`;
   }
   get contentMapTemplate() {
@@ -835,12 +837,6 @@ class HaxTray extends I18NMixin(
       controls="content-map"
       ?hidden="${this.trayDetail !== "content-map"}"
     ></hax-map>`;
-  }
-  get mediaTemplate() {
-    let hidden = this.trayDetail !== "media-add";
-    return html` <hax-tray-upload ?hidden="${hidden}"></hax-tray-upload>
-      <h5 ?hidden="${hidden}">${this.t.search}</h5>
-      <hax-app-browser id="appbrowser" ?hidden="${hidden}"></hax-app-browser>`;
   }
 
   _refreshAddData() {
@@ -949,10 +945,6 @@ class HaxTray extends I18NMixin(
         this.collapsed = false;
         break;
       case "content-add":
-        this.trayDetail = e.detail.eventName;
-        this.collapsed = false;
-        break;
-      case "media-add":
         this.trayDetail = e.detail.eventName;
         this.collapsed = false;
         break;
@@ -1177,18 +1169,6 @@ class HaxTray extends I18NMixin(
             command:
               ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
             context: this.shadowRoot.querySelector("#advanced-settings"),
-            callback: "click",
-          },
-        })
-      );
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) search (menu)",
-            context: this.shadowRoot.querySelector("#media-add"),
             callback: "click",
           },
         })
@@ -1546,8 +1526,6 @@ class HaxTray extends I18NMixin(
     if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
-    } else if (newValue == "media-add") {
-      this.trayLabel = this.t.media;
     } else if (newValue == "content-map") {
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();

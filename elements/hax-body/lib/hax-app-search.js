@@ -19,57 +19,7 @@ class HaxAppSearch extends LitElement {
     return [
       css`
         :host {
-          display: block;
-        }
-        hexagon-loader {
           display: none;
-          margin: 0 auto;
-          z-index: 1000;
-          --hexagon-color: var(--hax-ui-color-accent);
-        }
-        hexagon-loader[loading] {
-          display: block;
-          opacity: 0.8;
-        }
-        .card-content {
-          padding: 0;
-        }
-        .card-content p {
-          padding: 0;
-          margin: 0;
-        }
-        #itemlist {
-          min-height: 172px;
-          text-align: center;
-          align-items: center;
-        }
-        hax-app-search-inputs {
-          min-height: 80px;
-          padding: 0;
-        }
-        hax-app-pagination {
-          min-height: 32px;
-          font-size: var(--hax-ui-font-size-sm);
-          display: none;
-          justify-content: flex-end;
-          justify-content: center;
-        }
-        .tos-text {
-          font-size: var(--hax-ui-font-size-sm);
-        }
-        .tos-text ul {
-          padding: 0;
-          margin: 0;
-        }
-        .tos-text a {
-          font-size: var(--hax-ui-font-size-sm);
-          color: var(--hax-ui-color-accent);
-          text-decoration: underline;
-        }
-        .tos-text a:hover,
-        .tos-text a:focus,
-        .tos-text a:active {
-          outline: 2px solid var(--hax-ui-color-accent);
         }
       `,
     ];
@@ -82,76 +32,13 @@ class HaxAppSearch extends LitElement {
     this.loading = false;
     this.requestData = {};
     this.media = [];
-    this.tos = [];
     this.resultMap = {};
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-    import("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
     autorun(() => {
       if (HAXStore.editMode) {
         this.activeApp = toJS(HAXStore.activeApp);
       }
     });
     HAXStore.appSearch = this;
-  }
-  /**
-   * LitElement life cycle - render callback
-   */
-  render() {
-    return html`
-      ${this.tos.length > 0
-        ? html`
-            <div class="tos-text">Terms of service:</div>
-            <ul class="tos-text">
-              ${this.tos.map((item) => {
-                return html`
-                  <li>
-                    <a
-                      href="${item.link}"
-                      target="_blank"
-                      rel="noopener nofollow noreferrer"
-                      >${item.title}</a
-                    >
-                  </li>
-                `;
-              })}
-            </ul>
-          `
-        : ``}
-      <hax-app-search-inputs
-        id="searchinput"
-        .label="${this.label}"
-        .schema="${this.searchSchema}"
-        @search-values-changed="${this._searchValuesChanged}"
-      ></hax-app-search-inputs>
-      <hexagon-loader
-        size="medium"
-        item-count="4"
-        ?loading="${this.loading}"
-        aria-roledescription="Loading"
-      ></hexagon-loader>
-      <simple-button-grid
-        class="${this.searching ? "collapse-hide" : ""}"
-        always-expanded
-        columns="2"
-      >
-        ${this.media.map(
-          (resultData) => html`
-            <hax-app-search-result
-              image="${resultData.image}"
-              title="${resultData.title}"
-              details="${resultData.details}"
-              .map="${resultData.map}"
-              type="${resultData.type}"
-            ></hax-app-search-result>
-          `
-        )}
-      </simple-button-grid>
-    `;
   }
   /**
    * generate appstore query
@@ -324,15 +211,13 @@ class HaxAppSearch extends LitElement {
       },
     };
   }
-  /**
-   * Search input was added.
-   */
-  _searchValuesChanged(e) {
+
+  updateSearchValues(values) {
     let requestParams = this.requestParams;
-    for (let property in e.detail) {
+    for (let property in values) {
       // dont send empty params in the request
-      if (e.detail[property] != "") {
-        requestParams[property] = e.detail[property];
+      if (values[property] != "") {
+        requestParams[property] = values[property];
       }
     }
     this.requestParams = { ...this.requestParams };
@@ -343,17 +228,8 @@ class HaxAppSearch extends LitElement {
    */
   _resetAppSearch(newValue) {
     if (newValue && newValue.details) {
-      console.log('reset');
       let app = newValue;
       var requestParams = {};
-      this.label = app.details.title;
-      // support presenting ToS links for legacy reasons
-      if (app.details.tos && app.details.tos.length > 0) {
-        this.tos = [...app.details.tos];
-      } else {
-        this.tos = [];
-      }
-      this.label = app.details.title;
       // disable auto for a moment while we switch inputs
       this.auto = false;
       this.media = [];
