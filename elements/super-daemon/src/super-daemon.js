@@ -40,8 +40,8 @@ class SuperDaemon extends LitElement {
   constructor() {
     super();
     this.activeNode = null; // used when in mini mode to know what to point to
-    this.context = [];
     this.icon = "hardware:keyboard-return";
+    this.context = [];
     this.opened = false;
     this.items = [];
     this.loading = false;
@@ -74,6 +74,10 @@ class SuperDaemon extends LitElement {
       this.elementMethod.bind(this)
     );
     window.addEventListener(
+      "super-daemon-element-click",
+      this.elementClick.bind(this)
+    );
+    window.addEventListener(
       "super-daemon-run-program",
       this.runProgramEvent.bind(this)
     );
@@ -88,6 +92,10 @@ class SuperDaemon extends LitElement {
     window.removeEventListener(
       "super-daemon-element-method",
       this.elementMethod.bind(this)
+    );
+    window.removeEventListener(
+      "super-daemon-element-click",
+      this.elementClick.bind(this)
     );
     window.removeEventListener(
       "super-daemon-run-program",
@@ -144,6 +152,16 @@ class SuperDaemon extends LitElement {
         data.args = [];
       }
       data.target[data.method](...data.args);
+    }
+  }
+  // allow generating an event on a target
+  elementClick(e) {
+    if (e.detail) {
+      e.detail.target.dispatchEvent(new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      }));
     }
   }
   // take in via event
@@ -266,6 +284,14 @@ class SuperDaemon extends LitElement {
    */
   close(e) {
     this.opened = false;
+    this.loading = false;
+    this.like = '';
+    this.mini = false;
+    this._programValues = {};
+    this.programSearch = '';
+    this.programResults = [];
+    this.programName = null;
+    this.commandContext = "*";
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")

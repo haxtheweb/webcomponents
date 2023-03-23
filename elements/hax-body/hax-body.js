@@ -2772,16 +2772,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // scroll to it w/ timing delay as this uses resources
     // and we want to ensure it's in the next micro-task
     setTimeout(() => {
-      if (typeof node.scrollIntoViewIfNeeded === "function") {
-        node.scrollIntoViewIfNeeded(false);
-      } else {
-        node.scrollIntoView({
+      node.scrollIntoView({
           behavior: "smooth",
-          inline: "center",
-          block: "nearest",
+          inline: "nearest",
+          block: "end",
         });
-      }
-    }, 0);
+    }, 100);
   }
   undo() {
     super.undo();

@@ -3152,7 +3152,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             return results;
           }
         },
-        context: ["HAX", "/"],
+        context: ["HAX"],
         eventName: "super-daemon-run-program",
         path: "/sources/" + app.details.title.toLowerCase(),
       });

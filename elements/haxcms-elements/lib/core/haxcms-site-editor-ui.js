@@ -437,6 +437,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelEditing: "Cancel editing",
       editDetails: "Page details",
       addPage: "Add page",
+      addChildPage: "Add child page",
+      duplicatePage: "Duplicate page",
+      importDocxFile: "Import docx file",
       deletePage: "Delete page",
       shareSite: "Share site",
       closeSiteSettings: "Close site settings",
@@ -590,6 +593,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 show-text-label
                 id="addbutton"
                 show-text-label
+                data-super-daemon-label="${this.t.addPage}"
+                data-super-daemon-icon="hax:add-page"
+                data-super-daemon-path="CMS/action/create/page"
               >
               </haxcms-button-add>
             </simple-toolbar-menu-item>
@@ -600,6 +606,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 id="addbuttonchild"
                 type="child"
                 show-text-label
+                data-super-daemon-path="CMS/action/create/child"
+                data-super-daemon-label="${this.t.addChildPage}"
+                data-super-daemon-icon="hax:add-child-page"
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
@@ -609,6 +618,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 type="duplicate"
                 id="duplicatebutton"
                 show-text-label
+                data-super-daemon-path="CMS/action/create/duplicate"
+                data-super-daemon-label="${this.t.duplicatePage}"
+                data-super-daemon-icon="hax:duplicate"
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
@@ -618,6 +630,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 type="docximport"
                 id="docximport"
                 show-text-label
+                data-super-daemon-path="CMS/action/import/docx"
+                data-super-daemon-label="${this.t.importDocxFile}"
+                data-super-daemon-icon="hax:file-docx"
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
@@ -891,6 +906,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.shadowRoot.querySelectorAll('[data-super-daemon-path]').forEach((item) => {
+      SuperDaemonInstance.defineOption({
+        title: item.getAttribute('data-super-daemon-label'),
+        icon: item.getAttribute('data-super-daemon-icon'),
+        tags: ["page", "operation", "command", "add", "create"],
+        value: {
+          target: item,
+        },
+        context: "CMS",
+        eventName: "super-daemon-element-click",
+        path: item.getAttribute('data-super-daemon-path'),
+      });
+    });
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.savePageContent,
@@ -994,10 +1022,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "av:volume-up",
       tags: ["CMS", "sound"],
       value: {
-        target: this,
-        method: "soundToggle"
+        target: this.shadowRoot.querySelector('.soundToggle'),
       },
-      eventName: "super-daemon-element-method",
+      eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
     });
 
@@ -1006,10 +1033,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "hax:site-map",
       tags: ["CMS", "outline", "designer", "site outline", "operation", "command"],
       value: {
-        target: this,
-        method: "_outlineButtonTap"
+        target: this.shadowRoot.querySelector('#outlinebutton'),
       },
-      eventName: "super-daemon-element-method",
+      eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
     });    
     
