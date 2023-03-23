@@ -6,6 +6,10 @@
       "path": "./lib/super-daemon-row.js",
       "attributes": [
         {
+          "name": "mini",
+          "type": "boolean"
+        },
+        {
           "name": "title",
           "type": "string"
         },
@@ -18,12 +22,26 @@
           "type": "string"
         },
         {
+          "name": "image",
+          "type": "string"
+        },
+        {
           "name": "key",
           "type": "string"
         },
         {
           "name": "event-name",
           "type": "string"
+        },
+        {
+          "name": "more",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showDetails",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "value",
@@ -34,9 +52,19 @@
           "name": "tags",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
+        {
+          "name": "mini",
+          "attribute": "mini",
+          "type": "boolean"
+        },
         {
           "name": "title",
           "attribute": "title",
@@ -53,6 +81,11 @@
           "type": "string"
         },
         {
+          "name": "image",
+          "attribute": "image",
+          "type": "string"
+        },
+        {
           "name": "key",
           "attribute": "key",
           "type": "string"
@@ -61,6 +94,18 @@
           "name": "eventName",
           "attribute": "event-name",
           "type": "string"
+        },
+        {
+          "name": "more",
+          "attribute": "more",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showDetails",
+          "attribute": "showDetails",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "value",
@@ -78,9 +123,18 @@
           "name": "shadowRootOptions",
           "type": "object",
           "default": "{\"delegatesFocus\":true}"
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
+        {
+          "name": "super-daemon-row-selected"
+        },
         {
           "name": "super-daemon-close"
         }
@@ -90,6 +144,35 @@
       "name": "super-daemon-ui",
       "path": "./lib/super-daemon-ui.js",
       "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "program-search",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "command-context",
+          "type": "string",
+          "default": "\"*\""
+        },
+        {
+          "name": "program-name",
+          "type": "string"
+        },
         {
           "name": "icon",
           "type": "string",
@@ -123,9 +206,48 @@
           "description": "Filtered items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "t",
+          "type": "object"
         }
       ],
       "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mini",
+          "attribute": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "programSearch",
+          "attribute": "program-search",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "commandContext",
+          "attribute": "command-context",
+          "type": "string",
+          "default": "\"*\""
+        },
+        {
+          "name": "programName",
+          "attribute": "program-name",
+          "type": "string"
+        },
         {
           "name": "shadowRootOptions",
           "type": "object",
@@ -170,9 +292,20 @@
           "description": "Filtered items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object"
         }
       ],
       "events": [
+        {
+          "name": "super-daemon-command-context-changed"
+        },
+        {
+          "name": "super-daemon-run-program"
+        },
         {
           "name": "filter"
         },
@@ -191,9 +324,22 @@
           "type": "string"
         },
         {
+          "name": "program",
+          "type": "string"
+        },
+        {
+          "name": "activeNode",
+          "type": "object"
+        },
+        {
           "name": "icon",
           "type": "string",
           "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "context",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "opened",
@@ -204,6 +350,45 @@
           "name": "items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "like",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "programSearch",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "allItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programResults",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programName",
+          "type": "string"
+        },
+        {
+          "name": "commandContext",
+          "type": "string",
+          "default": "\"*\""
         },
         {
           "name": "key2",
@@ -218,10 +403,26 @@
           "type": "string"
         },
         {
+          "name": "program",
+          "attribute": "program",
+          "type": "string"
+        },
+        {
+          "name": "activeNode",
+          "attribute": "activeNode",
+          "type": "object"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string",
           "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "context",
+          "attribute": "context",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "opened",
@@ -236,10 +437,62 @@
           "default": "[]"
         },
         {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "like",
+          "attribute": "like",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "attribute": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "programSearch",
+          "attribute": "programSearch",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "allItems",
+          "attribute": "allItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programResults",
+          "attribute": "programResults",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programName",
+          "attribute": "programName",
+          "type": "string"
+        },
+        {
+          "name": "commandContext",
+          "attribute": "commandContext",
+          "type": "string",
+          "default": "\"*\""
+        },
+        {
           "name": "key2",
           "attribute": "key2",
           "type": "string",
           "default": "\"Shift\""
+        }
+      ],
+      "events": [
+        {
+          "name": "click"
         }
       ]
     },
@@ -253,9 +506,22 @@
           "type": "string"
         },
         {
+          "name": "program",
+          "type": "string"
+        },
+        {
+          "name": "activeNode",
+          "type": "object"
+        },
+        {
           "name": "icon",
           "type": "string",
           "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "context",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "opened",
@@ -266,6 +532,45 @@
           "name": "items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "like",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "programSearch",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "allItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programResults",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programName",
+          "type": "string"
+        },
+        {
+          "name": "commandContext",
+          "type": "string",
+          "default": "\"*\""
         },
         {
           "name": "key2",
@@ -280,10 +585,26 @@
           "type": "string"
         },
         {
+          "name": "program",
+          "attribute": "program",
+          "type": "string"
+        },
+        {
+          "name": "activeNode",
+          "attribute": "activeNode",
+          "type": "object"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string",
           "default": "\"hardware:keyboard-return\""
+        },
+        {
+          "name": "context",
+          "attribute": "context",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "opened",
@@ -298,10 +619,62 @@
           "default": "[]"
         },
         {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "like",
+          "attribute": "like",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "attribute": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "programSearch",
+          "attribute": "programSearch",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "allItems",
+          "attribute": "allItems",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programResults",
+          "attribute": "programResults",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "programName",
+          "attribute": "programName",
+          "type": "string"
+        },
+        {
+          "name": "commandContext",
+          "attribute": "commandContext",
+          "type": "string",
+          "default": "\"*\""
+        },
+        {
           "name": "key2",
           "attribute": "key2",
           "type": "string",
           "default": "\"Shift\""
+        }
+      ],
+      "events": [
+        {
+          "name": "click"
         }
       ]
     }

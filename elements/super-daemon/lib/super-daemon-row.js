@@ -39,7 +39,7 @@ export class SuperDaemonRow extends LitElement {
       eventName: { type: String, attribute: "event-name" },
       value: { type: Object },
       tags: { type: Array },
-      active: { type: Boolean, reflect: true }
+      active: { type: Boolean, reflect: true },
     };
   }
 
@@ -170,11 +170,11 @@ export class SuperDaemonRow extends LitElement {
         }
         @keyframes details-show {
           from {
-            opacity:0;
+            opacity: 0;
             transform: var(--details-translate, translateY(-0.5em));
           }
           to {
-            opacity:1;
+            opacity: 1;
             transform: var(--details-translate, translateY(0));
           }
         }
@@ -194,14 +194,13 @@ export class SuperDaemonRow extends LitElement {
       this.selected();
       e.preventDefault();
       e.stopPropagation();
-      e.stopImmediatePropagation();  
+      e.stopImmediatePropagation();
     }
   }
 
   clickEvent(e) {
     this.selected();
   }
-
 
   selected() {
     // execute the event
@@ -257,9 +256,22 @@ export class SuperDaemonRow extends LitElement {
   }
   render() {
     return html`
-      <button part="button" @click="${this.clickEvent}" @keydown="${this.keyEvent}" @focusin="${this._focusIn}" @focusout="${this._focusOut}">
-      ${this.icon ? html`<simple-icon-lite icon="${this.icon}" class="result-icon"></simple-icon-lite>` : ``}
-      ${this.image ? html`<img src="${this.image}" class="result-image" alt=""/>` : ``}
+      <button
+        part="button"
+        @click="${this.clickEvent}"
+        @keydown="${this.keyEvent}"
+        @focusin="${this._focusIn}"
+        @focusout="${this._focusOut}"
+      >
+        ${this.icon
+          ? html`<simple-icon-lite
+              icon="${this.icon}"
+              class="result-icon"
+            ></simple-icon-lite>`
+          : ``}
+        ${this.image
+          ? html`<img src="${this.image}" class="result-image" alt="" />`
+          : ``}
         <div class="label-wrap">
           <div class="action" part="action">${this.title}</div>
           <div class="path" part="path">${this.path}</div>
@@ -274,16 +286,32 @@ export class SuperDaemonRow extends LitElement {
           )}
         </div>
         <div class="key-combo" part="key-combo">
-          ${this.keyAry(this.key).map(key => html`<kbd class="keyboard-shortcut">${key}</kbd>`)}
+          ${this.keyAry(this.key).map(
+            (key) => html`<kbd class="keyboard-shortcut">${key}</kbd>`
+          )}
         </div>
-        ${this.more ? html`<simple-icon-button label="More details" icon="more-vert" aria-controls="details" @click="${this.toggleDetailsClick}"  @keydown="${this.toggleDetailsKey}"></simple-icon-button>` : ``}
+        ${this.more
+          ? html`<simple-icon-button
+              label="More details"
+              icon="more-vert"
+              aria-controls="details"
+              @click="${this.toggleDetailsClick}"
+              @keydown="${this.toggleDetailsKey}"
+            ></simple-icon-button>`
+          : ``}
       </button>
-      ${this.more ? html`<details id="details" ?open="${this.showDetails}" @toggle="${this.openChanged}">
-        <summary>Details</summary>
-        <div>
-          <slot></slot>
-        </div>
-      </details>`: ``}
+      ${this.more
+        ? html`<details
+            id="details"
+            ?open="${this.showDetails}"
+            @toggle="${this.openChanged}"
+          >
+            <summary>Details</summary>
+            <div>
+              <slot></slot>
+            </div>
+          </details>`
+        : ``}
     `;
   }
   // toggle on click but prevent the event from bubbling up

@@ -926,7 +926,7 @@ class HaxTray extends I18NMixin(
         this.collapsed = !this.collapsed;
         break;
       case "super-daemon":
-        SuperDaemonInstance.opened = !SuperDaemonInstance.opened;
+        SuperDaemonInstance.open();
         break;
       case "content-map":
         this.trayDetail = e.detail.eventName;

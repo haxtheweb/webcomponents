@@ -2620,6 +2620,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         HAXStore.haxTray.trayDetail = "content-edit";
         break;
+      case "super-daemon":
+        SuperDaemonInstance.mini = true;
+        SuperDaemonInstance.activeNode = this.activeNode;
+        SuperDaemonInstance.runProgram('*', {}, null, null, null, this.activeNode.textContent);
+        SuperDaemonInstance.open();
+        break;
       case "hide-context-menus":
         this.hideContextMenus();
         break;

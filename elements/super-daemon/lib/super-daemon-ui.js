@@ -19,7 +19,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.items = [];
     this.mini = false;
     this.loading = false;
-    this.programSearch = '';
+    this.programSearch = "";
     this.commandContext = "*";
     this.programName = null;
     this.shadowRootOptions = {
@@ -38,7 +38,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       ...super.properties,
       icon: { type: String },
       mini: { type: Boolean, reflect: true },
-      loading: { type: Boolean, reflect: true},
+      loading: { type: Boolean, reflect: true },
       programSearch: { type: String, attribute: "program-search" },
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
@@ -69,7 +69,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
         }
-        
+
         .search .user-context-icon {
           display: inline-flex;
           --simple-icon-height: 50px;
@@ -159,7 +159,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           margin: 0px;
         }
         :host([mini]) simple-fields-field::part(option-input) {
-          font-size: 12px; 
+          font-size: 12px;
         }
         simple-fields-field::part(option-input) {
           padding: 0px 2px;
@@ -255,65 +255,85 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         if (this.opened) {
           this.shadowRoot.querySelector("#inputfilter").focus();
           // reset to top of results
-          this.shadowRoot.querySelector(".results").scrollTo(0,0);
+          this.shadowRoot.querySelector(".results").scrollTo(0, 0);
         }
       }
       if (propName == "commandContext") {
-        this.dispatchEvent(new CustomEvent("super-daemon-command-context-changed", {
-          detail: {
-            value: this[propName],
-          },
-        }));
+        this.dispatchEvent(
+          new CustomEvent("super-daemon-command-context-changed", {
+            detail: {
+              value: this[propName],
+            },
+          })
+        );
       }
     });
   }
 
   setupProgram() {
-    this.programSearch = '';
+    this.programSearch = "";
     this.shadowRoot.querySelector("#inputfilter").focus();
     this.shadowRoot.querySelector("#inputfilter").select();
     // reset to top of results
-    this.shadowRoot.querySelector(".results").scrollTo(0,0);
+    this.shadowRoot.querySelector(".results").scrollTo(0, 0);
   }
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
     if (this.programName) {
       // don't set like if we're in a program
       this.programSearch = e.target.value;
-    }
-    else {
+    } else {
       this.like = e.target.value;
     }
   }
   // reset search values because we selected something
   itemSelected(e) {
-    this.like = '';
-    this.programSearch = '';
+    this.like = "";
+    this.programSearch = "";
   }
 
   _resultsKeydown(e) {
-    if (this.filtered.length > 0 && this.shadowRoot.querySelector("super-daemon-row[active]")) {
+    if (
+      this.filtered.length > 0 &&
+      this.shadowRoot.querySelector("super-daemon-row[active]")
+    ) {
       switch (e.key) {
         case "ArrowUp":
         case "ArrowLeft":
-            // allow wrap around
-          if (this.shadowRoot.querySelector("super-daemon-row[active]") === this.shadowRoot.querySelector("super-daemon-row")) {
-            this.shadowRoot.querySelector("super-daemon-row:last-child").shadowRoot.querySelector("button").focus();
-          }
-          else { 
-            this.shadowRoot.querySelector("super-daemon-row[active]").previousElementSibling.shadowRoot.querySelector("button").focus();
+          // allow wrap around
+          if (
+            this.shadowRoot.querySelector("super-daemon-row[active]") ===
+            this.shadowRoot.querySelector("super-daemon-row")
+          ) {
+            this.shadowRoot
+              .querySelector("super-daemon-row:last-child")
+              .shadowRoot.querySelector("button")
+              .focus();
+          } else {
+            this.shadowRoot
+              .querySelector("super-daemon-row[active]")
+              .previousElementSibling.shadowRoot.querySelector("button")
+              .focus();
           }
           break;
         case "ArrowDown":
         case "ArrowRight":
-            // allow wrap around 
-          if (this.shadowRoot.querySelector("super-daemon-row[active]") === this.shadowRoot.querySelector("super-daemon-row:last-child")) {
-            this.shadowRoot.querySelector("super-daemon-row").shadowRoot.querySelector("button").focus();
+          // allow wrap around
+          if (
+            this.shadowRoot.querySelector("super-daemon-row[active]") ===
+            this.shadowRoot.querySelector("super-daemon-row:last-child")
+          ) {
+            this.shadowRoot
+              .querySelector("super-daemon-row")
+              .shadowRoot.querySelector("button")
+              .focus();
+          } else {
+            this.shadowRoot
+              .querySelector("super-daemon-row[active]")
+              .nextElementSibling.shadowRoot.querySelector("button")
+              .focus();
           }
-          else { 
-            this.shadowRoot.querySelector("super-daemon-row[active]").nextElementSibling.shadowRoot.querySelector("button").focus();
-          }
-        break;
+          break;
       }
     }
   }
@@ -322,22 +342,27 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":
-          this.shadowRoot.querySelector("super-daemon-row")
-          .selected();
-        break;
+          this.shadowRoot.querySelector("super-daemon-row").selected();
+          break;
         case "ArrowUp":
           // @todo get focus on the row via an "active" parameter so we can just target that in the UI
-          this.shadowRoot.querySelector("super-daemon-row:last-child")
+          this.shadowRoot
+            .querySelector("super-daemon-row:last-child")
             .shadowRoot.querySelector("button")
             .focus();
-            this.shadowRoot.querySelector("super-daemon-row:last-child").scrollIntoView({block: "end", inline: "nearest"});
-        break;
+          this.shadowRoot
+            .querySelector("super-daemon-row:last-child")
+            .scrollIntoView({ block: "end", inline: "nearest" });
+          break;
         case "ArrowDown":
-          this.shadowRoot.querySelector("super-daemon-row")
+          this.shadowRoot
+            .querySelector("super-daemon-row")
             .shadowRoot.querySelector("button")
             .focus();
-            this.shadowRoot.querySelector("super-daemon-row").scrollIntoView({block: "start", inline: "nearest"});
-        break;
+          this.shadowRoot
+            .querySelector("super-daemon-row")
+            .scrollIntoView({ block: "start", inline: "nearest" });
+          break;
       }
     }
     // account for global override keys
@@ -352,42 +377,44 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         if (e.key === "\\" && this.like == "") {
           this.commandContext = "/";
           e.preventDefault();
-        }
-        else if (e.key === "!" && this.like == "") {
+        } else if (e.key === "!" && this.like == "") {
           this.commandContext = "/";
           e.preventDefault();
-        }
-        else if (e.key === "<" && this.like == "") {
+        } else if (e.key === "<" && this.like == "") {
           this.commandContext = ">";
           e.preventDefault();
-        }
-        else if (this.like == ""){
+        } else if (this.like == "") {
           this.commandContext = e.key;
           e.preventDefault();
         }
-      break;
+        break;
       case "Backspace":
         // use this to back out of a program context
         if (this.programSearch == "" && this.programName) {
           // run this to unset the program context
-          this.dispatchEvent(new CustomEvent("super-daemon-run-program", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: false
-          }));
+          this.dispatchEvent(
+            new CustomEvent("super-daemon-run-program", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: false,
+            })
+          );
           e.preventDefault();
-        }
-        else if (!this.programName && this.like == "" && this.commandContext) {
+        } else if (
+          !this.programName &&
+          this.like == "" &&
+          this.commandContext
+        ) {
           this.commandContext = "*";
           e.preventDefault();
         }
-      break;
+        break;
     }
   }
 
   getActiveTitle(context) {
-    switch(context) {
+    switch (context) {
       case "/":
         return this.t.slashCommandsActive;
       case ">":
@@ -399,7 +426,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   }
 
   getActiveIcon(context) {
-    switch(context) {
+    switch (context) {
       case "/":
         return "hax:slash";
       case ">":
@@ -413,9 +440,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="search">
-      ${this.commandContext != "*" ? html`<simple-icon-lite title="${this.getActiveTitle(this.commandContext)}" icon="${this.getActiveIcon(this.commandContext)}" class="user-context-icon"></simple-icon-lite>` : ``}
-      ${this.programName ? html`<span class="program">${this.programName}</span>`: ``}
-      <simple-fields-field
+        ${this.commandContext != "*"
+          ? html`<simple-icon-lite
+              title="${this.getActiveTitle(this.commandContext)}"
+              icon="${this.getActiveIcon(this.commandContext)}"
+              class="user-context-icon"
+            ></simple-icon-lite>`
+          : ``}
+        ${this.programName
+          ? html`<span class="program">${this.programName}</span>`
+          : ``}
+        <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           @keydown="${this._inputKeydown}"
@@ -433,28 +468,39 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
       </div>
-      <div class="results" @keydown="${this._resultsKeydown}" @super-daemon-row-selected="${this.itemSelected}">
-      ${this.loading ? html`<div class="loading">${this.t.loadingResults}..</div>` : html`
-      ${this.filtered.length === 0 ? html`<div class="no-results">${this.t.noResultsForThisTerm}</div>` : html`
-          ${this.filtered.map(
-            (item, i) => html`
-              <super-daemon-row
-                data-row-index="${i}"
-                .value="${item.value}"
-                icon="${item.icon}"
-                image="${item.image}"
-                title="${item.title}"
-                .tags="${item.tags}"
-                event-name="${item.eventName}"
-                path="${item.path}"
-                key="${item.key}"
-                ?more="${item.more && !this.mini}"
-                ?mini="${this.mini}"
-              >${item.more ? item.more : nothing}</super-daemon-row>
-            `
-          )}
-        `}
-      `}
+      <div
+        class="results"
+        @keydown="${this._resultsKeydown}"
+        @super-daemon-row-selected="${this.itemSelected}"
+      >
+        ${this.loading
+          ? html`<div class="loading">${this.t.loadingResults}..</div>`
+          : html`
+              ${this.filtered.length === 0
+                ? html`<div class="no-results">
+                    ${this.t.noResultsForThisTerm}
+                  </div>`
+                : html`
+                    ${this.filtered.map(
+                      (item, i) => html`
+                        <super-daemon-row
+                          data-row-index="${i}"
+                          .value="${item.value}"
+                          icon="${item.icon}"
+                          image="${item.image}"
+                          title="${item.title}"
+                          .tags="${item.tags}"
+                          event-name="${item.eventName}"
+                          path="${item.path}"
+                          key="${item.key}"
+                          ?more="${item.more && !this.mini}"
+                          ?mini="${this.mini}"
+                          >${item.more ? item.more : nothing}</super-daemon-row
+                        >
+                      `
+                    )}
+                  `}
+            `}
       </div>
     `;
   }

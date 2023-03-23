@@ -45,10 +45,10 @@ class SuperDaemon extends LitElement {
     this.opened = false;
     this.items = [];
     this.loading = false;
-    this.like = '';
+    this.like = "";
     this.mini = false;
     this._programValues = {};
-    this.programSearch = '';
+    this.programSearch = "";
     this.allItems = [];
     this.programResults = [];
     this.programName = null;
@@ -104,7 +104,14 @@ class SuperDaemon extends LitElement {
   }
   // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
   // Run wikipedia search with runProgram('/',{method},'Wikipedia','Drupal');
-  runProgram(context = '/', values = {}, program = null, name = null, search = '', like = null) {
+  runProgram(
+    context = "/",
+    values = {},
+    program = null,
+    name = null,
+    search = "",
+    like = null
+  ) {
     this.commandContext = context;
     this._programToRun = program;
     this.programSearch = search;
@@ -114,19 +121,20 @@ class SuperDaemon extends LitElement {
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
-      this.shadowRoot.querySelector('super-daemon-ui').setupProgram();
+      this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
       setTimeout(async () => {
         try {
           this.loading = true;
-          this.programResults = await this._programToRun(this.programSearch, values);
+          this.programResults = await this._programToRun(
+            this.programSearch,
+            values
+          );
           this.loading = false;
-        }
-        catch(e) {
+        } catch (e) {
           this.loading = false;
         }
       }, 50);
-    }
-    else {
+    } else {
       this.programResults = [];
     }
     this.programName = name;
@@ -136,11 +144,16 @@ class SuperDaemon extends LitElement {
     if (e.detail) {
       let data = e.detail;
       this._programValues = data;
-      this.like = '';
-      this.runProgram(data.context, this._programValues, data.program, data.name, '');
-    }
-    else {
-      this.runProgram('/');
+      this.like = "";
+      this.runProgram(
+        data.context,
+        this._programValues,
+        data.program,
+        data.name,
+        ""
+      );
+    } else {
+      this.runProgram("/");
       this._programValues = {};
     }
   }
@@ -157,11 +170,13 @@ class SuperDaemon extends LitElement {
   // allow generating an event on a target
   elementClick(e) {
     if (e.detail) {
-      e.detail.target.dispatchEvent(new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window
-      }));
+      e.detail.target.dispatchEvent(
+        new MouseEvent("click", {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        })
+      );
     }
   }
   // take in via event
@@ -288,10 +303,10 @@ class SuperDaemon extends LitElement {
   close(e) {
     this.opened = false;
     this.loading = false;
-    this.like = '';
+    this.like = "";
     this.mini = false;
     this._programValues = {};
-    this.programSearch = '';
+    this.programSearch = "";
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
@@ -308,10 +323,11 @@ class SuperDaemon extends LitElement {
         // if we're in a global context, include all global context results
         let results = [];
         if (this.commandContext == "*") {
-          results = context.filter(value => item.context.includes(value));
-        }
-        else {
-          results = [this.commandContext].filter(value => item.context.includes(value));
+          results = context.filter((value) => item.context.includes(value));
+        } else {
+          results = [this.commandContext].filter((value) =>
+            item.context.includes(value)
+          );
         }
         return results.length !== 0;
       }
@@ -335,66 +351,65 @@ class SuperDaemon extends LitElement {
     this.items = this.filterItems(this.allItems, this.context);
     this.opened = true;
     const wd = this.shadowRoot.querySelector("web-dialog");
-    // modal mode kills off the ability to close the dialog
-    wd.$backdrop.addEventListener("click", wd.onBackdropClick);
-    wd.addEventListener("keydown", wd.onKeyDown, {
-      capture: true,
-      passive: true,
-    });
-    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
-      this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.position = "fixed";
-      this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.top = 0;
-      this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.bottom = 0;
-      this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.left = 0;
-      this.shadowRoot
-        .querySelector("web-dialog")
-        .shadowRoot.querySelector("#backdrop").style.right = 0;
+    if (wd) {
+      // modal mode kills off the ability to close the dialog
+      wd.$backdrop.addEventListener("click", wd.onBackdropClick);
+      wd.addEventListener("keydown", wd.onKeyDown, {
+        capture: true,
+        passive: true,
+      });
+      if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+        this.shadowRoot
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.position = "fixed";
+        this.shadowRoot
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.top = 0;
+        this.shadowRoot
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.bottom = 0;
+        this.shadowRoot
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.left = 0;
+        this.shadowRoot
+          .querySelector("web-dialog")
+          .shadowRoot.querySelector("#backdrop").style.right = 0;
+      }
     }
     setTimeout(() => {
       this.shadowRoot
-      .querySelector("super-daemon-ui")
-      .shadowRoot.querySelector("simple-fields-field")
-      .focus();
+        .querySelector("super-daemon-ui")
+        .shadowRoot.querySelector("simple-fields-field")
+        .focus();
       this.shadowRoot
-      .querySelector("super-daemon-ui")
-      .shadowRoot.querySelector("simple-fields-field")
-      .select();
+        .querySelector("super-daemon-ui")
+        .shadowRoot.querySelector("simple-fields-field")
+        .select();
     }, 0);
   }
   focusout(e) {
     let parent = e.relatedTarget;
     while (parent !== document.body && parent !== null) {
-      if (parent === this.shadowRoot
-        .querySelector("super-daemon-ui")) {
+      if (parent === this.shadowRoot.querySelector("super-daemon-ui")) {
         return;
       }
       if (parent && parent.parentElement) {
         parent = parent.parentElement;
-      }
-      else {
+      } else {
         return;
       }
     }
-    if (parent !== this.shadowRoot
-      .querySelector("super-daemon-ui")) {
+    if (parent !== this.shadowRoot.querySelector("super-daemon-ui")) {
       setTimeout(() => {
         if (this.opened) {
           this.shadowRoot
-          .querySelector("super-daemon-ui")
-          .shadowRoot.querySelector("simple-fields-field")
-          .focus();
-        this.shadowRoot
-          .querySelector("super-daemon-ui")
-          .shadowRoot.querySelector("simple-fields-field")
-          .select();
+            .querySelector("super-daemon-ui")
+            .shadowRoot.querySelector("simple-fields-field")
+            .focus();
+          this.shadowRoot
+            .querySelector("super-daemon-ui")
+            .shadowRoot.querySelector("simple-fields-field")
+            .select();
         }
       }, 0);
     }
@@ -403,69 +418,78 @@ class SuperDaemon extends LitElement {
    * LitElement render callback
    */
   render() {
-    return html`${this.mini ? html`
-    <absolute-position-behavior
-        justify
-        position="bottom"
-        allow-overlap
-        auto
-        sticky
-        .target="${this.activeNode}"
-        ?hidden="${!this.opened}"
-      >
-        <super-daemon-ui
-        ?open="${this.opened}"
-        ?mini="${this.mini}"
-        icon="${this.icon}"
-        ?loading="${this.loading}"
-        like="${this.like}"
-        .items="${this.itemsForDisplay(this.items, this.programResults)}"
-        command-context="${this.commandContext}"
-        program-name="${this.programName}"
-        program-search="${this.programSearch}"
-        @value-changed="${this.inputfilterChanged}"
-        @super-daemon-close="${this.close}"
-        @super-daemon-command-context-changed="${this.commandContextChanged}"
-      ></super-daemon-ui>
-    </absolute-position-behavior>
-    ` : html`
-      <web-dialog
-        id="dialog"
-        center
-        role="dialog"
-        part="dialog"
-        aria-label="Super Daemon"
-        aria-modal="true"
-        ?open="${this.opened}"
-        @open="${this.open}"
-        @close="${this.close}"
-        @focusout="${this.focusout}"
-      >
-        <super-daemon-ui
-        ?open="${this.opened}"
-        icon="${this.icon}"
-        ?loading="${this.loading}"
-        like="${this.like}"
-        .items="${this.itemsForDisplay(this.items, this.programResults)}"
-        command-context="${this.commandContext}"
-        program-name="${this.programName}"
-        program-search="${this.programSearch}"
-        @value-changed="${this.inputfilterChanged}"
-        @super-daemon-close="${this.close}"
-        @super-daemon-command-context-changed="${this.commandContextChanged}"
-      ></super-daemon-ui>
-        <simple-icon-button id="cancel" icon="cancel" @click="${this.close}"></simple-icon-button>
-      </web-dialog>
-      `}
-    `;
+    return html`${this.mini
+      ? html`
+          <absolute-position-behavior
+            justify
+            position="bottom"
+            allow-overlap
+            auto
+            sticky
+            .target="${this.activeNode}"
+            ?hidden="${!this.opened}"
+          >
+            <super-daemon-ui
+              ?open="${this.opened}"
+              ?mini="${this.mini}"
+              icon="${this.icon}"
+              ?loading="${this.loading}"
+              like="${this.like}"
+              .items="${this.itemsForDisplay(this.items, this.programResults)}"
+              command-context="${this.commandContext}"
+              program-name="${this.programName}"
+              program-search="${this.programSearch}"
+              @value-changed="${this.inputfilterChanged}"
+              @super-daemon-close="${this.close}"
+              @super-daemon-command-context-changed="${this
+                .commandContextChanged}"
+            ></super-daemon-ui>
+          </absolute-position-behavior>
+        `
+      : html`
+          <web-dialog
+            id="dialog"
+            center
+            role="dialog"
+            part="dialog"
+            aria-label="Super Daemon"
+            aria-modal="true"
+            ?open="${this.opened}"
+            @open="${this.open}"
+            @close="${this.close}"
+            @focusout="${this.focusout}"
+          >
+            <super-daemon-ui
+              ?open="${this.opened}"
+              icon="${this.icon}"
+              ?loading="${this.loading}"
+              like="${this.like}"
+              .items="${this.itemsForDisplay(this.items, this.programResults)}"
+              command-context="${this.commandContext}"
+              program-name="${this.programName}"
+              program-search="${this.programSearch}"
+              @value-changed="${this.inputfilterChanged}"
+              @super-daemon-close="${this.close}"
+              @super-daemon-command-context-changed="${this
+                .commandContextChanged}"
+            ></super-daemon-ui>
+            <simple-icon-button
+              id="cancel"
+              icon="cancel"
+              @click="${this.close}"
+            ></simple-icon-button>
+          </web-dialog>
+        `} `;
   }
   async inputfilterChanged(e) {
     if (e.detail.value && this.programName && this._programToRun) {
       this.loading = true;
-      this.programResults = await this._programToRun(e.detail.value, this._programValues);
+      this.programResults = await this._programToRun(
+        e.detail.value,
+        this._programValues
+      );
       this.loading = false;
-    }
-    else {
+    } else {
       this.programResults = [];
       // we moved back out of a context, reset complete
       this.items = this.filterItems(this.allItems, this.context);
@@ -488,10 +512,9 @@ class SuperDaemon extends LitElement {
         case ">":
           this.commandContext = e.detail.value;
           this.items = this.filterItems(this.allItems, this.context);
-        break;
+          break;
       }
-    }
-    else {
+    } else {
       // context removed; most likely via backspace being hit
       this.commandContext = "*";
       this.items = this.filterItems(this.allItems, this.context);
