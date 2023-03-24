@@ -144,6 +144,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           box-shadow: none;
           outline: 0px;
         }
+        .slotted {
+          display: block;
+          max-width: 90%;
+          font-size: 20px;
+        }
+        .slotted ::slotted(a) {
+          color: blue;
+          font-weight: bold;
+          text-decoration: underline;
+          cursor: pointer;
+        }
         :host([mini]) .no-results {
           font-size: 14px;
           margin: 8px auto;
@@ -261,6 +272,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       if (propName == "commandContext") {
         this.dispatchEvent(
           new CustomEvent("super-daemon-command-context-changed", {
+            detail: {
+              value: this[propName],
+            },
+          })
+        );
+      }
+      if (propName == "like") {
+        this.dispatchEvent(
+          new CustomEvent("like-changed", {
             detail: {
               value: this[propName],
             },
@@ -479,7 +499,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
               ${this.filtered.length === 0
                 ? html`<div class="no-results">
                     ${this.t.noResultsForThisTerm}
-                  </div>`
+                  </div>
+                  <div class="slotted"><slot></slot></div>`
                 : html`
                     ${this.filtered.map(
                       (item, i) => html`

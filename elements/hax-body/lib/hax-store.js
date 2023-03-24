@@ -1930,7 +1930,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       close: "Close",
     };
     // custom
-    SuperDaemonInstance.icon = "hax:hax2022";
+    SuperDaemonInstance.icon = "hax:wizard-hat";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
       if (this.ready && this.editMode) {
@@ -1938,6 +1938,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
+    
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2118,33 +2119,44 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this._editModeChanged(toJS(this.editMode));
     });
   }
-  async _haxStoreContribute(type, tags) {
-    const title = `[${type}] User report from HAX daemon`;
-    let body = `Location: ${window.location.href}
+  async _haxStoreContribute(type, tags, daemonTerm = null) {
+    let body = '';
+    if (type == 'merlin') {
+      var title = `[${type}] New command request from HAX daemon`;
+      body = `Location: ${window.location.href}
+Merlin command: ${daemonTerm}
+What did you want merlin to do?
+`;
+    }
+    else {
+      var title = `[${type}] User report from HAX daemon`;
+      body = `Location: ${window.location.href}
 Browser: ${navigator.userAgent}
 OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
 Screen: ${window.screen.width}x${window.screen.height}
 Window size: ${window.innerWidth}x${window.innerHeight}
 `;
-    if (navigator.getBattery) {
-      const stats = await navigator.getBattery();
-      body += `Battery: ${stats.level*100}%
+      if (navigator.getBattery) {
+        const stats = await navigator.getBattery();
+        body += `Battery: ${stats.level*100}%
+`;
+      }
+      // some things report the "type" of internet connection speed
+      // for terrible connections lets save frustration
+      if (
+        navigator.connection &&
+        navigator.connection.effectiveType
+      ) {
+        body += `Connection: ${navigator.connection.effectiveType}
+`;
+      }
+      body += `${type == 'feature' ? `Your idea:` : `Bug you experienced:`}
 `;
     }
-    // some things report the "type" of internet connection speed
-    // for terrible connections lets save frustration
-    if (
-      navigator.connection &&
-      navigator.connection.effectiveType
-    ) {
-      body += `Connection: ${navigator.connection.effectiveType}
-`;
-    }
-    body += `${type == 'feature' ? `Your idea:` : `Bug you experienced:`}
-`;
     window.open( 
         `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(body)}`, "_blank");
   }
+  
   /**
    * Build HAX property definitions for primitives that we support.
    * @note if someone wants to MANUALLY inject definitions similar

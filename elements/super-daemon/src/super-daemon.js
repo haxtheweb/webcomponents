@@ -414,6 +414,12 @@ class SuperDaemon extends LitElement {
       }, 0);
     }
   }
+  // if we have no results, allow for a slot to be applied via someone
+  // consuming this in their app. example - providing a link to suggest a
+  // new command be added
+  noResultsSlot(searchTerm) {
+    return;
+  }
   /**
    * LitElement render callback
    */
@@ -464,6 +470,7 @@ class SuperDaemon extends LitElement {
               icon="${this.icon}"
               ?loading="${this.loading}"
               like="${this.like}"
+              @like-changed="${this.likeChanged}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
               program-name="${this.programName}"
@@ -472,7 +479,7 @@ class SuperDaemon extends LitElement {
               @super-daemon-close="${this.close}"
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
-            ></super-daemon-ui>
+            >${this.noResultsSlot(this.like || this.programSearch)}</super-daemon-ui>
             <simple-icon-button
               id="cancel"
               icon="cancel"
@@ -480,6 +487,9 @@ class SuperDaemon extends LitElement {
             ></simple-icon-button>
           </web-dialog>
         `} `;
+  }
+  likeChanged(e) {
+    this.like = e.detail.value;
   }
   async inputfilterChanged(e) {
     if (e.detail.value && this.programName && this._programToRun) {

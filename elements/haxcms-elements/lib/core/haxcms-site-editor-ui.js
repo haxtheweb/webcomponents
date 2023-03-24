@@ -366,9 +366,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
-    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
+    // allow commands to go through at any time
+    // hax-store default is only when editor is open to avoid conflicts w/ other UX
     SuperDaemonInstance.allowedCallback = () => {
       return true;
+    };
+    // nothing message so we can suggest a link to make a suggestion
+    SuperDaemonInstance.noResultsSlot = () => {
+      return html`Expecting to see results? <a @click="${(e) => {HAXStore._haxStoreContribute("merlin", "POP,enhancement", SuperDaemonInstance.commandContext + ' ' + SuperDaemonInstance.like)}}">Make a suggestion</a> for what you thought you would see here!`;
     };
     SuperDaemonInstance.appendContext("CMS");
     window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
