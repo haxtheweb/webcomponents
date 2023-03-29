@@ -17,6 +17,26 @@
   "settings": {
     "configure": [
       {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Indicates page context to users visually",
+        "inputMethod": "select",
+        "options": {
+          "": "-- none --",
+          "content": "Content",
+          "assessment": "Assessment",
+          "quiz": "Quiz",
+          "submission": "Submission",
+          "lesson": "Lesson",
+          "module": "Module",
+          "task": "Task",
+          "activity": "Activity",
+          "project": "Project",
+          "practice": "Practice",
+          "unit": "Unit"
+        }
+      },
+      {
         "property": "title",
         "title": "Title",
         "description": "Title seen in the theme / first heading",

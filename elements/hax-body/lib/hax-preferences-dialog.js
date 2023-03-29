@@ -141,19 +141,6 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
         >
         </simple-fields>
       </div>
-      <hr />
-      <br />
-      ${!this.hideLink
-        ? html`<a
-            href="https://haxtheweb.org/"
-            rel="noopener"
-            id="link"
-            target="_blank"
-            part="haxlink"
-            ><simple-icon-lite icon="hax:hax2022"></simple-icon-lite> ${this.t
-              .learnAboutHAXTheWeb}</a
-          >`
-        : ``}
     `;
   }
   static get tag() {

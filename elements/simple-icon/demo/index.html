@@ -16,12 +16,22 @@
       import '../lib/simple-icon-button.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      simple-icon {
+        --simple-icon-height: 50px;
+        --simple-icon-width: 50px;
+        transition: .3s filter linear;
+        filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 0.4));
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-icon demo</h3>
+      <button>Entice</button>
       <demo-snippet>
         <template>
+          <simple-icon icon="hax:wizard-hat" accent-color="blue"></simple-icon>
           <simple-icon icon="device:battery-20" dark style="background-color:black;"></simple-icon>
           <simple-icon icon="av:web-asset" dark contrast="1" dark style="background-color:black;"></simple-icon>
           <simple-icon icon="av:fiber-smart-record" dark contrast="1" dark style="background-color:black;"></simple-icon>
@@ -34,7 +44,6 @@
           <simple-icon icon="save" contrast="3" accent-color="pink"></simple-icon>
           <simple-icon icon="save" contrast="4" accent-color="pink"></simple-icon>
           <simple-icon icon="device:battery-20"></simple-icon>
-          <simple-icon icon="device:battery-20" accent-color="pink"></simple-icon>
           <simple-icon icon="flags:us" no-colorize accent-color="pink"></simple-icon>
           <simple-icon icon="flags:es" no-colorize></simple-icon>
           <simple-icon icon="icons:alarm-add" accent-color="blue"></simple-icon>
@@ -45,6 +54,20 @@
           <simple-icon icon="hax:arrow-expand-left" accent-color="grey"></simple-icon>
         </template>
       </demo-snippet>
+      <script>
+        const art = ['red', 'green', 'yellow', 'orange', 'purple', 'pink', 'grey'];
+        document.querySelector('button').addEventListener('click', function(e) {
+          for (let i = 0; i < 100; i++) {
+            document.querySelector('simple-icon').style.filter = `drop-shadow(3px 3px 3px ${randomArrayPosition(art)})`;              
+            delay(300);
+          }
+        });
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        function randomArrayPosition(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+      </script>
     </div>
   </body>
 </html>

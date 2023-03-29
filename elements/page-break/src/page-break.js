@@ -42,6 +42,7 @@ export class PageBreak extends IntersectionObserverMixin(
       locales: ["es"],
     });
     this.title = this.t.newPage;
+    this.pageType = null;
     this.slug = "";
     this.published = false;
     this.target = null;
@@ -77,6 +78,7 @@ export class PageBreak extends IntersectionObserverMixin(
       itemId: { type: String, attribute: "item-id", reflect: true },
       breakType: { type: String, attribute: "break-type" },
       status: { type: String },
+      pageType: { type: String, attribute: "page-type" },
       _haxState: { type: Boolean },
     };
   }
