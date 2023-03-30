@@ -1951,6 +1951,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
+      context: ["CMS","HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
