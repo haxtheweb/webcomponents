@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "a customizable toolbar",
   "repository": {
     "type": "git",
@@ -43,10 +43,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-menu-button": "^4.1.1",
-    "@lrnwebcomponents/radio-behaviors": "^4.1.1",
-    "@lrnwebcomponents/simple-icon": "^4.1.1",
-    "@lrnwebcomponents/simple-tooltip": "^4.1.1",
+    "@lrnwebcomponents/a11y-menu-button": "^4.2.0",
+    "@lrnwebcomponents/radio-behaviors": "^4.2.0",
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
+    "@lrnwebcomponents/simple-tooltip": "^4.2.0",
     "lit": "^2.6.1"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "Clean HAXcms theme, one.",
   "repository": {
     "type": "git",
@@ -43,14 +43,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.1.1",
-    "@lrnwebcomponents/haxcms-elements": "^4.1.1",
-    "@lrnwebcomponents/responsive-utility": "^4.1.1",
-    "@lrnwebcomponents/scroll-button": "^4.1.1",
-    "@lrnwebcomponents/simple-colors": "^4.1.1",
-    "@lrnwebcomponents/simple-icon": "^4.1.1",
-    "@lrnwebcomponents/simple-popover": "^4.1.1",
-    "@lrnwebcomponents/utils": "^4.1.1",
+    "@lrnwebcomponents/hax-iconset": "^4.2.0",
+    "@lrnwebcomponents/haxcms-elements": "^4.2.0",
+    "@lrnwebcomponents/responsive-utility": "^4.2.0",
+    "@lrnwebcomponents/scroll-button": "^4.2.0",
+    "@lrnwebcomponents/simple-colors": "^4.2.0",
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
+    "@lrnwebcomponents/simple-popover": "^4.2.0",
+    "@lrnwebcomponents/utils": "^4.2.0",
     "lit": "^2.6.1",
     "mobx": "6.7.0"
   },

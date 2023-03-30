@@ -19,7 +19,7 @@
       "...RichTextStyles"
     ]
   },
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -44,23 +44,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^4.1.1",
-    "@lrnwebcomponents/code-editor": "^4.1.1",
-    "@lrnwebcomponents/md-extra-icons": "^4.1.1",
-    "@lrnwebcomponents/simple-fields": "^4.1.1",
-    "@lrnwebcomponents/simple-icon": "^4.1.1",
-    "@lrnwebcomponents/simple-icon-picker": "^4.1.1",
-    "@lrnwebcomponents/simple-picker": "^4.1.1",
-    "@lrnwebcomponents/simple-popover": "^4.1.1",
-    "@lrnwebcomponents/simple-toolbar": "^4.1.1",
-    "@lrnwebcomponents/utils": "^4.1.1",
+    "@lrnwebcomponents/absolute-position-behavior": "^4.2.0",
+    "@lrnwebcomponents/code-editor": "^4.2.0",
+    "@lrnwebcomponents/md-extra-icons": "^4.2.0",
+    "@lrnwebcomponents/simple-fields": "^4.2.0",
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
+    "@lrnwebcomponents/simple-icon-picker": "^4.2.0",
+    "@lrnwebcomponents/simple-picker": "^4.2.0",
+    "@lrnwebcomponents/simple-popover": "^4.2.0",
+    "@lrnwebcomponents/simple-toolbar": "^4.2.0",
+    "@lrnwebcomponents/utils": "^4.2.0",
     "@polymer/iron-icons": "^3.0.1",
     "lit": "^2.6.1",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^4.2.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
