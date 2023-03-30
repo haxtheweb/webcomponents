@@ -5,6 +5,7 @@ import {
   localStorageGet,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
@@ -13,6 +14,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    */
   constructor() {
     super();
+    this.showSources = false;
     this.autocomplete = "on";
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
@@ -24,6 +26,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       cantHandle: "Sorry, you don't have a storage location that can handle",
       uploads: "uploads",
       dropMediaHereOr: "drop media here or",
+      selectMedia: "Select media",
       upload: "Upload",
       takePhoto: "Take photo",
       recordAudio: "Record audio",
@@ -35,11 +38,24 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       namespace: "hax",
     });
   }
+  
   static get tag() {
     return "hax-upload-field";
   }
+  
   _canUpload() {
     return !this.__allowUpload && HAXStore;
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+      showSources: {
+        type: Boolean,
+        reflect: true,
+        attribute: "show-sources",
+      },
+    };
   }
   /**
    * Respond to uploading a file
@@ -154,6 +170,27 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.shadowRoot.querySelector("#url").value = item.url;
     //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
     //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
+  }
+  // add button for merlin
+  get sources() {
+    return html`
+    <simple-toolbar-button
+      ?disabled="${this.disabled}"
+      label="${this.t.selectMedia}.."
+      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+      icon="hax:multimedia"
+      show-text-label
+      @click="${this._clickMediaButton}"
+      controls="fieldset"
+      part="merlin"
+      ?hidden="${!this.showSources}"
+    >
+    </simple-toolbar-button>
+    ${super.sources}`;
+  }
+  _clickMediaButton(e) {
+    SuperDaemonInstance.runProgram("/", {}, null, null, '', "sources");
+    SuperDaemonInstance.open();
   }
 }
 

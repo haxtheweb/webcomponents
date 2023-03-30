@@ -1042,7 +1042,41 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
-    });    
+    });
+    // change theme program
+    SuperDaemonInstance.defineOption({
+      title: "DEV: Change theme",
+      icon: "image:style",
+      tags: ["Developer", "theme"],
+      eventName: "super-daemon-run-program",
+      path: ">settings/theme",
+      context: [">"],
+      value: {
+        name: "DEV: Change theme",
+        context: ">",
+        program: async (input, values) => {
+          let results = [];
+          ["clean-one", "clean-two", "learn-two-theme", "bootstrap-theme", "outline-player", "haxor-slevin"].forEach(async (name) => {
+            if (input == '' || name.includes(input)) {
+              results.push({
+                title: name.replace('-theme','').replace('-', ' '),
+                icon: "image:style",
+                tags: ["theme"],
+                value: {
+                  target: window.HAXCMS,
+                  method: "setTheme",
+                  args: [name]
+                },
+                eventName: "super-daemon-element-method",
+                context: [">", ">settings/theme/" + name],
+                path: ">settings/theme/" + name,
+              });
+            }
+          });
+          return results;
+        },
+      }
+    });
     
     this.updateAvailableButtons();
     // load user data

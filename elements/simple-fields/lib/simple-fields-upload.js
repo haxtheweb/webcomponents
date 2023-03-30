@@ -105,7 +105,7 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         span[part="drop-area-text"] {
           font-family: var(--simple-fields-button-font-family, sans-serif);
-          font-size: var(--simple-fields-button-font-size, 14px);
+          font-size: var(--simple-fields-button-font-size, 10px);
           white-space: nowrap;
           margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
             calc(0.25 * var(--simple-fields-margin-small, 8px));
@@ -115,6 +115,12 @@ class SimpleFieldsUpload extends I18NMixin(
           position: relative;
           overflow: visible;
           border: none !important;
+          --lumo-font-size-s: 10px;
+        }
+        vaadin-upload::part(file-list) {
+          max-height: 140px;
+          overflow-x: hidden;
+          overflow-y: auto;
         }
         vaadin-upload[dragover] {
           border-color: var(
@@ -172,6 +178,7 @@ class SimpleFieldsUpload extends I18NMixin(
       localesPath: new URL("../locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.hideInput = false;
     this.itemsList = [];
     this.autocomplete = "off";
     this.noCamera = false;
@@ -183,6 +190,48 @@ class SimpleFieldsUpload extends I18NMixin(
   render() {
     return html`
       <fieldset part="fieldset">${this.legend} ${this.fields}</fieldset>
+    `;
+  }
+  get sources() {
+    return html`
+    <simple-toolbar-button
+      id="browse"
+      ?disabled="${this.disabled}"
+      label="${this.t.upload}.."
+      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+      icon="icons:file-upload"
+      show-text-label
+      @click="${this._handleBrowse}"
+      controls="fieldset"
+      part="browse"
+    >
+    </simple-toolbar-button>
+    <simple-toolbar-button
+      icon="image:camera-alt"
+      ?disabled="${this.disabled}"
+      label="${this.t.takePhoto}.."
+      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+      @mousedown="${(e) => e.preventDefault()}"
+      @focus="${(e) => e.preventDefault()}"
+      @click="${this._handleCameraOption}"
+      controls="fieldset"
+      part="take-photo"
+      ?hidden="${!navigator.mediaDevices || this.noCamera}"
+    >
+    </simple-toolbar-button>
+    <simple-toolbar-button
+      icon="hardware:keyboard-voice"
+      ?disabled="${this.disabled}"
+      label="${this.t.recordAudio}.."
+      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+      @mousedown="${(e) => e.preventDefault()}"
+      @focus="${(e) => e.preventDefault()}"
+      @click="${this._handleAudioOption}"
+      controls="fieldset"
+      part="record-audio"
+      ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
+    >
+    </simple-toolbar-button>
     `;
   }
   /**
@@ -210,7 +259,7 @@ class SimpleFieldsUpload extends I18NMixin(
           <div
             slot="drop-label"
             part="browse-area"
-            ?hidden="${this.option == "selfie" || this.option == "audio"}"
+            ?hidden="${this.option == "selfie" || this.option == "audio" || this.hideInput}"
           >
             <simple-fields-url-combo
               id="url"
@@ -236,44 +285,7 @@ class SimpleFieldsUpload extends I18NMixin(
           </div>
           <div id="upload">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
-            <simple-toolbar-button
-              id="browse"
-              ?disabled="${this.disabled}"
-              label="${this.t.upload}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              icon="icons:file-upload"
-              show-text-label
-              @click="${this._handleBrowse}"
-              controls="fieldset"
-              part="browse"
-            >
-            </simple-toolbar-button>
-            <simple-toolbar-button
-              icon="image:camera-alt"
-              ?disabled="${this.disabled}"
-              label="${this.t.takePhoto}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              @mousedown="${(e) => e.preventDefault()}"
-              @focus="${(e) => e.preventDefault()}"
-              @click="${this._handleCameraOption}"
-              controls="fieldset"
-              part="take-photo"
-              ?hidden="${!navigator.mediaDevices || this.noCamera}"
-            >
-            </simple-toolbar-button>
-            <simple-toolbar-button
-              icon="hardware:keyboard-voice"
-              ?disabled="${this.disabled}"
-              label="${this.t.recordAudio}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              @mousedown="${(e) => e.preventDefault()}"
-              @focus="${(e) => e.preventDefault()}"
-              @click="${this._handleAudioOption}"
-              controls="fieldset"
-              part="record-audio"
-              ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
-            >
-            </simple-toolbar-button>
+            ${this.sources}
           </div>
           <simple-toolbar-button
             id="cancel"
@@ -390,6 +402,10 @@ class SimpleFieldsUpload extends I18NMixin(
        */
       accept: {
         type: String,
+      },
+      hideInput: {
+        type: Boolean,
+        attribute: "hide-input",
       },
       /**
        * Hint for form autofill feature

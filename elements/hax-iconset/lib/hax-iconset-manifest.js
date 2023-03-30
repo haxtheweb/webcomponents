@@ -111,6 +111,7 @@ export const HaxIconsetManifest = [
       "messages-9-plus",
       "messages-9",
       "multiple-choice",
+      "multimedia",
       "no-assignment",
       "oerschema",
       "outline-designer-indent",

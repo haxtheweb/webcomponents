@@ -59,11 +59,8 @@
         document.querySelector('button').addEventListener('click', function(e) {
           for (let i = 0; i < 100; i++) {
             document.querySelector('simple-icon').style.filter = `drop-shadow(3px 3px 3px ${randomArrayPosition(art)})`;              
-            delay(300);
           }
         });
-        const delay = ms => new Promise(res => setTimeout(res, ms));
-
         function randomArrayPosition(arr) {
           return arr[Math.floor(Math.random() * arr.length)];
         }

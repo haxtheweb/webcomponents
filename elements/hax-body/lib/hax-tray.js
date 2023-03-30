@@ -669,7 +669,7 @@ class HaxTray extends I18NMixin(
         </div>
       </hax-tray-button>
       <hax-tray-button
-        icon="image:collections"
+        icon="hax:multimedia"
         label="${this.t.media}"
         voice-command="select media (menu)"
         data-simple-tour-stop
@@ -811,7 +811,7 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload ?hidden="${hidden}"></hax-tray-upload>
+      <hax-tray-upload ?hidden="${hidden}" show-sources ></hax-tray-upload>
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"

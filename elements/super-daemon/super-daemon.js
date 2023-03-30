@@ -388,30 +388,32 @@ class SuperDaemon extends LitElement {
     }, 0);
   }
   focusout(e) {
-    let parent = e.relatedTarget;
-    while (parent !== document.body && parent !== null) {
-      if (parent === this.shadowRoot.querySelector("super-daemon-ui")) {
-        return;
-      }
-      if (parent && parent.parentElement) {
-        parent = parent.parentElement;
-      } else {
-        return;
-      }
-    }
-    if (parent !== this.shadowRoot.querySelector("super-daemon-ui")) {
-      setTimeout(() => {
-        if (this.opened) {
-          this.shadowRoot
-            .querySelector("super-daemon-ui")
-            .shadowRoot.querySelector("simple-fields-field")
-            .focus();
-          this.shadowRoot
-            .querySelector("super-daemon-ui")
-            .shadowRoot.querySelector("simple-fields-field")
-            .select();
+    if (e) {
+      let parent = e.relatedTarget;
+      while (parent !== document.body && parent !== null) {
+        if (parent === this.shadowRoot.querySelector("super-daemon-ui")) {
+          return;
         }
-      }, 0);
+        if (parent && parent.parentElement) {
+          parent = parent.parentElement;
+        } else {
+          return;
+        }
+      }
+      if (parent !== this.shadowRoot.querySelector("super-daemon-ui")) {
+        setTimeout(() => {
+          if (this.opened) {
+            this.shadowRoot
+              .querySelector("super-daemon-ui")
+              .shadowRoot.querySelector("simple-fields-field")
+              .focus();
+            this.shadowRoot
+              .querySelector("super-daemon-ui")
+              .shadowRoot.querySelector("simple-fields-field")
+              .select();
+          }
+        }, 0);
+      }
     }
   }
   // if we have no results, allow for a slot to be applied via someone
@@ -492,7 +494,7 @@ class SuperDaemon extends LitElement {
     this.like = e.detail.value;
   }
   async inputfilterChanged(e) {
-    if (e.detail.value && this.programName && this._programToRun) {
+    if (this.programName && this._programToRun) {
       this.loading = true;
       this.programResults = await this._programToRun(
         e.detail.value,

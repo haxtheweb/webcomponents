@@ -113,7 +113,7 @@ export const SimpleFilterMixin = function (SuperClass) {
     }
     // helper function to escape special characters when regex is the comparison tool but input is user string
     escapeRegExp(text) {
-      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     }
 
     /**

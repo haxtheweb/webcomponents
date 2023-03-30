@@ -111,9 +111,9 @@ export const SimpleFilterMixin = function (SuperClass) {
       //This forces _computeFiltered function to do its job :-)
       this.where = "";
     }
-
+    // helper function to escape special characters when regex is the comparison tool but input is user string
     escapeRegExp(text) {
-      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     }
 
     /**
@@ -146,7 +146,7 @@ export const SimpleFilterMixin = function (SuperClass) {
           if (typeof decomposed == "undefined" && where != "") {
             //Do what I know best
             console.warn(
-              "grafitto-filter was unable to find a property in '" + where + "'"
+              "simple-filter was unable to find a property in '" + where + "'"
             );
           }
           return regex.test(decomposed);
