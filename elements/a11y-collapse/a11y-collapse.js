@@ -470,6 +470,7 @@ class A11yCollapse extends LitElement {
       >
         <div
           id="heading"
+          part="heading-id"
           ?disabled="${this.disabled}"
           .label="${this._getExpanded(
             this.label,
@@ -510,9 +511,9 @@ class A11yCollapse extends LitElement {
    */
   _makeIconButton() {
     return html`
-      <div id="heading">
+      <div id="heading" part="heading-id">
         <div id="text">
-          ${this.heading ? html`<p>${this.heading}</p>` : ``}<slot
+          ${this.heading ? html`<p part="heading">${this.heading}</p>` : ``}<slot
             name="heading"
           ></slot>
         </div>
