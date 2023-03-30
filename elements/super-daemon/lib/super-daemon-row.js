@@ -55,8 +55,8 @@ export class SuperDaemonRow extends LitElement {
           display: block;
           margin: 8px 16px;
         }
-        :host([active]),
-        :host:hover {
+        :host([active]) {
+          cursor: pointer;
           border-radius: 8px;
           background-color: var(
             --super-daemon-row-hover,
@@ -268,6 +268,8 @@ export class SuperDaemonRow extends LitElement {
         part="button"
         @click="${this.clickEvent}"
         @keydown="${this.keyEvent}"
+        @mouseover="${this._focusIn}"
+        @mouseout="${this._focusOut}"
         @focusin="${this._focusIn}"
         @focusout="${this._focusOut}"
       >

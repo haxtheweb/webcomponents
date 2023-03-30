@@ -99,11 +99,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
   }
 
   clickLink(id) {
-    console.log(
-      this.shadowRoot
-        .querySelector("map-menu")
-        .shadowRoot.querySelector("#" + id)
-    );
     let target = this.shadowRoot
       .querySelector("map-menu")
       .shadowRoot.querySelector("#" + id);
@@ -132,7 +127,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
               detail: {
                 title: item.title,
                 icon: "link",
-                tags: ["CMS", "page", "navigation"],
+                tags: ["CMS", "page", "navigation", "site"],
                 value: {
                   target: this,
                   method: "clickLink",
@@ -140,7 +135,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
                 },
                 context: "CMS",
                 eventName: "super-daemon-element-method",
-                path: "CMS/navigation/page",
+                path: "site/navigation/page",
               },
             })
           );
