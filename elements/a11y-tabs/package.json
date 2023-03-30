@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "accessible and responsive tabbed interface",
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^4.1.0",
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.1.0",
+    "@lrnwebcomponents/responsive-utility": "^4.1.1",
+    "@lrnwebcomponents/simple-icon": "^4.1.1",
+    "@lrnwebcomponents/simple-tooltip": "^4.1.1",
     "lit": "^2.6.1"
   },
   "devDependencies": {

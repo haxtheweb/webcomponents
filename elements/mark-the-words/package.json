@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Mark desired words in a sentence",
   "repository": {
     "type": "git",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Clean presentation of what to expect in an upcoming lesson of instruction",
   "repository": {
     "type": "git",
@@ -44,30 +44,30 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.6.1",
-    "mobx": "6.7.0",
-    "@lrnwebcomponents/simple-colors": "^4.1.0",
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "@lrnwebcomponents/micro-frontend-registry": "^4.1.0",
-    "@lrnwebcomponents/haxcms-elements": "^4.1.0",
+    "@lrnwebcomponents/hax-iconset": "^4.1.1",
+    "@lrnwebcomponents/haxcms-elements": "^4.1.1",
+    "@lrnwebcomponents/i18n-manager": "^4.1.1",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/i18n-manager": "^4.0.25",
-    "@lrnwebcomponents/hax-iconset": "^4.1.0"
+    "@lrnwebcomponents/micro-frontend-registry": "^4.1.1",
+    "@lrnwebcomponents/simple-colors": "^4.1.1",
+    "@lrnwebcomponents/simple-icon": "^4.1.1",
+    "lit": "^2.6.1",
+    "mobx": "6.7.0"
   },
   "devDependencies": {
-    "@wcfactory/rollup-umd-build": "^0.12.1",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.1.34",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "concurrently": "7.4.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.1.34",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {

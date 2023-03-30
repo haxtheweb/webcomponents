@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "A singleton for registration and managing access to leverage microservices for web components",
   "repository": {
     "type": "git",

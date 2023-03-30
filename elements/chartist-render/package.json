@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Rendering Chartist",
   "repository": {
     "type": "git",
@@ -42,18 +42,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/utils": "^4.1.1",
     "@polymer/iron-ajax": "^3.0.0",
     "chartist": "^0.11.0",
     "chartist-plugin-accessibility": "0.0.5",
     "chartist-plugin-axistitle": "^0.0.7",
     "chartist-plugin-fill-donut": "^0.1.4",
     "chartist-plugin-pointlabels": "0.0.6",
-    "@lrnwebcomponents/utils": "^4.1.0",
     "lit": "^2.6.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
+    "@lrnwebcomponents/storybook-utilities": "^4.1.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

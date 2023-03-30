@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "take text and process it with various enhancements",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/micro-frontend-registry": "^4.1.0",
-    "@lrnwebcomponents/vocab-term": "^4.1.0",
+    "@lrnwebcomponents/micro-frontend-registry": "^4.1.1",
+    "@lrnwebcomponents/vocab-term": "^4.1.1",
     "lit": "^2.6.1"
   },
   "devDependencies": {

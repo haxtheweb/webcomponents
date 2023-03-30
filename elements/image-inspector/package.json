@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Inspector tools on an image wrapping open seadragon library",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/exif-data": "^4.0.25",
-    "@lrnwebcomponents/img-pan-zoom": "^4.1.0",
+    "@lrnwebcomponents/exif-data": "^4.1.1",
+    "@lrnwebcomponents/img-pan-zoom": "^4.1.1",
     "@lrnwebcomponents/materializecss-styles": "^4.1.0",
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
+    "@lrnwebcomponents/simple-icon": "^4.1.1",
     "lit": "^2.6.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
+    "@lrnwebcomponents/storybook-utilities": "^4.1.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
