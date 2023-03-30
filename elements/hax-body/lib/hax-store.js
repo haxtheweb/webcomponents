@@ -1938,7 +1938,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
-    
+
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -1947,7 +1947,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_haxStoreContribute",
-        args: ["bug","POP,bug"]
+        args: ["bug", "POP,bug"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
@@ -1955,11 +1955,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
       icon: "hax:hax2022",
-      tags: ["Feature request", "idea", "github", "git", "community", "issue queue"],
+      tags: [
+        "Feature request",
+        "idea",
+        "github",
+        "git",
+        "community",
+        "issue queue",
+      ],
       value: {
         target: this,
         method: "_haxStoreContribute",
-        args: ["feature","POP,enhancement"]
+        args: ["feature", "POP,enhancement"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
@@ -2120,15 +2127,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     });
   }
   async _haxStoreContribute(type, tags, daemonTerm = null) {
-    let body = '';
-    if (type == 'merlin') {
+    let body = "";
+    if (type == "merlin") {
       var title = `[${type}] New command request from HAX daemon`;
       body = `Location: ${window.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
-    }
-    else {
+    } else {
       var title = `[${type}] User report from HAX daemon`;
       body = `Location: ${window.location.href}
 Browser: ${navigator.userAgent}
@@ -2138,25 +2144,26 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 `;
       if (navigator.getBattery) {
         const stats = await navigator.getBattery();
-        body += `Battery: ${stats.level*100}%
+        body += `Battery: ${stats.level * 100}%
 `;
       }
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
-      if (
-        navigator.connection &&
-        navigator.connection.effectiveType
-      ) {
+      if (navigator.connection && navigator.connection.effectiveType) {
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
-      body += `${type == 'feature' ? `Your idea:` : `Bug you experienced:`}
+      body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
 `;
     }
-    window.open( 
-        `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(body)}`, "_blank");
+    window.open(
+      `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
+        body
+      )}`,
+      "_blank"
+    );
   }
-  
+
   /**
    * Build HAX property definitions for primitives that we support.
    * @note if someone wants to MANUALLY inject definitions similar
@@ -3095,21 +3102,24 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         title: "Search " + app.details.title,
         icon: app.details.icon,
         tags: ["Search", ...app.details.tags],
-        more: (app.details.tos && app.details.tos.length > 0) ? html`<div class="tos-text">Terms of service:</div>
-        <ul class="tos-text">
-          ${app.details.tos.map((item) => {
-            return html`
-              <li>
-                <a
-                  href="${item.link}"
-                  target="_blank"
-                  rel="noopener nofollow noreferrer"
-                  >${item.title}</a
-                >
-              </li>
-            `;
-          })}
-        </ul>` : null,
+        more:
+          app.details.tos && app.details.tos.length > 0
+            ? html`<div class="tos-text">Terms of service:</div>
+                <ul class="tos-text">
+                  ${app.details.tos.map((item) => {
+                    return html`
+                      <li>
+                        <a
+                          href="${item.link}"
+                          target="_blank"
+                          rel="noopener nofollow noreferrer"
+                          >${item.title}</a
+                        >
+                      </li>
+                    `;
+                  })}
+                </ul>`
+            : null,
         value: {
           name: "Search " + app.details.title,
           context: "/",
@@ -3121,7 +3131,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             if (t1.index != t2.index) {
               HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
             }
-            let queryParam = Object.keys(values.detail.connection.operations.browse.search)[0]
+            let queryParam = Object.keys(
+              values.detail.connection.operations.browse.search
+            )[0];
             let searchDataMap = {};
             searchDataMap[queryParam] = input;
             HAXStore.appSearch.updateSearchValues(searchDataMap);
@@ -3140,7 +3152,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               ) {
                 gizmoType = HAXStore.guessGizmoType(map);
               }
-              let haxElements = HAXStore.guessGizmo(gizmoType, map, false, true);
+              let haxElements = HAXStore.guessGizmo(
+                gizmoType,
+                map,
+                false,
+                true
+              );
               // see if we got anything
               if (haxElements.length > 0) {
                 if (typeof haxElements[0].tag !== typeof undefined) {
@@ -3162,22 +3179,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               });
             });
             return results;
-          }
+          },
         },
         context: ["HAX", "/"],
         eventName: "super-daemon-run-program",
         path: "/sources/" + app.details.title.toLowerCase(),
       });
       // preconnect apps at registration time
-      if (
-        app.connection &&
-        app.connection.protocol &&
-        app.connection.url
-      ) {
+      if (app.connection && app.connection.protocol && app.connection.url) {
         let preconnectlink = document.createElement("link");
         preconnectlink.rel = "preconnect";
         preconnectlink.href =
-        app.connection.protocol + "://" + app.connection.url;
+          app.connection.protocol + "://" + app.connection.url;
         document.head.appendChild(preconnectlink);
       }
       // we don't care about this after it's launched
@@ -3660,7 +3673,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         let gizmo = detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = detail.tag;
-          
+
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];

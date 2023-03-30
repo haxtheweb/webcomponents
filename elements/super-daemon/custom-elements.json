@@ -304,6 +304,9 @@
           "name": "super-daemon-command-context-changed"
         },
         {
+          "name": "like-changed"
+        },
+        {
           "name": "super-daemon-run-program"
         },
         {

@@ -105,6 +105,282 @@
       ]
     },
     {
+      "name": "grade-book",
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`\n\nEvents:\n\n  * `simple-tag-drop` {`CustomEvent<{ value: string; }>`} - \n\n  * `simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `active-student` {`number`} - \n\n  * `active-assignment` {`number`} - \n\n  * `source-data` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - \n\n  * `sourceData` {`string`} - \n\n  * `activeSubmission` {`string`} - \n\n  * `database` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `hasFilePicker` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `assessmentView` - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `activeRubric` - \n\n  * `activeGrading` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "active-student",
+          "description": "`active-student` {`number`} - \n\nProperty: activeStudent"
+        },
+        {
+          "name": "active-assignment",
+          "description": "`active-assignment` {`number`} - \n\nProperty: activeAssignment"
+        },
+        {
+          "name": "source-data",
+          "description": "`source-data` {`string`} - \n\nProperty: sourceData"
+        },
+        {
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hashLoading",
+          "description": "`__hashLoading` {`boolean`} - \n\nProperty: __hashLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: googledocs"
+        },
+        {
+          "name": "ready",
+          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "displayMode",
+          "description": "`displayMode` {`number`} - \n\nProperty: displayMode\n\nDefault: 0"
+        },
+        {
+          "name": "totalScore",
+          "description": "`totalScore` {`number`} - \n\nProperty: totalScore\n\nDefault: 0"
+        },
+        {
+          "name": "activeStudentSubmissions",
+          "description": "`activeStudentSubmissions` {`any[]`} - \n\nProperty: activeStudentSubmissions\n\nDefault: "
+        },
+        {
+          "name": "scoreLock",
+          "description": "`scoreLock` {`boolean`} - \n\nProperty: scoreLock\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideGradeScale",
+          "description": "`hideGradeScale` {`boolean`} - \n\nProperty: hideGradeScale\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideActiveStudentOverview",
+          "description": "`hideActiveStudentOverview` {`boolean`} - \n\nProperty: hideActiveStudentOverview\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideActiveAssignment",
+          "description": "`hideActiveAssignment` {`boolean`} - \n\nProperty: hideActiveAssignment\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideSettings",
+          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideRubricInfo",
+          "description": "`hideRubricInfo` {`any[]`} - \n\nProperty: hideRubricInfo\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
+        },
+        {
+          "name": "like",
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
+        },
+        {
+          "name": "where",
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: term"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsimple-tag-drop",
+          "description": "`simple-tag-drop` {`CustomEvent<{ value: string; }>`} - "
+        },
+        {
+          "name": "onsimple-tag-dragstart",
+          "description": "`simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "grade-book-lite",
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`\n\nEvents:\n\n  * `simple-tag-drop` {`CustomEvent<{ value: string; }>`} - \n\n  * `simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `active-student` {`number`} - \n\n  * `active-assignment` {`number`} - \n\n  * `source-data` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - \n\n  * `sourceData` {`string`} - \n\n  * `activeSubmission` {`string`} - \n\n  * `database` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `hasFilePicker` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `assessmentView` - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `activeRubric` - \n\n  * `activeGrading` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "active-student",
+          "description": "`active-student` {`number`} - \n\nProperty: activeStudent"
+        },
+        {
+          "name": "active-assignment",
+          "description": "`active-assignment` {`number`} - \n\nProperty: activeAssignment"
+        },
+        {
+          "name": "source-data",
+          "description": "`source-data` {`string`} - \n\nProperty: sourceData"
+        },
+        {
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hashLoading",
+          "description": "`__hashLoading` {`boolean`} - \n\nProperty: __hashLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: googledocs"
+        },
+        {
+          "name": "ready",
+          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "displayMode",
+          "description": "`displayMode` {`number`} - \n\nProperty: displayMode\n\nDefault: 0"
+        },
+        {
+          "name": "totalScore",
+          "description": "`totalScore` {`number`} - \n\nProperty: totalScore\n\nDefault: 0"
+        },
+        {
+          "name": "activeStudentSubmissions",
+          "description": "`activeStudentSubmissions` {`any[]`} - \n\nProperty: activeStudentSubmissions\n\nDefault: "
+        },
+        {
+          "name": "scoreLock",
+          "description": "`scoreLock` {`boolean`} - \n\nProperty: scoreLock\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideGradeScale",
+          "description": "`hideGradeScale` {`boolean`} - \n\nProperty: hideGradeScale\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideActiveStudentOverview",
+          "description": "`hideActiveStudentOverview` {`boolean`} - \n\nProperty: hideActiveStudentOverview\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideActiveAssignment",
+          "description": "`hideActiveAssignment` {`boolean`} - \n\nProperty: hideActiveAssignment\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideSettings",
+          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideRubricInfo",
+          "description": "`hideRubricInfo` {`any[]`} - \n\nProperty: hideRubricInfo\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
+        },
+        {
+          "name": "like",
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
+        },
+        {
+          "name": "where",
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: term"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsimple-tag-drop",
+          "description": "`simple-tag-drop` {`CustomEvent<{ value: string; }>`} - "
+        },
+        {
+          "name": "onsimple-tag-dragstart",
+          "description": "`simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+        }
+      ]
+    },
+    {
       "name": "grade-book-pop-up",
       "description": "Attributes:\n\n  * `activeSubmission` {`string`} - \n\n  * `data` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `activeSubmission` {`string`} - \n\n  * `data` {`string`} - \n\n  * `t` - ",
       "attributes": [

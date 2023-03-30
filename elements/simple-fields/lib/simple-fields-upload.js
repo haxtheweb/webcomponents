@@ -194,44 +194,44 @@ class SimpleFieldsUpload extends I18NMixin(
   }
   get sources() {
     return html`
-    <simple-toolbar-button
-      id="browse"
-      ?disabled="${this.disabled}"
-      label="${this.t.upload}.."
-      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-      icon="icons:file-upload"
-      show-text-label
-      @click="${this._handleBrowse}"
-      controls="fieldset"
-      part="browse"
-    >
-    </simple-toolbar-button>
-    <simple-toolbar-button
-      icon="image:camera-alt"
-      ?disabled="${this.disabled}"
-      label="${this.t.takePhoto}.."
-      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-      @mousedown="${(e) => e.preventDefault()}"
-      @focus="${(e) => e.preventDefault()}"
-      @click="${this._handleCameraOption}"
-      controls="fieldset"
-      part="take-photo"
-      ?hidden="${!navigator.mediaDevices || this.noCamera}"
-    >
-    </simple-toolbar-button>
-    <simple-toolbar-button
-      icon="hardware:keyboard-voice"
-      ?disabled="${this.disabled}"
-      label="${this.t.recordAudio}.."
-      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-      @mousedown="${(e) => e.preventDefault()}"
-      @focus="${(e) => e.preventDefault()}"
-      @click="${this._handleAudioOption}"
-      controls="fieldset"
-      part="record-audio"
-      ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
-    >
-    </simple-toolbar-button>
+      <simple-toolbar-button
+        id="browse"
+        ?disabled="${this.disabled}"
+        label="${this.t.upload}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        icon="icons:file-upload"
+        show-text-label
+        @click="${this._handleBrowse}"
+        controls="fieldset"
+        part="browse"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        icon="image:camera-alt"
+        ?disabled="${this.disabled}"
+        label="${this.t.takePhoto}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        @mousedown="${(e) => e.preventDefault()}"
+        @focus="${(e) => e.preventDefault()}"
+        @click="${this._handleCameraOption}"
+        controls="fieldset"
+        part="take-photo"
+        ?hidden="${!navigator.mediaDevices || this.noCamera}"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        icon="hardware:keyboard-voice"
+        ?disabled="${this.disabled}"
+        label="${this.t.recordAudio}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        @mousedown="${(e) => e.preventDefault()}"
+        @focus="${(e) => e.preventDefault()}"
+        @click="${this._handleAudioOption}"
+        controls="fieldset"
+        part="record-audio"
+        ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
+      >
+      </simple-toolbar-button>
     `;
   }
   /**
@@ -259,7 +259,9 @@ class SimpleFieldsUpload extends I18NMixin(
           <div
             slot="drop-label"
             part="browse-area"
-            ?hidden="${this.option == "selfie" || this.option == "audio" || this.hideInput}"
+            ?hidden="${this.option == "selfie" ||
+            this.option == "audio" ||
+            this.hideInput}"
           >
             <simple-fields-url-combo
               id="url"

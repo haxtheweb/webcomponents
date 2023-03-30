@@ -203,7 +203,7 @@ class A11yDetails extends LitElement {
           "Accessible progressive disclosure with detail and summary",
         icon: "icons:arrow-drop-down",
         color: "grey",
-        tags: ["Content", "Details", "Summary", "Button", "Accessible"],
+        tags: ["Layout", "Details", "Summary", "Button", "Accessible"],
         handles: [
           {
             type: "",

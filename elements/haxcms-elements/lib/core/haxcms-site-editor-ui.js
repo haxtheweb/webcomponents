@@ -373,7 +373,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
-      return html`Expecting to see results? <a @click="${(e) => {HAXStore._haxStoreContribute("merlin", "POP,enhancement", SuperDaemonInstance.commandContext + ' ' + SuperDaemonInstance.like)}}">Make a suggestion</a> for what you thought you would see here!`;
+      return html`Expecting to see results?
+        <a
+          @click="${(e) => {
+            HAXStore._haxStoreContribute(
+              "merlin",
+              "POP,enhancement",
+              SuperDaemonInstance.commandContext +
+                " " +
+                SuperDaemonInstance.like
+            );
+          }}"
+          >Make a suggestion</a
+        >
+        for what you thought you would see here!`;
     };
     SuperDaemonInstance.appendContext("CMS");
     window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
@@ -911,19 +924,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.shadowRoot.querySelectorAll('[data-super-daemon-path]').forEach((item) => {
-      SuperDaemonInstance.defineOption({
-        title: item.getAttribute('data-super-daemon-label'),
-        icon: item.getAttribute('data-super-daemon-icon'),
-        tags: ["page", "operation", "command", "add", "create"],
-        value: {
-          target: item,
-        },
-        context: "CMS",
-        eventName: "super-daemon-element-click",
-        path: item.getAttribute('data-super-daemon-path'),
+    this.shadowRoot
+      .querySelectorAll("[data-super-daemon-path]")
+      .forEach((item) => {
+        SuperDaemonInstance.defineOption({
+          title: item.getAttribute("data-super-daemon-label"),
+          icon: item.getAttribute("data-super-daemon-icon"),
+          tags: ["page", "operation", "command", "add", "create"],
+          value: {
+            target: item,
+          },
+          context: "CMS",
+          eventName: "super-daemon-element-click",
+          path: item.getAttribute("data-super-daemon-path"),
+        });
       });
-    });
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
       title: this.t.savePageContent,
@@ -931,7 +946,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["CMS", "save", "page", "operation", "command"],
       value: {
         target: this,
-        method: "_editButtonTap"
+        method: "_editButtonTap",
       },
       context: "HAX",
       eventName: "super-daemon-element-method",
@@ -943,7 +958,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["CMS", "insights", "data", "operation"],
       value: {
         target: this,
-        method: "_insightsButtonTap"
+        method: "_insightsButtonTap",
       },
       context: "CMS",
       eventName: "super-daemon-element-method",
@@ -955,7 +970,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["CMS", "edit", "page", "operation", "command"],
       value: {
         target: this,
-        method: "_editButtonTap"
+        method: "_editButtonTap",
       },
       context: "CMS",
       eventName: "super-daemon-element-method",
@@ -968,7 +983,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this,
         method: "_manifestButtonTap",
-        args: [{target: this.shadowRoot.querySelector('#manifestbtn')}]
+        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
       context: "CMS",
       eventName: "super-daemon-element-method",
@@ -980,7 +995,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["CMS", "share"],
       value: {
         target: this,
-        method: "_shareButtonTap"
+        method: "_shareButtonTap",
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/share",
@@ -988,10 +1003,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.newJourney,
       icon: "add",
-      tags: ["CMS", "create","new site"],
+      tags: ["CMS", "create", "new site"],
       value: {
         target: this,
-        method: "_addButtonTap"
+        method: "_addButtonTap",
       },
       context: "CMS",
       eventName: "super-daemon-element-method",
@@ -1000,12 +1015,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.logOut,
       icon: "add",
-      tags: ["CMS", "user","logout"],
+      tags: ["CMS", "user", "logout"],
       value: {
         target: this,
-        method: "_logout"
+        method: "_logout",
       },
-      context: ["logged-in","CMS"],
+      context: ["logged-in", "CMS"],
       eventName: "super-daemon-element-method",
       path: "CMS/user/logout",
     });
@@ -1015,8 +1030,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "device:brightness-medium",
       tags: ["CMS", "darmMode"],
       value: {
-        target: this.shadowRoot.querySelector('haxcms-darkmode-toggle'),
-        method: "toggle"
+        target: this.shadowRoot.querySelector("haxcms-darkmode-toggle"),
+        method: "toggle",
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
@@ -1027,7 +1042,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "av:volume-up",
       tags: ["CMS", "sound"],
       value: {
-        target: this.shadowRoot.querySelector('.soundToggle'),
+        target: this.shadowRoot.querySelector(".soundToggle"),
       },
       eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
@@ -1036,9 +1051,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.outlineDesigner,
       icon: "hax:site-map",
-      tags: ["CMS", "outline", "designer", "site outline", "operation", "command"],
+      tags: [
+        "CMS",
+        "outline",
+        "designer",
+        "site outline",
+        "operation",
+        "command",
+      ],
       value: {
-        target: this.shadowRoot.querySelector('#outlinebutton'),
+        target: this.shadowRoot.querySelector("#outlinebutton"),
       },
       eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
@@ -1056,16 +1078,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: ">",
         program: async (input, values) => {
           let results = [];
-          ["clean-one", "clean-two", "learn-two-theme", "bootstrap-theme", "outline-player", "haxor-slevin"].forEach(async (name) => {
-            if (input == '' || name.includes(input)) {
+          [
+            "clean-one",
+            "clean-two",
+            "learn-two-theme",
+            "bootstrap-theme",
+            "outline-player",
+            "haxor-slevin",
+          ].forEach(async (name) => {
+            if (input == "" || name.includes(input)) {
               results.push({
-                title: name.replace('-theme','').replace('-', ' '),
+                title: name.replace("-theme", "").replace("-", " "),
                 icon: "image:style",
                 tags: ["theme"],
                 value: {
                   target: window.HAXCMS,
                   method: "setTheme",
-                  args: [name]
+                  args: [name],
                 },
                 eventName: "super-daemon-element-method",
                 context: [">", ">settings/theme/" + name],
@@ -1075,9 +1104,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           });
           return results;
         },
-      }
+      },
     });
-    
+
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(

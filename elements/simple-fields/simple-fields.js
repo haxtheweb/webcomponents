@@ -455,8 +455,7 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "a11y-collapse-group",
                   noWrap: true,
                   child: {
-                    import:
-                      "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+                    import: "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
                     element: "a11y-collapse",
                     noWrap: true,
                     labelSlot: "heading",

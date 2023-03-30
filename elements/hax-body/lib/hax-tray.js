@@ -115,7 +115,7 @@ class HaxTray extends I18NMixin(
           __position: "hax-align-left",
           __scale: 100,
         },
-        developer: {}
+        developer: {},
       },
     };
     this.collapsed = true;
@@ -614,8 +614,7 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   get contentButtons() {
-    return html`
-          <hax-tray-button
+    return html` <hax-tray-button
         event-name="content-edit"
         icon="settings"
         id="content-edit"
@@ -644,7 +643,7 @@ class HaxTray extends I18NMixin(
           working on.
         </div>
       </hax-tray-button>
-    <hax-tray-button
+      <hax-tray-button
         event-name="content-add"
         icon="hax:add-brick"
         id="content-add"
@@ -712,7 +711,7 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("/", {}, null, null, '', "sources");
+    SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
     SuperDaemonInstance.open();
   }
   get moreButtons() {
@@ -778,7 +777,9 @@ class HaxTray extends I18NMixin(
       selected-detail="${this.trayDetail}"
     >
       <div class="tray-detail-titlebar">
-        <h4>${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}</h4>
+        <h4>
+          ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
+        </h4>
       </div>
       ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
@@ -811,7 +812,7 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload ?hidden="${hidden}" show-sources ></hax-tray-upload>
+      <hax-tray-upload ?hidden="${hidden}" show-sources></hax-tray-upload>
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
@@ -1462,7 +1463,9 @@ class HaxTray extends I18NMixin(
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
           disabled: filteredProps.length < 1,
-          expanded: propName === "configure" && !HAXStore.isTextElement(this.activeNode),
+          expanded:
+            propName === "configure" &&
+            !HAXStore.isTextElement(this.activeNode),
           accordion: true,
         });
       };

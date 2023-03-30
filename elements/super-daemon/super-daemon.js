@@ -481,7 +481,10 @@ class SuperDaemon extends LitElement {
               @super-daemon-close="${this.close}"
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
-            >${this.noResultsSlot(this.like || this.programSearch)}</super-daemon-ui>
+              >${this.noResultsSlot(
+                this.like || this.programSearch
+              )}</super-daemon-ui
+            >
             <simple-icon-button
               id="cancel"
               icon="cancel"

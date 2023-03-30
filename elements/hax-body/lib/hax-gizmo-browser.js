@@ -82,8 +82,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
     this.items = [];
     this.categories = [];
-    this.like = '';
-    this.value = '';
+    this.like = "";
+    this.value = "";
     this.where = "index";
     this.recentGizmoList = [];
     this.t = {
@@ -251,10 +251,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   inputfilterChanged(e) {
     this.like = e.target.value;
-    if (this.like == '') {
+    if (this.like == "") {
       this.collapseAll();
-    }
-    else {
+    } else {
       this.expandAll();
     }
   }
@@ -264,9 +263,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
   }
   collapseAll() {
-    this.shadowRoot.querySelectorAll("a11y-collapse:not(#recent)").forEach((item) => {
-      item.expanded = false;
-    });
+    this.shadowRoot
+      .querySelectorAll("a11y-collapse:not(#recent)")
+      .forEach((item) => {
+        item.expanded = false;
+      });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -312,8 +313,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
    */
   resetList(list) {
     if (list) {
-      this.like = '';
-      this.value = '';
+      this.like = "";
+      this.value = "";
       const items = list.filter((gizmo, i) => {
         // remove inline and hidden references
         if (
@@ -329,10 +330,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       items.map((gizmo, i) => {
         items[i].index = gizmo.title + " " + gizmo.tag;
         if (gizmo.tags) {
-          items[i].index += " " + gizmo.tags.join(" ")
+          items[i].index += " " + gizmo.tags.join(" ");
         }
         if (gizmo.meta && gizmo.meta.author) {
-          items[i].index += " " + gizmo.meta.author
+          items[i].index += " " + gizmo.meta.author;
         }
       });
       this.items = [...items];

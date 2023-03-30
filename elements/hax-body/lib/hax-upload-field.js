@@ -38,11 +38,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       namespace: "hax",
     });
   }
-  
+
   static get tag() {
     return "hax-upload-field";
   }
-  
+
   _canUpload() {
     return !this.__allowUpload && HAXStore;
   }
@@ -173,23 +173,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
   // add button for merlin
   get sources() {
-    return html`
-    <simple-toolbar-button
-      ?disabled="${this.disabled}"
-      label="${this.t.selectMedia}.."
-      ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-      icon="hax:multimedia"
-      show-text-label
-      @click="${this._clickMediaButton}"
-      controls="fieldset"
-      part="merlin"
-      ?hidden="${!this.showSources}"
-    >
-    </simple-toolbar-button>
-    ${super.sources}`;
+    return html` <simple-toolbar-button
+        ?disabled="${this.disabled}"
+        label="${this.t.selectMedia}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        icon="hax:multimedia"
+        show-text-label
+        @click="${this._clickMediaButton}"
+        controls="fieldset"
+        part="merlin"
+        ?hidden="${!this.showSources}"
+      >
+      </simple-toolbar-button>
+      ${super.sources}`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("/", {}, null, null, '', "sources");
+    SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
     SuperDaemonInstance.open();
   }
 }

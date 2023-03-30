@@ -498,9 +498,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           : html`
               ${this.filtered.length === 0
                 ? html`<div class="no-results">
-                    ${this.t.noResultsForThisTerm}
-                  </div>
-                  <div class="slotted"><slot></slot></div>`
+                      ${this.t.noResultsForThisTerm}
+                    </div>
+                    <div class="slotted"><slot></slot></div>`
                 : html`
                     ${this.filtered.map(
                       (item, i) => html`

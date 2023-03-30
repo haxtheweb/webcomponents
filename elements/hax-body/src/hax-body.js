@@ -1148,14 +1148,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "/":
             case "!":
             case ">":
-              if (this.activeNode && this.activeNode.tagName === "P" && this.activeNode.textContent.trim() == '') {
+              if (
+                this.activeNode &&
+                this.activeNode.tagName === "P" &&
+                this.activeNode.textContent.trim() == ""
+              ) {
                 e.preventDefault();
                 SuperDaemonInstance.mini = true;
                 SuperDaemonInstance.activeNode = this.activeNode;
-                SuperDaemonInstance.runProgram('*', {}, null, null, null, this.activeNode.textContent);
+                SuperDaemonInstance.runProgram(
+                  "*",
+                  {},
+                  null,
+                  null,
+                  null,
+                  this.activeNode.textContent
+                );
                 SuperDaemonInstance.open();
               }
-            break;
+              break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
@@ -2623,7 +2634,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       case "super-daemon":
         SuperDaemonInstance.mini = true;
         SuperDaemonInstance.activeNode = this.activeNode;
-        SuperDaemonInstance.runProgram('*', {}, null, null, null, this.activeNode.textContent);
+        SuperDaemonInstance.runProgram(
+          "*",
+          {},
+          null,
+          null,
+          null,
+          this.activeNode.textContent
+        );
         SuperDaemonInstance.open();
         break;
       case "hide-context-menus":
@@ -2777,10 +2795,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // and we want to ensure it's in the next micro-task
     setTimeout(() => {
       node.scrollIntoView({
-          behavior: "smooth",
-          inline: "nearest",
-          block: "end",
-        });
+        behavior: "smooth",
+        inline: "nearest",
+        block: "end",
+      });
     }, 100);
   }
   undo() {

@@ -22,23 +22,25 @@ export const PrintBranchMixin = function (SuperClass) {
         printingPleaseWait: "Printing, please wait..",
       };
       this.__printBranchLoading = false;
-      this.dispatchEvent(new CustomEvent('super-daemon-define-option', {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          title: this.t.printPage,
-          icon: "icons:print",
-          tags: ["CMS", "print", "page"],
-          value: {
-            target: this,
-            method: "printBranchOfSite"
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-define-option", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            title: this.t.printPage,
+            icon: "icons:print",
+            tags: ["CMS", "print", "page"],
+            value: {
+              target: this,
+              method: "printBranchOfSite",
+            },
+            context: "CMS",
+            eventName: "super-daemon-element-method",
+            path: "CMS/page/print",
           },
-          context: "CMS",
-          eventName: "super-daemon-element-method",
-          path: "CMS/page/print",
-        }
-      }));
+        })
+      );
     }
 
     static get properties() {

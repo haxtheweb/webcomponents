@@ -99,15 +99,24 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
   }
 
   clickLink(id) {
-    console.log(this.shadowRoot.querySelector('map-menu').shadowRoot.querySelector('#' + id));
-    let target = this.shadowRoot.querySelector('map-menu').shadowRoot.querySelector('#' + id);
+    console.log(
+      this.shadowRoot
+        .querySelector("map-menu")
+        .shadowRoot.querySelector("#" + id)
+    );
+    let target = this.shadowRoot
+      .querySelector("map-menu")
+      .shadowRoot.querySelector("#" + id);
     if (target) {
-      if (target.shadowRoot.querySelector('a')) {
-        target.shadowRoot.querySelector('a').click();
+      if (target.shadowRoot.querySelector("a")) {
+        target.shadowRoot.querySelector("a").click();
       }
       // headers are nested
-      else if (target.shadowRoot.querySelector('#' + id)) {
-        target.shadowRoot.querySelector('#' + id).shadowRoot.querySelector('a').click();
+      else if (target.shadowRoot.querySelector("#" + id)) {
+        target.shadowRoot
+          .querySelector("#" + id)
+          .shadowRoot.querySelector("a")
+          .click();
       }
     }
   }
@@ -115,24 +124,26 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "routerManifest") {
         this.routerManifest.items.map((item) => {
-          this.dispatchEvent(new CustomEvent('super-daemon-define-option', {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              title: item.title,
-              icon: "link",
-              tags: ["CMS", "page", "navigation"],
-              value: {
-                target: this,
-                method: "clickLink",
-                args: [item.id]
+          this.dispatchEvent(
+            new CustomEvent("super-daemon-define-option", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                title: item.title,
+                icon: "link",
+                tags: ["CMS", "page", "navigation"],
+                value: {
+                  target: this,
+                  method: "clickLink",
+                  args: [item.id],
+                },
+                context: "CMS",
+                eventName: "super-daemon-element-method",
+                path: "CMS/navigation/page",
               },
-              context: "CMS",
-              eventName: "super-daemon-element-method",
-              path: "CMS/navigation/page",
-            }
-          }));
+            })
+          );
         });
       }
     });

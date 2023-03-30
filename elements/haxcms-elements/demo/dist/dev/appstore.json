@@ -12,14 +12,14 @@
         "tags": ["video"],
         "tos": [
           {
-              "title": "YouTube Terms of Service",
-              "link": "https://www.youtube.com/t/terms"
+            "title": "YouTube Terms of Service",
+            "link": "https://www.youtube.com/t/terms"
           },
           {
-              "title": "Google Privacy Policy",
-              "link": "https://policies.google.com/privacy"
+            "title": "Google Privacy Policy",
+            "link": "https://policies.google.com/privacy"
           }
-      ]
+        ]
       },
       "connection": {
         "protocol": "https",

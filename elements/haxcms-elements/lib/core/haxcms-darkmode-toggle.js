@@ -9,7 +9,6 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
       this.checked = toJS(store.darkMode);
     });
   }
-  
 
   static get tag() {
     return "haxcms-darkmode-toggle";

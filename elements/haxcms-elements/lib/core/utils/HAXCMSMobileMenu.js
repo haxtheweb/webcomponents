@@ -44,23 +44,25 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         }
         this.__disposer.push(reaction);
       });
-      this.dispatchEvent(new CustomEvent('super-daemon-define-option', {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          title: this.t.toggleSiteMenu,
-          icon: "hax:menu-open",
-          tags: ["CMS", "site", "menu"],
-          value: {
-            target: this,
-            method: "__HAXCMSMobileMenuClickToggle"
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-define-option", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            title: this.t.toggleSiteMenu,
+            icon: "hax:menu-open",
+            tags: ["CMS", "site", "menu"],
+            value: {
+              target: this,
+              method: "__HAXCMSMobileMenuClickToggle",
+            },
+            context: "CMS",
+            eventName: "super-daemon-element-method",
+            path: "CMS/site/menu/toggle",
           },
-          context: "CMS",
-          eventName: "super-daemon-element-method",
-          path: "CMS/site/menu/toggle",
-        }
-      }));
+        })
+      );
     }
     static get styles() {
       let styles = [];

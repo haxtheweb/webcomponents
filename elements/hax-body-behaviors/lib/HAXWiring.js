@@ -802,7 +802,7 @@ export class HAXWiring {
               validationType: "url",
             },
           ],
-          developer: []
+          developer: [],
         },
         saveOptions: {
           wipeSlot: false,
