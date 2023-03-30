@@ -1969,6 +1969,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });
@@ -3185,6 +3186,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         context: ["HAX", "/"],
         eventName: "super-daemon-run-program",
         path: "/sources/" + app.details.title.toLowerCase(),
+        priority: app.details.title.toLowerCase() === "local files" ? -100 : 0,
       });
       // preconnect apps at registration time
       if (app.connection && app.connection.protocol && app.connection.url) {

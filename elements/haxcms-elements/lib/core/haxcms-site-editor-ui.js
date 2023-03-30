@@ -997,6 +997,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this,
         method: "_shareButtonTap",
       },
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "CMS/action/share",
     });
@@ -1028,11 +1029,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: "Dark mode toggle",
       icon: "device:brightness-medium",
-      tags: ["CMS", "darmMode"],
+      tags: ["CMS", "dark mode"],
       value: {
         target: this.shadowRoot.querySelector("haxcms-darkmode-toggle"),
         method: "toggle",
       },
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
     });
@@ -1044,6 +1046,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this.shadowRoot.querySelector(".soundToggle"),
       },
+      context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
     });
@@ -1062,6 +1065,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this.shadowRoot.querySelector("#outlinebutton"),
       },
+      context: ["CMS"],
       eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
     });

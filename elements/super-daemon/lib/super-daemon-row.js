@@ -114,6 +114,7 @@ export class SuperDaemonRow extends LitElement {
           width: 30%;
           line-height: 32px;
           height: 64px;
+          text-align: left;
           overflow: hidden;
         }
         :host([mini]) .tags {
@@ -164,6 +165,13 @@ export class SuperDaemonRow extends LitElement {
           padding: 6px 4px;
           margin: 4px auto;
           font-size: 9px;
+        }
+        .more {
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
+          width: 40px;
+          height: 40px;
+          display: block;
         }
         summary {
           display: none;
@@ -292,13 +300,14 @@ export class SuperDaemonRow extends LitElement {
         </div>
         ${this.more
           ? html`<simple-icon-button
+              class="more"
               label="More details"
               icon="more-vert"
               aria-controls="details"
               @click="${this.toggleDetailsClick}"
               @keydown="${this.toggleDetailsKey}"
             ></simple-icon-button>`
-          : ``}
+          : html`<div class="more"></div>`}
       </button>
       ${this.more
         ? html`<details

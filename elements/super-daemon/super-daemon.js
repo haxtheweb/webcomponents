@@ -187,6 +187,18 @@ class SuperDaemon extends LitElement {
   // minor validation of option; as we have a singleton this is faster when required
   defineOption(option) {
     if (option && option.value && option.title && option.eventName) {
+      if (!option.tags) {
+        option.tags = [];
+      }
+      if (!option.key) {
+        option.key = "";
+      }
+      if (!option.path) {
+        option.path = "";
+      }
+      if (!option.priority) {
+        option.priority = 0;
+      }
       option.index =
         option.tags.join(" ") +
         " " +
@@ -317,7 +329,7 @@ class SuperDaemon extends LitElement {
     }
   }
   filterItems(items, context) {
-    return items.filter((item) => {
+    let tmpItems = items.filter((item) => {
       // ensuire we have a context at all
       if (item.context) {
         // if we're in a global context, include all global context results
@@ -332,6 +344,16 @@ class SuperDaemon extends LitElement {
         return results.length !== 0;
       }
       return true;
+    });
+    // order alphabeticly
+    tmpItems.sort((a, b) => {
+      var textA = a.title.toUpperCase();
+      var textB = b.title.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    // then on priority
+    return tmpItems.sort((a, b) => {
+      return (a.priority < b.priority) ? -1 : (a.priority > b.priority) ? 1 : 0;
     });
   }
   // can't directly set context
