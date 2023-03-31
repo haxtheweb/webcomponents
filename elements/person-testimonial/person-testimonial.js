@@ -86,6 +86,25 @@ class PersonTestimonial extends SimpleColors {
           transform: rotateY(180deg);
         }
 
+        :host([data-hax-ray][data-hax-active]) [data-layout-slotname] {
+          outline: var(
+            ---hax-body-editable-outline,
+            1px solid var(--hax-ui-disabled-color, #ddd)
+          );
+          outline-style: dotted;
+          outline-offset: var(--hax-layout-container-outline-offset, 0px);
+        }
+        :host([data-hax-ray][data-hax-active]) [data-layout-slotname]:hover {
+          outline-style: solid;
+        }
+        :host([data-hax-ray][data-hax-active].hax-hovered) [data-layout-slotname].active {
+          outline: var(
+            --hax-body-active-drag-outline,
+            1px solid var(--hax-ui-color-accent, #009dc7)
+          );
+          outline-width: 2px;
+        }
+
         #quoteend {
           display: inline-flex;
         }
@@ -138,7 +157,7 @@ class PersonTestimonial extends SimpleColors {
           : ``}
         <div class="arrow_right"></div>
         <div class="wrap">
-          <div class="testimonial">
+          <div class="testimonial" data-layout-slotname="Quote">
             <svg id="quotestart">
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
