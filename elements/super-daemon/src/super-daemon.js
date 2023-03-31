@@ -30,6 +30,7 @@ class SuperDaemon extends LitElement {
       program: { type: String },
       programSearch: { type: String },
       like: { type: String },
+      value: { type: String },
       mini: { type: Boolean },
       activeNode: { type: Object },
     };
@@ -39,7 +40,12 @@ class SuperDaemon extends LitElement {
    */
   constructor() {
     super();
-    this.activeNode = null; // used when in mini mode to know what to point to
+    // used when in mini mode to know what to point to and how to focus after the fact
+    this.activeSelection = null;
+    this.activeRange = null;
+    this.activeNode = null;
+
+    this.value = '';
     this.icon = "hardware:keyboard-return";
     this.context = [];
     this.opened = false;
@@ -85,6 +91,7 @@ class SuperDaemon extends LitElement {
   disconnectedCallback() {
     super.connectedCallback();
     window.removeEventListener("keydown", this.keyHandler.bind(this));
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
     window.removeEventListener(
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this)
@@ -199,14 +206,47 @@ class SuperDaemon extends LitElement {
       if (!option.priority) {
         option.priority = 0;
       }
-      option.index =
-        option.tags.join(" ") +
-        " " +
-        option.title +
-        " " +
-        option.key +
-        " " +
-        option.path;
+      // create new object from existing so we can build an index
+      // remove icon, image, value, eventName as these are not searchable values
+      // then create an idex by making everything else into a space separated string
+      let indexBuilder = {...option};
+      delete indexBuilder.icon;
+      delete indexBuilder.image;
+      delete indexBuilder.value;
+      delete indexBuilder.eventName;
+      indexBuilder = Object.values(indexBuilder).filter((i) => {
+        if (!['boolean','number'].includes(typeof i) && i !== "" && i !== null && i !== undefined) {
+          return true;
+        }
+      });
+      let index = [];
+      indexBuilder.map((i) => {
+        if (typeof i === 'string') {
+          // helps w/ splitting on / or else it's just a single item anyway
+          let q = i.split('/');
+          q.map((j) => {
+            if (!["","*","/"," ","?",">"].includes(j)) {
+              index.push(j.toLowerCase());
+            }
+          });
+        }
+        else if (Array.isArray(i)) {
+          i.map((j) => {
+            if (!["","*","/"," ","?",">"].includes(j)) {
+              index.push(j.toLowerCase());
+            }
+          });
+        }
+        else {
+          // this shouldn't be possible so ignore the value..
+        }
+      });
+      // combine all the values into a single string removing silly things that might slip through
+      let tmp = index.join(' ').replace(/\*/g, '').replace(/\?/g, '');
+      // use a set to remove duplicates
+      index = [...new Set(tmp.split(" "))];
+      // clean index of words :) but also include path as a whole phrase
+      option.index = index.join(' ') + ' ' + option.path;
       this.allItems.push(option);
     }
   }
@@ -232,7 +272,7 @@ class SuperDaemon extends LitElement {
         }
       }
       if (e.key == "Escape" && this.opened) {
-        this.opened = false;
+        this.miniCancel();
       }
     }
   }
@@ -302,9 +342,11 @@ class SuperDaemon extends LitElement {
           min-width: 280px;
         }
         absolute-position-behavior super-daemon-ui {
-          margin-top: -28px;
+          margin-top: -46px;
           background-color: white;
           width: 400px;
+          margin-left: 14px;
+          padding-top: 8px;
         }
       `,
     ];
@@ -312,8 +354,10 @@ class SuperDaemon extends LitElement {
   /**
    * Close the modal and do some clean up
    */
-  close(e) {
+  close() {
+    // clean up event for click away in mini mode if active
     this.opened = false;
+    this.activeNode = null;
     this.loading = false;
     this.like = "";
     this.mini = false;
@@ -322,6 +366,13 @@ class SuperDaemon extends LitElement {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
+    const event = new MouseEvent("click", {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+    });
+    document.dispatchEvent(event);
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
@@ -368,6 +419,30 @@ class SuperDaemon extends LitElement {
       this.context.splice(this.context.indexOf(context), 1);
     }
   }
+  // if we click away, take the active value and apply it to the line
+  clickOnMiniMode(e) {
+    if (e.target !== this) {
+      this.miniCancel();
+    }
+  }
+  // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
+  miniCancel() {
+    if (this.activeNode && this.activeNode.focus && this.mini && this.activeRange && this.activeSelection) {
+      try {
+        this.activeNode.textContent = this.value;
+        this.activeNode.focus();            
+        this.activeRange.setStart(this.activeNode, 0);
+        this.activeRange.collapse(true);
+        this.activeSelection.removeAllRanges();
+        this.activeSelection.addRange(this.activeRange);
+        this.activeSelection.selectAllChildren(this.activeNode);
+        this.activeSelection.collapseToEnd();
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+    this.close();
+  }
   open() {
     // filter to context
     this.items = this.filterItems(this.allItems, this.context);
@@ -398,7 +473,12 @@ class SuperDaemon extends LitElement {
           .shadowRoot.querySelector("#backdrop").style.right = 0;
       }
     }
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
     setTimeout(() => {
+      // ensure if we click away from the UI that we close and clean up
+      if (this.mini) {        
+        window.addEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
+      }
       this.shadowRoot
         .querySelector("super-daemon-ui")
         .shadowRoot.querySelector("simple-fields-field")
@@ -454,8 +534,8 @@ class SuperDaemon extends LitElement {
             justify
             position="bottom"
             allow-overlap
-            auto
             sticky
+            auto
             .target="${this.activeNode}"
             ?hidden="${!this.opened}"
           >
@@ -519,6 +599,8 @@ class SuperDaemon extends LitElement {
     this.like = e.detail.value;
   }
   async inputfilterChanged(e) {
+    // update this value as far as what's being typed no matter what it is
+    this.value = e.detail.value;
     if (this.programName && this._programToRun) {
       this.loading = true;
       this.programResults = await this._programToRun(

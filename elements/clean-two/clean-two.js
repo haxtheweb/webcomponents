@@ -558,6 +558,7 @@ class CleanTwo extends HAXCMSOperationButtons(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".body-wrapper");
+      window.AbsolutePositionStateManager.requestAvailability().scrollTarget = this.HAXCMSThemeSettings.scrollTarget;
   }
 
   searchItemSelected(e) {

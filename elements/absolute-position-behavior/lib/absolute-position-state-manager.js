@@ -36,6 +36,9 @@ class AbsolutePositionStateManager extends LitElement {
   // properties available to custom element for data binding
   static get properties() {
     return {
+      scrollTarget: {
+        type: Object,
+      },
       /**
        * Stores an array of all elements using manager.
        */
@@ -204,7 +207,7 @@ class AbsolutePositionStateManager extends LitElement {
     document.removeEventListener("load", this.updateElements);
     window.removeEventListener("resize", this._handleResize);
     if (this.__watchSticky)
-      window.removeEventListener("scroll", this._handleScroll);
+      this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }
 
   /**
@@ -236,12 +239,16 @@ class AbsolutePositionStateManager extends LitElement {
       this.elements.filter((el) => el.sticky).length > 0
     ) {
       this.__watchSticky = true;
-      window.addEventListener("scroll", this._handleScroll);
+      this.scrollTarget.addEventListener("scroll", this._handleScroll, {
+        passive: true,
+      });
     } else if (
       this.__watchSticky &&
       this.elements.filter((el) => el.sticky).length < 1
     ) {
-      window.removeEventListener("scroll", this._handleScroll);
+      this.scrollTarget.removeEventListener("scroll", this._handleScroll, {
+        passive: true,
+      });
       this.__watchSticky = false;
     }
   }

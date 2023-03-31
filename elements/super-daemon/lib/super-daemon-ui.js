@@ -10,6 +10,7 @@ import "./super-daemon-row.js";
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   constructor() {
     super();
+    this.multiMatch = true;
     this._defaultTextEmpty = "No results for this term";
     this.t.noResultsForThisTerm = this._defaultTextEmpty;
     this.t.whatAreYouLookingFor = "What are you looking for?";
@@ -221,6 +222,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         }
 
         @media screen and (max-width: 800px) {
+          .results-stats,
+          .common-tasks-text,
+          .question-tags {
+            display: none;
+          }
           .results {
             padding: 0px;
           }
@@ -277,7 +283,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           --super-daemon-row-icon: 24px;
           border-radius: 0px;
         }
-        :host([mini]) .results-stats {
+        :host([mini]) .results-stats,
+        :host([mini]) .common-tasks-text,
+        :host([mini]) .question-tags {
           display: none;
         }
         :host([mini]) .results {
@@ -576,7 +584,7 @@ ${this.questionTags.map(
   ${this.loading
     ? html`<div class="loading">${this.t.loadingResults}..</div>`
     : html`
-        ${this.filtered.length === 0
+        ${!this.filtered.length || this.filtered.length === 0
           ? html`<div class="no-results">
                 ${this.t.noResultsForThisTerm}
               </div>

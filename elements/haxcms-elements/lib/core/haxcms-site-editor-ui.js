@@ -1168,6 +1168,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         } else {
           this.rpgHat = "none";
         }
+        SuperDaemonInstance.close();
         // observer
         this._editModeChanged(this[propName], oldValue);
         // notify

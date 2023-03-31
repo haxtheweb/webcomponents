@@ -628,6 +628,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
+      window.AbsolutePositionStateManager.requestAvailability().scrollTarget = this.HAXCMSThemeSettings.scrollTarget;
+
     this._bootstrapLink = this._generateBootstrapLink();
   }
 

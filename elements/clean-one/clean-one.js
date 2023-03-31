@@ -876,6 +876,8 @@ class CleanOne extends HAXCMSRememberRoute(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#body");
+      window.AbsolutePositionStateManager.requestAvailability().scrollTarget = this.HAXCMSThemeSettings.scrollTarget;
+
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#haxcms-theme-top");

@@ -2089,7 +2089,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "+": { tag: "ul", content: "<li></li>" },
       "---": { tag: "hr" },
       "***": { tag: "hr" },
-      ___: { tag: "hr" },
+      "___": { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
     };

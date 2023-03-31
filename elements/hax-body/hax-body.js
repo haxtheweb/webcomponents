@@ -1087,7 +1087,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
-                ["1", "#", "`", ">", "-", "!"].includes(
+                ["1", "#", "`", ">", "-"].includes(
                   this.activeNode.textContent[0]
                 )
               ) {
@@ -1146,23 +1146,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this._useristyping = true;
               break;
             case "/":
-            case "!":
-            case ">":
+              const rng = HAXStore.getRange();
               if (
                 this.activeNode &&
-                this.activeNode.tagName === "P" &&
-                this.activeNode.textContent.trim() == ""
+                HAXStore.isTextElement(this.activeNode) &&
+                rng.commonAncestorContainer.textContent.trim() == ""
               ) {
                 e.preventDefault();
                 SuperDaemonInstance.mini = true;
-                SuperDaemonInstance.activeNode = this.activeNode;
+                SuperDaemonInstance.activeRange = rng;
+                SuperDaemonInstance.activeSelection = HAXStore.getSelection();
+                
+                SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
                   "*",
                   {},
                   null,
                   null,
                   null,
-                  this.activeNode.textContent
+                  rng.commonAncestorContainer.textContent.trim()
                 );
                 SuperDaemonInstance.open();
               }
@@ -1219,7 +1221,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 if (
                   this.activeNode &&
                   this.activeNode.tagName === "P" &&
-                  ["1", "#", "`", ">", "-", "!"].includes(
+                  ["1", "#", "`", ">", "-"].includes(
                     this.activeNode.textContent[0]
                   )
                 ) {
@@ -1257,27 +1259,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (el.tagName === "HR") {
         // then insert a P which will assume active status
         this.haxInsert("p", "", {});
-      }
-    }
-    // @todo handle this differently
-    // look for wildcard / web component pro insert mode
-    else if (guess[0] === "!") {
-      let tag = guess.replace("!", "").replaceAll(/ /g, "");
-      // see if this exists
-      if (HAXStore.elementList[tag]) {
-        // generate schema from the tag
-        let schema = HAXStore.haxSchemaFromTag(tag);
-        let target;
-        if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
-          target = haxElementToNode(schema.demoSchema[0]);
-        } else {
-          target = document.createElement(tag);
-        }
-        this.haxReplaceNode(this.activeNode, target);
-        this.__focusLogic(target);
-      } else {
-        // do nothing, we tried to be a pro but failed :(
-        HAXStore.toast(`${tag} is not a valid tag`);
       }
     }
   }
@@ -2632,15 +2613,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         HAXStore.haxTray.trayDetail = "content-edit";
         break;
       case "super-daemon":
+        const rng = HAXStore.getRange();
         SuperDaemonInstance.mini = true;
-        SuperDaemonInstance.activeNode = this.activeNode;
+        SuperDaemonInstance.activeRange = rng;
+        SuperDaemonInstance.activeSelection = HAXStore.getSelection();
+        let active = this.activeNode;
+        if (rng.commonAncestorContainer.tagName) {
+          active = rng.commonAncestorContainer;
+        }
+        else if (rng.commonAncestorContainer.parentNode && rng.commonAncestorContainer.parentNode.tagName) {
+          active = rng.commonAncestorContainer.parentNode;
+        }
+        SuperDaemonInstance.activeNode = active;
         SuperDaemonInstance.runProgram(
           "*",
           {},
           null,
           null,
           null,
-          this.activeNode.textContent
+          active.textContent.trim()
         );
         SuperDaemonInstance.open();
         break;
@@ -2940,9 +2931,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
       );
-      window.addEventListener("scroll", this._keepContextVisible.bind(this), {
-        passive: true,
-      });
       window.addEventListener("resize", this._keepContextVisible.bind(this), {
         passive: true,
       });
@@ -3232,7 +3220,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
       );
-      window.removeEventListener("scroll", this._keepContextVisible.bind(this));
       window.removeEventListener("resize", this._keepContextVisible.bind(this));
       window.removeEventListener(
         "hax-context-item-selected",
