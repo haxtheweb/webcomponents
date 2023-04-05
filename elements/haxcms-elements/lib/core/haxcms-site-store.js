@@ -401,6 +401,9 @@ class Store {
         let metadata = i.metadata;
         let location = i.location;
         let slug = i.slug;
+        if (metadata && metadata.pageType) {
+          i.metadata.icon = this.iconFromPageType(metadata.pageType);
+        }
         return Object.assign({}, i, {
           parentLocation: parentLocation,
           parentSlug: parentSlug,
@@ -451,6 +454,34 @@ class Store {
       return Object.assign({}, manifest, {
         items: manifestItems,
       });
+    }
+  }
+  iconFromPageType(type) {
+    switch(type) {
+      case "content":
+        return "lrn:page";
+      case "assessment":
+        return "lrn:assessment";
+      case "quiz":
+        return "lrn:quiz";
+      case "submission":
+        return "icons:move-to-inbox";
+      case "lesson":
+        return "hax:lesson";
+      case "module":
+        return "hax:module";
+      case "unit":
+          return "hax:unit";
+      case "task":
+        return "hax:task";
+      case "activity":
+        return "hax:ticket";
+      case "project":
+        return "hax:bulletin-board";
+      case "practice":
+        return "hax:shovel";
+      default:
+        return "";
     }
   }
   /**

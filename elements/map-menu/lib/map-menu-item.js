@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 class MapMenuItem extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
@@ -128,7 +129,8 @@ class MapMenuItem extends I18NMixin(LitElement) {
       <a tabindex="-1" href="${this.url}">
         <button id="wrapper" noink>
           ${this.icon
-            ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
+            ? html` <simple-icon-lite icon="${this.icon}" id="icon"></simple-icon-lite>
+            ${this.iconLabel ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`:``} `
             : html`<div class="no-icon"></div>`}
           <span class="title">${this.itemtitle}</span>
           ${!this.published
@@ -148,6 +150,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.icon = null;
+    this.iconLabel = null;
     this.itemtitle = "";
     this.url = "";
     this.active = false;
@@ -173,6 +176,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
       icon: {
         type: String,
         reflect: true,
+      },
+      iconLabel: {
+        type: String,
+        attribute: "icon-label",
       },
       itemtitle: {
         type: String,

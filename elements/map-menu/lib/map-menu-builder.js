@@ -35,6 +35,9 @@ class MapMenuBuilder extends LitElement {
                       icon="${item.metadata && item.metadata.icon
                         ? item.metadata.icon
                         : null}"
+                      icon-label="${item.metadata && item.metadata.pageType
+                        ? item.metadata.pageType
+                        : ""}"
                       avatar-label="${item.metadata && item.metadata.avatarLabel
                         ? item.metadata.avatarLabel
                         : ""}"
@@ -54,6 +57,9 @@ class MapMenuBuilder extends LitElement {
                       url="${item.slug}"
                       icon="${item.metadata && item.metadata.icon
                         ? item.metadata.icon
+                        : ""}"
+                      icon-label="${item.metadata && item.metadata.pageType
+                        ? item.metadata.pageType
                         : ""}"
                       selected="${this.selected}"
                       ?published="${item.metadata.published}"

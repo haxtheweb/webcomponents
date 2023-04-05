@@ -40,6 +40,7 @@ class MapMenuSubmenu extends LitElement {
   }
   constructor() {
     super();
+    this.iconLabel = null;
     this.opened = false;
     this.collapsable = true;
     this.expandChildren = false;
@@ -92,6 +93,7 @@ class MapMenuSubmenu extends LitElement {
           url="${this.url}"
           selected="${this.selected}"
           icon="${this.icon}"
+          icon-label="${this.iconLabel}"
           slot="heading"
           ?published="${this.published}"
           ?locked="${this.locked}"
@@ -115,6 +117,10 @@ class MapMenuSubmenu extends LitElement {
       },
       itemtitle: {
         type: String,
+      },
+      iconLabel: {
+        type: String,
+        attribute: "icon-label",
       },
       avatarLabel: {
         type: String,

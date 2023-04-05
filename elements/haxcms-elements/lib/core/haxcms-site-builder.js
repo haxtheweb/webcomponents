@@ -683,6 +683,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         item-id="${store.activeItem.id}"
         slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
+        page-type="${store.activeItem.metadata.pageType}"
         break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${

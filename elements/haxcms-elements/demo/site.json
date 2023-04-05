@@ -63,6 +63,7 @@
       "title": "course-intro",
       "description": "",
       "metadata": {
+        "pageType": "content",
         "created": 1565903961,
         "updated": 1661360465,
         "readtime": 1,
@@ -107,6 +108,7 @@
       "metadata": {
         "created": 1597690877,
         "updated": 1617805490,
+        "pageType": "submission",
         "readtime": 1,
         "contentDetails": {
           "headings": 0,
@@ -215,6 +217,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
+        "pageType": "lesson",
         "files": [
           {
             "path": "/var/www/html/_sites/haxtheweb/files/demo.csv",
@@ -392,6 +395,7 @@
       "metadata": {
         "created": 1563972322,
         "updated": 1617805490,
+        "pageType": "task",
         "readtime": 2,
         "contentDetails": {
           "headings": 6,
@@ -534,6 +538,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
+        "pageType": "project",
         "readtime": 1,
         "contentDetails": {
           "headings": 1,
@@ -733,6 +738,7 @@
       "metadata": {
         "created": 1549428503,
         "updated": 1617805490,
+        "pageType": "unit",
         "readtime": 1,
         "contentDetails": {
           "headings": 0,
@@ -1019,6 +1025,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
+        "pageType": "quiz",
         "files": [
           {
             "path": "/var/www/html/_sites/haxtheweb/files/scale-50/d8cdnimage.jpg",
@@ -1216,6 +1223,7 @@
       "metadata": {
         "created": 1548826475,
         "updated": 1617805490,
+        "pageType": "module",
         "readtime": 1,
         "contentDetails": {
           "headings": 1,
@@ -1324,6 +1332,7 @@
       "metadata": {
         "created": 1550643005,
         "updated": 1617805490,
+        "pageType": "content",
         "files": [
           {
             "path": "/var/www/html/_sites/haxtheweb/files/HAXCms workflow.jpg",
@@ -1420,6 +1429,7 @@
       "metadata": {
         "created": 1565279009,
         "updated": 1617805490,
+        "pageType": "assessment",
         "readtime": 1,
         "contentDetails": {
           "headings": 1,
@@ -1482,6 +1492,7 @@
         "updated": 1617805490,
         "published": false,
         "readtime": 1,
+        "pageType": "activity",
         "contentDetails": {
           "headings": 0,
           "paragraphs": 2,
@@ -1526,6 +1537,7 @@
       "metadata": {
         "created": 1548828434,
         "updated": 1917805490,
+        "pageType": "practice",
         "files": [
           {
             "path": "/var/www/html/_sites/haxtheweb/files/59453a821222752c90fa970c937c2c396bff61f5-ngdle-university-faculty-side.jpg",
