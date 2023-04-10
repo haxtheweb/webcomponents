@@ -22,6 +22,7 @@
       import '../lib/ebook-button.js';
       import '../lib/lrn-h5p.js';
       import '../lib/course-intro.js';
+      import '../lib/learning-component.js';
       import '../lib/activity-box.js';
       import '../lib/worksheet-download.js';
     </script>
@@ -32,6 +33,34 @@
       <h3>Basic usage of activity-box</h3>
       <demo-snippet>
         <template>
+          <learning-component subtitle="Unit 1">
+            <span>
+              <ul>
+                <li>Learning Objective 1...</li>
+                <li>Learning Objective 2...</li>
+                <li>Learning Objective 3...</li>
+                <li>Learning Objective 4...</li>
+                <li>Learning Objective 5...</li>
+              </ul>
+            </span>
+          </learning-component>
+          <learning-component type="knowledge" subtitle="Unit 1">
+            <span>Did you know that the topic in this lessson relates to...</span>
+          </learning-component>
+          <learning-component type="connection" subtitle="Unit 1">
+            <span>This specific chemistry foundation is related to...</span>
+          </learning-component>
+          <learning-component type="strategy" subtitle="Draw a Diagram" url="https://www.google.com">
+            <span>In order to better understand this complex process, try drawing a diagam to help undestand the concept...</span>
+          </learning-component>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic usage of course-intro</h3>
+      <demo-snippet>
+        <template>
           <course-intro></course-intro>
         </template>
       </demo-snippet>
@@ -40,18 +69,15 @@
       <h3>Basic usage of activity-box</h3>
       <demo-snippet>
         <template>
-          <activity-box icon="cog">
+          <activity-box icon="settings">
             Drag &amp; drop - drag the icons to the matching descriptions.
           </activity-box>
-          <activity-box>
-            Drag &amp; drop - drag the icons to the matching descriptions.
-          </activity-box>
-          <activity-box icon="bulb">
+          <activity-box icon="save">
             Drag &amp; drop - drag the icons to the matching descriptions.
           </activity-box>
         </template>
       </demo-snippet>
-      <h3>Basic course-design demo of assets</h3>
+      <h3>block-quote</h3>
       <demo-snippet>
         <template>
           <block-quote citation="Albert Einstein">
@@ -63,16 +89,19 @@
           </block-quote>
         </template>
       </demo-snippet>
+      <h3>worksheet-download</h3>
       <demo-snippet>
         <template>
           <worksheet-download title="Download site schema" link="https://btopro.com/site.json"></worksheet-download>
         </template>
       </demo-snippet>
+      <h3>ebook-button</h3>
       <demo-snippet>
         <template>
           <ebook-button title="Check out the website text" link="https://btopro.com/"></ebook-button>
         </template>
       </demo-snippet>
+      <h3>lrn-h5p</h3>
       <demo-snippet>
         <template>
           <lrn-h5p><iframe src="https://h5p.org/h5p/embed/612" width="1090" height="639" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe></lrn-h5p>

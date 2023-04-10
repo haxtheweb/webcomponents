@@ -15,6 +15,10 @@ export const HaxIconsetManifest = [
       "phys1",
       "phys2",
       "phys3",
+      "learning-objectives",
+      "knowledge",
+      "chem-connection",
+      "strategy"
     ],
   },
   {
