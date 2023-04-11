@@ -18,7 +18,8 @@ export const HaxIconsetManifest = [
       "learning-objectives",
       "knowledge",
       "chem-connection",
-      "strategy"
+      "strategy",
+      "listen",
     ],
   },
   {
