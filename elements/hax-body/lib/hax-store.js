@@ -33,6 +33,8 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
+import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -53,12 +55,14 @@ function sessionStorageSet(name, newItem) {
   }
 }
 
+/**
+ * @todo need some way of defining these as far as the application bringing these in as opposed to hard coded here
+ */
 const DataStyleDecoration = {
   attribute: "data-style-decoration",
   title: "Decoration",
   description: "Some built in styles to offset the material",
   inputMethod: "select",
-  //multiple: true,
   options: {
     "": "",
     "highlight red": "Highlight (red)",
@@ -68,6 +72,23 @@ const DataStyleDecoration = {
     "highlight purple": "Highlight (purple)",
   },
 };
+
+const DataInstructionalAction = [{
+  "attribute": "data-instructional-action",
+  "title": "Type",
+  "description": "Indicates instructional context to users visually",
+  "inputMethod": "select",
+  "options": {
+    "": "-- none --",
+    ...learningComponentTypes
+  }
+},
+{
+  "attribute": "data-id-emphasize",
+  "title": "Alternate visual treatment",
+  "description": "Apply a different visual treatment to the element but with same meaning",
+  "inputMethod": "boolean"
+}];
 
 /**
  * @element hax-store
@@ -2718,10 +2739,10 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     for (let tag in prims) {
       let primContentDemo = "";
-      if (tag == "h2") {
+      if (["h1","h2","h3","h4","h5","h6"].includes(tag)) {
         primContentDemo = "Heading";
       } else if (tag == "ul" || tag == "ol") {
-        primContentDemo = "<li>Item 1</li><li>Item 2</li>";
+        primContentDemo = "<li>Item</li><li>Item</li>";
       }
       this.setHaxProperties(
         {
@@ -2756,7 +2777,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             },
           },
           settings: {
-            configure: [DataStyleDecoration],
+            configure: ["h1","h2","h3","h4","h5","h6"].includes(tag) ? [...DataInstructionalAction] : [DataStyleDecoration],
             advanced: [],
           },
           demoSchema: [
@@ -2788,7 +2809,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleDecoration],
+        configure: [DataStyleDecoration, ...DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [

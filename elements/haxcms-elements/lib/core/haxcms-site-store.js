@@ -13,6 +13,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
+import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
@@ -402,7 +403,7 @@ class Store {
         let location = i.location;
         let slug = i.slug;
         if (metadata && metadata.pageType) {
-          i.metadata.icon = this.iconFromPageType(metadata.pageType);
+          i.metadata.icon = iconFromPageType(metadata.pageType);
         }
         return Object.assign({}, i, {
           parentLocation: parentLocation,
@@ -454,34 +455,6 @@ class Store {
       return Object.assign({}, manifest, {
         items: manifestItems,
       });
-    }
-  }
-  iconFromPageType(type) {
-    switch(type) {
-      case "content":
-        return "lrn:page";
-      case "assessment":
-        return "lrn:assessment";
-      case "quiz":
-        return "lrn:quiz";
-      case "submission":
-        return "icons:move-to-inbox";
-      case "lesson":
-        return "hax:lesson";
-      case "module":
-        return "hax:module";
-      case "unit":
-          return "hax:unit";
-      case "task":
-        return "hax:task";
-      case "activity":
-        return "hax:ticket";
-      case "project":
-        return "hax:bulletin-board";
-      case "practice":
-        return "hax:shovel";
-      default:
-        return "";
     }
   }
   /**

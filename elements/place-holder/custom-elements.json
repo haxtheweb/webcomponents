@@ -15,7 +15,7 @@
         },
         {
           "name": "iconFromType",
-          "description": "`iconFromType` {`string`} - calculate an icon based on the type that was used\n\nProperty: iconFromType\n\nDefault: image"
+          "description": "`iconFromType` {`string`} - calculate an icon based on the type that was used\n\nProperty: iconFromType\n\nDefault: editor:format-align-left"
         },
         {
           "name": "type",
@@ -63,7 +63,7 @@
         },
         {
           "name": "iconFromType",
-          "description": "`iconFromType` {`string`} - calculate an icon based on the type that was used\n\nProperty: iconFromType\n\nDefault: image"
+          "description": "`iconFromType` {`string`} - calculate an icon based on the type that was used\n\nProperty: iconFromType\n\nDefault: editor:format-align-left"
         },
         {
           "name": "type",

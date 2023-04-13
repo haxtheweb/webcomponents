@@ -255,7 +255,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty)::before {
+          ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.2s all ease-in-out;
@@ -263,14 +263,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:hover:empty)::before {
+          ::slotted([contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before {
           opacity: 0.4;
           cursor: text;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:focus)::before {
+          ::slotted([contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before {
           content: "";
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {

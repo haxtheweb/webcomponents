@@ -2,7 +2,7 @@
  * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css, unsafeCSS } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -11,24 +11,128 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 // Defines the type options available in the HAX wiring, "Learning Objectives" is the default.
-
-const typeOptions = {
-  objectives: "Learning Objectives",
-  connection: "Connection",
-  knowledge: "Did You Know?",
-  strategy: "Learning Strategy",
-  assess: "Assess",
-  discuss: "Discuss",
-  listen: "Listen",
-  make: "Make",
-  observe: "Observe",
-  present: "Present",
-  reading: "Reading",
-  reflect: "Reflect",
-  research: "Research",
-  watch: "Watch",
-  write: "Write",
+export const learningComponentTypes = {
+  "content": "Content",
+  "assessment": "Assessment",
+  "quiz": "Quiz",
+  "submission": "Submission",
+  "lesson": "Lesson",
+  "module": "Module",
+  "task": "Task",
+  "activity": "Activity",
+  "project": "Project",
+  "practice": "Practice",
+  "unit": "Unit",
+  "objectives": "Learning Objectives",
+  "connection": "Connection",
+  "knowledge": "Did You Know?",
+  "strategy": "Learning Strategy",
+  "discuss": "Discuss",
+  "listen": "Listen",
+  "make": "Make",
+  "observe": "Observe",
+  "present": "Present",
+  "read": "Read",
+  "reflect": "Reflect",
+  "research": "Research",
+  "watch": "Watch",
+  "write": "Write"
 };
+
+export const learningComponentColors = {
+  "content": "blue-grey",
+  "assessment": "red",
+  "quiz": "blue",
+  "submission": "deep-purple",
+  "lesson": "purple",
+  "module": "red",
+  "task": "blue-grey",
+  "activity": "orange",
+  "project": "deep-orange",
+  "practice": "brown",
+  "unit": "light-green",
+  "objectives": "indigo",
+  "connection": "green",
+  "knowledge": "cyan",
+  "strategy": "teal",
+  "discuss": "blue",
+  "listen": "purple",
+  "make": "orange",
+  "observe": "yellow",
+  "present": "light-blue",
+  "read": "lime",
+  "reflect": "amber",
+  "research": "deep-orange",
+  "watch": "pink",
+  "write": "deep-purple"
+};
+
+export function iconFromPageType(type) {
+  switch(type) {
+    case "content":
+      return "lrn:page";
+    case "assessment":
+      return "lrn:assessment";
+    case "quiz":
+      return "lrn:quiz";
+    case "submission":
+      return "icons:move-to-inbox";
+    case "lesson":
+      return "hax:lesson";
+    case "module":
+      return "hax:module";
+    case "unit":
+        return "hax:unit";
+    case "task":
+      return "hax:task";
+    case "activity":
+      return "hax:ticket";
+    case "project":
+      return "hax:bulletin-board";
+    case "practice":
+      return "hax:shovel";
+    case "connection":
+      return "courseicons:chem-connection";
+      break;
+    case "knowledge":
+      return "courseicons:knowledge";
+      break;
+    case "strategy":
+      return "courseicons:strategy";
+      break
+    case "discuss":
+      return "courseicons:strategy";
+      break;
+    case "listen":
+      return "courseicons:listen";
+      break;
+    case "make":
+      return "courseicons:strategy";
+      break;
+    case "observe":
+      return "courseicons:strategy";
+      break;
+    case "present":
+      return "courseicons:strategy";
+      break;
+    case "reading":
+      return "courseicons:strategy";
+      break;
+    case "reflect":
+      return "courseicons:strategy";
+      break;
+    case "research":
+      return "courseicons:strategy";
+      break;
+    case "watch":
+      return "courseicons:strategy";
+      break;
+    case "write":
+      return "lrn:write";
+      break;
+  }
+  return "courseicons:learning-objectives";
+}
 
 /**
  * `learning-component`
@@ -69,8 +173,19 @@ class LearningComponent extends I18NMixin(LitElement) {
   /**
    * CSS
    */
-
   static get styles() {
+    let typeToColors = Object.keys(learningComponentColors).map((type) => {
+      let color = learningComponentColors[type];
+      return `
+        :host([type="${type}"]) .header {
+          --header-objectives-bg-color: var(--header-${type}-bg-color, var(--simple-colors-default-theme-${color}-8));
+        }
+        :host([type="${type}"]) simple-icon-button-lite {
+          --simple-icon-color: var(--svg-url-${type}-fill-color, var(--simple-colors-default-theme-${color}-8));
+        }
+      `
+    });
+        
     return [css`
   :host {
     display: block;
@@ -78,90 +193,9 @@ class LearningComponent extends I18NMixin(LitElement) {
     border: 1px solid var(--card-border-color, #d9d9d9);
     margin: 15px 0 15px;
   }
-  :host([type="knowledge"]) .header {
-    background-color: var(--header-knowledge-bg-color, var(--simple-colors-default-theme-cyan-8,#1d6ba0));
-  }
-  :host([type="knowledge"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-knowledge-fill-color, var(--simple-colors-default-theme-cyan-8,#1d6ba0));
-  }
-  :host([type="strategy"]) .header {
-    background-color: var(--header-connection-bg-color, var(--simple-colors-default-theme-teal-8,#008080));
-  }
-  :host([type="strategy"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-strategy-fill-color, var(--simple-colors-default-theme-teal-8,#008080));
-  }
-  :host([type="connection"]) .header {
-    background-color: var(--header-connection-bg-color, var(--simple-colors-default-theme-green-7,#268842));
-  }
-  :host([type="connection"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-connection-fill-color, var(--simple-colors-default-theme-green-7,#268842));
-  }
-  :host([type="assess"]) .header {
-    background-color: var(--header-assess-bg-color, var(--simple-colors-default-theme-red-7,#c62828));
-  }
-  :host([type="assess"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-assess-fill-color, var(--simple-colors-default-theme-red-7,#c62828));
-  }
-  :host([type="discuss"]) .header {
-    background-color: var(--header-discuss-bg-color, var(--simple-colors-default-theme-blue-7,#1e88e5));
-  } 
-  :host([type="discuss"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-discuss-fill-color, var(--simple-colors-default-theme-blue-7,#1e88e5));
-  }
-  :host([type="listen"]) .header {
-    background-color: var(--header-listen-bg-color, var(--simple-colors-default-theme-purple-7,#6a1b9a));
-  }
-  :host([type="listen"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-listen-fill-color, var(--simple-colors-default-theme-purple-7,#6a1b9a));
-  }
-  :host([type="make"]) .header {
-    background-color: var(--header-make-bg-color, var(--simple-colors-default-theme-orange-7,#dc7927));
-  }
-  :host([type="make"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-make-fill-color, var(--simple-colors-default-theme-orange-7,#dc7927));
-  }
-  :host([type="observe"]) .header {
-    background-color: var(--header-observe-bg-color, var(--simple-colors-default-theme-yellow-7,#f9a825));
-  }
-  :host([type="observe"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-observe-fill-color, var(--simple-colors-default-theme-yellow-7,#f9a825));
-  }
-  :host([type="present"]) .header {
-    background-color: var(--header-present-bg-color, var(--simple-colors-default-theme-light-blue-7,#1e88e5));
-  }
-  :host([type="present"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-present-fill-color, var(--simple-colors-default-theme-light-blue-7,#1e88e5));
-  }
-  :host([type="read"]) .header {
-    background-color: var(--header-read-bg-color, var(--simple-colors-default-theme-lime-7,#268842));
-  }
-  :host([type="read"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-read-fill-color, var(--simple-colors-default-theme-lime-7,#268842));
-  }
-  :host([type="reflect"]) .header {
-    background-color: var(--header-reflect-bg-color, var(--simple-colors-default-theme-amber-7,#6a1b9a));
-  }
-  :host([type="reflect"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-reflect-fill-color, var(--simple-colors-default-theme-amber-7,#6a1b9a));
-  }
-  :host([type="research"]) .header {
-    background-color: var(--header-research-bg-color, var(--simple-colors-default-theme-deep-orange-7,#c62828));
-  }
-  :host([type="research"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-research-fill-color, var(--simple-colors-default-theme-deep-orange-7,#c62828));
-  }
-  :host([type="watch"]) .header {
-    background-color: var(--header-watch-bg-color, var(--simple-colors-default-theme-pink-7,#c62828));
-  }
-  :host([type="watch"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-watch-fill-color, var(--simple-colors-default-theme-pink-7,#c62828));
-  }
-  :host([type="write"]) .header {
-    background-color: var(--header-write-bg-color, var(--simple-colors-default-theme-deep-purple-7,#c62828));
-  }
-  :host([type="write"]) simple-icon-button-lite {
-    --simple-icon-color: var(--svg-url-write-fill-color, var(--simple-colors-default-theme-deep-purple-7,#c62828));
-  }
+
+  ${unsafeCSS(typeToColors.join("\n"))}
+
   .header {
     display: flex;
     align-items: center;
@@ -254,11 +288,11 @@ class LearningComponent extends I18NMixin(LitElement) {
     return html`
     <div class="header">
       <div class="icon">
-        <simple-icon-lite icon="${this.renderIcon(this.type)}"></simple-icon-lite>
+        <simple-icon-lite icon="${iconFromPageType(this.type)}"></simple-icon-lite>
       </div>
       <div class="title-wrap">
         <div class="sub-title">${this.subtitle}</div>
-        <div class="title">${typeOptions[this.type]}</div>
+        <div class="title">${learningComponentTypes[this.type]}</div>
       </div>
     </div>
     <div class="content">
@@ -274,54 +308,6 @@ class LearningComponent extends I18NMixin(LitElement) {
     `;
   }
 
-  renderIcon(type) {
-    switch (type) {
-      case "connection":
-        return "courseicons:chem-connection";
-        break;
-      case "knowledge":
-        return "courseicons:knowledge";
-        break;
-      case "strategy":
-        return "courseicons:strategy";
-        break;
-      case "assess":
-        return "courseicons:strategy";
-        break;
-      case "discuss":
-        return "courseicons:strategy";
-        break;
-      case "listen":
-        return "courseicons:listen";
-        break;
-      case "make":
-        return "courseicons:strategy";
-        break;
-      case "observe":
-        return "courseicons:strategy";
-        break;
-      case "present":
-        return "courseicons:strategy";
-        break;
-      case "reading":
-        return "courseicons:strategy";
-        break;
-      case "reflect":
-        return "courseicons:strategy";
-        break;
-      case "research":
-        return "courseicons:strategy";
-        break;
-      case "watch":
-        return "courseicons:strategy";
-        break;
-      case "write":
-        return "lrn:write";
-        break;
-    }
-    return "courseicons:learning-objectives";
-  }
-
   // Implement HAX Wiring
   static get haxProperties() {
     return {
@@ -335,7 +321,7 @@ class LearningComponent extends I18NMixin(LitElement) {
           "A card for instructors to communicate pedagogy and instructional strategies.",
         icon: "icons:bookmark",
         color: "orange",
-        groups: ["Instructional", "content","design","presentation"],
+        tags: ["Instructional", "content","design","presentation"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team"
@@ -348,7 +334,7 @@ class LearningComponent extends I18NMixin(LitElement) {
             title: "Type",
             description: "The type of card to be used.",
             inputMethod: "select",
-            options: typeOptions,
+            options: learningComponentTypes,
             required: true
           },
           {

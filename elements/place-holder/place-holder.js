@@ -222,7 +222,7 @@ class PlaceHolder extends SimpleColors {
   constructor() {
     super();
     this.text = "";
-    this.iconFromType = "image";
+    this.iconFromType = "editor:format-align-left";
     this.type = "text";
     this.dragOver = false;
     this.directions = "Double click or drag and drop file to replace";

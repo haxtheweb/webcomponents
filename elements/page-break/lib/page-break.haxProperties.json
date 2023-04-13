@@ -7,7 +7,9 @@
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
-    "tags": ["Other"],
+    "tags": [
+      "Other"
+    ],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
@@ -33,7 +35,21 @@
           "activity": "Activity",
           "project": "Project",
           "practice": "Practice",
-          "unit": "Unit"
+          "unit": "Unit",
+          "objectives": "Learning Objectives",
+          "connection": "Connection",
+          "knowledge": "Did You Know?",
+          "strategy": "Learning Strategy",
+          "discuss": "Discuss",
+          "listen": "Listen",
+          "make": "Make",
+          "observe": "Observe",
+          "present": "Present",
+          "reading": "Reading",
+          "reflect": "Reflect",
+          "research": "Research",
+          "watch": "Watch",
+          "write": "Write"
         }
       },
       {
@@ -75,7 +91,11 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["t", "_hax-state", "element-visible"]
+    "unsetAttributes": [
+      "t",
+      "_hax-state",
+      "element-visible"
+    ]
   },
   "demoSchema": [
     {
