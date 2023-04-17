@@ -3,7 +3,7 @@ import { css, html } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
-import "@github/time-elements/dist/relative-time-element.js";
+import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
 
@@ -27,6 +27,10 @@ export class PageFlagComment extends SimpleColors {
       },
       canEdit: {
         type: Boolean,
+      },
+      reply: {
+        type: Number,
+        reflect: true,
       }
     };
   }
@@ -41,7 +45,8 @@ export class PageFlagComment extends SimpleColors {
   constructor() {
     super();
     this.seed = "abc123";
-    this.timestamp = Date.now();
+    this.timestamp = Date.now()/1000;
+    this.reply = 0;
     this.editMode = false;
     this.canEdit = false;
   }
@@ -75,12 +80,17 @@ export class PageFlagComment extends SimpleColors {
               seed="${this.seed}"
               width="40"
               height="40"
-              hat="none"
+              hat="${this.editMode ? "edit" : "none"}"
             ></rpg-character>
           </div>
           <div class="comment__header__info">
             <div class="comment__header__info__name">${this.seed}</div>
-            <div class="comment__header__info__date"><relative-time datetime="${this.timestamp}"></relative-time></div>
+            <div class="comment__header__info__date">
+            <simple-datetime
+                format="m/j/y h:i"
+                .timestamp="${this.timestamp}"
+                unix
+            ></simple-datetime></div>
           </div>
         </div>
         <div class="comment__body">
@@ -136,6 +146,15 @@ export class PageFlagComment extends SimpleColors {
       }
       :host([edit-mode]) slot {
         display: none;
+      }
+      :host([reply="1"]) .comment {
+        margin-left: 10px;
+      }
+      :host([reply="2"]) .comment {
+        margin-left: 20px;
+      }
+      :host([reply="3"]) .comment {
+        margin-left: 30px;
       }
       .comment {
         background-color: #fff;

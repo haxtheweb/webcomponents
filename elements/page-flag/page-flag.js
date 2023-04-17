@@ -23,7 +23,7 @@ class PageFlag extends SimpleColors {
     this.opened = false;
     this.accentColor = "cyan";
     this.show = true;
-    this.delay = 1000;
+    this.delay = 250;
   }
 
   connectedCallback() {
@@ -116,14 +116,14 @@ class PageFlag extends SimpleColors {
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 1000);
-          min-width: 180px;
+          min-width: 280px;
         }
         absolute-position-behavior div {
           color: black;
           background-color: white;
           font-size: 12px;
-          width: 200px;
-          margin-left: 80px;
+          width: 300px;
+          margin-left: 160px;
           padding-top: 8px;
         }
       `,
@@ -165,12 +165,16 @@ class PageFlag extends SimpleColors {
   }
   handleDelete(e) {
     e.detail.remove();
+    if (this.querySelectorAll("page-flag-comment").length === 0) {
+      this.remove();
+    }
   }
   handleReply(e) {
     const comment = document.createElement("page-flag-comment");
     comment.seed = pageFlagManager.activeUser;
-    comment.timestamp = Date.now();
+    comment.timestamp = Date.now()/1000;
     comment.testCanUpdate(pageFlagManager.activeUser);
+    comment.reply = (e.detail.reply+1 < 2) ? e.detail.reply+1 : 2;
     e.detail.insertAdjacentElement("afterend", comment);
     setTimeout(() => {
       comment.editMode = true;      
@@ -205,11 +209,13 @@ class PageFlag extends SimpleColors {
   }
 
   resizeEvent() {
-    this.updateArrowPosition();      
+    this.updateArrowPosition();
+    setTimeout(() => {
+      this.updateArrowPosition();
+    }, this.delay);
   }
 
   updateArrowPosition() {
-    setTimeout(() => {
     if (this.previousElementSibling) {
       try {
         let range = document.createRange();
@@ -226,7 +232,6 @@ class PageFlag extends SimpleColors {
         console.warn(e);
       }
     }
-    }, this.delay);
   }
   /**
    * LitElement ready
@@ -238,7 +243,10 @@ class PageFlag extends SimpleColors {
     // arrow node for pointing to w/ the tooltip container
     this.shadowRoot.querySelector('absolute-position-behavior').target = this.shadowRoot.querySelector(".arrow");
     // time for things to get loaded before we attempt to position a target
-    this.updateArrowPosition();      
+    this.updateArrowPosition();
+    setTimeout(() => {
+      this.updateArrowPosition();
+    }, this.delay);  
   }
 }
 customElements.define(PageFlag.tag, PageFlag);
