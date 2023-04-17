@@ -392,6 +392,14 @@ class HAXCMSSiteEditor extends LitElement {
   _handleUserDataResponse(e) {
     if (e.detail.response && e.detail.response.data) {
       store.userData = e.detail.response.data;
+      this.dispatchEvent(
+        new CustomEvent("haxcms-user-data-updated", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: e.detail.response.data,
+        })
+      );
     }
   }
 

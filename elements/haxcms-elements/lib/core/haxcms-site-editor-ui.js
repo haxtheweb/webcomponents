@@ -23,6 +23,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
+import "@lrnwebcomponents/page-flag/page-flag.js";
 const haxLogo = new URL(
   "../../../app-hax/lib/assets/images/HAXLogo.svg",
   import.meta.url
@@ -396,6 +397,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // site-remote-content injects citation element so ensure it's in there too!
       let ce = document.createElement("citation-element");
       HAXStore.haxAutoloader.appendChild(ce);
+      // page-flag for author notes
+      let flag = document.createElement("page-flag");
+      HAXStore.haxAutoloader.appendChild(flag);
 
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {

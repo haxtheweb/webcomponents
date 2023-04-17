@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "page-flag",
+      "path": "./page-flag.js",
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`"
+    },
+    {
+      "name": "page-flag",
+      "path": "./src/page-flag.js",
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`"
+    }
+  ]
+}

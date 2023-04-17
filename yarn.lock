@@ -28817,7 +28817,7 @@ web-component-tester@6.9.2, web-component-tester@^6.9.0:
     wct-local "^2.1.1"
     wct-sauce "^2.0.2"
 
-web-dialog@0.0.11:
+web-dialog@0.0.11, web-dialog@^0.0.11:
   version "0.0.11"
   resolved "https://registry.yarnpkg.com/web-dialog/-/web-dialog-0.0.11.tgz#0cd9b25c560fdad01bb84b6754ee5d1ba5fe9562"
   integrity sha512-UGXpUfww+U2zWJCwb8uE0zeiCjyq4gv54VpC2zuT4+sOdR/ukz7flp941472BY9TnI8RrK3S5TLL4K9AQycfwQ==

@@ -277,7 +277,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         icon: "editor:title",
         color: "grey",
         tags: [
-          "Other",
+          "Authoring",
           "content",
           "citation",
           "reference",
