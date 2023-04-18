@@ -22,17 +22,8 @@ class PageFlag extends SimpleColors {
     this.label = "note";
     this.opened = false;
     this.accentColor = "cyan";
-    this.show = true;
-    this.delay = 250;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("resize", this.resizeEvent.bind(this));
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener("resize", this.resizeEvent.bind(this));
+    this.show = false;
+    this._haxState = false;
   }
 
   static get properties() {
@@ -71,7 +62,8 @@ class PageFlag extends SimpleColors {
       css`
         :host {
           display: none;
-          position: absolute;
+          float: right;
+          margin-right: -80px;
         }
         :host([show]) {
           display: block;
@@ -135,6 +127,7 @@ class PageFlag extends SimpleColors {
     this.dark = this.opened;
     this.querySelectorAll("page-flag-comment").forEach((comment) => {
       comment.testCanUpdate(pageFlagManager.activeUser);
+      comment.readOnly = !this._haxState;
     });
   }
   /**
@@ -173,7 +166,8 @@ class PageFlag extends SimpleColors {
     const comment = document.createElement("page-flag-comment");
     comment.seed = pageFlagManager.activeUser;
     comment.timestamp = Date.now()/1000;
-    comment.testCanUpdate(pageFlagManager.activeUser);
+    comment.canEdit = true;
+    comment.readOnly = false;
     comment.reply = (e.detail.reply+1 < 2) ? e.detail.reply+1 : 2;
     e.detail.insertAdjacentElement("afterend", comment);
     setTimeout(() => {
@@ -198,6 +192,7 @@ class PageFlag extends SimpleColors {
    */
   haxeditModeChanged(value) {
     this.show = value;
+    this._haxState = value;
   }
   /**
    * haxHooks
@@ -205,33 +200,24 @@ class PageFlag extends SimpleColors {
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
+      inlineContextMenu: "haxinlineContextMenu",
     };
   }
-
-  resizeEvent() {
-    this.updateArrowPosition();
-    setTimeout(() => {
-      this.updateArrowPosition();
-    }, this.delay);
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "lrn:discuss",
+        callback: "haxResolveThread",
+        label: "Resolve thread",
+      },
+    ];
   }
-
-  updateArrowPosition() {
-    if (this.previousElementSibling) {
-      try {
-        let range = document.createRange();
-        range.selectNode(this.previousElementSibling);
-        range.setStart(this.previousElementSibling, 0);
-        let textRect = range.getBoundingClientRect();
-        range.detach();
-        // height of the container
-        //let height = this.previousElementSibling.getBoundingClientRect().height / 3;
-        //this.style.top = textRect.y + textRect.top - height + "px";
-        this.style.left = textRect.x + textRect.width + 30 + "px";
-      }
-      catch(e) {
-        console.warn(e);
-      }
-    }
+  haxResolveThread(e) {
+    this.remove();
+    return true;
   }
   /**
    * LitElement ready
@@ -240,13 +226,27 @@ class PageFlag extends SimpleColors {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    pageFlagManager.allFlags.push(this);
+    if (pageFlagManager.activeUser) {
+      this.show = true;
+    }
+    else {
+      this.remove();
+    }
     // arrow node for pointing to w/ the tooltip container
     this.shadowRoot.querySelector('absolute-position-behavior').target = this.shadowRoot.querySelector(".arrow");
-    // time for things to get loaded before we attempt to position a target
-    this.updateArrowPosition();
-    setTimeout(() => {
-      this.updateArrowPosition();
-    }, this.delay);  
+    // ensure we have content, if not let's add a boilerplate one to get writing
+    if (!this.querySelector("page-flag-comment")) {
+      const comment = document.createElement("page-flag-comment");
+      comment.seed = pageFlagManager.activeUser;
+      comment.timestamp = Date.now()/1000;
+      comment.canEdit = true;
+      comment.readOnly = false;
+      this.appendChild(comment);
+      setTimeout(() => {
+        comment.editMode = true;      
+      }, 100);
+    }
   }
 }
 customElements.define(PageFlag.tag, PageFlag);
@@ -259,6 +259,7 @@ export class pageFlagManagerEl extends HTMLElement {
   constructor() {
     super();
     this.activeUser = null;
+    this.allFlags = [];
   }
   connectedCallback() {
     window.addEventListener('haxcms-user-data-updated', this.userDataUpdated.bind(this));
@@ -268,6 +269,10 @@ export class pageFlagManagerEl extends HTMLElement {
   }
   userDataUpdated(e) {
     this.activeUser = e.detail.userName;
+    // ensure visibility of all flags
+    this.allFlags.forEach((flag) => {
+      flag.show = true;
+    });
   }
 }
 customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);

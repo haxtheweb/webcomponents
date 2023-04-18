@@ -43,7 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "lit": "^2.6.1"
+    "lit": "^2.7.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

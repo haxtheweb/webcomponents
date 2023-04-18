@@ -45,7 +45,7 @@
     "@lrnwebcomponents/a11y-utils": "^4.2.0",
     "@lrnwebcomponents/simple-colors-shared-styles": "^4.2.0",
     "@lrnwebcomponents/simple-picker": "^4.2.0",
-    "lit": "^2.6.1"
+    "lit": "^2.7.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

@@ -44,7 +44,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.6.1",
+    "lit": "^2.7.2",
     "modern-css-reset": "*"
   },
   "devDependencies": {

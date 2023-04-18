@@ -1,24 +1,26 @@
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { css, html } from "lit";
+import { LitElement, css, html } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
 
 
-export class PageFlagComment extends SimpleColors {
+export class PageFlagComment extends LitElement {
   static get tag() {
     return "page-flag-comment";
   }
   static get properties() {
     return {
-      ...super.properties,
       seed: {
         type: String,
       },
       timestamp: {
         type: Number,
+      },
+      mood: {
+        type: String,
       },
       editMode: {
         type: Boolean,
@@ -31,7 +33,10 @@ export class PageFlagComment extends SimpleColors {
       reply: {
         type: Number,
         reflect: true,
-      }
+      },
+      readOnly: {
+        type: Boolean,
+      },
     };
   }
   testCanUpdate(user) {
@@ -44,11 +49,14 @@ export class PageFlagComment extends SimpleColors {
   }
   constructor() {
     super();
+    this.mood = null;
     this.seed = "abc123";
     this.timestamp = Date.now()/1000;
     this.reply = 0;
     this.editMode = false;
     this.canEdit = false;
+    this.readOnly = true;
+    this.haxUIElement = true;
   }
   deleteOp() {
     this.dispatchEvent(new CustomEvent("page-flag-comment-delete", {
@@ -74,6 +82,7 @@ export class PageFlagComment extends SimpleColors {
   render() {
     return html`
       <div class="comment">
+      ${this.editMode ? html`<simple-emoji-picker align-right label="Reaction" value="${this.mood}" @value-changed="${this.emojiChanged}"></simple-emoji-picker>` : html`<div class="emoji" .innerHTML="${this.mood}"></div>`}
         <div class="comment__header">
           <div class="comment__header__avatar">
           <rpg-character
@@ -94,21 +103,25 @@ export class PageFlagComment extends SimpleColors {
           </div>
         </div>
         <div class="comment__body">
-          <p>
             <simple-fields-field type="textarea"></simple-fields-field>
             <slot></slot>
-          </p>
         </div>
         <div class="comment__footer">
           <div class="comment__footer__actions">
+            ${!this.readOnly ? html`
             ${this.canEdit ? html`<simple-icon-button icon="${this.editMode ? "save" : "editor:mode-edit"}" title="${this.editMode ? "Edit" : "Update"}" @click="${this.editOp}"></simple-icon-button>
 ` : ``}
             <simple-icon-button icon="reply" title="Reply" @click="${this.replyOp}"></simple-icon-button>
             ${this.canEdit ? html`<simple-icon-button icon="delete" title="Delete" @click="${this.deleteOp}"></simple-icon-button>` : ``}
+            ` : ``}
           </div>
         </div>
       </div>
     `;
+  }
+  emojiChanged(e) {
+    console.log(e.detail);
+    this.mood = e.detail.value;
   }
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
@@ -131,30 +144,39 @@ export class PageFlagComment extends SimpleColors {
     });
   }
   static get styles() {
-    return [...super.styles, css`
+    return [, css`
       :host {
         display: block;
       }
       :host slot {
         display: block;
       }
+      :host simple-emoji-picker,
       :host simple-fields-field {
         display: none;
       }
+      :host([edit-mode]) simple-emoji-picker,
       :host([edit-mode]) simple-fields-field {
         display: block;
+      }
+      simple-emoji-picker {
+        float: right;
+        width: 40px;
+      }
+      .emoji {
+        float: right;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
       }
       :host([edit-mode]) slot {
         display: none;
       }
       :host([reply="1"]) .comment {
-        margin-left: 10px;
+        margin-left: 16px;
       }
       :host([reply="2"]) .comment {
-        margin-left: 20px;
-      }
-      :host([reply="3"]) .comment {
-        margin-left: 30px;
+        margin-left: 32px;
       }
       .comment {
         background-color: #fff;
@@ -195,9 +217,6 @@ export class PageFlagComment extends SimpleColors {
       }
       .comment__body {
         margin-bottom: 10px;
-      }
-      .comment__body p {
-        margin: 0;
       }
       .comment__footer {
         display: flex;

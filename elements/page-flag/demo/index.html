@@ -11,6 +11,11 @@
       page-flag:not(:defined) {
         display: none;
       }
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
     </style>
     <script type="module">
       import { pageFlagManager } from '../page-flag.js';
@@ -20,6 +25,7 @@
     </script>
   </head>
   <body>
+    <div class="wrapper">
     <grid-plate layout="1-1">
       <div slot="col-1">
         <h3>Basic page-flag demo</h3>
@@ -69,6 +75,6 @@
         <p>Here's a bunch of content</p>
       </div>
     </grid-plate>
-      
+  </div>
   </body>
 </html>

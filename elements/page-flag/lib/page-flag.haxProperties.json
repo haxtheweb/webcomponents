@@ -29,15 +29,16 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": ["colors"]
+    "unsetAttributes": ["colors", "opened"]
   },
   "demoSchema": [
     {
       "tag": "page-flag",
       "properties": {
-        "accentColor": "purple"
+        "accentColor": "blue",
+        "opened": true
       },
-      "content": "<page-flag-comment author=\"Bryan\" date=\"2 days ago\" accent-color=\"grey\">This is a comment</page-flag-comment>"
+      "content": ""
     }
   ]
 }

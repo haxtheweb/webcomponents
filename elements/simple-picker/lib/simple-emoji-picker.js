@@ -40,7 +40,6 @@ class SimpleEmojiPicker extends SimplePickerBehaviors(LitElement) {
        * emoji types to include
        */
       emojiTypes: {
-        name: "emojiTypes",
         type: Array,
         attribute: "emoji-types",
       },

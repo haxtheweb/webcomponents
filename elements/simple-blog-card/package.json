@@ -45,7 +45,7 @@
     "@lrnwebcomponents/paper-avatar": "^4.2.0",
     "@lrnwebcomponents/simple-popover": "^4.2.0",
     "@polymer/paper-card": "^3.0.1",
-    "lit": "^2.6.1",
+    "lit": "^2.7.2",
     "local-time": "^2.1.0"
   },
   "devDependencies": {

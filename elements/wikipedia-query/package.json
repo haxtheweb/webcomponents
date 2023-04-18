@@ -44,7 +44,7 @@
   "dependencies": {
     "@lrnwebcomponents/citation-element": "^4.2.0",
     "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "lit": "^2.6.1"
+    "lit": "^2.7.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",

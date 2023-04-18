@@ -39,7 +39,7 @@
   "dependencies": {
     "@lrnwebcomponents/csv-render": "^4.2.0",
     "@lrnwebcomponents/schema-behaviors": "^4.2.0",
-    "lit": "^2.6.1"
+    "lit": "^2.7.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
