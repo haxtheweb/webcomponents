@@ -6,7 +6,7 @@ describe("mark-the-words test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <mark-the-words title="test-title"></mark-the-words> `
+      html` <mark-the-words></mark-the-words> `
     );
   });
 

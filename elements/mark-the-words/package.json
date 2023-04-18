@@ -45,6 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/multiple-choice": "^4.2.0",
     "lit": "^2.7.2"
   },
   "devDependencies": {

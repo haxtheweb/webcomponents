@@ -120,7 +120,6 @@ export class PageFlagComment extends LitElement {
     `;
   }
   emojiChanged(e) {
-    console.log(e.detail);
     this.mood = e.detail.value;
   }
   firstUpdated(changedProperties) {

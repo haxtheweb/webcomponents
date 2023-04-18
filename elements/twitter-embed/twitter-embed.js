@@ -66,13 +66,11 @@ class TwitterEmbed extends LitElement {
     };
   }
   /**
-   * Attached to the DOM, now fire.
+   * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return (
-      decodeURIComponent(import.meta.url) +
-      "/../lib/twitter-embed.haxProperties.json"
-    );
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

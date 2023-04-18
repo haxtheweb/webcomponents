@@ -1,6 +1,6 @@
 {
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
   "gizmo": {
     "title": "Twitter embed",
