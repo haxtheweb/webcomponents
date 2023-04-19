@@ -77,7 +77,9 @@ export const SimpleFilterMixin = function (SuperClass) {
       super.update(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (
-          ["items", "where", "like", "caseSensitive", "multiMatch"].includes(propName) &&
+          ["items", "where", "like", "caseSensitive", "multiMatch"].includes(
+            propName
+          ) &&
           this.shadowRoot
         ) {
           clearTimeout(this.__debounce);
@@ -140,18 +142,22 @@ export const SimpleFilterMixin = function (SuperClass) {
       let regex = null;
       // most logical for search results but not our default for legacy api reasons
       if (multiMatch) {
-        const multiPat = like.split('\\ ');
+        const multiPat = like.split("\\ ");
         var patterns = [];
         // support multiple patterns based on space separated words
         multiPat.forEach((pat) => {
-          pat = pat.replace("\\", "").replace("\\?", "").replace("\\.", "").replace("\\!", "");
+          pat = pat
+            .replace("\\", "")
+            .replace("\\?", "")
+            .replace("\\.", "")
+            .replace("\\!", "");
           if (pat.length > 0) {
             patterns.push(`(\\s${pat}|^${pat})`);
           }
         });
         // rejoin them for a combined or statement regex for start of a word or space after word
         // this way we don't get things like "join" matching on "rejoin party"
-        like = patterns.join('|');
+        like = patterns.join("|");
       }
       var filtered = [];
       //Filter by `like`
@@ -163,8 +169,7 @@ export const SimpleFilterMixin = function (SuperClass) {
         regex = null;
         if (caseSensitive) {
           regex = new RegExp(like, "g");
-        }
-        else {
+        } else {
           regex = new RegExp(like, "ig");
         }
         //This is when a complex object is provided

@@ -2,14 +2,281 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "page-flag-comment",
+      "path": "./lib/page-flag-comment.js",
+      "attributes": [
+        {
+          "name": "mood",
+          "type": "string"
+        },
+        {
+          "name": "seed",
+          "type": "string",
+          "default": "\"abc123\""
+        },
+        {
+          "name": "timestamp",
+          "type": "number"
+        },
+        {
+          "name": "reply",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canEdit",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "properties": [
+        {
+          "name": "mood",
+          "attribute": "mood",
+          "type": "string"
+        },
+        {
+          "name": "seed",
+          "attribute": "seed",
+          "type": "string",
+          "default": "\"abc123\""
+        },
+        {
+          "name": "timestamp",
+          "attribute": "timestamp",
+          "type": "number"
+        },
+        {
+          "name": "reply",
+          "attribute": "reply",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canEdit",
+          "attribute": "canEdit",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readOnly",
+          "attribute": "readOnly",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "haxUIElement",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "events": [
+        {
+          "name": "page-flag-comment-delete"
+        },
+        {
+          "name": "page-flag-comment-reply"
+        },
+        {
+          "name": "page-flag-comment-edit"
+        }
+      ]
+    },
+    {
       "name": "page-flag",
       "path": "./page-flag.js",
-      "description": "`page-flag`\n`visual flag for notes about a piece of content`"
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the flag",
+          "type": "string",
+          "default": "\"note\""
+        },
+        {
+          "name": "opened",
+          "description": "Opened state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"cyan\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the flag",
+          "type": "string",
+          "default": "\"note\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "Opened state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show",
+          "attribute": "show",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"cyan\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "page-flag-manager",
+      "path": "./page-flag.js",
+      "properties": [
+        {
+          "name": "activeUser"
+        },
+        {
+          "name": "allFlags",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
     },
     {
       "name": "page-flag",
       "path": "./src/page-flag.js",
-      "description": "`page-flag`\n`visual flag for notes about a piece of content`"
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the flag",
+          "type": "string",
+          "default": "\"note\""
+        },
+        {
+          "name": "opened",
+          "description": "Opened state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"cyan\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the flag",
+          "type": "string",
+          "default": "\"note\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "Opened state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show",
+          "attribute": "show",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"cyan\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "page-flag-manager",
+      "path": "./src/page-flag.js",
+      "properties": [
+        {
+          "name": "activeUser"
+        },
+        {
+          "name": "allFlags",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
     }
   ]
 }

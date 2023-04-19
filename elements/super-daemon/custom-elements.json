@@ -179,6 +179,11 @@
           "default": "\"hardware:keyboard-return\""
         },
         {
+          "name": "question-tags",
+          "type": "array",
+          "default": "[{\"value\":\"*\",\"label\":\"Show me what's possible!\"},{\"value\":\"help\",\"label\":\"I need help!\"},{\"value\":\"media\",\"label\":\"Insert media..\"},{\"value\":\"edit\",\"label\":\"Edit this page\"}]"
+        },
+        {
           "name": "items",
           "description": "These are the items to be filtered",
           "type": "never[]",
@@ -206,6 +211,12 @@
           "description": "Filtered items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "multi-match",
+          "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "t",
@@ -260,6 +271,12 @@
           "default": "\"hardware:keyboard-return\""
         },
         {
+          "name": "questionTags",
+          "attribute": "question-tags",
+          "type": "array",
+          "default": "[{\"value\":\"*\",\"label\":\"Show me what's possible!\"},{\"value\":\"help\",\"label\":\"I need help!\"},{\"value\":\"media\",\"label\":\"Insert media..\"},{\"value\":\"edit\",\"label\":\"Edit this page\"}]"
+        },
+        {
           "name": "items",
           "attribute": "items",
           "description": "These are the items to be filtered",
@@ -292,6 +309,13 @@
           "description": "Filtered items",
           "type": "array",
           "default": "[]"
+        },
+        {
+          "name": "multiMatch",
+          "attribute": "multi-match",
+          "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "t",
@@ -333,6 +357,11 @@
         {
           "name": "activeNode",
           "type": "object"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
@@ -411,9 +440,21 @@
           "type": "string"
         },
         {
+          "name": "activeSelection"
+        },
+        {
+          "name": "activeRange"
+        },
+        {
           "name": "activeNode",
           "attribute": "activeNode",
           "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
@@ -517,6 +558,11 @@
           "type": "object"
         },
         {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
           "name": "icon",
           "type": "string",
           "default": "\"hardware:keyboard-return\""
@@ -593,9 +639,21 @@
           "type": "string"
         },
         {
+          "name": "activeSelection"
+        },
+        {
+          "name": "activeRange"
+        },
+        {
           "name": "activeNode",
           "attribute": "activeNode",
           "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",

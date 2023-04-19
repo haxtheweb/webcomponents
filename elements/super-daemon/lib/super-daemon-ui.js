@@ -17,7 +17,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.t.filterCommands = "Filter commands";
     this.t.commands = "Commands";
     this.t.loadingResults = "Loading results";
-    this.t.commonTasksText = "Merlin helps show you what's possible. Here are some common answers..";
+    this.t.commonTasksText =
+      "Merlin helps show you what's possible. Here are some common answers..";
     this.opened = false;
     this.items = [];
     this.mini = false;
@@ -34,20 +35,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.questionTags = [
       {
         value: "*",
-        label: "Show me what's possible!"
+        label: "Show me what's possible!",
       },
       {
         value: "help",
-        label: "I need help!"
+        label: "I need help!",
       },
       {
         value: "media",
-        label: "Insert media.."
+        label: "Insert media..",
       },
       {
         value: "edit",
-        label: "Edit this page"
-      }
+        label: "Edit this page",
+      },
     ];
   }
   static get tag() {
@@ -502,20 +503,20 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   }
 
   commonConcepts(value) {
-    const sdi = window.SuperDaemonManager.requestAvailability()
+    const sdi = window.SuperDaemonManager.requestAvailability();
     switch (value) {
       case "help":
         sdi.runProgram("?", {}, null, null, "", "");
-      break;
+        break;
       case "media":
         sdi.runProgram("/", {}, null, null, "", "sources");
-      break;
+        break;
       case "edit":
         sdi.runProgram("*", {}, null, null, "", "CMS/action/edit");
-      break;
+        break;
       case "*":
         sdi.runProgram("*", {}, null, null, "", "");
-      break;
+        break;
     }
   }
 
@@ -532,85 +533,84 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
 
   render() {
     return html`
-<div class="common-tasks-text">${this.t.commonTasksText}</div>
-<div class="question-tags">
-${this.questionTags.map(
-(item, i) => html`
-  <simple-tag
-    tabindex="0"
-    @keydown="${this.tagKeydown}"
-    @click="${this.tagClick}"
-    accent-color="grey"
-    value="${item.label}"
-    part="tag tag-${i}"
-    data-value="${item.value}"
-  ></simple-tag>`
-)}
-</div>
-<div class="search">
-  ${this.commandContext != "*"
-    ? html`<simple-icon-lite
-        title="${this.getActiveTitle(this.commandContext)}"
-        icon="${this.getActiveIcon(this.commandContext)}"
-        class="user-context-icon"
-      ></simple-icon-lite>`
-    : ``}
-  ${this.programName
-    ? html`<span class="program">${this.programName}</span>`
-    : ``}
-  <simple-fields-field
-    id="inputfilter"
-    @value-changed="${this.inputfilterChanged}"
-    @keydown="${this._inputKeydown}"
-    .value="${this.like}"
-    aria-controls="filter"
-    label="${this.t.filterCommands}"
-    placeholder="${this.t.whatAreYouLookingFor}"
-    type="text"
-    auto-validate=""
-    autofocus
-    part="filter"
-  ></simple-fields-field>
-  <simple-icon-lite icon="${this.icon}" class="icon"></simple-icon-lite>
-</div>
-<div class="results-stats">
-  ${this.filtered.length} / ${this.items.length} ${this.t.commands}
-</div>
-<div
-  class="results"
-  @keydown="${this._resultsKeydown}"
-  @super-daemon-row-selected="${this.itemSelected}"
->
-  ${this.loading
-    ? html`<div class="loading">${this.t.loadingResults}..</div>`
-    : html`
-        ${!this.filtered.length || this.filtered.length === 0
-          ? html`<div class="no-results">
-                ${this.t.noResultsForThisTerm}
-              </div>
-              <div class="slotted"><slot></slot></div>`
+      <div class="common-tasks-text">${this.t.commonTasksText}</div>
+      <div class="question-tags">
+        ${this.questionTags.map(
+          (item, i) => html` <simple-tag
+            tabindex="0"
+            @keydown="${this.tagKeydown}"
+            @click="${this.tagClick}"
+            accent-color="grey"
+            value="${item.label}"
+            part="tag tag-${i}"
+            data-value="${item.value}"
+          ></simple-tag>`
+        )}
+      </div>
+      <div class="search">
+        ${this.commandContext != "*"
+          ? html`<simple-icon-lite
+              title="${this.getActiveTitle(this.commandContext)}"
+              icon="${this.getActiveIcon(this.commandContext)}"
+              class="user-context-icon"
+            ></simple-icon-lite>`
+          : ``}
+        ${this.programName
+          ? html`<span class="program">${this.programName}</span>`
+          : ``}
+        <simple-fields-field
+          id="inputfilter"
+          @value-changed="${this.inputfilterChanged}"
+          @keydown="${this._inputKeydown}"
+          .value="${this.like}"
+          aria-controls="filter"
+          label="${this.t.filterCommands}"
+          placeholder="${this.t.whatAreYouLookingFor}"
+          type="text"
+          auto-validate=""
+          autofocus
+          part="filter"
+        ></simple-fields-field>
+        <simple-icon-lite icon="${this.icon}" class="icon"></simple-icon-lite>
+      </div>
+      <div class="results-stats">
+        ${this.filtered.length} / ${this.items.length} ${this.t.commands}
+      </div>
+      <div
+        class="results"
+        @keydown="${this._resultsKeydown}"
+        @super-daemon-row-selected="${this.itemSelected}"
+      >
+        ${this.loading
+          ? html`<div class="loading">${this.t.loadingResults}..</div>`
           : html`
-              ${this.filtered.map(
-                (item, i) => html`
-                  <super-daemon-row
-                    data-row-index="${i}"
-                    .value="${item.value}"
-                    icon="${item.icon}"
-                    image="${item.image}"
-                    title="${item.title}"
-                    .tags="${item.tags}"
-                    event-name="${item.eventName}"
-                    path="${item.path}"
-                    key="${item.key}"
-                    ?more="${item.more && !this.mini}"
-                    ?mini="${this.mini}"
-                    >${item.more ? item.more : nothing}</super-daemon-row
-                  >
-                `
-              )}
+              ${!this.filtered.length || this.filtered.length === 0
+                ? html`<div class="no-results">
+                      ${this.t.noResultsForThisTerm}
+                    </div>
+                    <div class="slotted"><slot></slot></div>`
+                : html`
+                    ${this.filtered.map(
+                      (item, i) => html`
+                        <super-daemon-row
+                          data-row-index="${i}"
+                          .value="${item.value}"
+                          icon="${item.icon}"
+                          image="${item.image}"
+                          title="${item.title}"
+                          .tags="${item.tags}"
+                          event-name="${item.eventName}"
+                          path="${item.path}"
+                          key="${item.key}"
+                          ?more="${item.more && !this.mini}"
+                          ?mini="${this.mini}"
+                          >${item.more ? item.more : nothing}</super-daemon-row
+                        >
+                      `
+                    )}
+                  `}
             `}
-      `}
-</div>
+      </div>
     `;
   }
 }

@@ -495,7 +495,7 @@
     },
     {
       "name": "hax-gizmo-browser",
-      "description": "`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `categories` {`any[]`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `daemonKeyCombo` - \n\n  * `categories` {`any[]`} - \n\n  * `value` {`string`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
+      "description": "`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `categories` {`any[]`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperties:\n\n  * `daemonKeyCombo` - \n\n  * `categories` {`any[]`} - \n\n  * `value` {`string`} - \n\n  * `recentGizmoList` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
       "attributes": [
         {
           "name": "categories",
@@ -529,6 +529,11 @@
         {
           "name": "filtered",
           "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
+        },
+        {
+          "name": "multi-match",
+          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "onfilter",

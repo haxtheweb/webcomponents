@@ -73,22 +73,25 @@ const DataStyleDecoration = {
   },
 };
 
-const DataInstructionalAction = [{
-  "attribute": "data-instructional-action",
-  "title": "Type",
-  "description": "Indicates instructional context to users visually",
-  "inputMethod": "select",
-  "options": {
-    "": "-- none --",
-    ...learningComponentTypes
-  }
-},
-{
-  "attribute": "data-id-emphasize",
-  "title": "Alternate visual treatment",
-  "description": "Apply a different visual treatment to the element but with same meaning",
-  "inputMethod": "boolean"
-}];
+const DataInstructionalAction = [
+  {
+    attribute: "data-instructional-action",
+    title: "Type",
+    description: "Indicates instructional context to users visually",
+    inputMethod: "select",
+    options: {
+      "": "-- none --",
+      ...learningComponentTypes,
+    },
+  },
+  {
+    attribute: "data-id-emphasize",
+    title: "Alternate visual treatment",
+    description:
+      "Apply a different visual treatment to the element but with same meaning",
+    inputMethod: "boolean",
+  },
+];
 
 /**
  * @element hax-store
@@ -1972,7 +1975,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["CMS","HAX"],
+      context: ["CMS", "HAX"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -2110,7 +2113,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "+": { tag: "ul", content: "<li></li>" },
       "---": { tag: "hr" },
       "***": { tag: "hr" },
-      "___": { tag: "hr" },
+      ___: { tag: "hr" },
       "```": { tag: "code", content: "" },
       ">": { tag: "blockquote", content: "" },
     };
@@ -2739,7 +2742,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     for (let tag in prims) {
       let primContentDemo = "";
-      if (["h1","h2","h3","h4","h5","h6"].includes(tag)) {
+      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
       } else if (tag == "ul" || tag == "ol") {
         primContentDemo = "<li>Item</li><li>Item</li>";
@@ -2777,7 +2780,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             },
           },
           settings: {
-            configure: ["h1","h2","h3","h4","h5","h6"].includes(tag) ? [...DataInstructionalAction] : [DataStyleDecoration],
+            configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
+              ? [...DataInstructionalAction]
+              : [DataStyleDecoration],
             advanced: [],
           },
           demoSchema: [

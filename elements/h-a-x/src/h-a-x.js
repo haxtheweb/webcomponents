@@ -7,7 +7,10 @@ import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@lrnwebcomponents/utils/utils.js";
 import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import { learningComponentColors, iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import {
+  learningComponentColors,
+  iconFromPageType,
+} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 
 /**
  * `h-a-x`
@@ -62,7 +65,9 @@ class HAX extends HTMLElement {
         h4[data-instructional-action="${item}"]::after,
         h5[data-instructional-action="${item}"]::after,
         h6[data-instructional-action="${item}"]::after {
-          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(iconFromPageType(item))}");
+          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
+            iconFromPageType(item)
+          )}");
         }
         
         hr[data-instructional-action="${item}"] {
@@ -73,7 +78,9 @@ class HAX extends HTMLElement {
         }
         
         hr[data-instructional-action="${item}"]::after {
-          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(iconFromPageType(item))}");
+          -webkit-mask-image: url("${SimpleIconsetStore.getIcon(
+            iconFromPageType(item)
+          )}");
         }
         `;
       }

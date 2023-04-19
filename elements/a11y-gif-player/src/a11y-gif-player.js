@@ -389,10 +389,10 @@ class A11yGifPlayer extends I18NMixin(
       if (alt) this.alt = alt;
     }
   }
-   /**
+  /**
    * haxProperties integration via file reference
    */
-   static get haxProperties() {
+  static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }

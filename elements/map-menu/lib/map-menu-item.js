@@ -129,8 +129,17 @@ class MapMenuItem extends I18NMixin(LitElement) {
       <a tabindex="-1" href="${this.url}">
         <button id="wrapper" noink>
           ${this.icon
-            ? html` <simple-icon-lite icon="${this.icon}" id="icon"></simple-icon-lite>
-            ${this.iconLabel ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`:``} `
+            ? html`
+                <simple-icon-lite
+                  icon="${this.icon}"
+                  id="icon"
+                ></simple-icon-lite>
+                ${this.iconLabel
+                  ? html`<simple-tooltip for="icon"
+                      >${this.iconLabel}</simple-tooltip
+                    >`
+                  : ``}
+              `
             : html`<div class="no-icon"></div>`}
           <span class="title">${this.itemtitle}</span>
           ${!this.published

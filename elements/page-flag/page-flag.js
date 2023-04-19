@@ -45,7 +45,7 @@ class PageFlag extends SimpleColors {
       show: {
         type: Boolean,
         reflect: true,
-      }
+      },
     };
   }
   /**
@@ -69,10 +69,10 @@ class PageFlag extends SimpleColors {
           display: block;
         }
         .arrow {
-          border: 3px solid var(--simple-colors-default-theme-accent-4,#97d4e8);
+          border: 3px solid var(--simple-colors-default-theme-accent-4, #97d4e8);
           border-radius: 4px;
-          background: var(--simple-colors-default-theme-accent-1,#c8e7f1);
-          color: var(--simple-colors-default-theme-accent-8,#2d7187);
+          background: var(--simple-colors-default-theme-accent-1, #c8e7f1);
+          color: var(--simple-colors-default-theme-accent-8, #2d7187);
           padding: 8px;
           text-align: center;
           max-width: 100px;
@@ -81,8 +81,9 @@ class PageFlag extends SimpleColors {
           position: relative;
           cursor: pointer;
         }
-        
-        .arrow::after, .arrow::before {
+
+        .arrow::after,
+        .arrow::before {
           border: solid transparent;
           content: " ";
           display: block;
@@ -94,14 +95,20 @@ class PageFlag extends SimpleColors {
         }
         .arrow::before {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(--simple-colors-default-theme-accent-4,#97d4e8);
+          border-right-color: var(
+            --simple-colors-default-theme-accent-4,
+            #97d4e8
+          );
           top: 50%;
           margin-top: -14px;
           border-width: 14px;
         }
         .arrow::after {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(--simple-colors-default-theme-accent-1,#c8e7f1);
+          border-right-color: var(
+            --simple-colors-default-theme-accent-1,
+            #c8e7f1
+          );
           top: 50%;
           margin-top: -10px;
           border-width: 10px;
@@ -134,8 +141,9 @@ class PageFlag extends SimpleColors {
    * LitElement render callback
    */
   render() {
-    return html`
-      <button class="arrow" @click="${this.toggleOpen}">${this.label}</button>
+    return html` <button class="arrow" @click="${this.toggleOpen}">
+        ${this.label}
+      </button>
       <absolute-position-behavior
         justify
         position="bottom"
@@ -165,13 +173,13 @@ class PageFlag extends SimpleColors {
   handleReply(e) {
     const comment = document.createElement("page-flag-comment");
     comment.seed = pageFlagManager.activeUser;
-    comment.timestamp = Date.now()/1000;
+    comment.timestamp = Date.now() / 1000;
     comment.canEdit = true;
     comment.readOnly = false;
-    comment.reply = (e.detail.reply+1 < 2) ? e.detail.reply+1 : 2;
+    comment.reply = e.detail.reply + 1 < 2 ? e.detail.reply + 1 : 2;
     e.detail.insertAdjacentElement("afterend", comment);
     setTimeout(() => {
-      comment.editMode = true;      
+      comment.editMode = true;
     }, 0);
   }
   /**
@@ -229,22 +237,22 @@ class PageFlag extends SimpleColors {
     pageFlagManager.allFlags.push(this);
     if (pageFlagManager.activeUser) {
       this.show = true;
-    }
-    else {
+    } else {
       this.remove();
     }
     // arrow node for pointing to w/ the tooltip container
-    this.shadowRoot.querySelector('absolute-position-behavior').target = this.shadowRoot.querySelector(".arrow");
+    this.shadowRoot.querySelector("absolute-position-behavior").target =
+      this.shadowRoot.querySelector(".arrow");
     // ensure we have content, if not let's add a boilerplate one to get writing
     if (!this.querySelector("page-flag-comment")) {
       const comment = document.createElement("page-flag-comment");
       comment.seed = pageFlagManager.activeUser;
-      comment.timestamp = Date.now()/1000;
+      comment.timestamp = Date.now() / 1000;
       comment.canEdit = true;
       comment.readOnly = false;
       this.appendChild(comment);
       setTimeout(() => {
-        comment.editMode = true;      
+        comment.editMode = true;
       }, 100);
     }
   }
@@ -262,10 +270,16 @@ export class pageFlagManagerEl extends HTMLElement {
     this.allFlags = [];
   }
   connectedCallback() {
-    window.addEventListener('haxcms-user-data-updated', this.userDataUpdated.bind(this));
+    window.addEventListener(
+      "haxcms-user-data-updated",
+      this.userDataUpdated.bind(this)
+    );
   }
   disconnectedCallback() {
-    window.removeEventListener('haxcms-user-data-updated', this.userDataUpdated.bind(this));
+    window.removeEventListener(
+      "haxcms-user-data-updated",
+      this.userDataUpdated.bind(this)
+    );
   }
   userDataUpdated(e) {
     this.activeUser = e.detail.userName;
@@ -276,7 +290,6 @@ export class pageFlagManagerEl extends HTMLElement {
   }
 }
 customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);
-
 
 // register globally so we can make sure there is only one
 window.pageFlagManager = window.pageFlagManager || {};
@@ -290,5 +303,4 @@ window.pageFlagManager.requestAvailability = () => {
   return window.pageFlagManager.instance;
 };
 // most common way to access registry
-export const pageFlagManager =
-  window.pageFlagManager.requestAvailability();
+export const pageFlagManager = window.pageFlagManager.requestAvailability();

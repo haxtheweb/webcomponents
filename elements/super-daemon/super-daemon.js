@@ -45,7 +45,7 @@ class SuperDaemon extends LitElement {
     this.activeRange = null;
     this.activeNode = null;
 
-    this.value = '';
+    this.value = "";
     this.icon = "hardware:keyboard-return";
     this.context = [];
     this.opened = false;
@@ -91,7 +91,10 @@ class SuperDaemon extends LitElement {
   disconnectedCallback() {
     super.connectedCallback();
     window.removeEventListener("keydown", this.keyHandler.bind(this));
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
+      once: true,
+      passive: true,
+    });
     window.removeEventListener(
       "super-daemon-define-option",
       this.defineOptionEvent.bind(this)
@@ -209,44 +212,47 @@ class SuperDaemon extends LitElement {
       // create new object from existing so we can build an index
       // remove icon, image, value, eventName as these are not searchable values
       // then create an idex by making everything else into a space separated string
-      let indexBuilder = {...option};
+      let indexBuilder = { ...option };
       delete indexBuilder.icon;
       delete indexBuilder.image;
       delete indexBuilder.value;
       delete indexBuilder.eventName;
       indexBuilder = Object.values(indexBuilder).filter((i) => {
-        if (!['boolean','number'].includes(typeof i) && i !== "" && i !== null && i !== undefined) {
+        if (
+          !["boolean", "number"].includes(typeof i) &&
+          i !== "" &&
+          i !== null &&
+          i !== undefined
+        ) {
           return true;
         }
       });
       let index = [];
       indexBuilder.map((i) => {
-        if (typeof i === 'string') {
+        if (typeof i === "string") {
           // helps w/ splitting on / or else it's just a single item anyway
-          let q = i.split('/');
+          let q = i.split("/");
           q.map((j) => {
-            if (!["","*","/"," ","?",">"].includes(j)) {
+            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
               index.push(j.toLowerCase());
             }
           });
-        }
-        else if (Array.isArray(i)) {
+        } else if (Array.isArray(i)) {
           i.map((j) => {
-            if (!["","*","/"," ","?",">"].includes(j)) {
+            if (!["", "*", "/", " ", "?", ">"].includes(j)) {
               index.push(j.toLowerCase());
             }
           });
-        }
-        else {
+        } else {
           // this shouldn't be possible so ignore the value..
         }
       });
       // combine all the values into a single string removing silly things that might slip through
-      let tmp = index.join(' ').replace(/\*/g, '').replace(/\?/g, '');
+      let tmp = index.join(" ").replace(/\*/g, "").replace(/\?/g, "");
       // use a set to remove duplicates
       index = [...new Set(tmp.split(" "))];
       // clean index of words :) but also include path as a whole phrase
-      option.index = index.join(' ') + ' ' + option.path;
+      option.index = index.join(" ") + " " + option.path;
       this.allItems.push(option);
     }
   }
@@ -372,7 +378,10 @@ class SuperDaemon extends LitElement {
       cancelable: true,
     });
     document.dispatchEvent(event);
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
+      once: true,
+      passive: true,
+    });
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
@@ -400,11 +409,11 @@ class SuperDaemon extends LitElement {
     tmpItems.sort((a, b) => {
       var textA = a.title.toUpperCase();
       var textB = b.title.toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
     // then on priority
     return tmpItems.sort((a, b) => {
-      return (a.priority < b.priority) ? -1 : (a.priority > b.priority) ? 1 : 0;
+      return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
     });
   }
   // can't directly set context
@@ -427,10 +436,16 @@ class SuperDaemon extends LitElement {
   }
   // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
   miniCancel() {
-    if (this.activeNode && this.activeNode.focus && this.mini && this.activeRange && this.activeSelection) {
+    if (
+      this.activeNode &&
+      this.activeNode.focus &&
+      this.mini &&
+      this.activeRange &&
+      this.activeSelection
+    ) {
       try {
         this.activeNode.textContent = this.value;
-        this.activeNode.focus();            
+        this.activeNode.focus();
         this.activeRange.setStart(this.activeNode, 0);
         this.activeRange.collapse(true);
         this.activeSelection.removeAllRanges();
@@ -473,11 +488,17 @@ class SuperDaemon extends LitElement {
           .shadowRoot.querySelector("#backdrop").style.right = 0;
       }
     }
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
+    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
+      once: true,
+      passive: true,
+    });
     setTimeout(() => {
       // ensure if we click away from the UI that we close and clean up
-      if (this.mini) {        
-        window.addEventListener("click", this.clickOnMiniMode.bind(this), { once: true, passive: true });
+      if (this.mini) {
+        window.addEventListener("click", this.clickOnMiniMode.bind(this), {
+          once: true,
+          passive: true,
+        });
       }
       this.shadowRoot
         .querySelector("super-daemon-ui")

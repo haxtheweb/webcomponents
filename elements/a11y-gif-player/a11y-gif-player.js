@@ -393,10 +393,8 @@ class A11yGifPlayer extends I18NMixin(
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return (
-      decodeURIComponent(import.meta.url) +
-      `/../lib/${this.tag}.haxProperties.json`
-    );
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(A11yGifPlayer.tag, A11yGifPlayer);

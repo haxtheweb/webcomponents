@@ -175,8 +175,16 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             <button>
               ${this.icon
                 ? html`
-                    <simple-icon-lite icon="${this.icon}" id="icon"></simple-icon-lite>
-                    ${this.iconLabel ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`:``} `
+                    <simple-icon-lite
+                      icon="${this.icon}"
+                      id="icon"
+                    ></simple-icon-lite>
+                    ${this.iconLabel
+                      ? html`<simple-tooltip for="icon"
+                          >${this.iconLabel}</simple-tooltip
+                        >`
+                      : ``}
+                  `
                 : ``}
               <div class="title">${this.itemtitle}</div>
               ${!this.published

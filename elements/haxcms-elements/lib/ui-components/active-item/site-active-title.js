@@ -36,8 +36,17 @@ class SiteActiveTitle extends LitElement {
           vertical-align: middle;
         }
       </style>
-      <h1>${this.icon ? html` <simple-icon-lite class="site-active-title-icon" icon="${this.icon}"></simple-icon-lite> ` : ``}
-${this.__title}</h1>
+      <h1>
+        ${this.icon
+          ? html`
+              <simple-icon-lite
+                class="site-active-title-icon"
+                icon="${this.icon}"
+              ></simple-icon-lite>
+            `
+          : ``}
+        ${this.__title}
+      </h1>
     `;
   }
   /**
@@ -116,8 +125,7 @@ ${this.__title}</h1>
       const activeItem = toJS(store.activeItem);
       if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
         this.icon = activeItem.metadata.icon;
-      }
-      else {
+      } else {
         this.icon = null;
       }
       this.__disposer.push(reaction);

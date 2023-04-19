@@ -108,6 +108,28 @@
       ]
     },
     {
+      "name": "learning-component",
+      "description": "`learning-component`\n`An element for displaying learning materials.`\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - ",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: objectives"
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: null"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: null"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        }
+      ]
+    },
+    {
       "name": "lrn-h5p",
       "description": "Attributes:\n\n  * `_editing` {`boolean`} - \n\nProperties:\n\n  * `_editing` {`boolean`} - \n\n  * `_disposer` - ",
       "attributes": [

@@ -97,7 +97,8 @@ class PersonTestimonial extends SimpleColors {
         :host([data-hax-ray][data-hax-active]) [data-layout-slotname]:hover {
           outline-style: solid;
         }
-        :host([data-hax-ray][data-hax-active].hax-hovered) [data-layout-slotname].active {
+        :host([data-hax-ray][data-hax-active].hax-hovered)
+          [data-layout-slotname].active {
           outline: var(
             --hax-body-active-drag-outline,
             1px solid var(--hax-ui-color-accent, #009dc7)

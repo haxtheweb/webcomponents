@@ -10,7 +10,10 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { editableTableDisplayStyles } from "@lrnwebcomponents/editable-table/lib/editable-table-behaviors.js";
-import { learningComponentColors, iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import {
+  learningComponentColors,
+  iconFromPageType,
+} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 
 /**
  * LitElement Version of HAXCMSTheme
@@ -105,130 +108,161 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           }
         `
     );
-    let instructionalStyles = Object.keys(learningComponentColors).map((item) => {
-      let color = learningComponentColors[item];
-      return css`
-        h1[data-instructional-action="${unsafeCSS(item)}"],
-        h2[data-instructional-action="${unsafeCSS(item)}"],
-        h3[data-instructional-action="${unsafeCSS(item)}"],
-        h4[data-instructional-action="${unsafeCSS(item)}"],
-        h5[data-instructional-action="${unsafeCSS(item)}"],
-        h6[data-instructional-action="${unsafeCSS(item)}"]  {
-        --hax-action-color: var(--simple-colors-default-theme-${unsafeCSS(color)}-8, ${unsafeCSS(color)});
-        --hax-action-line-color: var(--simple-colors-default-theme-${unsafeCSS(color)}-8, ${unsafeCSS(color)});
-        --hax-action-accent-color: #eeeeee;
-        --hax-action-border: var(--simple-colors-default-theme-${unsafeCSS(color)}-8, ${unsafeCSS(color)}) solid 3px;
+    let instructionalStyles = Object.keys(learningComponentColors).map(
+      (item) => {
+        let color = learningComponentColors[item];
+        return css`
+          h1[data-instructional-action="${unsafeCSS(item)}"],
+          h2[data-instructional-action="${unsafeCSS(item)}"],
+          h3[data-instructional-action="${unsafeCSS(item)}"],
+          h4[data-instructional-action="${unsafeCSS(item)}"],
+          h5[data-instructional-action="${unsafeCSS(item)}"],
+          h6[data-instructional-action="${unsafeCSS(item)}"] {
+            --hax-action-color: var(
+              --simple-colors-default-theme-${unsafeCSS(color)}-8,
+              ${unsafeCSS(color)}
+            );
+            --hax-action-line-color: var(
+              --simple-colors-default-theme-${unsafeCSS(color)}-8,
+              ${unsafeCSS(color)}
+            );
+            --hax-action-accent-color: #eeeeee;
+            --hax-action-border: var(
+                --simple-colors-default-theme-${unsafeCSS(color)}-8,
+                ${unsafeCSS(color)}
+              )
+              solid 3px;
+          }
+
+          h1[data-instructional-action="${unsafeCSS(item)}"]::after,
+          h2[data-instructional-action="${unsafeCSS(item)}"]::after,
+          h3[data-instructional-action="${unsafeCSS(item)}"]::after,
+          h4[data-instructional-action="${unsafeCSS(item)}"]::after,
+          h5[data-instructional-action="${unsafeCSS(item)}"]::after,
+          h6[data-instructional-action="${unsafeCSS(item)}"]::after {
+            -webkit-mask-image: url("${unsafeCSS(
+              SimpleIconsetStore.getIcon(iconFromPageType(item))
+            )}");
+          }
+          hr[data-instructional-action="${unsafeCSS(item)}"] {
+            --hax-action-color: var(
+              --simple-colors-default-theme-${unsafeCSS(item)}-8,
+              ${unsafeCSS(item)}
+            );
+            --hax-action-line-color: var(
+              --simple-colors-default-theme-${unsafeCSS(color)}-8,
+              ${unsafeCSS(item)}
+            );
+            --hax-action-accent-color: #eeeeee;
+            --hax-action-border: var(
+                --simple-colors-default-theme-${unsafeCSS(item)}-8,
+                ${unsafeCSS(item)}
+              )
+              solid 3px;
+          }
+
+          hr[data-instructional-action="${unsafeCSS(item)}"]::after {
+            -webkit-mask-image: url("${unsafeCSS(
+              SimpleIconsetStore.getIcon(iconFromPageType(item))
+            )}");
+          }
+        `;
       }
-      
-      h1[data-instructional-action="${unsafeCSS(item)}"]::after,
-      h2[data-instructional-action="${unsafeCSS(item)}"]::after,
-      h3[data-instructional-action="${unsafeCSS(item)}"]::after,
-      h4[data-instructional-action="${unsafeCSS(item)}"]::after,
-      h5[data-instructional-action="${unsafeCSS(item)}"]::after,
-      h6[data-instructional-action="${unsafeCSS(item)}"]::after {
-        -webkit-mask-image: url("${unsafeCSS(SimpleIconsetStore.getIcon(iconFromPageType(item)))}");
-      }
-      hr[data-instructional-action="${unsafeCSS(item)}"] {
-        --hax-action-color: var(--simple-colors-default-theme-${unsafeCSS(item)}-8, ${unsafeCSS(item)});
-        --hax-action-line-color: var(--simple-colors-default-theme-${unsafeCSS(color)}-8, ${unsafeCSS(item)});
-        --hax-action-accent-color: #eeeeee;
-        --hax-action-border: var(--simple-colors-default-theme-${unsafeCSS(item)}-8, ${unsafeCSS(item)}) solid 3px;
-      }
-      
-      hr[data-instructional-action="${unsafeCSS(item)}"]::after {
-        -webkit-mask-image: url("${unsafeCSS(SimpleIconsetStore.getIcon(iconFromPageType(item)))}");
-      }
-        `
-  });
-    return [css`
-    hr[data-instructional-action] {
-      border: none;
-      border-top: 2px dashed var(--hax-action-line-color, blue);
-      overflow: visible;
-      text-align: center;
-      height: 4px;
-      padding: 0px;
-      background-color: white;
-    }
-    
-    hr[data-instructional-action]::before {
-      background-color: var(--hax-action-accent-color, #aaa);
-      height: 50px;
-      width: 50px;
-      margin: 0 auto;
-      background-position: center;
-      content: '';
-      display: block;
-      top: -28px;
-      position: relative;
-      z-index: 1;
-      border: var(--hax-action-border ,2px solid blue);
-      border-radius: 50%;
-    }
-  
-    hr[data-instructional-action]::after {
-      content: '';
-      position: relative;
-      z-index: 2;
-      background-color: var(--hax-action-color, blue);
-      mask-repeat: no-repeat;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-size: contain;
-      padding: 18px;
-      top: -54px;
-    }
-    h1[data-instructional-action],
-    h2[data-instructional-action],
-    h3[data-instructional-action],
-    h4[data-instructional-action],
-    h5[data-instructional-action],    
-    h6[data-instructional-action] {
-      padding-left: 72px;
-    }
-    h1[data-instructional-action]::before,
-    h2[data-instructional-action]::before,
-    h3[data-instructional-action]::before,
-    h4[data-instructional-action]::before,
-    h5[data-instructional-action]::before,    
-    h6[data-instructional-action]::before {
-      background-color: var(--hax-action-accent-color, #aaa);
-      height: 50px;
-      width: 50px;
-      background-position: center;
-      content: '';
-      display: block;
-      position: absolute;
-      z-index: 1;
-      border: var(--hax-action-border , 3px solid black);
-      border-radius: 50%;
-      left: 0px;
-      margin: 4px;
-    }
-    h1[data-instructional-action]::after,
-    h2[data-instructional-action]::after,
-    h3[data-instructional-action]::after,
-    h4[data-instructional-action]::after,
-    h5[data-instructional-action]::after,    
-    h6[data-instructional-action]::after {
-      content: '';
-      position: relative;
-      z-index: 2;
-      background-color: var(--hax-action-color, blue);
-      mask-repeat: no-repeat;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-size: contain;
-      padding: 22px;
-      margin: 10px;
-      position: absolute;
-      left: 0px;
-    }
-    [data-instructional-action][data-id-emphasize] {
-      background-color: var(--hax-action-color) !important;
-      color: white;
-    }
-    `,...styles, ...instructionalStyles, editableTableDisplayStyles];
+    );
+    return [
+      css`
+        hr[data-instructional-action] {
+          border: none;
+          border-top: 2px dashed var(--hax-action-line-color, blue);
+          overflow: visible;
+          text-align: center;
+          height: 4px;
+          padding: 0px;
+          background-color: white;
+        }
+
+        hr[data-instructional-action]::before {
+          background-color: var(--hax-action-accent-color, #aaa);
+          height: 50px;
+          width: 50px;
+          margin: 0 auto;
+          background-position: center;
+          content: "";
+          display: block;
+          top: -28px;
+          position: relative;
+          z-index: 1;
+          border: var(--hax-action-border, 2px solid blue);
+          border-radius: 50%;
+        }
+
+        hr[data-instructional-action]::after {
+          content: "";
+          position: relative;
+          z-index: 2;
+          background-color: var(--hax-action-color, blue);
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: contain;
+          padding: 18px;
+          top: -54px;
+        }
+        h1[data-instructional-action],
+        h2[data-instructional-action],
+        h3[data-instructional-action],
+        h4[data-instructional-action],
+        h5[data-instructional-action],
+        h6[data-instructional-action] {
+          padding-left: 72px;
+        }
+        h1[data-instructional-action]::before,
+        h2[data-instructional-action]::before,
+        h3[data-instructional-action]::before,
+        h4[data-instructional-action]::before,
+        h5[data-instructional-action]::before,
+        h6[data-instructional-action]::before {
+          background-color: var(--hax-action-accent-color, #aaa);
+          height: 50px;
+          width: 50px;
+          background-position: center;
+          content: "";
+          display: block;
+          position: absolute;
+          z-index: 1;
+          border: var(--hax-action-border, 3px solid black);
+          border-radius: 50%;
+          left: 0px;
+          margin: 4px;
+        }
+        h1[data-instructional-action]::after,
+        h2[data-instructional-action]::after,
+        h3[data-instructional-action]::after,
+        h4[data-instructional-action]::after,
+        h5[data-instructional-action]::after,
+        h6[data-instructional-action]::after {
+          content: "";
+          position: relative;
+          z-index: 2;
+          background-color: var(--hax-action-color, blue);
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: contain;
+          padding: 22px;
+          margin: 10px;
+          position: absolute;
+          left: 0px;
+        }
+        [data-instructional-action][data-id-emphasize] {
+          background-color: var(--hax-action-color) !important;
+          color: white;
+        }
+      `,
+      ...styles,
+      ...instructionalStyles,
+      editableTableDisplayStyles,
+    ];
   }
   copyLink(e) {
     let target = e.target;

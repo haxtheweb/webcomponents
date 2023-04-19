@@ -1156,7 +1156,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 SuperDaemonInstance.mini = true;
                 SuperDaemonInstance.activeRange = rng;
                 SuperDaemonInstance.activeSelection = HAXStore.getSelection();
-                
+
                 SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
                 SuperDaemonInstance.runProgram(
                   "*",
@@ -2620,8 +2620,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let active = this.activeNode;
         if (rng.commonAncestorContainer.tagName) {
           active = rng.commonAncestorContainer;
-        }
-        else if (rng.commonAncestorContainer.parentNode && rng.commonAncestorContainer.parentNode.tagName) {
+        } else if (
+          rng.commonAncestorContainer.parentNode &&
+          rng.commonAncestorContainer.parentNode.tagName
+        ) {
           active = rng.commonAncestorContainer.parentNode;
         }
         SuperDaemonInstance.activeNode = active;

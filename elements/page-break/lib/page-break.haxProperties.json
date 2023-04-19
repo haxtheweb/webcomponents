@@ -7,9 +7,7 @@
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
-    "tags": [
-      "Other"
-    ],
+    "tags": ["Other"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
@@ -91,11 +89,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "t",
-      "_hax-state",
-      "element-visible"
-    ]
+    "unsetAttributes": ["t", "_hax-state", "element-visible"]
   },
   "demoSchema": [
     {
