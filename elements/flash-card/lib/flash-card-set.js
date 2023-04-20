@@ -1,12 +1,12 @@
-import { html, css } from 'lit';
-import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
-import '../flash-card.js';
+import { html, css } from "lit";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "../flash-card.js";
 
 export class FlashCardSet extends SimpleColors {
   static get tag() {
-    return 'flash-card-set';
+    return "flash-card-set";
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
@@ -31,41 +31,46 @@ export class FlashCardSet extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
     this.renderTags();
-    this.shadowRoot.querySelector('.arrow-left').addEventListener('click', () => {
-      if (this.currentQuestion > 0) {
-        this.currentQuestion-=1;
-        this.changeVisible();
-      }
-    });
-    this.shadowRoot.querySelector('.arrow-right').addEventListener('click', () => {
-      if (this.currentQuestion < this.questions.length/4-1) {
-        this.currentQuestion+=1;
-        this.changeVisible();
-      }
-    });
+    this.shadowRoot
+      .querySelector(".arrow-left")
+      .addEventListener("click", () => {
+        if (this.currentQuestion > 0) {
+          this.currentQuestion -= 1;
+          this.changeVisible();
+        }
+      });
+    this.shadowRoot
+      .querySelector(".arrow-right")
+      .addEventListener("click", () => {
+        if (this.currentQuestion < this.questions.length / 4 - 1) {
+          this.currentQuestion += 1;
+          this.changeVisible();
+        }
+      });
   }
 
   getData() {
     const slotData2 = this.shadowRoot
-      .querySelector(`slot`).assignedNodes({ flatten: true })[1].childNodes;
-    const questionData = ['','','',''];
+      .querySelector(`slot`)
+      .assignedNodes({ flatten: true })[1].childNodes;
+    const questionData = ["", "", "", ""];
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < slotData2.length; i++) {
       if (i % 2 === 1) {
         // eslint-disable-next-line no-plusplus
         for (let j = 0; j < slotData2[i].childNodes.length; j++) {
           if (j % 2 === 1) {
-            const {slot} = slotData2[i].childNodes[j];
-            if (slot === 'front') {
+            const { slot } = slotData2[i].childNodes[j];
+            if (slot === "front") {
               questionData[0] = slotData2[i].childNodes[j].innerHTML;
             }
-            if (slot === 'back') {
+            if (slot === "back") {
               questionData[1] = slotData2[i].childNodes[j].innerHTML;
             }
-            if (slot === 'image') {
+            if (slot === "image") {
               questionData[2] = slotData2[i].childNodes[j].innerHTML;
             }
-            if (slot === 'attributes') {
+            if (slot === "attributes") {
               questionData[3] = slotData2[i].childNodes[j].innerHTML;
             }
           }
@@ -76,7 +81,7 @@ export class FlashCardSet extends SimpleColors {
         }
         // eslint-disable-next-line no-plusplus
         for (let l = 0; l < 4; l++) {
-          questionData[l] = '';
+          questionData[l] = "";
         }
       }
     }
@@ -85,48 +90,45 @@ export class FlashCardSet extends SimpleColors {
   renderTags() {
     this.getData();
     for (let i = 0; i < this.questions.length; i += this.cardLength) {
-      this.formatEl(i / this.cardLength, this.questions[i],
-        this.questions[i + 1], this.questions[i + 2], this.questions[i + 3]);
+      this.formatEl(
+        i / this.cardLength,
+        this.questions[i],
+        this.questions[i + 1],
+        this.questions[i + 2],
+        this.questions[i + 3]
+      );
     }
   }
 
   formatEl(number) {
     // console.log(this.currentQuestion, this.questions, this.cardLength);
     // create a new element
-    const el = document.createElement('flash-card');
-    el.setAttribute('id', `card${number}`);
+    const el = document.createElement("flash-card");
+    el.setAttribute("id", `card${number}`);
     if (number !== 0) {
-      el.className = 'hidden';
+      el.className = "hidden";
     }
     // add the text
     el.innerHTML = `
       <p slot="front">${arguments[1]}</p>
       <p slot="back">${arguments[2]}</p>`;
     // eslint-disable-next-line prefer-rest-params
-    el.setAttribute('img-source', arguments[3]);
+    el.setAttribute("img-source", arguments[3]);
     // eslint-disable-next-line prefer-rest-params
-    if (arguments[4].includes('speak')) {
-      el.setAttribute('speak', '');
-    }
-    // eslint-disable-next-line prefer-rest-params
-    if (arguments[4].includes('dark')) {
-      el.setAttribute('dark', '');
-    }
-    // eslint-disable-next-line prefer-rest-params
-    if (arguments[4].includes('back')) {
-      el.setAttribute('back', '');
+    if (arguments[4].includes("dark")) {
+      el.setAttribute("dark", "");
     }
     // append it to the parent
-    this.shadowRoot.querySelector('#content').appendChild(el);
+    this.shadowRoot.querySelector("#content").appendChild(el);
   }
 
   changeVisible() {
     for (let i = 0; i < this.questions.length; i += this.cardLength) {
       const el = this.shadowRoot.querySelector(`#card${i / this.cardLength}`);
       if (i / this.cardLength === this.currentQuestion) {
-        el.className = 'visible';
+        el.className = "visible";
       } else {
-        el.className = 'hidden';
+        el.className = "hidden";
       }
     }
   }
@@ -166,11 +168,20 @@ export class FlashCardSet extends SimpleColors {
   // HTML - specific to Lit
   render() {
     return html`
-      <div id='container'>
-        <div style='display: inline-flex'>
-          <simple-icon-lite tabindex="0" icon='arrow-back' class='arrow-left' onclick='${this.changeVisible()}'></simple-icon-lite>
+      <div id="container">
+        <div style="display: inline-flex">
+          <simple-icon-lite
+            tabindex="0"
+            icon="arrow-back"
+            class="arrow-left"
+            onclick="${this.changeVisible()}"
+          ></simple-icon-lite>
           <div id="content"></div>
-          <simple-icon-lite tabindex="0" icon='arrow-forward' class='arrow-right'></simple-icon-lite>
+          <simple-icon-lite
+            tabindex="0"
+            icon="arrow-forward"
+            class="arrow-right"
+          ></simple-icon-lite>
         </div>
         <slot style="display: none"></slot>
       </div>

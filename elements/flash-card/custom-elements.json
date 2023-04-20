@@ -4,12 +4,461 @@
     {
       "name": "flash-card",
       "path": "./flash-card.js",
-      "description": "`flash-card`\n`self check for a card that has a definition on the back`"
+      "attributes": [
+        {
+          "name": "inverted",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "img-keyword",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "img-source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "inverted",
+          "attribute": "inverted",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "type": "string"
+        },
+        {
+          "name": "imgKeyword",
+          "attribute": "img-keyword",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imgSource",
+          "attribute": "img-source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "back",
+          "attribute": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "flash-card-answer-box",
+      "path": "./lib/flash-card-answer-box.js",
+      "attributes": [
+        {
+          "name": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "default": "\"pending\""
+        },
+        {
+          "name": "show-result",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "side-to-show",
+          "type": "string",
+          "default": "\"front\""
+        },
+        {
+          "name": "user-answer",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"yourAnswer\":\"Your answer\",\"checkAnswer\":\"Check answer\",\"retry\":\"Retry\"}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "back",
+          "attribute": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "type": "string",
+          "default": "\"pending\""
+        },
+        {
+          "name": "correctAnswer",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "showResult",
+          "attribute": "show-result",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "statusIcon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "sideToShow",
+          "attribute": "side-to-show",
+          "type": "string",
+          "default": "\"front\""
+        },
+        {
+          "name": "userAnswer",
+          "attribute": "user-answer",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"yourAnswer\":\"Your answer\",\"checkAnswer\":\"Check answer\",\"retry\":\"Retry\"}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "flash-card-status-change"
+        }
+      ]
+    },
+    {
+      "name": "flash-card-image-prompt",
+      "path": "./lib/flash-card-prompt-img.js",
+      "attributes": [
+        {
+          "name": "img-src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "img-keyword",
+          "type": "string",
+          "default": "\"grey box\""
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "default": "\"pending\""
+        },
+        {
+          "name": "answerIcon",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "imgSrc",
+          "attribute": "img-src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imgKeyword",
+          "attribute": "img-keyword",
+          "type": "string",
+          "default": "\"grey box\""
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "type": "string",
+          "default": "\"pending\""
+        },
+        {
+          "name": "answerIcon",
+          "attribute": "answerIcon",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "flash-card-set",
+      "path": "./lib/flash-card-set.js",
+      "attributes": [
+        {
+          "name": "questions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "questions",
+          "attribute": "questions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "currentQuestion",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "cardLength",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
     },
     {
       "name": "flash-card",
       "path": "./src/flash-card.js",
-      "description": "`flash-card`\n`self check for a card that has a definition on the back`"
+      "attributes": [
+        {
+          "name": "inverted",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "img-keyword",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "img-source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "inverted",
+          "attribute": "inverted",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "type": "string"
+        },
+        {
+          "name": "imgKeyword",
+          "attribute": "img-keyword",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imgSource",
+          "attribute": "img-source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "back",
+          "attribute": "back",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
     }
   ]
 }

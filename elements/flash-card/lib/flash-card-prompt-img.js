@@ -1,8 +1,8 @@
 // dependencies / things imported
-import { html, css } from 'lit';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
-import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
+import { html, css } from "lit";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 
@@ -10,7 +10,7 @@ import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
 export class FlashCardPromptImg extends SimpleColors {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return 'flash-card-image-prompt';
+    return "flash-card-image-prompt";
   }
 
   // CSS - specific to Lit
@@ -45,7 +45,7 @@ export class FlashCardPromptImg extends SimpleColors {
       }
 
       .overlay::before {
-        content: '';
+        content: "";
         width: 100%;
         height: 100%;
         position: absolute;
@@ -63,18 +63,18 @@ export class FlashCardPromptImg extends SimpleColors {
         z-index: 100;
       }
 
-      :host([status='pending']) .overlay::before {
+      :host([status="pending"]) .overlay::before {
         display: flex;
         background: transparent;
       }
 
-      :host([status='correct']) .overlay::before {
+      :host([status="correct"]) .overlay::before {
         display: flex;
         background: green;
         filter: opacity(0.65);
       }
 
-      :host([status='incorrect']) .overlay::before {
+      :host([status="incorrect"]) .overlay::before {
         display: flex;
         background: red;
         filter: opacity(0.65);
@@ -86,22 +86,22 @@ export class FlashCardPromptImg extends SimpleColors {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.imgSrc = '';
-    this.imgKeyword = 'grey box';
-    this.status = 'pending';
+    this.imgSrc = "";
+    this.imgKeyword = "grey box";
+    this.status = "pending";
     this.answerIcon = false;
-    this.icon = '';
+    this.icon = "";
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
       ...super.properties,
-      imgSrc: { type: String, reflect: true, attribute: 'img-src' },
-      imgKeyword: { type: String, attribute: 'img-keyword' },
+      imgSrc: { type: String, reflect: true, attribute: "img-src" },
+      imgKeyword: { type: String, attribute: "img-keyword" },
       status: { type: String, reflect: true }, // Correct, incorrect, pending
       answerIcon: { type: Boolean, reflect: true },
-      icon: { type: String }
+      icon: { type: String },
     };
   }
 
@@ -109,15 +109,15 @@ export class FlashCardPromptImg extends SimpleColors {
   // this allows you to react to variables changing and use javascript to perform logic
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'status' && this[propName] === 'correct') {
+      if (propName === "status" && this[propName] === "correct") {
         this.answerIcon = true;
-        this.icon = 'check';
+        this.icon = "check";
       }
-      if (propName === 'status' && this[propName] === 'incorrect') {
+      if (propName === "status" && this[propName] === "incorrect") {
         this.answerIcon = true;
-        this.icon = 'cancel';
+        this.icon = "cancel";
       }
-      if (propName === 'status' && this[propName] === 'pending') {
+      if (propName === "status" && this[propName] === "pending") {
         this.answerIcon = false;
       }
     });
@@ -129,7 +129,7 @@ export class FlashCardPromptImg extends SimpleColors {
       <div>
         <div class="overlay">
           <div class="backgroundbox">
-            ${this.imgSrc !== ''
+            ${this.imgSrc !== ""
               ? html`<img src="${this.imgSrc}" alt="" />`
               : html`<img
                   src="https://loremflickr.com/320/240/${this

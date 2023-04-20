@@ -2,8 +2,6 @@ import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
-// EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
-// which has the magic life-cycles and developer experience below added
 export class SortingOption extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
@@ -30,34 +28,23 @@ export class SortingOption extends LitElement {
   
   getCurrentPosition(){
     if(!this.disabled){
-
       this.style.backgroundColor = "darkgray";
       this.removeAttribute("correct");
       this.removeAttribute("incorrect");
-
       var mouseTracker = window.event;
       var posY = mouseTracker.clientY;
       this.currentPosition = posY;
-
     }
-   
   }
 
   dragStart(){
-
-
     if(!this.disabled){
-
-      //distance above or below current pos to switch index
+    //distance above or below current pos to switch index
     var changeBuffer = 30;
-      
-
     //if slottted images increase change buffer size
     if(this.querySelectorAll('img').length > 0){
       changeBuffer = 70;
     }
-
-
     // this.style.visibility = "hidden";
      var mouseTracker = window.event;
      var posY = mouseTracker.clientY;
@@ -164,21 +151,6 @@ export class SortingOption extends LitElement {
     }
   }
 
-  
-
-  // updated fires every time a property defined above changes
-  // this allows you to react to variables changing and use javascript to perform logic
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'dragPosition') { 
-      }
-
-     
-      
-    });
-  }
-
-
   // Lit life-cycle; this fires the 1st time the element is rendered on the screen
   // this is a sign it is safe to make calls to this.shadowRoot
   firstUpdated(changedProperties) {
@@ -207,27 +179,9 @@ export class SortingOption extends LitElement {
     });
   }
 
-  // HTMLElement life-cycle, element has been connected to the page / added or moved
-  // this fires EVERY time the element is moved
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  // HTMLElement life-cycle, element has been removed from the page OR moved
-  // this fires every time the element moves
-  disconnectedCallback() {
-    super.disconnectedCallback();
-  }
-
-
-
-
   // CSS - specific to Lit
   static get styles() {
     return css`
-
-    
-
     :host {
       border: 2px black solid;
       border-radius: 5px;

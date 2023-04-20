@@ -1,35 +1,35 @@
-import { I18NMixin } from '@lrnwebcomponents/i18n-manager/lib/I18NMixin.js';
-import { html, css } from 'lit';
-import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js';
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { html, css } from "lit";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
 export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
   static get tag() {
-    return 'flash-card-answer-box';
+    return "flash-card-answer-box";
   }
 
   constructor() {
     super();
     this.back = false;
-    this.status = 'pending';
-    this.correctAnswer = '';
+    this.status = "pending";
+    this.correctAnswer = "";
     this.showResult = false;
-    this.statusIcon = '';
-    this.sideToShow = 'front';
-    this.userAnswer = '';
-    this.icon = '';
-    this.message = '';
+    this.statusIcon = "";
+    this.sideToShow = "front";
+    this.userAnswer = "";
+    this.icon = "";
+    this.message = "";
     this.t = {
-      yourAnswer: 'Your answer',
-      checkAnswer: 'Check answer',
-      retry: 'Retry',
+      yourAnswer: "Your answer",
+      checkAnswer: "Check answer",
+      retry: "Retry",
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL('../locales/', import.meta.url).href,
-      locales: ['es', 'fr', 'ja'],
+      localesPath: new URL("../locales/", import.meta.url).href,
+      locales: ["es", "fr", "ja"],
     });
   }
 
@@ -37,10 +37,10 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
     return {
       ...super.properties,
       back: { type: Boolean, reflect: true },
-      sideToShow: { type: String, reflect: true, attribute: 'side-to-show' },
-      userAnswer: { type: String, attribute: 'user-answer' },
+      sideToShow: { type: String, reflect: true, attribute: "side-to-show" },
+      userAnswer: { type: String, attribute: "user-answer" },
       status: { type: String, reflect: true },
-      showResult: { type: Boolean, attribute: 'show-result', reflect: true },
+      showResult: { type: Boolean, attribute: "show-result", reflect: true },
       statusIcon: { type: String, attribute: false },
     };
   }
@@ -50,16 +50,16 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'status' && oldValue !== undefined) {
+      if (propName === "status" && oldValue !== undefined) {
         this.dispatchEvent(
-          new CustomEvent('flash-card-status-change', {
+          new CustomEvent("flash-card-status-change", {
             detail: this.status,
             bubbles: true,
           })
         );
       }
-      if (propName === 'back') {
-        this.sideToShow = this[propName] ? 'back' : 'front';
+      if (propName === "back") {
+        this.sideToShow = this[propName] ? "back" : "front";
       }
     });
   }
@@ -67,25 +67,29 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
   // Need this instead of .toUpperCase() for i18n
   equalsIgnoringCase(text) {
     return (
-      text.localeCompare(this.shadowRoot.querySelector('input').value, undefined, {
-        sensitivity: 'base',
-      }) === 0
+      text.localeCompare(
+        this.shadowRoot.querySelector("input").value,
+        undefined,
+        {
+          sensitivity: "base",
+        }
+      ) === 0
     );
   }
 
   checkUserAnswer() {
-    const side = this.back ? 'front' : 'back';
+    const side = this.back ? "front" : "back";
     const comparison = this.shadowRoot
       .querySelector(`[name="${side}"]`)
       .assignedNodes({ flatten: true })[0]
       .querySelector(`[name="${side}"]`)
       .assignedNodes({ flatten: true })[0].innerText;
     this.correct = this.equalsIgnoringCase(comparison);
-    this.status = this.equalsIgnoringCase(comparison) ? 'correct' : 'incorrect';
-    this.icon = this.equalsIgnoringCase(comparison) ? 'check' : 'cancel';
+    this.status = this.equalsIgnoringCase(comparison) ? "correct" : "incorrect";
+    this.icon = this.equalsIgnoringCase(comparison) ? "check" : "cancel";
     this.message = this.equalsIgnoringCase(comparison)
-      ? 'Correct!'
-      : 'Incorrect!';
+      ? "Correct!"
+      : "Incorrect!";
     this.showResult = !this.equalsIgnoringCase(comparison);
     // reverse so that it swaps which slot is shown
     this.correctAnswer = !this.back
@@ -99,8 +103,8 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
           .assignedNodes({ flatten: true })[0]
           .querySelector(`[name="front"]`)
           .assignedNodes({ flatten: true })[0].innerText;
-    this.shadowRoot.querySelector('#check').disabled = true;
-    this.shadowRoot.querySelector('input').disabled = true;
+    this.shadowRoot.querySelector("#check").disabled = true;
+    this.shadowRoot.querySelector("input").disabled = true;
   }
 
   // as the user types input, grab the value
@@ -113,12 +117,12 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
   resetCard() {
     this.showResult = false;
     this.correct = false;
-    this.userAnswer = '';
-    this.status = 'pending';
-    this.sideToShow = this.back ? 'back' : 'front';
-    this.correctAnswer = '';
-    this.shadowRoot.querySelector('input').disabled = false;
-    this.shadowRoot.querySelector('input').value = '';
+    this.userAnswer = "";
+    this.status = "pending";
+    this.sideToShow = this.back ? "back" : "front";
+    this.correctAnswer = "";
+    this.shadowRoot.querySelector("input").disabled = false;
+    this.shadowRoot.querySelector("input").value = "";
   }
 
   // CSS - specific to Lit
@@ -190,30 +194,30 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
         font-size: 20px;
         text-align: center;
       }
-      :host([side-to-show='front']) slot[name='back'] {
+      :host([side-to-show="front"]) slot[name="back"] {
         display: none;
       }
-      :host([side-to-show='back']) slot[name='front'] {
+      :host([side-to-show="back"]) slot[name="front"] {
         display: none;
       }
-      :host([status='correct']) .retry,
-      :host([status='incorrect']) .retry {
+      :host([status="correct"]) .retry,
+      :host([status="incorrect"]) .retry {
         display: flex;
       }
 
-      :host([status='correct']) #status-message {
+      :host([status="correct"]) #status-message {
         color: green;
       }
 
-      :host([status='correct']) #status-icon {
+      :host([status="correct"]) #status-icon {
         color: green;
       }
 
-      :host([status='incorrect']) #status-message {
+      :host([status="incorrect"]) #status-message {
         color: red;
       }
 
-      :host([status='incorrect']) #status-icon {
+      :host([status="incorrect"]) #status-icon {
         color: red;
       }
 
@@ -277,13 +281,14 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
           type="text"
           .placeholder="${this.t.yourAnswer}"
           @input="${this.inputChanged}"
-          @keypress="${(e) => e.key === 'Enter' ? this.checkUserAnswer() : ''}"
+          @keypress="${(e) =>
+            e.key === "Enter" ? this.checkUserAnswer() : ""}"
           .value="${this.userAnswer}"
         />
-        ${this.status === 'pending'
+        ${this.status === "pending"
           ? html`<button
               id="check"
-              ?disabled="${this.userAnswer === ''}"
+              ?disabled="${this.userAnswer === ""}"
               @click="${this.checkUserAnswer}"
             >
               ${this.t.checkAnswer}
@@ -297,10 +302,9 @@ export class FlashCardAnswerBox extends I18NMixin(SimpleColors) {
             >`}
       </div>
       <div class="retry">
-        <simple-icon-button-lite
-          icon="refresh"
-          @click="${this.resetCard}"
-        >${this.t.retry}</simple-icon-button-lite>
+        <simple-icon-button-lite icon="refresh" @click="${this.resetCard}"
+          >${this.t.retry}</simple-icon-button-lite
+        >
       </div>
     `;
   }
