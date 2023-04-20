@@ -1,0 +1,60 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Inline audio",
+    "description": "Play an audio file in context of material to suplement the content",
+    "icon": "av:call-to-action",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "self check",
+      "flash card",
+      "quiz",
+      "educational"
+    ],
+    "handles": [
+      {
+        "type": "inline",
+        "text": "term"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "MP3 or file location",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Changes the accent color of the card",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Makes the card dark mode",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "inline-audio",
+      "properties": {
+        "source": "https://inline-audio-mocha.vercel.app/assets/whopper.mp3"
+      },
+      "content": "Hear for yourself"
+    }
+  ]
+}

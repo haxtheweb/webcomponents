@@ -1,0 +1,113 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "inline-audio",
+      "path": "./inline-audio.js",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canPlay",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canPlay",
+          "attribute": "canPlay",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "inline-audio",
+      "path": "./inline-audio.umd.js"
+    },
+    {
+      "name": "inline-audio",
+      "path": "./src/inline-audio.js",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canPlay",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canPlay",
+          "attribute": "canPlay",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

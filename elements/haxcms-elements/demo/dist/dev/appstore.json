@@ -1171,6 +1171,7 @@
   ],
   "autoloader": {
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
+    "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
     "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
     "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
     "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
