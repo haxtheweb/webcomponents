@@ -1173,6 +1173,8 @@
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
     "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
+    "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
+    "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
