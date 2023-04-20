@@ -5,14 +5,17 @@
   "gizmo": {
     "title": "Inline audio",
     "description": "Play an audio file in context of material to suplement the content",
-    "icon": "av:call-to-action",
+    "icon": "av:volume-up",
     "color": "blue",
     "tags": [
-      "Instructional",
-      "self check",
-      "flash card",
-      "quiz",
-      "educational"
+      "audio / video",
+      "media",
+      "mp3",
+      "sound",
+      "audio",
+      "inline",
+      "enhancement"
+
     ],
     "handles": [
       {
@@ -47,6 +50,13 @@
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "icon",
+      "playing",
+      "canPlay"
+    ]
   },
   "demoSchema": [
     {
