@@ -1174,6 +1174,7 @@
     "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
     "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
     "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
+    "simple-tags": "@lrnwebcomponents/simple-fields/lib/simple-tags.js",
     "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
     "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",

@@ -42,33 +42,7 @@ export const learningComponentVerbs = {
   write: "Write",
 };
 
-export const learningComponentTypes = {
-  content: "Content",
-  assessment: "Assessment",
-  quiz: "Quiz",
-  submission: "Submission",
-  lesson: "Lesson",
-  module: "Module",
-  task: "Task",
-  activity: "Activity",
-  project: "Project",
-  practice: "Practice",
-  unit: "Unit",
-  objectives: "Learning Objectives",
-  connection: "Connection",
-  knowledge: "Did You Know?",
-  strategy: "Learning Strategy",
-  discuss: "Discuss",
-  listen: "Listen",
-  make: "Make",
-  observe: "Observe",
-  present: "Present",
-  read: "Read",
-  reflect: "Reflect",
-  research: "Research",
-  watch: "Watch",
-  write: "Write",
-};
+export const learningComponentTypes = {...learningComponentVerbs, ...learningComponentNouns};
 
 export const learningComponentColors = {
   content: "blue-grey",

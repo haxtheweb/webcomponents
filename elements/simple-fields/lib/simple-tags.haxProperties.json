@@ -1,0 +1,48 @@
+{
+  "canScale": true,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Tags",
+    "description": "Simple listing of tags to show in the page",
+    "icon": "line-style",
+    "color": "orange",
+    "tags": [
+      "Other",
+      "content",
+      "tag",
+      "list"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Comma separated list of tags",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "color for tags",
+        "inputMethod": "colorpicker"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "simple-tags",
+      "properties": {
+        "tags": "tag1, tag2, tag3"
+      },
+      "content": ""
+    }
+  ]
+}
