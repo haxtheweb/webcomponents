@@ -24,8 +24,16 @@ class SiteActiveTags extends LitElement {
    * LitElement
    */
   render() {
-    return html`${this.tags && this.tags!='' ? this.tags.split(',').map(tag => html`
-<simple-tag value="${tag.trim()}" accent-color="${this.accentColor}"></simple-tag>`) : ``}`;
+    return html`${this.tags && this.tags != ""
+      ? this.tags
+          .split(",")
+          .map(
+            (tag) => html` <simple-tag
+              value="${tag.trim()}"
+              accent-color="${this.accentColor}"
+            ></simple-tag>`
+          )
+      : ``}`;
   }
   /**
    * LitElement / popular convention

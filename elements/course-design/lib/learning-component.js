@@ -42,7 +42,10 @@ export const learningComponentVerbs = {
   write: "Write",
 };
 
-export const learningComponentTypes = {...learningComponentVerbs, ...learningComponentNouns};
+export const learningComponentTypes = {
+  ...learningComponentVerbs,
+  ...learningComponentNouns,
+};
 
 export const learningComponentColors = {
   content: "blue-grey",

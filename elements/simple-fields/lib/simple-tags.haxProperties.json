@@ -7,12 +7,7 @@
     "description": "Simple listing of tags to show in the page",
     "icon": "line-style",
     "color": "orange",
-    "tags": [
-      "Other",
-      "content",
-      "tag",
-      "list"
-    ],
+    "tags": ["Other", "content", "tag", "list"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

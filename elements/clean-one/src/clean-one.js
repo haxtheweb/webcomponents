@@ -765,10 +765,16 @@ class CleanOne extends HAXCMSRememberRoute(
                   part="page-breadcrumb ${this.editMode
                     ? `edit-mode-active`
                     : ``}"
-                   ?hidden="${this.searchTerm != "" ? true : false}"
+                  ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-breadcrumb>
-                <site-active-title part="page-title" ?hidden="${this.searchTerm != "" ? true : false}"></site-active-title>
-                <site-active-tags part="page-tags" ?hidden="${this.searchTerm != "" ? true : false}"></site-active-tags>
+                <site-active-title
+                  part="page-title"
+                  ?hidden="${this.searchTerm != "" ? true : false}"
+                ></site-active-title>
+                <site-active-tags
+                  part="page-tags"
+                  ?hidden="${this.searchTerm != "" ? true : false}"
+                ></site-active-tags>
                 <div class="normal main-section">
                   <site-search
                     hide-input

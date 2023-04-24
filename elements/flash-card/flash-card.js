@@ -13,7 +13,6 @@ export class FlashCard extends SimpleColors {
     super();
     this.imgKeyword = "";
     this.imgSource = "";
-    this.back = false;
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -23,7 +22,6 @@ export class FlashCard extends SimpleColors {
       inverted: { type: Boolean },
       imgSource: { type: String, attribute: "img-source", reflect: true },
       imgKeyword: { type: String, attribute: "img-keyword" },
-      back: { type: Boolean },
       status: { type: String, reflect: true },
     };
   }
@@ -79,7 +77,6 @@ export class FlashCard extends SimpleColors {
               ></flash-card-image-prompt>
             `}
         <flash-card-answer-box
-          ?back=${this.back}
           @flash-card-status-change="${this.statusChanged}"
         >
           <div slot="front">

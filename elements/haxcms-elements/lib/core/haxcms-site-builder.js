@@ -683,10 +683,16 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         item-id="${store.activeItem.id}"
         slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
-        ${store.activeItem.metadata.pageType ?
-        `page-type="${store.activeItem.metadata.pageType}"` : ``}
-        ${store.activeItem.metadata.tags ?
-          `tags="${store.activeItem.metadata.tags}"` : ``}
+        ${
+          store.activeItem.metadata.pageType
+            ? `page-type="${store.activeItem.metadata.pageType}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.tags
+            ? `tags="${store.activeItem.metadata.tags}"`
+            : ``
+        }
         break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${

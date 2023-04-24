@@ -150,23 +150,28 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
       ></loading-indicator>
       ${this.__results.map(
         (item) => html`
-          <a
-            class="result"
-            .href="${item.slug}"
-            @click="${this.selectionMade}"
-          >
+          <a class="result" .href="${item.slug}" @click="${this.selectionMade}">
             <div class="title">
-              ${item.icon ? html`<simple-icon-lite
-                class="page-title-icon"
-                icon="${item.icon}"
-              ></simple-icon-lite>` : ``}
+              ${item.icon
+                ? html`<simple-icon-lite
+                    class="page-title-icon"
+                    icon="${item.icon}"
+                  ></simple-icon-lite>`
+                : ``}
               ${item.title}<span
                 ?hidden="${!this.showPath}"
                 class="link-text"
                 aria-hidden="true"
                 >(${item.location})</span
               >
-              ${item.tags && item.tags != "" ? html`${item.tags.split(',').map(tag => html`<simple-tag value="${tag.trim()}"></simple-tag>`)}` : ``}
+              ${item.tags && item.tags != ""
+                ? html`${item.tags
+                    .split(",")
+                    .map(
+                      (tag) =>
+                        html`<simple-tag value="${tag.trim()}"></simple-tag>`
+                    )}`
+                : ``}
             </div>
             <div class="date" ?hidden="${!this.showDate}">
               <simple-datetime format="M jS" .timestamp="${item.created}" unix
@@ -256,7 +261,7 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
           }
         }
         console.log(item);
-      })
+      });
       this.__results = [...results];
     } else {
       this.__results = [];

@@ -589,10 +589,14 @@ class Store {
     return "";
   }
   /**
-     * shortcut for active page title
-     */
+   * shortcut for active page title
+   */
   get activeTags() {
-    if (this.activeItem && this.activeItem.metadata && this.activeItem.metadata.tags) {
+    if (
+      this.activeItem &&
+      this.activeItem.metadata &&
+      this.activeItem.metadata.tags
+    ) {
       return this.activeItem.metadata.tags;
     }
     return null;

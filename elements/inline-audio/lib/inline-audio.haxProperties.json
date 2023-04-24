@@ -15,7 +15,6 @@
       "audio",
       "inline",
       "enhancement"
-
     ],
     "handles": [
       {
@@ -52,11 +51,7 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "icon",
-      "playing",
-      "canPlay"
-    ]
+    "unsetAttributes": ["icon", "playing", "canPlay"]
   },
   "demoSchema": [
     {

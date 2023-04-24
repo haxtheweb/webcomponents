@@ -55,10 +55,6 @@
     },
     {
       "name": "inline-audio",
-      "path": "./inline-audio.umd.js"
-    },
-    {
-      "name": "inline-audio",
       "path": "./src/inline-audio.js",
       "attributes": [
         {

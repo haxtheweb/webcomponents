@@ -1,6 +1,6 @@
 {
-"question" : "ordenar lo siguiente en orden",
-"numCorrectLeft": "Tienes",
-"numCorrectRight": "Correcto.",
-"submit": "entregar"
+  "question": "ordenar lo siguiente en orden",
+  "numCorrectLeft": "Tienes",
+  "numCorrectRight": "Correcto.",
+  "submit": "entregar"
 }

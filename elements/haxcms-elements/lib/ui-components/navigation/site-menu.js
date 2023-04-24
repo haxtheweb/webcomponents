@@ -121,7 +121,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         this.routerManifest.items.map((item) => {
           let tags = ["CMS", "navigation"];
           if (item.metadata && item.metadata.tags) {
-            tags = tags.concat(item.metadata.tags.split(','));
+            tags = tags.concat(item.metadata.tags.split(","));
           }
           this.dispatchEvent(
             new CustomEvent("super-daemon-define-option", {

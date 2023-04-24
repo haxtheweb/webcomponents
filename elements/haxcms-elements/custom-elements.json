@@ -1697,6 +1697,20 @@
       ]
     },
     {
+      "name": "site-active-tags",
+      "description": "`site-active-tags`\n`Tags of the active page`\n\nAttributes:\n\n  * `accent-color` {`string`} - \n\n  * `tags` {`string`} - \n\nProperties:\n\n  * `accentColor` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - \n\nProperty: accentColor\n\nDefault: orange"
+        },
+        {
+          "name": "tags",
+          "description": "`tags` {`string`} - \n\nProperty: tags\n\nDefault: null"
+        }
+      ]
+    },
+    {
       "name": "site-active-title",
       "description": "`site-active-title`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `noFallback` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
       "attributes": [

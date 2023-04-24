@@ -24,11 +24,6 @@
           "default": "\"\""
         },
         {
-          "name": "back",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -63,12 +58,6 @@
           "attribute": "img-source",
           "type": "string",
           "default": "\"\""
-        },
-        {
-          "name": "back",
-          "attribute": "back",
-          "type": "boolean",
-          "default": "false"
         },
         {
           "name": "accentColor",
@@ -394,11 +383,6 @@
           "default": "\"\""
         },
         {
-          "name": "back",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -433,12 +417,6 @@
           "attribute": "img-source",
           "type": "string",
           "default": "\"\""
-        },
-        {
-          "name": "back",
-          "attribute": "back",
-          "type": "boolean",
-          "default": "false"
         },
         {
           "name": "accentColor",
