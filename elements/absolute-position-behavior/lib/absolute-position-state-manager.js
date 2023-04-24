@@ -236,7 +236,8 @@ class AbsolutePositionStateManager extends LitElement {
     //only have event listeners when there are elements using manager
     if (
       !this.__watchSticky &&
-      this.elements.filter((el) => el.sticky).length > 0
+      this.elements.filter((el) => el.sticky).length > 0 &&
+      this.scrollTarget
     ) {
       this.__watchSticky = true;
       this.scrollTarget.addEventListener("scroll", this._handleScroll, {
@@ -244,7 +245,8 @@ class AbsolutePositionStateManager extends LitElement {
       });
     } else if (
       this.__watchSticky &&
-      this.elements.filter((el) => el.sticky).length < 1
+      this.elements.filter((el) => el.sticky).length < 1 &&
+      this.scrollTarget
     ) {
       this.scrollTarget.removeEventListener("scroll", this._handleScroll, {
         passive: true,

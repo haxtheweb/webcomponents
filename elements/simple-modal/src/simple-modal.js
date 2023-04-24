@@ -337,17 +337,19 @@ class SimpleModal extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.close = this.close.bind(this);
+    this.showEvent = this.showEvent.bind(this);
     setTimeout(() => {
-      window.addEventListener("simple-modal-hide", this.close.bind(this));
-      window.addEventListener("simple-modal-show", this.showEvent.bind(this));
+      window.addEventListener("simple-modal-hide", this.close);
+      window.addEventListener("simple-modal-show", this.showEvent);
     }, 0);
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener("simple-modal-hide", this.close.bind(this));
-    window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
+    window.removeEventListener("simple-modal-hide", this.close);
+    window.removeEventListener("simple-modal-show", this.showEvent);
     super.disconnectedCallback();
   }
   /**

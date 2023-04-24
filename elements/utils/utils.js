@@ -776,7 +776,7 @@ export const winEventsElement = function (SuperClass) {
         for (var eName in this.__winEvents) {
           window[`${status ? "add" : "remove"}EventListener`](
             eName,
-            this[this.__winEvents[eName]].bind(this)
+            this[this.__winEvents[eName]]
           );
         }
       }
@@ -787,6 +787,10 @@ export const winEventsElement = function (SuperClass) {
     connectedCallback() {
       if (super.connectedCallback) {
         super.connectedCallback();
+      }
+      // bind to this context prior to assignment so we can enable and disable accurately from window
+      for (var eName in this.__winEvents) {
+        this[this.__winEvents[eName]] = this[this.__winEvents[eName]].bind(this);
       }
       this.__applyWinEvents(true);
     }

@@ -1496,18 +1496,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     return haxElements;
   }
   /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
-  }
-  /**
    * Clear area.
    */
   haxClearBody(confirm = true) {
@@ -2918,22 +2906,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // apply our specialized mutation observer or remove it
     if (newValue) {
+      this._haxContextOperation = this._haxContextOperation.bind(this);
+      this._toggleNodeLocking = this._toggleNodeLocking.bind(this);
+      this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
+      this.blurEvent = this.blurEvent.bind(this);
+      this._onKeyDown = this._onKeyDown.bind(this);
+      this._keepContextVisible = this._keepContextVisible.bind(this);
+
       window.addEventListener(
         "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
+        this._haxContextOperation
       );
       window.addEventListener(
         "hax-toggle-active-node-lock",
-        this._toggleNodeLocking.bind(this)
+        this._toggleNodeLocking
       );
-      window.addEventListener("click", this.scrollerFixclickEvent.bind(this));
-      window.addEventListener("blur", this.blurEvent.bind(this));
-      window.addEventListener("keydown", this._onKeyDown.bind(this));
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("resize", this._keepContextVisible.bind(this), {
+      window.addEventListener("click", this.scrollerFixclickEvent);
+      window.addEventListener("blur", this.blurEvent);
+      window.addEventListener("keydown", this._onKeyDown);
+      window.addEventListener("resize", this._keepContextVisible, {
         passive: true,
       });
       // mutation observer that ensures state of hax applied correctly
@@ -3209,24 +3200,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       });
     } else {
       window.removeEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation
+      );
+      window.removeEventListener(
         "hax-toggle-active-node-lock",
-        this._toggleNodeLocking.bind(this)
+        this._toggleNodeLocking
       );
       window.removeEventListener(
         "click",
-        this.scrollerFixclickEvent.bind(this)
+        this.scrollerFixclickEvent
       );
-      window.removeEventListener("blur", this.blurEvent.bind(this));
-      window.removeEventListener("keydown", this._onKeyDown.bind(this));
-      document.body.removeEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.removeEventListener("resize", this._keepContextVisible.bind(this));
-      window.removeEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
+      window.removeEventListener("blur", this.blurEvent);
+      window.removeEventListener("keydown", this._onKeyDown);
+      window.removeEventListener("resize", this._keepContextVisible, {
+        passive: true,
+      });
       this._observer.disconnect();
     }
   }

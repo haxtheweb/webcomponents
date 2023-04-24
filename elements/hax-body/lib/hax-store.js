@@ -2018,7 +2018,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
-      "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
       "hax-insert-content": "_haxStoreInsertContent",
@@ -3077,42 +3076,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     } else {
       console.warn("Shadow DOM missing, certain operations hidden");
       return false;
-    }
-  }
-
-  /**
-   * Write store event callback.
-   */
-  _writeHaxStore(e) {
-    // ensure we have a valid store write
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property &&
-      e.detail.owner
-    ) {
-      // only update US if we didn't originate this message
-      if (e.detail.owner !== this) {
-        if (e.detail.value == null) {
-          this[e.detail.property] = null;
-        } else if (typeof e.detail.value === "object") {
-          this[e.detail.property] = {};
-        }
-        this[e.detail.property] = e.detail.value;
-      }
-      // tell everyone regardless
-      this.dispatchEvent(
-        new CustomEvent("hax-store-property-updated", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            property: e.detail.property,
-            value: e.detail.value,
-            owner: e.detail.owner,
-          },
-        })
-      );
     }
   }
 

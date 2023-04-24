@@ -21,18 +21,6 @@ export default async function handler(req, res) {
     if (body.type === 'link' && md) {
       md = await fetch(md.trim()).then((d) => d.ok ? d.text(): '');
     }
-    let data = {
-      content : await mdClass.render(md),
-    };
-    // pull head matter out into variables
-    // @todo make this part of a different parser
-    if (body.extra === "notion") {
-      // need a regex for notion
-      let reg = new RegExp(/#\s(.*?)\n\n?(.*?):\s(.*)\n(.*?):\s((.|\n)*?)\n\n/, 'igm');
-      data.headMatter = md.match(reg)[0];
-      let reg2 = new RegExp(/(.*?)(:\s)(.*)/, 'igm');
-      data.mat = data.headMatter.match(reg2);
-    }
     let headers = {
       cache: 180
     };
@@ -40,6 +28,6 @@ export default async function handler(req, res) {
       headers.type = 'text/html';
     }
     
-    stdResponse(res, data.content, headers);
+    stdResponse(res, await mdClass.render(md), headers);
   }
 }
