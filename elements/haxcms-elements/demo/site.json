@@ -64,6 +64,7 @@
       "description": "",
       "metadata": {
         "pageType": "content",
+        "tags": "content,page,another,things,here",
         "created": 1565903961,
         "updated": 1661360465,
         "readtime": 1,
@@ -109,6 +110,7 @@
         "created": 1597690877,
         "updated": 1617805490,
         "pageType": "submission",
+        "tags": "submitting an assignment,page,another,things,here",
         "readtime": 1,
         "contentDetails": {
           "headings": 0,

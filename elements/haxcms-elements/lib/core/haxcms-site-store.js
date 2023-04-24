@@ -71,6 +71,7 @@ class Store {
       activeManifestIndex: computed, // active array index, used for pagination
       activeManifestIndexCounter: computed, // active array index counter, used for pagination
       activeTitle: computed, // active page title
+      activeTags: computed, // active page tags
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
       ancestorItem: computed, // active page ancestor
@@ -586,6 +587,15 @@ class Store {
       return this.activeItem.title;
     }
     return "";
+  }
+  /**
+     * shortcut for active page title
+     */
+  get activeTags() {
+    if (this.activeItem && this.activeItem.metadata && this.activeItem.metadata.tags) {
+      return this.activeItem.metadata.tags;
+    }
+    return null;
   }
   /**
    * shortcut for active page parent title

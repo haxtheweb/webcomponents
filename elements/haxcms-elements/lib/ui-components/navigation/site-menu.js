@@ -119,6 +119,10 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "routerManifest") {
         this.routerManifest.items.map((item) => {
+          let tags = ["CMS", "navigation"];
+          if (item.metadata && item.metadata.tags) {
+            tags = tags.concat(item.metadata.tags.split(','));
+          }
           this.dispatchEvent(
             new CustomEvent("super-daemon-define-option", {
               bubbles: true,
@@ -127,7 +131,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
               detail: {
                 title: item.title,
                 icon: "link",
-                tags: ["CMS", "page", "navigation", "site"],
+                tags: tags,
                 value: {
                   target: this,
                   method: "clickLink",

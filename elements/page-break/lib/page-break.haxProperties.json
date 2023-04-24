@@ -57,6 +57,12 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Comma separated list of tags",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "slug",
         "title": "Path",
         "description": "URL slug related to this page",
