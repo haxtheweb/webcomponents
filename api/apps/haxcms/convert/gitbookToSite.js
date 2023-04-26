@@ -9,7 +9,8 @@ const mdClass = new MarkdownIt();
 
 const site = new JSONOutlineSchema();
 const baseMdUrl = `${process.env.VERCEL_ENV !== 'development' ? 'https': 'http'}://${process.env.VERCEL_URL}/api/services/media/format/mdToHtml?type=link&raw=1&md=`
-
+var downloads = {};
+var fileMap = {};
 export default async function handler(req, res) {
   let body = {};
   body = stdPostBody(req);
@@ -34,6 +35,28 @@ export default async function handler(req, res) {
     if (tmp.href.indexOf('SUMMARY.md') == -1) {
       tmp.href += '/master/SUMMARY.md';
     }
+    let url = sourceLink.trim();
+    let pieces = url.replace("https://github.com/","").split('/');
+    const owner = pieces[0];
+    const repo = pieces[1];
+    let basePath = `https://api.github.com/repos/${owner}/${repo}`;
+    var branch = await fetch(`${basePath}`).then((d) => d.ok ? d.json(): {}).then(d => d.default_branch);
+    var filepathBase = '';
+    var githubData = await fetch(`${basePath}/git/trees/${branch}?recursive=1`).then((d) => d.ok ? d.json(): {}).then(d => d.tree);
+    // establish file map and base path for all files PRIOR to getting contents
+    for await (const ghFile of githubData) {
+      // should be 1st file in the tree
+      if (ghFile.path.indexOf('.md') === -1) {
+        // it's a file that we need to account for later on when we download the files
+        // ignore folders
+        if (ghFile.path.indexOf('.') !== -1) {
+          downloads[encodeURI(`files/${ghFile.path}`)] = encodeURI(`https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${ghFile.path}`);
+          fileMap[encodeURI(`files/${ghFile.path}`)] = encodeURI(ghFile.path.replace(`${filepathBase}/`,''));
+        }
+      }
+    }
+
+
     // md is a link
     let md = await fetch(tmp.href.trim()).then((d) => d.ok ? d.text(): '');
     let name = tmp.pathname.split('/')[1] || 'New site';
@@ -42,7 +65,7 @@ export default async function handler(req, res) {
       data: {
         items: JOS.items,
         filename: name,
-        files: {}
+        files: downloads
       },
       status: 200
     }, {cache: 180, type: "application/json" });
@@ -64,6 +87,10 @@ async function listToJOS(html, sourceLink, name) {
       item.slug = a.getAttribute('href');
       item.location = `content/${a.getAttribute('href')}`;
       item.contents = await fetch(baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'))).then((d) => d.ok ? d.text(): '');
+      // replace all file references
+      for await (const file of Object.keys(fileMap)) {
+        item.contents = item.contents.replaceAll(fileMap[file], file);
+      }
       site.addItem(item);
       // see if we have items under here
       if (node.querySelector('ul')) {
@@ -87,24 +114,9 @@ async function recurseToJOS(parent, top, depth, sourceLink) {
       item.slug = a.getAttribute('href');
       item.location = `content/${a.getAttribute('href')}`;
       item.contents = await fetch(baseMdUrl + sourceLink.replace('SUMMARY.md', a.getAttribute('href'))).then((d) => d.ok ? d.text(): '');
-      // @todo walk the contents response looking for internal links (rewrite them) and img / file references (reference and rewrite the references)
-      const doc = parse(`<div>${item.contents}</div>`);
-      let imgs = doc.querySelector('img');
-      for (var index in imgs) {
-        // look at the image reference to see if it's internal to the repo
-        // ./ or no trailing or ../ or / so long as it's not http...
-        // add it to our collection of files that we need to be aware of for later downloading
-        // rewrite the reference to be something that's in this key'ed output
-        let link = new URL(imgs[index].getAttribute('src'));
-      }
-      // now do that for links
-      let as = doc.querySelector('a');
-      for (var index in as) {
-        // look at the image reference to see if it's internal to the repo
-        // ./ or no trailing or ../ or / so long as it's not http...
-        // add it to our collection of files that we need to be aware of for later downloading
-        // rewrite the reference to be something that's in this key'ed output
-        let link = new URL(as[index].getAttribute('href'));
+      // replace all file references
+      for await (const file of Object.keys(fileMap)) {
+        item.contents = item.contents.replaceAll(fileMap[file], file);
       }
       site.addItem(item);
       // see if we have items under here

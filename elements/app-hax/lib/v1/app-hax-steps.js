@@ -256,7 +256,46 @@ export class AppHaxSteps extends SimpleColors {
         store.appEl.playSound("click2");
       } else {
         store.appEl.playSound("error");
-        store.toast(`File did not return valid HTML`);
+        store.toast(`Repo did not return valid structure`);
+      }
+    }
+  }
+  // notion import endpoint
+  async notionImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      let notionUrl = window.prompt("URL for the Github Notion repo");
+      enableServices(["haxcms"]);
+      this.setProcessingVisual();
+      const response = await MicroFrontendRegistry.call(
+        "@haxcms/notionToSite",
+        { repoUrl: notionUrl }
+      );
+      store.toast(`Processed!`, 300);
+      // must be a valid response and have at least SOME html to bother attempting
+      if (
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != ""
+      ) {
+        store.items = response.data.items;
+        // invoke a file broker for a docx file
+        // send to the endpoint and wait
+        // if it comes back with content, then we engineer details off of it
+        this.nameTyped = response.data.filename
+          .replace(/\s/g, "")
+          .replace(/-/g, "")
+          .toLowerCase();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+          this.shadowRoot.querySelector("#sitename").select();
+        }, 800);
+        store.site.type = type;
+        store.site.theme = "clean-one";
+        store.appEl.playSound("click2");
+      } else {
+        store.appEl.playSound("error");
+        store.toast(`Repo did not return valid structure`);
       }
     }
   }
@@ -932,6 +971,11 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.gbImport}
             type="gitbook"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.notionImport}
+            type="notion"
           ></app-hax-button>`;
         break;
     }

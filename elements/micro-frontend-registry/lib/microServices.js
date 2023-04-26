@@ -216,6 +216,16 @@ export function enableHAXcmsServices() {
       md: "Location of the repo",
     },
   });
+  // gitbookToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/notionToSite",
+    name: "@haxcms/notionToSite",
+    title: "Notion to Site",
+    description: "Convert notion baseed repo to valid HAXcms",
+    params: {
+      repoUrl: "Location of the repo",
+    },
+  });
   // pressbooksToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/pressbooksToSite",

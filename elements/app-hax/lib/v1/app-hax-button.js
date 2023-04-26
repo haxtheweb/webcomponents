@@ -108,6 +108,10 @@ export class AppHaxButton extends LitElement {
             this.icon = "mdi-social:github-circle";
             this.value = "gitbook";
             break;
+          case "notion":
+            this.icon = "book";
+            this.value = "notion";
+          break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";
