@@ -773,6 +773,7 @@ class CleanOne extends HAXCMSRememberRoute(
                 ></site-active-title>
                 <site-active-tags
                   part="page-tags"
+                  auto-accent-color
                   ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-active-tags>
                 <div class="normal main-section">

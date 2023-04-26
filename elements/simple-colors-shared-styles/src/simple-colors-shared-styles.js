@@ -1004,7 +1004,7 @@ class SimpleColorsSharedStyles extends LitElement {
         color
       );
     });
-    return result.color;
+    return result;
   }
   /**
    * determines if two shades are WCAG 2.0 AA-compliant for contrast

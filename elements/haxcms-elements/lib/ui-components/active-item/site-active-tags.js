@@ -29,6 +29,7 @@ class SiteActiveTags extends LitElement {
           .split(",")
           .map(
             (tag) => html` <simple-tag
+              ?auto-accent-color="${this.autoAccentColor}"
               value="${tag.trim()}"
               accent-color="${this.accentColor}"
             ></simple-tag>`
@@ -43,6 +44,10 @@ class SiteActiveTags extends LitElement {
       tags: {
         type: String,
       },
+      autoAccentColor: {
+        type: Boolean,
+        attribute: "auto-accent-color",
+      },
       accentColor: {
         type: String,
         attribute: "accent-color",
@@ -54,7 +59,8 @@ class SiteActiveTags extends LitElement {
    */
   constructor() {
     super();
-    this.accentColor = "orange";
+    this.autoAccentColor = false;
+    this.accentColor = null;
     this.tags = null;
     this.__disposer = [];
     autorun((reaction) => {
