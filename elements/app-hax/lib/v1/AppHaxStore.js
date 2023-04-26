@@ -14,6 +14,7 @@ class Store {
     this.location = null;
     this.token = null;
     this.items = null;
+    this.itemFiles = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     this.appSettings = window.appSettings || {};
@@ -192,6 +193,7 @@ class Store {
       site: observable, // information about the site being created
       newSitePromiseList: observable,
       items: observable, // site items / structure from a docx micro if option selected
+      itemFiles: observable, // files related to the items to be imported from another site format
       // user related data
       jwt: observable, // JSON web token
       token: observable, // XSS prevention token

@@ -141,6 +141,9 @@ export class AppHaxSteps extends SimpleColors {
           response.data.contents != ""
         ) {
           store.items = response.data.items;
+          if (response.data.files) {
+            store.itemFiles = response.data.files;
+          }
           // invoke a file broker for a docx file
           // send to the endpoint and wait
           // if it comes back with content, then we engineer details off of it
@@ -240,6 +243,9 @@ export class AppHaxSteps extends SimpleColors {
         response.data.contents != ""
       ) {
         store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
         // invoke a file broker for a docx file
         // send to the endpoint and wait
         // if it comes back with content, then we engineer details off of it
@@ -279,6 +285,9 @@ export class AppHaxSteps extends SimpleColors {
         response.data.contents != ""
       ) {
         store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
         // invoke a file broker for a docx file
         // send to the endpoint and wait
         // if it comes back with content, then we engineer details off of it
@@ -329,6 +338,9 @@ export class AppHaxSteps extends SimpleColors {
           response.data.contents != ""
         ) {
           store.items = response.data.items;
+          if (response.data.files) {
+            store.itemFiles = response.data.files;
+          }
           // invoke a file broker for a html file
           // send to the endpoint and wait
           // if it comes back with content, then we engineer details off of it
