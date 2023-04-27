@@ -1,7 +1,6 @@
 import { stdPostBody, stdResponse, invalidRequest } from "../../../../utilities/requestHelpers.js";
 import { resolveSiteData } from "../lib/JOSHelpers.js";
 import fetch from "node-fetch";
-
 // site object to validate response from passed in url
 export default async function handler(req, res) {
   let site = {};

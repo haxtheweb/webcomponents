@@ -6,9 +6,7 @@ import { parse } from 'node-html-parser';
 import * as df from 'markdown-it';
 const MarkdownIt = df.default;
 const mdClass = new MarkdownIt();
-
 const site = new JSONOutlineSchema();
-
 export default async function handler(req, res) {
   let body = {};
   // must POST a md 

@@ -6,7 +6,6 @@ import { parse } from 'node-html-parser';
 import * as df from 'markdown-it';
 const MarkdownIt = df.default;
 const mdClass = new MarkdownIt();
-
 const site = new JSONOutlineSchema();
 const baseMdUrl = `${process.env.VERCEL_ENV !== 'development' ? 'https': 'http'}://${process.env.VERCEL_URL}/api/services/media/format/mdToHtml?type=link&raw=1&md=`
 var downloads = {};
