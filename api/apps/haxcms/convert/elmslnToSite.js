@@ -30,7 +30,17 @@ export default async function handler(req, res) {
       siteName = (site.metadata && site.metadata.site && site.metadata.site.name) ? site.metadata.site.name : parseURL.pathname.split('/').pop();
       for await (const item of site.items) {
         // note location includes base path of site bc of nature of how system builds base URIs
-        item.contents = await fetch(`${base}/${item.location.replace(`/${siteName}/`,'')}`).then((d) => d.ok ? d.text(): '');
+        let __fetchOptions = {
+          method: "GET",
+        };
+          // test for aanda elms as "basic auth" is required to bypass azure
+          // and defer to app level permissions handling
+        if (url.includes('.aanda.psu.edu') || url.includes('.ed.science.psu.edu')) {
+          let buff = Buffer.from(process.env.ELMSLN_VERCEL_SERVICE_AUTH).toString('base64');
+          __fetchOptions.headers = {'Authorization': 'Basic ' + buff};
+        }
+        item.contents = await fetch(`${base}/${item.location.replace(`/${siteName}/`,'')}`,__fetchOptions).then((d) => d.ok ? d.text(): '');
+        console.log(item.contents);
         if (item.metadata && item.metadata.files) {
           for await (const file of item.metadata.files) {
             downloads[file.url] = `${base}/${file.url}`;
