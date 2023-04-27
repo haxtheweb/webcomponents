@@ -2,6 +2,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { html, css, LitElement } from "lit";
 const postIt = new URL("../assets/images/PostIt.svg", import.meta.url).href;
+const betaPostIt = new URL("../assets/images/BetaPostIt.svg", import.meta.url).href;
 
 export class AppHaxButton extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -18,6 +19,10 @@ export class AppHaxButton extends LitElement {
     this.elevation = 2;
     this.active = false;
     this.comingSoon = false;
+    this.prompt = null;
+    this.callback = null;
+    this.param = null;
+    this.beta = false;
     this.addEventListener("click", this._handleClick);
     this.addEventListener("click", this._handleClick);
     this.addEventListener("focus", this._handleFocus);
@@ -54,6 +59,10 @@ export class AppHaxButton extends LitElement {
       elevation: { type: Number },
       active: { type: Boolean, reflect: true },
       comingSoon: { type: Boolean, reflect: true, attribute: "coming-soon" },
+      beta: { type: Boolean, reflect: true },
+      prompt: { type: String },
+      callback: { type: String },
+      param: { type: String },
     };
   }
 
@@ -108,6 +117,14 @@ export class AppHaxButton extends LitElement {
             this.icon = "mdi-social:github-circle";
             this.value = "gitbook";
             break;
+          case "elms:ln":
+            this.icon = "lrn:network";
+            this.value = "elmsln";
+          break;
+          case "haxcms":
+            this.icon = "hax:hax2022";
+            this.value = "haxcms";
+          break;
           case "notion":
             this.icon = "book";
             this.value = "notion";
@@ -176,6 +193,17 @@ export class AppHaxButton extends LitElement {
           position: absolute;
           margin-top: -75px;
         }
+        .beta{
+          display: block;
+          height: 100px;
+          width: 120px;
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin-left: -40px;
+          margin-top: -10px;
+        }
         .haxButton {
           background-color: var(
             --app-hax-background-color,
@@ -198,6 +226,8 @@ export class AppHaxButton extends LitElement {
             width: 100px;
             height: 75px;
           }
+
+          .beta,
           .coming-soon {
             margin-top: -50px;
             height: 114px;
@@ -227,6 +257,16 @@ export class AppHaxButton extends LitElement {
               fetchpriority="low"
               alt="Feature coming soon"
               class="coming-soon"
+            />`
+          : ``}
+         ${this.beta
+          ? html`<img
+              src="${betaPostIt}"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              alt="Feature in beta"
+              class="beta"
             />`
           : ``}
       </wired-button>

@@ -216,7 +216,7 @@ export function enableHAXcmsServices() {
       md: "Location of the repo",
     },
   });
-  // gitbookToSite
+  // notionToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/notionToSite",
     name: "@haxcms/notionToSite",
@@ -224,6 +224,26 @@ export function enableHAXcmsServices() {
     description: "Convert notion baseed repo to valid HAXcms",
     params: {
       repoUrl: "Location of the repo",
+    },
+  });
+  // haxcmsToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/haxcmsToSite",
+    name: "@haxcms/haxcmsToSite",
+    title: "HAXcms to Site",
+    description: "Use a HAXcms site as the basis for a new one",
+    params: {
+      repoUrl: "Location of the site",
+    },
+  });
+  // elmslnToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/elmslnToSite",
+    name: "@haxcms/elmslnToSite",
+    title: "ELMS:LN to Site",
+    description: "Import an ELMS:LN site to HAXcms",
+    params: {
+      repoUrl: "Location of the site",
     },
   });
   // pressbooksToSite

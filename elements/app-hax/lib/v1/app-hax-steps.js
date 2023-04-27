@@ -266,6 +266,46 @@ export class AppHaxSteps extends SimpleColors {
       }
     }
   }
+  async importFromURL(e) {
+    const { type, prompt, callback, param } = e.target;
+    if (!e.target.comingSoon) {
+      let promptUrl = window.prompt(prompt);
+      enableServices(["haxcms"]);
+      this.setProcessingVisual();
+      const params = {}
+      params[param] = promptUrl;
+      const response = await MicroFrontendRegistry.call(callback, params);
+      store.toast(`Processed!`, 300);
+      // must be a valid response and have at least SOME html to bother attempting
+      if (
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != ""
+      ) {
+        store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
+        // invoke a file broker for a docx file
+        // send to the endpoint and wait
+        // if it comes back with content, then we engineer details off of it
+        this.nameTyped = response.data.filename
+          .replace(/\s/g, "")
+          .replace(/-/g, "")
+          .toLowerCase();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+          this.shadowRoot.querySelector("#sitename").select();
+        }, 800);
+        store.site.type = type;
+        store.site.theme = "clean-one";
+        store.appEl.playSound("click2");
+      } else {
+        store.appEl.playSound("error");
+        store.toast(`Repo did not return valid structure`);
+      }
+    }
+  }
   // notion import endpoint
   async notionImport(e) {
     if (!e.target.comingSoon) {
@@ -971,8 +1011,19 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.pressbooksImport}
-            type="pressbooks"
+            @click=${this.importFromURL}
+            type="elms:ln"
+            prompt="URL for the ELMS:LN site"
+            callback="@haxcms/elmslnToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="haxcms"
+            prompt="URL for the HAXcms site"
+            callback="@haxcms/haxcmsToSite"
+            param="repoUrl"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
@@ -981,13 +1032,25 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.gbImport}
-            type="gitbook"
+            @click=${this.importFromURL}
+            type="notion"
+            prompt="URL for the Notion git repo"
+            callback="@haxcms/notionToSite"
+            param="repoUrl"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.notionImport}
-            type="notion"
+            @click=${this.importFromURL}
+            type="gitbook"
+            prompt="URL for the Gitbook git repo"
+            callback="@haxcms/gitbookToSite"
+            param="md"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.pressbooksImport}
+            type="pressbooks"
+            beta
           ></app-hax-button>`;
         break;
     }
