@@ -43,8 +43,8 @@ export default async function handler(req, res) {
         // it's a file that we need to account for later on when we download the files
         // ignore folders
         if (ghFile.path.indexOf('.') !== -1) {
-          downloads[encodeURI(ghFile.path.replace(`${filepathBase}/`,'files/'))] = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURI(ghFile.path)}`;
-          fileMap[encodeURI(ghFile.path.replace(`${filepathBase}/`,'files/'))] = encodeURI(ghFile.path.replace(`${filepathBase}/`,''));
+          downloads[encodeURI(ghFile.path.replace(`${filepathBase}/`,'files/')).replaceAll("%20","").replaceAll("%C","").replaceAll("%","")] = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURI(ghFile.path)}`;
+          fileMap[encodeURI(ghFile.path.replace(`${filepathBase}/`,'files/')).replaceAll("%20","").replaceAll("%C","").replaceAll("%","")] = encodeURI(ghFile.path.replace(`${filepathBase}/`,''));
         }
       }
     }
