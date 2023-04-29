@@ -335,16 +335,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener(
-      "docx-file-system-data",
-      this.insertContentsFromFile.bind(this)
-    );
+    window.addEventListener("docx-file-system-data", this.insertContentsFromFile, { signal: this.windowControllers.signal });
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "docx-file-system-data",
-      this.insertContentsFromFile.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 
@@ -606,6 +600,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.t = {
       updateHTML: "Update HTML",
       copyHTML: "Copy HTML",

@@ -2906,27 +2906,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // apply our specialized mutation observer or remove it
     if (newValue) {
+      // ensures appropriate this context as calls can bubble from elsewhere in app
       this._haxContextOperation = this._haxContextOperation.bind(this);
       this._toggleNodeLocking = this._toggleNodeLocking.bind(this);
       this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
       this.blurEvent = this.blurEvent.bind(this);
       this._onKeyDown = this._onKeyDown.bind(this);
       this._keepContextVisible = this._keepContextVisible.bind(this);
+      // helps ensure correct state attachment and detachment
+      this.windowControllers = new AbortController();
 
       window.addEventListener(
         "hax-context-item-selected",
-        this._haxContextOperation
-      );
+        this._haxContextOperation, { signal: this.windowControllers.signal });
       window.addEventListener(
         "hax-toggle-active-node-lock",
-        this._toggleNodeLocking
-      );
-      window.addEventListener("click", this.scrollerFixclickEvent);
-      window.addEventListener("blur", this.blurEvent);
-      window.addEventListener("keydown", this._onKeyDown);
-      window.addEventListener("resize", this._keepContextVisible, {
-        passive: true,
-      });
+        this._toggleNodeLocking, { signal: this.windowControllers.signal });
+      window.addEventListener("click", this.scrollerFixclickEvent, { signal: this.windowControllers.signal });
+      window.addEventListener("blur", this.blurEvent, { signal: this.windowControllers.signal });
+      window.addEventListener("keydown", this._onKeyDown, { signal: this.windowControllers.signal });
+      window.addEventListener("resize", this._keepContextVisible, { passive: true, signal: this.windowControllers.signal });
       // mutation observer that ensures state of hax applied correctly
       this._observer = new MutationObserver((mutations) => {
         var mutFind = false;
@@ -3199,23 +3198,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         subtree: true,
       });
     } else {
-      window.removeEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation
-      );
-      window.removeEventListener(
-        "hax-toggle-active-node-lock",
-        this._toggleNodeLocking
-      );
-      window.removeEventListener(
-        "click",
-        this.scrollerFixclickEvent
-      );
-      window.removeEventListener("blur", this.blurEvent);
-      window.removeEventListener("keydown", this._onKeyDown);
-      window.removeEventListener("resize", this._keepContextVisible, {
-        passive: true,
-      });
+      // should resolve ALL events at the same time
+      this.windowControllers.abort();
       this._observer.disconnect();
     }
   }
