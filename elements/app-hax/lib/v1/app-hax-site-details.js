@@ -47,9 +47,9 @@ export class AppHaxSiteDetails extends SimpleColors {
         icon: "icons:archive",
       },
       {
-        name: "Delete",
-        op: "deleteSite",
-        icon: "icons:delete-forever",
+        name: "Git List",
+        op: "gitList",
+        icon: "hax:git",
       },
     ];
   }
@@ -145,9 +145,6 @@ export class AppHaxSiteDetails extends SimpleColors {
           padding: 4px;
           width: 80%;
         }
-        #op-deleteSite {
-          color: var(--simple-colors-default-theme-red-7);
-        }
         .info-icon::part(button) {
           outline: none;
         }
@@ -191,49 +188,47 @@ export class AppHaxSiteDetails extends SimpleColors {
             }?`
           )
         );
-        if (op === "deleteSite") {
-          let undone = document.createElement("div");
-          undone.style.color = "red";
-          undone.style.fontWeight = "bold";
-          undone.appendChild(
-            document.createTextNode(`This can not be undone.`)
-          );
-          div.appendChild(undone);
+        // gitlist opens in a new window
+        if (op === "gitList") {
+          // open link in new window
+          window.open("gitlist", "_blank", "noopener noreferrer");
         }
-        const bcontainer = document.createElement("div");
-        const b = document.createElement("button");
-        b.innerText = "Confirm";
-        b.classList.add("hax-modal-btn");
-        b.addEventListener("click", this.confirmOperation.bind(this));
-        bcontainer.appendChild(b);
-        const b2 = document.createElement("button");
-        b2.innerText = "Cancel";
-        b2.classList.add("hax-modal-btn");
-        b2.classList.add("cancel");
-        b2.addEventListener("click", this.cancelOperation.bind(this));
-        bcontainer.appendChild(b2);
-        this.dispatchEvent(
-          new CustomEvent("simple-modal-show", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              title: `${opName} ${site.metadata.site.name}?`,
-              elements: { content: div, buttons: bcontainer },
-              invokedBy: target,
-              styles: {
-                "--simple-modal-titlebar-background": "orange",
-                "--simple-modal-titlebar-color": "black",
-                "--simple-modal-width": "30vw",
-                "--simple-modal-min-width": "300px",
-                "--simple-modal-z-index": "100000000",
-                "--simple-modal-height": "20vh",
-                "--simple-modal-min-height": "300px",
-                "--simple-modal-titlebar-height": "80px",
+        else {
+          const bcontainer = document.createElement("div");
+          const b = document.createElement("button");
+          b.innerText = "Confirm";
+          b.classList.add("hax-modal-btn");
+          b.addEventListener("click", this.confirmOperation.bind(this));
+          bcontainer.appendChild(b);
+          const b2 = document.createElement("button");
+          b2.innerText = "Cancel";
+          b2.classList.add("hax-modal-btn");
+          b2.classList.add("cancel");
+          b2.addEventListener("click", this.cancelOperation.bind(this));
+          bcontainer.appendChild(b2);
+          this.dispatchEvent(
+            new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                title: `${opName} ${site.metadata.site.name}?`,
+                elements: { content: div, buttons: bcontainer },
+                invokedBy: target,
+                styles: {
+                  "--simple-modal-titlebar-background": "orange",
+                  "--simple-modal-titlebar-color": "black",
+                  "--simple-modal-width": "30vw",
+                  "--simple-modal-min-width": "300px",
+                  "--simple-modal-z-index": "100000000",
+                  "--simple-modal-height": "20vh",
+                  "--simple-modal-min-height": "300px",
+                  "--simple-modal-titlebar-height": "80px",
+                },
               },
-            },
-          })
-        );
+            })
+          );
+        }
       }, 0);
     });
   }

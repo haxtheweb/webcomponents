@@ -89,6 +89,7 @@ export const HaxIconsetManifest = [
       "file-svg",
       "file-xls",
       "format-textblock",
+      "git",
       "h1",
       "h2",
       "h3",
