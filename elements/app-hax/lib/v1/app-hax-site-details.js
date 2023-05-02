@@ -47,7 +47,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         icon: "icons:archive",
       },
       {
-        name: "Git List",
+        name: "Git",
         op: "gitList",
         icon: "hax:git",
       },
@@ -191,7 +191,7 @@ export class AppHaxSiteDetails extends SimpleColors {
         // gitlist opens in a new window
         if (op === "gitList") {
           // open link in new window
-          window.open("gitlist", "_blank", "noopener noreferrer");
+          window.open(`gitlist/${site.metadata.site.name}`, "_blank", "noopener noreferrer");
         }
         else {
           const bcontainer = document.createElement("div");
@@ -328,7 +328,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                   <div class="info-item">${item.name.toLowerCase()}</div>
                 </simple-icon-button-lite>
                 <simple-tooltip for="op-${item.op}" position="bottom"
-                  >${item.name} Site</simple-tooltip
+                  >${item.op != 'gitList' ? '' : 'View'} ${item.name} ${item.op != 'gitList' ? 'Site' : 'source'}</simple-tooltip
                 >
               </div>
             `
