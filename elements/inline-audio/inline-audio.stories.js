@@ -17,6 +17,6 @@ export const InlineAudioStory = () => {
   return utils.makeUsageDocs(
     InlineAudio,
     import.meta.url,
-    utils.makeElementFromClass(InlineAudio)
+    utils.makeElementFromHaxDemo(InlineAudio)
   );
 };
