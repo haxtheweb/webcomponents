@@ -8,7 +8,7 @@
     "icon": "av:volume-up",
     "color": "blue",
     "tags": [
-      "audio / video",
+      "Audio / Video",
       "media",
       "mp3",
       "sound",
@@ -46,20 +46,27 @@
         "title": "Dark",
         "description": "Makes the card dark mode",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "shiny",
+        "title": "Shiny",
+        "description": "This makes the background area a lighter version of the accent instead of grey",
+        "inputMethod": "boolean"
       }
     ],
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": ["icon", "playing", "canPlay"]
+    "unsetAttributes": ["icon", "playing", "canPlay", "aria"]
   },
   "demoSchema": [
     {
       "tag": "inline-audio",
       "properties": {
-        "source": "https://inline-audio-mocha.vercel.app/assets/whopper.mp3"
+        "source": "https://inline-audio-mocha.vercel.app/assets/whopper.mp3",
+        "accentColor": "orange"
       },
-      "content": "Hear for yourself"
+      "content": "Hear it yourself"
     }
   ]
 }

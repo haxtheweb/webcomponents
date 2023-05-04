@@ -13,19 +13,31 @@
       import '../inline-audio.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      p {
+        font-weight: bolder;
+        font-size: 22px;
+        font-style: italic;
+        font-family: Helvetica,sans-serif;
+        line-height: 40px;
+        display: block;
+        width: 900px;
+        text-align: left;
+        padding-top: 50px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic inline-audio demo</h3>
       <demo-snippet>
         <template>
-          <div>
-            Richard Stallman once sang the <inline-audio source="https://inline-audio-mocha.vercel.app/assets/software-song.mp3">Open Source song.</inline-audio>
-          </div>
-          <div>
-            The King of Burgers made a decree. The decree came in the form of a song. Not just any song, but a legendary song that bellowed to the world. This song was of <inline-audio source='https://inline-audio-mocha.vercel.app/assets/whopper.mp3'>whoppers</inline-audio> and toppers.
-          </div>
-        
+          <p>
+            Richard Stallman once sang the <inline-audio shiny dark accent-color="purple" source="https://inline-audio-mocha.vercel.app/assets/software-song.mp3">Open Source song.</inline-audio>
+            The King of Burgers made a decree. The decree came in the form of a song. Not just any song, but a legendary song that bellowed to the world. This song was of <inline-audio accent-color="orange" source='https://inline-audio-mocha.vercel.app/assets/whopper.mp3'><span>whoppers, toppers, boppers, and boopers.</span></inline-audio>
+            The seven seas were aghast with the tune of <inline-audio dark accent-color="red" source='https://inline-audio-mocha.vercel.app/assets/software-song.mp3'></inline-audio> over the wind.
+            Did you know that the critically acclaimed MMORPG Final Fantasy XIV has a free trial, and includes the entirety of A Realm Reborn AND the award-winning Heavensward expansion up to level 60 with no restrictions on playtime? Sign up, and enjoy Eorzea today!
+          </p>
         </template>
       </demo-snippet>
     </div>
