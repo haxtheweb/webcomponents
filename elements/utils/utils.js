@@ -689,8 +689,17 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
       }
       // special support for false boolean
       else if (node[property] === false) {
-        props[property] = node[property];
-      } else {
+        props[property] = false;
+      } 
+      else if (node[property] === true) {
+        props[property] = true;
+      }
+      else if (node[property] === 0) {
+        props[property] = 0;
+      }
+      else {
+        // unknown prop setting / ignored
+        //console.warn(node[property], property);
       }
     }
     for (var attribute in node.attributes) {
@@ -708,8 +717,14 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
       ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
-      } else {
+      }
+      else if (node.attributes[attribute].value == "0") {
+        props[node.attributes[attribute].name] =
+        node.attributes[attribute].value;
+      }
+      else {
         // note: debug here if experiencing attributes that won't bind
+        //console.warn(node.attributes[attribute].name, node.attributes[attribute].value);
       }
     }
   } else {
