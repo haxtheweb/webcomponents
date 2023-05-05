@@ -3261,7 +3261,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       "strong",
       "i",
       "em",
-      ...Object.keys(window.HaxTextEditorToolbarConfig.inlineGizmos || {}),
+      "u",
     ].includes(node.tagName.toLowerCase());
   }
   /**

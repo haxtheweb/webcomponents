@@ -125,6 +125,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
 
   constructor() {
     super();
+    this._haxstate = false;
     this.playing = false;
     this.shiny = false;
     this.canPlay = false;
@@ -180,25 +181,32 @@ class InlineAudio extends I18NMixin(SimpleColors) {
     this.audioController(false);
   }
 
-  __clickEvent() {
-    try {
-      if (!this.shadowRoot.getSelection().toString()) {
-        if (!this.__audio.hasAttribute("src")) {
-          this.icon = "hax:loading";
-          this.load(this.source);
-        } 
-        else if (this.canPlay) {
-          if (this.__audio.paused) {
-            this.audioController(true);
-          }
-          else {
-            this.audioController(false);
+  __clickEvent(e) {
+    if (this._haxstate) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+    else {
+      try {
+        if (!this.shadowRoot.getSelection().toString()) {
+          if (!this.__audio.hasAttribute("src")) {
+            this.icon = "hax:loading";
+            this.load(this.source);
+          } 
+          else if (this.canPlay) {
+            if (this.__audio.paused) {
+              this.audioController(true);
+            }
+            else {
+              this.audioController(false);
+            }
           }
         }
       }
-    }
-    catch(e) {
-      // do nothing if selection fails some how
+      catch(e) {
+        // do nothing if selection fails some how
+      }
     }
   }
   /**
@@ -249,6 +257,27 @@ class InlineAudio extends I18NMixin(SimpleColors) {
       <div part="progress-bar" class="progress-bar"></div>
       <div part="progress" class="progress"></div>
     </div>`;
+  }
+   /**
+   * haxProperties integration via file reference
+   */
+   static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
+    }
+  }
+  haxeditModeChanged(value) {
+    this._haxstate = value;
   }
 }
 

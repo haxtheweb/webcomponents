@@ -420,6 +420,7 @@ class HaxTray extends I18NMixin(
           }
           :host([edit-mode]) .wrapper {
             top: 0;
+            pointer-events: none;
           }
           :host([collapsed]) .wrapper {
             height: var(--hax-tray-menubar-min-height);
@@ -436,6 +437,7 @@ class HaxTray extends I18NMixin(
             height: auto;
             flex: 0 0 auto;
             width: 100%;
+            pointer-events: all;
           }
           #menubar > * {
             flex: 1 0 auto;
@@ -462,6 +464,7 @@ class HaxTray extends I18NMixin(
           .detail {
             position: relative;
             flex: 1 1 100%;
+            pointer-events: all;
           }
           :host([collapsed]) .detail {
             flex: 0 0 0px;
@@ -1465,7 +1468,7 @@ class HaxTray extends I18NMixin(
           disabled: filteredProps.length < 1,
           expanded:
             propName === "configure" &&
-            !HAXStore.isTextElement(this.activeNode),
+            (!HAXStore.isTextElement(this.activeNode) || HAXStore.isInlineElement(this.activeNode)),
           accordion: true,
         });
       };

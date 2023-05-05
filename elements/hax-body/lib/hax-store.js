@@ -654,7 +654,39 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
     return false;
   }
-
+  /**
+   * see if this is an inline element
+   */
+  isInlineElement(node) {
+    let tag;
+    // resolve HAXelements vs nodes
+    if (node != null && node.tagName) {
+      tag = node.tagName.toLowerCase();
+    } else if (node != null && node.tag) {
+      tag = node.tag.toLowerCase();
+    }
+    if (tag && this.validTagList.includes(tag)) {
+      if (
+        (this.haxSchemaFromTag(tag) && this.haxSchemaFromTag(tag).meta && this.haxSchemaFromTag(tag).meta.inlineOnly) ||
+        [
+          "a",
+          "strike",
+          "u",
+          "b",
+          "sub",
+          "sup",
+          "span",
+          "i",
+          "bold",
+          "em",
+          "strong",
+        ].includes(tag)
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
   /**
    * test for being a valid grid plate, li is here because
    * nested lists make this really complicated

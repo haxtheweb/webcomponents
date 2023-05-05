@@ -27,6 +27,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           width: 300px;
           max-width: 300px;
           --simple-popover-padding: 0px;
+          --simple-popover-max-height: auto;
           z-index: 2;
         }
         #prompt[hidden] {
@@ -75,6 +76,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          background-color: var(--rich-text-editor-button-bg);
         }
         .confirm-or-cancel {
           min-width: 40px;

@@ -2,6 +2,7 @@
   "canScale": false,
   "canPosition": false,
   "canEditSource": true,
+  "contentEditable": true,
   "gizmo": {
     "title": "Inline audio",
     "description": "Play an audio file in context of material to suplement the content",
@@ -42,19 +43,20 @@
         "inputMethod": "colorpicker"
       },
       {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Makes the card dark mode",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "shiny",
         "title": "Shiny",
         "description": "This makes the background area a lighter version of the accent instead of grey",
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Makes the card dark mode",
+        "inputMethod": "boolean"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["icon", "playing", "canPlay", "aria"]

@@ -788,8 +788,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _goToOption(rownum, colnum) {
-      let targetId = html` option-${rownum}-${colnum} `,
-        target = this.shadowRoot.querySelector("#" + targetId),
+      let target = this.shadowRoot.querySelector(`#option-${rownum}-${colnum}`),
         active = this.shadowRoot.querySelector("#" + this.__activeDesc);
       if (target !== null) {
         target.tabindex = 0; //allow item to be focusable.
