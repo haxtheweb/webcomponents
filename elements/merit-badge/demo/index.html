@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MeritBadge: merit-badge Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../merit-badge.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic merit-badge demo</h3>
+      <demo-snippet>
+        <template>
+          <merit-badge
+            badgeImage="https://www.iconpacks.net/icons/2/free-click-icon-2384-thumb.png"
+            badgeTitle="The Internet Badge"
+            badgeDetails="You have demonstrated skill in using the internet!"
+            hyperLink= "https://www.google.com/"
+            badgeSkills = "Common, Boring, Clicking, Finger Strength"
+            badgeColor = "green"
+          ></merit-badge>
+          <merit-badge
+            badgeImage="https://cdn-icons-png.flaticon.com/512/66/66326.png"
+            badgeTitle="Midevil Age Art"
+            badgeDetails="Knowledgable in Midevil Arts & Cultures"
+            hyperLink="https://www.youtube.com/"
+            badgeSkills="Smart, Midevil, Outdated, Cultured"
+            badgeColor = "red"
+          ></merit-badge>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
