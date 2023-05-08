@@ -2034,6 +2034,45 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "/HAX/text/emoji",
     });
 
+    // symbol picker
+    SuperDaemonInstance.defineOption({
+      title: "Insert symbol",
+      icon: "editor:functions",
+      tags: ["symbol"],
+      value: {
+        name: "Insert symbol",
+        context: "/",
+        program: async (input, values) => {
+          let results = [];
+          let txt = document.createElement("textarea");
+          await Object.keys(window.SimplePickerSymbols).forEach(async (category) => {
+            await window.SimplePickerSymbols[category].forEach(async (symbol) => {
+              if (input == "" || category.includes(input)) {   
+                txt.innerHTML = symbol.value;
+                results.push({
+                  title: `${category}: ${txt.value}`,
+                  textCharacter: txt.value,
+                  tags: [category],
+                  value: {
+                    target: this,
+                    method: "_insertTextResult",
+                    args: [txt.value],
+                  },
+                  context: ["/", "/HAX/text/symbol/" + txt.value],
+                  eventName: "super-daemon-element-method",
+                  path: "/HAX/text/symbol/" + txt.value,
+                });
+              }
+            });
+          });
+          return results;
+        },
+      },
+      context: ["HAX", "/"],
+      eventName: "super-daemon-run-program",
+      path: "/HAX/text/symbol",
+    });
+
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2222,9 +2261,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this._editModeChanged(toJS(this.editMode));
     });
   }
-
+  // select the text in question and insert in the correct location
   async _insertTextResult(text) {
     this.activeNode.focus();
+    // @todo seems to insert at the end always
     SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
     SuperDaemonInstance.activeRange.collapse(true);
     SuperDaemonInstance.activeSelection.removeAllRanges();
