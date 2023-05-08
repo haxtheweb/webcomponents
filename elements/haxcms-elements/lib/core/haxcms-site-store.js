@@ -21,6 +21,7 @@ class Store {
     this.evaluatebadDevice();
     this.location = null;
     this.jwt = null;
+    this.version = "0.0.0";
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
@@ -32,6 +33,9 @@ class Store {
       "haxcms-site-editor-ui-main-menu": [],
       "haxcms-site-editor-ui-topbar-character-button": [],
     };
+    fetch(new URL("../../package.json", import.meta.url))
+      .then(response => response.json())
+      .then(obj => this.version = obj.version);
     this.appReady = false;
     this.editMode = false;
     this.manifest = null;
@@ -60,6 +64,7 @@ class Store {
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up
       themeElement: observable, // theme element
+      version: observable, // version of haxcms FRONTEND as per package.json
       routerManifest: computed, // router mixed in manifest w/ routes / paths
       siteTitle: computed,
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
@@ -743,6 +748,7 @@ class Store {
     }
     return this.manifest;
   }
+  
   /**
    * Add an item
    */
