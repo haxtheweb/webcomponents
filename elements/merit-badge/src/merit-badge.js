@@ -11,7 +11,7 @@ import "./lib/badge-sticker.js";
  * @demo demo/index.html
  * @element merit-badge
  */
-class MergitBadge extends LitElement {
+class MeritBadge extends LitElement {
   static get tag() {
     return "merit-badge";
   }
@@ -112,5 +112,5 @@ class MergitBadge extends LitElement {
   }
 }
 
-customElements.define(MergitBadge.tag, MergitBadge);
-export { MergitBadge };
+customElements.define(MeritBadge.tag, MeritBadge);
+export { MeritBadge };
