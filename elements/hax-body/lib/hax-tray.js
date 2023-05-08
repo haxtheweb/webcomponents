@@ -198,7 +198,8 @@ class HaxTray extends I18NMixin(
           overflow: hidden;
           top: 0;
           bottom: 0;
-          width: var(--hax-tray-width);
+          min-width: var(--hax-tray-width);
+          max-width: 70vw;
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
@@ -286,6 +287,7 @@ class HaxTray extends I18NMixin(
           align-items: stretch;
         }
         .detail {
+          resize: horizontal;
           opacity: 1;
           visibility: visible;
           pointer-events: all;
