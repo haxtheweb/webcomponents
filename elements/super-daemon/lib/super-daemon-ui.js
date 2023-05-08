@@ -597,6 +597,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
                           .value="${item.value}"
                           icon="${item.icon}"
                           image="${item.image}"
+                          text-character="${item.textCharacter}"
                           title="${item.title}"
                           .tags="${item.tags}"
                           event-name="${item.eventName}"

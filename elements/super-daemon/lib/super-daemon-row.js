@@ -10,6 +10,7 @@ export class SuperDaemonRow extends LitElement {
     this.path = null;
     this.icon = null;
     this.image = null;
+    this.textCharacter = null;
     this.key = null;
     this.eventName = null;
     this.more = false;
@@ -33,6 +34,7 @@ export class SuperDaemonRow extends LitElement {
       icon: { type: String },
       mini: { type: Boolean, reflect: true },
       image: { type: String },
+      textCharacter: { type: String, attribute: "text-character" },
       more: { type: Boolean },
       showDetails: { type: Boolean },
       key: { type: String },
@@ -96,6 +98,12 @@ export class SuperDaemonRow extends LitElement {
           display: inline-flex;
           max-height: 64px;
           max-width: 100px;
+        }
+        .result-textCharacter {
+          display: inline-flex;
+          max-height: 64px;
+          max-width: 100px;
+          font-size: 42px;
         }
         :host([mini]) .result-image {
           max-height: 32px;
@@ -281,6 +289,9 @@ export class SuperDaemonRow extends LitElement {
           : ``}
         ${this.image
           ? html`<img src="${this.image}" class="result-image" alt="" />`
+          : ``}
+        ${this.textCharacter
+          ? html`<span class="result-textCharacter">${this.textCharacter}</span>`
           : ``}
         <div class="label-wrap">
           <div class="action" part="action">${this.title}</div>

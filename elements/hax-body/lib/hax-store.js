@@ -1995,6 +1995,45 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return false;
     };
 
+    // emoji picker
+    SuperDaemonInstance.defineOption({
+      title: "Insert emoji",
+      icon: "editor:insert-emoticon",
+      tags: ["emoji"],
+      value: {
+        name: "Insert emoji",
+        context: "/",
+        program: async (input, values) => {
+          let results = [];
+          let txt = document.createElement("textarea");
+          await Object.keys(window.SimplePickerEmojis).forEach(async (category) => {
+            await window.SimplePickerEmojis[category].forEach(async (emoji) => {
+              if (input == "" || emoji.description.includes(input)) {   
+                txt.innerHTML = emoji.value;
+                results.push({
+                  title: emoji.description,
+                  textCharacter: txt.value,
+                  tags: [category],
+                  value: {
+                    target: this,
+                    method: "_insertTextResult",
+                    args: [txt.value],
+                  },
+                  context: ["/", "/HAX/text/emoji/" + txt.value],
+                  eventName: "super-daemon-element-method",
+                  path: "/HAX/text/emoji/" + txt.value,
+                });
+              }
+            });
+          });
+          return results;
+        },
+      },
+      context: ["HAX", "/"],
+      eventName: "super-daemon-run-program",
+      path: "/HAX/text/emoji",
+    });
+
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2183,6 +2222,25 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this._editModeChanged(toJS(this.editMode));
     });
   }
+
+  async _insertTextResult(text) {
+    this.activeNode.focus();
+    SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
+    SuperDaemonInstance.activeRange.collapse(true);
+    SuperDaemonInstance.activeSelection.removeAllRanges();
+    SuperDaemonInstance.activeSelection.addRange(SuperDaemonInstance.activeRange);
+    SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
+    SuperDaemonInstance.activeSelection.collapseToEnd();
+    setTimeout(() => {
+      if (this.activeNode.textContent == "") {
+        this.activeNode.textContent = text;
+      }
+      else {
+        document.execCommand("insertHTML", false, text);
+      }
+    }, 0);
+  }
+
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {

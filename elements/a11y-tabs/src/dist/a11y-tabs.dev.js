@@ -522,14 +522,14 @@ var A11yTabs =
                     property: "layoutBreakpoint",
                     title: "Layout Breakpoint",
                     inputMethod: "Number",
-                    descripton:
+                    description:
                       "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode.",
                   },
                   {
                     property: "iconBreakpoint",
                     title: "Icon Breakpoint",
                     inputMethod: "Number",
-                    descripton:
+                    description:
                       "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode.",
                   },
                   {

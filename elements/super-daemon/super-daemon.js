@@ -210,11 +210,12 @@ class SuperDaemon extends LitElement {
         option.priority = 0;
       }
       // create new object from existing so we can build an index
-      // remove icon, image, value, eventName as these are not searchable values
+      // remove icon, image, value, textCharacter, eventName as these are not searchable values
       // then create an idex by making everything else into a space separated string
       let indexBuilder = { ...option };
       delete indexBuilder.icon;
       delete indexBuilder.image;
+      delete indexBuilder.textCharacter;
       delete indexBuilder.value;
       delete indexBuilder.eventName;
       indexBuilder = Object.values(indexBuilder).filter((i) => {
