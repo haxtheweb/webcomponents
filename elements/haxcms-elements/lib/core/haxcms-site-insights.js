@@ -200,6 +200,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             title: "",
             hasVideo: false,
             hasH5P: false,
+            hasAuthorNotes: false,
             hasLinks: false,
             hasImages: false,
             hasPlaceholders: false,
@@ -221,6 +222,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               property: "title",
               title: "Title",
               inputMethod: "textfield",
+            },
+            {
+              property: "hasAuthorNotes",
+              title: "Author notes",
+              description: "Includes content editor notes",
+              inputMethod: "boolean",
             },
             {
               property: "hasVideo",
@@ -420,6 +427,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       sort: val.sort,
       hasVideo: val.hasVideo,
       hasH5P: val.hasH5P,
+      hasAuthorNotes: val.hasAuthorNotes,
       hasPlaceholders: val.hasPlaceholders,
       hasSiteRemoteContent: val.hasSiteRemoteContent,
       hasLinks: val.hasLinks,
@@ -431,6 +439,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           return false;
         }
         if (this.filters.hasH5P === true && item.h5p === 0) {
+          return false;
+        }
+        if (this.filters.hasAuthorNotes === true && item.authorNotes === 0) {
           return false;
         }
         if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
@@ -572,6 +583,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                       this.t.pages
                     }</p>
               <p>${data.objectives} ${this.t.learningObjectives},
+              ${data.authorNotes} ${this.t.authorNotes},
               ${data.specialTags} ${this.t.specialElements},
               ${data.dataTables} ${this.t.dataTables},
               ${data.headings} ${this.t.headings}</p>
@@ -783,6 +795,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 ></simple-icon
                                                 >${item.objectives}
                                                 ${this.t.learningObjectives}
+                                              </li>`
+                                            : ``}
+                                          ${item.authorNotes > 0
+                                            ? html`<li>
+                                                <simple-icon
+                                                  icon="hax:figure"
+                                                ></simple-icon
+                                                >${item.authorNotes}
+                                                ${this.t.authorNotes}
                                               </li>`
                                             : ``}
                                           ${item.videos > 0
@@ -1144,6 +1165,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       externalLinks: "External links",
       pages: "Pages",
       videos: "videos",
+      authorNotes: "Author notes",
       placeholders: "Placeholders",
       video: "Video",
       audio: "Audio",
