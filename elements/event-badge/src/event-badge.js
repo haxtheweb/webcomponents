@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, css, svg } from 'lit';
+import { LitElement, css, svg } from "lit";
 /**
  * `event-badge`
  * `a conference style badge`
@@ -11,74 +11,77 @@ import { LitElement, css, svg } from 'lit';
  */
 class EventBadge extends LitElement {
   static get tag() {
-    return 'event-badge';
+    return "event-badge";
   }
 
   constructor() {
     super();
-    this.title = 'Media';
-    this.name = 'Bryce';
-    this.position = 'Haxer';
-    this.organization = 'Penn State';
-    this.image = 'https://avatars1.githubusercontent.com/u/329735?s=400&v=4';
-    this.tvcolor = '#c63d49';
-    this.backgroundcolor = '#f2f2f2';
-    this.textcolor = '#000000';
-    this.knobcolor = '#cbcaca';
-    this.logo = 'https://3.bp.blogspot.com/-a9MvhamtIms/Vy9si0mQvDI/AAAAAAAAACM/R1pncTyeFJ08W9039NXlVR3FQ-Bt84PJwCLcB/s320/INDEX.png';
+    this.title = "Media";
+    this.name = "Bryce";
+    this.position = "Haxer";
+    this.organization = "Penn State";
+    this.image = "https://avatars1.githubusercontent.com/u/329735?s=400&v=4";
+    this.tvcolor = "#c63d49";
+    this.backgroundcolor = "#f2f2f2";
+    this.textcolor = "#000000";
+    this.knobcolor = "#cbcaca";
+    this.logo =
+      "https://3.bp.blogspot.com/-a9MvhamtIms/Vy9si0mQvDI/AAAAAAAAACM/R1pncTyeFJ08W9039NXlVR3FQ-Bt84PJwCLcB/s320/INDEX.png";
     this.sepia = false;
     this.blackwhite = false;
   }
   static get properties() {
     return {
       title: { type: String },
-      image: {type: String},
-      name: {type: String},
-      position: {type: String},
+      image: { type: String },
+      name: { type: String },
+      position: { type: String },
       logo: { type: String },
-      organization: {type: String},
-      tvcolor: {type: String},
-      backgroundcolor: {type: String},
-      knobcolor: {type: String},
-      textcolor: {type: String},
-      sepia: { 
+      organization: { type: String },
+      tvcolor: { type: String },
+      backgroundcolor: { type: String },
+      knobcolor: { type: String },
+      textcolor: { type: String },
+      sepia: {
         type: Boolean,
         reflect: true,
       },
-      blackwhite: { 
+      blackwhite: {
         type: Boolean,
         reflect: true,
-      }
+      },
     };
-}
+  }
 
   static get styles() {
-    return [css`
-    :host {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    :host([sepia]){
-      filter: sepia(1);
-    }
-    :host([blackwhite]){
-      filter: grayscale(1);
-    }
-    .wrapper {
-      display: block;
-    }
-    .logo {
-        width: 200px;
-        height: 200px;
-        position: absolute;
-        bottom: 0px;
-        right: 3000px;
-        z-index: 30;
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        :host([sepia]) {
+          filter: sepia(1);
+        }
+        :host([blackwhite]) {
+          filter: grayscale(1);
+        }
+        .wrapper {
+          display: block;
+        }
+        .logo {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          bottom: 0px;
+          right: 3000px;
+          z-index: 30;
+        }
+      `,
+    ];
   }
-  
+
   render() {
     return svg`
       <div class="wrapper">
@@ -171,9 +174,9 @@ class EventBadge extends LitElement {
                     
     `;
   }
-   /**
-    * haxProperties integration via file reference
-    */
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;

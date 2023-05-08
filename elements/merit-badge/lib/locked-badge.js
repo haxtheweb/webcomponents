@@ -1,12 +1,12 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 class LockedBadge extends LitElement {
-    static get tag() {
-        return "locked-badge";
-    }
-    static get styles() {
-        return [
-            css`
+  static get tag() {
+    return "locked-badge";
+  }
+  static get styles() {
+    return [
+      css`
 .badge
   {
     width: 200px;
@@ -36,14 +36,19 @@ class LockedBadge extends LitElement {
     padding-left: 65px;
     padding-top: 58px;
   }
-`];
-    }
+`,
+    ];
+  }
 
   render() {
     return html`
-    <div class="badge">
-        <img class="badgepic" src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="image">
-    </div>
+      <div class="badge">
+        <img
+          class="badgepic"
+          src="https://cdn-icons-png.flaticon.com/512/61/61457.png"
+          alt="image"
+        />
+      </div>
     `;
   }
 }

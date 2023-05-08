@@ -1,19 +1,18 @@
 import { LitElement, html, css } from "lit";
 
 class DateTitle extends LitElement {
-    static get tag() {
-      return "date-title";
-    }
+  static get tag() {
+    return "date-title";
+  }
 
-static get properties() {
+  static get properties() {
     return {
-        date: { type: String },
-        title: { type: String },
-
+      date: { type: String },
+      title: { type: String },
     };
-}
+  }
 
-static get styles() {
+  static get styles() {
     return css`
       .container {
         color: white;
@@ -37,13 +36,11 @@ static get styles() {
         font-size: 2em;
         margin: 0;
         color: white;
-
       }
       div.circTxt2 p {
         font-size: 0.8em;
         margin: 0;
         color: white;
-
       }
       @keyframes moveAround {
         0% {
@@ -63,19 +60,19 @@ static get styles() {
         }
       }
     `;
-}
+  }
 
-constructor() {
+  constructor() {
     super();
     this.title = "";
     this.date = "";
   }
 
-render() {
+  render() {
     return html`<div class="container"></div>`;
-}
+  }
 
-updated() {
+  updated() {
     this.generateCircularText(
       "circTxt1",
       this.title,

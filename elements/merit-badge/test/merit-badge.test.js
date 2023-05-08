@@ -1,13 +1,13 @@
-import { fixture, expect, html } from '@open-wc/testing';
-import '../merit-badge.js';
+import { fixture, expect, html } from "@open-wc/testing";
+import "../merit-badge.js";
 
-describe('elementName test', () => {
+describe("elementName test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`<merit-badge></merit-badge>`);
   });
 
-  it('basic will it blend', async () => {
+  it("basic will it blend", async () => {
     expect(element).to.exist;
   });
 

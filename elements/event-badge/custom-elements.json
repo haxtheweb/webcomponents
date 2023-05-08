@@ -3,13 +3,115 @@
   "tags": [
     {
       "name": "event-badge",
-      "description": "`event-badge`\n`a conference style badge`\n\n",
-      "attributes": []
+      "description": "`event-badge`\n`a conference style badge`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `backgroundcolor` {`string`} - \n\n  * `textcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `backgroundcolor` {`string`} - \n\n  * `textcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Media"
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - \n\nProperty: name\n\nDefault: Bryce"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: Haxer"
+        },
+        {
+          "name": "organization",
+          "description": "`organization` {`string`} - \n\nProperty: organization\n\nDefault: Penn State"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: https://avatars1.githubusercontent.com/u/329735?s=400&v=4"
+        },
+        {
+          "name": "tvcolor",
+          "description": "`tvcolor` {`string`} - \n\nProperty: tvcolor\n\nDefault: #c63d49"
+        },
+        {
+          "name": "backgroundcolor",
+          "description": "`backgroundcolor` {`string`} - \n\nProperty: backgroundcolor\n\nDefault: #f2f2f2"
+        },
+        {
+          "name": "textcolor",
+          "description": "`textcolor` {`string`} - \n\nProperty: textcolor\n\nDefault: #000000"
+        },
+        {
+          "name": "knobcolor",
+          "description": "`knobcolor` {`string`} - \n\nProperty: knobcolor\n\nDefault: #cbcaca"
+        },
+        {
+          "name": "logo",
+          "description": "`logo` {`string`} - \n\nProperty: logo\n\nDefault: https://3.bp.blogspot.com/-a9MvhamtIms/Vy9si0mQvDI/AAAAAAAAACM/R1pncTyeFJ08W9039NXlVR3FQ-Bt84PJwCLcB/s320/INDEX.png"
+        },
+        {
+          "name": "sepia",
+          "description": "`sepia` {`boolean`} - \n\nProperty: sepia\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "blackwhite",
+          "description": "`blackwhite` {`boolean`} - \n\nProperty: blackwhite\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     },
     {
       "name": "event-badge",
-      "description": "`event-badge`\n`a conference style badge`\n\n",
-      "attributes": []
+      "description": "`event-badge`\n`a conference style badge`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `backgroundcolor` {`string`} - \n\n  * `textcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `backgroundcolor` {`string`} - \n\n  * `textcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Media"
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - \n\nProperty: name\n\nDefault: Bryce"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: Haxer"
+        },
+        {
+          "name": "organization",
+          "description": "`organization` {`string`} - \n\nProperty: organization\n\nDefault: Penn State"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: https://avatars1.githubusercontent.com/u/329735?s=400&v=4"
+        },
+        {
+          "name": "tvcolor",
+          "description": "`tvcolor` {`string`} - \n\nProperty: tvcolor\n\nDefault: #c63d49"
+        },
+        {
+          "name": "backgroundcolor",
+          "description": "`backgroundcolor` {`string`} - \n\nProperty: backgroundcolor\n\nDefault: #f2f2f2"
+        },
+        {
+          "name": "textcolor",
+          "description": "`textcolor` {`string`} - \n\nProperty: textcolor\n\nDefault: #000000"
+        },
+        {
+          "name": "knobcolor",
+          "description": "`knobcolor` {`string`} - \n\nProperty: knobcolor\n\nDefault: #cbcaca"
+        },
+        {
+          "name": "logo",
+          "description": "`logo` {`string`} - \n\nProperty: logo\n\nDefault: https://3.bp.blogspot.com/-a9MvhamtIms/Vy9si0mQvDI/AAAAAAAAACM/R1pncTyeFJ08W9039NXlVR3FQ-Bt84PJwCLcB/s320/INDEX.png"
+        },
+        {
+          "name": "sepia",
+          "description": "`sepia` {`boolean`} - \n\nProperty: sepia\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "blackwhite",
+          "description": "`blackwhite` {`boolean`} - \n\nProperty: blackwhite\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

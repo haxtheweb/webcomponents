@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from 'lit';
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -32,7 +32,7 @@ class BadgeSticker extends SimpleColors {
     this.skillsOpened = false;
     this.detailsOpened = false;
     this.skillsArray = [];
-    this.badgeColor = ""
+    this.badgeColor = "";
   }
   /**
    * LitElement style callback
@@ -43,8 +43,9 @@ class BadgeSticker extends SimpleColors {
     if (super.styles) {
       styles = super.styles;
     }
-    return [...styles,
-css`
+    return [
+      ...styles,
+      css`
   :host {
     display: block;
   }
@@ -129,7 +130,8 @@ css`
     box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
     border-radius: 15px;
   }
-`]
+`,
+    ];
   }
   static get properties() {
     return {
@@ -142,55 +144,69 @@ css`
       badgeSkills: { type: String },
       skillsOpened: { type: Boolean },
       detailsOpened: { type: Boolean },
-      badgeColor: { type: String }
-    }
+      badgeColor: { type: String },
+    };
   }
   /**
    * LitElement render callback
    */
   render() {
     return html`
-  <div class="badge" style="--badge-color: ${this.badgeColor}">
-    <date-title class="date-title" title="${this.badgeTitle}" date="${this.badgeDate}"></date-title>
+      <div class="badge" style="--badge-color: ${this.badgeColor}">
+        <date-title
+          class="date-title"
+          title="${this.badgeTitle}"
+          date="${this.badgeDate}"
+        ></date-title>
 
-    <img class="badgepic" src="${this.badgeImage}" alt="image">
+        <img class="badgepic" src="${this.badgeImage}" alt="image" />
 
-    <div class="details">
-      <div class="button" @click="${this.skillClick}">
-        <i class="fas fa-info-circle"></i> 
-        <img class="detailsicon" src="https://www.iconpacks.net/icons/1/free-information-icon-348-thumb.png"
-        alt="linkicons" height= 20px width= 20px >
-    </div>
-  </div>
-    <div class="verificationlink">
-      <a href="${this.hyperLink}" target="_blank">
-      <img class="linkicon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Chain_link_icon_slanted.png/800px-Chain_link_icon_slanted.png" alt="detailsicons"
-        height= 20px width= 20px>
-      </a>
-    </div>
-  </div>
-  <absolute-position-behavior
-    class="popover"
-    justify
-    position="bottom"
-    allow-overlap
-    sticky
-    auto
-    .target="${this.activeNode}"
-    ?hidden="${!this.skillsOpened}"
-  >
-    <h3>Details</h3>
-    <p>${this.badgeDetails}</p>
-    <h3>Skills</h3>
-    ${this.skillsArray.map(
-    (item) => html`
-    <ul>
-      <li>${item}</li>
-    </ul>
-    `
-    )}
-  </absolute-position-behavior>
-`;
+        <div class="details">
+          <div class="button" @click="${this.skillClick}">
+            <i class="fas fa-info-circle"></i>
+            <img
+              class="detailsicon"
+              src="https://www.iconpacks.net/icons/1/free-information-icon-348-thumb.png"
+              alt="linkicons"
+              height="20px"
+              width="20px"
+            />
+          </div>
+        </div>
+        <div class="verificationlink">
+          <a href="${this.hyperLink}" target="_blank">
+            <img
+              class="linkicon"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Chain_link_icon_slanted.png/800px-Chain_link_icon_slanted.png"
+              alt="detailsicons"
+              height="20px"
+              width="20px"
+            />
+          </a>
+        </div>
+      </div>
+      <absolute-position-behavior
+        class="popover"
+        justify
+        position="bottom"
+        allow-overlap
+        sticky
+        auto
+        .target="${this.activeNode}"
+        ?hidden="${!this.skillsOpened}"
+      >
+        <h3>Details</h3>
+        <p>${this.badgeDetails}</p>
+        <h3>Skills</h3>
+        ${this.skillsArray.map(
+          (item) => html`
+            <ul>
+              <li>${item}</li>
+            </ul>
+          `
+        )}
+      </absolute-position-behavior>
+    `;
   }
   /**
    * Convention we use

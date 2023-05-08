@@ -25,56 +25,55 @@ class MeritBadge extends LitElement {
       badgeSkills: { type: String },
       skillsOpened: { type: Boolean },
       detailsOpened: { type: Boolean },
-      badgeUnlocked: {type: Boolean},
-      badgeColor: {type: String}
+      badgeUnlocked: { type: Boolean },
+      badgeColor: { type: String },
     };
   }
 
   static get styles() {
-    return [css`
-  .container
-  {
-    display: flex;
-    flex-direction: column;
-    float: left;
-    width: 250px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
+    return [
+      css`
+        .container {
+          display: flex;
+          flex-direction: column;
+          float: left;
+          width: 250px;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        }
 
-  .badges
-  {
-    order: 1;
-    color: white;
-  }
+        .badges {
+          order: 1;
+          color: white;
+        }
 
-  .unlockButton
-  {
-    margin-top:50px;
-    order: 2;
-    width: 175px;
-    background-color: var(--simple-colors-default-theme-blue-8);
-    font-family: "Monaco";
-    display: inline-block;
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    line-height: 1.2rem;
-    font-weight: 900;
-    padding: 8px 14px 9px;
-    font-size: 15px;
-    border-radius: 4px;
-    color: #fff;
-    height: 36px;
-    transition: all 75ms ease-in-out;
-    :hover{
-    box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
-    }
-    margin-left: 100px;
-                  
-  }`];
-}
+        .unlockButton {
+          margin-top: 50px;
+          order: 2;
+          width: 175px;
+          background-color: var(--simple-colors-default-theme-blue-8);
+          font-family: "Monaco";
+          display: inline-block;
+          outline: 0;
+          border: none;
+          cursor: pointer;
+          line-height: 1.2rem;
+          font-weight: 900;
+          padding: 8px 14px 9px;
+          font-size: 15px;
+          border-radius: 4px;
+          color: #fff;
+          height: 36px;
+          transition: all 75ms ease-in-out;
+          :hover {
+            box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+          }
+          margin-left: 100px;
+        }
+      `,
+    ];
+  }
 
   constructor() {
     super();
@@ -86,20 +85,20 @@ class MeritBadge extends LitElement {
       <div class="container">
         ${this.badgeUnlocked
           ? html`<badge-sticker
-          badgeImage="${this.badgeImage}"
-          badgeTitle="${this.badgeTitle}"
-          badgeDetails="${this.badgeDetails}"
-          hyperLink="${this.hyperLink}"
-          badgeSkills=${this.badgeSkills}
-          badgeUnlocked="false"
-          badgeColor="${this.badgeColor}">
-          </badge-sticker>`
+              badgeImage="${this.badgeImage}"
+              badgeTitle="${this.badgeTitle}"
+              badgeDetails="${this.badgeDetails}"
+              hyperLink="${this.hyperLink}"
+              badgeSkills=${this.badgeSkills}
+              badgeUnlocked="false"
+              badgeColor="${this.badgeColor}"
+            >
+            </badge-sticker>`
           : html`<locked-badge></locked-badge>`}
         <button class="unlockButton" @click="${this.unlockButtonClicked}">
           ${this.badgeUnlocked ? "Unlocked" : "Unlock?"}
         </button>
       </div>
-
     `;
   }
 

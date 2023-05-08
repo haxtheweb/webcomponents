@@ -1073,6 +1073,49 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
     });
+    // force item to load schema
+    SuperDaemonInstance.defineOption({
+      title: "DEV: Load HAXSchema",
+      icon: "hax:hax2022",
+      tags: ["Developer", "schema", "load", "demo", "testing"],
+      eventName: "super-daemon-run-program",
+      path: ">hax/loadElement",
+      context: [">"],
+      value: {
+        name: "DEV: Load HAXSchema",
+        context: ">",
+        program: async (input, values) => {
+          const reg = window.WCAutoload.requestAvailability();
+          let results = [];
+          Object.keys(reg.registry.list).forEach(async (tag) => {
+            let icon = "hax:hax2022";
+            if (window.customElements.get(tag)) {
+              if (window.customElements.get(tag).haxProperties && window.customElements.get(tag).haxProperties.gizmo) {
+                icon = window.customElements.get(tag).haxProperties.gizmo.icon;
+              }
+            }
+            if (input == "" || tag.includes(input)) {
+              let tmp = {};
+              tmp[tag] = reg.registry.list[tag];
+              results.push({
+                title: tag,
+                icon: icon,
+                tags: ["schema"],
+                value: {
+                  target: window.HaxStore.instance,
+                  method: "_handleDynamicImports",
+                  args: [tmp, window.HaxStore.instance.haxAutoloader],
+                },
+                eventName: "super-daemon-element-method",
+                context: [">", ">hax/loadElement/" + tag],
+                path: ">hax/loadElement/" + tag,
+              });
+            }
+          });
+          return results;
+        },
+      },
+    });
     // change theme program
     SuperDaemonInstance.defineOption({
       title: "DEV: Change theme",

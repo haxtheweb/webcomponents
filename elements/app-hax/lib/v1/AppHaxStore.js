@@ -20,7 +20,7 @@ class Store {
     this.createSiteSteps = false;
     fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
     .then(response => response.json())
-    .then(obj => console.log(this.version = obj.version));
+    .then(obj => this.version = obj.version);
     this.appSettings = window.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {
