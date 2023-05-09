@@ -14,7 +14,9 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
 
  * @demo ./demo/index.html
  */
-class SimpleEmojiPicker extends IntersectionObserverMixin(SimplePickerBehaviors(LitElement)) {
+class SimpleEmojiPicker extends IntersectionObserverMixin(
+  SimplePickerBehaviors(LitElement)
+) {
   //styles function
   static get styles() {
     return [
@@ -90,14 +92,15 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(SimplePickerBehaviors(
       import("./SimplePickerEmojis.js").then(() => {
         let optData = [{ alt: null, icon: this.icon, value: null }];
         this.emojiTypes.forEach((type) =>
-          window.SimplePickerEmojis[type].forEach((emoji) => optData.push(emoji))
+          window.SimplePickerEmojis[type].forEach((emoji) =>
+            optData.push(emoji)
+          )
         );
         optData = this._setPickerOptions(optData);
         this.options = optData;
       });
     }
   }
-
 
   render() {
     return html`${this.elementVisible ? super.render() : html``}`;
@@ -132,7 +135,6 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(SimplePickerBehaviors(
     if (this.options.length > 1) super._setSelectedOption();
   }
 }
-
 
 customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);
 export { SimpleEmojiPicker };

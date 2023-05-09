@@ -291,7 +291,9 @@ export class SuperDaemonRow extends LitElement {
           ? html`<img src="${this.image}" class="result-image" alt="" />`
           : ``}
         ${this.textCharacter
-          ? html`<span class="result-textCharacter">${this.textCharacter}</span>`
+          ? html`<span class="result-textCharacter"
+              >${this.textCharacter}</span
+            >`
           : ``}
         <div class="label-wrap">
           <div class="action" part="action">${this.title}</div>

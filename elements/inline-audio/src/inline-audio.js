@@ -34,7 +34,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
    * convention
    */
   static get tag() {
-    return 'inline-audio';
+    return "inline-audio";
   }
   /**
    * LitElement lifecycle
@@ -54,73 +54,79 @@ class InlineAudio extends I18NMixin(SimpleColors) {
   static get styles() {
     return [
       ...super.styles,
-    css`
-    :host {
-      display: inline-flex;
-      vertical-align: middle;
-      color: var(--simple-colors-default-theme-grey-12);
-      --inline-audio-padding: 0px 4px;
-      --inline-audio-margin: 0;
-      --inline-audio-icon-padding: 0px 4px 0px 0px;
-    }
+      css`
+        :host {
+          display: inline-flex;
+          vertical-align: middle;
+          color: var(--simple-colors-default-theme-grey-12);
+          --inline-audio-padding: 0px 4px;
+          --inline-audio-margin: 0;
+          --inline-audio-icon-padding: 0px 4px 0px 0px;
+        }
 
-    .container {
-      display: inline-flex;
-      align-items: center;
-      padding: var(--inline-audio-padding);
-      margin: var(--inline-audio-margin);
-      background-color: var(--simple-colors-default-theme-grey-2);
-      min-width: 48px;
-      border-radius: 4px;
-      cursor: pointer;
-      position: relative;
-      z-index: 1;
-    }
+        .container {
+          display: inline-flex;
+          align-items: center;
+          padding: var(--inline-audio-padding);
+          margin: var(--inline-audio-margin);
+          background-color: var(--simple-colors-default-theme-grey-2);
+          min-width: 48px;
+          border-radius: 4px;
+          cursor: pointer;
+          position: relative;
+          z-index: 1;
+        }
 
-    :host([shiny]) .container {
-      background-color: var(--simple-colors-default-theme-accent-2);
-    }
+        :host([shiny]) .container {
+          background-color: var(--simple-colors-default-theme-accent-2);
+        }
 
-    .progress-bar {
-      height: 100%;
-      background-color: var(--simple-colors-default-theme-accent-5);
-      transition: width 0.1s;
-      position: absolute;
-      border-radius: 4px;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+        .progress-bar {
+          height: 100%;
+          background-color: var(--simple-colors-default-theme-accent-5);
+          transition: width 0.1s;
+          position: absolute;
+          border-radius: 4px;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
 
-    .progress {
-      height: 100%;
-      background-color: var(--simple-colors-default-theme-accent-5);
-      position: absolute;
-      border-radius: 4px;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      animation: progress-bar 1s linear forwards;
-    }
+        .progress {
+          height: 100%;
+          background-color: var(--simple-colors-default-theme-accent-5);
+          position: absolute;
+          border-radius: 4px;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          animation: progress-bar 1s linear forwards;
+        }
 
-    .container:focus-within {
-      outline: 2px solid var(--simple-colors-default-theme-accent-6);
-    }
+        .container:focus-within {
+          outline: 2px solid var(--simple-colors-default-theme-accent-6);
+        }
 
-    .icon {
-      padding: var(--inline-audio-icon-padding);
-      --simple-icon-color: var(--simple-colors-default-theme-grey-12);
-      --simple-icon-button-border-radius: none;
-      --simple-icon-button-focus-color: var(--simple-colors-default-theme-grey-12);
-      --simple-icon-button-focus-opacity: var(--inline-audio-button-focus-opacity, .8);
-      --simple-icon-width: var(--inline-audio-width, 36px);
-      --simple-icon-height: var(--inline-audio-height, 36px);
-    }
+        .icon {
+          padding: var(--inline-audio-icon-padding);
+          --simple-icon-color: var(--simple-colors-default-theme-grey-12);
+          --simple-icon-button-border-radius: none;
+          --simple-icon-button-focus-color: var(
+            --simple-colors-default-theme-grey-12
+          );
+          --simple-icon-button-focus-opacity: var(
+            --inline-audio-button-focus-opacity,
+            0.8
+          );
+          --simple-icon-width: var(--inline-audio-width, 36px);
+          --simple-icon-height: var(--inline-audio-height, 36px);
+        }
 
-    .icon::part(button):focus {
-      outline: none;
-    }
-  `];
+        .icon::part(button):focus {
+          outline: none;
+        }
+      `,
+    ];
   }
 
   constructor() {
@@ -138,7 +144,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
     this.icon = "av:play-arrow";
     this.aria = this.t.selectToPlayRelatedAudioClip;
     this.title = this.t.play;
-    this.addEventListener('click', this.__clickEvent);
+    this.addEventListener("click", this.__clickEvent);
   }
 
   handleProgress() {
@@ -163,8 +169,7 @@ class InlineAudio extends I18NMixin(SimpleColors) {
     if (playState) {
       this.__audio.play();
       this.playing = true;
-    }
-    else{
+    } else {
       this.__audio.pause();
       this.playing = false;
     }
@@ -186,25 +191,21 @@ class InlineAudio extends I18NMixin(SimpleColors) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-    }
-    else {
+    } else {
       try {
         if (!this.shadowRoot.getSelection().toString()) {
           if (!this.__audio.hasAttribute("src")) {
             this.icon = "hax:loading";
             this.load(this.source);
-          } 
-          else if (this.canPlay) {
+          } else if (this.canPlay) {
             if (this.__audio.paused) {
               this.audioController(true);
-            }
-            else {
+            } else {
               this.audioController(false);
             }
           }
         }
-      }
-      catch(e) {
+      } catch (e) {
         // do nothing if selection fails some how
       }
     }
@@ -218,17 +219,18 @@ class InlineAudio extends I18NMixin(SimpleColors) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "playing" && oldValue !== undefined) {
-        this.dispatchEvent(new CustomEvent('playing-changed', {
-          detail: {
-            value: this[propName],
-          }
-        }));
+        this.dispatchEvent(
+          new CustomEvent("playing-changed", {
+            detail: {
+              value: this[propName],
+            },
+          })
+        );
         if (this[propName]) {
           this.icon = "av:pause";
           this.title = this.t.pause;
           this.aria = this.t.selectToPauseRelatedAudioClip;
-        }
-        else {
+        } else {
           this.icon = "av:play-arrow";
           this.title = this.t.play;
           this.aria = this.t.selectToPlayRelatedAudioClip;
@@ -243,25 +245,36 @@ class InlineAudio extends I18NMixin(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__audio = this.shadowRoot.querySelector('.player');
+    this.__audio = this.shadowRoot.querySelector(".player");
   }
   /**
    * LitElement lifecycle
    */
   render() {
-    return html`
-    <div class="container">
-      <simple-icon-button part="icon" class="icon" title="${this.title}" aria-label="${this.aria}" icon="${this.icon}"></simple-icon-button>
+    return html` <div class="container">
+      <simple-icon-button
+        part="icon"
+        class="icon"
+        title="${this.title}"
+        aria-label="${this.aria}"
+        icon="${this.icon}"
+      ></simple-icon-button>
       <slot></slot>
-      <audio class="player" hidden type="audio/mpeg" @canplaythrough="${this.handlePlaythrough}" @timeupdate="${this.handleProgress}"></audio>
+      <audio
+        class="player"
+        hidden
+        type="audio/mpeg"
+        @canplaythrough="${this.handlePlaythrough}"
+        @timeupdate="${this.handleProgress}"
+      ></audio>
       <div part="progress-bar" class="progress-bar"></div>
       <div part="progress" class="progress"></div>
     </div>`;
   }
-   /**
+  /**
    * haxProperties integration via file reference
    */
-   static get haxProperties() {
+  static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }

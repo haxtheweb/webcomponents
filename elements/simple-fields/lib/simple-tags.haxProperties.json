@@ -23,7 +23,7 @@
         "required": true
       },
       {
-        "property": "autoAccentColor", 
+        "property": "autoAccentColor",
         "title": "Auto Accent Color",
         "description": "Automatically set the accent color based on label",
         "inputMethod": "boolean"

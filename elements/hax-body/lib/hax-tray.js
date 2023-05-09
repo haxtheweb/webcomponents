@@ -1470,7 +1470,8 @@ class HaxTray extends I18NMixin(
           disabled: filteredProps.length < 1,
           expanded:
             propName === "configure" &&
-            (!HAXStore.isTextElement(this.activeNode) || HAXStore.isInlineElement(this.activeNode)),
+            (!HAXStore.isTextElement(this.activeNode) ||
+              HAXStore.isInlineElement(this.activeNode)),
           accordion: true,
         });
       };

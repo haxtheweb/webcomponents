@@ -1090,7 +1090,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           Object.keys(reg.registry.list).forEach(async (tag) => {
             let icon = "hax:hax2022";
             if (window.customElements.get(tag)) {
-              if (window.customElements.get(tag).haxProperties && window.customElements.get(tag).haxProperties.gizmo) {
+              if (
+                window.customElements.get(tag).haxProperties &&
+                window.customElements.get(tag).haxProperties.gizmo
+              ) {
                 icon = window.customElements.get(tag).haxProperties.gizmo.icon;
               }
             }

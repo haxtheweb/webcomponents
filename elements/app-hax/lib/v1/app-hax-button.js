@@ -2,7 +2,8 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { html, css, LitElement } from "lit";
 const postIt = new URL("../assets/images/PostIt.svg", import.meta.url).href;
-const betaPostIt = new URL("../assets/images/BetaPostIt.svg", import.meta.url).href;
+const betaPostIt = new URL("../assets/images/BetaPostIt.svg", import.meta.url)
+  .href;
 
 export class AppHaxButton extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -120,15 +121,15 @@ export class AppHaxButton extends LitElement {
           case "elms:ln":
             this.icon = "lrn:network";
             this.value = "elmsln";
-          break;
+            break;
           case "haxcms":
             this.icon = "hax:hax2022";
             this.value = "haxcms";
-          break;
+            break;
           case "notion":
             this.icon = "book";
             this.value = "notion";
-          break;
+            break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";
@@ -193,7 +194,7 @@ export class AppHaxButton extends LitElement {
           position: absolute;
           margin-top: -75px;
         }
-        .beta{
+        .beta {
           display: block;
           height: 100px;
           width: 120px;
@@ -259,7 +260,7 @@ export class AppHaxButton extends LitElement {
               class="coming-soon"
             />`
           : ``}
-         ${this.beta
+        ${this.beta
           ? html`<img
               src="${betaPostIt}"
               loading="lazy"

@@ -201,7 +201,7 @@
     },
     {
       "name": "app-hax-button",
-      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `coming-soon` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `value` - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `comingSoon` {`boolean`} - ",
+      "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `coming-soon` {`boolean`} - \n\n  * `prompt` {`string`} - \n\n  * `callback` {`string`} - \n\n  * `param` {`string`} - \n\n  * `beta` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `value` - \n\n  * `disabled` {`boolean`} - \n\n  * `elevation` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `comingSoon` {`boolean`} - \n\n  * `prompt` {`string`} - \n\n  * `callback` {`string`} - \n\n  * `param` {`string`} - \n\n  * `beta` {`boolean`} - ",
       "attributes": [
         {
           "name": "icon",
@@ -228,6 +228,23 @@
         {
           "name": "coming-soon",
           "description": "`coming-soon` {`boolean`} - \n\nProperty: comingSoon\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "prompt",
+          "description": "`prompt` {`string`} - \n\nProperty: prompt\n\nDefault: null"
+        },
+        {
+          "name": "callback",
+          "description": "`callback` {`string`} - \n\nProperty: callback\n\nDefault: null"
+        },
+        {
+          "name": "param",
+          "description": "`param` {`string`} - \n\nProperty: param\n\nDefault: null"
+        },
+        {
+          "name": "beta",
+          "description": "`beta` {`boolean`} - \n\nProperty: beta\n\nDefault: false",
           "valueSet": "v"
         }
       ]

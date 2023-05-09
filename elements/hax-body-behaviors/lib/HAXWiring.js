@@ -423,8 +423,8 @@ export class HAXWiring {
         if (typeof props.documentation === typeof undefined) {
           props.documentation = {
             howTo: null,
-            purpose: null
-          }
+            purpose: null,
+          };
         }
         // support for demoSchema
         if (typeof props.demoSchema === typeof undefined) {
@@ -821,7 +821,7 @@ export class HAXWiring {
         },
         documentation: {
           howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
-          purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome"
+          purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
         },
         demoSchema: [
           {

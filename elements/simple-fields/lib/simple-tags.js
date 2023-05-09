@@ -18,15 +18,17 @@ export class SimpleTags extends LitElement {
 
   render() {
     return html` <div class="tag-container">
-      ${this.tags ? this.tags.split(",").map((tag) => {
-        return html`
-          <simple-tag
-            ?auto-accent-color="${this.autoAccentColor}"
-            value="${tag.trim()}"
-            accent-color="${this.accentColor}"
-          ></simple-tag>
-        `;
-      }) : ``}
+      ${this.tags
+        ? this.tags.split(",").map((tag) => {
+            return html`
+              <simple-tag
+                ?auto-accent-color="${this.autoAccentColor}"
+                value="${tag.trim()}"
+                accent-color="${this.accentColor}"
+              ></simple-tag>
+            `;
+          })
+        : ``}
     </div>`;
   }
   static get tag() {

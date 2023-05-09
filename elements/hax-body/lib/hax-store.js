@@ -667,7 +667,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
     if (tag && this.validTagList.includes(tag)) {
       if (
-        (this.haxSchemaFromTag(tag) && this.haxSchemaFromTag(tag).meta && this.haxSchemaFromTag(tag).meta.inlineOnly) ||
+        (this.haxSchemaFromTag(tag) &&
+          this.haxSchemaFromTag(tag).meta &&
+          this.haxSchemaFromTag(tag).meta.inlineOnly) ||
         [
           "a",
           "strike",
@@ -2006,26 +2008,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         program: async (input, values) => {
           let results = [];
           let txt = document.createElement("textarea");
-          await Object.keys(window.SimplePickerEmojis).forEach(async (category) => {
-            await window.SimplePickerEmojis[category].forEach(async (emoji) => {
-              if (input == "" || emoji.description.includes(input)) {   
-                txt.innerHTML = emoji.value;
-                results.push({
-                  title: emoji.description,
-                  textCharacter: txt.value,
-                  tags: [category],
-                  value: {
-                    target: this,
-                    method: "_insertTextResult",
-                    args: [txt.value],
-                  },
-                  context: ["/", "/HAX/text/emoji/" + txt.value],
-                  eventName: "super-daemon-element-method",
-                  path: "/HAX/text/emoji/" + txt.value,
-                });
-              }
-            });
-          });
+          await Object.keys(window.SimplePickerEmojis).forEach(
+            async (category) => {
+              await window.SimplePickerEmojis[category].forEach(
+                async (emoji) => {
+                  if (input == "" || emoji.description.includes(input)) {
+                    txt.innerHTML = emoji.value;
+                    results.push({
+                      title: emoji.description,
+                      textCharacter: txt.value,
+                      tags: [category],
+                      value: {
+                        target: this,
+                        method: "_insertTextResult",
+                        args: [txt.value],
+                      },
+                      context: ["/", "/HAX/text/emoji/" + txt.value],
+                      eventName: "super-daemon-element-method",
+                      path: "/HAX/text/emoji/" + txt.value,
+                    });
+                  }
+                }
+              );
+            }
+          );
           return results;
         },
       },
@@ -2045,26 +2051,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         program: async (input, values) => {
           let results = [];
           let txt = document.createElement("textarea");
-          await Object.keys(window.SimplePickerSymbols).forEach(async (category) => {
-            await window.SimplePickerSymbols[category].forEach(async (symbol) => {
-              if (input == "" || category.includes(input)) {   
-                txt.innerHTML = symbol.value;
-                results.push({
-                  title: `${category}: ${txt.value}`,
-                  textCharacter: txt.value,
-                  tags: [category],
-                  value: {
-                    target: this,
-                    method: "_insertTextResult",
-                    args: [txt.value],
-                  },
-                  context: ["/", "/HAX/text/symbol/" + txt.value],
-                  eventName: "super-daemon-element-method",
-                  path: "/HAX/text/symbol/" + txt.value,
-                });
-              }
-            });
-          });
+          await Object.keys(window.SimplePickerSymbols).forEach(
+            async (category) => {
+              await window.SimplePickerSymbols[category].forEach(
+                async (symbol) => {
+                  if (input == "" || category.includes(input)) {
+                    txt.innerHTML = symbol.value;
+                    results.push({
+                      title: `${category}: ${txt.value}`,
+                      textCharacter: txt.value,
+                      tags: [category],
+                      value: {
+                        target: this,
+                        method: "_insertTextResult",
+                        args: [txt.value],
+                      },
+                      context: ["/", "/HAX/text/symbol/" + txt.value],
+                      eventName: "super-daemon-element-method",
+                      path: "/HAX/text/symbol/" + txt.value,
+                    });
+                  }
+                }
+              );
+            }
+          );
           return results;
         },
       },
@@ -2268,14 +2278,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
     SuperDaemonInstance.activeRange.collapse(true);
     SuperDaemonInstance.activeSelection.removeAllRanges();
-    SuperDaemonInstance.activeSelection.addRange(SuperDaemonInstance.activeRange);
+    SuperDaemonInstance.activeSelection.addRange(
+      SuperDaemonInstance.activeRange
+    );
     SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
     SuperDaemonInstance.activeSelection.collapseToEnd();
     setTimeout(() => {
       if (this.activeNode.textContent == "") {
         this.activeNode.textContent = text;
-      }
-      else {
+      } else {
         document.execCommand("insertHTML", false, text);
       }
     }, 0);

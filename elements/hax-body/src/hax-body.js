@@ -2918,14 +2918,27 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
       window.addEventListener(
         "hax-context-item-selected",
-        this._haxContextOperation, { signal: this.windowControllers.signal });
+        this._haxContextOperation,
+        { signal: this.windowControllers.signal }
+      );
       window.addEventListener(
         "hax-toggle-active-node-lock",
-        this._toggleNodeLocking, { signal: this.windowControllers.signal });
-      window.addEventListener("click", this.scrollerFixclickEvent, { signal: this.windowControllers.signal });
-      window.addEventListener("blur", this.blurEvent, { signal: this.windowControllers.signal });
-      window.addEventListener("keydown", this._onKeyDown, { signal: this.windowControllers.signal });
-      window.addEventListener("resize", this._keepContextVisible, { passive: true, signal: this.windowControllers.signal });
+        this._toggleNodeLocking,
+        { signal: this.windowControllers.signal }
+      );
+      window.addEventListener("click", this.scrollerFixclickEvent, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("blur", this.blurEvent, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("keydown", this._onKeyDown, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("resize", this._keepContextVisible, {
+        passive: true,
+        signal: this.windowControllers.signal,
+      });
       // mutation observer that ensures state of hax applied correctly
       this._observer = new MutationObserver((mutations) => {
         var mutFind = false;
@@ -3255,14 +3268,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return [
-      "span",
-      "b",
-      "strong",
-      "i",
-      "em",
-      "u",
-    ].includes(node.tagName.toLowerCase());
+    return ["span", "b", "strong", "i", "em", "u"].includes(
+      node.tagName.toLowerCase()
+    );
   }
   /**
    * Test if this is an HTML primative

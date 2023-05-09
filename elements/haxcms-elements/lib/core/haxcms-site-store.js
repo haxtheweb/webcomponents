@@ -34,8 +34,8 @@ class Store {
       "haxcms-site-editor-ui-topbar-character-button": [],
     };
     fetch(new URL("../../package.json", import.meta.url))
-      .then(response => response.json())
-      .then(obj => this.version = obj.version);
+      .then((response) => response.json())
+      .then((obj) => (this.version = obj.version));
     this.appReady = false;
     this.editMode = false;
     this.manifest = null;
@@ -748,7 +748,7 @@ class Store {
     }
     return this.manifest;
   }
-  
+
   /**
    * Add an item
    */

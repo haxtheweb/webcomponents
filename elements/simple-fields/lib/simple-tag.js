@@ -15,7 +15,13 @@ export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
     super.updated(changedProperties);
     // updates to the value or autoAccentColor should trigger a color change
     // but we MUST have values in both
-    if (this.shadowRoot && (changedProperties.has("autoAccentColor") || changedProperties.has("value")) && this.value && this.autoAccentColor) {
+    if (
+      this.shadowRoot &&
+      (changedProperties.has("autoAccentColor") ||
+        changedProperties.has("value")) &&
+      this.value &&
+      this.autoAccentColor
+    ) {
       this.accentColor = this.calculateAccentColor(this.value);
     }
   }
@@ -38,10 +44,9 @@ export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
     // shade is whatever the 2nd value is here
     let shade = parseInt(seed[1]) !== 0 ? parseInt(seed[1]) : 1;
     // avoid nuetral middle shades for higher contrasting text
-    if ([5,6,7].includes(shade)) {
+    if ([5, 6, 7].includes(shade)) {
       shade = shade - 3;
-    }
-    else if ([8,9].includes(shade)) {
+    } else if ([8, 9].includes(shade)) {
       shade = shade + 2;
     }
     // set accent shade by figuring out which contrastic colors will be valid
@@ -51,8 +56,14 @@ export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
     if (shade < 5) {
       contrastLevel = contrast.grey.pop();
     }
-    this.style.setProperty('--simple-fields-button-background-color', `var(--simple-colors-default-theme-accent-${shade}, orange)`);
-    this.style.setProperty('--simple-fields-button-color',`var(--simple-colors-default-theme-grey-${contrastLevel}, black)`);
+    this.style.setProperty(
+      "--simple-fields-button-background-color",
+      `var(--simple-colors-default-theme-accent-${shade}, orange)`
+    );
+    this.style.setProperty(
+      "--simple-fields-button-color",
+      `var(--simple-colors-default-theme-grey-${contrastLevel}, black)`
+    );
     // set accent color
     return colorName;
   }

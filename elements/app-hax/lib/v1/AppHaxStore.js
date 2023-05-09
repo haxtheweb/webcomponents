@@ -19,8 +19,8 @@ class Store {
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
-    .then(response => response.json())
-    .then(obj => this.version = obj.version);
+      .then((response) => response.json())
+      .then((obj) => (this.version = obj.version));
     this.appSettings = window.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {

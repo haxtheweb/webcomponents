@@ -266,48 +266,48 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   // import markdown from a file
   importMDviaMicro(e) {
-    import(
-      "@lrnwebcomponents/file-system-broker/file-system-broker.js"
-    ).then(async (e) => {
-      const broker = window.FileSystemBroker.requestAvailability();
-      const contents = await broker.getFileContents("markdown");
-      const response = await MicroFrontendRegistry.call("@core/mdToHtml", {
-        md: contents,
-      });
-      if (response.status == 200) {
-        // fake file event from built in method for same ux
-        this.insertContentsFromFile({
-          detail: {
-            name: "hax-view-source",
-            value: response.data,
-          },
+    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      async (e) => {
+        const broker = window.FileSystemBroker.requestAvailability();
+        const contents = await broker.getFileContents("markdown");
+        const response = await MicroFrontendRegistry.call("@core/mdToHtml", {
+          md: contents,
         });
+        if (response.status == 200) {
+          // fake file event from built in method for same ux
+          this.insertContentsFromFile({
+            detail: {
+              name: "hax-view-source",
+              value: response.data,
+            },
+          });
+        }
       }
-    });
+    );
   }
   // import using microservice to obtain file contents
   importDOCXviaMicro(e) {
-    import(
-      "@lrnwebcomponents/file-system-broker/file-system-broker.js"
-    ).then(async (e) => {
-      const broker = window.FileSystemBroker.requestAvailability();
-      const file = await broker.loadFile("docx");
-      const formData = new FormData();
-      formData.append("upload", file);
-      const response = await MicroFrontendRegistry.call(
-        "@core/docxToHtml",
-        formData
-      );
-      if (response.status == 200) {
-        // fake file event from built in method for same ux
-        this.insertContentsFromFile({
-          detail: {
-            name: "hax-view-source",
-            value: response.data.contents,
-          },
-        });
+    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      async (e) => {
+        const broker = window.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile("docx");
+        const formData = new FormData();
+        formData.append("upload", file);
+        const response = await MicroFrontendRegistry.call(
+          "@core/docxToHtml",
+          formData
+        );
+        if (response.status == 200) {
+          // fake file event from built in method for same ux
+          this.insertContentsFromFile({
+            detail: {
+              name: "hax-view-source",
+              value: response.data.contents,
+            },
+          });
+        }
       }
-    });
+    );
   }
   // this will get called at a later time bc of the Promise involved
   insertContentsFromFile(e) {
@@ -334,7 +334,11 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("docx-file-system-data", this.insertContentsFromFile, { signal: this.windowControllers.signal });
+    window.addEventListener(
+      "docx-file-system-data",
+      this.insertContentsFromFile,
+      { signal: this.windowControllers.signal }
+    );
   }
   disconnectedCallback() {
     this.windowControllers.abort();

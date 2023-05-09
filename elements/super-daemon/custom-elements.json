@@ -26,6 +26,10 @@
           "type": "string"
         },
         {
+          "name": "text-character",
+          "type": "string"
+        },
+        {
           "name": "key",
           "type": "string"
         },
@@ -83,6 +87,11 @@
         {
           "name": "image",
           "attribute": "image",
+          "type": "string"
+        },
+        {
+          "name": "textCharacter",
+          "attribute": "text-character",
           "type": "string"
         },
         {

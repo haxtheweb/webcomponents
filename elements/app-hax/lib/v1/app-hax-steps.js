@@ -272,7 +272,7 @@ export class AppHaxSteps extends SimpleColors {
       let promptUrl = window.prompt(prompt);
       enableServices(["haxcms"]);
       this.setProcessingVisual();
-      const params = {}
+      const params = {};
       params[param] = promptUrl;
       const response = await MicroFrontendRegistry.call(callback, params);
       store.toast(`Processed!`, 300);
