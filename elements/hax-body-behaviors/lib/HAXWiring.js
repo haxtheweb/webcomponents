@@ -37,6 +37,11 @@
  *      "configure": [],
  *      "advanced": [],
  *    },
+ *    "documentation": {
+ *      "help": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+ *      "tutorial": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+ *      "usageGuide": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome"
+ *    },
  *    // additional clean up options for specific pieces of saving / shortcut options
  *    "saveOptions": {},
  *    // support for multiple demos of the element; used for drag and drop place holder and in visuals of the elements

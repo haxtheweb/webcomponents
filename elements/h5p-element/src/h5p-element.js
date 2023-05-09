@@ -43,41 +43,14 @@ class H5PElement extends LitElement {
         ></div>`}`;
   }
 
-  // haxProperty definition
+  /**
+  * haxProperties integration via file reference
+  */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "H5P",
-        description: "h5p wrapper for loading and presenting .h5p files",
-        icon: "icons:android",
-        color: "green",
-        tags: ["Instructional", "Interactive", "media"],
-        meta: {
-          author: "HAXTheWeb",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            description: "Location the H5P file was unpacked to",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        wipeSlot: true,
-        unsetAttributes: ["content-id"],
-      },
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -106,8 +79,6 @@ class H5PElement extends LitElement {
     super();
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
-    // should kick off all dependencies to start loading on window
-    this.H5PDepsLoader();
   }
   /**
    * This breaks shadowRoot in LitElement
@@ -159,7 +130,10 @@ class H5PElement extends LitElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (
       this.source &&
       window.ESGlobalBridge.requestAvailability().imports[
@@ -234,6 +208,11 @@ class H5PElement extends LitElement {
     }
     return true;
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.H5PDepsLoader();
+  }
+
   /**
    * life cycle, element removed from DOM
    */
@@ -247,9 +226,6 @@ class H5PElement extends LitElement {
       this.h5pJqueryReady.bind(this)
     );
     super.disconnectedCallback();
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {});
   }
 }
 customElements.define("h5p-element", H5PElement);

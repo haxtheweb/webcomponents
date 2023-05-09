@@ -10,7 +10,6 @@ import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "./hax-tray-button.js";
@@ -268,7 +267,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   // import markdown from a file
   importMDviaMicro(e) {
     import(
-      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+      "@lrnwebcomponents/file-system-broker/file-system-broker.js"
     ).then(async (e) => {
       const broker = window.FileSystemBroker.requestAvailability();
       const contents = await broker.getFileContents("markdown");
@@ -289,7 +288,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   // import using microservice to obtain file contents
   importDOCXviaMicro(e) {
     import(
-      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+      "@lrnwebcomponents/file-system-broker/file-system-broker.js"
     ).then(async (e) => {
       const broker = window.FileSystemBroker.requestAvailability();
       const file = await broker.loadFile("docx");
@@ -356,13 +355,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    * Download DOCX.
    */
   async downloadDOCX(e) {
-    let body = await HAXStore.activeHaxBody.haxToContent();
-    window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
-      body,
-      document.title
-    );
-    HAXStore.toast(this.t.fileDownloaded);
-    this.close();
+    import(
+      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+    ).then(async (e) => {
+      let body = await HAXStore.activeHaxBody.haxToContent();
+      window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+        body,
+        document.title
+      );
+      HAXStore.toast(this.t.fileDownloaded);
+      this.close();
+    });
   }
 
   /**
