@@ -128,7 +128,7 @@
     }
     </style>
     <script id="loadingscript">
-    window.addEventListener('haxcms-ready', function(e) {
+    window.addEventListener('haxcms-theme-ready', function(e) {
       // give the web components a second to build
       setTimeout(function() {
         document.querySelector('#loading').classList.add('loaded');
@@ -137,7 +137,7 @@
           document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
           document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
         }, 600);
-      }, 1000);
+      }, 300);
     });
   </script>
 </head>
