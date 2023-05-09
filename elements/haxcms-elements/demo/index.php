@@ -128,7 +128,7 @@
     }
     </style>
     <script id="loadingscript">
-    window.addEventListener('haxcms-theme-ready', function(e) {
+    window.addEventListener('haxcms-ready', function(e) {
       // give the web components a second to build
       setTimeout(function() {
         document.querySelector('#loading').classList.add('loaded');
