@@ -38,9 +38,8 @@
  *      "advanced": [],
  *    },
  *    "documentation": {
- *      "help": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
- *      "tutorial": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
- *      "usageGuide": "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome"
+ *      "howTo": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/howToUse",
+ *      "purpose": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/purpose"
  *    },
  *    // additional clean up options for specific pieces of saving / shortcut options
  *    "saveOptions": {},
@@ -419,6 +418,13 @@ export class HAXWiring {
           props.saveOptions = {
             wipeSlot: false,
           };
+        }
+        // support for advanced save options
+        if (typeof props.documentation === typeof undefined) {
+          props.documentation = {
+            howTo: null,
+            purpose: null
+          }
         }
         // support for demoSchema
         if (typeof props.demoSchema === typeof undefined) {
@@ -812,6 +818,10 @@ export class HAXWiring {
         saveOptions: {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"],
+        },
+        documentation: {
+          howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+          purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome"
         },
         demoSchema: [
           {
