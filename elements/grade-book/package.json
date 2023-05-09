@@ -58,7 +58,7 @@
     "@lrnwebcomponents/utils": "^4.2.0",
     "idb-keyval": "6.1.0",
     "lit": "^2.7.2",
-    "mobx": "6.7.0"
+    "mobx": "6.9.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

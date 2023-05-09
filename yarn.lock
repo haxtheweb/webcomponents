@@ -20374,10 +20374,10 @@ mobius1-selectr@^2.4.13:
   resolved "https://registry.yarnpkg.com/mobius1-selectr/-/mobius1-selectr-2.4.13.tgz#0019dfd9f984840d6e40f70683ab3ec78ce3b5df"
   integrity sha512-Mk9qDrvU44UUL0EBhbAA1phfQZ7aMZPjwtL7wkpiBzGh8dETGqfsh50mWoX9EkjDlkONlErWXArHCKfoxVg0Bw==
 
-mobx@6.7.0:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.7.0.tgz#2d805610fee1801fd015c54fd5400d2601aa3768"
-  integrity sha512-1kBLBdSNG2bA522HQdbsTvwAwYf9hq9FWxmlhX7wTsJUAI54907J+ozfGW+LoYUo06vjit748g6QH1AAGLNebw==
+mobx@6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.9.0.tgz#8a894c26417c05bed2cf7499322e589ee9787397"
+  integrity sha512-HdKewQEREEJgsWnErClfbFoVebze6rGazxFLU/XUyrII8dORfVszN1V0BMRnQSzcgsNNtkX8DHj3nC6cdWE9YQ==
 
 mocha@^3.4.2:
   version "3.5.3"

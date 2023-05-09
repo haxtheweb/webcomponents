@@ -52,7 +52,7 @@
     "@lrnwebcomponents/simple-colors": "^4.2.0",
     "@lrnwebcomponents/simple-icon": "^4.2.0",
     "lit": "^2.7.2",
-    "mobx": "6.7.0"
+    "mobx": "6.9.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
