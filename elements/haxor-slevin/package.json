@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.2.0",
+  "version": "7.0.0",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -42,19 +42,19 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^4.2.0",
-    "@lrnwebcomponents/haxcms-elements": "^4.2.0",
-    "@lrnwebcomponents/simple-blog-card": "^4.2.0",
-    "@lrnwebcomponents/simple-colors": "^4.2.0",
-    "@lrnwebcomponents/simple-icon": "^4.2.0",
-    "@lrnwebcomponents/social-share-link": "^4.2.0",
+    "@lrnwebcomponents/hax-iconset": "^7.0.0",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.0",
+    "@lrnwebcomponents/simple-blog-card": "^7.0.0",
+    "@lrnwebcomponents/simple-colors": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/social-share-link": "^7.0.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.1",
     "@polymer/polymer": "^3.4.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

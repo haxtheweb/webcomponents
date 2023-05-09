@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.2.0",
+  "version": "7.0.0",
   "description": "displays images as a carousel or grid with the ability to zoom",
   "repository": {
     "type": "git",
@@ -43,16 +43,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/img-view-modal": "^4.2.0",
-    "@lrnwebcomponents/responsive-utility": "^4.2.0",
-    "@lrnwebcomponents/simple-colors": "^4.2.0",
-    "@lrnwebcomponents/simple-icon": "^4.2.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.2.0",
+    "@lrnwebcomponents/img-view-modal": "^7.0.0",
+    "@lrnwebcomponents/responsive-utility": "^7.0.0",
+    "@lrnwebcomponents/simple-colors": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
     "lit": "^2.7.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/utils": "^4.2.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
+    "@lrnwebcomponents/utils": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

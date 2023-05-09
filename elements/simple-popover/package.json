@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.2.0",
+  "version": "7.0.0",
   "description": "A popover alertdialog that is positioned next to a target element",
   "repository": {
     "type": "git",
@@ -44,13 +44,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^4.2.0",
-    "@lrnwebcomponents/simple-icon": "^4.2.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.2.0",
+    "@lrnwebcomponents/absolute-position-behavior": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
     "lit": "^2.7.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

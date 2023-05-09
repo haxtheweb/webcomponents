@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.2.0",
+  "version": "7.0.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -44,15 +44,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^4.2.0",
-    "@lrnwebcomponents/simple-fields": "^4.2.0",
-    "@lrnwebcomponents/simple-filter": "^4.2.0",
-    "@lrnwebcomponents/simple-icon": "^4.2.0",
+    "@lrnwebcomponents/i18n-manager": "^7.0.0",
+    "@lrnwebcomponents/simple-fields": "^7.0.0",
+    "@lrnwebcomponents/simple-filter": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
     "lit": "^2.7.2",
     "web-dialog": "^0.0.11"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
