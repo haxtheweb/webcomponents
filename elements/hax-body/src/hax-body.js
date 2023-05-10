@@ -664,19 +664,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (
-        target.tagName !== "HAX-BODY" &&
-        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE")
-      ) {
+      } else if (target.tagName !== "HAX-BODY" && !target.haxUIElement) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
       // block haxUIElements, except for editable-table as it's a unique tag
       // bc it's repairing that table is not natively editable
-      if (
-        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE") &&
-        this.__focusLogic(target)
-      ) {
+      if (!target.haxUIElement && this.__focusLogic(target)) {
         HAXStore.haxTray.trayDetail = "content-edit";
         e.stopPropagation();
         e.stopImmediatePropagation();
@@ -2734,8 +2728,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         // test for ignore edge case
         if (
-          (!activeNode.haxUIElement ||
-            activeNode.tagName === "EDITABLE-TABLE") &&
+          !activeNode.haxUIElement &&
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
@@ -3240,16 +3233,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // search results can be drag'ed from their panel for exact placement
     // special place holder in drag and drop
     if (
-      (!node.haxUIElement || node.tagName === "EDITABLE-TABLE") &&
+      !node.haxUIElement &&
       node.tagName &&
-      ![
-        "TEMPLATE",
-        "HAX-BODY",
-        "RICH-TEXT-EDITOR-CLIPBOARD",
-        "RICH-TEXT-EDITOR-PROMPT",
-        "RICH-TEXT-EDITOR-HIGHLIGHT",
-        "FAKE-HAX-BODY-END",
-      ].includes(node.tagName)
+      !["TEMPLATE", "HAX-BODY", "FAKE-HAX-BODY-END"].includes(node.tagName)
     ) {
       // special case of SPAN as it can often get embedded places without actually
       // being the thing that should grad actual block level focus

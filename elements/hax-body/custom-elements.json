@@ -1869,7 +1869,7 @@
       "attributes": [
         {
           "name": "show-sources",
-          "description": "`show-sources` {`boolean`} - \n\nProperty: showSources\n\nDefault: false",
+          "description": "`show-sources` {`boolean`} - \n\nProperty: showSources\n\nDefault: true",
           "valueSet": "v"
         },
         {
@@ -2133,7 +2133,7 @@
       "attributes": [
         {
           "name": "show-sources",
-          "description": "`show-sources` {`boolean`} - \n\nProperty: showSources\n\nDefault: false",
+          "description": "`show-sources` {`boolean`} - \n\nProperty: showSources\n\nDefault: true",
           "valueSet": "v"
         },
         {

@@ -184,6 +184,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.haxUIElement = true;
     window.addEventListener(
       "rich-text-editor-prompt-open",
       this.open.bind(this)
