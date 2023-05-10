@@ -171,13 +171,12 @@ export default async function handler(req, res) {
   req.pipe(bb);
 }
 
-function importSinglePage(title, content, parentId) {
+function importSinglePage(title, content, pValue) {
   let item = new JSONOutlineSchemaItem();
   item.title = title;
   item.slug = cleanTitle(item.title);
-  item.parent = parentId; // null default, supports importing to a new page under a parent though
-  // parser helps ensure validity of HTML structure, though it should
-  // be ok given that it came from mammoth
+  item.order = 0;
+  item.parent = pValue;
   item.contents = content;
   return item;
 }
