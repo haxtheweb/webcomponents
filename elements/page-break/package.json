@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "page-break.js",
   "module": "page-break.js",
   "umd": "page-break.umd.js",

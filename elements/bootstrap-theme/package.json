@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "bootstrap-theme.js",
   "module": "bootstrap-theme.js",
   "umd": "bootstrap-theme.umd.js",

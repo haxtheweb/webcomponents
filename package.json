@@ -20,6 +20,7 @@
     "url": "https://www.elmsln.org/"
   },
   "license": "Apache-2.0",
+  "type": "module",
   "repository": "git@github.com/elmsln/lrnwebcomponents.git",
   "scripts": {
     "prepare": "husky install",
@@ -41,6 +42,7 @@
     "storybook": "set STORYBOOK=true && npx --max_old_space_size=16384 start-storybook --node-resolve --watch --open",
     "build-storybook": "yarn run analyze && set STORYBOOK=true && npx --max_old_space_size=16384 build-storybook && cp elements/*/demo/*.json --parents storybook && cp elements/*/lib/*.json --parents storybook",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
+    "haxschema": "./node_modules/.bin/gulp haxschema",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
   "peerDependencies": {
@@ -63,6 +65,7 @@
     "@open-wc/storybook-prebuilt": "1.2.0",
     "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-node-resolve": "13.1.3",
+    "html-element": "2.3.1",
     "@web/dev-server": "0.1.34",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "@polymer/iron-swipeable-container": "3.0.1",

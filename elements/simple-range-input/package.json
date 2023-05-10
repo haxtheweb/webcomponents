@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-range-input.js",
   "module": "simple-range-input.js",
   "umd": "simple-range-input.umd.js",

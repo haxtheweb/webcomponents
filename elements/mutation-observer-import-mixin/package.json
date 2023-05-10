@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "mutation-observer-import-mixin.js",
   "module": "mutation-observer-import-mixin.js",
   "umd": "mutation-observer-import-mixin.umd.js",

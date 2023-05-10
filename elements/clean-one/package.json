@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "clean-one.js",
   "module": "clean-one.js",
   "umd": "clean-one.umd.js",

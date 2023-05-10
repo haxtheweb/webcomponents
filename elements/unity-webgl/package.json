@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "unity-webgl.js",
   "module": "unity-webgl.js",
   "umd": "unity-webgl.umd.js",

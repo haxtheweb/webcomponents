@@ -20,6 +20,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-autocomplete.js",
   "module": "simple-autocomplete.js",
   "umd": "simple-autocomplete.umd.js",

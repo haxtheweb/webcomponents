@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "barcode-reader.js",
   "module": "barcode-reader.js",
   "umd": "barcode-reader.umd.js",

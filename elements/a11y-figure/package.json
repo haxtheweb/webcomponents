@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "a11y-figure.js",
   "module": "a11y-figure.js",
   "umd": "a11y-figure.umd.js",

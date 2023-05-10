@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "page-contents-menu.js",
   "module": "page-contents-menu.js",
   "umd": "page-contents-menu.umd.js",

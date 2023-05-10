@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "flash-card.js",
   "module": "flash-card.js",
   "umd": "flash-card.umd.js",

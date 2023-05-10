@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "star-rating.js",
   "module": "star-rating.js",
   "umd": "star-rating.umd.js",

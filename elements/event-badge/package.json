@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "event-badge.js",
   "module": "event-badge.js",
   "umd": "event-badge.umd.js",

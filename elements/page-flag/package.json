@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "page-flag.js",
   "module": "page-flag.js",
   "umd": "page-flag.umd.js",

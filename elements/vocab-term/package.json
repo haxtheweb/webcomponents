@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "vocab-term.js",
   "module": "vocab-term.js",
   "umd": "vocab-term.umd.js",

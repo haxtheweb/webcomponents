@@ -21,6 +21,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "a11y-utils.js",
   "module": "a11y-utils.js",
   "umd": "a11y-utils.umd.js",

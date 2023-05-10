@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "micro-frontend-registry.js",
   "module": "micro-frontend-registry.js",
   "umd": "micro-frontend-registry.umd.js",

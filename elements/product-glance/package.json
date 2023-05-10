@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "product-glance.js",
   "module": "product-glance.js",
   "umd": "product-glance.umd.js",

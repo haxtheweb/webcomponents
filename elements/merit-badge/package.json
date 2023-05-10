@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "merit-badge.js",
   "module": "merit-badge.js",
   "umd": "merit-badge.umd.js",

@@ -27,6 +27,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-cta.js",
   "module": "simple-cta.js",
   "umd": "simple-cta.umd.js",

@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "super-daemon.js",
   "module": "super-daemon.js",
   "umd": "super-daemon.umd.js",

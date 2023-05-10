@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "iframe-loader.js",
   "module": "iframe-loader.js",
   "umd": "iframe-loader.umd.js",

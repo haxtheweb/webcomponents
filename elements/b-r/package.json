@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "b-r.js",
   "module": "b-r.js",
   "umd": "b-r.umd.js",

@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrn-css-reset.js",
   "module": "lrn-css-reset.js",
   "umd": "lrn-css-reset.umd.js",

@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrndesign-gallery.js",
   "module": "lrndesign-gallery.js",
   "umd": "lrndesign-gallery.umd.js",

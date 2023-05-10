@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "moar-sarcasm.js",
   "module": "moar-sarcasm.js",
   "umd": "moar-sarcasm.umd.js",

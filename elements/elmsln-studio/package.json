@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "elmsln-studio.js",
   "module": "elmsln-studio.js",
   "umd": "elmsln-studio.umd.js",

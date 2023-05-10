@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "nav-card.js",
   "module": "nav-card.js",
   "umd": "nav-card.umd.js",

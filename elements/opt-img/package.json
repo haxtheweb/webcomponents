@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "opt-img.js",
   "module": "opt-img.js",
   "umd": "opt-img.umd.js",

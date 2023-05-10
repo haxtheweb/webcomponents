@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "shadow-style.js",
   "module": "shadow-style.js",
   "umd": "shadow-style.umd.js",

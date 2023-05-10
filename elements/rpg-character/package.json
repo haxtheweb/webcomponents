@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "rpg-character.js",
   "module": "rpg-character.js",
   "umd": "rpg-character.umd.js",

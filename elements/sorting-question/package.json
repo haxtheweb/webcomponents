@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "sorting-question.js",
   "module": "sorting-question.js",
   "umd": "sorting-question.umd.js",

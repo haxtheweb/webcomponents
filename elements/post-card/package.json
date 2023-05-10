@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "post-card.js",
   "module": "post-card.js",
   "umd": "post-card.umd.js",

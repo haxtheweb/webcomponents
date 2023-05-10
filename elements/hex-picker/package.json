@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "hex-picker.js",
   "module": "hex-picker.js",
   "umd": "hex-picker.umd.js",

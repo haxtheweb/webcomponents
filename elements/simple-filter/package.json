@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-filter.js",
   "module": "simple-filter.js",
   "umd": "simple-filter.umd.js",

@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lazy-image-helpers.js",
   "module": "lazy-image-helpers.js",
   "umd": "lazy-image-helpers.umd.js",

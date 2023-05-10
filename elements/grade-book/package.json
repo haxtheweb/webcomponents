@@ -26,6 +26,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "grade-book.js",
   "module": "grade-book.js",
   "umd": "grade-book.umd.js",
