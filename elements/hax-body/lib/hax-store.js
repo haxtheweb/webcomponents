@@ -3198,7 +3198,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   }
   // divert this event at haxTray
   _superDaemonInsert(e) {
-    this.haxTray._processTrayEvent(e);
+    if (SuperDaemonInstance.programTarget && e.detail.properties && (e.detail.properties.src || e.detail.properties.source)) {
+      SuperDaemonInstance.programTarget.value = e.detail.properties.src || e.detail.properties.source;
+    }
+    else {
+      this.haxTray._processTrayEvent(e);
+    }
+    SuperDaemonInstance.programTarget = null;
   }
 
   /**

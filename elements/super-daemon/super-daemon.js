@@ -33,6 +33,7 @@ class SuperDaemon extends LitElement {
       value: { type: String },
       mini: { type: Boolean },
       activeNode: { type: Object },
+      programTarget: { type: Object },
     };
   }
   /**
@@ -42,6 +43,7 @@ class SuperDaemon extends LitElement {
     super();
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
+    this.programTarget = null;
     this.activeRange = null;
     this.activeNode = null;
     // manages GLOBAL events for the whole thing

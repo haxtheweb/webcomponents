@@ -34,7 +34,8 @@
         "property": "source",
         "title": "Source",
         "description": "MP3 or file location",
-        "inputMethod": "haxupload"
+        "inputMethod": "haxupload",
+        "noCamera": true
       },
       {
         "property": "accentColor",

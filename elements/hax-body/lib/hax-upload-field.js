@@ -14,7 +14,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    */
   constructor() {
     super();
-    this.showSources = false;
+    this.showSources = true;
     this.autocomplete = "on";
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
@@ -189,6 +189,10 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
   _clickMediaButton(e) {
     SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+    // allows for diverting input back to target
+    if (this.tagName.toLowerCase() == "hax-upload-field") {
+      SuperDaemonInstance.programTarget = this;
+    }
     SuperDaemonInstance.open();
   }
 }

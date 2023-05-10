@@ -264,6 +264,7 @@ export const HaxElementizer = {
         attributes: {
           autofocus: true,
           type: "file",
+          "show-sources": true,
         },
         properties: {
           accepts: "accepts",
@@ -457,6 +458,7 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
+              "show-sources": true,
             },
             properties: {
               accepts: "accepts",
