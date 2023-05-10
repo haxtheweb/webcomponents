@@ -74,7 +74,7 @@ export default async function handler(req, res) {
         order = 0;
         // if we have no headings, then we need to treat as a single page
         if (h1s.length === 0) {
-          items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML), parentId);
+          items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML, parentId));
         }
         else {
           for await (const h1 of h1s) {
@@ -134,7 +134,7 @@ export default async function handler(req, res) {
         order = 0;
         // if we have no headings, then we need to treat as a single page
         if (els.length === 0) {
-          items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML), parentId);
+          items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML, parentId));
         }
         else {
           for await (const h1 of els) {
@@ -158,7 +158,7 @@ export default async function handler(req, res) {
       break;
       // h1 -> heading, h2 -> subheading, h3 -> sub-subheading, h4 -> sub-sub-subheading (single page import)
       case 'page':
-        items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML), parentId);
+        items.push(importSinglePage(buffer.filename.replace('.docx',''), doc.querySelector('#docx-import-wrapper').innerHTML, parentId));
       break;
     }
     res = stdResponse(res,
