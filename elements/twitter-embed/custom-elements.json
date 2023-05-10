@@ -76,50 +76,6 @@
           "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
         }
       ]
-    },
-    {
-      "name": "twitter-embed",
-      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `_haxstate` {`boolean`} - \n\n  * `no-popups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `data-width` {`string`} - \n\n  * `data-theme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweet-id` {`string`} - \n\n  * `allowPopups` {`string`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `noPopups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `dataWidth` {`string`} - \n\n  * `dataTheme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweetId` {`string`} - \n\n  * `allowPopups` {`string`} - ",
-      "attributes": [
-        {
-          "name": "_haxstate",
-          "description": "`_haxstate` {`boolean`} - \n\nProperty: _haxstate",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-popups",
-          "description": "`no-popups` {`boolean`} - \n\nProperty: noPopups",
-          "valueSet": "v"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - \n\nProperty: lang"
-        },
-        {
-          "name": "data-width",
-          "description": "`data-width` {`string`} - \n\nProperty: dataWidth\n\nDefault: 550px"
-        },
-        {
-          "name": "data-theme",
-          "description": "`data-theme` {`string`} - \n\nProperty: dataTheme\n\nDefault: light"
-        },
-        {
-          "name": "tweet",
-          "description": "`tweet` {`string`} - \n\nProperty: tweet\n\nDefault: null"
-        },
-        {
-          "name": "tweet-id",
-          "description": "`tweet-id` {`string`} - \n\nProperty: tweetId\n\nDefault: null"
-        },
-        {
-          "name": "allowPopups",
-          "description": "`allowPopups` {`string`} - \n\nProperty: allowPopups\n\nDefault: allow-popups"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

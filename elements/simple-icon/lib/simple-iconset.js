@@ -125,5 +125,8 @@ window.SimpleIconset.requestAvailability = () => {
   return window.SimpleIconset.instance;
 };
 // self request so that when this file is referenced it exists in the dom
-const SimpleIconsetStore = (typeof global !== 'undefined') ? new SimpleIconset() : window.SimpleIconset.requestAvailability();
+const SimpleIconsetStore =
+  typeof global !== "undefined"
+    ? new SimpleIconset()
+    : window.SimpleIconset.requestAvailability();
 export { SimpleIconset, SimpleIconsetStore };

@@ -1,282 +1,90 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "page-flag-comment",
-      "path": "./lib/page-flag-comment.js",
+      "description": "Events:\n\n  * `page-flag-comment-delete` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-reply` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-edit` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `edit-mode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\nProperties:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `editMode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - ",
       "attributes": [
         {
           "name": "mood",
-          "type": "string"
+          "description": "`mood` {`string`} - \n\nProperty: mood\n\nDefault: null"
         },
         {
           "name": "seed",
-          "type": "string",
-          "default": "\"abc123\""
+          "description": "`seed` {`string`} - \n\nProperty: seed\n\nDefault: abc123"
         },
         {
           "name": "timestamp",
-          "type": "number"
+          "description": "`timestamp` {`number`} - \n\nProperty: timestamp"
         },
         {
           "name": "reply",
-          "type": "number",
-          "default": "0"
+          "description": "`reply` {`number`} - \n\nProperty: reply\n\nDefault: 0"
         },
         {
           "name": "edit-mode",
-          "type": "boolean",
-          "default": "false"
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "canEdit",
-          "type": "boolean",
-          "default": "false"
+          "description": "`canEdit` {`boolean`} - \n\nProperty: canEdit\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "readOnly",
-          "type": "boolean",
-          "default": "true"
-        }
-      ],
-      "properties": [
-        {
-          "name": "mood",
-          "attribute": "mood",
-          "type": "string"
+          "description": "`readOnly` {`boolean`} - \n\nProperty: readOnly\n\nDefault: true",
+          "valueSet": "v"
         },
         {
-          "name": "seed",
-          "attribute": "seed",
-          "type": "string",
-          "default": "\"abc123\""
+          "name": "onpage-flag-comment-delete",
+          "description": "`page-flag-comment-delete` {`CustomEvent<this>`} - "
         },
         {
-          "name": "timestamp",
-          "attribute": "timestamp",
-          "type": "number"
+          "name": "onpage-flag-comment-reply",
+          "description": "`page-flag-comment-reply` {`CustomEvent<this>`} - "
         },
         {
-          "name": "reply",
-          "attribute": "reply",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "canEdit",
-          "attribute": "canEdit",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "readOnly",
-          "attribute": "readOnly",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "haxUIElement",
-          "type": "boolean",
-          "default": "true"
-        }
-      ],
-      "events": [
-        {
-          "name": "page-flag-comment-delete"
-        },
-        {
-          "name": "page-flag-comment-reply"
-        },
-        {
-          "name": "page-flag-comment-edit"
+          "name": "onpage-flag-comment-edit",
+          "description": "`page-flag-comment-edit` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "page-flag",
-      "path": "./page-flag.js",
-      "description": "`page-flag`\n`visual flag for notes about a piece of content`",
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`\n\nAttributes:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "label",
-          "description": "Label for the flag",
-          "type": "string",
-          "default": "\"note\""
+          "description": "`label` {`string`} - Label for the flag\n\nProperty: label\n\nDefault: note"
         },
         {
           "name": "opened",
-          "description": "Opened state",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - Opened state\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "show",
-          "type": "boolean",
-          "default": "false"
+          "description": "`show` {`boolean`} - \n\nProperty: show\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"cyan\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: cyan"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "Label for the flag",
-          "type": "string",
-          "default": "\"note\""
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "description": "Opened state",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "show",
-          "attribute": "show",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"cyan\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "page-flag-manager",
-      "path": "./page-flag.js",
-      "properties": [
-        {
-          "name": "activeUser"
-        },
-        {
-          "name": "allFlags",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
-    },
-    {
-      "name": "page-flag",
-      "path": "./src/page-flag.js",
-      "description": "`page-flag`\n`visual flag for notes about a piece of content`",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "Label for the flag",
-          "type": "string",
-          "default": "\"note\""
-        },
-        {
-          "name": "opened",
-          "description": "Opened state",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "show",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"cyan\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "label",
-          "attribute": "label",
-          "description": "Label for the flag",
-          "type": "string",
-          "default": "\"note\""
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "description": "Opened state",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "show",
-          "attribute": "show",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"cyan\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ]
-    },
-    {
-      "name": "page-flag-manager",
-      "path": "./src/page-flag.js",
-      "properties": [
-        {
-          "name": "activeUser"
-        },
-        {
-          "name": "allFlags",
-          "type": "never[]",
-          "default": "[]"
-        }
-      ]
+      "description": "Properties:\n\n  * `activeUser` - \n\n  * `allFlags` {`never[]`} - ",
+      "attributes": []
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

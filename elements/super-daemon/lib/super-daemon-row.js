@@ -11,7 +11,6 @@ export class SuperDaemonRow extends LitElement {
     this.icon = null;
     this.image = null;
     this.textCharacter = null;
-    this.key = null;
     this.eventName = null;
     this.more = false;
     this.showDetails = false;
@@ -37,7 +36,6 @@ export class SuperDaemonRow extends LitElement {
       textCharacter: { type: String, attribute: "text-character" },
       more: { type: Boolean },
       showDetails: { type: Boolean },
-      key: { type: String },
       eventName: { type: String, attribute: "event-name" },
       value: { type: Object },
       tags: { type: Array },
@@ -154,26 +152,6 @@ export class SuperDaemonRow extends LitElement {
         :host([mini]) .label-wrap .path {
           max-width: unset;
         }
-        .key-combo {
-          height: 64px;
-        }
-        :host([mini]) .key-combo {
-          display: none;
-        }
-        .keyboard-shortcut {
-          background-color: rgba(0, 0, 0, 0.1);
-          border-radius: 4px;
-          color: rgba(0, 0, 0, 0.7);
-          box-shadow: rgb(209 213 219) 0px -4px 0px inset,
-            rgb(0 0 0 / 40%) 0px 1px 1px;
-          display: block;
-          letter-spacing: 0px;
-          font-family: "Press Start 2P", "Trebuchet MS", "Lucida Sans Unicode",
-            "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-          padding: 6px 4px;
-          margin: 4px auto;
-          font-size: 9px;
-        }
         .more {
           --simple-icon-width: 40px;
           --simple-icon-height: 40px;
@@ -264,12 +242,6 @@ export class SuperDaemonRow extends LitElement {
     }
     return "orange";
   }
-  keyAry(key) {
-    if (key) {
-      return key.split("+");
-    }
-    return [];
-  }
   render() {
     return html`
       <button
@@ -306,11 +278,6 @@ export class SuperDaemonRow extends LitElement {
               value="${tag}"
               part="tag tag-${i}"
             ></simple-tag>`
-          )}
-        </div>
-        <div class="key-combo" part="key-combo">
-          ${this.keyAry(this.key).map(
-            (key) => html`<kbd class="keyboard-shortcut">${key}</kbd>`
           )}
         </div>
         ${this.more

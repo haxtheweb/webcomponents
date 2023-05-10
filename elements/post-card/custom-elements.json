@@ -89,44 +89,6 @@
           "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
-    },
-    {
-      "name": "post-card",
-      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `to` {`string`} - \n\n  * `from` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `photo-src` {`string`} - \n\n  * `stamp-src` {`string`} - \n\n  * `post-mark-locations` {`string`} - \n\nProperties:\n\n  * `to` {`string`} - \n\n  * `from` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `photoSrc` {`string`} - \n\n  * `stampSrc` {`string`} - \n\n  * `postMarkLocations` {`string`} - ",
-      "attributes": [
-        {
-          "name": "to",
-          "description": "`to` {`string`} - \n\nProperty: to"
-        },
-        {
-          "name": "from",
-          "description": "`from` {`string`} - \n\nProperty: from"
-        },
-        {
-          "name": "message",
-          "description": "`message` {`string`} - \n\nProperty: message"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "photo-src",
-          "description": "`photo-src` {`string`} - \n\nProperty: photoSrc\n\nDefault: href"
-        },
-        {
-          "name": "stamp-src",
-          "description": "`stamp-src` {`string`} - \n\nProperty: stampSrc\n\nDefault: href"
-        },
-        {
-          "name": "post-mark-locations",
-          "description": "`post-mark-locations` {`string`} - \n\nProperty: postMarkLocations\n\nDefault: insert - locations - here"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

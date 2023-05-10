@@ -14,20 +14,6 @@
           "description": "`dynamic-import-registry-failure` {`CustomEvent<{ tag: any; path: any; module: null; }>`} - "
         }
       ]
-    },
-    {
-      "name": "dynamic-import-registry",
-      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`\n\nEvents:\n\n  * `dynamic-import-registry-loaded` {`CustomEvent<{ tag: any; path: any; module: any; }>`} - \n\n  * `dynamic-import-registry-failure` {`CustomEvent<{ tag: any; path: any; module: null; }>`} - \n\nProperties:\n\n  * `list` - \n\n  * `__loaded` - \n\n  * `basePath` {`string`} - ",
-      "attributes": [
-        {
-          "name": "ondynamic-import-registry-loaded",
-          "description": "`dynamic-import-registry-loaded` {`CustomEvent<{ tag: any; path: any; module: any; }>`} - "
-        },
-        {
-          "name": "ondynamic-import-registry-failure",
-          "description": "`dynamic-import-registry-failure` {`CustomEvent<{ tag: any; path: any; module: null; }>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

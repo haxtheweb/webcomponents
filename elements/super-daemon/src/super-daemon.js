@@ -200,9 +200,6 @@ class SuperDaemon extends LitElement {
       if (!option.tags) {
         option.tags = [];
       }
-      if (!option.key) {
-        option.key = "";
-      }
       if (!option.path) {
         option.path = "";
       }

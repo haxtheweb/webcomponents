@@ -5,11 +5,6 @@
       "name": "fluid-type",
       "description": "`fluid-type`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": []
-    },
-    {
-      "name": "fluid-type",
-      "description": "`fluid-type`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

@@ -165,7 +165,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             color: "primaryColor",
           },
         ],
-        shortcutKey: "V",
         meta: {
           author: "HAXTheWeb core team",
           outlineDesigner: true,

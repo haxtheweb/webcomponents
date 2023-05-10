@@ -1,337 +1,70 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "check-it-out",
-      "path": "./check-it-out.js",
-      "description": "`check-it-out`\n`View codepen or stackblitz demos`",
+      "description": "`check-it-out`\n`View codepen or stackblitz demos`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `__computedSource` {`string`} - \n\n  * `label` {`string`} - \n\n  * `file-path` {`string`} - \n\n  * `modal` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `modal-title` {`string`} - \n\n  * `checked-out` {`boolean`} - \n\n  * `type` {`string`} - \n\n  * `hide-explorer` {`boolean`} - \n\n  * `ctl` {`boolean`} - \n\n  * `view` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `__computedSource` {`string`} - \n\n  * `label` {`string`} - \n\n  * `filePath` {`string`} - \n\n  * `modal` {`boolean`} - \n\n  * `typeIconObj` - \n\n  * `icon` {`string`} - \n\n  * `modalTitle` {`string`} - \n\n  * `checkedOut` {`boolean`} - \n\n  * `type` {`string`} - \n\n  * `hideExplorer` {`boolean`} - \n\n  * `ctl` {`boolean`} - \n\n  * `view` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "source",
-          "type": "string"
+          "description": "`source` {`string`} - \n\nProperty: source"
+        },
+        {
+          "name": "__computedSource",
+          "description": "`__computedSource` {`string`} - \n\nProperty: __computedSource"
         },
         {
           "name": "label",
-          "type": "string"
+          "description": "`label` {`string`} - \n\nProperty: label"
         },
         {
           "name": "file-path",
-          "type": "string"
+          "description": "`file-path` {`string`} - \n\nProperty: filePath"
         },
         {
           "name": "modal",
-          "type": "boolean"
+          "description": "`modal` {`boolean`} - \n\nProperty: modal",
+          "valueSet": "v"
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"code\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: code"
         },
         {
           "name": "modal-title",
-          "type": "string",
-          "default": "\"\""
+          "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
         },
         {
           "name": "checked-out",
-          "type": "boolean",
-          "default": "false"
+          "description": "`checked-out` {`boolean`} - \n\nProperty: checkedOut\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "type",
-          "type": "string",
-          "default": "\"\""
+          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: "
         },
         {
           "name": "hide-explorer",
-          "type": "boolean",
-          "default": "false"
+          "description": "`hide-explorer` {`boolean`} - \n\nProperty: hideExplorer\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "ctl",
-          "type": "boolean",
-          "default": "false"
+          "description": "`ctl` {`boolean`} - \n\nProperty: ctl\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "view",
-          "type": "string",
-          "default": "\"both\""
+          "description": "`view` {`string`} - \n\nProperty: view\n\nDefault: both"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "filePath",
-          "attribute": "file-path",
-          "type": "string"
-        },
-        {
-          "name": "modal",
-          "attribute": "modal",
-          "type": "boolean"
-        },
-        {
-          "name": "typeIconObj",
-          "type": "object",
-          "default": "{\"code\":\"code\",\"pdf\":\"book\",\"video\":\"av:play-arrow\"}"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"code\""
-        },
-        {
-          "name": "modalTitle",
-          "attribute": "modal-title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "checkedOut",
-          "attribute": "checked-out",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "hideExplorer",
-          "attribute": "hide-explorer",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "ctl",
-          "attribute": "ctl",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "view",
-          "attribute": "view",
-          "type": "string",
-          "default": "\"both\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        }
-      ]
-    },
-    {
-      "name": "check-it-out",
-      "path": "./src/check-it-out.js",
-      "description": "`check-it-out`\n`View codepen or stackblitz demos`",
-      "attributes": [
-        {
-          "name": "source",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "file-path",
-          "type": "string"
-        },
-        {
-          "name": "modal",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "default": "\"code\""
-        },
-        {
-          "name": "modal-title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "checked-out",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "hide-explorer",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "ctl",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "view",
-          "type": "string",
-          "default": "\"both\""
-        },
-        {
-          "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "filePath",
-          "attribute": "file-path",
-          "type": "string"
-        },
-        {
-          "name": "modal",
-          "attribute": "modal",
-          "type": "boolean"
-        },
-        {
-          "name": "typeIconObj",
-          "type": "object",
-          "default": "{\"code\":\"code\",\"pdf\":\"book\",\"video\":\"av:play-arrow\"}"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"code\""
-        },
-        {
-          "name": "modalTitle",
-          "attribute": "modal-title",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "checkedOut",
-          "attribute": "checked-out",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "hideExplorer",
-          "attribute": "hide-explorer",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "ctl",
-          "attribute": "ctl",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "view",
-          "attribute": "view",
-          "type": "string",
-          "default": "\"both\""
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

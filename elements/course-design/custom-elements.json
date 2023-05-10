@@ -157,11 +157,6 @@
           "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "course-design",
-      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`\n\n",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

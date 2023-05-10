@@ -15,21 +15,6 @@
           "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: /service/r-service"
         }
       ]
-    },
-    {
-      "name": "r-coder",
-      "description": "`r-coder`\n`R coder interface for the r-service backend.`\n\nAttributes:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - ",
-      "attributes": [
-        {
-          "name": "__connected",
-          "description": "`__connected` {`boolean`} - \n\nProperty: __connected",
-          "valueSet": "v"
-        },
-        {
-          "name": "endpoint",
-          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: /service/r-service"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

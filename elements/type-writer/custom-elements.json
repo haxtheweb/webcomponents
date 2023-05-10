@@ -48,54 +48,6 @@
           "description": "`type-writer-end` {`CustomEvent<any>`} - "
         }
       ]
-    },
-    {
-      "name": "type-writer",
-      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer\n\nEvents:\n\n  * `type-writer-end` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursor-duration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `erase-speed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursorDuration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `eraseSpeed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
-        {
-          "name": "text",
-          "description": "`text` {`string`} - \n\nProperty: text"
-        },
-        {
-          "name": "_length",
-          "description": "`_length` {`number`} - \n\nProperty: _length"
-        },
-        {
-          "name": "_oldText",
-          "description": "`_oldText` {`string`} - \n\nProperty: _oldText"
-        },
-        {
-          "name": "delay",
-          "description": "`delay` {`number`} - \n\nProperty: delay\n\nDefault: 100"
-        },
-        {
-          "name": "cursor-duration",
-          "description": "`cursor-duration` {`number`} - \n\nProperty: cursorDuration\n\nDefault: 0"
-        },
-        {
-          "name": "speed",
-          "description": "`speed` {`number`} - \n\nProperty: speed\n\nDefault: 150"
-        },
-        {
-          "name": "erase-speed",
-          "description": "`erase-speed` {`number`} - \n\nProperty: eraseSpeed\n\nDefault: 80"
-        },
-        {
-          "name": "typing",
-          "description": "`typing` {`boolean`} - \n\nProperty: typing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "elementVisible",
-          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ontype-writer-end",
-          "description": "`type-writer-end` {`CustomEvent<any>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

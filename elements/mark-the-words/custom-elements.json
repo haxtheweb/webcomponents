@@ -53,59 +53,6 @@
           "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
-    },
-    {
-      "name": "mark-the-words",
-      "description": "Attributes:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `answers` {`string`} - \n\n  * `correctAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `question` {`string`} - \n\n  * `isEnabled` {`boolean`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `_haxstate` {`boolean`} - \n\n  * `demoMode` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `missedAnswers` {`any[]`} - \n\n  * `answers` {`string`} - \n\n  * `correctAnswers` {`any[]`} - \n\n  * `wordList` {`any[]`} - \n\n  * `question` {`string`} - \n\n  * `isEnabled` {`boolean`} - \n\n  * `numberCorrect` {`number`} - \n\n  * `numberGuessed` {`number`} - \n\n  * `_haxstate` {`boolean`} - \n\n  * `demoMode` {`boolean`} - \n\n  * `t` - ",
-      "attributes": [
-        {
-          "name": "missedAnswers",
-          "description": "`missedAnswers` {`any[]`} - \n\nProperty: missedAnswers"
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`string`} - \n\nProperty: answers\n\nDefault: null"
-        },
-        {
-          "name": "correctAnswers",
-          "description": "`correctAnswers` {`any[]`} - \n\nProperty: correctAnswers\n\nDefault: "
-        },
-        {
-          "name": "wordList",
-          "description": "`wordList` {`any[]`} - \n\nProperty: wordList"
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - \n\nProperty: question\n\nDefault: Mark the words that are correct"
-        },
-        {
-          "name": "isEnabled",
-          "description": "`isEnabled` {`boolean`} - \n\nProperty: isEnabled\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "numberCorrect",
-          "description": "`numberCorrect` {`number`} - \n\nProperty: numberCorrect\n\nDefault: 0"
-        },
-        {
-          "name": "numberGuessed",
-          "description": "`numberGuessed` {`number`} - \n\nProperty: numberGuessed\n\nDefault: 0"
-        },
-        {
-          "name": "_haxstate",
-          "description": "`_haxstate` {`boolean`} - \n\nProperty: _haxstate\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "demoMode",
-          "description": "`demoMode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

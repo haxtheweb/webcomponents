@@ -23,29 +23,6 @@
           "description": "`value-changed` {`CustomEvent<this>`} - "
         }
       ]
-    },
-    {
-      "name": "barcode-reader",
-      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `scale` {`number`} - \n\n  * `value` {`string`} - \n\n  * `hideinput` {`boolean`} - \n\nProperties:\n\n  * `scale` {`number`} - \n\n  * `value` {`string`} - \n\n  * `hideinput` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "scale",
-          "description": "`scale` {`number`} - \n\nProperty: scale"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
-        },
-        {
-          "name": "hideinput",
-          "description": "`hideinput` {`boolean`} - \n\nProperty: hideinput\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<this>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

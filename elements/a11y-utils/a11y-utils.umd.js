@@ -1,12 +1,1 @@
-import { css } from "lit";
-
-export const screenreaderOnlyCSS = css`
-  .sr-only {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-`;
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("lit")):"function"==typeof define&&define.amd?define(["exports","lit"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).A11yUtils={},e.lit)}(this,(function(e,t){"use strict";var n,i,o,f=t.css(n||(i=["\n  .sr-only {\n    position: absolute;\n    left: -10000px;\n    top: auto;\n    width: 1px;\n    height: 1px;\n    overflow: hidden;\n  }\n"],o||(o=i.slice(0)),n=Object.freeze(Object.defineProperties(i,{raw:{value:Object.freeze(o)}}))));e.screenreaderOnlyCSS=f,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -14,16 +14,6 @@
     {
       "name": "page-scroll-position",
       "attributes": []
-    },
-    {
-      "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
-      "attributes": [
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

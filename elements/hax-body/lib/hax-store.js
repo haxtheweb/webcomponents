@@ -3816,9 +3816,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             SuperDaemonInstance.defineOption({
               title: gizmo.title,
               icon: gizmo.icon,
-              key: gizmo.shortcutKey
-                ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}`
-                : null,
               tags: gizmo.tags || [],
               value: {
                 value: gizmo.tag,

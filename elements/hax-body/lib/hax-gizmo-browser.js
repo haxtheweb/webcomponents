@@ -165,15 +165,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 render-tag="${gizmo.tag}"
                 slot="options"
               ></hax-element-demo>
-              ${gizmo.shortcutKey
-                ? html`<div slot="options">
-                    <kbd
-                      style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
-                "
-                      >${this.daemonKeyCombo} + ${gizmo.shortcutKey}</kbd
-                    >
-                  </div>`
-                : ``}
             </simple-popover-selection>`
           )}
         </simple-button-grid>
@@ -204,16 +195,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                         part="grid-button"
                         slot="button"
                       ></hax-tray-button>
-                      ${gizmo.shortcutKey
-                        ? html`<div slot="options">
-                            <kbd
-                              style="background-color: rgba(0, 0, 0, 0.1);border-radius: 4px;color: rgba(0, 0, 0, 0.7);box-shadow: #d1d5db 0px -4px 0px inset, rgba(0, 0, 0, 0.4) 0px 1px 1px;padding: 4px 8px;margin: 8px auto;display: block;z-index: 1;font-size: 8px;
-                "
-                              >${this.daemonKeyCombo} +
-                              ${gizmo.shortcutKey}</kbd
-                            >
-                          </div>`
-                        : ``}
                       <hax-element-demo
                         render-tag="${gizmo.tag}"
                         slot="options"

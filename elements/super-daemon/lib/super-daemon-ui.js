@@ -262,9 +262,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
             display: inline-flex !important;
             --simple-fields-font-size: 12px;
           }
-          super-daemon-row::part(key-combo) {
-            display: none;
-          }
         }
         @media screen and (max-width: 640px) {
           super-daemon-row::part(path) {
@@ -602,7 +599,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
                           .tags="${item.tags}"
                           event-name="${item.eventName}"
                           path="${item.path}"
-                          key="${item.key}"
                           ?more="${item.more && !this.mini}"
                           ?mini="${this.mini}"
                           >${item.more ? item.more : nothing}</super-daemon-row

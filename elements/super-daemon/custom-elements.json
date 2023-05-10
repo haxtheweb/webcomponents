@@ -1,752 +1,245 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "super-daemon-row",
-      "path": "./lib/super-daemon-row.js",
+      "description": "Events:\n\n  * `super-daemon-row-selected` {`CustomEvent<this>`} - \n\n  * `super-daemon-close` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `mini` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `image` {`string`} - \n\n  * `text-character` {`string`} - \n\n  * `event-name` {`string`} - \n\n  * `more` {`boolean`} - \n\n  * `showDetails` {`boolean`} - \n\n  * `value` - \n\n  * `tags` {`any[]`} - \n\n  * `active` {`boolean`} - \n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `image` {`string`} - \n\n  * `textCharacter` {`string`} - \n\n  * `eventName` {`string`} - \n\n  * `more` {`boolean`} - \n\n  * `showDetails` {`boolean`} - \n\n  * `value` - \n\n  * `tags` {`any[]`} - \n\n  * `shadowRootOptions` - \n\n  * `active` {`boolean`} - ",
       "attributes": [
         {
           "name": "mini",
-          "type": "boolean"
+          "description": "`mini` {`boolean`} - \n\nProperty: mini",
+          "valueSet": "v"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
         },
         {
           "name": "path",
-          "type": "string"
+          "description": "`path` {`string`} - \n\nProperty: path\n\nDefault: null"
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
         },
         {
           "name": "image",
-          "type": "string"
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
         },
         {
           "name": "text-character",
-          "type": "string"
-        },
-        {
-          "name": "key",
-          "type": "string"
+          "description": "`text-character` {`string`} - \n\nProperty: textCharacter\n\nDefault: null"
         },
         {
           "name": "event-name",
-          "type": "string"
+          "description": "`event-name` {`string`} - \n\nProperty: eventName\n\nDefault: null"
         },
         {
           "name": "more",
-          "type": "boolean",
-          "default": "false"
+          "description": "`more` {`boolean`} - \n\nProperty: more\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "showDetails",
-          "type": "boolean",
-          "default": "false"
+          "description": "`showDetails` {`boolean`} - \n\nProperty: showDetails\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "value",
-          "type": "object",
-          "default": "{}"
+          "description": "`value` - \n\nProperty: value\n\nDefault: [object Object]"
         },
         {
           "name": "tags",
-          "type": "array",
-          "default": "[]"
+          "description": "`tags` {`any[]`} - \n\nProperty: tags\n\nDefault: "
         },
         {
           "name": "active",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "mini",
-          "attribute": "mini",
-          "type": "boolean"
+          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
+          "name": "onsuper-daemon-row-selected",
+          "description": "`super-daemon-row-selected` {`CustomEvent<this>`} - "
         },
         {
-          "name": "path",
-          "attribute": "path",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "image",
-          "attribute": "image",
-          "type": "string"
-        },
-        {
-          "name": "textCharacter",
-          "attribute": "text-character",
-          "type": "string"
-        },
-        {
-          "name": "key",
-          "attribute": "key",
-          "type": "string"
-        },
-        {
-          "name": "eventName",
-          "attribute": "event-name",
-          "type": "string"
-        },
-        {
-          "name": "more",
-          "attribute": "more",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "showDetails",
-          "attribute": "showDetails",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "object",
-          "default": "{}"
-        },
-        {
-          "name": "tags",
-          "attribute": "tags",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "shadowRootOptions",
-          "type": "object",
-          "default": "{\"delegatesFocus\":true}"
-        },
-        {
-          "name": "active",
-          "attribute": "active",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "super-daemon-row-selected"
-        },
-        {
-          "name": "super-daemon-close"
+          "name": "onsuper-daemon-close",
+          "description": "`super-daemon-close` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "super-daemon-ui",
-      "path": "./lib/super-daemon-ui.js",
+      "description": "Events:\n\n  * `super-daemon-command-context-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `like-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `super-daemon-run-program` {`CustomEvent<boolean>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `program-search` {`string`} - \n\n  * `command-context` {`string`} - \n\n  * `program-name` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `question-tags` {`any[]`} - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `t` - \n\nProperties:\n\n  * `_defaultTextEmpty` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `programSearch` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `programName` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `icon` {`string`} - \n\n  * `questionTags` {`any[]`} - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `t` - ",
       "attributes": [
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "mini",
-          "type": "boolean",
-          "default": "false"
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "loading",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "program-search",
-          "type": "string",
-          "default": "\"\""
+          "description": "`program-search` {`string`} - \n\nProperty: programSearch\n\nDefault: "
         },
         {
           "name": "command-context",
-          "type": "string",
-          "default": "\"*\""
+          "description": "`command-context` {`string`} - \n\nProperty: commandContext\n\nDefault: *"
         },
         {
           "name": "program-name",
-          "type": "string"
+          "description": "`program-name` {`string`} - \n\nProperty: programName\n\nDefault: null"
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: hardware:keyboard-return"
         },
         {
           "name": "question-tags",
-          "type": "array",
-          "default": "[{\"value\":\"*\",\"label\":\"Show me what's possible!\"},{\"value\":\"help\",\"label\":\"I need help!\"},{\"value\":\"media\",\"label\":\"Insert media..\"},{\"value\":\"edit\",\"label\":\"Edit this page\"}]"
+          "description": "`question-tags` {`any[]`} - \n\nProperty: questionTags\n\nDefault: [object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "items",
-          "description": "These are the items to be filtered",
-          "type": "never[]",
-          "default": "[]"
+          "description": "`items` {`never[]`} - These are the items to be filtered\n\nProperty: items\n\nDefault: "
         },
         {
           "name": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
         },
         {
           "name": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string",
-          "default": "\"index\""
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: index"
         },
         {
           "name": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
         },
         {
           "name": "multi-match",
-          "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
-          "type": "boolean",
-          "default": "true"
+          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: true",
+          "valueSet": "v"
         },
         {
           "name": "t",
-          "type": "object"
-        }
-      ],
-      "properties": [
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`t` - \n\nProperty: t"
         },
         {
-          "name": "mini",
-          "attribute": "mini",
-          "type": "boolean",
-          "default": "false"
+          "name": "onsuper-daemon-command-context-changed",
+          "description": "`super-daemon-command-context-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "boolean",
-          "default": "false"
+          "name": "onlike-changed",
+          "description": "`like-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
-          "name": "programSearch",
-          "attribute": "program-search",
-          "type": "string",
-          "default": "\"\""
+          "name": "onsuper-daemon-run-program",
+          "description": "`super-daemon-run-program` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "commandContext",
-          "attribute": "command-context",
-          "type": "string",
-          "default": "\"*\""
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "programName",
-          "attribute": "program-name",
-          "type": "string"
-        },
-        {
-          "name": "shadowRootOptions",
-          "type": "object",
-          "default": "{\"delegatesFocus\":true}"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
-        },
-        {
-          "name": "questionTags",
-          "attribute": "question-tags",
-          "type": "array",
-          "default": "[{\"value\":\"*\",\"label\":\"Show me what's possible!\"},{\"value\":\"help\",\"label\":\"I need help!\"},{\"value\":\"media\",\"label\":\"Insert media..\"},{\"value\":\"edit\",\"label\":\"Edit this page\"}]"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "description": "These are the items to be filtered",
-          "type": "never[]",
-          "default": "[]"
-        },
-        {
-          "name": "like",
-          "attribute": "like",
-          "description": "Filter regular expression string",
-          "type": "string"
-        },
-        {
-          "name": "where",
-          "attribute": "where",
-          "description": "The filter-by field of your items array of objects",
-          "type": "string",
-          "default": "\"index\""
-        },
-        {
-          "name": "caseSensitive",
-          "attribute": "case-sensitive",
-          "description": "Enable case sensitivity when filtering",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "filtered",
-          "attribute": "filtered",
-          "description": "Filtered items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "multiMatch",
-          "attribute": "multi-match",
-          "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        }
-      ],
-      "events": [
-        {
-          "name": "super-daemon-command-context-changed"
-        },
-        {
-          "name": "like-changed"
-        },
-        {
-          "name": "super-daemon-run-program"
-        },
-        {
-          "name": "filter"
-        },
-        {
-          "name": "filtered-changed"
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
         }
       ]
     },
     {
       "name": "super-daemon",
-      "path": "./src/super-daemon.js",
-      "description": "`super-daemon`\n``",
+      "description": "`super-daemon`\n``\n\nEvents:\n\n  * `click` {`MouseEvent`} - \n\nAttributes:\n\n  * `key1` {`string`} - \n\n  * `program` {`string`} - \n\n  * `activeNode` - \n\n  * `value` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `context` {`any[]`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `loading` {`boolean`} - \n\n  * `like` {`string`} - \n\n  * `mini` {`boolean`} - \n\n  * `programSearch` {`string`} - \n\n  * `allItems` {`any[]`} - \n\n  * `programResults` {`any[]`} - \n\n  * `programName` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `key2` {`string`} - \n\nProperties:\n\n  * `key1` {`string`} - \n\n  * `program` {`string`} - \n\n  * `activeSelection` - \n\n  * `activeRange` - \n\n  * `activeNode` - \n\n  * `value` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `context` {`any[]`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `loading` {`boolean`} - \n\n  * `like` {`string`} - \n\n  * `mini` {`boolean`} - \n\n  * `_programValues` - \n\n  * `programSearch` {`string`} - \n\n  * `allItems` {`any[]`} - \n\n  * `programResults` {`any[]`} - \n\n  * `programName` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `key2` {`string`} - ",
       "attributes": [
         {
           "name": "key1",
-          "type": "string"
+          "description": "`key1` {`string`} - \n\nProperty: key1"
         },
         {
           "name": "program",
-          "type": "string"
+          "description": "`program` {`string`} - \n\nProperty: program"
         },
         {
           "name": "activeNode",
-          "type": "object"
+          "description": "`activeNode` - \n\nProperty: activeNode\n\nDefault: null"
         },
         {
           "name": "value",
-          "type": "string",
-          "default": "\"\""
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
         },
         {
           "name": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: hardware:keyboard-return"
         },
         {
           "name": "context",
-          "type": "array",
-          "default": "[]"
+          "description": "`context` {`any[]`} - \n\nProperty: context\n\nDefault: "
         },
         {
           "name": "opened",
-          "type": "boolean",
-          "default": "false"
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "items",
-          "type": "array",
-          "default": "[]"
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
           "name": "loading",
-          "type": "boolean",
-          "default": "false"
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "like",
-          "type": "string",
-          "default": "\"\""
+          "description": "`like` {`string`} - \n\nProperty: like\n\nDefault: "
         },
         {
           "name": "mini",
-          "type": "boolean",
-          "default": "false"
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "programSearch",
-          "type": "string",
-          "default": "\"\""
+          "description": "`programSearch` {`string`} - \n\nProperty: programSearch\n\nDefault: "
         },
         {
           "name": "allItems",
-          "type": "array",
-          "default": "[]"
+          "description": "`allItems` {`any[]`} - \n\nProperty: allItems\n\nDefault: "
         },
         {
           "name": "programResults",
-          "type": "array",
-          "default": "[]"
+          "description": "`programResults` {`any[]`} - \n\nProperty: programResults\n\nDefault: "
         },
         {
           "name": "programName",
-          "type": "string"
+          "description": "`programName` {`string`} - \n\nProperty: programName\n\nDefault: null"
         },
         {
           "name": "commandContext",
-          "type": "string",
-          "default": "\"*\""
+          "description": "`commandContext` {`string`} - \n\nProperty: commandContext\n\nDefault: *"
         },
         {
           "name": "key2",
-          "type": "string",
-          "default": "\"Shift\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "key1",
-          "attribute": "key1",
-          "type": "string"
+          "description": "`key2` {`string`} - \n\nProperty: key2\n\nDefault: Shift"
         },
         {
-          "name": "program",
-          "attribute": "program",
-          "type": "string"
-        },
-        {
-          "name": "activeSelection"
-        },
-        {
-          "name": "activeRange"
-        },
-        {
-          "name": "activeNode",
-          "attribute": "activeNode",
-          "type": "object"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
-        },
-        {
-          "name": "context",
-          "attribute": "context",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "like",
-          "attribute": "like",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "mini",
-          "attribute": "mini",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "programSearch",
-          "attribute": "programSearch",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "allItems",
-          "attribute": "allItems",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programResults",
-          "attribute": "programResults",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programName",
-          "attribute": "programName",
-          "type": "string"
-        },
-        {
-          "name": "commandContext",
-          "attribute": "commandContext",
-          "type": "string",
-          "default": "\"*\""
-        },
-        {
-          "name": "key2",
-          "attribute": "key2",
-          "type": "string",
-          "default": "\"Shift\""
-        }
-      ],
-      "events": [
-        {
-          "name": "click"
-        }
-      ]
-    },
-    {
-      "name": "super-daemon",
-      "path": "./super-daemon.js",
-      "description": "`super-daemon`\n``",
-      "attributes": [
-        {
-          "name": "key1",
-          "type": "string"
-        },
-        {
-          "name": "program",
-          "type": "string"
-        },
-        {
-          "name": "activeNode",
-          "type": "object"
-        },
-        {
-          "name": "value",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
-        },
-        {
-          "name": "context",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "loading",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "like",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "mini",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "programSearch",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "allItems",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programResults",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programName",
-          "type": "string"
-        },
-        {
-          "name": "commandContext",
-          "type": "string",
-          "default": "\"*\""
-        },
-        {
-          "name": "key2",
-          "type": "string",
-          "default": "\"Shift\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "key1",
-          "attribute": "key1",
-          "type": "string"
-        },
-        {
-          "name": "program",
-          "attribute": "program",
-          "type": "string"
-        },
-        {
-          "name": "activeSelection"
-        },
-        {
-          "name": "activeRange"
-        },
-        {
-          "name": "activeNode",
-          "attribute": "activeNode",
-          "type": "object"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string",
-          "default": "\"hardware:keyboard-return\""
-        },
-        {
-          "name": "context",
-          "attribute": "context",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "opened",
-          "attribute": "opened",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "items",
-          "attribute": "items",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "loading",
-          "attribute": "loading",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "like",
-          "attribute": "like",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "mini",
-          "attribute": "mini",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "programSearch",
-          "attribute": "programSearch",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "allItems",
-          "attribute": "allItems",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programResults",
-          "attribute": "programResults",
-          "type": "array",
-          "default": "[]"
-        },
-        {
-          "name": "programName",
-          "attribute": "programName",
-          "type": "string"
-        },
-        {
-          "name": "commandContext",
-          "attribute": "commandContext",
-          "type": "string",
-          "default": "\"*\""
-        },
-        {
-          "name": "key2",
-          "attribute": "key2",
-          "type": "string",
-          "default": "\"Shift\""
-        }
-      ],
-      "events": [
-        {
-          "name": "click"
+          "name": "onclick",
+          "description": "`click` {`MouseEvent`} - "
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

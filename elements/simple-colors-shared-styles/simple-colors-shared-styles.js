@@ -1074,4 +1074,7 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
   }
   return window.SimpleColorsSharedStyles.instance;
 };
-export const SimpleColorsSharedStylesGlobal = (typeof global !== 'undefined') ? new SimpleColorsSharedStyles() : window.SimpleColorsSharedStyles.requestAvailability();
+export const SimpleColorsSharedStylesGlobal =
+  typeof global !== "undefined"
+    ? new SimpleColorsSharedStyles()
+    : window.SimpleColorsSharedStyles.requestAvailability();

@@ -48,54 +48,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "enhanced-text",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`\n\nAttributes:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixation-point` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcms-glossary` {`boolean`} - \n\n  * `haxcms-site-location` {`string`} - \n\n  * `haxcms-site` - \n\n  * `haxcms-mark-all` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixationPoint` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcmsGlossary` {`boolean`} - \n\n  * `haxcmsSiteLocation` {`string`} - \n\n  * `haxcmsSite` - \n\n  * `haxcmsMarkAll` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fixation-point",
-          "description": "`fixation-point` {`number`} - \n\nProperty: fixationPoint\n\nDefault: 4"
-        },
-        {
-          "name": "vide",
-          "description": "`vide` {`boolean`} - \n\nProperty: vide\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "wikipedia",
-          "description": "`wikipedia` {`boolean`} - \n\nProperty: wikipedia\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "haxcms-glossary",
-          "description": "`haxcms-glossary` {`boolean`} - \n\nProperty: haxcmsGlossary\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "haxcms-site-location",
-          "description": "`haxcms-site-location` {`string`} - \n\nProperty: haxcmsSiteLocation\n\nDefault: "
-        },
-        {
-          "name": "haxcms-site",
-          "description": "`haxcms-site` - \n\nProperty: haxcmsSite\n\nDefault: null"
-        },
-        {
-          "name": "haxcms-mark-all",
-          "description": "`haxcms-mark-all` {`boolean`} - \n\nProperty: haxcmsMarkAll\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

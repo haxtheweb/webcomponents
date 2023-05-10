@@ -273,25 +273,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "simple-icon",
-      "description": "`simple-icon`\n`Render an SVG based icon`\n\nAttributes:\n\n  * `contrast` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `feFlood` {`\"\" | TemplateResult<2>`} - \n\n  * `useSafariPolyfill` {`boolean`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "contrast",
-          "description": "`contrast` {`number`} - \n\nProperty: contrast\n\nDefault: 0"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

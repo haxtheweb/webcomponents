@@ -16,22 +16,6 @@
           "values": []
         }
       ]
-    },
-    {
-      "name": "i18n-manager",
-      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`\n\nAttributes:\n\n  * `lang` {`string | null`} - \n\n  * `dir` {`string | null`} - \n\nProperties:\n\n  * `documentLang` {`string`} - Set document language from these common sources\n\n  * `documentDir` {`string`} - Set document direction from these common sources\n\n  * `fetchTargets` - \n\n  * `elements` {`never[]`} - \n\n  * `locales` {`Set<never>`} - \n\n  * `lang` {`string | null`} - \n\n  * `dir` {`string | null`} - ",
-      "attributes": [
-        {
-          "name": "lang",
-          "description": "`lang` {`string | null`} - \n\nProperty: lang\n\nDefault: documentLang",
-          "values": []
-        },
-        {
-          "name": "dir",
-          "description": "`dir` {`string | null`} - \n\nProperty: dir\n\nDefault: documentDir",
-          "values": []
-        }
-      ]
     }
   ],
   "globalAttributes": [],

@@ -746,7 +746,6 @@ export class HAXWiring {
               url: "src",
             },
           ],
-          shortcutKey: "T",
           meta: {
             author: "auto",
           },
