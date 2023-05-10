@@ -194,6 +194,7 @@ class SimpleBlogPost extends SimpleColors {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.editMode = false;
     // prettier-ignore
     import(
@@ -204,7 +205,7 @@ class SimpleBlogPost extends SimpleColors {
     super.connectedCallback();
     this.__disposer = [];
     setTimeout(() => {
-      window.addEventListener("scroll", this._scrollListener.bind(this));
+      window.addEventListener("scroll", this._scrollListener.bind(this), { signal: this.windowControllers.signal });
       autorun((reaction) => {
         const fields = toJS(store.activeItemFields);
         this.hasImage = this._computeHasImage(fields);
@@ -219,7 +220,7 @@ class SimpleBlogPost extends SimpleColors {
    * Detatched life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener("scroll", this._scrollListener.bind(this));
+    this.windowControllers.abort();
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }

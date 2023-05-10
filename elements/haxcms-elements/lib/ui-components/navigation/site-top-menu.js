@@ -22,6 +22,7 @@ class SiteTopMenu extends PolymerElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.__disposer = [];
     import("@lrnwebcomponents/simple-icon/simple-icon.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -365,22 +366,14 @@ class SiteTopMenu extends PolymerElement {
       "resize",
       () => {
         this._activeIdChanged(this.activeId);
-      },
-      true
-    );
+      }, { signal: this.windowControllers.signal });
   }
   disconnectedCallback() {
     // clean up state
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    window.removeEventListener(
-      "resize",
-      () => {
-        this._activeIdChanged(this.activeId);
-      },
-      true
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

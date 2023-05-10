@@ -56,6 +56,7 @@ class HaxTray extends I18NMixin(
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.tourName = "hax";
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
@@ -967,16 +968,18 @@ class HaxTray extends I18NMixin(
   }
   startTour() {
     this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
-    window.addEventListener("tour-changed", this._handleTourChanged.bind(this));
+    this.windowControllers = new AbortController();
+    window.addEventListener(
+      "tour-changed",
+      this._handleTourChanged.bind(this),
+      { signal: this.windowControllers.signal }
+    );
     this.__tour.startTour("hax");
   }
   stopTour() {
     this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
     this.__tour.stopTour("hax");
-    window.removeEventListener(
-      "tour-changed",
-      this._handleTourChanged.bind(this)
-    );
+    this.windowControllers.abort();
   }
   _handleTourChanged(e) {
     this.tourOpened = e.detail.active == this.tourName;

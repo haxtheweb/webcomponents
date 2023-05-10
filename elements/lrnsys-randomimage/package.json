@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/random-image": "^4.0.4",
+    "@lrnwebcomponents/random-image": "4.0.4",
     "@lrnwebcomponents/simple-tooltip": "^7.0.0",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.4.1"

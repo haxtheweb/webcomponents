@@ -54,6 +54,7 @@ class WysiwygHax extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // import child nodes before things start deleting whats in there
     let template = this.querySelector("template");
     if (template) {
@@ -210,17 +211,14 @@ class WysiwygHax extends LitElement {
     super.connectedCallback();
     window.addEventListener(
       "hax-save-body-value",
-      this._bodyContentUpdated.bind(this)
-    );
+      this._bodyContentUpdated.bind(this), { signal: this.windowControllers.signal });
+
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "hax-save-body-value",
-      this._bodyContentUpdated.bind(this)
-    );
+    this.windowControllers.abort();
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",

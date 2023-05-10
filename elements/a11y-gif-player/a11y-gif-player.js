@@ -39,6 +39,7 @@ class A11yGifPlayer extends I18NMixin(
 ) {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.__gifLoaded = false;
     this.disabled = false;
     this.__playing = false;
@@ -320,22 +321,25 @@ class A11yGifPlayer extends I18NMixin(
       childList: true,
       subtree: true,
     });
-    window.addEventListener("beforeprint", (event) => {
-      this.shadowRoot.querySelector("#longdesc").toggleOpen();
-    });
-    window.addEventListener("afterprint", (event) => {
-      this.shadowRoot.querySelector("#longdesc").toggleOpen();
-    });
+    window.addEventListener(
+      "beforeprint",
+      (event) => {
+        this.shadowRoot.querySelector("#longdesc").toggleOpen();
+      },
+      { signal: this.windowControllers.signal }
+    );
+    window.addEventListener(
+      "afterprint",
+      (event) => {
+        this.shadowRoot.querySelector("#longdesc").toggleOpen();
+      },
+      { signal: this.windowControllers.signal }
+    );
   }
   disconnectedCallback() {
-    if (super.disconnectedCallback) super.disconnectedCallback();
     this.observer.disconnect();
-    window.removeEventListener("beforeprint", (event) => {
-      this.shadowRoot.querySelector("#longdesc").toggleOpen();
-    });
-    window.removeEventListener("afterprint", (event) => {
-      this.shadowRoot.querySelector("#longdesc").toggleOpen();
-    });
+    this.windowControllers.abort();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
   /**
    * plays the animation regarless of previous state

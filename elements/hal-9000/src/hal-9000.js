@@ -111,6 +111,7 @@ class Hal9000 extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.commands = {};
     this.respondsTo = "(hal)";
     this.debug = false;
@@ -125,7 +126,8 @@ class Hal9000 extends LitElement {
     }`;
     window.addEventListener(
       "es-bridge-annyang-loaded",
-      this._annyangLoaded.bind(this)
+      this._annyangLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
@@ -276,10 +278,7 @@ class Hal9000 extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-annyang-loaded",
-      this._annyangLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

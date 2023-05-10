@@ -24,11 +24,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     window.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
     this.applyContext();
     window.addEventListener(
       "haxcms-site-editor-loaded",
-      this.editorLoaded.bind(this)
+      this.editorLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   connectedCallback() {
@@ -45,10 +47,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
     );
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-site-editor-loaded",
-      this.editorLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

@@ -46,7 +46,7 @@
     },
     {
       "name": "responsive-utility",
-      "description": "Properties:\n\n  * `details` {`never[]`} - ",
+      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `details` {`never[]`} - ",
       "attributes": []
     }
   ],

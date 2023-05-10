@@ -71,6 +71,7 @@ class AbsolutePositionStateManager extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.elements = [];
     this.__timeout = false;
     this.__observer = new MutationObserver((mutations) =>
@@ -92,8 +93,13 @@ class AbsolutePositionStateManager extends LitElement {
         characterData: true,
       });
       this.updateElements();
-      document.addEventListener("load", this.updateElements);
-      window.addEventListener("resize", this._handleResize);
+      this.windowControllers = new AbortController();
+      document.addEventListener("load", this.updateElements.bind(this), {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("resize", this._handleResize.bind(this), {
+        signal: this.windowControllers.signal,
+      });
     }
     if (this.elements.filter((element) => element === el).length < 1) {
       this.elements.push(el);
@@ -204,8 +210,7 @@ class AbsolutePositionStateManager extends LitElement {
   removeEventListeners() {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
-    document.removeEventListener("load", this.updateElements);
-    window.removeEventListener("resize", this._handleResize);
+    this.windowControllers.abort();
     if (this.__watchSticky)
       this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }

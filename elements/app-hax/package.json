@@ -73,11 +73,11 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/grid-plate": "^4.1.0",
+    "@lrnwebcomponents/grid-plate": "^7.0.0",
     "@lrnwebcomponents/h-a-x": "^7.0.0",
     "@lrnwebcomponents/meme-maker": "^7.0.0",
     "@lrnwebcomponents/multiple-choice": "^7.0.0",
-    "@lrnwebcomponents/replace-tag": "^4.0.25",
+    "@lrnwebcomponents/replace-tag": "^7.0.0",
     "@lrnwebcomponents/retro-card": "^7.0.0",
     "@lrnwebcomponents/self-check": "^7.0.0",
     "@lrnwebcomponents/wikipedia-query": "^7.0.0",

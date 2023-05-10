@@ -56,6 +56,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.SimpleColors = new SimpleColorsPolymer();
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
@@ -1311,9 +1312,10 @@ class HAXCMSSiteListing extends PolymerElement {
     super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
     window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
-    window.addEventListener("jwt-token", this.updateJwt.bind(this));
+      this._tokenRefreshFailed.bind(this), { signal: this.windowControllers.signal });
+
+    window.addEventListener("jwt-token", this.updateJwt.bind(this), { signal: this.windowControllers.signal });
+
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
       this.shadowRoot.querySelector("#newsnap").style.display = "none";
@@ -1332,8 +1334,8 @@ class HAXCMSSiteListing extends PolymerElement {
 
     window.addEventListener(
       "sites-listing-refresh-data",
-      this.refreshData.bind(this)
-    );
+      this.refreshData.bind(this), { signal: this.windowControllers.signal });
+
     setTimeout(() => {
       /**
        * These are our bad actors in polyfill'ed browsers.
@@ -1403,8 +1405,8 @@ class HAXCMSSiteListing extends PolymerElement {
 
       document.body.addEventListener(
         "haxcms-load-site",
-        this.loadActiveSite.bind(this)
-      );
+        this.loadActiveSite.bind(this), { signal: this.windowControllers.signal });
+
       this.permissionsListen();
       this.shadowRoot.querySelector("#snap").addEventListener("click", () => {
         this.dispatchEvent(
@@ -1434,10 +1436,12 @@ class HAXCMSSiteListing extends PolymerElement {
   permissionsListen() {
     window.addEventListener("simple-login-camera-icon-click", async () => {
       await this.snapPhoto();
-    });
+    }, { signal: this.windowControllers.signal });
+
     window.addEventListener("simple-login-cancel-icon-click", async () => {
       await this.clearPhoto();
-    });
+    }, { signal: this.windowControllers.signal });
+
   }
 
   async snapPhoto(e) {
@@ -1612,19 +1616,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
-    window.removeEventListener("jwt-token", this.updateJwt.bind(this));
-    window.removeEventListener(
-      "sites-listing-refresh-data",
-      this.refreshData.bind(this)
-    );
-    document.body.removeEventListener(
-      "haxcms-load-site",
-      this.loadActiveSite.bind(this)
-    );
+    this.windowControllers.abort();
     this.removeEventListener(
       "simple-login-login",
       this.loginPromptEvent.bind(this)

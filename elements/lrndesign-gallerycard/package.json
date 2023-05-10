@@ -44,7 +44,6 @@
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^7.0.0",
     "@lrnwebcomponents/lrndesign-avatar": "^7.0.0",
-    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^7.0.0",
     "@polymer/polymer": "^3.4.1"
   },

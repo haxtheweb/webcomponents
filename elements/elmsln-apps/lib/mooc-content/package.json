@@ -3,14 +3,6 @@
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-book.html",
-  "dependencies": {
-    "@polymer/polymer": "^3.2.0",
-    "@polymer/iron-ajax": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.8",
-    "@polymer/app-layout": "^3.0.2",
-    "@polymer/paper-styles": "^3.0.0",
-    "@polymer/app-route": "^3.0.0",
-    "@polymer/paper-slider": "^3.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

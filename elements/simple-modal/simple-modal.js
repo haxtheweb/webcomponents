@@ -316,6 +316,7 @@ class SimpleModal extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.title = "";
     this.opened = false;
     this.closeLabel = "Close";
@@ -340,16 +341,20 @@ class SimpleModal extends LitElement {
     this.close = this.close.bind(this);
     this.showEvent = this.showEvent.bind(this);
     setTimeout(() => {
-      window.addEventListener("simple-modal-hide", this.close);
-      window.addEventListener("simple-modal-show", this.showEvent);
+      window.addEventListener("simple-modal-hide", this.close, {
+        signal: this.windowControllers.signal,
+      });
+
+      window.addEventListener("simple-modal-show", this.showEvent, {
+        signal: this.windowControllers.signal,
+      });
     }, 0);
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener("simple-modal-hide", this.close);
-    window.removeEventListener("simple-modal-show", this.showEvent);
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

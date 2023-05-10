@@ -3,6 +3,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 class QRCodeElement extends HTMLElement {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // method bindings
     this._defineProperty = this._defineProperty.bind(this);
     // Shadow DOM
@@ -10,14 +11,13 @@ class QRCodeElement extends HTMLElement {
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
     const location = new URL("./qr.js", import.meta.url).href;
-    window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this));
+    window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     window.ESGlobalBridge.requestAvailability().load("qr", location);
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      `es-bridge-qr-loaded`,
-      this._qrLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

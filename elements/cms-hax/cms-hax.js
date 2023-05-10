@@ -253,21 +253,13 @@ class CmsHax extends LitElement {
         this.elementAlign
       );
       this.__applyMO();
-      window.removeEventListener(
-        "hax-store-ready",
-        this._storeReady.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersReady.abort();
     }, 0);
   }
   _appstoreLoaded(e) {
     setTimeout(() => {
       this.ready = true;
-      window.removeEventListener(
-        "hax-store-app-store-loaded",
-        this._appstoreLoaded.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersLoaded.abort();
     }, 0);
   }
   /**
@@ -275,18 +267,30 @@ class CmsHax extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
+    this.windowControllersReady = new AbortController();
+    this.windowControllersLoaded = new AbortController();
+
     this.ready = false;
     window.addEventListener("hax-store-ready", this._storeReady.bind(this), {
       once: true,
       passive: true,
+      signal: this.windowControllersReady.signal,
     });
+
     window.addEventListener(
       "hax-store-app-store-loaded",
       this._appstoreLoaded.bind(this),
-      { once: true, passive: true }
+      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
     );
-    window.addEventListener("hax-save-body-value", this._saveFired.bind(this));
-    window.addEventListener("hax-cancel", this._cancelFired.bind(this));
+    window.addEventListener("hax-save-body-value", this._saveFired.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener("hax-cancel", this._cancelFired.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     this.__lock = false;
     this.endPoint = null;
     this.openDefault = false;
@@ -349,6 +353,7 @@ class CmsHax extends LitElement {
       this._observer.disconnect();
       this._observer = null;
     }
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 

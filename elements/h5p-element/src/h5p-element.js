@@ -93,6 +93,7 @@ class H5PElement extends LitElement {
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
+    this.windowControllers = new AbortController();
     const basePath = new URL("./lib/", import.meta.url).href;
     this.h5pJSDeps = [
       basePath + "h5p-resizer.js",
@@ -112,11 +113,13 @@ class H5PElement extends LitElement {
     );
     window.addEventListener(
       "es-bridge-h5p-jquery-loaded",
-      this.h5pJqueryReady.bind(this)
+      this.h5pJqueryReady.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.addEventListener(
       "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
-      this.h5pReadyCallback.bind(this)
+      this.h5pReadyCallback.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   generateUUID() {
@@ -217,14 +220,7 @@ class H5PElement extends LitElement {
    * life cycle, element removed from DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
-      this.h5pReadyCallback.bind(this)
-    );
-    window.removeEventListener(
-      "es-bridge-h5p-jquery-loaded",
-      this.h5pJqueryReady.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

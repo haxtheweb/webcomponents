@@ -457,6 +457,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
@@ -491,18 +492,28 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }
       }
     }
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     window.addEventListener(
       "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
+      this._triggerUpdatedData.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
+      this._triggerUpdatedNode.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle);
+      .addEventListener("change", darkToggle, {
+        signal: this.windowControllers.signal,
+      });
+
     autorun(() => {
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
       if (toJS(store.darkMode)) {
@@ -614,18 +625,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
-    window.removeEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
-    );
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .removeEventListener("change", darkToggle);
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   storeReady(e) {

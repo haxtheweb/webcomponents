@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "data-viz",
-      "description": "`data-viz`\n`display pouch-db data using graphs`\n\n",
+      "description": "`data-viz`\n`display pouch-db data using graphs`\n\nProperties:\n\n  * `windowControllers` - ",
       "attributes": []
     }
   ],

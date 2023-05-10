@@ -23,6 +23,10 @@ class SiteOutlineBlock extends PolymerElement {
   static get tag() {
     return "site-outline-block";
   }
+  constructor() {
+    super();
+    this.windowControllers = new AbortController();
+  }
   // render function
   static get template() {
     return html`
@@ -279,9 +283,8 @@ class SiteOutlineBlock extends PolymerElement {
       "resize",
       () => {
         this._activeIdChanged(this.activeId);
-      },
-      true
-    );
+      }, { signal: this.windowControllers.signal });
+
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -289,13 +292,7 @@ class SiteOutlineBlock extends PolymerElement {
     if (this.__disposer2) {
       this.__disposer2();
     }
-    window.removeEventListener(
-      "resize",
-      () => {
-        this._activeIdChanged(this.activeId);
-      },
-      true
-    );
+    this.windowControllers.abort();
   }
 }
 customElements.define(SiteOutlineBlock.tag, SiteOutlineBlock);

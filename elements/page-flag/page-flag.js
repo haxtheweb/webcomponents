@@ -266,20 +266,19 @@ export class pageFlagManagerEl extends HTMLElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.activeUser = null;
     this.allFlags = [];
   }
   connectedCallback() {
     window.addEventListener(
       "haxcms-user-data-updated",
-      this.userDataUpdated.bind(this)
+      this.userDataUpdated.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-user-data-updated",
-      this.userDataUpdated.bind(this)
-    );
+    this.windowControllers.abort();
   }
   userDataUpdated(e) {
     this.activeUser = e.detail.userName;

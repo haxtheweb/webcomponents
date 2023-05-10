@@ -43,8 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/haxcms-elements": "^7.0.0",
-    "@lrnwebcomponents/simple-colors": "^7.0.0",
-    "@polymer/polymer": "^3.3.1"
+    "@lrnwebcomponents/simple-colors": "^7.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",

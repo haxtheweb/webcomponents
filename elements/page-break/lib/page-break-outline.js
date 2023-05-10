@@ -4,6 +4,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 export class PageBreakOutline extends HTMLElement {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.target = null;
     this.selector = null;
     this.div = document.createElement("div");
@@ -29,14 +30,16 @@ export class PageBreakOutline extends HTMLElement {
   }
   connectedCallback() {
     setTimeout(() => {
-      window.addEventListener("page-break-change", this.rerender.bind(this));
+      window.addEventListener("page-break-change", this.rerender.bind(this), {
+        signal: this.windowControllers.signal,
+      });
     }, 0);
     // render on initial paint
     this.render(this.div);
   }
 
   disconnectedCallback() {
-    window.removeEventListener("page-break-change", this.rerender.bind(this));
+    this.windowControllers.abort();
   }
   clickHandler(e) {
     var target = normalizeEventPath(e)[0];

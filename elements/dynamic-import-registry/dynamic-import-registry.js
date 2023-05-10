@@ -28,6 +28,7 @@ class DynamicImportRegistry extends HTMLElement {
   }
   constructor(delayRender = false) {
     super();
+    this.windowControllers = new AbortController();
     // object for tracking what the registry is
     this.list = {};
     this.__loaded = {};
@@ -41,14 +42,12 @@ class DynamicImportRegistry extends HTMLElement {
   connectedCallback() {
     window.addEventListener(
       "dynamic-import-registry--register",
-      this.registerDefinitionEvent.bind(this)
+      this.registerDefinitionEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "dynamic-import-registry--register",
-      this.registerDefinitionEvent.bind(this)
-    );
+    this.windowControllers.abort();
   }
   register(item) {
     // validate with basic test

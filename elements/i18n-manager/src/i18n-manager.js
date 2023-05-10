@@ -27,6 +27,7 @@ class I18NManager extends HTMLElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // fetch caching to reduce calls for json files
     this.fetchTargets = {};
     // reference to all elements that care about localization
@@ -69,25 +70,21 @@ class I18NManager extends HTMLElement {
     this.__ready = true;
     window.addEventListener(
       "i18n-manager-register-element",
-      this.registerLocalizationEvent.bind(this)
+      this.registerLocalizationEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "languagechange",
-      this.changeLanguageEvent.bind(this)
+      this.changeLanguageEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * Life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "i18n-manager-register-element",
-      this.registerLocalizationEvent.bind(this)
-    );
-    window.removeEventListener(
-      "languagechange",
-      this.changeLanguageEvent.bind(this)
-    );
+    this.windowControllers.abort();
   }
   /**
    * Browser level languagechange event

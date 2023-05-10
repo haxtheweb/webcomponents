@@ -846,6 +846,7 @@ export const HAXElement = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       this.HAXWiring = new HAXWiring();
     }
     static get properties() {
@@ -877,8 +878,10 @@ export const HAXElement = function (SuperClass) {
         // slow load environment, set listener and hold off of processing
         window.addEventListener(
           "hax-store-ready",
-          this._haxStoreReady.bind(this)
+          this._haxStoreReady.bind(this),
+          { signal: this.windowControllers.signal }
         );
+
         return this.HAXWiring.setHaxProperties(props, tag, context, false);
       }
     }
@@ -886,10 +889,7 @@ export const HAXElement = function (SuperClass) {
      * Clean up
      */
     disconnectedCallback() {
-      window.removeEventListener(
-        "hax-store-ready",
-        this._haxStoreReady.bind(this)
-      );
+      this.windowControllers.abort();
       if (super.disconnectedCallback) {
         super.disconnectedCallback();
       }

@@ -595,6 +595,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.sourceType = "";
     this.crossorigin = "anonymous";
     this.dark = false;
@@ -634,10 +635,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   disconnectedCallback() {
     if (this.__setVisChange) {
       this.__setVisChange = false;
-      document.removeEventListener(
-        "visibilitychange",
-        this._visChange.bind(this)
-      );
+      this.windowControllers.abort();
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
@@ -979,19 +977,18 @@ class VideoPlayer extends IntersectionObserverMixin(
         this.__setVisChange
       ) {
         this.__setVisChange = false;
-        document.removeEventListener(
-          "visibilitychange",
-          this._visChange.bind(this)
-        );
+        this.windowControllers.abort();
       } else if (
         propName === "allowBackgroundPlay" &&
         !this[propName] &&
         !this.__setVisChange
       ) {
         this.__setVisChange = true;
+        this.windowControllers = new AbortController();
         document.addEventListener(
           "visibilitychange",
-          this._visChange.bind(this)
+          this._visChange.bind(this),
+          { signal: this.windowControllers.signal }
         );
       }
     });

@@ -331,6 +331,9 @@ class HAX extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
+    this.windowControllers = new AbortController();
+    this.windowControllersLoaded = new AbortController();
+    this.windowControllersReady = new AbortController();
     this.__rendered = false;
     // set tag for later use
     this.tag = HAX.tag;
@@ -344,15 +347,21 @@ class HAX extends HTMLElement {
     window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
       once: true,
       passive: true,
+      signal: this.windowControllersReady.signal,
     });
+
     window.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
-      { once: true, passive: true }
+      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
     );
     // map events from tray
-    window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
-    window.addEventListener("hax-save", this.saveEvent.bind(this));
+    window.addEventListener("hax-cancel", this.cancelEvent.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("hax-save", this.saveEvent.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   cancelEvent(e) {
     this.importSlotToHaxBody();
@@ -408,11 +417,7 @@ class HAX extends HTMLElement {
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.elementAlign = this.elementAlign;
       }, 0);
-      window.removeEventListener(
-        "hax-store-ready",
-        this.storeReady.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersReady.abort();
     }
   }
   // import into the active body if there's content
@@ -439,11 +444,7 @@ class HAX extends HTMLElement {
   appStoreReady(e) {
     if (e.detail) {
       this.importSlotToHaxBody();
-      window.removeEventListener(
-        "hax-store-app-store-loaded",
-        this.appStoreReady.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersLoaded.abort();
     }
   }
   render() {
@@ -477,17 +478,7 @@ class HAX extends HTMLElement {
     return true;
   }
   disconnectedCallback() {
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this), {
-      once: true,
-      passive: true,
-    });
-    window.removeEventListener(
-      "hax-store-app-store-loaded",
-      this.appStoreReady.bind(this),
-      { once: true, passive: true }
-    );
-    window.removeEventListener("hax-cancel", this.cancelEvent.bind(this));
-    window.removeEventListener("hax-save", this.saveEvent.bind(this));
+    this.windowControllers.abort();
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

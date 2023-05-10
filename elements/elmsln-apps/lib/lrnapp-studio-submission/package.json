@@ -3,11 +3,6 @@
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-studio-submission.html",
-  "dependencies": {
-    "@polymer/polymer": "^3.2.0",
-    "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/paper-tabs": "^3.0.0",
-    "@polymer/iron-pages": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

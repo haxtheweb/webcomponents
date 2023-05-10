@@ -43,6 +43,7 @@ export class AppHaxSteps extends SimpleColors {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.nameTyped = "";
     this.stepRoutes = [];
     this._progressReady = false;
@@ -477,13 +478,12 @@ export class AppHaxSteps extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this.maintainScroll.bind(this));
-    window.addEventListener("popstate", this.popstateListener.bind(this));
+    window.addEventListener("resize", this.maintainScroll.bind(this), { signal: this.windowControllers.signal });
+    window.addEventListener("popstate", this.popstateListener.bind(this), { signal: this.windowControllers.signal });
   }
 
   disconnectedCallback() {
-    window.removeEventListener("resize", this.maintainScroll.bind(this));
-    window.removeEventListener("popstate", this.popstateListener.bind(this));
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 

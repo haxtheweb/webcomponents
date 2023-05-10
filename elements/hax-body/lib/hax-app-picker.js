@@ -19,17 +19,17 @@ class HaxAppPicker extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.title = "Select an option";
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("simple-modal-show", this.modalToggle.bind(this));
+    window.addEventListener("simple-modal-show", this.modalToggle.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "simple-modal-show",
-      this.modalToggle.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

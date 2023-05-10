@@ -84,28 +84,24 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
     super.connectedCallback();
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle);
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+      .addEventListener("change", darkToggle, { signal: this.windowControllers.signal });
+      ;
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), { signal: this.windowControllers.signal });
+
     window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
+      this._tokenRefreshFailed.bind(this), { signal: this.windowControllers.signal });
+
   }
 
   disconnectedCallback() {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .removeEventListener("change", darkToggle);
-    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
-    window.removeEventListener(
-      "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;
     this.__tour.registerNewTour({
       key: "hax",

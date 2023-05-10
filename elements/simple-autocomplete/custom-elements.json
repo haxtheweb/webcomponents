@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "simple-autocomplete-text-trigger",
-      "description": "Attributes:\n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - \n\nProperties:\n\n  * `haxUIElement` {`boolean`} - \n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - ",
+      "description": "Attributes:\n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - ",
       "attributes": [
         {
           "name": "target",

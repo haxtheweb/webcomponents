@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `windowControllers` - \n\n  * `imageBg` {`string`} - Image\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "described-by",

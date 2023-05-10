@@ -340,6 +340,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
+
     this.HAXWiring = new HAXWiring();
   }
   connectedCallback() {
@@ -351,14 +353,13 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     window.addEventListener(
       "hax-store-ready",
       this._fireDefinitions.bind(this)
-    );
+      , { signal: this.windowControllers.signal });
+
   }
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener(
-      "hax-store-ready",
-      this._fireDefinitions.bind(this)
-    );
+    this.windowControllers.abort();
+
   }
 }
 customElements.define(HAXCMSThemeDeveloper.tag, HAXCMSThemeDeveloper);

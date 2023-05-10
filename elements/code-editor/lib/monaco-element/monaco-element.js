@@ -33,6 +33,7 @@ class MonacoElement extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.iframe = null;
     this.value = "";
     this.fontSize = 16;
@@ -170,15 +171,18 @@ class MonacoElement extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     if (!this.__init) this.initIFrame();
-    window.addEventListener("message", (message) => {
-      this.handleMessage(message);
-    });
+    window.addEventListener(
+      "message",
+      (message) => {
+        this.handleMessage(message);
+      },
+      { signal: this.windowControllers.signal }
+    );
   }
 
   disconnectedCallback() {
-    window.removeEventListener("message", (message) => {
-      this.handleMessage(message);
-    });
+    this.windowControllers.abort();
+
     this.__init = false;
     super.disconnectedCallback();
   }

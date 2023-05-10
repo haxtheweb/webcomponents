@@ -359,6 +359,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.rpgHat = "none";
     this.darkMode = false;
     this.__settingsText = "";
@@ -390,7 +391,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         for what you thought you would see here!`;
     };
     SuperDaemonInstance.appendContext("CMS");
-    window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this));
+    window.addEventListener("hax-store-ready", this.haxStoreReady.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     if (HAXStore.ready) {
       let s = document.createElement("site-remote-content");
       HAXStore.haxAutoloader.appendChild(s);
@@ -1334,7 +1338,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     autorun((reaction) => {
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
@@ -1374,12 +1381,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
-    window.removeEventListener(
-      "hax-store-ready",
-      this.haxStoreReady.bind(this)
-    );
-
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   _dashboardOpenedChanged(newValue) {

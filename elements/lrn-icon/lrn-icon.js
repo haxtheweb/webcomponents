@@ -184,14 +184,13 @@ class LrnIcon extends PolymerElement {
         this._iconset = this._meta.byKey(this._iconsetName);
         if (this._iconset) {
           this._iconset.applyIcon(this, this._iconName, this.theme);
-          window.removeEventListener(
-            "lrn-iconset-added",
-            this._updateIcon.bind(this)
-          );
+          this.windowControllers.abort();
         } else {
+          this.windowControllers = new AbortController();
           window.addEventListener(
             "lrn-iconset-added",
-            this._updateIcon.bind(this)
+            this._updateIcon.bind(this),
+            { signal: this.windowControllers.signal }
           );
         }
       }

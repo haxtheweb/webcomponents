@@ -44,7 +44,10 @@ class SuperDaemon extends LitElement {
     this.activeSelection = null;
     this.activeRange = null;
     this.activeNode = null;
-
+    // manages GLOBAL events for the whole thing
+    this.windowControllers = new AbortController();
+    // this one is specific to mini mode management
+    this.windowControllers2 = new AbortController();
     this.value = "";
     this.icon = "hardware:keyboard-return";
     this.context = [];
@@ -70,47 +73,38 @@ class SuperDaemon extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("keydown", this.keyHandler.bind(this));
+    window.addEventListener("keydown", this.keyHandler.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     window.addEventListener(
       "super-daemon-define-option",
-      this.defineOptionEvent.bind(this)
+      this.defineOptionEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "super-daemon-element-method",
-      this.elementMethod.bind(this)
+      this.elementMethod.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "super-daemon-element-click",
-      this.elementClick.bind(this)
+      this.elementClick.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "super-daemon-run-program",
-      this.runProgramEvent.bind(this)
+      this.runProgramEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   disconnectedCallback() {
-    super.connectedCallback();
-    window.removeEventListener("keydown", this.keyHandler.bind(this));
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
-      once: true,
-      passive: true,
-    });
-    window.removeEventListener(
-      "super-daemon-define-option",
-      this.defineOptionEvent.bind(this)
-    );
-    window.removeEventListener(
-      "super-daemon-element-method",
-      this.elementMethod.bind(this)
-    );
-    window.removeEventListener(
-      "super-daemon-element-click",
-      this.elementClick.bind(this)
-    );
-    window.removeEventListener(
-      "super-daemon-run-program",
-      this.runProgramEvent.bind(this)
-    );
+    this.windowControllers.abort();
+    this.windowControllers2.abort();
+    super.disconnectedCallback();
   }
   // reset to filter for a specific term with something like runProgram('*',null,null,null, "Insert Blocks");
   // Run wikipedia search with runProgram('/',{method},'Wikipedia','Drupal');
@@ -376,10 +370,7 @@ class SuperDaemon extends LitElement {
       cancelable: true,
     });
     document.dispatchEvent(event);
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
-      once: true,
-      passive: true,
-    });
+    this.windowControllers2.abort();
     if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
@@ -486,16 +477,15 @@ class SuperDaemon extends LitElement {
           .shadowRoot.querySelector("#backdrop").style.right = 0;
       }
     }
-    window.removeEventListener("click", this.clickOnMiniMode.bind(this), {
-      once: true,
-      passive: true,
-    });
+    this.windowControllers2.abort();
     setTimeout(() => {
       // ensure if we click away from the UI that we close and clean up
       if (this.mini) {
+        this.windowControllers2 = new AbortController();
         window.addEventListener("click", this.clickOnMiniMode.bind(this), {
           once: true,
           passive: true,
+          signal: this.windowControllers2.signal,
         });
       }
       this.shadowRoot

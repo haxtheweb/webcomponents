@@ -3,12 +3,12 @@
   "tags": [
     {
       "name": "page-break-manager",
-      "description": "Properties:\n\n  * `target` - \n\n  * `breaks` {`never[]`} - \n\n  * `_timer` {`number`} - ",
+      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `target` - \n\n  * `breaks` {`never[]`} - \n\n  * `_timer` {`number`} - ",
       "attributes": []
     },
     {
       "name": "page-break-outline",
-      "description": "Attributes:\n\n  * `selector` - \n\n  * `base-path` {} - \n\nProperties:\n\n  * `target` - \n\n  * `selector` - \n\n  * `div` - \n\n  * `basePath` {`string`} - ",
+      "description": "Attributes:\n\n  * `selector` - \n\n  * `base-path` {} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `target` - \n\n  * `selector` - \n\n  * `div` - \n\n  * `basePath` {`string`} - ",
       "attributes": [
         {
           "name": "selector",

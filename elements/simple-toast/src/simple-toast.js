@@ -156,31 +156,29 @@ class SimpleToast extends SimpleColors {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.setDefaultToast();
   }
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
       "simple-toast-hide",
-      this.hideSimpleToast.bind(this)
+      this.hideSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "simple-toast-show",
-      this.showSimpleToast.bind(this)
+      this.showSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "simple-toast-hide",
-      this.hideSimpleToast.bind(this)
-    );
-    window.removeEventListener(
-      "simple-toast-show",
-      this.showSimpleToast.bind(this)
-    );
+    this.windowControllers.abort();
+
     super.disconnectedCallback();
   }
   /**

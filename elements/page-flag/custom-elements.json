@@ -81,7 +81,7 @@
     },
     {
       "name": "page-flag-manager",
-      "description": "Properties:\n\n  * `activeUser` - \n\n  * `allFlags` {`never[]`} - ",
+      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `activeUser` - \n\n  * `allFlags` {`never[]`} - ",
       "attributes": []
     }
   ],

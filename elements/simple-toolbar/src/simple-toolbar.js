@@ -321,6 +321,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     // life cycle
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       this.collapsed = true;
       this.collapseDisabled = false;
       this.config = [];
@@ -351,7 +352,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       if (this.collapsed) {
-        window.addEventListener("resize", this._handleResize);
+        window.addEventListener("resize", this._handleResize, {
+          signal: this.windowControllers.signal,
+        });
       }
       this.addEventListener("keypress", this._handleShortcutKeys);
     }
@@ -361,7 +364,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       if (this.collapsed) {
-        window.removeEventListener("resize", this._handleResize);
+        this.windowControllers.abort();
       }
       this.removeEventListener("keypress", this._handleShortcutKeys);
       super.disconnectedCallback();
@@ -383,9 +386,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "collapsed") {
           if (this.collapsed) {
             this.resizeToolbar();
-            window.addEventListener("resize", this._handleResize);
+            this.windowControllers = new AbortController();
+            window.addEventListener("resize", this._handleResize, {
+              signal: this.windowControllers.signal,
+            });
           } else {
-            window.removeEventListener("resize", this._handleResize);
+            this.windowControllers.abort();
           }
         }
         if (propName === "hidden")

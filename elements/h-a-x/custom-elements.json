@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "h-a-x",
-      "description": "`h-a-x`\n\nEvents:\n\n  * `hax-save-body-value` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `element-align` {} - \n\n  * `offset-margin` {} - \n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `elementAlign` {`string | null`} - \n\n  * `offsetMargin` {`string | null`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `__rendered` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "description": "`h-a-x`\n\nEvents:\n\n  * `hax-save-body-value` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `element-align` {} - \n\n  * `offset-margin` {} - \n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `elementAlign` {`string | null`} - \n\n  * `offsetMargin` {`string | null`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `windowControllers` - \n\n  * `windowControllersLoaded` - \n\n  * `windowControllersReady` - \n\n  * `__rendered` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "element-align",

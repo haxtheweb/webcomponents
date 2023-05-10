@@ -44,7 +44,6 @@
   "dependencies": {
     "@lrnwebcomponents/exif-data": "^7.0.0",
     "@lrnwebcomponents/img-pan-zoom": "^7.0.0",
-    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "@lrnwebcomponents/simple-icon": "^7.0.0",
     "lit": "^2.7.2"
   },

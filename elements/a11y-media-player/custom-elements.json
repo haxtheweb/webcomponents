@@ -459,7 +459,7 @@
     },
     {
       "name": "a11y-media-state-manager",
-      "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.\n\nAttributes:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\nProperties:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `observer` - active player observer\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\n  * `__stickyManager` - \n\n  * `__fullscreenManager` - \n\n  * `__playerLoader` - ",
+      "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.\n\nAttributes:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\nProperties:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `observer` - active player observer\n\n  * `windowControllers` - \n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\n  * `__stickyManager` - \n\n  * `__fullscreenManager` - \n\n  * `__playerLoader` - ",
       "attributes": [
         {
           "name": "activePlayer",

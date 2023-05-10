@@ -12,6 +12,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.t = this.t || {};
     this.t.newPageAdded = "New page added";
     this.t.newPage = "Page";
@@ -76,15 +77,13 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     super.connectedCallback();
     window.addEventListener(
       "haxcms-create-node-success",
-      this.HAXCMSButtonClickResponse.bind(this)
-    );
+      this.HAXCMSButtonClickResponse.bind(this), { signal: this.windowControllers.signal });
+
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-create-node-success",
-      this.HAXCMSButtonClickResponse.bind(this)
-    );
+    this.windowControllers.abort();
+
     super.disconnectedCallback();
   }
 

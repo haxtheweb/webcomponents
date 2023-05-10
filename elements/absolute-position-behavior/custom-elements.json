@@ -63,7 +63,7 @@
     },
     {
       "name": "absolute-position-state-manager",
-      "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page\n\nAttributes:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer\n\nProperties:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer",
+      "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page\n\nAttributes:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer\n\nProperties:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `windowControllers` - \n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer",
       "attributes": [
         {
           "name": "scrollTarget",

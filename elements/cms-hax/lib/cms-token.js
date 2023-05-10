@@ -299,17 +299,15 @@ class CMSToken extends PolymerElement {
     }
     document.addEventListener(
       "visibilitychange",
-      this._windowVisibilityChanged.bind(this)
+      this._windowVisibilityChanged.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * Detatched life cycle.
    */
   disconnectedCallback() {
-    document.removeEventListener(
-      "visibilitychange",
-      this._windowVisibilityChanged.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   haxHooks() {
@@ -327,6 +325,11 @@ class CMSToken extends PolymerElement {
 
   haxeditModeChanged(value) {
     this.haxEditMode = value;
+  }
+
+  constructor() {
+    super();
+    this.windowControllers = new AbortController();
   }
 
   static get haxProperties() {
