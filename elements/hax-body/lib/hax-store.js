@@ -3252,11 +3252,15 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       app.index = this.appList.length;
       this.appList = [...this.appList, app];
       this.write("appList", toJS(this.appList), this);
+      let defaultType = "media";
+      if (app.connection.operations && app.connection.operations.browse && app.connection.operations.browse.resultMap && app.connection.operations.browse.resultMap.defaultGizmoType) {
+        defaultType = app.connection.operations.browse.resultMap.defaultGizmoType;
+      }
       // slash command context
       SuperDaemonInstance.defineOption({
         title: "Search " + app.details.title,
         icon: app.details.icon,
-        tags: ["Search", ...app.details.tags],
+        tags: ["Search", ...app.details.tags, defaultType],
         more:
           app.details.tos && app.details.tos.length > 0
             ? html`<div class="tos-text">Terms of service:</div>

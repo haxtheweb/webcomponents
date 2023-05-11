@@ -188,7 +188,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       ${super.sources}`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
+    var type = 'sources';
+    if (this.label.toLowerCase().includes('image')) {
+      type = 'image';
+    }
+    else if (this.label.toLowerCase().includes('video')) {
+      type = 'video';
+    }
+    else {
+      let tmp = HAXStore.guessGizmoType(HAXStore.haxTray.activeHaxElement.properties);
+      if (tmp != '*') {
+        type = tmp;
+      }
+    }
+    SuperDaemonInstance.runProgram("/", {}, null, null, "", type);
+  
+    //SuperDaemonInstance.appendContext();
     // allows for diverting input back to target
     if (this.tagName.toLowerCase() == "hax-upload-field") {
       SuperDaemonInstance.programTarget = this;

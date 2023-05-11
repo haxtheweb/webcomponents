@@ -35,19 +35,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.questionTags = [
       {
         value: "*",
-        label: "Show me what's possible!",
-      },
-      {
-        value: "help",
-        label: "I need help!",
+        label: "What can I do?",
       },
       {
         value: "media",
-        label: "Insert media..",
+        label: "Where can I find media?",
       },
       {
         value: "edit",
-        label: "Edit this page",
+        label: "Edit page",
       },
     ];
   }
@@ -502,9 +498,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
   commonConcepts(value) {
     const sdi = window.SuperDaemonManager.requestAvailability();
     switch (value) {
-      case "help":
-        sdi.runProgram("?", {}, null, null, "", "");
-        break;
       case "media":
         sdi.runProgram("/", {}, null, null, "", "sources");
         break;
