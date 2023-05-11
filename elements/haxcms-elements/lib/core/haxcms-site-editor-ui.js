@@ -1145,7 +1145,49 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    // force item to load schema
+    SuperDaemonInstance.defineOption({
+      title: "DEV: Go to site",
+      icon: "hax:hax2022",
+      tags: ["Developer", "change", "sites", "administration"],
+      eventName: "super-daemon-run-program",
+      path: ">hax/changeSite",
+      context: [">"],
+      value: {
+        name: "DEV: Go to site",
+        context: ">",
+        program: async (input, values) => {
+          let results = [];
+          // will work in a production haxiam environment to allow hopping between spaces
+          await fetch('./../../system/api/listSites').then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            return [];
+          }).then((manifest) => {
+            manifest.data.items.forEach(async (site) => {
+              if ((input == "" || site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
+                results.push({
+                  title: site.title,
+                  icon: site.metadata.theme.variables.icon,
+                  tags: ["site", site.description],
+                  value: {
+                    target: this,
+                    method: "goToLocation",
+                    args: [site.slug],
+                  },
+                  eventName: "super-daemon-element-method",
+                  context: [">", ">hax/changeSite/" + site.metadata.site.name],
+                  path: ">hax/changeSite/" + site.metadata.site.name,
+                });
+              }
+            });
+          });
+          return results;
 
+        }
+      }
+    });
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -1185,6 +1227,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     });
   }
+
+  goToLocation(location) {
+    window.location = location;
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
