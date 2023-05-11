@@ -86,12 +86,6 @@ class HAXCMSSiteEditor extends LitElement {
     );
 
     window.addEventListener(
-      "haxcms-load-node-fields",
-      this.loadNodeFields.bind(this),
-      { signal: this.windowControllers.signal }
-    );
-
-    window.addEventListener(
       "haxcms-load-site-dashboard",
       this.loadSiteDashboard.bind(this),
       { signal: this.windowControllers.signal }
@@ -390,10 +384,6 @@ class HAXCMSSiteEditor extends LitElement {
       manifest: {
         type: Object,
       },
-      getNodeFieldsPath: {
-        type: String,
-        attribute: "get-node-fields-path",
-      },
       getSiteFieldsPath: {
         type: String,
         attribute: "save-site-fields-path",
@@ -650,75 +640,6 @@ class HAXCMSSiteEditor extends LitElement {
       jwt: this.jwt,
     };
     this.querySelector("#getuserdata").generateRequest();
-  }
-  /**
-   * Load and display node fields
-   */
-
-  loadNodeFields(e) {
-    this.__nodeFieldsInvoked = e.detail;
-    let form = document.createElement("simple-fields-form");
-    form.style.margin = "0 0 50px 0";
-    form.setAttribute("autoload", "autoload");
-    form.method = this.method;
-    form.headers = {
-      Authorization: `Bearer ${this.jwt}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-    form.body = {
-      jwt: this.jwt,
-      token: this.getFormToken,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: this.activeItem.id,
-      },
-    };
-    form.loadEndpoint = this.getNodeFieldsPath;
-    this.__fieldsForm = form;
-    let b1 = document.createElement("button");
-    b1.appendChild(document.createTextNode("Save"));
-    b1.classList.add("hax-modal-btn");
-    b1.setAttribute("dialog-confirm", "dialog-confirm");
-    b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
-    let b2 = document.createElement("button");
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    b2.classList.add("hax-modal-btn");
-    b2.classList.add("cancel");
-    b2.addEventListener("click", () => store.playSound("error"));
-    let b = document.createElement("div");
-    b.appendChild(b1);
-    b.appendChild(b2);
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          title: "Edit " + store.activeTitle + " fields",
-          styles: {
-            "--simple-modal-titlebar-background": "orange",
-            "--simple-modal-titlebar-color": "black",
-            "--simple-modal-width": "50vw",
-            "--simple-modal-min-width": "400px",
-            "--simple-modal-z-index": "100000000",
-            "--simple-modal-height": "80vh",
-            "--simple-modal-min-height": "400px",
-            "--simple-modal-titlebar-height": "80px",
-          },
-          elements: {
-            content: form,
-            buttons: b,
-          },
-          invokedBy: this.__nodeFieldsInvoked,
-          clone: false,
-          modal: true,
-        },
-      })
-    );
   }
   /**
    * Load site fields

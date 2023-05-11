@@ -708,21 +708,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
             <simple-toolbar-menu-item>
               <simple-toolbar-button
-                id="editdetails"
-                hidden
-                ?disabled="${this.editMode}"
-                icon="hax:page-details"
-                icon-position="left"
-                @click="${this._editDetailsButtonTap}"
-                label="${this.t.editDetails}"
-                show-text-label
-                voice-command="edit (page) details"
-                part="detailsbtn"
-                tabindex="${this.editMode ? "-1" : "0"}"
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
                 @click="${this._manifestButtonTap}"
                 icon-position="left"
                 icon="${this.icon}"
@@ -867,10 +852,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.backText = window.appSettings.backText;
         }
         let ary = [
-          {
-            varPath: "getNodeFieldsPath",
-            selector: "#editdetails",
-          },
           {
             varPath: "deleteNodePath",
             selector: "#deletebutton",
@@ -1417,16 +1398,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {},
       })
     );
-  }
-  _editDetailsButtonTap(e) {
-    store.playSound("click");
-    const evt = new CustomEvent("haxcms-load-node-fields", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: e.target,
-    });
-    window.dispatchEvent(evt);
   }
   _insightsButtonTap(e) {
     store.playSound("click");

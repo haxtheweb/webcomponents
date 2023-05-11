@@ -63,6 +63,20 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "published",
+        "title": "Published",
+        "description": "Unpublished pages are not visible to end users",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "locked",
+        "title": "Lock page",
+        "description": "Lock / Unlock all elements in this page",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
         "property": "slug",
         "title": "Path",
         "description": "URL slug related to this page",
@@ -79,18 +93,14 @@
         "title": "Order",
         "description": "Order relative to other sibling pages",
         "inputMethod": "number"
-      },
+      }
+    ],
+    "developer": [
       {
-        "property": "published",
-        "title": "Published",
-        "description": "Unpublished pages are not visible to end users",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "locked",
-        "title": "Lock page",
-        "description": "Lock / Unlock all elements in this page",
-        "inputMethod": "boolean"
+        "property": "developerTheme",
+        "title": "Page theme",
+        "description": "Change the theme JUST on this page. Know why you are doing this!",
+        "inputMethod": "textfield"
       }
     ]
   },

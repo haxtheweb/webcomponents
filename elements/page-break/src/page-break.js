@@ -41,6 +41,7 @@ export class PageBreak extends IntersectionObserverMixin(
       localesPath: new URL("./locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.developerTheme = null;
     this.tags = null;
     this.title = this.t.newPage;
     this.pageType = null;
@@ -71,6 +72,7 @@ export class PageBreak extends IntersectionObserverMixin(
       ...props,
       order: { type: Number },
       tags: { type: String },
+      developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },
       slug: { type: String },
       parent: { type: String, reflect: true },

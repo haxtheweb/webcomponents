@@ -117,92 +117,6 @@
             ]
           },
           {
-            "property": "fields",
-            "title": "Fields",
-            "description": "Custom fields for nodes in the site",
-            "properties": [
-              {
-                "property": "manifest-metadata-node-fields",
-                "title": "Custom Fields",
-                "description": "Store relational data about nodes and other properties",
-                "required": false,
-                "icon": "icons:group-work",
-                "inputMethod": "array",
-                "properties": [
-                  {
-                    "property": "formgroup",
-                    "title": "Form group",
-                    "description": "Which tab will users input values",
-                    "inputMethod": "select",
-                    "required": true,
-                    "options": {
-                      "configure": "Configure",
-                      "advanced": "Advanced"
-                    },
-                    "icon": "link"
-                  },
-                  {
-                    "property": "inputMethod",
-                    "title": "Input method",
-                    "description": "How users can enter data for this field",
-                    "inputMethod": "select",
-                    "options": {
-                      "textfield": "Textfield",
-                      "number": "Number",
-                      "boolean": "Checkbox",
-                      "fileupload": "File upload",
-                      "colorpicker": "Color picker",
-                      "iconpicker": "Icon picker",
-                      "code-editor": "Code editor",
-                      "alt": "Alt text",
-                      "datepicker": "Date picker",
-                      "textarea": "Text area",
-                      "flipboolean": "Checkbox (inverted)",
-                      "select": "Select list",
-                      "array": "Array"
-                    },
-                    "icon": "link"
-                  },
-                  {
-                    "property": "property",
-                    "title": "Machine name",
-                    "description": "Field machine name for storage",
-                    "inputMethod": "textfield",
-                    "required": true
-                  },
-                  {
-                    "property": "title",
-                    "title": "Name",
-                    "description": "Readable name of the field",
-                    "inputMethod": "textfield",
-                    "required": true
-                  },
-                  {
-                    "property": "description",
-                    "title": "Description",
-                    "description": "additional details about the field data",
-                    "inputMethod": "textfield",
-                    "required": false
-                  },
-                  {
-                    "property": "required",
-                    "title": "Required",
-                    "description": "Is this field required",
-                    "inputMethod": "boolean",
-                    "required": false
-                  },
-                  {
-                    "property": "icon",
-                    "title": "Icon",
-                    "description": "Optional icon to represent this field",
-                    "inputMethod": "iconpicker",
-                    "required": false
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "property": "seo",
             "title": "SEO / Path",
             "description": "Search engine and detailed internal path handling",
@@ -220,14 +134,7 @@
                 "description": "Whether to hide unpublished pages or not",
                 "inputMethod": "boolean",
                 "icon": "icons:link"
-              }
-            ]
-          },
-          {
-            "property": "static",
-            "title": "Static publishing",
-            "description": "Publishing options",
-            "properties": [
+              },
               {
                 "property": "manifest-metadata-site-static-cdn",
                 "title": "CDN",
@@ -247,44 +154,6 @@
                 "description": "Published site will work when completely offline",
                 "inputMethod": "boolean",
                 "required": false
-              }
-            ]
-          },
-          {
-            "property": "git",
-            "title": "Git settings",
-            "description": "Store relational data about fields",
-            "properties": [
-              {
-                "property": "manifest-metadata-site-git-branch",
-                "title": "Default branch",
-                "description": "Branch to publish on (master is common)",
-                "inputMethod": "textfield",
-                "required": true
-              },
-              {
-                "property": "manifest-metadata-site-git-staticBranch",
-                "title": "Static branch",
-                "description": "Branch to publish on (gh-pages is common)",
-                "inputMethod": "textfield",
-                "required": true
-              },
-              {
-                "property": "manifest-metadata-site-git-url",
-                "title": "Git url",
-                "description": "location of the git repository to sync up to",
-                "inputMethod": "textfield",
-                "required": true
-              },
-              {
-                "property": "manifest-metadata-site-git-vendor",
-                "title": "Vendor",
-                "description": "Vendor used for internal publishing flexibility",
-                "inputMethod": "select",
-                "options": {
-                  "github": "Github"
-                },
-                "required": true
               }
             ]
           }
@@ -314,17 +183,9 @@
         },
         "seo": {
           "manifest-metadata-site-settings-pathauto": true,
-          "manifest-metadata-site-settings-publishPagesOn": false
-        },
-        "static": {
+          "manifest-metadata-site-settings-publishPagesOn": false,
           "manifest-metadata-site-static-cdn": "https://cdn.waxam.io/",
           "manifest-metadata-site-static-offline": true
-        },
-        "git": {
-          "manifest-metadata-site-git-vendor": "github",
-          "manifest-metadata-site-git-branch": "master",
-          "manifest-metadata-site-git-staticBranch": "gh-pages",
-          "manifest-metadata-site-git-url": "git@github.com:btopro/blog.git"
         }
       }
     }

@@ -117,10 +117,6 @@ class HAXCMSSiteDashboard extends LitElement {
           background-color: white;
           color: black;
         }
-        .publishlink {
-          color: black;
-          float: right;
-        }
         .title-wrapper {
           padding: 0 16px;
         }
@@ -153,23 +149,6 @@ class HAXCMSSiteDashboard extends LitElement {
     return html`
       <div class="title-wrapper">
         <h2 class="title">${this.manifest.title} settings</h2>
-        ${varExists(this.manifest, "metadata.site.static.publishedLocation")
-          ? html`
-              <span class="toptext">
-                <a
-                  class="publishlink"
-                  href="${varGet(
-                    this.manifest,
-                    "metadata.site.static.publishedLocation",
-                    "#"
-                  )}"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >Published version
-                </a>
-              </span>
-            `
-          : ""}
       </div>
       <div class="fields-wrapper">
         <simple-fields-form

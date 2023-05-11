@@ -693,6 +693,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             ? `tags="${store.activeItem.metadata.tags}"`
             : ``
         }
+        ${ store.activeItem.metadata.theme && store.activeItem.metadata.theme.key 
+          ? `theme="${store.activeItem.metadata.theme.key}"`
+          : ``
+        }
         break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${
@@ -875,7 +879,6 @@ window.HAXme = function (context = null) {
       saveOutlinePath: "dist/dev/saveNode.json",
       publishSitePath: "dist/dev/saveNode.json",
       syncSitePath: "dist/dev/saveNode.json",
-      getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
       revertSitePath: "dist/dev/saveNode.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
