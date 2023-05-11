@@ -331,6 +331,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           max-width: 800px;
           padding: 0 0 0 32px;
         }
+        :host([responsive-size="xl"]) main,
+        :host([responsive-size="lg"]) main {
+          width: 800px;
+        }
 
         .qr-code-btn {
           padding: 8px;

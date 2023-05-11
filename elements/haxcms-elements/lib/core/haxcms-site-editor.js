@@ -74,12 +74,6 @@ class HAXCMSSiteEditor extends LitElement {
     });
 
     window.addEventListener(
-      "haxcms-save-node-details",
-      this.saveNodeDetails.bind(this),
-      { signal: this.windowControllers.signal }
-    );
-
-    window.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
       { signal: this.windowControllers.signal }
@@ -94,22 +88,6 @@ class HAXCMSSiteEditor extends LitElement {
     window.addEventListener(
       "haxcms-load-user-data",
       this.loadUserData.bind(this),
-      { signal: this.windowControllers.signal }
-    );
-
-    window.addEventListener(
-      "haxcms-publish-site",
-      this.publishSite.bind(this),
-      { signal: this.windowControllers.signal }
-    );
-
-    window.addEventListener("haxcms-sync-site", this.syncSite.bind(this), {
-      signal: this.windowControllers.signal,
-    });
-
-    window.addEventListener(
-      "haxcms-git-revert-last-commit",
-      this.revertCommit.bind(this),
       { signal: this.windowControllers.signal }
     );
 
@@ -692,56 +670,6 @@ class HAXCMSSiteEditor extends LitElement {
       e.target.removeField(customTag.property);
       delete e.target.value[customTag.property];
     }*/
-  }
-  /**
-   * Save the fields as we get tapped
-   */
-
-  _saveNodeFieldsTap(e) {
-    let values = this.__fieldsForm.submit();
-    values.id = this.activeItem.id; // fire event with details for saving
-
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: values,
-      })
-    ); // fire event to close the modal
-
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
-  }
-  /**
-   * Save the fields as we get tapped
-   */
-
-  _saveSiteFieldsTap(e) {
-    // fire event with details for saving
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-site-data", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: this.querySelector("#siteform").submit(),
-      })
-    ); // fire event to close the modal
-
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
   }
   /**
    * create node event

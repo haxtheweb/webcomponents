@@ -1446,50 +1446,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
   /**
-   * create new item
-   */
-  _createNewItem(e) {
-    const evt = new CustomEvent("haxcms-create-node", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        values: this.__newForm.value,
-      },
-    });
-    this.dispatchEvent(evt);
-  }
-  /**
-   * Fire item
-   */
-  _updateItem(e) {
-    var local = e.target;
-    var values;
-    if (!local.__form) {
-      values = local.parentNode.__form.value;
-    } else {
-      values = local.__form.value;
-    }
-    // fire event with details for saving
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: values,
-      })
-    );
-    // fire event to close the modal
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
-  }
-  /**
    * Delete button hit, confirm they want to do this
    */
   _deleteButtonTap(e) {
