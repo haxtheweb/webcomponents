@@ -479,21 +479,6 @@ export const HaxTrayDetail = [
       --hax-tray-detail-heading-text-transform: capitalize;
       --hax-tray-detail-heading-font-weight: normal;
     }
-    #toggle-tray-size {
-      color: var(--hax-ui-background-color);
-      background-color: var(--hax-ui-color-accent);
-      --simple-icon-button-border: 0px solid transparent;
-      --simple-icon-button-border-radius: var(--hax-ui-border-radius);
-      width: 24px;
-      height: 24px;
-      padding: 0;
-    }
-    #toggle-tray-size:hover,
-    #toggle-tray-size:focus-within {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
-    }
     #tray-detail h5,
     #tray-detail h6 {
       text-transform: var(--hax-tray-detail-heading-text-transform);

@@ -528,6 +528,43 @@ export class HAXWiring {
       });
       // allow styles to be modified this way
       props.settings.advanced.push({
+        attribute: "padding-top",
+        title: "Padding top",
+        step: 8,
+        max: 64,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-right",
+        title: "Padding right",
+        step: 8,
+        max: 64,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-bottom",
+        title: "Padding bottom",
+        step: 8,
+        max: 64,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-left",
+        title: "Padding left",
+        step: 8,
+        max: 64,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      // allow styles to be modified this way
+      props.settings.advanced.push({
         attribute: "style",
         title: "Styles",
         description: "Custom CSS styles as applied to the element",

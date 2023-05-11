@@ -681,9 +681,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      */
     get suffixTemplate() {
       return html`
-        <slot name="suffix"></slot>
-        ${this.suffix}
-      `;
+        ${this.suffix ? html`${this.suffix}` : html`<slot name="suffix"></slot>`}`;
     }
     /**
      * focuses on field

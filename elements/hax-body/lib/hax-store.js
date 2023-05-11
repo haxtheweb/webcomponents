@@ -1110,6 +1110,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           }
           changed = true;
           break;
+        case "hax-style-setting-change":
+          Object.keys(detail.value).forEach((key) => {
+            if (!key.startsWith("__")) {
+              if (detail.value[key] == "" || parseInt(detail.value[key]) == 0) {
+                this.activeNode.style.removeProperty(key);
+              }
+              else {
+                this.activeNode.style[key] = detail.value[key] + "px";                
+              }
+            }
+          });
+          changed = true;
+          break;
       }
       if (changed) {
         clearTimeout(this.__repositionMenu);

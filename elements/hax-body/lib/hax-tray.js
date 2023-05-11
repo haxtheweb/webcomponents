@@ -56,13 +56,16 @@ class HaxTray extends I18NMixin(
    */
   constructor() {
     super();
-    this.windowControllers = new AbortController();
+    this.tourController = new AbortController();
+    this.dragController = new AbortController();
     this.tourName = "hax";
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this.resizeDrag = false;
+    this.__moveX = 0;
     this.t = {
       structure: "Outline",
       structureTip: "View Page Structure",
@@ -187,6 +190,7 @@ class HaxTray extends I18NMixin(
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
+
         }
         .wrapper {
           position: fixed;
@@ -199,11 +203,36 @@ class HaxTray extends I18NMixin(
           overflow: hidden;
           top: 0;
           bottom: 0;
-          min-width: var(--hax-tray-width);
+          min-width: calc(var(--hax-tray-width) - 100px);
           max-width: 70vw;
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
+        }
+        :host([collapsed]) #resize {
+          display: none;
+        }
+        :host([resize-drag]) {
+          cursor: col-resize;
+          -webkit-user-select: none; /* Safari */
+          -ms-user-select: none; /* IE 10 and IE 11 */
+          user-select: none; /* Standard syntax */
+          opacity: 1;
+        }
+        #resize {
+          cursor: col-resize;
+          background-color: var(--hax-ui-color-accent);
+          height: 100%;
+          width: 4px;
+          flex-shrink: 0;
+          position: relative;
+          z-index: var(--hax-ui-focus-z-index);
+          opacity: .7;
+          transition: opacity .2s ease-in-out;
+        }
+        #resize:hover {
+          cursor: col-resize;
+          opacity: 1;
         }
         :host(:hover) .wrapper {
           overflow: visible;
@@ -216,9 +245,12 @@ class HaxTray extends I18NMixin(
           width: 50vw;
           height: 50vh;
           min-height: 300px;
-          min-width: 300px;
+          min-width: calc(var(--hax-tray-width) - 100px);
           resize: both;
           flex: unset;
+        }
+        :host([tray-detail="view-source"]) #resize {
+          display: none;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
@@ -289,7 +321,6 @@ class HaxTray extends I18NMixin(
         }
         .detail {
           resize: horizontal;
-          opacity: 1;
           visibility: visible;
           pointer-events: all;
           border: 1px solid var(--hax-ui-border-color);
@@ -298,7 +329,9 @@ class HaxTray extends I18NMixin(
           width: calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
           );
+          max-width: 70vw;
           overflow-x: auto;
+          opacity: 1;
         }
         :host([collapsed]) .detail {
           width: 0px;
@@ -313,6 +346,16 @@ class HaxTray extends I18NMixin(
           width: auto;
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
           overflow-y: auto;
+          transition: opacity .3s ease-in-out;
+          opacity: .7;
+        }
+        .wrapper:focus #tray-detail,
+        .wrapper:focus-within #tray-detail,
+        .wrapper:hover #tray-detail,
+        #tray-detail:hover,
+        #tray-detail:focus,
+        #tray-detail:focus-within {
+          opacity: 1;
         }
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
@@ -334,10 +377,6 @@ class HaxTray extends I18NMixin(
           flex: 1 1 auto;
           font-size: var(--hax-ui-font-size);
           font-family: var(--hax-ui-font-family);
-        }
-        #toggle-tray-size {
-          flex: 0 0 auto;
-          margin-right: 8px;
         }
         #settingsform {
           margin: -8px -8px 0;
@@ -399,6 +438,16 @@ class HaxTray extends I18NMixin(
         #button:hover {
           opacity: 1;
         }
+        /** specific rendering of padding items to be next to each other */
+        simple-fields-field[name="settings.advanced.padding-top"],
+        simple-fields-field[name="settings.advanced.padding-bottom"],
+        simple-fields-field[name="settings.advanced.padding-left"],
+        simple-fields-field[name="settings.advanced.padding-right"] {
+          width: 50%;
+          text-align: center;
+          display: inline-block;
+          padding: 10px;
+        }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
           :host {
@@ -406,12 +455,14 @@ class HaxTray extends I18NMixin(
             z-index: calc(var(--hax-ui-focus-z-index) + 3);
           }
           :host([edit-mode]) .wrapper.full-panel .detail {
-            max-width: 100vw;
+            max-width: 70vw;
             max-height: unset;
-            min-width: unset;
+          }
+          .detail {
+            max-width: 70vw;
           }
           #tray-detail {
-            max-width: unset;
+            max-width: 70vw;
             max-height: unset;
           }
           .wrapper {
@@ -503,9 +554,48 @@ class HaxTray extends I18NMixin(
           <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
+        <div class="resize" id="resize" @mousedown="${this.resizeDown}" @dblclick="${this.resetSize}"></div>
       </div>
     `;
   }
+
+  resetSize(e) {
+    this.resizeDrag = false;
+    this.dragController.abort();
+    setTimeout(() => {
+      this.shadowRoot.querySelector('.detail').style.removeProperty('width');      
+    }, 10);
+  }
+
+  resizeDown(e) {
+    this.resizeDrag = true;
+    this.__moveX = e.x;
+    this.dragController = new AbortController();
+    // set listeners now that we've decided to move at all
+    this.addEventListener('mousemove', (e) => {
+      // edge case of clicking away from the item, letting go outside detection then coming back in
+      if (e.which === 0) {
+        this.resizeDrag = false;
+        this.dragController.abort();
+      }
+      if (this.resizeDrag) {
+        this.__moveX = e.x;
+        if (this.elementAlign === "right") {
+          this.shadowRoot.querySelector('.detail').style.width =
+          (window.innerWidth - this.__moveX - 64) + "px";
+        }
+        else {
+          this.shadowRoot.querySelector('.detail').style.width =
+          (this.__moveX - 64) + "px";  
+        }
+      }
+    } , { signal: this.dragController.signal });
+    this.addEventListener('mouseup', (e) => {
+      this.resizeDrag = false;
+      this.dragController.abort();
+    }, { signal: this.dragController.signal });
+  }
+
   get panelOpsTemplate() {
     return this.hidePanelOps
       ? ``
@@ -852,8 +942,9 @@ class HaxTray extends I18NMixin(
   _processTrayEvent(e) {
     var target = normalizeEventPath(e)[0],
       evt = e.detail.eventName;
-    if (!this.collapsed && this.trayDetail === evt) {
-      evt = "toggle-tray-size";
+    // ensure we're open if processing a tray event
+    if (this.collapsed) {
+      this.collapsed = false;
     }
     // support a simple insert event to bubble up or everything else
     switch (evt) {
@@ -929,9 +1020,6 @@ class HaxTray extends I18NMixin(
         //set local storage
         localStorageSet("hax-tray-elementAlign", direction);
         break;
-      case "toggle-tray-size":
-        this.collapsed = !this.collapsed;
-        break;
       case "super-daemon":
         SuperDaemonInstance.open();
         break;
@@ -968,18 +1056,18 @@ class HaxTray extends I18NMixin(
   }
   startTour() {
     this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
-    this.windowControllers = new AbortController();
+    this.tourController = new AbortController();
     window.addEventListener(
       "tour-changed",
       this._handleTourChanged.bind(this),
-      { signal: this.windowControllers.signal }
+      { signal: this.tourController.signal }
     );
     this.__tour.startTour("hax");
   }
   stopTour() {
     this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
     this.__tour.stopTour("hax");
-    this.windowControllers.abort();
+    this.tourController.abort();
   }
   _handleTourChanged(e) {
     this.tourOpened = e.detail.active == this.tourName;
@@ -993,6 +1081,11 @@ class HaxTray extends I18NMixin(
       offsetMargin: {
         type: String,
         attribute: "offset-margin",
+      },
+      resizeDrag: {
+        type: Boolean,
+        attribute: "resize-drag",
+        reflect: true,
       },
       collapsed: {
         type: Boolean,
@@ -1607,38 +1700,53 @@ class HaxTray extends I18NMixin(
               else if (key === "advanced" && prop === "__position") {
                 setAhead = true;
                 if (!this._initial) {
-                  clearTimeout(this.__contextValueDebounce);
-                  this.__contextValueDebounce = setTimeout(() => {
-                    this.dispatchEvent(
-                      new CustomEvent("hax-context-item-selected", {
-                        bubbles: true,
-                        composed: true,
-                        detail: {
-                          eventName: settings[key][prop],
-                          value: settings[key][prop],
-                        },
-                      })
-                    );
-                  }, 50);
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: settings[key][prop],
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
                 }
               }
               // this is a special internal held "property" for layout stuff
               else if (key === "advanced" && prop === "__scale") {
                 setAhead = true;
                 if (!this._initial) {
-                  clearTimeout(this.__contextSizeDebounce);
-                  this.__contextSizeDebounce = setTimeout(() => {
-                    this.dispatchEvent(
-                      new CustomEvent("hax-context-item-selected", {
-                        bubbles: true,
-                        composed: true,
-                        detail: {
-                          eventName: "hax-size-change",
-                          value: settings[key][prop],
-                        },
-                      })
-                    );
-                  }, 50);
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: "hax-size-change",
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
+                }
+              }
+              else if (key === "advanced" && prop === "padding-top" || 
+              prop === "padding-bottom" || 
+              prop === "padding-left" || 
+              prop === "padding-right" ||
+              prop === "margin-top" ||
+              prop === "margin-bottom" ||
+              prop === "margin-left" ||
+              prop === "margin-right") {
+                if (!this._initial) {
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: "hax-style-setting-change",
+                        value: settings[key],
+                      },
+                    })
+                  );
                 }
               }
               // try and set the pop directly if it is a prop already set
