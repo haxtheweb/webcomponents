@@ -28,7 +28,6 @@ import "./hax-gizmo-browser.js";
 import "./hax-view-source.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
-import "./hax-preferences-dialog.js";
 import "./hax-tray-button.js";
 import "./hax-toolbar-menu.js";
 import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
@@ -136,12 +135,10 @@ class HaxTray extends I18NMixin(
     this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
-    setTimeout(() => {
-      this.addEventListener(
-        "hax-tray-button-click",
-        this._processTrayEvent.bind(this)
-      );
-    }, 0);
+    this.addEventListener(
+      "hax-tray-button-click",
+      this._processTrayEvent.bind(this)
+    );
     autorun(() => {
       this.activeGizmo = toJS(HAXStore.activeGizmo);
     });
@@ -228,6 +225,9 @@ class HaxTray extends I18NMixin(
           position: relative;
           z-index: var(--hax-ui-focus-z-index);
         }
+        :host([element-align="right"]) #resize {
+          padding: 0 0 0 12px;
+        }
         #resize .resize-visual:hover {
           cursor: col-resize;
         }
@@ -299,7 +299,6 @@ class HaxTray extends I18NMixin(
           display: inline-block;
           text-align: left;
           opacity: 1;
-          width: 100%;
           visibility: visible;
           padding: 0px var(--hax-ui-spacing-sm);
           overflow: unset;
@@ -453,7 +452,9 @@ class HaxTray extends I18NMixin(
         @media screen and (max-width: 800px) {
           :host {
             width: 100%;
-            z-index: calc(var(--hax-ui-focus-z-index) + 3);
+          }
+          #resize {
+            display: none;
           }
           :host([edit-mode]) .wrapper.full-panel .detail {
             max-width: 70vw;
@@ -482,7 +483,7 @@ class HaxTray extends I18NMixin(
           }
           :host([element-align="left"]) .wrapper {
             left: -1000px;
-            flex-direction: column;
+            flex-direction: row;
           }
           #menubar {
             position: sticky;
@@ -835,25 +836,6 @@ class HaxTray extends I18NMixin(
         </div>
       </hax-tray-button>
       <hax-tray-button
-        ?hidden="${this.hidePreferencesButton}"
-        id="advanced-settings"
-        event-name="advanced-settings"
-        icon="build"
-        label="${this.t.settings}"
-        voice-command="select settings (menu)"
-        data-simple-tour-stop
-        data-stop-title="label"
-        controls="tray-detail"
-        toggles
-        ?toggled="${!this.collapsed && this.trayDetail === "advanced-settings"}"
-        icon-position="left"
-        show-text-label
-        show-tooltip
-        align-horizontal="${this.collapsed ? "left" : "center"}"
-      >
-        <div data-stop-content>User preferences for customizing HAX</div>
-      </hax-tray-button>
-      <hax-tray-button
         event-name="super-daemon"
         icon="hax:wizard-hat"
         label="${this.t.merlin}"
@@ -880,7 +862,7 @@ class HaxTray extends I18NMixin(
           ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
         </h4>
       </div>
-      ${this.viewSourceTemplate} ${this.advancedSettingsTemplate}
+      ${this.viewSourceTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
       ${this.contentAddTemplate}
     </div>`;
@@ -890,11 +872,6 @@ class HaxTray extends I18NMixin(
       id="view-source"
       ?hidden="${this.trayDetail !== "view-source"}"
     ></hax-view-source>`;
-  }
-  get advancedSettingsTemplate() {
-    return html` <hax-preferences-dialog
-      ?hidden="${this.trayDetail !== "advanced-settings"}"
-    ></hax-preferences-dialog>`;
   }
   get contentEditTemplate() {
     return html` <simple-fields
@@ -945,8 +922,11 @@ class HaxTray extends I18NMixin(
   _processTrayEvent(e) {
     var target = normalizeEventPath(e)[0],
       evt = e.detail.eventName;
-    // ensure we're open if processing a tray event
-    if (this.collapsed) {
+    // allow buttons to toggle collapse if desired by user
+    if (target.tagName == "HAX-TRAY-BUTTON" && e.detail.eventName === this.trayDetail) {
+      this.collapsed = !this.collapsed;
+    }
+    else {
       this.collapsed = false;
     }
     // support a simple insert event to bubble up or everything else
@@ -1007,16 +987,11 @@ class HaxTray extends I18NMixin(
           })
         );
         break;
-      case "advanced-settings":
-        this.trayDetail = e.detail.eventName;
-        this.collapsed = false;
-        break;
       case "toggle-element-align":
         let directions = ["left", "right"],
           direction = !!directions[e.detail.index]
             ? directions[e.detail.index]
             : "left";
-        if (e.detail.index > 1) this.collapsed = true;
         this.style.setProperty("--hax-tray-custom-y", null);
         this.style.setProperty("--hax-tray-custom-x", null);
         HAXStore.elementAlign = direction;
@@ -1025,18 +1000,16 @@ class HaxTray extends I18NMixin(
         break;
       case "super-daemon":
         SuperDaemonInstance.open();
+        this.collapsed = false;
         break;
       case "content-map":
         this.trayDetail = e.detail.eventName;
-        this.collapsed = false;
         break;
       case "content-edit":
         this.trayDetail = e.detail.eventName;
-        this.collapsed = false;
         break;
       case "content-add":
         this.trayDetail = e.detail.eventName;
-        this.collapsed = false;
         break;
       case "start-tour":
         this.startTour();
@@ -1146,14 +1119,6 @@ class HaxTray extends I18NMixin(
         type: String,
       },
       /**
-       * Showing preferences area.
-       */
-      hidePreferencesButton: {
-        type: Boolean,
-        reflect: true,
-        attribute: "hide-preferences-button",
-      },
-      /**
        * Showing button area at all a well as internal
        * state managing buttons like cancel and save
        */
@@ -1253,19 +1218,6 @@ class HaxTray extends I18NMixin(
           detail: {
             command: ":name: (collapse)(open)(expand)(toggle) Blocks (menu)",
             context: this.shadowRoot.querySelector("#content-add"),
-            callback: "click",
-          },
-        })
-      );
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command:
-              ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
-            context: this.shadowRoot.querySelector("#advanced-settings"),
             callback: "click",
           },
         })
@@ -1629,11 +1581,6 @@ class HaxTray extends I18NMixin(
     } else if (newValue == "content-map") {
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
-    } else if (newValue == "advanced-settings") {
-      this.trayLabel = this.t.settings;
-      this.shadowRoot
-        .querySelector("hax-preferences-dialog")
-        .reloadPreferencesForm();
     } else if (
       newValue == "content-edit" &&
       (!this.activeTagName ||

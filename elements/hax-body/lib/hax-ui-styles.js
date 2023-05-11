@@ -422,8 +422,7 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
-    simple-fields-tabs::part(tab-disabled),
-    hax-preferences-dialog::part(haxlink) {
+    simple-fields-tabs::part(tab-disabled) {
       border: 1px solid var(--hax-ui-border-color);
       text-decoration: none;
       border-radius: 3px;
@@ -437,16 +436,6 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab-active) {
       color: var(--hax-ui-color-accent);
-    }
-    hax-preferences-dialog::part(haxlink) {
-      display: block;
-      padding: var(--hax-ui-spacing-lg);
-    }
-    hax-preferences-dialog::part(haxlink):hover,
-    hax-preferences-dialog::part(haxlink):focus {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
     }
     simple-fields-tabs::part(tab-disabled) {
       opacity: 0.5;

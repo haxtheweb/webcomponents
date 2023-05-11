@@ -982,7 +982,6 @@ class HAXCMSSiteEditor extends LitElement {
   _storeReadyToGo(event) {
     if (event.detail) {
       HAXStore.connectionRewrites.appendJwt = "jwt";
-      HAXStore.haxTray.hidePreferencesButton = true;
     }
   }
   /**

@@ -20,27 +20,7 @@ class ResponsiveUtility extends LitElement {
   static get tag() {
     return "responsive-utility";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    /* handle element registration */
-    window.addEventListener(
-      "responsive-element",
-      this.responiveElementEvent.bind(this),
-      { signal: this.windowControllers.signal }
-    );
 
-    /* handle element deregistration */
-    window.addEventListener(
-      "delete-responsive-element",
-      this.deleteResponiveElementEvent.bind(this),
-      { signal: this.windowControllers.signal }
-    );
-  }
-  disconnectedCallback() {
-    this.windowControllers.abort();
-
-    super.disconnectedCallback();
-  }
   /**
    * adds a responsive element to the details array
    *
@@ -104,8 +84,17 @@ class ResponsiveUtility extends LitElement {
    */
   constructor() {
     super();
-    this.windowControllers = new AbortController();
     this.details = [];
+    window.addEventListener(
+      "responsive-element",
+      this.responiveElementEvent.bind(this)
+    );
+
+    /* handle element deregistration */
+    window.addEventListener(
+      "delete-responsive-element",
+      this.deleteResponiveElementEvent.bind(this)
+    );
     if (window.ResponsiveUtility.instance == null)
       window.ResponsiveUtility.instance = this;
   }

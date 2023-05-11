@@ -88,13 +88,6 @@ class CmsHax extends LitElement {
         attribute: "offset-margin",
       },
       /**
-       * Hide preferences button
-       */
-      hidePreferencesButton: {
-        type: Boolean,
-        attribute: "hide-preferences-button",
-      },
-      /**
        * Direction to elementAlign the hax edit panel
        */
       elementAlign: {
@@ -211,13 +204,7 @@ class CmsHax extends LitElement {
   /**
    * Set certain data bound values to the store once it's ready
    */
-  _noticeTagChanges(
-    allowedTags,
-    hidePanelOps,
-    offsetMargin,
-    hidePreferencesButton,
-    elementAlign
-  ) {
+  _noticeTagChanges(allowedTags, hidePanelOps, offsetMargin, elementAlign) {
     if (HAXStore.ready) {
       // double check because this can cause issues
       if (allowedTags) {
@@ -227,7 +214,6 @@ class CmsHax extends LitElement {
       setTimeout(() => {
         HAXStore.haxTray.hidePanelOps = hidePanelOps;
         HAXStore.haxTray.offsetMargin = offsetMargin;
-        HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
         HAXStore.elementAlign = elementAlign;
         setTimeout(() => {
           // NOW we have the data imported
@@ -249,7 +235,6 @@ class CmsHax extends LitElement {
         this.allowedTags,
         this.hidePanelOps,
         this.offsetMargin,
-        this.hidePreferencesButton,
         this.elementAlign
       );
       this.__applyMO();
@@ -295,7 +280,6 @@ class CmsHax extends LitElement {
     this.endPoint = null;
     this.openDefault = false;
     this.hidePanelOps = false;
-    this.hidePreferencesButton = false;
     this.elementAlign = "left";
     this.method = "PUT";
     this.syncBody = false;
@@ -331,7 +315,6 @@ class CmsHax extends LitElement {
           "allowedTags",
           "hidePanelOps",
           "offsetMargin",
-          "hidePreferencesButton",
           "elementAlign",
         ].includes(propName)
       ) {
@@ -339,7 +322,6 @@ class CmsHax extends LitElement {
           this.allowedTags,
           this.hidePanelOps,
           this.offsetMargin,
-          this.hidePreferencesButton,
           this.elementAlign
         );
       }

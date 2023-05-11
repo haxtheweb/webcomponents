@@ -42,7 +42,6 @@ class WysiwygHax extends LitElement {
         ?open-default="${this.openDefault}"
         ?sync-body="${this.syncBody}"
         ?hide-panel-ops="${this.hidePanelOps}"
-        ?hide-preferences-button="${this.hidePreferencesButton}"
         element-align="${this.elementAlign}"
       >
       </cms-hax>
@@ -98,13 +97,6 @@ class WysiwygHax extends LitElement {
       hidePanelOps: {
         type: Boolean,
         attribute: "hide-panel-ops",
-      },
-      /**
-       * Hide preferences button
-       */
-      hidePreferencesButton: {
-        type: Boolean,
-        attribute: "hide-preferences-button",
       },
       /**
        * Direction to align the hax edit panel
@@ -211,8 +203,9 @@ class WysiwygHax extends LitElement {
     super.connectedCallback();
     window.addEventListener(
       "hax-save-body-value",
-      this._bodyContentUpdated.bind(this), { signal: this.windowControllers.signal });
-
+      this._bodyContentUpdated.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
   /**
    * HTMLElement

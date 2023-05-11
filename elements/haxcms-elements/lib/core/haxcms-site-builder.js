@@ -694,7 +694,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             : ``
         }
         ${ store.activeItem.metadata.theme && store.activeItem.metadata.theme.key 
-          ? `theme="${store.activeItem.metadata.theme.key}"`
+          ? `developer-theme="${store.activeItem.metadata.theme.key}"`
           : ``
         }
         break-type="site"
