@@ -35,29 +35,25 @@
         "property": "title",
         "title": "Title",
         "description": "Top area on the card",
-        "inputMethod": "textfield",
-        "validationType": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "name",
         "title": "Name",
         "description": "Name on badge",
-        "inputMethod": "textfield",
-        "validationType": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "position",
         "title": "Position",
         "description": "Position of person",
-        "inputMethod": "textfield",
-        "validationType": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "organization",
         "title": "Organization",
         "description": "Organization person works for",
-        "inputMethod": "textfield",
-        "validationType": "text"
+        "inputMethod": "textfield"
       },
       {
         "property": "tvcolor",
@@ -66,15 +62,9 @@
         "inputMethod": "colorpicker"
       },
       {
-        "property": "backgroundcolor",
-        "title": "Background color",
-        "description": "Color for background of the card",
-        "inputMethod": "colorpicker"
-      },
-      {
-        "property": "textcolor",
-        "title": "Text color",
-        "description": "Text color on the badge",
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Background / text primary color",
         "inputMethod": "colorpicker"
       },
       {
@@ -109,8 +99,7 @@
         "organization": "HaxTheWeb",
         "image": "https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif",
         "tvcolor": "blue",
-        "backgroundcolor": "orange",
-        "textcolor": "black",
+        "accentColor": "red",
         "knobcolor": "purple",
         "logo": "https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png",
         "sepia": false,
