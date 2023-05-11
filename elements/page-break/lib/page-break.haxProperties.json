@@ -17,6 +17,12 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
+        "title": "Title",
+        "description": "Title seen in the theme / first heading",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "pageType",
         "title": "Type",
         "description": "Indicates page context to users visually",
@@ -49,12 +55,6 @@
           "watch": "Watch",
           "write": "Write"
         }
-      },
-      {
-        "property": "title",
-        "title": "Title",
-        "description": "Title seen in the theme / first heading",
-        "inputMethod": "textfield"
       },
       {
         "property": "tags",

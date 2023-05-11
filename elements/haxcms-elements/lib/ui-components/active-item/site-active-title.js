@@ -62,6 +62,18 @@ class SiteActiveTitle extends LitElement {
           this.ancestorTitle
         );
       }
+      if (propName == "editMode" && oldValue !== undefined) {
+        if (this.editMode) {
+          this.activateController = new AbortController();
+          this.addEventListener('click', (e) => {
+            const haxStore = window.HaxStore.requestAvailability();
+            haxStore.activeNode = haxStore.activeHaxBody.querySelector('page-break');
+          }, { signal: this.activateController.signal });
+        } else {
+          this.noFallback = false;
+          this.activateController.abort();
+        }
+      }
     });
   }
   /**
@@ -112,6 +124,7 @@ class SiteActiveTitle extends LitElement {
    */
   constructor() {
     super();
+    this.activateController = new AbortController();
     this.noFallback = false;
     this.dynamicMethodology = "active";
     this.__title = "";
