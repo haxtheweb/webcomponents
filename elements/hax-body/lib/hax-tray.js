@@ -221,18 +221,20 @@ class HaxTray extends I18NMixin(
         }
         #resize {
           cursor: col-resize;
-          background-color: var(--hax-ui-color-accent);
+          background-color: transparent;
           height: 100%;
-          width: 4px;
+          padding: 0 12px 0 0;
           flex-shrink: 0;
           position: relative;
           z-index: var(--hax-ui-focus-z-index);
-          opacity: .7;
-          transition: opacity .2s ease-in-out;
         }
-        #resize:hover {
+        #resize .resize-visual:hover {
           cursor: col-resize;
-          opacity: 1;
+        }
+        #resize .resize-visual {
+          background-color: var(--hax-ui-color-accent);
+          height: 100%;
+          width: 4px;
         }
         :host(:hover) .wrapper {
           overflow: visible;
@@ -323,7 +325,6 @@ class HaxTray extends I18NMixin(
           resize: horizontal;
           visibility: visible;
           pointer-events: all;
-          border: 1px solid var(--hax-ui-border-color);
           background-color: var(--hax-ui-background-color);
           max-height: calc(100vh - 48px);
           width: calc(
@@ -554,7 +555,9 @@ class HaxTray extends I18NMixin(
           <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
-        <div class="resize" id="resize" @mousedown="${this.resizeDown}" @dblclick="${this.resetSize}"></div>
+        <div class="resize" id="resize" @mousedown="${this.resizeDown}" @dblclick="${this.resetSize}">
+          <div class="resize-visual"></div>
+        </div>
       </div>
     `;
   }
@@ -582,11 +585,11 @@ class HaxTray extends I18NMixin(
         this.__moveX = e.x;
         if (this.elementAlign === "right") {
           this.shadowRoot.querySelector('.detail').style.width =
-          (window.innerWidth - this.__moveX - 64) + "px";
+          (window.innerWidth - this.__moveX - 44) + "px";
         }
         else {
           this.shadowRoot.querySelector('.detail').style.width =
-          (this.__moveX - 64) + "px";  
+          (this.__moveX - 44) + "px";  
         }
       }
     } , { signal: this.dragController.signal });
