@@ -64,6 +64,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           left: 0;
           top: 0;
           right: 0;
+          margin-top: 0;
+          opacity: 1;
+          transition: all 0.6s ease-in-out;
           background-color: var(--haxcms-system-bg, #eeeeee);
           z-index: 10000;
           visibility: visible;
@@ -96,6 +99,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         :host([painting]) {
           opacity: 0;
+          margin-top: -48px;
           visibility: hidden;
         }
         #editbutton {
@@ -980,7 +984,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   haxButtonOp(e) {
     let exec = e.target.getAttribute("data-event");
-    console.log(exec);
     switch (exec) {
       case "super-daemon":
         store.playSound("click");
@@ -1890,7 +1893,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.editMode = newValue;
       // force tray status to be the opposite of the editMode
       // to open when editing and close when not
-      HAXStore.haxTray.collapsed = !newValue;
+      if (newValue) {
+        HAXStore.haxTray.collapsed = false;
+      }
     }
   }
   /**

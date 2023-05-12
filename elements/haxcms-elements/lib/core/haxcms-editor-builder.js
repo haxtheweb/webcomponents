@@ -85,7 +85,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         // forces a nice fade in transition
         setTimeout(() => {
           store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-        }, 5);
+        }, 600);
       });
     }
   }

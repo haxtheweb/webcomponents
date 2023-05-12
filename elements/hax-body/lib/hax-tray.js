@@ -208,7 +208,7 @@ class HaxTray extends I18NMixin(
           transition: all 0.6s ease-in-out;
         }
         :host([collapsed]) #resize {
-          display: none;
+          display:none;
         }
         :host([resize-drag]) {
           cursor: col-resize;
