@@ -10,14 +10,20 @@ export class AppHaxTopBar extends LitElement {
     return "app-hax-top-bar";
   }
 
-  // constructor() {
-  //   super();
-  // }
+  constructor() {
+    super();
+    this.editMode = false;
+  }
 
-  // static get properties() {
-  //   return {
-  //   };
-  // }
+  static get properties() {
+    return {
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode"
+      }
+    };
+  }
 
   static get styles() {
     return css`
@@ -51,6 +57,11 @@ export class AppHaxTopBar extends LitElement {
         border-bottom: 3px solid var(--app-hax-accent-color);
         display: grid;
         grid-template-columns: 32.5% 35% 32.5%;
+        transition: border-bottom 0.6s ease-in-out;
+      }
+
+      :host([edit-mode]) .topBar {
+        border-bottom: 4px solid var(--hax-ui-color-accent);
       }
 
       /* .topBar > div {

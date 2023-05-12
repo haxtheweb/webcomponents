@@ -73,6 +73,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       css`
         :host {
           width: calc(100% - 2px);
+          min-width: 375px;
           align-items: stretch;
         }
         hax-toolbar::part(morebutton) {

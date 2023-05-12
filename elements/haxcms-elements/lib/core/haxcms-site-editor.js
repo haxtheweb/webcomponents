@@ -234,6 +234,7 @@ class HAXCMSSiteEditor extends LitElement {
         element-align="left"
         offset-margin="48px 0 0 0"
         hide-panel-ops="hide-panel-ops"
+        hide-toolbar="hide-toolbar"
       ></h-a-x>
     `;
   }

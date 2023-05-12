@@ -64,6 +64,7 @@ class HaxTray extends I18NMixin(
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
     this.resizeDrag = false;
+    this.hideToolbar = false;
     this.__moveX = 0;
     this.t = {
       structure: "Outline",
@@ -73,7 +74,7 @@ class HaxTray extends I18NMixin(
       save: "Save",
       move: "Move",
       close: "Close",
-      moveMenu: "Toggles Menu Aligmnent",
+      move: "Move",
       menuAlignment: "Menu Alignment",
       menuLeft: "Move",
       menuRight: "Move",
@@ -191,7 +192,6 @@ class HaxTray extends I18NMixin(
         }
         .wrapper {
           position: fixed;
-          display: none;
           align-items: stretch;
           flex-direction: row-reverse;
           opacity: 0;
@@ -205,6 +205,7 @@ class HaxTray extends I18NMixin(
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
+          transition: all 0.6s ease-in-out;
         }
         :host([collapsed]) #resize {
           display: none;
@@ -378,6 +379,12 @@ class HaxTray extends I18NMixin(
           font-size: var(--hax-ui-font-size);
           font-family: var(--hax-ui-font-family);
         }
+        .tray-detail-titlebar .tray-detail-titlebar-actions {
+          float: right;
+        }
+        :host([element-align]) .tray-detail-titlebar .tray-detail-titlebar-actions {
+          float: left;
+        }
         #settingsform {
           margin: -8px -8px 0;
           --simple-fields-field-margin: 12px;
@@ -439,6 +446,11 @@ class HaxTray extends I18NMixin(
           opacity: 1;
         }
         /** specific rendering of padding items to be next to each other */
+        simple-fields-field[name="settings.advanced.margin-top"],
+        simple-fields-field[name="settings.advanced.margin-bottom"],
+        simple-fields-field[name="settings.advanced.margin-left"],
+        simple-fields-field[name="settings.advanced.margin-right"],
+
         simple-fields-field[name="settings.advanced.padding-top"],
         simple-fields-field[name="settings.advanced.padding-bottom"],
         simple-fields-field[name="settings.advanced.padding-left"],
@@ -483,7 +495,7 @@ class HaxTray extends I18NMixin(
           }
           :host([element-align="left"]) .wrapper {
             left: -1000px;
-            flex-direction: row;
+            flex-direction: column;
           }
           #menubar {
             position: sticky;
@@ -551,7 +563,7 @@ class HaxTray extends I18NMixin(
     return html`
       ${this.panelOpsTemplate}
       <div class="wrapper ${this.trayStatus}">
-        ${this.menuToolbarTemplate}
+        ${this.hideToolbar ? `` : html`${this.menuToolbarTemplate}`}
         <div class="detail">
           <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
@@ -584,13 +596,17 @@ class HaxTray extends I18NMixin(
       }
       if (this.resizeDrag) {
         this.__moveX = e.x;
+        let base = 44;
+        if (this.hideToolbar) {
+          base = 0;
+        }
         if (this.elementAlign === "right") {
           this.shadowRoot.querySelector('.detail').style.width =
-          (window.innerWidth - this.__moveX - 44) + "px";
+          (window.innerWidth - this.__moveX - base) + "px";
         }
         else {
           this.shadowRoot.querySelector('.detail').style.width =
-          (this.__moveX - 44) + "px";  
+          (this.__moveX - base) + "px";  
         }
       }
     } , { signal: this.dragController.signal });
@@ -625,13 +641,12 @@ class HaxTray extends I18NMixin(
     return html` <div id="menubar" class="collapse-menu">
       ${this.saveButtons} ${this.doButtons} ${this.contentButtons}
       <slot name="tray-buttons-pre"></slot>
-      ${this.moreButtons}${this.menuButtons}
+      ${this.moreButtons}
     </div>`;
   }
   get menuButtons() {
     return html`
         <hax-tray-button
-          show-text-label
           show-tooltip
           align-horizontal="${this.collapsed ? "left" : "center"}"
           id="haxMenuAlign"
@@ -641,12 +656,11 @@ class HaxTray extends I18NMixin(
             this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
           }"
           index="${this.elementAlign == "left" ? "1" : "0"}"
-          tooltip="${this.t.moveMenu} ${
+          tooltip="${this.t.move} ${
       this.elementAlign == "left" ? this.t.right : this.t.left
     }"
         >
         </hax-tray-button>
-    </div>
     `;
   }
   get saveButtons() {
@@ -811,7 +825,6 @@ class HaxTray extends I18NMixin(
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
-  console.log(SuperDaemonInstance.context);
     SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
     SuperDaemonInstance.open();
   }
@@ -862,6 +875,9 @@ class HaxTray extends I18NMixin(
         <h4>
           ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
         </h4>
+        <div class="tray-detail-titlebar-actions">
+          ${this.menuButtons}
+        </div>
       </div>
       ${this.viewSourceTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}
@@ -1127,6 +1143,14 @@ class HaxTray extends I18NMixin(
         type: Boolean,
         reflect: true,
         attribute: "hide-panel-ops",
+      },
+      /**
+       * Ability to hide entire toolbar
+       */
+      hideToolbar: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-toolbar",
       },
       /**
        * Global preferences for HAX overall
@@ -1679,7 +1703,11 @@ class HaxTray extends I18NMixin(
                   );
                 }
               }
-              else if (key === "advanced" && prop === "padding-top" || 
+              else if (key === "advanced" &&
+              prop === "font-size" || 
+              prop === "background-color" || 
+              prop === "text-align" || 
+              prop === "padding-top" || 
               prop === "padding-bottom" || 
               prop === "padding-left" || 
               prop === "padding-right" ||
@@ -1884,6 +1912,12 @@ class HaxTray extends I18NMixin(
         this.shadowRoot.querySelector("#button").icon = "create";
       }
     }
+    if (!newValue) {
+      this.setAttribute('tabindex',"-1");
+     }
+     else {
+      this.removeAttribute('tabindex');
+     }
   }
   /**
    * Edit clicked, activate

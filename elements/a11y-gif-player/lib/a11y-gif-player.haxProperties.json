@@ -58,12 +58,6 @@
     ],
     "advanced": [
       {
-        "property": "longdesc",
-        "title": "Long Description",
-        "description": "Long descriptions of the GIF for accessibiility",
-        "inputMethod": "textarea"
-      },
-      {
         "property": "srcWithoutAnimation",
         "title": "Still Image",
         "description": "The URL to a still image version of your GIF.",
@@ -71,6 +65,12 @@
         "icon": "link",
         "validationType": "url",
         "required": true
+      },
+      {
+        "property": "longdesc",
+        "title": "Long Description",
+        "description": "Long descriptions of the GIF for accessibiility",
+        "inputMethod": "textarea"
       }
     ]
   },

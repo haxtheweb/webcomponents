@@ -28,8 +28,6 @@ body, html, :root {
   --hax-color-accent1: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
   --hax-color-accent1-text: #000000;
   --hax-color-menu-heading-color: #FFFFFF;
-  --hax-preview-button-bg: var(--haxcms-system-bg, black);
-  --hax-preview-button-color: white;
   --hax-ink-color: var(--haxcms-system-bg, black);
   --hax-panel-padding: 8px 0 8px 80px;
   --hax-panel-item-active: #FFFFFF;
@@ -40,8 +38,6 @@ body, html, :root {
   --hax-panel-item-text: #EEEEEE;
   --hax-tray-width: 350px;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
-  --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
-  --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
   --hax-export-dialog-import-button-bg: var(--haxcms-system-danger-color);
 
   /** Internals of the hax-body tag that can help with spacing normalization **/

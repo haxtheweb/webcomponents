@@ -414,6 +414,10 @@ class HAX extends HTMLElement {
           this.hidePanelOps = true;
         }
         HAXStore.haxTray.hidePanelOps = this.hidePanelOps;
+        if (this.hideToolbar === "hide-toolbar") {
+          this.hideToolbar = true;
+        }
+        HAXStore.haxTray.hideToolbar = this.hideToolbar;
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.elementAlign = this.elementAlign;
       }, 0);
@@ -462,6 +466,7 @@ class HAX extends HTMLElement {
     // now everyone else
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
+    tray.hideToolbar = this.hideToolbar;
     this.elementAlign = localStorageGet("hax-tray-elementAlign");
     if (
       !this.elementAlign ||
@@ -504,6 +509,18 @@ class HAX extends HTMLElement {
     if (this.__rendered) {
       // bind to the hax store global on change
       HAXStore.haxTray.offsetMargin = newValue;
+    }
+  }
+  get hideToolbar() {
+    return this.getAttribute("hide-toolbar");
+  }
+  set hideToolbar(newValue) {
+    if (newValue) {
+      this.setAttribute("hide-toolbar", "hide-toolbar");
+      if (this.__rendered) {
+        // bind to the hax store global on change
+        HAXStore.haxTray.hideToolbar = newValue;
+      }
     }
   }
   get hidePanelOps() {

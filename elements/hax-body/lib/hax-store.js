@@ -1113,11 +1113,42 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         case "hax-style-setting-change":
           Object.keys(detail.value).forEach((key) => {
             if (!key.startsWith("__")) {
-              if (detail.value[key] == "" || parseInt(detail.value[key]) == 0) {
+              if (detail.value[key] == "" || parseInt(detail.value[key]) == 0 || detail.value[key] == "none" || detail.value[key] == "auto" || detail.value[key] == "initial" || detail.value[key] == "unset") {
                 this.activeNode.style.removeProperty(key);
               }
               else {
-                this.activeNode.style[key] = detail.value[key] + "px";                
+                if (key === "background-color") {
+                  this.activeNode.style[key] = `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
+                  this.activeNode.style['color'] = `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
+                }
+                else if (key === "text-align") {
+                  this.activeNode.style[key] = detail.value[key];
+                }
+                else if (key === "font-size") {
+                  switch (detail.value[key]) {
+                    case "x-small":
+                      this.activeNode.style[key] = "0.8em";
+                      break;
+                    case "small":
+                      this.activeNode.style[key] = "0.9em";
+                      break;
+                    case "normal":
+                      this.activeNode.style.removeProperty(key);
+                      break;
+                    case "large":
+                      this.activeNode.style[key] = "1.2em";
+                      break;
+                    case "x-large":
+                      this.activeNode.style[key] = "1.4em";
+                      break;
+                    case "xx-large":
+                      this.activeNode.style[key] = "2em";
+                    break;
+                  }
+                }
+                else {
+                  this.activeNode.style[key] = detail.value[key] + "px";
+                }
               }
             }
           });
@@ -2605,6 +2636,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               _parent: "Parent window - _parent",
             },
           },
+        ],
+        developer: [
           {
             attribute: "title",
             title: "Title text",
@@ -2625,7 +2658,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               opener: "opener",
             },
           },
-        ],
+        ]
       },
     };
     // anything can be presented as a link

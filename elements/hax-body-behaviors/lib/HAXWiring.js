@@ -519,19 +519,45 @@ export class HAXWiring {
         description: "Prevent changes to this element and all its content",
         inputMethod: "boolean",
       });
-      // allow classes to be modified this way
       props.settings.advanced.push({
-        attribute: "class",
-        title: "Classes",
-        description: "CSS classes applied manually to the element",
-        inputMethod: "textfield",
+        attribute: "text-align",
+        title: "Text align",
+        description: "Horizontal alignment of text in the element.",
+        inputMethod: "select",
+        options: {
+          "": "",
+          "left": "left",
+          "center": "center",
+          "right": "right",
+          "justify": "justify",
+        },
+      });
+      props.settings.advanced.push({
+        attribute: "background-color",
+        title: "Background color",
+        description: "Accessible background colors for accenting content.",
+        inputMethod: "colorpicker",
+      });
+      props.settings.advanced.push({
+        attribute: "font-size",
+        title: "Font size",
+        description: "Pre-selected font variation",
+        inputMethod: "select",
+        options: {
+          "x-small": "x-small",
+          "small": "small",
+          "": "normal",
+          "large": "large",
+          "x-large": "x-large",
+          "xx-large": "xx-large",
+        },
       });
       // allow styles to be modified this way
       props.settings.advanced.push({
         attribute: "padding-top",
         title: "Padding top",
         step: 8,
-        max: 64,
+        max: 128,
         min: 0,
         inputMethod: "slider",
         suffix: "px",
@@ -540,7 +566,7 @@ export class HAXWiring {
         attribute: "padding-right",
         title: "Padding right",
         step: 8,
-        max: 64,
+        max: 128,
         min: 0,
         inputMethod: "slider",
         suffix: "px",
@@ -549,7 +575,7 @@ export class HAXWiring {
         attribute: "padding-bottom",
         title: "Padding bottom",
         step: 8,
-        max: 64,
+        max: 128,
         min: 0,
         inputMethod: "slider",
         suffix: "px",
@@ -558,13 +584,56 @@ export class HAXWiring {
         attribute: "padding-left",
         title: "Padding left",
         step: 8,
-        max: 64,
+        max: 128,
         min: 0,
         inputMethod: "slider",
         suffix: "px",
       });
-      // allow styles to be modified this way
       props.settings.advanced.push({
+        attribute: "margin-top",
+        title: "Margin top",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-right",
+        title: "Margin right",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-bottom",
+        title: "Margin bottom",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-left",
+        title: "Margin left",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      // allow classes to be modified this way
+      props.settings.developer.push({
+        attribute: "class",
+        title: "Classes",
+        description: "CSS classes applied manually to the element",
+        inputMethod: "textfield",
+      });
+      // allow styles to be modified this way
+      props.settings.developer.push({
         attribute: "style",
         title: "Styles",
         description: "Custom CSS styles as applied to the element",
