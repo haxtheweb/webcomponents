@@ -18,8 +18,8 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     this.t.newPage = "Page";
     this.t.copy = "Copy";
     this.t.newChildPage = "Child";
-    this.t.duplicatePage = "Duplicate";
-    this.t.docxImport = "Import .DOCX";
+    this.t.duplicatePage = "Clone";
+    this.t.docxImport = "Import pages (docx)";
     this.icon = "hax:add-page";
     this.voiceCommand = "add page";
     this.dark = false;
