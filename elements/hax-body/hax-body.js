@@ -1824,18 +1824,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (HAXStore._isSandboxed && tag === "webview") {
             tag = "iframe";
           }
-          let props = HAXStore.elementList[tag];
-          if (!!node) {
+          if (!!node && node.tagName !== "PAGE-BREAK") {
             this._showContextMenu(this.contextMenus.plate);
           } else {
             this._hideContextMenu(this.contextMenus.plate);
           }
           // try and work against anything NOT a P tag
+          let props = HAXStore.elementList[tag];
           if (
             typeof props !== typeof undefined &&
             !HAXStore.isTextElement(node)
           ) {
-            //TODO hide text
+            // hide text
             this._hideContextMenu(this.contextMenus.text);
             props.element = node;
           } else {

@@ -314,6 +314,13 @@ class HaxTray extends I18NMixin(
             black
           );
         }
+        #haxMenuAlign {
+          --simple-toolbar-button-width: 18px;
+          --simple-toolbar-button-height: 18px;
+          margin: 4px 0px 0px;
+          height: 24px;
+          width: 24px;
+        }
         .detail,
         #tray-detail {
           flex: 1 1 auto;
@@ -381,9 +388,6 @@ class HaxTray extends I18NMixin(
         }
         .tray-detail-titlebar .tray-detail-titlebar-actions {
           float: right;
-        }
-        :host([element-align]) .tray-detail-titlebar .tray-detail-titlebar-actions {
-          float: left;
         }
         #settingsform {
           margin: -8px -8px 0;
@@ -874,10 +878,10 @@ class HaxTray extends I18NMixin(
       <div class="tray-detail-titlebar">
         <h4>
           ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
-        </h4>
-        <div class="tray-detail-titlebar-actions">
+          <div class="tray-detail-titlebar-actions">
           ${this.menuButtons}
         </div>
+        </h4>
       </div>
       ${this.viewSourceTemplate}
       ${this.contentMapTemplate} ${this.contentEditTemplate}

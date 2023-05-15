@@ -121,19 +121,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #editbutton[icon="icons:save"]:focus,
         #editbutton[icon="icons:save"]:active,
         #editbutton[icon="icons:save"]:hover {
-          background-color: var(--simple-colors-default-theme-light-green-2);
+          background-color: var(--simple-colors-default-theme-light-green-1);
         }
         #addmenubutton,
         #addmenubutton haxcms-button-add,
         #editbutton[icon="icons:save"] {
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-light-green-2);
+          --simple-toolbar-border-color: var(--simple-colors-default-theme-light-green-1);
           color: var(--simple-colors-default-theme-green-11);
         }
         
         #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-red-2);
+          --simple-toolbar-border-color: var(--simple-colors-default-theme-red-1);
           margin-right: 64px;
         }
         #deletebutton:hover,
@@ -142,7 +142,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #cancelbutton:hover,
         #cancelbutton:active,
         #cancelbutton:focus {
-          background-color: var(--simple-colors-default-theme-red-2);
+          background-color: var(--simple-colors-default-theme-red-1);
         }
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,

@@ -340,13 +340,13 @@ export class PageBreak extends IntersectionObserverMixin(
         if (this[propName] === "node") {
           iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
           this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]:hover) .mid::before {
+          :host([data-hax-ray]) .mid::before {
             content: "${this.t.pageBreak}";
           }`;
         } else {
           iconPath = SimpleIconsetStore.getIcon("hax:page-details");
           this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]:hover) .mid::before {
+          :host([data-hax-ray]) .mid::before {
             content: "${this.t.pageDetails}";
           }`;
         }
@@ -370,7 +370,7 @@ export class PageBreak extends IntersectionObserverMixin(
           opacity: 0.2;
           background-position: center;
           background-repeat: no-repeat;
-          transition: all 0.2s linear;
+          transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
         }
         .mid {
           border: none;
@@ -383,13 +383,16 @@ export class PageBreak extends IntersectionObserverMixin(
         :host([data-hax-ray]:hover) {
           opacity: 1;
         }
-        :host([data-hax-ray]:hover) .mid::before {
+        :host([data-hax-active]) {
+          opacity: 1;
+        }
+        :host([data-hax-ray]) .mid::before {
           font-weight: bold;
           color: #000000;
           background-color: #ffffff;
           font-size: 16px;
-          left: calc(50% - 2.5em);
-          top: -16px;
+          left: calc(50% - 3em);
+          top: -8px;
           position: relative;
           height: 0;
           line-height: 36px;
