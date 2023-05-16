@@ -41,8 +41,8 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "clean-one",
-      "path": "@lrnwebcomponents/clean-one/clean-one.js",
+      "element": "terrible-outlet-themes",
+      "path": "@lrnwebcomponents/terrible-themes/lib/terrible-outlet-themes.js",
       "name": "Course theme",
       "variables": {
         "image": "assets/banner.jpg",

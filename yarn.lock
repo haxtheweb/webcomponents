@@ -2588,6 +2588,15 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/a11y-behaviors/-/a11y-behaviors-4.2.0.tgz#081ab6dde7cd7bf52989df74d08500ee0ff075ee"
   integrity sha512-iVhsyEjmo6gcEW5Q6Y+V2mblaHz4aq+TTuvxvEaamSwp4nfWETYT/I2nFOZr2xN692AjiaHIBHiGA/FO/gzCGw==
 
+"@lrnwebcomponents/a11y-collapse@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/a11y-collapse/-/a11y-collapse-4.2.0.tgz#2ad42ea3bd30acfb47a8b82d0464e375df54629c"
+  integrity sha512-0ur+3TOIpsZBLxeopbeLvzDGQboi7JH4g9DPbqEuRhtaDVBJMZwI8OJM53ZQpGQm1rd8Bb+uOLLwL6lZP/qKUg==
+  dependencies:
+    "@lrnwebcomponents/simple-icon" "^4.2.0"
+    "@lrnwebcomponents/simple-tooltip" "^4.2.0"
+    lit "^2.6.1"
+
 "@lrnwebcomponents/a11y-menu-button@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/a11y-menu-button/-/a11y-menu-button-4.2.0.tgz#036c85f93877c9842b5da035071e86a3224dd6fe"
@@ -2633,6 +2642,18 @@
     "@lrnwebcomponents/simple-colors" "^4.2.0"
     lit "^2.6.1"
 
+"@lrnwebcomponents/anchor-behaviors@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/anchor-behaviors/-/anchor-behaviors-4.2.0.tgz#bd3241c2d93ea1260337b3bd645681b9f0a65e21"
+  integrity sha512-4ul43m044JY1OzdKcnz8eCKS9ggdLTGCVXUrKsKw6LGMenv1uVg9A0EgTqyoer9N/JDndQzGxPyhuDDmrgBWaQ==
+
+"@lrnwebcomponents/beaker-broker@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/beaker-broker/-/beaker-broker-4.2.0.tgz#1549218090ef1b8bbbc814af01cf8c27582f0063"
+  integrity sha512-JBAc7jKFaLRFRTdrrAehTPNgNxz0AWFLrtHXPVz6OZgeryZWrynHKkTNhRyz1Waw4Eryi1wU4othW/H8Qt4XDQ==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
+
 "@lrnwebcomponents/chartist-render@^4.1.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/chartist-render/-/chartist-render-4.2.0.tgz#9964bc7edcbd245fadde2362190addc4b7deb9b2"
@@ -2645,6 +2666,17 @@
     chartist-plugin-axistitle "^0.0.7"
     chartist-plugin-fill-donut "^0.1.4"
     chartist-plugin-pointlabels "0.0.6"
+    lit "^2.6.1"
+
+"@lrnwebcomponents/clean-two@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/clean-two/-/clean-two-4.2.0.tgz#03686c7e5322745d28e6650954a9a3106571f766"
+  integrity sha512-a2YMa5iePeNoB9bB3k7722abMeH35jCz0ZdbWajWEXRdThDu9fVmvVUutQEcMnj8YM3Pr+k7ZxbZyBQwqqKwKA==
+  dependencies:
+    "@lrnwebcomponents/haxcms-elements" "^4.2.0"
+    "@lrnwebcomponents/q-r" "^4.2.0"
+    "@lrnwebcomponents/simple-colors" "^4.2.0"
+    "@lrnwebcomponents/utils" "^4.2.0"
     lit "^2.6.1"
 
 "@lrnwebcomponents/code-editor@^4.2.0":
@@ -2677,6 +2709,11 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/deduping-fix/-/deduping-fix-3.0.0.tgz#c2341672c364d59405d7f3e4c63e2b58008c0bb0"
   integrity sha512-nhgzz/1qlWclHL7c8GjPoSHtUo1kgITtzFt8mXZQRhJN/mNDN3hl5xx6OzXsNUZvCmonARcV9/lAp4QZ5ONWpQ==
 
+"@lrnwebcomponents/deduping-fix@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/deduping-fix/-/deduping-fix-4.0.0.tgz#15604e0ae4a39ed2d5a59e0f2b3ff76a6fbe2317"
+  integrity sha512-++MM/E4zN1Id52JV6P2O4EhGL/56AZ1Oq9H1wDWKU4JmNDIgZVYEv0kwmFJ5ldXfJS/N3hQchaUhkkXSZk8iKA==
+
 "@lrnwebcomponents/dl-behavior@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/dl-behavior/-/dl-behavior-4.2.0.tgz#ef83032acf68c4c480638a78727ba65f90190290"
@@ -2686,6 +2723,17 @@
   version "4.0.25"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/drag-n-drop/-/drag-n-drop-4.0.25.tgz#93a2550052980a9d76077f9164561bb8d67ca011"
   integrity sha512-1b3oObZPg4DI80nKLCuAdpA50Gpwb1VK9aiPQoMjXEQ5hX2A2wG0xJgeAHxnfLviVs8uwzr02T8nl1XVvU52dg==
+
+"@lrnwebcomponents/editable-outline@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/editable-outline/-/editable-outline-4.2.0.tgz#b536d75b1403976296d478212ddd565727d50b59"
+  integrity sha512-OmFSh2xpDbziHIIdsZ/AKqFCnn5egmvj/ZEPcWk5WqUMZ7PoXxWwvbAKBsS5Z57tzts06DNBY8v2o8XFyLHP7A==
+  dependencies:
+    "@lrnwebcomponents/json-outline-schema" "^4.2.0"
+    "@lrnwebcomponents/simple-icon" "^4.2.0"
+    "@lrnwebcomponents/utils" "^4.2.0"
+    "@polymer/iron-a11y-keys" "^3.0.1"
+    "@polymer/polymer" "^3.4.1"
 
 "@lrnwebcomponents/editable-table@^4.2.0":
   version "4.2.0"
@@ -2758,6 +2806,13 @@
     "@vaadin/vaadin-split-layout" "^4.1.0"
     lit "^2.2.8"
 
+"@lrnwebcomponents/git-corner@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/git-corner/-/git-corner-4.2.0.tgz#00842dd04b8cbd4cd23f30a7edc94d37a16b80ee"
+  integrity sha512-L4EgfWQRDbdhRd4xUbnRzn5ojkaqsWt0AmA4Pc8L4pjfloImzrP4/rKAXXvTyo+z7CQCu7L3ASIb8SbyHQsTGQ==
+  dependencies:
+    lit "^2.6.1"
+
 "@lrnwebcomponents/glossary-term@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/glossary-term/-/glossary-term-4.1.0.tgz#dd4f69c3ef1439f697b0bc7c22ffbfd75e83135c"
@@ -2789,7 +2844,7 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/hax-body-behaviors/-/hax-body-behaviors-4.2.0.tgz#934dcbbd9a7d5d1ac87a66fa7aeb44b6c05b50d7"
   integrity sha512-oYcKrvdyVNGhArk1pMCc9wBLYxq1PVfPKGmiGWgPB9BVWq6eMrNNlBSdqS/OUx+hBvSWtDpipTvL0egVsroEmQ==
 
-"@lrnwebcomponents/hax-body@^4.1.0":
+"@lrnwebcomponents/hax-body@^4.1.0", "@lrnwebcomponents/hax-body@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/hax-body/-/hax-body-4.2.0.tgz#f0fabc374e08fb6eb623514b6c68a913fc946230"
   integrity sha512-HMYA21ConI+x+RhZlNOPK3IvEGOLP1LH1Nz8DyyOvcvqMFFtdtPLtySYxlWDnjZC2Tl304+R0k24l7PhFLM6uw==
@@ -2834,6 +2889,50 @@
   integrity sha512-zA9ysl+LtwCPmSg4h7GyxjD7AI4Wwx723bZrFtHC90ByTw231535HyWvMxc9ZIBqqtTX/3hs8j+wYfq4M41YFQ==
   dependencies:
     "@lrnwebcomponents/simple-icon" "^4.2.0"
+
+"@lrnwebcomponents/haxcms-elements@^4.0.4", "@lrnwebcomponents/haxcms-elements@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/haxcms-elements/-/haxcms-elements-4.2.0.tgz#3738df5242e246e42beef85f6c21179051e20a3e"
+  integrity sha512-+Q5dTQTvYayXES9pi/u7C+4Yw8QZLNrmOxtvIYHTpdkgs1fQGsTDl7b6tXtJfKQ7lHeLW/LcVNkxNb14iDApcg==
+  dependencies:
+    "@github/time-elements" "3.1.4"
+    "@lrnwebcomponents/anchor-behaviors" "^4.2.0"
+    "@lrnwebcomponents/beaker-broker" "^4.2.0"
+    "@lrnwebcomponents/clean-two" "^4.2.0"
+    "@lrnwebcomponents/editable-outline" "^4.2.0"
+    "@lrnwebcomponents/editable-table" "^4.2.0"
+    "@lrnwebcomponents/git-corner" "^4.2.0"
+    "@lrnwebcomponents/hax-body" "^4.2.0"
+    "@lrnwebcomponents/hax-body-behaviors" "^4.2.0"
+    "@lrnwebcomponents/json-outline-schema" "^4.2.0"
+    "@lrnwebcomponents/jwt-login" "^4.2.0"
+    "@lrnwebcomponents/license-element" "^4.2.0"
+    "@lrnwebcomponents/lunr-search" "^4.2.0"
+    "@lrnwebcomponents/map-menu" "^4.2.0"
+    "@lrnwebcomponents/portal-launcher" "^4.2.0"
+    "@lrnwebcomponents/q-r" "^4.2.0"
+    "@lrnwebcomponents/schema-behaviors" "^4.2.0"
+    "@lrnwebcomponents/simple-colors" "^4.2.0"
+    "@lrnwebcomponents/simple-datetime" "^4.2.0"
+    "@lrnwebcomponents/simple-fields" "^4.2.0"
+    "@lrnwebcomponents/simple-icon" "^4.2.0"
+    "@lrnwebcomponents/simple-icon-picker" "^4.2.0"
+    "@lrnwebcomponents/simple-login" "^4.2.0"
+    "@lrnwebcomponents/simple-picker" "^4.2.0"
+    "@lrnwebcomponents/simple-toast" "^4.2.0"
+    "@lrnwebcomponents/simple-tooltip" "^4.2.0"
+    "@lrnwebcomponents/super-daemon" "^4.2.0"
+    "@polymer/app-layout" "^3.0.2"
+    "@polymer/iron-ajax" "^3.0.1"
+    "@polymer/iron-list" "^3.0.2"
+    "@polymer/paper-dialog-scrollable" "^3.0.1"
+    "@polymer/paper-input" "^3.0.2"
+    "@polymer/paper-item" "^3.0.1"
+    "@polymer/paper-toast" "^3.0.1"
+    "@polymer/polymer" "^3.4.1"
+    "@vaadin/router" "1.7.4"
+    mobx "6.7.0"
+    web-social-share "8.0.1"
 
 "@lrnwebcomponents/hero-banner@4.0.4":
   version "4.0.4"
@@ -2899,6 +2998,26 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/intersection-element/-/intersection-element-4.0.4.tgz#7bfd22480b66a20e7e70f92046261b375a30f6f7"
   integrity sha512-UBU1c9yaYH+orG7OVTmznJ/WpQKSmqQILQdU8czBagSn4TeqauX2TS6ipN1O9ZMK8sR920yZufR53KB71usQDA==
 
+"@lrnwebcomponents/json-outline-schema@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/json-outline-schema/-/json-outline-schema-4.2.0.tgz#b15d9282462ddd24659a4939035425498823a4ae"
+  integrity sha512-9tDqYrb+cLcHfQZoGQWKINXg0QxJA4AET3lqHGgjfUZpkjvicoyWj4vj0bDKg14aF0FMCS67l9rW82QqVBMuvg==
+
+"@lrnwebcomponents/jwt-login@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/jwt-login/-/jwt-login-4.2.0.tgz#20396364344cd49ca7f3bc6f994e71d42930ad5b"
+  integrity sha512-baW7ZuazceejwskRF2NGhY+ppopr7sOiYnkSX5ktAm3Z+CTSSdb7VgQdkQVfl51c2PAchTfaaLG79Lc/uZg++w==
+  dependencies:
+    lit "^2.6.1"
+
+"@lrnwebcomponents/license-element@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/license-element/-/license-element-4.2.0.tgz#40591061d369197959176a7581beef6aebf1a18a"
+  integrity sha512-BSrNl5Zd/ogdpUqq2We87+iTB6wAWsQY2p/NGsqFrArSswEqBS1r3/O/SFaqu+CLSJGN0KTpAAcSJwrbkB4WCA==
+  dependencies:
+    "@lrnwebcomponents/schema-behaviors" "^4.2.0"
+    lit "^2.6.1"
+
 "@lrnwebcomponents/lrn-aside@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrn-aside/-/lrn-aside-4.0.4.tgz#60d1d8ba4b891520d3394ba06d7aa7a75bcff597"
@@ -2921,6 +3040,15 @@
     "@lrnwebcomponents/simple-modal" "^4.2.0"
     lit "^2.6.1"
 
+"@lrnwebcomponents/lrndesign-avatar@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrndesign-avatar/-/lrndesign-avatar-4.2.0.tgz#b7ee47f8d6c3eaedbc173c40cb6ad4acbe98dd79"
+  integrity sha512-KsO3Ax75e0vOhuShI+t2BmWyu2rl17ubZjxPHCGf/NKtdZm8iJomp2pzac29mU+n9s/4RwCWmt0jGzX23hlPbg==
+  dependencies:
+    "@lrnwebcomponents/paper-avatar" "^4.2.0"
+    "@lrnwebcomponents/simple-colors" "^4.2.0"
+    lit "^2.6.1"
+
 "@lrnwebcomponents/lrndesign-blockquote@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrndesign-blockquote/-/lrndesign-blockquote-4.0.4.tgz#cebd62073207a01b01b2c5103ac07655c03fd843"
@@ -2940,6 +3068,15 @@
     "@polymer/paper-styles" "^3.0.0"
     "@polymer/polymer" "^3.3.1"
 
+"@lrnwebcomponents/lunr-search@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lunr-search/-/lunr-search-4.2.0.tgz#fe418e71cdb1fc09e373fe9dea14a450dfb63ca6"
+  integrity sha512-Pu+wyrp8SLP3R3C/YxLs91xr4S+LsVVPIZL4PP/bZ7sT72t5QBL1ActQPYebdcGD8tsSChjuS82ru35UmtWLEw==
+  dependencies:
+    "@lrnwebcomponents/es-global-bridge" "^4.0.0"
+    lit "^2.6.1"
+    lunr "2.3.9"
+
 "@lrnwebcomponents/magazine-cover@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/magazine-cover/-/magazine-cover-4.0.4.tgz#31a91f0be395370a203bf35ac6025ecd0497e13d"
@@ -2947,6 +3084,16 @@
   dependencies:
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     lit "2.0.0"
+
+"@lrnwebcomponents/map-menu@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/map-menu/-/map-menu-4.2.0.tgz#83202814c8e9ef22447b9e2cd299f481b4a690f1"
+  integrity sha512-vzGEmIgMEyxMwlwcqLnHm3ea5CN6BSTOl0y20HYwzGUJvkERS2fTquMU9sga2xRP2hYk5NRNxt09Eg6Whq1iTw==
+  dependencies:
+    "@lrnwebcomponents/a11y-collapse" "^4.2.0"
+    "@lrnwebcomponents/lrndesign-avatar" "^4.2.0"
+    "@lrnwebcomponents/simple-icon" "^4.2.0"
+    lit "^2.6.1"
 
 "@lrnwebcomponents/material-progress@4.1.0":
   version "4.1.0"
@@ -3020,7 +3167,7 @@
     "@lrnwebcomponents/schema-behaviors" "^4.2.0"
     lit "^2.6.1"
 
-"@lrnwebcomponents/paper-audio-player@4.1.0", "@lrnwebcomponents/paper-audio-player@^4.1.0":
+"@lrnwebcomponents/paper-audio-player@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/paper-audio-player/-/paper-audio-player-4.1.0.tgz#8f0f6e32cb07a3f8e396eaf3279ebead5ef14215"
   integrity sha512-sX2+U+1TjsaAaoT7DMTMeGBE/v1crIrsDpl50tLdG/CZ8fsEkh8xLpErwO4w+/iUe5XEAD7bJgKFcZLK6nL1jg==
@@ -3034,6 +3181,20 @@
     "@polymer/paper-ripple" "^3.0.0"
     "@polymer/polymer" "^3.4.1"
 
+"@lrnwebcomponents/paper-avatar@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/paper-avatar/-/paper-avatar-4.2.0.tgz#0a6dd214549e34bbe06ff22e80151b455952c540"
+  integrity sha512-n5u21ZWjsMmHaGCzp6a4tzgKjlU+XwQf5N2Pawd0ysUE4A3XIyW6/i5W45KZRyy3QaDlwop9OmyCRy3csz1Sxw==
+  dependencies:
+    "@lrnwebcomponents/es-global-bridge" "^4.0.0"
+    "@lrnwebcomponents/simple-icon" "^4.2.0"
+    lit "^2.6.1"
+
+"@lrnwebcomponents/portal-launcher@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/portal-launcher/-/portal-launcher-4.2.0.tgz#9062162b1ced4008a77b6ff2188bf3a04f1d54cc"
+  integrity sha512-so02WJvI3xSoTA1PofSq43QUafLSNsaC//cbqR2WzWQnMrbnbKLY6Trv/M2mPBCPeCxWdJz3xHopLeuIOERhGQ==
+
 "@lrnwebcomponents/promo-tile@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/promo-tile/-/promo-tile-4.0.4.tgz#92e69c3e555b3d607e3afdfd5f3ef6d034ee12bc"
@@ -3044,12 +3205,20 @@
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     "@polymer/polymer" "^3.3.1"
 
+"@lrnwebcomponents/q-r@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/q-r/-/q-r-4.2.0.tgz#6f57f784c41d136c49ea3e06c95738ade9960554"
+  integrity sha512-I297mBEQFqUuOXd81+tI1Unle47ds8ldDOxeNzQtJABTsHfEl8xjxVBye8SNz/WIxTqhWkrPYuoksRnWNEGwsQ==
+  dependencies:
+    "@lrnwebcomponents/es-global-bridge" "^4.0.0"
+    lit "^2.6.1"
+
 "@lrnwebcomponents/radio-behaviors@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/radio-behaviors/-/radio-behaviors-4.2.0.tgz#6458ff806052112a21ced8a5f63a474405ddac66"
   integrity sha512-OSSJ2XKiiBEO00S7j7IZEqFlXWAbggwVDSTTYhX58UeWDRT8wP16N9zM/SvfWXLEWgTwYaXUFYzEAPS55PRTAQ==
 
-"@lrnwebcomponents/random-image@4.0.4", "@lrnwebcomponents/random-image@^4.0.4":
+"@lrnwebcomponents/random-image@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/random-image/-/random-image-4.0.4.tgz#7350bad290ce23c77e3abead9e133844edd91cb1"
   integrity sha512-N2GRX4qFDdeTLYLQmJ/Oid5XN1fVXHwKEGNr1+qjG82TPmxb4RX+oJRrm/E5uLj5mUZHajQBFCR66BEwmm2abA==
@@ -3164,6 +3333,13 @@
     "@lrnwebcomponents/simple-icon" "^4.0.4"
     "@lrnwebcomponents/simple-tooltip" "^4.0.1"
     "@polymer/polymer" "^3.3.1"
+
+"@lrnwebcomponents/simple-datetime@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/simple-datetime/-/simple-datetime-4.2.0.tgz#aa6d358ef68351d14959cca481e0410de3c6023d"
+  integrity sha512-SNT4i6pY70//Pnl1OCYKuKJqaVF9wyFMTjw9V4y0bDQ/kH9PIzVApvYBnJU269ERKU3E7+/jCFcaxoRLQQhVQg==
+  dependencies:
+    "@polymer/polymer" "^3.4.1"
 
 "@lrnwebcomponents/simple-fields@^4.0.4", "@lrnwebcomponents/simple-fields@^4.2.0":
   version "4.2.0"
@@ -3383,7 +3559,7 @@
     "@lrnwebcomponents/simple-icon" "^4.2.0"
     lit "^2.6.1"
 
-"@lrnwebcomponents/wave-player@4.0.4", "@lrnwebcomponents/wave-player@^4.0.4":
+"@lrnwebcomponents/wave-player@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/wave-player/-/wave-player-4.0.4.tgz#030b9bca57709b6dfdc350319122ad0d71f52406"
   integrity sha512-X60r6tELSIQQd9mRlyVv9/djowx8uGhV64ed2qZ5YSAGrjPVs4N7qrHTZKz9V8GT4dfmkU6fnq+2QifDvC4Dlw==
