@@ -111,8 +111,6 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
 					<td>
 						<a href="jobs.html" class="menu">Jobs</a>
 					</td>
-					<t
-</body>td>
 					<td width="25"></td>
 					<td>
 						<a href="info.html" class="menu">Personal Info</a>

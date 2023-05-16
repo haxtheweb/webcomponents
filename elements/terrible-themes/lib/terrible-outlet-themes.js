@@ -59,7 +59,7 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
     return html`
 <table align="left" border="0" width="750">
 <tbody><tr>
-	<td colspan="2"><img src="${new URL("lib/assets/header.jpg", import.meta.url).href}/../lips.jpg" width="125" height="74" border="0" alt=""></td>
+	<td colspan="2"><img src="${new URL("assets/header.jpg", import.meta.url).href}/../lips.jpg" width="125" height="74" border="0" alt=""></td>
 	<td valign="middle"><h1>Ac|d's Internet Outlet</h1></td>
 </tr>
 <tr>

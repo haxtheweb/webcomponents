@@ -211,45 +211,16 @@ class TerribleThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitEleme
 			<td>
 		<table border="0" cellspacing="0" cellpadding="0">
 		<tbody><tr valign="top">
-			<td width="400" align="left">
-				<h3>News-Stand
-				</h3>
-			</td>
-			<td width="10"></td>
-			<td width="330" align="right">
+			<td>
 				<table width="100%" cellspacing="0" cellpadding="0" border="0">
-				<tbody><tr height="300" valign="top">
-					<td><!--dynamic -->
-						<h3>4-Oh-Shots
-						<table class="photofooter" cellspacing="0" cellpadding="0" border="1" width="300">
-						<tbody><tr>
-							<td align="center">
-							
-							</td>
-						</tr>	
-							<tr><td>
-							It may look like an armchair...but it's the office of the legendary BigNateyK
-							</td>
-						</tr>
-						</tbody></table>
-						</h3>
-					</td>
-				</tr>
+				<tbody>
 				<tr>
 					<td id="contentcontainer">
+          <h3>4-Oh-Shots</h3>
+
           <section id="slot">
             <slot></slot>
           </section> 
-          <!--dynamic -->
-						<h3>Newest Additions
-						<table width="100%" border="1" rules="groups" cellspacing="0" cellpadding="0" class="happeningHeading">
-						<tbody><tr bgcolor="#FFD1DF">
-							<td align="left">Title</td>
-							<td align="right">Added on</td>
-						</tr>
-						<tr bgcolor="#FF9DBB" onmouseover="this.style.background=&quot;#D5FFE1&quot;;" onmouseout="this.style.background=&quot;#FF9DBB&quot;;"><td align="left"><a href="art.asp?gallery=9&amp;file=166">Fallen Angel</a></td><td align="right">7/18/2005 5:45:00 PM</td></tr><tr bgcolor="#FFD1DF" onmouseover="this.style.background=&quot;#D5FFE1&quot;;" onmouseout="this.style.background=&quot;#FFD1DF&quot;;"><td align="left"><a href="art.asp?gallery=9&amp;file=165">Kingdom of Loathing - Balsis</a></td><td align="right">7/18/2005 5:43:00 PM</td></tr><tr bgcolor="#FF9DBB" onmouseover="this.style.background=&quot;#D5FFE1&quot;;" onmouseout="this.style.background=&quot;#FF9DBB&quot;;"><td align="left"><a href="art.asp?gallery=9&amp;file=164">Kingdom of Loathing - Firebot</a></td><td align="right">7/18/2005 5:42:00 PM</td></tr><tr bgcolor="#FFD1DF" onmouseover="this.style.background=&quot;#D5FFE1&quot;;" onmouseout="this.style.background=&quot;#FFD1DF&quot;;"><td align="left"><a href="art.asp?gallery=9&amp;file=163">Kingdom of Loathing - Jared Cyberpunk'd</a></td><td align="right">7/18/2005 5:41:00 PM</td></tr><tr bgcolor="#FF9DBB" onmouseover="this.style.background=&quot;#D5FFE1&quot;;" onmouseout="this.style.background=&quot;#FF9DBB&quot;;"><td align="left"><a href="art.asp?gallery=9&amp;file=162">Kingdom of Loathing - Ridiculously Huge Sword</a></td><td align="right">7/18/2005 5:40:00 PM</td></tr>
-						</tbody></table>
-						</h3>
 					</td>
 				</tr>
 				</tbody></table>

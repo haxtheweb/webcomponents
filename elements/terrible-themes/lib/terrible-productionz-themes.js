@@ -32,7 +32,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
     });
     document.body.style.backgroundColor = "#000000";
     document.body.style.color = "#D2D2D2";
-    document.body.style.backgroundImage = `${new URL("lib/assets/header.jpg", import.meta.url).href}/../productionzbg.jpg`;
+    document.body.style.backgroundImage = `url(${new URL("assets/header.jpg", import.meta.url).href}/../productionzbg.jpg)`;
   }
   /**
    * LitElement style callback
@@ -49,6 +49,15 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
         :host {
           display: block;
         }
+
+        .title-text {
+          font-family: 'Caveat', cursive;
+          color: lime;
+          background-position-x: -75px;
+          background-repeat: no-repeat;
+          background-position-y: center;
+        }
+
         a
         {
           color: lime;
@@ -89,11 +98,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
 <table width="800" border="0" cellpadding="0" cellspacing="0">
 	<tbody><tr>
 		<td width="800" colspan="5" align="center">
-			<img src="${new URL("lib/assets/header.jpg", import.meta.url).href}/../HEADER.jpg" border="0" align="absbottom">
+			<img src="${new URL("assets/header.jpg", import.meta.url).href}/../HEADER.jpg" border="0" align="absbottom">
 		</td>
 	</tr>
 	<tr>
-		<td width="8" background="${new URL("lib/assets/header.jpg", import.meta.url).href}/../sidefilm.jpg" valign="top"> </td>
+		<td width="8" background="${new URL("assets/header.jpg", import.meta.url).href}/../sidefilm.jpg" valign="top"> </td>
 		<td width="128" valign="top">
 			<br>
 			&nbsp;&nbsp;&nbsp;<a href="index.html" class="sidebar">Home</a><br><br>
@@ -117,11 +126,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
 			<font size="4">&nbsp;Sites of Interest
 			<hr color="#252F26">
 			<div align="center">
-						<a href="http://www.acidscorpio.com/" target="_blank"><img src="${new URL("lib/assets/header.jpg", import.meta.url).href}/../acid88.gif" border="0" width="88" height="31" vspace="3"></a><br>
+						<a href="http://www.acidscorpio.com/" target="_blank"><img src="${new URL("assets/header.jpg", import.meta.url).href}/../acid88.gif" border="0" width="88" height="31" vspace="3"></a><br>
 			</div>
 			<br><br><br>
 		</font></font></font></td>
-		<td width="8" background="${new URL("lib/assets/header.jpg", import.meta.url).href}/../sidefilm.jpg" valign="top"> </td>
+		<td width="8" background="${new URL("assets/header.jpg", import.meta.url).href}/../sidefilm.jpg" valign="top"> </td>
 		
 		<td width="20"> </td>
 		
@@ -130,8 +139,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
 		THIS IS THE PLACE WHERE THE MAIN BODY FOR THE DOCs GOES
 		********************************************************-->
 		<br><br>
-			<img src="${new URL("lib/assets/header.jpg", import.meta.url).href}/../productionnotes.jpg" width="500" height="36" border="0" alt="">
-			<br><br>
+      <h1 class="title-text" style="background-image: url(${new URL("assets/header.jpg", import.meta.url).href}/../movies.jpg)">Movies</h1>
 			<table border="1" cellpadding="0" cellspacing="0" width="500">
 			<!--This is the begining of a block of code for the posting "system"-->
 			<!--<script language="JavaScript">
@@ -188,6 +196,10 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.__link = document.createElement("link");
+    this.__link.rel = "stylesheet";
+    this.__link.href = "https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans&family=Press+Start+2P&display=swap";
+    document.head.appendChild(this.__link);
   }
   /**
    * life cycle, element is removed from the DOM
@@ -196,6 +208,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    this.link.remove();
     super.disconnectedCallback();
   }
   /**

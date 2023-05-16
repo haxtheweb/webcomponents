@@ -41,7 +41,7 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "terrible-outlet-themes",
+      "element": "terrible-productionz-themes",
       "path": "@lrnwebcomponents/terrible-themes/lib/terrible-outlet-themes.js",
       "name": "Course theme",
       "variables": {
