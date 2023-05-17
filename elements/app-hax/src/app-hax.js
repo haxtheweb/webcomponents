@@ -143,6 +143,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
 
   constructor() {
     super();
+    this.unlockComingSoon = false;
     this.t = this.t || {};
 
     this.t = {
@@ -223,6 +224,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/app/tour",
+    });
+
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Unlock hidden features",
+      icon: "hax:hax2022",
+      tags: ["Developer", "features","hidden"],
+      value: {
+        target: this,
+        method: "fireUnlocked",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/unlockAll",
+      context: [">"],
     });
     SuperDaemonInstance.defineOption({
       title: "Go to site",
@@ -537,7 +553,10 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       //console.warn(e);
     }
   }
-
+  fireUnlocked() {
+    store.appEl.playSound("coin2");
+    this.unlockComingSoon = true;
+  }
   // eslint-disable-next-line class-methods-use-this
   logout() {
     window.dispatchEvent(
@@ -1175,6 +1194,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   templateCreate() {
     return html`<app-hax-steps
       @promise-progress-finished="${this.siteReadyToGo}"
+      ?unlock-coming-soon="${this.unlockComingSoon}"
     ></app-hax-steps>`;
   }
 

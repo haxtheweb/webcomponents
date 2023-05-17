@@ -43,6 +43,7 @@ export class AppHaxSteps extends SimpleColors {
 
   constructor() {
     super();
+    this.unlockComingSoon = false;
     this.windowControllers = new AbortController();
     this.nameTyped = "";
     this.stepRoutes = [];
@@ -89,6 +90,7 @@ export class AppHaxSteps extends SimpleColors {
       step: { type: Number, reflect: true },
       stepRoutes: { type: Array },
       themeNames: { type: Array },
+      unlockComingSoon: { type: Boolean, reflect:true, attribute: "unlock-coming-soon" },
       loaded: { type: Boolean, reflect: true },
       appSettings: { type: Object },
       nameTyped: { type: String },
@@ -953,19 +955,19 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="technology"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="business"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="art"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       default:
@@ -989,7 +991,7 @@ export class AppHaxSteps extends SimpleColors {
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       case "import":
@@ -1121,7 +1123,7 @@ export class AppHaxSteps extends SimpleColors {
                   label="&gt; Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
-                  coming-soon
+                  ?coming-soon="${!this.unlockComingSoon}"
                 ></app-hax-site-button>
                 
               </div>
