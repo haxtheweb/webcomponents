@@ -2040,6 +2040,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
+    SuperDaemonInstance.questionTags = [
+      {
+        value: "*",
+        label: "What can I do?",
+      },
+      {
+        value: "media",
+        label: "Where can I find media?",
+      },
+      {
+        value: "edit",
+        label: "Edit page",
+      },
+    ];
 
     // emoji picker
     SuperDaemonInstance.defineOption({

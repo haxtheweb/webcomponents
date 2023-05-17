@@ -30,6 +30,7 @@ class SuperDaemon extends LitElement {
       program: { type: String },
       programSearch: { type: String },
       like: { type: String },
+      questionTags: { type: Array },
       value: { type: String },
       mini: { type: Boolean },
       activeNode: { type: Object },
@@ -54,6 +55,7 @@ class SuperDaemon extends LitElement {
     this.icon = "hardware:keyboard-return";
     this.context = [];
     this.opened = false;
+    this.questionTags = [];
     this.items = [];
     this.loading = false;
     this.like = "";
@@ -554,6 +556,7 @@ class SuperDaemon extends LitElement {
               ?open="${this.opened}"
               ?mini="${this.mini}"
               icon="${this.icon}"
+              .questionTags="${this.questionTags}"
               ?loading="${this.loading}"
               like="${this.like}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
@@ -585,6 +588,7 @@ class SuperDaemon extends LitElement {
               icon="${this.icon}"
               ?loading="${this.loading}"
               like="${this.like}"
+              .questionTags="${this.questionTags}"
               @like-changed="${this.likeChanged}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"

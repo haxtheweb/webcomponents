@@ -33,18 +33,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     this.where = "index";
     this.icon = "hardware:keyboard-return";
     this.questionTags = [
-      {
-        value: "*",
-        label: "What can I do?",
-      },
-      {
-        value: "media",
-        label: "Where can I find media?",
-      },
-      {
-        value: "edit",
-        label: "Edit page",
-      },
     ];
   }
   static get tag() {
@@ -61,7 +49,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       programName: { type: String, attribute: "program-name" },
       commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
-      questionTags: { type: Array, attribute: "question-tags" },
+      questionTags: { type: Array },
     };
   }
 
@@ -507,6 +495,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
       case "*":
         sdi.runProgram("*", {}, null, null, "", "");
         break;
+        case "sites":
+          sdi.runProgram("*", {}, null, null, "", "sites");
+          break;
     }
   }
 
@@ -525,7 +516,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     return html`
       <div class="common-tasks-text">${this.t.commonTasksText}</div>
       <div class="question-tags">
-        ${this.questionTags.map(
+        ${this.questionTags ? this.questionTags.map(
           (item, i) => html` <simple-tag
             tabindex="0"
             @keydown="${this.tagKeydown}"
@@ -535,7 +526,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
             part="tag tag-${i}"
             data-value="${item.value}"
           ></simple-tag>`
-        )}
+        ) : ``}
       </div>
       <div class="search">
         ${this.commandContext != "*"
