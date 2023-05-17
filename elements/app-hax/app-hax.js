@@ -22,7 +22,6 @@ const haxLogo = new URL("./lib/assets/images/HAXLogo.svg", import.meta.url)
   .href;
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
-const helpBtn = new URL("./lib/assets/images/Help.svg", import.meta.url).href;
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {
@@ -210,39 +209,54 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         label: "What sites do I have access to?",
       }
     ];
-        // force item to load schema
-        SuperDaemonInstance.defineOption({
-          title: "Go to site",
-          icon: "hax:hax2022",
-          tags: ["Sites", "Administration", "change"],
-          eventName: "super-daemon-run-program",
-          path: "hax/action/goToSite",
-          value: {
-            name: "Go to site",
-            program: async (input, values) => {
-              let results = [];
-              const items = toJS(store.manifest.items);
-              items.forEach(async (site) => {
-                if ((input == "" || site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
-                  results.push({
-                    title: site.title,
-                    icon: (site.metadata.theme && site.metadata.theme.variables && site.metadata.theme.variables.icon) ? site.metadata.theme.variables.icon : "hax:hax2022",
-                    tags: ["site", site.description],
-                    value: {
-                      target: this,
-                      method: "goToLocation",
-                      args: [site.slug],
-                    },
-                    eventName: "super-daemon-element-method",
-                    context: ["*", "hax/action/goToSite/" + site.metadata.site.name],
-                    path: "hax/action/goToSite/" + site.metadata.site.name,
-                  });
-                }
+    
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Tour of top menu buttons",
+      icon: "help",
+      tags: ["Help","ui","tour"],
+      priority: -1000,
+      value: {
+        target: this,
+        method: "helpClick",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/app/tour",
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Go to site",
+      icon: "hax:hax2022",
+      tags: ["Sites", "Administration", "change"],
+      eventName: "super-daemon-run-program",
+      path: "hax/action/goToSite",
+      priority: -100,
+      value: {
+        name: "Go to site",
+        program: async (input, values) => {
+          let results = [];
+          const items = toJS(store.manifest.items);
+          items.forEach(async (site) => {
+            if ((input == "" || site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
+              results.push({
+                title: site.title,
+                icon: (site.metadata.theme && site.metadata.theme.variables && site.metadata.theme.variables.icon) ? site.metadata.theme.variables.icon : "hax:hax2022",
+                tags: ["site", site.description],
+                value: {
+                  target: this,
+                  method: "goToLocation",
+                  args: [site.slug],
+                },
+                eventName: "super-daemon-element-method",
+                context: ["*", "hax/action/goToSite/" + site.metadata.site.name],
+                path: "hax/action/goToSite/" + site.metadata.site.name,
               });
-              return results;
             }
-          }
-        });
+          });
+          return results;
+        }
+      }
+    });
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -279,7 +293,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     this.__tour = SimpleTourManager;
     this.__tour.registerNewTour({
       key: "hax",
-      name: "Let's learn HAX",
+      name: "HAX top menu",
       style: `
       simple-popover-manager::part(simple-popover) {
         max-width: 250px;
@@ -981,7 +995,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               data-label="Home"
             >
               <div data-stop-content slot="tour" style="display:none;">
-                You can come back to this home screen whenever you click this..
+                You can come back to this home screen whenever you click this!
               </div>
             </simple-icon-lite>
           </a>
@@ -1020,8 +1034,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               data-label="Sound"
             >
               <div slot="tour" data-stop-content>
-                Not a fan of the awesome sound effects, you can mute them but I
-                highly suggest you dont.....or else.
+                Not a fan of the (awesome) sound effects? You can mute them if you prefer.
               </div>
             </simple-icon-lite>
           </wired-button>
@@ -1041,9 +1054,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             data-label="Menu"
           >
             <div slot="tour" data-stop-content>
-              You want to log out and be someone else? You want to check your
-              sites option? Click your character. Fun Fact....your character is
-              unique to you.
+              You want to log out and be someone else? Create a new site? Click your character. Your character is unique to you!
             </div>
             <button @click="${this.toggleMenu}"
  class="topbar-character" slot="menuButton" id="tbchar">
@@ -1114,13 +1125,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             .phrases="${this.phrases}"
             @click="${this.getNewWord}"
           ></random-word>
-          <simple-icon-lite
-            id="helpbtn"
-            @click="${this.helpClick}"
-            src="${helpBtn}"
-          >
-          </simple-icon-lite>
-          <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
           <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;

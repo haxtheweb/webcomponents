@@ -298,14 +298,14 @@ class SuperDaemon extends LitElement {
         }
         web-dialog {
           --dialog-border-radius: var(--simple-modal-border-radius, 2px);
-          z-index: var(--simple-modal-z-index, 1) !important;
+          z-index: var(--simple-modal-z-index, 10000) !important;
           padding: 0;
         }
         web-dialog::part(dialog) {
           border: 1px solid var(--simple-modal-border-color, #222);
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
-          z-index: var(--simple-modal-z-index, 1000);
+          z-index: var(--simple-modal-z-index, 10000);
           resize: var(--simple-modal-resize, unset);
           padding: 0;
           --dialog-height: var(--simple-modal-height, auto);
@@ -340,7 +340,7 @@ class SuperDaemon extends LitElement {
           --simple-icon-height: 24px;
         }
         absolute-position-behavior {
-          z-index: var(--simple-modal-z-index, 1000);
+          z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
         }
         absolute-position-behavior super-daemon-ui {
