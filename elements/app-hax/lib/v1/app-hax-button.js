@@ -1,5 +1,6 @@
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "wired-elements/lib/wired-button.js";
 import { html, css, LitElement } from "lit";
 const postIt = new URL("../assets/images/PostIt.svg", import.meta.url).href;
 const betaPostIt = new URL("../assets/images/BetaPostIt.svg", import.meta.url)

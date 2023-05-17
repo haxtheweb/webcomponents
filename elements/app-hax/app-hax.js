@@ -7,6 +7,7 @@ import {
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "./lib/v1/AppHaxStore.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
@@ -37,7 +38,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends SimpleTourFinder(SimpleColors) {
+export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   static get tag() {
     return "app-hax";
   }
@@ -101,6 +102,52 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+
+    this.t = {
+      ...this.t,
+      selectPage: "Select page",
+      backToSiteList: "Back to site list",
+      cancel: "Cancel",
+      editDetails: "Page details",
+      add: "Add",
+      editSettings: "Edit settings",
+      source: "Source",
+      viewSource: "View source",
+      findMedia: "Find media",
+      undo: "Undo",
+      redo: "Redo",
+      media: "Media",
+      outline: "Outline",
+      blocks: "Blocks",
+      addBlock: "Add block",
+      addPage: "Add page",
+      addChildPage: "Add child page",
+      clonePage: "Clone page",
+      importDocxFile: "Import docx file",
+      delete: "Delete page",
+      siteSettings: "Site settings",
+      close: "Close",
+      settings: "Settings",
+      editPage: "Edit page",
+      edit: "Edit",
+      configureBlock: "Configure block",
+      configure: "Configure",
+      save: "Save",
+      saveChanges: "Save changes",
+      newJourney: "New Journey",
+      accountInfo: "Account Info",
+      outlineDesigner: "Outline designer",
+      pageOutline: "Page outline",
+      more: "More",
+      siteActions: "Site actions",
+      insights: "Insights dashboard",
+      merlin: "Merlin",
+      summonMerlin: "Summon Merlin",
+      logOut: "Log out",
+      menu: "Menu",
+      showMore: "More",
+    };
     this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;
     this.__tour.registerNewTour({
@@ -762,10 +809,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
   }
 
   closeMenu() {
-    if (this.userMenuOpen) {
-      this.userMenuOpen = !this.userMenuOpen;
-      this.shadowRoot.querySelector("#user-menu").removeAttribute("isOpen");
-    }
+    this.userMenuOpen = false;
   }
 
   render() {
@@ -828,6 +872,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           <app-hax-user-menu
             slot="right"
             id="user-menu"
+            ?is-open="${this.userMenuOpen}"
             data-simple-tour-stop
             data-stop-title="data-label"
             data-label="Menu"
@@ -837,18 +882,29 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               sites option? Click your character. Fun Fact....your character is
               unique to you.
             </div>
-            <button class="topbar-character" slot="menuButton" id="tbchar">
+            <button @click="${this.toggleMenu}"
+ class="topbar-character" slot="menuButton" id="tbchar">
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
                 aria-label="System menu"
-                title="System menu"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
-                @click="${this.toggleMenu}"
               ></rpg-character>
               <span class="characterbtn-name">${this.userName}</span>
             </button>
+            <a
+              slot="main-menu"
+              href="createSite-step-1"
+              @click="${this.startJourney}"
+              tabindex="-1"
+            >
+              <app-hax-user-menu-button
+                icon="add"
+                label="${this.t.newJourney}"
+                part="newjourneybtn"
+              ></app-hax-user-menu-button>
+            </a>
             <!-- <app-hax-user-menu-button
               slot="main-menu"
               icon="face"
@@ -861,9 +917,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               @click=${this.logout}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
-          <simple-tooltip for="tbchar" position="bottom" slot="right"
-            >System menu</simple-tooltip
-          >
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
@@ -1000,6 +1053,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
 
   // ensure internal data is unset for store
   startJourney() {
+    this.userMenuOpen = false;
     store.createSiteSteps = false;
     store.siteReady = false;
     store.site.structure = null;

@@ -160,6 +160,7 @@ class Store {
                 import.meta.url
               ).href
             );
+            this.audio.volume = 0.5;
             this.audio.play();
             break;
           default:
@@ -169,6 +170,7 @@ class Store {
                 import.meta.url
               ).href
             );
+            this.audio.volume = 0.5;
             this.audio.play();
             console.warn(`${sound} is not a valid sound file yet`);
             break;

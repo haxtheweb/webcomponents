@@ -24,6 +24,8 @@ import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@lrnwebcomponents/page-flag/page-flag.js";
+import "wired-elements/lib/wired-button.js";
+
 const haxLogo = new URL(
   "../../../app-hax/lib/assets/images/HAXLogo.svg",
   import.meta.url
@@ -658,6 +660,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
+  closeMenu() {
+    this.userMenuOpen = false;
+  }
+
   toggleMenu() {
     this.userMenuOpen = !this.userMenuOpen;
     store.playSound("click");
@@ -924,6 +930,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              ?hidden="${this.editMode}"
+              tabindex="${this.editMode ? "-1" : "0"}"
+              id="sharebutton"
+              @click="${this._shareButtonTap}"
+              icon="social:share"
+              part="sharebtn"
+              show-text-label
+              icon-position="left"
+              label="${this.t.shareSite}"
+            ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
               <haxcms-button-add
                 hidden
                 ?disabled="${this.editMode}"
@@ -952,7 +971,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
         </simple-toolbar>
 
-        <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu">
+        <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
+        ?is-open="${this.userMenuOpen}" @mouseleave="${this.closeMenu}">
           <button
             class="topbar-character"
             slot="menuButton"
@@ -990,16 +1010,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
-
-          <app-hax-user-menu-button
-            id="sharebutton"
-            @click="${this._shareButtonTap}"
-            slot="main-menu"
-            icon="social:share"
-            part="sharebtn"
-            label="${this.t.shareSite}"
-          ></app-hax-user-menu-button>
-
           <app-hax-user-menu-button
             slot="main-menu"
             icon="add"

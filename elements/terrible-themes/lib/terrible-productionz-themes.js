@@ -208,7 +208,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAX
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    this.link.remove();
+    if (this.__link) {
+      this.__link.remove();
+    }
     super.disconnectedCallback();
   }
   /**
