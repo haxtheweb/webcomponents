@@ -57,13 +57,31 @@ class TerribleBestThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitE
    */
   render() {
     return html`
-	<!--Hey look stupid this is where the text go-->
-	<main id="contentcontainer">
-	<h2>Gaming</h2>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr valign="top">
+	<td>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	</td>
+	<td align="center">
+  <main id="contentcontainer">
+	<h2><blink>UPDATED 07/27/2006 - TRADING CARDS ADDED</blink></h2>
   <section id="slot">
     <slot></slot>
   </section>
-  </main>
+  </main></td>
+	<td>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	<img src="SKATER.gif" width="68" height="72" border="0" alt=""><br><br><br>
+	</td>
+</tr>
+</tbody></table>
     `;
   }
   /**
