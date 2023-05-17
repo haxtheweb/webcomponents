@@ -978,21 +978,6 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="15w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="6w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="training"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.docxImport}
-            type="docx import"
           ></app-hax-button>`;
         break;
       case "website":
@@ -1121,23 +1106,24 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Portfolio"
-                  value="portfolio"
-                  @click=${this.chooseStructure}
-                ></app-hax-site-button>
-                <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Import From.."
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
-                <app-hax-site-button
+               <!-- <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Website"
                   value="website"
                   @click=${this.chooseStructure}
+                ></app-hax-site-button> -->
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Portfolio"
+                  value="portfolio"
+                  @click=${this.chooseStructure}
                   coming-soon
                 ></app-hax-site-button>
+                
               </div>
             </div>
             <div class="carousel-with-snapping-item" id="step-2">

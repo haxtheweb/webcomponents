@@ -99,7 +99,7 @@ class Store {
         step: 3,
         name: "step-3",
         label: "Theme select",
-        statement: "What your site feels like?",
+        statement: "What your :structure feels like?",
         title: "Step 3: Theme",
       },
       {
