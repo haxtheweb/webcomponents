@@ -218,6 +218,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         toJS(store.appMode) !== "404"
       ) {
         store.appMode = "create";
+        store.site.theme = "clean-one";
         setTimeout(() => {
           store.createSiteSteps = true;
         }, 0);

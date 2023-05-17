@@ -100,6 +100,10 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { value } = e.target;
       store.site.structure = value;
+      // skip theme if new user
+      if (toJS(store.isNewUser)) {
+        store.site.theme = "clean-one";
+      }
       store.appEl.playSound("click2");
     }
   }
