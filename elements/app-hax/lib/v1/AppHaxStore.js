@@ -318,7 +318,7 @@ class Store {
   // centralize toast messages
   toast(msg, duration = 3000, extras = {}) {
     window.dispatchEvent(
-      new CustomEvent("app-hax-toast-show", {
+      new CustomEvent("haxcms-toast-show", {
         bubbles: true,
         cancelable: true,
         composed: true,

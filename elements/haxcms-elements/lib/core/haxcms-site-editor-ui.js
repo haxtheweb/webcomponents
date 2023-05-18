@@ -1338,14 +1338,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "DEV: Load HAXSchema",
+      title: "Load HAXSchema",
       icon: "hax:hax2022",
       tags: ["Developer", "schema", "load", "demo", "testing"],
       eventName: "super-daemon-run-program",
       path: ">hax/loadElement",
       context: [">"],
       value: {
-        name: "DEV: Load HAXSchema",
+        name: "Load HAXSchema",
         context: ">",
         program: async (input, values) => {
           const reg = window.WCAutoload.requestAvailability();
@@ -1384,14 +1384,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change theme program
     SuperDaemonInstance.defineOption({
-      title: "DEV: Change theme",
+      title: "Change theme (temporarily)",
       icon: "image:style",
       tags: ["Developer", "theme"],
       eventName: "super-daemon-run-program",
       path: ">settings/theme",
       context: [">"],
       value: {
-        name: "DEV: Change theme",
+        name: "Change theme",
         context: ">",
         program: async (input, values) => {
           let results = [];
@@ -1425,15 +1425,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "DEV: Go to site",
+      title: "Go to site",
       icon: "hax:hax2022",
       tags: ["Developer", "change", "sites", "administration"],
       eventName: "super-daemon-run-program",
-      path: ">hax/changeSite",
-      context: [">"],
+      path: "/hax/changeSite",
+      context: ["/"],
       value: {
-        name: "DEV: Go to site",
-        context: ">",
+        name: "Go to site",
+        context: "/",
         program: async (input, values) => {
           let results = [];
           // will work in a production haxiam environment to allow hopping between spaces
@@ -1444,7 +1444,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             return [];
           }).then((manifest) => {
             manifest.data.items.forEach(async (site) => {
-              if ((input == "" || site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
+              if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
                 results.push({
                   title: site.title,
                   icon: site.metadata.theme.variables.icon,
@@ -1455,8 +1455,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [site.slug],
                   },
                   eventName: "super-daemon-element-method",
-                  context: [">", ">hax/changeSite/" + site.metadata.site.name],
-                  path: ">hax/changeSite/" + site.metadata.site.name,
+                  context: ["/", "/hax/changeSite/" + site.metadata.site.name],
+                  path: "/hax/changeSite/" + site.metadata.site.name,
                 });
               }
             });

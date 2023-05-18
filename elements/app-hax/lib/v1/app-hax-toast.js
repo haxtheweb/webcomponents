@@ -21,11 +21,11 @@ export class AppHaxToast extends RPGCharacterToast {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
-      "app-hax-toast-hide",
+      "haxcms-toast-hide",
       this.hideSimpleToast.bind(this), { signal: this.windowControllers.signal });
 
     window.addEventListener(
-      "app-hax-toast-show",
+      "haxcms-toast-show",
       this.showSimpleToast.bind(this), { signal: this.windowControllers.signal });
 
   }

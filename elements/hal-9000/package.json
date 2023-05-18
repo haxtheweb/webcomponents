@@ -43,6 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^7.0.0",
+    "@lrnwebcomponents/simple-toast": "^7.0.0",
     "lit": "^2.7.2"
   },
   "devDependencies": {

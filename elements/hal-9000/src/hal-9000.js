@@ -2,8 +2,10 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+
 /**
   * `hal-9000`
   * @element hal-9000
@@ -16,6 +18,10 @@ class Hal9000 extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      toast: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * Commands to listen for and take action on
        */
@@ -93,6 +99,7 @@ class Hal9000 extends LitElement {
    */
   constructor() {
     super();
+    this.toast = false;
     this.windowControllers = new AbortController();
     this.commands = {};
     this.respondsTo = "(merlin)";
@@ -153,13 +160,61 @@ class Hal9000 extends LitElement {
         this.utter.voice = this.defaultVoice;
         // THOU SPEAKITH
         this.synth.speak(this.utter);
+        if (this.toast) {
+          this.sendToast(text);
+        }
         this.utter.onend = (event) => {
+          let hide = "simple";
+          if (window.AppHax || window.HAXCMS) {
+            hide = "haxcms";
+          }
+          window.dispatchEvent(
+            new CustomEvent(`${hide}-toast-hide`, {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: false,
+            })
+          );
           resolve(event);
         };
       } else {
         resolve(false);
       }
     });
+  }
+  /**
+   * Send a toast message to match what is said. This is good for a11y
+   */
+  sendToast(text) {
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      })
+    );
+    let toastShowEventName = "simple-toast-show";
+    // support for haxcms toast
+    if (window.AppHax || window.HAXCMS) {
+      toastShowEventName = "haxcms-toast-show";
+    }
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
+      new CustomEvent(toastShowEventName, {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: text,
+          future: true,
+          merlin: true,
+          accentColor: "purple",
+          duration: 500000,
+        },
+      })
+    );
   }
   /**
    * Annyang library has been loaded globally so we can use it

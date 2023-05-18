@@ -1,6 +1,7 @@
 import { css, html, unsafeCSS } from "lit";
 import { SimpleToastEl } from "@lrnwebcomponents/simple-toast/lib/simple-toast-el.js";
 import "@lrnwebcomponents/rpg-character/rpg-character.js";
+import "@lrnwebcomponents/future-terminal-text/future-terminal-text.js";
 
 const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;
@@ -20,8 +21,11 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.windowControllers = new AbortController();
     this.setDefaultToast();
     this.key = null;
+    this.merlin = false;
     this.phrases = {};
+    this.future = false;
     this.fire = false;
+    this.text = "";
     this.hat = "coffee";
     this.walking = false;
     this.word = null;
@@ -38,6 +42,20 @@ export class RPGCharacterToast extends SimpleToastEl {
           display: block;
         }
 
+        future-terminal-text {
+          width: 500px;
+        }
+
+        .merlin {
+          --simple-icon-height: 100px;
+          --simple-icon-width: 100px;
+          background-color: var(--simple-colors-default-theme-accent-1, white);
+          display: block;
+          height: 150px;
+          width: 100px;
+          margin: 6px 0 0 0;
+          padding: 16px;
+        }
         :host([hidden]) {
           display: none;
         }
@@ -153,6 +171,12 @@ export class RPGCharacterToast extends SimpleToastEl {
         type: Boolean,
         reflect: true,
       },
+      merlin: {
+        type: Boolean,
+      },
+      future: {
+        type: Boolean,
+      },
       /**
        * Plain text based message to display
        */
@@ -186,10 +210,18 @@ export class RPGCharacterToast extends SimpleToastEl {
     return html` <div class="bubble">
       <span class="bubble leftedge"></span>
       <span class="bubble mid">
-        ${this.text}
+        <slot name="pre"></slot>
+        ${this.future ? html`
+        <future-terminal-text fadein glitch glitch-max="3" glitch-duration="40">${this.text}</future-terminal-text>`: `${this.text}`}
         <slot></slot>
       </span>
       <span class="bubble rightedge"></span>
+      ${this.merlin ? html`
+      <simple-icon
+        class="merlin"
+        icon="hax:wizard-hat"
+        accent-color="purple"></simple-icon>` : 
+      html`
       <rpg-character
         height="130"
         width="130"
@@ -198,6 +230,7 @@ export class RPGCharacterToast extends SimpleToastEl {
         hat="${this.hat}"
         ?walking="${this.walking}"
       ></rpg-character>
+      `}
     </div>`;
   }
 
@@ -233,7 +266,9 @@ export class RPGCharacterToast extends SimpleToastEl {
   setDefaultToast() {
     this.opened = false;
     this.text = "Saved";
+    this.merlin = false;
     this.classStyle = "";
+    this.future = false;
     this.duration = 3000;
     this.accentColor = "grey";
     this.dark = false;
@@ -260,11 +295,17 @@ export class RPGCharacterToast extends SimpleToastEl {
     if (e.detail.hat) {
       this.hat = e.detail.hat;
     }
+    if (e.detail.merlin) {
+      this.merlin = e.detail.merlin;
+    }
     if (e.detail.walking) {
       this.walking = e.detail.walking;
     }
     if (e.detail.text) {
       this.text = e.detail.text;
+    }
+    if (e.detail.future) {
+      this.future = e.detail.future;
     }
     if (e.detail.classStyle) {
       this.classStyle = e.detail.classStyle;
@@ -291,6 +332,8 @@ export class RPGCharacterToast extends SimpleToastEl {
   hide() {
     this.duration = 0;
     this.fire = false;
+    this.text = "";
+    this.future = false;
     this.hat = "coffee";
     this.walking = false;
     if (this.eventCallback) {

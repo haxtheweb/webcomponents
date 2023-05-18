@@ -191,12 +191,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     };
     SuperDaemonInstance.voiceSearch = true;
     SuperDaemonInstance.icon = "hax:wizard-hat";
+    SuperDaemonInstance.appendContext("*");
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
       if (
         toJS(store.appReady) && toJS(store.isLoggedIn)
       ) {
-        SuperDaemonInstance.appendContext("*");
         return true;
       }
       return false;
@@ -255,7 +255,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           let results = [];
           const items = toJS(store.manifest.items);
           items.forEach(async (site) => {
-            if ((input == "" || site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
+            if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input))) {
               results.push({
                 title: site.title,
                 icon: (site.metadata.theme && site.metadata.theme.variables && site.metadata.theme.variables.icon) ? site.metadata.theme.variables.icon : "hax:hax2022",
@@ -504,10 +504,12 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         document.body.classList.add("dark-mode");
         store.toast("I'm ascared of the dark", 2000, { fire: true });
         this.dark = true;
+        SuperDaemonInstance.dark = true;
       } else {
         document.body.classList.remove("dark-mode");
         store.toast("Sunny day it is", 2000, { hat: "random" });
         this.dark = false;
+        SuperDaemonInstance.dark = false;
       }
     });
     autorun(() => {

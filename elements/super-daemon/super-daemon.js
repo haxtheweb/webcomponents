@@ -18,6 +18,7 @@ class SuperDaemon extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      santaMode: { type: Boolean, reflect: true, attribute: "santa-mode" },
       opened: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       key1: { type: String },
@@ -41,6 +42,26 @@ class SuperDaemon extends SimpleColors {
       voiceCommands: { type: Object },
       listeningForInput: { type: Boolean, reflect: true, attribute: "listening-for-input" },
     };
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // change theme program
+    SuperDaemonInstance.defineOption({
+      title: "Toggle Merlin always listening",
+      icon: "settings-voice",
+      tags: ["Developer", "government", "merlin", "big-tech", "overlord", "santa", "all-seeing-eye"],
+      eventName: "super-daemon-element-method",
+      path: ">settings/voice",
+      context: [">"],
+      value: {
+        target: this,
+        method: "toggleSantaMode",
+        args: [],
+      },
+    });
   }
   /**
    * HTMLElement
@@ -270,7 +291,6 @@ class SuperDaemon extends SimpleColors {
   }
 
   updateSearchInputViaVoice(input) {
-    console.log("GENERIC SEARCH HIT");
     const field = this.shadowRoot
     .querySelector("super-daemon-ui")
     .shadowRoot.querySelector("simple-fields-field");
@@ -278,7 +298,7 @@ class SuperDaemon extends SimpleColors {
     field.focus();
     field.select();
     // turn off bc we got a match
-    this.listeningForInput = false;
+    this.setListeningStatus(false);
   }
 
   /**
@@ -412,6 +432,15 @@ class SuperDaemon extends SimpleColors {
       `,
     ];
   }
+  setListeningStatus(value) {
+    // always override value in santa mode
+    if (this.santaMode) {
+      this.listeningForInput = true;
+    }
+    else {
+      this.listeningForInput = value;
+    }
+  }
   /**
    * Close the modal and do some clean up
    */
@@ -428,7 +457,8 @@ class SuperDaemon extends SimpleColors {
     this.programName = null;
     this.commandContext = "*";
     // important we stop listening when the UI goes away
-    this.listeningForInput = false;
+    this.setListeningStatus(false);
+    
     const event = new MouseEvent("click", {
       view: window,
       bubbles: true,
@@ -450,9 +480,11 @@ class SuperDaemon extends SimpleColors {
         let results = [];
         if (this.commandContext == "*") {
           results = context.filter((value) => item.context.includes(value));
-        } else {
-          results = [this.commandContext].filter((value) =>
-            item.context.includes(value)
+        }
+        else {
+          results = [this.commandContext].filter((value) => {
+            return item.context.includes(value)
+          }
           );
         }
         return results.length !== 0;
@@ -532,8 +564,8 @@ class SuperDaemon extends SimpleColors {
   }
   open() {
     // filter to context
-    this.items = this.filterItems(this.allItems, this.context);
     this.opened = true;
+    this.items = this.filterItems(this.allItems, this.context);
     const wd = this.shadowRoot.querySelector("web-dialog");
     if (wd) {
       // modal mode kills off the ability to close the dialog
@@ -566,7 +598,6 @@ class SuperDaemon extends SimpleColors {
         await this.items.forEach(async (item) => {
           if (item.title) {
             this.voiceCommands[item.title.toLowerCase()] = (response) => {
-              console.log(item);
               this.shadowRoot.querySelector("super-daemon-ui").items = [item];
               this.value = item.title;
               this.shadowRoot.querySelector("super-daemon-ui").filtered = [item];
@@ -584,7 +615,7 @@ class SuperDaemon extends SimpleColors {
               }
               else {
                 // disable bc we got a hit
-                this.listeningForInput = false;
+                this.setListeningStatus(false);
               }
             };
           }
@@ -594,7 +625,6 @@ class SuperDaemon extends SimpleColors {
           setTimeout(() => {
             this.addVoiceCommand('*tag', this, "updateSearchInputViaVoice");
             this.hal.commands = {...this.voiceCommands};              
-            console.log(this.hal.commands);
           }, 0);
         }
       }
@@ -737,6 +767,37 @@ class SuperDaemon extends SimpleColors {
   likeChanged(e) {
     this.like = e.detail.value;
   }
+
+  randomResponse(responses) {
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  toggleSantaMode(e) {
+    this.santaMode = !this.santaMode;
+    setTimeout(() => {
+      if (this.santaMode) {
+        this.hal.speak("Santa mode activated: Watch what you say");
+      }
+      else {
+        this.hal.speak("Santa mode deactivated: Have a nice day believing you are not being watched");
+      }        
+    }, 0);
+  }
+  promptMerlin(e) {
+    if (!this.opened) {
+      this.open();
+    }
+    this.listeningForInput = false;
+    this.hal.speak(this.randomResponse(["I'm here", "Yes?", "What?", "What can I do for you?", "What do you need?", "How can I help?"])).then((e) => {
+      this.playSound();
+      this.listeningForInput = true;
+    });
+  }
+  stopMerlin(e) {
+    if (this.santaMode) {
+      this.hal.speak("Please disable Santa mode to stop listening");
+    }
+    this.setListeningStatus(false);
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -744,7 +805,10 @@ class SuperDaemon extends SimpleColors {
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {
         this.hal = window.Hal9000.requestAvailability();
-        this.hal.debug = true;
+        this.hal.debug = false;
+        this.hal.toast = true;
+        this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
+        this.addVoiceCommand(`stop listening`, this, "stopMerlin");
         this.voiceCommands["(run) program"] = (response) => {
           this.commandContextChanged({ detail: { value: "/" } });
         };

@@ -546,6 +546,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     sdi.hal.speak("How may I help you?", sdi).then((e) => {
       sdi.playSound();
       sdi.listeningForInput = true;
+      
     });
     this.shadowRoot.querySelector("#inputfilter").focus();
     // reset to top of results
