@@ -196,6 +196,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       if (
         toJS(store.appReady) && toJS(store.isLoggedIn)
       ) {
+        SuperDaemonInstance.appendContext("*");
         return true;
       }
       return false;
@@ -224,6 +225,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/app/tour",
+      context: ["*","?"],
     });
 
     // contribution helpers
@@ -271,7 +273,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           });
           return results;
         }
-      }
+      },
+      context: ["*"],
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -285,6 +288,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
+      context: ["*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -304,6 +308,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
+      context: ["*"],
     });
     this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;
