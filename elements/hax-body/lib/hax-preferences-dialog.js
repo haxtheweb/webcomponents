@@ -45,7 +45,6 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     this.hideLink = false;
     this.t = {
       learnAboutHAXTheWeb: "Learn about HAXTheWeb",
-      voiceCommands: "Voice commands",
       haxUITheme: "HAX UI Theme",
       language: "Language",
       english: "English",
@@ -76,13 +75,6 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     }
     this.schema = [
       {
-        property: "haxVoiceCommands",
-        title: this.t.voiceCommands,
-        description: "Experimental: Voice based control system",
-        inputMethod: "boolean",
-        value: false,
-      },
-      {
         property: "haxUiTheme",
         title: this.t.haxUITheme,
         description:
@@ -109,7 +101,6 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
       },
     ];
     this.schemaValues = {
-      haxVoiceCommands: false,
       haxUiTheme: "hax",
       haxLang: lang,
     };

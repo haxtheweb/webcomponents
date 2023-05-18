@@ -26,10 +26,6 @@ import "../ui-components/site/site-remote-content.js";
 import "@lrnwebcomponents/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
-const haxLogo = new URL(
-  "../../../app-hax/lib/assets/images/HAXLogo.svg",
-  import.meta.url
-).href;
 const ButtonBGLight = new URL(
   "../../../app-hax/lib/assets/images/ButtonBGLM.svg",
   import.meta.url
@@ -128,15 +124,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #addmenubutton,
         #addmenubutton haxcms-button-add,
         #editbutton[icon="icons:save"] {
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-light-green-1);
+          --simple-toolbar-border-color: var(--simple-colors-default-theme-light-green-2);
           color: var(--simple-colors-default-theme-green-11);
+          background-color: var(--simple-colors-default-theme-grey-1);
+        }
+
+        haxcms-button-add {
+          background-color: var(--simple-colors-default-theme-grey-1);
         }
         
         #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-red-1);
+          --simple-toolbar-border-color: var(--simple-colors-default-theme-red-2);
           margin-right: 64px;
+        }
+        #merlin {
+          color: var(--simple-colors-default-theme-purple-10);
+          --simple-toolbar-border-color: var(--simple-colors-default-theme-purple-2);
+        }
+        #merlin:hover,
+        #merlin:active,
+        #merlin:focus {
+          background-color: var(--simple-colors-default-theme-purple-1);
         }
         #deletebutton:hover,
         #deletebutton:active,
@@ -199,9 +209,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .haxLogo {
           color: var(--simple-colors-default-theme-accent-11, black);
         }
-        :host([dark-mode]) .haxLogo {
-          color: var(--simple-colors-default-theme-accent-1, white);
-        }
         :host([dark-mode]) .haxLogo:hover,
         :host([dark-mode]) .haxLogo:focus,
         :host([dark-mode]) .haxLogo:active,
@@ -236,6 +243,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar simple-toolbar-button,
         simple-toolbar simple-toolbar-menu {
           --simple-toolbar-border-radius: 0;
+          background-color: var(--simple-colors-default-theme-grey-1);
         }
 
         app-hax-search-bar {
@@ -610,9 +618,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.darkMode = toJS(store.darkMode);
       this.dark = this.darkMode;
       if (toJS(store.darkMode)) {
+        SuperDaemonInstance.dark = true;
         HAXStore.globalPreferences.haxUiTheme = "haxdark";
       } else {
         HAXStore.globalPreferences.haxUiTheme = "hax";
+        SuperDaemonInstance.dark = false;
       }
     });
     autorun(() => {
@@ -682,7 +692,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="backtosites"
             part="hax-logo"
           >
-            <simple-icon-lite src="${haxLogo}"></simple-icon-lite>
+            <simple-icon-lite icon="hax:hax2022"></simple-icon-lite>
           </a>
           <simple-tooltip for="backtosites" position="right"
             >${this.backText}</simple-tooltip
@@ -1466,34 +1476,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: true,
       })
     );
-    this.shadowRoot.querySelectorAll("[voice-command]").forEach((el) => {
-      if (el.getAttribute("id") == "editbutton") {
-        this.dispatchEvent(
-          new CustomEvent("hax-add-voice-command", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: {
-              command: ":name: save (this) page",
-              context: el,
-              callback: "click",
-            },
-          })
-        );
-      }
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command: ":name: " + el.getAttribute("voice-command"),
-            context: el,
-            callback: "click",
-          },
-        })
-      );
-    });
   }
 
   goToLocation(location) {

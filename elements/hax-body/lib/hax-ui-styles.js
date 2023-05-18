@@ -56,9 +56,9 @@ export const HaxUiColors = [
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
-      --hax-ui-disabled-color: #555;
+      --hax-ui-disabled-color: #666;
 
-      --hax-ui-background-color: #333;
+      --hax-ui-background-color: #111;
       --hax-ui-background-color-secondary: #111;
       --hax-ui-background-color-faded: #222;
 
@@ -79,7 +79,7 @@ export const HaxUiColors = [
         --hax-ui-color-focus: #fff;
         --hax-ui-color-faded: #c5c3be;
 
-        --hax-ui-background-color: #333;
+        --hax-ui-background-color: #111;
         --hax-ui-background-color-secondary: #111;
         --hax-ui-background-color-faded: #222;
 

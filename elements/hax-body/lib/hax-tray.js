@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import {
   winEventsElement,
   camelCaseToDash,
@@ -35,6 +35,7 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `hax-tray`
@@ -42,7 +43,7 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
  * @element hax-tray
  */
 class HaxTray extends I18NMixin(
-  SimpleTourFinder(winEventsElement(LitElement))
+  SimpleTourFinder(winEventsElement(SimpleColors))
 ) {
   /**
    * Convention we use
@@ -65,6 +66,7 @@ class HaxTray extends I18NMixin(
     };
     this.resizeDrag = false;
     this.hideToolbar = false;
+    this.dark = false;
     this.__moveX = 0;
     this.t = {
       structure: "Outline",
@@ -158,6 +160,7 @@ class HaxTray extends I18NMixin(
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
       this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+      this.dark = this.haxUiTheme === "haxdark";
       document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
     });
     autorun(() => {
@@ -165,7 +168,9 @@ class HaxTray extends I18NMixin(
     });
   }
   _expandSettingsPanel(e) {
-    this.shadowRoot.querySelector("#content-edit").click();
+    if (!this.hideToolbar) {
+      this.shadowRoot.querySelector("#content-edit").click();
+    }
   }
   _redoChanged(e) {
     this.canRedo = e.detail.value;
@@ -205,7 +210,7 @@ class HaxTray extends I18NMixin(
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
-          transition: all 0.6s ease-in-out;
+          transition: height 0.6s ease-in-out,width 0.6s ease-in-out,opacity 0.6s ease-in-out,visibility 0.6s ease-in-out;
         }
         :host([collapsed]) #resize {
           display:none;
@@ -392,12 +397,16 @@ class HaxTray extends I18NMixin(
         #settingsform {
           margin: -8px -8px 0;
           --simple-fields-field-margin: 12px;
+          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12);
         }
         a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
           --a11y-collapse-vertical-padding: 12px;
           --a11y-collapse-horizontal-padding: 12px;
+        }
+        a11y-collapse span[slot="heading"] {
+          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12) !important;        
         }
         simple-fields-field::part(label) {
           font-size: 11px;
@@ -418,6 +427,7 @@ class HaxTray extends I18NMixin(
         hax-tray-button,
         hax-gizmo-browser {
           visibility: visible;
+          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12);
         }
         hax-tray-button:not(:defined),
         hax-gizmo-browser:not(:defined) {
@@ -897,6 +907,7 @@ class HaxTray extends I18NMixin(
   get contentEditTemplate() {
     return html` <simple-fields
       id="settingsform"
+      ?dark="${this.haxUiTheme == "haxdark"}"
       disable-responsive
       code-theme="${this.haxUiTheme == "system"
         ? "auto"
@@ -1236,18 +1247,6 @@ class HaxTray extends I18NMixin(
           detail: {
             piece: "haxTray",
             object: this,
-          },
-        })
-      );
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) Blocks (menu)",
-            context: this.shadowRoot.querySelector("#content-add"),
-            callback: "click",
           },
         })
       );

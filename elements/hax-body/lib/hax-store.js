@@ -464,14 +464,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   static get properties() {
     return {
       ...super.properties,
-      voiceDebug: {
-        type: Boolean,
-        attribute: "voice-debug",
-      },
-      voiceRespondsTo: {
-        type: String,
-        attribute: "voice-responses-to",
-      },
       /**
        * skipHAXConfirmation
        */
@@ -984,13 +976,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return new URL(url).origin !== location.origin;
   }
   _editModeChanged(newValue) {
-    if (this.__hal) {
-      if (newValue && this.globalPreferences.haxVoiceCommands) {
-        this.__hal.auto = true;
-      } else {
-        this.__hal.auto = false;
-      }
-    }
     // trap for very slow loading environments that might miss on initial setup timing
     if (
       newValue &&
@@ -1007,7 +992,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (
       this.__storageDataProcessed &&
       newValue &&
-      typeof newValue.haxVoiceCommands !== typeof undefined &&
       this.ready
     ) {
       let storageData = this.storageData;
@@ -1018,33 +1002,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      // import voice command stuff in the background if used selects it
-      // this is experimental / aggressive import of tech so defer to
-      // if they activate it
-      if (newValue.haxVoiceCommands && !this.__hal) {
-        // @todo only activate if the setting to use it is in place
-        import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
-          // initialize voice commands
-          this._initVoiceCommands();
-          // inject tag into shadowRoot after we import the definition
-          this.__hal = document.createElement("hal-9000");
-          this.__hal.respondsTo = this.voiceRespondsTo;
-          this.__hal.debug = this.voiceDebug;
-          this.__hal.auto = true;
-          this.shadowRoot.appendChild(this.__hal);
-          // establish the initial commands, even if they were captured
-          // prior to usage since we held onto them in this variable
-          this.__hal.commands = { ...this.voiceCommands };
-        });
-      }
-      // only mess w/ hal if enabled
-      if (this.__hal) {
-        if (newValue.haxVoiceCommands && this.editMode) {
-          this.__hal.auto = true;
-        } else {
-          this.__hal.auto = false;
-        }
-      }
       // only translate if we are ready, and editing, and have a language other than default
       if (newValue.haxLang && HAXStore.editMode) {
         clearTimeout(this._debounceLang);
@@ -1344,128 +1301,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
     }
   }
-  /**
-   * Build a list of common voice commands
-   */
-  _initVoiceCommands() {
-    this.__voiceInit = true;
-    this.voiceCommands[`scroll up ${this.voiceRespondsTo}`] = () => {
-      window.scrollBy({
-        top: -(window.innerHeight * 0.5),
-        left: 0,
-        behavior: "smooth",
-      });
-    };
-    this.voiceCommands[`scroll (down) ${this.voiceRespondsTo}`] = () => {
-      window.scrollBy({
-        top: window.innerHeight * 0.5,
-        left: 0,
-        behavior: "smooth",
-      });
-    };
-    this.voiceCommands[`scroll to bottom ${this.voiceRespondsTo}`] = () => {
-      window.scrollTo(0, document.body.scrollHeight);
-    };
-    this.voiceCommands[`scroll to top ${this.voiceRespondsTo}`] = () => {
-      window.scrollTo(0, 0);
-    };
-    /**
-     * Support for focusing active content and typing in it
-     */
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (show)(focus) active (element)(content)`
-    ] = () => {
-      try {
-        this._positionCursorInNode(this.activeNode);
-      } catch (e) {}
-    };
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (focus) previous (element)(content)`
-    ] = () => {
-      if (this.activeNode.previousElementSibling) {
-        this.activeNode = this.activeNode.previousElementSibling;
-        this.write("activeNode", this.activeNode, this);
-        this._positionCursorInNode(this.activeNode);
-      } else {
-        this.speak("You are at the top of the document");
-      }
-    };
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (focus) next (element)(content)`
-    ] = () => {
-      if (this.activeNode.nextElementSibling) {
-        this.activeNode = this.activeNode.nextElementSibling;
-        this.write("activeNode", this.activeNode, this);
-        this._positionCursorInNode(this.activeNode);
-      } else {
-        this.speak("You are at the bottom of the document");
-      }
-    };
-    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = (e) => {
-      if (this.isTextElement(this.activeNode)) {
-        try {
-          let range = this._positionCursorInNode(this.activeNode);
-          let text = document.createTextNode(e);
-          range.deleteContents();
-          range.insertNode(text);
-        } catch (e) {
-          this.speak("That didn't work");
-          console.warn(e);
-        }
-      } else {
-        this.speak(
-          "I'm sorry but I can only type in text areas. Try saying Insert Paragraph and try again."
-        );
-      }
-    };
-    // trolling
-    this.voiceCommands[`hey ${this.voiceRespondsTo}`] = () => {
-      this.speak("Yeah what do you want");
-    };
-    // trolling
-    this.voiceCommands[`${this.voiceRespondsTo} now your name is *splat`] = (
-      text
-    ) => {
-      const past = this.voiceRespondsTo;
-      this.speak(`I used to be named ${past} but you can call me ${text} now.`);
-      this.voiceRespondsTo = `(${text})`;
-      // @todo this needs to now update the previous commands somehow to match
-      // the new activation name
-    };
-  }
-  /**
-   * Speak wrapper on hal to present as text too
-   */
-  speak(text) {
-    if (this.__hal && this.__hal.speak) {
-      this.__hal.speak(text);
-    }
-    // always show for accessibility
-    this.toast(`${this.voiceRespondsTo}: ${text}`);
-  }
-  /**
-   * allow uniform method of adding voice commands
-   */
-  addVoiceCommand(command, context, callback) {
-    if (context) {
-      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
-      this.voiceCommands[command] = context[callback].bind(context);
-      if (this.__voiceInit) {
-        this.__hal.commands = { ...this.voiceCommands };
-      }
-    }
-  }
-  /**
-   * event driven version
-   */
-  _addVoiceCommand(e) {
-    // without context it's almost worthless so try to fallback on where it came from
-    let target = e.detail.context;
-    if (!target) {
-      target = e.target;
-    }
-    this.addVoiceCommand(e.detail.command, target, e.detail.callback);
-  }
+
   /**
    * Position cursor at the start of the position of the requested node
    */
@@ -2031,7 +1867,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
-    // custom
+    // customizations to daemon
+    SuperDaemonInstance.voiceSearch = true;
     SuperDaemonInstance.icon = "hax:wizard-hat";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
@@ -2200,7 +2037,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-register-body": "_haxStoreRegisterBody",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
-      "hax-add-voice-command": "_addVoiceCommand",
       "hax-refresh-tray-form": "refreshActiveNodeForm",
     };
     // prevent leaving if we are in editMode
@@ -2236,8 +2072,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         margin: 8px 2px;
       }`,
     });
-    this.voiceRespondsTo = "(worker)";
-    this.voiceCommands = {};
     this.skipHAXConfirmation = false;
     this.storageData = {};
     this.appStore = {
@@ -2273,7 +2107,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeApp = {};
     this.connectionRewrites = {};
     // change this in order to debug voice commands
-    this.voiceDebug = false;
     this.daemonCommands = {};
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
     // these are basic markdown shortcuts

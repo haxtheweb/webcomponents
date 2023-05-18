@@ -187,6 +187,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
+        hax-text-editor-toolbar {
+          background-color: var(--hax-ui-background-color);
+          --simple-toolbar-button-bg: var(--hax-ui-background-color);
+          --simple-picker-options-background-color: var(--hax-ui-background-color);
+          --simple-picker-option-active-background-color: var(--hax-ui-color-accent);
+          --simple-picker-option-active-color: var(--hax-ui-background-color);
+          --simple-picker-color: var(--hax-ui-color);
+        }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: 0.2;
           pointer-events: none;

@@ -9,31 +9,13 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
   * @element hal-9000
   * `Robot assistant tag, hopefully not evil`
   *
- 
   * @demo demo/index.html
   */
 class Hal9000 extends LitElement {
-  //styles function
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-      `,
-    ];
-  }
-
-  // render function
-  render() {
-    return html` <slot></slot>`;
-  }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
       /**
        * Commands to listen for and take action on
        */
@@ -113,7 +95,7 @@ class Hal9000 extends LitElement {
     super();
     this.windowControllers = new AbortController();
     this.commands = {};
-    this.respondsTo = "(hal)";
+    this.respondsTo = "(merlin)";
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
@@ -152,6 +134,8 @@ class Hal9000 extends LitElement {
    */
   addCommands(commands) {
     if (this.annyang) {
+      // ensure we keep registrations to a minimum
+      this.annyang.removeCommands();
       this.annyang.addCommands(commands);
     }
   }
@@ -159,18 +143,23 @@ class Hal9000 extends LitElement {
    * And the word was good.
    */
   speak(text) {
-    this.__text = text;
-    if (this.synth) {
-      this.utter = new SpeechSynthesisUtterance(this.__text);
-      this.utter.pitch = this.pitch;
-      this.utter.rate = this.rate;
-      this.utter.lang = this.language;
-      this.utter.voice = this.defaultVoice;
-      // THOU SPEAKITH
-      this.synth.speak(this.utter);
-    } else {
-      console.warn("I have no voice...");
-    }
+    return new Promise((resolve) => {
+      this.__text = text;
+      if (this.synth) {
+        this.utter = new SpeechSynthesisUtterance(this.__text);
+        this.utter.pitch = this.pitch;
+        this.utter.rate = this.rate;
+        this.utter.lang = this.language;
+        this.utter.voice = this.defaultVoice;
+        // THOU SPEAKITH
+        this.synth.speak(this.utter);
+        this.utter.onend = (event) => {
+          resolve(event);
+        };
+      } else {
+        resolve(false);
+      }
+    });
   }
   /**
    * Annyang library has been loaded globally so we can use it
@@ -257,8 +246,8 @@ class Hal9000 extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "commands") {
-        this._commandsChanged(this[propName], oldValue);
+      if (propName == "commands" && typeof oldValue !== typeof undefined) {
+        this._commandsChanged(this[propName]);
       }
       if (propName == "respondsTo") {
         this._respondsToChanged(this[propName], oldValue);
@@ -283,23 +272,6 @@ class Hal9000 extends LitElement {
   }
 }
 
-// haxHooks() {
-//   return {
-//     haleditModeChanged: "haxeditModeChanged",
-//     halActiveElementChanged: "halActiveElementChanged",
-//   };
-// }
-
-// halActiveElementChanged(element, value) {
-//   if (value) {
-//     this._haxstate = value;
-//   }
-// }
-
-// haxeditModeChanged(value) {
-//   this._haxstate = value;
-// }
-
 // ensure we can generate a singleton
 customElements.define(Hal9000.tag, Hal9000);
 export { Hal9000 };
@@ -307,6 +279,11 @@ window.Hal9000 = window.Hal9000 || {};
 
 window.Hal9000.requestAvailability = () => {
   if (!window.Hal9000.instance) {
-    window.Hal9000.instance = new Hal9000();
+    const hal = document.createElement("hal-9000");
+    document.body.appendChild(hal);
+    window.Hal9000.instance = hal;
   }
+  return window.Hal9000.instance;
 };
+
+export const HAL9000Instance = window.Hal9000.requestAvailability();

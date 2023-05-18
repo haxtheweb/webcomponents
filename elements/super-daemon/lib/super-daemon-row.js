@@ -1,9 +1,10 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
-export class SuperDaemonRow extends LitElement {
+export class SuperDaemonRow extends SimpleColors {
   constructor() {
     super();
     this.title = null;
@@ -17,7 +18,7 @@ export class SuperDaemonRow extends LitElement {
     this.value = {};
     this.tags = [];
     this.shadowRootOptions = {
-      ...LitElement.shadowRootOptions,
+      ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
     };
     this.active = false;
@@ -28,6 +29,7 @@ export class SuperDaemonRow extends LitElement {
 
   static get properties() {
     return {
+      ...super.properties,
       title: { type: String },
       path: { type: String },
       icon: { type: String },
@@ -54,6 +56,8 @@ export class SuperDaemonRow extends LitElement {
         :host {
           display: block;
           margin: 8px 16px;
+          color: var(--simple-colors-default-theme-accent-12, black);
+          background-color: var(--simple-colors-default-theme-accent-1, white);
         }
         :host([active]) {
           cursor: pointer;
@@ -74,6 +78,8 @@ export class SuperDaemonRow extends LitElement {
           padding: 16px;
           width: 100%;
           border-radius: 0;
+          color: var(--simple-colors-default-theme-accent-12, black);
+          background-color: var(--simple-colors-default-theme-accent-1, white);
           border: none;
           align-items: middle;
           justify-content: space-between;

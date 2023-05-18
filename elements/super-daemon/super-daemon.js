@@ -2,20 +2,22 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `super-daemon`
  * ``
  * @demo demo/index.html
  * @element super-daemon
  */
-class SuperDaemon extends LitElement {
+class SuperDaemon extends SimpleColors {
   static get properties() {
     return {
+      ...super.properties,
       opened: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       key1: { type: String },
@@ -35,6 +37,9 @@ class SuperDaemon extends LitElement {
       mini: { type: Boolean },
       activeNode: { type: Object },
       programTarget: { type: Object },
+      voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
+      voiceCommands: { type: Object },
+      listeningForInput: { type: Boolean, reflect: true, attribute: "listening-for-input" },
     };
   }
   /**
@@ -44,9 +49,14 @@ class SuperDaemon extends LitElement {
     super();
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
+    this.voiceCommands = {};
     this.programTarget = null;
     this.activeRange = null;
     this.activeNode = null;
+    this.voiceSearch = false;
+    this.listeningForInput = false;
+    this.voiceRespondsTo = "merlin";
+    this.hal = null;
     // manages GLOBAL events for the whole thing
     this.windowControllers = new AbortController();
     // this one is specific to mini mode management
@@ -102,6 +112,12 @@ class SuperDaemon extends LitElement {
     window.addEventListener(
       "super-daemon-run-program",
       this.runProgramEvent.bind(this),
+      { signal: this.windowControllers.signal }
+    );
+
+    window.addEventListener(
+      "super-daemon-voice-command",
+      this._addVoiceCommand.bind(this),
       { signal: this.windowControllers.signal }
     );
   }
@@ -253,6 +269,39 @@ class SuperDaemon extends LitElement {
     }
   }
 
+  updateSearchInputViaVoice(input) {
+    console.log("GENERIC SEARCH HIT");
+    const field = this.shadowRoot
+    .querySelector("super-daemon-ui")
+    .shadowRoot.querySelector("simple-fields-field");
+    field.value = input;
+    field.focus();
+    field.select();
+    // turn off bc we got a match
+    this.listeningForInput = false;
+  }
+
+  /**
+   * allow uniform method of adding voice commands
+   */
+  addVoiceCommand(command, context, callback) {
+    if (context) {
+      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
+      this.voiceCommands[command] = context[callback].bind(context);
+    }
+  }
+  /**
+   * event driven version
+   */
+  _addVoiceCommand(e) {
+    // without context it's almost worthless so try to fallback on where it came from
+    let target = e.detail.context;
+    if (!target) {
+      target = e.target;
+    }
+    this.addVoiceCommand(e.detail.command, target, e.detail.callback);
+  }
+
   keyHandler(e) {
     // modifier required to activate
     if (this.allowedCallback()) {
@@ -300,8 +349,11 @@ class SuperDaemon extends LitElement {
           --dialog-border-radius: var(--simple-modal-border-radius, 2px);
           z-index: var(--simple-modal-z-index, 10000) !important;
           padding: 0;
+          color: var(--simple-colors-default-theme-grey-12, black);
         }
         web-dialog::part(dialog) {
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
           border: 1px solid var(--simple-modal-border-color, #222);
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
@@ -342,13 +394,20 @@ class SuperDaemon extends LitElement {
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         absolute-position-behavior super-daemon-ui {
           margin-top: -46px;
-          background-color: white;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
           width: 400px;
           margin-left: 14px;
           padding-top: 8px;
+        }
+        super-daemon-ui {
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
       `,
     ];
@@ -368,6 +427,8 @@ class SuperDaemon extends LitElement {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
+    // important we stop listening when the UI goes away
+    this.listeningForInput = false;
     const event = new MouseEvent("click", {
       view: window,
       bubbles: true,
@@ -404,10 +465,28 @@ class SuperDaemon extends LitElement {
       var textB = b.title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
+    // highest priority if item title is exact match
+    tmpItems.forEach((item) => {
+      if (item.title.toLowerCase() == this.value.toLocaleLowerCase()) {
+        item.priority = -10000000;
+      }
+    });
     // then on priority
     return tmpItems.sort((a, b) => {
       return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
     });
+  }
+  playSound(sound = "coin2") {
+    let playSound = [
+      "coin2",
+    ].includes(sound)
+      ? sound
+      : "coin2";
+    this.audio = new Audio(
+      new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+    );
+    this.audio.volume = 0.8;
+    this.audio.play();
   }
   // can't directly set context
   appendContext(context) {
@@ -482,10 +561,48 @@ class SuperDaemon extends LitElement {
       }
     }
     this.windowControllers2.abort();
+    setTimeout(async () => {
+      if (this.hal && this.voiceSearch && this.items) {
+        await this.items.forEach(async (item) => {
+          if (item.title) {
+            this.voiceCommands[item.title.toLowerCase()] = (response) => {
+              console.log(item);
+              this.shadowRoot.querySelector("super-daemon-ui").items = [item];
+              this.value = item.title;
+              this.shadowRoot.querySelector("super-daemon-ui").filtered = [item];
+              setTimeout(() => {
+                this.shadowRoot.querySelector("super-daemon-ui").shadowRoot.querySelector
+                ('super-daemon-row').selected();
+              }, 0);
+              // if program, reset input and prompt for more!
+              if (item.value.program) {
+                this.playSound();
+                let field = this.shadowRoot.querySelector("super-daemon-ui")
+                .shadowRoot.querySelector("simple-fields-field");
+                field.focus();
+                field.select();
+              }
+              else {
+                // disable bc we got a hit
+                this.listeningForInput = false;
+              }
+            };
+          }
+        });
+        if (this.voiceSearch && this.hal && this.voiceCommands) {
+          // LAST priority
+          setTimeout(() => {
+            this.addVoiceCommand('*tag', this, "updateSearchInputViaVoice");
+            this.hal.commands = {...this.voiceCommands};              
+            console.log(this.hal.commands);
+          }, 0);
+        }
+      }
+    }, 0);
     setTimeout(() => {
+      this.windowControllers2 = new AbortController();
       // ensure if we click away from the UI that we close and clean up
       if (this.mini) {
-        this.windowControllers2 = new AbortController();
         window.addEventListener("click", this.clickOnMiniMode.bind(this), {
           once: true,
           passive: true,
@@ -556,9 +673,12 @@ class SuperDaemon extends LitElement {
               ?open="${this.opened}"
               ?mini="${this.mini}"
               icon="${this.icon}"
+              ?dark="${this.dark}"
               .questionTags="${this.questionTags}"
               ?loading="${this.loading}"
               like="${this.like}"
+              ?listening-for-input="${this.listeningForInput}"
+              ?voice-search="${this.voiceSearch}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
               program-name="${this.programName}"
@@ -588,6 +708,9 @@ class SuperDaemon extends LitElement {
               icon="${this.icon}"
               ?loading="${this.loading}"
               like="${this.like}"
+              ?dark="${this.dark}"
+              ?voice-search="${this.voiceSearch}"
+              ?listening-for-input="${this.listeningForInput}"
               .questionTags="${this.questionTags}"
               @like-changed="${this.likeChanged}"
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
@@ -605,6 +728,7 @@ class SuperDaemon extends LitElement {
             <simple-icon-button
               id="cancel"
               icon="cancel"
+              ?dark="${this.dark}"
               @click="${this.close}"
             ></simple-icon-button>
           </web-dialog>
@@ -612,6 +736,33 @@ class SuperDaemon extends LitElement {
   }
   likeChanged(e) {
     this.like = e.detail.value;
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("voiceSearch") && this.voiceSearch) {
+      import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {
+        this.hal = window.Hal9000.requestAvailability();
+        this.hal.debug = true;
+        this.voiceCommands["(run) program"] = (response) => {
+          this.commandContextChanged({ detail: { value: "/" } });
+        };
+        this.voiceCommands["(I need) help"] = (response) => {
+          this.commandContextChanged({ detail: { value: "?" } });
+        };
+        this.voiceCommands["developer (mode)"] = (response) => {
+          this.commandContextChanged({ detail: { value: ">" } });
+        };
+      });
+    }
+    else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
+      this.hal = null;
+    }
+    // align state of voice enabled with hal
+    if (changedProperties.has("listeningForInput") && this.hal) {
+      this.hal.enabled = this.listeningForInput;
+    }
   }
   async inputfilterChanged(e) {
     // update this value as far as what's being typed no matter what it is

@@ -18,8 +18,7 @@ import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
 
-const haxLogo = new URL("./lib/assets/images/HAXLogo.svg", import.meta.url)
-  .href;
+
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
 // toggle store darkmode
@@ -190,6 +189,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       menu: "Menu",
       showMore: "More",
     };
+    SuperDaemonInstance.voiceSearch = true;
     SuperDaemonInstance.icon = "hax:wizard-hat";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
@@ -1010,7 +1010,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           <a id="home" href="home" tabindex="-1" slot="left">
             <simple-icon-lite
               id="hlogo"
-              src="${haxLogo}"
+              icon="hax:hax2022"
               tabindex="0"
               class="haxLogo"
               title="Home"

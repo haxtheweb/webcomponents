@@ -1,8 +1,8 @@
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import {
   normalizeEventPath,
@@ -11,18 +11,20 @@ import {
 import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `hax-map`
  * @element hax-map
  * `Export dialog with all export options and settings provided.`
  */
-class HaxMap extends I18NMixin(LitElement) {
+class HaxMap extends I18NMixin(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       ...HaxTrayDetailHeadings,
       css`
         :host {
@@ -70,7 +72,7 @@ class HaxMap extends I18NMixin(LitElement) {
           margin-right: 8px;
           overflow: hidden;
         }
-        li simple-icon-button {
+        li simple-icon-button-lite {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
@@ -78,14 +80,16 @@ class HaxMap extends I18NMixin(LitElement) {
           --simple-icon-height: 14px;
           height: 38px;
           margin: 0 4px;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         li simple-icon-button:hover {
-          background-color: #f5f5f5;
+          background-color: var(--simple-colors-default-theme-grey-2, white);
         }
         li simple-icon-button.del {
           margin-left: 16px;
         }
-        li:hover simple-icon-button {
+        li:hover simple-icon-button-lite {
           visibility: visible;
           opacity: 1;
         }
@@ -322,42 +326,42 @@ class HaxMap extends I18NMixin(LitElement) {
               </hax-toolbar-item>
               ${element.tag != "page-break"
                 ? html`
-                    <simple-icon-button
+                    <simple-icon-button-lite
                       icon="${this.isLocked(index)
                         ? "icons:lock"
                         : "icons:lock-open"}"
                       @click="${(e) => this.itemOp(index, "lock")}"
                       title="Lock / Unlock"
-                    ></simple-icon-button>
+                    ></simple-icon-button-lite>
                     ${HAXStore.isTextElement(element.node) ||
                     element.tag == "grid-plate"
                       ? html``
                       : html`
-                          <simple-icon-button
+                          <simple-icon-button-lite
                             icon="image:transform"
                             @click="${(e) => this.itemOp(index, "transform")}"
                             title="Change to.."
-                          ></simple-icon-button>
+                          ></simple-icon-button-lite>
                         `}
-                    <simple-icon-button
+                    <simple-icon-button-lite
                       icon="hax:keyboard-arrow-up"
                       @click="${(e) => this.itemOp(index, "up")}"
                       title="Move up"
                       ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
-                    <simple-icon-button
+                    ></simple-icon-button-lite>
+                    <simple-icon-button-lite
                       icon="hax:keyboard-arrow-down"
                       @click="${(e) => this.itemOp(index, "down")}"
                       title="Move down"
                       ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
-                    <simple-icon-button
+                    ></simple-icon-button-lite>
+                    <simple-icon-button-lite
                       class="del"
                       icon="delete"
                       @click="${(e) => this.itemOp(index, "delete")}"
                       title="Delete"
                       ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
+                    ></simple-icon-button-lite>
                   `
                 : ``}
             </li>
@@ -490,6 +494,7 @@ class HaxMap extends I18NMixin(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Title when open.
        */

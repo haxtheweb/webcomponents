@@ -387,6 +387,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             </div>
           </hax-context-item>
         </div>
+        <div class="group">
+
         <hax-context-item
           action
           icon="delete"
@@ -452,8 +454,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               value="${el.callback}"
               ?disabled="${el.disabled || this.disableItemOps}"
             ></hax-context-item>`;
-          })}
+            })}
           <slot name="secondary"></slot>
+        </div>
         </div>
         <div class="group">
           <hax-context-item

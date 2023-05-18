@@ -1,33 +1,44 @@
-import { LitElement, html, css, nothing } from "lit";
+import { html, css, nothing } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./super-daemon-row.js";
 
-export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
+export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
     super();
+    this.voiceSearch = false;
+    this.iconAccent = "purple";
     this.multiMatch = true;
     this._defaultTextEmpty = "No results for this term";
-    this.t.noResultsForThisTerm = this._defaultTextEmpty;
-    this.t.whatAreYouLookingFor = "What are you looking for?";
-    this.t.filterCommands = "Filter commands";
-    this.t.commands = "Commands";
-    this.t.loadingResults = "Loading results";
-    this.t.commonTasksText =
-      "Merlin helps show you what's possible. Here are some common answers..";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      noResultsForThisTerm: this._defaultTextEmpty,
+      whatAreYouLookingFor: "Type what you are looking to do here..",
+      voiceSearch: "Voice search",
+      filterCommands: "Filter commands",
+      commands: "Commands",
+      loadingResults: "Loading results",
+      commonTasksText:
+        "Merlin helps show you what's possible. Here are some common answers..",
+    };
     this.opened = false;
     this.items = [];
     this.mini = false;
     this.loading = false;
+    this.listeningForInput = false;
     this.programSearch = "";
     this.commandContext = "*";
     this.programName = null;
     this.shadowRootOptions = {
-      ...LitElement.shadowRootOptions,
+      ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
     };
     this.where = "index";
@@ -43,6 +54,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       icon: { type: String },
+      iconAccent: { type: String, attribute: "icon-accent" },
+      voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
+      listeningForInput: { type: Boolean, reflect: true, attribute: "listening-for-input" },
       mini: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       programSearch: { type: String, attribute: "program-search" },
@@ -75,6 +89,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         }
         .search {
           display: flex;
+          margin: 16px;
         }
         .search input {
           display: inline-flex;
@@ -84,6 +99,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           display: inline-flex;
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
+        }
+        .voice {
+          --simple-icon-height: 50px;
+          --simple-icon-width: 100px;
+          --simple-icon-button-border-radius: 0;
         }
 
         .search .user-context-icon {
@@ -105,8 +125,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         .program {
           display: inline-flex;
           font-family: "Roboto Mono", monospace;
-          background-color: black;
-          color: white;
+          color: var(--simple-colors-default-theme-grey-1, white);
+          background-color: var(--simple-colors-default-theme-grey-12, black);
           line-break: anywhere;
           word-break: break-all;
           word-wrap: break-word;
@@ -132,14 +152,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           right: 0;
           position: absolute;
           font-size: 12px;
-          color: #666;
+          color: var(--simple-colors-default-theme-grey-10, black);
           padding: 8px;
           margin: 8px;
         }
         .results {
           width: 100%;
           display: block;
-          border: 2px solid black;
+          border: 2px solid var(--simple-colors-default-theme-grey-10, black);
           max-height: 50vh;
           min-height: 30vh;
           overflow-y: scroll;
@@ -166,7 +186,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           font-size: 20px;
         }
         .slotted ::slotted(a) {
-          color: blue;
+          color: var(--simple-colors-default-theme-grey-8, blue);
           font-weight: bold;
           text-decoration: underline;
           cursor: pointer;
@@ -179,7 +199,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         simple-fields-field {
           line-height: 40px;
           padding: 8px;
-          color: inherit;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
           line-height: normal;
           font-family: inherit;
           width: 100%;
@@ -188,7 +209,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         simple-tag:hover,
         simple-tag:focus {
           cursor: pointer;
-          outline: 1px solid black;
+          outline: 1px solid var(--simple-colors-default-theme-grey-10, black);
           outline-offset: 4px;
         }
         :host([mini]) simple-fields-field::part(option-input) {
@@ -259,7 +280,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         }
 
         :host([mini]) {
-          background-color: white;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         :host([mini]) super-daemon-row {
           --super-daemon-row-icon: 24px;
@@ -512,6 +534,25 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
     }
   }
 
+  voiceSearchClick() {
+    // refernced this way to avoid circular dependency
+    const sdi = window.SuperDaemonManager.requestAvailability();
+    if (this.listeningForInput) {
+      sdi.listeningForInput = false;
+    }
+    else {
+    // start talking which listeners in super-daemon will activate
+    // after the text is spoken to avoid polluting input
+    sdi.hal.speak("How may I help you?", sdi).then((e) => {
+      sdi.playSound();
+      sdi.listeningForInput = true;
+    });
+    this.shadowRoot.querySelector("#inputfilter").focus();
+    // reset to top of results
+    this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+    }
+  }
+
   render() {
     return html`
       <div class="common-tasks-text">${this.t.commonTasksText}</div>
@@ -529,6 +570,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
         ) : ``}
       </div>
       <div class="search">
+      ${this.voiceSearch
+          ? html`<simple-icon-button
+              class="voice"
+              @click="${this.voiceSearchClick}"
+              icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
+              accent-color="${this.listeningForInput ? "orange" : "grey"}"
+              ?dark="${this.dark}"
+              title="${this.t.voiceSearch}">${this.programName}</simple-icon-button>`
+          : ``}
         ${this.commandContext != "*"
           ? html`<simple-icon-lite
               title="${this.getActiveTitle(this.commandContext)}"
@@ -552,7 +602,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
           autofocus
           part="filter"
         ></simple-fields-field>
-        <simple-icon-lite icon="${this.icon}" class="icon"></simple-icon-lite>
+        <simple-icon icon="${this.icon}" class="icon" accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"></simple-icon>
       </div>
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}
@@ -578,6 +628,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(LitElement)) {
                           .value="${item.value}"
                           icon="${item.icon}"
                           image="${item.image}"
+                          ?dark="${this.dark}"
                           text-character="${item.textCharacter}"
                           title="${item.title}"
                           .tags="${item.tags}"

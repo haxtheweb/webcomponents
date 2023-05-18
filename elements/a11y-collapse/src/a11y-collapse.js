@@ -147,7 +147,7 @@ class A11yCollapse extends LitElement {
             border-top: 0px solid;
             border-color: var(--a11y-collapse-border-color, inherit);
             max-height: 0;
-            transition: all 0.75s ease;
+            transition: visibility 0.75s ease, opacity 0.75s ease, max-height 0.75s ease;
             overflow-y: hidden;
             opacity: 1;
             visibility: visible;
