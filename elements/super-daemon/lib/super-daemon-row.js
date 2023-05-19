@@ -289,6 +289,8 @@ export class SuperDaemonRow extends SimpleColors {
         ${this.more
           ? html`<simple-icon-button
               class="more"
+              ?dark="${this.dark}"
+              accent-color="${this.accentColor}"
               label="More details"
               icon="more-vert"
               aria-controls="details"

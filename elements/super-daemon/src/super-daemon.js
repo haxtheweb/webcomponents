@@ -449,7 +449,7 @@ class SuperDaemon extends SimpleColors {
   /**
    * Close the modal and do some clean up
    */
-  close() {
+  close(e) {
     // clean up event for click away in mini mode if active
     this.opened = false;
     this.activeNode = null;
@@ -467,7 +467,8 @@ class SuperDaemon extends SimpleColors {
     this.setListeningStatus(false);
     // hide the toast if it's up.. unless in santa mode..
     if (!this.santaMode) {
-      let hide = "simple";
+      if (e && e.type !== "super-daemon-close" && e.type !== "close") {
+        let hide = "simple";
         if (window.AppHax || window.HAXCMS) {
           hide = "haxcms";
         }
@@ -479,6 +480,7 @@ class SuperDaemon extends SimpleColors {
             detail: false,
           })
         );
+      }
     }
     const event = new MouseEvent("click", {
       view: window,
@@ -784,11 +786,13 @@ class SuperDaemon extends SimpleColors {
     if (!this.opened) {
       this.open();
     }
+    this.__closeLock = true;
     this.listeningForInput = false;
     this.hal.speak(this.randomResponse(
       ["I'm here", "Yes?", "What?", "What can I do for you?", "What do you need?", "How can I help?"]), this.santaMode).then((e) => {
       this.playSound().then((e) => {
         this.listeningForInput = true;
+        this.__closeLock = false;
       });
     });
   }
@@ -797,6 +801,13 @@ class SuperDaemon extends SimpleColors {
       this.hal.speak("Please disable Santa mode to stop listening", this.santaMode);
     }
     this.setListeningStatus(false);
+  }
+  closeMerlin(e) {
+    if (this.santaMode) {
+      this.hal.speak(this.randomResponse(["thanks for stopping by", "See ya","See you soon", "Till we meet again"]), this.santaMode).then((e) => {
+        this.close();    
+      });
+    }
   }
   belshnickle() {
     if (this.santaMode) {
@@ -807,15 +818,16 @@ class SuperDaemon extends SimpleColors {
   defaultVoiceCommands() {
     this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
+    this.addVoiceCommand(`close merlin`, this, "closeMerlin");
     this.addVoiceCommand(`disable santa`, this, "belshnickle");
     this.voiceCommands["(run) program"] = (response) => {
-      this.commandContextChanged({ detail: { value: "/" } });
+      this.commandContextChanged({ detail: { value: "/", label: "program" } });
     };
     this.voiceCommands["(I need) help"] = (response) => {
-      this.commandContextChanged({ detail: { value: "?" } });
+      this.commandContextChanged({ detail: { value: "?", label: "help" } });
     };
     this.voiceCommands["developer (mode)"] = (response) => {
-      this.commandContextChanged({ detail: { value: ">" } });
+      this.commandContextChanged({ detail: { value: ">", label: "developer" } });
     };
     // LAST priority bc it matches ANYTHING, no idea why I need to wait this tho..
     this.addVoiceCommand('*anything', this, "updateSearchInputViaVoice");
@@ -841,7 +853,7 @@ class SuperDaemon extends SimpleColors {
       clearTimeout(this._listeningTimeout);
       this._listeningTimeout = setTimeout(() => {
         // if we shut off, ensure we close the toast
-        if (!this.listeningForInput) {
+        if (!this.listeningForInput && !this.__closeLock) {
           let hide = "simple";
           if (window.AppHax || window.HAXCMS) {
             hide = "haxcms";
@@ -935,7 +947,16 @@ class SuperDaemon extends SimpleColors {
     }
     if (this.voiceSearch) {
       setTimeout(() => {
-        this.reprocessVoiceCommands();
+        if (e.detail.label) {
+          this.hal.speak(`${e.detail.label} mode activated`).then((e) => {
+            this.playSound().then((e) => {
+              this.reprocessVoiceCommands();
+            });
+          });
+        }
+        else {
+          this.reprocessVoiceCommands();
+        }
       }, 0);
     }
   }

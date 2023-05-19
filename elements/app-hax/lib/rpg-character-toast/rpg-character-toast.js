@@ -43,6 +43,13 @@ export class RPGCharacterToast extends SimpleToastEl {
 
         future-terminal-text {
           min-width: 300px;
+          overflow-wrap: break-all;
+          text-elipsis: ellipsis;
+          line-height: 36px;
+          font-size: 18px;
+          text-align: left;
+          padding: 36px 0px;
+          max-width: 50vw;
         }
 
         .merlin {
@@ -58,12 +65,13 @@ export class RPGCharacterToast extends SimpleToastEl {
         .awaiting-input {
           --simple-icon-height: 50px;
           --simple-icon-width: 50px;
-          display: block;
-          height: 150px;
           width: 100px;
-          margin: 6px 0 0 0;
+          margin: 6px 0px 0px;
           padding: 16px;
           color: var(--simple-colors-default-theme-purple-6, purple);
+          vertical-align: middle;
+          display: inline-flex;
+          height: 100px;
         }
         :host([hidden]) {
           display: none;
@@ -260,10 +268,9 @@ export class RPGCharacterToast extends SimpleToastEl {
     super.updated(changedProperties);
     // can't write here in template bc it's a vanilla innerHTML which would have Lit
     // directives in it and we don't want to ingest and rewrite those
-    if (changedProperties.has("text") && this.future && this.shadowRoot) {
-      console.log(this.shadowRoot.querySelector("future-terminal-text"));
+    if (changedProperties.has("text") && this.future && this.shadowRoot.querySelector("future-terminal-text")) {
       this.shadowRoot.querySelector("future-terminal-text").innerText = this.text;
-    }
+      this.shadowRoot.querySelector("future-terminal-text")._doGlitch();    }
   }
 
   connectedCallback() {

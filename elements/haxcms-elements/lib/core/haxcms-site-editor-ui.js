@@ -1301,6 +1301,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this.shadowRoot.querySelector("haxcms-darkmode-toggle"),
         method: "toggle",
       },
+      voice: "(toggle) dark mode",
       context: ["logged-in", "CMS", "HAX"],
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
@@ -1384,12 +1385,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change theme program
     SuperDaemonInstance.defineOption({
-      title: "Change theme (temporarily)",
+      title: "Change theme temporarily",
       icon: "image:style",
       tags: ["Developer", "theme"],
       eventName: "super-daemon-run-program",
       path: ">settings/theme",
       context: [">"],
+      more: html`<span>Change theme just for the current browsing session</span>`,
+      voice: "change theme (temporarily)",
       value: {
         name: "Change theme",
         context: ">",
