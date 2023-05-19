@@ -44,8 +44,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     };
     this.where = "index";
     this.icon = "hardware:keyboard-return";
-    this.questionTags = [
-    ];
+    this.questionTags = [];
   }
   static get tag() {
     return "super-daemon-ui";
@@ -57,7 +56,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       icon: { type: String },
       iconAccent: { type: String, attribute: "icon-accent" },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
-      listeningForInput: { type: Boolean, reflect: true, attribute: "listening-for-input" },
+      listeningForInput: {
+        type: Boolean,
+        reflect: true,
+        attribute: "listening-for-input",
+      },
       mini: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       programSearch: { type: String, attribute: "program-search" },
@@ -106,7 +109,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           --simple-icon-width: 100px;
           --simple-icon-button-border-radius: 0;
           color: var(--simple-colors-default-theme-grey-10, grey);
-          transition: color .6s ease-in-out;
+          transition: color 0.6s ease-in-out;
         }
         .voice:hover,
         .voice:focus {
@@ -325,7 +328,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         if (sdi.santaMode || this.listeningForInput) {
           clearTimeout(this._selectTimeout);
           this._selectTimeout = setTimeout(() => {
-            if (this.filtered.length === 1 || (this.filtered && this.filtered[0] && this.filtered[0].title.toLocaleLowerCase() == sdi.value.toLocaleLowerCase())) {
+            if (
+              this.filtered.length === 1 ||
+              (this.filtered &&
+                this.filtered[0] &&
+                this.filtered[0].title.toLocaleLowerCase() ==
+                  sdi.value.toLocaleLowerCase())
+            ) {
               this.shadowRoot.querySelector("super-daemon-row").selected();
               sdi.listeningForInput = true;
             }
@@ -539,9 +548,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       case "*":
         sdi.runProgram("*", {}, null, null, "", "");
         break;
-        case "sites":
-          sdi.runProgram("*", {}, null, null, "", "sites");
-          break;
+      case "sites":
+        sdi.runProgram("*", {}, null, null, "", "sites");
+        break;
     }
   }
 
@@ -561,18 +570,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     const sdi = window.SuperDaemonManager.requestAvailability();
     if (this.listeningForInput) {
       sdi.listeningForInput = false;
-    }
-    else {
-    // start talking which listeners in super-daemon will activate
-    // after the text is spoken to avoid polluting input
-    sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
-      sdi.playSound();
-      sdi.listeningForInput = true;
-      
-    });
-    this.shadowRoot.querySelector("#inputfilter").focus();
-    // reset to top of results
-    this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+    } else {
+      // start talking which listeners in super-daemon will activate
+      // after the text is spoken to avoid polluting input
+      sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
+        sdi.playSound();
+        sdi.listeningForInput = true;
+      });
+      this.shadowRoot.querySelector("#inputfilter").focus();
+      // reset to top of results
+      this.shadowRoot.querySelector(".results").scrollTo(0, 0);
     }
   }
 
@@ -580,26 +587,31 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     return html`
       <div class="common-tasks-text">${this.t.commonTasksText}</div>
       <div class="question-tags">
-        ${this.questionTags ? this.questionTags.map(
-          (item, i) => html` <simple-tag
-            tabindex="0"
-            @keydown="${this.tagKeydown}"
-            @click="${this.tagClick}"
-            accent-color="grey"
-            value="${item.label}"
-            part="tag tag-${i}"
-            data-value="${item.value}"
-          ></simple-tag>`
-        ) : ``}
+        ${this.questionTags
+          ? this.questionTags.map(
+              (item, i) => html` <simple-tag
+                tabindex="0"
+                @keydown="${this.tagKeydown}"
+                @click="${this.tagClick}"
+                accent-color="grey"
+                value="${item.label}"
+                part="tag tag-${i}"
+                data-value="${item.value}"
+              ></simple-tag>`
+            )
+          : ``}
       </div>
       <div class="search">
-      ${this.voiceSearch
+        ${this.voiceSearch
           ? html`<simple-icon-button-lite
               class="voice ${this.listeningForInput ? "listening" : ""}"
               @click="${this.voiceSearchClick}"
-              icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
+              icon="${this.listeningForInput
+                ? "hax:loading"
+                : "settings-voice"}"
               ?dark="${this.dark}"
-              title="${this.t.voiceSearch}"></simple-icon-button-lite>`
+              title="${this.t.voiceSearch}"
+            ></simple-icon-button-lite>`
           : ``}
         ${this.commandContext != "*"
           ? html`<simple-icon-lite
@@ -624,7 +636,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           autofocus
           part="filter"
         ></simple-fields-field>
-        <simple-icon icon="${this.icon}" class="icon" accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"></simple-icon>
+        <simple-icon
+          icon="${this.icon}"
+          class="icon"
+          accent-color="${this.listeningForInput ? this.iconAccent : "grey"}"
+        ></simple-icon>
       </div>
       <div class="results-stats">
         ${this.filtered.length} / ${this.items.length} ${this.t.commands}

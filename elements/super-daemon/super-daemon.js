@@ -40,7 +40,11 @@ class SuperDaemon extends SimpleColors {
       programTarget: { type: Object },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
       voiceCommands: { type: Object },
-      listeningForInput: { type: Boolean, reflect: true, attribute: "listening-for-input" },
+      listeningForInput: {
+        type: Boolean,
+        reflect: true,
+        attribute: "listening-for-input",
+      },
     };
   }
 
@@ -52,12 +56,24 @@ class SuperDaemon extends SimpleColors {
     SuperDaemonInstance.defineOption({
       title: "Toggle Santa Mode",
       icon: "settings-voice",
-      tags: ["Developer", "government", "merlin", "big-tech", "overlord", "santa", "all-seeing-eye"],
+      tags: [
+        "Developer",
+        "government",
+        "merlin",
+        "big-tech",
+        "overlord",
+        "santa",
+        "all-seeing-eye",
+      ],
       eventName: "super-daemon-element-method",
       path: ">settings/voice",
       voice: "(toggle) santa mode",
       context: [">"],
-      more: html`<span>He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho....Ho.</span>`,
+      more: html`<span
+        >He sees you when your sleeping, he knows when your awake, and with this
+        command active he is always listening for input ready to respond. He's..
+        Santa Merlin. Ho..Ho....Ho.</span
+      >`,
       value: {
         target: this,
         method: "toggleSantaMode",
@@ -311,7 +327,9 @@ class SuperDaemon extends SimpleColors {
    */
   addVoiceCommand(command, context, callback) {
     if (context) {
-      command = command.replace(":name:", this.voiceRespondsTo).toLocaleLowerCase();
+      command = command
+        .replace(":name:", this.voiceRespondsTo)
+        .toLocaleLowerCase();
       this.voiceCommands[command] = context[callback].bind(context);
     }
   }
@@ -441,8 +459,7 @@ class SuperDaemon extends SimpleColors {
     // always override value in santa mode
     if (this.santaMode) {
       this.listeningForInput = true;
-    }
-    else {
+    } else {
       this.listeningForInput = value;
     }
   }
@@ -503,12 +520,10 @@ class SuperDaemon extends SimpleColors {
         let results = [];
         if (this.commandContext == "*") {
           results = context.filter((value) => item.context.includes(value));
-        }
-        else {
+        } else {
           results = [this.commandContext].filter((value) => {
-            return item.context.includes(value)
-          }
-          );
+            return item.context.includes(value);
+          });
         }
         return results.length !== 0;
       }
@@ -533,11 +548,7 @@ class SuperDaemon extends SimpleColors {
   }
   playSound(sound = "coin2") {
     return new Promise((resolve) => {
-      let playSound = [
-        "coin2",
-      ].includes(sound)
-        ? sound
-        : "coin2";
+      let playSound = ["coin2"].includes(sound) ? sound : "coin2";
       this.audio = new Audio(
         new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
       );
@@ -773,13 +784,12 @@ class SuperDaemon extends SimpleColors {
     setTimeout(() => {
       let say = "Santa mode activated: Watch what you say";
       if (!this.santaMode) {
-        say = "Santa mode deactivated: Have a nice day believing you are not being watched";
+        say =
+          "Santa mode deactivated: Have a nice day believing you are not being watched";
       }
-      this.hal.speak(say, this.santaMode).then(
-        (e) => {
-          this.setListeningStatus(this.santaMode);
-        }
-      );
+      this.hal.speak(say, this.santaMode).then((e) => {
+        this.setListeningStatus(this.santaMode);
+      });
     }, 0);
   }
   promptMerlin(e) {
@@ -788,25 +798,49 @@ class SuperDaemon extends SimpleColors {
     }
     this.__closeLock = true;
     this.listeningForInput = false;
-    this.hal.speak(this.randomResponse(
-      ["I'm here", "Yes?", "What?", "What can I do for you?", "What do you need?", "How can I help?"]), this.santaMode).then((e) => {
-      this.playSound().then((e) => {
-        this.listeningForInput = true;
-        this.__closeLock = false;
+    this.hal
+      .speak(
+        this.randomResponse([
+          "I'm here",
+          "Yes?",
+          "What?",
+          "What can I do for you?",
+          "What do you need?",
+          "How can I help?",
+        ]),
+        this.santaMode
+      )
+      .then((e) => {
+        this.playSound().then((e) => {
+          this.listeningForInput = true;
+          this.__closeLock = false;
+        });
       });
-    });
   }
   stopMerlin(e) {
     if (this.santaMode) {
-      this.hal.speak("Please disable Santa mode to stop listening", this.santaMode);
+      this.hal.speak(
+        "Please disable Santa mode to stop listening",
+        this.santaMode
+      );
     }
     this.setListeningStatus(false);
   }
   closeMerlin(e) {
     if (this.santaMode) {
-      this.hal.speak(this.randomResponse(["thanks for stopping by", "See ya","See you soon", "Till we meet again"]), this.santaMode).then((e) => {
-        this.close();    
-      });
+      this.hal
+        .speak(
+          this.randomResponse([
+            "thanks for stopping by",
+            "See ya",
+            "See you soon",
+            "Till we meet again",
+          ]),
+          this.santaMode
+        )
+        .then((e) => {
+          this.close();
+        });
     }
   }
   belshnickle() {
@@ -827,10 +861,12 @@ class SuperDaemon extends SimpleColors {
       this.commandContextChanged({ detail: { value: "?", label: "help" } });
     };
     this.voiceCommands["developer (mode)"] = (response) => {
-      this.commandContextChanged({ detail: { value: ">", label: "developer" } });
+      this.commandContextChanged({
+        detail: { value: ">", label: "developer" },
+      });
     };
     // LAST priority bc it matches ANYTHING, no idea why I need to wait this tho..
-    this.addVoiceCommand('*anything', this, "updateSearchInputViaVoice");
+    this.addVoiceCommand("*anything", this, "updateSearchInputViaVoice");
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -843,8 +879,7 @@ class SuperDaemon extends SimpleColors {
         this.hal.toast = true;
         this.defaultVoiceCommands();
       });
-    }
-    else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
+    } else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
       this.hal = null;
     }
     // align state of voice enabled with hal
@@ -896,35 +931,43 @@ class SuperDaemon extends SimpleColors {
   reprocessVoiceCommands() {
     if (this.hal && this.voiceSearch && this.items) {
       clearTimeout(this._blockRerunTimeout);
-      this._blockRerunTimeout = setTimeout( async() => {
+      this._blockRerunTimeout = setTimeout(async () => {
         this.defaultVoiceCommands();
         for await (const item of this.items) {
           if (item.title) {
-            this.voiceCommands[item.voice ? item.voice.toLocaleLowerCase() : item.title.toLocaleLowerCase()] = (response) => {
+            this.voiceCommands[
+              item.voice
+                ? item.voice.toLocaleLowerCase()
+                : item.title.toLocaleLowerCase()
+            ] = (response) => {
               this.shadowRoot.querySelector("super-daemon-ui").items = [item];
               this.value = item.title;
-              this.shadowRoot.querySelector("super-daemon-ui").filtered = [item];
+              this.shadowRoot.querySelector("super-daemon-ui").filtered = [
+                item,
+              ];
               setTimeout(() => {
-                this.shadowRoot.querySelector("super-daemon-ui").shadowRoot.querySelector
-                ('super-daemon-row').selected();
+                this.shadowRoot
+                  .querySelector("super-daemon-ui")
+                  .shadowRoot.querySelector("super-daemon-row")
+                  .selected();
               }, 0);
               // if program, reset input and prompt for more!
               if (item.value.program) {
                 this.playSound().then((e) => {
-                  let field = this.shadowRoot.querySelector("super-daemon-ui")
-                  .shadowRoot.querySelector("simple-fields-field");
+                  let field = this.shadowRoot
+                    .querySelector("super-daemon-ui")
+                    .shadowRoot.querySelector("simple-fields-field");
                   field.focus();
                   field.select();
                 });
-              }
-              else {
+              } else {
                 // disable bc we got a hit
                 this.setListeningStatus(false);
               }
             };
           }
         }
-        this.hal.commands = {...this.voiceCommands};
+        this.hal.commands = { ...this.voiceCommands };
       }, 10);
     }
   }
@@ -948,13 +991,16 @@ class SuperDaemon extends SimpleColors {
     if (this.voiceSearch) {
       setTimeout(() => {
         if (e.detail.label) {
+          this.__closeLock = true;
+          this.listeningForInput = false;
           this.hal.speak(`${e.detail.label} mode activated`).then((e) => {
             this.playSound().then((e) => {
               this.reprocessVoiceCommands();
+              this.__closeLock = false;
+              this.listeningForInput = true;
             });
           });
-        }
-        else {
+        } else {
           this.reprocessVoiceCommands();
         }
       }, 0);
