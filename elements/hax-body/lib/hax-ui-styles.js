@@ -462,7 +462,7 @@ export const HaxTrayDetail = [
   css`
     #tray-detail {
       font-family: var(--hax-ui-font-family);
-      --hax-tray-detail-title-font-size: var(--hax-ui-font-size);
+      --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl);
       --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg);
       --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size);
       --hax-tray-detail-heading-text-transform: capitalize;
@@ -479,14 +479,15 @@ export const HaxTrayDetail = [
       text-transform: var(--hax-tray-detail-heading-text-transform);
       color: var(--hax-ui-background-color);
       font-size: var(--hax-tray-detail-title-font-size);
-      font-weight: normal;
+      font-weight: bold;
       margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      font-family: var(--hax-ui-font-family);
       padding: 0;
-      height: 28px;
+      height: 64px;
       overflow: hidden;
       word-break: break-all;
       text-overflow: ellipsis;
-      line-height: 28px;
+      line-height: 64px;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

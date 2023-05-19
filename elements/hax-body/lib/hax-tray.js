@@ -240,7 +240,7 @@ class HaxTray extends I18NMixin(
         #resize .resize-visual {
           background-color: var(--hax-ui-color-accent);
           height: 100%;
-          width: 4px;
+          width: 6px;
         }
         :host(:hover) .wrapper {
           overflow: visible;
@@ -248,6 +248,7 @@ class HaxTray extends I18NMixin(
         :host([element-align="left"]) .wrapper {
           left: -1000px;
           flex-direction: row;
+          transition: left .6s ease-in-out;
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
@@ -358,9 +359,9 @@ class HaxTray extends I18NMixin(
         #tray-detail {
           width: auto;
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
-          overflow-y: auto;
           transition: opacity .3s ease-in-out;
           opacity: .7;
+          overflow: hidden;
         }
         .wrapper:focus #tray-detail,
         .wrapper:focus-within #tray-detail,
@@ -388,8 +389,6 @@ class HaxTray extends I18NMixin(
         }
         .tray-detail-titlebar h4 {
           flex: 1 1 auto;
-          font-size: var(--hax-ui-font-size);
-          font-family: var(--hax-ui-font-family);
         }
         .tray-detail-titlebar .tray-detail-titlebar-actions {
           float: right;
@@ -398,6 +397,7 @@ class HaxTray extends I18NMixin(
           margin: -8px -8px 0;
           --simple-fields-field-margin: 12px;
           --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12);
+          overflow-y: auto;
         }
         a11y-collapse {
           margin: 0px;

@@ -1,5 +1,6 @@
 import { html, css, nothing } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
@@ -104,6 +105,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           --simple-icon-height: 50px;
           --simple-icon-width: 100px;
           --simple-icon-button-border-radius: 0;
+          color: var(--simple-colors-default-theme-grey-10, grey);
+          transition: color .6s ease-in-out;
+        }
+        .voice:hover,
+        .voice:focus {
+          color: var(--simple-colors-default-theme-purple-6, purple);
+        }
+        .voice.listening {
+          color: var(--simple-colors-default-theme-purple-4, purple);
         }
 
         .search .user-context-icon {
@@ -310,6 +320,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "filtered" && typeof oldValue !== "undefined") {
+        const sdi = window.SuperDaemonManager.requestAvailability();
+        if (sdi.santaMode || this.listeningForInput) {
+          clearTimeout(this._selectTimeout);
+          this._selectTimeout = setTimeout(() => {
+            if (this.filtered.length === 1 || (this.filtered && this.filtered[0] && this.filtered[0].title.toLocaleLowerCase() == sdi.value.toLocaleLowerCase())) {
+              this.shadowRoot.querySelector("super-daemon-row").selected();
+              sdi.listeningForInput = true;
+            }
+          }, 600);
+        }
+      }
       if (propName == "opened") {
         if (this.opened) {
           this.shadowRoot.querySelector("#inputfilter").focus();
@@ -543,7 +565,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     else {
     // start talking which listeners in super-daemon will activate
     // after the text is spoken to avoid polluting input
-    sdi.hal.speak("How may I help you?", sdi).then((e) => {
+    sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
       sdi.playSound();
       sdi.listeningForInput = true;
       
@@ -572,13 +594,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       </div>
       <div class="search">
       ${this.voiceSearch
-          ? html`<simple-icon-button
-              class="voice"
+          ? html`<simple-icon-button-lite
+              class="voice ${this.listeningForInput ? "listening" : ""}"
               @click="${this.voiceSearchClick}"
               icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
-              accent-color="${this.listeningForInput ? "orange" : "grey"}"
               ?dark="${this.dark}"
-              title="${this.t.voiceSearch}">${this.programName}</simple-icon-button>`
+              title="${this.t.voiceSearch}"></simple-icon-button-lite>`
           : ``}
         ${this.commandContext != "*"
           ? html`<simple-icon-lite

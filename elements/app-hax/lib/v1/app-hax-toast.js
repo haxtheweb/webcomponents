@@ -27,7 +27,10 @@ export class AppHaxToast extends RPGCharacterToast {
     window.addEventListener(
       "haxcms-toast-show",
       this.showSimpleToast.bind(this), { signal: this.windowControllers.signal });
+  }
 
+  hideSimpleToast(e) {
+    this.hide();
   }
 
   /**

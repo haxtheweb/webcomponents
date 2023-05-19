@@ -1443,23 +1443,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
             return [];
           }).then((manifest) => {
-            manifest.data.items.forEach(async (site) => {
-              if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
-                results.push({
-                  title: site.title,
-                  icon: site.metadata.theme.variables.icon,
-                  tags: ["site", site.description],
-                  value: {
-                    target: this,
-                    method: "goToLocation",
-                    args: [site.slug],
-                  },
-                  eventName: "super-daemon-element-method",
-                  context: ["/", "/hax/changeSite/" + site.metadata.site.name],
-                  path: "/hax/changeSite/" + site.metadata.site.name,
-                });
-              }
-            });
+            if (manifest.data && manifest.data.items.length > 0) {
+              manifest.data.items.forEach(async (site) => {
+                if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
+                  results.push({
+                    title: site.title,
+                    icon: site.metadata.theme.variables.icon,
+                    tags: ["site", site.description],
+                    value: {
+                      target: this,
+                      method: "goToLocation",
+                      args: [site.slug],
+                    },
+                    eventName: "super-daemon-element-method",
+                    context: ["/", "/hax/changeSite/" + site.metadata.site.name],
+                    path: "/hax/changeSite/" + site.metadata.site.name,
+                  });
+                }
+              });
+            }
           });
           return results;
 

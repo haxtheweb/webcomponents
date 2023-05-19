@@ -18,20 +18,19 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   constructor() {
     super();
+    this.awaitingMerlinInput = false;
     this.windowControllers = new AbortController();
-    this.setDefaultToast();
-    this.key = null;
+    this.text = "Saved";
     this.merlin = false;
-    this.phrases = {};
+    this.classStyle = "";
     this.future = false;
+    this.duration = 3000;
+    this.accentColor = "grey";
+    this.dark = false;
+    this.eventCallback = null;
     this.fire = false;
-    this.text = "";
     this.hat = "coffee";
     this.walking = false;
-    this.word = null;
-    this.addEventListener("click", () => {
-      this.opened = false;
-    });
   }
 
   static get styles() {
@@ -39,11 +38,11 @@ export class RPGCharacterToast extends SimpleToastEl {
       ...super.styles,
       css`
         :host([opened]) {
-          display: block;
+          display: flex;
         }
 
         future-terminal-text {
-          width: 500px;
+          min-width: 300px;
         }
 
         .merlin {
@@ -56,11 +55,22 @@ export class RPGCharacterToast extends SimpleToastEl {
           margin: 6px 0 0 0;
           padding: 16px;
         }
+        .awaiting-input {
+          --simple-icon-height: 50px;
+          --simple-icon-width: 50px;
+          display: block;
+          height: 150px;
+          width: 100px;
+          margin: 6px 0 0 0;
+          padding: 16px;
+          color: var(--simple-colors-default-theme-purple-6, purple);
+        }
         :host([hidden]) {
           display: none;
         }
         :host {
           --simple-toast-bottom: 0px;
+          --simple-toast-bottom-offscreen: -284px;
           height: 142px;
           display: none;
           width: var(--simple-toast-width, auto);
@@ -85,6 +95,9 @@ export class RPGCharacterToast extends SimpleToastEl {
         rpg-character {
           margin: 30px -30px 0 -30px;
           width: 145px;
+          margin: 6px 0 0 0;
+          padding: 16px;
+          background-color: var(--simple-colors-default-theme-orange-1, orange);
         }
         .bubble {
           height: 142px;
@@ -171,6 +184,10 @@ export class RPGCharacterToast extends SimpleToastEl {
         type: Boolean,
         reflect: true,
       },
+      awaitingMerlinInput: {
+        type: Boolean,
+        attribute: "awaiting-merlin-input",
+      },
       merlin: {
         type: Boolean,
       },
@@ -212,7 +229,12 @@ export class RPGCharacterToast extends SimpleToastEl {
       <span class="bubble mid">
         <slot name="pre"></slot>
         ${this.future ? html`
-        <future-terminal-text fadein glitch glitch-max="3" glitch-duration="40">${this.text}</future-terminal-text>`: `${this.text}`}
+        <future-terminal-text 
+          fadein 
+          glitch 
+          glitch-max="3" 
+          glitch-duration="40"></future-terminal-text>`: html`${this.text}`}        
+          ${this.awaitingMerlinInput ? html`<simple-icon-lite class="awaiting-input" icon="hax:loading"></simple-icon-lite>` : ``}
         <slot></slot>
       </span>
       <span class="bubble rightedge"></span>
@@ -234,6 +256,16 @@ export class RPGCharacterToast extends SimpleToastEl {
     </div>`;
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // can't write here in template bc it's a vanilla innerHTML which would have Lit
+    // directives in it and we don't want to ingest and rewrite those
+    if (changedProperties.has("text") && this.future && this.shadowRoot) {
+      console.log(this.shadowRoot.querySelector("future-terminal-text"));
+      this.shadowRoot.querySelector("future-terminal-text").innerText = this.text;
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
@@ -242,6 +274,12 @@ export class RPGCharacterToast extends SimpleToastEl {
     window.addEventListener(
       "rpg-character-toast-show",
       this.showSimpleToast.bind(this), { signal: this.windowControllers.signal });
+  }
+
+  hideSimpleToast(e) {
+    // event always trumps waiting for input
+    this.awaitingMerlinInput = false;
+    this.hide();      
   }
 
   /**
@@ -253,99 +291,72 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   /**
-   * Hide callback
-   */
-  hideSimpleToast() {
-    this.hide();
-  }
-
-  openedChanged(e) {
-    this.opened = e.detail.value;
-  }
-
-  setDefaultToast() {
-    this.opened = false;
-    this.text = "Saved";
-    this.merlin = false;
-    this.classStyle = "";
-    this.future = false;
-    this.duration = 3000;
-    this.accentColor = "grey";
-    this.dark = false;
-    this.eventCallback = null;
-    while (this.firstChild !== null) {
-      this.removeChild(this.firstChild);
-    }
-  }
-
-  /**
    * Show / available callback
    */
   showSimpleToast(e) {
-    this.hideSimpleToast();
-    // establish defaults and then let event change settings
-    this.setDefaultToast();
-    // add your code to run when the singleton is called for
-    if (e.detail.duration) {
-      this.duration = e.detail.duration;
+    // wipe slot
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
-    if (e.detail.fire) {
-      this.fire = e.detail.fire;
+    setTimeout(() => {
+      if (e.detail.slot) {
+        this.appendChild(e.detail.slot);
+      }        
+    }, 0);
+    // force this element to be hidden prior to showing it
+    this.duration = (e.detail.duration) ? e.detail.duration : 4000;
+    this.fire = (e.detail.fire) ? e.detail.fire : false;
+    this.hat = (e.detail.hat) ? e.detail.hat : "coffee";
+    this.merlin = (e.detail.merlin) ? e.detail.merlin : false;
+    this.walking = (e.detail.walking) ? e.detail.walking : false;
+    this.text = (e.detail.text) ? e.detail.text : "Saved";
+    this.future = (e.detail.future) ? e.detail.future : false;
+    this.classStyle = (e.detail.classStyle) ? e.detail.classStyle : "";
+    this.eventCallback = (e.detail.eventCallback) ? e.detail.eventCallback : null;
+    this.dark = (e.detail.dark) ? e.detail.dark : false;
+    this.accentColor = (e.detail.accentColor) ? e.detail.accentColor : "grey";
+    this.alwaysvisible = (e.detail.alwaysvisible) ? e.detail.alwaysvisible : false;
+    // already open and waiting for input, don't do anything
+    if (e.detail.awaitingMerlinInput && this.duration) {
+      // should appear to switch into waiting for input mode prior to closing state
+      setTimeout(() => {
+        this.style.animation = "none";
+        this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
+      }, this.duration/2);
     }
-    if (e.detail.hat) {
-      this.hat = e.detail.hat;
-    }
-    if (e.detail.merlin) {
-      this.merlin = e.detail.merlin;
-    }
-    if (e.detail.walking) {
-      this.walking = e.detail.walking;
-    }
-    if (e.detail.text) {
-      this.text = e.detail.text;
-    }
-    if (e.detail.future) {
-      this.future = e.detail.future;
-    }
-    if (e.detail.classStyle) {
-      this.classStyle = e.detail.classStyle;
-    }
-    if (e.detail.eventCallback) {
-      this.eventCallback = e.detail.eventCallback;
-    }
-    if (e.detail.slot) {
-      this.appendChild(e.detail.slot);
-    }
-    if (e.detail.accentColor) {
-      this.accentColor = e.detail.accentColor;
-    }
-    if (e.detail.dark) {
-      this.dark = e.detail.dark;
+    else {
+      this.awaitingMerlinInput = false;
     }
     this.show();
   }
 
   show() {
-    this.opened = true;
+    if (!this.opened) {
+      this.opened = true;
+    }
   }
 
   hide() {
-    this.duration = 0;
-    this.fire = false;
-    this.text = "";
-    this.future = false;
-    this.hat = "coffee";
-    this.walking = false;
-    if (this.eventCallback) {
-      const evt = new CustomEvent(this.eventCallback, {
-        bubbles: true,
-        cancelable: true,
-        detail: true,
-        composed: true,
-      });
-      this.dispatchEvent(evt);
+    if (!this.awaitingMerlinInput) {
+      if (this.eventCallback) {
+        const evt = new CustomEvent(this.eventCallback, {
+          bubbles: true,
+          cancelable: true,
+          detail: true,
+          composed: true,
+        });
+        this.dispatchEvent(evt);
+      }
+      if (!this.alwaysvisible) {
+        this.opened = false;
+      }
+      else {
+        this.style.animation = "fadein 0.3s";
+      }
     }
-    this.opened = false;
+    else {
+      this.style.animation = "fadein 0.3s";
+    }
   }
 }
 customElements.define(RPGCharacterToast.tag, RPGCharacterToast);

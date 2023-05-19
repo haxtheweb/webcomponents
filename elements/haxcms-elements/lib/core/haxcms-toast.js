@@ -32,6 +32,18 @@ export class HAXCMSToast extends RPGCharacterToast {
     );
   }
 
+  hideSimpleToast(e) {
+    if (!this.alwaysvisible) {
+      // tricks into closing via event in a graceful way
+      this.style.animation =
+      "forcedfadeout 0.6s .3s";
+      this.awaitingMerlinInput = false;
+      setTimeout(() => {
+        this.hide();      
+      }, 0);
+    }
+  }
+
   /**
    * life cycle, element is removed from the DOM
    */

@@ -46,7 +46,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lit-labs/motion": "^1.0.2",
-    "@lrnwebcomponents/future-terminal-text": "^4.1.0",
     "@lrnwebcomponents/grid-plate": "^7.0.0",
     "@lrnwebcomponents/hax-iconset": "^7.0.0",
     "@lrnwebcomponents/i18n-manager": "^7.0.0",

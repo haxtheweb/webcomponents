@@ -143,13 +143,18 @@ class Hal9000 extends LitElement {
     if (this.annyang) {
       // ensure we keep registrations to a minimum
       this.annyang.removeCommands();
+      if (commands["*anything"]) {
+        const anything = commands["*anything"];
+        delete commands["*anything"];
+        commands["*anything"] = anything;
+      }
       this.annyang.addCommands(commands);
     }
   }
   /**
    * And the word was good.
    */
-  speak(text) {
+  speak(text, alwaysvisible = false, awaitingInput = true) {
     return new Promise((resolve) => {
       this.__text = text;
       if (this.synth) {
@@ -161,21 +166,23 @@ class Hal9000 extends LitElement {
         // THOU SPEAKITH
         this.synth.speak(this.utter);
         if (this.toast) {
-          this.sendToast(text);
+          this.sendToast(text, alwaysvisible, awaitingInput);
         }
         this.utter.onend = (event) => {
           let hide = "simple";
           if (window.AppHax || window.HAXCMS) {
             hide = "haxcms";
           }
-          window.dispatchEvent(
-            new CustomEvent(`${hide}-toast-hide`, {
-              bubbles: true,
-              composed: true,
-              cancelable: false,
-              detail: false,
-            })
-          );
+          if (!alwaysvisible && !awaitingInput) {
+            window.dispatchEvent(
+              new CustomEvent(`${hide}-toast-hide`, {
+                bubbles: true,
+                composed: true,
+                cancelable: false,
+                detail: false,
+              })
+            );
+          }
           resolve(event);
         };
       } else {
@@ -186,23 +193,15 @@ class Hal9000 extends LitElement {
   /**
    * Send a toast message to match what is said. This is good for a11y
    */
-  sendToast(text) {
-    window.dispatchEvent(
-      new CustomEvent("simple-toast-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: false,
-      })
-    );
-    let toastShowEventName = "simple-toast-show";
+  sendToast(text, alwaysvisible = false, awaitingInput = true) {
+    let toastShowEventName = "simple";
     // support for haxcms toast
     if (window.AppHax || window.HAXCMS) {
-      toastShowEventName = "haxcms-toast-show";
+      toastShowEventName = "haxcms";
     }
     // gets it all the way to the top immediately
     window.dispatchEvent(
-      new CustomEvent(toastShowEventName, {
+      new CustomEvent(`${toastShowEventName}-toast-show`, {
         bubbles: true,
         composed: true,
         cancelable: true,
@@ -211,7 +210,9 @@ class Hal9000 extends LitElement {
           future: true,
           merlin: true,
           accentColor: "purple",
-          duration: 500000,
+          duration: 4000,
+          alwaysvisible: alwaysvisible,
+          awaitingMerlinInput: awaitingInput,
         },
       })
     );

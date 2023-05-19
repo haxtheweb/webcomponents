@@ -50,12 +50,14 @@ class SuperDaemon extends SimpleColors {
     }
     // change theme program
     SuperDaemonInstance.defineOption({
-      title: "Toggle Merlin always listening",
+      title: "Toggle Santa Mode",
       icon: "settings-voice",
       tags: ["Developer", "government", "merlin", "big-tech", "overlord", "santa", "all-seeing-eye"],
       eventName: "super-daemon-element-method",
       path: ">settings/voice",
+      voice: "(toggle) santa mode",
       context: [">"],
+      more: html`<span>He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho....Ho.</span>`,
       value: {
         target: this,
         method: "toggleSantaMode",
@@ -73,6 +75,7 @@ class SuperDaemon extends SimpleColors {
     this.voiceCommands = {};
     this.programTarget = null;
     this.activeRange = null;
+    this.santaMode = false;
     this.activeNode = null;
     this.voiceSearch = false;
     this.listeningForInput = false;
@@ -267,13 +270,13 @@ class SuperDaemon extends SimpleColors {
           let q = i.split("/");
           q.map((j) => {
             if (!["", "*", "/", " ", "?", ">"].includes(j)) {
-              index.push(j.toLowerCase());
+              index.push(j.toLocaleLowerCase());
             }
           });
         } else if (Array.isArray(i)) {
           i.map((j) => {
             if (!["", "*", "/", " ", "?", ">"].includes(j)) {
-              index.push(j.toLowerCase());
+              index.push(j.toLocaleLowerCase());
             }
           });
         } else {
@@ -292,13 +295,15 @@ class SuperDaemon extends SimpleColors {
 
   updateSearchInputViaVoice(input) {
     const field = this.shadowRoot
-    .querySelector("super-daemon-ui")
-    .shadowRoot.querySelector("simple-fields-field");
+      .querySelector("super-daemon-ui")
+      .shadowRoot.querySelector("simple-fields-field");
     field.value = input;
     field.focus();
     field.select();
     // turn off bc we got a match
-    this.setListeningStatus(false);
+    setTimeout(() => {
+      this.setListeningStatus(false);
+    }, 0);
   }
 
   /**
@@ -306,7 +311,7 @@ class SuperDaemon extends SimpleColors {
    */
   addVoiceCommand(command, context, callback) {
     if (context) {
-      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
+      command = command.replace(":name:", this.voiceRespondsTo).toLocaleLowerCase();
       this.voiceCommands[command] = context[callback].bind(context);
     }
   }
@@ -453,12 +458,28 @@ class SuperDaemon extends SimpleColors {
     this.mini = false;
     this._programValues = {};
     this.programSearch = "";
+    this.voiceCommands = {};
+    this.defaultVoiceCommands();
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
     // important we stop listening when the UI goes away
     this.setListeningStatus(false);
-    
+    // hide the toast if it's up.. unless in santa mode..
+    if (!this.santaMode) {
+      let hide = "simple";
+        if (window.AppHax || window.HAXCMS) {
+          hide = "haxcms";
+        }
+        window.dispatchEvent(
+          new CustomEvent(`${hide}-toast-hide`, {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          })
+        );
+    }
     const event = new MouseEvent("click", {
       view: window,
       bubbles: true,
@@ -499,7 +520,7 @@ class SuperDaemon extends SimpleColors {
     });
     // highest priority if item title is exact match
     tmpItems.forEach((item) => {
-      if (item.title.toLowerCase() == this.value.toLocaleLowerCase()) {
+      if (item.title.toLocaleLowerCase() == this.value.toLocaleLowerCase()) {
         item.priority = -10000000;
       }
     });
@@ -509,16 +530,25 @@ class SuperDaemon extends SimpleColors {
     });
   }
   playSound(sound = "coin2") {
-    let playSound = [
-      "coin2",
-    ].includes(sound)
-      ? sound
-      : "coin2";
-    this.audio = new Audio(
-      new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
-    );
-    this.audio.volume = 0.8;
-    this.audio.play();
+    return new Promise((resolve) => {
+      let playSound = [
+        "coin2",
+      ].includes(sound)
+        ? sound
+        : "coin2";
+      this.audio = new Audio(
+        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+      );
+      this.audio.volume = 0.8;
+      this.audio.onended = (event) => {
+        resolve();
+      };
+      this.audio.play();
+      // resolve after 1s if sound failed to load
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
   }
   // can't directly set context
   appendContext(context) {
@@ -593,42 +623,7 @@ class SuperDaemon extends SimpleColors {
       }
     }
     this.windowControllers2.abort();
-    setTimeout(async () => {
-      if (this.hal && this.voiceSearch && this.items) {
-        await this.items.forEach(async (item) => {
-          if (item.title) {
-            this.voiceCommands[item.title.toLowerCase()] = (response) => {
-              this.shadowRoot.querySelector("super-daemon-ui").items = [item];
-              this.value = item.title;
-              this.shadowRoot.querySelector("super-daemon-ui").filtered = [item];
-              setTimeout(() => {
-                this.shadowRoot.querySelector("super-daemon-ui").shadowRoot.querySelector
-                ('super-daemon-row').selected();
-              }, 0);
-              // if program, reset input and prompt for more!
-              if (item.value.program) {
-                this.playSound();
-                let field = this.shadowRoot.querySelector("super-daemon-ui")
-                .shadowRoot.querySelector("simple-fields-field");
-                field.focus();
-                field.select();
-              }
-              else {
-                // disable bc we got a hit
-                this.setListeningStatus(false);
-              }
-            };
-          }
-        });
-        if (this.voiceSearch && this.hal && this.voiceCommands) {
-          // LAST priority
-          setTimeout(() => {
-            this.addVoiceCommand('*tag', this, "updateSearchInputViaVoice");
-            this.hal.commands = {...this.voiceCommands};              
-          }, 0);
-        }
-      }
-    }, 0);
+    this.reprocessVoiceCommands();
     setTimeout(() => {
       this.windowControllers2 = new AbortController();
       // ensure if we click away from the UI that we close and clean up
@@ -774,12 +769,15 @@ class SuperDaemon extends SimpleColors {
   toggleSantaMode(e) {
     this.santaMode = !this.santaMode;
     setTimeout(() => {
-      if (this.santaMode) {
-        this.hal.speak("Santa mode activated: Watch what you say");
+      let say = "Santa mode activated: Watch what you say";
+      if (!this.santaMode) {
+        say = "Santa mode deactivated: Have a nice day believing you are not being watched";
       }
-      else {
-        this.hal.speak("Santa mode deactivated: Have a nice day believing you are not being watched");
-      }        
+      this.hal.speak(say, this.santaMode).then(
+        (e) => {
+          this.setListeningStatus(this.santaMode);
+        }
+      );
     }, 0);
   }
   promptMerlin(e) {
@@ -787,16 +785,40 @@ class SuperDaemon extends SimpleColors {
       this.open();
     }
     this.listeningForInput = false;
-    this.hal.speak(this.randomResponse(["I'm here", "Yes?", "What?", "What can I do for you?", "What do you need?", "How can I help?"])).then((e) => {
-      this.playSound();
-      this.listeningForInput = true;
+    this.hal.speak(this.randomResponse(
+      ["I'm here", "Yes?", "What?", "What can I do for you?", "What do you need?", "How can I help?"]), this.santaMode).then((e) => {
+      this.playSound().then((e) => {
+        this.listeningForInput = true;
+      });
     });
   }
   stopMerlin(e) {
     if (this.santaMode) {
-      this.hal.speak("Please disable Santa mode to stop listening");
+      this.hal.speak("Please disable Santa mode to stop listening", this.santaMode);
     }
     this.setListeningStatus(false);
+  }
+  belshnickle() {
+    if (this.santaMode) {
+      this.toggleSantaMode();
+    }
+  }
+  // apply default voice commands for when we reset the voice UI
+  defaultVoiceCommands() {
+    this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
+    this.addVoiceCommand(`stop listening`, this, "stopMerlin");
+    this.addVoiceCommand(`disable santa`, this, "belshnickle");
+    this.voiceCommands["(run) program"] = (response) => {
+      this.commandContextChanged({ detail: { value: "/" } });
+    };
+    this.voiceCommands["(I need) help"] = (response) => {
+      this.commandContextChanged({ detail: { value: "?" } });
+    };
+    this.voiceCommands["developer (mode)"] = (response) => {
+      this.commandContextChanged({ detail: { value: ">" } });
+    };
+    // LAST priority bc it matches ANYTHING, no idea why I need to wait this tho..
+    this.addVoiceCommand('*anything', this, "updateSearchInputViaVoice");
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -805,19 +827,9 @@ class SuperDaemon extends SimpleColors {
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {
         this.hal = window.Hal9000.requestAvailability();
-        this.hal.debug = false;
+        this.hal.debug = true;
         this.hal.toast = true;
-        this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
-        this.addVoiceCommand(`stop listening`, this, "stopMerlin");
-        this.voiceCommands["(run) program"] = (response) => {
-          this.commandContextChanged({ detail: { value: "/" } });
-        };
-        this.voiceCommands["(I need) help"] = (response) => {
-          this.commandContextChanged({ detail: { value: "?" } });
-        };
-        this.voiceCommands["developer (mode)"] = (response) => {
-          this.commandContextChanged({ detail: { value: ">" } });
-        };
+        this.defaultVoiceCommands();
       });
     }
     else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
@@ -826,6 +838,24 @@ class SuperDaemon extends SimpleColors {
     // align state of voice enabled with hal
     if (changedProperties.has("listeningForInput") && this.hal) {
       this.hal.enabled = this.listeningForInput;
+      clearTimeout(this._listeningTimeout);
+      this._listeningTimeout = setTimeout(() => {
+        // if we shut off, ensure we close the toast
+        if (!this.listeningForInput) {
+          let hide = "simple";
+          if (window.AppHax || window.HAXCMS) {
+            hide = "haxcms";
+          }
+          window.dispatchEvent(
+            new CustomEvent(`${hide}-toast-hide`, {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: false,
+            })
+          );
+        }
+      }, 100);
     }
   }
   async inputfilterChanged(e) {
@@ -851,6 +881,41 @@ class SuperDaemon extends SimpleColors {
     }
     return items;
   }
+  reprocessVoiceCommands() {
+    if (this.hal && this.voiceSearch && this.items) {
+      clearTimeout(this._blockRerunTimeout);
+      this._blockRerunTimeout = setTimeout( async() => {
+        this.defaultVoiceCommands();
+        for await (const item of this.items) {
+          if (item.title) {
+            this.voiceCommands[item.voice ? item.voice.toLocaleLowerCase() : item.title.toLocaleLowerCase()] = (response) => {
+              this.shadowRoot.querySelector("super-daemon-ui").items = [item];
+              this.value = item.title;
+              this.shadowRoot.querySelector("super-daemon-ui").filtered = [item];
+              setTimeout(() => {
+                this.shadowRoot.querySelector("super-daemon-ui").shadowRoot.querySelector
+                ('super-daemon-row').selected();
+              }, 0);
+              // if program, reset input and prompt for more!
+              if (item.value.program) {
+                this.playSound().then((e) => {
+                  let field = this.shadowRoot.querySelector("super-daemon-ui")
+                  .shadowRoot.querySelector("simple-fields-field");
+                  field.focus();
+                  field.select();
+                });
+              }
+              else {
+                // disable bc we got a hit
+                this.setListeningStatus(false);
+              }
+            };
+          }
+        }
+        this.hal.commands = {...this.voiceCommands};
+      }, 10);
+    }
+  }
 
   commandContextChanged(e) {
     if (e.detail.value) {
@@ -867,6 +932,11 @@ class SuperDaemon extends SimpleColors {
       // context removed; most likely via backspace being hit
       this.commandContext = "*";
       this.items = this.filterItems(this.allItems, this.context);
+    }
+    if (this.voiceSearch) {
+      setTimeout(() => {
+        this.reprocessVoiceCommands();
+      }, 0);
     }
   }
   // override to block calling from global key commands
