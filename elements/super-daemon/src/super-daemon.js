@@ -948,9 +948,13 @@ class SuperDaemon extends SimpleColors {
     if (this.voiceSearch) {
       setTimeout(() => {
         if (e.detail.label) {
+          this.__closeLock = true;
+          this.listeningForInput = false;
           this.hal.speak(`${e.detail.label} mode activated`).then((e) => {
             this.playSound().then((e) => {
               this.reprocessVoiceCommands();
+              this.__closeLock = false;
+              this.listeningForInput = true;
             });
           });
         }
