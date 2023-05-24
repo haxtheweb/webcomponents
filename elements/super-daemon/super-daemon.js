@@ -7,7 +7,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
-import "./lib/super-daemon-toast.js";
+import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `super-daemon`
@@ -87,6 +87,7 @@ class SuperDaemon extends SimpleColors {
    */
   constructor() {
     super();
+    this.toastInstance = SuperDaemonToastInstance;
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
     this.voiceCommands = {};

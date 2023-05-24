@@ -340,6 +340,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this._blurBlock = false;
     this.fidelity = "medium";
     this.haxGizmos = [];
     this.hideDelete = false;
@@ -612,6 +613,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         >
         <span
           class="label-edit"
+          @blur="${this.blurTitle}"
           @keypress="${this.monitorTitle}"
           @keydown="${this.monitorEsc}"
         ></span>
@@ -1238,6 +1240,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       e.target.previousElementSibling.classList.add("shown");
       e.target.innerText = e.target.previousElementSibling.innerText;
     }
+    else if (e.key === "Enter") {
+      this._blurBlock = true;
+    }
+  }
+  blurTitle(e) {
+    if (!this._blurBlock) {
+      e.target.classList.remove("shown");
+      e.target.removeAttribute("contenteditable");
+      e.target.previousElementSibling.classList.add("shown");
+      e.target.innerText = e.target.previousElementSibling.innerText;
+    }
+    setTimeout(() => {
+      this._blurBlock = false;
+    }, 0);
   }
   _mouseDownDrag(e) {
     // force collapse kids on move
