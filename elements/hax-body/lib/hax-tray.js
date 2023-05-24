@@ -70,6 +70,7 @@ class HaxTray extends I18NMixin(
     this.__moveX = 0;
     this.t = {
       structure: "Outline",
+      htmlSource: "HTML Source",
       structureTip: "View Page Structure",
       edit: "Edit",
       properties: "Properties",
@@ -193,7 +194,12 @@ class HaxTray extends I18NMixin(
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
+        }
 
+        .tray-detail-titlebar-icon {
+          --simple-icon-height: 40px;
+          --simple-icon-width: 40px;
+          padding: 4px;
         }
         .wrapper {
           position: fixed;
@@ -887,6 +893,7 @@ class HaxTray extends I18NMixin(
     >
       <div class="tray-detail-titlebar">
         <h4>
+          <simple-icon-lite class="tray-detail-titlebar-icon" icon="${this.trayIcon}"></simple-icon-lite>
           ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
           <div class="tray-detail-titlebar-actions">
           ${this.menuButtons}
@@ -1089,6 +1096,9 @@ class HaxTray extends I18NMixin(
       offsetMargin: {
         type: String,
         attribute: "offset-margin",
+      },
+      trayIcon: {
+        type: String,
       },
       resizeDrag: {
         type: Boolean,
@@ -1604,9 +1614,11 @@ class HaxTray extends I18NMixin(
       this.shadowRoot.querySelector(".detail").style.height = "";
     }
     if (newValue == "content-add") {
+      this.trayIcon = "hax:add-brick";
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
     } else if (newValue == "content-map") {
+      this.trayIcon = "hax:newspaper";
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
     } else if (
@@ -1616,11 +1628,23 @@ class HaxTray extends I18NMixin(
         !this.activeNode ||
         !this.activeNode.tagName)
     ) {
+      this.trayIcon = "hax:add-brick";
       this.trayDetail = "content-add";
     } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
+      this.trayIcon = "settings";
+    }
+    else if (newValue == "content-edit") {
+      this.trayIcon = "settings";
+      this.trayLabel = null;
+    }
+    else if (newValue == "view-source") {
+      this.trayIcon = "hax:html-code";
+      this.trayLabel = this.t.htmlSource;
     } else {
-      this.trayLabel = undefined;
+      console.log(newValue);
+      this.trayIcon = null;
+      this.trayLabel = null;
     }
     this.requestUpdate();
   }
