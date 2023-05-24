@@ -111,6 +111,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           color: var(--simple-colors-default-theme-grey-10, grey);
           transition: color 0.6s ease-in-out;
         }
+        :host([mini]) .voice {
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
+        }
         .voice:hover,
         .voice:focus {
           color: var(--simple-colors-default-theme-purple-6, purple);

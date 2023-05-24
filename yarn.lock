@@ -2777,13 +2777,6 @@
   dependencies:
     "@lrnwebcomponents/es-global-bridge" "^4.0.0"
 
-"@lrnwebcomponents/future-terminal-text@4.1.0", "@lrnwebcomponents/future-terminal-text@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@lrnwebcomponents/future-terminal-text/-/future-terminal-text-4.1.0.tgz#a835f8f30683ea58543cdaf487dec402e37f1947"
-  integrity sha512-/304wP3QOYoMUPxeY4pkexOxaBYxryhsZQtwuH+WKxshG2BbzGYCKk6jq8CavtncM68FCbusCO81DLGNPA6GGA==
-  dependencies:
-    lit "^2.2.8"
-
 "@lrnwebcomponents/game-show-quiz@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/game-show-quiz/-/game-show-quiz-4.1.0.tgz#059d8cf47a6f042f0dd72c7c6385e01d2e797980"

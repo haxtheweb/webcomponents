@@ -1170,6 +1170,7 @@
     }
   ],
   "autoloader": {
+    "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
     "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",

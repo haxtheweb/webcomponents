@@ -1,0 +1,72 @@
+{
+  "name": "@lrnwebcomponents/spotify-embed",
+  "wcfactory": {
+    "className": "SpotifyEmbed",
+    "customElementClass": "LitElement",
+    "elementName": "spotify-embed",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/spotify-embed.css",
+      "scss": "src/spotify-embed.scss",
+      "html": "src/spotify-embed.html",
+      "js": "src/spotify-embed.js",
+      "properties": "src/spotify-embed-properties.json",
+      "hax": "src/spotify-embed-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.0",
+  "description": "embed spotify playlists",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "spotify-embed.js",
+  "module": "spotify-embed.js",
+  "umd": "spotify-embed.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"*.js|lib/**.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit": "^2.2.4"
+  },
+  "devDependencies": {
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "@web/dev-server": "0.1.28",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
