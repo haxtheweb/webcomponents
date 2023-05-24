@@ -327,6 +327,8 @@ export class SuperDaemonToast extends SimpleToastEl {
 
   show() {
     if (!this.opened) {
+      this.style.animation =
+              "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
       this.opened = true;
     }
   }

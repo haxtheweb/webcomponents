@@ -915,6 +915,17 @@ class SuperDaemon extends SimpleColors {
     // align state of voice enabled with hal
     if (changedProperties.has("listeningForInput") && this.hal) {
       this.hal.enabled = this.listeningForInput;
+      if (window.HAXCMS) {
+        if (this.listeningForInput) {
+          window.HAXCMS.instance.setCursor("hax:loading");
+          window.HAXCMS.instance.setFavicon("hax:loading");
+        }
+        else {
+          window.HAXCMS.instance.resetCursor();
+          window.HAXCMS.instance.resetFavicon();
+  
+        }
+      }
       clearTimeout(this._listeningTimeout);
       this._listeningTimeout = setTimeout(() => {
         // if we shut off, ensure we close the toast

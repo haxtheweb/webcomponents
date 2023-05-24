@@ -163,12 +163,20 @@ class Hal9000 extends LitElement {
         this.utter.rate = this.rate;
         this.utter.lang = this.language;
         this.utter.voice = this.defaultVoice;
+        if (window.HAXCMS) {
+          window.HAXCMS.instance.setCursor("hax:wizard-hat");
+          window.HAXCMS.instance.setFavicon("hax:wizard-hat");
+        }
         // THOU SPEAKITH
         this.synth.speak(this.utter);
         if (this.toast) {
           this.setToast(text, alwaysvisible, awaitingInput);
         }
         this.utter.onend = (event) => {
+          if (window.HAXCMS) {
+            window.HAXCMS.instance.resetCursor();
+            window.HAXCMS.instance.resetFavicon();  
+          }
           if (!alwaysvisible && !awaitingInput) {
             window.dispatchEvent(
               new CustomEvent('super-daemon-toast-hide', {

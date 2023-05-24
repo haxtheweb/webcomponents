@@ -14,6 +14,7 @@ import {
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
 import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
@@ -1059,12 +1060,30 @@ class HAXCMSSiteStore extends HTMLElement {
     this.setFavicon();
   }
   // set the favicon to something else
-  setFavicon(icon = null) {
+  setFavicon(icon = null, isIcon = true) {
     if (!icon) {
       icon = this.faviconSiteDefault;
     }
+    else if (isIcon) {
+      icon = SimpleIconsetStore.getIcon(icon);
+    }
     if (this.faviconInstance) {
       this.faviconInstance.setAttribute("href", icon);
+    }
+  }
+  resetCursor() {
+    this.setCursor();
+  }
+  // set the cursor to something else
+  setCursor(icon = null, isIcon = true) {
+    if (!icon) {
+      document.body.style.removeProperty("cursor");
+    }
+    else {
+      if (isIcon) {
+        icon = SimpleIconsetStore.getIcon(icon);
+      }
+      document.body.style.cursor = `url("${icon}") 16 16, pointer`;
     }
   }
   /**
