@@ -7,6 +7,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "web-dialog/index.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
+import "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `super-daemon`
@@ -67,7 +68,7 @@ class SuperDaemon extends SimpleColors {
       ],
       eventName: "super-daemon-element-method",
       path: ">settings/voice",
-      voice: "(toggle) santa mode",
+      voice: "(toggle) santa (mode)",
       context: [">"],
       more: html`<span
         >He sees you when your sleeping, he knows when your awake, and with this
@@ -485,12 +486,8 @@ class SuperDaemon extends SimpleColors {
     // hide the toast if it's up.. unless in santa mode..
     if (!this.santaMode) {
       if (e && e.type !== "super-daemon-close" && e.type !== "close") {
-        let hide = "simple";
-        if (window.AppHax || window.HAXCMS) {
-          hide = "haxcms";
-        }
         window.dispatchEvent(
-          new CustomEvent(`${hide}-toast-hide`, {
+          new CustomEvent('super-daemon-toast-hide', {
             bubbles: true,
             composed: true,
             cancelable: false,
@@ -789,6 +786,7 @@ class SuperDaemon extends SimpleColors {
       }
       this.hal.speak(say, this.santaMode).then((e) => {
         this.setListeningStatus(this.santaMode);
+        this.hal.setToast("Listening..");
       });
     }, 0);
   }
@@ -827,7 +825,7 @@ class SuperDaemon extends SimpleColors {
     this.setListeningStatus(false);
   }
   closeMerlin(e) {
-    if (this.santaMode) {
+    if (!this.santaMode) {
       this.hal
         .speak(
           this.randomResponse([
@@ -842,18 +840,50 @@ class SuperDaemon extends SimpleColors {
           this.close();
         });
     }
+    else {
+      this.close();
+    }
   }
-  belshnickle() {
+  belsnickel() {
     if (this.santaMode) {
       this.toggleSantaMode();
     }
   }
+  
   // apply default voice commands for when we reset the voice UI
   defaultVoiceCommands() {
     this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
     this.addVoiceCommand(`close merlin`, this, "closeMerlin");
-    this.addVoiceCommand(`disable santa`, this, "belshnickle");
+    this.addVoiceCommand(`cancel merlin`, this, "closeMerlin");
+    this.addVoiceCommand(`disable santa (mode)`, this, "belsnickel");
+    this.addVoiceCommand(`belsnickel`, this, "belsnickel");
+    this.addVoiceCommand(`scroll`, this, "scroll");
+
+    this.voiceCommands[`scroll up`] = (response) => {
+      window.scrollBy({
+        top: -(window.innerHeight * 0.5),
+        left: 0,
+        behavior: "smooth",
+      });
+    };
+    this.voiceCommands[`scroll (down)`] = (response) => {
+      window.scrollBy({
+        top: window.innerHeight * 0.5,
+        left: 0,
+        behavior: "smooth",
+      });
+    };
+    this.voiceCommands[`scroll (to) bottom`] = (response) => {
+      window.scrollTo(0, document.body.scrollHeight);
+    };
+    this.voiceCommands[`scroll (to) top`] = (response) => {
+      window.scrollTo(0, 0);
+    };
+    this.voiceCommands[`back to top`] = (response) => {
+      window.scrollTo(0, 0);
+    };
+
     this.voiceCommands["(run) program"] = (response) => {
       this.commandContextChanged({ detail: { value: "/", label: "program" } });
     };
@@ -889,12 +919,8 @@ class SuperDaemon extends SimpleColors {
       this._listeningTimeout = setTimeout(() => {
         // if we shut off, ensure we close the toast
         if (!this.listeningForInput && !this.__closeLock) {
-          let hide = "simple";
-          if (window.AppHax || window.HAXCMS) {
-            hide = "haxcms";
-          }
           window.dispatchEvent(
-            new CustomEvent(`${hide}-toast-hide`, {
+            new CustomEvent('super-daemon-toast-hide', {
               bubbles: true,
               composed: true,
               cancelable: false,

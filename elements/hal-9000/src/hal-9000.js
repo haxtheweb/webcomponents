@@ -4,7 +4,7 @@
  */
 import { LitElement } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/super-daemon/lib/super-daemon-toast.js";
 
 /**
   * `hal-9000`
@@ -166,16 +166,12 @@ class Hal9000 extends LitElement {
         // THOU SPEAKITH
         this.synth.speak(this.utter);
         if (this.toast) {
-          this.sendToast(text, alwaysvisible, awaitingInput);
+          this.setToast(text, alwaysvisible, awaitingInput);
         }
         this.utter.onend = (event) => {
-          let hide = "simple";
-          if (window.AppHax || window.HAXCMS) {
-            hide = "haxcms";
-          }
           if (!alwaysvisible && !awaitingInput) {
             window.dispatchEvent(
-              new CustomEvent(`${hide}-toast-hide`, {
+              new CustomEvent('super-daemon-toast-hide', {
                 bubbles: true,
                 composed: true,
                 cancelable: false,
@@ -193,15 +189,10 @@ class Hal9000 extends LitElement {
   /**
    * Send a toast message to match what is said. This is good for a11y
    */
-  sendToast(text, alwaysvisible = false, awaitingInput = true) {
-    let toastShowEventName = "simple";
-    // support for haxcms toast
-    if (window.AppHax || window.HAXCMS) {
-      toastShowEventName = "haxcms";
-    }
+  setToast(text, alwaysvisible = false, awaitingInput = true) {
     // gets it all the way to the top immediately
     window.dispatchEvent(
-      new CustomEvent(`${toastShowEventName}-toast-show`, {
+      new CustomEvent('super-daemon-toast-show', {
         bubbles: true,
         composed: true,
         cancelable: true,

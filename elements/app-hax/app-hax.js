@@ -505,11 +505,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         store.toast("I'm ascared of the dark", 2000, { fire: true });
         this.dark = true;
         SuperDaemonInstance.dark = true;
+        SuperDaemonInstance.toastInstance.darkMode = true;
       } else {
         document.body.classList.remove("dark-mode");
         store.toast("Sunny day it is", 2000, { hat: "random" });
         this.dark = false;
         SuperDaemonInstance.dark = false;
+        SuperDaemonInstance.toastInstance.darkMode = false;
       }
     });
     autorun(() => {

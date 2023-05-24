@@ -619,10 +619,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.dark = this.darkMode;
       if (toJS(store.darkMode)) {
         SuperDaemonInstance.dark = true;
+        SuperDaemonInstance.toastInstance.darkMode = true;
         HAXStore.globalPreferences.haxUiTheme = "haxdark";
       } else {
         HAXStore.globalPreferences.haxUiTheme = "hax";
         SuperDaemonInstance.dark = false;
+        SuperDaemonInstance.toastInstance.darkMode = false;
       }
     });
     autorun(() => {
