@@ -23,15 +23,15 @@
   "settings": {
     "configure": [
       {
-        "property": "answers",
-        "title": "Answers",
-        "description": "comma separated possible answers",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "question",
         "title": "Question",
         "description": "Prompting for the user to answer the question",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "description": "comma separated possible answers",
         "inputMethod": "textfield"
       },
       {

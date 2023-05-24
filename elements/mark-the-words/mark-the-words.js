@@ -17,7 +17,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
     super();
     this.answers = null;
     this.correctAnswers = [];
-    this.wordList = this.innerText.split(/\s+/g);
+    this.wordList = this.innerText.trim().split(/\s+/g);
     this.question = "Mark the words that are correct";
     this.isEnabled = true;
     this.numberCorrect = 0;
@@ -83,12 +83,10 @@ export class MarkTheWords extends I18NMixin(LitElement) {
     //wipe out inner
     this.shadowRoot.querySelector(".text").innerHTML = "";
     ary.forEach((word) => {
-      let span = document.createElement("span");
-      span.innerText = word;
-      span.setAttribute("tabindex", "-1");
-      span.addEventListener("click", this.selectWord.bind(this));
-
-      this.shadowRoot.querySelector(".text").appendChild(span);
+      let button = document.createElement("button");
+      button.innerText = word;
+      button.addEventListener("click", this.selectWord.bind(this));
+      this.shadowRoot.querySelector(".text").appendChild(button);
     });
   }
 
@@ -102,59 +100,70 @@ export class MarkTheWords extends I18NMixin(LitElement) {
           margin: 0px;
           border: 2px solid black;
         }
-        span {
+        simple-toolbar-button {
+          font-size: 24px;
+        }
+        button {
           display: inline-flex;
           font-size: var(--x-ample-font-size, 24px);
-          padding: 2px;
-          margin: 0 2px;
+          padding: 8px 16px;
+          margin: 0 4px;
+          border-radius: none;
+          transition: outline 0.2s ease-in-out;
         }
-        span:hover,
-        span:focus {
-          outline: 2px dashed blue;
+        button:active,
+        button:hover,
+        button:focus {
+          outline: 3px dashed blue;
           cursor: pointer;
         }
-        span[data-selected] {
-          outline: 2px solid purple;
+        button[data-selected] {
+          outline: 3px solid orange;
         }
-        span[data-selected]:hover,
-        span[data-selected]:focus {
-          outline: 2px solid blue;
+        button[data-selected]:hover,
+        button[data-selected]:focus {
+          outline: 3px solid blue;
         }
-        span[data-status="correct"] {
-          outline: 2px solid purple;
+        button[data-status="correct"] {
+          outline: 3px solid green;
         }
-        span[data-status="correct"]::after {
+        button[data-status="correct"]::after {
           content: "+1";
-          font-size: 14px;
           color: green;
+          font-size: 14px;
           font-weight: bold;
           border-radius: 50%;
-          border: 2px solid purple;
-          padding: 4px;
-          margin-left: 8px;
+          border: 3px solid green;
+          padding: 6px;
+          margin-left: 14px;
           line-height: 14px;
+          height: 14px;
+          width: 14px;
         }
-        span[data-status="incorrect"] {
-          outline: 2px solid red;
+        button[data-status="incorrect"] {
+          outline: 3px solid purple;
         }
-        span[data-status="incorrect"]::after {
+        button[data-status="incorrect"]::after {
           content: "-1";
           font-size: 14px;
-          color: red;
+          color: purple;
           font-weight: bold;
           border-radius: 50%;
-          border: 2px solid red;
-          padding: 4px;
-          margin-left: 8px;
+          border: 3px solid purple;
+          padding: 6px;
+          margin-left: 14px;
           line-height: 14px;
+          height: 14px;
+          width: 14px;
         }
-        span[check-mode="active"] {
+        button[check-mode="active"] {
           pointer-events: none;
         }
         .buttons {
           grid-column: 1;
           grid-row: 3;
           margin: 8px;
+          display: flex;
         }
         .correct {
           grid-column: 1;
@@ -166,16 +175,28 @@ export class MarkTheWords extends I18NMixin(LitElement) {
           margin-top: 0px;
           grid-column: 1;
           grid-row: 1;
+          font-size: 32px;
         }
         .text {
           grid-column: 1;
           grid-row: 2;
-          margin-top: 0px;
+          margin: 16px;
+          border: 2px solid black;
+          padding: 16px;
         }
         .scoreExp {
           margin-top: 1px;
           margin-bottom: 1px;
           text-decoration: underline;
+        }
+
+        .score {
+          margin: 0 16px;
+          font-size: 22px;
+          font-weight: bold;
+          line-height: 30px;
+          display: inline-block;
+          vertical-align: middle;
         }
       `,
     ];
@@ -203,7 +224,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       }
 
       const selected = this.shadowRoot.querySelectorAll(
-        ".text span[data-selected]"
+        ".text button[data-selected]"
       );
       for (var i = 0; i < selected.length; i++) {
         const el = selected[i];
@@ -222,7 +243,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
           }
         }
       }
-      const allWords = this.shadowRoot.querySelectorAll(".text span");
+      const allWords = this.shadowRoot.querySelectorAll(".text button");
       for (var i = 0; i < allWords.length; i++) {
         const el = allWords[i];
 
@@ -233,7 +254,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
       this.numberGuessed = 0;
       this.numberCorrect = 0;
       const selected = this.shadowRoot.querySelectorAll(
-        ".text span[data-selected]"
+        ".text button[data-selected]"
       );
       for (var i = 0; i < selected.length; i++) {
         const el = selected[i];
@@ -243,7 +264,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
           el.removeAttribute("data-selected");
         }
       }
-      const allWords = this.shadowRoot.querySelectorAll(".text span");
+      const allWords = this.shadowRoot.querySelectorAll(".text button");
       for (var i = 0; i < allWords.length; i++) {
         const el = allWords[i];
 
@@ -263,19 +284,21 @@ export class MarkTheWords extends I18NMixin(LitElement) {
         <div class="buttons">
           <simple-toolbar-button
             @click="${this.checkAnswer}"
-            icon="check"
+            icon="${this.isEnabled ? "check" : "refresh"}"
             label="${this.isEnabled ? this.t.check : this.t.tryAgain}"
             show-text-label
             icon-position="left"
             align-vertical="center"
             align-horizontal="center"
           ></simple-toolbar-button>
+          <span class="score">
           ${this.isEnabled
             ? ``
             : html`${this.numberGuessed}/${this.numberCorrect}
               ${Math.round(
                 10 * ((this.numberGuessed / this.numberCorrect) * 100)
               ) / 10}%`}
+          </span>
           ${this._haxstate
             ? html`<simple-toolbar-button
                 @click="${this.toggleDemo}"
@@ -296,7 +319,7 @@ export class MarkTheWords extends I18NMixin(LitElement) {
     this.demoMode = !this.demoMode;
     // rebuild wordList when we go OUT of demo mode
     if (!this.demoMode) {
-      this.wordList = this.innerText.split(/\s+/g);
+      this.wordList = this.innerText.trim().split(/\s+/g);
     }
   }
 
