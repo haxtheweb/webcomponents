@@ -534,6 +534,9 @@ class VideoPlayer extends IntersectionObserverMixin(
       sources: {
         type: Array,
       },
+      sourceData: {
+        type: Object,
+      },
       /**
        * When playing but scrolled off screen, to which corner does it "stick":
        * `top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?
@@ -964,12 +967,44 @@ class VideoPlayer extends IntersectionObserverMixin(
     let temp = this.source;
     this.source = "";
     this.source = temp;
+    // set source type based on available data
+    if (
+      this.sourceData &&
+      this.sourceData.length > 0 &&
+      this.sourceData[0] !== undefined &&
+      typeof this.sourceData[0].src !== typeof undefined
+    ) {
+      this.sourceType = window.MediaBehaviors.Video.getVideoType(
+        this.sourceData[0].src
+      );
+    }
   }
   playEvent(e) {
     this.playing = e.detail.__playing;
   }
   pauseEvent(e) {
     this.playing = e.detail.__playing;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      // hack to account for poor state management prior to and then source type switches on the fly
+      if (propName === "source" && this.sourceType && typeof oldValue !== typeof undefined) {
+        let type = window.MediaBehaviors.Video.getVideoType(
+          this.sourceData[0].src
+        );
+        if (type != this.sourceType) {
+          this.sourceType = type;
+          if (this.elementVisible) {
+            this.elementVisible = false;
+            setTimeout(() => {
+              this.elementVisible = true;
+            }, 0);
+          }
+        }
+      }
+    });
   }
 
   /**
