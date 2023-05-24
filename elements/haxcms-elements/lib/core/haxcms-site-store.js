@@ -1013,6 +1013,15 @@ class HAXCMSSiteStore extends HTMLElement {
         document.title = store.activeTitle;
       }
     });
+    autorun(() => {
+      if (store.appReady) {
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) {
+          this.faviconSiteDefault = favicon.href;
+          this.faviconInstance = favicon;
+        }
+      }
+    });
     /**
      * When editMode changes notify HAXeditor.
      */
@@ -1044,6 +1053,19 @@ class HAXCMSSiteStore extends HTMLElement {
   disconnectedCallback() {
     this.store.themeStyleElement.remove();
     this.store.themeStyleElement = document.createElement("style");
+  }
+  // short cut to revert to the default favicon
+  resetFavicon() {
+    this.setFavicon();
+  }
+  // set the favicon to something else
+  setFavicon(icon = null) {
+    if (!icon) {
+      icon = this.faviconSiteDefault;
+    }
+    if (this.faviconInstance) {
+      this.faviconInstance.setAttribute("href", icon);
+    }
   }
   /**
    * Try to get context of what backend is powering this
