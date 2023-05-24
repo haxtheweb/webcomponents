@@ -216,6 +216,7 @@ function htmlFromEl(el) {
       textValue.includes('youtu.be') ||
       textValue.includes('youtube-nocookie.com') ||
       textValue.includes('vimeo.com') ||
+      textValue.includes('twitch.tv') ||
       textValue.toLowerCase().includes('.mp4')
       )
     ) {

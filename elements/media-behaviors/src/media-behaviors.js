@@ -3,7 +3,7 @@ window.MediaBehaviors = window.MediaBehaviors || {};
 /**
  * `MediaBehaviors.Video` provides some helper functions for working with video
  * from multiple sources. It helps resolve a video by type and currently supports
- * youtube, vimeo, and a few other sources and helps to determine if we need
+ * youtube, vimeo, twitch, and a few other sources and helps to determine if we need
  * an iframe to display the media or a local `<video>` tag.
  *
  * This also provides a powerful little utility to clean up embedded
@@ -72,6 +72,26 @@ window.MediaBehaviors.Video = {
       else if (input.indexOf("youtu.be") != -1) {
         return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
       }
+      // embed link
+      else if (input.indexOf("player.twitch.tv/") != -1) {
+        if (tmp[1]) {
+          return `${input}?${tmp[1].replace('&parent=www.example.com', '')}`;
+        }
+        else {
+          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
+        }
+      }
+      // URL / share link
+      else if (input.indexOf("twitch.tv/videos/") != -1) {
+        let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+        return `https://player.twitch.tv/?video=${tmp2.pop()}`;
+      }
+      // twitch channel URL / share link
+      else if (input.indexOf("twitch.tv/") != -1) {
+        let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+        return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
+      }
       // copy and paste from the URL for sketchfab
       else if (
         input.indexOf("sketchfab.com") != -1 &&
@@ -109,6 +129,9 @@ window.MediaBehaviors.Video = {
       return "youtube";
     } else if (source.indexOf("sketchfab.com") != -1) {
       return "sketchfab";
+    }
+    else if (source.indexOf("twitch.tv") != -1) {
+      return "twitch";
     }
     for (let i = 0; i < localFormats.length; i++) {
       if (!isLocal && source.toLowerCase().indexOf("." + localFormats[i]) > -1)
@@ -170,6 +193,26 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         else if (input.indexOf("youtube.com/watch") != -1) {
           return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
         }
+        // embed link
+        else if (input.indexOf("player.twitch.tv/") != -1) {
+          if (tmp[1]) {
+            return `${input}?${tmp[1].replace('&parent=www.example.com', '')}`;
+          }
+          else {
+            let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+            return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
+          }
+        }
+        // URL / share link
+        else if (input.indexOf("twitch.tv/videos/") != -1) {
+          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          return `https://player.twitch.tv/?video=${tmp2.pop()}`;
+        }
+        // twitch channel URL / share link
+        else if (input.indexOf("twitch.tv/") != -1) {
+          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
+        }
         // copy and paste from the URL
         else if (input.indexOf("youtube-no-cookie.com/") != -1) {
           return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
@@ -215,6 +258,9 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         return "youtube";
       } else if (source.indexOf("sketchfab.com") != -1) {
         return "sketchfab";
+      }
+      else if (source.indexOf("twitch.tv") != -1) {
+        return "twitch";
       }
       for (let i = 0; i < localFormats.length; i++) {
         if (

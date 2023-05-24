@@ -147,6 +147,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           "youtube",
           "watch",
           "vimeo",
+          "twitch",
           "mp4",
           "webm",
           "ogg",
@@ -925,6 +926,14 @@ class VideoPlayer extends IntersectionObserverMixin(
           source += "&portrait=1";
         } else {
           source += "&portrait=0";
+        }
+      }
+      else if (type == "twitch") {
+        // required for origin matching when doing iframe embed
+        if (source.indexOf("?") > -1) {
+          source += "&parent=" + window.location.hostname;
+        } else {
+          source += "?parent=" + window.location.hostname;
         }
       }
     }
