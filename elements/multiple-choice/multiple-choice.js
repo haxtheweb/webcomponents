@@ -174,8 +174,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                       property="oer:answer"
                       type="radio"
                       name="${index}"
+                      @mousedown="${this.clickSingle}"
+                      @keydown="${this.clickSingle}"
                       .value="${answer.userGuess}"
-                      @click="${this.clickSingle}"
                       @value-changed="${this.checkedEvent}"
                       label="${answer.label ? answer.label : ""}"
                     ></simple-fields-field>

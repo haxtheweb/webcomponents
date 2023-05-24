@@ -440,7 +440,6 @@ class SuperDaemon extends SimpleColors {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: 280px;
           color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         absolute-position-behavior super-daemon-ui {
           margin-top: -46px;
