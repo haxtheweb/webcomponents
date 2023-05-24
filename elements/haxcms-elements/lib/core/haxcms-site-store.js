@@ -154,6 +154,10 @@ class Store {
           case "coin2":
           case "hit":
           case "success":
+          case "error":
+            if (sound == "error") {
+              sound = "hit";
+            }
             this.audio = new Audio(
               new URL(
                 `../../../app-hax/lib/assets/sounds/${sound}.mp3`,

@@ -263,6 +263,9 @@ class HAXCMSThemeWiring {
    * connect the theme and see if we have an authoring experience to inject correctly
    */
   connect(element, injector) {
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
     this.windowControllers = new AbortController();
     window.addEventListener(
       "haxcms-active-item-changed",
@@ -278,7 +281,10 @@ class HAXCMSThemeWiring {
 
     // inject the tools to allow for an authoring experience
     // ensuring they are loaded into the correct theme
-    store.cmsSiteEditorAvailability();
+    if (this.cmsSiteEditorInstance) {
+      document.body.appendChild(this.cmsSiteEditorInstance);
+    }
+    this.cmsSiteEditorInstance = store.cmsSiteEditorAvailability();
     store.cmsSiteEditor.instance.appElement = element;
     store.cmsSiteEditor.instance.appendTarget = injector;
     store.cmsSiteEditor.instance.appendTarget.appendChild(
@@ -291,7 +297,9 @@ class HAXCMSThemeWiring {
   disconnect(element) {
     this.windowControllers.abort();
     // need to unplug this so that the new theme can pick it up.
-    document.body.appendChild(store.cmsSiteEditorAvailability());
+    if (this.cmsSiteEditorInstance) {
+      document.body.appendChild(this.cmsSiteEditorInstance);
+    }
   }
   /**
    * Global edit state changed
