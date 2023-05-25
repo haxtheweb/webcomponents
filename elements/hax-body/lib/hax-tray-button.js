@@ -59,30 +59,30 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
       })
     );
   }
-    /**
+  /**
    * LitElement life cycle - properties changed
    */
-    updated(changedProperties) {
-      if (super.updated) {
-        super.updated(changedProperties);
-      }
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName == "voiceCommand") {
-          this.dispatchEvent(
-            new CustomEvent("super-daemon-voice-command", {
-              bubbles: true,
-              composed: true,
-              cancelable: false,
-              detail: {
-                command: this[propName],
-                context: this,
-                callback: "_voiceEvent",
-              },
-            })
-          );
-        }
-      });
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
     }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "voiceCommand") {
+        this.dispatchEvent(
+          new CustomEvent("super-daemon-voice-command", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              command: this[propName],
+              context: this,
+              callback: "_voiceEvent",
+            },
+          })
+        );
+      }
+    });
+  }
 }
 customElements.define(HaxButton.tag, HaxButton);
 export { HaxButton };

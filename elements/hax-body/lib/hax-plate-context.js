@@ -454,7 +454,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               value="${el.callback}"
               ?disabled="${el.disabled || this.disableItemOps}"
             ></hax-context-item>`;
-            })}
+          })}
           <slot name="secondary"></slot>
         </div>
         </div>

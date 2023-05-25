@@ -6,7 +6,10 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import { localStorageSet, winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import {
+  localStorageSet,
+  winEventsElement,
+} from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
@@ -124,7 +127,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #addmenubutton,
         #addmenubutton haxcms-button-add,
         #editbutton[icon="icons:save"] {
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-light-green-2);
+          --simple-toolbar-border-color: var(
+            --simple-colors-default-theme-light-green-2
+          );
           color: var(--simple-colors-default-theme-green-11);
           background-color: var(--simple-colors-default-theme-grey-1);
         }
@@ -132,16 +137,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         haxcms-button-add {
           background-color: var(--simple-colors-default-theme-grey-1);
         }
-        
+
         #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-red-2);
+          --simple-toolbar-border-color: var(
+            --simple-colors-default-theme-red-2
+          );
           margin-right: 64px;
         }
         #merlin {
           color: var(--simple-colors-default-theme-purple-10);
-          --simple-toolbar-border-color: var(--simple-colors-default-theme-purple-2);
+          --simple-toolbar-border-color: var(
+            --simple-colors-default-theme-purple-2
+          );
         }
         #merlin:hover,
         #merlin:active,
@@ -237,7 +246,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([edit-mode]) simple-toolbar simple-toolbar-menu {
           --simple-toolbar-border-color: var(--hax-ui-color-accent);
           --simple-toolbar-border-color: #dddddddd;
-
         }
 
         simple-toolbar simple-toolbar-button,
@@ -356,8 +364,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           app-hax-top-bar::part(top-bar) {
             grid-template-columns: 5% 85% 10%;
           }
-          #undo,#redo {
-            display:none;
+          #undo,
+          #redo {
+            display: none;
           }
           .topbar-character {
             padding: 0;
@@ -584,7 +593,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.icon = "hax:site-settings";
     this.manifestEditMode = false;
     this.backLink = "../../";
-    this.activeTagName = '';
+    this.activeTagName = "";
     this.activeNode = null;
     if (window.appSettings && window.appSettings.backLink) {
       this.backLink = window.appSettings.backLink;
@@ -681,7 +690,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     store.playSound("click");
   }
   getIconPosition(size) {
-    return !['xl', 'lg'].includes(size) ? "top" : "left";
+    return !["xl", "lg"].includes(size) ? "top" : "left";
   }
   // render function
   render() {
@@ -838,10 +847,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="content-edit"
             label="${this.t.configureBlock}"
             ?hidden="${!this.editMode}"
-            ?disabled="${!this.activeTagName ||
-            this.activeTagName == "" ||
-            !this.activeNode ||
-            !this.activeNode.tagName}"
+            ?disabled="${
+              !this.activeTagName ||
+              this.activeTagName == "" ||
+              !this.activeNode ||
+              !this.activeNode.tagName
+            }"
             voice-command="(modify)(configure)(edit) selected"
             controls="tray-detail"
             tooltip="${this.t.configure} ${this.activeTagName}"
@@ -1055,14 +1066,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         SuperDaemonInstance.runProgram("/", {}, null, null, "", "sources");
         SuperDaemonInstance.open();
         HAXStore.haxTray.collapsed = false;
-      break;
+        break;
       case "content-edit":
       case "content-map":
       case "content-add":
         if (HAXStore.haxTray.trayDetail == exec) {
-          HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;       
-        }
-        else {
+          HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+        } else {
           HAXStore.haxTray.collapsed = false;
         }
         HAXStore.haxTray.trayDetail = exec;
@@ -1393,7 +1403,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-run-program",
       path: ">settings/theme",
       context: [">"],
-      more: html`<span>Change theme just for the current browsing session</span>`,
+      more: html`<span
+        >Change theme just for the current browsing session</span
+      >`,
       voice: "change theme (temporarily)",
       value: {
         name: "Change theme",
@@ -1442,36 +1454,47 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         program: async (input, values) => {
           let results = [];
           // will work in a production haxiam environment to allow hopping between spaces
-          await fetch('./../../system/api/listSites').then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-            return [];
-          }).then((manifest) => {
-            if (manifest.data && manifest.data.items.length > 0) {
-              manifest.data.items.forEach(async (site) => {
-                if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input) && store.manifest.metadata.site.name != site.metadata.site.name)) {
-                  results.push({
-                    title: site.title,
-                    icon: site.metadata.theme.variables.icon,
-                    tags: ["site", site.description],
-                    value: {
-                      target: this,
-                      method: "goToLocation",
-                      args: [site.slug],
-                    },
-                    eventName: "super-daemon-element-method",
-                    context: ["/", "/hax/changeSite/" + site.metadata.site.name],
-                    path: "/hax/changeSite/" + site.metadata.site.name,
-                  });
-                }
-              });
-            }
-          });
+          await fetch("./../../system/api/listSites")
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              }
+              return [];
+            })
+            .then((manifest) => {
+              if (manifest.data && manifest.data.items.length > 0) {
+                manifest.data.items.forEach(async (site) => {
+                  if (
+                    input == "" ||
+                    (site.metadata.site &&
+                      site.metadata.site.name &&
+                      site.metadata.site.name.includes(input) &&
+                      store.manifest.metadata.site.name !=
+                        site.metadata.site.name)
+                  ) {
+                    results.push({
+                      title: site.title,
+                      icon: site.metadata.theme.variables.icon,
+                      tags: ["site", site.description],
+                      value: {
+                        target: this,
+                        method: "goToLocation",
+                        args: [site.slug],
+                      },
+                      eventName: "super-daemon-element-method",
+                      context: [
+                        "/",
+                        "/hax/changeSite/" + site.metadata.site.name,
+                      ],
+                      path: "/hax/changeSite/" + site.metadata.site.name,
+                    });
+                  }
+                });
+              }
+            });
           return results;
-
-        }
-      }
+        },
+      },
     });
     this.updateAvailableButtons();
     // load user data
@@ -1502,7 +1525,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       }
       if (propName === "responsiveSize") {
-        if (["xs","sm","md"].includes(this[propName])) {
+        if (["xs", "sm", "md"].includes(this[propName])) {
           if (this.editMode) {
             this.__editText = this.t.save;
           } else {
@@ -1514,8 +1537,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.t.findMedia = "Media";
           this.t.pageOutline = "Outline";
           this.t.viewSource = "Source";
-        }
-        else {
+        } else {
           if (this.editMode) {
             this.__editText = this.t.saveChanges;
           } else {
@@ -1577,7 +1599,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Object,
       },
       activeTagName: {
-        type: String
+        type: String,
       },
       /**
        * If we can currently undo based on stack position

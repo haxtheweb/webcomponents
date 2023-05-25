@@ -2,6 +2,52 @@
   "version": 1,
   "tags": [
     {
+      "name": "simple-colors-swatch-info",
+      "description": "`simple-colors-swatch-info`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
+        },
+        {
+          "name": "swatch-name",
+          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "simple-colors-swatches",
+      "description": "`simple-colors-swatches`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\n\n`<simple-colors-swatches>` provides the following custom properties and mixins\nfor styling. See demo of \"all of the colors\" (`demo/colors.html`) for color variable styling.\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-colors-swatch-contrast` | Modal title bar text color. | unset\n`--simple-colors-swatch-color` | Modal title bar background color. | unset\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
+        },
+        {
+          "name": "swatch-name",
+          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
       "name": "simple-colors-picker",
       "description": "`simple-colors-picker`\na select element for changing `simple-colors` attributes in demos\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - fires when options or value changes\n\n  * `changed` {`CustomEvent<this>`} - Fires when properties change\n\n  * `click` {`CustomEvent<this>`} - handles listbox click event\n\n  * `mousedown` {`CustomEvent<this>`} - fires with listbox mousedown event\n\n  * `keydown` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - fires when active descendant changes\n\n  * `value-changed` {`CustomEvent<this>`} - fires when value changes\n\n  * `expand` {`CustomEvent<this>`} - fires when listbox is expanded\n\n  * `collapse` {`CustomEvent<this>`} - fires when listbox is collapsed\n\nAttributes:\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `hide-null-option` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `align-right` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `aria-labelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hide-option-labels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hide-sample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`{}[][]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `title-as-html` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__selectedOption` - Selected option based on value of picker\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `hideNullOption` {`boolean`} - hide the null option\nDefault behavior/false will select first option and set value accordingly.\n\n  * `justify` {`boolean`} - Box is 100% width of the ui\n\n  * `__options` {`any[]`} - An array of options for picker, eg.: `\n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]`\n\n  * `hideNull` - \n\n  * `tag` - \n\n  * `allowNull` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\n  * `alignRight` {`boolean`} - Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.\n\n  * `ariaLabelledby` {`string`} - Optional. Sets aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Position label above select dropdown?\n\n  * `disabled` {`boolean`} - Is picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `hideOptionLabels` {`boolean`} - Hide option labels? As color-picker or icon-picker, labels may be redundant.\nThis option would move labels off-screen so that only screen-readers will have them.\n\n  * `hideSample` {`boolean`} - Hide selected item sample?\nDefault behavior/false shows a sample without expanding menu.\n\n  * `label` {`string`} - Optional. Label for picker input\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`{}[][]`} - An array of options for picker, eg.: \n[\n[\n{\n  \"icon\": \"editor:format-paint\",      //Optional. Used if picker is used as an icon picker.\n  \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of choice.\n  \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n  ...                                 //Optional. Any other properties that should be captured as part of selected option's value\n},...\n]\n]\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` {`string`} - An string that stores current value for picker\n\n  * `__activeDesc` {`string`} - Aria-activedescendant attribute (active option's ID)\n\n  * `__hasLabel` {`boolean`} - \n\n  * `__selectedOption` - Selected option based on value of picker\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [

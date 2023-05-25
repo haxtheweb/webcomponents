@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `windowControllers` - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
+      "description": "`hal-9000`\n\nEvents:\n\n  * `super-daemon-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - \n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
       "attributes": [
         {
           "name": "auto",
@@ -16,12 +16,17 @@
           "valueSet": "v"
         },
         {
+          "name": "toast",
+          "description": "`toast` {`boolean`} - \n\nProperty: toast\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "commands",
           "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
         },
         {
           "name": "responds-to",
-          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (hal)"
+          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (merlin)"
         },
         {
           "name": "debug",
@@ -41,8 +46,36 @@
           "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
         },
         {
+          "name": "onsuper-daemon-toast-hide",
+          "description": "`super-daemon-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsuper-daemon-toast-show",
+          "description": "`super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - "
+        },
+        {
           "name": "onhal-9000-online",
           "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
+        }
+      ]
+    },
+    {
+      "name": "hal-9000-ui",
+      "description": "Attributes:\n\n  * `mini` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "mini",
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

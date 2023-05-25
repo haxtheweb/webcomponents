@@ -80,13 +80,26 @@ gulp.task("haxschema", async () => {
         else if (tag.attributes) {
           propData = tag.attributes;
         }
+        // didn't have one, so guess
+        if (!tag.path) {
+          tag.path = `./elements/${tagName}/${tagName}.js`;
+        }
         // loop through and if props are things we can map then do it
         await propData.forEach(async (prop) => {
           if (["t","colors",'_haxState',"elementVisible", "element-visible"].includes(prop.name)) {
             props.saveOptions.unsetAttributes.push(prop.name);
           }
           else {
-            let type = getInputMethodFromType(prop.type)
+            let type = "textfield";
+            if (prop.type) {
+              type = getInputMethodFromType(prop.type);
+            }
+            else if (prop.description && prop.description.includes("boolean")) {
+              type = "boolean";
+            }
+            else if (prop.description && prop.description.includes("number")) {
+              type = "number";
+            }
             if (type) {
               let propSchema = {
                 property: prop.name,
@@ -109,7 +122,7 @@ gulp.task("haxschema", async () => {
           fs.writeFileSync(`./elements/${tagName}/lib/${tagName}.haxProperties.json`, JSON.stringify(props, null, 2));
           console.log(`schema written to: ./elements/${tagName}/lib/${tagName}.haxProperties.json`)
         }
-        console.log(`\n--------------------------\n${tag.path}\n--------------------------`);
+        console.log(`\n--------------------------\n Psuedo code to add: ${tag.path}\n--------------------------`);
         console.log(`
   /**
    * Convention we use

@@ -20,7 +20,9 @@ import { autorun, toJS } from "mobx";
  * @element terrible-themes
  */
 const skater = new URL("./assets/SKATER.gif", import.meta.url).href;
-class TerribleBestThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitElementTheme)) {
+class TerribleBestThemes extends HAXCMSRememberRoute(
+  HAXCMSThemeParts(HAXCMSLitElementTheme)
+) {
   /**
    * Add elements to cheat on initial paint here
    */
@@ -49,7 +51,6 @@ class TerribleBestThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitE
         :host {
           display: block;
         }
-       
       `,
     ];
   }
@@ -58,34 +59,94 @@ class TerribleBestThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitE
    */
   render() {
     return html`
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tbody>
-        <tr valign="top">
-          <td>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-          </td>
-          <td align="center">
-            <main id="contentcontainer">
-            <h2><blink>UPDATED 07/27/2006 - TRADING CARDS ADDED</blink></h2>
-            <section id="slot">
-              <slot></slot>
-            </section>
-            </main>
-          </td>
-          <td>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-            <img src="${skater}" width="68" height="72" border="0" alt=""><br><br><br>
-          </td>
-      </tr>
-      </tbody>
-    </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr valign="top">
+            <td>
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+            </td>
+            <td align="center">
+              <main id="contentcontainer">
+                <h2><blink>UPDATED 07/27/2006 - TRADING CARDS ADDED</blink></h2>
+                <section id="slot">
+                  <slot></slot>
+                </section>
+              </main>
+            </td>
+            <td>
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+              /><br /><br /><br />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     `;
   }
   /**

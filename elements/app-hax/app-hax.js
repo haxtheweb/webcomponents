@@ -18,7 +18,6 @@ import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
 
-
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
 // toggle store darkmode
@@ -122,13 +121,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     super.connectedCallback();
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle, { signal: this.windowControllers.signal });
-      ;
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), { signal: this.windowControllers.signal });
+      .addEventListener("change", darkToggle, {
+        signal: this.windowControllers.signal,
+      });
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
 
     window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this), { signal: this.windowControllers.signal });
+      this._tokenRefreshFailed.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
 
   goToLocation(location) {
@@ -194,9 +198,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     SuperDaemonInstance.appendContext("*");
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
-      if (
-        toJS(store.appReady) && toJS(store.isLoggedIn)
-      ) {
+      if (toJS(store.appReady) && toJS(store.isLoggedIn)) {
         return true;
       }
       return false;
@@ -209,14 +211,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       {
         value: "sites",
         label: "What sites do I have access to?",
-      }
+      },
     ];
-    
+
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Tour of top menu buttons",
       icon: "help",
-      tags: ["Help","ui","tour"],
+      tags: ["Help", "ui", "tour"],
       priority: -1000,
       value: {
         target: this,
@@ -225,14 +227,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/app/tour",
-      context: ["*","?"],
+      context: ["*", "?"],
     });
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Unlock hidden features",
       icon: "hax:hax2022",
-      tags: ["Developer", "features","hidden"],
+      tags: ["Developer", "features", "hidden"],
       value: {
         target: this,
         method: "fireUnlocked",
@@ -255,10 +257,20 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           let results = [];
           const items = toJS(store.manifest.items);
           items.forEach(async (site) => {
-            if (input == "" || (site.metadata.site && site.metadata.site.name && site.metadata.site.name.includes(input))) {
+            if (
+              input == "" ||
+              (site.metadata.site &&
+                site.metadata.site.name &&
+                site.metadata.site.name.includes(input))
+            ) {
               results.push({
                 title: site.title,
-                icon: (site.metadata.theme && site.metadata.theme.variables && site.metadata.theme.variables.icon) ? site.metadata.theme.variables.icon : "hax:hax2022",
+                icon:
+                  site.metadata.theme &&
+                  site.metadata.theme.variables &&
+                  site.metadata.theme.variables.icon
+                    ? site.metadata.theme.variables.icon
+                    : "hax:hax2022",
                 tags: ["site", site.description],
                 value: {
                   target: this,
@@ -266,13 +278,16 @@ Window size: ${window.innerWidth}x${window.innerHeight}
                   args: [site.slug],
                 },
                 eventName: "super-daemon-element-method",
-                context: ["*", "hax/action/goToSite/" + site.metadata.site.name],
+                context: [
+                  "*",
+                  "hax/action/goToSite/" + site.metadata.site.name,
+                ],
                 path: "hax/action/goToSite/" + site.metadata.site.name,
               });
             }
           });
           return results;
-        }
+        },
       },
       context: ["*"],
     });
@@ -651,7 +666,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         }
         simple-toolbar-button:hover,
         simple-toolbar-button:active,
-        simple-toolbar-button:focus{
+        simple-toolbar-button:focus {
           background-color: var(--hax-ui-background-color-accent);
           color: var(--hax-ui-color);
         }
@@ -1040,7 +1055,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             slot="center"
             data-event="super-daemon"
             show-text-label
-           ></simple-toolbar-button>
+          ></simple-toolbar-button>
           <app-hax-search-bar
             slot="center"
             ?disabled="${this.isNewUser}"
@@ -1062,7 +1077,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               data-label="Sound"
             >
               <div slot="tour" data-stop-content>
-                Not a fan of the (awesome) sound effects? You can mute them if you prefer.
+                Not a fan of the (awesome) sound effects? You can mute them if
+                you prefer.
               </div>
             </simple-icon-lite>
           </wired-button>
@@ -1082,10 +1098,15 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             data-label="Menu"
           >
             <div slot="tour" data-stop-content>
-              You want to log out and be someone else? Create a new site? Click your character. Your character is unique to you!
+              You want to log out and be someone else? Create a new site? Click
+              your character. Your character is unique to you!
             </div>
-            <button @click="${this.toggleMenu}"
- class="topbar-character" slot="menuButton" id="tbchar">
+            <button
+              @click="${this.toggleMenu}"
+              class="topbar-character"
+              slot="menuButton"
+              id="tbchar"
+            >
               <rpg-character
                 seed="${this.userName}"
                 width="68"

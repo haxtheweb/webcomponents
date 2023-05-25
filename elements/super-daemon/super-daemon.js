@@ -487,7 +487,7 @@ class SuperDaemon extends SimpleColors {
     if (!this.santaMode) {
       if (e && e.type !== "super-daemon-close" && e.type !== "close") {
         window.dispatchEvent(
-          new CustomEvent('super-daemon-toast-hide', {
+          new CustomEvent("super-daemon-toast-hide", {
             bubbles: true,
             composed: true,
             cancelable: false,
@@ -839,8 +839,7 @@ class SuperDaemon extends SimpleColors {
         .then((e) => {
           this.close();
         });
-    }
-    else {
+    } else {
       this.close();
     }
   }
@@ -849,7 +848,7 @@ class SuperDaemon extends SimpleColors {
       this.toggleSantaMode();
     }
   }
-  
+
   // apply default voice commands for when we reset the voice UI
   defaultVoiceCommands() {
     this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
@@ -919,11 +918,9 @@ class SuperDaemon extends SimpleColors {
         if (this.listeningForInput) {
           window.HAXCMS.instance.setCursor("hax:loading");
           window.HAXCMS.instance.setFavicon("hax:loading");
-        }
-        else {
+        } else {
           window.HAXCMS.instance.resetCursor();
           window.HAXCMS.instance.resetFavicon();
-  
         }
       }
       clearTimeout(this._listeningTimeout);
@@ -931,7 +928,7 @@ class SuperDaemon extends SimpleColors {
         // if we shut off, ensure we close the toast
         if (!this.listeningForInput && !this.__closeLock) {
           window.dispatchEvent(
-            new CustomEvent('super-daemon-toast-hide', {
+            new CustomEvent("super-daemon-toast-hide", {
               bubbles: true,
               composed: true,
               cancelable: false,

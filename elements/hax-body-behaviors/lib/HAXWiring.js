@@ -526,10 +526,10 @@ export class HAXWiring {
         inputMethod: "select",
         options: {
           "": "",
-          "left": "left",
-          "center": "center",
-          "right": "right",
-          "justify": "justify",
+          left: "left",
+          center: "center",
+          right: "right",
+          justify: "justify",
         },
       });
       props.settings.advanced.push({
@@ -545,9 +545,9 @@ export class HAXWiring {
         inputMethod: "select",
         options: {
           "x-small": "x-small",
-          "small": "small",
+          small: "small",
           "": "normal",
-          "large": "large",
+          large: "large",
           "x-large": "x-large",
           "xx-large": "xx-large",
         },

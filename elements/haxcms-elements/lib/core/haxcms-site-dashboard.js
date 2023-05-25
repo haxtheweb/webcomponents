@@ -46,7 +46,8 @@ class HAXCMSSiteDashboard extends SimpleColors {
     });
   }
   static get styles() {
-    return [...HaxUiBaseStyles,
+    return [
+      ...HaxUiBaseStyles,
       css`
         :host {
           z-index: 1;

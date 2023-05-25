@@ -930,8 +930,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         } else {
           source += "&portrait=0";
         }
-      }
-      else if (type == "twitch") {
+      } else if (type == "twitch") {
         // required for origin matching when doing iframe embed
         if (source.indexOf("?") > -1) {
           source += "&parent=" + window.location.hostname;
@@ -990,7 +989,11 @@ class VideoPlayer extends IntersectionObserverMixin(
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       // hack to account for poor state management prior to and then source type switches on the fly
-      if (propName === "source" && this.sourceType && typeof oldValue !== typeof undefined) {
+      if (
+        propName === "source" &&
+        this.sourceType &&
+        typeof oldValue !== typeof undefined
+      ) {
         let type = window.MediaBehaviors.Video.getVideoType(
           this.sourceData[0].src
         );

@@ -205,7 +205,9 @@ class SimpleBlogPost extends SimpleColors {
     super.connectedCallback();
     this.__disposer = [];
     setTimeout(() => {
-      window.addEventListener("scroll", this._scrollListener.bind(this), { signal: this.windowControllers.signal });
+      window.addEventListener("scroll", this._scrollListener.bind(this), {
+        signal: this.windowControllers.signal,
+      });
       autorun((reaction) => {
         const fields = toJS(store.activeItemFields);
         this.hasImage = this._computeHasImage(fields);

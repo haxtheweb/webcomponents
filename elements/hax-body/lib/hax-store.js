@@ -989,11 +989,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
   async _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
-    if (
-      this.__storageDataProcessed &&
-      newValue &&
-      this.ready
-    ) {
+    if (this.__storageDataProcessed && newValue && this.ready) {
       let storageData = this.storageData;
       // ensure storageData is an object
       if (typeof storageData === "string") {
@@ -1070,18 +1066,26 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         case "hax-style-setting-change":
           Object.keys(detail.value).forEach((key) => {
             if (!key.startsWith("__")) {
-              if (detail.value[key] == "" || parseInt(detail.value[key]) == 0 || detail.value[key] == "none" || detail.value[key] == "auto" || detail.value[key] == "initial" || detail.value[key] == "unset") {
+              if (
+                detail.value[key] == "" ||
+                parseInt(detail.value[key]) == 0 ||
+                detail.value[key] == "none" ||
+                detail.value[key] == "auto" ||
+                detail.value[key] == "initial" ||
+                detail.value[key] == "unset"
+              ) {
                 this.activeNode.style.removeProperty(key);
-              }
-              else {
+              } else {
                 if (key === "background-color") {
-                  this.activeNode.style[key] = `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
-                  this.activeNode.style['color'] = `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
-                }
-                else if (key === "text-align") {
+                  this.activeNode.style[
+                    key
+                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
+                  this.activeNode.style[
+                    "color"
+                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
+                } else if (key === "text-align") {
                   this.activeNode.style[key] = detail.value[key];
-                }
-                else if (key === "font-size") {
+                } else if (key === "font-size") {
                   switch (detail.value[key]) {
                     case "x-small":
                       this.activeNode.style[key] = "0.8em";
@@ -1100,10 +1104,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                       break;
                     case "xx-large":
                       this.activeNode.style[key] = "2em";
-                    break;
+                      break;
                   }
-                }
-                else {
+                } else {
                   this.activeNode.style[key] = detail.value[key] + "px";
                 }
               }
@@ -2505,7 +2508,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
               opener: "opener",
             },
           },
-        ]
+        ],
       },
     };
     // anything can be presented as a link
@@ -3133,8 +3136,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       this.appList = [...this.appList, app];
       this.write("appList", toJS(this.appList), this);
       let defaultType = "media";
-      if (app.connection.operations && app.connection.operations.browse && app.connection.operations.browse.resultMap && app.connection.operations.browse.resultMap.defaultGizmoType) {
-        defaultType = app.connection.operations.browse.resultMap.defaultGizmoType;
+      if (
+        app.connection.operations &&
+        app.connection.operations.browse &&
+        app.connection.operations.browse.resultMap &&
+        app.connection.operations.browse.resultMap.defaultGizmoType
+      ) {
+        defaultType =
+          app.connection.operations.browse.resultMap.defaultGizmoType;
       }
       // slash command context
       SuperDaemonInstance.defineOption({

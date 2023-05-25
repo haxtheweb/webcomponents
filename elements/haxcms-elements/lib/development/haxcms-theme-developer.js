@@ -352,14 +352,13 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     }
     window.addEventListener(
       "hax-store-ready",
-      this._fireDefinitions.bind(this)
-      , { signal: this.windowControllers.signal });
-
+      this._fireDefinitions.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.windowControllers.abort();
-
   }
 }
 customElements.define(HAXCMSThemeDeveloper.tag, HAXCMSThemeDeveloper);

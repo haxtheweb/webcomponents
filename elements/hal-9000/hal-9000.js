@@ -7,14 +7,13 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/super-daemon/lib/super-daemon-toast.js";
 
 /**
-  * `hal-9000`
-  * @element hal-9000
-  * `Robot assistant tag, hopefully not evil`
-  *
-  * @demo demo/index.html
-  */
+ * `hal-9000`
+ * @element hal-9000
+ * `Robot assistant tag, hopefully not evil`
+ *
+ * @demo demo/index.html
+ */
 class Hal9000 extends LitElement {
-
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -175,11 +174,11 @@ class Hal9000 extends LitElement {
         this.utter.onend = (event) => {
           if (window.HAXCMS) {
             window.HAXCMS.instance.resetCursor();
-            window.HAXCMS.instance.resetFavicon();  
+            window.HAXCMS.instance.resetFavicon();
           }
           if (!alwaysvisible && !awaitingInput) {
             window.dispatchEvent(
-              new CustomEvent('super-daemon-toast-hide', {
+              new CustomEvent("super-daemon-toast-hide", {
                 bubbles: true,
                 composed: true,
                 cancelable: false,
@@ -200,7 +199,7 @@ class Hal9000 extends LitElement {
   setToast(text, alwaysvisible = false, awaitingInput = true) {
     // gets it all the way to the top immediately
     window.dispatchEvent(
-      new CustomEvent('super-daemon-toast-show', {
+      new CustomEvent("super-daemon-toast-show", {
         bubbles: true,
         composed: true,
         cancelable: true,

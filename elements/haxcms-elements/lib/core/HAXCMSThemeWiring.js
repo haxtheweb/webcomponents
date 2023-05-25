@@ -269,15 +269,21 @@ class HAXCMSThemeWiring {
     this.windowControllers = new AbortController();
     window.addEventListener(
       "haxcms-active-item-changed",
-      this._activeItemUpdate.bind(element), { signal: this.windowControllers.signal });
+      this._activeItemUpdate.bind(element),
+      { signal: this.windowControllers.signal }
+    );
 
     window.addEventListener(
       "haxcms-edit-mode-changed",
-      this._globalEditChanged.bind(element), { signal: this.windowControllers.signal });
+      this._globalEditChanged.bind(element),
+      { signal: this.windowControllers.signal }
+    );
 
     window.addEventListener(
       "haxcms-trigger-update",
-      this._triggerUpdate.bind(element), { signal: this.windowControllers.signal });
+      this._triggerUpdate.bind(element),
+      { signal: this.windowControllers.signal }
+    );
 
     // inject the tools to allow for an authoring experience
     // ensuring they are loaded into the correct theme

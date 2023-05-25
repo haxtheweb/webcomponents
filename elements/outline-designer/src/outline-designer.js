@@ -1239,8 +1239,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       e.target.removeAttribute("contenteditable");
       e.target.previousElementSibling.classList.add("shown");
       e.target.innerText = e.target.previousElementSibling.innerText;
-    }
-    else if (e.key === "Enter") {
+    } else if (e.key === "Enter") {
       this._blurBlock = true;
     }
   }

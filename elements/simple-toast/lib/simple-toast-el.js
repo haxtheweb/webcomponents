@@ -122,10 +122,7 @@ class SimpleToastEl extends SimpleColors {
     this.alwaysvisible = false;
     this.duration = 3000;
     this.opened = false;
-    this.addEventListener(
-      "animationend",
-      this._onAnimationEnd
-    );
+    this.addEventListener("animationend", this._onAnimationEnd);
   }
 
   updated(changedProperties) {
@@ -142,16 +139,13 @@ class SimpleToastEl extends SimpleColors {
         );
         if (this[propName]) {
           this.show(this.text);
-        }
-        else {
+        } else {
           this.style.animation = "none";
           setTimeout(() => {
             if (!this.alwaysvisible && !this.awaitingMerlinInput) {
               this.style.animation =
-              "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
-    
-            }
-            else {
+                "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
+            } else {
               this.style.animation = "fadein 0.3s";
             }
           }, 600);
@@ -160,10 +154,8 @@ class SimpleToastEl extends SimpleColors {
       if (propName === "duration" && this[propName]) {
         if (!this.alwaysvisible && !this.awaitingMerlinInput) {
           this.style.animation =
-          "fadein 0.3s, fadeout 0.6s " + this[propName] / 1000 + "s";
-
-        }
-        else {
+            "fadein 0.3s, fadeout 0.6s " + this[propName] / 1000 + "s";
+        } else {
           this.style.animation = "fadein 0.3s";
         }
       }

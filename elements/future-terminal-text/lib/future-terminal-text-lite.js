@@ -74,7 +74,11 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "glitch" && this[propName] && typeof oldValue !== "undefined") {
+      if (
+        propName === "glitch" &&
+        this[propName] &&
+        typeof oldValue !== "undefined"
+      ) {
         this._doGlitch();
       }
     });

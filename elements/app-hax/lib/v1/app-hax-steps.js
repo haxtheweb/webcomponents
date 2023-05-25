@@ -90,7 +90,11 @@ export class AppHaxSteps extends SimpleColors {
       step: { type: Number, reflect: true },
       stepRoutes: { type: Array },
       themeNames: { type: Array },
-      unlockComingSoon: { type: Boolean, reflect:true, attribute: "unlock-coming-soon" },
+      unlockComingSoon: {
+        type: Boolean,
+        reflect: true,
+        attribute: "unlock-coming-soon",
+      },
       loaded: { type: Boolean, reflect: true },
       appSettings: { type: Object },
       nameTyped: { type: String },
@@ -484,8 +488,12 @@ export class AppHaxSteps extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this.maintainScroll.bind(this), { signal: this.windowControllers.signal });
-    window.addEventListener("popstate", this.popstateListener.bind(this), { signal: this.windowControllers.signal });
+    window.addEventListener("resize", this.maintainScroll.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("popstate", this.popstateListener.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
 
   disconnectedCallback() {
@@ -1112,7 +1120,7 @@ export class AppHaxSteps extends SimpleColors {
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
-               <!-- <app-hax-site-button
+                <!-- <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Website"
                   value="website"
@@ -1125,7 +1133,6 @@ export class AppHaxSteps extends SimpleColors {
                   @click=${this.chooseStructure}
                   ?coming-soon="${!this.unlockComingSoon}"
                 ></app-hax-site-button>
-                
               </div>
             </div>
             <div class="carousel-with-snapping-item" id="step-2">

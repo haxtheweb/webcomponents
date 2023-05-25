@@ -171,8 +171,7 @@ export class SuperDaemonToast extends SimpleToastEl {
   hideSimpleToast(e) {
     if (!this.alwaysvisible) {
       // tricks into closing via event in a graceful way
-      this.style.animation =
-      "forcedfadeout 0.6s .3s";
+      this.style.animation = "forcedfadeout 0.6s .3s";
       this.awaitingMerlinInput = false;
       setTimeout(() => {
         this.hide();
@@ -238,21 +237,29 @@ export class SuperDaemonToast extends SimpleToastEl {
 
   render() {
     return html` <div class="bubble">
-      ${this.awaitingMerlinInput ? html`<simple-icon-lite class="awaiting-input" icon="hax:loading"></simple-icon-lite>` : html`
-      <simple-icon
-        class="merlin"
-        icon="hax:wizard-hat"
-        accent-color="purple"></simple-icon>
-      `}
+      ${this.awaitingMerlinInput
+        ? html`<simple-icon-lite
+            class="awaiting-input"
+            icon="hax:loading"
+          ></simple-icon-lite>`
+        : html`
+            <simple-icon
+              class="merlin"
+              icon="hax:wizard-hat"
+              accent-color="purple"
+            ></simple-icon>
+          `}
       <span class="bubble rightedge"></span>
       <span class="bubble mid">
         <slot name="pre"></slot>
-        ${this.future ? html`
-        <future-terminal-text 
-          fadein 
-          glitch 
-          glitch-max="3" 
-          glitch-duration="40"></future-terminal-text>`: html`${this.text}`}        
+        ${this.future
+          ? html` <future-terminal-text
+              fadein
+              glitch
+              glitch-max="3"
+              glitch-duration="40"
+            ></future-terminal-text>`
+          : html`${this.text}`}
         <slot></slot>
       </span>
       <span class="bubble leftedge"></span>
@@ -263,19 +270,29 @@ export class SuperDaemonToast extends SimpleToastEl {
     super.updated(changedProperties);
     // can't write here in template bc it's a vanilla innerHTML which would have Lit
     // directives in it and we don't want to ingest and rewrite those
-    if (changedProperties.has("text") && this.future && this.shadowRoot.querySelector("future-terminal-text")) {
-      this.shadowRoot.querySelector("future-terminal-text").innerText = this.text;
-      this.shadowRoot.querySelector("future-terminal-text")._doGlitch();    }
+    if (
+      changedProperties.has("text") &&
+      this.future &&
+      this.shadowRoot.querySelector("future-terminal-text")
+    ) {
+      this.shadowRoot.querySelector("future-terminal-text").innerText =
+        this.text;
+      this.shadowRoot.querySelector("future-terminal-text")._doGlitch();
+    }
   }
 
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
       "super-daemon-toast-hide",
-      this.hideSimpleToast.bind(this), { signal: this.windowControllers.signal });
+      this.hideSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
+    );
     window.addEventListener(
       "super-daemon-toast-show",
-      this.showSimpleToast.bind(this), { signal: this.windowControllers.signal });
+      this.showSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
 
   /**
@@ -297,29 +314,30 @@ export class SuperDaemonToast extends SimpleToastEl {
     setTimeout(() => {
       if (e.detail.slot) {
         this.appendChild(e.detail.slot);
-      }        
+      }
     }, 0);
     // force this element to be hidden prior to showing it
-    this.duration = (e.detail.duration) ? e.detail.duration : 4000;
-    this.fire = (e.detail.fire) ? e.detail.fire : false;
-    this.hat = (e.detail.hat) ? e.detail.hat : "coffee";
-    this.merlin = (e.detail.merlin) ? e.detail.merlin : false;
-    this.walking = (e.detail.walking) ? e.detail.walking : false;
-    this.text = (e.detail.text) ? e.detail.text : "Saved";
-    this.future = (e.detail.future) ? e.detail.future : false;
-    this.classStyle = (e.detail.classStyle) ? e.detail.classStyle : "";
-    this.eventCallback = (e.detail.eventCallback) ? e.detail.eventCallback : null;
-    this.accentColor = (e.detail.accentColor) ? e.detail.accentColor : "grey";
-    this.alwaysvisible = (e.detail.alwaysvisible) ? e.detail.alwaysvisible : false;
+    this.duration = e.detail.duration ? e.detail.duration : 4000;
+    this.fire = e.detail.fire ? e.detail.fire : false;
+    this.hat = e.detail.hat ? e.detail.hat : "coffee";
+    this.merlin = e.detail.merlin ? e.detail.merlin : false;
+    this.walking = e.detail.walking ? e.detail.walking : false;
+    this.text = e.detail.text ? e.detail.text : "Saved";
+    this.future = e.detail.future ? e.detail.future : false;
+    this.classStyle = e.detail.classStyle ? e.detail.classStyle : "";
+    this.eventCallback = e.detail.eventCallback ? e.detail.eventCallback : null;
+    this.accentColor = e.detail.accentColor ? e.detail.accentColor : "grey";
+    this.alwaysvisible = e.detail.alwaysvisible
+      ? e.detail.alwaysvisible
+      : false;
     // already open and waiting for input, don't do anything
     if (e.detail.awaitingMerlinInput && this.duration) {
       // should appear to switch into waiting for input mode prior to closing state
       setTimeout(() => {
         this.style.animation = "none";
         this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
-      }, this.duration/2);
-    }
-    else {
+      }, this.duration / 2);
+    } else {
       this.awaitingMerlinInput = false;
     }
     this.show();
@@ -328,7 +346,7 @@ export class SuperDaemonToast extends SimpleToastEl {
   show() {
     if (!this.opened) {
       this.style.animation =
-              "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
+        "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
       this.opened = true;
     }
   }
@@ -346,12 +364,10 @@ export class SuperDaemonToast extends SimpleToastEl {
       }
       if (!this.alwaysvisible) {
         this.opened = false;
-      }
-      else {
+      } else {
         this.style.animation = "fadein 0.3s";
       }
-    }
-    else {
+    } else {
       this.style.animation = "fadein 0.3s";
     }
   }
@@ -361,9 +377,12 @@ window.SuperDaemonToast = window.SuperDaemonToast || {};
 
 window.SuperDaemonToast.requestAvailability = () => {
   if (!window.SuperDaemonToast.instance) {
-    window.SuperDaemonToast.instance = document.createElement(SuperDaemonToast.tag);
+    window.SuperDaemonToast.instance = document.createElement(
+      SuperDaemonToast.tag
+    );
     document.body.appendChild(window.SuperDaemonToast.instance);
   }
   return window.SuperDaemonToast.instance;
 };
-export const SuperDaemonToastInstance = window.SuperDaemonToast.requestAvailability();
+export const SuperDaemonToastInstance =
+  window.SuperDaemonToast.requestAvailability();

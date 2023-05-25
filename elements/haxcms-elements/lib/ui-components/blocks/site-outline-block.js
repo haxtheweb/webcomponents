@@ -283,8 +283,9 @@ class SiteOutlineBlock extends PolymerElement {
       "resize",
       () => {
         this._activeIdChanged(this.activeId);
-      }, { signal: this.windowControllers.signal });
-
+      },
+      { signal: this.windowControllers.signal }
+    );
   }
   disconnectedCallback() {
     super.disconnectedCallback();

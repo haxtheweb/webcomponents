@@ -9,11 +9,7 @@
     "description": "Wrapper on the spotify player embed option",
     "icon": "icons:android",
     "color": "green",
-    "tags": [
-      "Audio / Video",
-      "music",
-      "spotify"
-    ],
+    "tags": ["Audio / Video", "music", "spotify"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

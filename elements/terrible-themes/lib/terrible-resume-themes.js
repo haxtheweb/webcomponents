@@ -19,7 +19,9 @@ import { autorun, toJS } from "mobx";
  * @demo demo/index.html
  * @element terrible-themes
  */
-class TerribleResumeThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitElementTheme)) {
+class TerribleResumeThemes extends HAXCMSRememberRoute(
+  HAXCMSThemeParts(HAXCMSLitElementTheme)
+) {
   /**
    * Add elements to cheat on initial paint here
    */
@@ -48,40 +50,33 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
         :host {
           display: block;
         }
-        a
-        {
+        a {
           color: blue;
           text-decoration: none;
         }
-        a:active
-        {
-          color: #2B2B5A;
+        a:active {
+          color: #2b2b5a;
           text-decoration: none;
         }
-        a:visited
-        {  
+        a:visited {
           color: blue;
           text-decoration: none;
         }
-        a:hover
-        {
+        a:hover {
           color: red;
-            text-decoration: none;
+          text-decoration: none;
         }
-        a.menu
-        {
+        a.menu {
           color: black;
           text-decoration: none;
           font-weight: bold;
           font-size: 150%;
         }
-        a.menu:visited
-        {
+        a.menu:visited {
           color: black;
           text-decoration: none;
         }
-        a.menu:hover
-        {
+        a.menu:hover {
           color: gray;
           text-decoration: none;
         }
@@ -93,67 +88,120 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
    */
   render() {
     return html`
-<table align="center" cellspacing="0" cellpadding="0" border="3" frame="box">
-<tbody><tr>
-	<td>
-	<table border="0" cellpadding="0" cellspacing="0" width="800">
-	<tbody><tr>
-		<td bgcolor="white">
-		<table cellpadding="0" cellspacing="0" border="0" height="104" width="100%">
-		<tbody><tr>
-			<td align="center">
-				<table>
-				<tbody><tr>
-					<td>
-						<a href="index.html" class="menu">Home</a>
-					</td>
-					<td width="25"></td>
-					<td>
-						<a href="jobs.html" class="menu">Jobs</a>
-					</td>
-					<td width="25"></td>
-					<td>
-						<a href="info.html" class="menu">Personal Info</a>
-					</td>
-					<td width="25"></td>
-					<td>
-						<a href="skills.html" class="menu">Skills</a>
-					</td>
-				</tr>
-				</tbody></table>	
-			</td>
-		</tr>
-		</tbody></table>
-		
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<table border="0" cellpadding="0" align="center" width="800" bgcolor="white">
-			<tbody><tr>
-				<td height="8"></td>
-			</tr>
-			<tr>
-			<td width="25"></td>
-        <td id="contentcontainer">
-          <section id="slot">
-            <slot></slot>
-          </section> 
-					<br><ul>
-						<li><a href="http://ist.psu.edu/" target="_blank">Information Science and Technology</a>
-						</li><li><a href="http://www.psu.edu/" target="_blank">Penn State University</a>
-						</li><li><a href="http://www.acidscorpio.com/" target="_blank">Personal Website</a>
-						</li><li><a href="http://www.uscsd.k12.pa.us/" target="_blank">Upper St. Clair School District</a>
-					</li></ul><br><br><br><br><br><br><br><br><br><br>
-				</td>
-			</tr>
-			</tbody></table>
-		</td>
-	</tr>
-	</tbody></table>
-	</td>
-</tr>
-</tbody></table>
+      <table
+        align="center"
+        cellspacing="0"
+        cellpadding="0"
+        border="3"
+        frame="box"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <table border="0" cellpadding="0" cellspacing="0" width="800">
+                <tbody>
+                  <tr>
+                    <td bgcolor="white">
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        height="104"
+                        width="100%"
+                      >
+                        <tbody>
+                          <tr>
+                            <td align="center">
+                              <table>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <a href="index.html" class="menu">Home</a>
+                                    </td>
+                                    <td width="25"></td>
+                                    <td>
+                                      <a href="jobs.html" class="menu">Jobs</a>
+                                    </td>
+                                    <td width="25"></td>
+                                    <td>
+                                      <a href="info.html" class="menu"
+                                        >Personal Info</a
+                                      >
+                                    </td>
+                                    <td width="25"></td>
+                                    <td>
+                                      <a href="skills.html" class="menu"
+                                        >Skills</a
+                                      >
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table
+                        border="0"
+                        cellpadding="0"
+                        align="center"
+                        width="800"
+                        bgcolor="white"
+                      >
+                        <tbody>
+                          <tr>
+                            <td height="8"></td>
+                          </tr>
+                          <tr>
+                            <td width="25"></td>
+                            <td id="contentcontainer">
+                              <section id="slot">
+                                <slot></slot>
+                              </section>
+                              <br />
+                              <ul>
+                                <li>
+                                  <a href="http://ist.psu.edu/" target="_blank"
+                                    >Information Science and Technology</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="http://www.psu.edu/" target="_blank"
+                                    >Penn State University</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="http://www.acidscorpio.com/"
+                                    target="_blank"
+                                    >Personal Website</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="http://www.uscsd.k12.pa.us/"
+                                    target="_blank"
+                                    >Upper St. Clair School District</a
+                                  >
+                                </li>
+                              </ul>
+                              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     `;
   }
   /**

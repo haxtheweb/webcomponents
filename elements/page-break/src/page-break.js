@@ -370,7 +370,7 @@ export class PageBreak extends IntersectionObserverMixin(
           opacity: 0.2;
           background-position: center;
           background-repeat: no-repeat;
-          transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
         .mid {
           border: none;

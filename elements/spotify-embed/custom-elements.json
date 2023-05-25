@@ -3,8 +3,12 @@
   "tags": [
     {
       "name": "spotify-embed",
-      "description": "`spotify-embed`\n`embed spotify playlists`\n\nAttributes:\n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `playlistid` {`string`} - \n\n  * `source` {`string`} - \n\n  * `type` {`string`} - \n\nProperties:\n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `playlistid` {`string`} - \n\n  * `source` {`string`} - \n\n  * `type` {`string`} - ",
+      "description": "`spotify-embed`\n`embed spotify playlists`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `playlistid` {`string`} - \n\n  * `type` {`string`} - \n\n  * `editing` {`boolean`} - ",
       "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
+        },
         {
           "name": "theme",
           "description": "`theme` {`string`} - \n\nProperty: theme\n\nDefault: null"
@@ -14,16 +18,9 @@
           "description": "`size` {`string`} - \n\nProperty: size\n\nDefault: normal"
         },
         {
-          "name": "playlistid",
-          "description": "`playlistid` {`string`} - \n\nProperty: playlistid\n\nDefault: null"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: null"
+          "name": "editing",
+          "description": "`editing` {`boolean`} - \n\nProperty: editing\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

@@ -65,10 +65,15 @@ class SiteActiveTitle extends LitElement {
       if (propName == "editMode" && oldValue !== undefined) {
         if (this.editMode) {
           this.activateController = new AbortController();
-          this.addEventListener('click', (e) => {
-            const haxStore = window.HaxStore.requestAvailability();
-            haxStore.activeNode = haxStore.activeHaxBody.querySelector('page-break');
-          }, { signal: this.activateController.signal });
+          this.addEventListener(
+            "click",
+            (e) => {
+              const haxStore = window.HaxStore.requestAvailability();
+              haxStore.activeNode =
+                haxStore.activeHaxBody.querySelector("page-break");
+            },
+            { signal: this.activateController.signal }
+          );
         } else {
           this.noFallback = false;
           this.activateController.abort();

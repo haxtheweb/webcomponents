@@ -359,7 +359,10 @@ const SimplePickerBehaviors = function (SuperClass) {
           simple-picker-option[active] {
             z-index: 100;
             cursor: pointer;
-            color: var(--simple-picker-option-active-color, var(--simple-picker-color, currentColor));
+            color: var(
+              --simple-picker-option-active-color,
+              var(--simple-picker-color, currentColor)
+            );
             background-color: var(
               --simple-picker-option-active-background-color,
               #aaddff

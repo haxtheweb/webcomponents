@@ -40,42 +40,44 @@ class SpotifyEmbed extends LitElement {
   }
 
   static get styles() {
-    return [css`
-      :host {
-        display: block;
-      }
-      :host([editing]) .container {
-        z-index: 1;
-      }
-      :host([editing]) iframe {
-        z-index: -1;
-        pointer-events: none;
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        :host([editing]) .container {
+          z-index: 1;
+        }
+        :host([editing]) iframe {
+          z-index: -1;
+          pointer-events: none;
+        }
+      `,
+    ];
   }
   /**
    * LitElement render callback
    */
   render() {
     return html`
-    <div class="container">
-      <iframe
-        src="https://open.spotify.com/embed/${this.type}/${this
-          .playlistid}?utm_source=generator${this.theme
-          ? `&theme=${this.theme}`
-          : ""}"
-        height="${this.size == "normal" ? "352" : "152"}"
-        style="border-radius:12px"
-        width="100%"
-        part="iframe"
-        frameborder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="low"
-      ></iframe>
-    </div>
+      <div class="container">
+        <iframe
+          src="https://open.spotify.com/embed/${this.type}/${this
+            .playlistid}?utm_source=generator${this.theme
+            ? `&theme=${this.theme}`
+            : ""}"
+          height="${this.size == "normal" ? "352" : "152"}"
+          style="border-radius:12px"
+          width="100%"
+          part="iframe"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        ></iframe>
+      </div>
     `;
   }
   /**
@@ -131,9 +133,9 @@ class SpotifyEmbed extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
-
 }
 customElements.define(SpotifyEmbed.tag, SpotifyEmbed);
 export { SpotifyEmbed };

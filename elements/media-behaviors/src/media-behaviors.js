@@ -75,21 +75,20 @@ window.MediaBehaviors.Video = {
       // embed link
       else if (input.indexOf("player.twitch.tv/") != -1) {
         if (tmp[1]) {
-          return `${input}?${tmp[1].replace('&parent=www.example.com', '')}`;
-        }
-        else {
-          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          return `${input}?${tmp[1].replace("&parent=www.example.com", "")}`;
+        } else {
+          let tmp2 = input.replace("&parent=www.example.com", "").split("/");
           return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
         }
       }
       // URL / share link
       else if (input.indexOf("twitch.tv/videos/") != -1) {
-        let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+        let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?video=${tmp2.pop()}`;
       }
       // twitch channel URL / share link
       else if (input.indexOf("twitch.tv/") != -1) {
-        let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+        let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
       }
       // copy and paste from the URL for sketchfab
@@ -129,8 +128,7 @@ window.MediaBehaviors.Video = {
       return "youtube";
     } else if (source.indexOf("sketchfab.com") != -1) {
       return "sketchfab";
-    }
-    else if (source.indexOf("twitch.tv") != -1) {
+    } else if (source.indexOf("twitch.tv") != -1) {
       return "twitch";
     }
     for (let i = 0; i < localFormats.length; i++) {
@@ -196,21 +194,20 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         // embed link
         else if (input.indexOf("player.twitch.tv/") != -1) {
           if (tmp[1]) {
-            return `${input}?${tmp[1].replace('&parent=www.example.com', '')}`;
-          }
-          else {
-            let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+            return `${input}?${tmp[1].replace("&parent=www.example.com", "")}`;
+          } else {
+            let tmp2 = input.replace("&parent=www.example.com", "").split("/");
             return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
           }
         }
         // URL / share link
         else if (input.indexOf("twitch.tv/videos/") != -1) {
-          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          let tmp2 = input.replace("&parent=www.example.com", "").split("/");
           return `https://player.twitch.tv/?video=${tmp2.pop()}`;
         }
         // twitch channel URL / share link
         else if (input.indexOf("twitch.tv/") != -1) {
-          let tmp2 = input.replace('&parent=www.example.com', '').split('/');
+          let tmp2 = input.replace("&parent=www.example.com", "").split("/");
           return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
         }
         // copy and paste from the URL
@@ -258,8 +255,7 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         return "youtube";
       } else if (source.indexOf("sketchfab.com") != -1) {
         return "sketchfab";
-      }
-      else if (source.indexOf("twitch.tv") != -1) {
+      } else if (source.indexOf("twitch.tv") != -1) {
         return "twitch";
       }
       for (let i = 0; i < localFormats.length; i++) {

@@ -19,7 +19,9 @@ import { autorun, toJS } from "mobx";
  * @demo demo/index.html
  * @element terrible-themes
  */
-class TerribleOutletThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitElementTheme)) {
+class TerribleOutletThemes extends HAXCMSRememberRoute(
+  HAXCMSThemeParts(HAXCMSLitElementTheme)
+) {
   /**
    * Add elements to cheat on initial paint here
    */
@@ -48,7 +50,6 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
         :host {
           display: block;
         }
-       
       `,
     ];
   }
@@ -57,53 +58,89 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLi
    */
   render() {
     return html`
-<table align="left" border="0" width="750">
-<tbody><tr>
-	<td colspan="2"><img src="${new URL("assets/header.jpg", import.meta.url).href}/../lips.jpg" width="125" height="74" border="0" alt=""></td>
-	<td valign="middle"><h1>Ac|d's Internet Outlet</h1></td>
-</tr>
-<tr>
-	<td colspan="3" height="10"> </td>
-</tr>
-<tr>
-		<td width="125" valign="top">
-		<br>
-		<a href="index.html" class="sidebar"><b>Home</b></a><br>
-		<hr>
-		<a href="ilog.html" class="sidebar"><b>ILOG</b></a><br>
-		<a href="personalinfo.html" class="sidebar"><b>Personal info</b></a><br>
-		<a href="pictures.html" class="sidebar"><b>Pictures</b></a><br>
-		<a href="rants.html" class="sidebar"><b>Rants</b></a><br>
-		<a href="hhl.html" class="sidebar"><b>HHL All-Stars</b></a><br>
-		<a href="gaming.html" class="sidebar"><b>Gaming</b></a><br>
-		<a href="random.html" class="sidebar"><b>Random</b></a><br>
-		<a href="homie.html" class="sidebar"><b>Homie the Mom</b></a><br>
-		<a href="links.html" class="sidebar"><b>Fun links</b></a><br>
-		<a href="http://www.cafepress.com/acidscorpio/" class="sidebar" target="_blank"><b>Store</b></a>
-		<hr>
-		Site Map
-		<hr>
-		<a href="http://www.personal.psu.edu/bto108/productionz/index.html" class="sidebar"><b>Productionz</b></a>
-		<a href="http://www.personal.psu.edu/bto108/portfolio/index.html" class="sidebar"><b>Portfolio</b></a>
-		
-	</td>
-	<td width="10"></td>
-	<td valign="top">
-	<br>
-	<!--Hey look stupid this is where the text go-->
-	<main id="contentcontainer">
-	<h2>Gaming</h2>
-  <section id="slot">
-    <slot></slot>
-  </section>
-  </main>
-	
-	<br><br><br><br><br><br><br>
-	<div align="center"><h5>ŠAc|d-$CoRpI() Productionz 2002-2003</h5></div>
-	<br><br>
-	</td>
-</tr>
-</tbody></table>
+      <table align="left" border="0" width="750">
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <img
+                src="${new URL("assets/header.jpg", import.meta.url)
+                  .href}/../lips.jpg"
+                width="125"
+                height="74"
+                border="0"
+                alt=""
+              />
+            </td>
+            <td valign="middle"><h1>Ac|d's Internet Outlet</h1></td>
+          </tr>
+          <tr>
+            <td colspan="3" height="10"></td>
+          </tr>
+          <tr>
+            <td width="125" valign="top">
+              <br />
+              <a href="index.html" class="sidebar"><b>Home</b></a
+              ><br />
+              <hr />
+              <a href="ilog.html" class="sidebar"><b>ILOG</b></a
+              ><br />
+              <a href="personalinfo.html" class="sidebar"
+                ><b>Personal info</b></a
+              ><br />
+              <a href="pictures.html" class="sidebar"><b>Pictures</b></a
+              ><br />
+              <a href="rants.html" class="sidebar"><b>Rants</b></a
+              ><br />
+              <a href="hhl.html" class="sidebar"><b>HHL All-Stars</b></a
+              ><br />
+              <a href="gaming.html" class="sidebar"><b>Gaming</b></a
+              ><br />
+              <a href="random.html" class="sidebar"><b>Random</b></a
+              ><br />
+              <a href="homie.html" class="sidebar"><b>Homie the Mom</b></a
+              ><br />
+              <a href="links.html" class="sidebar"><b>Fun links</b></a
+              ><br />
+              <a
+                href="http://www.cafepress.com/acidscorpio/"
+                class="sidebar"
+                target="_blank"
+                ><b>Store</b></a
+              >
+              <hr />
+              Site Map
+              <hr />
+              <a
+                href="http://www.personal.psu.edu/bto108/productionz/index.html"
+                class="sidebar"
+                ><b>Productionz</b></a
+              >
+              <a
+                href="http://www.personal.psu.edu/bto108/portfolio/index.html"
+                class="sidebar"
+                ><b>Portfolio</b></a
+              >
+            </td>
+            <td width="10"></td>
+            <td valign="top">
+              <br />
+              <!--Hey look stupid this is where the text go-->
+              <main id="contentcontainer">
+                <h2>Gaming</h2>
+                <section id="slot">
+                  <slot></slot>
+                </section>
+              </main>
+
+              <br /><br /><br /><br /><br /><br /><br />
+              <div align="center">
+                <h5>ŠAc|d-$CoRpI() Productionz 2002-2003</h5>
+              </div>
+              <br /><br />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     `;
   }
   /**

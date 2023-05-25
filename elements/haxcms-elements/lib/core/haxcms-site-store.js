@@ -1063,8 +1063,7 @@ class HAXCMSSiteStore extends HTMLElement {
   setFavicon(icon = null, isIcon = true) {
     if (!icon) {
       icon = this.faviconSiteDefault;
-    }
-    else if (isIcon) {
+    } else if (isIcon) {
       icon = SimpleIconsetStore.getIcon(icon);
     }
     if (this.faviconInstance) {
@@ -1078,8 +1077,7 @@ class HAXCMSSiteStore extends HTMLElement {
   setCursor(icon = null, isIcon = true) {
     if (!icon) {
       document.body.style.removeProperty("cursor");
-    }
-    else {
+    } else {
       if (isIcon) {
         icon = SimpleIconsetStore.getIcon(icon);
       }

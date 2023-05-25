@@ -119,6 +119,84 @@
           "description": "`data` - Data object to post to code pen\n\nProperty: data\n\nDefault: [object Object]"
         }
       ]
+    },
+    {
+      "name": "monaco-element",
+      "description": "`monaco-element`\nWebcomponent wrapper for the monaco editor.\n\nSets value, language and theme.\nOffers a value-changed event.\n\nPartly influenced by https://github.com/PolymerVis/monaco-editor\n\nEvents:\n\n  * `value-changed` {`CustomEvent<any>`} - \n\n  * `code-editor-focus` {`CustomEvent<boolean>`} - \n\n  * `code-editor-blur` {`CustomEvent<boolean>`} - \n\n  * `monaco-element-ready` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `unique-key` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `value` {`string`} - \n\n  * `font-size` {`number`} - \n\n  * `word-wrap` {`boolean`} - \n\n  * `tab-size` {`number`} - \n\n  * `read-only` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `lib-path` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hide-line-numbers` {`boolean`} - hide line numbers\n\n  * `editor-reference` {`string`} - \n\nProperties:\n\n  * `uniqueKey` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `document` - \n\n  * `windowControllers` - \n\n  * `iframe` - \n\n  * `value` {`string`} - \n\n  * `fontSize` {`number`} - \n\n  * `wordWrap` {`boolean`} - \n\n  * `tabSize` {`number`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `libPath` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hideLineNumbers` {`boolean`} - hide line numbers\n\n  * `editorReference` {`string`} - ",
+      "attributes": [
+        {
+          "name": "unique-key",
+          "description": "`unique-key` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\nProperty: uniqueKey"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
+        },
+        {
+          "name": "font-size",
+          "description": "`font-size` {`number`} - \n\nProperty: fontSize\n\nDefault: 16"
+        },
+        {
+          "name": "word-wrap",
+          "description": "`word-wrap` {`boolean`} - \n\nProperty: wordWrap\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "tab-size",
+          "description": "`tab-size` {`number`} - \n\nProperty: tabSize\n\nDefault: 2"
+        },
+        {
+          "name": "read-only",
+          "description": "`read-only` {`boolean`} - \n\nProperty: readOnly\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "eventTypes",
+          "description": "`eventTypes` - \n\nProperty: eventTypes\n\nDefault: [object Object]"
+        },
+        {
+          "name": "language",
+          "description": "`language` {`string`} - \n\nProperty: language\n\nDefault: javascript"
+        },
+        {
+          "name": "theme",
+          "description": "`theme` {`string`} - \n\nProperty: theme\n\nDefault: vs-dark"
+        },
+        {
+          "name": "lib-path",
+          "description": "`lib-path` {`string`} - \n\nProperty: libPath\n\nDefault: node_modules/monaco-editor/min/vs"
+        },
+        {
+          "name": "autofocus",
+          "description": "`autofocus` {`boolean`} - automatically set focus on the iframe\n\nProperty: autofocus\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-line-numbers",
+          "description": "`hide-line-numbers` {`boolean`} - hide line numbers\n\nProperty: hideLineNumbers\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "editor-reference",
+          "description": "`editor-reference` {`string`} - \n\nProperty: editorReference"
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncode-editor-focus",
+          "description": "`code-editor-focus` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "oncode-editor-blur",
+          "description": "`code-editor-blur` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onmonaco-element-ready",
+          "description": "`monaco-element-ready` {`CustomEvent<boolean>`} - "
+        }
+      ]
     }
   ],
   "globalAttributes": [],

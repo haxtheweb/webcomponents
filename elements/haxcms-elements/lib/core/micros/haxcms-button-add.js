@@ -77,8 +77,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     super.connectedCallback();
     window.addEventListener(
       "haxcms-create-node-success",
-      this.HAXCMSButtonClickResponse.bind(this), { signal: this.windowControllers.signal });
-
+      this.HAXCMSButtonClickResponse.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
 
   disconnectedCallback() {

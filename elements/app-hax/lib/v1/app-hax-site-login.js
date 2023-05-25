@@ -173,10 +173,14 @@ export class AppHaxSiteLogin extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), { signal: this.windowControllers.signal });
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     window.addEventListener(
       "jwt-login-login-failed",
-      this._jwtLoginFailed.bind(this), { signal: this.windowControllers.signal });
+      this._jwtLoginFailed.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
 
   disconnectedCallback() {

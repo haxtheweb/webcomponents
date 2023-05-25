@@ -92,7 +92,7 @@ export class AppHaxSearchBar extends LitElement {
         }
         simple-toolbar-button:hover,
         simple-toolbar-button:active,
-        simple-toolbar-button:focus{
+        simple-toolbar-button:focus {
           background-color: var(--hax-ui-background-color-accent);
           color: var(--hax-ui-color);
         }

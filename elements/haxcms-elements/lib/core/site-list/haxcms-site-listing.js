@@ -1312,9 +1312,13 @@ class HAXCMSSiteListing extends PolymerElement {
     super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
     window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this), { signal: this.windowControllers.signal });
+      this._tokenRefreshFailed.bind(this),
+      { signal: this.windowControllers.signal }
+    );
 
-    window.addEventListener("jwt-token", this.updateJwt.bind(this), { signal: this.windowControllers.signal });
+    window.addEventListener("jwt-token", this.updateJwt.bind(this), {
+      signal: this.windowControllers.signal,
+    });
 
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
@@ -1334,7 +1338,9 @@ class HAXCMSSiteListing extends PolymerElement {
 
     window.addEventListener(
       "sites-listing-refresh-data",
-      this.refreshData.bind(this), { signal: this.windowControllers.signal });
+      this.refreshData.bind(this),
+      { signal: this.windowControllers.signal }
+    );
 
     setTimeout(() => {
       /**
@@ -1405,7 +1411,9 @@ class HAXCMSSiteListing extends PolymerElement {
 
       document.body.addEventListener(
         "haxcms-load-site",
-        this.loadActiveSite.bind(this), { signal: this.windowControllers.signal });
+        this.loadActiveSite.bind(this),
+        { signal: this.windowControllers.signal }
+      );
 
       this.permissionsListen();
       this.shadowRoot.querySelector("#snap").addEventListener("click", () => {
@@ -1434,14 +1442,21 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 
   permissionsListen() {
-    window.addEventListener("simple-login-camera-icon-click", async () => {
-      await this.snapPhoto();
-    }, { signal: this.windowControllers.signal });
+    window.addEventListener(
+      "simple-login-camera-icon-click",
+      async () => {
+        await this.snapPhoto();
+      },
+      { signal: this.windowControllers.signal }
+    );
 
-    window.addEventListener("simple-login-cancel-icon-click", async () => {
-      await this.clearPhoto();
-    }, { signal: this.windowControllers.signal });
-
+    window.addEventListener(
+      "simple-login-cancel-icon-click",
+      async () => {
+        await this.clearPhoto();
+      },
+      { signal: this.windowControllers.signal }
+    );
   }
 
   async snapPhoto(e) {

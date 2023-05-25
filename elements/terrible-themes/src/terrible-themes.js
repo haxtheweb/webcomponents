@@ -20,7 +20,9 @@ import { autorun, toJS } from "mobx";
  * @demo demo/index.html
  * @element terrible-themes
  */
-class TerribleThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitElementTheme)) {
+class TerribleThemes extends HAXCMSRememberRoute(
+  HAXCMSThemeParts(HAXCMSLitElementTheme)
+) {
   /**
    * Add elements to cheat on initial paint here
    */
@@ -169,75 +171,134 @@ class TerribleThemes extends HAXCMSRememberRoute(HAXCMSThemeParts(HAXCMSLitEleme
    */
   render() {
     return html`
-    <table border="4" cellspacing="0" cellpadding="0" align="center" width="750" bgcolor="#FFEFF4">
-<tbody><tr bgcolor="#FFFFFF">
-	<td><!-- Header -->
-		<table border="0" cellspacing="0" cellpadding="3" class="topText" width="100%">
-		<tbody><tr>
-			<td align="left">
-			"If you're flammable and have legs, you are never blocking a fire exit." - Mitch Hedberg
-			</td>
-			<td align="right" width="100"><p class="loginState">
-			<a href="" class="loginState">Log in</a>
-			</p></td>
-		</tr>
-		</tbody></table>
-		<a href=""><img src="${new URL("lib/assets/header.jpg", import.meta.url).href}/../header-room407.jpg" width="750" height="200" border="0" alt="Room 407" align="absbottom" vspace="0" hspace="0"></a>
-	</td>
-</tr>
-<tr><!-- Menu -->
-	<td>
-		<table width="100%" height="26" cellspacing="0" cellpadding="0" border="0">
-		<tbody><tr>
-			<td valign="middle" align="center">&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Home</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Multiple Media</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Photographicals</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Artwork</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Characters</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Links</a>&nbsp;&nbsp;&nbsp;
-			<a href="" class="menu">Forums</a>&nbsp;&nbsp;&nbsp;
-			
-			</td>
-		</tr>
-		</tbody></table>
-	</td>
-</tr>
-<tr> 
-	<!-- Main body of text -->
-	<td>
-		<table border="0" cellspacing="0" cellpadding="5" width="100%">
-		<tbody><tr>
-			<td>
-		<table border="0" cellspacing="0" cellpadding="0">
-		<tbody><tr valign="top">
-			<td>
-				<table width="100%" cellspacing="0" cellpadding="0" border="0">
-				<tbody>
-				<tr>
-					<td id="contentcontainer">
-          <h3>4-Oh-Shots</h3>
+      <table
+        border="4"
+        cellspacing="0"
+        cellpadding="0"
+        align="center"
+        width="750"
+        bgcolor="#FFEFF4"
+      >
+        <tbody>
+          <tr bgcolor="#FFFFFF">
+            <td>
+              <!-- Header -->
+              <table
+                border="0"
+                cellspacing="0"
+                cellpadding="3"
+                class="topText"
+                width="100%"
+              >
+                <tbody>
+                  <tr>
+                    <td align="left">
+                      "If you're flammable and have legs, you are never blocking
+                      a fire exit." - Mitch Hedberg
+                    </td>
+                    <td align="right" width="100">
+                      <p class="loginState">
+                        <a href="" class="loginState">Log in</a>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href=""
+                ><img
+                  src="${new URL("lib/assets/header.jpg", import.meta.url)
+                    .href}/../header-room407.jpg"
+                  width="750"
+                  height="200"
+                  border="0"
+                  alt="Room 407"
+                  align="absbottom"
+                  vspace="0"
+                  hspace="0"
+              /></a>
+            </td>
+          </tr>
+          <tr>
+            <!-- Menu -->
+            <td>
+              <table
+                width="100%"
+                height="26"
+                cellspacing="0"
+                cellpadding="0"
+                border="0"
+              >
+                <tbody>
+                  <tr>
+                    <td valign="middle" align="center">
+                      &nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Home</a>&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Multiple Media</a
+                      >&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Photographicals</a
+                      >&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Artwork</a>&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Characters</a>&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Links</a>&nbsp;&nbsp;&nbsp;
+                      <a href="" class="menu">Forums</a>&nbsp;&nbsp;&nbsp;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <!-- Main body of text -->
+            <td>
+              <table border="0" cellspacing="0" cellpadding="5" width="100%">
+                <tbody>
+                  <tr>
+                    <td>
+                      <table border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr valign="top">
+                            <td>
+                              <table
+                                width="100%"
+                                cellspacing="0"
+                                cellpadding="0"
+                                border="0"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td id="contentcontainer">
+                                      <h3>4-Oh-Shots</h3>
 
-          <section id="slot">
-            <slot></slot>
-          </section> 
-					</td>
-				</tr>
-				</tbody></table>
-			</td>
-		</tr>
-		</tbody></table>
-			</td>
-		</tr>
-		</tbody></table>	
-	</td>
-</tr>
-<tr><!-- Footer -->
-	<td align="center">© Room 407 Coalition 2004-2005<br>
-	Send comments, suggestions, and bugs to <a href="https://web.archive.org/web/20060205132700/mailto:admin@room407.com">Admin@room407.com</a>
-	</td>
-</tr>
-</tbody></table>
+                                      <section id="slot">
+                                        <slot></slot>
+                                      </section>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <!-- Footer -->
+            <td align="center">
+              © Room 407 Coalition 2004-2005<br />
+              Send comments, suggestions, and bugs to
+              <a
+                href="https://web.archive.org/web/20060205132700/mailto:admin@room407.com"
+                >Admin@room407.com</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
     `;
   }
   /**

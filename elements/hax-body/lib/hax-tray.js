@@ -216,10 +216,11 @@ class HaxTray extends I18NMixin(
           height: calc(100vh - 48px);
           max-height: calc(100vh - 48px);
           z-index: var(--hax-ui-focus-z-index);
-          transition: height 0.6s ease-in-out,width 0.6s ease-in-out,opacity 0.6s ease-in-out,visibility 0.6s ease-in-out;
+          transition: height 0.6s ease-in-out, width 0.6s ease-in-out,
+            opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
         }
         :host([collapsed]) #resize {
-          display:none;
+          display: none;
         }
         :host([resize-drag]) {
           cursor: col-resize;
@@ -254,7 +255,7 @@ class HaxTray extends I18NMixin(
         :host([element-align="left"]) .wrapper {
           left: -1000px;
           flex-direction: row;
-          transition: left .6s ease-in-out;
+          transition: left 0.6s ease-in-out;
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
@@ -365,8 +366,8 @@ class HaxTray extends I18NMixin(
         #tray-detail {
           width: auto;
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
-          transition: opacity .3s ease-in-out;
-          opacity: .7;
+          transition: opacity 0.3s ease-in-out;
+          opacity: 0.7;
           overflow: hidden;
         }
         .wrapper:focus #tray-detail,
@@ -402,7 +403,9 @@ class HaxTray extends I18NMixin(
         #settingsform {
           margin: -8px -8px 0;
           --simple-fields-field-margin: 12px;
-          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12);
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-accent-12
+          );
           overflow-y: auto;
         }
         a11y-collapse {
@@ -412,7 +415,9 @@ class HaxTray extends I18NMixin(
           --a11y-collapse-horizontal-padding: 12px;
         }
         a11y-collapse span[slot="heading"] {
-          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12) !important;        
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-accent-12
+          ) !important;
         }
         simple-fields-field::part(label) {
           font-size: 11px;
@@ -433,7 +438,9 @@ class HaxTray extends I18NMixin(
         hax-tray-button,
         hax-gizmo-browser {
           visibility: visible;
-          --a11y-collapse-heading-color: var(--simple-colors-default-theme-accent-12);
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-accent-12
+          );
         }
         hax-tray-button:not(:defined),
         hax-gizmo-browser:not(:defined) {
@@ -470,7 +477,6 @@ class HaxTray extends I18NMixin(
         simple-fields-field[name="settings.advanced.margin-bottom"],
         simple-fields-field[name="settings.advanced.margin-left"],
         simple-fields-field[name="settings.advanced.margin-right"],
-
         simple-fields-field[name="settings.advanced.padding-top"],
         simple-fields-field[name="settings.advanced.padding-bottom"],
         simple-fields-field[name="settings.advanced.padding-left"],
@@ -588,7 +594,12 @@ class HaxTray extends I18NMixin(
           <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
-        <div class="resize" id="resize" @mousedown="${this.resizeDown}" @dblclick="${this.resetSize}">
+        <div
+          class="resize"
+          id="resize"
+          @mousedown="${this.resizeDown}"
+          @dblclick="${this.resetSize}"
+        >
           <div class="resize-visual"></div>
         </div>
       </div>
@@ -599,7 +610,7 @@ class HaxTray extends I18NMixin(
     this.resizeDrag = false;
     this.dragController.abort();
     setTimeout(() => {
-      this.shadowRoot.querySelector('.detail').style.removeProperty('width');      
+      this.shadowRoot.querySelector(".detail").style.removeProperty("width");
     }, 10);
   }
 
@@ -608,32 +619,39 @@ class HaxTray extends I18NMixin(
     this.__moveX = e.x;
     this.dragController = new AbortController();
     // set listeners now that we've decided to move at all
-    this.addEventListener('mousemove', (e) => {
-      // edge case of clicking away from the item, letting go outside detection then coming back in
-      if (e.which === 0) {
+    this.addEventListener(
+      "mousemove",
+      (e) => {
+        // edge case of clicking away from the item, letting go outside detection then coming back in
+        if (e.which === 0) {
+          this.resizeDrag = false;
+          this.dragController.abort();
+        }
+        if (this.resizeDrag) {
+          this.__moveX = e.x;
+          let base = 44;
+          if (this.hideToolbar) {
+            base = 0;
+          }
+          if (this.elementAlign === "right") {
+            this.shadowRoot.querySelector(".detail").style.width =
+              window.innerWidth - this.__moveX - base + "px";
+          } else {
+            this.shadowRoot.querySelector(".detail").style.width =
+              this.__moveX - base + "px";
+          }
+        }
+      },
+      { signal: this.dragController.signal }
+    );
+    this.addEventListener(
+      "mouseup",
+      (e) => {
         this.resizeDrag = false;
         this.dragController.abort();
-      }
-      if (this.resizeDrag) {
-        this.__moveX = e.x;
-        let base = 44;
-        if (this.hideToolbar) {
-          base = 0;
-        }
-        if (this.elementAlign === "right") {
-          this.shadowRoot.querySelector('.detail').style.width =
-          (window.innerWidth - this.__moveX - base) + "px";
-        }
-        else {
-          this.shadowRoot.querySelector('.detail').style.width =
-          (this.__moveX - base) + "px";  
-        }
-      }
-    } , { signal: this.dragController.signal });
-    this.addEventListener('mouseup', (e) => {
-      this.resizeDrag = false;
-      this.dragController.abort();
-    }, { signal: this.dragController.signal });
+      },
+      { signal: this.dragController.signal }
+    );
   }
 
   get panelOpsTemplate() {
@@ -666,21 +684,21 @@ class HaxTray extends I18NMixin(
   }
   get menuButtons() {
     return html`
-        <hax-tray-button
-          show-tooltip
-          align-horizontal="${this.collapsed ? "left" : "center"}"
-          id="haxMenuAlign"
-          event-name="toggle-element-align"
-          icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
-          label="${
-            this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
-          }"
-          index="${this.elementAlign == "left" ? "1" : "0"}"
-          tooltip="${this.t.move} ${
-      this.elementAlign == "left" ? this.t.right : this.t.left
-    }"
-        >
-        </hax-tray-button>
+      <hax-tray-button
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
+        id="haxMenuAlign"
+        event-name="toggle-element-align"
+        icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
+        label="${this.elementAlign == "left"
+          ? this.t.menuRight
+          : this.t.menuLeft}"
+        index="${this.elementAlign == "left" ? "1" : "0"}"
+        tooltip="${this.t.move} ${this.elementAlign == "left"
+          ? this.t.right
+          : this.t.left}"
+      >
+      </hax-tray-button>
     `;
   }
   get saveButtons() {
@@ -893,16 +911,16 @@ class HaxTray extends I18NMixin(
     >
       <div class="tray-detail-titlebar">
         <h4>
-          <simple-icon-lite class="tray-detail-titlebar-icon" icon="${this.trayIcon}"></simple-icon-lite>
+          <simple-icon-lite
+            class="tray-detail-titlebar-icon"
+            icon="${this.trayIcon}"
+          ></simple-icon-lite>
           ${this.trayLabel || `${this.activeTagName} ${this.t.properties}`}
-          <div class="tray-detail-titlebar-actions">
-          ${this.menuButtons}
-        </div>
+          <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
         </h4>
       </div>
-      ${this.viewSourceTemplate}
-      ${this.contentMapTemplate} ${this.contentEditTemplate}
-      ${this.contentAddTemplate}
+      ${this.viewSourceTemplate} ${this.contentMapTemplate}
+      ${this.contentEditTemplate} ${this.contentAddTemplate}
     </div>`;
   }
   get viewSourceTemplate() {
@@ -962,10 +980,12 @@ class HaxTray extends I18NMixin(
     var target = normalizeEventPath(e)[0],
       evt = e.detail.eventName;
     // allow buttons to toggle collapse if desired by user
-    if (target.tagName == "HAX-TRAY-BUTTON" && e.detail.eventName === this.trayDetail) {
+    if (
+      target.tagName == "HAX-TRAY-BUTTON" &&
+      e.detail.eventName === this.trayDetail
+    ) {
       this.collapsed = !this.collapsed;
-    }
-    else {
+    } else {
       this.collapsed = false;
     }
     // support a simple insert event to bubble up or everything else
@@ -1633,12 +1653,10 @@ class HaxTray extends I18NMixin(
     } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
       this.trayIcon = "settings";
-    }
-    else if (newValue == "content-edit") {
+    } else if (newValue == "content-edit") {
       this.trayIcon = "settings";
       this.trayLabel = null;
-    }
-    else if (newValue == "view-source") {
+    } else if (newValue == "view-source") {
       this.trayIcon = "hax:html-code";
       this.trayLabel = this.t.htmlSource;
     } else {
@@ -1729,19 +1747,19 @@ class HaxTray extends I18NMixin(
                     })
                   );
                 }
-              }
-              else if (key === "advanced" &&
-              prop === "font-size" || 
-              prop === "background-color" || 
-              prop === "text-align" || 
-              prop === "padding-top" || 
-              prop === "padding-bottom" || 
-              prop === "padding-left" || 
-              prop === "padding-right" ||
-              prop === "margin-top" ||
-              prop === "margin-bottom" ||
-              prop === "margin-left" ||
-              prop === "margin-right") {
+              } else if (
+                (key === "advanced" && prop === "font-size") ||
+                prop === "background-color" ||
+                prop === "text-align" ||
+                prop === "padding-top" ||
+                prop === "padding-bottom" ||
+                prop === "padding-left" ||
+                prop === "padding-right" ||
+                prop === "margin-top" ||
+                prop === "margin-bottom" ||
+                prop === "margin-left" ||
+                prop === "margin-right"
+              ) {
                 if (!this._initial) {
                   this.dispatchEvent(
                     new CustomEvent("hax-context-item-selected", {
@@ -1940,11 +1958,10 @@ class HaxTray extends I18NMixin(
       }
     }
     if (!newValue) {
-      this.setAttribute('tabindex',"-1");
-     }
-     else {
-      this.removeAttribute('tabindex');
-     }
+      this.setAttribute("tabindex", "-1");
+    } else {
+      this.removeAttribute("tabindex");
+    }
   }
   /**
    * Edit clicked, activate

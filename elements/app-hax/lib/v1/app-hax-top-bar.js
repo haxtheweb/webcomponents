@@ -20,8 +20,8 @@ export class AppHaxTopBar extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
-      }
+        attribute: "edit-mode",
+      },
     };
   }
 

@@ -693,9 +693,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             ? `tags="${store.activeItem.metadata.tags}"`
             : ``
         }
-        ${ store.activeItem.metadata.theme && store.activeItem.metadata.theme.key 
-          ? `developer-theme="${store.activeItem.metadata.theme.key}"`
-          : ``
+        ${
+          store.activeItem.metadata.theme && store.activeItem.metadata.theme.key
+            ? `developer-theme="${store.activeItem.metadata.theme.key}"`
+            : ``
         }
         break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}

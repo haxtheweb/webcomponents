@@ -236,31 +236,39 @@ export class RPGCharacterToast extends SimpleToastEl {
       <span class="bubble leftedge"></span>
       <span class="bubble mid">
         <slot name="pre"></slot>
-        ${this.future ? html`
-        <future-terminal-text 
-          fadein 
-          glitch 
-          glitch-max="3" 
-          glitch-duration="40"></future-terminal-text>`: html`${this.text}`}        
-          ${this.awaitingMerlinInput ? html`<simple-icon-lite class="awaiting-input" icon="hax:loading"></simple-icon-lite>` : ``}
+        ${this.future
+          ? html` <future-terminal-text
+              fadein
+              glitch
+              glitch-max="3"
+              glitch-duration="40"
+            ></future-terminal-text>`
+          : html`${this.text}`}
+        ${this.awaitingMerlinInput
+          ? html`<simple-icon-lite
+              class="awaiting-input"
+              icon="hax:loading"
+            ></simple-icon-lite>`
+          : ``}
         <slot></slot>
       </span>
       <span class="bubble rightedge"></span>
-      ${this.merlin ? html`
-      <simple-icon
-        class="merlin"
-        icon="hax:wizard-hat"
-        accent-color="purple"></simple-icon>` : 
-      html`
-      <rpg-character
-        height="130"
-        width="130"
-        seed="${this.userName}"
-        ?fire="${this.fire}"
-        hat="${this.hat}"
-        ?walking="${this.walking}"
-      ></rpg-character>
-      `}
+      ${this.merlin
+        ? html` <simple-icon
+            class="merlin"
+            icon="hax:wizard-hat"
+            accent-color="purple"
+          ></simple-icon>`
+        : html`
+            <rpg-character
+              height="130"
+              width="130"
+              seed="${this.userName}"
+              ?fire="${this.fire}"
+              hat="${this.hat}"
+              ?walking="${this.walking}"
+            ></rpg-character>
+          `}
     </div>`;
   }
 
@@ -268,25 +276,35 @@ export class RPGCharacterToast extends SimpleToastEl {
     super.updated(changedProperties);
     // can't write here in template bc it's a vanilla innerHTML which would have Lit
     // directives in it and we don't want to ingest and rewrite those
-    if (changedProperties.has("text") && this.future && this.shadowRoot.querySelector("future-terminal-text")) {
-      this.shadowRoot.querySelector("future-terminal-text").innerText = this.text;
-      this.shadowRoot.querySelector("future-terminal-text")._doGlitch();    }
+    if (
+      changedProperties.has("text") &&
+      this.future &&
+      this.shadowRoot.querySelector("future-terminal-text")
+    ) {
+      this.shadowRoot.querySelector("future-terminal-text").innerText =
+        this.text;
+      this.shadowRoot.querySelector("future-terminal-text")._doGlitch();
+    }
   }
 
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
       "rpg-character-toast-hide",
-      this.hideSimpleToast.bind(this), { signal: this.windowControllers.signal });
+      this.hideSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
+    );
     window.addEventListener(
       "rpg-character-toast-show",
-      this.showSimpleToast.bind(this), { signal: this.windowControllers.signal });
+      this.showSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
+    );
   }
 
   hideSimpleToast(e) {
     // event always trumps waiting for input
     this.awaitingMerlinInput = false;
-    this.hide();      
+    this.hide();
   }
 
   /**
@@ -308,30 +326,31 @@ export class RPGCharacterToast extends SimpleToastEl {
     setTimeout(() => {
       if (e.detail.slot) {
         this.appendChild(e.detail.slot);
-      }        
+      }
     }, 0);
     // force this element to be hidden prior to showing it
-    this.duration = (e.detail.duration) ? e.detail.duration : 4000;
-    this.fire = (e.detail.fire) ? e.detail.fire : false;
-    this.hat = (e.detail.hat) ? e.detail.hat : "coffee";
-    this.merlin = (e.detail.merlin) ? e.detail.merlin : false;
-    this.walking = (e.detail.walking) ? e.detail.walking : false;
-    this.text = (e.detail.text) ? e.detail.text : "Saved";
-    this.future = (e.detail.future) ? e.detail.future : false;
-    this.classStyle = (e.detail.classStyle) ? e.detail.classStyle : "";
-    this.eventCallback = (e.detail.eventCallback) ? e.detail.eventCallback : null;
-    this.dark = (e.detail.dark) ? e.detail.dark : false;
-    this.accentColor = (e.detail.accentColor) ? e.detail.accentColor : "grey";
-    this.alwaysvisible = (e.detail.alwaysvisible) ? e.detail.alwaysvisible : false;
+    this.duration = e.detail.duration ? e.detail.duration : 4000;
+    this.fire = e.detail.fire ? e.detail.fire : false;
+    this.hat = e.detail.hat ? e.detail.hat : "coffee";
+    this.merlin = e.detail.merlin ? e.detail.merlin : false;
+    this.walking = e.detail.walking ? e.detail.walking : false;
+    this.text = e.detail.text ? e.detail.text : "Saved";
+    this.future = e.detail.future ? e.detail.future : false;
+    this.classStyle = e.detail.classStyle ? e.detail.classStyle : "";
+    this.eventCallback = e.detail.eventCallback ? e.detail.eventCallback : null;
+    this.dark = e.detail.dark ? e.detail.dark : false;
+    this.accentColor = e.detail.accentColor ? e.detail.accentColor : "grey";
+    this.alwaysvisible = e.detail.alwaysvisible
+      ? e.detail.alwaysvisible
+      : false;
     // already open and waiting for input, don't do anything
     if (e.detail.awaitingMerlinInput && this.duration) {
       // should appear to switch into waiting for input mode prior to closing state
       setTimeout(() => {
         this.style.animation = "none";
         this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
-      }, this.duration/2);
-    }
-    else {
+      }, this.duration / 2);
+    } else {
       this.awaitingMerlinInput = false;
     }
     this.show();
@@ -356,12 +375,10 @@ export class RPGCharacterToast extends SimpleToastEl {
       }
       if (!this.alwaysvisible) {
         this.opened = false;
-      }
-      else {
+      } else {
         this.style.animation = "fadein 0.3s";
       }
-    }
-    else {
+    } else {
       this.style.animation = "fadein 0.3s";
     }
   }

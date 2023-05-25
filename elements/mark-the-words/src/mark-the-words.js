@@ -292,12 +292,12 @@ export class MarkTheWords extends I18NMixin(LitElement) {
             align-horizontal="center"
           ></simple-toolbar-button>
           <span class="score">
-          ${this.isEnabled
-            ? ``
-            : html`${this.numberGuessed}/${this.numberCorrect}
-              ${Math.round(
-                10 * ((this.numberGuessed / this.numberCorrect) * 100)
-              ) / 10}%`}
+            ${this.isEnabled
+              ? ``
+              : html`${this.numberGuessed}/${this.numberCorrect}
+                ${Math.round(
+                  10 * ((this.numberGuessed / this.numberCorrect) * 100)
+                ) / 10}%`}
           </span>
           ${this._haxstate
             ? html`<simple-toolbar-button
