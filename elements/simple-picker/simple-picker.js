@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { cache } from "lit/directives/cache.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "./lib/simple-picker-option.js";
 /**
    * `simple-picker`
    * a simple picker for options, icons, etc.
@@ -62,9 +63,19 @@ const SimplePickerBehaviors = function (SuperClass) {
   return class extends SuperClass {
     //styles function
     static get styles() {
-      return [
+      let styles = [];
+      if (super.styles) {
+        styles = super.styles;
+      }
+      return [...styles,
         css`
           :host {
+            --simple-picker-background-color: var(--simple-fields-background-color);
+            --simple-picker-options-background-color: var(--simple-fields-background-color);
+            --simple-picker-color: var(--simple-fields-color);
+            --simple-picker-color-active: var(--simple-fields-faded-background-color, orange);
+            --simple-picker-option-active-color: var(--simple-fields-background-color);
+            --simple-picker-option-active-background-color: var(--simple-fields-faded-background-color, var(--simple-fields-color));
             display: var(--simple-picker-display, inline-flex);
             align-items: center;
             color: var(--simple-picker-color, currentColor);
@@ -247,7 +258,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             transform: var(
               --simple-picker-expanded-icon-transform,
               rotate(0deg)
-            );
+            );--simple-picker-color-active
             transition: transform 0.25s;
           }
 
@@ -668,7 +679,6 @@ const SimplePickerBehaviors = function (SuperClass) {
     // life cycle
     constructor() {
       super();
-      import("./lib/simple-picker-option.js");
       this.tag = SimplePicker.tag;
       this.allowNull = false;
       this.alignRight = false;
@@ -749,6 +759,9 @@ const SimplePickerBehaviors = function (SuperClass) {
       )}`;
     }
     updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "value") this._valueChanged(oldValue);
         if (propName === "options") this._optionsChanged(oldValue);

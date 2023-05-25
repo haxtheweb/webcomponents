@@ -562,7 +562,7 @@ class CleanOne extends HAXCMSRememberRoute(
              background: none;
            }
            :host([color-theme="2"]) site-active-title {
-             color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+             color: #CFD4E3;
            }
            :host([color-theme="1"]) .site-body .navigation {
              color: #afa790;

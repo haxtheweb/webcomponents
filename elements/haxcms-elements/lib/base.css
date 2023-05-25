@@ -90,6 +90,12 @@ body, html, :root {
   /** placeholder **/
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
 }
+body[hax-ui-theme="haxdark"] a,
+body.dark-mode a {
+  --hax-base-styles-a-color: var(--simple-colors-default-theme-cyan-10, #3b97e3);
+  --hax-base-styles-a-color-visited: var(--simple-colors-default-theme-cyan-9, #3b97e3);
+  --hax-base-styles-a-color-active: var(--simple-colors-default-theme-cyan-11, #3b97e3);
+}
 
 simple-modal::part(title) {
   background-color: transparent;
@@ -246,7 +252,10 @@ ol {
   padding-left: var(--hax-base-styles-list-padding-left);
   padding-left: var(--hax-base-styles-list-margin-left);
 }
-
+mark {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
 code {
   padding: 0.2em 0.4em;
   margin: 0;
