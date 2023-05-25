@@ -3266,7 +3266,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return ["span", "b", "strong", "i", "em", "u"].includes(
+    return ["span", "b", "strong", "i", "em", "u", "strike"].includes(
       node.tagName.toLowerCase()
     );
   }

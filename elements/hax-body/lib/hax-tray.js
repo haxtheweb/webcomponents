@@ -1660,7 +1660,6 @@ class HaxTray extends I18NMixin(
       this.trayIcon = "hax:html-code";
       this.trayLabel = this.t.htmlSource;
     } else {
-      console.log(newValue);
       this.trayIcon = null;
       this.trayLabel = null;
     }

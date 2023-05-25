@@ -61,15 +61,31 @@ function sessionStorageSet(name, newItem) {
 const DataStyleDecoration = {
   attribute: "data-style-decoration",
   title: "Decoration",
-  description: "Some built in styles to offset the material",
+  description: "Some built in styles to highlight material",
   inputMethod: "select",
   options: {
     "": "",
-    "highlight red": "Highlight (red)",
-    "highlight blue": "Highlight (blue)",
-    "highlight green": "Highlight (green)",
-    "highlight orange": "Highlight (orange)",
-    "highlight purple": "Highlight (purple)",
+    "mark-blue": "Marker - blue",
+    "mark-brown": "Marker - gray",
+    "mark-pink": "Marker - pink",
+    "mark-red": "Marker - purple",
+    "mark-teal": "Marker - green",
+    "mark-yellow": "Marker - yellow",
+  },
+};
+const DataStyleBlockDecoration = {
+  attribute: "data-style-block-decoration",
+  title: "Block Decoration",
+  description: "Some built in styles to offset material",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "callout-blue": "Callout - blue",
+    "callout-brown": "Callout - brown",
+    "callout-pink": "Callout - pink",
+    "callout-red": "Callout - purple",
+    "callout-teal": "Callout - green",
+    "callout-yellow": "Callout - yellow",
   },
 };
 
@@ -632,6 +648,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sub",
           "sup",
           "span",
+          "mark",
           "i",
           "bold",
           "em",
@@ -670,6 +687,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sub",
           "sup",
           "span",
+          "mark",
           "i",
           "bold",
           "em",
@@ -1793,6 +1811,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "p",
       "div",
       "span",
+      "mark",
       "table",
       "caption",
       "sup",
@@ -2372,7 +2391,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleDecoration],
+        configure: [DataStyleBlockDecoration],
       },
       demoSchema: [
         {
@@ -2414,7 +2433,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStyleDecoration,
+          DataStyleBlockDecoration,
         ],
       },
       demoSchema: [
@@ -2426,6 +2445,58 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       ],
     };
     this.setHaxProperties(figcaption, "figcaption");
+    let mark = {
+      type: "element",
+      editingElement: "core",
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      contentEditable: true,
+      gizmo: {
+        title: "Highlight",
+        description: "Highlight text within a block of content",
+        icon: "editor:highlight",
+        color: "yellow",
+        tags: [
+          "Content",
+          "text",
+          "highlight",
+          "mark",
+          "html",
+        ],
+        handles: [],
+        meta: {
+          author: "W3C",
+          hidden: true,
+        },
+      },
+      settings: {
+        configure: [
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text of the highlight",
+            inputMethod: "textfield",
+            required: true,
+          },
+          DataStyleDecoration,
+        ],
+        advanced: [
+         
+        ],
+        developer: [
+          
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "mark",
+          content: "Highlight me",
+          properties: {},
+        },
+      ],
+    };
+    this.setHaxProperties(mark, "mark");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2547,7 +2618,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleDecoration],
+        configure: [DataStyleBlockDecoration],
         advanced: [],
       },
       demoSchema: [
@@ -2817,7 +2888,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [...DataInstructionalAction]
+              ? [DataStyleDecoration,...DataInstructionalAction]
               : [DataStyleDecoration],
             advanced: [],
           },
@@ -2850,7 +2921,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         },
       },
       settings: {
-        configure: [DataStyleDecoration, ...DataInstructionalAction],
+        configure: [...DataInstructionalAction],
         advanced: [],
       },
       demoSchema: [

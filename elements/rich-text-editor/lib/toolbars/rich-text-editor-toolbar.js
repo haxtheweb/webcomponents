@@ -243,6 +243,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a span format button
+     *
+     * @readonly
+     */
+    get markButton() {
+      return {
+        command: "wrapRange",
+        commandVal: "MARK",
+        toggles: true,
+        label: "Mark",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
      * default config for a style button group: format, bold, italic, and remove format
      *
      * @readonly

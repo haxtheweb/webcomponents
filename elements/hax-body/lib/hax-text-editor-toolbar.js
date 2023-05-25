@@ -149,6 +149,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       underlineButton: "Underline",
       strikethroughButton: "Cross out",
       codeButton: "Code",
+      markButton: "Highlight",
       removeFormatButton: "Remove format",
       linkButton: "Link",
       unlinkButton: "Remove Link",
@@ -297,6 +298,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     };
   }
   /**
+   * default config for a <code></code> button
+   *
+   * @readonly
+   */
+  get markButton() {
+    return {
+      ...super.markButton,
+      icon: "editor:highlight",
+      label: this.t.markButton,
+    };
+  }
+  /**
    * default config for a remove format button
    *
    * @readonly
@@ -320,6 +333,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         this.underlineButton,
         this.strikethroughButton,
         this.codeButton,
+        this.markButton,
       ],
     };
   }

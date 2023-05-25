@@ -537,6 +537,7 @@ export class HAXWiring {
         title: "Background color",
         description: "Accessible background colors for accenting content.",
         inputMethod: "colorpicker",
+        required: false,
       });
       props.settings.advanced.push({
         attribute: "font-size",

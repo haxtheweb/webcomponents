@@ -758,7 +758,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
     slotContent = node.innerText;
   }
   // special edge case for slot binding in primatives
-  if (tag === "a") {
+  if (tag === "a" || tag === "mark") {
     props.innerText = slotContent;
   } else if (
     tag === "p" ||
