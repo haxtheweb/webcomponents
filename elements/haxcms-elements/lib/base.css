@@ -250,7 +250,7 @@ ul li:last-child {
 ul,
 ol {
   padding-left: var(--hax-base-styles-list-padding-left);
-  padding-left: var(--hax-base-styles-list-margin-left);
+  margin-left: var(--hax-base-styles-list-margin-left);
 }
 mark {
   padding: 4px 8px;
