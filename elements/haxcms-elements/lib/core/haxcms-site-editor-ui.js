@@ -578,7 +578,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageOutline: "Page outline",
       more: "More",
       siteActions: "Site actions",
-      insights: "Insights dashboard",
+      insights: "Insights dashboard (beta)",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",

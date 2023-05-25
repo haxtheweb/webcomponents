@@ -77,11 +77,14 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
   const doc = parse(`<div id="wrapper">${html}</div>`);
   var data = {};
   if (dataInclude === null) {
-    dataInclude = ['pages','audio', 'selfChecks', 'objectives', 'authorNotes', 'images', 'h5p', 'headings', 'dataTables','specialTags', 'links', 'placeholders', 'siteremotecontent','readTime','video'];
+    dataInclude = ['pages','audio', 'pageType', 'selfChecks', 'objectives', 'authorNotes', 'images', 'h5p', 'headings', 'dataTables','specialTags', 'links', 'placeholders', 'siteremotecontent','readTime','video'];
   }
   for (let inc of dataInclude) {
     switch (inc) {
       case 'pages':
+        data[inc] = items.length;
+      break;
+      case 'pageType':
         data[inc] = items.length;
       break;
       case 'audio':
@@ -268,6 +271,7 @@ export async function courseStatsFromOutline(siteLocation, siteData = null, ance
               h5p: doc.querySelectorAll(`${itemSel} iframe.elmsmedia_h5p_content,${itemSel} iframe[src*="h5p/embed"]`).length,
               objectives: doc.querySelectorAll(`${itemSel} instruction-card[type="objectives"] li`).length,
               authorNotes: doc.querySelectorAll(`${itemSel} page-flag`).length,
+              pageType: (itemData.metadata && itemData.metadata.pageType) ? itemData.metadata.pageType : "",
               images: doc.querySelectorAll(`${itemSel} media-image,${itemSel} img,${itemSel} simple-img`).length,
               dataTables: doc.querySelectorAll(`${itemSel} table`).length,
               specialTags: doc.querySelectorAll(`${itemSel} *:not(p,div,h1,h2,h3,h4,h5,h6,table,bold,li,ul,ol,span,a,em,b,i,strike,u,code,pre,img,hr,tr,td,th)`).length,
