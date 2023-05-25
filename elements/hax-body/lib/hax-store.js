@@ -134,7 +134,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async runHook(el, op, data = []) {
     if (this.testHook(el, op)) {
-      //console.log('running hook: ' + op);
+      //console.warn('running hook: ' + op);
       if (this.HTMLPrimativeTest(el)) {
         return await this.primativeHooks[el.tagName.toLowerCase()][op](...data);
       }
@@ -1084,16 +1084,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         case "hax-style-setting-change":
           Object.keys(detail.value).forEach((key) => {
             if (!key.startsWith("__")) {
-              if (
-                detail.value[key] == "" ||
-                parseInt(detail.value[key]) == 0 ||
-                detail.value[key] == "none" ||
-                detail.value[key] == "auto" ||
-                detail.value[key] == "initial" ||
-                detail.value[key] == "unset"
-              ) {
-                this.activeNode.style.removeProperty(key);
-              } else {
+              // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
+              this.activeNode.style.removeProperty(key);
+              if (key === "background-color") {
+                this.activeNode.style.removeProperty("color");
+              }
+              setTimeout(() => {
                 if (key === "background-color") {
                   this.activeNode.style[
                     key
@@ -1111,9 +1107,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     case "small":
                       this.activeNode.style[key] = "0.9em";
                       break;
-                    case "normal":
-                      this.activeNode.style.removeProperty(key);
-                      break;
                     case "large":
                       this.activeNode.style[key] = "1.2em";
                       break;
@@ -1126,8 +1119,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                   }
                 } else {
                   this.activeNode.style[key] = detail.value[key] + "px";
-                }
-              }
+                }                  
+              }, 0);
             }
           });
           changed = true;

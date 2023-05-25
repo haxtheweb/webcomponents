@@ -114,13 +114,11 @@ class HAX extends HTMLElement {
       --mark-brown-bg-callout: hsla(20,12%,90%,.3);
       --mark-gray-bg-callout: hsla(210,5%,93%,.3);
       padding: 16px 16px 16px 12px;
-      width: 100%;
       border-radius: 3px;
-      border-width: 1px;
       align-items: center;
       box-sizing: border-box;
       margin: 0.75em 0;
-      border: 1px solid rgba(55,53,47,.09);
+      border: 2px solid rgba(55,53,47,.09);
     }
     [data-style-block-decoration="callout-red"]{
       background-color: var(--mark-red-bg-callout);

@@ -192,17 +192,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         --mark-orange-bg-callout: hsla(29,74%,92%,.3);
         --mark-brown-bg-callout: hsla(20,12%,90%,.3);
         --mark-gray-bg-callout: hsla(210,5%,93%,.3);
-      }
-      [data-style-block-decoration~="callout"] {
         padding: 16px 16px 16px 12px;
-        display: inline-flex;
-        width: 100%;
         border-radius: 3px;
-        border-width: 1px;
         align-items: center;
         box-sizing: border-box;
-        margin: 4px 0;
-        border: 1px solid var(--simple-colors-default-theme-grey-2);
+        margin: 0.75em 0;
+        border: 2px solid rgba(55,53,47,.09);
       }
       [data-style-block-decoration="callout-red"]{
         background-color: var(--mark-red-bg-callout);
