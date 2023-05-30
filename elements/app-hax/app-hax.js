@@ -193,7 +193,13 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       menu: "Menu",
       showMore: "More",
     };
-    SuperDaemonInstance.voiceSearch = true;
+    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition ||
+      window.oSpeechRecognition)) {
+      SuperDaemonInstance.voiceSearch = true;
+    }
     SuperDaemonInstance.icon = "hax:wizard-hat";
     SuperDaemonInstance.appendContext("*");
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through

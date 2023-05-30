@@ -119,14 +119,18 @@ class Hal9000 extends LitElement {
     );
     window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
-    if (typeof window.speechSynthesis !== "undefined") {
-      this.synth = window.speechSynthesis;
-      this.voices = this.synth.getVoices();
+    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition ||
+      window.oSpeechRecognition)) {
+        this.synth = window.speechSynthesis;
+      /*this.voices = this.synth.getVoices();
       for (var i = 0; i < this.voices.length; i++) {
         if (this.voices[i].default) {
           this.defaultVoice = this.voices[i].name;
         }
-      }
+      }*/
     }
   }
   /**
@@ -161,7 +165,7 @@ class Hal9000 extends LitElement {
         this.utter.pitch = this.pitch;
         this.utter.rate = this.rate;
         this.utter.lang = this.language;
-        this.utter.voice = this.defaultVoice;
+        //this.utter.voice = this.defaultVoice;
         if (window.HAXCMS) {
           window.HAXCMS.instance.setCursor("hax:wizard-hat");
           window.HAXCMS.instance.setFavicon("hax:wizard-hat");

@@ -1883,7 +1883,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       close: "Close",
     };
     // customizations to daemon
-    SuperDaemonInstance.voiceSearch = true;
+    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition ||
+      window.oSpeechRecognition)) {
+      SuperDaemonInstance.voiceSearch = true;
+    }
     SuperDaemonInstance.icon = "hax:wizard-hat";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
