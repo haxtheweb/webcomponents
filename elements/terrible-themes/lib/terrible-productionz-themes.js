@@ -7,6 +7,9 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
  * `terrible-themes`
@@ -32,6 +35,24 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
+    autorun((reaction) => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      const manifest = toJS(store.manifest);
+      if (manifest && manifest.metadata && manifest.metadata.author && manifest.metadata.author.name) {
+        this.author = manifest.metadata.author.name;
+      }
+      else if (manifest && manifest.author) {
+        this.author = manifest.author;
+      }
+      else {
+        this.author = "Ac|d-$CoRpI()";
+      }
+      this.author = manifest.author;
+      this.__disposer.push(reaction);
+    });
     document.body.style.backgroundColor = "#000000";
     document.body.style.color = "#D2D2D2";
     document.body.style.backgroundImage = `url(${
@@ -52,16 +73,75 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
+          --haxcms-base-styles-body-font-size:18px;
+          --hax-base-styles-a-font-size: 18px;
+          --hax-base-styles-p-font-size: 18px;
+          --hax-base-styles-list-font-size: 18px;
+          --haxcms-base-styles-body-line-height: 28.8px;
+          --hax-base-styles-list-line-height: 28.8px
+          --hax-base-styles-p-line-height: 28.8px;
+          --hax-base-styles-p-letter-spacing: normal;
+          --haxcms-base-styles-body-letter-spacing : normal;
+           --hax-base-styles-p-min-height: auto;
+           --hax-base-styles-list-max-width: auto;
+           --haxcms-base-styles-p-min-height: auto;
+           --hax-base-styles-list-padding-bottom: auto;
+           --hax-base-styles-h1-font-size: inherit;
+           --hax-base-styles-h2-font-size: inherit;
+           --hax-base-styles-h3-font-size: inherit;
+           --hax-base-styles-h4-font-size: inherit;
+           --hax-base-styles-h5-font-size: inherit;
+           --hax-base-styles-h6-font-size: inherit;
+           --simple-tooltip-background: #000000;
+           --simple-tooltip-opacity: 1;
+           --simple-tooltip-text-color: #ffffff;
+           --simple-tooltip-delay-in: 0;
+           --simple-tooltip-border-radius: 0;
         }
-
+        scroll-button {
+          position: fixed;
+          bottom: 0;
+          --simple-icon-height: 100px;
+          --simple-icon-width: 100px;
+          right: 16px;
+          color: lime;
+          --scroll-button-color: lime;
+          --scroll-button-background-color: black;
+          --scroll-button-tooltip-background-color: black;
+          --scroll-button-tooltip-color: lime;
+         }
         .title-text {
+          display: block;
           font-family: "Caveat", cursive;
           color: lime;
           background-position-x: -75px;
-          background-repeat: no-repeat;
+          background-repeat: repeat-x;
           background-position-y: center;
         }
+        .title-text h1 {
+          margin: 0;
+          padding: 0;
+        }
+        .title-text h1 .site-active-title-icon {
+          margin-top: -8px;
+        }
 
+        site-menu {
+          color: white;
+          --site-menu-active-color: lime; 
+           --site-menu-item-active-item-color: forestgreen;
+           --haxcms-tooltip-color: lime;
+           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
+           --map-menu-item-a-active-color: black;
+           --map-menu-item-a-active-background-color: lime;
+        }
+        section {
+          padding: 25px;
+        }
+        #slot {
+          max-width: 530px;
+          width: 530px;
+        }
         a {
           color: lime;
           text-decoration: none;
@@ -83,6 +163,10 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
         .posted {
           font-size: 8pt;
         }
+        simple-datetime {
+          font-size: 8pt;
+          display: inline-block;
+        }
       `,
     ];
   }
@@ -91,7 +175,6 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a name="#top"></a>
       <div align="center">
         <table width="800" border="0" cellpadding="0" cellspacing="0">
           <tbody>
@@ -113,50 +196,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 valign="top"
               ></td>
               <td width="128" valign="top">
-                <br />
-                &nbsp;&nbsp;&nbsp;<a href="index.html" class="sidebar">Home</a
-                ><br /><br />
-                <hr color="#252F26" />
-                <font size="4"
-                  >&nbsp;Productionz
-                  <hr color="#252F26" />
-                  &nbsp;&nbsp;&nbsp;<a href="movies.html" class="sidebar"
-                    >Movies</a
-                  ><br />
-                  &nbsp;&nbsp;&nbsp;<a href="animations.html" class="sidebar"
-                    >Animations</a
-                  ><br />
-                  &nbsp;&nbsp;&nbsp;<a href="artwork.html" class="sidebar"
-                    >Artwork</a
-                  ><br />
-                  &nbsp;&nbsp;&nbsp;<a href="intheworks.html" class="sidebar"
-                    >In The Works</a
-                  ><br />
-                  &nbsp;&nbsp;&nbsp;<a href="upncoming.html" class="sidebar"
-                    >Up &amp; Coming</a
-                  ><br />
-                  &nbsp;&nbsp;&nbsp;<a
-                    href="http://www.cafepress.com/acidscorpio/"
-                    class="sidebar"
-                    target="_blank"
-                    >Store</a
-                  ><br />
-                  <br />
-                  <hr color="#252F26" />
-                  <font size="4"
-                    >&nbsp;Site map
-                    <hr color="#252F26" />
-                    &nbsp;&nbsp;&nbsp;<a
-                      href="http://www.personal.psu.edu/bto108/outlet/index.html"
-                      class="sidebar"
-                      >Ac|d's Outlet</a
-                    ><br />
-                    &nbsp;&nbsp;&nbsp;<a
-                      href="http://www.personal.psu.edu/bto108/portfolio/index.html"
-                      class="sidebar"
-                      >Portfolio</a
-                    ><br />
-                    <br />
+                <site-menu></site-menu>
                     <hr color="#252F26" />
                     <font size="4"
                       >&nbsp;Sites of Interest
@@ -172,8 +212,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                             vspace="3" /></a
                         ><br />
                       </div>
-                      <br /><br /><br /> </font></font
-                ></font>
+                     </font>
               </td>
               <td
                 width="8"
@@ -181,39 +220,18 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                   .href}/../sidefilm.jpg"
                 valign="top"
               ></td>
-
               <td width="20"></td>
-
               <td width="636" valign="top">
                 <!-- *******************************************************
 		THIS IS THE PLACE WHERE THE MAIN BODY FOR THE DOCs GOES
 		********************************************************-->
-                <br /><br />
-                <h1
+                  <site-active-title
                   class="title-text"
                   style="background-image: url(${new URL(
                     "assets/header.jpg",
                     import.meta.url
-                  ).href}/../movies.jpg)"
-                >
-                  Movies
-                </h1>
-                <table border="1" cellpadding="0" cellspacing="0" width="500">
-                  <!--This is the begining of a block of code for the posting "system"-->
-                  <!--<script language="JavaScript">
-			 for(x=news.length-1; x>=news.length-10; x--)
-			{
-				document.write("<tr> <td> <table width=100%> <tr> <td align=left> <p class=posted>Posted: ")
-				document.write(news[x].posted)
-				document.write("</p> </td> <td> <p class=posted>Title: ")
-				document.write(news[x].title)
-				document.write("</p> </td> <td align=right> <p class=posted>By: ")
-				document.write(news[x].by)
-				document.write("</p> </td> </tr> </table> </td> </tr> <tr> <td>")
-				document.write(news[x].text)
-				document.write("<br><br> </td> </tr>")
-			}
-			</script> -->
+                  ).href}/../movies.jpg)"></site-active-title>
+                <table border="1" cellpadding="0" cellspacing="0" width="100%">
                   <tbody>
                     <tr>
                       <td>
@@ -221,13 +239,18 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                           <tbody>
                             <tr>
                               <td align="left">
-                                <p class="posted">Posted: 5/04/2004</p>
+                                <p class="posted">Posted:
+                                  <simple-datetime
+                                    unix
+                                    .timestamp="${this.activeItem.metadata.created}"
+                                  ></simple-datetime>
+                                </p>
                               </td>
                               <td>
-                                <p class="posted">Title: The 2nd coming</p>
+                                <p class="posted">Title: ${this.activeItem.title}</p>
                               </td>
                               <td align="right">
-                                <p class="posted">By: Ac|d-$CoRpI()</p>
+                                <p class="posted">By: ${this.author}</p>
                               </td>
                             </tr>
                           </tbody>
@@ -251,13 +274,21 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           </tbody>
         </table>
       </div>
-      <div
-        id="divStayTopLeft"
-        style="position: absolute; left: 780px; top: 734px;"
-      >
-        <a href="#top" class="top"><b>Top</b></a>
-      </div>
+      <scroll-button></scroll-button>
     `;
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * The active item to render
+       */
+      activeItem: { type: Object },
+      /**
+       * The author of the item
+       */
+      author: { type: String },
+    };
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -290,18 +321,6 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       this.__link.remove();
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
 }
 customElements.define(TerribleProductionzThemes.tag, TerribleProductionzThemes);

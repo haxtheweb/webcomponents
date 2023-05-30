@@ -2,18 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css, LitElement } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`
  *
  * @demo demo/index.html
  */
-class SiteTopMenu extends PolymerElement {
+class SiteTopMenu extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -24,15 +26,27 @@ class SiteTopMenu extends PolymerElement {
     super();
     this.windowControllers = new AbortController();
     this.__disposer = [];
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+    this.manifest = {};
+    this.activeId = null;
+    this.sticky = false;
+    this.indicator = "line";
+    this.notitle = false;
+    this.showindex = false;
+    this.arrowSize = 6;
+    this.sort = {
+      order: "ASC",
+    };
+    this.conditions = {
+      parent: null,
+    };
+    this.mobileTitle = "Navigation";
+    this.editMode = false;
+    this.__items = [];
   }
-  // render function
-  static get template() {
-    return html`
-      <style>
-        :host {
+  static get styles() {
+    return [
+      css`
+    :host {
           display: block;
           --site-top-menu-bg: var(--haxcms-color, #ffffff);
           --site-top-menu-indicator-arrow: 6px;
@@ -49,39 +63,32 @@ class SiteTopMenu extends PolymerElement {
           left: 0;
           right: 0;
           z-index: 1000;
-          @apply --site-top-menu-sticky;
         }
         .wrapper {
           display: flex;
           justify-content: space-evenly;
           background-color: var(--site-top-menu-bg);
-          @apply --site-top-menu-wrapper;
         }
         :host .wrapper ::slotted(div.spacing) {
           display: inline-flex;
-          @apply --site-top-menu-spacing;
         }
         .spacing {
           display: inline-flex;
-          @apply --site-top-menu-spacing;
         }
         .link {
           color: var(--site-top-menu-link-color, #444444);
-          @apply --site-top-menu-link;
         }
         button {
           text-transform: unset;
           min-width: unset;
           background-color: transparent;
           border: none;
-          @apply --site-top-menu-button;
         }
         .active {
           color: var(--site-top-menu-link-active-color, #000000);
-          @apply --site-top-menu-link-active;
         }
         #indicator {
-          transition: 0.4s ease-in-out left;
+          transition: 0.4s ease-in-out all;
           transition-delay: 0.2s;
           position: relative;
           width: 0;
@@ -90,19 +97,16 @@ class SiteTopMenu extends PolymerElement {
         }
         :host([indicator="line"]) #indicator {
           border-bottom: 2px solid var(--site-top-menu-indicator-color, #000000);
-          @apply --site-top-menu-indicator;
         }
         :host([indicator="arrow"]) #indicator {
           border-left: var(--site-top-menu-indicator-arrow) solid transparent;
           border-right: var(--site-top-menu-indicator-arrow) solid transparent;
           border-bottom: var(--site-top-menu-indicator-arrow) solid
             var(--site-top-menu-indicator-color, #000000);
-          @apply --site-top-menu-indicator;
         }
         #indicator.activated {
           visibility: visible;
           position: absolute;
-          @apply --site-top-menu-indicator-activated;
         }
         :host([notitle]) .spacing .link-title {
           display: none;
@@ -143,11 +147,24 @@ class SiteTopMenu extends PolymerElement {
             text-align: left;
           }
         }
-      </style>
+    `]
+  }
+  __resultChanged(e) {
+    if (e.detail.value === null) {
+      this.__items = [];
+    }
+    else {
+      this.__items = e.detail.value;
+    }
+  }
+  // render function
+  render() {
+    return html`
       <site-query
-        result="{{__items}}"
-        sort="[[sort]]"
-        conditions="[[conditions]]"
+        .result="${this.__items}"
+        @result-changed="${this.__resultChanged}"
+        .sort="${this.sort}"
+        .conditions="${this.conditions}"
       ></site-query>
       <div id="wrapper" class="wrapper">
         <simple-icon-button
@@ -155,36 +172,47 @@ class SiteTopMenu extends PolymerElement {
           id="menu"
           title="Open navigation"
         ></simple-icon-button>
-        <span class="mobiletitle">[[mobileTitle]]</span>
+        <span class="mobiletitle">${this.mobileTitle}</span>
         <slot name="prefix"></slot>
-        <dom-repeat items="[[__items]]" mutable-data>
-          <template>
-            <div class="spacing">
+        ${this.__items.map((item, index) => html`
+          <div class="spacing">
               <a
-                data-id$="[[item.id]]"
+                data-id="${item.id}"
                 class="link"
                 tabindex="-1"
-                title$="Go to [[item.title]]"
-                href$="[[item.slug]]"
-              >
-                <button id$="item-[[item.id]]" noink="[[noink]]">
-                  <span class="link-index">[[humanIndex(index)]]</span>
-                  <span class="link-title">[[item.title]]</span>
+                title="Go to ${item.title}"
+                href="${item.slug}"
+                part="a"
+                >
+                <button id="item-${item.id}" part="button">
+                  <span class="link-index">${this.humanIndex(index)}</span>
+                  <span class="link-title">${item.title}</span>
                 </button>
               </a>
             </div>
-          </template>
-        </dom-repeat>
+            `)}
         <slot name="suffix"></slot>
       </div>
       <div id="indicator"></div>
     `;
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("activeId")) {
+      this._activeIdChanged(this.activeId);
+    }
   }
   /**
    * Props
    */
   static get properties() {
     return {
+      __items: {
+        type: Array,
+      },
       /**
        * manifest of everything, in case we need to check on children of parents
        */
@@ -196,80 +224,62 @@ class SiteTopMenu extends PolymerElement {
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged",
       },
       /**
        * visually stick to top of interface at all times
        */
       sticky: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false,
+        reflect: true,
       },
       /**
        * visualize the indicator as a a line, arrow, or not at all
        */
       indicator: {
         type: String,
-        reflectToAttribute: true,
-        value: "line",
-      },
-      /**
-       * ink on the buttons
-       */
-      noink: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false,
+        reflect: true,
       },
       /**
        * hide title on the buttons
        */
       notitle: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false,
+        reflect: true,
       },
       /**
        * ink on the buttons
        */
       showindex: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false,
+        reflect: true,
       },
       /**
        * Stupid but faster then calculating on the fly for sure
        */
       arrowSize: {
         type: Number,
-        value: 6,
+        attribute: "arrow-size",
       },
       /**
        * Allow customization of sort
        */
       sort: {
         type: Object,
-        value: {
-          order: "ASC",
-        },
       },
       /**
        * Allow customization of the conditions if needed
        */
       conditions: {
         type: Object,
-        value: {
-          parent: null,
-        },
       },
       mobileTitle: {
         type: String,
-        value: "Navigation",
+        attribute: "mobile-title",
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
+        attribute: "edit-mode",
       },
     };
   }
@@ -318,20 +328,22 @@ class SiteTopMenu extends PolymerElement {
         }
         if (el) {
           el.classList.add("active");
-          this._prevEl = el;
+          let dim = el.getBoundingClientRect();
           if (this.indicator == "arrow") {
             this.shadowRoot.querySelector("#indicator").style.left =
-              el.offsetLeft + el.offsetWidth / 2 - this.arrowSize + "px";
+            dim.left + el.offsetWidth / 2 - this.arrowSize + "px";
             this.shadowRoot.querySelector("#indicator").style.top =
-              el.offsetTop + el.offsetHeight - this.arrowSize + "px";
+            dim.top - (2.5*this.arrowSize) + "px";
           } else {
             this.shadowRoot.querySelector("#indicator").style.left =
-              el.offsetLeft + "px";
+            dim.left + "px";
             this.shadowRoot.querySelector("#indicator").style.top =
-              el.offsetTop + el.offsetHeight + "px";
+            dim.top - (2.5*this.arrowSize) + "px";
             this.shadowRoot.querySelector("#indicator").style.width =
               el.offsetWidth + "px";
-          }
+          }           
+          this._prevEl = el;
+ 
         }
       } else {
         // shouldn't be possible but might as well list
@@ -341,11 +353,13 @@ class SiteTopMenu extends PolymerElement {
       }
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot
-      .querySelector("#menu")
-      .addEventListener("click", this.toggleOpen.bind(this));
+    .querySelector("#menu")
+    .addEventListener("click", this.toggleOpen.bind(this));
     autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
@@ -369,6 +383,9 @@ class SiteTopMenu extends PolymerElement {
       },
       { signal: this.windowControllers.signal }
     );
+    setTimeout(() => {
+      this._activeIdChanged(this.activeId);
+    }, 5000);
   }
   disconnectedCallback() {
     // clean up state

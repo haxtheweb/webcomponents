@@ -7,6 +7,12 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
+import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
  * `terrible-themes`
@@ -80,6 +86,18 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
           color: gray;
           text-decoration: none;
         }
+        site-top-menu {
+          font-size: 18px;
+          --site-top-menu-bg: lightblue;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-indicator-color: #ffffff;
+          --site-top-menu-link-active-color: var(
+            --haxcms-basic-theme-accent-color
+          );
+        }
+        site-top-menu::part(button) {
+          font-size: 18px;
+        }
       `,
     ];
   }
@@ -112,31 +130,9 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                         <tbody>
                           <tr>
                             <td align="center">
-                              <table>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                      <a href="index.html" class="menu">Home</a>
-                                    </td>
-                                    <td width="25"></td>
-                                    <td>
-                                      <a href="jobs.html" class="menu">Jobs</a>
-                                    </td>
-                                    <td width="25"></td>
-                                    <td>
-                                      <a href="info.html" class="menu"
-                                        >Personal Info</a
-                                      >
-                                    </td>
-                                    <td width="25"></td>
-                                    <td>
-                                      <a href="skills.html" class="menu"
-                                        >Skills</a
-                                      >
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                              <site-top-menu indicator="arrow" arrow-size="8">
+                                <site-title slot="prefix" class="spacing"></site-title>
+                              </site-top-menu>
                             </td>
                           </tr>
                         </tbody>
@@ -159,41 +155,21 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           <tr>
                             <td width="25"></td>
                             <td id="contentcontainer">
+                              <site-active-title
+                                dynamic-methodology="ancestor"
+                              ></site-active-title>
                               <section id="slot">
                                 <slot></slot>
                               </section>
-                              <br />
-                              <ul>
-                                <li>
-                                  <a href="http://ist.psu.edu/" target="_blank"
-                                    >Information Science and Technology</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="http://www.psu.edu/" target="_blank"
-                                    >Penn State University</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="http://www.acidscorpio.com/"
-                                    target="_blank"
-                                    >Personal Website</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="http://www.uscsd.k12.pa.us/"
-                                    target="_blank"
-                                    >Upper St. Clair School District</a
-                                  >
-                                </li>
-                              </ul>
-                              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                             </td>
                           </tr>
                         </tbody>
                       </table>
+                      <aside>
+                        <site-children-block
+                          dynamic-methodology="ancestor"
+                        ></site-children-block>
+                      </aside>
                     </td>
                   </tr>
                 </tbody>
@@ -227,18 +203,6 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
 }
 customElements.define(TerribleResumeThemes.tag, TerribleResumeThemes);
