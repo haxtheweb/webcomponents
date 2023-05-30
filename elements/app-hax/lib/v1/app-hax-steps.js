@@ -44,6 +44,7 @@ export class AppHaxSteps extends SimpleColors {
   constructor() {
     super();
     this.unlockComingSoon = false;
+    this.unlockTerrible = false;
     this.windowControllers = new AbortController();
     this.nameTyped = "";
     this.stepRoutes = [];
@@ -94,6 +95,11 @@ export class AppHaxSteps extends SimpleColors {
         type: Boolean,
         reflect: true,
         attribute: "unlock-coming-soon",
+      },
+      unlockTerrible: {
+        type: Boolean,
+        reflect: true,
+        attribute: "unlock-terrible",
       },
       loaded: { type: Boolean, reflect: true },
       appSettings: { type: Object },
@@ -482,6 +488,18 @@ export class AppHaxSteps extends SimpleColors {
       // update the store for step when it changes internal to our step flow
       if (propName === "step") {
         store.step = this.step;
+      }
+      if (propName === "unlockTerrible" && this[propName]) {
+        Object.keys(themeContext).forEach((key) => {
+          themeContext[key] = [...themeContext[key], "terrible-themes","terrible-productionz-themes","terrible-outlet-themes","terrible-best-themes","terrible-resume-themes"]
+        });
+        const contextKey = toJS(store.site.structure);
+        this.themeNames = Object.keys(this.appSettings.themes).filter(
+          (value) =>
+            contextKey &&
+            themeContext[contextKey] &&
+            themeContext[contextKey].includes(value)
+        );
       }
     });
   }

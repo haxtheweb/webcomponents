@@ -6,9 +6,12 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
 /**
  * `terrible-themes`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
@@ -88,6 +91,85 @@ class TerribleThemes extends HAXCMSRememberRoute(
            --simple-tooltip-delay-in: 0;
            --simple-tooltip-border-radius: 0;
          }
+
+         site-active-title {
+          display: block;
+          padding: 0;
+          flex-wrap: wrap;
+          align-items: baseline;
+          flex-direction: row;
+          -webkit-box-align: baseline;
+          -webkit-box-lines: multiple;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          flex: auto;
+          margin: 0;
+        }
+        site-active-title h1 {
+          margin: 0;
+        }
+        site-menu-button {
+          --site-menu-button-link-decoration: none;
+          --site-menu-button-button-hover-color: pink;
+          color: #242A31;
+          border: 1px solid #E6ECF1;
+          margin: 0;
+          display: block;
+          padding: 0;
+          position: relative;
+          align-self: stretch;
+          box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+          transition: border 250ms ease;
+          align-items: center;
+          justify-self: stretch;
+          text-overflow: ellipsis;
+          border-radius: 3px;
+          flex-direction: row;
+          -moz-transition: border 250ms ease;
+          text-decoration: none;
+          background-color: #FFFFFF;
+          -webkit-box-align: center;
+          page-break-inside: avoid;
+          -ms-grid-row-align: stretch;
+          -webkit-box-orient: horizontal;
+          -webkit-transition: border 250ms ease;
+          -ms-grid-column-align: stretch;
+          -webkit-box-direction: normal;
+        }
+        site-menu-button div.wrapper {
+          flex: 1;
+          margin: 0;
+          display: block;
+          padding: 16px;
+          text-overflow: ellipsis;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.5;
+          text-transform: none;
+        }
+        site-menu-button div .top {
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.625;
+          color: #444444;
+        }
+        simple-datetime {
+          color: #444444;
+        }
+        site-menu-button div .bottom {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.5;
+          max-height: 50px;
+          overflow: hidden;
+        }
+        site-menu-button[type="next"] div {
+         text-align: left; 
+        }
+        site-menu-button[type="prev"] div {
+         text-align: right; 
+        }
         /*ASP Message passed between pages*/
         p.message{
           color : #FF0000;
@@ -163,6 +245,18 @@ class TerribleThemes extends HAXCMSRememberRoute(
         a.menu:active { 
           color:#FF0000;
         }
+        site-top-menu {
+          font-size: 18px;
+          --site-top-menu-bg: pink;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-indicator-color: #ffffff;
+          --site-top-menu-link-active-color: var(
+            --haxcms-basic-theme-accent-color
+          );
+        }
+        site-top-menu::part(button) {
+          font-size: 18px;
+        }
       `,
     ];
   }
@@ -208,7 +302,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                 ><img
                   src="${new URL("lib/assets/header.jpg", import.meta.url)
                     .href}/../header-room407.jpg"
-                  width="750"
+                  width="100%"
                   height="200"
                   border="0"
                   alt="Room 407"
@@ -231,16 +325,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                 <tbody>
                   <tr>
                     <td valign="middle" align="center">
-                      &nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Home</a>&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Multiple Media</a
-                      >&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Photographicals</a
-                      >&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Artwork</a>&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Characters</a>&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Links</a>&nbsp;&nbsp;&nbsp;
-                      <a href="" class="menu">Forums</a>&nbsp;&nbsp;&nbsp;
+                      <site-top-menu indicator="arrow" arrow-size="10" ></site-top-menu>
                     </td>
                   </tr>
                 </tbody>
@@ -267,11 +352,36 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                 <tbody>
                                   <tr>
                                     <td id="contentcontainer">
-                                      <h3>4-Oh-Shots</h3>
-
+                                      <site-active-title></site-active-title>
                                       <section id="slot">
                                         <slot></slot>
                                       </section>
+                                      <aside>
+                                      <site-menu-button
+                                        hide-label
+                                        type="prev"
+                                        position="right"
+                                        class="navigation"
+                                        @label-changed="${this.__prevPageLabelChanged}"
+                                      >
+                                        <div slot="suffix" class="wrapper">
+                                          <div class="top">Previous</div>
+                                          <div class="bottom">${this.prevPage}</div>
+                                        </div>
+                                      </site-menu-button>
+                                      <site-menu-button
+                                        hide-label
+                                        type="next"
+                                        position="left"
+                                        class="navigation"
+                                        @label-changed="${this.__nextPageLabelChanged}"
+                                      >
+                                        <div slot="prefix" class="wrapper">
+                                          <div class="top">Next</div>
+                                          <div class="bottom">${this.nextPage}</div>
+                                        </div>
+                                      </site-menu-button>
+  </aside>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -289,12 +399,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
           <tr>
             <!-- Footer -->
             <td align="center">
-              © Room 407 Coalition 2004-2005<br />
-              Send comments, suggestions, and bugs to
-              <a
-                href="https://web.archive.org/web/20060205132700/mailto:admin@room407.com"
-                >Admin@room407.com</a
-              >
+              <site-footer></site-footer>
             </td>
           </tr>
         </tbody>
@@ -325,17 +430,11 @@ class TerribleThemes extends HAXCMSRememberRoute(
     }
     super.disconnectedCallback();
   }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
+  __prevPageLabelChanged(e) {
+    this.prevPage = e.detail.value;
   }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
+  __nextPageLabelChanged(e) {
+    this.nextPage = e.detail.value;
   }
 }
 customElements.define(TerribleThemes.tag, TerribleThemes);

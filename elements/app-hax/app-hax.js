@@ -78,26 +78,37 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       "_blank"
     );
   }
-
   // eslint-disable-next-line class-methods-use-this
-  playSound(sound) {
-    if (store.soundStatus && store.appReady) {
-      let playSound = [
-        "click",
-        "click2",
-        "coin",
-        "coin2",
-        "hit",
-        "success",
-      ].includes(sound)
-        ? sound
-        : "hit";
-      this.audio = new Audio(
-        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
-      );
-      this.audio.volume = 0.5;
-      this.audio.play();
-    }
+  playSound(sound = "coin2") {
+    return new Promise((resolve) => {
+      if (store.soundStatus && store.appReady) {
+        let playSound = [
+          "click",
+          "click2",
+          "coin",
+          "coin2",
+          "hit",
+          "success",
+        ].includes(sound)
+          ? sound
+          : "hit";
+        this.audio = new Audio(
+          new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+        );
+        this.audio.volume = 0.5;
+        this.audio.onended = (event) => {
+          resolve();
+        };
+        this.audio.play();
+        // resolve after 1s if sound failed to load
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      }
+      else {
+        resolve();
+      }
+    });
   }
 
   /**
@@ -147,6 +158,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   constructor() {
     super();
     this.unlockComingSoon = false;
+    this.unlockTerrible = false;
     this.t = this.t || {};
 
     this.t = {
@@ -248,6 +260,20 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: ">developer/hax/unlockAll",
+      context: [">"],
+    });
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Unlock terrible 2000s themes",
+      icon: "hax:table-multiple",
+      tags: ["Developer", "terrible", "2000", "tables"],
+      value: {
+        target: this,
+        method: "fireTerrible",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/terrible2000s",
       context: [">"],
     });
     SuperDaemonInstance.defineOption({
@@ -550,6 +576,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
   static get properties() {
     return {
       ...super.properties,
+      unlockComingSoon: { type: Boolean },
+      unlockTerrible: { type: Boolean },
       courses: { type: Array },
       userName: { type: String },
       activeItem: { type: Object },
@@ -583,9 +611,25 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       //console.warn(e);
     }
   }
+  fireTerrible() {
+    this.unlockTerrible = true;
+    store.appEl.playSound("coin").then(() => {
+      store.appEl.playSound("coin2").then(() => {
+        store.appEl.playSound("success").then(() => {
+          SuperDaemonInstance.merlinSpeak("Enjoy these early 2000s table based layouts. May they remind you how never to web, again.");
+        });
+      })
+    });
+  }
   fireUnlocked() {
-    store.appEl.playSound("coin2");
     this.unlockComingSoon = true;
+    store.appEl.playSound("coin").then(() => {
+      store.appEl.playSound("coin2").then(() => {
+        store.appEl.playSound("success").then(() => {
+          SuperDaemonInstance.merlinSpeak("Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!");
+        });
+      })
+    });
   }
   // eslint-disable-next-line class-methods-use-this
   logout() {
@@ -1231,6 +1275,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     return html`<app-hax-steps
       @promise-progress-finished="${this.siteReadyToGo}"
       ?unlock-coming-soon="${this.unlockComingSoon}"
+      ?unlock-terrible="${this.unlockTerrible}"
     ></app-hax-steps>`;
   }
 

@@ -41,7 +41,7 @@
       "logo": "files/3450183.png"
     },
     "theme": {
-      "element": "terrible-resume-themes",
+      "element": "clean-one",
       "path": "@lrnwebcomponents/terrible-themes/lib/terrible-productionz-themes.js",
       "name": "Course theme",
       "variables": {

@@ -145,6 +145,7 @@ export const HaxIconsetManifest = [
       "slash",
       "table-column-plus-after",
       "table-column-remove",
+      "table-multiple",
       "task",
       "templates",
       "ticket",
