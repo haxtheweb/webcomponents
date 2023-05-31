@@ -1174,6 +1174,7 @@
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
     "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
     "audio-player": "@lrnwebcomponents/audio-player/audio-player.js",
+    "moar-sarcasm": "@lrnwebcomponents/moar-sarcasm/moar-sarcasm.js",
     "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
     "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
     "simple-tags": "@lrnwebcomponents/simple-fields/lib/simple-tags.js",
