@@ -144,10 +144,6 @@ class SimplePopover extends AbsolutePositionBehavior {
     </div>`;
   }
 
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
-  }
   constructor() {
     super();
     this.offset = -10;

@@ -57,9 +57,6 @@ class VoiceRecorder extends LitElement {
   constructor() {
     super();
     this.recording = false;
-    setTimeout(() => {
-      this.addEventListener("vmsg-ready", this.vmsgReady.bind(this));
-    }, 0);
   }
   recordState(e) {
     this.recording = !this.recording;
@@ -82,14 +79,10 @@ class VoiceRecorder extends LitElement {
       }
     });
   }
-  vmsgReady(e) {
-    console.warn(e.detail.value);
-  }
   /**
    * Toggle the LAME bridge
    */
   toggleRecording(newValue, oldValue) {
-    console.log(new URL("./lib/vmsg.wasm", import.meta.url).href);
     if (newValue) {
       // need to start...
       record(

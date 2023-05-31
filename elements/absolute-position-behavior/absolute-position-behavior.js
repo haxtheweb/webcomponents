@@ -12,7 +12,11 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
   return class extends SuperClass {
     //styles function
     static get styles() {
-      return [
+      let styles = [];
+      if (super.styles) {
+        styles = super.styles;
+      }
+      return [...styles,
         css`
           :host {
             display: inline-block;
@@ -155,6 +159,9 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
     }
 
     updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
       let updatePosition = false;
       if (this.shadowRoot && !this.hidden) {
         changedProperties.forEach((oldValue, propName) => {
