@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { record } from "./lib/vmsg-fork.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `voice-recorder`
@@ -25,23 +25,19 @@ class VoiceRecorder extends LitElement {
   }
   render() {
     return html`
-      <button @click="${this.recordState}">
-        <simple-icon icon="${this.iconState}"></simple-icon>${this.textState}
-      </button>
+      ${!this.recording ? html`<button @click="${this.toggleRecording}">
+        <simple-icon-button-lite icon="av:mic">${this.label}</simple-icon-button-lite>` : html``}
       <slot></slot>
     `;
   }
   static get properties() {
     return {
-      iconState: {
-        type: String,
-      },
-      textState: {
-        type: String,
-      },
       recording: {
         type: Boolean,
       },
+      label: {
+        type: String,
+      }
     };
   }
   /**
@@ -57,47 +53,40 @@ class VoiceRecorder extends LitElement {
   constructor() {
     super();
     this.recording = false;
+    this.label = "Activate Recorder";
   }
-  recordState(e) {
+  toggleRecording(e) {
     this.recording = !this.recording;
   }
-  /**
-   * LitElement life cycle - property changed
-   */
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "recording") {
-        if (this[propName]) {
-          this.textState = "stop";
-          this.iconState = "av:stop";
-        } else {
-          this.textState = "Record";
-          this.iconState = "av:play-arrow";
-        }
-        // observer to act on the recording piece
-        this.toggleRecording(this[propName], oldValue);
-      }
-    });
+    if (changedProperties.has("recording") && this.recording) {
+      this.recorder();
+    }
   }
   /**
    * Toggle the LAME bridge
    */
-  toggleRecording(newValue, oldValue) {
-    if (newValue) {
-      // need to start...
-      record(
-        {
-          wasmURL: new URL("./lib/vmsg.wasm", import.meta.url).href,
-        },
-        this
-      ).then((blob) => {
-        this.dispatchEvent(
-          new CustomEvent("voice-recorder-recording", {
+  recorder() {
+    // need to start...
+    record(
+      {
+        wasmURL: new URL("./lib/vmsg.wasm", import.meta.url).href,
+      },
+      this
+    ).then((blob) => {
+      this.dispatchEvent(
+        new CustomEvent("voice-recorder-recording-blob", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
             value: blob,
-          })
-        );
-      });
-    }
+          }
+        })
+      );
+      this.recording = false;
+      this.innerHTML = "";
+    });
   }
 }
 customElements.define(VoiceRecorder.tag, VoiceRecorder);

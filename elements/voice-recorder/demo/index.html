@@ -13,14 +13,24 @@
       import '../voice-recorder.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      .vmsg-button {
+        border: 1px solid #ccc;
+        border-radius: 0;
+        padding: 4px;
+        margin: 0 4px;
+      }
+      .vmsg-timer {
+        padding: 4px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic voice-recorder demo</h3>
       <demo-snippet>
         <template>
-          <voice-recorder>
-          </voice-recorder>
+          <voice-recorder></voice-recorder>
         </template>
       </demo-snippet>
     </div>

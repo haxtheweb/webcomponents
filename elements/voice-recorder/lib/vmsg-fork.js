@@ -1,3 +1,4 @@
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /* eslint-disable */
 
 function pad2(n) {
@@ -339,7 +340,10 @@ export class Form {
     this.timer = null;
     this.audio = null;
     this.saveBtn = null;
+    this.previewBtn = null;
     this.tid = 0;
+    this.playing = false;
+    this.hasRecording = false;
     this.start = 0;
     Object.seal(this);
 
@@ -384,45 +388,58 @@ export class Form {
     const recordRow = document.createElement("div");
     recordRow.className = "vmsg-record-row";
     this.renderArea.appendChild(recordRow);
-    // @todo make this point to the parent button somehow that invoked this for events
-    const recordBtn = (this.recordBtn = document.createElement("button"));
+
+    const audio = (this.audio = new Audio());
+
+    const timer = (this.timer = document.createElement("div"));
+    timer.className = "vmsg-timer";
+    this.drawTime(0);
+    recordRow.appendChild(timer);
+
+    const recordBtn = (this.recordBtn = document.createElement("simple-icon-button-lite"));
     recordBtn.className = "vmsg-button vmsg-record-button";
-    recordBtn.textContent = "●";
+    recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
+    recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
     recordBtn.addEventListener("click", () => this.startRecording());
     recordRow.appendChild(recordBtn);
 
-    const stopBtn = (this.stopBtn = document.createElement("button"));
+    const stopBtn = (this.stopBtn = document.createElement("simple-icon-button-lite"));
     stopBtn.className = "vmsg-button vmsg-stop-button";
     stopBtn.style.display = "none";
-    stopBtn.textContent = "■";
+    stopBtn.icon = "av:stop";
+    stopBtn.textContent = "Stop";
     stopBtn.addEventListener("click", () => this.stopRecording());
     recordRow.appendChild(stopBtn);
 
-    const audio = (this.audio = new Audio());
-    audio.autoplay = true;
-
-    const timer = (this.timer = document.createElement("span"));
-    timer.className = "vmsg-timer";
-    timer.addEventListener("click", () => {
+    const previewBtn = (this.previewBtn = document.createElement("simple-icon-button-lite"));
+    previewBtn.className = "vmsg-button vmsg-record-button";
+    previewBtn.style.display = "none";
+    previewBtn.icon = !this.playing ? "av:play-arrow" : "av:pause";
+    previewBtn.textContent = !this.playing ? "Preview" : "Pause";
+    previewBtn.addEventListener("click", () => {
+      this.playing = !this.playing;
       if (audio.paused) {
         if (this.recorder.blobURL) {
           audio.src = this.recorder.blobURL;
         }
       } else {
+        this.playing = false;
         audio.pause();
       }
+      previewBtn.icon = !this.playing ? "av:play-arrow" : "av:pause";
+      previewBtn.textContent = !this.playing ? "Preview" : "Pause";
     });
-    this.drawTime(0);
-    recordRow.appendChild(timer);
+    recordRow.appendChild(previewBtn);
 
-    const saveBtn = (this.saveBtn = document.createElement("button"));
+    const saveBtn = (this.saveBtn = document.createElement("simple-icon-button-lite"));
     saveBtn.className = "vmsg-button vmsg-save-button";
-    saveBtn.textContent = "✓";
-    saveBtn.disabled = true;
+    saveBtn.icon = "icons:save";
+    saveBtn.textContent = "Save";
+    saveBtn.style.display = "none";
     saveBtn.addEventListener("click", () => this.close(this.recorder.blob));
     recordRow.appendChild(saveBtn);
 
-    const gainWrapper = document.createElement("div");
+    /*const gainWrapper = document.createElement("div");
     gainWrapper.className = "vmsg-slider-wrapper vmsg-gain-slider-wrapper";
     const gainSlider = document.createElement("input");
     gainSlider.className = "vmsg-slider vmsg-gain-slider";
@@ -456,7 +473,7 @@ export class Form {
       );
     };
     pitchWrapper.appendChild(pitchSlider);
-    this.renderArea.appendChild(pitchWrapper);
+    this.renderArea.appendChild(pitchWrapper);*/
     // trigger an event on our target instance that says we are ready
     this.target.dispatchEvent(
       new CustomEvent("vmsg-ready", {
@@ -495,24 +512,31 @@ export class Form {
 
   onStop() {
     this.recordBtn.style.display = "";
+    this.recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
+    this.recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
     this.stopBtn.style.display = "none";
+    this.previewBtn.style.display = "";
     this.stopBtn.disabled = false;
     this.saveBtn.disabled = false;
+    this.saveBtn.style.display = "";
   }
 
   startRecording() {
     this.audio.pause();
     this.start = Date.now();
     this.updateTime();
+    this.hasRecording = false;
     this.recordBtn.style.display = "none";
+    this.previewBtn.style.display = "none";
     this.stopBtn.style.display = "";
-    this.saveBtn.disabled = true;
+    this.saveBtn.style.display = "none";
     this.recorder.startRecording();
   }
 
   stopRecording() {
     clearTimeout(this.tid);
     this.tid = 0;
+    this.hasRecording = true;
     this.stopBtn.disabled = true;
     this.recorder.stopRecording();
   }

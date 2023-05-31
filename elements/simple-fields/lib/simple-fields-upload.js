@@ -154,6 +154,17 @@ class SimpleFieldsUpload extends I18NMixin(
           --simple-camera-snap-button-border-radius: 100%;
           --simple-camera-snap-button-opacity: 0.7;
         }
+
+        /** voice stuff which is in lite dom below */
+        .vmsg-button {
+          border: 1px solid #ccc;
+          border-radius: 0;
+          padding: 4px;
+          margin: 0 4px;
+        }
+        .vmsg-timer {
+          padding: 4px;
+        }
       `,
     ];
   }
@@ -162,6 +173,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   constructor() {
     super();
+    this.voice = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -490,13 +502,6 @@ class SimpleFieldsUpload extends I18NMixin(
         detail: e.detail,
       })
     );
-  }
-  /**
-   * Respond to successful file upload, now inject url into url field and
-   * do a gizmo guess from there!
-   */
-  _fileUploadResponse(e) {
-    // set the value of the url which will update our URL and notify
     this.dispatchEvent(
       new CustomEvent("upload-response", {
         bubbles: true,
@@ -551,9 +556,12 @@ class SimpleFieldsUpload extends I18NMixin(
    * We got a new photo
    */
   __newAudioShowedUp(e) {
-    console.log(e);
-    let file = new File([e.detail.raw], "voice-recording-" + e.timeStamp + ".mp3");
+    let file = new File([e.detail.value], "voice-recording-" + e.timeStamp + ".mp3");
     this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.voice.remove();
+    setTimeout(() => {
+      this.voice = null;
+    }, 0);
   }
   /**
    * Invoke the camera to set itself up
@@ -575,9 +583,10 @@ class SimpleFieldsUpload extends I18NMixin(
       import("@lrnwebcomponents/voice-recorder/voice-recorder.js").then(() => {
         this.voice = document.createElement("voice-recorder");
         this.voice.addEventListener(
-          "voice-recorder-recording",
+          "voice-recorder-recording-blob",
           this.__newAudioShowedUp.bind(this)
         );
+        this.voice.recording = true;
         this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
       });
     }

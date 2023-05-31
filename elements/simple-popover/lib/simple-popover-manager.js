@@ -120,6 +120,9 @@ class SimplePopoverManager extends LitElement {
       orientation: {
         type: String,
       },
+      popover: {
+        type: Object,
+      }
     };
   }
   updated(changedProperties) {
