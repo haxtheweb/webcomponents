@@ -34,8 +34,10 @@
  *    "gizmo": {},
  *    // how HAX presents configuration options in it's side tray
  *    "settings": {
+ *      "inline": [], // only used if it's an inline only element and presents itself on the bar
  *      "configure": [],
  *      "advanced": [],
+ *      "developer": [], // setting intended only for HTML experts
  *    },
  *    "documentation": {
  *      "howTo": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/howToUse",
