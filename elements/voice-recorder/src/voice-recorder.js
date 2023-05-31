@@ -89,13 +89,12 @@ class VoiceRecorder extends LitElement {
    * Toggle the LAME bridge
    */
   toggleRecording(newValue, oldValue) {
+    console.log(new URL("./lib/vmsg.wasm", import.meta.url).href);
     if (newValue) {
       // need to start...
       record(
         {
-          wasmURL:
-            new URL("./../../", import.meta.url).href +
-            "node_modules/vmsg/vmsg.wasm",
+          wasmURL: new URL("./lib/vmsg.wasm", import.meta.url).href,
         },
         this
       ).then((blob) => {
