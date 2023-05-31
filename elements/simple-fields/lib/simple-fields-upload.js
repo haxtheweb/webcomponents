@@ -184,7 +184,7 @@ class SimpleFieldsUpload extends I18NMixin(
     this.noCamera = false;
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
-    this.noVoiceRecord = true;
+    this.noVoiceRecord = false;
     this.responsiveSize = "sm";
   }
   render() {
@@ -340,7 +340,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _handleAudioOption(e) {
     e.preventDefault();
-    this.option = "voice";
+    this.option = "audio";
     this._voiceRecorder(e);
   }
   /**
@@ -571,13 +571,14 @@ class SimpleFieldsUpload extends I18NMixin(
   }
   _voiceRecorder(e) {
     if (!this.voice) {
-      import("@lrnwebcomponents/voice-recorder/voice-recorder.js");
-      this.voice = document.createElement("voice-recorder");
-      this.voice.addEventListener(
-        "voice-recorder-recording",
-        this.__newAudioShowedUp.bind(this)
-      );
-      this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+      import("@lrnwebcomponents/voice-recorder/voice-recorder.js").then(() => {
+        this.voice = document.createElement("voice-recorder");
+        this.voice.addEventListener(
+          "voice-recorder-recording",
+          this.__newAudioShowedUp.bind(this)
+        );
+        this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+      });
     }
   }
   /**

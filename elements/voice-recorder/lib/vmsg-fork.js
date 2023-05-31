@@ -352,6 +352,8 @@ export class Form {
   }
 
   drawInit() {
+    // remove existing if its there
+    this.target.querySelector(".vmsg-popup").remove();
     const renderArea = (this.renderArea = document.createElement("div"));
     renderArea.className = "vmsg-popup";
     renderArea.addEventListener("click", (e) => e.stopPropagation());
