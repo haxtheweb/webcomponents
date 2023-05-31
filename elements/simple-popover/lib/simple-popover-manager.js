@@ -130,7 +130,9 @@ class SimplePopoverManager extends LitElement {
       if (["opened", "position", "orientation"].includes(propName)) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          this.popover.updatePosition();
+          if (this.popover) {
+            this.popover.updatePosition();
+          }
         }, 0);
       }
     });
@@ -147,7 +149,9 @@ class SimplePopoverManager extends LitElement {
     if (this.__ignore) {
       this.__ignore = false;
       setTimeout(() => {
-        this.popover.updatePosition();
+        if (this.popover) {
+          this.popover.updatePosition();
+        }
       }, 100);
     } else {
       if (el !== this.popover.target) {
