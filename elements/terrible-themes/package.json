@@ -44,7 +44,7 @@
   },
   "license": "",
   "dependencies": {
-    "lit": "^2.2.4",
+    "lit": "^2.7.4",
     "@lrnwebcomponents/haxcms-elements": "^4.0.4",
     "@lrnwebcomponents/simple-colors": "^4.0.4"
   },

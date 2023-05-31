@@ -73,7 +73,7 @@
     "lunr": "2.3.9",
     "concurrently": "7.4.0",
     "promise-polyfill": "8.2.1",
-    "lit": "^2.7.2",
+    "lit": "^2.7.4",
     "jsdom": "19.0.0",
     "url": "0.11.0",
     "turndown": "7.1.1",
@@ -176,7 +176,7 @@
     "lit-element": "3.3.1",
     "lit-html": "2.7.2",
     "roughjs": "4.4.5",
-    "lit": "2.7.2"
+    "lit": "2.7.4"
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",

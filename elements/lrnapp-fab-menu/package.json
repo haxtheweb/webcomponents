@@ -46,7 +46,7 @@
     "@lrnwebcomponents/simple-icon": "^7.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
-    "lit": "^2.7.2"
+    "lit": "^2.7.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",

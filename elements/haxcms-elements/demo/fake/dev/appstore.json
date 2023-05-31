@@ -1170,6 +1170,7 @@
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
+    "audio-player": "@lrnwebcomponents/audio-player/audio-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
     "date-card": "@lrnwebcomponents/date-card/date-card.js"
   }

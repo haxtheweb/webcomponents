@@ -45,7 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-colors": "^7.0.0",
-    "lit": "^2.7.2"
+    "lit": "^2.7.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",

@@ -19426,10 +19426,10 @@ lit-html@2.7.2, lit-html@^1.0.0, lit-html@^2.0.0, lit-html@^2.1.0, lit-html@^2.7
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@2.0.0, lit@2.7.2, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.4, lit@^2.2.5, lit@^2.2.8, lit@^2.6.1, lit@^2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/lit/-/lit-2.7.2.tgz#8084355a3b834a8e62685f2e641242fd7c1698ce"
-  integrity sha512-9QnZmG5mIKPRja96cpndMclLSi0Qrz2BXD6EbqNqCKMMjOWVm/BwAeXufFk2jqFsNmY07HOzU8X+8aTSVt3yrA==
+lit@2.0.0, lit@2.7.4, lit@^2.0.0, lit@^2.0.0-rc.1, lit@^2.0.2, lit@^2.1.0, lit@^2.2.5, lit@^2.2.8, lit@^2.6.1, lit@^2.7.2, lit@^2.7.4:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/lit/-/lit-2.7.4.tgz#ca63d27fda178dbffae0faf2c882b9910e40842c"
+  integrity sha512-cgD7xrZoYr21mbrkZIuIrj98YTMw/snJPg52deWVV4A8icLyNHI3bF70xsJeAgwTuiq5Kkd+ZR8gybSJDCPB7g==
   dependencies:
     "@lit/reactive-element" "^1.6.0"
     lit-element "^3.3.0"

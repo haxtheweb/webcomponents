@@ -50,7 +50,7 @@
     "@lrnwebcomponents/simple-filter": "^7.0.0",
     "@lrnwebcomponents/simple-icon": "^7.0.0",
     "@lrnwebcomponents/hal-9000": "^7.0.0",
-    "lit": "^2.7.2",
+    "lit": "^2.7.4",
     "web-dialog": "^0.0.11"
   },
   "devDependencies": {

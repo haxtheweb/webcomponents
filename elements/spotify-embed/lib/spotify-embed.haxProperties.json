@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Spotify",
     "description": "Wrapper on the spotify player embed option",
-    "icon": "icons:android",
+    "icon": "hax:spotify",
     "color": "green",
     "tags": ["Audio / Video", "music", "spotify"],
     "handles": [],

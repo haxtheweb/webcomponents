@@ -143,6 +143,7 @@ export const HaxIconsetManifest = [
       "site-map",
       "site-settings",
       "slash",
+      "spotify",
       "table-column-plus-after",
       "table-column-remove",
       "table-multiple",
