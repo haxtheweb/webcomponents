@@ -20,6 +20,15 @@
     }
   },
   "settings": {
+    "inline": [
+      {
+        "slot": "",
+        "title": "Term",
+        "inputMethod": "textfield",
+        "icon": "editor:title",
+        "required": true
+      }
+    ],
     "configure": [
       {
         "property": "term",
@@ -32,9 +41,18 @@
         "property": "information",
         "title": "Definition",
         "description": "The definitition to display when the term is clicked.",
-        "inputMethod": "textfield",
+        "inputMethod": "textarea",
         "required": true
       },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Display the definition in a popover instead of inline.",
+        "inputMethod": "boolean",
+        "required": false
+      }
+    ],
+    "advanced": [
       {
         "property": "links",
         "title": "Links",
@@ -42,8 +60,7 @@
         "inputMethod": "code-editor",
         "required": false
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
@@ -51,7 +68,8 @@
       "properties": {
         "term": "HAX Camp",
         "information": "An event dedicated to spreading web components knowledge person to person.",
-        "links": "Website,https://hax.camp/"
+        "links": "Website,https://hax.camp/",
+        "popoverMode": true
       },
       "content": ""
     }

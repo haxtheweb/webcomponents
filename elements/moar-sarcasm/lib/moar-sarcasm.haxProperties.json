@@ -1,12 +1,14 @@
 {
   "api": "1",
+  "type": "element",
+  "editingElement": "core",
   "canScale": false,
   "canPosition": false,
-  "canEditSource": false,
-  "contentEditable": false,
+  "canEditSource": true,
+  "contentEditable": true,
   "gizmo": {
     "title": "Sarcasm",
-    "description": "",
+    "description": "Presenting text in a trolly way",
     "icon": "hax:case-sensitive-alt",
     "color": "purple",
     "tags": [
@@ -18,8 +20,8 @@
     ],
     "handles": [
       {
-        "type": "inline",
-        "text": "say"
+        "type": "text",
+        "say": "innerText"
       }
     ],
     "meta": {
@@ -28,9 +30,10 @@
     }
   },
   "settings": {
+    "inline": [],
     "configure": [
       {
-        "property": "say",
+        "attribute": "say",
         "title": "Text",
         "description": "Text to make sarcastic",
         "inputMethod": "textfield"
@@ -38,7 +41,9 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["a11y"]
+    "unsetAttributes": [
+      "a11y"
+    ]
   },
   "demoSchema": [
     {

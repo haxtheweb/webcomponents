@@ -1194,7 +1194,7 @@
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-    "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+    "vocab-term": "@lrnwebcomponents/vocab-term/vocab-term.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",

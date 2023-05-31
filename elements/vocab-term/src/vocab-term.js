@@ -49,9 +49,10 @@ class VocabTerm extends LitElement {
    */
   constructor() {
     super();
+    this._haxstate = false;
     this.popoverMode = false;
-    this.term = "";
-    this.information = "";
+    this.term = null;
+    this.information = null;
     this.links = [];
     this.detailsOpen = false;
     if (this.querySelector("summary")) {
@@ -60,6 +61,32 @@ class VocabTerm extends LitElement {
     if (this.querySelector(`[slot="information"]`)) {
       this.information = this.querySelector(`[slot="information"]`).textContent;
     }
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
   }
   /**
    * LitElement style callback
@@ -163,6 +190,11 @@ class VocabTerm extends LitElement {
    * provides click for keyboard if open property is not supported by browser
    */
   _handleClick(e) {
+    if (!this._haxstate) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
     if (this.details && typeof this.detailsOpen === "undefined") {
       this.requestUpdate();
       this.toggleOpen();
@@ -172,6 +204,11 @@ class VocabTerm extends LitElement {
    * provides support for keyboard if open property is not supported by browser
    */
   _handleKeyup(e) {
+    if (!this._haxstate) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
     if (
       (this.details &&
         typeof this.detailsOpen === "undefined" &&
@@ -185,12 +222,15 @@ class VocabTerm extends LitElement {
    * toggles the element
    */
   toggleOpen() {
-    if (this.details.hasAttribute("open")) {
-      this.details.removeAttribute("open");
-      if (this.detailsOpen) this.detailsOpen = false;
-    } else {
-      this.details.setAttribute("open", "open");
-      if (this.detailsOpen) this.detailsOpen = true;
+    if (!this._haxstate) {
+      console.log(this._haxstate);
+      if (this.details.hasAttribute("open")) {
+        this.details.removeAttribute("open");
+        if (this.detailsOpen) this.detailsOpen = false;
+      } else {
+        this.details.setAttribute("open", "open");
+        if (this.detailsOpen) this.detailsOpen = true;
+      }
     }
   }
   /**
@@ -199,6 +239,9 @@ class VocabTerm extends LitElement {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
+    }
+    if (!this.term && this.innerHTML) {
+      this.term = this.innerHTML;
     }
     if (this.popoverMode === false) {
       this.shadowRoot
@@ -240,9 +283,9 @@ class VocabTerm extends LitElement {
           if (this.shadowRoot) {
             this.details = this.shadowRoot.querySelector(`details`);
           }
-          this.addEventListener("click", this._handleClick.bind(this));
+          this.addEventListener("click", this._handleClick);
         } else {
-          this.removeEventListener("click", this._handleClick.bind(this));
+          this.removeEventListener("click", this._handleClick);
         }
       }
     });

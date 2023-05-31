@@ -76,8 +76,9 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     let el = this.element || {},
       settings = el.settings || {},
       gizmo = el.gizmo || {};
+      // support inline, fallback to configure, then nothing
     this.fields = [
-      ...(settings.configure || []).map((f) => {
+      ...(settings.inline || settings.configure || []).map((f) => {
         if (f.slot === "") f.property = "innerHTML";
         return f;
       }),
@@ -147,13 +148,13 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
   }
   /**
    * updates selection based on values passed from prompt
-   * this overrides nthe default button behavior so that the gizmo's content doen't get doubled
+   * this overrides the default button behavior so that the gizmo's content doen't get doubled
    */
   updateSelection() {
     let tag = document.createElement(this.tagsList),
       html = "";
     this.fields.forEach((field) => {
-      if (!!field.property && field.property !== "innerHTML")
+      if (!!field.property && field.property !== "innerHTML" && field.property !== "innerText")
         tag[field.property] = this.value[field.property];
       if (!!field.slot && !!this.value[field.slot])
         html += `<${this.getSlotWrapper(field)}${Object.keys(
