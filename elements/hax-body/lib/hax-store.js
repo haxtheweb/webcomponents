@@ -1,6 +1,10 @@
 import { LitElement, html, nothing } from "lit";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
+  HaxSchematizer,
+  HaxElementizer,
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import {
   winEventsElement,
   getRange,
   stripMSWord,
@@ -1279,6 +1283,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         })
       );
+      // normalize the rich teext editor prompts w/ the rest of HAX
+      let rtep = window.RichTextEditorPrompt.requestAvailability();
+      if (rtep) {
+        rtep.shadowRoot.querySelector("#formfields").schematizer =
+            HaxSchematizer;
+        rtep.shadowRoot.querySelector("#formfields").elementizer =
+          HaxElementizer;
+      }
       // these operations can be hidden in CMS environments
       if (haxTray.shadowRoot.querySelector("#haxcancelbutton")) {
         // associate the cancel button in the tray to the dialog

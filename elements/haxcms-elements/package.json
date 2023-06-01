@@ -30,7 +30,7 @@
   "scripts": {
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
-    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\" \"cd ../hax-body && yarn start\" \"cd ../super-daemon && yarn start\"",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "cd demo && yarn start",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
