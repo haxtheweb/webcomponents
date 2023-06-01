@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "audio that enhances the experience but is not required by being selectable inline with text content",
   "repository": {
     "type": "git",
@@ -45,10 +45,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^7.0.0",
-    "@lrnwebcomponents/i18n-manager": "^7.0.0",
-    "@lrnwebcomponents/simple-colors": "^7.0.0",
-    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/hax-iconset": "^7.0.1",
+    "@lrnwebcomponents/i18n-manager": "^7.0.1",
+    "@lrnwebcomponents/simple-colors": "^7.0.1",
+    "@lrnwebcomponents/simple-icon": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {

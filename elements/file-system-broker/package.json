@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "singleton to simplify interactions with the file system on a user&#39;s device",
   "repository": {
     "type": "git",

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
@@ -42,11 +42,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dropdown-select": "^7.0.0",
-    "@lrnwebcomponents/elmsln-loading": "^7.0.0",
-    "@lrnwebcomponents/hax-iconset": "^7.0.0",
-    "@lrnwebcomponents/lrn-icons": "^7.0.0",
-    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/dropdown-select": "^7.0.1",
+    "@lrnwebcomponents/elmsln-loading": "^7.0.1",
+    "@lrnwebcomponents/hax-iconset": "^7.0.1",
+    "@lrnwebcomponents/lrn-icons": "^7.0.1",
+    "@lrnwebcomponents/simple-icon": "^7.0.1",
     "@polymer/app-route": "^3.0.2",
     "@polymer/iron-icons": "3.0.1",
     "@polymer/iron-scroll-threshold": "^3.0.1",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

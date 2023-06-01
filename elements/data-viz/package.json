@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "display pouch-db data using graphs",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^7.0.0",
+    "@lrnwebcomponents/chartist-render": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {

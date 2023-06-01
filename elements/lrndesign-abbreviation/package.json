@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Automated conversion of lrndesign-abbreviation/",
   "repository": {
     "type": "git",
@@ -42,13 +42,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^7.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
+    "@lrnwebcomponents/schema-behaviors": "^7.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

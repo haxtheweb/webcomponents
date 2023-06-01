@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "simple image manipulation with a microservice",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.0"
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
