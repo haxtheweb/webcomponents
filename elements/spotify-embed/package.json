@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "embed spotify playlists",
   "repository": {
     "type": "git",
@@ -47,19 +47,19 @@
     "lit": "^2.7.4"
   },
   "devDependencies": {
-    "@wcfactory/rollup-umd-build": "^0.12.1",
     "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@web/dev-server": "0.1.28",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.21",
     "polymer-build": "3.1.4",
-    "@web/dev-server": "0.1.28",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "2.5.32"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
@@ -68,5 +68,6 @@
   "keywords": [
     "web-components",
     "html"
-  ]
+  ],
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }

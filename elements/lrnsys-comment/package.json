@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -42,17 +42,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/grafitto-filter": "^7.0.0",
-    "@lrnwebcomponents/hax-iconset": "^7.0.0",
-    "@lrnwebcomponents/lrndesign-avatar": "^7.0.0",
-    "@lrnwebcomponents/lrnsys-button": "^7.0.0",
-    "@lrnwebcomponents/moment-element": "^7.0.0",
-    "@lrnwebcomponents/mtz-marked-editor": "^7.0.0",
-    "@lrnwebcomponents/simple-icon": "^7.0.0",
-    "@lrnwebcomponents/simple-modal": "^7.0.0",
-    "@lrnwebcomponents/simple-toast": "^7.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
-    "@lrnwebcomponents/word-count": "^7.0.0",
+    "@lrnwebcomponents/grafitto-filter": "^7.0.1",
+    "@lrnwebcomponents/hax-iconset": "^7.0.1",
+    "@lrnwebcomponents/lrndesign-avatar": "^7.0.1",
+    "@lrnwebcomponents/lrnsys-button": "^7.0.1",
+    "@lrnwebcomponents/moment-element": "^7.0.1",
+    "@lrnwebcomponents/mtz-marked-editor": "^7.0.1",
+    "@lrnwebcomponents/simple-icon": "^7.0.1",
+    "@lrnwebcomponents/simple-modal": "^7.0.1",
+    "@lrnwebcomponents/simple-toast": "^7.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
+    "@lrnwebcomponents/word-count": "^7.0.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -89,5 +89,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "A simple element that displays information about a github repository.",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^7.0.0",
-    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {
@@ -70,5 +70,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }

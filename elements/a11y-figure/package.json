@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^7.0.0",
+    "@lrnwebcomponents/a11y-details": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {
@@ -61,5 +61,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }

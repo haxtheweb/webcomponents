@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Remote render a CSV file in place as an accessible table.",
   "repository": {
     "type": "git",
@@ -37,16 +37,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hexagon-loader": "^7.0.0",
+    "@lrnwebcomponents/hexagon-loader": "^7.0.1",
     "@lrnwebcomponents/intersection-element": "^7.0.0",
-    "@lrnwebcomponents/simple-colors": "^7.0.0",
-    "@lrnwebcomponents/simple-icon": "^7.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
+    "@lrnwebcomponents/simple-colors": "^7.0.1",
+    "@lrnwebcomponents/simple-icon": "^7.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
     "lit": "^2.7.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -65,5 +65,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }
