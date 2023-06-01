@@ -30,11 +30,6 @@ class EventBadge extends SimpleColors {
     this.blackwhite = false;
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    console.log(this.offsetWidth);
-    console.log(this.offsetHeight);
-  }
   static get properties() {
     return {
       ...super.properties,
