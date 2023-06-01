@@ -9,6 +9,7 @@ export class HAXCMSToast extends RPGCharacterToast {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     autorun(() => {
       this.userName = toJS(store.userData.userName);
     });
@@ -21,26 +22,32 @@ export class HAXCMSToast extends RPGCharacterToast {
     super.connectedCallback();
     window.addEventListener(
       "haxcms-toast-hide",
-      this.hideSimpleToast.bind(this)
+      this.hideSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.addEventListener(
       "haxcms-toast-show",
-      this.showSimpleToast.bind(this)
+      this.showSimpleToast.bind(this),
+      { signal: this.windowControllers.signal }
     );
+  }
+
+  hideSimpleToast(e) {
+    if (!this.alwaysvisible) {
+      // tricks into closing via event in a graceful way
+      this.style.animation = "forcedfadeout 0.6s .3s";
+      this.awaitingMerlinInput = false;
+      setTimeout(() => {
+        this.hide();
+      }, 0);
+    }
   }
 
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-toast-hide",
-      this.hideSimpleToast.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-toast-show",
-      this.showSimpleToast.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

@@ -47,53 +47,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "date-card",
-      "description": "`date-card`\n`simple presentation of a date`\n\nAttributes:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `start-time` {`string`} - \n\n  * `end-time` {`string`} - \n\n  * `location` {`string`} - \n\n  * `border-spacing` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `startTime` {`string`} - \n\n  * `endTime` {`string`} - \n\n  * `location` {`string`} - \n\n  * `borderSpacing` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "month",
-          "description": "`month` {`string`} - \n\nProperty: month"
-        },
-        {
-          "name": "date",
-          "description": "`date` {`string`} - \n\nProperty: date"
-        },
-        {
-          "name": "day",
-          "description": "`day` {`string`} - \n\nProperty: day"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "start-time",
-          "description": "`start-time` {`string`} - \n\nProperty: startTime"
-        },
-        {
-          "name": "end-time",
-          "description": "`end-time` {`string`} - \n\nProperty: endTime"
-        },
-        {
-          "name": "location",
-          "description": "`location` {`string`} - \n\nProperty: location"
-        },
-        {
-          "name": "border-spacing",
-          "description": "`border-spacing` {`number`} - \n\nProperty: borderSpacing\n\nDefault: 5"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: light-blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

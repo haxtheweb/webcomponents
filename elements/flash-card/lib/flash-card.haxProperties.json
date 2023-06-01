@@ -1,0 +1,65 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Flash card",
+    "description": "Practice concepts just like real flash cards front and back",
+    "icon": "av:call-to-action",
+    "color": "blue",
+    "tags": ["Instructional", "self check", "flash card", "quiz", "educational"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Front of the Card",
+        "description": "Text for the front of the card or question",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "back",
+        "title": "Back of the Card",
+        "description": "The expected answer that's being tested against",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "imgSource",
+        "title": "Image Source",
+        "description": "Image file used for the card. Overrides Image Keyword.",
+        "inputMethod": "haxupload"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Makes the card dark mode",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Changes the accent color of the card",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Image Keyword",
+        "description": "A random image chosen based off your keyword. Overriden by Image Source.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "flash-card",
+      "properties": {
+        "speak": true,
+        "img-source": "https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg",
+        "listen": true
+      },
+      "content": "<p slot='front'>What is strawberry in Spanish</p><p slot='back'>fresa</p>"
+    }
+  ]
+}

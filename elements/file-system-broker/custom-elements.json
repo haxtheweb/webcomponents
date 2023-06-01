@@ -33,11 +33,6 @@
           "description": "`xlsx-file-system-data` {`CustomEvent<{ filename: string; format: any; operation: string; data: string; }>`} - "
         }
       ]
-    },
-    {
-      "name": "file-system-broker",
-      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`\n\nProperties:\n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

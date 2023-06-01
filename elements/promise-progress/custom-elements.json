@@ -150,21 +150,6 @@
           "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
-    },
-    {
-      "name": "promise-progress",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

@@ -582,7 +582,7 @@
       "details": {
         "title": "Example Lesson",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example of what HAX can do",
         "status": "available",
         "rating": "0",
@@ -779,7 +779,7 @@
       "details": {
         "title": "About the course",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example about the course page.",
         "status": "available",
         "rating": "0",
@@ -900,7 +900,7 @@
       "details": {
         "title": "Example Assignment",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example assignment with OER Schema.",
         "status": "available",
         "rating": "0",
@@ -963,7 +963,7 @@
     {
       "details": {
         "title": "50% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:6/6",
         "status": "available",
         "layout": "1-1"
@@ -996,7 +996,7 @@
     {
       "details": {
         "title": "66 / 33 columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:8/4",
         "status": "available",
         "layout": "2-1"
@@ -1023,7 +1023,7 @@
     {
       "details": {
         "title": "33% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:4/4/4",
         "status": "available",
         "layout": "1-1-1"
@@ -1058,7 +1058,7 @@
     {
       "details": {
         "title": "33 / 66 columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:4/8",
         "status": "available",
         "layout": "1-2"
@@ -1101,7 +1101,7 @@
     {
       "details": {
         "title": "25% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:3/3/3/3",
         "status": "available",
         "layout": "1-1-1-1"

@@ -14,6 +14,7 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
+    this.hideInput = true;
     this.__winEvents = this.__winEvents || {};
     this.__winEvents = {
       ...this.__winEvents,
@@ -48,6 +49,7 @@ class HaxTrayUpload extends HaxUploadField {
   _canUpload() {
     return !this.__allowUpload;
   }
+
   /**
    * Configure asset after upload or URL passed in.
    */

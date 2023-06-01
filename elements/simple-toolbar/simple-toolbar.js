@@ -321,6 +321,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     // life cycle
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       this.collapsed = true;
       this.collapseDisabled = false;
       this.config = [];
@@ -337,6 +338,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
+      this._handleResize = this._handleResize.bind(this);
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
@@ -349,8 +351,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
-      if (this.collapsed)
-        window.addEventListener("resize", this._handleResize.bind(this));
+      if (this.collapsed) {
+        window.addEventListener("resize", this._handleResize, {
+          signal: this.windowControllers.signal,
+        });
+      }
       this.addEventListener("keypress", this._handleShortcutKeys);
     }
     /**
@@ -358,10 +363,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * running clean up code (removing event listeners, etc.).
      */
     disconnectedCallback() {
-      if (this.collapsed)
-        window.removeEventListener("resize", this._handleResize.bind(this));
+      if (this.collapsed) {
+        this.windowControllers.abort();
+      }
+      this.removeEventListener("keypress", this._handleShortcutKeys);
       super.disconnectedCallback();
-      this.addEventListener("keypress", this._handleShortcutKeys);
     }
     firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
@@ -380,9 +386,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "collapsed") {
           if (this.collapsed) {
             this.resizeToolbar();
-            window.addEventListener("resize", this._handleResize.bind(this));
+            this.windowControllers = new AbortController();
+            window.addEventListener("resize", this._handleResize, {
+              signal: this.windowControllers.signal,
+            });
           } else {
-            window.removeEventListener("resize", this._handleResize.bind(this));
+            this.windowControllers.abort();
           }
         }
         if (propName === "hidden")

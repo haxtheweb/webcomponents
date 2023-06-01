@@ -167,7 +167,7 @@ class MdBlock extends LitElement {
         icon: "icons:code",
         color: "yellow",
         tags: [
-          "Other",
+          "Resource",
           "md",
           "markdown",
           "content",

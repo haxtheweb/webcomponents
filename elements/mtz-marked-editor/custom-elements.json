@@ -129,30 +129,6 @@
           "description": "`__textarea` - \n\nProperty: __textarea"
         }
       ]
-    },
-    {
-      "name": "mtz-marked-editor",
-      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "autofocus",
-          "description": "`autofocus` {`boolean`} - \n\nProperty: autofocus",
-          "valueSet": "v"
-        },
-        {
-          "name": "readonly",
-          "description": "`readonly` {`boolean`} - \n\nProperty: readonly",
-          "valueSet": "v"
-        },
-        {
-          "name": "textarea-selector",
-          "description": "`textarea-selector` {`string`} - \n\nProperty: textareaSelector\n\nDefault: textarea"
-        },
-        {
-          "name": "__textarea",
-          "description": "`__textarea` - \n\nProperty: __textarea"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

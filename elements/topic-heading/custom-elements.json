@@ -14,20 +14,6 @@
           "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "topic-heading",
-      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - ",
-      "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

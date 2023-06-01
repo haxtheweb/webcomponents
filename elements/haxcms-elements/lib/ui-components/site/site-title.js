@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `site-title`
  * `Title of the site`
@@ -54,12 +56,11 @@ class SiteTitle extends HAXCMSI18NMixin(LitElement) {
   constructor() {
     super();
     this.__disposer = [];
+    this.icon = null;
     this.t = {
       home: "Home",
     };
     this.notitle = false;
-    import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);

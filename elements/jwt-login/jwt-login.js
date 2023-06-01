@@ -10,6 +10,7 @@ import { LitElement } from "lit";
 class JwtLogin extends LitElement {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.auto = false;
     this.method = "GET";
     this.body = {};
@@ -181,26 +182,27 @@ class JwtLogin extends LitElement {
     super.connectedCallback();
     window.addEventListener(
       "jwt-login-refresh-token",
-      this.requestRefreshToken.bind(this)
+      this.requestRefreshToken.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.addEventListener("jwt-login-toggle", this.toggleLogin.bind(this));
-    window.addEventListener("jwt-login-login", this.loginRequest.bind(this));
-    window.addEventListener("jwt-login-logout", this.logoutRequest.bind(this));
+
+    window.addEventListener("jwt-login-toggle", this.toggleLogin.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener("jwt-login-login", this.loginRequest.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener("jwt-login-logout", this.logoutRequest.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "jwt-login-refresh-token",
-      this.requestRefreshToken.bind(this)
-    );
-    window.removeEventListener("jwt-login-login", this.loginRequest.bind(this));
-    window.removeEventListener("jwt-login-toggle", this.toggleLogin.bind(this));
-    window.removeEventListener(
-      "jwt-login-logout",
-      this.logoutRequest.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

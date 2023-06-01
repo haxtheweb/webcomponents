@@ -119,8 +119,6 @@ class HAXCMSBackendDemo extends LitElement {
               window.appSettings.saveManifestPath;
             store.cmsSiteEditor.instance.saveOutlinePath =
               window.appSettings.saveOutlinePath;
-            store.cmsSiteEditor.instance.getNodeFieldsPath =
-              window.appSettings.getNodeFieldsPath;
             store.cmsSiteEditor.instance.getSiteFieldsPath =
               window.appSettings.getSiteFieldsPath;
             store.cmsSiteEditor.instance.createNodePath =

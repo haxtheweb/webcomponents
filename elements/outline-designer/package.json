@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "umd": "outline-designer.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -42,18 +42,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/i18n-manager": "^4.0.25",
-    "@lrnwebcomponents/haxcms-elements": "^4.1.0",
-    "@lrnwebcomponents/simple-fields": "^4.1.0",
-    "@lrnwebcomponents/simple-popover": "^4.1.0",
-    "@lrnwebcomponents/hax-iconset": "^4.1.0",
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "lit": "^2.6.1",
-    "mobx": "6.7.0"
+    "@lrnwebcomponents/hax-iconset": "^7.0.0",
+    "@lrnwebcomponents/haxcms-elements": "^7.0.0",
+    "@lrnwebcomponents/i18n-manager": "^7.0.0",
+    "@lrnwebcomponents/simple-fields": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/simple-popover": "^7.0.0",
+    "lit": "^2.7.4",
+    "mobx": "6.9.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@web/dev-server": "0.1.34",
     "@webcomponents/webcomponentsjs": "2.6.0",
@@ -71,5 +71,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

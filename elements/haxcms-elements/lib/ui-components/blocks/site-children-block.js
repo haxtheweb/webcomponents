@@ -28,7 +28,7 @@ class SiteChildrenBlock extends LitElement {
         description: "Dynamic block to show child of the current page",
         icon: "av:call-to-action",
         color: "grey",
-        tags: ["Magic", "haxcms"],
+        tags: ["Other", "haxcms"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

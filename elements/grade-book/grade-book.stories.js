@@ -18,7 +18,8 @@ export const GradeBookLiteStory = () => {
     import.meta.url,
     utils.makeElementFromClass(GradeBookLite, {
       "accent-color": "blue",
-      "source-data": "2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq",
+      "source-data":
+        "2PACX-1vQWAKQNyYk6TmE6AaArXZNJY6BZxfbzVb3a1zRVYZzPO0HG-Jcjm4yVHWICVgX9jM8Ef_sKYAv3WnRq",
       source: "googledocs",
     })
   );

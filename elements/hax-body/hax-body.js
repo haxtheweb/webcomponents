@@ -27,6 +27,7 @@ import "./lib/hax-plate-context.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 // our default image in core
 import "@lrnwebcomponents/media-image/media-image.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -186,6 +187,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
+        hax-text-editor-toolbar {
+          background-color: var(--hax-ui-background-color);
+          --simple-toolbar-button-bg: var(--hax-ui-background-color);
+          --simple-picker-options-background-color: var(
+            --hax-ui-background-color
+          );
+          --simple-picker-option-active-background-color: var(
+            --hax-ui-color-accent
+          );
+          --simple-picker-option-active-color: var(--hax-ui-background-color);
+          --simple-picker-color: var(--hax-ui-color);
+        }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: 0.2;
           pointer-events: none;
@@ -254,7 +267,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty)::before {
+          ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.2s all ease-in-out;
@@ -262,14 +275,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:hover:empty)::before {
+          ::slotted([contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before {
           opacity: 0.4;
           cursor: text;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:focus)::before {
+          ::slotted([contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before {
           content: "";
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -663,19 +676,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (
-        target.tagName !== "HAX-BODY" &&
-        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE")
-      ) {
+      } else if (target.tagName !== "HAX-BODY" && !target.haxUIElement) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
       // block haxUIElements, except for editable-table as it's a unique tag
       // bc it's repairing that table is not natively editable
-      if (
-        (!target.haxUIElement || target.tagName === "EDITABLE-TABLE") &&
-        this.__focusLogic(target)
-      ) {
+      if (!target.haxUIElement && this.__focusLogic(target)) {
+        HAXStore.haxTray.trayDetail = "content-edit";
         e.stopPropagation();
         e.stopImmediatePropagation();
       }
@@ -1085,7 +1093,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
-                ["1", "#", "`", ">", "-", "!"].includes(
+                ["1", "#", "`", ">", "-"].includes(
                   this.activeNode.textContent[0]
                 )
               ) {
@@ -1143,6 +1151,30 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "Escape":
               this._useristyping = true;
               break;
+            case "/":
+              const rng = HAXStore.getRange();
+              if (
+                this.activeNode &&
+                HAXStore.isTextElement(this.activeNode) &&
+                rng.commonAncestorContainer.textContent.trim() == ""
+              ) {
+                e.preventDefault();
+                SuperDaemonInstance.mini = true;
+                SuperDaemonInstance.activeRange = rng;
+                SuperDaemonInstance.activeSelection = HAXStore.getSelection();
+
+                SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
+                SuperDaemonInstance.runProgram(
+                  "*",
+                  {},
+                  null,
+                  null,
+                  null,
+                  rng.commonAncestorContainer.textContent.trim()
+                );
+                SuperDaemonInstance.open();
+              }
+              break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
@@ -1195,7 +1227,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 if (
                   this.activeNode &&
                   this.activeNode.tagName === "P" &&
-                  ["1", "#", "`", ">", "-", "!"].includes(
+                  ["1", "#", "`", ">", "-"].includes(
                     this.activeNode.textContent[0]
                   )
                 ) {
@@ -1233,27 +1265,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (el.tagName === "HR") {
         // then insert a P which will assume active status
         this.haxInsert("p", "", {});
-      }
-    }
-    // @todo handle this differently
-    // look for wildcard / web component pro insert mode
-    else if (guess[0] === "!") {
-      let tag = guess.replace("!", "").replaceAll(/ /g, "");
-      // see if this exists
-      if (HAXStore.elementList[tag]) {
-        // generate schema from the tag
-        let schema = HAXStore.haxSchemaFromTag(tag);
-        let target;
-        if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
-          target = haxElementToNode(schema.demoSchema[0]);
-        } else {
-          target = document.createElement(tag);
-        }
-        this.haxReplaceNode(this.activeNode, target);
-        this.__focusLogic(target);
-      } else {
-        // do nothing, we tried to be a pro but failed :(
-        HAXStore.toast(`${tag} is not a valid tag`);
       }
     }
   }
@@ -1489,18 +1500,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
     return haxElements;
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
   }
   /**
    * Clear area.
@@ -1837,18 +1836,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (HAXStore._isSandboxed && tag === "webview") {
             tag = "iframe";
           }
-          let props = HAXStore.elementList[tag];
-          if (!!node) {
+          if (!!node && node.tagName !== "PAGE-BREAK") {
             this._showContextMenu(this.contextMenus.plate);
           } else {
             this._hideContextMenu(this.contextMenus.plate);
           }
           // try and work against anything NOT a P tag
+          let props = HAXStore.elementList[tag];
           if (
             typeof props !== typeof undefined &&
             !HAXStore.isTextElement(node)
           ) {
-            //TODO hide text
+            // hide text
             this._hideContextMenu(this.contextMenus.text);
             props.element = node;
           } else {
@@ -2607,6 +2606,31 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         HAXStore.haxTray.trayDetail = "content-edit";
         break;
+      case "super-daemon":
+        const rng = HAXStore.getRange();
+        SuperDaemonInstance.mini = true;
+        SuperDaemonInstance.activeRange = rng;
+        SuperDaemonInstance.activeSelection = HAXStore.getSelection();
+        let active = this.activeNode;
+        if (rng.commonAncestorContainer.tagName) {
+          active = rng.commonAncestorContainer;
+        } else if (
+          rng.commonAncestorContainer.parentNode &&
+          rng.commonAncestorContainer.parentNode.tagName
+        ) {
+          active = rng.commonAncestorContainer.parentNode;
+        }
+        SuperDaemonInstance.activeNode = active;
+        SuperDaemonInstance.runProgram(
+          "*",
+          {},
+          null,
+          null,
+          null,
+          active.textContent.trim()
+        );
+        SuperDaemonInstance.open();
+        break;
       case "hide-context-menus":
         this.hideContextMenus();
         break;
@@ -2716,8 +2740,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         // test for ignore edge case
         if (
-          (!activeNode.haxUIElement ||
-            activeNode.tagName === "EDITABLE-TABLE") &&
+          !activeNode.haxUIElement &&
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
@@ -2757,16 +2780,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // scroll to it w/ timing delay as this uses resources
     // and we want to ensure it's in the next micro-task
     setTimeout(() => {
-      if (typeof node.scrollIntoViewIfNeeded === "function") {
-        node.scrollIntoViewIfNeeded(false);
-      } else {
-        node.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest",
-        });
-      }
-    }, 0);
+      node.scrollIntoView({
+        behavior: "smooth",
+        inline: "nearest",
+        block: "end",
+      });
+    }, 100);
   }
   undo() {
     super.undo();
@@ -2892,26 +2911,38 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // apply our specialized mutation observer or remove it
     if (newValue) {
+      // ensures appropriate this context as calls can bubble from elsewhere in app
+      this._haxContextOperation = this._haxContextOperation.bind(this);
+      this._toggleNodeLocking = this._toggleNodeLocking.bind(this);
+      this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
+      this.blurEvent = this.blurEvent.bind(this);
+      this._onKeyDown = this._onKeyDown.bind(this);
+      this._keepContextVisible = this._keepContextVisible.bind(this);
+      // helps ensure correct state attachment and detachment
+      this.windowControllers = new AbortController();
+
       window.addEventListener(
         "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
+        this._haxContextOperation,
+        { signal: this.windowControllers.signal }
       );
       window.addEventListener(
         "hax-toggle-active-node-lock",
-        this._toggleNodeLocking.bind(this)
+        this._toggleNodeLocking,
+        { signal: this.windowControllers.signal }
       );
-      window.addEventListener("click", this.scrollerFixclickEvent.bind(this));
-      window.addEventListener("blur", this.blurEvent.bind(this));
-      window.addEventListener("keydown", this._onKeyDown.bind(this));
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("scroll", this._keepContextVisible.bind(this), {
-        passive: true,
+      window.addEventListener("click", this.scrollerFixclickEvent, {
+        signal: this.windowControllers.signal,
       });
-      window.addEventListener("resize", this._keepContextVisible.bind(this), {
+      window.addEventListener("blur", this.blurEvent, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("keydown", this._onKeyDown, {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("resize", this._keepContextVisible, {
         passive: true,
+        signal: this.windowControllers.signal,
       });
       // mutation observer that ensures state of hax applied correctly
       this._observer = new MutationObserver((mutations) => {
@@ -3185,26 +3216,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         subtree: true,
       });
     } else {
-      window.removeEventListener(
-        "hax-toggle-active-node-lock",
-        this._toggleNodeLocking.bind(this)
-      );
-      window.removeEventListener(
-        "click",
-        this.scrollerFixclickEvent.bind(this)
-      );
-      window.removeEventListener("blur", this.blurEvent.bind(this));
-      window.removeEventListener("keydown", this._onKeyDown.bind(this));
-      document.body.removeEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.removeEventListener("scroll", this._keepContextVisible.bind(this));
-      window.removeEventListener("resize", this._keepContextVisible.bind(this));
-      window.removeEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
+      // should resolve ALL events at the same time
+      this.windowControllers.abort();
       this._observer.disconnect();
     }
   }
@@ -3232,17 +3245,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // search results can be drag'ed from their panel for exact placement
     // special place holder in drag and drop
     if (
-      (!node.haxUIElement || node.tagName === "EDITABLE-TABLE") &&
+      !node.haxUIElement &&
       node.tagName &&
-      ![
-        "TEMPLATE",
-        "HAX-BODY",
-        "RICH-TEXT-EDITOR-CLIPBOARD",
-        "RICH-TEXT-EDITOR-PROMPT",
-        "RICH-TEXT-EDITOR-HIGHLIGHT",
-        "HAX-APP-SEARCH-RESULT",
-        "FAKE-HAX-BODY-END",
-      ].includes(node.tagName)
+      !["TEMPLATE", "HAX-BODY", "FAKE-HAX-BODY-END"].includes(node.tagName)
     ) {
       // special case of SPAN as it can often get embedded places without actually
       // being the thing that should grad actual block level focus
@@ -3261,14 +3266,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return [
-      "span",
-      "b",
-      "strong",
-      "i",
-      "em",
-      ...Object.keys(window.HaxTextEditorToolbarConfig.inlineGizmos || {}),
-    ].includes(node.tagName.toLowerCase());
+    return ["span", "b", "strong", "i", "em", "u", "strike"].includes(
+      node.tagName.toLowerCase()
+    );
   }
   /**
    * Test if this is an HTML primative

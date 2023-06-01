@@ -9,7 +9,17 @@
         "author": "Google, Youtube LLC",
         "description": "The most popular online video sharing and remix site.",
         "status": "available",
-        "tags": ["video"]
+        "tags": ["video"],
+        "tos": [
+          {
+            "title": "YouTube Terms of Service",
+            "link": "https://www.youtube.com/t/terms"
+          },
+          {
+            "title": "Google Privacy Policy",
+            "link": "https://policies.google.com/privacy"
+          }
+        ]
       },
       "connection": {
         "protocol": "https",
@@ -599,7 +609,7 @@
       "details": {
         "title": "Example Lesson",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example of what HAX can do",
         "status": "available",
         "rating": "0",
@@ -796,7 +806,7 @@
       "details": {
         "title": "About the course",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example about the course page.",
         "status": "available",
         "rating": "0",
@@ -917,7 +927,7 @@
       "details": {
         "title": "Example Assignment",
         "image": "",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "description": "An example assignment with OER Schema.",
         "status": "available",
         "rating": "0",
@@ -980,7 +990,7 @@
     {
       "details": {
         "title": "50% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:6/6",
         "status": "available",
         "layout": "1-1"
@@ -1013,7 +1023,7 @@
     {
       "details": {
         "title": "66 / 33 columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:8/4",
         "status": "available",
         "layout": "2-1"
@@ -1040,7 +1050,7 @@
     {
       "details": {
         "title": "33% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:4/4/4",
         "status": "available",
         "layout": "1-1-1"
@@ -1075,7 +1085,7 @@
     {
       "details": {
         "title": "33 / 66 columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:4/8",
         "status": "available",
         "layout": "1-2"
@@ -1118,7 +1128,7 @@
     {
       "details": {
         "title": "25% columns",
-        "author": "ELMS:LN",
+        "author": "HAXTheWeb core team",
         "icon": "hax:3/3/3/3",
         "status": "available",
         "layout": "1-1-1-1"
@@ -1160,7 +1170,17 @@
     }
   ],
   "autoloader": {
+    "spotify-embed": "@lrnwebcomponents/spotify-embed/spotify-embed.js",
     "media-image": "@lrnwebcomponents/media-image/media-image.js",
+    "inline-audio": "@lrnwebcomponents/inline-audio/inline-audio.js",
+    "audio-player": "@lrnwebcomponents/audio-player/audio-player.js",
+    "moar-sarcasm": "@lrnwebcomponents/moar-sarcasm/moar-sarcasm.js",
+    "learning-component": "@lrnwebcomponents/course-design/lib/learning-component.js",
+    "mark-the-words": "@lrnwebcomponents/mark-the-words/mark-the-words.js",
+    "simple-tags": "@lrnwebcomponents/simple-fields/lib/simple-tags.js",
+    "flash-card": "@lrnwebcomponents/flash-card/flash-card.js",
+    "sorting-question": "@lrnwebcomponents/sorting-question/sorting-question.js",
+    "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
@@ -1174,7 +1194,7 @@
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-    "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+    "vocab-term": "@lrnwebcomponents/vocab-term/vocab-term.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",

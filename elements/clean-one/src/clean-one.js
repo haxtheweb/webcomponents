@@ -13,6 +13,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "./lib/clean-one-search-box.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -561,7 +562,7 @@ class CleanOne extends HAXCMSRememberRoute(
              background: none;
            }
            :host([color-theme="2"]) site-active-title {
-             color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+             color: #CFD4E3;
            }
            :host([color-theme="1"]) .site-body .navigation {
              color: #afa790;
@@ -764,8 +765,17 @@ class CleanOne extends HAXCMSRememberRoute(
                   part="page-breadcrumb ${this.editMode
                     ? `edit-mode-active`
                     : ``}"
+                  ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-breadcrumb>
-                <site-active-title part="page-title"></site-active-title>
+                <site-active-title
+                  part="page-title"
+                  ?hidden="${this.searchTerm != "" ? true : false}"
+                ></site-active-title>
+                <site-active-tags
+                  part="page-tags"
+                  auto-accent-color
+                  ?hidden="${this.searchTerm != "" ? true : false}"
+                ></site-active-tags>
                 <div class="normal main-section">
                   <site-search
                     hide-input
@@ -876,6 +886,9 @@ class CleanOne extends HAXCMSRememberRoute(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("#body");
+    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
+
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#haxcms-theme-top");

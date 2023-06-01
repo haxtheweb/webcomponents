@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "audio-player",
+      "description": "`audio-player`\n`simple audio web component to match video`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

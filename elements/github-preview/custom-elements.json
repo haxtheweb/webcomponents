@@ -1,413 +1,112 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "github-preview",
-      "path": "./github-preview.js",
-      "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
+      "description": "`github-preview`\n`A simple element that displays information about a github repository.`\n\nEvents:\n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `repo` {`string`} - \n\n  * `org` {`string`} - \n\n  * `__description` {`string`} - \n\n  * `repo-lang` {`string`} - \n\n  * `__stars` {`number`} - \n\n  * `__forks` {`number`} - \n\n  * `__assetAvailable` {`boolean`} - \n\n  * `readme-extended` {`boolean`} - \n\n  * `__readmeText` {`string`} - \n\n  * `url` {`string`} - \n\n  * `api-url` {`string`} - \n\n  * `raw-url` {`string`} - \n\n  * `extended` {`boolean`} - \n\n  * `read-me` {`string`} - \n\n  * `branch` {`string`} - \n\n  * `view-more-text` {`string`} - \n\n  * `not-found-text` {`string`} - \n\n  * `headers` - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `repo` {`string`} - \n\n  * `org` {`string`} - \n\n  * `__description` {`string`} - \n\n  * `repoLang` {`string`} - \n\n  * `__stars` {`number`} - \n\n  * `__forks` {`number`} - \n\n  * `__assetAvailable` {`boolean`} - \n\n  * `readmeExtended` {`boolean`} - \n\n  * `__readmeText` {`string`} - \n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `url` {`string`} - \n\n  * `apiUrl` {`string`} - \n\n  * `rawUrl` {`string`} - \n\n  * `extended` {`boolean`} - \n\n  * `readMe` {`string`} - \n\n  * `branch` {`string`} - \n\n  * `viewMoreText` {`string`} - \n\n  * `notFoundText` {`string`} - \n\n  * `headers` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
       "attributes": [
         {
           "name": "repo",
-          "type": "string"
+          "description": "`repo` {`string`} - \n\nProperty: repo"
         },
         {
           "name": "org",
-          "type": "string"
+          "description": "`org` {`string`} - \n\nProperty: org"
+        },
+        {
+          "name": "__description",
+          "description": "`__description` {`string`} - \n\nProperty: __description"
         },
         {
           "name": "repo-lang",
-          "type": "string"
+          "description": "`repo-lang` {`string`} - \n\nProperty: repoLang"
+        },
+        {
+          "name": "__stars",
+          "description": "`__stars` {`number`} - \n\nProperty: __stars"
+        },
+        {
+          "name": "__forks",
+          "description": "`__forks` {`number`} - \n\nProperty: __forks"
+        },
+        {
+          "name": "__assetAvailable",
+          "description": "`__assetAvailable` {`boolean`} - \n\nProperty: __assetAvailable",
+          "valueSet": "v"
         },
         {
           "name": "readme-extended",
-          "type": "boolean"
+          "description": "`readme-extended` {`boolean`} - \n\nProperty: readmeExtended",
+          "valueSet": "v"
+        },
+        {
+          "name": "__readmeText",
+          "description": "`__readmeText` {`string`} - \n\nProperty: __readmeText"
         },
         {
           "name": "url",
-          "type": "string",
-          "default": "\"https://github.com\""
+          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: https://github.com"
         },
         {
           "name": "api-url",
-          "type": "string",
-          "default": "\"https://api.github.com\""
+          "description": "`api-url` {`string`} - \n\nProperty: apiUrl\n\nDefault: https://api.github.com"
         },
         {
           "name": "raw-url",
-          "type": "string",
-          "default": "\"https://raw.githubusercontent.com\""
+          "description": "`raw-url` {`string`} - \n\nProperty: rawUrl\n\nDefault: https://raw.githubusercontent.com"
         },
         {
           "name": "extended",
-          "type": "boolean",
-          "default": "false"
+          "description": "`extended` {`boolean`} - \n\nProperty: extended\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "read-me",
-          "type": "string",
-          "default": "\"README.md\""
+          "description": "`read-me` {`string`} - \n\nProperty: readMe\n\nDefault: README.md"
         },
         {
           "name": "branch",
-          "type": "string",
-          "default": "\"master\""
+          "description": "`branch` {`string`} - \n\nProperty: branch\n\nDefault: master"
         },
         {
           "name": "view-more-text",
-          "type": "string",
-          "default": "\"View More\""
+          "description": "`view-more-text` {`string`} - \n\nProperty: viewMoreText\n\nDefault: View More"
         },
         {
           "name": "not-found-text",
-          "type": "string",
-          "default": "\"Asset not found\""
+          "description": "`not-found-text` {`string`} - \n\nProperty: notFoundText\n\nDefault: Asset not found"
         },
         {
           "name": "headers",
-          "type": "object",
-          "default": "{\"cache\":\"force-cache\"}"
+          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
         },
         {
           "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "repo",
-          "attribute": "repo",
-          "type": "string"
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "org",
-          "attribute": "org",
-          "type": "string"
-        },
-        {
-          "name": "repoLang",
-          "attribute": "repo-lang",
-          "type": "string"
-        },
-        {
-          "name": "readmeExtended",
-          "attribute": "readme-extended",
-          "type": "boolean"
-        },
-        {
-          "name": "haxAppDetails",
-          "type": "{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string",
-          "default": "\"https://github.com\""
-        },
-        {
-          "name": "apiUrl",
-          "attribute": "api-url",
-          "type": "string",
-          "default": "\"https://api.github.com\""
-        },
-        {
-          "name": "rawUrl",
-          "attribute": "raw-url",
-          "type": "string",
-          "default": "\"https://raw.githubusercontent.com\""
-        },
-        {
-          "name": "extended",
-          "attribute": "extended",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "readMe",
-          "attribute": "read-me",
-          "type": "string",
-          "default": "\"README.md\""
-        },
-        {
-          "name": "branch",
-          "attribute": "branch",
-          "type": "string",
-          "default": "\"master\""
-        },
-        {
-          "name": "viewMoreText",
-          "attribute": "view-more-text",
-          "type": "string",
-          "default": "\"View More\""
-        },
-        {
-          "name": "notFoundText",
-          "attribute": "not-found-text",
-          "type": "string",
-          "default": "\"Asset not found\""
-        },
-        {
-          "name": "headers",
-          "attribute": "headers",
-          "type": "object",
-          "default": "{\"cache\":\"force-cache\"}"
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        }
-      ],
-      "events": [
-        {
-          "name": "hax-register-app"
+          "name": "onhax-register-app",
+          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
     },
     {
       "name": "wc-markdown",
-      "path": "./github-preview.umd.js"
+      "attributes": []
     },
     {
       "name": "wc-markdown",
-      "path": "./lib/wc-markdown.js",
+      "description": "Attributes:\n\n  * `src` {`string | null`} - \n\nProperties:\n\n  * `value` - \n\n  * `src` {`string | null`} - \n\n  * `__value` {`string`} - ",
       "attributes": [
         {
           "name": "src",
-          "type": "string | null"
-        }
-      ],
-      "properties": [
-        {
-          "name": "value"
-        },
-        {
-          "name": "src",
-          "attribute": "src",
-          "type": "string | null"
-        }
-      ]
-    },
-    {
-      "name": "github-preview",
-      "path": "./src/github-preview.js",
-      "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
-      "attributes": [
-        {
-          "name": "repo",
-          "type": "string"
-        },
-        {
-          "name": "org",
-          "type": "string"
-        },
-        {
-          "name": "repo-lang",
-          "type": "string"
-        },
-        {
-          "name": "readme-extended",
-          "type": "boolean"
-        },
-        {
-          "name": "url",
-          "type": "string",
-          "default": "\"https://github.com\""
-        },
-        {
-          "name": "api-url",
-          "type": "string",
-          "default": "\"https://api.github.com\""
-        },
-        {
-          "name": "raw-url",
-          "type": "string",
-          "default": "\"https://raw.githubusercontent.com\""
-        },
-        {
-          "name": "extended",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "read-me",
-          "type": "string",
-          "default": "\"README.md\""
-        },
-        {
-          "name": "branch",
-          "type": "string",
-          "default": "\"master\""
-        },
-        {
-          "name": "view-more-text",
-          "type": "string",
-          "default": "\"View More\""
-        },
-        {
-          "name": "not-found-text",
-          "type": "string",
-          "default": "\"Asset not found\""
-        },
-        {
-          "name": "headers",
-          "type": "object",
-          "default": "{\"cache\":\"force-cache\"}"
-        },
-        {
-          "name": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "repo",
-          "attribute": "repo",
-          "type": "string"
-        },
-        {
-          "name": "org",
-          "attribute": "org",
-          "type": "string"
-        },
-        {
-          "name": "repoLang",
-          "attribute": "repo-lang",
-          "type": "string"
-        },
-        {
-          "name": "readmeExtended",
-          "attribute": "readme-extended",
-          "type": "boolean"
-        },
-        {
-          "name": "haxAppDetails",
-          "type": "{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }"
-        },
-        {
-          "name": "url",
-          "attribute": "url",
-          "type": "string",
-          "default": "\"https://github.com\""
-        },
-        {
-          "name": "apiUrl",
-          "attribute": "api-url",
-          "type": "string",
-          "default": "\"https://api.github.com\""
-        },
-        {
-          "name": "rawUrl",
-          "attribute": "raw-url",
-          "type": "string",
-          "default": "\"https://raw.githubusercontent.com\""
-        },
-        {
-          "name": "extended",
-          "attribute": "extended",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "readMe",
-          "attribute": "read-me",
-          "type": "string",
-          "default": "\"README.md\""
-        },
-        {
-          "name": "branch",
-          "attribute": "branch",
-          "type": "string",
-          "default": "\"master\""
-        },
-        {
-          "name": "viewMoreText",
-          "attribute": "view-more-text",
-          "type": "string",
-          "default": "\"View More\""
-        },
-        {
-          "name": "notFoundText",
-          "attribute": "not-found-text",
-          "type": "string",
-          "default": "\"Asset not found\""
-        },
-        {
-          "name": "headers",
-          "attribute": "headers",
-          "type": "object",
-          "default": "{\"cache\":\"force-cache\"}"
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "element-visible",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "IOThresholds",
-          "type": "number[]",
-          "default": "[0,0.25,0.5,0.75,1]"
-        },
-        {
-          "name": "IORootMargin",
-          "type": "string",
-          "default": "\"0px\""
-        },
-        {
-          "name": "IOVisibleLimit",
-          "type": "number",
-          "default": "0.5"
-        },
-        {
-          "name": "IORemoveOnVisible",
-          "type": "boolean",
-          "default": "true"
-        },
-        {
-          "name": "IODelay",
-          "type": "number",
-          "default": "100"
-        },
-        {
-          "name": "IORoot"
-        }
-      ],
-      "events": [
-        {
-          "name": "hax-register-app"
+          "description": "`src` {`string | null`} - \n\nProperty: src",
+          "values": []
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

@@ -91,7 +91,7 @@ class SiteUuidLink extends LitElement {
         icon: "icons:link",
         color: "grey",
         tags: [
-          "Magic",
+          "Other",
           "haxcms",
           "content",
           "remote",

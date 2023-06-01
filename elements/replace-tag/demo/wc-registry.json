@@ -379,7 +379,6 @@
   "paper-stepper": "@lrnwebcomponents/paper-stepper/paper-stepper.js",
   "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
   "pdf-browser-viewer": "@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js",
-  "pdf-element": "@lrnwebcomponents/pdf-element/pdf-element.js",
   "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
   "pie-menu": "@lrnwebcomponents/pie-menu/pie-menu.js",
   "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",

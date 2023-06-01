@@ -34,8 +34,14 @@
  *    "gizmo": {},
  *    // how HAX presents configuration options in it's side tray
  *    "settings": {
+ *      "inline": [], // only used if it's an inline only element and presents itself on the bar
  *      "configure": [],
  *      "advanced": [],
+ *      "developer": [], // setting intended only for HTML experts
+ *    },
+ *    "documentation": {
+ *      "howTo": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/howToUse",
+ *      "purpose": "https://oer.hax.psu.edu/bto108/sites/haxcellence/capabilities/inline-audio/purpose"
  *    },
  *    // additional clean up options for specific pieces of saving / shortcut options
  *    "saveOptions": {},
@@ -225,6 +231,7 @@ export class HAXWiring {
       settings: {
         configure: [],
         advanced: [],
+        developer: [],
       },
       wipeSlot: {},
     };
@@ -394,12 +401,31 @@ export class HAXWiring {
               props.settings.advanced.splice(i, 1);
             }
           }
+          if (typeof props.settings.developer === typeof undefined) {
+            props.settings.developer = [];
+          }
+          for (let i = 0; i < props.settings.developer.length; i++) {
+            props.settings.developer[i] = this.validateSetting(
+              props.settings.developer[i]
+            );
+            if (!props.settings.developer[i]) {
+              props.settings.developer.splice(i, 1);
+            }
+          }
+          // apply standard set of props
           props = this.standardAdvancedProps(props);
         }
         // support for advanced save options
         if (typeof props.saveOptions === typeof undefined) {
           props.saveOptions = {
             wipeSlot: false,
+          };
+        }
+        // support for advanced save options
+        if (typeof props.documentation === typeof undefined) {
+          props.documentation = {
+            howTo: null,
+            purpose: null,
           };
         }
         // support for demoSchema
@@ -495,47 +521,154 @@ export class HAXWiring {
         description: "Prevent changes to this element and all its content",
         inputMethod: "boolean",
       });
-      // allow classes to be modified this way
       props.settings.advanced.push({
+        attribute: "text-align",
+        title: "Text align",
+        description: "Horizontal alignment of text in the element.",
+        inputMethod: "select",
+        options: {
+          "": "",
+          left: "left",
+          center: "center",
+          right: "right",
+          justify: "justify",
+        },
+      });
+      props.settings.advanced.push({
+        attribute: "background-color",
+        title: "Background color",
+        description: "Accessible background colors for accenting content.",
+        inputMethod: "colorpicker",
+        required: false,
+      });
+      props.settings.advanced.push({
+        attribute: "font-size",
+        title: "Font size",
+        description: "Pre-selected font variation",
+        inputMethod: "select",
+        options: {
+          "x-small": "x-small",
+          small: "small",
+          "": "normal",
+          large: "large",
+          "x-large": "x-large",
+          "xx-large": "xx-large",
+        },
+      });
+      // allow styles to be modified this way
+      props.settings.advanced.push({
+        attribute: "padding-top",
+        title: "Padding top",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-right",
+        title: "Padding right",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-bottom",
+        title: "Padding bottom",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "padding-left",
+        title: "Padding left",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-top",
+        title: "Margin top",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-right",
+        title: "Margin right",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-bottom",
+        title: "Margin bottom",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      props.settings.advanced.push({
+        attribute: "margin-left",
+        title: "Margin left",
+        step: 8,
+        max: 128,
+        min: 0,
+        inputMethod: "slider",
+        suffix: "px",
+      });
+      // allow classes to be modified this way
+      props.settings.developer.push({
         attribute: "class",
         title: "Classes",
         description: "CSS classes applied manually to the element",
         inputMethod: "textfield",
       });
       // allow styles to be modified this way
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "style",
         title: "Styles",
         description: "Custom CSS styles as applied to the element",
         inputMethod: "textfield",
       });
       // allow schema definitions
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "prefix",
         title: "Schema: prefix",
         description: "Schema prefixes",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "typeof",
         title: "Schema: TypeOf",
         description: "typeof definition for Schema usage",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "property",
         title: "Schema: Property",
         description: "typeof definition for Schema usage",
         inputMethod: "textfield",
       });
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "resource",
         title: "Schema: Resource ID",
         description: "Schema resource identifier",
         inputMethod: "textfield",
       });
       // allow the id to be modified
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "id",
         title: "ID",
         description: "element ID, only set this if you know why",
@@ -543,7 +676,7 @@ export class HAXWiring {
       });
       // we need to support slot in the UI but actually shift it around under the hood
       // this is so that shadow roots don't get mad when previewing
-      props.settings.advanced.push({
+      props.settings.developer.push({
         attribute: "slot",
         title: "slot",
         description: "DOM slot area",
@@ -722,7 +855,6 @@ export class HAXWiring {
               url: "src",
             },
           ],
-          shortcutKey: "T",
           meta: {
             author: "auto",
           },
@@ -789,10 +921,15 @@ export class HAXWiring {
               validationType: "url",
             },
           ],
+          developer: [],
         },
         saveOptions: {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"],
+        },
+        documentation: {
+          howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+          purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
         },
         demoSchema: [
           {
@@ -818,6 +955,7 @@ export const HAXElement = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       this.HAXWiring = new HAXWiring();
     }
     static get properties() {
@@ -849,8 +987,10 @@ export const HAXElement = function (SuperClass) {
         // slow load environment, set listener and hold off of processing
         window.addEventListener(
           "hax-store-ready",
-          this._haxStoreReady.bind(this)
+          this._haxStoreReady.bind(this),
+          { signal: this.windowControllers.signal }
         );
+
         return this.HAXWiring.setHaxProperties(props, tag, context, false);
       }
     }
@@ -858,10 +998,7 @@ export const HAXElement = function (SuperClass) {
      * Clean up
      */
     disconnectedCallback() {
-      window.removeEventListener(
-        "hax-store-ready",
-        this._haxStoreReady.bind(this)
-      );
+      this.windowControllers.abort();
       if (super.disconnectedCallback) {
         super.disconnectedCallback();
       }

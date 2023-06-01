@@ -20,18 +20,19 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "View codepen or stackblitz demos",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "check-it-out.js",
   "module": "check-it-out.js",
   "umd": "check-it-out.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/web-dev-server -c ../../web-dev-server.config.mjs",
@@ -44,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.6.1"
+    "lit": "^2.7.4"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",
@@ -67,5 +68,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

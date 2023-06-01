@@ -36,39 +36,9 @@
   "builds": [
     {
       "name": "es6",
-      "browserCapabilities": ["es2015", "modules"],
+      "browserCapabilities": ["es2018", "modules"],
       "js": {
         "minify": false
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": false
-    },
-    {
-      "name": "es6-amd",
-      "browserCapabilities": ["es2015", "modules"],
-      "js": {
-        "minify": false,
-        "transformModulesToAmd": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": false
-    },
-    {
-      "name": "es5-amd",
-      "js": {
-        "minify": true,
-        "compile": true,
-        "transformModulesToAmd": true
       },
       "css": {
         "minify": true

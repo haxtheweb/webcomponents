@@ -725,6 +725,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 <simple-icon-lite
                   icon="${icon}"
                   @click="${(e) => {
+                    // @note this can cause issues in listening up above..
                     e.preventDefault();
                     e.stopPropagation();
                     this._handleIconClick(checked, option);

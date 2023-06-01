@@ -134,41 +134,6 @@ function check_handler(el) {
   }, 0);
 }
 
-function update(elem) {
-  const sdom = elem.shadowRoot,
-    math = elem.textContent.trim(),
-    isBlock = elem.getAttribute("mode") === "display",
-    check = (isBlock ? "D" : "I") + math;
-  if (elem._private && check !== elem._private.check) {
-    while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
-    elem._private.check = check;
-    if (math.length && handler) {
-      handler.typeset(math, isBlock, function (melem, styleNode) {
-        sdom.appendChild(styleNode.cloneNode(true));
-        sdom.appendChild(melem);
-      });
-    }
-  }
-}
-
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// `wait` milliseconds.
-// https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
-const debounce = (func, wait) => {
-  let timeout;
-
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
-
 /**
  * lrn-math
  * A mathjax wrapper tag in vanillaJS
@@ -179,63 +144,120 @@ class LrnMath extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this._private = {
+      check: "",
+      observer: new MutationObserver(() => {
+        this.updateMath();            
+      }),
+    };
+    this._private.observer.observe(this, mutation_config);
   }
   static get tag() {
     return "lrn-math";
   }
 
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+
   connectedCallback() {
-    const elem = this;
-    check_handler(elem);
-    window.requestAnimationFrame(function () {
-      elem._private = {
-        check: "",
-        observer: new MutationObserver(
-          debounce(function () {
-            update(elem);
-          }, 500)
-        ),
-      };
-      update(elem);
-      elem._private.observer.observe(elem, mutation_config);
-    });
+    check_handler(this);
+    setTimeout(() => {
+      if (this._haxstate && this.innerHTML && this.mathtext == null) {
+        this.mathtext = this.innerHTML;
+      }
+      else {
+        this.updateMath();
+      }        
+    }, 0);
+  }
+
+  updateMath() {
+    const sdom = this.shadowRoot,
+      math = this.textContent.trim(),
+      isBlock = this.getAttribute("mode") === "display",
+      check = (isBlock ? "D" : "I") + math;
+    if (this._private && check !== this._private.check) {
+      this.shadowRoot.innerHTML = "";
+      this._private.check = check;
+      if (math.length && handler) {
+        handler.typeset(math, isBlock, function (melem, styleNode) {
+          sdom.appendChild(styleNode.cloneNode(true));
+          sdom.appendChild(melem);
+        });
+      }
+    }
+  }
+
+  get mathtext() {
+    return this.getAttribute("mathtext");
+  }
+
+  set mathtext(val) {
+    this.setAttribute("mathtext", val);
   }
 
   /**
-   * Use Math-Text as a method for transfering values
+   * Use mathtext as a method for transfering values
    * from hax inline text to the slot.
    */
   static get observedAttributes() {
-    return ["math-text"];
+    return ["mathtext"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case "math-text":
+      case "mathtext":
         if (newValue !== "" && newValue !== null) {
-          // If a value has been set then wrap it in a
-          // span tag and inject it into the lightdom
-          const container = document.createElement("span");
-          container.innerText = newValue;
-          this.innerHTML = "";
-          this.appendChild(container);
-          this.removeAttribute("math-text");
+          clearTimeout(this._typingTimeout);
+          this._typingTimeout = setTimeout(() => {
+            const container = document.createElement("span");
+            container.innerText = newValue;
+            this.innerHTML = "";
+            this.appendChild(container);
+          }, 300);
         }
-        break;
+        else {
+          this.updateMath();
+        }
+      break;
     }
   }
 
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
+      canScale: false,
+      canPosition: false,
       canEditSource: true,
       gizmo: {
         title: "Math",
         description: "Present math in a nice looking way.",
         icon: "hax:pi",
         color: "grey",
-        tags: ["Content", "math", "mathjax", "mathml", "latex", "mathml"],
+        tags: ["Instructional", "math", "mathjax", "mathml", "latex", "mathml"],
         handles: [
           {
             type: "math",
@@ -252,13 +274,13 @@ class LrnMath extends HTMLElement {
         },
       },
       settings: {
+        inline: [],
         configure: [
           {
-            slot: "",
+            property: "mathtext",
             title: "Math",
             description: "Enter equation as MathML",
-            inputMethod: "code-editor",
-            icon: "editor:format-quote",
+            inputMethod: "textarea",
           },
         ],
         advanced: [],
@@ -274,13 +296,6 @@ class LrnMath extends HTMLElement {
     root.parentNode.insertBefore(clone, root);
     clone.innerHTML = this.innerHTML;
     this.remove();
-  }
-
-  disconnectedCallback() {
-    if (this._private) {
-      this._private.observer.disconnect();
-      delete this._private;
-    }
   }
 }
 

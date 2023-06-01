@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   "umd": "a11y-media-player.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -44,22 +44,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^4.1.0",
-    "@lrnwebcomponents/anchor-behaviors": "^4.0.25",
-    "@lrnwebcomponents/fullscreen-behaviors": "^4.1.0",
-    "@lrnwebcomponents/responsive-utility": "^4.1.0",
-    "@lrnwebcomponents/simple-colors": "^4.1.0",
-    "@lrnwebcomponents/simple-fields": "^4.1.0",
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
-    "@lrnwebcomponents/simple-range-input": "^4.1.0",
-    "@lrnwebcomponents/simple-search": "^4.1.0",
-    "@lrnwebcomponents/simple-toast": "^4.1.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.1.0",
-    "@lrnwebcomponents/utils": "^4.1.0",
-    "lit": "^2.6.1"
+    "@lrnwebcomponents/absolute-position-behavior": "^7.0.0",
+    "@lrnwebcomponents/anchor-behaviors": "^7.0.0",
+    "@lrnwebcomponents/fullscreen-behaviors": "^7.0.0",
+    "@lrnwebcomponents/responsive-utility": "^7.0.0",
+    "@lrnwebcomponents/simple-colors": "^7.0.0",
+    "@lrnwebcomponents/simple-fields": "^7.0.0",
+    "@lrnwebcomponents/simple-icon": "^7.0.0",
+    "@lrnwebcomponents/simple-range-input": "^7.0.0",
+    "@lrnwebcomponents/simple-search": "^7.0.0",
+    "@lrnwebcomponents/simple-toast": "^7.0.0",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
+    "@lrnwebcomponents/utils": "^7.0.0",
+    "lit": "^2.7.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -78,5 +78,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

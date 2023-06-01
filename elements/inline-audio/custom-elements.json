@@ -1,0 +1,127 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "inline-audio",
+      "path": "./inline-audio.js",
+      "description": "`inline-audio`\n`A simple inline audio player to augment text`\n\n### Styling\n\n::part()\nThe following parts are available for styling:\nicon - the icon\nprogress - the progress bar\nprogress-bar - the progress bar container\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--inline-audio-padding | padding on the container of the player | 0px 4px\n`--inline-audio-margin | margin on the container | 0\n`--inline-audio-icon-padding | icon padding | 0px 4px 0px 0px\n`--inline-audio-width | width of the icon | 36px\n`--inline-audio-height | height of the icon | 36px\n`--inline-audio-button-focus-opacity | opacity of the button on focus | 0.8",
+      "attributes": [
+        {
+          "name": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shiny",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "aria",
+          "type": "string",
+          "default": "\"selectToPlayRelatedAudioClip\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"play\""
+        },
+        {
+          "name": "t"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shiny",
+          "attribute": "shiny",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"av:play-arrow\""
+        },
+        {
+          "name": "aria",
+          "attribute": "aria",
+          "type": "string",
+          "default": "\"selectToPlayRelatedAudioClip\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"play\""
+        },
+        {
+          "name": "t",
+          "attribute": "t"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "playing-changed"
+        }
+      ]
+    }
+  ]
+}

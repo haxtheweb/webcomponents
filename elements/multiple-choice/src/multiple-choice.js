@@ -26,6 +26,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
           padding: 16px;
           margin-bottom: 16px;
           border: 1px solid var(--simple-colors-default-theme-grey-8);
+          background-color: var(--simple-colors-default-theme-accent-1);
           border-radius: 3px;
           color: var(--simple-colors-default-theme-grey-12);
           --simple-toolbar-button-border-color: var(
@@ -92,6 +93,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
         simple-fields-field {
           padding: 8px;
           margin: 2px;
+          background-color: var(--simple-colors-default-theme-accent-2);
         }
         simple-fields-field::part(option-inner) {
           position: absolute;
@@ -172,8 +174,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsSuper(LitElement)) {
                       property="oer:answer"
                       type="radio"
                       name="${index}"
+                      @mousedown="${this.clickSingle}"
+                      @keydown="${this.clickSingle}"
                       .value="${answer.userGuess}"
-                      @click="${this.clickSingle}"
                       @value-changed="${this.checkedEvent}"
                       label="${answer.label ? answer.label : ""}"
                     ></simple-fields-field>

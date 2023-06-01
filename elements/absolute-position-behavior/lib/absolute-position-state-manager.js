@@ -36,6 +36,9 @@ class AbsolutePositionStateManager extends LitElement {
   // properties available to custom element for data binding
   static get properties() {
     return {
+      scrollTarget: {
+        type: Object,
+      },
       /**
        * Stores an array of all elements using manager.
        */
@@ -68,6 +71,7 @@ class AbsolutePositionStateManager extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.elements = [];
     this.__timeout = false;
     this.__observer = new MutationObserver((mutations) =>
@@ -89,8 +93,13 @@ class AbsolutePositionStateManager extends LitElement {
         characterData: true,
       });
       this.updateElements();
-      document.addEventListener("load", this.updateElements);
-      window.addEventListener("resize", this._handleResize);
+      this.windowControllers = new AbortController();
+      document.addEventListener("load", this.updateElements.bind(this), {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("resize", this._handleResize.bind(this), {
+        signal: this.windowControllers.signal,
+      });
     }
     if (this.elements.filter((element) => element === el).length < 1) {
       this.elements.push(el);
@@ -201,10 +210,9 @@ class AbsolutePositionStateManager extends LitElement {
   removeEventListeners() {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
-    document.removeEventListener("load", this.updateElements);
-    window.removeEventListener("resize", this._handleResize);
+    this.windowControllers.abort();
     if (this.__watchSticky)
-      window.removeEventListener("scroll", this._handleScroll);
+      this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }
 
   /**
@@ -233,15 +241,21 @@ class AbsolutePositionStateManager extends LitElement {
     //only have event listeners when there are elements using manager
     if (
       !this.__watchSticky &&
-      this.elements.filter((el) => el.sticky).length > 0
+      this.elements.filter((el) => el.sticky).length > 0 &&
+      this.scrollTarget
     ) {
       this.__watchSticky = true;
-      window.addEventListener("scroll", this._handleScroll);
+      this.scrollTarget.addEventListener("scroll", this._handleScroll, {
+        passive: true,
+      });
     } else if (
       this.__watchSticky &&
-      this.elements.filter((el) => el.sticky).length < 1
+      this.elements.filter((el) => el.sticky).length < 1 &&
+      this.scrollTarget
     ) {
-      window.removeEventListener("scroll", this._handleScroll);
+      this.scrollTarget.removeEventListener("scroll", this._handleScroll, {
+        passive: true,
+      });
       this.__watchSticky = false;
     }
   }

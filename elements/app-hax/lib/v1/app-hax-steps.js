@@ -43,6 +43,9 @@ export class AppHaxSteps extends SimpleColors {
 
   constructor() {
     super();
+    this.unlockComingSoon = false;
+    this.unlockTerrible = false;
+    this.windowControllers = new AbortController();
     this.nameTyped = "";
     this.stepRoutes = [];
     this._progressReady = false;
@@ -88,6 +91,16 @@ export class AppHaxSteps extends SimpleColors {
       step: { type: Number, reflect: true },
       stepRoutes: { type: Array },
       themeNames: { type: Array },
+      unlockComingSoon: {
+        type: Boolean,
+        reflect: true,
+        attribute: "unlock-coming-soon",
+      },
+      unlockTerrible: {
+        type: Boolean,
+        reflect: true,
+        attribute: "unlock-terrible",
+      },
       loaded: { type: Boolean, reflect: true },
       appSettings: { type: Object },
       nameTyped: { type: String },
@@ -99,6 +112,10 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { value } = e.target;
       store.site.structure = value;
+      // skip theme if new user
+      if (toJS(store.isNewUser)) {
+        store.site.theme = "clean-one";
+      }
       store.appEl.playSound("click2");
     }
   }
@@ -141,6 +158,9 @@ export class AppHaxSteps extends SimpleColors {
           response.data.contents != ""
         ) {
           store.items = response.data.items;
+          if (response.data.files) {
+            store.itemFiles = response.data.files;
+          }
           // invoke a file broker for a docx file
           // send to the endpoint and wait
           // if it comes back with content, then we engineer details off of it
@@ -240,6 +260,9 @@ export class AppHaxSteps extends SimpleColors {
         response.data.contents != ""
       ) {
         store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
         // invoke a file broker for a docx file
         // send to the endpoint and wait
         // if it comes back with content, then we engineer details off of it
@@ -256,8 +279,146 @@ export class AppHaxSteps extends SimpleColors {
         store.appEl.playSound("click2");
       } else {
         store.appEl.playSound("error");
-        store.toast(`File did not return valid HTML`);
+        store.toast(`Repo did not return valid structure`);
       }
+    }
+  }
+  async importFromURL(e) {
+    const { type, prompt, callback, param } = e.target;
+    if (!e.target.comingSoon) {
+      let promptUrl = window.prompt(prompt);
+      enableServices(["haxcms"]);
+      this.setProcessingVisual();
+      const params = {};
+      params[param] = promptUrl;
+      const response = await MicroFrontendRegistry.call(callback, params);
+      store.toast(`Processed!`, 300);
+      // must be a valid response and have at least SOME html to bother attempting
+      if (
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != ""
+      ) {
+        store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
+        // invoke a file broker for a docx file
+        // send to the endpoint and wait
+        // if it comes back with content, then we engineer details off of it
+        this.nameTyped = response.data.filename
+          .replace(/\s/g, "")
+          .replace(/-/g, "")
+          .toLowerCase();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+          this.shadowRoot.querySelector("#sitename").select();
+        }, 800);
+        store.site.type = type;
+        store.site.theme = "clean-one";
+        store.appEl.playSound("click2");
+      } else {
+        store.appEl.playSound("error");
+        store.toast(`Repo did not return valid structure`);
+      }
+    }
+  }
+  // notion import endpoint
+  async notionImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      let notionUrl = window.prompt("URL for the Github Notion repo");
+      enableServices(["haxcms"]);
+      this.setProcessingVisual();
+      const response = await MicroFrontendRegistry.call(
+        "@haxcms/notionToSite",
+        { repoUrl: notionUrl }
+      );
+      store.toast(`Processed!`, 300);
+      // must be a valid response and have at least SOME html to bother attempting
+      if (
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != ""
+      ) {
+        store.items = response.data.items;
+        if (response.data.files) {
+          store.itemFiles = response.data.files;
+        }
+        // invoke a file broker for a docx file
+        // send to the endpoint and wait
+        // if it comes back with content, then we engineer details off of it
+        this.nameTyped = response.data.filename
+          .replace(/\s/g, "")
+          .replace(/-/g, "")
+          .toLowerCase();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+          this.shadowRoot.querySelector("#sitename").select();
+        }, 800);
+        store.site.type = type;
+        store.site.theme = "clean-one";
+        store.appEl.playSound("click2");
+      } else {
+        store.appEl.playSound("error");
+        store.toast(`Repo did not return valid structure`);
+      }
+    }
+  }
+  // pressbooks import endpoint
+  async pressbooksImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      import(
+        "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+      ).then(async (e) => {
+        // enable core services
+        enableServices(["haxcms"]);
+        // get the broker for docx selection
+        const broker = window.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile("html");
+        // tee up as a form for upload
+        const formData = new FormData();
+        formData.append("method", "site"); // this is a site based importer
+        formData.append("type", toJS(store.site.structure));
+        formData.append("upload", file);
+        this.setProcessingVisual();
+        const response = await MicroFrontendRegistry.call(
+          "@haxcms/pressbooksToSite",
+          formData
+        );
+        store.toast(`Processed!`, 300);
+        // must be a valid response and have at least SOME html to bother attempting
+        if (
+          response.status == 200 &&
+          response.data &&
+          response.data.contents != ""
+        ) {
+          store.items = response.data.items;
+          if (response.data.files) {
+            store.itemFiles = response.data.files;
+          }
+          // invoke a file broker for a html file
+          // send to the endpoint and wait
+          // if it comes back with content, then we engineer details off of it
+          this.nameTyped = response.data.filename
+            .replace(".html", "")
+            .replace("outline", "")
+            .replace(/\s/g, "")
+            .replace(/-/g, "")
+            .toLowerCase();
+          setTimeout(() => {
+            this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+            this.shadowRoot.querySelector("#sitename").select();
+          }, 800);
+          store.site.type = type;
+          store.site.theme = "clean-one";
+          store.appEl.playSound("click2");
+        } else {
+          store.appEl.playSound("error");
+          store.toast(`File did not return valid HTML structure`);
+        }
+      });
     }
   }
   // makes guy have hat on, shows it's doing something
@@ -328,18 +489,33 @@ export class AppHaxSteps extends SimpleColors {
       if (propName === "step") {
         store.step = this.step;
       }
+      if (propName === "unlockTerrible" && this[propName]) {
+        Object.keys(themeContext).forEach((key) => {
+          themeContext[key] = [...themeContext[key], "terrible-themes","terrible-productionz-themes","terrible-outlet-themes","terrible-best-themes","terrible-resume-themes"]
+        });
+        const contextKey = toJS(store.site.structure);
+        this.themeNames = Object.keys(this.appSettings.themes).filter(
+          (value) =>
+            contextKey &&
+            themeContext[contextKey] &&
+            themeContext[contextKey].includes(value)
+        );
+      }
     });
   }
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this.maintainScroll.bind(this));
-    window.addEventListener("popstate", this.popstateListener.bind(this));
+    window.addEventListener("resize", this.maintainScroll.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("popstate", this.popstateListener.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
 
   disconnectedCallback() {
-    window.removeEventListener("resize", this.maintainScroll.bind(this));
-    window.removeEventListener("popstate", this.popstateListener.bind(this));
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 
@@ -805,19 +981,19 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="technology"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="business"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="art"
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       default:
@@ -830,21 +1006,6 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
             type="15w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="6w"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="training"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.docxImport}
-            type="docx import"
           ></app-hax-button>`;
         break;
       case "website":
@@ -856,7 +1017,7 @@ export class AppHaxSteps extends SimpleColors {
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            coming-soon
+            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       case "import":
@@ -867,13 +1028,46 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="elms:ln"
+            prompt="URL for the ELMS:LN site"
+            callback="@haxcms/elmslnToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="haxcms"
+            prompt="URL for the HAXcms site"
+            callback="@haxcms/haxcmsToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.evoImport}
             type="evolution"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.gbImport}
+            @click=${this.importFromURL}
+            type="notion"
+            prompt="URL for the Notion git repo"
+            callback="@haxcms/notionToSite"
+            param="repoUrl"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
             type="gitbook"
+            prompt="URL for the Gitbook git repo"
+            callback="@haxcms/gitbookToSite"
+            param="md"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.pressbooksImport}
+            type="pressbooks"
+            beta
           ></app-hax-button>`;
         break;
     }
@@ -940,22 +1134,22 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Portfolio"
-                  value="portfolio"
-                  @click=${this.chooseStructure}
-                ></app-hax-site-button>
-                <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Import From.."
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
-                <app-hax-site-button
+                <!-- <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Website"
                   value="website"
                   @click=${this.chooseStructure}
-                  coming-soon
+                ></app-hax-site-button> -->
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Portfolio"
+                  value="portfolio"
+                  @click=${this.chooseStructure}
+                  ?coming-soon="${!this.unlockComingSoon}"
                 ></app-hax-site-button>
               </div>
             </div>

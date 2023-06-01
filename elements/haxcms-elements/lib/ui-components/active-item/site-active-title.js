@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `site-active-title`
@@ -28,8 +29,24 @@ class SiteActiveTitle extends LitElement {
         :host {
           display: block;
         }
+        h1 .site-active-title-icon {
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
       </style>
-      <h1>${this.__title}</h1>
+      <h1>
+        ${this.icon
+          ? html`
+              <simple-icon-lite
+                class="site-active-title-icon"
+                icon="${this.icon}"
+              ></simple-icon-lite>
+            `
+          : ``}
+        ${this.__title}
+      </h1>
     `;
   }
   /**
@@ -45,6 +62,23 @@ class SiteActiveTitle extends LitElement {
           this.ancestorTitle
         );
       }
+      if (propName == "editMode" && oldValue !== undefined) {
+        if (this.editMode) {
+          this.activateController = new AbortController();
+          this.addEventListener(
+            "click",
+            (e) => {
+              const haxStore = window.HaxStore.requestAvailability();
+              haxStore.activeNode =
+                haxStore.activeHaxBody.querySelector("page-break");
+            },
+            { signal: this.activateController.signal }
+          );
+        } else {
+          this.noFallback = false;
+          this.activateController.abort();
+        }
+      }
     });
   }
   /**
@@ -53,6 +87,9 @@ class SiteActiveTitle extends LitElement {
   static get properties() {
     return {
       __title: {
+        type: String,
+      },
+      icon: {
         type: String,
       },
       dynamicMethodology: {
@@ -92,12 +129,23 @@ class SiteActiveTitle extends LitElement {
    */
   constructor() {
     super();
+    this.activateController = new AbortController();
     this.noFallback = false;
     this.dynamicMethodology = "active";
     this.__title = "";
+    this.icon = null;
     this.__disposer = [];
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
+        this.icon = activeItem.metadata.icon;
+      } else {
+        this.icon = null;
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {

@@ -104,6 +104,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.imageBg = "";
   }
   updated(changedProperties) {
@@ -128,11 +129,13 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-      window.addEventListener("scroll", this.scrollBy.bind(this));
+      window.addEventListener("scroll", this.scrollBy.bind(this), {
+        signal: this.windowControllers.signal,
+      });
     }, 0);
   }
   disconnectedCallback() {
-    window.removeEventListener("scroll", this.scrollBy.bind(this));
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   static get haxProperties() {

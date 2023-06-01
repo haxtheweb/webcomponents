@@ -55,6 +55,7 @@ class A11yMediaStateManager extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.players = [];
     this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
     this.__fullscreenManager = (e) => this._handleFullscreen(e.detail);
@@ -155,22 +156,29 @@ class A11yMediaStateManager extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     // listen for a player that starts playing
-    window.addEventListener("a11y-player-playing", this.__stickyManager);
+    window.addEventListener(
+      "a11y-player-playing",
+      this.__stickyManager.bind(this),
+      { signal: this.windowControllers.signal }
+    );
 
     // listen for a player toggling fullscreen mode
-    window.addEventListener("fullscreen-toggle", this._handleFullscreen);
+    window.addEventListener(
+      "fullscreen-toggle",
+      this._handleFullscreen.bind(this),
+      { signal: this.windowControllers.signal }
+    );
 
     // listen for a players added to the page
-    window.addEventListener("a11y-player", this.__playerLoader);
+    window.addEventListener("a11y-player", this.__playerLoader.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    let root = this;
-    window.removeEventListener("a11y-player", root.__playerLoader);
-    window.removeEventListener("a11y-player-playing", root.__stickyManager);
-    window.removeEventListener("fullscreen-toggle", root.__fullscreenManager);
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

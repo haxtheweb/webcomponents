@@ -1004,7 +1004,7 @@ class SimpleColorsSharedStyles extends LitElement {
         color
       );
     });
-    return result.color;
+    return result;
   }
   /**
    * determines if two shades are WCAG 2.0 AA-compliant for contrast
@@ -1074,6 +1074,7 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
   }
   return window.SimpleColorsSharedStyles.instance;
 };
-
 export const SimpleColorsSharedStylesGlobal =
-  window.SimpleColorsSharedStyles.requestAvailability();
+  typeof global !== "undefined"
+    ? new SimpleColorsSharedStyles()
+    : window.SimpleColorsSharedStyles.requestAvailability();

@@ -4,24 +4,103 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>FlashCard: flash-card Demo</title>
-    
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../flash-card.js';
+      import '../lib/flash-card-set.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 50px;
+        font-family: sans-serif;
+      }
+      .wrapper {
+        margin: 100px;
+      }
+    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic flash-card demo</h3>
-      <demo-snippet>
-        <template>
-          <flash-card>
-            This is flash-card
-          </flash-card>
-        </template>
-      </demo-snippet>
+    <button onclick="toggleLanguage();">Toggle language
+      <simple-icon id="icon" icon="flags:us" no-colorize></simple-icon>
+    </button>
+    <div class="wrapper">
+      <flash-card-set>
+      <ul>
+        <li>
+          <p slot="front">What is strawberry in Spanish?</p>
+          <p slot="back">fresa</p>
+          <p slot="image">https://loremflickr.com/320/240/strawberry</p>
+        </li>
+        <li>
+          <p slot="image">https://loremflickr.com/320/240/food</p>
+          <p slot="attributes">speak</p>
+          <p slot="front">What is food in Spanish?</p>
+          <p slot="back">comida</p>
+        </li>
+        <li>
+          <p slot="back">persona</p>
+          <p slot="front">What is person in Spanish?</p>
+          <p slot="image">https://loremflickr.com/320/240/manequin</p>
+        </li>
+      </ul>
+    </flash-card-set>
+      <br><p>-------------------------------------</p><br>
+      <script>
+        const jsonBlob = {
+          "fronts": ["What is strawberry in Spanish?", "What is penguin in Spanish?", "What is strawberry in Spanish?", "What is Bryan in Spanish?", "What is hello in Japanese?"],
+          "backs": ["fresa", "pinguino", "fresa", "bryan", "konnichiwa"],
+          "images": ["strawberry", "", "strawberry", "samurai"],
+          "back": [false, false, true, false, false],
+        }
+        var wrapper = document.querySelector('.wrapper');
+        jsonBlob['fronts'].map((card, i) => {
+          let element = document.createElement('flash-card');
+          jsonBlob['back'][i] ? element.setAttribute('back', '') : element.removeAttribute('back');
+          element.setAttribute('img-keyword', jsonBlob['images'][i]);
+          element.innerHTML = `
+            <p slot="front">${jsonBlob['fronts'][i]}</p>
+            <p slot="back">${jsonBlob['backs'][i]}</p>
+          `
+          wrapper.appendChild(element);
+        });
+      </script>
     </div>
+    <script type="module">
+      import "../flash-card.js";
+      import "../lib/flash-card-set.js";
+    </script>
+    <script>
+      // just for demonstration
+      var count = 0;
+      function toggleLanguage() {
+        count++
+        const i18store = window.I18NManagerStore.requestAvailability();
+        var icon;
+        if (count % 4 === 0) {
+          i18store.lang = "en";
+          icon = "us";
+        }
+        if (count % 4 === 1) {
+          i18store.lang = "es";
+          icon = "es";
+        }
+        if (count % 4 === 2) {
+          i18store.lang = "fr";
+          icon = "fr";
+        }
+        if (count % 4 === 3) {
+          i18store.lang = "ja";
+          icon = "jp";
+        }
+        document.getElementById("icon").icon = `flags:${icon}`;
+      }
+    </script>
   </body>
 </html>

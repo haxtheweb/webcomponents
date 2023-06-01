@@ -5,11 +5,6 @@
       "name": "portal-launcher",
       "description": "`portal-launcher`\n\nProperties:\n\n  * `tag` {`string`} - ",
       "attributes": []
-    },
-    {
-      "name": "portal-launcher",
-      "description": "`portal-launcher`\n\nProperties:\n\n  * `tag` {`string`} - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

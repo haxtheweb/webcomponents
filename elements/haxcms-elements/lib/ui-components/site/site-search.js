@@ -9,6 +9,7 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-tag.js";
 
 /**
  * `site-search`
@@ -81,6 +82,15 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
           --simple-fields-accent-color: var(--site-search-text-color, #000);
           color: var(--site-search-placeholder-color, #222);
         }
+        .page-title-icon {
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        simple-tag {
+          margin: 0 4px;
+        }
       `,
     ];
   }
@@ -140,18 +150,28 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
       ></loading-indicator>
       ${this.__results.map(
         (item) => html`
-          <a
-            class="result"
-            .href="${item.location}"
-            @click="${this.selectionMade}"
-          >
+          <a class="result" .href="${item.slug}" @click="${this.selectionMade}">
             <div class="title">
+              ${item.icon
+                ? html`<simple-icon-lite
+                    class="page-title-icon"
+                    icon="${item.icon}"
+                  ></simple-icon-lite>`
+                : ``}
               ${item.title}<span
                 ?hidden="${!this.showPath}"
                 class="link-text"
                 aria-hidden="true"
                 >(${item.location})</span
               >
+              ${item.tags && item.tags != ""
+                ? html`${item.tags
+                    .split(",")
+                    .map(
+                      (tag) =>
+                        html`<simple-tag value="${tag.trim()}"></simple-tag>`
+                    )}`
+                : ``}
             </div>
             <div class="date" ?hidden="${!this.showDate}">
               <simple-datetime format="M jS" .timestamp="${item.created}" unix
@@ -227,8 +247,21 @@ class SiteSearch extends HAXCMSI18NMixin(LitElement) {
           }
         }
         item.breadcrumb = breadcrumb;
+        if (fullItem) {
+          item.slug = fullItem.slug;
+          // look for type / tags to jaz up results
+          if (fullItem.metadata && fullItem.metadata.pageType) {
+            item.type = fullItem.metadata.pageType;
+          }
+          if (fullItem.metadata && fullItem.metadata.icon) {
+            item.icon = fullItem.metadata.icon;
+          }
+          if (fullItem.metadata && fullItem.metadata.tags) {
+            item.tags = fullItem.metadata.tags;
+          }
+        }
+        console.log(item);
       });
-
       this.__results = [...results];
     } else {
       this.__results = [];

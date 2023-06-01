@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
+      "description": "`hal-9000`\n\nEvents:\n\n  * `super-daemon-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - \n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
       "attributes": [
         {
           "name": "auto",
@@ -16,12 +16,17 @@
           "valueSet": "v"
         },
         {
+          "name": "toast",
+          "description": "`toast` {`boolean`} - \n\nProperty: toast\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "commands",
           "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
         },
         {
           "name": "responds-to",
-          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (hal)"
+          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (merlin)"
         },
         {
           "name": "debug",
@@ -39,6 +44,14 @@
         {
           "name": "language",
           "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
+        },
+        {
+          "name": "onsuper-daemon-toast-hide",
+          "description": "`super-daemon-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsuper-daemon-toast-show",
+          "description": "`super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - "
         },
         {
           "name": "onhal-9000-online",
@@ -63,51 +76,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
-      "attributes": [
-        {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - Start automatically\n\nProperty: auto",
-          "valueSet": "v"
-        },
-        {
-          "name": "enabled",
-          "description": "`enabled` {`boolean`} - Status of listening\n\nProperty: enabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "commands",
-          "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
-        },
-        {
-          "name": "responds-to",
-          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (hal)"
-        },
-        {
-          "name": "debug",
-          "description": "`debug` {`boolean`} - Debug mode for annyang\n\nProperty: debug\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "pitch",
-          "description": "`pitch` {`number`} - Pitch of speech\n\nProperty: pitch\n\nDefault: 0.9"
-        },
-        {
-          "name": "rate",
-          "description": "`rate` {`number`} - Rate of speech\n\nProperty: rate\n\nDefault: 0.9"
-        },
-        {
-          "name": "language",
-          "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
-        },
-        {
-          "name": "onhal-9000-online",
-          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
         }
       ]
     }

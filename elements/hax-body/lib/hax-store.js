@@ -1,5 +1,9 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, nothing } from "lit";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+import {
+  HaxSchematizer,
+  HaxElementizer,
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import {
   winEventsElement,
   getRange,
@@ -33,6 +37,8 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 import "@lrnwebcomponents/iframe-loader/iframe-loader.js";
+import { learningComponentTypes } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+
 import "./hax-app.js";
 
 const FALLBACK_LANG = "en";
@@ -53,21 +59,59 @@ function sessionStorageSet(name, newItem) {
   }
 }
 
+/**
+ * @todo need some way of defining these as far as the application bringing these in as opposed to hard coded here
+ */
 const DataStyleDecoration = {
   attribute: "data-style-decoration",
   title: "Decoration",
-  description: "Some built in styles to offset the material",
+  description: "Some built in styles to highlight material",
   inputMethod: "select",
-  //multiple: true,
   options: {
     "": "",
-    "highlight red": "Highlight (red)",
-    "highlight blue": "Highlight (blue)",
-    "highlight green": "Highlight (green)",
-    "highlight orange": "Highlight (orange)",
-    "highlight purple": "Highlight (purple)",
+    "mark-blue": "Marker - blue",
+    "mark-brown": "Marker - gray",
+    "mark-pink": "Marker - pink",
+    "mark-red": "Marker - purple",
+    "mark-teal": "Marker - green",
+    "mark-yellow": "Marker - yellow",
   },
 };
+const DataStyleBlockDecoration = {
+  attribute: "data-style-block-decoration",
+  title: "Block Decoration",
+  description: "Some built in styles to offset material",
+  inputMethod: "select",
+  options: {
+    "": "",
+    "callout-blue": "Callout - blue",
+    "callout-brown": "Callout - brown",
+    "callout-pink": "Callout - pink",
+    "callout-red": "Callout - purple",
+    "callout-teal": "Callout - green",
+    "callout-yellow": "Callout - yellow",
+  },
+};
+
+const DataInstructionalAction = [
+  {
+    attribute: "data-instructional-action",
+    title: "Type",
+    description: "Indicates instructional context to users visually",
+    inputMethod: "select",
+    options: {
+      "": "-- none --",
+      ...learningComponentTypes,
+    },
+  },
+  {
+    attribute: "data-id-emphasize",
+    title: "Alternate visual treatment",
+    description:
+      "Apply a different visual treatment to the element but with same meaning",
+    inputMethod: "boolean",
+  },
+];
 
 /**
  * @element hax-store
@@ -94,7 +138,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async runHook(el, op, data = []) {
     if (this.testHook(el, op)) {
-      //console.log('running hook: ' + op);
+      //console.warn('running hook: ' + op);
       if (this.HTMLPrimativeTest(el)) {
         return await this.primativeHooks[el.tagName.toLowerCase()][op](...data);
       }
@@ -440,14 +484,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   static get properties() {
     return {
       ...super.properties,
-      voiceDebug: {
-        type: Boolean,
-        attribute: "voice-debug",
-      },
-      voiceRespondsTo: {
-        type: String,
-        attribute: "voice-responses-to",
-      },
       /**
        * skipHAXConfirmation
        */
@@ -616,6 +652,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "sub",
           "sup",
           "span",
+          "mark",
           "i",
           "bold",
           "em",
@@ -630,7 +667,42 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
     return false;
   }
-
+  /**
+   * see if this is an inline element
+   */
+  isInlineElement(node) {
+    let tag;
+    // resolve HAXelements vs nodes
+    if (node != null && node.tagName) {
+      tag = node.tagName.toLowerCase();
+    } else if (node != null && node.tag) {
+      tag = node.tag.toLowerCase();
+    }
+    if (tag && this.validTagList.includes(tag)) {
+      if (
+        (this.haxSchemaFromTag(tag) &&
+          this.haxSchemaFromTag(tag).meta &&
+          this.haxSchemaFromTag(tag).meta.inlineOnly) ||
+        [
+          "a",
+          "strike",
+          "u",
+          "b",
+          "sub",
+          "sup",
+          "span",
+          "mark",
+          "i",
+          "bold",
+          "em",
+          "strong",
+        ].includes(tag)
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
   /**
    * test for being a valid grid plate, li is here because
    * nested lists make this really complicated
@@ -926,13 +998,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return new URL(url).origin !== location.origin;
   }
   _editModeChanged(newValue) {
-    if (this.__hal) {
-      if (newValue && this.globalPreferences.haxVoiceCommands) {
-        this.__hal.auto = true;
-      } else {
-        this.__hal.auto = false;
-      }
-    }
     // trap for very slow loading environments that might miss on initial setup timing
     if (
       newValue &&
@@ -946,12 +1011,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
   async _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
-    if (
-      this.__storageDataProcessed &&
-      newValue &&
-      typeof newValue.haxVoiceCommands !== typeof undefined &&
-      this.ready
-    ) {
+    if (this.__storageDataProcessed && newValue && this.ready) {
       let storageData = this.storageData;
       // ensure storageData is an object
       if (typeof storageData === "string") {
@@ -960,33 +1020,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      // import voice command stuff in the background if used selects it
-      // this is experimental / aggressive import of tech so defer to
-      // if they activate it
-      if (newValue.haxVoiceCommands && !this.__hal) {
-        // @todo only activate if the setting to use it is in place
-        import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
-          // initialize voice commands
-          this._initVoiceCommands();
-          // inject tag into shadowRoot after we import the definition
-          this.__hal = document.createElement("hal-9000");
-          this.__hal.respondsTo = this.voiceRespondsTo;
-          this.__hal.debug = this.voiceDebug;
-          this.__hal.auto = true;
-          this.shadowRoot.appendChild(this.__hal);
-          // establish the initial commands, even if they were captured
-          // prior to usage since we held onto them in this variable
-          this.__hal.commands = { ...this.voiceCommands };
-        });
-      }
-      // only mess w/ hal if enabled
-      if (this.__hal) {
-        if (newValue.haxVoiceCommands && this.editMode) {
-          this.__hal.auto = true;
-        } else {
-          this.__hal.auto = false;
-        }
-      }
       // only translate if we are ready, and editing, and have a language other than default
       if (newValue.haxLang && HAXStore.editMode) {
         clearTimeout(this._debounceLang);
@@ -1050,6 +1083,50 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           } else {
             this.activeNode.style.width = detail.value + "%";
           }
+          changed = true;
+          break;
+        case "hax-style-setting-change":
+          Object.keys(detail.value).forEach((key) => {
+            if (!key.startsWith("__")) {
+              // EVERYTHING is removed THEN added a microtask later to avoid sticking in style attribute
+              this.activeNode.style.removeProperty(key);
+              if (key === "background-color") {
+                this.activeNode.style.removeProperty("color");
+              }
+              setTimeout(() => {
+                if (key === "background-color") {
+                  this.activeNode.style[
+                    key
+                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-1)`;
+                  this.activeNode.style[
+                    "color"
+                  ] = `var(--simple-colors-default-theme-${detail.value[key]}-12)`;
+                } else if (key === "text-align") {
+                  this.activeNode.style[key] = detail.value[key];
+                } else if (key === "font-size") {
+                  switch (detail.value[key]) {
+                    case "x-small":
+                      this.activeNode.style[key] = "0.8em";
+                      break;
+                    case "small":
+                      this.activeNode.style[key] = "0.9em";
+                      break;
+                    case "large":
+                      this.activeNode.style[key] = "1.2em";
+                      break;
+                    case "x-large":
+                      this.activeNode.style[key] = "1.4em";
+                      break;
+                    case "xx-large":
+                      this.activeNode.style[key] = "2em";
+                      break;
+                  }
+                } else {
+                  this.activeNode.style[key] = detail.value[key] + "px";
+                }                  
+              }, 0);
+            }
+          });
           changed = true;
           break;
       }
@@ -1206,6 +1283,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         })
       );
+      // normalize the rich teext editor prompts w/ the rest of HAX
+      let rtep = window.RichTextEditorPrompt.requestAvailability();
+      if (rtep) {
+        rtep.shadowRoot.querySelector("#formfields").schematizer =
+            HaxSchematizer;
+        rtep.shadowRoot.querySelector("#formfields").elementizer =
+          HaxElementizer;
+      }
       // these operations can be hidden in CMS environments
       if (haxTray.shadowRoot.querySelector("#haxcancelbutton")) {
         // associate the cancel button in the tray to the dialog
@@ -1242,128 +1327,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
     }
   }
-  /**
-   * Build a list of common voice commands
-   */
-  _initVoiceCommands() {
-    this.__voiceInit = true;
-    this.voiceCommands[`scroll up ${this.voiceRespondsTo}`] = () => {
-      window.scrollBy({
-        top: -(window.innerHeight * 0.5),
-        left: 0,
-        behavior: "smooth",
-      });
-    };
-    this.voiceCommands[`scroll (down) ${this.voiceRespondsTo}`] = () => {
-      window.scrollBy({
-        top: window.innerHeight * 0.5,
-        left: 0,
-        behavior: "smooth",
-      });
-    };
-    this.voiceCommands[`scroll to bottom ${this.voiceRespondsTo}`] = () => {
-      window.scrollTo(0, document.body.scrollHeight);
-    };
-    this.voiceCommands[`scroll to top ${this.voiceRespondsTo}`] = () => {
-      window.scrollTo(0, 0);
-    };
-    /**
-     * Support for focusing active content and typing in it
-     */
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (show)(focus) active (element)(content)`
-    ] = () => {
-      try {
-        this._positionCursorInNode(this.activeNode);
-      } catch (e) {}
-    };
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (focus) previous (element)(content)`
-    ] = () => {
-      if (this.activeNode.previousElementSibling) {
-        this.activeNode = this.activeNode.previousElementSibling;
-        this.write("activeNode", this.activeNode, this);
-        this._positionCursorInNode(this.activeNode);
-      } else {
-        this.speak("You are at the top of the document");
-      }
-    };
-    this.voiceCommands[
-      `${this.voiceRespondsTo} (focus) next (element)(content)`
-    ] = () => {
-      if (this.activeNode.nextElementSibling) {
-        this.activeNode = this.activeNode.nextElementSibling;
-        this.write("activeNode", this.activeNode, this);
-        this._positionCursorInNode(this.activeNode);
-      } else {
-        this.speak("You are at the bottom of the document");
-      }
-    };
-    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = (e) => {
-      if (this.isTextElement(this.activeNode)) {
-        try {
-          let range = this._positionCursorInNode(this.activeNode);
-          let text = document.createTextNode(e);
-          range.deleteContents();
-          range.insertNode(text);
-        } catch (e) {
-          this.speak("That didn't work");
-          console.warn(e);
-        }
-      } else {
-        this.speak(
-          "I'm sorry but I can only type in text areas. Try saying Insert Paragraph and try again."
-        );
-      }
-    };
-    // trolling
-    this.voiceCommands[`hey ${this.voiceRespondsTo}`] = () => {
-      this.speak("Yeah what do you want");
-    };
-    // trolling
-    this.voiceCommands[`${this.voiceRespondsTo} now your name is *splat`] = (
-      text
-    ) => {
-      const past = this.voiceRespondsTo;
-      this.speak(`I used to be named ${past} but you can call me ${text} now.`);
-      this.voiceRespondsTo = `(${text})`;
-      // @todo this needs to now update the previous commands somehow to match
-      // the new activation name
-    };
-  }
-  /**
-   * Speak wrapper on hal to present as text too
-   */
-  speak(text) {
-    if (this.__hal && this.__hal.speak) {
-      this.__hal.speak(text);
-    }
-    // always show for accessibility
-    this.toast(`${this.voiceRespondsTo}: ${text}`);
-  }
-  /**
-   * allow uniform method of adding voice commands
-   */
-  addVoiceCommand(command, context, callback) {
-    if (context) {
-      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
-      this.voiceCommands[command] = context[callback].bind(context);
-      if (this.__voiceInit) {
-        this.__hal.commands = { ...this.voiceCommands };
-      }
-    }
-  }
-  /**
-   * event driven version
-   */
-  _addVoiceCommand(e) {
-    // without context it's almost worthless so try to fallback on where it came from
-    let target = e.detail.context;
-    if (!target) {
-      target = e.target;
-    }
-    this.addVoiceCommand(e.detail.command, target, e.detail.callback);
-  }
+
   /**
    * Position cursor at the start of the position of the requested node
    */
@@ -1852,6 +1816,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "p",
       "div",
       "span",
+      "mark",
       "table",
       "caption",
       "sup",
@@ -1929,8 +1894,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
-    // custom
-    SuperDaemonInstance.icon = "hax:hax2022";
+    // customizations to daemon
+    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition ||
+      window.oSpeechRecognition)) {
+      SuperDaemonInstance.voiceSearch = true;
+    }
+    SuperDaemonInstance.icon = "hax:wizard-hat";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
       if (this.ready && this.editMode) {
@@ -1938,6 +1910,141 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
+    SuperDaemonInstance.questionTags = [
+      {
+        value: "*",
+        label: "What can I do?",
+      },
+      {
+        value: "media",
+        label: "Where can I find media?",
+      },
+      {
+        value: "edit",
+        label: "Edit page",
+      },
+    ];
+
+    // emoji picker
+    SuperDaemonInstance.defineOption({
+      title: "Insert emoji",
+      icon: "editor:insert-emoticon",
+      tags: ["emoji"],
+      value: {
+        name: "Insert emoji",
+        context: "/",
+        program: async (input, values) => {
+          let results = [];
+          let txt = document.createElement("textarea");
+          await Object.keys(window.SimplePickerEmojis).forEach(
+            async (category) => {
+              await window.SimplePickerEmojis[category].forEach(
+                async (emoji) => {
+                  if (input == "" || emoji.description.includes(input)) {
+                    txt.innerHTML = emoji.value;
+                    results.push({
+                      title: emoji.description,
+                      textCharacter: txt.value,
+                      tags: [category],
+                      value: {
+                        target: this,
+                        method: "_insertTextResult",
+                        args: [txt.value],
+                      },
+                      context: ["/", "/HAX/text/emoji/" + txt.value],
+                      eventName: "super-daemon-element-method",
+                      path: "/HAX/text/emoji/" + txt.value,
+                    });
+                  }
+                }
+              );
+            }
+          );
+          return results;
+        },
+      },
+      context: ["HAX", "/"],
+      eventName: "super-daemon-run-program",
+      path: "/HAX/text/emoji",
+    });
+
+    // symbol picker
+    SuperDaemonInstance.defineOption({
+      title: "Insert symbol",
+      icon: "editor:functions",
+      tags: ["symbol"],
+      value: {
+        name: "Insert symbol",
+        context: "/",
+        program: async (input, values) => {
+          let results = [];
+          let txt = document.createElement("textarea");
+          await Object.keys(window.SimplePickerSymbols).forEach(
+            async (category) => {
+              await window.SimplePickerSymbols[category].forEach(
+                async (symbol) => {
+                  if (input == "" || category.includes(input)) {
+                    txt.innerHTML = symbol.value;
+                    results.push({
+                      title: `${category}: ${txt.value}`,
+                      textCharacter: txt.value,
+                      tags: [category],
+                      value: {
+                        target: this,
+                        method: "_insertTextResult",
+                        args: [txt.value],
+                      },
+                      context: ["/", "/HAX/text/symbol/" + txt.value],
+                      eventName: "super-daemon-element-method",
+                      path: "/HAX/text/symbol/" + txt.value,
+                    });
+                  }
+                }
+              );
+            }
+          );
+          return results;
+        },
+      },
+      context: ["HAX", "/"],
+      eventName: "super-daemon-run-program",
+      path: "/HAX/text/symbol",
+    });
+
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "hax:hax2022",
+      tags: ["Bug report", "github", "git", "community", "issue queue"],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["bug", "POP,bug"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+      context: ["CMS", "HAX"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Idea / Feature request",
+      icon: "hax:hax2022",
+      tags: [
+        "Feature request",
+        "idea",
+        "github",
+        "git",
+        "community",
+        "issue queue",
+      ],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["feature", "POP,enhancement"],
+      },
+      context: ["logged-in", "CMS", "HAX"],
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+    });
     // container for HTML primatives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
@@ -1947,6 +2054,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       basePath: import.meta.url + "/../../",
       locales: ["es"],
     });
+    this.appSearch = null;
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
@@ -1958,12 +2066,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
-      "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
-      "hax-add-voice-command": "_addVoiceCommand",
       "hax-refresh-tray-form": "refreshActiveNodeForm",
     };
     // prevent leaving if we are in editMode
@@ -1999,8 +2105,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         margin: 8px 2px;
       }`,
     });
-    this.voiceRespondsTo = "(worker)";
-    this.voiceCommands = {};
     this.skipHAXConfirmation = false;
     this.storageData = {};
     this.appStore = {
@@ -2036,7 +2140,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeApp = {};
     this.connectionRewrites = {};
     // change this in order to debug voice commands
-    this.voiceDebug = false;
     this.daemonCommands = {};
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
     // these are basic markdown shortcuts
@@ -2092,6 +2195,65 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this._editModeChanged(toJS(this.editMode));
     });
   }
+  // select the text in question and insert in the correct location
+  async _insertTextResult(text) {
+    this.activeNode.focus();
+    // @todo seems to insert at the end always
+    SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
+    SuperDaemonInstance.activeRange.collapse(true);
+    SuperDaemonInstance.activeSelection.removeAllRanges();
+    SuperDaemonInstance.activeSelection.addRange(
+      SuperDaemonInstance.activeRange
+    );
+    SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
+    SuperDaemonInstance.activeSelection.collapseToEnd();
+    setTimeout(() => {
+      if (this.activeNode.textContent == "") {
+        this.activeNode.textContent = text;
+      } else {
+        document.execCommand("insertHTML", false, text);
+      }
+    }, 0);
+  }
+
+  async _haxStoreContribute(type, tags, daemonTerm = null) {
+    let body = "";
+    if (type == "merlin") {
+      var title = `[${type}] New command request from HAX daemon`;
+      body = `Location: ${window.location.href}
+Merlin command: ${daemonTerm}
+What did you want merlin to do?
+`;
+    } else {
+      var title = `[${type}] User report from HAX daemon`;
+      body = `Location: ${window.location.href}
+Browser: ${navigator.userAgent}
+OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+Screen: ${window.screen.width}x${window.screen.height}
+Window size: ${window.innerWidth}x${window.innerHeight}
+`;
+      if (navigator.getBattery) {
+        const stats = await navigator.getBattery();
+        body += `Battery: ${stats.level * 100}%
+`;
+      }
+      // some things report the "type" of internet connection speed
+      // for terrible connections lets save frustration
+      if (navigator.connection && navigator.connection.effectiveType) {
+        body += `Connection: ${navigator.connection.effectiveType}
+`;
+      }
+      body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
+`;
+    }
+    window.open(
+      `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
+        body
+      )}`,
+      "_blank"
+    );
+  }
+
   /**
    * Build HAX property definitions for primitives that we support.
    * @note if someone wants to MANUALLY inject definitions similar
@@ -2240,7 +2402,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         },
       },
       settings: {
-        advanced: [DataStyleDecoration],
+        configure: [DataStyleBlockDecoration],
       },
       demoSchema: [
         {
@@ -2282,7 +2444,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             description: "Caption for the figure",
             inputMethod: "code-editor",
           },
-          DataStyleDecoration,
+          DataStyleBlockDecoration,
         ],
       },
       demoSchema: [
@@ -2294,6 +2456,58 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ],
     };
     this.setHaxProperties(figcaption, "figcaption");
+    let mark = {
+      type: "element",
+      editingElement: "core",
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      contentEditable: true,
+      gizmo: {
+        title: "Highlight",
+        description: "Highlight text within a block of content",
+        icon: "editor:highlight",
+        color: "yellow",
+        tags: [
+          "Content",
+          "text",
+          "highlight",
+          "mark",
+          "html",
+        ],
+        handles: [],
+        meta: {
+          author: "W3C",
+          hidden: true,
+        },
+      },
+      settings: {
+        configure: [
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text of the highlight",
+            inputMethod: "textfield",
+            required: true,
+          },
+          DataStyleDecoration,
+        ],
+        advanced: [
+         
+        ],
+        developer: [
+          
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "mark",
+          content: "Highlight me",
+          properties: {},
+        },
+      ],
+    };
+    this.setHaxProperties(mark, "mark");
     let ahref = {
       type: "element",
       editingElement: "core",
@@ -2307,13 +2521,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "icons:link",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Resource",
           "link",
           "a",
           "url",
           "html",
           "href",
-          "resource",
           "address",
           "http",
         ],
@@ -2355,6 +2568,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               _parent: "Parent window - _parent",
             },
           },
+        ],
+        developer: [
           {
             attribute: "title",
             title: "Title text",
@@ -2391,13 +2606,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let p = {
       type: "element",
       editingElement: "core",
-      // comment back in when ready to keep cleaning up shadowRoot resolution of focus
-      /*editingElement: {
-        tag: "simple-autocomplete-text-trigger",
-        import:
-          "@lrnwebcomponents/simple-autocomplete/lib/simple-autocomplete-text-trigger.js",
-        callback: this.setupAutocomplete.bind(this),
-      },*/
       canScale: false,
       canPosition: false,
       canEditSource: true,
@@ -2407,7 +2615,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        tags: ["Content", "p", "paragraph", "text", "html"],
+        tags: ["Text", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -2421,8 +2629,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         },
       },
       settings: {
-        configure: [],
-        advanced: [DataStyleDecoration],
+        configure: [DataStyleBlockDecoration],
+        advanced: [],
       },
       demoSchema: [
         {
@@ -2450,7 +2658,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "image:grid-on",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Instructional",
           "table",
           "data",
           "html",
@@ -2491,7 +2699,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         icon: "hax:iframe",
         color: "blue-grey",
         tags: [
-          "Content",
+          "Resource",
           "iframe",
           "content",
           "url",
@@ -2652,10 +2860,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     };
     for (let tag in prims) {
       let primContentDemo = "";
-      if (tag == "h2") {
+      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
       } else if (tag == "ul" || tag == "ol") {
-        primContentDemo = "<li>Item 1</li><li>Item 2</li>";
+        primContentDemo = "<li>Item</li><li>Item</li>";
       }
       this.setHaxProperties(
         {
@@ -2668,10 +2876,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
-            tags: ["Content", tag, "html", "text"],
+            tags: ["Text", tag, "html", "text"],
             handles: prims[tag].handles || [],
             meta: {
-              author: "HAXTheWeb core team",
+              author: "W3C",
               inlineOnly: [
                 "em",
                 "b",
@@ -2690,8 +2898,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             },
           },
           settings: {
-            configure: [],
-            advanced: [DataStyleDecoration],
+            configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
+              ? [DataStyleDecoration,...DataInstructionalAction]
+              : [DataStyleDecoration],
+            advanced: [],
           },
           demoSchema: [
             {
@@ -2722,8 +2932,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         },
       },
       settings: {
-        configure: [],
-        advanced: [DataStyleDecoration],
+        configure: [...DataInstructionalAction],
+        advanced: [],
       },
       demoSchema: [
         {
@@ -2770,25 +2980,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     setTimeout(() => {
       editor.disabled = true;
     }, 0);
-  }
-  /**
-   * set up the autocomplete contextual settings
-   */
-  setupAutocomplete(editor) {
-    editor.triggers = {
-      "!": (el) => {
-        let triggers = [];
-        this.gizmoList.forEach((item) => {
-          triggers.push({
-            tags: item.tags && item.tags.length ? item.tags.join(" ") : "",
-            icon: item.icon,
-            label: item.title,
-            value: item.tag,
-          });
-        });
-        return triggers;
-      },
-    };
   }
   /**
    * Insert content in the body.
@@ -2985,7 +3176,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
   // divert this event at haxTray
   _superDaemonInsert(e) {
-    this.haxTray._processTrayEvent(e);
+    if (
+      SuperDaemonInstance.programTarget &&
+      e.detail.properties &&
+      (e.detail.properties.src || e.detail.properties.source)
+    ) {
+      SuperDaemonInstance.programTarget.value =
+        e.detail.properties.src || e.detail.properties.source;
+    } else {
+      this.haxTray._processTrayEvent(e);
+    }
+    SuperDaemonInstance.programTarget = null;
   }
 
   /**
@@ -3008,59 +3209,119 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
 
   /**
-   * Write store event callback.
-   */
-  _writeHaxStore(e) {
-    // ensure we have a valid store write
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property &&
-      e.detail.owner
-    ) {
-      // only update US if we didn't originate this message
-      if (e.detail.owner !== this) {
-        if (e.detail.value == null) {
-          this[e.detail.property] = null;
-        } else if (typeof e.detail.value === "object") {
-          this[e.detail.property] = {};
-        }
-        this[e.detail.property] = e.detail.value;
-      }
-      // tell everyone regardless
-      this.dispatchEvent(
-        new CustomEvent("hax-store-property-updated", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            property: e.detail.property,
-            value: e.detail.value,
-            owner: e.detail.owner,
-          },
-        })
-      );
-    }
-  }
-
-  /**
    * Notice that an app was set in HAX; register it
    */
   _haxStoreRegisterApp(e) {
     if (e.detail) {
-      e.detail.index = this.appList.length;
-      this.appList = [...this.appList, e.detail];
+      const app = e.detail;
+      app.index = this.appList.length;
+      this.appList = [...this.appList, app];
       this.write("appList", toJS(this.appList), this);
-      // preconnect apps at registration time
+      let defaultType = "media";
       if (
-        e.detail.connection &&
-        e.detail.connection.protocol &&
-        e.detail.connection.url
+        app.connection.operations &&
+        app.connection.operations.browse &&
+        app.connection.operations.browse.resultMap &&
+        app.connection.operations.browse.resultMap.defaultGizmoType
       ) {
+        defaultType =
+          app.connection.operations.browse.resultMap.defaultGizmoType;
+      }
+      // slash command context
+      SuperDaemonInstance.defineOption({
+        title: "Search " + app.details.title,
+        icon: app.details.icon,
+        tags: ["Search", ...app.details.tags, defaultType],
+        more:
+          app.details.tos && app.details.tos.length > 0
+            ? html`<div class="tos-text">Terms of service:</div>
+                <ul class="tos-text">
+                  ${app.details.tos.map((item) => {
+                    return html`
+                      <li>
+                        <a
+                          href="${item.link}"
+                          target="_blank"
+                          rel="noopener nofollow noreferrer"
+                          >${item.title}</a
+                        >
+                      </li>
+                    `;
+                  })}
+                </ul>`
+            : null,
+        value: {
+          name: "Search " + app.details.title,
+          context: "/",
+          index: app.index,
+          detail: app,
+          program: async (input, values) => {
+            const t1 = toJS(HAXStore.activeApp);
+            const t2 = toJS(HAXStore.appList[values.index]);
+            if (t1.index != t2.index) {
+              HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
+            }
+            let queryParam = Object.keys(
+              values.detail.connection.operations.browse.search
+            )[0];
+            let searchDataMap = {};
+            searchDataMap[queryParam] = input;
+            HAXStore.appSearch.updateSearchValues(searchDataMap);
+            let data = await HAXStore.appSearch.loadAppData();
+            let results = [];
+            await data.forEach(async (item) => {
+              var map = item.map;
+              var gizmoType = item.type;
+              // sanity check as well as guessing based on type if we absolutely have to
+              if (
+                (!gizmoType ||
+                  gizmoType == null ||
+                  gizmoType == "" ||
+                  gizmoType == "undefined") &&
+                map.source
+              ) {
+                gizmoType = HAXStore.guessGizmoType(map);
+              }
+              let haxElements = HAXStore.guessGizmo(
+                gizmoType,
+                map,
+                false,
+                true
+              );
+              // see if we got anything
+              if (haxElements.length > 0) {
+                if (typeof haxElements[0].tag !== typeof undefined) {
+                  haxElements[0].nextToActive = true;
+                }
+              }
+              results.push({
+                title: item.title,
+                image: item.image,
+                tags: [],
+                value: {
+                  value: haxElements[0].tag,
+                  eventName: "insert-tag",
+                  properties: haxElements[0].properties,
+                },
+                context: ["/", "/sources/" + app.details.title.toLowerCase()],
+                eventName: "hax-super-daemon-insert-tag",
+                path: "/sources/" + app.details.title.toLowerCase(),
+              });
+            });
+            return results;
+          },
+        },
+        context: ["HAX", "/"],
+        eventName: "super-daemon-run-program",
+        path: "/sources/" + app.details.title.toLowerCase(),
+        priority: app.details.title.toLowerCase() === "local files" ? -100 : 0,
+      });
+      // preconnect apps at registration time
+      if (app.connection && app.connection.protocol && app.connection.url) {
         let preconnectlink = document.createElement("link");
         preconnectlink.rel = "preconnect";
         preconnectlink.href =
-          e.detail.connection.protocol + "://" + e.detail.connection.url;
+          app.connection.protocol + "://" + app.connection.url;
         document.head.appendChild(preconnectlink);
       }
       // we don't care about this after it's launched
@@ -3543,6 +3804,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let gizmo = detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = detail.tag;
+
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
@@ -3552,15 +3814,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             SuperDaemonInstance.defineOption({
               title: gizmo.title,
               icon: gizmo.icon,
-              key: gizmo.shortcutKey
-                ? `${this.daemonKeyCombo} ${gizmo.shortcutKey}`
-                : null,
               tags: gizmo.tags || [],
               value: {
                 value: gizmo.tag,
                 eventName: "insert-tag",
                 demoSchema: true,
               },
+              context: ["HAX"],
               eventName: "hax-super-daemon-insert-tag",
               path: "HAX/insert/block/" + gizmo.tag,
             });

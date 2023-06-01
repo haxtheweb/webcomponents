@@ -20,18 +20,19 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "CSS reset and additional base styles for lrnwebcomponents and apps",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrn-css-reset.js",
   "module": "lrn-css-reset.js",
   "umd": "lrn-css-reset.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -44,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^2.6.1",
+    "lit": "^2.7.4",
     "modern-css-reset": "*"
   },
   "devDependencies": {
@@ -67,5 +68,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

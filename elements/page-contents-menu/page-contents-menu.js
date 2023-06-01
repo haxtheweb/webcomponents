@@ -328,6 +328,7 @@ class PageContentsMenu extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // default is to use the parent container unless a content container
     // is defined otherwise. This would imply usage of placing this at the TOP of
     // content area though next, pervious and none are valid
@@ -570,11 +571,13 @@ class PageContentsMenu extends LitElement {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
-    window.addEventListener("scroll", this._applyScrollDetect.bind(this));
+    window.addEventListener("scroll", this._applyScrollDetect.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
 
   disconnectedCallback() {
-    window.removeEventListener("scroll", this._applyScrollDetect.bind(this));
+    this.windowControllers.abort();
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

@@ -54,6 +54,7 @@ class ExifData extends HTMLElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.nodeData = [];
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath + "lib/exif-js.js";
@@ -70,7 +71,8 @@ class ExifData extends HTMLElement {
       ESGlobalBridgeStore.load("exif-js", `${this.basePath}`);
       window.addEventListener(
         "es-bridge-exif-js-loaded",
-        this._onExifJsLoaded.bind(this)
+        this._onExifJsLoaded.bind(this),
+        { signal: this.windowControllers.signal }
       );
     }
     this.template = document.createElement("template");
@@ -81,10 +83,7 @@ class ExifData extends HTMLElement {
    * Library loaded
    */
   _onExifJsLoaded() {
-    window.removeEventListener(
-      "es-bridge-exif-js-loaded",
-      this._onExifJsLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     this.__ready = true;
     this.updateExif();
   }

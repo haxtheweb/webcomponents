@@ -251,7 +251,7 @@ class CMSViews extends PolymerElement {
         description: "CMS views rendered on the backend",
         icon: "icons:view-module",
         color: "light-blue",
-        tags: ["Magic", "elmsln", "cms", "block"],
+        tags: ["Other", "elmsln", "cms", "block"],
         handles: [
           {
             type: "cmsviews",

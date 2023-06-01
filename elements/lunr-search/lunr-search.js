@@ -94,6 +94,7 @@ class LunrSearch extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.method = "GET";
     this.noStopWords = false;
     this.dataSource = null;
@@ -110,8 +111,10 @@ class LunrSearch extends LitElement {
     const location = `${this.basePath}lunr/lunr.js`;
     window.addEventListener(
       "es-bridge-lunr-loaded",
-      this._lunrLoaded.bind(this)
+      this._lunrLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.ESGlobalBridge.requestAvailability().load("lunr", location);
     if (window.ESGlobalBridge.requestAvailability().imports["lunr"] === true) {
       setTimeout(() => {
@@ -179,19 +182,13 @@ class LunrSearch extends LitElement {
     });
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-lunr-loaded",
-      this._lunrLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   _lunrLoaded(e) {
     // callback when loaded
     this.__lunrLoaded = true;
-    window.removeEventListener(
-      "es-bridge-lunr-loaded",
-      this._lunrLoaded.bind(this)
-    );
+    this.windowControllers.abort();
   }
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -50,12 +50,12 @@ class MapMenu extends LitElement {
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
           border-left: 16px solid
-            var(--map-menu-expanded-color-depth-1, rgba(0, 0, 0, 0.1));
+            var(--map-menu-expanded-color-depth-1, rgba(0, 0, 0, 0.02));
         }
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
           border-left: 16px solid
-            var(--map-menu-expanded-color-depth-2, rgba(0, 0, 0, 0.15));
+            var(--map-menu-expanded-color-depth-2, rgba(0, 0, 0, 0.04));
         }
         map-menu-builder
           map-menu-builder
@@ -68,7 +68,7 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-submenu {
           border-left: 16px solid
-            var(--map-menu-expanded-color-depth-3, rgba(0, 0, 0, 0.2));
+            var(--map-menu-expanded-color-depth-3, rgba(0, 0, 0, 0.06));
         }
         map-menu-builder
           map-menu-builder
@@ -83,19 +83,19 @@ class MapMenu extends LitElement {
           map-menu-builder
           map-menu-submenu {
           border-left: 16px solid
-            var(--map-menu-expanded-color-depth-4, rgba(0, 0, 0, 0.25));
+            var(--map-menu-expanded-color-depth-4, rgba(0, 0, 0, 0.08));
         }
 
         map-menu-builder map-menu-submenu[opened] {
           --map-menu-border-depth: var(
             --map-menu-expanded-color-depth-1,
-            rgba(0, 0, 0, 0.1)
+            rgba(0, 0, 0, 0.02)
           );
         }
         map-menu-builder map-menu-builder map-menu-submenu[opened] {
           --map-menu-border-depth: var(
             --map-menu-expanded-color-depth-2,
-            rgba(0, 0, 0, 0.15)
+            rgba(0, 0, 0, 0.04)
           );
         }
         map-menu-builder
@@ -104,7 +104,7 @@ class MapMenu extends LitElement {
           map-menu-submenu[opened] {
           --map-menu-border-depth: var(
             --map-menu-expanded-color-depth-3,
-            rgba(0, 0, 0, 0.2)
+            rgba(0, 0, 0, 0.06)
           );
         }
         map-menu-builder
@@ -114,7 +114,7 @@ class MapMenu extends LitElement {
           map-menu-submenu[opened] {
           --map-menu-border-depth: var(
             --map-menu-expanded-color-depth-4,
-            rgba(0, 0, 0, 0.25)
+            rgba(0, 0, 0, 0.08)
           );
         }
 

@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "umd": "a11y-gif-player.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -37,16 +37,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^4.1.0",
-    "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "@lrnwebcomponents/schema-behaviors": "^4.1.0",
-    "@lrnwebcomponents/simple-tooltip": "^4.1.0",
-    "@lrnwebcomponents/micro-frontend-registry": "^4.1.0",
-    "lit": "^2.6.1"
+    "@lrnwebcomponents/a11y-details": "^7.0.0",
+    "@lrnwebcomponents/intersection-element": "^7.0.0",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.0",
+    "@lrnwebcomponents/schema-behaviors": "^7.0.0",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.0",
+    "lit": "^2.7.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^4.1.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
+    "@lrnwebcomponents/simple-img": "^7.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -56,8 +57,7 @@
     "gulp-babel": "8.0.0",
     "lodash": "^4.17.21",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@lrnwebcomponents/simple-img": "^4.1.0"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
@@ -68,5 +68,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

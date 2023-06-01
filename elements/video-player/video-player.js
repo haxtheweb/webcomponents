@@ -129,11 +129,8 @@ class VideoPlayer extends IntersectionObserverMixin(
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: {
-        min: 25,
-        step: 12.5,
-      },
-      canPosition: true,
+      canScale: false,
+      canPosition: false,
       canEditSource: true,
       gizmo: {
         title: "Video",
@@ -142,11 +139,12 @@ class VideoPlayer extends IntersectionObserverMixin(
         icon: "av:play-circle-filled",
         color: "red",
         tags: [
-          "Video",
+          "Audio / Video",
           "Media",
           "youtube",
           "watch",
           "vimeo",
+          "twitch",
           "mp4",
           "webm",
           "ogg",
@@ -165,7 +163,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             color: "primaryColor",
           },
         ],
-        shortcutKey: "V",
         meta: {
           author: "HAXTheWeb core team",
           outlineDesigner: true,
@@ -179,23 +176,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "The URL for this media.",
             inputMethod: "haxupload",
             noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
-          },
-          {
-            property: "track",
-            title: "Closed captions",
-            description: "The URL for the captions file.",
-            inputMethod: "haxupload",
-            noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
-          },
-          {
-            property: "thumbnailSrc",
-            title: "Thumbnail image",
-            description: "Optional. The URL for a thumbnail/poster image.",
-            inputMethod: "haxupload",
             noVoiceRecord: true,
             validationType: "url",
           },
@@ -218,8 +198,46 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Enable dark theme for the player.",
             inputMethod: "boolean",
           },
+          {
+            property: "track",
+            title: "Closed captions",
+            description: "The URL for the captions file.",
+            inputMethod: "haxupload",
+            noCamera: true,
+            noVoiceRecord: true,
+            validationType: "url",
+          }
         ],
         advanced: [
+          {
+            property: "thumbnailSrc",
+            title: "Thumbnail image",
+            description: "Optional. The URL for a thumbnail/poster image.",
+            inputMethod: "haxupload",
+            noCamera: true,
+            noVoiceRecord: true,
+            validationType: "url",
+          },
+          {
+            property: "learningMode",
+            title: "Enable learning mode",
+            description: "Disables fast forward and rewind.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "hideYoutubeLink",
+            title: "Remove open on YouTube button",
+            description: "Removes the button for opening the video on YouTube.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "linkable",
+            title: "Include a share link?",
+            description: "Provides a link to share the video.",
+            inputMethod: "boolean",
+          }
+        ],
+        developer: [
           {
             property: "crossorigin",
             title: "Crossorigin",
@@ -239,12 +257,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             inputMethod: "boolean",
           },
           {
-            property: "learningMode",
-            title: "Enable learning mode",
-            description: "Disables fast forward and rewind.",
-            inputMethod: "boolean",
-          },
-          {
             property: "darkTranscript",
             title: "Dark theme for transcript",
             description: "Enable dark theme for the transcript.",
@@ -256,13 +268,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             description:
               "Disable interactive mode that makes transcript clickable.",
             inputMethod: "boolean",
-          },
-          {
-            property: "height",
-            title: "Height",
-            inputMethod: "textfield",
-            required: false,
-            validationType: "text",
           },
           {
             property: "hideTimestamps",
@@ -282,118 +287,8 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Language of the media.",
             inputMethod: "textfield",
             validationType: "text",
-          },
-          {
-            property: "linkable",
-            title: "Include a share link?",
-            description: "Provides a link to share the video.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideYoutubeLink",
-            title: "Remove open on YouTube button",
-            description: "Removes the button for opening the video on YouTube.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "stickyCorner",
-            title: "Sticky Corner",
-            description:
-              "Set the corner where a video plays when scrolled out of range, or choose none to disable sticky video.",
-            inputMethod: "select",
-            options: {
-              none: "none",
-              "top-left": "top-left",
-              "top-right": "top-right",
-              "bottom-left": "bottom-left",
-              "bottom-right": "bottom-right",
-            },
-          },
-          {
-            property: "sources",
-            title: "Other sources",
-            description: "List of other sources",
-            inputMethod: "array",
-            properties: [
-              {
-                property: "src",
-                title: "Source",
-                description: "The URL for this source.",
-                inputMethod: "haxupload",
-                required: true,
-                noCamera: true,
-                noVoiceRecord: true,
-                validationType: "url",
-              },
-              {
-                property: "type",
-                title: "Type",
-                description: "Media type data",
-                inputMethod: "select",
-                options: {
-                  "audio/aac": "acc audio",
-                  "audio/flac": "flac audio",
-                  "audio/mp3": "mp3 audio",
-                  "video/mp4": "mp4 video",
-                  "video/mov": "mov video",
-                  "audio/ogg": "ogg audio",
-                  "video/ogg": "ogg video",
-                  "audio/wav": "wav audio",
-                  "audio/webm": "webm audio",
-                  "video/webm": "webm video",
-                },
-              },
-            ],
-          },
-          {
-            property: "tracks",
-            title: "Track list",
-            description: "Tracks of different languages of closed captions",
-            inputMethod: "array",
-            properties: [
-              {
-                property: "kind",
-                title: "Kind",
-                description: "Kind of track",
-                inputMethod: "select",
-                options: {
-                  subtitles: "subtitles",
-                },
-              },
-              {
-                property: "label",
-                title: "Label",
-                description:
-                  'The human-readable name for this track, eg. "English Subtitles"',
-                inputMethod: "textfield",
-              },
-              {
-                property: "src",
-                title: "Source",
-                description: "The source for the captions file.",
-                inputMethod: "haxupload",
-                required: false,
-                noCamera: true,
-                noVoiceRecord: false,
-                validationType: "url",
-              },
-              {
-                property: "srclang",
-                title:
-                  'Two letter, language code, eg. \'en\' for English, "de" for German, "es" for Spanish, etc.',
-                description: "Label",
-                inputMethod: "textfield",
-              },
-            ],
-          },
-          {
-            property: "width",
-            title: "width",
-            inputMethod: "textfield",
-            required: false,
-            validationType: "text",
-          },
-        ],
+          }
+        ]
       },
       saveOptions: {
         unsetAttributes: ["__utils", "__stand-alone", "colors"],
@@ -534,6 +429,9 @@ class VideoPlayer extends IntersectionObserverMixin(
       sources: {
         type: Array,
       },
+      sourceData: {
+        type: Object,
+      },
       /**
        * When playing but scrolled off screen, to which corner does it "stick":
        * `top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?
@@ -596,6 +494,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.sourceType = "";
     this.crossorigin = "anonymous";
     this.dark = false;
@@ -635,10 +534,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   disconnectedCallback() {
     if (this.__setVisChange) {
       this.__setVisChange = false;
-      document.removeEventListener(
-        "visibilitychange",
-        this._visChange.bind(this)
-      );
+      this.windowControllers.abort();
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
@@ -929,6 +825,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         } else {
           source += "&portrait=0";
         }
+      } else if (type == "twitch") {
+        // required for origin matching when doing iframe embed
+        if (source.indexOf("?") > -1) {
+          source += "&parent=" + window.location.hostname;
+        } else {
+          source += "?parent=" + window.location.hostname;
+        }
       }
     }
     return source;
@@ -958,12 +861,48 @@ class VideoPlayer extends IntersectionObserverMixin(
     let temp = this.source;
     this.source = "";
     this.source = temp;
+    // set source type based on available data
+    if (
+      this.sourceData &&
+      this.sourceData.length > 0 &&
+      this.sourceData[0] !== undefined &&
+      typeof this.sourceData[0].src !== typeof undefined
+    ) {
+      this.sourceType = window.MediaBehaviors.Video.getVideoType(
+        this.sourceData[0].src
+      );
+    }
   }
   playEvent(e) {
     this.playing = e.detail.__playing;
   }
   pauseEvent(e) {
     this.playing = e.detail.__playing;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      // hack to account for poor state management prior to and then source type switches on the fly
+      if (
+        propName === "source" &&
+        this.sourceType &&
+        typeof oldValue !== typeof undefined
+      ) {
+        let type = window.MediaBehaviors.Video.getVideoType(
+          this.sourceData[0].src
+        );
+        if (type != this.sourceType) {
+          this.sourceType = type;
+          if (this.elementVisible) {
+            this.elementVisible = false;
+            setTimeout(() => {
+              this.elementVisible = true;
+            }, 0);
+          }
+        }
+      }
+    });
   }
 
   /**
@@ -980,19 +919,18 @@ class VideoPlayer extends IntersectionObserverMixin(
         this.__setVisChange
       ) {
         this.__setVisChange = false;
-        document.removeEventListener(
-          "visibilitychange",
-          this._visChange.bind(this)
-        );
+        this.windowControllers.abort();
       } else if (
         propName === "allowBackgroundPlay" &&
         !this[propName] &&
         !this.__setVisChange
       ) {
         this.__setVisChange = true;
+        this.windowControllers = new AbortController();
         document.addEventListener(
           "visibilitychange",
-          this._visChange.bind(this)
+          this._visChange.bind(this),
+          { signal: this.windowControllers.signal }
         );
       }
     });

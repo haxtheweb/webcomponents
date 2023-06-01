@@ -56,9 +56,9 @@ export const HaxUiColors = [
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
-      --hax-ui-disabled-color: #555;
+      --hax-ui-disabled-color: #666;
 
-      --hax-ui-background-color: #333;
+      --hax-ui-background-color: #111;
       --hax-ui-background-color-secondary: #111;
       --hax-ui-background-color-faded: #222;
 
@@ -79,7 +79,7 @@ export const HaxUiColors = [
         --hax-ui-color-focus: #fff;
         --hax-ui-color-faded: #c5c3be;
 
-        --hax-ui-background-color: #333;
+        --hax-ui-background-color: #111;
         --hax-ui-background-color-secondary: #111;
         --hax-ui-background-color-faded: #222;
 
@@ -422,8 +422,7 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
-    simple-fields-tabs::part(tab-disabled),
-    hax-preferences-dialog::part(haxlink) {
+    simple-fields-tabs::part(tab-disabled) {
       border: 1px solid var(--hax-ui-border-color);
       text-decoration: none;
       border-radius: 3px;
@@ -437,16 +436,6 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab-active) {
       color: var(--hax-ui-color-accent);
-    }
-    hax-preferences-dialog::part(haxlink) {
-      display: block;
-      padding: var(--hax-ui-spacing-lg);
-    }
-    hax-preferences-dialog::part(haxlink):hover,
-    hax-preferences-dialog::part(haxlink):focus {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
     }
     simple-fields-tabs::part(tab-disabled) {
       opacity: 0.5;
@@ -473,27 +462,11 @@ export const HaxTrayDetail = [
   css`
     #tray-detail {
       font-family: var(--hax-ui-font-family);
-      --hax-tray-detail-title-font-size: var(--hax-ui-font-size);
+      --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl);
       --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg);
       --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size);
       --hax-tray-detail-heading-text-transform: capitalize;
       --hax-tray-detail-heading-font-weight: normal;
-    }
-    #toggle-tray-size {
-      color: var(--hax-ui-background-color);
-      background-color: var(--hax-ui-color-accent);
-      outline: 1px solid var(--hax-ui-color-accent);
-      --simple-icon-button-border: 0px solid transparent;
-      --simple-icon-button-border-radius: var(--hax-ui-border-radius);
-      width: 24px;
-      height: 24px;
-      padding: 0;
-    }
-    #toggle-tray-size:hover,
-    #toggle-tray-size:focus-within {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
     }
     #tray-detail h5,
     #tray-detail h6 {
@@ -506,14 +479,15 @@ export const HaxTrayDetail = [
       text-transform: var(--hax-tray-detail-heading-text-transform);
       color: var(--hax-ui-background-color);
       font-size: var(--hax-tray-detail-title-font-size);
-      font-weight: normal;
+      font-weight: bold;
       margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      font-family: var(--hax-ui-font-family);
       padding: 0;
-      height: 28px;
+      height: 64px;
       overflow: hidden;
       word-break: break-all;
       text-overflow: ellipsis;
-      line-height: 28px;
+      line-height: 64px;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

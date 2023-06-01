@@ -331,6 +331,10 @@ class CleanTwo extends HAXCMSOperationButtons(
           max-width: 800px;
           padding: 0 0 0 32px;
         }
+        :host([responsive-size="xl"]) main,
+        :host([responsive-size="lg"]) main {
+          width: 800px;
+        }
 
         .qr-code-btn {
           padding: 8px;
@@ -558,6 +562,8 @@ class CleanTwo extends HAXCMSOperationButtons(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".body-wrapper");
+    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
   }
 
   searchItemSelected(e) {

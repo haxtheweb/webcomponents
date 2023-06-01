@@ -2,19 +2,20 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { HaxUiBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `haxcms-site-dashboard`
@@ -22,7 +23,7 @@ import {
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteDashboard extends LitElement {
+class HAXCMSSiteDashboard extends SimpleColors {
   static get tag() {
     return "haxcms-site-dashboard";
   }
@@ -46,6 +47,7 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   static get styles() {
     return [
+      ...HaxUiBaseStyles,
       css`
         :host {
           z-index: 1;
@@ -117,10 +119,6 @@ class HAXCMSSiteDashboard extends LitElement {
           background-color: white;
           color: black;
         }
-        .publishlink {
-          color: black;
-          float: right;
-        }
         .title-wrapper {
           padding: 0 16px;
         }
@@ -138,12 +136,13 @@ class HAXCMSSiteDashboard extends LitElement {
         #siteform {
           --a11y-tabs-height: 80vh;
           --a11y-tabs-tab-height: 75vh;
-          --a11y-tabs-tab-overflow: scroll;
           --primary-color: var(--haxcms-color, #000000);
           --paper-input-container-focus-color: var(--haxcms-color, #000000);
           --lumo-primary-text-color: var(--haxcms-color, #000000);
           --a11y-tabs-color: var(--haxcms-color, #000000);
           --a11y-tabs-focus-color: var(--haxcms-color, #000000);
+          color: var(--hax-ui-color);
+          --simple-fields-color: var(--hax-ui-color);
         }
       `,
     ];
@@ -153,23 +152,6 @@ class HAXCMSSiteDashboard extends LitElement {
     return html`
       <div class="title-wrapper">
         <h2 class="title">${this.manifest.title} settings</h2>
-        ${varExists(this.manifest, "metadata.site.static.publishedLocation")
-          ? html`
-              <span class="toptext">
-                <a
-                  class="publishlink"
-                  href="${varGet(
-                    this.manifest,
-                    "metadata.site.static.publishedLocation",
-                    "#"
-                  )}"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >Published version
-                </a>
-              </span>
-            `
-          : ""}
       </div>
       <div class="fields-wrapper">
         <simple-fields-form
@@ -195,6 +177,7 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       dashboardOpened: {
         type: Boolean,
         reflect: true,

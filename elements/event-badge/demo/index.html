@@ -6,7 +6,7 @@
     <title>EventBadge: event-badge Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
@@ -19,9 +19,37 @@
       <h3>Basic event-badge demo</h3>
       <demo-snippet>
         <template>
-          <event-badge>
-            This is event-badge
-          </event-badge>
+          <event-badge
+          logo="https://3.bp.blogspot.com/-a9MvhamtIms/Vy9si0mQvDI/AAAAAAAAACM/R1pncTyeFJ08W9039NXlVR3FQ-Bt84PJwCLcB/s320/INDEX.png";
+    ></event-badge>
+          <event-badge 
+          name="Hulk" 
+          title="Strong"
+          position="Avenger"
+           organization="The moon"
+            media="Hulk"
+             image="https://i.pinimg.com/originals/c8/28/07/c828078ea77b538c0f189236fae10a23.jpg" 
+             tvcolor="blue"
+             accent-color="purple" knobcolor="green"></event-badge>
+          <event-badge 
+          name="Hulk" 
+          title="fghgh"
+          position="Avenger"
+          organization="The moon"
+            media="Hulk"
+            image="https://i.pinimg.com/originals/c8/28/07/c828078ea77b538c0f189236fae10a23.jpg" 
+            tvcolor="brown" 
+             knobcolor="green" sepia></event-badge>
+            <event-badge 
+            name="Hulk" 
+            title="jhkkhj"
+            position="4h545h"
+              organization="The moon"
+              media="Hulk"
+                image="https://i.pinimg.com/originals/c8/28/07/c828078ea77b538c0f189236fae10a23.jpg" 
+                logo="https://i.pinimg.com/originals/c8/28/07/c828078ea77b538c0f189236fae10a23.jpg" 
+                tvcolor="yellow" 
+                 knobcolor="yellow" blackwhite></event-badge>
         </template>
       </demo-snippet>
     </div>

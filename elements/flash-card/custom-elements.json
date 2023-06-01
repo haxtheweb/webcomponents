@@ -3,29 +3,133 @@
   "tags": [
     {
       "name": "flash-card",
-      "description": "`flash-card`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Attributes:\n\n  * `inverted` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `img-keyword` {`string`} - \n\n  * `img-source` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `inverted` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `imgKeyword` {`string`} - \n\n  * `imgSource` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "name": "inverted",
+          "description": "`inverted` {`boolean`} - \n\nProperty: inverted",
+          "valueSet": "v"
         },
         {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status"
+        },
+        {
+          "name": "img-keyword",
+          "description": "`img-keyword` {`string`} - \n\nProperty: imgKeyword\n\nDefault: "
+        },
+        {
+          "name": "img-source",
+          "description": "`img-source` {`string`} - \n\nProperty: imgSource\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
-      "name": "flash-card",
-      "description": "`flash-card`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "flash-card-answer-box",
+      "description": "Events:\n\n  * `flash-card-status-change` {`CustomEvent<string>`} - \n\nAttributes:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `show-result` {`boolean`} - \n\n  * `side-to-show` {`string`} - \n\n  * `user-answer` {`string`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `correctAnswer` {`string`} - \n\n  * `showResult` {`boolean`} - \n\n  * `statusIcon` {`string`} - \n\n  * `sideToShow` {`string`} - \n\n  * `userAnswer` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "name": "back",
+          "description": "`back` {`boolean`} - \n\nProperty: back\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: pending"
+        },
+        {
+          "name": "show-result",
+          "description": "`show-result` {`boolean`} - \n\nProperty: showResult\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "side-to-show",
+          "description": "`side-to-show` {`string`} - \n\nProperty: sideToShow\n\nDefault: front"
+        },
+        {
+          "name": "user-answer",
+          "description": "`user-answer` {`string`} - \n\nProperty: userAnswer\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onflash-card-status-change",
+          "description": "`flash-card-status-change` {`CustomEvent<string>`} - "
+        }
+      ]
+    },
+    {
+      "name": "flash-card-image-prompt",
+      "description": "Attributes:\n\n  * `img-src` {`string`} - \n\n  * `img-keyword` {`string`} - \n\n  * `status` {`string`} - \n\n  * `answerIcon` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgKeyword` {`string`} - \n\n  * `status` {`string`} - \n\n  * `answerIcon` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "img-src",
+          "description": "`img-src` {`string`} - \n\nProperty: imgSrc\n\nDefault: "
+        },
+        {
+          "name": "img-keyword",
+          "description": "`img-keyword` {`string`} - \n\nProperty: imgKeyword\n\nDefault: grey box"
+        },
+        {
+          "name": "status",
+          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: pending"
+        },
+        {
+          "name": "answerIcon",
+          "description": "`answerIcon` {`boolean`} - \n\nProperty: answerIcon\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "flash-card-set",
+      "description": "Attributes:\n\n  * `questions` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `questions` {`any[]`} - \n\n  * `currentQuestion` {`number`} - \n\n  * `cardLength` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "questions",
+          "description": "`questions` {`any[]`} - \n\nProperty: questions\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

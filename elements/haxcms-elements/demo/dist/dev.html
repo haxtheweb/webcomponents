@@ -1123,9 +1123,6 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
 
 }());
   </script>
-  <script src="node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-  <script src="node_modules/fetch-ie8/fetch.js"></script>
-  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   <script src="node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
   <link rel="preload" href="./dist/build.js" as="script" crossorigin="anonymous">
   <link rel="preload" href="./custom/src/custom.js" as="script" crossorigin="anonymous">
@@ -1137,8 +1134,6 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
   <meta charset="utf-8">
   <link rel="preconnect" crossorigin href="https://fonts.googleapis.com">
   <link rel="preconnect" crossorigin href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" crossorigin href="https://i.creativecommons.org">
-  <link rel="preconnect" crossorigin href="https://licensebuttons.net">
   <meta name="generator" content="HAXcms">
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"><title>HAXCMS</title>
@@ -1173,8 +1168,6 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
   
   <link rel="preconnect" crossorigin href="https://fonts.googleapis.com">
   <link rel="preconnect" crossorigin href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" crossorigin href="https://i.creativecommons.org">
-  <link rel="preconnect" crossorigin href="https://licensebuttons.net">
   <link rel="prefetch" href="site.json">
 
   <link rel="stylesheet" href="/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css" />
@@ -1290,7 +1283,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
     }
     </style>
     <script id="loadingscript">
-    window.addEventListener('load', function(e) {
+    window.addEventListener('haxcms-ready', function(e) {
       // give the web components a second to build
       setTimeout(function() {
         document.querySelector('#loading').classList.add('loaded');
@@ -1299,7 +1292,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
           document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
           document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
         }, 600);
-      }, 1000)
+      }, 300);
     });
   </script>
 </head>
@@ -1338,7 +1331,6 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
     window.appSettings = {
       "createNodePath": "dist\/dev\/saveNode.json",
       "saveOutlinePath": "dist\/dev\/saveNode.json",
-      "getNodeFieldsPath": "dist\/dev\/getNodeFieldsPath.json",
       "saveManifestPath": "dist\/dev\/saveManifestPath.json",
       "getSiteFieldsPath": "dist\/dev\/getSiteFieldsPath.json",
       "deleteNodePath": "dist\/dev\/saveNode.json",

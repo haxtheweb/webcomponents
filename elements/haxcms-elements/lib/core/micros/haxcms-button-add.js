@@ -12,13 +12,14 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.t = this.t || {};
     this.t.newPageAdded = "New page added";
     this.t.newPage = "Page";
     this.t.copy = "Copy";
     this.t.newChildPage = "Child";
-    this.t.duplicatePage = "Duplicate";
-    this.t.docxImport = "Import .DOCX";
+    this.t.duplicatePage = "Clone";
+    this.t.docxImport = "Import pages (docx)";
     this.icon = "hax:add-page";
     this.voiceCommand = "add page";
     this.dark = false;
@@ -76,15 +77,14 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     super.connectedCallback();
     window.addEventListener(
       "haxcms-create-node-success",
-      this.HAXCMSButtonClickResponse.bind(this)
+      this.HAXCMSButtonClickResponse.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-create-node-success",
-      this.HAXCMSButtonClickResponse.bind(this)
-    );
+    this.windowControllers.abort();
+
     super.disconnectedCallback();
   }
 

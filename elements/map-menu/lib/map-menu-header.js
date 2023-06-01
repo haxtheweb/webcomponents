@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 class MapMenuHeader extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
@@ -174,7 +175,15 @@ class MapMenuHeader extends I18NMixin(LitElement) {
             <button>
               ${this.icon
                 ? html`
-                    <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+                    <simple-icon-lite
+                      icon="${this.icon}"
+                      id="icon"
+                    ></simple-icon-lite>
+                    ${this.iconLabel
+                      ? html`<simple-tooltip for="icon"
+                          >${this.iconLabel}</simple-tooltip
+                        >`
+                      : ``}
                   `
                 : ``}
               <div class="title">${this.itemtitle}</div>
@@ -201,6 +210,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.avatarLabel = "";
+    this.iconLabel = null;
     this.icon = null;
     this.url = "";
     this.status = "";
@@ -251,6 +261,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       },
       itemtitle: {
         type: String,
+      },
+      iconLabel: {
+        type: String,
+        attribute: "icon-label",
       },
       avatarLabel: {
         type: String,

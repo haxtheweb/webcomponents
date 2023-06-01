@@ -1,3 +1,4 @@
+const windowControllers = new AbortController();
 // loader that uses a CSS selector and variables in order to auto generate outlines
 var WCRegistryLoaderCSSDebounce;
 export function WCRegistryLoaderCSS(
@@ -62,9 +63,11 @@ const loadingStylesResizeEvent = function () {
       WCRegistryLoaderCSS();
     } else {
       // we no longer have anything defined so remove self listening
-      window.removeEventListener("resize", loadingStylesResizeEvent);
+      windowControllers.abort();
     }
   }, 100);
 };
 // resize function incase the screen changes shape while still loading (like phone rotating)
-window.addEventListener("resize", loadingStylesResizeEvent);
+window.addEventListener("resize", loadingStylesResizeEvent, {
+  signal: windowControllers.signal,
+});

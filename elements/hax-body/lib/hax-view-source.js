@@ -10,7 +10,6 @@ import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "./hax-tray-button.js";
@@ -267,48 +266,48 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   }
   // import markdown from a file
   importMDviaMicro(e) {
-    import(
-      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
-    ).then(async (e) => {
-      const broker = window.FileSystemBroker.requestAvailability();
-      const contents = await broker.getFileContents("markdown");
-      const response = await MicroFrontendRegistry.call("@core/mdToHtml", {
-        md: contents,
-      });
-      if (response.status == 200) {
-        // fake file event from built in method for same ux
-        this.insertContentsFromFile({
-          detail: {
-            name: "hax-view-source",
-            value: response.data,
-          },
+    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      async (e) => {
+        const broker = window.FileSystemBroker.requestAvailability();
+        const contents = await broker.getFileContents("markdown");
+        const response = await MicroFrontendRegistry.call("@core/mdToHtml", {
+          md: contents,
         });
+        if (response.status == 200) {
+          // fake file event from built in method for same ux
+          this.insertContentsFromFile({
+            detail: {
+              name: "hax-view-source",
+              value: response.data,
+            },
+          });
+        }
       }
-    });
+    );
   }
   // import using microservice to obtain file contents
   importDOCXviaMicro(e) {
-    import(
-      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
-    ).then(async (e) => {
-      const broker = window.FileSystemBroker.requestAvailability();
-      const file = await broker.loadFile("docx");
-      const formData = new FormData();
-      formData.append("upload", file);
-      const response = await MicroFrontendRegistry.call(
-        "@core/docxToHtml",
-        formData
-      );
-      if (response.status == 200) {
-        // fake file event from built in method for same ux
-        this.insertContentsFromFile({
-          detail: {
-            name: "hax-view-source",
-            value: response.data.contents,
-          },
-        });
+    import("@lrnwebcomponents/file-system-broker/file-system-broker.js").then(
+      async (e) => {
+        const broker = window.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile("docx");
+        const formData = new FormData();
+        formData.append("upload", file);
+        const response = await MicroFrontendRegistry.call(
+          "@core/docxToHtml",
+          formData
+        );
+        if (response.status == 200) {
+          // fake file event from built in method for same ux
+          this.insertContentsFromFile({
+            detail: {
+              name: "hax-view-source",
+              value: response.data.contents,
+            },
+          });
+        }
       }
-    });
+    );
   }
   // this will get called at a later time bc of the Promise involved
   insertContentsFromFile(e) {
@@ -337,14 +336,12 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     super.connectedCallback();
     window.addEventListener(
       "docx-file-system-data",
-      this.insertContentsFromFile.bind(this)
+      this.insertContentsFromFile,
+      { signal: this.windowControllers.signal }
     );
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "docx-file-system-data",
-      this.insertContentsFromFile.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 
@@ -362,13 +359,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
    * Download DOCX.
    */
   async downloadDOCX(e) {
-    let body = await HAXStore.activeHaxBody.haxToContent();
-    window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
-      body,
-      document.title
-    );
-    HAXStore.toast(this.t.fileDownloaded);
-    this.close();
+    import(
+      "@lrnwebcomponents/file-system-broker/lib/docx-file-system-broker.js"
+    ).then(async (e) => {
+      let body = await HAXStore.activeHaxBody.haxToContent();
+      window.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
+        body,
+        document.title
+      );
+      HAXStore.toast(this.t.fileDownloaded);
+      this.close();
+    });
   }
 
   /**
@@ -606,6 +607,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.t = {
       updateHTML: "Update HTML",
       copyHTML: "Copy HTML",

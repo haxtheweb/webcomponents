@@ -105,7 +105,7 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         span[part="drop-area-text"] {
           font-family: var(--simple-fields-button-font-family, sans-serif);
-          font-size: var(--simple-fields-button-font-size, 14px);
+          font-size: var(--simple-fields-button-font-size, 10px);
           white-space: nowrap;
           margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
             calc(0.25 * var(--simple-fields-margin-small, 8px));
@@ -115,6 +115,12 @@ class SimpleFieldsUpload extends I18NMixin(
           position: relative;
           overflow: visible;
           border: none !important;
+          --lumo-font-size-s: 10px;
+        }
+        vaadin-upload::part(file-list) {
+          max-height: 140px;
+          overflow-x: hidden;
+          overflow-y: auto;
         }
         vaadin-upload[dragover] {
           border-color: var(
@@ -148,6 +154,17 @@ class SimpleFieldsUpload extends I18NMixin(
           --simple-camera-snap-button-border-radius: 100%;
           --simple-camera-snap-button-opacity: 0.7;
         }
+
+        /** voice stuff which is in lite dom below */
+        .vmsg-button {
+          border: 1px solid #ccc;
+          border-radius: 0;
+          padding: 4px;
+          margin: 0 4px;
+        }
+        .vmsg-timer {
+          padding: 4px;
+        }
       `,
     ];
   }
@@ -156,6 +173,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   constructor() {
     super();
+    this.voice = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -172,17 +190,60 @@ class SimpleFieldsUpload extends I18NMixin(
       localesPath: new URL("../locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.hideInput = false;
     this.itemsList = [];
     this.autocomplete = "off";
     this.noCamera = false;
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
-    this.noVoiceRecord = true;
+    this.noVoiceRecord = false;
     this.responsiveSize = "sm";
   }
   render() {
     return html`
       <fieldset part="fieldset">${this.legend} ${this.fields}</fieldset>
+    `;
+  }
+  get sources() {
+    return html`
+      <simple-toolbar-button
+        id="browse"
+        ?disabled="${this.disabled}"
+        label="${this.t.upload}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        icon="icons:file-upload"
+        show-text-label
+        @click="${this._handleBrowse}"
+        controls="fieldset"
+        part="browse"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        icon="image:camera-alt"
+        ?disabled="${this.disabled}"
+        label="${this.t.takePhoto}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        @mousedown="${(e) => e.preventDefault()}"
+        @focus="${(e) => e.preventDefault()}"
+        @click="${this._handleCameraOption}"
+        controls="fieldset"
+        part="take-photo"
+        ?hidden="${!navigator.mediaDevices || this.noCamera}"
+      >
+      </simple-toolbar-button>
+      <simple-toolbar-button
+        icon="hardware:keyboard-voice"
+        ?disabled="${this.disabled}"
+        label="${this.t.recordAudio}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        @mousedown="${(e) => e.preventDefault()}"
+        @focus="${(e) => e.preventDefault()}"
+        @click="${this._handleAudioOption}"
+        controls="fieldset"
+        part="record-audio"
+        ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
+      >
+      </simple-toolbar-button>
     `;
   }
   /**
@@ -210,7 +271,9 @@ class SimpleFieldsUpload extends I18NMixin(
           <div
             slot="drop-label"
             part="browse-area"
-            ?hidden="${this.option == "selfie" || this.option == "audio"}"
+            ?hidden="${this.option == "selfie" ||
+            this.option == "audio" ||
+            this.hideInput}"
           >
             <simple-fields-url-combo
               id="url"
@@ -236,44 +299,7 @@ class SimpleFieldsUpload extends I18NMixin(
           </div>
           <div id="upload">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
-            <simple-toolbar-button
-              id="browse"
-              ?disabled="${this.disabled}"
-              label="${this.t.upload}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              icon="icons:file-upload"
-              show-text-label
-              @click="${this._handleBrowse}"
-              controls="fieldset"
-              part="browse"
-            >
-            </simple-toolbar-button>
-            <simple-toolbar-button
-              icon="image:camera-alt"
-              ?disabled="${this.disabled}"
-              label="${this.t.takePhoto}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              @mousedown="${(e) => e.preventDefault()}"
-              @focus="${(e) => e.preventDefault()}"
-              @click="${this._handleCameraOption}"
-              controls="fieldset"
-              part="take-photo"
-              ?hidden="${!navigator.mediaDevices || this.noCamera}"
-            >
-            </simple-toolbar-button>
-            <simple-toolbar-button
-              icon="hardware:keyboard-voice"
-              ?disabled="${this.disabled}"
-              label="${this.t.recordAudio}.."
-              ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
-              @mousedown="${(e) => e.preventDefault()}"
-              @focus="${(e) => e.preventDefault()}"
-              @click="${this._handleAudioOption}"
-              controls="fieldset"
-              part="record-audio"
-              ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
-            >
-            </simple-toolbar-button>
+            ${this.sources}
           </div>
           <simple-toolbar-button
             id="cancel"
@@ -326,7 +352,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _handleAudioOption(e) {
     e.preventDefault();
-    this.option = "voice";
+    this.option = "audio";
     this._voiceRecorder(e);
   }
   /**
@@ -390,6 +416,10 @@ class SimpleFieldsUpload extends I18NMixin(
        */
       accept: {
         type: String,
+      },
+      hideInput: {
+        type: Boolean,
+        attribute: "hide-input",
       },
       /**
        * Hint for form autofill feature
@@ -472,13 +502,6 @@ class SimpleFieldsUpload extends I18NMixin(
         detail: e.detail,
       })
     );
-  }
-  /**
-   * Respond to successful file upload, now inject url into url field and
-   * do a gizmo guess from there!
-   */
-  _fileUploadResponse(e) {
-    // set the value of the url which will update our URL and notify
     this.dispatchEvent(
       new CustomEvent("upload-response", {
         bubbles: true,
@@ -533,8 +556,12 @@ class SimpleFieldsUpload extends I18NMixin(
    * We got a new photo
    */
   __newAudioShowedUp(e) {
-    let file = new File([e.detail.value], "voice-memo" + e.timeStamp + ".mp3");
+    let file = new File([e.detail.value], "voice-recording-" + e.timeStamp + ".mp3");
     this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.voice.remove();
+    setTimeout(() => {
+      this.voice = null;
+    }, 0);
   }
   /**
    * Invoke the camera to set itself up
@@ -553,13 +580,15 @@ class SimpleFieldsUpload extends I18NMixin(
   }
   _voiceRecorder(e) {
     if (!this.voice) {
-      import("@lrnwebcomponents/voice-recorder/voice-recorder.js");
-      this.voice = document.createElement("voice-recorder");
-      this.voice.addEventListener(
-        "voice-recorder-recording",
-        this.__newAudioShowedUp.bind(this)
-      );
-      this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+      import("@lrnwebcomponents/voice-recorder/voice-recorder.js").then(() => {
+        this.voice = document.createElement("voice-recorder");
+        this.voice.addEventListener(
+          "voice-recorder-recording-blob",
+          this.__newAudioShowedUp.bind(this)
+        );
+        this.voice.recording = true;
+        this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+      });
     }
   }
   /**

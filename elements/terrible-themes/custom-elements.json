@@ -1,0 +1,1948 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "terrible-best-themes",
+      "path": "./lib/terrible-best-themes.js",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-themes",
+      "path": "./lib/terrible-outlet-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-outlet-themes",
+      "path": "./lib/terrible-outlet-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-themes",
+      "path": "./lib/terrible-productionz-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-productionz-themes",
+      "path": "./lib/terrible-productionz-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-themes",
+      "path": "./lib/terrible-resume-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-resume-themes",
+      "path": "./lib/terrible-resume-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-themes",
+      "path": "./src/terrible-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "terrible-themes",
+      "path": "./terrible-themes.js",
+      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+      "attributes": [
+        {
+          "name": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "t",
+          "attribute": "t",
+          "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
+        },
+        {
+          "name": "darkMode",
+          "attribute": "dark-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "windowControllers"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "attribute": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-toast-hide"
+        },
+        {
+          "name": "haxcms-toast-show"
+        },
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    }
+  ]
+}

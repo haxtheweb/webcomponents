@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/intersection-element",
-  "version": "4.0.4",
+  "version": "7.0.0",
   "description": "VanillaJS Intersection element / capabilities to mix into other elements",
   "repository": {
     "type": "git",

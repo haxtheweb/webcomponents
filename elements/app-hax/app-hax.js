@@ -7,19 +7,19 @@ import {
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "./lib/v1/AppHaxStore.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
 import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+import { SuperDaemonInstance } from "@lrnwebcomponents/super-daemon/super-daemon.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "./lib/v1/AppHaxRouter.js";
 import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder.js";
 
-const haxLogo = new URL("./lib/assets/images/HAXLogo.svg", import.meta.url)
-  .href;
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
-const helpBtn = new URL("./lib/assets/images/Help.svg", import.meta.url).href;
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {
@@ -37,30 +37,78 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends SimpleTourFinder(SimpleColors) {
+export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   static get tag() {
     return "app-hax";
   }
-
-  // eslint-disable-next-line class-methods-use-this
-  playSound(sound) {
-    if (store.soundStatus && store.appReady) {
-      let playSound = [
-        "click",
-        "click2",
-        "coin",
-        "coin2",
-        "hit",
-        "success",
-      ].includes(sound)
-        ? sound
-        : "hit";
-      this.audio = new Audio(
-        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
-      );
-      this.audio.volume = 0.5;
-      this.audio.play();
+  async _haxStoreContribute(type, tags, daemonTerm = null) {
+    let body = "";
+    if (type == "merlin") {
+      var title = `[${type}] New command request from HAX daemon`;
+      body = `Location: ${window.location.href}
+Merlin command: ${daemonTerm}
+What did you want merlin to do?
+`;
+    } else {
+      var title = `[${type}] User report from HAX daemon`;
+      body = `Location: ${window.location.href}
+Browser: ${navigator.userAgent}
+OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+Screen: ${window.screen.width}x${window.screen.height}
+Window size: ${window.innerWidth}x${window.innerHeight}
+`;
+      if (navigator.getBattery) {
+        const stats = await navigator.getBattery();
+        body += `Battery: ${stats.level * 100}%
+`;
+      }
+      // some things report the "type" of internet connection speed
+      // for terrible connections lets save frustration
+      if (navigator.connection && navigator.connection.effectiveType) {
+        body += `Connection: ${navigator.connection.effectiveType}
+`;
+      }
+      body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
+`;
     }
+    window.open(
+      `https://github.com/elmsln/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
+        body
+      )}`,
+      "_blank"
+    );
+  }
+  // eslint-disable-next-line class-methods-use-this
+  playSound(sound = "coin2") {
+    return new Promise((resolve) => {
+      if (store.soundStatus && store.appReady) {
+        let playSound = [
+          "click",
+          "click2",
+          "coin",
+          "coin2",
+          "hit",
+          "success",
+        ].includes(sound)
+          ? sound
+          : "hit";
+        this.audio = new Audio(
+          new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href
+        );
+        this.audio.volume = 0.5;
+        this.audio.onended = (event) => {
+          resolve();
+        };
+        this.audio.play();
+        // resolve after 1s if sound failed to load
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      }
+      else {
+        resolve();
+      }
+    });
   }
 
   /**
@@ -84,32 +132,236 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
     super.connectedCallback();
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle);
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+      .addEventListener("change", darkToggle, {
+        signal: this.windowControllers.signal,
+      });
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
+      this._tokenRefreshFailed.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
+  goToLocation(location) {
+    window.location = location;
+  }
+
   disconnectedCallback() {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .removeEventListener("change", darkToggle);
-    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
-    window.removeEventListener(
-      "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 
   constructor() {
     super();
+    this.unlockComingSoon = false;
+    this.unlockTerrible = false;
+    this.t = this.t || {};
+
+    this.t = {
+      ...this.t,
+      selectPage: "Select page",
+      backToSiteList: "Back to site list",
+      cancel: "Cancel",
+      editDetails: "Page details",
+      add: "Add",
+      editSettings: "Edit settings",
+      source: "Source",
+      viewSource: "View source",
+      findMedia: "Find media",
+      undo: "Undo",
+      redo: "Redo",
+      media: "Media",
+      outline: "Outline",
+      blocks: "Blocks",
+      addBlock: "Add block",
+      addPage: "Add page",
+      addChildPage: "Add child page",
+      clonePage: "Clone page",
+      importDocxFile: "Import docx file",
+      delete: "Delete page",
+      siteSettings: "Site settings",
+      close: "Close",
+      settings: "Settings",
+      editPage: "Edit page",
+      edit: "Edit",
+      configureBlock: "Configure block",
+      configure: "Configure",
+      save: "Save",
+      saveChanges: "Save changes",
+      newJourney: "New Journey",
+      accountInfo: "Account Info",
+      outlineDesigner: "Outline designer",
+      pageOutline: "Page outline",
+      more: "More",
+      siteActions: "Site actions",
+      insights: "Insights dashboard",
+      merlin: "Merlin",
+      summonMerlin: "Summon Merlin",
+      logOut: "Log out",
+      menu: "Menu",
+      showMore: "More",
+    };
+    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
+      window.webkitSpeechRecognition ||
+      window.mozSpeechRecognition ||
+      window.msSpeechRecognition ||
+      window.oSpeechRecognition)) {
+      SuperDaemonInstance.voiceSearch = true;
+    }
+    SuperDaemonInstance.icon = "hax:wizard-hat";
+    SuperDaemonInstance.appendContext("*");
+    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
+    SuperDaemonInstance.allowedCallback = () => {
+      if (toJS(store.appReady) && toJS(store.isLoggedIn)) {
+        return true;
+      }
+      return false;
+    };
+    SuperDaemonInstance.questionTags = [
+      {
+        value: "*",
+        label: "What can I do?",
+      },
+      {
+        value: "sites",
+        label: "What sites do I have access to?",
+      },
+    ];
+
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Tour of top menu buttons",
+      icon: "help",
+      tags: ["Help", "ui", "tour"],
+      priority: -1000,
+      value: {
+        target: this,
+        method: "helpClick",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/app/tour",
+      context: ["*", "?"],
+    });
+
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Unlock hidden features",
+      icon: "hax:hax2022",
+      tags: ["Developer", "features", "hidden"],
+      value: {
+        target: this,
+        method: "fireUnlocked",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/unlockAll",
+      context: [">"],
+    });
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Unlock terrible 2000s themes",
+      icon: "hax:table-multiple",
+      tags: ["Developer", "terrible", "2000", "tables"],
+      value: {
+        target: this,
+        method: "fireTerrible",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/terrible2000s",
+      context: [">"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Go to site",
+      icon: "hax:hax2022",
+      tags: ["Sites", "Administration", "change"],
+      eventName: "super-daemon-run-program",
+      path: "hax/action/goToSite",
+      priority: -100,
+      value: {
+        name: "Go to site",
+        program: async (input, values) => {
+          let results = [];
+          const items = toJS(store.manifest.items);
+          items.forEach(async (site) => {
+            if (
+              input == "" ||
+              (site.metadata.site &&
+                site.metadata.site.name &&
+                site.metadata.site.name.includes(input))
+            ) {
+              results.push({
+                title: site.title,
+                icon:
+                  site.metadata.theme &&
+                  site.metadata.theme.variables &&
+                  site.metadata.theme.variables.icon
+                    ? site.metadata.theme.variables.icon
+                    : "hax:hax2022",
+                tags: ["site", site.description],
+                value: {
+                  target: this,
+                  method: "goToLocation",
+                  args: [site.slug],
+                },
+                eventName: "super-daemon-element-method",
+                context: [
+                  "*",
+                  "hax/action/goToSite/" + site.metadata.site.name,
+                ],
+                path: "hax/action/goToSite/" + site.metadata.site.name,
+              });
+            }
+          });
+          return results;
+        },
+      },
+      context: ["*"],
+    });
+    // contribution helpers
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "hax:hax2022",
+      tags: ["Bug report", "github", "git", "community", "issue queue"],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["bug", "POP,bug"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+      context: ["*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Idea / Feature request",
+      icon: "hax:hax2022",
+      tags: [
+        "Feature request",
+        "idea",
+        "github",
+        "git",
+        "community",
+        "issue queue",
+      ],
+      value: {
+        target: this,
+        method: "_haxStoreContribute",
+        args: ["feature", "POP,enhancement"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/contribute",
+      context: ["*"],
+    });
+    this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;
     this.__tour.registerNewTour({
       key: "hax",
-      name: "Let's learn HAX",
+      name: "HAX top menu",
       style: `
       simple-popover-manager::part(simple-popover) {
         max-width: 250px;
@@ -182,12 +434,20 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         "We like to party",
         "Build something awesome",
         "Everything is awesome!",
-        "Everything is cool when you're part of the team",
+        "Everything is cool",
+        "When you're part of the team",
         "When you're living our dream",
+        "Welcome to the up-side-down",
       ],
       return: [
         "Welcome back, take 2?",
         "That wasn't very long",
+        "Stranger thiings have happened",
+        "Student driven platform",
+        "Faculty centered platform",
+        "Instructional designer influenced platform",
+        "Free, Open, Community driven",
+        "One brick at a time..",
         "Sup?",
         "You again? Awesome!",
         "Let's do this",
@@ -291,10 +551,14 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         document.body.classList.add("dark-mode");
         store.toast("I'm ascared of the dark", 2000, { fire: true });
         this.dark = true;
+        SuperDaemonInstance.dark = true;
+        SuperDaemonInstance.toastInstance.darkMode = true;
       } else {
         document.body.classList.remove("dark-mode");
         store.toast("Sunny day it is", 2000, { hat: "random" });
         this.dark = false;
+        SuperDaemonInstance.dark = false;
+        SuperDaemonInstance.toastInstance.darkMode = false;
       }
     });
     autorun(() => {
@@ -312,6 +576,8 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
+      unlockComingSoon: { type: Boolean },
+      unlockTerrible: { type: Boolean },
       courses: { type: Array },
       userName: { type: String },
       activeItem: { type: Object },
@@ -345,7 +611,26 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
       //console.warn(e);
     }
   }
-
+  fireTerrible() {
+    this.unlockTerrible = true;
+    store.appEl.playSound("coin").then(() => {
+      store.appEl.playSound("coin2").then(() => {
+        store.appEl.playSound("success").then(() => {
+          SuperDaemonInstance.merlinSpeak("Enjoy these early 2000s table based layouts. May they remind you how never to web, again.");
+        });
+      })
+    });
+  }
+  fireUnlocked() {
+    this.unlockComingSoon = true;
+    store.appEl.playSound("coin").then(() => {
+      store.appEl.playSound("coin2").then(() => {
+        store.appEl.playSound("success").then(() => {
+          SuperDaemonInstance.merlinSpeak("Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!");
+        });
+      })
+    });
+  }
   // eslint-disable-next-line class-methods-use-this
   logout() {
     window.dispatchEvent(
@@ -418,6 +703,27 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         }
         #home {
           display: inline-flex;
+        }
+        simple-toolbar-button {
+          min-width: 48px;
+          margin: 0;
+          --simple-toolbar-border-color: #dddddddd;
+          height: 48px;
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 0.3;
+          --simple-toolbar-button-padding: 3px 6px;
+          --simple-toolbar-border-radius: 0;
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          background-color: var(--hax-ui-background-color-accent);
+          color: var(--hax-ui-color);
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          --simple-toolbar-border-color: var(--hax-ui-color-accent);
         }
         .wired-button-label {
           clip: rect(0 0 0 0);
@@ -542,7 +848,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
         }
 
         app-hax-search-bar {
-          vertical-align: middle;
           display: inline-flex;
         }
         main {
@@ -758,10 +1063,12 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
   }
 
   closeMenu() {
-    if (this.userMenuOpen) {
-      this.userMenuOpen = !this.userMenuOpen;
-      this.shadowRoot.querySelector("#user-menu").removeAttribute("isOpen");
-    }
+    this.userMenuOpen = false;
+  }
+
+  openMerlin() {
+    store.appEl.playSound("click");
+    SuperDaemonInstance.open();
   }
 
   render() {
@@ -772,7 +1079,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           <a id="home" href="home" tabindex="-1" slot="left">
             <simple-icon-lite
               id="hlogo"
-              src="${haxLogo}"
+              icon="hax:hax2022"
               tabindex="0"
               class="haxLogo"
               title="Home"
@@ -781,13 +1088,24 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               data-label="Home"
             >
               <div data-stop-content slot="tour" style="display:none;">
-                You can come back to this home screen whenever you click this..
+                You can come back to this home screen whenever you click this!
               </div>
             </simple-icon-lite>
           </a>
           <simple-tooltip for="hlogo" position="right" slot="left"
             >Home</simple-tooltip
           >
+          <simple-toolbar-button
+            icon="hax:wizard-hat"
+            label="${this.t.merlin}"
+            voice-command="${this.t.merlin}"
+            icon-position="left"
+            id="merlin"
+            @click="${this.openMerlin}"
+            slot="center"
+            data-event="super-daemon"
+            show-text-label
+          ></simple-toolbar-button>
           <app-hax-search-bar
             slot="center"
             ?disabled="${this.isNewUser}"
@@ -809,8 +1127,8 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               data-label="Sound"
             >
               <div slot="tour" data-stop-content>
-                Not a fan of the awesome sound effects, you can mute them but I
-                highly suggest you dont.....or else.
+                Not a fan of the (awesome) sound effects? You can mute them if
+                you prefer.
               </div>
             </simple-icon-lite>
           </wired-button>
@@ -824,27 +1142,42 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
           <app-hax-user-menu
             slot="right"
             id="user-menu"
+            ?is-open="${this.userMenuOpen}"
             data-simple-tour-stop
             data-stop-title="data-label"
             data-label="Menu"
           >
             <div slot="tour" data-stop-content>
-              You want to log out and be someone else? You want to check your
-              sites option? Click your character. Fun Fact....your character is
-              unique to you.
+              You want to log out and be someone else? Create a new site? Click
+              your character. Your character is unique to you!
             </div>
-            <button class="topbar-character" slot="menuButton" id="tbchar">
+            <button
+              @click="${this.toggleMenu}"
+              class="topbar-character"
+              slot="menuButton"
+              id="tbchar"
+            >
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
                 aria-label="System menu"
-                title="System menu"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
-                @click="${this.toggleMenu}"
               ></rpg-character>
               <span class="characterbtn-name">${this.userName}</span>
             </button>
+            <a
+              slot="main-menu"
+              href="createSite-step-1"
+              @click="${this.startJourney}"
+              tabindex="-1"
+            >
+              <app-hax-user-menu-button
+                icon="add"
+                label="${this.t.newJourney}"
+                part="newjourneybtn"
+              ></app-hax-user-menu-button>
+            </a>
             <!-- <app-hax-user-menu-button
               slot="main-menu"
               icon="face"
@@ -857,9 +1190,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
               @click=${this.logout}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
-          <simple-tooltip for="tbchar" position="bottom" slot="right"
-            >System menu</simple-tooltip
-          >
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
@@ -894,13 +1224,6 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
             .phrases="${this.phrases}"
             @click="${this.getNewWord}"
           ></random-word>
-          <simple-icon-lite
-            id="helpbtn"
-            @click="${this.helpClick}"
-            src="${helpBtn}"
-          >
-          </simple-icon-lite>
-          <simple-tooltip for="helpbtn" position="bottom">Help</simple-tooltip>
           <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
@@ -951,6 +1274,8 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
   templateCreate() {
     return html`<app-hax-steps
       @promise-progress-finished="${this.siteReadyToGo}"
+      ?unlock-coming-soon="${this.unlockComingSoon}"
+      ?unlock-terrible="${this.unlockTerrible}"
     ></app-hax-steps>`;
   }
 
@@ -996,6 +1321,7 @@ export class AppHax extends SimpleTourFinder(SimpleColors) {
 
   // ensure internal data is unset for store
   startJourney() {
+    this.userMenuOpen = false;
     store.createSiteSteps = false;
     store.siteReady = false;
     store.site.structure = null;

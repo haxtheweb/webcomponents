@@ -35,19 +35,20 @@ import "./grade-book-pop-up.js";
 import "./letter-grade.js";
 import "./letter-grade-picker.js";
 
-
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
  * @demo demo/index.html Grade book
  * @element grade-book
  */
-class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleColors))) {
+class GradeBookLite extends UIRenderPieces(
+  I18NMixin(SimpleFilterMixin(SimpleColors))
+) {
   constructor() {
     super();
     this.__pdfLoading = false;
     this.__hashLoading = false;
-    enableServices(['core']);
+    enableServices(["core"]);
     this.where = "term";
     this.hasFilePicker = false;
     this.source = "googledocs";
@@ -981,9 +982,7 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
   PDFPageButton(position = "auto") {
     return html`
       ${MicroFrontendRegistry.has("@core/htmlToPdf")
-        ? html` <div
-            class="pdf-page-btn"
-          >
+        ? html` <div class="pdf-page-btn">
             <simple-icon-button-lite
               part="pdf-page-btn"
               class="btn"
@@ -1000,33 +999,35 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
             </simple-tooltip>
           </div>`
         : ``}
-         <div
-            class="hash-page-btn"
-          >
-            <simple-icon-button-lite
-              part="hash-page-btn"
-              class="btn"
-              icon="${this.__hashLoading ? `hax:loading` : `link`}"
-              id="hash-page-btn"
-              @click="${this.createHashLink}"
-              icon-position="top"
-            >
-            </simple-icon-button-lite>
-            <simple-tooltip for="pdf-page-btn" position="${position}">
-              ${this.__hashLoading
-                ? this.t.generatingPleaseWait
-                : this.t.generateHashLink}
-            </simple-tooltip>
-          </div>
+      <div class="hash-page-btn">
+        <simple-icon-button-lite
+          part="hash-page-btn"
+          class="btn"
+          icon="${this.__hashLoading ? `hax:loading` : `link`}"
+          id="hash-page-btn"
+          @click="${this.createHashLink}"
+          icon-position="top"
+        >
+        </simple-icon-button-lite>
+        <simple-tooltip for="pdf-page-btn" position="${position}">
+          ${this.__hashLoading
+            ? this.t.generatingPleaseWait
+            : this.t.generateHashLink}
+        </simple-tooltip>
+      </div>
     `;
   }
   /**
-     * Download PDF, via microservice
-     */
+   * Download PDF, via microservice
+   */
   async downloadPDFviaMicro(e) {
     this.__pdfLoading = true;
     // active dom, but remove the Lit comments from response
-    let htmlContent = this.shadowRoot.querySelector("#studentreport").innerHTML.replace(/<\!--.*?-->/g, "").replace(/\s+/g, ' ').trim();
+    let htmlContent = this.shadowRoot
+      .querySelector("#studentreport")
+      .innerHTML.replace(/<\!--.*?-->/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
     // base helps w/ calculating URLs in content
     var base = "";
     if (document.querySelector("base")) {
@@ -1057,13 +1058,20 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
   async createHashLink(e) {
     this.__hashLoading = true;
     // active dom, but remove the Lit comments from response
-    let htmlContent = this.shadowRoot.querySelector("#studentreport").innerHTML.replace(/<\!--.*?-->/g, "").replace(/\s+/g, ' ').trim();
+    let htmlContent = this.shadowRoot
+      .querySelector("#studentreport")
+      .innerHTML.replace(/<\!--.*?-->/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
     const response = await MicroFrontendRegistry.call("@core/crypto", {
-      op: 'hash',
+      op: "hash",
       data: htmlContent,
     });
     if (response.status == 200 && response.data) {
-      window.open(`https://secure-feedback.vercel.app/?message=${response.data}`, '_blank');
+      window.open(
+        `https://secure-feedback.vercel.app/?message=${response.data}`,
+        "_blank"
+      );
     }
     this.__hashLoading = false;
   }
@@ -1207,28 +1215,41 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
         >
           ${this.activeRubric[0]
             ? html`
-                <grid-plate
-                  disable-responsive
-                  layout="1-1"
-                >
+                <grid-plate disable-responsive layout="1-1">
                   <div slot="col-1" class="tag-group">
-                  <simple-fields-field
-                    id="inputfilter"
-                    @value-changed="${this.inputfilterChanged}"
-                    .value="${this.like}"
-                    aria-controls="filter"
-                    label="Filter"
-                    placeholder="Tag search"
-                    type="text"
-                    auto-validate=""
-                    autofocus
-                    part="filter"
-                  ></simple-fields-field>
-                  <simple-icon-button-lite @click="${this.collapseAll}" icon="hardware:keyboard-arrow-right" class="control" value="">Collapse all</simple-icon-button-lite>
-                  <simple-icon-button-lite @click="${this.expandAll}" icon="hardware:keyboard-arrow-down" class="control" value="">Expand all</simple-icon-button-lite>
+                    <simple-fields-field
+                      id="inputfilter"
+                      @value-changed="${this.inputfilterChanged}"
+                      .value="${this.like}"
+                      aria-controls="filter"
+                      label="Filter"
+                      placeholder="Tag search"
+                      type="text"
+                      auto-validate=""
+                      autofocus
+                      part="filter"
+                    ></simple-fields-field>
+                    <simple-icon-button-lite
+                      @click="${this.collapseAll}"
+                      icon="hardware:keyboard-arrow-right"
+                      class="control"
+                      value=""
+                      >Collapse all</simple-icon-button-lite
+                    >
+                    <simple-icon-button-lite
+                      @click="${this.expandAll}"
+                      icon="hardware:keyboard-arrow-down"
+                      class="control"
+                      value=""
+                      >Expand all</simple-icon-button-lite
+                    >
                     ${this.database.tags.categories.length > 0
                       ? html`
-                          <a11y-collapse-group heading-button id="categoriesgroup" global-options='{"expanded": true}'>
+                          <a11y-collapse-group
+                            heading-button
+                            id="categoriesgroup"
+                            global-options='{"expanded": true}'
+                          >
                             ${this.database.tags.categories.map(
                               (category, i) => html`
                                 <a11y-collapse>
@@ -1479,20 +1500,24 @@ class GradeBookLite extends UIRenderPieces(I18NMixin(SimpleFilterMixin(SimpleCol
     `;
   }
   inputfilterChanged(e) {
-    if (e.detail.value !== '') {
+    if (e.detail.value !== "") {
       this.expandAll();
     }
     this.like = e.target.value;
   }
   expandAll(e) {
-    this.shadowRoot.querySelectorAll("#categoriesgroup a11y-collapse").forEach((item) => {
-      item.expanded = true;
-    });
+    this.shadowRoot
+      .querySelectorAll("#categoriesgroup a11y-collapse")
+      .forEach((item) => {
+        item.expanded = true;
+      });
   }
   collapseAll(e) {
-    this.shadowRoot.querySelectorAll("#categoriesgroup a11y-collapse").forEach((item) => {
-      item.expanded = false;
-    });
+    this.shadowRoot
+      .querySelectorAll("#categoriesgroup a11y-collapse")
+      .forEach((item) => {
+        item.expanded = false;
+      });
   }
   selectSource(e) {
     this.source = this.shadowRoot.querySelector("#source").value;

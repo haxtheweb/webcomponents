@@ -41,7 +41,10 @@ export class PageBreak extends IntersectionObserverMixin(
       localesPath: new URL("./locales", import.meta.url).href,
       locales: ["es"],
     });
+    this.developerTheme = null;
+    this.tags = null;
     this.title = this.t.newPage;
+    this.pageType = null;
     this.slug = "";
     this.published = false;
     this.target = null;
@@ -68,6 +71,8 @@ export class PageBreak extends IntersectionObserverMixin(
     return {
       ...props,
       order: { type: Number },
+      tags: { type: String },
+      developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },
       slug: { type: String },
       parent: { type: String, reflect: true },
@@ -77,6 +82,7 @@ export class PageBreak extends IntersectionObserverMixin(
       itemId: { type: String, attribute: "item-id", reflect: true },
       breakType: { type: String, attribute: "break-type" },
       status: { type: String },
+      pageType: { type: String, attribute: "page-type" },
       _haxState: { type: Boolean },
     };
   }
@@ -334,13 +340,13 @@ export class PageBreak extends IntersectionObserverMixin(
         if (this[propName] === "node") {
           iconPath = SimpleIconsetStore.getIcon("editor:format-page-break");
           this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]:hover) .mid::before {
+          :host([data-hax-ray]) .mid::before {
             content: "${this.t.pageBreak}";
           }`;
         } else {
           iconPath = SimpleIconsetStore.getIcon("hax:page-details");
           this.shadowRoot.querySelector("style").innerHTML = `
-          :host([data-hax-ray]:hover) .mid::before {
+          :host([data-hax-ray]) .mid::before {
             content: "${this.t.pageDetails}";
           }`;
         }
@@ -364,7 +370,7 @@ export class PageBreak extends IntersectionObserverMixin(
           opacity: 0.2;
           background-position: center;
           background-repeat: no-repeat;
-          transition: all 0.2s linear;
+          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
         .mid {
           border: none;
@@ -377,13 +383,16 @@ export class PageBreak extends IntersectionObserverMixin(
         :host([data-hax-ray]:hover) {
           opacity: 1;
         }
-        :host([data-hax-ray]:hover) .mid::before {
+        :host([data-hax-active]) {
+          opacity: 1;
+        }
+        :host([data-hax-ray]) .mid::before {
           font-weight: bold;
           color: #000000;
           background-color: #ffffff;
           font-size: 16px;
-          left: calc(50% - 2.5em);
-          top: -16px;
+          left: calc(50% - 3em);
+          top: -8px;
           position: relative;
           height: 0;
           line-height: 36px;

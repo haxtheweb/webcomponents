@@ -16,12 +16,19 @@ class MoarSarcasm extends HTMLElement {
   static get tag() {
     return "moar-sarcasm";
   }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+
   /**
    * object life cycle
    */
   constructor() {
     super();
-    this.a11y = "the following is sarcastic ";
     // create a template element for processing shadowRoot
     this.template = document.createElement("template");
     // create a shadowRoot
@@ -35,7 +42,7 @@ class MoarSarcasm extends HTMLElement {
     this.observer.observe(this, {
       characterData: true,
       attributes: false,
-      childList: false,
+      childList: true,
       subtree: true,
     });
   }
@@ -45,6 +52,7 @@ class MoarSarcasm extends HTMLElement {
       <style>
         :host {
           display: inline-block;
+          word-break: break-all;
         }
         span {
           font-style: italic;
@@ -78,19 +86,25 @@ class MoarSarcasm extends HTMLElement {
     if (window.ShadyCSS) {
       window.ShadyCSS.styleElement(this);
     }
+    this.a11y = "the following is sarcastic:";
     this.say = this.innerText;
   }
   /**
    * Render / rerender the shadowRoot
    */
   render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = null;
+    }
+    if (this.template) {
+      this.template.innerHTML = this.html;
+    }
+    if (window.ShadyCSS && this.template) {
       window.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    if (this.shadowRoot && this.template) {
+      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    }
   }
   /**
    * Process the text in question
@@ -117,7 +131,12 @@ class MoarSarcasm extends HTMLElement {
     return ["say", "a11y"];
   }
   set say(val) {
-    this.setAttribute("say", val);
+    if (val !== this.innerText) {
+      this.innerText = val;
+    }
+    else {
+      this.setAttribute("say", val);
+    }
   }
   set a11y(val) {
     this.setAttribute("a11y", val);

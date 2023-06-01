@@ -31,14 +31,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
-    this.tourName = "hax";
-    this.trayDetail = "content-edit";
-    this.trayStatus = "collapsed";
     this.t = {
       edit: "Edit",
-      editDetails: "Edit details",
       dragHandle: "Drag handle",
       moveUp: "Move up",
+      summonMerlin: "Summon Merlin",
       moveDown: "Move down",
       addColumn: "Add column",
       removeColumn: "Remove column",
@@ -59,7 +56,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       context: this,
       namespace: "hax",
     });
-    //this.onScreen = false;
     this.ceButtons = [];
     this.activeTagName = "";
     this.activeTagIcon = "hax:paragraph";
@@ -77,6 +73,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       css`
         :host {
           width: calc(100% - 2px);
+          min-width: 375px;
           align-items: stretch;
         }
         hax-toolbar::part(morebutton) {
@@ -390,6 +387,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             </div>
           </hax-context-item>
         </div>
+        <div class="group">
+
         <hax-context-item
           action
           icon="delete"
@@ -458,6 +457,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           })}
           <slot name="secondary"></slot>
         </div>
+        </div>
         <div class="group">
           <hax-context-item
             action
@@ -495,20 +495,15 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           ></hax-context-item>
           <slot name="more"></slot>
           <hax-context-item
-            icon="build"
+            icon="hax:wizard-hat"
             action
             align-horizontal="left"
             ?disabled="${
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
-            label="${this.t.editDetails}"
-            data-simple-tour-stop
-            data-stop-title="label"
-            event-name="content-edit"
+            label="${this.t.summonMerlin}"
+            event-name="super-daemon"
           >
-            <div slot="tour" data-stop-content>
-              Opens the Edit panel for more advanced settings.
-            </div>
           </hax-context-item>
         </div>
       </hax-toolbar>
@@ -764,22 +759,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       sourceView: {
         type: Boolean,
-      },
-      /**
-       * is hax tray collapsed, side-panel, or full-panel
-       */
-      trayDetail: {
-        type: String,
-        reflect: true,
-        attribute: "tray-detail",
-      },
-      /**
-       * is hax tray collapsed, side-panel, or full-panel
-       */
-      trayStatus: {
-        type: String,
-        reflect: true,
-        attribute: "tray-status",
       },
     };
   }

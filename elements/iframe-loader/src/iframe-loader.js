@@ -101,6 +101,10 @@ export class IframeLoader extends LitElement {
     this.__observer.observe(this, {
       childList: true,
     });
+    // parent iframe loader gobbles child. this is to avoid issues
+    if (this.querySelector("iframe-loader")) {
+      this.querySelector("iframe-loader").remove();
+    }
   }
 
   iframeLoadingCallback(e) {

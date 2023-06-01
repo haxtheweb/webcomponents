@@ -24,30 +24,6 @@
           "description": "`value-changed` {`CustomEvent<this>`} - "
         }
       ]
-    },
-    {
-      "name": "hex-picker",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `large-display` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `largeDisplay` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `_rValue` {`number`} - \n\n  * `_gValue` {`number`} - \n\n  * `_bValue` {`number`} - \n\n  * `_oValue` {`number`} - \n\n  * `disabled` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "large-display",
-          "description": "`large-display` {`boolean`} - \n\nProperty: largeDisplay",
-          "valueSet": "v"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: #000000FF"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<this>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

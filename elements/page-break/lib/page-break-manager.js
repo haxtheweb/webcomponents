@@ -1,6 +1,7 @@
 export class PageBreakManagerEl extends HTMLElement {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.target = null;
     this.breaks = [];
     this._timer = 0;
@@ -158,15 +159,13 @@ export class PageBreakManagerEl extends HTMLElement {
   connectedCallback() {
     window.addEventListener(
       "page-break-registration",
-      this.registerPageBreak.bind(this)
+      this.registerPageBreak.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "page-break-registration",
-      this.registerPageBreak.bind(this)
-    );
+    this.windowControllers.abort();
   }
   // push an item into history from a page-break's path based on visibility
   // the elements will self report their visibility status and then this callback

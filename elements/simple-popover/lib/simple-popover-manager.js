@@ -120,6 +120,9 @@ class SimplePopoverManager extends LitElement {
       orientation: {
         type: String,
       },
+      popover: {
+        type: Object,
+      }
     };
   }
   updated(changedProperties) {
@@ -130,7 +133,9 @@ class SimplePopoverManager extends LitElement {
       if (["opened", "position", "orientation"].includes(propName)) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          this.popover.updatePosition();
+          if (this.shadowRoot && this.popover && this.popover.updatePosition) {
+            this.popover.updatePosition();
+          }
         }, 0);
       }
     });
@@ -147,7 +152,9 @@ class SimplePopoverManager extends LitElement {
     if (this.__ignore) {
       this.__ignore = false;
       setTimeout(() => {
-        this.popover.updatePosition();
+        if (this.shadowRoot && this.popover && this.popover.updatePosition) {
+          this.popover.updatePosition();
+        }
       }, 100);
     } else {
       if (el !== this.popover.target) {

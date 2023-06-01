@@ -11,6 +11,7 @@ import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/super-daemon/super-daemon.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -456,6 +457,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.registerLocalization({
       context: this,
       namespace: "haxcms",
@@ -490,18 +492,28 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }
       }
     }
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     window.addEventListener(
       "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
+      this._triggerUpdatedData.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
+      this._triggerUpdatedNode.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle);
+      .addEventListener("change", darkToggle, {
+        signal: this.windowControllers.signal,
+      });
+
     autorun(() => {
       localStorageSet("app-hax-darkMode", toJS(store.darkMode));
       if (toJS(store.darkMode)) {
@@ -613,18 +625,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
-    window.removeEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
-    );
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .removeEventListener("change", darkToggle);
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   storeReady(e) {
@@ -682,6 +683,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         item-id="${store.activeItem.id}"
         slug="${store.activeItem.slug}"
         order="${store.activeItem.order}"
+        ${
+          store.activeItem.metadata.pageType
+            ? `page-type="${store.activeItem.metadata.pageType}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.tags
+            ? `tags="${store.activeItem.metadata.tags}"`
+            : ``
+        }
+        ${
+          store.activeItem.metadata.theme && store.activeItem.metadata.theme.key
+            ? `developer-theme="${store.activeItem.metadata.theme.key}"`
+            : ``
+        }
         break-type="site"
         ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
         ${
@@ -817,6 +833,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           this.themeLoaded = true;
           setTimeout(() => {
             window.WCAutoload.process();
+            window.dispatchEvent(
+              new CustomEvent("haxcms-theme-ready", {
+                bubbles: true,
+                composed: true,
+                cancelable: false,
+                detail: this,
+              })
+            );
           }, 5);
         } else {
           // import the reference to the item dynamically, if we can
@@ -856,7 +880,6 @@ window.HAXme = function (context = null) {
       saveOutlinePath: "dist/dev/saveNode.json",
       publishSitePath: "dist/dev/saveNode.json",
       syncSitePath: "dist/dev/saveNode.json",
-      getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
       revertSitePath: "dist/dev/saveNode.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",

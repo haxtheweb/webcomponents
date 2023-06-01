@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.0",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "umd": "count-up.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -42,11 +42,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^4.0.4",
-    "lit": "^2.6.1"
+    "@lrnwebcomponents/intersection-element": "^7.0.0",
+    "lit": "^2.7.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -67,5 +67,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

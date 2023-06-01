@@ -97,6 +97,56 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       ></map-menu>
     `;
   }
+
+  clickLink(id) {
+    let target = this.shadowRoot
+      .querySelector("map-menu")
+      .shadowRoot.querySelector("#" + id);
+    if (target) {
+      if (target.shadowRoot.querySelector("a")) {
+        target.shadowRoot.querySelector("a").click();
+      }
+      // headers are nested
+      else if (target.shadowRoot.querySelector("#" + id)) {
+        target.shadowRoot
+          .querySelector("#" + id)
+          .shadowRoot.querySelector("a")
+          .click();
+      }
+    }
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "routerManifest") {
+        this.routerManifest.items.map((item) => {
+          let tags = ["CMS", "navigation"];
+          if (item.metadata && item.metadata.tags) {
+            tags = tags.concat(item.metadata.tags.split(","));
+          }
+          this.dispatchEvent(
+            new CustomEvent("super-daemon-define-option", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                title: item.title,
+                icon: "link",
+                tags: tags,
+                value: {
+                  target: this,
+                  method: "clickLink",
+                  args: [item.id],
+                },
+                context: "CMS",
+                eventName: "super-daemon-element-method",
+                path: "site/navigation/page",
+              },
+            })
+          );
+        });
+      }
+    });
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);

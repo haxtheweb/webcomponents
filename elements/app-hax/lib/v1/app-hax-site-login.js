@@ -13,6 +13,7 @@ export class AppHaxSiteLogin extends SimpleColors {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.username = "";
     this.password = "";
     this.errorMSG = "Enter User name";
@@ -172,19 +173,18 @@ export class AppHaxSiteLogin extends SimpleColors {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    window.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     window.addEventListener(
       "jwt-login-login-failed",
-      this._jwtLoginFailed.bind(this)
+      this._jwtLoginFailed.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
-    window.removeEventListener(
-      "jwt-login-login-failed",
-      this._jwtLoginFailed.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   // implies that it failed to connect via the login credentials

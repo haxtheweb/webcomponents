@@ -20,10 +20,6 @@ class FullWidthImage extends LitElement {
       css`
         :host {
           display: block;
-          background-color: #000000;
-          height: 300px;
-          margin: 0 !important;
-          padding: 0 !important;
         }
 
         :host([hidden]) {
@@ -39,12 +35,6 @@ class FullWidthImage extends LitElement {
           background-size: cover;
           width: 100%;
           text-align: center;
-        }
-
-        :host([hax-preview-mode]) #image {
-          left: unset;
-          right: unset;
-          position: unset;
         }
 
         .wrapper {
@@ -95,8 +85,6 @@ class FullWidthImage extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
       source: {
         type: String,
         reflect: true,

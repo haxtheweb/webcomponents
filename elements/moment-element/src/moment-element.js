@@ -51,6 +51,7 @@ class MomentElement extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.datetime = new Date();
     this.inputFormat = "";
     this.outputFormat = "";
@@ -59,8 +60,10 @@ class MomentElement extends LitElement {
     const location = new URL("./lib/moment/moment.js", import.meta.url).href;
     window.addEventListener(
       "es-bridge-moment-loaded",
-      this._momentLoaded.bind(this)
+      this._momentLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.ESGlobalBridge.requestAvailability().load("moment", location);
   }
   updated(changedProperties) {
@@ -101,10 +104,7 @@ class MomentElement extends LitElement {
     });
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-moment-loaded",
-      this._momentLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   _momentLoaded() {

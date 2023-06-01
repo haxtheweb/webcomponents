@@ -299,17 +299,15 @@ class CMSToken extends PolymerElement {
     }
     document.addEventListener(
       "visibilitychange",
-      this._windowVisibilityChanged.bind(this)
+      this._windowVisibilityChanged.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * Detatched life cycle.
    */
   disconnectedCallback() {
-    document.removeEventListener(
-      "visibilitychange",
-      this._windowVisibilityChanged.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   haxHooks() {
@@ -329,6 +327,11 @@ class CMSToken extends PolymerElement {
     this.haxEditMode = value;
   }
 
+  constructor() {
+    super();
+    this.windowControllers = new AbortController();
+  }
+
   static get haxProperties() {
     return {
       canScale: true,
@@ -339,7 +342,7 @@ class CMSToken extends PolymerElement {
         description: "CMS token rendered on the backend",
         icon: "icons:code",
         color: "light-blue",
-        tags: ["Magic", "elmsln", "cms", "block"],
+        tags: ["Other", "elmsln", "cms", "block"],
         handles: [
           {
             type: "cmstoken",

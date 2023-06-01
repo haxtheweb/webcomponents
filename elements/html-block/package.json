@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "4.0.25",
+  "version": "7.0.0",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "umd": "html-block.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -37,7 +37,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@lrnwebcomponents/deduping-fix": "^7.0.0",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
@@ -58,5 +58,5 @@
     "html",
     "haxtheweb"
   ],
-  "gitHead": "dfb2cd70d6c85d3ac0792679b3120c20923d5ada"
+  "gitHead": "6afcd512f3d42c2987ba1dd7b0067f28448e4418"
 }

@@ -1,0 +1,66 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canPosition": false,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper on the spotify player embed option",
+    "icon": "hax:spotify",
+    "color": "green",
+    "tags": ["Audio / Video", "music", "spotify"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Embed / Share link from Spotify",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "theme",
+        "title": "Theme",
+        "description": "The color of the background in the player",
+        "inputMethod": "select",
+        "options": {
+          "": "Default",
+          "0": "Black"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Size",
+        "description": "The size of the player",
+        "inputMethod": "select",
+        "options": {
+          "normal": "Default",
+          "compact": "Compact"
+        }
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["editing"]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "spotify-embed",
+      "content": "",
+      "properties": {
+        "source": "https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8",
+        "theme": "0",
+        "size": "compact"
+      }
+    }
+  ]
+}

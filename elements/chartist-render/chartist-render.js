@@ -1251,6 +1251,7 @@ const ChartistRenderSuper = function (SuperClass) {
 
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       this.id = "chart";
       this.type = "bar";
       this.scale = "ct-minor-seventh";
@@ -1391,16 +1392,7 @@ const ChartistRenderSuper = function (SuperClass) {
     }
 
     disconnectedCallback() {
-      window.removeEventListener(
-        "es-bridge-chartistLib-loaded",
-        this._chartistLoaded.bind(this)
-      );
-      this.plugins.forEach((plugin) =>
-        window.removeEventListener(
-          `es-bridge-${plugin[0]}-loaded`,
-          this._getChart.bind(this)
-        )
-      );
+      this.windowControllers.abort();
       if (this.observer && this.observer.disconnect) this.observer.disconnect();
       super.disconnectedCallback();
     }
@@ -1618,7 +1610,10 @@ const ChartistRenderSuper = function (SuperClass) {
       let basePath =
         new URL("./chartist-render.js", import.meta.url).href + "/../";
       let location = `${basePath}${path}`;
-      window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this));
+      window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this), {
+        signal: this.windowControllers.signal,
+      });
+
       window.ESGlobalBridge.requestAvailability().load(classname, location);
     }
 
