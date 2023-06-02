@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -43,14 +43,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^7.0.1",
-    "@lrnwebcomponents/hax-iconset": "^7.0.1",
-    "@lrnwebcomponents/paper-avatar": "^7.0.1",
-    "@lrnwebcomponents/simple-colors": "^7.0.1",
-    "@lrnwebcomponents/simple-drawer": "^7.0.1",
-    "@lrnwebcomponents/simple-icon": "^7.0.1",
-    "@lrnwebcomponents/simple-modal": "^7.0.1",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
+    "@lrnwebcomponents/a11y-collapse": "^7.0.2",
+    "@lrnwebcomponents/hax-iconset": "^7.0.2",
+    "@lrnwebcomponents/paper-avatar": "^7.0.2",
+    "@lrnwebcomponents/simple-colors": "^7.0.2",
+    "@lrnwebcomponents/simple-drawer": "^7.0.2",
+    "@lrnwebcomponents/simple-icon": "^7.0.2",
+    "@lrnwebcomponents/simple-modal": "^7.0.2",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-drawer-panel": "^3.0.0",
@@ -58,8 +58,8 @@
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
+    "@lrnwebcomponents/deduping-fix": "^7.0.2",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.2",
     "@open-wc/testing": "2.5.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
