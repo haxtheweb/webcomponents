@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "A headless gradebook that supports multiple backends with rubrics",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "@github/time-elements": "3.1.4",
     "@lrnwebcomponents/a11y-collapse": "^7.0.2",
     "@lrnwebcomponents/a11y-tabs": "^7.0.2",
-    "@lrnwebcomponents/editable-table": "^7.0.2",
+    "@lrnwebcomponents/editable-table": "^7.0.3",
     "@lrnwebcomponents/es-global-bridge": "^7.0.2",
     "@lrnwebcomponents/file-system-broker": "^7.0.2",
     "@lrnwebcomponents/grid-plate": "^7.0.2",

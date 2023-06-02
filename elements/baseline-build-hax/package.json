@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "create an inflexible baseline build of hax with all elements",
   "repository": {
     "type": "git",
@@ -45,9 +45,9 @@
     "@lrnwebcomponents/a11y-gif-player": "^7.0.2",
     "@lrnwebcomponents/aframe-player": "^7.0.2",
     "@lrnwebcomponents/citation-element": "^7.0.2",
-    "@lrnwebcomponents/cms-hax": "^7.0.2",
+    "@lrnwebcomponents/cms-hax": "^7.0.3",
     "@lrnwebcomponents/grid-plate": "^7.0.2",
-    "@lrnwebcomponents/hax-body": "^7.0.2",
+    "@lrnwebcomponents/hax-body": "^7.0.3",
     "@lrnwebcomponents/hax-body-behaviors": "^7.0.2",
     "@lrnwebcomponents/image-compare-slider": "^7.0.2",
     "@lrnwebcomponents/license-element": "^7.0.2",
@@ -69,7 +69,7 @@
     "@lrnwebcomponents/stop-note": "^7.0.2",
     "@lrnwebcomponents/video-player": "^7.0.2",
     "@lrnwebcomponents/wikipedia-query": "^7.0.2",
-    "@lrnwebcomponents/wysiwyg-hax": "^7.0.2",
+    "@lrnwebcomponents/wysiwyg-hax": "^7.0.3",
     "@webcomponents/webcomponentsjs": "2.6.0",
     "web-animations-js": "2.3.2"
   },
