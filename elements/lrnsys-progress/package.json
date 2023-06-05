@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Automated conversion of lrnsys-progress/",
   "repository": {
     "type": "git",
@@ -42,10 +42,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/circle-progress": "^7.0.1",
-    "@lrnwebcomponents/hax-iconset": "^7.0.1",
-    "@lrnwebcomponents/simple-icon": "^7.0.1",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
+    "@lrnwebcomponents/circle-progress": "^7.0.2",
+    "@lrnwebcomponents/hax-iconset": "^7.0.2",
+    "@lrnwebcomponents/simple-icon": "^7.0.2",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/neon-animation": "^3.0.1",
     "@polymer/paper-progress": "^3.0.0",
@@ -56,8 +56,8 @@
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
+    "@lrnwebcomponents/deduping-fix": "^7.0.2",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.2",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

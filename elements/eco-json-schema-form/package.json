@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.1",
+  "version": "7.0.3",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -37,10 +37,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^7.0.1",
-    "@lrnwebcomponents/a11y-tabs": "^7.0.1",
-    "@lrnwebcomponents/hax-body": "^7.0.1",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.1",
+    "@lrnwebcomponents/a11y-collapse": "^7.0.2",
+    "@lrnwebcomponents/a11y-tabs": "^7.0.2",
+    "@lrnwebcomponents/hax-body": "^7.0.3",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -65,8 +65,8 @@
     "jsoneditor": "9.7.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.1",
+    "@lrnwebcomponents/deduping-fix": "^7.0.2",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.2",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
