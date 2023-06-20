@@ -3,7 +3,7 @@
   "packages": [
     "elements/*"
   ],
-  "version": "7.0.3",
+  "version": "7.0.4",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "workspaces": [

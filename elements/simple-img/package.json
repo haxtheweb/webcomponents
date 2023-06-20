@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.4",
   "description": "simple image manipulation with a microservice",
   "repository": {
     "type": "git",
@@ -44,10 +44,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.2"
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.2",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@open-wc/testing": "2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

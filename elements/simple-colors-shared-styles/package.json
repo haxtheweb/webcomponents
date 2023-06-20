@@ -15,7 +15,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.4",
   "description": "shared styles for simple-colors",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "lit": "^2.7.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.2",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
