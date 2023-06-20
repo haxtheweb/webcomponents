@@ -40,10 +40,6 @@
           "description": "`can-redo-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
-    },
-    {
-      "name": "undo-manager",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

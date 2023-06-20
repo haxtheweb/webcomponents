@@ -57,10 +57,10 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
         }
         site-menu {
           color: blue;
-          --site-menu-active-color: blue; 
-           --site-menu-item-active-item-color: white;
-           --map-menu-item-a-active-color: black;
-           --map-menu-item-a-active-background-color: lightblue;
+          --site-menu-active-color: blue;
+          --site-menu-item-active-item-color: white;
+          --map-menu-item-a-active-color: black;
+          --map-menu-item-a-active-background-color: lightblue;
         }
         site-title {
           color: black;
@@ -83,7 +83,7 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
           --scroll-button-background-color: blue;
           --scroll-button-tooltip-background-color: white;
           --scroll-button-tooltip-color: black;
-         }
+        }
       `,
     ];
   }
@@ -112,7 +112,7 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
           </tr>
           <tr>
             <td width="125" valign="top">
-             <site-menu></site-menu>
+              <site-menu></site-menu>
             </td>
             <td width="10"></td>
             <td valign="top">
@@ -126,8 +126,11 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
               </main>
 
               <div align="center">
-              <site-footer></site-footer>
-              <scroll-button position="right" label="Back to top"></scroll-button>
+                <site-footer></site-footer>
+                <scroll-button
+                  position="right"
+                  label="Back to top"
+                ></scroll-button>
               </div>
             </td>
           </tr>

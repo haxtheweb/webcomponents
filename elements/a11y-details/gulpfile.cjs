@@ -1,8 +1,7 @@
 const gulp = require("gulp");
 const fs = require("fs");
 const path = require("path");
-const _ = require("lodash");
-const rename = require("gulp-rename");
+
 const replace = require("gulp-replace");
 const stripCssComments = require("strip-css-comments");
 const decomment = require("decomment");
@@ -117,24 +116,7 @@ gulp.task("analyze", () => {
     }
   );
 });
-// copy from the built locations pulling them together
-gulp.task("compile", () => {
 
-  return gulp
-    .src("./" + packageJson.wcfactory.elementName + ".js")
-    .pipe(
-      replace(
-        /^(import .*?)(['"]\.\.\/(?!\.\.\/).*)(\.js['"];)$/gm,
-        "$1$2.umd$3"
-      )
-    )
-    .pipe(
-      rename({
-        suffix: ".umd"
-      })
-    )
-    .pipe(gulp.dest("./"));
-});
 
 gulp.task("watch", () => {
   return gulp.watch("./src/*", gulp.series("merge", "analyze"));
@@ -143,4 +125,4 @@ gulp.task("watch", () => {
 // simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile"));
+gulp.task("default", gulp.series("merge", "analyze"));

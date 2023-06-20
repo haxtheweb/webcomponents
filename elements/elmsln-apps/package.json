@@ -26,7 +26,6 @@
   "type": "module",
   "main": "elmsln-apps.js",
   "module": "elmsln-apps.js",
-  "umd": "elmsln-apps.umd.js",
   "scripts": {
     "start": "yarn run dev",
     "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
@@ -52,7 +51,7 @@
     "@polymer/iron-scroll-threshold": "^3.0.1",
     "@polymer/paper-dialog": "3.0.1",
     "@polymer/paper-toggle-button": "3.0.1",
-    "@polymer/polymer": "^3.4.1",
+    "@polymer/polymer": "^3.5.1",
     "@vaadin/vaadin-grid": "^5.2.5",
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.4.1"
@@ -63,10 +62,8 @@
     "@open-wc/testing": "3.0.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.6.0",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "7.4.0",
-    "gulp-babel": "8.0.0",
-    "lodash": "^4.17.21",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"

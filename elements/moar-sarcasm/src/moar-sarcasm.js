@@ -21,7 +21,8 @@ class MoarSarcasm extends HTMLElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 
   /**
@@ -133,8 +134,7 @@ class MoarSarcasm extends HTMLElement {
   set say(val) {
     if (val !== this.innerText) {
       this.innerText = val;
-    }
-    else {
+    } else {
       this.setAttribute("say", val);
     }
   }

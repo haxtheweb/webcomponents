@@ -11,7 +11,7 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 /**
  * `terrible-themes`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
@@ -325,7 +325,10 @@ class TerribleThemes extends HAXCMSRememberRoute(
                 <tbody>
                   <tr>
                     <td valign="middle" align="center">
-                      <site-top-menu indicator="arrow" arrow-size="10" ></site-top-menu>
+                      <site-top-menu
+                        indicator="arrow"
+                        arrow-size="10"
+                      ></site-top-menu>
                     </td>
                   </tr>
                 </tbody>
@@ -357,31 +360,37 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                         <slot></slot>
                                       </section>
                                       <aside>
-                                      <site-menu-button
-                                        hide-label
-                                        type="prev"
-                                        position="right"
-                                        class="navigation"
-                                        @label-changed="${this.__prevPageLabelChanged}"
-                                      >
-                                        <div slot="suffix" class="wrapper">
-                                          <div class="top">Previous</div>
-                                          <div class="bottom">${this.prevPage}</div>
-                                        </div>
-                                      </site-menu-button>
-                                      <site-menu-button
-                                        hide-label
-                                        type="next"
-                                        position="left"
-                                        class="navigation"
-                                        @label-changed="${this.__nextPageLabelChanged}"
-                                      >
-                                        <div slot="prefix" class="wrapper">
-                                          <div class="top">Next</div>
-                                          <div class="bottom">${this.nextPage}</div>
-                                        </div>
-                                      </site-menu-button>
-  </aside>
+                                        <site-menu-button
+                                          hide-label
+                                          type="prev"
+                                          position="right"
+                                          class="navigation"
+                                          @label-changed="${this
+                                            .__prevPageLabelChanged}"
+                                        >
+                                          <div slot="suffix" class="wrapper">
+                                            <div class="top">Previous</div>
+                                            <div class="bottom">
+                                              ${this.prevPage}
+                                            </div>
+                                          </div>
+                                        </site-menu-button>
+                                        <site-menu-button
+                                          hide-label
+                                          type="next"
+                                          position="left"
+                                          class="navigation"
+                                          @label-changed="${this
+                                            .__nextPageLabelChanged}"
+                                        >
+                                          <div slot="prefix" class="wrapper">
+                                            <div class="top">Next</div>
+                                            <div class="bottom">
+                                              ${this.nextPage}
+                                            </div>
+                                          </div>
+                                        </site-menu-button>
+                                      </aside>
                                     </td>
                                   </tr>
                                 </tbody>

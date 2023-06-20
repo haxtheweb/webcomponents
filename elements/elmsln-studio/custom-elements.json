@@ -109,38 +109,6 @@
       ]
     },
     {
-      "name": "elmsln-studio-link",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-button",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-submission-card",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-submissions",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-assignment",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-assignments",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-portfolio",
-      "attributes": []
-    },
-    {
-      "name": "elmsln-studio-main",
-      "attributes": []
-    },
-    {
       "name": "elmsln-studio-assignment",
       "description": "`elmsln-studio-assignment`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `assignments` - all assignments\n\n  * `assignment` - assignment by id\n\n  * `submission` - submission by id\n\n  * `__newLinkUrl` {`string`} - \n\n  * `__newLinkText` {`string`} - \n\n  * `__sources` {`any[]`} - \n\n  * `__links` {`any[]`} - \n\n  * `__editorConfig` {`any[]`} - rich text editor toolbar config\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `assignments` - all assignments\n\n  * `assignment` - assignment by id\n\n  * `submission` - submission by id\n\n  * `__newLinkUrl` {`string`} - \n\n  * `__newLinkText` {`string`} - \n\n  * `actions` {`TemplateResult<1>`} - \n\n  * `alert` - \n\n  * `assignmentStatus` - \n\n  * `bodytext` {`\"\" | TemplateResult<1>`} - \n\n  * `breadcrumb` {`TemplateResult<1>`} - \n\n  * `editable` {`boolean`} - \n\n  * `links` {`\"\" | TemplateResult<1>`} - \n\n  * `nav` {`TemplateResult<1>`} - \n\n  * `newLinkType` {`string | undefined`} - \n\n  * `nextAssign` - \n\n  * `prevAssign` - \n\n  * `sources` {`\"\" | TemplateResult<1>`} - \n\n  * `tooEarly` {`boolean`} - \n\n  * `submittedLate` {`boolean`} - \n\n  * `tooLate` {`boolean`} - \n\n  * `__sources` {`any[]`} - \n\n  * `__links` {`any[]`} - \n\n  * `__editorConfig` {`any[]`} - rich text editor toolbar config\n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
       "attributes": [

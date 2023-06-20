@@ -20,8 +20,7 @@
     }
   },
   "settings": {
-    "inline": [
-    ],
+    "inline": [],
     "configure": [
       {
         "property": "term",

@@ -14,10 +14,6 @@
           "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "figure-label",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

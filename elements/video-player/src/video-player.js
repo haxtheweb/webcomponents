@@ -206,7 +206,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             noCamera: true,
             noVoiceRecord: true,
             validationType: "url",
-          }
+          },
         ],
         advanced: [
           {
@@ -235,7 +235,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Include a share link?",
             description: "Provides a link to share the video.",
             inputMethod: "boolean",
-          }
+          },
         ],
         developer: [
           {
@@ -287,8 +287,8 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Language of the media.",
             inputMethod: "textfield",
             validationType: "text",
-          }
-        ]
+          },
+        ],
       },
       saveOptions: {
         unsetAttributes: ["__utils", "__stand-alone", "colors"],

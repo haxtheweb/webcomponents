@@ -93,10 +93,6 @@
     },
     {
       "name": "wc-markdown",
-      "attributes": []
-    },
-    {
-      "name": "wc-markdown",
       "description": "Attributes:\n\n  * `src` {`string | null`} - \n\nProperties:\n\n  * `value` - \n\n  * `src` {`string | null`} - \n\n  * `__value` {`string`} - ",
       "attributes": [
         {

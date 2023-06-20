@@ -34,12 +34,7 @@ class AudioPlayer extends VideoPlayer {
           "This can present video in a highly accessible manner regardless of source.",
         icon: "av:music-video",
         color: "green",
-        tags: [
-          "Audio / Video",
-          "Media",
-          "listen",
-          "mp3"
-        ],
+        tags: ["Audio / Video", "Media", "listen", "mp3"],
         handles: [
           {
             type: "audio",
@@ -52,7 +47,7 @@ class AudioPlayer extends VideoPlayer {
           },
         ],
         meta: {
-          author: "HAXTheWeb core team"
+          author: "HAXTheWeb core team",
         },
       },
       settings: {
@@ -92,7 +87,7 @@ class AudioPlayer extends VideoPlayer {
             noCamera: true,
             noVoiceRecord: true,
             validationType: "url",
-          }
+          },
         ],
         advanced: [
           {
@@ -121,7 +116,7 @@ class AudioPlayer extends VideoPlayer {
             title: "Include a share link?",
             description: "Provides a link to share the video.",
             inputMethod: "boolean",
-          }
+          },
         ],
         developer: [
           {
@@ -173,8 +168,8 @@ class AudioPlayer extends VideoPlayer {
             description: "Language of the media.",
             inputMethod: "textfield",
             validationType: "text",
-          }
-        ]
+          },
+        ],
       },
       saveOptions: {
         unsetAttributes: ["__utils", "__stand-alone", "colors"],
@@ -186,7 +181,7 @@ class AudioPlayer extends VideoPlayer {
             accentColor: "orange",
             dark: true,
             crossorigin: "anonymous",
-            source: "https://inline-audio-mocha.vercel.app/assets/whopper.mp3"
+            source: "https://inline-audio-mocha.vercel.app/assets/whopper.mp3",
           },
           content: "",
         },

@@ -131,7 +131,10 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           <tr>
                             <td align="center">
                               <site-top-menu indicator="arrow" arrow-size="8">
-                                <site-title slot="prefix" class="spacing"></site-title>
+                                <site-title
+                                  slot="prefix"
+                                  class="spacing"
+                                ></site-title>
                               </site-top-menu>
                             </td>
                           </tr>

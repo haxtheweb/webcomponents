@@ -396,14 +396,18 @@ export class Form {
     this.drawTime(0);
     recordRow.appendChild(timer);
 
-    const recordBtn = (this.recordBtn = document.createElement("simple-icon-button-lite"));
+    const recordBtn = (this.recordBtn = document.createElement(
+      "simple-icon-button-lite"
+    ));
     recordBtn.className = "vmsg-button vmsg-record-button";
     recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
     recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
     recordBtn.addEventListener("click", () => this.startRecording());
     recordRow.appendChild(recordBtn);
 
-    const stopBtn = (this.stopBtn = document.createElement("simple-icon-button-lite"));
+    const stopBtn = (this.stopBtn = document.createElement(
+      "simple-icon-button-lite"
+    ));
     stopBtn.className = "vmsg-button vmsg-stop-button";
     stopBtn.style.display = "none";
     stopBtn.icon = "av:stop";
@@ -411,7 +415,9 @@ export class Form {
     stopBtn.addEventListener("click", () => this.stopRecording());
     recordRow.appendChild(stopBtn);
 
-    const previewBtn = (this.previewBtn = document.createElement("simple-icon-button-lite"));
+    const previewBtn = (this.previewBtn = document.createElement(
+      "simple-icon-button-lite"
+    ));
     previewBtn.className = "vmsg-button vmsg-record-button";
     previewBtn.style.display = "none";
     previewBtn.icon = !this.playing ? "av:play-arrow" : "av:pause";
@@ -431,7 +437,9 @@ export class Form {
     });
     recordRow.appendChild(previewBtn);
 
-    const saveBtn = (this.saveBtn = document.createElement("simple-icon-button-lite"));
+    const saveBtn = (this.saveBtn = document.createElement(
+      "simple-icon-button-lite"
+    ));
     saveBtn.className = "vmsg-button vmsg-save-button";
     saveBtn.icon = "icons:save";
     saveBtn.textContent = "Save";
@@ -512,7 +520,9 @@ export class Form {
 
   onStop() {
     this.recordBtn.style.display = "";
-    this.recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
+    this.recordBtn.icon = this.hasRecording
+      ? "refresh"
+      : "av:fiber-smart-record";
     this.recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
     this.stopBtn.style.display = "none";
     this.previewBtn.style.display = "";

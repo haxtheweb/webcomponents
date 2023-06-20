@@ -104,8 +104,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         setTimeout(() => {
           resolve();
         }, 1000);
-      }
-      else {
+      } else {
         resolve();
       }
     });
@@ -205,11 +204,14 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       menu: "Menu",
       showMore: "More",
     };
-    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
-      window.webkitSpeechRecognition ||
-      window.mozSpeechRecognition ||
-      window.msSpeechRecognition ||
-      window.oSpeechRecognition)) {
+    if (
+      typeof window.speechSynthesis !== "undefined" &&
+      (window.SpeechRecognition ||
+        window.webkitSpeechRecognition ||
+        window.mozSpeechRecognition ||
+        window.msSpeechRecognition ||
+        window.oSpeechRecognition)
+    ) {
       SuperDaemonInstance.voiceSearch = true;
     }
     SuperDaemonInstance.icon = "hax:wizard-hat";
@@ -616,9 +618,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     store.appEl.playSound("coin").then(() => {
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
-          SuperDaemonInstance.merlinSpeak("Enjoy these early 2000s table based layouts. May they remind you how never to web, again.");
+          SuperDaemonInstance.merlinSpeak(
+            "Enjoy these early 2000s table based layouts. May they remind you how never to web, again."
+          );
         });
-      })
+      });
     });
   }
   fireUnlocked() {
@@ -626,9 +630,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     store.appEl.playSound("coin").then(() => {
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
-          SuperDaemonInstance.merlinSpeak("Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!");
+          SuperDaemonInstance.merlinSpeak(
+            "Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!"
+          );
         });
-      })
+      });
     });
   }
   // eslint-disable-next-line class-methods-use-this

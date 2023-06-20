@@ -119,12 +119,15 @@ class Hal9000 extends LitElement {
     );
     window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
-    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
-      window.webkitSpeechRecognition ||
-      window.mozSpeechRecognition ||
-      window.msSpeechRecognition ||
-      window.oSpeechRecognition)) {
-        this.synth = window.speechSynthesis;
+    if (
+      typeof window.speechSynthesis !== "undefined" &&
+      (window.SpeechRecognition ||
+        window.webkitSpeechRecognition ||
+        window.mozSpeechRecognition ||
+        window.msSpeechRecognition ||
+        window.oSpeechRecognition)
+    ) {
+      this.synth = window.speechSynthesis;
       /*this.voices = this.synth.getVoices();
       for (var i = 0; i < this.voices.length; i++) {
         if (this.voices[i].default) {

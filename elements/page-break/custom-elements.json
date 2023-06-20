@@ -109,10 +109,6 @@
           "description": "`hax-refresh-tray-form` {`CustomEvent<any>`} - "
         }
       ]
-    },
-    {
-      "name": "page-break-manager",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

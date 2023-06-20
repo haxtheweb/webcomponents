@@ -791,9 +791,7 @@ class SuperDaemon extends SimpleColors {
     }, 0);
   }
   merlinSpeak(phrase) {
-    this.hal.speak(
-      phrase, false, false
-    ).then((e) => {
+    this.hal.speak(phrase, false, false).then((e) => {
       this.close();
     });
   }

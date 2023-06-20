@@ -10,10 +10,6 @@
           "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
-    },
-    {
-      "name": "page-scroll-position",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

@@ -26,10 +26,9 @@
   "type": "module",
   "main": "lrnsys-layout.js",
   "module": "lrnsys-layout.js",
-  "umd": "lrnsys-layout.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "es-dev-server -c ../../es-dev-server.config.js",
@@ -67,10 +66,8 @@
     "@web/test-runner-commands": "0.4.5",
     "@web/test-runner-playwright": "0.8.6",
     "@web/test-runner-puppeteer": "0.10.0",
-    "@webcomponents/webcomponentsjs": "2.6.0",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "5.3.0",
-    "gulp-babel": "8.0.0",
-    "lodash": "^4.17.21",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },

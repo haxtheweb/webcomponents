@@ -11,13 +11,7 @@
     "description": "Presenting text in a trolly way",
     "icon": "hax:case-sensitive-alt",
     "color": "purple",
-    "tags": [
-      "Other",
-      "troll",
-      "sarcasm",
-      "text",
-      "funny"
-    ],
+    "tags": ["Other", "troll", "sarcasm", "text", "funny"],
     "handles": [
       {
         "type": "text",
@@ -41,9 +35,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "a11y"
-    ]
+    "unsetAttributes": ["a11y"]
   },
   "demoSchema": [
     {

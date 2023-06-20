@@ -26,10 +26,6 @@
           "description": "`hax-save-body-value` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
-    },
-    {
-      "name": "h-a-x",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

@@ -25,8 +25,13 @@ class VoiceRecorder extends LitElement {
   }
   render() {
     return html`
-      ${!this.recording ? html`<button @click="${this.toggleRecording}">
-        <simple-icon-button-lite icon="av:mic">${this.label}</simple-icon-button-lite>` : html``}
+      ${!this.recording
+        ? html`<button @click="${this.toggleRecording}">
+            <simple-icon-button-lite icon="av:mic"
+              >${this.label}</simple-icon-button-lite
+            >
+          </button>`
+        : html``}
       <slot></slot>
     `;
   }
@@ -37,7 +42,7 @@ class VoiceRecorder extends LitElement {
       },
       label: {
         type: String,
-      }
+      },
     };
   }
   /**
@@ -81,7 +86,7 @@ class VoiceRecorder extends LitElement {
           cancelable: true,
           detail: {
             value: blob,
-          }
+          },
         })
       );
       this.recording = false;

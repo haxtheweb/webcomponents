@@ -10,7 +10,7 @@
   "type": "module",
   "main": "a11y-carousel.js",
   "module": "a11y-carousel.js",
-  "umd": "a11y-carousel.umd.js",
+  
   "scripts": {},
   "author": {
     "name": "btopro"
@@ -18,6 +18,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/drag-n-drop": "4.0.25",
+    "@lrnwebcomponents/pdf-element": "7.0.0",
     "@lrnwebcomponents/game-show-quiz": "4.1.0",
     "@lrnwebcomponents/glossary-term": "4.1.0",
     "@lrnwebcomponents/hero-banner": "4.0.4",
