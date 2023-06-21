@@ -46,7 +46,7 @@
     "@lrnwebcomponents/grid-plate": "^7.0.4",
     "@lrnwebcomponents/simple-colors": "^7.0.4",
     "@lrnwebcomponents/utils": "^7.0.4",
-    "lit": "^2.7.4"
+    "lit": "^2.7.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^7.0.4",
@@ -79,14 +79,13 @@
     "@lrnwebcomponents/user-action": "^7.0.4",
     "@lrnwebcomponents/video-player": "^7.0.4",
     "@lrnwebcomponents/wikipedia-query": "^7.0.4",
-    "@open-wc/testing": "3.0.4",
+    "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.34",
+    "@web/dev-server": "0.2.3",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "7.4.0",
-    "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "concurrently": "8.2.0",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {

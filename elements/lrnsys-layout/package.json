@@ -53,13 +53,12 @@
     "@polymer/app-layout": "^3.0.2",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-drawer-panel": "^3.0.0",
-    "@polymer/paper-input": "^3.0.2",
-    "web-animations-js": "2.3.2"
+    "@polymer/paper-input": "^3.0.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
     "@lrnwebcomponents/storybook-utilities": "^7.0.4",
-    "@open-wc/testing": "2.5.33",
+    "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@web/test-runner": "0.13.5",
@@ -67,7 +66,7 @@
     "@web/test-runner-playwright": "0.8.6",
     "@web/test-runner-puppeteer": "0.10.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "5.3.0",
+    "concurrently": "8.2.0",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },
