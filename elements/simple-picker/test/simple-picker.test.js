@@ -1,12 +1,12 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
-import "../simple-picker.js";
+import '../lib/simple-symbol-picker.js';
 
 describe("simple-picker test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <simple-picker title="test-title"></simple-picker> `
+      html` <simple-symbol-picker></simple-symbol-picker> `
     );
   });
 

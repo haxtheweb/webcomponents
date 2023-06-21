@@ -6,7 +6,7 @@ describe("meme-maker test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <meme-maker title="test-title"></meme-maker> `
+      html` <meme-maker alt="Cat stalking a small toy" image-url="https://cdn2.thecatapi.com/images/9j5.jpg" top-text="I bring you" bottom-text="the death"></meme-maker> `
     );
   });
 

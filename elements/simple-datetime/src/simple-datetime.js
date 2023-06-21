@@ -25,9 +25,6 @@ class SimpleDatetime extends LitElement {
       css`
         :host {
           display: block;
-          font-size: 14px;
-          color: #b3b3b1;
-          line-height: 30px;
         }
       `,
     ];

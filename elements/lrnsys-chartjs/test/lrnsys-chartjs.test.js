@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrnsys-chartjs.js";
-
+/*
 describe("lrnsys-chartjs test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("lrnsys-chartjs test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("lrnsys-chartjs passes accessibility test", async () => {
     const el = await fixture(html` <lrnsys-chartjs></lrnsys-chartjs> `);

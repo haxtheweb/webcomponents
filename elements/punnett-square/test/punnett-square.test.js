@@ -6,7 +6,13 @@ describe("punnett-square test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <punnett-square title="test-title"></punnett-square> `
+      html`
+        <punnett-square variant1="Aa" variant2="Aa">
+          <img data-variant="Aa" src="images/green-alien.png" alt="" />
+          <img data-variant="AA" src="images/green-alien.png" alt="" />
+          <img data-variant="aa" src="images/purple-alien.png" alt="" />
+        </punnett-square>
+      `
     );
   });
 

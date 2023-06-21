@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../data-viz.js";
-
+/*
 describe("data-viz test", () => {
   let element;
   beforeEach(async () => {

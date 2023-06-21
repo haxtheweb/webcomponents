@@ -92,11 +92,11 @@ class EventBadge extends SimpleColors {
              <clipPath id="clip-path"><path d="M1093.365,40H56.636a23.3,23.3,0,0,0-23.3,23.295V1436.706a23.3,23.3,0,0,0,23.3,23.3H1093.365a23.3,23.3,0,0,0,23.3-23.3V63.294A23.3,23.3,0,0,0,1093.365,40ZM571.754,163.356a28.289,28.289,0,1,1,28.288-28.288A28.288,28.288,0,0,1,571.754,163.356Z" fill="none"></path></clipPath> 
              <clipPath id="tv-clip-path"><path d="M198.6,445.5l19.5-2.4l192.9-8.4h215.2l154.1,11c0,0,37.4-0.5,39.5,8.2c2.2,8.8,7.2,31.8,7.2,31.8v124.8l-5,179.2l-0.2,96.3c0,0-9.9,51.2-42.9,55S559,934.8,559,934.8l-157,1l-118,2h-90c0,0-36.8-3.2-41.4-37.6c-4.6-34.4-5.3-50.7-5.3-50.7v-64.3l5.3-92.6l3.4-84.8l0.7-96.8l9.4-44.2c0,0,8.8-16.3,13.8-19.1C185,444.8,198.6,445.5,198.6,445.5z"></path></clipPath></defs>
         <g style="isolation:isolate;">
-        <g id="Layer_1" data-name="Layer 1" filter="url(#dropshadow)">
+        <g  data-name="Layer 1" filter="url(#dropshadow)">
         <g clip-path="url(#clip-path)"><rect id="main_shadow" x="0" y="0" width="100%" height="100%" fill="#000000"></rect></g></g> 
-        <g id="Layer_1" data-name="Layer 1"><rect id="main_background" data-name="main background" x="-0.018" y="-2.766" width="1150.018" height="1506.952" fill="#ffffff00"></rect> 
+        <g data-name="Layer 1"><rect id="main_background" data-name="main background" x="-0.018" y="-2.766" width="1150.018" height="1506.952" fill="#ffffff00"></rect> 
         <g clip-path="url(#clip-path)"><rect id="main_background_fallback" x="-0.018" y="-2.766" width="1150.018" height="1506.952" fill="#fff"></rect> 
-        <g id="TV"><g id="photo" data-name="photo"><g clip-path="url(#tv-clip-path)">
+        <g id="TV"><g data-name="photo"><g clip-path="url(#tv-clip-path)">
         <g id="bgImage">
         <g filter=""><g transform="translate(244 443) translate(250 250) scale(1.45) translate(-250 -250) translate(250 250) rotate(0) translate(-250 -250)" ><image width="500" height="500" href= ${
           this.image
@@ -162,7 +162,7 @@ class EventBadge extends SimpleColors {
                     <div style="font-size: 60px;line-height:60px;margin:10px 0;">${
                       this.organization
                     }</div>
-                    <g id="photo" data-name="photo"><g clip-path="url(#tv-clip-path)">
+                    <g  data-name="photo"><g clip-path="url(#tv-clip-path)">
                     </div>
                     </div>
                     </foreignObject>

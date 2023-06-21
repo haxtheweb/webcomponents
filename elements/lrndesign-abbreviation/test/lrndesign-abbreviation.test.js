@@ -7,7 +7,7 @@ describe("lrndesign-abbreviation test", () => {
   beforeEach(async () => {
     element = await fixture(
       html`
-        <lrndesign-abbreviation title="test-title"></lrndesign-abbreviation>
+          <p>The thing you want is called <lrndesign-abbreviation abbr="ELMS:LN" phrase="ELMS: Learning Network"></lrndesign-abbreviation>.</p>
       `
     );
   });

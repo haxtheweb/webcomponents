@@ -6,7 +6,13 @@ describe("csv-render test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <csv-render title="test-title"></csv-render> `
+      html`
+        <csv-render
+          data-source="../demo/demo.csv"
+          summary="This shows student scores from the previous 12 month period."
+          caption="Student semester scores"
+        ></csv-render>
+      `
     );
   });
 
