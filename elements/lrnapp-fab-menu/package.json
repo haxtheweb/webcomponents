@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.5",
+  "version": "7.0.8",
   "description": "Automated conversion of lrnapp-fab-menu/",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "@lrnwebcomponents/paper-fab-speed-dial": "^7.0.5",
     "@lrnwebcomponents/simple-icon": "^7.0.5",
     "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
-    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "lit": "^2.7.5"
   },
   "devDependencies": {

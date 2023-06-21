@@ -2,7 +2,7 @@
   "name": "deprecated-elements",
   "description": "Elements our team has deprecated",
   "wcfactory": {},
-  "version": "7.0.5",
+  "version": "7.0.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

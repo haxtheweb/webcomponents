@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.6",
+  "version": "7.0.8",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "@lrnwebcomponents/grafitto-filter": "^7.0.5",
     "@lrnwebcomponents/hax-iconset": "^7.0.5",
     "@lrnwebcomponents/lrndesign-avatar": "^7.0.5",
-    "@lrnwebcomponents/lrnsys-button": "^7.0.6",
+    "@lrnwebcomponents/lrnsys-button": "^7.0.8",
     "@lrnwebcomponents/moment-element": "^7.0.5",
     "@lrnwebcomponents/mtz-marked-editor": "^7.0.5",
     "@lrnwebcomponents/simple-icon": "^7.0.5",
