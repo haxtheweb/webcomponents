@@ -78,9 +78,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                         width="${this.width}"
                         height="${this.height}"
                         frameborder="0"
-                        webkitallowfullscreen=""
-                        mozallowfullscreen=""
-                        allowfullscreen=""
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                       ></iframe>
                     `}
               </div>

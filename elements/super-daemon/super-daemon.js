@@ -909,7 +909,7 @@ class SuperDaemon extends SimpleColors {
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {
         this.hal = window.Hal9000.requestAvailability();
-        this.hal.debug = true;
+        this.hal.debug = false; // enable to see all available commands in console
         this.hal.toast = true;
         this.defaultVoiceCommands();
       });
