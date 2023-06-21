@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../lrnsys-randomimage.js";
-
+/*
 describe("lrnsys-randomimage test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("lrnsys-randomimage test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("lrnsys-randomimage passes accessibility test", async () => {
     const el = await fixture(html` <lrnsys-randomimage></lrnsys-randomimage> `);

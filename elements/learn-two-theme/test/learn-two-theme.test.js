@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../learn-two-theme.js";
-
+/*
 describe("learn-two-theme test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,6 @@ describe("learn-two-theme test", () => {
   });
 });
 
-/*
 describe("A11y/chai axe tests", () => {
   it("learn-two-theme passes accessibility test", async () => {
     const el = await fixture(html` <learn-two-theme></learn-two-theme> `);

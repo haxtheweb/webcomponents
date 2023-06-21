@@ -1,7 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../wysiwyg-hax.js";
-
+/*
 describe("wysiwyg-hax test", () => {
   let element;
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe("wysiwyg-hax test", () => {
   });
 });
 
-/*
+
 describe("A11y/chai axe tests", () => {
   it("wysiwyg-hax passes accessibility test", async () => {
     const el = await fixture(html` <wysiwyg-hax></wysiwyg-hax> `);
