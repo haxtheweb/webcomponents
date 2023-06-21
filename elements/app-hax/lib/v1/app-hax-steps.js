@@ -491,7 +491,14 @@ export class AppHaxSteps extends SimpleColors {
       }
       if (propName === "unlockTerrible" && this[propName]) {
         Object.keys(themeContext).forEach((key) => {
-          themeContext[key] = [...themeContext[key], "terrible-themes","terrible-productionz-themes","terrible-outlet-themes","terrible-best-themes","terrible-resume-themes"]
+          themeContext[key] = [
+            ...themeContext[key],
+            "terrible-themes",
+            "terrible-productionz-themes",
+            "terrible-outlet-themes",
+            "terrible-best-themes",
+            "terrible-resume-themes",
+          ];
         });
         const contextKey = toJS(store.site.structure);
         this.themeNames = Object.keys(this.appSettings.themes).filter(

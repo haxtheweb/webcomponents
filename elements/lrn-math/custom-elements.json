@@ -3,21 +3,14 @@
   "tags": [
     {
       "name": "lrn-math",
-      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS\n\nAttributes:\n\n  * `math-text` {} - ",
+      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS\n\nAttributes:\n\n  * `mathtext` {`string | null`} - \n\nProperties:\n\n  * `mathtext` {`string | null`} - \n\n  * `_private` - ",
       "attributes": [
         {
-          "name": "math-text",
-          "description": "`math-text` {} - \n\n"
+          "name": "mathtext",
+          "description": "`mathtext` {`string | null`} - \n\nProperty: mathtext",
+          "values": []
         }
       ]
-    },
-    {
-      "name": "lrn-math-controller",
-      "attributes": []
-    },
-    {
-      "name": "lrn-math",
-      "attributes": []
     },
     {
       "name": "lrn-math-controller",

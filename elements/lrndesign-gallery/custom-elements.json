@@ -479,10 +479,6 @@
           "description": "`item-changed` {`CustomEvent<any>`} - Handles changes in selected item by firing an event to the gallery"
         }
       ]
-    },
-    {
-      "name": "lrndesign-gallery",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

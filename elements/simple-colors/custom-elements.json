@@ -72,7 +72,7 @@
         },
         {
           "name": "allow-null",
-          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: false",
+          "description": "`allow-null` {`boolean`} - allow a null value?\nDefault behavior/false will select first option and set value accordingly.\n\nProperty: allowNull\n\nDefault: true",
           "valueSet": "v"
         },
         {

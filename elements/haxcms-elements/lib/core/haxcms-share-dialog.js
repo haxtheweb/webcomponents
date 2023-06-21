@@ -125,9 +125,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         height="${form.height}"
         width="100%"
         frameborder="0"
-        allowfullscreen="true"
-        webkitallowfullscreen="true"
-        mozallowfullscreen="true"
+        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
       ></iframe>
     </template>`;
     this.shadowRoot.querySelector("code-sample").innerHTML = shareCode;

@@ -14,10 +14,6 @@
           "description": "`open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperty: openText\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "a11y-details",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

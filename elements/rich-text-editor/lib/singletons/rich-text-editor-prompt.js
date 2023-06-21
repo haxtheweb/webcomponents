@@ -280,13 +280,17 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
       this.value = { ...e.detail.value };
       // see if we only have 1 field and 1 value coming in
       // if so, try and align them
-      if (e.detail.fields.length === 1 && Object.keys(e.detail.value).length === 1) {
+      if (
+        e.detail.fields.length === 1 &&
+        Object.keys(e.detail.value).length === 1
+      ) {
         if (e.detail.fields[0].attribute) {
-          this.value[e.detail.fields[0].attribute] = e.detail.value[Object.keys(e.detail.value).pop()];
+          this.value[e.detail.fields[0].attribute] =
+            e.detail.value[Object.keys(e.detail.value).pop()];
           this.value = { ...this.value };
-        }
-        else if (e.detail.fields[0].property) {
-          this.value[e.detail.fields[0].property] = e.detail.value[Object.keys(e.detail.value).pop()];
+        } else if (e.detail.fields[0].property) {
+          this.value[e.detail.fields[0].property] =
+            e.detail.value[Object.keys(e.detail.value).pop()];
           this.value = { ...this.value };
         }
       }

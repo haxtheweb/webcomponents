@@ -2,6 +2,8 @@
 
 - [NPM Package list](https://www.npmjs.com/org/lrnwebcomponents)
 - [HAX doc site](https://haxtheweb.org/)
+- [HAXcms](https://github.com/elmsln/haxcms)
+- [HAX + 11ty](https://github.com/elmsln/hax11ty)
 - [WCFactory Tooling](https://wcfactory.js.org/)
 
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

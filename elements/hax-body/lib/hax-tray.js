@@ -408,6 +408,9 @@ class HaxTray extends I18NMixin(
           );
           overflow-y: auto;
         }
+        .block-add-wrapper {
+          overflow-y: auto;
+        }
         a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;

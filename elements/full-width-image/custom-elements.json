@@ -14,10 +14,6 @@
           "description": "`caption` {`string`} - \n\nProperty: caption"
         }
       ]
-    },
-    {
-      "name": "full-width-image",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

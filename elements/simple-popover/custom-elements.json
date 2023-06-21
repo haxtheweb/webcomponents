@@ -3,8 +3,12 @@
   "tags": [
     {
       "name": "simple-popover-manager",
-      "description": "Attributes:\n\n  * `opened` {`boolean`} - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `context` - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\n  * `__ignore` {`boolean`} - ",
+      "description": "Attributes:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `context` - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\n  * `__ignore` {`boolean`} - ",
       "attributes": [
+        {
+          "name": "popover",
+          "description": "`popover` - \n\nProperty: popover\n\nDefault: null"
+        },
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",

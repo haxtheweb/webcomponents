@@ -171,134 +171,181 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     );
     return [
       css`
-      [data-style-decoration] {
-        --mark-red-bg: #fbe4e4;
-        --mark-pink-bg: #f4dfeb;
-        --mark-blue-bg: #ddebf1;
-        --mark-purple-bg: #eae4f2;
-        --mark-teal-bg: #ddedea;
-        --mark-yellow-bg: #fbf3db;
-        --mark-orange-bg: #faebdd;
-        --mark-brown-bg: #e9e5e3;
-        --mark-gray-bg: #ebeced;
-      }
-      [data-style-block-decoration] {
-        --mark-red-bg-callout: hsla(0,74%,94%,.3);
-        --mark-pink-bg-callout: rgba(244,223,235,.3);
-        --mark-blue-bg-callout: rgba(221,235,241,.3);
-        --mark-purple-bg-callout: rgba(234,228,242,.3);
-        --mark-teal-bg-callout: rgba(221,237,234,.3);
-        --mark-yellow-bg-callout: hsla(45,80%,92%,.3);
-        --mark-orange-bg-callout: hsla(29,74%,92%,.3);
-        --mark-brown-bg-callout: hsla(20,12%,90%,.3);
-        --mark-gray-bg-callout: hsla(210,5%,93%,.3);
-        padding: 16px 16px 16px 12px;
-        border-radius: 3px;
-        align-items: center;
-        box-sizing: border-box;
-        margin: 0.75em 0;
-        border: 2px solid rgba(55,53,47,.09);
-      }
-      [data-style-block-decoration="callout-red"]{
-        background-color: var(--mark-red-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-pink"]{
+        [data-style-decoration] {
+          --mark-red-bg: #fbe4e4;
+          --mark-pink-bg: #f4dfeb;
+          --mark-blue-bg: #ddebf1;
+          --mark-purple-bg: #eae4f2;
+          --mark-teal-bg: #ddedea;
+          --mark-yellow-bg: #fbf3db;
+          --mark-orange-bg: #faebdd;
+          --mark-brown-bg: #e9e5e3;
+          --mark-gray-bg: #ebeced;
+        }
+        [data-style-block-decoration] {
+          --mark-red-bg-callout: hsla(0, 74%, 94%, 0.3);
+          --mark-pink-bg-callout: rgba(244, 223, 235, 0.3);
+          --mark-blue-bg-callout: rgba(221, 235, 241, 0.3);
+          --mark-purple-bg-callout: rgba(234, 228, 242, 0.3);
+          --mark-teal-bg-callout: rgba(221, 237, 234, 0.3);
+          --mark-yellow-bg-callout: hsla(45, 80%, 92%, 0.3);
+          --mark-orange-bg-callout: hsla(29, 74%, 92%, 0.3);
+          --mark-brown-bg-callout: hsla(20, 12%, 90%, 0.3);
+          --mark-gray-bg-callout: hsla(210, 5%, 93%, 0.3);
+          padding: 16px 16px 16px 12px;
+          border-radius: 3px;
+          align-items: center;
+          box-sizing: border-box;
+          margin: 0.75em 0;
+          border: 2px solid rgba(55, 53, 47, 0.09);
+        }
+        [data-style-block-decoration="callout-red"] {
+          background-color: var(--mark-red-bg-callout);
+        }
+
+        [data-style-block-decoration="callout-pink"] {
           background-color: var(--mark-pink-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-blue"]{
+        }
+
+        [data-style-block-decoration="callout-blue"] {
           background-color: var(--mark-blue-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-purple"]{
+        }
+
+        [data-style-block-decoration="callout-purple"] {
           background-color: var(--mark-purple-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-teal"]{
+        }
+
+        [data-style-block-decoration="callout-teal"] {
           background-color: var(--mark-teal-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-yellow"]{
+        }
+
+        [data-style-block-decoration="callout-yellow"] {
           background-color: var(--mark-yellow-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-orange"]{
+        }
+
+        [data-style-block-decoration="callout-orange"] {
           background-color: var(--mark-orange-bg-callout);
-      }
-      
-      [data-style-block-decoration="callout-brown"]{
+        }
+
+        [data-style-block-decoration="callout-brown"] {
           background-color: var(--mark-brown-bg-callout);
-      }
-      [data-style-block-decoration="callout-gray"]{
+        }
+        [data-style-block-decoration="callout-gray"] {
           background-color: var(--mark-gray-bg-callout);
-      }
-      [data-style-decoration="mark-blue"],[data-style-decoration="mark-brown"],[data-style-decoration="mark-gray"],[data-style-decoration="mark-orange"],[data-style-decoration="mark-pink"],[data-style-decoration="mark-purple"],[data-style-decoration="mark-red"],[data-style-decoration="mark-teal"],[data-style-decoration="mark-yellow"] {
-        --bg-color: transparent;  
-        padding: 0 .5rem;
-        margin: 0 -.5rem 0 -.25rem;
-        border-radius: .5rem;
-        border-bottom-left-radius: .125rem;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        background-color: transparent;
-        background-image: linear-gradient(119deg,var(--bg-color),#fff697 10.5%,#fdf59d 85.29%,var(--bg-color));
-      }
+        }
+        [data-style-decoration="mark-blue"],
+        [data-style-decoration="mark-brown"],
+        [data-style-decoration="mark-gray"],
+        [data-style-decoration="mark-orange"],
+        [data-style-decoration="mark-pink"],
+        [data-style-decoration="mark-purple"],
+        [data-style-decoration="mark-red"],
+        [data-style-decoration="mark-teal"],
+        [data-style-decoration="mark-yellow"] {
+          --bg-color: transparent;
+          padding: 0 0.5rem;
+          margin: 0 -0.5rem 0 -0.25rem;
+          border-radius: 0.5rem;
+          border-bottom-left-radius: 0.125rem;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+          background-color: transparent;
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #fff697 10.5%,
+            #fdf59d 85.29%,
+            var(--bg-color)
+          );
+        }
 
-      [data-style-decoration="mark-pink"],[data-style-decoration="mark-purple"] {
-          background-image: linear-gradient(119deg,var(--bg-color),#f5b8d1 10.5%,#f9bcd3 85.29%,var(--bg-color))
-      }
+        [data-style-decoration="mark-pink"],
+        [data-style-decoration="mark-purple"] {
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #f5b8d1 10.5%,
+            #f9bcd3 85.29%,
+            var(--bg-color)
+          );
+        }
 
-      [data-style-decoration="mark-blue"],[data-style-decoration="mark-gray"] {
-          background-image: linear-gradient(119deg,var(--bg-color),#adedfc 10.5%,#adebfd 85.29%,var(--bg-color));
-      }
+        [data-style-decoration="mark-blue"],
+        [data-style-decoration="mark-gray"] {
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #adedfc 10.5%,
+            #adebfd 85.29%,
+            var(--bg-color)
+          );
+        }
 
-      [data-style-decoration="mark-orange"],[data-style-decoration="mark-red"] {
-          background-image: linear-gradient(119deg,var(--bg-color),#f5c4ff 10.5%,#e7a8fc 85.29%,var(--bg-color))
-      }
+        [data-style-decoration="mark-orange"],
+        [data-style-decoration="mark-red"] {
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #f5c4ff 10.5%,
+            #e7a8fc 85.29%,
+            var(--bg-color)
+          );
+        }
 
-      [data-style-decoration="mark-teal"] {
-          background-image: linear-gradient(119deg,var(--bg-color),#d4eabc 10.5%,#d2eabc 85.29%,var(--bg-color))
-      }
+        [data-style-decoration="mark-teal"] {
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #d4eabc 10.5%,
+            #d2eabc 85.29%,
+            var(--bg-color)
+          );
+        }
 
-      [data-style-decoration="mark-brown"] {
-          background-image: linear-gradient(119deg,var(--bg-color),#96b8ec 10.5%,#a6c3f0 85.29%,var(--bg-color))
-      }
-      [data-style-decoration="mark-red"] {
-          background-color: var(--mark-red-bg)
-      }
+        [data-style-decoration="mark-brown"] {
+          background-image: linear-gradient(
+            119deg,
+            var(--bg-color),
+            #96b8ec 10.5%,
+            #a6c3f0 85.29%,
+            var(--bg-color)
+          );
+        }
+        [data-style-decoration="mark-red"] {
+          background-color: var(--mark-red-bg);
+        }
 
-      [data-style-decoration="mark-pink"] {
-          background-color: var(--mark-pink-bg)
-      }
+        [data-style-decoration="mark-pink"] {
+          background-color: var(--mark-pink-bg);
+        }
 
-      [data-style-decoration="mark-blue"] {
-          background-color: var(--mark-blue-bg)
-      }
+        [data-style-decoration="mark-blue"] {
+          background-color: var(--mark-blue-bg);
+        }
 
-      [data-style-decoration="mark-purple"] {
-          background-color: var(--mark-purple-bg)
-      }
+        [data-style-decoration="mark-purple"] {
+          background-color: var(--mark-purple-bg);
+        }
 
-      [data-style-decoration="mark-teal"] {
-          background-color: var(--mark-teal-bg)
-      }
+        [data-style-decoration="mark-teal"] {
+          background-color: var(--mark-teal-bg);
+        }
 
-      [data-style-decoration="mark-yellow"] {
-          background-color: var(--mark-yellow-bg)
-      }
+        [data-style-decoration="mark-yellow"] {
+          background-color: var(--mark-yellow-bg);
+        }
 
-      [data-style-decoration="mark-orange"] {
-          background-color: var(--mark-orange-bg)
-      }
+        [data-style-decoration="mark-orange"] {
+          background-color: var(--mark-orange-bg);
+        }
 
-      [data-style-decoration="mark-brown"] {
-          background-color: var(--mark-brown-bg)
-      }
+        [data-style-decoration="mark-brown"] {
+          background-color: var(--mark-brown-bg);
+        }
 
-      [data-style-decoration="mark-gray"] {
-          background-color: var(--mark-gray-bg)
-      }
+        [data-style-decoration="mark-gray"] {
+          background-color: var(--mark-gray-bg);
+        }
         hr[data-instructional-action] {
           border: none;
           border-top: 2px dashed var(--hax-action-line-color, blue);

@@ -122,7 +122,7 @@ class SimplePopoverManager extends LitElement {
       },
       popover: {
         type: Object,
-      }
+      },
     };
   }
   updated(changedProperties) {

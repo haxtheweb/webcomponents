@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.5",
   "description": "visual flag for notes about a piece of content",
   "repository": {
     "type": "git",
@@ -29,12 +29,11 @@
   "type": "module",
   "main": "page-flag.js",
   "module": "page-flag.js",
-  "umd": "page-flag.umd.js",
   "scripts": {
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -45,30 +44,25 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^7.0.2",
-    "@lrnwebcomponents/rpg-character": "^7.0.2",
-    "@lrnwebcomponents/simple-colors": "^7.0.2",
-    "@lrnwebcomponents/simple-datetime": "^7.0.2",
-    "@lrnwebcomponents/simple-fields": "^7.0.2",
-    "@lrnwebcomponents/simple-icon": "^7.0.2",
-    "@lrnwebcomponents/simple-picker": "^7.0.2",
-    "lit": "^2.7.4"
+    "@lrnwebcomponents/absolute-position-behavior": "^7.0.5",
+    "@lrnwebcomponents/rpg-character": "^7.0.5",
+    "@lrnwebcomponents/simple-colors": "^7.0.5",
+    "@lrnwebcomponents/simple-datetime": "^7.0.5",
+    "@lrnwebcomponents/simple-fields": "^7.0.5",
+    "@lrnwebcomponents/simple-icon": "^7.0.5",
+    "@lrnwebcomponents/simple-picker": "^7.0.5",
+    "lit": "^2.7.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.2",
-    "@lrnwebcomponents/grid-plate": "^7.0.2",
-    "@open-wc/testing": "2.5.32",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/grid-plate": "^7.0.5",
+    "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@wcfactory/rollup-umd-build": "^0.12.1",
-    "@web/dev-server": "0.1.28",
-    "@webcomponents/webcomponentsjs": "2.5.0",
-    "concurrently": "5.3.0",
-    "gulp-babel": "8.0.0",
-    "lodash": "4.17.21",
-    "polymer-build": "3.1.4",
-    "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "@web/dev-server": "0.2.3",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "8.2.0",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {

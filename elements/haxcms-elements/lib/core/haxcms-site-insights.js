@@ -12,7 +12,10 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import { learningComponentTypes, iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import {
+  learningComponentTypes,
+  iconFromPageType,
+} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 enableServices(["haxcms", "core"]);
 
 /**
@@ -491,8 +494,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         // skip type if not set or require exact match
         if (this.filters.pageType == "" || !this.filters.pageType) {
           return true;
-        }
-        else if (item.pageType != this.filters.pageType) {
+        } else if (item.pageType != this.filters.pageType) {
           return false;
         }
         // no filtering, skip
@@ -798,12 +800,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                           class="title-link"
                                           href="${item.slug}"
                                           @click="${this.closeModal}"
-                                          >${item.pageType ? html`
-                                          <simple-icon-lite
-                                            title="${item.pageType}"
-                                            icon="${iconFromPageType(item.pageType)}"
-                                          ></simple-icon-lite>
-                                          ` : ``} ${item.title}</a
+                                          >${item.pageType
+                                            ? html`
+                                                <simple-icon-lite
+                                                  title="${item.pageType}"
+                                                  icon="${iconFromPageType(
+                                                    item.pageType
+                                                  )}"
+                                                ></simple-icon-lite>
+                                              `
+                                            : ``}
+                                          ${item.title}</a
                                         >
                                       </div>
                                       <div slot="content">
@@ -1284,7 +1291,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         value: el.id,
       });
     });
-    return html`<div class="selector-wrapper"><label style="font-weight:bold;" for="selector"
+    return html`<div class="selector-wrapper">
+      <label style="font-weight:bold;" for="selector"
         >${this.t.pageToProvideInsightsAbout}</label
       >:<select id="selector">
         ${items.map(
@@ -1305,7 +1313,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       >
         ${this.t.updateInsights}
       </button>
-        </div>`;
+    </div>`;
   }
 }
 customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);

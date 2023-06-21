@@ -40,8 +40,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         } else {
           if (local === 2) {
             this.colorTheme = 0;
-          }
-          else {
+          } else {
             this.colorTheme = local;
           }
         }

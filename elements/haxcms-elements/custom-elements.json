@@ -2280,15 +2280,15 @@
     },
     {
       "name": "site-top-menu",
-      "description": "`site-top-menu`\n`Menu on top of the site typically a bar of options`\n\nAttributes:\n\n  * `manifest` - manifest of everything, in case we need to check on children of parents\n\n  * `active-id` {`string`} - acitvely selected item\n\n  * `sticky` {`boolean`} - visually stick to top of interface at all times\n\n  * `indicator` {`string`} - visualize the indicator as a a line, arrow, or not at all\n\n  * `noink` {`boolean`} - ink on the buttons\n\n  * `notitle` {`boolean`} - hide title on the buttons\n\n  * `showindex` {`boolean`} - ink on the buttons\n\n  * `arrow-size` {`number`} - Stupid but faster then calculating on the fly for sure\n\n  * `sort` - Allow customization of sort\n\n  * `conditions` - Allow customization of the conditions if needed\n\n  * `mobile-title` {`string`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `manifest` - manifest of everything, in case we need to check on children of parents\n\n  * `activeId` {`string`} - acitvely selected item\n\n  * `sticky` {`boolean`} - visually stick to top of interface at all times\n\n  * `indicator` {`string`} - visualize the indicator as a a line, arrow, or not at all\n\n  * `noink` {`boolean`} - ink on the buttons\n\n  * `notitle` {`boolean`} - hide title on the buttons\n\n  * `showindex` {`boolean`} - ink on the buttons\n\n  * `arrowSize` {`number`} - Stupid but faster then calculating on the fly for sure\n\n  * `sort` - Allow customization of sort\n\n  * `conditions` - Allow customization of the conditions if needed\n\n  * `mobileTitle` {`string`} - \n\n  * `editMode` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `__disposer` {`never[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`site-top-menu`\n`Menu on top of the site typically a bar of options`\n\nAttributes:\n\n  * `manifest` - manifest of everything, in case we need to check on children of parents\n\n  * `activeId` {`string`} - acitvely selected item\n\n  * `sticky` {`boolean`} - visually stick to top of interface at all times\n\n  * `indicator` {`string`} - visualize the indicator as a a line, arrow, or not at all\n\n  * `notitle` {`boolean`} - hide title on the buttons\n\n  * `showindex` {`boolean`} - ink on the buttons\n\n  * `arrow-size` {`number`} - Stupid but faster then calculating on the fly for sure\n\n  * `sort` - Allow customization of sort\n\n  * `conditions` - Allow customization of the conditions if needed\n\n  * `mobile-title` {`string`} - \n\n  * `edit-mode` {`boolean`} - \n\n  * `__items` {`any[]`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `__disposer` {`never[]`} - \n\n  * `manifest` - manifest of everything, in case we need to check on children of parents\n\n  * `activeId` {`string`} - acitvely selected item\n\n  * `sticky` {`boolean`} - visually stick to top of interface at all times\n\n  * `indicator` {`string`} - visualize the indicator as a a line, arrow, or not at all\n\n  * `notitle` {`boolean`} - hide title on the buttons\n\n  * `showindex` {`boolean`} - ink on the buttons\n\n  * `arrowSize` {`number`} - Stupid but faster then calculating on the fly for sure\n\n  * `sort` - Allow customization of sort\n\n  * `conditions` - Allow customization of the conditions if needed\n\n  * `mobileTitle` {`string`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__items` {`any[]`} - ",
       "attributes": [
         {
           "name": "manifest",
-          "description": "`manifest` - manifest of everything, in case we need to check on children of parents\n\nProperty: manifest"
+          "description": "`manifest` - manifest of everything, in case we need to check on children of parents\n\nProperty: manifest\n\nDefault: [object Object]"
         },
         {
-          "name": "active-id",
-          "description": "`active-id` {`string`} - acitvely selected item\n\nProperty: activeId"
+          "name": "activeId",
+          "description": "`activeId` {`string`} - acitvely selected item\n\nProperty: activeId\n\nDefault: null"
         },
         {
           "name": "sticky",
@@ -2298,11 +2298,6 @@
         {
           "name": "indicator",
           "description": "`indicator` {`string`} - visualize the indicator as a a line, arrow, or not at all\n\nProperty: indicator\n\nDefault: line"
-        },
-        {
-          "name": "noink",
-          "description": "`noink` {`boolean`} - ink on the buttons\n\nProperty: noink\n\nDefault: false",
-          "valueSet": "v"
         },
         {
           "name": "notitle",
@@ -2332,8 +2327,12 @@
         },
         {
           "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
         }
       ]
     },
@@ -2635,7 +2634,7 @@
     },
     {
       "name": "site-title",
-      "description": "`site-title`\n`Title of the site`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `site-title` {`string`} - Site title\n\n  * `home-link` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `siteTitle` {`string`} - Site title\n\n  * `homeLink` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `__disposer` {`never[]`} - \n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - ",
+      "description": "`site-title`\n`Title of the site`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `site-title` {`string`} - Site title\n\n  * `home-link` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `siteTitle` {`string`} - Site title\n\n  * `homeLink` {`string`} - HREF to the home page\n\n  * `__disposer` {`never[]`} - \n\n  * `icon` {`string`} - optional icon\n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - ",
       "attributes": [
         {
           "name": "disabled",
@@ -2652,7 +2651,7 @@
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - optional icon\n\nProperty: icon"
+          "description": "`icon` {`string`} - optional icon\n\nProperty: icon\n\nDefault: null"
         },
         {
           "name": "notitle",

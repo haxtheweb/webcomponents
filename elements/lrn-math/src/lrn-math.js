@@ -147,7 +147,7 @@ class LrnMath extends HTMLElement {
     this._private = {
       check: "",
       observer: new MutationObserver(() => {
-        this.updateMath();            
+        this.updateMath();
       }),
     };
     this._private.observer.observe(this, mutation_config);
@@ -188,10 +188,9 @@ class LrnMath extends HTMLElement {
     setTimeout(() => {
       if (this._haxstate && this.innerHTML && this.mathtext == null) {
         this.mathtext = this.innerHTML;
-      }
-      else {
+      } else {
         this.updateMath();
-      }        
+      }
     }, 0);
   }
 
@@ -239,11 +238,10 @@ class LrnMath extends HTMLElement {
             this.innerHTML = "";
             this.appendChild(container);
           }, 300);
-        }
-        else {
+        } else {
           this.updateMath();
         }
-      break;
+        break;
     }
   }
 

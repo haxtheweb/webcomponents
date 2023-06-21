@@ -165,7 +165,7 @@ class TwitterEmbed extends LitElement {
           frameborder="0"
           loading="lazy"
           allowtransparency="true"
-          allowfullscreen
+          allow="autoplay; encrypted-media; fullscreen"
           style="position: static; visibility: visible; width: ${this
             .dataWidth}; height: 498px; display: block; flex-grow: 1;"
           title="Twitter Tweet"

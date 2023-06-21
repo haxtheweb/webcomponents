@@ -99,14 +99,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "nav-card-item",
-      "attributes": []
-    },
-    {
-      "name": "nav-card",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

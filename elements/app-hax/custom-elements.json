@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "app-hax",
-      "description": "Events:\n\n  * `jwt-login-logout` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLElement; }; modal: boolean; styles: { \"--simple-modal-titlebar-background\": string; \"--simple-modal-titlebar-color\": string; \"--simple-modal-width\": string; ... 4 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - \n\n  * `app-hax-loaded` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `base-path` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `__tour` - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `basePath` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `store` - \n\n  * `sound` - \n\n  * `t` - \n\n  * `tourName` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `jwt-login-logout` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLElement; }; modal: boolean; styles: { \"--simple-modal-titlebar-background\": string; \"--simple-modal-titlebar-color\": string; \"--simple-modal-width\": string; ... 4 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - \n\n  * `app-hax-loaded` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `base-path` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `__tour` - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `basePath` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `store` - \n\n  * `sound` - \n\n  * `t` - \n\n  * `tourName` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "userName",
@@ -17,6 +17,16 @@
         {
           "name": "token",
           "description": "`token` {`string`} - \n\nProperty: token"
+        },
+        {
+          "name": "unlockComingSoon",
+          "description": "`unlockComingSoon` {`boolean`} - \n\nProperty: unlockComingSoon\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "unlockTerrible",
+          "description": "`unlockTerrible` {`boolean`} - \n\nProperty: unlockTerrible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "userMenuOpen",
@@ -522,11 +532,16 @@
     },
     {
       "name": "app-hax-steps",
-      "description": "Attributes:\n\n  * `unlock-coming-soon` {`boolean`} - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `_progressReady` {`boolean`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Attributes:\n\n  * `unlock-coming-soon` {`boolean`} - \n\n  * `unlock-terrible` {`boolean`} - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `nameTyped` {`string`} - \n\n  * `stepRoutes` {`any[]`} - \n\n  * `_progressReady` {`boolean`} - \n\n  * `step` {`number`} - \n\n  * `loaded` {`boolean`} - \n\n  * `themeNames` {`any[]`} - \n\n  * `appSettings` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "unlock-coming-soon",
           "description": "`unlock-coming-soon` {`boolean`} - \n\nProperty: unlockComingSoon\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "unlock-terrible",
+          "description": "`unlock-terrible` {`boolean`} - \n\nProperty: unlockTerrible\n\nDefault: false",
           "valueSet": "v"
         },
         {

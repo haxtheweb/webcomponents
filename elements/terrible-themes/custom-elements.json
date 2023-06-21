@@ -654,6 +654,16 @@
       "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
       "attributes": [
         {
+          "name": "activeItem",
+          "description": "The active item to render",
+          "type": "object"
+        },
+        {
+          "name": "author",
+          "description": "The author of the item",
+          "type": "string"
+        },
+        {
           "name": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
@@ -730,6 +740,18 @@
         }
       ],
       "properties": [
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "description": "The active item to render",
+          "type": "object"
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "The author of the item",
+          "type": "string"
+        },
         {
           "name": "t",
           "attribute": "t",
@@ -870,6 +892,16 @@
       "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
       "attributes": [
         {
+          "name": "activeItem",
+          "description": "The active item to render",
+          "type": "object"
+        },
+        {
+          "name": "author",
+          "description": "The author of the item",
+          "type": "string"
+        },
+        {
           "name": "t",
           "default": "{\"resumeMessage\":\"Resume where you left off last session?\",\"resume\":\"Resume\"}"
         },
@@ -946,6 +978,18 @@
         }
       ],
       "properties": [
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "description": "The active item to render",
+          "type": "object"
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "The author of the item",
+          "type": "string"
+        },
         {
           "name": "t",
           "attribute": "t",

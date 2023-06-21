@@ -75,14 +75,6 @@
           "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
         }
       ]
-    },
-    {
-      "name": "midi-player",
-      "attributes": []
-    },
-    {
-      "name": "midi-visualizer",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

@@ -556,7 +556,10 @@ class SimpleFieldsUpload extends I18NMixin(
    * We got a new photo
    */
   __newAudioShowedUp(e) {
-    let file = new File([e.detail.value], "voice-recording-" + e.timeStamp + ".mp3");
+    let file = new File(
+      [e.detail.value],
+      "voice-recording-" + e.timeStamp + ".mp3"
+    );
     this.shadowRoot.querySelector("#fileupload")._addFile(file);
     this.voice.remove();
     setTimeout(() => {

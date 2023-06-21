@@ -1123,7 +1123,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                   }
                 } else {
                   this.activeNode.style[key] = detail.value[key] + "px";
-                }                  
+                }
               }, 0);
             }
           });
@@ -1287,7 +1287,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       let rtep = window.RichTextEditorPrompt.requestAvailability();
       if (rtep) {
         rtep.shadowRoot.querySelector("#formfields").schematizer =
-            HaxSchematizer;
+          HaxSchematizer;
         rtep.shadowRoot.querySelector("#formfields").elementizer =
           HaxElementizer;
       }
@@ -1895,11 +1895,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       close: "Close",
     };
     // customizations to daemon
-    if (typeof window.speechSynthesis !== "undefined" && (window.SpeechRecognition ||
-      window.webkitSpeechRecognition ||
-      window.mozSpeechRecognition ||
-      window.msSpeechRecognition ||
-      window.oSpeechRecognition)) {
+    if (
+      typeof window.speechSynthesis !== "undefined" &&
+      (window.SpeechRecognition ||
+        window.webkitSpeechRecognition ||
+        window.mozSpeechRecognition ||
+        window.msSpeechRecognition ||
+        window.oSpeechRecognition)
+    ) {
       SuperDaemonInstance.voiceSearch = true;
     }
     SuperDaemonInstance.icon = "hax:wizard-hat";
@@ -2468,13 +2471,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         description: "Highlight text within a block of content",
         icon: "editor:highlight",
         color: "yellow",
-        tags: [
-          "Content",
-          "text",
-          "highlight",
-          "mark",
-          "html",
-        ],
+        tags: ["Content", "text", "highlight", "mark", "html"],
         handles: [],
         meta: {
           author: "W3C",
@@ -2492,12 +2489,8 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
           DataStyleDecoration,
         ],
-        advanced: [
-         
-        ],
-        developer: [
-          
-        ],
+        advanced: [],
+        developer: [],
       },
       demoSchema: [
         {
@@ -2899,7 +2892,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
           },
           settings: {
             configure: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
-              ? [DataStyleDecoration,...DataInstructionalAction]
+              ? [DataStyleDecoration, ...DataInstructionalAction]
               : [DataStyleDecoration],
             advanced: [],
           },

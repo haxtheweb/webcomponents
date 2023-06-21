@@ -21,9 +21,9 @@ export function invalidRequest(res, reason, status = 400) {
 export function stdResponse(res, data = {}, respOptions = {}) {
   const headers = {
     status: 200,
-    methods: "OPTIONS, POST, GET, HEAD",
+    methods: "GET,OPTIONS,PATCH,DELETE,POST,PUT,HEAD",
     origin: "*",
-    headers: "X-CSRF-Token, X-Requested-With, Disposition, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+    headers: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Disposition",
     credentials: "true",
     ...respOptions
   };

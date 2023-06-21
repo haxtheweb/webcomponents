@@ -46,7 +46,7 @@ class SiteTopMenu extends LitElement {
   static get styles() {
     return [
       css`
-    :host {
+        :host {
           display: block;
           --site-top-menu-bg: var(--haxcms-color, #ffffff);
           --site-top-menu-indicator-arrow: 6px;
@@ -147,13 +147,13 @@ class SiteTopMenu extends LitElement {
             text-align: left;
           }
         }
-    `]
+      `,
+    ];
   }
   __resultChanged(e) {
     if (e.detail.value === null) {
       this.__items = [];
-    }
-    else {
+    } else {
       this.__items = e.detail.value;
     }
   }
@@ -174,8 +174,9 @@ class SiteTopMenu extends LitElement {
         ></simple-icon-button>
         <span class="mobiletitle">${this.mobileTitle}</span>
         <slot name="prefix"></slot>
-        ${this.__items.map((item, index) => html`
-          <div class="spacing">
+        ${this.__items.map(
+          (item, index) => html`
+            <div class="spacing">
               <a
                 data-id="${item.id}"
                 class="link"
@@ -183,14 +184,15 @@ class SiteTopMenu extends LitElement {
                 title="Go to ${item.title}"
                 href="${item.slug}"
                 part="a"
-                >
+              >
                 <button id="item-${item.id}" part="button">
                   <span class="link-index">${this.humanIndex(index)}</span>
                   <span class="link-title">${item.title}</span>
                 </button>
               </a>
             </div>
-            `)}
+          `
+        )}
         <slot name="suffix"></slot>
       </div>
       <div id="indicator"></div>
@@ -331,19 +333,18 @@ class SiteTopMenu extends LitElement {
           let dim = el.getBoundingClientRect();
           if (this.indicator == "arrow") {
             this.shadowRoot.querySelector("#indicator").style.left =
-            dim.left + el.offsetWidth / 2 - this.arrowSize + "px";
+              dim.left + el.offsetWidth / 2 - this.arrowSize + "px";
             this.shadowRoot.querySelector("#indicator").style.top =
-            dim.top - (2.5*this.arrowSize) + "px";
+              dim.top - 2.5 * this.arrowSize + "px";
           } else {
             this.shadowRoot.querySelector("#indicator").style.left =
-            dim.left + "px";
+              dim.left + "px";
             this.shadowRoot.querySelector("#indicator").style.top =
-            dim.top - (2.5*this.arrowSize) + "px";
+              dim.top - 2.5 * this.arrowSize + "px";
             this.shadowRoot.querySelector("#indicator").style.width =
               el.offsetWidth + "px";
-          }           
+          }
           this._prevEl = el;
- 
         }
       } else {
         // shouldn't be possible but might as well list
@@ -358,8 +359,8 @@ class SiteTopMenu extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this.shadowRoot
-    .querySelector("#menu")
-    .addEventListener("click", this.toggleOpen.bind(this));
+      .querySelector("#menu")
+      .addEventListener("click", this.toggleOpen.bind(this));
     autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);

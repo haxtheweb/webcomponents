@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "7.0.2",
+  "version": "7.0.5",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -21,10 +21,9 @@
   "type": "module",
   "main": "a11y-gif-player.js",
   "module": "a11y-gif-player.js",
-  "umd": "a11y-gif-player.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -37,27 +36,24 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^7.0.2",
-    "@lrnwebcomponents/intersection-element": "^7.0.2",
-    "@lrnwebcomponents/micro-frontend-registry": "^7.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^7.0.2",
-    "@lrnwebcomponents/simple-tooltip": "^7.0.2",
-    "lit": "^2.7.4"
+    "@lrnwebcomponents/a11y-details": "^7.0.5",
+    "@lrnwebcomponents/intersection-element": "^7.0.4",
+    "@lrnwebcomponents/micro-frontend-registry": "^7.0.5",
+    "@lrnwebcomponents/schema-behaviors": "^7.0.5",
+    "@lrnwebcomponents/simple-tooltip": "^7.0.5",
+    "lit": "^2.7.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^7.0.2",
-    "@lrnwebcomponents/simple-img": "^7.0.2",
-    "@lrnwebcomponents/storybook-utilities": "^7.0.2",
-    "@open-wc/testing": "3.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@lrnwebcomponents/simple-img": "^7.0.5",
+    "@lrnwebcomponents/storybook-utilities": "^7.0.5",
+    "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.1.34",
-    "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "7.4.0",
-    "gulp-babel": "8.0.0",
-    "lodash": "^4.17.21",
-    "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "@web/dev-server": "0.2.3",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "8.2.0",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {

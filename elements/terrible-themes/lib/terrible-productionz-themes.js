@@ -41,13 +41,16 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     });
     autorun((reaction) => {
       const manifest = toJS(store.manifest);
-      if (manifest && manifest.metadata && manifest.metadata.author && manifest.metadata.author.name) {
+      if (
+        manifest &&
+        manifest.metadata &&
+        manifest.metadata.author &&
+        manifest.metadata.author.name
+      ) {
         this.author = manifest.metadata.author.name;
-      }
-      else if (manifest && manifest.author) {
+      } else if (manifest && manifest.author) {
         this.author = manifest.author;
-      }
-      else {
+      } else {
         this.author = "Ac|d-$CoRpI()";
       }
       this.author = manifest.author;
@@ -197,22 +200,22 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
               ></td>
               <td width="128" valign="top">
                 <site-menu></site-menu>
-                    <hr color="#252F26" />
-                    <font size="4"
-                      >&nbsp;Sites of Interest
-                      <hr color="#252F26" />
-                      <div align="center">
-                        <a href="http://www.acidscorpio.com/" target="_blank"
-                          ><img
-                            src="${new URL("assets/header.jpg", import.meta.url)
-                              .href}/../acid88.gif"
-                            border="0"
-                            width="88"
-                            height="31"
-                            vspace="3" /></a
-                        ><br />
-                      </div>
-                     </font>
+                <hr color="#252F26" />
+                <font size="4"
+                  >&nbsp;Sites of Interest
+                  <hr color="#252F26" />
+                  <div align="center">
+                    <a href="http://www.acidscorpio.com/" target="_blank"
+                      ><img
+                        src="${new URL("assets/header.jpg", import.meta.url)
+                          .href}/../acid88.gif"
+                        border="0"
+                        width="88"
+                        height="31"
+                        vspace="3" /></a
+                    ><br />
+                  </div>
+                </font>
               </td>
               <td
                 width="8"
@@ -225,12 +228,13 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 <!-- *******************************************************
 		THIS IS THE PLACE WHERE THE MAIN BODY FOR THE DOCs GOES
 		********************************************************-->
-                  <site-active-title
+                <site-active-title
                   class="title-text"
                   style="background-image: url(${new URL(
                     "assets/header.jpg",
                     import.meta.url
-                  ).href}/../movies.jpg)"></site-active-title>
+                  ).href}/../movies.jpg)"
+                ></site-active-title>
                 <table border="1" cellpadding="0" cellspacing="0" width="100%">
                   <tbody>
                     <tr>
@@ -239,15 +243,19 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                           <tbody>
                             <tr>
                               <td align="left">
-                                <p class="posted">Posted:
+                                <p class="posted">
+                                  Posted:
                                   <simple-datetime
                                     unix
-                                    .timestamp="${this.activeItem.metadata.created}"
+                                    .timestamp="${this.activeItem.metadata
+                                      .created}"
                                   ></simple-datetime>
                                 </p>
                               </td>
                               <td>
-                                <p class="posted">Title: ${this.activeItem.title}</p>
+                                <p class="posted">
+                                  Title: ${this.activeItem.title}
+                                </p>
                               </td>
                               <td align="right">
                                 <p class="posted">By: ${this.author}</p>

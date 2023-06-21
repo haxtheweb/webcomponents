@@ -9,7 +9,7 @@ import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/uti
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
@@ -59,7 +59,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           padding: 25px 10vw;
         }
         site-menu {
-          --site-menu-active-color: navy; 
+          --site-menu-active-color: navy;
           --site-menu-item-active-item-color: white;
           --map-menu-item-a-active-color: navy;
           --map-menu-item-a-active-background-color: white;
@@ -75,7 +75,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           --scroll-button-background-color: white;
           --scroll-button-tooltip-background-color: white;
           --scroll-button-tooltip-color: navy;
-         }
+        }
       `,
     ];
   }
@@ -87,14 +87,8 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr valign="top">
-          <td style="background-image:url('${skater}')">
-              <img
-                src="${skater}"
-                width="68"
-                height="72"
-                border="0"
-                alt=""
-              />
+            <td style="background-image:url('${skater}')">
+              <img src="${skater}" width="68" height="72" border="0" alt="" />
             </td>
             <td align="center">
               <main id="contentcontainer">
@@ -105,33 +99,26 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
               </main>
             </td>
             <td style="background-image:url('${skater}')">
-              <img
-                src="${skater}"
-                width="68"
-                height="72"
-                border="0"
-                alt=""
-              />
+              <img src="${skater}" width="68" height="72" border="0" alt="" />
             </td>
           </tr>
           <tr>
-            <td style="background-image:url('${skater}')">
-              </td><td align="center">
+            <td style="background-image:url('${skater}')"></td>
+            <td align="center">
               <site-menu-button
-              type="prev"
-              position="right"
-              class="navigation"
-            ></site-menu-button>
-            <site-menu-button
-              type="next"
-              position="left"
-              class="navigation"
-            ></site-menu-button>
-                <site-menu></site-menu>
-  </td>
-  <td style="background-image:url('${skater}')">
-
-                  </td>
+                type="prev"
+                position="right"
+                class="navigation"
+              ></site-menu-button>
+              <site-menu-button
+                type="next"
+                position="left"
+                class="navigation"
+              ></site-menu-button>
+              <site-menu></site-menu>
+            </td>
+            <td style="background-image:url('${skater}')"></td>
+          </tr>
         </tbody>
       </table>
       <scroll-button></scroll-button>

@@ -538,7 +538,6 @@
   "iron-overlay-backdrop": "@polymer/iron-overlay-behavior/iron-overlay-backdrop.js",
   "iron-pages": "@polymer/iron-pages/iron-pages.js",
   "iron-scroll-threshold": "@polymer/iron-scroll-threshold/iron-scroll-threshold.js",
-  "iron-swipeable-container": "@polymer/iron-swipeable-container/iron-swipeable-container.js",
   "marked-element": "@polymer/marked-element/marked-element.js",
   "paper-badge": "@polymer/paper-badge/paper-badge.js",
   "paper-button": "@polymer/paper-button/paper-button.js",

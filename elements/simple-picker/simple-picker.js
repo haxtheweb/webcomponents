@@ -67,7 +67,8 @@ const SimplePickerBehaviors = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [...styles,
+      return [
+        ...styles,
         css`
           :host {
             --simple-picker-background-color: var(--simple-fields-background-color);

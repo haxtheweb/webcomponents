@@ -105,10 +105,6 @@
           "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
         }
       ]
-    },
-    {
-      "name": "confetti-container",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

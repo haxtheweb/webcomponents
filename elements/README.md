@@ -690,15 +690,11 @@ Stepper
 # &lt;parallax-image&gt;
 
 Image
-> Automated conversion of parallax-image/
+> Automated conversion of pdf-browser-viewer/
 # &lt;pdf-browser-viewer&gt;
 
-Browser
-> Start of pdf-browser-viewer
-# &lt;pdf-element&gt;
-
 Element
-> Automated conversion of pdf-element/
+> Automated conversion of person-testimonial/
 # &lt;person-testimonial&gt;
 
 Testimonial
