@@ -46,7 +46,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "bootstrap": "4.6.0",
-    "jquery": "3.6.0",
+    "jquery": "3.7.0",
     "lit": "^2.7.5"
   },
   "devDependencies": {

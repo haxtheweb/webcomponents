@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@github/time-elements": "3.1.4",
+    "@github/time-elements": "4.0.0",
     "@lrnwebcomponents/anchor-behaviors": "^7.0.5",
     "@lrnwebcomponents/app-hax": "^7.0.5",
     "@lrnwebcomponents/beaker-broker": "^7.0.5",
@@ -102,10 +102,10 @@
     "@polymer/paper-item": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/polymer": "^3.5.1",
-    "@vaadin/router": "1.7.4",
+    "@vaadin/router": "1.7.5",
     "@vaadin/vaadin-grid": "^5.2.5",
     "mobx": "6.9.0",
-    "web-social-share": "8.0.1",
+    "web-social-share": "9.1.0",
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {

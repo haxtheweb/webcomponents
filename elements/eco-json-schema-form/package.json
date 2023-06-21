@@ -61,7 +61,7 @@
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/polymer": "^3.5.1",
     "ace-builds": "^1.4.1",
-    "jsoneditor": "9.7.2"
+    "jsoneditor": "9.10.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",

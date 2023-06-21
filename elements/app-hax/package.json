@@ -67,7 +67,7 @@
     "@vaadin/router": "^1.7.4",
     "lit": "^2.7.5",
     "mobx": "6.9.0",
-    "roughjs": "4.4.5",
+    "roughjs": "4.5.2",
     "scrollable-component": "^1.2.0",
     "wired-elements": "3.0.0-rc.6"
   },

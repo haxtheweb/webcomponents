@@ -44,7 +44,7 @@
     "@lrnwebcomponents/schema-behaviors": "^7.0.5",
     "@lrnwebcomponents/utils": "^7.0.4",
     "lit": "^2.7.5",
-    "monaco-editor": "0.32.1"
+    "monaco-editor": "0.39.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
