@@ -45,6 +45,7 @@
     "@lrnwebcomponents/simple-icon": "^7.0.5",
     "@lrnwebcomponents/simple-tooltip": "^7.0.5",
     "@polymer/paper-styles": "^3.0.0",
+    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "lit": "^2.7.5"
   },
   "devDependencies": {

@@ -4804,7 +4804,7 @@
     "@polymer/iron-selector" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/paper-dropdown-menu@^3.0.1":
+"@polymer/paper-dropdown-menu@^3.0.1", "@polymer/paper-dropdown-menu@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@polymer/paper-dropdown-menu/-/paper-dropdown-menu-3.2.0.tgz#17f507ef864dc18365a92e256bde628c2d352956"
   integrity sha512-2ohwSHF+RLSK6kA0UkkMiMQF6EZcaEYWAA25kfisI6DWie7yozKrpQNsqvwfOEHU6DdDMIotrOtH1TM88YS8Zg==
@@ -9728,6 +9728,11 @@ bootstrap@4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
   integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
+
+bootstrap@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.0.tgz#0718a7cc29040ee8dbf1bd652b896f3436a87c29"
+  integrity sha512-UnBV3E3v4STVNQdms6jSGO2CvOkjUMdDAVR2V5N4uCMdaIkaQjbcEAMqRimDHIs4uqBYzDAKCQwCB+97tJgHQw==
 
 bower-config@^1.4.0, bower-config@^1.4.1:
   version "1.4.3"
@@ -18409,7 +18414,7 @@ jquery@3.6.0:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
 
-jquery@^3.6.0:
+jquery@3.7.0, jquery@^3.6.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.0.tgz#fe2c01a05da500709006d8790fe21c8a39d75612"
   integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
@@ -25403,7 +25408,7 @@ scoped-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/scoped-regex/-/scoped-regex-2.1.0.tgz#7b9be845d81fd9d21d1ec97c61a0b7cf86d2015f"
   integrity sha512-g3WxHrqSWCZHGHlSrF51VXFdjImhwvH8ZO/pryFH56Qi0cDsZfylQa/t0jCzVQFNbNvM00HfHjkDPEuarKDSWQ==
 
-scrollable-component@^1.2.0:
+scrollable-component@1.2.1, scrollable-component@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/scrollable-component/-/scrollable-component-1.2.1.tgz#4c1cdc41d08ad6c567b34246a3e9c1a044a1861e"
   integrity sha512-NwzS5uaBHkpnLTKKRoJnck3ZhJE+Erya334od8x7JcEZmeo4iNlUmxOglpZSPYbOxSkw6wFDMIeyd/wgbC6qRA==
@@ -29015,7 +29020,7 @@ wd@^1.2.0:
     request "2.88.0"
     vargs "^0.1.0"
 
-web-animations-js@2.3.2:
+web-animations-js@2.3.2, web-animations-js@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/web-animations-js/-/web-animations-js-2.3.2.tgz#a51963a359c543f97b47c7d4bc2d811f9fc9e153"
   integrity sha512-TOMFWtQdxzjWp8qx4DAraTWTsdhxVSiWa6NkPFSaPtZ1diKUxTn4yTix73A1euG1WbSOMMPcY51cnjTIHrGtDA==

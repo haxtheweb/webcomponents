@@ -45,6 +45,7 @@
     "@lrnwebcomponents/simple-icon": "^7.0.5",
     "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
+    "@lrnwebcomponents/materializecss-styles": "^4.1.0",
     "lit": "^2.7.5"
   },
   "devDependencies": {
