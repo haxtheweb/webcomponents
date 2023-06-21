@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "an accent card of link lists",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/accent-card": "^7.0.4",
+    "@lrnwebcomponents/accent-card": "^7.0.5",
     "lit": "^2.7.5"
   },
   "devDependencies": {

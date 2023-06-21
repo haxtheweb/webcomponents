@@ -16,7 +16,7 @@
       "hax": "src/undo-manager-hax.json"
     }
   },
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "an undo history manager element",
   "repository": {
     "type": "git",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "View codepen or stackblitz demos",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/mutation-observer-import-mixin-hax.json"
     }
   },
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "a SuperClass mixin that dynamically imports undefined custom element definitions",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dynamic-import-registry": "^7.0.4"
+    "@lrnwebcomponents/dynamic-import-registry": "^7.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^7.0.4",
