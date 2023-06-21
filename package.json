@@ -39,7 +39,7 @@
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "set STORYBOOK=true && npx --max_old_space_size=16384 start-storybook --node-resolve --watch --open",
-    "build-storybook": "yarn run analyze && set STORYBOOK=true && npx --max_old_space_size=16384 build-storybook && cp elements/*/demo/*.json --parents storybook && cp elements/*/lib/*.json --parents storybook",
+    "build-storybook": "yarn run analyze && export NODE_OPTIONS=--openssl-legacy-provider && set NODE_OPTIONS=--openssl-legacy-provider && set STORYBOOK=true && npx --openssl-legacy-provider --max_old_space_size=16384 build-storybook && cp elements/*/demo/*.json --parents storybook && cp elements/*/lib/*.json --parents storybook",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "haxschema": "./node_modules/.bin/gulp haxschema",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
@@ -159,7 +159,7 @@
     "wct-browser-legacy": "1.0.2",
     "web-component-analyzer": "1.1.7",
     "web-component-tester": "6.9.2",
-    "webpack": "5.69.1",
+    "webpack": "5.87.0",
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.6.2",
     "yo": "4.3.0",
@@ -174,6 +174,7 @@
     "chokidar": "^3.0.0",
     "@lit/reactive-element": "1.6.1",
     "lit-element": "3.3.2",
+    "webpack": "5.87.0",
     "lit-html": "2.7.4",
     "roughjs": "4.4.5",
     "lit": "2.7.5"
