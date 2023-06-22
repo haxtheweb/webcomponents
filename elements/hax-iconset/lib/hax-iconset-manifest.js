@@ -69,6 +69,7 @@ export const HaxIconsetManifest = [
       "code-json",
       "console-line",
       "delete-restore",
+      "discord",
       "duplicate",
       "expand-more",
       "figure",

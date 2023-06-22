@@ -28,7 +28,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       commands: "Commands",
       loadingResults: "Loading results",
       commonTasksText:
-        "Merlin helps show you what's possible. Here are some common answers..",
+        "Here are some common questions Merlin can answer..",
     };
     this.opened = false;
     this.items = [];
@@ -543,18 +543,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   commonConcepts(value) {
     const sdi = window.SuperDaemonManager.requestAvailability();
     switch (value) {
+      case "*":
+      case ">":
+      case "/":
+      case "?":
+        sdi.runProgram(value, {}, null, null, "", "");
+      break;
       case "media":
         sdi.runProgram("/", {}, null, null, "", "sources");
-        break;
-      case "edit":
-        sdi.runProgram("*", {}, null, null, "", "CMS/action/edit");
-        break;
-      case "*":
-        sdi.runProgram("*", {}, null, null, "", "");
-        break;
-      case "sites":
-        sdi.runProgram("*", {}, null, null, "", "sites");
-        break;
+      break;
+      default:
+        sdi.runProgram("*", {}, null, null, "", value);
+      break;
     }
   }
 

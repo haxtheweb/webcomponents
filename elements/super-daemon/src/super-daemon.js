@@ -563,13 +563,17 @@ class SuperDaemon extends SimpleColors {
   // can't directly set context
   appendContext(context) {
     if (context && !this.context.includes(context)) {
-      this.context.push(context);
+      let newContext = [...this.context];
+      newContext.push(context);
+      this.context = [...newContext];
     }
   }
   // remove from context
   removeContext(context) {
     if (context && this.context.includes(context)) {
-      this.context.splice(this.context.indexOf(context), 1);
+      let newContext = [...this.context];
+      newContext.splice(newContext.indexOf(context), 1);
+      this.context = [...newContext];
     }
   }
   // if we click away, take the active value and apply it to the line
@@ -905,6 +909,28 @@ class SuperDaemon extends SimpleColors {
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    if (changedProperties.has("commandContext")) {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-command-context-changed", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.commandContext,
+          },
+        })
+      );
+    }
+    if (changedProperties.has("context")) {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-context-changed", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            value: this.context,
+          },
+        })
+      );
     }
     if (changedProperties.has("voiceSearch") && this.voiceSearch) {
       import("@lrnwebcomponents/hal-9000/hal-9000.js").then(() => {

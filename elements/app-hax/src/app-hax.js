@@ -328,7 +328,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -341,7 +341,7 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
         "idea",

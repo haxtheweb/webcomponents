@@ -1913,20 +1913,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       return false;
     };
-    SuperDaemonInstance.questionTags = [
-      {
-        value: "*",
-        label: "What can I do?",
-      },
-      {
-        value: "media",
-        label: "Where can I find media?",
-      },
-      {
-        value: "edit",
-        label: "Edit page",
-      },
-    ];
 
     // emoji picker
     SuperDaemonInstance.defineOption({
@@ -2016,8 +2002,60 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
+      title: "Join our Community",
+      icon: "hax:discord",
+      tags: ["community", "discord","chat", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://bit.ly/hax-discord"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/join",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Tutorials",
       icon: "hax:hax2022",
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/tutorials",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Documentation",
+      icon: "hax:hax2022",
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/documentation",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "HAX Teaching Excellence",
+      icon: "hax:hax2022",
+      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/pedagogy",
+      context: ["logged-in", "CMS", "HAX", "?"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -2026,11 +2064,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["CMS", "HAX"],
+      context: ["logged-in", "CMS", "HAX", "?"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
         "idea",
@@ -2044,7 +2082,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX"],
+      context: ["logged-in", "CMS", "HAX", "?"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });
@@ -2076,6 +2114,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
       "rich-text-editor-prompt-close": "_richTextEditorPromptClose",
+      "super-daemon-command-context-changed": "_superDaemonCommandContextChanged",
+      "super-daemon-context-changed": "_superDaemonContextChanged",
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
@@ -2221,6 +2261,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }, 0);
   }
 
+  _openExternalLink(link) {
+    window.open(link, "_blank");
+  }
+
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
@@ -2258,6 +2302,62 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       "_blank"
     );
   }
+
+  _superDaemonCommandContextChanged(e) {
+    // hax can react to command context changes
+  }
+
+  _superDaemonContextChanged(e) {
+    // hax can react to command context changes
+    if (e.detail.value.indexOf("CMS") !== -1) {
+      SuperDaemonInstance.questionTags = [
+        {
+          value: "CMS/action/edit",
+          label: "Edit current page",
+        },
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    } else if (e.detail.value.indexOf("HAX") !== -1) {
+        SuperDaemonInstance.questionTags = [
+        {
+          value: "CMS/action/save",
+          label: "Save current page",
+        },
+        {
+          value: "media",
+          label: "Where can I find media?",
+        },
+        {
+          value: "*",
+          label: "List everything I can do",
+        },
+        {
+          value: "?",
+          label: "HELP!",
+        },
+      ];
+    }
+    else {
+      SuperDaemonInstance.questionTags = [
+      {
+        value: "*",
+        label: "List everything I can do",
+      },
+      {
+        value: "?",
+        label: "HELP!",
+      },
+    ];
+  }
+  }
+
 
   _richTextEditorPromptOpen() {
     // verify that we are not overflowing, a lot of themes have this ability
