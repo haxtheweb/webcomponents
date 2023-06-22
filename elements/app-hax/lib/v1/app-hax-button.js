@@ -203,7 +203,7 @@ export class AppHaxButton extends LitElement {
           position: absolute;
           top: 0;
           left: 0;
-          margin-left: -40px;
+          margin-left: -50px;
           margin-top: -10px;
         }
         .haxButton {

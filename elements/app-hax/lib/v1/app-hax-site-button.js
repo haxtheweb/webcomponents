@@ -91,12 +91,12 @@ export class AppHaxSiteButton extends SimpleColors {
       }
       .coming-soon {
         display: block;
-        height: 114px;
-        width: 140px;
+        height: 90px;
+        width: 110px;
         z-index: 1;
         position: absolute;
-        margin-right: -54px;
-        margin-top: -10px;
+        margin-right: -25px;
+        margin-top: -25px;
       }
     `;
   }

@@ -112,10 +112,14 @@ export class AppHaxSteps extends SimpleColors {
     if (!e.target.comingSoon) {
       const { value } = e.target;
       store.site.structure = value;
+      // for now, auto select type and theme
+      store.site.type = "own";
+      store.site.theme = "clean-one";
       // skip theme if new user
-      if (toJS(store.isNewUser)) {
+      /*if (toJS(store.isNewUser)) {
+        store.site.type = "own";
         store.site.theme = "clean-one";
-      }
+      }*/
       store.appEl.playSound("click2");
     }
   }
@@ -1145,18 +1149,19 @@ export class AppHaxSteps extends SimpleColors {
                   value="import"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
-                <!-- <app-hax-site-button
-                  tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Website"
-                  value="website"
-                  @click=${this.chooseStructure}
-                ></app-hax-site-button> -->
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
                   label="&gt; Portfolio"
                   value="portfolio"
                   @click=${this.chooseStructure}
                   ?coming-soon="${!this.unlockComingSoon}"
+                ></app-hax-site-button>
+                <app-hax-site-button
+                  tabindex="${this.step !== 1 ? "-1" : ""}"
+                  label="&gt; Website"
+                  value="website"
+                  ?coming-soon="${!this.unlockComingSoon}"
+                  @click=${this.chooseStructure}
                 ></app-hax-site-button>
               </div>
             </div>
