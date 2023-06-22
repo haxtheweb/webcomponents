@@ -2546,21 +2546,21 @@ Window size: ${window.innerWidth}x${window.innerHeight}
             required: true,
             validationType: "url",
           },
-          DataStyleDecoration,
-        ],
-        advanced: [
           {
             attribute: "target",
             title: "Target",
             description: "Where to place the link.",
             inputMethod: "select",
             options: {
-              "": "Same window",
               _blank: "New window - _blank",
+              "": "Same window",
               _top: "Top window - _top",
               _parent: "Parent window - _parent",
             },
           },
+          DataStyleDecoration,
+        ],
+        advanced: [
         ],
         developer: [
           {
