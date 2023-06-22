@@ -165,14 +165,14 @@
     "yo": "4.3.0",
     "@wcfactory/rollup-umd-build": "^0.13.0",
     "rollup-plugin-copy": "3.4.0",
-    "@lit/reactive-element": "^1.6.1",
+    "@lit/reactive-element": "^1.6.2",
     "lit-element": "^3.3.2",
     "lit-html": "^2.7.4"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "chokidar": "^3.0.0",
-    "@lit/reactive-element": "1.6.1",
+    "@lit/reactive-element": "1.6.2",
     "lit-element": "3.3.2",
     "webpack": "5.87.0",
     "lit-html": "2.7.4",

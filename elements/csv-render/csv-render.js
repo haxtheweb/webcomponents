@@ -158,9 +158,16 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         item-count="4"
         size="small"
       ></hexagon-loader>
-      <a href="${this.dataSource}" id="download" tabindex="-1">
+      <a
+        href="${this.dataSource}"
+        id="download"
+        tabindex="-1"
+        title="Download table data"
+      >
         <simple-icon-button-lite
           id="ficon"
+          aria-labelledby="download"
+          label="Download table data"
           icon="file-download"
         ></simple-icon-button-lite>
       </a>

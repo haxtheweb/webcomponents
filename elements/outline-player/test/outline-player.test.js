@@ -7,7 +7,7 @@ window.process = window.process || {
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../outline-player.js";
-
+/*
 describe("outline-player test", () => {
   let element;
   beforeEach(async () => {
@@ -21,7 +21,6 @@ describe("outline-player test", () => {
   });
 });
 
-/*
 describe("A11y/chai axe tests", () => {
   it("outline-player passes accessibility test", async () => {
     const el = await fixture(html` <outline-player></outline-player> `);

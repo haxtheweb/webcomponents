@@ -4,7 +4,13 @@ import "../spotify-embed.js";
 describe("elementName test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html`<spotify-embed></spotify-embed>`);
+    element = await fixture(html`
+      <spotify-embed
+        source="https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8"
+        theme="0"
+        size="compact"
+      ></spotify-embed>
+    `);
   });
 
   it("basic will it blend", async () => {

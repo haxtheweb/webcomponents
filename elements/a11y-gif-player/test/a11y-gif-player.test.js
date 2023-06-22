@@ -6,7 +6,17 @@ describe("a11y-gif-player test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <a11y-gif-player title="test-title"></a11y-gif-player> `
+      html` <a11y-gif-player
+        style="width: 200px;"
+        src="https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif"
+        longdesc="Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop."
+        .
+      >
+        <img
+          src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
+          alt="It's Always Sunny in Philadelphia GIF Meme"
+        />
+      </a11y-gif-player>`
     );
   });
 

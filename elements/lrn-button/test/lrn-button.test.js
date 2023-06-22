@@ -6,7 +6,14 @@ describe("lrn-button test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <lrn-button title="test-title"></lrn-button> `
+      html`
+        <lrn-button
+          label="Stuff"
+          href="https://google.com/"
+          color="yellow"
+          icon="check"
+        ></lrn-button>
+      `
     );
   });
 

@@ -193,9 +193,13 @@ class LrnButton extends SimpleColors {
           </div>
         </button>
       </a>
-      <simple-tooltip for="lrnsys-button-link" animation-delay="0"
-        >${this.alt}</simple-tooltip
-      >`;
+      ${this.alt
+        ? html`
+            <simple-tooltip for="lrnsys-button-link" animation-delay="0"
+              >${this.alt}</simple-tooltip
+            >
+          `
+        : ``}`;
   }
 
   // properties available to the custom element for data binding
@@ -339,7 +343,6 @@ class LrnButton extends SimpleColors {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "color") this.accentColor = this.color;
-      console.log(propName, this.color, this.accentColor);
     });
   }
   firstUpdated() {

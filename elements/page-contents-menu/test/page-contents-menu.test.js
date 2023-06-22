@@ -6,7 +6,30 @@ describe("page-contents-menu test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <page-contents-menu title="test-title"></page-contents-menu> `
+      html`<div id="content">
+        <page-contents-menu mobile relationship="parent"></page-contents-menu>
+        <h1>This is a menu position to a heading</h1>
+        <p>Stuff and things</p>
+        <h2>Something else</h2>
+        <p>Stuff and things</p>
+        <h2 id="whatever">Something 2</h2>
+        <p>Stuff and things</p>
+        <p>
+          Stuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff
+          and thingsStuff and thingsStuff and thingsStuff and things Stuff and
+          thingsStuff and thingsStuff and thingsStuff and thingsStuff and things
+          Stuff and thingsStuff and thingsStuff and thingsStuff and things Stuff
+          and thingsStuff and thingsStuff and things
+        </p>
+        <video-player></video-player>
+        <p>Stuff and things</p>
+        <p>Stuff and things</p>
+        <h3 id="cool">Something deeper</h3>
+        <p>Stuff and things</p>
+        <p>Stuff and things</p>
+        <p>Stuff and things</p>
+        <h2>Something else 2</h2>
+      </div>`
     );
   });
 

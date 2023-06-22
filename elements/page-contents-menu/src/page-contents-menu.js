@@ -143,6 +143,7 @@ class PageContentsMenu extends LitElement {
             @click="${this.toggleSettings}"
             @keypress="${this.keyToggle}"
             id="popovertarget"
+            role="button"
             aria-label="${this.label}"
           >
             <svg
