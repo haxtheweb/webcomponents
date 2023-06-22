@@ -44,7 +44,7 @@
       },
       {
         "property": "singleOption",
-        "title": "Single asnwer",
+        "title": "Single answer",
         "description": "Only allow one answer",
         "inputMethod": "boolean"
       },
