@@ -33,7 +33,7 @@ export class FlashCard extends SimpleColors {
       css`
         :host {
           display: block;
-          box-sizing: content-box;
+          box-sizing: content-box !important;
           border: 1px solid var(--simple-colors-default-theme-accent-6);
           min-width: 320px;
           min-height: 155px;
