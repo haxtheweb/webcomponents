@@ -24,7 +24,7 @@
         "description": "Options to sort",
         "required": true,
         "slotWrapper": "sorting-option",
-        "allowedSlotWrappers": ["sorting-option", "p"]
+        "allowedSlotWrappers": ["sorting-option"]
       }
     ],
     "advanced": []
