@@ -1,5 +1,5 @@
 {
-  "canScale": true,
+  "canScale": false,
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
@@ -59,7 +59,9 @@
         "description": "Required alternate text for accessibility",
         "inputMethod": "alt",
         "required": true
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "opacity",
         "title": "Behavior",
@@ -87,27 +89,12 @@
         "min": 0,
         "max": 100
       }
-    ],
-    "advanced": [
-      {
-        "slot": "heading",
-        "title": "Title",
-        "inputMethod": "textfield"
-      },
-      {
-        "slot": "description",
-        "title": "Description",
-        "description": "Recommended description for accessibility.",
-        "inputMethod": "code-editor"
-      }
     ]
   },
   "demoSchema": [
     {
       "tag": "image-compare-slider",
       "properties": {
-        "accentColor": "red",
-        "dark": true,
         "opacity": true,
         "topSrc": "https://placekitten.com/400/200",
         "topAlt": "",

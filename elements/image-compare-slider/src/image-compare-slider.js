@@ -19,10 +19,17 @@ class ImageCompareSlider extends I18NMixin(
     return [
       css`
         :host {
-          display: inline-flex;
+          display: block;
         }
         :host([hidden]) {
           display: none !important;
+        }
+        a11y-compare-image {
+          max-width: var(--image-compare-slider-max-width, 400px);
+        }
+        a11y-compare-image img {
+          max-width: var(--image-compare-slider-max-width, 400px);
+          max-height: var(--image-compare-slider-max-height, 600px);
         }
       `,
     ];
@@ -30,6 +37,8 @@ class ImageCompareSlider extends I18NMixin(
   constructor() {
     super();
     this.opacity = false;
+    this.topAlt = "";
+    this.bottomAlt = "";
     this.position = 50;
     this.accentColor = "blue";
     this.t = {
@@ -55,7 +64,7 @@ class ImageCompareSlider extends I18NMixin(
               ${this.title ? html` <h2>${this.title}</h2> ` : ``}
               <slot name="heading"></slot>
             </div>
-            <div slot="description"><slot name="description"></slot></div>
+            <div id="description" slot="description"><slot name="description"></slot></div>
             <img
               slot="bottom"
               src="${this.bottomSrc}"
@@ -154,7 +163,7 @@ class ImageCompareSlider extends I18NMixin(
   }
   static get haxProperties() {
     return new URL(
-      "./lib/image-compare-slider.haxProperties.json",
+      `./lib/${this.tag}.haxProperties.json`,
       import.meta.url
     ).href;
   }
