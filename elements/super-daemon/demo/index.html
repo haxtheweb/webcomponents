@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SuperDaemon: super-daemon Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+
+    <script type="module">
+      import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+      import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+      import {SuperDaemonInstance} from '../super-daemon.js';
+      SuperDaemonInstance.appendContext("*");
+      // CMS / any normal context
+      SuperDaemonInstance.defineOption({
+        title: "Try out our website",
+        tags: ["CMS", "insights", "data", "operation"],
+        value: true,
+        context: ["*"],
+        eventName: "super-daemon-element-method",
+        path: "CMS/site/insights",
+      });
+      // CMS / any normal context
+      SuperDaemonInstance.defineOption({
+        title: "Try out our Things",
+        tags: ["CMS", "insights", "data", "operation"],
+        value: true,
+        context: "*",
+        eventName: "super-daemon-element-method",
+        path: "CMS/site/insightsghffgh",
+      });
+      // CMS / any normal context
+      SuperDaemonInstance.defineOption({
+        title: "insite",
+        icon: "hax:clipboard-pulse",
+        tags: ["CMS", "insights", "data", "operation"],
+        value: true,
+        context: ["CMS"],
+        eventName: "super-daemon-element-method",
+        path: "CMS/site/insights",
+      });
+      SuperDaemonInstance.defineOption({
+        title: "Outline Designer",
+        icon: "hax:clipboard-pulse",
+        tags: ["CMS", "insights", "data", "operation"],
+        value: true,
+        context: "CMS",
+        eventName: "super-daemon-element-method",
+        path: "CMS/site/insights",
+      });
+      // slash command context
+      SuperDaemonInstance.defineOption({
+        title: "Search Youtube",
+        icon: "mdi-social:youtube",
+        tags: ["Search", "Youtube", "video"],
+        value: true,
+        context: ["/"],
+        eventName: "super-daemon-element-method",
+        path: "/youtube",
+      });
+      // developer context
+      SuperDaemonInstance.defineOption({
+        title: "HAXcms: Change theme",
+        icon: "account-balance",
+        tags: ["theme","developer"],
+        value: {
+          target: window,
+          method: "themeChange"
+        },
+        context: ">",
+        eventName: "super-daemon-element-method",
+        path: ">HAXcms/changeTheme",
+      });
+      // possible help context
+      SuperDaemonInstance.defineOption({
+        title: "How do I add a page?",
+        icon: "help",
+        tags: ["cms","help"],
+        value: {
+          program: "addPage",
+          value: true
+        },
+        context: "?",
+        eventName: "super-daemon-element-method",
+        path: "?CMS/AddPage",
+      });
+
+      function themeChange(input) {
+        alert("Theme change program ran with" + input);
+      }
+
+      // slash command context
+      SuperDaemonInstance.defineOption({
+        title: "Search Wikipedia",
+        icon: "account-balance",
+        tags: ["Search", "Wikipedia", "encyclopedia"],
+        value: {
+          name: "Search Wikipedia",
+          context: "/",
+          program: async (input) => {
+            let data = await fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&list=search&format=json&srsearch=${input}`)
+              .then(response => response.json())
+              .then(data => {
+                if (data && data.query && data.query.search) {
+                  return data.query.search;
+                }
+                return [];
+              }
+            );
+            let results = [];
+            await data.forEach(async (item) => {
+              results.push({
+                title: item.title,
+                icon: "account-balance",
+                tags: [],
+                value: {
+                  value: "wikipedia-query",
+                  eventName: "insert-tag",
+                  demoSchema: true,
+                  term: item.title
+                },
+                context: ["/wikipedia"],
+                eventName: "hax-super-daemon-insert-tag",
+                path: "/wikipedia",
+              });
+            });
+            return results;
+          }
+        },
+        context: ["/", "*"],
+        eventName: "super-daemon-run-program",
+        path: "/wikipedia",
+      });
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Type the trigger key combo to invoke the Super Daemon</h3>
+      <label>Context we are operating in</label>
+      <select>
+        <option value="">None</option>
+        <option value="CMS">CMS</option>
+      </select>
+    </div>
+    <script>
+      var prevContext;
+      document.querySelector("select").addEventListener("change", function(e) {
+        const daemon = window.SuperDaemonManager.requestAvailability();
+        if (prevContext) {
+          daemon.removeContext(prevContext);
+        }
+        daemon.appendContext(e.target.value);
+        // set so we can remove the previous onef
+        prevContext = e.target.value;
+      });
+    </script>
+  </body>
+</html>

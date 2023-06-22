@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "merit-badge",
+      "description": "`badge-sticker`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `skillsArray` {`never[]`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "badgeDate",
+          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+        },
+        {
+          "name": "badgeImage",
+          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage\n\nDefault: "
+        },
+        {
+          "name": "badgeTitle",
+          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle\n\nDefault: "
+        },
+        {
+          "name": "badgeDetails",
+          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails\n\nDefault: "
+        },
+        {
+          "name": "hyperLink",
+          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink\n\nDefault: "
+        },
+        {
+          "name": "badgeSkills",
+          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills\n\nDefault: "
+        },
+        {
+          "name": "skillsOpened",
+          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "detailsOpened",
+          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "badgeColor",
+          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "badge-sticker",
+      "description": "`badge-sticker`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `skillsArray` {`never[]`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "badgeDate",
+          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+        },
+        {
+          "name": "badgeImage",
+          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage\n\nDefault: "
+        },
+        {
+          "name": "badgeTitle",
+          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle\n\nDefault: "
+        },
+        {
+          "name": "badgeDetails",
+          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails\n\nDefault: "
+        },
+        {
+          "name": "hyperLink",
+          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink\n\nDefault: "
+        },
+        {
+          "name": "badgeSkills",
+          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills\n\nDefault: "
+        },
+        {
+          "name": "skillsOpened",
+          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "detailsOpened",
+          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "badgeColor",
+          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "date-title",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `date` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `date` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "date",
+          "description": "`date` {`string`} - \n\nProperty: date\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "locked-badge",
+      "attributes": []
+    },
+    {
+      "name": "merit-badge",
+      "description": "`merit-badge`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `badgeUnlocked` {`boolean`} - \n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `badgeUnlocked` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "badgeDate",
+          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+        },
+        {
+          "name": "badgeImage",
+          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage"
+        },
+        {
+          "name": "badgeTitle",
+          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle"
+        },
+        {
+          "name": "badgeDetails",
+          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails"
+        },
+        {
+          "name": "hyperLink",
+          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink"
+        },
+        {
+          "name": "badgeSkills",
+          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills"
+        },
+        {
+          "name": "skillsOpened",
+          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened",
+          "valueSet": "v"
+        },
+        {
+          "name": "detailsOpened",
+          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened",
+          "valueSet": "v"
+        },
+        {
+          "name": "badgeColor",
+          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor"
+        },
+        {
+          "name": "badgeUnlocked",
+          "description": "`badgeUnlocked` {`boolean`} - \n\nProperty: badgeUnlocked\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

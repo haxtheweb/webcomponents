@@ -3,27 +3,16 @@
   "tags": [
     {
       "name": "code-sample",
-      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `_observer` - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copyClipboardButton` {`boolean`} - ",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `highlight-start` {`number`} - \n\n  * `highlight-end` {`number`} - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `highlightStart` {`number`} - \n\n  * `highlightEnd` {`number`} - \n\n  * `_observer` - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copyClipboardButton` {`boolean`} - ",
       "attributes": [
         {
-          "name": "theme",
-          "description": "`theme` - \n\nProperty: theme\n\nDefault: oneDark"
+          "name": "highlight-start",
+          "description": "`highlight-start` {`number`} - \n\nProperty: highlightStart\n\nDefault: null"
         },
         {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: html"
+          "name": "highlight-end",
+          "description": "`highlight-end` {`number`} - \n\nProperty: highlightEnd\n\nDefault: null"
         },
-        {
-          "name": "copy-clipboard-button",
-          "description": "`copy-clipboard-button` {`boolean`} - \n\nProperty: copyClipboardButton\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "code-sample",
-      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `_observer` - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copyClipboardButton` {`boolean`} - ",
-      "attributes": [
         {
           "name": "theme",
           "description": "`theme` - \n\nProperty: theme\n\nDefault: oneDark"

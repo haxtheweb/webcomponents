@@ -7,7 +7,17 @@
     "description": "This can generate a table from a CSV file no matter where it is located.",
     "icon": "editor:border-all",
     "color": "green",
-    "groups": ["Presentation", "Table", "Data"],
+    "tags": [
+      "Instructional",
+      "presentation",
+      "table",
+      "data",
+      "layout",
+      "grid",
+      "csv",
+      "spreadsheet",
+      "excel"
+    ],
     "handles": [
       {
         "type": "csv",

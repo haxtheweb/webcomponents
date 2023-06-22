@@ -3,65 +3,7 @@
   "tags": [
     {
       "name": "outline-designer",
-      "description": "`outline-designer`\n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
-      "attributes": [
-        {
-          "name": "fidelity",
-          "description": "`fidelity` {`string`} - \n\nProperty: fidelity\n\nDefault: medium"
-        },
-        {
-          "name": "haxGizmos",
-          "description": "`haxGizmos` {`any[]`} - \n\nProperty: haxGizmos\n\nDefault: "
-        },
-        {
-          "name": "hideDelete",
-          "description": "`hideDelete` {`boolean`} - \n\nProperty: hideDelete\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "activeItemForActions",
-          "description": "`activeItemForActions` {`string`} - \n\nProperty: activeItemForActions\n\nDefault: null"
-        },
-        {
-          "name": "storeTools",
-          "description": "`storeTools` {`boolean`} - \n\nProperty: storeTools\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-content-ops",
-          "description": "`hide-content-ops` {`boolean`} - \n\nProperty: hideContentOps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "appReady",
-          "description": "`appReady` {`boolean`} - \n\nProperty: appReady\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "eventData",
-          "description": "`eventData` - \n\nProperty: eventData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "activePreview",
-          "description": "`activePreview` - \n\nProperty: activePreview\n\nDefault: null"
-        },
-        {
-          "name": "activePreviewIndex",
-          "description": "`activePreviewIndex` {`number`} - \n\nProperty: activePreviewIndex\n\nDefault: -1"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        }
-      ]
-    },
-    {
-      "name": "outline-designer",
-      "description": "`outline-designer`\n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
+      "description": "`outline-designer`\n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `_blurBlock` {`boolean`} - \n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "fidelity",

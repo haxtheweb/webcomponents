@@ -146,11 +146,15 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     if (this.getAttribute("importing-text")) {
       this.importingText = this.getAttribute("importing-text");
     }
+    this.exists = true;
     // support for element being defined prior to view
     if (customElements.get(this.getAttribute("with"))) {
       let props = {};
       if (this.getAttribute("import-only") != null) {
-        this.remove();
+        this.exists = false;
+        setTimeout(() => {
+          this.remove();
+        }, 0);
       } else {
         for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
           props[atts[i].nodeName] = atts[i].nodeValue;
@@ -173,7 +177,10 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       customElements.whenDefined(this.getAttribute("with")).then((response) => {
         let props = {};
         if (this.getAttribute("import-only") != null) {
-          this.remove();
+          this.exists = false;
+          setTimeout(() => {
+            this.remove();
+          }, 0);
         } else {
           // just the props off of this for complex state
           for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
@@ -214,8 +221,10 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         }, 0);
       });
     }
-    this.template = document.createElement("template");
-    this.attachShadow({ mode: "open" });
+    if (this.exists) {
+      this.template = document.createElement("template");
+      this.attachShadow({ mode: "open" });
+    }
   }
   /**
    * Convention we use
@@ -261,13 +270,15 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
 <div>${this.importingText}</div>`;
   }
   render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
+    if (this.exists) {
+      this.shadowRoot.innerHTML = null;
+      this.template.innerHTML = this.html;
 
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+      if (window.ShadyCSS) {
+        window.ShadyCSS.prepareTemplate(this.template, this.tag);
+      }
+      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
     }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
 customElements.define(ReplaceTag.tag, ReplaceTag);

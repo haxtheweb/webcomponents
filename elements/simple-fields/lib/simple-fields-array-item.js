@@ -102,11 +102,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           flex-wrap: wrap;
           overflow: hidden;
           max-height: 0;
-          transition: max-height 0.75s ease 0.1s;
+          transition: max-height 0.75s ease;
         }
         :host([aria-expanded="true"]) #content {
           max-height: 20000vh;
-          transition: max-height 0.75s ease 0.1s;
+          transition: max-height 0.75s ease;
         }
         :host([aria-expanded="true"]) #content-inner {
           max-height: 20000vh;

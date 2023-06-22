@@ -6,7 +6,7 @@
     <title>DemoHaxElement: demo-hax-element Demo</title>
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
@@ -32,7 +32,6 @@
           <video-player id="example" accent-color="amber" linkable>
             <video>
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
               <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
               <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
@@ -58,14 +57,6 @@
             accent-color="red" 
             source="//www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s">
           </video-player>
-          <video-player 
-            accent-color="red"
-            dark 
-            source="//personal.psu.edu/lnm105/stclair.mp4" 
-            track="./samples/stclair.vtt"
-            thumbnail-src="./samples/stclair.jpg">
-            <div slot="caption">This is a video caption.</div>
-          </video-player>
         </template>
       </demo-snippet>
 
@@ -82,27 +73,25 @@
         </template>
       </demo-snippet>
 
-      <h2>video-player for any address</h2>
+      <h2>video-player responsive, even if width/height defined</h2>
       <demo-snippet>
         <template>
           <video-player 
-            accent-color="cyan" 
-            linkable
-            player-id="any-address"
-            sources="[{&quot;src&quot;: &quot;//personal.psu.edu/lnm105/stclair.mp4&quot;}]">
+            source="https://www.twitch.tv/videos/1825264027">
           </video-player>
           <video-player 
-            accent-color="cyan" 
-            dark
-            linkable
-            player-id="any-address2"
-            thumbnail-src="//www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg?itok=_1HEhahr" 
-            track="./samples/stclair.vtt" 
-            sources="[{ &quot;src&quot;:&quot;//personal.psu.edu/lnm105/stclair.mp4&quot;, &quot;type&quot;:&quot;video/mp4&quot; }]">
+            source="https://player.twitch.tv/?video=1825264027">
           </video-player>
+          <video-player 
+            source="https://player.twitch.tv/?channel=btssmash&parent=www.example.com">
+          </video-player>
+          <video-player 
+            source="https://player.twitch.tv/btssmash">
+          </video-player>
+          
         </template>
       </demo-snippet>
-      
+
       <h2>video-player responsive, even if width/height defined</h2>
       <demo-snippet>
         <template>
@@ -128,19 +117,6 @@
             dark
             source="//www.youtube.com/watch?v=o9RypkhGqrg" 
             not-responsive>
-          </video-player>
-        </template>
-      </demo-snippet>
-
-      <h3>video-player with sources and tracks</h3>
-      <demo-snippet>
-        <template>
-          <video-player 
-            accent-color="deep-purple"
-            source="//personal.psu.edu/lnm105/stclair.mp4" 
-            track="./samples/stclair.vtt"
-            thumbnail-src="./samples/stclair.jpg">
-            <div slot="caption">This is a video caption.</div>
           </video-player>
         </template>
       </demo-snippet>

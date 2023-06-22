@@ -1,0 +1,44 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "H5P",
+    "description": "h5p wrapper for loading and presenting .h5p files",
+    "icon": "icons:android",
+    "color": "green",
+    "tags": [
+      "Instructional",
+      "Interactive",
+      "media"
+    ],
+    "meta": {
+      "author": "HAXTheWeb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe embed code",
+        "inputMethod": "code-editor",
+        "required": true
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": [
+      "content-id"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "h5p-element",
+      "properties": {
+      },
+      "content": "<iframe width=\"100%\" height=\"auto\" src=\"https://media.ed.science.psu.edu/entity_iframe/node/4272\" frameborder=\"0\" class=\"entity_iframe entity_iframe_node\" id=\"entity_iframe_node_2653\" allowfullscreen=\"true\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" style=\"height: 576px;\"></iframe>"
+    }
+  ]
+}

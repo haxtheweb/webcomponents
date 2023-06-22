@@ -1,7 +1,7 @@
 import { css } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 export const HaxLayoutBehaviors = function (SuperClass) {
   return class extends SchemaBehaviors(SuperClass) {
@@ -72,7 +72,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-accent-color, #009dc7)
               );
           }
-          :host([data-hax-ray]) ::slotted(.hax-active) {
+          :host([data-hax-ray]) ::slotted([data-hax-active]) {
             outline: var(--hax-layout-slotted-active-outline-width, 1px)
               var(--hax-layout-slotted-active-outline-style, solid)
               var(

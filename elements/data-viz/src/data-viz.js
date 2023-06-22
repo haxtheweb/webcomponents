@@ -67,6 +67,7 @@ class DataViz extends LitElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -75,7 +76,8 @@ class DataViz extends LitElement {
     super.connectedCallback();
     window.addEventListener(
       "pouch-db-show-data",
-      this.showDataFunction.bind(this)
+      this.showDataFunction.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
@@ -97,10 +99,7 @@ class DataViz extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "pouch-db-show-data",
-      this.showDataFunction.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

@@ -2,6 +2,8 @@
 
 - [NPM Package list](https://www.npmjs.com/org/lrnwebcomponents)
 - [HAX doc site](https://haxtheweb.org/)
+- [HAXcms](https://github.com/elmsln/haxcms)
+- [HAX + 11ty](https://github.com/elmsln/hax11ty)
 - [WCFactory Tooling](https://wcfactory.js.org/)
 
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -18,7 +20,7 @@
 [![Twitter](https://img.shields.io/twitter/follow/haxtheweb.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=haxtheweb)
 
 # Welcome to the lrnwebcomponents project!
-ELMS:LN produced web components for any project
+Web components that can work in just about anything, are very small (Vanila or Lit based) and have full on authoring solutions if you dig deeper; Enjoy!
 
 ![Logo](https://github.com/elmsln/elmsln-logos/blob/master/haxtheweb/2019-08-14_13-05-52.png)
 
@@ -191,8 +193,10 @@ For example:
 
 Contributions are always welcome!
 
-## Authors
+## Active contributors
 
 - [@btopro](https://www.github.com/btopro)
-- [@heyMP](https://www.github.com/heyMP)
-- [@nikkimk](https://www/github.com/nikkimk)
+- [@cgldevel](https://www.github.com/cgldevel)
+
+## Additional contributions
+Past contributors, student and larger community, can be found here: https://github.com/elmsln/lrnwebcomponents/graphs/contributors

@@ -21,6 +21,8 @@ export function enableServices(services) {
     }
   });
 }
+// map service enable to global
+MicroFrontendRegistry.enableServices = enableServices;
 
 // core services
 export function enableCoreServices() {
@@ -69,6 +71,17 @@ export function enableCoreServices() {
     params: {
       html: "HTML or link to be converted",
       type: "link for processing as link otherwise unused",
+    },
+  });
+  // crypto
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/security/aes256",
+    name: "@core/crypto",
+    title: "Cryptography from string",
+    description: "Convert a string to or from an aes256 based hash",
+    params: {
+      data: "HTML or link to be converted",
+      op: "decrypt or hash",
     },
   });
   // duckDuckGo
@@ -183,6 +196,66 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // evolutionToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/system/api/importEvolution",
+    name: "@haxcms/evolutionToSite",
+    title: "Evolution to Site",
+    description: "Convert .zip and schema to valid HAXcms",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
+  // gitbookToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/gitbookToSite",
+    name: "@haxcms/gitbookToSite",
+    title: "Gitbook to Site",
+    description: "Convert Gitbook baseed repo to valid HAXcms",
+    params: {
+      md: "Location of the repo",
+    },
+  });
+  // notionToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/notionToSite",
+    name: "@haxcms/notionToSite",
+    title: "Notion to Site",
+    description: "Convert notion baseed repo to valid HAXcms",
+    params: {
+      repoUrl: "Location of the repo",
+    },
+  });
+  // haxcmsToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/haxcmsToSite",
+    name: "@haxcms/haxcmsToSite",
+    title: "HAXcms to Site",
+    description: "Use a HAXcms site as the basis for a new one",
+    params: {
+      repoUrl: "Location of the site",
+    },
+  });
+  // elmslnToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/elmslnToSite",
+    name: "@haxcms/elmslnToSite",
+    title: "ELMS:LN to Site",
+    description: "Import an ELMS:LN site to HAXcms",
+    params: {
+      repoUrl: "Location of the site",
+    },
+  });
+  // pressbooksToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/pressbooksToSite",
+    name: "@haxcms/pressbooksToSite",
+    title: "Pressbooks to Site",
+    description: "Convert pressbooks HTML export to Site schema",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
   // insights
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/insights",
@@ -277,7 +350,7 @@ export function enableHAXcmsServices() {
     title: "HAXcms manifest",
     description: "Load the manifest for a site based on URL",
     params: {
-      site: "location of the HAXcms site OR site.json data"
+      site: "location of the HAXcms site OR site.json data",
     },
   });
 

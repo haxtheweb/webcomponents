@@ -136,6 +136,12 @@ export const HaxSchematizer = {
         format: "tabs",
       },
     },
+    collapse: {
+      defaultSettings: {
+        type: "object",
+        format: "collapse",
+      },
+    },
     textarea: {
       defaultSettings: {
         type: "string",
@@ -258,6 +264,7 @@ export const HaxElementizer = {
         attributes: {
           autofocus: true,
           type: "file",
+          "show-sources": true,
         },
         properties: {
           accepts: "accepts",
@@ -342,6 +349,21 @@ export const HaxElementizer = {
               layoutBreakpoint: "layoutBreakpoint",
               iconBreakpoint: "iconBreakpoint",
               sticky: "sticky",
+            },
+          },
+        },
+        collapse: {
+          defaultSettings: {
+            import:
+              "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+            element: "div",
+            noWrap: true,
+            child: {
+              import: "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+              element: "a11y-collapse",
+              noWrap: true,
+              labelSlot: "heading",
+              descriptionSlot: "",
             },
           },
         },
@@ -436,6 +458,7 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
+              "show-sources": true,
             },
             properties: {
               accepts: "accepts",
@@ -449,6 +472,10 @@ export const HaxElementizer = {
             element: "simple-icon-picker",
             attributes: {
               autofocus: true,
+              justify: true,
+            },
+            properties: {
+              options: "icons",
             },
           },
         },

@@ -1,6 +1,10 @@
 import { css, html } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { autorun, toJS } from "mobx";
 import {
   localStorageSet,
@@ -13,7 +17,9 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       super();
       this.menuOpen = true;
       this.t = this.t || {};
-      this.t.toggleMenu = "Toggle menu";
+      this.t.closeMenu = "Close menu";
+      this.t.openMenu = "Open menu";
+      this.t.toggleSiteMenu = "Toggle site menu";
       let status = localStorageGet("hax-mobile-menu-menuOpen", null);
       if (status !== null) {
         if (status === true) {
@@ -24,20 +30,39 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       }
       this.__disposer = this.__disposer ? this.__disposer : [];
       autorun((reaction) => {
+        const activeId = toJS(store.activeId);
         // if menu is open, and the active item changes AND we're on mobile...
         // close the menu
         if (
           this.shadowRoot &&
           this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
           this.menuOpen &&
-          toJS(store.activeId) &&
-          ["sm", "xs"].includes(this.responsiveSize) &&
-          localStorageGet("hax-mobile-menu-menuOpen", null) === null
+          activeId &&
+          ["sm", "xs"].includes(this.responsiveSize)
         ) {
           this.__HAXCMSMobileMenuToggle();
         }
         this.__disposer.push(reaction);
       });
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-define-option", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            title: this.t.toggleSiteMenu,
+            icon: "hax:menu-open",
+            tags: ["CMS", "site", "menu"],
+            value: {
+              target: this,
+              method: "__HAXCMSMobileMenuClickToggle",
+            },
+            context: "CMS",
+            eventName: "super-daemon-element-method",
+            path: "CMS/site/menu/toggle",
+          },
+        })
+      );
     }
     static get styles() {
       let styles = [];
@@ -64,21 +89,17 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       ];
     }
     HAXCMSMobileMenuButton(position = "auto") {
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
         <simple-icon-button-lite
           class="btn"
-          icon="icons:menu"
-          label="${this.t.toggleMenu}"
+          icon="${this.menuOpen ? "hax:menu-open" : "icons:menu"}"
+          label="${this.menuOpen ? this.t.closeMenu : this.t.openMenu}"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuClickToggle}"
         ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsmobilemenubutton" position="${position}">
-          ${this.t.toggleMenu}
+          ${this.menuOpen ? this.t.closeMenu : this.t.openMenu}
         </simple-tooltip>
       `;
     }
@@ -131,10 +152,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         // these cases only fire if the user has not changed the state themselves
         // when the menuOpen setting is placed in local storage we no longer
         // abide by these things
-        if (
-          propName == "responsiveSize" &&
-          localStorageGet("hax-mobile-menu-menuOpen", null) === null
-        ) {
+        if (propName == "responsiveSize" && this[propName]) {
           switch (this[propName]) {
             case "sm":
               // auto close for small layouts

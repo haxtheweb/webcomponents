@@ -1,151 +1,35 @@
 {
-  "version": "experimental",
+  "version": 1,
   "tags": [
     {
       "name": "simple-cta",
-      "path": "./simple-cta.js",
-      "description": "`simple-cta`\n`Simple call to action button`",
+      "description": "`simple-cta`\n`Simple call to action button`\n\nAttributes:\n\n  * `editMode` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `isUserSelected` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "editMode",
-          "type": "boolean"
+          "description": "`editMode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
         },
         {
           "name": "link",
-          "type": "string",
-          "default": "\"#\""
+          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: #"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
         },
         {
           "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: green"
         },
         {
           "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "editMode",
-          "attribute": "editMode",
-          "type": "boolean"
-        },
-        {
-          "name": "link",
-          "attribute": "link",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "isUserSelected",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
-        }
-      ]
-    },
-    {
-      "name": "simple-cta",
-      "path": "./src/simple-cta.js",
-      "description": "`simple-cta`\n`Simple call to action button`",
-      "attributes": [
-        {
-          "name": "editMode",
-          "type": "boolean"
-        },
-        {
-          "name": "link",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "title",
-          "type": "string"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "editMode",
-          "attribute": "editMode",
-          "type": "boolean"
-        },
-        {
-          "name": "link",
-          "attribute": "link",
-          "type": "string",
-          "default": "\"#\""
-        },
-        {
-          "name": "title",
-          "attribute": "title",
-          "type": "string"
-        },
-        {
-          "name": "isUserSelected",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }
-  ]
+  ],
+  "globalAttributes": [],
+  "valueSets": []
 }

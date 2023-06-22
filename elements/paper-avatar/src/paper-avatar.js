@@ -158,6 +158,7 @@ class PaperAvatar extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.dark = false;
     this.label = null;
     this.src = null;
@@ -268,18 +269,17 @@ class PaperAvatar extends LitElement {
       .href;
     window.addEventListener(
       "es-bridge-jdenticon-loaded",
-      this._jdenticonLoaded.bind(this)
+      this._jdenticonLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.ESGlobalBridge.requestAvailability().load("jdenticon", location);
   }
   /**
    * HTMLElement life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-jdenticon-loaded",
-      this._jdenticonLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

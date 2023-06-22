@@ -27,6 +27,7 @@ class I18NManager extends HTMLElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // fetch caching to reduce calls for json files
     this.fetchTargets = {};
     // reference to all elements that care about localization
@@ -69,25 +70,21 @@ class I18NManager extends HTMLElement {
     this.__ready = true;
     window.addEventListener(
       "i18n-manager-register-element",
-      this.registerLocalizationEvent.bind(this)
+      this.registerLocalizationEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "languagechange",
-      this.changeLanguageEvent.bind(this)
+      this.changeLanguageEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * Life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "i18n-manager-register-element",
-      this.registerLocalizationEvent.bind(this)
-    );
-    window.removeEventListener(
-      "languagechange",
-      this.changeLanguageEvent.bind(this)
-    );
+    this.windowControllers.abort();
   }
   /**
    * Browser level languagechange event
@@ -236,10 +233,11 @@ class I18NManager extends HTMLElement {
       // get all exact matches as well as partial matches
       const processList = this.elements.filter((el) => {
         try {
-          return el.locales.includes(lang) || el.locales.includes(langPieces[0]);
-        }
-        catch(e) {
-          console.error('i18n registration incorrect in:', el, e);
+          return (
+            el.locales.includes(lang) || el.locales.includes(langPieces[0])
+          );
+        } catch (e) {
+          console.error("i18n registration incorrect in:", el, e);
         }
       });
       const fallBack = this.elements.filter((el) => {

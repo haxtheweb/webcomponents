@@ -74,8 +74,8 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         }
         .contents {
           max-height: 80vh;
-          border-bottom: 2px solid lightgray;
-          max-width: 240px;
+          border-bottom: 1px solid lightgray;
+          width: 250px;
         }
         @media screen and (max-width: 600px) {
           .indent-1,

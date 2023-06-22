@@ -69,7 +69,15 @@ class FigureLabel extends LitElement {
           "Figure label element to mark media assets within content.",
         icon: "icons:android",
         color: "green",
-        groups: ["Label"],
+        tags: [
+          "content",
+          "figure",
+          "a11y",
+          "accessibility",
+          "image",
+          "caption",
+          "description",
+        ],
         meta: {
           author: "HAXTheWeb core team",
           owner: "PSU",

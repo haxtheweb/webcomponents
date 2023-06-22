@@ -20,20 +20,20 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "4.1.0",
+  "version": "7.0.5",
   "description": "An element to display the progress visually of forfilling an array of JS Promise objects",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "promise-progress.js",
   "module": "promise-progress.js",
-  "umd": "promise-progress.umd.js",
   "scripts": {
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile custom-elements.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -44,24 +44,19 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^4.1.0",
-    "@lrnwebcomponents/wc-autoload": "^4.0.25",
-    "lit": "^2.4.1"
+    "@lrnwebcomponents/simple-colors": "^7.0.5",
+    "@lrnwebcomponents/wc-autoload": "^7.0.5",
+    "lit": "^2.7.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^4.0.0",
-    "@open-wc/testing": "3.0.4",
+    "@lrnwebcomponents/deduping-fix": "^7.0.4",
+    "@open-wc/testing": "3.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@wcfactory/rollup-umd-build": "^0.13.0",
-    "@web/dev-server": "0.1.34",
-    "@webcomponents/webcomponentsjs": "2.6.0",
-    "concurrently": "7.4.0",
-    "gulp-babel": "8.0.0",
-    "lodash": "4.17.21",
-    "polymer-build": "3.1.4",
-    "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "@web/dev-server": "0.2.3",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "8.2.0",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {
@@ -71,5 +66,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "fa72bd71c8e0e3c06d28d6ba849c39e86741f34d"
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
 }

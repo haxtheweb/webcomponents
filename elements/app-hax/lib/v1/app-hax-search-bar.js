@@ -74,22 +74,32 @@ export class AppHaxSearchBar extends LitElement {
             max-width: 20vw;
           }
         }
-        simple-icon-button-lite {
-          color: black;
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
-          padding: 2px;
-          margin: 0;
-          background-color: white;
-        }
-        simple-icon-button-lite[disabled] {
+
+        simple-toolbar-button[disabled] {
           background-color: #cccccc;
           pointer-events: none;
           cursor: help;
         }
-        simple-icon-button-lite:focus,
-        simple-icon-button-lite:hover {
-          background-color: #eeeeee;
+        simple-toolbar-button {
+          min-width: 48px;
+          margin: 0;
+          --simple-toolbar-border-color: #dddddddd;
+          height: 48px;
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 0.3;
+          --simple-toolbar-button-padding: 3px 6px;
+          --simple-toolbar-border-radius: 0;
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          background-color: var(--hax-ui-background-color-accent);
+          color: var(--hax-ui-color);
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          --simple-toolbar-border-color: var(--hax-ui-color-accent);
         }
       `,
     ];
@@ -103,13 +113,16 @@ export class AppHaxSearchBar extends LitElement {
 
   render() {
     return html`
-      <simple-icon-button-lite
+      <simple-toolbar-button
         id="searchico"
+        icon-position="left"
+        show-text-label
+        ?toggles="${this.showSearch}"
         ?disabled="${this.disabled}"
-        label="Search"
+        label="Search Sites"
         icon="icons:search"
         @click="${this.toggleSearch}"
-      ></simple-icon-button-lite>
+      ></simple-toolbar-button>
       <simple-tooltip for="searchico" position="bottom"
         >Toggle Search</simple-tooltip
       >
@@ -118,7 +131,7 @@ export class AppHaxSearchBar extends LitElement {
         id="searchField"
         @input="${this.search}"
         type="text"
-        placeholder="Search.."
+        placeholder="Site name.."
       />
     `;
   }

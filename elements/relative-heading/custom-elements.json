@@ -105,42 +105,6 @@
           "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
         }
       ]
-    },
-    {
-      "name": "relative-heading",
-      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `link-align-right` {`boolean`} - label for copy link's button\n\n  * `disable-link` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button\n\nProperties:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `anchored` {`boolean`} - gets whether heading is currently anchored\n\n  * `button` {`TemplateResult<1>`} - \n\n  * `linkAlignRight` {`boolean`} - label for copy link's button\n\n  * `disableLink` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button",
-      "attributes": [
-        {
-          "name": "closeIcon",
-          "description": "`closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\nProperty: closeIcon"
-        },
-        {
-          "name": "closeLabel",
-          "description": "`closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\nProperty: closeLabel"
-        },
-        {
-          "name": "copyMessage",
-          "description": "`copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\nProperty: copyMessage"
-        },
-        {
-          "name": "link-align-right",
-          "description": "`link-align-right` {`boolean`} - label for copy link's button\n\nProperty: linkAlignRight\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-link",
-          "description": "`disable-link` {`boolean`} - The relative-heading resource's UUID.\n\nProperty: disableLink\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "linkIcon",
-          "description": "`linkIcon` {`string`} - icon for copy link's button\n\nProperty: linkIcon\n\nDefault: link"
-        },
-        {
-          "name": "linkLabel",
-          "description": "`linkLabel` {`string`} - label for copy link's button\n\nProperty: linkLabel\n\nDefault: Get link"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

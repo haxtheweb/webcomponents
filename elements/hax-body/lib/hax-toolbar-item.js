@@ -129,6 +129,10 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
           :host(:focus-within) {
             z-index: var(--hax-ui-focus-z-index, 1001) !important;
           }
+          :host {
+            --simple-toolbar-button-width: 26px;
+            --simple-toolbar-button-height: 26px;
+          }
         `,
       ];
     }

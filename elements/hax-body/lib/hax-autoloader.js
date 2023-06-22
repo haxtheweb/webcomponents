@@ -88,7 +88,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
   processNewElements(e) {
     // when new nodes show up in the slots then fire the needed pieces
     let effectiveChildren = this.childNodes;
-    for (var i = 0; i < effectiveChildren.length; i++) {
+    for (let i = 0; i < effectiveChildren.length; i++) {
       // strip invalid tags / textnodes
       if (
         typeof effectiveChildren[i].tagName !== typeof undefined &&
@@ -210,17 +210,18 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   props.gizmo.handles = [];
                   props.settings.configure = [];
                   props.settings.advanced = [];
+                  props.settings.developer = [];
                   props = wiring.standardAdvancedProps(props);
                   props.saveOptions = {};
                   props.demoSchema = [];
                   // try and make this have SOME fields, again, really guessing here
-                  let tmpProps;
+                  let tmpProps = {};
                   // relatively cross library
                   if (customElements.get(name)) {
                     tmpProps = customElements.get(name).properties;
                   }
                   if (tmpProps) {
-                    for (var propName in tmpProps) {
+                    for (let propName in tmpProps) {
                       if (
                         tmpProps[propName].type &&
                         tmpProps[propName].type.name
@@ -257,7 +258,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     let tmpProps = document
                       .createElement(name)
                       .getAttributeNames();
-                    for (var i = 0; i < tmpProps.length; i++) {
+                    for (let i = 0; i < tmpProps.length; i++) {
                       props.settings.configure.push({
                         attribute: tmpProps[i],
                         title: tmpProps[i],

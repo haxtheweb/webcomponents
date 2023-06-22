@@ -100,13 +100,6 @@ export function cleanVideoSource(input) {
   ) {
     return input + "/embed";
   }
-  // copy and paste from the URL for sketchfab
-  else if (
-    input.indexOf("dailymotion.com") != -1 &&
-    input.indexOf("/embed") == -1
-  ) {
-    return input.replace("/video/", "/embed/video/");
-  }
   return input;
 }
 // wrap an element with another; super basic but makes it consistent across our apps
@@ -213,16 +206,22 @@ export function localStorageSet(name, newItem) {
 
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
-  var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  ); // fragment locator
-  return !!pattern.test(str);
+  let url;
+  try {
+    url = new URL(str);
+  } catch (e) {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  }
+  return url.protocol === "https:";
 }
 /**
  * Take an array of items and apply a map of values to generate a new
@@ -581,6 +580,11 @@ function stripMSWord(input) {
 
   // whitespace in reverse of the top case now that we've cleaned it up
   output = output.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
+  // target and remove hax specific things from output if they slipped through
+  output = output.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+  output = output.replace(/ class=""/gim, "");
+  output = output.replace(/ class="hax-active"/gim, "");
+  output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
   // wow do I hate contenteditable and the dom....
   // bold and italic are treated as if they are block elements in a paste scenario
   // 8. check for empty bad tags
@@ -685,8 +689,17 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
       }
       // special support for false boolean
       else if (node[property] === false) {
-        props[property] = node[property];
-      } else {
+        props[property] = false;
+      } 
+      else if (node[property] === true) {
+        props[property] = true;
+      }
+      else if (node[property] === 0) {
+        props[property] = 0;
+      }
+      else {
+        // unknown prop setting / ignored
+        //console.warn(node[property], property);
       }
     }
     for (var attribute in node.attributes) {
@@ -704,8 +717,14 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
       ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
-      } else {
+      }
+      else if (node.attributes[attribute].value == "0") {
+        props[node.attributes[attribute].name] =
+        node.attributes[attribute].value;
+      }
+      else {
         // note: debug here if experiencing attributes that won't bind
+        //console.warn(node.attributes[attribute].name, node.attributes[attribute].value);
       }
     }
   } else {
@@ -739,7 +758,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
     slotContent = node.innerText;
   }
   // special edge case for slot binding in primatives
-  if (tag === "a") {
+  if (tag === "a" || tag === "mark") {
     props.innerText = slotContent;
   } else if (
     tag === "p" ||
@@ -772,7 +791,7 @@ export const winEventsElement = function (SuperClass) {
         for (var eName in this.__winEvents) {
           window[`${status ? "add" : "remove"}EventListener`](
             eName,
-            this[this.__winEvents[eName]].bind(this)
+            this[this.__winEvents[eName]]
           );
         }
       }
@@ -783,6 +802,10 @@ export const winEventsElement = function (SuperClass) {
     connectedCallback() {
       if (super.connectedCallback) {
         super.connectedCallback();
+      }
+      // bind to this context prior to assignment so we can enable and disable accurately from window
+      for (var eName in this.__winEvents) {
+        this[this.__winEvents[eName]] = this[this.__winEvents[eName]].bind(this);
       }
       this.__applyWinEvents(true);
     }

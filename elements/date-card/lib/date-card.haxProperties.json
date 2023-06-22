@@ -3,15 +3,14 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Date card",
+    "title": "Date",
     "description": "Displays a calendar date with details",
     "icon": "hax:calendar",
     "color": "green",
-    "groups": ["Date"],
+    "tags": ["Other", "date", "place", "location", "evenet", "calendar"],
     "handles": [],
     "meta": {
-      "author": "McGarvelcuddy",
-      "owner": "elmsln"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

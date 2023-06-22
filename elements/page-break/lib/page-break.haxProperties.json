@@ -7,7 +7,7 @@
     "description": "Define a visual split between pages which CMSs can use to create pages.",
     "icon": "editor:format-page-break",
     "color": "grey",
-    "groups": ["Content", "CMS"],
+    "tags": ["Other"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
@@ -22,6 +22,60 @@
         "description": "Title seen in the theme / first heading",
         "inputMethod": "textfield"
       },
+      {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Indicates page context to users visually",
+        "inputMethod": "select",
+        "options": {
+          "": "-- none --",
+          "content": "Content",
+          "assessment": "Assessment",
+          "quiz": "Quiz",
+          "submission": "Submission",
+          "lesson": "Lesson",
+          "module": "Module",
+          "task": "Task",
+          "activity": "Activity",
+          "project": "Project",
+          "practice": "Practice",
+          "unit": "Unit",
+          "objectives": "Learning Objectives",
+          "connection": "Connection",
+          "knowledge": "Did You Know?",
+          "strategy": "Learning Strategy",
+          "discuss": "Discuss",
+          "listen": "Listen",
+          "make": "Make",
+          "observe": "Observe",
+          "present": "Present",
+          "reading": "Reading",
+          "reflect": "Reflect",
+          "research": "Research",
+          "watch": "Watch",
+          "write": "Write"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Comma separated list of tags",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "published",
+        "title": "Published",
+        "description": "Unpublished pages are not visible to end users",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "locked",
+        "title": "Lock page",
+        "description": "Lock / Unlock all elements in this page",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
       {
         "property": "slug",
         "title": "Path",
@@ -39,18 +93,14 @@
         "title": "Order",
         "description": "Order relative to other sibling pages",
         "inputMethod": "number"
-      },
+      }
+    ],
+    "developer": [
       {
-        "property": "published",
-        "title": "Published",
-        "description": "Unpublished pages are not visible to end users",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "locked",
-        "title": "Lock page",
-        "description": "Lock / Unlock all elements in this page",
-        "inputMethod": "boolean"
+        "property": "developerTheme",
+        "title": "Page theme",
+        "description": "Change the theme JUST on this page. Know why you are doing this!",
+        "inputMethod": "textfield"
       }
     ]
   },

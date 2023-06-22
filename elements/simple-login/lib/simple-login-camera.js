@@ -8,6 +8,7 @@ class SimpleLoginCamera extends HTMLElement {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
@@ -32,7 +33,12 @@ class SimpleLoginCamera extends HTMLElement {
     );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
     window.ESGlobalBridge.requestAvailability().load("msr", location);
-    window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));
+    window.addEventListener(
+      "es-bridge-msr-loaded",
+      this._msrLoaded.bind(this),
+      { signal: this.windowControllers.signal }
+    );
+
     this.template = document.createElement("template");
     this._shadow = this.attachShadow({ mode: "closed" });
     this.render();
@@ -42,8 +48,10 @@ class SimpleLoginCamera extends HTMLElement {
     this._pauseRecord = this._shadow.querySelector("button.pause-record");
     document.addEventListener(
       "DOMContentLoaded",
-      this.documentLoaded.bind(this)
+      this.documentLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     if (!this.hasAttribute("record")) {
       this._record.remove();
       this._pauseRecord.remove();
@@ -175,46 +183,51 @@ class SimpleLoginCamera extends HTMLElement {
     });
   }
   async _applyMSR() {
-    window.addEventListener("site-listing-video-activate", async () => {
-      try {
-        this._video.srcObject = await this._cameraStream();
-        window.stream = this._video.srcObject;
-        this._addVideoAtributes();
-        if (this.hasAttribute("record")) {
-          this.MediaStreamRecorder = new MediaStreamRecorder(
-            this._video.srcObject
-          );
-          // this.MediaStreamRecorder.mimeType = 'video/webm';
-          this.MediaStreamRecorder.ondataavailable = this._saveVideo.bind(this);
+    window.addEventListener(
+      "site-listing-video-activate",
+      async () => {
+        try {
+          this._video.srcObject = await this._cameraStream();
+          window.stream = this._video.srcObject;
+          this._addVideoAtributes();
+          if (this.hasAttribute("record")) {
+            this.MediaStreamRecorder = new MediaStreamRecorder(
+              this._video.srcObject
+            );
+            // this.MediaStreamRecorder.mimeType = 'video/webm';
+            this.MediaStreamRecorder.ondataavailable =
+              this._saveVideo.bind(this);
+          }
+          setTimeout(() => {
+            this.dispatchEvent(
+              new CustomEvent("simple-login-camera-icon-click", {
+                detail: this,
+                bubbles: true,
+                composed: true,
+              })
+            );
+          }, 100);
+          this._error.remove();
+        } catch (error) {
+          this._video.remove();
+          this._record.remove();
+          this._pauseRecord.remove();
+          if (error.name === "ConstraintNotSatisfiedError") {
+            this._error.innerText =
+              "The resolution is not supported by your device.";
+          } else if (error.name === "NotAllowedError") {
+            this._error.innerText =
+              "Permissions have not been granted to use your camera and " +
+              "microphone, you need to allow the page access to your devices in " +
+              "order for the demo to work.";
+          } else {
+            this._error.innerText = error.message;
+            throw Error(error);
+          }
         }
-        setTimeout(() => {
-          this.dispatchEvent(
-            new CustomEvent("simple-login-camera-icon-click", {
-              detail: this,
-              bubbles: true,
-              composed: true,
-            })
-          );
-        }, 100);
-        this._error.remove();
-      } catch (error) {
-        this._video.remove();
-        this._record.remove();
-        this._pauseRecord.remove();
-        if (error.name === "ConstraintNotSatisfiedError") {
-          this._error.innerText =
-            "The resolution is not supported by your device.";
-        } else if (error.name === "NotAllowedError") {
-          this._error.innerText =
-            "Permissions have not been granted to use your camera and " +
-            "microphone, you need to allow the page access to your devices in " +
-            "order for the demo to work.";
-        } else {
-          this._error.innerText = error.message;
-          throw Error(error);
-        }
-      }
-    });
+      },
+      { signal: this.windowControllers.signal }
+    );
   }
 
   connectedCallback() {
@@ -233,14 +246,7 @@ class SimpleLoginCamera extends HTMLElement {
   }
 
   disconnectedCallback() {
-    document.removeEventListener(
-      "DOMContentLoaded",
-      this.documentLoaded.bind(this)
-    );
-    window.removeEventListener(
-      "es-bridge-msr-loaded",
-      this._msrLoaded.bind(this)
-    );
+    this.windowControllers.abort();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

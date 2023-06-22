@@ -2,38 +2,25 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/super-daemon/lib/super-daemon-toast.js";
+
 /**
-  * `hal-9000`
-  * @element hal-9000
-  * `Robot assistant tag, hopefully not evil`
-  *
- 
-  * @demo demo/index.html
-  */
+ * `hal-9000`
+ * @element hal-9000
+ * `Robot assistant tag, hopefully not evil`
+ *
+ * @demo demo/index.html
+ */
 class Hal9000 extends LitElement {
-  //styles function
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-      `,
-    ];
-  }
-
-  // render function
-  render() {
-    return html` <slot></slot>`;
-  }
-
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
+      toast: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * Commands to listen for and take action on
        */
@@ -111,8 +98,10 @@ class Hal9000 extends LitElement {
    */
   constructor() {
     super();
+    this.toast = false;
+    this.windowControllers = new AbortController();
     this.commands = {};
-    this.respondsTo = "(hal)";
+    this.respondsTo = "(merlin)";
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
@@ -125,18 +114,26 @@ class Hal9000 extends LitElement {
     }`;
     window.addEventListener(
       "es-bridge-annyang-loaded",
-      this._annyangLoaded.bind(this)
+      this._annyangLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
-    if (typeof window.speechSynthesis !== "undefined") {
+    if (
+      typeof window.speechSynthesis !== "undefined" &&
+      (window.SpeechRecognition ||
+        window.webkitSpeechRecognition ||
+        window.mozSpeechRecognition ||
+        window.msSpeechRecognition ||
+        window.oSpeechRecognition)
+    ) {
       this.synth = window.speechSynthesis;
-      this.voices = this.synth.getVoices();
+      /*this.voices = this.synth.getVoices();
       for (var i = 0; i < this.voices.length; i++) {
         if (this.voices[i].default) {
           this.defaultVoice = this.voices[i].name;
         }
-      }
+      }*/
     }
   }
   /**
@@ -150,25 +147,80 @@ class Hal9000 extends LitElement {
    */
   addCommands(commands) {
     if (this.annyang) {
+      // ensure we keep registrations to a minimum
+      this.annyang.removeCommands();
+      if (commands["*anything"]) {
+        const anything = commands["*anything"];
+        delete commands["*anything"];
+        commands["*anything"] = anything;
+      }
       this.annyang.addCommands(commands);
     }
   }
   /**
    * And the word was good.
    */
-  speak(text) {
-    this.__text = text;
-    if (this.synth) {
-      this.utter = new SpeechSynthesisUtterance(this.__text);
-      this.utter.pitch = this.pitch;
-      this.utter.rate = this.rate;
-      this.utter.lang = this.language;
-      this.utter.voice = this.defaultVoice;
-      // THOU SPEAKITH
-      this.synth.speak(this.utter);
-    } else {
-      console.warn("I have no voice...");
-    }
+  speak(text, alwaysvisible = false, awaitingInput = true) {
+    return new Promise((resolve) => {
+      this.__text = text;
+      if (this.synth) {
+        this.utter = new SpeechSynthesisUtterance(this.__text);
+        this.utter.pitch = this.pitch;
+        this.utter.rate = this.rate;
+        this.utter.lang = this.language;
+        //this.utter.voice = this.defaultVoice;
+        if (window.HAXCMS) {
+          window.HAXCMS.instance.setCursor("hax:wizard-hat");
+          window.HAXCMS.instance.setFavicon("hax:wizard-hat");
+        }
+        // THOU SPEAKITH
+        this.synth.speak(this.utter);
+        if (this.toast) {
+          this.setToast(text, alwaysvisible, awaitingInput);
+        }
+        this.utter.onend = (event) => {
+          if (window.HAXCMS) {
+            window.HAXCMS.instance.resetCursor();
+            window.HAXCMS.instance.resetFavicon();
+          }
+          if (!alwaysvisible && !awaitingInput) {
+            window.dispatchEvent(
+              new CustomEvent("super-daemon-toast-hide", {
+                bubbles: true,
+                composed: true,
+                cancelable: false,
+                detail: false,
+              })
+            );
+          }
+          resolve(event);
+        };
+      } else {
+        resolve(false);
+      }
+    });
+  }
+  /**
+   * Send a toast message to match what is said. This is good for a11y
+   */
+  setToast(text, alwaysvisible = false, awaitingInput = true) {
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
+      new CustomEvent("super-daemon-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: text,
+          future: true,
+          merlin: true,
+          accentColor: "purple",
+          duration: 4000,
+          alwaysvisible: alwaysvisible,
+          awaitingMerlinInput: awaitingInput,
+        },
+      })
+    );
   }
   /**
    * Annyang library has been loaded globally so we can use it
@@ -255,8 +307,8 @@ class Hal9000 extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "commands") {
-        this._commandsChanged(this[propName], oldValue);
+      if (propName == "commands" && typeof oldValue !== typeof undefined) {
+        this._commandsChanged(this[propName]);
       }
       if (propName == "respondsTo") {
         this._respondsToChanged(this[propName], oldValue);
@@ -276,30 +328,10 @@ class Hal9000 extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-annyang-loaded",
-      this._annyangLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }
-
-// haxHooks() {
-//   return {
-//     haleditModeChanged: "haxeditModeChanged",
-//     halActiveElementChanged: "halActiveElementChanged",
-//   };
-// }
-
-// halActiveElementChanged(element, value) {
-//   if (value) {
-//     this._haxstate = value;
-//   }
-// }
-
-// haxeditModeChanged(value) {
-//   this._haxstate = value;
-// }
 
 // ensure we can generate a singleton
 customElements.define(Hal9000.tag, Hal9000);
@@ -308,6 +340,11 @@ window.Hal9000 = window.Hal9000 || {};
 
 window.Hal9000.requestAvailability = () => {
   if (!window.Hal9000.instance) {
-    window.Hal9000.instance = new Hal9000();
+    const hal = document.createElement("hal-9000");
+    document.body.appendChild(hal);
+    window.Hal9000.instance = hal;
   }
+  return window.Hal9000.instance;
 };
+
+export const HAL9000Instance = window.Hal9000.requestAvailability();

@@ -28,6 +28,7 @@ export const PouchDBElement = window.PouchDb.requestAvailability();
 class PouchDb extends HTMLElement {
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.type = "xapi";
     import("./lib/pouchdb.min.js").then(() => {
       this.db = new PouchDB(this.type);
@@ -46,11 +47,14 @@ class PouchDb extends HTMLElement {
   connectedCallback() {
     window.addEventListener(
       "user-engagement",
-      this.userEngagmentFunction.bind(this)
+      this.userEngagmentFunction.bind(this),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "pouch-db-get-data",
-      this.getDataFunction.bind(this)
+      this.getDataFunction.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
@@ -58,14 +62,7 @@ class PouchDb extends HTMLElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "user-engagement",
-      this.userEngagmentFunction.bind(this)
-    );
-    window.removeEventListener(
-      "pouch-db-get-data",
-      this.getDataFunction.bind(this)
-    );
+    this.windowControllers.abort();
   }
 
   userEngagmentFunction(e) {

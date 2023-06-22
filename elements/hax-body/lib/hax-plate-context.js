@@ -31,13 +31,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
-    this.tourName = "hax";
-    this.trayDetail = "content-edit";
-    this.trayStatus = "collapsed";
     this.t = {
       edit: "Edit",
       dragHandle: "Drag handle",
       moveUp: "Move up",
+      summonMerlin: "Summon Merlin",
       moveDown: "Move down",
       addColumn: "Add column",
       removeColumn: "Remove column",
@@ -58,7 +56,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       context: this,
       namespace: "hax",
     });
-    //this.onScreen = false;
     this.ceButtons = [];
     this.activeTagName = "";
     this.activeTagIcon = "hax:paragraph";
@@ -76,6 +73,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       css`
         :host {
           width: calc(100% - 2px);
+          min-width: 375px;
           align-items: stretch;
         }
         hax-toolbar::part(morebutton) {
@@ -118,8 +116,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           justify-content: center;
           border: 1px solid var(--rich-text-editor-border-color, #ddd);
           padding: 0;
-          border-width: 1px;
-          margin: -1px;
         }
         .group,
         .group > * {
@@ -147,6 +143,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         }
         .first-slot:not(:first-child) {
           border-top: 1px solid black;
+        }
+        hax-toolbar-menu,
+        hax-context-item {
+          line-height: 30px;
+        }
+        hax-context-item {
+          --simple-toolbar-button-width: 26px;
+          --simple-toolbar-button-height: 26px;
         }
       `,
     ];
@@ -231,7 +235,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-toolbar-menu
             action
             align-horizontal="left"
-            ?disabled="${this.viewSource || this.disableOps}"
+            ?disabled="${
+              this.viewSource ||
+              this.disableOps ||
+              ((!this.layoutParent || this.activeNode !== this.layoutElement) &&
+                !this.layoutElement)
+            }"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >
@@ -378,6 +387,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             </div>
           </hax-context-item>
         </div>
+        <div class="group">
+
         <hax-context-item
           action
           icon="delete"
@@ -423,9 +434,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
             event-name="hax-plate-remove-right"
-            ?hidden="${
-              !this.activeNode || HAXStore.isOriginalGridPlate(this.activeNode)
-            }"
+            ?hidden="${!this.activeNode}"
             id="rightremove"
             data-simple-tour-stop
             data-stop-title="label"
@@ -447,6 +456,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             ></hax-context-item>`;
           })}
           <slot name="secondary"></slot>
+        </div>
         </div>
         <div class="group">
           <hax-context-item
@@ -485,25 +495,15 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           ></hax-context-item>
           <slot name="more"></slot>
           <hax-context-item
-            icon="build"
+            icon="hax:wizard-hat"
             action
             align-horizontal="left"
             ?disabled="${
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
-            label="${this.t.edit}"
-            data-simple-tour-stop
-            data-stop-title="label"
-            event-name="content-edit"
-            toggles
-            ?toggled="${
-              this.trayDetail === "content-edit" &&
-              this.trayStatus !== "collapsed"
-            }"
+            label="${this.t.summonMerlin}"
+            event-name="super-daemon"
           >
-            <div slot="tour" data-stop-content>
-              Opens the Edit panel for more advanced settings.
-            </div>
           </hax-context-item>
         </div>
       </hax-toolbar>
@@ -511,7 +511,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   get disableTransform() {
-    return HAXStore.isTextElement(this.activeNode);// || !this.filteredBlocks || this.filteredBlocks.length < 1;
+    return HAXStore.isTextElement(this.activeNode); // || !this.filteredBlocks || this.filteredBlocks.length < 1;
   }
 
   /**
@@ -530,6 +530,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     let right = this.shadowRoot.querySelector("#right");
     let rightremove = this.shadowRoot.querySelector("#rightremove");
     // support for enabling or disabling
+    // @note this is a hacky way of evaluating this
     right.disabled = false;
     rightremove.disabled = false;
     if (active && active.tagName == "GRID-PLATE") {
@@ -612,8 +613,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (this.activeNode && this.activeNode.classList) {
         this._resetCEMenu();
       }
-      if (this.activeNode && this.getAttribute("on-screen")) {
-        this.__updatePlatePosition(this.activeNode);
+      // if active, and we are editing, then make suree plate ops match expectation
+      if (this.activeNode && toJS(HAXStore.editMode)) {
+        setTimeout(() => {
+          this.__updatePlatePosition(this.activeNode);
+        }, 0);
       }
     });
     autorun(() => {
@@ -672,7 +676,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
-/*
+      /*
 // this is a performance bottle neck just for disabling a button that is not often clicked
       if (this.activeNode) {
         // detect if this can be transformed into anything else
@@ -755,22 +759,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       sourceView: {
         type: Boolean,
-      },
-      /**
-       * is hax tray collapsed, side-panel, or full-panel
-       */
-      trayDetail: {
-        type: String,
-        reflect: true,
-        attribute: "tray-detail",
-      },
-      /**
-       * is hax tray collapsed, side-panel, or full-panel
-       */
-      trayStatus: {
-        type: String,
-        reflect: true,
-        attribute: "tray-status",
       },
     };
   }

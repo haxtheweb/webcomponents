@@ -1,0 +1,44 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Page flag",
+    "description": "An editorial note for authors to work on the page",
+    "icon": "lrn:quiz",
+    "color": "grey",
+    "tags": ["Authoring", "workflow", "edit", "note", "flag", "page"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "The accent color for the page flag",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "The label for the page flag",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors", "opened"]
+  },
+  "demoSchema": [
+    {
+      "tag": "page-flag",
+      "properties": {
+        "accentColor": "blue",
+        "opened": true
+      },
+      "content": ""
+    }
+  ]
+}

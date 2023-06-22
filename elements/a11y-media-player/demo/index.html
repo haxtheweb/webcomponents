@@ -6,7 +6,7 @@
     <title>A11yMediaPlayer: a11y-media-player Demo</title>
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import "../a11y-media-player.js";
@@ -46,7 +46,6 @@
           <a11y-media-player id="example" accent-color="pink" linkable hide-transcript>
             <video crossorigin="anonymous" controls>
               <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
               <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
               <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
@@ -55,40 +54,12 @@
         </template>
       </demo-snippet>
     
-      <h2>Video example, dark, with no timestamps, no interactive transcript, and no search feature</h2>
-      <demo-snippet>
-        <template>
-          <a11y-media-player accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="St.Clair Interview" disable-interactive disable-search hide-timestamps>
-            <video crossorigin="anonymous" controls>
-              <source src="//personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
-              <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
-            </video>
-          </a11y-media-player>
-        </template>
-      </demo-snippet>
-
       <h2>Video example, no preloading</h2>
       <demo-snippet>
         <template>
           <a11y-media-player accent-color="brown" preload="none">
             <video crossorigin="anonymous" controls>
               <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">   
-            </video>
-          </a11y-media-player>
-        </template>
-      </demo-snippet>
-    
-      <h2>Video example, auto preloading</h2>
-      <demo-snippet>
-        <template>
-          <a11y-media-player 
-            accent-color="light-green" 
-            dark thumbnail-src="./samples/stclair.jpg" 
-            preload="auto">
-            <video crossorigin="anonymous" controls>
-              <source src="//personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
-              <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
             </video>
           </a11y-media-player>
         </template>
@@ -101,7 +72,6 @@
             <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px">
               <video crossorigin="anonymous" controls>
                 <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-                <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
                 <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
                 <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
                 <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
@@ -116,7 +86,6 @@
             <a11y-media-player id="height-demo" accent-color="yellow" dark linkable width="480px" height="270px">
               <video crossorigin="anonymous" controls>
                 <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-                <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
                 <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
                 <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
                 <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
@@ -132,7 +101,6 @@
           <a11y-media-player id="height-demo" accent-color="yellow" dark linkable height="270px">
             <video crossorigin="anonymous" controls>
               <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
               <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
               <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
@@ -147,7 +115,6 @@
           <a11y-media-player id="spanish" accent-color="orange" dark dark-transcript lang="es">
             <video crossorigin="anonymous" controls>
               <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
               <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
               <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">

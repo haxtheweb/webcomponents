@@ -223,7 +223,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .pull-right {
           float: right;
         }
-        :host([is-logged-in]) .pull-right {
+        :host([is-logged-in]) .site-body {
           top: 48px;
         }
         .btn-container {
@@ -628,6 +628,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
+    window.AbsolutePositionStateManager.requestAvailability().scrollTarget =
+      this.HAXCMSThemeSettings.scrollTarget;
+
     this._bootstrapLink = this._generateBootstrapLink();
   }
 

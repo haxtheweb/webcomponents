@@ -12,6 +12,10 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import {
+  learningComponentTypes,
+  iconFromPageType,
+} from "@lrnwebcomponents/course-design/lib/learning-component.js";
 enableServices(["haxcms", "core"]);
 
 /**
@@ -33,10 +37,23 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           display: block;
           overflow: auto;
           height: 85vh;
+          padding: 16px;
         }
         :host([hide-results*="link-status-false"]) .link-status-false,
         :host([hide-results*="link-status-true"]) .link-status-true {
           display: none;
+        }
+        .selector-wrapper {
+          margin-bottom: 32px;
+          font-size: 24px;
+          line-height: 24px;
+        }
+        .selector-wrapper select,
+        .selector-wrapper button {
+          font-size: 20px;
+          line-height: 24px;
+          margin: 0 8px;
+          padding: 4px;
         }
         ul {
           list-style: none;
@@ -49,16 +66,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         a11y-tabs::part(tab) {
           font-size: 24px;
         }
-        a11y-tabs::part(tab-insights) {
+        a11y-tabs[active-tab="insights"]::part(tab-insights) {
           color: var(--simple-colors-default-theme-purple-8);
         }
-        a11y-tabs::part(tab-linkchecker) {
+        a11y-tabs[active-tab="linkchecker"]::part(tab-linkchecker) {
           color: var(--simple-colors-default-theme-orange-8);
         }
-        a11y-tabs::part(tab-mediabrowser) {
+        a11y-tabs[active-tab="mediabrowser"]::part(tab-mediabrowser) {
           color: var(--simple-colors-default-theme-red-8);
         }
-        a11y-tabs::part(tab-contentbrowser) {
+        a11y-tabs[active-tab="contentbrowser"]::part(tab-contentbrowser) {
           color: var(--simple-colors-default-theme-blue-8);
         }
         a11y-tab#insights loading-indicator {
@@ -76,6 +93,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         a11y-tab#contentbrowser loading-indicator {
           --loading-indicator-color: var(--simple-colors-default-theme-blue-8);
+        }
+        simple-fields-field[type="checkbox"],
+        simple-fields-field[type="select"] {
+          display: inline-block;
+          margin: 16px;
         }
         simple-icon {
           --simple-icon-height: 24px;
@@ -200,6 +222,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             title: "",
             hasVideo: false,
             hasH5P: false,
+            hasAuthorNotes: false,
             hasLinks: false,
             hasImages: false,
             hasPlaceholders: false,
@@ -207,6 +230,20 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           };
           this.shadowRoot.querySelector("#schema").value = this.filters;
           this.shadowRoot.querySelector("#schema").fields = [
+            {
+              property: "title",
+              title: "Title",
+              inputMethod: "textfield",
+            },
+            {
+              property: "pageType",
+              title: "Page type",
+              inputMethod: "select",
+              options: {
+                "": "",
+                ...learningComponentTypes,
+              },
+            },
             {
               property: "sort",
               title: "Sort by",
@@ -218,9 +255,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               },
             },
             {
-              property: "title",
-              title: "Title",
-              inputMethod: "textfield",
+              property: "hasAuthorNotes",
+              title: "Author notes",
+              description: "Includes content editor notes",
+              inputMethod: "boolean",
             },
             {
               property: "hasVideo",
@@ -418,8 +456,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.filters = {
       title: val.title ? val.title : "",
       sort: val.sort,
+      pageType: val.pageType,
       hasVideo: val.hasVideo,
       hasH5P: val.hasH5P,
+      hasAuthorNotes: val.hasAuthorNotes,
       hasPlaceholders: val.hasPlaceholders,
       hasSiteRemoteContent: val.hasSiteRemoteContent,
       hasLinks: val.hasLinks,
@@ -433,16 +473,28 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         if (this.filters.hasH5P === true && item.h5p === 0) {
           return false;
         }
+        if (this.filters.hasAuthorNotes === true && item.authorNotes === 0) {
+          return false;
+        }
         if (this.filters.hasPlaceholders === true && item.placeholders === 0) {
           return false;
         }
-        if (this.filters.hasSiteRemoteContent === true && item.siteremotecontent === 0) {
+        if (
+          this.filters.hasSiteRemoteContent === true &&
+          item.siteremotecontent === 0
+        ) {
           return false;
         }
         if (this.filters.hasLinks === true && item.links === 0) {
           return false;
         }
         if (this.filters.hasImages === true && item.images === 0) {
+          return false;
+        }
+        // skip type if not set or require exact match
+        if (this.filters.pageType == "" || !this.filters.pageType) {
+          return true;
+        } else if (item.pageType != this.filters.pageType) {
           return false;
         }
         // no filtering, skip
@@ -533,13 +585,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     return html`
       ${this.pageSelector()}
-      <button
-        @click="${this.refreshData}"
-        icon="refresh"
-        ?disabled="${this.loading}"
-      >
-        ${this.t.updateInsights}
-      </button>
       <a11y-tabs
         id="tabs"
         full-width
@@ -569,6 +614,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                       this.t.pages
                     }</p>
               <p>${data.objectives} ${this.t.learningObjectives},
+              ${data.authorNotes} ${this.t.authorNotes},
               ${data.specialTags} ${this.t.specialElements},
               ${data.dataTables} ${this.t.dataTables},
               ${data.headings} ${this.t.headings}</p>
@@ -623,10 +669,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 ? html`
                     <li>
                       <lesson-highlight icon="editable-table:numbers">
-                        <p slot="title">
-                          ${data.readability.gradeLevel}
-                          ${this.t.gradeReadingLevel}
-                        </p>
+                        <p slot="title">${data.readability.gradeLevel}</p>
+                        <p>Dale-Chall ${this.t.basedGradeReadingLevel}</p>
                       </lesson-highlight>
                     </li>
                     <li>
@@ -756,7 +800,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                           class="title-link"
                                           href="${item.slug}"
                                           @click="${this.closeModal}"
-                                          >${item.title}</a
+                                          >${item.pageType
+                                            ? html`
+                                                <simple-icon-lite
+                                                  title="${item.pageType}"
+                                                  icon="${iconFromPageType(
+                                                    item.pageType
+                                                  )}"
+                                                ></simple-icon-lite>
+                                              `
+                                            : ``}
+                                          ${item.title}</a
                                         >
                                       </div>
                                       <div slot="content">
@@ -784,6 +838,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 ${this.t.learningObjectives}
                                               </li>`
                                             : ``}
+                                          ${item.authorNotes > 0
+                                            ? html`<li>
+                                                <simple-icon
+                                                  icon="hax:figure"
+                                                ></simple-icon
+                                                >${item.authorNotes}
+                                                ${this.t.authorNotes}
+                                              </li>`
+                                            : ``}
                                           ${item.videos > 0
                                             ? html`<li>
                                                 <simple-icon
@@ -800,7 +863,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 >${item.h5p} H5P
                                               </li>`
                                             : ``}
-                                          
                                           ${item.placeholders > 0
                                             ? html`<li>
                                                 <simple-icon
@@ -1144,6 +1206,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       externalLinks: "External links",
       pages: "Pages",
       videos: "videos",
+      authorNotes: "Author notes",
       placeholders: "Placeholders",
       video: "Video",
       audio: "Audio",
@@ -1153,7 +1216,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       images: "Images",
       dataTables: "Data tables",
       ofReading: "of reading",
-      gradeReadingLevel: "grade reading level",
+      basedGradeReadingLevel: "based grade reading level",
       words: "Words",
       longWords: "long words",
       linkReport: "Link report",
@@ -1228,7 +1291,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         value: el.id,
       });
     });
-    return html`<label style="font-weight:bold;" for="selector"
+    return html`<div class="selector-wrapper">
+      <label style="font-weight:bold;" for="selector"
         >${this.t.pageToProvideInsightsAbout}</label
       >:<select id="selector">
         ${items.map(
@@ -1241,7 +1305,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             </option>
           `
         )}
-      </select>`;
+      </select>
+      <button
+        @click="${this.refreshData}"
+        icon="refresh"
+        ?disabled="${this.loading}"
+      >
+        ${this.t.updateInsights}
+      </button>
+    </div>`;
   }
 }
 customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);

@@ -1,0 +1,41 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Sorting Questoin",
+    "description": "Sort options in the right order to get a score!",
+    "icon": "credit-card",
+    "color": "blue",
+    "tags": ["Instructional", "self check", "assessment", "sort"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question Header.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Options",
+        "description": "Options to sort",
+        "required": true,
+        "slotWrapper": "sorting-option",
+        "allowedSlotWrappers": ["sorting-option", "p"]
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "sorting-question",
+      "properties": {
+        "question": "Sorting these in numerical order"
+      },
+      "content": "<sorting-option>1</sorting-option><sorting-option>2</sorting-option><sorting-option>3</sorting-option>"
+    }
+  ]
+}

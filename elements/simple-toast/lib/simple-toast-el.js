@@ -27,41 +27,73 @@ class SimpleToastEl extends SimpleColors {
         }
         @-webkit-keyframes fadein {
           from {
-            bottom: 0;
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
           }
           to {
+            display: flex;
             bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
           }
         }
         @keyframes fadein {
           from {
-            bottom: 0;
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
           }
           to {
+            display: flex;
             bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
           }
         }
         @-webkit-keyframes fadeout {
           from {
+            display: flex;
             bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
           }
           to {
-            bottom: 0;
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
           }
         }
         @keyframes fadeout {
           from {
+            display: flex;
             bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
           }
           to {
-            bottom: 0;
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
+            opacity: 0;
+          }
+        }
+        @-webkit-keyframes forcedfadeout {
+          from {
+            display: flex;
+            bottom: var(--simple-toast-bottom, 40px);
+            opacity: 1;
+          }
+          to {
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
+            opacity: 0;
+          }
+        }
+        @keyframes forcedfadeout {
+          from {
+            display: flex;
+            bottom: var(--simple-toast-bottom, 40px);
+            opacity: 1;
+          }
+          to {
+            display: flex;
+            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
           }
         }
@@ -73,21 +105,24 @@ class SimpleToastEl extends SimpleColors {
     return {
       ...super.properties,
       text: { type: String },
+      alwaysvisible: { type: Boolean },
       duration: { type: Number },
-      opened: { type: Boolean },
+      opened: { type: Boolean, reflect: true },
     };
   }
 
+  _onAnimationEnd(e) {
+    if (e.animationName == "fadeout" || e.animationName == "forcedfadeout") {
+      this.hide();
+    }
+  }
   constructor() {
     super();
     this.text = "";
+    this.alwaysvisible = false;
     this.duration = 3000;
     this.opened = false;
-    this.addEventListener("animationend", (e) => {
-      if (e.animationName == "fadeout") {
-        this.opened = false;
-      }
-    });
+    this.addEventListener("animationend", this._onAnimationEnd);
   }
 
   updated(changedProperties) {
@@ -105,12 +140,24 @@ class SimpleToastEl extends SimpleColors {
         if (this[propName]) {
           this.show(this.text);
         } else {
-          this.hide();
+          this.style.animation = "none";
+          setTimeout(() => {
+            if (!this.alwaysvisible && !this.awaitingMerlinInput) {
+              this.style.animation =
+                "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
+            } else {
+              this.style.animation = "fadein 0.3s";
+            }
+          }, 600);
         }
       }
       if (propName === "duration" && this[propName]) {
-        this.style.animation =
-          "fadein 0.2s, fadeout 0.2s " + this[propName] / 1000 + "s";
+        if (!this.alwaysvisible && !this.awaitingMerlinInput) {
+          this.style.animation =
+            "fadein 0.3s, fadeout 0.6s " + this[propName] / 1000 + "s";
+        } else {
+          this.style.animation = "fadein 0.3s";
+        }
       }
     });
   }
@@ -129,6 +176,7 @@ class SimpleToastEl extends SimpleColors {
   }
   hide() {
     this.classList.remove("show");
+    this.opened = false;
   }
   show(text = "") {
     this.text = text;

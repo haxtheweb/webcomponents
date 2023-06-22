@@ -9,7 +9,7 @@
     "description": "A small designed heading",
     "icon": "editor:format-quote",
     "color": "blue",
-    "groups": ["content", "education"],
+    "tags": ["Instructional", "design", "pedagogy", "presentation", "action"],
     "meta": {
       "author": "Buttercups Training Ltd"
     }

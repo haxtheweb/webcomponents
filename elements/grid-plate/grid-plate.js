@@ -196,6 +196,14 @@ class GridPlate extends LitElement {
         .column.not-shown {
           min-height: unset;
         }
+        :host([data-hax-ray])
+          .column
+          ::slotted([contenteditable][data-hax-ray]:empty)::before {
+          content: attr(data-hax-ray);
+          opacity: 0.2;
+          transition: 0.2s opacity ease-in-out;
+          margin: 0;
+        }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin, 15px);
           padding: var(--grid-plate-item-padding, 15px);
@@ -248,13 +256,13 @@ class GridPlate extends LitElement {
             1px solid var(--hax-ui-color-faded, #444)
           );
         }
-        :host([data-hax-ray]) ::slotted(.hax-active) {
+        :host([data-hax-ray]) ::slotted([data-hax-active]) {
           border: var(
             --hax-body-active-outline,
             1px solid var(--hax-ui-color-focus, #000)
           );
         }
-        :host([data-hax-ray]) ::slotted(.hax-active:hover) {
+        :host([data-hax-ray]) ::slotted([data-hax-active]:hover) {
           border: var(
             --hax-body-active-drag-outline,
             1px solid var(--hax-ui-color-accent, #009dc7)
@@ -444,11 +452,19 @@ class GridPlate extends LitElement {
       canEditSource: true,
       contentEditable: undefined,
       gizmo: {
-        title: "Grid layout",
+        title: "Column layout",
         description: "Simple card in a cool retro design",
         icon: "hax:3-3-3-3",
         color: "grey",
-        groups: ["Layout"],
+        tags: [
+          "Layout",
+          "content",
+          "grid",
+          "column",
+          "row",
+          "responsive",
+          "gridplate",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -523,7 +539,8 @@ class GridPlate extends LitElement {
           properties: {
             disableResponsive: true,
           },
-          content: "",
+          content:
+            '<p slot="col-1">Column one</p><p slot="col-2">Column two</p>',
         },
       ],
     };

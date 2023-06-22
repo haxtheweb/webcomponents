@@ -222,6 +222,7 @@ class PlaceHolder extends SimpleColors {
   constructor() {
     super();
     this.text = "";
+    this.iconFromType = "editor:format-align-left";
     this.type = "text";
     this.dragOver = false;
     this.directions = "Double click or drag and drop file to replace";
@@ -280,7 +281,18 @@ class PlaceHolder extends SimpleColors {
           "A place holder that can be converted into the media type that's been selected",
         icon: "hax:placeholder-image",
         color: "grey",
-        groups: ["Placeholder", "Content"],
+        tags: [
+          "Authoring",
+          "development",
+          "authoring",
+          "media",
+          "image",
+          "video",
+          "audio",
+          "document",
+          "math",
+          "text",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -308,18 +320,6 @@ class PlaceHolder extends SimpleColors {
             description: "Identify the place holder desired in greater detail",
             inputMethod: "textfield",
           },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Useful if used for communicating with team members",
-            inputMethod: "colorpicker",
-          },
-          {
-            property: "dark",
-            title: "Invert colors",
-            description: "Useful if used for communicating with team members",
-            inputMethod: "boolean",
-          },
         ],
         advanced: [],
       },
@@ -331,11 +331,11 @@ class PlaceHolder extends SimpleColors {
         {
           tag: "place-holder",
           properties: {
-            type: "image"
+            type: "image",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
 }

@@ -105,7 +105,7 @@ import "./lib/a11y-media-youtube.js";
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
- class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
+class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   //styles function
   static get styles() {
     return [
@@ -962,7 +962,8 @@ import "./lib/a11y-media-youtube.js";
                     ?hidden=${!this.isYoutube}
                   >
                   </a11y-media-youtube>
-                ` : ``}
+                `
+              : ``}
             ${Object.keys(this.captionCues || []).length === 0 ||
             !this.showCustomCaptions
               ? html``
@@ -1023,7 +1024,9 @@ import "./lib/a11y-media-youtube.js";
               label="${this._getLocal(this.localization, "rewind", "label")}"
               ?disabled="${this.disableSeek || this.currentTime <= 0}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => { this.rewind() }}"
+              @click="${(e) => {
+                this.rewind();
+              }}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
@@ -1034,7 +1037,9 @@ import "./lib/a11y-media-youtube.js";
               ?disabled="${this.disableSeek ||
               this.currentTime >= this.duration}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => {this.forward()}}"
+              @click="${(e) => {
+                this.forward();
+              }}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
@@ -1067,7 +1072,9 @@ import "./lib/a11y-media-youtube.js";
                   this.muted ? "unmute" : "mute",
                   "label"
                 )}"
-                @click="${(e) => {this.toggleMute()}}"
+                @click="${(e) => {
+                  this.toggleMute();
+                }}"
               ></a11y-media-button>
               <simple-range-input
                 id="volume"
@@ -1449,7 +1456,7 @@ import "./lib/a11y-media-youtube.js";
   static get properties() {
     return {
       ...super.properties,
-      __playerReady: { type: Boolean},
+      __playerReady: { type: Boolean },
       /**
        * Allow this media to play concurrently with other a11y-media-players?
        * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
@@ -1977,7 +1984,11 @@ import "./lib/a11y-media-youtube.js";
   get captionsPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "captions", "off");
-    Object.keys(this.loadedTracks && this.loadedTracks.textTracks ? this.loadedTracks.textTracks : {}).forEach((key) => {
+    Object.keys(
+      this.loadedTracks && this.loadedTracks.textTracks
+        ? this.loadedTracks.textTracks
+        : {}
+    ).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -2443,7 +2454,11 @@ import "./lib/a11y-media-youtube.js";
   get transcriptPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "transcript", "off");
-    Object.keys(this.loadedTracks && this.loadedTracks.textTracks ? this.loadedTracks.textTracks : {}).forEach((key) => {
+    Object.keys(
+      this.loadedTracks && this.loadedTracks.textTracks
+        ? this.loadedTracks.textTracks
+        : {}
+    ).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -2829,7 +2844,7 @@ import "./lib/a11y-media-youtube.js";
    */
   restart() {
     this.seek(0);
-    this.play();      
+    this.play();
     /**
      * Fires when media retarts
      * @event restart

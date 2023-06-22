@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "spotify-embed",
+      "description": "`spotify-embed`\n`embed spotify playlists`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `playlistid` {`string`} - \n\n  * `type` {`string`} - \n\n  * `editing` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
+        },
+        {
+          "name": "theme",
+          "description": "`theme` {`string`} - \n\nProperty: theme\n\nDefault: null"
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - \n\nProperty: size\n\nDefault: normal"
+        },
+        {
+          "name": "editing",
+          "description": "`editing` {`boolean`} - \n\nProperty: editing\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

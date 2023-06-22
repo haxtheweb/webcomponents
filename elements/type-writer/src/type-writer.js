@@ -107,7 +107,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         description: "typewritter effect",
         icon: "icons:android",
         color: "green",
-        groups: ["Writer"],
+        tags: ["Other", "interactive", "fancy", "Writer", "type"],
         handles: [],
         meta: {
           author: "HAXTheWeb",

@@ -13,6 +13,8 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@lrnwebcomponents/replace-tag/lib/PerformanceDetect.js";
+import { iconFromPageType } from "@lrnwebcomponents/course-design/lib/learning-component.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
@@ -20,6 +22,7 @@ class Store {
     this.evaluatebadDevice();
     this.location = null;
     this.jwt = null;
+    this.version = "0.0.0";
     this.soundStatus = localStorageGet("app-hax-soundStatus", true);
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
@@ -31,6 +34,9 @@ class Store {
       "haxcms-site-editor-ui-main-menu": [],
       "haxcms-site-editor-ui-topbar-character-button": [],
     };
+    fetch(new URL("../../package.json", import.meta.url))
+      .then((response) => response.json())
+      .then((obj) => (this.version = obj.version));
     this.appReady = false;
     this.editMode = false;
     this.manifest = null;
@@ -59,6 +65,7 @@ class Store {
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up
       themeElement: observable, // theme element
+      version: observable, // version of haxcms FRONTEND as per package.json
       routerManifest: computed, // router mixed in manifest w/ routes / paths
       siteTitle: computed,
       isLoggedIn: computed, // simple boolean for state so we can style based on logged in
@@ -70,6 +77,7 @@ class Store {
       activeManifestIndex: computed, // active array index, used for pagination
       activeManifestIndexCounter: computed, // active array index counter, used for pagination
       activeTitle: computed, // active page title
+      activeTags: computed, // active page tags
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
       ancestorItem: computed, // active page ancestor
@@ -147,12 +155,17 @@ class Store {
           case "coin2":
           case "hit":
           case "success":
+          case "error":
+            if (sound == "error") {
+              sound = "hit";
+            }
             this.audio = new Audio(
               new URL(
                 `../../../app-hax/lib/assets/sounds/${sound}.mp3`,
                 import.meta.url
               ).href
             );
+            this.audio.volume = 0.5;
             this.audio.play();
             break;
           default:
@@ -162,6 +175,7 @@ class Store {
                 import.meta.url
               ).href
             );
+            this.audio.volume = 0.5;
             this.audio.play();
             console.warn(`${sound} is not a valid sound file yet`);
             break;
@@ -401,6 +415,9 @@ class Store {
         let metadata = i.metadata;
         let location = i.location;
         let slug = i.slug;
+        if (metadata && metadata.pageType) {
+          i.metadata.icon = iconFromPageType(metadata.pageType);
+        }
         return Object.assign({}, i, {
           parentLocation: parentLocation,
           parentSlug: parentSlug,
@@ -584,6 +601,19 @@ class Store {
     return "";
   }
   /**
+   * shortcut for active page title
+   */
+  get activeTags() {
+    if (
+      this.activeItem &&
+      this.activeItem.metadata &&
+      this.activeItem.metadata.tags
+    ) {
+      return this.activeItem.metadata.tags;
+    }
+    return null;
+  }
+  /**
    * shortcut for active page parent title
    */
   get parentTitle() {
@@ -725,6 +755,7 @@ class Store {
     }
     return this.manifest;
   }
+
   /**
    * Add an item
    */
@@ -911,6 +942,10 @@ class Store {
 export const store = new Store();
 // register globally so we can make sure there is only one
 window.HAXCMS = window.HAXCMS || {};
+// developer command to force theme to change for testing
+window.HAXCMS.setTheme = function (theme) {
+  window.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
+};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
@@ -979,6 +1014,15 @@ class HAXCMSSiteStore extends HTMLElement {
         document.title = store.activeTitle;
       }
     });
+    autorun(() => {
+      if (store.appReady) {
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) {
+          this.faviconSiteDefault = favicon.href;
+          this.faviconInstance = favicon;
+        }
+      }
+    });
     /**
      * When editMode changes notify HAXeditor.
      */
@@ -1001,16 +1045,6 @@ class HAXCMSSiteStore extends HTMLElement {
         window.HaxStore.requestAvailability().editMode = editMode;
         window.HaxStore.requestAvailability().toastShowEventName =
           "haxcms-toast-show";
-        // @todo hack to keep voice controls active if enabled
-        if (
-          window.HaxStore.requestAvailability().globalPreferences
-            .haxVoiceCommands &&
-          window.HaxStore.requestAvailability().__hal
-        ) {
-          setTimeout(() => {
-            window.HaxStore.requestAvailability().__hal.auto = true;
-          }, 10);
-        }
       }
     });
   }
@@ -1020,6 +1054,35 @@ class HAXCMSSiteStore extends HTMLElement {
   disconnectedCallback() {
     this.store.themeStyleElement.remove();
     this.store.themeStyleElement = document.createElement("style");
+  }
+  // short cut to revert to the default favicon
+  resetFavicon() {
+    this.setFavicon();
+  }
+  // set the favicon to something else
+  setFavicon(icon = null, isIcon = true) {
+    if (!icon) {
+      icon = this.faviconSiteDefault;
+    } else if (isIcon) {
+      icon = SimpleIconsetStore.getIcon(icon);
+    }
+    if (this.faviconInstance) {
+      this.faviconInstance.setAttribute("href", icon);
+    }
+  }
+  resetCursor() {
+    this.setCursor();
+  }
+  // set the cursor to something else
+  setCursor(icon = null, isIcon = true) {
+    if (!icon) {
+      document.body.style.removeProperty("cursor");
+    } else {
+      if (isIcon) {
+        icon = SimpleIconsetStore.getIcon(icon);
+      }
+      document.body.style.cursor = `url("${icon}") 16 16, pointer`;
+    }
   }
   /**
    * Try to get context of what backend is powering this

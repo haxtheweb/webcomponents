@@ -13,9 +13,14 @@ class Store {
     this.evaluateBadDevice();
     this.location = null;
     this.token = null;
+    this.version = "0.0.0";
     this.items = null;
+    this.itemFiles = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
+    fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
+      .then((response) => response.json())
+      .then((obj) => (this.version = obj.version));
     this.appSettings = window.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {
@@ -85,7 +90,7 @@ class Store {
         step: 2,
         name: "step-2",
         label: "Structure",
-        statement: "How is this organized?",
+        statement: "How is the :structure organized?",
         title: "Step 2: Structure",
       },
       {
@@ -103,7 +108,7 @@ class Store {
         step: 4,
         name: "step-4",
         label: "Name",
-        statement: "What do you want to call your :structure?",
+        statement: "What do you want to call your site?",
         title: "Step 4: Name",
       },
       {
@@ -192,6 +197,8 @@ class Store {
       site: observable, // information about the site being created
       newSitePromiseList: observable,
       items: observable, // site items / structure from a docx micro if option selected
+      itemFiles: observable, // files related to the items to be imported from another site format
+      version: observable, // version of haxcms FRONTEND as per package.json
       // user related data
       jwt: observable, // JSON web token
       token: observable, // XSS prevention token
@@ -311,7 +318,7 @@ class Store {
   // centralize toast messages
   toast(msg, duration = 3000, extras = {}) {
     window.dispatchEvent(
-      new CustomEvent("app-hax-toast-show", {
+      new CustomEvent("haxcms-toast-show", {
         bubbles: true,
         cancelable: true,
         composed: true,

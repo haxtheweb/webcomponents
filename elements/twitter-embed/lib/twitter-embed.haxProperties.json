@@ -1,13 +1,13 @@
 {
-  "canScale": true,
-  "canPosition": true,
+  "canScale": false,
+  "canPosition": false,
   "canEditSource": true,
   "gizmo": {
     "title": "Twitter embed",
     "description": "Embed a tweet from twitter in context",
-    "icon": "hax:meme",
+    "icon": "hax:twitter",
     "color": "blue",
-    "groups": ["Social Media"],
+    "tags": ["Other", "social media", "twitter", "embed", "tweet"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

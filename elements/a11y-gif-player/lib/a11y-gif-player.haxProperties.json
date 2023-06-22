@@ -3,18 +3,33 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Accessible GIF",
-    "description": "Makes animated GIFs accessible.",
+    "title": "GIF",
+    "description": "Make animated GIFs accessible.",
     "icon": "gif",
     "color": "grey",
-    "groups": ["Images", "Media"],
+    "tags": [
+      "Images",
+      "player",
+      "gif",
+      "media",
+      "a11y",
+      "accessibility",
+      "animation",
+      "image"
+    ],
     "handles": [
+      {
+        "type": "gif",
+        "type_exclusive": true,
+        "source": "src",
+        "source2": "srcWithoutAnimation",
+        "alt": "alt"
+      },
       {
         "type": "image",
         "source": "src",
         "source2": "srcWithoutAnimation",
-        "alt": "alt",
-        "ariaDescribedby": "describedBy"
+        "alt": "alt"
       }
     ],
     "meta": {
@@ -33,6 +48,16 @@
         "required": true
       },
       {
+        "property": "alt",
+        "title": "Alt Text",
+        "description": "Alternative text for the image.",
+        "inputMethod": "alt",
+        "icon": "accessibility",
+        "required": true
+      }
+    ],
+    "advanced": [
+      {
         "property": "srcWithoutAnimation",
         "title": "Still Image",
         "description": "The URL to a still image version of your GIF.",
@@ -42,28 +67,15 @@
         "required": true
       },
       {
-        "property": "alt",
-        "title": "Alt Text",
-        "description": "Alternative text for the image.",
-        "inputMethod": "alt",
-        "icon": "accessibility",
-        "required": true
-      },
-      {
         "property": "longdesc",
         "title": "Long Description",
-        "description": "Long descriptions of the GOF for accessibiility",
+        "description": "Long descriptions of the GIF for accessibiility",
         "inputMethod": "textarea"
       }
-    ],
-    "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-decsribedby",
-        "description": "Space-separated id list for long descriptions that appear elsewhere",
-        "inputMethod": "textfield"
-      }
     ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["element-visible"]
   },
   "demoSchema": [
     {
@@ -71,9 +83,8 @@
       "properties": {
         "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
         "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
-        "srcWithoutAnimation": "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
-        "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.",
-        "style": "max-width:400px"
+        "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
+        "elementVisible": true
       }
     }
   ]

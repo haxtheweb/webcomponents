@@ -299,7 +299,7 @@ class HaxElementListSelector extends LitElement {
               break;
             case "haxcore-search-tags":
               data = data.filter((item) => {
-                if (item.schema.gizmo.groups.includes(filters[key])) {
+                if (item.schema.gizmo.tags.includes(filters[key])) {
                   return true;
                 }
                 return false;

@@ -88,13 +88,6 @@ class CmsHax extends LitElement {
         attribute: "offset-margin",
       },
       /**
-       * Hide preferences button
-       */
-      hidePreferencesButton: {
-        type: Boolean,
-        attribute: "hide-preferences-button",
-      },
-      /**
        * Direction to elementAlign the hax edit panel
        */
       elementAlign: {
@@ -211,13 +204,7 @@ class CmsHax extends LitElement {
   /**
    * Set certain data bound values to the store once it's ready
    */
-  _noticeTagChanges(
-    allowedTags,
-    hidePanelOps,
-    offsetMargin,
-    hidePreferencesButton,
-    elementAlign
-  ) {
+  _noticeTagChanges(allowedTags, hidePanelOps, offsetMargin, elementAlign) {
     if (HAXStore.ready) {
       // double check because this can cause issues
       if (allowedTags) {
@@ -227,7 +214,6 @@ class CmsHax extends LitElement {
       setTimeout(() => {
         HAXStore.haxTray.hidePanelOps = hidePanelOps;
         HAXStore.haxTray.offsetMargin = offsetMargin;
-        HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
         HAXStore.elementAlign = elementAlign;
         setTimeout(() => {
           // NOW we have the data imported
@@ -249,25 +235,16 @@ class CmsHax extends LitElement {
         this.allowedTags,
         this.hidePanelOps,
         this.offsetMargin,
-        this.hidePreferencesButton,
         this.elementAlign
       );
       this.__applyMO();
-      window.removeEventListener(
-        "hax-store-ready",
-        this._storeReady.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersReady.abort();
     }, 0);
   }
   _appstoreLoaded(e) {
     setTimeout(() => {
       this.ready = true;
-      window.removeEventListener(
-        "hax-store-app-store-loaded",
-        this._appstoreLoaded.bind(this),
-        { once: true, passive: true }
-      );
+      this.windowControllersLoaded.abort();
     }, 0);
   }
   /**
@@ -275,24 +252,35 @@ class CmsHax extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
+    this.windowControllersReady = new AbortController();
+    this.windowControllersLoaded = new AbortController();
+
     this.ready = false;
     window.addEventListener("hax-store-ready", this._storeReady.bind(this), {
       once: true,
       passive: true,
+      signal: this.windowControllersReady.signal,
     });
+
     window.addEventListener(
       "hax-store-app-store-loaded",
       this._appstoreLoaded.bind(this),
-      { once: true, passive: true }
+      { once: true, passive: true, signal: this.windowControllersLoaded.signal }
     );
-    window.addEventListener("hax-save-body-value", this._saveFired.bind(this));
-    window.addEventListener("hax-cancel", this._cancelFired.bind(this));
+    window.addEventListener("hax-save-body-value", this._saveFired.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener("hax-cancel", this._cancelFired.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     this.__lock = false;
     this.endPoint = null;
     this.openDefault = false;
     this.hidePanelOps = false;
-    this.hidePreferencesButton = false;
-    this.elementAlign = "right";
+    this.elementAlign = "left";
     this.method = "PUT";
     this.syncBody = false;
     this.bodyValue = "";
@@ -327,7 +315,6 @@ class CmsHax extends LitElement {
           "allowedTags",
           "hidePanelOps",
           "offsetMargin",
-          "hidePreferencesButton",
           "elementAlign",
         ].includes(propName)
       ) {
@@ -335,7 +322,6 @@ class CmsHax extends LitElement {
           this.allowedTags,
           this.hidePanelOps,
           this.offsetMargin,
-          this.hidePreferencesButton,
           this.elementAlign
         );
       }
@@ -349,6 +335,7 @@ class CmsHax extends LitElement {
       this._observer.disconnect();
       this._observer = null;
     }
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 

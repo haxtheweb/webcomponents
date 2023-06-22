@@ -11,17 +11,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "simple-progress",
-      "description": "`simple-progress`\n`a simple progress slider bar`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `template` - ",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

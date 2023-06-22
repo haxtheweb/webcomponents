@@ -1,0 +1,67 @@
+{
+  "name": "@lrnwebcomponents/spotify-embed",
+  "wcfactory": {
+    "className": "SpotifyEmbed",
+    "customElementClass": "LitElement",
+    "elementName": "spotify-embed",
+    "generator-wcfactory-version": "0.13.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/spotify-embed.css",
+      "scss": "src/spotify-embed.scss",
+      "html": "src/spotify-embed.html",
+      "js": "src/spotify-embed.js",
+      "properties": "src/spotify-embed-properties.json",
+      "hax": "src/spotify-embed-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "7.0.5",
+  "description": "embed spotify playlists",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "spotify-embed.js",
+  "module": "spotify-embed.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium firefox",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"{*,lib/**}.js\" --format vscode --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit": "^2.7.5"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^4.0.0",
+    "@open-wc/testing": "3.2.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/dev-server": "0.2.3",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "concurrently": "8.2.0",
+    "wct-browser-legacy": "1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "7087ebc5fd7f631a2a78ad40af08384933139929"
+}

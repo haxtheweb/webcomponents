@@ -1,0 +1,75 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Inline audio",
+    "description": "Play an audio file in context of material to suplement the content",
+    "icon": "av:volume-up",
+    "color": "blue",
+    "tags": [
+      "Audio / Video",
+      "media",
+      "mp3",
+      "sound",
+      "audio",
+      "inline",
+      "enhancement"
+    ],
+    "handles": [
+      {
+        "type": "inline",
+        "text": "term"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "MP3 or file location",
+        "inputMethod": "haxupload",
+        "noCamera": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Changes the accent color of the card",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "shiny",
+        "title": "Shiny",
+        "description": "This makes the background area a lighter version of the accent instead of grey",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Makes the card dark mode",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["icon", "playing", "canPlay", "aria"]
+  },
+  "demoSchema": [
+    {
+      "tag": "inline-audio",
+      "properties": {
+        "source": "https://inline-audio-mocha.vercel.app/assets/whopper.mp3",
+        "accentColor": "orange"
+      },
+      "content": "Hear it yourself"
+    }
+  ]
+}

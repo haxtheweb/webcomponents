@@ -3,12 +3,7 @@
   "tags": [
     {
       "name": "exif-data",
-      "description": "`exif-data`\n`obtain exif data from slotted elements`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `nodeData` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
-    },
-    {
-      "name": "exif-data",
-      "description": "`exif-data`\n`obtain exif data from slotted elements`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `nodeData` {`never[]`} - \n\n  * `template` - ",
+      "description": "`exif-data`\n`obtain exif data from slotted elements`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `windowControllers` - \n\n  * `nodeData` {`never[]`} - \n\n  * `template` - ",
       "attributes": []
     }
   ],

@@ -14,6 +14,10 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
     return "haxcms-darkmode-toggle";
   }
 
+  toggle() {
+    this.checked = !this.checked;
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);

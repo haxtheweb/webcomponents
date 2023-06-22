@@ -10,16 +10,6 @@
           "description": "`amount` {`number`} - \n\nProperty: amount\n\nDefault: 0"
         }
       ]
-    },
-    {
-      "name": "b-r",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`\n\nAttributes:\n\n  * `amount` {`number`} - \n\nProperties:\n\n  * `amount` {`number`} - ",
-      "attributes": [
-        {
-          "name": "amount",
-          "description": "`amount` {`number`} - \n\nProperty: amount\n\nDefault: 0"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

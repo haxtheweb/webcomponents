@@ -448,6 +448,24 @@ class SimpleFields extends SimpleFieldsLite {
                   },
                 },
               },
+              collapse: {
+                defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js",
+                  element: "a11y-collapse-group",
+                  noWrap: true,
+                  child: {
+                    import: "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+                    element: "a11y-collapse",
+                    noWrap: true,
+                    labelSlot: "heading",
+                    descriptionSlot: "",
+                  },
+                  attributes: {
+                    accordion: "accordion",
+                  },
+                },
+              },
               fields: {
                 defaultSettings: {
                   element: "simple-fields",

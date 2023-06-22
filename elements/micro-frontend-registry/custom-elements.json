@@ -2,63 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "docx-example",
-      "description": "Attributes:\n\n  * `html` {`boolean`} - \n\n  * `pdf` {`boolean`} - \n\n  * `ascii` {`boolean`} - \n\n  * `screenshot` {`boolean`} - \n\nProperties:\n\n  * `html` {`boolean`} - \n\n  * `pdf` {`boolean`} - \n\n  * `ascii` {`boolean`} - \n\n  * `screenshot` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "html",
-          "description": "`html` {`boolean`} - \n\nProperty: html\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "pdf",
-          "description": "`pdf` {`boolean`} - \n\nProperty: pdf\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ascii",
-          "description": "`ascii` {`boolean`} - \n\nProperty: ascii\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "screenshot",
-          "description": "`screenshot` {`boolean`} - \n\nProperty: screenshot\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "mf-htmlmd-example",
-      "description": "Attributes:\n\n  * `img` {`boolean`} - \n\n  * `ddg` {`boolean`} - \n\n  * `haxcms` {`boolean`} - \n\n  * `mdhtml` {`boolean`} - \n\nProperties:\n\n  * `img` {`boolean`} - \n\n  * `ddg` {`boolean`} - \n\n  * `haxcms` {`boolean`} - \n\n  * `mdhtml` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "img",
-          "description": "`img` {`boolean`} - \n\nProperty: img\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ddg",
-          "description": "`ddg` {`boolean`} - \n\nProperty: ddg\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "haxcms",
-          "description": "`haxcms` {`boolean`} - \n\nProperty: haxcms\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "mdhtml",
-          "description": "`mdhtml` {`boolean`} - \n\nProperty: mdhtml\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "micro-frontend-registry",
-      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`\n\nProperties:\n\n  * `list` {`never[]`} - \n\n  * `MicroFrontend` - ",
-      "attributes": []
-    },
-    {
       "name": "micro-frontend-registry",
       "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`\n\nProperties:\n\n  * `list` {`never[]`} - \n\n  * `MicroFrontend` - ",
       "attributes": []

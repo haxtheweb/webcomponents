@@ -479,33 +479,6 @@
           "description": "`item-changed` {`CustomEvent<any>`} - Handles changes in selected item by firing an event to the gallery"
         }
       ]
-    },
-    {
-      "name": "lrndesign-gallery",
-      "attributes": []
-    },
-    {
-      "name": "lrndesign-gallery",
-      "description": "`lrndesign-gallery`\ndisplays images as a carousel or grid with the ability to zoom\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; sm: number; md: number; lg: number; xl: number; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `responsive-size` {`string`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `responsiveSize` {`string`} - \n\n  * `editMode` {`boolean`} - \n\n  * `aspect` {`number`} - gets aspect ratio of images\n\n  * `extra` {`boolean`} - gets aspect ratio of an image and\ndetermine if aspect ratio is extra wide\n\n  * `items` - gets items array\n\n  * `observer` - mutation observer for tabs\n\n  * `sources` {`never[]`} - \n\n  * `sizing` {`string`} - ",
-      "attributes": [
-        {
-          "name": "id",
-          "description": "`id` {`string`} - \n\nProperty: id"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - \n\nProperty: responsiveSize"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; sm: number; md: number; lg: number; xl: number; }>`} - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

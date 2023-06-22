@@ -1,46 +1,50 @@
 # &lt;flash-card&gt;
 
 Card
-> Flash card that can be flipped to show definition
+> self check for a card that has a definition on the back
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
-/* In an existing module / web component */
+/* In an existing JS module / web component */
 import '@lrnwebcomponents/flash-card/flash-card.js';
-/* At top of an application */
-<script type="module" src="node_modules/@lrnwebcomponents/flash-card/flash-card.js"></script>
+/* At top of an application with build routine */
+<script type="module" src="@lrnwebcomponents/flash-card/flash-card.js"></script>
 /* Alternatives for top of application */
 <script type="module">
   import '@lrnwebcomponents/flash-card/flash-card.js';
-
-  import {FlashCard} from '@lrnwebcomponents/flash-card/flash-card.js';
+  // imperative form
+  import {FlashCard} from '@lrnwebcomponents/flash-card';
+  // if you don't have a build routine and need to reference directly
+  import './node_modules/@lrnwebcomponents/flash-card/flash-card.js';
 </script>
+// via unpkg CDN (good for testing)
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/flash-card/flash-card.js"></script>
 ```
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn start
+yarn start
 ```
 
 ## Test
 
 ```bash
-$ yarn run test
+yarn run test
 ```
 
 ## Build
 Builds ensure that wcfactory can correctly compile your web component project to
 work on the maximum number of browsers possible.
 ```bash
-$ yarn run build
+yarn run build
 ```
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`

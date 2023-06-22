@@ -4,18 +4,18 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: sans-serif;
-      --hax-ui-font-size: 16px;
-      --hax-ui-font-size-sm: 13px;
-      --hax-ui-font-size-xs: 12px;
-      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 16px));
-      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 16px));
+      --hax-ui-font-size: 14px;
+      --hax-ui-font-size-sm: 12px;
+      --hax-ui-font-size-xs: 11px;
+      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 14px));
+      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 14px));
     }
   `,
 ];
 export const HaxUiSpacing = [
   css`
     body {
-      --hax-tray-width: 300px;
+      --hax-tray-width: 350px;
       --hax-tray-menubar-min-width: 44px;
       --hax-tray-menubar-min-height: 34px;
       --hax-ui-spacing-xs: 4px;
@@ -56,9 +56,9 @@ export const HaxUiColors = [
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
-      --hax-ui-disabled-color: #555;
+      --hax-ui-disabled-color: #666;
 
-      --hax-ui-background-color: #333;
+      --hax-ui-background-color: #111;
       --hax-ui-background-color-secondary: #111;
       --hax-ui-background-color-faded: #222;
 
@@ -79,7 +79,7 @@ export const HaxUiColors = [
         --hax-ui-color-focus: #fff;
         --hax-ui-color-faded: #c5c3be;
 
-        --hax-ui-background-color: #333;
+        --hax-ui-background-color: #111;
         --hax-ui-background-color-secondary: #111;
         --hax-ui-background-color-faded: #222;
 
@@ -422,8 +422,7 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
-    simple-fields-tabs::part(tab-disabled),
-    hax-preferences-dialog::part(haxlink) {
+    simple-fields-tabs::part(tab-disabled) {
       border: 1px solid var(--hax-ui-border-color);
       text-decoration: none;
       border-radius: 3px;
@@ -437,16 +436,6 @@ export const HaxFields = [
     }
     simple-fields-tabs::part(tab-active) {
       color: var(--hax-ui-color-accent);
-    }
-    hax-preferences-dialog::part(haxlink) {
-      display: block;
-      padding: var(--hax-ui-spacing-lg);
-    }
-    hax-preferences-dialog::part(haxlink):hover,
-    hax-preferences-dialog::part(haxlink):focus {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
     }
     simple-fields-tabs::part(tab-disabled) {
       opacity: 0.5;
@@ -473,42 +462,32 @@ export const HaxTrayDetail = [
   css`
     #tray-detail {
       font-family: var(--hax-ui-font-family);
-      --hax-tray-detail-title-font-size: var(--hax-ui-font-size);
+      --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl);
       --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg);
       --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size);
       --hax-tray-detail-heading-text-transform: capitalize;
       --hax-tray-detail-heading-font-weight: normal;
     }
-    #toggle-tray-size {
-      color: var(--hax-ui-background-color);
-      background-color: var(--hax-ui-color-accent);
-      outline: 1px solid var(--hax-ui-color-accent);
-      --simple-icon-button-border: 0px solid transparent;
-      --simple-icon-button-border-radius: var(--hax-ui-border-radius);
-      width: 24px;
-      height: 24px;
-      padding: 0;
-    }
-    #toggle-tray-size:hover,
-    #toggle-tray-size:focus-within {
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color-accent);
-      border-color: var(--hax-ui-color-accent);
-    }
     #tray-detail h5,
     #tray-detail h6 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
-      margin: var(--hax-ui-spacing-lg) 0 var(--hax-ui-spacing-xs);
+      margin: var(--hax-ui-spacing) 0 var(--hax-ui-spacing-xs);
       color: var(--hax-ui-color-faded);
     }
     #tray-detail h4 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
       color: var(--hax-ui-background-color);
       font-size: var(--hax-tray-detail-title-font-size);
-      font-weight: normal;
+      font-weight: bold;
       margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      font-family: var(--hax-ui-font-family);
       padding: 0;
+      height: 64px;
+      overflow: hidden;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      line-height: 64px;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

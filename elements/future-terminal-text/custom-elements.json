@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "future-terminal-text",
+      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: green"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "red",
+          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fadein",
+          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch",
+          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch-max",
+          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
+        },
+        {
+          "name": "glitch-duration",
+          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+        }
+      ]
+    },
+    {
+      "name": "future-terminal-text",
+      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
+      "attributes": [
+        {
+          "name": "red",
+          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fadein",
+          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch",
+          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch-max",
+          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
+        },
+        {
+          "name": "glitch-duration",
+          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+        }
+      ]
+    },
+    {
+      "name": "future-terminal-text-lite",
+      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
+      "attributes": [
+        {
+          "name": "red",
+          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fadein",
+          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch",
+          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "glitch-max",
+          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
+        },
+        {
+          "name": "glitch-duration",
+          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

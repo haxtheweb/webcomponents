@@ -1,24 +1,34 @@
 {
+  "type": "grid",
   "canScale": true,
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Testimonial",
-    "description": "A person saying a nice thing about us",
+    "title": "Blockquote",
+    "description": "A quote well designed with an optional image",
     "icon": "editor:format-quote",
     "color": "orange",
-    "groups": ["Content", "Presentation"],
+    "tags": [
+      "Layout",
+      "content",
+      "presentation",
+      "blockquote",
+      "quote",
+      "testimonial",
+      "person",
+      "design",
+      "image"
+    ],
     "handles": [
       {
         "type": "image",
         "source": "image",
         "title": "name",
-        "caption": "position",
-        "ariaDescribedby": "describedBy"
+        "caption": "position"
       }
     ],
     "meta": {
-      "author": "EberlyODL / LRNWebComponents"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {
@@ -57,16 +67,17 @@
         "description": "List the position and job title",
         "inputMethod": "textfield",
         "icon": "icons:work"
+      },
+      {
+        "slot": "",
+        "title": "Quote",
+        "description": "Quote by the person giving the testimonial",
+        "inputMethod": "textfield",
+        "slotWrapper": "span",
+        "allowedSlotWrappers": ["span"]
       }
     ],
-    "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-describedby",
-        "description": "Space-separated list of IDs for elements that describe the image.",
-        "inputMethod": "textfield"
-      }
-    ]
+    "advanced": []
   },
   "demoSchema": [
     {

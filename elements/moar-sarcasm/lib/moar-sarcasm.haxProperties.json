@@ -1,0 +1,49 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Sarcasm",
+    "description": "Presenting text in a trolly way",
+    "icon": "hax:case-sensitive-alt",
+    "color": "purple",
+    "tags": ["Other", "troll", "sarcasm", "text", "funny"],
+    "handles": [
+      {
+        "type": "text",
+        "say": "innerText"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "inline": [],
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Text",
+        "description": "Text to make sarcastic",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["a11y"]
+  },
+  "demoSchema": [
+    {
+      "tag": "moar-sarcasm",
+      "content": "",
+      "properties": {
+        "say": "I am so cool"
+      }
+    }
+  ]
+}

@@ -28,6 +28,7 @@ const HAXCMSTheme = function (SuperClass) {
     // as well as those wanting a custom integration methodology
     constructor() {
       super();
+      this.windowControllers = new AbortController();
       // a bucket for settings that can be for reusable
       // functionality across themes yet they might want
       // to opt in / out
@@ -262,21 +263,34 @@ class HAXCMSThemeWiring {
    * connect the theme and see if we have an authoring experience to inject correctly
    */
   connect(element, injector) {
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
+    this.windowControllers = new AbortController();
     window.addEventListener(
       "haxcms-active-item-changed",
-      this._activeItemUpdate.bind(element)
+      this._activeItemUpdate.bind(element),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "haxcms-edit-mode-changed",
-      this._globalEditChanged.bind(element)
+      this._globalEditChanged.bind(element),
+      { signal: this.windowControllers.signal }
     );
+
     window.addEventListener(
       "haxcms-trigger-update",
-      this._triggerUpdate.bind(element)
+      this._triggerUpdate.bind(element),
+      { signal: this.windowControllers.signal }
     );
+
     // inject the tools to allow for an authoring experience
     // ensuring they are loaded into the correct theme
-    store.cmsSiteEditorAvailability();
+    if (this.cmsSiteEditorInstance) {
+      document.body.appendChild(this.cmsSiteEditorInstance);
+    }
+    this.cmsSiteEditorInstance = store.cmsSiteEditorAvailability();
     store.cmsSiteEditor.instance.appElement = element;
     store.cmsSiteEditor.instance.appendTarget = injector;
     store.cmsSiteEditor.instance.appendTarget.appendChild(
@@ -287,20 +301,11 @@ class HAXCMSThemeWiring {
    * detatch element events from whats passed in
    */
   disconnect(element) {
-    window.removeEventListener(
-      "haxcms-active-item-changed",
-      this._activeItemUpdate.bind(element)
-    );
-    window.removeEventListener(
-      "haxcms-edit-mode-changed",
-      this._globalEditChanged.bind(element)
-    );
-    window.removeEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdate.bind(element)
-    );
+    this.windowControllers.abort();
     // need to unplug this so that the new theme can pick it up.
-    document.body.appendChild(store.cmsSiteEditorAvailability());
+    if (this.cmsSiteEditorInstance) {
+      document.body.appendChild(this.cmsSiteEditorInstance);
+    }
   }
   /**
    * Global edit state changed

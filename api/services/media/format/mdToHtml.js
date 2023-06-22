@@ -27,6 +27,7 @@ export default async function handler(req, res) {
     if (body.raw) {
       headers.type = 'text/html';
     }
+    
     stdResponse(res, await mdClass.render(md), headers);
   }
 }

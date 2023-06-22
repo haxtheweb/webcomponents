@@ -1,0 +1,396 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "super-daemon-row",
+      "description": "Events:\n\n  * `super-daemon-row-selected` {`CustomEvent<this>`} - \n\n  * `super-daemon-close` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `mini` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `image` {`string`} - \n\n  * `text-character` {`string`} - \n\n  * `event-name` {`string`} - \n\n  * `more` {`boolean`} - \n\n  * `showDetails` {`boolean`} - \n\n  * `value` - \n\n  * `tags` {`any[]`} - \n\n  * `active` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `image` {`string`} - \n\n  * `textCharacter` {`string`} - \n\n  * `eventName` {`string`} - \n\n  * `more` {`boolean`} - \n\n  * `showDetails` {`boolean`} - \n\n  * `value` - \n\n  * `tags` {`any[]`} - \n\n  * `shadowRootOptions` - \n\n  * `active` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "mini",
+          "description": "`mini` {`boolean`} - \n\nProperty: mini",
+          "valueSet": "v"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
+        },
+        {
+          "name": "path",
+          "description": "`path` {`string`} - \n\nProperty: path\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
+        },
+        {
+          "name": "text-character",
+          "description": "`text-character` {`string`} - \n\nProperty: textCharacter\n\nDefault: null"
+        },
+        {
+          "name": "event-name",
+          "description": "`event-name` {`string`} - \n\nProperty: eventName\n\nDefault: null"
+        },
+        {
+          "name": "more",
+          "description": "`more` {`boolean`} - \n\nProperty: more\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "showDetails",
+          "description": "`showDetails` {`boolean`} - \n\nProperty: showDetails\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` - \n\nProperty: value\n\nDefault: [object Object]"
+        },
+        {
+          "name": "tags",
+          "description": "`tags` {`any[]`} - \n\nProperty: tags\n\nDefault: "
+        },
+        {
+          "name": "active",
+          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsuper-daemon-row-selected",
+          "description": "`super-daemon-row-selected` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onsuper-daemon-close",
+          "description": "`super-daemon-close` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "super-daemon-toast",
+      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `dark-mode` {`boolean`} - \n\n  * `awaiting-merlin-input` {`boolean`} - \n\n  * `merlin` {`boolean`} - \n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `darkMode` {`boolean`} - \n\n  * `awaitingMerlinInput` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `merlin` {`boolean`} - \n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `future` {`boolean`} - \n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `fire` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `text` {`string`} - Plain text based message to display\n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "dark-mode",
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "awaiting-merlin-input",
+          "description": "`awaiting-merlin-input` {`boolean`} - \n\nProperty: awaitingMerlinInput\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "merlin",
+          "description": "`merlin` {`boolean`} - \n\nProperty: merlin\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "class-style",
+          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle\n\nDefault: "
+        },
+        {
+          "name": "future",
+          "description": "`future` {`boolean`} - \n\nProperty: future\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "event-callback",
+          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback\n\nDefault: null"
+        },
+        {
+          "name": "fire",
+          "description": "`fire` {`boolean`} - \n\nProperty: fire\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hat",
+          "description": "`hat` {`string`} - \n\nProperty: hat\n\nDefault: coffee"
+        },
+        {
+          "name": "walking",
+          "description": "`walking` {`boolean`} - \n\nProperty: walking\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text\n\nDefault: Saved"
+        },
+        {
+          "name": "alwaysvisible",
+          "description": "`alwaysvisible` {`boolean`} - \n\nProperty: alwaysvisible\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "duration",
+          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration\n\nDefault: 3000"
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "super-daemon-ui",
+      "description": "Events:\n\n  * `super-daemon-command-context-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `like-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `super-daemon-run-program` {`CustomEvent<boolean>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `voice-search` {`boolean`} - \n\n  * `icon-accent` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `listening-for-input` {`boolean`} - \n\n  * `program-search` {`string`} - \n\n  * `command-context` {`string`} - \n\n  * `program-name` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `questionTags` {`any[]`} - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `voiceSearch` {`boolean`} - \n\n  * `iconAccent` {`string`} - \n\n  * `_defaultTextEmpty` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `listeningForInput` {`boolean`} - \n\n  * `programSearch` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `programName` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `icon` {`string`} - \n\n  * `questionTags` {`any[]`} - \n\n  * `items` {`never[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "voice-search",
+          "description": "`voice-search` {`boolean`} - \n\nProperty: voiceSearch\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon-accent",
+          "description": "`icon-accent` {`string`} - \n\nProperty: iconAccent\n\nDefault: purple"
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "mini",
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "listening-for-input",
+          "description": "`listening-for-input` {`boolean`} - \n\nProperty: listeningForInput\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "program-search",
+          "description": "`program-search` {`string`} - \n\nProperty: programSearch\n\nDefault: "
+        },
+        {
+          "name": "command-context",
+          "description": "`command-context` {`string`} - \n\nProperty: commandContext\n\nDefault: *"
+        },
+        {
+          "name": "program-name",
+          "description": "`program-name` {`string`} - \n\nProperty: programName\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: hardware:keyboard-return"
+        },
+        {
+          "name": "questionTags",
+          "description": "`questionTags` {`any[]`} - \n\nProperty: questionTags\n\nDefault: "
+        },
+        {
+          "name": "items",
+          "description": "`items` {`never[]`} - These are the items to be filtered\n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "like",
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
+        },
+        {
+          "name": "where",
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: index"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
+        },
+        {
+          "name": "multi-match",
+          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsuper-daemon-command-context-changed",
+          "description": "`super-daemon-command-context-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onlike-changed",
+          "description": "`like-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onsuper-daemon-run-program",
+          "description": "`super-daemon-run-program` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "super-daemon",
+      "description": "`super-daemon`\n``\n\nEvents:\n\n  * `click` {`MouseEvent`} - \n\n  * `super-daemon-toast-hide` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `key1` {`string`} - \n\n  * `program` {`string`} - \n\n  * `voiceCommands` - \n\n  * `programTarget` - \n\n  * `santa-mode` {`boolean`} - \n\n  * `activeNode` - \n\n  * `voice-search` {`boolean`} - \n\n  * `listening-for-input` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `context` {`any[]`} - \n\n  * `opened` {`boolean`} - \n\n  * `questionTags` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `loading` {`boolean`} - \n\n  * `like` {`string`} - \n\n  * `mini` {`boolean`} - \n\n  * `programSearch` {`string`} - \n\n  * `allItems` {`any[]`} - \n\n  * `programResults` {`any[]`} - \n\n  * `programName` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `key2` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `key1` {`string`} - \n\n  * `program` {`string`} - \n\n  * `toastInstance` - \n\n  * `activeSelection` - \n\n  * `voiceCommands` - \n\n  * `programTarget` - \n\n  * `activeRange` - \n\n  * `santaMode` {`boolean`} - \n\n  * `activeNode` - \n\n  * `voiceSearch` {`boolean`} - \n\n  * `listeningForInput` {`boolean`} - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `hal` - \n\n  * `windowControllers` - \n\n  * `windowControllers2` - \n\n  * `value` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `context` {`any[]`} - \n\n  * `opened` {`boolean`} - \n\n  * `questionTags` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `loading` {`boolean`} - \n\n  * `like` {`string`} - \n\n  * `mini` {`boolean`} - \n\n  * `_programValues` - \n\n  * `programSearch` {`string`} - \n\n  * `allItems` {`any[]`} - \n\n  * `programResults` {`any[]`} - \n\n  * `programName` {`string`} - \n\n  * `commandContext` {`string`} - \n\n  * `key2` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "key1",
+          "description": "`key1` {`string`} - \n\nProperty: key1"
+        },
+        {
+          "name": "program",
+          "description": "`program` {`string`} - \n\nProperty: program"
+        },
+        {
+          "name": "voiceCommands",
+          "description": "`voiceCommands` - \n\nProperty: voiceCommands\n\nDefault: [object Object]"
+        },
+        {
+          "name": "programTarget",
+          "description": "`programTarget` - \n\nProperty: programTarget\n\nDefault: null"
+        },
+        {
+          "name": "santa-mode",
+          "description": "`santa-mode` {`boolean`} - \n\nProperty: santaMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeNode",
+          "description": "`activeNode` - \n\nProperty: activeNode\n\nDefault: null"
+        },
+        {
+          "name": "voice-search",
+          "description": "`voice-search` {`boolean`} - \n\nProperty: voiceSearch\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "listening-for-input",
+          "description": "`listening-for-input` {`boolean`} - \n\nProperty: listeningForInput\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: hardware:keyboard-return"
+        },
+        {
+          "name": "context",
+          "description": "`context` {`any[]`} - \n\nProperty: context\n\nDefault: "
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "questionTags",
+          "description": "`questionTags` {`any[]`} - \n\nProperty: questionTags\n\nDefault: "
+        },
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "like",
+          "description": "`like` {`string`} - \n\nProperty: like\n\nDefault: "
+        },
+        {
+          "name": "mini",
+          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "programSearch",
+          "description": "`programSearch` {`string`} - \n\nProperty: programSearch\n\nDefault: "
+        },
+        {
+          "name": "allItems",
+          "description": "`allItems` {`any[]`} - \n\nProperty: allItems\n\nDefault: "
+        },
+        {
+          "name": "programResults",
+          "description": "`programResults` {`any[]`} - \n\nProperty: programResults\n\nDefault: "
+        },
+        {
+          "name": "programName",
+          "description": "`programName` {`string`} - \n\nProperty: programName\n\nDefault: null"
+        },
+        {
+          "name": "commandContext",
+          "description": "`commandContext` {`string`} - \n\nProperty: commandContext\n\nDefault: *"
+        },
+        {
+          "name": "key2",
+          "description": "`key2` {`string`} - \n\nProperty: key2\n\nDefault: Shift"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`MouseEvent`} - "
+        },
+        {
+          "name": "onsuper-daemon-toast-hide",
+          "description": "`super-daemon-toast-hide` {`CustomEvent<boolean>`} - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

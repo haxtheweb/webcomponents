@@ -3,11 +3,11 @@
   "canPosition": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Side-Note",
+    "title": "Side Note",
     "description": "A .",
     "icon": "icons:bookmark",
     "color": "blue",
-    "groups": [""],
+    "tags": ["Instructional", "layout", "content"],
     "meta": {
       "author": "HAXTheWeb core team"
     }

@@ -119,7 +119,7 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
                   </h4>
                 </div>
 
-                <!-- descripton -->
+                <!-- description -->
                 <div class="sqaureDescription">
                   <slot name="description">${this.description}</slot>
                 </div>

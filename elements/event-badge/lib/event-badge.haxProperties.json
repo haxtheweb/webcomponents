@@ -1,0 +1,111 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Event Badge",
+    "description": "Badge",
+    "icon": "credit-card",
+    "color": "blue",
+    "tags": ["Other", "event", "badge", "conference", "meeting", "fun"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV Image",
+        "description": "Image shown on the TV",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "validationType": "url"
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Placed in bottom right corner of badge",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "validationType": "url"
+      },
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Top area on the card",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "name",
+        "title": "Name",
+        "description": "Name on badge",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "position",
+        "title": "Position",
+        "description": "Position of person",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "organization",
+        "title": "Organization",
+        "description": "Organization person works for",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV color",
+        "description": "Select the color for the TV.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Background / text primary color",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knob color",
+        "description": "Knobs on the TV",
+        "inputMethod": "colorpicker"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Make card sepia.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "blackwhite",
+        "title": "Black and white",
+        "description": "Make card black and white.",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "event-badge",
+      "properties": {
+        "title": "IST 256",
+        "name": "BTO PRO",
+        "position": "EdTechJoker",
+        "organization": "HaxTheWeb",
+        "image": "https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif",
+        "tvcolor": "blue",
+        "accentColor": "red",
+        "knobcolor": "purple",
+        "logo": "https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png",
+        "sepia": false,
+        "blackwhite": false
+      },
+      "content": ""
+    }
+  ]
+}

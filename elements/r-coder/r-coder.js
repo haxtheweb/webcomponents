@@ -60,7 +60,7 @@ class RCoder extends LitElement {
         description: "R coder interface for the r-service backend.",
         icon: "icons:android",
         color: "green",
-        groups: ["Coder"],
+        tags: ["Other", "developer"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

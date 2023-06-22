@@ -9,9 +9,16 @@
     "description": "Table based data for the web",
     "icon": "editor:border-all",
     "color": "purple",
-    "groups": [
+    "tags": [
       "Instructional",
-      "content"
+      "presentation",
+      "table",
+      "data",
+      "layout",
+      "grid",
+      "csv",
+      "spreadsheet",
+      "excel"
     ],
     "handles": [],
     "meta": {
@@ -113,12 +120,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "__utils",
-      "editMode",
-      "data",
-      "config"
-    ]
+    "unsetAttributes": ["__utils", "editMode", "data", "config"]
   },
   "demoSchema": [
     {

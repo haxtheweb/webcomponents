@@ -276,7 +276,19 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         description: "A basic citation element with 3 presentation modes",
         icon: "editor:title",
         color: "grey",
-        groups: ["Content", "Copyright"],
+        tags: [
+          "Authoring",
+          "content",
+          "citation",
+          "reference",
+          "cc0",
+          "cc-by",
+          "cc-by-sa",
+          "cc-by-nd",
+          "cc-by-nc",
+          "cc-by-nc-sa",
+          "cc-by-nc-nd",
+        ],
         handles: [
           {
             type: "citation",

@@ -1,6 +1,6 @@
 {
   "canScale": false,
-  "canPosition": true,
+  "canPosition": false,
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
@@ -8,7 +8,7 @@
     "description": "A group of expand collapse elements.",
     "icon": "icons:view-day",
     "color": "grey",
-    "groups": ["Content", "Presentation", "Collapse"]
+    "tags": ["Layout"]
   },
   "settings": {
     "configure": [
@@ -16,12 +16,6 @@
         "property": "radio",
         "title": "Expand only one",
         "description": "Only one item can be expanded.",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable items.",
         "inputMethod": "boolean"
       },
       {
@@ -35,13 +29,7 @@
         }
       }
     ],
-    "advanced": [
-      {
-        "property": "hidden",
-        "title": "Hidden",
-        "inputMethod": "boolean"
-      }
-    ]
+    "advanced": []
   },
   "saveOptions": {
     "unsetAttributes": ["expanded"]
@@ -50,7 +38,7 @@
     {
       "tag": "a11y-collapse-group",
       "properties": {},
-      "content": "<p>Optional info</p><a11y-collapse><p slot=\"heading\">Collapsible 1</p><p slot=\"content\">Hidden content 1.</p></a11y-collapse><a11y-collapse><p slot=\"heading\">Collapsible 2</p><p slot=\"content\">Hidden content 2.</p></a11y-collapse>"
+      "content": "<p>Optional info</p><a11y-collapse heading=\"Collapse 1\"><p slot=\"content\">Hidden content 1.</p></a11y-collapse><a11y-collapse heading=\"Collapse 2\"><p slot=\"content\">Hidden content 2.</p></a11y-collapse>"
     }
   ]
 }

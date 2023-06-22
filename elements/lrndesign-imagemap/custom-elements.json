@@ -52,36 +52,6 @@
           "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
         }
       ]
-    },
-    {
-      "name": "lrndesign-imagemap",
-      "description": "`lrndesign-imagemap`\n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - \n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label"
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
-        },
-        {
-          "name": "hotspot-details",
-          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails"
-        },
-        {
-          "name": "subtopic-of",
-          "description": "`subtopic-of` {`string`} - \n\nProperty: subtopicOf"
-        },
-        {
-          "name": "parent",
-          "description": "`parent` {`string`} - \n\nProperty: parent"
-        },
-        {
-          "name": "__activeHotspot",
-          "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

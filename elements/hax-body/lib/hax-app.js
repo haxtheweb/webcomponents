@@ -20,7 +20,7 @@
     "description": "The original photo sharing platform on the web.",
     "status": "available",
     "rating": "0",
-    "tags": ["images", "creative commons", "crowdsourced"]
+    "tags": ["images"]
   },
   "connection": {
     "protocol": "https",
@@ -166,7 +166,7 @@ Register a stax with HAX store.
     "description": "A well organized example list of objectives.",
     "status": "available",
     "rating": "0",
-    "tags": ["instructional design", "list"]
+    "tags": ["Instructional", "list"]
   },
   "stax": [
     {

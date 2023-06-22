@@ -5,11 +5,6 @@
       "name": "shadow-style",
       "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`\n\nProperties:\n\n  * `cssMap` - ",
       "attributes": []
-    },
-    {
-      "name": "shadow-style",
-      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`\n\nProperties:\n\n  * `cssMap` - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

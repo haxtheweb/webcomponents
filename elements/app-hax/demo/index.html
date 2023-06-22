@@ -23,9 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
     <style>
       body {
         margin: 0;
@@ -61,6 +60,7 @@
         background-repeat: repeat, repeat-y, repeat-y;
         background-position: center center, top left, top right;
         background-size: auto, 20% auto, 20% auto;
+        transition: all .3s ease-in-out;
       }
       div[slot="externalproviders"] {
         display: none;
@@ -311,6 +311,36 @@
                   "path": "@lrnwebcomponents/outline-player/outline-player.js",
                   "name": "Documentation theme",
                   "thumbnail": blueStyle, 
+              },
+              "terrible-themes": {
+                  "element": "terrible-themes",
+                  "path": "@lrnwebcomponents/terrible-themes/terrible-themes.js",
+                  "name": "Terrible apartment site",
+                  "thumbnail": partyStyle, 
+              },
+              "terrible-productionz-themes": {
+                  "element": "terrible-productionz-themes",
+                  "path": "@lrnwebcomponents/terrible-themes/lib/terrible-productionz-themes.js",
+                  "name": "Terrible productionz site",
+                  "thumbnail": blueStyle, 
+              },
+              "terrible-resume-themes": {
+                  "element": "terrible-resume-themes",
+                  "path": "@lrnwebcomponents/terrible-themes/lib/terrible-resume-themes.js",
+                  "name": "Terrible resume",
+                  "thumbnail": partyStyle, 
+              },
+              "terrible-best-themes": {
+                  "element": "terrible-best-themes",
+                  "path": "@lrnwebcomponents/terrible-themes/lib/terrible-best-themes.js",
+                  "name": "Terrible best hockey",
+                  "thumbnail": blueStyle, 
+              },
+              "terrible-outlet-themes": {
+                  "element": "terrible-outlet-themes",
+                  "path": "@lrnwebcomponents/terrible-themes/lib/terrible-outlet-themes.js",
+                  "name": "Terrible blog",
+                  "thumbnail": partyStyle, 
               }
           },
           "saveNodePath": "/bto108/system/api/saveNode",
@@ -320,7 +350,6 @@
           "syncSitePath": "/bto108/system/api/syncSite",
           "setConfigPath": "/bto108/system/api/setConfig",
           "getConfigPath": "/bto108/system/api/getConfig",
-          "getNodeFieldsPath": "/bto108/system/api/getNodeFields",
           "getSiteFieldsPath": "/bto108/system/api/formLoad?haxcms_form_id=siteSettings",
           "revertSitePath": "/bto108/system/api/revertCommit",
           "getFormToken": "gdgdgdfgd4444",

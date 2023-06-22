@@ -37,6 +37,7 @@ class SimpleTooltip extends LitElement {
           -webkit-user-select: none;
           user-select: none;
           cursor: default;
+          pointer-events: none;
         }
 
         #tooltip {

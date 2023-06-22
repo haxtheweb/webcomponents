@@ -7,11 +7,10 @@
     "description": "Clickable button for media and code previews",
     "icon": "check-circle",
     "color": "grey",
-    "groups": ["developer", "code", "video", "pdf"],
+    "tags": ["Instructional", "design", "pedagogy", "presentation", "action"],
     "handles": [],
     "meta": {
-      "author": "collinkleest",
-      "owner": "HAXTheWeb core team"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

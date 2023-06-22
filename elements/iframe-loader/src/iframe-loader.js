@@ -17,7 +17,7 @@ export class IframeLoader extends LitElement {
       source: {
         type: String,
         reflect: true,
-      }
+      },
     };
   }
   static get styles() {
@@ -30,12 +30,12 @@ export class IframeLoader extends LitElement {
       }
       :host([disabled]) #container {
         z-index: 1;
-        opacity: .2;
+        opacity: 0.2;
         background-color: white;
-        transition: .3s linear all;
+        transition: 0.3s linear all;
       }
       :host([disabled]) #container:hover {
-        opacity: .6;
+        opacity: 0.6;
       }
       :host([disabled]) #slot {
         z-index: -1;
@@ -59,17 +59,19 @@ export class IframeLoader extends LitElement {
     this.width = "100%";
     this.__iframe = null;
     // if we have an initial iframe, go for it
-    if (this.querySelector('iframe')) {
-      this.__iframe = this.querySelector('iframe');
-      this.__iframe.addEventListener("load", this.iframeLoadingCallback.bind(this));
+    if (this.querySelector("iframe")) {
+      this.__iframe = this.querySelector("iframe");
+      this.__iframe.addEventListener(
+        "load",
+        this.iframeLoadingCallback.bind(this)
+      );
       // ensure source matches iframe source
-      if (this.__iframe.getAttribute('src')) {
-        this.source = this.__iframe.getAttribute('src');
-        this.height = this.__iframe.getAttribute('height') || this.height;
-        this.width = this.__iframe.getAttribute('width') || this.width;
+      if (this.__iframe.getAttribute("src")) {
+        this.source = this.__iframe.getAttribute("src");
+        this.height = this.__iframe.getAttribute("height") || this.height;
+        this.width = this.__iframe.getAttribute("width") || this.width;
       }
-    }
-    else {
+    } else {
       this.source = null;
     }
     this.__mutationObserver = new MutationObserver((mutations) => {
@@ -83,11 +85,14 @@ export class IframeLoader extends LitElement {
       });
     });
     this.__observer = new MutationObserver((mutations) => {
-      if (this.querySelector('iframe')) {
-        this.__iframe = this.querySelector('iframe');
-        this.source = this.__iframe.getAttribute('src');
+      if (this.querySelector("iframe")) {
+        this.__iframe = this.querySelector("iframe");
+        this.source = this.__iframe.getAttribute("src");
         // Listen for new
-        this.__iframe.addEventListener("load", this.iframeLoadingCallback.bind(this));
+        this.__iframe.addEventListener(
+          "load",
+          this.iframeLoadingCallback.bind(this)
+        );
         this.__mutationObserver.observe(this.__iframe, {
           attributes: true,
         });
@@ -96,12 +101,16 @@ export class IframeLoader extends LitElement {
     this.__observer.observe(this, {
       childList: true,
     });
+    // parent iframe loader gobbles child. this is to avoid issues
+    if (this.querySelector("iframe-loader")) {
+      this.querySelector("iframe-loader").remove();
+    }
   }
 
   iframeLoadingCallback(e) {
     setTimeout(() => {
       this.loading = false;
-      if (e.path[0].height) {
+      if (e && e.path && e.path[0] && e.path[0].height) {
         this.height = e.path[0].height;
       }
     }, 500);
@@ -141,14 +150,14 @@ export class IframeLoader extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (!this.querySelector('iframe')) {
-      this.__iframe = document.createElement('iframe');
-      this.__iframe.setAttribute('width',this.width);
-      this.__iframe.setAttribute('height',this.height);
+    if (!this.querySelector("iframe")) {
+      this.__iframe = document.createElement("iframe");
+      this.__iframe.setAttribute("width", this.width);
+      this.__iframe.setAttribute("height", this.height);
       this.__mutationObserver.observe(this.__iframe, {
         attributes: true,
       });
-      this.__iframe.setAttribute('src', this.source);
+      this.__iframe.setAttribute("src", this.source);
       this.appendChild(this.__iframe);
     }
   }
@@ -156,7 +165,10 @@ export class IframeLoader extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.__iframe) {
-      this.__iframe.removeEventListener("load", this.iframeLoadingCallback.bind(this));
+      this.__iframe.removeEventListener(
+        "load",
+        this.iframeLoadingCallback.bind(this)
+      );
     }
     this.__observer.disconnect();
   }
@@ -165,22 +177,20 @@ export class IframeLoader extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'source') {
+      if (propName === "source") {
         if (this.__iframe) {
-          this.__iframe.setAttribute('src', this.source);
-        }
-        else {
-          this.__iframe = document.createElement('iframe');
-          this.__iframe.setAttribute('width',this.width);
-          this.__iframe.setAttribute('height',this.height);
+          this.__iframe.setAttribute("src", this.source);
+        } else {
+          this.__iframe = document.createElement("iframe");
+          this.__iframe.setAttribute("width", this.width);
+          this.__iframe.setAttribute("height", this.height);
           this.__mutationObserver.observe(this.__iframe, {
             attributes: true,
           });
-          this.__iframe.setAttribute('src', this.source);
+          this.__iframe.setAttribute("src", this.source);
           this.appendChild(this.__iframe);
         }
-      }
-      else if (['height','width'].includes(propName)) {
+      } else if (["height", "width"].includes(propName)) {
         if (this.__iframe) {
           this.__iframe.setAttribute(propName, this[propName]);
         }

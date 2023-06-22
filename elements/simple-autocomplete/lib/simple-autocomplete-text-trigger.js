@@ -12,6 +12,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.haxUIElement = true;
     this.target = null;
     this.triggers = {};
@@ -98,14 +99,15 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
    */
   connectTargetEvents(enable = true) {
     if (enable) {
-      window.addEventListener("keydown", this.targetKeyDownMonitor.bind(this));
-      window.addEventListener("keyup", this.targetKeyMonitor.bind(this));
+      this.windowControllers = new AbortController();
+      window.addEventListener("keydown", this.targetKeyDownMonitor.bind(this), {
+        signal: this.windowControllers.signal,
+      });
+      window.addEventListener("keyup", this.targetKeyMonitor.bind(this), {
+        signal: this.windowControllers.signal,
+      });
     } else {
-      window.removeEventListener(
-        "keydown",
-        this.targetKeyDownMonitor.bind(this)
-      );
-      window.removeEventListener("keyup", this.targetKeyMonitor.bind(this));
+      this.windowControllers.abort();
     }
   }
   /**

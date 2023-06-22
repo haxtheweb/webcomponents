@@ -8,9 +8,7 @@
     "description": "A basic way to frame external web content",
     "icon": "hax:iframe",
     "color": "blue-grey",
-    "groups": [
-      "Content"
-    ],
+    "tags": ["Resource", "iframe", "embed", "web", "link"],
     "handles": [
       {
         "type": "link",
@@ -38,7 +36,8 @@
       }
     ],
     "meta": {
-      "author": "HAXTheWeb core team"
+      "author": "HAXTheWeb core team",
+      "hidden": true
     }
   },
   "settings": {

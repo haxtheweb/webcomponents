@@ -38,49 +38,22 @@ class HAXCMSSiteEditor extends LitElement {
     this.editMode = false;
     window.SimpleToast.requestAvailability();
     window.SimpleModal.requestAvailability();
-    window.addEventListener(
-      "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
-    window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
-    window.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._newActiveItem.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-active-body-changed",
-      this._bodyChanged.bind(this)
-    );
-    window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
-    window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
-    window.addEventListener(
-      "haxcms-save-node-details",
-      this.saveNodeDetails.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-save-site-data",
-      this.saveManifest.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-node-fields",
-      this.loadNodeFields.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-site-dashboard",
-      this.loadSiteDashboard.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-user-data",
-      this.loadUserData.bind(this)
-    );
-    window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
-    window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
-    window.addEventListener(
-      "haxcms-git-revert-last-commit",
-      this.revertCommit.bind(this)
-    );
-    window.addEventListener("haxcms-create-node", this.createNode.bind(this));
-    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
+    autorun((reaction) => {
+      this.editMode = toJS(store.editMode);
+      // force import on editMode enabled
+      if (this.editMode && toJS(HAXStore.activeHaxBody)) {
+        HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
+      }
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
   }
   // render function
   render() {
@@ -217,6 +190,7 @@ class HAXCMSSiteEditor extends LitElement {
         element-align="left"
         offset-margin="48px 0 0 0"
         hide-panel-ops="hide-panel-ops"
+        hide-toolbar="hide-toolbar"
       ></h-a-x>
     `;
   }
@@ -345,10 +319,6 @@ class HAXCMSSiteEditor extends LitElement {
       manifest: {
         type: Object,
       },
-      getNodeFieldsPath: {
-        type: String,
-        attribute: "get-node-fields-path",
-      },
       getSiteFieldsPath: {
         type: String,
         attribute: "save-site-fields-path",
@@ -392,6 +362,14 @@ class HAXCMSSiteEditor extends LitElement {
   _handleUserDataResponse(e) {
     if (e.detail.response && e.detail.response.data) {
       store.userData = e.detail.response.data;
+      this.dispatchEvent(
+        new CustomEvent("haxcms-user-data-updated", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: e.detail.response.data,
+        })
+      );
     }
   }
 
@@ -480,23 +458,6 @@ class HAXCMSSiteEditor extends LitElement {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      // force import on editMode enabled
-      if (this.editMode && toJS(HAXStore.activeHaxBody)) {
-        HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
-
     if (HAXStore.ready) {
       let detail = {
         detail: true,
@@ -516,6 +477,16 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true,
       })
     );
+    // inject cms styles for uniformity between shadowroot
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = new URL("../base.css", import.meta.url).href;
+    this.querySelector("#hax")
+      .shadowRoot.querySelector("style")
+      .parentNode.insertBefore(
+        link,
+        this.querySelector("#hax").shadowRoot.querySelector("style").nextSibling
+      );
   }
 
   updated(changedProperties) {
@@ -562,79 +533,74 @@ class HAXCMSSiteEditor extends LitElement {
       })
     );
   }
-  /**
-   * Detatched life cycle
-   */
 
-  disconnectedCallback() {
-    if (this.siteDashboard) {
-      this.siteDashboard.remove();
-      delete this.siteDashboard;
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.windowControllers) {
+      this.windowControllers.abort();
     }
-
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    window.removeEventListener(
+    this.windowControllers = new AbortController();
+    window.addEventListener(
       "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
+      this._tokenRefreshFailed.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
+
+    window.addEventListener(
       "hax-store-ready",
-      this._storeReadyToGo.bind(this)
+      this._storeReadyToGo.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
-      "haxcms-save-outline",
-      this.saveOutline.bind(this)
-    );
-    window.removeEventListener("haxcms-save-node", this.saveNode.bind(this));
-    window.removeEventListener(
-      "haxcms-save-node-details",
-      this.saveNodeDetails.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-save-site-data",
-      this.saveManifest.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-publish-site",
-      this.publishSite.bind(this)
-    );
-    window.removeEventListener("haxcms-sync-site", this.syncSite.bind(this));
-    window.removeEventListener(
-      "haxcms-git-revert-last-commit",
-      this.revertCommit.bind(this)
-    );
-    window.removeEventListener(
+
+    window.addEventListener(
       "json-outline-schema-active-item-changed",
-      this._newActiveItem.bind(this)
+      this._newActiveItem.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
+
+    window.addEventListener(
       "json-outline-schema-active-body-changed",
-      this._bodyChanged.bind(this)
+      this._bodyChanged.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
-      "haxcms-load-node-fields",
-      this.loadNodeFields.bind(this)
+
+    window.addEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
+
+    window.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this),
+      { signal: this.windowControllers.signal }
+    );
+
+    window.addEventListener(
       "haxcms-load-site-dashboard",
-      this.loadSiteDashboard.bind(this)
+      this.loadSiteDashboard.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
+
+    window.addEventListener(
       "haxcms-load-user-data",
-      this.loadUserData.bind(this)
+      this.loadUserData.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    window.removeEventListener(
-      "haxcms-create-node",
-      this.createNode.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-delete-node",
-      this.deleteNode.bind(this)
-    );
-    super.disconnectedCallback();
+
+    window.addEventListener("haxcms-create-node", this.createNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
+    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
+
   /**
    * Load user data from backend
    */
@@ -644,75 +610,6 @@ class HAXCMSSiteEditor extends LitElement {
       jwt: this.jwt,
     };
     this.querySelector("#getuserdata").generateRequest();
-  }
-  /**
-   * Load and display node fields
-   */
-
-  loadNodeFields(e) {
-    this.__nodeFieldsInvoked = e.detail;
-    let form = document.createElement("simple-fields-form");
-    form.style.margin = "0 0 50px 0";
-    form.setAttribute("autoload", "autoload");
-    form.method = this.method;
-    form.headers = {
-      Authorization: `Bearer ${this.jwt}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-    form.body = {
-      jwt: this.jwt,
-      token: this.getFormToken,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: this.activeItem.id,
-      },
-    };
-    form.loadEndpoint = this.getNodeFieldsPath;
-    this.__fieldsForm = form;
-    let b1 = document.createElement("button");
-    b1.appendChild(document.createTextNode("Save"));
-    b1.classList.add("hax-modal-btn");
-    b1.setAttribute("dialog-confirm", "dialog-confirm");
-    b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
-    let b2 = document.createElement("button");
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    b2.classList.add("hax-modal-btn");
-    b2.classList.add("cancel");
-    b2.addEventListener("click", () => store.playSound("error"));
-    let b = document.createElement("div");
-    b.appendChild(b1);
-    b.appendChild(b2);
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          title: "Edit " + store.activeTitle + " fields",
-          styles: {
-            "--simple-modal-titlebar-background": "orange",
-            "--simple-modal-titlebar-color": "black",
-            "--simple-modal-width": "50vw",
-            "--simple-modal-min-width": "400px",
-            "--simple-modal-z-index": "100000000",
-            "--simple-modal-height": "80vh",
-            "--simple-modal-min-height": "400px",
-            "--simple-modal-titlebar-height": "80px",
-          },
-          elements: {
-            content: form,
-            buttons: b,
-          },
-          invokedBy: this.__nodeFieldsInvoked,
-          clone: false,
-          modal: true,
-        },
-      })
-    );
   }
   /**
    * Load site fields
@@ -767,56 +664,6 @@ class HAXCMSSiteEditor extends LitElement {
     }*/
   }
   /**
-   * Save the fields as we get tapped
-   */
-
-  _saveNodeFieldsTap(e) {
-    let values = this.__fieldsForm.submit();
-    values.id = this.activeItem.id; // fire event with details for saving
-
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: values,
-      })
-    ); // fire event to close the modal
-
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
-  }
-  /**
-   * Save the fields as we get tapped
-   */
-
-  _saveSiteFieldsTap(e) {
-    // fire event with details for saving
-    window.dispatchEvent(
-      new CustomEvent("haxcms-save-site-data", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: this.querySelector("#siteform").submit(),
-      })
-    ); // fire event to close the modal
-
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
-  }
-  /**
    * create node event
    */
 
@@ -853,10 +700,12 @@ class HAXCMSSiteEditor extends LitElement {
           formData.append("type", structure);
           formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
           formData.append("upload", file);
+          this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
             "@haxcms/docxToSite",
             formData
           );
+          store.toast("finished!", 300);
           // must be a valid response and have at least SOME html to bother attempting
           if (
             response.status == 200 &&
@@ -878,7 +727,7 @@ class HAXCMSSiteEditor extends LitElement {
               const b1 = document.createElement("button");
               b1.innerText = "Confirm";
               b1.classList.add("hax-modal-btn");
-              b1.addEventListener('click', async (e) => {
+              b1.addEventListener("click", async (e) => {
                 const data = await outline.getData();
                 let deleted = 0;
                 let modified = 0;
@@ -886,25 +735,29 @@ class HAXCMSSiteEditor extends LitElement {
                 data.items.map((item) => {
                   if (item.delete) {
                     deleted++;
-                  }
-                  else if (item.new) {
+                  } else if (item.new) {
                     added++;
-                  }
-                  else if (item.modified) {
+                  } else if (item.modified) {
                     modified++;
                   }
                 });
-                let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+                let sumChanges = `${
+                  added > 0 ? `‣ ${added} new pages will be created\n` : ""
+                }${
+                  modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
+                }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
                 let confirmation = false;
                 // no confirmation required if there are no tracked changes
-                if (sumChanges == '') {
+                if (sumChanges == "") {
                   confirmation = true;
-                }
-                else {
-                  confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+                } else {
+                  confirmation = window.confirm(
+                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+                  );
                 }
                 if (confirmation) {
                   this.querySelector("#createajax").body = data;
+                  this.setProcessingVisual();
                   this.querySelector("#createajax").generateRequest();
                   const evt = new CustomEvent("simple-modal-hide", {
                     bubbles: true,
@@ -919,7 +772,7 @@ class HAXCMSSiteEditor extends LitElement {
               b2.innerText = "Cancel";
               b2.classList.add("hax-modal-btn");
               b2.classList.add("cancel");
-              b2.addEventListener('click', (e) => {
+              b2.addEventListener("click", (e) => {
                 const evt = new CustomEvent("simple-modal-hide", {
                   bubbles: true,
                   composed: true,
@@ -929,7 +782,7 @@ class HAXCMSSiteEditor extends LitElement {
                 window.dispatchEvent(evt);
               });
               // button container
-              const div = document.createElement('div');
+              const div = document.createElement("div");
               div.appendChild(b1);
               div.appendChild(b2);
 
@@ -961,9 +814,9 @@ class HAXCMSSiteEditor extends LitElement {
             });
           }
         });
-      }
-      else {
+      } else {
         this.querySelector("#createajax").body = reqBody;
+        this.setProcessingVisual();
         this.querySelector("#createajax").generateRequest();
         const evt = new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -971,7 +824,7 @@ class HAXCMSSiteEditor extends LitElement {
           cancelable: true,
           detail: {},
         });
-        window.dispatchEvent(evt); 
+        window.dispatchEvent(evt);
       }
     }
   }
@@ -1011,6 +864,7 @@ class HAXCMSSiteEditor extends LitElement {
         id: e.detail.item.id,
       },
     };
+    this.setProcessingVisual();
     this.querySelector("#deleteajax").generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
@@ -1048,7 +902,6 @@ class HAXCMSSiteEditor extends LitElement {
   _storeReadyToGo(event) {
     if (event.detail) {
       HAXStore.connectionRewrites.appendJwt = "jwt";
-      HAXStore.haxTray.hidePreferencesButton = true;
     }
   }
   /**
@@ -1249,6 +1102,7 @@ class HAXCMSSiteEditor extends LitElement {
           schema: await HAXStore.htmlToHaxElements(body),
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1269,6 +1123,7 @@ class HAXCMSSiteEditor extends LitElement {
           details: e.detail,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
@@ -1285,8 +1140,22 @@ class HAXCMSSiteEditor extends LitElement {
         },
         items: e.detail,
       };
+      this.setProcessingVisual();
       this.querySelector("#outlineupdateajax").generateRequest();
     }
+  }
+  // processing visualization
+  setProcessingVisual() {
+    let loadingIcon = document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.height = "150px";
+    loadingIcon.style.marginLeft = "8px";
+    store.toast(`Processing`, 5000, {
+      hat: "construction",
+      slot: loadingIcon,
+    });
   }
   /**
    * Save the outline based on an event firing.
@@ -1316,6 +1185,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     if (this.saveManifestPath) {
       this.querySelector("#manifestupdateajax").body = values;
+      this.setProcessingVisual();
       this.querySelector("#manifestupdateajax").generateRequest();
     }
   }
@@ -1340,6 +1210,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: this.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#publishajax").generateRequest();
     }
   }
@@ -1355,6 +1226,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#syncajax").generateRequest();
     }
   }
@@ -1370,6 +1242,7 @@ class HAXCMSSiteEditor extends LitElement {
           name: store.manifest.metadata.site.name,
         },
       };
+      this.setProcessingVisual();
       this.querySelector("#revertajax").generateRequest();
     }
   }

@@ -10,16 +10,6 @@
       "name": "mutation-observer-import",
       "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`\n\n",
       "attributes": []
-    },
-    {
-      "name": "mutation-observer-import-mixin",
-      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "mutation-observer-import",
-      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`\n\n",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

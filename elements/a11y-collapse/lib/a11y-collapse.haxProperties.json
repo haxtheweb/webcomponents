@@ -4,40 +4,19 @@
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
-    "title": "Single Expand Collapse",
+    "title": "Collapsible container",
     "description": "A single instance of an expand collapse.",
     "icon": "icons:view-day",
     "color": "grey",
-    "groups": ["Content", "Presentation", "Collapse"]
+    "tags": ["Layout"]
   },
   "settings": {
     "configure": [
       {
-        "slot": "heading",
+        "property": "heading",
         "title": "Heading",
-        "description": "The heading for the collapse.",
-        "inputMethod": "textfield",
-        "slotWrapper": "p",
-        "editMode": {
-          "disabled": false
-        }
-      },
-      {
-        "slot": "",
-        "title": "Content",
-        "description": "The content for the collapse.",
-        "inputMethod": "code-editor",
-        "slotWrapper": "p",
-        "editMode": {
-          "expanded": true,
-          "disabled": false
-        }
-      },
-      {
-        "property": "headingButton",
-        "title": "Heading Button",
-        "description": "Make entire heading clickble instead of just the icon.",
-        "inputMethod": "boolean"
+        "description": "The text for the collapse.",
+        "inputMethod": "textfield"
       },
       {
         "property": "expanded",
@@ -46,8 +25,9 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "disabled",
-        "title": "Disabled",
+        "property": "headingButton",
+        "title": "Heading Button",
+        "description": "Make entire heading clickble instead of just the icon.",
         "inputMethod": "boolean"
       },
       {
@@ -63,17 +43,18 @@
         "inputMethod": "iconpicker"
       },
       {
-        "property": "label",
-        "title": "Label",
-        "description": "The label of the toggle expand/collapse button",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "labelExpanded",
-        "title": "Label (when expanded)",
-        "description": "The label of the toggle expand/collapse button when expanded.",
-        "inputMethod": "textfield"
-      },
+        "slot": "",
+        "title": "Content",
+        "description": "The content for the collapse.",
+        "inputMethod": "code-editor",
+        "slotWrapper": "p",
+        "editMode": {
+          "expanded": true,
+          "disabled": false
+        }
+      }
+    ],
+    "advanced": [
       {
         "property": "tooltip",
         "title": "Tooltip",
@@ -86,13 +67,6 @@
         "description": "The tooltip for the toggle expand/collapse button when expanded",
         "inputMethod": "textfield"
       }
-    ],
-    "advanced": [
-      {
-        "property": "hidden",
-        "title": "Hidden",
-        "inputMethod": "boolean"
-      }
     ]
   },
   "saveOptions": {
@@ -101,8 +75,11 @@
   "demoSchema": [
     {
       "tag": "a11y-collapse",
-      "properties": {},
-      "content": "<p slot=\"heading\">Heading</p><p>Content goes here.</p></a11y-collapse>"
+      "properties": {
+        "heading": "Heading",
+        "headingButton": true
+      },
+      "content": "<p>Content goes here.</p>"
     }
   ]
 }

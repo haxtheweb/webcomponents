@@ -5,18 +5,25 @@
   "contentEditable": true,
   "type": "grid",
   "gizmo": {
-    "title": "Self-Check",
+    "title": "Self Check",
     "description": "The user will be able to complete a self-check.",
     "icon": "icons:check-circle",
     "color": "orange",
-    "groups": ["Image", "Assessment"],
+    "tags": [
+      "Instructional",
+      "media",
+      "self check",
+      "pedagogy",
+      "quiz",
+      "question",
+      "image"
+    ],
     "handles": [
       {
         "type": "image",
         "source": "image",
         "title": "question",
-        "description": "answer",
-        "ariaDescribedby": "describedBy"
+        "description": "answer"
       }
     ],
     "meta": {
@@ -27,28 +34,10 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "The accent color of the self-check",
-        "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Enable Dark Theme",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "image",
         "title": "Image",
         "description": "The image of the element",
         "inputMethod": "haxupload"
-      },
-      {
-        "property": "link",
-        "title": "More link",
-        "description": "Link to additional information",
-        "inputMethod": "textfield"
       },
       {
         "property": "alt",
@@ -59,6 +48,7 @@
       {
         "slot": "heading",
         "title": "Title",
+        "description": "Title the image",
         "inputMethod": "textfield"
       },
       {
@@ -80,15 +70,27 @@
         "editMode": {
           "correct": true
         }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "The accent color of the self-check",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "link",
+        "title": "More link",
+        "description": "Link to additional information",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [
-      {
-        "property": "describedBy",
-        "title": "aria-describedby",
-        "description": "Space-separated list of IDs for elements that describe the image.",
-        "inputMethod": "textfield"
-      },
       {
         "property": "title",
         "title": "Title (Deprecated)",

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "vocab-term",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
+      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
       "attributes": [
         {
           "name": "popover-mode",
@@ -12,39 +12,11 @@
         },
         {
           "name": "term",
-          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: "
+          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: null"
         },
         {
           "name": "information",
-          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: "
-        },
-        {
-          "name": "links",
-          "description": "`links` {`any[]`} - \n\nProperty: links\n\nDefault: "
-        },
-        {
-          "name": "detailsOpen",
-          "description": "`detailsOpen` {`boolean`} - \n\nProperty: detailsOpen\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "vocab-term",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "popover-mode",
-          "description": "`popover-mode` {`boolean`} - \n\nProperty: popoverMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "term",
-          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: "
-        },
-        {
-          "name": "information",
-          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: "
+          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: null"
         },
         {
           "name": "links",

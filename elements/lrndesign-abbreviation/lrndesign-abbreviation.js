@@ -100,7 +100,7 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
         description: "Simple abbreviation with tooltip of full word",
         icon: "editor:title",
         color: "grey",
-        groups: ["Instructional", "Term"],
+        tags: ["Instructional", "term", "definition", "abbr"],
         handles: [
           {
             type: "inline",

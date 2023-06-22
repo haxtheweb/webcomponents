@@ -23,6 +23,7 @@ class HAXCMSSiteRouter extends HTMLElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     // create router
     let options = {};
     if (this.baseURI) {
@@ -37,11 +38,13 @@ class HAXCMSSiteRouter extends HTMLElement {
     });
     window.addEventListener(
       "vaadin-router-location-changed",
-      this._routerLocationChanged.bind(this)
+      this._routerLocationChanged.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.addEventListener(
       "haxcms-site-router-add",
-      this.addRoutesEvent.bind(this)
+      this.addRoutesEvent.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
@@ -49,14 +52,7 @@ class HAXCMSSiteRouter extends HTMLElement {
    */
   disconnectedCallback() {
     this.__disposer.dispose();
-    window.removeEventListener(
-      "vaadin-router-location-changed",
-      this._routerLocationChanged.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-site-router-add",
-      this.addRoutesEvent.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   addRoutesEvent(e) {

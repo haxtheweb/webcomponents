@@ -5,6 +5,8 @@ import {
   localStorageSet,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
+import { toJS, autorun } from "mobx";
+import { store } from "../haxcms-site-store.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -30,6 +32,19 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       this.fontFamily = localStorageGet("haxcms-userPref-fontFamily", 0);
       this.colorTheme = localStorageGet("haxcms-userPref-colorTheme", 0);
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
+      autorun(() => {
+        const dark = toJS(store.darkMode);
+        let local = localStorageGet("haxcms-userPref-colorTheme", 0);
+        if (dark) {
+          this.colorTheme = 2;
+        } else {
+          if (local === 2) {
+            this.colorTheme = 0;
+          } else {
+            this.colorTheme = local;
+          }
+        }
+      });
     }
     static get styles() {
       let styles = [];
@@ -137,10 +152,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             --hax-base-styles-a-color-active: #000000;
           }
           :host([color-theme="2"]) {
-            --haxcms-user-styles-color-theme-color-color: var(
-              --simple-colors-default-theme-light-blue-1,
-              #cfd4e3
-            );
+            --haxcms-user-styles-color-theme-color-color: #cfd4e3;
             --haxcms-user-styles-color-theme-color-background: #1c1f2b;
             --haxcms-user-styles-color-theme-color-1: #a6a6a6;
             --haxcms-user-styles-color-theme-color-2: #252737;

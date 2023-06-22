@@ -48,11 +48,6 @@
       "name": "responsive-utility",
       "description": "Properties:\n\n  * `details` {`never[]`} - ",
       "attributes": []
-    },
-    {
-      "name": "responsive-utility",
-      "description": "Properties:\n\n  * `details` {`never[]`} - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

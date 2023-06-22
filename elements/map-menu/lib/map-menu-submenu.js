@@ -16,13 +16,18 @@ class MapMenuSubmenu extends LitElement {
           cursor: pointer;
           display: block;
         }
+        :host([opened]) map-menu-header {
+          /*border-left: 16px solid var(--map-menu-border-depth, rgba(0,0,0,.1));*/
+        }
         #container {
           margin: 0;
         }
         #container ::slotted(map-menu-builder) {
           display: block;
-          cursor: pointer;
-          margin-left: 20px;
+        }
+        #container ::slotted(map-menu-item),
+        #container ::slotted(map-menu-submenu) {
+          margin-left: 10px;
         }
         a11y-collapse {
           --a11y-collapse-border: 0;
@@ -35,15 +40,17 @@ class MapMenuSubmenu extends LitElement {
   }
   constructor() {
     super();
+    this.iconLabel = null;
     this.opened = false;
     this.collapsable = true;
     this.expandChildren = false;
     this.avatarLabel = "";
     this.label = "";
     this.status = "";
+    this.itemtitle = "";
     this.locked = false;
     this.published = true;
-    this.icon = "";
+    this.icon = null;
     this.__icon = "";
     setTimeout(() => {
       this.addEventListener("active-item", this.__activeChanged.bind(this));
@@ -58,21 +65,35 @@ class MapMenuSubmenu extends LitElement {
       );
     }, 0);
   }
+
+  // align the collapse state w/ this state
+  // ensure we block this moving up tho or we'll align too much :)
+  __alignCollapseState(e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    this.opened = e.detail.expanded;
+  }
   /**
    * LitElement life cycle - render
    */
   render() {
     return html`
-      <a11y-collapse id="container" ?expanded="${this.opened}">
+      <a11y-collapse
+        id="container"
+        ?expanded="${this.opened}"
+        @a11y-collapse-click="${this.__alignCollapseState}"
+      >
         <map-menu-header
           .avatar-label="${this.avatarLabel}"
           id="${this.id}"
-          title="${this.title}"
+          itemtitle="${this.itemtitle}"
           label="${this.label}"
           ?opened="${this.opened}"
           url="${this.url}"
           selected="${this.selected}"
           icon="${this.icon}"
+          icon-label="${this.iconLabel}"
           slot="heading"
           ?published="${this.published}"
           ?locked="${this.locked}"
@@ -94,8 +115,12 @@ class MapMenuSubmenu extends LitElement {
       id: {
         type: String,
       },
-      title: {
+      itemtitle: {
         type: String,
+      },
+      iconLabel: {
+        type: String,
+        attribute: "icon-label",
       },
       avatarLabel: {
         type: String,
@@ -112,6 +137,8 @@ class MapMenuSubmenu extends LitElement {
       },
       opened: {
         type: Boolean,
+        attribute: "opened",
+        reflect: true,
       },
       collapsable: {
         type: Boolean,

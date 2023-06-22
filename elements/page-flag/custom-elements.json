@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "page-flag-comment",
+      "description": "Events:\n\n  * `page-flag-comment-delete` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-reply` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-edit` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `edit-mode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\nProperties:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `editMode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "mood",
+          "description": "`mood` {`string`} - \n\nProperty: mood\n\nDefault: null"
+        },
+        {
+          "name": "seed",
+          "description": "`seed` {`string`} - \n\nProperty: seed\n\nDefault: abc123"
+        },
+        {
+          "name": "timestamp",
+          "description": "`timestamp` {`number`} - \n\nProperty: timestamp"
+        },
+        {
+          "name": "reply",
+          "description": "`reply` {`number`} - \n\nProperty: reply\n\nDefault: 0"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "canEdit",
+          "description": "`canEdit` {`boolean`} - \n\nProperty: canEdit\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "readOnly",
+          "description": "`readOnly` {`boolean`} - \n\nProperty: readOnly\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "onpage-flag-comment-delete",
+          "description": "`page-flag-comment-delete` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onpage-flag-comment-reply",
+          "description": "`page-flag-comment-reply` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onpage-flag-comment-edit",
+          "description": "`page-flag-comment-edit` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "page-flag",
+      "description": "`page-flag`\n`visual flag for notes about a piece of content`\n\nAttributes:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the flag\n\nProperty: label\n\nDefault: note"
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - Opened state\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "show",
+          "description": "`show` {`boolean`} - \n\nProperty: show\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: cyan"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "page-flag-manager",
+      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `activeUser` - \n\n  * `allFlags` {`never[]`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

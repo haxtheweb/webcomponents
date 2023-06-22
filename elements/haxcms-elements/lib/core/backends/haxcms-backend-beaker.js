@@ -54,74 +54,49 @@ class HAXCMSBackendBeaker extends LitElement {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
     autorun((reaction) => {
       this.jwt = toJS(store.jwt);
       this.__disposer.push(reaction);
     });
-    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
+    window.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     // HAX CMS events to intercept
-    document.body.addEventListener(
+    window.addEventListener(
       "haxcms-save-site-data",
-      this.saveManifest.bind(this)
+      this.saveManifest.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    document.body.addEventListener(
+    window.addEventListener(
       "haxcms-save-outline",
-      this.saveOutline.bind(this)
+      this.saveOutline.bind(this),
+      { signal: this.windowControllers.signal }
     );
-    document.body.addEventListener(
-      "haxcms-save-node",
-      this.saveNode.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-delete-node",
-      this.deleteNode.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-create-node",
-      this.createNode.bind(this)
-    );
+    window.addEventListener("haxcms-save-node", this.saveNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("haxcms-create-node", this.createNode.bind(this), {
+      signal: this.windowControllers.signal,
+    });
     // listen for app being selected
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-app-picker-selection",
-      this._appPicked.bind(this)
+      this._appPicked.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
    * detached life cycle
    */
   disconnectedCallback() {
-    document.body.removeEventListener(
-      "jwt-token",
-      this._jwtTokenFired.bind(this)
-    );
-    // HAX CMS events to intercept
-    document.body.removeEventListener(
-      "haxcms-save-site-data",
-      this.saveManifest.bind(this)
-    );
-    document.body.removeEventListener(
-      "haxcms-save-outline",
-      this.saveOutline.bind(this)
-    );
-    document.body.removeEventListener(
-      "haxcms-save-node",
-      this.saveNode.bind(this)
-    );
-    document.body.removeEventListener(
-      "haxcms-delete-node",
-      this.deleteNode.bind(this)
-    );
-    document.body.removeEventListener(
-      "haxcms-create-node",
-      this.createNode.bind(this)
-    );
-    // listen for app being selected
-    document.body.removeEventListener(
-      "hax-app-picker-selection",
-      this._appPicked.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   _appPicked(e) {

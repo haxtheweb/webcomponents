@@ -43,41 +43,14 @@ class H5PElement extends LitElement {
         ></div>`}`;
   }
 
-  // haxProperty definition
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "H5P element",
-        description: "h5p wrapper for loading and presenting .h5p files",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Interactive"],
-        meta: {
-          author: "HAXTheWeb",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "source",
-            description: "Location the H5P file was unpacked to",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        wipeSlot: true,
-        unsetAttributes: ["content-id"],
-      },
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -106,8 +79,6 @@ class H5PElement extends LitElement {
     super();
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
-    // should kick off all dependencies to start loading on window
-    this.H5PDepsLoader();
   }
   /**
    * This breaks shadowRoot in LitElement
@@ -122,6 +93,7 @@ class H5PElement extends LitElement {
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
+    this.windowControllers = new AbortController();
     const basePath = new URL("./lib/", import.meta.url).href;
     this.h5pJSDeps = [
       basePath + "h5p-resizer.js",
@@ -141,11 +113,13 @@ class H5PElement extends LitElement {
     );
     window.addEventListener(
       "es-bridge-h5p-jquery-loaded",
-      this.h5pJqueryReady.bind(this)
+      this.h5pJqueryReady.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.addEventListener(
       "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
-      this.h5pReadyCallback.bind(this)
+      this.h5pReadyCallback.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   generateUUID() {
@@ -159,7 +133,10 @@ class H5PElement extends LitElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (
       this.source &&
       window.ESGlobalBridge.requestAvailability().imports[
@@ -234,22 +211,17 @@ class H5PElement extends LitElement {
     }
     return true;
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.H5PDepsLoader();
+  }
+
   /**
    * life cycle, element removed from DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
-      this.h5pReadyCallback.bind(this)
-    );
-    window.removeEventListener(
-      "es-bridge-h5p-jquery-loaded",
-      this.h5pJqueryReady.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {});
   }
 }
 customElements.define("h5p-element", H5PElement);

@@ -7,7 +7,16 @@
     "description": "A playful media piece meant to look like a physical post card from somewhere",
     "icon": "credit-card",
     "color": "blue",
-    "groups": ["Content", "Fun"]
+    "tags": [
+      "Layout",
+      "Fun",
+      "extra",
+      "postcard",
+      "card",
+      "block",
+      "layout",
+      "design"
+    ]
   },
   "settings": {
     "configure": [

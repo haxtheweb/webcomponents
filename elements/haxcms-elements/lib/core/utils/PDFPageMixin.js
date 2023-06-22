@@ -20,6 +20,25 @@ export const PDFPageMixin = function (SuperClass) {
         downloadingPdfPleaseWait: "Downloading PDF, please wait",
       };
       this.__pdfLoading = false;
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-define-option", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            title: this.t.downloadPdf,
+            icon: "lrn:pdf",
+            tags: ["CMS", "pdf", "print", "page"],
+            value: {
+              target: this,
+              method: "downloadPDFviaMicro",
+            },
+            context: "CMS",
+            eventName: "super-daemon-element-method",
+            path: "CMS/page/pdf",
+          },
+        })
+      );
     }
 
     PDFPageButton(position = "auto") {
@@ -31,6 +50,7 @@ export const PDFPageMixin = function (SuperClass) {
             >
               <simple-icon-button-lite
                 part="pdf-page-btn"
+                class="btn"
                 icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
                 id="pdf-page-btn"
                 @click="${this.downloadPDFviaMicro}"

@@ -263,7 +263,7 @@ export class JSONOutlineSchema
           }
         }
         // sort the kids
-        children.sort( function(a, b) {return a.order > b.order} );
+        children.sort( function(a, b) {return a.order - b.order} );
         // only walk deeper if there were children for this page
         if (children.length > 0) {
           this.orderRecurse(children, sorted, idList);
@@ -294,9 +294,9 @@ export class JSONOutlineSchema
     let sorted = [];
     items.sort( function(a, b) {
       if (orderBy === 'updated') {
-        return a.metadata.updated > b.metadata.updated;
+        return a.metadata.updated - b.metadata.updated;
       }
-      return parseInt(a[orderBy]) > parseInt(b[orderBy])}
+      return parseInt(a[orderBy]) - parseInt(b[orderBy])}
     );
     this.orderRecurse(items, sorted, [], orderBy);
     // sanity check, should always be equal
@@ -325,9 +325,9 @@ export class JSONOutlineSchema
         // sort the kids
         children.sort( function(a, b) {
           if (orderBy === 'updated') {
-            return a.metadata.updated > b.metadata.updated;
+            return a.metadata.updated - b.metadata.updated;
           }
-          return parseInt(a[orderBy]) > parseInt(b[orderBy])}
+          return parseInt(a[orderBy]) - parseInt(b[orderBy])}
           );
         // only walk deeper if there were children for this page
         if (children.length > 0) {

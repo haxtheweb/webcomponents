@@ -24,6 +24,7 @@ export class AppHaxRouter extends HTMLElement {
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
     }
+    this.windowControllers = new AbortController();
     this.router = new Router(this, options);
     autorun(() => {
       this._updateRouter(toJS(store.routes));
@@ -48,7 +49,8 @@ export class AppHaxRouter extends HTMLElement {
   connectedCallback() {
     window.addEventListener(
       "vaadin-router-location-changed",
-      this._routerLocationChanged.bind(this)
+      this._routerLocationChanged.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
   /**
@@ -56,10 +58,7 @@ export class AppHaxRouter extends HTMLElement {
    */
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "vaadin-router-location-changed",
-      this._routerLocationChanged.bind(this)
-    );
+    this.windowControllers.abort();
   }
 
   /**

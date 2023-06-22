@@ -231,6 +231,7 @@ class SimpleDrawer extends SimpleColors {
    */
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.title = "";
     this.align = "left";
     this.opened = false;
@@ -241,8 +242,12 @@ class SimpleDrawer extends SimpleColors {
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    window.addEventListener("simple-drawer-hide", this.close.bind(this));
-    window.addEventListener("simple-drawer-show", this.showEvent.bind(this));
+    window.addEventListener("simple-drawer-hide", this.close.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    window.addEventListener("simple-drawer-show", this.showEvent.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -380,8 +385,7 @@ class SimpleDrawer extends SimpleColors {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener("simple-drawer-hide", this.close.bind(this));
-    window.removeEventListener("simple-drawer-show", this.showEvent.bind(this));
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

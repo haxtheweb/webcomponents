@@ -54,7 +54,7 @@ class ProgressDonut extends LrndesignPie {
         description: "Progression donut",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Presentation", "Data"],
+        tags: ["Other", "Data"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

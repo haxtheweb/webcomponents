@@ -7,7 +7,16 @@
     "description": "A code to scan from a smartphone.",
     "icon": "hax:qr-code",
     "color": "grey",
-    "groups": ["QR"],
+    "tags": [
+      "Other",
+      "qr",
+      "code",
+      "phone",
+      "scan",
+      "mobile",
+      "smartphone",
+      "barcode"
+    ],
     "handles": [
       {
         "type": "video",

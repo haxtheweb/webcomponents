@@ -75,38 +75,6 @@
           "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
         }
       ]
-    },
-    {
-      "name": "midi-player",
-      "attributes": []
-    },
-    {
-      "name": "midi-visualizer",
-      "attributes": []
-    },
-    {
-      "name": "music-player",
-      "description": "`music-player`\n`Visualize different types of music and simple format player`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `no-waterfall` {`boolean`} - \n\n  * `no-visual` {`boolean`} - \n\n  * `visualizer` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `noWaterfall` {`boolean`} - \n\n  * `noVisual` {`boolean`} - \n\n  * `visualizer` {`string`} - ",
-      "attributes": [
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
-        },
-        {
-          "name": "no-waterfall",
-          "description": "`no-waterfall` {`boolean`} - \n\nProperty: noWaterfall\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-visual",
-          "description": "`no-visual` {`boolean`} - \n\nProperty: noVisual\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "visualizer",
-          "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
-        }
-      ]
     }
   ],
   "globalAttributes": [],

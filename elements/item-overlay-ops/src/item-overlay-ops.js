@@ -299,8 +299,13 @@ class ItemOverlayOps extends PolymerElement {
     setTimeout(() => {
       this._windowResize();
     }, 5);
+    this.windowControllers = new AbortController();
+
     this.setAttribute("tabindex", "0");
-    window.addEventListener("resize", this._windowResize.bind(this));
+    window.addEventListener("resize", this._windowResize.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+
     this.addEventListener("focusin", this._inFocus.bind(this));
     this.addEventListener("focusout", this._outFocus.bind(this));
   }
@@ -311,7 +316,7 @@ class ItemOverlayOps extends PolymerElement {
   disconnectedCallback() {
     this.removeEventListener("focusin", this._inFocus.bind(this));
     this.removeEventListener("focusout", this._outFocus.bind(this));
-    window.removeEventListener("resize", this._windowResize.bind(this));
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

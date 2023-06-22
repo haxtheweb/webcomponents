@@ -115,15 +115,6 @@ export const HAXCMSOperationButtons = function (SuperClass) {
         })
       );
     }
-    _editDetailsButtonTap(e) {
-      const evt = new CustomEvent("haxcms-load-node-fields", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.target,
-      });
-      window.dispatchEvent(evt);
-    }
     _cancelButtonTap(e) {
       this.editMode = false;
       this.dispatchEvent(

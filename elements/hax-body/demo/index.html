@@ -12,9 +12,8 @@
       };
       window.WCGlobalBasePath = "/node_modules/";
     </script>
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
     <script type="module">
       import '@lrnwebcomponents/h-a-x/h-a-x.js';
       import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
@@ -22,15 +21,14 @@
       });
     </script>
     <style>
-        #bodydiv { margin: 20px 300px 20px 20px; }
+        body { margin: 100px;}
         @media screen and (max-width: 800px) {
-          #bodydiv { margin: 60px 20px 20px 20px; }
+          body { margin: 60px; }
         }
     </style>
   </head>
   <body>
     <h1>HAX Test</h1>
-    <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' >
       <h2>Self-Check</h2>
       <dl>
@@ -291,7 +289,5 @@
           scale="ct-square">
         </chartist-render-->
       </h-a-x>
-      <lrn-css-reset></lrn-css-reset>
-    </div>
   </body>
 </html>

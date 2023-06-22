@@ -28,7 +28,6 @@ export default async function handler(req, res) {
         <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js" />
         <link rel="preload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" as="script" crossorigin="anonymous" />
         <link rel="modulepreload" href="${magic}build/es6/node_modules/@lrnwebcomponents/wc-autoload/wc-autoload.js" />
-        <link rel="preload" href="${magic}build/es6/node_modules/web-animations-js/web-animations-next-lite.min.js" as="script" />
         <link rel="stylesheet" href="${magic}build/es6/node_modules/@lrnwebcomponents/haxcms-elements/lib/base.css" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
         <style>

@@ -234,7 +234,7 @@ class RetroCard extends SimpleColors {
         description: "Simple card in a cool retro design",
         icon: "icons:android",
         color: "purple",
-        groups: ["Card"],
+        tags: ["Layout", "card", "layout"],
         handles: [
           {
             type: "image",

@@ -15,15 +15,15 @@ export class WorksheetDownload extends LitElement {
 
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
+      canScale: false,
+      canPosition: false,
       canEditSource: false,
       gizmo: {
         title: "Worksheet Download",
         description: "A button for displaying files available for download.",
         icon: "icons:file-download",
         color: "blue",
-        groups: ["education", "link"],
+        tags: ["Instructional", "link", "worksheet", "download", "url", "file"],
         meta: {
           author: "HAXTheWeb core team",
         },

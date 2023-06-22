@@ -7,11 +7,10 @@
     "description": "logo element for hax, obviously as a hax capable element.",
     "icon": "icons:android",
     "color": "green",
-    "groups": ["Logo"],
+    "tags": ["Other", "hax", "promo", "dev", "developer"],
     "handles": [],
     "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

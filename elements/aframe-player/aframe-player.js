@@ -49,6 +49,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.course = "";
     this.height = "480px";
     this.width = "640px";
@@ -139,10 +140,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     return this;
   }
   disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-aframePlayer-loaded",
-      this._aframeLoaded.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   static get haxProperties() {
@@ -155,7 +153,16 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
         description: "A 3D file / augmented reality player.",
         icon: "av:play-circle-filled",
         color: "amber",
-        groups: ["3D", "Augmented reality"],
+        tags: [
+          "3D",
+          "augmented reality",
+          "AR",
+          "VR",
+          "video",
+          "aframe",
+          "webxr",
+          "webvr",
+        ],
         handles: [
           {
             type: "3d",
@@ -226,7 +233,8 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
     window.addEventListener(
       "es-bridge-aframePlayer-loaded",
-      this._aframeLoaded.bind(this)
+      this._aframeLoaded.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.ESGlobalBridge.requestAvailability().load("aframePlayer", location);
   }

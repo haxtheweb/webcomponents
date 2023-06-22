@@ -92,6 +92,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
   }
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.label = "Tags";
     this.value = "";
     this.tagList = [];
@@ -318,23 +319,18 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     super.connectedCallback();
     window.addEventListener(
       "simple-tag-dragstart",
-      this._handleGlobalTagDrag.bind(this)
+      this._handleGlobalTagDrag.bind(this),
+      { signal: this.windowControllers.signal }
     );
     window.addEventListener(
       "simple-tag-drop",
-      this._handleGlobalTagDrop.bind(this)
+      this._handleGlobalTagDrop.bind(this),
+      { signal: this.windowControllers.signal }
     );
   }
 
   disconnectedCallback() {
-    window.removeEventListener(
-      "simple-tag-dragstart",
-      this._handleGlobalTagDrag.bind(this)
-    );
-    window.removeEventListener(
-      "simple-tag-drop",
-      this._handleGlobalTagDrop.bind(this)
-    );
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
 }

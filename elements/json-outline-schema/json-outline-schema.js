@@ -56,6 +56,7 @@ class JsonOutlineSchema extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
+    this.windowControllers = new AbortController();
     // set tag for later use
     this.tag = JsonOutlineSchema.tag;
     this.template = document.createElement("template");
@@ -87,7 +88,8 @@ class JsonOutlineSchema extends HTMLElement {
 
     window.addEventListener(
       "json-outline-schema-debug-toggle",
-      this._toggleDebug.bind(this)
+      this._toggleDebug.bind(this),
+      { signal: this.windowControllers.signal }
     );
 
     const evt = new CustomEvent("json-outline-schema-ready", {
@@ -126,10 +128,7 @@ class JsonOutlineSchema extends HTMLElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "json-outline-schema-debug-toggle",
-      this._toggleDebug.bind(this)
-    );
+    this.windowControllers.abort();
     const evt = new CustomEvent("json-outline-schema-unready", {
       bubbles: true,
       cancelable: false,
@@ -571,11 +570,10 @@ class JsonOutlineSchema extends HTMLElement {
         parent.children = children;
       }
       // sort order at this level
-      children.sort((a,b) => {
+      children.sort((a, b) => {
         if (a.order < b.order) {
           return -1;
-        }
-        else if (a.order > b.order) {
+        } else if (a.order > b.order) {
           return 1;
         }
         return 0;

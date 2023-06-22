@@ -14,24 +14,6 @@
           "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
         }
       ]
-    },
-    {
-      "name": "figure-label",
-      "attributes": []
-    },
-    {
-      "name": "figure-label",
-      "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
-        },
-        {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

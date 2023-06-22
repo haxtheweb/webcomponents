@@ -7,10 +7,9 @@
     "description": "track user actions and allow them to talk to xAPI stores easily",
     "icon": "icons:touch-app",
     "color": "green",
-    "groups": ["Action"],
+    "tags": ["Other", "developer", "dev", "xapi", "analytics", "user", "track"],
     "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {

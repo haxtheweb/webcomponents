@@ -118,7 +118,7 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
             src="${cleanVideoSource(data)}"
             frameborder="0"
             allow="encrypted-media;"
-            allowfullscreen
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>
         </div>`;
     } else {

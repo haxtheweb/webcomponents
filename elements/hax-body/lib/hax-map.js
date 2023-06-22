@@ -1,8 +1,8 @@
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import {
   normalizeEventPath,
@@ -11,18 +11,20 @@ import {
 import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `hax-map`
  * @element hax-map
  * `Export dialog with all export options and settings provided.`
  */
-class HaxMap extends I18NMixin(LitElement) {
+class HaxMap extends I18NMixin(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       ...HaxTrayDetailHeadings,
       css`
         :host {
@@ -60,28 +62,34 @@ class HaxMap extends I18NMixin(LitElement) {
         ul li {
           margin: 0;
           padding: 0;
+          display: flex;
+          height: 38px;
         }
         li hax-toolbar-item {
           display: inline-flex;
-          width: 50%;
           max-width: 60%;
+          height: 38px;
+          margin-right: 8px;
+          overflow: hidden;
         }
-        li simple-icon-button {
+        li simple-icon-button-lite {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
           height: 38px;
-          float: right;
+          margin: 0 4px;
+          color: var(--simple-colors-default-theme-grey-12, black);
+          background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         li simple-icon-button:hover {
-          background-color: #f5f5f5;
+          background-color: var(--simple-colors-default-theme-grey-2, white);
         }
         li simple-icon-button.del {
-          margin-left: 8px;
+          margin-left: 16px;
         }
-        li:hover simple-icon-button {
+        li:hover simple-icon-button-lite {
           visibility: visible;
           opacity: 1;
         }
@@ -94,39 +102,36 @@ class HaxMap extends I18NMixin(LitElement) {
           margin-left: 8px;
         }
 
-        li hax-toolbar-item::part(button),
-        li.parent-h2 hax-toolbar-item[icon="hax:h2"]::part(button) {
+        li hax-toolbar-item,
+        li.parent-h2 hax-toolbar-item[icon="hax:h2"] {
           margin-left: 0px;
           cursor: pointer;
         }
-        li.parent-h2 hax-toolbar-item::part(button),
-        li.parent-h2 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h2 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
-        li.parent-h3 hax-toolbar-item[icon="hax:h3"]::part(button) {
+        li.parent-h2 hax-toolbar-item,
+        li.parent-h2 + li.is-child hax-toolbar-item,
+        li.parent-h2 + li.is-child ~ li.is-child hax-toolbar-item,
+        li.parent-h3 hax-toolbar-item[icon="hax:h3"] {
           margin-left: 8px;
         }
-        li.parent-h3 hax-toolbar-item::part(button),
-        li.parent-h3 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h3 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
-        li.parent-h4 hax-toolbar-item[icon="hax:h4"]::part(button) {
+        li.parent-h3 hax-toolbar-item,
+        li.parent-h3 + li.is-child hax-toolbar-item,
+        li.parent-h3 + li.is-child ~ li.is-child hax-toolbar-item,
+        li.parent-h4 hax-toolbar-item[icon="hax:h4"] {
           margin-left: 8px;
         }
-        li.parent-h4 hax-toolbar-item::part(button),
-        li.parent-h4 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h4 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
-        li.parent-h5 hax-toolbar-item[icon="hax:h5"]::part(button) {
+        li.parent-h4 hax-toolbar-item,
+        li.parent-h4 + li.is-child hax-toolbar-item,
+        li.parent-h4 + li.is-child ~ li.is-child hax-toolbar-item,
+        li.parent-h5 hax-toolbar-item[icon="hax:h5"] {
           margin-left: 12px;
         }
-        li.parent-h5 hax-toolbar-item::part(button),
-        li.parent-h5 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h5 + li.is-child ~ li.is-child hax-toolbar-item::part(button),
-        li.parent-h6 hax-toolbar-item[icon="hax:h6"]::part(button),
-        li.parent-h6 hax-toolbar-item::part(button),
-        li.parent-h6 + li.is-child hax-toolbar-item::part(button),
-        li.parent-h6
-          + li.is-child
-          ~ li.is-child
-          hax-toolbar-item::part(button) {
+        li.parent-h5 hax-toolbar-item,
+        li.parent-h5 + li.is-child hax-toolbar-item,
+        li.parent-h5 + li.is-child ~ li.is-child hax-toolbar-item,
+        li.parent-h6 hax-toolbar-item[icon="hax:h6"],
+        li.parent-h6 hax-toolbar-item,
+        li.parent-h6 + li.is-child hax-toolbar-item,
+        li.parent-h6 + li.is-child ~ li.is-child hax-toolbar-item {
           margin-left: 12px;
         }
       `,
@@ -149,10 +154,12 @@ class HaxMap extends I18NMixin(LitElement) {
       namespace: "hax",
     });
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
-      setTimeout(() => {
-        this.requestUpdate();
-      }, 0);
+      if (HAXStore.editMode) {
+        this.activeNode = toJS(HAXStore.activeNode);
+        setTimeout(() => {
+          this.requestUpdate();
+        }, 0);
+      }
     });
   }
   async updateHAXMap(e) {
@@ -319,42 +326,42 @@ class HaxMap extends I18NMixin(LitElement) {
               </hax-toolbar-item>
               ${element.tag != "page-break"
                 ? html`
-                    <simple-icon-button
-                      class="del"
-                      icon="delete"
-                      @click="${(e) => this.itemOp(index, "delete")}"
-                      title="Delete"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
-                    <simple-icon-button
-                      icon="hax:keyboard-arrow-up"
-                      @click="${(e) => this.itemOp(index, "up")}"
-                      title="Move up"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
-                    <simple-icon-button
-                      icon="hax:keyboard-arrow-down"
-                      @click="${(e) => this.itemOp(index, "down")}"
-                      title="Move down"
-                      ?disabled="${this.isLocked(index)}"
-                    ></simple-icon-button>
-                    ${HAXStore.isTextElement(element.node) ||
-                    element.tag == "grid-plate"
-                      ? html``
-                      : html`
-                          <simple-icon-button
-                            icon="image:transform"
-                            @click="${(e) => this.itemOp(index, "transform")}"
-                            title="Change to.."
-                          ></simple-icon-button>
-                        `}
-                    <simple-icon-button
+                    <simple-icon-button-lite
                       icon="${this.isLocked(index)
                         ? "icons:lock"
                         : "icons:lock-open"}"
                       @click="${(e) => this.itemOp(index, "lock")}"
                       title="Lock / Unlock"
-                    ></simple-icon-button>
+                    ></simple-icon-button-lite>
+                    ${HAXStore.isTextElement(element.node) ||
+                    element.tag == "grid-plate"
+                      ? html``
+                      : html`
+                          <simple-icon-button-lite
+                            icon="image:transform"
+                            @click="${(e) => this.itemOp(index, "transform")}"
+                            title="Change to.."
+                          ></simple-icon-button-lite>
+                        `}
+                    <simple-icon-button-lite
+                      icon="hax:keyboard-arrow-up"
+                      @click="${(e) => this.itemOp(index, "up")}"
+                      title="Move up"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button-lite>
+                    <simple-icon-button-lite
+                      icon="hax:keyboard-arrow-down"
+                      @click="${(e) => this.itemOp(index, "down")}"
+                      title="Move down"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button-lite>
+                    <simple-icon-button-lite
+                      class="del"
+                      icon="delete"
+                      @click="${(e) => this.itemOp(index, "delete")}"
+                      title="Delete"
+                      ?disabled="${this.isLocked(index)}"
+                    ></simple-icon-button-lite>
                   `
                 : ``}
             </li>
@@ -466,7 +473,7 @@ class HaxMap extends I18NMixin(LitElement) {
       HAXStore.activeNode = activeChild;
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
-        activeChild.scrollIntoViewIfNeeded(true);
+        activeChild.scrollIntoViewIfNeeded(false);
       } else {
         activeChild.scrollIntoView({
           behavior: "smooth",
@@ -487,6 +494,7 @@ class HaxMap extends I18NMixin(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Title when open.
        */
@@ -515,7 +523,7 @@ class HaxMap extends I18NMixin(LitElement) {
         type: String,
       },
       activeNode: {
-        type: Object
+        type: Object,
       },
     };
   }

@@ -34,7 +34,7 @@ import { LitElement, html, css } from "lit";
  ----------------|-------------|----------
  --a11y-details-fontSize | font-size  | 0.8em
  --a11y-details-color | text color | #000
- --a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
+ --a11y-details-backgroundColor | background-color | rgba(255,255,255,1)
  --a11y-details-borderColor | border-color | #000
  --a11y-details-borderWidth | border-width | 1px
  --a11y-details-borderStyle | border-style | solid
@@ -122,7 +122,7 @@ class A11yDetails extends LitElement {
           color: var(--a11y-details-color, #000);
           background-color: var(
             --a11y-details-backgroundColor,
-            rgba(255, 255, 255, 0.8)
+            rgba(255, 255, 255, 1)
           );
           border-color: var(--a11y-details-borderColor, #999);
           border-width: var(--a11y-details-borderWidth, 1px);
@@ -203,7 +203,7 @@ class A11yDetails extends LitElement {
           "Accessible progressive disclosure with detail and summary",
         icon: "icons:arrow-drop-down",
         color: "grey",
-        groups: ["11"],
+        tags: ["Layout", "Details", "Summary", "Button", "Accessible"],
         handles: [
           {
             type: "",

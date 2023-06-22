@@ -161,7 +161,7 @@ class EditableTable extends editBehaviors(LitElement) {
   // about to convert to content, ensure we are no longer the editable-table
   async haxpreProcessNodeToContent(node) {
     node.editMode = false;
-    node.innerHTML = '';
+    node.innerHTML = "";
     await node.appendChild(this.getTableHTML(true, true));
     //node.data = null;/
     node.config = null;
@@ -169,11 +169,11 @@ class EditableTable extends editBehaviors(LitElement) {
   }
   // allow HAX to toggle edit state when activated
   haxactiveElementChanged(el, val) {
-    el.editMode = val;
+    this.editMode = val;
     if (val) {
-      el.focus();
+      this.focus();
     }
-    return el;
+    return this;
   }
   /**
    * haxProperties integration via file reference
@@ -184,7 +184,7 @@ class EditableTable extends editBehaviors(LitElement) {
   }
   constructor() {
     super();
-    this.haxUIElement = true;
+    //this.haxUIElement = true;
     this.editMode = false;
   }
   static get properties() {

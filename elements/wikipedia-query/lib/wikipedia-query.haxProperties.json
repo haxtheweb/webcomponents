@@ -7,7 +7,16 @@
     "description": "This can display a wikipedia article in context in a variety of formats.",
     "icon": "book",
     "color": "green",
-    "groups": ["Content", "Creative Commons"],
+    "tags": [
+      "Resource",
+      "creative commons",
+      "wikipedia",
+      "search",
+      "web",
+      "resource",
+      "definition",
+      "encyclopedia"
+    ],
     "handles": [
       {
         "type": "wikipedia",

@@ -136,7 +136,7 @@ class TwitterEmbedVanilla extends HTMLElement {
         frameborder="0"
         loading="lazy"
         allowtransparency="true"
-        allowfullscreen="true"
+        allow="autoplay; encrypted-media; fullscreen"
         style="position: static; visibility: visible; width: ${this.dataWidth}; height: 498px; display: block; flex-grow: 1;"
         title="Twitter Tweet"
         src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this.tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"

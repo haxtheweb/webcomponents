@@ -69,12 +69,12 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "voiceCommand") {
         this.dispatchEvent(
-          new CustomEvent("hax-add-voice-command", {
+          new CustomEvent("super-daemon-voice-command", {
             bubbles: true,
             composed: true,
             cancelable: false,
             detail: {
-              command: ":name: " + this[propName],
+              command: this[propName],
               context: this,
               callback: "_voiceEvent",
             },

@@ -215,30 +215,32 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
    */
   async _saveTap(e) {
     store.playSound("click");
-    const data = await this.shadowRoot
-    .querySelector("#outline").getData();
+    const data = await this.shadowRoot.querySelector("#outline").getData();
     let deleted = 0;
     let modified = 0;
     let added = 0;
     data.items.map((item) => {
       if (item.delete) {
         deleted++;
-      }
-      else if (item.new) {
+      } else if (item.new) {
         added++;
-      }
-      else if (item.modified) {
+      } else if (item.modified) {
         modified++;
       }
     });
-    let sumChanges = `${added > 0 ? `‣ ${added} new pages will be created\n` : ''}${modified > 0 ? `‣ ${modified} pages will be updated\n` : ''}${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ''}`;
+    let sumChanges = `${
+      added > 0 ? `‣ ${added} new pages will be created\n` : ""
+    }${modified > 0 ? `‣ ${modified} pages will be updated\n` : ""}${
+      deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""
+    }`;
     let confirmation = false;
     // no confirmation required if there are no tracked changes
-    if (sumChanges == '') {
+    if (sumChanges == "") {
       confirmation = true;
-    }
-    else {
-      confirmation = window.confirm(`Saving will commit the following actions:\n${sumChanges}\nAre you sure?`);
+    } else {
+      confirmation = window.confirm(
+        `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`
+      );
     }
     if (confirmation) {
       window.dispatchEvent(

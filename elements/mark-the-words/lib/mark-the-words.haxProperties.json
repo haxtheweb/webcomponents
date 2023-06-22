@@ -1,0 +1,64 @@
+{
+  "type": "grid",
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Mark the words",
+    "description": "Identify concepts via words by clicking within a body of text.",
+    "icon": "icons:receipt",
+    "color": "yellow",
+    "tags": [
+      "Instructional",
+      "content",
+      "activity",
+      "exercise",
+      "knowledge check"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Prompting for the user to answer the question",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "description": "comma separated possible answers",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Contents"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "correctAnswers",
+      "wordList",
+      "isEnabled",
+      "numberCorrect",
+      "numberGuessed",
+      "demoMode"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "mark-the-words",
+      "properties": {
+        "question": "Select all of the contractions",
+        "answers": "it'll"
+      },
+      "content": "<p>It'll be a great day at the farm and you should come too..</p>"
+    }
+  ]
+}

@@ -37,6 +37,7 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
   }
   constructor() {
     super();
+    this.allowNull = true;
     this.shades = false;
     this.options = this._getOptions(this.colors, this.shades, this.dark);
   }

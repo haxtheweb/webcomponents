@@ -7,7 +7,7 @@
     "description": "A set of tabs.",
     "icon": "view-day",
     "color": "grey",
-    "groups": ["Content", "Presentation", "Tabs"]
+    "tags": ["Layout", "tabs", "display", "layout"]
   },
   "settings": {
     "configure": [
@@ -36,13 +36,13 @@
         "property": "layoutBreakpoint",
         "title": "Layout Breakpoint",
         "inputMethod": "number",
-        "descripton": "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
+        "description": "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
       },
       {
         "property": "iconBreakpoint",
         "title": "Icon Breakpoint",
         "inputMethod": "number",
-        "descripton": "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
+        "description": "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
       },
       {
         "slot": "",

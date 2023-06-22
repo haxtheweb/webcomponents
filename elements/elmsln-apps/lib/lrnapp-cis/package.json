@@ -3,19 +3,6 @@
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-cis.html",
-  "dependencies": {
-    "@polymer/polymer": "^3.2.0",
-    "@polymer/app-route": "^3.0.0",
-    "@polymer/paper-item": "^3.0.0",
-    "@polymer/paper-dropdown-menu": "^3.0.1",
-    "@polymer/paper-listbox": "^3.0.0",
-    "@polymer/paper-toast": "^3.0.1",
-    "@polymer/iron-selector": "^3.0.0",
-    "@polymer/iron-list": "^3.0.2",
-    "@polymer/iron-pages": "^3.0.0",
-    "@polymer/iron-ajax": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^4.0.8",
-    "@polymer/paper-card": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

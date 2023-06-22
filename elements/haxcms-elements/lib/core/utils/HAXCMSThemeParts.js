@@ -13,6 +13,7 @@ const HAXCMSThemeParts = function (SuperClass) {
       });
       autorun((reaction) => {
         this.darkMode = toJS(store.darkMode);
+        this.dark = this.darkMode; // alignment w/ simple colors for reactive content!
         this.__disposer.push(reaction);
       });
     }

@@ -3,11 +3,11 @@
   "canPosition": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Full width-image",
-    "description": "full width image that flows beyond boundaries",
+    "title": "Section break",
+    "description": "Full width image to break up a section of the page",
     "icon": "image:image",
     "color": "green",
-    "groups": ["Width"],
+    "tags": ["Layout", "image", "layout", "section", "heading"],
     "handles": [
       {
         "type": "image",
@@ -17,22 +17,21 @@
       }
     ],
     "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {
     "configure": [
       {
         "property": "source",
-        "description": "Image to render as the full width background",
+        "description": "Background image",
         "inputMethod": "haxupload",
         "required": true,
         "validationType": "url"
       },
       {
         "property": "caption",
-        "description": "Text to overlay on the background on hover",
+        "description": "Text heading",
         "inputMethod": "textfield"
       }
     ],
