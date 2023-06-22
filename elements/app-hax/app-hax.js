@@ -41,6 +41,11 @@ export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   static get tag() {
     return "app-hax";
   }
+
+  _openExternalLink(link) {
+    window.open(link, "_blank");
+  }
+
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
@@ -223,16 +228,18 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       }
       return false;
     };
-    SuperDaemonInstance.questionTags = [
+    {
+      SuperDaemonInstance.questionTags = [
       {
         value: "*",
-        label: "What can I do?",
+        label: "List everything I can do",
       },
       {
-        value: "sites",
-        label: "What sites do I have access to?",
+        value: "?",
+        label: "HELP!",
       },
     ];
+  }
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -284,7 +291,6 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
       path: "hax/action/goToSite",
-      priority: -100,
       value: {
         name: "Go to site",
         program: async (input, values) => {
@@ -327,8 +333,62 @@ Window size: ${window.innerWidth}x${window.innerHeight}
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
+      title: "Join our Community",
+      icon: "hax:discord",
+      priority: -100,
+      tags: ["community", "discord","chat", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://bit.ly/hax-discord"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/join",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Tutorials",
       icon: "hax:hax2022",
+      priority: -1000,
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/tutorials"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/tutorials",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "User Documentation",
+      icon: "hax:hax2022",
+      tags: ["Documentation", "community", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/documentation"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/documentation",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "HAX Teaching Excellence",
+      icon: "hax:hax2022",
+      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://oer.hax.psu.edu/bto108/sites/haxcellence/ontology"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/community/pedagogy",
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Bug / issue",
+      icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -337,11 +397,11 @@ Window size: ${window.innerWidth}x${window.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["*"],
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
-      icon: "hax:hax2022",
+      icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
         "idea",
@@ -355,9 +415,9 @@ Window size: ${window.innerWidth}x${window.innerHeight}
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
+      context: ["logged-in", "CMS", "HAX", "?", "*"],
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["*"],
     });
     this.windowControllers = new AbortController();
     this.__tour = SimpleTourManager;

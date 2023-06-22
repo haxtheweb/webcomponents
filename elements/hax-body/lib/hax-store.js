@@ -2004,6 +2004,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     SuperDaemonInstance.defineOption({
       title: "Join our Community",
       icon: "hax:discord",
+      priority: -100,
       tags: ["community", "discord","chat", "help"],
       value: {
         target: this,
@@ -2017,6 +2018,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
       icon: "hax:hax2022",
+      priority: -1000,
       tags: ["Documentation", "community", "help"],
       value: {
         target: this,
